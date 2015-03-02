@@ -47,7 +47,17 @@ select {
 
 .select-field {
   white-space: nowrap;
-  float: left;
+  display: block;
+}
+
+.select-field.protocol {
+  margin: 10px 0
+}
+
+
+.select-field.method, 
+.select-field.events {
+  margin: 5px 0 5px 15px;
 }
 
 .content {
@@ -60,13 +70,21 @@ select {
   padding: 1.5rem;
 }
 
-.filter {
+section.filter {
   background-image: -webkit-linear-gradient(top,rgba(69,72,77,.65) 0%,rgba(0,0,0,.85) 100%);
   color: #CCC;
   box-shadow: 0 -1px 0px 0px rgba(255, 255, 255, 0.8);
   border-radius: 3px;
   padding: .75em;
   overflow: hidden;
+}
+
+section.filter, 
+section.filter select {
+  font-size: 17px;
+}
+section.filter option {
+  font-size: 27px
 }
 
 .hidden {
