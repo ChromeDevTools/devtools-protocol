@@ -253,13 +253,15 @@ colors.getColor = function (index) {
   };
 
   Viewer.prototype.handleMethodChange_ = function (e) {
+    var domainId = this.getSelectValue_(this.domainSelect);
+    var model = viewmodel[domainId];
+
     var index = e.target.selectedIndex;
     var selectedOption = e.target.querySelectorAll('option')[index];
-    var selectedMethod = selectedOption.value;
-    var model = viewmodel[this.getSelectValue_(this.domainSelect)];
-
+    var methodName = selectedOption.value;
+    
     var commandData = model.data['commands'].filter(function(command) {
-      return command['name'] == selectedMethod;
+      return command['name'] == methodName;
     })[0];
 
     this.removeItems_(this.methodSection);
@@ -268,10 +270,16 @@ colors.getColor = function (index) {
 
   Viewer.prototype.handleEventChange_ = function (e) {
     var domainId = this.getSelectValue_(this.domainSelect);
-    var eventName = this.getSelectValue_(this.methodSelect);
     var model = viewmodel[domainId];
+    
+    var eventName = this.getSelectValue_(this.eventSelect);
+    
+    var eventData = model.data['events'].filter(function(ev) {
+      return ev['name'] == eventName;
+    })[0];
 
-
+    this.removeItems_(this.eventsSection);
+    this.populateCommands_([eventData]);
   };
   
   Viewer.prototype.populateCommands_ = function (commandList) {
@@ -354,6 +362,8 @@ colors.getColor = function (index) {
 }());
   
 
+
+//# sourceURL=viewer.js
 </script>
 
 
