@@ -1,31 +1,15 @@
 
-var colors = [
-  'lightcoral',
-  'lightcyan',
-  'lightgoldenrodyellow',
-  'lightgray',
-  'lightgreen',
-  'lightgrey',
-  'lightpink',
-  'lightsalmon',
-  'lightseagreen',
-  'lightskyblue',
-  'lightslategray',
-  'lightyellow'
-];
-colors.getColor = function (index) {
-  if (index >= this.length) {
-    index %= this.length;
-  }
-
-  return this[index];
-};
 
 (function () {
   // Application scope.
 
   var viewmodel = {};
   var viewer;
+
+  function getColor(index, all) {
+    var hue = 360 / all * index;
+    return "hsl(" + hue + ", 52%, 91%)";
+  };
 
   document.addEventListener('readystatechange', function (e) {
     if (document.readyState == "complete" && protocol) {
@@ -40,7 +24,7 @@ colors.getColor = function (index) {
 
     domains.forEach(function (domain, i) {
       var name = domain['domain'];
-      var color = colors.getColor(i);
+      var color = getColor(i, domains.length);
       var commands = domain['commands'];
       var events = domain['events'];
 
