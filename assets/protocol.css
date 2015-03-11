@@ -102,12 +102,11 @@ section.filter option {
 }
 
 .optional {
-  opacity: .65;
-}
-.optional:before {
-  content: "[";
+  opacity: .8;
 }
 
 .optional:after {
-  content: "]";
+  content: " (optional)";
+  opacity: .6;
+  font-size: 90%;
 }
