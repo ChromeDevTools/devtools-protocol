@@ -132,8 +132,8 @@ colors.getColor = function (index) {
     this.contentSection = document.querySelector('.content');
     this.heading = document.querySelector('.heading');
     this.description = document.querySelector('.description');
-    this.methodSection = document.querySelector('.methods');
-    this.eventsSection = document.querySelector('.events');
+    this.methodSection = document.querySelector('section.methods');
+    this.eventsSection = document.querySelector('section.events');
     
     this.getTemplateHTML();
   };
@@ -155,11 +155,20 @@ colors.getColor = function (index) {
     populateElement(this.domainSelect, vmodel.domainNames.map(genOption));
   };
 
+
+
+  //
+  // change domain  
+  //
   Viewer.prototype.handleDomainChange_ = function (e) {
     var index = e.target.selectedIndex;
     var selectedOption = e.target.querySelectorAll('option')[index];
     var selectedDomain = selectedOption.value;
-    var model = viewmodel[selectedDomain];
+    this.changeDomain_(selectedDomain);
+  };
+
+  Viewer.prototype.changeDomain_ = function(domainId){
+    var model = viewmodel[domainId];
 
     // Empty method and event drop downs.
     emptyElement(this.methodSelect);
@@ -168,7 +177,7 @@ colors.getColor = function (index) {
     var commands = model.commandNames;
     var events = model.eventNames;
 
-    this.setHeading(selectedDomain, model.data['description']);
+    this.setHeading(domainId, model.data['description']);
 
     // Populate drop downs and sections with new values.
 
@@ -183,18 +192,26 @@ colors.getColor = function (index) {
     }
 
     this.contentSection.style.backgroundColor = model.color;
-  };
+  }
+
+
+
 
   Viewer.prototype.setHeading = function (heading, opt_description) {
     this.heading.innerHTML = heading;
     this.description.innerHTML = opt_description || '';
   };
 
+  // change method
   Viewer.prototype.handleMethodChange_ = function (e) {
     var domainId = this.getSelectValue_(this.domainSelect);
     var model = viewmodel[domainId];
 
-    var methodName = getSelectValue_(e.target);
+    var methodName = this.getSelectValue_(e.target);
+
+    if (methodName == '_'){
+      return this.changeDomain_(domainId);
+    }
     
     var commandData = model.data['commands'].filter(function(command) {
       return command['name'] == methodName;
@@ -204,17 +221,24 @@ colors.getColor = function (index) {
     this.populateCommands_([commandData]);
   };
 
+
+
+  // change event
   Viewer.prototype.handleEventChange_ = function (e) {
     var domainId = this.getSelectValue_(this.domainSelect);
     var model = viewmodel[domainId];
     
     var eventName = this.getSelectValue_(this.eventSelect);
+
+    if (eventName == '_'){
+      return this.changeDomain_(domainId);
+    }
     
     var eventData = model.data['events'].filter(function(ev) {
       return ev['name'] == eventName;
     })[0];
 
-    this.removeItems_(this.eventsSection);
+    // this.removeItems_(this.eventsSection);
     this.populateCommands_([eventData]);
   };
   
