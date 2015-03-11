@@ -183,12 +183,13 @@ colors.getColor = function (index) {
 
     if (commands) {
       popuplateSelect(this.methodSelect, commands.map(genOption), this.defaultMethodMessage);
-      this.populateCommands_(model.data['commands']);
+      this.populateCommands_(model.data['commands'], this.methodSection, {});
     }
 
     if (events) {
       popuplateSelect(this.eventSelect, events.map(genOption), this.defaultEventMessage);
-      this.populateEvents_(events, model.data);
+//       this.populateEvents_(events, model.data);
+      this.populateCommands_(model.data['events'], this.eventsSection, {});
     }
 
     this.contentSection.style.backgroundColor = model.color;
@@ -218,7 +219,7 @@ colors.getColor = function (index) {
     })[0];
 
     this.removeItems_(this.methodSection);
-    this.populateCommands_([commandData]);
+    this.populateCommands_([commandData], this.methodSection, { exclusive: true });
   };
 
 
@@ -238,16 +239,21 @@ colors.getColor = function (index) {
       return ev['name'] == eventName;
     })[0];
 
-    // this.removeItems_(this.eventsSection);
-    this.populateCommands_([eventData]);
+    this.removeItems_(this.eventsSection);
+    this.populateCommands_([eventData], this.eventsSection, { exclusive: true });
   };
   
-  Viewer.prototype.populateCommands_ = function (commandList) {
+  Viewer.prototype.populateCommands_ = function (commandList, elem, opts) {
     var wrapperEl = document.createElement('div');
     var templateHTML = this.methodTemplateHTML;
 
-    this.methodSection.classList.remove('hidden');
-    this.removeItems_(this.methodSection);
+    if (opts.exclusive) {
+      this.methodSection.hidden = true;
+      this.eventsSection.hidden = true;
+    }
+
+    elem.hidden = false;
+    this.removeItems_(elem);
 
     commandList.forEach(function(command) {
       var commandEl = document.createElement('div');
@@ -257,19 +263,20 @@ colors.getColor = function (index) {
 
       commandEl.innerHTML = templateHTML;
       commandEl.querySelector('.method-name').innerText = name;
-      commandEl.querySelector('.method-description').innerHTML = desc;
+      if (desc)
+        commandEl.querySelector('.method-description').innerHTML = desc;
 
       if (params){
         this.populateParameters_(params,
             commandEl.querySelector('.parameter-list'));
       } else {
-        commandEl.querySelector('.parameter-list').classList.add('hidden');
+        commandEl.querySelector('.parameter-list').hidden = true;
       }
 
       wrapperEl.appendChild(commandEl);
     }, this);
 
-    this.methodSection.appendChild(wrapperEl);
+    elem.appendChild(wrapperEl);
   };
 
   Viewer.prototype.populateParameters_ = function(paramData, parent) {
