@@ -12,10 +12,6 @@ protocol = {
             {
                 "name": "disable",
                 "description": "Disables inspector domain notifications."
-            },
-            {
-                "name": "reset",
-                "description": "Resets all domains."
             }
         ],
         "events": [
@@ -115,16 +111,6 @@ protocol = {
                 "hidden": true
             },
             {
-                "id": "SearchMatch",
-                "type": "object",
-                "description": "Search match for resource.",
-                "properties": [
-                    { "name": "lineNumber", "type": "number", "description": "Line number in resource content." },
-                    { "name": "lineContent", "type": "string", "description": "Line with match content." }
-                ],
-                "hidden": true
-            },
-            {
                 "id": "Cookie",
                 "type": "object",
                 "description": "Cookie object",
@@ -159,52 +145,6 @@ protocol = {
                 "hidden": true
             },
             {
-                "id": "Quota",
-                "type": "object",
-                "description": "Quota information",
-                "properties": [
-                    { "name": "temporary", "type": "number", "description": "Quota for temporary storage shared among all security origins" },
-                    { "name": "persistent", "type": "number", "description": "Quota for persistent storage for the security origin." }
-                ],
-                "hidden": true
-            },
-            {
-                "id": "Usage",
-                "type": "object",
-                "description": "Usage information",
-                "properties": [
-                    { "name": "temporary", "type": "array", "items": { "$ref": "Page.UsageItem" }, "description": "Temporary storage usage." },
-                    { "name": "persistent", "type": "array", "items": { "$ref": "Page.UsageItem" }, "description": "Persistent storage usage." },
-                    { "name": "syncable", "type": "array", "items": { "$ref": "Page.UsageItem" }, "description": "Syncable storage." }
-                ],
-                "hidden": true
-            },
-            {
-                "id": "UsageItem",
-                "type": "object",
-                "description": "Usage information for a client and storage type",
-                "properties": [
-                    { "name": "id", "type": "string", "enum": ["filesystem", "database", "appcache", "indexeddatabase"], "description": "Item id." },
-                    { "name": "value", "type": "number", "description": "Item usage value." }
-                ],
-                "hidden": true
-            },
-            {
-                "id": "Viewport",
-                "type": "object",
-                "description": "Visible page viewport",
-                "properties": [
-                    { "name": "scrollX", "type": "number", "description": "X scroll offset in CSS pixels." },
-                    { "name": "scrollY", "type": "number", "description": "Y scroll offset in CSS pixels." },
-                    { "name": "contentsWidth", "type": "number", "description": "Contents width in CSS pixels." },
-                    { "name": "contentsHeight", "type": "number", "description": "Contents height in CSS pixels." },
-                    { "name": "pageScaleFactor", "type": "number", "description": "Page scale factor." },
-                    { "name": "minimumPageScaleFactor", "type": "number", "description": "Minimum page scale factor." },
-                    { "name": "maximumPageScaleFactor", "type": "number", "description": "Maximum page scale factor." }
-                ],
-                "hidden": true
-            },
-            {
                 "id": "ScreencastFrameMetadata",
                 "type": "object",
                 "description": "Screencast frame metadata",
@@ -216,16 +156,6 @@ protocol = {
                     { "name": "scrollOffsetX", "type": "number", "hidden": true, "description": "Position of horizontal scroll in CSS pixels." },
                     { "name": "scrollOffsetY", "type": "number", "hidden": true, "description": "Position of vertical scroll in CSS pixels." },
                     { "name": "timestamp", "type": "number", "optional": true, "hidden": true, "description": "Frame swap timestamp." }
-                ],
-                "hidden": true
-            },
-            {
-                "id": "RecordedFrame",
-                "type": "object",
-                "description": "Compressed frame data.",
-                "properties": [
-                    { "name": "data", "type": "string", "description": "Base64-encoded compressed image." },
-                    { "name": "timestamp", "type": "number", "description": "Frame swap timestamp." }
                 ],
                 "hidden": true
             }
@@ -348,7 +278,7 @@ protocol = {
                     { "name": "isRegex", "type": "boolean", "optional": true, "description": "If true, treats string parameter as regex." }
                 ],
                 "returns": [
-                    { "name": "result", "type": "array", "items": { "$ref": "SearchMatch" }, "description": "List of search matches." }
+                    { "name": "result", "type": "array", "items": { "$ref": "Debugger.SearchMatch" }, "description": "List of search matches." }
                 ],
                 "hidden": true
             },
@@ -374,80 +304,15 @@ protocol = {
                     { "name": "offsetX", "type": "number", "optional": true, "description": "X offset to shift resulting view image by. Ignored in |fitWindow| mode." },
                     { "name": "offsetY", "type": "number", "optional": true, "description": "Y offset to shift resulting view image by. Ignored in |fitWindow| mode." }
                 ],
+                "handlers": ["browser"],
+                "redirect": "Emulation",
                 "hidden": true
             },
             {
                 "name": "clearDeviceMetricsOverride",
                 "description": "Clears the overriden device metrics.",
-                "hidden": true
-            },
-            {
-                "name": "resetScrollAndPageScaleFactor",
-                "description": "Requests that scroll offsets and page scale factor are reset to initial values.",
-                "hidden": true
-            },
-            {
-                "name": "setPageScaleFactor",
-                "description": "Sets a specified page scale factor.",
-                "parameters": [
-                    { "name": "pageScaleFactor", "type": "number", "description": "Page scale factor." }
-                ],
-                "hidden": true
-            },
-            {
-                "name": "setShowPaintRects",
-                "description": "Requests that backend shows paint rectangles",
-                "parameters": [
-                    { "name": "result", "type": "boolean", "description": "True for showing paint rectangles" }
-                ],
-                "hidden": true
-            },
-            {
-                "name": "setShowDebugBorders",
-                "description": "Requests that backend shows debug borders on layers",
-                "parameters": [
-                    { "name": "show", "type": "boolean", "description": "True for showing debug borders" }
-                ],
-                "hidden": true
-            },
-            {
-                "name": "setShowFPSCounter",
-                "description": "Requests that backend shows the FPS counter",
-                "parameters": [
-                    { "name": "show", "type": "boolean", "description": "True for showing the FPS counter" }
-                ],
-                "hidden": true
-            },
-            {
-                "name": "setContinuousPaintingEnabled",
-                "description": "Requests that backend enables continuous painting",
-                "parameters": [
-                    { "name": "enabled", "type": "boolean", "description": "True for enabling cointinuous painting" }
-                ],
-                "hidden": true
-            },
-            {
-                "name": "setShowScrollBottleneckRects",
-                "description": "Requests that backend shows scroll bottleneck rects",
-                "parameters": [
-                    { "name": "show", "type": "boolean", "description": "True for showing scroll bottleneck rects" }
-                ],
-                "hidden": true
-            },
-            {
-                "name": "getScriptExecutionStatus",
-                "description": "Determines if scripts can be executed in the page.",
-                "returns": [
-                    { "name": "result", "type": "string", "enum": ["allowed", "disabled", "forbidden"], "description": "Script execution status: \"allowed\" if scripts can be executed, \"disabled\" if script execution has been disabled through page settings, \"forbidden\" if script execution for the given page is not possible for other reasons." }
-                ],
-                "hidden": true
-            },
-            {
-                "name": "setScriptExecutionDisabled",
-                "description": "Switches script execution in the page.",
-                "parameters": [
-                    { "name": "value", "type": "boolean", "description": "Whether script execution should be disabled in the page." }
-                ],
+                "handlers": ["browser"],
+                "redirect": "Emulation",
                 "hidden": true
             },
             {
@@ -458,11 +323,13 @@ protocol = {
                     { "name": "longitude", "type": "number", "optional": true, "description": "Mock longitude"},
                     { "name": "accuracy", "type": "number", "optional": true, "description": "Mock accuracy"}
                 ],
+                "redirect": "Emulation",
                 "handlers": ["browser"]
             },
             {
                 "name": "clearGeolocationOverride",
                 "description": "Clears the overriden Geolocation Position and Error.",
+                "redirect": "Emulation",
                 "handlers": ["browser"]
             },
             {
@@ -490,15 +357,8 @@ protocol = {
                 ],
                 "description": "Toggles mouse event-based touch event emulation.",
                 "hidden": true,
+                "redirect": "Emulation",
                 "handlers": ["browser", "renderer"]
-            },
-            {
-                "name": "setEmulatedMedia",
-                "parameters": [
-                    { "name": "media", "type": "string", "description": "Media type to emulate. Empty string disables the override." }
-                ],
-                "description": "Emulates the given media for CSS media queries.",
-                "hidden": true
             },
             {
                 "name": "captureScreenshot",
@@ -516,15 +376,6 @@ protocol = {
                 "description": "Tells whether screencast is supported.",
                 "returns": [
                   { "name": "result", "type": "boolean", "description": "True if screencast is supported." }
-                ],
-                "hidden": true,
-                "handlers": ["browser"]
-            },
-            {
-                "name": "canEmulate",
-                "description": "Tells whether emulation is supported.",
-                "returns": [
-                    { "name": "result", "type": "boolean", "description": "True if emulation is supported." }
                 ],
                 "hidden": true,
                 "handlers": ["browser"]
@@ -557,27 +408,6 @@ protocol = {
                 "handlers": ["browser"]
             },
             {
-                "name": "startRecordingFrames",
-                "description": "Starts recording each frame to the buffer.",
-                "parameters": [
-                    { "name": "maxFrameCount", "type": "integer", "description": "Maximal number of frames to record from range. Actual maximum depends on implementation." }
-                ],
-                "hidden": true,
-                "handlers": ["browser"]
-            },
-            {
-                "name": "stopRecordingFrames",
-                "async": true,
-                "description": "Stops recording, encodes and returns images.",
-                "parameters": [
-                ],
-                "returns": [
-                    { "name": "frames", "type": "array", "items": { "$ref": "RecordedFrame" }, "description": "Encoded recorded frames." }
-                ],
-                "hidden": true,
-                "handlers": ["browser"]
-            },
-            {
                 "name": "handleJavaScriptDialog",
                 "description": "Accepts or dismisses a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload).",
                 "parameters": [
@@ -595,20 +425,6 @@ protocol = {
                     { "name": "showGrid", "type": "boolean", "optional": true, "description": "Whether to paint grid as well." }
                 ],
                 "hidden": true
-            },
-            {
-                "name": "queryUsageAndQuota",
-                "async": true,
-                "parameters": [
-                    { "name": "securityOrigin", "type": "string", "description": "Security origin quota and usage requested for" }
-                ],
-                "returns": [
-                    { "name": "quota", "$ref": "Quota", "description": "Quota for requested security origin." },
-                    { "name": "usage", "$ref": "Usage", "description": "Current usage for requested security origin." }
-                ],
-                "description": "Queries more detailed quota and usage data than Storage API provides.",
-                "hidden": true,
-                "handlers": ["browser"]
             },
             {
                 "name": "setColorPickerEnabled",
@@ -714,14 +530,6 @@ protocol = {
                 "hidden": true
             },
             {
-                "name": "scriptsEnabled",
-                "description": "Fired when the JavaScript is enabled/disabled on the page",
-                "parameters": [
-                    { "name": "isEnabled", "type": "boolean", "description": "Whether script execution is enabled or disabled on the page." }
-                ],
-                "hidden": true
-            },
-            {
                 "name": "screencastFrame",
                 "description": "Compressed image data requested by the <code>startScreencast</code>.",
                 "parameters": [
@@ -740,14 +548,6 @@ protocol = {
                 ],
                 "hidden": true,
                 "handlers": ["browser"]
-            },
-            {
-                "name": "viewportChanged",
-                "description": "Fired when a visible page viewport has changed.",
-                "parameters": [
-                    { "name": "viewport", "$ref": "Viewport", "description": "Viewport description." }
-                ],
-                "hidden": true
             },
             {
                 "name": "colorPicked",
@@ -769,6 +569,157 @@ protocol = {
                 "description": "Fired when interstitial page was hidden",
                 "hidden": true,
                 "handlers": ["browser"]
+            }
+        ]
+    },
+    {
+        "domain": "Rendering",
+        "description": "This domain allows to control rendering of the page.",
+        "hidden": true,
+        "commands": [
+            {
+                "name": "setShowPaintRects",
+                "description": "Requests that backend shows paint rectangles",
+                "parameters": [
+                    { "name": "result", "type": "boolean", "description": "True for showing paint rectangles" }
+                ]
+            },
+            {
+                "name": "setShowDebugBorders",
+                "description": "Requests that backend shows debug borders on layers",
+                "parameters": [
+                    { "name": "show", "type": "boolean", "description": "True for showing debug borders" }
+                ]
+            },
+            {
+                "name": "setShowFPSCounter",
+                "description": "Requests that backend shows the FPS counter",
+                "parameters": [
+                    { "name": "show", "type": "boolean", "description": "True for showing the FPS counter" }
+                ]
+            },
+            {
+                "name": "setContinuousPaintingEnabled",
+                "description": "Requests that backend enables continuous painting",
+                "parameters": [
+                    { "name": "enabled", "type": "boolean", "description": "True for enabling cointinuous painting" }
+                ]
+            },
+            {
+                "name": "setShowScrollBottleneckRects",
+                "description": "Requests that backend shows scroll bottleneck rects",
+                "parameters": [
+                    { "name": "show", "type": "boolean", "description": "True for showing scroll bottleneck rects" }
+                ]
+            }
+        ]
+    },
+    {
+        "domain": "Emulation",
+        "description": "This domain emulates different environments for the page.",
+        "hidden": true,
+        "types": [
+            {
+                "id": "Viewport",
+                "type": "object",
+                "description": "Visible page viewport",
+                "properties": [
+                    { "name": "scrollX", "type": "number", "description": "X scroll offset in CSS pixels." },
+                    { "name": "scrollY", "type": "number", "description": "Y scroll offset in CSS pixels." },
+                    { "name": "contentsWidth", "type": "number", "description": "Contents width in CSS pixels." },
+                    { "name": "contentsHeight", "type": "number", "description": "Contents height in CSS pixels." },
+                    { "name": "pageScaleFactor", "type": "number", "description": "Page scale factor." },
+                    { "name": "minimumPageScaleFactor", "type": "number", "description": "Minimum page scale factor." },
+                    { "name": "maximumPageScaleFactor", "type": "number", "description": "Maximum page scale factor." }
+                ]
+            }
+        ],
+        "commands": [
+            {
+                "name": "setDeviceMetricsOverride",
+                "description": "Overrides the values of device screen dimensions (window.screen.width, window.screen.height, window.innerWidth, window.innerHeight, and \"device-width\"/\"device-height\"-related CSS media query results).",
+                "parameters": [
+                    { "name": "width", "type": "integer", "description": "Overriding width value in pixels (minimum 0, maximum 10000000). 0 disables the override." },
+                    { "name": "height", "type": "integer", "description": "Overriding height value in pixels (minimum 0, maximum 10000000). 0 disables the override." },
+                    { "name": "deviceScaleFactor", "type": "number", "description": "Overriding device scale factor value. 0 disables the override." },
+                    { "name": "mobile", "type": "boolean", "description": "Whether to emulate mobile device. This includes viewport meta tag, overlay scrollbars, text autosizing and more." },
+                    { "name": "fitWindow", "type": "boolean", "description": "Whether a view that exceeds the available browser window area should be scaled down to fit." },
+                    { "name": "scale", "type": "number", "optional": true, "description": "Scale to apply to resulting view image. Ignored in |fitWindow| mode." },
+                    { "name": "offsetX", "type": "number", "optional": true, "description": "X offset to shift resulting view image by. Ignored in |fitWindow| mode." },
+                    { "name": "offsetY", "type": "number", "optional": true, "description": "Y offset to shift resulting view image by. Ignored in |fitWindow| mode." }
+                ],
+                "handlers": ["browser"]
+            },
+            {
+                "name": "clearDeviceMetricsOverride",
+                "description": "Clears the overriden device metrics.",
+                "handlers": ["browser"]
+            },
+            {
+                "name": "resetScrollAndPageScaleFactor",
+                "description": "Requests that scroll offsets and page scale factor are reset to initial values."
+            },
+            {
+                "name": "setPageScaleFactor",
+                "description": "Sets a specified page scale factor.",
+                "parameters": [
+                    { "name": "pageScaleFactor", "type": "number", "description": "Page scale factor." }
+                ]
+            },
+            {
+                "name": "setScriptExecutionDisabled",
+                "description": "Switches script execution in the page.",
+                "parameters": [
+                    { "name": "value", "type": "boolean", "description": "Whether script execution should be disabled in the page." }
+                ]
+            },
+            {
+                "name": "setGeolocationOverride",
+                "description": "Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position unavailable.",
+                "parameters": [
+                    { "name": "latitude", "type": "number", "optional": true, "description": "Mock latitude"},
+                    { "name": "longitude", "type": "number", "optional": true, "description": "Mock longitude"},
+                    { "name": "accuracy", "type": "number", "optional": true, "description": "Mock accuracy"}
+                ],
+                "handlers": ["browser"]
+            },
+            {
+                "name": "clearGeolocationOverride",
+                "description": "Clears the overriden Geolocation Position and Error.",
+                "handlers": ["browser"]
+            },
+            {
+                "name": "setTouchEmulationEnabled",
+                "parameters": [
+                    { "name": "enabled", "type": "boolean", "description": "Whether the touch event emulation should be enabled." },
+                    { "name": "configuration", "type": "string", "enum": ["mobile", "desktop"], "optional": true, "description": "Touch/gesture events configuration. Default: current platform." }
+                ],
+                "description": "Toggles mouse event-based touch event emulation.",
+                "handlers": ["browser", "renderer"]
+            },
+            {
+                "name": "setEmulatedMedia",
+                "parameters": [
+                    { "name": "media", "type": "string", "description": "Media type to emulate. Empty string disables the override." }
+                ],
+                "description": "Emulates the given media for CSS media queries."
+            },
+            {
+                "name": "canEmulate",
+                "description": "Tells whether emulation is supported.",
+                "returns": [
+                    { "name": "result", "type": "boolean", "description": "True if emulation is supported." }
+                ],
+                "handlers": ["browser"]
+            }
+        ],
+        "events": [
+            {
+                "name": "viewportChanged",
+                "description": "Fired when a visible page viewport has changed. Only fired when device metrics are overridden.",
+                "parameters": [
+                    { "name": "viewport", "$ref": "Viewport", "description": "Viewport description." }
+                ]
             }
         ]
     },
@@ -888,10 +839,10 @@ protocol = {
                 "description": "Description of an isolated world.",
                 "properties": [
                     { "name": "id", "$ref": "ExecutionContextId", "description": "Unique id of the execution context. It can be used to specify in which execution context script evaluation should be performed." },
-                    { "name": "isPageContext", "type": "boolean", "description": "True if this is a context where inpspected web page scripts run. False if it is a content script isolated context.", "hidden": true },
+                    { "name": "isPageContext", "type": "boolean", "optional": true, "description": "True if this is a context where inpspected web page scripts run. False if it is a content script isolated context.", "hidden": true },
                     { "name": "origin", "type": "string", "description": "Execution context origin.", "hidden": true},
                     { "name": "name", "type": "string", "description": "Human readable name describing given context.", "hidden": true},
-                    { "name": "frameId", "$ref": "Page.FrameId", "description": "Id of the owning frame." }
+                    { "name": "frameId", "type": "string", "description": "Id of the owning frame. May be an empty string if the context is not associated with a frame." }
                 ]
             }
         ],
@@ -903,7 +854,7 @@ protocol = {
                     { "name": "objectGroup", "type": "string", "optional": true, "description": "Symbolic group name that can be used to release multiple objects." },
                     { "name": "includeCommandLineAPI", "type": "boolean", "optional": true, "description": "Determines whether Command Line API should be available during the evaluation.", "hidden": true },
                     { "name": "doNotPauseOnExceptionsAndMuteConsole", "type": "boolean", "optional": true, "description": "Specifies whether evaluation should stop on exceptions and mute console. Overrides setPauseOnException state.", "hidden": true },
-                    { "name": "contextId", "$ref": "Runtime.ExecutionContextId", "optional": true, "description": "Specifies in which isolated context to perform evaluation. Each content script lives in an isolated context and this parameter may be used to specify one of those contexts. If the parameter is omitted or 0 the evaluation will be performed in the context of the inspected page." },
+                    { "name": "contextId", "$ref": "ExecutionContextId", "optional": true, "description": "Specifies in which isolated context to perform evaluation. Each content script lives in an isolated context and this parameter may be used to specify one of those contexts. If the parameter is omitted or 0 the evaluation will be performed in the context of the inspected page." },
                     { "name": "returnByValue", "type": "boolean", "optional": true, "description": "Whether the result is expected to be a JSON object that should be sent by value." },
                     { "name": "generatePreview", "type": "boolean", "optional": true, "hidden": true, "description": "Whether preview should be generated for the result." }
                 ],
@@ -935,7 +886,8 @@ protocol = {
                 "parameters": [
                     { "name": "objectId", "$ref": "RemoteObjectId", "description": "Identifier of the object to return properties for." },
                     { "name": "ownProperties", "optional": true, "type": "boolean", "description": "If true, returns properties belonging only to the element itself, not to its prototype chain." },
-                    { "name": "accessorPropertiesOnly", "optional": true, "type": "boolean", "description": "If true, returns accessor properties (with getter/setter) only; internal properties are not returned either.", "hidden": true }
+                    { "name": "accessorPropertiesOnly", "optional": true, "type": "boolean", "description": "If true, returns accessor properties (with getter/setter) only; internal properties are not returned either.", "hidden": true },
+                    { "name": "generatePreview", "type": "boolean", "optional": true, "hidden": true, "description": "Whether preview should be generated for the results." }
                 ],
                 "returns": [
                     { "name": "result", "type": "array", "items": { "$ref": "PropertyDescriptor" }, "description": "Object properties." },
@@ -1084,14 +1036,6 @@ protocol = {
             {
                 "name": "clearMessages",
                 "description": "Clears console messages collected in the browser."
-            },
-            {
-                "name": "setLastEvaluationResult",
-                "parameters": [
-                    { "name": "objectId", "$ref": "Runtime.RemoteObjectId", "description": "Identifier of the object to set as last evaluation result." }
-                ],
-                "hidden": true,
-                "description": "Sets last evaluation result in console. Can be accessed via <code>$_</code> command line API."
             }
         ],
         "events": [
@@ -1360,21 +1304,6 @@ protocol = {
                 "description": "Toggles ignoring cache for each request. If <code>true</code>, cache will not be used."
             },
             {
-                "name": "loadResourceForFrontend",
-                "async": true,
-                "parameters": [
-                    { "name": "url", "type": "string", "description": "URL of the resource to load." },
-                    { "name": "requestHeaders", "$ref": "Network.Headers", "optional": true, "description": "Request headers." }
-                ],
-                "returns": [
-                    { "name": "statusCode", "type": "number", "description": "HTTP status code." },
-                    { "name": "responseHeaders", "$ref": "Network.Headers", "description": "Response headers." },
-                    { "name": "content", "type": "string", "description": "Resource content." }
-                ],
-                "description": "Loads a resource in the context of a frame on the inspected page without cross origin checks.",
-                "hidden": true
-            },
-            {
                 "name": "setDataSizeLimitsForTest",
                 "parameters": [
                     { "name": "maxTotalSize", "type": "integer", "description": "Maximum total buffer size." },
@@ -1395,6 +1324,7 @@ protocol = {
                     { "name": "documentURL", "type": "string", "description": "URL of the document this request is loaded for." },
                     { "name": "request", "$ref": "Request", "description": "Request data." },
                     { "name": "timestamp", "$ref": "Timestamp", "description": "Timestamp." },
+                    { "name": "wallTime", "$ref": "Timestamp", "hidden": true, "description": "UTC Timestamp." },
                     { "name": "initiator", "$ref": "Initiator", "description": "Request initiator." },
                     { "name": "redirectResponse", "optional": true, "$ref": "Response", "description": "Redirect response data." },
                     { "name": "type", "$ref": "Page.ResourceType", "optional": true, "hidden": true, "description": "Type of this resource." }
@@ -1455,6 +1385,7 @@ protocol = {
                 "parameters": [
                     { "name": "requestId", "$ref": "RequestId", "description": "Request identifier." },
                     { "name": "timestamp", "$ref": "Timestamp", "description": "Timestamp." },
+                    { "name": "wallTime", "$ref": "Timestamp", "hidden": true, "description": "UTC Timestamp." },
                     { "name": "request", "$ref": "WebSocketRequest", "description": "WebSocket request data." }
                 ],
                 "hidden": true
@@ -2092,6 +2023,17 @@ protocol = {
                 "hidden": true
             },
             {
+                "id": "BackendNode",
+                "type": "object",
+                "properties": [
+                    { "name": "nodeType", "type": "integer", "description": "<code>Node</code>'s nodeType." },
+                    { "name": "nodeName", "type": "string", "description": "<code>Node</code>'s nodeName." },
+                    { "name": "backendNodeId", "$ref": "BackendNodeId" }
+                ],
+                "hidden": true,
+                "description": "Backend node with a friendly name."
+            },
+            {
                 "id": "PseudoType",
                 "type": "string",
                 "enum": [
@@ -2146,7 +2088,8 @@ protocol = {
                     { "name": "shadowRoots", "type": "array", "optional": true, "items": { "$ref": "Node" }, "description": "Shadow root list for given element host.", "hidden": true },
                     { "name": "templateContent", "$ref": "Node", "optional": true, "description": "Content document fragment for template elements.", "hidden": true },
                     { "name": "pseudoElements", "type": "array", "items": { "$ref": "Node" }, "optional": true, "description": "Pseudo elements associated with this node.", "hidden": true },
-                    { "name": "importedDocument", "$ref": "Node", "optional": true, "description": "Import document for the HTMLImport links." }
+                    { "name": "importedDocument", "$ref": "Node", "optional": true, "description": "Import document for the HTMLImport links." },
+                    { "name": "distributedNodes", "type": "array", "items": { "$ref": "BackendNode" }, "optional": true, "description": "Distributed nodes for given insertion point.", "hidden": true }
                 ],
                 "description": "DOM interaction is implemented in terms of mirror objects that represent the actual DOM nodes. DOMNode is a base node mirror type."
             },
@@ -2238,26 +2181,6 @@ protocol = {
                     { "name": "shapeMarginColor", "$ref": "RGBA", "optional": true, "hidden": true, "description": "The shape margin fill color (default: transparent)." }
                 ],
                 "description": "Configuration data for the highlighting of page elements."
-            },
-            {
-                "id": "DistributedNode",
-                "type": "object",
-                "hidden": true,
-                "properties": [
-                    { "name": "nodeId", "$ref": "NodeId", "description": "Distributed node id." },
-                    { "name": "destinationInsertionPointIds", "type": "array", "optional": true, "items": { "$ref": "NodeId" }, "description": "Identifiers of nodes this node was distributed into." }
-                ],
-                "description": "Distributed node detailed information."
-            },
-            {
-                "id": "InsertionPointDistribution",
-                "type": "object",
-                "hidden": true,
-                "properties": [
-                    { "name": "nodeId", "$ref": "NodeId", "description": "Insertion point node id." },
-                    { "name": "distributedNodes", "type": "array", "items": { "$ref": "DistributedNode" }, "description": "A list of distributed node details for this insertion point." }
-                ],
-                "description": "Distribution data for insertion point."
             }
         ],
         "commands": [
@@ -2283,16 +2206,6 @@ protocol = {
                     { "name": "depth", "type": "integer", "optional": true, "description": "The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the entire subtree or provide an integer larger than 0.", "hidden": true }
                 ],
                 "description": "Requests that children of the node with given id are returned to the caller in form of <code>setChildNodes</code> events where not only immediate children are retrieved, but all children down to the specified depth."
-            },
-            {
-                "name": "requestShadowHostDistributedNodes",
-                "parameters": [
-                    { "name": "nodeId", "$ref": "NodeId", "description": "Id of the node to get distributed nodes for." }
-                ],
-                "returns": [
-                    { "name": "insertionPointDistributions", "type": "array", "items": { "$ref": "InsertionPointDistribution" }, "description": "A list of distribution data for each insertion point in shadow host." }
-                ],
-                "description": "Returns distribution data for all insertion points in shadow tree of the given node."
             },
             {
                 "name": "querySelector",
@@ -2479,6 +2392,7 @@ protocol = {
                 "parameters": [
                     { "name": "highlightConfig", "$ref": "HighlightConfig",  "description": "A descriptor for the highlight appearance." },
                     { "name": "nodeId", "$ref": "NodeId", "optional": true, "description": "Identifier of the node to highlight." },
+                    { "name": "backendNodeId", "$ref": "BackendNodeId", "optional": true, "description": "Identifier of the backend node to highlight." },
                     { "name": "objectId", "$ref": "Runtime.RemoteObjectId", "optional": true, "description": "JavaScript object id of the node to be highlighted.", "hidden": true }
                 ],
                 "description": "Highlights DOM node with given id or with the given JavaScript object wrapper. Either nodeId or objectId must be specified."
@@ -2660,7 +2574,7 @@ protocol = {
             {
                 "name": "inspectNodeRequested",
                 "parameters": [
-                    { "name": "nodeId", "$ref": "NodeId", "description": "Id of the node to inspect." }
+                    { "name": "backendNodeId", "$ref": "BackendNodeId", "description": "Id of the node to inspect." }
                 ],
                 "description": "Fired when the node should be inspected. This happens after call to <code>setInspectModeEnabled</code>.",
                 "hidden" : true
@@ -2696,14 +2610,6 @@ protocol = {
                     { "name": "nodeIds", "type": "array", "items": { "$ref": "NodeId" }, "description": "Ids of the nodes for which the inline styles have been invalidated." }
                 ],
                 "description": "Fired when <code>Element</code>'s inline style is modified via a CSS property modification.",
-                "hidden": true
-            },
-            {
-                "name": "shadowHostDistributionInvalidated",
-                "parameters": [
-                    { "name": "nodeIds", "type": "array", "items": { "$ref": "NodeId" }, "description": "Ids of the shadow host nodes for which content distribution has been invalidated." }
-                ],
-                "description": "Fired when shadow host node content distribution is recalculated.",
                 "hidden": true
             },
             {
@@ -2774,6 +2680,15 @@ protocol = {
                 ],
                 "description": "Called when a pseudo element is removed from an element.",
                 "hidden": true
+            },
+            {
+                "name": "distributedNodesUpdated",
+                "parameters": [
+                    { "name": "insertionPointId", "$ref": "NodeId", "description": "Insertion point where distrubuted nodes were updated." },
+                    { "name": "distributedNodes", "type": "array", "items": { "$ref": "BackendNode" }, "description": "Distributed nodes for given insertion point." }
+                ],
+                "description": "Called when distrubution is changed.",
+                "hidden": true
             }
         ]
     },
@@ -2796,7 +2711,7 @@ protocol = {
                 "id": "PseudoIdMatches",
                 "type": "object",
                 "properties": [
-                    { "name": "pseudoId", "type": "integer", "description": "Pseudo style identifier (see <code>enum PseudoId</code> in <code>LayoutStyleConstants.h</code>)."},
+                    { "name": "pseudoId", "type": "integer", "description": "Pseudo style identifier (see <code>enum PseudoId</code> in <code>ComputedStyleConstants.h</code>)."},
                     { "name": "matches", "type": "array", "items": { "$ref": "RuleMatch" }, "description": "Matches of CSS rules applicable to the pseudo style."}
                 ],
                 "description": "CSS rule collection for a single pseudo style."
@@ -3236,7 +3151,7 @@ protocol = {
                 "hidden": true,
                 "type": "object",
                 "properties": [
-                    { "name": "location", "$ref": "Location", "description": "Location of the function." },
+                    { "name": "location", "$ref": "Location", "optional": true, "description": "Location of the function, none for native functions." },
                     { "name": "functionName", "type": "string", "description": "Name of the function." },
                     { "name": "isGenerator", "type": "boolean", "description": "Whether this is a generator function." },
                     { "name": "scopeChain", "type": "array", "optional": true, "items": { "$ref": "Scope" }, "description": "Scope chain for this closure." }
@@ -3271,6 +3186,7 @@ protocol = {
                 "properties": [
                     { "name": "callFrameId", "$ref": "CallFrameId", "description": "Call frame identifier. This identifier is only valid while the virtual machine is paused." },
                     { "name": "functionName", "type": "string", "description": "Name of the JavaScript function called on this call frame." },
+                    { "name": "functionLocation", "$ref": "Location", "optional": true, "hidden": true, "description": "Location in the source code." },
                     { "name": "location", "$ref": "Location", "description": "Location in the source code." },
                     { "name": "scopeChain", "type": "array", "items": { "$ref": "Scope" }, "description": "Scope chain for this call frame." },
                     { "name": "this", "$ref": "Runtime.RemoteObject", "description": "<code>this</code> object for this call frame." },
@@ -3355,6 +3271,16 @@ protocol = {
                     { "name": "asyncStackTrace", "$ref": "Console.AsyncStackTrace", "optional": true, "description": "Asynchronous stack trace where async operation was scheduled, if available." }
                 ],
                 "hidden": true
+            },
+            {
+                "id": "SearchMatch",
+                "type": "object",
+                "description": "Search match for resource.",
+                "properties": [
+                    { "name": "lineNumber", "type": "number", "description": "Line number in resource content." },
+                    { "name": "lineContent", "type": "string", "description": "Line with match content." }
+                ],
+                "hidden": true
             }
         ],
         "commands": [
@@ -3377,8 +3303,7 @@ protocol = {
                 "name": "setSkipAllPauses",
                 "hidden": true,
                 "parameters": [
-                    { "name": "skipped", "type": "boolean", "description": "New value for skip pauses state." },
-                    { "name": "untilReload", "type": "boolean", "optional": true, "description": "Whether page reload should set skipped to false." }
+                    { "name": "skipped", "type": "boolean", "description": "New value for skip pauses state." }
                 ],
                 "description": "Makes page not interrupt on any pauses (breakpoint, exception, dom exception etc)."
             },
@@ -3458,7 +3383,7 @@ protocol = {
                     { "name": "isRegex", "type": "boolean", "optional": true, "description": "If true, treats string parameter as regex." }
                 ],
                 "returns": [
-                    { "name": "result", "type": "array", "items": { "$ref": "Page.SearchMatch" }, "description": "List of search matches." }
+                    { "name": "result", "type": "array", "items": { "$ref": "SearchMatch" }, "description": "List of search matches." }
                 ],
                 "description": "Searches for given string in script content."
             },
@@ -3563,7 +3488,7 @@ protocol = {
                 "returns": [
                     { "name": "result", "$ref": "Runtime.RemoteObject", "description": "Object wrapper for the evaluation result." },
                     { "name": "wasThrown", "type": "boolean", "optional": true, "description": "True if the result was thrown during the evaluation." },
-                    { "name": "exceptionDetails", "$ref": "Debugger.ExceptionDetails", "optional": true, "hidden": true, "description": "Exception details."}
+                    { "name": "exceptionDetails", "$ref": "ExceptionDetails", "optional": true, "hidden": true, "description": "Exception details."}
                 ],
                 "description": "Evaluates expression on a given call frame."
             },
@@ -4069,29 +3994,21 @@ protocol = {
             {
                 "name": "sendMessageToWorker",
                 "parameters": [
-                    { "name": "workerId", "type": "integer" },
-                    { "name": "message", "type": "object" }
-                ]
-            },
-            {
-                "name": "canInspectWorkers",
-                "description": "Tells whether browser supports workers inspection.",
-                "returns": [
-                    { "name": "result", "type": "boolean", "description": "True if browser has workers support." }
+                    { "name": "workerId", "type": "string" },
+                    { "name": "message", "type": "string" }
                 ]
             },
             {
                 "name": "connectToWorker",
                 "parameters": [
-                    { "name": "workerId", "type": "integer" }
+                    { "name": "workerId", "type": "string" }
                 ]
             },
             {
                 "name": "disconnectFromWorker",
                 "parameters": [
-                    { "name": "workerId", "type": "integer" }
-                ],
-                "handlers": ["browser", "renderer"]
+                    { "name": "workerId", "type": "string" }
+                ]
             },
             {
                 "name": "setAutoconnectToWorkers",
@@ -4104,7 +4021,7 @@ protocol = {
             {
                 "name": "workerCreated",
                 "parameters": [
-                    { "name": "workerId", "type": "integer" },
+                    { "name": "workerId", "type": "string" },
                     { "name": "url", "type": "string" },
                     { "name": "inspectorConnected", "type": "boolean" }
                 ]
@@ -4112,18 +4029,180 @@ protocol = {
             {
                 "name": "workerTerminated",
                 "parameters": [
-                    { "name": "workerId", "type": "integer" }
+                    { "name": "workerId", "type": "string" }
                 ]
             },
             {
                 "name": "dispatchMessageFromWorker",
                 "parameters": [
-                    { "name": "workerId", "type": "integer" },
-                    { "name": "message", "type": "object" }
+                    { "name": "workerId", "type": "string" },
+                    { "name": "message", "type": "string" }
+                ]
+            }
+        ]
+    },
+    {
+        "domain": "ServiceWorker",
+        "hidden": true,
+        "types": [
+            {
+                "id": "ServiceWorkerRegistration",
+                "type": "object",
+                "description": "ServiceWorker registration.",
+                "properties": [
+                    { "name": "registrationId", "type": "string" },
+                    { "name": "scopeURL", "type": "string" },
+                    { "name": "isDeleted", "type": "boolean", "optional": true }
                 ]
             },
             {
-                "name": "disconnectedFromWorker",
+                "id": "ServiceWorkerVersionRunningStatus",
+                "type": "string",
+                "enum": ["stopped", "starting", "running", "stopping"]
+            },
+            {
+                "id": "ServiceWorkerVersionStatus",
+                "type": "string",
+                "enum": ["new", "installing", "installed", "activating", "activated", "redundant"]
+            },
+            {
+                "id": "ServiceWorkerVersion",
+                "type": "object",
+                "description": "ServiceWorker version.",
+                "properties": [
+                    { "name": "versionId", "type": "string" },
+                    { "name": "registrationId", "type": "string" },
+                    { "name": "scriptURL", "type": "string" },
+                    { "name": "runningStatus", "$ref": "ServiceWorkerVersionRunningStatus" },
+                    { "name": "status", "$ref": "ServiceWorkerVersionStatus" },
+                    { "name": "scriptLastModified", "type": "number", "optional": true, "description": "The Last-Modified header value of the main script." },
+                    { "name": "scriptResponseTime", "type": "number", "optional": true, "description": "The time at which the response headers of the main script were received from the server.  For cached script it is the last time the cache entry was validated." }
+                ]
+            },
+            {
+                "id": "ServiceWorkerErrorMessage",
+                "type": "object",
+                "description": "ServiceWorker error message.",
+                "properties": [
+                    { "name": "errorMessage", "type": "string" },
+                    { "name": "registrationId", "type": "string" },
+                    { "name": "versionId", "type": "string" },
+                    { "name": "sourceURL", "type": "string" },
+                    { "name": "lineNumber", "type": "integer" },
+                    { "name": "columnNumber", "type": "integer" }
+                ]
+            }
+        ],
+        "commands": [
+            {
+                "name": "enable",
+                "handlers": ["browser"]
+            },
+            {
+                "name": "disable",
+                "handlers": ["browser"]
+            },
+            {
+                "name": "sendMessage",
+                "parameters": [
+                    { "name": "workerId", "type": "string" },
+                    { "name": "message", "type": "string" }
+                ],
+                "handlers": ["browser"]
+            },
+            {
+                "name": "stop",
+                "parameters": [
+                    { "name": "workerId", "type": "string" }
+                ],
+                "handlers": ["browser"]
+            },
+            {
+                "name": "unregister",
+                "parameters": [
+                    { "name": "scopeURL", "type": "string" }
+                ],
+                "handlers": ["browser"]
+            },
+            {
+                "name": "startWorker",
+                "parameters": [
+                    { "name": "scopeURL", "type": "string" }
+                ],
+                "handlers": ["browser"]
+            },
+            {
+                "name": "stopWorker",
+                "parameters": [
+                    { "name": "versionId", "type": "string" }
+                ],
+                "handlers": ["browser"]
+            },
+            {
+                "name": "inspectWorker",
+                "parameters": [
+                    { "name": "versionId", "type": "string" }
+                ],
+                "handlers": ["browser"]
+            },
+            {
+                "name": "setDebugOnStart",
+                "parameters": [
+                    { "name": "debugOnStart", "type": "boolean" }
+                ],
+                "handlers": ["browser"]
+            }
+        ],
+        "events": [
+            {
+                "name": "workerCreated",
+                "parameters": [
+                    { "name": "workerId", "type": "string" },
+                    { "name": "url", "type": "string" }
+                ],
+                "handlers": ["browser"]
+            },
+            {
+                "name": "workerTerminated",
+                "parameters": [
+                    { "name": "workerId", "type": "string" }
+                ],
+                "handlers": ["browser"]
+            },
+            {
+                "name": "dispatchMessage",
+                "parameters": [
+                    { "name": "workerId", "type": "string" },
+                    { "name": "message", "type": "string" }
+                ],
+                "handlers": ["browser"]
+            },
+            {
+                "name": "workerRegistrationUpdated",
+                "parameters": [
+                    { "name": "registrations", "type": "array", "items": { "$ref": "ServiceWorkerRegistration" } }
+                ],
+                "handlers": ["browser"]
+            },
+            {
+                "name": "workerVersionUpdated",
+                "parameters": [
+                    { "name": "versions", "type": "array", "items": { "$ref": "ServiceWorkerVersion" } }
+                ],
+                "handlers": ["browser"]
+            },
+            {
+                "name": "workerErrorReported",
+                "parameters": [
+                    { "name": "errorMessage", "$ref": "ServiceWorkerErrorMessage" }
+                ],
+                "handlers": ["browser"]
+            },
+            {
+                "name": "debugOnStartUpdated",
+                "parameters": [
+                    { "name": "debugOnStart", "type": "boolean" }
+                ],
                 "handlers": ["browser"]
             }
         ]
@@ -4774,6 +4853,7 @@ protocol = {
                 "hidden": true,
                 "properties": [
                     { "name": "delay", "type": "number", "description": "<code>AnimationNode</code>'s delay." },
+                    { "name": "endDelay", "type": "number", "description": "<code>AnimationNode</code>'s end delay." },
                     { "name": "playbackRate", "type": "number", "description": "<code>AnimationNode</code>'s playbackRate." },
                     { "name": "iterationStart", "type": "number", "description": "<code>AnimationNode</code>'s iteration start." },
                     { "name": "iterations", "type": "number", "description": "<code>AnimationNode</code>'s iterations." },
@@ -4844,6 +4924,15 @@ protocol = {
                     { "name": "currentTime", "type": "number", "description": "Current time for the page animation timeline" }
                 ],
                 "description": "Sets the current time of the document timeline."
+            },
+            {
+                "name": "setTiming",
+                "parameters": [
+                    { "name": "playerId", "type": "string", "description": "AnimationPlayer id." },
+                    { "name": "duration", "type": "number", "description": "Duration of the animation." },
+                    { "name": "delay", "type": "number", "description": "Delay of the animation." }
+                ],
+                "description": "Sets the timing of an animation node."
             }
         ],
         "events": [
@@ -4853,7 +4942,14 @@ protocol = {
                     { "name": "player", "$ref": "AnimationPlayer", "description": "AnimationPlayer that was created." },
                     { "name": "resetTimeline", "type": "boolean", "description": "Whether the timeline should be reset." }
                 ],
-                "hidden": true
+                "description": "Event for each animation player that has been created."
+            },
+            {
+                "name": "animationPlayerCanceled",
+                "parameters": [
+                    { "name": "playerId", "type": "string", "description": "Id of the AnimationPlayer that was cancelled." }
+                ],
+                "description": "Event for AnimationPlayers in the frontend that have been cancelled."
             }
         ]
     },
@@ -4867,20 +4963,100 @@ protocol = {
                 "description": "Unique accessibility node identifier."
             },
             {
+                "id": "AXValueType",
+                "type": "string",
+                "enum": [ "boolean", "tristate", "booleanOrUndefined", "idref", "idrefList", "integer", "number", "string", "token", "tokenList", "domRelation", "role" ],
+                "description": "Enum of possible property types."
+            },
+            {
+                "id": "AXPropertySourceType",
+                "type": "string",
+                "enum": [ "attribute", "implicit", "style" ],
+                "description": "Enum of possible property sources."
+            },
+            {
+                "id": "AXPropertySource",
+                "type": "object",
+                "properties": [
+                    { "name": "name", "type": "string", "description": "The name/label of this source." },
+                    { "name": "sourceType", "$ref": "AXPropertySourceType", "description": "What type of source this is." },
+                    { "name": "value", "type": "any", "description": "The value of this property source." },
+                    { "name": "type", "$ref": "AXValueType", "description": "What type the value should be interpreted as." },
+                    { "name": "invalid", "type": "boolean", "description": "Whether the value for this property is invalid.", "optional": true },
+                    { "name": "invalidReason", "type": "string", "description": "Reason for the value being invalid, if it is.", "optional": true }
+                ],
+                "description": "A single source for a computed AX property."
+            },
+            {
+                "id": "AXRelatedNode",
+                "type": "object",
+                "properties": [
+                    { "name": "idref", "type": "string", "description": "The IDRef value provided, if any.", "optional": true },
+                    { "name": "backendNodeId", "$ref": "DOM.BackendNodeId", "description": "The BackendNodeId of the related node." }
+                ]
+            },
+            {
+                "id": "AXProperty",
+                "type": "object",
+                "properties": [
+                    { "name": "name", "type": "string", "description": "The name of this property." },
+                    { "name": "value", "$ref": "AXValue", "description": "The value of this property." }
+                ]
+            },
+            {
+                "id": "AXValue",
+                "type": "object",
+                "properties": [
+                    { "name": "type", "$ref": "AXValueType", "description": "The type of this value." },
+
+                    { "name": "value", "type": "any", "description": "The computed value of this property.", "optional": true },
+                    { "name": "relatedNodeValue", "$ref": "AXRelatedNode", "description": "The related node value, if any.", "optional": true },
+                    { "name": "relatedNodeArrayValue", "type": "array", "items": { "$ref": "AXRelatedNode" }, "description": "Multiple relted nodes, if applicable.", "optional": true },
+                    { "name": "sources", "type": "array", "items": { "$ref": "AXPropertySource" }, "description": "The sources which contributed to the computation of this property.", "optional": true }
+                ],
+                "description": "A single computed AX property."
+            },
+            {
+                "id": "AXGlobalStates",
+                "type": "string",
+                "enum": [ "disabled", "hidden", "hiddenRoot", "invalid" ],
+                "description": "States which apply to every AX node."
+            },
+            {
+                "id": "AXLiveRegionAttributes",
+                "type": "string",
+                "enum": [ "live", "atomic", "relevant", "busy", "root" ],
+                "description": "Attributes which apply to nodes in live regions."
+            },
+            {
+                "id": "AXWidgetAttributes",
+                "type": "string",
+                "enum": [ "autocomplete", "haspopup", "level", "multiselectable", "orientation", "multiline", "readonly", "required", "valuemin", "valuemax", "valuetext" ],
+                "Description": "Attributes which apply to widgets."
+            },
+            {
+                "id": "AXWidgetStates",
+                "type": "string",
+                "enum": [ "checked", "expanded", "pressed", "selected" ],
+                "description": "States which apply to widgets."
+            },
+            {
+                "id": "AXRelationshipAttributes",
+                "type": "string",
+                "enum": [ "activedescendant", "flowto", "controls", "describedby", "labelledby", "owns" ],
+                "description": "Relationships between elements other than parent/child/sibling."
+            },
+            {
                 "id": "AXNode",
                 "type": "object",
                 "properties": [
                     { "name": "nodeId", "$ref": "AXNodeId", "description": "Unique identifier for this node." },
-                    { "name": "role", "type": "string", "description": "This <code>Node</code>'s role, whether explicit or implicit." },
-                    { "name": "name", "type": "string", "description": "The accessible name for this <code>Node</code>.", "optional": true },
-                    { "name": "description", "type": "string", "description": "The accessible description for this <code>Node</code>.", "optional": true },
-                    { "name": "value", "type": "any", "description": "The value for this <code>Node</code>.", "optional": true },
-                    { "name": "help", "type": "string", "description": "Help.", "optional": true },
-                    { "name": "liveRegionProperties", "type": "object", "description": "Live region properties.", "optional": true },
-                    { "name": "globalStates", "type": "object", "description": "Global states.", "optional": true },
-                    { "name": "widgetProperties", "type": "object", "description": "Widget properties.", "optional": true },
-                    { "name": "widgetStates", "type": "object", "description": "Widget states.", "optional": true },
-                    { "name": "relationships", "type": "object", "description": "Related nodes other than parent/child.", "optional": true }
+                    { "name": "role", "$ref": "AXValue", "description": "This <code>Node</code>'s role, whether explicit or implicit." },
+                    { "name": "name", "$ref": "AXValue", "description": "The accessible name for this <code>Node</code>.", "optional": true },
+                    { "name": "description", "$ref": "AXValue", "description": "The accessible description for this <code>Node</code>.", "optional": true },
+                    { "name": "value", "$ref": "AXValue", "description": "The value for this <code>Node</code>.", "optional": true },
+                    { "name": "help", "$ref": "AXValue", "description": "Help.", "optional": true },
+                    { "name": "properties", "type": "array", "items": { "$ref": "AXProperty" }, "description": "All other properties" }
                 ],
                 "description": "A node in the accessibility tree."
             }
@@ -4892,7 +5068,7 @@ protocol = {
                     { "name": "nodeId", "$ref": "DOM.NodeId", "description": "ID of node to get accessibility node for." }
                 ],
                 "returns": [
-                    { "name": "accessibilityNode", "$ref": "AXNode", "description": "The <code>Accessibility.AXNode</code> for this DOM node, if it exists." }
+                    { "name": "accessibilityNode", "$ref": "AXNode", "description": "The <code>Accessibility.AXNode</code> for this DOM node, if it exists.", "optional": true }
                 ],
                 "description": "Fetches the accessibility node for this DOM node, if it exists.",
                 "hidden": true
