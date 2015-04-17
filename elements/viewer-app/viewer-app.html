@@ -1,0 +1,42 @@
+<link rel="import"
+      href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="viewer-app">
+  <template>
+    <content></content>
+  </template>
+  <script>
+    Polymer({
+      is: 'viewer-app',
+      ready: function() {
+        console.log('App ready');
+      },
+      buildViewModel: function(protocolSchema) {
+        var viewmodel = {};
+        var domains = protocolData['domains'];
+        var domainNames = [];
+
+        domains.forEach(function (domain, i) {
+          var name = domain['domain'];
+          var color = getColor(i, domains.length);
+          var commands = domain['commands'];
+          var events = domain['events'];
+
+          var commandNames = commands ? commands.map(getObjName) : null;
+          var eventNames = events ? events.map(getObjName) : null;
+
+          domainNames.push(name);
+
+          viewmodel[name] = {
+            commandNames: commandNames,
+            eventNames: eventNames,
+            color: color,
+            data: domain
+          };
+        });
+
+        viewmodel.domainNames = domainNames;
+      }
+  });
+  </script>
+</dom-module>

@@ -1,0 +1,18 @@
+<link rel="import"
+      href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="viewer-nav">
+  <template>
+    This element has a ready() method.
+    <span id="el">Not ready...</span>
+  </template>
+  <script>
+    Polymer({
+      owner: "Daniel",
+      ready: function() {
+        this.$.el.textContent = this.owner +
+                                " is ready!";
+      }
+    });
+  </script>
+</polymer-element>
