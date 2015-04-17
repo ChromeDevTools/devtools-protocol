@@ -1,0 +1,20 @@
+{
+  "name": "debugger-protocol-viewer",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ChromeDevTools/debugger-protocol-viewer",
+  "authors": [
+    "Eric Guzman <ericguzman@google.com>",
+    "Paul Irish"
+  ],
+  "license": "Apache License, Version 2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.8.0-rc.2"
+  }
+}
