@@ -1,6 +1,6 @@
 {
   "name": "polymer",
-  "version": "0.8.0",
+  "version": "1.0.3",
   "main": [
     "polymer.html"
   ],
@@ -17,7 +17,7 @@
     "url": "https://github.com/Polymer/polymer.git"
   },
   "dependencies": {
-    "webcomponentsjs": "^0.6.0"
+    "webcomponentsjs": "^0.7.2"
   },
   "devDependencies": {
     "web-component-tester": "*"
