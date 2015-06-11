@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "homepage": "https://github.com/ChromeDevTools/debugger-protocol-viewer",
   "authors": [
+    "Konrad Dzwinel <kdzwinel@gmail.com>",
     "Eric Guzman <ericguzman@google.com>",
     "Paul Irish"
   ],
