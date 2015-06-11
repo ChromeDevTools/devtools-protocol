@@ -1,5 +1,3 @@
-
-
 (function () {
   // Application scope.
 
@@ -9,12 +7,12 @@
   function getColor(index, all) {
     var hue = 360 / all * index;
     return "hsl(" + hue + ", 52%, 91%)";
-  };
+  }
 
   document.addEventListener('readystatechange', function (e) {
     if (document.readyState == "complete" && protocol) {
-        initViewModel(protocol);
-        initViewer();
+      initViewModel(protocol);
+      initViewer();
     }
   });
 
@@ -41,7 +39,7 @@
       };
     });
 
-    viewmodel.domainNames = domainNames; 
+    viewmodel.domainNames = domainNames;
   }
 
   function initViewer() {
@@ -60,7 +58,7 @@
   }
 
   function emptyElement(element) {
-    while(element.firstChild) {
+    while (element.firstChild) {
       element.removeChild(element.firstChild);
     }
   }
@@ -88,7 +86,7 @@
   }
 
   // Viewer Constructor
-  
+
   function Viewer() {
     this.defaultMethodMessage = 'Show method';
     this.defaultEventMessage = 'Show event';
@@ -118,15 +116,15 @@
     this.description = document.querySelector('.description');
     this.methodSection = document.querySelector('section.methods');
     this.eventsSection = document.querySelector('section.events');
-    
+
     this.getTemplateHTML();
   };
 
 
-  Viewer.prototype.getTemplateHTML = function() {
+  Viewer.prototype.getTemplateHTML = function () {
     this.methodTemplateHTML = document.getElementById('method-template').innerHTML;
     this.paramTemplateHTML = document.getElementById('param-template').innerHTML;
-  }
+  };
 
   Viewer.prototype.attachListeners_ = function () {
     this.domainSelect.addEventListener('change', this.handleDomainChange_.bind(this), false);
@@ -140,9 +138,8 @@
   };
 
 
-
   //
-  // change domain  
+  // change domain
   //
   Viewer.prototype.handleDomainChange_ = function (e) {
     var index = e.target.selectedIndex;
@@ -151,7 +148,7 @@
     this.changeDomain_(selectedDomain);
   };
 
-  Viewer.prototype.changeDomain_ = function(domainId){
+  Viewer.prototype.changeDomain_ = function (domainId) {
     var model = viewmodel[domainId];
 
     // Empty method and event drop downs.
@@ -177,9 +174,7 @@
     }
 
     this.contentSection.style.backgroundColor = model.color;
-  }
-
-
+  };
 
 
   Viewer.prototype.setHeading = function (heading, opt_description) {
@@ -194,39 +189,38 @@
 
     var methodName = this.getSelectValue_(e.target);
 
-    if (methodName == '_'){
+    if (methodName == '_') {
       return this.changeDomain_(domainId);
     }
-    
-    var commandData = model.data['commands'].filter(function(command) {
+
+    var commandData = model.data['commands'].filter(function (command) {
       return command['name'] == methodName;
     })[0];
 
     this.removeItems_(this.methodSection);
-    this.populateCommands_([commandData], this.methodSection, { exclusive: true });
+    this.populateCommands_([commandData], this.methodSection, {exclusive: true});
   };
-
 
 
   // change event
   Viewer.prototype.handleEventChange_ = function (e) {
     var domainId = this.getSelectValue_(this.domainSelect);
     var model = viewmodel[domainId];
-    
+
     var eventName = this.getSelectValue_(this.eventSelect);
 
-    if (eventName == '_'){
+    if (eventName == '_') {
       return this.changeDomain_(domainId);
     }
-    
-    var eventData = model.data['events'].filter(function(ev) {
+
+    var eventData = model.data['events'].filter(function (ev) {
       return ev['name'] == eventName;
     })[0];
 
     this.removeItems_(this.eventsSection);
-    this.populateCommands_([eventData], this.eventsSection, { exclusive: true });
+    this.populateCommands_([eventData], this.eventsSection, {exclusive: true});
   };
-  
+
   Viewer.prototype.populateCommands_ = function (commandList, elem, opts) {
     var wrapperEl = document.createElement('div');
     var templateHTML = this.methodTemplateHTML;
@@ -239,7 +233,7 @@
     elem.hidden = false;
     this.removeItems_(elem);
 
-    commandList.forEach(function(command) {
+    commandList.forEach(function (command) {
       var commandEl = document.createElement('div');
       var name = command['name'];
       var desc = command['description'];
@@ -250,9 +244,9 @@
       if (desc)
         commandEl.querySelector('.method-description').innerHTML = desc;
 
-      if (params){
+      if (params) {
         this.populateParameters_(params,
-            commandEl.querySelector('.parameter-list'));
+          commandEl.querySelector('.parameter-list'));
       } else {
         commandEl.querySelector('.parameter-list').hidden = true;
       }
@@ -263,10 +257,10 @@
     elem.appendChild(wrapperEl);
   };
 
-  Viewer.prototype.populateParameters_ = function(paramData, parent) {
+  Viewer.prototype.populateParameters_ = function (paramData, parent) {
     var templateHTML = this.paramTemplateHTML;
 
-    paramData.forEach(function(param) {
+    paramData.forEach(function (param) {
       var name = param['name'];
       var desc = param['description'];
       var isOptional = param['optional'];
@@ -278,7 +272,7 @@
       if (isOptional) {
         element.querySelector('.param-name').classList.add('optional');
       }
-      
+
       element.querySelector('.param-def').innerHTML = desc || 'No description';
 
       parent.appendChild(element);
@@ -287,7 +281,7 @@
 
   };
 
-  Viewer.prototype.getSelectValue_ = function(select) {
+  Viewer.prototype.getSelectValue_ = function (select) {
     var index = select.selectedIndex;
     var selectedOption = select.querySelectorAll('option')[index];
 
@@ -299,7 +293,7 @@
     console.log(events);
   };
 
-  Viewer.prototype.removeItems_ = function(element) {
+  Viewer.prototype.removeItems_ = function (element) {
     var children = Array.prototype.slice.call(element.childNodes);
     var childCount = children.length;
 
@@ -311,4 +305,3 @@
   };
 
 }());
-  

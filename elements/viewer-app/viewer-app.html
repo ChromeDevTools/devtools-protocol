@@ -8,10 +8,10 @@
   <script>
     Polymer({
       is: 'viewer-app',
-      ready: function() {
+      ready: function () {
         console.log('App ready');
       },
-      buildViewModel: function(protocolSchema) {
+      buildViewModel: function (protocolSchema) {
         var viewmodel = {};
         var domains = protocolData['domains'];
         var domainNames = [];
@@ -37,6 +37,6 @@
 
         viewmodel.domainNames = domainNames;
       }
-  });
+    });
   </script>
 </dom-module>
