@@ -1,18 +1,58 @@
 <link rel="import"
       href="../../bower_components/polymer/polymer.html">
 
-<polymer-element name="viewer-nav">
+<dom-module is="viewer-nav">
   <template>
-    This element has a ready() method.
-    <span id="el">Not ready...</span>
+    <section class="filter">
+    <span class="select-field protocol">
+        <label for="select-domain">Protocol Domain</label>
+
+        <select id="select-domain" on-change="selectDomain">
+          <option>Select domain</option>
+          <template is="dom-repeat" items="{{protocol.domainNames}}" as="domainName">
+            <option value="{{index}}">{{domainName}}</option>
+          </template>
+        </select>
+    </span>
+
+    <span class="select-field method">
+      <label for="select-method">Method</label>
+      <select id="select-method">
+        <option>Show all methods</option>
+        <template is="dom-repeat" items="{{selectedDomain.methodNames}}" as="methodName">
+          <option value="{{index}}">{{methodName}}</option>
+        </template>
+      </select>
+    </span>
+
+    <span class="select-field events">
+      <label for="select-events">Events</label>
+      <select id="select-events">
+        <option>Show all events</option>
+        <template is="dom-repeat" items="{{selectedDomain.eventNames}}" as="eventName">
+          <option value="{{index}}">{{eventName}}</option>
+        </template>
+      </select>
+    </span>
+    </section>
   </template>
   <script>
     Polymer({
-      owner: "Daniel",
+      is: 'viewer-nav',
+      properties: {
+        protocol: Object,
+        selectedDomain: {
+          type: Object,
+          notify: true
+        }
+      },
       ready: function () {
-        this.$.el.textContent = this.owner +
-        " is ready!";
+        console.log('viewer-nav ready');
+      },
+      selectDomain: function (event) {
+        var domainName = this.protocol.domainNames[event.target.value];
+        this.selectedDomain = this.protocol[domainName];
       }
     });
   </script>
-</polymer-element>
+</dom-module>

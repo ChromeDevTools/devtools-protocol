@@ -1,42 +1,116 @@
 <link rel="import"
       href="../../bower_components/polymer/polymer.html">
+<link rel="import"
+      href="../viewer-nav/viewer-nav.html">
+<link rel="import"
+      href="../viewer-param/viewer-param.html">
 
 <dom-module id="viewer-app">
   <template>
-    <content></content>
+    <div class="content">
+      <viewer-nav protocol="{{protocol}}" selected-domain="{{domain}}"></viewer-nav>
+
+      <h2 class="heading" hidden="{{!domain}}">{{domain.name}}</h2>
+
+      <p class="description" hidden="{{!domain}}">{{domain.description}}</p>
+
+      <p class="description" hidden="{{domain}}">Please select a domain above. Optionally, you can then filter by
+        method or event.</p>
+
+      <section class="methods" hidden="{{!domain.methods}}">
+        <h3>Methods</h3>
+
+        <div>
+          <template is="dom-repeat" items="{{domain.methods}}" as="method">
+            <div>
+              <h4 class="method-name">{{method.name}}</h4>
+
+              <p class="method-description">{{method.description}}</p>
+
+              <template is="dom-repeat" items="{{method.parameters}}" as="param">
+                <viewer-param
+                  name="{{param.name}}"
+                  description="{{param.description}}"
+                  optional="{{param.optional}}"
+                  type="{{param.type}}"></viewer-param>
+              </template>
+            </div>
+          </template>
+        </div>
+      </section>
+
+      <section class="events" hidden="{{!domain.events}}">
+        <h3>Events</h3>
+
+        <div>
+          <template is="dom-repeat" items="{{domain.events}}" as="event">
+            <div>
+              <h4 class="method-name">{{event.name}}</h4>
+
+              <p class="method-description">{{event.description}}</p>
+
+              <dl class="parameter-list">
+                <template is="dom-repeat" items="{{event.parameters}}" as="param">
+                  <viewer-param
+                    name="{{param.name}}"
+                    description="{{param.description}}"
+                    optional="{{param.optional}}"
+                    type="{{param.type}}"></viewer-param>
+                </template>
+              </dl>
+            </div>
+          </template>
+        </div>
+      </section>
+    </div>
   </template>
   <script>
-    Polymer({
-      is: 'viewer-app',
-      ready: function () {
-        console.log('App ready');
-      },
-      buildViewModel: function (protocolSchema) {
-        var viewmodel = {};
-        var domains = protocolData['domains'];
-        var domainNames = [];
-
-        domains.forEach(function (domain, i) {
-          var name = domain['domain'];
-          var color = getColor(i, domains.length);
-          var commands = domain['commands'];
-          var events = domain['events'];
-
-          var commandNames = commands ? commands.map(getObjName) : null;
-          var eventNames = events ? events.map(getObjName) : null;
-
-          domainNames.push(name);
-
-          viewmodel[name] = {
-            commandNames: commandNames,
-            eventNames: eventNames,
-            color: color,
-            data: domain
-          };
-        });
-
-        viewmodel.domainNames = domainNames;
+    (function () {
+      function getColor(index, all) {
+        var hue = 360 / all * index;
+        return "hsl(" + hue + ", 52%, 91%)";
       }
-    });
+
+      function getObjName(o) {
+        return o['name'];
+      }
+
+      Polymer({
+        is: 'viewer-app',
+        ready: function () {
+          console.log('App ready');
+          this.domain = null;
+        },
+        setProtocolSchema: function (protocolSchema) {
+          this.protocol = {
+            domainNames: []
+          };
+
+          var domains = protocolSchema['domains'];
+
+          domains.forEach(function (domain, i) {
+            var name = domain['domain'];
+            var color = getColor(i, domains.length);
+            var commands = domain['commands'];
+            var events = domain['events'];
+
+            var commandNames = commands ? commands.map(getObjName) : null;
+            var eventNames = events ? events.map(getObjName) : null;
+
+            this.protocol.domainNames.push(name);
+            this.protocol[name] = {
+              name: name,
+              description: domain.description,
+              methods: domain.commands,
+              events: domain.events,
+              types: domain.types,
+              methodNames: commandNames,
+              eventNames: eventNames,
+              color: color
+            };
+          }.bind(this));
+        }
+      });
+    })();
   </script>
 </dom-module>
