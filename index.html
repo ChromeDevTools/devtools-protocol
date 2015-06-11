@@ -7,7 +7,6 @@
   <link href="./assets/protocol.css" rel="stylesheet">
   <script src="./bower_components/webcomponentsjs/webcomponents.min.js"></script>
   <link rel="import" href="./elements/viewer-app/viewer-app.html">
-  <script src="./assets/protocol.js"></script>
 </head>
 <body>
 
@@ -20,6 +19,8 @@
 </header>
 
 <viewer-app></viewer-app>
+
+<script src="./assets/protocol.js"></script>
 <script>
   var viewerApp = document.querySelector('viewer-app');
   viewerApp.setProtocolSchema(protocol);

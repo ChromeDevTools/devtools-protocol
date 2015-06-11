@@ -5,7 +5,7 @@
   <template>
     <div>
       <dt class$="{{getCSSClass(optional)}}">{{name}}</dt>
-      <dd class="param-def">{{getDescription(description)}}</dd>
+      <dd class="param-def">{{description}}<span hidden="{{description}}">No description</span></dd>
     </div>
   </template>
   <script>
@@ -13,10 +13,7 @@
       is: 'viewer-param',
       properties: {
         name: String,
-        description: {
-          type: String,
-          value: "no description"
-        },
+        description: String,
         optional: Boolean,
         type: String
       },
@@ -31,10 +28,6 @@
         }
 
         return cssClass;
-      },
-      getDescription: function(description) {
-        console.log(description, description ? description : "no description");
-        return description ? description : "no description";
       }
     });
   </script>

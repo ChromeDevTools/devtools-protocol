@@ -8,7 +8,7 @@
         <label for="select-domain">Protocol Domain</label>
 
         <select id="select-domain" on-change="selectDomain">
-          <option>Select domain</option>
+          <option value="-1">Select domain</option>
           <template is="dom-repeat" items="{{protocol.domainNames}}" as="domainName">
             <option value="{{index}}">{{domainName}}</option>
           </template>
@@ -17,8 +17,8 @@
 
     <span class="select-field method">
       <label for="select-method">Method</label>
-      <select id="select-method">
-        <option>Show all methods</option>
+      <select id="select-method" on-change="selectMethod">
+        <option value="-1">Show all methods</option>
         <template is="dom-repeat" items="{{selectedDomain.methodNames}}" as="methodName">
           <option value="{{index}}">{{methodName}}</option>
         </template>
@@ -27,8 +27,8 @@
 
     <span class="select-field events">
       <label for="select-events">Events</label>
-      <select id="select-events">
-        <option>Show all events</option>
+      <select id="select-events" on-change="selectEvent">
+        <option value="-1">Show all events</option>
         <template is="dom-repeat" items="{{selectedDomain.eventNames}}" as="eventName">
           <option value="{{index}}">{{eventName}}</option>
         </template>
@@ -40,18 +40,34 @@
     Polymer({
       is: 'viewer-nav',
       properties: {
-        protocol: Object,
-        selectedDomain: {
-          type: Object,
-          notify: true
-        }
+        protocol: Object
       },
       ready: function () {
         console.log('viewer-nav ready');
       },
       selectDomain: function (event) {
+        this.resetEvent();
+        this.resetMethod();
+
         var domainName = this.protocol.domainNames[event.target.value];
         this.selectedDomain = this.protocol[domainName];
+        this.fire('domain-changed', this.selectedDomain);
+      },
+      resetMethod: function () {
+        this.$['select-method'].value = -1;
+      },
+      resetEvent: function () {
+        this.$['select-events'].value = -1;
+      },
+      selectMethod: function (event) {
+        this.resetEvent();
+        var selectedMethod = this.selectedDomain.methods[event.target.value];
+        this.fire('method-changed', selectedMethod);
+      },
+      selectEvent: function (event) {
+        this.resetMethod();
+        var selectedEvent = this.selectedDomain.events[event.target.value];
+        this.fire('event-changed', selectedEvent);
       }
     });
   </script>
