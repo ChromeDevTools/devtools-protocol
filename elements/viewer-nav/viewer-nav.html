@@ -48,7 +48,9 @@
 
         var domainName = this.protocol.domainNames[event.target.value];
         this.selectedDomain = this.protocol[domainName];
-        this.fire('domain-changed', this.selectedDomain);
+        this.fire('domain-changed', {
+          domain: this.selectedDomain
+        });
       },
       resetMethod: function () {
         this.$['select-method'].value = -1;
@@ -58,13 +60,19 @@
       },
       selectMethod: function (event) {
         this.resetEvent();
+
         var selectedMethod = this.selectedDomain.methods[event.target.value];
-        this.fire('method-changed', selectedMethod);
+        this.fire('method-changed', {
+          method: selectedMethod
+        });
       },
       selectEvent: function (event) {
         this.resetMethod();
+
         var selectedEvent = this.selectedDomain.events[event.target.value];
-        this.fire('event-changed', selectedEvent);
+        this.fire('event-changed', {
+          event: selectedEvent
+        });
       }
     });
   </script>

@@ -69,18 +69,22 @@
           this.visibleEvents = null;
           this.visibleMethods = null;
         },
-        setDomain: function (event, selectedDomain) {
-          this.domain = selectedDomain;
+        setDomain: function (event, details) {
+          this.domain = details.domain;
           this.visibleEvents = this.domain.events;
           this.visibleMethods = this.domain.methods;
         },
-        filterMethods: function (event, selectedMethod) {
+        filterMethods: function (event, details) {
+          var selectedMethod = details.method;
+
           this.visibleEvents = null;
           this.visibleMethods = (this.domain.methods).filter(function (method) {
             return !selectedMethod || method.name === selectedMethod.name;
           });
         },
-        filterEvents: function (event, selectedEvent) {
+        filterEvents: function (event, details) {
+          var selectedEvent = details.event;
+
           this.visibleMethods = null;
           this.visibleEvents = (this.domain.events).filter(function (event) {
             return !selectedEvent || event.name === selectedEvent.name;
