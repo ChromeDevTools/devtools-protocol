@@ -4,6 +4,8 @@
       href="../viewer-nav/viewer-nav.html">
 <link rel="import"
       href="../viewer-method/viewer-method.html">
+<link rel="import"
+      href="../html-echo/html-echo.html">
 
 <dom-module id="viewer-app">
   <template>
@@ -16,7 +18,7 @@
 
       <h2 class="heading" hidden="{{!domain}}">{{domain.name}}</h2>
 
-      <p class="description" hidden="{{!domain}}">{{domain.description}}</p>
+      <p class="description" hidden="{{!domain}}"><html-echo html="{{domain.description}}"></html-echo></p>
 
       <p class="description" hidden="{{domain}}">Please select a domain above. Optionally, you can then filter by
         method or event.</p>

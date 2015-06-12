@@ -2,13 +2,15 @@
       href="../../bower_components/polymer/polymer.html">
 <link rel="import"
       href="../viewer-param/viewer-param.html">
+<link rel="import"
+      href="../html-echo/html-echo.html">
 
 <dom-module id="viewer-method">
   <template>
     <div>
       <h4 class="method-name">{{name}}</h4>
 
-      <p class="method-description">{{description}}</p>
+      <p class="method-description"><html-echo html="{{description}}"></html-echo></p>
 
       <dl class="parameter-list" hidden="{{!parameters}}">
         <template is="dom-repeat" items="{{parameters}}" as="param">

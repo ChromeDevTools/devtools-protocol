@@ -1,0 +1,17 @@
+<dom-module id="html-echo">
+  <script>
+    Polymer({
+      is: 'html-echo',
+      properties: {
+        html: {
+          type: String,
+          observer: 'htmlChanged'
+        }
+      },
+      htmlChanged: function() {
+        // WARNING: potential XSS vulnerability if `html` comes from an untrusted source
+        this.innerHTML = this.html;
+      }
+    });
+  </script>
+</dom-module>
