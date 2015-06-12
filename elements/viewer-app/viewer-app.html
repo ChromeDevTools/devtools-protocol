@@ -71,8 +71,8 @@
         },
         setDomain: function (event, details) {
           this.domain = details.domain;
-          this.visibleEvents = this.domain.events;
-          this.visibleMethods = this.domain.methods;
+          this.visibleEvents = this.domain ? this.domain.events : null;
+          this.visibleMethods = this.domain ? this.domain.methods : null;
         },
         filterMethods: function (event, details) {
           var selectedMethod = details.method;
