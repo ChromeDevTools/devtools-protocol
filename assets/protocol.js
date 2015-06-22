@@ -7,7 +7,8 @@ protocol = {
         "commands": [
             {
                 "name": "enable",
-                "description": "Enables inspector domain notifications."
+                "description": "Enables inspector domain notifications.",
+                "handlers": ["browser", "renderer"]
             },
             {
                 "name": "disable",
@@ -107,23 +108,6 @@ protocol = {
                         },
                         "description": "Information about frame resources."
                     }
-                ],
-                "hidden": true
-            },
-            {
-                "id": "Cookie",
-                "type": "object",
-                "description": "Cookie object",
-                "properties": [
-                    { "name": "name", "type": "string", "description": "Cookie name." },
-                    { "name": "value", "type": "string", "description": "Cookie value." },
-                    { "name": "domain", "type": "string", "description": "Cookie domain." },
-                    { "name": "path", "type": "string", "description": "Cookie path." },
-                    { "name": "expires", "type": "number", "description": "Cookie expires." },
-                    { "name": "size", "type": "integer", "description": "Cookie size." },
-                    { "name": "httpOnly", "type": "boolean", "description": "True if cookie is http-only." },
-                    { "name": "secure", "type": "boolean", "description": "True if cookie is secure." },
-                    { "name": "session", "type": "boolean", "description": "True in case of session cookie." }
                 ],
                 "hidden": true
             },
@@ -231,10 +215,13 @@ protocol = {
             {
                 "name": "getCookies",
                 "returns": [
-                    { "name": "cookies", "type": "array", "items": { "$ref": "Cookie" }, "description": "Array of cookie objects." }
+                    { "name": "cookies", "type": "array", "items": { "$ref": "Network.Cookie" }, "description": "Array of cookie objects." }
                 ],
                 "description": "Returns all browser cookies. Depending on the backend support, will return detailed cookie information in the <code>cookies</code> field.",
-                "hidden": true
+                "handlers": ["browser"],
+                "async": true,
+                "hidden": true,
+                "redirect": "Network"
             },
             {
                 "name": "deleteCookie",
@@ -243,7 +230,10 @@ protocol = {
                     { "name": "url", "type": "string", "description": "URL to match cooke domain and path." }
                 ],
                 "description": "Deletes browser cookie with given name, domain and path.",
-                "hidden": true
+                "handlers": ["browser"],
+                "async": true,
+                "hidden": true,
+                "redirect": "Network"
             },
             {
                 "name": "getResourceTree",
@@ -752,7 +742,9 @@ protocol = {
                 "hidden": true,
                 "properties": [
                     { "name": "header", "type": "string"},
-                    { "name": "hasBody", "type": "boolean"}
+                    { "name": "hasBody", "type": "boolean"},
+                    {"name": "formatterObjectId", "$ref": "RemoteObjectId"},
+                    {"name": "configObjectId", "$ref": "RemoteObjectId", "optional": true}
                 ]
             },
             {
@@ -891,7 +883,8 @@ protocol = {
                 ],
                 "returns": [
                     { "name": "result", "type": "array", "items": { "$ref": "PropertyDescriptor" }, "description": "Object properties." },
-                    { "name": "internalProperties", "optional": true, "type": "array", "items": { "$ref": "InternalPropertyDescriptor" }, "description": "Internal object properties (only of the element itself).", "hidden": true }
+                    { "name": "internalProperties", "optional": true, "type": "array", "items": { "$ref": "InternalPropertyDescriptor" }, "description": "Internal object properties (only of the element itself).", "hidden": true },
+                    { "name": "exceptionDetails", "$ref": "Debugger.ExceptionDetails", "optional": true, "hidden": true, "description": "Exception details."}
                 ],
                 "description": "Returns properties of a given object. Object group of the result is inherited from the target object."
             },
@@ -977,8 +970,8 @@ protocol = {
                 "type": "object",
                 "description": "Console message.",
                 "properties": [
-                    { "name": "source", "type": "string", "enum": ["xml", "javascript", "network", "console-api", "storage", "appcache", "rendering", "css", "security", "other", "deprecation"], "description": "Message source." },
-                    { "name": "level", "type": "string", "enum": ["log", "warning", "error", "debug", "info"], "description": "Message severity." },
+                    { "name": "source", "type": "string", "enum": ["xml", "javascript", "network", "console-api", "storage", "appcache", "rendering", "security", "other", "deprecation"], "description": "Message source." },
+                    { "name": "level", "type": "string", "enum": ["log", "warning", "error", "debug", "info", "revokedError"], "description": "Message severity." },
                     { "name": "text", "type": "string", "description": "Message text." },
                     { "name": "type", "type": "string", "optional": true, "enum": ["log", "dir", "dirxml", "table", "trace", "clear", "startGroup", "startGroupCollapsed", "endGroup", "assert", "profile", "profileEnd"], "description": "Console message type." },
                     { "name": "scriptId", "type": "string", "optional": true, "description": "Script ID of the message origin." },
@@ -991,7 +984,9 @@ protocol = {
                     { "name": "asyncStackTrace", "$ref": "AsyncStackTrace", "optional": true, "description": "Asynchronous JavaScript stack trace that preceded this message, if available.", "hidden": true },
                     { "name": "networkRequestId", "$ref": "Network.RequestId", "optional": true, "description": "Identifier of the network request associated with this message." },
                     { "name": "timestamp", "$ref": "Timestamp", "description": "Timestamp, when this message was fired.", "hidden": true },
-                    { "name": "executionContextId", "$ref": "Runtime.ExecutionContextId", "optional": true, "description": "Identifier of the context where this message was created", "hidden": true }
+                    { "name": "executionContextId", "$ref": "Runtime.ExecutionContextId", "optional": true, "description": "Identifier of the context where this message was created", "hidden": true },
+                    { "name": "messageId", "type": "integer", "hidden": true, "optional": true, "description": "Message id." },
+                    { "name": "relatedMessageId", "type": "integer", "hidden": true, "optional": true, "description": "Related message id." }
                 ]
             },
             {
@@ -1099,9 +1094,7 @@ protocol = {
                     { "name": "connectEnd", "type": "number", "description": "Connected to the remote host." },
                     { "name": "sslStart", "type": "number", "description": "Started SSL handshake." },
                     { "name": "sslEnd", "type": "number", "description": "Finished SSL handshake." },
-                    { "name": "serviceWorkerFetchStart", "type": "number", "description": "Started fetching via ServiceWorker.", "hidden": true },
-                    { "name": "serviceWorkerFetchReady", "type": "number", "description": "Prepared a ServiceWorker.", "hidden": true },
-                    { "name": "serviceWorkerFetchEnd", "type": "number", "description": "Finished fetching via ServiceWorker.", "hidden": true },
+                    { "name": "workerStart", "type": "number", "description": "Started running ServiceWorker.", "hidden": true },
                     { "name": "sendStart", "type": "number", "description": "Started sending request." },
                     { "name": "sendEnd", "type": "number", "description": "Finished sending request." },
                     { "name": "receiveHeadersEnd", "type": "number", "description": "Finished receiving response headers." }
@@ -1198,6 +1191,23 @@ protocol = {
                     { "name": "lineNumber", "type": "number", "optional": true, "description": "Initiator line number, set for Parser type only." },
                     { "name": "asyncStackTrace", "$ref": "Console.AsyncStackTrace", "optional": true, "description": "Initiator asynchronous JavaScript stack trace, if available.", "hidden": true }
                 ]
+            },
+            {
+                "id": "Cookie",
+                "type": "object",
+                "description": "Cookie object",
+                "properties": [
+                    { "name": "name", "type": "string", "description": "Cookie name." },
+                    { "name": "value", "type": "string", "description": "Cookie value." },
+                    { "name": "domain", "type": "string", "description": "Cookie domain." },
+                    { "name": "path", "type": "string", "description": "Cookie path." },
+                    { "name": "expires", "type": "number", "description": "Cookie expires." },
+                    { "name": "size", "type": "integer", "description": "Cookie size." },
+                    { "name": "httpOnly", "type": "boolean", "description": "True if cookie is http-only." },
+                    { "name": "secure", "type": "boolean", "description": "True if cookie is secure." },
+                    { "name": "session", "type": "boolean", "description": "True in case of session cookie." }
+                ],
+                "hidden": true
             }
         ],
         "commands": [
@@ -1274,6 +1284,27 @@ protocol = {
                 "name": "clearBrowserCookies",
                 "description": "Clears browser cookies.",
                 "handlers": ["browser"]
+            },
+            {
+                "name": "getCookies",
+                "returns": [
+                    { "name": "cookies", "type": "array", "items": { "$ref": "Cookie" }, "description": "Array of cookie objects." }
+                ],
+                "description": "Returns all browser cookies. Depending on the backend support, will return detailed cookie information in the <code>cookies</code> field.",
+                "handlers": ["browser"],
+                "async": true,
+                "hidden": true
+            },
+            {
+                "name": "deleteCookie",
+                "parameters": [
+                    { "name": "cookieName", "type": "string", "description": "Name of the cookie to remove." },
+                    { "name": "url", "type": "string", "description": "URL to match cooke domain and path." }
+                ],
+                "description": "Deletes browser cookie with given name, domain and path.",
+                "handlers": ["browser"],
+                "async": true,
+                "hidden": true
             },
             {
                 "name": "canEmulateNetworkConditions",
@@ -1681,16 +1712,31 @@ protocol = {
         ]
     },
     {
-        "domain": "ServiceWorkerCache",
+        "domain": "CacheStorage",
         "hidden": true,
         "types": [
+            {
+                "id": "CacheId",
+                "type": "string",
+                "description": "Unique identifier of the Cache object."
+            },
             {
                 "id": "DataEntry",
                 "type": "object",
                 "description": "Data entry.",
                 "properties": [
-                    { "name": "request", "type": "string", "description": "JSON-stringified request object." },
-                    { "name": "response", "type": "string", "description": "JSON-stringified response object." }
+                    { "name": "request", "type": "string", "description": "Request url spec." },
+                    { "name": "response", "type": "string", "description": "Response stataus text." }
+                ]
+            },
+            {
+                "id": "Cache",
+                "type": "object",
+                "description": "Cache identifier.",
+                "properties": [
+                    { "name": "cacheId", "$ref": "CacheId", "description": "An opaque unique id of the cache." },
+                    { "name": "securityOrigin", "type": "string", "description": "Security origin of the cache." },
+                    { "name": "cacheName", "type": "string", "description": "The name of the cache." }
                 ]
             }
         ],
@@ -1698,8 +1744,11 @@ protocol = {
             {
                 "name": "requestCacheNames",
                 "async": true,
+                "parameters": [
+                    { "name": "securityOrigin", "type": "string", "description": "Security origin." }
+                ],
                 "returns": [
-                    { "name": "cacheNames", "type": "array", "items": { "type": "string" }, "description": "Cache names for origin." }
+                    { "name": "caches", "type": "array", "items": { "$ref": "Cache" }, "description": "Caches for the security origin." }
                 ],
                 "description": "Requests cache names."
             },
@@ -1707,7 +1756,7 @@ protocol = {
                 "name": "requestEntries",
                 "async": true,
                 "parameters": [
-                    { "name": "cacheName", "type": "string", "description": "Cache name." },
+                    { "name": "cacheId", "$ref": "CacheId", "description": "ID of cache to get entries from." },
                     { "name": "skipCount", "type": "integer", "description": "Number of records to skip." },
                     { "name": "pageSize", "type": "integer", "description": "Number of records to fetch." }
                 ],
@@ -1721,9 +1770,18 @@ protocol = {
                 "name": "deleteCache",
                 "async": true,
                 "parameters": [
-                    { "name": "cacheName", "type": "string", "description": "Cache name." }
+                    { "name": "cacheId", "$ref": "CacheId", "description": "Id of cache for deletion." }
                 ],
                 "description": "Deletes a cache."
+            },
+            {
+                "name": "deleteEntry",
+                "async": true,
+                "parameters": [
+                    { "name": "cacheId", "$ref": "CacheId", "description": "Id of cache where the entry will be deleted." },
+                    { "name": "request", "type": "string", "description": "URL spec of the request." }
+                ],
+                "description": "Deletes a cache entry."
             }
         ]
     },
@@ -2094,20 +2152,6 @@ protocol = {
                 "description": "DOM interaction is implemented in terms of mirror objects that represent the actual DOM nodes. DOMNode is a base node mirror type."
             },
             {
-                "id": "EventListener",
-                "type": "object",
-                "hidden": true,
-                "properties": [
-                    { "name": "type", "type": "string", "description": "<code>EventListener</code>'s type." },
-                    { "name": "useCapture", "type": "boolean", "description": "<code>EventListener</code>'s useCapture." },
-                    { "name": "isAttribute", "type": "boolean", "description": "<code>EventListener</code>'s isAttribute." },
-                    { "name": "nodeId", "$ref": "NodeId", "description": "Target <code>DOMNode</code> id." },
-                    { "name": "location", "$ref": "Debugger.Location", "description": "Handler code location." },
-                    { "name": "handler", "$ref": "Runtime.RemoteObject", "optional": true, "description": "Event handler function value." }
-                ],
-                "description": "DOM interaction is implemented in terms of mirror objects that represent the actual DOM nodes. DOMNode is a base node mirror type."
-            },
-            {
                 "id": "RGBA",
                 "type": "object",
                 "properties": [
@@ -2280,18 +2324,6 @@ protocol = {
                     { "name": "name", "type": "string", "description": "Name of the attribute to remove." }
                 ],
                 "description": "Removes attribute with given name from an element with given id."
-            },
-            {
-                "name": "getEventListenersForNode",
-                "parameters": [
-                    { "name": "nodeId", "$ref": "NodeId", "description": "Id of the node to get listeners for." },
-                    { "name": "objectGroup", "type": "string", "optional": true, "description": "Symbolic group name for handler value. Handler value is not returned without this parameter specified." }
-                ],
-                "returns": [
-                    { "name": "listeners", "type": "array", "items": { "$ref": "EventListener" }, "description": "Array of relevant listeners." }
-                ],
-                "description": "Returns event listeners relevant to the node.",
-                "hidden": true
             },
             {
                 "name": "getOuterHTML",
@@ -3245,10 +3277,10 @@ protocol = {
             {
                 "id": "PromiseDetails",
                 "type": "object",
-                "description": "Information about the promise.",
+                "description": "Information about the promise. All fields but id are optional and if present they reflect the new state of the property on the promise with given id.",
                 "properties": [
                     { "name": "id", "type": "integer", "description": "Unique id of the promise." },
-                    { "name": "status", "type": "string", "enum": ["pending", "resolved", "rejected"], "description": "Status of the promise." },
+                    { "name": "status", "type": "string", "optional": true, "enum": ["pending", "resolved", "rejected"], "description": "Status of the promise." },
                     { "name": "parentId", "type": "integer", "optional": true, "description": "Id of the parent promise." },
                     { "name": "callFrame", "$ref": "Console.CallFrame", "optional": true, "description": "Top call frame on promise creation."},
                     { "name": "creationTime", "type": "number", "optional": true, "description": "Creation time of the promise." },
@@ -3585,14 +3617,6 @@ protocol = {
                 "description": "Disables promise tracking."
             },
             {
-                "name": "getPromises",
-                "returns": [
-                    { "name": "promises", "type": "array", "items": { "$ref": "PromiseDetails" }, "description": "Information about stored promises." }
-                ],
-                "hidden": true,
-                "description": "Returns detailed information about all <code>Promise</code>s that were created or updated after the <code>enablePromiseTracker</code> command, and have not been garbage collected yet."
-            },
-            {
                 "name": "getPromiseById",
                 "parameters": [
                     { "name": "promiseId", "type": "integer" },
@@ -3722,6 +3746,18 @@ protocol = {
                 "type": "string",
                 "enum": ["subtree-modified", "attribute-modified", "node-removed"],
                 "description": "DOM breakpoint type."
+            },
+            {
+                "id": "EventListener",
+                "type": "object",
+                "description": "Object event listener.",
+                "properties": [
+                    { "name": "type", "type": "string", "description": "<code>EventListener</code>'s type." },
+                    { "name": "useCapture", "type": "boolean", "description": "<code>EventListener</code>'s useCapture." },
+                    { "name": "location", "$ref": "Debugger.Location", "description": "Handler code location." },
+                    { "name": "handler", "$ref": "Runtime.RemoteObject", "optional": true, "description": "Event handler function value." }
+                ],
+                "hidden": true
             }
         ],
         "commands": [
@@ -3786,6 +3822,17 @@ protocol = {
                     { "name": "url", "type": "string", "description": "Resource URL substring." }
                 ],
                 "description": "Removes breakpoint from XMLHttpRequest."
+            },
+            {
+                "name": "getEventListeners",
+                "hidden": true,
+                "parameters": [
+                    { "name": "objectId", "$ref": "Runtime.RemoteObjectId", "description": "Identifier of the object to return listeners for." }
+                ],
+                "returns": [
+                    { "name": "listeners", "type": "array", "items": { "$ref": "EventListener" }, "description": "Array of relevant listeners." }
+                ],
+                "description": "Returns event listeners of the given object."
             }
         ]
     },
@@ -4125,6 +4172,13 @@ protocol = {
                 "handlers": ["browser"]
             },
             {
+                "name": "updateRegistration",
+                "parameters": [
+                    { "name": "scopeURL", "type": "string" }
+                ],
+                "handlers": ["browser"]
+            },
+            {
                 "name": "startWorker",
                 "parameters": [
                     { "name": "scopeURL", "type": "string" }
@@ -4146,9 +4200,25 @@ protocol = {
                 "handlers": ["browser"]
             },
             {
+                "name": "skipWaiting",
+                "parameters": [
+                    { "name": "versionId", "type": "string" }
+                ],
+                "handlers": ["browser"]
+            },
+            {
                 "name": "setDebugOnStart",
                 "parameters": [
                     { "name": "debugOnStart", "type": "boolean" }
+                ],
+                "handlers": ["browser"]
+            },
+            {
+                "name": "deliverPushMessage",
+                "parameters": [
+                    { "name": "origin", "type": "string" },
+                    { "name": "registrationId", "type": "string" },
+                    { "name": "data", "type": "string" }
                 ],
                 "handlers": ["browser"]
             }
@@ -4208,198 +4278,6 @@ protocol = {
         ]
     },
     {
-        "domain": "Canvas",
-        "hidden": true,
-        "types": [
-            {
-                "id": "ResourceId",
-                "type": "string",
-                "description": "Unique resource identifier."
-            },
-            {
-                "id": "ResourceStateDescriptor",
-                "type": "object",
-                "description": "Resource state descriptor.",
-                "properties": [
-                    { "name": "name", "type": "string", "description": "State name." },
-                    { "name": "enumValueForName", "type": "string", "optional": true, "description": "String representation of the enum value, if <code>name</code> stands for an enum." },
-                    { "name": "value", "$ref": "CallArgument", "optional": true, "description": "The value associated with the particular state." },
-                    { "name": "values", "type": "array", "items": { "$ref": "ResourceStateDescriptor" }, "optional": true, "description": "Array of values associated with the particular state. Either <code>value</code> or <code>values</code> will be specified." },
-                    { "name": "isArray", "type": "boolean", "optional": true, "description": "True iff the given <code>values</code> items stand for an array rather than a list of grouped states." }
-                ]
-            },
-            {
-                "id": "ResourceState",
-                "type": "object",
-                "description": "Resource state.",
-                "properties": [
-                    { "name": "id", "$ref": "ResourceId" },
-                    { "name": "traceLogId", "$ref": "TraceLogId" },
-                    { "name": "descriptors", "type": "array", "items": { "$ref": "ResourceStateDescriptor" }, "optional": true, "description": "Describes current <code>Resource</code> state." },
-                    { "name": "imageURL", "type": "string", "optional": true, "description": "Screenshot image data URL." }
-                ]
-            },
-            {
-                "id": "CallArgument",
-                "type": "object",
-                "properties": [
-                    { "name": "description", "type": "string", "description": "String representation of the object." },
-                    { "name": "enumName", "type": "string", "optional": true, "description": "Enum name, if any, that stands for the value (for example, a WebGL enum name)." },
-                    { "name": "resourceId", "$ref": "ResourceId", "optional": true, "description": "Resource identifier. Specified for <code>Resource</code> objects only." },
-                    { "name": "type", "type": "string", "optional": true, "enum": ["object", "function", "undefined", "string", "number", "boolean"], "description": "Object type. Specified for non <code>Resource</code> objects only." },
-                    { "name": "subtype", "type": "string", "optional": true, "enum": ["array", "null", "node", "regexp", "date", "map", "set", "iterator", "generator", "error"], "description": "Object subtype hint. Specified for <code>object</code> type values only." },
-                    { "name": "remoteObject", "$ref": "Runtime.RemoteObject", "optional": true, "description": "The <code>RemoteObject</code>, if requested." }
-                ]
-            },
-            {
-                "id": "Call",
-                "type": "object",
-                "properties": [
-                    { "name": "contextId", "$ref": "ResourceId" },
-                    { "name": "functionName", "type": "string", "optional": true },
-                    { "name": "arguments", "type": "array", "items": { "$ref": "CallArgument" }, "optional": true },
-                    { "name": "result", "$ref": "CallArgument", "optional": true },
-                    { "name": "isDrawingCall", "type": "boolean", "optional": true },
-                    { "name": "isFrameEndCall", "type": "boolean", "optional": true },
-                    { "name": "property", "type": "string", "optional": true },
-                    { "name": "value", "$ref": "CallArgument", "optional": true },
-                    { "name": "sourceURL", "type": "string", "optional": true },
-                    { "name": "lineNumber", "type": "integer", "optional": true },
-                    { "name": "columnNumber", "type": "integer", "optional": true }
-                ]
-            },
-            {
-                "id": "TraceLogId",
-                "type": "string",
-                "description": "Unique trace log identifier."
-            },
-            {
-                "id": "TraceLog",
-                "type": "object",
-                "properties": [
-                    { "name": "id", "$ref": "TraceLogId" },
-                    { "name": "calls", "type": "array", "items": { "$ref": "Call" } },
-                    { "name": "contexts", "type": "array", "items": { "$ref": "CallArgument" } },
-                    { "name": "startOffset", "type": "integer" },
-                    { "name": "alive", "type": "boolean" },
-                    { "name": "totalAvailableCalls", "type": "number" }
-                ]
-            }
-        ],
-        "commands": [
-            {
-                "name": "enable",
-                "description": "Enables Canvas inspection."
-            },
-            {
-                "name": "disable",
-                "description": "Disables Canvas inspection."
-            },
-            {
-                "name": "dropTraceLog",
-                "parameters": [
-                    { "name": "traceLogId", "$ref": "TraceLogId" }
-                ]
-            },
-            {
-                "name": "hasUninstrumentedCanvases",
-                "returns": [
-                    { "name": "result", "type": "boolean" }
-                ],
-                "description": "Checks if there is any uninstrumented canvas in the inspected page."
-            },
-            {
-                "name": "captureFrame",
-                "parameters": [
-                    { "name": "frameId", "$ref": "Page.FrameId", "optional": true, "description": "Identifier of the frame containing document whose canvases are to be captured. If omitted, main frame is assumed." }
-                ],
-                "returns": [
-                    { "name": "traceLogId", "$ref": "TraceLogId", "description": "Identifier of the trace log containing captured canvas calls." }
-                ],
-                "description": "Starts (or continues) a canvas frame capturing which will be stopped automatically after the next frame is prepared."
-            },
-            {
-                "name": "startCapturing",
-                "parameters": [
-                    { "name": "frameId", "$ref": "Page.FrameId", "optional": true, "description": "Identifier of the frame containing document whose canvases are to be captured. If omitted, main frame is assumed." }
-                ],
-                "returns": [
-                    { "name": "traceLogId", "$ref": "TraceLogId", "description": "Identifier of the trace log containing captured canvas calls." }
-                ],
-                "description": "Starts (or continues) consecutive canvas frames capturing. The capturing is stopped by the corresponding stopCapturing command."
-            },
-            {
-                "name": "stopCapturing",
-                "parameters": [
-                    { "name": "traceLogId", "$ref": "TraceLogId" }
-                ]
-            },
-            {
-                "name": "getTraceLog",
-                "parameters": [
-                    { "name": "traceLogId", "$ref": "TraceLogId" },
-                    { "name": "startOffset", "type": "integer", "optional": true },
-                    { "name": "maxLength", "type": "integer", "optional": true }
-                ],
-                "returns": [
-                    { "name": "traceLog", "$ref": "TraceLog" }
-                ]
-            },
-            {
-                "name": "replayTraceLog",
-                "parameters": [
-                    { "name": "traceLogId", "$ref": "TraceLogId" },
-                    { "name": "stepNo", "type": "integer", "description": "Last call index in the trace log to replay (zero based)." }
-                ],
-                "returns": [
-                    { "name": "resourceState", "$ref": "ResourceState" },
-                    { "name": "replayTime", "type": "number", "description": "Replay time (in milliseconds)." }
-                ]
-            },
-            {
-                "name": "getResourceState",
-                "parameters": [
-                    { "name": "traceLogId", "$ref": "TraceLogId" },
-                    { "name": "resourceId", "$ref": "ResourceId" }
-                ],
-                "returns": [
-                    { "name": "resourceState", "$ref": "ResourceState" }
-                ]
-            },
-            {
-                "name": "evaluateTraceLogCallArgument",
-                "parameters": [
-                    { "name": "traceLogId", "$ref": "TraceLogId" },
-                    { "name": "callIndex", "type": "integer", "description": "Index of the call to evaluate on (zero based)." },
-                    { "name": "argumentIndex", "type": "integer", "description": "Index of the argument to evaluate (zero based). Provide <code>-1</code> to evaluate call result." },
-                    { "name": "objectGroup", "type": "string", "optional": true, "description": "String object group name to put result into (allows rapid releasing resulting object handles using <code>Runtime.releaseObjectGroup</code>)." }
-                ],
-                "returns": [
-                    { "name": "result", "$ref": "Runtime.RemoteObject", "optional": true, "description": "Object wrapper for the evaluation result." },
-                    { "name": "resourceState", "$ref": "ResourceState", "optional": true, "description": "State of the <code>Resource</code> object." }
-                ],
-                "description": "Evaluates a given trace call argument or its result."
-            }
-        ],
-        "events": [
-            {
-                "name": "contextCreated",
-                "parameters": [
-                    { "name": "frameId", "$ref": "Page.FrameId", "description": "Identifier of the frame containing a canvas with a context." }
-                ],
-                "description": "Fired when a canvas context has been created in the given frame. The context may not be instrumented (see hasUninstrumentedCanvases command)."
-            },
-            {
-                "name": "traceLogsRemoved",
-                "parameters": [
-                    { "name": "frameId", "$ref": "Page.FrameId", "optional": true, "description": "If given, trace logs from the given frame were removed." },
-                    { "name": "traceLogId", "$ref": "TraceLogId", "optional": true, "description": "If given, trace log with the given ID was removed." }
-                ],
-                "description": "Fired when a set of trace logs were removed from the backend. If no parameters are given, all trace logs were removed."
-            }
-        ]
-    },
-    {
         "domain": "Input",
         "types": [
             {
@@ -4435,13 +4313,15 @@ protocol = {
                     { "name": "unmodifiedText", "type": "string", "optional": true, "description": "Text that would have been generated by the keyboard if no modifiers were pressed (except for shift). Useful for shortcut (accelerator) key handling (default: \"\")." },
                     { "name": "keyIdentifier", "type": "string", "optional": true, "description": "Unique key identifier (e.g., 'U+0041') (default: \"\")." },
                     { "name": "code", "type": "string", "optional": true, "description": "Unique DOM defined string value for each physical key (e.g., 'KeyA') (default: \"\")." },
+                    { "name": "key", "type": "string", "optional": true, "description": "Unique DOM defined string value describing the meaning of the key in the context of active modifiers, keyboard layout, etc (e.g., 'AltGr') (default: \"\")." },
                     { "name": "windowsVirtualKeyCode", "type": "integer", "optional": true, "description": "Windows virtual key code (default: 0)." },
                     { "name": "nativeVirtualKeyCode", "type": "integer", "optional": true, "description": "Native virtual key code (default: 0)." },
                     { "name": "autoRepeat", "type": "boolean", "optional": true, "description": "Whether the event was generated from auto repeat (default: false)." },
                     { "name": "isKeypad", "type": "boolean", "optional": true, "description": "Whether the event was generated from the keypad (default: false)." },
                     { "name": "isSystemKey", "type": "boolean", "optional": true, "description": "Whether the event was a system key event (default: false)." }
                 ],
-                "description": "Dispatches a key event to the page."
+                "description": "Dispatches a key event to the page.",
+                "handlers": ["browser"]
             },
             {
                 "name": "dispatchMouseEvent",
@@ -4455,7 +4335,7 @@ protocol = {
                     { "name": "clickCount", "type": "integer", "optional": true, "description": "Number of times the mouse button was clicked (default: 0)." }
                 ],
                 "description": "Dispatches a mouse event to the page.",
-                "handlers": ["renderer"]
+                "handlers": ["browser"]
             },
             {
                 "name": "dispatchTouchEvent",
@@ -4881,7 +4761,6 @@ protocol = {
                 "type": "object",
                 "properties": [
                     { "name": "offset", "type": "string", "description": "Keyframe's time offset." },
-                    { "name": "style", "$ref": "CSS.CSSStyle", "description": "Keyframe's associated CSS style declaration." },
                     { "name": "easing", "type": "string", "description": "<code>AnimationNode</code>'s timing function." }
                 ],
                 "description": "Keyframe Style"
@@ -4965,7 +4844,7 @@ protocol = {
             {
                 "id": "AXValueType",
                 "type": "string",
-                "enum": [ "boolean", "tristate", "booleanOrUndefined", "idref", "idrefList", "integer", "number", "string", "token", "tokenList", "domRelation", "role" ],
+                "enum": [ "boolean", "tristate", "booleanOrUndefined", "idref", "idrefList", "integer", "number", "string", "token", "tokenList", "domRelation", "role", "internalRole" ],
                 "description": "Enum of possible property types."
             },
             {
@@ -5051,12 +4930,14 @@ protocol = {
                 "type": "object",
                 "properties": [
                     { "name": "nodeId", "$ref": "AXNodeId", "description": "Unique identifier for this node." },
-                    { "name": "role", "$ref": "AXValue", "description": "This <code>Node</code>'s role, whether explicit or implicit." },
+                    { "name": "ignored", "type": "boolean", "description": "Whether this node is ignored for accessibility" },
+                    { "name": "ignoredReasons", "type": "array", "items": { "$ref": "AXProperty" }, "description": "Collection of reasons why this node is hidden.", "optional": true },
+                    { "name": "role", "$ref": "AXValue", "description": "This <code>Node</code>'s role, whether explicit or implicit.", "optional": true},
                     { "name": "name", "$ref": "AXValue", "description": "The accessible name for this <code>Node</code>.", "optional": true },
                     { "name": "description", "$ref": "AXValue", "description": "The accessible description for this <code>Node</code>.", "optional": true },
                     { "name": "value", "$ref": "AXValue", "description": "The value for this <code>Node</code>.", "optional": true },
                     { "name": "help", "$ref": "AXValue", "description": "Help.", "optional": true },
-                    { "name": "properties", "type": "array", "items": { "$ref": "AXProperty" }, "description": "All other properties" }
+                    { "name": "properties", "type": "array", "items": { "$ref": "AXProperty" }, "description": "All other properties", "optional": true }
                 ],
                 "description": "A node in the accessibility tree."
             }
