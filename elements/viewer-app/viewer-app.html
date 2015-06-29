@@ -16,7 +16,7 @@
         on-method-changed="filterMethods"
         on-event-changed="filterEvents"></viewer-nav>
 
-      <h2 class="heading" hidden="{{!domain}}">{{domain.name}}</h2>
+      <h2 class="heading" hidden="{{!domain}}"><span>{{domain.name}}</span> Domain</h2>
 
       <p class="description" hidden="{{!domain}}"><html-echo html="{{domain.description}}"></html-echo></p>
 
@@ -24,7 +24,7 @@
         method or event.</p>
 
       <section class="methods" hidden="{{!visibleMethods}}">
-        <h3>Methods</h3>
+        <h3><span>{{domain.name}}</span> Methods</h3>
 
         <div>
           <template is="dom-repeat" items="{{visibleMethods}}" as="method">
@@ -38,7 +38,7 @@
       </section>
 
       <section class="events" hidden="{{!visibleEvents}}">
-        <h3>Events</h3>
+        <h3>{{domain.name}} Events</h3>
 
         <div>
           <template is="dom-repeat" items="{{visibleEvents}}" as="event">

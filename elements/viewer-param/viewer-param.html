@@ -5,11 +5,47 @@
 
 <dom-module id="viewer-param">
   <template>
-    <div>
-      <dt class$="{{getCSSClass(optional)}}">{{name}}</dt>
+    <div class="param-pair">
+      <dt class="param-name monospace" class$="{{getCSSClass(optional)}}">{{name}}</dt>
       <dd class="param-def"><html-echo html="{{description}}"></html-echo><span hidden="{{description}}">No description</span></dd>
     </div>
   </template>
+  <style>
+  .param-pair {
+    display: flex;
+    align-items: baseline;  
+    margin-bottom: 6px;
+  }
+  .param-pair:hover {
+    background: hsla(0, 100%, 100%, 0.6);
+    border-radius: 5px;
+  }
+
+  dt {
+    flex: 1 0 0;
+    text-align: right;
+    color: black;
+  }
+  dd {
+    flex: 3 0 0;
+    margin-left: 20px;
+  }
+  dt, dd {
+    vertical-align: text-top;
+  }
+
+  .optional {
+    opacity: .9;
+  }
+
+  .optional:after {
+    content: "optional";
+    opacity: .6;
+    font-size: 70%;
+    display: block;
+  }
+
+  </style>
   <script>
     Polymer({
       is: 'viewer-param',
@@ -20,7 +56,8 @@
         type: String
       },
       getCSSClass: function(optional) {
-        var cssClass = 'param-name';
+
+        var cssClass = this.$$('dt').className;
 
         if(optional) {
           cssClass += ' optional';
