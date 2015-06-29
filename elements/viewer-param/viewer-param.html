@@ -1,0 +1,33 @@
+<link rel="import"
+      href="../../bower_components/polymer/polymer.html">
+<link rel="import"
+      href="../html-echo/html-echo.html">
+
+<dom-module id="viewer-param">
+  <template>
+    <div>
+      <dt class$="{{getCSSClass(optional)}}">{{name}}</dt>
+      <dd class="param-def"><html-echo html="{{description}}"></html-echo><span hidden="{{description}}">No description</span></dd>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: 'viewer-param',
+      properties: {
+        name: String,
+        description: String,
+        optional: Boolean,
+        type: String
+      },
+      getCSSClass: function(optional) {
+        var cssClass = 'param-name';
+
+        if(optional) {
+          cssClass += ' optional';
+        }
+
+        return cssClass;
+      }
+    });
+  </script>
+</dom-module>

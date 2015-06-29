@@ -1,68 +1,35 @@
-
 <!DOCTYPE html>
-<html><head>
-<meta charset="utf-8">
-<title>Chrome Debugger Protocol Viewer</title>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Chrome Debugger Protocol Viewer</title>
 
-<link href="./assets/protocol.css" rel="stylesheet">
-<script src="./assets/protocol.js" ></script>
+  <link href="./assets/protocol.css" rel="stylesheet">
+  <script src="./bower_components/webcomponentsjs/webcomponents.min.js"></script>
+  <link rel="import" href="./elements/viewer-app/viewer-app.html">
 </head>
 <body>
 
 <header>
-<h1>Chrome Debugger Protocol Viewer</h1>
-<p>Explore the tip-of-tree <a href="https://developer.chrome.com/devtools/docs/debugger-protocol">debugger protocol for Chrome</a>. For production use, consider <a href="https://developer.chrome.com/devtools/docs/debugger-protocol#stable">the stable protocol version</a>.
+  <h1>Chrome Debugger Protocol Viewer</h1>
+
+  <p>Explore the tip-of-tree <a href="https://developer.chrome.com/devtools/docs/debugger-protocol">debugger protocol
+    for Chrome</a>. For production use, consider <a
+    href="https://developer.chrome.com/devtools/docs/debugger-protocol#stable">the stable protocol version</a>.
 </header>
-<div class="content">
-  <section class="filter">
-    <span class="select-field protocol">
-      <label for="select-domain">Protocol Domain</label>
-      <select id="select-domain">
-          <option>Select domain</option>
-      </select>
-    </span>
-    <span class="select-field method">
-      <label for="select-method">Method</label>
-      <select id="select-method">
-        <option>Show all methods</option>
-      </select>
-    </span>
-    <span class="select-field events">
-      <label for="select-events">Events</label>
-      <select id="select-events">
-        <option>Show all events</option>
-      </select>
-    </span>
-  </section>
-  <h2 class="heading"></h2>
-  <p class="description">Please select a domain above. Optionally, you can then filter by method or event.</p>
-  <section class="methods" hidden>
-    <h3>Methods</h3>
-  </section>
-  <section class="events" hidden>
-    <h3>Events</h3>
-  </section>
-</div>
 
-<!-- Templates -->
+<viewer-app></viewer-app>
 
-<div id="method-template" hidden>
-  <h4 class="method-name"></h4>
-  <p class="method-description"></p>
-  <dl class="parameter-list"></dl>
-</div>
+<script src="./assets/protocol.js"></script>
+<script>
+  var viewerApp = document.querySelector('viewer-app');
+  viewerApp.setProtocolSchema(protocol);
+</script>
 
-<div id="param-template" hidden>
-  <dt class="param-name"></dt>
-  <dd class="param-def"></dd>
-</div>
-
-
-
-<script src="viewer.js"></script>
-
-
-<a href="https://github.com/ChromeDevTools/debugger-protocol-viewer"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
-
-
-</body></html>
+<a href="https://github.com/ChromeDevTools/debugger-protocol-viewer"><img
+  style="position: absolute; top: 0; right: 0; border: 0;"
+  src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67"
+  alt="Fork me on GitHub"
+  data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+</body>
+</html>

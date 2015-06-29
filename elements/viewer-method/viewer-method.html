@@ -1,0 +1,39 @@
+<link rel="import"
+      href="../../bower_components/polymer/polymer.html">
+<link rel="import"
+      href="../viewer-param/viewer-param.html">
+<link rel="import"
+      href="../html-echo/html-echo.html">
+
+<dom-module id="viewer-method">
+  <template>
+    <div>
+      <h4 class="method-name">{{name}}</h4>
+
+      <p class="method-description"><html-echo html="{{description}}"></html-echo></p>
+
+      <dl class="parameter-list" hidden="{{!parameters}}">
+        <template is="dom-repeat" items="{{parameters}}" as="param">
+          <viewer-param
+            name="{{param.name}}"
+            description="{{param.description}}"
+            optional="{{param.optional}}"
+            type="{{param.type}}"></viewer-param>
+        </template>
+      </dl>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: 'viewer-method',
+      properties: {
+        name: String,
+        description: String,
+        parameters: Object
+      },
+      ready: function() {
+        this.parameters = null;
+      }
+    });
+  </script>
+</dom-module>
