@@ -5,18 +5,19 @@
   <template>
     <section class="filter">
     <span class="select-field protocol">
-        <label for="select-domain">Protocol Domain</label>
+      <label for="select-domain">Protocol Domain</label>
 
-        <select id="select-domain" on-change="selectDomain">
-          <option value="-1">Select domain</option>
-          <template is="dom-repeat" items="{{protocol.domainNames}}" as="domainName">
-            <option value="{{index}}">{{domainName}}</option>
-          </template>
-        </select>
+      <select id="select-domain" on-change="selectDomain">
+        <option value="-1">Select domain</option>
+        <template is="dom-repeat" items="{{protocol.domainNames}}" as="domainName">
+          <option value="{{index}}">{{domainName}}</option>
+        </template>
+      </select>
     </span>
 
     <span class="select-field method">
       <label for="select-method">Method</label>
+
       <select id="select-method" on-change="selectMethod">
         <option value="-1">Show all methods</option>
         <template is="dom-repeat" items="{{selectedDomain.methodNames}}" as="methodName">
@@ -27,6 +28,7 @@
 
     <span class="select-field events">
       <label for="select-events">Events</label>
+
       <select id="select-events" on-change="selectEvent">
         <option value="-1">Show all events</option>
         <template is="dom-repeat" items="{{selectedDomain.eventNames}}" as="eventName">
