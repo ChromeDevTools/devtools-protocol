@@ -18,16 +18,24 @@ h1   {
 } /* =36px */
 
 h3 {
-  font-size: 3.6rem;
+  font-size: 2.2rem;
 }
 
 h4 {
-  font-size: 2.4rem;
-  margin-top: 3.6rem;
+  font-size: 2rem;
+  margin: 3.6rem 0 1.8rem;
+  color: black;
 }
 
-dt {
-  font-style: italic;
+h5 {
+  font-size: 1.4rem;
+  font-weight
+;
+  margin-bottom: 0.5rem;
+}
+
+.monospace { 
+  font-family: Consolas, Menlo, monospace;
 }
 
 header, footer, .content {
@@ -91,22 +99,17 @@ section.filter option {
   display: none;
 }
 .parameter-list {
-  padding-top: 1rem;
+  padding: 1rem 5px;
 }
-.parameter-list:before {
-  content: "Parameters";
-  font-size: 1.4rem;
-  margin-top: -3.6rem;
-  
-  font-weight: bold;
-}
+
 
 .optional {
   opacity: .8;
 }
 
 .optional:after {
-  content: " (optional)";
+  content: "optional";
   opacity: .6;
-  font-size: 90%;
+  font-size: 70%;
+  display: block;
 }
