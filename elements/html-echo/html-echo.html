@@ -9,7 +9,9 @@
         }
       },
       htmlChanged: function() {
-        this.textContent = this.html;
+        // WARNING: potential XSS vulnerability if `html` comes from an untrusted source.
+        // We use innerHTML instead of textContent as the protocol json file has `<code>` tags within it.
+        this.innerHTML = this.html;
       }
     });
   </script>

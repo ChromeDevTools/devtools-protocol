@@ -3,11 +3,16 @@
 <link rel="import"
       href="../html-echo/html-echo.html">
 
+<!-- we're not showing `type` info, yet. -->
+
 <dom-module id="viewer-param">
   <template>
     <div class="param-pair">
       <dt class="param-name monospace" class$="{{getCSSClass(optional)}}">{{name}}</dt>
-      <dd class="param-def"><html-echo html="{{description}}"></html-echo><span hidden="{{description}}">No description</span></dd>
+      <dd class="param-def">
+        <html-echo html="{{description}}"></html-echo>
+        <span hidden="{{description}}">No description</span>
+      </dd>
     </div>
   </template>
   <style>
@@ -53,7 +58,8 @@
         name: String,
         description: String,
         optional: Boolean,
-        type: String
+        type: String,
+        ref: String
       },
       getCSSClass: function(optional) {
 
