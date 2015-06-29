@@ -29,6 +29,8 @@ h4 {
 
 h5 {
   font-size: 1.4rem;
+  font-weight
+;
   margin-bottom: 0.5rem;
 }
 
@@ -105,26 +107,9 @@ section.filter option {
   opacity: .8;
 }
 
-.optional:before, dt[data-type]:after, dd[data-type]:after {
+.optional:after {
+  content: "optional";
   opacity: .6;
   font-size: 70%;
   display: block;
-}
-
-.param-pair dt[data-type]:after, .param-pair dd[data-type]:after {
-  opacity: 0;
-  transition: opacity 140ms ease-in;
-}
-.param-pair:hover dt[data-type]:after, .param-pair:hover dd[data-type]:after {
-  opacity: 1;
-}
-
-dt[data-type]:after, dd[data-type]:after {
-  content: attr(data-type);
-  color: #353570;
-}
-
-.optional:before {
-  content: "optional";
-
 }

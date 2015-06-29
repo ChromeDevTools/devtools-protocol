@@ -8,9 +8,9 @@
 <dom-module id="viewer-param">
   <template>
     <div class="param-pair">
-      <dt class="param-name monospace" class$="{{getCSSClass(optional)}}" data-type$="{{dumpJSON(itemtype)}}">{{name}}</dt>
-      <dd class="param-def" data-type$="{{dumpJSON(items)}}">
-        <html-echo html="{{description}}" ></html-echo>
+      <dt class="param-name monospace" class$="{{getCSSClass(optional)}}">{{name}}</dt>
+      <dd class="param-def">
+        <html-echo html="{{description}}"></html-echo>
         <span hidden="{{description}}">No description</span>
       </dd>
     </div>
@@ -39,6 +39,16 @@
     vertical-align: text-top;
   }
 
+  .optional {
+    opacity: .9;
+  }
+
+  .optional:after {
+    content: "optional";
+    opacity: .6;
+    font-size: 70%;
+    display: block;
+  }
 
   </style>
   <script>
@@ -48,9 +58,8 @@
         name: String,
         description: String,
         optional: Boolean,
-        itemtype: String,
-        ref: String, 
-        items: Object
+        type: String,
+        ref: String
       },
       getCSSClass: function(optional) {
 
@@ -61,10 +70,6 @@
         }
 
         return cssClass;
-      }, 
-      dumpJSON: function(obj, type){
-        var value = obj.$ref || obj.type || obj;
-        return value;
       }
     });
   </script>

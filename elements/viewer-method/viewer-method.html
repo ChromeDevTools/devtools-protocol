@@ -19,7 +19,7 @@
             name="{{param.name}}"
             description="{{param.description}}"
             optional="{{param.optional}}"
-            itemtype="{{param.type}}"></viewer-param>
+            type="{{param.type}}"></viewer-param>
         </template>
       </dl>
 
@@ -31,9 +31,8 @@
             name="{{ret.name}}"
             description="{{ret.description}}"
             optional="{{ret.optional}}"
-            itemtype="{{ret.type}}"
-            ref="{{ret.$ref}}"
-            items="{{ret.items}}"></viewer-param>
+            type="{{ret.type}}"
+            ref="{{ret.ref}}"></viewer-param>
         </template>
       </dl>
     </div>
