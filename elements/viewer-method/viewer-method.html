@@ -12,14 +12,27 @@
 
       <p class="method-description"><html-echo html="{{description}}"></html-echo></p>
 
-      <h5  hidden="{{!parameters}}">Parameters</h5>
-      <dl class="parameter-list" hidden="{{!parameters}}">
+      <h5 hidden="{{isEmpty(parameters)}}">Parameters</h5>
+      <dl class="parameter-list" hidden="{{isEmpty(parameters)}}">
         <template is="dom-repeat" items="{{parameters}}" as="param">
           <viewer-param
             name="{{param.name}}"
             description="{{param.description}}"
             optional="{{param.optional}}"
             type="{{param.type}}"></viewer-param>
+        </template>
+      </dl>
+
+
+      <h5 hidden="{{isEmpty(returns)}}">Return object</h5>
+      <dl class="parameter-list returns" hidden="{{isEmpty(returns)}}">
+        <template is="dom-repeat" items="{{returns}}" as="ret">
+          <viewer-param
+            name="{{ret.name}}"
+            description="{{ret.description}}"
+            optional="{{ret.optional}}"
+            type="{{ret.type}}"
+            ref="{{ret.ref}}"></viewer-param>
         </template>
       </dl>
     </div>
@@ -30,10 +43,17 @@
       properties: {
         name: String,
         description: String,
-        parameters: Object
+        parameters: Object,
+        returns: Object
+      },
+      isEmpty: function(paramObj){
+        if (!paramObj) return true;
+        if (paramObj.length == 0) return true;
+        return false;
       },
       ready: function() {
         this.parameters = null;
+        this.returns = null;
       }
     });
   </script>
