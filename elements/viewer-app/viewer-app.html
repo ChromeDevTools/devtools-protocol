@@ -9,48 +9,49 @@
 
 <dom-module id="viewer-app">
   <template>
-    <div class="content" style$="{{getStyle(domain)}}">
+    <div class="wrapper">
       <viewer-nav
-        protocol="{{protocol}}"
-        on-domain-changed="setDomain"
-        on-method-changed="filterMethods"
-        on-event-changed="filterEvents"></viewer-nav>
+        domains="{{domains}}"
+        on-domain-changed="setDomain"></viewer-nav>
 
-      <h2 class="heading" hidden="{{!domain}}"><span>{{domain.name}}</span> Domain</h2>
+      <div class="content" style$="{{getStyle(domain)}}">
+        <h2 class="heading" hidden="{{!domain}}"><span>{{domain.name}}</span> Domain</h2>
 
-      <p class="description" hidden="{{!domain}}"><html-echo html="{{domain.description}}"></html-echo></p>
+        <p class="description" hidden="{{!domain}}">
+          <html-echo html="{{domain.description}}"></html-echo>
+        </p>
 
-      <p class="description" hidden="{{domain}}">Please select a domain above. Optionally, you can then filter by
-        method or event.</p>
+        <p class="description" hidden="{{domain}}">Please select a domain on the left.</p>
 
-      <section class="methods" hidden="{{!visibleMethods}}">
-        <h3><span>{{domain.name}}</span> Methods</h3>
+        <section class="methods" hidden="{{!domain.methods}}">
+          <h3><span>{{domain.name}}</span> Methods</h3>
 
-        <div>
-          <template is="dom-repeat" items="{{visibleMethods}}" as="method">
-            <viewer-method
-              name="{{method.name}}"
-              description="{{method.description}}"
-              parameters="{{method.parameters}}"
-              returns="{{method.returns}}"
-              ></viewer-method>
-          </template>
-        </div>
-      </section>
+          <div>
+            <template is="dom-repeat" items="{{domain.methods}}" as="method">
+              <viewer-method
+                name="{{method.name}}"
+                description="{{method.description}}"
+                parameters="{{method.parameters}}"
+                returns="{{method.returns}}"
+                ></viewer-method>
+            </template>
+          </div>
+        </section>
 
-      <section class="events" hidden="{{!visibleEvents}}">
-        <h3>{{domain.name}} Events</h3>
+        <section class="events" hidden="{{!domain.events}}">
+          <h3>{{domain.name}} Events</h3>
 
-        <div>
-          <template is="dom-repeat" items="{{visibleEvents}}" as="event">
-            <viewer-method
-              name="{{event.name}}"
-              description="{{event.description}}"
-              parameters="{{event.parameters}}"
-              ></viewer-method>
-          </template>
-        </div>
-      </section>
+          <div>
+            <template is="dom-repeat" items="{{domain.events}}" as="event">
+              <viewer-method
+                name="{{event.name}}"
+                description="{{event.description}}"
+                parameters="{{event.parameters}}"
+                ></viewer-method>
+            </template>
+          </div>
+        </section>
+      </div>
     </div>
   </template>
   <script>
@@ -60,74 +61,44 @@
         return "hsl(" + hue + ", 52%, 91%)";
       }
 
-      function getObjName(o) {
-        return o['name'];
-      }
-
       Polymer({
         is: 'viewer-app',
         ready: function () {
           console.log('App ready');
           this.domain = null;
-          this.visibleEvents = null;
-          this.visibleMethods = null;
         },
         setDomain: function (event, details) {
           this.domain = details.domain;
-          this.visibleEvents = this.domain ? this.domain.events : null;
-          this.visibleMethods = this.domain ? this.domain.methods : null;
-        },
-        filterMethods: function (event, details) {
-          var selectedMethod = details.method;
-
-          this.visibleEvents = selectedMethod ? null : this.domain.events;
-          this.visibleMethods = (this.domain.methods).filter(function (method) {
-            return !selectedMethod || method.name === selectedMethod.name;
-          });
-        },
-        filterEvents: function (event, details) {
-          var selectedEvent = details.event;
-
-          this.visibleMethods = selectedEvent ? null : this.domain.methods;
-          this.visibleEvents = (this.domain.events).filter(function (event) {
-            return !selectedEvent || event.name === selectedEvent.name;
-          });
         },
         getStyle: function (domain) {
           return domain && 'background-color: ' + domain.color;
         },
         setProtocolSchema: function (protocolSchema) {
-          var protocol = {
-            domainNames: []
-          };
-
           var domains = protocolSchema['domains'];
 
-          domains.forEach(function (domain, i) {
-            var name = domain['domain'];
-            var color = getColor(i, domains.length);
-            var commands = domain['commands'];
-            var events = domain['events'];
-
-            var commandNames = commands ? commands.map(getObjName) : null;
-            var eventNames = events ? events.map(getObjName) : null;
-
-            protocol.domainNames.push(name);
-            protocol[name] = {
-              name: name,
+          this.domains = domains.sort(function (a, b) {
+            return (a.domain).localeCompare(b.domain);
+          }).map(function (domain, i) {
+            return {
+              name: domain['domain'],
               description: domain.description,
               methods: domain.commands,
               events: domain.events,
               types: domain.types,
-              methodNames: commandNames,
-              eventNames: eventNames,
-              color: color
+              color: getColor(i, domains.length)
             };
           });
-
-          this.protocol = protocol;
         }
       });
     })();
   </script>
+  <style>
+    .wrapper {
+      display: flex;
+    }
+
+    .content {
+      flex-grow: 1;
+    }
+  </style>
 </dom-module>
