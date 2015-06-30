@@ -4,18 +4,19 @@ html {
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.34);
 }
+
 body {
   font-size: 1.4rem;
   padding-top: 2rem;
-} /* =14px */
+}/* =14px */
 
 h1, h2, h3, h4 {
   font-weight: normal;
 }
 
-h1   {
+h1 {
   font-size: 3.6rem;
-} /* =36px */
+}/* =36px */
 
 h3 {
   font-size: 2.2rem;
@@ -29,79 +30,16 @@ h4 {
 
 h5 {
   font-size: 1.4rem;
-  font-weight
-;
   margin-bottom: 0.5rem;
 }
 
-.monospace { 
+.monospace {
   font-family: Consolas, Menlo, monospace;
 }
 
-header, footer, .content {
-  min-width: 320px;
-  width: 80%;
-  max-width: 1024px;
-  margin: 1rem auto 1.5rem;
-}
-
-label:after {
-  content: ":";
-}
-
-select {
-  margin-right: 1.5em;
-}
-
-.select-field {
-  white-space: nowrap;
-  display: block;
-}
-
-.select-field.protocol {
-  margin: 10px 0
-}
-
-
-.select-field.method, 
-.select-field.events {
-  margin: 5px 0 5px 15px;
-}
-
-.content {
-  background-color: lightblue;
-  background-image: -webkit-linear-gradient(top, rgba(255,255,255,.6) 0%,rgba(255,255,255,0) 100%);
-  min-height: 300px;
-  border: 1px solid rgba(153, 153, 153, 0.32);
-  border-radius: 2px;
-  -webkit-transition: background-color .24s linear;
-  padding: 1.5rem;
-}
-
-section.filter {
-  background-image: -webkit-linear-gradient(top,rgba(69,72,77,.65) 0%,rgba(0,0,0,.85) 100%);
-  color: #CCC;
-  box-shadow: 0 -1px 0px 0px rgba(255, 255, 255, 0.8);
-  border-radius: 3px;
-  padding: .75em;
-  overflow: hidden;
-}
-
-section.filter, 
-section.filter select {
-  font-size: 17px;
-}
-section.filter option {
-  font-size: 27px
-}
-
-.hidden {
-  display: none;
-}
 .parameter-list {
   padding: 1rem 5px;
 }
-
 
 .optional {
   opacity: .8;

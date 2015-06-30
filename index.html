@@ -22,8 +22,10 @@
 
 <script src="./assets/protocol.js"></script>
 <script>
-  var viewerApp = document.querySelector('viewer-app');
-  viewerApp.setProtocolSchema(protocol);
+  window.addEventListener('WebComponentsReady', function(e) {
+    var viewerApp = document.querySelector('viewer-app');
+    viewerApp.setProtocolSchema(protocol);
+  });
 </script>
 
 <a href="https://github.com/ChromeDevTools/debugger-protocol-viewer"><img

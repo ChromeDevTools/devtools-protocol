@@ -1,0 +1,73 @@
+<link rel="import"
+      href="../../bower_components/polymer/polymer.html">
+<link rel="import"
+      href="../viewer-method/viewer-method.html">
+<link rel="import"
+      href="../html-echo/html-echo.html">
+
+<dom-module id="viewer-domain">
+  <template>
+    <div class="content" style$="{{getStyle(domain)}}">
+      <h2 class="heading" hidden="{{!domain}}"><span>{{domain.name}}</span> Domain</h2>
+
+      <p class="description" hidden="{{!domain}}">
+        <html-echo html="{{domain.description}}"></html-echo>
+      </p>
+
+      <p class="description" hidden="{{domain}}">Please select a domain on the left.</p>
+
+      <section class="methods" hidden="{{!domain.methods}}">
+        <h3><span>{{domain.name}}</span> Methods</h3>
+
+        <div>
+          <template is="dom-repeat" items="{{domain.methods}}" as="method">
+            <viewer-method
+              name="{{method.name}}"
+              description="{{method.description}}"
+              parameters="{{method.parameters}}"
+              returns="{{method.returns}}"
+              ></viewer-method>
+          </template>
+        </div>
+      </section>
+
+      <section class="events" hidden="{{!domain.events}}">
+        <h3>{{domain.name}} Events</h3>
+
+        <div>
+          <template is="dom-repeat" items="{{domain.events}}" as="event">
+            <viewer-method
+              name="{{event.name}}"
+              description="{{event.description}}"
+              parameters="{{event.parameters}}"
+              ></viewer-method>
+          </template>
+        </div>
+      </section>
+    </div>
+  </template>
+  <script>
+    (function () {
+      Polymer({
+        is: 'viewer-domain',
+        ready: function () {
+          this.domain = null;
+        },
+        getStyle: function (domain) {
+          return domain && 'background-color: ' + domain.color;
+        }
+      });
+    })();
+  </script>
+  <style>
+    .content {
+      background-color: lightblue;
+      background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, .6) 0%, rgba(255, 255, 255, 0) 100%);
+      min-height: 300px;
+      border: 1px solid rgba(153, 153, 153, 0.32);
+      border-radius: 2px;
+      transition: background-color .24s linear;
+      padding: 1.5rem;
+    }
+  </style>
+</dom-module>
