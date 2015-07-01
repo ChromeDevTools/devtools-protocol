@@ -1,0 +1,260 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-ajax/iron-ajax.html">
+
+<script>
+/*
+``<iron-form>` is an HTML `<form>` element that can validate and submit any custom
+elements that implement `Polymer.IronFormElementBehavior`, as well as any
+native HTML elements.
+
+It supports both `get` and `post` methods, and uses an `iron-ajax` element to
+submit the form data to the action URL.
+
+  Example:
+
+    <form is="iron-form" id="form" method="post" action="/form/handler">
+      <paper-input name="name" label="name"></paper-input>
+      <input name="address">
+      ...
+    </form>
+
+By default, a native `<button>` element will submit this form. However, if you
+want to submit it from a custom element's click handler, you need to explicitly
+call the form's `submit` method.
+
+  Example:
+
+    <paper-button raised onclick="submitForm()">Submit</paper-button>
+
+    function submitForm() {
+      document.getElementById('form').submit();
+    }
+
+@demo demo/index.html
+*/
+
+  Polymer({
+
+    is: 'iron-form',
+
+    extends: 'form',
+
+    properties: {
+      /**
+       * Content type to use when sending data.
+       */
+      contentType: {
+        type: String,
+        value: "application/x-www-form-urlencoded"
+      },
+
+      /**
+       * By default, the form will display the browser's native validation
+       * UI (i.e. popup bubbles and invalid styles on invalid fields). You can
+       * manually disable this; however, if you do, note that you will have to
+       * manually style invalid *native* HTML fields yourself, as you are
+       * explicitly preventing the native form from doing so.
+       */
+      disableNativeValidationUi: {
+        type: Boolean,
+        value: false
+      }
+    },
+    /**
+     * Fired if the form cannot be submitted because it's invalid.
+     *
+     * @event iron-form-invalid
+     */
+
+    /**
+     * Fired after the form is submitted.
+     *
+     * @event iron-form-submit
+     */
+
+    /**
+    * Fired after the form is submitted and a response is received.
+    *
+    * @event iron-form-response
+    */
+
+    /**
+     * Fired after the form is submitted and an error is received.
+     *
+     * @event iron-form-error
+     */
+    listeners: {
+      'iron-form-element-register': '_registerElement',
+      'submit': '_onSubmit'
+    },
+
+    ready: function() {
+      // Object that handles the ajax form submission request.
+      this._requestBot = document.createElement('iron-ajax');
+      this._requestBot.addEventListener('response', this._handleFormResponse.bind(this));
+      this._requestBot.addEventListener('error', this._handleFormError.bind(this));
+
+      // Holds all the custom elements registered with this form.
+      this._customElements = [];
+    },
+
+    /**
+     * Called to submit the form.
+     */
+    submit: function() {
+      if (!this.noValidate && !this._validate()) {
+        // In order to trigger the native browser invalid-form UI, we need
+        // to do perform a fake form submit.
+        if (!this.disableNativeValidationUi) {
+          this._doFakeSubmitForValidation();
+        }
+        this.fire('iron-form-invalid');
+        return;
+      }
+
+      var json = this.serialize();
+
+      this._requestBot.url = this.action;
+      this._requestBot.method = this.method;
+      this._requestBot.contentType = this.contentType;
+
+      if (this.method.toUpperCase() == 'POST') {
+        this._requestBot.body = JSON.stringify(json);
+      } else {
+        this._requestBot.params = json;
+      }
+
+      this._requestBot.generateRequest();
+      this.fire('iron-form-submit', json);
+    },
+
+    _onSubmit: function(event) {
+      this.submit();
+
+      // Don't perform a page refresh.
+      if (event) {
+        event.preventDefault();
+      }
+
+      return false;
+    },
+
+    /**
+     * Returns a json object containing name/value pairs for all the registered
+     * custom components and native elements of the form. If there are elements
+     * with duplicate names, then their values will get aggregated into an
+     * array of values.
+     */
+    serialize: function() {
+      var json = {};
+
+      function addSerializedElement(el) {
+        // If the name doesn't exist, add it. Otherwise, serialize it to
+        // an array,
+        if (!json[el.name]) {
+          json[el.name] = el.value;
+        } else {
+          if (!Array.isArray(json[el.name])) {
+            json[el.name] = [json[el.name]];
+          }
+          json[el.name].push(el.value);
+        }
+      }
+
+      // Go through all of the registered custom components.
+      for (var el, i = 0; el = this._customElements[i], i < this._customElements.length; i++) {
+        if (el.name) {
+          addSerializedElement(el);
+        }
+      }
+
+      // Also go through the form's native elements.
+      for (var el, i = 0; el = this.elements[i], i < this.elements.length; i++) {
+        // Checkboxes and radio buttons should only use their value if they're checked.
+        // Also, custom elements that extend native elements (like an
+        // `<input is="fancy-input">`) will appear in both lists. Since they
+        // were already added as a custom element, they don't need
+        // to be re-added.
+        if (!el.name || !this._useValue(el) ||
+            (el.hasAttribute('is') && json[el.name])) {
+          continue;
+        }
+        addSerializedElement(el);
+      }
+
+      return json;
+    },
+
+    _handleFormResponse: function (event) {
+      this.fire('iron-form-response', event.detail.response);
+    },
+
+    _handleFormError: function (event) {
+      this.fire('iron-form-error', event.detail);
+    },
+
+    _registerElement: function(e) {
+      this._customElements.push(e.target);
+    },
+
+    _validate: function() {
+      var valid = true;
+
+      // Validate all the custom elements.
+      var validatable;
+      for (var el, i = 0; el = this._customElements[i], i < this._customElements.length; i++) {
+        if (el.required) {
+          validatable = /** @type {{validate: (function() : boolean)}} */ (el);
+          valid = validatable.validate() && valid;
+        }
+      }
+
+      // Validate the form's native elements.
+      for (var el, i = 0; el = this.elements[i], i < this.elements.length; i++) {
+        // Custom elements that extend a native element will also appear in
+        // this list, but they've already been validated.
+        if (!el.hasAttribute('is') && el.willValidate && el.checkValidity) {
+          valid = el.checkValidity() && valid;
+        }
+      }
+
+      return valid;
+    },
+
+    _useValue: function(el) {
+      // Skip disabled elements
+      if (el.disabled) {
+        return false;
+      }
+      // Checkboxes and radio buttons should only use their value if they're checked.
+      if (el.type !== 'checkbox' && el.type !== 'radio') {
+        return true;
+      } else {
+        return el.checked;
+      }
+    },
+
+    _doFakeSubmitForValidation: function() {
+      var fakeSubmit = document.createElement('input');
+      fakeSubmit.setAttribute('type', 'submit');
+      fakeSubmit.style.display = 'none';
+      this.appendChild(fakeSubmit);
+
+      fakeSubmit.click();
+
+      this.removeChild(fakeSubmit);
+    }
+
+  });
+
+</script>
