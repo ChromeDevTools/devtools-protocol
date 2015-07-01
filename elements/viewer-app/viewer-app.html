@@ -1,61 +1,139 @@
-<link rel="import"
-      href="../../bower_components/polymer/polymer.html">
-<link rel="import"
-      href="../viewer-nav/viewer-nav.html">
-<link rel="import"
-      href="../viewer-domain/viewer-domain.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../viewer-nav/viewer-nav.html">
+<link rel="import" href="../viewer-domain/viewer-domain.html">
+<link rel="import" href="../../bower_components/paper-header-panel/paper-header-panel.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../bower_components/paper-drawer-panel/paper-drawer-panel.html">
+<link rel="import" href="../../bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 
 <dom-module id="viewer-app">
   <template>
-    <div class="wrapper">
-      <viewer-nav
-        domains="{{domains}}"
-        on-domain-changed="setDomain"></viewer-nav>
-      <viewer-domain
-        domain="{{selectedDomain}}"></viewer-domain>
-    </div>
+    <paper-drawer-panel id="paperDrawerPanel">
+      <div drawer>
+        <viewer-nav
+          domains="{{domains}}"
+          on-domain-changed="setDomain"></viewer-nav>
+      </div>
+
+      <paper-header-panel main mode="waterfall-tall">
+        <paper-toolbar id="mainToolbar">
+          <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
+          <span class="flex"></span>
+
+          <div class="middle paper-font-display2 app-name">Chrome Debugger Protocol Viewer</div>
+        </paper-toolbar>
+
+        <div class="content">
+          <section>
+            <paper-material elevation="1" hidden$="{{selectedDomain}}">
+              <p>Explore the tip-of-tree <a href="https://developer.chrome.com/devtools/docs/debugger-protocol">debugger protocol for Chrome</a>. For production use, consider <a href="https://developer.chrome.com/devtools/docs/debugger-protocol#stable">the stable protocol version</a></p>
+            </paper-material>
+            <viewer-domain
+              domain="{{selectedDomain}}" hidden$="{{!selectedDomain}}"></viewer-domain>
+          </section>
+        </div>
+      </paper-header-panel>
+    </paper-drawer-panel>
   </template>
-  <script>
-    (function () {
-      function getColor(index, all) {
-        var hue = 360 / all * index;
-        return "hsl(" + hue + ", 52%, 91%)";
-      }
-
-      Polymer({
-        is: 'viewer-app',
-        ready: function () {
-          this.selectedDomain = null;
-        },
-        setDomain: function (event, details) {
-          this.selectedDomain = details.domain;
-        },
-        setProtocolSchema: function (protocolSchema) {
-          var domains = protocolSchema['domains'];
-
-          this.domains = domains.sort(function (a, b) {
-            return (a.domain).localeCompare(b.domain);
-          }).map(function (domain, i) {
-            return {
-              name: domain.domain,
-              description: domain.description,
-              methods: domain.commands,
-              events: domain.events,
-              types: domain.types,
-              color: getColor(i, domains.length)
-            };
-          });
-        }
-      });
-    })();
-  </script>
   <style>
-    .wrapper {
-      display: flex;
+    #mainToolbar .middle {
+      margin-left: 48px;
     }
 
-    viewer-domain {
-      flex-grow: 1;
+    #mainToolbar.has-shadow .middle {
+      font-size: 20px;
+      padding-bottom: 0;
+      margin-left: 48px;
+    }
+
+    .content {
+      background-color: #fafafa;
+      padding: 48px 62px;
+    }
+
+    paper-material {
+      border-radius: 2px;
+      height: 100%;
+      padding: 16px 0 16px 0;
+      width: calc(98.66% - 16px);
+      margin: 16px auto;
+      background: white;
+    }
+
+    /* Breakpoints */
+
+    /* Small */
+    @media (max-width: 600px) {
+
+      paper-material {
+        --menu-container-display: none;
+        width: calc(97.33% - 32px);
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .paper-font-display1 {
+        font-size: 12px;
+      }
+
+      .app-name {
+        font-size: 26px;
+      }
+
+      #drawer .paper-toolbar {
+        margin-left: 16px;
+      }
+    }
+
+    /* Tablet+ */
+    @media (min-width: 601px) {
+
+      paper-material {
+        width: calc(98% - 46px);
+        margin-bottom: 32px;
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+
+      #drawer.paper-drawer-panel > [drawer] {
+        border-right: 1px solid rgba(0, 0, 0, 0.14);
+      }
+
+      iron-pages {
+        padding: 48px 62px;
+      }
+
     }
   </style>
 </dom-module>
+<script>
+  (function () {
+    Polymer({
+      is: 'viewer-app',
+      ready: function () {
+        this.selectedDomain = null;
+      },
+      setDomain: function (event, details) {
+        this.selectedDomain = details.domain;
+      },
+      setProtocolSchema: function (protocolSchema) {
+        var domains = protocolSchema['domains'];
+
+        this.domains = domains.sort(function (a, b) {
+          return (a.domain).localeCompare(b.domain);
+        }).map(function (domain, i) {
+          return {
+            name: domain.domain,
+            description: domain.description,
+            methods: domain.commands,
+            events: domain.events,
+            types: domain.types
+          };
+        });
+      }
+    });
+  })();
+</script>

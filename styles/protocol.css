@@ -1,0 +1,24 @@
+body {
+  background: #fafafa;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+.monospace {
+  font-family: Consolas, Menlo, monospace;
+}
+
+.parameter-list {
+  padding: 1rem 5px;
+}
+
+.optional {
+  opacity: .8;
+}
+
+.optional:after {
+  content: "optional";
+  opacity: .6;
+  font-size: 70%;
+  display: block;
+}

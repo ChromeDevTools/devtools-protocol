@@ -1,92 +1,98 @@
-<link rel="import"
-      href="../../bower_components/polymer/polymer.html">
-<link rel="import"
-      href="../viewer-method/viewer-method.html">
-<link rel="import"
-      href="../viewer-type/viewer-type.html">
-<link rel="import"
-      href="../html-echo/html-echo.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../viewer-method/viewer-method.html">
+<link rel="import" href="../viewer-type/viewer-type.html">
+<link rel="import" href="../html-echo/html-echo.html">
 
 <dom-module id="viewer-domain">
   <template>
-    <div class="content" style$="{{getStyle(domain)}}">
+    <paper-material elevation="1">
       <h2 class="heading" hidden="{{!domain}}"><span>{{domain.name}}</span> Domain</h2>
 
       <p class="description" hidden="{{!domain}}">
         <html-echo html="{{domain.description}}"></html-echo>
       </p>
+    </paper-material>
 
-      <p class="description" hidden="{{domain}}">Please select a domain on the left.</p>
+    <paper-material elevation="1" class="methods" hidden="{{!domain.methods}}">
+      <h3><span>{{domain.name}}</span> Methods</h3>
 
-      <section class="methods" hidden="{{!domain.methods}}">
-        <h3><span>{{domain.name}}</span> Methods</h3>
+      <template is="dom-repeat" items="{{domain.methods}}" as="method">
+        <viewer-method
+          name="{{method.name}}"
+          description="{{method.description}}"
+          parameters="{{method.parameters}}"
+          returns="{{method.returns}}"
+          ></viewer-method>
+      </template>
+    </paper-material>
 
-        <div>
-          <template is="dom-repeat" items="{{domain.methods}}" as="method">
-            <viewer-method
-              name="{{method.name}}"
-              description="{{method.description}}"
-              parameters="{{method.parameters}}"
-              returns="{{method.returns}}"
-              ></viewer-method>
-          </template>
-        </div>
-      </section>
+    <paper-material elevation="1" class="events" hidden="{{!domain.events}}">
+      <h3><span>{{domain.name}}</span> Events</h3>
 
-      <section class="events" hidden="{{!domain.events}}">
-        <h3><span>{{domain.name}}</span> Events</h3>
+      <template is="dom-repeat" items="{{domain.events}}" as="event">
+        <viewer-method
+          name="{{event.name}}"
+          description="{{event.description}}"
+          parameters="{{event.parameters}}"
+          ></viewer-method>
+      </template>
+    </paper-material>
 
-        <div>
-          <template is="dom-repeat" items="{{domain.events}}" as="event">
-            <viewer-method
-              name="{{event.name}}"
-              description="{{event.description}}"
-              parameters="{{event.parameters}}"
-              ></viewer-method>
-          </template>
-        </div>
-      </section>
+    <paper-material elevation="1" class="types" hidden="{{!domain.types}}">
+      <h3><span>{{domain.name}}</span> Types</h3>
 
-      <section class="types" hidden="{{!domain.types}}">
-        <h3><span>{{domain.name}}</span> Types</h3>
-
-        <div>
-          <template is="dom-repeat" items="{{domain.types}}" as="type">
-            <viewer-type
-              name="{{type.id}}"
-              description="{{type.description}}"
-              type="{{type.type}}"
-              object-properties="{{type.properties}}"
-              allowed-values="{{type.enum}}"
-              array-items="{{type.items}}"
-              ></viewer-type>
-          </template>
-        </div>
-      </section>
-    </div>
+      <template is="dom-repeat" items="{{domain.types}}" as="type">
+        <viewer-type
+          name="{{type.id}}"
+          description="{{type.description}}"
+          type="{{type.type}}"
+          object-properties="{{type.properties}}"
+          allowed-values="{{type.enum}}"
+          array-items="{{type.items}}"
+          ></viewer-type>
+      </template>
+    </paper-material>
   </template>
-  <script>
-    (function () {
-      Polymer({
-        is: 'viewer-domain',
-        ready: function () {
-          this.domain = null;
-        },
-        getStyle: function (domain) {
-          return domain && 'background-color: ' + domain.color;
-        }
-      });
-    })();
-  </script>
   <style>
-    .content {
-      background-color: lightblue;
-      background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, .6) 0%, rgba(255, 255, 255, 0) 100%);
-      min-height: 300px;
-      border: 1px solid rgba(153, 153, 153, 0.32);
+    paper-material {
       border-radius: 2px;
-      transition: background-color .24s linear;
-      padding: 1.5rem;
+      height: 100%;
+      padding: 16px 0 16px 0;
+      width: calc(98.66% - 16px);
+      margin: 16px auto;
+      background: white;
+    }
+
+    /* Breakpoints */
+
+    /* Small */
+    @media (max-width: 600px) {
+      paper-material {
+        --menu-container-display: none;
+        width: calc(97.33% - 32px);
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+    }
+
+    /* Tablet+ */
+    @media (min-width: 601px) {
+      paper-material {
+        width: calc(98% - 46px);
+        margin-bottom: 32px;
+        padding-left: 30px;
+        padding-right: 30px;
+      }
     }
   </style>
 </dom-module>
+<script>
+  (function () {
+    Polymer({
+      is: 'viewer-domain',
+      ready: function () {
+        this.domain = null;
+      }
+    });
+  })();
+</script>
