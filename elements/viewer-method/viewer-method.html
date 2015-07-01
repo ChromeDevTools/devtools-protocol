@@ -19,20 +19,20 @@
             name="{{param.name}}"
             description="{{param.description}}"
             optional="{{param.optional}}"
-            type="{{param.type}}"></viewer-param>
+            type="{{param.type}}"
+            ref="{{param.$ref}}"></viewer-param>
         </template>
       </dl>
 
-
       <h5 hidden="{{isEmpty(returns)}}">Return object</h5>
-      <dl class="parameter-list returns" hidden="{{isEmpty(returns)}}">
+      <dl class="parameter-list" hidden="{{isEmpty(returns)}}">
         <template is="dom-repeat" items="{{returns}}" as="ret">
           <viewer-param
             name="{{ret.name}}"
             description="{{ret.description}}"
             optional="{{ret.optional}}"
             type="{{ret.type}}"
-            ref="{{ret.ref}}"></viewer-param>
+            ref="{{ret.$ref}}"></viewer-param>
         </template>
       </dl>
     </div>
@@ -47,9 +47,7 @@
         returns: Object
       },
       isEmpty: function(paramObj){
-        if (!paramObj) return true;
-        if (paramObj.length == 0) return true;
-        return false;
+        return !paramObj || !paramObj.length;
       },
       ready: function() {
         this.parameters = null;
