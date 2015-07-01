@@ -3,15 +3,14 @@
 <link rel="import"
       href="../html-echo/html-echo.html">
 
-<!-- we're not showing `type` info, yet. -->
-
 <dom-module id="viewer-param">
   <template>
     <div class="param-pair">
       <dt class="param-name monospace" class$="{{getCSSClass(optional)}}">{{name}}</dt>
       <dd class="param-def">
-        <html-echo html="{{description}}"></html-echo>
-        <span hidden="{{description}}">No description</span>
+        <span class="param-type" hidden="{{isEmpty(type)}}">{{type}}</span>
+        <span class="param-type" hidden="{{isEmpty(ref)}}">{{ref}}</span>
+        <html-echo class="param-desc" html="{{description}}"></html-echo>
       </dd>
     </div>
   </template>
@@ -34,9 +33,16 @@
   dd {
     flex: 3 0 0;
     margin-left: 20px;
+
+    display: flex;
+    flex-direction: column;
   }
   dt, dd {
     vertical-align: text-top;
+  }
+
+  .param-type {
+    font-weight: bold;
   }
 
   .optional {
@@ -60,6 +66,13 @@
         optional: Boolean,
         type: String,
         ref: String
+      },
+      ready: function() {
+        this.type = null;
+        this.ref = null;
+      },
+      isEmpty: function(value) {
+        return !value || !value.trim().length;
       },
       getCSSClass: function(optional) {
 
