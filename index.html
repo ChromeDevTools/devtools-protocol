@@ -2,21 +2,19 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Chrome Debugger Protocol Viewer</title>
 
-  <link href="./assets/protocol.css" rel="stylesheet">
   <script src="./bower_components/webcomponentsjs/webcomponents.min.js"></script>
+
+  <link rel="import" href="./bower_components/iron-flex-layout/classes/iron-flex-layout.html">
+  <link rel="import" href="./bower_components/paper-styles/paper-styles-classes.html">
   <link rel="import" href="./elements/viewer-app/viewer-app.html">
+
+  <link href="./styles/protocol.css" rel="stylesheet">
+  <link rel="import" href="./styles/app-theme.html">
 </head>
-<body>
-
-<header>
-  <h1>Chrome Debugger Protocol Viewer</h1>
-
-  <p>Explore the tip-of-tree <a href="https://developer.chrome.com/devtools/docs/debugger-protocol">debugger protocol
-    for Chrome</a>. For production use, consider <a
-    href="https://developer.chrome.com/devtools/docs/debugger-protocol#stable">the stable protocol version</a>.
-</header>
+<body unresolved class="fullbleed layout vertical">
 
 <viewer-app></viewer-app>
 
