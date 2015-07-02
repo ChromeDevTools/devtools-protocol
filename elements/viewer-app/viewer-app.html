@@ -6,7 +6,6 @@
 <link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../../bower_components/paper-drawer-panel/paper-drawer-panel.html">
-<link rel="import" href="../../bower_components/paper-menu/paper-menu.html">
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 
 <dom-module id="viewer-app">
@@ -27,13 +26,11 @@
         </paper-toolbar>
 
         <div class="content">
-          <section>
-            <paper-material elevation="1" hidden$="{{selectedDomain}}">
-              <p>Explore the tip-of-tree <a href="https://developer.chrome.com/devtools/docs/debugger-protocol">debugger protocol for Chrome</a>. For production use, consider <a href="https://developer.chrome.com/devtools/docs/debugger-protocol#stable">the stable protocol version</a></p>
-            </paper-material>
-            <viewer-domain
-              domain="{{selectedDomain}}" hidden$="{{!selectedDomain}}"></viewer-domain>
-          </section>
+          <paper-material elevation="1" hidden="{{selectedDomain}}">
+            <p>Explore the tip-of-tree <a href="https://developer.chrome.com/devtools/docs/debugger-protocol">debugger protocol for Chrome</a>. For production use, consider <a href="https://developer.chrome.com/devtools/docs/debugger-protocol#stable">the stable protocol version</a>.</p>
+          </paper-material>
+          <viewer-domain
+            domain="{{selectedDomain}}" hidden="{{!selectedDomain}}"></viewer-domain>
         </div>
       </paper-header-panel>
     </paper-drawer-panel>
@@ -45,6 +42,7 @@
 
     #mainToolbar.has-shadow .middle {
       font-size: 20px;
+      line-height: 26px;
       padding-bottom: 0;
       margin-left: 48px;
     }
@@ -127,7 +125,7 @@
 
         this.domains = domains.sort(function (a, b) {
           return (a.domain).localeCompare(b.domain);
-        }).map(function (domain, i) {
+        }).map(function (domain) {
           return {
             name: domain.domain,
             description: domain.description,

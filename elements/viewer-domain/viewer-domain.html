@@ -6,16 +6,15 @@
 <dom-module id="viewer-domain">
   <template>
     <paper-material elevation="1">
-      <h2 class="heading" hidden="{{!domain}}"><span>{{domain.name}}</span> Domain</h2>
+      <h2 class="heading"><span>{{domain.name}}</span> Domain</h2>
 
-      <p class="description" hidden="{{!domain}}">
+      <p class="description">
         <html-echo html="{{domain.description}}"></html-echo>
       </p>
     </paper-material>
 
+    <h3 hidden="{{!domain.methods}}">Methods</h3>
     <paper-material elevation="1" class="methods" hidden="{{!domain.methods}}">
-      <h3><span>{{domain.name}}</span> Methods</h3>
-
       <template is="dom-repeat" items="{{domain.methods}}" as="method">
         <viewer-method
           name="{{method.name}}"
@@ -26,9 +25,8 @@
       </template>
     </paper-material>
 
+    <h3 hidden="{{!domain.events}}">Events</h3>
     <paper-material elevation="1" class="events" hidden="{{!domain.events}}">
-      <h3><span>{{domain.name}}</span> Events</h3>
-
       <template is="dom-repeat" items="{{domain.events}}" as="event">
         <viewer-method
           name="{{event.name}}"
@@ -38,9 +36,8 @@
       </template>
     </paper-material>
 
+    <h3 hidden="{{!domain.types}}">Types</h3>
     <paper-material elevation="1" class="types" hidden="{{!domain.types}}">
-      <h3><span>{{domain.name}}</span> Types</h3>
-
       <template is="dom-repeat" items="{{domain.types}}" as="type">
         <viewer-type
           name="{{type.id}}"
@@ -54,22 +51,39 @@
     </paper-material>
   </template>
   <style>
+    h3 {
+      font-size: 20px;
+      line-height: 28px;
+    }
+
     paper-material {
       border-radius: 2px;
       height: 100%;
       padding: 16px 0 16px 0;
       width: calc(98.66% - 16px);
-      margin: 16px auto;
       background: white;
+    }
+
+    viewer-method, viewer-type {
+      display: block;
+      border-bottom: solid var(--divider-color) 1px;
+      padding-bottom: 15px;
+    }
+
+    viewer-method:last-of-type, viewer-type:last-of-type {
+      border-bottom: none;
     }
 
     /* Breakpoints */
 
     /* Small */
     @media (max-width: 600px) {
+      h3 {
+        margin-left: 7px;
+      }
+
       paper-material {
         --menu-container-display: none;
-        width: calc(97.33% - 32px);
         padding-left: 16px;
         padding-right: 16px;
       }
@@ -79,7 +93,6 @@
     @media (min-width: 601px) {
       paper-material {
         width: calc(98% - 46px);
-        margin-bottom: 32px;
         padding-left: 30px;
         padding-right: 30px;
       }
