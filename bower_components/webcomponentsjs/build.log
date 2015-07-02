@@ -1,33 +1,33 @@
 BUILD LOG
 ---------
-Build Time: 2015-06-03T16:30:51-0700
+Build Time: 2015-06-17T19:01:18-0700
 
 NODEJS INFORMATION
 ==================
-nodejs: v2.0.2
+nodejs: v2.3.0
 gulp: 3.9.0
 gulp-audit: 1.0.0
 gulp-concat: 2.5.2
 gulp-header: 1.2.2
 gulp-uglify: 1.2.0
-run-sequence: 1.1.0
-web-component-tester: 3.1.4
+run-sequence: 1.1.1
+web-component-tester: 3.2.0
 
 REPO REVISIONS
 ==============
-webcomponentsjs: da802598acc91d10d0205cf6130d15bd75fa12d1
+webcomponentsjs: 1ee61faca40f109f2f5b6ddc8fa15de0319a6e61
 
 BUILD HASHES
 ============
-CustomElements.js: 89978a89cdf96d509b8e399bf8e6aff4431c41ea
-CustomElements.min.js: e8d9ac81e56720cccef8e1ba01400d4f403531b1
-HTMLImports.js: 5a393509ce18b7ee605cd4474750e783a6afa5a5
-HTMLImports.min.js: 6ce4c8c1340b3ceea4a2c05942cf4e8ef685fae3
-MutationObserver.js: 60074504bbdf487e192215647375bffb70888997
-MutationObserver.min.js: 76658a548e3785ee931d45fad4a0bd2b81594aa3
-ShadowDOM.js: 35dceaf9eca85b593764a05b5324173e84f07608
-ShadowDOM.min.js: 80ab65804971765c3450864b24f108efd8bd6086
-webcomponents-lite.js: 94a081e93a4b2c65e645787b6e69c2a0aac204ff
-webcomponents-lite.min.js: 80158c463eb7fda32995d908b9fbabcf95595c0e
-webcomponents.js: de93a7fee51ce01dd61546598f12e481755c44ca
-webcomponents.min.js: 0a70cae0a9589e463aa36d1ec9c1fbc87c1b1c5c
+CustomElements.js: f3f0c7f3c65aeb5cc56c64300fe89003a4c7fa31
+CustomElements.min.js: 557ccd338ab463c9bcd1e3c0fc4102455432214a
+HTMLImports.js: 8c1f33a777d7ff8ee3a22fce8d35e5b927285724
+HTMLImports.min.js: f4ba44076c40f408c661caa8baf81f9e3740689b
+MutationObserver.js: 81934731acd4175701d678dbef11aaefa7d701f5
+MutationObserver.min.js: 6202537174240ba28bf71e22cddf90ce80cf73f8
+ShadowDOM.js: 5e901cfe7eb384f15a39b1bf4e510a06ae03b43e
+ShadowDOM.min.js: 397715836fdd0cfe15a5e966f5ab187ccc1bec15
+webcomponents-lite.js: 5c38f87a645eea9d282de74340c101e5531cb2c0
+webcomponents-lite.min.js: 2a744443fbfba6b30fde7b17606f68cae6036e52
+webcomponents.js: 637cf33c1ee108fb376891eed0b5b47deed8c238
+webcomponents.min.js: c2841b948265560478872747618cad207a693c4f
