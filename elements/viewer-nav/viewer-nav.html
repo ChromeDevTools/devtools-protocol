@@ -10,7 +10,7 @@
 
     <paper-menu class="list" attr-for-selected="data-route" selected="{{selectedDomain}}">
       <template is="dom-repeat" items="{{domains}}" as="domain">
-        <a href$="{{getDomainURL(domain)}}" data-route$="{{domain.name}}">
+        <a href$="[[_getDomainURL(domain)]]" data-route$="[[domain.name]]">
           <span>{{domain.name}}</span>
         </a>
       </template>
@@ -59,7 +59,7 @@
       domains: Array,
       selectedDomain: String
     },
-    getDomainURL: function (domain) {
+    _getDomainURL: function (domain) {
       return '/' + domain.name;
     }
   });

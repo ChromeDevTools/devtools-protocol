@@ -1,21 +1,29 @@
-window.addEventListener('WebComponentsReady', function () {
-  var viewerApp = document.querySelector('viewer-app');
-  viewerApp.setProtocolSchema(protocol);
+(function (document) {
+  'use strict';
 
-  /*
-   ROUTING
-   */
+  window.addEventListener('WebComponentsReady', function () {
+    var viewerApp = document.querySelector('viewer-app');
+    viewerApp.setProtocolSchema(protocol);
 
-  page('/', function () {
-    viewerApp.setDomainByName(null);
+    /*
+     ROUTING
+     */
+
+    page('/', function () {
+      viewerApp.setDomainByName(null);
+    });
+
+    page('/:domain/:element?', function (data) {
+      viewerApp.setDomainByName(data.params.domain);
+
+      if(data.params.element) {
+        viewerApp.higlightElement(data.params.element);
+      }
+    });
+
+    // add #! before urls
+    page({
+      hashbang: true
+    });
   });
-
-  page('/:domain', function (data) {
-    viewerApp.setDomainByName(data.params && data.params.domain);
-  });
-
-  // add #! before urls
-  page({
-    hashbang: true
-  });
-});
+})(document);

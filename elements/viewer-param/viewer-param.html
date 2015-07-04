@@ -1,15 +1,13 @@
-<link rel="import"
-      href="../../bower_components/polymer/polymer.html">
-<link rel="import"
-      href="../html-echo/html-echo.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../html-echo/html-echo.html">
 
 <dom-module id="viewer-param">
   <template>
     <div class="param-pair">
-      <dt class="param-name monospace" class$="{{getCSSClass(optional)}}">{{name}}</dt>
+      <dt class="param-name monospace" class$="[[_getCSSClass(optional)]]">{{name}}</dt>
       <dd class="param-def">
-        <span class="param-type" hidden="{{isEmpty(type)}}">{{type}}</span>
-        <span class="param-type" hidden="{{isEmpty(ref)}}">{{ref}}</span>
+        <span class="param-type" hidden="[[_isEmpty(type)]]">{{type}}</span>
+        <span class="param-type" hidden="[[_isEmpty(ref)]]">{{ref}}</span>
         <html-echo class="param-desc" html="{{description}}"></html-echo>
       </dd>
     </div>
@@ -56,35 +54,34 @@
     font-size: 70%;
     display: block;
   }
-
   </style>
-  <script>
-    Polymer({
-      is: 'viewer-param',
-      properties: {
-        name: String,
-        description: String,
-        optional: Boolean,
-        type: String,
-        ref: String
-      },
-      ready: function() {
-        this.type = null;
-        this.ref = null;
-      },
-      isEmpty: function(value) {
-        return !value || !value.trim().length;
-      },
-      getCSSClass: function(optional) {
-
-        var cssClass = this.$$('dt').className;
-
-        if(optional) {
-          cssClass += ' optional';
-        }
-
-        return cssClass;
-      }
-    });
-  </script>
 </dom-module>
+<script>
+  Polymer({
+    is: 'viewer-param',
+    properties: {
+      name: String,
+      description: String,
+      optional: Boolean,
+      type: String,
+      ref: String
+    },
+    ready: function() {
+      this.type = null;
+      this.ref = null;
+    },
+    _isEmpty: function(value) {
+      return !value || !value.trim().length;
+    },
+    _getCSSClass: function(optional) {
+
+      var cssClass = this.$$('dt').className;
+
+      if(optional) {
+        cssClass += ' optional';
+      }
+
+      return cssClass;
+    }
+  });
+</script>
