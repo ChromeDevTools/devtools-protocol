@@ -31,7 +31,6 @@
           </paper-material>
           <viewer-domain
             domain="{{selectedDomain}}"
-            highlighted-element="{{highlightedElement}}"
             hidden="{{!selectedDomain}}"></viewer-domain>
         </div>
       </paper-header-panel>
@@ -118,13 +117,13 @@
       is: 'viewer-app',
       ready: function () {
         this.selectedDomain = null;
-        this.highlightedElement = null;
       },
       setDomainByName: function (name) {
         if(this.domains) {
           for (var i = 0, l = this.domains.length; i < l; i++) {
             if (this.domains[i].name === name) {
               this.selectedDomain = this.domains[i];
+              this._scrollToTheTop();
               return true;
             }
           }
@@ -132,11 +131,6 @@
 
         this.selectedDomain = null;
         return false;
-      },
-      higlightElement: function(name) {
-        this.async(function() {
-          this.highlightedElement = name;
-        });
       },
       setProtocolSchema: function (protocolSchema) {
         var domains = protocolSchema['domains'];
@@ -152,6 +146,9 @@
             types: domain.types
           };
         });
+      },
+      _scrollToTheTop: function() {
+        this.$$('.content').parentElement.scrollTop = 0;
       }
     });
   })();

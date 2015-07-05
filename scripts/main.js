@@ -13,12 +13,8 @@
       viewerApp.setDomainByName(null);
     });
 
-    page('/:domain/:element?', function (data) {
+    page('/:domain', function (data) {
       viewerApp.setDomainByName(data.params.domain);
-
-      if(data.params.element) {
-        viewerApp.higlightElement(data.params.element);
-      }
     });
 
     // add #! before urls
