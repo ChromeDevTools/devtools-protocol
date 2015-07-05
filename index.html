@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Chrome Debugger Protocol Viewer</title>
 
-  <script src="./bower_components/webcomponentsjs/webcomponents.min.js"></script>
+  <script src="./bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
 
   <link rel="import" href="./bower_components/iron-flex-layout/classes/iron-flex-layout.html">
   <link rel="import" href="./bower_components/paper-styles/paper-styles-classes.html">
@@ -18,13 +18,9 @@
 
 <viewer-app></viewer-app>
 
+<script src="./bower_components/page/page.js"></script>
 <script src="./assets/protocol.js"></script>
-<script>
-  window.addEventListener('WebComponentsReady', function(e) {
-    var viewerApp = document.querySelector('viewer-app');
-    viewerApp.setProtocolSchema(protocol);
-  });
-</script>
+<script src="./scripts/main.js"></script>
 
 <a href="https://github.com/ChromeDevTools/debugger-protocol-viewer"><img
   style="position: absolute; top: 0; right: 0; border: 0;"

@@ -14,7 +14,7 @@
       <div drawer>
         <viewer-nav
           domains="{{domains}}"
-          on-domain-changed="setDomain"></viewer-nav>
+          selected-domain="{{selectedDomain.name}}"></viewer-nav>
       </div>
 
       <paper-header-panel main mode="waterfall-tall">
@@ -30,7 +30,8 @@
             <p>Explore the tip-of-tree <a href="https://developer.chrome.com/devtools/docs/debugger-protocol">debugger protocol for Chrome</a>. For production use, consider <a href="https://developer.chrome.com/devtools/docs/debugger-protocol#stable">the stable protocol version</a>.</p>
           </paper-material>
           <viewer-domain
-            domain="{{selectedDomain}}" hidden="{{!selectedDomain}}"></viewer-domain>
+            domain="{{selectedDomain}}"
+            hidden="{{!selectedDomain}}"></viewer-domain>
         </div>
       </paper-header-panel>
     </paper-drawer-panel>
@@ -117,8 +118,19 @@
       ready: function () {
         this.selectedDomain = null;
       },
-      setDomain: function (event, details) {
-        this.selectedDomain = details.domain;
+      setDomainByName: function (name) {
+        if(this.domains) {
+          for (var i = 0, l = this.domains.length; i < l; i++) {
+            if (this.domains[i].name === name) {
+              this.selectedDomain = this.domains[i];
+              this._scrollToTheTop();
+              return true;
+            }
+          }
+        }
+
+        this.selectedDomain = null;
+        return false;
       },
       setProtocolSchema: function (protocolSchema) {
         var domains = protocolSchema['domains'];
@@ -134,6 +146,9 @@
             types: domain.types
           };
         });
+      },
+      _scrollToTheTop: function() {
+        this.$$('.content').parentElement.scrollTop = 0;
       }
     });
   })();

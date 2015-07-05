@@ -1,9 +1,6 @@
-<link rel="import"
-      href="../../bower_components/polymer/polymer.html">
-<link rel="import"
-      href="../viewer-param/viewer-param.html">
-<link rel="import"
-      href="../html-echo/html-echo.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../viewer-param/viewer-param.html">
+<link rel="import" href="../html-echo/html-echo.html">
 
 <dom-module id="viewer-type">
   <template>
@@ -29,36 +26,13 @@
       <p hidden="{{isEmpty(allowedValues)}}">{{joinValues(allowedValues)}}</p>
     </div>
   </template>
-  <script>
-    Polymer({
-      is: 'viewer-type',
-      properties: {
-        name: String,
-        description: String,
-        type: String,
-        objectProperties: Object,
-        allowedValues: Object,
-        arrayItems: Object
-      },
-      ready: function() {
-        this.objectProperties = null;
-        this.allowedValues = null;
-        this.arrayItems = null;
-      },
-      isEmpty: function(paramObj){
-        return !paramObj || !paramObj.length;
-      },
-      joinValues: function(array) {
-        return array && Array.isArray(array) && array.join(', ');
-      }
-    });
-  </script>
   <style>
     .parameter-list{
       border: 2px solid hsl(0, 0%, 85%);
       border-radius: 5px;
       margin: 0 10%;
     }
+
     @media (max-width: 980px) {
       .parameter-list{
         margin: 0;
@@ -67,3 +41,27 @@
 
   </style>
 </dom-module>
+<script>
+  Polymer({
+    is: 'viewer-type',
+    properties: {
+      name: String,
+      description: String,
+      type: String,
+      objectProperties: Object,
+      allowedValues: Object,
+      arrayItems: Object
+    },
+    ready: function() {
+      this.objectProperties = null;
+      this.allowedValues = null;
+      this.arrayItems = null;
+    },
+    isEmpty: function(paramObj){
+      return !paramObj || !paramObj.length;
+    },
+    joinValues: function(array) {
+      return array && Array.isArray(array) && array.join(', ');
+    }
+  });
+</script>

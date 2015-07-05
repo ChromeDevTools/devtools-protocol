@@ -103,6 +103,9 @@
   (function () {
     Polymer({
       is: 'viewer-domain',
+      properties: {
+        domain: Object
+      },
       ready: function () {
         this.domain = null;
       }
