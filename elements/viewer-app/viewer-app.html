@@ -17,12 +17,12 @@
           selected-domain="{{selectedDomain.name}}"></viewer-nav>
       </div>
 
-      <paper-header-panel main mode="waterfall-tall">
+      <paper-header-panel main mode="waterfall">
         <paper-toolbar id="mainToolbar">
           <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
           <span class="flex"></span>
 
-          <div class="middle paper-font-display2 app-name">Chrome Debugger Protocol Viewer</div>
+          <div class="bottom title">Chrome Debugger Protocol Viewer</div>
         </paper-toolbar>
 
         <div class="content">
@@ -41,13 +41,6 @@
       margin-left: 48px;
     }
 
-    #mainToolbar.has-shadow .middle {
-      font-size: 20px;
-      line-height: 26px;
-      padding-bottom: 0;
-      margin-left: 48px;
-    }
-
     paper-material {
       border-radius: 2px;
       height: 100%;
@@ -61,6 +54,13 @@
       background-color: #fafafa;
     }
 
+    #mainToolbar .title {
+      font-size: 20px;
+      line-height: 20px;
+      white-space: normal;
+      overflow: visible;;
+    }
+
     /* Breakpoints */
 
     /* Small */
@@ -71,14 +71,6 @@
         width: calc(97.33% - 32px);
         padding-left: 16px;
         padding-right: 16px;
-      }
-
-      .paper-font-display1 {
-        font-size: 12px;
-      }
-
-      .app-name {
-        font-size: 26px;
       }
 
       #drawer .paper-toolbar {
@@ -106,6 +98,11 @@
 
       .content {
         padding: 48px 62px;
+      }
+
+      #mainToolbar .title {
+        font-size: 26px;
+        line-height: 26px;
       }
 
     }
