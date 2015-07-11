@@ -1,4 +1,4 @@
-{% assign domain = site.data.protocol.domains[page.idx] %}
+{% assign domain = includes.domain %}
 
 <paper-material elevation="1">
   <h2 class="heading"><span>{{domain.domain}}</span> Domain</h2>
@@ -12,7 +12,7 @@
 <h3>Methods</h3>
 <paper-material elevation="1" class="methods">
   {% for method in domain.commands %}
-    {% include method.html %}
+    {% include method.html method=method %}
   {% endfor %}
 </paper-material>
 {% endif %}
@@ -20,8 +20,8 @@
 {% if domain.events[0] %}
 <h3>Events</h3>
 <paper-material elevation="1" class="events">
-  {% for method in domain.events %}
-    {% include method.html %}
+  {% for event in domain.events %}
+    {% include method.html method=event %}
   {% endfor %}
 </paper-material>
 {% endif %}
@@ -30,7 +30,7 @@
 <h3>Types</h3>
 <paper-material elevation="1" class="types">
   {% for type in domain.types %}
-    {% include type.html %}
+    {% include type.html type=type %}
   {% endfor %}
 </paper-material>
 {% endif %}

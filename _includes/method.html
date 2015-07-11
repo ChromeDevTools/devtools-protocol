@@ -1,3 +1,5 @@
+{% assign method = include.method %}
+
 <div>
   <h4 class="method-name monospace" id="method-{{method.name}}">{{method.name}}</h4>
 
@@ -9,7 +11,7 @@
   <h5>Parameters</h5>
   <dl class="parameter-list">
     {% for param in method.parameters %}
-      {% include param.html %}
+      {% include param.html param=param %}
     {% endfor %}
   </dl>
   {% endif %}
@@ -17,8 +19,8 @@
   {% if method.returns[0] %}
   <h5>Return object</h5>
   <dl class="parameter-list">
-    {% for param in method.returns %}
-      {% include param.html %}
+    {% for return in method.returns %}
+      {% include param.html param=return %}
     {% endfor %}
   </dl>
   {% endif %}

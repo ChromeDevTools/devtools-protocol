@@ -1,3 +1,5 @@
+{% assign param = include.param %}
+
 <div class="param-pair">
   <dt class="param-name monospace {% if param.optional %}optional{% endif %}">{{param.name}}</dt>
   <dd class="param-def">
@@ -8,13 +10,13 @@
         {% if param.items.type %}
           [{{ param.items.type }}]
         {% else %}
-          [<a href='{{ site.baseurl }}{{ page.url }}#type-{{ param.items["$ref"] }}'>{{ param.items["$ref"] }}</a>]
+          [{% include type-referral.html type=param.items["$ref"] %}]
         {% endif %}
       {% endif %}
     </span>
     {% endif %}
     {% if param["$ref"] %}
-    <span class="param-type"><a href='{{ site.baseurl }}{{ page.url }}#type-{{ param["$ref"] }}'>{{ param["$ref"] }}</a></span>
+    <span class="param-type">[{% include type-referral.html type=param["$ref"] %}]</span>
     {% endif %}
     {{ param.description }}
   </dd>

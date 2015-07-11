@@ -1,3 +1,5 @@
+{% assign type = include.type %}
+
 <div>
   <h4 class="type-name monospace" id="type-{{type.id}}">{{type.id}}</h4>
 
@@ -7,8 +9,8 @@
   {% if type.properties[0] %}
   <h5>Properties</h5>
   <dl class="parameter-list">
-    {% for param in type.properties %}
-      {% include param.html %}
+    {% for property in type.properties %}
+      {% include param.html param=property %}
     {% endfor %}
   </dl>
   {% endif %}
