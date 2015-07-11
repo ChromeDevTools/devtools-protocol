@@ -4,26 +4,27 @@
   <dt class="param-name monospace {% if param.optional %}optional{% endif %}">{{param.name}}</dt>
   <dd class="param-def">
     {% if param.type %}
-    <span class="param-type">
-      {{ param.type }}
-      {% if param.items %}
-        {% if param.items.type %}
-          [{{ param.items.type }}]
-        {% else %}
-          {{ assign type=param.items["$ref"] }}
-          [{% include type-referral.html type=type %}]
+      <span class="param-type">
+        {{ param.type }}
+
+        {% if param.items %}
+          {% if param.items.type %}
+            [{{ param.items.type }}]
+          {% else %}
+            {{ assign type=param.items["$ref"] }}
+            [{% include type-referral.html type=type %}]
+          {% endif %}
         {% endif %}
-      {% endif %}
-    </span>
+      </span>
     {% elsif param["$ref"] %}
-    {% assign type=param["$ref"] %}
-    <span class="param-type">{% include type-referral.html type=type %}</span>
+      {% assign type=param["$ref"] %}
+      <span class="param-type">{% include type-referral.html type=type %}</span>
     {% endif %}
 
     {{ param.description }}
 
     {% if param.enum[0] %}
-    Allowed values: {{param.enum | join: ', '}}.
+      Allowed values: {{ param.enum | join: ', ' }}.
     {% endif %}
   </dd>
 </div>
