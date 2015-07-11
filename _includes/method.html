@@ -5,7 +5,7 @@
     {{method.description}}
   </p>
 
-  {% if method.parameters %}
+  {% if method.parameters[0] %}
   <h5>Parameters</h5>
   <dl class="parameter-list">
     {% for param in method.parameters %}
@@ -14,7 +14,7 @@
   </dl>
   {% endif %}
 
-  {% if method.returns %}
+  {% if method.returns[0] %}
   <h5>Return object</h5>
   <dl class="parameter-list">
     {% for param in method.returns %}

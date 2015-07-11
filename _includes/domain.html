@@ -8,7 +8,7 @@
   </p>
 </paper-material>
 
-{% if domain.commands %}
+{% if domain.commands[0] %}
 <h3>Methods</h3>
 <paper-material elevation="1" class="methods">
   {% for method in domain.commands %}
@@ -17,7 +17,7 @@
 </paper-material>
 {% endif %}
 
-{% if domain.events %}
+{% if domain.events[0] %}
 <h3>Events</h3>
 <paper-material elevation="1" class="events">
   {% for method in domain.events %}
@@ -26,7 +26,7 @@
 </paper-material>
 {% endif %}
 
-{% if domain.types %}
+{% if domain.types[0] %}
 <h3>Types</h3>
 <paper-material elevation="1" class="types">
   {% for type in domain.types %}
