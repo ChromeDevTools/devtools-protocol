@@ -13,7 +13,6 @@ var protocol = JSON.parse(protocolText);
   var name = domain.domain;
   var fileName = '_domains/' + name + '.html';
   var content = "---\n" +
-    "layout: default\n" +
     "title: " + name + '\n' +
     "idx: " + idx + '\n' +
     "---";

@@ -8,3 +8,10 @@ github_username:  chromedevtools
 collections:
   domains:
     output: true
+
+defaults:
+- scope:
+    path: ""
+    type: domains
+  values:
+    layout: default
