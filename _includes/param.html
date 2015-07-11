@@ -2,7 +2,16 @@
   <dt class="param-name monospace {% if param.optional %}optional{% endif %}">{{param.name}}</dt>
   <dd class="param-def">
     {% if param.type %}
-    <span class="param-type">{{ param.type }}</span>
+    <span class="param-type">
+      {{ param.type }}
+      {% if param.items %}
+        {% if param.items.type %}
+          [{{ param.items.type }}]
+        {% else %}
+          [<a href='{{ site.baseurl }}{{ page.url }}#type-{{ param.items["$ref"] }}'>{{ param.items["$ref"] }}</a>]
+        {% endif %}
+      {% endif %}
+    </span>
     {% endif %}
     {% if param["$ref"] %}
     <span class="param-type"><a href='{{ site.baseurl }}{{ page.url }}#type-{{ param["$ref"] }}'>{{ param["$ref"] }}</a></span>
