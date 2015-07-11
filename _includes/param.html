@@ -1,0 +1,12 @@
+<div class="param-pair">
+  <dt class="param-name monospace {% if param.optional %}optional{% endif %}">{{param.name}}</dt>
+  <dd class="param-def">
+    {% if param.type %}
+    <span class="param-type">{{ param.type }}</span>
+    {% endif %}
+    {% if param["$ref"] %}
+    <span class="param-type"><a href='{{ site.baseurl }}{{ page.url }}#type-{{ param["$ref"] }}'>{{ param["$ref"] }}</a></span>
+    {% endif %}
+    {{ param.description }}
+  </dd>
+</div>

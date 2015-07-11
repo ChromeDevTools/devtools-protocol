@@ -197,6 +197,60 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
   }
 
+  .parameter-list {
+    border: 2px solid hsl(0, 0%, 85%);
+    border-radius: 5px;
+    margin: 0 10%;
+  }
+
+  @media (max-width: 980px) {
+    .parameter-list {
+      margin: 0;
+    }
+  }
+
+  .param-pair {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 6px;
+  }
+  .param-pair:hover {
+    background: hsla(0, 100%, 100%, 0.6);
+    border-radius: 5px;
+  }
+
+  dt {
+    flex: 1 0 0;
+    text-align: right;
+    color: black;
+    word-wrap: break-word;
+  }
+  dd {
+    flex: 3 0 0;
+    margin-left: 20px;
+
+    display: flex;
+    flex-direction: column;
+  }
+  dt, dd {
+    vertical-align: text-top;
+  }
+
+  .param-type {
+    font-weight: bold;
+  }
+
+  .optional {
+    opacity: .9;
+  }
+
+  .optional:after {
+    content: "optional";
+    opacity: .6;
+    font-size: 70%;
+    display: block;
+  }
+
   /* Material Design Adaptive Breakpoints */
   /*
     Below you'll find CSS media queries based on the breakpoint guidance

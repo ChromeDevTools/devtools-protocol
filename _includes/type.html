@@ -1,0 +1,20 @@
+<div>
+  <h4 class="type-name monospace" id="type-{{type.id}}">{{type.id}}</h4>
+
+  <p class="type-description"><html-echo html="{{type.description}}"></html-echo></p>
+  <p class="type-type">Type: <strong>{{type.type}}</strong></p>
+
+  {% if type.properties %}
+  <h5>Properties</h5>
+  <dl class="parameter-list">
+    {% for param in type.properties %}
+      {% include param.html %}
+    {% endfor %}
+  </dl>
+  {% endif %}
+
+  {% if type.allowedValues %}
+  <h5>Allowed values</h5>
+  <p>{{joinValues(allowedValues)}}</p>
+  {% endif %}
+</div>
