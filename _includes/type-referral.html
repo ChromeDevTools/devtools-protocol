@@ -1,13 +1,13 @@
-{% assign type = include.type %}
+{% assign referral = include.referral %}
 
 {% comment %}
 Support for links to types from the same domain (SomeType -> CurrentDomain.html#type-SomeType) and from a different
 domain (OtherDomain.SomeType -> OtherDomain.html#type-SomeType).
 {% endcomment %}
 
-{% if type contains '.' %}
-  {% assign url = include.type | replace:'.','.html#type-' %}
-  <a href='{{ site.baseurl }}/{{ url }}'>{{ type }}</a>
+{% if referral contains '.' %}
+  {% assign url = referral | replace:'.','.html#type-' %}
+  <a href='{{ site.baseurl }}/domains/{{ url }}'>{{ referral }}</a>
 {% else %}
-  <a href='{{ site.baseurl }}{{ page.url }}#type-{{ type }}'>{{ type }}</a>
+  <a href='{{ site.baseurl }}{{ page.url }}#type-{{ referral }}'>{{ referral }}</a>
 {% endif %}

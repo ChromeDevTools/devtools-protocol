@@ -11,14 +11,14 @@
           {% if param.items.type %}
             [{{ param.items.type }}]
           {% else %}
-            {{ assign type=param.items["$ref"] }}
-            [{% include type-referral.html type=type %}]
+            {% assign referral=param.items["$ref"] %}
+            [{% include type-referral.html referral=referral %}]
           {% endif %}
         {% endif %}
       </span>
     {% elsif param["$ref"] %}
-      {% assign type=param["$ref"] %}
-      <span class="param-type">{% include type-referral.html type=type %}</span>
+      {% assign referral=param["$ref"] %}
+      <span class="param-type">{% include type-referral.html referral=referral %}</span>
     {% endif %}
 
     {{ param.description }}
