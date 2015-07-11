@@ -4,7 +4,7 @@
 
 <paper-menu class="list">
   {% for domain in site.domains %}
-  <a href="{{ site.baseurl }}{{ domain.url }}">
+  <a href="{{ site.baseurl }}{{ domain.url }}" {% if page.title == domain.title %}class="iron-selected"{% endif %}>
     <span>{{ domain.title }}</span>
   </a>
   {% endfor %}
