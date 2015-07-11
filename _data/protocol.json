@@ -1,4 +1,4 @@
-protocol = {
+{
     "version": { "major": "1", "minor": "1" },
     "domains": [{
         "domain": "Inspector",
@@ -4956,4 +4956,4 @@ protocol = {
             }
         ]
     }]
-};
+}

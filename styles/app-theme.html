@@ -45,6 +45,158 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     --menu-link-color: #111111;
   }
 
+
+  #drawerToolbar {
+    color: var(--secondary-text-color);
+    background-color: var(--drawer-menu-color);
+    border-bottom: var(--drawer-toolbar-border-color);
+    height: 64px;
+  }
+
+  paper-menu {
+    height: 100%;
+    overflow: scroll;
+  }
+
+  paper-menu a {
+    text-decoration: none;
+    color: var(--menu-link-color);
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    font-family: 'Roboto', 'Noto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    min-height: 48px;
+    padding: 0 16px;
+  }
+
+  #mainToolbar .middle {
+    margin-left: 48px;
+  }
+
+  paper-material {
+    border-radius: 2px;
+    height: 100%;
+    padding: 16px 0 16px 0;
+    width: calc(98.66% - 16px);
+    margin: 16px auto;
+    background: white;
+  }
+
+  .content {
+    background-color: #fafafa;
+  }
+
+  #mainToolbar .title {
+    font-size: 20px;
+    line-height: 20px;
+    white-space: normal;
+    overflow: visible;;
+  }
+
+  /* Breakpoints */
+
+  /* Small */
+  @media (max-width: 600px) {
+
+    paper-material {
+      --menu-container-display: none;
+      width: calc(97.33% - 32px);
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    #drawer .paper-toolbar {
+      margin-left: 16px;
+    }
+  }
+
+  /* Tablet+ */
+  @media (min-width: 601px) {
+
+    paper-material {
+      width: calc(98% - 46px);
+      margin-bottom: 32px;
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+
+    #drawer.paper-drawer-panel > [drawer] {
+      border-right: 1px solid rgba(0, 0, 0, 0.14);
+    }
+
+    iron-pages {
+      padding: 48px 62px;
+    }
+
+    .content {
+      padding: 48px 62px;
+    }
+
+    #mainToolbar .title {
+      font-size: 26px;
+      line-height: 26px;
+    }
+
+  }
+
+  h3 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  paper-material {
+    border-radius: 2px;
+    height: 100%;
+    padding: 16px 0 16px 0;
+    width: calc(98.66% - 16px);
+    background: white;
+  }
+
+  viewer-method, viewer-type {
+    display: block;
+    border-bottom: solid var(--divider-color) 1px;
+    padding-bottom: 15px;
+  }
+
+  viewer-method:last-of-type, viewer-type:last-of-type {
+    border-bottom: none;
+  }
+
+  /* Breakpoints */
+
+  /* Small */
+  @media (max-width: 600px) {
+    h3 {
+      margin-left: 7px;
+    }
+
+    paper-material {
+      --menu-container-display: none;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+
+  /* Tablet+ */
+  @media (min-width: 601px) {
+    paper-material {
+      width: calc(98% - 46px);
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
+
   /* Material Design Adaptive Breakpoints */
   /*
     Below you'll find CSS media queries based on the breakpoint guidance
