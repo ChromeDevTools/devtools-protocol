@@ -32,7 +32,8 @@
     <div class="content">
 
       {% if page.idx %}
-        {% include domain.html domain=site.data.protocol.domains[page.idx] %}
+        {% assign domain = site.data.protocol.domains[page.idx] %}
+        {% include domain.html domain=domain %}
       {% else %}
         <paper-material elevation="1">
           {{ content }}

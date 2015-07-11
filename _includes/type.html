@@ -15,12 +15,10 @@
   </dl>
   {% endif %}
 
-  {% if type.allowedValues[0] %}
+  {% if type.enum[0] %}
   <h5>Allowed values</h5>
   <p>
-    {% for value in type.allowedValues %}
-    {{ value }},
-    {% endfor %}
+    {{ type.enum | join: ', ' }}.
   </p>
   {% endif %}
 </div>
