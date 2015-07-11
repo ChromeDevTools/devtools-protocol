@@ -52,9 +52,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     border-bottom: var(--drawer-toolbar-border-color);
     height: 64px;
   }
+  
+  #drawer > div {
+    display: flex;
+    flex-direction: column;
+  }
 
   paper-menu {
-    height: 100%;
+    flex-grow: 1;
     overflow: scroll;
   }
 
@@ -78,10 +83,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     line-height: 24px;
     min-height: 48px;
     padding: 0 16px;
-  }
-
-  #mainToolbar .middle {
-    margin-left: 48px;
   }
 
   paper-material {
@@ -163,13 +164,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     background: white;
   }
 
-  viewer-method, viewer-type {
+  .method, .type {
     display: block;
     border-bottom: solid var(--divider-color) 1px;
     padding-bottom: 15px;
   }
 
-  viewer-method:last-of-type, viewer-type:last-of-type {
+  .method:last-of-type, .type:last-of-type {
     border-bottom: none;
   }
 
@@ -198,6 +199,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   }
 
   .parameter-list {
+    padding: 1rem 5px;
     border: 2px solid hsl(0, 0%, 85%);
     border-radius: 5px;
     margin: 0 10%;
