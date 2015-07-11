@@ -25,7 +25,6 @@
     "paper-material": "PolymerElements/paper-material#^1.0.0",
     "paper-menu": "PolymerElements/paper-menu#^1.0.0",
     "paper-styles": "PolymerElements/paper-styles#^1.0.0",
-    "paper-toolbar": "PolymerElements/paper-toolbar#^1.0.0",
-    "page": "visionmedia/page.js#~1.6.3"
+    "paper-toolbar": "PolymerElements/paper-toolbar#^1.0.0"
   }
 }
