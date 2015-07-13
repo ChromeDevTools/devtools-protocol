@@ -21,7 +21,7 @@
 <h3>Events</h3>
 <paper-material elevation="1" class="events">
   {% for event in domain.events %}
-    {% include method.html method=event %}
+    {% include event.html event=event %}
   {% endfor %}
 </paper-material>
 {% endif %}

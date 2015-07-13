@@ -1,7 +1,8 @@
 {% assign method = include.method %}
+{% capture permalink %}{{ site.baseurl }}{{ page.url }}#method-{{method.name}}{% endcapture %}
 
 <div class="method">
-  <h4 class="method-name monospace" id="method-{{method.name}}">{{method.name}}</h4>
+  <h4 class="method-name monospace" id="method-{{method.name}}">{{method.name}}<a href="{{permalink}}" class="permalink">#</a></h4>
 
   <p class="method-description">
     {{method.description}}

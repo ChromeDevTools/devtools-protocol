@@ -116,6 +116,21 @@ paper-menu a {
   vertical-align: text-top;
 }
 
+.permalink {
+  display: none;
+  margin-left: 5px;
+  vertical-align: top;
+  text-decoration: none;
+}
+
+.permalink:hover {
+  text-decoration: underline;
+}
+
+h4:hover .permalink {
+  display: initial;
+}
+
 /* Breakpoints */
 
 /* Small */

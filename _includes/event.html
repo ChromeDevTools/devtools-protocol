@@ -1,0 +1,28 @@
+{% assign event = include.event %}
+{% capture permalink %}{{ site.baseurl }}{{ page.url }}#event-{{event.name}}{% endcapture %}
+
+<div class="event">
+  <h4 class="event-name monospace" id="event-{{event.name}}">{{event.name}}<a href="{{permalink}}" class="permalink">#</a></h4>
+
+  <p class="event-description">
+    {{event.description}}
+  </p>
+
+  {% if event.parameters[0] %}
+  <h5>Parameters</h5>
+  <dl class="parameter-list">
+    {% for param in event.parameters %}
+    {% include param.html param=param %}
+    {% endfor %}
+  </dl>
+  {% endif %}
+
+  {% if event.returns[0] %}
+  <h5>Return object</h5>
+  <dl class="parameter-list">
+    {% for return in event.returns %}
+    {% include param.html param=return %}
+    {% endfor %}
+  </dl>
+  {% endif %}
+</div>
