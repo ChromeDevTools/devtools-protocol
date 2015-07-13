@@ -1,0 +1,36 @@
+{% assign domain = include.domain %}
+
+<paper-material elevation="1">
+  <h2 class="heading"><span>{{domain.domain}}</span> Domain</h2>
+
+  <p class="description">
+    {{domain.description}}
+  </p>
+</paper-material>
+
+{% if domain.commands[0] %}
+<h3>Methods</h3>
+<paper-material elevation="1" class="methods">
+  {% for method in domain.commands %}
+    {% include method.html method=method %}
+  {% endfor %}
+</paper-material>
+{% endif %}
+
+{% if domain.events[0] %}
+<h3>Events</h3>
+<paper-material elevation="1" class="events">
+  {% for event in domain.events %}
+    {% include event.html event=event %}
+  {% endfor %}
+</paper-material>
+{% endif %}
+
+{% if domain.types[0] %}
+<h3>Types</h3>
+<paper-material elevation="1" class="types">
+  {% for type in domain.types %}
+    {% include type.html type=type %}
+  {% endfor %}
+</paper-material>
+{% endif %}

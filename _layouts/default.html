@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chrome Debugger Protocol Viewer{% if page.title %} - {{ page.title }}{% endif %}</title>
+
+  <meta name="theme-color" content="#303F9F">
+
+  <script src="{{ site.baseurl }}/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+
+  <link rel="import" href="{{ site.baseurl }}/bower_components/iron-flex-layout/classes/iron-flex-layout.html">
+  <link rel="import" href="{{ site.baseurl }}/bower_components/paper-styles/paper-styles-classes.html">
+  <link rel="import" href="{{ site.baseurl }}/bower_components/paper-header-panel/paper-header-panel.html">
+  <link rel="import" href="{{ site.baseurl }}/bower_components/paper-icon-button/paper-icon-button.html">
+  <link rel="import" href="{{ site.baseurl }}/bower_components/paper-toolbar/paper-toolbar.html">
+  <link rel="import" href="{{ site.baseurl }}/bower_components/paper-menu/paper-menu.html">
+  <link rel="import" href="{{ site.baseurl }}/bower_components/paper-material/paper-material.html">
+  <link rel="import" href="{{ site.baseurl }}/bower_components/paper-drawer-panel/paper-drawer-panel.html">
+  <link rel="import" href="{{ site.baseurl }}/bower_components/iron-icons/iron-icons.html">
+
+  <link href="{{ site.baseurl }}/styles/protocol.css" rel="stylesheet">
+  <link rel="import" href="{{ site.baseurl }}/styles/app-theme.html">
+</head>
+<body unresolved class="fullbleed layout vertical">
+
+<paper-drawer-panel id="paperDrawerPanel">
+  <div drawer>
+    {% include navigation.html %}
+  </div>
+
+  <paper-header-panel main mode="waterfall">
+    <paper-toolbar id="mainToolbar">
+      <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
+      <span class="flex"></span>
+
+      <div class="bottom title">Chrome Debugger Protocol Viewer</div>
+    </paper-toolbar>
+
+    <div class="content">
+
+      {% if page.idx %}
+        {% assign domain = site.data.protocol.domains[page.idx] %}
+        {% include domain.html domain=domain %}
+      {% else %}
+        <paper-material elevation="1">
+          {{ content }}
+        </paper-material>
+      {% endif %}
+    </div>
+  </paper-header-panel>
+</paper-drawer-panel>
+
+{% include github-badge.html %}
+</body>
+</html>

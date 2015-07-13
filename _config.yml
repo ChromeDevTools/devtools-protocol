@@ -1,0 +1,18 @@
+# Site settings
+title: Chrome Debugger Protocol Viewer
+baseurl: "/debugger-protocol-viewer"
+url: "https://chromedevtools.github.io"
+twitter_username: ChromeDevTools
+github_username:  chromedevtools
+
+collections:
+  domains:
+    output: true
+    permalink: /:path/
+
+defaults:
+- scope:
+    path: ""
+    type: domains
+  values:
+    layout: default

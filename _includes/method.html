@@ -1,0 +1,28 @@
+{% assign method = include.method %}
+{% capture permalink %}{{ site.baseurl }}{{ page.url }}#method-{{method.name}}{% endcapture %}
+
+<div class="method">
+  <h4 class="method-name monospace" id="method-{{method.name}}">{{method.name}}<a href="{{permalink}}" class="permalink">#</a></h4>
+
+  <p class="method-description">
+    {{method.description}}
+  </p>
+
+  {% if method.parameters[0] %}
+  <h5>Parameters</h5>
+  <dl class="parameter-list">
+    {% for param in method.parameters %}
+      {% include param.html param=param %}
+    {% endfor %}
+  </dl>
+  {% endif %}
+
+  {% if method.returns[0] %}
+  <h5>Return object</h5>
+  <dl class="parameter-list">
+    {% for return in method.returns %}
+      {% include param.html param=return %}
+    {% endfor %}
+  </dl>
+  {% endif %}
+</div>

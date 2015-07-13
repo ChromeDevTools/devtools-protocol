@@ -4,16 +4,101 @@ body {
   color: #333;
 }
 
+h3 {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+paper-material {
+  border-radius: 2px;
+  height: 100%;
+  padding: 16px 0 16px 0;
+  width: calc(98.66% - 16px);
+  margin: 16px auto;
+  background: white;
+}
+
+paper-menu {
+  -ms-flex-grow: 1;
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  overflow: scroll;
+}
+
+paper-menu a {
+  text-decoration: none;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  font-family: 'Roboto', 'Noto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  min-height: 48px;
+  padding: 0 16px;
+}
+
+#drawer > div {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+#drawerToolbar {
+  height: 64px;
+  min-height: 64px;
+}
+
+#mainContainer .content {
+  background-color: #fafafa;
+}
+
+#mainToolbar .title {
+  font-size: 20px;
+  line-height: 20px;
+  white-space: normal;
+  overflow: visible;;
+}
+
 .monospace {
   font-family: Consolas, Menlo, monospace;
 }
 
 .parameter-list {
   padding: 1rem 5px;
+  border: 2px solid hsl(0, 0%, 85%);
+  border-radius: 5px;
+  margin: 0 10%;
+}
+
+.param-pair {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+
+.param-pair:hover {
+  background: hsla(0, 100%, 100%, 0.6);
+  border-radius: 5px;
+}
+
+.param-type {
+  font-weight: bold;
 }
 
 .optional {
-  opacity: .8;
+  opacity: .9;
 }
 
 .optional:after {
@@ -21,4 +106,98 @@ body {
   opacity: .6;
   font-size: 70%;
   display: block;
+}
+
+.param-pair dt {
+  flex: 1 0 0;
+  -ms-flex: 1 0 0;
+  -webkit-flex: 1 0 0;
+  text-align: right;
+  color: black;
+  word-wrap: break-word;
+}
+
+.param-pair dd {
+  flex: 3 0 0;
+  -ms-flex: 3 0 0;
+  -webkit-flex: 3 0 0;
+  margin-left: 20px;
+
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+}
+
+.param-pair dt, .param-pair dd {
+  vertical-align: text-top;
+}
+
+.permalink {
+  display: none;
+  margin-left: 5px;
+  vertical-align: top;
+  text-decoration: none;
+}
+
+.permalink:hover {
+  text-decoration: underline;
+}
+
+h4:hover .permalink {
+  display: initial;
+}
+
+/* Breakpoints */
+
+/* Small */
+@media (max-width: 600px) {
+
+  h3 {
+    margin-left: 7px;
+  }
+
+  paper-material {
+    --menu-container-display: none;
+    width: calc(97.33% - 32px);
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  #drawer .paper-toolbar {
+    margin-left: 16px;
+  }
+}
+
+/* Tablet+ */
+@media (min-width: 601px) {
+
+  paper-material {
+    width: calc(98% - 46px);
+    margin-bottom: 32px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  #drawer.paper-drawer-panel > [drawer] {
+    border-right: 1px solid rgba(0, 0, 0, 0.14);
+  }
+
+  #mainContainer .content {
+    padding: 48px 62px;
+  }
+
+  #mainToolbar .title {
+    font-size: 26px;
+    line-height: 26px;
+  }
+
+}
+
+@media (max-width: 980px) {
+  .parameter-list {
+    margin: 0;
+  }
 }

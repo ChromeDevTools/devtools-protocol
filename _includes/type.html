@@ -1,0 +1,25 @@
+{% assign type = include.type %}
+{% capture permalink %}{{ site.baseurl }}{{ page.url }}#type-{{type.id}}{% endcapture %}
+
+<div class="type">
+  <h4 class="type-name monospace" id="type-{{type.id}}">{{type.id}}<a href="{{permalink}}" class="permalink">#</a></h4>
+
+  <p class="type-description">{{type.description}}</p>
+  <p class="type-type">Type: <strong>{{type.type}}</strong></p>
+
+  {% if type.properties[0] %}
+  <h5>Properties</h5>
+  <dl class="parameter-list">
+    {% for property in type.properties %}
+      {% include param.html param=property %}
+    {% endfor %}
+  </dl>
+  {% endif %}
+
+  {% if type.enum[0] %}
+  <h5>Allowed values</h5>
+  <p>
+    {{ type.enum | join: ', ' }}.
+  </p>
+  {% endif %}
+</div>

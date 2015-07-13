@@ -1,0 +1,30 @@
+{% assign param = include.param %}
+
+<div class="param-pair">
+  <dt class="param-name monospace {% if param.optional %}optional{% endif %}">{{param.name}}</dt>
+  <dd class="param-def">
+    {% if param.type %}
+      <span class="param-type">
+        {{ param.type }}
+
+        {% if param.items %}
+          {% if param.items.type %}
+            [{{ param.items.type }}]
+          {% else %}
+            {% assign referral=param.items["$ref"] %}
+            [{% include type-referral.html referral=referral %}]
+          {% endif %}
+        {% endif %}
+      </span>
+    {% elsif param["$ref"] %}
+      {% assign referral=param["$ref"] %}
+      <span class="param-type">{% include type-referral.html referral=referral %}</span>
+    {% endif %}
+
+    {{ param.description }}
+
+    {% if param.enum[0] %}
+      Allowed values: {{ param.enum | join: ', ' }}.
+    {% endif %}
+  </dd>
+</div>
