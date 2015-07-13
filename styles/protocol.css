@@ -19,12 +19,16 @@ paper-material {
 }
 
 paper-menu {
+  -ms-flex-grow: 1;
+  -webkit-flex-grow: 1;
   flex-grow: 1;
   overflow: scroll;
 }
 
 paper-menu a {
   text-decoration: none;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   -ms-flex-direction: row;
   -webkit-flex-direction: row;
@@ -41,12 +45,17 @@ paper-menu a {
 }
 
 #drawer > div {
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
   flex-direction: column;
 }
 
 #drawerToolbar {
   height: 64px;
+  min-height: 64px;
 }
 
 #mainContainer .content {
@@ -72,6 +81,8 @@ paper-menu a {
 }
 
 .param-pair {
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   align-items: baseline;
   margin-bottom: 6px;
@@ -99,6 +110,8 @@ paper-menu a {
 
 .param-pair dt {
   flex: 1 0 0;
+  -ms-flex: 1 0 0;
+  -webkit-flex: 1 0 0;
   text-align: right;
   color: black;
   word-wrap: break-word;
@@ -106,10 +119,16 @@ paper-menu a {
 
 .param-pair dd {
   flex: 3 0 0;
+  -ms-flex: 3 0 0;
+  -webkit-flex: 3 0 0;
   margin-left: 20px;
 
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-direction: column;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
 }
 
 .param-pair dt, .param-pair dd {
