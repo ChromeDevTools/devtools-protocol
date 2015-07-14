@@ -142,6 +142,13 @@
                     { "name": "timestamp", "type": "number", "optional": true, "hidden": true, "description": "Frame swap timestamp." }
                 ],
                 "hidden": true
+            },
+            {
+                "id": "DialogType",
+                "description": "Javascript dialog type",
+                "type": "string",
+                "enum": ["alert", "confirm", "prompt", "beforeunload"],
+                "hidden": true
             }
         ],
         "commands": [
@@ -292,7 +299,11 @@
                     { "name": "fitWindow", "type": "boolean", "description": "Whether a view that exceeds the available browser window area should be scaled down to fit." },
                     { "name": "scale", "type": "number", "optional": true, "description": "Scale to apply to resulting view image. Ignored in |fitWindow| mode." },
                     { "name": "offsetX", "type": "number", "optional": true, "description": "X offset to shift resulting view image by. Ignored in |fitWindow| mode." },
-                    { "name": "offsetY", "type": "number", "optional": true, "description": "Y offset to shift resulting view image by. Ignored in |fitWindow| mode." }
+                    { "name": "offsetY", "type": "number", "optional": true, "description": "Y offset to shift resulting view image by. Ignored in |fitWindow| mode." },
+                    { "name": "screenWidth", "type": "integer", "optional": true, "description": "Overriding screen width value in pixels (minimum 0, maximum 10000000). Only used for |mobile==true|." },
+                    { "name": "screenHeight", "type": "integer", "optional": true, "description": "Overriding screen height value in pixels (minimum 0, maximum 10000000). Only used for |mobile==true|." },
+                    { "name": "positionX", "type": "integer", "optional": true, "description": "Overriding view X position on screen in pixels (minimum 0, maximum 10000000). Only used for |mobile==true|." },
+                    { "name": "positionY", "type": "integer", "optional": true, "description": "Overriding view Y position on screen in pixels (minimum 0, maximum 10000000). Only used for |mobile==true|." }
                 ],
                 "handlers": ["browser"],
                 "redirect": "Emulation",
@@ -510,13 +521,17 @@
                 "name": "javascriptDialogOpening",
                 "description": "Fired when a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload) is about to open.",
                 "parameters": [
-                    { "name": "message", "type": "string", "description": "Message that will be displayed by the dialog." }
+                    { "name": "message", "type": "string", "description": "Message that will be displayed by the dialog." },
+                    { "name": "type", "$ref": "DialogType", "description": "Dialog type." }
                 ],
                 "hidden": true
             },
             {
                 "name": "javascriptDialogClosed",
                 "description": "Fired when a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload) has been closed.",
+                "parameters": [
+                    { "name": "result", "type": "boolean", "description": "Whether dialog was confirmed." }
+                ],
                 "hidden": true
             },
             {
@@ -636,7 +651,11 @@
                     { "name": "fitWindow", "type": "boolean", "description": "Whether a view that exceeds the available browser window area should be scaled down to fit." },
                     { "name": "scale", "type": "number", "optional": true, "description": "Scale to apply to resulting view image. Ignored in |fitWindow| mode." },
                     { "name": "offsetX", "type": "number", "optional": true, "description": "X offset to shift resulting view image by. Ignored in |fitWindow| mode." },
-                    { "name": "offsetY", "type": "number", "optional": true, "description": "Y offset to shift resulting view image by. Ignored in |fitWindow| mode." }
+                    { "name": "offsetY", "type": "number", "optional": true, "description": "Y offset to shift resulting view image by. Ignored in |fitWindow| mode." },
+                    { "name": "screenWidth", "type": "integer", "optional": true, "description": "Overriding screen width value in pixels (minimum 0, maximum 10000000). Only used for |mobile==true|." },
+                    { "name": "screenHeight", "type": "integer", "optional": true, "description": "Overriding screen height value in pixels (minimum 0, maximum 10000000). Only used for |mobile==true|." },
+                    { "name": "positionX", "type": "integer", "optional": true, "description": "Overriding view X position on screen in pixels (minimum 0, maximum 10000000). Only used for |mobile==true|." },
+                    { "name": "positionY", "type": "integer", "optional": true, "description": "Overriding view Y position on screen in pixels (minimum 0, maximum 10000000). Only used for |mobile==true|." }
                 ],
                 "handlers": ["browser"]
             },
@@ -831,7 +850,7 @@
                 "description": "Description of an isolated world.",
                 "properties": [
                     { "name": "id", "$ref": "ExecutionContextId", "description": "Unique id of the execution context. It can be used to specify in which execution context script evaluation should be performed." },
-                    { "name": "isPageContext", "type": "boolean", "optional": true, "description": "True if this is a context where inpspected web page scripts run. False if it is a content script isolated context.", "hidden": true },
+                    { "name": "type", "type": "string", "optional": true, "description": "Context type. It is used e.g. to distinguish content scripts from web page script.", "hidden": true },
                     { "name": "origin", "type": "string", "description": "Execution context origin.", "hidden": true},
                     { "name": "name", "type": "string", "description": "Human readable name describing given context.", "hidden": true},
                     { "name": "frameId", "type": "string", "description": "Id of the owning frame. May be an empty string if the context is not associated with a frame." }
@@ -1095,6 +1114,7 @@
                     { "name": "sslStart", "type": "number", "description": "Started SSL handshake." },
                     { "name": "sslEnd", "type": "number", "description": "Finished SSL handshake." },
                     { "name": "workerStart", "type": "number", "description": "Started running ServiceWorker.", "hidden": true },
+                    { "name": "workerReady", "type": "number", "description": "Finished Starting ServiceWorker.", "hidden": true },
                     { "name": "sendStart", "type": "number", "description": "Started sending request." },
                     { "name": "sendEnd", "type": "number", "description": "Finished sending request." },
                     { "name": "receiveHeadersEnd", "type": "number", "description": "Finished receiving response headers." }
@@ -1132,7 +1152,7 @@
                     { "name": "fromServiceWorker", "type": "boolean", "optional": true, "description": "Specifies that the request was served from the ServiceWorker." },
                     { "name": "encodedDataLength", "type": "number", "optional": false, "description": "Total number of bytes received for this request so far." },
                     { "name": "timing", "$ref": "ResourceTiming", "optional": true, "description": "Timing information for the given request." },
-                    { "name": "protocol", "type": "string", "optional": true, "description": "Protocol used to fetch this resquest." }
+                    { "name": "protocol", "type": "string", "optional": true, "description": "Protocol used to fetch this request." }
                 ]
             },
             {
@@ -2216,6 +2236,7 @@
                     { "name": "showInfo", "type": "boolean", "optional": true, "description": "Whether the node info tooltip should be shown (default: false)." },
                     { "name": "showRulers", "type": "boolean", "optional": true, "description": "Whether the rulers should be shown (default: false)." },
                     { "name": "showExtensionLines", "type": "boolean", "optional": true, "description": "Whether the extension lines from node to the rulers should be shown (default: false)." },
+                    { "name": "showLayoutEditor", "type": "boolean", "optional": true, "hidden": true},
                     { "name": "contentColor", "$ref": "RGBA", "optional": true, "description": "The content box highlight fill color (default: transparent)." },
                     { "name": "paddingColor", "$ref": "RGBA", "optional": true, "description": "The padding highlight fill color (default: transparent)." },
                     { "name": "borderColor", "$ref": "RGBA", "optional": true, "description": "The border highlight fill color (default: transparent)." },
@@ -2831,7 +2852,8 @@
                 "type": "object",
                 "properties": [
                     { "name": "name", "type": "string", "description": "Shorthand name." },
-                    { "name": "value", "type": "string", "description": "Shorthand value." }
+                    { "name": "value", "type": "string", "description": "Shorthand value." },
+                    { "name": "important", "type": "boolean", "optional": true, "description": "Whether the property has \"!important\" annotation (implies <code>false</code> if absent)." }
                 ]
             },
             {
@@ -2967,7 +2989,6 @@
                     { "name": "nodeId", "$ref": "DOM.NodeId" }
                 ],
                 "returns": [
-                    { "name": "cssFamilyName", "type": "string", "description": "Font family name which is determined by computed style." },
                     { "name": "fonts", "type": "array", "items": { "$ref": "PlatformFontUsage" }, "description": "Usage statistics for every employed platform font." }
                 ],
                 "description": "Requests information about platform fonts which we used to render child TextNodes in the given node.",
@@ -2992,18 +3013,6 @@
                 "description": "Sets the new stylesheet text."
             },
             {
-                "name": "setPropertyText",
-                "parameters": [
-                    { "name": "styleSheetId", "$ref": "StyleSheetId" },
-                    { "name": "range", "$ref": "SourceRange", "description": "Either a source range of the property to be edited or an empty range representing a position for the property insertion." },
-                    { "name": "text", "type": "string" }
-                ],
-                "returns": [
-                    { "name": "style", "$ref": "CSSStyle", "description": "The resulting style after the property text modification." }
-                ],
-                "description": "Either replaces a property identified by <code>styleSheetId</code> and <code>range</code> with <code>text</code> or inserts a new property <code>text</code> at the position identified by an empty <code>range</code>."
-            },
-            {
                 "name": "setRuleSelector",
                 "parameters": [
                     { "name": "styleSheetId", "$ref": "StyleSheetId" },
@@ -3014,6 +3023,18 @@
                     { "name": "rule", "$ref": "CSSRule", "description": "The resulting rule after the selector modification." }
                 ],
                 "description": "Modifies the rule selector."
+            },
+            {
+                "name": "setStyleText",
+                "parameters": [
+                    { "name": "styleSheetId", "$ref": "StyleSheetId" },
+                    { "name": "range", "$ref": "SourceRange" },
+                    { "name": "text", "type": "string" }
+                ],
+                "returns": [
+                    { "name": "style", "$ref": "CSSStyle", "description": "The resulting style after the selector modification." }
+                ],
+                "description": "Modifies the style text."
             },
             {
                 "name": "setMediaText",
@@ -3063,6 +3084,16 @@
                     { "name": "medias", "type": "array", "items": { "$ref": "CSSMedia" } }
                 ],
                 "description": "Returns all media queries parsed by the rendering engine.",
+                "hidden": true
+            },
+            {
+                "name": "setEffectivePropertyValueForNode",
+                "parameters": [
+                    { "name": "nodeId", "$ref": "DOM.NodeId", "description": "The element id for which to set property." },
+                    { "name": "propertyName", "type": "string"},
+                    { "name": "value", "type": "string"}
+                ],
+                "description": "Find a rule with the given active property for the given node and set the new value for this property",
                 "hidden": true
             }
         ],
@@ -4113,6 +4144,10 @@
                 "enum": ["new", "installing", "installed", "activating", "activated", "redundant"]
             },
             {
+                "id": "TargetID",
+                "type": "string"
+            },
+            {
                 "id": "ServiceWorkerVersion",
                 "type": "object",
                 "description": "ServiceWorker version.",
@@ -4123,7 +4158,8 @@
                     { "name": "runningStatus", "$ref": "ServiceWorkerVersionRunningStatus" },
                     { "name": "status", "$ref": "ServiceWorkerVersionStatus" },
                     { "name": "scriptLastModified", "type": "number", "optional": true, "description": "The Last-Modified header value of the main script." },
-                    { "name": "scriptResponseTime", "type": "number", "optional": true, "description": "The time at which the response headers of the main script were received from the server.  For cached script it is the last time the cache entry was validated." }
+                    { "name": "scriptResponseTime", "type": "number", "optional": true, "description": "The time at which the response headers of the main script were received from the server.  For cached script it is the last time the cache entry was validated." },
+                    { "name": "controlledClients", "type": "array", "optional": true, "items": { "$ref": "TargetID" } }
                 ]
             },
             {
@@ -4137,6 +4173,16 @@
                     { "name": "sourceURL", "type": "string" },
                     { "name": "lineNumber", "type": "integer" },
                     { "name": "columnNumber", "type": "integer" }
+                ]
+            },
+            {
+                "id": "TargetInfo",
+                "type": "object",
+                "properties": [
+                    { "name": "id", "$ref": "TargetID" },
+                    { "name": "type", "type": "string" },
+                    { "name": "title", "type": "string" },
+                    { "name": "url", "type": "string" }
                 ]
             }
         ],
@@ -4219,6 +4265,23 @@
                     { "name": "origin", "type": "string" },
                     { "name": "registrationId", "type": "string" },
                     { "name": "data", "type": "string" }
+                ],
+                "handlers": ["browser"]
+            },
+            {
+                "name": "getTargetInfo",
+                "parameters": [
+                    { "name": "targetId", "$ref": "TargetID" }
+                ],
+                "returns": [
+                    { "name": "targetInfo","$ref": "TargetInfo" }
+                ],
+                "handlers": ["browser"]
+            },
+            {
+                "name": "activateTarget",
+                "parameters": [
+                    { "name": "targetId", "$ref": "TargetID" }
                 ],
                 "handlers": ["browser"]
             }
@@ -4597,6 +4660,32 @@
         ]
     },
     {
+        "domain": "ScreenOrientation",
+        "hidden": true,
+        "types": [
+            {
+                "id": "OrientationType",
+                "type": "string",
+                "enum": ["portraitPrimary", "portraitSecondary", "landscapePrimary", "landscapeSecondary"],
+                "description": "Orientation type"
+            }
+        ],
+        "commands": [
+            {
+                "name": "setScreenOrientationOverride",
+                "description": "Overrides the Screen Orientation.",
+                "parameters": [
+                    { "name": "angle", "type": "integer", "description": "Orientation angle" },
+                    { "name": "type", "$ref": "OrientationType", "description": "Orientation type" }
+                ]
+            },
+            {
+                "name": "clearScreenOrientationOverride",
+                "description": "Clears the overridden Screen Orientation."
+            }
+        ]
+    },
+    {
         "domain": "Tracing",
         "commands": [
             {
@@ -4712,40 +4801,40 @@
         "hidden": true,
         "types": [
             {
-                "id": "AnimationPlayer",
+                "id": "Animation",
                 "type": "object",
                 "hidden": true,
                 "properties": [
-                    { "name": "id", "type": "string", "description": "<code>AnimationPlayer</code>'s id." },
-                    { "name": "pausedState", "type": "boolean", "hidden": "true", "description": "<code>AnimationPlayer</code>'s internal paused state." },
-                    { "name": "playState", "type": "string", "description": "<code>AnimationPlayer</code>'s play state." },
-                    { "name": "playbackRate", "type": "number", "description": "<code>AnimationPlayer</code>'s playback rate." },
-                    { "name": "startTime", "type": "number", "description": "<code>AnimationPlayer</code>'s start time." },
-                    { "name": "currentTime", "type": "number", "description": "<code>AnimationPlayer</code>'s current time." },
-                    { "name": "source", "$ref": "AnimationNode", "description": "<code>AnimationPlayer</code>'s source animation node." },
-                    { "name": "type", "type": "string", "enum": ["CSSTransition", "CSSAnimation", "WebAnimation"], "description": "Animation type of <code>AnimationPlayer</code>." }
+                    { "name": "id", "type": "string", "description": "<code>Animation</code>'s id." },
+                    { "name": "pausedState", "type": "boolean", "hidden": "true", "description": "<code>Animation</code>'s internal paused state." },
+                    { "name": "playState", "type": "string", "description": "<code>Animation</code>'s play state." },
+                    { "name": "playbackRate", "type": "number", "description": "<code>Animation</code>'s playback rate." },
+                    { "name": "startTime", "type": "number", "description": "<code>Animation</code>'s start time." },
+                    { "name": "currentTime", "type": "number", "description": "<code>Animation</code>'s current time." },
+                    { "name": "source", "$ref": "AnimationEffect", "description": "<code>Animation</code>'s source animation node." },
+                    { "name": "type", "type": "string", "enum": ["CSSTransition", "CSSAnimation", "WebAnimation"], "description": "Animation type of <code>Animation</code>." }
                 ],
-                "description": "AnimationPlayer instance."
+                "description": "Animation instance."
             },
             {
-                "id": "AnimationNode",
+                "id": "AnimationEffect",
                 "type": "object",
                 "hidden": true,
                 "properties": [
-                    { "name": "delay", "type": "number", "description": "<code>AnimationNode</code>'s delay." },
-                    { "name": "endDelay", "type": "number", "description": "<code>AnimationNode</code>'s end delay." },
-                    { "name": "playbackRate", "type": "number", "description": "<code>AnimationNode</code>'s playbackRate." },
-                    { "name": "iterationStart", "type": "number", "description": "<code>AnimationNode</code>'s iteration start." },
-                    { "name": "iterations", "type": "number", "description": "<code>AnimationNode</code>'s iterations." },
-                    { "name": "duration", "type": "number", "description": "<code>AnimationNode</code>'s iteration duration." },
-                    { "name": "direction", "type": "string", "description": "<code>AnimationNode</code>'s playback direction." },
-                    { "name": "fill", "type": "string", "description": "<code>AnimationNode</code>'s fill mode." },
-                    { "name": "name", "type": "string", "description": "<code>AnimationNode</code>'s name." },
-                    { "name": "backendNodeId", "$ref": "DOM.BackendNodeId", "description": "<code>AnimationNode</code>'s target node." },
-                    { "name": "keyframesRule", "$ref": "KeyframesRule", "optional": true, "description": "<code>AnimationNode</code>'s keyframes." },
-                    { "name": "easing", "type": "string", "description": "<code>AnimationNode</code>'s timing function." }
+                    { "name": "delay", "type": "number", "description": "<code>AnimationEffect</code>'s delay." },
+                    { "name": "endDelay", "type": "number", "description": "<code>AnimationEffect</code>'s end delay." },
+                    { "name": "playbackRate", "type": "number", "description": "<code>AnimationEffect</code>'s playbackRate." },
+                    { "name": "iterationStart", "type": "number", "description": "<code>AnimationEffect</code>'s iteration start." },
+                    { "name": "iterations", "type": "number", "description": "<code>AnimationEffect</code>'s iterations." },
+                    { "name": "duration", "type": "number", "description": "<code>AnimationEffect</code>'s iteration duration." },
+                    { "name": "direction", "type": "string", "description": "<code>AnimationEffect</code>'s playback direction." },
+                    { "name": "fill", "type": "string", "description": "<code>AnimationEffect</code>'s fill mode." },
+                    { "name": "name", "type": "string", "description": "<code>AnimationEffect</code>'s name." },
+                    { "name": "backendNodeId", "$ref": "DOM.BackendNodeId", "description": "<code>AnimationEffect</code>'s target node." },
+                    { "name": "keyframesRule", "$ref": "KeyframesRule", "optional": true, "description": "<code>AnimationEffect</code>'s keyframes." },
+                    { "name": "easing", "type": "string", "description": "<code>AnimationEffect</code>'s timing function." }
                 ],
-                "description": "AnimationNode instance"
+                "description": "AnimationEffect instance"
             },
             {
                 "id": "KeyframesRule",
@@ -4761,7 +4850,7 @@
                 "type": "object",
                 "properties": [
                     { "name": "offset", "type": "string", "description": "Keyframe's time offset." },
-                    { "name": "easing", "type": "string", "description": "<code>AnimationNode</code>'s timing function." }
+                    { "name": "easing", "type": "string", "description": "<code>AnimationEffect</code>'s timing function." }
                 ],
                 "description": "Keyframe Style"
             }
@@ -4772,16 +4861,8 @@
                 "description": "Enables animation domain notifications."
             },
             {
-                "name": "getAnimationPlayersForNode",
-                "parameters": [
-                    { "name": "nodeId", "$ref": "DOM.NodeId", "description": "Id of the node to get animation players for." },
-                    { "name": "includeSubtreeAnimations", "type": "boolean", "description": "Include animations from elements subtree." }
-                ],
-                "returns": [
-                    { "name": "animationPlayers", "type": "array", "items": { "$ref": "AnimationPlayer" }, "description": "Array of animation players." }
-                ],
-                "description": "Returns animation players relevant to the node.",
-                "hidden": true
+                "name": "disable",
+                "description": "Disables animation domain notifications."
             },
             {
                 "name": "getPlaybackRate",
@@ -4816,19 +4897,19 @@
         ],
         "events": [
             {
-                "name": "animationPlayerCreated",
+                "name": "animationCreated",
                 "parameters": [
-                    { "name": "player", "$ref": "AnimationPlayer", "description": "AnimationPlayer that was created." },
+                    { "name": "player", "$ref": "Animation", "description": "Animation that was created." },
                     { "name": "resetTimeline", "type": "boolean", "description": "Whether the timeline should be reset." }
                 ],
                 "description": "Event for each animation player that has been created."
             },
             {
-                "name": "animationPlayerCanceled",
+                "name": "animationCanceled",
                 "parameters": [
-                    { "name": "playerId", "type": "string", "description": "Id of the AnimationPlayer that was cancelled." }
+                    { "name": "id", "type": "string", "description": "Id of the Animation that was cancelled." }
                 ],
-                "description": "Event for AnimationPlayers in the frontend that have been cancelled."
+                "description": "Event for Animations in the frontend that have been cancelled."
             }
         ]
     },
@@ -4953,6 +5034,52 @@
                 ],
                 "description": "Fetches the accessibility node for this DOM node, if it exists.",
                 "hidden": true
+            }
+        ]
+    },
+    {
+        "domain": "Security",
+        "description": "Security",
+        "hidden": true,
+        "types": [
+            {
+                "id": "SecurityState",
+                "type": "string",
+                "enum": ["unknown", "http", "insecure", "warning", "secure"],
+                "description": "The security level of a page or resource."
+            },
+            {
+                "id": "SecurityStateExplanation",
+                "type": "object",
+                "properties": [
+                    { "name": "securityState", "$ref": "SecurityState", "description": "Security state representing the severity of the factor being explained." },
+                    { "name": "summary", "type": "string", "description": "Short phrase describing the type of factor." },
+                    { "name": "description", "type": "string", "description": "Full text explanation of the factor." }
+                ],
+                "description": "An explanation of an factor contributing to the security state."
+            }
+        ],
+        "commands": [
+            {
+                "name": "enable",
+                "description": "Enables tracking security state changes.",
+                "handlers": ["browser"]
+            },
+            {
+                "name": "disable",
+                "description": "Disables tracking security state changes.",
+                "handlers": ["browser"]
+            }
+        ],
+        "events": [
+            {
+                "name": "securityStateChanged",
+                "description": "The security state of the page changed.",
+                "parameters": [
+                    { "name": "securityState", "$ref": "SecurityState", "description": "Security state." },
+                    { "name": "explanations", "type": "array", "items": { "$ref": "SecurityStateExplanation" }, "description": "List of explanations for the security state. If the overall security state is `insecure` or `warning`, at least one corresponding explanation should be included.", "optional": true }
+                ],
+                "handlers": ["browser"]
             }
         ]
     }]
