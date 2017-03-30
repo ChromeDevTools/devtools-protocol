@@ -1232,9 +1232,9 @@
             },
             {
                 "name": "setBlockedURLs",
-                "description": "Blocks specific URL from loading.",
+                "description": "Blocks URLs from loading.",
                 "parameters": [
-                    { "name": "urls", "type": "array", "items": { "type": "string" }, "description": "URLs to block." }
+                    { "name": "urls", "type": "array", "items": { "type": "string" }, "description": "URL patterns to block. Wildcards ('*') are allowed." }
                 ],
                 "experimental": true
             },
