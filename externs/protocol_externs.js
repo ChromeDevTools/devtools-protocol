@@ -3618,12 +3618,12 @@ Protocol.TargetAgent.prototype.setRemoteLocations.Request;
 Protocol.TargetAgent.prototype.invoke_setRemoteLocations = function(obj, opt_callback) {};
 
 /**
- * @param {Protocol.Target.TargetID} targetId
+ * @param {string} targetId
  * @param {string} message
  * @param {function(?Protocol.Error):void=} opt_callback
  */
 Protocol.TargetAgent.prototype.sendMessageToTarget = function(targetId, message, opt_callback) {};
-/** @typedef {!{message: string, targetId: Protocol.Target.TargetID}} obj */
+/** @typedef {!{message: string, targetId: string}} obj */
 Protocol.TargetAgent.prototype.sendMessageToTarget.Request;
 /**
  * @param {!Protocol.TargetAgent.prototype.sendMessageToTarget.Request} obj
@@ -5027,75 +5027,6 @@ Protocol.TetheringDispatcher = function() {};
  * @param {string} connectionId
  */
 Protocol.TetheringDispatcher.prototype.accepted = function(port, connectionId) {};
-Protocol.Browser = {};
-
-
-/**
- * @constructor
-*/
-Protocol.BrowserAgent = function(){};
-
-/**
- * @param {Protocol.Target.TargetID} targetId
- * @param {function(?Protocol.Error, Protocol.Browser.WindowID, Protocol.Browser.Bounds):T} opt_callback
- * @return {!Promise.<T>}
- * @template T
- */
-Protocol.BrowserAgent.prototype.getWindowForTarget = function(targetId, opt_callback) {};
-/** @typedef {!{targetId: Protocol.Target.TargetID}} obj */
-Protocol.BrowserAgent.prototype.getWindowForTarget.Request;
-/**
- * @param {!Protocol.BrowserAgent.prototype.getWindowForTarget.Request} obj
- * @param {function(?Protocol.Error, Protocol.Browser.WindowID, Protocol.Browser.Bounds):void=} opt_callback
- */
-Protocol.BrowserAgent.prototype.invoke_getWindowForTarget = function(obj, opt_callback) {};
-
-/**
- * @param {Protocol.Browser.WindowID} windowId
- * @param {Protocol.Browser.Bounds} bounds
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise.<T>}
- * @template T
- */
-Protocol.BrowserAgent.prototype.setWindowBounds = function(windowId, bounds, opt_callback) {};
-/** @typedef {!{windowId: Protocol.Browser.WindowID, bounds: Protocol.Browser.Bounds}} obj */
-Protocol.BrowserAgent.prototype.setWindowBounds.Request;
-/**
- * @param {!Protocol.BrowserAgent.prototype.setWindowBounds.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.BrowserAgent.prototype.invoke_setWindowBounds = function(obj, opt_callback) {};
-
-/**
- * @param {Protocol.Browser.WindowID} windowId
- * @param {function(?Protocol.Error, Protocol.Browser.Bounds):T} opt_callback
- * @return {!Promise.<T>}
- * @template T
- */
-Protocol.BrowserAgent.prototype.getWindowBounds = function(windowId, opt_callback) {};
-/** @typedef {!{windowId: Protocol.Browser.WindowID}} obj */
-Protocol.BrowserAgent.prototype.getWindowBounds.Request;
-/**
- * @param {!Protocol.BrowserAgent.prototype.getWindowBounds.Request} obj
- * @param {function(?Protocol.Error, Protocol.Browser.Bounds):void=} opt_callback
- */
-Protocol.BrowserAgent.prototype.invoke_getWindowBounds = function(obj, opt_callback) {};
-
-/** @typedef {number} */
-Protocol.Browser.WindowID;
-
-/** @enum {string} */
-Protocol.Browser.WindowState = {
-    Normal: "normal",
-    Minimized: "minimized",
-    Maximized: "maximized",
-    Fullscreen: "fullscreen"
-};
-
-/** @typedef {!{left:(number|undefined), top:(number|undefined), width:(number|undefined), height:(number|undefined), windowState:(Protocol.Browser.WindowState|undefined)}} */
-Protocol.Browser.Bounds;
-/** @interface */
-Protocol.BrowserDispatcher = function() {};
 Protocol.Schema = {};
 
 
@@ -6551,12 +6482,6 @@ Protocol.TargetBase.prototype.tetheringAgent = function(){};
  * @param {!Protocol.TetheringDispatcher} dispatcher
  */
 Protocol.TargetBase.prototype.registerTetheringDispatcher = function(dispatcher) {}
-/** @return {!Protocol.BrowserAgent}*/
-Protocol.TargetBase.prototype.browserAgent = function(){};
-/**
- * @param {!Protocol.BrowserDispatcher} dispatcher
- */
-Protocol.TargetBase.prototype.registerBrowserDispatcher = function(dispatcher) {}
 /** @return {!Protocol.SchemaAgent}*/
 Protocol.TargetBase.prototype.schemaAgent = function(){};
 /**
