@@ -98,7 +98,9 @@ Protocol.Page = {};
 Protocol.PageAgent = function(){};
 
 /**
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.enable = function(opt_callback) {};
 /** @typedef {Object|undefined} obj */
@@ -110,7 +112,9 @@ Protocol.PageAgent.prototype.enable.Request;
 Protocol.PageAgent.prototype.invoke_enable = function(obj, opt_callback) {};
 
 /**
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.disable = function(opt_callback) {};
 /** @typedef {Object|undefined} obj */
@@ -123,7 +127,9 @@ Protocol.PageAgent.prototype.invoke_disable = function(obj, opt_callback) {};
 
 /**
  * @param {string} scriptSource
- * @param {function(?Protocol.Error, Protocol.Page.ScriptIdentifier):void=} opt_callback
+ * @param {function(?Protocol.Error, Protocol.Page.ScriptIdentifier):T} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.addScriptToEvaluateOnLoad = function(scriptSource, opt_callback) {};
 /** @typedef {!{scriptSource: string}} obj */
@@ -136,7 +142,9 @@ Protocol.PageAgent.prototype.invoke_addScriptToEvaluateOnLoad = function(obj, op
 
 /**
  * @param {Protocol.Page.ScriptIdentifier} identifier
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.removeScriptToEvaluateOnLoad = function(identifier, opt_callback) {};
 /** @typedef {!{identifier: Protocol.Page.ScriptIdentifier}} obj */
@@ -149,7 +157,9 @@ Protocol.PageAgent.prototype.invoke_removeScriptToEvaluateOnLoad = function(obj,
 
 /**
  * @param {boolean} autoAttach
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.setAutoAttachToCreatedPages = function(autoAttach, opt_callback) {};
 /** @typedef {!{autoAttach: boolean}} obj */
@@ -163,7 +173,9 @@ Protocol.PageAgent.prototype.invoke_setAutoAttachToCreatedPages = function(obj, 
 /**
  * @param {boolean=} opt_ignoreCache
  * @param {string=} opt_scriptToEvaluateOnLoad
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.reload = function(opt_ignoreCache, opt_scriptToEvaluateOnLoad, opt_callback) {};
 /** @typedef {!{scriptToEvaluateOnLoad: (string|undefined), ignoreCache: (boolean|undefined)}} obj */
@@ -176,10 +188,12 @@ Protocol.PageAgent.prototype.invoke_reload = function(obj, opt_callback) {};
 
 /**
  * @param {string} url
- * @param {string=} opt_referrer
- * @param {function(?Protocol.Error, Protocol.Page.FrameId):void=} opt_callback
+ * @param {string|undefined} referrer
+ * @param {function(?Protocol.Error, Protocol.Page.FrameId):T} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
-Protocol.PageAgent.prototype.navigate = function(url, opt_referrer, opt_callback) {};
+Protocol.PageAgent.prototype.navigate = function(url, referrer, opt_callback) {};
 /** @typedef {!{url: string, referrer: (string|undefined)}} obj */
 Protocol.PageAgent.prototype.navigate.Request;
 /**
@@ -189,7 +203,9 @@ Protocol.PageAgent.prototype.navigate.Request;
 Protocol.PageAgent.prototype.invoke_navigate = function(obj, opt_callback) {};
 
 /**
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.stopLoading = function(opt_callback) {};
 /** @typedef {Object|undefined} obj */
@@ -201,7 +217,9 @@ Protocol.PageAgent.prototype.stopLoading.Request;
 Protocol.PageAgent.prototype.invoke_stopLoading = function(obj, opt_callback) {};
 
 /**
- * @param {function(?Protocol.Error, number, !Array<Protocol.Page.NavigationEntry>):void=} opt_callback
+ * @param {function(?Protocol.Error, number, !Array<Protocol.Page.NavigationEntry>):T} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.getNavigationHistory = function(opt_callback) {};
 /** @typedef {Object|undefined} obj */
@@ -214,7 +232,9 @@ Protocol.PageAgent.prototype.invoke_getNavigationHistory = function(obj, opt_cal
 
 /**
  * @param {number} entryId
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.navigateToHistoryEntry = function(entryId, opt_callback) {};
 /** @typedef {!{entryId: number}} obj */
@@ -226,7 +246,9 @@ Protocol.PageAgent.prototype.navigateToHistoryEntry.Request;
 Protocol.PageAgent.prototype.invoke_navigateToHistoryEntry = function(obj, opt_callback) {};
 
 /**
- * @param {function(?Protocol.Error, !Array<Protocol.Network.Cookie>):void=} opt_callback
+ * @param {function(?Protocol.Error, !Array<Protocol.Network.Cookie>):T} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.getCookies = function(opt_callback) {};
 /** @typedef {Object|undefined} obj */
@@ -240,7 +262,9 @@ Protocol.PageAgent.prototype.invoke_getCookies = function(obj, opt_callback) {};
 /**
  * @param {string} cookieName
  * @param {string} url
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.deleteCookie = function(cookieName, url, opt_callback) {};
 /** @typedef {!{url: string, cookieName: string}} obj */
@@ -252,7 +276,9 @@ Protocol.PageAgent.prototype.deleteCookie.Request;
 Protocol.PageAgent.prototype.invoke_deleteCookie = function(obj, opt_callback) {};
 
 /**
- * @param {function(?Protocol.Error, Protocol.Page.FrameResourceTree):void=} opt_callback
+ * @param {function(?Protocol.Error, Protocol.Page.FrameResourceTree):T} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.getResourceTree = function(opt_callback) {};
 /** @typedef {Object|undefined} obj */
@@ -266,7 +292,9 @@ Protocol.PageAgent.prototype.invoke_getResourceTree = function(obj, opt_callback
 /**
  * @param {Protocol.Page.FrameId} frameId
  * @param {string} url
- * @param {function(?Protocol.Error, string, boolean):void=} opt_callback
+ * @param {function(?Protocol.Error, string, boolean):T} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.getResourceContent = function(frameId, url, opt_callback) {};
 /** @typedef {!{url: string, frameId: Protocol.Page.FrameId}} obj */
@@ -281,11 +309,13 @@ Protocol.PageAgent.prototype.invoke_getResourceContent = function(obj, opt_callb
  * @param {Protocol.Page.FrameId} frameId
  * @param {string} url
  * @param {string} query
- * @param {boolean=} opt_caseSensitive
- * @param {boolean=} opt_isRegex
- * @param {function(?Protocol.Error, !Array<Protocol.Debugger.SearchMatch>):void=} opt_callback
+ * @param {boolean|undefined} caseSensitive
+ * @param {boolean|undefined} isRegex
+ * @param {function(?Protocol.Error, !Array<Protocol.Debugger.SearchMatch>):T} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
-Protocol.PageAgent.prototype.searchInResource = function(frameId, url, query, opt_caseSensitive, opt_isRegex, opt_callback) {};
+Protocol.PageAgent.prototype.searchInResource = function(frameId, url, query, caseSensitive, isRegex, opt_callback) {};
 /** @typedef {!{url: string, query: string, caseSensitive: (boolean|undefined), isRegex: (boolean|undefined), frameId: Protocol.Page.FrameId}} obj */
 Protocol.PageAgent.prototype.searchInResource.Request;
 /**
@@ -297,7 +327,9 @@ Protocol.PageAgent.prototype.invoke_searchInResource = function(obj, opt_callbac
 /**
  * @param {Protocol.Page.FrameId} frameId
  * @param {string} html
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.setDocumentContent = function(frameId, html, opt_callback) {};
 /** @typedef {!{html: string, frameId: Protocol.Page.FrameId}} obj */
@@ -322,7 +354,9 @@ Protocol.PageAgent.prototype.invoke_setDocumentContent = function(obj, opt_callb
  * @param {number=} opt_positionX
  * @param {number=} opt_positionY
  * @param {Protocol.Emulation.ScreenOrientation=} opt_screenOrientation
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.setDeviceMetricsOverride = function(width, height, deviceScaleFactor, mobile, fitWindow, opt_scale, opt_offsetX, opt_offsetY, opt_screenWidth, opt_screenHeight, opt_positionX, opt_positionY, opt_screenOrientation, opt_callback) {};
 /** @typedef {!{deviceScaleFactor: number, positionX: (number|undefined), scale: (number|undefined), screenHeight: (number|undefined), mobile: boolean, offsetX: (number|undefined), screenOrientation: (Protocol.Emulation.ScreenOrientation|undefined), fitWindow: boolean, offsetY: (number|undefined), height: number, width: number, positionY: (number|undefined), screenWidth: (number|undefined)}} obj */
@@ -334,7 +368,9 @@ Protocol.PageAgent.prototype.setDeviceMetricsOverride.Request;
 Protocol.PageAgent.prototype.invoke_setDeviceMetricsOverride = function(obj, opt_callback) {};
 
 /**
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.clearDeviceMetricsOverride = function(opt_callback) {};
 /** @typedef {Object|undefined} obj */
@@ -349,7 +385,9 @@ Protocol.PageAgent.prototype.invoke_clearDeviceMetricsOverride = function(obj, o
  * @param {number=} opt_latitude
  * @param {number=} opt_longitude
  * @param {number=} opt_accuracy
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.setGeolocationOverride = function(opt_latitude, opt_longitude, opt_accuracy, opt_callback) {};
 /** @typedef {!{latitude: (number|undefined), longitude: (number|undefined), accuracy: (number|undefined)}} obj */
@@ -361,7 +399,9 @@ Protocol.PageAgent.prototype.setGeolocationOverride.Request;
 Protocol.PageAgent.prototype.invoke_setGeolocationOverride = function(obj, opt_callback) {};
 
 /**
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.clearGeolocationOverride = function(opt_callback) {};
 /** @typedef {Object|undefined} obj */
@@ -376,7 +416,9 @@ Protocol.PageAgent.prototype.invoke_clearGeolocationOverride = function(obj, opt
  * @param {number} alpha
  * @param {number} beta
  * @param {number} gamma
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.setDeviceOrientationOverride = function(alpha, beta, gamma, opt_callback) {};
 /** @typedef {!{alpha: number, beta: number, gamma: number}} obj */
@@ -388,7 +430,9 @@ Protocol.PageAgent.prototype.setDeviceOrientationOverride.Request;
 Protocol.PageAgent.prototype.invoke_setDeviceOrientationOverride = function(obj, opt_callback) {};
 
 /**
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.clearDeviceOrientationOverride = function(opt_callback) {};
 /** @typedef {Object|undefined} obj */
@@ -402,7 +446,9 @@ Protocol.PageAgent.prototype.invoke_clearDeviceOrientationOverride = function(ob
 /**
  * @param {boolean} enabled
  * @param {string=} opt_configuration
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.setTouchEmulationEnabled = function(enabled, opt_configuration, opt_callback) {};
 /** @typedef {!{configuration: (string|undefined), enabled: boolean}} obj */
@@ -414,12 +460,14 @@ Protocol.PageAgent.prototype.setTouchEmulationEnabled.Request;
 Protocol.PageAgent.prototype.invoke_setTouchEmulationEnabled = function(obj, opt_callback) {};
 
 /**
- * @param {string=} opt_format
- * @param {number=} opt_quality
- * @param {boolean=} opt_fromSurface
- * @param {function(?Protocol.Error, string):void=} opt_callback
+ * @param {string|undefined} format
+ * @param {number|undefined} quality
+ * @param {boolean|undefined} fromSurface
+ * @param {function(?Protocol.Error, string):T} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
-Protocol.PageAgent.prototype.captureScreenshot = function(opt_format, opt_quality, opt_fromSurface, opt_callback) {};
+Protocol.PageAgent.prototype.captureScreenshot = function(format, quality, fromSurface, opt_callback) {};
 /** @typedef {!{fromSurface: (boolean|undefined), quality: (number|undefined), format: (string|undefined)}} obj */
 Protocol.PageAgent.prototype.captureScreenshot.Request;
 /**
@@ -429,7 +477,9 @@ Protocol.PageAgent.prototype.captureScreenshot.Request;
 Protocol.PageAgent.prototype.invoke_captureScreenshot = function(obj, opt_callback) {};
 
 /**
- * @param {function(?Protocol.Error, string):void=} opt_callback
+ * @param {function(?Protocol.Error, string):T} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.printToPDF = function(opt_callback) {};
 /** @typedef {Object|undefined} obj */
@@ -446,7 +496,9 @@ Protocol.PageAgent.prototype.invoke_printToPDF = function(obj, opt_callback) {};
  * @param {number=} opt_maxWidth
  * @param {number=} opt_maxHeight
  * @param {number=} opt_everyNthFrame
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.startScreencast = function(opt_format, opt_quality, opt_maxWidth, opt_maxHeight, opt_everyNthFrame, opt_callback) {};
 /** @typedef {!{everyNthFrame: (number|undefined), quality: (number|undefined), maxHeight: (number|undefined), maxWidth: (number|undefined), format: (string|undefined)}} obj */
@@ -458,7 +510,9 @@ Protocol.PageAgent.prototype.startScreencast.Request;
 Protocol.PageAgent.prototype.invoke_startScreencast = function(obj, opt_callback) {};
 
 /**
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.stopScreencast = function(opt_callback) {};
 /** @typedef {Object|undefined} obj */
@@ -471,7 +525,9 @@ Protocol.PageAgent.prototype.invoke_stopScreencast = function(obj, opt_callback)
 
 /**
  * @param {number} sessionId
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.screencastFrameAck = function(sessionId, opt_callback) {};
 /** @typedef {!{sessionId: number}} obj */
@@ -485,7 +541,9 @@ Protocol.PageAgent.prototype.invoke_screencastFrameAck = function(obj, opt_callb
 /**
  * @param {boolean} accept
  * @param {string=} opt_promptText
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.handleJavaScriptDialog = function(accept, opt_promptText, opt_callback) {};
 /** @typedef {!{promptText: (string|undefined), accept: boolean}} obj */
@@ -498,7 +556,9 @@ Protocol.PageAgent.prototype.invoke_handleJavaScriptDialog = function(obj, opt_c
 
 /**
  * @param {boolean} enabled
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.setColorPickerEnabled = function(enabled, opt_callback) {};
 /** @typedef {!{enabled: boolean}} obj */
@@ -512,7 +572,9 @@ Protocol.PageAgent.prototype.invoke_setColorPickerEnabled = function(obj, opt_ca
 /**
  * @param {boolean=} opt_suspended
  * @param {string=} opt_message
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.configureOverlay = function(opt_suspended, opt_message, opt_callback) {};
 /** @typedef {!{message: (string|undefined), suspended: (boolean|undefined)}} obj */
@@ -524,7 +586,9 @@ Protocol.PageAgent.prototype.configureOverlay.Request;
 Protocol.PageAgent.prototype.invoke_configureOverlay = function(obj, opt_callback) {};
 
 /**
- * @param {function(?Protocol.Error, string, !Array<Protocol.Page.AppManifestError>, string=):void=} opt_callback
+ * @param {function(?Protocol.Error, string, !Array<Protocol.Page.AppManifestError>, string=):T} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.getAppManifest = function(opt_callback) {};
 /** @typedef {Object|undefined} obj */
@@ -536,7 +600,9 @@ Protocol.PageAgent.prototype.getAppManifest.Request;
 Protocol.PageAgent.prototype.invoke_getAppManifest = function(obj, opt_callback) {};
 
 /**
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.requestAppBanner = function(opt_callback) {};
 /** @typedef {Object|undefined} obj */
@@ -549,7 +615,9 @@ Protocol.PageAgent.prototype.invoke_requestAppBanner = function(obj, opt_callbac
 
 /**
  * @param {boolean} enabled
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.setControlNavigations = function(enabled, opt_callback) {};
 /** @typedef {!{enabled: boolean}} obj */
@@ -563,7 +631,9 @@ Protocol.PageAgent.prototype.invoke_setControlNavigations = function(obj, opt_ca
 /**
  * @param {Protocol.Page.NavigationResponse} response
  * @param {number} navigationId
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.processNavigation = function(response, navigationId, opt_callback) {};
 /** @typedef {!{navigationId: number, response: Protocol.Page.NavigationResponse}} obj */
@@ -575,7 +645,9 @@ Protocol.PageAgent.prototype.processNavigation.Request;
 Protocol.PageAgent.prototype.invoke_processNavigation = function(obj, opt_callback) {};
 
 /**
- * @param {function(?Protocol.Error, Protocol.Page.LayoutViewport, Protocol.Page.VisualViewport, Protocol.DOM.Rect):void=} opt_callback
+ * @param {function(?Protocol.Error, Protocol.Page.LayoutViewport, Protocol.Page.VisualViewport, Protocol.DOM.Rect):T} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.PageAgent.prototype.getLayoutMetrics = function(opt_callback) {};
 /** @typedef {Object|undefined} obj */
