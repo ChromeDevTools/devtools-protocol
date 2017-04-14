@@ -1360,19 +1360,6 @@ Protocol.NetworkAgent.prototype.replayXHR.Request;
 Protocol.NetworkAgent.prototype.invoke_replayXHR = function(obj, opt_callback) {};
 
 /**
- * @param {boolean} enabled
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.NetworkAgent.prototype.setMonitoringXHREnabled = function(enabled, opt_callback) {};
-/** @typedef {!{enabled: boolean}} obj */
-Protocol.NetworkAgent.prototype.setMonitoringXHREnabled.Request;
-/**
- * @param {!Protocol.NetworkAgent.prototype.setMonitoringXHREnabled.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.NetworkAgent.prototype.invoke_setMonitoringXHREnabled = function(obj, opt_callback) {};
-
-/**
  * @param {function(?Protocol.Error, boolean):void=} opt_callback
  */
 Protocol.NetworkAgent.prototype.canClearBrowserCache = function(opt_callback) {};

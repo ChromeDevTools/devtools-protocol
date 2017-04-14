@@ -1247,14 +1247,6 @@
                 "experimental": true
             },
             {
-                "name": "setMonitoringXHREnabled",
-                "parameters": [
-                    { "name": "enabled", "type": "boolean", "description": "Monitoring enabled state." }
-                ],
-                "description": "Toggles monitoring of XMLHttpRequest. If <code>true</code>, console will receive messages upon each XHR issued.",
-                "experimental": true
-            },
-            {
                 "name": "canClearBrowserCache",
                 "description": "Tells whether clearing browser cache is supported.",
                 "returns": [
