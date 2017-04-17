@@ -469,14 +469,6 @@
                 ]
             },
             {
-                "name": "setColorPickerEnabled",
-                "parameters": [
-                    { "name": "enabled", "type": "boolean", "description": "Shows / hides color picker" }
-                ],
-                "description": "Shows / hides color picker",
-                "experimental": true
-            },
-            {
                 "name": "configureOverlay",
                 "parameters": [
                     { "name": "suspended", "type": "boolean", "optional": true, "description": "Whether overlay should be suspended and not consume any resources." },
@@ -629,14 +621,6 @@
                 "description": "Fired when the page with currently enabled screencast was shown or hidden </code>.",
                 "parameters": [
                     { "name": "visible", "type": "boolean", "description": "True if the page is visible." }
-                ],
-                "experimental": true
-            },
-            {
-                "name": "colorPicked",
-                "description": "Fired when a color has been picked.",
-                "parameters": [
-                    { "name": "color", "$ref": "DOM.RGBA", "description": "RGBA of the picked color." }
                 ],
                 "experimental": true
             },

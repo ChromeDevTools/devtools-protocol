@@ -555,21 +555,6 @@ Protocol.PageAgent.prototype.handleJavaScriptDialog.Request;
 Protocol.PageAgent.prototype.invoke_handleJavaScriptDialog = function(obj, opt_callback) {};
 
 /**
- * @param {boolean} enabled
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise.<T>}
- * @template T
- */
-Protocol.PageAgent.prototype.setColorPickerEnabled = function(enabled, opt_callback) {};
-/** @typedef {!{enabled: boolean}} obj */
-Protocol.PageAgent.prototype.setColorPickerEnabled.Request;
-/**
- * @param {!Protocol.PageAgent.prototype.setColorPickerEnabled.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_setColorPickerEnabled = function(obj, opt_callback) {};
-
-/**
  * @param {boolean=} opt_suspended
  * @param {string=} opt_message
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -780,10 +765,6 @@ Protocol.PageDispatcher.prototype.screencastFrame = function(data, metadata, ses
  * @param {boolean} visible
  */
 Protocol.PageDispatcher.prototype.screencastVisibilityChanged = function(visible) {};
-/**
- * @param {Protocol.DOM.RGBA} color
- */
-Protocol.PageDispatcher.prototype.colorPicked = function(color) {};
 Protocol.PageDispatcher.prototype.interstitialShown = function() {};
 Protocol.PageDispatcher.prototype.interstitialHidden = function() {};
 /**
@@ -3484,7 +3465,9 @@ Protocol.DOMDebuggerAgent = function(){};
 /**
  * @param {Protocol.DOM.NodeId} nodeId
  * @param {Protocol.DOMDebugger.DOMBreakpointType} type
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.DOMDebuggerAgent.prototype.setDOMBreakpoint = function(nodeId, type, opt_callback) {};
 /** @typedef {!{type: Protocol.DOMDebugger.DOMBreakpointType, nodeId: Protocol.DOM.NodeId}} obj */
@@ -3498,7 +3481,9 @@ Protocol.DOMDebuggerAgent.prototype.invoke_setDOMBreakpoint = function(obj, opt_
 /**
  * @param {Protocol.DOM.NodeId} nodeId
  * @param {Protocol.DOMDebugger.DOMBreakpointType} type
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.DOMDebuggerAgent.prototype.removeDOMBreakpoint = function(nodeId, type, opt_callback) {};
 /** @typedef {!{type: Protocol.DOMDebugger.DOMBreakpointType, nodeId: Protocol.DOM.NodeId}} obj */
@@ -3512,7 +3497,9 @@ Protocol.DOMDebuggerAgent.prototype.invoke_removeDOMBreakpoint = function(obj, o
 /**
  * @param {string} eventName
  * @param {string=} opt_targetName
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.DOMDebuggerAgent.prototype.setEventListenerBreakpoint = function(eventName, opt_targetName, opt_callback) {};
 /** @typedef {!{eventName: string, targetName: (string|undefined)}} obj */
@@ -3526,7 +3513,9 @@ Protocol.DOMDebuggerAgent.prototype.invoke_setEventListenerBreakpoint = function
 /**
  * @param {string} eventName
  * @param {string=} opt_targetName
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.DOMDebuggerAgent.prototype.removeEventListenerBreakpoint = function(eventName, opt_targetName, opt_callback) {};
 /** @typedef {!{eventName: string, targetName: (string|undefined)}} obj */
@@ -3539,7 +3528,9 @@ Protocol.DOMDebuggerAgent.prototype.invoke_removeEventListenerBreakpoint = funct
 
 /**
  * @param {string} eventName
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.DOMDebuggerAgent.prototype.setInstrumentationBreakpoint = function(eventName, opt_callback) {};
 /** @typedef {!{eventName: string}} obj */
@@ -3552,7 +3543,9 @@ Protocol.DOMDebuggerAgent.prototype.invoke_setInstrumentationBreakpoint = functi
 
 /**
  * @param {string} eventName
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.DOMDebuggerAgent.prototype.removeInstrumentationBreakpoint = function(eventName, opt_callback) {};
 /** @typedef {!{eventName: string}} obj */
@@ -3565,7 +3558,9 @@ Protocol.DOMDebuggerAgent.prototype.invoke_removeInstrumentationBreakpoint = fun
 
 /**
  * @param {string} url
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.DOMDebuggerAgent.prototype.setXHRBreakpoint = function(url, opt_callback) {};
 /** @typedef {!{url: string}} obj */
@@ -3578,7 +3573,9 @@ Protocol.DOMDebuggerAgent.prototype.invoke_setXHRBreakpoint = function(obj, opt_
 
 /**
  * @param {string} url
- * @param {function(?Protocol.Error):void=} opt_callback
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
 Protocol.DOMDebuggerAgent.prototype.removeXHRBreakpoint = function(url, opt_callback) {};
 /** @typedef {!{url: string}} obj */
@@ -3591,11 +3588,13 @@ Protocol.DOMDebuggerAgent.prototype.invoke_removeXHRBreakpoint = function(obj, o
 
 /**
  * @param {Protocol.Runtime.RemoteObjectId} objectId
- * @param {number=} opt_depth
- * @param {boolean=} opt_pierce
- * @param {function(?Protocol.Error, !Array<Protocol.DOMDebugger.EventListener>):void=} opt_callback
+ * @param {number|undefined} depth
+ * @param {boolean|undefined} pierce
+ * @param {function(?Protocol.Error, !Array<Protocol.DOMDebugger.EventListener>):T} opt_callback
+ * @return {!Promise.<T>}
+ * @template T
  */
-Protocol.DOMDebuggerAgent.prototype.getEventListeners = function(objectId, opt_depth, opt_pierce, opt_callback) {};
+Protocol.DOMDebuggerAgent.prototype.getEventListeners = function(objectId, depth, pierce, opt_callback) {};
 /** @typedef {!{depth: (number|undefined), pierce: (boolean|undefined), objectId: Protocol.Runtime.RemoteObjectId}} obj */
 Protocol.DOMDebuggerAgent.prototype.getEventListeners.Request;
 /**
