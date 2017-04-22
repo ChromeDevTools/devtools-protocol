@@ -12,13 +12,14 @@ Protocol.InspectorAgent = function(){};
  * @template T
  */
 Protocol.InspectorAgent.prototype.enable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.InspectorAgent.prototype.enable.Request;
+/** @typedef {Object|undefined} */
+Protocol.InspectorAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.InspectorAgent.EnableResponse;
 /**
- * @param {!Protocol.InspectorAgent.prototype.enable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.InspectorAgent.prototype.invoke_enable = function(obj, opt_callback) {};
+ * @param {!Protocol.InspectorAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.InspectorAgent.EnableResponse>} */
+Protocol.InspectorAgent.prototype.invoke_enable = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -26,13 +27,14 @@ Protocol.InspectorAgent.prototype.invoke_enable = function(obj, opt_callback) {}
  * @template T
  */
 Protocol.InspectorAgent.prototype.disable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.InspectorAgent.prototype.disable.Request;
+/** @typedef {Object|undefined} */
+Protocol.InspectorAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.InspectorAgent.DisableResponse;
 /**
- * @param {!Protocol.InspectorAgent.prototype.disable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.InspectorAgent.prototype.invoke_disable = function(obj, opt_callback) {};
+ * @param {!Protocol.InspectorAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.InspectorAgent.DisableResponse>} */
+Protocol.InspectorAgent.prototype.invoke_disable = function(obj) {};
 /** @interface */
 Protocol.InspectorDispatcher = function() {};
 /**
@@ -54,13 +56,14 @@ Protocol.MemoryAgent = function(){};
  * @template T
  */
 Protocol.MemoryAgent.prototype.getDOMCounters = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.MemoryAgent.prototype.getDOMCounters.Request;
+/** @typedef {Object|undefined} */
+Protocol.MemoryAgent.GetDOMCountersRequest;
+/** @typedef {!{nodes: number, documents: number, jsEventListeners: number}} */
+Protocol.MemoryAgent.GetDOMCountersResponse;
 /**
- * @param {!Protocol.MemoryAgent.prototype.getDOMCounters.Request} obj
- * @param {function(?Protocol.Error, number, number, number):void=} opt_callback
- */
-Protocol.MemoryAgent.prototype.invoke_getDOMCounters = function(obj, opt_callback) {};
+ * @param {!Protocol.MemoryAgent.GetDOMCountersRequest} obj
+ * @return {!Promise<!Protocol.MemoryAgent.GetDOMCountersResponse>} */
+Protocol.MemoryAgent.prototype.invoke_getDOMCounters = function(obj) {};
 
 /**
  * @param {boolean} suppressed
@@ -69,13 +72,14 @@ Protocol.MemoryAgent.prototype.invoke_getDOMCounters = function(obj, opt_callbac
  * @template T
  */
 Protocol.MemoryAgent.prototype.setPressureNotificationsSuppressed = function(suppressed, opt_callback) {};
-/** @typedef {!{suppressed: boolean}} obj */
-Protocol.MemoryAgent.prototype.setPressureNotificationsSuppressed.Request;
+/** @typedef {!{suppressed: boolean}} */
+Protocol.MemoryAgent.SetPressureNotificationsSuppressedRequest;
+/** @typedef {Object|undefined} */
+Protocol.MemoryAgent.SetPressureNotificationsSuppressedResponse;
 /**
- * @param {!Protocol.MemoryAgent.prototype.setPressureNotificationsSuppressed.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.MemoryAgent.prototype.invoke_setPressureNotificationsSuppressed = function(obj, opt_callback) {};
+ * @param {!Protocol.MemoryAgent.SetPressureNotificationsSuppressedRequest} obj
+ * @return {!Promise<!Protocol.MemoryAgent.SetPressureNotificationsSuppressedResponse>} */
+Protocol.MemoryAgent.prototype.invoke_setPressureNotificationsSuppressed = function(obj) {};
 
 /**
  * @param {Protocol.Memory.PressureLevel} level
@@ -84,13 +88,14 @@ Protocol.MemoryAgent.prototype.invoke_setPressureNotificationsSuppressed = funct
  * @template T
  */
 Protocol.MemoryAgent.prototype.simulatePressureNotification = function(level, opt_callback) {};
-/** @typedef {!{level: Protocol.Memory.PressureLevel}} obj */
-Protocol.MemoryAgent.prototype.simulatePressureNotification.Request;
+/** @typedef {!{level: Protocol.Memory.PressureLevel}} */
+Protocol.MemoryAgent.SimulatePressureNotificationRequest;
+/** @typedef {Object|undefined} */
+Protocol.MemoryAgent.SimulatePressureNotificationResponse;
 /**
- * @param {!Protocol.MemoryAgent.prototype.simulatePressureNotification.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.MemoryAgent.prototype.invoke_simulatePressureNotification = function(obj, opt_callback) {};
+ * @param {!Protocol.MemoryAgent.SimulatePressureNotificationRequest} obj
+ * @return {!Promise<!Protocol.MemoryAgent.SimulatePressureNotificationResponse>} */
+Protocol.MemoryAgent.prototype.invoke_simulatePressureNotification = function(obj) {};
 
 /** @enum {string} */
 Protocol.Memory.PressureLevel = {
@@ -113,13 +118,14 @@ Protocol.PageAgent = function(){};
  * @template T
  */
 Protocol.PageAgent.prototype.enable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.PageAgent.prototype.enable.Request;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.EnableResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.enable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_enable = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.EnableResponse>} */
+Protocol.PageAgent.prototype.invoke_enable = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -127,13 +133,14 @@ Protocol.PageAgent.prototype.invoke_enable = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.PageAgent.prototype.disable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.PageAgent.prototype.disable.Request;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.DisableResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.disable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_disable = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.DisableResponse>} */
+Protocol.PageAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {string} scriptSource
@@ -142,13 +149,14 @@ Protocol.PageAgent.prototype.invoke_disable = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.PageAgent.prototype.addScriptToEvaluateOnLoad = function(scriptSource, opt_callback) {};
-/** @typedef {!{scriptSource: string}} obj */
-Protocol.PageAgent.prototype.addScriptToEvaluateOnLoad.Request;
+/** @typedef {!{scriptSource: string}} */
+Protocol.PageAgent.AddScriptToEvaluateOnLoadRequest;
+/** @typedef {!{identifier: Protocol.Page.ScriptIdentifier}} */
+Protocol.PageAgent.AddScriptToEvaluateOnLoadResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.addScriptToEvaluateOnLoad.Request} obj
- * @param {function(?Protocol.Error, Protocol.Page.ScriptIdentifier):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_addScriptToEvaluateOnLoad = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.AddScriptToEvaluateOnLoadRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.AddScriptToEvaluateOnLoadResponse>} */
+Protocol.PageAgent.prototype.invoke_addScriptToEvaluateOnLoad = function(obj) {};
 
 /**
  * @param {Protocol.Page.ScriptIdentifier} identifier
@@ -157,13 +165,14 @@ Protocol.PageAgent.prototype.invoke_addScriptToEvaluateOnLoad = function(obj, op
  * @template T
  */
 Protocol.PageAgent.prototype.removeScriptToEvaluateOnLoad = function(identifier, opt_callback) {};
-/** @typedef {!{identifier: Protocol.Page.ScriptIdentifier}} obj */
-Protocol.PageAgent.prototype.removeScriptToEvaluateOnLoad.Request;
+/** @typedef {!{identifier: Protocol.Page.ScriptIdentifier}} */
+Protocol.PageAgent.RemoveScriptToEvaluateOnLoadRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.RemoveScriptToEvaluateOnLoadResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.removeScriptToEvaluateOnLoad.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_removeScriptToEvaluateOnLoad = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.RemoveScriptToEvaluateOnLoadRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.RemoveScriptToEvaluateOnLoadResponse>} */
+Protocol.PageAgent.prototype.invoke_removeScriptToEvaluateOnLoad = function(obj) {};
 
 /**
  * @param {boolean} autoAttach
@@ -172,13 +181,14 @@ Protocol.PageAgent.prototype.invoke_removeScriptToEvaluateOnLoad = function(obj,
  * @template T
  */
 Protocol.PageAgent.prototype.setAutoAttachToCreatedPages = function(autoAttach, opt_callback) {};
-/** @typedef {!{autoAttach: boolean}} obj */
-Protocol.PageAgent.prototype.setAutoAttachToCreatedPages.Request;
+/** @typedef {!{autoAttach: boolean}} */
+Protocol.PageAgent.SetAutoAttachToCreatedPagesRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.SetAutoAttachToCreatedPagesResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.setAutoAttachToCreatedPages.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_setAutoAttachToCreatedPages = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.SetAutoAttachToCreatedPagesRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.SetAutoAttachToCreatedPagesResponse>} */
+Protocol.PageAgent.prototype.invoke_setAutoAttachToCreatedPages = function(obj) {};
 
 /**
  * @param {boolean=} opt_ignoreCache
@@ -188,13 +198,14 @@ Protocol.PageAgent.prototype.invoke_setAutoAttachToCreatedPages = function(obj, 
  * @template T
  */
 Protocol.PageAgent.prototype.reload = function(opt_ignoreCache, opt_scriptToEvaluateOnLoad, opt_callback) {};
-/** @typedef {!{scriptToEvaluateOnLoad: (string|undefined), ignoreCache: (boolean|undefined)}} obj */
-Protocol.PageAgent.prototype.reload.Request;
+/** @typedef {!{scriptToEvaluateOnLoad: (string|undefined), ignoreCache: (boolean|undefined)}} */
+Protocol.PageAgent.ReloadRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.ReloadResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.reload.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_reload = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.ReloadRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.ReloadResponse>} */
+Protocol.PageAgent.prototype.invoke_reload = function(obj) {};
 
 /**
  * @param {string} url
@@ -204,13 +215,14 @@ Protocol.PageAgent.prototype.invoke_reload = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.PageAgent.prototype.navigate = function(url, opt_referrer, opt_callback) {};
-/** @typedef {!{url: string, referrer: (string|undefined)}} obj */
-Protocol.PageAgent.prototype.navigate.Request;
+/** @typedef {!{url: string, referrer: (string|undefined)}} */
+Protocol.PageAgent.NavigateRequest;
+/** @typedef {!{frameId: Protocol.Page.FrameId}} */
+Protocol.PageAgent.NavigateResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.navigate.Request} obj
- * @param {function(?Protocol.Error, Protocol.Page.FrameId):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_navigate = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.NavigateRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.NavigateResponse>} */
+Protocol.PageAgent.prototype.invoke_navigate = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -218,13 +230,14 @@ Protocol.PageAgent.prototype.invoke_navigate = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.PageAgent.prototype.stopLoading = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.PageAgent.prototype.stopLoading.Request;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.StopLoadingRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.StopLoadingResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.stopLoading.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_stopLoading = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.StopLoadingRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.StopLoadingResponse>} */
+Protocol.PageAgent.prototype.invoke_stopLoading = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error, number, !Array<Protocol.Page.NavigationEntry>):T=} opt_callback
@@ -232,13 +245,14 @@ Protocol.PageAgent.prototype.invoke_stopLoading = function(obj, opt_callback) {}
  * @template T
  */
 Protocol.PageAgent.prototype.getNavigationHistory = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.PageAgent.prototype.getNavigationHistory.Request;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.GetNavigationHistoryRequest;
+/** @typedef {!{currentIndex: number, entries: !Array<Protocol.Page.NavigationEntry>}} */
+Protocol.PageAgent.GetNavigationHistoryResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.getNavigationHistory.Request} obj
- * @param {function(?Protocol.Error, number, !Array<Protocol.Page.NavigationEntry>):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_getNavigationHistory = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.GetNavigationHistoryRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.GetNavigationHistoryResponse>} */
+Protocol.PageAgent.prototype.invoke_getNavigationHistory = function(obj) {};
 
 /**
  * @param {number} entryId
@@ -247,13 +261,14 @@ Protocol.PageAgent.prototype.invoke_getNavigationHistory = function(obj, opt_cal
  * @template T
  */
 Protocol.PageAgent.prototype.navigateToHistoryEntry = function(entryId, opt_callback) {};
-/** @typedef {!{entryId: number}} obj */
-Protocol.PageAgent.prototype.navigateToHistoryEntry.Request;
+/** @typedef {!{entryId: number}} */
+Protocol.PageAgent.NavigateToHistoryEntryRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.NavigateToHistoryEntryResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.navigateToHistoryEntry.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_navigateToHistoryEntry = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.NavigateToHistoryEntryRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.NavigateToHistoryEntryResponse>} */
+Protocol.PageAgent.prototype.invoke_navigateToHistoryEntry = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error, !Array<Protocol.Network.Cookie>):T=} opt_callback
@@ -261,13 +276,14 @@ Protocol.PageAgent.prototype.invoke_navigateToHistoryEntry = function(obj, opt_c
  * @template T
  */
 Protocol.PageAgent.prototype.getCookies = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.PageAgent.prototype.getCookies.Request;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.GetCookiesRequest;
+/** @typedef {!{cookies: !Array<Protocol.Network.Cookie>}} */
+Protocol.PageAgent.GetCookiesResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.getCookies.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.Network.Cookie>):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_getCookies = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.GetCookiesRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.GetCookiesResponse>} */
+Protocol.PageAgent.prototype.invoke_getCookies = function(obj) {};
 
 /**
  * @param {string} cookieName
@@ -277,13 +293,14 @@ Protocol.PageAgent.prototype.invoke_getCookies = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.PageAgent.prototype.deleteCookie = function(cookieName, url, opt_callback) {};
-/** @typedef {!{url: string, cookieName: string}} obj */
-Protocol.PageAgent.prototype.deleteCookie.Request;
+/** @typedef {!{url: string, cookieName: string}} */
+Protocol.PageAgent.DeleteCookieRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.DeleteCookieResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.deleteCookie.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_deleteCookie = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.DeleteCookieRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.DeleteCookieResponse>} */
+Protocol.PageAgent.prototype.invoke_deleteCookie = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error, Protocol.Page.FrameResourceTree):T=} opt_callback
@@ -291,13 +308,14 @@ Protocol.PageAgent.prototype.invoke_deleteCookie = function(obj, opt_callback) {
  * @template T
  */
 Protocol.PageAgent.prototype.getResourceTree = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.PageAgent.prototype.getResourceTree.Request;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.GetResourceTreeRequest;
+/** @typedef {!{frameTree: Protocol.Page.FrameResourceTree}} */
+Protocol.PageAgent.GetResourceTreeResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.getResourceTree.Request} obj
- * @param {function(?Protocol.Error, Protocol.Page.FrameResourceTree):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_getResourceTree = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.GetResourceTreeRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.GetResourceTreeResponse>} */
+Protocol.PageAgent.prototype.invoke_getResourceTree = function(obj) {};
 
 /**
  * @param {Protocol.Page.FrameId} frameId
@@ -307,13 +325,14 @@ Protocol.PageAgent.prototype.invoke_getResourceTree = function(obj, opt_callback
  * @template T
  */
 Protocol.PageAgent.prototype.getResourceContent = function(frameId, url, opt_callback) {};
-/** @typedef {!{url: string, frameId: Protocol.Page.FrameId}} obj */
-Protocol.PageAgent.prototype.getResourceContent.Request;
+/** @typedef {!{url: string, frameId: Protocol.Page.FrameId}} */
+Protocol.PageAgent.GetResourceContentRequest;
+/** @typedef {!{content: string, base64Encoded: boolean}} */
+Protocol.PageAgent.GetResourceContentResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.getResourceContent.Request} obj
- * @param {function(?Protocol.Error, string, boolean):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_getResourceContent = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.GetResourceContentRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.GetResourceContentResponse>} */
+Protocol.PageAgent.prototype.invoke_getResourceContent = function(obj) {};
 
 /**
  * @param {Protocol.Page.FrameId} frameId
@@ -326,13 +345,14 @@ Protocol.PageAgent.prototype.invoke_getResourceContent = function(obj, opt_callb
  * @template T
  */
 Protocol.PageAgent.prototype.searchInResource = function(frameId, url, query, opt_caseSensitive, opt_isRegex, opt_callback) {};
-/** @typedef {!{url: string, query: string, caseSensitive: (boolean|undefined), isRegex: (boolean|undefined), frameId: Protocol.Page.FrameId}} obj */
-Protocol.PageAgent.prototype.searchInResource.Request;
+/** @typedef {!{url: string, query: string, caseSensitive: (boolean|undefined), isRegex: (boolean|undefined), frameId: Protocol.Page.FrameId}} */
+Protocol.PageAgent.SearchInResourceRequest;
+/** @typedef {!{result: !Array<Protocol.Debugger.SearchMatch>}} */
+Protocol.PageAgent.SearchInResourceResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.searchInResource.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.Debugger.SearchMatch>):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_searchInResource = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.SearchInResourceRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.SearchInResourceResponse>} */
+Protocol.PageAgent.prototype.invoke_searchInResource = function(obj) {};
 
 /**
  * @param {Protocol.Page.FrameId} frameId
@@ -342,13 +362,14 @@ Protocol.PageAgent.prototype.invoke_searchInResource = function(obj, opt_callbac
  * @template T
  */
 Protocol.PageAgent.prototype.setDocumentContent = function(frameId, html, opt_callback) {};
-/** @typedef {!{html: string, frameId: Protocol.Page.FrameId}} obj */
-Protocol.PageAgent.prototype.setDocumentContent.Request;
+/** @typedef {!{html: string, frameId: Protocol.Page.FrameId}} */
+Protocol.PageAgent.SetDocumentContentRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.SetDocumentContentResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.setDocumentContent.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_setDocumentContent = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.SetDocumentContentRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.SetDocumentContentResponse>} */
+Protocol.PageAgent.prototype.invoke_setDocumentContent = function(obj) {};
 
 /**
  * @param {number} width
@@ -369,13 +390,14 @@ Protocol.PageAgent.prototype.invoke_setDocumentContent = function(obj, opt_callb
  * @template T
  */
 Protocol.PageAgent.prototype.setDeviceMetricsOverride = function(width, height, deviceScaleFactor, mobile, fitWindow, opt_scale, opt_offsetX, opt_offsetY, opt_screenWidth, opt_screenHeight, opt_positionX, opt_positionY, opt_screenOrientation, opt_callback) {};
-/** @typedef {!{deviceScaleFactor: number, positionX: (number|undefined), scale: (number|undefined), screenHeight: (number|undefined), mobile: boolean, offsetX: (number|undefined), screenOrientation: (Protocol.Emulation.ScreenOrientation|undefined), fitWindow: boolean, offsetY: (number|undefined), height: number, width: number, positionY: (number|undefined), screenWidth: (number|undefined)}} obj */
-Protocol.PageAgent.prototype.setDeviceMetricsOverride.Request;
+/** @typedef {!{deviceScaleFactor: number, positionX: (number|undefined), scale: (number|undefined), screenHeight: (number|undefined), mobile: boolean, offsetX: (number|undefined), screenOrientation: (Protocol.Emulation.ScreenOrientation|undefined), fitWindow: boolean, offsetY: (number|undefined), height: number, width: number, positionY: (number|undefined), screenWidth: (number|undefined)}} */
+Protocol.PageAgent.SetDeviceMetricsOverrideRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.SetDeviceMetricsOverrideResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.setDeviceMetricsOverride.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_setDeviceMetricsOverride = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.SetDeviceMetricsOverrideRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.SetDeviceMetricsOverrideResponse>} */
+Protocol.PageAgent.prototype.invoke_setDeviceMetricsOverride = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -383,13 +405,14 @@ Protocol.PageAgent.prototype.invoke_setDeviceMetricsOverride = function(obj, opt
  * @template T
  */
 Protocol.PageAgent.prototype.clearDeviceMetricsOverride = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.PageAgent.prototype.clearDeviceMetricsOverride.Request;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.ClearDeviceMetricsOverrideRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.ClearDeviceMetricsOverrideResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.clearDeviceMetricsOverride.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_clearDeviceMetricsOverride = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.ClearDeviceMetricsOverrideRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.ClearDeviceMetricsOverrideResponse>} */
+Protocol.PageAgent.prototype.invoke_clearDeviceMetricsOverride = function(obj) {};
 
 /**
  * @param {number=} opt_latitude
@@ -400,13 +423,14 @@ Protocol.PageAgent.prototype.invoke_clearDeviceMetricsOverride = function(obj, o
  * @template T
  */
 Protocol.PageAgent.prototype.setGeolocationOverride = function(opt_latitude, opt_longitude, opt_accuracy, opt_callback) {};
-/** @typedef {!{latitude: (number|undefined), longitude: (number|undefined), accuracy: (number|undefined)}} obj */
-Protocol.PageAgent.prototype.setGeolocationOverride.Request;
+/** @typedef {!{latitude: (number|undefined), longitude: (number|undefined), accuracy: (number|undefined)}} */
+Protocol.PageAgent.SetGeolocationOverrideRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.SetGeolocationOverrideResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.setGeolocationOverride.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_setGeolocationOverride = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.SetGeolocationOverrideRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.SetGeolocationOverrideResponse>} */
+Protocol.PageAgent.prototype.invoke_setGeolocationOverride = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -414,13 +438,14 @@ Protocol.PageAgent.prototype.invoke_setGeolocationOverride = function(obj, opt_c
  * @template T
  */
 Protocol.PageAgent.prototype.clearGeolocationOverride = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.PageAgent.prototype.clearGeolocationOverride.Request;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.ClearGeolocationOverrideRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.ClearGeolocationOverrideResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.clearGeolocationOverride.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_clearGeolocationOverride = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.ClearGeolocationOverrideRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.ClearGeolocationOverrideResponse>} */
+Protocol.PageAgent.prototype.invoke_clearGeolocationOverride = function(obj) {};
 
 /**
  * @param {number} alpha
@@ -431,13 +456,14 @@ Protocol.PageAgent.prototype.invoke_clearGeolocationOverride = function(obj, opt
  * @template T
  */
 Protocol.PageAgent.prototype.setDeviceOrientationOverride = function(alpha, beta, gamma, opt_callback) {};
-/** @typedef {!{alpha: number, beta: number, gamma: number}} obj */
-Protocol.PageAgent.prototype.setDeviceOrientationOverride.Request;
+/** @typedef {!{alpha: number, beta: number, gamma: number}} */
+Protocol.PageAgent.SetDeviceOrientationOverrideRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.SetDeviceOrientationOverrideResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.setDeviceOrientationOverride.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_setDeviceOrientationOverride = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.SetDeviceOrientationOverrideRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.SetDeviceOrientationOverrideResponse>} */
+Protocol.PageAgent.prototype.invoke_setDeviceOrientationOverride = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -445,13 +471,14 @@ Protocol.PageAgent.prototype.invoke_setDeviceOrientationOverride = function(obj,
  * @template T
  */
 Protocol.PageAgent.prototype.clearDeviceOrientationOverride = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.PageAgent.prototype.clearDeviceOrientationOverride.Request;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.ClearDeviceOrientationOverrideRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.ClearDeviceOrientationOverrideResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.clearDeviceOrientationOverride.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_clearDeviceOrientationOverride = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.ClearDeviceOrientationOverrideRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.ClearDeviceOrientationOverrideResponse>} */
+Protocol.PageAgent.prototype.invoke_clearDeviceOrientationOverride = function(obj) {};
 
 /**
  * @param {boolean} enabled
@@ -461,13 +488,14 @@ Protocol.PageAgent.prototype.invoke_clearDeviceOrientationOverride = function(ob
  * @template T
  */
 Protocol.PageAgent.prototype.setTouchEmulationEnabled = function(enabled, opt_configuration, opt_callback) {};
-/** @typedef {!{configuration: (string|undefined), enabled: boolean}} obj */
-Protocol.PageAgent.prototype.setTouchEmulationEnabled.Request;
+/** @typedef {!{configuration: (string|undefined), enabled: boolean}} */
+Protocol.PageAgent.SetTouchEmulationEnabledRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.SetTouchEmulationEnabledResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.setTouchEmulationEnabled.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_setTouchEmulationEnabled = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.SetTouchEmulationEnabledRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.SetTouchEmulationEnabledResponse>} */
+Protocol.PageAgent.prototype.invoke_setTouchEmulationEnabled = function(obj) {};
 
 /**
  * @param {string=} opt_format
@@ -478,13 +506,14 @@ Protocol.PageAgent.prototype.invoke_setTouchEmulationEnabled = function(obj, opt
  * @template T
  */
 Protocol.PageAgent.prototype.captureScreenshot = function(opt_format, opt_quality, opt_fromSurface, opt_callback) {};
-/** @typedef {!{fromSurface: (boolean|undefined), quality: (number|undefined), format: (string|undefined)}} obj */
-Protocol.PageAgent.prototype.captureScreenshot.Request;
+/** @typedef {!{fromSurface: (boolean|undefined), quality: (number|undefined), format: (string|undefined)}} */
+Protocol.PageAgent.CaptureScreenshotRequest;
+/** @typedef {!{data: string}} */
+Protocol.PageAgent.CaptureScreenshotResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.captureScreenshot.Request} obj
- * @param {function(?Protocol.Error, string):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_captureScreenshot = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.CaptureScreenshotRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.CaptureScreenshotResponse>} */
+Protocol.PageAgent.prototype.invoke_captureScreenshot = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error, string):T=} opt_callback
@@ -492,13 +521,14 @@ Protocol.PageAgent.prototype.invoke_captureScreenshot = function(obj, opt_callba
  * @template T
  */
 Protocol.PageAgent.prototype.printToPDF = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.PageAgent.prototype.printToPDF.Request;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.PrintToPDFRequest;
+/** @typedef {!{data: string}} */
+Protocol.PageAgent.PrintToPDFResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.printToPDF.Request} obj
- * @param {function(?Protocol.Error, string):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_printToPDF = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.PrintToPDFRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.PrintToPDFResponse>} */
+Protocol.PageAgent.prototype.invoke_printToPDF = function(obj) {};
 
 /**
  * @param {string=} opt_format
@@ -511,13 +541,14 @@ Protocol.PageAgent.prototype.invoke_printToPDF = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.PageAgent.prototype.startScreencast = function(opt_format, opt_quality, opt_maxWidth, opt_maxHeight, opt_everyNthFrame, opt_callback) {};
-/** @typedef {!{everyNthFrame: (number|undefined), quality: (number|undefined), maxHeight: (number|undefined), maxWidth: (number|undefined), format: (string|undefined)}} obj */
-Protocol.PageAgent.prototype.startScreencast.Request;
+/** @typedef {!{everyNthFrame: (number|undefined), quality: (number|undefined), maxHeight: (number|undefined), maxWidth: (number|undefined), format: (string|undefined)}} */
+Protocol.PageAgent.StartScreencastRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.StartScreencastResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.startScreencast.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_startScreencast = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.StartScreencastRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.StartScreencastResponse>} */
+Protocol.PageAgent.prototype.invoke_startScreencast = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -525,13 +556,14 @@ Protocol.PageAgent.prototype.invoke_startScreencast = function(obj, opt_callback
  * @template T
  */
 Protocol.PageAgent.prototype.stopScreencast = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.PageAgent.prototype.stopScreencast.Request;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.StopScreencastRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.StopScreencastResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.stopScreencast.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_stopScreencast = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.StopScreencastRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.StopScreencastResponse>} */
+Protocol.PageAgent.prototype.invoke_stopScreencast = function(obj) {};
 
 /**
  * @param {number} sessionId
@@ -540,13 +572,14 @@ Protocol.PageAgent.prototype.invoke_stopScreencast = function(obj, opt_callback)
  * @template T
  */
 Protocol.PageAgent.prototype.screencastFrameAck = function(sessionId, opt_callback) {};
-/** @typedef {!{sessionId: number}} obj */
-Protocol.PageAgent.prototype.screencastFrameAck.Request;
+/** @typedef {!{sessionId: number}} */
+Protocol.PageAgent.ScreencastFrameAckRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.ScreencastFrameAckResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.screencastFrameAck.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_screencastFrameAck = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.ScreencastFrameAckRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.ScreencastFrameAckResponse>} */
+Protocol.PageAgent.prototype.invoke_screencastFrameAck = function(obj) {};
 
 /**
  * @param {boolean} accept
@@ -556,13 +589,14 @@ Protocol.PageAgent.prototype.invoke_screencastFrameAck = function(obj, opt_callb
  * @template T
  */
 Protocol.PageAgent.prototype.handleJavaScriptDialog = function(accept, opt_promptText, opt_callback) {};
-/** @typedef {!{promptText: (string|undefined), accept: boolean}} obj */
-Protocol.PageAgent.prototype.handleJavaScriptDialog.Request;
+/** @typedef {!{promptText: (string|undefined), accept: boolean}} */
+Protocol.PageAgent.HandleJavaScriptDialogRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.HandleJavaScriptDialogResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.handleJavaScriptDialog.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_handleJavaScriptDialog = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.HandleJavaScriptDialogRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.HandleJavaScriptDialogResponse>} */
+Protocol.PageAgent.prototype.invoke_handleJavaScriptDialog = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error, string, !Array<Protocol.Page.AppManifestError>, string=):T=} opt_callback
@@ -570,13 +604,14 @@ Protocol.PageAgent.prototype.invoke_handleJavaScriptDialog = function(obj, opt_c
  * @template T
  */
 Protocol.PageAgent.prototype.getAppManifest = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.PageAgent.prototype.getAppManifest.Request;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.GetAppManifestRequest;
+/** @typedef {!{url: string, errors: !Array<Protocol.Page.AppManifestError>, data: string}} */
+Protocol.PageAgent.GetAppManifestResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.getAppManifest.Request} obj
- * @param {function(?Protocol.Error, string, !Array<Protocol.Page.AppManifestError>, string=):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_getAppManifest = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.GetAppManifestRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.GetAppManifestResponse>} */
+Protocol.PageAgent.prototype.invoke_getAppManifest = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -584,13 +619,14 @@ Protocol.PageAgent.prototype.invoke_getAppManifest = function(obj, opt_callback)
  * @template T
  */
 Protocol.PageAgent.prototype.requestAppBanner = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.PageAgent.prototype.requestAppBanner.Request;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.RequestAppBannerRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.RequestAppBannerResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.requestAppBanner.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_requestAppBanner = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.RequestAppBannerRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.RequestAppBannerResponse>} */
+Protocol.PageAgent.prototype.invoke_requestAppBanner = function(obj) {};
 
 /**
  * @param {boolean} enabled
@@ -599,13 +635,14 @@ Protocol.PageAgent.prototype.invoke_requestAppBanner = function(obj, opt_callbac
  * @template T
  */
 Protocol.PageAgent.prototype.setControlNavigations = function(enabled, opt_callback) {};
-/** @typedef {!{enabled: boolean}} obj */
-Protocol.PageAgent.prototype.setControlNavigations.Request;
+/** @typedef {!{enabled: boolean}} */
+Protocol.PageAgent.SetControlNavigationsRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.SetControlNavigationsResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.setControlNavigations.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_setControlNavigations = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.SetControlNavigationsRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.SetControlNavigationsResponse>} */
+Protocol.PageAgent.prototype.invoke_setControlNavigations = function(obj) {};
 
 /**
  * @param {Protocol.Page.NavigationResponse} response
@@ -615,13 +652,14 @@ Protocol.PageAgent.prototype.invoke_setControlNavigations = function(obj, opt_ca
  * @template T
  */
 Protocol.PageAgent.prototype.processNavigation = function(response, navigationId, opt_callback) {};
-/** @typedef {!{navigationId: number, response: Protocol.Page.NavigationResponse}} obj */
-Protocol.PageAgent.prototype.processNavigation.Request;
+/** @typedef {!{navigationId: number, response: Protocol.Page.NavigationResponse}} */
+Protocol.PageAgent.ProcessNavigationRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.ProcessNavigationResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.processNavigation.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_processNavigation = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.ProcessNavigationRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.ProcessNavigationResponse>} */
+Protocol.PageAgent.prototype.invoke_processNavigation = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error, Protocol.Page.LayoutViewport, Protocol.Page.VisualViewport, Protocol.DOM.Rect):T=} opt_callback
@@ -629,13 +667,14 @@ Protocol.PageAgent.prototype.invoke_processNavigation = function(obj, opt_callba
  * @template T
  */
 Protocol.PageAgent.prototype.getLayoutMetrics = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.PageAgent.prototype.getLayoutMetrics.Request;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.GetLayoutMetricsRequest;
+/** @typedef {!{visualViewport: Protocol.Page.VisualViewport, layoutViewport: Protocol.Page.LayoutViewport, contentSize: Protocol.DOM.Rect}} */
+Protocol.PageAgent.GetLayoutMetricsResponse;
 /**
- * @param {!Protocol.PageAgent.prototype.getLayoutMetrics.Request} obj
- * @param {function(?Protocol.Error, Protocol.Page.LayoutViewport, Protocol.Page.VisualViewport, Protocol.DOM.Rect):void=} opt_callback
- */
-Protocol.PageAgent.prototype.invoke_getLayoutMetrics = function(obj, opt_callback) {};
+ * @param {!Protocol.PageAgent.GetLayoutMetricsRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.GetLayoutMetricsResponse>} */
+Protocol.PageAgent.prototype.invoke_getLayoutMetrics = function(obj) {};
 
 /** @enum {string} */
 Protocol.Page.ResourceType = {
@@ -782,13 +821,14 @@ Protocol.OverlayAgent = function(){};
  * @template T
  */
 Protocol.OverlayAgent.prototype.enable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.OverlayAgent.prototype.enable.Request;
+/** @typedef {Object|undefined} */
+Protocol.OverlayAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.OverlayAgent.EnableResponse;
 /**
- * @param {!Protocol.OverlayAgent.prototype.enable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.OverlayAgent.prototype.invoke_enable = function(obj, opt_callback) {};
+ * @param {!Protocol.OverlayAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.OverlayAgent.EnableResponse>} */
+Protocol.OverlayAgent.prototype.invoke_enable = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -796,13 +836,14 @@ Protocol.OverlayAgent.prototype.invoke_enable = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.OverlayAgent.prototype.disable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.OverlayAgent.prototype.disable.Request;
+/** @typedef {Object|undefined} */
+Protocol.OverlayAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.OverlayAgent.DisableResponse;
 /**
- * @param {!Protocol.OverlayAgent.prototype.disable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.OverlayAgent.prototype.invoke_disable = function(obj, opt_callback) {};
+ * @param {!Protocol.OverlayAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.OverlayAgent.DisableResponse>} */
+Protocol.OverlayAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {boolean} result
@@ -811,13 +852,14 @@ Protocol.OverlayAgent.prototype.invoke_disable = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.OverlayAgent.prototype.setShowPaintRects = function(result, opt_callback) {};
-/** @typedef {!{result: boolean}} obj */
-Protocol.OverlayAgent.prototype.setShowPaintRects.Request;
+/** @typedef {!{result: boolean}} */
+Protocol.OverlayAgent.SetShowPaintRectsRequest;
+/** @typedef {Object|undefined} */
+Protocol.OverlayAgent.SetShowPaintRectsResponse;
 /**
- * @param {!Protocol.OverlayAgent.prototype.setShowPaintRects.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.OverlayAgent.prototype.invoke_setShowPaintRects = function(obj, opt_callback) {};
+ * @param {!Protocol.OverlayAgent.SetShowPaintRectsRequest} obj
+ * @return {!Promise<!Protocol.OverlayAgent.SetShowPaintRectsResponse>} */
+Protocol.OverlayAgent.prototype.invoke_setShowPaintRects = function(obj) {};
 
 /**
  * @param {boolean} show
@@ -826,13 +868,14 @@ Protocol.OverlayAgent.prototype.invoke_setShowPaintRects = function(obj, opt_cal
  * @template T
  */
 Protocol.OverlayAgent.prototype.setShowDebugBorders = function(show, opt_callback) {};
-/** @typedef {!{show: boolean}} obj */
-Protocol.OverlayAgent.prototype.setShowDebugBorders.Request;
+/** @typedef {!{show: boolean}} */
+Protocol.OverlayAgent.SetShowDebugBordersRequest;
+/** @typedef {Object|undefined} */
+Protocol.OverlayAgent.SetShowDebugBordersResponse;
 /**
- * @param {!Protocol.OverlayAgent.prototype.setShowDebugBorders.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.OverlayAgent.prototype.invoke_setShowDebugBorders = function(obj, opt_callback) {};
+ * @param {!Protocol.OverlayAgent.SetShowDebugBordersRequest} obj
+ * @return {!Promise<!Protocol.OverlayAgent.SetShowDebugBordersResponse>} */
+Protocol.OverlayAgent.prototype.invoke_setShowDebugBorders = function(obj) {};
 
 /**
  * @param {boolean} show
@@ -841,13 +884,14 @@ Protocol.OverlayAgent.prototype.invoke_setShowDebugBorders = function(obj, opt_c
  * @template T
  */
 Protocol.OverlayAgent.prototype.setShowFPSCounter = function(show, opt_callback) {};
-/** @typedef {!{show: boolean}} obj */
-Protocol.OverlayAgent.prototype.setShowFPSCounter.Request;
+/** @typedef {!{show: boolean}} */
+Protocol.OverlayAgent.SetShowFPSCounterRequest;
+/** @typedef {Object|undefined} */
+Protocol.OverlayAgent.SetShowFPSCounterResponse;
 /**
- * @param {!Protocol.OverlayAgent.prototype.setShowFPSCounter.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.OverlayAgent.prototype.invoke_setShowFPSCounter = function(obj, opt_callback) {};
+ * @param {!Protocol.OverlayAgent.SetShowFPSCounterRequest} obj
+ * @return {!Promise<!Protocol.OverlayAgent.SetShowFPSCounterResponse>} */
+Protocol.OverlayAgent.prototype.invoke_setShowFPSCounter = function(obj) {};
 
 /**
  * @param {boolean} show
@@ -856,13 +900,14 @@ Protocol.OverlayAgent.prototype.invoke_setShowFPSCounter = function(obj, opt_cal
  * @template T
  */
 Protocol.OverlayAgent.prototype.setShowScrollBottleneckRects = function(show, opt_callback) {};
-/** @typedef {!{show: boolean}} obj */
-Protocol.OverlayAgent.prototype.setShowScrollBottleneckRects.Request;
+/** @typedef {!{show: boolean}} */
+Protocol.OverlayAgent.SetShowScrollBottleneckRectsRequest;
+/** @typedef {Object|undefined} */
+Protocol.OverlayAgent.SetShowScrollBottleneckRectsResponse;
 /**
- * @param {!Protocol.OverlayAgent.prototype.setShowScrollBottleneckRects.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.OverlayAgent.prototype.invoke_setShowScrollBottleneckRects = function(obj, opt_callback) {};
+ * @param {!Protocol.OverlayAgent.SetShowScrollBottleneckRectsRequest} obj
+ * @return {!Promise<!Protocol.OverlayAgent.SetShowScrollBottleneckRectsResponse>} */
+Protocol.OverlayAgent.prototype.invoke_setShowScrollBottleneckRects = function(obj) {};
 
 /**
  * @param {boolean} show
@@ -871,13 +916,14 @@ Protocol.OverlayAgent.prototype.invoke_setShowScrollBottleneckRects = function(o
  * @template T
  */
 Protocol.OverlayAgent.prototype.setShowViewportSizeOnResize = function(show, opt_callback) {};
-/** @typedef {!{show: boolean}} obj */
-Protocol.OverlayAgent.prototype.setShowViewportSizeOnResize.Request;
+/** @typedef {!{show: boolean}} */
+Protocol.OverlayAgent.SetShowViewportSizeOnResizeRequest;
+/** @typedef {Object|undefined} */
+Protocol.OverlayAgent.SetShowViewportSizeOnResizeResponse;
 /**
- * @param {!Protocol.OverlayAgent.prototype.setShowViewportSizeOnResize.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.OverlayAgent.prototype.invoke_setShowViewportSizeOnResize = function(obj, opt_callback) {};
+ * @param {!Protocol.OverlayAgent.SetShowViewportSizeOnResizeRequest} obj
+ * @return {!Promise<!Protocol.OverlayAgent.SetShowViewportSizeOnResizeResponse>} */
+Protocol.OverlayAgent.prototype.invoke_setShowViewportSizeOnResize = function(obj) {};
 
 /**
  * @param {string=} opt_message
@@ -886,13 +932,14 @@ Protocol.OverlayAgent.prototype.invoke_setShowViewportSizeOnResize = function(ob
  * @template T
  */
 Protocol.OverlayAgent.prototype.setPausedInDebuggerMessage = function(opt_message, opt_callback) {};
-/** @typedef {!{message: (string|undefined)}} obj */
-Protocol.OverlayAgent.prototype.setPausedInDebuggerMessage.Request;
+/** @typedef {!{message: (string|undefined)}} */
+Protocol.OverlayAgent.SetPausedInDebuggerMessageRequest;
+/** @typedef {Object|undefined} */
+Protocol.OverlayAgent.SetPausedInDebuggerMessageResponse;
 /**
- * @param {!Protocol.OverlayAgent.prototype.setPausedInDebuggerMessage.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.OverlayAgent.prototype.invoke_setPausedInDebuggerMessage = function(obj, opt_callback) {};
+ * @param {!Protocol.OverlayAgent.SetPausedInDebuggerMessageRequest} obj
+ * @return {!Promise<!Protocol.OverlayAgent.SetPausedInDebuggerMessageResponse>} */
+Protocol.OverlayAgent.prototype.invoke_setPausedInDebuggerMessage = function(obj) {};
 
 /**
  * @param {boolean} suspended
@@ -901,13 +948,14 @@ Protocol.OverlayAgent.prototype.invoke_setPausedInDebuggerMessage = function(obj
  * @template T
  */
 Protocol.OverlayAgent.prototype.setSuspended = function(suspended, opt_callback) {};
-/** @typedef {!{suspended: boolean}} obj */
-Protocol.OverlayAgent.prototype.setSuspended.Request;
+/** @typedef {!{suspended: boolean}} */
+Protocol.OverlayAgent.SetSuspendedRequest;
+/** @typedef {Object|undefined} */
+Protocol.OverlayAgent.SetSuspendedResponse;
 /**
- * @param {!Protocol.OverlayAgent.prototype.setSuspended.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.OverlayAgent.prototype.invoke_setSuspended = function(obj, opt_callback) {};
+ * @param {!Protocol.OverlayAgent.SetSuspendedRequest} obj
+ * @return {!Promise<!Protocol.OverlayAgent.SetSuspendedResponse>} */
+Protocol.OverlayAgent.prototype.invoke_setSuspended = function(obj) {};
 
 /**
  * @param {Protocol.Overlay.InspectMode} mode
@@ -917,13 +965,14 @@ Protocol.OverlayAgent.prototype.invoke_setSuspended = function(obj, opt_callback
  * @template T
  */
 Protocol.OverlayAgent.prototype.setInspectMode = function(mode, opt_highlightConfig, opt_callback) {};
-/** @typedef {!{mode: Protocol.Overlay.InspectMode, highlightConfig: (Protocol.Overlay.HighlightConfig|undefined)}} obj */
-Protocol.OverlayAgent.prototype.setInspectMode.Request;
+/** @typedef {!{mode: Protocol.Overlay.InspectMode, highlightConfig: (Protocol.Overlay.HighlightConfig|undefined)}} */
+Protocol.OverlayAgent.SetInspectModeRequest;
+/** @typedef {Object|undefined} */
+Protocol.OverlayAgent.SetInspectModeResponse;
 /**
- * @param {!Protocol.OverlayAgent.prototype.setInspectMode.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.OverlayAgent.prototype.invoke_setInspectMode = function(obj, opt_callback) {};
+ * @param {!Protocol.OverlayAgent.SetInspectModeRequest} obj
+ * @return {!Promise<!Protocol.OverlayAgent.SetInspectModeResponse>} */
+Protocol.OverlayAgent.prototype.invoke_setInspectMode = function(obj) {};
 
 /**
  * @param {number} x
@@ -937,13 +986,14 @@ Protocol.OverlayAgent.prototype.invoke_setInspectMode = function(obj, opt_callba
  * @template T
  */
 Protocol.OverlayAgent.prototype.highlightRect = function(x, y, width, height, opt_color, opt_outlineColor, opt_callback) {};
-/** @typedef {!{color: (Protocol.DOM.RGBA|undefined), height: number, width: number, y: number, x: number, outlineColor: (Protocol.DOM.RGBA|undefined)}} obj */
-Protocol.OverlayAgent.prototype.highlightRect.Request;
+/** @typedef {!{color: (Protocol.DOM.RGBA|undefined), height: number, width: number, y: number, x: number, outlineColor: (Protocol.DOM.RGBA|undefined)}} */
+Protocol.OverlayAgent.HighlightRectRequest;
+/** @typedef {Object|undefined} */
+Protocol.OverlayAgent.HighlightRectResponse;
 /**
- * @param {!Protocol.OverlayAgent.prototype.highlightRect.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.OverlayAgent.prototype.invoke_highlightRect = function(obj, opt_callback) {};
+ * @param {!Protocol.OverlayAgent.HighlightRectRequest} obj
+ * @return {!Promise<!Protocol.OverlayAgent.HighlightRectResponse>} */
+Protocol.OverlayAgent.prototype.invoke_highlightRect = function(obj) {};
 
 /**
  * @param {Protocol.DOM.Quad} quad
@@ -954,13 +1004,14 @@ Protocol.OverlayAgent.prototype.invoke_highlightRect = function(obj, opt_callbac
  * @template T
  */
 Protocol.OverlayAgent.prototype.highlightQuad = function(quad, opt_color, opt_outlineColor, opt_callback) {};
-/** @typedef {!{color: (Protocol.DOM.RGBA|undefined), quad: Protocol.DOM.Quad, outlineColor: (Protocol.DOM.RGBA|undefined)}} obj */
-Protocol.OverlayAgent.prototype.highlightQuad.Request;
+/** @typedef {!{color: (Protocol.DOM.RGBA|undefined), quad: Protocol.DOM.Quad, outlineColor: (Protocol.DOM.RGBA|undefined)}} */
+Protocol.OverlayAgent.HighlightQuadRequest;
+/** @typedef {Object|undefined} */
+Protocol.OverlayAgent.HighlightQuadResponse;
 /**
- * @param {!Protocol.OverlayAgent.prototype.highlightQuad.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.OverlayAgent.prototype.invoke_highlightQuad = function(obj, opt_callback) {};
+ * @param {!Protocol.OverlayAgent.HighlightQuadRequest} obj
+ * @return {!Promise<!Protocol.OverlayAgent.HighlightQuadResponse>} */
+Protocol.OverlayAgent.prototype.invoke_highlightQuad = function(obj) {};
 
 /**
  * @param {Protocol.Overlay.HighlightConfig} highlightConfig
@@ -972,13 +1023,14 @@ Protocol.OverlayAgent.prototype.invoke_highlightQuad = function(obj, opt_callbac
  * @template T
  */
 Protocol.OverlayAgent.prototype.highlightNode = function(highlightConfig, opt_nodeId, opt_backendNodeId, opt_objectId, opt_callback) {};
-/** @typedef {!{objectId: (Protocol.Runtime.RemoteObjectId|undefined), highlightConfig: Protocol.Overlay.HighlightConfig, backendNodeId: (Protocol.DOM.BackendNodeId|undefined), nodeId: (Protocol.DOM.NodeId|undefined)}} obj */
-Protocol.OverlayAgent.prototype.highlightNode.Request;
+/** @typedef {!{objectId: (Protocol.Runtime.RemoteObjectId|undefined), highlightConfig: Protocol.Overlay.HighlightConfig, backendNodeId: (Protocol.DOM.BackendNodeId|undefined), nodeId: (Protocol.DOM.NodeId|undefined)}} */
+Protocol.OverlayAgent.HighlightNodeRequest;
+/** @typedef {Object|undefined} */
+Protocol.OverlayAgent.HighlightNodeResponse;
 /**
- * @param {!Protocol.OverlayAgent.prototype.highlightNode.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.OverlayAgent.prototype.invoke_highlightNode = function(obj, opt_callback) {};
+ * @param {!Protocol.OverlayAgent.HighlightNodeRequest} obj
+ * @return {!Promise<!Protocol.OverlayAgent.HighlightNodeResponse>} */
+Protocol.OverlayAgent.prototype.invoke_highlightNode = function(obj) {};
 
 /**
  * @param {Protocol.Page.FrameId} frameId
@@ -989,13 +1041,14 @@ Protocol.OverlayAgent.prototype.invoke_highlightNode = function(obj, opt_callbac
  * @template T
  */
 Protocol.OverlayAgent.prototype.highlightFrame = function(frameId, opt_contentColor, opt_contentOutlineColor, opt_callback) {};
-/** @typedef {!{contentOutlineColor: (Protocol.DOM.RGBA|undefined), contentColor: (Protocol.DOM.RGBA|undefined), frameId: Protocol.Page.FrameId}} obj */
-Protocol.OverlayAgent.prototype.highlightFrame.Request;
+/** @typedef {!{contentOutlineColor: (Protocol.DOM.RGBA|undefined), contentColor: (Protocol.DOM.RGBA|undefined), frameId: Protocol.Page.FrameId}} */
+Protocol.OverlayAgent.HighlightFrameRequest;
+/** @typedef {Object|undefined} */
+Protocol.OverlayAgent.HighlightFrameResponse;
 /**
- * @param {!Protocol.OverlayAgent.prototype.highlightFrame.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.OverlayAgent.prototype.invoke_highlightFrame = function(obj, opt_callback) {};
+ * @param {!Protocol.OverlayAgent.HighlightFrameRequest} obj
+ * @return {!Promise<!Protocol.OverlayAgent.HighlightFrameResponse>} */
+Protocol.OverlayAgent.prototype.invoke_highlightFrame = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -1003,13 +1056,14 @@ Protocol.OverlayAgent.prototype.invoke_highlightFrame = function(obj, opt_callba
  * @template T
  */
 Protocol.OverlayAgent.prototype.hideHighlight = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.OverlayAgent.prototype.hideHighlight.Request;
+/** @typedef {Object|undefined} */
+Protocol.OverlayAgent.HideHighlightRequest;
+/** @typedef {Object|undefined} */
+Protocol.OverlayAgent.HideHighlightResponse;
 /**
- * @param {!Protocol.OverlayAgent.prototype.hideHighlight.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.OverlayAgent.prototype.invoke_hideHighlight = function(obj, opt_callback) {};
+ * @param {!Protocol.OverlayAgent.HideHighlightRequest} obj
+ * @return {!Promise<!Protocol.OverlayAgent.HideHighlightResponse>} */
+Protocol.OverlayAgent.prototype.invoke_hideHighlight = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -1018,13 +1072,14 @@ Protocol.OverlayAgent.prototype.invoke_hideHighlight = function(obj, opt_callbac
  * @template T
  */
 Protocol.OverlayAgent.prototype.getHighlightObjectForTest = function(nodeId, opt_callback) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId}} obj */
-Protocol.OverlayAgent.prototype.getHighlightObjectForTest.Request;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.OverlayAgent.GetHighlightObjectForTestRequest;
+/** @typedef {!{highlight: !Object}} */
+Protocol.OverlayAgent.GetHighlightObjectForTestResponse;
 /**
- * @param {!Protocol.OverlayAgent.prototype.getHighlightObjectForTest.Request} obj
- * @param {function(?Protocol.Error, !Object):void=} opt_callback
- */
-Protocol.OverlayAgent.prototype.invoke_getHighlightObjectForTest = function(obj, opt_callback) {};
+ * @param {!Protocol.OverlayAgent.GetHighlightObjectForTestRequest} obj
+ * @return {!Promise<!Protocol.OverlayAgent.GetHighlightObjectForTestResponse>} */
+Protocol.OverlayAgent.prototype.invoke_getHighlightObjectForTest = function(obj) {};
 
 /** @typedef {!{showInfo:(boolean|undefined), showRulers:(boolean|undefined), showExtensionLines:(boolean|undefined), displayAsMaterial:(boolean|undefined), contentColor:(Protocol.DOM.RGBA|undefined), paddingColor:(Protocol.DOM.RGBA|undefined), borderColor:(Protocol.DOM.RGBA|undefined), marginColor:(Protocol.DOM.RGBA|undefined), eventTargetColor:(Protocol.DOM.RGBA|undefined), shapeColor:(Protocol.DOM.RGBA|undefined), shapeMarginColor:(Protocol.DOM.RGBA|undefined), selectorList:(string|undefined)}} */
 Protocol.Overlay.HighlightConfig;
@@ -1072,13 +1127,14 @@ Protocol.EmulationAgent = function(){};
  * @template T
  */
 Protocol.EmulationAgent.prototype.setDeviceMetricsOverride = function(width, height, deviceScaleFactor, mobile, fitWindow, opt_scale, opt_offsetX, opt_offsetY, opt_screenWidth, opt_screenHeight, opt_positionX, opt_positionY, opt_screenOrientation, opt_callback) {};
-/** @typedef {!{deviceScaleFactor: number, positionX: (number|undefined), scale: (number|undefined), screenHeight: (number|undefined), mobile: boolean, offsetX: (number|undefined), screenOrientation: (Protocol.Emulation.ScreenOrientation|undefined), fitWindow: boolean, offsetY: (number|undefined), height: number, width: number, positionY: (number|undefined), screenWidth: (number|undefined)}} obj */
-Protocol.EmulationAgent.prototype.setDeviceMetricsOverride.Request;
+/** @typedef {!{deviceScaleFactor: number, positionX: (number|undefined), scale: (number|undefined), screenHeight: (number|undefined), mobile: boolean, offsetX: (number|undefined), screenOrientation: (Protocol.Emulation.ScreenOrientation|undefined), fitWindow: boolean, offsetY: (number|undefined), height: number, width: number, positionY: (number|undefined), screenWidth: (number|undefined)}} */
+Protocol.EmulationAgent.SetDeviceMetricsOverrideRequest;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.SetDeviceMetricsOverrideResponse;
 /**
- * @param {!Protocol.EmulationAgent.prototype.setDeviceMetricsOverride.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.EmulationAgent.prototype.invoke_setDeviceMetricsOverride = function(obj, opt_callback) {};
+ * @param {!Protocol.EmulationAgent.SetDeviceMetricsOverrideRequest} obj
+ * @return {!Promise<!Protocol.EmulationAgent.SetDeviceMetricsOverrideResponse>} */
+Protocol.EmulationAgent.prototype.invoke_setDeviceMetricsOverride = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -1086,13 +1142,14 @@ Protocol.EmulationAgent.prototype.invoke_setDeviceMetricsOverride = function(obj
  * @template T
  */
 Protocol.EmulationAgent.prototype.clearDeviceMetricsOverride = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.EmulationAgent.prototype.clearDeviceMetricsOverride.Request;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.ClearDeviceMetricsOverrideRequest;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.ClearDeviceMetricsOverrideResponse;
 /**
- * @param {!Protocol.EmulationAgent.prototype.clearDeviceMetricsOverride.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.EmulationAgent.prototype.invoke_clearDeviceMetricsOverride = function(obj, opt_callback) {};
+ * @param {!Protocol.EmulationAgent.ClearDeviceMetricsOverrideRequest} obj
+ * @return {!Promise<!Protocol.EmulationAgent.ClearDeviceMetricsOverrideResponse>} */
+Protocol.EmulationAgent.prototype.invoke_clearDeviceMetricsOverride = function(obj) {};
 
 /**
  * @param {number} x
@@ -1103,13 +1160,14 @@ Protocol.EmulationAgent.prototype.invoke_clearDeviceMetricsOverride = function(o
  * @template T
  */
 Protocol.EmulationAgent.prototype.forceViewport = function(x, y, scale, opt_callback) {};
-/** @typedef {!{y: number, x: number, scale: number}} obj */
-Protocol.EmulationAgent.prototype.forceViewport.Request;
+/** @typedef {!{y: number, x: number, scale: number}} */
+Protocol.EmulationAgent.ForceViewportRequest;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.ForceViewportResponse;
 /**
- * @param {!Protocol.EmulationAgent.prototype.forceViewport.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.EmulationAgent.prototype.invoke_forceViewport = function(obj, opt_callback) {};
+ * @param {!Protocol.EmulationAgent.ForceViewportRequest} obj
+ * @return {!Promise<!Protocol.EmulationAgent.ForceViewportResponse>} */
+Protocol.EmulationAgent.prototype.invoke_forceViewport = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -1117,13 +1175,14 @@ Protocol.EmulationAgent.prototype.invoke_forceViewport = function(obj, opt_callb
  * @template T
  */
 Protocol.EmulationAgent.prototype.resetViewport = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.EmulationAgent.prototype.resetViewport.Request;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.ResetViewportRequest;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.ResetViewportResponse;
 /**
- * @param {!Protocol.EmulationAgent.prototype.resetViewport.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.EmulationAgent.prototype.invoke_resetViewport = function(obj, opt_callback) {};
+ * @param {!Protocol.EmulationAgent.ResetViewportRequest} obj
+ * @return {!Promise<!Protocol.EmulationAgent.ResetViewportResponse>} */
+Protocol.EmulationAgent.prototype.invoke_resetViewport = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -1131,13 +1190,14 @@ Protocol.EmulationAgent.prototype.invoke_resetViewport = function(obj, opt_callb
  * @template T
  */
 Protocol.EmulationAgent.prototype.resetPageScaleFactor = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.EmulationAgent.prototype.resetPageScaleFactor.Request;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.ResetPageScaleFactorRequest;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.ResetPageScaleFactorResponse;
 /**
- * @param {!Protocol.EmulationAgent.prototype.resetPageScaleFactor.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.EmulationAgent.prototype.invoke_resetPageScaleFactor = function(obj, opt_callback) {};
+ * @param {!Protocol.EmulationAgent.ResetPageScaleFactorRequest} obj
+ * @return {!Promise<!Protocol.EmulationAgent.ResetPageScaleFactorResponse>} */
+Protocol.EmulationAgent.prototype.invoke_resetPageScaleFactor = function(obj) {};
 
 /**
  * @param {number} pageScaleFactor
@@ -1146,13 +1206,14 @@ Protocol.EmulationAgent.prototype.invoke_resetPageScaleFactor = function(obj, op
  * @template T
  */
 Protocol.EmulationAgent.prototype.setPageScaleFactor = function(pageScaleFactor, opt_callback) {};
-/** @typedef {!{pageScaleFactor: number}} obj */
-Protocol.EmulationAgent.prototype.setPageScaleFactor.Request;
+/** @typedef {!{pageScaleFactor: number}} */
+Protocol.EmulationAgent.SetPageScaleFactorRequest;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.SetPageScaleFactorResponse;
 /**
- * @param {!Protocol.EmulationAgent.prototype.setPageScaleFactor.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.EmulationAgent.prototype.invoke_setPageScaleFactor = function(obj, opt_callback) {};
+ * @param {!Protocol.EmulationAgent.SetPageScaleFactorRequest} obj
+ * @return {!Promise<!Protocol.EmulationAgent.SetPageScaleFactorResponse>} */
+Protocol.EmulationAgent.prototype.invoke_setPageScaleFactor = function(obj) {};
 
 /**
  * @param {number} width
@@ -1162,13 +1223,14 @@ Protocol.EmulationAgent.prototype.invoke_setPageScaleFactor = function(obj, opt_
  * @template T
  */
 Protocol.EmulationAgent.prototype.setVisibleSize = function(width, height, opt_callback) {};
-/** @typedef {!{width: number, height: number}} obj */
-Protocol.EmulationAgent.prototype.setVisibleSize.Request;
+/** @typedef {!{width: number, height: number}} */
+Protocol.EmulationAgent.SetVisibleSizeRequest;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.SetVisibleSizeResponse;
 /**
- * @param {!Protocol.EmulationAgent.prototype.setVisibleSize.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.EmulationAgent.prototype.invoke_setVisibleSize = function(obj, opt_callback) {};
+ * @param {!Protocol.EmulationAgent.SetVisibleSizeRequest} obj
+ * @return {!Promise<!Protocol.EmulationAgent.SetVisibleSizeResponse>} */
+Protocol.EmulationAgent.prototype.invoke_setVisibleSize = function(obj) {};
 
 /**
  * @param {boolean} value
@@ -1177,13 +1239,14 @@ Protocol.EmulationAgent.prototype.invoke_setVisibleSize = function(obj, opt_call
  * @template T
  */
 Protocol.EmulationAgent.prototype.setScriptExecutionDisabled = function(value, opt_callback) {};
-/** @typedef {!{value: boolean}} obj */
-Protocol.EmulationAgent.prototype.setScriptExecutionDisabled.Request;
+/** @typedef {!{value: boolean}} */
+Protocol.EmulationAgent.SetScriptExecutionDisabledRequest;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.SetScriptExecutionDisabledResponse;
 /**
- * @param {!Protocol.EmulationAgent.prototype.setScriptExecutionDisabled.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.EmulationAgent.prototype.invoke_setScriptExecutionDisabled = function(obj, opt_callback) {};
+ * @param {!Protocol.EmulationAgent.SetScriptExecutionDisabledRequest} obj
+ * @return {!Promise<!Protocol.EmulationAgent.SetScriptExecutionDisabledResponse>} */
+Protocol.EmulationAgent.prototype.invoke_setScriptExecutionDisabled = function(obj) {};
 
 /**
  * @param {number=} opt_latitude
@@ -1194,13 +1257,14 @@ Protocol.EmulationAgent.prototype.invoke_setScriptExecutionDisabled = function(o
  * @template T
  */
 Protocol.EmulationAgent.prototype.setGeolocationOverride = function(opt_latitude, opt_longitude, opt_accuracy, opt_callback) {};
-/** @typedef {!{latitude: (number|undefined), longitude: (number|undefined), accuracy: (number|undefined)}} obj */
-Protocol.EmulationAgent.prototype.setGeolocationOverride.Request;
+/** @typedef {!{latitude: (number|undefined), longitude: (number|undefined), accuracy: (number|undefined)}} */
+Protocol.EmulationAgent.SetGeolocationOverrideRequest;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.SetGeolocationOverrideResponse;
 /**
- * @param {!Protocol.EmulationAgent.prototype.setGeolocationOverride.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.EmulationAgent.prototype.invoke_setGeolocationOverride = function(obj, opt_callback) {};
+ * @param {!Protocol.EmulationAgent.SetGeolocationOverrideRequest} obj
+ * @return {!Promise<!Protocol.EmulationAgent.SetGeolocationOverrideResponse>} */
+Protocol.EmulationAgent.prototype.invoke_setGeolocationOverride = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -1208,13 +1272,14 @@ Protocol.EmulationAgent.prototype.invoke_setGeolocationOverride = function(obj, 
  * @template T
  */
 Protocol.EmulationAgent.prototype.clearGeolocationOverride = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.EmulationAgent.prototype.clearGeolocationOverride.Request;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.ClearGeolocationOverrideRequest;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.ClearGeolocationOverrideResponse;
 /**
- * @param {!Protocol.EmulationAgent.prototype.clearGeolocationOverride.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.EmulationAgent.prototype.invoke_clearGeolocationOverride = function(obj, opt_callback) {};
+ * @param {!Protocol.EmulationAgent.ClearGeolocationOverrideRequest} obj
+ * @return {!Promise<!Protocol.EmulationAgent.ClearGeolocationOverrideResponse>} */
+Protocol.EmulationAgent.prototype.invoke_clearGeolocationOverride = function(obj) {};
 
 /**
  * @param {boolean} enabled
@@ -1224,13 +1289,14 @@ Protocol.EmulationAgent.prototype.invoke_clearGeolocationOverride = function(obj
  * @template T
  */
 Protocol.EmulationAgent.prototype.setTouchEmulationEnabled = function(enabled, opt_configuration, opt_callback) {};
-/** @typedef {!{configuration: (string|undefined), enabled: boolean}} obj */
-Protocol.EmulationAgent.prototype.setTouchEmulationEnabled.Request;
+/** @typedef {!{configuration: (string|undefined), enabled: boolean}} */
+Protocol.EmulationAgent.SetTouchEmulationEnabledRequest;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.SetTouchEmulationEnabledResponse;
 /**
- * @param {!Protocol.EmulationAgent.prototype.setTouchEmulationEnabled.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.EmulationAgent.prototype.invoke_setTouchEmulationEnabled = function(obj, opt_callback) {};
+ * @param {!Protocol.EmulationAgent.SetTouchEmulationEnabledRequest} obj
+ * @return {!Promise<!Protocol.EmulationAgent.SetTouchEmulationEnabledResponse>} */
+Protocol.EmulationAgent.prototype.invoke_setTouchEmulationEnabled = function(obj) {};
 
 /**
  * @param {string} media
@@ -1239,13 +1305,14 @@ Protocol.EmulationAgent.prototype.invoke_setTouchEmulationEnabled = function(obj
  * @template T
  */
 Protocol.EmulationAgent.prototype.setEmulatedMedia = function(media, opt_callback) {};
-/** @typedef {!{media: string}} obj */
-Protocol.EmulationAgent.prototype.setEmulatedMedia.Request;
+/** @typedef {!{media: string}} */
+Protocol.EmulationAgent.SetEmulatedMediaRequest;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.SetEmulatedMediaResponse;
 /**
- * @param {!Protocol.EmulationAgent.prototype.setEmulatedMedia.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.EmulationAgent.prototype.invoke_setEmulatedMedia = function(obj, opt_callback) {};
+ * @param {!Protocol.EmulationAgent.SetEmulatedMediaRequest} obj
+ * @return {!Promise<!Protocol.EmulationAgent.SetEmulatedMediaResponse>} */
+Protocol.EmulationAgent.prototype.invoke_setEmulatedMedia = function(obj) {};
 
 /**
  * @param {number} rate
@@ -1254,13 +1321,14 @@ Protocol.EmulationAgent.prototype.invoke_setEmulatedMedia = function(obj, opt_ca
  * @template T
  */
 Protocol.EmulationAgent.prototype.setCPUThrottlingRate = function(rate, opt_callback) {};
-/** @typedef {!{rate: number}} obj */
-Protocol.EmulationAgent.prototype.setCPUThrottlingRate.Request;
+/** @typedef {!{rate: number}} */
+Protocol.EmulationAgent.SetCPUThrottlingRateRequest;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.SetCPUThrottlingRateResponse;
 /**
- * @param {!Protocol.EmulationAgent.prototype.setCPUThrottlingRate.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.EmulationAgent.prototype.invoke_setCPUThrottlingRate = function(obj, opt_callback) {};
+ * @param {!Protocol.EmulationAgent.SetCPUThrottlingRateRequest} obj
+ * @return {!Promise<!Protocol.EmulationAgent.SetCPUThrottlingRateResponse>} */
+Protocol.EmulationAgent.prototype.invoke_setCPUThrottlingRate = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error, boolean):T=} opt_callback
@@ -1268,13 +1336,14 @@ Protocol.EmulationAgent.prototype.invoke_setCPUThrottlingRate = function(obj, op
  * @template T
  */
 Protocol.EmulationAgent.prototype.canEmulate = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.EmulationAgent.prototype.canEmulate.Request;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.CanEmulateRequest;
+/** @typedef {!{result: boolean}} */
+Protocol.EmulationAgent.CanEmulateResponse;
 /**
- * @param {!Protocol.EmulationAgent.prototype.canEmulate.Request} obj
- * @param {function(?Protocol.Error, boolean):void=} opt_callback
- */
-Protocol.EmulationAgent.prototype.invoke_canEmulate = function(obj, opt_callback) {};
+ * @param {!Protocol.EmulationAgent.CanEmulateRequest} obj
+ * @return {!Promise<!Protocol.EmulationAgent.CanEmulateResponse>} */
+Protocol.EmulationAgent.prototype.invoke_canEmulate = function(obj) {};
 
 /**
  * @param {Protocol.Emulation.VirtualTimePolicy} policy
@@ -1284,13 +1353,14 @@ Protocol.EmulationAgent.prototype.invoke_canEmulate = function(obj, opt_callback
  * @template T
  */
 Protocol.EmulationAgent.prototype.setVirtualTimePolicy = function(policy, opt_budget, opt_callback) {};
-/** @typedef {!{policy: Protocol.Emulation.VirtualTimePolicy, budget: (number|undefined)}} obj */
-Protocol.EmulationAgent.prototype.setVirtualTimePolicy.Request;
+/** @typedef {!{policy: Protocol.Emulation.VirtualTimePolicy, budget: (number|undefined)}} */
+Protocol.EmulationAgent.SetVirtualTimePolicyRequest;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.SetVirtualTimePolicyResponse;
 /**
- * @param {!Protocol.EmulationAgent.prototype.setVirtualTimePolicy.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.EmulationAgent.prototype.invoke_setVirtualTimePolicy = function(obj, opt_callback) {};
+ * @param {!Protocol.EmulationAgent.SetVirtualTimePolicyRequest} obj
+ * @return {!Promise<!Protocol.EmulationAgent.SetVirtualTimePolicyResponse>} */
+Protocol.EmulationAgent.prototype.invoke_setVirtualTimePolicy = function(obj) {};
 
 /**
  * @param {Protocol.DOM.RGBA=} opt_color
@@ -1299,13 +1369,14 @@ Protocol.EmulationAgent.prototype.invoke_setVirtualTimePolicy = function(obj, op
  * @template T
  */
 Protocol.EmulationAgent.prototype.setDefaultBackgroundColorOverride = function(opt_color, opt_callback) {};
-/** @typedef {!{color: (Protocol.DOM.RGBA|undefined)}} obj */
-Protocol.EmulationAgent.prototype.setDefaultBackgroundColorOverride.Request;
+/** @typedef {!{color: (Protocol.DOM.RGBA|undefined)}} */
+Protocol.EmulationAgent.SetDefaultBackgroundColorOverrideRequest;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.SetDefaultBackgroundColorOverrideResponse;
 /**
- * @param {!Protocol.EmulationAgent.prototype.setDefaultBackgroundColorOverride.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.EmulationAgent.prototype.invoke_setDefaultBackgroundColorOverride = function(obj, opt_callback) {};
+ * @param {!Protocol.EmulationAgent.SetDefaultBackgroundColorOverrideRequest} obj
+ * @return {!Promise<!Protocol.EmulationAgent.SetDefaultBackgroundColorOverrideResponse>} */
+Protocol.EmulationAgent.prototype.invoke_setDefaultBackgroundColorOverride = function(obj) {};
 
 /** @enum {string} */
 Protocol.Emulation.ScreenOrientationType = {
@@ -1341,13 +1412,14 @@ Protocol.SecurityAgent = function(){};
  * @template T
  */
 Protocol.SecurityAgent.prototype.enable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.SecurityAgent.prototype.enable.Request;
+/** @typedef {Object|undefined} */
+Protocol.SecurityAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.SecurityAgent.EnableResponse;
 /**
- * @param {!Protocol.SecurityAgent.prototype.enable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.SecurityAgent.prototype.invoke_enable = function(obj, opt_callback) {};
+ * @param {!Protocol.SecurityAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.SecurityAgent.EnableResponse>} */
+Protocol.SecurityAgent.prototype.invoke_enable = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -1355,13 +1427,14 @@ Protocol.SecurityAgent.prototype.invoke_enable = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.SecurityAgent.prototype.disable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.SecurityAgent.prototype.disable.Request;
+/** @typedef {Object|undefined} */
+Protocol.SecurityAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.SecurityAgent.DisableResponse;
 /**
- * @param {!Protocol.SecurityAgent.prototype.disable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.SecurityAgent.prototype.invoke_disable = function(obj, opt_callback) {};
+ * @param {!Protocol.SecurityAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.SecurityAgent.DisableResponse>} */
+Protocol.SecurityAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -1369,13 +1442,14 @@ Protocol.SecurityAgent.prototype.invoke_disable = function(obj, opt_callback) {}
  * @template T
  */
 Protocol.SecurityAgent.prototype.showCertificateViewer = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.SecurityAgent.prototype.showCertificateViewer.Request;
+/** @typedef {Object|undefined} */
+Protocol.SecurityAgent.ShowCertificateViewerRequest;
+/** @typedef {Object|undefined} */
+Protocol.SecurityAgent.ShowCertificateViewerResponse;
 /**
- * @param {!Protocol.SecurityAgent.prototype.showCertificateViewer.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.SecurityAgent.prototype.invoke_showCertificateViewer = function(obj, opt_callback) {};
+ * @param {!Protocol.SecurityAgent.ShowCertificateViewerRequest} obj
+ * @return {!Promise<!Protocol.SecurityAgent.ShowCertificateViewerResponse>} */
+Protocol.SecurityAgent.prototype.invoke_showCertificateViewer = function(obj) {};
 
 /**
  * @param {number} eventId
@@ -1385,13 +1459,14 @@ Protocol.SecurityAgent.prototype.invoke_showCertificateViewer = function(obj, op
  * @template T
  */
 Protocol.SecurityAgent.prototype.handleCertificateError = function(eventId, action, opt_callback) {};
-/** @typedef {!{eventId: number, action: Protocol.Security.CertificateErrorAction}} obj */
-Protocol.SecurityAgent.prototype.handleCertificateError.Request;
+/** @typedef {!{eventId: number, action: Protocol.Security.CertificateErrorAction}} */
+Protocol.SecurityAgent.HandleCertificateErrorRequest;
+/** @typedef {Object|undefined} */
+Protocol.SecurityAgent.HandleCertificateErrorResponse;
 /**
- * @param {!Protocol.SecurityAgent.prototype.handleCertificateError.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.SecurityAgent.prototype.invoke_handleCertificateError = function(obj, opt_callback) {};
+ * @param {!Protocol.SecurityAgent.HandleCertificateErrorRequest} obj
+ * @return {!Promise<!Protocol.SecurityAgent.HandleCertificateErrorResponse>} */
+Protocol.SecurityAgent.prototype.invoke_handleCertificateError = function(obj) {};
 
 /**
  * @param {boolean} override
@@ -1400,13 +1475,14 @@ Protocol.SecurityAgent.prototype.invoke_handleCertificateError = function(obj, o
  * @template T
  */
 Protocol.SecurityAgent.prototype.setOverrideCertificateErrors = function(override, opt_callback) {};
-/** @typedef {!{override: boolean}} obj */
-Protocol.SecurityAgent.prototype.setOverrideCertificateErrors.Request;
+/** @typedef {!{override: boolean}} */
+Protocol.SecurityAgent.SetOverrideCertificateErrorsRequest;
+/** @typedef {Object|undefined} */
+Protocol.SecurityAgent.SetOverrideCertificateErrorsResponse;
 /**
- * @param {!Protocol.SecurityAgent.prototype.setOverrideCertificateErrors.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.SecurityAgent.prototype.invoke_setOverrideCertificateErrors = function(obj, opt_callback) {};
+ * @param {!Protocol.SecurityAgent.SetOverrideCertificateErrorsRequest} obj
+ * @return {!Promise<!Protocol.SecurityAgent.SetOverrideCertificateErrorsResponse>} */
+Protocol.SecurityAgent.prototype.invoke_setOverrideCertificateErrors = function(obj) {};
 
 /** @typedef {number} */
 Protocol.Security.CertificateId;
@@ -1464,13 +1540,14 @@ Protocol.NetworkAgent = function(){};
  * @template T
  */
 Protocol.NetworkAgent.prototype.enable = function(opt_maxTotalBufferSize, opt_maxResourceBufferSize, opt_callback) {};
-/** @typedef {!{maxTotalBufferSize: (number|undefined), maxResourceBufferSize: (number|undefined)}} obj */
-Protocol.NetworkAgent.prototype.enable.Request;
+/** @typedef {!{maxTotalBufferSize: (number|undefined), maxResourceBufferSize: (number|undefined)}} */
+Protocol.NetworkAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.NetworkAgent.EnableResponse;
 /**
- * @param {!Protocol.NetworkAgent.prototype.enable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.NetworkAgent.prototype.invoke_enable = function(obj, opt_callback) {};
+ * @param {!Protocol.NetworkAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.EnableResponse>} */
+Protocol.NetworkAgent.prototype.invoke_enable = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -1478,13 +1555,14 @@ Protocol.NetworkAgent.prototype.invoke_enable = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.NetworkAgent.prototype.disable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.NetworkAgent.prototype.disable.Request;
+/** @typedef {Object|undefined} */
+Protocol.NetworkAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.NetworkAgent.DisableResponse;
 /**
- * @param {!Protocol.NetworkAgent.prototype.disable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.NetworkAgent.prototype.invoke_disable = function(obj, opt_callback) {};
+ * @param {!Protocol.NetworkAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.DisableResponse>} */
+Protocol.NetworkAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {string} userAgent
@@ -1493,13 +1571,14 @@ Protocol.NetworkAgent.prototype.invoke_disable = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.NetworkAgent.prototype.setUserAgentOverride = function(userAgent, opt_callback) {};
-/** @typedef {!{userAgent: string}} obj */
-Protocol.NetworkAgent.prototype.setUserAgentOverride.Request;
+/** @typedef {!{userAgent: string}} */
+Protocol.NetworkAgent.SetUserAgentOverrideRequest;
+/** @typedef {Object|undefined} */
+Protocol.NetworkAgent.SetUserAgentOverrideResponse;
 /**
- * @param {!Protocol.NetworkAgent.prototype.setUserAgentOverride.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.NetworkAgent.prototype.invoke_setUserAgentOverride = function(obj, opt_callback) {};
+ * @param {!Protocol.NetworkAgent.SetUserAgentOverrideRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.SetUserAgentOverrideResponse>} */
+Protocol.NetworkAgent.prototype.invoke_setUserAgentOverride = function(obj) {};
 
 /**
  * @param {Protocol.Network.Headers} headers
@@ -1508,13 +1587,14 @@ Protocol.NetworkAgent.prototype.invoke_setUserAgentOverride = function(obj, opt_
  * @template T
  */
 Protocol.NetworkAgent.prototype.setExtraHTTPHeaders = function(headers, opt_callback) {};
-/** @typedef {!{headers: Protocol.Network.Headers}} obj */
-Protocol.NetworkAgent.prototype.setExtraHTTPHeaders.Request;
+/** @typedef {!{headers: Protocol.Network.Headers}} */
+Protocol.NetworkAgent.SetExtraHTTPHeadersRequest;
+/** @typedef {Object|undefined} */
+Protocol.NetworkAgent.SetExtraHTTPHeadersResponse;
 /**
- * @param {!Protocol.NetworkAgent.prototype.setExtraHTTPHeaders.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.NetworkAgent.prototype.invoke_setExtraHTTPHeaders = function(obj, opt_callback) {};
+ * @param {!Protocol.NetworkAgent.SetExtraHTTPHeadersRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.SetExtraHTTPHeadersResponse>} */
+Protocol.NetworkAgent.prototype.invoke_setExtraHTTPHeaders = function(obj) {};
 
 /**
  * @param {Protocol.Network.RequestId} requestId
@@ -1523,13 +1603,14 @@ Protocol.NetworkAgent.prototype.invoke_setExtraHTTPHeaders = function(obj, opt_c
  * @template T
  */
 Protocol.NetworkAgent.prototype.getResponseBody = function(requestId, opt_callback) {};
-/** @typedef {!{requestId: Protocol.Network.RequestId}} obj */
-Protocol.NetworkAgent.prototype.getResponseBody.Request;
+/** @typedef {!{requestId: Protocol.Network.RequestId}} */
+Protocol.NetworkAgent.GetResponseBodyRequest;
+/** @typedef {!{body: string, base64Encoded: boolean}} */
+Protocol.NetworkAgent.GetResponseBodyResponse;
 /**
- * @param {!Protocol.NetworkAgent.prototype.getResponseBody.Request} obj
- * @param {function(?Protocol.Error, string, boolean):void=} opt_callback
- */
-Protocol.NetworkAgent.prototype.invoke_getResponseBody = function(obj, opt_callback) {};
+ * @param {!Protocol.NetworkAgent.GetResponseBodyRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.GetResponseBodyResponse>} */
+Protocol.NetworkAgent.prototype.invoke_getResponseBody = function(obj) {};
 
 /**
  * @param {!Array<string>} urls
@@ -1538,13 +1619,14 @@ Protocol.NetworkAgent.prototype.invoke_getResponseBody = function(obj, opt_callb
  * @template T
  */
 Protocol.NetworkAgent.prototype.setBlockedURLs = function(urls, opt_callback) {};
-/** @typedef {!{urls: !Array<string>}} obj */
-Protocol.NetworkAgent.prototype.setBlockedURLs.Request;
+/** @typedef {!{urls: !Array<string>}} */
+Protocol.NetworkAgent.SetBlockedURLsRequest;
+/** @typedef {Object|undefined} */
+Protocol.NetworkAgent.SetBlockedURLsResponse;
 /**
- * @param {!Protocol.NetworkAgent.prototype.setBlockedURLs.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.NetworkAgent.prototype.invoke_setBlockedURLs = function(obj, opt_callback) {};
+ * @param {!Protocol.NetworkAgent.SetBlockedURLsRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.SetBlockedURLsResponse>} */
+Protocol.NetworkAgent.prototype.invoke_setBlockedURLs = function(obj) {};
 
 /**
  * @param {Protocol.Network.RequestId} requestId
@@ -1553,13 +1635,14 @@ Protocol.NetworkAgent.prototype.invoke_setBlockedURLs = function(obj, opt_callba
  * @template T
  */
 Protocol.NetworkAgent.prototype.replayXHR = function(requestId, opt_callback) {};
-/** @typedef {!{requestId: Protocol.Network.RequestId}} obj */
-Protocol.NetworkAgent.prototype.replayXHR.Request;
+/** @typedef {!{requestId: Protocol.Network.RequestId}} */
+Protocol.NetworkAgent.ReplayXHRRequest;
+/** @typedef {Object|undefined} */
+Protocol.NetworkAgent.ReplayXHRResponse;
 /**
- * @param {!Protocol.NetworkAgent.prototype.replayXHR.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.NetworkAgent.prototype.invoke_replayXHR = function(obj, opt_callback) {};
+ * @param {!Protocol.NetworkAgent.ReplayXHRRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.ReplayXHRResponse>} */
+Protocol.NetworkAgent.prototype.invoke_replayXHR = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error, boolean):T=} opt_callback
@@ -1567,13 +1650,14 @@ Protocol.NetworkAgent.prototype.invoke_replayXHR = function(obj, opt_callback) {
  * @template T
  */
 Protocol.NetworkAgent.prototype.canClearBrowserCache = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.NetworkAgent.prototype.canClearBrowserCache.Request;
+/** @typedef {Object|undefined} */
+Protocol.NetworkAgent.CanClearBrowserCacheRequest;
+/** @typedef {!{result: boolean}} */
+Protocol.NetworkAgent.CanClearBrowserCacheResponse;
 /**
- * @param {!Protocol.NetworkAgent.prototype.canClearBrowserCache.Request} obj
- * @param {function(?Protocol.Error, boolean):void=} opt_callback
- */
-Protocol.NetworkAgent.prototype.invoke_canClearBrowserCache = function(obj, opt_callback) {};
+ * @param {!Protocol.NetworkAgent.CanClearBrowserCacheRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.CanClearBrowserCacheResponse>} */
+Protocol.NetworkAgent.prototype.invoke_canClearBrowserCache = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -1581,13 +1665,14 @@ Protocol.NetworkAgent.prototype.invoke_canClearBrowserCache = function(obj, opt_
  * @template T
  */
 Protocol.NetworkAgent.prototype.clearBrowserCache = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.NetworkAgent.prototype.clearBrowserCache.Request;
+/** @typedef {Object|undefined} */
+Protocol.NetworkAgent.ClearBrowserCacheRequest;
+/** @typedef {Object|undefined} */
+Protocol.NetworkAgent.ClearBrowserCacheResponse;
 /**
- * @param {!Protocol.NetworkAgent.prototype.clearBrowserCache.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.NetworkAgent.prototype.invoke_clearBrowserCache = function(obj, opt_callback) {};
+ * @param {!Protocol.NetworkAgent.ClearBrowserCacheRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.ClearBrowserCacheResponse>} */
+Protocol.NetworkAgent.prototype.invoke_clearBrowserCache = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error, boolean):T=} opt_callback
@@ -1595,13 +1680,14 @@ Protocol.NetworkAgent.prototype.invoke_clearBrowserCache = function(obj, opt_cal
  * @template T
  */
 Protocol.NetworkAgent.prototype.canClearBrowserCookies = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.NetworkAgent.prototype.canClearBrowserCookies.Request;
+/** @typedef {Object|undefined} */
+Protocol.NetworkAgent.CanClearBrowserCookiesRequest;
+/** @typedef {!{result: boolean}} */
+Protocol.NetworkAgent.CanClearBrowserCookiesResponse;
 /**
- * @param {!Protocol.NetworkAgent.prototype.canClearBrowserCookies.Request} obj
- * @param {function(?Protocol.Error, boolean):void=} opt_callback
- */
-Protocol.NetworkAgent.prototype.invoke_canClearBrowserCookies = function(obj, opt_callback) {};
+ * @param {!Protocol.NetworkAgent.CanClearBrowserCookiesRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.CanClearBrowserCookiesResponse>} */
+Protocol.NetworkAgent.prototype.invoke_canClearBrowserCookies = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -1609,13 +1695,14 @@ Protocol.NetworkAgent.prototype.invoke_canClearBrowserCookies = function(obj, op
  * @template T
  */
 Protocol.NetworkAgent.prototype.clearBrowserCookies = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.NetworkAgent.prototype.clearBrowserCookies.Request;
+/** @typedef {Object|undefined} */
+Protocol.NetworkAgent.ClearBrowserCookiesRequest;
+/** @typedef {Object|undefined} */
+Protocol.NetworkAgent.ClearBrowserCookiesResponse;
 /**
- * @param {!Protocol.NetworkAgent.prototype.clearBrowserCookies.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.NetworkAgent.prototype.invoke_clearBrowserCookies = function(obj, opt_callback) {};
+ * @param {!Protocol.NetworkAgent.ClearBrowserCookiesRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.ClearBrowserCookiesResponse>} */
+Protocol.NetworkAgent.prototype.invoke_clearBrowserCookies = function(obj) {};
 
 /**
  * @param {!Array<string>=} opt_urls
@@ -1624,13 +1711,14 @@ Protocol.NetworkAgent.prototype.invoke_clearBrowserCookies = function(obj, opt_c
  * @template T
  */
 Protocol.NetworkAgent.prototype.getCookies = function(opt_urls, opt_callback) {};
-/** @typedef {!{urls: (!Array<string>|undefined)}} obj */
-Protocol.NetworkAgent.prototype.getCookies.Request;
+/** @typedef {!{urls: (!Array<string>|undefined)}} */
+Protocol.NetworkAgent.GetCookiesRequest;
+/** @typedef {!{cookies: !Array<Protocol.Network.Cookie>}} */
+Protocol.NetworkAgent.GetCookiesResponse;
 /**
- * @param {!Protocol.NetworkAgent.prototype.getCookies.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.Network.Cookie>):void=} opt_callback
- */
-Protocol.NetworkAgent.prototype.invoke_getCookies = function(obj, opt_callback) {};
+ * @param {!Protocol.NetworkAgent.GetCookiesRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.GetCookiesResponse>} */
+Protocol.NetworkAgent.prototype.invoke_getCookies = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error, !Array<Protocol.Network.Cookie>):T=} opt_callback
@@ -1638,13 +1726,14 @@ Protocol.NetworkAgent.prototype.invoke_getCookies = function(obj, opt_callback) 
  * @template T
  */
 Protocol.NetworkAgent.prototype.getAllCookies = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.NetworkAgent.prototype.getAllCookies.Request;
+/** @typedef {Object|undefined} */
+Protocol.NetworkAgent.GetAllCookiesRequest;
+/** @typedef {!{cookies: !Array<Protocol.Network.Cookie>}} */
+Protocol.NetworkAgent.GetAllCookiesResponse;
 /**
- * @param {!Protocol.NetworkAgent.prototype.getAllCookies.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.Network.Cookie>):void=} opt_callback
- */
-Protocol.NetworkAgent.prototype.invoke_getAllCookies = function(obj, opt_callback) {};
+ * @param {!Protocol.NetworkAgent.GetAllCookiesRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.GetAllCookiesResponse>} */
+Protocol.NetworkAgent.prototype.invoke_getAllCookies = function(obj) {};
 
 /**
  * @param {string} cookieName
@@ -1654,13 +1743,14 @@ Protocol.NetworkAgent.prototype.invoke_getAllCookies = function(obj, opt_callbac
  * @template T
  */
 Protocol.NetworkAgent.prototype.deleteCookie = function(cookieName, url, opt_callback) {};
-/** @typedef {!{url: string, cookieName: string}} obj */
-Protocol.NetworkAgent.prototype.deleteCookie.Request;
+/** @typedef {!{url: string, cookieName: string}} */
+Protocol.NetworkAgent.DeleteCookieRequest;
+/** @typedef {Object|undefined} */
+Protocol.NetworkAgent.DeleteCookieResponse;
 /**
- * @param {!Protocol.NetworkAgent.prototype.deleteCookie.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.NetworkAgent.prototype.invoke_deleteCookie = function(obj, opt_callback) {};
+ * @param {!Protocol.NetworkAgent.DeleteCookieRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.DeleteCookieResponse>} */
+Protocol.NetworkAgent.prototype.invoke_deleteCookie = function(obj) {};
 
 /**
  * @param {string} url
@@ -1677,13 +1767,14 @@ Protocol.NetworkAgent.prototype.invoke_deleteCookie = function(obj, opt_callback
  * @template T
  */
 Protocol.NetworkAgent.prototype.setCookie = function(url, name, value, opt_domain, opt_path, opt_secure, opt_httpOnly, opt_sameSite, opt_expirationDate, opt_callback) {};
-/** @typedef {!{domain: (string|undefined), name: string, url: string, value: string, expirationDate: (Protocol.Network.Timestamp|undefined), sameSite: (Protocol.Network.CookieSameSite|undefined), path: (string|undefined), httpOnly: (boolean|undefined), secure: (boolean|undefined)}} obj */
-Protocol.NetworkAgent.prototype.setCookie.Request;
+/** @typedef {!{domain: (string|undefined), name: string, url: string, value: string, expirationDate: (Protocol.Network.Timestamp|undefined), sameSite: (Protocol.Network.CookieSameSite|undefined), path: (string|undefined), httpOnly: (boolean|undefined), secure: (boolean|undefined)}} */
+Protocol.NetworkAgent.SetCookieRequest;
+/** @typedef {!{success: boolean}} */
+Protocol.NetworkAgent.SetCookieResponse;
 /**
- * @param {!Protocol.NetworkAgent.prototype.setCookie.Request} obj
- * @param {function(?Protocol.Error, boolean):void=} opt_callback
- */
-Protocol.NetworkAgent.prototype.invoke_setCookie = function(obj, opt_callback) {};
+ * @param {!Protocol.NetworkAgent.SetCookieRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.SetCookieResponse>} */
+Protocol.NetworkAgent.prototype.invoke_setCookie = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error, boolean):T=} opt_callback
@@ -1691,13 +1782,14 @@ Protocol.NetworkAgent.prototype.invoke_setCookie = function(obj, opt_callback) {
  * @template T
  */
 Protocol.NetworkAgent.prototype.canEmulateNetworkConditions = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.NetworkAgent.prototype.canEmulateNetworkConditions.Request;
+/** @typedef {Object|undefined} */
+Protocol.NetworkAgent.CanEmulateNetworkConditionsRequest;
+/** @typedef {!{result: boolean}} */
+Protocol.NetworkAgent.CanEmulateNetworkConditionsResponse;
 /**
- * @param {!Protocol.NetworkAgent.prototype.canEmulateNetworkConditions.Request} obj
- * @param {function(?Protocol.Error, boolean):void=} opt_callback
- */
-Protocol.NetworkAgent.prototype.invoke_canEmulateNetworkConditions = function(obj, opt_callback) {};
+ * @param {!Protocol.NetworkAgent.CanEmulateNetworkConditionsRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.CanEmulateNetworkConditionsResponse>} */
+Protocol.NetworkAgent.prototype.invoke_canEmulateNetworkConditions = function(obj) {};
 
 /**
  * @param {boolean} offline
@@ -1710,13 +1802,14 @@ Protocol.NetworkAgent.prototype.invoke_canEmulateNetworkConditions = function(ob
  * @template T
  */
 Protocol.NetworkAgent.prototype.emulateNetworkConditions = function(offline, latency, downloadThroughput, uploadThroughput, opt_connectionType, opt_callback) {};
-/** @typedef {!{latency: number, offline: boolean, downloadThroughput: number, connectionType: (Protocol.Network.ConnectionType|undefined), uploadThroughput: number}} obj */
-Protocol.NetworkAgent.prototype.emulateNetworkConditions.Request;
+/** @typedef {!{latency: number, offline: boolean, downloadThroughput: number, connectionType: (Protocol.Network.ConnectionType|undefined), uploadThroughput: number}} */
+Protocol.NetworkAgent.EmulateNetworkConditionsRequest;
+/** @typedef {Object|undefined} */
+Protocol.NetworkAgent.EmulateNetworkConditionsResponse;
 /**
- * @param {!Protocol.NetworkAgent.prototype.emulateNetworkConditions.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.NetworkAgent.prototype.invoke_emulateNetworkConditions = function(obj, opt_callback) {};
+ * @param {!Protocol.NetworkAgent.EmulateNetworkConditionsRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.EmulateNetworkConditionsResponse>} */
+Protocol.NetworkAgent.prototype.invoke_emulateNetworkConditions = function(obj) {};
 
 /**
  * @param {boolean} cacheDisabled
@@ -1725,13 +1818,14 @@ Protocol.NetworkAgent.prototype.invoke_emulateNetworkConditions = function(obj, 
  * @template T
  */
 Protocol.NetworkAgent.prototype.setCacheDisabled = function(cacheDisabled, opt_callback) {};
-/** @typedef {!{cacheDisabled: boolean}} obj */
-Protocol.NetworkAgent.prototype.setCacheDisabled.Request;
+/** @typedef {!{cacheDisabled: boolean}} */
+Protocol.NetworkAgent.SetCacheDisabledRequest;
+/** @typedef {Object|undefined} */
+Protocol.NetworkAgent.SetCacheDisabledResponse;
 /**
- * @param {!Protocol.NetworkAgent.prototype.setCacheDisabled.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.NetworkAgent.prototype.invoke_setCacheDisabled = function(obj, opt_callback) {};
+ * @param {!Protocol.NetworkAgent.SetCacheDisabledRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.SetCacheDisabledResponse>} */
+Protocol.NetworkAgent.prototype.invoke_setCacheDisabled = function(obj) {};
 
 /**
  * @param {boolean} bypass
@@ -1740,13 +1834,14 @@ Protocol.NetworkAgent.prototype.invoke_setCacheDisabled = function(obj, opt_call
  * @template T
  */
 Protocol.NetworkAgent.prototype.setBypassServiceWorker = function(bypass, opt_callback) {};
-/** @typedef {!{bypass: boolean}} obj */
-Protocol.NetworkAgent.prototype.setBypassServiceWorker.Request;
+/** @typedef {!{bypass: boolean}} */
+Protocol.NetworkAgent.SetBypassServiceWorkerRequest;
+/** @typedef {Object|undefined} */
+Protocol.NetworkAgent.SetBypassServiceWorkerResponse;
 /**
- * @param {!Protocol.NetworkAgent.prototype.setBypassServiceWorker.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.NetworkAgent.prototype.invoke_setBypassServiceWorker = function(obj, opt_callback) {};
+ * @param {!Protocol.NetworkAgent.SetBypassServiceWorkerRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.SetBypassServiceWorkerResponse>} */
+Protocol.NetworkAgent.prototype.invoke_setBypassServiceWorker = function(obj) {};
 
 /**
  * @param {number} maxTotalSize
@@ -1756,13 +1851,14 @@ Protocol.NetworkAgent.prototype.invoke_setBypassServiceWorker = function(obj, op
  * @template T
  */
 Protocol.NetworkAgent.prototype.setDataSizeLimitsForTest = function(maxTotalSize, maxResourceSize, opt_callback) {};
-/** @typedef {!{maxResourceSize: number, maxTotalSize: number}} obj */
-Protocol.NetworkAgent.prototype.setDataSizeLimitsForTest.Request;
+/** @typedef {!{maxResourceSize: number, maxTotalSize: number}} */
+Protocol.NetworkAgent.SetDataSizeLimitsForTestRequest;
+/** @typedef {Object|undefined} */
+Protocol.NetworkAgent.SetDataSizeLimitsForTestResponse;
 /**
- * @param {!Protocol.NetworkAgent.prototype.setDataSizeLimitsForTest.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.NetworkAgent.prototype.invoke_setDataSizeLimitsForTest = function(obj, opt_callback) {};
+ * @param {!Protocol.NetworkAgent.SetDataSizeLimitsForTestRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.SetDataSizeLimitsForTestResponse>} */
+Protocol.NetworkAgent.prototype.invoke_setDataSizeLimitsForTest = function(obj) {};
 
 /**
  * @param {string} origin
@@ -1771,13 +1867,14 @@ Protocol.NetworkAgent.prototype.invoke_setDataSizeLimitsForTest = function(obj, 
  * @template T
  */
 Protocol.NetworkAgent.prototype.getCertificate = function(origin, opt_callback) {};
-/** @typedef {!{origin: string}} obj */
-Protocol.NetworkAgent.prototype.getCertificate.Request;
+/** @typedef {!{origin: string}} */
+Protocol.NetworkAgent.GetCertificateRequest;
+/** @typedef {!{tableNames: !Array<string>}} */
+Protocol.NetworkAgent.GetCertificateResponse;
 /**
- * @param {!Protocol.NetworkAgent.prototype.getCertificate.Request} obj
- * @param {function(?Protocol.Error, !Array<string>):void=} opt_callback
- */
-Protocol.NetworkAgent.prototype.invoke_getCertificate = function(obj, opt_callback) {};
+ * @param {!Protocol.NetworkAgent.GetCertificateRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.GetCertificateResponse>} */
+Protocol.NetworkAgent.prototype.invoke_getCertificate = function(obj) {};
 
 /** @typedef {string} */
 Protocol.Network.LoaderId;
@@ -2006,13 +2103,14 @@ Protocol.DatabaseAgent = function(){};
  * @template T
  */
 Protocol.DatabaseAgent.prototype.enable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.DatabaseAgent.prototype.enable.Request;
+/** @typedef {Object|undefined} */
+Protocol.DatabaseAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.DatabaseAgent.EnableResponse;
 /**
- * @param {!Protocol.DatabaseAgent.prototype.enable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DatabaseAgent.prototype.invoke_enable = function(obj, opt_callback) {};
+ * @param {!Protocol.DatabaseAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.DatabaseAgent.EnableResponse>} */
+Protocol.DatabaseAgent.prototype.invoke_enable = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -2020,13 +2118,14 @@ Protocol.DatabaseAgent.prototype.invoke_enable = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.DatabaseAgent.prototype.disable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.DatabaseAgent.prototype.disable.Request;
+/** @typedef {Object|undefined} */
+Protocol.DatabaseAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.DatabaseAgent.DisableResponse;
 /**
- * @param {!Protocol.DatabaseAgent.prototype.disable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DatabaseAgent.prototype.invoke_disable = function(obj, opt_callback) {};
+ * @param {!Protocol.DatabaseAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.DatabaseAgent.DisableResponse>} */
+Protocol.DatabaseAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {Protocol.Database.DatabaseId} databaseId
@@ -2035,13 +2134,14 @@ Protocol.DatabaseAgent.prototype.invoke_disable = function(obj, opt_callback) {}
  * @template T
  */
 Protocol.DatabaseAgent.prototype.getDatabaseTableNames = function(databaseId, opt_callback) {};
-/** @typedef {!{databaseId: Protocol.Database.DatabaseId}} obj */
-Protocol.DatabaseAgent.prototype.getDatabaseTableNames.Request;
+/** @typedef {!{databaseId: Protocol.Database.DatabaseId}} */
+Protocol.DatabaseAgent.GetDatabaseTableNamesRequest;
+/** @typedef {!{tableNames: !Array<string>}} */
+Protocol.DatabaseAgent.GetDatabaseTableNamesResponse;
 /**
- * @param {!Protocol.DatabaseAgent.prototype.getDatabaseTableNames.Request} obj
- * @param {function(?Protocol.Error, !Array<string>):void=} opt_callback
- */
-Protocol.DatabaseAgent.prototype.invoke_getDatabaseTableNames = function(obj, opt_callback) {};
+ * @param {!Protocol.DatabaseAgent.GetDatabaseTableNamesRequest} obj
+ * @return {!Promise<!Protocol.DatabaseAgent.GetDatabaseTableNamesResponse>} */
+Protocol.DatabaseAgent.prototype.invoke_getDatabaseTableNames = function(obj) {};
 
 /**
  * @param {Protocol.Database.DatabaseId} databaseId
@@ -2051,13 +2151,14 @@ Protocol.DatabaseAgent.prototype.invoke_getDatabaseTableNames = function(obj, op
  * @template T
  */
 Protocol.DatabaseAgent.prototype.executeSQL = function(databaseId, query, opt_callback) {};
-/** @typedef {!{query: string, databaseId: Protocol.Database.DatabaseId}} obj */
-Protocol.DatabaseAgent.prototype.executeSQL.Request;
+/** @typedef {!{query: string, databaseId: Protocol.Database.DatabaseId}} */
+Protocol.DatabaseAgent.ExecuteSQLRequest;
+/** @typedef {!{columnNames: !Array<string>, values: !Array<*>, sqlError: Protocol.Database.Error}} */
+Protocol.DatabaseAgent.ExecuteSQLResponse;
 /**
- * @param {!Protocol.DatabaseAgent.prototype.executeSQL.Request} obj
- * @param {function(?Protocol.Error, !Array<string>=, !Array<*>=, Protocol.Database.Error=):void=} opt_callback
- */
-Protocol.DatabaseAgent.prototype.invoke_executeSQL = function(obj, opt_callback) {};
+ * @param {!Protocol.DatabaseAgent.ExecuteSQLRequest} obj
+ * @return {!Promise<!Protocol.DatabaseAgent.ExecuteSQLResponse>} */
+Protocol.DatabaseAgent.prototype.invoke_executeSQL = function(obj) {};
 
 /** @typedef {string} */
 Protocol.Database.DatabaseId;
@@ -2087,13 +2188,14 @@ Protocol.IndexedDBAgent = function(){};
  * @template T
  */
 Protocol.IndexedDBAgent.prototype.enable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.IndexedDBAgent.prototype.enable.Request;
+/** @typedef {Object|undefined} */
+Protocol.IndexedDBAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.IndexedDBAgent.EnableResponse;
 /**
- * @param {!Protocol.IndexedDBAgent.prototype.enable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.IndexedDBAgent.prototype.invoke_enable = function(obj, opt_callback) {};
+ * @param {!Protocol.IndexedDBAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.IndexedDBAgent.EnableResponse>} */
+Protocol.IndexedDBAgent.prototype.invoke_enable = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -2101,13 +2203,14 @@ Protocol.IndexedDBAgent.prototype.invoke_enable = function(obj, opt_callback) {}
  * @template T
  */
 Protocol.IndexedDBAgent.prototype.disable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.IndexedDBAgent.prototype.disable.Request;
+/** @typedef {Object|undefined} */
+Protocol.IndexedDBAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.IndexedDBAgent.DisableResponse;
 /**
- * @param {!Protocol.IndexedDBAgent.prototype.disable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.IndexedDBAgent.prototype.invoke_disable = function(obj, opt_callback) {};
+ * @param {!Protocol.IndexedDBAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.IndexedDBAgent.DisableResponse>} */
+Protocol.IndexedDBAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {string} securityOrigin
@@ -2116,13 +2219,14 @@ Protocol.IndexedDBAgent.prototype.invoke_disable = function(obj, opt_callback) {
  * @template T
  */
 Protocol.IndexedDBAgent.prototype.requestDatabaseNames = function(securityOrigin, opt_callback) {};
-/** @typedef {!{securityOrigin: string}} obj */
-Protocol.IndexedDBAgent.prototype.requestDatabaseNames.Request;
+/** @typedef {!{securityOrigin: string}} */
+Protocol.IndexedDBAgent.RequestDatabaseNamesRequest;
+/** @typedef {!{databaseNames: !Array<string>}} */
+Protocol.IndexedDBAgent.RequestDatabaseNamesResponse;
 /**
- * @param {!Protocol.IndexedDBAgent.prototype.requestDatabaseNames.Request} obj
- * @param {function(?Protocol.Error, !Array<string>):void=} opt_callback
- */
-Protocol.IndexedDBAgent.prototype.invoke_requestDatabaseNames = function(obj, opt_callback) {};
+ * @param {!Protocol.IndexedDBAgent.RequestDatabaseNamesRequest} obj
+ * @return {!Promise<!Protocol.IndexedDBAgent.RequestDatabaseNamesResponse>} */
+Protocol.IndexedDBAgent.prototype.invoke_requestDatabaseNames = function(obj) {};
 
 /**
  * @param {string} securityOrigin
@@ -2132,13 +2236,14 @@ Protocol.IndexedDBAgent.prototype.invoke_requestDatabaseNames = function(obj, op
  * @template T
  */
 Protocol.IndexedDBAgent.prototype.requestDatabase = function(securityOrigin, databaseName, opt_callback) {};
-/** @typedef {!{databaseName: string, securityOrigin: string}} obj */
-Protocol.IndexedDBAgent.prototype.requestDatabase.Request;
+/** @typedef {!{databaseName: string, securityOrigin: string}} */
+Protocol.IndexedDBAgent.RequestDatabaseRequest;
+/** @typedef {!{databaseWithObjectStores: Protocol.IndexedDB.DatabaseWithObjectStores}} */
+Protocol.IndexedDBAgent.RequestDatabaseResponse;
 /**
- * @param {!Protocol.IndexedDBAgent.prototype.requestDatabase.Request} obj
- * @param {function(?Protocol.Error, Protocol.IndexedDB.DatabaseWithObjectStores):void=} opt_callback
- */
-Protocol.IndexedDBAgent.prototype.invoke_requestDatabase = function(obj, opt_callback) {};
+ * @param {!Protocol.IndexedDBAgent.RequestDatabaseRequest} obj
+ * @return {!Promise<!Protocol.IndexedDBAgent.RequestDatabaseResponse>} */
+Protocol.IndexedDBAgent.prototype.invoke_requestDatabase = function(obj) {};
 
 /**
  * @param {string} securityOrigin
@@ -2153,13 +2258,14 @@ Protocol.IndexedDBAgent.prototype.invoke_requestDatabase = function(obj, opt_cal
  * @template T
  */
 Protocol.IndexedDBAgent.prototype.requestData = function(securityOrigin, databaseName, objectStoreName, indexName, skipCount, pageSize, opt_keyRange, opt_callback) {};
-/** @typedef {!{indexName: string, pageSize: number, objectStoreName: string, skipCount: number, keyRange: (Protocol.IndexedDB.KeyRange|undefined), databaseName: string, securityOrigin: string}} obj */
-Protocol.IndexedDBAgent.prototype.requestData.Request;
+/** @typedef {!{indexName: string, pageSize: number, objectStoreName: string, skipCount: number, keyRange: (Protocol.IndexedDB.KeyRange|undefined), databaseName: string, securityOrigin: string}} */
+Protocol.IndexedDBAgent.RequestDataRequest;
+/** @typedef {!{hasMore: boolean, objectStoreDataEntries: !Array<Protocol.IndexedDB.DataEntry>}} */
+Protocol.IndexedDBAgent.RequestDataResponse;
 /**
- * @param {!Protocol.IndexedDBAgent.prototype.requestData.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.IndexedDB.DataEntry>, boolean):void=} opt_callback
- */
-Protocol.IndexedDBAgent.prototype.invoke_requestData = function(obj, opt_callback) {};
+ * @param {!Protocol.IndexedDBAgent.RequestDataRequest} obj
+ * @return {!Promise<!Protocol.IndexedDBAgent.RequestDataResponse>} */
+Protocol.IndexedDBAgent.prototype.invoke_requestData = function(obj) {};
 
 /**
  * @param {string} securityOrigin
@@ -2170,13 +2276,14 @@ Protocol.IndexedDBAgent.prototype.invoke_requestData = function(obj, opt_callbac
  * @template T
  */
 Protocol.IndexedDBAgent.prototype.clearObjectStore = function(securityOrigin, databaseName, objectStoreName, opt_callback) {};
-/** @typedef {!{objectStoreName: string, databaseName: string, securityOrigin: string}} obj */
-Protocol.IndexedDBAgent.prototype.clearObjectStore.Request;
+/** @typedef {!{objectStoreName: string, databaseName: string, securityOrigin: string}} */
+Protocol.IndexedDBAgent.ClearObjectStoreRequest;
+/** @typedef {Object|undefined} */
+Protocol.IndexedDBAgent.ClearObjectStoreResponse;
 /**
- * @param {!Protocol.IndexedDBAgent.prototype.clearObjectStore.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.IndexedDBAgent.prototype.invoke_clearObjectStore = function(obj, opt_callback) {};
+ * @param {!Protocol.IndexedDBAgent.ClearObjectStoreRequest} obj
+ * @return {!Promise<!Protocol.IndexedDBAgent.ClearObjectStoreResponse>} */
+Protocol.IndexedDBAgent.prototype.invoke_clearObjectStore = function(obj) {};
 
 /**
  * @param {string} securityOrigin
@@ -2186,13 +2293,14 @@ Protocol.IndexedDBAgent.prototype.invoke_clearObjectStore = function(obj, opt_ca
  * @template T
  */
 Protocol.IndexedDBAgent.prototype.deleteDatabase = function(securityOrigin, databaseName, opt_callback) {};
-/** @typedef {!{databaseName: string, securityOrigin: string}} obj */
-Protocol.IndexedDBAgent.prototype.deleteDatabase.Request;
+/** @typedef {!{databaseName: string, securityOrigin: string}} */
+Protocol.IndexedDBAgent.DeleteDatabaseRequest;
+/** @typedef {Object|undefined} */
+Protocol.IndexedDBAgent.DeleteDatabaseResponse;
 /**
- * @param {!Protocol.IndexedDBAgent.prototype.deleteDatabase.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.IndexedDBAgent.prototype.invoke_deleteDatabase = function(obj, opt_callback) {};
+ * @param {!Protocol.IndexedDBAgent.DeleteDatabaseRequest} obj
+ * @return {!Promise<!Protocol.IndexedDBAgent.DeleteDatabaseResponse>} */
+Protocol.IndexedDBAgent.prototype.invoke_deleteDatabase = function(obj) {};
 
 /** @typedef {!{name:(string), version:(number), objectStores:(!Array<Protocol.IndexedDB.ObjectStore>)}} */
 Protocol.IndexedDB.DatabaseWithObjectStores;
@@ -2246,13 +2354,14 @@ Protocol.CacheStorageAgent = function(){};
  * @template T
  */
 Protocol.CacheStorageAgent.prototype.requestCacheNames = function(securityOrigin, opt_callback) {};
-/** @typedef {!{securityOrigin: string}} obj */
-Protocol.CacheStorageAgent.prototype.requestCacheNames.Request;
+/** @typedef {!{securityOrigin: string}} */
+Protocol.CacheStorageAgent.RequestCacheNamesRequest;
+/** @typedef {!{caches: !Array<Protocol.CacheStorage.Cache>}} */
+Protocol.CacheStorageAgent.RequestCacheNamesResponse;
 /**
- * @param {!Protocol.CacheStorageAgent.prototype.requestCacheNames.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.CacheStorage.Cache>):void=} opt_callback
- */
-Protocol.CacheStorageAgent.prototype.invoke_requestCacheNames = function(obj, opt_callback) {};
+ * @param {!Protocol.CacheStorageAgent.RequestCacheNamesRequest} obj
+ * @return {!Promise<!Protocol.CacheStorageAgent.RequestCacheNamesResponse>} */
+Protocol.CacheStorageAgent.prototype.invoke_requestCacheNames = function(obj) {};
 
 /**
  * @param {Protocol.CacheStorage.CacheId} cacheId
@@ -2263,13 +2372,14 @@ Protocol.CacheStorageAgent.prototype.invoke_requestCacheNames = function(obj, op
  * @template T
  */
 Protocol.CacheStorageAgent.prototype.requestEntries = function(cacheId, skipCount, pageSize, opt_callback) {};
-/** @typedef {!{cacheId: Protocol.CacheStorage.CacheId, skipCount: number, pageSize: number}} obj */
-Protocol.CacheStorageAgent.prototype.requestEntries.Request;
+/** @typedef {!{cacheId: Protocol.CacheStorage.CacheId, skipCount: number, pageSize: number}} */
+Protocol.CacheStorageAgent.RequestEntriesRequest;
+/** @typedef {!{hasMore: boolean, cacheDataEntries: !Array<Protocol.CacheStorage.DataEntry>}} */
+Protocol.CacheStorageAgent.RequestEntriesResponse;
 /**
- * @param {!Protocol.CacheStorageAgent.prototype.requestEntries.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.CacheStorage.DataEntry>, boolean):void=} opt_callback
- */
-Protocol.CacheStorageAgent.prototype.invoke_requestEntries = function(obj, opt_callback) {};
+ * @param {!Protocol.CacheStorageAgent.RequestEntriesRequest} obj
+ * @return {!Promise<!Protocol.CacheStorageAgent.RequestEntriesResponse>} */
+Protocol.CacheStorageAgent.prototype.invoke_requestEntries = function(obj) {};
 
 /**
  * @param {Protocol.CacheStorage.CacheId} cacheId
@@ -2278,13 +2388,14 @@ Protocol.CacheStorageAgent.prototype.invoke_requestEntries = function(obj, opt_c
  * @template T
  */
 Protocol.CacheStorageAgent.prototype.deleteCache = function(cacheId, opt_callback) {};
-/** @typedef {!{cacheId: Protocol.CacheStorage.CacheId}} obj */
-Protocol.CacheStorageAgent.prototype.deleteCache.Request;
+/** @typedef {!{cacheId: Protocol.CacheStorage.CacheId}} */
+Protocol.CacheStorageAgent.DeleteCacheRequest;
+/** @typedef {Object|undefined} */
+Protocol.CacheStorageAgent.DeleteCacheResponse;
 /**
- * @param {!Protocol.CacheStorageAgent.prototype.deleteCache.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.CacheStorageAgent.prototype.invoke_deleteCache = function(obj, opt_callback) {};
+ * @param {!Protocol.CacheStorageAgent.DeleteCacheRequest} obj
+ * @return {!Promise<!Protocol.CacheStorageAgent.DeleteCacheResponse>} */
+Protocol.CacheStorageAgent.prototype.invoke_deleteCache = function(obj) {};
 
 /**
  * @param {Protocol.CacheStorage.CacheId} cacheId
@@ -2294,13 +2405,14 @@ Protocol.CacheStorageAgent.prototype.invoke_deleteCache = function(obj, opt_call
  * @template T
  */
 Protocol.CacheStorageAgent.prototype.deleteEntry = function(cacheId, request, opt_callback) {};
-/** @typedef {!{cacheId: Protocol.CacheStorage.CacheId, request: string}} obj */
-Protocol.CacheStorageAgent.prototype.deleteEntry.Request;
+/** @typedef {!{cacheId: Protocol.CacheStorage.CacheId, request: string}} */
+Protocol.CacheStorageAgent.DeleteEntryRequest;
+/** @typedef {Object|undefined} */
+Protocol.CacheStorageAgent.DeleteEntryResponse;
 /**
- * @param {!Protocol.CacheStorageAgent.prototype.deleteEntry.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.CacheStorageAgent.prototype.invoke_deleteEntry = function(obj, opt_callback) {};
+ * @param {!Protocol.CacheStorageAgent.DeleteEntryRequest} obj
+ * @return {!Promise<!Protocol.CacheStorageAgent.DeleteEntryResponse>} */
+Protocol.CacheStorageAgent.prototype.invoke_deleteEntry = function(obj) {};
 
 /** @typedef {string} */
 Protocol.CacheStorage.CacheId;
@@ -2326,13 +2438,14 @@ Protocol.DOMStorageAgent = function(){};
  * @template T
  */
 Protocol.DOMStorageAgent.prototype.enable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.DOMStorageAgent.prototype.enable.Request;
+/** @typedef {Object|undefined} */
+Protocol.DOMStorageAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMStorageAgent.EnableResponse;
 /**
- * @param {!Protocol.DOMStorageAgent.prototype.enable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMStorageAgent.prototype.invoke_enable = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMStorageAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.DOMStorageAgent.EnableResponse>} */
+Protocol.DOMStorageAgent.prototype.invoke_enable = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -2340,13 +2453,14 @@ Protocol.DOMStorageAgent.prototype.invoke_enable = function(obj, opt_callback) {
  * @template T
  */
 Protocol.DOMStorageAgent.prototype.disable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.DOMStorageAgent.prototype.disable.Request;
+/** @typedef {Object|undefined} */
+Protocol.DOMStorageAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMStorageAgent.DisableResponse;
 /**
- * @param {!Protocol.DOMStorageAgent.prototype.disable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMStorageAgent.prototype.invoke_disable = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMStorageAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.DOMStorageAgent.DisableResponse>} */
+Protocol.DOMStorageAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {Protocol.DOMStorage.StorageId} storageId
@@ -2355,13 +2469,14 @@ Protocol.DOMStorageAgent.prototype.invoke_disable = function(obj, opt_callback) 
  * @template T
  */
 Protocol.DOMStorageAgent.prototype.clear = function(storageId, opt_callback) {};
-/** @typedef {!{storageId: Protocol.DOMStorage.StorageId}} obj */
-Protocol.DOMStorageAgent.prototype.clear.Request;
+/** @typedef {!{storageId: Protocol.DOMStorage.StorageId}} */
+Protocol.DOMStorageAgent.ClearRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMStorageAgent.ClearResponse;
 /**
- * @param {!Protocol.DOMStorageAgent.prototype.clear.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMStorageAgent.prototype.invoke_clear = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMStorageAgent.ClearRequest} obj
+ * @return {!Promise<!Protocol.DOMStorageAgent.ClearResponse>} */
+Protocol.DOMStorageAgent.prototype.invoke_clear = function(obj) {};
 
 /**
  * @param {Protocol.DOMStorage.StorageId} storageId
@@ -2370,13 +2485,14 @@ Protocol.DOMStorageAgent.prototype.invoke_clear = function(obj, opt_callback) {}
  * @template T
  */
 Protocol.DOMStorageAgent.prototype.getDOMStorageItems = function(storageId, opt_callback) {};
-/** @typedef {!{storageId: Protocol.DOMStorage.StorageId}} obj */
-Protocol.DOMStorageAgent.prototype.getDOMStorageItems.Request;
+/** @typedef {!{storageId: Protocol.DOMStorage.StorageId}} */
+Protocol.DOMStorageAgent.GetDOMStorageItemsRequest;
+/** @typedef {!{entries: !Array<Protocol.DOMStorage.Item>}} */
+Protocol.DOMStorageAgent.GetDOMStorageItemsResponse;
 /**
- * @param {!Protocol.DOMStorageAgent.prototype.getDOMStorageItems.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.DOMStorage.Item>):void=} opt_callback
- */
-Protocol.DOMStorageAgent.prototype.invoke_getDOMStorageItems = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMStorageAgent.GetDOMStorageItemsRequest} obj
+ * @return {!Promise<!Protocol.DOMStorageAgent.GetDOMStorageItemsResponse>} */
+Protocol.DOMStorageAgent.prototype.invoke_getDOMStorageItems = function(obj) {};
 
 /**
  * @param {Protocol.DOMStorage.StorageId} storageId
@@ -2387,13 +2503,14 @@ Protocol.DOMStorageAgent.prototype.invoke_getDOMStorageItems = function(obj, opt
  * @template T
  */
 Protocol.DOMStorageAgent.prototype.setDOMStorageItem = function(storageId, key, value, opt_callback) {};
-/** @typedef {!{value: string, storageId: Protocol.DOMStorage.StorageId, key: string}} obj */
-Protocol.DOMStorageAgent.prototype.setDOMStorageItem.Request;
+/** @typedef {!{value: string, storageId: Protocol.DOMStorage.StorageId, key: string}} */
+Protocol.DOMStorageAgent.SetDOMStorageItemRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMStorageAgent.SetDOMStorageItemResponse;
 /**
- * @param {!Protocol.DOMStorageAgent.prototype.setDOMStorageItem.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMStorageAgent.prototype.invoke_setDOMStorageItem = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMStorageAgent.SetDOMStorageItemRequest} obj
+ * @return {!Promise<!Protocol.DOMStorageAgent.SetDOMStorageItemResponse>} */
+Protocol.DOMStorageAgent.prototype.invoke_setDOMStorageItem = function(obj) {};
 
 /**
  * @param {Protocol.DOMStorage.StorageId} storageId
@@ -2403,13 +2520,14 @@ Protocol.DOMStorageAgent.prototype.invoke_setDOMStorageItem = function(obj, opt_
  * @template T
  */
 Protocol.DOMStorageAgent.prototype.removeDOMStorageItem = function(storageId, key, opt_callback) {};
-/** @typedef {!{storageId: Protocol.DOMStorage.StorageId, key: string}} obj */
-Protocol.DOMStorageAgent.prototype.removeDOMStorageItem.Request;
+/** @typedef {!{storageId: Protocol.DOMStorage.StorageId, key: string}} */
+Protocol.DOMStorageAgent.RemoveDOMStorageItemRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMStorageAgent.RemoveDOMStorageItemResponse;
 /**
- * @param {!Protocol.DOMStorageAgent.prototype.removeDOMStorageItem.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMStorageAgent.prototype.invoke_removeDOMStorageItem = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMStorageAgent.RemoveDOMStorageItemRequest} obj
+ * @return {!Promise<!Protocol.DOMStorageAgent.RemoveDOMStorageItemResponse>} */
+Protocol.DOMStorageAgent.prototype.invoke_removeDOMStorageItem = function(obj) {};
 
 /** @typedef {!{securityOrigin:(string), isLocalStorage:(boolean)}} */
 Protocol.DOMStorage.StorageId;
@@ -2454,13 +2572,14 @@ Protocol.ApplicationCacheAgent = function(){};
  * @template T
  */
 Protocol.ApplicationCacheAgent.prototype.getFramesWithManifests = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.ApplicationCacheAgent.prototype.getFramesWithManifests.Request;
+/** @typedef {Object|undefined} */
+Protocol.ApplicationCacheAgent.GetFramesWithManifestsRequest;
+/** @typedef {!{frameIds: !Array<Protocol.ApplicationCache.FrameWithManifest>}} */
+Protocol.ApplicationCacheAgent.GetFramesWithManifestsResponse;
 /**
- * @param {!Protocol.ApplicationCacheAgent.prototype.getFramesWithManifests.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.ApplicationCache.FrameWithManifest>):void=} opt_callback
- */
-Protocol.ApplicationCacheAgent.prototype.invoke_getFramesWithManifests = function(obj, opt_callback) {};
+ * @param {!Protocol.ApplicationCacheAgent.GetFramesWithManifestsRequest} obj
+ * @return {!Promise<!Protocol.ApplicationCacheAgent.GetFramesWithManifestsResponse>} */
+Protocol.ApplicationCacheAgent.prototype.invoke_getFramesWithManifests = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -2468,13 +2587,14 @@ Protocol.ApplicationCacheAgent.prototype.invoke_getFramesWithManifests = functio
  * @template T
  */
 Protocol.ApplicationCacheAgent.prototype.enable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.ApplicationCacheAgent.prototype.enable.Request;
+/** @typedef {Object|undefined} */
+Protocol.ApplicationCacheAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.ApplicationCacheAgent.EnableResponse;
 /**
- * @param {!Protocol.ApplicationCacheAgent.prototype.enable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.ApplicationCacheAgent.prototype.invoke_enable = function(obj, opt_callback) {};
+ * @param {!Protocol.ApplicationCacheAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.ApplicationCacheAgent.EnableResponse>} */
+Protocol.ApplicationCacheAgent.prototype.invoke_enable = function(obj) {};
 
 /**
  * @param {Protocol.Page.FrameId} frameId
@@ -2483,13 +2603,14 @@ Protocol.ApplicationCacheAgent.prototype.invoke_enable = function(obj, opt_callb
  * @template T
  */
 Protocol.ApplicationCacheAgent.prototype.getManifestForFrame = function(frameId, opt_callback) {};
-/** @typedef {!{frameId: Protocol.Page.FrameId}} obj */
-Protocol.ApplicationCacheAgent.prototype.getManifestForFrame.Request;
+/** @typedef {!{frameId: Protocol.Page.FrameId}} */
+Protocol.ApplicationCacheAgent.GetManifestForFrameRequest;
+/** @typedef {!{manifestURL: string}} */
+Protocol.ApplicationCacheAgent.GetManifestForFrameResponse;
 /**
- * @param {!Protocol.ApplicationCacheAgent.prototype.getManifestForFrame.Request} obj
- * @param {function(?Protocol.Error, string):void=} opt_callback
- */
-Protocol.ApplicationCacheAgent.prototype.invoke_getManifestForFrame = function(obj, opt_callback) {};
+ * @param {!Protocol.ApplicationCacheAgent.GetManifestForFrameRequest} obj
+ * @return {!Promise<!Protocol.ApplicationCacheAgent.GetManifestForFrameResponse>} */
+Protocol.ApplicationCacheAgent.prototype.invoke_getManifestForFrame = function(obj) {};
 
 /**
  * @param {Protocol.Page.FrameId} frameId
@@ -2498,13 +2619,14 @@ Protocol.ApplicationCacheAgent.prototype.invoke_getManifestForFrame = function(o
  * @template T
  */
 Protocol.ApplicationCacheAgent.prototype.getApplicationCacheForFrame = function(frameId, opt_callback) {};
-/** @typedef {!{frameId: Protocol.Page.FrameId}} obj */
-Protocol.ApplicationCacheAgent.prototype.getApplicationCacheForFrame.Request;
+/** @typedef {!{frameId: Protocol.Page.FrameId}} */
+Protocol.ApplicationCacheAgent.GetApplicationCacheForFrameRequest;
+/** @typedef {!{applicationCache: Protocol.ApplicationCache.ApplicationCache}} */
+Protocol.ApplicationCacheAgent.GetApplicationCacheForFrameResponse;
 /**
- * @param {!Protocol.ApplicationCacheAgent.prototype.getApplicationCacheForFrame.Request} obj
- * @param {function(?Protocol.Error, Protocol.ApplicationCache.ApplicationCache):void=} opt_callback
- */
-Protocol.ApplicationCacheAgent.prototype.invoke_getApplicationCacheForFrame = function(obj, opt_callback) {};
+ * @param {!Protocol.ApplicationCacheAgent.GetApplicationCacheForFrameRequest} obj
+ * @return {!Promise<!Protocol.ApplicationCacheAgent.GetApplicationCacheForFrameResponse>} */
+Protocol.ApplicationCacheAgent.prototype.invoke_getApplicationCacheForFrame = function(obj) {};
 
 /** @typedef {!{url:(string), size:(number), type:(string)}} */
 Protocol.ApplicationCache.ApplicationCacheResource;
@@ -2540,13 +2662,14 @@ Protocol.DOMAgent = function(){};
  * @template T
  */
 Protocol.DOMAgent.prototype.enable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.DOMAgent.prototype.enable.Request;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.EnableResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.enable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_enable = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.EnableResponse>} */
+Protocol.DOMAgent.prototype.invoke_enable = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -2554,13 +2677,14 @@ Protocol.DOMAgent.prototype.invoke_enable = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.DOMAgent.prototype.disable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.DOMAgent.prototype.disable.Request;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.DisableResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.disable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_disable = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.DisableResponse>} */
+Protocol.DOMAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {number=} opt_depth
@@ -2570,13 +2694,14 @@ Protocol.DOMAgent.prototype.invoke_disable = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.DOMAgent.prototype.getDocument = function(opt_depth, opt_pierce, opt_callback) {};
-/** @typedef {!{depth: (number|undefined), pierce: (boolean|undefined)}} obj */
-Protocol.DOMAgent.prototype.getDocument.Request;
+/** @typedef {!{depth: (number|undefined), pierce: (boolean|undefined)}} */
+Protocol.DOMAgent.GetDocumentRequest;
+/** @typedef {!{root: Protocol.DOM.Node}} */
+Protocol.DOMAgent.GetDocumentResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.getDocument.Request} obj
- * @param {function(?Protocol.Error, Protocol.DOM.Node):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_getDocument = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.GetDocumentRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.GetDocumentResponse>} */
+Protocol.DOMAgent.prototype.invoke_getDocument = function(obj) {};
 
 /**
  * @param {number=} opt_depth
@@ -2586,13 +2711,14 @@ Protocol.DOMAgent.prototype.invoke_getDocument = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.DOMAgent.prototype.getFlattenedDocument = function(opt_depth, opt_pierce, opt_callback) {};
-/** @typedef {!{depth: (number|undefined), pierce: (boolean|undefined)}} obj */
-Protocol.DOMAgent.prototype.getFlattenedDocument.Request;
+/** @typedef {!{depth: (number|undefined), pierce: (boolean|undefined)}} */
+Protocol.DOMAgent.GetFlattenedDocumentRequest;
+/** @typedef {!{nodes: !Array<Protocol.DOM.Node>}} */
+Protocol.DOMAgent.GetFlattenedDocumentResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.getFlattenedDocument.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.DOM.Node>):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_getFlattenedDocument = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.GetFlattenedDocumentRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.GetFlattenedDocumentResponse>} */
+Protocol.DOMAgent.prototype.invoke_getFlattenedDocument = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -2601,13 +2727,14 @@ Protocol.DOMAgent.prototype.invoke_getFlattenedDocument = function(obj, opt_call
  * @template T
  */
 Protocol.DOMAgent.prototype.collectClassNamesFromSubtree = function(nodeId, opt_callback) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId}} obj */
-Protocol.DOMAgent.prototype.collectClassNamesFromSubtree.Request;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.CollectClassNamesFromSubtreeRequest;
+/** @typedef {!{classNames: !Array<string>}} */
+Protocol.DOMAgent.CollectClassNamesFromSubtreeResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.collectClassNamesFromSubtree.Request} obj
- * @param {function(?Protocol.Error, !Array<string>):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_collectClassNamesFromSubtree = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.CollectClassNamesFromSubtreeRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.CollectClassNamesFromSubtreeResponse>} */
+Protocol.DOMAgent.prototype.invoke_collectClassNamesFromSubtree = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -2618,13 +2745,14 @@ Protocol.DOMAgent.prototype.invoke_collectClassNamesFromSubtree = function(obj, 
  * @template T
  */
 Protocol.DOMAgent.prototype.requestChildNodes = function(nodeId, opt_depth, opt_pierce, opt_callback) {};
-/** @typedef {!{depth: (number|undefined), nodeId: Protocol.DOM.NodeId, pierce: (boolean|undefined)}} obj */
-Protocol.DOMAgent.prototype.requestChildNodes.Request;
+/** @typedef {!{depth: (number|undefined), nodeId: Protocol.DOM.NodeId, pierce: (boolean|undefined)}} */
+Protocol.DOMAgent.RequestChildNodesRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.RequestChildNodesResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.requestChildNodes.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_requestChildNodes = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.RequestChildNodesRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.RequestChildNodesResponse>} */
+Protocol.DOMAgent.prototype.invoke_requestChildNodes = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -2634,13 +2762,14 @@ Protocol.DOMAgent.prototype.invoke_requestChildNodes = function(obj, opt_callbac
  * @template T
  */
 Protocol.DOMAgent.prototype.querySelector = function(nodeId, selector, opt_callback) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId, selector: string}} obj */
-Protocol.DOMAgent.prototype.querySelector.Request;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId, selector: string}} */
+Protocol.DOMAgent.QuerySelectorRequest;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.QuerySelectorResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.querySelector.Request} obj
- * @param {function(?Protocol.Error, Protocol.DOM.NodeId):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_querySelector = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.QuerySelectorRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.QuerySelectorResponse>} */
+Protocol.DOMAgent.prototype.invoke_querySelector = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -2650,13 +2779,14 @@ Protocol.DOMAgent.prototype.invoke_querySelector = function(obj, opt_callback) {
  * @template T
  */
 Protocol.DOMAgent.prototype.querySelectorAll = function(nodeId, selector, opt_callback) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId, selector: string}} obj */
-Protocol.DOMAgent.prototype.querySelectorAll.Request;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId, selector: string}} */
+Protocol.DOMAgent.QuerySelectorAllRequest;
+/** @typedef {!{nodeIds: !Array<Protocol.DOM.NodeId>}} */
+Protocol.DOMAgent.QuerySelectorAllResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.querySelectorAll.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.DOM.NodeId>):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_querySelectorAll = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.QuerySelectorAllRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.QuerySelectorAllResponse>} */
+Protocol.DOMAgent.prototype.invoke_querySelectorAll = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -2666,13 +2796,14 @@ Protocol.DOMAgent.prototype.invoke_querySelectorAll = function(obj, opt_callback
  * @template T
  */
 Protocol.DOMAgent.prototype.setNodeName = function(nodeId, name, opt_callback) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId, name: string}} obj */
-Protocol.DOMAgent.prototype.setNodeName.Request;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId, name: string}} */
+Protocol.DOMAgent.SetNodeNameRequest;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.SetNodeNameResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.setNodeName.Request} obj
- * @param {function(?Protocol.Error, Protocol.DOM.NodeId):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_setNodeName = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.SetNodeNameRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.SetNodeNameResponse>} */
+Protocol.DOMAgent.prototype.invoke_setNodeName = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -2682,13 +2813,14 @@ Protocol.DOMAgent.prototype.invoke_setNodeName = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.DOMAgent.prototype.setNodeValue = function(nodeId, value, opt_callback) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId, value: string}} obj */
-Protocol.DOMAgent.prototype.setNodeValue.Request;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId, value: string}} */
+Protocol.DOMAgent.SetNodeValueRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.SetNodeValueResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.setNodeValue.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_setNodeValue = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.SetNodeValueRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.SetNodeValueResponse>} */
+Protocol.DOMAgent.prototype.invoke_setNodeValue = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -2697,13 +2829,14 @@ Protocol.DOMAgent.prototype.invoke_setNodeValue = function(obj, opt_callback) {}
  * @template T
  */
 Protocol.DOMAgent.prototype.removeNode = function(nodeId, opt_callback) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId}} obj */
-Protocol.DOMAgent.prototype.removeNode.Request;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.RemoveNodeRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.RemoveNodeResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.removeNode.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_removeNode = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.RemoveNodeRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.RemoveNodeResponse>} */
+Protocol.DOMAgent.prototype.invoke_removeNode = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -2714,13 +2847,14 @@ Protocol.DOMAgent.prototype.invoke_removeNode = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.DOMAgent.prototype.setAttributeValue = function(nodeId, name, value, opt_callback) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId, value: string, name: string}} obj */
-Protocol.DOMAgent.prototype.setAttributeValue.Request;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId, value: string, name: string}} */
+Protocol.DOMAgent.SetAttributeValueRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.SetAttributeValueResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.setAttributeValue.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_setAttributeValue = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.SetAttributeValueRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.SetAttributeValueResponse>} */
+Protocol.DOMAgent.prototype.invoke_setAttributeValue = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -2731,13 +2865,14 @@ Protocol.DOMAgent.prototype.invoke_setAttributeValue = function(obj, opt_callbac
  * @template T
  */
 Protocol.DOMAgent.prototype.setAttributesAsText = function(nodeId, text, opt_name, opt_callback) {};
-/** @typedef {!{text: string, nodeId: Protocol.DOM.NodeId, name: (string|undefined)}} obj */
-Protocol.DOMAgent.prototype.setAttributesAsText.Request;
+/** @typedef {!{text: string, nodeId: Protocol.DOM.NodeId, name: (string|undefined)}} */
+Protocol.DOMAgent.SetAttributesAsTextRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.SetAttributesAsTextResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.setAttributesAsText.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_setAttributesAsText = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.SetAttributesAsTextRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.SetAttributesAsTextResponse>} */
+Protocol.DOMAgent.prototype.invoke_setAttributesAsText = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -2747,13 +2882,14 @@ Protocol.DOMAgent.prototype.invoke_setAttributesAsText = function(obj, opt_callb
  * @template T
  */
 Protocol.DOMAgent.prototype.removeAttribute = function(nodeId, name, opt_callback) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId, name: string}} obj */
-Protocol.DOMAgent.prototype.removeAttribute.Request;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId, name: string}} */
+Protocol.DOMAgent.RemoveAttributeRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.RemoveAttributeResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.removeAttribute.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_removeAttribute = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.RemoveAttributeRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.RemoveAttributeResponse>} */
+Protocol.DOMAgent.prototype.invoke_removeAttribute = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -2762,13 +2898,14 @@ Protocol.DOMAgent.prototype.invoke_removeAttribute = function(obj, opt_callback)
  * @template T
  */
 Protocol.DOMAgent.prototype.getOuterHTML = function(nodeId, opt_callback) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId}} obj */
-Protocol.DOMAgent.prototype.getOuterHTML.Request;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.GetOuterHTMLRequest;
+/** @typedef {!{outerHTML: string}} */
+Protocol.DOMAgent.GetOuterHTMLResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.getOuterHTML.Request} obj
- * @param {function(?Protocol.Error, string):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_getOuterHTML = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.GetOuterHTMLRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.GetOuterHTMLResponse>} */
+Protocol.DOMAgent.prototype.invoke_getOuterHTML = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -2778,13 +2915,14 @@ Protocol.DOMAgent.prototype.invoke_getOuterHTML = function(obj, opt_callback) {}
  * @template T
  */
 Protocol.DOMAgent.prototype.setOuterHTML = function(nodeId, outerHTML, opt_callback) {};
-/** @typedef {!{outerHTML: string, nodeId: Protocol.DOM.NodeId}} obj */
-Protocol.DOMAgent.prototype.setOuterHTML.Request;
+/** @typedef {!{outerHTML: string, nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.SetOuterHTMLRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.SetOuterHTMLResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.setOuterHTML.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_setOuterHTML = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.SetOuterHTMLRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.SetOuterHTMLResponse>} */
+Protocol.DOMAgent.prototype.invoke_setOuterHTML = function(obj) {};
 
 /**
  * @param {string} query
@@ -2794,13 +2932,14 @@ Protocol.DOMAgent.prototype.invoke_setOuterHTML = function(obj, opt_callback) {}
  * @template T
  */
 Protocol.DOMAgent.prototype.performSearch = function(query, opt_includeUserAgentShadowDOM, opt_callback) {};
-/** @typedef {!{query: string, includeUserAgentShadowDOM: (boolean|undefined)}} obj */
-Protocol.DOMAgent.prototype.performSearch.Request;
+/** @typedef {!{query: string, includeUserAgentShadowDOM: (boolean|undefined)}} */
+Protocol.DOMAgent.PerformSearchRequest;
+/** @typedef {!{searchId: string, resultCount: number}} */
+Protocol.DOMAgent.PerformSearchResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.performSearch.Request} obj
- * @param {function(?Protocol.Error, string, number):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_performSearch = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.PerformSearchRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.PerformSearchResponse>} */
+Protocol.DOMAgent.prototype.invoke_performSearch = function(obj) {};
 
 /**
  * @param {string} searchId
@@ -2811,13 +2950,14 @@ Protocol.DOMAgent.prototype.invoke_performSearch = function(obj, opt_callback) {
  * @template T
  */
 Protocol.DOMAgent.prototype.getSearchResults = function(searchId, fromIndex, toIndex, opt_callback) {};
-/** @typedef {!{toIndex: number, searchId: string, fromIndex: number}} obj */
-Protocol.DOMAgent.prototype.getSearchResults.Request;
+/** @typedef {!{toIndex: number, searchId: string, fromIndex: number}} */
+Protocol.DOMAgent.GetSearchResultsRequest;
+/** @typedef {!{nodeIds: !Array<Protocol.DOM.NodeId>}} */
+Protocol.DOMAgent.GetSearchResultsResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.getSearchResults.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.DOM.NodeId>):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_getSearchResults = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.GetSearchResultsRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.GetSearchResultsResponse>} */
+Protocol.DOMAgent.prototype.invoke_getSearchResults = function(obj) {};
 
 /**
  * @param {string} searchId
@@ -2826,13 +2966,14 @@ Protocol.DOMAgent.prototype.invoke_getSearchResults = function(obj, opt_callback
  * @template T
  */
 Protocol.DOMAgent.prototype.discardSearchResults = function(searchId, opt_callback) {};
-/** @typedef {!{searchId: string}} obj */
-Protocol.DOMAgent.prototype.discardSearchResults.Request;
+/** @typedef {!{searchId: string}} */
+Protocol.DOMAgent.DiscardSearchResultsRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.DiscardSearchResultsResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.discardSearchResults.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_discardSearchResults = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.DiscardSearchResultsRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.DiscardSearchResultsResponse>} */
+Protocol.DOMAgent.prototype.invoke_discardSearchResults = function(obj) {};
 
 /**
  * @param {Protocol.Runtime.RemoteObjectId} objectId
@@ -2841,13 +2982,14 @@ Protocol.DOMAgent.prototype.invoke_discardSearchResults = function(obj, opt_call
  * @template T
  */
 Protocol.DOMAgent.prototype.requestNode = function(objectId, opt_callback) {};
-/** @typedef {!{objectId: Protocol.Runtime.RemoteObjectId}} obj */
-Protocol.DOMAgent.prototype.requestNode.Request;
+/** @typedef {!{objectId: Protocol.Runtime.RemoteObjectId}} */
+Protocol.DOMAgent.RequestNodeRequest;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.RequestNodeResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.requestNode.Request} obj
- * @param {function(?Protocol.Error, Protocol.DOM.NodeId):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_requestNode = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.RequestNodeRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.RequestNodeResponse>} */
+Protocol.DOMAgent.prototype.invoke_requestNode = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -2855,13 +2997,14 @@ Protocol.DOMAgent.prototype.invoke_requestNode = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.DOMAgent.prototype.highlightRect = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.DOMAgent.prototype.highlightRect.Request;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.HighlightRectRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.HighlightRectResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.highlightRect.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_highlightRect = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.HighlightRectRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.HighlightRectResponse>} */
+Protocol.DOMAgent.prototype.invoke_highlightRect = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -2869,13 +3012,14 @@ Protocol.DOMAgent.prototype.invoke_highlightRect = function(obj, opt_callback) {
  * @template T
  */
 Protocol.DOMAgent.prototype.highlightNode = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.DOMAgent.prototype.highlightNode.Request;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.HighlightNodeRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.HighlightNodeResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.highlightNode.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_highlightNode = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.HighlightNodeRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.HighlightNodeResponse>} */
+Protocol.DOMAgent.prototype.invoke_highlightNode = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -2883,13 +3027,14 @@ Protocol.DOMAgent.prototype.invoke_highlightNode = function(obj, opt_callback) {
  * @template T
  */
 Protocol.DOMAgent.prototype.hideHighlight = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.DOMAgent.prototype.hideHighlight.Request;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.HideHighlightRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.HideHighlightResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.hideHighlight.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_hideHighlight = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.HideHighlightRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.HideHighlightResponse>} */
+Protocol.DOMAgent.prototype.invoke_hideHighlight = function(obj) {};
 
 /**
  * @param {string} path
@@ -2898,13 +3043,14 @@ Protocol.DOMAgent.prototype.invoke_hideHighlight = function(obj, opt_callback) {
  * @template T
  */
 Protocol.DOMAgent.prototype.pushNodeByPathToFrontend = function(path, opt_callback) {};
-/** @typedef {!{path: string}} obj */
-Protocol.DOMAgent.prototype.pushNodeByPathToFrontend.Request;
+/** @typedef {!{path: string}} */
+Protocol.DOMAgent.PushNodeByPathToFrontendRequest;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.PushNodeByPathToFrontendResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.pushNodeByPathToFrontend.Request} obj
- * @param {function(?Protocol.Error, Protocol.DOM.NodeId):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_pushNodeByPathToFrontend = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.PushNodeByPathToFrontendRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.PushNodeByPathToFrontendResponse>} */
+Protocol.DOMAgent.prototype.invoke_pushNodeByPathToFrontend = function(obj) {};
 
 /**
  * @param {!Array<Protocol.DOM.BackendNodeId>} backendNodeIds
@@ -2913,13 +3059,14 @@ Protocol.DOMAgent.prototype.invoke_pushNodeByPathToFrontend = function(obj, opt_
  * @template T
  */
 Protocol.DOMAgent.prototype.pushNodesByBackendIdsToFrontend = function(backendNodeIds, opt_callback) {};
-/** @typedef {!{backendNodeIds: !Array<Protocol.DOM.BackendNodeId>}} obj */
-Protocol.DOMAgent.prototype.pushNodesByBackendIdsToFrontend.Request;
+/** @typedef {!{backendNodeIds: !Array<Protocol.DOM.BackendNodeId>}} */
+Protocol.DOMAgent.PushNodesByBackendIdsToFrontendRequest;
+/** @typedef {!{nodeIds: !Array<Protocol.DOM.NodeId>}} */
+Protocol.DOMAgent.PushNodesByBackendIdsToFrontendResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.pushNodesByBackendIdsToFrontend.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.DOM.NodeId>):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_pushNodesByBackendIdsToFrontend = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.PushNodesByBackendIdsToFrontendRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.PushNodesByBackendIdsToFrontendResponse>} */
+Protocol.DOMAgent.prototype.invoke_pushNodesByBackendIdsToFrontend = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -2928,13 +3075,14 @@ Protocol.DOMAgent.prototype.invoke_pushNodesByBackendIdsToFrontend = function(ob
  * @template T
  */
 Protocol.DOMAgent.prototype.setInspectedNode = function(nodeId, opt_callback) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId}} obj */
-Protocol.DOMAgent.prototype.setInspectedNode.Request;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.SetInspectedNodeRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.SetInspectedNodeResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.setInspectedNode.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_setInspectedNode = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.SetInspectedNodeRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.SetInspectedNodeResponse>} */
+Protocol.DOMAgent.prototype.invoke_setInspectedNode = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -2944,13 +3092,14 @@ Protocol.DOMAgent.prototype.invoke_setInspectedNode = function(obj, opt_callback
  * @template T
  */
 Protocol.DOMAgent.prototype.resolveNode = function(nodeId, opt_objectGroup, opt_callback) {};
-/** @typedef {!{objectGroup: (string|undefined), nodeId: Protocol.DOM.NodeId}} obj */
-Protocol.DOMAgent.prototype.resolveNode.Request;
+/** @typedef {!{objectGroup: (string|undefined), nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.ResolveNodeRequest;
+/** @typedef {!{object: Protocol.Runtime.RemoteObject}} */
+Protocol.DOMAgent.ResolveNodeResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.resolveNode.Request} obj
- * @param {function(?Protocol.Error, Protocol.Runtime.RemoteObject):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_resolveNode = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.ResolveNodeRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.ResolveNodeResponse>} */
+Protocol.DOMAgent.prototype.invoke_resolveNode = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -2959,13 +3108,14 @@ Protocol.DOMAgent.prototype.invoke_resolveNode = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.DOMAgent.prototype.getAttributes = function(nodeId, opt_callback) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId}} obj */
-Protocol.DOMAgent.prototype.getAttributes.Request;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.GetAttributesRequest;
+/** @typedef {!{attributes: !Array<string>}} */
+Protocol.DOMAgent.GetAttributesResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.getAttributes.Request} obj
- * @param {function(?Protocol.Error, !Array<string>):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_getAttributes = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.GetAttributesRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.GetAttributesResponse>} */
+Protocol.DOMAgent.prototype.invoke_getAttributes = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -2976,13 +3126,14 @@ Protocol.DOMAgent.prototype.invoke_getAttributes = function(obj, opt_callback) {
  * @template T
  */
 Protocol.DOMAgent.prototype.copyTo = function(nodeId, targetNodeId, opt_insertBeforeNodeId, opt_callback) {};
-/** @typedef {!{targetNodeId: Protocol.DOM.NodeId, nodeId: Protocol.DOM.NodeId, insertBeforeNodeId: (Protocol.DOM.NodeId|undefined)}} obj */
-Protocol.DOMAgent.prototype.copyTo.Request;
+/** @typedef {!{targetNodeId: Protocol.DOM.NodeId, nodeId: Protocol.DOM.NodeId, insertBeforeNodeId: (Protocol.DOM.NodeId|undefined)}} */
+Protocol.DOMAgent.CopyToRequest;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.CopyToResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.copyTo.Request} obj
- * @param {function(?Protocol.Error, Protocol.DOM.NodeId):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_copyTo = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.CopyToRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.CopyToResponse>} */
+Protocol.DOMAgent.prototype.invoke_copyTo = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -2993,13 +3144,14 @@ Protocol.DOMAgent.prototype.invoke_copyTo = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.DOMAgent.prototype.moveTo = function(nodeId, targetNodeId, opt_insertBeforeNodeId, opt_callback) {};
-/** @typedef {!{targetNodeId: Protocol.DOM.NodeId, nodeId: Protocol.DOM.NodeId, insertBeforeNodeId: (Protocol.DOM.NodeId|undefined)}} obj */
-Protocol.DOMAgent.prototype.moveTo.Request;
+/** @typedef {!{targetNodeId: Protocol.DOM.NodeId, nodeId: Protocol.DOM.NodeId, insertBeforeNodeId: (Protocol.DOM.NodeId|undefined)}} */
+Protocol.DOMAgent.MoveToRequest;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.MoveToResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.moveTo.Request} obj
- * @param {function(?Protocol.Error, Protocol.DOM.NodeId):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_moveTo = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.MoveToRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.MoveToResponse>} */
+Protocol.DOMAgent.prototype.invoke_moveTo = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -3007,13 +3159,14 @@ Protocol.DOMAgent.prototype.invoke_moveTo = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.DOMAgent.prototype.undo = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.DOMAgent.prototype.undo.Request;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.UndoRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.UndoResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.undo.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_undo = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.UndoRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.UndoResponse>} */
+Protocol.DOMAgent.prototype.invoke_undo = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -3021,13 +3174,14 @@ Protocol.DOMAgent.prototype.invoke_undo = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.DOMAgent.prototype.redo = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.DOMAgent.prototype.redo.Request;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.RedoRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.RedoResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.redo.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_redo = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.RedoRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.RedoResponse>} */
+Protocol.DOMAgent.prototype.invoke_redo = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -3035,13 +3189,14 @@ Protocol.DOMAgent.prototype.invoke_redo = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.DOMAgent.prototype.markUndoableState = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.DOMAgent.prototype.markUndoableState.Request;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.MarkUndoableStateRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.MarkUndoableStateResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.markUndoableState.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_markUndoableState = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.MarkUndoableStateRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.MarkUndoableStateResponse>} */
+Protocol.DOMAgent.prototype.invoke_markUndoableState = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -3050,13 +3205,14 @@ Protocol.DOMAgent.prototype.invoke_markUndoableState = function(obj, opt_callbac
  * @template T
  */
 Protocol.DOMAgent.prototype.focus = function(nodeId, opt_callback) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId}} obj */
-Protocol.DOMAgent.prototype.focus.Request;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.FocusRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.FocusResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.focus.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_focus = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.FocusRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.FocusResponse>} */
+Protocol.DOMAgent.prototype.invoke_focus = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -3066,13 +3222,14 @@ Protocol.DOMAgent.prototype.invoke_focus = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.DOMAgent.prototype.setFileInputFiles = function(nodeId, files, opt_callback) {};
-/** @typedef {!{files: !Array<string>, nodeId: Protocol.DOM.NodeId}} obj */
-Protocol.DOMAgent.prototype.setFileInputFiles.Request;
+/** @typedef {!{files: !Array<string>, nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.SetFileInputFilesRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.SetFileInputFilesResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.setFileInputFiles.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_setFileInputFiles = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.SetFileInputFilesRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.SetFileInputFilesResponse>} */
+Protocol.DOMAgent.prototype.invoke_setFileInputFiles = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -3081,13 +3238,14 @@ Protocol.DOMAgent.prototype.invoke_setFileInputFiles = function(obj, opt_callbac
  * @template T
  */
 Protocol.DOMAgent.prototype.getBoxModel = function(nodeId, opt_callback) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId}} obj */
-Protocol.DOMAgent.prototype.getBoxModel.Request;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.GetBoxModelRequest;
+/** @typedef {!{model: Protocol.DOM.BoxModel}} */
+Protocol.DOMAgent.GetBoxModelResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.getBoxModel.Request} obj
- * @param {function(?Protocol.Error, Protocol.DOM.BoxModel):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_getBoxModel = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.GetBoxModelRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.GetBoxModelResponse>} */
+Protocol.DOMAgent.prototype.invoke_getBoxModel = function(obj) {};
 
 /**
  * @param {number} x
@@ -3098,13 +3256,14 @@ Protocol.DOMAgent.prototype.invoke_getBoxModel = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.DOMAgent.prototype.getNodeForLocation = function(x, y, opt_includeUserAgentShadowDOM, opt_callback) {};
-/** @typedef {!{y: number, x: number, includeUserAgentShadowDOM: (boolean|undefined)}} obj */
-Protocol.DOMAgent.prototype.getNodeForLocation.Request;
+/** @typedef {!{y: number, x: number, includeUserAgentShadowDOM: (boolean|undefined)}} */
+Protocol.DOMAgent.GetNodeForLocationRequest;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.GetNodeForLocationResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.getNodeForLocation.Request} obj
- * @param {function(?Protocol.Error, Protocol.DOM.NodeId):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_getNodeForLocation = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.GetNodeForLocationRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.GetNodeForLocationResponse>} */
+Protocol.DOMAgent.prototype.invoke_getNodeForLocation = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -3113,13 +3272,14 @@ Protocol.DOMAgent.prototype.invoke_getNodeForLocation = function(obj, opt_callba
  * @template T
  */
 Protocol.DOMAgent.prototype.getRelayoutBoundary = function(nodeId, opt_callback) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId}} obj */
-Protocol.DOMAgent.prototype.getRelayoutBoundary.Request;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.GetRelayoutBoundaryRequest;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.GetRelayoutBoundaryResponse;
 /**
- * @param {!Protocol.DOMAgent.prototype.getRelayoutBoundary.Request} obj
- * @param {function(?Protocol.Error, Protocol.DOM.NodeId):void=} opt_callback
- */
-Protocol.DOMAgent.prototype.invoke_getRelayoutBoundary = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMAgent.GetRelayoutBoundaryRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.GetRelayoutBoundaryResponse>} */
+Protocol.DOMAgent.prototype.invoke_getRelayoutBoundary = function(obj) {};
 
 /** @typedef {number} */
 Protocol.DOM.NodeId;
@@ -3256,13 +3416,14 @@ Protocol.CSSAgent = function(){};
  * @template T
  */
 Protocol.CSSAgent.prototype.enable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.CSSAgent.prototype.enable.Request;
+/** @typedef {Object|undefined} */
+Protocol.CSSAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.CSSAgent.EnableResponse;
 /**
- * @param {!Protocol.CSSAgent.prototype.enable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.CSSAgent.prototype.invoke_enable = function(obj, opt_callback) {};
+ * @param {!Protocol.CSSAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.CSSAgent.EnableResponse>} */
+Protocol.CSSAgent.prototype.invoke_enable = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -3270,13 +3431,14 @@ Protocol.CSSAgent.prototype.invoke_enable = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.CSSAgent.prototype.disable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.CSSAgent.prototype.disable.Request;
+/** @typedef {Object|undefined} */
+Protocol.CSSAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.CSSAgent.DisableResponse;
 /**
- * @param {!Protocol.CSSAgent.prototype.disable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.CSSAgent.prototype.invoke_disable = function(obj, opt_callback) {};
+ * @param {!Protocol.CSSAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.CSSAgent.DisableResponse>} */
+Protocol.CSSAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -3285,13 +3447,14 @@ Protocol.CSSAgent.prototype.invoke_disable = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.CSSAgent.prototype.getMatchedStylesForNode = function(nodeId, opt_callback) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId}} obj */
-Protocol.CSSAgent.prototype.getMatchedStylesForNode.Request;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.CSSAgent.GetMatchedStylesForNodeRequest;
+/** @typedef {!{inlineStyle: Protocol.CSS.CSSStyle, attributesStyle: Protocol.CSS.CSSStyle, cssKeyframesRules: !Array<Protocol.CSS.CSSKeyframesRule>, matchedCSSRules: !Array<Protocol.CSS.RuleMatch>, inherited: !Array<Protocol.CSS.InheritedStyleEntry>, pseudoElements: !Array<Protocol.CSS.PseudoElementMatches>}} */
+Protocol.CSSAgent.GetMatchedStylesForNodeResponse;
 /**
- * @param {!Protocol.CSSAgent.prototype.getMatchedStylesForNode.Request} obj
- * @param {function(?Protocol.Error, Protocol.CSS.CSSStyle=, Protocol.CSS.CSSStyle=, !Array<Protocol.CSS.RuleMatch>=, !Array<Protocol.CSS.PseudoElementMatches>=, !Array<Protocol.CSS.InheritedStyleEntry>=, !Array<Protocol.CSS.CSSKeyframesRule>=):void=} opt_callback
- */
-Protocol.CSSAgent.prototype.invoke_getMatchedStylesForNode = function(obj, opt_callback) {};
+ * @param {!Protocol.CSSAgent.GetMatchedStylesForNodeRequest} obj
+ * @return {!Promise<!Protocol.CSSAgent.GetMatchedStylesForNodeResponse>} */
+Protocol.CSSAgent.prototype.invoke_getMatchedStylesForNode = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -3300,13 +3463,14 @@ Protocol.CSSAgent.prototype.invoke_getMatchedStylesForNode = function(obj, opt_c
  * @template T
  */
 Protocol.CSSAgent.prototype.getInlineStylesForNode = function(nodeId, opt_callback) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId}} obj */
-Protocol.CSSAgent.prototype.getInlineStylesForNode.Request;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.CSSAgent.GetInlineStylesForNodeRequest;
+/** @typedef {!{inlineStyle: Protocol.CSS.CSSStyle, attributesStyle: Protocol.CSS.CSSStyle}} */
+Protocol.CSSAgent.GetInlineStylesForNodeResponse;
 /**
- * @param {!Protocol.CSSAgent.prototype.getInlineStylesForNode.Request} obj
- * @param {function(?Protocol.Error, Protocol.CSS.CSSStyle=, Protocol.CSS.CSSStyle=):void=} opt_callback
- */
-Protocol.CSSAgent.prototype.invoke_getInlineStylesForNode = function(obj, opt_callback) {};
+ * @param {!Protocol.CSSAgent.GetInlineStylesForNodeRequest} obj
+ * @return {!Promise<!Protocol.CSSAgent.GetInlineStylesForNodeResponse>} */
+Protocol.CSSAgent.prototype.invoke_getInlineStylesForNode = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -3315,13 +3479,14 @@ Protocol.CSSAgent.prototype.invoke_getInlineStylesForNode = function(obj, opt_ca
  * @template T
  */
 Protocol.CSSAgent.prototype.getComputedStyleForNode = function(nodeId, opt_callback) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId}} obj */
-Protocol.CSSAgent.prototype.getComputedStyleForNode.Request;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.CSSAgent.GetComputedStyleForNodeRequest;
+/** @typedef {!{computedStyle: !Array<Protocol.CSS.CSSComputedStyleProperty>}} */
+Protocol.CSSAgent.GetComputedStyleForNodeResponse;
 /**
- * @param {!Protocol.CSSAgent.prototype.getComputedStyleForNode.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.CSS.CSSComputedStyleProperty>):void=} opt_callback
- */
-Protocol.CSSAgent.prototype.invoke_getComputedStyleForNode = function(obj, opt_callback) {};
+ * @param {!Protocol.CSSAgent.GetComputedStyleForNodeRequest} obj
+ * @return {!Promise<!Protocol.CSSAgent.GetComputedStyleForNodeResponse>} */
+Protocol.CSSAgent.prototype.invoke_getComputedStyleForNode = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -3330,13 +3495,14 @@ Protocol.CSSAgent.prototype.invoke_getComputedStyleForNode = function(obj, opt_c
  * @template T
  */
 Protocol.CSSAgent.prototype.getPlatformFontsForNode = function(nodeId, opt_callback) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId}} obj */
-Protocol.CSSAgent.prototype.getPlatformFontsForNode.Request;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.CSSAgent.GetPlatformFontsForNodeRequest;
+/** @typedef {!{fonts: !Array<Protocol.CSS.PlatformFontUsage>}} */
+Protocol.CSSAgent.GetPlatformFontsForNodeResponse;
 /**
- * @param {!Protocol.CSSAgent.prototype.getPlatformFontsForNode.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.CSS.PlatformFontUsage>):void=} opt_callback
- */
-Protocol.CSSAgent.prototype.invoke_getPlatformFontsForNode = function(obj, opt_callback) {};
+ * @param {!Protocol.CSSAgent.GetPlatformFontsForNodeRequest} obj
+ * @return {!Promise<!Protocol.CSSAgent.GetPlatformFontsForNodeResponse>} */
+Protocol.CSSAgent.prototype.invoke_getPlatformFontsForNode = function(obj) {};
 
 /**
  * @param {Protocol.CSS.StyleSheetId} styleSheetId
@@ -3345,13 +3511,14 @@ Protocol.CSSAgent.prototype.invoke_getPlatformFontsForNode = function(obj, opt_c
  * @template T
  */
 Protocol.CSSAgent.prototype.getStyleSheetText = function(styleSheetId, opt_callback) {};
-/** @typedef {!{styleSheetId: Protocol.CSS.StyleSheetId}} obj */
-Protocol.CSSAgent.prototype.getStyleSheetText.Request;
+/** @typedef {!{styleSheetId: Protocol.CSS.StyleSheetId}} */
+Protocol.CSSAgent.GetStyleSheetTextRequest;
+/** @typedef {!{text: string}} */
+Protocol.CSSAgent.GetStyleSheetTextResponse;
 /**
- * @param {!Protocol.CSSAgent.prototype.getStyleSheetText.Request} obj
- * @param {function(?Protocol.Error, string):void=} opt_callback
- */
-Protocol.CSSAgent.prototype.invoke_getStyleSheetText = function(obj, opt_callback) {};
+ * @param {!Protocol.CSSAgent.GetStyleSheetTextRequest} obj
+ * @return {!Promise<!Protocol.CSSAgent.GetStyleSheetTextResponse>} */
+Protocol.CSSAgent.prototype.invoke_getStyleSheetText = function(obj) {};
 
 /**
  * @param {Protocol.CSS.StyleSheetId} styleSheetId
@@ -3360,13 +3527,14 @@ Protocol.CSSAgent.prototype.invoke_getStyleSheetText = function(obj, opt_callbac
  * @template T
  */
 Protocol.CSSAgent.prototype.collectClassNames = function(styleSheetId, opt_callback) {};
-/** @typedef {!{styleSheetId: Protocol.CSS.StyleSheetId}} obj */
-Protocol.CSSAgent.prototype.collectClassNames.Request;
+/** @typedef {!{styleSheetId: Protocol.CSS.StyleSheetId}} */
+Protocol.CSSAgent.CollectClassNamesRequest;
+/** @typedef {!{classNames: !Array<string>}} */
+Protocol.CSSAgent.CollectClassNamesResponse;
 /**
- * @param {!Protocol.CSSAgent.prototype.collectClassNames.Request} obj
- * @param {function(?Protocol.Error, !Array<string>):void=} opt_callback
- */
-Protocol.CSSAgent.prototype.invoke_collectClassNames = function(obj, opt_callback) {};
+ * @param {!Protocol.CSSAgent.CollectClassNamesRequest} obj
+ * @return {!Promise<!Protocol.CSSAgent.CollectClassNamesResponse>} */
+Protocol.CSSAgent.prototype.invoke_collectClassNames = function(obj) {};
 
 /**
  * @param {Protocol.CSS.StyleSheetId} styleSheetId
@@ -3376,13 +3544,14 @@ Protocol.CSSAgent.prototype.invoke_collectClassNames = function(obj, opt_callbac
  * @template T
  */
 Protocol.CSSAgent.prototype.setStyleSheetText = function(styleSheetId, text, opt_callback) {};
-/** @typedef {!{text: string, styleSheetId: Protocol.CSS.StyleSheetId}} obj */
-Protocol.CSSAgent.prototype.setStyleSheetText.Request;
+/** @typedef {!{text: string, styleSheetId: Protocol.CSS.StyleSheetId}} */
+Protocol.CSSAgent.SetStyleSheetTextRequest;
+/** @typedef {!{sourceMapURL: string}} */
+Protocol.CSSAgent.SetStyleSheetTextResponse;
 /**
- * @param {!Protocol.CSSAgent.prototype.setStyleSheetText.Request} obj
- * @param {function(?Protocol.Error, string=):void=} opt_callback
- */
-Protocol.CSSAgent.prototype.invoke_setStyleSheetText = function(obj, opt_callback) {};
+ * @param {!Protocol.CSSAgent.SetStyleSheetTextRequest} obj
+ * @return {!Promise<!Protocol.CSSAgent.SetStyleSheetTextResponse>} */
+Protocol.CSSAgent.prototype.invoke_setStyleSheetText = function(obj) {};
 
 /**
  * @param {Protocol.CSS.StyleSheetId} styleSheetId
@@ -3393,13 +3562,14 @@ Protocol.CSSAgent.prototype.invoke_setStyleSheetText = function(obj, opt_callbac
  * @template T
  */
 Protocol.CSSAgent.prototype.setRuleSelector = function(styleSheetId, range, selector, opt_callback) {};
-/** @typedef {!{range: Protocol.CSS.SourceRange, styleSheetId: Protocol.CSS.StyleSheetId, selector: string}} obj */
-Protocol.CSSAgent.prototype.setRuleSelector.Request;
+/** @typedef {!{range: Protocol.CSS.SourceRange, styleSheetId: Protocol.CSS.StyleSheetId, selector: string}} */
+Protocol.CSSAgent.SetRuleSelectorRequest;
+/** @typedef {!{selectorList: Protocol.CSS.SelectorList}} */
+Protocol.CSSAgent.SetRuleSelectorResponse;
 /**
- * @param {!Protocol.CSSAgent.prototype.setRuleSelector.Request} obj
- * @param {function(?Protocol.Error, Protocol.CSS.SelectorList):void=} opt_callback
- */
-Protocol.CSSAgent.prototype.invoke_setRuleSelector = function(obj, opt_callback) {};
+ * @param {!Protocol.CSSAgent.SetRuleSelectorRequest} obj
+ * @return {!Promise<!Protocol.CSSAgent.SetRuleSelectorResponse>} */
+Protocol.CSSAgent.prototype.invoke_setRuleSelector = function(obj) {};
 
 /**
  * @param {Protocol.CSS.StyleSheetId} styleSheetId
@@ -3410,13 +3580,14 @@ Protocol.CSSAgent.prototype.invoke_setRuleSelector = function(obj, opt_callback)
  * @template T
  */
 Protocol.CSSAgent.prototype.setKeyframeKey = function(styleSheetId, range, keyText, opt_callback) {};
-/** @typedef {!{range: Protocol.CSS.SourceRange, styleSheetId: Protocol.CSS.StyleSheetId, keyText: string}} obj */
-Protocol.CSSAgent.prototype.setKeyframeKey.Request;
+/** @typedef {!{range: Protocol.CSS.SourceRange, styleSheetId: Protocol.CSS.StyleSheetId, keyText: string}} */
+Protocol.CSSAgent.SetKeyframeKeyRequest;
+/** @typedef {!{keyText: Protocol.CSS.Value}} */
+Protocol.CSSAgent.SetKeyframeKeyResponse;
 /**
- * @param {!Protocol.CSSAgent.prototype.setKeyframeKey.Request} obj
- * @param {function(?Protocol.Error, Protocol.CSS.Value):void=} opt_callback
- */
-Protocol.CSSAgent.prototype.invoke_setKeyframeKey = function(obj, opt_callback) {};
+ * @param {!Protocol.CSSAgent.SetKeyframeKeyRequest} obj
+ * @return {!Promise<!Protocol.CSSAgent.SetKeyframeKeyResponse>} */
+Protocol.CSSAgent.prototype.invoke_setKeyframeKey = function(obj) {};
 
 /**
  * @param {!Array<Protocol.CSS.StyleDeclarationEdit>} edits
@@ -3425,13 +3596,14 @@ Protocol.CSSAgent.prototype.invoke_setKeyframeKey = function(obj, opt_callback) 
  * @template T
  */
 Protocol.CSSAgent.prototype.setStyleTexts = function(edits, opt_callback) {};
-/** @typedef {!{edits: !Array<Protocol.CSS.StyleDeclarationEdit>}} obj */
-Protocol.CSSAgent.prototype.setStyleTexts.Request;
+/** @typedef {!{edits: !Array<Protocol.CSS.StyleDeclarationEdit>}} */
+Protocol.CSSAgent.SetStyleTextsRequest;
+/** @typedef {!{styles: !Array<Protocol.CSS.CSSStyle>}} */
+Protocol.CSSAgent.SetStyleTextsResponse;
 /**
- * @param {!Protocol.CSSAgent.prototype.setStyleTexts.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.CSS.CSSStyle>):void=} opt_callback
- */
-Protocol.CSSAgent.prototype.invoke_setStyleTexts = function(obj, opt_callback) {};
+ * @param {!Protocol.CSSAgent.SetStyleTextsRequest} obj
+ * @return {!Promise<!Protocol.CSSAgent.SetStyleTextsResponse>} */
+Protocol.CSSAgent.prototype.invoke_setStyleTexts = function(obj) {};
 
 /**
  * @param {Protocol.CSS.StyleSheetId} styleSheetId
@@ -3442,13 +3614,14 @@ Protocol.CSSAgent.prototype.invoke_setStyleTexts = function(obj, opt_callback) {
  * @template T
  */
 Protocol.CSSAgent.prototype.setMediaText = function(styleSheetId, range, text, opt_callback) {};
-/** @typedef {!{text: string, range: Protocol.CSS.SourceRange, styleSheetId: Protocol.CSS.StyleSheetId}} obj */
-Protocol.CSSAgent.prototype.setMediaText.Request;
+/** @typedef {!{text: string, range: Protocol.CSS.SourceRange, styleSheetId: Protocol.CSS.StyleSheetId}} */
+Protocol.CSSAgent.SetMediaTextRequest;
+/** @typedef {!{media: Protocol.CSS.CSSMedia}} */
+Protocol.CSSAgent.SetMediaTextResponse;
 /**
- * @param {!Protocol.CSSAgent.prototype.setMediaText.Request} obj
- * @param {function(?Protocol.Error, Protocol.CSS.CSSMedia):void=} opt_callback
- */
-Protocol.CSSAgent.prototype.invoke_setMediaText = function(obj, opt_callback) {};
+ * @param {!Protocol.CSSAgent.SetMediaTextRequest} obj
+ * @return {!Promise<!Protocol.CSSAgent.SetMediaTextResponse>} */
+Protocol.CSSAgent.prototype.invoke_setMediaText = function(obj) {};
 
 /**
  * @param {Protocol.Page.FrameId} frameId
@@ -3457,13 +3630,14 @@ Protocol.CSSAgent.prototype.invoke_setMediaText = function(obj, opt_callback) {}
  * @template T
  */
 Protocol.CSSAgent.prototype.createStyleSheet = function(frameId, opt_callback) {};
-/** @typedef {!{frameId: Protocol.Page.FrameId}} obj */
-Protocol.CSSAgent.prototype.createStyleSheet.Request;
+/** @typedef {!{frameId: Protocol.Page.FrameId}} */
+Protocol.CSSAgent.CreateStyleSheetRequest;
+/** @typedef {!{styleSheetId: Protocol.CSS.StyleSheetId}} */
+Protocol.CSSAgent.CreateStyleSheetResponse;
 /**
- * @param {!Protocol.CSSAgent.prototype.createStyleSheet.Request} obj
- * @param {function(?Protocol.Error, Protocol.CSS.StyleSheetId):void=} opt_callback
- */
-Protocol.CSSAgent.prototype.invoke_createStyleSheet = function(obj, opt_callback) {};
+ * @param {!Protocol.CSSAgent.CreateStyleSheetRequest} obj
+ * @return {!Promise<!Protocol.CSSAgent.CreateStyleSheetResponse>} */
+Protocol.CSSAgent.prototype.invoke_createStyleSheet = function(obj) {};
 
 /**
  * @param {Protocol.CSS.StyleSheetId} styleSheetId
@@ -3474,13 +3648,14 @@ Protocol.CSSAgent.prototype.invoke_createStyleSheet = function(obj, opt_callback
  * @template T
  */
 Protocol.CSSAgent.prototype.addRule = function(styleSheetId, ruleText, location, opt_callback) {};
-/** @typedef {!{styleSheetId: Protocol.CSS.StyleSheetId, location: Protocol.CSS.SourceRange, ruleText: string}} obj */
-Protocol.CSSAgent.prototype.addRule.Request;
+/** @typedef {!{styleSheetId: Protocol.CSS.StyleSheetId, location: Protocol.CSS.SourceRange, ruleText: string}} */
+Protocol.CSSAgent.AddRuleRequest;
+/** @typedef {!{rule: Protocol.CSS.CSSRule}} */
+Protocol.CSSAgent.AddRuleResponse;
 /**
- * @param {!Protocol.CSSAgent.prototype.addRule.Request} obj
- * @param {function(?Protocol.Error, Protocol.CSS.CSSRule):void=} opt_callback
- */
-Protocol.CSSAgent.prototype.invoke_addRule = function(obj, opt_callback) {};
+ * @param {!Protocol.CSSAgent.AddRuleRequest} obj
+ * @return {!Promise<!Protocol.CSSAgent.AddRuleResponse>} */
+Protocol.CSSAgent.prototype.invoke_addRule = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -3490,13 +3665,14 @@ Protocol.CSSAgent.prototype.invoke_addRule = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.CSSAgent.prototype.forcePseudoState = function(nodeId, forcedPseudoClasses, opt_callback) {};
-/** @typedef {!{forcedPseudoClasses: !Array<string>, nodeId: Protocol.DOM.NodeId}} obj */
-Protocol.CSSAgent.prototype.forcePseudoState.Request;
+/** @typedef {!{forcedPseudoClasses: !Array<string>, nodeId: Protocol.DOM.NodeId}} */
+Protocol.CSSAgent.ForcePseudoStateRequest;
+/** @typedef {Object|undefined} */
+Protocol.CSSAgent.ForcePseudoStateResponse;
 /**
- * @param {!Protocol.CSSAgent.prototype.forcePseudoState.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.CSSAgent.prototype.invoke_forcePseudoState = function(obj, opt_callback) {};
+ * @param {!Protocol.CSSAgent.ForcePseudoStateRequest} obj
+ * @return {!Promise<!Protocol.CSSAgent.ForcePseudoStateResponse>} */
+Protocol.CSSAgent.prototype.invoke_forcePseudoState = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error, !Array<Protocol.CSS.CSSMedia>):T=} opt_callback
@@ -3504,13 +3680,14 @@ Protocol.CSSAgent.prototype.invoke_forcePseudoState = function(obj, opt_callback
  * @template T
  */
 Protocol.CSSAgent.prototype.getMediaQueries = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.CSSAgent.prototype.getMediaQueries.Request;
+/** @typedef {Object|undefined} */
+Protocol.CSSAgent.GetMediaQueriesRequest;
+/** @typedef {!{medias: !Array<Protocol.CSS.CSSMedia>}} */
+Protocol.CSSAgent.GetMediaQueriesResponse;
 /**
- * @param {!Protocol.CSSAgent.prototype.getMediaQueries.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.CSS.CSSMedia>):void=} opt_callback
- */
-Protocol.CSSAgent.prototype.invoke_getMediaQueries = function(obj, opt_callback) {};
+ * @param {!Protocol.CSSAgent.GetMediaQueriesRequest} obj
+ * @return {!Promise<!Protocol.CSSAgent.GetMediaQueriesResponse>} */
+Protocol.CSSAgent.prototype.invoke_getMediaQueries = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -3521,13 +3698,14 @@ Protocol.CSSAgent.prototype.invoke_getMediaQueries = function(obj, opt_callback)
  * @template T
  */
 Protocol.CSSAgent.prototype.setEffectivePropertyValueForNode = function(nodeId, propertyName, value, opt_callback) {};
-/** @typedef {!{propertyName: string, nodeId: Protocol.DOM.NodeId, value: string}} obj */
-Protocol.CSSAgent.prototype.setEffectivePropertyValueForNode.Request;
+/** @typedef {!{propertyName: string, nodeId: Protocol.DOM.NodeId, value: string}} */
+Protocol.CSSAgent.SetEffectivePropertyValueForNodeRequest;
+/** @typedef {Object|undefined} */
+Protocol.CSSAgent.SetEffectivePropertyValueForNodeResponse;
 /**
- * @param {!Protocol.CSSAgent.prototype.setEffectivePropertyValueForNode.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.CSSAgent.prototype.invoke_setEffectivePropertyValueForNode = function(obj, opt_callback) {};
+ * @param {!Protocol.CSSAgent.SetEffectivePropertyValueForNodeRequest} obj
+ * @return {!Promise<!Protocol.CSSAgent.SetEffectivePropertyValueForNodeResponse>} */
+Protocol.CSSAgent.prototype.invoke_setEffectivePropertyValueForNode = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -3536,13 +3714,14 @@ Protocol.CSSAgent.prototype.invoke_setEffectivePropertyValueForNode = function(o
  * @template T
  */
 Protocol.CSSAgent.prototype.getBackgroundColors = function(nodeId, opt_callback) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId}} obj */
-Protocol.CSSAgent.prototype.getBackgroundColors.Request;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.CSSAgent.GetBackgroundColorsRequest;
+/** @typedef {!{backgroundColors: !Array<string>}} */
+Protocol.CSSAgent.GetBackgroundColorsResponse;
 /**
- * @param {!Protocol.CSSAgent.prototype.getBackgroundColors.Request} obj
- * @param {function(?Protocol.Error, !Array<string>=):void=} opt_callback
- */
-Protocol.CSSAgent.prototype.invoke_getBackgroundColors = function(obj, opt_callback) {};
+ * @param {!Protocol.CSSAgent.GetBackgroundColorsRequest} obj
+ * @return {!Promise<!Protocol.CSSAgent.GetBackgroundColorsResponse>} */
+Protocol.CSSAgent.prototype.invoke_getBackgroundColors = function(obj) {};
 
 /**
  * @param {!Array<string>} computedStyleWhitelist
@@ -3551,13 +3730,14 @@ Protocol.CSSAgent.prototype.invoke_getBackgroundColors = function(obj, opt_callb
  * @template T
  */
 Protocol.CSSAgent.prototype.getLayoutTreeAndStyles = function(computedStyleWhitelist, opt_callback) {};
-/** @typedef {!{computedStyleWhitelist: !Array<string>}} obj */
-Protocol.CSSAgent.prototype.getLayoutTreeAndStyles.Request;
+/** @typedef {!{computedStyleWhitelist: !Array<string>}} */
+Protocol.CSSAgent.GetLayoutTreeAndStylesRequest;
+/** @typedef {!{layoutTreeNodes: !Array<Protocol.CSS.LayoutTreeNode>, computedStyles: !Array<Protocol.CSS.ComputedStyle>}} */
+Protocol.CSSAgent.GetLayoutTreeAndStylesResponse;
 /**
- * @param {!Protocol.CSSAgent.prototype.getLayoutTreeAndStyles.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.CSS.LayoutTreeNode>, !Array<Protocol.CSS.ComputedStyle>):void=} opt_callback
- */
-Protocol.CSSAgent.prototype.invoke_getLayoutTreeAndStyles = function(obj, opt_callback) {};
+ * @param {!Protocol.CSSAgent.GetLayoutTreeAndStylesRequest} obj
+ * @return {!Promise<!Protocol.CSSAgent.GetLayoutTreeAndStylesResponse>} */
+Protocol.CSSAgent.prototype.invoke_getLayoutTreeAndStyles = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -3565,13 +3745,14 @@ Protocol.CSSAgent.prototype.invoke_getLayoutTreeAndStyles = function(obj, opt_ca
  * @template T
  */
 Protocol.CSSAgent.prototype.startRuleUsageTracking = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.CSSAgent.prototype.startRuleUsageTracking.Request;
+/** @typedef {Object|undefined} */
+Protocol.CSSAgent.StartRuleUsageTrackingRequest;
+/** @typedef {Object|undefined} */
+Protocol.CSSAgent.StartRuleUsageTrackingResponse;
 /**
- * @param {!Protocol.CSSAgent.prototype.startRuleUsageTracking.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.CSSAgent.prototype.invoke_startRuleUsageTracking = function(obj, opt_callback) {};
+ * @param {!Protocol.CSSAgent.StartRuleUsageTrackingRequest} obj
+ * @return {!Promise<!Protocol.CSSAgent.StartRuleUsageTrackingResponse>} */
+Protocol.CSSAgent.prototype.invoke_startRuleUsageTracking = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error, !Array<Protocol.CSS.RuleUsage>):T=} opt_callback
@@ -3579,13 +3760,14 @@ Protocol.CSSAgent.prototype.invoke_startRuleUsageTracking = function(obj, opt_ca
  * @template T
  */
 Protocol.CSSAgent.prototype.takeCoverageDelta = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.CSSAgent.prototype.takeCoverageDelta.Request;
+/** @typedef {Object|undefined} */
+Protocol.CSSAgent.TakeCoverageDeltaRequest;
+/** @typedef {!{coverage: !Array<Protocol.CSS.RuleUsage>}} */
+Protocol.CSSAgent.TakeCoverageDeltaResponse;
 /**
- * @param {!Protocol.CSSAgent.prototype.takeCoverageDelta.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.CSS.RuleUsage>):void=} opt_callback
- */
-Protocol.CSSAgent.prototype.invoke_takeCoverageDelta = function(obj, opt_callback) {};
+ * @param {!Protocol.CSSAgent.TakeCoverageDeltaRequest} obj
+ * @return {!Promise<!Protocol.CSSAgent.TakeCoverageDeltaResponse>} */
+Protocol.CSSAgent.prototype.invoke_takeCoverageDelta = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error, !Array<Protocol.CSS.RuleUsage>):T=} opt_callback
@@ -3593,13 +3775,14 @@ Protocol.CSSAgent.prototype.invoke_takeCoverageDelta = function(obj, opt_callbac
  * @template T
  */
 Protocol.CSSAgent.prototype.stopRuleUsageTracking = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.CSSAgent.prototype.stopRuleUsageTracking.Request;
+/** @typedef {Object|undefined} */
+Protocol.CSSAgent.StopRuleUsageTrackingRequest;
+/** @typedef {!{ruleUsage: !Array<Protocol.CSS.RuleUsage>}} */
+Protocol.CSSAgent.StopRuleUsageTrackingResponse;
 /**
- * @param {!Protocol.CSSAgent.prototype.stopRuleUsageTracking.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.CSS.RuleUsage>):void=} opt_callback
- */
-Protocol.CSSAgent.prototype.invoke_stopRuleUsageTracking = function(obj, opt_callback) {};
+ * @param {!Protocol.CSSAgent.StopRuleUsageTrackingRequest} obj
+ * @return {!Promise<!Protocol.CSSAgent.StopRuleUsageTrackingResponse>} */
+Protocol.CSSAgent.prototype.invoke_stopRuleUsageTracking = function(obj) {};
 
 /** @typedef {string} */
 Protocol.CSS.StyleSheetId;
@@ -3721,13 +3904,14 @@ Protocol.IOAgent = function(){};
  * @template T
  */
 Protocol.IOAgent.prototype.read = function(handle, opt_offset, opt_size, opt_callback) {};
-/** @typedef {!{size: (number|undefined), handle: Protocol.IO.StreamHandle, offset: (number|undefined)}} obj */
-Protocol.IOAgent.prototype.read.Request;
+/** @typedef {!{size: (number|undefined), handle: Protocol.IO.StreamHandle, offset: (number|undefined)}} */
+Protocol.IOAgent.ReadRequest;
+/** @typedef {!{data: string, eof: boolean}} */
+Protocol.IOAgent.ReadResponse;
 /**
- * @param {!Protocol.IOAgent.prototype.read.Request} obj
- * @param {function(?Protocol.Error, string, boolean):void=} opt_callback
- */
-Protocol.IOAgent.prototype.invoke_read = function(obj, opt_callback) {};
+ * @param {!Protocol.IOAgent.ReadRequest} obj
+ * @return {!Promise<!Protocol.IOAgent.ReadResponse>} */
+Protocol.IOAgent.prototype.invoke_read = function(obj) {};
 
 /**
  * @param {Protocol.IO.StreamHandle} handle
@@ -3736,13 +3920,14 @@ Protocol.IOAgent.prototype.invoke_read = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.IOAgent.prototype.close = function(handle, opt_callback) {};
-/** @typedef {!{handle: Protocol.IO.StreamHandle}} obj */
-Protocol.IOAgent.prototype.close.Request;
+/** @typedef {!{handle: Protocol.IO.StreamHandle}} */
+Protocol.IOAgent.CloseRequest;
+/** @typedef {Object|undefined} */
+Protocol.IOAgent.CloseResponse;
 /**
- * @param {!Protocol.IOAgent.prototype.close.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.IOAgent.prototype.invoke_close = function(obj, opt_callback) {};
+ * @param {!Protocol.IOAgent.CloseRequest} obj
+ * @return {!Promise<!Protocol.IOAgent.CloseResponse>} */
+Protocol.IOAgent.prototype.invoke_close = function(obj) {};
 
 /** @typedef {string} */
 Protocol.IO.StreamHandle;
@@ -3764,13 +3949,14 @@ Protocol.DOMDebuggerAgent = function(){};
  * @template T
  */
 Protocol.DOMDebuggerAgent.prototype.setDOMBreakpoint = function(nodeId, type, opt_callback) {};
-/** @typedef {!{type: Protocol.DOMDebugger.DOMBreakpointType, nodeId: Protocol.DOM.NodeId}} obj */
-Protocol.DOMDebuggerAgent.prototype.setDOMBreakpoint.Request;
+/** @typedef {!{type: Protocol.DOMDebugger.DOMBreakpointType, nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMDebuggerAgent.SetDOMBreakpointRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMDebuggerAgent.SetDOMBreakpointResponse;
 /**
- * @param {!Protocol.DOMDebuggerAgent.prototype.setDOMBreakpoint.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMDebuggerAgent.prototype.invoke_setDOMBreakpoint = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMDebuggerAgent.SetDOMBreakpointRequest} obj
+ * @return {!Promise<!Protocol.DOMDebuggerAgent.SetDOMBreakpointResponse>} */
+Protocol.DOMDebuggerAgent.prototype.invoke_setDOMBreakpoint = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
@@ -3780,13 +3966,14 @@ Protocol.DOMDebuggerAgent.prototype.invoke_setDOMBreakpoint = function(obj, opt_
  * @template T
  */
 Protocol.DOMDebuggerAgent.prototype.removeDOMBreakpoint = function(nodeId, type, opt_callback) {};
-/** @typedef {!{type: Protocol.DOMDebugger.DOMBreakpointType, nodeId: Protocol.DOM.NodeId}} obj */
-Protocol.DOMDebuggerAgent.prototype.removeDOMBreakpoint.Request;
+/** @typedef {!{type: Protocol.DOMDebugger.DOMBreakpointType, nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMDebuggerAgent.RemoveDOMBreakpointRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMDebuggerAgent.RemoveDOMBreakpointResponse;
 /**
- * @param {!Protocol.DOMDebuggerAgent.prototype.removeDOMBreakpoint.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMDebuggerAgent.prototype.invoke_removeDOMBreakpoint = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMDebuggerAgent.RemoveDOMBreakpointRequest} obj
+ * @return {!Promise<!Protocol.DOMDebuggerAgent.RemoveDOMBreakpointResponse>} */
+Protocol.DOMDebuggerAgent.prototype.invoke_removeDOMBreakpoint = function(obj) {};
 
 /**
  * @param {string} eventName
@@ -3796,13 +3983,14 @@ Protocol.DOMDebuggerAgent.prototype.invoke_removeDOMBreakpoint = function(obj, o
  * @template T
  */
 Protocol.DOMDebuggerAgent.prototype.setEventListenerBreakpoint = function(eventName, opt_targetName, opt_callback) {};
-/** @typedef {!{eventName: string, targetName: (string|undefined)}} obj */
-Protocol.DOMDebuggerAgent.prototype.setEventListenerBreakpoint.Request;
+/** @typedef {!{eventName: string, targetName: (string|undefined)}} */
+Protocol.DOMDebuggerAgent.SetEventListenerBreakpointRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMDebuggerAgent.SetEventListenerBreakpointResponse;
 /**
- * @param {!Protocol.DOMDebuggerAgent.prototype.setEventListenerBreakpoint.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMDebuggerAgent.prototype.invoke_setEventListenerBreakpoint = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMDebuggerAgent.SetEventListenerBreakpointRequest} obj
+ * @return {!Promise<!Protocol.DOMDebuggerAgent.SetEventListenerBreakpointResponse>} */
+Protocol.DOMDebuggerAgent.prototype.invoke_setEventListenerBreakpoint = function(obj) {};
 
 /**
  * @param {string} eventName
@@ -3812,13 +4000,14 @@ Protocol.DOMDebuggerAgent.prototype.invoke_setEventListenerBreakpoint = function
  * @template T
  */
 Protocol.DOMDebuggerAgent.prototype.removeEventListenerBreakpoint = function(eventName, opt_targetName, opt_callback) {};
-/** @typedef {!{eventName: string, targetName: (string|undefined)}} obj */
-Protocol.DOMDebuggerAgent.prototype.removeEventListenerBreakpoint.Request;
+/** @typedef {!{eventName: string, targetName: (string|undefined)}} */
+Protocol.DOMDebuggerAgent.RemoveEventListenerBreakpointRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMDebuggerAgent.RemoveEventListenerBreakpointResponse;
 /**
- * @param {!Protocol.DOMDebuggerAgent.prototype.removeEventListenerBreakpoint.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMDebuggerAgent.prototype.invoke_removeEventListenerBreakpoint = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMDebuggerAgent.RemoveEventListenerBreakpointRequest} obj
+ * @return {!Promise<!Protocol.DOMDebuggerAgent.RemoveEventListenerBreakpointResponse>} */
+Protocol.DOMDebuggerAgent.prototype.invoke_removeEventListenerBreakpoint = function(obj) {};
 
 /**
  * @param {string} eventName
@@ -3827,13 +4016,14 @@ Protocol.DOMDebuggerAgent.prototype.invoke_removeEventListenerBreakpoint = funct
  * @template T
  */
 Protocol.DOMDebuggerAgent.prototype.setInstrumentationBreakpoint = function(eventName, opt_callback) {};
-/** @typedef {!{eventName: string}} obj */
-Protocol.DOMDebuggerAgent.prototype.setInstrumentationBreakpoint.Request;
+/** @typedef {!{eventName: string}} */
+Protocol.DOMDebuggerAgent.SetInstrumentationBreakpointRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMDebuggerAgent.SetInstrumentationBreakpointResponse;
 /**
- * @param {!Protocol.DOMDebuggerAgent.prototype.setInstrumentationBreakpoint.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMDebuggerAgent.prototype.invoke_setInstrumentationBreakpoint = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMDebuggerAgent.SetInstrumentationBreakpointRequest} obj
+ * @return {!Promise<!Protocol.DOMDebuggerAgent.SetInstrumentationBreakpointResponse>} */
+Protocol.DOMDebuggerAgent.prototype.invoke_setInstrumentationBreakpoint = function(obj) {};
 
 /**
  * @param {string} eventName
@@ -3842,13 +4032,14 @@ Protocol.DOMDebuggerAgent.prototype.invoke_setInstrumentationBreakpoint = functi
  * @template T
  */
 Protocol.DOMDebuggerAgent.prototype.removeInstrumentationBreakpoint = function(eventName, opt_callback) {};
-/** @typedef {!{eventName: string}} obj */
-Protocol.DOMDebuggerAgent.prototype.removeInstrumentationBreakpoint.Request;
+/** @typedef {!{eventName: string}} */
+Protocol.DOMDebuggerAgent.RemoveInstrumentationBreakpointRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMDebuggerAgent.RemoveInstrumentationBreakpointResponse;
 /**
- * @param {!Protocol.DOMDebuggerAgent.prototype.removeInstrumentationBreakpoint.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMDebuggerAgent.prototype.invoke_removeInstrumentationBreakpoint = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMDebuggerAgent.RemoveInstrumentationBreakpointRequest} obj
+ * @return {!Promise<!Protocol.DOMDebuggerAgent.RemoveInstrumentationBreakpointResponse>} */
+Protocol.DOMDebuggerAgent.prototype.invoke_removeInstrumentationBreakpoint = function(obj) {};
 
 /**
  * @param {string} url
@@ -3857,13 +4048,14 @@ Protocol.DOMDebuggerAgent.prototype.invoke_removeInstrumentationBreakpoint = fun
  * @template T
  */
 Protocol.DOMDebuggerAgent.prototype.setXHRBreakpoint = function(url, opt_callback) {};
-/** @typedef {!{url: string}} obj */
-Protocol.DOMDebuggerAgent.prototype.setXHRBreakpoint.Request;
+/** @typedef {!{url: string}} */
+Protocol.DOMDebuggerAgent.SetXHRBreakpointRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMDebuggerAgent.SetXHRBreakpointResponse;
 /**
- * @param {!Protocol.DOMDebuggerAgent.prototype.setXHRBreakpoint.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMDebuggerAgent.prototype.invoke_setXHRBreakpoint = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMDebuggerAgent.SetXHRBreakpointRequest} obj
+ * @return {!Promise<!Protocol.DOMDebuggerAgent.SetXHRBreakpointResponse>} */
+Protocol.DOMDebuggerAgent.prototype.invoke_setXHRBreakpoint = function(obj) {};
 
 /**
  * @param {string} url
@@ -3872,13 +4064,14 @@ Protocol.DOMDebuggerAgent.prototype.invoke_setXHRBreakpoint = function(obj, opt_
  * @template T
  */
 Protocol.DOMDebuggerAgent.prototype.removeXHRBreakpoint = function(url, opt_callback) {};
-/** @typedef {!{url: string}} obj */
-Protocol.DOMDebuggerAgent.prototype.removeXHRBreakpoint.Request;
+/** @typedef {!{url: string}} */
+Protocol.DOMDebuggerAgent.RemoveXHRBreakpointRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMDebuggerAgent.RemoveXHRBreakpointResponse;
 /**
- * @param {!Protocol.DOMDebuggerAgent.prototype.removeXHRBreakpoint.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DOMDebuggerAgent.prototype.invoke_removeXHRBreakpoint = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMDebuggerAgent.RemoveXHRBreakpointRequest} obj
+ * @return {!Promise<!Protocol.DOMDebuggerAgent.RemoveXHRBreakpointResponse>} */
+Protocol.DOMDebuggerAgent.prototype.invoke_removeXHRBreakpoint = function(obj) {};
 
 /**
  * @param {Protocol.Runtime.RemoteObjectId} objectId
@@ -3889,13 +4082,14 @@ Protocol.DOMDebuggerAgent.prototype.invoke_removeXHRBreakpoint = function(obj, o
  * @template T
  */
 Protocol.DOMDebuggerAgent.prototype.getEventListeners = function(objectId, opt_depth, opt_pierce, opt_callback) {};
-/** @typedef {!{depth: (number|undefined), pierce: (boolean|undefined), objectId: Protocol.Runtime.RemoteObjectId}} obj */
-Protocol.DOMDebuggerAgent.prototype.getEventListeners.Request;
+/** @typedef {!{depth: (number|undefined), pierce: (boolean|undefined), objectId: Protocol.Runtime.RemoteObjectId}} */
+Protocol.DOMDebuggerAgent.GetEventListenersRequest;
+/** @typedef {!{listeners: !Array<Protocol.DOMDebugger.EventListener>}} */
+Protocol.DOMDebuggerAgent.GetEventListenersResponse;
 /**
- * @param {!Protocol.DOMDebuggerAgent.prototype.getEventListeners.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.DOMDebugger.EventListener>):void=} opt_callback
- */
-Protocol.DOMDebuggerAgent.prototype.invoke_getEventListeners = function(obj, opt_callback) {};
+ * @param {!Protocol.DOMDebuggerAgent.GetEventListenersRequest} obj
+ * @return {!Promise<!Protocol.DOMDebuggerAgent.GetEventListenersResponse>} */
+Protocol.DOMDebuggerAgent.prototype.invoke_getEventListeners = function(obj) {};
 
 /** @enum {string} */
 Protocol.DOMDebugger.DOMBreakpointType = {
@@ -3923,13 +4117,14 @@ Protocol.TargetAgent = function(){};
  * @template T
  */
 Protocol.TargetAgent.prototype.setDiscoverTargets = function(discover, opt_callback) {};
-/** @typedef {!{discover: boolean}} obj */
-Protocol.TargetAgent.prototype.setDiscoverTargets.Request;
+/** @typedef {!{discover: boolean}} */
+Protocol.TargetAgent.SetDiscoverTargetsRequest;
+/** @typedef {Object|undefined} */
+Protocol.TargetAgent.SetDiscoverTargetsResponse;
 /**
- * @param {!Protocol.TargetAgent.prototype.setDiscoverTargets.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.TargetAgent.prototype.invoke_setDiscoverTargets = function(obj, opt_callback) {};
+ * @param {!Protocol.TargetAgent.SetDiscoverTargetsRequest} obj
+ * @return {!Promise<!Protocol.TargetAgent.SetDiscoverTargetsResponse>} */
+Protocol.TargetAgent.prototype.invoke_setDiscoverTargets = function(obj) {};
 
 /**
  * @param {boolean} autoAttach
@@ -3939,13 +4134,14 @@ Protocol.TargetAgent.prototype.invoke_setDiscoverTargets = function(obj, opt_cal
  * @template T
  */
 Protocol.TargetAgent.prototype.setAutoAttach = function(autoAttach, waitForDebuggerOnStart, opt_callback) {};
-/** @typedef {!{waitForDebuggerOnStart: boolean, autoAttach: boolean}} obj */
-Protocol.TargetAgent.prototype.setAutoAttach.Request;
+/** @typedef {!{waitForDebuggerOnStart: boolean, autoAttach: boolean}} */
+Protocol.TargetAgent.SetAutoAttachRequest;
+/** @typedef {Object|undefined} */
+Protocol.TargetAgent.SetAutoAttachResponse;
 /**
- * @param {!Protocol.TargetAgent.prototype.setAutoAttach.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.TargetAgent.prototype.invoke_setAutoAttach = function(obj, opt_callback) {};
+ * @param {!Protocol.TargetAgent.SetAutoAttachRequest} obj
+ * @return {!Promise<!Protocol.TargetAgent.SetAutoAttachResponse>} */
+Protocol.TargetAgent.prototype.invoke_setAutoAttach = function(obj) {};
 
 /**
  * @param {boolean} value
@@ -3954,13 +4150,14 @@ Protocol.TargetAgent.prototype.invoke_setAutoAttach = function(obj, opt_callback
  * @template T
  */
 Protocol.TargetAgent.prototype.setAttachToFrames = function(value, opt_callback) {};
-/** @typedef {!{value: boolean}} obj */
-Protocol.TargetAgent.prototype.setAttachToFrames.Request;
+/** @typedef {!{value: boolean}} */
+Protocol.TargetAgent.SetAttachToFramesRequest;
+/** @typedef {Object|undefined} */
+Protocol.TargetAgent.SetAttachToFramesResponse;
 /**
- * @param {!Protocol.TargetAgent.prototype.setAttachToFrames.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.TargetAgent.prototype.invoke_setAttachToFrames = function(obj, opt_callback) {};
+ * @param {!Protocol.TargetAgent.SetAttachToFramesRequest} obj
+ * @return {!Promise<!Protocol.TargetAgent.SetAttachToFramesResponse>} */
+Protocol.TargetAgent.prototype.invoke_setAttachToFrames = function(obj) {};
 
 /**
  * @param {!Array<Protocol.Target.RemoteLocation>} locations
@@ -3969,13 +4166,14 @@ Protocol.TargetAgent.prototype.invoke_setAttachToFrames = function(obj, opt_call
  * @template T
  */
 Protocol.TargetAgent.prototype.setRemoteLocations = function(locations, opt_callback) {};
-/** @typedef {!{locations: !Array<Protocol.Target.RemoteLocation>}} obj */
-Protocol.TargetAgent.prototype.setRemoteLocations.Request;
+/** @typedef {!{locations: !Array<Protocol.Target.RemoteLocation>}} */
+Protocol.TargetAgent.SetRemoteLocationsRequest;
+/** @typedef {Object|undefined} */
+Protocol.TargetAgent.SetRemoteLocationsResponse;
 /**
- * @param {!Protocol.TargetAgent.prototype.setRemoteLocations.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.TargetAgent.prototype.invoke_setRemoteLocations = function(obj, opt_callback) {};
+ * @param {!Protocol.TargetAgent.SetRemoteLocationsRequest} obj
+ * @return {!Promise<!Protocol.TargetAgent.SetRemoteLocationsResponse>} */
+Protocol.TargetAgent.prototype.invoke_setRemoteLocations = function(obj) {};
 
 /**
  * @param {Protocol.Target.TargetID} targetId
@@ -3985,13 +4183,14 @@ Protocol.TargetAgent.prototype.invoke_setRemoteLocations = function(obj, opt_cal
  * @template T
  */
 Protocol.TargetAgent.prototype.sendMessageToTarget = function(targetId, message, opt_callback) {};
-/** @typedef {!{message: string, targetId: Protocol.Target.TargetID}} obj */
-Protocol.TargetAgent.prototype.sendMessageToTarget.Request;
+/** @typedef {!{message: string, targetId: Protocol.Target.TargetID}} */
+Protocol.TargetAgent.SendMessageToTargetRequest;
+/** @typedef {Object|undefined} */
+Protocol.TargetAgent.SendMessageToTargetResponse;
 /**
- * @param {!Protocol.TargetAgent.prototype.sendMessageToTarget.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.TargetAgent.prototype.invoke_sendMessageToTarget = function(obj, opt_callback) {};
+ * @param {!Protocol.TargetAgent.SendMessageToTargetRequest} obj
+ * @return {!Promise<!Protocol.TargetAgent.SendMessageToTargetResponse>} */
+Protocol.TargetAgent.prototype.invoke_sendMessageToTarget = function(obj) {};
 
 /**
  * @param {Protocol.Target.TargetID} targetId
@@ -4000,13 +4199,14 @@ Protocol.TargetAgent.prototype.invoke_sendMessageToTarget = function(obj, opt_ca
  * @template T
  */
 Protocol.TargetAgent.prototype.getTargetInfo = function(targetId, opt_callback) {};
-/** @typedef {!{targetId: Protocol.Target.TargetID}} obj */
-Protocol.TargetAgent.prototype.getTargetInfo.Request;
+/** @typedef {!{targetId: Protocol.Target.TargetID}} */
+Protocol.TargetAgent.GetTargetInfoRequest;
+/** @typedef {!{targetInfo: Protocol.Target.TargetInfo}} */
+Protocol.TargetAgent.GetTargetInfoResponse;
 /**
- * @param {!Protocol.TargetAgent.prototype.getTargetInfo.Request} obj
- * @param {function(?Protocol.Error, Protocol.Target.TargetInfo):void=} opt_callback
- */
-Protocol.TargetAgent.prototype.invoke_getTargetInfo = function(obj, opt_callback) {};
+ * @param {!Protocol.TargetAgent.GetTargetInfoRequest} obj
+ * @return {!Promise<!Protocol.TargetAgent.GetTargetInfoResponse>} */
+Protocol.TargetAgent.prototype.invoke_getTargetInfo = function(obj) {};
 
 /**
  * @param {Protocol.Target.TargetID} targetId
@@ -4015,13 +4215,14 @@ Protocol.TargetAgent.prototype.invoke_getTargetInfo = function(obj, opt_callback
  * @template T
  */
 Protocol.TargetAgent.prototype.activateTarget = function(targetId, opt_callback) {};
-/** @typedef {!{targetId: Protocol.Target.TargetID}} obj */
-Protocol.TargetAgent.prototype.activateTarget.Request;
+/** @typedef {!{targetId: Protocol.Target.TargetID}} */
+Protocol.TargetAgent.ActivateTargetRequest;
+/** @typedef {Object|undefined} */
+Protocol.TargetAgent.ActivateTargetResponse;
 /**
- * @param {!Protocol.TargetAgent.prototype.activateTarget.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.TargetAgent.prototype.invoke_activateTarget = function(obj, opt_callback) {};
+ * @param {!Protocol.TargetAgent.ActivateTargetRequest} obj
+ * @return {!Promise<!Protocol.TargetAgent.ActivateTargetResponse>} */
+Protocol.TargetAgent.prototype.invoke_activateTarget = function(obj) {};
 
 /**
  * @param {Protocol.Target.TargetID} targetId
@@ -4030,13 +4231,14 @@ Protocol.TargetAgent.prototype.invoke_activateTarget = function(obj, opt_callbac
  * @template T
  */
 Protocol.TargetAgent.prototype.closeTarget = function(targetId, opt_callback) {};
-/** @typedef {!{targetId: Protocol.Target.TargetID}} obj */
-Protocol.TargetAgent.prototype.closeTarget.Request;
+/** @typedef {!{targetId: Protocol.Target.TargetID}} */
+Protocol.TargetAgent.CloseTargetRequest;
+/** @typedef {!{success: boolean}} */
+Protocol.TargetAgent.CloseTargetResponse;
 /**
- * @param {!Protocol.TargetAgent.prototype.closeTarget.Request} obj
- * @param {function(?Protocol.Error, boolean):void=} opt_callback
- */
-Protocol.TargetAgent.prototype.invoke_closeTarget = function(obj, opt_callback) {};
+ * @param {!Protocol.TargetAgent.CloseTargetRequest} obj
+ * @return {!Promise<!Protocol.TargetAgent.CloseTargetResponse>} */
+Protocol.TargetAgent.prototype.invoke_closeTarget = function(obj) {};
 
 /**
  * @param {Protocol.Target.TargetID} targetId
@@ -4045,13 +4247,14 @@ Protocol.TargetAgent.prototype.invoke_closeTarget = function(obj, opt_callback) 
  * @template T
  */
 Protocol.TargetAgent.prototype.attachToTarget = function(targetId, opt_callback) {};
-/** @typedef {!{targetId: Protocol.Target.TargetID}} obj */
-Protocol.TargetAgent.prototype.attachToTarget.Request;
+/** @typedef {!{targetId: Protocol.Target.TargetID}} */
+Protocol.TargetAgent.AttachToTargetRequest;
+/** @typedef {!{success: boolean}} */
+Protocol.TargetAgent.AttachToTargetResponse;
 /**
- * @param {!Protocol.TargetAgent.prototype.attachToTarget.Request} obj
- * @param {function(?Protocol.Error, boolean):void=} opt_callback
- */
-Protocol.TargetAgent.prototype.invoke_attachToTarget = function(obj, opt_callback) {};
+ * @param {!Protocol.TargetAgent.AttachToTargetRequest} obj
+ * @return {!Promise<!Protocol.TargetAgent.AttachToTargetResponse>} */
+Protocol.TargetAgent.prototype.invoke_attachToTarget = function(obj) {};
 
 /**
  * @param {Protocol.Target.TargetID} targetId
@@ -4060,13 +4263,14 @@ Protocol.TargetAgent.prototype.invoke_attachToTarget = function(obj, opt_callbac
  * @template T
  */
 Protocol.TargetAgent.prototype.detachFromTarget = function(targetId, opt_callback) {};
-/** @typedef {!{targetId: Protocol.Target.TargetID}} obj */
-Protocol.TargetAgent.prototype.detachFromTarget.Request;
+/** @typedef {!{targetId: Protocol.Target.TargetID}} */
+Protocol.TargetAgent.DetachFromTargetRequest;
+/** @typedef {Object|undefined} */
+Protocol.TargetAgent.DetachFromTargetResponse;
 /**
- * @param {!Protocol.TargetAgent.prototype.detachFromTarget.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.TargetAgent.prototype.invoke_detachFromTarget = function(obj, opt_callback) {};
+ * @param {!Protocol.TargetAgent.DetachFromTargetRequest} obj
+ * @return {!Promise<!Protocol.TargetAgent.DetachFromTargetResponse>} */
+Protocol.TargetAgent.prototype.invoke_detachFromTarget = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error, Protocol.Target.BrowserContextID):T=} opt_callback
@@ -4074,13 +4278,14 @@ Protocol.TargetAgent.prototype.invoke_detachFromTarget = function(obj, opt_callb
  * @template T
  */
 Protocol.TargetAgent.prototype.createBrowserContext = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.TargetAgent.prototype.createBrowserContext.Request;
+/** @typedef {Object|undefined} */
+Protocol.TargetAgent.CreateBrowserContextRequest;
+/** @typedef {!{browserContextId: Protocol.Target.BrowserContextID}} */
+Protocol.TargetAgent.CreateBrowserContextResponse;
 /**
- * @param {!Protocol.TargetAgent.prototype.createBrowserContext.Request} obj
- * @param {function(?Protocol.Error, Protocol.Target.BrowserContextID):void=} opt_callback
- */
-Protocol.TargetAgent.prototype.invoke_createBrowserContext = function(obj, opt_callback) {};
+ * @param {!Protocol.TargetAgent.CreateBrowserContextRequest} obj
+ * @return {!Promise<!Protocol.TargetAgent.CreateBrowserContextResponse>} */
+Protocol.TargetAgent.prototype.invoke_createBrowserContext = function(obj) {};
 
 /**
  * @param {Protocol.Target.BrowserContextID} browserContextId
@@ -4089,13 +4294,14 @@ Protocol.TargetAgent.prototype.invoke_createBrowserContext = function(obj, opt_c
  * @template T
  */
 Protocol.TargetAgent.prototype.disposeBrowserContext = function(browserContextId, opt_callback) {};
-/** @typedef {!{browserContextId: Protocol.Target.BrowserContextID}} obj */
-Protocol.TargetAgent.prototype.disposeBrowserContext.Request;
+/** @typedef {!{browserContextId: Protocol.Target.BrowserContextID}} */
+Protocol.TargetAgent.DisposeBrowserContextRequest;
+/** @typedef {!{success: boolean}} */
+Protocol.TargetAgent.DisposeBrowserContextResponse;
 /**
- * @param {!Protocol.TargetAgent.prototype.disposeBrowserContext.Request} obj
- * @param {function(?Protocol.Error, boolean):void=} opt_callback
- */
-Protocol.TargetAgent.prototype.invoke_disposeBrowserContext = function(obj, opt_callback) {};
+ * @param {!Protocol.TargetAgent.DisposeBrowserContextRequest} obj
+ * @return {!Promise<!Protocol.TargetAgent.DisposeBrowserContextResponse>} */
+Protocol.TargetAgent.prototype.invoke_disposeBrowserContext = function(obj) {};
 
 /**
  * @param {string} url
@@ -4107,13 +4313,14 @@ Protocol.TargetAgent.prototype.invoke_disposeBrowserContext = function(obj, opt_
  * @template T
  */
 Protocol.TargetAgent.prototype.createTarget = function(url, opt_width, opt_height, opt_browserContextId, opt_callback) {};
-/** @typedef {!{url: string, width: (number|undefined), browserContextId: (Protocol.Target.BrowserContextID|undefined), height: (number|undefined)}} obj */
-Protocol.TargetAgent.prototype.createTarget.Request;
+/** @typedef {!{url: string, width: (number|undefined), browserContextId: (Protocol.Target.BrowserContextID|undefined), height: (number|undefined)}} */
+Protocol.TargetAgent.CreateTargetRequest;
+/** @typedef {!{targetId: Protocol.Target.TargetID}} */
+Protocol.TargetAgent.CreateTargetResponse;
 /**
- * @param {!Protocol.TargetAgent.prototype.createTarget.Request} obj
- * @param {function(?Protocol.Error, Protocol.Target.TargetID):void=} opt_callback
- */
-Protocol.TargetAgent.prototype.invoke_createTarget = function(obj, opt_callback) {};
+ * @param {!Protocol.TargetAgent.CreateTargetRequest} obj
+ * @return {!Promise<!Protocol.TargetAgent.CreateTargetResponse>} */
+Protocol.TargetAgent.prototype.invoke_createTarget = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error, !Array<Protocol.Target.TargetInfo>):T=} opt_callback
@@ -4121,13 +4328,14 @@ Protocol.TargetAgent.prototype.invoke_createTarget = function(obj, opt_callback)
  * @template T
  */
 Protocol.TargetAgent.prototype.getTargets = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.TargetAgent.prototype.getTargets.Request;
+/** @typedef {Object|undefined} */
+Protocol.TargetAgent.GetTargetsRequest;
+/** @typedef {!{targetInfos: !Array<Protocol.Target.TargetInfo>}} */
+Protocol.TargetAgent.GetTargetsResponse;
 /**
- * @param {!Protocol.TargetAgent.prototype.getTargets.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.Target.TargetInfo>):void=} opt_callback
- */
-Protocol.TargetAgent.prototype.invoke_getTargets = function(obj, opt_callback) {};
+ * @param {!Protocol.TargetAgent.GetTargetsRequest} obj
+ * @return {!Promise<!Protocol.TargetAgent.GetTargetsResponse>} */
+Protocol.TargetAgent.prototype.invoke_getTargets = function(obj) {};
 
 /** @typedef {string} */
 Protocol.Target.TargetID;
@@ -4178,13 +4386,14 @@ Protocol.ServiceWorkerAgent = function(){};
  * @template T
  */
 Protocol.ServiceWorkerAgent.prototype.enable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.ServiceWorkerAgent.prototype.enable.Request;
+/** @typedef {Object|undefined} */
+Protocol.ServiceWorkerAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.ServiceWorkerAgent.EnableResponse;
 /**
- * @param {!Protocol.ServiceWorkerAgent.prototype.enable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.ServiceWorkerAgent.prototype.invoke_enable = function(obj, opt_callback) {};
+ * @param {!Protocol.ServiceWorkerAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.ServiceWorkerAgent.EnableResponse>} */
+Protocol.ServiceWorkerAgent.prototype.invoke_enable = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -4192,13 +4401,14 @@ Protocol.ServiceWorkerAgent.prototype.invoke_enable = function(obj, opt_callback
  * @template T
  */
 Protocol.ServiceWorkerAgent.prototype.disable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.ServiceWorkerAgent.prototype.disable.Request;
+/** @typedef {Object|undefined} */
+Protocol.ServiceWorkerAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.ServiceWorkerAgent.DisableResponse;
 /**
- * @param {!Protocol.ServiceWorkerAgent.prototype.disable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.ServiceWorkerAgent.prototype.invoke_disable = function(obj, opt_callback) {};
+ * @param {!Protocol.ServiceWorkerAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.ServiceWorkerAgent.DisableResponse>} */
+Protocol.ServiceWorkerAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {string} scopeURL
@@ -4207,13 +4417,14 @@ Protocol.ServiceWorkerAgent.prototype.invoke_disable = function(obj, opt_callbac
  * @template T
  */
 Protocol.ServiceWorkerAgent.prototype.unregister = function(scopeURL, opt_callback) {};
-/** @typedef {!{scopeURL: string}} obj */
-Protocol.ServiceWorkerAgent.prototype.unregister.Request;
+/** @typedef {!{scopeURL: string}} */
+Protocol.ServiceWorkerAgent.UnregisterRequest;
+/** @typedef {Object|undefined} */
+Protocol.ServiceWorkerAgent.UnregisterResponse;
 /**
- * @param {!Protocol.ServiceWorkerAgent.prototype.unregister.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.ServiceWorkerAgent.prototype.invoke_unregister = function(obj, opt_callback) {};
+ * @param {!Protocol.ServiceWorkerAgent.UnregisterRequest} obj
+ * @return {!Promise<!Protocol.ServiceWorkerAgent.UnregisterResponse>} */
+Protocol.ServiceWorkerAgent.prototype.invoke_unregister = function(obj) {};
 
 /**
  * @param {string} scopeURL
@@ -4222,13 +4433,14 @@ Protocol.ServiceWorkerAgent.prototype.invoke_unregister = function(obj, opt_call
  * @template T
  */
 Protocol.ServiceWorkerAgent.prototype.updateRegistration = function(scopeURL, opt_callback) {};
-/** @typedef {!{scopeURL: string}} obj */
-Protocol.ServiceWorkerAgent.prototype.updateRegistration.Request;
+/** @typedef {!{scopeURL: string}} */
+Protocol.ServiceWorkerAgent.UpdateRegistrationRequest;
+/** @typedef {Object|undefined} */
+Protocol.ServiceWorkerAgent.UpdateRegistrationResponse;
 /**
- * @param {!Protocol.ServiceWorkerAgent.prototype.updateRegistration.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.ServiceWorkerAgent.prototype.invoke_updateRegistration = function(obj, opt_callback) {};
+ * @param {!Protocol.ServiceWorkerAgent.UpdateRegistrationRequest} obj
+ * @return {!Promise<!Protocol.ServiceWorkerAgent.UpdateRegistrationResponse>} */
+Protocol.ServiceWorkerAgent.prototype.invoke_updateRegistration = function(obj) {};
 
 /**
  * @param {string} scopeURL
@@ -4237,13 +4449,14 @@ Protocol.ServiceWorkerAgent.prototype.invoke_updateRegistration = function(obj, 
  * @template T
  */
 Protocol.ServiceWorkerAgent.prototype.startWorker = function(scopeURL, opt_callback) {};
-/** @typedef {!{scopeURL: string}} obj */
-Protocol.ServiceWorkerAgent.prototype.startWorker.Request;
+/** @typedef {!{scopeURL: string}} */
+Protocol.ServiceWorkerAgent.StartWorkerRequest;
+/** @typedef {Object|undefined} */
+Protocol.ServiceWorkerAgent.StartWorkerResponse;
 /**
- * @param {!Protocol.ServiceWorkerAgent.prototype.startWorker.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.ServiceWorkerAgent.prototype.invoke_startWorker = function(obj, opt_callback) {};
+ * @param {!Protocol.ServiceWorkerAgent.StartWorkerRequest} obj
+ * @return {!Promise<!Protocol.ServiceWorkerAgent.StartWorkerResponse>} */
+Protocol.ServiceWorkerAgent.prototype.invoke_startWorker = function(obj) {};
 
 /**
  * @param {string} scopeURL
@@ -4252,13 +4465,14 @@ Protocol.ServiceWorkerAgent.prototype.invoke_startWorker = function(obj, opt_cal
  * @template T
  */
 Protocol.ServiceWorkerAgent.prototype.skipWaiting = function(scopeURL, opt_callback) {};
-/** @typedef {!{scopeURL: string}} obj */
-Protocol.ServiceWorkerAgent.prototype.skipWaiting.Request;
+/** @typedef {!{scopeURL: string}} */
+Protocol.ServiceWorkerAgent.SkipWaitingRequest;
+/** @typedef {Object|undefined} */
+Protocol.ServiceWorkerAgent.SkipWaitingResponse;
 /**
- * @param {!Protocol.ServiceWorkerAgent.prototype.skipWaiting.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.ServiceWorkerAgent.prototype.invoke_skipWaiting = function(obj, opt_callback) {};
+ * @param {!Protocol.ServiceWorkerAgent.SkipWaitingRequest} obj
+ * @return {!Promise<!Protocol.ServiceWorkerAgent.SkipWaitingResponse>} */
+Protocol.ServiceWorkerAgent.prototype.invoke_skipWaiting = function(obj) {};
 
 /**
  * @param {string} versionId
@@ -4267,13 +4481,14 @@ Protocol.ServiceWorkerAgent.prototype.invoke_skipWaiting = function(obj, opt_cal
  * @template T
  */
 Protocol.ServiceWorkerAgent.prototype.stopWorker = function(versionId, opt_callback) {};
-/** @typedef {!{versionId: string}} obj */
-Protocol.ServiceWorkerAgent.prototype.stopWorker.Request;
+/** @typedef {!{versionId: string}} */
+Protocol.ServiceWorkerAgent.StopWorkerRequest;
+/** @typedef {Object|undefined} */
+Protocol.ServiceWorkerAgent.StopWorkerResponse;
 /**
- * @param {!Protocol.ServiceWorkerAgent.prototype.stopWorker.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.ServiceWorkerAgent.prototype.invoke_stopWorker = function(obj, opt_callback) {};
+ * @param {!Protocol.ServiceWorkerAgent.StopWorkerRequest} obj
+ * @return {!Promise<!Protocol.ServiceWorkerAgent.StopWorkerResponse>} */
+Protocol.ServiceWorkerAgent.prototype.invoke_stopWorker = function(obj) {};
 
 /**
  * @param {string} versionId
@@ -4282,13 +4497,14 @@ Protocol.ServiceWorkerAgent.prototype.invoke_stopWorker = function(obj, opt_call
  * @template T
  */
 Protocol.ServiceWorkerAgent.prototype.inspectWorker = function(versionId, opt_callback) {};
-/** @typedef {!{versionId: string}} obj */
-Protocol.ServiceWorkerAgent.prototype.inspectWorker.Request;
+/** @typedef {!{versionId: string}} */
+Protocol.ServiceWorkerAgent.InspectWorkerRequest;
+/** @typedef {Object|undefined} */
+Protocol.ServiceWorkerAgent.InspectWorkerResponse;
 /**
- * @param {!Protocol.ServiceWorkerAgent.prototype.inspectWorker.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.ServiceWorkerAgent.prototype.invoke_inspectWorker = function(obj, opt_callback) {};
+ * @param {!Protocol.ServiceWorkerAgent.InspectWorkerRequest} obj
+ * @return {!Promise<!Protocol.ServiceWorkerAgent.InspectWorkerResponse>} */
+Protocol.ServiceWorkerAgent.prototype.invoke_inspectWorker = function(obj) {};
 
 /**
  * @param {boolean} forceUpdateOnPageLoad
@@ -4297,13 +4513,14 @@ Protocol.ServiceWorkerAgent.prototype.invoke_inspectWorker = function(obj, opt_c
  * @template T
  */
 Protocol.ServiceWorkerAgent.prototype.setForceUpdateOnPageLoad = function(forceUpdateOnPageLoad, opt_callback) {};
-/** @typedef {!{forceUpdateOnPageLoad: boolean}} obj */
-Protocol.ServiceWorkerAgent.prototype.setForceUpdateOnPageLoad.Request;
+/** @typedef {!{forceUpdateOnPageLoad: boolean}} */
+Protocol.ServiceWorkerAgent.SetForceUpdateOnPageLoadRequest;
+/** @typedef {Object|undefined} */
+Protocol.ServiceWorkerAgent.SetForceUpdateOnPageLoadResponse;
 /**
- * @param {!Protocol.ServiceWorkerAgent.prototype.setForceUpdateOnPageLoad.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.ServiceWorkerAgent.prototype.invoke_setForceUpdateOnPageLoad = function(obj, opt_callback) {};
+ * @param {!Protocol.ServiceWorkerAgent.SetForceUpdateOnPageLoadRequest} obj
+ * @return {!Promise<!Protocol.ServiceWorkerAgent.SetForceUpdateOnPageLoadResponse>} */
+Protocol.ServiceWorkerAgent.prototype.invoke_setForceUpdateOnPageLoad = function(obj) {};
 
 /**
  * @param {string} origin
@@ -4314,13 +4531,14 @@ Protocol.ServiceWorkerAgent.prototype.invoke_setForceUpdateOnPageLoad = function
  * @template T
  */
 Protocol.ServiceWorkerAgent.prototype.deliverPushMessage = function(origin, registrationId, data, opt_callback) {};
-/** @typedef {!{origin: string, registrationId: string, data: string}} obj */
-Protocol.ServiceWorkerAgent.prototype.deliverPushMessage.Request;
+/** @typedef {!{origin: string, registrationId: string, data: string}} */
+Protocol.ServiceWorkerAgent.DeliverPushMessageRequest;
+/** @typedef {Object|undefined} */
+Protocol.ServiceWorkerAgent.DeliverPushMessageResponse;
 /**
- * @param {!Protocol.ServiceWorkerAgent.prototype.deliverPushMessage.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.ServiceWorkerAgent.prototype.invoke_deliverPushMessage = function(obj, opt_callback) {};
+ * @param {!Protocol.ServiceWorkerAgent.DeliverPushMessageRequest} obj
+ * @return {!Promise<!Protocol.ServiceWorkerAgent.DeliverPushMessageResponse>} */
+Protocol.ServiceWorkerAgent.prototype.invoke_deliverPushMessage = function(obj) {};
 
 /**
  * @param {string} origin
@@ -4332,13 +4550,14 @@ Protocol.ServiceWorkerAgent.prototype.invoke_deliverPushMessage = function(obj, 
  * @template T
  */
 Protocol.ServiceWorkerAgent.prototype.dispatchSyncEvent = function(origin, registrationId, tag, lastChance, opt_callback) {};
-/** @typedef {!{origin: string, registrationId: string, tag: string, lastChance: boolean}} obj */
-Protocol.ServiceWorkerAgent.prototype.dispatchSyncEvent.Request;
+/** @typedef {!{origin: string, registrationId: string, tag: string, lastChance: boolean}} */
+Protocol.ServiceWorkerAgent.DispatchSyncEventRequest;
+/** @typedef {Object|undefined} */
+Protocol.ServiceWorkerAgent.DispatchSyncEventResponse;
 /**
- * @param {!Protocol.ServiceWorkerAgent.prototype.dispatchSyncEvent.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.ServiceWorkerAgent.prototype.invoke_dispatchSyncEvent = function(obj, opt_callback) {};
+ * @param {!Protocol.ServiceWorkerAgent.DispatchSyncEventRequest} obj
+ * @return {!Promise<!Protocol.ServiceWorkerAgent.DispatchSyncEventResponse>} */
+Protocol.ServiceWorkerAgent.prototype.invoke_dispatchSyncEvent = function(obj) {};
 
 /** @typedef {!{registrationId:(string), scopeURL:(string), isDeleted:(boolean)}} */
 Protocol.ServiceWorker.ServiceWorkerRegistration;
@@ -4407,13 +4626,14 @@ Protocol.InputAgent = function(){};
  * @template T
  */
 Protocol.InputAgent.prototype.dispatchKeyEvent = function(type, opt_modifiers, opt_timestamp, opt_text, opt_unmodifiedText, opt_keyIdentifier, opt_code, opt_key, opt_windowsVirtualKeyCode, opt_nativeVirtualKeyCode, opt_autoRepeat, opt_isKeypad, opt_isSystemKey, opt_callback) {};
-/** @typedef {!{code: (string|undefined), keyIdentifier: (string|undefined), modifiers: (number|undefined), timestamp: (number|undefined), autoRepeat: (boolean|undefined), isSystemKey: (boolean|undefined), unmodifiedText: (string|undefined), key: (string|undefined), text: (string|undefined), nativeVirtualKeyCode: (number|undefined), windowsVirtualKeyCode: (number|undefined), type: string, isKeypad: (boolean|undefined)}} obj */
-Protocol.InputAgent.prototype.dispatchKeyEvent.Request;
+/** @typedef {!{code: (string|undefined), keyIdentifier: (string|undefined), modifiers: (number|undefined), timestamp: (number|undefined), autoRepeat: (boolean|undefined), isSystemKey: (boolean|undefined), unmodifiedText: (string|undefined), key: (string|undefined), text: (string|undefined), nativeVirtualKeyCode: (number|undefined), windowsVirtualKeyCode: (number|undefined), type: string, isKeypad: (boolean|undefined)}} */
+Protocol.InputAgent.DispatchKeyEventRequest;
+/** @typedef {Object|undefined} */
+Protocol.InputAgent.DispatchKeyEventResponse;
 /**
- * @param {!Protocol.InputAgent.prototype.dispatchKeyEvent.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.InputAgent.prototype.invoke_dispatchKeyEvent = function(obj, opt_callback) {};
+ * @param {!Protocol.InputAgent.DispatchKeyEventRequest} obj
+ * @return {!Promise<!Protocol.InputAgent.DispatchKeyEventResponse>} */
+Protocol.InputAgent.prototype.invoke_dispatchKeyEvent = function(obj) {};
 
 /**
  * @param {string} type
@@ -4428,13 +4648,14 @@ Protocol.InputAgent.prototype.invoke_dispatchKeyEvent = function(obj, opt_callba
  * @template T
  */
 Protocol.InputAgent.prototype.dispatchMouseEvent = function(type, x, y, opt_modifiers, opt_timestamp, opt_button, opt_clickCount, opt_callback) {};
-/** @typedef {!{modifiers: (number|undefined), clickCount: (number|undefined), timestamp: (number|undefined), button: (string|undefined), y: number, x: number, type: string}} obj */
-Protocol.InputAgent.prototype.dispatchMouseEvent.Request;
+/** @typedef {!{modifiers: (number|undefined), clickCount: (number|undefined), timestamp: (number|undefined), button: (string|undefined), y: number, x: number, type: string}} */
+Protocol.InputAgent.DispatchMouseEventRequest;
+/** @typedef {Object|undefined} */
+Protocol.InputAgent.DispatchMouseEventResponse;
 /**
- * @param {!Protocol.InputAgent.prototype.dispatchMouseEvent.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.InputAgent.prototype.invoke_dispatchMouseEvent = function(obj, opt_callback) {};
+ * @param {!Protocol.InputAgent.DispatchMouseEventRequest} obj
+ * @return {!Promise<!Protocol.InputAgent.DispatchMouseEventResponse>} */
+Protocol.InputAgent.prototype.invoke_dispatchMouseEvent = function(obj) {};
 
 /**
  * @param {string} type
@@ -4446,13 +4667,14 @@ Protocol.InputAgent.prototype.invoke_dispatchMouseEvent = function(obj, opt_call
  * @template T
  */
 Protocol.InputAgent.prototype.dispatchTouchEvent = function(type, touchPoints, opt_modifiers, opt_timestamp, opt_callback) {};
-/** @typedef {!{timestamp: (number|undefined), modifiers: (number|undefined), type: string, touchPoints: !Array<Protocol.Input.TouchPoint>}} obj */
-Protocol.InputAgent.prototype.dispatchTouchEvent.Request;
+/** @typedef {!{timestamp: (number|undefined), modifiers: (number|undefined), type: string, touchPoints: !Array<Protocol.Input.TouchPoint>}} */
+Protocol.InputAgent.DispatchTouchEventRequest;
+/** @typedef {Object|undefined} */
+Protocol.InputAgent.DispatchTouchEventResponse;
 /**
- * @param {!Protocol.InputAgent.prototype.dispatchTouchEvent.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.InputAgent.prototype.invoke_dispatchTouchEvent = function(obj, opt_callback) {};
+ * @param {!Protocol.InputAgent.DispatchTouchEventRequest} obj
+ * @return {!Promise<!Protocol.InputAgent.DispatchTouchEventResponse>} */
+Protocol.InputAgent.prototype.invoke_dispatchTouchEvent = function(obj) {};
 
 /**
  * @param {string} type
@@ -4469,13 +4691,14 @@ Protocol.InputAgent.prototype.invoke_dispatchTouchEvent = function(obj, opt_call
  * @template T
  */
 Protocol.InputAgent.prototype.emulateTouchFromMouseEvent = function(type, x, y, timestamp, button, opt_deltaX, opt_deltaY, opt_modifiers, opt_clickCount, opt_callback) {};
-/** @typedef {!{modifiers: (number|undefined), clickCount: (number|undefined), deltaX: (number|undefined), timestamp: number, button: string, deltaY: (number|undefined), y: number, x: number, type: string}} obj */
-Protocol.InputAgent.prototype.emulateTouchFromMouseEvent.Request;
+/** @typedef {!{modifiers: (number|undefined), clickCount: (number|undefined), deltaX: (number|undefined), timestamp: number, button: string, deltaY: (number|undefined), y: number, x: number, type: string}} */
+Protocol.InputAgent.EmulateTouchFromMouseEventRequest;
+/** @typedef {Object|undefined} */
+Protocol.InputAgent.EmulateTouchFromMouseEventResponse;
 /**
- * @param {!Protocol.InputAgent.prototype.emulateTouchFromMouseEvent.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.InputAgent.prototype.invoke_emulateTouchFromMouseEvent = function(obj, opt_callback) {};
+ * @param {!Protocol.InputAgent.EmulateTouchFromMouseEventRequest} obj
+ * @return {!Promise<!Protocol.InputAgent.EmulateTouchFromMouseEventResponse>} */
+Protocol.InputAgent.prototype.invoke_emulateTouchFromMouseEvent = function(obj) {};
 
 /**
  * @param {number} x
@@ -4488,13 +4711,14 @@ Protocol.InputAgent.prototype.invoke_emulateTouchFromMouseEvent = function(obj, 
  * @template T
  */
 Protocol.InputAgent.prototype.synthesizePinchGesture = function(x, y, scaleFactor, opt_relativeSpeed, opt_gestureSourceType, opt_callback) {};
-/** @typedef {!{y: number, x: number, gestureSourceType: (Protocol.Input.GestureSourceType|undefined), relativeSpeed: (number|undefined), scaleFactor: number}} obj */
-Protocol.InputAgent.prototype.synthesizePinchGesture.Request;
+/** @typedef {!{y: number, x: number, gestureSourceType: (Protocol.Input.GestureSourceType|undefined), relativeSpeed: (number|undefined), scaleFactor: number}} */
+Protocol.InputAgent.SynthesizePinchGestureRequest;
+/** @typedef {Object|undefined} */
+Protocol.InputAgent.SynthesizePinchGestureResponse;
 /**
- * @param {!Protocol.InputAgent.prototype.synthesizePinchGesture.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.InputAgent.prototype.invoke_synthesizePinchGesture = function(obj, opt_callback) {};
+ * @param {!Protocol.InputAgent.SynthesizePinchGestureRequest} obj
+ * @return {!Promise<!Protocol.InputAgent.SynthesizePinchGestureResponse>} */
+Protocol.InputAgent.prototype.invoke_synthesizePinchGesture = function(obj) {};
 
 /**
  * @param {number} x
@@ -4514,13 +4738,14 @@ Protocol.InputAgent.prototype.invoke_synthesizePinchGesture = function(obj, opt_
  * @template T
  */
 Protocol.InputAgent.prototype.synthesizeScrollGesture = function(x, y, opt_xDistance, opt_yDistance, opt_xOverscroll, opt_yOverscroll, opt_preventFling, opt_speed, opt_gestureSourceType, opt_repeatCount, opt_repeatDelayMs, opt_interactionMarkerName, opt_callback) {};
-/** @typedef {!{xOverscroll: (number|undefined), yOverscroll: (number|undefined), preventFling: (boolean|undefined), yDistance: (number|undefined), interactionMarkerName: (string|undefined), xDistance: (number|undefined), repeatCount: (number|undefined), gestureSourceType: (Protocol.Input.GestureSourceType|undefined), repeatDelayMs: (number|undefined), y: number, x: number, speed: (number|undefined)}} obj */
-Protocol.InputAgent.prototype.synthesizeScrollGesture.Request;
+/** @typedef {!{xOverscroll: (number|undefined), yOverscroll: (number|undefined), preventFling: (boolean|undefined), yDistance: (number|undefined), interactionMarkerName: (string|undefined), xDistance: (number|undefined), repeatCount: (number|undefined), gestureSourceType: (Protocol.Input.GestureSourceType|undefined), repeatDelayMs: (number|undefined), y: number, x: number, speed: (number|undefined)}} */
+Protocol.InputAgent.SynthesizeScrollGestureRequest;
+/** @typedef {Object|undefined} */
+Protocol.InputAgent.SynthesizeScrollGestureResponse;
 /**
- * @param {!Protocol.InputAgent.prototype.synthesizeScrollGesture.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.InputAgent.prototype.invoke_synthesizeScrollGesture = function(obj, opt_callback) {};
+ * @param {!Protocol.InputAgent.SynthesizeScrollGestureRequest} obj
+ * @return {!Promise<!Protocol.InputAgent.SynthesizeScrollGestureResponse>} */
+Protocol.InputAgent.prototype.invoke_synthesizeScrollGesture = function(obj) {};
 
 /**
  * @param {number} x
@@ -4533,13 +4758,14 @@ Protocol.InputAgent.prototype.invoke_synthesizeScrollGesture = function(obj, opt
  * @template T
  */
 Protocol.InputAgent.prototype.synthesizeTapGesture = function(x, y, opt_duration, opt_tapCount, opt_gestureSourceType, opt_callback) {};
-/** @typedef {!{y: number, x: number, duration: (number|undefined), gestureSourceType: (Protocol.Input.GestureSourceType|undefined), tapCount: (number|undefined)}} obj */
-Protocol.InputAgent.prototype.synthesizeTapGesture.Request;
+/** @typedef {!{y: number, x: number, duration: (number|undefined), gestureSourceType: (Protocol.Input.GestureSourceType|undefined), tapCount: (number|undefined)}} */
+Protocol.InputAgent.SynthesizeTapGestureRequest;
+/** @typedef {Object|undefined} */
+Protocol.InputAgent.SynthesizeTapGestureResponse;
 /**
- * @param {!Protocol.InputAgent.prototype.synthesizeTapGesture.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.InputAgent.prototype.invoke_synthesizeTapGesture = function(obj, opt_callback) {};
+ * @param {!Protocol.InputAgent.SynthesizeTapGestureRequest} obj
+ * @return {!Promise<!Protocol.InputAgent.SynthesizeTapGestureResponse>} */
+Protocol.InputAgent.prototype.invoke_synthesizeTapGesture = function(obj) {};
 
 /** @enum {string} */
 Protocol.Input.TouchPointState = {
@@ -4575,13 +4801,14 @@ Protocol.LayerTreeAgent = function(){};
  * @template T
  */
 Protocol.LayerTreeAgent.prototype.enable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.LayerTreeAgent.prototype.enable.Request;
+/** @typedef {Object|undefined} */
+Protocol.LayerTreeAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.LayerTreeAgent.EnableResponse;
 /**
- * @param {!Protocol.LayerTreeAgent.prototype.enable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.LayerTreeAgent.prototype.invoke_enable = function(obj, opt_callback) {};
+ * @param {!Protocol.LayerTreeAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.LayerTreeAgent.EnableResponse>} */
+Protocol.LayerTreeAgent.prototype.invoke_enable = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -4589,13 +4816,14 @@ Protocol.LayerTreeAgent.prototype.invoke_enable = function(obj, opt_callback) {}
  * @template T
  */
 Protocol.LayerTreeAgent.prototype.disable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.LayerTreeAgent.prototype.disable.Request;
+/** @typedef {Object|undefined} */
+Protocol.LayerTreeAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.LayerTreeAgent.DisableResponse;
 /**
- * @param {!Protocol.LayerTreeAgent.prototype.disable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.LayerTreeAgent.prototype.invoke_disable = function(obj, opt_callback) {};
+ * @param {!Protocol.LayerTreeAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.LayerTreeAgent.DisableResponse>} */
+Protocol.LayerTreeAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {Protocol.LayerTree.LayerId} layerId
@@ -4604,13 +4832,14 @@ Protocol.LayerTreeAgent.prototype.invoke_disable = function(obj, opt_callback) {
  * @template T
  */
 Protocol.LayerTreeAgent.prototype.compositingReasons = function(layerId, opt_callback) {};
-/** @typedef {!{layerId: Protocol.LayerTree.LayerId}} obj */
-Protocol.LayerTreeAgent.prototype.compositingReasons.Request;
+/** @typedef {!{layerId: Protocol.LayerTree.LayerId}} */
+Protocol.LayerTreeAgent.CompositingReasonsRequest;
+/** @typedef {!{compositingReasons: !Array<string>}} */
+Protocol.LayerTreeAgent.CompositingReasonsResponse;
 /**
- * @param {!Protocol.LayerTreeAgent.prototype.compositingReasons.Request} obj
- * @param {function(?Protocol.Error, !Array<string>):void=} opt_callback
- */
-Protocol.LayerTreeAgent.prototype.invoke_compositingReasons = function(obj, opt_callback) {};
+ * @param {!Protocol.LayerTreeAgent.CompositingReasonsRequest} obj
+ * @return {!Promise<!Protocol.LayerTreeAgent.CompositingReasonsResponse>} */
+Protocol.LayerTreeAgent.prototype.invoke_compositingReasons = function(obj) {};
 
 /**
  * @param {Protocol.LayerTree.LayerId} layerId
@@ -4619,13 +4848,14 @@ Protocol.LayerTreeAgent.prototype.invoke_compositingReasons = function(obj, opt_
  * @template T
  */
 Protocol.LayerTreeAgent.prototype.makeSnapshot = function(layerId, opt_callback) {};
-/** @typedef {!{layerId: Protocol.LayerTree.LayerId}} obj */
-Protocol.LayerTreeAgent.prototype.makeSnapshot.Request;
+/** @typedef {!{layerId: Protocol.LayerTree.LayerId}} */
+Protocol.LayerTreeAgent.MakeSnapshotRequest;
+/** @typedef {!{snapshotId: Protocol.LayerTree.SnapshotId}} */
+Protocol.LayerTreeAgent.MakeSnapshotResponse;
 /**
- * @param {!Protocol.LayerTreeAgent.prototype.makeSnapshot.Request} obj
- * @param {function(?Protocol.Error, Protocol.LayerTree.SnapshotId):void=} opt_callback
- */
-Protocol.LayerTreeAgent.prototype.invoke_makeSnapshot = function(obj, opt_callback) {};
+ * @param {!Protocol.LayerTreeAgent.MakeSnapshotRequest} obj
+ * @return {!Promise<!Protocol.LayerTreeAgent.MakeSnapshotResponse>} */
+Protocol.LayerTreeAgent.prototype.invoke_makeSnapshot = function(obj) {};
 
 /**
  * @param {!Array<Protocol.LayerTree.PictureTile>} tiles
@@ -4634,13 +4864,14 @@ Protocol.LayerTreeAgent.prototype.invoke_makeSnapshot = function(obj, opt_callba
  * @template T
  */
 Protocol.LayerTreeAgent.prototype.loadSnapshot = function(tiles, opt_callback) {};
-/** @typedef {!{tiles: !Array<Protocol.LayerTree.PictureTile>}} obj */
-Protocol.LayerTreeAgent.prototype.loadSnapshot.Request;
+/** @typedef {!{tiles: !Array<Protocol.LayerTree.PictureTile>}} */
+Protocol.LayerTreeAgent.LoadSnapshotRequest;
+/** @typedef {!{snapshotId: Protocol.LayerTree.SnapshotId}} */
+Protocol.LayerTreeAgent.LoadSnapshotResponse;
 /**
- * @param {!Protocol.LayerTreeAgent.prototype.loadSnapshot.Request} obj
- * @param {function(?Protocol.Error, Protocol.LayerTree.SnapshotId):void=} opt_callback
- */
-Protocol.LayerTreeAgent.prototype.invoke_loadSnapshot = function(obj, opt_callback) {};
+ * @param {!Protocol.LayerTreeAgent.LoadSnapshotRequest} obj
+ * @return {!Promise<!Protocol.LayerTreeAgent.LoadSnapshotResponse>} */
+Protocol.LayerTreeAgent.prototype.invoke_loadSnapshot = function(obj) {};
 
 /**
  * @param {Protocol.LayerTree.SnapshotId} snapshotId
@@ -4649,13 +4880,14 @@ Protocol.LayerTreeAgent.prototype.invoke_loadSnapshot = function(obj, opt_callba
  * @template T
  */
 Protocol.LayerTreeAgent.prototype.releaseSnapshot = function(snapshotId, opt_callback) {};
-/** @typedef {!{snapshotId: Protocol.LayerTree.SnapshotId}} obj */
-Protocol.LayerTreeAgent.prototype.releaseSnapshot.Request;
+/** @typedef {!{snapshotId: Protocol.LayerTree.SnapshotId}} */
+Protocol.LayerTreeAgent.ReleaseSnapshotRequest;
+/** @typedef {Object|undefined} */
+Protocol.LayerTreeAgent.ReleaseSnapshotResponse;
 /**
- * @param {!Protocol.LayerTreeAgent.prototype.releaseSnapshot.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.LayerTreeAgent.prototype.invoke_releaseSnapshot = function(obj, opt_callback) {};
+ * @param {!Protocol.LayerTreeAgent.ReleaseSnapshotRequest} obj
+ * @return {!Promise<!Protocol.LayerTreeAgent.ReleaseSnapshotResponse>} */
+Protocol.LayerTreeAgent.prototype.invoke_releaseSnapshot = function(obj) {};
 
 /**
  * @param {Protocol.LayerTree.SnapshotId} snapshotId
@@ -4667,13 +4899,14 @@ Protocol.LayerTreeAgent.prototype.invoke_releaseSnapshot = function(obj, opt_cal
  * @template T
  */
 Protocol.LayerTreeAgent.prototype.profileSnapshot = function(snapshotId, opt_minRepeatCount, opt_minDuration, opt_clipRect, opt_callback) {};
-/** @typedef {!{minRepeatCount: (number|undefined), snapshotId: Protocol.LayerTree.SnapshotId, clipRect: (Protocol.DOM.Rect|undefined), minDuration: (number|undefined)}} obj */
-Protocol.LayerTreeAgent.prototype.profileSnapshot.Request;
+/** @typedef {!{minRepeatCount: (number|undefined), snapshotId: Protocol.LayerTree.SnapshotId, clipRect: (Protocol.DOM.Rect|undefined), minDuration: (number|undefined)}} */
+Protocol.LayerTreeAgent.ProfileSnapshotRequest;
+/** @typedef {!{timings: !Array<Protocol.LayerTree.PaintProfile>}} */
+Protocol.LayerTreeAgent.ProfileSnapshotResponse;
 /**
- * @param {!Protocol.LayerTreeAgent.prototype.profileSnapshot.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.LayerTree.PaintProfile>):void=} opt_callback
- */
-Protocol.LayerTreeAgent.prototype.invoke_profileSnapshot = function(obj, opt_callback) {};
+ * @param {!Protocol.LayerTreeAgent.ProfileSnapshotRequest} obj
+ * @return {!Promise<!Protocol.LayerTreeAgent.ProfileSnapshotResponse>} */
+Protocol.LayerTreeAgent.prototype.invoke_profileSnapshot = function(obj) {};
 
 /**
  * @param {Protocol.LayerTree.SnapshotId} snapshotId
@@ -4685,13 +4918,14 @@ Protocol.LayerTreeAgent.prototype.invoke_profileSnapshot = function(obj, opt_cal
  * @template T
  */
 Protocol.LayerTreeAgent.prototype.replaySnapshot = function(snapshotId, opt_fromStep, opt_toStep, opt_scale, opt_callback) {};
-/** @typedef {!{snapshotId: Protocol.LayerTree.SnapshotId, scale: (number|undefined), fromStep: (number|undefined), toStep: (number|undefined)}} obj */
-Protocol.LayerTreeAgent.prototype.replaySnapshot.Request;
+/** @typedef {!{snapshotId: Protocol.LayerTree.SnapshotId, scale: (number|undefined), fromStep: (number|undefined), toStep: (number|undefined)}} */
+Protocol.LayerTreeAgent.ReplaySnapshotRequest;
+/** @typedef {!{dataURL: string}} */
+Protocol.LayerTreeAgent.ReplaySnapshotResponse;
 /**
- * @param {!Protocol.LayerTreeAgent.prototype.replaySnapshot.Request} obj
- * @param {function(?Protocol.Error, string):void=} opt_callback
- */
-Protocol.LayerTreeAgent.prototype.invoke_replaySnapshot = function(obj, opt_callback) {};
+ * @param {!Protocol.LayerTreeAgent.ReplaySnapshotRequest} obj
+ * @return {!Promise<!Protocol.LayerTreeAgent.ReplaySnapshotResponse>} */
+Protocol.LayerTreeAgent.prototype.invoke_replaySnapshot = function(obj) {};
 
 /**
  * @param {Protocol.LayerTree.SnapshotId} snapshotId
@@ -4700,13 +4934,14 @@ Protocol.LayerTreeAgent.prototype.invoke_replaySnapshot = function(obj, opt_call
  * @template T
  */
 Protocol.LayerTreeAgent.prototype.snapshotCommandLog = function(snapshotId, opt_callback) {};
-/** @typedef {!{snapshotId: Protocol.LayerTree.SnapshotId}} obj */
-Protocol.LayerTreeAgent.prototype.snapshotCommandLog.Request;
+/** @typedef {!{snapshotId: Protocol.LayerTree.SnapshotId}} */
+Protocol.LayerTreeAgent.SnapshotCommandLogRequest;
+/** @typedef {!{commandLog: !Array<!Object>}} */
+Protocol.LayerTreeAgent.SnapshotCommandLogResponse;
 /**
- * @param {!Protocol.LayerTreeAgent.prototype.snapshotCommandLog.Request} obj
- * @param {function(?Protocol.Error, !Array<!Object>):void=} opt_callback
- */
-Protocol.LayerTreeAgent.prototype.invoke_snapshotCommandLog = function(obj, opt_callback) {};
+ * @param {!Protocol.LayerTreeAgent.SnapshotCommandLogRequest} obj
+ * @return {!Promise<!Protocol.LayerTreeAgent.SnapshotCommandLogResponse>} */
+Protocol.LayerTreeAgent.prototype.invoke_snapshotCommandLog = function(obj) {};
 
 /** @typedef {string} */
 Protocol.LayerTree.LayerId;
@@ -4760,13 +4995,14 @@ Protocol.DeviceOrientationAgent = function(){};
  * @template T
  */
 Protocol.DeviceOrientationAgent.prototype.setDeviceOrientationOverride = function(alpha, beta, gamma, opt_callback) {};
-/** @typedef {!{alpha: number, beta: number, gamma: number}} obj */
-Protocol.DeviceOrientationAgent.prototype.setDeviceOrientationOverride.Request;
+/** @typedef {!{alpha: number, beta: number, gamma: number}} */
+Protocol.DeviceOrientationAgent.SetDeviceOrientationOverrideRequest;
+/** @typedef {Object|undefined} */
+Protocol.DeviceOrientationAgent.SetDeviceOrientationOverrideResponse;
 /**
- * @param {!Protocol.DeviceOrientationAgent.prototype.setDeviceOrientationOverride.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DeviceOrientationAgent.prototype.invoke_setDeviceOrientationOverride = function(obj, opt_callback) {};
+ * @param {!Protocol.DeviceOrientationAgent.SetDeviceOrientationOverrideRequest} obj
+ * @return {!Promise<!Protocol.DeviceOrientationAgent.SetDeviceOrientationOverrideResponse>} */
+Protocol.DeviceOrientationAgent.prototype.invoke_setDeviceOrientationOverride = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -4774,13 +5010,14 @@ Protocol.DeviceOrientationAgent.prototype.invoke_setDeviceOrientationOverride = 
  * @template T
  */
 Protocol.DeviceOrientationAgent.prototype.clearDeviceOrientationOverride = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.DeviceOrientationAgent.prototype.clearDeviceOrientationOverride.Request;
+/** @typedef {Object|undefined} */
+Protocol.DeviceOrientationAgent.ClearDeviceOrientationOverrideRequest;
+/** @typedef {Object|undefined} */
+Protocol.DeviceOrientationAgent.ClearDeviceOrientationOverrideResponse;
 /**
- * @param {!Protocol.DeviceOrientationAgent.prototype.clearDeviceOrientationOverride.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DeviceOrientationAgent.prototype.invoke_clearDeviceOrientationOverride = function(obj, opt_callback) {};
+ * @param {!Protocol.DeviceOrientationAgent.ClearDeviceOrientationOverrideRequest} obj
+ * @return {!Promise<!Protocol.DeviceOrientationAgent.ClearDeviceOrientationOverrideResponse>} */
+Protocol.DeviceOrientationAgent.prototype.invoke_clearDeviceOrientationOverride = function(obj) {};
 /** @interface */
 Protocol.DeviceOrientationDispatcher = function() {};
 Protocol.Tracing = {};
@@ -4802,13 +5039,14 @@ Protocol.TracingAgent = function(){};
  * @template T
  */
 Protocol.TracingAgent.prototype.start = function(opt_categories, opt_options, opt_bufferUsageReportingInterval, opt_transferMode, opt_traceConfig, opt_callback) {};
-/** @typedef {!{transferMode: (string|undefined), traceConfig: (Protocol.Tracing.TraceConfig|undefined), bufferUsageReportingInterval: (number|undefined), options: (string|undefined), categories: (string|undefined)}} obj */
-Protocol.TracingAgent.prototype.start.Request;
+/** @typedef {!{transferMode: (string|undefined), traceConfig: (Protocol.Tracing.TraceConfig|undefined), bufferUsageReportingInterval: (number|undefined), options: (string|undefined), categories: (string|undefined)}} */
+Protocol.TracingAgent.StartRequest;
+/** @typedef {Object|undefined} */
+Protocol.TracingAgent.StartResponse;
 /**
- * @param {!Protocol.TracingAgent.prototype.start.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.TracingAgent.prototype.invoke_start = function(obj, opt_callback) {};
+ * @param {!Protocol.TracingAgent.StartRequest} obj
+ * @return {!Promise<!Protocol.TracingAgent.StartResponse>} */
+Protocol.TracingAgent.prototype.invoke_start = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -4816,13 +5054,14 @@ Protocol.TracingAgent.prototype.invoke_start = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.TracingAgent.prototype.end = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.TracingAgent.prototype.end.Request;
+/** @typedef {Object|undefined} */
+Protocol.TracingAgent.EndRequest;
+/** @typedef {Object|undefined} */
+Protocol.TracingAgent.EndResponse;
 /**
- * @param {!Protocol.TracingAgent.prototype.end.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.TracingAgent.prototype.invoke_end = function(obj, opt_callback) {};
+ * @param {!Protocol.TracingAgent.EndRequest} obj
+ * @return {!Promise<!Protocol.TracingAgent.EndResponse>} */
+Protocol.TracingAgent.prototype.invoke_end = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error, !Array<string>):T=} opt_callback
@@ -4830,13 +5069,14 @@ Protocol.TracingAgent.prototype.invoke_end = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.TracingAgent.prototype.getCategories = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.TracingAgent.prototype.getCategories.Request;
+/** @typedef {Object|undefined} */
+Protocol.TracingAgent.GetCategoriesRequest;
+/** @typedef {!{categories: !Array<string>}} */
+Protocol.TracingAgent.GetCategoriesResponse;
 /**
- * @param {!Protocol.TracingAgent.prototype.getCategories.Request} obj
- * @param {function(?Protocol.Error, !Array<string>):void=} opt_callback
- */
-Protocol.TracingAgent.prototype.invoke_getCategories = function(obj, opt_callback) {};
+ * @param {!Protocol.TracingAgent.GetCategoriesRequest} obj
+ * @return {!Promise<!Protocol.TracingAgent.GetCategoriesResponse>} */
+Protocol.TracingAgent.prototype.invoke_getCategories = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error, string, boolean):T=} opt_callback
@@ -4844,13 +5084,14 @@ Protocol.TracingAgent.prototype.invoke_getCategories = function(obj, opt_callbac
  * @template T
  */
 Protocol.TracingAgent.prototype.requestMemoryDump = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.TracingAgent.prototype.requestMemoryDump.Request;
+/** @typedef {Object|undefined} */
+Protocol.TracingAgent.RequestMemoryDumpRequest;
+/** @typedef {!{dumpGuid: string, success: boolean}} */
+Protocol.TracingAgent.RequestMemoryDumpResponse;
 /**
- * @param {!Protocol.TracingAgent.prototype.requestMemoryDump.Request} obj
- * @param {function(?Protocol.Error, string, boolean):void=} opt_callback
- */
-Protocol.TracingAgent.prototype.invoke_requestMemoryDump = function(obj, opt_callback) {};
+ * @param {!Protocol.TracingAgent.RequestMemoryDumpRequest} obj
+ * @return {!Promise<!Protocol.TracingAgent.RequestMemoryDumpResponse>} */
+Protocol.TracingAgent.prototype.invoke_requestMemoryDump = function(obj) {};
 
 /**
  * @param {string} syncId
@@ -4859,13 +5100,14 @@ Protocol.TracingAgent.prototype.invoke_requestMemoryDump = function(obj, opt_cal
  * @template T
  */
 Protocol.TracingAgent.prototype.recordClockSyncMarker = function(syncId, opt_callback) {};
-/** @typedef {!{syncId: string}} obj */
-Protocol.TracingAgent.prototype.recordClockSyncMarker.Request;
+/** @typedef {!{syncId: string}} */
+Protocol.TracingAgent.RecordClockSyncMarkerRequest;
+/** @typedef {Object|undefined} */
+Protocol.TracingAgent.RecordClockSyncMarkerResponse;
 /**
- * @param {!Protocol.TracingAgent.prototype.recordClockSyncMarker.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.TracingAgent.prototype.invoke_recordClockSyncMarker = function(obj, opt_callback) {};
+ * @param {!Protocol.TracingAgent.RecordClockSyncMarkerRequest} obj
+ * @return {!Promise<!Protocol.TracingAgent.RecordClockSyncMarkerResponse>} */
+Protocol.TracingAgent.prototype.invoke_recordClockSyncMarker = function(obj) {};
 
 /** @typedef {!Object} */
 Protocol.Tracing.MemoryDumpConfig;
@@ -4910,13 +5152,14 @@ Protocol.AnimationAgent = function(){};
  * @template T
  */
 Protocol.AnimationAgent.prototype.enable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.AnimationAgent.prototype.enable.Request;
+/** @typedef {Object|undefined} */
+Protocol.AnimationAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.AnimationAgent.EnableResponse;
 /**
- * @param {!Protocol.AnimationAgent.prototype.enable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.AnimationAgent.prototype.invoke_enable = function(obj, opt_callback) {};
+ * @param {!Protocol.AnimationAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.AnimationAgent.EnableResponse>} */
+Protocol.AnimationAgent.prototype.invoke_enable = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -4924,13 +5167,14 @@ Protocol.AnimationAgent.prototype.invoke_enable = function(obj, opt_callback) {}
  * @template T
  */
 Protocol.AnimationAgent.prototype.disable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.AnimationAgent.prototype.disable.Request;
+/** @typedef {Object|undefined} */
+Protocol.AnimationAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.AnimationAgent.DisableResponse;
 /**
- * @param {!Protocol.AnimationAgent.prototype.disable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.AnimationAgent.prototype.invoke_disable = function(obj, opt_callback) {};
+ * @param {!Protocol.AnimationAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.AnimationAgent.DisableResponse>} */
+Protocol.AnimationAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error, number):T=} opt_callback
@@ -4938,13 +5182,14 @@ Protocol.AnimationAgent.prototype.invoke_disable = function(obj, opt_callback) {
  * @template T
  */
 Protocol.AnimationAgent.prototype.getPlaybackRate = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.AnimationAgent.prototype.getPlaybackRate.Request;
+/** @typedef {Object|undefined} */
+Protocol.AnimationAgent.GetPlaybackRateRequest;
+/** @typedef {!{playbackRate: number}} */
+Protocol.AnimationAgent.GetPlaybackRateResponse;
 /**
- * @param {!Protocol.AnimationAgent.prototype.getPlaybackRate.Request} obj
- * @param {function(?Protocol.Error, number):void=} opt_callback
- */
-Protocol.AnimationAgent.prototype.invoke_getPlaybackRate = function(obj, opt_callback) {};
+ * @param {!Protocol.AnimationAgent.GetPlaybackRateRequest} obj
+ * @return {!Promise<!Protocol.AnimationAgent.GetPlaybackRateResponse>} */
+Protocol.AnimationAgent.prototype.invoke_getPlaybackRate = function(obj) {};
 
 /**
  * @param {number} playbackRate
@@ -4953,13 +5198,14 @@ Protocol.AnimationAgent.prototype.invoke_getPlaybackRate = function(obj, opt_cal
  * @template T
  */
 Protocol.AnimationAgent.prototype.setPlaybackRate = function(playbackRate, opt_callback) {};
-/** @typedef {!{playbackRate: number}} obj */
-Protocol.AnimationAgent.prototype.setPlaybackRate.Request;
+/** @typedef {!{playbackRate: number}} */
+Protocol.AnimationAgent.SetPlaybackRateRequest;
+/** @typedef {Object|undefined} */
+Protocol.AnimationAgent.SetPlaybackRateResponse;
 /**
- * @param {!Protocol.AnimationAgent.prototype.setPlaybackRate.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.AnimationAgent.prototype.invoke_setPlaybackRate = function(obj, opt_callback) {};
+ * @param {!Protocol.AnimationAgent.SetPlaybackRateRequest} obj
+ * @return {!Promise<!Protocol.AnimationAgent.SetPlaybackRateResponse>} */
+Protocol.AnimationAgent.prototype.invoke_setPlaybackRate = function(obj) {};
 
 /**
  * @param {string} id
@@ -4968,13 +5214,14 @@ Protocol.AnimationAgent.prototype.invoke_setPlaybackRate = function(obj, opt_cal
  * @template T
  */
 Protocol.AnimationAgent.prototype.getCurrentTime = function(id, opt_callback) {};
-/** @typedef {!{id: string}} obj */
-Protocol.AnimationAgent.prototype.getCurrentTime.Request;
+/** @typedef {!{id: string}} */
+Protocol.AnimationAgent.GetCurrentTimeRequest;
+/** @typedef {!{currentTime: number}} */
+Protocol.AnimationAgent.GetCurrentTimeResponse;
 /**
- * @param {!Protocol.AnimationAgent.prototype.getCurrentTime.Request} obj
- * @param {function(?Protocol.Error, number):void=} opt_callback
- */
-Protocol.AnimationAgent.prototype.invoke_getCurrentTime = function(obj, opt_callback) {};
+ * @param {!Protocol.AnimationAgent.GetCurrentTimeRequest} obj
+ * @return {!Promise<!Protocol.AnimationAgent.GetCurrentTimeResponse>} */
+Protocol.AnimationAgent.prototype.invoke_getCurrentTime = function(obj) {};
 
 /**
  * @param {!Array<string>} animations
@@ -4984,13 +5231,14 @@ Protocol.AnimationAgent.prototype.invoke_getCurrentTime = function(obj, opt_call
  * @template T
  */
 Protocol.AnimationAgent.prototype.setPaused = function(animations, paused, opt_callback) {};
-/** @typedef {!{paused: boolean, animations: !Array<string>}} obj */
-Protocol.AnimationAgent.prototype.setPaused.Request;
+/** @typedef {!{paused: boolean, animations: !Array<string>}} */
+Protocol.AnimationAgent.SetPausedRequest;
+/** @typedef {Object|undefined} */
+Protocol.AnimationAgent.SetPausedResponse;
 /**
- * @param {!Protocol.AnimationAgent.prototype.setPaused.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.AnimationAgent.prototype.invoke_setPaused = function(obj, opt_callback) {};
+ * @param {!Protocol.AnimationAgent.SetPausedRequest} obj
+ * @return {!Promise<!Protocol.AnimationAgent.SetPausedResponse>} */
+Protocol.AnimationAgent.prototype.invoke_setPaused = function(obj) {};
 
 /**
  * @param {string} animationId
@@ -5001,13 +5249,14 @@ Protocol.AnimationAgent.prototype.invoke_setPaused = function(obj, opt_callback)
  * @template T
  */
 Protocol.AnimationAgent.prototype.setTiming = function(animationId, duration, delay, opt_callback) {};
-/** @typedef {!{duration: number, delay: number, animationId: string}} obj */
-Protocol.AnimationAgent.prototype.setTiming.Request;
+/** @typedef {!{duration: number, delay: number, animationId: string}} */
+Protocol.AnimationAgent.SetTimingRequest;
+/** @typedef {Object|undefined} */
+Protocol.AnimationAgent.SetTimingResponse;
 /**
- * @param {!Protocol.AnimationAgent.prototype.setTiming.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.AnimationAgent.prototype.invoke_setTiming = function(obj, opt_callback) {};
+ * @param {!Protocol.AnimationAgent.SetTimingRequest} obj
+ * @return {!Promise<!Protocol.AnimationAgent.SetTimingResponse>} */
+Protocol.AnimationAgent.prototype.invoke_setTiming = function(obj) {};
 
 /**
  * @param {!Array<string>} animations
@@ -5017,13 +5266,14 @@ Protocol.AnimationAgent.prototype.invoke_setTiming = function(obj, opt_callback)
  * @template T
  */
 Protocol.AnimationAgent.prototype.seekAnimations = function(animations, currentTime, opt_callback) {};
-/** @typedef {!{currentTime: number, animations: !Array<string>}} obj */
-Protocol.AnimationAgent.prototype.seekAnimations.Request;
+/** @typedef {!{currentTime: number, animations: !Array<string>}} */
+Protocol.AnimationAgent.SeekAnimationsRequest;
+/** @typedef {Object|undefined} */
+Protocol.AnimationAgent.SeekAnimationsResponse;
 /**
- * @param {!Protocol.AnimationAgent.prototype.seekAnimations.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.AnimationAgent.prototype.invoke_seekAnimations = function(obj, opt_callback) {};
+ * @param {!Protocol.AnimationAgent.SeekAnimationsRequest} obj
+ * @return {!Promise<!Protocol.AnimationAgent.SeekAnimationsResponse>} */
+Protocol.AnimationAgent.prototype.invoke_seekAnimations = function(obj) {};
 
 /**
  * @param {!Array<string>} animations
@@ -5032,13 +5282,14 @@ Protocol.AnimationAgent.prototype.invoke_seekAnimations = function(obj, opt_call
  * @template T
  */
 Protocol.AnimationAgent.prototype.releaseAnimations = function(animations, opt_callback) {};
-/** @typedef {!{animations: !Array<string>}} obj */
-Protocol.AnimationAgent.prototype.releaseAnimations.Request;
+/** @typedef {!{animations: !Array<string>}} */
+Protocol.AnimationAgent.ReleaseAnimationsRequest;
+/** @typedef {Object|undefined} */
+Protocol.AnimationAgent.ReleaseAnimationsResponse;
 /**
- * @param {!Protocol.AnimationAgent.prototype.releaseAnimations.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.AnimationAgent.prototype.invoke_releaseAnimations = function(obj, opt_callback) {};
+ * @param {!Protocol.AnimationAgent.ReleaseAnimationsRequest} obj
+ * @return {!Promise<!Protocol.AnimationAgent.ReleaseAnimationsResponse>} */
+Protocol.AnimationAgent.prototype.invoke_releaseAnimations = function(obj) {};
 
 /**
  * @param {string} animationId
@@ -5047,13 +5298,14 @@ Protocol.AnimationAgent.prototype.invoke_releaseAnimations = function(obj, opt_c
  * @template T
  */
 Protocol.AnimationAgent.prototype.resolveAnimation = function(animationId, opt_callback) {};
-/** @typedef {!{animationId: string}} obj */
-Protocol.AnimationAgent.prototype.resolveAnimation.Request;
+/** @typedef {!{animationId: string}} */
+Protocol.AnimationAgent.ResolveAnimationRequest;
+/** @typedef {!{remoteObject: Protocol.Runtime.RemoteObject}} */
+Protocol.AnimationAgent.ResolveAnimationResponse;
 /**
- * @param {!Protocol.AnimationAgent.prototype.resolveAnimation.Request} obj
- * @param {function(?Protocol.Error, Protocol.Runtime.RemoteObject):void=} opt_callback
- */
-Protocol.AnimationAgent.prototype.invoke_resolveAnimation = function(obj, opt_callback) {};
+ * @param {!Protocol.AnimationAgent.ResolveAnimationRequest} obj
+ * @return {!Promise<!Protocol.AnimationAgent.ResolveAnimationResponse>} */
+Protocol.AnimationAgent.prototype.invoke_resolveAnimation = function(obj) {};
 
 /** @enum {string} */
 Protocol.Animation.AnimationType = {
@@ -5103,13 +5355,14 @@ Protocol.AccessibilityAgent = function(){};
  * @template T
  */
 Protocol.AccessibilityAgent.prototype.getPartialAXTree = function(nodeId, opt_fetchRelatives, opt_callback) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId, fetchRelatives: (boolean|undefined)}} obj */
-Protocol.AccessibilityAgent.prototype.getPartialAXTree.Request;
+/** @typedef {!{nodeId: Protocol.DOM.NodeId, fetchRelatives: (boolean|undefined)}} */
+Protocol.AccessibilityAgent.GetPartialAXTreeRequest;
+/** @typedef {!{nodes: !Array<Protocol.Accessibility.AXNode>}} */
+Protocol.AccessibilityAgent.GetPartialAXTreeResponse;
 /**
- * @param {!Protocol.AccessibilityAgent.prototype.getPartialAXTree.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.Accessibility.AXNode>):void=} opt_callback
- */
-Protocol.AccessibilityAgent.prototype.invoke_getPartialAXTree = function(obj, opt_callback) {};
+ * @param {!Protocol.AccessibilityAgent.GetPartialAXTreeRequest} obj
+ * @return {!Promise<!Protocol.AccessibilityAgent.GetPartialAXTreeResponse>} */
+Protocol.AccessibilityAgent.prototype.invoke_getPartialAXTree = function(obj) {};
 
 /** @typedef {string} */
 Protocol.Accessibility.AXNodeId;
@@ -5244,13 +5497,14 @@ Protocol.StorageAgent = function(){};
  * @template T
  */
 Protocol.StorageAgent.prototype.clearDataForOrigin = function(origin, storageTypes, opt_callback) {};
-/** @typedef {!{origin: string, storageTypes: string}} obj */
-Protocol.StorageAgent.prototype.clearDataForOrigin.Request;
+/** @typedef {!{origin: string, storageTypes: string}} */
+Protocol.StorageAgent.ClearDataForOriginRequest;
+/** @typedef {Object|undefined} */
+Protocol.StorageAgent.ClearDataForOriginResponse;
 /**
- * @param {!Protocol.StorageAgent.prototype.clearDataForOrigin.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.StorageAgent.prototype.invoke_clearDataForOrigin = function(obj, opt_callback) {};
+ * @param {!Protocol.StorageAgent.ClearDataForOriginRequest} obj
+ * @return {!Promise<!Protocol.StorageAgent.ClearDataForOriginResponse>} */
+Protocol.StorageAgent.prototype.invoke_clearDataForOrigin = function(obj) {};
 
 /** @enum {string} */
 Protocol.Storage.StorageType = {
@@ -5281,13 +5535,14 @@ Protocol.LogAgent = function(){};
  * @template T
  */
 Protocol.LogAgent.prototype.enable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.LogAgent.prototype.enable.Request;
+/** @typedef {Object|undefined} */
+Protocol.LogAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.LogAgent.EnableResponse;
 /**
- * @param {!Protocol.LogAgent.prototype.enable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.LogAgent.prototype.invoke_enable = function(obj, opt_callback) {};
+ * @param {!Protocol.LogAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.LogAgent.EnableResponse>} */
+Protocol.LogAgent.prototype.invoke_enable = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -5295,13 +5550,14 @@ Protocol.LogAgent.prototype.invoke_enable = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.LogAgent.prototype.disable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.LogAgent.prototype.disable.Request;
+/** @typedef {Object|undefined} */
+Protocol.LogAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.LogAgent.DisableResponse;
 /**
- * @param {!Protocol.LogAgent.prototype.disable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.LogAgent.prototype.invoke_disable = function(obj, opt_callback) {};
+ * @param {!Protocol.LogAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.LogAgent.DisableResponse>} */
+Protocol.LogAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -5309,13 +5565,14 @@ Protocol.LogAgent.prototype.invoke_disable = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.LogAgent.prototype.clear = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.LogAgent.prototype.clear.Request;
+/** @typedef {Object|undefined} */
+Protocol.LogAgent.ClearRequest;
+/** @typedef {Object|undefined} */
+Protocol.LogAgent.ClearResponse;
 /**
- * @param {!Protocol.LogAgent.prototype.clear.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.LogAgent.prototype.invoke_clear = function(obj, opt_callback) {};
+ * @param {!Protocol.LogAgent.ClearRequest} obj
+ * @return {!Promise<!Protocol.LogAgent.ClearResponse>} */
+Protocol.LogAgent.prototype.invoke_clear = function(obj) {};
 
 /**
  * @param {!Array<Protocol.Log.ViolationSetting>} config
@@ -5324,13 +5581,14 @@ Protocol.LogAgent.prototype.invoke_clear = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.LogAgent.prototype.startViolationsReport = function(config, opt_callback) {};
-/** @typedef {!{config: !Array<Protocol.Log.ViolationSetting>}} obj */
-Protocol.LogAgent.prototype.startViolationsReport.Request;
+/** @typedef {!{config: !Array<Protocol.Log.ViolationSetting>}} */
+Protocol.LogAgent.StartViolationsReportRequest;
+/** @typedef {Object|undefined} */
+Protocol.LogAgent.StartViolationsReportResponse;
 /**
- * @param {!Protocol.LogAgent.prototype.startViolationsReport.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.LogAgent.prototype.invoke_startViolationsReport = function(obj, opt_callback) {};
+ * @param {!Protocol.LogAgent.StartViolationsReportRequest} obj
+ * @return {!Promise<!Protocol.LogAgent.StartViolationsReportResponse>} */
+Protocol.LogAgent.prototype.invoke_startViolationsReport = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -5338,13 +5596,14 @@ Protocol.LogAgent.prototype.invoke_startViolationsReport = function(obj, opt_cal
  * @template T
  */
 Protocol.LogAgent.prototype.stopViolationsReport = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.LogAgent.prototype.stopViolationsReport.Request;
+/** @typedef {Object|undefined} */
+Protocol.LogAgent.StopViolationsReportRequest;
+/** @typedef {Object|undefined} */
+Protocol.LogAgent.StopViolationsReportResponse;
 /**
- * @param {!Protocol.LogAgent.prototype.stopViolationsReport.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.LogAgent.prototype.invoke_stopViolationsReport = function(obj, opt_callback) {};
+ * @param {!Protocol.LogAgent.StopViolationsReportRequest} obj
+ * @return {!Promise<!Protocol.LogAgent.StopViolationsReportResponse>} */
+Protocol.LogAgent.prototype.invoke_stopViolationsReport = function(obj) {};
 
 /** @enum {string} */
 Protocol.Log.LogEntrySource = {
@@ -5406,13 +5665,14 @@ Protocol.SystemInfoAgent = function(){};
  * @template T
  */
 Protocol.SystemInfoAgent.prototype.getInfo = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.SystemInfoAgent.prototype.getInfo.Request;
+/** @typedef {Object|undefined} */
+Protocol.SystemInfoAgent.GetInfoRequest;
+/** @typedef {!{gpu: Protocol.SystemInfo.GPUInfo, modelName: string, modelVersion: string}} */
+Protocol.SystemInfoAgent.GetInfoResponse;
 /**
- * @param {!Protocol.SystemInfoAgent.prototype.getInfo.Request} obj
- * @param {function(?Protocol.Error, Protocol.SystemInfo.GPUInfo, string, string):void=} opt_callback
- */
-Protocol.SystemInfoAgent.prototype.invoke_getInfo = function(obj, opt_callback) {};
+ * @param {!Protocol.SystemInfoAgent.GetInfoRequest} obj
+ * @return {!Promise<!Protocol.SystemInfoAgent.GetInfoResponse>} */
+Protocol.SystemInfoAgent.prototype.invoke_getInfo = function(obj) {};
 
 /** @typedef {!{vendorId:(number), deviceId:(number), vendorString:(string), deviceString:(string)}} */
 Protocol.SystemInfo.GPUDevice;
@@ -5436,13 +5696,14 @@ Protocol.TetheringAgent = function(){};
  * @template T
  */
 Protocol.TetheringAgent.prototype.bind = function(port, opt_callback) {};
-/** @typedef {!{port: number}} obj */
-Protocol.TetheringAgent.prototype.bind.Request;
+/** @typedef {!{port: number}} */
+Protocol.TetheringAgent.BindRequest;
+/** @typedef {Object|undefined} */
+Protocol.TetheringAgent.BindResponse;
 /**
- * @param {!Protocol.TetheringAgent.prototype.bind.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.TetheringAgent.prototype.invoke_bind = function(obj, opt_callback) {};
+ * @param {!Protocol.TetheringAgent.BindRequest} obj
+ * @return {!Promise<!Protocol.TetheringAgent.BindResponse>} */
+Protocol.TetheringAgent.prototype.invoke_bind = function(obj) {};
 
 /**
  * @param {number} port
@@ -5451,13 +5712,14 @@ Protocol.TetheringAgent.prototype.invoke_bind = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.TetheringAgent.prototype.unbind = function(port, opt_callback) {};
-/** @typedef {!{port: number}} obj */
-Protocol.TetheringAgent.prototype.unbind.Request;
+/** @typedef {!{port: number}} */
+Protocol.TetheringAgent.UnbindRequest;
+/** @typedef {Object|undefined} */
+Protocol.TetheringAgent.UnbindResponse;
 /**
- * @param {!Protocol.TetheringAgent.prototype.unbind.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.TetheringAgent.prototype.invoke_unbind = function(obj, opt_callback) {};
+ * @param {!Protocol.TetheringAgent.UnbindRequest} obj
+ * @return {!Promise<!Protocol.TetheringAgent.UnbindResponse>} */
+Protocol.TetheringAgent.prototype.invoke_unbind = function(obj) {};
 /** @interface */
 Protocol.TetheringDispatcher = function() {};
 /**
@@ -5480,13 +5742,14 @@ Protocol.BrowserAgent = function(){};
  * @template T
  */
 Protocol.BrowserAgent.prototype.getWindowForTarget = function(targetId, opt_callback) {};
-/** @typedef {!{targetId: Protocol.Target.TargetID}} obj */
-Protocol.BrowserAgent.prototype.getWindowForTarget.Request;
+/** @typedef {!{targetId: Protocol.Target.TargetID}} */
+Protocol.BrowserAgent.GetWindowForTargetRequest;
+/** @typedef {!{windowId: Protocol.Browser.WindowID, bounds: Protocol.Browser.Bounds}} */
+Protocol.BrowserAgent.GetWindowForTargetResponse;
 /**
- * @param {!Protocol.BrowserAgent.prototype.getWindowForTarget.Request} obj
- * @param {function(?Protocol.Error, Protocol.Browser.WindowID, Protocol.Browser.Bounds):void=} opt_callback
- */
-Protocol.BrowserAgent.prototype.invoke_getWindowForTarget = function(obj, opt_callback) {};
+ * @param {!Protocol.BrowserAgent.GetWindowForTargetRequest} obj
+ * @return {!Promise<!Protocol.BrowserAgent.GetWindowForTargetResponse>} */
+Protocol.BrowserAgent.prototype.invoke_getWindowForTarget = function(obj) {};
 
 /**
  * @param {Protocol.Browser.WindowID} windowId
@@ -5496,13 +5759,14 @@ Protocol.BrowserAgent.prototype.invoke_getWindowForTarget = function(obj, opt_ca
  * @template T
  */
 Protocol.BrowserAgent.prototype.setWindowBounds = function(windowId, bounds, opt_callback) {};
-/** @typedef {!{windowId: Protocol.Browser.WindowID, bounds: Protocol.Browser.Bounds}} obj */
-Protocol.BrowserAgent.prototype.setWindowBounds.Request;
+/** @typedef {!{windowId: Protocol.Browser.WindowID, bounds: Protocol.Browser.Bounds}} */
+Protocol.BrowserAgent.SetWindowBoundsRequest;
+/** @typedef {Object|undefined} */
+Protocol.BrowserAgent.SetWindowBoundsResponse;
 /**
- * @param {!Protocol.BrowserAgent.prototype.setWindowBounds.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.BrowserAgent.prototype.invoke_setWindowBounds = function(obj, opt_callback) {};
+ * @param {!Protocol.BrowserAgent.SetWindowBoundsRequest} obj
+ * @return {!Promise<!Protocol.BrowserAgent.SetWindowBoundsResponse>} */
+Protocol.BrowserAgent.prototype.invoke_setWindowBounds = function(obj) {};
 
 /**
  * @param {Protocol.Browser.WindowID} windowId
@@ -5511,13 +5775,14 @@ Protocol.BrowserAgent.prototype.invoke_setWindowBounds = function(obj, opt_callb
  * @template T
  */
 Protocol.BrowserAgent.prototype.getWindowBounds = function(windowId, opt_callback) {};
-/** @typedef {!{windowId: Protocol.Browser.WindowID}} obj */
-Protocol.BrowserAgent.prototype.getWindowBounds.Request;
+/** @typedef {!{windowId: Protocol.Browser.WindowID}} */
+Protocol.BrowserAgent.GetWindowBoundsRequest;
+/** @typedef {!{bounds: Protocol.Browser.Bounds}} */
+Protocol.BrowserAgent.GetWindowBoundsResponse;
 /**
- * @param {!Protocol.BrowserAgent.prototype.getWindowBounds.Request} obj
- * @param {function(?Protocol.Error, Protocol.Browser.Bounds):void=} opt_callback
- */
-Protocol.BrowserAgent.prototype.invoke_getWindowBounds = function(obj, opt_callback) {};
+ * @param {!Protocol.BrowserAgent.GetWindowBoundsRequest} obj
+ * @return {!Promise<!Protocol.BrowserAgent.GetWindowBoundsResponse>} */
+Protocol.BrowserAgent.prototype.invoke_getWindowBounds = function(obj) {};
 
 /** @typedef {number} */
 Protocol.Browser.WindowID;
@@ -5548,13 +5813,14 @@ Protocol.SchemaAgent = function(){};
  * @template T
  */
 Protocol.SchemaAgent.prototype.getDomains = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.SchemaAgent.prototype.getDomains.Request;
+/** @typedef {Object|undefined} */
+Protocol.SchemaAgent.GetDomainsRequest;
+/** @typedef {!{domains: !Array<Protocol.Schema.Domain>}} */
+Protocol.SchemaAgent.GetDomainsResponse;
 /**
- * @param {!Protocol.SchemaAgent.prototype.getDomains.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.Schema.Domain>):void=} opt_callback
- */
-Protocol.SchemaAgent.prototype.invoke_getDomains = function(obj, opt_callback) {};
+ * @param {!Protocol.SchemaAgent.GetDomainsRequest} obj
+ * @return {!Promise<!Protocol.SchemaAgent.GetDomainsResponse>} */
+Protocol.SchemaAgent.prototype.invoke_getDomains = function(obj) {};
 
 /** @typedef {!{name:(string), version:(string)}} */
 Protocol.Schema.Domain;
@@ -5583,13 +5849,14 @@ Protocol.RuntimeAgent = function(){};
  * @template T
  */
 Protocol.RuntimeAgent.prototype.evaluate = function(expression, opt_objectGroup, opt_includeCommandLineAPI, opt_silent, opt_contextId, opt_returnByValue, opt_generatePreview, opt_userGesture, opt_awaitPromise, opt_callback) {};
-/** @typedef {!{objectGroup: (string|undefined), includeCommandLineAPI: (boolean|undefined), contextId: (Protocol.Runtime.ExecutionContextId|undefined), silent: (boolean|undefined), generatePreview: (boolean|undefined), returnByValue: (boolean|undefined), expression: string, userGesture: (boolean|undefined), awaitPromise: (boolean|undefined)}} obj */
-Protocol.RuntimeAgent.prototype.evaluate.Request;
+/** @typedef {!{objectGroup: (string|undefined), includeCommandLineAPI: (boolean|undefined), contextId: (Protocol.Runtime.ExecutionContextId|undefined), silent: (boolean|undefined), generatePreview: (boolean|undefined), returnByValue: (boolean|undefined), expression: string, userGesture: (boolean|undefined), awaitPromise: (boolean|undefined)}} */
+Protocol.RuntimeAgent.EvaluateRequest;
+/** @typedef {!{exceptionDetails: Protocol.Runtime.ExceptionDetails, result: Protocol.Runtime.RemoteObject}} */
+Protocol.RuntimeAgent.EvaluateResponse;
 /**
- * @param {!Protocol.RuntimeAgent.prototype.evaluate.Request} obj
- * @param {function(?Protocol.Error, Protocol.Runtime.RemoteObject, Protocol.Runtime.ExceptionDetails=):void=} opt_callback
- */
-Protocol.RuntimeAgent.prototype.invoke_evaluate = function(obj, opt_callback) {};
+ * @param {!Protocol.RuntimeAgent.EvaluateRequest} obj
+ * @return {!Promise<!Protocol.RuntimeAgent.EvaluateResponse>} */
+Protocol.RuntimeAgent.prototype.invoke_evaluate = function(obj) {};
 
 /**
  * @param {Protocol.Runtime.RemoteObjectId} promiseObjectId
@@ -5600,13 +5867,14 @@ Protocol.RuntimeAgent.prototype.invoke_evaluate = function(obj, opt_callback) {}
  * @template T
  */
 Protocol.RuntimeAgent.prototype.awaitPromise = function(promiseObjectId, opt_returnByValue, opt_generatePreview, opt_callback) {};
-/** @typedef {!{returnByValue: (boolean|undefined), generatePreview: (boolean|undefined), promiseObjectId: Protocol.Runtime.RemoteObjectId}} obj */
-Protocol.RuntimeAgent.prototype.awaitPromise.Request;
+/** @typedef {!{returnByValue: (boolean|undefined), generatePreview: (boolean|undefined), promiseObjectId: Protocol.Runtime.RemoteObjectId}} */
+Protocol.RuntimeAgent.AwaitPromiseRequest;
+/** @typedef {!{exceptionDetails: Protocol.Runtime.ExceptionDetails, result: Protocol.Runtime.RemoteObject}} */
+Protocol.RuntimeAgent.AwaitPromiseResponse;
 /**
- * @param {!Protocol.RuntimeAgent.prototype.awaitPromise.Request} obj
- * @param {function(?Protocol.Error, Protocol.Runtime.RemoteObject, Protocol.Runtime.ExceptionDetails=):void=} opt_callback
- */
-Protocol.RuntimeAgent.prototype.invoke_awaitPromise = function(obj, opt_callback) {};
+ * @param {!Protocol.RuntimeAgent.AwaitPromiseRequest} obj
+ * @return {!Promise<!Protocol.RuntimeAgent.AwaitPromiseResponse>} */
+Protocol.RuntimeAgent.prototype.invoke_awaitPromise = function(obj) {};
 
 /**
  * @param {Protocol.Runtime.RemoteObjectId} objectId
@@ -5622,13 +5890,14 @@ Protocol.RuntimeAgent.prototype.invoke_awaitPromise = function(obj, opt_callback
  * @template T
  */
 Protocol.RuntimeAgent.prototype.callFunctionOn = function(objectId, functionDeclaration, opt__arguments, opt_silent, opt_returnByValue, opt_generatePreview, opt_userGesture, opt_awaitPromise, opt_callback) {};
-/** @typedef {!{silent: (boolean|undefined), objectId: Protocol.Runtime.RemoteObjectId, functionDeclaration: string, generatePreview: (boolean|undefined), returnByValue: (boolean|undefined), _arguments: (!Array<Protocol.Runtime.CallArgument>|undefined), userGesture: (boolean|undefined), awaitPromise: (boolean|undefined)}} obj */
-Protocol.RuntimeAgent.prototype.callFunctionOn.Request;
+/** @typedef {!{silent: (boolean|undefined), objectId: Protocol.Runtime.RemoteObjectId, functionDeclaration: string, generatePreview: (boolean|undefined), returnByValue: (boolean|undefined), _arguments: (!Array<Protocol.Runtime.CallArgument>|undefined), userGesture: (boolean|undefined), awaitPromise: (boolean|undefined)}} */
+Protocol.RuntimeAgent.CallFunctionOnRequest;
+/** @typedef {!{exceptionDetails: Protocol.Runtime.ExceptionDetails, result: Protocol.Runtime.RemoteObject}} */
+Protocol.RuntimeAgent.CallFunctionOnResponse;
 /**
- * @param {!Protocol.RuntimeAgent.prototype.callFunctionOn.Request} obj
- * @param {function(?Protocol.Error, Protocol.Runtime.RemoteObject, Protocol.Runtime.ExceptionDetails=):void=} opt_callback
- */
-Protocol.RuntimeAgent.prototype.invoke_callFunctionOn = function(obj, opt_callback) {};
+ * @param {!Protocol.RuntimeAgent.CallFunctionOnRequest} obj
+ * @return {!Promise<!Protocol.RuntimeAgent.CallFunctionOnResponse>} */
+Protocol.RuntimeAgent.prototype.invoke_callFunctionOn = function(obj) {};
 
 /**
  * @param {Protocol.Runtime.RemoteObjectId} objectId
@@ -5640,13 +5909,14 @@ Protocol.RuntimeAgent.prototype.invoke_callFunctionOn = function(obj, opt_callba
  * @template T
  */
 Protocol.RuntimeAgent.prototype.getProperties = function(objectId, opt_ownProperties, opt_accessorPropertiesOnly, opt_generatePreview, opt_callback) {};
-/** @typedef {!{ownProperties: (boolean|undefined), generatePreview: (boolean|undefined), accessorPropertiesOnly: (boolean|undefined), objectId: Protocol.Runtime.RemoteObjectId}} obj */
-Protocol.RuntimeAgent.prototype.getProperties.Request;
+/** @typedef {!{ownProperties: (boolean|undefined), generatePreview: (boolean|undefined), accessorPropertiesOnly: (boolean|undefined), objectId: Protocol.Runtime.RemoteObjectId}} */
+Protocol.RuntimeAgent.GetPropertiesRequest;
+/** @typedef {!{internalProperties: !Array<Protocol.Runtime.InternalPropertyDescriptor>, exceptionDetails: Protocol.Runtime.ExceptionDetails, result: !Array<Protocol.Runtime.PropertyDescriptor>}} */
+Protocol.RuntimeAgent.GetPropertiesResponse;
 /**
- * @param {!Protocol.RuntimeAgent.prototype.getProperties.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.Runtime.PropertyDescriptor>, !Array<Protocol.Runtime.InternalPropertyDescriptor>=, Protocol.Runtime.ExceptionDetails=):void=} opt_callback
- */
-Protocol.RuntimeAgent.prototype.invoke_getProperties = function(obj, opt_callback) {};
+ * @param {!Protocol.RuntimeAgent.GetPropertiesRequest} obj
+ * @return {!Promise<!Protocol.RuntimeAgent.GetPropertiesResponse>} */
+Protocol.RuntimeAgent.prototype.invoke_getProperties = function(obj) {};
 
 /**
  * @param {Protocol.Runtime.RemoteObjectId} objectId
@@ -5655,13 +5925,14 @@ Protocol.RuntimeAgent.prototype.invoke_getProperties = function(obj, opt_callbac
  * @template T
  */
 Protocol.RuntimeAgent.prototype.releaseObject = function(objectId, opt_callback) {};
-/** @typedef {!{objectId: Protocol.Runtime.RemoteObjectId}} obj */
-Protocol.RuntimeAgent.prototype.releaseObject.Request;
+/** @typedef {!{objectId: Protocol.Runtime.RemoteObjectId}} */
+Protocol.RuntimeAgent.ReleaseObjectRequest;
+/** @typedef {Object|undefined} */
+Protocol.RuntimeAgent.ReleaseObjectResponse;
 /**
- * @param {!Protocol.RuntimeAgent.prototype.releaseObject.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.RuntimeAgent.prototype.invoke_releaseObject = function(obj, opt_callback) {};
+ * @param {!Protocol.RuntimeAgent.ReleaseObjectRequest} obj
+ * @return {!Promise<!Protocol.RuntimeAgent.ReleaseObjectResponse>} */
+Protocol.RuntimeAgent.prototype.invoke_releaseObject = function(obj) {};
 
 /**
  * @param {string} objectGroup
@@ -5670,13 +5941,14 @@ Protocol.RuntimeAgent.prototype.invoke_releaseObject = function(obj, opt_callbac
  * @template T
  */
 Protocol.RuntimeAgent.prototype.releaseObjectGroup = function(objectGroup, opt_callback) {};
-/** @typedef {!{objectGroup: string}} obj */
-Protocol.RuntimeAgent.prototype.releaseObjectGroup.Request;
+/** @typedef {!{objectGroup: string}} */
+Protocol.RuntimeAgent.ReleaseObjectGroupRequest;
+/** @typedef {Object|undefined} */
+Protocol.RuntimeAgent.ReleaseObjectGroupResponse;
 /**
- * @param {!Protocol.RuntimeAgent.prototype.releaseObjectGroup.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.RuntimeAgent.prototype.invoke_releaseObjectGroup = function(obj, opt_callback) {};
+ * @param {!Protocol.RuntimeAgent.ReleaseObjectGroupRequest} obj
+ * @return {!Promise<!Protocol.RuntimeAgent.ReleaseObjectGroupResponse>} */
+Protocol.RuntimeAgent.prototype.invoke_releaseObjectGroup = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -5684,13 +5956,14 @@ Protocol.RuntimeAgent.prototype.invoke_releaseObjectGroup = function(obj, opt_ca
  * @template T
  */
 Protocol.RuntimeAgent.prototype.runIfWaitingForDebugger = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.RuntimeAgent.prototype.runIfWaitingForDebugger.Request;
+/** @typedef {Object|undefined} */
+Protocol.RuntimeAgent.RunIfWaitingForDebuggerRequest;
+/** @typedef {Object|undefined} */
+Protocol.RuntimeAgent.RunIfWaitingForDebuggerResponse;
 /**
- * @param {!Protocol.RuntimeAgent.prototype.runIfWaitingForDebugger.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.RuntimeAgent.prototype.invoke_runIfWaitingForDebugger = function(obj, opt_callback) {};
+ * @param {!Protocol.RuntimeAgent.RunIfWaitingForDebuggerRequest} obj
+ * @return {!Promise<!Protocol.RuntimeAgent.RunIfWaitingForDebuggerResponse>} */
+Protocol.RuntimeAgent.prototype.invoke_runIfWaitingForDebugger = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -5698,13 +5971,14 @@ Protocol.RuntimeAgent.prototype.invoke_runIfWaitingForDebugger = function(obj, o
  * @template T
  */
 Protocol.RuntimeAgent.prototype.enable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.RuntimeAgent.prototype.enable.Request;
+/** @typedef {Object|undefined} */
+Protocol.RuntimeAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.RuntimeAgent.EnableResponse;
 /**
- * @param {!Protocol.RuntimeAgent.prototype.enable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.RuntimeAgent.prototype.invoke_enable = function(obj, opt_callback) {};
+ * @param {!Protocol.RuntimeAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.RuntimeAgent.EnableResponse>} */
+Protocol.RuntimeAgent.prototype.invoke_enable = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -5712,13 +5986,14 @@ Protocol.RuntimeAgent.prototype.invoke_enable = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.RuntimeAgent.prototype.disable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.RuntimeAgent.prototype.disable.Request;
+/** @typedef {Object|undefined} */
+Protocol.RuntimeAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.RuntimeAgent.DisableResponse;
 /**
- * @param {!Protocol.RuntimeAgent.prototype.disable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.RuntimeAgent.prototype.invoke_disable = function(obj, opt_callback) {};
+ * @param {!Protocol.RuntimeAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.RuntimeAgent.DisableResponse>} */
+Protocol.RuntimeAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -5726,13 +6001,14 @@ Protocol.RuntimeAgent.prototype.invoke_disable = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.RuntimeAgent.prototype.discardConsoleEntries = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.RuntimeAgent.prototype.discardConsoleEntries.Request;
+/** @typedef {Object|undefined} */
+Protocol.RuntimeAgent.DiscardConsoleEntriesRequest;
+/** @typedef {Object|undefined} */
+Protocol.RuntimeAgent.DiscardConsoleEntriesResponse;
 /**
- * @param {!Protocol.RuntimeAgent.prototype.discardConsoleEntries.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.RuntimeAgent.prototype.invoke_discardConsoleEntries = function(obj, opt_callback) {};
+ * @param {!Protocol.RuntimeAgent.DiscardConsoleEntriesRequest} obj
+ * @return {!Promise<!Protocol.RuntimeAgent.DiscardConsoleEntriesResponse>} */
+Protocol.RuntimeAgent.prototype.invoke_discardConsoleEntries = function(obj) {};
 
 /**
  * @param {boolean} enabled
@@ -5741,13 +6017,14 @@ Protocol.RuntimeAgent.prototype.invoke_discardConsoleEntries = function(obj, opt
  * @template T
  */
 Protocol.RuntimeAgent.prototype.setCustomObjectFormatterEnabled = function(enabled, opt_callback) {};
-/** @typedef {!{enabled: boolean}} obj */
-Protocol.RuntimeAgent.prototype.setCustomObjectFormatterEnabled.Request;
+/** @typedef {!{enabled: boolean}} */
+Protocol.RuntimeAgent.SetCustomObjectFormatterEnabledRequest;
+/** @typedef {Object|undefined} */
+Protocol.RuntimeAgent.SetCustomObjectFormatterEnabledResponse;
 /**
- * @param {!Protocol.RuntimeAgent.prototype.setCustomObjectFormatterEnabled.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.RuntimeAgent.prototype.invoke_setCustomObjectFormatterEnabled = function(obj, opt_callback) {};
+ * @param {!Protocol.RuntimeAgent.SetCustomObjectFormatterEnabledRequest} obj
+ * @return {!Promise<!Protocol.RuntimeAgent.SetCustomObjectFormatterEnabledResponse>} */
+Protocol.RuntimeAgent.prototype.invoke_setCustomObjectFormatterEnabled = function(obj) {};
 
 /**
  * @param {string} expression
@@ -5759,13 +6036,14 @@ Protocol.RuntimeAgent.prototype.invoke_setCustomObjectFormatterEnabled = functio
  * @template T
  */
 Protocol.RuntimeAgent.prototype.compileScript = function(expression, sourceURL, persistScript, opt_executionContextId, opt_callback) {};
-/** @typedef {!{persistScript: boolean, sourceURL: string, expression: string, executionContextId: (Protocol.Runtime.ExecutionContextId|undefined)}} obj */
-Protocol.RuntimeAgent.prototype.compileScript.Request;
+/** @typedef {!{persistScript: boolean, sourceURL: string, expression: string, executionContextId: (Protocol.Runtime.ExecutionContextId|undefined)}} */
+Protocol.RuntimeAgent.CompileScriptRequest;
+/** @typedef {!{scriptId: Protocol.Runtime.ScriptId, exceptionDetails: Protocol.Runtime.ExceptionDetails}} */
+Protocol.RuntimeAgent.CompileScriptResponse;
 /**
- * @param {!Protocol.RuntimeAgent.prototype.compileScript.Request} obj
- * @param {function(?Protocol.Error, Protocol.Runtime.ScriptId=, Protocol.Runtime.ExceptionDetails=):void=} opt_callback
- */
-Protocol.RuntimeAgent.prototype.invoke_compileScript = function(obj, opt_callback) {};
+ * @param {!Protocol.RuntimeAgent.CompileScriptRequest} obj
+ * @return {!Promise<!Protocol.RuntimeAgent.CompileScriptResponse>} */
+Protocol.RuntimeAgent.prototype.invoke_compileScript = function(obj) {};
 
 /**
  * @param {Protocol.Runtime.ScriptId} scriptId
@@ -5781,13 +6059,14 @@ Protocol.RuntimeAgent.prototype.invoke_compileScript = function(obj, opt_callbac
  * @template T
  */
 Protocol.RuntimeAgent.prototype.runScript = function(scriptId, opt_executionContextId, opt_objectGroup, opt_silent, opt_includeCommandLineAPI, opt_returnByValue, opt_generatePreview, opt_awaitPromise, opt_callback) {};
-/** @typedef {!{objectGroup: (string|undefined), includeCommandLineAPI: (boolean|undefined), silent: (boolean|undefined), generatePreview: (boolean|undefined), executionContextId: (Protocol.Runtime.ExecutionContextId|undefined), returnByValue: (boolean|undefined), scriptId: Protocol.Runtime.ScriptId, awaitPromise: (boolean|undefined)}} obj */
-Protocol.RuntimeAgent.prototype.runScript.Request;
+/** @typedef {!{objectGroup: (string|undefined), includeCommandLineAPI: (boolean|undefined), silent: (boolean|undefined), generatePreview: (boolean|undefined), executionContextId: (Protocol.Runtime.ExecutionContextId|undefined), returnByValue: (boolean|undefined), scriptId: Protocol.Runtime.ScriptId, awaitPromise: (boolean|undefined)}} */
+Protocol.RuntimeAgent.RunScriptRequest;
+/** @typedef {!{exceptionDetails: Protocol.Runtime.ExceptionDetails, result: Protocol.Runtime.RemoteObject}} */
+Protocol.RuntimeAgent.RunScriptResponse;
 /**
- * @param {!Protocol.RuntimeAgent.prototype.runScript.Request} obj
- * @param {function(?Protocol.Error, Protocol.Runtime.RemoteObject, Protocol.Runtime.ExceptionDetails=):void=} opt_callback
- */
-Protocol.RuntimeAgent.prototype.invoke_runScript = function(obj, opt_callback) {};
+ * @param {!Protocol.RuntimeAgent.RunScriptRequest} obj
+ * @return {!Promise<!Protocol.RuntimeAgent.RunScriptResponse>} */
+Protocol.RuntimeAgent.prototype.invoke_runScript = function(obj) {};
 
 /** @typedef {string} */
 Protocol.Runtime.ScriptId;
@@ -5977,13 +6256,14 @@ Protocol.DebuggerAgent = function(){};
  * @template T
  */
 Protocol.DebuggerAgent.prototype.enable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.DebuggerAgent.prototype.enable.Request;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.EnableResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.enable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_enable = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.EnableResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_enable = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -5991,13 +6271,14 @@ Protocol.DebuggerAgent.prototype.invoke_enable = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.DebuggerAgent.prototype.disable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.DebuggerAgent.prototype.disable.Request;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.DisableResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.disable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_disable = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.DisableResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {boolean} active
@@ -6006,13 +6287,14 @@ Protocol.DebuggerAgent.prototype.invoke_disable = function(obj, opt_callback) {}
  * @template T
  */
 Protocol.DebuggerAgent.prototype.setBreakpointsActive = function(active, opt_callback) {};
-/** @typedef {!{active: boolean}} obj */
-Protocol.DebuggerAgent.prototype.setBreakpointsActive.Request;
+/** @typedef {!{active: boolean}} */
+Protocol.DebuggerAgent.SetBreakpointsActiveRequest;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.SetBreakpointsActiveResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.setBreakpointsActive.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_setBreakpointsActive = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.SetBreakpointsActiveRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.SetBreakpointsActiveResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_setBreakpointsActive = function(obj) {};
 
 /**
  * @param {boolean} skip
@@ -6021,13 +6303,14 @@ Protocol.DebuggerAgent.prototype.invoke_setBreakpointsActive = function(obj, opt
  * @template T
  */
 Protocol.DebuggerAgent.prototype.setSkipAllPauses = function(skip, opt_callback) {};
-/** @typedef {!{skip: boolean}} obj */
-Protocol.DebuggerAgent.prototype.setSkipAllPauses.Request;
+/** @typedef {!{skip: boolean}} */
+Protocol.DebuggerAgent.SetSkipAllPausesRequest;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.SetSkipAllPausesResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.setSkipAllPauses.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_setSkipAllPauses = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.SetSkipAllPausesRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.SetSkipAllPausesResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_setSkipAllPauses = function(obj) {};
 
 /**
  * @param {number} lineNumber
@@ -6040,13 +6323,14 @@ Protocol.DebuggerAgent.prototype.invoke_setSkipAllPauses = function(obj, opt_cal
  * @template T
  */
 Protocol.DebuggerAgent.prototype.setBreakpointByUrl = function(lineNumber, opt_url, opt_urlRegex, opt_columnNumber, opt_condition, opt_callback) {};
-/** @typedef {!{url: (string|undefined), columnNumber: (number|undefined), urlRegex: (string|undefined), condition: (string|undefined), lineNumber: number}} obj */
-Protocol.DebuggerAgent.prototype.setBreakpointByUrl.Request;
+/** @typedef {!{url: (string|undefined), columnNumber: (number|undefined), urlRegex: (string|undefined), condition: (string|undefined), lineNumber: number}} */
+Protocol.DebuggerAgent.SetBreakpointByUrlRequest;
+/** @typedef {!{breakpointId: Protocol.Debugger.BreakpointId, locations: !Array<Protocol.Debugger.Location>}} */
+Protocol.DebuggerAgent.SetBreakpointByUrlResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.setBreakpointByUrl.Request} obj
- * @param {function(?Protocol.Error, Protocol.Debugger.BreakpointId, !Array<Protocol.Debugger.Location>):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_setBreakpointByUrl = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.SetBreakpointByUrlRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.SetBreakpointByUrlResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_setBreakpointByUrl = function(obj) {};
 
 /**
  * @param {Protocol.Debugger.Location} location
@@ -6056,13 +6340,14 @@ Protocol.DebuggerAgent.prototype.invoke_setBreakpointByUrl = function(obj, opt_c
  * @template T
  */
 Protocol.DebuggerAgent.prototype.setBreakpoint = function(location, opt_condition, opt_callback) {};
-/** @typedef {!{location: Protocol.Debugger.Location, condition: (string|undefined)}} obj */
-Protocol.DebuggerAgent.prototype.setBreakpoint.Request;
+/** @typedef {!{location: Protocol.Debugger.Location, condition: (string|undefined)}} */
+Protocol.DebuggerAgent.SetBreakpointRequest;
+/** @typedef {!{actualLocation: Protocol.Debugger.Location, breakpointId: Protocol.Debugger.BreakpointId}} */
+Protocol.DebuggerAgent.SetBreakpointResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.setBreakpoint.Request} obj
- * @param {function(?Protocol.Error, Protocol.Debugger.BreakpointId, Protocol.Debugger.Location):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_setBreakpoint = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.SetBreakpointRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.SetBreakpointResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_setBreakpoint = function(obj) {};
 
 /**
  * @param {Protocol.Debugger.BreakpointId} breakpointId
@@ -6071,13 +6356,14 @@ Protocol.DebuggerAgent.prototype.invoke_setBreakpoint = function(obj, opt_callba
  * @template T
  */
 Protocol.DebuggerAgent.prototype.removeBreakpoint = function(breakpointId, opt_callback) {};
-/** @typedef {!{breakpointId: Protocol.Debugger.BreakpointId}} obj */
-Protocol.DebuggerAgent.prototype.removeBreakpoint.Request;
+/** @typedef {!{breakpointId: Protocol.Debugger.BreakpointId}} */
+Protocol.DebuggerAgent.RemoveBreakpointRequest;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.RemoveBreakpointResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.removeBreakpoint.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_removeBreakpoint = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.RemoveBreakpointRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.RemoveBreakpointResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_removeBreakpoint = function(obj) {};
 
 /**
  * @param {Protocol.Debugger.Location} start
@@ -6088,13 +6374,14 @@ Protocol.DebuggerAgent.prototype.invoke_removeBreakpoint = function(obj, opt_cal
  * @template T
  */
 Protocol.DebuggerAgent.prototype.getPossibleBreakpoints = function(start, opt_end, opt_restrictToFunction, opt_callback) {};
-/** @typedef {!{start: Protocol.Debugger.Location, end: (Protocol.Debugger.Location|undefined), restrictToFunction: (boolean|undefined)}} obj */
-Protocol.DebuggerAgent.prototype.getPossibleBreakpoints.Request;
+/** @typedef {!{start: Protocol.Debugger.Location, end: (Protocol.Debugger.Location|undefined), restrictToFunction: (boolean|undefined)}} */
+Protocol.DebuggerAgent.GetPossibleBreakpointsRequest;
+/** @typedef {!{locations: !Array<Protocol.Debugger.BreakLocation>}} */
+Protocol.DebuggerAgent.GetPossibleBreakpointsResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.getPossibleBreakpoints.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.Debugger.BreakLocation>):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_getPossibleBreakpoints = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.GetPossibleBreakpointsRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.GetPossibleBreakpointsResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_getPossibleBreakpoints = function(obj) {};
 
 /**
  * @param {Protocol.Debugger.Location} location
@@ -6103,13 +6390,14 @@ Protocol.DebuggerAgent.prototype.invoke_getPossibleBreakpoints = function(obj, o
  * @template T
  */
 Protocol.DebuggerAgent.prototype.continueToLocation = function(location, opt_callback) {};
-/** @typedef {!{location: Protocol.Debugger.Location}} obj */
-Protocol.DebuggerAgent.prototype.continueToLocation.Request;
+/** @typedef {!{location: Protocol.Debugger.Location}} */
+Protocol.DebuggerAgent.ContinueToLocationRequest;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.ContinueToLocationResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.continueToLocation.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_continueToLocation = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.ContinueToLocationRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.ContinueToLocationResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_continueToLocation = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -6117,13 +6405,14 @@ Protocol.DebuggerAgent.prototype.invoke_continueToLocation = function(obj, opt_c
  * @template T
  */
 Protocol.DebuggerAgent.prototype.stepOver = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.DebuggerAgent.prototype.stepOver.Request;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.StepOverRequest;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.StepOverResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.stepOver.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_stepOver = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.StepOverRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.StepOverResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_stepOver = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -6131,13 +6420,14 @@ Protocol.DebuggerAgent.prototype.invoke_stepOver = function(obj, opt_callback) {
  * @template T
  */
 Protocol.DebuggerAgent.prototype.stepInto = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.DebuggerAgent.prototype.stepInto.Request;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.StepIntoRequest;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.StepIntoResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.stepInto.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_stepInto = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.StepIntoRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.StepIntoResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_stepInto = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -6145,13 +6435,14 @@ Protocol.DebuggerAgent.prototype.invoke_stepInto = function(obj, opt_callback) {
  * @template T
  */
 Protocol.DebuggerAgent.prototype.stepOut = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.DebuggerAgent.prototype.stepOut.Request;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.StepOutRequest;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.StepOutResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.stepOut.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_stepOut = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.StepOutRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.StepOutResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_stepOut = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -6159,13 +6450,14 @@ Protocol.DebuggerAgent.prototype.invoke_stepOut = function(obj, opt_callback) {}
  * @template T
  */
 Protocol.DebuggerAgent.prototype.pause = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.DebuggerAgent.prototype.pause.Request;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.PauseRequest;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.PauseResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.pause.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_pause = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.PauseRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.PauseResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_pause = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -6173,13 +6465,14 @@ Protocol.DebuggerAgent.prototype.invoke_pause = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.DebuggerAgent.prototype.scheduleStepIntoAsync = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.DebuggerAgent.prototype.scheduleStepIntoAsync.Request;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.ScheduleStepIntoAsyncRequest;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.ScheduleStepIntoAsyncResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.scheduleStepIntoAsync.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_scheduleStepIntoAsync = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.ScheduleStepIntoAsyncRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.ScheduleStepIntoAsyncResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_scheduleStepIntoAsync = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -6187,13 +6480,14 @@ Protocol.DebuggerAgent.prototype.invoke_scheduleStepIntoAsync = function(obj, op
  * @template T
  */
 Protocol.DebuggerAgent.prototype.resume = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.DebuggerAgent.prototype.resume.Request;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.ResumeRequest;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.ResumeResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.resume.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_resume = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.ResumeRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.ResumeResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_resume = function(obj) {};
 
 /**
  * @param {Protocol.Runtime.ScriptId} scriptId
@@ -6205,13 +6499,14 @@ Protocol.DebuggerAgent.prototype.invoke_resume = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.DebuggerAgent.prototype.searchInContent = function(scriptId, query, opt_caseSensitive, opt_isRegex, opt_callback) {};
-/** @typedef {!{query: string, scriptId: Protocol.Runtime.ScriptId, isRegex: (boolean|undefined), caseSensitive: (boolean|undefined)}} obj */
-Protocol.DebuggerAgent.prototype.searchInContent.Request;
+/** @typedef {!{query: string, scriptId: Protocol.Runtime.ScriptId, isRegex: (boolean|undefined), caseSensitive: (boolean|undefined)}} */
+Protocol.DebuggerAgent.SearchInContentRequest;
+/** @typedef {!{result: !Array<Protocol.Debugger.SearchMatch>}} */
+Protocol.DebuggerAgent.SearchInContentResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.searchInContent.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.Debugger.SearchMatch>):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_searchInContent = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.SearchInContentRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.SearchInContentResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_searchInContent = function(obj) {};
 
 /**
  * @param {Protocol.Runtime.ScriptId} scriptId
@@ -6222,13 +6517,14 @@ Protocol.DebuggerAgent.prototype.invoke_searchInContent = function(obj, opt_call
  * @template T
  */
 Protocol.DebuggerAgent.prototype.setScriptSource = function(scriptId, scriptSource, opt_dryRun, opt_callback) {};
-/** @typedef {!{scriptId: Protocol.Runtime.ScriptId, dryRun: (boolean|undefined), scriptSource: string}} obj */
-Protocol.DebuggerAgent.prototype.setScriptSource.Request;
+/** @typedef {!{scriptId: Protocol.Runtime.ScriptId, dryRun: (boolean|undefined), scriptSource: string}} */
+Protocol.DebuggerAgent.SetScriptSourceRequest;
+/** @typedef {!{stackChanged: boolean, asyncStackTrace: Protocol.Runtime.StackTrace, exceptionDetails: Protocol.Runtime.ExceptionDetails, callFrames: !Array<Protocol.Debugger.CallFrame>}} */
+Protocol.DebuggerAgent.SetScriptSourceResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.setScriptSource.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.Debugger.CallFrame>=, boolean=, Protocol.Runtime.StackTrace=, Protocol.Runtime.ExceptionDetails=):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_setScriptSource = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.SetScriptSourceRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.SetScriptSourceResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_setScriptSource = function(obj) {};
 
 /**
  * @param {Protocol.Debugger.CallFrameId} callFrameId
@@ -6237,13 +6533,14 @@ Protocol.DebuggerAgent.prototype.invoke_setScriptSource = function(obj, opt_call
  * @template T
  */
 Protocol.DebuggerAgent.prototype.restartFrame = function(callFrameId, opt_callback) {};
-/** @typedef {!{callFrameId: Protocol.Debugger.CallFrameId}} obj */
-Protocol.DebuggerAgent.prototype.restartFrame.Request;
+/** @typedef {!{callFrameId: Protocol.Debugger.CallFrameId}} */
+Protocol.DebuggerAgent.RestartFrameRequest;
+/** @typedef {!{asyncStackTrace: Protocol.Runtime.StackTrace, callFrames: !Array<Protocol.Debugger.CallFrame>}} */
+Protocol.DebuggerAgent.RestartFrameResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.restartFrame.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.Debugger.CallFrame>, Protocol.Runtime.StackTrace=):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_restartFrame = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.RestartFrameRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.RestartFrameResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_restartFrame = function(obj) {};
 
 /**
  * @param {Protocol.Runtime.ScriptId} scriptId
@@ -6252,13 +6549,14 @@ Protocol.DebuggerAgent.prototype.invoke_restartFrame = function(obj, opt_callbac
  * @template T
  */
 Protocol.DebuggerAgent.prototype.getScriptSource = function(scriptId, opt_callback) {};
-/** @typedef {!{scriptId: Protocol.Runtime.ScriptId}} obj */
-Protocol.DebuggerAgent.prototype.getScriptSource.Request;
+/** @typedef {!{scriptId: Protocol.Runtime.ScriptId}} */
+Protocol.DebuggerAgent.GetScriptSourceRequest;
+/** @typedef {!{scriptSource: string}} */
+Protocol.DebuggerAgent.GetScriptSourceResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.getScriptSource.Request} obj
- * @param {function(?Protocol.Error, string):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_getScriptSource = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.GetScriptSourceRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.GetScriptSourceResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_getScriptSource = function(obj) {};
 
 /**
  * @param {string} state
@@ -6267,13 +6565,14 @@ Protocol.DebuggerAgent.prototype.invoke_getScriptSource = function(obj, opt_call
  * @template T
  */
 Protocol.DebuggerAgent.prototype.setPauseOnExceptions = function(state, opt_callback) {};
-/** @typedef {!{state: string}} obj */
-Protocol.DebuggerAgent.prototype.setPauseOnExceptions.Request;
+/** @typedef {!{state: string}} */
+Protocol.DebuggerAgent.SetPauseOnExceptionsRequest;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.SetPauseOnExceptionsResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.setPauseOnExceptions.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_setPauseOnExceptions = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.SetPauseOnExceptionsRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.SetPauseOnExceptionsResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_setPauseOnExceptions = function(obj) {};
 
 /**
  * @param {Protocol.Debugger.CallFrameId} callFrameId
@@ -6289,13 +6588,14 @@ Protocol.DebuggerAgent.prototype.invoke_setPauseOnExceptions = function(obj, opt
  * @template T
  */
 Protocol.DebuggerAgent.prototype.evaluateOnCallFrame = function(callFrameId, expression, opt_objectGroup, opt_includeCommandLineAPI, opt_silent, opt_returnByValue, opt_generatePreview, opt_throwOnSideEffect, opt_callback) {};
-/** @typedef {!{objectGroup: (string|undefined), includeCommandLineAPI: (boolean|undefined), silent: (boolean|undefined), throwOnSideEffect: (boolean|undefined), generatePreview: (boolean|undefined), returnByValue: (boolean|undefined), callFrameId: Protocol.Debugger.CallFrameId, expression: string}} obj */
-Protocol.DebuggerAgent.prototype.evaluateOnCallFrame.Request;
+/** @typedef {!{objectGroup: (string|undefined), includeCommandLineAPI: (boolean|undefined), silent: (boolean|undefined), throwOnSideEffect: (boolean|undefined), generatePreview: (boolean|undefined), returnByValue: (boolean|undefined), callFrameId: Protocol.Debugger.CallFrameId, expression: string}} */
+Protocol.DebuggerAgent.EvaluateOnCallFrameRequest;
+/** @typedef {!{exceptionDetails: Protocol.Runtime.ExceptionDetails, result: Protocol.Runtime.RemoteObject}} */
+Protocol.DebuggerAgent.EvaluateOnCallFrameResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.evaluateOnCallFrame.Request} obj
- * @param {function(?Protocol.Error, Protocol.Runtime.RemoteObject, Protocol.Runtime.ExceptionDetails=):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_evaluateOnCallFrame = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.EvaluateOnCallFrameRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.EvaluateOnCallFrameResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_evaluateOnCallFrame = function(obj) {};
 
 /**
  * @param {number} scopeNumber
@@ -6307,13 +6607,14 @@ Protocol.DebuggerAgent.prototype.invoke_evaluateOnCallFrame = function(obj, opt_
  * @template T
  */
 Protocol.DebuggerAgent.prototype.setVariableValue = function(scopeNumber, variableName, newValue, callFrameId, opt_callback) {};
-/** @typedef {!{callFrameId: Protocol.Debugger.CallFrameId, scopeNumber: number, variableName: string, newValue: Protocol.Runtime.CallArgument}} obj */
-Protocol.DebuggerAgent.prototype.setVariableValue.Request;
+/** @typedef {!{callFrameId: Protocol.Debugger.CallFrameId, scopeNumber: number, variableName: string, newValue: Protocol.Runtime.CallArgument}} */
+Protocol.DebuggerAgent.SetVariableValueRequest;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.SetVariableValueResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.setVariableValue.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_setVariableValue = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.SetVariableValueRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.SetVariableValueResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_setVariableValue = function(obj) {};
 
 /**
  * @param {number} maxDepth
@@ -6322,13 +6623,14 @@ Protocol.DebuggerAgent.prototype.invoke_setVariableValue = function(obj, opt_cal
  * @template T
  */
 Protocol.DebuggerAgent.prototype.setAsyncCallStackDepth = function(maxDepth, opt_callback) {};
-/** @typedef {!{maxDepth: number}} obj */
-Protocol.DebuggerAgent.prototype.setAsyncCallStackDepth.Request;
+/** @typedef {!{maxDepth: number}} */
+Protocol.DebuggerAgent.SetAsyncCallStackDepthRequest;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.SetAsyncCallStackDepthResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.setAsyncCallStackDepth.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_setAsyncCallStackDepth = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.SetAsyncCallStackDepthRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.SetAsyncCallStackDepthResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_setAsyncCallStackDepth = function(obj) {};
 
 /**
  * @param {!Array<string>} patterns
@@ -6337,13 +6639,14 @@ Protocol.DebuggerAgent.prototype.invoke_setAsyncCallStackDepth = function(obj, o
  * @template T
  */
 Protocol.DebuggerAgent.prototype.setBlackboxPatterns = function(patterns, opt_callback) {};
-/** @typedef {!{patterns: !Array<string>}} obj */
-Protocol.DebuggerAgent.prototype.setBlackboxPatterns.Request;
+/** @typedef {!{patterns: !Array<string>}} */
+Protocol.DebuggerAgent.SetBlackboxPatternsRequest;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.SetBlackboxPatternsResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.setBlackboxPatterns.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_setBlackboxPatterns = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.SetBlackboxPatternsRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.SetBlackboxPatternsResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_setBlackboxPatterns = function(obj) {};
 
 /**
  * @param {Protocol.Runtime.ScriptId} scriptId
@@ -6353,13 +6656,14 @@ Protocol.DebuggerAgent.prototype.invoke_setBlackboxPatterns = function(obj, opt_
  * @template T
  */
 Protocol.DebuggerAgent.prototype.setBlackboxedRanges = function(scriptId, positions, opt_callback) {};
-/** @typedef {!{positions: !Array<Protocol.Debugger.ScriptPosition>, scriptId: Protocol.Runtime.ScriptId}} obj */
-Protocol.DebuggerAgent.prototype.setBlackboxedRanges.Request;
+/** @typedef {!{positions: !Array<Protocol.Debugger.ScriptPosition>, scriptId: Protocol.Runtime.ScriptId}} */
+Protocol.DebuggerAgent.SetBlackboxedRangesRequest;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.SetBlackboxedRangesResponse;
 /**
- * @param {!Protocol.DebuggerAgent.prototype.setBlackboxedRanges.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.DebuggerAgent.prototype.invoke_setBlackboxedRanges = function(obj, opt_callback) {};
+ * @param {!Protocol.DebuggerAgent.SetBlackboxedRangesRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.SetBlackboxedRangesResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_setBlackboxedRanges = function(obj) {};
 
 /** @typedef {string} */
 Protocol.Debugger.BreakpointId;
@@ -6469,13 +6773,14 @@ Protocol.ConsoleAgent = function(){};
  * @template T
  */
 Protocol.ConsoleAgent.prototype.enable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.ConsoleAgent.prototype.enable.Request;
+/** @typedef {Object|undefined} */
+Protocol.ConsoleAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.ConsoleAgent.EnableResponse;
 /**
- * @param {!Protocol.ConsoleAgent.prototype.enable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.ConsoleAgent.prototype.invoke_enable = function(obj, opt_callback) {};
+ * @param {!Protocol.ConsoleAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.ConsoleAgent.EnableResponse>} */
+Protocol.ConsoleAgent.prototype.invoke_enable = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -6483,13 +6788,14 @@ Protocol.ConsoleAgent.prototype.invoke_enable = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.ConsoleAgent.prototype.disable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.ConsoleAgent.prototype.disable.Request;
+/** @typedef {Object|undefined} */
+Protocol.ConsoleAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.ConsoleAgent.DisableResponse;
 /**
- * @param {!Protocol.ConsoleAgent.prototype.disable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.ConsoleAgent.prototype.invoke_disable = function(obj, opt_callback) {};
+ * @param {!Protocol.ConsoleAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.ConsoleAgent.DisableResponse>} */
+Protocol.ConsoleAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -6497,13 +6803,14 @@ Protocol.ConsoleAgent.prototype.invoke_disable = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.ConsoleAgent.prototype.clearMessages = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.ConsoleAgent.prototype.clearMessages.Request;
+/** @typedef {Object|undefined} */
+Protocol.ConsoleAgent.ClearMessagesRequest;
+/** @typedef {Object|undefined} */
+Protocol.ConsoleAgent.ClearMessagesResponse;
 /**
- * @param {!Protocol.ConsoleAgent.prototype.clearMessages.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.ConsoleAgent.prototype.invoke_clearMessages = function(obj, opt_callback) {};
+ * @param {!Protocol.ConsoleAgent.ClearMessagesRequest} obj
+ * @return {!Promise<!Protocol.ConsoleAgent.ClearMessagesResponse>} */
+Protocol.ConsoleAgent.prototype.invoke_clearMessages = function(obj) {};
 
 /** @enum {string} */
 Protocol.Console.ConsoleMessageSource = {
@@ -6551,13 +6858,14 @@ Protocol.ProfilerAgent = function(){};
  * @template T
  */
 Protocol.ProfilerAgent.prototype.enable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.ProfilerAgent.prototype.enable.Request;
+/** @typedef {Object|undefined} */
+Protocol.ProfilerAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.ProfilerAgent.EnableResponse;
 /**
- * @param {!Protocol.ProfilerAgent.prototype.enable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.ProfilerAgent.prototype.invoke_enable = function(obj, opt_callback) {};
+ * @param {!Protocol.ProfilerAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.ProfilerAgent.EnableResponse>} */
+Protocol.ProfilerAgent.prototype.invoke_enable = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -6565,13 +6873,14 @@ Protocol.ProfilerAgent.prototype.invoke_enable = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.ProfilerAgent.prototype.disable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.ProfilerAgent.prototype.disable.Request;
+/** @typedef {Object|undefined} */
+Protocol.ProfilerAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.ProfilerAgent.DisableResponse;
 /**
- * @param {!Protocol.ProfilerAgent.prototype.disable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.ProfilerAgent.prototype.invoke_disable = function(obj, opt_callback) {};
+ * @param {!Protocol.ProfilerAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.ProfilerAgent.DisableResponse>} */
+Protocol.ProfilerAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {number} interval
@@ -6580,13 +6889,14 @@ Protocol.ProfilerAgent.prototype.invoke_disable = function(obj, opt_callback) {}
  * @template T
  */
 Protocol.ProfilerAgent.prototype.setSamplingInterval = function(interval, opt_callback) {};
-/** @typedef {!{interval: number}} obj */
-Protocol.ProfilerAgent.prototype.setSamplingInterval.Request;
+/** @typedef {!{interval: number}} */
+Protocol.ProfilerAgent.SetSamplingIntervalRequest;
+/** @typedef {Object|undefined} */
+Protocol.ProfilerAgent.SetSamplingIntervalResponse;
 /**
- * @param {!Protocol.ProfilerAgent.prototype.setSamplingInterval.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.ProfilerAgent.prototype.invoke_setSamplingInterval = function(obj, opt_callback) {};
+ * @param {!Protocol.ProfilerAgent.SetSamplingIntervalRequest} obj
+ * @return {!Promise<!Protocol.ProfilerAgent.SetSamplingIntervalResponse>} */
+Protocol.ProfilerAgent.prototype.invoke_setSamplingInterval = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -6594,13 +6904,14 @@ Protocol.ProfilerAgent.prototype.invoke_setSamplingInterval = function(obj, opt_
  * @template T
  */
 Protocol.ProfilerAgent.prototype.start = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.ProfilerAgent.prototype.start.Request;
+/** @typedef {Object|undefined} */
+Protocol.ProfilerAgent.StartRequest;
+/** @typedef {Object|undefined} */
+Protocol.ProfilerAgent.StartResponse;
 /**
- * @param {!Protocol.ProfilerAgent.prototype.start.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.ProfilerAgent.prototype.invoke_start = function(obj, opt_callback) {};
+ * @param {!Protocol.ProfilerAgent.StartRequest} obj
+ * @return {!Promise<!Protocol.ProfilerAgent.StartResponse>} */
+Protocol.ProfilerAgent.prototype.invoke_start = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error, Protocol.Profiler.Profile):T=} opt_callback
@@ -6608,13 +6919,14 @@ Protocol.ProfilerAgent.prototype.invoke_start = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.ProfilerAgent.prototype.stop = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.ProfilerAgent.prototype.stop.Request;
+/** @typedef {Object|undefined} */
+Protocol.ProfilerAgent.StopRequest;
+/** @typedef {!{profile: Protocol.Profiler.Profile}} */
+Protocol.ProfilerAgent.StopResponse;
 /**
- * @param {!Protocol.ProfilerAgent.prototype.stop.Request} obj
- * @param {function(?Protocol.Error, Protocol.Profiler.Profile):void=} opt_callback
- */
-Protocol.ProfilerAgent.prototype.invoke_stop = function(obj, opt_callback) {};
+ * @param {!Protocol.ProfilerAgent.StopRequest} obj
+ * @return {!Promise<!Protocol.ProfilerAgent.StopResponse>} */
+Protocol.ProfilerAgent.prototype.invoke_stop = function(obj) {};
 
 /**
  * @param {boolean=} opt_callCount
@@ -6623,13 +6935,14 @@ Protocol.ProfilerAgent.prototype.invoke_stop = function(obj, opt_callback) {};
  * @template T
  */
 Protocol.ProfilerAgent.prototype.startPreciseCoverage = function(opt_callCount, opt_callback) {};
-/** @typedef {!{callCount: (boolean|undefined)}} obj */
-Protocol.ProfilerAgent.prototype.startPreciseCoverage.Request;
+/** @typedef {!{callCount: (boolean|undefined)}} */
+Protocol.ProfilerAgent.StartPreciseCoverageRequest;
+/** @typedef {Object|undefined} */
+Protocol.ProfilerAgent.StartPreciseCoverageResponse;
 /**
- * @param {!Protocol.ProfilerAgent.prototype.startPreciseCoverage.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.ProfilerAgent.prototype.invoke_startPreciseCoverage = function(obj, opt_callback) {};
+ * @param {!Protocol.ProfilerAgent.StartPreciseCoverageRequest} obj
+ * @return {!Promise<!Protocol.ProfilerAgent.StartPreciseCoverageResponse>} */
+Protocol.ProfilerAgent.prototype.invoke_startPreciseCoverage = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -6637,13 +6950,14 @@ Protocol.ProfilerAgent.prototype.invoke_startPreciseCoverage = function(obj, opt
  * @template T
  */
 Protocol.ProfilerAgent.prototype.stopPreciseCoverage = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.ProfilerAgent.prototype.stopPreciseCoverage.Request;
+/** @typedef {Object|undefined} */
+Protocol.ProfilerAgent.StopPreciseCoverageRequest;
+/** @typedef {Object|undefined} */
+Protocol.ProfilerAgent.StopPreciseCoverageResponse;
 /**
- * @param {!Protocol.ProfilerAgent.prototype.stopPreciseCoverage.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.ProfilerAgent.prototype.invoke_stopPreciseCoverage = function(obj, opt_callback) {};
+ * @param {!Protocol.ProfilerAgent.StopPreciseCoverageRequest} obj
+ * @return {!Promise<!Protocol.ProfilerAgent.StopPreciseCoverageResponse>} */
+Protocol.ProfilerAgent.prototype.invoke_stopPreciseCoverage = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error, !Array<Protocol.Profiler.ScriptCoverage>):T=} opt_callback
@@ -6651,13 +6965,14 @@ Protocol.ProfilerAgent.prototype.invoke_stopPreciseCoverage = function(obj, opt_
  * @template T
  */
 Protocol.ProfilerAgent.prototype.takePreciseCoverage = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.ProfilerAgent.prototype.takePreciseCoverage.Request;
+/** @typedef {Object|undefined} */
+Protocol.ProfilerAgent.TakePreciseCoverageRequest;
+/** @typedef {!{result: !Array<Protocol.Profiler.ScriptCoverage>}} */
+Protocol.ProfilerAgent.TakePreciseCoverageResponse;
 /**
- * @param {!Protocol.ProfilerAgent.prototype.takePreciseCoverage.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.Profiler.ScriptCoverage>):void=} opt_callback
- */
-Protocol.ProfilerAgent.prototype.invoke_takePreciseCoverage = function(obj, opt_callback) {};
+ * @param {!Protocol.ProfilerAgent.TakePreciseCoverageRequest} obj
+ * @return {!Promise<!Protocol.ProfilerAgent.TakePreciseCoverageResponse>} */
+Protocol.ProfilerAgent.prototype.invoke_takePreciseCoverage = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error, !Array<Protocol.Profiler.ScriptCoverage>):T=} opt_callback
@@ -6665,13 +6980,14 @@ Protocol.ProfilerAgent.prototype.invoke_takePreciseCoverage = function(obj, opt_
  * @template T
  */
 Protocol.ProfilerAgent.prototype.getBestEffortCoverage = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.ProfilerAgent.prototype.getBestEffortCoverage.Request;
+/** @typedef {Object|undefined} */
+Protocol.ProfilerAgent.GetBestEffortCoverageRequest;
+/** @typedef {!{result: !Array<Protocol.Profiler.ScriptCoverage>}} */
+Protocol.ProfilerAgent.GetBestEffortCoverageResponse;
 /**
- * @param {!Protocol.ProfilerAgent.prototype.getBestEffortCoverage.Request} obj
- * @param {function(?Protocol.Error, !Array<Protocol.Profiler.ScriptCoverage>):void=} opt_callback
- */
-Protocol.ProfilerAgent.prototype.invoke_getBestEffortCoverage = function(obj, opt_callback) {};
+ * @param {!Protocol.ProfilerAgent.GetBestEffortCoverageRequest} obj
+ * @return {!Promise<!Protocol.ProfilerAgent.GetBestEffortCoverageResponse>} */
+Protocol.ProfilerAgent.prototype.invoke_getBestEffortCoverage = function(obj) {};
 
 /** @typedef {!{id:(number), callFrame:(Protocol.Runtime.CallFrame), hitCount:(number|undefined), children:(!Array<number>|undefined), deoptReason:(string|undefined), positionTicks:(!Array<Protocol.Profiler.PositionTickInfo>|undefined)}} */
 Protocol.Profiler.ProfileNode;
@@ -6719,13 +7035,14 @@ Protocol.HeapProfilerAgent = function(){};
  * @template T
  */
 Protocol.HeapProfilerAgent.prototype.enable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.HeapProfilerAgent.prototype.enable.Request;
+/** @typedef {Object|undefined} */
+Protocol.HeapProfilerAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.HeapProfilerAgent.EnableResponse;
 /**
- * @param {!Protocol.HeapProfilerAgent.prototype.enable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.HeapProfilerAgent.prototype.invoke_enable = function(obj, opt_callback) {};
+ * @param {!Protocol.HeapProfilerAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.HeapProfilerAgent.EnableResponse>} */
+Protocol.HeapProfilerAgent.prototype.invoke_enable = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -6733,13 +7050,14 @@ Protocol.HeapProfilerAgent.prototype.invoke_enable = function(obj, opt_callback)
  * @template T
  */
 Protocol.HeapProfilerAgent.prototype.disable = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.HeapProfilerAgent.prototype.disable.Request;
+/** @typedef {Object|undefined} */
+Protocol.HeapProfilerAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.HeapProfilerAgent.DisableResponse;
 /**
- * @param {!Protocol.HeapProfilerAgent.prototype.disable.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.HeapProfilerAgent.prototype.invoke_disable = function(obj, opt_callback) {};
+ * @param {!Protocol.HeapProfilerAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.HeapProfilerAgent.DisableResponse>} */
+Protocol.HeapProfilerAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {boolean=} opt_trackAllocations
@@ -6748,13 +7066,14 @@ Protocol.HeapProfilerAgent.prototype.invoke_disable = function(obj, opt_callback
  * @template T
  */
 Protocol.HeapProfilerAgent.prototype.startTrackingHeapObjects = function(opt_trackAllocations, opt_callback) {};
-/** @typedef {!{trackAllocations: (boolean|undefined)}} obj */
-Protocol.HeapProfilerAgent.prototype.startTrackingHeapObjects.Request;
+/** @typedef {!{trackAllocations: (boolean|undefined)}} */
+Protocol.HeapProfilerAgent.StartTrackingHeapObjectsRequest;
+/** @typedef {Object|undefined} */
+Protocol.HeapProfilerAgent.StartTrackingHeapObjectsResponse;
 /**
- * @param {!Protocol.HeapProfilerAgent.prototype.startTrackingHeapObjects.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.HeapProfilerAgent.prototype.invoke_startTrackingHeapObjects = function(obj, opt_callback) {};
+ * @param {!Protocol.HeapProfilerAgent.StartTrackingHeapObjectsRequest} obj
+ * @return {!Promise<!Protocol.HeapProfilerAgent.StartTrackingHeapObjectsResponse>} */
+Protocol.HeapProfilerAgent.prototype.invoke_startTrackingHeapObjects = function(obj) {};
 
 /**
  * @param {boolean=} opt_reportProgress
@@ -6763,13 +7082,14 @@ Protocol.HeapProfilerAgent.prototype.invoke_startTrackingHeapObjects = function(
  * @template T
  */
 Protocol.HeapProfilerAgent.prototype.stopTrackingHeapObjects = function(opt_reportProgress, opt_callback) {};
-/** @typedef {!{reportProgress: (boolean|undefined)}} obj */
-Protocol.HeapProfilerAgent.prototype.stopTrackingHeapObjects.Request;
+/** @typedef {!{reportProgress: (boolean|undefined)}} */
+Protocol.HeapProfilerAgent.StopTrackingHeapObjectsRequest;
+/** @typedef {Object|undefined} */
+Protocol.HeapProfilerAgent.StopTrackingHeapObjectsResponse;
 /**
- * @param {!Protocol.HeapProfilerAgent.prototype.stopTrackingHeapObjects.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.HeapProfilerAgent.prototype.invoke_stopTrackingHeapObjects = function(obj, opt_callback) {};
+ * @param {!Protocol.HeapProfilerAgent.StopTrackingHeapObjectsRequest} obj
+ * @return {!Promise<!Protocol.HeapProfilerAgent.StopTrackingHeapObjectsResponse>} */
+Protocol.HeapProfilerAgent.prototype.invoke_stopTrackingHeapObjects = function(obj) {};
 
 /**
  * @param {boolean=} opt_reportProgress
@@ -6778,13 +7098,14 @@ Protocol.HeapProfilerAgent.prototype.invoke_stopTrackingHeapObjects = function(o
  * @template T
  */
 Protocol.HeapProfilerAgent.prototype.takeHeapSnapshot = function(opt_reportProgress, opt_callback) {};
-/** @typedef {!{reportProgress: (boolean|undefined)}} obj */
-Protocol.HeapProfilerAgent.prototype.takeHeapSnapshot.Request;
+/** @typedef {!{reportProgress: (boolean|undefined)}} */
+Protocol.HeapProfilerAgent.TakeHeapSnapshotRequest;
+/** @typedef {Object|undefined} */
+Protocol.HeapProfilerAgent.TakeHeapSnapshotResponse;
 /**
- * @param {!Protocol.HeapProfilerAgent.prototype.takeHeapSnapshot.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.HeapProfilerAgent.prototype.invoke_takeHeapSnapshot = function(obj, opt_callback) {};
+ * @param {!Protocol.HeapProfilerAgent.TakeHeapSnapshotRequest} obj
+ * @return {!Promise<!Protocol.HeapProfilerAgent.TakeHeapSnapshotResponse>} */
+Protocol.HeapProfilerAgent.prototype.invoke_takeHeapSnapshot = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error):T=} opt_callback
@@ -6792,13 +7113,14 @@ Protocol.HeapProfilerAgent.prototype.invoke_takeHeapSnapshot = function(obj, opt
  * @template T
  */
 Protocol.HeapProfilerAgent.prototype.collectGarbage = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.HeapProfilerAgent.prototype.collectGarbage.Request;
+/** @typedef {Object|undefined} */
+Protocol.HeapProfilerAgent.CollectGarbageRequest;
+/** @typedef {Object|undefined} */
+Protocol.HeapProfilerAgent.CollectGarbageResponse;
 /**
- * @param {!Protocol.HeapProfilerAgent.prototype.collectGarbage.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.HeapProfilerAgent.prototype.invoke_collectGarbage = function(obj, opt_callback) {};
+ * @param {!Protocol.HeapProfilerAgent.CollectGarbageRequest} obj
+ * @return {!Promise<!Protocol.HeapProfilerAgent.CollectGarbageResponse>} */
+Protocol.HeapProfilerAgent.prototype.invoke_collectGarbage = function(obj) {};
 
 /**
  * @param {Protocol.HeapProfiler.HeapSnapshotObjectId} objectId
@@ -6808,13 +7130,14 @@ Protocol.HeapProfilerAgent.prototype.invoke_collectGarbage = function(obj, opt_c
  * @template T
  */
 Protocol.HeapProfilerAgent.prototype.getObjectByHeapObjectId = function(objectId, opt_objectGroup, opt_callback) {};
-/** @typedef {!{objectGroup: (string|undefined), objectId: Protocol.HeapProfiler.HeapSnapshotObjectId}} obj */
-Protocol.HeapProfilerAgent.prototype.getObjectByHeapObjectId.Request;
+/** @typedef {!{objectGroup: (string|undefined), objectId: Protocol.HeapProfiler.HeapSnapshotObjectId}} */
+Protocol.HeapProfilerAgent.GetObjectByHeapObjectIdRequest;
+/** @typedef {!{result: Protocol.Runtime.RemoteObject}} */
+Protocol.HeapProfilerAgent.GetObjectByHeapObjectIdResponse;
 /**
- * @param {!Protocol.HeapProfilerAgent.prototype.getObjectByHeapObjectId.Request} obj
- * @param {function(?Protocol.Error, Protocol.Runtime.RemoteObject):void=} opt_callback
- */
-Protocol.HeapProfilerAgent.prototype.invoke_getObjectByHeapObjectId = function(obj, opt_callback) {};
+ * @param {!Protocol.HeapProfilerAgent.GetObjectByHeapObjectIdRequest} obj
+ * @return {!Promise<!Protocol.HeapProfilerAgent.GetObjectByHeapObjectIdResponse>} */
+Protocol.HeapProfilerAgent.prototype.invoke_getObjectByHeapObjectId = function(obj) {};
 
 /**
  * @param {Protocol.HeapProfiler.HeapSnapshotObjectId} heapObjectId
@@ -6823,13 +7146,14 @@ Protocol.HeapProfilerAgent.prototype.invoke_getObjectByHeapObjectId = function(o
  * @template T
  */
 Protocol.HeapProfilerAgent.prototype.addInspectedHeapObject = function(heapObjectId, opt_callback) {};
-/** @typedef {!{heapObjectId: Protocol.HeapProfiler.HeapSnapshotObjectId}} obj */
-Protocol.HeapProfilerAgent.prototype.addInspectedHeapObject.Request;
+/** @typedef {!{heapObjectId: Protocol.HeapProfiler.HeapSnapshotObjectId}} */
+Protocol.HeapProfilerAgent.AddInspectedHeapObjectRequest;
+/** @typedef {Object|undefined} */
+Protocol.HeapProfilerAgent.AddInspectedHeapObjectResponse;
 /**
- * @param {!Protocol.HeapProfilerAgent.prototype.addInspectedHeapObject.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.HeapProfilerAgent.prototype.invoke_addInspectedHeapObject = function(obj, opt_callback) {};
+ * @param {!Protocol.HeapProfilerAgent.AddInspectedHeapObjectRequest} obj
+ * @return {!Promise<!Protocol.HeapProfilerAgent.AddInspectedHeapObjectResponse>} */
+Protocol.HeapProfilerAgent.prototype.invoke_addInspectedHeapObject = function(obj) {};
 
 /**
  * @param {Protocol.Runtime.RemoteObjectId} objectId
@@ -6838,13 +7162,14 @@ Protocol.HeapProfilerAgent.prototype.invoke_addInspectedHeapObject = function(ob
  * @template T
  */
 Protocol.HeapProfilerAgent.prototype.getHeapObjectId = function(objectId, opt_callback) {};
-/** @typedef {!{objectId: Protocol.Runtime.RemoteObjectId}} obj */
-Protocol.HeapProfilerAgent.prototype.getHeapObjectId.Request;
+/** @typedef {!{objectId: Protocol.Runtime.RemoteObjectId}} */
+Protocol.HeapProfilerAgent.GetHeapObjectIdRequest;
+/** @typedef {!{heapSnapshotObjectId: Protocol.HeapProfiler.HeapSnapshotObjectId}} */
+Protocol.HeapProfilerAgent.GetHeapObjectIdResponse;
 /**
- * @param {!Protocol.HeapProfilerAgent.prototype.getHeapObjectId.Request} obj
- * @param {function(?Protocol.Error, Protocol.HeapProfiler.HeapSnapshotObjectId):void=} opt_callback
- */
-Protocol.HeapProfilerAgent.prototype.invoke_getHeapObjectId = function(obj, opt_callback) {};
+ * @param {!Protocol.HeapProfilerAgent.GetHeapObjectIdRequest} obj
+ * @return {!Promise<!Protocol.HeapProfilerAgent.GetHeapObjectIdResponse>} */
+Protocol.HeapProfilerAgent.prototype.invoke_getHeapObjectId = function(obj) {};
 
 /**
  * @param {number=} opt_samplingInterval
@@ -6853,13 +7178,14 @@ Protocol.HeapProfilerAgent.prototype.invoke_getHeapObjectId = function(obj, opt_
  * @template T
  */
 Protocol.HeapProfilerAgent.prototype.startSampling = function(opt_samplingInterval, opt_callback) {};
-/** @typedef {!{samplingInterval: (number|undefined)}} obj */
-Protocol.HeapProfilerAgent.prototype.startSampling.Request;
+/** @typedef {!{samplingInterval: (number|undefined)}} */
+Protocol.HeapProfilerAgent.StartSamplingRequest;
+/** @typedef {Object|undefined} */
+Protocol.HeapProfilerAgent.StartSamplingResponse;
 /**
- * @param {!Protocol.HeapProfilerAgent.prototype.startSampling.Request} obj
- * @param {function(?Protocol.Error):void=} opt_callback
- */
-Protocol.HeapProfilerAgent.prototype.invoke_startSampling = function(obj, opt_callback) {};
+ * @param {!Protocol.HeapProfilerAgent.StartSamplingRequest} obj
+ * @return {!Promise<!Protocol.HeapProfilerAgent.StartSamplingResponse>} */
+Protocol.HeapProfilerAgent.prototype.invoke_startSampling = function(obj) {};
 
 /**
  * @param {function(?Protocol.Error, Protocol.HeapProfiler.SamplingHeapProfile):T=} opt_callback
@@ -6867,13 +7193,14 @@ Protocol.HeapProfilerAgent.prototype.invoke_startSampling = function(obj, opt_ca
  * @template T
  */
 Protocol.HeapProfilerAgent.prototype.stopSampling = function(opt_callback) {};
-/** @typedef {Object|undefined} obj */
-Protocol.HeapProfilerAgent.prototype.stopSampling.Request;
+/** @typedef {Object|undefined} */
+Protocol.HeapProfilerAgent.StopSamplingRequest;
+/** @typedef {!{profile: Protocol.HeapProfiler.SamplingHeapProfile}} */
+Protocol.HeapProfilerAgent.StopSamplingResponse;
 /**
- * @param {!Protocol.HeapProfilerAgent.prototype.stopSampling.Request} obj
- * @param {function(?Protocol.Error, Protocol.HeapProfiler.SamplingHeapProfile):void=} opt_callback
- */
-Protocol.HeapProfilerAgent.prototype.invoke_stopSampling = function(obj, opt_callback) {};
+ * @param {!Protocol.HeapProfilerAgent.StopSamplingRequest} obj
+ * @return {!Promise<!Protocol.HeapProfilerAgent.StopSamplingResponse>} */
+Protocol.HeapProfilerAgent.prototype.invoke_stopSampling = function(obj) {};
 
 /** @typedef {string} */
 Protocol.HeapProfiler.HeapSnapshotObjectId;
