@@ -599,6 +599,23 @@ Protocol.PageAgent.HandleJavaScriptDialogResponse;
 Protocol.PageAgent.prototype.invoke_handleJavaScriptDialog = function(obj) {};
 
 /**
+ * @param {boolean=} opt_suspended
+ * @param {string=} opt_message
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise<T>}
+ * @template T
+ */
+Protocol.PageAgent.prototype.configureOverlay = function(opt_suspended, opt_message, opt_callback) {};
+/** @typedef {!{message: (string|undefined), suspended: (boolean|undefined)}} */
+Protocol.PageAgent.ConfigureOverlayRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.ConfigureOverlayResponse;
+/**
+ * @param {!Protocol.PageAgent.ConfigureOverlayRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.ConfigureOverlayResponse>} */
+Protocol.PageAgent.prototype.invoke_configureOverlay = function(obj) {};
+
+/**
  * @param {function(?Protocol.Error, string, !Array<Protocol.Page.AppManifestError>, string=):T=} opt_callback
  * @return {!Promise<T>}
  * @template T
@@ -807,43 +824,13 @@ Protocol.PageDispatcher.prototype.interstitialHidden = function() {};
  * @param {string} url
  */
 Protocol.PageDispatcher.prototype.navigationRequested = function(isInMainFrame, isRedirect, navigationId, url) {};
-Protocol.Overlay = {};
+Protocol.Rendering = {};
 
 
 /**
  * @constructor
 */
-Protocol.OverlayAgent = function(){};
-
-/**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
- */
-Protocol.OverlayAgent.prototype.enable = function(opt_callback) {};
-/** @typedef {Object|undefined} */
-Protocol.OverlayAgent.EnableRequest;
-/** @typedef {Object|undefined} */
-Protocol.OverlayAgent.EnableResponse;
-/**
- * @param {!Protocol.OverlayAgent.EnableRequest} obj
- * @return {!Promise<!Protocol.OverlayAgent.EnableResponse>} */
-Protocol.OverlayAgent.prototype.invoke_enable = function(obj) {};
-
-/**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
- */
-Protocol.OverlayAgent.prototype.disable = function(opt_callback) {};
-/** @typedef {Object|undefined} */
-Protocol.OverlayAgent.DisableRequest;
-/** @typedef {Object|undefined} */
-Protocol.OverlayAgent.DisableResponse;
-/**
- * @param {!Protocol.OverlayAgent.DisableRequest} obj
- * @return {!Promise<!Protocol.OverlayAgent.DisableResponse>} */
-Protocol.OverlayAgent.prototype.invoke_disable = function(obj) {};
+Protocol.RenderingAgent = function(){};
 
 /**
  * @param {boolean} result
@@ -851,15 +838,15 @@ Protocol.OverlayAgent.prototype.invoke_disable = function(obj) {};
  * @return {!Promise<T>}
  * @template T
  */
-Protocol.OverlayAgent.prototype.setShowPaintRects = function(result, opt_callback) {};
+Protocol.RenderingAgent.prototype.setShowPaintRects = function(result, opt_callback) {};
 /** @typedef {!{result: boolean}} */
-Protocol.OverlayAgent.SetShowPaintRectsRequest;
+Protocol.RenderingAgent.SetShowPaintRectsRequest;
 /** @typedef {Object|undefined} */
-Protocol.OverlayAgent.SetShowPaintRectsResponse;
+Protocol.RenderingAgent.SetShowPaintRectsResponse;
 /**
- * @param {!Protocol.OverlayAgent.SetShowPaintRectsRequest} obj
- * @return {!Promise<!Protocol.OverlayAgent.SetShowPaintRectsResponse>} */
-Protocol.OverlayAgent.prototype.invoke_setShowPaintRects = function(obj) {};
+ * @param {!Protocol.RenderingAgent.SetShowPaintRectsRequest} obj
+ * @return {!Promise<!Protocol.RenderingAgent.SetShowPaintRectsResponse>} */
+Protocol.RenderingAgent.prototype.invoke_setShowPaintRects = function(obj) {};
 
 /**
  * @param {boolean} show
@@ -867,15 +854,15 @@ Protocol.OverlayAgent.prototype.invoke_setShowPaintRects = function(obj) {};
  * @return {!Promise<T>}
  * @template T
  */
-Protocol.OverlayAgent.prototype.setShowDebugBorders = function(show, opt_callback) {};
+Protocol.RenderingAgent.prototype.setShowDebugBorders = function(show, opt_callback) {};
 /** @typedef {!{show: boolean}} */
-Protocol.OverlayAgent.SetShowDebugBordersRequest;
+Protocol.RenderingAgent.SetShowDebugBordersRequest;
 /** @typedef {Object|undefined} */
-Protocol.OverlayAgent.SetShowDebugBordersResponse;
+Protocol.RenderingAgent.SetShowDebugBordersResponse;
 /**
- * @param {!Protocol.OverlayAgent.SetShowDebugBordersRequest} obj
- * @return {!Promise<!Protocol.OverlayAgent.SetShowDebugBordersResponse>} */
-Protocol.OverlayAgent.prototype.invoke_setShowDebugBorders = function(obj) {};
+ * @param {!Protocol.RenderingAgent.SetShowDebugBordersRequest} obj
+ * @return {!Promise<!Protocol.RenderingAgent.SetShowDebugBordersResponse>} */
+Protocol.RenderingAgent.prototype.invoke_setShowDebugBorders = function(obj) {};
 
 /**
  * @param {boolean} show
@@ -883,15 +870,15 @@ Protocol.OverlayAgent.prototype.invoke_setShowDebugBorders = function(obj) {};
  * @return {!Promise<T>}
  * @template T
  */
-Protocol.OverlayAgent.prototype.setShowFPSCounter = function(show, opt_callback) {};
+Protocol.RenderingAgent.prototype.setShowFPSCounter = function(show, opt_callback) {};
 /** @typedef {!{show: boolean}} */
-Protocol.OverlayAgent.SetShowFPSCounterRequest;
+Protocol.RenderingAgent.SetShowFPSCounterRequest;
 /** @typedef {Object|undefined} */
-Protocol.OverlayAgent.SetShowFPSCounterResponse;
+Protocol.RenderingAgent.SetShowFPSCounterResponse;
 /**
- * @param {!Protocol.OverlayAgent.SetShowFPSCounterRequest} obj
- * @return {!Promise<!Protocol.OverlayAgent.SetShowFPSCounterResponse>} */
-Protocol.OverlayAgent.prototype.invoke_setShowFPSCounter = function(obj) {};
+ * @param {!Protocol.RenderingAgent.SetShowFPSCounterRequest} obj
+ * @return {!Promise<!Protocol.RenderingAgent.SetShowFPSCounterResponse>} */
+Protocol.RenderingAgent.prototype.invoke_setShowFPSCounter = function(obj) {};
 
 /**
  * @param {boolean} show
@@ -899,15 +886,15 @@ Protocol.OverlayAgent.prototype.invoke_setShowFPSCounter = function(obj) {};
  * @return {!Promise<T>}
  * @template T
  */
-Protocol.OverlayAgent.prototype.setShowScrollBottleneckRects = function(show, opt_callback) {};
+Protocol.RenderingAgent.prototype.setShowScrollBottleneckRects = function(show, opt_callback) {};
 /** @typedef {!{show: boolean}} */
-Protocol.OverlayAgent.SetShowScrollBottleneckRectsRequest;
+Protocol.RenderingAgent.SetShowScrollBottleneckRectsRequest;
 /** @typedef {Object|undefined} */
-Protocol.OverlayAgent.SetShowScrollBottleneckRectsResponse;
+Protocol.RenderingAgent.SetShowScrollBottleneckRectsResponse;
 /**
- * @param {!Protocol.OverlayAgent.SetShowScrollBottleneckRectsRequest} obj
- * @return {!Promise<!Protocol.OverlayAgent.SetShowScrollBottleneckRectsResponse>} */
-Protocol.OverlayAgent.prototype.invoke_setShowScrollBottleneckRects = function(obj) {};
+ * @param {!Protocol.RenderingAgent.SetShowScrollBottleneckRectsRequest} obj
+ * @return {!Promise<!Protocol.RenderingAgent.SetShowScrollBottleneckRectsResponse>} */
+Protocol.RenderingAgent.prototype.invoke_setShowScrollBottleneckRects = function(obj) {};
 
 /**
  * @param {boolean} show
@@ -915,191 +902,17 @@ Protocol.OverlayAgent.prototype.invoke_setShowScrollBottleneckRects = function(o
  * @return {!Promise<T>}
  * @template T
  */
-Protocol.OverlayAgent.prototype.setShowViewportSizeOnResize = function(show, opt_callback) {};
+Protocol.RenderingAgent.prototype.setShowViewportSizeOnResize = function(show, opt_callback) {};
 /** @typedef {!{show: boolean}} */
-Protocol.OverlayAgent.SetShowViewportSizeOnResizeRequest;
+Protocol.RenderingAgent.SetShowViewportSizeOnResizeRequest;
 /** @typedef {Object|undefined} */
-Protocol.OverlayAgent.SetShowViewportSizeOnResizeResponse;
+Protocol.RenderingAgent.SetShowViewportSizeOnResizeResponse;
 /**
- * @param {!Protocol.OverlayAgent.SetShowViewportSizeOnResizeRequest} obj
- * @return {!Promise<!Protocol.OverlayAgent.SetShowViewportSizeOnResizeResponse>} */
-Protocol.OverlayAgent.prototype.invoke_setShowViewportSizeOnResize = function(obj) {};
-
-/**
- * @param {string=} opt_message
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
- */
-Protocol.OverlayAgent.prototype.setPausedInDebuggerMessage = function(opt_message, opt_callback) {};
-/** @typedef {!{message: (string|undefined)}} */
-Protocol.OverlayAgent.SetPausedInDebuggerMessageRequest;
-/** @typedef {Object|undefined} */
-Protocol.OverlayAgent.SetPausedInDebuggerMessageResponse;
-/**
- * @param {!Protocol.OverlayAgent.SetPausedInDebuggerMessageRequest} obj
- * @return {!Promise<!Protocol.OverlayAgent.SetPausedInDebuggerMessageResponse>} */
-Protocol.OverlayAgent.prototype.invoke_setPausedInDebuggerMessage = function(obj) {};
-
-/**
- * @param {boolean} suspended
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
- */
-Protocol.OverlayAgent.prototype.setSuspended = function(suspended, opt_callback) {};
-/** @typedef {!{suspended: boolean}} */
-Protocol.OverlayAgent.SetSuspendedRequest;
-/** @typedef {Object|undefined} */
-Protocol.OverlayAgent.SetSuspendedResponse;
-/**
- * @param {!Protocol.OverlayAgent.SetSuspendedRequest} obj
- * @return {!Promise<!Protocol.OverlayAgent.SetSuspendedResponse>} */
-Protocol.OverlayAgent.prototype.invoke_setSuspended = function(obj) {};
-
-/**
- * @param {Protocol.Overlay.InspectMode} mode
- * @param {Protocol.Overlay.HighlightConfig=} opt_highlightConfig
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
- */
-Protocol.OverlayAgent.prototype.setInspectMode = function(mode, opt_highlightConfig, opt_callback) {};
-/** @typedef {!{mode: Protocol.Overlay.InspectMode, highlightConfig: (Protocol.Overlay.HighlightConfig|undefined)}} */
-Protocol.OverlayAgent.SetInspectModeRequest;
-/** @typedef {Object|undefined} */
-Protocol.OverlayAgent.SetInspectModeResponse;
-/**
- * @param {!Protocol.OverlayAgent.SetInspectModeRequest} obj
- * @return {!Promise<!Protocol.OverlayAgent.SetInspectModeResponse>} */
-Protocol.OverlayAgent.prototype.invoke_setInspectMode = function(obj) {};
-
-/**
- * @param {number} x
- * @param {number} y
- * @param {number} width
- * @param {number} height
- * @param {Protocol.DOM.RGBA=} opt_color
- * @param {Protocol.DOM.RGBA=} opt_outlineColor
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
- */
-Protocol.OverlayAgent.prototype.highlightRect = function(x, y, width, height, opt_color, opt_outlineColor, opt_callback) {};
-/** @typedef {!{color: (Protocol.DOM.RGBA|undefined), height: number, width: number, y: number, x: number, outlineColor: (Protocol.DOM.RGBA|undefined)}} */
-Protocol.OverlayAgent.HighlightRectRequest;
-/** @typedef {Object|undefined} */
-Protocol.OverlayAgent.HighlightRectResponse;
-/**
- * @param {!Protocol.OverlayAgent.HighlightRectRequest} obj
- * @return {!Promise<!Protocol.OverlayAgent.HighlightRectResponse>} */
-Protocol.OverlayAgent.prototype.invoke_highlightRect = function(obj) {};
-
-/**
- * @param {Protocol.DOM.Quad} quad
- * @param {Protocol.DOM.RGBA=} opt_color
- * @param {Protocol.DOM.RGBA=} opt_outlineColor
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
- */
-Protocol.OverlayAgent.prototype.highlightQuad = function(quad, opt_color, opt_outlineColor, opt_callback) {};
-/** @typedef {!{color: (Protocol.DOM.RGBA|undefined), quad: Protocol.DOM.Quad, outlineColor: (Protocol.DOM.RGBA|undefined)}} */
-Protocol.OverlayAgent.HighlightQuadRequest;
-/** @typedef {Object|undefined} */
-Protocol.OverlayAgent.HighlightQuadResponse;
-/**
- * @param {!Protocol.OverlayAgent.HighlightQuadRequest} obj
- * @return {!Promise<!Protocol.OverlayAgent.HighlightQuadResponse>} */
-Protocol.OverlayAgent.prototype.invoke_highlightQuad = function(obj) {};
-
-/**
- * @param {Protocol.Overlay.HighlightConfig} highlightConfig
- * @param {Protocol.DOM.NodeId=} opt_nodeId
- * @param {Protocol.DOM.BackendNodeId=} opt_backendNodeId
- * @param {Protocol.Runtime.RemoteObjectId=} opt_objectId
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
- */
-Protocol.OverlayAgent.prototype.highlightNode = function(highlightConfig, opt_nodeId, opt_backendNodeId, opt_objectId, opt_callback) {};
-/** @typedef {!{objectId: (Protocol.Runtime.RemoteObjectId|undefined), highlightConfig: Protocol.Overlay.HighlightConfig, backendNodeId: (Protocol.DOM.BackendNodeId|undefined), nodeId: (Protocol.DOM.NodeId|undefined)}} */
-Protocol.OverlayAgent.HighlightNodeRequest;
-/** @typedef {Object|undefined} */
-Protocol.OverlayAgent.HighlightNodeResponse;
-/**
- * @param {!Protocol.OverlayAgent.HighlightNodeRequest} obj
- * @return {!Promise<!Protocol.OverlayAgent.HighlightNodeResponse>} */
-Protocol.OverlayAgent.prototype.invoke_highlightNode = function(obj) {};
-
-/**
- * @param {Protocol.Page.FrameId} frameId
- * @param {Protocol.DOM.RGBA=} opt_contentColor
- * @param {Protocol.DOM.RGBA=} opt_contentOutlineColor
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
- */
-Protocol.OverlayAgent.prototype.highlightFrame = function(frameId, opt_contentColor, opt_contentOutlineColor, opt_callback) {};
-/** @typedef {!{contentOutlineColor: (Protocol.DOM.RGBA|undefined), contentColor: (Protocol.DOM.RGBA|undefined), frameId: Protocol.Page.FrameId}} */
-Protocol.OverlayAgent.HighlightFrameRequest;
-/** @typedef {Object|undefined} */
-Protocol.OverlayAgent.HighlightFrameResponse;
-/**
- * @param {!Protocol.OverlayAgent.HighlightFrameRequest} obj
- * @return {!Promise<!Protocol.OverlayAgent.HighlightFrameResponse>} */
-Protocol.OverlayAgent.prototype.invoke_highlightFrame = function(obj) {};
-
-/**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
- */
-Protocol.OverlayAgent.prototype.hideHighlight = function(opt_callback) {};
-/** @typedef {Object|undefined} */
-Protocol.OverlayAgent.HideHighlightRequest;
-/** @typedef {Object|undefined} */
-Protocol.OverlayAgent.HideHighlightResponse;
-/**
- * @param {!Protocol.OverlayAgent.HideHighlightRequest} obj
- * @return {!Promise<!Protocol.OverlayAgent.HideHighlightResponse>} */
-Protocol.OverlayAgent.prototype.invoke_hideHighlight = function(obj) {};
-
-/**
- * @param {Protocol.DOM.NodeId} nodeId
- * @param {function(?Protocol.Error, !Object):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
- */
-Protocol.OverlayAgent.prototype.getHighlightObjectForTest = function(nodeId, opt_callback) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
-Protocol.OverlayAgent.GetHighlightObjectForTestRequest;
-/** @typedef {!{highlight: !Object}} */
-Protocol.OverlayAgent.GetHighlightObjectForTestResponse;
-/**
- * @param {!Protocol.OverlayAgent.GetHighlightObjectForTestRequest} obj
- * @return {!Promise<!Protocol.OverlayAgent.GetHighlightObjectForTestResponse>} */
-Protocol.OverlayAgent.prototype.invoke_getHighlightObjectForTest = function(obj) {};
-
-/** @typedef {!{showInfo:(boolean|undefined), showRulers:(boolean|undefined), showExtensionLines:(boolean|undefined), displayAsMaterial:(boolean|undefined), contentColor:(Protocol.DOM.RGBA|undefined), paddingColor:(Protocol.DOM.RGBA|undefined), borderColor:(Protocol.DOM.RGBA|undefined), marginColor:(Protocol.DOM.RGBA|undefined), eventTargetColor:(Protocol.DOM.RGBA|undefined), shapeColor:(Protocol.DOM.RGBA|undefined), shapeMarginColor:(Protocol.DOM.RGBA|undefined), selectorList:(string|undefined)}} */
-Protocol.Overlay.HighlightConfig;
-
-/** @enum {string} */
-Protocol.Overlay.InspectMode = {
-    SearchForNode: "searchForNode",
-    SearchForUAShadowDOM: "searchForUAShadowDOM",
-    None: "none"
-};
+ * @param {!Protocol.RenderingAgent.SetShowViewportSizeOnResizeRequest} obj
+ * @return {!Promise<!Protocol.RenderingAgent.SetShowViewportSizeOnResizeResponse>} */
+Protocol.RenderingAgent.prototype.invoke_setShowViewportSizeOnResize = function(obj) {};
 /** @interface */
-Protocol.OverlayDispatcher = function() {};
-/**
- * @param {Protocol.DOM.NodeId} nodeId
- */
-Protocol.OverlayDispatcher.prototype.nodeHighlightRequested = function(nodeId) {};
-/**
- * @param {Protocol.DOM.BackendNodeId} backendNodeId
- */
-Protocol.OverlayDispatcher.prototype.inspectNodeRequested = function(backendNodeId) {};
+Protocol.RenderingDispatcher = function() {};
 Protocol.Emulation = {};
 
 
@@ -2992,12 +2805,35 @@ Protocol.DOMAgent.RequestNodeResponse;
 Protocol.DOMAgent.prototype.invoke_requestNode = function(obj) {};
 
 /**
+ * @param {Protocol.DOM.InspectMode} mode
+ * @param {Protocol.DOM.HighlightConfig=} opt_highlightConfig
  * @param {function(?Protocol.Error):T=} opt_callback
  * @return {!Promise<T>}
  * @template T
  */
-Protocol.DOMAgent.prototype.highlightRect = function(opt_callback) {};
+Protocol.DOMAgent.prototype.setInspectMode = function(mode, opt_highlightConfig, opt_callback) {};
+/** @typedef {!{mode: Protocol.DOM.InspectMode, highlightConfig: (Protocol.DOM.HighlightConfig|undefined)}} */
+Protocol.DOMAgent.SetInspectModeRequest;
 /** @typedef {Object|undefined} */
+Protocol.DOMAgent.SetInspectModeResponse;
+/**
+ * @param {!Protocol.DOMAgent.SetInspectModeRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.SetInspectModeResponse>} */
+Protocol.DOMAgent.prototype.invoke_setInspectMode = function(obj) {};
+
+/**
+ * @param {number} x
+ * @param {number} y
+ * @param {number} width
+ * @param {number} height
+ * @param {Protocol.DOM.RGBA=} opt_color
+ * @param {Protocol.DOM.RGBA=} opt_outlineColor
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise<T>}
+ * @template T
+ */
+Protocol.DOMAgent.prototype.highlightRect = function(x, y, width, height, opt_color, opt_outlineColor, opt_callback) {};
+/** @typedef {!{color: (Protocol.DOM.RGBA|undefined), height: number, width: number, y: number, x: number, outlineColor: (Protocol.DOM.RGBA|undefined)}} */
 Protocol.DOMAgent.HighlightRectRequest;
 /** @typedef {Object|undefined} */
 Protocol.DOMAgent.HighlightRectResponse;
@@ -3007,12 +2843,34 @@ Protocol.DOMAgent.HighlightRectResponse;
 Protocol.DOMAgent.prototype.invoke_highlightRect = function(obj) {};
 
 /**
+ * @param {Protocol.DOM.Quad} quad
+ * @param {Protocol.DOM.RGBA=} opt_color
+ * @param {Protocol.DOM.RGBA=} opt_outlineColor
  * @param {function(?Protocol.Error):T=} opt_callback
  * @return {!Promise<T>}
  * @template T
  */
-Protocol.DOMAgent.prototype.highlightNode = function(opt_callback) {};
+Protocol.DOMAgent.prototype.highlightQuad = function(quad, opt_color, opt_outlineColor, opt_callback) {};
+/** @typedef {!{color: (Protocol.DOM.RGBA|undefined), quad: Protocol.DOM.Quad, outlineColor: (Protocol.DOM.RGBA|undefined)}} */
+Protocol.DOMAgent.HighlightQuadRequest;
 /** @typedef {Object|undefined} */
+Protocol.DOMAgent.HighlightQuadResponse;
+/**
+ * @param {!Protocol.DOMAgent.HighlightQuadRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.HighlightQuadResponse>} */
+Protocol.DOMAgent.prototype.invoke_highlightQuad = function(obj) {};
+
+/**
+ * @param {Protocol.DOM.HighlightConfig} highlightConfig
+ * @param {Protocol.DOM.NodeId=} opt_nodeId
+ * @param {Protocol.DOM.BackendNodeId=} opt_backendNodeId
+ * @param {Protocol.Runtime.RemoteObjectId=} opt_objectId
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise<T>}
+ * @template T
+ */
+Protocol.DOMAgent.prototype.highlightNode = function(highlightConfig, opt_nodeId, opt_backendNodeId, opt_objectId, opt_callback) {};
+/** @typedef {!{objectId: (Protocol.Runtime.RemoteObjectId|undefined), highlightConfig: Protocol.DOM.HighlightConfig, backendNodeId: (Protocol.DOM.BackendNodeId|undefined), nodeId: (Protocol.DOM.NodeId|undefined)}} */
 Protocol.DOMAgent.HighlightNodeRequest;
 /** @typedef {Object|undefined} */
 Protocol.DOMAgent.HighlightNodeResponse;
@@ -3035,6 +2893,24 @@ Protocol.DOMAgent.HideHighlightResponse;
  * @param {!Protocol.DOMAgent.HideHighlightRequest} obj
  * @return {!Promise<!Protocol.DOMAgent.HideHighlightResponse>} */
 Protocol.DOMAgent.prototype.invoke_hideHighlight = function(obj) {};
+
+/**
+ * @param {Protocol.Page.FrameId} frameId
+ * @param {Protocol.DOM.RGBA=} opt_contentColor
+ * @param {Protocol.DOM.RGBA=} opt_contentOutlineColor
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise<T>}
+ * @template T
+ */
+Protocol.DOMAgent.prototype.highlightFrame = function(frameId, opt_contentColor, opt_contentOutlineColor, opt_callback) {};
+/** @typedef {!{contentOutlineColor: (Protocol.DOM.RGBA|undefined), contentColor: (Protocol.DOM.RGBA|undefined), frameId: Protocol.Page.FrameId}} */
+Protocol.DOMAgent.HighlightFrameRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.HighlightFrameResponse;
+/**
+ * @param {!Protocol.DOMAgent.HighlightFrameRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.HighlightFrameResponse>} */
+Protocol.DOMAgent.prototype.invoke_highlightFrame = function(obj) {};
 
 /**
  * @param {string} path
@@ -3281,6 +3157,22 @@ Protocol.DOMAgent.GetRelayoutBoundaryResponse;
  * @return {!Promise<!Protocol.DOMAgent.GetRelayoutBoundaryResponse>} */
 Protocol.DOMAgent.prototype.invoke_getRelayoutBoundary = function(obj) {};
 
+/**
+ * @param {Protocol.DOM.NodeId} nodeId
+ * @param {function(?Protocol.Error, !Object):T=} opt_callback
+ * @return {!Promise<T>}
+ * @template T
+ */
+Protocol.DOMAgent.prototype.getHighlightObjectForTest = function(nodeId, opt_callback) {};
+/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.GetHighlightObjectForTestRequest;
+/** @typedef {!{highlight: !Object}} */
+Protocol.DOMAgent.GetHighlightObjectForTestResponse;
+/**
+ * @param {!Protocol.DOMAgent.GetHighlightObjectForTestRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.GetHighlightObjectForTestResponse>} */
+Protocol.DOMAgent.prototype.invoke_getHighlightObjectForTest = function(obj) {};
+
 /** @typedef {number} */
 Protocol.DOM.NodeId;
 
@@ -3333,9 +3225,23 @@ Protocol.DOM.ShapeOutsideInfo;
 
 /** @typedef {!{x:(number), y:(number), width:(number), height:(number)}} */
 Protocol.DOM.Rect;
+
+/** @typedef {!{showInfo:(boolean|undefined), showRulers:(boolean|undefined), showExtensionLines:(boolean|undefined), displayAsMaterial:(boolean|undefined), contentColor:(Protocol.DOM.RGBA|undefined), paddingColor:(Protocol.DOM.RGBA|undefined), borderColor:(Protocol.DOM.RGBA|undefined), marginColor:(Protocol.DOM.RGBA|undefined), eventTargetColor:(Protocol.DOM.RGBA|undefined), shapeColor:(Protocol.DOM.RGBA|undefined), shapeMarginColor:(Protocol.DOM.RGBA|undefined), selectorList:(string|undefined)}} */
+Protocol.DOM.HighlightConfig;
+
+/** @enum {string} */
+Protocol.DOM.InspectMode = {
+    SearchForNode: "searchForNode",
+    SearchForUAShadowDOM: "searchForUAShadowDOM",
+    None: "none"
+};
 /** @interface */
 Protocol.DOMDispatcher = function() {};
 Protocol.DOMDispatcher.prototype.documentUpdated = function() {};
+/**
+ * @param {Protocol.DOM.BackendNodeId} backendNodeId
+ */
+Protocol.DOMDispatcher.prototype.inspectNodeRequested = function(backendNodeId) {};
 /**
  * @param {Protocol.DOM.NodeId} parentId
  * @param {!Array<Protocol.DOM.Node>} nodes
@@ -3402,6 +3308,10 @@ Protocol.DOMDispatcher.prototype.pseudoElementRemoved = function(parentId, pseud
  * @param {!Array<Protocol.DOM.BackendNode>} distributedNodes
  */
 Protocol.DOMDispatcher.prototype.distributedNodesUpdated = function(insertionPointId, distributedNodes) {};
+/**
+ * @param {Protocol.DOM.NodeId} nodeId
+ */
+Protocol.DOMDispatcher.prototype.nodeHighlightRequested = function(nodeId) {};
 Protocol.CSS = {};
 
 
@@ -7250,12 +7160,12 @@ Protocol.TargetBase.prototype.pageAgent = function(){};
  * @param {!Protocol.PageDispatcher} dispatcher
  */
 Protocol.TargetBase.prototype.registerPageDispatcher = function(dispatcher) {}
-/** @return {!Protocol.OverlayAgent}*/
-Protocol.TargetBase.prototype.overlayAgent = function(){};
+/** @return {!Protocol.RenderingAgent}*/
+Protocol.TargetBase.prototype.renderingAgent = function(){};
 /**
- * @param {!Protocol.OverlayDispatcher} dispatcher
+ * @param {!Protocol.RenderingDispatcher} dispatcher
  */
-Protocol.TargetBase.prototype.registerOverlayDispatcher = function(dispatcher) {}
+Protocol.TargetBase.prototype.registerRenderingDispatcher = function(dispatcher) {}
 /** @return {!Protocol.EmulationAgent}*/
 Protocol.TargetBase.prototype.emulationAgent = function(){};
 /**
