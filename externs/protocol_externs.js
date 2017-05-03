@@ -7,11 +7,9 @@ Protocol.Inspector = {};
 Protocol.InspectorAgent = function(){};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.InspectorAgent.prototype.enable = function(opt_callback) {};
+Protocol.InspectorAgent.prototype.enable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.InspectorAgent.EnableRequest;
 /** @typedef {Object|undefined} */
@@ -22,11 +20,9 @@ Protocol.InspectorAgent.EnableResponse;
 Protocol.InspectorAgent.prototype.invoke_enable = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.InspectorAgent.prototype.disable = function(opt_callback) {};
+Protocol.InspectorAgent.prototype.disable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.InspectorAgent.DisableRequest;
 /** @typedef {Object|undefined} */
@@ -51,11 +47,9 @@ Protocol.Memory = {};
 Protocol.MemoryAgent = function(){};
 
 /**
- * @param {function(?Protocol.Error, number, number, number):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?number>}
  */
-Protocol.MemoryAgent.prototype.getDOMCounters = function(opt_callback) {};
+Protocol.MemoryAgent.prototype.getDOMCounters = function() {};
 /** @typedef {Object|undefined} */
 Protocol.MemoryAgent.GetDOMCountersRequest;
 /** @typedef {!{nodes: number, documents: number, jsEventListeners: number}} */
@@ -67,11 +61,9 @@ Protocol.MemoryAgent.prototype.invoke_getDOMCounters = function(obj) {};
 
 /**
  * @param {boolean} suppressed
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.MemoryAgent.prototype.setPressureNotificationsSuppressed = function(suppressed, opt_callback) {};
+Protocol.MemoryAgent.prototype.setPressureNotificationsSuppressed = function(suppressed) {};
 /** @typedef {!{suppressed: boolean}} */
 Protocol.MemoryAgent.SetPressureNotificationsSuppressedRequest;
 /** @typedef {Object|undefined} */
@@ -83,11 +75,9 @@ Protocol.MemoryAgent.prototype.invoke_setPressureNotificationsSuppressed = funct
 
 /**
  * @param {Protocol.Memory.PressureLevel} level
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.MemoryAgent.prototype.simulatePressureNotification = function(level, opt_callback) {};
+Protocol.MemoryAgent.prototype.simulatePressureNotification = function(level) {};
 /** @typedef {!{level: Protocol.Memory.PressureLevel}} */
 Protocol.MemoryAgent.SimulatePressureNotificationRequest;
 /** @typedef {Object|undefined} */
@@ -816,11 +806,9 @@ Protocol.Overlay = {};
 Protocol.OverlayAgent = function(){};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.OverlayAgent.prototype.enable = function(opt_callback) {};
+Protocol.OverlayAgent.prototype.enable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.OverlayAgent.EnableRequest;
 /** @typedef {Object|undefined} */
@@ -831,11 +819,9 @@ Protocol.OverlayAgent.EnableResponse;
 Protocol.OverlayAgent.prototype.invoke_enable = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.OverlayAgent.prototype.disable = function(opt_callback) {};
+Protocol.OverlayAgent.prototype.disable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.OverlayAgent.DisableRequest;
 /** @typedef {Object|undefined} */
@@ -847,11 +833,9 @@ Protocol.OverlayAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {boolean} result
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.OverlayAgent.prototype.setShowPaintRects = function(result, opt_callback) {};
+Protocol.OverlayAgent.prototype.setShowPaintRects = function(result) {};
 /** @typedef {!{result: boolean}} */
 Protocol.OverlayAgent.SetShowPaintRectsRequest;
 /** @typedef {Object|undefined} */
@@ -863,11 +847,9 @@ Protocol.OverlayAgent.prototype.invoke_setShowPaintRects = function(obj) {};
 
 /**
  * @param {boolean} show
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.OverlayAgent.prototype.setShowDebugBorders = function(show, opt_callback) {};
+Protocol.OverlayAgent.prototype.setShowDebugBorders = function(show) {};
 /** @typedef {!{show: boolean}} */
 Protocol.OverlayAgent.SetShowDebugBordersRequest;
 /** @typedef {Object|undefined} */
@@ -879,11 +861,9 @@ Protocol.OverlayAgent.prototype.invoke_setShowDebugBorders = function(obj) {};
 
 /**
  * @param {boolean} show
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.OverlayAgent.prototype.setShowFPSCounter = function(show, opt_callback) {};
+Protocol.OverlayAgent.prototype.setShowFPSCounter = function(show) {};
 /** @typedef {!{show: boolean}} */
 Protocol.OverlayAgent.SetShowFPSCounterRequest;
 /** @typedef {Object|undefined} */
@@ -895,11 +875,9 @@ Protocol.OverlayAgent.prototype.invoke_setShowFPSCounter = function(obj) {};
 
 /**
  * @param {boolean} show
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.OverlayAgent.prototype.setShowScrollBottleneckRects = function(show, opt_callback) {};
+Protocol.OverlayAgent.prototype.setShowScrollBottleneckRects = function(show) {};
 /** @typedef {!{show: boolean}} */
 Protocol.OverlayAgent.SetShowScrollBottleneckRectsRequest;
 /** @typedef {Object|undefined} */
@@ -911,11 +889,9 @@ Protocol.OverlayAgent.prototype.invoke_setShowScrollBottleneckRects = function(o
 
 /**
  * @param {boolean} show
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.OverlayAgent.prototype.setShowViewportSizeOnResize = function(show, opt_callback) {};
+Protocol.OverlayAgent.prototype.setShowViewportSizeOnResize = function(show) {};
 /** @typedef {!{show: boolean}} */
 Protocol.OverlayAgent.SetShowViewportSizeOnResizeRequest;
 /** @typedef {Object|undefined} */
@@ -927,11 +903,9 @@ Protocol.OverlayAgent.prototype.invoke_setShowViewportSizeOnResize = function(ob
 
 /**
  * @param {string=} opt_message
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.OverlayAgent.prototype.setPausedInDebuggerMessage = function(opt_message, opt_callback) {};
+Protocol.OverlayAgent.prototype.setPausedInDebuggerMessage = function(opt_message) {};
 /** @typedef {!{message: (string|undefined)}} */
 Protocol.OverlayAgent.SetPausedInDebuggerMessageRequest;
 /** @typedef {Object|undefined} */
@@ -943,11 +917,9 @@ Protocol.OverlayAgent.prototype.invoke_setPausedInDebuggerMessage = function(obj
 
 /**
  * @param {boolean} suspended
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.OverlayAgent.prototype.setSuspended = function(suspended, opt_callback) {};
+Protocol.OverlayAgent.prototype.setSuspended = function(suspended) {};
 /** @typedef {!{suspended: boolean}} */
 Protocol.OverlayAgent.SetSuspendedRequest;
 /** @typedef {Object|undefined} */
@@ -960,11 +932,9 @@ Protocol.OverlayAgent.prototype.invoke_setSuspended = function(obj) {};
 /**
  * @param {Protocol.Overlay.InspectMode} mode
  * @param {Protocol.Overlay.HighlightConfig=} opt_highlightConfig
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.OverlayAgent.prototype.setInspectMode = function(mode, opt_highlightConfig, opt_callback) {};
+Protocol.OverlayAgent.prototype.setInspectMode = function(mode, opt_highlightConfig) {};
 /** @typedef {!{mode: Protocol.Overlay.InspectMode, highlightConfig: (Protocol.Overlay.HighlightConfig|undefined)}} */
 Protocol.OverlayAgent.SetInspectModeRequest;
 /** @typedef {Object|undefined} */
@@ -981,11 +951,9 @@ Protocol.OverlayAgent.prototype.invoke_setInspectMode = function(obj) {};
  * @param {number} height
  * @param {Protocol.DOM.RGBA=} opt_color
  * @param {Protocol.DOM.RGBA=} opt_outlineColor
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.OverlayAgent.prototype.highlightRect = function(x, y, width, height, opt_color, opt_outlineColor, opt_callback) {};
+Protocol.OverlayAgent.prototype.highlightRect = function(x, y, width, height, opt_color, opt_outlineColor) {};
 /** @typedef {!{color: (Protocol.DOM.RGBA|undefined), height: number, width: number, y: number, x: number, outlineColor: (Protocol.DOM.RGBA|undefined)}} */
 Protocol.OverlayAgent.HighlightRectRequest;
 /** @typedef {Object|undefined} */
@@ -999,11 +967,9 @@ Protocol.OverlayAgent.prototype.invoke_highlightRect = function(obj) {};
  * @param {Protocol.DOM.Quad} quad
  * @param {Protocol.DOM.RGBA=} opt_color
  * @param {Protocol.DOM.RGBA=} opt_outlineColor
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.OverlayAgent.prototype.highlightQuad = function(quad, opt_color, opt_outlineColor, opt_callback) {};
+Protocol.OverlayAgent.prototype.highlightQuad = function(quad, opt_color, opt_outlineColor) {};
 /** @typedef {!{color: (Protocol.DOM.RGBA|undefined), quad: Protocol.DOM.Quad, outlineColor: (Protocol.DOM.RGBA|undefined)}} */
 Protocol.OverlayAgent.HighlightQuadRequest;
 /** @typedef {Object|undefined} */
@@ -1018,11 +984,9 @@ Protocol.OverlayAgent.prototype.invoke_highlightQuad = function(obj) {};
  * @param {Protocol.DOM.NodeId=} opt_nodeId
  * @param {Protocol.DOM.BackendNodeId=} opt_backendNodeId
  * @param {Protocol.Runtime.RemoteObjectId=} opt_objectId
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.OverlayAgent.prototype.highlightNode = function(highlightConfig, opt_nodeId, opt_backendNodeId, opt_objectId, opt_callback) {};
+Protocol.OverlayAgent.prototype.highlightNode = function(highlightConfig, opt_nodeId, opt_backendNodeId, opt_objectId) {};
 /** @typedef {!{objectId: (Protocol.Runtime.RemoteObjectId|undefined), highlightConfig: Protocol.Overlay.HighlightConfig, backendNodeId: (Protocol.DOM.BackendNodeId|undefined), nodeId: (Protocol.DOM.NodeId|undefined)}} */
 Protocol.OverlayAgent.HighlightNodeRequest;
 /** @typedef {Object|undefined} */
@@ -1036,11 +1000,9 @@ Protocol.OverlayAgent.prototype.invoke_highlightNode = function(obj) {};
  * @param {Protocol.Page.FrameId} frameId
  * @param {Protocol.DOM.RGBA=} opt_contentColor
  * @param {Protocol.DOM.RGBA=} opt_contentOutlineColor
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.OverlayAgent.prototype.highlightFrame = function(frameId, opt_contentColor, opt_contentOutlineColor, opt_callback) {};
+Protocol.OverlayAgent.prototype.highlightFrame = function(frameId, opt_contentColor, opt_contentOutlineColor) {};
 /** @typedef {!{contentOutlineColor: (Protocol.DOM.RGBA|undefined), contentColor: (Protocol.DOM.RGBA|undefined), frameId: Protocol.Page.FrameId}} */
 Protocol.OverlayAgent.HighlightFrameRequest;
 /** @typedef {Object|undefined} */
@@ -1051,11 +1013,9 @@ Protocol.OverlayAgent.HighlightFrameResponse;
 Protocol.OverlayAgent.prototype.invoke_highlightFrame = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.OverlayAgent.prototype.hideHighlight = function(opt_callback) {};
+Protocol.OverlayAgent.prototype.hideHighlight = function() {};
 /** @typedef {Object|undefined} */
 Protocol.OverlayAgent.HideHighlightRequest;
 /** @typedef {Object|undefined} */
@@ -1067,11 +1027,9 @@ Protocol.OverlayAgent.prototype.invoke_hideHighlight = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
- * @param {function(?Protocol.Error, !Object):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Object>}
  */
-Protocol.OverlayAgent.prototype.getHighlightObjectForTest = function(nodeId, opt_callback) {};
+Protocol.OverlayAgent.prototype.getHighlightObjectForTest = function(nodeId) {};
 /** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
 Protocol.OverlayAgent.GetHighlightObjectForTestRequest;
 /** @typedef {!{highlight: !Object}} */
@@ -1122,11 +1080,9 @@ Protocol.EmulationAgent = function(){};
  * @param {number=} opt_positionX
  * @param {number=} opt_positionY
  * @param {Protocol.Emulation.ScreenOrientation=} opt_screenOrientation
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.EmulationAgent.prototype.setDeviceMetricsOverride = function(width, height, deviceScaleFactor, mobile, fitWindow, opt_scale, opt_offsetX, opt_offsetY, opt_screenWidth, opt_screenHeight, opt_positionX, opt_positionY, opt_screenOrientation, opt_callback) {};
+Protocol.EmulationAgent.prototype.setDeviceMetricsOverride = function(width, height, deviceScaleFactor, mobile, fitWindow, opt_scale, opt_offsetX, opt_offsetY, opt_screenWidth, opt_screenHeight, opt_positionX, opt_positionY, opt_screenOrientation) {};
 /** @typedef {!{deviceScaleFactor: number, positionX: (number|undefined), scale: (number|undefined), screenHeight: (number|undefined), mobile: boolean, offsetX: (number|undefined), screenOrientation: (Protocol.Emulation.ScreenOrientation|undefined), fitWindow: boolean, offsetY: (number|undefined), height: number, width: number, positionY: (number|undefined), screenWidth: (number|undefined)}} */
 Protocol.EmulationAgent.SetDeviceMetricsOverrideRequest;
 /** @typedef {Object|undefined} */
@@ -1137,11 +1093,9 @@ Protocol.EmulationAgent.SetDeviceMetricsOverrideResponse;
 Protocol.EmulationAgent.prototype.invoke_setDeviceMetricsOverride = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.EmulationAgent.prototype.clearDeviceMetricsOverride = function(opt_callback) {};
+Protocol.EmulationAgent.prototype.clearDeviceMetricsOverride = function() {};
 /** @typedef {Object|undefined} */
 Protocol.EmulationAgent.ClearDeviceMetricsOverrideRequest;
 /** @typedef {Object|undefined} */
@@ -1155,11 +1109,9 @@ Protocol.EmulationAgent.prototype.invoke_clearDeviceMetricsOverride = function(o
  * @param {number} x
  * @param {number} y
  * @param {number} scale
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.EmulationAgent.prototype.forceViewport = function(x, y, scale, opt_callback) {};
+Protocol.EmulationAgent.prototype.forceViewport = function(x, y, scale) {};
 /** @typedef {!{y: number, x: number, scale: number}} */
 Protocol.EmulationAgent.ForceViewportRequest;
 /** @typedef {Object|undefined} */
@@ -1170,11 +1122,9 @@ Protocol.EmulationAgent.ForceViewportResponse;
 Protocol.EmulationAgent.prototype.invoke_forceViewport = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.EmulationAgent.prototype.resetViewport = function(opt_callback) {};
+Protocol.EmulationAgent.prototype.resetViewport = function() {};
 /** @typedef {Object|undefined} */
 Protocol.EmulationAgent.ResetViewportRequest;
 /** @typedef {Object|undefined} */
@@ -1185,11 +1135,9 @@ Protocol.EmulationAgent.ResetViewportResponse;
 Protocol.EmulationAgent.prototype.invoke_resetViewport = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.EmulationAgent.prototype.resetPageScaleFactor = function(opt_callback) {};
+Protocol.EmulationAgent.prototype.resetPageScaleFactor = function() {};
 /** @typedef {Object|undefined} */
 Protocol.EmulationAgent.ResetPageScaleFactorRequest;
 /** @typedef {Object|undefined} */
@@ -1201,11 +1149,9 @@ Protocol.EmulationAgent.prototype.invoke_resetPageScaleFactor = function(obj) {}
 
 /**
  * @param {number} pageScaleFactor
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.EmulationAgent.prototype.setPageScaleFactor = function(pageScaleFactor, opt_callback) {};
+Protocol.EmulationAgent.prototype.setPageScaleFactor = function(pageScaleFactor) {};
 /** @typedef {!{pageScaleFactor: number}} */
 Protocol.EmulationAgent.SetPageScaleFactorRequest;
 /** @typedef {Object|undefined} */
@@ -1218,11 +1164,9 @@ Protocol.EmulationAgent.prototype.invoke_setPageScaleFactor = function(obj) {};
 /**
  * @param {number} width
  * @param {number} height
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.EmulationAgent.prototype.setVisibleSize = function(width, height, opt_callback) {};
+Protocol.EmulationAgent.prototype.setVisibleSize = function(width, height) {};
 /** @typedef {!{width: number, height: number}} */
 Protocol.EmulationAgent.SetVisibleSizeRequest;
 /** @typedef {Object|undefined} */
@@ -1234,11 +1178,9 @@ Protocol.EmulationAgent.prototype.invoke_setVisibleSize = function(obj) {};
 
 /**
  * @param {boolean} value
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.EmulationAgent.prototype.setScriptExecutionDisabled = function(value, opt_callback) {};
+Protocol.EmulationAgent.prototype.setScriptExecutionDisabled = function(value) {};
 /** @typedef {!{value: boolean}} */
 Protocol.EmulationAgent.SetScriptExecutionDisabledRequest;
 /** @typedef {Object|undefined} */
@@ -1252,11 +1194,9 @@ Protocol.EmulationAgent.prototype.invoke_setScriptExecutionDisabled = function(o
  * @param {number=} opt_latitude
  * @param {number=} opt_longitude
  * @param {number=} opt_accuracy
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.EmulationAgent.prototype.setGeolocationOverride = function(opt_latitude, opt_longitude, opt_accuracy, opt_callback) {};
+Protocol.EmulationAgent.prototype.setGeolocationOverride = function(opt_latitude, opt_longitude, opt_accuracy) {};
 /** @typedef {!{latitude: (number|undefined), longitude: (number|undefined), accuracy: (number|undefined)}} */
 Protocol.EmulationAgent.SetGeolocationOverrideRequest;
 /** @typedef {Object|undefined} */
@@ -1267,11 +1207,9 @@ Protocol.EmulationAgent.SetGeolocationOverrideResponse;
 Protocol.EmulationAgent.prototype.invoke_setGeolocationOverride = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.EmulationAgent.prototype.clearGeolocationOverride = function(opt_callback) {};
+Protocol.EmulationAgent.prototype.clearGeolocationOverride = function() {};
 /** @typedef {Object|undefined} */
 Protocol.EmulationAgent.ClearGeolocationOverrideRequest;
 /** @typedef {Object|undefined} */
@@ -1284,11 +1222,9 @@ Protocol.EmulationAgent.prototype.invoke_clearGeolocationOverride = function(obj
 /**
  * @param {boolean} enabled
  * @param {string=} opt_configuration
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.EmulationAgent.prototype.setTouchEmulationEnabled = function(enabled, opt_configuration, opt_callback) {};
+Protocol.EmulationAgent.prototype.setTouchEmulationEnabled = function(enabled, opt_configuration) {};
 /** @typedef {!{configuration: (string|undefined), enabled: boolean}} */
 Protocol.EmulationAgent.SetTouchEmulationEnabledRequest;
 /** @typedef {Object|undefined} */
@@ -1300,11 +1236,9 @@ Protocol.EmulationAgent.prototype.invoke_setTouchEmulationEnabled = function(obj
 
 /**
  * @param {string} media
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.EmulationAgent.prototype.setEmulatedMedia = function(media, opt_callback) {};
+Protocol.EmulationAgent.prototype.setEmulatedMedia = function(media) {};
 /** @typedef {!{media: string}} */
 Protocol.EmulationAgent.SetEmulatedMediaRequest;
 /** @typedef {Object|undefined} */
@@ -1316,11 +1250,9 @@ Protocol.EmulationAgent.prototype.invoke_setEmulatedMedia = function(obj) {};
 
 /**
  * @param {number} rate
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.EmulationAgent.prototype.setCPUThrottlingRate = function(rate, opt_callback) {};
+Protocol.EmulationAgent.prototype.setCPUThrottlingRate = function(rate) {};
 /** @typedef {!{rate: number}} */
 Protocol.EmulationAgent.SetCPUThrottlingRateRequest;
 /** @typedef {Object|undefined} */
@@ -1331,11 +1263,9 @@ Protocol.EmulationAgent.SetCPUThrottlingRateResponse;
 Protocol.EmulationAgent.prototype.invoke_setCPUThrottlingRate = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error, boolean):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?boolean>}
  */
-Protocol.EmulationAgent.prototype.canEmulate = function(opt_callback) {};
+Protocol.EmulationAgent.prototype.canEmulate = function() {};
 /** @typedef {Object|undefined} */
 Protocol.EmulationAgent.CanEmulateRequest;
 /** @typedef {!{result: boolean}} */
@@ -1348,11 +1278,9 @@ Protocol.EmulationAgent.prototype.invoke_canEmulate = function(obj) {};
 /**
  * @param {Protocol.Emulation.VirtualTimePolicy} policy
  * @param {number=} opt_budget
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.EmulationAgent.prototype.setVirtualTimePolicy = function(policy, opt_budget, opt_callback) {};
+Protocol.EmulationAgent.prototype.setVirtualTimePolicy = function(policy, opt_budget) {};
 /** @typedef {!{policy: Protocol.Emulation.VirtualTimePolicy, budget: (number|undefined)}} */
 Protocol.EmulationAgent.SetVirtualTimePolicyRequest;
 /** @typedef {Object|undefined} */
@@ -1364,11 +1292,9 @@ Protocol.EmulationAgent.prototype.invoke_setVirtualTimePolicy = function(obj) {}
 
 /**
  * @param {Protocol.DOM.RGBA=} opt_color
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.EmulationAgent.prototype.setDefaultBackgroundColorOverride = function(opt_color, opt_callback) {};
+Protocol.EmulationAgent.prototype.setDefaultBackgroundColorOverride = function(opt_color) {};
 /** @typedef {!{color: (Protocol.DOM.RGBA|undefined)}} */
 Protocol.EmulationAgent.SetDefaultBackgroundColorOverrideRequest;
 /** @typedef {Object|undefined} */
@@ -1407,11 +1333,9 @@ Protocol.Security = {};
 Protocol.SecurityAgent = function(){};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.SecurityAgent.prototype.enable = function(opt_callback) {};
+Protocol.SecurityAgent.prototype.enable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.SecurityAgent.EnableRequest;
 /** @typedef {Object|undefined} */
@@ -1422,11 +1346,9 @@ Protocol.SecurityAgent.EnableResponse;
 Protocol.SecurityAgent.prototype.invoke_enable = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.SecurityAgent.prototype.disable = function(opt_callback) {};
+Protocol.SecurityAgent.prototype.disable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.SecurityAgent.DisableRequest;
 /** @typedef {Object|undefined} */
@@ -1437,11 +1359,9 @@ Protocol.SecurityAgent.DisableResponse;
 Protocol.SecurityAgent.prototype.invoke_disable = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.SecurityAgent.prototype.showCertificateViewer = function(opt_callback) {};
+Protocol.SecurityAgent.prototype.showCertificateViewer = function() {};
 /** @typedef {Object|undefined} */
 Protocol.SecurityAgent.ShowCertificateViewerRequest;
 /** @typedef {Object|undefined} */
@@ -1454,11 +1374,9 @@ Protocol.SecurityAgent.prototype.invoke_showCertificateViewer = function(obj) {}
 /**
  * @param {number} eventId
  * @param {Protocol.Security.CertificateErrorAction} action
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.SecurityAgent.prototype.handleCertificateError = function(eventId, action, opt_callback) {};
+Protocol.SecurityAgent.prototype.handleCertificateError = function(eventId, action) {};
 /** @typedef {!{eventId: number, action: Protocol.Security.CertificateErrorAction}} */
 Protocol.SecurityAgent.HandleCertificateErrorRequest;
 /** @typedef {Object|undefined} */
@@ -1470,11 +1388,9 @@ Protocol.SecurityAgent.prototype.invoke_handleCertificateError = function(obj) {
 
 /**
  * @param {boolean} override
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.SecurityAgent.prototype.setOverrideCertificateErrors = function(override, opt_callback) {};
+Protocol.SecurityAgent.prototype.setOverrideCertificateErrors = function(override) {};
 /** @typedef {!{override: boolean}} */
 Protocol.SecurityAgent.SetOverrideCertificateErrorsRequest;
 /** @typedef {Object|undefined} */
@@ -2098,11 +2014,9 @@ Protocol.Database = {};
 Protocol.DatabaseAgent = function(){};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DatabaseAgent.prototype.enable = function(opt_callback) {};
+Protocol.DatabaseAgent.prototype.enable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.DatabaseAgent.EnableRequest;
 /** @typedef {Object|undefined} */
@@ -2113,11 +2027,9 @@ Protocol.DatabaseAgent.EnableResponse;
 Protocol.DatabaseAgent.prototype.invoke_enable = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DatabaseAgent.prototype.disable = function(opt_callback) {};
+Protocol.DatabaseAgent.prototype.disable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.DatabaseAgent.DisableRequest;
 /** @typedef {Object|undefined} */
@@ -2129,11 +2041,9 @@ Protocol.DatabaseAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {Protocol.Database.DatabaseId} databaseId
- * @param {function(?Protocol.Error, !Array<string>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<string>>}
  */
-Protocol.DatabaseAgent.prototype.getDatabaseTableNames = function(databaseId, opt_callback) {};
+Protocol.DatabaseAgent.prototype.getDatabaseTableNames = function(databaseId) {};
 /** @typedef {!{databaseId: Protocol.Database.DatabaseId}} */
 Protocol.DatabaseAgent.GetDatabaseTableNamesRequest;
 /** @typedef {!{tableNames: !Array<string>}} */
@@ -2146,11 +2056,9 @@ Protocol.DatabaseAgent.prototype.invoke_getDatabaseTableNames = function(obj) {}
 /**
  * @param {Protocol.Database.DatabaseId} databaseId
  * @param {string} query
- * @param {function(?Protocol.Error, !Array<string>=, !Array<*>=, Protocol.Database.Error=):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<string>>}
  */
-Protocol.DatabaseAgent.prototype.executeSQL = function(databaseId, query, opt_callback) {};
+Protocol.DatabaseAgent.prototype.executeSQL = function(databaseId, query) {};
 /** @typedef {!{query: string, databaseId: Protocol.Database.DatabaseId}} */
 Protocol.DatabaseAgent.ExecuteSQLRequest;
 /** @typedef {!{columnNames: !Array<string>, values: !Array<*>, sqlError: Protocol.Database.Error}} */
@@ -2433,11 +2341,9 @@ Protocol.DOMStorage = {};
 Protocol.DOMStorageAgent = function(){};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMStorageAgent.prototype.enable = function(opt_callback) {};
+Protocol.DOMStorageAgent.prototype.enable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.DOMStorageAgent.EnableRequest;
 /** @typedef {Object|undefined} */
@@ -2448,11 +2354,9 @@ Protocol.DOMStorageAgent.EnableResponse;
 Protocol.DOMStorageAgent.prototype.invoke_enable = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMStorageAgent.prototype.disable = function(opt_callback) {};
+Protocol.DOMStorageAgent.prototype.disable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.DOMStorageAgent.DisableRequest;
 /** @typedef {Object|undefined} */
@@ -2464,11 +2368,9 @@ Protocol.DOMStorageAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {Protocol.DOMStorage.StorageId} storageId
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMStorageAgent.prototype.clear = function(storageId, opt_callback) {};
+Protocol.DOMStorageAgent.prototype.clear = function(storageId) {};
 /** @typedef {!{storageId: Protocol.DOMStorage.StorageId}} */
 Protocol.DOMStorageAgent.ClearRequest;
 /** @typedef {Object|undefined} */
@@ -2480,11 +2382,9 @@ Protocol.DOMStorageAgent.prototype.invoke_clear = function(obj) {};
 
 /**
  * @param {Protocol.DOMStorage.StorageId} storageId
- * @param {function(?Protocol.Error, !Array<Protocol.DOMStorage.Item>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.DOMStorage.Item>>}
  */
-Protocol.DOMStorageAgent.prototype.getDOMStorageItems = function(storageId, opt_callback) {};
+Protocol.DOMStorageAgent.prototype.getDOMStorageItems = function(storageId) {};
 /** @typedef {!{storageId: Protocol.DOMStorage.StorageId}} */
 Protocol.DOMStorageAgent.GetDOMStorageItemsRequest;
 /** @typedef {!{entries: !Array<Protocol.DOMStorage.Item>}} */
@@ -2498,11 +2398,9 @@ Protocol.DOMStorageAgent.prototype.invoke_getDOMStorageItems = function(obj) {};
  * @param {Protocol.DOMStorage.StorageId} storageId
  * @param {string} key
  * @param {string} value
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMStorageAgent.prototype.setDOMStorageItem = function(storageId, key, value, opt_callback) {};
+Protocol.DOMStorageAgent.prototype.setDOMStorageItem = function(storageId, key, value) {};
 /** @typedef {!{value: string, storageId: Protocol.DOMStorage.StorageId, key: string}} */
 Protocol.DOMStorageAgent.SetDOMStorageItemRequest;
 /** @typedef {Object|undefined} */
@@ -2515,11 +2413,9 @@ Protocol.DOMStorageAgent.prototype.invoke_setDOMStorageItem = function(obj) {};
 /**
  * @param {Protocol.DOMStorage.StorageId} storageId
  * @param {string} key
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMStorageAgent.prototype.removeDOMStorageItem = function(storageId, key, opt_callback) {};
+Protocol.DOMStorageAgent.prototype.removeDOMStorageItem = function(storageId, key) {};
 /** @typedef {!{storageId: Protocol.DOMStorage.StorageId, key: string}} */
 Protocol.DOMStorageAgent.RemoveDOMStorageItemRequest;
 /** @typedef {Object|undefined} */
@@ -3899,11 +3795,9 @@ Protocol.IOAgent = function(){};
  * @param {Protocol.IO.StreamHandle} handle
  * @param {number=} opt_offset
  * @param {number=} opt_size
- * @param {function(?Protocol.Error, string, boolean):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?string>}
  */
-Protocol.IOAgent.prototype.read = function(handle, opt_offset, opt_size, opt_callback) {};
+Protocol.IOAgent.prototype.read = function(handle, opt_offset, opt_size) {};
 /** @typedef {!{size: (number|undefined), handle: Protocol.IO.StreamHandle, offset: (number|undefined)}} */
 Protocol.IOAgent.ReadRequest;
 /** @typedef {!{data: string, eof: boolean}} */
@@ -3915,11 +3809,9 @@ Protocol.IOAgent.prototype.invoke_read = function(obj) {};
 
 /**
  * @param {Protocol.IO.StreamHandle} handle
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.IOAgent.prototype.close = function(handle, opt_callback) {};
+Protocol.IOAgent.prototype.close = function(handle) {};
 /** @typedef {!{handle: Protocol.IO.StreamHandle}} */
 Protocol.IOAgent.CloseRequest;
 /** @typedef {Object|undefined} */
@@ -4381,11 +4273,9 @@ Protocol.ServiceWorker = {};
 Protocol.ServiceWorkerAgent = function(){};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.ServiceWorkerAgent.prototype.enable = function(opt_callback) {};
+Protocol.ServiceWorkerAgent.prototype.enable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.ServiceWorkerAgent.EnableRequest;
 /** @typedef {Object|undefined} */
@@ -4396,11 +4286,9 @@ Protocol.ServiceWorkerAgent.EnableResponse;
 Protocol.ServiceWorkerAgent.prototype.invoke_enable = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.ServiceWorkerAgent.prototype.disable = function(opt_callback) {};
+Protocol.ServiceWorkerAgent.prototype.disable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.ServiceWorkerAgent.DisableRequest;
 /** @typedef {Object|undefined} */
@@ -4412,11 +4300,9 @@ Protocol.ServiceWorkerAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {string} scopeURL
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.ServiceWorkerAgent.prototype.unregister = function(scopeURL, opt_callback) {};
+Protocol.ServiceWorkerAgent.prototype.unregister = function(scopeURL) {};
 /** @typedef {!{scopeURL: string}} */
 Protocol.ServiceWorkerAgent.UnregisterRequest;
 /** @typedef {Object|undefined} */
@@ -4428,11 +4314,9 @@ Protocol.ServiceWorkerAgent.prototype.invoke_unregister = function(obj) {};
 
 /**
  * @param {string} scopeURL
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.ServiceWorkerAgent.prototype.updateRegistration = function(scopeURL, opt_callback) {};
+Protocol.ServiceWorkerAgent.prototype.updateRegistration = function(scopeURL) {};
 /** @typedef {!{scopeURL: string}} */
 Protocol.ServiceWorkerAgent.UpdateRegistrationRequest;
 /** @typedef {Object|undefined} */
@@ -4444,11 +4328,9 @@ Protocol.ServiceWorkerAgent.prototype.invoke_updateRegistration = function(obj) 
 
 /**
  * @param {string} scopeURL
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.ServiceWorkerAgent.prototype.startWorker = function(scopeURL, opt_callback) {};
+Protocol.ServiceWorkerAgent.prototype.startWorker = function(scopeURL) {};
 /** @typedef {!{scopeURL: string}} */
 Protocol.ServiceWorkerAgent.StartWorkerRequest;
 /** @typedef {Object|undefined} */
@@ -4460,11 +4342,9 @@ Protocol.ServiceWorkerAgent.prototype.invoke_startWorker = function(obj) {};
 
 /**
  * @param {string} scopeURL
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.ServiceWorkerAgent.prototype.skipWaiting = function(scopeURL, opt_callback) {};
+Protocol.ServiceWorkerAgent.prototype.skipWaiting = function(scopeURL) {};
 /** @typedef {!{scopeURL: string}} */
 Protocol.ServiceWorkerAgent.SkipWaitingRequest;
 /** @typedef {Object|undefined} */
@@ -4476,11 +4356,9 @@ Protocol.ServiceWorkerAgent.prototype.invoke_skipWaiting = function(obj) {};
 
 /**
  * @param {string} versionId
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.ServiceWorkerAgent.prototype.stopWorker = function(versionId, opt_callback) {};
+Protocol.ServiceWorkerAgent.prototype.stopWorker = function(versionId) {};
 /** @typedef {!{versionId: string}} */
 Protocol.ServiceWorkerAgent.StopWorkerRequest;
 /** @typedef {Object|undefined} */
@@ -4492,11 +4370,9 @@ Protocol.ServiceWorkerAgent.prototype.invoke_stopWorker = function(obj) {};
 
 /**
  * @param {string} versionId
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.ServiceWorkerAgent.prototype.inspectWorker = function(versionId, opt_callback) {};
+Protocol.ServiceWorkerAgent.prototype.inspectWorker = function(versionId) {};
 /** @typedef {!{versionId: string}} */
 Protocol.ServiceWorkerAgent.InspectWorkerRequest;
 /** @typedef {Object|undefined} */
@@ -4508,11 +4384,9 @@ Protocol.ServiceWorkerAgent.prototype.invoke_inspectWorker = function(obj) {};
 
 /**
  * @param {boolean} forceUpdateOnPageLoad
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.ServiceWorkerAgent.prototype.setForceUpdateOnPageLoad = function(forceUpdateOnPageLoad, opt_callback) {};
+Protocol.ServiceWorkerAgent.prototype.setForceUpdateOnPageLoad = function(forceUpdateOnPageLoad) {};
 /** @typedef {!{forceUpdateOnPageLoad: boolean}} */
 Protocol.ServiceWorkerAgent.SetForceUpdateOnPageLoadRequest;
 /** @typedef {Object|undefined} */
@@ -4526,11 +4400,9 @@ Protocol.ServiceWorkerAgent.prototype.invoke_setForceUpdateOnPageLoad = function
  * @param {string} origin
  * @param {string} registrationId
  * @param {string} data
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.ServiceWorkerAgent.prototype.deliverPushMessage = function(origin, registrationId, data, opt_callback) {};
+Protocol.ServiceWorkerAgent.prototype.deliverPushMessage = function(origin, registrationId, data) {};
 /** @typedef {!{origin: string, registrationId: string, data: string}} */
 Protocol.ServiceWorkerAgent.DeliverPushMessageRequest;
 /** @typedef {Object|undefined} */
@@ -4545,11 +4417,9 @@ Protocol.ServiceWorkerAgent.prototype.invoke_deliverPushMessage = function(obj) 
  * @param {string} registrationId
  * @param {string} tag
  * @param {boolean} lastChance
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.ServiceWorkerAgent.prototype.dispatchSyncEvent = function(origin, registrationId, tag, lastChance, opt_callback) {};
+Protocol.ServiceWorkerAgent.prototype.dispatchSyncEvent = function(origin, registrationId, tag, lastChance) {};
 /** @typedef {!{origin: string, registrationId: string, tag: string, lastChance: boolean}} */
 Protocol.ServiceWorkerAgent.DispatchSyncEventRequest;
 /** @typedef {Object|undefined} */
@@ -4621,11 +4491,9 @@ Protocol.InputAgent = function(){};
  * @param {boolean=} opt_autoRepeat
  * @param {boolean=} opt_isKeypad
  * @param {boolean=} opt_isSystemKey
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.InputAgent.prototype.dispatchKeyEvent = function(type, opt_modifiers, opt_timestamp, opt_text, opt_unmodifiedText, opt_keyIdentifier, opt_code, opt_key, opt_windowsVirtualKeyCode, opt_nativeVirtualKeyCode, opt_autoRepeat, opt_isKeypad, opt_isSystemKey, opt_callback) {};
+Protocol.InputAgent.prototype.dispatchKeyEvent = function(type, opt_modifiers, opt_timestamp, opt_text, opt_unmodifiedText, opt_keyIdentifier, opt_code, opt_key, opt_windowsVirtualKeyCode, opt_nativeVirtualKeyCode, opt_autoRepeat, opt_isKeypad, opt_isSystemKey) {};
 /** @typedef {!{code: (string|undefined), keyIdentifier: (string|undefined), modifiers: (number|undefined), timestamp: (number|undefined), autoRepeat: (boolean|undefined), isSystemKey: (boolean|undefined), unmodifiedText: (string|undefined), key: (string|undefined), text: (string|undefined), nativeVirtualKeyCode: (number|undefined), windowsVirtualKeyCode: (number|undefined), type: string, isKeypad: (boolean|undefined)}} */
 Protocol.InputAgent.DispatchKeyEventRequest;
 /** @typedef {Object|undefined} */
@@ -4643,11 +4511,9 @@ Protocol.InputAgent.prototype.invoke_dispatchKeyEvent = function(obj) {};
  * @param {number=} opt_timestamp
  * @param {string=} opt_button
  * @param {number=} opt_clickCount
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.InputAgent.prototype.dispatchMouseEvent = function(type, x, y, opt_modifiers, opt_timestamp, opt_button, opt_clickCount, opt_callback) {};
+Protocol.InputAgent.prototype.dispatchMouseEvent = function(type, x, y, opt_modifiers, opt_timestamp, opt_button, opt_clickCount) {};
 /** @typedef {!{modifiers: (number|undefined), clickCount: (number|undefined), timestamp: (number|undefined), button: (string|undefined), y: number, x: number, type: string}} */
 Protocol.InputAgent.DispatchMouseEventRequest;
 /** @typedef {Object|undefined} */
@@ -4662,11 +4528,9 @@ Protocol.InputAgent.prototype.invoke_dispatchMouseEvent = function(obj) {};
  * @param {!Array<Protocol.Input.TouchPoint>} touchPoints
  * @param {number=} opt_modifiers
  * @param {number=} opt_timestamp
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.InputAgent.prototype.dispatchTouchEvent = function(type, touchPoints, opt_modifiers, opt_timestamp, opt_callback) {};
+Protocol.InputAgent.prototype.dispatchTouchEvent = function(type, touchPoints, opt_modifiers, opt_timestamp) {};
 /** @typedef {!{timestamp: (number|undefined), modifiers: (number|undefined), type: string, touchPoints: !Array<Protocol.Input.TouchPoint>}} */
 Protocol.InputAgent.DispatchTouchEventRequest;
 /** @typedef {Object|undefined} */
@@ -4686,11 +4550,9 @@ Protocol.InputAgent.prototype.invoke_dispatchTouchEvent = function(obj) {};
  * @param {number=} opt_deltaY
  * @param {number=} opt_modifiers
  * @param {number=} opt_clickCount
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.InputAgent.prototype.emulateTouchFromMouseEvent = function(type, x, y, timestamp, button, opt_deltaX, opt_deltaY, opt_modifiers, opt_clickCount, opt_callback) {};
+Protocol.InputAgent.prototype.emulateTouchFromMouseEvent = function(type, x, y, timestamp, button, opt_deltaX, opt_deltaY, opt_modifiers, opt_clickCount) {};
 /** @typedef {!{modifiers: (number|undefined), clickCount: (number|undefined), deltaX: (number|undefined), timestamp: number, button: string, deltaY: (number|undefined), y: number, x: number, type: string}} */
 Protocol.InputAgent.EmulateTouchFromMouseEventRequest;
 /** @typedef {Object|undefined} */
@@ -4706,11 +4568,9 @@ Protocol.InputAgent.prototype.invoke_emulateTouchFromMouseEvent = function(obj) 
  * @param {number} scaleFactor
  * @param {number=} opt_relativeSpeed
  * @param {Protocol.Input.GestureSourceType=} opt_gestureSourceType
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.InputAgent.prototype.synthesizePinchGesture = function(x, y, scaleFactor, opt_relativeSpeed, opt_gestureSourceType, opt_callback) {};
+Protocol.InputAgent.prototype.synthesizePinchGesture = function(x, y, scaleFactor, opt_relativeSpeed, opt_gestureSourceType) {};
 /** @typedef {!{y: number, x: number, gestureSourceType: (Protocol.Input.GestureSourceType|undefined), relativeSpeed: (number|undefined), scaleFactor: number}} */
 Protocol.InputAgent.SynthesizePinchGestureRequest;
 /** @typedef {Object|undefined} */
@@ -4733,11 +4593,9 @@ Protocol.InputAgent.prototype.invoke_synthesizePinchGesture = function(obj) {};
  * @param {number=} opt_repeatCount
  * @param {number=} opt_repeatDelayMs
  * @param {string=} opt_interactionMarkerName
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.InputAgent.prototype.synthesizeScrollGesture = function(x, y, opt_xDistance, opt_yDistance, opt_xOverscroll, opt_yOverscroll, opt_preventFling, opt_speed, opt_gestureSourceType, opt_repeatCount, opt_repeatDelayMs, opt_interactionMarkerName, opt_callback) {};
+Protocol.InputAgent.prototype.synthesizeScrollGesture = function(x, y, opt_xDistance, opt_yDistance, opt_xOverscroll, opt_yOverscroll, opt_preventFling, opt_speed, opt_gestureSourceType, opt_repeatCount, opt_repeatDelayMs, opt_interactionMarkerName) {};
 /** @typedef {!{xOverscroll: (number|undefined), yOverscroll: (number|undefined), preventFling: (boolean|undefined), yDistance: (number|undefined), interactionMarkerName: (string|undefined), xDistance: (number|undefined), repeatCount: (number|undefined), gestureSourceType: (Protocol.Input.GestureSourceType|undefined), repeatDelayMs: (number|undefined), y: number, x: number, speed: (number|undefined)}} */
 Protocol.InputAgent.SynthesizeScrollGestureRequest;
 /** @typedef {Object|undefined} */
@@ -4753,11 +4611,9 @@ Protocol.InputAgent.prototype.invoke_synthesizeScrollGesture = function(obj) {};
  * @param {number=} opt_duration
  * @param {number=} opt_tapCount
  * @param {Protocol.Input.GestureSourceType=} opt_gestureSourceType
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.InputAgent.prototype.synthesizeTapGesture = function(x, y, opt_duration, opt_tapCount, opt_gestureSourceType, opt_callback) {};
+Protocol.InputAgent.prototype.synthesizeTapGesture = function(x, y, opt_duration, opt_tapCount, opt_gestureSourceType) {};
 /** @typedef {!{y: number, x: number, duration: (number|undefined), gestureSourceType: (Protocol.Input.GestureSourceType|undefined), tapCount: (number|undefined)}} */
 Protocol.InputAgent.SynthesizeTapGestureRequest;
 /** @typedef {Object|undefined} */
@@ -4990,11 +4846,9 @@ Protocol.DeviceOrientationAgent = function(){};
  * @param {number} alpha
  * @param {number} beta
  * @param {number} gamma
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DeviceOrientationAgent.prototype.setDeviceOrientationOverride = function(alpha, beta, gamma, opt_callback) {};
+Protocol.DeviceOrientationAgent.prototype.setDeviceOrientationOverride = function(alpha, beta, gamma) {};
 /** @typedef {!{alpha: number, beta: number, gamma: number}} */
 Protocol.DeviceOrientationAgent.SetDeviceOrientationOverrideRequest;
 /** @typedef {Object|undefined} */
@@ -5005,11 +4859,9 @@ Protocol.DeviceOrientationAgent.SetDeviceOrientationOverrideResponse;
 Protocol.DeviceOrientationAgent.prototype.invoke_setDeviceOrientationOverride = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DeviceOrientationAgent.prototype.clearDeviceOrientationOverride = function(opt_callback) {};
+Protocol.DeviceOrientationAgent.prototype.clearDeviceOrientationOverride = function() {};
 /** @typedef {Object|undefined} */
 Protocol.DeviceOrientationAgent.ClearDeviceOrientationOverrideRequest;
 /** @typedef {Object|undefined} */
@@ -5034,11 +4886,9 @@ Protocol.TracingAgent = function(){};
  * @param {number=} opt_bufferUsageReportingInterval
  * @param {string=} opt_transferMode
  * @param {Protocol.Tracing.TraceConfig=} opt_traceConfig
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.TracingAgent.prototype.start = function(opt_categories, opt_options, opt_bufferUsageReportingInterval, opt_transferMode, opt_traceConfig, opt_callback) {};
+Protocol.TracingAgent.prototype.start = function(opt_categories, opt_options, opt_bufferUsageReportingInterval, opt_transferMode, opt_traceConfig) {};
 /** @typedef {!{transferMode: (string|undefined), traceConfig: (Protocol.Tracing.TraceConfig|undefined), bufferUsageReportingInterval: (number|undefined), options: (string|undefined), categories: (string|undefined)}} */
 Protocol.TracingAgent.StartRequest;
 /** @typedef {Object|undefined} */
@@ -5049,11 +4899,9 @@ Protocol.TracingAgent.StartResponse;
 Protocol.TracingAgent.prototype.invoke_start = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.TracingAgent.prototype.end = function(opt_callback) {};
+Protocol.TracingAgent.prototype.end = function() {};
 /** @typedef {Object|undefined} */
 Protocol.TracingAgent.EndRequest;
 /** @typedef {Object|undefined} */
@@ -5064,11 +4912,9 @@ Protocol.TracingAgent.EndResponse;
 Protocol.TracingAgent.prototype.invoke_end = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error, !Array<string>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<string>>}
  */
-Protocol.TracingAgent.prototype.getCategories = function(opt_callback) {};
+Protocol.TracingAgent.prototype.getCategories = function() {};
 /** @typedef {Object|undefined} */
 Protocol.TracingAgent.GetCategoriesRequest;
 /** @typedef {!{categories: !Array<string>}} */
@@ -5079,11 +4925,9 @@ Protocol.TracingAgent.GetCategoriesResponse;
 Protocol.TracingAgent.prototype.invoke_getCategories = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error, string, boolean):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?string>}
  */
-Protocol.TracingAgent.prototype.requestMemoryDump = function(opt_callback) {};
+Protocol.TracingAgent.prototype.requestMemoryDump = function() {};
 /** @typedef {Object|undefined} */
 Protocol.TracingAgent.RequestMemoryDumpRequest;
 /** @typedef {!{dumpGuid: string, success: boolean}} */
@@ -5095,11 +4939,9 @@ Protocol.TracingAgent.prototype.invoke_requestMemoryDump = function(obj) {};
 
 /**
  * @param {string} syncId
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.TracingAgent.prototype.recordClockSyncMarker = function(syncId, opt_callback) {};
+Protocol.TracingAgent.prototype.recordClockSyncMarker = function(syncId) {};
 /** @typedef {!{syncId: string}} */
 Protocol.TracingAgent.RecordClockSyncMarkerRequest;
 /** @typedef {Object|undefined} */
@@ -5492,11 +5334,9 @@ Protocol.StorageAgent = function(){};
 /**
  * @param {string} origin
  * @param {string} storageTypes
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.StorageAgent.prototype.clearDataForOrigin = function(origin, storageTypes, opt_callback) {};
+Protocol.StorageAgent.prototype.clearDataForOrigin = function(origin, storageTypes) {};
 /** @typedef {!{origin: string, storageTypes: string}} */
 Protocol.StorageAgent.ClearDataForOriginRequest;
 /** @typedef {Object|undefined} */
@@ -5530,11 +5370,9 @@ Protocol.Log = {};
 Protocol.LogAgent = function(){};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.LogAgent.prototype.enable = function(opt_callback) {};
+Protocol.LogAgent.prototype.enable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.LogAgent.EnableRequest;
 /** @typedef {Object|undefined} */
@@ -5545,11 +5383,9 @@ Protocol.LogAgent.EnableResponse;
 Protocol.LogAgent.prototype.invoke_enable = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.LogAgent.prototype.disable = function(opt_callback) {};
+Protocol.LogAgent.prototype.disable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.LogAgent.DisableRequest;
 /** @typedef {Object|undefined} */
@@ -5560,11 +5396,9 @@ Protocol.LogAgent.DisableResponse;
 Protocol.LogAgent.prototype.invoke_disable = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.LogAgent.prototype.clear = function(opt_callback) {};
+Protocol.LogAgent.prototype.clear = function() {};
 /** @typedef {Object|undefined} */
 Protocol.LogAgent.ClearRequest;
 /** @typedef {Object|undefined} */
@@ -5576,11 +5410,9 @@ Protocol.LogAgent.prototype.invoke_clear = function(obj) {};
 
 /**
  * @param {!Array<Protocol.Log.ViolationSetting>} config
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.LogAgent.prototype.startViolationsReport = function(config, opt_callback) {};
+Protocol.LogAgent.prototype.startViolationsReport = function(config) {};
 /** @typedef {!{config: !Array<Protocol.Log.ViolationSetting>}} */
 Protocol.LogAgent.StartViolationsReportRequest;
 /** @typedef {Object|undefined} */
@@ -5591,11 +5423,9 @@ Protocol.LogAgent.StartViolationsReportResponse;
 Protocol.LogAgent.prototype.invoke_startViolationsReport = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.LogAgent.prototype.stopViolationsReport = function(opt_callback) {};
+Protocol.LogAgent.prototype.stopViolationsReport = function() {};
 /** @typedef {Object|undefined} */
 Protocol.LogAgent.StopViolationsReportRequest;
 /** @typedef {Object|undefined} */
@@ -5660,11 +5490,9 @@ Protocol.SystemInfo = {};
 Protocol.SystemInfoAgent = function(){};
 
 /**
- * @param {function(?Protocol.Error, Protocol.SystemInfo.GPUInfo, string, string):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.SystemInfo.GPUInfo>}
  */
-Protocol.SystemInfoAgent.prototype.getInfo = function(opt_callback) {};
+Protocol.SystemInfoAgent.prototype.getInfo = function() {};
 /** @typedef {Object|undefined} */
 Protocol.SystemInfoAgent.GetInfoRequest;
 /** @typedef {!{gpu: Protocol.SystemInfo.GPUInfo, modelName: string, modelVersion: string}} */
@@ -5691,11 +5519,9 @@ Protocol.TetheringAgent = function(){};
 
 /**
  * @param {number} port
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.TetheringAgent.prototype.bind = function(port, opt_callback) {};
+Protocol.TetheringAgent.prototype.bind = function(port) {};
 /** @typedef {!{port: number}} */
 Protocol.TetheringAgent.BindRequest;
 /** @typedef {Object|undefined} */
@@ -5707,11 +5533,9 @@ Protocol.TetheringAgent.prototype.invoke_bind = function(obj) {};
 
 /**
  * @param {number} port
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.TetheringAgent.prototype.unbind = function(port, opt_callback) {};
+Protocol.TetheringAgent.prototype.unbind = function(port) {};
 /** @typedef {!{port: number}} */
 Protocol.TetheringAgent.UnbindRequest;
 /** @typedef {Object|undefined} */
@@ -5737,11 +5561,9 @@ Protocol.BrowserAgent = function(){};
 
 /**
  * @param {Protocol.Target.TargetID} targetId
- * @param {function(?Protocol.Error, Protocol.Browser.WindowID, Protocol.Browser.Bounds):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.Browser.WindowID>}
  */
-Protocol.BrowserAgent.prototype.getWindowForTarget = function(targetId, opt_callback) {};
+Protocol.BrowserAgent.prototype.getWindowForTarget = function(targetId) {};
 /** @typedef {!{targetId: Protocol.Target.TargetID}} */
 Protocol.BrowserAgent.GetWindowForTargetRequest;
 /** @typedef {!{windowId: Protocol.Browser.WindowID, bounds: Protocol.Browser.Bounds}} */
@@ -5754,11 +5576,9 @@ Protocol.BrowserAgent.prototype.invoke_getWindowForTarget = function(obj) {};
 /**
  * @param {Protocol.Browser.WindowID} windowId
  * @param {Protocol.Browser.Bounds} bounds
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.BrowserAgent.prototype.setWindowBounds = function(windowId, bounds, opt_callback) {};
+Protocol.BrowserAgent.prototype.setWindowBounds = function(windowId, bounds) {};
 /** @typedef {!{windowId: Protocol.Browser.WindowID, bounds: Protocol.Browser.Bounds}} */
 Protocol.BrowserAgent.SetWindowBoundsRequest;
 /** @typedef {Object|undefined} */
@@ -5770,11 +5590,9 @@ Protocol.BrowserAgent.prototype.invoke_setWindowBounds = function(obj) {};
 
 /**
  * @param {Protocol.Browser.WindowID} windowId
- * @param {function(?Protocol.Error, Protocol.Browser.Bounds):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.Browser.Bounds>}
  */
-Protocol.BrowserAgent.prototype.getWindowBounds = function(windowId, opt_callback) {};
+Protocol.BrowserAgent.prototype.getWindowBounds = function(windowId) {};
 /** @typedef {!{windowId: Protocol.Browser.WindowID}} */
 Protocol.BrowserAgent.GetWindowBoundsRequest;
 /** @typedef {!{bounds: Protocol.Browser.Bounds}} */
@@ -5808,11 +5626,9 @@ Protocol.Schema = {};
 Protocol.SchemaAgent = function(){};
 
 /**
- * @param {function(?Protocol.Error, !Array<Protocol.Schema.Domain>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.Schema.Domain>>}
  */
-Protocol.SchemaAgent.prototype.getDomains = function(opt_callback) {};
+Protocol.SchemaAgent.prototype.getDomains = function() {};
 /** @typedef {Object|undefined} */
 Protocol.SchemaAgent.GetDomainsRequest;
 /** @typedef {!{domains: !Array<Protocol.Schema.Domain>}} */
@@ -6768,11 +6584,9 @@ Protocol.Console = {};
 Protocol.ConsoleAgent = function(){};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.ConsoleAgent.prototype.enable = function(opt_callback) {};
+Protocol.ConsoleAgent.prototype.enable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.ConsoleAgent.EnableRequest;
 /** @typedef {Object|undefined} */
@@ -6783,11 +6597,9 @@ Protocol.ConsoleAgent.EnableResponse;
 Protocol.ConsoleAgent.prototype.invoke_enable = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.ConsoleAgent.prototype.disable = function(opt_callback) {};
+Protocol.ConsoleAgent.prototype.disable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.ConsoleAgent.DisableRequest;
 /** @typedef {Object|undefined} */
@@ -6798,11 +6610,9 @@ Protocol.ConsoleAgent.DisableResponse;
 Protocol.ConsoleAgent.prototype.invoke_disable = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.ConsoleAgent.prototype.clearMessages = function(opt_callback) {};
+Protocol.ConsoleAgent.prototype.clearMessages = function() {};
 /** @typedef {Object|undefined} */
 Protocol.ConsoleAgent.ClearMessagesRequest;
 /** @typedef {Object|undefined} */
