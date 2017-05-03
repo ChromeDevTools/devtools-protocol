@@ -6853,11 +6853,9 @@ Protocol.Profiler = {};
 Protocol.ProfilerAgent = function(){};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.ProfilerAgent.prototype.enable = function(opt_callback) {};
+Protocol.ProfilerAgent.prototype.enable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.ProfilerAgent.EnableRequest;
 /** @typedef {Object|undefined} */
@@ -6868,11 +6866,9 @@ Protocol.ProfilerAgent.EnableResponse;
 Protocol.ProfilerAgent.prototype.invoke_enable = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.ProfilerAgent.prototype.disable = function(opt_callback) {};
+Protocol.ProfilerAgent.prototype.disable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.ProfilerAgent.DisableRequest;
 /** @typedef {Object|undefined} */
@@ -6884,11 +6880,9 @@ Protocol.ProfilerAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {number} interval
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.ProfilerAgent.prototype.setSamplingInterval = function(interval, opt_callback) {};
+Protocol.ProfilerAgent.prototype.setSamplingInterval = function(interval) {};
 /** @typedef {!{interval: number}} */
 Protocol.ProfilerAgent.SetSamplingIntervalRequest;
 /** @typedef {Object|undefined} */
@@ -6899,11 +6893,9 @@ Protocol.ProfilerAgent.SetSamplingIntervalResponse;
 Protocol.ProfilerAgent.prototype.invoke_setSamplingInterval = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.ProfilerAgent.prototype.start = function(opt_callback) {};
+Protocol.ProfilerAgent.prototype.start = function() {};
 /** @typedef {Object|undefined} */
 Protocol.ProfilerAgent.StartRequest;
 /** @typedef {Object|undefined} */
@@ -6914,11 +6906,9 @@ Protocol.ProfilerAgent.StartResponse;
 Protocol.ProfilerAgent.prototype.invoke_start = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error, Protocol.Profiler.Profile):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.Profiler.Profile>}
  */
-Protocol.ProfilerAgent.prototype.stop = function(opt_callback) {};
+Protocol.ProfilerAgent.prototype.stop = function() {};
 /** @typedef {Object|undefined} */
 Protocol.ProfilerAgent.StopRequest;
 /** @typedef {!{profile: Protocol.Profiler.Profile}} */
@@ -6930,11 +6920,9 @@ Protocol.ProfilerAgent.prototype.invoke_stop = function(obj) {};
 
 /**
  * @param {boolean=} opt_callCount
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.ProfilerAgent.prototype.startPreciseCoverage = function(opt_callCount, opt_callback) {};
+Protocol.ProfilerAgent.prototype.startPreciseCoverage = function(opt_callCount) {};
 /** @typedef {!{callCount: (boolean|undefined)}} */
 Protocol.ProfilerAgent.StartPreciseCoverageRequest;
 /** @typedef {Object|undefined} */
@@ -6945,11 +6933,9 @@ Protocol.ProfilerAgent.StartPreciseCoverageResponse;
 Protocol.ProfilerAgent.prototype.invoke_startPreciseCoverage = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.ProfilerAgent.prototype.stopPreciseCoverage = function(opt_callback) {};
+Protocol.ProfilerAgent.prototype.stopPreciseCoverage = function() {};
 /** @typedef {Object|undefined} */
 Protocol.ProfilerAgent.StopPreciseCoverageRequest;
 /** @typedef {Object|undefined} */
@@ -6960,11 +6946,9 @@ Protocol.ProfilerAgent.StopPreciseCoverageResponse;
 Protocol.ProfilerAgent.prototype.invoke_stopPreciseCoverage = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error, !Array<Protocol.Profiler.ScriptCoverage>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.Profiler.ScriptCoverage>>}
  */
-Protocol.ProfilerAgent.prototype.takePreciseCoverage = function(opt_callback) {};
+Protocol.ProfilerAgent.prototype.takePreciseCoverage = function() {};
 /** @typedef {Object|undefined} */
 Protocol.ProfilerAgent.TakePreciseCoverageRequest;
 /** @typedef {!{result: !Array<Protocol.Profiler.ScriptCoverage>}} */
@@ -6975,11 +6959,9 @@ Protocol.ProfilerAgent.TakePreciseCoverageResponse;
 Protocol.ProfilerAgent.prototype.invoke_takePreciseCoverage = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error, !Array<Protocol.Profiler.ScriptCoverage>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.Profiler.ScriptCoverage>>}
  */
-Protocol.ProfilerAgent.prototype.getBestEffortCoverage = function(opt_callback) {};
+Protocol.ProfilerAgent.prototype.getBestEffortCoverage = function() {};
 /** @typedef {Object|undefined} */
 Protocol.ProfilerAgent.GetBestEffortCoverageRequest;
 /** @typedef {!{result: !Array<Protocol.Profiler.ScriptCoverage>}} */
@@ -7030,11 +7012,9 @@ Protocol.HeapProfiler = {};
 Protocol.HeapProfilerAgent = function(){};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.HeapProfilerAgent.prototype.enable = function(opt_callback) {};
+Protocol.HeapProfilerAgent.prototype.enable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.HeapProfilerAgent.EnableRequest;
 /** @typedef {Object|undefined} */
@@ -7045,11 +7025,9 @@ Protocol.HeapProfilerAgent.EnableResponse;
 Protocol.HeapProfilerAgent.prototype.invoke_enable = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.HeapProfilerAgent.prototype.disable = function(opt_callback) {};
+Protocol.HeapProfilerAgent.prototype.disable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.HeapProfilerAgent.DisableRequest;
 /** @typedef {Object|undefined} */
@@ -7061,11 +7039,9 @@ Protocol.HeapProfilerAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {boolean=} opt_trackAllocations
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.HeapProfilerAgent.prototype.startTrackingHeapObjects = function(opt_trackAllocations, opt_callback) {};
+Protocol.HeapProfilerAgent.prototype.startTrackingHeapObjects = function(opt_trackAllocations) {};
 /** @typedef {!{trackAllocations: (boolean|undefined)}} */
 Protocol.HeapProfilerAgent.StartTrackingHeapObjectsRequest;
 /** @typedef {Object|undefined} */
@@ -7077,11 +7053,9 @@ Protocol.HeapProfilerAgent.prototype.invoke_startTrackingHeapObjects = function(
 
 /**
  * @param {boolean=} opt_reportProgress
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.HeapProfilerAgent.prototype.stopTrackingHeapObjects = function(opt_reportProgress, opt_callback) {};
+Protocol.HeapProfilerAgent.prototype.stopTrackingHeapObjects = function(opt_reportProgress) {};
 /** @typedef {!{reportProgress: (boolean|undefined)}} */
 Protocol.HeapProfilerAgent.StopTrackingHeapObjectsRequest;
 /** @typedef {Object|undefined} */
@@ -7093,11 +7067,9 @@ Protocol.HeapProfilerAgent.prototype.invoke_stopTrackingHeapObjects = function(o
 
 /**
  * @param {boolean=} opt_reportProgress
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.HeapProfilerAgent.prototype.takeHeapSnapshot = function(opt_reportProgress, opt_callback) {};
+Protocol.HeapProfilerAgent.prototype.takeHeapSnapshot = function(opt_reportProgress) {};
 /** @typedef {!{reportProgress: (boolean|undefined)}} */
 Protocol.HeapProfilerAgent.TakeHeapSnapshotRequest;
 /** @typedef {Object|undefined} */
@@ -7108,11 +7080,9 @@ Protocol.HeapProfilerAgent.TakeHeapSnapshotResponse;
 Protocol.HeapProfilerAgent.prototype.invoke_takeHeapSnapshot = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.HeapProfilerAgent.prototype.collectGarbage = function(opt_callback) {};
+Protocol.HeapProfilerAgent.prototype.collectGarbage = function() {};
 /** @typedef {Object|undefined} */
 Protocol.HeapProfilerAgent.CollectGarbageRequest;
 /** @typedef {Object|undefined} */
@@ -7125,11 +7095,9 @@ Protocol.HeapProfilerAgent.prototype.invoke_collectGarbage = function(obj) {};
 /**
  * @param {Protocol.HeapProfiler.HeapSnapshotObjectId} objectId
  * @param {string=} opt_objectGroup
- * @param {function(?Protocol.Error, Protocol.Runtime.RemoteObject):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.Runtime.RemoteObject>}
  */
-Protocol.HeapProfilerAgent.prototype.getObjectByHeapObjectId = function(objectId, opt_objectGroup, opt_callback) {};
+Protocol.HeapProfilerAgent.prototype.getObjectByHeapObjectId = function(objectId, opt_objectGroup) {};
 /** @typedef {!{objectGroup: (string|undefined), objectId: Protocol.HeapProfiler.HeapSnapshotObjectId}} */
 Protocol.HeapProfilerAgent.GetObjectByHeapObjectIdRequest;
 /** @typedef {!{result: Protocol.Runtime.RemoteObject}} */
@@ -7141,11 +7109,9 @@ Protocol.HeapProfilerAgent.prototype.invoke_getObjectByHeapObjectId = function(o
 
 /**
  * @param {Protocol.HeapProfiler.HeapSnapshotObjectId} heapObjectId
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.HeapProfilerAgent.prototype.addInspectedHeapObject = function(heapObjectId, opt_callback) {};
+Protocol.HeapProfilerAgent.prototype.addInspectedHeapObject = function(heapObjectId) {};
 /** @typedef {!{heapObjectId: Protocol.HeapProfiler.HeapSnapshotObjectId}} */
 Protocol.HeapProfilerAgent.AddInspectedHeapObjectRequest;
 /** @typedef {Object|undefined} */
@@ -7157,11 +7123,9 @@ Protocol.HeapProfilerAgent.prototype.invoke_addInspectedHeapObject = function(ob
 
 /**
  * @param {Protocol.Runtime.RemoteObjectId} objectId
- * @param {function(?Protocol.Error, Protocol.HeapProfiler.HeapSnapshotObjectId):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.HeapProfiler.HeapSnapshotObjectId>}
  */
-Protocol.HeapProfilerAgent.prototype.getHeapObjectId = function(objectId, opt_callback) {};
+Protocol.HeapProfilerAgent.prototype.getHeapObjectId = function(objectId) {};
 /** @typedef {!{objectId: Protocol.Runtime.RemoteObjectId}} */
 Protocol.HeapProfilerAgent.GetHeapObjectIdRequest;
 /** @typedef {!{heapSnapshotObjectId: Protocol.HeapProfiler.HeapSnapshotObjectId}} */
@@ -7173,11 +7137,9 @@ Protocol.HeapProfilerAgent.prototype.invoke_getHeapObjectId = function(obj) {};
 
 /**
  * @param {number=} opt_samplingInterval
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.HeapProfilerAgent.prototype.startSampling = function(opt_samplingInterval, opt_callback) {};
+Protocol.HeapProfilerAgent.prototype.startSampling = function(opt_samplingInterval) {};
 /** @typedef {!{samplingInterval: (number|undefined)}} */
 Protocol.HeapProfilerAgent.StartSamplingRequest;
 /** @typedef {Object|undefined} */
@@ -7188,11 +7150,9 @@ Protocol.HeapProfilerAgent.StartSamplingResponse;
 Protocol.HeapProfilerAgent.prototype.invoke_startSampling = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error, Protocol.HeapProfiler.SamplingHeapProfile):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.HeapProfiler.SamplingHeapProfile>}
  */
-Protocol.HeapProfilerAgent.prototype.stopSampling = function(opt_callback) {};
+Protocol.HeapProfilerAgent.prototype.stopSampling = function() {};
 /** @typedef {Object|undefined} */
 Protocol.HeapProfilerAgent.StopSamplingRequest;
 /** @typedef {!{profile: Protocol.HeapProfiler.SamplingHeapProfile}} */
