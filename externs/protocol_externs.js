@@ -506,12 +506,23 @@ Protocol.PageAgent.CaptureScreenshotResponse;
 Protocol.PageAgent.prototype.invoke_captureScreenshot = function(obj) {};
 
 /**
+ * @param {boolean=} opt_landscape
+ * @param {boolean=} opt_displayHeaderFooter
+ * @param {boolean=} opt_printBackground
+ * @param {number=} opt_scale
+ * @param {number=} opt_paperWidth
+ * @param {number=} opt_paperHeight
+ * @param {number=} opt_marginTop
+ * @param {number=} opt_marginBottom
+ * @param {number=} opt_marginLeft
+ * @param {number=} opt_marginRight
+ * @param {string=} opt_pageRanges
  * @param {function(?Protocol.Error, string):T=} opt_callback
  * @return {!Promise<T>}
  * @template T
  */
-Protocol.PageAgent.prototype.printToPDF = function(opt_callback) {};
-/** @typedef {Object|undefined} */
+Protocol.PageAgent.prototype.printToPDF = function(opt_landscape, opt_displayHeaderFooter, opt_printBackground, opt_scale, opt_paperWidth, opt_paperHeight, opt_marginTop, opt_marginBottom, opt_marginLeft, opt_marginRight, opt_pageRanges, opt_callback) {};
+/** @typedef {!{paperHeight: (number|undefined), scale: (number|undefined), displayHeaderFooter: (boolean|undefined), marginBottom: (number|undefined), paperWidth: (number|undefined), marginLeft: (number|undefined), printBackground: (boolean|undefined), marginRight: (number|undefined), pageRanges: (string|undefined), marginTop: (number|undefined), landscape: (boolean|undefined)}} */
 Protocol.PageAgent.PrintToPDFRequest;
 /** @typedef {!{data: string}} */
 Protocol.PageAgent.PrintToPDFResponse;
