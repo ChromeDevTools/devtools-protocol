@@ -677,6 +677,24 @@ Protocol.PageAgent.GetLayoutMetricsResponse;
  * @return {!Promise<!Protocol.PageAgent.GetLayoutMetricsResponse>} */
 Protocol.PageAgent.prototype.invoke_getLayoutMetrics = function(obj) {};
 
+/**
+ * @param {Protocol.Page.FrameId} frameId
+ * @param {string=} opt_worldName
+ * @param {boolean=} opt_grantUniveralAccess
+ * @param {function(?Protocol.Error):T=} opt_callback
+ * @return {!Promise<T>}
+ * @template T
+ */
+Protocol.PageAgent.prototype.createIsolatedWorld = function(frameId, opt_worldName, opt_grantUniveralAccess, opt_callback) {};
+/** @typedef {!{grantUniveralAccess: (boolean|undefined), worldName: (string|undefined), frameId: Protocol.Page.FrameId}} */
+Protocol.PageAgent.CreateIsolatedWorldRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.CreateIsolatedWorldResponse;
+/**
+ * @param {!Protocol.PageAgent.CreateIsolatedWorldRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.CreateIsolatedWorldResponse>} */
+Protocol.PageAgent.prototype.invoke_createIsolatedWorld = function(obj) {};
+
 /** @enum {string} */
 Protocol.Page.ResourceType = {
     Document: "Document",

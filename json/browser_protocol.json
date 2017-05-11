@@ -520,6 +520,16 @@
                     { "name": "visualViewport", "$ref": "VisualViewport", "description": "Metrics relating to the visual viewport." },
                     { "name": "contentSize", "$ref": "DOM.Rect", "description": "Size of scrollable area."}
                 ]
+            },
+            {
+                "name": "createIsolatedWorld",
+                "description": "Creates an isolated world for the given frame.",
+                "experimental": true,
+                "parameters": [
+                    { "name": "frameId", "$ref": "FrameId", "description": "Id of the frame in which the isolated world should be created." },
+                    { "name": "worldName", "type": "string", "optional": true, "description": "An optional name which is reported in the Execution Context." },
+                    { "name": "grantUniveralAccess", "type": "boolean", "optional": true, "description": "Whether or not universal access should be granted to the isolated world. This is a powerful option, use with caution." }
+                ]
             }
         ],
         "events": [
