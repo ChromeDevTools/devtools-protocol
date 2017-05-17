@@ -6230,12 +6230,13 @@ Protocol.DebuggerAgent.prototype.invoke_getPossibleBreakpoints = function(obj) {
 
 /**
  * @param {Protocol.Debugger.Location} location
+ * @param {string=} opt_targetCallFrames
  * @param {function(?Protocol.Error):T=} opt_callback
  * @return {!Promise<T>}
  * @template T
  */
-Protocol.DebuggerAgent.prototype.continueToLocation = function(location, opt_callback) {};
-/** @typedef {!{location: Protocol.Debugger.Location}} */
+Protocol.DebuggerAgent.prototype.continueToLocation = function(location, opt_targetCallFrames, opt_callback) {};
+/** @typedef {!{location: Protocol.Debugger.Location, targetCallFrames: (string|undefined)}} */
 Protocol.DebuggerAgent.ContinueToLocationRequest;
 /** @typedef {Object|undefined} */
 Protocol.DebuggerAgent.ContinueToLocationResponse;
