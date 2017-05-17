@@ -5524,7 +5524,7 @@ Protocol.SystemInfoAgent = function(){};
 Protocol.SystemInfoAgent.prototype.getInfo = function() {};
 /** @typedef {Object|undefined} */
 Protocol.SystemInfoAgent.GetInfoRequest;
-/** @typedef {!{gpu: Protocol.SystemInfo.GPUInfo, modelName: string, modelVersion: string}} */
+/** @typedef {!{gpu: Protocol.SystemInfo.GPUInfo, commandLine: string, modelName: string, modelVersion: string}} */
 Protocol.SystemInfoAgent.GetInfoResponse;
 /**
  * @param {!Protocol.SystemInfoAgent.GetInfoRequest} obj
