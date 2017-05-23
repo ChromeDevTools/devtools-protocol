@@ -4524,6 +4524,20 @@ Protocol.Input = {};
 Protocol.InputAgent = function(){};
 
 /**
+ * @param {boolean} ignore
+ * @return {!Promise<undefined>}
+ */
+Protocol.InputAgent.prototype.setIgnoreInputEvents = function(ignore) {};
+/** @typedef {!{ignore: boolean}} */
+Protocol.InputAgent.SetIgnoreInputEventsRequest;
+/** @typedef {Object|undefined} */
+Protocol.InputAgent.SetIgnoreInputEventsResponse;
+/**
+ * @param {!Protocol.InputAgent.SetIgnoreInputEventsRequest} obj
+ * @return {!Promise<!Protocol.InputAgent.SetIgnoreInputEventsResponse>} */
+Protocol.InputAgent.prototype.invoke_setIgnoreInputEvents = function(obj) {};
+
+/**
  * @param {string} type
  * @param {number=} opt_modifiers
  * @param {number=} opt_timestamp

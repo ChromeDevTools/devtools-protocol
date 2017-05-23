@@ -3787,6 +3787,13 @@
         ],
         "commands": [
             {
+                "name": "setIgnoreInputEvents",
+                "parameters": [
+                    { "name": "ignore", "type": "boolean", "description": "Ignores input events processing when set to true." }
+                ],
+                "description": "Ignores input events (useful while auditing page)."
+            },
+            {
                 "name": "dispatchKeyEvent",
                 "parameters": [
                     { "name": "type", "type": "string", "enum": ["keyDown", "keyUp", "rawKeyDown", "char"], "description": "Type of the key event." },
