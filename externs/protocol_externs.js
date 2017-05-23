@@ -200,12 +200,13 @@ Protocol.PageAgent.prototype.invoke_reload = function(obj) {};
 /**
  * @param {string} url
  * @param {string=} opt_referrer
+ * @param {Protocol.Page.TransitionType=} opt_transitionType
  * @param {function(?Protocol.Error, Protocol.Page.FrameId):T=} opt_callback
  * @return {!Promise<T>}
  * @template T
  */
-Protocol.PageAgent.prototype.navigate = function(url, opt_referrer, opt_callback) {};
-/** @typedef {!{url: string, referrer: (string|undefined)}} */
+Protocol.PageAgent.prototype.navigate = function(url, opt_referrer, opt_transitionType, opt_callback) {};
+/** @typedef {!{url: string, referrer: (string|undefined), transitionType: (Protocol.Page.TransitionType|undefined)}} */
 Protocol.PageAgent.NavigateRequest;
 /** @typedef {!{frameId: Protocol.Page.FrameId}} */
 Protocol.PageAgent.NavigateResponse;
@@ -727,7 +728,23 @@ Protocol.Page.FrameResourceTree;
 /** @typedef {string} */
 Protocol.Page.ScriptIdentifier;
 
-/** @typedef {!{id:(number), url:(string), title:(string)}} */
+/** @enum {string} */
+Protocol.Page.TransitionType = {
+    Link: "link",
+    Typed: "typed",
+    Auto_bookmark: "auto_bookmark",
+    Auto_subframe: "auto_subframe",
+    Manual_subframe: "manual_subframe",
+    Generated: "generated",
+    Auto_toplevel: "auto_toplevel",
+    Form_submit: "form_submit",
+    Reload: "reload",
+    Keyword: "keyword",
+    Keyword_generated: "keyword_generated",
+    Other: "other"
+};
+
+/** @typedef {!{id:(number), url:(string), userTypedURL:(string), title:(string), transitionType:(Protocol.Page.TransitionType)}} */
 Protocol.Page.NavigationEntry;
 
 /** @typedef {!{offsetTop:(number), pageScaleFactor:(number), deviceWidth:(number), deviceHeight:(number), scrollOffsetX:(number), scrollOffsetY:(number), timestamp:(number|undefined)}} */
