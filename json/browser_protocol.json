@@ -430,7 +430,7 @@
                 "parameters": [
                     { "name": "format", "type": "string", "optional": true, "enum": ["jpeg", "png"], "description": "Image compression format (defaults to png)." },
                     { "name": "quality", "type": "integer", "optional": true, "description": "Compression quality from range [0..100] (jpeg only)." },
-                    { "name": "fromSurface", "type": "boolean", "optional": true, "description": "Capture the screenshot from the surface, rather than the view. Defaults to false.", "experimental": true }
+                    { "name": "fromSurface", "type": "boolean", "optional": true, "description": "Capture the screenshot from the surface, rather than the view. Defaults to true.", "experimental": true }
                 ],
                 "returns": [
                     { "name": "data", "type": "string", "description": "Base64-encoded image data." }
