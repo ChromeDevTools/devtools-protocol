@@ -4050,11 +4050,9 @@ Protocol.TargetAgent = function(){};
 
 /**
  * @param {boolean} discover
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.TargetAgent.prototype.setDiscoverTargets = function(discover, opt_callback) {};
+Protocol.TargetAgent.prototype.setDiscoverTargets = function(discover) {};
 /** @typedef {!{discover: boolean}} */
 Protocol.TargetAgent.SetDiscoverTargetsRequest;
 /** @typedef {Object|undefined} */
@@ -4067,11 +4065,9 @@ Protocol.TargetAgent.prototype.invoke_setDiscoverTargets = function(obj) {};
 /**
  * @param {boolean} autoAttach
  * @param {boolean} waitForDebuggerOnStart
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.TargetAgent.prototype.setAutoAttach = function(autoAttach, waitForDebuggerOnStart, opt_callback) {};
+Protocol.TargetAgent.prototype.setAutoAttach = function(autoAttach, waitForDebuggerOnStart) {};
 /** @typedef {!{waitForDebuggerOnStart: boolean, autoAttach: boolean}} */
 Protocol.TargetAgent.SetAutoAttachRequest;
 /** @typedef {Object|undefined} */
@@ -4083,11 +4079,9 @@ Protocol.TargetAgent.prototype.invoke_setAutoAttach = function(obj) {};
 
 /**
  * @param {boolean} value
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.TargetAgent.prototype.setAttachToFrames = function(value, opt_callback) {};
+Protocol.TargetAgent.prototype.setAttachToFrames = function(value) {};
 /** @typedef {!{value: boolean}} */
 Protocol.TargetAgent.SetAttachToFramesRequest;
 /** @typedef {Object|undefined} */
@@ -4099,11 +4093,9 @@ Protocol.TargetAgent.prototype.invoke_setAttachToFrames = function(obj) {};
 
 /**
  * @param {!Array<Protocol.Target.RemoteLocation>} locations
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.TargetAgent.prototype.setRemoteLocations = function(locations, opt_callback) {};
+Protocol.TargetAgent.prototype.setRemoteLocations = function(locations) {};
 /** @typedef {!{locations: !Array<Protocol.Target.RemoteLocation>}} */
 Protocol.TargetAgent.SetRemoteLocationsRequest;
 /** @typedef {Object|undefined} */
@@ -4116,11 +4108,9 @@ Protocol.TargetAgent.prototype.invoke_setRemoteLocations = function(obj) {};
 /**
  * @param {Protocol.Target.TargetID} targetId
  * @param {string} message
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.TargetAgent.prototype.sendMessageToTarget = function(targetId, message, opt_callback) {};
+Protocol.TargetAgent.prototype.sendMessageToTarget = function(targetId, message) {};
 /** @typedef {!{message: string, targetId: Protocol.Target.TargetID}} */
 Protocol.TargetAgent.SendMessageToTargetRequest;
 /** @typedef {Object|undefined} */
@@ -4132,11 +4122,9 @@ Protocol.TargetAgent.prototype.invoke_sendMessageToTarget = function(obj) {};
 
 /**
  * @param {Protocol.Target.TargetID} targetId
- * @param {function(?Protocol.Error, Protocol.Target.TargetInfo):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.Target.TargetInfo>}
  */
-Protocol.TargetAgent.prototype.getTargetInfo = function(targetId, opt_callback) {};
+Protocol.TargetAgent.prototype.getTargetInfo = function(targetId) {};
 /** @typedef {!{targetId: Protocol.Target.TargetID}} */
 Protocol.TargetAgent.GetTargetInfoRequest;
 /** @typedef {!{targetInfo: Protocol.Target.TargetInfo}} */
@@ -4148,11 +4136,9 @@ Protocol.TargetAgent.prototype.invoke_getTargetInfo = function(obj) {};
 
 /**
  * @param {Protocol.Target.TargetID} targetId
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.TargetAgent.prototype.activateTarget = function(targetId, opt_callback) {};
+Protocol.TargetAgent.prototype.activateTarget = function(targetId) {};
 /** @typedef {!{targetId: Protocol.Target.TargetID}} */
 Protocol.TargetAgent.ActivateTargetRequest;
 /** @typedef {Object|undefined} */
@@ -4164,11 +4150,9 @@ Protocol.TargetAgent.prototype.invoke_activateTarget = function(obj) {};
 
 /**
  * @param {Protocol.Target.TargetID} targetId
- * @param {function(?Protocol.Error, boolean):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?boolean>}
  */
-Protocol.TargetAgent.prototype.closeTarget = function(targetId, opt_callback) {};
+Protocol.TargetAgent.prototype.closeTarget = function(targetId) {};
 /** @typedef {!{targetId: Protocol.Target.TargetID}} */
 Protocol.TargetAgent.CloseTargetRequest;
 /** @typedef {!{success: boolean}} */
@@ -4180,11 +4164,9 @@ Protocol.TargetAgent.prototype.invoke_closeTarget = function(obj) {};
 
 /**
  * @param {Protocol.Target.TargetID} targetId
- * @param {function(?Protocol.Error, boolean):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?boolean>}
  */
-Protocol.TargetAgent.prototype.attachToTarget = function(targetId, opt_callback) {};
+Protocol.TargetAgent.prototype.attachToTarget = function(targetId) {};
 /** @typedef {!{targetId: Protocol.Target.TargetID}} */
 Protocol.TargetAgent.AttachToTargetRequest;
 /** @typedef {!{success: boolean}} */
@@ -4196,11 +4178,9 @@ Protocol.TargetAgent.prototype.invoke_attachToTarget = function(obj) {};
 
 /**
  * @param {Protocol.Target.TargetID} targetId
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.TargetAgent.prototype.detachFromTarget = function(targetId, opt_callback) {};
+Protocol.TargetAgent.prototype.detachFromTarget = function(targetId) {};
 /** @typedef {!{targetId: Protocol.Target.TargetID}} */
 Protocol.TargetAgent.DetachFromTargetRequest;
 /** @typedef {Object|undefined} */
@@ -4211,11 +4191,9 @@ Protocol.TargetAgent.DetachFromTargetResponse;
 Protocol.TargetAgent.prototype.invoke_detachFromTarget = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error, Protocol.Target.BrowserContextID):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.Target.BrowserContextID>}
  */
-Protocol.TargetAgent.prototype.createBrowserContext = function(opt_callback) {};
+Protocol.TargetAgent.prototype.createBrowserContext = function() {};
 /** @typedef {Object|undefined} */
 Protocol.TargetAgent.CreateBrowserContextRequest;
 /** @typedef {!{browserContextId: Protocol.Target.BrowserContextID}} */
@@ -4227,11 +4205,9 @@ Protocol.TargetAgent.prototype.invoke_createBrowserContext = function(obj) {};
 
 /**
  * @param {Protocol.Target.BrowserContextID} browserContextId
- * @param {function(?Protocol.Error, boolean):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?boolean>}
  */
-Protocol.TargetAgent.prototype.disposeBrowserContext = function(browserContextId, opt_callback) {};
+Protocol.TargetAgent.prototype.disposeBrowserContext = function(browserContextId) {};
 /** @typedef {!{browserContextId: Protocol.Target.BrowserContextID}} */
 Protocol.TargetAgent.DisposeBrowserContextRequest;
 /** @typedef {!{success: boolean}} */
@@ -4246,11 +4222,9 @@ Protocol.TargetAgent.prototype.invoke_disposeBrowserContext = function(obj) {};
  * @param {number=} opt_width
  * @param {number=} opt_height
  * @param {Protocol.Target.BrowserContextID=} opt_browserContextId
- * @param {function(?Protocol.Error, Protocol.Target.TargetID):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.Target.TargetID>}
  */
-Protocol.TargetAgent.prototype.createTarget = function(url, opt_width, opt_height, opt_browserContextId, opt_callback) {};
+Protocol.TargetAgent.prototype.createTarget = function(url, opt_width, opt_height, opt_browserContextId) {};
 /** @typedef {!{url: string, width: (number|undefined), browserContextId: (Protocol.Target.BrowserContextID|undefined), height: (number|undefined)}} */
 Protocol.TargetAgent.CreateTargetRequest;
 /** @typedef {!{targetId: Protocol.Target.TargetID}} */
@@ -4261,11 +4235,9 @@ Protocol.TargetAgent.CreateTargetResponse;
 Protocol.TargetAgent.prototype.invoke_createTarget = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error, !Array<Protocol.Target.TargetInfo>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.Target.TargetInfo>>}
  */
-Protocol.TargetAgent.prototype.getTargets = function(opt_callback) {};
+Protocol.TargetAgent.prototype.getTargets = function() {};
 /** @typedef {Object|undefined} */
 Protocol.TargetAgent.GetTargetsRequest;
 /** @typedef {!{targetInfos: !Array<Protocol.Target.TargetInfo>}} */
