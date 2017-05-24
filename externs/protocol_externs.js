@@ -5692,11 +5692,9 @@ Protocol.RuntimeAgent = function(){};
  * @param {boolean=} opt_generatePreview
  * @param {boolean=} opt_userGesture
  * @param {boolean=} opt_awaitPromise
- * @param {function(?Protocol.Error, Protocol.Runtime.RemoteObject, Protocol.Runtime.ExceptionDetails=):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.Runtime.RemoteObject>}
  */
-Protocol.RuntimeAgent.prototype.evaluate = function(expression, opt_objectGroup, opt_includeCommandLineAPI, opt_silent, opt_contextId, opt_returnByValue, opt_generatePreview, opt_userGesture, opt_awaitPromise, opt_callback) {};
+Protocol.RuntimeAgent.prototype.evaluate = function(expression, opt_objectGroup, opt_includeCommandLineAPI, opt_silent, opt_contextId, opt_returnByValue, opt_generatePreview, opt_userGesture, opt_awaitPromise) {};
 /** @typedef {!{objectGroup: (string|undefined), includeCommandLineAPI: (boolean|undefined), contextId: (Protocol.Runtime.ExecutionContextId|undefined), silent: (boolean|undefined), generatePreview: (boolean|undefined), returnByValue: (boolean|undefined), expression: string, userGesture: (boolean|undefined), awaitPromise: (boolean|undefined)}} */
 Protocol.RuntimeAgent.EvaluateRequest;
 /** @typedef {!{exceptionDetails: Protocol.Runtime.ExceptionDetails, result: Protocol.Runtime.RemoteObject}} */
@@ -5710,11 +5708,9 @@ Protocol.RuntimeAgent.prototype.invoke_evaluate = function(obj) {};
  * @param {Protocol.Runtime.RemoteObjectId} promiseObjectId
  * @param {boolean=} opt_returnByValue
  * @param {boolean=} opt_generatePreview
- * @param {function(?Protocol.Error, Protocol.Runtime.RemoteObject, Protocol.Runtime.ExceptionDetails=):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.Runtime.RemoteObject>}
  */
-Protocol.RuntimeAgent.prototype.awaitPromise = function(promiseObjectId, opt_returnByValue, opt_generatePreview, opt_callback) {};
+Protocol.RuntimeAgent.prototype.awaitPromise = function(promiseObjectId, opt_returnByValue, opt_generatePreview) {};
 /** @typedef {!{returnByValue: (boolean|undefined), generatePreview: (boolean|undefined), promiseObjectId: Protocol.Runtime.RemoteObjectId}} */
 Protocol.RuntimeAgent.AwaitPromiseRequest;
 /** @typedef {!{exceptionDetails: Protocol.Runtime.ExceptionDetails, result: Protocol.Runtime.RemoteObject}} */
@@ -5733,11 +5729,9 @@ Protocol.RuntimeAgent.prototype.invoke_awaitPromise = function(obj) {};
  * @param {boolean=} opt_generatePreview
  * @param {boolean=} opt_userGesture
  * @param {boolean=} opt_awaitPromise
- * @param {function(?Protocol.Error, Protocol.Runtime.RemoteObject, Protocol.Runtime.ExceptionDetails=):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.Runtime.RemoteObject>}
  */
-Protocol.RuntimeAgent.prototype.callFunctionOn = function(objectId, functionDeclaration, opt__arguments, opt_silent, opt_returnByValue, opt_generatePreview, opt_userGesture, opt_awaitPromise, opt_callback) {};
+Protocol.RuntimeAgent.prototype.callFunctionOn = function(objectId, functionDeclaration, opt__arguments, opt_silent, opt_returnByValue, opt_generatePreview, opt_userGesture, opt_awaitPromise) {};
 /** @typedef {!{silent: (boolean|undefined), objectId: Protocol.Runtime.RemoteObjectId, functionDeclaration: string, generatePreview: (boolean|undefined), returnByValue: (boolean|undefined), _arguments: (!Array<Protocol.Runtime.CallArgument>|undefined), userGesture: (boolean|undefined), awaitPromise: (boolean|undefined)}} */
 Protocol.RuntimeAgent.CallFunctionOnRequest;
 /** @typedef {!{exceptionDetails: Protocol.Runtime.ExceptionDetails, result: Protocol.Runtime.RemoteObject}} */
@@ -5752,11 +5746,9 @@ Protocol.RuntimeAgent.prototype.invoke_callFunctionOn = function(obj) {};
  * @param {boolean=} opt_ownProperties
  * @param {boolean=} opt_accessorPropertiesOnly
  * @param {boolean=} opt_generatePreview
- * @param {function(?Protocol.Error, !Array<Protocol.Runtime.PropertyDescriptor>, !Array<Protocol.Runtime.InternalPropertyDescriptor>=, Protocol.Runtime.ExceptionDetails=):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.Runtime.PropertyDescriptor>>}
  */
-Protocol.RuntimeAgent.prototype.getProperties = function(objectId, opt_ownProperties, opt_accessorPropertiesOnly, opt_generatePreview, opt_callback) {};
+Protocol.RuntimeAgent.prototype.getProperties = function(objectId, opt_ownProperties, opt_accessorPropertiesOnly, opt_generatePreview) {};
 /** @typedef {!{ownProperties: (boolean|undefined), generatePreview: (boolean|undefined), accessorPropertiesOnly: (boolean|undefined), objectId: Protocol.Runtime.RemoteObjectId}} */
 Protocol.RuntimeAgent.GetPropertiesRequest;
 /** @typedef {!{internalProperties: !Array<Protocol.Runtime.InternalPropertyDescriptor>, exceptionDetails: Protocol.Runtime.ExceptionDetails, result: !Array<Protocol.Runtime.PropertyDescriptor>}} */
@@ -5768,11 +5760,9 @@ Protocol.RuntimeAgent.prototype.invoke_getProperties = function(obj) {};
 
 /**
  * @param {Protocol.Runtime.RemoteObjectId} objectId
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.RuntimeAgent.prototype.releaseObject = function(objectId, opt_callback) {};
+Protocol.RuntimeAgent.prototype.releaseObject = function(objectId) {};
 /** @typedef {!{objectId: Protocol.Runtime.RemoteObjectId}} */
 Protocol.RuntimeAgent.ReleaseObjectRequest;
 /** @typedef {Object|undefined} */
@@ -5784,11 +5774,9 @@ Protocol.RuntimeAgent.prototype.invoke_releaseObject = function(obj) {};
 
 /**
  * @param {string} objectGroup
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.RuntimeAgent.prototype.releaseObjectGroup = function(objectGroup, opt_callback) {};
+Protocol.RuntimeAgent.prototype.releaseObjectGroup = function(objectGroup) {};
 /** @typedef {!{objectGroup: string}} */
 Protocol.RuntimeAgent.ReleaseObjectGroupRequest;
 /** @typedef {Object|undefined} */
@@ -5799,11 +5787,9 @@ Protocol.RuntimeAgent.ReleaseObjectGroupResponse;
 Protocol.RuntimeAgent.prototype.invoke_releaseObjectGroup = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.RuntimeAgent.prototype.runIfWaitingForDebugger = function(opt_callback) {};
+Protocol.RuntimeAgent.prototype.runIfWaitingForDebugger = function() {};
 /** @typedef {Object|undefined} */
 Protocol.RuntimeAgent.RunIfWaitingForDebuggerRequest;
 /** @typedef {Object|undefined} */
@@ -5814,11 +5800,9 @@ Protocol.RuntimeAgent.RunIfWaitingForDebuggerResponse;
 Protocol.RuntimeAgent.prototype.invoke_runIfWaitingForDebugger = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.RuntimeAgent.prototype.enable = function(opt_callback) {};
+Protocol.RuntimeAgent.prototype.enable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.RuntimeAgent.EnableRequest;
 /** @typedef {Object|undefined} */
@@ -5829,11 +5813,9 @@ Protocol.RuntimeAgent.EnableResponse;
 Protocol.RuntimeAgent.prototype.invoke_enable = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.RuntimeAgent.prototype.disable = function(opt_callback) {};
+Protocol.RuntimeAgent.prototype.disable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.RuntimeAgent.DisableRequest;
 /** @typedef {Object|undefined} */
@@ -5844,11 +5826,9 @@ Protocol.RuntimeAgent.DisableResponse;
 Protocol.RuntimeAgent.prototype.invoke_disable = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.RuntimeAgent.prototype.discardConsoleEntries = function(opt_callback) {};
+Protocol.RuntimeAgent.prototype.discardConsoleEntries = function() {};
 /** @typedef {Object|undefined} */
 Protocol.RuntimeAgent.DiscardConsoleEntriesRequest;
 /** @typedef {Object|undefined} */
@@ -5860,11 +5840,9 @@ Protocol.RuntimeAgent.prototype.invoke_discardConsoleEntries = function(obj) {};
 
 /**
  * @param {boolean} enabled
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.RuntimeAgent.prototype.setCustomObjectFormatterEnabled = function(enabled, opt_callback) {};
+Protocol.RuntimeAgent.prototype.setCustomObjectFormatterEnabled = function(enabled) {};
 /** @typedef {!{enabled: boolean}} */
 Protocol.RuntimeAgent.SetCustomObjectFormatterEnabledRequest;
 /** @typedef {Object|undefined} */
@@ -5879,11 +5857,9 @@ Protocol.RuntimeAgent.prototype.invoke_setCustomObjectFormatterEnabled = functio
  * @param {string} sourceURL
  * @param {boolean} persistScript
  * @param {Protocol.Runtime.ExecutionContextId=} opt_executionContextId
- * @param {function(?Protocol.Error, Protocol.Runtime.ScriptId=, Protocol.Runtime.ExceptionDetails=):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.Runtime.ScriptId>}
  */
-Protocol.RuntimeAgent.prototype.compileScript = function(expression, sourceURL, persistScript, opt_executionContextId, opt_callback) {};
+Protocol.RuntimeAgent.prototype.compileScript = function(expression, sourceURL, persistScript, opt_executionContextId) {};
 /** @typedef {!{persistScript: boolean, sourceURL: string, expression: string, executionContextId: (Protocol.Runtime.ExecutionContextId|undefined)}} */
 Protocol.RuntimeAgent.CompileScriptRequest;
 /** @typedef {!{scriptId: Protocol.Runtime.ScriptId, exceptionDetails: Protocol.Runtime.ExceptionDetails}} */
@@ -5902,11 +5878,9 @@ Protocol.RuntimeAgent.prototype.invoke_compileScript = function(obj) {};
  * @param {boolean=} opt_returnByValue
  * @param {boolean=} opt_generatePreview
  * @param {boolean=} opt_awaitPromise
- * @param {function(?Protocol.Error, Protocol.Runtime.RemoteObject, Protocol.Runtime.ExceptionDetails=):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.Runtime.RemoteObject>}
  */
-Protocol.RuntimeAgent.prototype.runScript = function(scriptId, opt_executionContextId, opt_objectGroup, opt_silent, opt_includeCommandLineAPI, opt_returnByValue, opt_generatePreview, opt_awaitPromise, opt_callback) {};
+Protocol.RuntimeAgent.prototype.runScript = function(scriptId, opt_executionContextId, opt_objectGroup, opt_silent, opt_includeCommandLineAPI, opt_returnByValue, opt_generatePreview, opt_awaitPromise) {};
 /** @typedef {!{objectGroup: (string|undefined), includeCommandLineAPI: (boolean|undefined), silent: (boolean|undefined), generatePreview: (boolean|undefined), executionContextId: (Protocol.Runtime.ExecutionContextId|undefined), returnByValue: (boolean|undefined), scriptId: Protocol.Runtime.ScriptId, awaitPromise: (boolean|undefined)}} */
 Protocol.RuntimeAgent.RunScriptRequest;
 /** @typedef {!{exceptionDetails: Protocol.Runtime.ExceptionDetails, result: Protocol.Runtime.RemoteObject}} */
