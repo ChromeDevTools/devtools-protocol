@@ -5154,11 +5154,9 @@ Protocol.AccessibilityAgent = function(){};
 /**
  * @param {Protocol.DOM.NodeId} nodeId
  * @param {boolean=} opt_fetchRelatives
- * @param {function(?Protocol.Error, !Array<Protocol.Accessibility.AXNode>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.Accessibility.AXNode>>}
  */
-Protocol.AccessibilityAgent.prototype.getPartialAXTree = function(nodeId, opt_fetchRelatives, opt_callback) {};
+Protocol.AccessibilityAgent.prototype.getPartialAXTree = function(nodeId, opt_fetchRelatives) {};
 /** @typedef {!{nodeId: Protocol.DOM.NodeId, fetchRelatives: (boolean|undefined)}} */
 Protocol.AccessibilityAgent.GetPartialAXTreeRequest;
 /** @typedef {!{nodes: !Array<Protocol.Accessibility.AXNode>}} */
