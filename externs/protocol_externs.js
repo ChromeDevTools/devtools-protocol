@@ -6001,11 +6001,9 @@ Protocol.Debugger = {};
 Protocol.DebuggerAgent = function(){};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DebuggerAgent.prototype.enable = function(opt_callback) {};
+Protocol.DebuggerAgent.prototype.enable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.DebuggerAgent.EnableRequest;
 /** @typedef {Object|undefined} */
@@ -6016,11 +6014,9 @@ Protocol.DebuggerAgent.EnableResponse;
 Protocol.DebuggerAgent.prototype.invoke_enable = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DebuggerAgent.prototype.disable = function(opt_callback) {};
+Protocol.DebuggerAgent.prototype.disable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.DebuggerAgent.DisableRequest;
 /** @typedef {Object|undefined} */
@@ -6032,11 +6028,9 @@ Protocol.DebuggerAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {boolean} active
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DebuggerAgent.prototype.setBreakpointsActive = function(active, opt_callback) {};
+Protocol.DebuggerAgent.prototype.setBreakpointsActive = function(active) {};
 /** @typedef {!{active: boolean}} */
 Protocol.DebuggerAgent.SetBreakpointsActiveRequest;
 /** @typedef {Object|undefined} */
@@ -6048,11 +6042,9 @@ Protocol.DebuggerAgent.prototype.invoke_setBreakpointsActive = function(obj) {};
 
 /**
  * @param {boolean} skip
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DebuggerAgent.prototype.setSkipAllPauses = function(skip, opt_callback) {};
+Protocol.DebuggerAgent.prototype.setSkipAllPauses = function(skip) {};
 /** @typedef {!{skip: boolean}} */
 Protocol.DebuggerAgent.SetSkipAllPausesRequest;
 /** @typedef {Object|undefined} */
@@ -6068,11 +6060,9 @@ Protocol.DebuggerAgent.prototype.invoke_setSkipAllPauses = function(obj) {};
  * @param {string=} opt_urlRegex
  * @param {number=} opt_columnNumber
  * @param {string=} opt_condition
- * @param {function(?Protocol.Error, Protocol.Debugger.BreakpointId, !Array<Protocol.Debugger.Location>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.Debugger.BreakpointId>}
  */
-Protocol.DebuggerAgent.prototype.setBreakpointByUrl = function(lineNumber, opt_url, opt_urlRegex, opt_columnNumber, opt_condition, opt_callback) {};
+Protocol.DebuggerAgent.prototype.setBreakpointByUrl = function(lineNumber, opt_url, opt_urlRegex, opt_columnNumber, opt_condition) {};
 /** @typedef {!{url: (string|undefined), columnNumber: (number|undefined), urlRegex: (string|undefined), condition: (string|undefined), lineNumber: number}} */
 Protocol.DebuggerAgent.SetBreakpointByUrlRequest;
 /** @typedef {!{breakpointId: Protocol.Debugger.BreakpointId, locations: !Array<Protocol.Debugger.Location>}} */
@@ -6085,11 +6075,9 @@ Protocol.DebuggerAgent.prototype.invoke_setBreakpointByUrl = function(obj) {};
 /**
  * @param {Protocol.Debugger.Location} location
  * @param {string=} opt_condition
- * @param {function(?Protocol.Error, Protocol.Debugger.BreakpointId, Protocol.Debugger.Location):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.Debugger.BreakpointId>}
  */
-Protocol.DebuggerAgent.prototype.setBreakpoint = function(location, opt_condition, opt_callback) {};
+Protocol.DebuggerAgent.prototype.setBreakpoint = function(location, opt_condition) {};
 /** @typedef {!{location: Protocol.Debugger.Location, condition: (string|undefined)}} */
 Protocol.DebuggerAgent.SetBreakpointRequest;
 /** @typedef {!{actualLocation: Protocol.Debugger.Location, breakpointId: Protocol.Debugger.BreakpointId}} */
@@ -6101,11 +6089,9 @@ Protocol.DebuggerAgent.prototype.invoke_setBreakpoint = function(obj) {};
 
 /**
  * @param {Protocol.Debugger.BreakpointId} breakpointId
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DebuggerAgent.prototype.removeBreakpoint = function(breakpointId, opt_callback) {};
+Protocol.DebuggerAgent.prototype.removeBreakpoint = function(breakpointId) {};
 /** @typedef {!{breakpointId: Protocol.Debugger.BreakpointId}} */
 Protocol.DebuggerAgent.RemoveBreakpointRequest;
 /** @typedef {Object|undefined} */
@@ -6119,11 +6105,9 @@ Protocol.DebuggerAgent.prototype.invoke_removeBreakpoint = function(obj) {};
  * @param {Protocol.Debugger.Location} start
  * @param {Protocol.Debugger.Location=} opt_end
  * @param {boolean=} opt_restrictToFunction
- * @param {function(?Protocol.Error, !Array<Protocol.Debugger.BreakLocation>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.Debugger.BreakLocation>>}
  */
-Protocol.DebuggerAgent.prototype.getPossibleBreakpoints = function(start, opt_end, opt_restrictToFunction, opt_callback) {};
+Protocol.DebuggerAgent.prototype.getPossibleBreakpoints = function(start, opt_end, opt_restrictToFunction) {};
 /** @typedef {!{start: Protocol.Debugger.Location, end: (Protocol.Debugger.Location|undefined), restrictToFunction: (boolean|undefined)}} */
 Protocol.DebuggerAgent.GetPossibleBreakpointsRequest;
 /** @typedef {!{locations: !Array<Protocol.Debugger.BreakLocation>}} */
@@ -6136,11 +6120,9 @@ Protocol.DebuggerAgent.prototype.invoke_getPossibleBreakpoints = function(obj) {
 /**
  * @param {Protocol.Debugger.Location} location
  * @param {string=} opt_targetCallFrames
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DebuggerAgent.prototype.continueToLocation = function(location, opt_targetCallFrames, opt_callback) {};
+Protocol.DebuggerAgent.prototype.continueToLocation = function(location, opt_targetCallFrames) {};
 /** @typedef {!{location: Protocol.Debugger.Location, targetCallFrames: (string|undefined)}} */
 Protocol.DebuggerAgent.ContinueToLocationRequest;
 /** @typedef {Object|undefined} */
@@ -6151,11 +6133,9 @@ Protocol.DebuggerAgent.ContinueToLocationResponse;
 Protocol.DebuggerAgent.prototype.invoke_continueToLocation = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DebuggerAgent.prototype.stepOver = function(opt_callback) {};
+Protocol.DebuggerAgent.prototype.stepOver = function() {};
 /** @typedef {Object|undefined} */
 Protocol.DebuggerAgent.StepOverRequest;
 /** @typedef {Object|undefined} */
@@ -6166,11 +6146,9 @@ Protocol.DebuggerAgent.StepOverResponse;
 Protocol.DebuggerAgent.prototype.invoke_stepOver = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DebuggerAgent.prototype.stepInto = function(opt_callback) {};
+Protocol.DebuggerAgent.prototype.stepInto = function() {};
 /** @typedef {Object|undefined} */
 Protocol.DebuggerAgent.StepIntoRequest;
 /** @typedef {Object|undefined} */
@@ -6181,11 +6159,9 @@ Protocol.DebuggerAgent.StepIntoResponse;
 Protocol.DebuggerAgent.prototype.invoke_stepInto = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DebuggerAgent.prototype.stepOut = function(opt_callback) {};
+Protocol.DebuggerAgent.prototype.stepOut = function() {};
 /** @typedef {Object|undefined} */
 Protocol.DebuggerAgent.StepOutRequest;
 /** @typedef {Object|undefined} */
@@ -6196,11 +6172,9 @@ Protocol.DebuggerAgent.StepOutResponse;
 Protocol.DebuggerAgent.prototype.invoke_stepOut = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DebuggerAgent.prototype.pause = function(opt_callback) {};
+Protocol.DebuggerAgent.prototype.pause = function() {};
 /** @typedef {Object|undefined} */
 Protocol.DebuggerAgent.PauseRequest;
 /** @typedef {Object|undefined} */
@@ -6211,11 +6185,9 @@ Protocol.DebuggerAgent.PauseResponse;
 Protocol.DebuggerAgent.prototype.invoke_pause = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DebuggerAgent.prototype.scheduleStepIntoAsync = function(opt_callback) {};
+Protocol.DebuggerAgent.prototype.scheduleStepIntoAsync = function() {};
 /** @typedef {Object|undefined} */
 Protocol.DebuggerAgent.ScheduleStepIntoAsyncRequest;
 /** @typedef {Object|undefined} */
@@ -6226,11 +6198,9 @@ Protocol.DebuggerAgent.ScheduleStepIntoAsyncResponse;
 Protocol.DebuggerAgent.prototype.invoke_scheduleStepIntoAsync = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DebuggerAgent.prototype.resume = function(opt_callback) {};
+Protocol.DebuggerAgent.prototype.resume = function() {};
 /** @typedef {Object|undefined} */
 Protocol.DebuggerAgent.ResumeRequest;
 /** @typedef {Object|undefined} */
@@ -6245,11 +6215,9 @@ Protocol.DebuggerAgent.prototype.invoke_resume = function(obj) {};
  * @param {string} query
  * @param {boolean=} opt_caseSensitive
  * @param {boolean=} opt_isRegex
- * @param {function(?Protocol.Error, !Array<Protocol.Debugger.SearchMatch>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.Debugger.SearchMatch>>}
  */
-Protocol.DebuggerAgent.prototype.searchInContent = function(scriptId, query, opt_caseSensitive, opt_isRegex, opt_callback) {};
+Protocol.DebuggerAgent.prototype.searchInContent = function(scriptId, query, opt_caseSensitive, opt_isRegex) {};
 /** @typedef {!{query: string, scriptId: Protocol.Runtime.ScriptId, isRegex: (boolean|undefined), caseSensitive: (boolean|undefined)}} */
 Protocol.DebuggerAgent.SearchInContentRequest;
 /** @typedef {!{result: !Array<Protocol.Debugger.SearchMatch>}} */
@@ -6263,11 +6231,9 @@ Protocol.DebuggerAgent.prototype.invoke_searchInContent = function(obj) {};
  * @param {Protocol.Runtime.ScriptId} scriptId
  * @param {string} scriptSource
  * @param {boolean=} opt_dryRun
- * @param {function(?Protocol.Error, !Array<Protocol.Debugger.CallFrame>=, boolean=, Protocol.Runtime.StackTrace=, Protocol.Runtime.ExceptionDetails=):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.Debugger.CallFrame>>}
  */
-Protocol.DebuggerAgent.prototype.setScriptSource = function(scriptId, scriptSource, opt_dryRun, opt_callback) {};
+Protocol.DebuggerAgent.prototype.setScriptSource = function(scriptId, scriptSource, opt_dryRun) {};
 /** @typedef {!{scriptId: Protocol.Runtime.ScriptId, dryRun: (boolean|undefined), scriptSource: string}} */
 Protocol.DebuggerAgent.SetScriptSourceRequest;
 /** @typedef {!{stackChanged: boolean, asyncStackTrace: Protocol.Runtime.StackTrace, exceptionDetails: Protocol.Runtime.ExceptionDetails, callFrames: !Array<Protocol.Debugger.CallFrame>}} */
@@ -6279,11 +6245,9 @@ Protocol.DebuggerAgent.prototype.invoke_setScriptSource = function(obj) {};
 
 /**
  * @param {Protocol.Debugger.CallFrameId} callFrameId
- * @param {function(?Protocol.Error, !Array<Protocol.Debugger.CallFrame>, Protocol.Runtime.StackTrace=):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.Debugger.CallFrame>>}
  */
-Protocol.DebuggerAgent.prototype.restartFrame = function(callFrameId, opt_callback) {};
+Protocol.DebuggerAgent.prototype.restartFrame = function(callFrameId) {};
 /** @typedef {!{callFrameId: Protocol.Debugger.CallFrameId}} */
 Protocol.DebuggerAgent.RestartFrameRequest;
 /** @typedef {!{asyncStackTrace: Protocol.Runtime.StackTrace, callFrames: !Array<Protocol.Debugger.CallFrame>}} */
@@ -6295,11 +6259,9 @@ Protocol.DebuggerAgent.prototype.invoke_restartFrame = function(obj) {};
 
 /**
  * @param {Protocol.Runtime.ScriptId} scriptId
- * @param {function(?Protocol.Error, string):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?string>}
  */
-Protocol.DebuggerAgent.prototype.getScriptSource = function(scriptId, opt_callback) {};
+Protocol.DebuggerAgent.prototype.getScriptSource = function(scriptId) {};
 /** @typedef {!{scriptId: Protocol.Runtime.ScriptId}} */
 Protocol.DebuggerAgent.GetScriptSourceRequest;
 /** @typedef {!{scriptSource: string}} */
@@ -6311,11 +6273,9 @@ Protocol.DebuggerAgent.prototype.invoke_getScriptSource = function(obj) {};
 
 /**
  * @param {string} state
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DebuggerAgent.prototype.setPauseOnExceptions = function(state, opt_callback) {};
+Protocol.DebuggerAgent.prototype.setPauseOnExceptions = function(state) {};
 /** @typedef {!{state: string}} */
 Protocol.DebuggerAgent.SetPauseOnExceptionsRequest;
 /** @typedef {Object|undefined} */
@@ -6334,11 +6294,9 @@ Protocol.DebuggerAgent.prototype.invoke_setPauseOnExceptions = function(obj) {};
  * @param {boolean=} opt_returnByValue
  * @param {boolean=} opt_generatePreview
  * @param {boolean=} opt_throwOnSideEffect
- * @param {function(?Protocol.Error, Protocol.Runtime.RemoteObject, Protocol.Runtime.ExceptionDetails=):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.Runtime.RemoteObject>}
  */
-Protocol.DebuggerAgent.prototype.evaluateOnCallFrame = function(callFrameId, expression, opt_objectGroup, opt_includeCommandLineAPI, opt_silent, opt_returnByValue, opt_generatePreview, opt_throwOnSideEffect, opt_callback) {};
+Protocol.DebuggerAgent.prototype.evaluateOnCallFrame = function(callFrameId, expression, opt_objectGroup, opt_includeCommandLineAPI, opt_silent, opt_returnByValue, opt_generatePreview, opt_throwOnSideEffect) {};
 /** @typedef {!{objectGroup: (string|undefined), includeCommandLineAPI: (boolean|undefined), silent: (boolean|undefined), throwOnSideEffect: (boolean|undefined), generatePreview: (boolean|undefined), returnByValue: (boolean|undefined), callFrameId: Protocol.Debugger.CallFrameId, expression: string}} */
 Protocol.DebuggerAgent.EvaluateOnCallFrameRequest;
 /** @typedef {!{exceptionDetails: Protocol.Runtime.ExceptionDetails, result: Protocol.Runtime.RemoteObject}} */
@@ -6353,11 +6311,9 @@ Protocol.DebuggerAgent.prototype.invoke_evaluateOnCallFrame = function(obj) {};
  * @param {string} variableName
  * @param {Protocol.Runtime.CallArgument} newValue
  * @param {Protocol.Debugger.CallFrameId} callFrameId
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DebuggerAgent.prototype.setVariableValue = function(scopeNumber, variableName, newValue, callFrameId, opt_callback) {};
+Protocol.DebuggerAgent.prototype.setVariableValue = function(scopeNumber, variableName, newValue, callFrameId) {};
 /** @typedef {!{callFrameId: Protocol.Debugger.CallFrameId, scopeNumber: number, variableName: string, newValue: Protocol.Runtime.CallArgument}} */
 Protocol.DebuggerAgent.SetVariableValueRequest;
 /** @typedef {Object|undefined} */
@@ -6369,11 +6325,9 @@ Protocol.DebuggerAgent.prototype.invoke_setVariableValue = function(obj) {};
 
 /**
  * @param {number} maxDepth
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DebuggerAgent.prototype.setAsyncCallStackDepth = function(maxDepth, opt_callback) {};
+Protocol.DebuggerAgent.prototype.setAsyncCallStackDepth = function(maxDepth) {};
 /** @typedef {!{maxDepth: number}} */
 Protocol.DebuggerAgent.SetAsyncCallStackDepthRequest;
 /** @typedef {Object|undefined} */
@@ -6385,11 +6339,9 @@ Protocol.DebuggerAgent.prototype.invoke_setAsyncCallStackDepth = function(obj) {
 
 /**
  * @param {!Array<string>} patterns
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DebuggerAgent.prototype.setBlackboxPatterns = function(patterns, opt_callback) {};
+Protocol.DebuggerAgent.prototype.setBlackboxPatterns = function(patterns) {};
 /** @typedef {!{patterns: !Array<string>}} */
 Protocol.DebuggerAgent.SetBlackboxPatternsRequest;
 /** @typedef {Object|undefined} */
@@ -6402,11 +6354,9 @@ Protocol.DebuggerAgent.prototype.invoke_setBlackboxPatterns = function(obj) {};
 /**
  * @param {Protocol.Runtime.ScriptId} scriptId
  * @param {!Array<Protocol.Debugger.ScriptPosition>} positions
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DebuggerAgent.prototype.setBlackboxedRanges = function(scriptId, positions, opt_callback) {};
+Protocol.DebuggerAgent.prototype.setBlackboxedRanges = function(scriptId, positions) {};
 /** @typedef {!{positions: !Array<Protocol.Debugger.ScriptPosition>, scriptId: Protocol.Runtime.ScriptId}} */
 Protocol.DebuggerAgent.SetBlackboxedRangesRequest;
 /** @typedef {Object|undefined} */
