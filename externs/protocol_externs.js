@@ -2487,11 +2487,9 @@ Protocol.DOM = {};
 Protocol.DOMAgent = function(){};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMAgent.prototype.enable = function(opt_callback) {};
+Protocol.DOMAgent.prototype.enable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.DOMAgent.EnableRequest;
 /** @typedef {Object|undefined} */
@@ -2502,11 +2500,9 @@ Protocol.DOMAgent.EnableResponse;
 Protocol.DOMAgent.prototype.invoke_enable = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMAgent.prototype.disable = function(opt_callback) {};
+Protocol.DOMAgent.prototype.disable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.DOMAgent.DisableRequest;
 /** @typedef {Object|undefined} */
@@ -2519,11 +2515,9 @@ Protocol.DOMAgent.prototype.invoke_disable = function(obj) {};
 /**
  * @param {number=} opt_depth
  * @param {boolean=} opt_pierce
- * @param {function(?Protocol.Error, Protocol.DOM.Node):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.DOM.Node>}
  */
-Protocol.DOMAgent.prototype.getDocument = function(opt_depth, opt_pierce, opt_callback) {};
+Protocol.DOMAgent.prototype.getDocument = function(opt_depth, opt_pierce) {};
 /** @typedef {!{depth: (number|undefined), pierce: (boolean|undefined)}} */
 Protocol.DOMAgent.GetDocumentRequest;
 /** @typedef {!{root: Protocol.DOM.Node}} */
@@ -2536,11 +2530,9 @@ Protocol.DOMAgent.prototype.invoke_getDocument = function(obj) {};
 /**
  * @param {number=} opt_depth
  * @param {boolean=} opt_pierce
- * @param {function(?Protocol.Error, !Array<Protocol.DOM.Node>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.DOM.Node>>}
  */
-Protocol.DOMAgent.prototype.getFlattenedDocument = function(opt_depth, opt_pierce, opt_callback) {};
+Protocol.DOMAgent.prototype.getFlattenedDocument = function(opt_depth, opt_pierce) {};
 /** @typedef {!{depth: (number|undefined), pierce: (boolean|undefined)}} */
 Protocol.DOMAgent.GetFlattenedDocumentRequest;
 /** @typedef {!{nodes: !Array<Protocol.DOM.Node>}} */
@@ -2552,11 +2544,9 @@ Protocol.DOMAgent.prototype.invoke_getFlattenedDocument = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
- * @param {function(?Protocol.Error, !Array<string>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<string>>}
  */
-Protocol.DOMAgent.prototype.collectClassNamesFromSubtree = function(nodeId, opt_callback) {};
+Protocol.DOMAgent.prototype.collectClassNamesFromSubtree = function(nodeId) {};
 /** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
 Protocol.DOMAgent.CollectClassNamesFromSubtreeRequest;
 /** @typedef {!{classNames: !Array<string>}} */
@@ -2570,11 +2560,9 @@ Protocol.DOMAgent.prototype.invoke_collectClassNamesFromSubtree = function(obj) 
  * @param {Protocol.DOM.NodeId} nodeId
  * @param {number=} opt_depth
  * @param {boolean=} opt_pierce
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMAgent.prototype.requestChildNodes = function(nodeId, opt_depth, opt_pierce, opt_callback) {};
+Protocol.DOMAgent.prototype.requestChildNodes = function(nodeId, opt_depth, opt_pierce) {};
 /** @typedef {!{depth: (number|undefined), nodeId: Protocol.DOM.NodeId, pierce: (boolean|undefined)}} */
 Protocol.DOMAgent.RequestChildNodesRequest;
 /** @typedef {Object|undefined} */
@@ -2587,11 +2575,9 @@ Protocol.DOMAgent.prototype.invoke_requestChildNodes = function(obj) {};
 /**
  * @param {Protocol.DOM.NodeId} nodeId
  * @param {string} selector
- * @param {function(?Protocol.Error, Protocol.DOM.NodeId):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.DOM.NodeId>}
  */
-Protocol.DOMAgent.prototype.querySelector = function(nodeId, selector, opt_callback) {};
+Protocol.DOMAgent.prototype.querySelector = function(nodeId, selector) {};
 /** @typedef {!{nodeId: Protocol.DOM.NodeId, selector: string}} */
 Protocol.DOMAgent.QuerySelectorRequest;
 /** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
@@ -2604,11 +2590,9 @@ Protocol.DOMAgent.prototype.invoke_querySelector = function(obj) {};
 /**
  * @param {Protocol.DOM.NodeId} nodeId
  * @param {string} selector
- * @param {function(?Protocol.Error, !Array<Protocol.DOM.NodeId>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.DOM.NodeId>>}
  */
-Protocol.DOMAgent.prototype.querySelectorAll = function(nodeId, selector, opt_callback) {};
+Protocol.DOMAgent.prototype.querySelectorAll = function(nodeId, selector) {};
 /** @typedef {!{nodeId: Protocol.DOM.NodeId, selector: string}} */
 Protocol.DOMAgent.QuerySelectorAllRequest;
 /** @typedef {!{nodeIds: !Array<Protocol.DOM.NodeId>}} */
@@ -2621,11 +2605,9 @@ Protocol.DOMAgent.prototype.invoke_querySelectorAll = function(obj) {};
 /**
  * @param {Protocol.DOM.NodeId} nodeId
  * @param {string} name
- * @param {function(?Protocol.Error, Protocol.DOM.NodeId):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.DOM.NodeId>}
  */
-Protocol.DOMAgent.prototype.setNodeName = function(nodeId, name, opt_callback) {};
+Protocol.DOMAgent.prototype.setNodeName = function(nodeId, name) {};
 /** @typedef {!{nodeId: Protocol.DOM.NodeId, name: string}} */
 Protocol.DOMAgent.SetNodeNameRequest;
 /** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
@@ -2638,11 +2620,9 @@ Protocol.DOMAgent.prototype.invoke_setNodeName = function(obj) {};
 /**
  * @param {Protocol.DOM.NodeId} nodeId
  * @param {string} value
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMAgent.prototype.setNodeValue = function(nodeId, value, opt_callback) {};
+Protocol.DOMAgent.prototype.setNodeValue = function(nodeId, value) {};
 /** @typedef {!{nodeId: Protocol.DOM.NodeId, value: string}} */
 Protocol.DOMAgent.SetNodeValueRequest;
 /** @typedef {Object|undefined} */
@@ -2654,11 +2634,9 @@ Protocol.DOMAgent.prototype.invoke_setNodeValue = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMAgent.prototype.removeNode = function(nodeId, opt_callback) {};
+Protocol.DOMAgent.prototype.removeNode = function(nodeId) {};
 /** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
 Protocol.DOMAgent.RemoveNodeRequest;
 /** @typedef {Object|undefined} */
@@ -2672,11 +2650,9 @@ Protocol.DOMAgent.prototype.invoke_removeNode = function(obj) {};
  * @param {Protocol.DOM.NodeId} nodeId
  * @param {string} name
  * @param {string} value
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMAgent.prototype.setAttributeValue = function(nodeId, name, value, opt_callback) {};
+Protocol.DOMAgent.prototype.setAttributeValue = function(nodeId, name, value) {};
 /** @typedef {!{nodeId: Protocol.DOM.NodeId, value: string, name: string}} */
 Protocol.DOMAgent.SetAttributeValueRequest;
 /** @typedef {Object|undefined} */
@@ -2690,11 +2666,9 @@ Protocol.DOMAgent.prototype.invoke_setAttributeValue = function(obj) {};
  * @param {Protocol.DOM.NodeId} nodeId
  * @param {string} text
  * @param {string=} opt_name
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMAgent.prototype.setAttributesAsText = function(nodeId, text, opt_name, opt_callback) {};
+Protocol.DOMAgent.prototype.setAttributesAsText = function(nodeId, text, opt_name) {};
 /** @typedef {!{text: string, nodeId: Protocol.DOM.NodeId, name: (string|undefined)}} */
 Protocol.DOMAgent.SetAttributesAsTextRequest;
 /** @typedef {Object|undefined} */
@@ -2707,11 +2681,9 @@ Protocol.DOMAgent.prototype.invoke_setAttributesAsText = function(obj) {};
 /**
  * @param {Protocol.DOM.NodeId} nodeId
  * @param {string} name
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMAgent.prototype.removeAttribute = function(nodeId, name, opt_callback) {};
+Protocol.DOMAgent.prototype.removeAttribute = function(nodeId, name) {};
 /** @typedef {!{nodeId: Protocol.DOM.NodeId, name: string}} */
 Protocol.DOMAgent.RemoveAttributeRequest;
 /** @typedef {Object|undefined} */
@@ -2723,11 +2695,9 @@ Protocol.DOMAgent.prototype.invoke_removeAttribute = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
- * @param {function(?Protocol.Error, string):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?string>}
  */
-Protocol.DOMAgent.prototype.getOuterHTML = function(nodeId, opt_callback) {};
+Protocol.DOMAgent.prototype.getOuterHTML = function(nodeId) {};
 /** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
 Protocol.DOMAgent.GetOuterHTMLRequest;
 /** @typedef {!{outerHTML: string}} */
@@ -2740,11 +2710,9 @@ Protocol.DOMAgent.prototype.invoke_getOuterHTML = function(obj) {};
 /**
  * @param {Protocol.DOM.NodeId} nodeId
  * @param {string} outerHTML
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMAgent.prototype.setOuterHTML = function(nodeId, outerHTML, opt_callback) {};
+Protocol.DOMAgent.prototype.setOuterHTML = function(nodeId, outerHTML) {};
 /** @typedef {!{outerHTML: string, nodeId: Protocol.DOM.NodeId}} */
 Protocol.DOMAgent.SetOuterHTMLRequest;
 /** @typedef {Object|undefined} */
@@ -2757,11 +2725,9 @@ Protocol.DOMAgent.prototype.invoke_setOuterHTML = function(obj) {};
 /**
  * @param {string} query
  * @param {boolean=} opt_includeUserAgentShadowDOM
- * @param {function(?Protocol.Error, string, number):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?string>}
  */
-Protocol.DOMAgent.prototype.performSearch = function(query, opt_includeUserAgentShadowDOM, opt_callback) {};
+Protocol.DOMAgent.prototype.performSearch = function(query, opt_includeUserAgentShadowDOM) {};
 /** @typedef {!{query: string, includeUserAgentShadowDOM: (boolean|undefined)}} */
 Protocol.DOMAgent.PerformSearchRequest;
 /** @typedef {!{searchId: string, resultCount: number}} */
@@ -2775,11 +2741,9 @@ Protocol.DOMAgent.prototype.invoke_performSearch = function(obj) {};
  * @param {string} searchId
  * @param {number} fromIndex
  * @param {number} toIndex
- * @param {function(?Protocol.Error, !Array<Protocol.DOM.NodeId>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.DOM.NodeId>>}
  */
-Protocol.DOMAgent.prototype.getSearchResults = function(searchId, fromIndex, toIndex, opt_callback) {};
+Protocol.DOMAgent.prototype.getSearchResults = function(searchId, fromIndex, toIndex) {};
 /** @typedef {!{toIndex: number, searchId: string, fromIndex: number}} */
 Protocol.DOMAgent.GetSearchResultsRequest;
 /** @typedef {!{nodeIds: !Array<Protocol.DOM.NodeId>}} */
@@ -2791,11 +2755,9 @@ Protocol.DOMAgent.prototype.invoke_getSearchResults = function(obj) {};
 
 /**
  * @param {string} searchId
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMAgent.prototype.discardSearchResults = function(searchId, opt_callback) {};
+Protocol.DOMAgent.prototype.discardSearchResults = function(searchId) {};
 /** @typedef {!{searchId: string}} */
 Protocol.DOMAgent.DiscardSearchResultsRequest;
 /** @typedef {Object|undefined} */
@@ -2807,11 +2769,9 @@ Protocol.DOMAgent.prototype.invoke_discardSearchResults = function(obj) {};
 
 /**
  * @param {Protocol.Runtime.RemoteObjectId} objectId
- * @param {function(?Protocol.Error, Protocol.DOM.NodeId):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.DOM.NodeId>}
  */
-Protocol.DOMAgent.prototype.requestNode = function(objectId, opt_callback) {};
+Protocol.DOMAgent.prototype.requestNode = function(objectId) {};
 /** @typedef {!{objectId: Protocol.Runtime.RemoteObjectId}} */
 Protocol.DOMAgent.RequestNodeRequest;
 /** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
@@ -2822,11 +2782,9 @@ Protocol.DOMAgent.RequestNodeResponse;
 Protocol.DOMAgent.prototype.invoke_requestNode = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMAgent.prototype.highlightRect = function(opt_callback) {};
+Protocol.DOMAgent.prototype.highlightRect = function() {};
 /** @typedef {Object|undefined} */
 Protocol.DOMAgent.HighlightRectRequest;
 /** @typedef {Object|undefined} */
@@ -2837,11 +2795,9 @@ Protocol.DOMAgent.HighlightRectResponse;
 Protocol.DOMAgent.prototype.invoke_highlightRect = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMAgent.prototype.highlightNode = function(opt_callback) {};
+Protocol.DOMAgent.prototype.highlightNode = function() {};
 /** @typedef {Object|undefined} */
 Protocol.DOMAgent.HighlightNodeRequest;
 /** @typedef {Object|undefined} */
@@ -2852,11 +2808,9 @@ Protocol.DOMAgent.HighlightNodeResponse;
 Protocol.DOMAgent.prototype.invoke_highlightNode = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMAgent.prototype.hideHighlight = function(opt_callback) {};
+Protocol.DOMAgent.prototype.hideHighlight = function() {};
 /** @typedef {Object|undefined} */
 Protocol.DOMAgent.HideHighlightRequest;
 /** @typedef {Object|undefined} */
@@ -2868,11 +2822,9 @@ Protocol.DOMAgent.prototype.invoke_hideHighlight = function(obj) {};
 
 /**
  * @param {string} path
- * @param {function(?Protocol.Error, Protocol.DOM.NodeId):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.DOM.NodeId>}
  */
-Protocol.DOMAgent.prototype.pushNodeByPathToFrontend = function(path, opt_callback) {};
+Protocol.DOMAgent.prototype.pushNodeByPathToFrontend = function(path) {};
 /** @typedef {!{path: string}} */
 Protocol.DOMAgent.PushNodeByPathToFrontendRequest;
 /** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
@@ -2884,11 +2836,9 @@ Protocol.DOMAgent.prototype.invoke_pushNodeByPathToFrontend = function(obj) {};
 
 /**
  * @param {!Array<Protocol.DOM.BackendNodeId>} backendNodeIds
- * @param {function(?Protocol.Error, !Array<Protocol.DOM.NodeId>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.DOM.NodeId>>}
  */
-Protocol.DOMAgent.prototype.pushNodesByBackendIdsToFrontend = function(backendNodeIds, opt_callback) {};
+Protocol.DOMAgent.prototype.pushNodesByBackendIdsToFrontend = function(backendNodeIds) {};
 /** @typedef {!{backendNodeIds: !Array<Protocol.DOM.BackendNodeId>}} */
 Protocol.DOMAgent.PushNodesByBackendIdsToFrontendRequest;
 /** @typedef {!{nodeIds: !Array<Protocol.DOM.NodeId>}} */
@@ -2900,11 +2850,9 @@ Protocol.DOMAgent.prototype.invoke_pushNodesByBackendIdsToFrontend = function(ob
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMAgent.prototype.setInspectedNode = function(nodeId, opt_callback) {};
+Protocol.DOMAgent.prototype.setInspectedNode = function(nodeId) {};
 /** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
 Protocol.DOMAgent.SetInspectedNodeRequest;
 /** @typedef {Object|undefined} */
@@ -2917,11 +2865,9 @@ Protocol.DOMAgent.prototype.invoke_setInspectedNode = function(obj) {};
 /**
  * @param {Protocol.DOM.NodeId} nodeId
  * @param {string=} opt_objectGroup
- * @param {function(?Protocol.Error, Protocol.Runtime.RemoteObject):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.Runtime.RemoteObject>}
  */
-Protocol.DOMAgent.prototype.resolveNode = function(nodeId, opt_objectGroup, opt_callback) {};
+Protocol.DOMAgent.prototype.resolveNode = function(nodeId, opt_objectGroup) {};
 /** @typedef {!{objectGroup: (string|undefined), nodeId: Protocol.DOM.NodeId}} */
 Protocol.DOMAgent.ResolveNodeRequest;
 /** @typedef {!{object: Protocol.Runtime.RemoteObject}} */
@@ -2933,11 +2879,9 @@ Protocol.DOMAgent.prototype.invoke_resolveNode = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
- * @param {function(?Protocol.Error, !Array<string>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<string>>}
  */
-Protocol.DOMAgent.prototype.getAttributes = function(nodeId, opt_callback) {};
+Protocol.DOMAgent.prototype.getAttributes = function(nodeId) {};
 /** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
 Protocol.DOMAgent.GetAttributesRequest;
 /** @typedef {!{attributes: !Array<string>}} */
@@ -2951,11 +2895,9 @@ Protocol.DOMAgent.prototype.invoke_getAttributes = function(obj) {};
  * @param {Protocol.DOM.NodeId} nodeId
  * @param {Protocol.DOM.NodeId} targetNodeId
  * @param {Protocol.DOM.NodeId=} opt_insertBeforeNodeId
- * @param {function(?Protocol.Error, Protocol.DOM.NodeId):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.DOM.NodeId>}
  */
-Protocol.DOMAgent.prototype.copyTo = function(nodeId, targetNodeId, opt_insertBeforeNodeId, opt_callback) {};
+Protocol.DOMAgent.prototype.copyTo = function(nodeId, targetNodeId, opt_insertBeforeNodeId) {};
 /** @typedef {!{targetNodeId: Protocol.DOM.NodeId, nodeId: Protocol.DOM.NodeId, insertBeforeNodeId: (Protocol.DOM.NodeId|undefined)}} */
 Protocol.DOMAgent.CopyToRequest;
 /** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
@@ -2969,11 +2911,9 @@ Protocol.DOMAgent.prototype.invoke_copyTo = function(obj) {};
  * @param {Protocol.DOM.NodeId} nodeId
  * @param {Protocol.DOM.NodeId} targetNodeId
  * @param {Protocol.DOM.NodeId=} opt_insertBeforeNodeId
- * @param {function(?Protocol.Error, Protocol.DOM.NodeId):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.DOM.NodeId>}
  */
-Protocol.DOMAgent.prototype.moveTo = function(nodeId, targetNodeId, opt_insertBeforeNodeId, opt_callback) {};
+Protocol.DOMAgent.prototype.moveTo = function(nodeId, targetNodeId, opt_insertBeforeNodeId) {};
 /** @typedef {!{targetNodeId: Protocol.DOM.NodeId, nodeId: Protocol.DOM.NodeId, insertBeforeNodeId: (Protocol.DOM.NodeId|undefined)}} */
 Protocol.DOMAgent.MoveToRequest;
 /** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
@@ -2984,11 +2924,9 @@ Protocol.DOMAgent.MoveToResponse;
 Protocol.DOMAgent.prototype.invoke_moveTo = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMAgent.prototype.undo = function(opt_callback) {};
+Protocol.DOMAgent.prototype.undo = function() {};
 /** @typedef {Object|undefined} */
 Protocol.DOMAgent.UndoRequest;
 /** @typedef {Object|undefined} */
@@ -2999,11 +2937,9 @@ Protocol.DOMAgent.UndoResponse;
 Protocol.DOMAgent.prototype.invoke_undo = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMAgent.prototype.redo = function(opt_callback) {};
+Protocol.DOMAgent.prototype.redo = function() {};
 /** @typedef {Object|undefined} */
 Protocol.DOMAgent.RedoRequest;
 /** @typedef {Object|undefined} */
@@ -3014,11 +2950,9 @@ Protocol.DOMAgent.RedoResponse;
 Protocol.DOMAgent.prototype.invoke_redo = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMAgent.prototype.markUndoableState = function(opt_callback) {};
+Protocol.DOMAgent.prototype.markUndoableState = function() {};
 /** @typedef {Object|undefined} */
 Protocol.DOMAgent.MarkUndoableStateRequest;
 /** @typedef {Object|undefined} */
@@ -3030,11 +2964,9 @@ Protocol.DOMAgent.prototype.invoke_markUndoableState = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMAgent.prototype.focus = function(nodeId, opt_callback) {};
+Protocol.DOMAgent.prototype.focus = function(nodeId) {};
 /** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
 Protocol.DOMAgent.FocusRequest;
 /** @typedef {Object|undefined} */
@@ -3047,11 +2979,9 @@ Protocol.DOMAgent.prototype.invoke_focus = function(obj) {};
 /**
  * @param {Protocol.DOM.NodeId} nodeId
  * @param {!Array<string>} files
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMAgent.prototype.setFileInputFiles = function(nodeId, files, opt_callback) {};
+Protocol.DOMAgent.prototype.setFileInputFiles = function(nodeId, files) {};
 /** @typedef {!{files: !Array<string>, nodeId: Protocol.DOM.NodeId}} */
 Protocol.DOMAgent.SetFileInputFilesRequest;
 /** @typedef {Object|undefined} */
@@ -3063,11 +2993,9 @@ Protocol.DOMAgent.prototype.invoke_setFileInputFiles = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
- * @param {function(?Protocol.Error, Protocol.DOM.BoxModel):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.DOM.BoxModel>}
  */
-Protocol.DOMAgent.prototype.getBoxModel = function(nodeId, opt_callback) {};
+Protocol.DOMAgent.prototype.getBoxModel = function(nodeId) {};
 /** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
 Protocol.DOMAgent.GetBoxModelRequest;
 /** @typedef {!{model: Protocol.DOM.BoxModel}} */
@@ -3081,11 +3009,9 @@ Protocol.DOMAgent.prototype.invoke_getBoxModel = function(obj) {};
  * @param {number} x
  * @param {number} y
  * @param {boolean=} opt_includeUserAgentShadowDOM
- * @param {function(?Protocol.Error, Protocol.DOM.NodeId):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.DOM.NodeId>}
  */
-Protocol.DOMAgent.prototype.getNodeForLocation = function(x, y, opt_includeUserAgentShadowDOM, opt_callback) {};
+Protocol.DOMAgent.prototype.getNodeForLocation = function(x, y, opt_includeUserAgentShadowDOM) {};
 /** @typedef {!{y: number, x: number, includeUserAgentShadowDOM: (boolean|undefined)}} */
 Protocol.DOMAgent.GetNodeForLocationRequest;
 /** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
@@ -3097,11 +3023,9 @@ Protocol.DOMAgent.prototype.invoke_getNodeForLocation = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
- * @param {function(?Protocol.Error, Protocol.DOM.NodeId):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.DOM.NodeId>}
  */
-Protocol.DOMAgent.prototype.getRelayoutBoundary = function(nodeId, opt_callback) {};
+Protocol.DOMAgent.prototype.getRelayoutBoundary = function(nodeId) {};
 /** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
 Protocol.DOMAgent.GetRelayoutBoundaryRequest;
 /** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
