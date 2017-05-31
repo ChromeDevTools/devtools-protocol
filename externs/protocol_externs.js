@@ -1427,11 +1427,9 @@ Protocol.NetworkAgent = function(){};
 /**
  * @param {number=} opt_maxTotalBufferSize
  * @param {number=} opt_maxResourceBufferSize
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.NetworkAgent.prototype.enable = function(opt_maxTotalBufferSize, opt_maxResourceBufferSize, opt_callback) {};
+Protocol.NetworkAgent.prototype.enable = function(opt_maxTotalBufferSize, opt_maxResourceBufferSize) {};
 /** @typedef {!{maxTotalBufferSize: (number|undefined), maxResourceBufferSize: (number|undefined)}} */
 Protocol.NetworkAgent.EnableRequest;
 /** @typedef {Object|undefined} */
@@ -1442,11 +1440,9 @@ Protocol.NetworkAgent.EnableResponse;
 Protocol.NetworkAgent.prototype.invoke_enable = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.NetworkAgent.prototype.disable = function(opt_callback) {};
+Protocol.NetworkAgent.prototype.disable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.NetworkAgent.DisableRequest;
 /** @typedef {Object|undefined} */
@@ -1458,11 +1454,9 @@ Protocol.NetworkAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {string} userAgent
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.NetworkAgent.prototype.setUserAgentOverride = function(userAgent, opt_callback) {};
+Protocol.NetworkAgent.prototype.setUserAgentOverride = function(userAgent) {};
 /** @typedef {!{userAgent: string}} */
 Protocol.NetworkAgent.SetUserAgentOverrideRequest;
 /** @typedef {Object|undefined} */
@@ -1474,11 +1468,9 @@ Protocol.NetworkAgent.prototype.invoke_setUserAgentOverride = function(obj) {};
 
 /**
  * @param {Protocol.Network.Headers} headers
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.NetworkAgent.prototype.setExtraHTTPHeaders = function(headers, opt_callback) {};
+Protocol.NetworkAgent.prototype.setExtraHTTPHeaders = function(headers) {};
 /** @typedef {!{headers: Protocol.Network.Headers}} */
 Protocol.NetworkAgent.SetExtraHTTPHeadersRequest;
 /** @typedef {Object|undefined} */
@@ -1490,11 +1482,9 @@ Protocol.NetworkAgent.prototype.invoke_setExtraHTTPHeaders = function(obj) {};
 
 /**
  * @param {Protocol.Network.RequestId} requestId
- * @param {function(?Protocol.Error, string, boolean):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?string>}
  */
-Protocol.NetworkAgent.prototype.getResponseBody = function(requestId, opt_callback) {};
+Protocol.NetworkAgent.prototype.getResponseBody = function(requestId) {};
 /** @typedef {!{requestId: Protocol.Network.RequestId}} */
 Protocol.NetworkAgent.GetResponseBodyRequest;
 /** @typedef {!{body: string, base64Encoded: boolean}} */
@@ -1506,11 +1496,9 @@ Protocol.NetworkAgent.prototype.invoke_getResponseBody = function(obj) {};
 
 /**
  * @param {!Array<string>} urls
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.NetworkAgent.prototype.setBlockedURLs = function(urls, opt_callback) {};
+Protocol.NetworkAgent.prototype.setBlockedURLs = function(urls) {};
 /** @typedef {!{urls: !Array<string>}} */
 Protocol.NetworkAgent.SetBlockedURLsRequest;
 /** @typedef {Object|undefined} */
@@ -1522,11 +1510,9 @@ Protocol.NetworkAgent.prototype.invoke_setBlockedURLs = function(obj) {};
 
 /**
  * @param {Protocol.Network.RequestId} requestId
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.NetworkAgent.prototype.replayXHR = function(requestId, opt_callback) {};
+Protocol.NetworkAgent.prototype.replayXHR = function(requestId) {};
 /** @typedef {!{requestId: Protocol.Network.RequestId}} */
 Protocol.NetworkAgent.ReplayXHRRequest;
 /** @typedef {Object|undefined} */
@@ -1537,11 +1523,9 @@ Protocol.NetworkAgent.ReplayXHRResponse;
 Protocol.NetworkAgent.prototype.invoke_replayXHR = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error, boolean):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?boolean>}
  */
-Protocol.NetworkAgent.prototype.canClearBrowserCache = function(opt_callback) {};
+Protocol.NetworkAgent.prototype.canClearBrowserCache = function() {};
 /** @typedef {Object|undefined} */
 Protocol.NetworkAgent.CanClearBrowserCacheRequest;
 /** @typedef {!{result: boolean}} */
@@ -1552,11 +1536,9 @@ Protocol.NetworkAgent.CanClearBrowserCacheResponse;
 Protocol.NetworkAgent.prototype.invoke_canClearBrowserCache = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.NetworkAgent.prototype.clearBrowserCache = function(opt_callback) {};
+Protocol.NetworkAgent.prototype.clearBrowserCache = function() {};
 /** @typedef {Object|undefined} */
 Protocol.NetworkAgent.ClearBrowserCacheRequest;
 /** @typedef {Object|undefined} */
@@ -1567,11 +1549,9 @@ Protocol.NetworkAgent.ClearBrowserCacheResponse;
 Protocol.NetworkAgent.prototype.invoke_clearBrowserCache = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error, boolean):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?boolean>}
  */
-Protocol.NetworkAgent.prototype.canClearBrowserCookies = function(opt_callback) {};
+Protocol.NetworkAgent.prototype.canClearBrowserCookies = function() {};
 /** @typedef {Object|undefined} */
 Protocol.NetworkAgent.CanClearBrowserCookiesRequest;
 /** @typedef {!{result: boolean}} */
@@ -1582,11 +1562,9 @@ Protocol.NetworkAgent.CanClearBrowserCookiesResponse;
 Protocol.NetworkAgent.prototype.invoke_canClearBrowserCookies = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.NetworkAgent.prototype.clearBrowserCookies = function(opt_callback) {};
+Protocol.NetworkAgent.prototype.clearBrowserCookies = function() {};
 /** @typedef {Object|undefined} */
 Protocol.NetworkAgent.ClearBrowserCookiesRequest;
 /** @typedef {Object|undefined} */
@@ -1598,11 +1576,9 @@ Protocol.NetworkAgent.prototype.invoke_clearBrowserCookies = function(obj) {};
 
 /**
  * @param {!Array<string>=} opt_urls
- * @param {function(?Protocol.Error, !Array<Protocol.Network.Cookie>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.Network.Cookie>>}
  */
-Protocol.NetworkAgent.prototype.getCookies = function(opt_urls, opt_callback) {};
+Protocol.NetworkAgent.prototype.getCookies = function(opt_urls) {};
 /** @typedef {!{urls: (!Array<string>|undefined)}} */
 Protocol.NetworkAgent.GetCookiesRequest;
 /** @typedef {!{cookies: !Array<Protocol.Network.Cookie>}} */
@@ -1613,11 +1589,9 @@ Protocol.NetworkAgent.GetCookiesResponse;
 Protocol.NetworkAgent.prototype.invoke_getCookies = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error, !Array<Protocol.Network.Cookie>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.Network.Cookie>>}
  */
-Protocol.NetworkAgent.prototype.getAllCookies = function(opt_callback) {};
+Protocol.NetworkAgent.prototype.getAllCookies = function() {};
 /** @typedef {Object|undefined} */
 Protocol.NetworkAgent.GetAllCookiesRequest;
 /** @typedef {!{cookies: !Array<Protocol.Network.Cookie>}} */
@@ -1630,11 +1604,9 @@ Protocol.NetworkAgent.prototype.invoke_getAllCookies = function(obj) {};
 /**
  * @param {string} cookieName
  * @param {string} url
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.NetworkAgent.prototype.deleteCookie = function(cookieName, url, opt_callback) {};
+Protocol.NetworkAgent.prototype.deleteCookie = function(cookieName, url) {};
 /** @typedef {!{url: string, cookieName: string}} */
 Protocol.NetworkAgent.DeleteCookieRequest;
 /** @typedef {Object|undefined} */
@@ -1654,11 +1626,9 @@ Protocol.NetworkAgent.prototype.invoke_deleteCookie = function(obj) {};
  * @param {boolean=} opt_httpOnly
  * @param {Protocol.Network.CookieSameSite=} opt_sameSite
  * @param {Protocol.Network.Timestamp=} opt_expirationDate
- * @param {function(?Protocol.Error, boolean):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?boolean>}
  */
-Protocol.NetworkAgent.prototype.setCookie = function(url, name, value, opt_domain, opt_path, opt_secure, opt_httpOnly, opt_sameSite, opt_expirationDate, opt_callback) {};
+Protocol.NetworkAgent.prototype.setCookie = function(url, name, value, opt_domain, opt_path, opt_secure, opt_httpOnly, opt_sameSite, opt_expirationDate) {};
 /** @typedef {!{domain: (string|undefined), name: string, url: string, value: string, expirationDate: (Protocol.Network.Timestamp|undefined), sameSite: (Protocol.Network.CookieSameSite|undefined), path: (string|undefined), httpOnly: (boolean|undefined), secure: (boolean|undefined)}} */
 Protocol.NetworkAgent.SetCookieRequest;
 /** @typedef {!{success: boolean}} */
@@ -1669,11 +1639,9 @@ Protocol.NetworkAgent.SetCookieResponse;
 Protocol.NetworkAgent.prototype.invoke_setCookie = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error, boolean):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?boolean>}
  */
-Protocol.NetworkAgent.prototype.canEmulateNetworkConditions = function(opt_callback) {};
+Protocol.NetworkAgent.prototype.canEmulateNetworkConditions = function() {};
 /** @typedef {Object|undefined} */
 Protocol.NetworkAgent.CanEmulateNetworkConditionsRequest;
 /** @typedef {!{result: boolean}} */
@@ -1689,11 +1657,9 @@ Protocol.NetworkAgent.prototype.invoke_canEmulateNetworkConditions = function(ob
  * @param {number} downloadThroughput
  * @param {number} uploadThroughput
  * @param {Protocol.Network.ConnectionType=} opt_connectionType
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.NetworkAgent.prototype.emulateNetworkConditions = function(offline, latency, downloadThroughput, uploadThroughput, opt_connectionType, opt_callback) {};
+Protocol.NetworkAgent.prototype.emulateNetworkConditions = function(offline, latency, downloadThroughput, uploadThroughput, opt_connectionType) {};
 /** @typedef {!{latency: number, offline: boolean, downloadThroughput: number, connectionType: (Protocol.Network.ConnectionType|undefined), uploadThroughput: number}} */
 Protocol.NetworkAgent.EmulateNetworkConditionsRequest;
 /** @typedef {Object|undefined} */
@@ -1705,11 +1671,9 @@ Protocol.NetworkAgent.prototype.invoke_emulateNetworkConditions = function(obj) 
 
 /**
  * @param {boolean} cacheDisabled
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.NetworkAgent.prototype.setCacheDisabled = function(cacheDisabled, opt_callback) {};
+Protocol.NetworkAgent.prototype.setCacheDisabled = function(cacheDisabled) {};
 /** @typedef {!{cacheDisabled: boolean}} */
 Protocol.NetworkAgent.SetCacheDisabledRequest;
 /** @typedef {Object|undefined} */
@@ -1721,11 +1685,9 @@ Protocol.NetworkAgent.prototype.invoke_setCacheDisabled = function(obj) {};
 
 /**
  * @param {boolean} bypass
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.NetworkAgent.prototype.setBypassServiceWorker = function(bypass, opt_callback) {};
+Protocol.NetworkAgent.prototype.setBypassServiceWorker = function(bypass) {};
 /** @typedef {!{bypass: boolean}} */
 Protocol.NetworkAgent.SetBypassServiceWorkerRequest;
 /** @typedef {Object|undefined} */
@@ -1738,11 +1700,9 @@ Protocol.NetworkAgent.prototype.invoke_setBypassServiceWorker = function(obj) {}
 /**
  * @param {number} maxTotalSize
  * @param {number} maxResourceSize
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.NetworkAgent.prototype.setDataSizeLimitsForTest = function(maxTotalSize, maxResourceSize, opt_callback) {};
+Protocol.NetworkAgent.prototype.setDataSizeLimitsForTest = function(maxTotalSize, maxResourceSize) {};
 /** @typedef {!{maxResourceSize: number, maxTotalSize: number}} */
 Protocol.NetworkAgent.SetDataSizeLimitsForTestRequest;
 /** @typedef {Object|undefined} */
@@ -1754,11 +1714,9 @@ Protocol.NetworkAgent.prototype.invoke_setDataSizeLimitsForTest = function(obj) 
 
 /**
  * @param {string} origin
- * @param {function(?Protocol.Error, !Array<string>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<string>>}
  */
-Protocol.NetworkAgent.prototype.getCertificate = function(origin, opt_callback) {};
+Protocol.NetworkAgent.prototype.getCertificate = function(origin) {};
 /** @typedef {!{origin: string}} */
 Protocol.NetworkAgent.GetCertificateRequest;
 /** @typedef {!{tableNames: !Array<string>}} */
