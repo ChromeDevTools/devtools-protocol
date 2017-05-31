@@ -4909,11 +4909,9 @@ Protocol.Animation = {};
 Protocol.AnimationAgent = function(){};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.AnimationAgent.prototype.enable = function(opt_callback) {};
+Protocol.AnimationAgent.prototype.enable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.AnimationAgent.EnableRequest;
 /** @typedef {Object|undefined} */
@@ -4924,11 +4922,9 @@ Protocol.AnimationAgent.EnableResponse;
 Protocol.AnimationAgent.prototype.invoke_enable = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.AnimationAgent.prototype.disable = function(opt_callback) {};
+Protocol.AnimationAgent.prototype.disable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.AnimationAgent.DisableRequest;
 /** @typedef {Object|undefined} */
@@ -4939,11 +4935,9 @@ Protocol.AnimationAgent.DisableResponse;
 Protocol.AnimationAgent.prototype.invoke_disable = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error, number):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?number>}
  */
-Protocol.AnimationAgent.prototype.getPlaybackRate = function(opt_callback) {};
+Protocol.AnimationAgent.prototype.getPlaybackRate = function() {};
 /** @typedef {Object|undefined} */
 Protocol.AnimationAgent.GetPlaybackRateRequest;
 /** @typedef {!{playbackRate: number}} */
@@ -4955,11 +4949,9 @@ Protocol.AnimationAgent.prototype.invoke_getPlaybackRate = function(obj) {};
 
 /**
  * @param {number} playbackRate
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.AnimationAgent.prototype.setPlaybackRate = function(playbackRate, opt_callback) {};
+Protocol.AnimationAgent.prototype.setPlaybackRate = function(playbackRate) {};
 /** @typedef {!{playbackRate: number}} */
 Protocol.AnimationAgent.SetPlaybackRateRequest;
 /** @typedef {Object|undefined} */
@@ -4971,11 +4963,9 @@ Protocol.AnimationAgent.prototype.invoke_setPlaybackRate = function(obj) {};
 
 /**
  * @param {string} id
- * @param {function(?Protocol.Error, number):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?number>}
  */
-Protocol.AnimationAgent.prototype.getCurrentTime = function(id, opt_callback) {};
+Protocol.AnimationAgent.prototype.getCurrentTime = function(id) {};
 /** @typedef {!{id: string}} */
 Protocol.AnimationAgent.GetCurrentTimeRequest;
 /** @typedef {!{currentTime: number}} */
@@ -4988,11 +4978,9 @@ Protocol.AnimationAgent.prototype.invoke_getCurrentTime = function(obj) {};
 /**
  * @param {!Array<string>} animations
  * @param {boolean} paused
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.AnimationAgent.prototype.setPaused = function(animations, paused, opt_callback) {};
+Protocol.AnimationAgent.prototype.setPaused = function(animations, paused) {};
 /** @typedef {!{paused: boolean, animations: !Array<string>}} */
 Protocol.AnimationAgent.SetPausedRequest;
 /** @typedef {Object|undefined} */
@@ -5006,11 +4994,9 @@ Protocol.AnimationAgent.prototype.invoke_setPaused = function(obj) {};
  * @param {string} animationId
  * @param {number} duration
  * @param {number} delay
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.AnimationAgent.prototype.setTiming = function(animationId, duration, delay, opt_callback) {};
+Protocol.AnimationAgent.prototype.setTiming = function(animationId, duration, delay) {};
 /** @typedef {!{duration: number, delay: number, animationId: string}} */
 Protocol.AnimationAgent.SetTimingRequest;
 /** @typedef {Object|undefined} */
@@ -5023,11 +5009,9 @@ Protocol.AnimationAgent.prototype.invoke_setTiming = function(obj) {};
 /**
  * @param {!Array<string>} animations
  * @param {number} currentTime
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.AnimationAgent.prototype.seekAnimations = function(animations, currentTime, opt_callback) {};
+Protocol.AnimationAgent.prototype.seekAnimations = function(animations, currentTime) {};
 /** @typedef {!{currentTime: number, animations: !Array<string>}} */
 Protocol.AnimationAgent.SeekAnimationsRequest;
 /** @typedef {Object|undefined} */
@@ -5039,11 +5023,9 @@ Protocol.AnimationAgent.prototype.invoke_seekAnimations = function(obj) {};
 
 /**
  * @param {!Array<string>} animations
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.AnimationAgent.prototype.releaseAnimations = function(animations, opt_callback) {};
+Protocol.AnimationAgent.prototype.releaseAnimations = function(animations) {};
 /** @typedef {!{animations: !Array<string>}} */
 Protocol.AnimationAgent.ReleaseAnimationsRequest;
 /** @typedef {Object|undefined} */
@@ -5055,11 +5037,9 @@ Protocol.AnimationAgent.prototype.invoke_releaseAnimations = function(obj) {};
 
 /**
  * @param {string} animationId
- * @param {function(?Protocol.Error, Protocol.Runtime.RemoteObject):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.Runtime.RemoteObject>}
  */
-Protocol.AnimationAgent.prototype.resolveAnimation = function(animationId, opt_callback) {};
+Protocol.AnimationAgent.prototype.resolveAnimation = function(animationId) {};
 /** @typedef {!{animationId: string}} */
 Protocol.AnimationAgent.ResolveAnimationRequest;
 /** @typedef {!{remoteObject: Protocol.Runtime.RemoteObject}} */
