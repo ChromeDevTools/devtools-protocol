@@ -4496,11 +4496,9 @@ Protocol.LayerTree = {};
 Protocol.LayerTreeAgent = function(){};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.LayerTreeAgent.prototype.enable = function(opt_callback) {};
+Protocol.LayerTreeAgent.prototype.enable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.LayerTreeAgent.EnableRequest;
 /** @typedef {Object|undefined} */
@@ -4511,11 +4509,9 @@ Protocol.LayerTreeAgent.EnableResponse;
 Protocol.LayerTreeAgent.prototype.invoke_enable = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.LayerTreeAgent.prototype.disable = function(opt_callback) {};
+Protocol.LayerTreeAgent.prototype.disable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.LayerTreeAgent.DisableRequest;
 /** @typedef {Object|undefined} */
@@ -4527,11 +4523,9 @@ Protocol.LayerTreeAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {Protocol.LayerTree.LayerId} layerId
- * @param {function(?Protocol.Error, !Array<string>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<string>>}
  */
-Protocol.LayerTreeAgent.prototype.compositingReasons = function(layerId, opt_callback) {};
+Protocol.LayerTreeAgent.prototype.compositingReasons = function(layerId) {};
 /** @typedef {!{layerId: Protocol.LayerTree.LayerId}} */
 Protocol.LayerTreeAgent.CompositingReasonsRequest;
 /** @typedef {!{compositingReasons: !Array<string>}} */
@@ -4543,11 +4537,9 @@ Protocol.LayerTreeAgent.prototype.invoke_compositingReasons = function(obj) {};
 
 /**
  * @param {Protocol.LayerTree.LayerId} layerId
- * @param {function(?Protocol.Error, Protocol.LayerTree.SnapshotId):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.LayerTree.SnapshotId>}
  */
-Protocol.LayerTreeAgent.prototype.makeSnapshot = function(layerId, opt_callback) {};
+Protocol.LayerTreeAgent.prototype.makeSnapshot = function(layerId) {};
 /** @typedef {!{layerId: Protocol.LayerTree.LayerId}} */
 Protocol.LayerTreeAgent.MakeSnapshotRequest;
 /** @typedef {!{snapshotId: Protocol.LayerTree.SnapshotId}} */
@@ -4559,11 +4551,9 @@ Protocol.LayerTreeAgent.prototype.invoke_makeSnapshot = function(obj) {};
 
 /**
  * @param {!Array<Protocol.LayerTree.PictureTile>} tiles
- * @param {function(?Protocol.Error, Protocol.LayerTree.SnapshotId):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.LayerTree.SnapshotId>}
  */
-Protocol.LayerTreeAgent.prototype.loadSnapshot = function(tiles, opt_callback) {};
+Protocol.LayerTreeAgent.prototype.loadSnapshot = function(tiles) {};
 /** @typedef {!{tiles: !Array<Protocol.LayerTree.PictureTile>}} */
 Protocol.LayerTreeAgent.LoadSnapshotRequest;
 /** @typedef {!{snapshotId: Protocol.LayerTree.SnapshotId}} */
@@ -4575,11 +4565,9 @@ Protocol.LayerTreeAgent.prototype.invoke_loadSnapshot = function(obj) {};
 
 /**
  * @param {Protocol.LayerTree.SnapshotId} snapshotId
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.LayerTreeAgent.prototype.releaseSnapshot = function(snapshotId, opt_callback) {};
+Protocol.LayerTreeAgent.prototype.releaseSnapshot = function(snapshotId) {};
 /** @typedef {!{snapshotId: Protocol.LayerTree.SnapshotId}} */
 Protocol.LayerTreeAgent.ReleaseSnapshotRequest;
 /** @typedef {Object|undefined} */
@@ -4594,11 +4582,9 @@ Protocol.LayerTreeAgent.prototype.invoke_releaseSnapshot = function(obj) {};
  * @param {number=} opt_minRepeatCount
  * @param {number=} opt_minDuration
  * @param {Protocol.DOM.Rect=} opt_clipRect
- * @param {function(?Protocol.Error, !Array<Protocol.LayerTree.PaintProfile>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.LayerTree.PaintProfile>>}
  */
-Protocol.LayerTreeAgent.prototype.profileSnapshot = function(snapshotId, opt_minRepeatCount, opt_minDuration, opt_clipRect, opt_callback) {};
+Protocol.LayerTreeAgent.prototype.profileSnapshot = function(snapshotId, opt_minRepeatCount, opt_minDuration, opt_clipRect) {};
 /** @typedef {!{minRepeatCount: (number|undefined), snapshotId: Protocol.LayerTree.SnapshotId, clipRect: (Protocol.DOM.Rect|undefined), minDuration: (number|undefined)}} */
 Protocol.LayerTreeAgent.ProfileSnapshotRequest;
 /** @typedef {!{timings: !Array<Protocol.LayerTree.PaintProfile>}} */
@@ -4613,11 +4599,9 @@ Protocol.LayerTreeAgent.prototype.invoke_profileSnapshot = function(obj) {};
  * @param {number=} opt_fromStep
  * @param {number=} opt_toStep
  * @param {number=} opt_scale
- * @param {function(?Protocol.Error, string):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?string>}
  */
-Protocol.LayerTreeAgent.prototype.replaySnapshot = function(snapshotId, opt_fromStep, opt_toStep, opt_scale, opt_callback) {};
+Protocol.LayerTreeAgent.prototype.replaySnapshot = function(snapshotId, opt_fromStep, opt_toStep, opt_scale) {};
 /** @typedef {!{snapshotId: Protocol.LayerTree.SnapshotId, scale: (number|undefined), fromStep: (number|undefined), toStep: (number|undefined)}} */
 Protocol.LayerTreeAgent.ReplaySnapshotRequest;
 /** @typedef {!{dataURL: string}} */
@@ -4629,11 +4613,9 @@ Protocol.LayerTreeAgent.prototype.invoke_replaySnapshot = function(obj) {};
 
 /**
  * @param {Protocol.LayerTree.SnapshotId} snapshotId
- * @param {function(?Protocol.Error, !Array<!Object>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<!Object>>}
  */
-Protocol.LayerTreeAgent.prototype.snapshotCommandLog = function(snapshotId, opt_callback) {};
+Protocol.LayerTreeAgent.prototype.snapshotCommandLog = function(snapshotId) {};
 /** @typedef {!{snapshotId: Protocol.LayerTree.SnapshotId}} */
 Protocol.LayerTreeAgent.SnapshotCommandLogRequest;
 /** @typedef {!{commandLog: !Array<!Object>}} */
