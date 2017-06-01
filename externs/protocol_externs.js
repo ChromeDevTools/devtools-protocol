@@ -2397,11 +2397,9 @@ Protocol.ApplicationCache = {};
 Protocol.ApplicationCacheAgent = function(){};
 
 /**
- * @param {function(?Protocol.Error, !Array<Protocol.ApplicationCache.FrameWithManifest>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.ApplicationCache.FrameWithManifest>>}
  */
-Protocol.ApplicationCacheAgent.prototype.getFramesWithManifests = function(opt_callback) {};
+Protocol.ApplicationCacheAgent.prototype.getFramesWithManifests = function() {};
 /** @typedef {Object|undefined} */
 Protocol.ApplicationCacheAgent.GetFramesWithManifestsRequest;
 /** @typedef {!{frameIds: !Array<Protocol.ApplicationCache.FrameWithManifest>}} */
@@ -2412,11 +2410,9 @@ Protocol.ApplicationCacheAgent.GetFramesWithManifestsResponse;
 Protocol.ApplicationCacheAgent.prototype.invoke_getFramesWithManifests = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.ApplicationCacheAgent.prototype.enable = function(opt_callback) {};
+Protocol.ApplicationCacheAgent.prototype.enable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.ApplicationCacheAgent.EnableRequest;
 /** @typedef {Object|undefined} */
@@ -2428,11 +2424,9 @@ Protocol.ApplicationCacheAgent.prototype.invoke_enable = function(obj) {};
 
 /**
  * @param {Protocol.Page.FrameId} frameId
- * @param {function(?Protocol.Error, string):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?string>}
  */
-Protocol.ApplicationCacheAgent.prototype.getManifestForFrame = function(frameId, opt_callback) {};
+Protocol.ApplicationCacheAgent.prototype.getManifestForFrame = function(frameId) {};
 /** @typedef {!{frameId: Protocol.Page.FrameId}} */
 Protocol.ApplicationCacheAgent.GetManifestForFrameRequest;
 /** @typedef {!{manifestURL: string}} */
@@ -2444,11 +2438,9 @@ Protocol.ApplicationCacheAgent.prototype.invoke_getManifestForFrame = function(o
 
 /**
  * @param {Protocol.Page.FrameId} frameId
- * @param {function(?Protocol.Error, Protocol.ApplicationCache.ApplicationCache):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.ApplicationCache.ApplicationCache>}
  */
-Protocol.ApplicationCacheAgent.prototype.getApplicationCacheForFrame = function(frameId, opt_callback) {};
+Protocol.ApplicationCacheAgent.prototype.getApplicationCacheForFrame = function(frameId) {};
 /** @typedef {!{frameId: Protocol.Page.FrameId}} */
 Protocol.ApplicationCacheAgent.GetApplicationCacheForFrameRequest;
 /** @typedef {!{applicationCache: Protocol.ApplicationCache.ApplicationCache}} */
