@@ -2025,11 +2025,9 @@ Protocol.IndexedDB = {};
 Protocol.IndexedDBAgent = function(){};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.IndexedDBAgent.prototype.enable = function(opt_callback) {};
+Protocol.IndexedDBAgent.prototype.enable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.IndexedDBAgent.EnableRequest;
 /** @typedef {Object|undefined} */
@@ -2040,11 +2038,9 @@ Protocol.IndexedDBAgent.EnableResponse;
 Protocol.IndexedDBAgent.prototype.invoke_enable = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.IndexedDBAgent.prototype.disable = function(opt_callback) {};
+Protocol.IndexedDBAgent.prototype.disable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.IndexedDBAgent.DisableRequest;
 /** @typedef {Object|undefined} */
@@ -2056,11 +2052,9 @@ Protocol.IndexedDBAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {string} securityOrigin
- * @param {function(?Protocol.Error, !Array<string>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<string>>}
  */
-Protocol.IndexedDBAgent.prototype.requestDatabaseNames = function(securityOrigin, opt_callback) {};
+Protocol.IndexedDBAgent.prototype.requestDatabaseNames = function(securityOrigin) {};
 /** @typedef {!{securityOrigin: string}} */
 Protocol.IndexedDBAgent.RequestDatabaseNamesRequest;
 /** @typedef {!{databaseNames: !Array<string>}} */
@@ -2073,11 +2067,9 @@ Protocol.IndexedDBAgent.prototype.invoke_requestDatabaseNames = function(obj) {}
 /**
  * @param {string} securityOrigin
  * @param {string} databaseName
- * @param {function(?Protocol.Error, Protocol.IndexedDB.DatabaseWithObjectStores):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.IndexedDB.DatabaseWithObjectStores>}
  */
-Protocol.IndexedDBAgent.prototype.requestDatabase = function(securityOrigin, databaseName, opt_callback) {};
+Protocol.IndexedDBAgent.prototype.requestDatabase = function(securityOrigin, databaseName) {};
 /** @typedef {!{databaseName: string, securityOrigin: string}} */
 Protocol.IndexedDBAgent.RequestDatabaseRequest;
 /** @typedef {!{databaseWithObjectStores: Protocol.IndexedDB.DatabaseWithObjectStores}} */
@@ -2095,11 +2087,9 @@ Protocol.IndexedDBAgent.prototype.invoke_requestDatabase = function(obj) {};
  * @param {number} skipCount
  * @param {number} pageSize
  * @param {Protocol.IndexedDB.KeyRange=} opt_keyRange
- * @param {function(?Protocol.Error, !Array<Protocol.IndexedDB.DataEntry>, boolean):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.IndexedDB.DataEntry>>}
  */
-Protocol.IndexedDBAgent.prototype.requestData = function(securityOrigin, databaseName, objectStoreName, indexName, skipCount, pageSize, opt_keyRange, opt_callback) {};
+Protocol.IndexedDBAgent.prototype.requestData = function(securityOrigin, databaseName, objectStoreName, indexName, skipCount, pageSize, opt_keyRange) {};
 /** @typedef {!{indexName: string, pageSize: number, objectStoreName: string, skipCount: number, keyRange: (Protocol.IndexedDB.KeyRange|undefined), databaseName: string, securityOrigin: string}} */
 Protocol.IndexedDBAgent.RequestDataRequest;
 /** @typedef {!{hasMore: boolean, objectStoreDataEntries: !Array<Protocol.IndexedDB.DataEntry>}} */
@@ -2113,11 +2103,9 @@ Protocol.IndexedDBAgent.prototype.invoke_requestData = function(obj) {};
  * @param {string} securityOrigin
  * @param {string} databaseName
  * @param {string} objectStoreName
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.IndexedDBAgent.prototype.clearObjectStore = function(securityOrigin, databaseName, objectStoreName, opt_callback) {};
+Protocol.IndexedDBAgent.prototype.clearObjectStore = function(securityOrigin, databaseName, objectStoreName) {};
 /** @typedef {!{objectStoreName: string, databaseName: string, securityOrigin: string}} */
 Protocol.IndexedDBAgent.ClearObjectStoreRequest;
 /** @typedef {Object|undefined} */
@@ -2130,11 +2118,9 @@ Protocol.IndexedDBAgent.prototype.invoke_clearObjectStore = function(obj) {};
 /**
  * @param {string} securityOrigin
  * @param {string} databaseName
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.IndexedDBAgent.prototype.deleteDatabase = function(securityOrigin, databaseName, opt_callback) {};
+Protocol.IndexedDBAgent.prototype.deleteDatabase = function(securityOrigin, databaseName) {};
 /** @typedef {!{databaseName: string, securityOrigin: string}} */
 Protocol.IndexedDBAgent.DeleteDatabaseRequest;
 /** @typedef {Object|undefined} */
