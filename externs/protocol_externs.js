@@ -2191,11 +2191,9 @@ Protocol.CacheStorageAgent = function(){};
 
 /**
  * @param {string} securityOrigin
- * @param {function(?Protocol.Error, !Array<Protocol.CacheStorage.Cache>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.CacheStorage.Cache>>}
  */
-Protocol.CacheStorageAgent.prototype.requestCacheNames = function(securityOrigin, opt_callback) {};
+Protocol.CacheStorageAgent.prototype.requestCacheNames = function(securityOrigin) {};
 /** @typedef {!{securityOrigin: string}} */
 Protocol.CacheStorageAgent.RequestCacheNamesRequest;
 /** @typedef {!{caches: !Array<Protocol.CacheStorage.Cache>}} */
@@ -2209,11 +2207,9 @@ Protocol.CacheStorageAgent.prototype.invoke_requestCacheNames = function(obj) {}
  * @param {Protocol.CacheStorage.CacheId} cacheId
  * @param {number} skipCount
  * @param {number} pageSize
- * @param {function(?Protocol.Error, !Array<Protocol.CacheStorage.DataEntry>, boolean):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.CacheStorage.DataEntry>>}
  */
-Protocol.CacheStorageAgent.prototype.requestEntries = function(cacheId, skipCount, pageSize, opt_callback) {};
+Protocol.CacheStorageAgent.prototype.requestEntries = function(cacheId, skipCount, pageSize) {};
 /** @typedef {!{cacheId: Protocol.CacheStorage.CacheId, skipCount: number, pageSize: number}} */
 Protocol.CacheStorageAgent.RequestEntriesRequest;
 /** @typedef {!{hasMore: boolean, cacheDataEntries: !Array<Protocol.CacheStorage.DataEntry>}} */
@@ -2225,11 +2221,9 @@ Protocol.CacheStorageAgent.prototype.invoke_requestEntries = function(obj) {};
 
 /**
  * @param {Protocol.CacheStorage.CacheId} cacheId
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.CacheStorageAgent.prototype.deleteCache = function(cacheId, opt_callback) {};
+Protocol.CacheStorageAgent.prototype.deleteCache = function(cacheId) {};
 /** @typedef {!{cacheId: Protocol.CacheStorage.CacheId}} */
 Protocol.CacheStorageAgent.DeleteCacheRequest;
 /** @typedef {Object|undefined} */
@@ -2242,11 +2236,9 @@ Protocol.CacheStorageAgent.prototype.invoke_deleteCache = function(obj) {};
 /**
  * @param {Protocol.CacheStorage.CacheId} cacheId
  * @param {string} request
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.CacheStorageAgent.prototype.deleteEntry = function(cacheId, request, opt_callback) {};
+Protocol.CacheStorageAgent.prototype.deleteEntry = function(cacheId, request) {};
 /** @typedef {!{cacheId: Protocol.CacheStorage.CacheId, request: string}} */
 Protocol.CacheStorageAgent.DeleteEntryRequest;
 /** @typedef {Object|undefined} */
