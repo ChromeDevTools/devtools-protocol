@@ -1726,11 +1726,64 @@ Protocol.NetworkAgent.GetCertificateResponse;
  * @return {!Promise<!Protocol.NetworkAgent.GetCertificateResponse>} */
 Protocol.NetworkAgent.prototype.invoke_getCertificate = function(obj) {};
 
+/**
+ * @param {boolean} enabled
+ * @return {!Promise<undefined>}
+ */
+Protocol.NetworkAgent.prototype.enableRequestInterception = function(enabled) {};
+/** @typedef {!{enabled: boolean}} */
+Protocol.NetworkAgent.EnableRequestInterceptionRequest;
+/** @typedef {Object|undefined} */
+Protocol.NetworkAgent.EnableRequestInterceptionResponse;
+/**
+ * @param {!Protocol.NetworkAgent.EnableRequestInterceptionRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.EnableRequestInterceptionResponse>} */
+Protocol.NetworkAgent.prototype.invoke_enableRequestInterception = function(obj) {};
+
+/**
+ * @param {Protocol.Network.InterceptionId} interceptionId
+ * @param {Protocol.Network.ErrorReason=} opt_errorReason
+ * @param {string=} opt_rawResponse
+ * @param {string=} opt_url
+ * @param {string=} opt_method
+ * @param {string=} opt_postData
+ * @param {Protocol.Network.Headers=} opt_headers
+ * @return {!Promise<undefined>}
+ */
+Protocol.NetworkAgent.prototype.continueInterceptedRequest = function(interceptionId, opt_errorReason, opt_rawResponse, opt_url, opt_method, opt_postData, opt_headers) {};
+/** @typedef {!{postData: (string|undefined), headers: (Protocol.Network.Headers|undefined), url: (string|undefined), errorReason: (Protocol.Network.ErrorReason|undefined), interceptionId: Protocol.Network.InterceptionId, rawResponse: (string|undefined), method: (string|undefined)}} */
+Protocol.NetworkAgent.ContinueInterceptedRequestRequest;
+/** @typedef {Object|undefined} */
+Protocol.NetworkAgent.ContinueInterceptedRequestResponse;
+/**
+ * @param {!Protocol.NetworkAgent.ContinueInterceptedRequestRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.ContinueInterceptedRequestResponse>} */
+Protocol.NetworkAgent.prototype.invoke_continueInterceptedRequest = function(obj) {};
+
 /** @typedef {string} */
 Protocol.Network.LoaderId;
 
 /** @typedef {string} */
 Protocol.Network.RequestId;
+
+/** @typedef {string} */
+Protocol.Network.InterceptionId;
+
+/** @enum {string} */
+Protocol.Network.ErrorReason = {
+    Failed: "Failed",
+    Aborted: "Aborted",
+    TimedOut: "TimedOut",
+    AccessDenied: "AccessDenied",
+    ConnectionClosed: "ConnectionClosed",
+    ConnectionReset: "ConnectionReset",
+    ConnectionRefused: "ConnectionRefused",
+    ConnectionAborted: "ConnectionAborted",
+    ConnectionFailed: "ConnectionFailed",
+    NameNotResolved: "NameNotResolved",
+    InternetDisconnected: "InternetDisconnected",
+    AddressUnreachable: "AddressUnreachable"
+};
 
 /** @typedef {number} */
 Protocol.Network.Timestamp;
@@ -1939,6 +1992,14 @@ Protocol.NetworkDispatcher.prototype.webSocketFrameSent = function(requestId, ti
  * @param {string} data
  */
 Protocol.NetworkDispatcher.prototype.eventSourceMessageReceived = function(requestId, timestamp, eventName, eventId, data) {};
+/**
+ * @param {Protocol.Network.InterceptionId} InterceptionId
+ * @param {Protocol.Network.Request} request
+ * @param {Protocol.Network.Headers=} opt_redirectHeaders
+ * @param {number=} opt_redirectStatusCode
+ * @param {string=} opt_redirectUrl
+ */
+Protocol.NetworkDispatcher.prototype.requestIntercepted = function(InterceptionId, request, opt_redirectHeaders, opt_redirectStatusCode, opt_redirectUrl) {};
 Protocol.Database = {};
 
 
