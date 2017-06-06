@@ -3196,11 +3196,9 @@ Protocol.CSS = {};
 Protocol.CSSAgent = function(){};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.CSSAgent.prototype.enable = function(opt_callback) {};
+Protocol.CSSAgent.prototype.enable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.CSSAgent.EnableRequest;
 /** @typedef {Object|undefined} */
@@ -3211,11 +3209,9 @@ Protocol.CSSAgent.EnableResponse;
 Protocol.CSSAgent.prototype.invoke_enable = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.CSSAgent.prototype.disable = function(opt_callback) {};
+Protocol.CSSAgent.prototype.disable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.CSSAgent.DisableRequest;
 /** @typedef {Object|undefined} */
@@ -3227,11 +3223,9 @@ Protocol.CSSAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
- * @param {function(?Protocol.Error, Protocol.CSS.CSSStyle=, Protocol.CSS.CSSStyle=, !Array<Protocol.CSS.RuleMatch>=, !Array<Protocol.CSS.PseudoElementMatches>=, !Array<Protocol.CSS.InheritedStyleEntry>=, !Array<Protocol.CSS.CSSKeyframesRule>=):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.CSS.CSSStyle>}
  */
-Protocol.CSSAgent.prototype.getMatchedStylesForNode = function(nodeId, opt_callback) {};
+Protocol.CSSAgent.prototype.getMatchedStylesForNode = function(nodeId) {};
 /** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
 Protocol.CSSAgent.GetMatchedStylesForNodeRequest;
 /** @typedef {!{inlineStyle: Protocol.CSS.CSSStyle, attributesStyle: Protocol.CSS.CSSStyle, cssKeyframesRules: !Array<Protocol.CSS.CSSKeyframesRule>, matchedCSSRules: !Array<Protocol.CSS.RuleMatch>, inherited: !Array<Protocol.CSS.InheritedStyleEntry>, pseudoElements: !Array<Protocol.CSS.PseudoElementMatches>}} */
@@ -3243,11 +3237,9 @@ Protocol.CSSAgent.prototype.invoke_getMatchedStylesForNode = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
- * @param {function(?Protocol.Error, Protocol.CSS.CSSStyle=, Protocol.CSS.CSSStyle=):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.CSS.CSSStyle>}
  */
-Protocol.CSSAgent.prototype.getInlineStylesForNode = function(nodeId, opt_callback) {};
+Protocol.CSSAgent.prototype.getInlineStylesForNode = function(nodeId) {};
 /** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
 Protocol.CSSAgent.GetInlineStylesForNodeRequest;
 /** @typedef {!{inlineStyle: Protocol.CSS.CSSStyle, attributesStyle: Protocol.CSS.CSSStyle}} */
@@ -3259,11 +3251,9 @@ Protocol.CSSAgent.prototype.invoke_getInlineStylesForNode = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
- * @param {function(?Protocol.Error, !Array<Protocol.CSS.CSSComputedStyleProperty>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.CSS.CSSComputedStyleProperty>>}
  */
-Protocol.CSSAgent.prototype.getComputedStyleForNode = function(nodeId, opt_callback) {};
+Protocol.CSSAgent.prototype.getComputedStyleForNode = function(nodeId) {};
 /** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
 Protocol.CSSAgent.GetComputedStyleForNodeRequest;
 /** @typedef {!{computedStyle: !Array<Protocol.CSS.CSSComputedStyleProperty>}} */
@@ -3275,11 +3265,9 @@ Protocol.CSSAgent.prototype.invoke_getComputedStyleForNode = function(obj) {};
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
- * @param {function(?Protocol.Error, !Array<Protocol.CSS.PlatformFontUsage>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.CSS.PlatformFontUsage>>}
  */
-Protocol.CSSAgent.prototype.getPlatformFontsForNode = function(nodeId, opt_callback) {};
+Protocol.CSSAgent.prototype.getPlatformFontsForNode = function(nodeId) {};
 /** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
 Protocol.CSSAgent.GetPlatformFontsForNodeRequest;
 /** @typedef {!{fonts: !Array<Protocol.CSS.PlatformFontUsage>}} */
@@ -3291,11 +3279,9 @@ Protocol.CSSAgent.prototype.invoke_getPlatformFontsForNode = function(obj) {};
 
 /**
  * @param {Protocol.CSS.StyleSheetId} styleSheetId
- * @param {function(?Protocol.Error, string):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?string>}
  */
-Protocol.CSSAgent.prototype.getStyleSheetText = function(styleSheetId, opt_callback) {};
+Protocol.CSSAgent.prototype.getStyleSheetText = function(styleSheetId) {};
 /** @typedef {!{styleSheetId: Protocol.CSS.StyleSheetId}} */
 Protocol.CSSAgent.GetStyleSheetTextRequest;
 /** @typedef {!{text: string}} */
@@ -3307,11 +3293,9 @@ Protocol.CSSAgent.prototype.invoke_getStyleSheetText = function(obj) {};
 
 /**
  * @param {Protocol.CSS.StyleSheetId} styleSheetId
- * @param {function(?Protocol.Error, !Array<string>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<string>>}
  */
-Protocol.CSSAgent.prototype.collectClassNames = function(styleSheetId, opt_callback) {};
+Protocol.CSSAgent.prototype.collectClassNames = function(styleSheetId) {};
 /** @typedef {!{styleSheetId: Protocol.CSS.StyleSheetId}} */
 Protocol.CSSAgent.CollectClassNamesRequest;
 /** @typedef {!{classNames: !Array<string>}} */
@@ -3324,11 +3308,9 @@ Protocol.CSSAgent.prototype.invoke_collectClassNames = function(obj) {};
 /**
  * @param {Protocol.CSS.StyleSheetId} styleSheetId
  * @param {string} text
- * @param {function(?Protocol.Error, string=):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?string>}
  */
-Protocol.CSSAgent.prototype.setStyleSheetText = function(styleSheetId, text, opt_callback) {};
+Protocol.CSSAgent.prototype.setStyleSheetText = function(styleSheetId, text) {};
 /** @typedef {!{text: string, styleSheetId: Protocol.CSS.StyleSheetId}} */
 Protocol.CSSAgent.SetStyleSheetTextRequest;
 /** @typedef {!{sourceMapURL: string}} */
@@ -3342,11 +3324,9 @@ Protocol.CSSAgent.prototype.invoke_setStyleSheetText = function(obj) {};
  * @param {Protocol.CSS.StyleSheetId} styleSheetId
  * @param {Protocol.CSS.SourceRange} range
  * @param {string} selector
- * @param {function(?Protocol.Error, Protocol.CSS.SelectorList):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.CSS.SelectorList>}
  */
-Protocol.CSSAgent.prototype.setRuleSelector = function(styleSheetId, range, selector, opt_callback) {};
+Protocol.CSSAgent.prototype.setRuleSelector = function(styleSheetId, range, selector) {};
 /** @typedef {!{range: Protocol.CSS.SourceRange, styleSheetId: Protocol.CSS.StyleSheetId, selector: string}} */
 Protocol.CSSAgent.SetRuleSelectorRequest;
 /** @typedef {!{selectorList: Protocol.CSS.SelectorList}} */
@@ -3360,11 +3340,9 @@ Protocol.CSSAgent.prototype.invoke_setRuleSelector = function(obj) {};
  * @param {Protocol.CSS.StyleSheetId} styleSheetId
  * @param {Protocol.CSS.SourceRange} range
  * @param {string} keyText
- * @param {function(?Protocol.Error, Protocol.CSS.Value):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.CSS.Value>}
  */
-Protocol.CSSAgent.prototype.setKeyframeKey = function(styleSheetId, range, keyText, opt_callback) {};
+Protocol.CSSAgent.prototype.setKeyframeKey = function(styleSheetId, range, keyText) {};
 /** @typedef {!{range: Protocol.CSS.SourceRange, styleSheetId: Protocol.CSS.StyleSheetId, keyText: string}} */
 Protocol.CSSAgent.SetKeyframeKeyRequest;
 /** @typedef {!{keyText: Protocol.CSS.Value}} */
@@ -3376,11 +3354,9 @@ Protocol.CSSAgent.prototype.invoke_setKeyframeKey = function(obj) {};
 
 /**
  * @param {!Array<Protocol.CSS.StyleDeclarationEdit>} edits
- * @param {function(?Protocol.Error, !Array<Protocol.CSS.CSSStyle>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.CSS.CSSStyle>>}
  */
-Protocol.CSSAgent.prototype.setStyleTexts = function(edits, opt_callback) {};
+Protocol.CSSAgent.prototype.setStyleTexts = function(edits) {};
 /** @typedef {!{edits: !Array<Protocol.CSS.StyleDeclarationEdit>}} */
 Protocol.CSSAgent.SetStyleTextsRequest;
 /** @typedef {!{styles: !Array<Protocol.CSS.CSSStyle>}} */
@@ -3394,11 +3370,9 @@ Protocol.CSSAgent.prototype.invoke_setStyleTexts = function(obj) {};
  * @param {Protocol.CSS.StyleSheetId} styleSheetId
  * @param {Protocol.CSS.SourceRange} range
  * @param {string} text
- * @param {function(?Protocol.Error, Protocol.CSS.CSSMedia):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.CSS.CSSMedia>}
  */
-Protocol.CSSAgent.prototype.setMediaText = function(styleSheetId, range, text, opt_callback) {};
+Protocol.CSSAgent.prototype.setMediaText = function(styleSheetId, range, text) {};
 /** @typedef {!{text: string, range: Protocol.CSS.SourceRange, styleSheetId: Protocol.CSS.StyleSheetId}} */
 Protocol.CSSAgent.SetMediaTextRequest;
 /** @typedef {!{media: Protocol.CSS.CSSMedia}} */
@@ -3410,11 +3384,9 @@ Protocol.CSSAgent.prototype.invoke_setMediaText = function(obj) {};
 
 /**
  * @param {Protocol.Page.FrameId} frameId
- * @param {function(?Protocol.Error, Protocol.CSS.StyleSheetId):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.CSS.StyleSheetId>}
  */
-Protocol.CSSAgent.prototype.createStyleSheet = function(frameId, opt_callback) {};
+Protocol.CSSAgent.prototype.createStyleSheet = function(frameId) {};
 /** @typedef {!{frameId: Protocol.Page.FrameId}} */
 Protocol.CSSAgent.CreateStyleSheetRequest;
 /** @typedef {!{styleSheetId: Protocol.CSS.StyleSheetId}} */
@@ -3428,11 +3400,9 @@ Protocol.CSSAgent.prototype.invoke_createStyleSheet = function(obj) {};
  * @param {Protocol.CSS.StyleSheetId} styleSheetId
  * @param {string} ruleText
  * @param {Protocol.CSS.SourceRange} location
- * @param {function(?Protocol.Error, Protocol.CSS.CSSRule):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Protocol.CSS.CSSRule>}
  */
-Protocol.CSSAgent.prototype.addRule = function(styleSheetId, ruleText, location, opt_callback) {};
+Protocol.CSSAgent.prototype.addRule = function(styleSheetId, ruleText, location) {};
 /** @typedef {!{styleSheetId: Protocol.CSS.StyleSheetId, location: Protocol.CSS.SourceRange, ruleText: string}} */
 Protocol.CSSAgent.AddRuleRequest;
 /** @typedef {!{rule: Protocol.CSS.CSSRule}} */
@@ -3445,11 +3415,9 @@ Protocol.CSSAgent.prototype.invoke_addRule = function(obj) {};
 /**
  * @param {Protocol.DOM.NodeId} nodeId
  * @param {!Array<string>} forcedPseudoClasses
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.CSSAgent.prototype.forcePseudoState = function(nodeId, forcedPseudoClasses, opt_callback) {};
+Protocol.CSSAgent.prototype.forcePseudoState = function(nodeId, forcedPseudoClasses) {};
 /** @typedef {!{forcedPseudoClasses: !Array<string>, nodeId: Protocol.DOM.NodeId}} */
 Protocol.CSSAgent.ForcePseudoStateRequest;
 /** @typedef {Object|undefined} */
@@ -3460,11 +3428,9 @@ Protocol.CSSAgent.ForcePseudoStateResponse;
 Protocol.CSSAgent.prototype.invoke_forcePseudoState = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error, !Array<Protocol.CSS.CSSMedia>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.CSS.CSSMedia>>}
  */
-Protocol.CSSAgent.prototype.getMediaQueries = function(opt_callback) {};
+Protocol.CSSAgent.prototype.getMediaQueries = function() {};
 /** @typedef {Object|undefined} */
 Protocol.CSSAgent.GetMediaQueriesRequest;
 /** @typedef {!{medias: !Array<Protocol.CSS.CSSMedia>}} */
@@ -3478,11 +3444,9 @@ Protocol.CSSAgent.prototype.invoke_getMediaQueries = function(obj) {};
  * @param {Protocol.DOM.NodeId} nodeId
  * @param {string} propertyName
  * @param {string} value
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.CSSAgent.prototype.setEffectivePropertyValueForNode = function(nodeId, propertyName, value, opt_callback) {};
+Protocol.CSSAgent.prototype.setEffectivePropertyValueForNode = function(nodeId, propertyName, value) {};
 /** @typedef {!{propertyName: string, nodeId: Protocol.DOM.NodeId, value: string}} */
 Protocol.CSSAgent.SetEffectivePropertyValueForNodeRequest;
 /** @typedef {Object|undefined} */
@@ -3494,11 +3458,9 @@ Protocol.CSSAgent.prototype.invoke_setEffectivePropertyValueForNode = function(o
 
 /**
  * @param {Protocol.DOM.NodeId} nodeId
- * @param {function(?Protocol.Error, !Array<string>=):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<string>>}
  */
-Protocol.CSSAgent.prototype.getBackgroundColors = function(nodeId, opt_callback) {};
+Protocol.CSSAgent.prototype.getBackgroundColors = function(nodeId) {};
 /** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
 Protocol.CSSAgent.GetBackgroundColorsRequest;
 /** @typedef {!{backgroundColors: !Array<string>}} */
@@ -3510,11 +3472,9 @@ Protocol.CSSAgent.prototype.invoke_getBackgroundColors = function(obj) {};
 
 /**
  * @param {!Array<string>} computedStyleWhitelist
- * @param {function(?Protocol.Error, !Array<Protocol.CSS.LayoutTreeNode>, !Array<Protocol.CSS.ComputedStyle>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.CSS.LayoutTreeNode>>}
  */
-Protocol.CSSAgent.prototype.getLayoutTreeAndStyles = function(computedStyleWhitelist, opt_callback) {};
+Protocol.CSSAgent.prototype.getLayoutTreeAndStyles = function(computedStyleWhitelist) {};
 /** @typedef {!{computedStyleWhitelist: !Array<string>}} */
 Protocol.CSSAgent.GetLayoutTreeAndStylesRequest;
 /** @typedef {!{layoutTreeNodes: !Array<Protocol.CSS.LayoutTreeNode>, computedStyles: !Array<Protocol.CSS.ComputedStyle>}} */
@@ -3525,11 +3485,9 @@ Protocol.CSSAgent.GetLayoutTreeAndStylesResponse;
 Protocol.CSSAgent.prototype.invoke_getLayoutTreeAndStyles = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.CSSAgent.prototype.startRuleUsageTracking = function(opt_callback) {};
+Protocol.CSSAgent.prototype.startRuleUsageTracking = function() {};
 /** @typedef {Object|undefined} */
 Protocol.CSSAgent.StartRuleUsageTrackingRequest;
 /** @typedef {Object|undefined} */
@@ -3540,11 +3498,9 @@ Protocol.CSSAgent.StartRuleUsageTrackingResponse;
 Protocol.CSSAgent.prototype.invoke_startRuleUsageTracking = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error, !Array<Protocol.CSS.RuleUsage>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.CSS.RuleUsage>>}
  */
-Protocol.CSSAgent.prototype.takeCoverageDelta = function(opt_callback) {};
+Protocol.CSSAgent.prototype.takeCoverageDelta = function() {};
 /** @typedef {Object|undefined} */
 Protocol.CSSAgent.TakeCoverageDeltaRequest;
 /** @typedef {!{coverage: !Array<Protocol.CSS.RuleUsage>}} */
@@ -3555,11 +3511,9 @@ Protocol.CSSAgent.TakeCoverageDeltaResponse;
 Protocol.CSSAgent.prototype.invoke_takeCoverageDelta = function(obj) {};
 
 /**
- * @param {function(?Protocol.Error, !Array<Protocol.CSS.RuleUsage>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.CSS.RuleUsage>>}
  */
-Protocol.CSSAgent.prototype.stopRuleUsageTracking = function(opt_callback) {};
+Protocol.CSSAgent.prototype.stopRuleUsageTracking = function() {};
 /** @typedef {Object|undefined} */
 Protocol.CSSAgent.StopRuleUsageTrackingRequest;
 /** @typedef {!{ruleUsage: !Array<Protocol.CSS.RuleUsage>}} */
