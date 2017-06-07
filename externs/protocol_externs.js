@@ -1995,11 +1995,12 @@ Protocol.NetworkDispatcher.prototype.eventSourceMessageReceived = function(reque
 /**
  * @param {Protocol.Network.InterceptionId} InterceptionId
  * @param {Protocol.Network.Request} request
+ * @param {Protocol.Page.ResourceType} resourceType
  * @param {Protocol.Network.Headers=} opt_redirectHeaders
  * @param {number=} opt_redirectStatusCode
  * @param {string=} opt_redirectUrl
  */
-Protocol.NetworkDispatcher.prototype.requestIntercepted = function(InterceptionId, request, opt_redirectHeaders, opt_redirectStatusCode, opt_redirectUrl) {};
+Protocol.NetworkDispatcher.prototype.requestIntercepted = function(InterceptionId, request, resourceType, opt_redirectHeaders, opt_redirectStatusCode, opt_redirectUrl) {};
 Protocol.Database = {};
 
 
