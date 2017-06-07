@@ -1708,7 +1708,7 @@
                     { "name": "redirectStatusCode", "type": "integer", "optional": true, "description": "HTTP response code, only sent if a redirect was intercepted." },
                     { "name": "redirectUrl", "optional": true, "type": "string", "description": "Redirect location, only sent if a redirect was intercepted."}
                 ],
-                "experimental": true
+                "experimental": true 
             }
         ]
     },
@@ -4528,15 +4528,6 @@
                     "all"
                 ],
                 "description": "Enum of possible storage types."
-            },
-            {
-                "id": "QuotaAndUsage",
-                "type": "object",
-                "properties": [
-                    { "name": "quota", "type": "number", "description": "Storage quota (bytes)." },
-                    { "name": "usage", "type": "number", "description": "Storage usage (bytes)." }
-                ],
-                "description": "Quota and usage information."
             }
         ],
         "commands": [
@@ -4547,16 +4538,6 @@
                     { "name": "storageTypes", "type": "string", "description": "Comma separated origin names." }
                 ],
                 "description": "Clears storage for origin."
-            },
-            {
-                "name": "getUsageAndQuota",
-                "parameters": [
-                    { "name": "origin", "type": "string", "description": "Security origin." }
-                ],
-                "returns": [
-                    { "name": "quotaAndUsage", "$ref": "QuotaAndUsage", "description": "Quota and usage information."}
-                ],
-                "description": "Returns usage and quota in bytes."
             }
         ]
     },

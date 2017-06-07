@@ -3679,11 +3679,9 @@ Protocol.DOMDebuggerAgent = function(){};
 /**
  * @param {Protocol.DOM.NodeId} nodeId
  * @param {Protocol.DOMDebugger.DOMBreakpointType} type
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMDebuggerAgent.prototype.setDOMBreakpoint = function(nodeId, type, opt_callback) {};
+Protocol.DOMDebuggerAgent.prototype.setDOMBreakpoint = function(nodeId, type) {};
 /** @typedef {!{type: Protocol.DOMDebugger.DOMBreakpointType, nodeId: Protocol.DOM.NodeId}} */
 Protocol.DOMDebuggerAgent.SetDOMBreakpointRequest;
 /** @typedef {Object|undefined} */
@@ -3696,11 +3694,9 @@ Protocol.DOMDebuggerAgent.prototype.invoke_setDOMBreakpoint = function(obj) {};
 /**
  * @param {Protocol.DOM.NodeId} nodeId
  * @param {Protocol.DOMDebugger.DOMBreakpointType} type
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMDebuggerAgent.prototype.removeDOMBreakpoint = function(nodeId, type, opt_callback) {};
+Protocol.DOMDebuggerAgent.prototype.removeDOMBreakpoint = function(nodeId, type) {};
 /** @typedef {!{type: Protocol.DOMDebugger.DOMBreakpointType, nodeId: Protocol.DOM.NodeId}} */
 Protocol.DOMDebuggerAgent.RemoveDOMBreakpointRequest;
 /** @typedef {Object|undefined} */
@@ -3713,11 +3709,9 @@ Protocol.DOMDebuggerAgent.prototype.invoke_removeDOMBreakpoint = function(obj) {
 /**
  * @param {string} eventName
  * @param {string=} opt_targetName
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMDebuggerAgent.prototype.setEventListenerBreakpoint = function(eventName, opt_targetName, opt_callback) {};
+Protocol.DOMDebuggerAgent.prototype.setEventListenerBreakpoint = function(eventName, opt_targetName) {};
 /** @typedef {!{eventName: string, targetName: (string|undefined)}} */
 Protocol.DOMDebuggerAgent.SetEventListenerBreakpointRequest;
 /** @typedef {Object|undefined} */
@@ -3730,11 +3724,9 @@ Protocol.DOMDebuggerAgent.prototype.invoke_setEventListenerBreakpoint = function
 /**
  * @param {string} eventName
  * @param {string=} opt_targetName
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMDebuggerAgent.prototype.removeEventListenerBreakpoint = function(eventName, opt_targetName, opt_callback) {};
+Protocol.DOMDebuggerAgent.prototype.removeEventListenerBreakpoint = function(eventName, opt_targetName) {};
 /** @typedef {!{eventName: string, targetName: (string|undefined)}} */
 Protocol.DOMDebuggerAgent.RemoveEventListenerBreakpointRequest;
 /** @typedef {Object|undefined} */
@@ -3746,11 +3738,9 @@ Protocol.DOMDebuggerAgent.prototype.invoke_removeEventListenerBreakpoint = funct
 
 /**
  * @param {string} eventName
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMDebuggerAgent.prototype.setInstrumentationBreakpoint = function(eventName, opt_callback) {};
+Protocol.DOMDebuggerAgent.prototype.setInstrumentationBreakpoint = function(eventName) {};
 /** @typedef {!{eventName: string}} */
 Protocol.DOMDebuggerAgent.SetInstrumentationBreakpointRequest;
 /** @typedef {Object|undefined} */
@@ -3762,11 +3752,9 @@ Protocol.DOMDebuggerAgent.prototype.invoke_setInstrumentationBreakpoint = functi
 
 /**
  * @param {string} eventName
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMDebuggerAgent.prototype.removeInstrumentationBreakpoint = function(eventName, opt_callback) {};
+Protocol.DOMDebuggerAgent.prototype.removeInstrumentationBreakpoint = function(eventName) {};
 /** @typedef {!{eventName: string}} */
 Protocol.DOMDebuggerAgent.RemoveInstrumentationBreakpointRequest;
 /** @typedef {Object|undefined} */
@@ -3778,11 +3766,9 @@ Protocol.DOMDebuggerAgent.prototype.invoke_removeInstrumentationBreakpoint = fun
 
 /**
  * @param {string} url
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMDebuggerAgent.prototype.setXHRBreakpoint = function(url, opt_callback) {};
+Protocol.DOMDebuggerAgent.prototype.setXHRBreakpoint = function(url) {};
 /** @typedef {!{url: string}} */
 Protocol.DOMDebuggerAgent.SetXHRBreakpointRequest;
 /** @typedef {Object|undefined} */
@@ -3794,11 +3780,9 @@ Protocol.DOMDebuggerAgent.prototype.invoke_setXHRBreakpoint = function(obj) {};
 
 /**
  * @param {string} url
- * @param {function(?Protocol.Error):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<undefined>}
  */
-Protocol.DOMDebuggerAgent.prototype.removeXHRBreakpoint = function(url, opt_callback) {};
+Protocol.DOMDebuggerAgent.prototype.removeXHRBreakpoint = function(url) {};
 /** @typedef {!{url: string}} */
 Protocol.DOMDebuggerAgent.RemoveXHRBreakpointRequest;
 /** @typedef {Object|undefined} */
@@ -3812,11 +3796,9 @@ Protocol.DOMDebuggerAgent.prototype.invoke_removeXHRBreakpoint = function(obj) {
  * @param {Protocol.Runtime.RemoteObjectId} objectId
  * @param {number=} opt_depth
  * @param {boolean=} opt_pierce
- * @param {function(?Protocol.Error, !Array<Protocol.DOMDebugger.EventListener>):T=} opt_callback
- * @return {!Promise<T>}
- * @template T
+ * @return {!Promise<?Array<Protocol.DOMDebugger.EventListener>>}
  */
-Protocol.DOMDebuggerAgent.prototype.getEventListeners = function(objectId, opt_depth, opt_pierce, opt_callback) {};
+Protocol.DOMDebuggerAgent.prototype.getEventListeners = function(objectId, opt_depth, opt_pierce) {};
 /** @typedef {!{depth: (number|undefined), pierce: (boolean|undefined), objectId: Protocol.Runtime.RemoteObjectId}} */
 Protocol.DOMDebuggerAgent.GetEventListenersRequest;
 /** @typedef {!{listeners: !Array<Protocol.DOMDebugger.EventListener>}} */
@@ -5135,20 +5117,6 @@ Protocol.StorageAgent.ClearDataForOriginResponse;
  * @return {!Promise<!Protocol.StorageAgent.ClearDataForOriginResponse>} */
 Protocol.StorageAgent.prototype.invoke_clearDataForOrigin = function(obj) {};
 
-/**
- * @param {string} origin
- * @return {!Promise<?Protocol.Storage.QuotaAndUsage>}
- */
-Protocol.StorageAgent.prototype.getUsageAndQuota = function(origin) {};
-/** @typedef {!{origin: string}} */
-Protocol.StorageAgent.GetUsageAndQuotaRequest;
-/** @typedef {!{quotaAndUsage: Protocol.Storage.QuotaAndUsage}} */
-Protocol.StorageAgent.GetUsageAndQuotaResponse;
-/**
- * @param {!Protocol.StorageAgent.GetUsageAndQuotaRequest} obj
- * @return {!Promise<!Protocol.StorageAgent.GetUsageAndQuotaResponse>} */
-Protocol.StorageAgent.prototype.invoke_getUsageAndQuota = function(obj) {};
-
 /** @enum {string} */
 Protocol.Storage.StorageType = {
     Appcache: "appcache",
@@ -5162,9 +5130,6 @@ Protocol.Storage.StorageType = {
     Cache_storage: "cache_storage",
     All: "all"
 };
-
-/** @typedef {!{quota:(number), usage:(number)}} */
-Protocol.Storage.QuotaAndUsage;
 /** @interface */
 Protocol.StorageDispatcher = function() {};
 Protocol.Log = {};
