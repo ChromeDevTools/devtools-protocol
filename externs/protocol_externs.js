@@ -3627,6 +3627,41 @@ Protocol.CSSDispatcher.prototype.styleSheetAdded = function(header) {};
  * @param {Protocol.CSS.StyleSheetId} styleSheetId
  */
 Protocol.CSSDispatcher.prototype.styleSheetRemoved = function(styleSheetId) {};
+Protocol.DOMSnapshot = {};
+
+
+/**
+ * @constructor
+*/
+Protocol.DOMSnapshotAgent = function(){};
+
+/**
+ * @param {!Array<string>} computedStyleWhitelist
+ * @return {!Promise<?Array<Protocol.DOMSnapshot.DOMNode>>}
+ */
+Protocol.DOMSnapshotAgent.prototype.getSnapshot = function(computedStyleWhitelist) {};
+/** @typedef {!{computedStyleWhitelist: !Array<string>}} */
+Protocol.DOMSnapshotAgent.GetSnapshotRequest;
+/** @typedef {!{layoutTreeNodes: !Array<Protocol.DOMSnapshot.LayoutTreeNode>, domNodes: !Array<Protocol.DOMSnapshot.DOMNode>, computedStyles: !Array<Protocol.DOMSnapshot.ComputedStyle>}} */
+Protocol.DOMSnapshotAgent.GetSnapshotResponse;
+/**
+ * @param {!Protocol.DOMSnapshotAgent.GetSnapshotRequest} obj
+ * @return {!Promise<!Protocol.DOMSnapshotAgent.GetSnapshotResponse>} */
+Protocol.DOMSnapshotAgent.prototype.invoke_getSnapshot = function(obj) {};
+
+/** @typedef {!{nodeType:(number), nodeName:(string), nodeValue:(string), backendNodeId:(Protocol.DOM.BackendNodeId), childNodeIndexes:(!Array<number>|undefined), attributes:(!Array<Protocol.DOMSnapshot.NameValue>|undefined), pseudoElementIndexes:(!Array<number>|undefined), layoutNodeIndex:(number|undefined), documentURL:(string|undefined), baseURL:(string|undefined), publicId:(string|undefined), systemId:(string|undefined), frameId:(Protocol.Page.FrameId|undefined), contentDocumentIndex:(number|undefined), importedDocumentIndex:(number|undefined), templateContentIndex:(number|undefined), pseudoType:(Protocol.DOM.PseudoType|undefined)}} */
+Protocol.DOMSnapshot.DOMNode;
+
+/** @typedef {!{domNodeIndex:(number), boundingBox:(Protocol.DOM.Rect), layoutText:(string|undefined), inlineTextNodes:(!Array<Protocol.CSS.InlineTextBox>|undefined), styleIndex:(number|undefined)}} */
+Protocol.DOMSnapshot.LayoutTreeNode;
+
+/** @typedef {!{properties:(!Array<Protocol.DOMSnapshot.NameValue>)}} */
+Protocol.DOMSnapshot.ComputedStyle;
+
+/** @typedef {!{name:(string), value:(string)}} */
+Protocol.DOMSnapshot.NameValue;
+/** @interface */
+Protocol.DOMSnapshotDispatcher = function() {};
 Protocol.IO = {};
 
 
@@ -6783,6 +6818,12 @@ Protocol.TargetBase.prototype.cssAgent = function(){};
  * @param {!Protocol.CSSDispatcher} dispatcher
  */
 Protocol.TargetBase.prototype.registerCSSDispatcher = function(dispatcher) {}
+/** @return {!Protocol.DOMSnapshotAgent}*/
+Protocol.TargetBase.prototype.domsnapshotAgent = function(){};
+/**
+ * @param {!Protocol.DOMSnapshotDispatcher} dispatcher
+ */
+Protocol.TargetBase.prototype.registerDOMSnapshotDispatcher = function(dispatcher) {}
 /** @return {!Protocol.IOAgent}*/
 Protocol.TargetBase.prototype.ioAgent = function(){};
 /**

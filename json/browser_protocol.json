@@ -3332,6 +3332,81 @@
         ]
     },
     {
+        "domain": "DOMSnapshot",
+        "experimental": true,
+        "description": "This domain facilitates obtaining document snapshots with DOM, layout, and style information.",
+        "dependencies": ["CSS", "DOM", "Page"],
+        "types": [
+            {
+                "id": "DOMNode",
+                "type": "object",
+                "properties": [
+                    { "name": "nodeType", "type": "integer", "description": "<code>Node</code>'s nodeType." },
+                    { "name": "nodeName", "type": "string", "description": "<code>Node</code>'s nodeName." },
+                    { "name": "nodeValue", "type": "string", "description": "<code>Node</code>'s nodeValue." },
+                    { "name": "backendNodeId", "$ref": "DOM.BackendNodeId", "description": "<code>Node</code>'s id, corresponds to DOM.Node.backendNodeId." },
+                    { "name": "childNodeIndexes", "type": "array", "items": { "type": "integer" }, "optional": true, "description": "The indexes of the node's child nodes in the <code>domNodes</code> array returned by <code>getSnapshot</code>, if any." },
+                    { "name": "attributes", "type": "array", "items": { "$ref": "NameValue" }, "optional": true, "description": "Attributes of an <code>Element</code> node." },
+                    { "name": "pseudoElementIndexes", "type": "array", "items": { "type": "integer" }, "optional": true, "description": "Indexes of pseudo elements associated with this node in the <code>domNodes</code> array returned by <code>getSnapshot</code>, if any." },
+                    { "name": "layoutNodeIndex", "type": "integer", "optional": true, "description": "The index of the node's related layout tree node in the <code>layoutTreeNodes</code> array returned by <code>getSnapshot</code>, if any." },
+                    { "name": "documentURL", "type": "string", "optional": true, "description": "Document URL that <code>Document</code> or <code>FrameOwner</code> node points to." },
+                    { "name": "baseURL", "type": "string", "optional": true, "description": "Base URL that <code>Document</code> or <code>FrameOwner</code> node uses for URL completion." },
+                    { "name": "publicId", "type": "string", "optional": true, "description": "<code>DocumentType</code> node's publicId." },
+                    { "name": "systemId", "type": "string", "optional": true, "description": "<code>DocumentType</code> node's systemId." },
+                    { "name": "frameId", "$ref": "Page.FrameId", "optional": true, "description": "Frame ID for frame owner elements." },
+                    { "name": "contentDocumentIndex", "type": "integer", "optional": true, "description": "The index of a frame owner element's content document in the <code>domNodes</code> array returned by <code>getSnapshot</code>, if any." },
+                    { "name": "importedDocumentIndex", "type": "integer", "optional": true, "description": "Index of the imported document's node of a link element in the <code>domNodes</code> array returned by <code>getSnapshot</code>, if any." },
+                    { "name": "templateContentIndex", "type": "integer", "optional": true, "description": "Index of the content node of a template element in the <code>domNodes</code> array returned by <code>getSnapshot</code>." },
+                    { "name": "pseudoType", "$ref": "DOM.PseudoType", "optional": true, "description": "Type of a pseudo element node." }
+                ],
+                "description": "A Node in the DOM tree."
+            },
+            {
+                "id": "LayoutTreeNode",
+                "type": "object",
+                "properties": [
+                    { "name": "domNodeIndex", "type": "integer", "description": "The index of the related DOM node in the <code>domNodes</code> array returned by <code>getSnapshot</code>." },
+                    { "name": "boundingBox", "$ref": "DOM.Rect", "description": "The absolute position bounding box." },
+                    { "name": "layoutText", "type": "string", "optional": true, "description": "Contents of the LayoutText, if any." },
+                    { "name": "inlineTextNodes", "type": "array", "optional": true, "items": { "$ref": "CSS.InlineTextBox" }, "description": "The post-layout inline text nodes, if any." },
+                    { "name": "styleIndex", "type": "integer", "optional": true, "description": "Index into the <code>computedStyles</code> array returned by <code>getSnapshot</code>." }
+                ],
+                "description": "Details of an element in the DOM tree with a LayoutObject."
+            },
+            {
+                "id": "ComputedStyle",
+                "type": "object",
+                "properties": [
+                    { "name": "properties", "type": "array", "items": { "$ref": "NameValue" }, "description": "Name/value pairs of computed style properties." }
+                ],
+                "description": "A subset of the full ComputedStyle as defined by the request whitelist."
+            },
+            {
+                "id": "NameValue",
+                "type": "object",
+                "properties": [
+                    { "name": "name", "type": "string", "description": "Attribute/property name." },
+                    { "name": "value", "type": "string", "description": "Attribute/property value." }
+                ],
+                "description": "A name/value pair."
+            }
+        ],
+        "commands": [
+            {
+                "name": "getSnapshot",
+                "parameters": [
+                    { "name": "computedStyleWhitelist", "type": "array", "items": { "type": "string" }, "description": "Whitelist of computed styles to return." }
+                ],
+                "returns": [
+                    { "name": "domNodes", "type": "array", "items": { "$ref": "DOMNode" }, "description": "The nodes in the DOM tree. The DOMNode at index 0 corresponds to the root document." },
+                    { "name": "layoutTreeNodes", "type": "array", "items": { "$ref": "LayoutTreeNode" }, "description": "The nodes in the layout tree." },
+                    { "name": "computedStyles", "type": "array", "items": { "$ref": "ComputedStyle" }, "description": "Whitelisted ComputedStyle properties for each node in the layout tree." }
+                ],
+                "description": "Returns a document snapshot, including the full DOM tree of the root node (including iframes, template contents, and imported documents) in a flattened array, as well as layout and white-listed computed style information for the nodes. Shadow DOM in the returned DOM tree is flattened. "
+            }
+        ]
+    },
+    {
         "domain": "IO",
         "description": "Input/Output operations for streams produced by DevTools.",
         "experimental": true,
