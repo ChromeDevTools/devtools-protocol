@@ -2299,7 +2299,7 @@ Protocol.CacheStorageAgent.prototype.invoke_deleteEntry = function(obj) {};
 /** @typedef {string} */
 Protocol.CacheStorage.CacheId;
 
-/** @typedef {!{request:(string), response:(string)}} */
+/** @typedef {!{request:(string), response:(string), responseTime:(number)}} */
 Protocol.CacheStorage.DataEntry;
 
 /** @typedef {!{cacheId:(Protocol.CacheStorage.CacheId), securityOrigin:(string), cacheName:(string)}} */

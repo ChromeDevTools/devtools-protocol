@@ -1709,7 +1709,7 @@
                     { "name": "redirectStatusCode", "type": "integer", "optional": true, "description": "HTTP response code, only sent if a redirect was intercepted." },
                     { "name": "redirectUrl", "optional": true, "type": "string", "description": "Redirect location, only sent if a redirect was intercepted."}
                 ],
-                "experimental": true 
+                "experimental": true
             }
         ]
     },
@@ -1951,7 +1951,8 @@
                 "description": "Data entry.",
                 "properties": [
                     { "name": "request", "type": "string", "description": "Request url spec." },
-                    { "name": "response", "type": "string", "description": "Response stataus text." }
+                    { "name": "response", "type": "string", "description": "Response status text." },
+                    { "name": "responseTime", "type": "number", "description": "Number of seconds since epoch." }
                 ]
             },
             {
