@@ -5832,8 +5832,9 @@ Protocol.RuntimeDispatcher.prototype.exceptionRevoked = function(reason, excepti
  * @param {Protocol.Runtime.ExecutionContextId} executionContextId
  * @param {Protocol.Runtime.Timestamp} timestamp
  * @param {Protocol.Runtime.StackTrace=} opt_stackTrace
+ * @param {string=} opt_context
  */
-Protocol.RuntimeDispatcher.prototype.consoleAPICalled = function(type, args, executionContextId, timestamp, opt_stackTrace) {};
+Protocol.RuntimeDispatcher.prototype.consoleAPICalled = function(type, args, executionContextId, timestamp, opt_stackTrace, opt_context) {};
 /**
  * @param {Protocol.Runtime.RemoteObject} object
  * @param {!Object} hints
