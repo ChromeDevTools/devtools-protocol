@@ -1995,14 +1995,14 @@ Protocol.NetworkDispatcher.prototype.webSocketFrameSent = function(requestId, ti
  */
 Protocol.NetworkDispatcher.prototype.eventSourceMessageReceived = function(requestId, timestamp, eventName, eventId, data) {};
 /**
- * @param {Protocol.Network.InterceptionId} InterceptionId
+ * @param {Protocol.Network.InterceptionId} interceptionId
  * @param {Protocol.Network.Request} request
  * @param {Protocol.Page.ResourceType} resourceType
  * @param {Protocol.Network.Headers=} opt_redirectHeaders
  * @param {number=} opt_redirectStatusCode
  * @param {string=} opt_redirectUrl
  */
-Protocol.NetworkDispatcher.prototype.requestIntercepted = function(InterceptionId, request, resourceType, opt_redirectHeaders, opt_redirectStatusCode, opt_redirectUrl) {};
+Protocol.NetworkDispatcher.prototype.requestIntercepted = function(interceptionId, request, resourceType, opt_redirectHeaders, opt_redirectStatusCode, opt_redirectUrl) {};
 Protocol.Database = {};
 
 
