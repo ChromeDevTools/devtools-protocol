@@ -3050,28 +3050,6 @@
                 ],
                 "description": "Details of post layout rendered text positions. The exact layout should not be regarded as stable and may change between versions.",
                 "experimental": true
-            },
-            {
-                "id": "LayoutTreeNode",
-                "type": "object",
-                "properties": [
-                    { "name": "nodeId", "$ref": "DOM.NodeId", "description": "The id of the related DOM node matching one from DOM.GetDocument." },
-                    { "name": "boundingBox", "$ref": "DOM.Rect", "description": "The absolute position bounding box." },
-                    { "name": "layoutText", "type": "string", "optional": true, "description": "Contents of the LayoutText if any" },
-                    { "name": "inlineTextNodes", "type": "array", "optional": true, "items": { "$ref": "InlineTextBox" }, "description": "The post layout inline text nodes, if any." },
-                    { "name": "styleIndex", "type": "integer", "optional": true, "description": "Index into the computedStyles array returned by getLayoutTreeAndStyles." }
-                ],
-                "description": "Details of an element in the DOM tree with a LayoutObject.",
-                "experimental": true
-            },
-            {
-                "id": "ComputedStyle",
-                "type": "object",
-                "properties": [
-                    { "name": "properties", "type": "array", "items": { "$ref": "CSSComputedStyleProperty" } }
-                ],
-                "description": "A subset of the full ComputedStyle as defined by the request whitelist.",
-                "experimental": true
             }
         ],
         "commands": [
@@ -3264,18 +3242,6 @@
                 "returns": [
                     { "name": "backgroundColors", "type": "array", "items": { "type": "string" }, "description": "The range of background colors behind this element, if it contains any visible text. If no visible text is present, this will be undefined. In the case of a flat background color, this will consist of simply that color. In the case of a gradient, this will consist of each of the color stops. For anything more complicated, this will be an empty array. Images will be ignored (as if the image had failed to load).", "optional": true }
                 ],
-                "experimental": true
-            },
-            {
-                "name": "getLayoutTreeAndStyles",
-                "parameters": [
-                    { "name": "computedStyleWhitelist", "type": "array", "items": { "type": "string" }, "description": "Whitelist of computed styles to return." }
-                ],
-                "returns": [
-                    { "name": "layoutTreeNodes", "type": "array", "items": { "$ref": "LayoutTreeNode" } },
-                    { "name": "computedStyles", "type": "array", "items": { "$ref": "ComputedStyle" } }
-                ],
-                "description": "For the main document and any content documents, return the LayoutTreeNodes and a whitelisted subset of the computed style. It only returns pushed nodes, on way to pull all nodes is to call DOM.getDocument with a depth of -1.",
                 "experimental": true
             },
             {

@@ -3474,20 +3474,6 @@ Protocol.CSSAgent.GetBackgroundColorsResponse;
 Protocol.CSSAgent.prototype.invoke_getBackgroundColors = function(obj) {};
 
 /**
- * @param {!Array<string>} computedStyleWhitelist
- * @return {!Promise<?Array<Protocol.CSS.LayoutTreeNode>>}
- */
-Protocol.CSSAgent.prototype.getLayoutTreeAndStyles = function(computedStyleWhitelist) {};
-/** @typedef {!{computedStyleWhitelist: !Array<string>}} */
-Protocol.CSSAgent.GetLayoutTreeAndStylesRequest;
-/** @typedef {!{layoutTreeNodes: !Array<Protocol.CSS.LayoutTreeNode>, computedStyles: !Array<Protocol.CSS.ComputedStyle>}} */
-Protocol.CSSAgent.GetLayoutTreeAndStylesResponse;
-/**
- * @param {!Protocol.CSSAgent.GetLayoutTreeAndStylesRequest} obj
- * @return {!Promise<!Protocol.CSSAgent.GetLayoutTreeAndStylesResponse>} */
-Protocol.CSSAgent.prototype.invoke_getLayoutTreeAndStyles = function(obj) {};
-
-/**
  * @return {!Promise<undefined>}
  */
 Protocol.CSSAgent.prototype.startRuleUsageTracking = function() {};
@@ -3607,12 +3593,6 @@ Protocol.CSS.StyleDeclarationEdit;
 
 /** @typedef {!{boundingBox:(Protocol.DOM.Rect), startCharacterIndex:(number), numCharacters:(number)}} */
 Protocol.CSS.InlineTextBox;
-
-/** @typedef {!{nodeId:(Protocol.DOM.NodeId), boundingBox:(Protocol.DOM.Rect), layoutText:(string|undefined), inlineTextNodes:(!Array<Protocol.CSS.InlineTextBox>|undefined), styleIndex:(number|undefined)}} */
-Protocol.CSS.LayoutTreeNode;
-
-/** @typedef {!{properties:(!Array<Protocol.CSS.CSSComputedStyleProperty>)}} */
-Protocol.CSS.ComputedStyle;
 /** @interface */
 Protocol.CSSDispatcher = function() {};
 Protocol.CSSDispatcher.prototype.mediaQueryResultChanged = function() {};
