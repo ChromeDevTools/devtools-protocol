@@ -1748,10 +1748,11 @@ Protocol.NetworkAgent.prototype.invoke_enableRequestInterception = function(obj)
  * @param {string=} opt_method
  * @param {string=} opt_postData
  * @param {Protocol.Network.Headers=} opt_headers
+ * @param {Protocol.Network.AuthChallengeResponse=} opt_authChallengeResponse
  * @return {!Promise<undefined>}
  */
-Protocol.NetworkAgent.prototype.continueInterceptedRequest = function(interceptionId, opt_errorReason, opt_rawResponse, opt_url, opt_method, opt_postData, opt_headers) {};
-/** @typedef {!{postData: (string|undefined), headers: (Protocol.Network.Headers|undefined), url: (string|undefined), errorReason: (Protocol.Network.ErrorReason|undefined), interceptionId: Protocol.Network.InterceptionId, rawResponse: (string|undefined), method: (string|undefined)}} */
+Protocol.NetworkAgent.prototype.continueInterceptedRequest = function(interceptionId, opt_errorReason, opt_rawResponse, opt_url, opt_method, opt_postData, opt_headers, opt_authChallengeResponse) {};
+/** @typedef {!{postData: (string|undefined), headers: (Protocol.Network.Headers|undefined), url: (string|undefined), authChallengeResponse: (Protocol.Network.AuthChallengeResponse|undefined), errorReason: (Protocol.Network.ErrorReason|undefined), interceptionId: Protocol.Network.InterceptionId, rawResponse: (string|undefined), method: (string|undefined)}} */
 Protocol.NetworkAgent.ContinueInterceptedRequestRequest;
 /** @typedef {Object|undefined} */
 Protocol.NetworkAgent.ContinueInterceptedRequestResponse;
@@ -1888,6 +1889,25 @@ Protocol.Network.Initiator;
 
 /** @typedef {!{name:(string), value:(string), domain:(string), path:(string), expires:(number), size:(number), httpOnly:(boolean), secure:(boolean), session:(boolean), sameSite:(Protocol.Network.CookieSameSite|undefined)}} */
 Protocol.Network.Cookie;
+
+/** @enum {string} */
+Protocol.Network.AuthChallengeSource = {
+    Server: "Server",
+    Proxy: "Proxy"
+};
+
+/** @typedef {!{source:(Protocol.Network.AuthChallengeSource|undefined), origin:(string), scheme:(string), realm:(string)}} */
+Protocol.Network.AuthChallenge;
+
+/** @enum {string} */
+Protocol.Network.AuthChallengeResponseResponse = {
+    Default: "Default",
+    CancelAuth: "CancelAuth",
+    ProvideCredentials: "ProvideCredentials"
+};
+
+/** @typedef {!{response:(Protocol.Network.AuthChallengeResponseResponse), username:(string|undefined), password:(string|undefined)}} */
+Protocol.Network.AuthChallengeResponse;
 /** @interface */
 Protocol.NetworkDispatcher = function() {};
 /**
@@ -2001,8 +2021,9 @@ Protocol.NetworkDispatcher.prototype.eventSourceMessageReceived = function(reque
  * @param {Protocol.Network.Headers=} opt_redirectHeaders
  * @param {number=} opt_redirectStatusCode
  * @param {string=} opt_redirectUrl
+ * @param {Protocol.Network.AuthChallenge=} opt_authChallenge
  */
-Protocol.NetworkDispatcher.prototype.requestIntercepted = function(interceptionId, request, resourceType, opt_redirectHeaders, opt_redirectStatusCode, opt_redirectUrl) {};
+Protocol.NetworkDispatcher.prototype.requestIntercepted = function(interceptionId, request, resourceType, opt_redirectHeaders, opt_redirectStatusCode, opt_redirectUrl, opt_authChallenge) {};
 Protocol.Database = {};
 
 

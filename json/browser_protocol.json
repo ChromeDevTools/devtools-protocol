@@ -1338,6 +1338,29 @@
                     { "name": "sameSite", "$ref": "CookieSameSite", "optional": true, "description": "Cookie SameSite type." }
                 ],
                 "experimental": true
+            },
+            {
+                "id": "AuthChallenge",
+                "type": "object",
+                "description": "Authorization challenge for HTTP status code 401 or 407.",
+                "properties": [
+                    { "name": "source", "type": "string", "optional": true, "enum": ["Server", "Proxy"], "description": "Source of the authentication challenge." },
+                    { "name": "origin", "type": "string", "description": "Origin of the challenger." },
+                    { "name": "scheme", "type": "string", "description": "The authentication scheme used, such as basic or digest" },
+                    { "name": "realm", "type": "string", "description": "The realm of the challenge. May be empty." }
+                ],
+                "experimental": true
+            },
+            {
+                "id": "AuthChallengeResponse",
+                "type": "object",
+                "description": "Response to an AuthChallenge.",
+                "properties": [
+                    { "name": "response", "type": "string", "enum": ["Default", "CancelAuth", "ProvideCredentials"], "description": "The decision on what to do in response to the authorization challenge.  Default means deferring to the default behavior of the net stack, which will likely either the Cancel authentication or display a popup dialog box." },
+                    { "name": "username", "type": "string", "optional": true, "description": "The username to provide, possibly empty. Should only be set if response is ProvideCredentials." },
+                    { "name": "password", "type": "string", "optional": true, "description": "The password to provide, possibly empty. Should only be set if response is ProvideCredentials." }
+                ],
+                "experimental": true
             }
         ],
         "commands": [
@@ -1529,12 +1552,13 @@
                 "description": "Response to Network.requestIntercepted which either modifies the request to continue with any modifications, or blocks it, or completes it with the provided response bytes. If a network fetch occurs as a result which encounters a redirect an additional Network.requestIntercepted event will be sent with the same InterceptionId.",
                 "parameters": [
                     { "name": "interceptionId", "$ref": "InterceptionId" },
-                    { "name": "errorReason", "$ref": "ErrorReason", "optional": true, "description": "If set this causes the request to fail with the given reason." },
-                    { "name": "rawResponse", "type": "string", "optional": true, "description": "If set the requests completes using with the provided base64 encoded raw response, including HTTP status line and headers etc..." },
-                    { "name": "url", "type": "string", "optional": true, "description": "If set the request url will be modified in a way that's not observable by page." },
-                    { "name": "method", "type": "string", "optional": true, "description": "If set this allows the request method to be overridden."},
-                    { "name": "postData", "type": "string", "optional": true, "description": "If set this allows postData to be set."},
-                    { "name": "headers", "$ref": "Headers", "optional": true, "description": "If set this allows the request headers to be changed."}
+                    { "name": "errorReason", "$ref": "ErrorReason", "optional": true, "description": "If set this causes the request to fail with the given reason. Must not be set in response to an authChallenge." },
+                    { "name": "rawResponse", "type": "string", "optional": true, "description": "If set the requests completes using with the provided base64 encoded raw response, including HTTP status line and headers etc... Must not be set in response to an authChallenge." },
+                    { "name": "url", "type": "string", "optional": true, "description": "If set the request url will be modified in a way that's not observable by page. Must not be set in response to an authChallenge." },
+                    { "name": "method", "type": "string", "optional": true, "description": "If set this allows the request method to be overridden. Must not be set in response to an authChallenge."},
+                    { "name": "postData", "type": "string", "optional": true, "description": "If set this allows postData to be set. Must not be set in response to an authChallenge."},
+                    { "name": "headers", "$ref": "Headers", "optional": true, "description": "If set this allows the request headers to be changed. Must not be set in response to an authChallenge."},
+                    { "name": "authChallengeResponse", "$ref": "AuthChallengeResponse", "optional": true, "description": "Response to a requestIntercepted with an authChallenge. Must not be set otherwise." }
                 ],
                 "experimental": true
             }
@@ -1702,12 +1726,13 @@
                 "name": "requestIntercepted",
                 "description": "Details of an intercepted HTTP request, which must be either allowed, blocked, modified or mocked.",
                 "parameters": [
-                    { "name": "interceptionId", "$ref": "InterceptionId", "description": "Each request the page makes will have a unique id, however if any redirects are encountered while processing that fetch, they will be reported with the same id as the original fetch." },
+                    { "name": "interceptionId", "$ref": "InterceptionId", "description": "Each request the page makes will have a unique id, however if any redirects are encountered while processing that fetch, they will be reported with the same id as the original fetch. Likewise if HTTP authentication is needed then the same fetch id will be used." },
                     { "name": "request", "$ref": "Request" },
                     { "name": "resourceType", "$ref": "Page.ResourceType", "description": "How the requested resource will be used." },
                     { "name": "redirectHeaders", "$ref": "Headers", "optional": true, "description": "HTTP response headers, only sent if a redirect was intercepted." },
                     { "name": "redirectStatusCode", "type": "integer", "optional": true, "description": "HTTP response code, only sent if a redirect was intercepted." },
-                    { "name": "redirectUrl", "optional": true, "type": "string", "description": "Redirect location, only sent if a redirect was intercepted."}
+                    { "name": "redirectUrl", "optional": true, "type": "string", "description": "Redirect location, only sent if a redirect was intercepted."},
+                    { "name": "authChallenge", "$ref": "AuthChallenge", "optional": true, "description": "Details of the Authorization Challenge encountered. If this is set then continueInterceptedRequest must contain an authChallengeResponse." }
                 ],
                 "experimental": true
             }
