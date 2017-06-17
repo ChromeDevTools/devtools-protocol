@@ -4606,6 +4606,17 @@
                     { "name": "storageTypes", "type": "string", "description": "Comma separated origin names." }
                 ],
                 "description": "Clears storage for origin."
+            },
+            {
+                "name": "getUsageAndQuota",
+                "parameters": [
+                    { "name": "origin", "type": "string", "description": "Security origin." }
+                ],
+                "returns": [
+                    { "name": "usage", "type": "number", "description": "Storage usage (bytes)." },
+                    { "name": "quota", "type": "number", "description": "Storage quota (bytes)." }
+                ],
+                "description": "Returns usage and quota in bytes."
             }
         ]
     },

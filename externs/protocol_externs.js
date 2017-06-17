@@ -5156,6 +5156,20 @@ Protocol.StorageAgent.ClearDataForOriginResponse;
  * @return {!Promise<!Protocol.StorageAgent.ClearDataForOriginResponse>} */
 Protocol.StorageAgent.prototype.invoke_clearDataForOrigin = function(obj) {};
 
+/**
+ * @param {string} origin
+ * @return {!Promise<?number>}
+ */
+Protocol.StorageAgent.prototype.getUsageAndQuota = function(origin) {};
+/** @typedef {!{origin: string}} */
+Protocol.StorageAgent.GetUsageAndQuotaRequest;
+/** @typedef {!{usage: number, quota: number}} */
+Protocol.StorageAgent.GetUsageAndQuotaResponse;
+/**
+ * @param {!Protocol.StorageAgent.GetUsageAndQuotaRequest} obj
+ * @return {!Promise<!Protocol.StorageAgent.GetUsageAndQuotaResponse>} */
+Protocol.StorageAgent.prototype.invoke_getUsageAndQuota = function(obj) {};
+
 /** @enum {string} */
 Protocol.Storage.StorageType = {
     Appcache: "appcache",
