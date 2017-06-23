@@ -6547,7 +6547,7 @@ Protocol.Profiler.PositionTickInfo;
 /** @typedef {!{startOffset:(number), endOffset:(number), count:(number)}} */
 Protocol.Profiler.CoverageRange;
 
-/** @typedef {!{functionName:(string), ranges:(!Array<Protocol.Profiler.CoverageRange>)}} */
+/** @typedef {!{functionName:(string), ranges:(!Array<Protocol.Profiler.CoverageRange>), isBlockCoverage:(boolean)}} */
 Protocol.Profiler.FunctionCoverage;
 
 /** @typedef {!{scriptId:(Protocol.Runtime.ScriptId), url:(string), functions:(!Array<Protocol.Profiler.FunctionCoverage>)}} */
