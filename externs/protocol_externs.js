@@ -614,12 +614,12 @@ Protocol.PageAgent.prototype.invoke_getLayoutMetrics = function(obj) {};
  * @param {Protocol.Page.FrameId} frameId
  * @param {string=} opt_worldName
  * @param {boolean=} opt_grantUniveralAccess
- * @return {!Promise<undefined>}
+ * @return {!Promise<?Protocol.Runtime.ExecutionContextId>}
  */
 Protocol.PageAgent.prototype.createIsolatedWorld = function(frameId, opt_worldName, opt_grantUniveralAccess) {};
 /** @typedef {!{grantUniveralAccess: (boolean|undefined), worldName: (string|undefined), frameId: Protocol.Page.FrameId}} */
 Protocol.PageAgent.CreateIsolatedWorldRequest;
-/** @typedef {Object|undefined} */
+/** @typedef {!{executionContextId: Protocol.Runtime.ExecutionContextId}} */
 Protocol.PageAgent.CreateIsolatedWorldResponse;
 /**
  * @param {!Protocol.PageAgent.CreateIsolatedWorldRequest} obj
