@@ -5163,7 +5163,7 @@ Protocol.StorageAgent.prototype.invoke_clearDataForOrigin = function(obj) {};
 Protocol.StorageAgent.prototype.getUsageAndQuota = function(origin) {};
 /** @typedef {!{origin: string}} */
 Protocol.StorageAgent.GetUsageAndQuotaRequest;
-/** @typedef {!{usage: number, quota: number}} */
+/** @typedef {!{usage: number, usageBreakdown: !Array<Protocol.Storage.UsageForType>, quota: number}} */
 Protocol.StorageAgent.GetUsageAndQuotaResponse;
 /**
  * @param {!Protocol.StorageAgent.GetUsageAndQuotaRequest} obj
@@ -5181,8 +5181,12 @@ Protocol.Storage.StorageType = {
     Websql: "websql",
     Service_workers: "service_workers",
     Cache_storage: "cache_storage",
-    All: "all"
+    All: "all",
+    Other: "other"
 };
+
+/** @typedef {!{storageType:(Protocol.Storage.StorageType), usage:(number)}} */
+Protocol.Storage.UsageForType;
 /** @interface */
 Protocol.StorageDispatcher = function() {};
 Protocol.Log = {};
