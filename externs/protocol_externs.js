@@ -4071,7 +4071,7 @@ Protocol.Target.TargetID;
 /** @typedef {string} */
 Protocol.Target.BrowserContextID;
 
-/** @typedef {!{targetId:(Protocol.Target.TargetID), type:(string), title:(string), url:(string)}} */
+/** @typedef {!{targetId:(Protocol.Target.TargetID), type:(string), title:(string), url:(string), attached:(boolean)}} */
 Protocol.Target.TargetInfo;
 
 /** @typedef {!{host:(string), port:(number)}} */
@@ -4082,6 +4082,10 @@ Protocol.TargetDispatcher = function() {};
  * @param {Protocol.Target.TargetInfo} targetInfo
  */
 Protocol.TargetDispatcher.prototype.targetCreated = function(targetInfo) {};
+/**
+ * @param {Protocol.Target.TargetInfo} targetInfo
+ */
+Protocol.TargetDispatcher.prototype.targetInfoChanged = function(targetInfo) {};
 /**
  * @param {Protocol.Target.TargetID} targetId
  */
