@@ -3352,7 +3352,8 @@
                     { "name": "contentDocumentIndex", "type": "integer", "optional": true, "description": "The index of a frame owner element's content document in the <code>domNodes</code> array returned by <code>getSnapshot</code>, if any." },
                     { "name": "importedDocumentIndex", "type": "integer", "optional": true, "description": "Index of the imported document's node of a link element in the <code>domNodes</code> array returned by <code>getSnapshot</code>, if any." },
                     { "name": "templateContentIndex", "type": "integer", "optional": true, "description": "Index of the content node of a template element in the <code>domNodes</code> array returned by <code>getSnapshot</code>." },
-                    { "name": "pseudoType", "$ref": "DOM.PseudoType", "optional": true, "description": "Type of a pseudo element node." }
+                    { "name": "pseudoType", "$ref": "DOM.PseudoType", "optional": true, "description": "Type of a pseudo element node." },
+                    { "name": "isClickable", "type": "boolean", "optional": true, "description": "Whether this DOM node responds to mouse clicks. This includes nodes that have had click event listeners attached via JavaScript as well as anchor tags that naturally navigate when clicked." }
                 ],
                 "description": "A Node in the DOM tree."
             },
