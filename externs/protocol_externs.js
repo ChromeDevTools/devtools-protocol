@@ -1918,7 +1918,6 @@ Protocol.NetworkDispatcher = function() {};
 Protocol.NetworkDispatcher.prototype.resourceChangedPriority = function(requestId, newPriority, timestamp) {};
 /**
  * @param {Protocol.Network.RequestId} requestId
- * @param {Protocol.Page.FrameId} frameId
  * @param {Protocol.Network.LoaderId} loaderId
  * @param {string} documentURL
  * @param {Protocol.Network.Request} request
@@ -1927,21 +1926,22 @@ Protocol.NetworkDispatcher.prototype.resourceChangedPriority = function(requestI
  * @param {Protocol.Network.Initiator} initiator
  * @param {Protocol.Network.Response=} opt_redirectResponse
  * @param {Protocol.Page.ResourceType=} opt_type
+ * @param {Protocol.Page.FrameId=} opt_frameId
  */
-Protocol.NetworkDispatcher.prototype.requestWillBeSent = function(requestId, frameId, loaderId, documentURL, request, timestamp, wallTime, initiator, opt_redirectResponse, opt_type) {};
+Protocol.NetworkDispatcher.prototype.requestWillBeSent = function(requestId, loaderId, documentURL, request, timestamp, wallTime, initiator, opt_redirectResponse, opt_type, opt_frameId) {};
 /**
  * @param {Protocol.Network.RequestId} requestId
  */
 Protocol.NetworkDispatcher.prototype.requestServedFromCache = function(requestId) {};
 /**
  * @param {Protocol.Network.RequestId} requestId
- * @param {Protocol.Page.FrameId} frameId
  * @param {Protocol.Network.LoaderId} loaderId
  * @param {Protocol.Network.Timestamp} timestamp
  * @param {Protocol.Page.ResourceType} type
  * @param {Protocol.Network.Response} response
+ * @param {Protocol.Page.FrameId=} opt_frameId
  */
-Protocol.NetworkDispatcher.prototype.responseReceived = function(requestId, frameId, loaderId, timestamp, type, response) {};
+Protocol.NetworkDispatcher.prototype.responseReceived = function(requestId, loaderId, timestamp, type, response, opt_frameId) {};
 /**
  * @param {Protocol.Network.RequestId} requestId
  * @param {Protocol.Network.Timestamp} timestamp

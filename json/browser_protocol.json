@@ -1582,15 +1582,15 @@
                 "description": "Fired when page is about to send HTTP request.",
                 "parameters": [
                     { "name": "requestId", "$ref": "RequestId", "description": "Request identifier." },
-                    { "name": "frameId", "$ref": "Page.FrameId", "description": "Frame identifier.", "experimental": true },
-                    { "name": "loaderId", "$ref": "LoaderId", "description": "Loader identifier." },
+                    { "name": "loaderId", "$ref": "LoaderId", "description": "Loader identifier. Empty string if the request is fetched form worker." },
                     { "name": "documentURL", "type": "string", "description": "URL of the document this request is loaded for." },
                     { "name": "request", "$ref": "Request", "description": "Request data." },
                     { "name": "timestamp", "$ref": "Timestamp", "description": "Timestamp." },
                     { "name": "wallTime", "$ref": "Timestamp", "experimental": true, "description": "UTC Timestamp." },
                     { "name": "initiator", "$ref": "Initiator", "description": "Request initiator." },
                     { "name": "redirectResponse", "optional": true, "$ref": "Response", "description": "Redirect response data." },
-                    { "name": "type", "$ref": "Page.ResourceType", "optional": true, "experimental": true, "description": "Type of this resource." }
+                    { "name": "type", "$ref": "Page.ResourceType", "optional": true, "experimental": true, "description": "Type of this resource." },
+                    { "name": "frameId", "optional": true, "$ref": "Page.FrameId", "description": "Frame identifier.", "experimental": true }
                 ]
             },
             {
@@ -1605,11 +1605,11 @@
                 "description": "Fired when HTTP response is available.",
                 "parameters": [
                     { "name": "requestId", "$ref": "RequestId", "description": "Request identifier." },
-                    { "name": "frameId", "$ref": "Page.FrameId", "description": "Frame identifier.", "experimental": true },
-                    { "name": "loaderId", "$ref": "LoaderId", "description": "Loader identifier." },
+                    { "name": "loaderId", "$ref": "LoaderId", "description": "Loader identifier. Empty string if the request is fetched form worker." },
                     { "name": "timestamp", "$ref": "Timestamp", "description": "Timestamp." },
                     { "name": "type", "$ref": "Page.ResourceType", "description": "Resource type." },
-                    { "name": "response", "$ref": "Response", "description": "Response data." }
+                    { "name": "response", "$ref": "Response", "description": "Response data." },
+                    { "name": "frameId", "optional": true, "$ref": "Page.FrameId", "description": "Frame identifier.", "experimental": true }
                 ]
             },
             {
