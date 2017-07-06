@@ -157,6 +157,34 @@ Protocol.PageAgent.RemoveScriptToEvaluateOnLoadResponse;
 Protocol.PageAgent.prototype.invoke_removeScriptToEvaluateOnLoad = function(obj) {};
 
 /**
+ * @param {string} source
+ * @return {!Promise<?Protocol.Page.ScriptIdentifier>}
+ */
+Protocol.PageAgent.prototype.addScriptToEvaluateOnNewDocument = function(source) {};
+/** @typedef {!{source: string}} */
+Protocol.PageAgent.AddScriptToEvaluateOnNewDocumentRequest;
+/** @typedef {!{identifier: Protocol.Page.ScriptIdentifier}} */
+Protocol.PageAgent.AddScriptToEvaluateOnNewDocumentResponse;
+/**
+ * @param {!Protocol.PageAgent.AddScriptToEvaluateOnNewDocumentRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.AddScriptToEvaluateOnNewDocumentResponse>} */
+Protocol.PageAgent.prototype.invoke_addScriptToEvaluateOnNewDocument = function(obj) {};
+
+/**
+ * @param {Protocol.Page.ScriptIdentifier} identifier
+ * @return {!Promise<undefined>}
+ */
+Protocol.PageAgent.prototype.removeScriptToEvaluateOnNewDocument = function(identifier) {};
+/** @typedef {!{identifier: Protocol.Page.ScriptIdentifier}} */
+Protocol.PageAgent.RemoveScriptToEvaluateOnNewDocumentRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.RemoveScriptToEvaluateOnNewDocumentResponse;
+/**
+ * @param {!Protocol.PageAgent.RemoveScriptToEvaluateOnNewDocumentRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.RemoveScriptToEvaluateOnNewDocumentResponse>} */
+Protocol.PageAgent.prototype.invoke_removeScriptToEvaluateOnNewDocument = function(obj) {};
+
+/**
  * @param {boolean} autoAttach
  * @return {!Promise<undefined>}
  */

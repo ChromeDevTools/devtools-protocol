@@ -232,6 +232,8 @@
                 "returns": [
                     { "name": "identifier", "$ref": "ScriptIdentifier", "description": "Identifier of the added script." }
                 ],
+                "deprecated": true,
+                "description": "Deprecated, please use addScriptToEvaluateOnNewDocument instead.",
                 "experimental": true
             },
             {
@@ -239,6 +241,27 @@
                 "parameters": [
                     { "name": "identifier", "$ref": "ScriptIdentifier" }
                 ],
+                "deprecated": true,
+                "description": "Deprecated, please use removeScriptToEvaluateOnNewDocument instead.",
+                "experimental": true
+            },
+            {
+                "name": "addScriptToEvaluateOnNewDocument",
+                "parameters": [
+                    { "name": "source", "type": "string" }
+                ],
+                "returns": [
+                    { "name": "identifier", "$ref": "ScriptIdentifier", "description": "Identifier of the added script." }
+                ],
+                "description": "Evaluates given script in every frame upon creation (before loading frame's scripts).",
+                "experimental": true
+            },
+            {
+                "name": "removeScriptToEvaluateOnNewDocument",
+                "parameters": [
+                    { "name": "identifier", "$ref": "ScriptIdentifier" }
+                ],
+                "description": "Removes given script from the list.",
                 "experimental": true
             },
             {
