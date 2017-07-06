@@ -1020,6 +1020,12 @@
                 "description": "An internal certificate ID value."
             },
             {
+                "id": "MixedContentType",
+                "type": "string",
+                "enum": ["blockable", "optionally-blockable", "none"],
+                "description": "A description of mixed content (HTTP resources on HTTPS pages), as defined by https://www.w3.org/TR/mixed-content/#categories"
+            },
+            {
                 "id": "SecurityState",
                 "type": "string",
                 "enum": ["unknown", "neutral", "insecure", "warning", "secure", "info"],
@@ -1032,7 +1038,8 @@
                     { "name": "securityState", "$ref": "SecurityState", "description": "Security state representing the severity of the factor being explained." },
                     { "name": "summary", "type": "string", "description": "Short phrase describing the type of factor." },
                     { "name": "description", "type": "string", "description": "Full text explanation of the factor." },
-                    { "name": "hasCertificate", "type": "boolean", "description": "True if the page has a certificate." }
+                    { "name": "hasCertificate", "type": "boolean", "description": "True if the page has a certificate." },
+                    { "name": "mixedContentType", "$ref": "MixedContentType", "description": "The type of mixed content described by the explanation." }
                 ],
                 "description": "An explanation of an factor contributing to the security state."
             },
@@ -1200,7 +1207,7 @@
                     { "name": "method", "type": "string", "description": "HTTP request method." },
                     { "name": "headers", "$ref": "Headers", "description": "HTTP request headers." },
                     { "name": "postData", "type": "string", "optional": true, "description": "HTTP POST request data." },
-                    { "name": "mixedContentType", "optional": true, "type": "string", "enum": ["blockable", "optionally-blockable", "none"], "description": "The mixed content status of the request, as defined in http://www.w3.org/TR/mixed-content/" },
+                    { "name": "mixedContentType", "$ref": "Security.MixedContentType", "optional": true, "description": "The mixed content type of the request." },
                     { "name": "initialPriority", "$ref": "ResourcePriority", "description": "Priority of the resource request at the time request is sent."},
                     { "name": "referrerPolicy", "type": "string", "enum": [ "unsafe-url", "no-referrer-when-downgrade", "no-referrer", "origin", "origin-when-cross-origin", "same-origin", "strict-origin", "strict-origin-when-cross-origin" ], "description": "The referrer policy of the request, as defined in https://www.w3.org/TR/referrer-policy/" },
                     { "name": "isLinkPreload", "type": "boolean", "optional": true, "description": "Whether is loaded via link preload." }

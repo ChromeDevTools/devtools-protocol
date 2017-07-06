@@ -1380,6 +1380,13 @@ Protocol.SecurityAgent.prototype.invoke_setOverrideCertificateErrors = function(
 Protocol.Security.CertificateId;
 
 /** @enum {string} */
+Protocol.Security.MixedContentType = {
+    Blockable: "blockable",
+    OptionallyBlockable: "optionally-blockable",
+    None: "none"
+};
+
+/** @enum {string} */
 Protocol.Security.SecurityState = {
     Unknown: "unknown",
     Neutral: "neutral",
@@ -1389,7 +1396,7 @@ Protocol.Security.SecurityState = {
     Info: "info"
 };
 
-/** @typedef {!{securityState:(Protocol.Security.SecurityState), summary:(string), description:(string), hasCertificate:(boolean)}} */
+/** @typedef {!{securityState:(Protocol.Security.SecurityState), summary:(string), description:(string), hasCertificate:(boolean), mixedContentType:(Protocol.Security.MixedContentType)}} */
 Protocol.Security.SecurityStateExplanation;
 
 /** @typedef {!{ranMixedContent:(boolean), displayedMixedContent:(boolean), containedMixedForm:(boolean), ranContentWithCertErrors:(boolean), displayedContentWithCertErrors:(boolean), ranInsecureContentStyle:(Protocol.Security.SecurityState), displayedInsecureContentStyle:(Protocol.Security.SecurityState)}} */
@@ -1827,13 +1834,6 @@ Protocol.Network.ResourcePriority = {
 };
 
 /** @enum {string} */
-Protocol.Network.RequestMixedContentType = {
-    Blockable: "blockable",
-    OptionallyBlockable: "optionally-blockable",
-    None: "none"
-};
-
-/** @enum {string} */
 Protocol.Network.RequestReferrerPolicy = {
     UnsafeUrl: "unsafe-url",
     NoReferrerWhenDowngrade: "no-referrer-when-downgrade",
@@ -1845,7 +1845,7 @@ Protocol.Network.RequestReferrerPolicy = {
     StrictOriginWhenCrossOrigin: "strict-origin-when-cross-origin"
 };
 
-/** @typedef {!{url:(string), method:(string), headers:(Protocol.Network.Headers), postData:(string|undefined), mixedContentType:(Protocol.Network.RequestMixedContentType|undefined), initialPriority:(Protocol.Network.ResourcePriority), referrerPolicy:(Protocol.Network.RequestReferrerPolicy), isLinkPreload:(boolean|undefined)}} */
+/** @typedef {!{url:(string), method:(string), headers:(Protocol.Network.Headers), postData:(string|undefined), mixedContentType:(Protocol.Security.MixedContentType|undefined), initialPriority:(Protocol.Network.ResourcePriority), referrerPolicy:(Protocol.Network.RequestReferrerPolicy), isLinkPreload:(boolean|undefined)}} */
 Protocol.Network.Request;
 
 /** @typedef {!{status:(string), origin:(string), logDescription:(string), logId:(string), timestamp:(Protocol.Network.TimeSinceEpoch), hashAlgorithm:(string), signatureAlgorithm:(string), signatureData:(string)}} */
