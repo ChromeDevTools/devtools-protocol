@@ -67,7 +67,7 @@
     {
         "domain": "Page",
         "description": "Actions and events related to the inspected page belong to the page domain.",
-        "dependencies": ["Debugger", "DOM"],
+        "dependencies": ["Debugger", "DOM", "Network"],
         "types": [
             {
                 "id": "ResourceType",
@@ -102,7 +102,7 @@
                     { "name": "url", "type": "string", "description": "Resource URL." },
                     { "name": "type", "$ref": "ResourceType", "description": "Type of this resource." },
                     { "name": "mimeType", "type": "string", "description": "Resource mimeType as determined by the browser." },
-                    { "name": "lastModified", "$ref": "Network.Timestamp", "description": "last-modified timestamp as reported by server.", "optional": true },
+                    { "name": "lastModified", "$ref": "Network.TimeSinceEpoch", "description": "last-modified timestamp as reported by server.", "optional": true },
                     { "name": "contentSize", "type": "number", "description": "Resource content size.", "optional": true },
                     { "name": "failed", "type": "boolean", "optional": true, "description": "True if the resource failed to load." },
                     { "name": "canceled", "type": "boolean", "optional": true, "description": "True if the resource was canceled during loading." }
@@ -157,7 +157,7 @@
                     { "name": "deviceHeight", "type": "number", "experimental": true, "description": "Device screen height in DIP." },
                     { "name": "scrollOffsetX", "type": "number", "experimental": true, "description": "Position of horizontal scroll in CSS pixels." },
                     { "name": "scrollOffsetY", "type": "number", "experimental": true, "description": "Position of vertical scroll in CSS pixels." },
-                    { "name": "timestamp", "type": "number", "optional": true, "experimental": true, "description": "Frame swap timestamp." }
+                    { "name": "timestamp", "$ref": "Network.TimeSinceEpoch", "optional": true, "experimental": true, "description": "Frame swap timestamp." }
                 ],
                 "experimental": true
             },
@@ -549,13 +549,13 @@
             {
                 "name": "domContentEventFired",
                 "parameters": [
-                    { "name": "timestamp", "type": "number" }
+                    { "name": "timestamp", "$ref": "Network.MonotonicTime" }
                 ]
             },
             {
                 "name": "loadEventFired",
                 "parameters": [
-                    { "name": "timestamp", "type": "number" }
+                    { "name": "timestamp", "$ref": "Network.MonotonicTime" }
                 ]
             },
             {
@@ -1136,9 +1136,14 @@
                 "description": "Network level fetch failure reason."
             },
             {
-                "id": "Timestamp",
+                "id": "TimeSinceEpoch",
                 "type": "number",
-                "description": "Number of seconds since epoch."
+                "description": "UTC time in seconds, counted from January 1, 1970."
+            },
+            {
+                "id": "MonotonicTime",
+                "type": "number",
+                "description": "Monotonically increasing time in seconds since an arbitrary point in the past."
             },
             {
                 "id": "Headers",
@@ -1210,7 +1215,7 @@
                     { "name": "origin", "type": "string", "description": "Origin." },
                     { "name": "logDescription", "type": "string", "description": "Log name / description." },
                     { "name": "logId", "type": "string", "description": "Log ID." },
-                    { "name": "timestamp", "$ref": "Timestamp", "description": "Issuance date." },
+                    { "name": "timestamp", "$ref": "TimeSinceEpoch", "description": "Issuance date." },
                     { "name": "hashAlgorithm", "type": "string", "description": "Hash algorithm." },
                     { "name": "signatureAlgorithm", "type": "string", "description": "Signature algorithm." },
                     { "name": "signatureData", "type": "string", "description": "Signature data." }
@@ -1230,8 +1235,8 @@
                     { "name": "subjectName", "type": "string", "description": "Certificate subject name." },
                     { "name": "sanList", "type": "array", "items": { "type": "string" }, "description": "Subject Alternative Name (SAN) DNS names and IP addresses." },
                     { "name": "issuer", "type": "string", "description": "Name of the issuing CA." },
-                    { "name": "validFrom", "$ref": "Timestamp", "description": "Certificate valid from date." },
-                    { "name": "validTo", "$ref": "Timestamp", "description": "Certificate valid to (expiration) date" },
+                    { "name": "validFrom", "$ref": "TimeSinceEpoch", "description": "Certificate valid from date." },
+                    { "name": "validTo", "$ref": "TimeSinceEpoch", "description": "Certificate valid to (expiration) date" },
                     { "name": "signedCertificateTimestampList", "type": "array", "items": { "$ref": "SignedCertificateTimestamp" }, "description": "List of signed certificate timestamps (SCTs)." }
                 ]
             },
@@ -1481,7 +1486,7 @@
                     { "name": "secure", "type": "boolean", "optional": true, "description": "Defaults ot false." },
                     { "name": "httpOnly", "type": "boolean", "optional": true, "description": "Defaults to false." },
                     { "name": "sameSite", "$ref": "CookieSameSite", "optional": true, "description": "Defaults to browser default behavior." },
-                    { "name": "expirationDate", "$ref": "Timestamp", "optional": true, "description": "If omitted, the cookie becomes a session cookie." }
+                    { "name": "expirationDate", "$ref": "TimeSinceEpoch", "optional": true, "description": "If omitted, the cookie becomes a session cookie." }
                 ],
                 "returns": [
                     { "name": "success", "type": "boolean", "description": "True if successfully set cookie." }
@@ -1573,7 +1578,7 @@
                 "parameters": [
                     { "name": "requestId", "$ref": "RequestId", "description": "Request identifier." },
                     { "name": "newPriority", "$ref": "ResourcePriority", "description": "New priority" },
-                    { "name": "timestamp", "$ref": "Timestamp", "description": "Timestamp." }
+                    { "name": "timestamp", "$ref": "MonotonicTime", "description": "Timestamp." }
                 ],
                 "experimental": true
             },
@@ -1585,8 +1590,8 @@
                     { "name": "loaderId", "$ref": "LoaderId", "description": "Loader identifier. Empty string if the request is fetched form worker." },
                     { "name": "documentURL", "type": "string", "description": "URL of the document this request is loaded for." },
                     { "name": "request", "$ref": "Request", "description": "Request data." },
-                    { "name": "timestamp", "$ref": "Timestamp", "description": "Timestamp." },
-                    { "name": "wallTime", "$ref": "Timestamp", "experimental": true, "description": "UTC Timestamp." },
+                    { "name": "timestamp", "$ref": "MonotonicTime", "description": "Timestamp." },
+                    { "name": "wallTime", "$ref": "TimeSinceEpoch", "experimental": true, "description": "Timestamp." },
                     { "name": "initiator", "$ref": "Initiator", "description": "Request initiator." },
                     { "name": "redirectResponse", "optional": true, "$ref": "Response", "description": "Redirect response data." },
                     { "name": "type", "$ref": "Page.ResourceType", "optional": true, "experimental": true, "description": "Type of this resource." },
@@ -1606,7 +1611,7 @@
                 "parameters": [
                     { "name": "requestId", "$ref": "RequestId", "description": "Request identifier." },
                     { "name": "loaderId", "$ref": "LoaderId", "description": "Loader identifier. Empty string if the request is fetched form worker." },
-                    { "name": "timestamp", "$ref": "Timestamp", "description": "Timestamp." },
+                    { "name": "timestamp", "$ref": "MonotonicTime", "description": "Timestamp." },
                     { "name": "type", "$ref": "Page.ResourceType", "description": "Resource type." },
                     { "name": "response", "$ref": "Response", "description": "Response data." },
                     { "name": "frameId", "optional": true, "$ref": "Page.FrameId", "description": "Frame identifier.", "experimental": true }
@@ -1617,7 +1622,7 @@
                 "description": "Fired when data chunk was received over the network.",
                 "parameters": [
                     { "name": "requestId", "$ref": "RequestId", "description": "Request identifier." },
-                    { "name": "timestamp", "$ref": "Timestamp", "description": "Timestamp." },
+                    { "name": "timestamp", "$ref": "MonotonicTime", "description": "Timestamp." },
                     { "name": "dataLength", "type": "integer", "description": "Data chunk length." },
                     { "name": "encodedDataLength", "type": "integer", "description": "Actual bytes received (might be less than dataLength for compressed encodings)." }
                 ]
@@ -1627,7 +1632,7 @@
                 "description": "Fired when HTTP request has finished loading.",
                 "parameters": [
                     { "name": "requestId", "$ref": "RequestId", "description": "Request identifier." },
-                    { "name": "timestamp", "$ref": "Timestamp", "description": "Timestamp." },
+                    { "name": "timestamp", "$ref": "MonotonicTime", "description": "Timestamp." },
                     { "name": "encodedDataLength", "type": "number", "description": "Total number of bytes received for this request." }
                 ]
             },
@@ -1636,7 +1641,7 @@
                 "description": "Fired when HTTP request has failed to load.",
                 "parameters": [
                     { "name": "requestId", "$ref": "RequestId", "description": "Request identifier." },
-                    { "name": "timestamp", "$ref": "Timestamp", "description": "Timestamp." },
+                    { "name": "timestamp", "$ref": "MonotonicTime", "description": "Timestamp." },
                     { "name": "type", "$ref": "Page.ResourceType", "description": "Resource type." },
                     { "name": "errorText", "type": "string", "description": "User friendly error message." },
                     { "name": "canceled", "type": "boolean", "optional": true, "description": "True if loading was canceled." },
@@ -1648,8 +1653,8 @@
                 "description": "Fired when WebSocket is about to initiate handshake.",
                 "parameters": [
                     { "name": "requestId", "$ref": "RequestId", "description": "Request identifier." },
-                    { "name": "timestamp", "$ref": "Timestamp", "description": "Timestamp." },
-                    { "name": "wallTime", "$ref": "Timestamp", "experimental": true, "description": "UTC Timestamp." },
+                    { "name": "timestamp", "$ref": "MonotonicTime", "description": "Timestamp." },
+                    { "name": "wallTime", "$ref": "TimeSinceEpoch", "experimental": true, "description": "UTC Timestamp." },
                     { "name": "request", "$ref": "WebSocketRequest", "description": "WebSocket request data." }
                 ],
                 "experimental": true
@@ -1659,7 +1664,7 @@
                 "description": "Fired when WebSocket handshake response becomes available.",
                 "parameters": [
                     { "name": "requestId", "$ref": "RequestId", "description": "Request identifier." },
-                    { "name": "timestamp", "$ref": "Timestamp", "description": "Timestamp." },
+                    { "name": "timestamp", "$ref": "MonotonicTime", "description": "Timestamp." },
                     { "name": "response", "$ref": "WebSocketResponse", "description": "WebSocket response data." }
                 ],
                 "experimental": true
@@ -1679,7 +1684,7 @@
                 "description": "Fired when WebSocket is closed.",
                 "parameters": [
                     { "name": "requestId", "$ref": "RequestId", "description": "Request identifier." },
-                    { "name": "timestamp", "$ref": "Timestamp", "description": "Timestamp." }
+                    { "name": "timestamp", "$ref": "MonotonicTime", "description": "Timestamp." }
                 ],
                 "experimental": true
             },
@@ -1688,7 +1693,7 @@
                 "description": "Fired when WebSocket frame is received.",
                 "parameters": [
                     { "name": "requestId", "$ref": "RequestId", "description": "Request identifier." },
-                    { "name": "timestamp", "$ref": "Timestamp", "description": "Timestamp." },
+                    { "name": "timestamp", "$ref": "MonotonicTime", "description": "Timestamp." },
                     { "name": "response", "$ref": "WebSocketFrame", "description": "WebSocket response data." }
                 ],
                 "experimental": true
@@ -1698,7 +1703,7 @@
                 "description": "Fired when WebSocket frame error occurs.",
                 "parameters": [
                     { "name": "requestId", "$ref": "RequestId", "description": "Request identifier." },
-                    { "name": "timestamp", "$ref": "Timestamp", "description": "Timestamp." },
+                    { "name": "timestamp", "$ref": "MonotonicTime", "description": "Timestamp." },
                     { "name": "errorMessage", "type": "string", "description": "WebSocket frame error message." }
                 ],
                 "experimental": true
@@ -1708,7 +1713,7 @@
                 "description": "Fired when WebSocket frame is sent.",
                 "parameters": [
                     { "name": "requestId", "$ref": "RequestId", "description": "Request identifier." },
-                    { "name": "timestamp", "$ref": "Timestamp", "description": "Timestamp." },
+                    { "name": "timestamp", "$ref": "MonotonicTime", "description": "Timestamp." },
                     { "name": "response", "$ref": "WebSocketFrame", "description": "WebSocket response data." }
                 ],
                 "experimental": true
@@ -1718,7 +1723,7 @@
                 "description": "Fired when EventSource message is received.",
                 "parameters": [
                     { "name": "requestId", "$ref": "RequestId", "description": "Request identifier." },
-                    { "name": "timestamp", "$ref": "Timestamp", "description": "Timestamp." },
+                    { "name": "timestamp", "$ref": "MonotonicTime", "description": "Timestamp." },
                     { "name": "eventName", "type": "string", "description": "Message type." },
                     { "name": "eventId", "type": "string", "description": "Message identifier." },
                     { "name": "data", "type": "string", "description": "Message content." }
@@ -3908,6 +3913,11 @@
                 "type": "string",
                 "experimental": true,
                 "enum": ["default", "touch", "mouse"]
+            },
+            {
+                "id": "TimeSinceEpoch",
+                "type": "number",
+                "description": "UTC time in seconds, counted from January 1, 1970."
             }
         ],
         "commands": [
@@ -3923,7 +3933,7 @@
                 "parameters": [
                     { "name": "type", "type": "string", "enum": ["keyDown", "keyUp", "rawKeyDown", "char"], "description": "Type of the key event." },
                     { "name": "modifiers", "type": "integer", "optional": true, "description": "Bit field representing pressed modifier keys. Alt=1, Ctrl=2, Meta/Command=4, Shift=8 (default: 0)." },
-                    { "name": "timestamp", "type": "number", "optional": true, "description": "Time at which the event occurred. Measured in UTC time in seconds since January 1, 1970 (default: current time)." },
+                    { "name": "timestamp", "$ref": "TimeSinceEpoch", "optional": true, "description": "Time at which the event occurred." },
                     { "name": "text", "type": "string", "optional": true, "description": "Text as generated by processing a virtual key code with a keyboard layout. Not needed for for <code>keyUp</code> and <code>rawKeyDown</code> events (default: \"\")" },
                     { "name": "unmodifiedText", "type": "string", "optional": true, "description": "Text that would have been generated by the keyboard if no modifiers were pressed (except for shift). Useful for shortcut (accelerator) key handling (default: \"\")." },
                     { "name": "keyIdentifier", "type": "string", "optional": true, "description": "Unique key identifier (e.g., 'U+0041') (default: \"\")." },
@@ -3944,7 +3954,7 @@
                     { "name": "x", "type": "integer", "description": "X coordinate of the event relative to the main frame's viewport."},
                     { "name": "y", "type": "integer", "description": "Y coordinate of the event relative to the main frame's viewport. 0 refers to the top of the viewport and Y increases as it proceeds towards the bottom of the viewport."},
                     { "name": "modifiers", "type": "integer", "optional": true, "description": "Bit field representing pressed modifier keys. Alt=1, Ctrl=2, Meta/Command=4, Shift=8 (default: 0)." },
-                    { "name": "timestamp", "type": "number", "optional": true, "description": "Time at which the event occurred. Measured in UTC time in seconds since January 1, 1970 (default: current time)." },
+                    { "name": "timestamp", "$ref": "TimeSinceEpoch", "optional": true, "description": "Time at which the event occurred." },
                     { "name": "button", "type": "string", "enum": ["none", "left", "middle", "right"], "optional": true, "description": "Mouse button (default: \"none\")." },
                     { "name": "clickCount", "type": "integer", "optional": true, "description": "Number of times the mouse button was clicked (default: 0)." }
                 ],
@@ -3957,7 +3967,7 @@
                     { "name": "type", "type": "string", "enum": ["touchStart", "touchEnd", "touchMove"], "description": "Type of the touch event." },
                     { "name": "touchPoints", "type": "array", "items": { "$ref": "TouchPoint" }, "description": "Touch points." },
                     { "name": "modifiers", "type": "integer", "optional": true, "description": "Bit field representing pressed modifier keys. Alt=1, Ctrl=2, Meta/Command=4, Shift=8 (default: 0)." },
-                    { "name": "timestamp", "type": "number", "optional": true, "description": "Time at which the event occurred. Measured in UTC time in seconds since January 1, 1970 (default: current time)." }
+                    { "name": "timestamp", "$ref": "TimeSinceEpoch", "optional": true, "description": "Time at which the event occurred." }
                 ],
                 "description": "Dispatches a touch event to the page."
             },
@@ -3968,7 +3978,7 @@
                     { "name": "type", "type": "string", "enum": ["mousePressed", "mouseReleased", "mouseMoved", "mouseWheel"], "description": "Type of the mouse event." },
                     { "name": "x", "type": "integer", "description": "X coordinate of the mouse pointer in DIP."},
                     { "name": "y", "type": "integer", "description": "Y coordinate of the mouse pointer in DIP."},
-                    { "name": "timestamp", "type": "number", "description": "Time at which the event occurred. Measured in UTC time in seconds since January 1, 1970." },
+                    { "name": "timestamp", "$ref": "TimeSinceEpoch", "description": "Time at which the event occurred." },
                     { "name": "button", "type": "string", "enum": ["none", "left", "middle", "right"], "description": "Mouse button." },
                     { "name": "deltaX", "type": "number", "optional": true, "description": "X delta in DIP for mouse wheel event (default: 0)."},
                     { "name": "deltaY", "type": "number", "optional": true, "description": "Y delta in DIP for mouse wheel event (default: 0)."},
