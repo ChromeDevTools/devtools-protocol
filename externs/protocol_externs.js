@@ -1765,15 +1765,15 @@ Protocol.NetworkAgent.prototype.invoke_getCertificate = function(obj) {};
  * @param {boolean} enabled
  * @return {!Promise<undefined>}
  */
-Protocol.NetworkAgent.prototype.enableRequestInterception = function(enabled) {};
+Protocol.NetworkAgent.prototype.setRequestInterceptionEnabled = function(enabled) {};
 /** @typedef {!{enabled: boolean}} */
-Protocol.NetworkAgent.EnableRequestInterceptionRequest;
+Protocol.NetworkAgent.SetRequestInterceptionEnabledRequest;
 /** @typedef {Object|undefined} */
-Protocol.NetworkAgent.EnableRequestInterceptionResponse;
+Protocol.NetworkAgent.SetRequestInterceptionEnabledResponse;
 /**
- * @param {!Protocol.NetworkAgent.EnableRequestInterceptionRequest} obj
- * @return {!Promise<!Protocol.NetworkAgent.EnableRequestInterceptionResponse>} */
-Protocol.NetworkAgent.prototype.invoke_enableRequestInterception = function(obj) {};
+ * @param {!Protocol.NetworkAgent.SetRequestInterceptionEnabledRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.SetRequestInterceptionEnabledResponse>} */
+Protocol.NetworkAgent.prototype.invoke_setRequestInterceptionEnabled = function(obj) {};
 
 /**
  * @param {Protocol.Network.InterceptionId} interceptionId

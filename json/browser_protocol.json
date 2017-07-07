@@ -1579,7 +1579,7 @@
                 "experimental": true
             },
             {
-                "name": "enableRequestInterception",
+                "name": "setRequestInterceptionEnabled",
                 "parameters": [
                     { "name": "enabled", "type": "boolean", "description": "Whether or not HTTP requests should be intercepted and Network.requestIntercepted events sent." }
                 ],
