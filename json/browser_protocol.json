@@ -2637,13 +2637,14 @@
             {
                 "name": "resolveNode",
                 "parameters": [
-                    { "name": "nodeId", "$ref": "NodeId", "description": "Id of the node to resolve." },
+                    { "name": "nodeId", "$ref": "NodeId", "optional": true, "description": "Id of the node to resolve." },
+                    { "name": "backendNodeId", "$ref": "DOM.BackendNodeId", "optional": true, "description": "Backend identifier of the node to resolve." },
                     { "name": "objectGroup", "type": "string", "optional": true, "description": "Symbolic group name that can be used to release multiple objects." }
                 ],
                 "returns": [
                     { "name": "object", "$ref": "Runtime.RemoteObject", "description": "JavaScript object wrapper for given node." }
                 ],
-                "description": "Resolves JavaScript node object for given node id."
+                "description": "Resolves the JavaScript node object for a given NodeId or BackendNodeId."
             },
             {
                 "name": "getAttributes",

@@ -2949,12 +2949,13 @@ Protocol.DOMAgent.SetInspectedNodeResponse;
 Protocol.DOMAgent.prototype.invoke_setInspectedNode = function(obj) {};
 
 /**
- * @param {Protocol.DOM.NodeId} nodeId
+ * @param {Protocol.DOM.NodeId=} opt_nodeId
+ * @param {Protocol.DOM.BackendNodeId=} opt_backendNodeId
  * @param {string=} opt_objectGroup
  * @return {!Promise<?Protocol.Runtime.RemoteObject>}
  */
-Protocol.DOMAgent.prototype.resolveNode = function(nodeId, opt_objectGroup) {};
-/** @typedef {!{objectGroup: (string|undefined), nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.prototype.resolveNode = function(opt_nodeId, opt_backendNodeId, opt_objectGroup) {};
+/** @typedef {!{objectGroup: (string|undefined), nodeId: (Protocol.DOM.NodeId|undefined), backendNodeId: (Protocol.DOM.BackendNodeId|undefined)}} */
 Protocol.DOMAgent.ResolveNodeRequest;
 /** @typedef {!{object: Protocol.Runtime.RemoteObject}} */
 Protocol.DOMAgent.ResolveNodeResponse;
