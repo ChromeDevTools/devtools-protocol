@@ -386,7 +386,7 @@
                     { "name": "height", "type": "integer", "description": "Overriding height value in pixels (minimum 0, maximum 10000000). 0 disables the override." },
                     { "name": "deviceScaleFactor", "type": "number", "description": "Overriding device scale factor value. 0 disables the override." },
                     { "name": "mobile", "type": "boolean", "description": "Whether to emulate mobile device. This includes viewport meta tag, overlay scrollbars, text autosizing and more." },
-                    { "name": "fitWindow", "type": "boolean", "description": "Whether a view that exceeds the available browser window area should be scaled down to fit." },
+                    { "name": "fitWindow", "type": "boolean", "optional": true, "description": "Whether a view that exceeds the available browser window area should be scaled down to fit." },
                     { "name": "scale", "type": "number", "optional": true, "description": "Scale to apply to resulting view image. Ignored in |fitWindow| mode." },
                     { "name": "offsetX", "type": "number", "optional": true, "description": "X offset to shift resulting view image by. Ignored in |fitWindow| mode." },
                     { "name": "offsetY", "type": "number", "optional": true, "description": "Y offset to shift resulting view image by. Ignored in |fitWindow| mode." },
@@ -900,7 +900,7 @@
                     { "name": "height", "type": "integer", "description": "Overriding height value in pixels (minimum 0, maximum 10000000). 0 disables the override." },
                     { "name": "deviceScaleFactor", "type": "number", "description": "Overriding device scale factor value. 0 disables the override." },
                     { "name": "mobile", "type": "boolean", "description": "Whether to emulate mobile device. This includes viewport meta tag, overlay scrollbars, text autosizing and more." },
-                    { "name": "fitWindow", "type": "boolean", "description": "Whether a view that exceeds the available browser window area should be scaled down to fit." },
+                    { "name": "fitWindow", "type": "boolean", "optional": true, "description": "Whether a view that exceeds the available browser window area should be scaled down to fit." },
                     { "name": "scale", "type": "number", "optional": true, "experimental": true, "description": "Scale to apply to resulting view image. Ignored in |fitWindow| mode." },
                     { "name": "offsetX", "type": "number", "optional": true, "deprecated": true, "experimental": true, "description": "Not used." },
                     { "name": "offsetY", "type": "number", "optional": true, "deprecated": true, "experimental": true, "description": "Not used." },
@@ -914,21 +914,6 @@
             {
                 "name": "clearDeviceMetricsOverride",
                 "description": "Clears the overriden device metrics."
-            },
-            {
-                "name": "forceViewport",
-                "description": "Overrides the visible area of the page. The change is hidden from the page, i.e. the observable scroll position and page scale does not change. In effect, the command moves the specified area of the page into the top-left corner of the frame.",
-                "experimental": true,
-                "parameters": [
-                    { "name": "x", "type": "number", "description": "X coordinate of top-left corner of the area (CSS pixels)." },
-                    { "name": "y", "type": "number", "description": "Y coordinate of top-left corner of the area (CSS pixels)." },
-                    { "name": "scale", "type": "number", "description": "Scale to apply to the area (relative to a page scale of 1.0)." }
-                ]
-            },
-            {
-                "name": "resetViewport",
-                "description": "Resets the visible area of the page to the original viewport, undoing any effects of the <code>forceViewport</code> command.",
-                "experimental": true
             },
             {
                 "name": "resetPageScaleFactor",
@@ -945,8 +930,9 @@
             },
             {
                 "name": "setVisibleSize",
-                "description": "Resizes the frame/viewport of the page. Note that this does not affect the frame's container (e.g. browser window). Can be used to produce screenshots of the specified size. Not supported on Android.",
+                "description": "Deprecated, does nothing. Please use setDeviceMetricsOverride instead.",
                 "experimental": true,
+                "deprecated": true,
                 "parameters": [
                     { "name": "width", "type": "integer", "description": "Frame width (DIP)." },
                     { "name": "height", "type": "integer", "description": "Frame height (DIP)." }
