@@ -35,11 +35,12 @@ python "$chromium_src_path/third_party/WebKit/Source/devtools/scripts/build/gene
 # => cd into protocol repo
 cd "$protocol_repo_path" || exit 1
 
-# commit and push
-git commit --author="DevTools Bot <paulirish+bot@google.com>" --all -m "Roll protocol to r$commit_rev"
-
+# commit, push and publish, but only if there's a diff. ;)
 if ! git diff --no-ext-diff --quiet --ignore-submodules --exit-code; then
 	# dirty repo, ready to commit.
-	git pull && git push
+	
 	. publish-to-npm.sh "$commit_rev"
+	git commit --author="DevTools Bot <paulirish+bot@google.com>" --all -m "Roll protocol to r$commit_rev"
+	git pull && git push
+	
 fi
