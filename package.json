@@ -1,0 +1,11 @@
+{
+  "name": "devtools-protocol",
+  "version": "0.0.112233",
+  "description": "The Chrome DevTools Protocol JSON",
+  "repository": "https://github.com/ChromeDevTools/devtools-protocol",
+  "author": "The Chromium Authors",
+  "license": "SEE LICENSE IN https://chromium.googlesource.com/chromium/src/+/master/LICENSE",
+  "bugs": {
+    "url": "https://github.com/ChromeDevTools/devtools-protocol/issues"
+  }
+}
