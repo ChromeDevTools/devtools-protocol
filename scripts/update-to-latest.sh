@@ -37,4 +37,9 @@ cd "$protocol_repo_path" || exit 1
 
 # commit and push
 git commit --author="DevTools Bot <paulirish+bot@google.com>" --all -m "Roll protocol to r$commit_rev"
-git pull && git push
+
+if ! git diff --no-ext-diff --quiet --ignore-submodules --exit-code; then
+	# dirty repo, ready to commit.
+	git pull && git push
+	. publish-to-npm.sh "$commit_rev"
+fi
