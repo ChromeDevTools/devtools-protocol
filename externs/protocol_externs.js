@@ -473,11 +473,12 @@ Protocol.PageAgent.prototype.invoke_setTouchEmulationEnabled = function(obj) {};
 /**
  * @param {string=} opt_format
  * @param {number=} opt_quality
+ * @param {Protocol.Page.Viewport=} opt_clip
  * @param {boolean=} opt_fromSurface
  * @return {!Promise<?string>}
  */
-Protocol.PageAgent.prototype.captureScreenshot = function(opt_format, opt_quality, opt_fromSurface) {};
-/** @typedef {!{fromSurface: (boolean|undefined), quality: (number|undefined), format: (string|undefined)}} */
+Protocol.PageAgent.prototype.captureScreenshot = function(opt_format, opt_quality, opt_clip, opt_fromSurface) {};
+/** @typedef {!{fromSurface: (boolean|undefined), quality: (number|undefined), clip: (Protocol.Page.Viewport|undefined), format: (string|undefined)}} */
 Protocol.PageAgent.CaptureScreenshotRequest;
 /** @typedef {!{data: string}} */
 Protocol.PageAgent.CaptureScreenshotResponse;
@@ -731,6 +732,9 @@ Protocol.Page.LayoutViewport;
 
 /** @typedef {!{offsetX:(number), offsetY:(number), pageX:(number), pageY:(number), clientWidth:(number), clientHeight:(number), scale:(number)}} */
 Protocol.Page.VisualViewport;
+
+/** @typedef {!{x:(number), y:(number), width:(number), height:(number), scale:(number)}} */
+Protocol.Page.Viewport;
 /** @interface */
 Protocol.PageDispatcher = function() {};
 /**

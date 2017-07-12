@@ -213,6 +213,19 @@
                     { "name": "clientHeight", "type": "number", "description": "Height (CSS pixels), excludes scrollbar if present." },
                     { "name": "scale", "type": "number", "description": "Scale relative to the ideal viewport (size at width=device-width)." }
                 ]
+            },
+            {
+                "id": "Viewport",
+                "type": "object",
+                "description": "Viewport for capturing screenshot.",
+                "experimental": true,
+                "properties": [
+                    { "name": "x", "type": "number", "description": "X offset in CSS pixels." },
+                    { "name": "y", "type": "number", "description": "Y offset in CSS pixels" },
+                    { "name": "width", "type": "number", "description": "Rectangle width in CSS pixels" },
+                    { "name": "height", "type": "number", "description": "Rectangle height in CSS pixels" },
+                    { "name": "scale", "type": "number", "description": "Page scale factor." }
+                ]
             }
         ],
         "commands": [
@@ -453,6 +466,7 @@
                 "parameters": [
                     { "name": "format", "type": "string", "optional": true, "enum": ["jpeg", "png"], "description": "Image compression format (defaults to png)." },
                     { "name": "quality", "type": "integer", "optional": true, "description": "Compression quality from range [0..100] (jpeg only)." },
+                    { "name": "clip", "$ref": "Viewport", "optional": true, "description": "Capture the screenshot of a given region only.", "experimental": true },
                     { "name": "fromSurface", "type": "boolean", "optional": true, "description": "Capture the screenshot from the surface, rather than the view. Defaults to true.", "experimental": true }
                 ],
                 "returns": [
