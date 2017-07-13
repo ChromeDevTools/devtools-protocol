@@ -3025,11 +3025,13 @@ Protocol.DOMAgent.MarkUndoableStateResponse;
 Protocol.DOMAgent.prototype.invoke_markUndoableState = function(obj) {};
 
 /**
- * @param {Protocol.DOM.NodeId} nodeId
+ * @param {Protocol.DOM.NodeId=} opt_nodeId
+ * @param {Protocol.DOM.BackendNodeId=} opt_backendNodeId
+ * @param {Protocol.Runtime.RemoteObjectId=} opt_objectId
  * @return {!Promise<undefined>}
  */
-Protocol.DOMAgent.prototype.focus = function(nodeId) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.prototype.focus = function(opt_nodeId, opt_backendNodeId, opt_objectId) {};
+/** @typedef {!{objectId: (Protocol.Runtime.RemoteObjectId|undefined), nodeId: (Protocol.DOM.NodeId|undefined), backendNodeId: (Protocol.DOM.BackendNodeId|undefined)}} */
 Protocol.DOMAgent.FocusRequest;
 /** @typedef {Object|undefined} */
 Protocol.DOMAgent.FocusResponse;
@@ -3039,12 +3041,14 @@ Protocol.DOMAgent.FocusResponse;
 Protocol.DOMAgent.prototype.invoke_focus = function(obj) {};
 
 /**
- * @param {Protocol.DOM.NodeId} nodeId
  * @param {!Array<string>} files
+ * @param {Protocol.DOM.NodeId=} opt_nodeId
+ * @param {Protocol.DOM.BackendNodeId=} opt_backendNodeId
+ * @param {Protocol.Runtime.RemoteObjectId=} opt_objectId
  * @return {!Promise<undefined>}
  */
-Protocol.DOMAgent.prototype.setFileInputFiles = function(nodeId, files) {};
-/** @typedef {!{files: !Array<string>, nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.prototype.setFileInputFiles = function(files, opt_nodeId, opt_backendNodeId, opt_objectId) {};
+/** @typedef {!{files: !Array<string>, objectId: (Protocol.Runtime.RemoteObjectId|undefined), nodeId: (Protocol.DOM.NodeId|undefined), backendNodeId: (Protocol.DOM.BackendNodeId|undefined)}} */
 Protocol.DOMAgent.SetFileInputFilesRequest;
 /** @typedef {Object|undefined} */
 Protocol.DOMAgent.SetFileInputFilesResponse;
@@ -3054,11 +3058,13 @@ Protocol.DOMAgent.SetFileInputFilesResponse;
 Protocol.DOMAgent.prototype.invoke_setFileInputFiles = function(obj) {};
 
 /**
- * @param {Protocol.DOM.NodeId} nodeId
+ * @param {Protocol.DOM.NodeId=} opt_nodeId
+ * @param {Protocol.DOM.BackendNodeId=} opt_backendNodeId
+ * @param {Protocol.Runtime.RemoteObjectId=} opt_objectId
  * @return {!Promise<?Protocol.DOM.BoxModel>}
  */
-Protocol.DOMAgent.prototype.getBoxModel = function(nodeId) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.prototype.getBoxModel = function(opt_nodeId, opt_backendNodeId, opt_objectId) {};
+/** @typedef {!{objectId: (Protocol.Runtime.RemoteObjectId|undefined), nodeId: (Protocol.DOM.NodeId|undefined), backendNodeId: (Protocol.DOM.BackendNodeId|undefined)}} */
 Protocol.DOMAgent.GetBoxModelRequest;
 /** @typedef {!{model: Protocol.DOM.BoxModel}} */
 Protocol.DOMAgent.GetBoxModelResponse;

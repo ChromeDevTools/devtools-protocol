@@ -2699,7 +2699,9 @@
             {
                 "name": "focus",
                 "parameters": [
-                    { "name": "nodeId", "$ref": "NodeId", "description": "Id of the node to focus." }
+                    { "name": "nodeId", "$ref": "NodeId", "optional": true, "description": "Identifier of the node." },
+                    { "name": "backendNodeId", "$ref": "BackendNodeId", "optional": true, "description": "Identifier of the backend node." },
+                    { "name": "objectId", "$ref": "Runtime.RemoteObjectId", "optional": true, "description": "JavaScript object id of the node wrapper." }
                 ],
                 "description": "Focuses the given element.",
                 "experimental": true
@@ -2707,8 +2709,10 @@
             {
                 "name": "setFileInputFiles",
                 "parameters": [
-                    { "name": "nodeId", "$ref": "NodeId", "description": "Id of the file input node to set files for." },
-                    { "name": "files", "type": "array", "items": { "type": "string" }, "description": "Array of file paths to set." }
+                    { "name": "files", "type": "array", "items": { "type": "string" }, "description": "Array of file paths to set." },
+                    { "name": "nodeId", "$ref": "NodeId", "optional": true, "description": "Identifier of the node." },
+                    { "name": "backendNodeId", "$ref": "BackendNodeId", "optional": true, "description": "Identifier of the backend node." },
+                    { "name": "objectId", "$ref": "Runtime.RemoteObjectId", "optional": true, "description": "JavaScript object id of the node wrapper." }
                 ],
                 "description": "Sets files for the given file input element.",
                 "experimental": true
@@ -2716,7 +2720,9 @@
             {
                 "name": "getBoxModel",
                 "parameters": [
-                    { "name": "nodeId", "$ref": "NodeId", "description": "Id of the node to get box model for." }
+                    { "name": "nodeId", "$ref": "NodeId", "optional": true, "description": "Identifier of the node." },
+                    { "name": "backendNodeId", "$ref": "BackendNodeId", "optional": true, "description": "Identifier of the backend node." },
+                    { "name": "objectId", "$ref": "Runtime.RemoteObjectId", "optional": true, "description": "JavaScript object id of the node wrapper." }
                 ],
                 "returns": [
                     { "name": "model", "$ref": "BoxModel", "description": "Box model for the node." }
