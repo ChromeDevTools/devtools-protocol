@@ -3602,6 +3602,11 @@
                 "type": "string"
             },
             {
+                "id": "SessionID",
+                "type": "string",
+                "description": "Unique identifier of attached debugging session."
+            },
+            {
                 "id": "BrowserContextID",
                 "type": "string"
             },
@@ -3656,10 +3661,11 @@
             },
             {
                 "name": "sendMessageToTarget",
-                "description": "Sends protocol message to the target with given id.",
+                "description": "Sends protocol message over session with given id.",
                 "parameters": [
-                    { "name": "targetId", "$ref": "TargetID" },
-                    { "name": "message", "type": "string" }
+                    { "name": "message", "type": "string" },
+                    { "name": "sessionId", "$ref": "SessionID", "optional": true, "description": "Identifier of the session." },
+                    { "name": "targetId", "$ref": "TargetID", "optional": true, "deprecated": true, "description": "Deprecated." }
                 ]
             },
             {
@@ -3696,14 +3702,15 @@
                     { "name": "targetId", "$ref": "TargetID" }
                 ],
                 "returns": [
-                    { "name": "success", "type": "boolean", "description": "Whether attach succeeded." }
+                    { "name": "sessionId", "$ref": "SessionID", "description": "Id assigned to the session." }
                 ]
             },
             {
                 "name": "detachFromTarget",
-                "description": "Detaches from the target with given id.",
+                "description": "Detaches session with given id.",
                 "parameters": [
-                    { "name": "targetId", "$ref": "TargetID" }
+                    { "name": "sessionId", "$ref": "SessionID", "optional": true, "description": "Session to detach." },
+                    { "name": "targetId", "$ref": "TargetID", "optional": true, "deprecated": true, "description": "Deprecated." }
                 ]
             },
             {
@@ -3770,23 +3777,26 @@
                 "name": "attachedToTarget",
                 "description": "Issued when attached to target because of auto-attach or <code>attachToTarget</code> command.",
                 "parameters": [
+                    { "name": "sessionId", "$ref": "SessionID", "description": "Identifier assigned to the session used to send/receive messages." },
                     { "name": "targetInfo", "$ref": "TargetInfo" },
                     { "name": "waitingForDebugger", "type": "boolean" }
                 ]
             },
             {
                 "name": "detachedFromTarget",
-                "description": "Issued when detached from target for any reason (including <code>detachFromTarget</code> command).",
+                "description": "Issued when detached from target for any reason (including <code>detachFromTarget</code> command). Can be issued multiple times per target if multiple sessions have been attached to it.",
                 "parameters": [
-                    { "name": "targetId", "$ref": "TargetID" }
+                    { "name": "sessionId", "$ref": "SessionID", "description": "Detached session identifier." },
+                    { "name": "targetId", "$ref": "TargetID", "optional": true, "deprecated": true, "description": "Deprecated." }
                 ]
             },
             {
                 "name": "receivedMessageFromTarget",
-                "description": "Notifies about new protocol message from attached target.",
+                "description": "Notifies about a new protocol message received from the session (as reported in <code>attachedToTarget</code> event).",
                 "parameters": [
-                    { "name": "targetId", "$ref": "TargetID" },
-                    { "name": "message", "type": "string" }
+                    { "name": "sessionId", "$ref": "SessionID", "description": "Identifier of a session which sends a message." },
+                    { "name": "message", "type": "string" },
+                    { "name": "targetId", "$ref": "TargetID", "optional": true, "deprecated": true, "description": "Deprecated." }
                 ]
             }
         ]

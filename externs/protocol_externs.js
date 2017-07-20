@@ -3938,12 +3938,13 @@ Protocol.TargetAgent.SetRemoteLocationsResponse;
 Protocol.TargetAgent.prototype.invoke_setRemoteLocations = function(obj) {};
 
 /**
- * @param {Protocol.Target.TargetID} targetId
  * @param {string} message
+ * @param {Protocol.Target.SessionID=} opt_sessionId
+ * @param {Protocol.Target.TargetID=} opt_targetId
  * @return {!Promise<undefined>}
  */
-Protocol.TargetAgent.prototype.sendMessageToTarget = function(targetId, message) {};
-/** @typedef {!{message: string, targetId: Protocol.Target.TargetID}} */
+Protocol.TargetAgent.prototype.sendMessageToTarget = function(message, opt_sessionId, opt_targetId) {};
+/** @typedef {!{message: string, targetId: (Protocol.Target.TargetID|undefined), sessionId: (Protocol.Target.SessionID|undefined)}} */
 Protocol.TargetAgent.SendMessageToTargetRequest;
 /** @typedef {Object|undefined} */
 Protocol.TargetAgent.SendMessageToTargetResponse;
@@ -3996,12 +3997,12 @@ Protocol.TargetAgent.prototype.invoke_closeTarget = function(obj) {};
 
 /**
  * @param {Protocol.Target.TargetID} targetId
- * @return {!Promise<?boolean>}
+ * @return {!Promise<?Protocol.Target.SessionID>}
  */
 Protocol.TargetAgent.prototype.attachToTarget = function(targetId) {};
 /** @typedef {!{targetId: Protocol.Target.TargetID}} */
 Protocol.TargetAgent.AttachToTargetRequest;
-/** @typedef {!{success: boolean}} */
+/** @typedef {!{sessionId: Protocol.Target.SessionID}} */
 Protocol.TargetAgent.AttachToTargetResponse;
 /**
  * @param {!Protocol.TargetAgent.AttachToTargetRequest} obj
@@ -4009,11 +4010,12 @@ Protocol.TargetAgent.AttachToTargetResponse;
 Protocol.TargetAgent.prototype.invoke_attachToTarget = function(obj) {};
 
 /**
- * @param {Protocol.Target.TargetID} targetId
+ * @param {Protocol.Target.SessionID=} opt_sessionId
+ * @param {Protocol.Target.TargetID=} opt_targetId
  * @return {!Promise<undefined>}
  */
-Protocol.TargetAgent.prototype.detachFromTarget = function(targetId) {};
-/** @typedef {!{targetId: Protocol.Target.TargetID}} */
+Protocol.TargetAgent.prototype.detachFromTarget = function(opt_sessionId, opt_targetId) {};
+/** @typedef {!{sessionId: (Protocol.Target.SessionID|undefined), targetId: (Protocol.Target.TargetID|undefined)}} */
 Protocol.TargetAgent.DetachFromTargetRequest;
 /** @typedef {Object|undefined} */
 Protocol.TargetAgent.DetachFromTargetResponse;
@@ -4083,6 +4085,9 @@ Protocol.TargetAgent.prototype.invoke_getTargets = function(obj) {};
 Protocol.Target.TargetID;
 
 /** @typedef {string} */
+Protocol.Target.SessionID;
+
+/** @typedef {string} */
 Protocol.Target.BrowserContextID;
 
 /** @typedef {!{targetId:(Protocol.Target.TargetID), type:(string), title:(string), url:(string), attached:(boolean)}} */
@@ -4105,19 +4110,22 @@ Protocol.TargetDispatcher.prototype.targetInfoChanged = function(targetInfo) {};
  */
 Protocol.TargetDispatcher.prototype.targetDestroyed = function(targetId) {};
 /**
+ * @param {Protocol.Target.SessionID} sessionId
  * @param {Protocol.Target.TargetInfo} targetInfo
  * @param {boolean} waitingForDebugger
  */
-Protocol.TargetDispatcher.prototype.attachedToTarget = function(targetInfo, waitingForDebugger) {};
+Protocol.TargetDispatcher.prototype.attachedToTarget = function(sessionId, targetInfo, waitingForDebugger) {};
 /**
- * @param {Protocol.Target.TargetID} targetId
+ * @param {Protocol.Target.SessionID} sessionId
+ * @param {Protocol.Target.TargetID=} opt_targetId
  */
-Protocol.TargetDispatcher.prototype.detachedFromTarget = function(targetId) {};
+Protocol.TargetDispatcher.prototype.detachedFromTarget = function(sessionId, opt_targetId) {};
 /**
- * @param {Protocol.Target.TargetID} targetId
+ * @param {Protocol.Target.SessionID} sessionId
  * @param {string} message
+ * @param {Protocol.Target.TargetID=} opt_targetId
  */
-Protocol.TargetDispatcher.prototype.receivedMessageFromTarget = function(targetId, message) {};
+Protocol.TargetDispatcher.prototype.receivedMessageFromTarget = function(sessionId, message, opt_targetId) {};
 Protocol.ServiceWorker = {};
 
 
