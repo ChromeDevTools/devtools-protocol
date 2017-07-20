@@ -363,19 +363,17 @@ Protocol.PageAgent.prototype.invoke_setDocumentContent = function(obj) {};
  * @param {number} height
  * @param {number} deviceScaleFactor
  * @param {boolean} mobile
- * @param {boolean=} opt_fitWindow
  * @param {number=} opt_scale
- * @param {number=} opt_offsetX
- * @param {number=} opt_offsetY
  * @param {number=} opt_screenWidth
  * @param {number=} opt_screenHeight
  * @param {number=} opt_positionX
  * @param {number=} opt_positionY
+ * @param {boolean=} opt_dontSetVisibleSize
  * @param {Protocol.Emulation.ScreenOrientation=} opt_screenOrientation
  * @return {!Promise<undefined>}
  */
-Protocol.PageAgent.prototype.setDeviceMetricsOverride = function(width, height, deviceScaleFactor, mobile, opt_fitWindow, opt_scale, opt_offsetX, opt_offsetY, opt_screenWidth, opt_screenHeight, opt_positionX, opt_positionY, opt_screenOrientation) {};
-/** @typedef {!{deviceScaleFactor: number, positionX: (number|undefined), scale: (number|undefined), screenHeight: (number|undefined), mobile: boolean, offsetX: (number|undefined), screenOrientation: (Protocol.Emulation.ScreenOrientation|undefined), fitWindow: (boolean|undefined), offsetY: (number|undefined), height: number, width: number, positionY: (number|undefined), screenWidth: (number|undefined)}} */
+Protocol.PageAgent.prototype.setDeviceMetricsOverride = function(width, height, deviceScaleFactor, mobile, opt_scale, opt_screenWidth, opt_screenHeight, opt_positionX, opt_positionY, opt_dontSetVisibleSize, opt_screenOrientation) {};
+/** @typedef {!{deviceScaleFactor: number, positionX: (number|undefined), scale: (number|undefined), screenHeight: (number|undefined), mobile: boolean, screenOrientation: (Protocol.Emulation.ScreenOrientation|undefined), dontSetVisibleSize: (boolean|undefined), height: number, width: number, positionY: (number|undefined), screenWidth: (number|undefined)}} */
 Protocol.PageAgent.SetDeviceMetricsOverrideRequest;
 /** @typedef {Object|undefined} */
 Protocol.PageAgent.SetDeviceMetricsOverrideResponse;
@@ -1080,19 +1078,17 @@ Protocol.EmulationAgent = function(){};
  * @param {number} height
  * @param {number} deviceScaleFactor
  * @param {boolean} mobile
- * @param {boolean=} opt_fitWindow
  * @param {number=} opt_scale
- * @param {number=} opt_offsetX
- * @param {number=} opt_offsetY
  * @param {number=} opt_screenWidth
  * @param {number=} opt_screenHeight
  * @param {number=} opt_positionX
  * @param {number=} opt_positionY
+ * @param {boolean=} opt_dontSetVisibleSize
  * @param {Protocol.Emulation.ScreenOrientation=} opt_screenOrientation
  * @return {!Promise<undefined>}
  */
-Protocol.EmulationAgent.prototype.setDeviceMetricsOverride = function(width, height, deviceScaleFactor, mobile, opt_fitWindow, opt_scale, opt_offsetX, opt_offsetY, opt_screenWidth, opt_screenHeight, opt_positionX, opt_positionY, opt_screenOrientation) {};
-/** @typedef {!{deviceScaleFactor: number, positionX: (number|undefined), scale: (number|undefined), screenHeight: (number|undefined), mobile: boolean, offsetX: (number|undefined), screenOrientation: (Protocol.Emulation.ScreenOrientation|undefined), fitWindow: (boolean|undefined), offsetY: (number|undefined), height: number, width: number, positionY: (number|undefined), screenWidth: (number|undefined)}} */
+Protocol.EmulationAgent.prototype.setDeviceMetricsOverride = function(width, height, deviceScaleFactor, mobile, opt_scale, opt_screenWidth, opt_screenHeight, opt_positionX, opt_positionY, opt_dontSetVisibleSize, opt_screenOrientation) {};
+/** @typedef {!{deviceScaleFactor: number, positionX: (number|undefined), scale: (number|undefined), screenHeight: (number|undefined), mobile: boolean, screenOrientation: (Protocol.Emulation.ScreenOrientation|undefined), dontSetVisibleSize: (boolean|undefined), height: number, width: number, positionY: (number|undefined), screenWidth: (number|undefined)}} */
 Protocol.EmulationAgent.SetDeviceMetricsOverrideRequest;
 /** @typedef {Object|undefined} */
 Protocol.EmulationAgent.SetDeviceMetricsOverrideResponse;
