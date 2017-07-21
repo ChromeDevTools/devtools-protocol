@@ -92,7 +92,7 @@
                     { "name": "url", "type": "string", "description": "Frame document's URL." },
                     { "name": "securityOrigin", "type": "string", "description": "Frame document's security origin." },
                     { "name": "mimeType", "type": "string", "description": "Frame document's mimeType as determined by the browser." },
-                    { "name": "unreachableUrl", "type": "string", "optional": "true", "experimental": "true", "description": "If the frame failed to load, this contains the URL that could not be loaded." }
+                    { "name": "unreachableUrl", "type": "string", "optional": true, "experimental": true, "description": "If the frame failed to load, this contains the URL that could not be loaded." }
                ]
             },
             {
