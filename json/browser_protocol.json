@@ -2025,6 +2025,15 @@
                     { "name": "securityOrigin", "type": "string", "description": "Security origin of the cache." },
                     { "name": "cacheName", "type": "string", "description": "The name of the cache." }
                 ]
+            },
+            {
+                "id": "CachedResponse",
+                "type": "object",
+                "description": "Cached response",
+                "properties": [
+                    { "name": "headers", "type": "object", "description": "Response headers" },
+                    { "name": "body", "type": "string", "description": "Entry content, base64-encoded." }
+                ]
             }
         ],
         "commands": [
@@ -2065,6 +2074,17 @@
                     { "name": "request", "type": "string", "description": "URL spec of the request." }
                 ],
                 "description": "Deletes a cache entry."
+            },
+            {
+                "name": "requestCachedResponse",
+                "parameters": [
+                    { "name": "cacheId", "$ref": "CacheId", "description": "Id of cache that contains the enty." },
+                    { "name": "requestURL", "type": "string", "description": "URL spec of the request." }
+                ],
+                "returns": [
+                    { "name": "response", "$ref": "CachedResponse", "description": "Response read from the cache."}
+                ],
+                "description": "Fetches cache entry."
             }
         ]
     },

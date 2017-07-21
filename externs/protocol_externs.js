@@ -2322,6 +2322,21 @@ Protocol.CacheStorageAgent.DeleteEntryResponse;
  * @return {!Promise<!Protocol.CacheStorageAgent.DeleteEntryResponse>} */
 Protocol.CacheStorageAgent.prototype.invoke_deleteEntry = function(obj) {};
 
+/**
+ * @param {Protocol.CacheStorage.CacheId} cacheId
+ * @param {string} requestURL
+ * @return {!Promise<?Protocol.CacheStorage.CachedResponse>}
+ */
+Protocol.CacheStorageAgent.prototype.requestCachedResponse = function(cacheId, requestURL) {};
+/** @typedef {!{cacheId: Protocol.CacheStorage.CacheId, requestURL: string}} */
+Protocol.CacheStorageAgent.RequestCachedResponseRequest;
+/** @typedef {!{response: Protocol.CacheStorage.CachedResponse}} */
+Protocol.CacheStorageAgent.RequestCachedResponseResponse;
+/**
+ * @param {!Protocol.CacheStorageAgent.RequestCachedResponseRequest} obj
+ * @return {!Promise<!Protocol.CacheStorageAgent.RequestCachedResponseResponse>} */
+Protocol.CacheStorageAgent.prototype.invoke_requestCachedResponse = function(obj) {};
+
 /** @typedef {string} */
 Protocol.CacheStorage.CacheId;
 
@@ -2330,6 +2345,9 @@ Protocol.CacheStorage.DataEntry;
 
 /** @typedef {!{cacheId:(Protocol.CacheStorage.CacheId), securityOrigin:(string), cacheName:(string)}} */
 Protocol.CacheStorage.Cache;
+
+/** @typedef {!{headers:(!Object), body:(string)}} */
+Protocol.CacheStorage.CachedResponse;
 /** @interface */
 Protocol.CacheStorageDispatcher = function() {};
 Protocol.DOMStorage = {};
