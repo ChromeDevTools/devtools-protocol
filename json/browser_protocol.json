@@ -3470,6 +3470,7 @@
     {
         "domain": "IO",
         "description": "Input/Output operations for streams produced by DevTools.",
+        "dependencies": ["Runtime"],
         "experimental": true,
         "types": [
             {
@@ -3497,6 +3498,16 @@
                 "parameters": [
                     { "name": "handle", "$ref": "StreamHandle", "description": "Handle of the stream to close." }
                 ]
+            },
+            {
+                "name": "resolveBlob",
+                "parameters": [
+                    { "name": "objectId", "$ref": "Runtime.RemoteObjectId", "description": "Object id of a Blob object wrapper." }
+                ],
+                "returns": [
+                    { "name": "uuid", "type": "string", "description": "UUID of the specified Blob." }
+                ],
+                "description": "Return UUID of Blob object specified by a remote object id."
             }
         ]
     },

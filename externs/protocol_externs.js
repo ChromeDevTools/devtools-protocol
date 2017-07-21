@@ -3731,6 +3731,20 @@ Protocol.IOAgent.CloseResponse;
  * @return {!Promise<!Protocol.IOAgent.CloseResponse>} */
 Protocol.IOAgent.prototype.invoke_close = function(obj) {};
 
+/**
+ * @param {Protocol.Runtime.RemoteObjectId} objectId
+ * @return {!Promise<?string>}
+ */
+Protocol.IOAgent.prototype.resolveBlob = function(objectId) {};
+/** @typedef {!{objectId: Protocol.Runtime.RemoteObjectId}} */
+Protocol.IOAgent.ResolveBlobRequest;
+/** @typedef {!{uuid: string}} */
+Protocol.IOAgent.ResolveBlobResponse;
+/**
+ * @param {!Protocol.IOAgent.ResolveBlobRequest} obj
+ * @return {!Promise<!Protocol.IOAgent.ResolveBlobResponse>} */
+Protocol.IOAgent.prototype.invoke_resolveBlob = function(obj) {};
+
 /** @typedef {string} */
 Protocol.IO.StreamHandle;
 /** @interface */
