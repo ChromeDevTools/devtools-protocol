@@ -639,7 +639,8 @@
                 "description": "Fired when frame schedules a potential navigation.",
                 "parameters": [
                     { "name": "frameId", "$ref": "FrameId", "description": "Id of the frame that has scheduled a navigation." },
-                    { "name": "delay", "type": "number", "description": "Delay (in seconds) until the navigation is scheduled to begin. The navigation is not guaranteed to start." }
+                    { "name": "delay", "type": "number", "description": "Delay (in seconds) until the navigation is scheduled to begin. The navigation is not guaranteed to start." },
+                    { "name": "reason", "type": "string", "experimental": true, "enum": ["formSubmission", "httpHeaderRefresh", "scriptInitiated", "metaTagRefresh", "pageBlockInterstitial", "reload"], "description": "The reason for the navigation." }
                 ],
                 "experimental": true
             },
@@ -3470,12 +3471,12 @@
     {
         "domain": "IO",
         "description": "Input/Output operations for streams produced by DevTools.",
-        "dependencies": ["Runtime"],
         "experimental": true,
         "types": [
             {
                 "id": "StreamHandle",
-                "type": "string"
+                "type": "string",
+                "description": "This is either obtained from another method or specifed as <code>blob:&lt;uuid&gt;</code> where <code>&lt;uuid&gt</code> is an UUID of a Blob."
             }
         ],
         "commands": [
@@ -3488,6 +3489,7 @@
                     { "name": "size", "type": "integer", "optional": true,  "description": "Maximum number of bytes to read (left upon the agent discretion if not specified)." }
                 ],
                 "returns": [
+                    { "name": "base64Encoded", "type": "boolean", "optional": true, "description": "Set if the data is base64-encoded"},
                     { "name": "data", "type": "string", "description": "Data that were read." },
                     { "name": "eof", "type": "boolean", "description": "Set if the end-of-file condition occured while reading." }
                 ]

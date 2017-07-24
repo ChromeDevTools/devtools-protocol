@@ -769,8 +769,9 @@ Protocol.PageDispatcher.prototype.frameStoppedLoading = function(frameId) {};
 /**
  * @param {Protocol.Page.FrameId} frameId
  * @param {number} delay
+ * @param {string} reason
  */
-Protocol.PageDispatcher.prototype.frameScheduledNavigation = function(frameId, delay) {};
+Protocol.PageDispatcher.prototype.frameScheduledNavigation = function(frameId, delay, reason) {};
 /**
  * @param {Protocol.Page.FrameId} frameId
  */
@@ -3705,12 +3706,12 @@ Protocol.IOAgent = function(){};
  * @param {Protocol.IO.StreamHandle} handle
  * @param {number=} opt_offset
  * @param {number=} opt_size
- * @return {!Promise<?string>}
+ * @return {!Promise<?boolean>}
  */
 Protocol.IOAgent.prototype.read = function(handle, opt_offset, opt_size) {};
 /** @typedef {!{size: (number|undefined), handle: Protocol.IO.StreamHandle, offset: (number|undefined)}} */
 Protocol.IOAgent.ReadRequest;
-/** @typedef {!{data: string, eof: boolean}} */
+/** @typedef {!{data: string, base64Encoded: boolean, eof: boolean}} */
 Protocol.IOAgent.ReadResponse;
 /**
  * @param {!Protocol.IOAgent.ReadRequest} obj
