@@ -654,6 +654,19 @@ Protocol.PageAgent.CreateIsolatedWorldResponse;
  * @return {!Promise<!Protocol.PageAgent.CreateIsolatedWorldResponse>} */
 Protocol.PageAgent.prototype.invoke_createIsolatedWorld = function(obj) {};
 
+/**
+ * @return {!Promise<undefined>}
+ */
+Protocol.PageAgent.prototype.bringToFront = function() {};
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.BringToFrontRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.BringToFrontResponse;
+/**
+ * @param {!Protocol.PageAgent.BringToFrontRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.BringToFrontResponse>} */
+Protocol.PageAgent.prototype.invoke_bringToFront = function(obj) {};
+
 /** @enum {string} */
 Protocol.Page.ResourceType = {
     Document: "Document",
