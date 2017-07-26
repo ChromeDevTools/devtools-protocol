@@ -783,8 +783,9 @@ Protocol.PageDispatcher.prototype.frameStoppedLoading = function(frameId) {};
  * @param {Protocol.Page.FrameId} frameId
  * @param {number} delay
  * @param {string} reason
+ * @param {string} url
  */
-Protocol.PageDispatcher.prototype.frameScheduledNavigation = function(frameId, delay, reason) {};
+Protocol.PageDispatcher.prototype.frameScheduledNavigation = function(frameId, delay, reason, url) {};
 /**
  * @param {Protocol.Page.FrameId} frameId
  */
