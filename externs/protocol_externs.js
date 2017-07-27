@@ -4719,10 +4719,13 @@ Protocol.LayerTree.ScrollRectType = {
 /** @typedef {!{rect:(Protocol.DOM.Rect), type:(Protocol.LayerTree.ScrollRectType)}} */
 Protocol.LayerTree.ScrollRect;
 
+/** @typedef {!{stickyBoxRect:(Protocol.DOM.Rect), containingBlockRect:(Protocol.DOM.Rect), nearestLayerShiftingStickyBox:(Protocol.LayerTree.LayerId|undefined), nearestLayerShiftingContainingBlock:(Protocol.LayerTree.LayerId|undefined)}} */
+Protocol.LayerTree.StickyPositionConstraint;
+
 /** @typedef {!{x:(number), y:(number), picture:(string)}} */
 Protocol.LayerTree.PictureTile;
 
-/** @typedef {!{layerId:(Protocol.LayerTree.LayerId), parentLayerId:(Protocol.LayerTree.LayerId|undefined), backendNodeId:(Protocol.DOM.BackendNodeId|undefined), offsetX:(number), offsetY:(number), width:(number), height:(number), transform:(!Array<number>|undefined), anchorX:(number|undefined), anchorY:(number|undefined), anchorZ:(number|undefined), paintCount:(number), drawsContent:(boolean), invisible:(boolean|undefined), scrollRects:(!Array<Protocol.LayerTree.ScrollRect>|undefined)}} */
+/** @typedef {!{layerId:(Protocol.LayerTree.LayerId), parentLayerId:(Protocol.LayerTree.LayerId|undefined), backendNodeId:(Protocol.DOM.BackendNodeId|undefined), offsetX:(number), offsetY:(number), width:(number), height:(number), transform:(!Array<number>|undefined), anchorX:(number|undefined), anchorY:(number|undefined), anchorZ:(number|undefined), paintCount:(number), drawsContent:(boolean), invisible:(boolean|undefined), scrollRects:(!Array<Protocol.LayerTree.ScrollRect>|undefined), stickyPositionConstraint:(Protocol.LayerTree.StickyPositionConstraint|undefined)}} */
 Protocol.LayerTree.Layer;
 
 /** @typedef {!Array<!number>} */
