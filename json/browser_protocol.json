@@ -294,6 +294,14 @@
                 ],
                 "description": "Reloads given page optionally ignoring the cache."
             },
+	    {
+                "name": "setAdBlockingEnabled",
+                "description": "Enable Chrome's experimental ad filter on all sites.",
+                "parameters": [
+                    { "name": "enabled", "type": "boolean", "description": "Whether to block ads." }
+                ],
+		"experimental": true
+	    },
             {
                 "name": "navigate",
                 "parameters": [
