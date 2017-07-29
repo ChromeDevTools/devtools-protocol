@@ -1080,6 +1080,10 @@ Protocol.OverlayDispatcher.prototype.nodeHighlightRequested = function(nodeId) {
  * @param {Protocol.DOM.BackendNodeId} backendNodeId
  */
 Protocol.OverlayDispatcher.prototype.inspectNodeRequested = function(backendNodeId) {};
+/**
+ * @param {Protocol.Page.Viewport} viewport
+ */
+Protocol.OverlayDispatcher.prototype.screenshotRequested = function(viewport) {};
 Protocol.Emulation = {};
 
 
