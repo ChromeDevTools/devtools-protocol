@@ -3432,6 +3432,7 @@
                     { "name": "documentURL", "type": "string", "optional": true, "description": "Document URL that <code>Document</code> or <code>FrameOwner</code> node points to." },
                     { "name": "baseURL", "type": "string", "optional": true, "description": "Base URL that <code>Document</code> or <code>FrameOwner</code> node uses for URL completion." },
                     { "name": "contentLanguage", "type": "string", "optional": true, "description": "Only set for documents, contains the document's content language." },
+                    { "name": "documentEncoding", "type": "string", "optional": true, "description": "Only set for documents, contains the document's character set encoding." },
                     { "name": "publicId", "type": "string", "optional": true, "description": "<code>DocumentType</code> node's publicId." },
                     { "name": "systemId", "type": "string", "optional": true, "description": "<code>DocumentType</code> node's systemId." },
                     { "name": "frameId", "$ref": "Page.FrameId", "optional": true, "description": "Frame ID for frame owner elements." },
