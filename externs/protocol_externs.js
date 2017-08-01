@@ -611,35 +611,6 @@ Protocol.PageAgent.RequestAppBannerResponse;
 Protocol.PageAgent.prototype.invoke_requestAppBanner = function(obj) {};
 
 /**
- * @param {boolean} enabled
- * @return {!Promise<undefined>}
- */
-Protocol.PageAgent.prototype.setControlNavigations = function(enabled) {};
-/** @typedef {!{enabled: boolean}} */
-Protocol.PageAgent.SetControlNavigationsRequest;
-/** @typedef {Object|undefined} */
-Protocol.PageAgent.SetControlNavigationsResponse;
-/**
- * @param {!Protocol.PageAgent.SetControlNavigationsRequest} obj
- * @return {!Promise<!Protocol.PageAgent.SetControlNavigationsResponse>} */
-Protocol.PageAgent.prototype.invoke_setControlNavigations = function(obj) {};
-
-/**
- * @param {Protocol.Page.NavigationResponse} response
- * @param {number} navigationId
- * @return {!Promise<undefined>}
- */
-Protocol.PageAgent.prototype.processNavigation = function(response, navigationId) {};
-/** @typedef {!{navigationId: number, response: Protocol.Page.NavigationResponse}} */
-Protocol.PageAgent.ProcessNavigationRequest;
-/** @typedef {Object|undefined} */
-Protocol.PageAgent.ProcessNavigationResponse;
-/**
- * @param {!Protocol.PageAgent.ProcessNavigationRequest} obj
- * @return {!Promise<!Protocol.PageAgent.ProcessNavigationResponse>} */
-Protocol.PageAgent.prototype.invoke_processNavigation = function(obj) {};
-
-/**
  * @return {!Promise<?Protocol.Page.LayoutViewport>}
  */
 Protocol.PageAgent.prototype.getLayoutMetrics = function() {};
@@ -826,13 +797,6 @@ Protocol.PageDispatcher.prototype.screencastFrame = function(data, metadata, ses
 Protocol.PageDispatcher.prototype.screencastVisibilityChanged = function(visible) {};
 Protocol.PageDispatcher.prototype.interstitialShown = function() {};
 Protocol.PageDispatcher.prototype.interstitialHidden = function() {};
-/**
- * @param {boolean} isInMainFrame
- * @param {boolean} isRedirect
- * @param {number} navigationId
- * @param {string} url
- */
-Protocol.PageDispatcher.prototype.navigationRequested = function(isInMainFrame, isRedirect, navigationId, url) {};
 Protocol.Overlay = {};
 
 
@@ -2054,12 +2018,13 @@ Protocol.NetworkDispatcher.prototype.eventSourceMessageReceived = function(reque
  * @param {Protocol.Network.InterceptionId} interceptionId
  * @param {Protocol.Network.Request} request
  * @param {Protocol.Page.ResourceType} resourceType
+ * @param {boolean} isNavigationRequest
  * @param {Protocol.Network.Headers=} opt_redirectHeaders
  * @param {number=} opt_redirectStatusCode
  * @param {string=} opt_redirectUrl
  * @param {Protocol.Network.AuthChallenge=} opt_authChallenge
  */
-Protocol.NetworkDispatcher.prototype.requestIntercepted = function(interceptionId, request, resourceType, opt_redirectHeaders, opt_redirectStatusCode, opt_redirectUrl, opt_authChallenge) {};
+Protocol.NetworkDispatcher.prototype.requestIntercepted = function(interceptionId, request, resourceType, isNavigationRequest, opt_redirectHeaders, opt_redirectStatusCode, opt_redirectUrl, opt_authChallenge) {};
 Protocol.Database = {};
 
 

@@ -550,23 +550,6 @@
                 "experimental": true
             },
             {
-                "name": "setControlNavigations",
-                "parameters": [
-                    { "name": "enabled", "type": "boolean" }
-                ],
-                "description": "Toggles navigation throttling which allows programatic control over navigation and redirect response.",
-                "experimental": true
-            },
-            {
-                "name": "processNavigation",
-                "parameters": [
-                    { "name": "response", "$ref": "NavigationResponse" },
-                    { "name": "navigationId", "type": "integer" }
-                ],
-                "description": "Should be sent in response to a navigationRequested or a redirectRequested event, telling the browser how to handle the navigation.",
-                "experimental": true
-            },
-            {
                 "name": "getLayoutMetrics",
                 "description": "Returns metrics relating to the layouting of the page, such as viewport bounds/scale.",
                 "experimental": true,
@@ -709,16 +692,6 @@
             {
                 "name": "interstitialHidden",
                 "description": "Fired when interstitial page was hidden"
-            },
-            {
-                "name": "navigationRequested",
-                "description": "Fired when a navigation is started if navigation throttles are enabled.  The navigation will be deferred until processNavigation is called.",
-                "parameters": [
-                    { "name": "isInMainFrame", "type": "boolean", "description": "Whether the navigation is taking place in the main frame or in a subframe." },
-                    { "name": "isRedirect", "type": "boolean", "description": "Whether the navigation has encountered a server redirect or not." },
-                    { "name": "navigationId", "type": "integer" },
-                    { "name": "url", "type": "string", "description": "URL of requested navigation." }
-                ]
             }
         ]
     },
@@ -1609,7 +1582,7 @@
                 "description": "Response to Network.requestIntercepted which either modifies the request to continue with any modifications, or blocks it, or completes it with the provided response bytes. If a network fetch occurs as a result which encounters a redirect an additional Network.requestIntercepted event will be sent with the same InterceptionId.",
                 "parameters": [
                     { "name": "interceptionId", "$ref": "InterceptionId" },
-                    { "name": "errorReason", "$ref": "ErrorReason", "optional": true, "description": "If set this causes the request to fail with the given reason. Must not be set in response to an authChallenge." },
+                    { "name": "errorReason", "$ref": "ErrorReason", "optional": true, "description": "If set this causes the request to fail with the given reason. Passing <code>Aborted</code> for requests marked with <code>isNavigationRequest</code> also cancels the navigation. Must not be set in response to an authChallenge." },
                     { "name": "rawResponse", "type": "string", "optional": true, "description": "If set the requests completes using with the provided base64 encoded raw response, including HTTP status line and headers etc... Must not be set in response to an authChallenge." },
                     { "name": "url", "type": "string", "optional": true, "description": "If set the request url will be modified in a way that's not observable by page. Must not be set in response to an authChallenge." },
                     { "name": "method", "type": "string", "optional": true, "description": "If set this allows the request method to be overridden. Must not be set in response to an authChallenge."},
@@ -1786,6 +1759,7 @@
                     { "name": "interceptionId", "$ref": "InterceptionId", "description": "Each request the page makes will have a unique id, however if any redirects are encountered while processing that fetch, they will be reported with the same id as the original fetch. Likewise if HTTP authentication is needed then the same fetch id will be used." },
                     { "name": "request", "$ref": "Request" },
                     { "name": "resourceType", "$ref": "Page.ResourceType", "description": "How the requested resource will be used." },
+                    { "name": "isNavigationRequest", "type": "boolean", "description": "Whether this is a navigation request, which can abort the navigation completely." },
                     { "name": "redirectHeaders", "$ref": "Headers", "optional": true, "description": "HTTP response headers, only sent if a redirect was intercepted." },
                     { "name": "redirectStatusCode", "type": "integer", "optional": true, "description": "HTTP response code, only sent if a redirect was intercepted." },
                     { "name": "redirectUrl", "optional": true, "type": "string", "description": "Redirect location, only sent if a redirect was intercepted."},
