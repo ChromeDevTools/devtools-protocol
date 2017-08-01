@@ -4628,13 +4628,13 @@
             {
                 "id": "AXGlobalStates",
                 "type": "string",
-                "enum": [ "disabled", "hidden", "hiddenRoot", "invalid", "keyshortcuts", "roledescription" ],
+                "enum": [ "busy", "disabled", "hidden", "hiddenRoot", "invalid", "keyshortcuts", "roledescription" ],
                 "description": "States which apply to every AX node."
             },
             {
                 "id": "AXLiveRegionAttributes",
                 "type": "string",
-                "enum": [ "live", "atomic", "relevant", "busy", "root" ],
+                "enum": [ "live", "atomic", "relevant", "root" ],
                 "description": "Attributes which apply to nodes in live regions."
             },
             {

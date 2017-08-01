@@ -5134,6 +5134,7 @@ Protocol.Accessibility.AXValue;
 
 /** @enum {string} */
 Protocol.Accessibility.AXGlobalStates = {
+    Busy: "busy",
     Disabled: "disabled",
     Hidden: "hidden",
     HiddenRoot: "hiddenRoot",
@@ -5147,7 +5148,6 @@ Protocol.Accessibility.AXLiveRegionAttributes = {
     Live: "live",
     Atomic: "atomic",
     Relevant: "relevant",
-    Busy: "busy",
     Root: "root"
 };
 
