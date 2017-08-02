@@ -656,15 +656,18 @@
                 "name": "javascriptDialogOpening",
                 "description": "Fired when a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload) is about to open.",
                 "parameters": [
+                    { "name": "url", "type": "string", "description": "Frame url." },
                     { "name": "message", "type": "string", "description": "Message that will be displayed by the dialog." },
-                    { "name": "type", "$ref": "DialogType", "description": "Dialog type." }
+                    { "name": "type", "$ref": "DialogType", "description": "Dialog type." },
+                    { "name": "defaultPrompt", "optional": true, "type": "string", "description": "Default dialog prompt." }
                 ]
             },
             {
                 "name": "javascriptDialogClosed",
                 "description": "Fired when a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload) has been closed.",
                 "parameters": [
-                    { "name": "result", "type": "boolean", "description": "Whether dialog was confirmed." }
+                    { "name": "result", "type": "boolean", "description": "Whether dialog was confirmed." },
+                    { "name": "userInput", "type": "string", "description": "User input in case of prompt." }
                 ]
             },
             {

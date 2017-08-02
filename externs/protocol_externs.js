@@ -777,14 +777,17 @@ Protocol.PageDispatcher.prototype.frameScheduledNavigation = function(frameId, d
 Protocol.PageDispatcher.prototype.frameClearedScheduledNavigation = function(frameId) {};
 Protocol.PageDispatcher.prototype.frameResized = function() {};
 /**
+ * @param {string} url
  * @param {string} message
  * @param {Protocol.Page.DialogType} type
+ * @param {string=} opt_defaultPrompt
  */
-Protocol.PageDispatcher.prototype.javascriptDialogOpening = function(message, type) {};
+Protocol.PageDispatcher.prototype.javascriptDialogOpening = function(url, message, type, opt_defaultPrompt) {};
 /**
  * @param {boolean} result
+ * @param {string} userInput
  */
-Protocol.PageDispatcher.prototype.javascriptDialogClosed = function(result) {};
+Protocol.PageDispatcher.prototype.javascriptDialogClosed = function(result, userInput) {};
 /**
  * @param {string} data
  * @param {Protocol.Page.ScreencastFrameMetadata} metadata
