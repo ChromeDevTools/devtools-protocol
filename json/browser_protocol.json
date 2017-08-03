@@ -3412,7 +3412,7 @@
                     { "name": "documentEncoding", "type": "string", "optional": true, "description": "Only set for documents, contains the document's character set encoding." },
                     { "name": "publicId", "type": "string", "optional": true, "description": "<code>DocumentType</code> node's publicId." },
                     { "name": "systemId", "type": "string", "optional": true, "description": "<code>DocumentType</code> node's systemId." },
-                    { "name": "frameId", "$ref": "Page.FrameId", "optional": true, "description": "Frame ID for frame owner elements." },
+                    { "name": "frameId", "$ref": "Page.FrameId", "optional": true, "description": "Frame ID for frame owner elements and also for the document node." },
                     { "name": "contentDocumentIndex", "type": "integer", "optional": true, "description": "The index of a frame owner element's content document in the <code>domNodes</code> array returned by <code>getSnapshot</code>, if any." },
                     { "name": "importedDocumentIndex", "type": "integer", "optional": true, "description": "Index of the imported document's node of a link element in the <code>domNodes</code> array returned by <code>getSnapshot</code>, if any." },
                     { "name": "templateContentIndex", "type": "integer", "optional": true, "description": "Index of the content node of a template element in the <code>domNodes</code> array returned by <code>getSnapshot</code>." },
