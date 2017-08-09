@@ -3516,7 +3516,7 @@ Protocol.CSSAgent.prototype.invoke_setEffectivePropertyValueForNode = function(o
 Protocol.CSSAgent.prototype.getBackgroundColors = function(nodeId) {};
 /** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
 Protocol.CSSAgent.GetBackgroundColorsRequest;
-/** @typedef {!{backgroundColors: !Array<string>}} */
+/** @typedef {!{backgroundColors: !Array<string>, computedFontWeight: string, computedFontSize: string, computedBodyFontSize: string}} */
 Protocol.CSSAgent.GetBackgroundColorsResponse;
 /**
  * @param {!Protocol.CSSAgent.GetBackgroundColorsRequest} obj
