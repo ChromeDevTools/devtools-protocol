@@ -1197,11 +1197,11 @@ Protocol.EmulationAgent.prototype.invoke_clearGeolocationOverride = function(obj
 
 /**
  * @param {boolean} enabled
- * @param {string=} opt_configuration
+ * @param {number=} opt_maxTouchPoints
  * @return {!Promise<undefined>}
  */
-Protocol.EmulationAgent.prototype.setTouchEmulationEnabled = function(enabled, opt_configuration) {};
-/** @typedef {!{configuration: (string|undefined), enabled: boolean}} */
+Protocol.EmulationAgent.prototype.setTouchEmulationEnabled = function(enabled, opt_maxTouchPoints) {};
+/** @typedef {!{maxTouchPoints: (number|undefined), enabled: boolean}} */
 Protocol.EmulationAgent.SetTouchEmulationEnabledRequest;
 /** @typedef {Object|undefined} */
 Protocol.EmulationAgent.SetTouchEmulationEnabledResponse;
@@ -1209,6 +1209,21 @@ Protocol.EmulationAgent.SetTouchEmulationEnabledResponse;
  * @param {!Protocol.EmulationAgent.SetTouchEmulationEnabledRequest} obj
  * @return {!Promise<!Protocol.EmulationAgent.SetTouchEmulationEnabledResponse>} */
 Protocol.EmulationAgent.prototype.invoke_setTouchEmulationEnabled = function(obj) {};
+
+/**
+ * @param {boolean} enabled
+ * @param {string=} opt_configuration
+ * @return {!Promise<undefined>}
+ */
+Protocol.EmulationAgent.prototype.setEmitTouchEventsForMouse = function(enabled, opt_configuration) {};
+/** @typedef {!{configuration: (string|undefined), enabled: boolean}} */
+Protocol.EmulationAgent.SetEmitTouchEventsForMouseRequest;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.SetEmitTouchEventsForMouseResponse;
+/**
+ * @param {!Protocol.EmulationAgent.SetEmitTouchEventsForMouseRequest} obj
+ * @return {!Promise<!Protocol.EmulationAgent.SetEmitTouchEventsForMouseResponse>} */
+Protocol.EmulationAgent.prototype.invoke_setEmitTouchEventsForMouse = function(obj) {};
 
 /**
  * @param {string} media
