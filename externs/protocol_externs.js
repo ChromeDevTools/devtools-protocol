@@ -94,6 +94,57 @@ Protocol.Memory.PressureLevel = {
 };
 /** @interface */
 Protocol.MemoryDispatcher = function() {};
+Protocol.Performance = {};
+
+
+/**
+ * @constructor
+*/
+Protocol.PerformanceAgent = function(){};
+
+/**
+ * @return {!Promise<undefined>}
+ */
+Protocol.PerformanceAgent.prototype.enable = function() {};
+/** @typedef {Object|undefined} */
+Protocol.PerformanceAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.PerformanceAgent.EnableResponse;
+/**
+ * @param {!Protocol.PerformanceAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.PerformanceAgent.EnableResponse>} */
+Protocol.PerformanceAgent.prototype.invoke_enable = function(obj) {};
+
+/**
+ * @return {!Promise<undefined>}
+ */
+Protocol.PerformanceAgent.prototype.disable = function() {};
+/** @typedef {Object|undefined} */
+Protocol.PerformanceAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.PerformanceAgent.DisableResponse;
+/**
+ * @param {!Protocol.PerformanceAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.PerformanceAgent.DisableResponse>} */
+Protocol.PerformanceAgent.prototype.invoke_disable = function(obj) {};
+
+/**
+ * @return {!Promise<?Array<Protocol.Performance.Metric>>}
+ */
+Protocol.PerformanceAgent.prototype.getMetrics = function() {};
+/** @typedef {Object|undefined} */
+Protocol.PerformanceAgent.GetMetricsRequest;
+/** @typedef {!{metrics: !Array<Protocol.Performance.Metric>}} */
+Protocol.PerformanceAgent.GetMetricsResponse;
+/**
+ * @param {!Protocol.PerformanceAgent.GetMetricsRequest} obj
+ * @return {!Promise<!Protocol.PerformanceAgent.GetMetricsResponse>} */
+Protocol.PerformanceAgent.prototype.invoke_getMetrics = function(obj) {};
+
+/** @typedef {!{name:(string), value:(number)}} */
+Protocol.Performance.Metric;
+/** @interface */
+Protocol.PerformanceDispatcher = function() {};
 Protocol.Page = {};
 
 
@@ -6844,6 +6895,12 @@ Protocol.TargetBase.prototype.memoryAgent = function(){};
  * @param {!Protocol.MemoryDispatcher} dispatcher
  */
 Protocol.TargetBase.prototype.registerMemoryDispatcher = function(dispatcher) {}
+/** @return {!Protocol.PerformanceAgent}*/
+Protocol.TargetBase.prototype.performanceAgent = function(){};
+/**
+ * @param {!Protocol.PerformanceDispatcher} dispatcher
+ */
+Protocol.TargetBase.prototype.registerPerformanceDispatcher = function(dispatcher) {}
 /** @return {!Protocol.PageAgent}*/
 Protocol.TargetBase.prototype.pageAgent = function(){};
 /**

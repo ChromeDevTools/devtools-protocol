@@ -65,6 +65,38 @@
         ]
     },
     {
+        "domain": "Performance",
+        "experimental": true,
+        "types": [
+            {
+                "id": "Metric",
+                "type": "object",
+                "properties": [
+                    { "name": "name", "type": "string", "description": "Metric name." },
+                    { "name": "value", "type": "number", "description": "Metric value." }
+                ],
+                "description": "Run-time execution metric."
+            }
+        ],
+        "commands": [
+            {
+                "name": "enable",
+                "description": "Enable collecting and reporting metrics."
+            },
+            {
+                "name": "disable",
+                "description": "Disable collecting and reporting metrics."
+            },
+            {
+                "name": "getMetrics",
+                "returns": [
+                    { "name": "metrics", "type": "array", "items": { "$ref": "Metric" }, "description": "Current values for run-time metrics." }
+                ],
+                "description": "Retrieve current values of run-time metrics."
+            }
+        ]
+    },
+    {
         "domain": "Page",
         "description": "Actions and events related to the inspected page belong to the page domain.",
         "dependencies": ["Debugger", "DOM", "Network"],
