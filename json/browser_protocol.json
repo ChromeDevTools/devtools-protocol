@@ -4966,6 +4966,17 @@
                 ]
             },
             {
+                "name": "getVersion",
+                "description": "Returns version information.",
+                "returns": [
+                    { "name": "protocolVersion", "type": "string", "description": "Protocol version." },
+                    { "name": "product", "type": "string", "description": "Product name." },
+                    { "name": "revision", "type": "string", "description": "Product revision." },
+                    { "name": "userAgent", "type": "string", "description": "User-Agent." },
+                    { "name": "jsVersion", "type": "string", "description": "V8 version." }
+                ]
+            },
+            {
                 "name": "setWindowBounds",
                 "description": "Set position and/or size of the browser window.",
                 "parameters": [

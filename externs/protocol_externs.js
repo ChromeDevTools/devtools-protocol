@@ -5516,6 +5516,19 @@ Protocol.BrowserAgent.GetWindowForTargetResponse;
 Protocol.BrowserAgent.prototype.invoke_getWindowForTarget = function(obj) {};
 
 /**
+ * @return {!Promise<?string>}
+ */
+Protocol.BrowserAgent.prototype.getVersion = function() {};
+/** @typedef {Object|undefined} */
+Protocol.BrowserAgent.GetVersionRequest;
+/** @typedef {!{userAgent: string, product: string, revision: string, jsVersion: string, protocolVersion: string}} */
+Protocol.BrowserAgent.GetVersionResponse;
+/**
+ * @param {!Protocol.BrowserAgent.GetVersionRequest} obj
+ * @return {!Promise<!Protocol.BrowserAgent.GetVersionResponse>} */
+Protocol.BrowserAgent.prototype.invoke_getVersion = function(obj) {};
+
+/**
  * @param {Protocol.Browser.WindowID} windowId
  * @param {Protocol.Browser.Bounds} bounds
  * @return {!Promise<undefined>}
