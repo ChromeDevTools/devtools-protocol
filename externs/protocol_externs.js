@@ -1401,19 +1401,6 @@ Protocol.SecurityAgent.DisableResponse;
 Protocol.SecurityAgent.prototype.invoke_disable = function(obj) {};
 
 /**
- * @return {!Promise<undefined>}
- */
-Protocol.SecurityAgent.prototype.showCertificateViewer = function() {};
-/** @typedef {Object|undefined} */
-Protocol.SecurityAgent.ShowCertificateViewerRequest;
-/** @typedef {Object|undefined} */
-Protocol.SecurityAgent.ShowCertificateViewerResponse;
-/**
- * @param {!Protocol.SecurityAgent.ShowCertificateViewerRequest} obj
- * @return {!Promise<!Protocol.SecurityAgent.ShowCertificateViewerResponse>} */
-Protocol.SecurityAgent.prototype.invoke_showCertificateViewer = function(obj) {};
-
-/**
  * @param {number} eventId
  * @param {Protocol.Security.CertificateErrorAction} action
  * @return {!Promise<undefined>}
@@ -1462,7 +1449,7 @@ Protocol.Security.SecurityState = {
     Info: "info"
 };
 
-/** @typedef {!{securityState:(Protocol.Security.SecurityState), summary:(string), description:(string), hasCertificate:(boolean), mixedContentType:(Protocol.Security.MixedContentType)}} */
+/** @typedef {!{securityState:(Protocol.Security.SecurityState), summary:(string), description:(string), mixedContentType:(Protocol.Security.MixedContentType), certificate:(!Array<string>)}} */
 Protocol.Security.SecurityStateExplanation;
 
 /** @typedef {!{ranMixedContent:(boolean), displayedMixedContent:(boolean), containedMixedForm:(boolean), ranContentWithCertErrors:(boolean), displayedContentWithCertErrors:(boolean), ranInsecureContentStyle:(Protocol.Security.SecurityState), displayedInsecureContentStyle:(Protocol.Security.SecurityState)}} */

@@ -1096,8 +1096,8 @@
                     { "name": "securityState", "$ref": "SecurityState", "description": "Security state representing the severity of the factor being explained." },
                     { "name": "summary", "type": "string", "description": "Short phrase describing the type of factor." },
                     { "name": "description", "type": "string", "description": "Full text explanation of the factor." },
-                    { "name": "hasCertificate", "type": "boolean", "description": "True if the page has a certificate." },
-                    { "name": "mixedContentType", "$ref": "MixedContentType", "description": "The type of mixed content described by the explanation." }
+                    { "name": "mixedContentType", "$ref": "MixedContentType", "description": "The type of mixed content described by the explanation." },
+                    { "name": "certificate", "type": "array", "items": { "type": "string" }, "description": "Page certificate." }
                 ],
                 "description": "An explanation of an factor contributing to the security state."
             },
@@ -1130,10 +1130,6 @@
             {
                 "name": "disable",
                 "description": "Disables tracking security state changes."
-            },
-            {
-                "name": "showCertificateViewer",
-                "description": "Displays native dialog with the certificate details."
             },
             {
                 "name": "handleCertificateError",
