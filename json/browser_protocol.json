@@ -94,6 +94,16 @@
                 ],
                 "description": "Retrieve current values of run-time metrics."
             }
+        ],
+        "events": [
+            {
+                "name": "metrics",
+                "description": "Current values of the metrics.",
+                "parameters": [
+                    { "name": "metrics", "type": "array", "items": { "$ref": "Metric" }, "description": "Current values of the metrics." },
+                    { "name": "title", "type": "string", "description": "Timestamp title." }
+                ]
+            }
         ]
     },
     {
@@ -4783,6 +4793,37 @@
                     { "name": "usageBreakdown", "type": "array", "items": { "$ref": "UsageForType" }, "description": "Storage usage per type (bytes)." }
                 ],
                 "description": "Returns usage and quota in bytes."
+            },
+            {
+                "name": "trackCacheStorageForOrigin",
+                "parameters": [
+                    { "name": "origin", "type": "string", "description": "Security origin." }
+                ],
+                "description": "Registers origin to be notified when an update occurs to its cache storage list."
+            },
+            {
+                "name": "untrackCacheStorageForOrigin",
+                "parameters": [
+                    { "name": "origin", "type": "string", "description": "Security origin." }
+                ],
+                "description": "Unregisters origin from receiving notifications for cache storage."
+            }
+        ],
+        "events": [
+            {
+                "name": "cacheStorageListUpdated",
+                "parameters": [
+                    { "name": "origin", "type": "string", "description": "Origin to update." }
+                ],
+                "description": "A cache has been added/deleted."
+            },
+            {
+                "name": "cacheStorageContentUpdated",
+                "parameters": [
+                    { "name": "origin", "type": "string", "description": "Origin to update." },
+                    { "name": "cacheName", "type": "string", "description": "Name of cache in origin." }
+                ],
+                "description": "A cache's contents have been modified."
             }
         ]
     },

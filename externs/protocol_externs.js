@@ -145,6 +145,11 @@ Protocol.PerformanceAgent.prototype.invoke_getMetrics = function(obj) {};
 Protocol.Performance.Metric;
 /** @interface */
 Protocol.PerformanceDispatcher = function() {};
+/**
+ * @param {!Array<Protocol.Performance.Metric>} metrics
+ * @param {string} title
+ */
+Protocol.PerformanceDispatcher.prototype.metrics = function(metrics, title) {};
 Protocol.Page = {};
 
 
@@ -5284,6 +5289,34 @@ Protocol.StorageAgent.GetUsageAndQuotaResponse;
  * @return {!Promise<!Protocol.StorageAgent.GetUsageAndQuotaResponse>} */
 Protocol.StorageAgent.prototype.invoke_getUsageAndQuota = function(obj) {};
 
+/**
+ * @param {string} origin
+ * @return {!Promise<undefined>}
+ */
+Protocol.StorageAgent.prototype.trackCacheStorageForOrigin = function(origin) {};
+/** @typedef {!{origin: string}} */
+Protocol.StorageAgent.TrackCacheStorageForOriginRequest;
+/** @typedef {Object|undefined} */
+Protocol.StorageAgent.TrackCacheStorageForOriginResponse;
+/**
+ * @param {!Protocol.StorageAgent.TrackCacheStorageForOriginRequest} obj
+ * @return {!Promise<!Protocol.StorageAgent.TrackCacheStorageForOriginResponse>} */
+Protocol.StorageAgent.prototype.invoke_trackCacheStorageForOrigin = function(obj) {};
+
+/**
+ * @param {string} origin
+ * @return {!Promise<undefined>}
+ */
+Protocol.StorageAgent.prototype.untrackCacheStorageForOrigin = function(origin) {};
+/** @typedef {!{origin: string}} */
+Protocol.StorageAgent.UntrackCacheStorageForOriginRequest;
+/** @typedef {Object|undefined} */
+Protocol.StorageAgent.UntrackCacheStorageForOriginResponse;
+/**
+ * @param {!Protocol.StorageAgent.UntrackCacheStorageForOriginRequest} obj
+ * @return {!Promise<!Protocol.StorageAgent.UntrackCacheStorageForOriginResponse>} */
+Protocol.StorageAgent.prototype.invoke_untrackCacheStorageForOrigin = function(obj) {};
+
 /** @enum {string} */
 Protocol.Storage.StorageType = {
     Appcache: "appcache",
@@ -5303,6 +5336,15 @@ Protocol.Storage.StorageType = {
 Protocol.Storage.UsageForType;
 /** @interface */
 Protocol.StorageDispatcher = function() {};
+/**
+ * @param {string} origin
+ */
+Protocol.StorageDispatcher.prototype.cacheStorageListUpdated = function(origin) {};
+/**
+ * @param {string} origin
+ * @param {string} cacheName
+ */
+Protocol.StorageDispatcher.prototype.cacheStorageContentUpdated = function(origin, cacheName) {};
 Protocol.Log = {};
 
 
