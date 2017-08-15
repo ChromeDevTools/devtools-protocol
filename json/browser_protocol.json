@@ -761,7 +761,8 @@
                     { "name": "eventTargetColor", "$ref": "DOM.RGBA", "optional": true, "description": "The event target element highlight fill color (default: transparent)." },
                     { "name": "shapeColor", "$ref": "DOM.RGBA", "optional": true, "description": "The shape outside fill color (default: transparent)." },
                     { "name": "shapeMarginColor", "$ref": "DOM.RGBA", "optional": true, "description": "The shape margin fill color (default: transparent)." },
-                    { "name": "selectorList", "type": "string", "optional": true, "description": "Selectors to highlight relevant nodes."}
+                    { "name": "selectorList", "type": "string", "optional": true, "description": "Selectors to highlight relevant nodes."},
+                    { "name": "cssGridColor", "$ref": "DOM.RGBA", "optional": true, "description": "The grid layout color (default: transparent)." }
                 ],
                 "description": "Configuration data for the highlighting of page elements."
             },
