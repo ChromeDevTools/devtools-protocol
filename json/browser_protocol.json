@@ -1420,6 +1420,23 @@
                 "experimental": true
             },
             {
+                "id": "CookieParam",
+                "type": "object",
+                "description": "Cookie parameter object",
+                "properties": [
+                    { "name": "name", "type": "string", "description": "Cookie name." },
+                    { "name": "value", "type": "string", "description": "Cookie value." },
+                    { "name": "url", "type": "string", "optional": true, "description": "The request-URI to associate with the setting of the cookie. This value can affect the default domain and path values of the created cookie." },
+                    { "name": "domain", "type": "string", "optional": true, "description": "Cookie domain." },
+                    { "name": "path", "type": "string", "optional": true, "description": "Cookie path." },
+                    { "name": "secure", "type": "boolean", "optional": true, "description": "True if cookie is secure." },
+                    { "name": "httpOnly", "type": "boolean", "optional": true, "description": "True if cookie is http-only." },
+                    { "name": "sameSite", "$ref": "CookieSameSite", "optional": true, "description": "Cookie SameSite type." },
+                    { "name": "expires", "$ref": "TimeSinceEpoch", "optional": true, "description": "Cookie expiration date, session cookie if not set" }
+                ],
+                "experimental": true
+            },
+            {
                 "id": "AuthChallenge",
                 "type": "object",
                 "description": "Authorization challenge for HTTP status code 401 or 407.",
@@ -1550,20 +1567,28 @@
             {
                 "name": "setCookie",
                 "parameters": [
-                    { "name": "url", "type": "string", "description": "The request-URI to associate with the setting of the cookie. This value can affect the default domain and path values of the created cookie." },
-                    { "name": "name", "type": "string", "description": "The name of the cookie." },
-                    { "name": "value", "type": "string", "description": "The value of the cookie." },
-                    { "name": "domain", "type": "string", "optional": true, "description": "If omitted, the cookie becomes a host-only cookie." },
-                    { "name": "path", "type": "string", "optional": true, "description": "Defaults to the path portion of the url parameter." },
-                    { "name": "secure", "type": "boolean", "optional": true, "description": "Defaults ot false." },
-                    { "name": "httpOnly", "type": "boolean", "optional": true, "description": "Defaults to false." },
-                    { "name": "sameSite", "$ref": "CookieSameSite", "optional": true, "description": "Defaults to browser default behavior." },
-                    { "name": "expirationDate", "$ref": "TimeSinceEpoch", "optional": true, "description": "If omitted, the cookie becomes a session cookie." }
+                    { "name": "name", "type": "string", "description": "Cookie name." },
+                    { "name": "value", "type": "string", "description": "Cookie value." },
+                    { "name": "url", "type": "string", "optional": true, "description": "The request-URI to associate with the setting of the cookie. This value can affect the default domain and path values of the created cookie." },
+                    { "name": "domain", "type": "string", "optional": true, "description": "Cookie domain." },
+                    { "name": "path", "type": "string", "optional": true, "description": "Cookie path." },
+                    { "name": "secure", "type": "boolean", "optional": true, "description": "True if cookie is secure." },
+                    { "name": "httpOnly", "type": "boolean", "optional": true, "description": "True if cookie is http-only." },
+                    { "name": "sameSite", "$ref": "CookieSameSite", "optional": true, "description": "Cookie SameSite type." },
+                    { "name": "expires", "$ref": "TimeSinceEpoch", "optional": true, "description": "Cookie expiration date, session cookie if not set" }
                 ],
                 "returns": [
                     { "name": "success", "type": "boolean", "description": "True if successfully set cookie." }
                 ],
                 "description": "Sets a cookie with the given cookie data; may overwrite equivalent cookies if they exist.",
+                "experimental": true
+            },
+            {
+                "name": "setCookies",
+                "parameters": [
+                    { "name": "cookies", "type": "array", "items": { "$ref": "CookieParam" }, "description": "Cookies to be set." }
+                ],
+                "description": "Sets given cookies.",
                 "experimental": true
             },
             {
@@ -4081,13 +4106,15 @@
             {
                 "name": "dispatchMouseEvent",
                 "parameters": [
-                    { "name": "type", "type": "string", "enum": ["mousePressed", "mouseReleased", "mouseMoved"], "description": "Type of the mouse event." },
+                    { "name": "type", "type": "string", "enum": ["mousePressed", "mouseReleased", "mouseMoved", "mouseWheel"], "description": "Type of the mouse event." },
                     { "name": "x", "type": "number", "description": "X coordinate of the event relative to the main frame's viewport in CSS pixels."},
                     { "name": "y", "type": "number", "description": "Y coordinate of the event relative to the main frame's viewport in CSS pixels. 0 refers to the top of the viewport and Y increases as it proceeds towards the bottom of the viewport."},
                     { "name": "modifiers", "type": "integer", "optional": true, "description": "Bit field representing pressed modifier keys. Alt=1, Ctrl=2, Meta/Command=4, Shift=8 (default: 0)." },
                     { "name": "timestamp", "$ref": "TimeSinceEpoch", "optional": true, "description": "Time at which the event occurred." },
                     { "name": "button", "type": "string", "enum": ["none", "left", "middle", "right"], "optional": true, "description": "Mouse button (default: \"none\")." },
-                    { "name": "clickCount", "type": "integer", "optional": true, "description": "Number of times the mouse button was clicked (default: 0)." }
+                    { "name": "clickCount", "type": "integer", "optional": true, "description": "Number of times the mouse button was clicked (default: 0)." },
+                    { "name": "deltaX", "type": "number", "optional": true, "description": "X delta in CSS pixels for mouse wheel event (default: 0)."},
+                    { "name": "deltaY", "type": "number", "optional": true, "description": "Y delta in CSS pixels for mouse wheel event (default: 0)."}
                 ],
                 "description": "Dispatches a mouse event to the page."
             },

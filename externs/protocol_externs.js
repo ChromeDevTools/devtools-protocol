@@ -1682,19 +1682,19 @@ Protocol.NetworkAgent.DeleteCookieResponse;
 Protocol.NetworkAgent.prototype.invoke_deleteCookie = function(obj) {};
 
 /**
- * @param {string} url
  * @param {string} name
  * @param {string} value
+ * @param {string=} opt_url
  * @param {string=} opt_domain
  * @param {string=} opt_path
  * @param {boolean=} opt_secure
  * @param {boolean=} opt_httpOnly
  * @param {Protocol.Network.CookieSameSite=} opt_sameSite
- * @param {Protocol.Network.TimeSinceEpoch=} opt_expirationDate
+ * @param {Protocol.Network.TimeSinceEpoch=} opt_expires
  * @return {!Promise<?boolean>}
  */
-Protocol.NetworkAgent.prototype.setCookie = function(url, name, value, opt_domain, opt_path, opt_secure, opt_httpOnly, opt_sameSite, opt_expirationDate) {};
-/** @typedef {!{domain: (string|undefined), name: string, url: string, value: string, expirationDate: (Protocol.Network.TimeSinceEpoch|undefined), sameSite: (Protocol.Network.CookieSameSite|undefined), path: (string|undefined), httpOnly: (boolean|undefined), secure: (boolean|undefined)}} */
+Protocol.NetworkAgent.prototype.setCookie = function(name, value, opt_url, opt_domain, opt_path, opt_secure, opt_httpOnly, opt_sameSite, opt_expires) {};
+/** @typedef {!{domain: (string|undefined), name: string, url: (string|undefined), expires: (Protocol.Network.TimeSinceEpoch|undefined), value: string, sameSite: (Protocol.Network.CookieSameSite|undefined), path: (string|undefined), httpOnly: (boolean|undefined), secure: (boolean|undefined)}} */
 Protocol.NetworkAgent.SetCookieRequest;
 /** @typedef {!{success: boolean}} */
 Protocol.NetworkAgent.SetCookieResponse;
@@ -1702,6 +1702,20 @@ Protocol.NetworkAgent.SetCookieResponse;
  * @param {!Protocol.NetworkAgent.SetCookieRequest} obj
  * @return {!Promise<!Protocol.NetworkAgent.SetCookieResponse>} */
 Protocol.NetworkAgent.prototype.invoke_setCookie = function(obj) {};
+
+/**
+ * @param {!Array<Protocol.Network.CookieParam>} cookies
+ * @return {!Promise<undefined>}
+ */
+Protocol.NetworkAgent.prototype.setCookies = function(cookies) {};
+/** @typedef {!{cookies: !Array<Protocol.Network.CookieParam>}} */
+Protocol.NetworkAgent.SetCookiesRequest;
+/** @typedef {Object|undefined} */
+Protocol.NetworkAgent.SetCookiesResponse;
+/**
+ * @param {!Protocol.NetworkAgent.SetCookiesRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.SetCookiesResponse>} */
+Protocol.NetworkAgent.prototype.invoke_setCookies = function(obj) {};
 
 /**
  * @return {!Promise<?boolean>}
@@ -1950,6 +1964,9 @@ Protocol.Network.Initiator;
 
 /** @typedef {!{name:(string), value:(string), domain:(string), path:(string), expires:(number), size:(number), httpOnly:(boolean), secure:(boolean), session:(boolean), sameSite:(Protocol.Network.CookieSameSite|undefined)}} */
 Protocol.Network.Cookie;
+
+/** @typedef {!{name:(string), value:(string), url:(string|undefined), domain:(string|undefined), path:(string|undefined), secure:(boolean|undefined), httpOnly:(boolean|undefined), sameSite:(Protocol.Network.CookieSameSite|undefined), expires:(Protocol.Network.TimeSinceEpoch|undefined)}} */
+Protocol.Network.CookieParam;
 
 /** @enum {string} */
 Protocol.Network.AuthChallengeSource = {
@@ -4474,10 +4491,12 @@ Protocol.InputAgent.prototype.invoke_dispatchKeyEvent = function(obj) {};
  * @param {Protocol.Input.TimeSinceEpoch=} opt_timestamp
  * @param {string=} opt_button
  * @param {number=} opt_clickCount
+ * @param {number=} opt_deltaX
+ * @param {number=} opt_deltaY
  * @return {!Promise<undefined>}
  */
-Protocol.InputAgent.prototype.dispatchMouseEvent = function(type, x, y, opt_modifiers, opt_timestamp, opt_button, opt_clickCount) {};
-/** @typedef {!{modifiers: (number|undefined), clickCount: (number|undefined), timestamp: (Protocol.Input.TimeSinceEpoch|undefined), button: (string|undefined), y: number, x: number, type: string}} */
+Protocol.InputAgent.prototype.dispatchMouseEvent = function(type, x, y, opt_modifiers, opt_timestamp, opt_button, opt_clickCount, opt_deltaX, opt_deltaY) {};
+/** @typedef {!{modifiers: (number|undefined), clickCount: (number|undefined), deltaX: (number|undefined), timestamp: (Protocol.Input.TimeSinceEpoch|undefined), button: (string|undefined), deltaY: (number|undefined), y: number, x: number, type: string}} */
 Protocol.InputAgent.DispatchMouseEventRequest;
 /** @typedef {Object|undefined} */
 Protocol.InputAgent.DispatchMouseEventResponse;
