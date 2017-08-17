@@ -1667,19 +1667,21 @@ Protocol.NetworkAgent.GetAllCookiesResponse;
 Protocol.NetworkAgent.prototype.invoke_getAllCookies = function(obj) {};
 
 /**
- * @param {string} cookieName
- * @param {string} url
+ * @param {string} name
+ * @param {string=} opt_url
+ * @param {string=} opt_domain
+ * @param {string=} opt_path
  * @return {!Promise<undefined>}
  */
-Protocol.NetworkAgent.prototype.deleteCookie = function(cookieName, url) {};
-/** @typedef {!{url: string, cookieName: string}} */
-Protocol.NetworkAgent.DeleteCookieRequest;
+Protocol.NetworkAgent.prototype.deleteCookies = function(name, opt_url, opt_domain, opt_path) {};
+/** @typedef {!{url: (string|undefined), path: (string|undefined), domain: (string|undefined), name: string}} */
+Protocol.NetworkAgent.DeleteCookiesRequest;
 /** @typedef {Object|undefined} */
-Protocol.NetworkAgent.DeleteCookieResponse;
+Protocol.NetworkAgent.DeleteCookiesResponse;
 /**
- * @param {!Protocol.NetworkAgent.DeleteCookieRequest} obj
- * @return {!Promise<!Protocol.NetworkAgent.DeleteCookieResponse>} */
-Protocol.NetworkAgent.prototype.invoke_deleteCookie = function(obj) {};
+ * @param {!Protocol.NetworkAgent.DeleteCookiesRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.DeleteCookiesResponse>} */
+Protocol.NetworkAgent.prototype.invoke_deleteCookies = function(obj) {};
 
 /**
  * @param {string} name

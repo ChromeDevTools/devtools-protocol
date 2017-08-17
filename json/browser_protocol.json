@@ -1556,12 +1556,14 @@
                 "experimental": true
             },
             {
-                "name": "deleteCookie",
+                "name": "deleteCookies",
                 "parameters": [
-                    { "name": "cookieName", "type": "string", "description": "Name of the cookie to remove." },
-                    { "name": "url", "type": "string", "description": "URL to match cooke domain and path." }
+                    { "name": "name", "type": "string", "description": "Name of the cookies to remove." },
+                    { "name": "url", "type": "string", "optional": true, "description": "If specified, deletes all the cookies with the given name where domain and path match provided URL." },
+                    { "name": "domain", "type": "string", "optional": true, "description": "If specified, deletes only cookies with the exact domain." },
+                    { "name": "path", "type": "string", "optional": true, "description": "If specified, deletes only cookies with the exact path." }
                 ],
-                "description": "Deletes browser cookie with given name, domain and path.",
+                "description": "Deletes browser cookies with matching name and url or domain/path pair.",
                 "experimental": true
             },
             {
