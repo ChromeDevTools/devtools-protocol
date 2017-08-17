@@ -4605,16 +4605,7 @@ Protocol.InputAgent.SynthesizeTapGestureResponse;
  * @return {!Promise<!Protocol.InputAgent.SynthesizeTapGestureResponse>} */
 Protocol.InputAgent.prototype.invoke_synthesizeTapGesture = function(obj) {};
 
-/** @enum {string} */
-Protocol.Input.TouchPointState = {
-    TouchPressed: "touchPressed",
-    TouchReleased: "touchReleased",
-    TouchMoved: "touchMoved",
-    TouchStationary: "touchStationary",
-    TouchCancelled: "touchCancelled"
-};
-
-/** @typedef {!{state:(Protocol.Input.TouchPointState), x:(number), y:(number), radiusX:(number|undefined), radiusY:(number|undefined), rotationAngle:(number|undefined), force:(number|undefined), id:(number|undefined)}} */
+/** @typedef {!{x:(number), y:(number), radiusX:(number|undefined), radiusY:(number|undefined), rotationAngle:(number|undefined), force:(number|undefined), id:(number|undefined)}} */
 Protocol.Input.TouchPoint;
 
 /** @enum {string} */
