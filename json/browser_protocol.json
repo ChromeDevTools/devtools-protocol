@@ -1182,6 +1182,29 @@
         ]
     },
     {
+        "domain": "Audits",
+        "description": "Audits domain allows investigation of page violations and possible improvements.",
+        "dependencies": ["Network"],
+        "experimental": true,
+        "commands": [
+            {
+                "name": "getEncodedResponse",
+                "description": "Returns the response body and size if it were re-encoded with the specified settings. Only applies to images.",
+                "parameters": [
+                    { "name": "requestId", "$ref": "Network.RequestId", "description": "Identifier of the network request to get content for." },
+                    { "name": "encoding", "type": "string", "enum": ["webp", "jpeg", "png"], "description": "The encoding to use." },
+                    { "name": "quality", "type": "number", "optional": true, "description": "The quality of the encoding (0-1). (defaults to 1)" },
+                    { "name": "sizeOnly", "type": "boolean", "optional": true, "description": "Whether to only return the size information (defaults to false)." }
+                ],
+                "returns": [
+                    { "name": "body", "type": "string", "optional": true, "description": "The encoded body as a base64 string. Omitted if sizeOnly is true." },
+                    { "name": "originalSize", "type": "integer", "description": "Size before re-encoding." },
+                    { "name": "encodedSize", "type": "integer", "description": "Size after re-encoding." }
+                ]
+            }
+        ]
+    },
+    {
         "domain": "Network",
         "description": "Network domain allows tracking network activities of the page. It exposes information about http, file, data and other requests and responses, their headers, bodies, timing, etc.",
         "dependencies": ["Runtime", "Security"],

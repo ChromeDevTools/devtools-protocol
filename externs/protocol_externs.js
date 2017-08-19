@@ -1481,6 +1481,32 @@ Protocol.SecurityDispatcher.prototype.securityStateChanged = function(securitySt
  * @param {string} requestURL
  */
 Protocol.SecurityDispatcher.prototype.certificateError = function(eventId, errorType, requestURL) {};
+Protocol.Audits = {};
+
+
+/**
+ * @constructor
+*/
+Protocol.AuditsAgent = function(){};
+
+/**
+ * @param {Protocol.Network.RequestId} requestId
+ * @param {string} encoding
+ * @param {number=} opt_quality
+ * @param {boolean=} opt_sizeOnly
+ * @return {!Promise<?string>}
+ */
+Protocol.AuditsAgent.prototype.getEncodedResponse = function(requestId, encoding, opt_quality, opt_sizeOnly) {};
+/** @typedef {!{sizeOnly: (boolean|undefined), quality: (number|undefined), requestId: Protocol.Network.RequestId, encoding: string}} */
+Protocol.AuditsAgent.GetEncodedResponseRequest;
+/** @typedef {!{body: string, encodedSize: number, originalSize: number}} */
+Protocol.AuditsAgent.GetEncodedResponseResponse;
+/**
+ * @param {!Protocol.AuditsAgent.GetEncodedResponseRequest} obj
+ * @return {!Promise<!Protocol.AuditsAgent.GetEncodedResponseResponse>} */
+Protocol.AuditsAgent.prototype.invoke_getEncodedResponse = function(obj) {};
+/** @interface */
+Protocol.AuditsDispatcher = function() {};
 Protocol.Network = {};
 
 
@@ -6979,6 +7005,12 @@ Protocol.TargetBase.prototype.securityAgent = function(){};
  * @param {!Protocol.SecurityDispatcher} dispatcher
  */
 Protocol.TargetBase.prototype.registerSecurityDispatcher = function(dispatcher) {}
+/** @return {!Protocol.AuditsAgent}*/
+Protocol.TargetBase.prototype.auditsAgent = function(){};
+/**
+ * @param {!Protocol.AuditsDispatcher} dispatcher
+ */
+Protocol.TargetBase.prototype.registerAuditsDispatcher = function(dispatcher) {}
 /** @return {!Protocol.NetworkAgent}*/
 Protocol.TargetBase.prototype.networkAgent = function(){};
 /**
