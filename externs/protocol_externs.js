@@ -2874,11 +2874,13 @@ Protocol.DOMAgent.RemoveAttributeResponse;
 Protocol.DOMAgent.prototype.invoke_removeAttribute = function(obj) {};
 
 /**
- * @param {Protocol.DOM.NodeId} nodeId
+ * @param {Protocol.DOM.NodeId=} opt_nodeId
+ * @param {Protocol.DOM.BackendNodeId=} opt_backendNodeId
+ * @param {Protocol.Runtime.RemoteObjectId=} opt_objectId
  * @return {!Promise<?string>}
  */
-Protocol.DOMAgent.prototype.getOuterHTML = function(nodeId) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.prototype.getOuterHTML = function(opt_nodeId, opt_backendNodeId, opt_objectId) {};
+/** @typedef {!{objectId: (Protocol.Runtime.RemoteObjectId|undefined), nodeId: (Protocol.DOM.NodeId|undefined), backendNodeId: (Protocol.DOM.BackendNodeId|undefined)}} */
 Protocol.DOMAgent.GetOuterHTMLRequest;
 /** @typedef {!{outerHTML: string}} */
 Protocol.DOMAgent.GetOuterHTMLResponse;
