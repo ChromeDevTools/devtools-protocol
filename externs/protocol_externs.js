@@ -5895,6 +5895,20 @@ Protocol.RuntimeAgent.RunScriptResponse;
  * @return {!Promise<!Protocol.RuntimeAgent.RunScriptResponse>} */
 Protocol.RuntimeAgent.prototype.invoke_runScript = function(obj) {};
 
+/**
+ * @param {Protocol.Runtime.RemoteObjectId} constructorObjectId
+ * @return {!Promise<?Protocol.Runtime.RemoteObject>}
+ */
+Protocol.RuntimeAgent.prototype.queryObjects = function(constructorObjectId) {};
+/** @typedef {!{constructorObjectId: Protocol.Runtime.RemoteObjectId}} */
+Protocol.RuntimeAgent.QueryObjectsRequest;
+/** @typedef {!{objects: Protocol.Runtime.RemoteObject}} */
+Protocol.RuntimeAgent.QueryObjectsResponse;
+/**
+ * @param {!Protocol.RuntimeAgent.QueryObjectsRequest} obj
+ * @return {!Promise<!Protocol.RuntimeAgent.QueryObjectsResponse>} */
+Protocol.RuntimeAgent.prototype.invoke_queryObjects = function(obj) {};
+
 /** @typedef {string} */
 Protocol.Runtime.ScriptId;
 
