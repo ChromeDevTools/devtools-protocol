@@ -3224,6 +3224,24 @@ Protocol.DOMAgent.GetRelayoutBoundaryResponse;
  * @return {!Promise<!Protocol.DOMAgent.GetRelayoutBoundaryResponse>} */
 Protocol.DOMAgent.prototype.invoke_getRelayoutBoundary = function(obj) {};
 
+/**
+ * @param {Protocol.DOM.NodeId=} opt_nodeId
+ * @param {Protocol.DOM.BackendNodeId=} opt_backendNodeId
+ * @param {Protocol.Runtime.RemoteObjectId=} opt_objectId
+ * @param {number=} opt_depth
+ * @param {boolean=} opt_pierce
+ * @return {!Promise<?Protocol.DOM.Node>}
+ */
+Protocol.DOMAgent.prototype.describeNode = function(opt_nodeId, opt_backendNodeId, opt_objectId, opt_depth, opt_pierce) {};
+/** @typedef {!{depth: (number|undefined), objectId: (Protocol.Runtime.RemoteObjectId|undefined), nodeId: (Protocol.DOM.NodeId|undefined), backendNodeId: (Protocol.DOM.BackendNodeId|undefined), pierce: (boolean|undefined)}} */
+Protocol.DOMAgent.DescribeNodeRequest;
+/** @typedef {!{node: Protocol.DOM.Node}} */
+Protocol.DOMAgent.DescribeNodeResponse;
+/**
+ * @param {!Protocol.DOMAgent.DescribeNodeRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.DescribeNodeResponse>} */
+Protocol.DOMAgent.prototype.invoke_describeNode = function(obj) {};
+
 /** @typedef {number} */
 Protocol.DOM.NodeId;
 
