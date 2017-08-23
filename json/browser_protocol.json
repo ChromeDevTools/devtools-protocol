@@ -642,6 +642,14 @@
                 ]
             },
             {
+                "name": "lifecycleEvent",
+                "parameters": [
+                    { "name": "name", "type": "string" },
+                    { "name": "timestamp", "$ref": "Network.MonotonicTime" }
+                ],
+                "description": "Fired for top level page lifecycle events such as navigation, load, paint, etc."
+            },
+            {
                 "name": "frameAttached",
                 "description": "Fired when frame has been attached to its parent.",
                 "parameters": [

@@ -814,6 +814,11 @@ Protocol.PageDispatcher.prototype.domContentEventFired = function(timestamp) {};
  */
 Protocol.PageDispatcher.prototype.loadEventFired = function(timestamp) {};
 /**
+ * @param {string} name
+ * @param {Protocol.Network.MonotonicTime} timestamp
+ */
+Protocol.PageDispatcher.prototype.lifecycleEvent = function(name, timestamp) {};
+/**
  * @param {Protocol.Page.FrameId} frameId
  * @param {Protocol.Page.FrameId} parentFrameId
  * @param {Protocol.Runtime.StackTrace=} opt_stack
