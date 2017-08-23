@@ -708,6 +708,21 @@ Protocol.PageAgent.BringToFrontResponse;
  * @return {!Promise<!Protocol.PageAgent.BringToFrontResponse>} */
 Protocol.PageAgent.prototype.invoke_bringToFront = function(obj) {};
 
+/**
+ * @param {string} behavior
+ * @param {string=} opt_downloadPath
+ * @return {!Promise<undefined>}
+ */
+Protocol.PageAgent.prototype.setDownloadBehavior = function(behavior, opt_downloadPath) {};
+/** @typedef {!{downloadPath: (string|undefined), behavior: string}} */
+Protocol.PageAgent.SetDownloadBehaviorRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.SetDownloadBehaviorResponse;
+/**
+ * @param {!Protocol.PageAgent.SetDownloadBehaviorRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.SetDownloadBehaviorResponse>} */
+Protocol.PageAgent.prototype.invoke_setDownloadBehavior = function(obj) {};
+
 /** @enum {string} */
 Protocol.Page.ResourceType = {
     Document: "Document",
