@@ -6745,10 +6745,11 @@ Protocol.ProfilerAgent.prototype.invoke_stop = function(obj) {};
 
 /**
  * @param {boolean=} opt_callCount
+ * @param {boolean=} opt_detailed
  * @return {!Promise<undefined>}
  */
-Protocol.ProfilerAgent.prototype.startPreciseCoverage = function(opt_callCount) {};
-/** @typedef {!{callCount: (boolean|undefined)}} */
+Protocol.ProfilerAgent.prototype.startPreciseCoverage = function(opt_callCount, opt_detailed) {};
+/** @typedef {!{detailed: (boolean|undefined), callCount: (boolean|undefined)}} */
 Protocol.ProfilerAgent.StartPreciseCoverageRequest;
 /** @typedef {Object|undefined} */
 Protocol.ProfilerAgent.StartPreciseCoverageResponse;
