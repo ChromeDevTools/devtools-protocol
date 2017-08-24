@@ -5934,11 +5934,11 @@ Protocol.RuntimeAgent.RunScriptResponse;
 Protocol.RuntimeAgent.prototype.invoke_runScript = function(obj) {};
 
 /**
- * @param {Protocol.Runtime.RemoteObjectId} constructorObjectId
+ * @param {Protocol.Runtime.RemoteObjectId} prototypeObjectId
  * @return {!Promise<?Protocol.Runtime.RemoteObject>}
  */
-Protocol.RuntimeAgent.prototype.queryObjects = function(constructorObjectId) {};
-/** @typedef {!{constructorObjectId: Protocol.Runtime.RemoteObjectId}} */
+Protocol.RuntimeAgent.prototype.queryObjects = function(prototypeObjectId) {};
+/** @typedef {!{prototypeObjectId: Protocol.Runtime.RemoteObjectId}} */
 Protocol.RuntimeAgent.QueryObjectsRequest;
 /** @typedef {!{objects: Protocol.Runtime.RemoteObject}} */
 Protocol.RuntimeAgent.QueryObjectsResponse;
