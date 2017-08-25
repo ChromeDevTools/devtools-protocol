@@ -1469,7 +1469,6 @@ Protocol.Security.SecurityState = {
     Unknown: "unknown",
     Neutral: "neutral",
     Insecure: "insecure",
-    Warning: "warning",
     Secure: "secure",
     Info: "info"
 };
