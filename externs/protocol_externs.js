@@ -1855,10 +1855,11 @@ Protocol.NetworkAgent.prototype.invoke_getCertificate = function(obj) {};
 
 /**
  * @param {boolean} enabled
+ * @param {!Array<string>=} opt_patterns
  * @return {!Promise<undefined>}
  */
-Protocol.NetworkAgent.prototype.setRequestInterceptionEnabled = function(enabled) {};
-/** @typedef {!{enabled: boolean}} */
+Protocol.NetworkAgent.prototype.setRequestInterceptionEnabled = function(enabled, opt_patterns) {};
+/** @typedef {!{patterns: (!Array<string>|undefined), enabled: boolean}} */
 Protocol.NetworkAgent.SetRequestInterceptionEnabledRequest;
 /** @typedef {Object|undefined} */
 Protocol.NetworkAgent.SetRequestInterceptionEnabledResponse;
