@@ -60,6 +60,19 @@ Protocol.MemoryAgent.GetDOMCountersResponse;
 Protocol.MemoryAgent.prototype.invoke_getDOMCounters = function(obj) {};
 
 /**
+ * @return {!Promise<undefined>}
+ */
+Protocol.MemoryAgent.prototype.prepareForLeakDetection = function() {};
+/** @typedef {Object|undefined} */
+Protocol.MemoryAgent.PrepareForLeakDetectionRequest;
+/** @typedef {Object|undefined} */
+Protocol.MemoryAgent.PrepareForLeakDetectionResponse;
+/**
+ * @param {!Protocol.MemoryAgent.PrepareForLeakDetectionRequest} obj
+ * @return {!Promise<!Protocol.MemoryAgent.PrepareForLeakDetectionResponse>} */
+Protocol.MemoryAgent.prototype.invoke_prepareForLeakDetection = function(obj) {};
+
+/**
  * @param {boolean} suppressed
  * @return {!Promise<undefined>}
  */

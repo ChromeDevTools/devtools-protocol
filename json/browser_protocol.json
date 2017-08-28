@@ -49,6 +49,9 @@
                 ]
             },
             {
+                "name": "prepareForLeakDetection"
+            },
+            {
                 "name": "setPressureNotificationsSuppressed",
                 "description": "Enable/disable suppressing memory pressure notifications in all processes.",
                 "parameters": [
