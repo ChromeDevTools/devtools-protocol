@@ -2477,7 +2477,7 @@ Protocol.CacheStorageAgent.prototype.invoke_requestCachedResponse = function(obj
 /** @typedef {string} */
 Protocol.CacheStorage.CacheId;
 
-/** @typedef {!{requestURL:(string), responseTime:(number), responseHeaders:(!Array<Protocol.CacheStorage.Header>)}} */
+/** @typedef {!{requestURL:(string), requestMethod:(string), requestHeaders:(!Array<Protocol.CacheStorage.Header>), responseTime:(number), responseStatus:(number), responseStatusText:(string), responseHeaders:(!Array<Protocol.CacheStorage.Header>)}} */
 Protocol.CacheStorage.DataEntry;
 
 /** @typedef {!{cacheId:(Protocol.CacheStorage.CacheId), securityOrigin:(string), cacheName:(string)}} */

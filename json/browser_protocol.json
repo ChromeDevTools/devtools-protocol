@@ -2129,7 +2129,11 @@
                 "description": "Data entry.",
                 "properties": [
                     { "name": "requestURL", "type": "string", "description": "Request URL." },
+                    { "name": "requestMethod", "type": "string", "description": "Request method." },
+                    { "name": "requestHeaders", "type": "array", "items": { "$ref": "Header" }, "description": "Request headers" },
                     { "name": "responseTime", "type": "number", "description": "Number of seconds since epoch." },
+                    { "name": "responseStatus", "type": "integer", "description": "HTTP response status code." },
+                    { "name": "responseStatusText", "type": "string", "description": "HTTP response status text." },
                     { "name": "responseHeaders", "type": "array", "items": { "$ref": "Header" }, "description": "Response headers" }
                 ]
             },
