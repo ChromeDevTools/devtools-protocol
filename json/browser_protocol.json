@@ -1094,7 +1094,15 @@
             {
                 "name": "virtualTimeBudgetExpired",
                 "experimental": true,
-                "description": "Notification sent after the virual time budget for the current VirtualTimePolicy has run out."
+                "description": "Notification sent after the virtual time budget for the current VirtualTimePolicy has run out."
+            },
+            {
+                "name": "virtualTimePaused",
+                "experimental": true,
+                "parameters": [
+                    { "name": "virtualTimeElapsed", "type": "integer", "description": "The amount of virtual time that has elapsed in milliseconds since virtual time was first enabled." }
+                ],
+                "description": "Notification sent after the virtual time has paused."
             }
         ]
     },

@@ -1404,6 +1404,10 @@ Protocol.Emulation.VirtualTimePolicy = {
 /** @interface */
 Protocol.EmulationDispatcher = function() {};
 Protocol.EmulationDispatcher.prototype.virtualTimeBudgetExpired = function() {};
+/**
+ * @param {number} virtualTimeElapsed
+ */
+Protocol.EmulationDispatcher.prototype.virtualTimePaused = function(virtualTimeElapsed) {};
 Protocol.Security = {};
 
 
