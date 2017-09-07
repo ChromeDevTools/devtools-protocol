@@ -1277,7 +1277,7 @@
                 "id": "ConnectionType",
                 "type": "string",
                 "enum": ["none", "cellular2g", "cellular3g", "cellular4g", "bluetooth", "ethernet", "wifi", "wimax", "other"],
-                "description": "Loading priority of a resource request."
+                "description": "The underlying connection technology that the browser is supposedly using."
             },
             {
                 "id": "CookieSameSite",
@@ -1657,9 +1657,9 @@
                 "description": "Activates emulation of network conditions.",
                 "parameters": [
                     { "name": "offline", "type": "boolean", "description": "True to emulate internet disconnection." },
-                    { "name": "latency", "type": "number", "description": "Additional latency (ms)." },
-                    { "name": "downloadThroughput", "type": "number", "description": "Maximal aggregated download throughput." },
-                    { "name": "uploadThroughput", "type": "number", "description": "Maximal aggregated upload throughput." },
+                    { "name": "latency", "type": "number", "description": "Minimum latency from request sent to response headers received (ms)." },
+                    { "name": "downloadThroughput", "type": "number", "description": "Maximal aggregated download throughput (bytes/sec). -1 disables download throttling." },
+                    { "name": "uploadThroughput", "type": "number", "description": "Maximal aggregated upload throughput (bytes/sec).  -1 disables upload throttling." },
                     { "name": "connectionType", "$ref": "ConnectionType", "optional": true, "description": "Connection type if known."}
                 ]
             },
