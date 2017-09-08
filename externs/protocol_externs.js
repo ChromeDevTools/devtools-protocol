@@ -6819,6 +6819,45 @@ Protocol.ProfilerAgent.GetBestEffortCoverageResponse;
  * @return {!Promise<!Protocol.ProfilerAgent.GetBestEffortCoverageResponse>} */
 Protocol.ProfilerAgent.prototype.invoke_getBestEffortCoverage = function(obj) {};
 
+/**
+ * @return {!Promise<undefined>}
+ */
+Protocol.ProfilerAgent.prototype.startTypeProfile = function() {};
+/** @typedef {Object|undefined} */
+Protocol.ProfilerAgent.StartTypeProfileRequest;
+/** @typedef {Object|undefined} */
+Protocol.ProfilerAgent.StartTypeProfileResponse;
+/**
+ * @param {!Protocol.ProfilerAgent.StartTypeProfileRequest} obj
+ * @return {!Promise<!Protocol.ProfilerAgent.StartTypeProfileResponse>} */
+Protocol.ProfilerAgent.prototype.invoke_startTypeProfile = function(obj) {};
+
+/**
+ * @return {!Promise<undefined>}
+ */
+Protocol.ProfilerAgent.prototype.stopTypeProfile = function() {};
+/** @typedef {Object|undefined} */
+Protocol.ProfilerAgent.StopTypeProfileRequest;
+/** @typedef {Object|undefined} */
+Protocol.ProfilerAgent.StopTypeProfileResponse;
+/**
+ * @param {!Protocol.ProfilerAgent.StopTypeProfileRequest} obj
+ * @return {!Promise<!Protocol.ProfilerAgent.StopTypeProfileResponse>} */
+Protocol.ProfilerAgent.prototype.invoke_stopTypeProfile = function(obj) {};
+
+/**
+ * @return {!Promise<?Array<Protocol.Profiler.ScriptTypeProfile>>}
+ */
+Protocol.ProfilerAgent.prototype.takeTypeProfile = function() {};
+/** @typedef {Object|undefined} */
+Protocol.ProfilerAgent.TakeTypeProfileRequest;
+/** @typedef {!{result: !Array<Protocol.Profiler.ScriptTypeProfile>}} */
+Protocol.ProfilerAgent.TakeTypeProfileResponse;
+/**
+ * @param {!Protocol.ProfilerAgent.TakeTypeProfileRequest} obj
+ * @return {!Promise<!Protocol.ProfilerAgent.TakeTypeProfileResponse>} */
+Protocol.ProfilerAgent.prototype.invoke_takeTypeProfile = function(obj) {};
+
 /** @typedef {!{id:(number), callFrame:(Protocol.Runtime.CallFrame), hitCount:(number|undefined), children:(!Array<number>|undefined), deoptReason:(string|undefined), positionTicks:(!Array<Protocol.Profiler.PositionTickInfo>|undefined)}} */
 Protocol.Profiler.ProfileNode;
 
@@ -6836,6 +6875,15 @@ Protocol.Profiler.FunctionCoverage;
 
 /** @typedef {!{scriptId:(Protocol.Runtime.ScriptId), url:(string), functions:(!Array<Protocol.Profiler.FunctionCoverage>)}} */
 Protocol.Profiler.ScriptCoverage;
+
+/** @typedef {!{name:(string)}} */
+Protocol.Profiler.TypeObject;
+
+/** @typedef {!{offset:(number), types:(!Array<Protocol.Profiler.TypeObject>)}} */
+Protocol.Profiler.TypeProfileEntry;
+
+/** @typedef {!{scriptId:(Protocol.Runtime.ScriptId), url:(string), entries:(!Array<Protocol.Profiler.TypeProfileEntry>)}} */
+Protocol.Profiler.ScriptTypeProfile;
 /** @interface */
 Protocol.ProfilerDispatcher = function() {};
 /**
