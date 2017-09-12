@@ -1371,6 +1371,20 @@ Protocol.EmulationAgent.SetVirtualTimePolicyResponse;
 Protocol.EmulationAgent.prototype.invoke_setVirtualTimePolicy = function(obj) {};
 
 /**
+ * @param {string} platform
+ * @return {!Promise<undefined>}
+ */
+Protocol.EmulationAgent.prototype.setNavigatorOverrides = function(platform) {};
+/** @typedef {!{platform: string}} */
+Protocol.EmulationAgent.SetNavigatorOverridesRequest;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.SetNavigatorOverridesResponse;
+/**
+ * @param {!Protocol.EmulationAgent.SetNavigatorOverridesRequest} obj
+ * @return {!Promise<!Protocol.EmulationAgent.SetNavigatorOverridesResponse>} */
+Protocol.EmulationAgent.prototype.invoke_setNavigatorOverrides = function(obj) {};
+
+/**
  * @param {Protocol.DOM.RGBA=} opt_color
  * @return {!Promise<undefined>}
  */

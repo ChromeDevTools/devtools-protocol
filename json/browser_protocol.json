@@ -1082,6 +1082,14 @@
                 "experimental": true
             },
             {
+                "name": "setNavigatorOverrides",
+                "description": "Overrides value returned by the javascript navigator object.",
+                "parameters": [
+                    { "name": "platform", "type": "string", "description": "The platform navigator.platform should return." }
+                ],
+                "experimental": true
+            },
+            {
                 "name": "setDefaultBackgroundColorOverride",
                 "description": "Sets or clears an override of the default background color of the frame. This override is used if the content does not specify one.",
                 "parameters": [
