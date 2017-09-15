@@ -4437,6 +4437,19 @@ Protocol.ServiceWorkerAgent.StopWorkerResponse;
 Protocol.ServiceWorkerAgent.prototype.invoke_stopWorker = function(obj) {};
 
 /**
+ * @return {!Promise<undefined>}
+ */
+Protocol.ServiceWorkerAgent.prototype.stopAllWorkers = function() {};
+/** @typedef {Object|undefined} */
+Protocol.ServiceWorkerAgent.StopAllWorkersRequest;
+/** @typedef {Object|undefined} */
+Protocol.ServiceWorkerAgent.StopAllWorkersResponse;
+/**
+ * @param {!Protocol.ServiceWorkerAgent.StopAllWorkersRequest} obj
+ * @return {!Promise<!Protocol.ServiceWorkerAgent.StopAllWorkersResponse>} */
+Protocol.ServiceWorkerAgent.prototype.invoke_stopAllWorkers = function(obj) {};
+
+/**
  * @param {string} versionId
  * @return {!Promise<undefined>}
  */

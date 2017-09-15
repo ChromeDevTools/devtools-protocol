@@ -4086,6 +4086,9 @@
                 ]
             },
             {
+                "name": "stopAllWorkers"
+            },
+            {
                 "name": "inspectWorker",
                 "parameters": [
                     { "name": "versionId", "type": "string" }
