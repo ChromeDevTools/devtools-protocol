@@ -4988,7 +4988,7 @@
                 "type": "object",
                 "description": "Log entry.",
                 "properties": [
-                    { "name": "source", "type": "string", "enum": ["xml", "javascript", "network", "storage", "appcache", "rendering", "security", "deprecation", "worker", "violation", "intervention", "other"], "description": "Log entry source." },
+                    { "name": "source", "type": "string", "enum": ["xml", "javascript", "network", "storage", "appcache", "rendering", "security", "deprecation", "worker", "violation", "intervention", "recommendation", "other"], "description": "Log entry source." },
                     { "name": "level", "type": "string", "enum": ["verbose", "info", "warning", "error"], "description": "Log entry severity." },
                     { "name": "text", "type": "string", "description": "Logged text." },
                     { "name": "timestamp", "$ref": "Runtime.Timestamp", "description": "Timestamp when this entry was added." },
@@ -4996,7 +4996,8 @@
                     { "name": "lineNumber", "type": "integer", "optional": true, "description": "Line number in the resource." },
                     { "name": "stackTrace", "$ref": "Runtime.StackTrace", "optional": true, "description": "JavaScript stack trace." },
                     { "name": "networkRequestId", "$ref": "Network.RequestId", "optional": true, "description": "Identifier of the network request associated with this entry." },
-                    { "name": "workerId", "type": "string", "optional": true, "description": "Identifier of the worker associated with this entry." }
+                    { "name": "workerId", "type": "string", "optional": true, "description": "Identifier of the worker associated with this entry." },
+                    { "name": "args", "type": "array", "items": { "$ref": "Runtime.RemoteObject" }, "optional": true, "description": "Call arguments." }
                 ]
             },
             {

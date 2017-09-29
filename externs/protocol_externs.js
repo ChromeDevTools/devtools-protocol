@@ -5595,6 +5595,7 @@ Protocol.Log.LogEntrySource = {
     Worker: "worker",
     Violation: "violation",
     Intervention: "intervention",
+    Recommendation: "recommendation",
     Other: "other"
 };
 
@@ -5606,7 +5607,7 @@ Protocol.Log.LogEntryLevel = {
     Error: "error"
 };
 
-/** @typedef {!{source:(Protocol.Log.LogEntrySource), level:(Protocol.Log.LogEntryLevel), text:(string), timestamp:(Protocol.Runtime.Timestamp), url:(string|undefined), lineNumber:(number|undefined), stackTrace:(Protocol.Runtime.StackTrace|undefined), networkRequestId:(Protocol.Network.RequestId|undefined), workerId:(string|undefined)}} */
+/** @typedef {!{source:(Protocol.Log.LogEntrySource), level:(Protocol.Log.LogEntryLevel), text:(string), timestamp:(Protocol.Runtime.Timestamp), url:(string|undefined), lineNumber:(number|undefined), stackTrace:(Protocol.Runtime.StackTrace|undefined), networkRequestId:(Protocol.Network.RequestId|undefined), workerId:(string|undefined), args:(!Array<Protocol.Runtime.RemoteObject>|undefined)}} */
 Protocol.Log.LogEntry;
 
 /** @enum {string} */
