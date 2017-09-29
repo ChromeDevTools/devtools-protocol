@@ -5442,6 +5442,34 @@ Protocol.StorageAgent.UntrackCacheStorageForOriginResponse;
  * @return {!Promise<!Protocol.StorageAgent.UntrackCacheStorageForOriginResponse>} */
 Protocol.StorageAgent.prototype.invoke_untrackCacheStorageForOrigin = function(obj) {};
 
+/**
+ * @param {string} origin
+ * @return {!Promise<undefined>}
+ */
+Protocol.StorageAgent.prototype.trackIndexedDBForOrigin = function(origin) {};
+/** @typedef {!{origin: string}} */
+Protocol.StorageAgent.TrackIndexedDBForOriginRequest;
+/** @typedef {Object|undefined} */
+Protocol.StorageAgent.TrackIndexedDBForOriginResponse;
+/**
+ * @param {!Protocol.StorageAgent.TrackIndexedDBForOriginRequest} obj
+ * @return {!Promise<!Protocol.StorageAgent.TrackIndexedDBForOriginResponse>} */
+Protocol.StorageAgent.prototype.invoke_trackIndexedDBForOrigin = function(obj) {};
+
+/**
+ * @param {string} origin
+ * @return {!Promise<undefined>}
+ */
+Protocol.StorageAgent.prototype.untrackIndexedDBForOrigin = function(origin) {};
+/** @typedef {!{origin: string}} */
+Protocol.StorageAgent.UntrackIndexedDBForOriginRequest;
+/** @typedef {Object|undefined} */
+Protocol.StorageAgent.UntrackIndexedDBForOriginResponse;
+/**
+ * @param {!Protocol.StorageAgent.UntrackIndexedDBForOriginRequest} obj
+ * @return {!Promise<!Protocol.StorageAgent.UntrackIndexedDBForOriginResponse>} */
+Protocol.StorageAgent.prototype.invoke_untrackIndexedDBForOrigin = function(obj) {};
+
 /** @enum {string} */
 Protocol.Storage.StorageType = {
     Appcache: "appcache",
@@ -5470,6 +5498,16 @@ Protocol.StorageDispatcher.prototype.cacheStorageListUpdated = function(origin) 
  * @param {string} cacheName
  */
 Protocol.StorageDispatcher.prototype.cacheStorageContentUpdated = function(origin, cacheName) {};
+/**
+ * @param {string} origin
+ */
+Protocol.StorageDispatcher.prototype.indexedDBListUpdated = function(origin) {};
+/**
+ * @param {string} origin
+ * @param {string} databaseName
+ * @param {string} objectStoreName
+ */
+Protocol.StorageDispatcher.prototype.indexedDBContentUpdated = function(origin, databaseName, objectStoreName) {};
 Protocol.Log = {};
 
 
