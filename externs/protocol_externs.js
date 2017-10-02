@@ -5212,10 +5212,10 @@ Protocol.Animation.AnimationType = {
     WebAnimation: "WebAnimation"
 };
 
-/** @typedef {!{id:(string), name:(string), pausedState:(boolean), playState:(string), playbackRate:(number), startTime:(number), currentTime:(number), source:(Protocol.Animation.AnimationEffect), type:(Protocol.Animation.AnimationType), cssId:(string|undefined)}} */
+/** @typedef {!{id:(string), name:(string), pausedState:(boolean), playState:(string), playbackRate:(number), startTime:(number), currentTime:(number), type:(Protocol.Animation.AnimationType), source:(Protocol.Animation.AnimationEffect|undefined), cssId:(string|undefined)}} */
 Protocol.Animation.Animation;
 
-/** @typedef {!{delay:(number), endDelay:(number), iterationStart:(number), iterations:(number), duration:(number), direction:(string), fill:(string), backendNodeId:(Protocol.DOM.BackendNodeId), keyframesRule:(Protocol.Animation.KeyframesRule|undefined), easing:(string)}} */
+/** @typedef {!{delay:(number), endDelay:(number), iterationStart:(number), iterations:(number), duration:(number), direction:(string), fill:(string), backendNodeId:(Protocol.DOM.BackendNodeId|undefined), keyframesRule:(Protocol.Animation.KeyframesRule|undefined), easing:(string)}} */
 Protocol.Animation.AnimationEffect;
 
 /** @typedef {!{name:(string|undefined), keyframes:(!Array<Protocol.Animation.KeyframeStyle>)}} */
