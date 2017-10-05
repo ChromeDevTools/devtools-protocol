@@ -1421,6 +1421,10 @@ Protocol.EmulationDispatcher.prototype.virtualTimeBudgetExpired = function() {};
 /**
  * @param {number} virtualTimeElapsed
  */
+Protocol.EmulationDispatcher.prototype.virtualTimeAdvanced = function(virtualTimeElapsed) {};
+/**
+ * @param {number} virtualTimeElapsed
+ */
 Protocol.EmulationDispatcher.prototype.virtualTimePaused = function(virtualTimeElapsed) {};
 Protocol.Security = {};
 

@@ -697,7 +697,7 @@
                 "parameters": [
                     { "name": "frameId", "$ref": "FrameId", "description": "Id of the frame that has scheduled a navigation." },
                     { "name": "delay", "type": "number", "description": "Delay (in seconds) until the navigation is scheduled to begin. The navigation is not guaranteed to start." },
-                    { "name": "reason", "type": "string", "experimental": true, "enum": ["formSubmission", "httpHeaderRefresh", "scriptInitiated", "metaTagRefresh", "pageBlockInterstitial", "reload"], "description": "The reason for the navigation." },
+                    { "name": "reason", "type": "string", "experimental": true, "enum": ["formSubmissionGet", "formSubmissionPost", "httpHeaderRefresh", "scriptInitiated", "metaTagRefresh", "pageBlockInterstitial", "reload"], "description": "The reason for the navigation." },
                     { "name": "url", "type": "string", "experimental": true, "description": "The destination URL for the scheduled navigation." }
                 ],
                 "experimental": true
@@ -1103,6 +1103,14 @@
                 "name": "virtualTimeBudgetExpired",
                 "experimental": true,
                 "description": "Notification sent after the virtual time budget for the current VirtualTimePolicy has run out."
+            },
+            {
+                "name": "virtualTimeAdvanced",
+                "experimental": true,
+                "parameters": [
+                    { "name": "virtualTimeElapsed", "type": "integer", "description": "The amount of virtual time that has elapsed in milliseconds since virtual time was first enabled." }
+                ],
+                "description": "Notification sent after the virtual time has advanced."
             },
             {
                 "name": "virtualTimePaused",
