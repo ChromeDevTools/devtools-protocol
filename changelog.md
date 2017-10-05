@@ -1,19 +1,22 @@
 
 
-## Roll protocol to r505811  _(2017-10-02 15:15:35)_
+## Roll protocol to r505811 
+Date: 2017-10-02 15:15:35
 Diff: [ae7b452...e81a47d](https://github.com/ChromeDevTools/devtools-protocol/compare/ae7b452...e81a47d)
 #### `Animation`: modified types
 * [`Animation.Animation`](https://chromedevtools.github.io/devtools-protocol/tot/Animation/#type-Animation)
 * [`Animation.AnimationEffect`](https://chromedevtools.github.io/devtools-protocol/tot/Animation/#type-AnimationEffect)
 
 
-## Roll protocol to r505461 _(2017-09-29 15:15:43)_
+## Roll protocol to r505461
+Date: 2017-09-29 15:15:43
 Diff: [80f8dac...ae7b452](https://github.com/ChromeDevTools/devtools-protocol/compare/80f8dac...ae7b452)
 #### `Log`: modified type
 * [`Log.LogEntry`](https://chromedevtools.github.io/devtools-protocol/tot/Log/#type-LogEntry)
 
 
-## Roll protocol to r505240 _(2017-09-28 18:15:42)_
+## Roll protocol to r505240
+Date: 2017-09-28 18:15:42
 Diff: [406b6a8...80f8dac](https://github.com/ChromeDevTools/devtools-protocol/compare/406b6a8...80f8dac)
 #### `Storage`: new commands
 * [`Storage.trackIndexedDBForOrigin`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#method-trackIndexedDBForOrigin)
@@ -23,38 +26,44 @@ Diff: [406b6a8...80f8dac](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Storage.indexedDBContentUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#event-indexedDBContentUpdated)
 
 
-## Roll protocol to r504912 _(2017-09-27 22:15:34)_
+## Roll protocol to r504912
+Date: 2017-09-27 22:15:34
 Diff: [c690a27...406b6a8](https://github.com/ChromeDevTools/devtools-protocol/compare/c690a27...406b6a8)
 #### `Runtime`: modified event
 * [`Runtime.exceptionRevoked`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#event-exceptionRevoked)
 
 
-## Roll protocol to r504880 _(2017-09-27 20:15:26)_
+## Roll protocol to r504880
+Date: 2017-09-27 20:15:26
 Diff: [6ab68c9...c690a27](https://github.com/ChromeDevTools/devtools-protocol/compare/6ab68c9...c690a27)
 #### `DOM`: modified command
 * [`DOM.getSearchResults`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getSearchResults)
 
 
-## Roll protocol to r504262 _(2017-09-25 19:15:28)_
+## Roll protocol to r504262
+Date: 2017-09-25 19:15:28
 Diff: [6c8cab7...6ab68c9](https://github.com/ChromeDevTools/devtools-protocol/compare/6c8cab7...6ab68c9)
 #### `Network`: modified types
 * [`Network.Response`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Response)
 * [`Network.WebSocketResponse`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-WebSocketResponse)
 
 
-## Roll protocol to r502201 _(2017-09-15 01:15:32)_
+## Roll protocol to r502201
+Date: 2017-09-15 01:15:32
 Diff: [f2d4460...6c8cab7](https://github.com/ChromeDevTools/devtools-protocol/compare/f2d4460...6c8cab7)
 #### `ServiceWorker`: new command
 * [`ServiceWorker.stopAllWorkers`](https://chromedevtools.github.io/devtools-protocol/tot/ServiceWorker/#method-stopAllWorkers)
 
 
-## Roll protocol to r501229 _(2017-09-12 03:15:42)_
+## Roll protocol to r501229
+Date: 2017-09-12 03:15:42
 Diff: [fee6891...f2d4460](https://github.com/ChromeDevTools/devtools-protocol/compare/fee6891...f2d4460)
 #### `Emulation`: new command
 * [`Emulation.setNavigatorOverrides`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setNavigatorOverrides)
 
 
-## Roll protocol to r500703 _(2017-09-08 15:15:55)_
+## Roll protocol to r500703
+Date: 2017-09-08 15:15:55
 Diff: [adb2948...fee6891](https://github.com/ChromeDevTools/devtools-protocol/compare/adb2948...fee6891)
 #### `Profiler`: new commands
 * [`Profiler.startTypeProfile`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-startTypeProfile)
@@ -66,19 +75,22 @@ Diff: [adb2948...fee6891](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Profiler.ScriptTypeProfile`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-ScriptTypeProfile)
 
 
-## Roll protocol to r500564 _(2017-09-08 04:15:36)_
+## Roll protocol to r500564
+Date: 2017-09-08 04:15:36
 Diff: [7794931...adb2948](https://github.com/ChromeDevTools/devtools-protocol/compare/7794931...adb2948)
 #### `Debugger`: modified type
 * [`Debugger.CallFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#type-CallFrame)
 
 
-## Roll protocol to r500445 _(2017-09-07 17:15:41)_
+## Roll protocol to r500445
+Date: 2017-09-07 17:15:41
 Diff: [ce22a9f...7794931](https://github.com/ChromeDevTools/devtools-protocol/compare/ce22a9f...7794931)
 #### `Input`: modified type
 * [`Input.TouchPoint`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#type-TouchPoint)
 
 
-## Roll protocol to r500221 _(2017-09-06 22:15:25)_
+## Roll protocol to r500221
+Date: 2017-09-06 22:15:25
 Diff: [a0d1c79...ce22a9f](https://github.com/ChromeDevTools/devtools-protocol/compare/a0d1c79...ce22a9f)
 #### `Network`: modified command
 * [`Network.emulateNetworkConditions`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-emulateNetworkConditions)
@@ -86,7 +98,8 @@ Diff: [a0d1c79...ce22a9f](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Network.ConnectionType`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ConnectionType)
 
 
-## Roll protocol to r499605 _(2017-09-05 05:16:01)_
+## Roll protocol to r499605
+Date: 2017-09-05 05:16:01
 Diff: [96c09fd...a0d1c79](https://github.com/ChromeDevTools/devtools-protocol/compare/96c09fd...a0d1c79)
 #### `Emulation`: new event
 * [`Emulation.virtualTimePaused`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#event-virtualTimePaused)
@@ -94,7 +107,8 @@ Diff: [96c09fd...a0d1c79](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Emulation.virtualTimeBudgetExpired`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#event-virtualTimeBudgetExpired)
 
 
-## Roll protocol to r499541 _(2017-09-04 19:15:31)_
+## Roll protocol to r499541
+Date: 2017-09-04 19:15:31
 Diff: [a7c9118...96c09fd](https://github.com/ChromeDevTools/devtools-protocol/compare/a7c9118...96c09fd)
 #### `Page`: modified command
 * [`Page.setDeviceMetricsOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setDeviceMetricsOverride)
@@ -102,7 +116,8 @@ Diff: [a7c9118...96c09fd](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Emulation.setDeviceMetricsOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setDeviceMetricsOverride)
 
 
-## Roll protocol to r499413 _(2017-09-03 02:15:28)_
+## Roll protocol to r499413
+Date: 2017-09-03 02:15:28
 Diff: [78d5984...a7c9118](https://github.com/ChromeDevTools/devtools-protocol/compare/78d5984...a7c9118)
 #### `Emulation`: removed event
 * [`Emulation.virtualTimePaused`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#event-virtualTimePaused)
@@ -110,13 +125,15 @@ Diff: [78d5984...a7c9118](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Emulation.virtualTimeBudgetExpired`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#event-virtualTimeBudgetExpired)
 
 
-## Roll protocol to r499273 _(2017-09-01 13:15:31)_
+## Roll protocol to r499273
+Date: 2017-09-01 13:15:31
 Diff: [95fdb0b...78d5984](https://github.com/ChromeDevTools/devtools-protocol/compare/95fdb0b...78d5984)
 #### `Runtime`: modified command
 * [`Runtime.callFunctionOn`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-callFunctionOn)
 
 
-## Roll protocol to r498841 _(2017-08-31 06:16:26)_
+## Roll protocol to r498841
+Date: 2017-08-31 06:16:26
 Diff: [44bc1f3...95fdb0b](https://github.com/ChromeDevTools/devtools-protocol/compare/44bc1f3...95fdb0b)
 #### `Runtime`: modified command
 * [`Runtime.callFunctionOn`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-callFunctionOn)
@@ -126,19 +143,22 @@ Diff: [44bc1f3...95fdb0b](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Emulation.virtualTimeBudgetExpired`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#event-virtualTimeBudgetExpired)
 
 
-## Roll protocol to r498768 _(2017-08-30 23:15:32)_
+## Roll protocol to r498768
+Date: 2017-08-30 23:15:32
 Diff: [7d46741...44bc1f3](https://github.com/ChromeDevTools/devtools-protocol/compare/7d46741...44bc1f3)
 #### `Runtime`: modified command
 * [`Runtime.callFunctionOn`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-callFunctionOn)
 
 
-## Roll protocol to r498659 _(2017-08-30 16:15:32)_
+## Roll protocol to r498659
+Date: 2017-08-30 16:15:32
 Diff: [4c6535a...7d46741](https://github.com/ChromeDevTools/devtools-protocol/compare/4c6535a...7d46741)
 #### `CacheStorage`: modified type
 * [`CacheStorage.DataEntry`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#type-DataEntry)
 
 
-## Roll protocol to r498251 _(2017-08-29 15:15:42)_
+## Roll protocol to r498251
+Date: 2017-08-29 15:15:42
 Diff: [a5dfd5d...4c6535a](https://github.com/ChromeDevTools/devtools-protocol/compare/a5dfd5d...4c6535a)
 #### `CacheStorage`: new type
 * [`CacheStorage.Header`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#type-Header)
@@ -147,85 +167,99 @@ Diff: [a5dfd5d...4c6535a](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`CacheStorage.CachedResponse`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#type-CachedResponse)
 
 
-## Roll protocol to r497858 _(2017-08-28 13:15:33)_
+## Roll protocol to r497858
+Date: 2017-08-28 13:15:33
 Diff: [afb185e...a5dfd5d](https://github.com/ChromeDevTools/devtools-protocol/compare/afb185e...a5dfd5d)
 #### `Runtime`: modified type
 * [`Runtime.CallArgument`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-CallArgument)
 
 
-## Roll protocol to r497762 _(2017-08-28 08:15:29)_
+## Roll protocol to r497762
+Date: 2017-08-28 08:15:29
 Diff: [03d4f5f...afb185e](https://github.com/ChromeDevTools/devtools-protocol/compare/03d4f5f...afb185e)
 #### `Runtime`: modified type
 * [`Runtime.CallArgument`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-CallArgument)
 
 
-## Roll protocol to r497708 _(2017-08-28 01:15:30)_
+## Roll protocol to r497708
+Date: 2017-08-28 01:15:30
 Diff: [0958f69...03d4f5f](https://github.com/ChromeDevTools/devtools-protocol/compare/0958f69...03d4f5f)
 #### `Memory`: new command
 * [`Memory.prepareForLeakDetection`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#method-prepareForLeakDetection)
 
 
-## Roll protocol to r497654 _(2017-08-25 22:15:24)_
+## Roll protocol to r497654
+Date: 2017-08-25 22:15:24
 Diff: [7f086f5...0958f69](https://github.com/ChromeDevTools/devtools-protocol/compare/7f086f5...0958f69)
 #### `Runtime`: modified type
 * [`Runtime.CallArgument`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-CallArgument)
 
 
-## Roll protocol to r497463 _(2017-08-25 11:15:26)_
+## Roll protocol to r497463
+Date: 2017-08-25 11:15:26
 Diff: [57e8992...7f086f5](https://github.com/ChromeDevTools/devtools-protocol/compare/57e8992...7f086f5)
 #### `Security`: modified type
 * [`Security.SecurityState`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#type-SecurityState)
 
 
-## Roll protocol to r497428 _(2017-08-25 09:15:25)_
+## Roll protocol to r497428
+Date: 2017-08-25 09:15:25
 Diff: [dd57a17...57e8992](https://github.com/ChromeDevTools/devtools-protocol/compare/dd57a17...57e8992)
 #### `Network`: modified command
 * [`Network.setRequestInterceptionEnabled`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setRequestInterceptionEnabled)
 
 
-## Roll protocol to r496905 _(2017-08-23 18:15:33)_
+## Roll protocol to r496905
+Date: 2017-08-23 18:15:33
 Diff: [3789a0d...dd57a17](https://github.com/ChromeDevTools/devtools-protocol/compare/3789a0d...dd57a17)
 #### `Runtime`: modified command
 * [`Runtime.queryObjects`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-queryObjects)
 
 
-## Roll protocol to r496688 _(2017-08-23 08:15:29)_
+## Roll protocol to r496688
+Date: 2017-08-23 08:15:29
 Diff: [326cc31...3789a0d](https://github.com/ChromeDevTools/devtools-protocol/compare/326cc31...3789a0d)
 #### `Profiler`: modified command
 * [`Profiler.startPreciseCoverage`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-startPreciseCoverage)
 
 
-## Roll protocol to r496607 _(2017-08-23 00:15:24)_
+## Roll protocol to r496607
+Date: 2017-08-23 00:15:24
 Diff: [a223c0c...326cc31](https://github.com/ChromeDevTools/devtools-protocol/compare/a223c0c...326cc31)
 #### `Page`: new event
 * [`Page.lifecycleEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-lifecycleEvent)
 
 
-## Roll protocol to r496585 _(2017-08-22 21:15:27)_
+## Roll protocol to r496585
+Date: 2017-08-22 21:15:27
 Diff: [f1b621f...a223c0c](https://github.com/ChromeDevTools/devtools-protocol/compare/f1b621f...a223c0c)
 #### `Page`: new command
 * [`Page.setDownloadBehavior`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setDownloadBehavior)
 
 
-## Roll protocol to r496160 _(2017-08-21 18:15:31)_
+## Roll protocol to r496160
+Date: 2017-08-21 18:15:31
 Diff: [7109da3...f1b621f](https://github.com/ChromeDevTools/devtools-protocol/compare/7109da3...f1b621f)
 #### `DOM`: new command
 * [`DOM.describeNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-describeNode)
 
 
-## Roll protocol to r496061 _(2017-08-21 14:15:32)_
+## Roll protocol to r496061
+Date: 2017-08-21 14:15:32
 Diff: [1da2f21...7109da3](https://github.com/ChromeDevTools/devtools-protocol/compare/1da2f21...7109da3)
 #### `Runtime`: new command
 * [`Runtime.queryObjects`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-queryObjects)
 
 
-## Roll protocol to r495853 _(2017-08-20 15:15:25)_
+## Roll protocol to r495853
+Date: 2017-08-20 15:15:25
 Diff: [40a1403...1da2f21](https://github.com/ChromeDevTools/devtools-protocol/compare/40a1403...1da2f21)
 #### `DOM`: modified command
 * [`DOM.getOuterHTML`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getOuterHTML)
 
 
-## Roll protocol to r495828 _(2017-08-19 15:15:24)_
+## Roll protocol to r495828
+Date: 2017-08-19 15:15:24
 Diff: [f253796...40a1403](https://github.com/ChromeDevTools/devtools-protocol/compare/f253796...40a1403)
 #### `Audits`: new domain
 * [`Audits.Audits`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#domain-Audits)
@@ -233,7 +267,8 @@ Diff: [f253796...40a1403](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Audits.getEncodedResponse`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#method-getEncodedResponse)
 
 
-## Roll protocol to r495269 _(2017-08-17 12:15:44)_
+## Roll protocol to r495269
+Date: 2017-08-17 12:15:44
 Diff: [c10facc...f253796](https://github.com/ChromeDevTools/devtools-protocol/compare/c10facc...f253796)
 #### `Network`: new command
 * [`Network.deleteCookies`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-deleteCookies)
@@ -241,7 +276,8 @@ Diff: [c10facc...f253796](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Network.deleteCookie`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-deleteCookie)
 
 
-## Roll protocol to r495009 _(2017-08-16 17:15:31)_
+## Roll protocol to r495009
+Date: 2017-08-16 17:15:31
 Diff: [c10e566...c10facc](https://github.com/ChromeDevTools/devtools-protocol/compare/c10e566...c10facc)
 #### `Input`: modified command
 * [`Input.dispatchTouchEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-dispatchTouchEvent)
@@ -249,7 +285,8 @@ Diff: [c10e566...c10facc](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Input.TouchPoint`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#type-TouchPoint)
 
 
-## Roll protocol to r494622 _(2017-08-15 17:15:31)_
+## Roll protocol to r494622
+Date: 2017-08-15 17:15:31
 Diff: [2090c47...c10e566](https://github.com/ChromeDevTools/devtools-protocol/compare/2090c47...c10e566)
 #### `Network`: new command
 * [`Network.setCookies`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setCookies)
@@ -261,7 +298,8 @@ Diff: [2090c47...c10e566](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Input.dispatchMouseEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-dispatchMouseEvent)
 
 
-## Roll protocol to r494333 _(2017-08-14 23:15:20)_
+## Roll protocol to r494333
+Date: 2017-08-14 23:15:20
 Diff: [993dd10...2090c47](https://github.com/ChromeDevTools/devtools-protocol/compare/993dd10...2090c47)
 #### `Runtime`: modified commands
 * [`Runtime.evaluate`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-evaluate)
@@ -269,13 +307,15 @@ Diff: [993dd10...2090c47](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Runtime.runScript`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-runScript)
 
 
-## Roll protocol to r494302 _(2017-08-14 19:15:35)_
+## Roll protocol to r494302
+Date: 2017-08-14 19:15:35
 Diff: [e71b448...993dd10](https://github.com/ChromeDevTools/devtools-protocol/compare/e71b448...993dd10)
 #### `Overlay`: modified type
 * [`Overlay.HighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-HighlightConfig)
 
 
-## Roll protocol to r494191 _(2017-08-14 14:15:39)_
+## Roll protocol to r494191
+Date: 2017-08-14 14:15:39
 Diff: [f1217c8...e71b448](https://github.com/ChromeDevTools/devtools-protocol/compare/f1217c8...e71b448)
 #### `Performance`: new event
 * [`Performance.metrics`](https://chromedevtools.github.io/devtools-protocol/tot/Performance/#event-metrics)
@@ -287,13 +327,15 @@ Diff: [f1217c8...e71b448](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Storage.cacheStorageContentUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#event-cacheStorageContentUpdated)
 
 
-## Roll protocol to r493957 _(2017-08-11 22:15:29)_
+## Roll protocol to r493957
+Date: 2017-08-11 22:15:29
 Diff: [c314a8c...f1217c8](https://github.com/ChromeDevTools/devtools-protocol/compare/c314a8c...f1217c8)
 #### `Browser`: new command
 * [`Browser.getVersion`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-getVersion)
 
 
-## Roll protocol to r493949 _(2017-08-11 20:15:31)_
+## Roll protocol to r493949
+Date: 2017-08-11 20:15:31
 Diff: [f1415d2...c314a8c](https://github.com/ChromeDevTools/devtools-protocol/compare/f1415d2...c314a8c)
 #### `Security`: removed command
 * [`Security.showCertificateViewer`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#method-showCertificateViewer)
@@ -301,7 +343,8 @@ Diff: [f1415d2...c314a8c](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Security.SecurityStateExplanation`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#type-SecurityStateExplanation)
 
 
-## Roll protocol to r493629 _(2017-08-10 18:15:28)_
+## Roll protocol to r493629
+Date: 2017-08-10 18:15:28
 Diff: [97e6602...f1415d2](https://github.com/ChromeDevTools/devtools-protocol/compare/97e6602...f1415d2)
 #### `Performance`: new domain
 * [`Performance.Performance`](https://chromedevtools.github.io/devtools-protocol/tot/Performance/#domain-Performance)
@@ -313,7 +356,8 @@ Diff: [97e6602...f1415d2](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Performance.Metric`](https://chromedevtools.github.io/devtools-protocol/tot/Performance/#type-Metric)
 
 
-## Roll protocol to r493463 _(2017-08-10 11:15:27)_
+## Roll protocol to r493463
+Date: 2017-08-10 11:15:27
 Diff: [6a97ff4...97e6602](https://github.com/ChromeDevTools/devtools-protocol/compare/6a97ff4...97e6602)
 #### `Emulation`: new command
 * [`Emulation.setEmitTouchEventsForMouse`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setEmitTouchEventsForMouse)
@@ -321,33 +365,38 @@ Diff: [6a97ff4...97e6602](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Emulation.setTouchEmulationEnabled`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setTouchEmulationEnabled)
 
 
-## Roll protocol to r492915 _(2017-08-09 02:15:29)_
+## Roll protocol to r492915
+Date: 2017-08-09 02:15:29
 Diff: [34e6ca8...6a97ff4](https://github.com/ChromeDevTools/devtools-protocol/compare/34e6ca8...6a97ff4)
 #### `CSS`: modified command
 * [`CSS.getBackgroundColors`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getBackgroundColors)
 
 
-## Roll protocol to r491719 _(2017-08-03 06:15:23)_
+## Roll protocol to r491719
+Date: 2017-08-03 06:15:23
 Diff: [ff44833...34e6ca8](https://github.com/ChromeDevTools/devtools-protocol/compare/ff44833...34e6ca8)
 #### `DOMSnapshot`: modified type
 * [`DOMSnapshot.DOMNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DOMNode)
 
 
-## Roll protocol to r491274 _(2017-08-01 22:15:27)_
+## Roll protocol to r491274
+Date: 2017-08-01 22:15:27
 Diff: [80d4068...ff44833](https://github.com/ChromeDevTools/devtools-protocol/compare/80d4068...ff44833)
 #### `Page`: modified events
 * [`Page.javascriptDialogOpening`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-javascriptDialogOpening)
 * [`Page.javascriptDialogClosed`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-javascriptDialogClosed)
 
 
-## Roll protocol to r491147 _(2017-08-01 16:15:38)_
+## Roll protocol to r491147
+Date: 2017-08-01 16:15:38
 Diff: [598f59e...80d4068](https://github.com/ChromeDevTools/devtools-protocol/compare/598f59e...80d4068)
 #### `Accessibility`: modified types
 * [`Accessibility.AXGlobalStates`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXGlobalStates)
 * [`Accessibility.AXLiveRegionAttributes`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXLiveRegionAttributes)
 
 
-## Roll protocol to r490913 _(2017-08-01 01:15:27)_
+## Roll protocol to r490913
+Date: 2017-08-01 01:15:27
 Diff: [6dbc46a...598f59e](https://github.com/ChromeDevTools/devtools-protocol/compare/6dbc46a...598f59e)
 #### `Page`: removed commands
 * [`Page.setControlNavigations`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setControlNavigations)
@@ -360,25 +409,29 @@ Diff: [6dbc46a...598f59e](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Network.requestIntercepted`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestIntercepted)
 
 
-## Roll protocol to r490738 _(2017-07-31 03:15:36)_
+## Roll protocol to r490738
+Date: 2017-07-31 03:15:36
 Diff: [815efee...6dbc46a](https://github.com/ChromeDevTools/devtools-protocol/compare/815efee...6dbc46a)
 #### `DOMSnapshot`: modified type
 * [`DOMSnapshot.DOMNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DOMNode)
 
 
-## Roll protocol to r490636 _(2017-07-28 23:15:20)_
+## Roll protocol to r490636
+Date: 2017-07-28 23:15:20
 Diff: [d1125b4...815efee](https://github.com/ChromeDevTools/devtools-protocol/compare/d1125b4...815efee)
 #### `Page`: new command
 * [`Page.setAdBlockingEnabled`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setAdBlockingEnabled)
 
 
-## Roll protocol to r490621 _(2017-07-28 21:15:20)_
+## Roll protocol to r490621
+Date: 2017-07-28 21:15:20
 Diff: [44c6002...d1125b4](https://github.com/ChromeDevTools/devtools-protocol/compare/44c6002...d1125b4)
 #### `Overlay`: new event
 * [`Overlay.screenshotRequested`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#event-screenshotRequested)
 
 
-## Roll protocol to r489908 _(2017-07-27 06:15:23)_
+## Roll protocol to r489908
+Date: 2017-07-27 06:15:23
 Diff: [057127c...44c6002](https://github.com/ChromeDevTools/devtools-protocol/compare/057127c...44c6002)
 #### `LayerTree`: new type
 * [`LayerTree.StickyPositionConstraint`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#type-StickyPositionConstraint)
@@ -386,19 +439,22 @@ Diff: [057127c...44c6002](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`LayerTree.Layer`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#type-Layer)
 
 
-## Roll protocol to r489613 _(2017-07-26 05:15:21)_
+## Roll protocol to r489613
+Date: 2017-07-26 05:15:21
 Diff: [fe85a1b...057127c](https://github.com/ChromeDevTools/devtools-protocol/compare/fe85a1b...057127c)
 #### `Page`: modified event
 * [`Page.frameScheduledNavigation`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameScheduledNavigation)
 
 
-## Roll protocol to r489413 _(2017-07-25 13:15:27)_
+## Roll protocol to r489413
+Date: 2017-07-25 13:15:27
 Diff: [9433945...fe85a1b](https://github.com/ChromeDevTools/devtools-protocol/compare/9433945...fe85a1b)
 #### `Page`: new command
 * [`Page.bringToFront`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-bringToFront)
 
 
-## Roll protocol to r489024 _(2017-07-24 11:15:50)_
+## Roll protocol to r489024
+Date: 2017-07-24 11:15:50
 Diff: [07508bb...9433945](https://github.com/ChromeDevTools/devtools-protocol/compare/07508bb...9433945)
 #### `Page`: modified event
 * [`Page.frameScheduledNavigation`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameScheduledNavigation)
@@ -408,19 +464,22 @@ Diff: [07508bb...9433945](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`IO.StreamHandle`](https://chromedevtools.github.io/devtools-protocol/tot/IO/#type-StreamHandle)
 
 
-## Roll protocol to r488771 _(2017-07-21 15:15:36)_
+## Roll protocol to r488771
+Date: 2017-07-21 15:15:36
 Diff: [a156198...07508bb](https://github.com/ChromeDevTools/devtools-protocol/compare/a156198...07508bb)
 #### `IO`: new command
 * [`IO.resolveBlob`](https://chromedevtools.github.io/devtools-protocol/tot/IO/#method-resolveBlob)
 
 
-## Roll protocol to r488639 _(2017-07-21 06:15:18)_
+## Roll protocol to r488639
+Date: 2017-07-21 06:15:18
 Diff: [3f4dbfa...a156198](https://github.com/ChromeDevTools/devtools-protocol/compare/3f4dbfa...a156198)
 #### `Page`: modified type
 * [`Page.Frame`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Frame)
 
 
-## Roll protocol to r488555 _(2017-07-20 19:15:23)_
+## Roll protocol to r488555
+Date: 2017-07-20 19:15:23
 Diff: [6a7416a...3f4dbfa](https://github.com/ChromeDevTools/devtools-protocol/compare/6a7416a...3f4dbfa)
 #### `CacheStorage`: new command
 * [`CacheStorage.requestCachedResponse`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#method-requestCachedResponse)
@@ -428,7 +487,8 @@ Diff: [6a7416a...3f4dbfa](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`CacheStorage.CachedResponse`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#type-CachedResponse)
 
 
-## Roll protocol to r488475 _(2017-07-20 16:15:20)_
+## Roll protocol to r488475
+Date: 2017-07-20 16:15:20
 Diff: [24063d5...6a7416a](https://github.com/ChromeDevTools/devtools-protocol/compare/24063d5...6a7416a)
 #### `Page`: modified command
 * [`Page.setDeviceMetricsOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setDeviceMetricsOverride)
@@ -437,7 +497,8 @@ Diff: [24063d5...6a7416a](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Emulation.setVisibleSize`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setVisibleSize)
 
 
-## Roll protocol to r488407 _(2017-07-20 14:15:34)_
+## Roll protocol to r488407
+Date: 2017-07-20 14:15:34
 Diff: [0247171...24063d5](https://github.com/ChromeDevTools/devtools-protocol/compare/0247171...24063d5)
 #### `Target`: modified commands
 * [`Target.sendMessageToTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-sendMessageToTarget)
@@ -451,7 +512,8 @@ Diff: [0247171...24063d5](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Target.SessionID`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#type-SessionID)
 
 
-## Roll protocol to r487821 _(2017-07-19 04:15:25)_
+## Roll protocol to r487821
+Date: 2017-07-19 04:15:25
 Diff: [1d10caf...0247171](https://github.com/ChromeDevTools/devtools-protocol/compare/1d10caf...0247171)
 #### `Page`: modified command
 * [`Page.printToPDF`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-printToPDF)
@@ -459,13 +521,15 @@ Diff: [1d10caf...0247171](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Page.Frame`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Frame)
 
 
-## Roll protocol to r486590 _(2017-07-13 18:15:23)_
+## Roll protocol to r486590
+Date: 2017-07-13 18:15:23
 Diff: [9612949...1d10caf](https://github.com/ChromeDevTools/devtools-protocol/compare/9612949...1d10caf)
 #### `DOMSnapshot`: modified type
 * [`DOMSnapshot.DOMNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DOMNode)
 
 
-## Roll protocol to r486216 _(2017-07-12 18:55:05)_
+## Roll protocol to r486216
+Date: 2017-07-12 18:55:05
 Diff: [361ec60...1329e26](https://github.com/ChromeDevTools/devtools-protocol/compare/361ec60...1329e26)
 #### `DOM`: modified commands
 * [`DOM.focus`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-focus)
@@ -473,7 +537,8 @@ Diff: [361ec60...1329e26](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`DOM.getBoxModel`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getBoxModel)
 
 
-## Roll protocol to r486175 _(2017-07-12 17:15:26)_
+## Roll protocol to r486175
+Date: 2017-07-12 17:15:26
 Diff: [ea90b21...361ec60](https://github.com/ChromeDevTools/devtools-protocol/compare/ea90b21...361ec60)
 #### `Input`: modified commands
 * [`Input.dispatchMouseEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-dispatchMouseEvent)
@@ -482,7 +547,8 @@ Diff: [ea90b21...361ec60](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Input.synthesizeTapGesture`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-synthesizeTapGesture)
 
 
-## Roll protocol to r485940 485678 _(2017-07-12 07:15:22)_
+## Roll protocol to r485940 485678
+Date: 2017-07-12 07:15:22
 Diff: [3553411...9edfb70](https://github.com/ChromeDevTools/devtools-protocol/compare/3553411...9edfb70)
 #### `Page`: modified command
 * [`Page.captureScreenshot`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-captureScreenshot)
@@ -490,7 +556,8 @@ Diff: [3553411...9edfb70](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Page.Viewport`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Viewport)
 
 
-## Roll protocol to r485689 485314 _(2017-07-11 12:15:29)_
+## Roll protocol to r485689 485314
+Date: 2017-07-11 12:15:29
 Diff: [837a781...3553411](https://github.com/ChromeDevTools/devtools-protocol/compare/837a781...3553411)
 #### `Page`: modified command
 * [`Page.setDeviceMetricsOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setDeviceMetricsOverride)
@@ -502,13 +569,15 @@ Diff: [837a781...3553411](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Emulation.setVisibleSize`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setVisibleSize)
 
 
-## Roll protocol to r485250 _(2017-07-10 06:15:19)_
+## Roll protocol to r485250
+Date: 2017-07-10 06:15:19
 Diff: [25c87f6...837a781](https://github.com/ChromeDevTools/devtools-protocol/compare/25c87f6...837a781)
 #### `DOM`: modified command
 * [`DOM.resolveNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-resolveNode)
 
 
-## Roll protocol to r485002 _(2017-07-07 12:15:19)_
+## Roll protocol to r485002
+Date: 2017-07-07 12:15:19
 Diff: [0589169...25c87f6](https://github.com/ChromeDevTools/devtools-protocol/compare/0589169...25c87f6)
 #### `Network`: new command
 * [`Network.setRequestInterceptionEnabled`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setRequestInterceptionEnabled)
@@ -516,7 +585,8 @@ Diff: [0589169...25c87f6](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Network.enableRequestInterception`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-enableRequestInterception)
 
 
-## Roll protocol to r484724 _(2017-07-06 13:15:20)_
+## Roll protocol to r484724
+Date: 2017-07-06 13:15:20
 Diff: [40987ca...0589169](https://github.com/ChromeDevTools/devtools-protocol/compare/40987ca...0589169)
 #### `Page`: new commands
 * [`Page.addScriptToEvaluateOnNewDocument`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-addScriptToEvaluateOnNewDocument)
@@ -526,7 +596,8 @@ Diff: [40987ca...0589169](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Page.removeScriptToEvaluateOnLoad`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-removeScriptToEvaluateOnLoad)
 
 
-## Roll protocol to r484463 _(2017-07-05 21:15:19)_
+## Roll protocol to r484463
+Date: 2017-07-05 21:15:19
 Diff: [3cca818...40987ca](https://github.com/ChromeDevTools/devtools-protocol/compare/3cca818...40987ca)
 #### `Security`: new type
 * [`Security.MixedContentType`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#type-MixedContentType)
@@ -536,7 +607,8 @@ Diff: [3cca818...40987ca](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Network.Request`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Request)
 
 
-## Roll protocol to r484434 _(2017-07-05 18:15:34)_
+## Roll protocol to r484434
+Date: 2017-07-05 18:15:34
 Diff: [81ccf3f...3cca818](https://github.com/ChromeDevTools/devtools-protocol/compare/81ccf3f...3cca818)
 #### `Page`: modified events
 * [`Page.domContentEventFired`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-domContentEventFired)
@@ -577,26 +649,30 @@ Diff: [81ccf3f...3cca818](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Input.TimeSinceEpoch`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#type-TimeSinceEpoch)
 
 
-## Roll protocol to r484012 _(2017-07-03 09:15:18)_
+## Roll protocol to r484012
+Date: 2017-07-03 09:15:18
 Diff: [e2e55ea...81ccf3f](https://github.com/ChromeDevTools/devtools-protocol/compare/e2e55ea...81ccf3f)
 #### `Network`: modified events
 * [`Network.requestWillBeSent`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestWillBeSent)
 * [`Network.responseReceived`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-responseReceived)
 
 
-## Roll protocol to r483799 _(2017-06-30 13:15:20)_
+## Roll protocol to r483799
+Date: 2017-06-30 13:15:20
 Diff: [8fad5bb...e2e55ea](https://github.com/ChromeDevTools/devtools-protocol/compare/8fad5bb...e2e55ea)
 #### `DOMSnapshot`: modified type
 * [`DOMSnapshot.DOMNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DOMNode)
 
 
-## Roll protocol to r483706 _(2017-06-30 08:15:16)_
+## Roll protocol to r483706
+Date: 2017-06-30 08:15:16
 Diff: [d5a2d43...8fad5bb](https://github.com/ChromeDevTools/devtools-protocol/compare/d5a2d43...8fad5bb)
 #### `DOMSnapshot`: modified type
 * [`DOMSnapshot.DOMNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DOMNode)
 
 
-## Roll protocol to r483512 _(2017-06-29 15:15:18)_
+## Roll protocol to r483512
+Date: 2017-06-29 15:15:18
 Diff: [cbd3167...d5a2d43](https://github.com/ChromeDevTools/devtools-protocol/compare/cbd3167...d5a2d43)
 #### `Target`: modified command
 * [`Target.setDiscoverTargets`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-setDiscoverTargets)
@@ -606,25 +682,29 @@ Diff: [cbd3167...d5a2d43](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Target.TargetInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#type-TargetInfo)
 
 
-## Roll protocol to r482373 _(2017-06-26 13:15:23)_
+## Roll protocol to r482373
+Date: 2017-06-26 13:15:23
 Diff: [7462a7d...31bb33b](https://github.com/ChromeDevTools/devtools-protocol/compare/7462a7d...31bb33b)
 #### `Network`: modified type
 * [`Network.Initiator`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Initiator)
 
 
-## Roll protocol to r481914 _(2017-06-23 09:15:23)_
+## Roll protocol to r481914
+Date: 2017-06-23 09:15:23
 Diff: [6d93eed...7462a7d](https://github.com/ChromeDevTools/devtools-protocol/compare/6d93eed...7462a7d)
 #### `Page`: modified command
 * [`Page.createIsolatedWorld`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-createIsolatedWorld)
 
 
-## Roll protocol to r481860 _(2017-06-23 05:15:20)_
+## Roll protocol to r481860
+Date: 2017-06-23 05:15:20
 Diff: [6463d0e...6d93eed](https://github.com/ChromeDevTools/devtools-protocol/compare/6463d0e...6d93eed)
 #### `Profiler`: modified type
 * [`Profiler.FunctionCoverage`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-FunctionCoverage)
 
 
-## Roll protocol to r481735 _(2017-06-22 17:15:19)_
+## Roll protocol to r481735
+Date: 2017-06-22 17:15:19
 Diff: [ccabc09...6463d0e](https://github.com/ChromeDevTools/devtools-protocol/compare/ccabc09...6463d0e)
 #### `Storage`: modified command
 * [`Storage.getUsageAndQuota`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#method-getUsageAndQuota)
@@ -634,13 +714,15 @@ Diff: [ccabc09...6463d0e](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Storage.StorageType`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-StorageType)
 
 
-## Roll protocol to r480235 _(2017-06-16 17:15:36)_
+## Roll protocol to r480235
+Date: 2017-06-16 17:15:36
 Diff: [cdb002c...ccabc09](https://github.com/ChromeDevTools/devtools-protocol/compare/cdb002c...ccabc09)
 #### `Storage`: new command
 * [`Storage.getUsageAndQuota`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#method-getUsageAndQuota)
 
 
-## Roll protocol to r480007 _(2017-06-16 03:15:26)_
+## Roll protocol to r480007
+Date: 2017-06-16 03:15:26
 Diff: [34511ab...cdb002c](https://github.com/ChromeDevTools/devtools-protocol/compare/34511ab...cdb002c)
 #### `Network`: modified command
 * [`Network.continueInterceptedRequest`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-continueInterceptedRequest)
@@ -651,7 +733,8 @@ Diff: [34511ab...cdb002c](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Network.AuthChallengeResponse`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-AuthChallengeResponse)
 
 
-## Roll protocol to r479728 _(2017-06-15 09:15:20)_
+## Roll protocol to r479728
+Date: 2017-06-15 09:15:20
 Diff: [0fa531a...34511ab](https://github.com/ChromeDevTools/devtools-protocol/compare/0fa531a...34511ab)
 #### `CSS`: removed command
 * [`CSS.getLayoutTreeAndStyles`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getLayoutTreeAndStyles)
@@ -660,31 +743,36 @@ Diff: [0fa531a...34511ab](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`CSS.ComputedStyle`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-ComputedStyle)
 
 
-## Roll protocol to r479333 _(2017-06-14 02:15:15)_
+## Roll protocol to r479333
+Date: 2017-06-14 02:15:15
 Diff: [d21a0f2...0fa531a](https://github.com/ChromeDevTools/devtools-protocol/compare/d21a0f2...0fa531a)
 #### `Network`: modified event
 * [`Network.requestIntercepted`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestIntercepted)
 
 
-## Roll protocol to r479198 _(2017-06-13 16:15:25)_
+## Roll protocol to r479198
+Date: 2017-06-13 16:15:25
 Diff: [0dc9f1b...d21a0f2](https://github.com/ChromeDevTools/devtools-protocol/compare/0dc9f1b...d21a0f2)
 #### `Network`: modified type
 * [`Network.Request`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Request)
 
 
-## Roll protocol to r478853 _(2017-06-12 18:15:17)_
+## Roll protocol to r478853
+Date: 2017-06-12 18:15:17
 Diff: [17022a7...0dc9f1b](https://github.com/ChromeDevTools/devtools-protocol/compare/17022a7...0dc9f1b)
 #### `Runtime`: modified event
 * [`Runtime.consoleAPICalled`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#event-consoleAPICalled)
 
 
-## Roll protocol to r478813 _(2017-06-12 16:15:23)_
+## Roll protocol to r478813
+Date: 2017-06-12 16:15:23
 Diff: [abcbcb5...17022a7](https://github.com/ChromeDevTools/devtools-protocol/compare/abcbcb5...17022a7)
 #### `CacheStorage`: modified type
 * [`CacheStorage.DataEntry`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#type-DataEntry)
 
 
-## Roll protocol to r478513 _(2017-06-10 03:15:26)_
+## Roll protocol to r478513
+Date: 2017-06-10 03:15:26
 Diff: [3ac23d7...abcbcb5](https://github.com/ChromeDevTools/devtools-protocol/compare/3ac23d7...abcbcb5)
 #### `DOMSnapshot`: new domain
 * [`DOMSnapshot.DOMSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#domain-DOMSnapshot)
@@ -697,13 +785,15 @@ Diff: [3ac23d7...abcbcb5](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`DOMSnapshot.NameValue`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-NameValue)
 
 
-## Roll protocol to r477611 _(2017-06-07 04:15:16)_
+## Roll protocol to r477611
+Date: 2017-06-07 04:15:16
 Diff: [ffd3dba...3ac23d7](https://github.com/ChromeDevTools/devtools-protocol/compare/ffd3dba...3ac23d7)
 #### `Network`: modified event
 * [`Network.requestIntercepted`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestIntercepted)
 
 
-## Roll protocol to r477501 _(2017-06-06 18:15:18)_
+## Roll protocol to r477501
+Date: 2017-06-06 18:15:18
 Diff: [579f232...ffd3dba](https://github.com/ChromeDevTools/devtools-protocol/compare/579f232...ffd3dba)
 #### `Storage`: removed command
 * [`Storage.getUsageAndQuota`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#method-getUsageAndQuota)
@@ -711,7 +801,8 @@ Diff: [579f232...ffd3dba](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Storage.QuotaAndUsage`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-QuotaAndUsage)
 
 
-## Roll protocol to r477431 _(2017-06-06 15:15:24)_
+## Roll protocol to r477431
+Date: 2017-06-06 15:15:24
 Diff: [6d50df6...579f232](https://github.com/ChromeDevTools/devtools-protocol/compare/6d50df6...579f232)
 #### `Storage`: new command
 * [`Storage.getUsageAndQuota`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#method-getUsageAndQuota)
@@ -719,7 +810,8 @@ Diff: [6d50df6...579f232](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Storage.QuotaAndUsage`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-QuotaAndUsage)
 
 
-## Roll protocol to r476654 _(2017-06-02 08:15:15)_
+## Roll protocol to r476654
+Date: 2017-06-02 08:15:15
 Diff: [5f36401...b0a59a9](https://github.com/ChromeDevTools/devtools-protocol/compare/5f36401...b0a59a9)
 #### `Network`: new commands
 * [`Network.enableRequestInterception`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-enableRequestInterception)
@@ -731,19 +823,22 @@ Diff: [5f36401...b0a59a9](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Network.ErrorReason`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ErrorReason)
 
 
-## Roll protocol to r474209 _(2017-05-24 01:15:13)_
+## Roll protocol to r474209
+Date: 2017-05-24 01:15:13
 Diff: [408d0e6...f492fba](https://github.com/ChromeDevTools/devtools-protocol/compare/408d0e6...f492fba)
 #### `Page`: modified command
 * [`Page.captureScreenshot`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-captureScreenshot)
 
 
-## Roll protocol to r474080 _(2017-05-23 15:15:33)_
+## Roll protocol to r474080
+Date: 2017-05-23 15:15:33
 Diff: [bb2b187...eca5adc](https://github.com/ChromeDevTools/devtools-protocol/compare/bb2b187...eca5adc)
 #### `Input`: new command
 * [`Input.setIgnoreInputEvents`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-setIgnoreInputEvents)
 
 
-## Roll protocol to r474054 466964 _(2017-05-23 14:15:15)_
+## Roll protocol to r474054 466964
+Date: 2017-05-23 14:15:15
 Diff: [e599527...bb2b187](https://github.com/ChromeDevTools/devtools-protocol/compare/e599527...bb2b187)
 #### `Page`: modified command
 * [`Page.navigate`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-navigate)
@@ -753,31 +848,36 @@ Diff: [e599527...bb2b187](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Page.NavigationEntry`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-NavigationEntry)
 
 
-## Roll protocol to r472421 _(2017-05-17 04:15:14)_
+## Roll protocol to r472421
+Date: 2017-05-17 04:15:14
 Diff: [c7253c2...e599527](https://github.com/ChromeDevTools/devtools-protocol/compare/c7253c2...e599527)
 #### `SystemInfo`: modified command
 * [`SystemInfo.getInfo`](https://chromedevtools.github.io/devtools-protocol/tot/SystemInfo/#method-getInfo)
 
 
-## Roll protocol to r472381 _(2017-05-17 01:15:16)_
+## Roll protocol to r472381
+Date: 2017-05-17 01:15:16
 Diff: [42e9444...c7253c2](https://github.com/ChromeDevTools/devtools-protocol/compare/42e9444...c7253c2)
 #### `Debugger`: modified command
 * [`Debugger.continueToLocation`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-continueToLocation)
 
 
-## Roll protocol to r470873 _(2017-05-11 01:15:18)_
+## Roll protocol to r470873
+Date: 2017-05-11 01:15:18
 Diff: [a03b9bf...42e9444](https://github.com/ChromeDevTools/devtools-protocol/compare/a03b9bf...42e9444)
 #### `Page`: new command
 * [`Page.createIsolatedWorld`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-createIsolatedWorld)
 
 
-## Roll protocol to r470190 _(2017-05-08 21:15:15)_
+## Roll protocol to r470190
+Date: 2017-05-08 21:15:15
 Diff: [7060d50...a03b9bf](https://github.com/ChromeDevTools/devtools-protocol/compare/7060d50...a03b9bf)
 #### `Page`: modified command
 * [`Page.printToPDF`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-printToPDF)
 
 
-## Roll protocol to r467326 _(2017-04-26 08:15:16)_
+## Roll protocol to r467326
+Date: 2017-04-26 08:15:16
 Diff: [d7b68bb...c656485](https://github.com/ChromeDevTools/devtools-protocol/compare/d7b68bb...c656485)
 #### `Runtime`: modified event
 * [`Runtime.executionContextCreated`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#event-executionContextCreated)
@@ -789,7 +889,8 @@ Diff: [d7b68bb...c656485](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`HeapProfiler.lastSeenObjectId`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#event-lastSeenObjectId)
 
 
-## Roll protocol to r467252 _(2017-04-25 23:15:14)_
+## Roll protocol to r467252
+Date: 2017-04-25 23:15:14
 Diff: [94e4a6a...d7b68bb](https://github.com/ChromeDevTools/devtools-protocol/compare/94e4a6a...d7b68bb)
 #### `Runtime`: modified event
 * [`Runtime.executionContextCreated`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#event-executionContextCreated)
@@ -801,7 +902,8 @@ Diff: [94e4a6a...d7b68bb](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`HeapProfiler.lastSeenObjectId`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#event-lastSeenObjectId)
 
 
-## Roll protocol to r466832 _(2017-04-24 17:15:24)_
+## Roll protocol to r466832
+Date: 2017-04-24 17:15:24
 Diff: [95a5c47...94e4a6a](https://github.com/ChromeDevTools/devtools-protocol/compare/95a5c47...94e4a6a)
 #### `Overlay`: new domain
 * [`Overlay.Overlay`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#domain-Overlay)
@@ -849,7 +951,8 @@ Diff: [95a5c47...94e4a6a](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`DOM.InspectMode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-InspectMode)
 
 
-## Roll protocol to r466815 _(2017-04-24 16:15:14)_
+## Roll protocol to r466815
+Date: 2017-04-24 16:15:14
 Diff: [e5adaae...95a5c47](https://github.com/ChromeDevTools/devtools-protocol/compare/e5adaae...95a5c47)
 #### `Runtime`: modified event
 * [`Runtime.executionContextCreated`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#event-executionContextCreated)
@@ -861,7 +964,8 @@ Diff: [e5adaae...95a5c47](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`HeapProfiler.lastSeenObjectId`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#event-lastSeenObjectId)
 
 
-## Roll protocol to r466559 _(2017-04-23 00:15:13)_
+## Roll protocol to r466559
+Date: 2017-04-23 00:15:13
 Diff: [6653c3f...e5adaae](https://github.com/ChromeDevTools/devtools-protocol/compare/6653c3f...e5adaae)
 #### `Rendering`: new domain
 * [`Rendering.Rendering`](https://chromedevtools.github.io/devtools-protocol/tot/Rendering/#domain-Rendering)
@@ -892,7 +996,8 @@ Diff: [6653c3f...e5adaae](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`DOM.InspectMode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-InspectMode)
 
 
-## Roll protocol to r466506 _(2017-04-21 17:15:18)_
+## Roll protocol to r466506
+Date: 2017-04-21 17:15:18
 Diff: [afbaab8...495acc6](https://github.com/ChromeDevTools/devtools-protocol/compare/afbaab8...495acc6)
 #### `Overlay`: new domain
 * [`Overlay.Overlay`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#domain-Overlay)
@@ -940,7 +1045,8 @@ Diff: [afbaab8...495acc6](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`DOM.InspectMode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-InspectMode)
 
 
-## Roll protocol to r465861 _(2017-04-19 19:15:14)_
+## Roll protocol to r465861
+Date: 2017-04-19 19:15:14
 Diff: [3dd613f...2621a84](https://github.com/ChromeDevTools/devtools-protocol/compare/3dd613f...2621a84)
 #### `Rendering`: new domain
 * [`Rendering.Rendering`](https://chromedevtools.github.io/devtools-protocol/tot/Rendering/#domain-Rendering)
@@ -971,7 +1077,8 @@ Diff: [3dd613f...2621a84](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`DOM.InspectMode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-InspectMode)
 
 
-## Roll protocol to r465817 _(2017-04-19 17:15:19)_
+## Roll protocol to r465817
+Date: 2017-04-19 17:15:19
 Diff: [af95ade...3dd613f](https://github.com/ChromeDevTools/devtools-protocol/compare/af95ade...3dd613f)
 #### `Overlay`: new domain
 * [`Overlay.Overlay`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#domain-Overlay)
@@ -1019,7 +1126,8 @@ Diff: [af95ade...3dd613f](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`DOM.InspectMode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-InspectMode)
 
 
-## Roll protocol to r464996 _(2017-04-17 13:15:14)_
+## Roll protocol to r464996
+Date: 2017-04-17 13:15:14
 Diff: [b37b8df...af95ade](https://github.com/ChromeDevTools/devtools-protocol/compare/b37b8df...af95ade)
 #### `Page`: removed command
 * [`Page.setColorPickerEnabled`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setColorPickerEnabled)
@@ -1027,13 +1135,15 @@ Diff: [b37b8df...af95ade](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Page.colorPicked`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-colorPicked)
 
 
-## Roll protocol to r464752 _(2017-04-14 11:15:26)_
+## Roll protocol to r464752
+Date: 2017-04-14 11:15:26
 Diff: [a087d6e...b37b8df](https://github.com/ChromeDevTools/devtools-protocol/compare/a087d6e...b37b8df)
 #### `Network`: removed command
 * [`Network.setMonitoringXHREnabled`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setMonitoringXHREnabled)
 
 
-## Roll protocol to r464268 _(2017-04-12 20:15:15)_
+## Roll protocol to r464268
+Date: 2017-04-12 20:15:15
 Diff: [389442a...a087d6e](https://github.com/ChromeDevTools/devtools-protocol/compare/389442a...a087d6e)
 #### `Browser`: new domain
 * [`Browser.Browser`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#domain-Browser)
@@ -1049,7 +1159,8 @@ Diff: [389442a...a087d6e](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Browser.Bounds`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-Bounds)
 
 
-## Roll protocol to r463392 _(2017-04-10 14:16:03)_
+## Roll protocol to r463392
+Date: 2017-04-10 14:16:03
 Diff: [bced713...6839ff5](https://github.com/ChromeDevTools/devtools-protocol/compare/bced713...6839ff5)
 #### `Browser`: removed domain
 * [`Browser.Browser`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#domain-Browser)
@@ -1057,7 +1168,8 @@ Diff: [bced713...6839ff5](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Target.sendMessageToTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-sendMessageToTarget)
 
 
-## Roll protocol to r463120 _(2017-04-07 20:15:13)_
+## Roll protocol to r463120
+Date: 2017-04-07 20:15:13
 Diff: [e6757c1...bced713](https://github.com/ChromeDevTools/devtools-protocol/compare/e6757c1...bced713)
 #### `Browser`: new domain
 * [`Browser.Browser`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#domain-Browser)
@@ -1073,7 +1185,8 @@ Diff: [e6757c1...bced713](https://github.com/ChromeDevTools/devtools-protocol/co
 * [`Browser.Bounds`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-Bounds)
 
 
-## Roll protocol to r460846 _(2017-03-30 12:15:27)_
+## Roll protocol to r460846
+Date: 2017-03-30 12:15:27
 Diff: [bb10d9a...07e8fce](https://github.com/ChromeDevTools/devtools-protocol/compare/bb10d9a...07e8fce)
 #### `Network`: modified command
 * [`Network.setBlockedURLs`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setBlockedURLs)

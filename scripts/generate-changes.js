@@ -56,6 +56,7 @@ class Changeset {
  */
 class Formatter {
   static logCommit(previousCommit, commit, changes) {
+
     // Don't log commits that don't change the protocol.
     changes.forEach(change => Formatter.cleanDiff(change));
     changes = changes.filter(change => change.diff.added.length || change.diff.removed.length || change.diff.modified.length);
@@ -63,7 +64,8 @@ class Formatter {
 
     // simple-git adds this "(HEAD, origin/master)" string to the first commit's message...
     const commitMessage = commit.message.replace(/\(HEAD.*/,'');
-    results += `\n\n## ${commitMessage} _(${commit.date.replace(' -0700', '')})_\n`;
+    results += `\n\n## ${commitMessage}\n`;
+    results += `Date: ${commit.date.replace(' -0700', '')}\n`;
     const hashCompareStr = `${previousCommit.hash.slice(0, 7)}...${commit.hash.slice(0, 7)}`;
     results += `Diff: [${hashCompareStr}](https://github.com/ChromeDevTools/devtools-protocol/compare/${hashCompareStr})\n`;
     changes.forEach(change => Formatter.logDiff(change));
@@ -96,6 +98,8 @@ class Formatter {
 
     const cleanType = type => type.replace(/s$/, '');
 
+    // TODO: log the details of what parameters changed and how
+    // Using ```diff ... ``` might work out well..
     diffDetails.forEach(change => {
       const itemKey = Formatter.getKey(change);
       const itemValue = change[itemKey];
@@ -138,14 +142,14 @@ class CommitCrawler {
 
     for (let i = 0; i < this.commitlogs.length; i++) {
       // Skip the first commits of the repo.
-      if (i >= this.commitlogs.length - 3) return;
+      if (i >= this.commitlogs.length - 3) continue;
 
       // Hack to quit early.
-      // if (i > 2) return;
+      // if (i > 20) continue;
 
       const commit = this.commitlogs[i];
       const previousCommit = this.commitlogs[i + 1];
-      if (!previousCommit) return;
+      if (!previousCommit) continue;
 
       const changes = await this.checkoutAndDiff(commit, previousCommit);
       Formatter.logCommit(previousCommit, commit, changes);
