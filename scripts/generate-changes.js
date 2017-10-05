@@ -65,7 +65,7 @@ class Formatter {
     // simple-git adds this "(HEAD, origin/master)" string to the first commit's message...
     const commitMessage = commit.message.replace(/\(HEAD.*/,'');
     results += `\n\n## ${commitMessage}\n`;
-    results += `Date: ${commit.date.replace(' -0700', '')}\n`;
+    results += `###### _${commit.date.replace(' -0700', '')}_\n`;
     const hashCompareStr = `${previousCommit.hash.slice(0, 7)}...${commit.hash.slice(0, 7)}`;
     results += `Diff: [${hashCompareStr}](https://github.com/ChromeDevTools/devtools-protocol/compare/${hashCompareStr})\n`;
     changes.forEach(change => Formatter.logDiff(change));
