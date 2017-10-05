@@ -1105,14 +1105,6 @@
                 "description": "Notification sent after the virtual time budget for the current VirtualTimePolicy has run out."
             },
             {
-                "name": "virtualTimeAdvanced",
-                "experimental": true,
-                "parameters": [
-                    { "name": "virtualTimeElapsed", "type": "integer", "description": "The amount of virtual time that has elapsed in milliseconds since virtual time was first enabled." }
-                ],
-                "description": "Notification sent after the virtual time has advanced."
-            },
-            {
                 "name": "virtualTimePaused",
                 "experimental": true,
                 "parameters": [
