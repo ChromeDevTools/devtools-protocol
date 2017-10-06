@@ -39,9 +39,15 @@ cd "$protocol_repo_path" || exit 1
 if ! git diff --no-ext-diff --quiet --ignore-submodules --exit-code; then
 	# dirty repo, ready to commit.
 
+	# generate changelog
+	cd "$protocol_repo_path/scripts" || exit 1
+	yarn install --non-interactive
 	node $protocol_repo_path/scripts/generate-changes.js
+
+	# publish
 	. $protocol_repo_path/scripts/publish-to-npm.sh "$commit_rev"
+
+	# push to devtools-protocol repo
 	git commit --author="DevTools Bot <paulirish+bot@google.com>" --all -m "Roll protocol to r$commit_rev"
 	git pull && git push
-
 fi
