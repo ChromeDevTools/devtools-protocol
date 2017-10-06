@@ -1,6 +1,22 @@
 
 
-## Roll protocol to r505811 
+## Roll protocol to r506815 
+###### _2017-10-05 12:15:34_
+Diff: [53e8611...7931842](https://github.com/ChromeDevTools/devtools-protocol/compare/53e8611...7931842)
+#### `Emulation`: removed event
+* [`Emulation.virtualTimeAdvanced`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#event-virtualTimeAdvanced)
+
+
+## Roll protocol to r506789
+###### _2017-10-05 11:15:33_
+Diff: [d9b6389...53e8611](https://github.com/ChromeDevTools/devtools-protocol/compare/d9b6389...53e8611)
+#### `Page`: modified event
+* [`Page.frameScheduledNavigation`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameScheduledNavigation)
+#### `Emulation`: new event
+* [`Emulation.virtualTimeAdvanced`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#event-virtualTimeAdvanced)
+
+
+## Roll protocol to r505811
 ###### _2017-10-02 15:15:35_
 Diff: [ae7b452...e81a47d](https://github.com/ChromeDevTools/devtools-protocol/compare/ae7b452...e81a47d)
 #### `Animation`: modified types
