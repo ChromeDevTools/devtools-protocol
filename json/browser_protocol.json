@@ -647,6 +647,7 @@
             {
                 "name": "lifecycleEvent",
                 "parameters": [
+                    { "name": "frameId", "$ref": "FrameId", "description": "Id of the frame." },
                     { "name": "name", "type": "string" },
                     { "name": "timestamp", "$ref": "Network.MonotonicTime" }
                 ],
