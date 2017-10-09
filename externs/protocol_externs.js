@@ -1890,10 +1890,11 @@ Protocol.NetworkAgent.prototype.invoke_getCertificate = function(obj) {};
 /**
  * @param {boolean} enabled
  * @param {!Array<string>=} opt_patterns
+ * @param {!Array<Protocol.Page.ResourceType>=} opt_resourceTypes
  * @return {!Promise<undefined>}
  */
-Protocol.NetworkAgent.prototype.setRequestInterceptionEnabled = function(enabled, opt_patterns) {};
-/** @typedef {!{patterns: (!Array<string>|undefined), enabled: boolean}} */
+Protocol.NetworkAgent.prototype.setRequestInterceptionEnabled = function(enabled, opt_patterns, opt_resourceTypes) {};
+/** @typedef {!{patterns: (!Array<string>|undefined), resourceTypes: (!Array<Protocol.Page.ResourceType>|undefined), enabled: boolean}} */
 Protocol.NetworkAgent.SetRequestInterceptionEnabledRequest;
 /** @typedef {Object|undefined} */
 Protocol.NetworkAgent.SetRequestInterceptionEnabledResponse;
