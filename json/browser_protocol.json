@@ -758,6 +758,17 @@
             {
                 "name": "interstitialHidden",
                 "description": "Fired when interstitial page was hidden"
+            },
+            {
+                "name": "windowOpen",
+                "description": "Fired when window.open() was called",
+                "parameters": [
+                    { "name": "url", "type": "string", "description": "The URL for the new window." },
+                    { "name": "windowName", "type": "string", "description": "Window name passed to window.open()."},
+                    { "name": "windowFeatures", "type": "string", "description": "Window features passed to window.open()."},
+                    { "name": "userGesture", "type": "boolean", "description": "Whether or not window.open() was triggered by user gesture."}
+                ],
+                "experimental": true
             }
         ]
     },

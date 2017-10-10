@@ -890,6 +890,13 @@ Protocol.PageDispatcher.prototype.screencastFrame = function(data, metadata, ses
 Protocol.PageDispatcher.prototype.screencastVisibilityChanged = function(visible) {};
 Protocol.PageDispatcher.prototype.interstitialShown = function() {};
 Protocol.PageDispatcher.prototype.interstitialHidden = function() {};
+/**
+ * @param {string} url
+ * @param {string} windowName
+ * @param {string} windowFeatures
+ * @param {boolean} userGesture
+ */
+Protocol.PageDispatcher.prototype.windowOpen = function(url, windowName, windowFeatures, userGesture) {};
 Protocol.Overlay = {};
 
 
