@@ -453,10 +453,11 @@ Protocol.PageAgent.prototype.invoke_setDocumentContent = function(obj) {};
  * @param {number=} opt_positionY
  * @param {boolean=} opt_dontSetVisibleSize
  * @param {Protocol.Emulation.ScreenOrientation=} opt_screenOrientation
+ * @param {Protocol.Page.Viewport=} opt_viewport
  * @return {!Promise<undefined>}
  */
-Protocol.PageAgent.prototype.setDeviceMetricsOverride = function(width, height, deviceScaleFactor, mobile, opt_scale, opt_screenWidth, opt_screenHeight, opt_positionX, opt_positionY, opt_dontSetVisibleSize, opt_screenOrientation) {};
-/** @typedef {!{deviceScaleFactor: number, positionX: (number|undefined), scale: (number|undefined), screenHeight: (number|undefined), mobile: boolean, screenOrientation: (Protocol.Emulation.ScreenOrientation|undefined), dontSetVisibleSize: (boolean|undefined), height: number, width: number, positionY: (number|undefined), screenWidth: (number|undefined)}} */
+Protocol.PageAgent.prototype.setDeviceMetricsOverride = function(width, height, deviceScaleFactor, mobile, opt_scale, opt_screenWidth, opt_screenHeight, opt_positionX, opt_positionY, opt_dontSetVisibleSize, opt_screenOrientation, opt_viewport) {};
+/** @typedef {!{deviceScaleFactor: number, positionX: (number|undefined), scale: (number|undefined), screenHeight: (number|undefined), mobile: boolean, screenOrientation: (Protocol.Emulation.ScreenOrientation|undefined), dontSetVisibleSize: (boolean|undefined), height: number, width: number, positionY: (number|undefined), screenWidth: (number|undefined), viewport: (Protocol.Page.Viewport|undefined)}} */
 Protocol.PageAgent.SetDeviceMetricsOverrideRequest;
 /** @typedef {Object|undefined} */
 Protocol.PageAgent.SetDeviceMetricsOverrideResponse;
@@ -1182,10 +1183,11 @@ Protocol.EmulationAgent = function(){};
  * @param {number=} opt_positionY
  * @param {boolean=} opt_dontSetVisibleSize
  * @param {Protocol.Emulation.ScreenOrientation=} opt_screenOrientation
+ * @param {Protocol.Page.Viewport=} opt_viewport
  * @return {!Promise<undefined>}
  */
-Protocol.EmulationAgent.prototype.setDeviceMetricsOverride = function(width, height, deviceScaleFactor, mobile, opt_scale, opt_screenWidth, opt_screenHeight, opt_positionX, opt_positionY, opt_dontSetVisibleSize, opt_screenOrientation) {};
-/** @typedef {!{deviceScaleFactor: number, positionX: (number|undefined), scale: (number|undefined), screenHeight: (number|undefined), mobile: boolean, screenOrientation: (Protocol.Emulation.ScreenOrientation|undefined), dontSetVisibleSize: (boolean|undefined), height: number, width: number, positionY: (number|undefined), screenWidth: (number|undefined)}} */
+Protocol.EmulationAgent.prototype.setDeviceMetricsOverride = function(width, height, deviceScaleFactor, mobile, opt_scale, opt_screenWidth, opt_screenHeight, opt_positionX, opt_positionY, opt_dontSetVisibleSize, opt_screenOrientation, opt_viewport) {};
+/** @typedef {!{deviceScaleFactor: number, positionX: (number|undefined), scale: (number|undefined), screenHeight: (number|undefined), mobile: boolean, screenOrientation: (Protocol.Emulation.ScreenOrientation|undefined), dontSetVisibleSize: (boolean|undefined), height: number, width: number, positionY: (number|undefined), screenWidth: (number|undefined), viewport: (Protocol.Page.Viewport|undefined)}} */
 Protocol.EmulationAgent.SetDeviceMetricsOverrideRequest;
 /** @typedef {Object|undefined} */
 Protocol.EmulationAgent.SetDeviceMetricsOverrideResponse;
@@ -4275,10 +4277,11 @@ Protocol.TargetAgent.prototype.invoke_disposeBrowserContext = function(obj) {};
  * @param {number=} opt_width
  * @param {number=} opt_height
  * @param {Protocol.Target.BrowserContextID=} opt_browserContextId
+ * @param {boolean=} opt_enableBeginFrameControl
  * @return {!Promise<?Protocol.Target.TargetID>}
  */
-Protocol.TargetAgent.prototype.createTarget = function(url, opt_width, opt_height, opt_browserContextId) {};
-/** @typedef {!{url: string, width: (number|undefined), browserContextId: (Protocol.Target.BrowserContextID|undefined), height: (number|undefined)}} */
+Protocol.TargetAgent.prototype.createTarget = function(url, opt_width, opt_height, opt_browserContextId, opt_enableBeginFrameControl) {};
+/** @typedef {!{url: string, width: (number|undefined), browserContextId: (Protocol.Target.BrowserContextID|undefined), enableBeginFrameControl: (boolean|undefined), height: (number|undefined)}} */
 Protocol.TargetAgent.CreateTargetRequest;
 /** @typedef {!{targetId: Protocol.Target.TargetID}} */
 Protocol.TargetAgent.CreateTargetResponse;
@@ -4345,6 +4348,72 @@ Protocol.TargetDispatcher.prototype.detachedFromTarget = function(sessionId, opt
  * @param {Protocol.Target.TargetID=} opt_targetId
  */
 Protocol.TargetDispatcher.prototype.receivedMessageFromTarget = function(sessionId, message, opt_targetId) {};
+Protocol.HeadlessExperimental = {};
+
+
+/**
+ * @constructor
+*/
+Protocol.HeadlessExperimentalAgent = function(){};
+
+/**
+ * @return {!Promise<undefined>}
+ */
+Protocol.HeadlessExperimentalAgent.prototype.enable = function() {};
+/** @typedef {Object|undefined} */
+Protocol.HeadlessExperimentalAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.HeadlessExperimentalAgent.EnableResponse;
+/**
+ * @param {!Protocol.HeadlessExperimentalAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.HeadlessExperimentalAgent.EnableResponse>} */
+Protocol.HeadlessExperimentalAgent.prototype.invoke_enable = function(obj) {};
+
+/**
+ * @return {!Promise<undefined>}
+ */
+Protocol.HeadlessExperimentalAgent.prototype.disable = function() {};
+/** @typedef {Object|undefined} */
+Protocol.HeadlessExperimentalAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.HeadlessExperimentalAgent.DisableResponse;
+/**
+ * @param {!Protocol.HeadlessExperimentalAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.HeadlessExperimentalAgent.DisableResponse>} */
+Protocol.HeadlessExperimentalAgent.prototype.invoke_disable = function(obj) {};
+
+/**
+ * @param {Protocol.Runtime.Timestamp=} opt_frameTime
+ * @param {Protocol.Runtime.Timestamp=} opt_deadline
+ * @param {number=} opt_interval
+ * @param {Protocol.HeadlessExperimental.ScreenshotParams=} opt_screenshot
+ * @return {!Promise<?boolean>}
+ */
+Protocol.HeadlessExperimentalAgent.prototype.beginFrame = function(opt_frameTime, opt_deadline, opt_interval, opt_screenshot) {};
+/** @typedef {!{interval: (number|undefined), deadline: (Protocol.Runtime.Timestamp|undefined), frameTime: (Protocol.Runtime.Timestamp|undefined), screenshot: (Protocol.HeadlessExperimental.ScreenshotParams|undefined)}} */
+Protocol.HeadlessExperimentalAgent.BeginFrameRequest;
+/** @typedef {!{hasDamage: boolean, screenshotData: string}} */
+Protocol.HeadlessExperimentalAgent.BeginFrameResponse;
+/**
+ * @param {!Protocol.HeadlessExperimentalAgent.BeginFrameRequest} obj
+ * @return {!Promise<!Protocol.HeadlessExperimentalAgent.BeginFrameResponse>} */
+Protocol.HeadlessExperimentalAgent.prototype.invoke_beginFrame = function(obj) {};
+
+/** @enum {string} */
+Protocol.HeadlessExperimental.ScreenshotParamsFormat = {
+    Jpeg: "jpeg",
+    Png: "png"
+};
+
+/** @typedef {!{format:(Protocol.HeadlessExperimental.ScreenshotParamsFormat|undefined), quality:(number|undefined)}} */
+Protocol.HeadlessExperimental.ScreenshotParams;
+/** @interface */
+Protocol.HeadlessExperimentalDispatcher = function() {};
+/**
+ * @param {boolean} needsBeginFrames
+ */
+Protocol.HeadlessExperimentalDispatcher.prototype.needsBeginFramesChanged = function(needsBeginFrames) {};
+Protocol.HeadlessExperimentalDispatcher.prototype.mainFrameReadyForScreenshots = function() {};
 Protocol.ServiceWorker = {};
 
 
@@ -7288,6 +7357,12 @@ Protocol.TargetBase.prototype.targetAgent = function(){};
  * @param {!Protocol.TargetDispatcher} dispatcher
  */
 Protocol.TargetBase.prototype.registerTargetDispatcher = function(dispatcher) {}
+/** @return {!Protocol.HeadlessExperimentalAgent}*/
+Protocol.TargetBase.prototype.headlessExperimentalAgent = function(){};
+/**
+ * @param {!Protocol.HeadlessExperimentalDispatcher} dispatcher
+ */
+Protocol.TargetBase.prototype.registerHeadlessExperimentalDispatcher = function(dispatcher) {}
 /** @return {!Protocol.ServiceWorkerAgent}*/
 Protocol.TargetBase.prototype.serviceWorkerAgent = function(){};
 /**
