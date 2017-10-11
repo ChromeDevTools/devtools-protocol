@@ -3834,7 +3834,8 @@
                     { "name": "type", "type": "string" },
                     { "name": "title", "type": "string" },
                     { "name": "url", "type": "string" },
-                    { "name": "attached", "type": "boolean", "description": "Whether the target has an attached client." }
+                    { "name": "attached", "type": "boolean", "description": "Whether the target has an attached client." },
+                    { "name": "openerId", "optional": true, "$ref": "TargetID", "description": "Opener target Id" }
                 ]
             },
             {
