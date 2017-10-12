@@ -63,7 +63,7 @@ class Formatter {
     if (changes.length === 0) return;
 
     // simple-git adds this "(HEAD, origin/master)" string to the first commit's message...
-    const commitMessage = commit.message.replace(/\(HEAD.*/,'');
+    const commitMessage = commit.message.replace(/\(HEAD.*/, '').replace(' (master)', '');
     results += `\n\n## ${commitMessage}\n`;
     results += `###### _${commit.date.replace(' -0700', '')}_\n`;
     const hashCompareStr = `${previousCommit.hash.slice(0, 7)}...${commit.hash.slice(0, 7)}`;
@@ -136,7 +136,8 @@ class CommitCrawler {
       await git.clone(this.remote, this.path);
     }
     await git.reset('hard');
-    await git.checkout('heads/master');
+    await git.fetch();
+    await git.checkout('origin/master');
     const commitlog = await git.log();
     this.commitlogs = commitlog.all;
 
