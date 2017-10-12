@@ -1,6 +1,70 @@
 
 
-## Roll protocol to r506815 
+## Roll protocol to r508087
+###### _2017-10-11 13:15:51_
+Diff: [4856f10...2988a57](https://github.com/ChromeDevTools/devtools-protocol/compare/4856f10...2988a57)
+#### `Target`: modified type
+* [`Target.TargetInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#type-TargetInfo)
+
+
+## Roll protocol to r507818
+###### _2017-10-10 16:15:50_
+Diff: [662fafd...4856f10](https://github.com/ChromeDevTools/devtools-protocol/compare/662fafd...4856f10)
+#### `HeadlessExperimental`: new domain
+* [`HeadlessExperimental.HeadlessExperimental`](https://chromedevtools.github.io/devtools-protocol/tot/HeadlessExperimental/#domain-HeadlessExperimental)
+#### `Page`: modified command
+* [`Page.setDeviceMetricsOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setDeviceMetricsOverride)
+#### `Emulation`: modified command
+* [`Emulation.setDeviceMetricsOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setDeviceMetricsOverride)
+#### `Target`: modified command
+* [`Target.createTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-createTarget)
+#### `HeadlessExperimental`: new commands
+* [`HeadlessExperimental.enable`](https://chromedevtools.github.io/devtools-protocol/tot/HeadlessExperimental/#method-enable)
+* [`HeadlessExperimental.disable`](https://chromedevtools.github.io/devtools-protocol/tot/HeadlessExperimental/#method-disable)
+* [`HeadlessExperimental.beginFrame`](https://chromedevtools.github.io/devtools-protocol/tot/HeadlessExperimental/#method-beginFrame)
+#### `HeadlessExperimental`: new events
+* [`HeadlessExperimental.needsBeginFramesChanged`](https://chromedevtools.github.io/devtools-protocol/tot/HeadlessExperimental/#event-needsBeginFramesChanged)
+* [`HeadlessExperimental.mainFrameReadyForScreenshots`](https://chromedevtools.github.io/devtools-protocol/tot/HeadlessExperimental/#event-mainFrameReadyForScreenshots)
+#### `HeadlessExperimental`: new type
+* [`HeadlessExperimental.ScreenshotParams`](https://chromedevtools.github.io/devtools-protocol/tot/HeadlessExperimental/#type-ScreenshotParams)
+
+
+## Roll protocol to r507615
+###### _2017-10-10 01:15:40_
+Diff: [a63b5fa...662fafd](https://github.com/ChromeDevTools/devtools-protocol/compare/a63b5fa...662fafd)
+#### `Page`: new event
+* [`Page.windowOpen`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-windowOpen)
+
+
+## Roll protocol to r507488
+###### _2017-10-09 14:16:01_
+Diff: [11ca8ba...a63b5fa](https://github.com/ChromeDevTools/devtools-protocol/compare/11ca8ba...a63b5fa)
+#### `Page`: modified event
+* [`Page.lifecycleEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-lifecycleEvent)
+
+
+## Roll protocol to r507347
+###### _2017-10-09 03:16:03_
+Diff: [2189599...11ca8ba](https://github.com/ChromeDevTools/devtools-protocol/compare/2189599...11ca8ba)
+#### `Network`: modified command
+* [`Network.setRequestInterceptionEnabled`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setRequestInterceptionEnabled)
+
+
+## Roll protocol to r507305
+###### _2017-10-08 01:15:50_
+Diff: [555aaea...2189599](https://github.com/ChromeDevTools/devtools-protocol/compare/555aaea...2189599)
+#### `Debugger`: modified command
+* [`Debugger.setBreakpointByUrl`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setBreakpointByUrl)
+
+
+## Roll protocol to r507040
+###### _2017-10-06 06:15:53_
+Diff: [1fd8f9d...555aaea](https://github.com/ChromeDevTools/devtools-protocol/compare/1fd8f9d...555aaea)
+#### `Emulation`: new event
+* [`Emulation.virtualTimeAdvanced`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#event-virtualTimeAdvanced)
+
+
+## Roll protocol to r506815
 ###### _2017-10-05 12:15:34_
 Diff: [53e8611...7931842](https://github.com/ChromeDevTools/devtools-protocol/compare/53e8611...7931842)
 #### `Emulation`: removed event
