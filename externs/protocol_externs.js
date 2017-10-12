@@ -5790,6 +5790,19 @@ Protocol.Browser = {};
 Protocol.BrowserAgent = function(){};
 
 /**
+ * @return {!Promise<undefined>}
+ */
+Protocol.BrowserAgent.prototype.close = function() {};
+/** @typedef {Object|undefined} */
+Protocol.BrowserAgent.CloseRequest;
+/** @typedef {Object|undefined} */
+Protocol.BrowserAgent.CloseResponse;
+/**
+ * @param {!Protocol.BrowserAgent.CloseRequest} obj
+ * @return {!Promise<!Protocol.BrowserAgent.CloseResponse>} */
+Protocol.BrowserAgent.prototype.invoke_close = function(obj) {};
+
+/**
  * @param {Protocol.Target.TargetID} targetId
  * @return {!Promise<?Protocol.Browser.WindowID>}
  */

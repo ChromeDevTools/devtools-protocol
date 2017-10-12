@@ -5226,6 +5226,10 @@
         ],
         "commands": [
             {
+                "name": "close",
+                "description": "Close browser gracefully."
+            },
+            {
                 "name": "getWindowForTarget",
                 "description": "Get the browser window that contains the devtools target.",
                 "parameters": [
