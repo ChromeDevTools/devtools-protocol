@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r508301 
+###### _2017-10-12 03:16:09_
+Diff: [e95be51...4eaa4f7](https://github.com/ChromeDevTools/devtools-protocol/compare/e95be51...4eaa4f7)
+#### `Browser`: new command
+* [`Browser.close`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-close)
+
+
 ## Roll protocol to r508087
 ###### _2017-10-11 13:15:51_
 Diff: [4856f10...2988a57](https://github.com/ChromeDevTools/devtools-protocol/compare/4856f10...2988a57)
