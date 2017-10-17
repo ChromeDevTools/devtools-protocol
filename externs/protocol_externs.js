@@ -6130,6 +6130,20 @@ Protocol.RuntimeAgent.QueryObjectsResponse;
  * @return {!Promise<!Protocol.RuntimeAgent.QueryObjectsResponse>} */
 Protocol.RuntimeAgent.prototype.invoke_queryObjects = function(obj) {};
 
+/**
+ * @param {Protocol.Runtime.ExecutionContextId=} opt_executionContextId
+ * @return {!Promise<?Array<string>>}
+ */
+Protocol.RuntimeAgent.prototype.globalLexicalScopeNames = function(opt_executionContextId) {};
+/** @typedef {!{executionContextId: (Protocol.Runtime.ExecutionContextId|undefined)}} */
+Protocol.RuntimeAgent.GlobalLexicalScopeNamesRequest;
+/** @typedef {!{names: !Array<string>}} */
+Protocol.RuntimeAgent.GlobalLexicalScopeNamesResponse;
+/**
+ * @param {!Protocol.RuntimeAgent.GlobalLexicalScopeNamesRequest} obj
+ * @return {!Promise<!Protocol.RuntimeAgent.GlobalLexicalScopeNamesResponse>} */
+Protocol.RuntimeAgent.prototype.invoke_globalLexicalScopeNames = function(obj) {};
+
 /** @typedef {string} */
 Protocol.Runtime.ScriptId;
 
