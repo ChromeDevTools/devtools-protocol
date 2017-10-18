@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r509331 
+###### _2017-10-17 02:15:55_
+Diff: [c623810...2249014](https://github.com/ChromeDevTools/devtools-protocol/compare/c623810...2249014)
+#### `Runtime`: new command
+* [`Runtime.globalLexicalScopeNames`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-globalLexicalScopeNames)
+
+
 ## Roll protocol to r508301
 ###### _2017-10-12 03:16:09_
 Diff: [e95be51...4eaa4f7](https://github.com/ChromeDevTools/devtools-protocol/compare/e95be51...4eaa4f7)
