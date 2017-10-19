@@ -4271,7 +4271,8 @@
                     { "name": "nativeVirtualKeyCode", "type": "integer", "optional": true, "description": "Native virtual key code (default: 0)." },
                     { "name": "autoRepeat", "type": "boolean", "optional": true, "description": "Whether the event was generated from auto repeat (default: false)." },
                     { "name": "isKeypad", "type": "boolean", "optional": true, "description": "Whether the event was generated from the keypad (default: false)." },
-                    { "name": "isSystemKey", "type": "boolean", "optional": true, "description": "Whether the event was a system key event (default: false)." }
+                    { "name": "isSystemKey", "type": "boolean", "optional": true, "description": "Whether the event was a system key event (default: false)." },
+                    { "name": "location", "type": "integer", "optional": true, "experimental": true, "description": "Whether the event was from the left or right side of the keyboard. 1=Left, 2=Right (default: 0)." }
                 ],
                 "description": "Dispatches a key event to the page."
             },
