@@ -1899,20 +1899,18 @@ Protocol.NetworkAgent.GetCertificateResponse;
 Protocol.NetworkAgent.prototype.invoke_getCertificate = function(obj) {};
 
 /**
- * @param {boolean} enabled
- * @param {!Array<string>=} opt_patterns
- * @param {!Array<Protocol.Page.ResourceType>=} opt_resourceTypes
+ * @param {!Array<Protocol.Network.RequestPattern>} patterns
  * @return {!Promise<undefined>}
  */
-Protocol.NetworkAgent.prototype.setRequestInterceptionEnabled = function(enabled, opt_patterns, opt_resourceTypes) {};
-/** @typedef {!{patterns: (!Array<string>|undefined), resourceTypes: (!Array<Protocol.Page.ResourceType>|undefined), enabled: boolean}} */
-Protocol.NetworkAgent.SetRequestInterceptionEnabledRequest;
+Protocol.NetworkAgent.prototype.setRequestInterception = function(patterns) {};
+/** @typedef {!{patterns: !Array<Protocol.Network.RequestPattern>}} */
+Protocol.NetworkAgent.SetRequestInterceptionRequest;
 /** @typedef {Object|undefined} */
-Protocol.NetworkAgent.SetRequestInterceptionEnabledResponse;
+Protocol.NetworkAgent.SetRequestInterceptionResponse;
 /**
- * @param {!Protocol.NetworkAgent.SetRequestInterceptionEnabledRequest} obj
- * @return {!Promise<!Protocol.NetworkAgent.SetRequestInterceptionEnabledResponse>} */
-Protocol.NetworkAgent.prototype.invoke_setRequestInterceptionEnabled = function(obj) {};
+ * @param {!Protocol.NetworkAgent.SetRequestInterceptionRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.SetRequestInterceptionResponse>} */
+Protocol.NetworkAgent.prototype.invoke_setRequestInterception = function(obj) {};
 
 /**
  * @param {Protocol.Network.InterceptionId} interceptionId
@@ -2081,6 +2079,9 @@ Protocol.Network.AuthChallengeResponseResponse = {
 
 /** @typedef {!{response:(Protocol.Network.AuthChallengeResponseResponse), username:(string|undefined), password:(string|undefined)}} */
 Protocol.Network.AuthChallengeResponse;
+
+/** @typedef {!{urlPattern:(string|undefined), resourceType:(Protocol.Page.ResourceType|undefined)}} */
+Protocol.Network.RequestPattern;
 /** @interface */
 Protocol.NetworkDispatcher = function() {};
 /**

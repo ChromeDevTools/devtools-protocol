@@ -1,6 +1,13 @@
 
 
-## Roll protocol to r509917 
+## Roll protocol to r509994 
+###### _2017-10-18 21:15:50_
+Diff: [06db515...5df6a06](https://github.com/ChromeDevTools/devtools-protocol/compare/06db515...5df6a06)
+#### `Input`: modified command
+* [`Input.dispatchKeyEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-dispatchKeyEvent)
+
+
+## Roll protocol to r509917
 ###### _2017-10-18 16:15:52_
 Diff: [2249014...06db515](https://github.com/ChromeDevTools/devtools-protocol/compare/2249014...06db515)
 #### `Emulation`: modified command
