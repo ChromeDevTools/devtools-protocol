@@ -1,6 +1,6 @@
 
 
-## Roll protocol to r510657 
+## Roll protocol to r510657
 ###### _2017-10-20 21:15:50_
 Diff: [5df6a06...cb1d580](https://github.com/ChromeDevTools/devtools-protocol/compare/5df6a06...cb1d580)
 #### `Network`: new command
