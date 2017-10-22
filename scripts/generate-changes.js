@@ -121,7 +121,7 @@ class Formatter {
  */
 class CommitCrawler {
   constructor() {
-    this.remote = 'https://github.com/ChromeDevTools/devtools-protocol.git';
+    this.remote =  path.join(__dirname, '../');; // local clone
     this.path = path.join(__dirname, './stubprotocolrepo');
 
     if (!fs.existsSync(this.path)) {
@@ -189,7 +189,12 @@ class CommitCrawler {
 }
 
 (async function() {
-  const crawler = new CommitCrawler();
-  await crawler.crawl();
-  fs.writeFileSync(path.join(__dirname, '../changelog.md'), results);
+  try{
+    const crawler = new CommitCrawler();
+    await crawler.crawl();
+    fs.writeFileSync(path.join(__dirname, '../changelog.md'), results);
+    console.log('changelog.md updated');
+  } catch (e) {
+    console.error('changelog.md update FAILED');
+  }
 })();
