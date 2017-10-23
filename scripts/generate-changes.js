@@ -63,7 +63,7 @@ class Formatter {
     if (changes.length === 0) return;
 
     // simple-git adds this "(HEAD, origin/master)" string to the first commit's message...
-    const commitMessage = commit.message.replace(/\(HEAD.*/, '').replace(' (master)', '');
+    const commitMessage = commit.message.replace(/\(HEAD.*/, '').replace(' (master)', '').trim();
     results += `\n\n## ${commitMessage}\n`;
     results += `###### _${commit.date.replace(' -0700', '')}_\n`;
     const hashCompareStr = `${previousCommit.hash.slice(0, 7)}...${commit.hash.slice(0, 7)}`;
@@ -121,7 +121,7 @@ class Formatter {
  */
 class CommitCrawler {
   constructor() {
-    this.remote = 'https://github.com/ChromeDevTools/devtools-protocol.git';
+    this.remote =  path.join(__dirname, '../');; // local clone
     this.path = path.join(__dirname, './stubprotocolrepo');
 
     if (!fs.existsSync(this.path)) {
@@ -189,7 +189,12 @@ class CommitCrawler {
 }
 
 (async function() {
-  const crawler = new CommitCrawler();
-  await crawler.crawl();
-  fs.writeFileSync(path.join(__dirname, '../changelog.md'), results);
+  try{
+    const crawler = new CommitCrawler();
+    await crawler.crawl();
+    fs.writeFileSync(path.join(__dirname, '../changelog.md'), results);
+    console.log('changelog.md updated');
+  } catch (e) {
+    console.error('changelog.md update FAILED');
+  }
 })();
