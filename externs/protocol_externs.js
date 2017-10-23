@@ -4394,7 +4394,7 @@ Protocol.HeadlessExperimentalAgent.prototype.invoke_disable = function(obj) {};
 Protocol.HeadlessExperimentalAgent.prototype.beginFrame = function(opt_frameTime, opt_deadline, opt_interval, opt_screenshot) {};
 /** @typedef {!{interval: (number|undefined), deadline: (Protocol.Runtime.Timestamp|undefined), frameTime: (Protocol.Runtime.Timestamp|undefined), screenshot: (Protocol.HeadlessExperimental.ScreenshotParams|undefined)}} */
 Protocol.HeadlessExperimentalAgent.BeginFrameRequest;
-/** @typedef {!{hasDamage: boolean, screenshotData: string}} */
+/** @typedef {!{hasDamage: boolean, screenshotData: string, mainFrameContentUpdated: boolean}} */
 Protocol.HeadlessExperimentalAgent.BeginFrameResponse;
 /**
  * @param {!Protocol.HeadlessExperimentalAgent.BeginFrameRequest} obj

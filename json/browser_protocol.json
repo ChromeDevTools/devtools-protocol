@@ -4063,6 +4063,7 @@
                 ],
                 "returns": [
                     { "name": "hasDamage", "type": "boolean", "description": "Whether the BeginFrame resulted in damage and, thus, a new frame was committed to the display." },
+                    { "name": "mainFrameContentUpdated", "type": "boolean", "description": "Whether the main frame submitted a new display frame in response to this BeginFrame." },
                     { "name": "screenshotData", "type": "string", "optional": true, "description": "Base64-encoded image data of the screenshot, if one was requested and successfully taken." }
                 ],
                 "description": "Sends a BeginFrame to the target and returns when the frame was completed. Optionally captures a screenshot from the resulting frame. Requires that the target was created with enabled BeginFrameControl."
