@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r510771
+###### _2017-10-23 05:16:00_
+Diff: [228b292...745052e](https://github.com/ChromeDevTools/devtools-protocol/compare/228b292...745052e)
+#### `HeadlessExperimental`: modified command
+* [`HeadlessExperimental.beginFrame`](https://chromedevtools.github.io/devtools-protocol/tot/HeadlessExperimental/#method-beginFrame)
+
+
 ## Roll protocol to r510657
 ###### _2017-10-20 21:15:50_
 Diff: [5df6a06...cb1d580](https://github.com/ChromeDevTools/devtools-protocol/compare/5df6a06...cb1d580)

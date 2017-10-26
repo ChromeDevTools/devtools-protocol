@@ -1928,6 +1928,7 @@
                 "parameters": [
                     { "name": "interceptionId", "$ref": "InterceptionId", "description": "Each request the page makes will have a unique id, however if any redirects are encountered while processing that fetch, they will be reported with the same id as the original fetch. Likewise if HTTP authentication is needed then the same fetch id will be used." },
                     { "name": "request", "$ref": "Request" },
+                    { "name": "frameId", "$ref": "Page.FrameId", "description": "The id of the frame that initiated the request." },
                     { "name": "resourceType", "$ref": "Page.ResourceType", "description": "How the requested resource will be used." },
                     { "name": "isNavigationRequest", "type": "boolean", "description": "Whether this is a navigation request, which can abort the navigation completely." },
                     { "name": "redirectHeaders", "$ref": "Headers", "optional": true, "description": "HTTP response headers, only sent if a redirect was intercepted." },

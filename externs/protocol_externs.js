@@ -2191,6 +2191,7 @@ Protocol.NetworkDispatcher.prototype.eventSourceMessageReceived = function(reque
 /**
  * @param {Protocol.Network.InterceptionId} interceptionId
  * @param {Protocol.Network.Request} request
+ * @param {Protocol.Page.FrameId} frameId
  * @param {Protocol.Page.ResourceType} resourceType
  * @param {boolean} isNavigationRequest
  * @param {Protocol.Network.Headers=} opt_redirectHeaders
@@ -2198,7 +2199,7 @@ Protocol.NetworkDispatcher.prototype.eventSourceMessageReceived = function(reque
  * @param {string=} opt_redirectUrl
  * @param {Protocol.Network.AuthChallenge=} opt_authChallenge
  */
-Protocol.NetworkDispatcher.prototype.requestIntercepted = function(interceptionId, request, resourceType, isNavigationRequest, opt_redirectHeaders, opt_redirectStatusCode, opt_redirectUrl, opt_authChallenge) {};
+Protocol.NetworkDispatcher.prototype.requestIntercepted = function(interceptionId, request, frameId, resourceType, isNavigationRequest, opt_redirectHeaders, opt_redirectStatusCode, opt_redirectUrl, opt_authChallenge) {};
 Protocol.Database = {};
 
 
