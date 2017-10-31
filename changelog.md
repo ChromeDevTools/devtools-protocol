@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r511679
+###### _2017-10-25 18:15:34_
+Diff: [704cc11...d7f1734](https://github.com/ChromeDevTools/devtools-protocol/compare/704cc11...d7f1734)
+#### `Network`: modified event
+* [`Network.requestIntercepted`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestIntercepted)
+
+
 ## Roll protocol to r510771
 ###### _2017-10-23 05:16:00_
 Diff: [228b292...745052e](https://github.com/ChromeDevTools/devtools-protocol/compare/228b292...745052e)

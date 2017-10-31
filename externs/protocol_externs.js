@@ -394,6 +394,19 @@ Protocol.PageAgent.GetResourceTreeResponse;
 Protocol.PageAgent.prototype.invoke_getResourceTree = function(obj) {};
 
 /**
+ * @return {!Promise<?Protocol.Page.FrameTree>}
+ */
+Protocol.PageAgent.prototype.getFrameTree = function() {};
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.GetFrameTreeRequest;
+/** @typedef {!{frameTree: Protocol.Page.FrameTree}} */
+Protocol.PageAgent.GetFrameTreeResponse;
+/**
+ * @param {!Protocol.PageAgent.GetFrameTreeRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.GetFrameTreeResponse>} */
+Protocol.PageAgent.prototype.invoke_getFrameTree = function(obj) {};
+
+/**
  * @param {Protocol.Page.FrameId} frameId
  * @param {string} url
  * @return {!Promise<?string>}
@@ -765,6 +778,9 @@ Protocol.Page.FrameResource;
 
 /** @typedef {!{frame:(Protocol.Page.Frame), childFrames:(!Array<Protocol.Page.FrameResourceTree>|undefined), resources:(!Array<Protocol.Page.FrameResource>)}} */
 Protocol.Page.FrameResourceTree;
+
+/** @typedef {!{frame:(Protocol.Page.Frame), childFrames:(!Array<Protocol.Page.FrameTree>|undefined)}} */
+Protocol.Page.FrameTree;
 
 /** @typedef {string} */
 Protocol.Page.ScriptIdentifier;
