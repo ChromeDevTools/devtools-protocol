@@ -323,6 +323,14 @@
                 "experimental": true
             },
             {
+                "name": "setLifecycleEventsEnabled",
+                "parameters": [
+                    { "name": "enabled", "type": "boolean", "description": "If true, starts emitting lifecycle events." }
+                ],
+                "description": "Controls whether page will emit lifecycle events.",
+                "experimental": true
+            },
+            {
                 "name": "reload",
                 "parameters": [
                     { "name": "ignoreCache", "type": "boolean", "optional": true, "description": "If true, browser cache is ignored (as if the user pressed Shift+refresh)." },
@@ -346,7 +354,8 @@
                     { "name": "transitionType", "$ref": "TransitionType", "optional": true, "description": "Intended transition type." }
                 ],
                 "returns": [
-                    { "name": "frameId", "$ref": "FrameId", "description": "Frame id that will be navigated." }
+                    { "name": "frameId", "$ref": "FrameId", "description": "Frame id that will be navigated." },
+                    { "name": "loaderId", "$ref": "Network.LoaderId", "experimental": true, "description": "Loader id that will be used during navigation." }
                 ],
                 "description": "Navigates current page to the given URL."
             },

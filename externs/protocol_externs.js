@@ -268,6 +268,20 @@ Protocol.PageAgent.SetAutoAttachToCreatedPagesResponse;
 Protocol.PageAgent.prototype.invoke_setAutoAttachToCreatedPages = function(obj) {};
 
 /**
+ * @param {boolean} enabled
+ * @return {!Promise<undefined>}
+ */
+Protocol.PageAgent.prototype.setLifecycleEventsEnabled = function(enabled) {};
+/** @typedef {!{enabled: boolean}} */
+Protocol.PageAgent.SetLifecycleEventsEnabledRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.SetLifecycleEventsEnabledResponse;
+/**
+ * @param {!Protocol.PageAgent.SetLifecycleEventsEnabledRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.SetLifecycleEventsEnabledResponse>} */
+Protocol.PageAgent.prototype.invoke_setLifecycleEventsEnabled = function(obj) {};
+
+/**
  * @param {boolean=} opt_ignoreCache
  * @param {string=} opt_scriptToEvaluateOnLoad
  * @return {!Promise<undefined>}
@@ -305,7 +319,7 @@ Protocol.PageAgent.prototype.invoke_setAdBlockingEnabled = function(obj) {};
 Protocol.PageAgent.prototype.navigate = function(url, opt_referrer, opt_transitionType) {};
 /** @typedef {!{url: string, referrer: (string|undefined), transitionType: (Protocol.Page.TransitionType|undefined)}} */
 Protocol.PageAgent.NavigateRequest;
-/** @typedef {!{frameId: Protocol.Page.FrameId}} */
+/** @typedef {!{loaderId: Protocol.Network.LoaderId, frameId: Protocol.Page.FrameId}} */
 Protocol.PageAgent.NavigateResponse;
 /**
  * @param {!Protocol.PageAgent.NavigateRequest} obj

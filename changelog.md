@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r513411
+###### _2017-11-01 22:15:48_
+Diff: [dcd904a...4ea1613](https://github.com/ChromeDevTools/devtools-protocol/compare/dcd904a...4ea1613)
+#### `Page`: modified event
+* [`Page.windowOpen`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-windowOpen)
+
+
 ## Roll protocol to r513373
 ###### _2017-11-01 19:15:47_
 Diff: [a1e4422...dcd904a](https://github.com/ChromeDevTools/devtools-protocol/compare/a1e4422...dcd904a)
