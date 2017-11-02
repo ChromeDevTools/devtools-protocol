@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r513373
+###### _2017-11-01 19:15:47_
+Diff: [a1e4422...dcd904a](https://github.com/ChromeDevTools/devtools-protocol/compare/a1e4422...dcd904a)
+#### `Page`: modified event
+* [`Page.lifecycleEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-lifecycleEvent)
+#### `Network`: modified events
+* [`Network.requestWillBeSent`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestWillBeSent)
+* [`Network.responseReceived`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-responseReceived)
+
+
 ## Roll protocol to r513327 513317
 ###### _2017-11-01 17:15:44_
 Diff: [171f927...916de95](https://github.com/ChromeDevTools/devtools-protocol/compare/171f927...916de95)

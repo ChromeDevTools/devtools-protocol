@@ -762,12 +762,12 @@
             },
             {
                 "name": "windowOpen",
-                "description": "Fired when window.open() was called",
+                "description": "Fired when a new window is going to be opened, via window.open(), link click, form submission, etc.",
                 "parameters": [
                     { "name": "url", "type": "string", "description": "The URL for the new window." },
-                    { "name": "windowName", "type": "string", "description": "Window name passed to window.open()."},
-                    { "name": "windowFeatures", "type": "string", "description": "Window features passed to window.open()."},
-                    { "name": "userGesture", "type": "boolean", "description": "Whether or not window.open() was triggered by user gesture."}
+                    { "name": "windowName", "type": "string", "description": "Window name."},
+                    { "name": "windowFeatures", "type": "array", "items": { "type": "string" }, "description": "An array of enabled window features."},
+                    { "name": "userGesture", "type": "boolean", "description": "Whether or not it was triggered by user gesture."}
                 ]
             }
         ]

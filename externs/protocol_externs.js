@@ -904,7 +904,7 @@ Protocol.PageDispatcher.prototype.interstitialHidden = function() {};
 /**
  * @param {string} url
  * @param {string} windowName
- * @param {string} windowFeatures
+ * @param {!Array<string>} windowFeatures
  * @param {boolean} userGesture
  */
 Protocol.PageDispatcher.prototype.windowOpen = function(url, windowName, windowFeatures, userGesture) {};
