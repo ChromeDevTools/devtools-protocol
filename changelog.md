@@ -1,5 +1,143 @@
 
 
+## Roll protocol to r513327 513317
+###### _2017-11-01 17:15:44_
+Diff: [171f927...916de95](https://github.com/ChromeDevTools/devtools-protocol/compare/171f927...916de95)
+#### `Page`: modified commands
+* [`Page.addScriptToEvaluateOnNewDocument`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-addScriptToEvaluateOnNewDocument)
+* [`Page.removeScriptToEvaluateOnNewDocument`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-removeScriptToEvaluateOnNewDocument)
+* [`Page.navigate`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-navigate)
+* [`Page.stopLoading`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-stopLoading)
+* [`Page.getNavigationHistory`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getNavigationHistory)
+* [`Page.navigateToHistoryEntry`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-navigateToHistoryEntry)
+* [`Page.getCookies`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getCookies)
+* [`Page.deleteCookie`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-deleteCookie)
+* [`Page.setDeviceMetricsOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setDeviceMetricsOverride)
+* [`Page.clearDeviceMetricsOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-clearDeviceMetricsOverride)
+* [`Page.setGeolocationOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setGeolocationOverride)
+* [`Page.clearGeolocationOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-clearGeolocationOverride)
+* [`Page.setDeviceOrientationOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setDeviceOrientationOverride)
+* [`Page.clearDeviceOrientationOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-clearDeviceOrientationOverride)
+* [`Page.setTouchEmulationEnabled`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setTouchEmulationEnabled)
+* [`Page.captureScreenshot`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-captureScreenshot)
+* [`Page.printToPDF`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-printToPDF)
+* [`Page.getAppManifest`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getAppManifest)
+* [`Page.getLayoutMetrics`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getLayoutMetrics)
+* [`Page.createIsolatedWorld`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-createIsolatedWorld)
+#### `Page`: modified events
+* [`Page.frameAttached`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameAttached)
+* [`Page.frameScheduledNavigation`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameScheduledNavigation)
+* [`Page.windowOpen`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-windowOpen)
+#### `Page`: removed type
+* [`Page.NavigationResponse`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-NavigationResponse)
+#### `Page`: modified types
+* [`Page.ScriptIdentifier`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ScriptIdentifier)
+* [`Page.TransitionType`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-TransitionType)
+* [`Page.NavigationEntry`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-NavigationEntry)
+* [`Page.DialogType`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-DialogType)
+* [`Page.AppManifestError`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-AppManifestError)
+* [`Page.LayoutViewport`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-LayoutViewport)
+* [`Page.VisualViewport`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-VisualViewport)
+* [`Page.Viewport`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Viewport)
+#### `Emulation`: modified commands
+* [`Emulation.setScriptExecutionDisabled`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setScriptExecutionDisabled)
+* [`Emulation.setGeolocationOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setGeolocationOverride)
+* [`Emulation.clearGeolocationOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-clearGeolocationOverride)
+* [`Emulation.canEmulate`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-canEmulate)
+* [`Emulation.setDefaultBackgroundColorOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setDefaultBackgroundColorOverride)
+#### `Network`: modified commands
+* [`Network.getCookies`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-getCookies)
+* [`Network.getAllCookies`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-getAllCookies)
+* [`Network.deleteCookies`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-deleteCookies)
+* [`Network.setCookie`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setCookie)
+* [`Network.setCookies`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setCookies)
+* [`Network.canEmulateNetworkConditions`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-canEmulateNetworkConditions)
+#### `Network`: modified events
+* [`Network.requestWillBeSent`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestWillBeSent)
+* [`Network.responseReceived`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-responseReceived)
+* [`Network.loadingFailed`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-loadingFailed)
+* [`Network.webSocketWillSendHandshakeRequest`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webSocketWillSendHandshakeRequest)
+* [`Network.webSocketHandshakeResponseReceived`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webSocketHandshakeResponseReceived)
+* [`Network.webSocketCreated`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webSocketCreated)
+* [`Network.webSocketClosed`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webSocketClosed)
+* [`Network.webSocketFrameReceived`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webSocketFrameReceived)
+* [`Network.webSocketFrameError`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webSocketFrameError)
+* [`Network.webSocketFrameSent`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webSocketFrameSent)
+* [`Network.eventSourceMessageReceived`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-eventSourceMessageReceived)
+#### `Network`: modified types
+* [`Network.BlockedReason`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-BlockedReason)
+* [`Network.Response`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Response)
+* [`Network.WebSocketRequest`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-WebSocketRequest)
+* [`Network.WebSocketResponse`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-WebSocketResponse)
+* [`Network.WebSocketFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-WebSocketFrame)
+* [`Network.Cookie`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Cookie)
+* [`Network.CookieParam`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CookieParam)
+#### `DOM`: modified commands
+* [`DOM.getDocument`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getDocument)
+* [`DOM.getFlattenedDocument`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getFlattenedDocument)
+* [`DOM.requestChildNodes`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-requestChildNodes)
+* [`DOM.performSearch`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-performSearch)
+* [`DOM.focus`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-focus)
+* [`DOM.setFileInputFiles`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-setFileInputFiles)
+* [`DOM.getBoxModel`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getBoxModel)
+* [`DOM.describeNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-describeNode)
+#### `DOM`: modified types
+* [`DOM.BackendNodeId`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-BackendNodeId)
+* [`DOM.BackendNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-BackendNode)
+* [`DOM.Node`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-Node)
+* [`DOM.Quad`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-Quad)
+* [`DOM.BoxModel`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-BoxModel)
+* [`DOM.ShapeOutsideInfo`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-ShapeOutsideInfo)
+* [`DOM.Rect`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-Rect)
+#### `CSS`: modified commands
+* [`CSS.getPlatformFontsForNode`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getPlatformFontsForNode)
+* [`CSS.collectClassNames`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-collectClassNames)
+* [`CSS.getMediaQueries`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getMediaQueries)
+* [`CSS.setEffectivePropertyValueForNode`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-setEffectivePropertyValueForNode)
+* [`CSS.getBackgroundColors`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getBackgroundColors)
+* [`CSS.startRuleUsageTracking`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-startRuleUsageTracking)
+* [`CSS.takeCoverageDelta`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-takeCoverageDelta)
+* [`CSS.stopRuleUsageTracking`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-stopRuleUsageTracking)
+#### `CSS`: removed type
+* [`CSS.InlineTextBox`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-InlineTextBox)
+#### `CSS`: modified types
+* [`CSS.CSSStyleSheetHeader`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSStyleSheetHeader)
+* [`CSS.RuleUsage`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-RuleUsage)
+* [`CSS.CSSMedia`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSMedia)
+* [`CSS.MediaQuery`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-MediaQuery)
+* [`CSS.MediaQueryExpression`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-MediaQueryExpression)
+* [`CSS.PlatformFontUsage`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-PlatformFontUsage)
+#### `DOMSnapshot`: new type
+* [`DOMSnapshot.InlineTextBox`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-InlineTextBox)
+#### `DOMSnapshot`: modified type
+* [`DOMSnapshot.LayoutTreeNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-LayoutTreeNode)
+#### `DOMDebugger`: modified command
+* [`DOMDebugger.getEventListeners`](https://chromedevtools.github.io/devtools-protocol/tot/DOMDebugger/#method-getEventListeners)
+#### `DOMDebugger`: modified type
+* [`DOMDebugger.EventListener`](https://chromedevtools.github.io/devtools-protocol/tot/DOMDebugger/#type-EventListener)
+#### `Target`: modified commands
+* [`Target.setAttachToFrames`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-setAttachToFrames)
+* [`Target.setRemoteLocations`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-setRemoteLocations)
+* [`Target.createBrowserContext`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-createBrowserContext)
+* [`Target.disposeBrowserContext`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-disposeBrowserContext)
+#### `Target`: modified types
+* [`Target.BrowserContextID`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#type-BrowserContextID)
+* [`Target.RemoteLocation`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#type-RemoteLocation)
+#### `Input`: modified commands
+* [`Input.dispatchKeyEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-dispatchKeyEvent)
+* [`Input.dispatchTouchEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-dispatchTouchEvent)
+#### `Input`: modified type
+* [`Input.TouchPoint`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#type-TouchPoint)
+#### `Browser`: modified commands
+* [`Browser.getWindowForTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-getWindowForTarget)
+* [`Browser.setWindowBounds`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-setWindowBounds)
+* [`Browser.getWindowBounds`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-getWindowBounds)
+#### `Browser`: modified types
+* [`Browser.WindowID`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-WindowID)
+* [`Browser.WindowState`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-WindowState)
+* [`Browser.Bounds`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-Bounds)
+
+
 ## Roll protocol to r512925
 ###### _2017-10-31 13:15:51_
 Diff: [d7f1734...171f927](https://github.com/ChromeDevTools/devtools-protocol/compare/d7f1734...171f927)

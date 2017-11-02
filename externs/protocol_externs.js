@@ -838,10 +838,11 @@ Protocol.PageDispatcher.prototype.domContentEventFired = function(timestamp) {};
 Protocol.PageDispatcher.prototype.loadEventFired = function(timestamp) {};
 /**
  * @param {Protocol.Page.FrameId} frameId
+ * @param {Protocol.Network.LoaderId} loaderId
  * @param {string} name
  * @param {Protocol.Network.MonotonicTime} timestamp
  */
-Protocol.PageDispatcher.prototype.lifecycleEvent = function(frameId, name, timestamp) {};
+Protocol.PageDispatcher.prototype.lifecycleEvent = function(frameId, loaderId, name, timestamp) {};
 /**
  * @param {Protocol.Page.FrameId} frameId
  * @param {Protocol.Page.FrameId} parentFrameId

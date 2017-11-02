@@ -648,6 +648,7 @@
                 "name": "lifecycleEvent",
                 "parameters": [
                     { "name": "frameId", "$ref": "FrameId", "description": "Id of the frame." },
+                    { "name": "loaderId", "$ref": "Network.LoaderId", "description": "Loader identifier. Empty string if the request is fetched from worker." },
                     { "name": "name", "type": "string" },
                     { "name": "timestamp", "$ref": "Network.MonotonicTime" }
                 ],
@@ -1759,7 +1760,7 @@
                 "description": "Fired when page is about to send HTTP request.",
                 "parameters": [
                     { "name": "requestId", "$ref": "RequestId", "description": "Request identifier." },
-                    { "name": "loaderId", "$ref": "LoaderId", "description": "Loader identifier. Empty string if the request is fetched form worker." },
+                    { "name": "loaderId", "$ref": "LoaderId", "description": "Loader identifier. Empty string if the request is fetched from worker." },
                     { "name": "documentURL", "type": "string", "description": "URL of the document this request is loaded for." },
                     { "name": "request", "$ref": "Request", "description": "Request data." },
                     { "name": "timestamp", "$ref": "MonotonicTime", "description": "Timestamp." },
@@ -1782,7 +1783,7 @@
                 "description": "Fired when HTTP response is available.",
                 "parameters": [
                     { "name": "requestId", "$ref": "RequestId", "description": "Request identifier." },
-                    { "name": "loaderId", "$ref": "LoaderId", "description": "Loader identifier. Empty string if the request is fetched form worker." },
+                    { "name": "loaderId", "$ref": "LoaderId", "description": "Loader identifier. Empty string if the request is fetched from worker." },
                     { "name": "timestamp", "$ref": "MonotonicTime", "description": "Timestamp." },
                     { "name": "type", "$ref": "Page.ResourceType", "description": "Resource type." },
                     { "name": "response", "$ref": "Response", "description": "Response data." },
