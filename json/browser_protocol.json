@@ -69,7 +69,6 @@
     },
     {
         "domain": "Performance",
-        "experimental": true,
         "types": [
             {
                 "id": "Metric",
@@ -178,14 +177,12 @@
             {
                 "id": "ScriptIdentifier",
                 "type": "string",
-                "description": "Unique script identifier.",
-                "experimental": true
+                "description": "Unique script identifier."
             },
             {
                 "id": "TransitionType",
                 "type": "string",
                 "description": "Transition type.",
-                "experimental": true,
                 "enum": ["link", "typed", "auto_bookmark", "auto_subframe", "manual_subframe", "generated", "auto_toplevel", "form_submit", "reload", "keyword", "keyword_generated", "other"]
             },
             {
@@ -198,8 +195,7 @@
                   { "name": "userTypedURL", "type": "string", "description": "URL that the user typed in the url bar." },
                   { "name": "title", "type": "string", "description": "Title of the navigation history entry." },
                   { "name": "transitionType", "$ref": "TransitionType", "description": "Transition type." }
-                ],
-                "experimental": true
+                ]
             },
             {
                 "id": "ScreencastFrameMetadata",
@@ -220,8 +216,7 @@
                 "id": "DialogType",
                 "description": "Javascript dialog type.",
                 "type": "string",
-                "enum": ["alert", "confirm", "prompt", "beforeunload"],
-                "experimental": true
+                "enum": ["alert", "confirm", "prompt", "beforeunload"]
             },
             {
                 "id": "AppManifestError",
@@ -232,21 +227,12 @@
                   { "name": "critical", "type": "integer", "description": "If criticial, this is a non-recoverable parse error." },
                   { "name": "line", "type": "integer", "description": "Error line." },
                   { "name": "column", "type": "integer", "description": "Error column." }
-                ],
-                "experimental": true
-            },
-            {
-                "id": "NavigationResponse",
-                "description": "Proceed: allow the navigation; Cancel: cancel the navigation; CancelAndIgnore: cancels the navigation and makes the requester of the navigation acts like the request was never made.",
-                "type": "string",
-                "enum": ["Proceed", "Cancel", "CancelAndIgnore"],
-                "experimental": true
+                ]
             },
             {
                 "id": "LayoutViewport",
                 "type": "object",
                 "description": "Layout viewport position and dimensions.",
-                "experimental": true,
                 "properties": [
                     { "name": "pageX", "type": "integer", "description": "Horizontal offset relative to the document (CSS pixels)." },
                     { "name": "pageY", "type": "integer", "description": "Vertical offset relative to the document (CSS pixels)." },
@@ -258,7 +244,6 @@
                 "id": "VisualViewport",
                 "type": "object",
                 "description": "Visual viewport position, dimensions, and scale.",
-                "experimental": true,
                 "properties": [
                     { "name": "offsetX", "type": "number", "description": "Horizontal offset relative to the layout viewport (CSS pixels)." },
                     { "name": "offsetY", "type": "number", "description": "Vertical offset relative to the layout viewport (CSS pixels)." },
@@ -273,7 +258,6 @@
                 "id": "Viewport",
                 "type": "object",
                 "description": "Viewport for capturing screenshot.",
-                "experimental": true,
                 "properties": [
                     { "name": "x", "type": "number", "description": "X offset in CSS pixels." },
                     { "name": "y", "type": "number", "description": "Y offset in CSS pixels" },
@@ -321,16 +305,14 @@
                 "returns": [
                     { "name": "identifier", "$ref": "ScriptIdentifier", "description": "Identifier of the added script." }
                 ],
-                "description": "Evaluates given script in every frame upon creation (before loading frame's scripts).",
-                "experimental": true
+                "description": "Evaluates given script in every frame upon creation (before loading frame's scripts)."
             },
             {
                 "name": "removeScriptToEvaluateOnNewDocument",
                 "parameters": [
                     { "name": "identifier", "$ref": "ScriptIdentifier" }
                 ],
-                "description": "Removes given script from the list.",
-                "experimental": true
+                "description": "Removes given script from the list."
             },
             {
                 "name": "setAutoAttachToCreatedPages",
@@ -348,30 +330,29 @@
                 ],
                 "description": "Reloads given page optionally ignoring the cache."
             },
-	    {
+            {
                 "name": "setAdBlockingEnabled",
                 "description": "Enable Chrome's experimental ad filter on all sites.",
                 "parameters": [
                     { "name": "enabled", "type": "boolean", "description": "Whether to block ads." }
                 ],
-		"experimental": true
-	    },
+                "experimental": true
+            },
             {
                 "name": "navigate",
                 "parameters": [
                     { "name": "url", "type": "string", "description": "URL to navigate the page to." },
-                    { "name": "referrer", "type": "string", "optional": true, "experimental": true, "description": "Referrer URL." },
-                    { "name": "transitionType", "$ref": "TransitionType", "optional": true, "experimental": true, "description": "Intended transition type." }
+                    { "name": "referrer", "type": "string", "optional": true, "description": "Referrer URL." },
+                    { "name": "transitionType", "$ref": "TransitionType", "optional": true, "description": "Intended transition type." }
                 ],
                 "returns": [
-                    { "name": "frameId", "$ref": "FrameId", "experimental": true, "description": "Frame id that will be navigated." }
+                    { "name": "frameId", "$ref": "FrameId", "description": "Frame id that will be navigated." }
                 ],
                 "description": "Navigates current page to the given URL."
             },
             {
                 "name": "stopLoading",
-                "description": "Force the page stop all navigations and pending resource fetches.",
-                "experimental": true
+                "description": "Force the page stop all navigations and pending resource fetches."
             },
             {
               "name": "getNavigationHistory",
@@ -379,16 +360,14 @@
                 { "name": "currentIndex", "type": "integer", "description": "Index of the current navigation history entry." },
                 { "name": "entries", "type": "array", "items": { "$ref": "NavigationEntry" }, "description": "Array of navigation history entries." }
               ],
-              "description": "Returns navigation history for the current page.",
-              "experimental": true
+              "description": "Returns navigation history for the current page."
             },
             {
               "name": "navigateToHistoryEntry",
               "parameters": [
                   { "name": "entryId", "type": "integer", "description": "Unique id of the entry to navigate to." }
               ],
-              "description": "Navigates current page to the given history entry.",
-              "experimental": true
+              "description": "Navigates current page to the given history entry."
             },
             {
                 "name": "getCookies",
@@ -396,6 +375,7 @@
                     { "name": "cookies", "type": "array", "items": { "$ref": "Network.Cookie" }, "description": "Array of cookie objects." }
                 ],
                 "description": "Returns all browser cookies. Depending on the backend support, will return detailed cookie information in the <code>cookies</code> field.",
+                "deprecated": true,
                 "experimental": true,
                 "redirect": "Network"
             },
@@ -406,6 +386,7 @@
                     { "name": "url", "type": "string", "description": "URL to match cooke domain and path." }
                 ],
                 "description": "Deletes browser cookie with given name, domain and path.",
+                "deprecated": true,
                 "experimental": true,
                 "redirect": "Network"
             },
@@ -478,13 +459,15 @@
                     { "name": "screenOrientation", "$ref": "Emulation.ScreenOrientation", "optional": true, "description": "Screen orientation override." },
                     { "name": "viewport", "$ref": "Viewport", "optional": true, "description": "The viewport dimensions and scale. If not set, the override is cleared." }
                 ],
-                "redirect": "Emulation",
-                "experimental": true
+                "experimental": true,
+                "deprecated": true,
+                "redirect": "Emulation"
             },
             {
                 "name": "clearDeviceMetricsOverride",
                 "description": "Clears the overriden device metrics.",
                 "redirect": "Emulation",
+                "deprecated": true,
                 "experimental": true
             },
             {
@@ -495,12 +478,14 @@
                     { "name": "longitude", "type": "number", "optional": true, "description": "Mock longitude"},
                     { "name": "accuracy", "type": "number", "optional": true, "description": "Mock accuracy"}
                 ],
-                "redirect": "Emulation"
+                "redirect": "Emulation",
+                "deprecated": true
             },
             {
                 "name": "clearGeolocationOverride",
                 "description": "Clears the overriden Geolocation Position and Error.",
-                "redirect": "Emulation"
+                "redirect": "Emulation",
+                "deprecated": true
             },
             {
                 "name": "setDeviceOrientationOverride",
@@ -511,12 +496,14 @@
                     { "name": "gamma", "type": "number", "description": "Mock gamma"}
                 ],
                 "redirect": "DeviceOrientation",
+                "deprecated": true,
                 "experimental": true
             },
             {
                 "name": "clearDeviceOrientationOverride",
                 "description": "Clears the overridden Device Orientation.",
                 "redirect": "DeviceOrientation",
+                "deprecated": true,
                 "experimental": true
             },
             {
@@ -527,6 +514,7 @@
                 ],
                 "description": "Toggles mouse event-based touch event emulation.",
                 "experimental": true,
+                "deprecated": true,
                 "redirect": "Emulation"
             },
             {
@@ -535,13 +523,12 @@
                 "parameters": [
                     { "name": "format", "type": "string", "optional": true, "enum": ["jpeg", "png"], "description": "Image compression format (defaults to png)." },
                     { "name": "quality", "type": "integer", "optional": true, "description": "Compression quality from range [0..100] (jpeg only)." },
-                    { "name": "clip", "$ref": "Viewport", "optional": true, "description": "Capture the screenshot of a given region only.", "experimental": true },
+                    { "name": "clip", "$ref": "Viewport", "optional": true, "description": "Capture the screenshot of a given region only." },
                     { "name": "fromSurface", "type": "boolean", "optional": true, "description": "Capture the screenshot from the surface, rather than the view. Defaults to true.", "experimental": true }
                 ],
                 "returns": [
                     { "name": "data", "type": "string", "description": "Base64-encoded image data." }
-                ],
-                "experimental": true
+                ]
             },
             {
                 "name": "printToPDF",
@@ -562,8 +549,7 @@
                 ],
                 "returns": [
                     { "name": "data", "type": "string", "description": "Base64-encoded pdf data." }
-                ],
-                "experimental": true
+                ]
             },
             {
                 "name": "startScreencast",
@@ -600,7 +586,6 @@
             },
             {
                 "name": "getAppManifest",
-                "experimental": true,
                 "returns": [
                     { "name": "url", "type": "string", "description": "Manifest location." },
                     { "name": "errors", "type": "array", "items": { "$ref": "AppManifestError" } },
@@ -614,7 +599,6 @@
             {
                 "name": "getLayoutMetrics",
                 "description": "Returns metrics relating to the layouting of the page, such as viewport bounds/scale.",
-                "experimental": true,
                 "returns": [
                     { "name": "layoutViewport", "$ref": "LayoutViewport", "description": "Metrics relating to the layout viewport." },
                     { "name": "visualViewport", "$ref": "VisualViewport", "description": "Metrics relating to the visual viewport." },
@@ -624,7 +608,6 @@
             {
                 "name": "createIsolatedWorld",
                 "description": "Creates an isolated world for the given frame.",
-                "experimental": true,
                 "parameters": [
                     { "name": "frameId", "$ref": "FrameId", "description": "Id of the frame in which the isolated world should be created." },
                     { "name": "worldName", "type": "string", "optional": true, "description": "An optional name which is reported in the Execution Context." },
@@ -676,7 +659,7 @@
                 "parameters": [
                     { "name": "frameId", "$ref": "FrameId", "description": "Id of the frame that has been attached." },
                     { "name": "parentFrameId", "$ref": "FrameId", "description": "Parent frame identifier." },
-                    { "name": "stack", "$ref": "Runtime.StackTrace", "optional": true, "description": "JavaScript stack trace of when frame was attached, only set if frame initiated from script.", "experimental": true }
+                    { "name": "stack", "$ref": "Runtime.StackTrace", "optional": true, "description": "JavaScript stack trace of when frame was attached, only set if frame initiated from script." }
                 ]
             },
             {
@@ -715,8 +698,8 @@
                 "parameters": [
                     { "name": "frameId", "$ref": "FrameId", "description": "Id of the frame that has scheduled a navigation." },
                     { "name": "delay", "type": "number", "description": "Delay (in seconds) until the navigation is scheduled to begin. The navigation is not guaranteed to start." },
-                    { "name": "reason", "type": "string", "experimental": true, "enum": ["formSubmissionGet", "formSubmissionPost", "httpHeaderRefresh", "scriptInitiated", "metaTagRefresh", "pageBlockInterstitial", "reload"], "description": "The reason for the navigation." },
-                    { "name": "url", "type": "string", "experimental": true, "description": "The destination URL for the scheduled navigation." }
+                    { "name": "reason", "type": "string", "enum": ["formSubmissionGet", "formSubmissionPost", "httpHeaderRefresh", "scriptInitiated", "metaTagRefresh", "pageBlockInterstitial", "reload"], "description": "The reason for the navigation." },
+                    { "name": "url", "type": "string", "description": "The destination URL for the scheduled navigation." }
                 ],
                 "experimental": true
             },
@@ -784,8 +767,7 @@
                     { "name": "windowName", "type": "string", "description": "Window name passed to window.open()."},
                     { "name": "windowFeatures", "type": "string", "description": "Window features passed to window.open()."},
                     { "name": "userGesture", "type": "boolean", "description": "Whether or not window.open() was triggered by user gesture."}
-                ],
-                "experimental": true
+                ]
             }
         ]
     },
@@ -1043,7 +1025,6 @@
             {
                 "name": "setScriptExecutionDisabled",
                 "description": "Switches script execution in the page.",
-                "experimental": true,
                 "parameters": [
                     { "name": "value", "type": "boolean", "description": "Whether script execution should be disabled in the page." }
                 ]
@@ -1051,7 +1032,6 @@
             {
                 "name": "setGeolocationOverride",
                 "description": "Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position unavailable.",
-                "experimental": true,
                 "parameters": [
                     { "name": "latitude", "type": "number", "optional": true, "description": "Mock latitude"},
                     { "name": "longitude", "type": "number", "optional": true, "description": "Mock longitude"},
@@ -1060,8 +1040,7 @@
             },
             {
                 "name": "clearGeolocationOverride",
-                "description": "Clears the overriden Geolocation Position and Error.",
-                "experimental": true
+                "description": "Clears the overriden Geolocation Position and Error."
             },
             {
                 "name": "setTouchEmulationEnabled",
@@ -1099,8 +1078,7 @@
                 "description": "Tells whether emulation is supported.",
                 "returns": [
                     { "name": "result", "type": "boolean", "description": "True if emulation is supported." }
-                ],
-                "experimental": true
+                ]
             },
             {
                 "name": "setVirtualTimePolicy",
@@ -1125,8 +1103,7 @@
                 "description": "Sets or clears an override of the default background color of the frame. This override is used if the content does not specify one.",
                 "parameters": [
                     { "name": "color", "$ref": "DOM.RGBA", "optional": true, "description": "RGBA of the default background color. If not specified, any existing override will be cleared." }
-                ],
-                "experimental": true
+                ]
             }
         ],
         "events": [
@@ -1156,7 +1133,6 @@
     {
         "domain": "Security",
         "description": "Security",
-        "experimental": true,
         "types": [
             {
                 "id": "CertificateId",
@@ -1414,8 +1390,7 @@
                 "id": "BlockedReason",
                 "type": "string",
                 "description": "The reason why request was blocked.",
-                "enum": ["csp", "mixed-content", "origin", "inspector", "subresource-filter", "other"],
-                "experimental": true
+                "enum": ["csp", "mixed-content", "origin", "inspector", "subresource-filter", "other"]
             },
             {
                 "id": "Response",
@@ -1432,8 +1407,8 @@
                     { "name": "requestHeadersText", "type": "string", "optional": true, "description": "HTTP request headers text." },
                     { "name": "connectionReused", "type": "boolean", "description": "Specifies whether physical connection was actually reused for this request." },
                     { "name": "connectionId", "type": "number", "description": "Physical connection id that was actually used for this request." },
-                    { "name": "remoteIPAddress", "type": "string", "optional": true, "experimental": true, "description": "Remote IP address." },
-                    { "name": "remotePort", "type": "integer", "optional": true, "experimental": true, "description": "Remote port."},
+                    { "name": "remoteIPAddress", "type": "string", "optional": true, "description": "Remote IP address." },
+                    { "name": "remotePort", "type": "integer", "optional": true, "description": "Remote port."},
                     { "name": "fromDiskCache", "type": "boolean", "optional": true, "description": "Specifies that the request was served from the disk cache." },
                     { "name": "fromServiceWorker", "type": "boolean", "optional": true, "description": "Specifies that the request was served from the ServiceWorker." },
                     { "name": "encodedDataLength", "type": "number", "optional": false, "description": "Total number of bytes received for this request so far." },
@@ -1447,7 +1422,6 @@
                 "id": "WebSocketRequest",
                 "type": "object",
                 "description": "WebSocket request data.",
-                "experimental": true,
                 "properties": [
                     { "name": "headers", "$ref": "Headers", "description": "HTTP request headers." }
                 ]
@@ -1456,7 +1430,6 @@
                 "id": "WebSocketResponse",
                 "type": "object",
                 "description": "WebSocket response data.",
-                "experimental": true,
                 "properties": [
                     { "name": "status", "type": "integer", "description": "HTTP response status code." },
                     { "name": "statusText", "type": "string", "description": "HTTP response status text." },
@@ -1470,7 +1443,6 @@
                 "id": "WebSocketFrame",
                 "type": "object",
                 "description": "WebSocket frame data.",
-                "experimental": true,
                 "properties": [
                     { "name": "opcode", "type": "number", "description": "WebSocket frame opcode." },
                     { "name": "mask", "type": "boolean", "description": "WebSocke frame mask." },
@@ -1514,8 +1486,7 @@
                     { "name": "secure", "type": "boolean", "description": "True if cookie is secure." },
                     { "name": "session", "type": "boolean", "description": "True in case of session cookie." },
                     { "name": "sameSite", "$ref": "CookieSameSite", "optional": true, "description": "Cookie SameSite type." }
-                ],
-                "experimental": true
+                ]
             },
             {
                 "id": "CookieParam",
@@ -1531,8 +1502,7 @@
                     { "name": "httpOnly", "type": "boolean", "optional": true, "description": "True if cookie is http-only." },
                     { "name": "sameSite", "$ref": "CookieSameSite", "optional": true, "description": "Cookie SameSite type." },
                     { "name": "expires", "$ref": "TimeSinceEpoch", "optional": true, "description": "Cookie expiration date, session cookie if not set" }
-                ],
-                "experimental": true
+                ]
             },
             {
                 "id": "AuthChallenge",
@@ -1652,16 +1622,14 @@
                 "returns": [
                     { "name": "cookies", "type": "array", "items": { "$ref": "Cookie" }, "description": "Array of cookie objects." }
                 ],
-                "description": "Returns all browser cookies for the current URL. Depending on the backend support, will return detailed cookie information in the <code>cookies</code> field.",
-                "experimental": true
+                "description": "Returns all browser cookies for the current URL. Depending on the backend support, will return detailed cookie information in the <code>cookies</code> field."
             },
             {
                 "name": "getAllCookies",
                 "returns": [
                     { "name": "cookies", "type": "array", "items": { "$ref": "Cookie" }, "description": "Array of cookie objects." }
                 ],
-                "description": "Returns all browser cookies. Depending on the backend support, will return detailed cookie information in the <code>cookies</code> field.",
-                "experimental": true
+                "description": "Returns all browser cookies. Depending on the backend support, will return detailed cookie information in the <code>cookies</code> field."
             },
             {
                 "name": "deleteCookies",
@@ -1671,8 +1639,7 @@
                     { "name": "domain", "type": "string", "optional": true, "description": "If specified, deletes only cookies with the exact domain." },
                     { "name": "path", "type": "string", "optional": true, "description": "If specified, deletes only cookies with the exact path." }
                 ],
-                "description": "Deletes browser cookies with matching name and url or domain/path pair.",
-                "experimental": true
+                "description": "Deletes browser cookies with matching name and url or domain/path pair."
             },
             {
                 "name": "setCookie",
@@ -1690,24 +1657,21 @@
                 "returns": [
                     { "name": "success", "type": "boolean", "description": "True if successfully set cookie." }
                 ],
-                "description": "Sets a cookie with the given cookie data; may overwrite equivalent cookies if they exist.",
-                "experimental": true
+                "description": "Sets a cookie with the given cookie data; may overwrite equivalent cookies if they exist."
             },
             {
                 "name": "setCookies",
                 "parameters": [
                     { "name": "cookies", "type": "array", "items": { "$ref": "CookieParam" }, "description": "Cookies to be set." }
                 ],
-                "description": "Sets given cookies.",
-                "experimental": true
+                "description": "Sets given cookies."
             },
             {
                 "name": "canEmulateNetworkConditions",
                 "description": "Tells whether emulation of network conditions is supported.",
                 "returns": [
                   { "name": "result", "type": "boolean", "description": "True if emulation of network conditions is supported." }
-                ],
-                "experimental": true
+                ]
             },
             {
                 "name": "emulateNetworkConditions",
@@ -1799,11 +1763,11 @@
                     { "name": "documentURL", "type": "string", "description": "URL of the document this request is loaded for." },
                     { "name": "request", "$ref": "Request", "description": "Request data." },
                     { "name": "timestamp", "$ref": "MonotonicTime", "description": "Timestamp." },
-                    { "name": "wallTime", "$ref": "TimeSinceEpoch", "experimental": true, "description": "Timestamp." },
+                    { "name": "wallTime", "$ref": "TimeSinceEpoch", "description": "Timestamp." },
                     { "name": "initiator", "$ref": "Initiator", "description": "Request initiator." },
                     { "name": "redirectResponse", "optional": true, "$ref": "Response", "description": "Redirect response data." },
-                    { "name": "type", "$ref": "Page.ResourceType", "optional": true, "experimental": true, "description": "Type of this resource." },
-                    { "name": "frameId", "optional": true, "$ref": "Page.FrameId", "description": "Frame identifier.", "experimental": true }
+                    { "name": "type", "$ref": "Page.ResourceType", "optional": true, "description": "Type of this resource." },
+                    { "name": "frameId", "optional": true, "$ref": "Page.FrameId", "description": "Frame identifier." }
                 ]
             },
             {
@@ -1822,7 +1786,7 @@
                     { "name": "timestamp", "$ref": "MonotonicTime", "description": "Timestamp." },
                     { "name": "type", "$ref": "Page.ResourceType", "description": "Resource type." },
                     { "name": "response", "$ref": "Response", "description": "Response data." },
-                    { "name": "frameId", "optional": true, "$ref": "Page.FrameId", "description": "Frame identifier.", "experimental": true }
+                    { "name": "frameId", "optional": true, "$ref": "Page.FrameId", "description": "Frame identifier." }
                 ]
             },
             {
@@ -1853,7 +1817,7 @@
                     { "name": "type", "$ref": "Page.ResourceType", "description": "Resource type." },
                     { "name": "errorText", "type": "string", "description": "User friendly error message." },
                     { "name": "canceled", "type": "boolean", "optional": true, "description": "True if loading was canceled." },
-                    { "name": "blockedReason", "$ref": "BlockedReason", "optional": true, "description": "The reason why loading was blocked, if any.", "experimental": true }
+                    { "name": "blockedReason", "$ref": "BlockedReason", "optional": true, "description": "The reason why loading was blocked, if any." }
                 ]
             },
             {
@@ -1862,10 +1826,9 @@
                 "parameters": [
                     { "name": "requestId", "$ref": "RequestId", "description": "Request identifier." },
                     { "name": "timestamp", "$ref": "MonotonicTime", "description": "Timestamp." },
-                    { "name": "wallTime", "$ref": "TimeSinceEpoch", "experimental": true, "description": "UTC Timestamp." },
+                    { "name": "wallTime", "$ref": "TimeSinceEpoch", "description": "UTC Timestamp." },
                     { "name": "request", "$ref": "WebSocketRequest", "description": "WebSocket request data." }
-                ],
-                "experimental": true
+                ]
             },
             {
                 "name": "webSocketHandshakeResponseReceived",
@@ -1874,8 +1837,7 @@
                     { "name": "requestId", "$ref": "RequestId", "description": "Request identifier." },
                     { "name": "timestamp", "$ref": "MonotonicTime", "description": "Timestamp." },
                     { "name": "response", "$ref": "WebSocketResponse", "description": "WebSocket response data." }
-                ],
-                "experimental": true
+                ]
             },
             {
                 "name": "webSocketCreated",
@@ -1884,8 +1846,7 @@
                     { "name": "requestId", "$ref": "RequestId", "description": "Request identifier." },
                     { "name": "url", "type": "string", "description": "WebSocket request URL." },
                     { "name": "initiator", "$ref": "Initiator", "optional": true, "description": "Request initiator." }
-                ],
-                "experimental": true
+                ]
             },
             {
                 "name": "webSocketClosed",
@@ -1893,8 +1854,7 @@
                 "parameters": [
                     { "name": "requestId", "$ref": "RequestId", "description": "Request identifier." },
                     { "name": "timestamp", "$ref": "MonotonicTime", "description": "Timestamp." }
-                ],
-                "experimental": true
+                ]
             },
             {
                 "name": "webSocketFrameReceived",
@@ -1903,8 +1863,7 @@
                     { "name": "requestId", "$ref": "RequestId", "description": "Request identifier." },
                     { "name": "timestamp", "$ref": "MonotonicTime", "description": "Timestamp." },
                     { "name": "response", "$ref": "WebSocketFrame", "description": "WebSocket response data." }
-                ],
-                "experimental": true
+                ]
             },
             {
                 "name": "webSocketFrameError",
@@ -1913,8 +1872,7 @@
                     { "name": "requestId", "$ref": "RequestId", "description": "Request identifier." },
                     { "name": "timestamp", "$ref": "MonotonicTime", "description": "Timestamp." },
                     { "name": "errorMessage", "type": "string", "description": "WebSocket frame error message." }
-                ],
-                "experimental": true
+                ]
             },
             {
                 "name": "webSocketFrameSent",
@@ -1923,8 +1881,7 @@
                     { "name": "requestId", "$ref": "RequestId", "description": "Request identifier." },
                     { "name": "timestamp", "$ref": "MonotonicTime", "description": "Timestamp." },
                     { "name": "response", "$ref": "WebSocketFrame", "description": "WebSocket response data." }
-                ],
-                "experimental": true
+                ]
             },
             {
                 "name": "eventSourceMessageReceived",
@@ -1935,8 +1892,7 @@
                     { "name": "eventName", "type": "string", "description": "Message type." },
                     { "name": "eventId", "type": "string", "description": "Message identifier." },
                     { "name": "data", "type": "string", "description": "Message content." }
-                ],
-                "experimental": true
+                ]
             },
             {
                 "name": "requestIntercepted",
@@ -2477,8 +2433,7 @@
             {
                 "id": "BackendNodeId",
                 "type": "integer",
-                "description": "Unique DOM node identifier used to reference a node that may not have been pushed to the front-end.",
-                "experimental": true
+                "description": "Unique DOM node identifier used to reference a node that may not have been pushed to the front-end."
             },
             {
                 "id": "BackendNode",
@@ -2488,7 +2443,6 @@
                     { "name": "nodeName", "type": "string", "description": "<code>Node</code>'s nodeName." },
                     { "name": "backendNodeId", "$ref": "BackendNodeId" }
                 ],
-                "experimental": true,
                 "description": "Backend node with a friendly name."
             },
             {
@@ -2524,8 +2478,8 @@
                 "type": "object",
                 "properties": [
                     { "name": "nodeId", "$ref": "NodeId", "description": "Node identifier that is passed into the rest of the DOM messages as the <code>nodeId</code>. Backend will only push node with given <code>id</code> once. It is aware of all requested nodes and will only fire DOM events for nodes known to the client." },
-                    { "name": "parentId", "$ref": "NodeId", "optional": true, "description": "The id of the parent node if any.", "experimental": true },
-                    { "name": "backendNodeId", "$ref": "BackendNodeId", "description": "The BackendNodeId for this node.", "experimental": true },
+                    { "name": "parentId", "$ref": "NodeId", "optional": true, "description": "The id of the parent node if any." },
+                    { "name": "backendNodeId", "$ref": "BackendNodeId", "description": "The BackendNodeId for this node." },
                     { "name": "nodeType", "type": "integer", "description": "<code>Node</code>'s nodeType." },
                     { "name": "nodeName", "type": "string", "description": "<code>Node</code>'s nodeName." },
                     { "name": "localName", "type": "string", "description": "<code>Node</code>'s localName." },
@@ -2534,7 +2488,7 @@
                     { "name": "children", "type": "array", "optional": true, "items": { "$ref": "Node" }, "description": "Child nodes of this node when requested with children." },
                     { "name": "attributes", "type": "array", "optional": true, "items": { "type": "string" }, "description": "Attributes of the <code>Element</code> node in the form of flat array <code>[name1, value1, name2, value2]</code>." },
                     { "name": "documentURL", "type": "string", "optional": true, "description": "Document URL that <code>Document</code> or <code>FrameOwner</code> node points to." },
-                    { "name": "baseURL", "type": "string", "optional": true, "description": "Base URL that <code>Document</code> or <code>FrameOwner</code> node uses for URL completion.", "experimental": true },
+                    { "name": "baseURL", "type": "string", "optional": true, "description": "Base URL that <code>Document</code> or <code>FrameOwner</code> node uses for URL completion." },
                     { "name": "publicId", "type": "string", "optional": true, "description": "<code>DocumentType</code>'s publicId." },
                     { "name": "systemId", "type": "string", "optional": true, "description": "<code>DocumentType</code>'s systemId." },
                     { "name": "internalSubset", "type": "string", "optional": true, "description": "<code>DocumentType</code>'s internalSubset." },
@@ -2543,14 +2497,14 @@
                     { "name": "value", "type": "string", "optional": true, "description": "<code>Attr</code>'s value." },
                     { "name": "pseudoType", "$ref": "PseudoType", "optional": true, "description": "Pseudo element type for this node." },
                     { "name": "shadowRootType", "$ref": "ShadowRootType", "optional": true, "description": "Shadow root type." },
-                    { "name": "frameId", "$ref": "Page.FrameId", "optional": true, "description": "Frame ID for frame owner elements.", "experimental": true },
+                    { "name": "frameId", "$ref": "Page.FrameId", "optional": true, "description": "Frame ID for frame owner elements." },
                     { "name": "contentDocument", "$ref": "Node", "optional": true, "description": "Content document for frame owner elements." },
-                    { "name": "shadowRoots", "type": "array", "optional": true, "items": { "$ref": "Node" }, "description": "Shadow root list for given element host.", "experimental": true },
-                    { "name": "templateContent", "$ref": "Node", "optional": true, "description": "Content document fragment for template elements.", "experimental": true },
-                    { "name": "pseudoElements", "type": "array", "items": { "$ref": "Node" }, "optional": true, "description": "Pseudo elements associated with this node.", "experimental": true },
+                    { "name": "shadowRoots", "type": "array", "optional": true, "items": { "$ref": "Node" }, "description": "Shadow root list for given element host." },
+                    { "name": "templateContent", "$ref": "Node", "optional": true, "description": "Content document fragment for template elements." },
+                    { "name": "pseudoElements", "type": "array", "items": { "$ref": "Node" }, "optional": true, "description": "Pseudo elements associated with this node." },
                     { "name": "importedDocument", "$ref": "Node", "optional": true, "description": "Import document for the HTMLImport links." },
-                    { "name": "distributedNodes", "type": "array", "items": { "$ref": "BackendNode" }, "optional": true, "description": "Distributed nodes for given insertion point.", "experimental": true },
-                    { "name": "isSVG", "type": "boolean", "optional": true, "description": "Whether the node is SVG.", "experimental": true }
+                    { "name": "distributedNodes", "type": "array", "items": { "$ref": "BackendNode" }, "optional": true, "description": "Distributed nodes for given insertion point." },
+                    { "name": "isSVG", "type": "boolean", "optional": true, "description": "Whether the node is SVG." }
                 ],
                 "description": "DOM interaction is implemented in terms of mirror objects that represent the actual DOM nodes. DOMNode is a base node mirror type."
             },
@@ -2571,13 +2525,11 @@
                 "items": { "type": "number" },
                 "minItems": 8,
                 "maxItems": 8,
-                "description": "An array of quad vertices, x immediately followed by y for each point, points clock-wise.",
-                "experimental": true
+                "description": "An array of quad vertices, x immediately followed by y for each point, points clock-wise."
             },
             {
                 "id": "BoxModel",
                 "type": "object",
-                "experimental": true,
                 "properties": [
                     { "name": "content", "$ref": "Quad", "description": "Content box" },
                     { "name": "padding", "$ref": "Quad", "description": "Padding box" },
@@ -2592,7 +2544,6 @@
             {
                 "id": "ShapeOutsideInfo",
                 "type": "object",
-                "experimental": true,
                 "properties": [
                     { "name": "bounds", "$ref": "Quad", "description": "Shape bounds" },
                     { "name": "shape", "type": "array", "items": { "type": "any"}, "description": "Shape coordinate details" },
@@ -2603,7 +2554,6 @@
             {
                 "id": "Rect",
                 "type": "object",
-                "experimental": true,
                 "properties": [
                     { "name": "x", "type": "number", "description": "X coordinate" },
                     { "name": "y", "type": "number", "description": "Y coordinate" },
@@ -2625,8 +2575,8 @@
             {
                 "name": "getDocument",
                 "parameters": [
-                    { "name": "depth", "type": "integer", "optional": true, "description": "The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the entire subtree or provide an integer larger than 0.", "experimental": true },
-                    { "name": "pierce", "type": "boolean", "optional": true, "description": "Whether or not iframes and shadow roots should be traversed when returning the subtree (default is false).", "experimental": true }
+                    { "name": "depth", "type": "integer", "optional": true, "description": "The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the entire subtree or provide an integer larger than 0." },
+                    { "name": "pierce", "type": "boolean", "optional": true, "description": "Whether or not iframes and shadow roots should be traversed when returning the subtree (default is false)." }
                 ],
                 "returns": [
                     { "name": "root", "$ref": "Node", "description": "Resulting node." }
@@ -2636,8 +2586,8 @@
             {
                 "name": "getFlattenedDocument",
                 "parameters": [
-                    { "name": "depth", "type": "integer", "optional": true, "description": "The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the entire subtree or provide an integer larger than 0.", "experimental": true },
-                    { "name": "pierce", "type": "boolean", "optional": true, "description": "Whether or not iframes and shadow roots should be traversed when returning the subtree (default is false).", "experimental": true }
+                    { "name": "depth", "type": "integer", "optional": true, "description": "The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the entire subtree or provide an integer larger than 0." },
+                    { "name": "pierce", "type": "boolean", "optional": true, "description": "Whether or not iframes and shadow roots should be traversed when returning the subtree (default is false)." }
                 ],
                 "returns": [
                     { "name": "nodes", "type": "array", "items": { "$ref": "Node" }, "description": "Resulting node." }
@@ -2659,8 +2609,8 @@
                 "name": "requestChildNodes",
                 "parameters": [
                     { "name": "nodeId", "$ref": "NodeId", "description": "Id of the node to get children for." },
-                    { "name": "depth", "type": "integer", "optional": true, "description": "The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the entire subtree or provide an integer larger than 0.", "experimental": true },
-                    { "name": "pierce", "type": "boolean", "optional": true, "description": "Whether or not iframes and shadow roots should be traversed when returning the sub-tree (default is false).", "experimental": true }
+                    { "name": "depth", "type": "integer", "optional": true, "description": "The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the entire subtree or provide an integer larger than 0." },
+                    { "name": "pierce", "type": "boolean", "optional": true, "description": "Whether or not iframes and shadow roots should be traversed when returning the sub-tree (default is false)." }
                 ],
                 "description": "Requests that children of the node with given id are returned to the caller in form of <code>setChildNodes</code> events where not only immediate children are retrieved, but all children down to the specified depth."
             },
@@ -2762,7 +2712,7 @@
                 "name": "performSearch",
                 "parameters": [
                     { "name": "query", "type": "string", "description": "Plain text or query selector or XPath search query." },
-                    { "name": "includeUserAgentShadowDOM", "type": "boolean", "optional": true, "description": "True to search in user agent shadow DOM.", "experimental": true }
+                    { "name": "includeUserAgentShadowDOM", "type": "boolean", "optional": true, "description": "True to search in user agent shadow DOM." }
                 ],
                 "returns": [
                     { "name": "searchId", "type": "string", "description": "Unique search session identifier." },
@@ -2916,8 +2866,7 @@
                     { "name": "backendNodeId", "$ref": "BackendNodeId", "optional": true, "description": "Identifier of the backend node." },
                     { "name": "objectId", "$ref": "Runtime.RemoteObjectId", "optional": true, "description": "JavaScript object id of the node wrapper." }
                 ],
-                "description": "Focuses the given element.",
-                "experimental": true
+                "description": "Focuses the given element."
             },
             {
                 "name": "setFileInputFiles",
@@ -2927,8 +2876,7 @@
                     { "name": "backendNodeId", "$ref": "BackendNodeId", "optional": true, "description": "Identifier of the backend node." },
                     { "name": "objectId", "$ref": "Runtime.RemoteObjectId", "optional": true, "description": "JavaScript object id of the node wrapper." }
                 ],
-                "description": "Sets files for the given file input element.",
-                "experimental": true
+                "description": "Sets files for the given file input element."
             },
             {
                 "name": "getBoxModel",
@@ -2940,8 +2888,7 @@
                 "returns": [
                     { "name": "model", "$ref": "BoxModel", "description": "Box model for the node." }
                 ],
-                "description": "Returns boxes for the currently selected nodes.",
-                "experimental": true
+                "description": "Returns boxes for the given node."
             },
             {
                 "name": "getNodeForLocation",
@@ -2973,8 +2920,8 @@
                     { "name": "nodeId", "$ref": "NodeId", "optional": true, "description": "Identifier of the node." },
                     { "name": "backendNodeId", "$ref": "BackendNodeId", "optional": true, "description": "Identifier of the backend node." },
                     { "name": "objectId", "$ref": "Runtime.RemoteObjectId", "optional": true, "description": "JavaScript object id of the node wrapper." },
-                    { "name": "depth", "type": "integer", "optional": true, "description": "The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the entire subtree or provide an integer larger than 0.", "experimental": true },
-                    { "name": "pierce", "type": "boolean", "optional": true, "description": "Whether or not iframes and shadow roots should be traversed when returning the subtree (default is false).", "experimental": true }
+                    { "name": "depth", "type": "integer", "optional": true, "description": "The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the entire subtree or provide an integer larger than 0." },
+                    { "name": "pierce", "type": "boolean", "optional": true, "description": "Whether or not iframes and shadow roots should be traversed when returning the subtree (default is false)." }
                 ],
                 "returns": [
                     { "name": "node", "$ref": "Node", "description": "Node description." }
@@ -3177,7 +3124,7 @@
                     { "name": "isInline", "type": "boolean", "description": "Whether this stylesheet is created for STYLE tag by parser. This flag is not set for document.written STYLE tags." },
                     { "name": "startLine", "type": "number", "description": "Line offset of the stylesheet within the resource (zero based)." },
                     { "name": "startColumn", "type": "number", "description": "Column offset of the stylesheet within the resource (zero based)." },
-                    { "name": "length", "type": "number", "description": "Size of the content (in characters).", "experimental": true }
+                    { "name": "length", "type": "number", "description": "Size of the content (in characters)." }
                 ],
                 "description": "CSS stylesheet metainformation."
             },
@@ -3202,8 +3149,7 @@
                     { "name": "endOffset", "type": "number", "description": "Offset of the end of the rule body from the beginning of the stylesheet." },
                     { "name": "used", "type": "boolean", "description": "Indicates whether the rule was actually used by some element in the page." }
                 ],
-                "description": "CSS coverage information.",
-                "experimental": true
+                "description": "CSS coverage information."
             },
             {
                 "id": "SourceRange",
@@ -3269,7 +3215,7 @@
                     { "name": "sourceURL", "type": "string", "optional": true, "description": "URL of the document containing the media query description." },
                     { "name": "range", "$ref": "SourceRange", "optional": true, "description": "The associated rule (@media or @import) header range in the enclosing stylesheet (if available)." },
                     { "name": "styleSheetId", "$ref": "StyleSheetId", "optional": true, "description": "Identifier of the stylesheet containing this object (if exists)." },
-                    { "name": "mediaList", "type": "array", "items": { "$ref": "MediaQuery" }, "optional": true, "experimental": true, "description": "Array of media queries." }
+                    { "name": "mediaList", "type": "array", "items": { "$ref": "MediaQuery" }, "optional": true, "description": "Array of media queries." }
                 ],
                 "description": "CSS media rule descriptor."
             },
@@ -3280,8 +3226,7 @@
                     { "name": "expressions", "type": "array", "items": { "$ref": "MediaQueryExpression" }, "description": "Array of media query expressions." },
                     { "name": "active", "type": "boolean", "description": "Whether the media query condition is satisfied." }
                 ],
-                "description": "Media query descriptor.",
-                "experimental": true
+                "description": "Media query descriptor."
             },
             {
                 "id": "MediaQueryExpression",
@@ -3293,8 +3238,7 @@
                     { "name": "valueRange", "$ref": "SourceRange", "optional": true, "description": "The associated range of the value text in the enclosing stylesheet (if available)." },
                     { "name": "computedLength", "type": "number", "optional": true, "description": "Computed length of media query expression (if applicable)."}
                 ],
-                "description": "Media query expression descriptor.",
-                "experimental": true
+                "description": "Media query expression descriptor."
             },
             {
                 "id": "PlatformFontUsage",
@@ -3304,8 +3248,7 @@
                     { "name": "isCustomFont", "type": "boolean", "description": "Indicates if the font was downloaded or resolved locally."},
                     { "name": "glyphCount", "type": "number", "description": "Amount of glyphs that were rendered with this font."}
                 ],
-                "description": "Information about amount of glyphs that were rendered with given font.",
-                "experimental": true
+                "description": "Information about amount of glyphs that were rendered with given font."
             },
             {
                 "id": "CSSKeyframesRule",
@@ -3336,17 +3279,6 @@
                     { "name": "text", "type": "string", "description": "New style text."}
                 ],
                 "description": "A descriptor of operation to mutate style declaration text."
-            },
-            {
-                "id": "InlineTextBox",
-                "type": "object",
-                "properties": [
-                    { "name": "boundingBox", "$ref": "DOM.Rect", "description": "The absolute position bounding box." },
-                    { "name": "startCharacterIndex", "type": "integer", "description": "The starting index in characters, for this post layout textbox substring." },
-                    { "name": "numCharacters", "type": "integer", "description": "The number of characters in this post layout textbox substring." }
-                ],
-                "description": "Details of post layout rendered text positions. The exact layout should not be regarded as stable and may change between versions.",
-                "experimental": true
             }
         ],
         "commands": [
@@ -3402,8 +3334,7 @@
                 "returns": [
                     { "name": "fonts", "type": "array", "items": { "$ref": "PlatformFontUsage" }, "description": "Usage statistics for every employed platform font." }
                 ],
-                "description": "Requests information about platform fonts which we used to render child TextNodes in the given node.",
-                "experimental": true
+                "description": "Requests information about platform fonts which we used to render child TextNodes in the given node."
             },
             {
                 "name": "getStyleSheetText",
@@ -3423,8 +3354,7 @@
                 "returns": [
                     {"name": "classNames", "type": "array", "items": { "type": "string" }, "description": "Class name list." }
                 ],
-                "description": "Returns all class names from specified stylesheet.",
-                "experimental": true
+                "description": "Returns all class names from specified stylesheet."
             },
             {
                 "name": "setStyleSheetText",
@@ -3518,8 +3448,7 @@
                 "returns": [
                     { "name": "medias", "type": "array", "items": { "$ref": "CSSMedia" } }
                 ],
-                "description": "Returns all media queries parsed by the rendering engine.",
-                "experimental": true
+                "description": "Returns all media queries parsed by the rendering engine."
             },
             {
                 "name": "setEffectivePropertyValueForNode",
@@ -3528,8 +3457,7 @@
                     { "name": "propertyName", "type": "string"},
                     { "name": "value", "type": "string"}
                 ],
-                "description": "Find a rule with the given active property for the given node and set the new value for this property",
-                "experimental": true
+                "description": "Find a rule with the given active property for the given node and set the new value for this property"
             },
             {
                 "name": "getBackgroundColors",
@@ -3542,29 +3470,25 @@
                     { "name": "computedFontWeight", "type": "string", "description": "The computed font weight for this node, as a CSS computed value string (e.g. 'normal' or '100').", "optional": true },
 
                     { "name": "computedBodyFontSize", "type": "string", "description": "The computed font size for the document body, as a computed CSS value string (e.g. '16px').", "optional": true }
-                ],
-                "experimental": true
+                ]
             },
             {
                 "name": "startRuleUsageTracking",
-                "description": "Enables the selector recording.",
-                "experimental": true
+                "description": "Enables the selector recording."
             },
             {
                 "name": "takeCoverageDelta",
                 "description": "Obtain list of rules that became used since last call to this method (or since start of coverage instrumentation)",
                 "returns": [
                     { "name": "coverage", "type": "array", "items": { "$ref": "RuleUsage" } }
-                ],
-                "experimental": true
+                ]
             },
             {
                 "name": "stopRuleUsageTracking",
                 "returns": [
                     { "name": "ruleUsage", "type": "array", "items": { "$ref": "RuleUsage" } }
                 ],
-                "description": "The list of rules with an indication of whether these were used",
-                "experimental": true
+                "description": "The list of rules with an indication of whether these were used"
             }
         ],
         "events": [
@@ -3637,13 +3561,23 @@
                 "description": "A Node in the DOM tree."
             },
             {
+                "id": "InlineTextBox",
+                "type": "object",
+                "properties": [
+                    { "name": "boundingBox", "$ref": "DOM.Rect", "description": "The absolute position bounding box." },
+                    { "name": "startCharacterIndex", "type": "integer", "description": "The starting index in characters, for this post layout textbox substring." },
+                    { "name": "numCharacters", "type": "integer", "description": "The number of characters in this post layout textbox substring." }
+                ],
+                "description": "Details of post layout rendered text positions. The exact layout should not be regarded as stable and may change between versions."
+            },
+            {
                 "id": "LayoutTreeNode",
                 "type": "object",
                 "properties": [
                     { "name": "domNodeIndex", "type": "integer", "description": "The index of the related DOM node in the <code>domNodes</code> array returned by <code>getSnapshot</code>." },
                     { "name": "boundingBox", "$ref": "DOM.Rect", "description": "The absolute position bounding box." },
                     { "name": "layoutText", "type": "string", "optional": true, "description": "Contents of the LayoutText, if any." },
-                    { "name": "inlineTextNodes", "type": "array", "optional": true, "items": { "$ref": "CSS.InlineTextBox" }, "description": "The post-layout inline text nodes, if any." },
+                    { "name": "inlineTextNodes", "type": "array", "optional": true, "items": { "$ref": "InlineTextBox" }, "description": "The post-layout inline text nodes, if any." },
                     { "name": "styleIndex", "type": "integer", "optional": true, "description": "Index into the <code>computedStyles</code> array returned by <code>getSnapshot</code>." }
                 ],
                 "description": "Details of an element in the DOM tree with a LayoutObject."
@@ -3684,7 +3618,6 @@
     {
         "domain": "IO",
         "description": "Input/Output operations for streams produced by DevTools.",
-        "experimental": true,
         "types": [
             {
                 "id": "StreamHandle",
@@ -3752,8 +3685,7 @@
                     { "name": "handler", "$ref": "Runtime.RemoteObject", "optional": true, "description": "Event handler function value." },
                     { "name": "originalHandler", "$ref": "Runtime.RemoteObject", "optional": true, "description": "Event original handler function value." },
                     { "name": "backendNodeId", "$ref": "DOM.BackendNodeId", "optional": true, "description": "Node the listener is added to (if any)." }
-                ],
-                "experimental": true
+                ]
             }
         ],
         "commands": [
@@ -3821,11 +3753,10 @@
             },
             {
                 "name": "getEventListeners",
-                "experimental": true,
                 "parameters": [
                     { "name": "objectId", "$ref": "Runtime.RemoteObjectId", "description": "Identifier of the object to return listeners for." },
-                    { "name": "depth", "type": "integer", "optional": true, "description": "The maximum depth at which Node children should be retrieved, defaults to 1. Use -1 for the entire subtree or provide an integer larger than 0.", "experimental": true },
-                    { "name": "pierce", "type": "boolean", "optional": true, "description": "Whether or not iframes and shadow roots should be traversed when returning the subtree (default is false). Reports listeners for all contexts if pierce is enabled.", "experimental": true }
+                    { "name": "depth", "type": "integer", "optional": true, "description": "The maximum depth at which Node children should be retrieved, defaults to 1. Use -1 for the entire subtree or provide an integer larger than 0." },
+                    { "name": "pierce", "type": "boolean", "optional": true, "description": "Whether or not iframes and shadow roots should be traversed when returning the subtree (default is false). Reports listeners for all contexts if pierce is enabled." }
                 ],
                 "returns": [
                     { "name": "listeners", "type": "array", "items": { "$ref": "EventListener" }, "description": "Array of relevant listeners." }
@@ -3837,7 +3768,6 @@
     {
         "domain": "Target",
         "description": "Supports additional targets discovery and allows to attach to them.",
-        "experimental": true,
         "types": [
             {
                 "id": "TargetID",
@@ -3850,7 +3780,8 @@
             },
             {
                 "id": "BrowserContextID",
-                "type": "string"
+                "type": "string",
+                "experimental": true
             },
             {
                 "id": "TargetInfo",
@@ -3870,7 +3801,8 @@
                 "properties": [
                     { "name": "host", "type": "string" },
                     { "name": "port", "type": "integer" }
-                ]
+                ],
+                "experimental": true
             }
         ],
         "commands": [
@@ -3893,14 +3825,16 @@
                 "name": "setAttachToFrames",
                 "parameters": [
                     { "name": "value", "type": "boolean", "description": "Whether to attach to frames." }
-                ]
+                ],
+                "experimental": true
             },
             {
                 "name": "setRemoteLocations",
                 "description": "Enables target discovery for the specified locations, when <code>setDiscoverTargets</code> was set to <code>true</code>.",
                 "parameters": [
                     { "name": "locations", "type": "array", "items": { "$ref": "RemoteLocation" }, "description": "List of remote locations." }
-                ]
+                ],
+                "experimental": true
             },
             {
                 "name": "sendMessageToTarget",
@@ -3961,7 +3895,8 @@
                 "description": "Creates a new empty BrowserContext. Similar to an incognito profile but you can have more than one.",
                 "returns": [
                     { "name": "browserContextId", "$ref": "BrowserContextID", "description": "The id of the context created." }
-                ]
+                ],
+                "experimental": true
             },
             {
                 "name": "disposeBrowserContext",
@@ -3971,7 +3906,8 @@
                 ],
                 "returns": [
                     { "name": "success", "type": "boolean" }
-                ]
+                ],
+                "experimental": true
             },
             {
                 "name": "createTarget",
@@ -4251,7 +4187,6 @@
             {
                 "id": "TouchPoint",
                 "type": "object",
-                "experimental": true,
                 "properties": [
                     { "name": "x", "type": "number", "description": "X coordinate of the event relative to the main frame's viewport in CSS pixels."},
                     { "name": "y", "type": "number", "description": "Y coordinate of the event relative to the main frame's viewport in CSS pixels. 0 refers to the top of the viewport and Y increases as it proceeds towards the bottom of the viewport."},
@@ -4298,7 +4233,7 @@
                     { "name": "autoRepeat", "type": "boolean", "optional": true, "description": "Whether the event was generated from auto repeat (default: false)." },
                     { "name": "isKeypad", "type": "boolean", "optional": true, "description": "Whether the event was generated from the keypad (default: false)." },
                     { "name": "isSystemKey", "type": "boolean", "optional": true, "description": "Whether the event was a system key event (default: false)." },
-                    { "name": "location", "type": "integer", "optional": true, "experimental": true, "description": "Whether the event was from the left or right side of the keyboard. 1=Left, 2=Right (default: 0)." }
+                    { "name": "location", "type": "integer", "optional": true, "description": "Whether the event was from the left or right side of the keyboard. 1=Left, 2=Right (default: 0)." }
                 ],
                 "description": "Dispatches a key event to the page."
             },
@@ -4319,7 +4254,6 @@
             },
             {
                 "name": "dispatchTouchEvent",
-                "experimental": true,
                 "parameters": [
                     { "name": "type", "type": "string", "enum": ["touchStart", "touchEnd", "touchMove", "touchCancel"], "description": "Type of the touch event. TouchEnd and TouchCancel must not contain any touch points, while TouchStart and TouchMove must contains at least one." },
                     { "name": "touchPoints", "type": "array", "items": { "$ref": "TouchPoint" }, "description": "Active touch points on the touch device. One event per any changed point (compared to previous touch event in a sequence) is generated, emulating pressing/moving/releasing points one by one." },
@@ -5088,7 +5022,6 @@
         "domain": "Log",
         "description": "Provides access to log entries.",
         "dependencies": ["Runtime", "Network"],
-        "experimental": true,
         "types": [
             {
                 "id": "LogEntry",
@@ -5227,17 +5160,18 @@
     {
         "domain": "Browser",
         "description": "The Browser domain defines methods and events for browser managing.",
-        "experimental": true,
         "types": [
             {
                 "id": "WindowID",
-                "type": "integer"
+                "type": "integer",
+                "experimental": true
             },
             {
                 "id": "WindowState",
                 "type": "string",
                 "enum": ["normal", "minimized", "maximized", "fullscreen"],
-                "description": "The state of the browser window."
+                "description": "The state of the browser window.",
+                "experimental": true
             },
             {
                 "id": "Bounds",
@@ -5249,7 +5183,8 @@
                     { "name": "width", "type": "integer", "optional": true, "description": "The window width in pixels."},
                     { "name": "height", "type": "integer", "optional": true, "description": "The window height in pixels."},
                     { "name": "windowState", "$ref": "WindowState", "optional": true, "description": "The window state. Default to normal."}
-                ]
+                ],
+                "experimental": true
             }
         ],
         "commands": [
@@ -5266,7 +5201,8 @@
                 "returns": [
                     { "name": "windowId", "$ref": "WindowID", "description": "Browser window id." },
                     { "name": "bounds", "$ref": "Bounds", "description": "Bounds information of the window. When window state is 'minimized', the restored window position and size are returned." }
-                ]
+                ],
+                "experimental": true
             },
             {
                 "name": "getVersion",
@@ -5285,7 +5221,8 @@
                 "parameters": [
                     { "name": "windowId", "$ref": "WindowID", "description": "Browser window id." },
                     { "name": "bounds", "$ref": "Bounds", "description": "New window bounds. The 'minimized', 'maximized' and 'fullscreen' states cannot be combined with 'left', 'top', 'width' or 'height'. Leaves unspecified fields unchanged." }
-                ]
+                ],
+                "experimental": true
             },
             {
                 "name": "getWindowBounds",
@@ -5295,7 +5232,8 @@
                 ],
                 "returns": [
                     { "name": "bounds", "$ref": "Bounds", "description": "Bounds information of the window. When window state is 'minimized', the restored window position and size are returned." }
-                ]
+                ],
+                "experimental": true
             }
         ]
     }]

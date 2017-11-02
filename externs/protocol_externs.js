@@ -818,13 +818,6 @@ Protocol.Page.DialogType = {
 /** @typedef {!{message:(string), critical:(number), line:(number), column:(number)}} */
 Protocol.Page.AppManifestError;
 
-/** @enum {string} */
-Protocol.Page.NavigationResponse = {
-    Proceed: "Proceed",
-    Cancel: "Cancel",
-    CancelAndIgnore: "CancelAndIgnore"
-};
-
 /** @typedef {!{pageX:(number), pageY:(number), clientWidth:(number), clientHeight:(number)}} */
 Protocol.Page.LayoutViewport;
 
@@ -3851,9 +3844,6 @@ Protocol.CSS.CSSKeyframeRule;
 
 /** @typedef {!{styleSheetId:(Protocol.CSS.StyleSheetId), range:(Protocol.CSS.SourceRange), text:(string)}} */
 Protocol.CSS.StyleDeclarationEdit;
-
-/** @typedef {!{boundingBox:(Protocol.DOM.Rect), startCharacterIndex:(number), numCharacters:(number)}} */
-Protocol.CSS.InlineTextBox;
 /** @interface */
 Protocol.CSSDispatcher = function() {};
 Protocol.CSSDispatcher.prototype.mediaQueryResultChanged = function() {};
@@ -3895,7 +3885,10 @@ Protocol.DOMSnapshotAgent.prototype.invoke_getSnapshot = function(obj) {};
 /** @typedef {!{nodeType:(number), nodeName:(string), nodeValue:(string), textValue:(string|undefined), inputValue:(string|undefined), inputChecked:(boolean|undefined), optionSelected:(boolean|undefined), backendNodeId:(Protocol.DOM.BackendNodeId), childNodeIndexes:(!Array<number>|undefined), attributes:(!Array<Protocol.DOMSnapshot.NameValue>|undefined), pseudoElementIndexes:(!Array<number>|undefined), layoutNodeIndex:(number|undefined), documentURL:(string|undefined), baseURL:(string|undefined), contentLanguage:(string|undefined), documentEncoding:(string|undefined), publicId:(string|undefined), systemId:(string|undefined), frameId:(Protocol.Page.FrameId|undefined), contentDocumentIndex:(number|undefined), importedDocumentIndex:(number|undefined), templateContentIndex:(number|undefined), pseudoType:(Protocol.DOM.PseudoType|undefined), isClickable:(boolean|undefined)}} */
 Protocol.DOMSnapshot.DOMNode;
 
-/** @typedef {!{domNodeIndex:(number), boundingBox:(Protocol.DOM.Rect), layoutText:(string|undefined), inlineTextNodes:(!Array<Protocol.CSS.InlineTextBox>|undefined), styleIndex:(number|undefined)}} */
+/** @typedef {!{boundingBox:(Protocol.DOM.Rect), startCharacterIndex:(number), numCharacters:(number)}} */
+Protocol.DOMSnapshot.InlineTextBox;
+
+/** @typedef {!{domNodeIndex:(number), boundingBox:(Protocol.DOM.Rect), layoutText:(string|undefined), inlineTextNodes:(!Array<Protocol.DOMSnapshot.InlineTextBox>|undefined), styleIndex:(number|undefined)}} */
 Protocol.DOMSnapshot.LayoutTreeNode;
 
 /** @typedef {!{properties:(!Array<Protocol.DOMSnapshot.NameValue>)}} */
