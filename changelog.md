@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r512925
+###### _2017-10-31 13:15:51_
+Diff: [d7f1734...171f927](https://github.com/ChromeDevTools/devtools-protocol/compare/d7f1734...171f927)
+#### `Page`: new command
+* [`Page.getFrameTree`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getFrameTree)
+#### `Page`: new type
+* [`Page.FrameTree`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-FrameTree)
+
+
 ## Roll protocol to r511679
 ###### _2017-10-25 18:15:34_
 Diff: [704cc11...d7f1734](https://github.com/ChromeDevTools/devtools-protocol/compare/704cc11...d7f1734)
