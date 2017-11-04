@@ -6680,6 +6680,20 @@ Protocol.DebuggerAgent.SetVariableValueResponse;
 Protocol.DebuggerAgent.prototype.invoke_setVariableValue = function(obj) {};
 
 /**
+ * @param {Protocol.Runtime.CallArgument} newValue
+ * @return {!Promise<undefined>}
+ */
+Protocol.DebuggerAgent.prototype.setReturnValue = function(newValue) {};
+/** @typedef {!{newValue: Protocol.Runtime.CallArgument}} */
+Protocol.DebuggerAgent.SetReturnValueRequest;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.SetReturnValueResponse;
+/**
+ * @param {!Protocol.DebuggerAgent.SetReturnValueRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.SetReturnValueResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_setReturnValue = function(obj) {};
+
+/**
  * @param {number} maxDepth
  * @return {!Promise<undefined>}
  */

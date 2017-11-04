@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r513425
+###### _2017-11-02 01:15:48_
+Diff: [4ea1613...e310fa1](https://github.com/ChromeDevTools/devtools-protocol/compare/4ea1613...e310fa1)
+#### `Page`: new command
+* [`Page.setLifecycleEventsEnabled`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setLifecycleEventsEnabled)
+#### `Page`: modified command
+* [`Page.navigate`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-navigate)
+
+
 ## Roll protocol to r513411
 ###### _2017-11-01 22:15:48_
 Diff: [dcd904a...4ea1613](https://github.com/ChromeDevTools/devtools-protocol/compare/dcd904a...4ea1613)
