@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r514053
+###### _2017-11-04 11:15:40_
+Diff: [e310fa1...d9a7169](https://github.com/ChromeDevTools/devtools-protocol/compare/e310fa1...d9a7169)
+#### `Debugger`: new command
+* [`Debugger.setReturnValue`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setReturnValue)
+
+
 ## Roll protocol to r513425
 ###### _2017-11-02 01:15:48_
 Diff: [4ea1613...e310fa1](https://github.com/ChromeDevTools/devtools-protocol/compare/4ea1613...e310fa1)

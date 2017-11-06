@@ -6312,6 +6312,9 @@ Protocol.Runtime.CallFrame;
 
 /** @typedef {!{description:(string|undefined), callFrames:(!Array<Protocol.Runtime.CallFrame>), parent:(Protocol.Runtime.StackTrace|undefined), promiseCreationFrame:(Protocol.Runtime.CallFrame|undefined)}} */
 Protocol.Runtime.StackTrace;
+
+/** @typedef {string} */
+Protocol.Runtime.AsyncTaskId;
 /** @interface */
 Protocol.RuntimeDispatcher = function() {};
 /**
@@ -6489,6 +6492,20 @@ Protocol.DebuggerAgent.ContinueToLocationResponse;
 Protocol.DebuggerAgent.prototype.invoke_continueToLocation = function(obj) {};
 
 /**
+ * @param {Protocol.Runtime.AsyncTaskId} asyncTaskId
+ * @return {!Promise<undefined>}
+ */
+Protocol.DebuggerAgent.prototype.pauseOnAsyncTask = function(asyncTaskId) {};
+/** @typedef {!{asyncTaskId: Protocol.Runtime.AsyncTaskId}} */
+Protocol.DebuggerAgent.PauseOnAsyncTaskRequest;
+/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.PauseOnAsyncTaskResponse;
+/**
+ * @param {!Protocol.DebuggerAgent.PauseOnAsyncTaskRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.PauseOnAsyncTaskResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_pauseOnAsyncTask = function(obj) {};
+
+/**
  * @return {!Promise<undefined>}
  */
 Protocol.DebuggerAgent.prototype.stepOver = function() {};
@@ -6502,10 +6519,11 @@ Protocol.DebuggerAgent.StepOverResponse;
 Protocol.DebuggerAgent.prototype.invoke_stepOver = function(obj) {};
 
 /**
+ * @param {boolean=} opt_breakOnAsyncCall
  * @return {!Promise<undefined>}
  */
-Protocol.DebuggerAgent.prototype.stepInto = function() {};
-/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.prototype.stepInto = function(opt_breakOnAsyncCall) {};
+/** @typedef {!{breakOnAsyncCall: (boolean|undefined)}} */
 Protocol.DebuggerAgent.StepIntoRequest;
 /** @typedef {Object|undefined} */
 Protocol.DebuggerAgent.StepIntoResponse;
@@ -6827,8 +6845,9 @@ Protocol.DebuggerDispatcher.prototype.breakpointResolved = function(breakpointId
  * @param {!Object=} opt_data
  * @param {!Array<string>=} opt_hitBreakpoints
  * @param {Protocol.Runtime.StackTrace=} opt_asyncStackTrace
+ * @param {Protocol.Runtime.AsyncTaskId=} opt_scheduledAsyncTaskId
  */
-Protocol.DebuggerDispatcher.prototype.paused = function(callFrames, reason, opt_data, opt_hitBreakpoints, opt_asyncStackTrace) {};
+Protocol.DebuggerDispatcher.prototype.paused = function(callFrames, reason, opt_data, opt_hitBreakpoints, opt_asyncStackTrace, opt_scheduledAsyncTaskId) {};
 Protocol.DebuggerDispatcher.prototype.resumed = function() {};
 Protocol.Console = {};
 
