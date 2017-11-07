@@ -1,5 +1,19 @@
 
 
+## Roll protocol to r514112
+###### _2017-11-06 04:15:45 -0800_
+Diff: [d9a7169...2cda62b](https://github.com/ChromeDevTools/devtools-protocol/compare/d9a7169...2cda62b)
+#### `Runtime`: new type
+* [`Runtime.AsyncTaskId`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-AsyncTaskId)
+#### `Debugger`: new command
+* [`Debugger.pauseOnAsyncTask`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-pauseOnAsyncTask)
+#### `Debugger`: modified commands
+* [`Debugger.stepInto`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-stepInto)
+* [`Debugger.scheduleStepIntoAsync`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-scheduleStepIntoAsync)
+#### `Debugger`: modified event
+* [`Debugger.paused`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-paused)
+
+
 ## Roll protocol to r514053
 ###### _2017-11-04 11:15:40_
 Diff: [e310fa1...d9a7169](https://github.com/ChromeDevTools/devtools-protocol/compare/e310fa1...d9a7169)

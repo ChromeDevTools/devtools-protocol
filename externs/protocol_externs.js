@@ -7295,6 +7295,19 @@ Protocol.HeapProfilerAgent.StopSamplingResponse;
  * @return {!Promise<!Protocol.HeapProfilerAgent.StopSamplingResponse>} */
 Protocol.HeapProfilerAgent.prototype.invoke_stopSampling = function(obj) {};
 
+/**
+ * @return {!Promise<?Protocol.HeapProfiler.SamplingHeapProfile>}
+ */
+Protocol.HeapProfilerAgent.prototype.getSamplingProfile = function() {};
+/** @typedef {Object|undefined} */
+Protocol.HeapProfilerAgent.GetSamplingProfileRequest;
+/** @typedef {!{profile: Protocol.HeapProfiler.SamplingHeapProfile}} */
+Protocol.HeapProfilerAgent.GetSamplingProfileResponse;
+/**
+ * @param {!Protocol.HeapProfilerAgent.GetSamplingProfileRequest} obj
+ * @return {!Promise<!Protocol.HeapProfilerAgent.GetSamplingProfileResponse>} */
+Protocol.HeapProfilerAgent.prototype.invoke_getSamplingProfile = function(obj) {};
+
 /** @typedef {string} */
 Protocol.HeapProfiler.HeapSnapshotObjectId;
 
