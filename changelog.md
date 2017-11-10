@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r514369
+###### _2017-11-06 19:15:46 -0800_
+Diff: [2cda62b...abb8c6c](https://github.com/ChromeDevTools/devtools-protocol/compare/2cda62b...abb8c6c)
+#### `HeapProfiler`: new command
+* [`HeapProfiler.getSamplingProfile`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#method-getSamplingProfile)
+
+
 ## Roll protocol to r514112
 ###### _2017-11-06 04:15:45 -0800_
 Diff: [d9a7169...2cda62b](https://github.com/ChromeDevTools/devtools-protocol/compare/d9a7169...2cda62b)

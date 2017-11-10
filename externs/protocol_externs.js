@@ -319,7 +319,7 @@ Protocol.PageAgent.prototype.invoke_setAdBlockingEnabled = function(obj) {};
 Protocol.PageAgent.prototype.navigate = function(url, opt_referrer, opt_transitionType) {};
 /** @typedef {!{url: string, referrer: (string|undefined), transitionType: (Protocol.Page.TransitionType|undefined)}} */
 Protocol.PageAgent.NavigateRequest;
-/** @typedef {!{loaderId: Protocol.Network.LoaderId, frameId: Protocol.Page.FrameId}} */
+/** @typedef {!{errorText: string, frameId: Protocol.Page.FrameId}} */
 Protocol.PageAgent.NavigateResponse;
 /**
  * @param {!Protocol.PageAgent.NavigateRequest} obj

@@ -354,8 +354,8 @@
                     { "name": "transitionType", "$ref": "TransitionType", "optional": true, "description": "Intended transition type." }
                 ],
                 "returns": [
-                    { "name": "frameId", "$ref": "FrameId", "description": "Frame id that will be navigated." },
-                    { "name": "loaderId", "$ref": "Network.LoaderId", "experimental": true, "description": "Loader id that will be used during navigation." }
+                    { "name": "frameId", "$ref": "FrameId", "description": "Frame id that has navigated (or failed to navigate)" },
+                    { "name": "errorText", "type": "string", "optional": true, "description": "User friendly error message, present if and only if navigation has failed." }
                 ],
                 "description": "Navigates current page to the given URL."
             },
