@@ -1538,12 +1538,20 @@
                 "experimental": true
             },
             {
+                "id": "InterceptionStage",
+                "type": "string",
+                "description": "Stages of the interception to begin intercepting. Request will intercept before the request is sent. Response will intercept after the response is received.",
+                "enum": ["Request", "HeadersReceived"],
+                "experimental": true
+            },
+            {
                 "id": "RequestPattern",
                 "type": "object",
                 "description": "Request pattern for interception.",
                 "properties": [
                     { "name": "urlPattern", "type": "string", "optional": true, "description": "Wildcards ('*' -> zero or more, '?' -> exactly one) are allowed. Escape character is backslash. Omitting is equivalent to \"*\"." },
-                    { "name": "resourceType", "$ref": "Page.ResourceType", "optional": true, "description": "If set, only requests for matching resource types will be intercepted." }
+                    { "name": "resourceType", "$ref": "Page.ResourceType", "optional": true, "description": "If set, only requests for matching resource types will be intercepted." },
+                    { "name": "interceptionStage", "$ref": "InterceptionStage" , "optional": true, "description": "Stage at wich to begin intercepting requests. Default is Request." }
                 ],
                 "experimental": true
             }
@@ -1751,6 +1759,18 @@
                     { "name": "authChallengeResponse", "$ref": "AuthChallengeResponse", "optional": true, "description": "Response to a requestIntercepted with an authChallenge. Must not be set otherwise." }
                 ],
                 "experimental": true
+            },
+            {
+                "name": "getResponseBodyForInterception",
+                "description": "Returns content served for the given currently intercepted request.",
+                "parameters": [
+                    { "name": "interceptionId", "$ref": "InterceptionId", "description": "Identifier for the intercepted request to get body for." }
+                ],
+                "returns": [
+                    { "name": "body", "type": "string", "description": "Response body." },
+                    { "name": "base64Encoded", "type": "boolean", "description": "True, if content was sent as base64." }
+                ],
+                "experimental": true
             }
         ],
         "events": [
@@ -1913,10 +1933,11 @@
                     { "name": "frameId", "$ref": "Page.FrameId", "description": "The id of the frame that initiated the request." },
                     { "name": "resourceType", "$ref": "Page.ResourceType", "description": "How the requested resource will be used." },
                     { "name": "isNavigationRequest", "type": "boolean", "description": "Whether this is a navigation request, which can abort the navigation completely." },
-                    { "name": "redirectHeaders", "$ref": "Headers", "optional": true, "description": "HTTP response headers, only sent if a redirect was intercepted." },
-                    { "name": "redirectStatusCode", "type": "integer", "optional": true, "description": "HTTP response code, only sent if a redirect was intercepted." },
                     { "name": "redirectUrl", "optional": true, "type": "string", "description": "Redirect location, only sent if a redirect was intercepted."},
-                    { "name": "authChallenge", "$ref": "AuthChallenge", "optional": true, "description": "Details of the Authorization Challenge encountered. If this is set then continueInterceptedRequest must contain an authChallengeResponse." }
+                    { "name": "authChallenge", "$ref": "AuthChallenge", "optional": true, "description": "Details of the Authorization Challenge encountered. If this is set then continueInterceptedRequest must contain an authChallengeResponse." },
+                    { "name": "responseErrorReason", "$ref": "ErrorReason", "optional": true, "description": "Response error if intercepted at response stage or if redirect occurred while intercepting request."},
+                    { "name": "responseStatusCode", "type": "integer", "optional": true, "description": "Response code if intercepted at response stage or if redirect occurred while intercepting request or auth retry occurred." },
+                    { "name": "responseHeaders", "$ref": "Headers", "optional": true, "description": "Response headers if intercepted at the response stage or if redirect occurred while intercepting request or auth retry occurred." }
                 ],
                 "experimental": true
             }

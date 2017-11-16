@@ -1957,6 +1957,20 @@ Protocol.NetworkAgent.ContinueInterceptedRequestResponse;
  * @return {!Promise<!Protocol.NetworkAgent.ContinueInterceptedRequestResponse>} */
 Protocol.NetworkAgent.prototype.invoke_continueInterceptedRequest = function(obj) {};
 
+/**
+ * @param {Protocol.Network.InterceptionId} interceptionId
+ * @return {!Promise<?string>}
+ */
+Protocol.NetworkAgent.prototype.getResponseBodyForInterception = function(interceptionId) {};
+/** @typedef {!{interceptionId: Protocol.Network.InterceptionId}} */
+Protocol.NetworkAgent.GetResponseBodyForInterceptionRequest;
+/** @typedef {!{body: string, base64Encoded: boolean}} */
+Protocol.NetworkAgent.GetResponseBodyForInterceptionResponse;
+/**
+ * @param {!Protocol.NetworkAgent.GetResponseBodyForInterceptionRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.GetResponseBodyForInterceptionResponse>} */
+Protocol.NetworkAgent.prototype.invoke_getResponseBodyForInterception = function(obj) {};
+
 /** @typedef {string} */
 Protocol.Network.LoaderId;
 
@@ -2104,7 +2118,13 @@ Protocol.Network.AuthChallengeResponseResponse = {
 /** @typedef {!{response:(Protocol.Network.AuthChallengeResponseResponse), username:(string|undefined), password:(string|undefined)}} */
 Protocol.Network.AuthChallengeResponse;
 
-/** @typedef {!{urlPattern:(string|undefined), resourceType:(Protocol.Page.ResourceType|undefined)}} */
+/** @enum {string} */
+Protocol.Network.InterceptionStage = {
+    Request: "Request",
+    HeadersReceived: "HeadersReceived"
+};
+
+/** @typedef {!{urlPattern:(string|undefined), resourceType:(Protocol.Page.ResourceType|undefined), interceptionStage:(Protocol.Network.InterceptionStage|undefined)}} */
 Protocol.Network.RequestPattern;
 /** @interface */
 Protocol.NetworkDispatcher = function() {};
@@ -2218,12 +2238,13 @@ Protocol.NetworkDispatcher.prototype.eventSourceMessageReceived = function(reque
  * @param {Protocol.Page.FrameId} frameId
  * @param {Protocol.Page.ResourceType} resourceType
  * @param {boolean} isNavigationRequest
- * @param {Protocol.Network.Headers=} opt_redirectHeaders
- * @param {number=} opt_redirectStatusCode
  * @param {string=} opt_redirectUrl
  * @param {Protocol.Network.AuthChallenge=} opt_authChallenge
+ * @param {Protocol.Network.ErrorReason=} opt_responseErrorReason
+ * @param {number=} opt_responseStatusCode
+ * @param {Protocol.Network.Headers=} opt_responseHeaders
  */
-Protocol.NetworkDispatcher.prototype.requestIntercepted = function(interceptionId, request, frameId, resourceType, isNavigationRequest, opt_redirectHeaders, opt_redirectStatusCode, opt_redirectUrl, opt_authChallenge) {};
+Protocol.NetworkDispatcher.prototype.requestIntercepted = function(interceptionId, request, frameId, resourceType, isNavigationRequest, opt_redirectUrl, opt_authChallenge, opt_responseErrorReason, opt_responseStatusCode, opt_responseHeaders) {};
 Protocol.Database = {};
 
 
