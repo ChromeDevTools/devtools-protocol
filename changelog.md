@@ -1,5 +1,18 @@
 
 
+## Roll protocol to r516944
+###### _2017-11-15 17:35:11 -0800_
+Diff: [efb204b...24d697a](https://github.com/ChromeDevTools/devtools-protocol/compare/efb204b...24d697a)
+#### `Network`: new command
+* [`Network.getResponseBodyForInterception`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-getResponseBodyForInterception)
+#### `Network`: modified event
+* [`Network.requestIntercepted`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestIntercepted)
+#### `Network`: new type
+* [`Network.InterceptionStage`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-InterceptionStage)
+#### `Network`: modified type
+* [`Network.RequestPattern`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-RequestPattern)
+
+
 ## Roll protocol to r516591
 ###### _2017-11-14 20:15:32 -0800_
 Diff: [c0d3ebf...efb204b](https://github.com/ChromeDevTools/devtools-protocol/compare/c0d3ebf...efb204b)

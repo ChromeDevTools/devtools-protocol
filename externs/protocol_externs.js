@@ -1647,6 +1647,23 @@ Protocol.NetworkAgent.SetUserAgentOverrideResponse;
 Protocol.NetworkAgent.prototype.invoke_setUserAgentOverride = function(obj) {};
 
 /**
+ * @param {Protocol.Network.RequestId} requestId
+ * @param {string} query
+ * @param {boolean=} opt_caseSensitive
+ * @param {boolean=} opt_isRegex
+ * @return {!Promise<?Array<Protocol.Debugger.SearchMatch>>}
+ */
+Protocol.NetworkAgent.prototype.searchInResponseBody = function(requestId, query, opt_caseSensitive, opt_isRegex) {};
+/** @typedef {!{query: string, isRegex: (boolean|undefined), requestId: Protocol.Network.RequestId, caseSensitive: (boolean|undefined)}} */
+Protocol.NetworkAgent.SearchInResponseBodyRequest;
+/** @typedef {!{result: !Array<Protocol.Debugger.SearchMatch>}} */
+Protocol.NetworkAgent.SearchInResponseBodyResponse;
+/**
+ * @param {!Protocol.NetworkAgent.SearchInResponseBodyRequest} obj
+ * @return {!Promise<!Protocol.NetworkAgent.SearchInResponseBodyResponse>} */
+Protocol.NetworkAgent.prototype.invoke_searchInResponseBody = function(obj) {};
+
+/**
  * @param {Protocol.Network.Headers} headers
  * @return {!Promise<undefined>}
  */

@@ -1268,7 +1268,7 @@
     {
         "domain": "Network",
         "description": "Network domain allows tracking network activities of the page. It exposes information about http, file, data and other requests and responses, their headers, bodies, timing, etc.",
-        "dependencies": ["Runtime", "Security"],
+        "dependencies": ["Debugger", "Runtime", "Security"],
         "types": [
             {
                 "id": "LoaderId",
@@ -1575,6 +1575,20 @@
                 "parameters": [
                     { "name": "userAgent", "type": "string", "description": "User agent to use." }
                 ]
+            },
+            {
+                "name": "searchInResponseBody",
+                "description": "Searches for given string in response content.",
+                "parameters": [
+                    { "name": "requestId", "$ref": "RequestId", "description": "Identifier of the network response to search." },
+                    { "name": "query", "type": "string", "description": "String to search for."  },
+                    { "name": "caseSensitive", "type": "boolean", "optional": true, "description": "If true, search is case sensitive." },
+                    { "name": "isRegex", "type": "boolean", "optional": true, "description": "If true, treats string parameter as regex." }
+                ],
+                "returns": [
+                    { "name": "result", "type": "array", "items": { "$ref": "Debugger.SearchMatch" }, "description": "List of search matches." }
+                ],
+                "experimental": true
             },
             {
                 "name": "setExtraHTTPHeaders",
