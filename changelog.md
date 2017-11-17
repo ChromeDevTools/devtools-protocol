@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r517348
+###### _2017-11-17 01:15:46 -0800_
+Diff: [24d697a...9451957](https://github.com/ChromeDevTools/devtools-protocol/compare/24d697a...9451957)
+#### `Network`: new command
+* [`Network.searchInResponseBody`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-searchInResponseBody)
+
+
 ## Roll protocol to r516944
 ###### _2017-11-15 17:35:11 -0800_
 Diff: [efb204b...24d697a](https://github.com/ChromeDevTools/devtools-protocol/compare/efb204b...24d697a)

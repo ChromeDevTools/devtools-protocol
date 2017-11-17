@@ -1393,12 +1393,12 @@ Protocol.EmulationAgent.prototype.invoke_canEmulate = function(obj) {};
  * @param {Protocol.Emulation.VirtualTimePolicy} policy
  * @param {number=} opt_budget
  * @param {number=} opt_maxVirtualTimeTaskStarvationCount
- * @return {!Promise<undefined>}
+ * @return {!Promise<?Protocol.Runtime.Timestamp>}
  */
 Protocol.EmulationAgent.prototype.setVirtualTimePolicy = function(policy, opt_budget, opt_maxVirtualTimeTaskStarvationCount) {};
 /** @typedef {!{policy: Protocol.Emulation.VirtualTimePolicy, maxVirtualTimeTaskStarvationCount: (number|undefined), budget: (number|undefined)}} */
 Protocol.EmulationAgent.SetVirtualTimePolicyRequest;
-/** @typedef {Object|undefined} */
+/** @typedef {!{virtualTimeBase: Protocol.Runtime.Timestamp}} */
 Protocol.EmulationAgent.SetVirtualTimePolicyResponse;
 /**
  * @param {!Protocol.EmulationAgent.SetVirtualTimePolicyRequest} obj

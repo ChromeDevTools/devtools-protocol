@@ -963,7 +963,7 @@
     {
         "domain": "Emulation",
         "description": "This domain emulates different environments for the page.",
-        "dependencies": ["DOM", "Page"],
+        "dependencies": ["DOM", "Page", "Runtime"],
         "types": [
             {
                 "id": "ScreenOrientation",
@@ -1095,8 +1095,11 @@
                 "description": "Turns on virtual time for all frames (replacing real-time with a synthetic time source) and sets the current virtual time policy.  Note this supersedes any previous time budget.",
                 "parameters": [
                     { "name": "policy", "$ref": "VirtualTimePolicy" },
-                    { "name": "budget", "type": "integer", "optional": true, "description": "If set, after this many virtual milliseconds have elapsed virtual time will be paused and a virtualTimeBudgetExpired event is sent." },
+                    { "name": "budget", "type": "number", "optional": true, "description": "If set, after this many virtual milliseconds have elapsed virtual time will be paused and a virtualTimeBudgetExpired event is sent." },
                     { "name": "maxVirtualTimeTaskStarvationCount", "type": "integer", "optional": true, "description": "If set this specifies the maximum number of tasks that can be run before virtual is forced forwards to prevent deadlock." }
+                ],
+                "returns": [
+                    { "name": "virtualTimeBase", "$ref": "Runtime.Timestamp", "description": "Absolute timestamp at which virtual time was first enabled (milliseconds since epoch)." }
                 ],
                 "experimental": true
             },
@@ -1126,7 +1129,7 @@
                 "name": "virtualTimeAdvanced",
                 "experimental": true,
                 "parameters": [
-                    { "name": "virtualTimeElapsed", "type": "integer", "description": "The amount of virtual time that has elapsed in milliseconds since virtual time was first enabled." }
+                    { "name": "virtualTimeElapsed", "type": "number", "description": "The amount of virtual time that has elapsed in milliseconds since virtual time was first enabled." }
                 ],
                 "description": "Notification sent after the virtual time has advanced."
             },
@@ -1134,7 +1137,7 @@
                 "name": "virtualTimePaused",
                 "experimental": true,
                 "parameters": [
-                    { "name": "virtualTimeElapsed", "type": "integer", "description": "The amount of virtual time that has elapsed in milliseconds since virtual time was first enabled." }
+                    { "name": "virtualTimeElapsed", "type": "number", "description": "The amount of virtual time that has elapsed in milliseconds since virtual time was first enabled." }
                 ],
                 "description": "Notification sent after the virtual time has paused."
             }
