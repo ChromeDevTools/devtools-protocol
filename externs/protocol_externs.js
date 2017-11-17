@@ -5460,33 +5460,25 @@ Protocol.Accessibility.AXValueSource;
 /** @typedef {!{backendDOMNodeId:(Protocol.DOM.BackendNodeId), idref:(string|undefined), text:(string|undefined)}} */
 Protocol.Accessibility.AXRelatedNode;
 
-/** @typedef {!{name:(string), value:(Protocol.Accessibility.AXValue)}} */
+/** @typedef {!{name:(Protocol.Accessibility.AXPropertyName), value:(Protocol.Accessibility.AXValue)}} */
 Protocol.Accessibility.AXProperty;
 
 /** @typedef {!{type:(Protocol.Accessibility.AXValueType), value:(*|undefined), relatedNodes:(!Array<Protocol.Accessibility.AXRelatedNode>|undefined), sources:(!Array<Protocol.Accessibility.AXValueSource>|undefined)}} */
 Protocol.Accessibility.AXValue;
 
 /** @enum {string} */
-Protocol.Accessibility.AXGlobalStates = {
+Protocol.Accessibility.AXPropertyName = {
     Busy: "busy",
     Disabled: "disabled",
     Hidden: "hidden",
     HiddenRoot: "hiddenRoot",
     Invalid: "invalid",
     Keyshortcuts: "keyshortcuts",
-    Roledescription: "roledescription"
-};
-
-/** @enum {string} */
-Protocol.Accessibility.AXLiveRegionAttributes = {
+    Roledescription: "roledescription",
     Live: "live",
     Atomic: "atomic",
     Relevant: "relevant",
-    Root: "root"
-};
-
-/** @enum {string} */
-Protocol.Accessibility.AXWidgetAttributes = {
+    Root: "root",
     Autocomplete: "autocomplete",
     Haspopup: "haspopup",
     Level: "level",
@@ -5497,20 +5489,12 @@ Protocol.Accessibility.AXWidgetAttributes = {
     Required: "required",
     Valuemin: "valuemin",
     Valuemax: "valuemax",
-    Valuetext: "valuetext"
-};
-
-/** @enum {string} */
-Protocol.Accessibility.AXWidgetStates = {
+    Valuetext: "valuetext",
     Checked: "checked",
     Expanded: "expanded",
     Modal: "modal",
     Pressed: "pressed",
-    Selected: "selected"
-};
-
-/** @enum {string} */
-Protocol.Accessibility.AXRelationshipAttributes = {
+    Selected: "selected",
     Activedescendant: "activedescendant",
     Controls: "controls",
     Describedby: "describedby",

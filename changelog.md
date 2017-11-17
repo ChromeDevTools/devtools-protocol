@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r517415
+###### _2017-11-17 08:15:51 -0800_
+Diff: [9451957...29d3c99](https://github.com/ChromeDevTools/devtools-protocol/compare/9451957...29d3c99)
+#### `Emulation`: modified command
+* [`Emulation.setVirtualTimePolicy`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setVirtualTimePolicy)
+#### `Emulation`: modified events
+* [`Emulation.virtualTimeAdvanced`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#event-virtualTimeAdvanced)
+* [`Emulation.virtualTimePaused`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#event-virtualTimePaused)
+
+
 ## Roll protocol to r517348
 ###### _2017-11-17 01:15:46 -0800_
 Diff: [24d697a...9451957](https://github.com/ChromeDevTools/devtools-protocol/compare/24d697a...9451957)
