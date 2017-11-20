@@ -355,6 +355,7 @@
                 ],
                 "returns": [
                     { "name": "frameId", "$ref": "FrameId", "description": "Frame id that has navigated (or failed to navigate)" },
+                    { "name": "loaderId", "$ref": "Network.LoaderId", "optional": true, "description": "Loader identifier.", "experimental": true },
                     { "name": "errorText", "type": "string", "optional": true, "description": "User friendly error message, present if and only if navigation has failed." }
                 ],
                 "description": "Navigates current page to the given URL."

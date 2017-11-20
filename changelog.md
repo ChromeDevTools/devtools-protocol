@@ -1,5 +1,20 @@
 
 
+## Roll protocol to r517530
+###### _2017-11-17 12:15:35 -0800_
+Diff: [29d3c99...05920a2](https://github.com/ChromeDevTools/devtools-protocol/compare/29d3c99...05920a2)
+#### `Accessibility`: new type
+* [`Accessibility.AXPropertyName`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXPropertyName)
+#### `Accessibility`: removed types
+* [`Accessibility.AXGlobalStates`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXGlobalStates)
+* [`Accessibility.AXLiveRegionAttributes`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXLiveRegionAttributes)
+* [`Accessibility.AXWidgetAttributes`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXWidgetAttributes)
+* [`Accessibility.AXWidgetStates`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXWidgetStates)
+* [`Accessibility.AXRelationshipAttributes`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXRelationshipAttributes)
+#### `Accessibility`: modified type
+* [`Accessibility.AXProperty`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXProperty)
+
+
 ## Roll protocol to r517415
 ###### _2017-11-17 08:15:51 -0800_
 Diff: [9451957...29d3c99](https://github.com/ChromeDevTools/devtools-protocol/compare/9451957...29d3c99)
