@@ -1,5 +1,36 @@
 
 
+## Roll protocol to r518504
+###### _2017-11-21 18:16:11 -0800_
+Diff: [4d81be2...4105e8d](https://github.com/ChromeDevTools/devtools-protocol/compare/4d81be2...4105e8d)
+#### `Page`: modified commands
+* [`Page.navigate`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-navigate)
+* [`Page.setDocumentContent`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setDocumentContent)
+#### `Page`: modified type
+* [`Page.ScreencastFrameMetadata`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ScreencastFrameMetadata)
+#### `Emulation`: modified command
+* [`Emulation.setDeviceMetricsOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setDeviceMetricsOverride)
+#### `Network`: modified commands
+* [`Network.canClearBrowserCache`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-canClearBrowserCache)
+* [`Network.canClearBrowserCookies`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-canClearBrowserCookies)
+* [`Network.canEmulateNetworkConditions`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-canEmulateNetworkConditions)
+#### `Database`: modified types
+* [`Database.DatabaseId`](https://chromedevtools.github.io/devtools-protocol/tot/Database/#type-DatabaseId)
+* [`Database.Database`](https://chromedevtools.github.io/devtools-protocol/tot/Database/#type-Database)
+#### `DOMStorage`: modified types
+* [`DOMStorage.StorageId`](https://chromedevtools.github.io/devtools-protocol/tot/DOMStorage/#type-StorageId)
+* [`DOMStorage.Item`](https://chromedevtools.github.io/devtools-protocol/tot/DOMStorage/#type-Item)
+#### `Target`: modified commands
+* [`Target.setAutoAttach`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-setAutoAttach)
+* [`Target.getTargetInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-getTargetInfo)
+#### `Target`: modified events
+* [`Target.attachedToTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#event-attachedToTarget)
+* [`Target.detachedFromTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#event-detachedFromTarget)
+#### `Animation`: modified types
+* [`Animation.Animation`](https://chromedevtools.github.io/devtools-protocol/tot/Animation/#type-Animation)
+* [`Animation.AnimationEffect`](https://chromedevtools.github.io/devtools-protocol/tot/Animation/#type-AnimationEffect)
+
+
 ## Roll protocol to r517901
 ###### _2017-11-20 12:15:46 -0800_
 Diff: [05920a2...4d81be2](https://github.com/ChromeDevTools/devtools-protocol/compare/05920a2...4d81be2)
