@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r517901
+###### _2017-11-20 12:15:46 -0800_
+Diff: [05920a2...4d81be2](https://github.com/ChromeDevTools/devtools-protocol/compare/05920a2...4d81be2)
+#### `Page`: modified command
+* [`Page.navigate`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-navigate)
+
+
 ## Roll protocol to r517530
 ###### _2017-11-17 12:15:35 -0800_
 Diff: [29d3c99...05920a2](https://github.com/ChromeDevTools/devtools-protocol/compare/29d3c99...05920a2)

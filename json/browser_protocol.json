@@ -1,5 +1,5 @@
 {
-    "version": { "major": "1", "minor": "2" },
+    "version": { "major": "1", "minor": "3" },
     "domains": [{
         "domain": "Inspector",
         "experimental": true,
@@ -202,13 +202,13 @@
                 "type": "object",
                 "description": "Screencast frame metadata.",
                 "properties": [
-                    { "name": "offsetTop", "type": "number", "experimental": true, "description": "Top offset in DIP." },
-                    { "name": "pageScaleFactor", "type": "number", "experimental": true, "description": "Page scale factor." },
-                    { "name": "deviceWidth", "type": "number", "experimental": true, "description": "Device screen width in DIP." },
-                    { "name": "deviceHeight", "type": "number", "experimental": true, "description": "Device screen height in DIP." },
-                    { "name": "scrollOffsetX", "type": "number", "experimental": true, "description": "Position of horizontal scroll in CSS pixels." },
-                    { "name": "scrollOffsetY", "type": "number", "experimental": true, "description": "Position of vertical scroll in CSS pixels." },
-                    { "name": "timestamp", "$ref": "Network.TimeSinceEpoch", "optional": true, "experimental": true, "description": "Frame swap timestamp." }
+                    { "name": "offsetTop", "type": "number", "description": "Top offset in DIP." },
+                    { "name": "pageScaleFactor", "type": "number", "description": "Page scale factor." },
+                    { "name": "deviceWidth", "type": "number", "description": "Device screen width in DIP." },
+                    { "name": "deviceHeight", "type": "number", "description": "Device screen height in DIP." },
+                    { "name": "scrollOffsetX", "type": "number", "description": "Position of horizontal scroll in CSS pixels." },
+                    { "name": "scrollOffsetY", "type": "number", "description": "Position of vertical scroll in CSS pixels." },
+                    { "name": "timestamp", "$ref": "Network.TimeSinceEpoch", "optional": true, "description": "Frame swap timestamp." }
                 ],
                 "experimental": true
             },
@@ -355,7 +355,7 @@
                 ],
                 "returns": [
                     { "name": "frameId", "$ref": "FrameId", "description": "Frame id that has navigated (or failed to navigate)" },
-                    { "name": "loaderId", "$ref": "Network.LoaderId", "optional": true, "description": "Loader identifier.", "experimental": true },
+                    { "name": "loaderId", "$ref": "Network.LoaderId", "optional": true, "description": "Loader identifier." },
                     { "name": "errorText", "type": "string", "optional": true, "description": "User friendly error message, present if and only if navigation has failed." }
                 ],
                 "description": "Navigates current page to the given URL."
@@ -449,8 +449,7 @@
                 "parameters": [
                     { "name": "frameId", "$ref": "FrameId", "description": "Frame id to set HTML for." },
                     { "name": "html", "type": "string", "description": "HTML content to set."  }
-                ],
-                "experimental": true
+                ]
             },
             {
                 "name": "setDeviceMetricsOverride",
@@ -996,7 +995,7 @@
                     { "name": "height", "type": "integer", "description": "Overriding height value in pixels (minimum 0, maximum 10000000). 0 disables the override." },
                     { "name": "deviceScaleFactor", "type": "number", "description": "Overriding device scale factor value. 0 disables the override." },
                     { "name": "mobile", "type": "boolean", "description": "Whether to emulate mobile device. This includes viewport meta tag, overlay scrollbars, text autosizing and more." },
-                    { "name": "scale", "type": "number", "optional": true, "description": "Scale to apply to resulting view image." },
+                    { "name": "scale", "type": "number", "optional": true, "description": "Scale to apply to resulting view image.", "experimental": true },
                     { "name": "screenWidth", "type": "integer", "optional": true, "experimental": true, "description": "Overriding screen width value in pixels (minimum 0, maximum 10000000)." },
                     { "name": "screenHeight", "type": "integer", "optional": true, "experimental": true, "description": "Overriding screen height value in pixels (minimum 0, maximum 10000000)." },
                     { "name": "positionX", "type": "integer", "optional": true, "experimental": true, "description": "Overriding view X position on screen in pixels (minimum 0, maximum 10000000)." },
@@ -1633,7 +1632,8 @@
                 "description": "Tells whether clearing browser cache is supported.",
                 "returns": [
                     { "name": "result", "type": "boolean", "description": "True if browser cache can be cleared." }
-                ]
+                ],
+                "deprecated": true
             },
             {
                 "name": "clearBrowserCache",
@@ -1644,7 +1644,8 @@
                 "description": "Tells whether clearing browser cookies is supported.",
                 "returns": [
                     { "name": "result", "type": "boolean", "description": "True if browser cookies can be cleared." }
-                ]
+                ],
+                "deprecated": true
             },
             {
                 "name": "clearBrowserCookies",
@@ -1707,7 +1708,8 @@
                 "description": "Tells whether emulation of network conditions is supported.",
                 "returns": [
                   { "name": "result", "type": "boolean", "description": "True if emulation of network conditions is supported." }
-                ]
+                ],
+                "deprecated": true
             },
             {
                 "name": "emulateNetworkConditions",
@@ -1968,14 +1970,12 @@
             {
                 "id": "DatabaseId",
                 "type": "string",
-                "description": "Unique identifier of Database object.",
-                "experimental": true
+                "description": "Unique identifier of Database object."
             },
             {
                 "id": "Database",
                 "type": "object",
                 "description": "Database object.",
-                "experimental": true,
                 "properties": [
                     { "name": "id", "$ref": "DatabaseId", "description": "Database ID." },
                     { "name": "domain", "type": "string", "description": "Database domain." },
@@ -2295,7 +2295,6 @@
                 "id": "StorageId",
                 "type": "object",
                 "description": "DOM Storage identifier.",
-                "experimental": true,
                 "properties": [
                     { "name": "securityOrigin", "type": "string", "description": "Security origin for the storage." },
                     { "name": "isLocalStorage", "type": "boolean", "description": "Whether the storage is local storage (not session storage)." }
@@ -2305,7 +2304,6 @@
                 "id": "Item",
                 "type": "array",
                 "description": "DOM Storage item.",
-                "experimental": true,
                 "items": { "type": "string" }
             }
         ],
@@ -3868,7 +3866,8 @@
                 "parameters": [
                     { "name": "autoAttach", "type": "boolean", "description": "Whether to auto-attach to related targets." },
                     { "name": "waitForDebuggerOnStart", "type": "boolean", "description": "Whether to pause new targets when attaching to them. Use <code>Runtime.runIfWaitingForDebugger</code> to run paused targets." }
-                ]
+                ],
+                "experimental": true
             },
             {
                 "name": "setAttachToFrames",
@@ -3902,7 +3901,8 @@
                 ],
                 "returns": [
                     { "name": "targetInfo","$ref": "TargetInfo" }
-                ]
+                ],
+                "experimental": true
             },
             {
                 "name": "activateTarget",
@@ -4009,7 +4009,8 @@
                     { "name": "sessionId", "$ref": "SessionID", "description": "Identifier assigned to the session used to send/receive messages." },
                     { "name": "targetInfo", "$ref": "TargetInfo" },
                     { "name": "waitingForDebugger", "type": "boolean" }
-                ]
+                ],
+                "experimental": true
             },
             {
                 "name": "detachedFromTarget",
@@ -4017,7 +4018,8 @@
                 "parameters": [
                     { "name": "sessionId", "$ref": "SessionID", "description": "Detached session identifier." },
                     { "name": "targetId", "$ref": "TargetID", "optional": true, "deprecated": true, "description": "Deprecated." }
-                ]
+                ],
+                "experimental": true
             },
             {
                 "name": "receivedMessageFromTarget",
@@ -4665,11 +4667,10 @@
             {
                 "id": "Animation",
                 "type": "object",
-                "experimental": true,
                 "properties": [
                     { "name": "id", "type": "string", "description": "<code>Animation</code>'s id." },
                     { "name": "name", "type": "string", "description": "<code>Animation</code>'s name." },
-                    { "name": "pausedState", "type": "boolean", "experimental": true, "description": "<code>Animation</code>'s internal paused state." },
+                    { "name": "pausedState", "type": "boolean", "description": "<code>Animation</code>'s internal paused state." },
                     { "name": "playState", "type": "string", "description": "<code>Animation</code>'s play state." },
                     { "name": "playbackRate", "type": "number", "description": "<code>Animation</code>'s playback rate." },
                     { "name": "startTime", "type": "number", "description": "<code>Animation</code>'s start time." },
@@ -4683,7 +4684,6 @@
             {
                 "id": "AnimationEffect",
                 "type": "object",
-                "experimental": true,
                 "properties": [
                     { "name": "delay", "type": "number", "description": "<code>AnimationEffect</code>'s delay." },
                     { "name": "endDelay", "type": "number", "description": "<code>AnimationEffect</code>'s end delay." },
