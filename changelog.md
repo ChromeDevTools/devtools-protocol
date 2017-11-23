@@ -1,5 +1,23 @@
 
 
+## Roll protocol to r518863
+###### _2017-11-22 22:15:28 -0800_
+Diff: [764cee6...a86a78e](https://github.com/ChromeDevTools/devtools-protocol/compare/764cee6...a86a78e)
+#### `Runtime`: new types
+* [`Runtime.UniqueDebuggerId`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-UniqueDebuggerId)
+* [`Runtime.StackTraceId`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-StackTraceId)
+#### `Runtime`: modified type
+* [`Runtime.StackTrace`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-StackTrace)
+#### `Debugger`: new command
+* [`Debugger.getStackTrace`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-getStackTrace)
+#### `Debugger`: modified commands
+* [`Debugger.enable`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-enable)
+* [`Debugger.setScriptSource`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setScriptSource)
+* [`Debugger.restartFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-restartFrame)
+#### `Debugger`: modified event
+* [`Debugger.paused`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-paused)
+
+
 ## Roll protocol to r518700 517208
 ###### _2017-11-22 11:16:19 -0800_
 Diff: [4105e8d...3a092a2](https://github.com/ChromeDevTools/devtools-protocol/compare/4105e8d...3a092a2)
