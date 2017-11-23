@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r518700 517208
+###### _2017-11-22 11:16:19 -0800_
+Diff: [4105e8d...3a092a2](https://github.com/ChromeDevTools/devtools-protocol/compare/4105e8d...3a092a2)
+#### `Runtime`: modified type
+* [`Runtime.StackTrace`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-StackTrace)
+
+
 ## Roll protocol to r518504
 ###### _2017-11-21 18:16:11 -0800_
 Diff: [4d81be2...4105e8d](https://github.com/ChromeDevTools/devtools-protocol/compare/4d81be2...4105e8d)

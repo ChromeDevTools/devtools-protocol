@@ -6332,11 +6332,17 @@ Protocol.Runtime.Timestamp;
 /** @typedef {!{functionName:(string), scriptId:(Protocol.Runtime.ScriptId), url:(string), lineNumber:(number), columnNumber:(number)}} */
 Protocol.Runtime.CallFrame;
 
-/** @typedef {!{description:(string|undefined), callFrames:(!Array<Protocol.Runtime.CallFrame>), parent:(Protocol.Runtime.StackTrace|undefined)}} */
+/** @typedef {!{description:(string|undefined), callFrames:(!Array<Protocol.Runtime.CallFrame>), parent:(Protocol.Runtime.StackTrace|undefined), parentId:(Protocol.Runtime.StackTraceId|undefined)}} */
 Protocol.Runtime.StackTrace;
 
 /** @typedef {string} */
 Protocol.Runtime.AsyncTaskId;
+
+/** @typedef {string} */
+Protocol.Runtime.UniqueDebuggerId;
+
+/** @typedef {!{id:(string), debuggerId:(Protocol.Runtime.UniqueDebuggerId)}} */
+Protocol.Runtime.StackTraceId;
 /** @interface */
 Protocol.RuntimeDispatcher = function() {};
 /**
@@ -6381,12 +6387,12 @@ Protocol.Debugger = {};
 Protocol.DebuggerAgent = function(){};
 
 /**
- * @return {!Promise<undefined>}
+ * @return {!Promise<?Protocol.Runtime.UniqueDebuggerId>}
  */
 Protocol.DebuggerAgent.prototype.enable = function() {};
 /** @typedef {Object|undefined} */
 Protocol.DebuggerAgent.EnableRequest;
-/** @typedef {Object|undefined} */
+/** @typedef {!{debuggerId: Protocol.Runtime.UniqueDebuggerId}} */
 Protocol.DebuggerAgent.EnableResponse;
 /**
  * @param {!Protocol.DebuggerAgent.EnableRequest} obj
@@ -6607,6 +6613,20 @@ Protocol.DebuggerAgent.ResumeResponse;
 Protocol.DebuggerAgent.prototype.invoke_resume = function(obj) {};
 
 /**
+ * @param {Protocol.Runtime.StackTraceId} stackTraceId
+ * @return {!Promise<?Protocol.Runtime.StackTrace>}
+ */
+Protocol.DebuggerAgent.prototype.getStackTrace = function(stackTraceId) {};
+/** @typedef {!{stackTraceId: Protocol.Runtime.StackTraceId}} */
+Protocol.DebuggerAgent.GetStackTraceRequest;
+/** @typedef {!{stackTrace: Protocol.Runtime.StackTrace}} */
+Protocol.DebuggerAgent.GetStackTraceResponse;
+/**
+ * @param {!Protocol.DebuggerAgent.GetStackTraceRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.GetStackTraceResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_getStackTrace = function(obj) {};
+
+/**
  * @param {Protocol.Runtime.ScriptId} scriptId
  * @param {string} query
  * @param {boolean=} opt_caseSensitive
@@ -6632,7 +6652,7 @@ Protocol.DebuggerAgent.prototype.invoke_searchInContent = function(obj) {};
 Protocol.DebuggerAgent.prototype.setScriptSource = function(scriptId, scriptSource, opt_dryRun) {};
 /** @typedef {!{scriptId: Protocol.Runtime.ScriptId, dryRun: (boolean|undefined), scriptSource: string}} */
 Protocol.DebuggerAgent.SetScriptSourceRequest;
-/** @typedef {!{stackChanged: boolean, asyncStackTrace: Protocol.Runtime.StackTrace, exceptionDetails: Protocol.Runtime.ExceptionDetails, callFrames: !Array<Protocol.Debugger.CallFrame>}} */
+/** @typedef {!{stackChanged: boolean, asyncStackTrace: Protocol.Runtime.StackTrace, exceptionDetails: Protocol.Runtime.ExceptionDetails, callFrames: !Array<Protocol.Debugger.CallFrame>, asyncStackTraceId: Protocol.Runtime.StackTraceId}} */
 Protocol.DebuggerAgent.SetScriptSourceResponse;
 /**
  * @param {!Protocol.DebuggerAgent.SetScriptSourceRequest} obj
@@ -6646,7 +6666,7 @@ Protocol.DebuggerAgent.prototype.invoke_setScriptSource = function(obj) {};
 Protocol.DebuggerAgent.prototype.restartFrame = function(callFrameId) {};
 /** @typedef {!{callFrameId: Protocol.Debugger.CallFrameId}} */
 Protocol.DebuggerAgent.RestartFrameRequest;
-/** @typedef {!{asyncStackTrace: Protocol.Runtime.StackTrace, callFrames: !Array<Protocol.Debugger.CallFrame>}} */
+/** @typedef {!{asyncStackTrace: Protocol.Runtime.StackTrace, asyncStackTraceId: Protocol.Runtime.StackTraceId, callFrames: !Array<Protocol.Debugger.CallFrame>}} */
 Protocol.DebuggerAgent.RestartFrameResponse;
 /**
  * @param {!Protocol.DebuggerAgent.RestartFrameRequest} obj
@@ -6867,9 +6887,10 @@ Protocol.DebuggerDispatcher.prototype.breakpointResolved = function(breakpointId
  * @param {!Object=} opt_data
  * @param {!Array<string>=} opt_hitBreakpoints
  * @param {Protocol.Runtime.StackTrace=} opt_asyncStackTrace
+ * @param {Protocol.Runtime.StackTraceId=} opt_asyncStackTraceId
  * @param {Protocol.Runtime.AsyncTaskId=} opt_scheduledAsyncTaskId
  */
-Protocol.DebuggerDispatcher.prototype.paused = function(callFrames, reason, opt_data, opt_hitBreakpoints, opt_asyncStackTrace, opt_scheduledAsyncTaskId) {};
+Protocol.DebuggerDispatcher.prototype.paused = function(callFrames, reason, opt_data, opt_hitBreakpoints, opt_asyncStackTrace, opt_asyncStackTraceId, opt_scheduledAsyncTaskId) {};
 Protocol.DebuggerDispatcher.prototype.resumed = function() {};
 Protocol.Console = {};
 
