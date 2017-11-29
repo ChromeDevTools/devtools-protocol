@@ -1,5 +1,48 @@
 
 
+## Roll protocol to r518882
+###### _2017-11-23 02:15:33 -0800_
+Diff: [a86a78e...e1e5c6b](https://github.com/ChromeDevTools/devtools-protocol/compare/a86a78e...e1e5c6b)
+#### `Runtime`: modified commands
+* [`Runtime.evaluate`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-evaluate)
+* [`Runtime.callFunctionOn`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-callFunctionOn)
+* [`Runtime.queryObjects`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-queryObjects)
+* [`Runtime.globalLexicalScopeNames`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-globalLexicalScopeNames)
+#### `Runtime`: removed type
+* [`Runtime.AsyncTaskId`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-AsyncTaskId)
+#### `Runtime`: modified type
+* [`Runtime.StackTraceId`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-StackTraceId)
+#### `Debugger`: new command
+* [`Debugger.pauseOnAsyncCall`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-pauseOnAsyncCall)
+#### `Debugger`: removed command
+* [`Debugger.pauseOnAsyncTask`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-pauseOnAsyncTask)
+#### `Debugger`: modified commands
+* [`Debugger.setBreakpointByUrl`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setBreakpointByUrl)
+* [`Debugger.getPossibleBreakpoints`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-getPossibleBreakpoints)
+* [`Debugger.continueToLocation`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-continueToLocation)
+* [`Debugger.searchInContent`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-searchInContent)
+* [`Debugger.evaluateOnCallFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-evaluateOnCallFrame)
+#### `Debugger`: modified events
+* [`Debugger.scriptParsed`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-scriptParsed)
+* [`Debugger.scriptFailedToParse`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-scriptFailedToParse)
+* [`Debugger.paused`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-paused)
+#### `Debugger`: modified types
+* [`Debugger.CallFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#type-CallFrame)
+* [`Debugger.SearchMatch`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#type-SearchMatch)
+* [`Debugger.BreakLocation`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#type-BreakLocation)
+#### `Profiler`: modified commands
+* [`Profiler.startPreciseCoverage`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-startPreciseCoverage)
+* [`Profiler.stopPreciseCoverage`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-stopPreciseCoverage)
+* [`Profiler.takePreciseCoverage`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-takePreciseCoverage)
+* [`Profiler.getBestEffortCoverage`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-getBestEffortCoverage)
+#### `Profiler`: modified types
+* [`Profiler.ProfileNode`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-ProfileNode)
+* [`Profiler.PositionTickInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-PositionTickInfo)
+* [`Profiler.CoverageRange`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-CoverageRange)
+* [`Profiler.FunctionCoverage`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-FunctionCoverage)
+* [`Profiler.ScriptCoverage`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-ScriptCoverage)
+
+
 ## Roll protocol to r518863
 ###### _2017-11-22 22:15:28 -0800_
 Diff: [764cee6...a86a78e](https://github.com/ChromeDevTools/devtools-protocol/compare/764cee6...a86a78e)
