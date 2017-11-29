@@ -5,6 +5,7 @@ const path = require('path');
 
 const simpleGit = require('simple-git/promise');
 const objListDiff = require('obj-list-diff');
+const justDiff = require('just-diff').diff;
 
 let results = '';
 
@@ -18,6 +19,50 @@ class Changeset {
     this.diffs = [];
   }
 
+  resolvePath(path,obj){
+    path = JSON.parse(JSON.stringify(path));
+    let resolvedPath = [];
+    while (path.length) {
+      const segment = path[0];
+      const segmentAsNumber = parseInt(segment, 10);
+      if (isFinite(segmentAsNumber)) {
+        obj = obj[segmentAsNumber];
+        let itemName;
+        if (typeof obj === 'string') itemName = obj;
+        else itemName = obj[Formatter.getKey(obj)];
+        resolvedPath.push(itemName);
+      } else {
+        obj = obj[segment];
+        resolvedPath.push(segment);
+      }
+      path = path.slice(1);
+    }
+    return resolvedPath;
+  }
+
+  collectChildChanges(prev, current) {
+    const itemKey = Formatter.getKey(prev) || Formatter.getKey(current);
+
+    const itemDiff = objListDiff(prev, current, {key: itemKey});
+
+    // get detailed modification changes
+    const childChanges = itemDiff.modified.forEach(change => {
+        const changeName = change[itemKey];
+        const before = prev.find(c => c[itemKey] === changeName)
+        const after = current.find(c => c[itemKey] === changeName)
+        const jd = justDiff(before, after);
+
+        // resolve the path
+        jd.forEach(jdOp => {
+          // Don't need to resolve paths for 'add' because we already know the name
+          if (jdOp.op === 'add') return;
+          jdOp.path = this.resolvePath(jdOp.path, before);
+        });
+
+        change.childChanges = jd;
+    });
+    return itemDiff;
+  }
   collectChanges() {
     // Any new/removed domains?
     const domainsDiff = objListDiff(this.prevDomains, this.currentDomains, {key: 'domain'});
@@ -35,13 +80,13 @@ class Changeset {
       }
 
       //   Any new methods, events, types?
-      const commandsDiff = objListDiff(prevDomain.commands, currDomain.commands, {key: 'name'});
+      const commandsDiff = this.collectChildChanges(prevDomain.commands, currDomain.commands);
       this.diffs.push({itemType: 'commands', domainName: currDomain.domain, diff: commandsDiff});
 
-      const eventsDiff = objListDiff(prevDomain.events, currDomain.events, {key: 'name'});
+      const eventsDiff = this.collectChildChanges(prevDomain.events, currDomain.events);
       this.diffs.push({itemType: 'events', domainName: currDomain.domain, diff: eventsDiff});
 
-      const typesDiff = objListDiff(prevDomain.types, currDomain.types, {key: 'id'});
+      const typesDiff = this.collectChildChanges(prevDomain.types, currDomain.types);
       this.diffs.push({itemType: 'types', domainName: currDomain.domain, diff: typesDiff});
 
       // TODO: For each method
@@ -65,9 +110,9 @@ class Formatter {
     // simple-git adds this "(HEAD, origin/master)" string to the first commit's message...
     const commitMessage = commit.message.replace(/\(HEAD.*/, '').replace(' (master)', '').trim();
     results += `\n\n## ${commitMessage}\n`;
-    results += `###### _${commit.date.replace(' -0700', '')}_\n`;
+    results += `###### _${commit.date.replace(' -0700', '')}_ `;
     const hashCompareStr = `${previousCommit.hash.slice(0, 7)}...${commit.hash.slice(0, 7)}`;
-    results += `Diff: [${hashCompareStr}](https://github.com/ChromeDevTools/devtools-protocol/compare/${hashCompareStr})\n`;
+    results += `| Diff: [${hashCompareStr}](https://github.com/ChromeDevTools/devtools-protocol/compare/${hashCompareStr})\n`;
     changes.forEach(change => Formatter.logDiff(change));
   }
 
@@ -98,21 +143,87 @@ class Formatter {
 
     const cleanType = type => type.replace(/s$/, '');
 
-    // TODO: log the details of what parameters changed and how
-    // Using ```diff ... ``` might work out well..
     diffDetails.forEach(change => {
       const itemKey = Formatter.getKey(change);
       const itemValue = change[itemKey];
       const linkHref = `https://chromedevtools.github.io/devtools-protocol/tot/${domainName}/#${cleanType(displayItemType)}-${itemValue}`;
-      results += `* [\`${domainName}.${itemValue}\`](${linkHref})\n`;
+      results += `* [\`${domainName}.${itemValue}\`](${linkHref})`;
+      results += Formatter.generateChildChanges(change.childChanges);
+      results += '\n';
     });
   }
 
+  static generateChildChanges(childChanges) {
+    if (!childChanges || !childChanges.length) return '';
+    let textChanges = [];
+
+    const opToText = {
+      'remove': 'removed',
+      'add': 'added',
+      'replace': 'updated',
+    };
+    const locationToText = location => location === 'returns' ? 'return value' : location;
+
+
+    childChanges.forEach(change => {
+      const path = change.path;
+      const paramsReturnsOrProperties = ['parameters', 'returns', 'properties', 'items', 'enum'];
+
+      let eoPath = path[path.length-1];
+      let restOfPath = path.slice(0, path.length-1);
+
+      // For Added items, sometimes we need to pull the name from the change
+      if (isFinite(parseInt(eoPath, 10))) {
+        eoPath = !change.value ? '' : typeof change.value === 'string' ? change.value :
+            change.value[Formatter.getKey(change.value)];
+      }
+      if (isFinite(parseInt(restOfPath[restOfPath.length-1], 10))) {
+        restOfPath = restOfPath.slice(0, restOfPath.length - 1);
+      }
+
+      if (paramsReturnsOrProperties.includes(path[0])) {
+        // Handle changes within parameters and returns
+        //     Property `experimental` added in parameters.
+        //     The return value's errorText type updated.
+        const propName = eoPath;
+        if (restOfPath.length === 1) {
+          textChanges.push(`The ${locationToText(restOfPath[0])}'s \`${propName}\` _${opToText[change.op]}_`);
+        } else if (restOfPath.length > 1) {
+          textChanges.push(`The \`${restOfPath[1]}\` in the ${locationToText(restOfPath[0])} had \`${propName}\` _${opToText[change.op]}_`);
+        }
+      } else if (path.length === 1) {
+        // Handle deprecated, redirect, experimental, description
+        //     `deprecated` was added.
+        textChanges.push(`\`${path[0]}\` ${opToText[change.op]}`);
+      } else {
+        console.log('WTF', change)
+        textChanges.push(`WTF ${path[0]} ${eoPath} ${opToText[change.op]}`);
+      }
+    });
+    if (textChanges.length === 0) return '';
+
+    // deduplicate
+    const changesByCount = textChanges.reduce((all, curr) => {
+      if (all.has(curr)) return all.set(curr, all.get(curr) + 1);
+      else return all.set(curr, 1);
+    }, new Map());
+
+    let text = ' - ';
+    for (const [textChange, count] of changesByCount) {
+      text += textChange + (count > 1 ? ` (${count} times). ` : '. ');
+    };
+
+    return text;
+  }
+
   static getKey(obj) {
+    if (Array.isArray(obj) && obj.length) return Formatter.getKey(obj[0]);
+    if (Array.isArray(obj)) return null;
+    if (obj === undefined) return null;
     if (obj.domain) return 'domain';
     if (obj.id) return 'id';
     if (obj.name) return 'name';
-    throw new Error('Unknown object');
+    throw new Error('Unknown object ' + JSON.stringify(obj));
   }
 }
 
@@ -146,7 +257,8 @@ class CommitCrawler {
       if (i >= this.commitlogs.length - 3) continue;
 
       // Hack to quit early.
-      // if (i > 20) continue;
+      // if (i < 2) continue;
+      // if (i > 6) continue;
 
       const commit = this.commitlogs[i];
       const previousCommit = this.commitlogs[i + 1];
@@ -195,6 +307,6 @@ class CommitCrawler {
     fs.writeFileSync(path.join(__dirname, '../changelog.md'), results);
     console.log('changelog.md updated');
   } catch (e) {
-    console.error('changelog.md update FAILED');
+    console.error('changelog.md update FAILED', e);
   }
 })();

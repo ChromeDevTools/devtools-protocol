@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "just-diff": "^2.1.0",
     "obj-list-diff": "^1.0.0",
     "simple-git": "^1.75.0"
   },
