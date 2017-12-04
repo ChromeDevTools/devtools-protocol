@@ -26,7 +26,7 @@ cp "$js_protocol_path" "$protocol_repo_path/json"
 cp "$browser_protocol_path" "$protocol_repo_path/json"
 
 # extract cr revision number
-commit_pos_line=$(git log --no-color --max-count=1 | gtac | grep -E -o "Cr-Commit-Position.*")
+commit_pos_line=$(git log --date=iso --no-color --max-count=1 | gtac | grep -E -o "Cr-Commit-Position.*")
 commit_rev=$(echo "$commit_pos_line" | grep -E -o "\d+")
 
 # generate externs
