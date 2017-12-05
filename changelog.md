@@ -1,5 +1,41 @@
 
 
+## Roll protocol to r521293
+###### _2017-12-04 01:15:42 -0800_ | Diff: [80a4bf5...8f8623b](https://github.com/ChromeDevTools/devtools-protocol/compare/80a4bf5...8f8623b)
+#### `Console`: modified command
+* [`Console.enable`](https://chromedevtools.github.io/devtools-protocol/tot/Console/#method-enable) - `description` updated. 
+#### `Debugger`: modified commands
+* [`Debugger.evaluateOnCallFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-evaluateOnCallFrame) - The `objectGroup` in the parameters had `description` _updated_. The `silent` in the parameters had `description` _updated_. 
+* [`Debugger.getStackTrace`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-getStackTrace) - `description` updated. 
+* [`Debugger.setAsyncCallStackDepth`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setAsyncCallStackDepth) - The `maxDepth` in the parameters had `description` _updated_. 
+* [`Debugger.setBreakpointByUrl`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setBreakpointByUrl) - `description` updated. The `urlRegex` in the parameters had `description` _updated_. 
+* [`Debugger.setPauseOnExceptions`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setPauseOnExceptions) - `description` updated. 
+* [`Debugger.setScriptSource`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setScriptSource) - The `dryRun` in the parameters had `description` _updated_. 
+#### `Debugger`: modified event
+* [`Debugger.paused`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-paused) - The `asyncCallStackTraceId` in the parameters had `description` _updated_. 
+#### `Debugger`: modified types
+* [`Debugger.Location`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#type-Location) - The `scriptId` in the properties had `description` _updated_. 
+* [`Debugger.CallFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#type-CallFrame) - The `this` in the properties had `description` _updated_. 
+* [`Debugger.Scope`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#type-Scope) - The `object` in the properties had `description` _updated_. 
+* [`Debugger.BreakLocation`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#type-BreakLocation) - The `scriptId` in the properties had `description` _updated_. 
+#### `Runtime`: modified commands
+* [`Runtime.callFunctionOn`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-callFunctionOn) - The `arguments` in the parameters had `description` _removed_. The `silent` in the parameters had `description` _updated_. The `awaitPromise` in the parameters had `description` _updated_. 
+* [`Runtime.enable`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-enable) - `description` updated. 
+* [`Runtime.evaluate`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-evaluate) - The `silent` in the parameters had `description` _updated_. The `awaitPromise` in the parameters had `description` _updated_. 
+* [`Runtime.runScript`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-runScript) - The `silent` in the parameters had `description` _updated_. The `awaitPromise` in the parameters had `description` _updated_. 
+#### `Runtime`: modified event
+* [`Runtime.exceptionRevoked`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#event-exceptionRevoked) - The `exceptionId` in the parameters had `description` _updated_. 
+#### `Runtime`: modified types
+* [`Runtime.RemoteObject`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-RemoteObject) - The `subtype` in the properties had `description` _updated_. The `className` in the properties had `description` _updated_. The `unserializableValue` in the properties had `description` _updated_. The `preview` in the properties had `description` _updated_. 
+* [`Runtime.ObjectPreview`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-ObjectPreview) - The `subtype` in the properties had `description` _updated_. The `entries` in the properties had `description` _updated_. 
+* [`Runtime.PropertyPreview`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-PropertyPreview) - The `subtype` in the properties had `description` _updated_. 
+* [`Runtime.PropertyDescriptor`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-PropertyDescriptor) - The `get` in the properties had `description` _updated_. The `set` in the properties had `description` _updated_. The `symbol` in the properties had `description` _updated_. 
+* [`Runtime.CallArgument`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-CallArgument) - `description` updated. 
+* [`Runtime.StackTraceId`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-StackTraceId) - `description` updated. 
+#### `Schema`: modified command
+* [`Schema.getDomains`](https://chromedevtools.github.io/devtools-protocol/tot/Schema/#method-getDomains) - `handlers` removed. 
+
+
 ## Roll protocol to r520165
 ###### _2017-11-29 10:15:43 -0800_ | Diff: [e1e5c6b...0741c94](https://github.com/ChromeDevTools/devtools-protocol/compare/e1e5c6b...0741c94)
 #### `Accessibility`: modified command

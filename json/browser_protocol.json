@@ -205,7 +205,7 @@
                 },
                 {
                     "id": "AXPropertyName",
-                    "description": "Values of AXProperty name: from 'busy' to 'roledescription' - states which apply to every AX node, from 'live' to 'root' - attributes which apply to nodes in live regions, from 'autocomplete' to 'valuetext' - attributes which apply to widgets, from 'checked' to 'selected' - states which apply to widgets, from 'activedescendant' to 'owns' - relationships between elements other than parent/child/sibling.",
+                    "description": "Values of AXProperty name: from 'busy' to 'roledescription' - states which apply to every AX\nnode, from 'live' to 'root' - attributes which apply to nodes in live regions, from\n'autocomplete' to 'valuetext' - attributes which apply to widgets, from 'checked' to 'selected'\n- states which apply to widgets, from 'activedescendant' to 'owns' - relationships between\nelements other than parent/child/sibling.",
                     "type": "string",
                     "enum": [
                         "busy",
@@ -341,7 +341,7 @@
                     "returns": [
                         {
                             "name": "nodes",
-                            "description": "The `Accessibility.AXNode` for this DOM node, if it exists, plus its ancestors, siblings and children, if requested.",
+                            "description": "The `Accessibility.AXNode` for this DOM node, if it exists, plus its ancestors, siblings and\nchildren, if requested.",
                             "type": "array",
                             "items": {
                                 "$ref": "AXNode"
@@ -417,7 +417,7 @@
                         },
                         {
                             "name": "cssId",
-                            "description": "A unique ID for `Animation` representing the sources that triggered this CSS animation/transition.",
+                            "description": "A unique ID for `Animation` representing the sources that triggered this CSS\nanimation/transition.",
                             "optional": true,
                             "type": "string"
                         }
@@ -807,11 +807,11 @@
                 },
                 {
                     "name": "getFramesWithManifests",
-                    "description": "Returns array of frame identifiers with manifest urls for each frame containing a document associated with some application cache.",
+                    "description": "Returns array of frame identifiers with manifest urls for each frame containing a document\nassociated with some application cache.",
                     "returns": [
                         {
                             "name": "frameIds",
-                            "description": "Array of frame identifiers with manifest urls for each frame containing a document associated with some application cache.",
+                            "description": "Array of frame identifiers with manifest urls for each frame containing a document\nassociated with some application cache.",
                             "type": "array",
                             "items": {
                                 "$ref": "FrameWithManifest"
@@ -880,7 +880,7 @@
             "commands": [
                 {
                     "name": "getEncodedResponse",
-                    "description": "Returns the response body and size if it were re-encoded with the specified settings. Only applies to images.",
+                    "description": "Returns the response body and size if it were re-encoded with the specified settings. Only\napplies to images.",
                     "parameters": [
                         {
                             "name": "requestId",
@@ -1041,7 +1041,7 @@
                     "returns": [
                         {
                             "name": "bounds",
-                            "description": "Bounds information of the window. When window state is 'minimized', the restored window position and size are returned.",
+                            "description": "Bounds information of the window. When window state is 'minimized', the restored window\nposition and size are returned.",
                             "$ref": "Bounds"
                         }
                     ]
@@ -1065,7 +1065,7 @@
                         },
                         {
                             "name": "bounds",
-                            "description": "Bounds information of the window. When window state is 'minimized', the restored window position and size are returned.",
+                            "description": "Bounds information of the window. When window state is 'minimized', the restored window\nposition and size are returned.",
                             "$ref": "Bounds"
                         }
                     ]
@@ -1082,7 +1082,7 @@
                         },
                         {
                             "name": "bounds",
-                            "description": "New window bounds. The 'minimized', 'maximized' and 'fullscreen' states cannot be combined with 'left', 'top', 'width' or 'height'. Leaves unspecified fields unchanged.",
+                            "description": "New window bounds. The 'minimized', 'maximized' and 'fullscreen' states cannot be combined\nwith 'left', 'top', 'width' or 'height'. Leaves unspecified fields unchanged.",
                             "$ref": "Bounds"
                         }
                     ]
@@ -1091,7 +1091,7 @@
         },
         {
             "domain": "CSS",
-            "description": "This domain exposes CSS read/write operations. All CSS objects (stylesheets, rules, and styles) have an associated `id` used in subsequent operations on the related object. Each object type has a specific `id` structure, and those are not interchangeable between objects of different kinds. CSS objects can be loaded using the `get*ForNode()` calls (which accept a DOM node id). A client can also keep track of stylesheets via the `styleSheetAdded`/`styleSheetRemoved` events and subsequently load the required stylesheet contents using the `getStyleSheet[Text]()` methods.",
+            "description": "This domain exposes CSS read/write operations. All CSS objects (stylesheets, rules, and styles)\nhave an associated `id` used in subsequent operations on the related object. Each object type has\na specific `id` structure, and those are not interchangeable between objects of different kinds.\nCSS objects can be loaded using the `get*ForNode()` calls (which accept a DOM node id). A client\ncan also keep track of stylesheets via the `styleSheetAdded`/`styleSheetRemoved` events and\nsubsequently load the required stylesheet contents using the `getStyleSheet[Text]()` methods.",
             "experimental": true,
             "dependencies": [
                 "DOM"
@@ -1103,7 +1103,7 @@
                 },
                 {
                     "id": "StyleSheetOrigin",
-                    "description": "Stylesheet type: \"injected\" for stylesheets injected via extension, \"user-agent\" for user-agent stylesheets, \"inspector\" for stylesheets created by the inspector (i.e. those holding the \"via inspector\" rules), \"regular\" for regular stylesheets.",
+                    "description": "Stylesheet type: \"injected\" for stylesheets injected via extension, \"user-agent\" for user-agent\nstylesheets, \"inspector\" for stylesheets created by the inspector (i.e. those holding the \"via\ninspector\" rules), \"regular\" for regular stylesheets.",
                     "type": "string",
                     "enum": [
                         "injected",
@@ -1266,7 +1266,7 @@
                         },
                         {
                             "name": "isInline",
-                            "description": "Whether this stylesheet is created for STYLE tag by parser. This flag is not set for document.written STYLE tags.",
+                            "description": "Whether this stylesheet is created for STYLE tag by parser. This flag is not set for\ndocument.written STYLE tags.",
                             "type": "boolean"
                         },
                         {
@@ -1293,7 +1293,7 @@
                     "properties": [
                         {
                             "name": "styleSheetId",
-                            "description": "The css style sheet identifier (absent for user agent stylesheet and user-specified stylesheet rules) this rule came from.",
+                            "description": "The css style sheet identifier (absent for user agent stylesheet and user-specified\nstylesheet rules) this rule came from.",
                             "optional": true,
                             "$ref": "StyleSheetId"
                         },
@@ -1314,7 +1314,7 @@
                         },
                         {
                             "name": "media",
-                            "description": "Media list array (for rules involving media queries). The array enumerates media queries starting with the innermost one, going outwards.",
+                            "description": "Media list array (for rules involving media queries). The array enumerates media queries\nstarting with the innermost one, going outwards.",
                             "optional": true,
                             "type": "array",
                             "items": {
@@ -1330,7 +1330,7 @@
                     "properties": [
                         {
                             "name": "styleSheetId",
-                            "description": "The css style sheet identifier (absent for user agent stylesheet and user-specified stylesheet rules) this rule came from.",
+                            "description": "The css style sheet identifier (absent for user agent stylesheet and user-specified\nstylesheet rules) this rule came from.",
                             "$ref": "StyleSheetId"
                         },
                         {
@@ -1422,7 +1422,7 @@
                     "properties": [
                         {
                             "name": "styleSheetId",
-                            "description": "The css style sheet identifier (absent for user agent stylesheet and user-specified stylesheet rules) this rule came from.",
+                            "description": "The css style sheet identifier (absent for user agent stylesheet and user-specified\nstylesheet rules) this rule came from.",
                             "optional": true,
                             "$ref": "StyleSheetId"
                         },
@@ -1521,7 +1521,7 @@
                         },
                         {
                             "name": "source",
-                            "description": "Source of the media query: \"mediaRule\" if specified by a @media rule, \"importRule\" if specified by an @import rule, \"linkedSheet\" if specified by a \"media\" attribute in a linked stylesheet's LINK tag, \"inlineSheet\" if specified by a \"media\" attribute in an inline stylesheet's STYLE tag.",
+                            "description": "Source of the media query: \"mediaRule\" if specified by a @media rule, \"importRule\" if\nspecified by an @import rule, \"linkedSheet\" if specified by a \"media\" attribute in a linked\nstylesheet's LINK tag, \"inlineSheet\" if specified by a \"media\" attribute in an inline\nstylesheet's STYLE tag.",
                             "type": "string",
                             "enum": [
                                 "mediaRule",
@@ -1538,7 +1538,7 @@
                         },
                         {
                             "name": "range",
-                            "description": "The associated rule (@media or @import) header range in the enclosing stylesheet (if available).",
+                            "description": "The associated rule (@media or @import) header range in the enclosing stylesheet (if\navailable).",
                             "optional": true,
                             "$ref": "SourceRange"
                         },
@@ -1662,7 +1662,7 @@
                     "properties": [
                         {
                             "name": "styleSheetId",
-                            "description": "The css style sheet identifier (absent for user agent stylesheet and user-specified stylesheet rules) this rule came from.",
+                            "description": "The css style sheet identifier (absent for user agent stylesheet and user-specified\nstylesheet rules) this rule came from.",
                             "optional": true,
                             "$ref": "StyleSheetId"
                         },
@@ -1709,7 +1709,7 @@
             "commands": [
                 {
                     "name": "addRule",
-                    "description": "Inserts a new rule with the given `ruleText` in a stylesheet with given `styleSheetId`, at the position specified by `location`.",
+                    "description": "Inserts a new rule with the given `ruleText` in a stylesheet with given `styleSheetId`, at the\nposition specified by `location`.",
                     "parameters": [
                         {
                             "name": "styleSheetId",
@@ -1779,11 +1779,11 @@
                 },
                 {
                     "name": "enable",
-                    "description": "Enables the CSS agent for the given page. Clients should not assume that the CSS agent has been enabled until the result of this command is received."
+                    "description": "Enables the CSS agent for the given page. Clients should not assume that the CSS agent has been\nenabled until the result of this command is received."
                 },
                 {
                     "name": "forcePseudoState",
-                    "description": "Ensures that the given node will have specified pseudo-classes whenever its style is computed by the browser.",
+                    "description": "Ensures that the given node will have specified pseudo-classes whenever its style is computed by\nthe browser.",
                     "parameters": [
                         {
                             "name": "nodeId",
@@ -1812,7 +1812,7 @@
                     "returns": [
                         {
                             "name": "backgroundColors",
-                            "description": "The range of background colors behind this element, if it contains any visible text. If no visible text is present, this will be undefined. In the case of a flat background color, this will consist of simply that color. In the case of a gradient, this will consist of each of the color stops. For anything more complicated, this will be an empty array. Images will be ignored (as if the image had failed to load).",
+                            "description": "The range of background colors behind this element, if it contains any visible text. If no\nvisible text is present, this will be undefined. In the case of a flat background color,\nthis will consist of simply that color. In the case of a gradient, this will consist of each\nof the color stops. For anything more complicated, this will be an empty array. Images will\nbe ignored (as if the image had failed to load).",
                             "optional": true,
                             "type": "array",
                             "items": {
@@ -1827,7 +1827,7 @@
                         },
                         {
                             "name": "computedFontWeight",
-                            "description": "The computed font weight for this node, as a CSS computed value string (e.g. 'normal' or '100').",
+                            "description": "The computed font weight for this node, as a CSS computed value string (e.g. 'normal' or\n'100').",
                             "optional": true,
                             "type": "string"
                         },
@@ -1861,7 +1861,7 @@
                 },
                 {
                     "name": "getInlineStylesForNode",
-                    "description": "Returns the styles defined inline (explicitly in the \"style\" attribute and implicitly, using DOM attributes) for a DOM node identified by `nodeId`.",
+                    "description": "Returns the styles defined inline (explicitly in the \"style\" attribute and implicitly, using DOM\nattributes) for a DOM node identified by `nodeId`.",
                     "parameters": [
                         {
                             "name": "nodeId",
@@ -1958,7 +1958,7 @@
                 },
                 {
                     "name": "getPlatformFontsForNode",
-                    "description": "Requests information about platform fonts which we used to render child TextNodes in the given node.",
+                    "description": "Requests information about platform fonts which we used to render child TextNodes in the given\nnode.",
                     "parameters": [
                         {
                             "name": "nodeId",
@@ -1995,7 +1995,7 @@
                 },
                 {
                     "name": "setEffectivePropertyValueForNode",
-                    "description": "Find a rule with the given active property for the given node and set the new value for this property",
+                    "description": "Find a rule with the given active property for the given node and set the new value for this\nproperty",
                     "parameters": [
                         {
                             "name": "nodeId",
@@ -2151,7 +2151,7 @@
                 },
                 {
                     "name": "takeCoverageDelta",
-                    "description": "Obtain list of rules that became used since last call to this method (or since start of coverage instrumentation)",
+                    "description": "Obtain list of rules that became used since last call to this method (or since start of coverage\ninstrumentation)",
                     "returns": [
                         {
                             "name": "coverage",
@@ -2170,7 +2170,7 @@
                 },
                 {
                     "name": "mediaQueryResultChanged",
-                    "description": "Fires whenever a MediaQuery result changes (for example, after a browser window has been resized.) The current implementation considers only viewport-dependent media features."
+                    "description": "Fires whenever a MediaQuery result changes (for example, after a browser window has been\nresized.) The current implementation considers only viewport-dependent media features."
                 },
                 {
                     "name": "styleSheetAdded",
@@ -2424,7 +2424,7 @@
         },
         {
             "domain": "DOM",
-            "description": "This domain exposes DOM read/write operations. Each DOM Node is represented with its mirror object that has an `id`. This `id` can be used to get additional information on the Node, resolve it into the JavaScript object wrapper, etc. It is important that client receives DOM events only for the nodes that are known to the client. Backend keeps track of the nodes that were sent to the client and never sends the same node twice. It is client's responsibility to collect information about the nodes that were sent to the client.<p>Note that `iframe` owner elements will return corresponding document elements as their child nodes.</p>",
+            "description": "This domain exposes DOM read/write operations. Each DOM Node is represented with its mirror object\nthat has an `id`. This `id` can be used to get additional information on the Node, resolve it into\nthe JavaScript object wrapper, etc. It is important that client receives DOM events only for the\nnodes that are known to the client. Backend keeps track of the nodes that were sent to the client\nand never sends the same node twice. It is client's responsibility to collect information about\nthe nodes that were sent to the client.<p>Note that `iframe` owner elements will return\ncorresponding document elements as their child nodes.</p>",
             "dependencies": [
                 "Runtime"
             ],
@@ -2436,7 +2436,7 @@
                 },
                 {
                     "id": "BackendNodeId",
-                    "description": "Unique DOM node identifier used to reference a node that may not have been pushed to the front-end.",
+                    "description": "Unique DOM node identifier used to reference a node that may not have been pushed to the\nfront-end.",
                     "type": "integer"
                 },
                 {
@@ -2494,12 +2494,12 @@
                 },
                 {
                     "id": "Node",
-                    "description": "DOM interaction is implemented in terms of mirror objects that represent the actual DOM nodes. DOMNode is a base node mirror type.",
+                    "description": "DOM interaction is implemented in terms of mirror objects that represent the actual DOM nodes.\nDOMNode is a base node mirror type.",
                     "type": "object",
                     "properties": [
                         {
                             "name": "nodeId",
-                            "description": "Node identifier that is passed into the rest of the DOM messages as the `nodeId`. Backend will only push node with given `id` once. It is aware of all requested nodes and will only fire DOM events for nodes known to the client.",
+                            "description": "Node identifier that is passed into the rest of the DOM messages as the `nodeId`. Backend\nwill only push node with given `id` once. It is aware of all requested nodes and will only\nfire DOM events for nodes known to the client.",
                             "$ref": "NodeId"
                         },
                         {
@@ -2836,7 +2836,7 @@
                 },
                 {
                     "name": "copyTo",
-                    "description": "Creates a deep copy of the specified node and places it into the target container before the given anchor.",
+                    "description": "Creates a deep copy of the specified node and places it into the target container before the\ngiven anchor.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -2851,7 +2851,7 @@
                         },
                         {
                             "name": "insertBeforeNodeId",
-                            "description": "Drop the copy before this node (if absent, the copy becomes the last child of `targetNodeId`).",
+                            "description": "Drop the copy before this node (if absent, the copy becomes the last child of\n`targetNodeId`).",
                             "optional": true,
                             "$ref": "NodeId"
                         }
@@ -2866,7 +2866,7 @@
                 },
                 {
                     "name": "describeNode",
-                    "description": "Describes node given its id, does not require domain to be enabled. Does not start tracking any objects, can be used for automation.",
+                    "description": "Describes node given its id, does not require domain to be enabled. Does not start tracking any\nobjects, can be used for automation.",
                     "parameters": [
                         {
                             "name": "nodeId",
@@ -2888,13 +2888,13 @@
                         },
                         {
                             "name": "depth",
-                            "description": "The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the entire subtree or provide an integer larger than 0.",
+                            "description": "The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the\nentire subtree or provide an integer larger than 0.",
                             "optional": true,
                             "type": "integer"
                         },
                         {
                             "name": "pierce",
-                            "description": "Whether or not iframes and shadow roots should be traversed when returning the subtree (default is false).",
+                            "description": "Whether or not iframes and shadow roots should be traversed when returning the subtree\n(default is false).",
                             "optional": true,
                             "type": "boolean"
                         }
@@ -2913,7 +2913,7 @@
                 },
                 {
                     "name": "discardSearchResults",
-                    "description": "Discards search results from the session with the given id. `getSearchResults` should no longer be called for that search.",
+                    "description": "Discards search results from the session with the given id. `getSearchResults` should no longer\nbe called for that search.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -3009,13 +3009,13 @@
                     "parameters": [
                         {
                             "name": "depth",
-                            "description": "The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the entire subtree or provide an integer larger than 0.",
+                            "description": "The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the\nentire subtree or provide an integer larger than 0.",
                             "optional": true,
                             "type": "integer"
                         },
                         {
                             "name": "pierce",
-                            "description": "Whether or not iframes and shadow roots should be traversed when returning the subtree (default is false).",
+                            "description": "Whether or not iframes and shadow roots should be traversed when returning the subtree\n(default is false).",
                             "optional": true,
                             "type": "boolean"
                         }
@@ -3034,13 +3034,13 @@
                     "parameters": [
                         {
                             "name": "depth",
-                            "description": "The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the entire subtree or provide an integer larger than 0.",
+                            "description": "The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the\nentire subtree or provide an integer larger than 0.",
                             "optional": true,
                             "type": "integer"
                         },
                         {
                             "name": "pierce",
-                            "description": "Whether or not iframes and shadow roots should be traversed when returning the subtree (default is false).",
+                            "description": "Whether or not iframes and shadow roots should be traversed when returning the subtree\n(default is false).",
                             "optional": true,
                             "type": "boolean"
                         }
@@ -3138,7 +3138,7 @@
                 },
                 {
                     "name": "getSearchResults",
-                    "description": "Returns search results from given `fromIndex` to given `toIndex` from the search with the given identifier.",
+                    "description": "Returns search results from given `fromIndex` to given `toIndex` from the search with the given\nidentifier.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -3204,7 +3204,7 @@
                         },
                         {
                             "name": "insertBeforeNodeId",
-                            "description": "Drop node before this one (if absent, the moved node becomes the last child of `targetNodeId`).",
+                            "description": "Drop node before this one (if absent, the moved node becomes the last child of\n`targetNodeId`).",
                             "optional": true,
                             "$ref": "NodeId"
                         }
@@ -3219,7 +3219,7 @@
                 },
                 {
                     "name": "performSearch",
-                    "description": "Searches for a given string in the DOM tree. Use `getSearchResults` to access search results or `cancelSearch` to end this search session.",
+                    "description": "Searches for a given string in the DOM tree. Use `getSearchResults` to access search results or\n`cancelSearch` to end this search session.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -3283,7 +3283,7 @@
                     "returns": [
                         {
                             "name": "nodeIds",
-                            "description": "The array of ids of pushed nodes that correspond to the backend ids specified in backendNodeIds.",
+                            "description": "The array of ids of pushed nodes that correspond to the backend ids specified in\nbackendNodeIds.",
                             "type": "array",
                             "items": {
                                 "$ref": "NodeId"
@@ -3374,7 +3374,7 @@
                 },
                 {
                     "name": "requestChildNodes",
-                    "description": "Requests that children of the node with given id are returned to the caller in form of `setChildNodes` events where not only immediate children are retrieved, but all children down to the specified depth.",
+                    "description": "Requests that children of the node with given id are returned to the caller in form of\n`setChildNodes` events where not only immediate children are retrieved, but all children down to\nthe specified depth.",
                     "parameters": [
                         {
                             "name": "nodeId",
@@ -3383,13 +3383,13 @@
                         },
                         {
                             "name": "depth",
-                            "description": "The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the entire subtree or provide an integer larger than 0.",
+                            "description": "The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the\nentire subtree or provide an integer larger than 0.",
                             "optional": true,
                             "type": "integer"
                         },
                         {
                             "name": "pierce",
-                            "description": "Whether or not iframes and shadow roots should be traversed when returning the sub-tree (default is false).",
+                            "description": "Whether or not iframes and shadow roots should be traversed when returning the sub-tree\n(default is false).",
                             "optional": true,
                             "type": "boolean"
                         }
@@ -3397,7 +3397,7 @@
                 },
                 {
                     "name": "requestNode",
-                    "description": "Requests that the node is sent to the caller given the JavaScript node object reference. All nodes that form the path from the node to the root are also sent to the client as a series of `setChildNodes` notifications.",
+                    "description": "Requests that the node is sent to the caller given the JavaScript node object reference. All\nnodes that form the path from the node to the root are also sent to the client as a series of\n`setChildNodes` notifications.",
                     "parameters": [
                         {
                             "name": "objectId",
@@ -3467,7 +3467,7 @@
                 },
                 {
                     "name": "setAttributesAsText",
-                    "description": "Sets attributes on element with given id. This method is useful when user edits some existing attribute value and types in several attribute name/value pairs.",
+                    "description": "Sets attributes on element with given id. This method is useful when user edits some existing\nattribute value and types in several attribute name/value pairs.",
                     "parameters": [
                         {
                             "name": "nodeId",
@@ -3481,7 +3481,7 @@
                         },
                         {
                             "name": "name",
-                            "description": "Attribute name to replace with new attributes derived from text in case text parsed successfully.",
+                            "description": "Attribute name to replace with new attributes derived from text in case text parsed\nsuccessfully.",
                             "optional": true,
                             "type": "string"
                         }
@@ -3521,7 +3521,7 @@
                 },
                 {
                     "name": "setInspectedNode",
-                    "description": "Enables console to refer to the node with given id via $x (see Command Line API for more details $x functions).",
+                    "description": "Enables console to refer to the node with given id via $x (see Command Line API for more details\n$x functions).",
                     "experimental": true,
                     "parameters": [
                         {
@@ -3774,7 +3774,7 @@
                 },
                 {
                     "name": "setChildNodes",
-                    "description": "Fired when backend wants to provide client with the missing DOM structure. This happens upon most of the calls requesting node ids.",
+                    "description": "Fired when backend wants to provide client with the missing DOM structure. This happens upon\nmost of the calls requesting node ids.",
                     "parameters": [
                         {
                             "name": "parentId",
@@ -3829,7 +3829,7 @@
         },
         {
             "domain": "DOMDebugger",
-            "description": "DOM debugging allows setting breakpoints on particular DOM operations and events. JavaScript execution will stop on these operations as if there was a regular breakpoint set.",
+            "description": "DOM debugging allows setting breakpoints on particular DOM operations and events. JavaScript\nexecution will stop on these operations as if there was a regular breakpoint set.",
             "dependencies": [
                 "DOM",
                 "Debugger"
@@ -3918,13 +3918,13 @@
                         },
                         {
                             "name": "depth",
-                            "description": "The maximum depth at which Node children should be retrieved, defaults to 1. Use -1 for the entire subtree or provide an integer larger than 0.",
+                            "description": "The maximum depth at which Node children should be retrieved, defaults to 1. Use -1 for the\nentire subtree or provide an integer larger than 0.",
                             "optional": true,
                             "type": "integer"
                         },
                         {
                             "name": "pierce",
-                            "description": "Whether or not iframes and shadow roots should be traversed when returning the subtree (default is false). Reports listeners for all contexts if pierce is enabled.",
+                            "description": "Whether or not iframes and shadow roots should be traversed when returning the subtree\n(default is false). Reports listeners for all contexts if pierce is enabled.",
                             "optional": true,
                             "type": "boolean"
                         }
@@ -4024,7 +4024,7 @@
                         },
                         {
                             "name": "targetName",
-                            "description": "EventTarget interface name to stop on. If equal to `\"*\"` or not provided, will stop on any EventTarget.",
+                            "description": "EventTarget interface name to stop on. If equal to `\"*\"` or not provided, will stop on any\nEventTarget.",
                             "experimental": true,
                             "optional": true,
                             "type": "string"
@@ -4117,7 +4117,7 @@
                         },
                         {
                             "name": "childNodeIndexes",
-                            "description": "The indexes of the node's child nodes in the `domNodes` array returned by `getSnapshot`, if any.",
+                            "description": "The indexes of the node's child nodes in the `domNodes` array returned by `getSnapshot`, if\nany.",
                             "optional": true,
                             "type": "array",
                             "items": {
@@ -4135,7 +4135,7 @@
                         },
                         {
                             "name": "pseudoElementIndexes",
-                            "description": "Indexes of pseudo elements associated with this node in the `domNodes` array returned by `getSnapshot`, if any.",
+                            "description": "Indexes of pseudo elements associated with this node in the `domNodes` array returned by\n`getSnapshot`, if any.",
                             "optional": true,
                             "type": "array",
                             "items": {
@@ -4144,7 +4144,7 @@
                         },
                         {
                             "name": "layoutNodeIndex",
-                            "description": "The index of the node's related layout tree node in the `layoutTreeNodes` array returned by `getSnapshot`, if any.",
+                            "description": "The index of the node's related layout tree node in the `layoutTreeNodes` array returned by\n`getSnapshot`, if any.",
                             "optional": true,
                             "type": "integer"
                         },
@@ -4192,19 +4192,19 @@
                         },
                         {
                             "name": "contentDocumentIndex",
-                            "description": "The index of a frame owner element's content document in the `domNodes` array returned by `getSnapshot`, if any.",
+                            "description": "The index of a frame owner element's content document in the `domNodes` array returned by\n`getSnapshot`, if any.",
                             "optional": true,
                             "type": "integer"
                         },
                         {
                             "name": "importedDocumentIndex",
-                            "description": "Index of the imported document's node of a link element in the `domNodes` array returned by `getSnapshot`, if any.",
+                            "description": "Index of the imported document's node of a link element in the `domNodes` array returned by\n`getSnapshot`, if any.",
                             "optional": true,
                             "type": "integer"
                         },
                         {
                             "name": "templateContentIndex",
-                            "description": "Index of the content node of a template element in the `domNodes` array returned by `getSnapshot`.",
+                            "description": "Index of the content node of a template element in the `domNodes` array returned by\n`getSnapshot`.",
                             "optional": true,
                             "type": "integer"
                         },
@@ -4216,7 +4216,7 @@
                         },
                         {
                             "name": "isClickable",
-                            "description": "Whether this DOM node responds to mouse clicks. This includes nodes that have had click event listeners attached via JavaScript as well as anchor tags that naturally navigate when clicked.",
+                            "description": "Whether this DOM node responds to mouse clicks. This includes nodes that have had click\nevent listeners attached via JavaScript as well as anchor tags that naturally navigate when\nclicked.",
                             "optional": true,
                             "type": "boolean"
                         }
@@ -4224,7 +4224,7 @@
                 },
                 {
                     "id": "InlineTextBox",
-                    "description": "Details of post layout rendered text positions. The exact layout should not be regarded as stable and may change between versions.",
+                    "description": "Details of post layout rendered text positions. The exact layout should not be regarded as\nstable and may change between versions.",
                     "type": "object",
                     "properties": [
                         {
@@ -4318,7 +4318,7 @@
             "commands": [
                 {
                     "name": "getSnapshot",
-                    "description": "Returns a document snapshot, including the full DOM tree of the root node (including iframes, template contents, and imported documents) in a flattened array, as well as layout and white-listed computed style information for the nodes. Shadow DOM in the returned DOM tree is flattened.",
+                    "description": "Returns a document snapshot, including the full DOM tree of the root node (including iframes,\ntemplate contents, and imported documents) in a flattened array, as well as layout and\nwhite-listed computed style information for the nodes. Shadow DOM in the returned DOM tree is\nflattened.",
                     "parameters": [
                         {
                             "name": "computedStyleWhitelist",
@@ -4714,7 +4714,7 @@
                 },
                 {
                     "id": "VirtualTimePolicy",
-                    "description": "advance: If the scheduler runs out of immediate work, the virtual time base may fast forward to allow the next delayed task (if any) to run; pause: The virtual time base may not advance; pauseIfNetworkFetchesPending: The virtual time base may not advance if there are any pending resource fetches.",
+                    "description": "advance: If the scheduler runs out of immediate work, the virtual time base may fast forward to\nallow the next delayed task (if any) to run; pause: The virtual time base may not advance;\npauseIfNetworkFetchesPending: The virtual time base may not advance if there are any pending\nresource fetches.",
                     "experimental": true,
                     "type": "string",
                     "enum": [
@@ -4763,11 +4763,11 @@
                 },
                 {
                     "name": "setDefaultBackgroundColorOverride",
-                    "description": "Sets or clears an override of the default background color of the frame. This override is used if the content does not specify one.",
+                    "description": "Sets or clears an override of the default background color of the frame. This override is used\nif the content does not specify one.",
                     "parameters": [
                         {
                             "name": "color",
-                            "description": "RGBA of the default background color. If not specified, any existing override will be cleared.",
+                            "description": "RGBA of the default background color. If not specified, any existing override will be\ncleared.",
                             "optional": true,
                             "$ref": "DOM.RGBA"
                         }
@@ -4775,7 +4775,7 @@
                 },
                 {
                     "name": "setDeviceMetricsOverride",
-                    "description": "Overrides the values of device screen dimensions (window.screen.width, window.screen.height, window.innerWidth, window.innerHeight, and \"device-width\"/\"device-height\"-related CSS media query results).",
+                    "description": "Overrides the values of device screen dimensions (window.screen.width, window.screen.height,\nwindow.innerWidth, window.innerHeight, and \"device-width\"/\"device-height\"-related CSS media\nquery results).",
                     "parameters": [
                         {
                             "name": "width",
@@ -4794,7 +4794,7 @@
                         },
                         {
                             "name": "mobile",
-                            "description": "Whether to emulate mobile device. This includes viewport meta tag, overlay scrollbars, text autosizing and more.",
+                            "description": "Whether to emulate mobile device. This includes viewport meta tag, overlay scrollbars, text\nautosizing and more.",
                             "type": "boolean"
                         },
                         {
@@ -4847,7 +4847,7 @@
                         },
                         {
                             "name": "viewport",
-                            "description": "If set, the visible area of the page will be overridden to this viewport. This viewport change is not observed by the page, e.g. viewport-relative elements do not change positions.",
+                            "description": "If set, the visible area of the page will be overridden to this viewport. This viewport\nchange is not observed by the page, e.g. viewport-relative elements do not change positions.",
                             "experimental": true,
                             "optional": true,
                             "$ref": "Page.Viewport"
@@ -4888,7 +4888,7 @@
                 },
                 {
                     "name": "setGeolocationOverride",
-                    "description": "Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position unavailable.",
+                    "description": "Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position\nunavailable.",
                     "parameters": [
                         {
                             "name": "latitude",
@@ -4964,7 +4964,7 @@
                 },
                 {
                     "name": "setVirtualTimePolicy",
-                    "description": "Turns on virtual time for all frames (replacing real-time with a synthetic time source) and sets the current virtual time policy.  Note this supersedes any previous time budget.",
+                    "description": "Turns on virtual time for all frames (replacing real-time with a synthetic time source) and sets\nthe current virtual time policy.  Note this supersedes any previous time budget.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -4973,13 +4973,13 @@
                         },
                         {
                             "name": "budget",
-                            "description": "If set, after this many virtual milliseconds have elapsed virtual time will be paused and a virtualTimeBudgetExpired event is sent.",
+                            "description": "If set, after this many virtual milliseconds have elapsed virtual time will be paused and a\nvirtualTimeBudgetExpired event is sent.",
                             "optional": true,
                             "type": "number"
                         },
                         {
                             "name": "maxVirtualTimeTaskStarvationCount",
-                            "description": "If set this specifies the maximum number of tasks that can be run before virtual is forced forwards to prevent deadlock.",
+                            "description": "If set this specifies the maximum number of tasks that can be run before virtual is forced\nforwards to prevent deadlock.",
                             "optional": true,
                             "type": "integer"
                         }
@@ -4994,7 +4994,7 @@
                 },
                 {
                     "name": "setVisibleSize",
-                    "description": "Resizes the frame/viewport of the page. Note that this does not affect the frame's container (e.g. browser window). Can be used to produce screenshots of the specified size. Not supported on Android.",
+                    "description": "Resizes the frame/viewport of the page. Note that this does not affect the frame's container\n(e.g. browser window). Can be used to produce screenshots of the specified size. Not supported\non Android.",
                     "experimental": true,
                     "deprecated": true,
                     "parameters": [
@@ -5019,7 +5019,7 @@
                     "parameters": [
                         {
                             "name": "virtualTimeElapsed",
-                            "description": "The amount of virtual time that has elapsed in milliseconds since virtual time was first enabled.",
+                            "description": "The amount of virtual time that has elapsed in milliseconds since virtual time was first\nenabled.",
                             "type": "number"
                         }
                     ]
@@ -5036,7 +5036,7 @@
                     "parameters": [
                         {
                             "name": "virtualTimeElapsed",
-                            "description": "The amount of virtual time that has elapsed in milliseconds since virtual time was first enabled.",
+                            "description": "The amount of virtual time that has elapsed in milliseconds since virtual time was first\nenabled.",
                             "type": "number"
                         }
                     ]
@@ -5079,29 +5079,29 @@
             "commands": [
                 {
                     "name": "beginFrame",
-                    "description": "Sends a BeginFrame to the target and returns when the frame was completed. Optionally captures a screenshot from the resulting frame. Requires that the target was created with enabled BeginFrameControl.",
+                    "description": "Sends a BeginFrame to the target and returns when the frame was completed. Optionally captures a\nscreenshot from the resulting frame. Requires that the target was created with enabled\nBeginFrameControl.",
                     "parameters": [
                         {
                             "name": "frameTime",
-                            "description": "Timestamp of this BeginFrame (milliseconds since epoch). If not set, the current time will be used.",
+                            "description": "Timestamp of this BeginFrame (milliseconds since epoch). If not set, the current time will\nbe used.",
                             "optional": true,
                             "$ref": "Runtime.Timestamp"
                         },
                         {
                             "name": "deadline",
-                            "description": "Deadline of this BeginFrame (milliseconds since epoch). If not set, the deadline will be calculated from the frameTime and interval.",
+                            "description": "Deadline of this BeginFrame (milliseconds since epoch). If not set, the deadline will be\ncalculated from the frameTime and interval.",
                             "optional": true,
                             "$ref": "Runtime.Timestamp"
                         },
                         {
                             "name": "interval",
-                            "description": "The interval between BeginFrames that is reported to the compositor, in milliseconds. Defaults to a 60 frames/second interval, i.e. about 16.666 milliseconds.",
+                            "description": "The interval between BeginFrames that is reported to the compositor, in milliseconds.\nDefaults to a 60 frames/second interval, i.e. about 16.666 milliseconds.",
                             "optional": true,
                             "type": "number"
                         },
                         {
                             "name": "screenshot",
-                            "description": "If set, a screenshot of the frame will be captured and returned in the response. Otherwise, no screenshot will be captured.",
+                            "description": "If set, a screenshot of the frame will be captured and returned in the response. Otherwise,\nno screenshot will be captured.",
                             "optional": true,
                             "$ref": "ScreenshotParams"
                         }
@@ -5109,7 +5109,7 @@
                     "returns": [
                         {
                             "name": "hasDamage",
-                            "description": "Whether the BeginFrame resulted in damage and, thus, a new frame was committed to the display.",
+                            "description": "Whether the BeginFrame resulted in damage and, thus, a new frame was committed to the\ndisplay.",
                             "type": "boolean"
                         },
                         {
@@ -5137,7 +5137,7 @@
             "events": [
                 {
                     "name": "mainFrameReadyForScreenshots",
-                    "description": "Issued when the main frame has first submitted a frame to the browser. May only be fired while a BeginFrame is in flight. Before this event, screenshotting requests may fail."
+                    "description": "Issued when the main frame has first submitted a frame to the browser. May only be fired while a\nBeginFrame is in flight. Before this event, screenshotting requests may fail."
                 },
                 {
                     "name": "needsBeginFramesChanged",
@@ -5158,7 +5158,7 @@
             "types": [
                 {
                     "id": "StreamHandle",
-                    "description": "This is either obtained from another method or specifed as `blob:&lt;uuid&gt;` where `&lt;uuid&gt` is an UUID of a Blob.",
+                    "description": "This is either obtained from another method or specifed as `blob:&lt;uuid&gt;` where\n`&lt;uuid&gt` is an UUID of a Blob.",
                     "type": "string"
                 }
             ],
@@ -5185,7 +5185,7 @@
                         },
                         {
                             "name": "offset",
-                            "description": "Seek to the specified offset before reading (if not specificed, proceed with offset following the last read).",
+                            "description": "Seek to the specified offset before reading (if not specificed, proceed with offset\nfollowing the last read).",
                             "optional": true,
                             "type": "integer"
                         },
@@ -5616,7 +5616,7 @@
                         },
                         {
                             "name": "y",
-                            "description": "Y coordinate of the event relative to the main frame's viewport in CSS pixels. 0 refers to the top of the viewport and Y increases as it proceeds towards the bottom of the viewport.",
+                            "description": "Y coordinate of the event relative to the main frame's viewport in CSS pixels. 0 refers to\nthe top of the viewport and Y increases as it proceeds towards the bottom of the viewport.",
                             "type": "number"
                         },
                         {
@@ -5685,7 +5685,7 @@
                         },
                         {
                             "name": "modifiers",
-                            "description": "Bit field representing pressed modifier keys. Alt=1, Ctrl=2, Meta/Command=4, Shift=8 (default: 0).",
+                            "description": "Bit field representing pressed modifier keys. Alt=1, Ctrl=2, Meta/Command=4, Shift=8\n(default: 0).",
                             "optional": true,
                             "type": "integer"
                         },
@@ -5697,13 +5697,13 @@
                         },
                         {
                             "name": "text",
-                            "description": "Text as generated by processing a virtual key code with a keyboard layout. Not needed for for `keyUp` and `rawKeyDown` events (default: \"\")",
+                            "description": "Text as generated by processing a virtual key code with a keyboard layout. Not needed for\nfor `keyUp` and `rawKeyDown` events (default: \"\")",
                             "optional": true,
                             "type": "string"
                         },
                         {
                             "name": "unmodifiedText",
-                            "description": "Text that would have been generated by the keyboard if no modifiers were pressed (except for shift). Useful for shortcut (accelerator) key handling (default: \"\").",
+                            "description": "Text that would have been generated by the keyboard if no modifiers were pressed (except for\nshift). Useful for shortcut (accelerator) key handling (default: \"\").",
                             "optional": true,
                             "type": "string"
                         },
@@ -5721,7 +5721,7 @@
                         },
                         {
                             "name": "key",
-                            "description": "Unique DOM defined string value describing the meaning of the key in the context of active modifiers, keyboard layout, etc (e.g., 'AltGr') (default: \"\").",
+                            "description": "Unique DOM defined string value describing the meaning of the key in the context of active\nmodifiers, keyboard layout, etc (e.g., 'AltGr') (default: \"\").",
                             "optional": true,
                             "type": "string"
                         },
@@ -5757,7 +5757,7 @@
                         },
                         {
                             "name": "location",
-                            "description": "Whether the event was from the left or right side of the keyboard. 1=Left, 2=Right (default: 0).",
+                            "description": "Whether the event was from the left or right side of the keyboard. 1=Left, 2=Right (default:\n0).",
                             "optional": true,
                             "type": "integer"
                         }
@@ -5785,12 +5785,12 @@
                         },
                         {
                             "name": "y",
-                            "description": "Y coordinate of the event relative to the main frame's viewport in CSS pixels. 0 refers to the top of the viewport and Y increases as it proceeds towards the bottom of the viewport.",
+                            "description": "Y coordinate of the event relative to the main frame's viewport in CSS pixels. 0 refers to\nthe top of the viewport and Y increases as it proceeds towards the bottom of the viewport.",
                             "type": "number"
                         },
                         {
                             "name": "modifiers",
-                            "description": "Bit field representing pressed modifier keys. Alt=1, Ctrl=2, Meta/Command=4, Shift=8 (default: 0).",
+                            "description": "Bit field representing pressed modifier keys. Alt=1, Ctrl=2, Meta/Command=4, Shift=8\n(default: 0).",
                             "optional": true,
                             "type": "integer"
                         },
@@ -5838,7 +5838,7 @@
                     "parameters": [
                         {
                             "name": "type",
-                            "description": "Type of the touch event. TouchEnd and TouchCancel must not contain any touch points, while TouchStart and TouchMove must contains at least one.",
+                            "description": "Type of the touch event. TouchEnd and TouchCancel must not contain any touch points, while\nTouchStart and TouchMove must contains at least one.",
                             "type": "string",
                             "enum": [
                                 "touchStart",
@@ -5849,7 +5849,7 @@
                         },
                         {
                             "name": "touchPoints",
-                            "description": "Active touch points on the touch device. One event per any changed point (compared to previous touch event in a sequence) is generated, emulating pressing/moving/releasing points one by one.",
+                            "description": "Active touch points on the touch device. One event per any changed point (compared to\nprevious touch event in a sequence) is generated, emulating pressing/moving/releasing points\none by one.",
                             "type": "array",
                             "items": {
                                 "$ref": "TouchPoint"
@@ -5857,7 +5857,7 @@
                         },
                         {
                             "name": "modifiers",
-                            "description": "Bit field representing pressed modifier keys. Alt=1, Ctrl=2, Meta/Command=4, Shift=8 (default: 0).",
+                            "description": "Bit field representing pressed modifier keys. Alt=1, Ctrl=2, Meta/Command=4, Shift=8\n(default: 0).",
                             "optional": true,
                             "type": "integer"
                         },
@@ -5925,7 +5925,7 @@
                         },
                         {
                             "name": "modifiers",
-                            "description": "Bit field representing pressed modifier keys. Alt=1, Ctrl=2, Meta/Command=4, Shift=8 (default: 0).",
+                            "description": "Bit field representing pressed modifier keys. Alt=1, Ctrl=2, Meta/Command=4, Shift=8\n(default: 0).",
                             "optional": true,
                             "type": "integer"
                         },
@@ -5976,7 +5976,7 @@
                         },
                         {
                             "name": "gestureSourceType",
-                            "description": "Which type of input events to be generated (default: 'default', which queries the platform for the preferred input type).",
+                            "description": "Which type of input events to be generated (default: 'default', which queries the platform\nfor the preferred input type).",
                             "optional": true,
                             "$ref": "GestureSourceType"
                         }
@@ -6011,13 +6011,13 @@
                         },
                         {
                             "name": "xOverscroll",
-                            "description": "The number of additional pixels to scroll back along the X axis, in addition to the given distance.",
+                            "description": "The number of additional pixels to scroll back along the X axis, in addition to the given\ndistance.",
                             "optional": true,
                             "type": "number"
                         },
                         {
                             "name": "yOverscroll",
-                            "description": "The number of additional pixels to scroll back along the Y axis, in addition to the given distance.",
+                            "description": "The number of additional pixels to scroll back along the Y axis, in addition to the given\ndistance.",
                             "optional": true,
                             "type": "number"
                         },
@@ -6035,7 +6035,7 @@
                         },
                         {
                             "name": "gestureSourceType",
-                            "description": "Which type of input events to be generated (default: 'default', which queries the platform for the preferred input type).",
+                            "description": "Which type of input events to be generated (default: 'default', which queries the platform\nfor the preferred input type).",
                             "optional": true,
                             "$ref": "GestureSourceType"
                         },
@@ -6088,7 +6088,7 @@
                         },
                         {
                             "name": "gestureSourceType",
-                            "description": "Which type of input events to be generated (default: 'default', which queries the platform for the preferred input type).",
+                            "description": "Which type of input events to be generated (default: 'default', which queries the platform\nfor the preferred input type).",
                             "optional": true,
                             "$ref": "GestureSourceType"
                         }
@@ -6293,7 +6293,7 @@
                         },
                         {
                             "name": "drawsContent",
-                            "description": "Indicates whether this layer hosts any content, rather than being used for transform/scrolling purposes only.",
+                            "description": "Indicates whether this layer hosts any content, rather than being used for\ntransform/scrolling purposes only.",
                             "type": "boolean"
                         },
                         {
@@ -6669,7 +6669,7 @@
                 },
                 {
                     "name": "enable",
-                    "description": "Enables log domain, sends the entries collected so far to the client by means of the `entryAdded` notification."
+                    "description": "Enables log domain, sends the entries collected so far to the client by means of the\n`entryAdded` notification."
                 },
                 {
                     "name": "startViolationsReport",
@@ -6765,7 +6765,7 @@
         },
         {
             "domain": "Network",
-            "description": "Network domain allows tracking network activities of the page. It exposes information about http, file, data and other requests and responses, their headers, bodies, timing, etc.",
+            "description": "Network domain allows tracking network activities of the page. It exposes information about http,\nfile, data and other requests and responses, their headers, bodies, timing, etc.",
             "dependencies": [
                 "Debugger",
                 "Runtime",
@@ -6839,7 +6839,7 @@
                 },
                 {
                     "id": "CookieSameSite",
-                    "description": "Represents the cookie's 'SameSite' status: https://tools.ietf.org/html/draft-west-first-party-cookies",
+                    "description": "Represents the cookie's 'SameSite' status:\nhttps://tools.ietf.org/html/draft-west-first-party-cookies",
                     "type": "string",
                     "enum": [
                         "Strict",
@@ -6853,7 +6853,7 @@
                     "properties": [
                         {
                             "name": "requestTime",
-                            "description": "Timing's requestTime is a baseline in seconds, while the other numbers are ticks in milliseconds relatively to this requestTime.",
+                            "description": "Timing's requestTime is a baseline in seconds, while the other numbers are ticks in\nmilliseconds relatively to this requestTime.",
                             "type": "number"
                         },
                         {
@@ -7388,7 +7388,7 @@
                         },
                         {
                             "name": "lineNumber",
-                            "description": "Initiator line number, set for Parser type or for Script type (when script is importing module) (0-based).",
+                            "description": "Initiator line number, set for Parser type or for Script type (when script is importing\nmodule) (0-based).",
                             "optional": true,
                             "type": "number"
                         }
@@ -7469,7 +7469,7 @@
                         },
                         {
                             "name": "url",
-                            "description": "The request-URI to associate with the setting of the cookie. This value can affect the default domain and path values of the created cookie.",
+                            "description": "The request-URI to associate with the setting of the cookie. This value can affect the\ndefault domain and path values of the created cookie.",
                             "optional": true,
                             "type": "string"
                         },
@@ -7552,7 +7552,7 @@
                     "properties": [
                         {
                             "name": "response",
-                            "description": "The decision on what to do in response to the authorization challenge.  Default means deferring to the default behavior of the net stack, which will likely either the Cancel authentication or display a popup dialog box.",
+                            "description": "The decision on what to do in response to the authorization challenge.  Default means\ndeferring to the default behavior of the net stack, which will likely either the Cancel\nauthentication or display a popup dialog box.",
                             "type": "string",
                             "enum": [
                                 "Default",
@@ -7562,13 +7562,13 @@
                         },
                         {
                             "name": "username",
-                            "description": "The username to provide, possibly empty. Should only be set if response is ProvideCredentials.",
+                            "description": "The username to provide, possibly empty. Should only be set if response is\nProvideCredentials.",
                             "optional": true,
                             "type": "string"
                         },
                         {
                             "name": "password",
-                            "description": "The password to provide, possibly empty. Should only be set if response is ProvideCredentials.",
+                            "description": "The password to provide, possibly empty. Should only be set if response is\nProvideCredentials.",
                             "optional": true,
                             "type": "string"
                         }
@@ -7576,7 +7576,7 @@
                 },
                 {
                     "id": "InterceptionStage",
-                    "description": "Stages of the interception to begin intercepting. Request will intercept before the request is sent. Response will intercept after the response is received.",
+                    "description": "Stages of the interception to begin intercepting. Request will intercept before the request is\nsent. Response will intercept after the response is received.",
                     "experimental": true,
                     "type": "string",
                     "enum": [
@@ -7592,7 +7592,7 @@
                     "properties": [
                         {
                             "name": "urlPattern",
-                            "description": "Wildcards ('*' -> zero or more, '?' -> exactly one) are allowed. Escape character is backslash. Omitting is equivalent to \"*\".",
+                            "description": "Wildcards ('*' -> zero or more, '?' -> exactly one) are allowed. Escape character is\nbackslash. Omitting is equivalent to \"*\".",
                             "optional": true,
                             "type": "string"
                         },
@@ -7658,7 +7658,7 @@
                 },
                 {
                     "name": "continueInterceptedRequest",
-                    "description": "Response to Network.requestIntercepted which either modifies the request to continue with any modifications, or blocks it, or completes it with the provided response bytes. If a network fetch occurs as a result which encounters a redirect an additional Network.requestIntercepted event will be sent with the same InterceptionId.",
+                    "description": "Response to Network.requestIntercepted which either modifies the request to continue with any\nmodifications, or blocks it, or completes it with the provided response bytes. If a network\nfetch occurs as a result which encounters a redirect an additional Network.requestIntercepted\nevent will be sent with the same InterceptionId.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -7667,25 +7667,25 @@
                         },
                         {
                             "name": "errorReason",
-                            "description": "If set this causes the request to fail with the given reason. Passing `Aborted` for requests marked with `isNavigationRequest` also cancels the navigation. Must not be set in response to an authChallenge.",
+                            "description": "If set this causes the request to fail with the given reason. Passing `Aborted` for requests\nmarked with `isNavigationRequest` also cancels the navigation. Must not be set in response\nto an authChallenge.",
                             "optional": true,
                             "$ref": "ErrorReason"
                         },
                         {
                             "name": "rawResponse",
-                            "description": "If set the requests completes using with the provided base64 encoded raw response, including HTTP status line and headers etc... Must not be set in response to an authChallenge.",
+                            "description": "If set the requests completes using with the provided base64 encoded raw response, including\nHTTP status line and headers etc... Must not be set in response to an authChallenge.",
                             "optional": true,
                             "type": "string"
                         },
                         {
                             "name": "url",
-                            "description": "If set the request url will be modified in a way that's not observable by page. Must not be set in response to an authChallenge.",
+                            "description": "If set the request url will be modified in a way that's not observable by page. Must not be\nset in response to an authChallenge.",
                             "optional": true,
                             "type": "string"
                         },
                         {
                             "name": "method",
-                            "description": "If set this allows the request method to be overridden. Must not be set in response to an authChallenge.",
+                            "description": "If set this allows the request method to be overridden. Must not be set in response to an\nauthChallenge.",
                             "optional": true,
                             "type": "string"
                         },
@@ -7697,7 +7697,7 @@
                         },
                         {
                             "name": "headers",
-                            "description": "If set this allows the request headers to be changed. Must not be set in response to an authChallenge.",
+                            "description": "If set this allows the request headers to be changed. Must not be set in response to an\nauthChallenge.",
                             "optional": true,
                             "$ref": "Headers"
                         },
@@ -7720,7 +7720,7 @@
                         },
                         {
                             "name": "url",
-                            "description": "If specified, deletes all the cookies with the given name where domain and path match provided URL.",
+                            "description": "If specified, deletes all the cookies with the given name where domain and path match\nprovided URL.",
                             "optional": true,
                             "type": "string"
                         },
@@ -7796,7 +7796,7 @@
                 },
                 {
                     "name": "getAllCookies",
-                    "description": "Returns all browser cookies. Depending on the backend support, will return detailed cookie information in the `cookies` field.",
+                    "description": "Returns all browser cookies. Depending on the backend support, will return detailed cookie\ninformation in the `cookies` field.",
                     "returns": [
                         {
                             "name": "cookies",
@@ -7831,7 +7831,7 @@
                 },
                 {
                     "name": "getCookies",
-                    "description": "Returns all browser cookies for the current URL. Depending on the backend support, will return detailed cookie information in the `cookies` field.",
+                    "description": "Returns all browser cookies for the current URL. Depending on the backend support, will return\ndetailed cookie information in the `cookies` field.",
                     "parameters": [
                         {
                             "name": "urls",
@@ -7903,7 +7903,7 @@
                 },
                 {
                     "name": "replayXHR",
-                    "description": "This method sends a new XMLHttpRequest which is identical to the original one. The following parameters should be identical: method, url, async, request body, extra headers, withCredentials attribute, user, password.",
+                    "description": "This method sends a new XMLHttpRequest which is identical to the original one. The following\nparameters should be identical: method, url, async, request body, extra headers, withCredentials\nattribute, user, password.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -8006,7 +8006,7 @@
                         },
                         {
                             "name": "url",
-                            "description": "The request-URI to associate with the setting of the cookie. This value can affect the default domain and path values of the created cookie.",
+                            "description": "The request-URI to associate with the setting of the cookie. This value can affect the\ndefault domain and path values of the created cookie.",
                             "optional": true,
                             "type": "string"
                         },
@@ -8104,7 +8104,7 @@
                     "parameters": [
                         {
                             "name": "patterns",
-                            "description": "Requests matching any of these patterns will be forwarded and wait for the corresponding continueInterceptedRequest call.",
+                            "description": "Requests matching any of these patterns will be forwarded and wait for the corresponding\ncontinueInterceptedRequest call.",
                             "type": "array",
                             "items": {
                                 "$ref": "RequestPattern"
@@ -8243,12 +8243,12 @@
                 },
                 {
                     "name": "requestIntercepted",
-                    "description": "Details of an intercepted HTTP request, which must be either allowed, blocked, modified or mocked.",
+                    "description": "Details of an intercepted HTTP request, which must be either allowed, blocked, modified or\nmocked.",
                     "experimental": true,
                     "parameters": [
                         {
                             "name": "interceptionId",
-                            "description": "Each request the page makes will have a unique id, however if any redirects are encountered while processing that fetch, they will be reported with the same id as the original fetch. Likewise if HTTP authentication is needed then the same fetch id will be used.",
+                            "description": "Each request the page makes will have a unique id, however if any redirects are encountered\nwhile processing that fetch, they will be reported with the same id as the original fetch.\nLikewise if HTTP authentication is needed then the same fetch id will be used.",
                             "$ref": "InterceptionId"
                         },
                         {
@@ -8278,25 +8278,25 @@
                         },
                         {
                             "name": "authChallenge",
-                            "description": "Details of the Authorization Challenge encountered. If this is set then continueInterceptedRequest must contain an authChallengeResponse.",
+                            "description": "Details of the Authorization Challenge encountered. If this is set then\ncontinueInterceptedRequest must contain an authChallengeResponse.",
                             "optional": true,
                             "$ref": "AuthChallenge"
                         },
                         {
                             "name": "responseErrorReason",
-                            "description": "Response error if intercepted at response stage or if redirect occurred while intercepting request.",
+                            "description": "Response error if intercepted at response stage or if redirect occurred while intercepting\nrequest.",
                             "optional": true,
                             "$ref": "ErrorReason"
                         },
                         {
                             "name": "responseStatusCode",
-                            "description": "Response code if intercepted at response stage or if redirect occurred while intercepting request or auth retry occurred.",
+                            "description": "Response code if intercepted at response stage or if redirect occurred while intercepting\nrequest or auth retry occurred.",
                             "optional": true,
                             "type": "integer"
                         },
                         {
                             "name": "responseHeaders",
-                            "description": "Response headers if intercepted at the response stage or if redirect occurred while intercepting request or auth retry occurred.",
+                            "description": "Response headers if intercepted at the response stage or if redirect occurred while\nintercepting request or auth retry occurred.",
                             "optional": true,
                             "$ref": "Headers"
                         }
@@ -8741,7 +8741,7 @@
                 },
                 {
                     "name": "highlightNode",
-                    "description": "Highlights DOM node with given id or with the given JavaScript object wrapper. Either nodeId or objectId must be specified.",
+                    "description": "Highlights DOM node with given id or with the given JavaScript object wrapper. Either nodeId or\nobjectId must be specified.",
                     "parameters": [
                         {
                             "name": "highlightConfig",
@@ -8831,7 +8831,7 @@
                 },
                 {
                     "name": "setInspectMode",
-                    "description": "Enters the 'inspect' mode. In this mode, elements that user is hovering over are highlighted. Backend then generates 'inspectNodeRequested' event upon element selection.",
+                    "description": "Enters the 'inspect' mode. In this mode, elements that user is hovering over are highlighted.\nBackend then generates 'inspectNodeRequested' event upon element selection.",
                     "parameters": [
                         {
                             "name": "mode",
@@ -8840,7 +8840,7 @@
                         },
                         {
                             "name": "highlightConfig",
-                            "description": "A descriptor for the highlight appearance of hovered-over nodes. May be omitted if `enabled == false`.",
+                            "description": "A descriptor for the highlight appearance of hovered-over nodes. May be omitted if `enabled\n== false`.",
                             "optional": true,
                             "$ref": "HighlightConfig"
                         }
@@ -8926,7 +8926,7 @@
             "events": [
                 {
                     "name": "inspectNodeRequested",
-                    "description": "Fired when the node should be inspected. This happens after call to `setInspectMode` or when user manually inspects an element.",
+                    "description": "Fired when the node should be inspected. This happens after call to `setInspectMode` or when\nuser manually inspects an element.",
                     "parameters": [
                         {
                             "name": "backendNodeId",
@@ -9501,7 +9501,7 @@
                         },
                         {
                             "name": "grantUniveralAccess",
-                            "description": "Whether or not universal access should be granted to the isolated world. This is a powerful option, use with caution.",
+                            "description": "Whether or not universal access should be granted to the isolated world. This is a powerful\noption, use with caution.",
                             "optional": true,
                             "type": "boolean"
                         }
@@ -9566,7 +9566,7 @@
                 },
                 {
                     "name": "getCookies",
-                    "description": "Returns all browser cookies. Depending on the backend support, will return detailed cookie information in the `cookies` field.",
+                    "description": "Returns all browser cookies. Depending on the backend support, will return detailed cookie\ninformation in the `cookies` field.",
                     "experimental": true,
                     "deprecated": true,
                     "redirect": "Network",
@@ -9684,7 +9684,7 @@
                         },
                         {
                             "name": "promptText",
-                            "description": "The text to enter into the dialog prompt before accepting. Used only if this is a prompt dialog.",
+                            "description": "The text to enter into the dialog prompt before accepting. Used only if this is a prompt\ndialog.",
                             "optional": true,
                             "type": "string"
                         }
@@ -9809,13 +9809,13 @@
                         },
                         {
                             "name": "pageRanges",
-                            "description": "Paper ranges to print, e.g., '1-5, 8, 11-13'. Defaults to the empty string, which means print all pages.",
+                            "description": "Paper ranges to print, e.g., '1-5, 8, 11-13'. Defaults to the empty string, which means\nprint all pages.",
                             "optional": true,
                             "type": "string"
                         },
                         {
                             "name": "ignoreInvalidPageRanges",
-                            "description": "Whether to silently ignore invalid but successfully parsed page ranges, such as '3-2'. Defaults to false.",
+                            "description": "Whether to silently ignore invalid but successfully parsed page ranges, such as '3-2'.\nDefaults to false.",
                             "optional": true,
                             "type": "boolean"
                         }
@@ -9954,7 +9954,7 @@
                 },
                 {
                     "name": "setDeviceMetricsOverride",
-                    "description": "Overrides the values of device screen dimensions (window.screen.width, window.screen.height, window.innerWidth, window.innerHeight, and \"device-width\"/\"device-height\"-related CSS media query results).",
+                    "description": "Overrides the values of device screen dimensions (window.screen.width, window.screen.height,\nwindow.innerWidth, window.innerHeight, and \"device-width\"/\"device-height\"-related CSS media\nquery results).",
                     "experimental": true,
                     "deprecated": true,
                     "redirect": "Emulation",
@@ -9976,7 +9976,7 @@
                         },
                         {
                             "name": "mobile",
-                            "description": "Whether to emulate mobile device. This includes viewport meta tag, overlay scrollbars, text autosizing and more.",
+                            "description": "Whether to emulate mobile device. This includes viewport meta tag, overlay scrollbars, text\nautosizing and more.",
                             "type": "boolean"
                         },
                         {
@@ -10076,7 +10076,7 @@
                     "parameters": [
                         {
                             "name": "behavior",
-                            "description": "Whether to allow all or deny all download requests, or use default Chrome behavior if available (otherwise deny).",
+                            "description": "Whether to allow all or deny all download requests, or use default Chrome behavior if\navailable (otherwise deny).",
                             "type": "string",
                             "enum": [
                                 "deny",
@@ -10094,7 +10094,7 @@
                 },
                 {
                     "name": "setGeolocationOverride",
-                    "description": "Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position unavailable.",
+                    "description": "Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position\nunavailable.",
                     "deprecated": true,
                     "redirect": "Emulation",
                     "parameters": [
@@ -10287,7 +10287,7 @@
                         },
                         {
                             "name": "delay",
-                            "description": "Delay (in seconds) until the navigation is scheduled to begin. The navigation is not guaranteed to start.",
+                            "description": "Delay (in seconds) until the navigation is scheduled to begin. The navigation is not\nguaranteed to start.",
                             "type": "number"
                         },
                         {
@@ -10345,7 +10345,7 @@
                 },
                 {
                     "name": "javascriptDialogClosed",
-                    "description": "Fired when a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload) has been closed.",
+                    "description": "Fired when a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload) has been\nclosed.",
                     "parameters": [
                         {
                             "name": "result",
@@ -10361,7 +10361,7 @@
                 },
                 {
                     "name": "javascriptDialogOpening",
-                    "description": "Fired when a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload) is about to open.",
+                    "description": "Fired when a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload) is about to\nopen.",
                     "parameters": [
                         {
                             "name": "url",
@@ -10455,7 +10455,7 @@
                 },
                 {
                     "name": "windowOpen",
-                    "description": "Fired when a new window is going to be opened, via window.open(), link click, form submission, etc.",
+                    "description": "Fired when a new window is going to be opened, via window.open(), link click, form submission,\netc.",
                     "parameters": [
                         {
                             "name": "url",
@@ -10562,7 +10562,7 @@
                 },
                 {
                     "id": "MixedContentType",
-                    "description": "A description of mixed content (HTTP resources on HTTPS pages), as defined by https://www.w3.org/TR/mixed-content/#categories",
+                    "description": "A description of mixed content (HTTP resources on HTTPS pages), as defined by\nhttps://www.w3.org/TR/mixed-content/#categories",
                     "type": "string",
                     "enum": [
                         "blockable",
@@ -10639,12 +10639,12 @@
                         },
                         {
                             "name": "ranContentWithCertErrors",
-                            "description": "True if the page was loaded over HTTPS without certificate errors, and ran content such as scripts that were loaded with certificate errors.",
+                            "description": "True if the page was loaded over HTTPS without certificate errors, and ran content such as\nscripts that were loaded with certificate errors.",
                             "type": "boolean"
                         },
                         {
                             "name": "displayedContentWithCertErrors",
-                            "description": "True if the page was loaded over HTTPS without certificate errors, and displayed content such as images that were loaded with certificate errors.",
+                            "description": "True if the page was loaded over HTTPS without certificate errors, and displayed content\nsuch as images that were loaded with certificate errors.",
                             "type": "boolean"
                         },
                         {
@@ -10661,7 +10661,7 @@
                 },
                 {
                     "id": "CertificateErrorAction",
-                    "description": "The action to take when a certificate error occurs. continue will continue processing the request and cancel will cancel the request.",
+                    "description": "The action to take when a certificate error occurs. continue will continue processing the\nrequest and cancel will cancel the request.",
                     "type": "string",
                     "enum": [
                         "continue",
@@ -10696,7 +10696,7 @@
                 },
                 {
                     "name": "setOverrideCertificateErrors",
-                    "description": "Enable/disable overriding certificate errors. If enabled, all certificate error events need to be handled by the DevTools client and should be answered with handleCertificateError commands.",
+                    "description": "Enable/disable overriding certificate errors. If enabled, all certificate error events need to\nbe handled by the DevTools client and should be answered with handleCertificateError commands.",
                     "parameters": [
                         {
                             "name": "override",
@@ -10709,7 +10709,7 @@
             "events": [
                 {
                     "name": "certificateError",
-                    "description": "There is a certificate error. If overriding certificate errors is enabled, then it should be handled with the handleCertificateError command. Note: this event does not fire if the certificate error has been allowed internally.",
+                    "description": "There is a certificate error. If overriding certificate errors is enabled, then it should be\nhandled with the handleCertificateError command. Note: this event does not fire if the\ncertificate error has been allowed internally.",
                     "parameters": [
                         {
                             "name": "eventId",
@@ -10744,7 +10744,7 @@
                         },
                         {
                             "name": "explanations",
-                            "description": "List of explanations for the security state. If the overall security state is `insecure` or `warning`, at least one corresponding explanation should be included.",
+                            "description": "List of explanations for the security state. If the overall security state is `insecure` or\n`warning`, at least one corresponding explanation should be included.",
                             "type": "array",
                             "items": {
                                 "$ref": "SecurityStateExplanation"
@@ -10843,7 +10843,7 @@
                         },
                         {
                             "name": "scriptResponseTime",
-                            "description": "The time at which the response headers of the main script were received from the server. For cached script it is the last time the cache entry was validated.",
+                            "description": "The time at which the response headers of the main script were received from the server.\nFor cached script it is the last time the cache entry was validated.",
                             "optional": true,
                             "type": "number"
                         },
@@ -11317,17 +11317,17 @@
                         },
                         {
                             "name": "modelName",
-                            "description": "A platform-dependent description of the model of the machine. On Mac OS, this is, for example, 'MacBookPro'. Will be the empty string if not supported.",
+                            "description": "A platform-dependent description of the model of the machine. On Mac OS, this is, for\nexample, 'MacBookPro'. Will be the empty string if not supported.",
                             "type": "string"
                         },
                         {
                             "name": "modelVersion",
-                            "description": "A platform-dependent description of the version of the machine. On Mac OS, this is, for example, '10.1'. Will be the empty string if not supported.",
+                            "description": "A platform-dependent description of the version of the machine. On Mac OS, this is, for\nexample, '10.1'. Will be the empty string if not supported.",
                             "type": "string"
                         },
                         {
                             "name": "commandLine",
-                            "description": "The command line string used to launch the browser. Will be the empty string if not supported.",
+                            "description": "The command line string used to launch the browser. Will be the empty string if not\nsupported.",
                             "type": "string"
                         }
                     ]
@@ -11447,7 +11447,7 @@
                 },
                 {
                     "name": "createBrowserContext",
-                    "description": "Creates a new empty BrowserContext. Similar to an incognito profile but you can have more than one.",
+                    "description": "Creates a new empty BrowserContext. Similar to an incognito profile but you can have more than\none.",
                     "experimental": true,
                     "returns": [
                         {
@@ -11486,7 +11486,7 @@
                         },
                         {
                             "name": "enableBeginFrameControl",
-                            "description": "Whether BeginFrames for this target will be controlled via DevTools (headless chrome only, not supported on MacOS yet, false by default).",
+                            "description": "Whether BeginFrames for this target will be controlled via DevTools (headless chrome only,\nnot supported on MacOS yet, false by default).",
                             "experimental": true,
                             "optional": true,
                             "type": "boolean"
@@ -11603,7 +11603,7 @@
                 },
                 {
                     "name": "setAutoAttach",
-                    "description": "Controls whether to automatically attach to new targets which are considered to be related to this one. When turned on, attaches to all existing related targets as well. When turned off, automatically detaches from all currently attached targets.",
+                    "description": "Controls whether to automatically attach to new targets which are considered to be related to\nthis one. When turned on, attaches to all existing related targets as well. When turned off,\nautomatically detaches from all currently attached targets.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -11613,14 +11613,14 @@
                         },
                         {
                             "name": "waitForDebuggerOnStart",
-                            "description": "Whether to pause new targets when attaching to them. Use `Runtime.runIfWaitingForDebugger` to run paused targets.",
+                            "description": "Whether to pause new targets when attaching to them. Use `Runtime.runIfWaitingForDebugger`\nto run paused targets.",
                             "type": "boolean"
                         }
                     ]
                 },
                 {
                     "name": "setDiscoverTargets",
-                    "description": "Controls whether to discover available targets and notify via `targetCreated/targetInfoChanged/targetDestroyed` events.",
+                    "description": "Controls whether to discover available targets and notify via\n`targetCreated/targetInfoChanged/targetDestroyed` events.",
                     "parameters": [
                         {
                             "name": "discover",
@@ -11631,7 +11631,7 @@
                 },
                 {
                     "name": "setRemoteLocations",
-                    "description": "Enables target discovery for the specified locations, when `setDiscoverTargets` was set to `true`.",
+                    "description": "Enables target discovery for the specified locations, when `setDiscoverTargets` was set to\n`true`.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -11668,7 +11668,7 @@
                 },
                 {
                     "name": "detachedFromTarget",
-                    "description": "Issued when detached from target for any reason (including `detachFromTarget` command). Can be issued multiple times per target if multiple sessions have been attached to it.",
+                    "description": "Issued when detached from target for any reason (including `detachFromTarget` command). Can be\nissued multiple times per target if multiple sessions have been attached to it.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -11687,7 +11687,7 @@
                 },
                 {
                     "name": "receivedMessageFromTarget",
-                    "description": "Notifies about a new protocol message received from the session (as reported in `attachedToTarget` event).",
+                    "description": "Notifies about a new protocol message received from the session (as reported in\n`attachedToTarget` event).",
                     "parameters": [
                         {
                             "name": "sessionId",
@@ -11729,7 +11729,7 @@
                 },
                 {
                     "name": "targetInfoChanged",
-                    "description": "Issued when some information about a target has changed. This only happens between `targetCreated` and `targetDestroyed`.",
+                    "description": "Issued when some information about a target has changed. This only happens between\n`targetCreated` and `targetDestroyed`.",
                     "parameters": [
                         {
                             "name": "targetInfo",
@@ -11940,7 +11940,7 @@
                         },
                         {
                             "name": "transferMode",
-                            "description": "Whether to report trace events as series of dataCollected events or to save trace to a stream (defaults to `ReportEvents`).",
+                            "description": "Whether to report trace events as series of dataCollected events or to save trace to a\nstream (defaults to `ReportEvents`).",
                             "optional": true,
                             "type": "string",
                             "enum": [
@@ -11962,7 +11962,7 @@
                     "parameters": [
                         {
                             "name": "percentFull",
-                            "description": "A number in range [0..1] that indicates the used size of event buffer as a fraction of its total size.",
+                            "description": "A number in range [0..1] that indicates the used size of event buffer as a fraction of its\ntotal size.",
                             "optional": true,
                             "type": "number"
                         },
@@ -11974,7 +11974,7 @@
                         },
                         {
                             "name": "value",
-                            "description": "A number in range [0..1] that indicates the used size of event buffer as a fraction of its total size.",
+                            "description": "A number in range [0..1] that indicates the used size of event buffer as a fraction of its\ntotal size.",
                             "optional": true,
                             "type": "number"
                         }
@@ -11982,7 +11982,7 @@
                 },
                 {
                     "name": "dataCollected",
-                    "description": "Contains an bucket of collected trace events. When tracing is stopped collected events will be send as a sequence of dataCollected events followed by tracingComplete event.",
+                    "description": "Contains an bucket of collected trace events. When tracing is stopped collected events will be\nsend as a sequence of dataCollected events followed by tracingComplete event.",
                     "parameters": [
                         {
                             "name": "value",
@@ -11995,7 +11995,7 @@
                 },
                 {
                     "name": "tracingComplete",
-                    "description": "Signals that tracing is stopped and there is no trace buffers pending flush, all data were delivered via dataCollected events.",
+                    "description": "Signals that tracing is stopped and there is no trace buffers pending flush, all data were\ndelivered via dataCollected events.",
                     "parameters": [
                         {
                             "name": "stream",
