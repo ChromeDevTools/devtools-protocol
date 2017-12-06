@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r521951
+###### _2017-12-05 18:15:33 -0800_ | Diff: [ddbd496...d7f4617](https://github.com/ChromeDevTools/devtools-protocol/compare/ddbd496...d7f4617)
+#### `Tracing`: modified command
+* [`Tracing.start`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#method-start) - The `traceConfig` in the parameters had `name` _updated_. The `traceConfig` in the parameters had `$ref` _updated_. The parameters's `description` _added_. The parameters's `traceConfig` _added_. 
+#### `Tracing`: modified event
+* [`Tracing.tracingComplete`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#event-tracingComplete) - The parameters's `streamCompression` _added_. 
+#### `Tracing`: new type
+* [`Tracing.StreamCompression`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#type-StreamCompression)
+
+
 ## Roll protocol to r521854
 ###### _2017-12-05 14:15:34 -0800_ | Diff: [5e7327e...ddbd496](https://github.com/ChromeDevTools/devtools-protocol/compare/5e7327e...ddbd496)
 #### `Accessibility`: modified command

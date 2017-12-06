@@ -11959,7 +11959,7 @@
                         },
                         {
                             "name": "streamCompression",
-                            "description": "Compression format to use. This only applies when using `ReturnAsStream` transfer mode (defaults to `none`)",
+                            "description": "Compression format to use. This only applies when using `ReturnAsStream`\ntransfer mode (defaults to `none`)",
                             "optional": true,
                             "$ref": "StreamCompression"
                         },
