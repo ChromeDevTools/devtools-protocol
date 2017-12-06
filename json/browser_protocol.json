@@ -11866,6 +11866,15 @@
                             "$ref": "MemoryDumpConfig"
                         }
                     ]
+                },
+                {
+                    "id": "StreamCompression",
+                    "description": "Compression type to use for traces returned via streams.",
+                    "type": "string",
+                    "enum": [
+                        "none",
+                        "gzip"
+                    ]
                 }
             ],
             "commands": [
@@ -11949,6 +11958,12 @@
                             ]
                         },
                         {
+                            "name": "streamCompression",
+                            "description": "Compression format to use. This only applies when using `ReturnAsStream` transfer mode (defaults to `none`)",
+                            "optional": true,
+                            "$ref": "StreamCompression"
+                        },
+                        {
                             "name": "traceConfig",
                             "optional": true,
                             "$ref": "TraceConfig"
@@ -12002,6 +12017,12 @@
                             "description": "A handle of the stream that holds resulting trace data.",
                             "optional": true,
                             "$ref": "IO.StreamHandle"
+                        },
+                        {
+                            "name": "streamCompression",
+                            "description": "Compression format of returned stream.",
+                            "optional": true,
+                            "$ref": "StreamCompression"
                         }
                     ]
                 }

@@ -5881,11 +5881,12 @@ Protocol.TracingAgent.prototype.invoke_requestMemoryDump = function(obj) {};
  * @param {string=} opt_options
  * @param {number=} opt_bufferUsageReportingInterval
  * @param {string=} opt_transferMode
+ * @param {Protocol.Tracing.StreamCompression=} opt_streamCompression
  * @param {Protocol.Tracing.TraceConfig=} opt_traceConfig
  * @return {!Promise<undefined>}
  */
-Protocol.TracingAgent.prototype.start = function(opt_categories, opt_options, opt_bufferUsageReportingInterval, opt_transferMode, opt_traceConfig) {};
-/** @typedef {!{transferMode: (string|undefined), traceConfig: (Protocol.Tracing.TraceConfig|undefined), bufferUsageReportingInterval: (number|undefined), options: (string|undefined), categories: (string|undefined)}} */
+Protocol.TracingAgent.prototype.start = function(opt_categories, opt_options, opt_bufferUsageReportingInterval, opt_transferMode, opt_streamCompression, opt_traceConfig) {};
+/** @typedef {!{traceConfig: (Protocol.Tracing.TraceConfig|undefined), transferMode: (string|undefined), bufferUsageReportingInterval: (number|undefined), options: (string|undefined), categories: (string|undefined), streamCompression: (Protocol.Tracing.StreamCompression|undefined)}} */
 Protocol.TracingAgent.StartRequest;
 /** @typedef {Object|undefined} */
 Protocol.TracingAgent.StartResponse;
@@ -5907,6 +5908,12 @@ Protocol.Tracing.TraceConfigRecordMode = {
 
 /** @typedef {!{recordMode:(Protocol.Tracing.TraceConfigRecordMode|undefined), enableSampling:(boolean|undefined), enableSystrace:(boolean|undefined), enableArgumentFilter:(boolean|undefined), includedCategories:(!Array<string>|undefined), excludedCategories:(!Array<string>|undefined), syntheticDelays:(!Array<string>|undefined), memoryDumpConfig:(Protocol.Tracing.MemoryDumpConfig|undefined)}} */
 Protocol.Tracing.TraceConfig;
+
+/** @enum {string} */
+Protocol.Tracing.StreamCompression = {
+    None: "none",
+    Gzip: "gzip"
+};
 /** @interface */
 Protocol.TracingDispatcher = function() {};
 /**
@@ -5921,8 +5928,9 @@ Protocol.TracingDispatcher.prototype.bufferUsage = function(opt_percentFull, opt
 Protocol.TracingDispatcher.prototype.dataCollected = function(value) {};
 /**
  * @param {Protocol.IO.StreamHandle=} opt_stream
+ * @param {Protocol.Tracing.StreamCompression=} opt_streamCompression
  */
-Protocol.TracingDispatcher.prototype.tracingComplete = function(opt_stream) {};
+Protocol.TracingDispatcher.prototype.tracingComplete = function(opt_stream, opt_streamCompression) {};
 Protocol.Console = {};
 
 

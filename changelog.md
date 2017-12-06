@@ -1,5 +1,167 @@
 
 
+## Roll protocol to r521854
+###### _2017-12-05 14:15:34 -0800_ | Diff: [5e7327e...ddbd496](https://github.com/ChromeDevTools/devtools-protocol/compare/5e7327e...ddbd496)
+#### `Accessibility`: modified command
+* [`Accessibility.getPartialAXTree`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#method-getPartialAXTree) - The `nodes` in the return value had `description` _updated_. 
+#### `Accessibility`: modified type
+* [`Accessibility.AXPropertyName`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXPropertyName) - `description` updated. 
+#### `Animation`: modified type
+* [`Animation.Animation`](https://chromedevtools.github.io/devtools-protocol/tot/Animation/#type-Animation) - The `cssId` in the properties had `description` _updated_. 
+#### `ApplicationCache`: modified command
+* [`ApplicationCache.getFramesWithManifests`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#method-getFramesWithManifests) - `description` updated. The `frameIds` in the return value had `description` _updated_. 
+#### `Audits`: modified command
+* [`Audits.getEncodedResponse`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#method-getEncodedResponse) - `description` updated. 
+#### `Browser`: modified commands
+* [`Browser.getWindowBounds`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-getWindowBounds) - The `bounds` in the return value had `description` _updated_. 
+* [`Browser.getWindowForTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-getWindowForTarget) - The `bounds` in the return value had `description` _updated_. 
+* [`Browser.setWindowBounds`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-setWindowBounds) - The `bounds` in the parameters had `description` _updated_. 
+#### `CSS`: modified commands
+* [`CSS.addRule`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-addRule) - `description` updated. 
+* [`CSS.enable`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-enable) - `description` updated. 
+* [`CSS.forcePseudoState`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-forcePseudoState) - `description` updated. 
+* [`CSS.getBackgroundColors`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getBackgroundColors) - The `backgroundColors` in the return value had `description` _updated_. The `computedFontWeight` in the return value had `description` _updated_. 
+* [`CSS.getInlineStylesForNode`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getInlineStylesForNode) - `description` updated. 
+* [`CSS.getPlatformFontsForNode`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getPlatformFontsForNode) - `description` updated. 
+* [`CSS.setEffectivePropertyValueForNode`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-setEffectivePropertyValueForNode) - `description` updated. 
+* [`CSS.takeCoverageDelta`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-takeCoverageDelta) - `description` updated. 
+#### `CSS`: modified event
+* [`CSS.mediaQueryResultChanged`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#event-mediaQueryResultChanged) - `description` updated. 
+#### `CSS`: modified types
+* [`CSS.StyleSheetOrigin`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-StyleSheetOrigin) - `description` updated. 
+* [`CSS.CSSStyleSheetHeader`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSStyleSheetHeader) - The `isInline` in the properties had `description` _updated_. 
+* [`CSS.CSSRule`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSRule) - The `styleSheetId` in the properties had `description` _updated_. The `media` in the properties had `description` _updated_. 
+* [`CSS.RuleUsage`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-RuleUsage) - The `styleSheetId` in the properties had `description` _updated_. 
+* [`CSS.CSSStyle`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSStyle) - The `styleSheetId` in the properties had `description` _updated_. 
+* [`CSS.CSSMedia`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSMedia) - The `source` in the properties had `description` _updated_. The `range` in the properties had `description` _updated_. 
+* [`CSS.CSSKeyframeRule`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSKeyframeRule) - The `styleSheetId` in the properties had `description` _updated_. 
+#### `DOM`: modified commands
+* [`DOM.copyTo`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-copyTo) - `description` updated. The `insertBeforeNodeId` in the parameters had `description` _updated_. 
+* [`DOM.describeNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-describeNode) - `description` updated. The `depth` in the parameters had `description` _updated_. The `pierce` in the parameters had `description` _updated_. 
+* [`DOM.discardSearchResults`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-discardSearchResults) - `description` updated. 
+* [`DOM.getDocument`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getDocument) - The `depth` in the parameters had `description` _updated_. The `pierce` in the parameters had `description` _updated_. 
+* [`DOM.getFlattenedDocument`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getFlattenedDocument) - The `depth` in the parameters had `description` _updated_. The `pierce` in the parameters had `description` _updated_. 
+* [`DOM.getSearchResults`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getSearchResults) - `description` updated. 
+* [`DOM.moveTo`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-moveTo) - The `insertBeforeNodeId` in the parameters had `description` _updated_. 
+* [`DOM.performSearch`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-performSearch) - `description` updated. 
+* [`DOM.pushNodesByBackendIdsToFrontend`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-pushNodesByBackendIdsToFrontend) - The `nodeIds` in the return value had `description` _updated_. 
+* [`DOM.requestChildNodes`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-requestChildNodes) - `description` updated. The `depth` in the parameters had `description` _updated_. The `pierce` in the parameters had `description` _updated_. 
+* [`DOM.requestNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-requestNode) - `description` updated. 
+* [`DOM.setAttributesAsText`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-setAttributesAsText) - `description` updated. The `name` in the parameters had `description` _updated_. 
+* [`DOM.setInspectedNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-setInspectedNode) - `description` updated. 
+#### `DOM`: modified event
+* [`DOM.setChildNodes`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-setChildNodes) - `description` updated. 
+#### `DOM`: modified types
+* [`DOM.BackendNodeId`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-BackendNodeId) - `description` updated. 
+* [`DOM.Node`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-Node) - `description` updated. The `nodeId` in the properties had `description` _updated_. 
+#### `DOMDebugger`: modified commands
+* [`DOMDebugger.getEventListeners`](https://chromedevtools.github.io/devtools-protocol/tot/DOMDebugger/#method-getEventListeners) - The `depth` in the parameters had `description` _updated_. The `pierce` in the parameters had `description` _updated_. 
+* [`DOMDebugger.setEventListenerBreakpoint`](https://chromedevtools.github.io/devtools-protocol/tot/DOMDebugger/#method-setEventListenerBreakpoint) - The `targetName` in the parameters had `description` _updated_. 
+#### `DOMSnapshot`: modified command
+* [`DOMSnapshot.getSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#method-getSnapshot) - `description` updated. 
+#### `DOMSnapshot`: modified types
+* [`DOMSnapshot.DOMNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DOMNode) - The `childNodeIndexes` in the properties had `description` _updated_. The `pseudoElementIndexes` in the properties had `description` _updated_. The `layoutNodeIndex` in the properties had `description` _updated_. The `contentDocumentIndex` in the properties had `description` _updated_. The `importedDocumentIndex` in the properties had `description` _updated_. The `templateContentIndex` in the properties had `description` _updated_. The `isClickable` in the properties had `description` _updated_. 
+* [`DOMSnapshot.InlineTextBox`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-InlineTextBox) - `description` updated. 
+#### `Emulation`: modified commands
+* [`Emulation.setDefaultBackgroundColorOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setDefaultBackgroundColorOverride) - `description` updated. The `color` in the parameters had `description` _updated_. 
+* [`Emulation.setDeviceMetricsOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setDeviceMetricsOverride) - `description` updated. The `mobile` in the parameters had `description` _updated_. The `viewport` in the parameters had `description` _updated_. 
+* [`Emulation.setGeolocationOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setGeolocationOverride) - `description` updated. 
+* [`Emulation.setVirtualTimePolicy`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setVirtualTimePolicy) - `description` updated. The `budget` in the parameters had `description` _updated_. The `maxVirtualTimeTaskStarvationCount` in the parameters had `description` _updated_. 
+* [`Emulation.setVisibleSize`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setVisibleSize) - `description` updated. 
+#### `Emulation`: modified events
+* [`Emulation.virtualTimeAdvanced`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#event-virtualTimeAdvanced) - The `virtualTimeElapsed` in the parameters had `description` _updated_. 
+* [`Emulation.virtualTimePaused`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#event-virtualTimePaused) - The `virtualTimeElapsed` in the parameters had `description` _updated_. 
+#### `Emulation`: modified type
+* [`Emulation.VirtualTimePolicy`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#type-VirtualTimePolicy) - `description` updated. 
+#### `HeadlessExperimental`: modified command
+* [`HeadlessExperimental.beginFrame`](https://chromedevtools.github.io/devtools-protocol/tot/HeadlessExperimental/#method-beginFrame) - `description` updated. The `frameTime` in the parameters had `description` _updated_. The `deadline` in the parameters had `description` _updated_. The `interval` in the parameters had `description` _updated_. The `screenshot` in the parameters had `description` _updated_. The `hasDamage` in the return value had `description` _updated_. 
+#### `HeadlessExperimental`: modified event
+* [`HeadlessExperimental.mainFrameReadyForScreenshots`](https://chromedevtools.github.io/devtools-protocol/tot/HeadlessExperimental/#event-mainFrameReadyForScreenshots) - `description` updated. 
+#### `IO`: modified command
+* [`IO.read`](https://chromedevtools.github.io/devtools-protocol/tot/IO/#method-read) - The `offset` in the parameters had `description` _updated_. 
+#### `IO`: modified type
+* [`IO.StreamHandle`](https://chromedevtools.github.io/devtools-protocol/tot/IO/#type-StreamHandle) - `description` updated. 
+#### `Input`: modified commands
+* [`Input.dispatchKeyEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-dispatchKeyEvent) - The `modifiers` in the parameters had `description` _updated_. The `text` in the parameters had `description` _updated_. The `unmodifiedText` in the parameters had `description` _updated_. The `key` in the parameters had `description` _updated_. The `location` in the parameters had `description` _updated_. 
+* [`Input.dispatchMouseEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-dispatchMouseEvent) - The `y` in the parameters had `description` _updated_. The `modifiers` in the parameters had `description` _updated_. 
+* [`Input.dispatchTouchEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-dispatchTouchEvent) - The `type` in the parameters had `description` _updated_. The `touchPoints` in the parameters had `description` _updated_. The `modifiers` in the parameters had `description` _updated_. 
+* [`Input.emulateTouchFromMouseEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-emulateTouchFromMouseEvent) - The `modifiers` in the parameters had `description` _updated_. 
+* [`Input.synthesizePinchGesture`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-synthesizePinchGesture) - The `gestureSourceType` in the parameters had `description` _updated_. 
+* [`Input.synthesizeScrollGesture`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-synthesizeScrollGesture) - The `xOverscroll` in the parameters had `description` _updated_. The `yOverscroll` in the parameters had `description` _updated_. The `gestureSourceType` in the parameters had `description` _updated_. 
+* [`Input.synthesizeTapGesture`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-synthesizeTapGesture) - The `gestureSourceType` in the parameters had `description` _updated_. 
+#### `Input`: modified type
+* [`Input.TouchPoint`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#type-TouchPoint) - The `y` in the properties had `description` _updated_. 
+#### `LayerTree`: modified type
+* [`LayerTree.Layer`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#type-Layer) - The `drawsContent` in the properties had `description` _updated_. 
+#### `Log`: modified command
+* [`Log.enable`](https://chromedevtools.github.io/devtools-protocol/tot/Log/#method-enable) - `description` updated. 
+#### `Network`: modified commands
+* [`Network.continueInterceptedRequest`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-continueInterceptedRequest) - `description` updated. The `errorReason` in the parameters had `description` _updated_. The `rawResponse` in the parameters had `description` _updated_. The `url` in the parameters had `description` _updated_. The `method` in the parameters had `description` _updated_. The `headers` in the parameters had `description` _updated_. 
+* [`Network.deleteCookies`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-deleteCookies) - The `url` in the parameters had `description` _updated_. 
+* [`Network.getAllCookies`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-getAllCookies) - `description` updated. 
+* [`Network.getCookies`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-getCookies) - `description` updated. 
+* [`Network.replayXHR`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-replayXHR) - `description` updated. 
+* [`Network.setCookie`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setCookie) - The `url` in the parameters had `description` _updated_. 
+* [`Network.setRequestInterception`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setRequestInterception) - The `patterns` in the parameters had `description` _updated_. 
+#### `Network`: modified event
+* [`Network.requestIntercepted`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestIntercepted) - `description` updated. The `interceptionId` in the parameters had `description` _updated_. The `authChallenge` in the parameters had `description` _updated_. The `responseErrorReason` in the parameters had `description` _updated_. The `responseStatusCode` in the parameters had `description` _updated_. The `responseHeaders` in the parameters had `description` _updated_. 
+#### `Network`: modified types
+* [`Network.CookieSameSite`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CookieSameSite) - `description` updated. 
+* [`Network.ResourceTiming`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ResourceTiming) - The `requestTime` in the properties had `description` _updated_. 
+* [`Network.Initiator`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Initiator) - The `lineNumber` in the properties had `description` _updated_. 
+* [`Network.CookieParam`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CookieParam) - The `url` in the properties had `description` _updated_. 
+* [`Network.AuthChallengeResponse`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-AuthChallengeResponse) - The `response` in the properties had `description` _updated_. The `username` in the properties had `description` _updated_. The `password` in the properties had `description` _updated_. 
+* [`Network.InterceptionStage`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-InterceptionStage) - `description` updated. 
+* [`Network.RequestPattern`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-RequestPattern) - The `urlPattern` in the properties had `description` _updated_. 
+#### `Overlay`: modified commands
+* [`Overlay.highlightNode`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-highlightNode) - `description` updated. 
+* [`Overlay.setInspectMode`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-setInspectMode) - `description` updated. The `highlightConfig` in the parameters had `description` _updated_. 
+#### `Overlay`: modified event
+* [`Overlay.inspectNodeRequested`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#event-inspectNodeRequested) - `description` updated. 
+#### `Page`: modified commands
+* [`Page.createIsolatedWorld`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-createIsolatedWorld) - The `grantUniveralAccess` in the parameters had `description` _updated_. 
+* [`Page.getCookies`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getCookies) - `description` updated. 
+* [`Page.handleJavaScriptDialog`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-handleJavaScriptDialog) - The `promptText` in the parameters had `description` _updated_. 
+* [`Page.printToPDF`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-printToPDF) - The `pageRanges` in the parameters had `description` _updated_. The `ignoreInvalidPageRanges` in the parameters had `description` _updated_. 
+* [`Page.setDeviceMetricsOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setDeviceMetricsOverride) - `description` updated. The `mobile` in the parameters had `description` _updated_. 
+* [`Page.setDownloadBehavior`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setDownloadBehavior) - The `behavior` in the parameters had `description` _updated_. 
+* [`Page.setGeolocationOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setGeolocationOverride) - `description` updated. 
+#### `Page`: modified events
+* [`Page.frameScheduledNavigation`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameScheduledNavigation) - The `delay` in the parameters had `description` _updated_. 
+* [`Page.javascriptDialogClosed`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-javascriptDialogClosed) - `description` updated. 
+* [`Page.javascriptDialogOpening`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-javascriptDialogOpening) - `description` updated. 
+* [`Page.windowOpen`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-windowOpen) - `description` updated. 
+#### `Security`: modified command
+* [`Security.setOverrideCertificateErrors`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#method-setOverrideCertificateErrors) - `description` updated. 
+#### `Security`: modified events
+* [`Security.certificateError`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#event-certificateError) - `description` updated. 
+* [`Security.securityStateChanged`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#event-securityStateChanged) - The `explanations` in the parameters had `description` _updated_. 
+#### `Security`: modified types
+* [`Security.MixedContentType`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#type-MixedContentType) - `description` updated. 
+* [`Security.InsecureContentStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#type-InsecureContentStatus) - The `ranContentWithCertErrors` in the properties had `description` _updated_. The `displayedContentWithCertErrors` in the properties had `description` _updated_. 
+* [`Security.CertificateErrorAction`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#type-CertificateErrorAction) - `description` updated. 
+#### `ServiceWorker`: modified type
+* [`ServiceWorker.ServiceWorkerVersion`](https://chromedevtools.github.io/devtools-protocol/tot/ServiceWorker/#type-ServiceWorkerVersion) - The `scriptResponseTime` in the properties had `description` _updated_. 
+#### `SystemInfo`: modified command
+* [`SystemInfo.getInfo`](https://chromedevtools.github.io/devtools-protocol/tot/SystemInfo/#method-getInfo) - The `modelName` in the return value had `description` _updated_. The `modelVersion` in the return value had `description` _updated_. The `commandLine` in the return value had `description` _updated_. 
+#### `Target`: modified commands
+* [`Target.createBrowserContext`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-createBrowserContext) - `description` updated. 
+* [`Target.createTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-createTarget) - The `enableBeginFrameControl` in the parameters had `description` _updated_. 
+* [`Target.setAutoAttach`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-setAutoAttach) - `description` updated. The `waitForDebuggerOnStart` in the parameters had `description` _updated_. 
+* [`Target.setDiscoverTargets`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-setDiscoverTargets) - `description` updated. 
+* [`Target.setRemoteLocations`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-setRemoteLocations) - `description` updated. 
+#### `Target`: modified events
+* [`Target.detachedFromTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#event-detachedFromTarget) - `description` updated. 
+* [`Target.receivedMessageFromTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#event-receivedMessageFromTarget) - `description` updated. 
+* [`Target.targetInfoChanged`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#event-targetInfoChanged) - `description` updated. 
+#### `Tracing`: modified command
+* [`Tracing.start`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#method-start) - The `transferMode` in the parameters had `description` _updated_. 
+#### `Tracing`: modified events
+* [`Tracing.bufferUsage`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#event-bufferUsage) - The `percentFull` in the parameters had `description` _updated_. The `value` in the parameters had `description` _updated_. 
+* [`Tracing.dataCollected`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#event-dataCollected) - `description` updated. 
+* [`Tracing.tracingComplete`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#event-tracingComplete) - `description` updated. 
+
+
 ## Roll protocol to r521293
 ###### _2017-12-04 01:15:42 -0800_ | Diff: [80a4bf5...8f8623b](https://github.com/ChromeDevTools/devtools-protocol/compare/80a4bf5...8f8623b)
 #### `Console`: modified command
