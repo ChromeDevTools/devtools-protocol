@@ -2584,6 +2584,23 @@ Protocol.IndexedDBAgent.DeleteDatabaseResponse;
 Protocol.IndexedDBAgent.prototype.invoke_deleteDatabase = function(obj) {};
 
 /**
+ * @param {string} securityOrigin
+ * @param {string} databaseName
+ * @param {string} objectStoreName
+ * @param {Protocol.IndexedDB.KeyRange} keyRange
+ * @return {!Promise<undefined>}
+ */
+Protocol.IndexedDBAgent.prototype.deleteObjectStoreEntries = function(securityOrigin, databaseName, objectStoreName, keyRange) {};
+/** @typedef {!{objectStoreName: string, keyRange: Protocol.IndexedDB.KeyRange, databaseName: string, securityOrigin: string}} */
+Protocol.IndexedDBAgent.DeleteObjectStoreEntriesRequest;
+/** @typedef {Object|undefined} */
+Protocol.IndexedDBAgent.DeleteObjectStoreEntriesResponse;
+/**
+ * @param {!Protocol.IndexedDBAgent.DeleteObjectStoreEntriesRequest} obj
+ * @return {!Promise<!Protocol.IndexedDBAgent.DeleteObjectStoreEntriesResponse>} */
+Protocol.IndexedDBAgent.prototype.invoke_deleteObjectStoreEntries = function(obj) {};
+
+/**
  * @return {!Promise<undefined>}
  */
 Protocol.IndexedDBAgent.prototype.disable = function() {};

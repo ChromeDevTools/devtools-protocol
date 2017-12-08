@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r522024
+###### _2017-12-05 22:15:31 -0800_ | Diff: [d7f4617...5cf9fe1](https://github.com/ChromeDevTools/devtools-protocol/compare/d7f4617...5cf9fe1)
+#### `Tracing`: modified command
+* [`Tracing.start`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#method-start) - The `streamCompression` in the parameters had `description` _updated_. 
+
+
 ## Roll protocol to r521951
 ###### _2017-12-05 18:15:33 -0800_ | Diff: [ddbd496...d7f4617](https://github.com/ChromeDevTools/devtools-protocol/compare/ddbd496...d7f4617)
 #### `Tracing`: modified command
