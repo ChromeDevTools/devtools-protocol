@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r522695
+###### _2017-12-07 19:16:02 -0800_ | Diff: [5cf9fe1...e755d8d](https://github.com/ChromeDevTools/devtools-protocol/compare/5cf9fe1...e755d8d)
+#### `IndexedDB`: new command
+* [`IndexedDB.deleteObjectStoreEntries`](https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#method-deleteObjectStoreEntries)
+
+
 ## Roll protocol to r522024
 ###### _2017-12-05 22:15:31 -0800_ | Diff: [d7f4617...5cf9fe1](https://github.com/ChromeDevTools/devtools-protocol/compare/d7f4617...5cf9fe1)
 #### `Tracing`: modified command
