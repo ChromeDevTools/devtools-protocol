@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r524136
+###### _2017-12-14 11:16:05 -0800_ | Diff: [1cdc73b...0956b7c](https://github.com/ChromeDevTools/devtools-protocol/compare/1cdc73b...0956b7c)
+#### `Security`: modified type
+* [`Security.SecurityStateExplanation`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#type-SecurityStateExplanation) - The `mixedContentType` in the properties had `$ref` _removed_. The `certificate` in the properties had `type` _removed_. The `certificate` in the properties had `items` _removed_. The `summary` in the properties had `name` _updated_. The `summary` in the properties had `description` _updated_. The `description` in the properties had `name` _updated_. The `description` in the properties had `description` _updated_. The `mixedContentType` in the properties had `name` _updated_. The `mixedContentType` in the properties had `description` _updated_. The `certificate` in the properties had `name` _updated_. The `certificate` in the properties had `description` _updated_. The properties's `type` _added_. The properties's `$ref` _added_. The properties's `certificate` _added_. 
+
+
 ## Roll protocol to r523966
 ###### _2017-12-13 17:15:41 -0800_ | Diff: [d620873...1cdc73b](https://github.com/ChromeDevTools/devtools-protocol/compare/d620873...1cdc73b)
 #### `Page`: modified command

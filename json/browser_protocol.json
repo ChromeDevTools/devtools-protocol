@@ -9875,7 +9875,7 @@
                         },
                         {
                             "name": "scriptToEvaluateOnLoad",
-                            "description": "If set, the script will be injected into all frames of the inspected page after reload.",
+                            "description": "If set, the script will be injected into all frames of the inspected page after reload.\nArgument will be ignored if reloading dataURL origin.",
                             "optional": true,
                             "type": "string"
                         }
