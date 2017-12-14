@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r523966
+###### _2017-12-13 17:15:41 -0800_ | Diff: [d620873...1cdc73b](https://github.com/ChromeDevTools/devtools-protocol/compare/d620873...1cdc73b)
+#### `Page`: modified command
+* [`Page.printToPDF`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-printToPDF) - The parameters's `headerTemplate` _added_. The parameters's `footerTemplate` _added_. 
+
+
 ## Roll protocol to r522771 520620
 ###### _2017-12-08 05:15:43 -0800_ | Diff: [e755d8d...257859e](https://github.com/ChromeDevTools/devtools-protocol/compare/e755d8d...257859e)
 #### `Console`: modified command
