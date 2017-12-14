@@ -1,5 +1,63 @@
 
 
+## Roll protocol to r522771 520620
+###### _2017-12-08 05:15:43 -0800_ | Diff: [e755d8d...257859e](https://github.com/ChromeDevTools/devtools-protocol/compare/e755d8d...257859e)
+#### `Console`: modified command
+* [`Console.enable`](https://chromedevtools.github.io/devtools-protocol/tot/Console/#method-enable) - `description` updated. 
+#### `Debugger`: modified commands
+* [`Debugger.enable`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-enable) - `description` updated. 
+* [`Debugger.evaluateOnCallFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-evaluateOnCallFrame) - The `objectGroup` in the parameters had `description` _updated_. The `includeCommandLineAPI` in the parameters had `description` _updated_. The `silent` in the parameters had `description` _updated_. 
+* [`Debugger.getPossibleBreakpoints`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-getPossibleBreakpoints) - `description` updated. The `end` in the parameters had `description` _updated_. 
+* [`Debugger.scheduleStepIntoAsync`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-scheduleStepIntoAsync) - `description` updated. 
+* [`Debugger.setAsyncCallStackDepth`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setAsyncCallStackDepth) - The `maxDepth` in the parameters had `description` _updated_. 
+* [`Debugger.setBlackboxPatterns`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setBlackboxPatterns) - `description` updated. 
+* [`Debugger.setBlackboxedRanges`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setBlackboxedRanges) - `description` updated. 
+* [`Debugger.setBreakpoint`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setBreakpoint) - The `condition` in the parameters had `description` _updated_. 
+* [`Debugger.setBreakpointByUrl`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setBreakpointByUrl) - `description` updated. The `urlRegex` in the parameters had `description` _updated_. The `condition` in the parameters had `description` _updated_. 
+* [`Debugger.setPauseOnExceptions`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setPauseOnExceptions) - `description` updated. 
+* [`Debugger.setScriptSource`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setScriptSource) - The `dryRun` in the parameters had `description` _updated_. 
+* [`Debugger.setVariableValue`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setVariableValue) - `description` updated. The `scopeNumber` in the parameters had `description` _updated_. 
+* [`Debugger.stepInto`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-stepInto) - The `breakOnAsyncCall` in the parameters had `description` _updated_. 
+#### `Debugger`: modified events
+* [`Debugger.paused`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-paused) - The `asyncCallStackTraceId` in the parameters had `description` _updated_. 
+* [`Debugger.scriptParsed`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-scriptParsed) - `description` updated. 
+#### `Debugger`: modified type
+* [`Debugger.Scope`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#type-Scope) - The `object` in the properties had `description` _updated_. 
+#### `HeapProfiler`: modified commands
+* [`HeapProfiler.addInspectedHeapObject`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#method-addInspectedHeapObject) - `description` updated. 
+* [`HeapProfiler.startSampling`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#method-startSampling) - The `samplingInterval` in the parameters had `description` _updated_. 
+* [`HeapProfiler.stopTrackingHeapObjects`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#method-stopTrackingHeapObjects) - The `reportProgress` in the parameters had `description` _updated_. 
+#### `HeapProfiler`: modified events
+* [`HeapProfiler.heapStatsUpdate`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#event-heapStatsUpdate) - The `statsUpdate` in the parameters had `description` _updated_. 
+* [`HeapProfiler.lastSeenObjectId`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#event-lastSeenObjectId) - `description` updated. 
+#### `Profiler`: modified commands
+* [`Profiler.getBestEffortCoverage`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-getBestEffortCoverage) - `description` updated. 
+* [`Profiler.startPreciseCoverage`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-startPreciseCoverage) - `description` updated. 
+* [`Profiler.stopPreciseCoverage`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-stopPreciseCoverage) - `description` updated. 
+* [`Profiler.takePreciseCoverage`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-takePreciseCoverage) - `description` updated. 
+#### `Profiler`: modified types
+* [`Profiler.ProfileNode`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-ProfileNode) - The `deoptReason` in the properties had `description` _updated_. 
+* [`Profiler.Profile`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-Profile) - The `timeDeltas` in the properties had `description` _updated_. 
+#### `Runtime`: modified commands
+* [`Runtime.callFunctionOn`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-callFunctionOn) - `description` updated. The `objectId` in the parameters had `description` _updated_. The `arguments` in the parameters had `description` _updated_. The `silent` in the parameters had `description` _updated_. The `awaitPromise` in the parameters had `description` _updated_. The `executionContextId` in the parameters had `description` _updated_. The `objectGroup` in the parameters had `description` _updated_. 
+* [`Runtime.compileScript`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-compileScript) - The `executionContextId` in the parameters had `description` _updated_. 
+* [`Runtime.enable`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-enable) - `description` updated. 
+* [`Runtime.evaluate`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-evaluate) - The `silent` in the parameters had `description` _updated_. The `contextId` in the parameters had `description` _updated_. The `awaitPromise` in the parameters had `description` _updated_. 
+* [`Runtime.getProperties`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-getProperties) - `description` updated. The `ownProperties` in the parameters had `description` _updated_. The `accessorPropertiesOnly` in the parameters had `description` _updated_. 
+* [`Runtime.runScript`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-runScript) - The `executionContextId` in the parameters had `description` _updated_. The `silent` in the parameters had `description` _updated_. The `awaitPromise` in the parameters had `description` _updated_. 
+#### `Runtime`: modified events
+* [`Runtime.consoleAPICalled`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#event-consoleAPICalled) - The `context` in the parameters had `description` _updated_. 
+* [`Runtime.inspectRequested`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#event-inspectRequested) - `description` updated. 
+#### `Runtime`: modified types
+* [`Runtime.RemoteObject`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-RemoteObject) - The `unserializableValue` in the properties had `description` _updated_. 
+* [`Runtime.PropertyDescriptor`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-PropertyDescriptor) - The `get` in the properties had `description` _updated_. The `set` in the properties had `description` _updated_. The `configurable` in the properties had `description` _updated_. The `enumerable` in the properties had `description` _updated_. 
+* [`Runtime.CallArgument`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-CallArgument) - `description` updated. 
+* [`Runtime.ExecutionContextDescription`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-ExecutionContextDescription) - The `id` in the properties had `description` _updated_. 
+* [`Runtime.ExceptionDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-ExceptionDetails) - `description` updated. 
+* [`Runtime.StackTrace`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-StackTrace) - The `description` in the properties had `description` _updated_. 
+* [`Runtime.StackTraceId`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-StackTraceId) - `description` updated. 
+
+
 ## Roll protocol to r522695
 ###### _2017-12-07 19:16:02 -0800_ | Diff: [5cf9fe1...e755d8d](https://github.com/ChromeDevTools/devtools-protocol/compare/5cf9fe1...e755d8d)
 #### `IndexedDB`: new command
