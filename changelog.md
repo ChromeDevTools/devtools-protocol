@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r524155
+###### _2017-12-14 12:15:45 -0800_ | Diff: [0956b7c...5325d5e](https://github.com/ChromeDevTools/devtools-protocol/compare/0956b7c...5325d5e)
+#### `Page`: modified command
+* [`Page.reload`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-reload) - The `scriptToEvaluateOnLoad` in the parameters had `description` _updated_. 
+
+
 ## Roll protocol to r524136
 ###### _2017-12-14 11:16:05 -0800_ | Diff: [1cdc73b...0956b7c](https://github.com/ChromeDevTools/devtools-protocol/compare/1cdc73b...0956b7c)
 #### `Security`: modified type

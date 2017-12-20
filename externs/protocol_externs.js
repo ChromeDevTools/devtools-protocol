@@ -5086,6 +5086,20 @@ Protocol.SecurityAgent.EnableResponse;
 Protocol.SecurityAgent.prototype.invoke_enable = function(obj) {};
 
 /**
+ * @param {boolean} ignore
+ * @return {!Promise<undefined>}
+ */
+Protocol.SecurityAgent.prototype.setIgnoreCertificateErrors = function(ignore) {};
+/** @typedef {!{ignore: boolean}} */
+Protocol.SecurityAgent.SetIgnoreCertificateErrorsRequest;
+/** @typedef {Object|undefined} */
+Protocol.SecurityAgent.SetIgnoreCertificateErrorsResponse;
+/**
+ * @param {!Protocol.SecurityAgent.SetIgnoreCertificateErrorsRequest} obj
+ * @return {!Promise<!Protocol.SecurityAgent.SetIgnoreCertificateErrorsResponse>} */
+Protocol.SecurityAgent.prototype.invoke_setIgnoreCertificateErrors = function(obj) {};
+
+/**
  * @param {number} eventId
  * @param {Protocol.Security.CertificateErrorAction} action
  * @return {!Promise<undefined>}
