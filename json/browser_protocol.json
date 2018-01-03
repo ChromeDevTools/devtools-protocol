@@ -8261,6 +8261,12 @@
                             "name": "encodedDataLength",
                             "description": "Total number of bytes received for this request.",
                             "type": "number"
+                        },
+                        {
+                            "name": "blockedCrossSiteDocument",
+                            "description": "Set when response was blocked due to being cross-site document response.",
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ]
                 },

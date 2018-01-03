@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r526584
+###### _2018-01-02 18:15:45 -0800_ | Diff: [5f10915...cc1c2f4](https://github.com/ChromeDevTools/devtools-protocol/compare/5f10915...cc1c2f4)
+#### `Page`: removed command
+* [`Page.setAutoAttachToCreatedPages`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setAutoAttachToCreatedPages)
+
+
 ## Roll protocol to r525305
 ###### _2017-12-20 03:16:10 -0800_ | Diff: [5325d5e...5f10915](https://github.com/ChromeDevTools/devtools-protocol/compare/5325d5e...5f10915)
 #### `Security`: new command

@@ -3880,8 +3880,9 @@ Protocol.NetworkDispatcher.prototype.loadingFailed = function(requestId, timesta
  * @param {Protocol.Network.RequestId} requestId
  * @param {Protocol.Network.MonotonicTime} timestamp
  * @param {number} encodedDataLength
+ * @param {boolean=} opt_blockedCrossSiteDocument
  */
-Protocol.NetworkDispatcher.prototype.loadingFinished = function(requestId, timestamp, encodedDataLength) {};
+Protocol.NetworkDispatcher.prototype.loadingFinished = function(requestId, timestamp, encodedDataLength, opt_blockedCrossSiteDocument) {};
 /**
  * @param {Protocol.Network.InterceptionId} interceptionId
  * @param {Protocol.Network.Request} request
