@@ -9976,18 +9976,6 @@
                     ]
                 },
                 {
-                    "name": "setAutoAttachToCreatedPages",
-                    "description": "Controls whether browser will open a new inspector window for connected pages.",
-                    "experimental": true,
-                    "parameters": [
-                        {
-                            "name": "autoAttach",
-                            "description": "If true, browser will open a new inspector window for every page created from this one.",
-                            "type": "boolean"
-                        }
-                    ]
-                },
-                {
                     "name": "setDeviceMetricsOverride",
                     "description": "Overrides the values of device screen dimensions (window.screen.width, window.screen.height,\nwindow.innerWidth, window.innerHeight, and \"device-width\"/\"device-height\"-related CSS media\nquery results).",
                     "experimental": true,

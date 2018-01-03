@@ -1,5 +1,16 @@
 
 
+## Roll protocol to r525305
+###### _2017-12-20 03:16:10 -0800_ | Diff: [5325d5e...5f10915](https://github.com/ChromeDevTools/devtools-protocol/compare/5325d5e...5f10915)
+#### `Security`: new command
+* [`Security.setIgnoreCertificateErrors`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#method-setIgnoreCertificateErrors)
+#### `Security`: modified commands
+* [`Security.handleCertificateError`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#method-handleCertificateError) - `deprecated` added. 
+* [`Security.setOverrideCertificateErrors`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#method-setOverrideCertificateErrors) - `deprecated` added. 
+#### `Security`: modified event
+* [`Security.certificateError`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#event-certificateError) - `description` updated. `deprecated` added. 
+
+
 ## Roll protocol to r524155
 ###### _2017-12-14 12:15:45 -0800_ | Diff: [0956b7c...5325d5e](https://github.com/ChromeDevTools/devtools-protocol/compare/0956b7c...5325d5e)
 #### `Page`: modified command

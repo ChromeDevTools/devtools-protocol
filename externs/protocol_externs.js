@@ -4664,20 +4664,6 @@ Protocol.PageAgent.SetAdBlockingEnabledResponse;
 Protocol.PageAgent.prototype.invoke_setAdBlockingEnabled = function(obj) {};
 
 /**
- * @param {boolean} autoAttach
- * @return {!Promise<undefined>}
- */
-Protocol.PageAgent.prototype.setAutoAttachToCreatedPages = function(autoAttach) {};
-/** @typedef {!{autoAttach: boolean}} */
-Protocol.PageAgent.SetAutoAttachToCreatedPagesRequest;
-/** @typedef {Object|undefined} */
-Protocol.PageAgent.SetAutoAttachToCreatedPagesResponse;
-/**
- * @param {!Protocol.PageAgent.SetAutoAttachToCreatedPagesRequest} obj
- * @return {!Promise<!Protocol.PageAgent.SetAutoAttachToCreatedPagesResponse>} */
-Protocol.PageAgent.prototype.invoke_setAutoAttachToCreatedPages = function(obj) {};
-
-/**
  * @param {number} width
  * @param {number} height
  * @param {number} deviceScaleFactor
