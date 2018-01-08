@@ -4063,6 +4063,7 @@
             "dependencies": [
                 "CSS",
                 "DOM",
+                "DOMDebugger",
                 "Page"
             ],
             "types": [
@@ -4219,6 +4220,15 @@
                             "description": "Whether this DOM node responds to mouse clicks. This includes nodes that have had click\nevent listeners attached via JavaScript as well as anchor tags that naturally navigate when\nclicked.",
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "eventListeners",
+                            "description": "Details of the node's event listeners, if any.",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "DOMDebugger.EventListener"
+                            }
                         }
                     ]
                 },
@@ -4327,6 +4337,12 @@
                             "items": {
                                 "type": "string"
                             }
+                        },
+                        {
+                            "name": "includeEventListeners",
+                            "description": "Whether or not to retrieve details of DOM listeners (default false).",
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ],
                     "returns": [

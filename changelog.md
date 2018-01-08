@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r526633
+###### _2018-01-02 22:15:35 -0800_ | Diff: [cc1c2f4...0f2584d](https://github.com/ChromeDevTools/devtools-protocol/compare/cc1c2f4...0f2584d)
+#### `Network`: modified event
+* [`Network.loadingFinished`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-loadingFinished) - The parameters's `blockedCrossSiteDocument` _added_. 
+
+
 ## Roll protocol to r526584
 ###### _2018-01-02 18:15:45 -0800_ | Diff: [5f10915...cc1c2f4](https://github.com/ChromeDevTools/devtools-protocol/compare/5f10915...cc1c2f4)
 #### `Page`: removed command
