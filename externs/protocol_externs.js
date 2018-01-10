@@ -2368,10 +2368,11 @@ Protocol.EmulationAgent.prototype.invoke_setTouchEmulationEnabled = function(obj
  * @param {Protocol.Emulation.VirtualTimePolicy} policy
  * @param {number=} opt_budget
  * @param {number=} opt_maxVirtualTimeTaskStarvationCount
+ * @param {boolean=} opt_waitForNavigation
  * @return {!Promise<?Protocol.Runtime.Timestamp>}
  */
-Protocol.EmulationAgent.prototype.setVirtualTimePolicy = function(policy, opt_budget, opt_maxVirtualTimeTaskStarvationCount) {};
-/** @typedef {!{policy: Protocol.Emulation.VirtualTimePolicy, maxVirtualTimeTaskStarvationCount: (number|undefined), budget: (number|undefined)}} */
+Protocol.EmulationAgent.prototype.setVirtualTimePolicy = function(policy, opt_budget, opt_maxVirtualTimeTaskStarvationCount, opt_waitForNavigation) {};
+/** @typedef {!{policy: Protocol.Emulation.VirtualTimePolicy, maxVirtualTimeTaskStarvationCount: (number|undefined), waitForNavigation: (boolean|undefined), budget: (number|undefined)}} */
 Protocol.EmulationAgent.SetVirtualTimePolicyRequest;
 /** @typedef {!{virtualTimeBase: Protocol.Runtime.Timestamp}} */
 Protocol.EmulationAgent.SetVirtualTimePolicyResponse;

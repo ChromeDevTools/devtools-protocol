@@ -4998,6 +4998,12 @@
                             "description": "If set this specifies the maximum number of tasks that can be run before virtual is forced\nforwards to prevent deadlock.",
                             "optional": true,
                             "type": "integer"
+                        },
+                        {
+                            "name": "waitForNavigation",
+                            "description": "If set the virtual time policy change should be deferred until any frame starts navigating.\nNote any previous deferred policy change is superseded.",
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ],
                     "returns": [

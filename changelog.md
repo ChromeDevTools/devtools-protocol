@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r528237
+###### _2018-01-09 20:15:50 -0800_ | Diff: [978dbaa...ba5cbc1](https://github.com/ChromeDevTools/devtools-protocol/compare/978dbaa...ba5cbc1)
+#### `Page`: new command
+* [`Page.crash`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-crash)
+
+
 ## Roll protocol to r527612
 ###### _2018-01-08 04:15:43 -0800_ | Diff: [0f2584d...978dbaa](https://github.com/ChromeDevTools/devtools-protocol/compare/0f2584d...978dbaa)
 #### `DOMSnapshot`: modified command
