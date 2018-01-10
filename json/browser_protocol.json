@@ -10245,6 +10245,11 @@
                     "description": "Force the page stop all navigations and pending resource fetches."
                 },
                 {
+                    "name": "crash",
+                    "description": "Crashes renderer on the IO thread, generates minidumps.",
+                    "experimental": true
+                },
+                {
                     "name": "stopScreencast",
                     "description": "Stops sending each frame in the `screencastFrame`.",
                     "experimental": true

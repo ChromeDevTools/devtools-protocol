@@ -4815,6 +4815,19 @@ Protocol.PageAgent.prototype.invoke_stopLoading = function(obj) {};
 /**
  * @return {!Promise<undefined>}
  */
+Protocol.PageAgent.prototype.crash = function() {};
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.CrashRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.CrashResponse;
+/**
+ * @param {!Protocol.PageAgent.CrashRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.CrashResponse>} */
+Protocol.PageAgent.prototype.invoke_crash = function(obj) {};
+
+/**
+ * @return {!Promise<undefined>}
+ */
 Protocol.PageAgent.prototype.stopScreencast = function() {};
 /** @typedef {Object|undefined} */
 Protocol.PageAgent.StopScreencastRequest;

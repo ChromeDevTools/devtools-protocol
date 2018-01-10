@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r527612
+###### _2018-01-08 04:15:43 -0800_ | Diff: [0f2584d...978dbaa](https://github.com/ChromeDevTools/devtools-protocol/compare/0f2584d...978dbaa)
+#### `DOMSnapshot`: modified command
+* [`DOMSnapshot.getSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#method-getSnapshot) - The parameters's `includeEventListeners` _added_. 
+#### `DOMSnapshot`: modified type
+* [`DOMSnapshot.DOMNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DOMNode) - The properties's `eventListeners` _added_. 
+
+
 ## Roll protocol to r526633
 ###### _2018-01-02 22:15:35 -0800_ | Diff: [cc1c2f4...0f2584d](https://github.com/ChromeDevTools/devtools-protocol/compare/cc1c2f4...0f2584d)
 #### `Network`: modified event
