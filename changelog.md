@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r528271
+###### _2018-01-10 02:15:56 -0800_ | Diff: [ba5cbc1...75a38f8](https://github.com/ChromeDevTools/devtools-protocol/compare/ba5cbc1...75a38f8)
+#### `Emulation`: modified command
+* [`Emulation.setVirtualTimePolicy`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setVirtualTimePolicy) - The parameters's `waitForNavigation` _added_. 
+
+
 ## Roll protocol to r528237
 ###### _2018-01-09 20:15:50 -0800_ | Diff: [978dbaa...ba5cbc1](https://github.com/ChromeDevTools/devtools-protocol/compare/978dbaa...ba5cbc1)
 #### `Page`: new command

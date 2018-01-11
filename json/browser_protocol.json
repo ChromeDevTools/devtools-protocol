@@ -989,6 +989,60 @@
                             "$ref": "WindowState"
                         }
                     ]
+                },
+                {
+                    "id": "Bucket",
+                    "description": "Chrome histogram bucket.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "low",
+                            "description": "Minimum value (inclusive).",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "high",
+                            "description": "Maximum value (exclusive).",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "count",
+                            "description": "Number of samples.",
+                            "type": "integer"
+                        }
+                    ]
+                },
+                {
+                    "id": "Histogram",
+                    "description": "Chrome histogram.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "name",
+                            "description": "Name.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "sum",
+                            "description": "Sum of sample values.",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "count",
+                            "description": "Total number of samples.",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "buckets",
+                            "description": "Buckets.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "Bucket"
+                            }
+                        }
+                    ]
                 }
             ],
             "commands": [
@@ -1024,6 +1078,48 @@
                             "name": "jsVersion",
                             "description": "V8 version.",
                             "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "getHistograms",
+                    "description": "Get Chrome histograms.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "query",
+                            "description": "Requested substring in name. Only histograms which have query as a\nsubstring in their name are extracted. An empty or absent query returns\nall histograms.",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "histograms",
+                            "description": "Histograms.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "Histogram"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getHistogram",
+                    "description": "Get a Chrome histogram by name.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "name",
+                            "description": "Requested histogram name.",
+                            "type": "string"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "histogram",
+                            "description": "Histogram.",
+                            "$ref": "Histogram"
                         }
                     ]
                 },
