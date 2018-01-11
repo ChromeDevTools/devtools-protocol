@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r528498
+###### _2018-01-10 16:15:41 -0800_ | Diff: [75a38f8...ffcb5e6](https://github.com/ChromeDevTools/devtools-protocol/compare/75a38f8...ffcb5e6)
+#### `Browser`: new commands
+* [`Browser.getHistograms`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-getHistograms)
+* [`Browser.getHistogram`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-getHistogram)
+#### `Browser`: new types
+* [`Browser.Bucket`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-Bucket)
+* [`Browser.Histogram`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-Histogram)
+
+
 ## Roll protocol to r528271
 ###### _2018-01-10 02:15:56 -0800_ | Diff: [ba5cbc1...75a38f8](https://github.com/ChromeDevTools/devtools-protocol/compare/ba5cbc1...75a38f8)
 #### `Emulation`: modified command
