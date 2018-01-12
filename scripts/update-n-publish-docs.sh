@@ -19,9 +19,8 @@ git pull origin master
 git push dtprotocol master:gh-pages
 
 # generate latest docs on updated protocol
-./generate-docs.sh
+yarn prep && yarn build;
 
-git add _domains/*
 git commit --author="DevTools Bot <paulirish+bot@google.com>" -am "bump protocol"
 #    git config user.name "devtools-bot"
 #    git config user.email "paulirish+bot@google.com"
@@ -30,4 +29,4 @@ git commit --author="DevTools Bot <paulirish+bot@google.com>" -am "bump protocol
 git pull origin master && git push origin master
 
 # publish to https://chromedevtools.github.io/devtools-protocol/
-git pull origin master && git push dtprotocol master:gh-pages
+git pull origin master && yarn deploy
