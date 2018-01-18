@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r528753
+###### _2018-01-11 13:15:46 -0800_ | Diff: [ffcb5e6...252a483](https://github.com/ChromeDevTools/devtools-protocol/compare/ffcb5e6...252a483)
+#### `Network`: new command
+* [`Network.getRequestPostData`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-getRequestPostData)
+#### `Network`: modified command
+* [`Network.enable`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-enable) - The parameters's `maxPostDataSize` _added_. 
+#### `Network`: modified type
+* [`Network.Request`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Request) - The `mixedContentType` in the properties had `$ref` _removed_. The `referrerPolicy` in the properties had `type` _removed_. The `referrerPolicy` in the properties had `enum` _removed_. The `isLinkPreload` in the properties had `optional` _removed_. The `mixedContentType` in the properties had `name` _updated_. The `mixedContentType` in the properties had `description` _updated_. The `initialPriority` in the properties had `name` _updated_. The `initialPriority` in the properties had `description` _updated_. The `initialPriority` in the properties had `$ref` _updated_. The `referrerPolicy` in the properties had `name` _updated_. The `referrerPolicy` in the properties had `description` _updated_. The `isLinkPreload` in the properties had `name` _updated_. The `isLinkPreload` in the properties had `description` _updated_. The `isLinkPreload` in the properties had `type` _updated_. The properties's `type` _added_. The properties's `optional` _added_. The properties's `$ref` _added_. The properties's `enum` _added_. The properties's `isLinkPreload` _added_. 
+
+
 ## Roll protocol to r528498
 ###### _2018-01-10 16:15:41 -0800_ | Diff: [75a38f8...ffcb5e6](https://github.com/ChromeDevTools/devtools-protocol/compare/75a38f8...ffcb5e6)
 #### `Browser`: new commands

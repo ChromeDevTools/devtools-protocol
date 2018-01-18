@@ -5218,6 +5218,12 @@
                             "type": "number"
                         },
                         {
+                            "name": "noDisplayUpdates",
+                            "description": "Whether updates should not be committed and drawn onto the display. False by default. If\ntrue, only side effects of the BeginFrame will be run, such as layout and animations, but\nany visual updates may not be visible on the display or in screenshots.",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
                             "name": "screenshot",
                             "description": "If set, a screenshot of the frame will be captured and returned in the response. Otherwise,\nno screenshot will be captured.",
                             "optional": true,
