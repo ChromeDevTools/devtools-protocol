@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r529963
+###### _2018-01-17 16:16:10 -0800_ | Diff: [d388c24...f46e9df](https://github.com/ChromeDevTools/devtools-protocol/compare/d388c24...f46e9df)
+#### `HeadlessExperimental`: modified command
+* [`HeadlessExperimental.beginFrame`](https://chromedevtools.github.io/devtools-protocol/tot/HeadlessExperimental/#method-beginFrame) - The `screenshot` in the parameters had `$ref` _removed_. The `screenshot` in the parameters had `name` _updated_. The `screenshot` in the parameters had `description` _updated_. The parameters's `type` _added_. The parameters's `screenshot` _added_. 
+
+
 ## Roll protocol to r528753
 ###### _2018-01-11 13:15:46 -0800_ | Diff: [ffcb5e6...252a483](https://github.com/ChromeDevTools/devtools-protocol/compare/ffcb5e6...252a483)
 #### `Network`: new command

@@ -4325,6 +4325,12 @@
                             "items": {
                                 "$ref": "DOMDebugger.EventListener"
                             }
+                        },
+                        {
+                            "name": "currentSourceURL",
+                            "description": "The selected url for nodes with a srcset attribute.",
+                            "optional": true,
+                            "type": "string"
                         }
                     ]
                 },
