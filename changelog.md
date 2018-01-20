@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r530611
+###### _2018-01-19 13:15:39 -0800_ | Diff: [f46e9df...e813152](https://github.com/ChromeDevTools/devtools-protocol/compare/f46e9df...e813152)
+#### `DOMSnapshot`: modified type
+* [`DOMSnapshot.DOMNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DOMNode) - The properties's `currentSourceURL` _added_. 
+
+
 ## Roll protocol to r529963
 ###### _2018-01-17 16:16:10 -0800_ | Diff: [d388c24...f46e9df](https://github.com/ChromeDevTools/devtools-protocol/compare/d388c24...f46e9df)
 #### `HeadlessExperimental`: modified command
