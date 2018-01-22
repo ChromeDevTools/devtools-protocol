@@ -3347,11 +3347,58 @@ Protocol.MemoryAgent.SimulatePressureNotificationResponse;
  * @return {!Promise<!Protocol.MemoryAgent.SimulatePressureNotificationResponse>} */
 Protocol.MemoryAgent.prototype.invoke_simulatePressureNotification = function(obj) {};
 
+/**
+ * @param {number=} opt_samplingInterval
+ * @param {boolean=} opt_suppressRandomness
+ * @return {!Promise<undefined>}
+ */
+Protocol.MemoryAgent.prototype.startSampling = function(opt_samplingInterval, opt_suppressRandomness) {};
+/** @typedef {!{samplingInterval: (number|undefined), suppressRandomness: (boolean|undefined)}} */
+Protocol.MemoryAgent.StartSamplingRequest;
+/** @typedef {Object|undefined} */
+Protocol.MemoryAgent.StartSamplingResponse;
+/**
+ * @param {!Protocol.MemoryAgent.StartSamplingRequest} obj
+ * @return {!Promise<!Protocol.MemoryAgent.StartSamplingResponse>} */
+Protocol.MemoryAgent.prototype.invoke_startSampling = function(obj) {};
+
+/**
+ * @return {!Promise<undefined>}
+ */
+Protocol.MemoryAgent.prototype.stopSampling = function() {};
+/** @typedef {Object|undefined} */
+Protocol.MemoryAgent.StopSamplingRequest;
+/** @typedef {Object|undefined} */
+Protocol.MemoryAgent.StopSamplingResponse;
+/**
+ * @param {!Protocol.MemoryAgent.StopSamplingRequest} obj
+ * @return {!Promise<!Protocol.MemoryAgent.StopSamplingResponse>} */
+Protocol.MemoryAgent.prototype.invoke_stopSampling = function(obj) {};
+
+/**
+ * @return {!Promise<?Protocol.Memory.SamplingProfile>}
+ */
+Protocol.MemoryAgent.prototype.getSamplingProfile = function() {};
+/** @typedef {Object|undefined} */
+Protocol.MemoryAgent.GetSamplingProfileRequest;
+/** @typedef {!{profile: Protocol.Memory.SamplingProfile}} */
+Protocol.MemoryAgent.GetSamplingProfileResponse;
+/**
+ * @param {!Protocol.MemoryAgent.GetSamplingProfileRequest} obj
+ * @return {!Promise<!Protocol.MemoryAgent.GetSamplingProfileResponse>} */
+Protocol.MemoryAgent.prototype.invoke_getSamplingProfile = function(obj) {};
+
 /** @enum {string} */
 Protocol.Memory.PressureLevel = {
     Moderate: "moderate",
     Critical: "critical"
 };
+
+/** @typedef {!{size:(number), count:(number), stack:(!Array<string>)}} */
+Protocol.Memory.SamplingProfileNode;
+
+/** @typedef {!{samples:(!Array<Protocol.Memory.SamplingProfileNode>)}} */
+Protocol.Memory.SamplingProfile;
 /** @interface */
 Protocol.MemoryDispatcher = function() {};
 Protocol.Network = {};

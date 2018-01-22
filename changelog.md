@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r530967
+###### _2018-01-22 12:15:52 -0800_ | Diff: [bf24ee4...1ecb1dc](https://github.com/ChromeDevTools/devtools-protocol/compare/bf24ee4...1ecb1dc)
+#### `Input`: modified command
+* [`Input.emulateTouchFromMouseEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-emulateTouchFromMouseEvent) - The `timestamp` in the parameters had `$ref` _removed_. The `button` in the parameters had `type` _removed_. The `button` in the parameters had `enum` _removed_. The `timestamp` in the parameters had `name` _updated_. The `timestamp` in the parameters had `description` _updated_. The `button` in the parameters had `name` _updated_. The `button` in the parameters had `description` _updated_. The parameters's `type` _added_. The parameters's `enum` _added_. The parameters's `optional` _added_. The parameters's `$ref` _added_. 
+
+
 ## Roll protocol to r530836
 ###### _2018-01-22 03:16:04 -0800_ | Diff: [8f8d2e4...bf24ee4](https://github.com/ChromeDevTools/devtools-protocol/compare/8f8d2e4...bf24ee4)
 #### `Memory`: removed commands
