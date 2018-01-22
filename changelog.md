@@ -1,5 +1,16 @@
 
 
+## Roll protocol to r530836
+###### _2018-01-22 03:16:04 -0800_ | Diff: [8f8d2e4...bf24ee4](https://github.com/ChromeDevTools/devtools-protocol/compare/8f8d2e4...bf24ee4)
+#### `Memory`: removed commands
+* [`Memory.startSampling`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#method-startSampling)
+* [`Memory.stopSampling`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#method-stopSampling)
+* [`Memory.getSamplingProfile`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#method-getSamplingProfile)
+#### `Memory`: removed types
+* [`Memory.SamplingProfileNode`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#type-SamplingProfileNode)
+* [`Memory.SamplingProfile`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#type-SamplingProfile)
+
+
 ## Roll protocol to r530755
 ###### _2018-01-19 21:15:46 -0800_ | Diff: [e813152...8f8d2e4](https://github.com/ChromeDevTools/devtools-protocol/compare/e813152...8f8d2e4)
 #### `DOM`: new command

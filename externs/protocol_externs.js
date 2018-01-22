@@ -2841,16 +2841,16 @@ Protocol.InputAgent.prototype.invoke_dispatchTouchEvent = function(obj) {};
  * @param {string} type
  * @param {number} x
  * @param {number} y
- * @param {Protocol.Input.TimeSinceEpoch} timestamp
  * @param {string} button
+ * @param {Protocol.Input.TimeSinceEpoch=} opt_timestamp
  * @param {number=} opt_deltaX
  * @param {number=} opt_deltaY
  * @param {number=} opt_modifiers
  * @param {number=} opt_clickCount
  * @return {!Promise<undefined>}
  */
-Protocol.InputAgent.prototype.emulateTouchFromMouseEvent = function(type, x, y, timestamp, button, opt_deltaX, opt_deltaY, opt_modifiers, opt_clickCount) {};
-/** @typedef {!{modifiers: (number|undefined), clickCount: (number|undefined), deltaX: (number|undefined), timestamp: Protocol.Input.TimeSinceEpoch, button: string, deltaY: (number|undefined), y: number, x: number, type: string}} */
+Protocol.InputAgent.prototype.emulateTouchFromMouseEvent = function(type, x, y, button, opt_timestamp, opt_deltaX, opt_deltaY, opt_modifiers, opt_clickCount) {};
+/** @typedef {!{modifiers: (number|undefined), clickCount: (number|undefined), deltaX: (number|undefined), timestamp: (Protocol.Input.TimeSinceEpoch|undefined), button: string, deltaY: (number|undefined), y: number, x: number, type: string}} */
 Protocol.InputAgent.EmulateTouchFromMouseEventRequest;
 /** @typedef {Object|undefined} */
 Protocol.InputAgent.EmulateTouchFromMouseEventResponse;
