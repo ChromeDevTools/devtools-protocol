@@ -1,5 +1,18 @@
 
 
+## Roll protocol to r530755
+###### _2018-01-19 21:15:46 -0800_ | Diff: [e813152...8f8d2e4](https://github.com/ChromeDevTools/devtools-protocol/compare/e813152...8f8d2e4)
+#### `DOM`: new command
+* [`DOM.getFrameOwner`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getFrameOwner)
+#### `Memory`: new commands
+* [`Memory.startSampling`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#method-startSampling)
+* [`Memory.stopSampling`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#method-stopSampling)
+* [`Memory.getSamplingProfile`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#method-getSamplingProfile)
+#### `Memory`: new types
+* [`Memory.SamplingProfileNode`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#type-SamplingProfileNode)
+* [`Memory.SamplingProfile`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#type-SamplingProfile)
+
+
 ## Roll protocol to r530611
 ###### _2018-01-19 13:15:39 -0800_ | Diff: [f46e9df...e813152](https://github.com/ChromeDevTools/devtools-protocol/compare/f46e9df...e813152)
 #### `DOMSnapshot`: modified type

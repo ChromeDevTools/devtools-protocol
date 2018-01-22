@@ -6886,45 +6886,6 @@
                         "moderate",
                         "critical"
                     ]
-                },
-                {
-                    "id": "SamplingProfileNode",
-                    "description": "Heap profile sample.",
-                    "type": "object",
-                    "properties": [
-                        {
-                            "name": "size",
-                            "description": "Size of the sampled allocation.",
-                            "type": "number"
-                        },
-                        {
-                            "name": "count",
-                            "description": "Number of sampled allocations of that size.",
-                            "type": "number"
-                        },
-                        {
-                            "name": "stack",
-                            "description": "Execution stack at the point of allocation.",
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "id": "SamplingProfile",
-                    "description": "Array of heap profile samples.",
-                    "type": "object",
-                    "properties": [
-                        {
-                            "name": "samples",
-                            "type": "array",
-                            "items": {
-                                "$ref": "SamplingProfileNode"
-                            }
-                        }
-                    ]
                 }
             ],
             "commands": [
@@ -6967,38 +6928,6 @@
                             "name": "level",
                             "description": "Memory pressure level of the notification.",
                             "$ref": "PressureLevel"
-                        }
-                    ]
-                },
-                {
-                    "name": "startSampling",
-                    "description": "Start collecting native memory profile.",
-                    "parameters": [
-                        {
-                            "name": "samplingInterval",
-                            "description": "Average number of bytes between samples.",
-                            "optional": true,
-                            "type": "integer"
-                        },
-                        {
-                            "name": "suppressRandomness",
-                            "description": "Do not randomize intervals between samples.",
-                            "optional": true,
-                            "type": "boolean"
-                        }
-                    ]
-                },
-                {
-                    "name": "stopSampling",
-                    "description": "Stop collecting native memory profile."
-                },
-                {
-                    "name": "getSamplingProfile",
-                    "description": "Retrieve collected native memory profile.",
-                    "returns": [
-                        {
-                            "name": "profile",
-                            "$ref": "SamplingProfile"
                         }
                     ]
                 }
