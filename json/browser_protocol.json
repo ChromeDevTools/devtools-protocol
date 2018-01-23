@@ -6078,7 +6078,7 @@
                         },
                         {
                             "name": "timestamp",
-                            "description": "Time at which the event occurred.",
+                            "description": "Time at which the event occurred (default: current time).",
                             "optional": true,
                             "$ref": "TimeSinceEpoch"
                         },
