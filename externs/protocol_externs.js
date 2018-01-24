@@ -2988,6 +2988,7 @@ Protocol.InspectorDispatcher = function() {};
  */
 Protocol.InspectorDispatcher.prototype.detached = function(reason) {};
 Protocol.InspectorDispatcher.prototype.targetCrashed = function() {};
+Protocol.InspectorDispatcher.prototype.targetReloadedAfterCrash = function() {};
 Protocol.LayerTree = {};
 
 

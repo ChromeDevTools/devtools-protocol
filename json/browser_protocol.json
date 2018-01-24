@@ -6295,6 +6295,10 @@
                 {
                     "name": "targetCrashed",
                     "description": "Fired when debugging target has crashed"
+                },
+                {
+                    "name": "targetReloadedAfterCrash",
+                    "description": "Fired when debugging target has reloaded after crash"
                 }
             ]
         },

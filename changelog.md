@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r531129
+###### _2018-01-22 18:16:00 -0800_ | Diff: [77a647f...dfe55cf](https://github.com/ChromeDevTools/devtools-protocol/compare/77a647f...dfe55cf)
+#### `Input`: modified command
+* [`Input.emulateTouchFromMouseEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-emulateTouchFromMouseEvent) - The `timestamp` in the parameters had `description` _updated_. 
+
+
 ## Roll protocol to r530993
 ###### _2018-01-22 13:15:56 -0800_ | Diff: [1ecb1dc...77a647f](https://github.com/ChromeDevTools/devtools-protocol/compare/1ecb1dc...77a647f)
 #### `Memory`: new commands
