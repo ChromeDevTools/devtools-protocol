@@ -6998,8 +6998,18 @@
                     "description": "Stop collecting native memory profile."
                 },
                 {
+                    "name": "getAllTimeSamplingProfile",
+                    "description": "Retrieve native memory allocations profile collected since process startup.",
+                    "returns": [
+                        {
+                            "name": "profile",
+                            "$ref": "SamplingProfile"
+                        }
+                    ]
+                },
+                {
                     "name": "getSamplingProfile",
-                    "description": "Retrieve collected native memory profile.",
+                    "description": "Retrieve native memory allocations profile collected since last\n`startSampling` call.",
                     "returns": [
                         {
                             "name": "profile",

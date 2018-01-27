@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r532143
+###### _2018-01-26 19:15:57 -0800_ | Diff: [38926f7...c80303f](https://github.com/ChromeDevTools/devtools-protocol/compare/38926f7...c80303f)
+#### `Page`: modified command
+* [`Page.navigate`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-navigate) - The parameters's `frameId` _added_. 
+
+
 ## Roll protocol to r531658
 ###### _2018-01-24 12:15:46 -0800_ | Diff: [dfe55cf...38926f7](https://github.com/ChromeDevTools/devtools-protocol/compare/dfe55cf...38926f7)
 #### `Inspector`: new event

@@ -3379,6 +3379,19 @@ Protocol.MemoryAgent.prototype.invoke_stopSampling = function(obj) {};
 /**
  * @return {!Promise<?Protocol.Memory.SamplingProfile>}
  */
+Protocol.MemoryAgent.prototype.getAllTimeSamplingProfile = function() {};
+/** @typedef {Object|undefined} */
+Protocol.MemoryAgent.GetAllTimeSamplingProfileRequest;
+/** @typedef {!{profile: Protocol.Memory.SamplingProfile}} */
+Protocol.MemoryAgent.GetAllTimeSamplingProfileResponse;
+/**
+ * @param {!Protocol.MemoryAgent.GetAllTimeSamplingProfileRequest} obj
+ * @return {!Promise<!Protocol.MemoryAgent.GetAllTimeSamplingProfileResponse>} */
+Protocol.MemoryAgent.prototype.invoke_getAllTimeSamplingProfile = function(obj) {};
+
+/**
+ * @return {!Promise<?Protocol.Memory.SamplingProfile>}
+ */
 Protocol.MemoryAgent.prototype.getSamplingProfile = function() {};
 /** @typedef {Object|undefined} */
 Protocol.MemoryAgent.GetSamplingProfileRequest;
