@@ -4623,10 +4623,11 @@ Protocol.PageAgent.prototype.invoke_handleJavaScriptDialog = function(obj) {};
  * @param {string} url
  * @param {string=} opt_referrer
  * @param {Protocol.Page.TransitionType=} opt_transitionType
+ * @param {Protocol.Page.FrameId=} opt_frameId
  * @return {!Promise<?Protocol.Page.FrameId>}
  */
-Protocol.PageAgent.prototype.navigate = function(url, opt_referrer, opt_transitionType) {};
-/** @typedef {!{url: string, referrer: (string|undefined), transitionType: (Protocol.Page.TransitionType|undefined)}} */
+Protocol.PageAgent.prototype.navigate = function(url, opt_referrer, opt_transitionType, opt_frameId) {};
+/** @typedef {!{url: string, referrer: (string|undefined), frameId: (Protocol.Page.FrameId|undefined), transitionType: (Protocol.Page.TransitionType|undefined)}} */
 Protocol.PageAgent.NavigateRequest;
 /** @typedef {!{loaderId: Protocol.Network.LoaderId, errorText: string, frameId: Protocol.Page.FrameId}} */
 Protocol.PageAgent.NavigateResponse;

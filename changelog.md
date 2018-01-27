@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r531658
+###### _2018-01-24 12:15:46 -0800_ | Diff: [dfe55cf...38926f7](https://github.com/ChromeDevTools/devtools-protocol/compare/dfe55cf...38926f7)
+#### `Inspector`: new event
+* [`Inspector.targetReloadedAfterCrash`](https://chromedevtools.github.io/devtools-protocol/tot/Inspector/#event-targetReloadedAfterCrash)
+
+
 ## Roll protocol to r531129
 ###### _2018-01-22 18:16:00 -0800_ | Diff: [77a647f...dfe55cf](https://github.com/ChromeDevTools/devtools-protocol/compare/77a647f...dfe55cf)
 #### `Input`: modified command
