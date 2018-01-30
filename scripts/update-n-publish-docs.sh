@@ -16,7 +16,6 @@ git checkout master
 git pull $viewer_repo
 
 # generate latest docs on updated protocol
-bower install
 yarn prep && yarn build;
 
 git commit --author="DevTools Bot <paulirish+bot@google.com>" -am "bump protocol"
