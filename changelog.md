@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r532239
+###### _2018-01-27 10:15:37 -0800_ | Diff: [c80303f...e3e1778](https://github.com/ChromeDevTools/devtools-protocol/compare/c80303f...e3e1778)
+#### `Memory`: new command
+* [`Memory.getAllTimeSamplingProfile`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#method-getAllTimeSamplingProfile)
+#### `Memory`: modified command
+* [`Memory.getSamplingProfile`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#method-getSamplingProfile) - `description` updated. 
+
+
 ## Roll protocol to r532143
 ###### _2018-01-26 19:15:57 -0800_ | Diff: [38926f7...c80303f](https://github.com/ChromeDevTools/devtools-protocol/compare/38926f7...c80303f)
 #### `Page`: modified command
