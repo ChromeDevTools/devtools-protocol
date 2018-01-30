@@ -4678,10 +4678,11 @@ Protocol.PageAgent.prototype.invoke_navigateToHistoryEntry = function(obj) {};
  * @param {boolean=} opt_ignoreInvalidPageRanges
  * @param {string=} opt_headerTemplate
  * @param {string=} opt_footerTemplate
+ * @param {boolean=} opt_preferCSSPageSize
  * @return {!Promise<?string>}
  */
-Protocol.PageAgent.prototype.printToPDF = function(opt_landscape, opt_displayHeaderFooter, opt_printBackground, opt_scale, opt_paperWidth, opt_paperHeight, opt_marginTop, opt_marginBottom, opt_marginLeft, opt_marginRight, opt_pageRanges, opt_ignoreInvalidPageRanges, opt_headerTemplate, opt_footerTemplate) {};
-/** @typedef {!{paperHeight: (number|undefined), scale: (number|undefined), footerTemplate: (string|undefined), displayHeaderFooter: (boolean|undefined), marginBottom: (number|undefined), paperWidth: (number|undefined), headerTemplate: (string|undefined), marginLeft: (number|undefined), printBackground: (boolean|undefined), marginRight: (number|undefined), ignoreInvalidPageRanges: (boolean|undefined), pageRanges: (string|undefined), marginTop: (number|undefined), landscape: (boolean|undefined)}} */
+Protocol.PageAgent.prototype.printToPDF = function(opt_landscape, opt_displayHeaderFooter, opt_printBackground, opt_scale, opt_paperWidth, opt_paperHeight, opt_marginTop, opt_marginBottom, opt_marginLeft, opt_marginRight, opt_pageRanges, opt_ignoreInvalidPageRanges, opt_headerTemplate, opt_footerTemplate, opt_preferCSSPageSize) {};
+/** @typedef {!{paperHeight: (number|undefined), scale: (number|undefined), footerTemplate: (string|undefined), displayHeaderFooter: (boolean|undefined), marginBottom: (number|undefined), paperWidth: (number|undefined), headerTemplate: (string|undefined), marginLeft: (number|undefined), preferCSSPageSize: (boolean|undefined), printBackground: (boolean|undefined), marginRight: (number|undefined), ignoreInvalidPageRanges: (boolean|undefined), pageRanges: (string|undefined), marginTop: (number|undefined), landscape: (boolean|undefined)}} */
 Protocol.PageAgent.PrintToPDFRequest;
 /** @typedef {!{data: string}} */
 Protocol.PageAgent.PrintToPDFResponse;

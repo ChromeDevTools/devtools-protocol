@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r532683
+###### _2018-01-29 16:16:05 -0800_ | Diff: [e3e1778...449767c](https://github.com/ChromeDevTools/devtools-protocol/compare/e3e1778...449767c)
+#### `CSS`: modified command
+* [`CSS.stopRuleUsageTracking`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-stopRuleUsageTracking) - `description` updated. 
+
+
 ## Roll protocol to r532239
 ###### _2018-01-27 10:15:37 -0800_ | Diff: [c80303f...e3e1778](https://github.com/ChromeDevTools/devtools-protocol/compare/c80303f...e3e1778)
 #### `Memory`: new command
