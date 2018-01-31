@@ -232,7 +232,7 @@ class Formatter {
  */
 class CommitCrawler {
   constructor() {
-    this.remote =  path.join(__dirname, '../');; // local clone
+    this.remote =  path.join(__dirname, '../'); // local clone
     this.path = path.join(__dirname, './stubprotocolrepo');
 
     if (!fs.existsSync(this.path)) {
@@ -248,7 +248,7 @@ class CommitCrawler {
     }
     await git.reset('hard');
     await git.fetch();
-    await git.checkout('origin/master');
+    await git.checkout('origin/HEAD');
     const commitlog = await git.log();
     this.commitlogs = commitlog.all;
 
