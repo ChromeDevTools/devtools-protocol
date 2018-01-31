@@ -11920,17 +11920,6 @@
                     ]
                 },
                 {
-                    "name": "setAttachToFrames",
-                    "experimental": true,
-                    "parameters": [
-                        {
-                            "name": "value",
-                            "description": "Whether to attach to frames.",
-                            "type": "boolean"
-                        }
-                    ]
-                },
-                {
                     "name": "setAutoAttach",
                     "description": "Controls whether to automatically attach to new targets which are considered to be related to\nthis one. When turned on, attaches to all existing related targets as well. When turned off,\nautomatically detaches from all currently attached targets.",
                     "experimental": true,

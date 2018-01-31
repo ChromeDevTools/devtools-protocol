@@ -5834,20 +5834,6 @@ Protocol.TargetAgent.SendMessageToTargetResponse;
 Protocol.TargetAgent.prototype.invoke_sendMessageToTarget = function(obj) {};
 
 /**
- * @param {boolean} value
- * @return {!Promise<undefined>}
- */
-Protocol.TargetAgent.prototype.setAttachToFrames = function(value) {};
-/** @typedef {!{value: boolean}} */
-Protocol.TargetAgent.SetAttachToFramesRequest;
-/** @typedef {Object|undefined} */
-Protocol.TargetAgent.SetAttachToFramesResponse;
-/**
- * @param {!Protocol.TargetAgent.SetAttachToFramesRequest} obj
- * @return {!Promise<!Protocol.TargetAgent.SetAttachToFramesResponse>} */
-Protocol.TargetAgent.prototype.invoke_setAttachToFrames = function(obj) {};
-
-/**
  * @param {boolean} autoAttach
  * @param {boolean} waitForDebuggerOnStart
  * @return {!Promise<undefined>}
