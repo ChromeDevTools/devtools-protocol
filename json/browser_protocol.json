@@ -6999,7 +6999,17 @@
                 },
                 {
                     "name": "getAllTimeSamplingProfile",
-                    "description": "Retrieve native memory allocations profile collected since process startup.",
+                    "description": "Retrieve native memory allocations profile\ncollected since renderer process startup.",
+                    "returns": [
+                        {
+                            "name": "profile",
+                            "$ref": "SamplingProfile"
+                        }
+                    ]
+                },
+                {
+                    "name": "getBrowserSamplingProfile",
+                    "description": "Retrieve native memory allocations profile\ncollected since browser process startup.",
                     "returns": [
                         {
                             "name": "profile",

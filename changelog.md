@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r533104
+###### _2018-01-30 16:16:07 -0800_ | Diff: [50ba84b...a1f43fb](https://github.com/ChromeDevTools/devtools-protocol/compare/50ba84b...a1f43fb)
+#### `Target`: removed command
+* [`Target.setAttachToFrames`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-setAttachToFrames)
+
+
 ## Roll protocol to r532981
 ###### _2018-01-30 11:15:57 -0800_ | Diff: [449767c...1a3a261](https://github.com/ChromeDevTools/devtools-protocol/compare/449767c...1a3a261)
 #### `Page`: modified command
