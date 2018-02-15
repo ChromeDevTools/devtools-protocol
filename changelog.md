@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r536902
+###### _2018-02-14 16:16:08 -0800_ | Diff: [28c2256...4bb1064](https://github.com/ChromeDevTools/devtools-protocol/compare/28c2256...4bb1064)
+#### `DOMSnapshot`: modified type
+* [`DOMSnapshot.InlineTextBox`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-InlineTextBox) - The `startCharacterIndex` in the properties had `description` _updated_. The `numCharacters` in the properties had `description` _updated_. 
+
+
 ## Roll protocol to r535969
 ###### _2018-02-10 00:15:46 -0800_ | Diff: [33149ca...28c2256](https://github.com/ChromeDevTools/devtools-protocol/compare/33149ca...28c2256)
 #### `Memory`: new command
