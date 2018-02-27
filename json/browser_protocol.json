@@ -4329,6 +4329,12 @@
                             "$ref": "DOM.PseudoType"
                         },
                         {
+                            "name": "shadowRootType",
+                            "description": "Shadow root type.",
+                            "optional": true,
+                            "$ref": "DOM.ShadowRootType"
+                        },
+                        {
                             "name": "isClickable",
                             "description": "Whether this DOM node responds to mouse clicks. This includes nodes that have had click\nevent listeners attached via JavaScript as well as anchor tags that naturally navigate when\nclicked.",
                             "optional": true,
