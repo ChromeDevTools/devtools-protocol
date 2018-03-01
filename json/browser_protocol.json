@@ -1082,6 +1082,21 @@
                     ]
                 },
                 {
+                    "name": "getCommandLine",
+                    "description": "Returns the command line switches for the browser process if, and only if\n--enable-automation is on the commandline.",
+                    "experimental": true,
+                    "returns": [
+                        {
+                            "name": "arguments",
+                            "description": "Commandline parameters",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "getHistograms",
                     "description": "Get Chrome histograms.",
                     "experimental": true,

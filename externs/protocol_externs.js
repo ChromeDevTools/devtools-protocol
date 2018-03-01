@@ -446,6 +446,19 @@ Protocol.BrowserAgent.GetVersionResponse;
 Protocol.BrowserAgent.prototype.invoke_getVersion = function(obj) {};
 
 /**
+ * @return {!Promise<?Array<string>>}
+ */
+Protocol.BrowserAgent.prototype.getCommandLine = function() {};
+/** @typedef {Object|undefined} */
+Protocol.BrowserAgent.GetCommandLineRequest;
+/** @typedef {!{arguments: !Array<string>}} */
+Protocol.BrowserAgent.GetCommandLineResponse;
+/**
+ * @param {!Protocol.BrowserAgent.GetCommandLineRequest} obj
+ * @return {!Promise<!Protocol.BrowserAgent.GetCommandLineResponse>} */
+Protocol.BrowserAgent.prototype.invoke_getCommandLine = function(obj) {};
+
+/**
  * @param {string=} opt_query
  * @return {!Promise<?Array<Protocol.Browser.Histogram>>}
  */
