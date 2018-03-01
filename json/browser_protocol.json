@@ -1747,6 +1747,53 @@
                     ]
                 },
                 {
+                    "id": "FontFace",
+                    "description": "Properties of a web font: https://www.w3.org/TR/2008/REC-CSS2-20080411/fonts.html#font-descriptions",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "fontFamily",
+                            "description": "The font-family.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "fontStyle",
+                            "description": "The font-style.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "fontVariant",
+                            "description": "The font-variant.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "fontWeight",
+                            "description": "The font-weight.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "fontStretch",
+                            "description": "The font-stretch.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "unicodeRange",
+                            "description": "The unicode-range.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "src",
+                            "description": "The src.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "platformFontFamily",
+                            "description": "The resolved platform font family",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "id": "CSSKeyframesRule",
                     "description": "CSS keyframes rule representation.",
                     "type": "object",
@@ -2277,7 +2324,15 @@
             "events": [
                 {
                     "name": "fontsUpdated",
-                    "description": "Fires whenever a web font gets loaded."
+                    "description": "Fires whenever a web font is updated.  A non-empty font parameter indicates a successfully loaded\nweb font",
+                    "parameters": [
+                        {
+                            "name": "font",
+                            "description": "The web font that has loaded.",
+                            "optional": true,
+                            "$ref": "FontFace"
+                        }
+                    ]
                 },
                 {
                     "name": "mediaQueryResultChanged",

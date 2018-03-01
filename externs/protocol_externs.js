@@ -942,6 +942,9 @@ Protocol.CSS.MediaQueryExpression;
 /** @typedef {!{familyName:(string), isCustomFont:(boolean), glyphCount:(number)}} */
 Protocol.CSS.PlatformFontUsage;
 
+/** @typedef {!{fontFamily:(string), fontStyle:(string), fontVariant:(string), fontWeight:(string), fontStretch:(string), unicodeRange:(string), src:(string), platformFontFamily:(string)}} */
+Protocol.CSS.FontFace;
+
 /** @typedef {!{animationName:(Protocol.CSS.Value), keyframes:(!Array<Protocol.CSS.CSSKeyframeRule>)}} */
 Protocol.CSS.CSSKeyframesRule;
 
@@ -952,7 +955,10 @@ Protocol.CSS.CSSKeyframeRule;
 Protocol.CSS.StyleDeclarationEdit;
 /** @interface */
 Protocol.CSSDispatcher = function() {};
-Protocol.CSSDispatcher.prototype.fontsUpdated = function() {};
+/**
+ * @param {Protocol.CSS.FontFace=} opt_font
+ */
+Protocol.CSSDispatcher.prototype.fontsUpdated = function(opt_font) {};
 Protocol.CSSDispatcher.prototype.mediaQueryResultChanged = function() {};
 /**
  * @param {Protocol.CSS.CSSStyleSheetHeader} header

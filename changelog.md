@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r540130
+###### _2018-03-01 04:16:43 -0800_ | Diff: [215f116...7b87f78](https://github.com/ChromeDevTools/devtools-protocol/compare/215f116...7b87f78)
+#### `HeadlessExperimental`: modified command
+* [`HeadlessExperimental.beginFrame`](https://chromedevtools.github.io/devtools-protocol/tot/HeadlessExperimental/#method-beginFrame) - The return value's `screenshotData` _removed_. `description` updated. The `screenshot` in the parameters had `description` _updated_. The `hasDamage` in the return value had `description` _updated_. The `mainFrameContentUpdated` in the return value had `name` _updated_. The `mainFrameContentUpdated` in the return value had `description` _updated_. The `mainFrameContentUpdated` in the return value had `type` _updated_. The return value's `optional` _added_. 
+#### `HeadlessExperimental`: removed event
+* [`HeadlessExperimental.mainFrameReadyForScreenshots`](https://chromedevtools.github.io/devtools-protocol/tot/HeadlessExperimental/#event-mainFrameReadyForScreenshots)
+
+
 ## Roll protocol to r540125
 ###### _2018-03-01 03:17:08 -0800_ | Diff: [5ef5fe2...215f116](https://github.com/ChromeDevTools/devtools-protocol/compare/5ef5fe2...215f116)
 #### `Browser`: new command
