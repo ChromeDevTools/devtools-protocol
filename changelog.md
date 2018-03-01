@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r540149
+###### _2018-03-01 06:17:13 -0800_ | Diff: [7b87f78...392d86b](https://github.com/ChromeDevTools/devtools-protocol/compare/7b87f78...392d86b)
+#### `CSS`: modified event
+* [`CSS.fontsUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#event-fontsUpdated) - `description` updated. 
+#### `CSS`: new type
+* [`CSS.FontFace`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-FontFace)
+
+
 ## Roll protocol to r540130
 ###### _2018-03-01 04:16:43 -0800_ | Diff: [215f116...7b87f78](https://github.com/ChromeDevTools/devtools-protocol/compare/215f116...7b87f78)
 #### `HeadlessExperimental`: modified command
