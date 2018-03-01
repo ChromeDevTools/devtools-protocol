@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r539359
+###### _2018-02-26 17:17:01 -0800_ | Diff: [c1c234c...6d37388](https://github.com/ChromeDevTools/devtools-protocol/compare/c1c234c...6d37388)
+#### `DOMSnapshot`: modified type
+* [`DOMSnapshot.DOMNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DOMNode) - The `isClickable` in the properties had `type` _removed_. The `eventListeners` in the properties had `items` _removed_. The `isClickable` in the properties had `name` _updated_. The `isClickable` in the properties had `description` _updated_. The `eventListeners` in the properties had `name` _updated_. The `eventListeners` in the properties had `description` _updated_. The `eventListeners` in the properties had `type` _updated_. The `currentSourceURL` in the properties had `name` _updated_. The `currentSourceURL` in the properties had `description` _updated_. The `currentSourceURL` in the properties had `type` _updated_. The properties's `$ref` _added_. The properties's `items` _added_. The properties's `currentSourceURL` _added_. 
+
+
 ## Roll protocol to r536902
 ###### _2018-02-14 16:16:08 -0800_ | Diff: [28c2256...4bb1064](https://github.com/ChromeDevTools/devtools-protocol/compare/28c2256...4bb1064)
 #### `DOMSnapshot`: modified type
