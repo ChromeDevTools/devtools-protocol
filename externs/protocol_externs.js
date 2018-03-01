@@ -3439,7 +3439,7 @@ Protocol.Memory.PressureLevel = {
     Critical: "critical"
 };
 
-/** @typedef {!{size:(number), count:(number), stack:(!Array<string>)}} */
+/** @typedef {!{size:(number), total:(number), stack:(!Array<string>)}} */
 Protocol.Memory.SamplingProfileNode;
 
 /** @typedef {!{samples:(!Array<Protocol.Memory.SamplingProfileNode>)}} */

@@ -6970,8 +6970,8 @@
                             "type": "number"
                         },
                         {
-                            "name": "count",
-                            "description": "Number of sampled allocations of that size.",
+                            "name": "total",
+                            "description": "Total bytes attributed to this sample.",
                             "type": "number"
                         },
                         {
