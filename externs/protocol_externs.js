@@ -2504,7 +2504,7 @@ Protocol.HeadlessExperimentalAgent = function(){};
 Protocol.HeadlessExperimentalAgent.prototype.beginFrame = function(opt_frameTime, opt_deadline, opt_interval, opt_noDisplayUpdates, opt_screenshot) {};
 /** @typedef {!{interval: (number|undefined), deadline: (Protocol.Runtime.Timestamp|undefined), frameTime: (Protocol.Runtime.Timestamp|undefined), screenshot: (Protocol.HeadlessExperimental.ScreenshotParams|undefined), noDisplayUpdates: (boolean|undefined)}} */
 Protocol.HeadlessExperimentalAgent.BeginFrameRequest;
-/** @typedef {!{hasDamage: boolean, screenshotData: string, mainFrameContentUpdated: boolean}} */
+/** @typedef {!{hasDamage: boolean, screenshotData: string}} */
 Protocol.HeadlessExperimentalAgent.BeginFrameResponse;
 /**
  * @param {!Protocol.HeadlessExperimentalAgent.BeginFrameRequest} obj
@@ -2547,7 +2547,6 @@ Protocol.HeadlessExperimental.ScreenshotParamsFormat = {
 Protocol.HeadlessExperimental.ScreenshotParams;
 /** @interface */
 Protocol.HeadlessExperimentalDispatcher = function() {};
-Protocol.HeadlessExperimentalDispatcher.prototype.mainFrameReadyForScreenshots = function() {};
 /**
  * @param {boolean} needsBeginFrames
  */

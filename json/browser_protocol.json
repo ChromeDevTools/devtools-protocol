@@ -5241,7 +5241,7 @@
             "commands": [
                 {
                     "name": "beginFrame",
-                    "description": "Sends a BeginFrame to the target and returns when the frame was completed. Optionally captures a\nscreenshot from the resulting frame. Requires that the target was created with enabled\nBeginFrameControl.",
+                    "description": "Sends a BeginFrame to the target and returns when the frame was completed. Optionally captures a\nscreenshot from the resulting frame. Requires that the target was created with enabled\nBeginFrameControl. Designed for use with --run-all-compositor-stages-before-draw, see also\nhttps://goo.gl/3zHXhB for more background.",
                     "parameters": [
                         {
                             "name": "frameTime",
@@ -5269,7 +5269,7 @@
                         },
                         {
                             "name": "screenshot",
-                            "description": "If set, a screenshot of the frame will be captured and returned in the response. Otherwise,\nno screenshot will be captured.",
+                            "description": "If set, a screenshot of the frame will be captured and returned in the response. Otherwise,\nno screenshot will be captured. Note that capturing a screenshot can fail, for example,\nduring renderer initialization. In such a case, no screenshot data will be returned.",
                             "optional": true,
                             "$ref": "ScreenshotParams"
                         }
@@ -5277,12 +5277,7 @@
                     "returns": [
                         {
                             "name": "hasDamage",
-                            "description": "Whether the BeginFrame resulted in damage and, thus, a new frame was committed to the\ndisplay.",
-                            "type": "boolean"
-                        },
-                        {
-                            "name": "mainFrameContentUpdated",
-                            "description": "Whether the main frame submitted a new display frame in response to this BeginFrame.",
+                            "description": "Whether the BeginFrame resulted in damage and, thus, a new frame was committed to the\ndisplay. Reported for diagnostic uses, may be removed in the future.",
                             "type": "boolean"
                         },
                         {
@@ -5303,10 +5298,6 @@
                 }
             ],
             "events": [
-                {
-                    "name": "mainFrameReadyForScreenshots",
-                    "description": "Issued when the main frame has first submitted a frame to the browser. May only be fired while a\nBeginFrame is in flight. Before this event, screenshotting requests may fail."
-                },
                 {
                     "name": "needsBeginFramesChanged",
                     "description": "Issued when the target starts or stops needing BeginFrames.",
