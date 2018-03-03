@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r540265
+###### _2018-03-01 12:17:20 -0800_ | Diff: [dd5f03d...0a8b4ea](https://github.com/ChromeDevTools/devtools-protocol/compare/dd5f03d...0a8b4ea)
+#### `Memory`: modified type
+* [`Memory.SamplingProfileNode`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#type-SamplingProfileNode) - The `count` in the properties had `name` _updated_. The `count` in the properties had `description` _updated_. 
+
+
 ## Roll protocol to r540157
 ###### _2018-03-01 07:16:55 -0800_ | Diff: [392d86b...dd5f03d](https://github.com/ChromeDevTools/devtools-protocol/compare/392d86b...dd5f03d)
 #### `Runtime`: modified command
