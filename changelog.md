@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r540852
+###### _2018-03-05 09:16:30 -0800_ | Diff: [9aebc2d...7fc80c6](https://github.com/ChromeDevTools/devtools-protocol/compare/9aebc2d...7fc80c6)
+#### `Runtime`: modified command
+* [`Runtime.evaluate`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-evaluate) - The parameters's `throwOnSideEffect` _added_. 
+
+
 ## Roll protocol to r540814
 ###### _2018-03-05 06:16:48 -0800_ | Diff: [3834095...9aebc2d](https://github.com/ChromeDevTools/devtools-protocol/compare/3834095...9aebc2d)
 #### `Runtime`: modified command
