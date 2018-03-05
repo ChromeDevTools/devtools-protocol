@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r540805
+###### _2018-03-05 04:16:24 -0800_ | Diff: [e392c1f...3834095](https://github.com/ChromeDevTools/devtools-protocol/compare/e392c1f...3834095)
+#### `HeadlessExperimental`: new command
+* [`HeadlessExperimental.enterDeterministicMode`](https://chromedevtools.github.io/devtools-protocol/tot/HeadlessExperimental/#method-enterDeterministicMode)
+
+
 ## Roll protocol to r540693
 ###### _2018-03-02 16:16:14 -0800_ | Diff: [0a8b4ea...e392c1f](https://github.com/ChromeDevTools/devtools-protocol/compare/0a8b4ea...e392c1f)
 #### `Runtime`: modified command
