@@ -1082,7 +1082,7 @@
                     ]
                 },
                 {
-                    "name": "getCommandLine",
+                    "name": "getBrowserCommandLine",
                     "description": "Returns the command line switches for the browser process if, and only if\n--enable-automation is on the commandline.",
                     "experimental": true,
                     "returns": [

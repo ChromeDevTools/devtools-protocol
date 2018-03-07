@@ -448,15 +448,15 @@ Protocol.BrowserAgent.prototype.invoke_getVersion = function(obj) {};
 /**
  * @return {!Promise<?Array<string>>}
  */
-Protocol.BrowserAgent.prototype.getCommandLine = function() {};
+Protocol.BrowserAgent.prototype.getBrowserCommandLine = function() {};
 /** @typedef {Object|undefined} */
-Protocol.BrowserAgent.GetCommandLineRequest;
+Protocol.BrowserAgent.GetBrowserCommandLineRequest;
 /** @typedef {!{arguments: !Array<string>}} */
-Protocol.BrowserAgent.GetCommandLineResponse;
+Protocol.BrowserAgent.GetBrowserCommandLineResponse;
 /**
- * @param {!Protocol.BrowserAgent.GetCommandLineRequest} obj
- * @return {!Promise<!Protocol.BrowserAgent.GetCommandLineResponse>} */
-Protocol.BrowserAgent.prototype.invoke_getCommandLine = function(obj) {};
+ * @param {!Protocol.BrowserAgent.GetBrowserCommandLineRequest} obj
+ * @return {!Promise<!Protocol.BrowserAgent.GetBrowserCommandLineResponse>} */
+Protocol.BrowserAgent.prototype.invoke_getBrowserCommandLine = function(obj) {};
 
 /**
  * @param {string=} opt_query
