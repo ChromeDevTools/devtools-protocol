@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r541407
+###### _2018-03-07 03:17:31 -0800_ | Diff: [3941055...6ddf2d1](https://github.com/ChromeDevTools/devtools-protocol/compare/3941055...6ddf2d1)
+#### `Browser`: new command
+* [`Browser.getBrowserCommandLine`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-getBrowserCommandLine)
+#### `Browser`: removed command
+* [`Browser.getCommandLine`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-getCommandLine)
+
+
 ## Roll protocol to r540852
 ###### _2018-03-05 09:16:30 -0800_ | Diff: [9aebc2d...7fc80c6](https://github.com/ChromeDevTools/devtools-protocol/compare/9aebc2d...7fc80c6)
 #### `Runtime`: modified command

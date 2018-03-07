@@ -4083,8 +4083,9 @@ Protocol.NetworkDispatcher.prototype.requestServedFromCache = function(requestId
  * @param {Protocol.Network.Response=} opt_redirectResponse
  * @param {Protocol.Page.ResourceType=} opt_type
  * @param {Protocol.Page.FrameId=} opt_frameId
+ * @param {boolean=} opt_hasUserGesture
  */
-Protocol.NetworkDispatcher.prototype.requestWillBeSent = function(requestId, loaderId, documentURL, request, timestamp, wallTime, initiator, opt_redirectResponse, opt_type, opt_frameId) {};
+Protocol.NetworkDispatcher.prototype.requestWillBeSent = function(requestId, loaderId, documentURL, request, timestamp, wallTime, initiator, opt_redirectResponse, opt_type, opt_frameId, opt_hasUserGesture) {};
 /**
  * @param {Protocol.Network.RequestId} requestId
  * @param {Protocol.Network.ResourcePriority} newPriority
