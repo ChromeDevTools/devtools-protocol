@@ -7381,13 +7381,8 @@ Protocol.Runtime.ScriptId;
 /** @typedef {string} */
 Protocol.Runtime.RemoteObjectId;
 
-/** @enum {string} */
-Protocol.Runtime.UnserializableValue = {
-    Infinity: "Infinity",
-    NaN: "NaN",
-    NegativeInfinity: "-Infinity",
-    Negative0: "-0"
-};
+/** @typedef {string} */
+Protocol.Runtime.UnserializableValue;
 
 /** @enum {string} */
 Protocol.Runtime.RemoteObjectType = {
@@ -7397,7 +7392,8 @@ Protocol.Runtime.RemoteObjectType = {
     String: "string",
     Number: "number",
     Boolean: "boolean",
-    Symbol: "symbol"
+    Symbol: "symbol",
+    Bigint: "bigint"
 };
 
 /** @enum {string} */
@@ -7433,7 +7429,8 @@ Protocol.Runtime.ObjectPreviewType = {
     String: "string",
     Number: "number",
     Boolean: "boolean",
-    Symbol: "symbol"
+    Symbol: "symbol",
+    Bigint: "bigint"
 };
 
 /** @enum {string} */
@@ -7464,7 +7461,8 @@ Protocol.Runtime.PropertyPreviewType = {
     Number: "number",
     Boolean: "boolean",
     Symbol: "symbol",
-    Accessor: "accessor"
+    Accessor: "accessor",
+    Bigint: "bigint"
 };
 
 /** @enum {string} */

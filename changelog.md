@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r541521
+###### _2018-03-07 11:15:56 -0800_ | Diff: [6ddf2d1...551a1eb](https://github.com/ChromeDevTools/devtools-protocol/compare/6ddf2d1...551a1eb)
+#### `Network`: modified event
+* [`Network.requestWillBeSent`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestWillBeSent) - The parameters's `hasUserGesture` _added_. 
+
+
 ## Roll protocol to r541407
 ###### _2018-03-07 03:17:31 -0800_ | Diff: [3941055...6ddf2d1](https://github.com/ChromeDevTools/devtools-protocol/compare/3941055...6ddf2d1)
 #### `Browser`: new command
