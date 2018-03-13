@@ -1951,10 +1951,11 @@ Protocol.DOMSnapshotAgent = function(){};
 /**
  * @param {!Array<string>} computedStyleWhitelist
  * @param {boolean=} opt_includeEventListeners
+ * @param {boolean=} opt_includePaintOrder
  * @return {!Promise<?Array<Protocol.DOMSnapshot.DOMNode>>}
  */
-Protocol.DOMSnapshotAgent.prototype.getSnapshot = function(computedStyleWhitelist, opt_includeEventListeners) {};
-/** @typedef {!{includeEventListeners: (boolean|undefined), computedStyleWhitelist: !Array<string>}} */
+Protocol.DOMSnapshotAgent.prototype.getSnapshot = function(computedStyleWhitelist, opt_includeEventListeners, opt_includePaintOrder) {};
+/** @typedef {!{includePaintOrder: (boolean|undefined), includeEventListeners: (boolean|undefined), computedStyleWhitelist: !Array<string>}} */
 Protocol.DOMSnapshotAgent.GetSnapshotRequest;
 /** @typedef {!{layoutTreeNodes: !Array<Protocol.DOMSnapshot.LayoutTreeNode>, domNodes: !Array<Protocol.DOMSnapshot.DOMNode>, computedStyles: !Array<Protocol.DOMSnapshot.ComputedStyle>}} */
 Protocol.DOMSnapshotAgent.GetSnapshotResponse;
@@ -1969,7 +1970,7 @@ Protocol.DOMSnapshot.DOMNode;
 /** @typedef {!{boundingBox:(Protocol.DOM.Rect), startCharacterIndex:(number), numCharacters:(number)}} */
 Protocol.DOMSnapshot.InlineTextBox;
 
-/** @typedef {!{domNodeIndex:(number), boundingBox:(Protocol.DOM.Rect), layoutText:(string|undefined), inlineTextNodes:(!Array<Protocol.DOMSnapshot.InlineTextBox>|undefined), styleIndex:(number|undefined)}} */
+/** @typedef {!{domNodeIndex:(number), boundingBox:(Protocol.DOM.Rect), layoutText:(string|undefined), inlineTextNodes:(!Array<Protocol.DOMSnapshot.InlineTextBox>|undefined), styleIndex:(number|undefined), paintOrder:(number|undefined)}} */
 Protocol.DOMSnapshot.LayoutTreeNode;
 
 /** @typedef {!{properties:(!Array<Protocol.DOMSnapshot.NameValue>)}} */

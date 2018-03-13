@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r542397
+###### _2018-03-11 03:15:46_ | Diff: [551a1eb...73a2c13](https://github.com/ChromeDevTools/devtools-protocol/compare/551a1eb...73a2c13)
+#### `Runtime`: modified types
+* [`Runtime.UnserializableValue`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-UnserializableValue) - `description` updated. 
+* [`Runtime.RemoteObject`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-RemoteObject) - The `0` in the properties had `bigint` _added_. 
+* [`Runtime.ObjectPreview`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-ObjectPreview) - The `0` in the properties had `bigint` _added_. 
+* [`Runtime.PropertyPreview`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-PropertyPreview) - The `1` in the properties had `bigint` _added_. 
+
+
 ## Roll protocol to r541521
 ###### _2018-03-07 11:15:56 -0800_ | Diff: [6ddf2d1...551a1eb](https://github.com/ChromeDevTools/devtools-protocol/compare/6ddf2d1...551a1eb)
 #### `Network`: modified event

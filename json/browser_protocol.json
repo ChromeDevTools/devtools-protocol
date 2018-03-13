@@ -4439,12 +4439,12 @@
                         },
                         {
                             "name": "startCharacterIndex",
-                            "description": "The starting index in characters, for this post layout textbox substring. Characters that would be represented as a surrogate pair in UTF-16 have length 2.",
+                            "description": "The starting index in characters, for this post layout textbox substring. Characters that\nwould be represented as a surrogate pair in UTF-16 have length 2.",
                             "type": "integer"
                         },
                         {
                             "name": "numCharacters",
-                            "description": "The number of characters in this post layout textbox substring. Characters that would be represented as a surrogate pair in UTF-16 have length 2.",
+                            "description": "The number of characters in this post layout textbox substring. Characters that would be\nrepresented as a surrogate pair in UTF-16 have length 2.",
                             "type": "integer"
                         }
                     ]
@@ -4482,6 +4482,12 @@
                         {
                             "name": "styleIndex",
                             "description": "Index into the `computedStyles` array returned by `getSnapshot`.",
+                            "optional": true,
+                            "type": "integer"
+                        },
+                        {
+                            "name": "paintOrder",
+                            "description": "Global paint order index, which is determined by the stacking order of the nodes. Nodes\nthat are painted together will have the same index. Only provided if includePaintOrder in\ngetSnapshot was true.",
                             "optional": true,
                             "type": "integer"
                         }
@@ -4536,6 +4542,12 @@
                         {
                             "name": "includeEventListeners",
                             "description": "Whether or not to retrieve details of DOM listeners (default false).",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "includePaintOrder",
+                            "description": "Whether to determine and include the paint order index of LayoutTreeNodes (default false).",
                             "optional": true,
                             "type": "boolean"
                         }
