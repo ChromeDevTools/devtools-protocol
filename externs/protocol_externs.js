@@ -7288,10 +7288,11 @@ Protocol.RuntimeAgent.prototype.invoke_globalLexicalScopeNames = function(obj) {
 
 /**
  * @param {Protocol.Runtime.RemoteObjectId} prototypeObjectId
+ * @param {string=} opt_objectGroup
  * @return {!Promise<?Protocol.Runtime.RemoteObject>}
  */
-Protocol.RuntimeAgent.prototype.queryObjects = function(prototypeObjectId) {};
-/** @typedef {!{prototypeObjectId: Protocol.Runtime.RemoteObjectId}} */
+Protocol.RuntimeAgent.prototype.queryObjects = function(prototypeObjectId, opt_objectGroup) {};
+/** @typedef {!{prototypeObjectId: Protocol.Runtime.RemoteObjectId, objectGroup: (string|undefined)}} */
 Protocol.RuntimeAgent.QueryObjectsRequest;
 /** @typedef {!{objects: Protocol.Runtime.RemoteObject}} */
 Protocol.RuntimeAgent.QueryObjectsResponse;

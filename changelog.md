@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r542783
+###### _2018-03-13 06:16:56_ | Diff: [73a2c13...792ac23](https://github.com/ChromeDevTools/devtools-protocol/compare/73a2c13...792ac23)
+#### `DOMSnapshot`: modified command
+* [`DOMSnapshot.getSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#method-getSnapshot) - The parameters's `includePaintOrder` _added_. 
+#### `DOMSnapshot`: modified types
+* [`DOMSnapshot.InlineTextBox`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-InlineTextBox) - The `startCharacterIndex` in the properties had `description` _updated_. The `numCharacters` in the properties had `description` _updated_. 
+* [`DOMSnapshot.LayoutTreeNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-LayoutTreeNode) - The properties's `paintOrder` _added_. 
+
+
 ## Roll protocol to r542397
 ###### _2018-03-11 03:15:46_ | Diff: [551a1eb...73a2c13](https://github.com/ChromeDevTools/devtools-protocol/compare/551a1eb...73a2c13)
 #### `Runtime`: modified types
