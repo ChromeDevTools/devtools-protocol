@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r543304
+###### _2018-03-14 21:16:19_ | Diff: [792ac23...250bac6](https://github.com/ChromeDevTools/devtools-protocol/compare/792ac23...250bac6)
+#### `Runtime`: modified command
+* [`Runtime.queryObjects`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-queryObjects) - The parameters's `objectGroup` _added_. 
+
+
 ## Roll protocol to r542783
 ###### _2018-03-13 06:16:56_ | Diff: [73a2c13...792ac23](https://github.com/ChromeDevTools/devtools-protocol/compare/73a2c13...792ac23)
 #### `DOMSnapshot`: modified command

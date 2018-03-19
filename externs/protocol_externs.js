@@ -7377,6 +7377,19 @@ Protocol.RuntimeAgent.SetCustomObjectFormatterEnabledResponse;
  * @return {!Promise<!Protocol.RuntimeAgent.SetCustomObjectFormatterEnabledResponse>} */
 Protocol.RuntimeAgent.prototype.invoke_setCustomObjectFormatterEnabled = function(obj) {};
 
+/**
+ * @return {!Promise<undefined>}
+ */
+Protocol.RuntimeAgent.prototype.terminateExecution = function() {};
+/** @typedef {Object|undefined} */
+Protocol.RuntimeAgent.TerminateExecutionRequest;
+/** @typedef {Object|undefined} */
+Protocol.RuntimeAgent.TerminateExecutionResponse;
+/**
+ * @param {!Protocol.RuntimeAgent.TerminateExecutionRequest} obj
+ * @return {!Promise<!Protocol.RuntimeAgent.TerminateExecutionResponse>} */
+Protocol.RuntimeAgent.prototype.invoke_terminateExecution = function(obj) {};
+
 /** @typedef {string} */
 Protocol.Runtime.ScriptId;
 
