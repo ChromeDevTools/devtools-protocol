@@ -7256,6 +7256,32 @@ Protocol.RuntimeAgent.EvaluateResponse;
 Protocol.RuntimeAgent.prototype.invoke_evaluate = function(obj) {};
 
 /**
+ * @return {!Promise<?string>}
+ */
+Protocol.RuntimeAgent.prototype.getIsolateId = function() {};
+/** @typedef {Object|undefined} */
+Protocol.RuntimeAgent.GetIsolateIdRequest;
+/** @typedef {!{id: string}} */
+Protocol.RuntimeAgent.GetIsolateIdResponse;
+/**
+ * @param {!Protocol.RuntimeAgent.GetIsolateIdRequest} obj
+ * @return {!Promise<!Protocol.RuntimeAgent.GetIsolateIdResponse>} */
+Protocol.RuntimeAgent.prototype.invoke_getIsolateId = function(obj) {};
+
+/**
+ * @return {!Promise<?number>}
+ */
+Protocol.RuntimeAgent.prototype.getHeapUsage = function() {};
+/** @typedef {Object|undefined} */
+Protocol.RuntimeAgent.GetHeapUsageRequest;
+/** @typedef {!{totalSize: number, usedSize: number}} */
+Protocol.RuntimeAgent.GetHeapUsageResponse;
+/**
+ * @param {!Protocol.RuntimeAgent.GetHeapUsageRequest} obj
+ * @return {!Promise<!Protocol.RuntimeAgent.GetHeapUsageResponse>} */
+Protocol.RuntimeAgent.prototype.invoke_getHeapUsage = function(obj) {};
+
+/**
  * @param {Protocol.Runtime.RemoteObjectId} objectId
  * @param {boolean=} opt_ownProperties
  * @param {boolean=} opt_accessorPropertiesOnly

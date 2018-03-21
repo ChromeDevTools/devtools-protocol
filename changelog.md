@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r544006
+###### _2018-03-19 04:16:53_ | Diff: [250bac6...e4fc001](https://github.com/ChromeDevTools/devtools-protocol/compare/250bac6...e4fc001)
+#### `Runtime`: new command
+* [`Runtime.terminateExecution`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-terminateExecution)
+
+
 ## Roll protocol to r543304
 ###### _2018-03-14 21:16:19_ | Diff: [792ac23...250bac6](https://github.com/ChromeDevTools/devtools-protocol/compare/792ac23...250bac6)
 #### `Runtime`: modified command
