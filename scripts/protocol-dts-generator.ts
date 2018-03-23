@@ -1,6 +1,6 @@
 import * as fs from 'fs'
 import * as path from 'path'
-import {IProtocol, Protocol as P} from './protocol'
+import {IProtocol, Protocol as P} from './protocol-schema'
 
 // TODO: @noj validate this via https://github.com/andischerer/typescript-json-typesafe against protocol-schema.d.ts
 import * as jsProtocol from '../json/js_protocol.json'
