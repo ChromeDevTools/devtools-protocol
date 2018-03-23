@@ -1,8 +1,13 @@
 {
+  "version": "0.0.510771",
+  "scripts": {
+    "build-protocol-dts": "ts-node protocol-dts-generator.ts"
+  },
   "devDependencies": {
     "just-diff": "^2.1.0",
     "obj-list-diff": "^1.0.0",
-    "simple-git": "^1.75.0"
-  },
-  "version": "0.0.510771"
+    "simple-git": "^1.75.0",
+    "ts-node": "^5.0.1",
+    "typescript": "^2.7.2"
+  }
 }
