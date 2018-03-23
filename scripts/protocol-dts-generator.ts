@@ -122,6 +122,8 @@ const getPropertyType = (prop: any): string  => {
         return `(${prop.accepts.map(getPropertyDef).join(', ')}) => ${prop.returns || 'void'}`
     else if (prop.type == 'string' && prop.enum)
         return '(' + prop.enum.map((v: string) => `'${v}'`).join(' | ') + ')'
+    else if (prop.type == 'string' && prop.val)
+        return `'${prop.val}'`
     return prop.type
 }
 
@@ -162,10 +164,10 @@ const emitCommand = (command: P.Command, domain: string): ClientDef => {
     const methodDef = [{name: 'method', $ref: `'${domain}.${command.name}'`}]
 
     const clientDef: P.FunctionType = {
-        type: 'lambda',
+        type: 'function',
         description: command.description,
         name: command.name,
-        optional: true,
+        optional: false,
         accepts: paramsDef,
         returns: `Promise<${responseType || 'void'}>`
     }
@@ -186,10 +188,15 @@ const emitEvent = (event: P.Event, domain: string): ClientDef => {
     const clientDef: P.FunctionType = {
         type: 'function',
         description: event.description,
-        name: `on${titleCase}`,
+        name: `on`,
         accepts: [
             {
-                name: "handler",
+                name: "event",
+                type: "string",
+                val: event.name,
+            },
+            {
+                name: "listener",
                 type: "lambda",
                 accepts: paramsDef
             }
