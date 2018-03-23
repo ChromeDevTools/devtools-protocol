@@ -10,5 +10,6 @@
   },
   "scripts": {
     "prepublishOnly": "(cd scripts; npm run build-protocol-dts)"
-  }
+  },
+  "types": "types/protocol.d.ts"
 }
