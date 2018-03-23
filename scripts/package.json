@@ -4,6 +4,7 @@
     "build-protocol-dts": "ts-node protocol-dts-generator.ts"
   },
   "devDependencies": {
+    "@types/node": "^9.6.0",
     "just-diff": "^2.1.0",
     "obj-list-diff": "^1.0.0",
     "simple-git": "^1.75.0",

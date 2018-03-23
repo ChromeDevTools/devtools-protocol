@@ -70,6 +70,8 @@ export module Protocol {
         type: "string"
         /** Possible values of a string. */
         enum?: string[]
+        /** Only one possible value, e.g. on(event: 'xyz') */
+        val?: string
     }
 
     export interface PrimitiveType {

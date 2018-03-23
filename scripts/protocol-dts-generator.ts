@@ -79,7 +79,6 @@ const emitDomain = (domain: P.Domain) => {
     domain.types ? domain.types.forEach(emitType) : null
     const commandDefs = domain.commands ? domain.commands.map(c => emitCommand(c, domainName)) : []
     const eventDefs = domain.events ? domain.events.map(e => emitEvent(e, domainName)) : []
-    const functionDefs = commandDefs.concat(eventDefs)
     emitCloseBlock()
     const clientDefs = [...commandDefs.map(d => d.client), ...eventDefs.map(d => d.client)]
     emitInterface(`${domainName}Api`, clientDefs)

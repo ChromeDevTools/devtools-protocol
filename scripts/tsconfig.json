@@ -4,6 +4,7 @@
         "noImplicitAny": true,
         "removeComments": false,
         "target": "ES6",
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "typeRoots": ["node_modules/@types"]
     }
 }
