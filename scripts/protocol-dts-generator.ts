@@ -94,7 +94,7 @@ const getCommentLines = (description: string) => {
         .replace(/<code>(.*)<\/code>/g, "'$1'")
         .split(/\r?\n/g)
         .map(line => ` * ${line}`)
-    return [`/**`, ... lines, ,` */`]
+    return [`/**`, ...lines, ,` */`]
 }
 
 const emitDescription = (description: string) => {
