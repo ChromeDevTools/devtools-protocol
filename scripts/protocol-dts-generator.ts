@@ -1,7 +1,8 @@
 import * as fs from 'fs'
 import * as path from 'path'
 import {IProtocol, Protocol as P} from './protocol'
-// Rather than reading json as JSON.parse, we import a typed object
+
+// TODO: @noj validate this via https://github.com/andischerer/typescript-json-typesafe against protocol-schema.d.ts
 import * as jsProtocol from '../json/js_protocol.json'
 import * as browserProtocol from '../json/browser_protocol.json'
 
