@@ -10226,7 +10226,7 @@
                         },
                         {
                             "name": "headerTemplate",
-                            "description": "HTML template for the print header. Should be valid HTML markup with following\nclasses used to inject printing values into them:\n- date - formatted print date\n- title - document title\n- url - document location\n- pageNumber - current page number\n- totalPages - total pages in the document\n\nFor example, <span class=title></span> would generate span containing the title.",
+                            "description": "HTML template for the print header. Should be valid HTML markup with following\nclasses used to inject printing values into them:\n- `date`: formatted print date\n- `title`: document title\n- `url`: document location\n- `pageNumber`: current page number\n- `totalPages`: total pages in the document\n\nFor example, `<span class=title></span>` would generate span containing the title.",
                             "optional": true,
                             "type": "string"
                         },
@@ -11130,7 +11130,7 @@
                 },
                 {
                     "name": "setOverrideCertificateErrors",
-                    "description": "Enable/disable overriding certificate errors. If enabled, all certificate error events need to\nbe handled by the DevTools client and should be answered with handleCertificateError commands.",
+                    "description": "Enable/disable overriding certificate errors. If enabled, all certificate error events need to\nbe handled by the DevTools client and should be answered with `handleCertificateError` commands.",
                     "deprecated": true,
                     "parameters": [
                         {
@@ -11144,7 +11144,7 @@
             "events": [
                 {
                     "name": "certificateError",
-                    "description": "There is a certificate error. If overriding certificate errors is enabled, then it should be\nhandled with the handleCertificateError command. Note: this event does not fire if the\ncertificate error has been allowed internally. Only one client per target should override\ncertificate errors at the same time.",
+                    "description": "There is a certificate error. If overriding certificate errors is enabled, then it should be\nhandled with the `handleCertificateError` command. Note: this event does not fire if the\ncertificate error has been allowed internally. Only one client per target should override\ncertificate errors at the same time.",
                     "deprecated": true,
                     "parameters": [
                         {

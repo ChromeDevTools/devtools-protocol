@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r544660
+###### _2018-03-21 03:16:20_ | Diff: [e4fc001...f5b1e8d](https://github.com/ChromeDevTools/devtools-protocol/compare/e4fc001...f5b1e8d)
+#### `Runtime`: new commands
+* [`Runtime.getIsolateId`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-getIsolateId)
+* [`Runtime.getHeapUsage`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-getHeapUsage)
+
+
 ## Roll protocol to r544006
 ###### _2018-03-19 04:16:53_ | Diff: [250bac6...e4fc001](https://github.com/ChromeDevTools/devtools-protocol/compare/250bac6...e4fc001)
 #### `Runtime`: new command
