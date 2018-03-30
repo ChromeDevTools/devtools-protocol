@@ -7,5 +7,9 @@
   "license": "SEE LICENSE IN https://chromium.googlesource.com/chromium/src/+/master/LICENSE",
   "bugs": {
     "url": "https://github.com/ChromeDevTools/devtools-protocol/issues"
-  }
+  },
+  "scripts": {
+    "prepublishOnly": "(cd scripts; npm run build-protocol-dts)"
+  },
+  "types": "types/protocol.d.ts"
 }
