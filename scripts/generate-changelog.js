@@ -8,6 +8,7 @@ const objListDiff = require('obj-list-diff');
 const justDiff = require('just-diff').diff;
 
 let results = '';
+const wait = (n = 100) => new Promise(res => setTimeout(res, n));
 
 /**
  * Changeset handles diffing the unique shape of the protocol
@@ -248,13 +249,15 @@ class CommitCrawler {
     }
     await git.reset('hard');
     await git.fetch();
+    await wait();
     await git.checkout('origin/HEAD');
+    await wait();
     const commitlog = await git.log();
     this.commitlogs = commitlog.all;
 
     for (let i = 0; i < this.commitlogs.length; i++) {
       // Skip the first commits of the repo.
-      if (i >= this.commitlogs.length - 3) continue;
+      if (i >= (this.commitlogs.length - 3)) continue;
 
       // Hack to quit early.
       // if (i < 2) continue;
@@ -270,6 +273,8 @@ class CommitCrawler {
   }
 
   async checkoutAndDiff(commit, previousCommit) {
+    console.log(`Calculate diff of ${commit.hash.slice(0, 7)} to ${previousCommit.hash.slice(0, 7)}.  ${commit.date}`);
+
     const readJSON = filename => JSON.parse(fs.readFileSync(`${this.path}/json/${filename}`, 'utf-8'));
 
     await this.git.checkout(commit.hash);

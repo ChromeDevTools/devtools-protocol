@@ -1,7 +1,8 @@
 {
   "version": "0.0.510771",
   "scripts": {
-    "build-protocol-dts": "ts-node protocol-dts-generator.ts"
+    "build-protocol-dts": "ts-node protocol-dts-generator.ts",
+    "changelog": "node generate-changelog.js"
   },
   "devDependencies": {
     "@types/node": "^9.6.0",
