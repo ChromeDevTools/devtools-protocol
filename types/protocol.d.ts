@@ -11474,13 +11474,13 @@ export namespace Protocol {
             /**
              * HTML template for the print header. Should be valid HTML markup with following
              * classes used to inject printing values into them:
-             * - date - formatted print date
-             * - title - document title
-             * - url - document location
-             * - pageNumber - current page number
-             * - totalPages - total pages in the document
+             * - `date`: formatted print date
+             * - `title`: document title
+             * - `url`: document location
+             * - `pageNumber`: current page number
+             * - `totalPages`: total pages in the document
              * 
-             * For example, <span class=title></span> would generate span containing the title.
+             * For example, `<span class=title></span>` would generate span containing the title.
              */
             headerTemplate?: string;
 
@@ -12462,13 +12462,13 @@ export namespace Protocol {
 
         /**
          * Enable/disable overriding certificate errors. If enabled, all certificate error events need to
-         * be handled by the DevTools client and should be answered with handleCertificateError commands.
+         * be handled by the DevTools client and should be answered with `handleCertificateError` commands.
          */
         setOverrideCertificateErrors(params: Security.SetOverrideCertificateErrorsRequest): Promise<void>;
 
         /**
          * There is a certificate error. If overriding certificate errors is enabled, then it should be
-         * handled with the handleCertificateError command. Note: this event does not fire if the
+         * handled with the `handleCertificateError` command. Note: this event does not fire if the
          * certificate error has been allowed internally. Only one client per target should override
          * certificate errors at the same time.
          */

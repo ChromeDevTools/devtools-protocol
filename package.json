@@ -1,15 +1,12 @@
 {
   "name": "devtools-protocol",
-  "version": "0.0.547073",
+  "version": "0.0.547074",
   "description": "The Chrome DevTools Protocol JSON",
   "repository": "https://github.com/ChromeDevTools/devtools-protocol",
   "author": "The Chromium Authors",
   "license": "SEE LICENSE IN https://chromium.googlesource.com/chromium/src/+/master/LICENSE",
   "bugs": {
     "url": "https://github.com/ChromeDevTools/devtools-protocol/issues"
-  },
-  "scripts": {
-    "prepublishOnly": "(cd scripts; npm run build-protocol-dts)"
   },
   "types": "types/protocol.d.ts"
 }

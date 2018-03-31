@@ -45,6 +45,7 @@ if ! git diff --no-ext-diff --quiet --ignore-submodules --exit-code; then
 	# generate changelog
 	cd "$protocol_repo_path/scripts" || exit 1
 	$HOME/bin/yarn install --non-interactive
+	$HOME/bin/yarn run build-protocol-dts
 	$HOME/.homebrew/bin/node $protocol_repo_path/scripts/generate-changes.js
 
 	# publish to npm
