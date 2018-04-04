@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r547073
+###### _2018-03-29 19:17:03_ | Diff: [e367b98...914920e](https://github.com/ChromeDevTools/devtools-protocol/compare/e367b98...914920e)
+#### `Page`: modified command
+* [`Page.printToPDF`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-printToPDF) - The `headerTemplate` in the parameters had `description` _updated_. 
+#### `Security`: modified command
+* [`Security.setOverrideCertificateErrors`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#method-setOverrideCertificateErrors) - `description` updated. 
+#### `Security`: modified event
+* [`Security.certificateError`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#event-certificateError) - `description` updated. 
+
+
 ## Roll protocol to r544660
 ###### _2018-03-21 03:16:20_ | Diff: [e4fc001...f5b1e8d](https://github.com/ChromeDevTools/devtools-protocol/compare/e4fc001...f5b1e8d)
 #### `Runtime`: new commands

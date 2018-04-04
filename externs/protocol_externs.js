@@ -5140,9 +5140,10 @@ Protocol.PageDispatcher.prototype.javascriptDialogClosed = function(result, user
  * @param {string} url
  * @param {string} message
  * @param {Protocol.Page.DialogType} type
+ * @param {boolean} hasBrowserHandler
  * @param {string=} opt_defaultPrompt
  */
-Protocol.PageDispatcher.prototype.javascriptDialogOpening = function(url, message, type, opt_defaultPrompt) {};
+Protocol.PageDispatcher.prototype.javascriptDialogOpening = function(url, message, type, hasBrowserHandler, opt_defaultPrompt) {};
 /**
  * @param {Protocol.Page.FrameId} frameId
  * @param {Protocol.Network.LoaderId} loaderId

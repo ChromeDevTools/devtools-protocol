@@ -10795,6 +10795,11 @@
                             "$ref": "DialogType"
                         },
                         {
+                            "name": "hasBrowserHandler",
+                            "description": "True iff browser is capable showing or acting on the given dialog. When browser has no\ndialog handler for given target, calling alert while Page domain is engaged will stall\nthe page execution. Execution can be resumed via calling Page.handleJavaScriptDialog.",
+                            "type": "boolean"
+                        },
+                        {
                             "name": "defaultPrompt",
                             "description": "Default dialog prompt.",
                             "optional": true,
