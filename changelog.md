@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r548385
+###### _2018-04-05 04:15:56_ | Diff: [028a567...9ce98fd](https://github.com/ChromeDevTools/devtools-protocol/compare/028a567...9ce98fd)
+#### `Emulation`: modified command
+* [`Emulation.setVirtualTimePolicy`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setVirtualTimePolicy) - The return value's `virtualTimeTicksBase` _added_. 
+#### `HeadlessExperimental`: modified command
+* [`HeadlessExperimental.beginFrame`](https://chromedevtools.github.io/devtools-protocol/tot/HeadlessExperimental/#method-beginFrame) - The `deadline` in the parameters had `$ref` _removed_. The `interval` in the parameters had `type` _removed_. The `screenshot` in the parameters had `$ref` _removed_. The `frameTime` in the parameters had `description` _updated_. The `deadline` in the parameters had `name` _updated_. The `deadline` in the parameters had `description` _updated_. The `interval` in the parameters had `name` _updated_. The `interval` in the parameters had `description` _updated_. The `noDisplayUpdates` in the parameters had `name` _updated_. The `noDisplayUpdates` in the parameters had `description` _updated_. The `noDisplayUpdates` in the parameters had `type` _updated_. The `screenshot` in the parameters had `name` _updated_. The `screenshot` in the parameters had `description` _updated_. The parameters's `type` _added_ (2 times). The parameters's `$ref` _added_. The parameters's `noDisplayUpdates` _added_. The parameters's `screenshot` _added_. 
+
+
 ## Roll protocol to r548216
 ###### _2018-04-04 15:17:24_ | Diff: [20d9703...86650dd](https://github.com/ChromeDevTools/devtools-protocol/compare/20d9703...86650dd)
 #### `Page`: modified event

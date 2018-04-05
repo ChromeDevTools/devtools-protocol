@@ -10381,6 +10381,18 @@
                     ]
                 },
                 {
+                    "name": "setBypassCSP",
+                    "description": "Enable page Content Security Policy by-passing.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "enabled",
+                            "description": "Whether to bypass page CSP.",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
                     "name": "setDeviceMetricsOverride",
                     "description": "Overrides the values of device screen dimensions (window.screen.width, window.screen.height,\nwindow.innerWidth, window.innerHeight, and \"device-width\"/\"device-height\"-related CSS media\nquery results).",
                     "experimental": true,

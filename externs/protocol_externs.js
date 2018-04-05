@@ -4843,6 +4843,20 @@ Protocol.PageAgent.SetAdBlockingEnabledResponse;
 Protocol.PageAgent.prototype.invoke_setAdBlockingEnabled = function(obj) {};
 
 /**
+ * @param {boolean} enabled
+ * @return {!Promise<undefined>}
+ */
+Protocol.PageAgent.prototype.setBypassCSP = function(enabled) {};
+/** @typedef {!{enabled: boolean}} */
+Protocol.PageAgent.SetBypassCSPRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.SetBypassCSPResponse;
+/**
+ * @param {!Protocol.PageAgent.SetBypassCSPRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.SetBypassCSPResponse>} */
+Protocol.PageAgent.prototype.invoke_setBypassCSP = function(obj) {};
+
+/**
  * @param {number} width
  * @param {number} height
  * @param {number} deviceScaleFactor

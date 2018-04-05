@@ -11589,6 +11589,13 @@ export namespace Protocol {
             enabled: boolean;
         }
 
+        export interface SetBypassCSPRequest {
+            /**
+             * Whether to bypass page CSP.
+             */
+            enabled: boolean;
+        }
+
         export interface SetDeviceMetricsOverrideRequest {
             /**
              * Overriding width value in pixels (minimum 0, maximum 10000000). 0 disables the override.
@@ -12084,6 +12091,11 @@ export namespace Protocol {
          * Enable Chrome's experimental ad filter on all sites.
          */
         setAdBlockingEnabled(params: Page.SetAdBlockingEnabledRequest): Promise<void>;
+
+        /**
+         * Enable page Content Security Policy by-passing.
+         */
+        setBypassCSP(params: Page.SetBypassCSPRequest): Promise<void>;
 
         /**
          * Overrides the values of device screen dimensions (window.screen.width, window.screen.height,
