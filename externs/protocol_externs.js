@@ -2442,7 +2442,7 @@ Protocol.EmulationAgent.prototype.invoke_setTouchEmulationEnabled = function(obj
 Protocol.EmulationAgent.prototype.setVirtualTimePolicy = function(policy, opt_budget, opt_maxVirtualTimeTaskStarvationCount, opt_waitForNavigation) {};
 /** @typedef {!{policy: Protocol.Emulation.VirtualTimePolicy, maxVirtualTimeTaskStarvationCount: (number|undefined), waitForNavigation: (boolean|undefined), budget: (number|undefined)}} */
 Protocol.EmulationAgent.SetVirtualTimePolicyRequest;
-/** @typedef {!{virtualTimeBase: Protocol.Runtime.Timestamp}} */
+/** @typedef {!{virtualTimeBase: Protocol.Runtime.Timestamp, virtualTimeTicksBase: number}} */
 Protocol.EmulationAgent.SetVirtualTimePolicyResponse;
 /**
  * @param {!Protocol.EmulationAgent.SetVirtualTimePolicyRequest} obj
@@ -2502,14 +2502,16 @@ Protocol.HeadlessExperimentalAgent = function(){};
 
 /**
  * @param {Protocol.Runtime.Timestamp=} opt_frameTime
+ * @param {number=} opt_frameTimeTicks
  * @param {Protocol.Runtime.Timestamp=} opt_deadline
+ * @param {number=} opt_deadlineTicks
  * @param {number=} opt_interval
  * @param {boolean=} opt_noDisplayUpdates
  * @param {Protocol.HeadlessExperimental.ScreenshotParams=} opt_screenshot
  * @return {!Promise<?boolean>}
  */
-Protocol.HeadlessExperimentalAgent.prototype.beginFrame = function(opt_frameTime, opt_deadline, opt_interval, opt_noDisplayUpdates, opt_screenshot) {};
-/** @typedef {!{interval: (number|undefined), deadline: (Protocol.Runtime.Timestamp|undefined), frameTime: (Protocol.Runtime.Timestamp|undefined), screenshot: (Protocol.HeadlessExperimental.ScreenshotParams|undefined), noDisplayUpdates: (boolean|undefined)}} */
+Protocol.HeadlessExperimentalAgent.prototype.beginFrame = function(opt_frameTime, opt_frameTimeTicks, opt_deadline, opt_deadlineTicks, opt_interval, opt_noDisplayUpdates, opt_screenshot) {};
+/** @typedef {!{screenshot: (Protocol.HeadlessExperimental.ScreenshotParams|undefined), interval: (number|undefined), frameTime: (Protocol.Runtime.Timestamp|undefined), deadline: (Protocol.Runtime.Timestamp|undefined), noDisplayUpdates: (boolean|undefined), deadlineTicks: (number|undefined), frameTimeTicks: (number|undefined)}} */
 Protocol.HeadlessExperimentalAgent.BeginFrameRequest;
 /** @typedef {!{hasDamage: boolean, screenshotData: string}} */
 Protocol.HeadlessExperimentalAgent.BeginFrameResponse;

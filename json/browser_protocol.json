@@ -5218,6 +5218,11 @@
                             "name": "virtualTimeBase",
                             "description": "Absolute timestamp at which virtual time was first enabled (milliseconds since epoch).",
                             "$ref": "Runtime.Timestamp"
+                        },
+                        {
+                            "name": "virtualTimeTicksBase",
+                            "description": "Absolute timestamp at which virtual time was first enabled (up time in milliseconds).",
+                            "type": "number"
                         }
                     ]
                 },
@@ -5312,15 +5317,27 @@
                     "parameters": [
                         {
                             "name": "frameTime",
-                            "description": "Timestamp of this BeginFrame (milliseconds since epoch). If not set, the current time will\nbe used.",
+                            "description": "Timestamp of this BeginFrame (milliseconds since epoch). If not set, the current time will\nbe used unless frameTicks is specified.",
                             "optional": true,
                             "$ref": "Runtime.Timestamp"
                         },
                         {
+                            "name": "frameTimeTicks",
+                            "description": "Timestamp of this BeginFrame in Renderer TimeTicks (milliseconds of uptime). If not set,\nthe current time will be used unless frameTime is specified.",
+                            "optional": true,
+                            "type": "number"
+                        },
+                        {
                             "name": "deadline",
-                            "description": "Deadline of this BeginFrame (milliseconds since epoch). If not set, the deadline will be\ncalculated from the frameTime and interval.",
+                            "description": "Deadline of this BeginFrame (milliseconds since epoch). If not set, the deadline will be\ncalculated from the frameTime and interval unless deadlineTicks is specified.",
                             "optional": true,
                             "$ref": "Runtime.Timestamp"
+                        },
+                        {
+                            "name": "deadlineTicks",
+                            "description": "Deadline of this BeginFrame in Renderer TimeTicks  (milliseconds of uptime). If not set,\nthe deadline will be calculated from the frameTime and interval unless deadline is specified.",
+                            "optional": true,
+                            "type": "number"
                         },
                         {
                             "name": "interval",

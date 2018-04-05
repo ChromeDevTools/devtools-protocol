@@ -7069,6 +7069,11 @@ export namespace Protocol {
              * Absolute timestamp at which virtual time was first enabled (milliseconds since epoch).
              */
             virtualTimeBase: Runtime.Timestamp;
+
+            /**
+             * Absolute timestamp at which virtual time was first enabled (up time in milliseconds).
+             */
+            virtualTimeTicksBase: number;
         }
 
         export interface SetVisibleSizeRequest {
@@ -7224,15 +7229,27 @@ export namespace Protocol {
         export interface BeginFrameRequest {
             /**
              * Timestamp of this BeginFrame (milliseconds since epoch). If not set, the current time will
-             * be used.
+             * be used unless frameTicks is specified.
              */
             frameTime?: Runtime.Timestamp;
 
             /**
+             * Timestamp of this BeginFrame in Renderer TimeTicks (milliseconds of uptime). If not set,
+             * the current time will be used unless frameTime is specified.
+             */
+            frameTimeTicks?: number;
+
+            /**
              * Deadline of this BeginFrame (milliseconds since epoch). If not set, the deadline will be
-             * calculated from the frameTime and interval.
+             * calculated from the frameTime and interval unless deadlineTicks is specified.
              */
             deadline?: Runtime.Timestamp;
+
+            /**
+             * Deadline of this BeginFrame in Renderer TimeTicks  (milliseconds of uptime). If not set,
+             * the deadline will be calculated from the frameTime and interval unless deadline is specified.
+             */
+            deadlineTicks?: number;
 
             /**
              * The interval between BeginFrames that is reported to the compositor, in milliseconds.

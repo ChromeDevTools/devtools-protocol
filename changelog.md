@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r548216
+###### _2018-04-04 15:17:24_ | Diff: [20d9703...86650dd](https://github.com/ChromeDevTools/devtools-protocol/compare/20d9703...86650dd)
+#### `Page`: modified event
+* [`Page.javascriptDialogOpening`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-javascriptDialogOpening) - The `defaultPrompt` in the parameters had `optional` _removed_. The `defaultPrompt` in the parameters had `name` _updated_. The `defaultPrompt` in the parameters had `description` _updated_. The `defaultPrompt` in the parameters had `type` _updated_. The parameters's `defaultPrompt` _added_. 
+
+
 ## Roll protocol to r547073
 ###### _2018-03-29 19:17:03_ | Diff: [e367b98...914920e](https://github.com/ChromeDevTools/devtools-protocol/compare/e367b98...914920e)
 #### `Page`: modified command
