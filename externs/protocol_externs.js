@@ -3953,8 +3953,15 @@ Protocol.Network.Request;
 /** @typedef {!{status:(string), origin:(string), logDescription:(string), logId:(string), timestamp:(Protocol.Network.TimeSinceEpoch), hashAlgorithm:(string), signatureAlgorithm:(string), signatureData:(string)}} */
 Protocol.Network.SignedCertificateTimestamp;
 
-/** @typedef {!{protocol:(string), keyExchange:(string), keyExchangeGroup:(string|undefined), cipher:(string), mac:(string|undefined), certificateId:(Protocol.Security.CertificateId), subjectName:(string), sanList:(!Array<string>), issuer:(string), validFrom:(Protocol.Network.TimeSinceEpoch), validTo:(Protocol.Network.TimeSinceEpoch), signedCertificateTimestampList:(!Array<Protocol.Network.SignedCertificateTimestamp>)}} */
+/** @typedef {!{protocol:(string), keyExchange:(string), keyExchangeGroup:(string|undefined), cipher:(string), mac:(string|undefined), certificateId:(Protocol.Security.CertificateId), subjectName:(string), sanList:(!Array<string>), issuer:(string), validFrom:(Protocol.Network.TimeSinceEpoch), validTo:(Protocol.Network.TimeSinceEpoch), signedCertificateTimestampList:(!Array<Protocol.Network.SignedCertificateTimestamp>), certificateTransparencyCompliance:(Protocol.Network.CertificateTransparencyCompliance)}} */
 Protocol.Network.SecurityDetails;
+
+/** @enum {string} */
+Protocol.Network.CertificateTransparencyCompliance = {
+    Unknown: "unknown",
+    NotCompliant: "not-compliant",
+    Compliant: "compliant"
+};
 
 /** @enum {string} */
 Protocol.Network.BlockedReason = {

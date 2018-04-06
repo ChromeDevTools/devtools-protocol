@@ -7508,7 +7508,22 @@
                             "items": {
                                 "$ref": "SignedCertificateTimestamp"
                             }
+                        },
+                        {
+                            "name": "certificateTransparencyCompliance",
+                            "description": "Whether the request complied with Certificate Transparency policy",
+                            "$ref": "CertificateTransparencyCompliance"
                         }
+                    ]
+                },
+                {
+                    "id": "CertificateTransparencyCompliance",
+                    "description": "Whether the request complied with Certificate Transparency policy.",
+                    "type": "string",
+                    "enum": [
+                        "unknown",
+                        "not-compliant",
+                        "compliant"
                     ]
                 },
                 {

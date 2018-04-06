@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r548607
+###### _2018-04-05 16:16:34_ | Diff: [9ce98fd...1c8a690](https://github.com/ChromeDevTools/devtools-protocol/compare/9ce98fd...1c8a690)
+#### `Page`: new command
+* [`Page.setBypassCSP`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setBypassCSP)
+
+
 ## Roll protocol to r548385
 ###### _2018-04-05 04:15:56_ | Diff: [028a567...9ce98fd](https://github.com/ChromeDevTools/devtools-protocol/compare/028a567...9ce98fd)
 #### `Emulation`: modified command

@@ -9108,7 +9108,17 @@ export namespace Protocol {
              * List of signed certificate timestamps (SCTs).
              */
             signedCertificateTimestampList: SignedCertificateTimestamp[];
+
+            /**
+             * Whether the request complied with Certificate Transparency policy
+             */
+            certificateTransparencyCompliance: CertificateTransparencyCompliance;
         }
+
+        /**
+         * Whether the request complied with Certificate Transparency policy.
+         */
+        export type CertificateTransparencyCompliance = ('unknown' | 'not-compliant' | 'compliant');
 
         /**
          * The reason why request was blocked.
