@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r548678
+###### _2018-04-05 22:16:22_ | Diff: [1c8a690...8dcb075](https://github.com/ChromeDevTools/devtools-protocol/compare/1c8a690...8dcb075)
+#### `Network`: new type
+* [`Network.CertificateTransparencyCompliance`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CertificateTransparencyCompliance)
+#### `Network`: modified type
+* [`Network.SecurityDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SecurityDetails) - The properties's `certificateTransparencyCompliance` _added_. 
+
+
 ## Roll protocol to r548607
 ###### _2018-04-05 16:16:34_ | Diff: [9ce98fd...1c8a690](https://github.com/ChromeDevTools/devtools-protocol/compare/9ce98fd...1c8a690)
 #### `Page`: new command

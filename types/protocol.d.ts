@@ -11914,6 +11914,18 @@ export namespace Protocol {
             timestamp: Network.MonotonicTime;
         }
 
+        export interface NavigatedWithinDocumentEvent {
+            /**
+             * Id of the frame.
+             */
+            frameId: FrameId;
+
+            /**
+             * Frame's new url.
+             */
+            url: string;
+        }
+
         export interface ScreencastFrameEvent {
             /**
              * Base64-encoded compressed image.
@@ -12232,6 +12244,11 @@ export namespace Protocol {
         on(event: 'lifecycleEvent', listener: (params: Page.LifecycleEventEvent) => void): void;
 
         on(event: 'loadEventFired', listener: (params: Page.LoadEventFiredEvent) => void): void;
+
+        /**
+         * Fired when same-document navigation happens, e.g. due to history API usage or anchor navigation.
+         */
+        on(event: 'navigatedWithinDocument', listener: (params: Page.NavigatedWithinDocumentEvent) => void): void;
 
         /**
          * Compressed image data requested by the `startScreencast`.
