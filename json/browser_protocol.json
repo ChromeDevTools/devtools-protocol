@@ -10885,6 +10885,23 @@
                     ]
                 },
                 {
+                    "name": "navigatedWithinDocument",
+                    "description": "Fired when same-document navigation happens, e.g. due to history API usage or anchor navigation.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "frameId",
+                            "description": "Id of the frame.",
+                            "$ref": "FrameId"
+                        },
+                        {
+                            "name": "url",
+                            "description": "Frame's new url.",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "screencastFrame",
                     "description": "Compressed image data requested by the `startScreencast`.",
                     "experimental": true,

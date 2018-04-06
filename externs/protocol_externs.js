@@ -5179,6 +5179,11 @@ Protocol.PageDispatcher.prototype.lifecycleEvent = function(frameId, loaderId, n
  */
 Protocol.PageDispatcher.prototype.loadEventFired = function(timestamp) {};
 /**
+ * @param {Protocol.Page.FrameId} frameId
+ * @param {string} url
+ */
+Protocol.PageDispatcher.prototype.navigatedWithinDocument = function(frameId, url) {};
+/**
  * @param {string} data
  * @param {Protocol.Page.ScreencastFrameMetadata} metadata
  * @param {number} sessionId
