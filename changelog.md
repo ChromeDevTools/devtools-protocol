@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r548694 546310
+###### _2018-04-05 23:16:18_ | Diff: [8dcb075...b4e9799](https://github.com/ChromeDevTools/devtools-protocol/compare/8dcb075...b4e9799)
+#### `Page`: new event
+* [`Page.navigatedWithinDocument`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-navigatedWithinDocument)
+
+
 ## Roll protocol to r548678
 ###### _2018-04-05 22:16:22_ | Diff: [1c8a690...8dcb075](https://github.com/ChromeDevTools/devtools-protocol/compare/1c8a690...8dcb075)
 #### `Network`: new type

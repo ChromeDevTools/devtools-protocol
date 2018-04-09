@@ -7,12 +7,14 @@ Protocol.Accessibility = {};
 Protocol.AccessibilityAgent = function(){};
 
 /**
- * @param {Protocol.DOM.NodeId} nodeId
+ * @param {Protocol.DOM.NodeId=} opt_nodeId
+ * @param {Protocol.DOM.BackendNodeId=} opt_backendNodeId
+ * @param {Protocol.Runtime.RemoteObjectId=} opt_objectId
  * @param {boolean=} opt_fetchRelatives
  * @return {!Promise<?Array<Protocol.Accessibility.AXNode>>}
  */
-Protocol.AccessibilityAgent.prototype.getPartialAXTree = function(nodeId, opt_fetchRelatives) {};
-/** @typedef {!{nodeId: Protocol.DOM.NodeId, fetchRelatives: (boolean|undefined)}} */
+Protocol.AccessibilityAgent.prototype.getPartialAXTree = function(opt_nodeId, opt_backendNodeId, opt_objectId, opt_fetchRelatives) {};
+/** @typedef {!{objectId: (Protocol.Runtime.RemoteObjectId|undefined), nodeId: (Protocol.DOM.NodeId|undefined), backendNodeId: (Protocol.DOM.BackendNodeId|undefined), fetchRelatives: (boolean|undefined)}} */
 Protocol.AccessibilityAgent.GetPartialAXTreeRequest;
 /** @typedef {!{nodes: !Array<Protocol.Accessibility.AXNode>}} */
 Protocol.AccessibilityAgent.GetPartialAXTreeResponse;

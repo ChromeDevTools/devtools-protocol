@@ -328,8 +328,21 @@
                     "parameters": [
                         {
                             "name": "nodeId",
-                            "description": "ID of node to get the partial accessibility tree for.",
+                            "description": "Identifier of the node to get the partial accessibility tree for.",
+                            "optional": true,
                             "$ref": "DOM.NodeId"
+                        },
+                        {
+                            "name": "backendNodeId",
+                            "description": "Identifier of the backend node to get the partial accessibility tree for.",
+                            "optional": true,
+                            "$ref": "DOM.BackendNodeId"
+                        },
+                        {
+                            "name": "objectId",
+                            "description": "JavaScript object id of the node wrapper to get the partial accessibility tree for.",
+                            "optional": true,
+                            "$ref": "Runtime.RemoteObjectId"
                         },
                         {
                             "name": "fetchRelatives",

@@ -2799,9 +2799,19 @@ export namespace Protocol {
 
         export interface GetPartialAXTreeRequest {
             /**
-             * ID of node to get the partial accessibility tree for.
+             * Identifier of the node to get the partial accessibility tree for.
              */
-            nodeId: DOM.NodeId;
+            nodeId?: DOM.NodeId;
+
+            /**
+             * Identifier of the backend node to get the partial accessibility tree for.
+             */
+            backendNodeId?: DOM.BackendNodeId;
+
+            /**
+             * JavaScript object id of the node wrapper to get the partial accessibility tree for.
+             */
+            objectId?: Runtime.RemoteObjectId;
 
             /**
              * Whether to fetch this nodes ancestors, siblings and children. Defaults to true.
