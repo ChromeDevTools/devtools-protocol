@@ -18,7 +18,7 @@ git checkout -f origin/master
 env GYP_DEFINES=disable_nacl=1 gclient sync --jobs=70 --nohooks
 
 
-browser_protocol_path="$chromium_src_path/third_party/WebKit/Source/core/inspector/browser_protocol.json"
+browser_protocol_path="$chromium_src_path/third_party/blink/renderer/core/inspector/browser_protocol.json"
 js_protocol_path="$chromium_src_path/v8/src/inspector/js_protocol.json"
 
 # copy the two protocol.json files over.
@@ -30,7 +30,7 @@ commit_pos_line=$(git log --date=iso --no-color --max-count=1 | gtac | grep -E -
 commit_rev=$(echo "$commit_pos_line" | grep -E -o "\d+")
 
 # generate externs
-python "$chromium_src_path/third_party/WebKit/Source/devtools/scripts/build/generate_protocol_externs.py" -o "$protocol_repo_path/externs/protocol_externs.js" "$browser_protocol_path" "$js_protocol_path"
+python "$chromium_src_path/third_party/blink/renderer/devtools/scripts/build/generate_protocol_externs.py" -o "$protocol_repo_path/externs/protocol_externs.js" "$browser_protocol_path" "$js_protocol_path"
 
 # => cd into protocol repo
 cd "$protocol_repo_path" || exit 1
