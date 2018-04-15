@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r549285
+###### _2018-04-09 14:42:08_ | Diff: [269e3b9...d3103cb](https://github.com/ChromeDevTools/devtools-protocol/compare/269e3b9...d3103cb)
+#### `Accessibility`: modified command
+* [`Accessibility.getPartialAXTree`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#method-getPartialAXTree) - The `fetchRelatives` in the parameters had `type` _removed_. The `nodeId` in the parameters had `description` _updated_. The `fetchRelatives` in the parameters had `name` _updated_. The `fetchRelatives` in the parameters had `description` _updated_. The parameters's `optional` _added_. The parameters's `$ref` _added_. The parameters's `objectId` _added_. The parameters's `fetchRelatives` _added_. 
+
+
 ## Roll protocol to r548694 546310
 ###### _2018-04-05 23:16:18_ | Diff: [8dcb075...b4e9799](https://github.com/ChromeDevTools/devtools-protocol/compare/8dcb075...b4e9799)
 #### `Page`: new event

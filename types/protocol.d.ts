@@ -1932,6 +1932,11 @@ export namespace Protocol {
         export type Timestamp = number;
 
         /**
+         * Number of milliseconds.
+         */
+        export type TimeDelta = number;
+
+        /**
          * Stack entry for runtime errors and assertions.
          */
         export interface CallFrame {
@@ -2189,6 +2194,11 @@ export namespace Protocol {
              * Whether to throw an exception if side effect cannot be ruled out during evaluation.
              */
             throwOnSideEffect?: boolean;
+
+            /**
+             * Terminate execution after timing out (number of milliseconds).
+             */
+            timeout?: TimeDelta;
         }
 
         export interface EvaluateResponse {
