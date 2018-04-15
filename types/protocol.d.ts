@@ -4545,7 +4545,7 @@ export namespace Protocol {
         getPlatformFontsForNode(params: CSS.GetPlatformFontsForNodeRequest): Promise<CSS.GetPlatformFontsForNodeResponse>;
 
         /**
-         * Returns the current textual content and the URL for a stylesheet.
+         * Returns the current textual content for a stylesheet.
          */
         getStyleSheetText(params: CSS.GetStyleSheetTextRequest): Promise<CSS.GetStyleSheetTextResponse>;
 

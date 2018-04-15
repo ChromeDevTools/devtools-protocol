@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r550912
+###### _2018-04-14 20:16:17_ | Diff: [82883de...4e76695](https://github.com/ChromeDevTools/devtools-protocol/compare/82883de...4e76695)
+#### `Runtime`: modified command
+* [`Runtime.evaluate`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-evaluate) - The parameters's `timeout` _added_. 
+#### `Runtime`: new type
+* [`Runtime.TimeDelta`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-TimeDelta)
+
+
 ## Roll protocol to r549285
 ###### _2018-04-09 14:42:08_ | Diff: [269e3b9...d3103cb](https://github.com/ChromeDevTools/devtools-protocol/compare/269e3b9...d3103cb)
 #### `Accessibility`: modified command
