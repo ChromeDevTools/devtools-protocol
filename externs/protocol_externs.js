@@ -1954,10 +1954,11 @@ Protocol.DOMSnapshotAgent = function(){};
  * @param {!Array<string>} computedStyleWhitelist
  * @param {boolean=} opt_includeEventListeners
  * @param {boolean=} opt_includePaintOrder
+ * @param {boolean=} opt_includeUserAgentShadowTree
  * @return {!Promise<?Array<Protocol.DOMSnapshot.DOMNode>>}
  */
-Protocol.DOMSnapshotAgent.prototype.getSnapshot = function(computedStyleWhitelist, opt_includeEventListeners, opt_includePaintOrder) {};
-/** @typedef {!{includePaintOrder: (boolean|undefined), includeEventListeners: (boolean|undefined), computedStyleWhitelist: !Array<string>}} */
+Protocol.DOMSnapshotAgent.prototype.getSnapshot = function(computedStyleWhitelist, opt_includeEventListeners, opt_includePaintOrder, opt_includeUserAgentShadowTree) {};
+/** @typedef {!{includePaintOrder: (boolean|undefined), includeEventListeners: (boolean|undefined), computedStyleWhitelist: !Array<string>, includeUserAgentShadowTree: (boolean|undefined)}} */
 Protocol.DOMSnapshotAgent.GetSnapshotRequest;
 /** @typedef {!{layoutTreeNodes: !Array<Protocol.DOMSnapshot.LayoutTreeNode>, domNodes: !Array<Protocol.DOMSnapshot.DOMNode>, computedStyles: !Array<Protocol.DOMSnapshot.ComputedStyle>}} */
 Protocol.DOMSnapshotAgent.GetSnapshotResponse;

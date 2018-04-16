@@ -6617,6 +6617,11 @@ export namespace Protocol {
              * Whether to determine and include the paint order index of LayoutTreeNodes (default false).
              */
             includePaintOrder?: boolean;
+
+            /**
+             * Whether to include UA shadow tree in the snapshot (default false).
+             */
+            includeUserAgentShadowTree?: boolean;
         }
 
         export interface GetSnapshotResponse {

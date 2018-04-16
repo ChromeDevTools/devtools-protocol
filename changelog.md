@@ -1,6 +1,12 @@
 
 
 ## Roll protocol to r550912
+###### _2018-04-14 21:15:26_ | Diff: [3d34c50...fcfcf97](https://github.com/ChromeDevTools/devtools-protocol/compare/3d34c50...fcfcf97)
+#### `CSS`: modified command
+* [`CSS.getStyleSheetText`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getStyleSheetText) - `description` updated. 
+
+
+## Roll protocol to r550912
 ###### _2018-04-14 20:16:17_ | Diff: [82883de...4e76695](https://github.com/ChromeDevTools/devtools-protocol/compare/82883de...4e76695)
 #### `Runtime`: modified command
 * [`Runtime.evaluate`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-evaluate) - The parameters's `timeout` _added_. 

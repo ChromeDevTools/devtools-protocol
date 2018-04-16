@@ -4563,6 +4563,12 @@
                             "description": "Whether to determine and include the paint order index of LayoutTreeNodes (default false).",
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "includeUserAgentShadowTree",
+                            "description": "Whether to include UA shadow tree in the snapshot (default false).",
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ],
                     "returns": [
