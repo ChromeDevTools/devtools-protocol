@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r551066
+###### _2018-04-16 12:16:51_ | Diff: [fcfcf97...be9625a](https://github.com/ChromeDevTools/devtools-protocol/compare/fcfcf97...be9625a)
+#### `DOMSnapshot`: modified command
+* [`DOMSnapshot.getSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#method-getSnapshot) - The parameters's `includeUserAgentShadowTree` _added_. 
+
+
 ## Roll protocol to r550912
 ###### _2018-04-14 21:15:26_ | Diff: [3d34c50...fcfcf97](https://github.com/ChromeDevTools/devtools-protocol/compare/3d34c50...fcfcf97)
 #### `CSS`: modified command
