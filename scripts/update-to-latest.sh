@@ -12,6 +12,8 @@ protocol_repo_path="$HOME/code/pristine/devtools-protocol"
 # => cd into protocol repo
 cd "$protocol_repo_path" || exit 1
 git submodule update --init
+cd scripts/inspector_protocol  || exit 1
+git pull # always work with the latest inspector_protocol repo
 
 # => cd into chromium
 cd "$chromium_src_path" || exit 1
