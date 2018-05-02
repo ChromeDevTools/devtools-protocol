@@ -1,5 +1,22 @@
 
 
+## Roll protocol to r555290
+###### _2018-05-01 19:36:15_ | Diff: [a4e1551...3f3afae](https://github.com/ChromeDevTools/devtools-protocol/compare/a4e1551...3f3afae)
+#### `Debugger`: modified command
+* [`Debugger.evaluateOnCallFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-evaluateOnCallFrame) - The parameters's `timeout` _added_. 
+#### `IO`: modified command
+* [`IO.read`](https://chromedevtools.github.io/devtools-protocol/tot/IO/#method-read) - The `offset` in the parameters had `description` _updated_. 
+#### `Network`: new command
+* [`Network.takeResponseBodyForInterceptionAsStream`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-takeResponseBodyForInterceptionAsStream)
+#### `Network`: modified event
+* [`Network.requestIntercepted`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestIntercepted) - The `authChallenge` in the parameters had `$ref` _removed_. The `responseStatusCode` in the parameters had `type` _removed_. The `responseHeaders` in the parameters had `$ref` _removed_. The `redirectUrl` in the parameters had `name` _updated_. The `redirectUrl` in the parameters had `description` _updated_. The `redirectUrl` in the parameters had `type` _updated_. The `authChallenge` in the parameters had `name` _updated_. The `authChallenge` in the parameters had `description` _updated_. The `responseErrorReason` in the parameters had `name` _updated_. The `responseErrorReason` in the parameters had `description` _updated_. The `responseErrorReason` in the parameters had `$ref` _updated_. The `responseStatusCode` in the parameters had `name` _updated_. The `responseStatusCode` in the parameters had `description` _updated_. The `responseHeaders` in the parameters had `name` _updated_. The `responseHeaders` in the parameters had `description` _updated_. The parameters's `type` _added_ (2 times). The parameters's `$ref` _added_. The parameters's `responseHeaders` _added_. 
+#### `Page`: new commands
+* [`Page.close`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-close)
+* [`Page.setWebLifecycleState`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setWebLifecycleState)
+#### `Target`: modified type
+* [`Target.TargetInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#type-TargetInfo) - The properties's `browserContextId` _added_. 
+
+
 ## Roll protocol to r552984
 ###### _2018-04-23 20:15:56_ | Diff: [be9625a...f92b9bc](https://github.com/ChromeDevTools/devtools-protocol/compare/be9625a...f92b9bc)
 #### `Debugger`: new command

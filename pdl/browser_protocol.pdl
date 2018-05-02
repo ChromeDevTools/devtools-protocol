@@ -2379,6 +2379,8 @@ domain Emulation
       # If set the virtual time policy change should be deferred until any frame starts navigating.
       # Note any previous deferred policy change is superseded.
       optional boolean waitForNavigation
+      # If set, base::Time::Now will be overriden to initially return this value.
+      optional Network.TimeSinceEpoch initialVirtualTime
     returns
       # Absolute timestamp at which virtual time was first enabled (milliseconds since epoch).
       Runtime.Timestamp virtualTimeBase

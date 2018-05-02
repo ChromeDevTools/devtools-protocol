@@ -7119,6 +7119,11 @@ export namespace Protocol {
              * Note any previous deferred policy change is superseded.
              */
             waitForNavigation?: boolean;
+
+            /**
+             * If set, base::Time::Now will be overriden to initially return this value.
+             */
+            initialVirtualTime?: Network.TimeSinceEpoch;
         }
 
         export interface SetVirtualTimePolicyResponse {

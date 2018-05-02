@@ -5230,6 +5230,12 @@
                             "description": "If set the virtual time policy change should be deferred until any frame starts navigating.\nNote any previous deferred policy change is superseded.",
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "initialVirtualTime",
+                            "description": "If set, base::Time::Now will be overriden to initially return this value.",
+                            "optional": true,
+                            "$ref": "Network.TimeSinceEpoch"
                         }
                     ],
                     "returns": [
