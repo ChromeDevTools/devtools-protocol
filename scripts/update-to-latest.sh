@@ -39,7 +39,8 @@ commit_rev=$(echo "$commit_pos_line" | grep -E -o "\d+")
 convert_script="$protocol_repo_path/scripts/inspector_protocol/convert_protocol_to_json.py"
 python "$convert_script" "$protocol_repo_path/pdl/browser_protocol.pdl" "$protocol_repo_path/json/browser_protocol.json"
 python "$convert_script" "$protocol_repo_path/pdl/js_protocol.pdl" "$protocol_repo_path/json/js_protocol.json"
-
+# The conversion script leaves json files next to the pdl's. Because reasons.
+rm -f "$protocol_repo_path"/pdl/*.json
 
 # generate externs
 python "$chromium_src_path/third_party/blink/renderer/devtools/scripts/build/generate_protocol_externs.py" -o "$protocol_repo_path/externs/protocol_externs.js" "$browser_protocol_path" "$js_protocol_path"
