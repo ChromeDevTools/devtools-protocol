@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r552984
+###### _2018-04-23 20:15:56_ | Diff: [be9625a...f92b9bc](https://github.com/ChromeDevTools/devtools-protocol/compare/be9625a...f92b9bc)
+#### `Debugger`: new command
+* [`Debugger.setBreakpointOnFunctionCall`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setBreakpointOnFunctionCall)
+
+
 ## Roll protocol to r551066
 ###### _2018-04-16 12:16:51_ | Diff: [fcfcf97...be9625a](https://github.com/ChromeDevTools/devtools-protocol/compare/fcfcf97...be9625a)
 #### `DOMSnapshot`: modified command

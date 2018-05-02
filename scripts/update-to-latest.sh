@@ -12,8 +12,8 @@ protocol_repo_path="$HOME/code/pristine/devtools-protocol"
 # => cd into protocol repo
 cd "$protocol_repo_path" || exit 1
 git submodule update --init
-cd scripts/inspector_protocol  || exit 1
-git pull # always work with the latest inspector_protocol repo
+# always work with the latest inspector_protocol repo
+git submodule foreach git pull origin master
 
 # => cd into chromium
 cd "$chromium_src_path" || exit 1
@@ -47,7 +47,7 @@ python "$chromium_src_path/third_party/blink/renderer/devtools/scripts/build/gen
 # => cd into protocol repo
 cd "$protocol_repo_path" || exit 1
 
-git diff
+git --no-pager diff
 
 # commit, push and publish, but only if there's a diff. ;)
 if ! git diff --no-ext-diff --quiet --ignore-submodules --exit-code; then

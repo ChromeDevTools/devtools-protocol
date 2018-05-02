@@ -369,6 +369,11 @@ export namespace Protocol {
              * Whether to throw an exception if side effect cannot be ruled out during evaluation.
              */
             throwOnSideEffect?: boolean;
+
+            /**
+             * Terminate execution after timing out (number of milliseconds).
+             */
+            timeout?: Runtime.TimeDelta;
         }
 
         export interface EvaluateOnCallFrameResponse {
@@ -7409,7 +7414,7 @@ export namespace Protocol {
 
             /**
              * Seek to the specified offset before reading (if not specificed, proceed with offset
-             * following the last read).
+             * following the last read). Some types of streams may only support sequential reads.
              */
             offset?: integer;
 
@@ -9792,6 +9797,14 @@ export namespace Protocol {
             base64Encoded: boolean;
         }
 
+        export interface TakeResponseBodyForInterceptionAsStreamRequest {
+            interceptionId: InterceptionId;
+        }
+
+        export interface TakeResponseBodyForInterceptionAsStreamResponse {
+            stream: IO.StreamHandle;
+        }
+
         export interface ReplayXHRRequest {
             /**
              * Identifier of XHR to replay.
@@ -10072,6 +10085,12 @@ export namespace Protocol {
              * Whether this is a navigation request, which can abort the navigation completely.
              */
             isNavigationRequest: boolean;
+
+            /**
+             * Set if the request is a navigation that will result in a download.
+             * Only present after response is received from the server (i.e. HeadersReceived stage).
+             */
+            isDownload?: boolean;
 
             /**
              * Redirect location, only sent if a redirect was intercepted.
@@ -10421,6 +10440,14 @@ export namespace Protocol {
          * Returns content served for the given currently intercepted request.
          */
         getResponseBodyForInterception(params: Network.GetResponseBodyForInterceptionRequest): Promise<Network.GetResponseBodyForInterceptionResponse>;
+
+        /**
+         * Returns a handle to the stream representing the response body. Note that after this command,
+         * the intercepted request can't be continued as is -- you either need to cancel it or to provide
+         * the response body. The stream only supports sequential read, IO.read will fail if the position
+         * is specified.
+         */
+        takeResponseBodyForInterceptionAsStream(params: Network.TakeResponseBodyForInterceptionAsStreamRequest): Promise<Network.TakeResponseBodyForInterceptionAsStreamResponse>;
 
         /**
          * This method sends a new XMLHttpRequest which is identical to the original one. The following
@@ -11826,6 +11853,13 @@ export namespace Protocol {
             everyNthFrame?: integer;
         }
 
+        export interface SetWebLifecycleStateRequest {
+            /**
+             * Target lifecycle state
+             */
+            state: ('frozen' | 'active');
+        }
+
         export interface DomContentEventFiredEvent {
             timestamp: Network.MonotonicTime;
         }
@@ -12223,6 +12257,18 @@ export namespace Protocol {
          * Crashes renderer on the IO thread, generates minidumps.
          */
         crash(): Promise<void>;
+
+        /**
+         * Tries to close page, running its beforeunload hooks, if any.
+         */
+        close(): Promise<void>;
+
+        /**
+         * Tries to update the web lifecycle state of the page.
+         * It will transition the page to the given state according to:
+         * https://github.com/WICG/web-lifecycle/
+         */
+        setWebLifecycleState(params: Page.SetWebLifecycleStateRequest): Promise<void>;
 
         /**
          * Stops sending each frame in the `screencastFrame`.
@@ -13052,6 +13098,8 @@ export namespace Protocol {
              * Opener target Id
              */
             openerId?: TargetID;
+
+            browserContextId?: BrowserContextID;
         }
 
         export interface RemoteLocation {
