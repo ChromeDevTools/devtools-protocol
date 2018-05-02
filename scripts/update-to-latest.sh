@@ -9,6 +9,12 @@ set -x
 chromium_src_path="$HOME/chromium-tot/src"
 protocol_repo_path="$HOME/code/pristine/devtools-protocol"
 
+# => cd into protocol repo
+cd "$protocol_repo_path" || exit 1
+git submodule update --init
+cd scripts/inspector_protocol  || exit 1
+git pull # always work with the latest inspector_protocol repo
+
 # => cd into chromium
 cd "$chromium_src_path" || exit 1
 
@@ -18,16 +24,22 @@ git checkout -f origin/master
 env GYP_DEFINES=disable_nacl=1 gclient sync --jobs=70 --nohooks
 
 
-browser_protocol_path="$chromium_src_path/third_party/blink/renderer/core/inspector/browser_protocol.json"
-js_protocol_path="$chromium_src_path/v8/src/inspector/js_protocol.json"
+browser_protocol_path="$chromium_src_path/third_party/blink/renderer/core/inspector/browser_protocol.pdl"
+js_protocol_path="$chromium_src_path/v8/src/inspector/js_protocol.pdl"
 
-# copy the two protocol.json files over.
-cp "$js_protocol_path" "$protocol_repo_path/json"
-cp "$browser_protocol_path" "$protocol_repo_path/json"
+# copy the two protocol.pdl files over.
+cp "$js_protocol_path" "$protocol_repo_path/pdl"
+cp "$browser_protocol_path" "$protocol_repo_path/pdl"
 
 # extract cr revision number
 commit_pos_line=$(git log --date=iso --no-color --max-count=1 | gtac | grep -E -o "Cr-Commit-Position.*")
 commit_rev=$(echo "$commit_pos_line" | grep -E -o "\d+")
+
+# generate json from pdl
+convert_script="$protocol_repo_path/scripts/inspector_protocol/convert_protocol_to_json.py"
+python "$convert_script" "$protocol_repo_path/pdl/browser_protocol.pdl" "$protocol_repo_path/json/browser_protocol.json"
+python "$convert_script" "$protocol_repo_path/pdl/js_protocol.pdl" "$protocol_repo_path/json/js_protocol.json"
+
 
 # generate externs
 python "$chromium_src_path/third_party/blink/renderer/devtools/scripts/build/generate_protocol_externs.py" -o "$protocol_repo_path/externs/protocol_externs.js" "$browser_protocol_path" "$js_protocol_path"
