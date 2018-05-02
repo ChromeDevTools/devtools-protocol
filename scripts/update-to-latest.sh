@@ -9,6 +9,10 @@ set -x
 chromium_src_path="$HOME/chromium-tot/src"
 protocol_repo_path="$HOME/code/pristine/devtools-protocol"
 
+# => cd into protocol repo
+cd "$protocol_repo_path" || exit 1
+git submodule update --init
+
 # => cd into chromium
 cd "$chromium_src_path" || exit 1
 
