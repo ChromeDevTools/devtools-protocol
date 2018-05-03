@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r555444
+###### _2018-05-02 10:16:49_ | Diff: [3db7418...847cc8f](https://github.com/ChromeDevTools/devtools-protocol/compare/3db7418...847cc8f)
+#### `Emulation`: modified command
+* [`Emulation.setVirtualTimePolicy`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setVirtualTimePolicy) - The parameters's `initialVirtualTime` _added_. 
+
+
 ## Roll protocol to r555290
 ###### _2018-05-01 19:36:15_ | Diff: [a4e1551...3f3afae](https://github.com/ChromeDevTools/devtools-protocol/compare/a4e1551...3f3afae)
 #### `Debugger`: modified command
