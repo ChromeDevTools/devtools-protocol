@@ -124,7 +124,7 @@ experimental domain Accessibility
       relevant
       root
       autocomplete
-      haspopup
+      hasPopup
       level
       multiselectable
       orientation

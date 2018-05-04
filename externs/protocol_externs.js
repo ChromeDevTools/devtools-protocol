@@ -95,7 +95,7 @@ Protocol.Accessibility.AXPropertyName = {
     Relevant: "relevant",
     Root: "root",
     Autocomplete: "autocomplete",
-    Haspopup: "haspopup",
+    HasPopup: "hasPopup",
     Level: "level",
     Multiselectable: "multiselectable",
     Orientation: "orientation",
