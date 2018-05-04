@@ -3461,6 +3461,7 @@ domain Network
       origin
       inspector
       subresource-filter
+      content-type
       other
 
   # HTTP response data.

@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r555920
+###### _2018-05-03 17:17:33_ | Diff: [71093c0...7fff91e](https://github.com/ChromeDevTools/devtools-protocol/compare/71093c0...7fff91e)
+#### `Accessibility`: modified type
+* [`Accessibility.AXPropertyName`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXPropertyName) - The enum's `haspopup` _updated_. 
+
+
 ## Roll protocol to r555642
 ###### _2018-05-02 18:17:15_ | Diff: [1bac408...71093c0](https://github.com/ChromeDevTools/devtools-protocol/compare/1bac408...71093c0)
 #### `Target`: modified commands

@@ -3988,6 +3988,7 @@ Protocol.Network.BlockedReason = {
     Origin: "origin",
     Inspector: "inspector",
     SubresourceFilter: "subresource-filter",
+    ContentType: "content-type",
     Other: "other"
 };
 
