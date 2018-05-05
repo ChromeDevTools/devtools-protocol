@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r555991
+###### _2018-05-03 22:17:28_ | Diff: [7fff91e...e638d2b](https://github.com/ChromeDevTools/devtools-protocol/compare/7fff91e...e638d2b)
+#### `Network`: modified type
+* [`Network.BlockedReason`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-BlockedReason) - The enum's `other` _updated_. The enum's `other` _added_. 
+
+
 ## Roll protocol to r555920
 ###### _2018-05-03 17:17:33_ | Diff: [71093c0...7fff91e](https://github.com/ChromeDevTools/devtools-protocol/compare/71093c0...7fff91e)
 #### `Accessibility`: modified type

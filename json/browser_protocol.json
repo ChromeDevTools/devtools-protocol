@@ -12058,7 +12058,7 @@
                         },
                         {
                             "name": "browserContextId",
-                            "description": "The browser context to create the page in.",
+                            "description": "The browser context to create the page in (headless chrome only).",
                             "optional": true,
                             "$ref": "BrowserContextID"
                         },
@@ -12099,12 +12099,18 @@
                 },
                 {
                     "name": "disposeBrowserContext",
-                    "description": "Deletes a BrowserContext. All the belonging pages will be closed without calling their\nbeforeunload hooks.",
+                    "description": "Deletes a BrowserContext, will fail of any open page uses it.",
                     "experimental": true,
                     "parameters": [
                         {
                             "name": "browserContextId",
                             "$ref": "BrowserContextID"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "success",
+                            "type": "boolean"
                         }
                     ]
                 },

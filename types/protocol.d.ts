@@ -13160,7 +13160,7 @@ export namespace Protocol {
             height?: integer;
 
             /**
-             * The browser context to create the page in.
+             * The browser context to create the page in (headless chrome only).
              */
             browserContextId?: BrowserContextID;
 
@@ -13192,6 +13192,10 @@ export namespace Protocol {
 
         export interface DisposeBrowserContextRequest {
             browserContextId: BrowserContextID;
+        }
+
+        export interface DisposeBrowserContextResponse {
+            success: boolean;
         }
 
         export interface GetTargetInfoRequest {
@@ -13333,10 +13337,9 @@ export namespace Protocol {
         detachFromTarget(params: Target.DetachFromTargetRequest): Promise<void>;
 
         /**
-         * Deletes a BrowserContext. All the belonging pages will be closed without calling their
-         * beforeunload hooks.
+         * Deletes a BrowserContext, will fail of any open page uses it.
          */
-        disposeBrowserContext(params: Target.DisposeBrowserContextRequest): Promise<void>;
+        disposeBrowserContext(params: Target.DisposeBrowserContextRequest): Promise<Target.DisposeBrowserContextResponse>;
 
         /**
          * Returns information about a target.
