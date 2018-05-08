@@ -5537,7 +5537,7 @@ domain Target
       optional integer width
       # Frame height in DIP (headless chrome only).
       optional integer height
-      # The browser context to create the page in (headless chrome only).
+      # The browser context to create the page in.
       optional BrowserContextID browserContextId
       # Whether BeginFrames for this target will be controlled via DevTools (headless chrome only,
       # not supported on MacOS yet, false by default).
@@ -5554,12 +5554,11 @@ domain Target
       # Deprecated.
       deprecated optional TargetID targetId
 
-  # Deletes a BrowserContext, will fail of any open page uses it.
+  # Deletes a BrowserContext. All the belonging pages will be closed without calling their
+  # beforeunload hooks.
   experimental command disposeBrowserContext
     parameters
       BrowserContextID browserContextId
-    returns
-      boolean success
 
   # Returns information about a target.
   experimental command getTargetInfo

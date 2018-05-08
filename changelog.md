@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r556284
+###### _2018-05-04 18:16:12_ | Diff: [e638d2b...c3f4857](https://github.com/ChromeDevTools/devtools-protocol/compare/e638d2b...c3f4857)
+#### `Target`: modified commands
+* [`Target.createTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-createTarget) - The `browserContextId` in the parameters had `description` _updated_. 
+* [`Target.disposeBrowserContext`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-disposeBrowserContext) - `description` updated. 
+
+
 ## Roll protocol to r555991
 ###### _2018-05-03 22:17:28_ | Diff: [7fff91e...e638d2b](https://github.com/ChromeDevTools/devtools-protocol/compare/7fff91e...e638d2b)
 #### `Network`: modified type

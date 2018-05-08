@@ -5901,12 +5901,12 @@ Protocol.TargetAgent.prototype.invoke_detachFromTarget = function(obj) {};
 
 /**
  * @param {Protocol.Target.BrowserContextID} browserContextId
- * @return {!Promise<?boolean>}
+ * @return {!Promise<undefined>}
  */
 Protocol.TargetAgent.prototype.disposeBrowserContext = function(browserContextId) {};
 /** @typedef {!{browserContextId: Protocol.Target.BrowserContextID}} */
 Protocol.TargetAgent.DisposeBrowserContextRequest;
-/** @typedef {!{success: boolean}} */
+/** @typedef {Object|undefined} */
 Protocol.TargetAgent.DisposeBrowserContextResponse;
 /**
  * @param {!Protocol.TargetAgent.DisposeBrowserContextRequest} obj
