@@ -13143,6 +13143,13 @@ export namespace Protocol {
             browserContextId: BrowserContextID;
         }
 
+        export interface GetBrowserContextsResponse {
+            /**
+             * An array of browser context ids.
+             */
+            browserContextIds: BrowserContextID[];
+        }
+
         export interface CreateTargetRequest {
             /**
              * The initial URL the page will be navigated to.
@@ -13321,6 +13328,11 @@ export namespace Protocol {
          * one.
          */
         createBrowserContext(): Promise<Target.CreateBrowserContextResponse>;
+
+        /**
+         * Returns all browser contexts created with `Target.createBrowserContext` method.
+         */
+        getBrowserContexts(): Promise<Target.GetBrowserContextsResponse>;
 
         /**
          * Creates a new page.

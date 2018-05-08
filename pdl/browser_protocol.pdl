@@ -5528,6 +5528,12 @@ domain Target
       # The id of the context created.
       BrowserContextID browserContextId
 
+  # Returns all browser contexts created with `Target.createBrowserContext` method.
+  experimental command getBrowserContexts
+    returns
+      # An array of browser context ids.
+      array of BrowserContextID browserContextIds
+
   # Creates a new page.
   command createTarget
     parameters

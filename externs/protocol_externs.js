@@ -5867,6 +5867,19 @@ Protocol.TargetAgent.CreateBrowserContextResponse;
 Protocol.TargetAgent.prototype.invoke_createBrowserContext = function(obj) {};
 
 /**
+ * @return {!Promise<?Array<Protocol.Target.BrowserContextID>>}
+ */
+Protocol.TargetAgent.prototype.getBrowserContexts = function() {};
+/** @typedef {Object|undefined} */
+Protocol.TargetAgent.GetBrowserContextsRequest;
+/** @typedef {!{browserContextIds: !Array<Protocol.Target.BrowserContextID>}} */
+Protocol.TargetAgent.GetBrowserContextsResponse;
+/**
+ * @param {!Protocol.TargetAgent.GetBrowserContextsRequest} obj
+ * @return {!Promise<!Protocol.TargetAgent.GetBrowserContextsResponse>} */
+Protocol.TargetAgent.prototype.invoke_getBrowserContexts = function(obj) {};
+
+/**
  * @param {string} url
  * @param {number=} opt_width
  * @param {number=} opt_height
