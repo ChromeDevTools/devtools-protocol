@@ -8030,6 +8030,19 @@
                             "$ref": "InterceptionStage"
                         }
                     ]
+                },
+                {
+                    "id": "SignedExchangeInfo",
+                    "description": "Information about a signed exchange response.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "outerResponse",
+                            "description": "The outer response of signed HTTP exchange which was received from network.",
+                            "$ref": "Response"
+                        }
+                    ]
                 }
             ],
             "commands": [
@@ -8871,6 +8884,23 @@
                             "name": "timestamp",
                             "description": "Timestamp.",
                             "$ref": "MonotonicTime"
+                        }
+                    ]
+                },
+                {
+                    "name": "signedExchangeReceived",
+                    "description": "Fired when a signed exchange was received over the network",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "requestId",
+                            "description": "Request identifier.",
+                            "$ref": "RequestId"
+                        },
+                        {
+                            "name": "info",
+                            "description": "Information about the signed exchange response.",
+                            "$ref": "SignedExchangeInfo"
                         }
                     ]
                 },

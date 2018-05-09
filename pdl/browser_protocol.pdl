@@ -3663,6 +3663,12 @@ domain Network
       # Stage at wich to begin intercepting requests. Default is Request.
       optional InterceptionStage interceptionStage
 
+  # Information about a signed exchange response.
+  experimental type SignedExchangeInfo extends object
+    properties
+      # The outer response of signed HTTP exchange which was received from network.
+      Response outerResponse
+
   # Tells whether clearing browser cache is supported.
   deprecated command canClearBrowserCache
     returns
@@ -4049,6 +4055,14 @@ domain Network
       ResourcePriority newPriority
       # Timestamp.
       MonotonicTime timestamp
+
+  # Fired when a signed exchange was received over the network
+  experimental event signedExchangeReceived
+    parameters
+      # Request identifier.
+      RequestId requestId
+      # Information about the signed exchange response.
+      SignedExchangeInfo info
 
   # Fired when HTTP response is available.
   event responseReceived

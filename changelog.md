@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r556981
+###### _2018-05-08 15:17:35_ | Diff: [eef9084...fe1ebc7](https://github.com/ChromeDevTools/devtools-protocol/compare/eef9084...fe1ebc7)
+#### `Target`: new command
+* [`Target.getBrowserContexts`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-getBrowserContexts)
+
+
 ## Roll protocol to r556911
 ###### _2018-05-08 12:17:45_ | Diff: [c3f4857...eef9084](https://github.com/ChromeDevTools/devtools-protocol/compare/c3f4857...eef9084)
 #### `Target`: modified commands

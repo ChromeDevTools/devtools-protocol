@@ -4051,6 +4051,9 @@ Protocol.Network.InterceptionStage = {
 
 /** @typedef {!{urlPattern:(string|undefined), resourceType:(Protocol.Page.ResourceType|undefined), interceptionStage:(Protocol.Network.InterceptionStage|undefined)}} */
 Protocol.Network.RequestPattern;
+
+/** @typedef {!{outerResponse:(Protocol.Network.Response)}} */
+Protocol.Network.SignedExchangeInfo;
 /** @interface */
 Protocol.NetworkDispatcher = function() {};
 /**
@@ -4122,6 +4125,11 @@ Protocol.NetworkDispatcher.prototype.requestWillBeSent = function(requestId, loa
  * @param {Protocol.Network.MonotonicTime} timestamp
  */
 Protocol.NetworkDispatcher.prototype.resourceChangedPriority = function(requestId, newPriority, timestamp) {};
+/**
+ * @param {Protocol.Network.RequestId} requestId
+ * @param {Protocol.Network.SignedExchangeInfo} info
+ */
+Protocol.NetworkDispatcher.prototype.signedExchangeReceived = function(requestId, info) {};
 /**
  * @param {Protocol.Network.RequestId} requestId
  * @param {Protocol.Network.LoaderId} loaderId

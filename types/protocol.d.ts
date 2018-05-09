@@ -9585,6 +9585,16 @@ export namespace Protocol {
             interceptionStage?: InterceptionStage;
         }
 
+        /**
+         * Information about a signed exchange response.
+         */
+        export interface SignedExchangeInfo {
+            /**
+             * The outer response of signed HTTP exchange which was received from network.
+             */
+            outerResponse: Response;
+        }
+
         export interface CanClearBrowserCacheResponse {
             /**
              * True if browser cache can be cleared.
@@ -10208,6 +10218,18 @@ export namespace Protocol {
             timestamp: MonotonicTime;
         }
 
+        export interface SignedExchangeReceivedEvent {
+            /**
+             * Request identifier.
+             */
+            requestId: RequestId;
+
+            /**
+             * Information about the signed exchange response.
+             */
+            info: SignedExchangeInfo;
+        }
+
         export interface ResponseReceivedEvent {
             /**
              * Request identifier.
@@ -10551,6 +10573,11 @@ export namespace Protocol {
          * Fired when resource loading priority is changed
          */
         on(event: 'resourceChangedPriority', listener: (params: Network.ResourceChangedPriorityEvent) => void): void;
+
+        /**
+         * Fired when a signed exchange was received over the network
+         */
+        on(event: 'signedExchangeReceived', listener: (params: Network.SignedExchangeReceivedEvent) => void): void;
 
         /**
          * Fired when HTTP response is available.
