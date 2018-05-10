@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r557245
+###### _2018-05-09 11:16:32_ | Diff: [fe1ebc7...2dd2129](https://github.com/ChromeDevTools/devtools-protocol/compare/fe1ebc7...2dd2129)
+#### `Network`: new event
+* [`Network.signedExchangeReceived`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-signedExchangeReceived)
+#### `Network`: new type
+* [`Network.SignedExchangeInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedExchangeInfo)
+
+
 ## Roll protocol to r556981
 ###### _2018-05-08 15:17:35_ | Diff: [eef9084...fe1ebc7](https://github.com/ChromeDevTools/devtools-protocol/compare/eef9084...fe1ebc7)
 #### `Target`: new command

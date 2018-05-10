@@ -5105,6 +5105,7 @@ Protocol.Page.ResourceType = {
     EventSource: "EventSource",
     WebSocket: "WebSocket",
     Manifest: "Manifest",
+    SignedExchange: "SignedExchange",
     Other: "Other"
 };
 

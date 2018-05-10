@@ -4347,6 +4347,7 @@ domain Page
       EventSource
       WebSocket
       Manifest
+      SignedExchange
       Other
 
   # Unique frame identifier.
