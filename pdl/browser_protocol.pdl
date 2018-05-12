@@ -3456,13 +3456,13 @@ domain Network
   # The reason why request was blocked.
   type BlockedReason extends string
     enum
+      other
       csp
       mixed-content
       origin
       inspector
       subresource-filter
       content-type
-      other
 
   # HTTP response data.
   type Response extends object

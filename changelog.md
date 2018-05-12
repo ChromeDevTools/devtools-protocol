@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r557426
+###### _2018-05-09 19:16:30_ | Diff: [2dd2129...50de366](https://github.com/ChromeDevTools/devtools-protocol/compare/2dd2129...50de366)
+#### `Page`: modified type
+* [`Page.ResourceType`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ResourceType) - The enum's `Other` _updated_. The enum's `Other` _added_. 
+
+
 ## Roll protocol to r557245
 ###### _2018-05-09 11:16:32_ | Diff: [fe1ebc7...2dd2129](https://github.com/ChromeDevTools/devtools-protocol/compare/fe1ebc7...2dd2129)
 #### `Network`: new event

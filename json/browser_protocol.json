@@ -7556,13 +7556,13 @@
                     "description": "The reason why request was blocked.",
                     "type": "string",
                     "enum": [
+                        "other",
                         "csp",
                         "mixed-content",
                         "origin",
                         "inspector",
                         "subresource-filter",
-                        "content-type",
-                        "other"
+                        "content-type"
                     ]
                 },
                 {

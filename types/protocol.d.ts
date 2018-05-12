@@ -9185,7 +9185,7 @@ export namespace Protocol {
         /**
          * The reason why request was blocked.
          */
-        export type BlockedReason = ('csp' | 'mixed-content' | 'origin' | 'inspector' | 'subresource-filter' | 'content-type' | 'other');
+        export type BlockedReason = ('other' | 'csp' | 'mixed-content' | 'origin' | 'inspector' | 'subresource-filter' | 'content-type');
 
         /**
          * HTTP response data.
