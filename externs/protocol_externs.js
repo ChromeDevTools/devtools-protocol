@@ -2525,20 +2525,6 @@ Protocol.HeadlessExperimentalAgent.BeginFrameResponse;
 Protocol.HeadlessExperimentalAgent.prototype.invoke_beginFrame = function(obj) {};
 
 /**
- * @param {number=} opt_initialDate
- * @return {!Promise<undefined>}
- */
-Protocol.HeadlessExperimentalAgent.prototype.enterDeterministicMode = function(opt_initialDate) {};
-/** @typedef {!{initialDate: (number|undefined)}} */
-Protocol.HeadlessExperimentalAgent.EnterDeterministicModeRequest;
-/** @typedef {Object|undefined} */
-Protocol.HeadlessExperimentalAgent.EnterDeterministicModeResponse;
-/**
- * @param {!Protocol.HeadlessExperimentalAgent.EnterDeterministicModeRequest} obj
- * @return {!Promise<!Protocol.HeadlessExperimentalAgent.EnterDeterministicModeResponse>} */
-Protocol.HeadlessExperimentalAgent.prototype.invoke_enterDeterministicMode = function(obj) {};
-
-/**
  * @return {!Promise<undefined>}
  */
 Protocol.HeadlessExperimentalAgent.prototype.disable = function() {};

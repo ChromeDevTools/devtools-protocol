@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r558111
+###### _2018-05-11 21:17:36_ | Diff: [50de366...981276a](https://github.com/ChromeDevTools/devtools-protocol/compare/50de366...981276a)
+#### `Network`: modified type
+* [`Network.BlockedReason`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-BlockedReason) - The enum's `csp` _updated_. The enum's `mixed-content` _updated_. The enum's `origin` _updated_. The enum's `inspector` _updated_. The enum's `subresource-filter` _updated_. The enum's `content-type` _updated_. The enum's `other` _updated_. 
+
+
 ## Roll protocol to r557426
 ###### _2018-05-09 19:16:30_ | Diff: [2dd2129...50de366](https://github.com/ChromeDevTools/devtools-protocol/compare/2dd2129...50de366)
 #### `Page`: modified type

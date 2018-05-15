@@ -7347,13 +7347,6 @@ export namespace Protocol {
             screenshotData?: string;
         }
 
-        export interface EnterDeterministicModeRequest {
-            /**
-             * Number of seconds since the Epoch
-             */
-            initialDate?: number;
-        }
-
         export interface NeedsBeginFramesChangedEvent {
             /**
              * True if BeginFrames are needed, false otherwise.
@@ -7370,12 +7363,6 @@ export namespace Protocol {
          * https://goo.gl/3zHXhB for more background.
          */
         beginFrame(params: HeadlessExperimental.BeginFrameRequest): Promise<HeadlessExperimental.BeginFrameResponse>;
-
-        /**
-         * Puts the browser into deterministic mode.  Only effective for subsequently created web contents.
-         * Only supported in headless mode.  Once set there's no way of leaving deterministic mode.
-         */
-        enterDeterministicMode(params: HeadlessExperimental.EnterDeterministicModeRequest): Promise<void>;
 
         /**
          * Disables headless events for the target.

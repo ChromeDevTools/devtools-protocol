@@ -2465,13 +2465,6 @@ experimental domain HeadlessExperimental
       # Base64-encoded image data of the screenshot, if one was requested and successfully taken.
       optional string screenshotData
 
-  # Puts the browser into deterministic mode.  Only effective for subsequently created web contents.
-  # Only supported in headless mode.  Once set there's no way of leaving deterministic mode.
-  command enterDeterministicMode
-    parameters
-      # Number of seconds since the Epoch
-      optional number initialDate
-
   # Disables headless events for the target.
   command disable
 
