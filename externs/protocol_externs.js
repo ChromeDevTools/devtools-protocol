@@ -3896,7 +3896,9 @@ Protocol.Network.ErrorReason = {
     ConnectionFailed: "ConnectionFailed",
     NameNotResolved: "NameNotResolved",
     InternetDisconnected: "InternetDisconnected",
-    AddressUnreachable: "AddressUnreachable"
+    AddressUnreachable: "AddressUnreachable",
+    BlockedByClient: "BlockedByClient",
+    BlockedByResponse: "BlockedByResponse"
 };
 
 /** @typedef {number} */

@@ -3283,6 +3283,8 @@ domain Network
       NameNotResolved
       InternetDisconnected
       AddressUnreachable
+      BlockedByClient
+      BlockedByResponse
 
   # UTC time in seconds, counted from January 1, 1970.
   type TimeSinceEpoch extends number

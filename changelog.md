@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r558587
+###### _2018-05-14 19:17:03_ | Diff: [981276a...089aa20](https://github.com/ChromeDevTools/devtools-protocol/compare/981276a...089aa20)
+#### `HeadlessExperimental`: removed command
+* [`HeadlessExperimental.enterDeterministicMode`](https://chromedevtools.github.io/devtools-protocol/tot/HeadlessExperimental/#method-enterDeterministicMode)
+
+
 ## Roll protocol to r558111
 ###### _2018-05-11 21:17:36_ | Diff: [50de366...981276a](https://github.com/ChromeDevTools/devtools-protocol/compare/50de366...981276a)
 #### `Network`: modified type

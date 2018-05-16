@@ -7190,7 +7190,9 @@
                         "ConnectionFailed",
                         "NameNotResolved",
                         "InternetDisconnected",
-                        "AddressUnreachable"
+                        "AddressUnreachable",
+                        "BlockedByClient",
+                        "BlockedByResponse"
                     ]
                 },
                 {
