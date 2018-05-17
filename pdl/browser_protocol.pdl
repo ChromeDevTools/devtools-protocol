@@ -3658,11 +3658,49 @@ domain Network
       # Stage at wich to begin intercepting requests. Default is Request.
       optional InterceptionStage interceptionStage
 
+  # Information about a signed exchange signature.
+  # https://wicg.github.io/webpackage/draft-yasskin-httpbis-origin-signed-exchanges-impl.html#rfc.section.3.1
+  experimental type SignedExchangeSignature extends object
+    properties
+      # Signed exchange signature label.
+      string label
+      # Signed exchange signature integrity.
+      string integrity
+      # Signed exchange signature cert Url.
+      string certUrl
+      # Signed exchange signature validity Url.
+      string validityUrl
+      # Signed exchange signature date.
+      integer date
+      # Signed exchange signature expires.
+      integer expires
+
+  # Information about a signed exchange header.
+  # https://wicg.github.io/webpackage/draft-yasskin-httpbis-origin-signed-exchanges-impl.html#cbor-representation
+  experimental type SignedExchangeHeader extends object
+    properties
+      # Signed exchange request URL.
+      string requestUrl
+      # Signed exchange request method.
+      string requestMethod
+      # Signed exchange response code.
+      integer responseCode
+      # Signed exchange response headers.
+      Headers responseHeaders
+      # Signed exchange response signature.
+      array of SignedExchangeSignature signatures
+
   # Information about a signed exchange response.
   experimental type SignedExchangeInfo extends object
     properties
       # The outer response of signed HTTP exchange which was received from network.
       Response outerResponse
+      # Information about the signed exchange header.
+      optional SignedExchangeHeader header
+      # Security details for the signed exchange header.
+      optional SecurityDetails securityDetails
+      # Errors occurred while handling the signed exchagne.
+      optional array of string errors
 
   # Tells whether clearing browser cache is supported.
   deprecated command canClearBrowserCache

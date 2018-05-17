@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r558951
+###### _2018-05-15 20:17:16_ | Diff: [089aa20...fbaebb8](https://github.com/ChromeDevTools/devtools-protocol/compare/089aa20...fbaebb8)
+#### `Network`: modified type
+* [`Network.ErrorReason`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ErrorReason) - The enum's `BlockedByClient` _added_. The enum's `BlockedByResponse` _added_. 
+
+
 ## Roll protocol to r558587
 ###### _2018-05-14 19:17:03_ | Diff: [981276a...089aa20](https://github.com/ChromeDevTools/devtools-protocol/compare/981276a...089aa20)
 #### `HeadlessExperimental`: removed command

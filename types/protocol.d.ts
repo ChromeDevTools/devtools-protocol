@@ -9573,6 +9573,73 @@ export namespace Protocol {
         }
 
         /**
+         * Information about a signed exchange signature.
+         * https://wicg.github.io/webpackage/draft-yasskin-httpbis-origin-signed-exchanges-impl.html#rfc.section.3.1
+         */
+        export interface SignedExchangeSignature {
+            /**
+             * Signed exchange signature label.
+             */
+            label: string;
+
+            /**
+             * Signed exchange signature integrity.
+             */
+            integrity: string;
+
+            /**
+             * Signed exchange signature cert Url.
+             */
+            certUrl: string;
+
+            /**
+             * Signed exchange signature validity Url.
+             */
+            validityUrl: string;
+
+            /**
+             * Signed exchange signature date.
+             */
+            date: integer;
+
+            /**
+             * Signed exchange signature expires.
+             */
+            expires: integer;
+        }
+
+        /**
+         * Information about a signed exchange header.
+         * https://wicg.github.io/webpackage/draft-yasskin-httpbis-origin-signed-exchanges-impl.html#cbor-representation
+         */
+        export interface SignedExchangeHeader {
+            /**
+             * Signed exchange request URL.
+             */
+            requestUrl: string;
+
+            /**
+             * Signed exchange request method.
+             */
+            requestMethod: string;
+
+            /**
+             * Signed exchange response code.
+             */
+            responseCode: integer;
+
+            /**
+             * Signed exchange response headers.
+             */
+            responseHeaders: Headers;
+
+            /**
+             * Signed exchange response signature.
+             */
+            signatures: SignedExchangeSignature[];
+        }
+
+        /**
          * Information about a signed exchange response.
          */
         export interface SignedExchangeInfo {
@@ -9580,6 +9647,21 @@ export namespace Protocol {
              * The outer response of signed HTTP exchange which was received from network.
              */
             outerResponse: Response;
+
+            /**
+             * Information about the signed exchange header.
+             */
+            header?: SignedExchangeHeader;
+
+            /**
+             * Security details for the signed exchange header.
+             */
+            securityDetails?: SecurityDetails;
+
+            /**
+             * Errors occurred while handling the signed exchagne.
+             */
+            errors?: string[];
         }
 
         export interface CanClearBrowserCacheResponse {

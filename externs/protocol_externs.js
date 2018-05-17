@@ -4040,7 +4040,13 @@ Protocol.Network.InterceptionStage = {
 /** @typedef {!{urlPattern:(string|undefined), resourceType:(Protocol.Page.ResourceType|undefined), interceptionStage:(Protocol.Network.InterceptionStage|undefined)}} */
 Protocol.Network.RequestPattern;
 
-/** @typedef {!{outerResponse:(Protocol.Network.Response)}} */
+/** @typedef {!{label:(string), integrity:(string), certUrl:(string), validityUrl:(string), date:(number), expires:(number)}} */
+Protocol.Network.SignedExchangeSignature;
+
+/** @typedef {!{requestUrl:(string), requestMethod:(string), responseCode:(number), responseHeaders:(Protocol.Network.Headers), signatures:(!Array<Protocol.Network.SignedExchangeSignature>)}} */
+Protocol.Network.SignedExchangeHeader;
+
+/** @typedef {!{outerResponse:(Protocol.Network.Response), header:(Protocol.Network.SignedExchangeHeader|undefined), securityDetails:(Protocol.Network.SecurityDetails|undefined), errors:(!Array<string>|undefined)}} */
 Protocol.Network.SignedExchangeInfo;
 /** @interface */
 Protocol.NetworkDispatcher = function() {};

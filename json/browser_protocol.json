@@ -8022,6 +8022,80 @@
                     ]
                 },
                 {
+                    "id": "SignedExchangeSignature",
+                    "description": "Information about a signed exchange signature.\nhttps://wicg.github.io/webpackage/draft-yasskin-httpbis-origin-signed-exchanges-impl.html#rfc.section.3.1",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "label",
+                            "description": "Signed exchange signature label.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "integrity",
+                            "description": "Signed exchange signature integrity.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "certUrl",
+                            "description": "Signed exchange signature cert Url.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "validityUrl",
+                            "description": "Signed exchange signature validity Url.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "date",
+                            "description": "Signed exchange signature date.",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "expires",
+                            "description": "Signed exchange signature expires.",
+                            "type": "integer"
+                        }
+                    ]
+                },
+                {
+                    "id": "SignedExchangeHeader",
+                    "description": "Information about a signed exchange header.\nhttps://wicg.github.io/webpackage/draft-yasskin-httpbis-origin-signed-exchanges-impl.html#cbor-representation",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "requestUrl",
+                            "description": "Signed exchange request URL.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "requestMethod",
+                            "description": "Signed exchange request method.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "responseCode",
+                            "description": "Signed exchange response code.",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "responseHeaders",
+                            "description": "Signed exchange response headers.",
+                            "$ref": "Headers"
+                        },
+                        {
+                            "name": "signatures",
+                            "description": "Signed exchange response signature.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "SignedExchangeSignature"
+                            }
+                        }
+                    ]
+                },
+                {
                     "id": "SignedExchangeInfo",
                     "description": "Information about a signed exchange response.",
                     "experimental": true,
@@ -8031,6 +8105,27 @@
                             "name": "outerResponse",
                             "description": "The outer response of signed HTTP exchange which was received from network.",
                             "$ref": "Response"
+                        },
+                        {
+                            "name": "header",
+                            "description": "Information about the signed exchange header.",
+                            "optional": true,
+                            "$ref": "SignedExchangeHeader"
+                        },
+                        {
+                            "name": "securityDetails",
+                            "description": "Security details for the signed exchange header.",
+                            "optional": true,
+                            "$ref": "SecurityDetails"
+                        },
+                        {
+                            "name": "errors",
+                            "description": "Errors occurred while handling the signed exchagne.",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
                         }
                     ]
                 }
