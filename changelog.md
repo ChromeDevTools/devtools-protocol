@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r559378
+###### _2018-05-16 18:17:29_ | Diff: [fbaebb8...f1dbfcc](https://github.com/ChromeDevTools/devtools-protocol/compare/fbaebb8...f1dbfcc)
+#### `Network`: new types
+* [`Network.SignedExchangeSignature`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedExchangeSignature)
+* [`Network.SignedExchangeHeader`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedExchangeHeader)
+#### `Network`: modified type
+* [`Network.SignedExchangeInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedExchangeInfo) - The properties's `header` _added_. The properties's `securityDetails` _added_. The properties's `errors` _added_. 
+
+
 ## Roll protocol to r558951
 ###### _2018-05-15 20:17:16_ | Diff: [089aa20...fbaebb8](https://github.com/ChromeDevTools/devtools-protocol/compare/089aa20...fbaebb8)
 #### `Network`: modified type

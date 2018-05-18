@@ -2441,12 +2441,12 @@ Protocol.EmulationAgent.prototype.invoke_setTouchEmulationEnabled = function(obj
  * @param {number=} opt_maxVirtualTimeTaskStarvationCount
  * @param {boolean=} opt_waitForNavigation
  * @param {Protocol.Network.TimeSinceEpoch=} opt_initialVirtualTime
- * @return {!Promise<?Protocol.Runtime.Timestamp>}
+ * @return {!Promise<?number>}
  */
 Protocol.EmulationAgent.prototype.setVirtualTimePolicy = function(policy, opt_budget, opt_maxVirtualTimeTaskStarvationCount, opt_waitForNavigation, opt_initialVirtualTime) {};
 /** @typedef {!{policy: Protocol.Emulation.VirtualTimePolicy, initialVirtualTime: (Protocol.Network.TimeSinceEpoch|undefined), maxVirtualTimeTaskStarvationCount: (number|undefined), waitForNavigation: (boolean|undefined), budget: (number|undefined)}} */
 Protocol.EmulationAgent.SetVirtualTimePolicyRequest;
-/** @typedef {!{virtualTimeBase: Protocol.Runtime.Timestamp, virtualTimeTicksBase: number}} */
+/** @typedef {!{virtualTimeTicksBase: number}} */
 Protocol.EmulationAgent.SetVirtualTimePolicyResponse;
 /**
  * @param {!Protocol.EmulationAgent.SetVirtualTimePolicyRequest} obj
@@ -2505,17 +2505,14 @@ Protocol.HeadlessExperimental = {};
 Protocol.HeadlessExperimentalAgent = function(){};
 
 /**
- * @param {Protocol.Runtime.Timestamp=} opt_frameTime
  * @param {number=} opt_frameTimeTicks
- * @param {Protocol.Runtime.Timestamp=} opt_deadline
- * @param {number=} opt_deadlineTicks
  * @param {number=} opt_interval
  * @param {boolean=} opt_noDisplayUpdates
  * @param {Protocol.HeadlessExperimental.ScreenshotParams=} opt_screenshot
  * @return {!Promise<?boolean>}
  */
-Protocol.HeadlessExperimentalAgent.prototype.beginFrame = function(opt_frameTime, opt_frameTimeTicks, opt_deadline, opt_deadlineTicks, opt_interval, opt_noDisplayUpdates, opt_screenshot) {};
-/** @typedef {!{screenshot: (Protocol.HeadlessExperimental.ScreenshotParams|undefined), interval: (number|undefined), frameTime: (Protocol.Runtime.Timestamp|undefined), deadline: (Protocol.Runtime.Timestamp|undefined), noDisplayUpdates: (boolean|undefined), deadlineTicks: (number|undefined), frameTimeTicks: (number|undefined)}} */
+Protocol.HeadlessExperimentalAgent.prototype.beginFrame = function(opt_frameTimeTicks, opt_interval, opt_noDisplayUpdates, opt_screenshot) {};
+/** @typedef {!{interval: (number|undefined), frameTimeTicks: (number|undefined), noDisplayUpdates: (boolean|undefined), screenshot: (Protocol.HeadlessExperimental.ScreenshotParams|undefined)}} */
 Protocol.HeadlessExperimentalAgent.BeginFrameRequest;
 /** @typedef {!{hasDamage: boolean, screenshotData: string}} */
 Protocol.HeadlessExperimentalAgent.BeginFrameResponse;

@@ -2382,8 +2382,6 @@ domain Emulation
       # If set, base::Time::Now will be overriden to initially return this value.
       optional Network.TimeSinceEpoch initialVirtualTime
     returns
-      # Absolute timestamp at which virtual time was first enabled (milliseconds since epoch).
-      Runtime.Timestamp virtualTimeBase
       # Absolute timestamp at which virtual time was first enabled (up time in milliseconds).
       number virtualTimeTicksBase
 
@@ -2435,18 +2433,9 @@ experimental domain HeadlessExperimental
   # https://goo.gl/3zHXhB for more background.
   command beginFrame
     parameters
-      # Timestamp of this BeginFrame (milliseconds since epoch). If not set, the current time will
-      # be used unless frameTicks is specified.
-      optional Runtime.Timestamp frameTime
       # Timestamp of this BeginFrame in Renderer TimeTicks (milliseconds of uptime). If not set,
-      # the current time will be used unless frameTime is specified.
+      # the current time will be used.
       optional number frameTimeTicks
-      # Deadline of this BeginFrame (milliseconds since epoch). If not set, the deadline will be
-      # calculated from the frameTime and interval unless deadlineTicks is specified.
-      optional Runtime.Timestamp deadline
-      # Deadline of this BeginFrame in Renderer TimeTicks  (milliseconds of uptime). If not set,
-      # the deadline will be calculated from the frameTime and interval unless deadline is specified.
-      optional number deadlineTicks
       # The interval between BeginFrames that is reported to the compositor, in milliseconds.
       # Defaults to a 60 frames/second interval, i.e. about 16.666 milliseconds.
       optional number interval
