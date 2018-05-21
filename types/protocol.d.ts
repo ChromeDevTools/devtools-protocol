@@ -9348,7 +9348,7 @@ export namespace Protocol {
             /**
              * Type of this initiator.
              */
-            type: ('parser' | 'script' | 'preload' | 'other');
+            type: ('parser' | 'script' | 'preload' | 'SignedExchange' | 'other');
 
             /**
              * Initiator JavaScript stack trace, set for Script only.
@@ -9356,7 +9356,7 @@ export namespace Protocol {
             stack?: Runtime.StackTrace;
 
             /**
-             * Initiator URL, set for Parser type or for Script type (when script is importing module).
+             * Initiator URL, set for Parser type or for Script type (when script is importing module) or for SignedExchange type.
              */
             url?: string;
 

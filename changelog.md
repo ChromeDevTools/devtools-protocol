@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r559758
+###### _2018-05-17 18:17:25_ | Diff: [f1dbfcc...9ba7e8e](https://github.com/ChromeDevTools/devtools-protocol/compare/f1dbfcc...9ba7e8e)
+#### `Emulation`: modified command
+* [`Emulation.setVirtualTimePolicy`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setVirtualTimePolicy) - The return value's `virtualTimeTicksBase` _removed_. The `virtualTimeBase` in the return value had `$ref` _removed_. The `virtualTimeBase` in the return value had `name` _updated_. The `virtualTimeBase` in the return value had `description` _updated_. The return value's `type` _added_. 
+#### `HeadlessExperimental`: modified command
+* [`HeadlessExperimental.beginFrame`](https://chromedevtools.github.io/devtools-protocol/tot/HeadlessExperimental/#method-beginFrame) - The parameters's `interval` _removed_. The parameters's `noDisplayUpdates` _removed_. The parameters's `screenshot` _removed_. The `frameTime` in the parameters had `$ref` _removed_. The `deadline` in the parameters had `$ref` _removed_. The `deadlineTicks` in the parameters had `type` _removed_. The `frameTime` in the parameters had `name` _updated_. The `frameTime` in the parameters had `description` _updated_. The `frameTimeTicks` in the parameters had `name` _updated_. The `frameTimeTicks` in the parameters had `description` _updated_. The `deadline` in the parameters had `name` _updated_. The `deadline` in the parameters had `description` _updated_. The `deadlineTicks` in the parameters had `name` _updated_. The `deadlineTicks` in the parameters had `description` _updated_. The parameters's `type` _added_ (2 times). The parameters's `$ref` _added_. 
+
+
 ## Roll protocol to r559378
 ###### _2018-05-16 18:17:29_ | Diff: [fbaebb8...f1dbfcc](https://github.com/ChromeDevTools/devtools-protocol/compare/fbaebb8...f1dbfcc)
 #### `Network`: new types

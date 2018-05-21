@@ -3997,6 +3997,7 @@ Protocol.Network.InitiatorType = {
     Parser: "parser",
     Script: "script",
     Preload: "preload",
+    SignedExchange: "SignedExchange",
     Other: "other"
 };
 
