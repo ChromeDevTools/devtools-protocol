@@ -1951,6 +1951,32 @@ Protocol.DOMSnapshot = {};
 Protocol.DOMSnapshotAgent = function(){};
 
 /**
+ * @return {!Promise<undefined>}
+ */
+Protocol.DOMSnapshotAgent.prototype.disable = function() {};
+/** @typedef {Object|undefined} */
+Protocol.DOMSnapshotAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMSnapshotAgent.DisableResponse;
+/**
+ * @param {!Protocol.DOMSnapshotAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.DOMSnapshotAgent.DisableResponse>} */
+Protocol.DOMSnapshotAgent.prototype.invoke_disable = function(obj) {};
+
+/**
+ * @return {!Promise<undefined>}
+ */
+Protocol.DOMSnapshotAgent.prototype.enable = function() {};
+/** @typedef {Object|undefined} */
+Protocol.DOMSnapshotAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMSnapshotAgent.EnableResponse;
+/**
+ * @param {!Protocol.DOMSnapshotAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.DOMSnapshotAgent.EnableResponse>} */
+Protocol.DOMSnapshotAgent.prototype.invoke_enable = function(obj) {};
+
+/**
  * @param {!Array<string>} computedStyleWhitelist
  * @param {boolean=} opt_includeEventListeners
  * @param {boolean=} opt_includePaintOrder
@@ -1967,7 +1993,7 @@ Protocol.DOMSnapshotAgent.GetSnapshotResponse;
  * @return {!Promise<!Protocol.DOMSnapshotAgent.GetSnapshotResponse>} */
 Protocol.DOMSnapshotAgent.prototype.invoke_getSnapshot = function(obj) {};
 
-/** @typedef {!{nodeType:(number), nodeName:(string), nodeValue:(string), textValue:(string|undefined), inputValue:(string|undefined), inputChecked:(boolean|undefined), optionSelected:(boolean|undefined), backendNodeId:(Protocol.DOM.BackendNodeId), childNodeIndexes:(!Array<number>|undefined), attributes:(!Array<Protocol.DOMSnapshot.NameValue>|undefined), pseudoElementIndexes:(!Array<number>|undefined), layoutNodeIndex:(number|undefined), documentURL:(string|undefined), baseURL:(string|undefined), contentLanguage:(string|undefined), documentEncoding:(string|undefined), publicId:(string|undefined), systemId:(string|undefined), frameId:(Protocol.Page.FrameId|undefined), contentDocumentIndex:(number|undefined), importedDocumentIndex:(number|undefined), templateContentIndex:(number|undefined), pseudoType:(Protocol.DOM.PseudoType|undefined), shadowRootType:(Protocol.DOM.ShadowRootType|undefined), isClickable:(boolean|undefined), eventListeners:(!Array<Protocol.DOMDebugger.EventListener>|undefined), currentSourceURL:(string|undefined)}} */
+/** @typedef {!{nodeType:(number), nodeName:(string), nodeValue:(string), textValue:(string|undefined), inputValue:(string|undefined), inputChecked:(boolean|undefined), optionSelected:(boolean|undefined), backendNodeId:(Protocol.DOM.BackendNodeId), childNodeIndexes:(!Array<number>|undefined), attributes:(!Array<Protocol.DOMSnapshot.NameValue>|undefined), pseudoElementIndexes:(!Array<number>|undefined), layoutNodeIndex:(number|undefined), documentURL:(string|undefined), baseURL:(string|undefined), contentLanguage:(string|undefined), documentEncoding:(string|undefined), publicId:(string|undefined), systemId:(string|undefined), frameId:(Protocol.Page.FrameId|undefined), contentDocumentIndex:(number|undefined), importedDocumentIndex:(number|undefined), templateContentIndex:(number|undefined), pseudoType:(Protocol.DOM.PseudoType|undefined), shadowRootType:(Protocol.DOM.ShadowRootType|undefined), isClickable:(boolean|undefined), eventListeners:(!Array<Protocol.DOMDebugger.EventListener>|undefined), currentSourceURL:(string|undefined), originURL:(string|undefined)}} */
 Protocol.DOMSnapshot.DOMNode;
 
 /** @typedef {!{boundingBox:(Protocol.DOM.Rect), startCharacterIndex:(number), numCharacters:(number)}} */

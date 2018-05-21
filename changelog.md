@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r560288
+###### _2018-05-21 10:16:32_ | Diff: [9ba7e8e...375788c](https://github.com/ChromeDevTools/devtools-protocol/compare/9ba7e8e...375788c)
+#### `Network`: modified type
+* [`Network.Initiator`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Initiator) - The `type` in the properties had `other` _updated_. The `url` in the properties had `description` _updated_. The `0` in the properties had `other` _added_. 
+
+
 ## Roll protocol to r559758
 ###### _2018-05-17 18:17:25_ | Diff: [f1dbfcc...9ba7e8e](https://github.com/ChromeDevTools/devtools-protocol/compare/f1dbfcc...9ba7e8e)
 #### `Emulation`: modified command

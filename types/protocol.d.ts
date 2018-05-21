@@ -6547,6 +6547,11 @@ export namespace Protocol {
              * The selected url for nodes with a srcset attribute.
              */
             currentSourceURL?: string;
+
+            /**
+             * The url of the script (if any) that generates this node.
+             */
+            originURL?: string;
         }
 
         /**
@@ -6675,6 +6680,16 @@ export namespace Protocol {
     }
 
     export interface DOMSnapshotApi {
+        /**
+         * Disables DOM snapshot agent for the given page.
+         */
+        disable(): Promise<void>;
+
+        /**
+         * Enables DOM snapshot agent for the given page.
+         */
+        enable(): Promise<void>;
+
         /**
          * Returns a document snapshot, including the full DOM tree of the root node (including iframes,
          * template contents, and imported documents) in a flattened array, as well as layout and

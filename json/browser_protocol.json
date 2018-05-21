@@ -4437,6 +4437,12 @@
                             "description": "The selected url for nodes with a srcset attribute.",
                             "optional": true,
                             "type": "string"
+                        },
+                        {
+                            "name": "originURL",
+                            "description": "The url of the script (if any) that generates this node.",
+                            "optional": true,
+                            "type": "string"
                         }
                     ]
                 },
@@ -4540,6 +4546,14 @@
                 }
             ],
             "commands": [
+                {
+                    "name": "disable",
+                    "description": "Disables DOM snapshot agent for the given page."
+                },
+                {
+                    "name": "enable",
+                    "description": "Enables DOM snapshot agent for the given page."
+                },
                 {
                     "name": "getSnapshot",
                     "description": "Returns a document snapshot, including the full DOM tree of the root node (including iframes,\ntemplate contents, and imported documents) in a flattened array, as well as layout and\nwhite-listed computed style information for the nodes. Shadow DOM in the returned DOM tree is\nflattened.",

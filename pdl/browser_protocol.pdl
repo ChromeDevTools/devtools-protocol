@@ -2028,6 +2028,8 @@ experimental domain DOMSnapshot
       optional array of DOMDebugger.EventListener eventListeners
       # The selected url for nodes with a srcset attribute.
       optional string currentSourceURL
+      # The url of the script (if any) that generates this node.
+      optional string originURL
 
   # Details of post layout rendered text positions. The exact layout should not be regarded as
   # stable and may change between versions.
@@ -2073,6 +2075,12 @@ experimental domain DOMSnapshot
       string name
       # Attribute/property value.
       string value
+
+  # Disables DOM snapshot agent for the given page.
+  command disable
+
+  # Enables DOM snapshot agent for the given page.
+  command enable
 
   # Returns a document snapshot, including the full DOM tree of the root node (including iframes,
   # template contents, and imported documents) in a flattened array, as well as layout and
