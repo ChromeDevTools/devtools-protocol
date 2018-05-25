@@ -5170,6 +5170,7 @@
                     "name": "setNavigatorOverrides",
                     "description": "Overrides value returned by the javascript navigator object.",
                     "experimental": true,
+                    "deprecated": true,
                     "parameters": [
                         {
                             "name": "platform",
@@ -5275,6 +5276,29 @@
                             "name": "height",
                             "description": "Frame height (DIP).",
                             "type": "integer"
+                        }
+                    ]
+                },
+                {
+                    "name": "setUserAgentOverride",
+                    "description": "Allows overriding user agent with the given string.",
+                    "parameters": [
+                        {
+                            "name": "userAgent",
+                            "description": "User agent to use.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "acceptLanguage",
+                            "description": "Browser langugage to emulate.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "platform",
+                            "description": "The platform navigator.platform should return.",
+                            "optional": true,
+                            "type": "string"
                         }
                     ]
                 }
@@ -8688,10 +8712,23 @@
                 {
                     "name": "setUserAgentOverride",
                     "description": "Allows overriding user agent with the given string.",
+                    "redirect": "Emulation",
                     "parameters": [
                         {
                             "name": "userAgent",
                             "description": "User agent to use.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "acceptLanguage",
+                            "description": "Browser langugage to emulate.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "platform",
+                            "description": "The platform navigator.platform should return.",
+                            "optional": true,
                             "type": "string"
                         }
                     ]

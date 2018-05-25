@@ -2348,7 +2348,7 @@ domain Emulation
       optional number accuracy
 
   # Overrides value returned by the javascript navigator object.
-  experimental command setNavigatorOverrides
+  experimental deprecated command setNavigatorOverrides
     parameters
       # The platform navigator.platform should return.
       string platform
@@ -2419,6 +2419,16 @@ domain Emulation
       # The amount of virtual time that has elapsed in milliseconds since virtual time was first
       # enabled.
       number virtualTimeElapsed
+
+  # Allows overriding user agent with the given string.
+  command setUserAgentOverride
+    parameters
+      # User agent to use.
+      string userAgent
+      # Browser langugage to emulate.
+      optional string acceptLanguage
+      # The platform navigator.platform should return.
+      optional string platform
 
 # This domain provides experimental commands only supported in headless mode.
 experimental domain HeadlessExperimental
@@ -3960,9 +3970,14 @@ domain Network
 
   # Allows overriding user agent with the given string.
   command setUserAgentOverride
+    redirect Emulation
     parameters
       # User agent to use.
       string userAgent
+      # Browser langugage to emulate.
+      optional string acceptLanguage
+      # The platform navigator.platform should return.
+      optional string platform
 
   # Fired when data chunk was received over the network.
   event dataReceived

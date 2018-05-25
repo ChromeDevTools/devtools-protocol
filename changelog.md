@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r561764
+###### _2018-05-24 21:16:41_ | Diff: [7369468...05729d1](https://github.com/ChromeDevTools/devtools-protocol/compare/7369468...05729d1)
+#### `Network`: modified type
+* [`Network.SignedExchangeSignature`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedExchangeSignature) - The `integrity` in the properties had `name` _updated_. The `integrity` in the properties had `description` _updated_. The `certUrl` in the properties had `name` _updated_. The `certUrl` in the properties had `description` _updated_. The `validityUrl` in the properties had `name` _updated_. The `validityUrl` in the properties had `description` _updated_. The `date` in the properties had `name` _updated_. The `date` in the properties had `description` _updated_. The `date` in the properties had `type` _updated_. The `expires` in the properties had `name` _updated_. The `expires` in the properties had `description` _updated_. The `expires` in the properties had `type` _updated_. The properties's `optional` _added_ (2 times). The properties's `date` _added_. The properties's `expires` _added_. The properties's `certificates` _added_. 
+
+
 ## Roll protocol to r560325
 ###### _2018-05-21 12:16:45_ | Diff: [375788c...7369468](https://github.com/ChromeDevTools/devtools-protocol/compare/375788c...7369468)
 #### `DOMSnapshot`: new commands

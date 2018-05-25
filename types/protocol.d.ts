@@ -7160,6 +7160,23 @@ export namespace Protocol {
             height: integer;
         }
 
+        export interface SetUserAgentOverrideRequest {
+            /**
+             * User agent to use.
+             */
+            userAgent: string;
+
+            /**
+             * Browser langugage to emulate.
+             */
+            acceptLanguage?: string;
+
+            /**
+             * The platform navigator.platform should return.
+             */
+            platform?: string;
+        }
+
         export interface VirtualTimeAdvancedEvent {
             /**
              * The amount of virtual time that has elapsed in milliseconds since virtual time was first
@@ -7261,6 +7278,11 @@ export namespace Protocol {
          * on Android.
          */
         setVisibleSize(params: Emulation.SetVisibleSizeRequest): Promise<void>;
+
+        /**
+         * Allows overriding user agent with the given string.
+         */
+        setUserAgentOverride(params: Emulation.SetUserAgentOverrideRequest): Promise<void>;
 
         /**
          * Notification sent after the virtual time has advanced.
@@ -10047,6 +10069,16 @@ export namespace Protocol {
              * User agent to use.
              */
             userAgent: string;
+
+            /**
+             * Browser langugage to emulate.
+             */
+            acceptLanguage?: string;
+
+            /**
+             * The platform navigator.platform should return.
+             */
+            platform?: string;
         }
 
         export interface DataReceivedEvent {
