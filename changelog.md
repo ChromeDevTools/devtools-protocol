@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r560325
+###### _2018-05-21 12:16:45_ | Diff: [375788c...7369468](https://github.com/ChromeDevTools/devtools-protocol/compare/375788c...7369468)
+#### `DOMSnapshot`: new commands
+* [`DOMSnapshot.disable`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#method-disable)
+* [`DOMSnapshot.enable`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#method-enable)
+#### `DOMSnapshot`: modified type
+* [`DOMSnapshot.DOMNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DOMNode) - The properties's `originURL` _added_. 
+
+
 ## Roll protocol to r560288
 ###### _2018-05-21 10:16:32_ | Diff: [9ba7e8e...375788c](https://github.com/ChromeDevTools/devtools-protocol/compare/9ba7e8e...375788c)
 #### `Network`: modified type

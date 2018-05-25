@@ -3662,16 +3662,22 @@ domain Network
     properties
       # Signed exchange signature label.
       string label
+      # The hex string of signed exchange signature.
+      string signature
       # Signed exchange signature integrity.
       string integrity
       # Signed exchange signature cert Url.
-      string certUrl
+      optional string certUrl
+      # The hex string of signed exchange signature cert sha256.
+      optional string certSha256
       # Signed exchange signature validity Url.
       string validityUrl
       # Signed exchange signature date.
       integer date
       # Signed exchange signature expires.
       integer expires
+      # The encoded certificates.
+      optional array of string certificates
 
   # Information about a signed exchange header.
   # https://wicg.github.io/webpackage/draft-yasskin-httpbis-origin-signed-exchanges-impl.html#cbor-representation

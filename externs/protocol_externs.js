@@ -4064,7 +4064,7 @@ Protocol.Network.InterceptionStage = {
 /** @typedef {!{urlPattern:(string|undefined), resourceType:(Protocol.Page.ResourceType|undefined), interceptionStage:(Protocol.Network.InterceptionStage|undefined)}} */
 Protocol.Network.RequestPattern;
 
-/** @typedef {!{label:(string), integrity:(string), certUrl:(string), validityUrl:(string), date:(number), expires:(number)}} */
+/** @typedef {!{label:(string), signature:(string), integrity:(string), certUrl:(string|undefined), certSha256:(string|undefined), validityUrl:(string), date:(number), expires:(number), certificates:(!Array<string>|undefined)}} */
 Protocol.Network.SignedExchangeSignature;
 
 /** @typedef {!{requestUrl:(string), requestMethod:(string), responseCode:(number), responseHeaders:(Protocol.Network.Headers), signatures:(!Array<Protocol.Network.SignedExchangeSignature>)}} */

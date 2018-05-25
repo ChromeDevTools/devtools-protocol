@@ -8025,6 +8025,11 @@
                             "type": "string"
                         },
                         {
+                            "name": "signature",
+                            "description": "The hex string of signed exchange signature.",
+                            "type": "string"
+                        },
+                        {
                             "name": "integrity",
                             "description": "Signed exchange signature integrity.",
                             "type": "string"
@@ -8032,6 +8037,13 @@
                         {
                             "name": "certUrl",
                             "description": "Signed exchange signature cert Url.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "certSha256",
+                            "description": "The hex string of signed exchange signature cert sha256.",
+                            "optional": true,
                             "type": "string"
                         },
                         {
@@ -8048,6 +8060,15 @@
                             "name": "expires",
                             "description": "Signed exchange signature expires.",
                             "type": "integer"
+                        },
+                        {
+                            "name": "certificates",
+                            "description": "The encoded certificates.",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
                         }
                     ]
                 },

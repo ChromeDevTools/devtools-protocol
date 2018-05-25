@@ -9575,6 +9575,11 @@ export namespace Protocol {
             label: string;
 
             /**
+             * The hex string of signed exchange signature.
+             */
+            signature: string;
+
+            /**
              * Signed exchange signature integrity.
              */
             integrity: string;
@@ -9582,7 +9587,12 @@ export namespace Protocol {
             /**
              * Signed exchange signature cert Url.
              */
-            certUrl: string;
+            certUrl?: string;
+
+            /**
+             * The hex string of signed exchange signature cert sha256.
+             */
+            certSha256?: string;
 
             /**
              * Signed exchange signature validity Url.
@@ -9598,6 +9608,11 @@ export namespace Protocol {
              * Signed exchange signature expires.
              */
             expires: integer;
+
+            /**
+             * The encoded certificates.
+             */
+            certificates?: string[];
         }
 
         /**
