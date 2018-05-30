@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r562010
+###### _2018-05-25 14:17:24_ | Diff: [05729d1...1c585c3](https://github.com/ChromeDevTools/devtools-protocol/compare/05729d1...1c585c3)
+#### `Emulation`: new command
+* [`Emulation.setUserAgentOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setUserAgentOverride)
+#### `Emulation`: modified command
+* [`Emulation.setNavigatorOverrides`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setNavigatorOverrides) - `deprecated` added. 
+#### `Network`: modified command
+* [`Network.setUserAgentOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setUserAgentOverride) - `redirect` added. The parameters's `acceptLanguage` _added_. The parameters's `platform` _added_. 
+
+
 ## Roll protocol to r561764
 ###### _2018-05-24 21:16:41_ | Diff: [7369468...05729d1](https://github.com/ChromeDevTools/devtools-protocol/compare/7369468...05729d1)
 #### `Network`: modified type

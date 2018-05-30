@@ -2360,6 +2360,20 @@ Protocol.EmulationAgent.SetDeviceMetricsOverrideResponse;
 Protocol.EmulationAgent.prototype.invoke_setDeviceMetricsOverride = function(obj) {};
 
 /**
+ * @param {boolean} hidden
+ * @return {!Promise<undefined>}
+ */
+Protocol.EmulationAgent.prototype.setScrollbarsHidden = function(hidden) {};
+/** @typedef {!{hidden: boolean}} */
+Protocol.EmulationAgent.SetScrollbarsHiddenRequest;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.SetScrollbarsHiddenResponse;
+/**
+ * @param {!Protocol.EmulationAgent.SetScrollbarsHiddenRequest} obj
+ * @return {!Promise<!Protocol.EmulationAgent.SetScrollbarsHiddenResponse>} */
+Protocol.EmulationAgent.prototype.invoke_setScrollbarsHidden = function(obj) {};
+
+/**
  * @param {boolean} enabled
  * @param {string=} opt_configuration
  * @return {!Promise<undefined>}

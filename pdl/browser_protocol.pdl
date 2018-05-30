@@ -2321,6 +2321,11 @@ domain Emulation
       # change is not observed by the page, e.g. viewport-relative elements do not change positions.
       experimental optional Page.Viewport viewport
 
+  experimental command setScrollbarsHidden
+    parameters
+      # Whether scrollbars should be always hidden.
+      boolean hidden
+
   experimental command setEmitTouchEventsForMouse
     parameters
       # Whether touch emulation based on mouse input should be enabled.

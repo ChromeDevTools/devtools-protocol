@@ -5111,6 +5111,17 @@
                     ]
                 },
                 {
+                    "name": "setScrollbarsHidden",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "hidden",
+                            "description": "Whether scrollbars should be always hidden.",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
                     "name": "setEmitTouchEventsForMouse",
                     "experimental": true,
                     "parameters": [

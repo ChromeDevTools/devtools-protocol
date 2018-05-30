@@ -7045,6 +7045,13 @@ export namespace Protocol {
             viewport?: Page.Viewport;
         }
 
+        export interface SetScrollbarsHiddenRequest {
+            /**
+             * Whether scrollbars should be always hidden.
+             */
+            hidden: boolean;
+        }
+
         export interface SetEmitTouchEventsForMouseRequest {
             /**
              * Whether touch emulation based on mouse input should be enabled.
@@ -7232,6 +7239,8 @@ export namespace Protocol {
          * query results).
          */
         setDeviceMetricsOverride(params: Emulation.SetDeviceMetricsOverrideRequest): Promise<void>;
+
+        setScrollbarsHidden(params: Emulation.SetScrollbarsHiddenRequest): Promise<void>;
 
         setEmitTouchEventsForMouse(params: Emulation.SetEmitTouchEventsForMouseRequest): Promise<void>;
 
