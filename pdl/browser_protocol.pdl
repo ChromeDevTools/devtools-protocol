@@ -3709,6 +3709,26 @@ domain Network
       # Signed exchange response signature.
       array of SignedExchangeSignature signatures
 
+  # Field type for a signed exchange related error.
+  experimental type SignedExchangeErrorField extends string
+    enum
+      signatureSig
+      signatureIntegrity
+      signatureCertUrl
+      signatureCertSha256
+      signatureValidityUrl
+      signatureTimestamps
+
+  # Information about a signed exchange response.
+  experimental type SignedExchangeError extends object
+    properties
+      # Error message.
+      string message
+      # The index of the signature which caused the error.
+      optional integer signatureIndex
+      # The field which caused the error.
+      optional SignedExchangeErrorField errorField
+
   # Information about a signed exchange response.
   experimental type SignedExchangeInfo extends object
     properties
@@ -3719,7 +3739,7 @@ domain Network
       # Security details for the signed exchange header.
       optional SecurityDetails securityDetails
       # Errors occurred while handling the signed exchagne.
-      optional array of string errors
+      optional array of SignedExchangeError errors
 
   # Tells whether clearing browser cache is supported.
   deprecated command canClearBrowserCache

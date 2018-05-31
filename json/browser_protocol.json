@@ -8144,6 +8144,45 @@
                     ]
                 },
                 {
+                    "id": "SignedExchangeErrorField",
+                    "description": "Field type for a signed exchange related error.",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "signatureSig",
+                        "signatureIntegrity",
+                        "signatureCertUrl",
+                        "signatureCertSha256",
+                        "signatureValidityUrl",
+                        "signatureTimestamps"
+                    ]
+                },
+                {
+                    "id": "SignedExchangeError",
+                    "description": "Information about a signed exchange response.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "message",
+                            "description": "Error message.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "signatureIndex",
+                            "description": "The index of the signature which caused the error.",
+                            "optional": true,
+                            "type": "integer"
+                        },
+                        {
+                            "name": "errorField",
+                            "description": "The field which caused the error.",
+                            "optional": true,
+                            "$ref": "SignedExchangeErrorField"
+                        }
+                    ]
+                },
+                {
                     "id": "SignedExchangeInfo",
                     "description": "Information about a signed exchange response.",
                     "experimental": true,
@@ -8172,7 +8211,7 @@
                             "optional": true,
                             "type": "array",
                             "items": {
-                                "type": "string"
+                                "$ref": "SignedExchangeError"
                             }
                         }
                     ]

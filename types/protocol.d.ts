@@ -9678,6 +9678,31 @@ export namespace Protocol {
         }
 
         /**
+         * Field type for a signed exchange related error.
+         */
+        export type SignedExchangeErrorField = ('signatureSig' | 'signatureIntegrity' | 'signatureCertUrl' | 'signatureCertSha256' | 'signatureValidityUrl' | 'signatureTimestamps');
+
+        /**
+         * Information about a signed exchange response.
+         */
+        export interface SignedExchangeError {
+            /**
+             * Error message.
+             */
+            message: string;
+
+            /**
+             * The index of the signature which caused the error.
+             */
+            signatureIndex?: integer;
+
+            /**
+             * The field which caused the error.
+             */
+            errorField?: SignedExchangeErrorField;
+        }
+
+        /**
          * Information about a signed exchange response.
          */
         export interface SignedExchangeInfo {
@@ -9699,7 +9724,7 @@ export namespace Protocol {
             /**
              * Errors occurred while handling the signed exchagne.
              */
-            errors?: string[];
+            errors?: SignedExchangeError[];
         }
 
         export interface CanClearBrowserCacheResponse {

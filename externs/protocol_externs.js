@@ -4102,7 +4102,20 @@ Protocol.Network.SignedExchangeSignature;
 /** @typedef {!{requestUrl:(string), requestMethod:(string), responseCode:(number), responseHeaders:(Protocol.Network.Headers), signatures:(!Array<Protocol.Network.SignedExchangeSignature>)}} */
 Protocol.Network.SignedExchangeHeader;
 
-/** @typedef {!{outerResponse:(Protocol.Network.Response), header:(Protocol.Network.SignedExchangeHeader|undefined), securityDetails:(Protocol.Network.SecurityDetails|undefined), errors:(!Array<string>|undefined)}} */
+/** @enum {string} */
+Protocol.Network.SignedExchangeErrorField = {
+    SignatureSig: "signatureSig",
+    SignatureIntegrity: "signatureIntegrity",
+    SignatureCertUrl: "signatureCertUrl",
+    SignatureCertSha256: "signatureCertSha256",
+    SignatureValidityUrl: "signatureValidityUrl",
+    SignatureTimestamps: "signatureTimestamps"
+};
+
+/** @typedef {!{message:(string), signatureIndex:(number|undefined), errorField:(Protocol.Network.SignedExchangeErrorField|undefined)}} */
+Protocol.Network.SignedExchangeError;
+
+/** @typedef {!{outerResponse:(Protocol.Network.Response), header:(Protocol.Network.SignedExchangeHeader|undefined), securityDetails:(Protocol.Network.SecurityDetails|undefined), errors:(!Array<Protocol.Network.SignedExchangeError>|undefined)}} */
 Protocol.Network.SignedExchangeInfo;
 /** @interface */
 Protocol.NetworkDispatcher = function() {};

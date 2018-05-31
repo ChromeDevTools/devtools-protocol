@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r562716
+###### _2018-05-29 20:15:40_ | Diff: [1c585c3...a53449b](https://github.com/ChromeDevTools/devtools-protocol/compare/1c585c3...a53449b)
+#### `Emulation`: new command
+* [`Emulation.setScrollbarsHidden`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setScrollbarsHidden)
+
+
 ## Roll protocol to r562010
 ###### _2018-05-25 14:17:24_ | Diff: [05729d1...1c585c3](https://github.com/ChromeDevTools/devtools-protocol/compare/05729d1...1c585c3)
 #### `Emulation`: new command
