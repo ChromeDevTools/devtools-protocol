@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r563694
+###### _2018-06-01 10:15:46_ | Diff: [686864e...38129ec](https://github.com/ChromeDevTools/devtools-protocol/compare/686864e...38129ec)
+#### `Runtime`: new command
+* [`Runtime.setAsyncCallStackDepth`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-setAsyncCallStackDepth)
+
+
 ## Roll protocol to r563547
 ###### _2018-05-31 23:15:35_ | Diff: [8490a4e...686864e](https://github.com/ChromeDevTools/devtools-protocol/compare/8490a4e...686864e)
 #### `Target`: new event

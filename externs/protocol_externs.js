@@ -6849,7 +6849,7 @@ Protocol.Debugger.BreakLocationType = {
 
 /** @typedef {!{scriptId:(Protocol.Runtime.ScriptId), lineNumber:(number), columnNumber:(number|undefined), type:(Protocol.Debugger.BreakLocationType|undefined)}} */
 Protocol.Debugger.BreakLocation;
-/** @interface */
+/** @constructor */
 Protocol.DebuggerDispatcher = function() {};
 /**
  * @param {Protocol.Debugger.BreakpointId} breakpointId
@@ -7082,7 +7082,7 @@ Protocol.HeapProfiler.SamplingHeapProfileNode;
 
 /** @typedef {!{head:(Protocol.HeapProfiler.SamplingHeapProfileNode)}} */
 Protocol.HeapProfiler.SamplingHeapProfile;
-/** @interface */
+/** @constructor */
 Protocol.HeapProfilerDispatcher = function() {};
 /**
  * @param {string} chunk
@@ -7761,7 +7761,7 @@ Protocol.Runtime.UniqueDebuggerId;
 
 /** @typedef {!{id:(string), debuggerId:(Protocol.Runtime.UniqueDebuggerId|undefined)}} */
 Protocol.Runtime.StackTraceId;
-/** @interface */
+/** @constructor */
 Protocol.RuntimeDispatcher = function() {};
 /**
  * @param {string} type
