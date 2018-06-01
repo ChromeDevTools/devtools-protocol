@@ -2406,6 +2406,14 @@ export namespace Protocol {
             exceptionDetails?: ExceptionDetails;
         }
 
+        export interface SetAsyncCallStackDepthRequest {
+            /**
+             * Maximum depth of async call stacks. Setting to `0` will effectively disable collecting async
+             * call stacks (default).
+             */
+            maxDepth: integer;
+        }
+
         export interface SetCustomObjectFormatterEnabledRequest {
             enabled: boolean;
         }
@@ -2568,6 +2576,11 @@ export namespace Protocol {
          * Runs script with given id in a given context.
          */
         runScript(params: Runtime.RunScriptRequest): Promise<Runtime.RunScriptResponse>;
+
+        /**
+         * Enables or disables async call stacks tracking.
+         */
+        setAsyncCallStackDepth(params: Runtime.SetAsyncCallStackDepthRequest): Promise<void>;
 
         setCustomObjectFormatterEnabled(params: Runtime.SetCustomObjectFormatterEnabledRequest): Promise<void>;
 

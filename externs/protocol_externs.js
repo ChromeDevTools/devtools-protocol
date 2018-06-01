@@ -7574,6 +7574,20 @@ Protocol.RuntimeAgent.RunScriptResponse;
 Protocol.RuntimeAgent.prototype.invoke_runScript = function(obj) {};
 
 /**
+ * @param {number} maxDepth
+ * @return {!Promise<undefined>}
+ */
+Protocol.RuntimeAgent.prototype.setAsyncCallStackDepth = function(maxDepth) {};
+/** @typedef {!{maxDepth: number}} */
+Protocol.RuntimeAgent.SetAsyncCallStackDepthRequest;
+/** @typedef {Object|undefined} */
+Protocol.RuntimeAgent.SetAsyncCallStackDepthResponse;
+/**
+ * @param {!Protocol.RuntimeAgent.SetAsyncCallStackDepthRequest} obj
+ * @return {!Promise<!Protocol.RuntimeAgent.SetAsyncCallStackDepthResponse>} */
+Protocol.RuntimeAgent.prototype.invoke_setAsyncCallStackDepth = function(obj) {};
+
+/**
  * @param {boolean} enabled
  * @return {!Promise<undefined>}
  */

@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r563547
+###### _2018-05-31 23:15:35_ | Diff: [8490a4e...686864e](https://github.com/ChromeDevTools/devtools-protocol/compare/8490a4e...686864e)
+#### `Target`: new event
+* [`Target.targetCrashed`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#event-targetCrashed)
+
+
 ## Roll protocol to r563180
 ###### _2018-05-31 01:15:44_ | Diff: [a53449b...8490a4e](https://github.com/ChromeDevTools/devtools-protocol/compare/a53449b...8490a4e)
 #### `Network`: new types
