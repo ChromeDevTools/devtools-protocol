@@ -13471,6 +13471,20 @@ export namespace Protocol {
             targetId: TargetID;
         }
 
+        export interface TargetCrashedEvent {
+            targetId: TargetID;
+
+            /**
+             * Termination status type.
+             */
+            status: string;
+
+            /**
+             * Termination error code.
+             */
+            errorCode: integer;
+        }
+
         export interface TargetInfoChangedEvent {
             targetInfo: TargetInfo;
         }
@@ -13579,6 +13593,11 @@ export namespace Protocol {
          * Issued when a target is destroyed.
          */
         on(event: 'targetDestroyed', listener: (params: Target.TargetDestroyedEvent) => void): void;
+
+        /**
+         * Issued when a target has crashed.
+         */
+        on(event: 'targetCrashed', listener: (params: Target.TargetCrashedEvent) => void): void;
 
         /**
          * Issued when some information about a target has changed. This only happens between

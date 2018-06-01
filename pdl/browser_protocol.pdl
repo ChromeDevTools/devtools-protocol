@@ -5742,6 +5742,15 @@ domain Target
     parameters
       TargetID targetId
 
+  # Issued when a target has crashed.
+  event targetCrashed
+    parameters
+      TargetID targetId
+      # Termination status type.
+      string status
+      # Termination error code.
+      integer errorCode
+
   # Issued when some information about a target has changed. This only happens between
   # `targetCreated` and `targetDestroyed`.
   event targetInfoChanged

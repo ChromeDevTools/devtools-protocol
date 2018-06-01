@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r563180
+###### _2018-05-31 01:15:44_ | Diff: [a53449b...8490a4e](https://github.com/ChromeDevTools/devtools-protocol/compare/a53449b...8490a4e)
+#### `Network`: new types
+* [`Network.SignedExchangeErrorField`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedExchangeErrorField)
+* [`Network.SignedExchangeError`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedExchangeError)
+#### `Network`: modified type
+* [`Network.SignedExchangeInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedExchangeInfo) - The `errors` in the properties had `type` _removed_. The `3` in the properties had `$ref` _added_. 
+
+
 ## Roll protocol to r562716
 ###### _2018-05-29 20:15:40_ | Diff: [1c585c3...a53449b](https://github.com/ChromeDevTools/devtools-protocol/compare/1c585c3...a53449b)
 #### `Emulation`: new command

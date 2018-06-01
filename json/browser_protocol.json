@@ -12520,6 +12520,26 @@
                     ]
                 },
                 {
+                    "name": "targetCrashed",
+                    "description": "Issued when a target has crashed.",
+                    "parameters": [
+                        {
+                            "name": "targetId",
+                            "$ref": "TargetID"
+                        },
+                        {
+                            "name": "status",
+                            "description": "Termination status type.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "errorCode",
+                            "description": "Termination error code.",
+                            "type": "integer"
+                        }
+                    ]
+                },
+                {
                     "name": "targetInfoChanged",
                     "description": "Issued when some information about a target has changed. This only happens between\n`targetCreated` and `targetDestroyed`.",
                     "parameters": [

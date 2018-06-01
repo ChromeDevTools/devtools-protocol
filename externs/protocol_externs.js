@@ -6126,6 +6126,12 @@ Protocol.TargetDispatcher.prototype.targetCreated = function(targetInfo) {};
  */
 Protocol.TargetDispatcher.prototype.targetDestroyed = function(targetId) {};
 /**
+ * @param {Protocol.Target.TargetID} targetId
+ * @param {string} status
+ * @param {number} errorCode
+ */
+Protocol.TargetDispatcher.prototype.targetCrashed = function(targetId, status, errorCode) {};
+/**
  * @param {Protocol.Target.TargetInfo} targetInfo
  */
 Protocol.TargetDispatcher.prototype.targetInfoChanged = function(targetInfo) {};
