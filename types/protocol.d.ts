@@ -2418,6 +2418,25 @@ export namespace Protocol {
             enabled: boolean;
         }
 
+        export interface AddBindingRequest {
+            name: string;
+        }
+
+        export interface RemoveBindingRequest {
+            name: string;
+        }
+
+        export interface BindingCalledEvent {
+            name: string;
+
+            payload: string;
+
+            /**
+             * Identifier of the context where the call was made.
+             */
+            executionContextId: ExecutionContextId;
+        }
+
         export interface ConsoleAPICalledEvent {
             /**
              * Type of the call.
@@ -2589,6 +2608,26 @@ export namespace Protocol {
          * Will cancel the termination when the outer-most script execution ends.
          */
         terminateExecution(): Promise<void>;
+
+        /**
+         * Adds binding with the given name on the global objects of all inspected
+         * contexts, including those created later. Bindings survive reloads.
+         * Binding function takes exactly one argument, this argument should be string,
+         * in case of any other input, function throws an exception.
+         * Each binding function call produces Runtime.bindingCalled notification.
+         */
+        addBinding(params: Runtime.AddBindingRequest): Promise<void>;
+
+        /**
+         * This method does not remove binding function from global object but
+         * unsubscribes current runtime agent from Runtime.bindingCalled notifications.
+         */
+        removeBinding(params: Runtime.RemoveBindingRequest): Promise<void>;
+
+        /**
+         * Notification is issued every time when binding is called.
+         */
+        on(event: 'bindingCalled', listener: (params: Runtime.BindingCalledEvent) => void): void;
 
         /**
          * Issued when console API was called.
