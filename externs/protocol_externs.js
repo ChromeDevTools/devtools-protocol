@@ -7614,6 +7614,34 @@ Protocol.RuntimeAgent.TerminateExecutionResponse;
  * @return {!Promise<!Protocol.RuntimeAgent.TerminateExecutionResponse>} */
 Protocol.RuntimeAgent.prototype.invoke_terminateExecution = function(obj) {};
 
+/**
+ * @param {string} name
+ * @return {!Promise<undefined>}
+ */
+Protocol.RuntimeAgent.prototype.addBinding = function(name) {};
+/** @typedef {!{name: string}} */
+Protocol.RuntimeAgent.AddBindingRequest;
+/** @typedef {Object|undefined} */
+Protocol.RuntimeAgent.AddBindingResponse;
+/**
+ * @param {!Protocol.RuntimeAgent.AddBindingRequest} obj
+ * @return {!Promise<!Protocol.RuntimeAgent.AddBindingResponse>} */
+Protocol.RuntimeAgent.prototype.invoke_addBinding = function(obj) {};
+
+/**
+ * @param {string} name
+ * @return {!Promise<undefined>}
+ */
+Protocol.RuntimeAgent.prototype.removeBinding = function(name) {};
+/** @typedef {!{name: string}} */
+Protocol.RuntimeAgent.RemoveBindingRequest;
+/** @typedef {Object|undefined} */
+Protocol.RuntimeAgent.RemoveBindingResponse;
+/**
+ * @param {!Protocol.RuntimeAgent.RemoveBindingRequest} obj
+ * @return {!Promise<!Protocol.RuntimeAgent.RemoveBindingResponse>} */
+Protocol.RuntimeAgent.prototype.invoke_removeBinding = function(obj) {};
+
 /** @typedef {string} */
 Protocol.Runtime.ScriptId;
 
@@ -7763,6 +7791,12 @@ Protocol.Runtime.UniqueDebuggerId;
 Protocol.Runtime.StackTraceId;
 /** @constructor */
 Protocol.RuntimeDispatcher = function() {};
+/**
+ * @param {string} name
+ * @param {string} payload
+ * @param {Protocol.Runtime.ExecutionContextId} executionContextId
+ */
+Protocol.RuntimeDispatcher.prototype.bindingCalled = function(name, payload, executionContextId) {};
 /**
  * @param {string} type
  * @param {!Array<Protocol.Runtime.RemoteObject>} args
