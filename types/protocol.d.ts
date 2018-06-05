@@ -2418,6 +2418,10 @@ export namespace Protocol {
             enabled: boolean;
         }
 
+        export interface SetMaxCallStackSizeToCaptureRequest {
+            size: integer;
+        }
+
         export interface AddBindingRequest {
             name: string;
         }
@@ -2602,6 +2606,8 @@ export namespace Protocol {
         setAsyncCallStackDepth(params: Runtime.SetAsyncCallStackDepthRequest): Promise<void>;
 
         setCustomObjectFormatterEnabled(params: Runtime.SetCustomObjectFormatterEnabledRequest): Promise<void>;
+
+        setMaxCallStackSizeToCapture(params: Runtime.SetMaxCallStackSizeToCaptureRequest): Promise<void>;
 
         /**
          * Terminate current or next JavaScript execution.

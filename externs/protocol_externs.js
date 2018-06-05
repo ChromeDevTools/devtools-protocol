@@ -7602,6 +7602,20 @@ Protocol.RuntimeAgent.SetCustomObjectFormatterEnabledResponse;
 Protocol.RuntimeAgent.prototype.invoke_setCustomObjectFormatterEnabled = function(obj) {};
 
 /**
+ * @param {number} size
+ * @return {!Promise<undefined>}
+ */
+Protocol.RuntimeAgent.prototype.setMaxCallStackSizeToCapture = function(size) {};
+/** @typedef {!{size: number}} */
+Protocol.RuntimeAgent.SetMaxCallStackSizeToCaptureRequest;
+/** @typedef {Object|undefined} */
+Protocol.RuntimeAgent.SetMaxCallStackSizeToCaptureResponse;
+/**
+ * @param {!Protocol.RuntimeAgent.SetMaxCallStackSizeToCaptureRequest} obj
+ * @return {!Promise<!Protocol.RuntimeAgent.SetMaxCallStackSizeToCaptureResponse>} */
+Protocol.RuntimeAgent.prototype.invoke_setMaxCallStackSizeToCapture = function(obj) {};
+
+/**
  * @return {!Promise<undefined>}
  */
 Protocol.RuntimeAgent.prototype.terminateExecution = function() {};

@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r563930 554653 554626
+###### _2018-06-01 22:15:40_ | Diff: [92b6b49...170e987](https://github.com/ChromeDevTools/devtools-protocol/compare/92b6b49...170e987)
+#### `Runtime`: new commands
+* [`Runtime.addBinding`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-addBinding)
+* [`Runtime.removeBinding`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-removeBinding)
+#### `Runtime`: new event
+* [`Runtime.bindingCalled`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#event-bindingCalled)
+
+
 ## Roll protocol to r563694
 ###### _2018-06-01 10:15:46_ | Diff: [686864e...38129ec](https://github.com/ChromeDevTools/devtools-protocol/compare/686864e...38129ec)
 #### `Runtime`: new command
