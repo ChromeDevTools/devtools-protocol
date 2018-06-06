@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r564939
+###### _2018-06-06 10:16:18_ | Diff: [8cc61c7...78ab8c3](https://github.com/ChromeDevTools/devtools-protocol/compare/8cc61c7...78ab8c3)
+#### `Page`: new command
+* [`Page.setFontFamilies`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setFontFamilies)
+#### `Page`: new type
+* [`Page.FontFamilies`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-FontFamilies)
+
+
 ## Roll protocol to r564874
 ###### _2018-06-06 07:16:13_ | Diff: [3bb6299...8cc61c7](https://github.com/ChromeDevTools/devtools-protocol/compare/3bb6299...8cc61c7)
 #### `Runtime`: modified command

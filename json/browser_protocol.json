@@ -8911,8 +8911,8 @@
                             "type": "number"
                         },
                         {
-                            "name": "blockedCrossSiteDocument",
-                            "description": "Set when response was blocked due to being cross-site document response.",
+                            "name": "shouldReportCorbBlocking",
+                            "description": "Set when 1) response was blocked by Cross-Origin Read Blocking and also\n2) this needs to be reported to the DevTools console.",
                             "optional": true,
                             "type": "boolean"
                         }

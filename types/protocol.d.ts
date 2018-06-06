@@ -10285,9 +10285,10 @@ export namespace Protocol {
             encodedDataLength: number;
 
             /**
-             * Set when response was blocked due to being cross-site document response.
+             * Set when 1) response was blocked by Cross-Origin Read Blocking and also
+             * 2) this needs to be reported to the DevTools console.
              */
-            blockedCrossSiteDocument?: boolean;
+            shouldReportCorbBlocking?: boolean;
         }
 
         export interface RequestInterceptedEvent {
