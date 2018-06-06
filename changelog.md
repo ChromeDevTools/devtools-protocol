@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r564874
+###### _2018-06-06 07:16:13_ | Diff: [3bb6299...8cc61c7](https://github.com/ChromeDevTools/devtools-protocol/compare/3bb6299...8cc61c7)
+#### `Runtime`: modified command
+* [`Runtime.addBinding`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-addBinding) - `description` updated. The parameters's `executionContextId` _added_. 
+
+
 ## Roll protocol to r564725
 ###### _2018-06-05 17:15:41_ | Diff: [2c9e648...3bb6299](https://github.com/ChromeDevTools/devtools-protocol/compare/2c9e648...3bb6299)
 #### `Emulation`: new command

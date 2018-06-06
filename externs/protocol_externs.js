@@ -5010,6 +5010,20 @@ Protocol.PageAgent.SetDeviceOrientationOverrideResponse;
 Protocol.PageAgent.prototype.invoke_setDeviceOrientationOverride = function(obj) {};
 
 /**
+ * @param {Protocol.Page.FontFamilies} fontFamilies
+ * @return {!Promise<undefined>}
+ */
+Protocol.PageAgent.prototype.setFontFamilies = function(fontFamilies) {};
+/** @typedef {!{fontFamilies: Protocol.Page.FontFamilies}} */
+Protocol.PageAgent.SetFontFamiliesRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.SetFontFamiliesResponse;
+/**
+ * @param {!Protocol.PageAgent.SetFontFamiliesRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.SetFontFamiliesResponse>} */
+Protocol.PageAgent.prototype.invoke_setFontFamilies = function(obj) {};
+
+/**
  * @param {Protocol.Page.FrameId} frameId
  * @param {string} html
  * @return {!Promise<undefined>}
@@ -5245,6 +5259,9 @@ Protocol.Page.VisualViewport;
 
 /** @typedef {!{x:(number), y:(number), width:(number), height:(number), scale:(number)}} */
 Protocol.Page.Viewport;
+
+/** @typedef {!{standard:(string|undefined), fixed:(string|undefined), serif:(string|undefined), sansSerif:(string|undefined), cursive:(string|undefined), fantasy:(string|undefined), pictograph:(string|undefined)}} */
+Protocol.Page.FontFamilies;
 /** @interface */
 Protocol.PageDispatcher = function() {};
 /**

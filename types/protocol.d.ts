@@ -11525,6 +11525,46 @@ export namespace Protocol {
             scale: number;
         }
 
+        /**
+         * Generic font families collection.
+         */
+        export interface FontFamilies {
+            /**
+             * The standard font-family.
+             */
+            standard?: string;
+
+            /**
+             * The fixed font-family.
+             */
+            fixed?: string;
+
+            /**
+             * The serif font-family.
+             */
+            serif?: string;
+
+            /**
+             * The sansSerif font-family.
+             */
+            sansSerif?: string;
+
+            /**
+             * The cursive font-family.
+             */
+            cursive?: string;
+
+            /**
+             * The fantasy font-family.
+             */
+            fantasy?: string;
+
+            /**
+             * The pictograph font-family.
+             */
+            pictograph?: string;
+        }
+
         export interface AddScriptToEvaluateOnLoadRequest {
             scriptSource: string;
         }
@@ -12011,6 +12051,13 @@ export namespace Protocol {
             gamma: number;
         }
 
+        export interface SetFontFamiliesRequest {
+            /**
+             * Specifies font families to set. If a font family is not set, it won't be changed.
+             */
+            fontFamilies: FontFamilies;
+        }
+
         export interface SetDocumentContentRequest {
             /**
              * Frame id to set HTML for.
@@ -12462,6 +12509,11 @@ export namespace Protocol {
          * Overrides the Device Orientation.
          */
         setDeviceOrientationOverride(params: Page.SetDeviceOrientationOverrideRequest): Promise<void>;
+
+        /**
+         * Set commonly used font families.
+         */
+        setFontFamilies(params: Page.SetFontFamiliesRequest): Promise<void>;
 
         /**
          * Sets given markup as the document's HTML.

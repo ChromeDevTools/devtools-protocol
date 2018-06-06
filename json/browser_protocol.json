@@ -10086,6 +10086,56 @@
                             "type": "number"
                         }
                     ]
+                },
+                {
+                    "id": "FontFamilies",
+                    "description": "Generic font families collection.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "standard",
+                            "description": "The standard font-family.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "fixed",
+                            "description": "The fixed font-family.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "serif",
+                            "description": "The serif font-family.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "sansSerif",
+                            "description": "The sansSerif font-family.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "cursive",
+                            "description": "The cursive font-family.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "fantasy",
+                            "description": "The fantasy font-family.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "pictograph",
+                            "description": "The pictograph font-family.",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
                 }
             ],
             "commands": [
@@ -10781,6 +10831,18 @@
                             "name": "gamma",
                             "description": "Mock gamma",
                             "type": "number"
+                        }
+                    ]
+                },
+                {
+                    "name": "setFontFamilies",
+                    "description": "Set commonly used font families.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "fontFamilies",
+                            "description": "Specifies font families to set. If a font family is not set, it won't be changed.",
+                            "$ref": "FontFamilies"
                         }
                     ]
                 },

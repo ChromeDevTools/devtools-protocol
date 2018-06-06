@@ -4606,6 +4606,24 @@ domain Page
       # Page scale factor.
       number scale
 
+  # Generic font families collection.
+  experimental type FontFamilies extends object
+    properties
+      # The standard font-family.
+      optional string standard
+      # The fixed font-family.
+      optional string fixed
+      # The serif font-family.
+      optional string serif
+      # The sansSerif font-family.
+      optional string sansSerif
+      # The cursive font-family.
+      optional string cursive
+      # The fantasy font-family.
+      optional string fantasy
+      # The pictograph font-family.
+      optional string pictograph
+
   # Deprecated, please use addScriptToEvaluateOnNewDocument instead.
   experimental deprecated command addScriptToEvaluateOnLoad
     parameters
@@ -4929,6 +4947,12 @@ domain Page
       number beta
       # Mock gamma
       number gamma
+
+  # Set commonly used font families.
+  experimental command setFontFamilies
+    parameters
+      # Specifies font families to set. If a font family is not set, it won't be changed.
+      FontFamilies fontFamilies
 
   # Sets given markup as the document's HTML.
   command setDocumentContent
