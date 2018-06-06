@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r564725
+###### _2018-06-05 17:15:41_ | Diff: [2c9e648...3bb6299](https://github.com/ChromeDevTools/devtools-protocol/compare/2c9e648...3bb6299)
+#### `Emulation`: new command
+* [`Emulation.setDocumentCookieDisabled`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setDocumentCookieDisabled)
+
+
 ## Roll protocol to r564347
 ###### _2018-06-04 19:15:53_ | Diff: [e5023ab...2c9e648](https://github.com/ChromeDevTools/devtools-protocol/compare/e5023ab...2c9e648)
 #### `Runtime`: new command

@@ -7644,10 +7644,11 @@ Protocol.RuntimeAgent.prototype.invoke_terminateExecution = function(obj) {};
 
 /**
  * @param {string} name
+ * @param {Protocol.Runtime.ExecutionContextId=} opt_executionContextId
  * @return {!Promise<undefined>}
  */
-Protocol.RuntimeAgent.prototype.addBinding = function(name) {};
-/** @typedef {!{name: string}} */
+Protocol.RuntimeAgent.prototype.addBinding = function(name, opt_executionContextId) {};
+/** @typedef {!{name: string, executionContextId: (Protocol.Runtime.ExecutionContextId|undefined)}} */
 Protocol.RuntimeAgent.AddBindingRequest;
 /** @typedef {Object|undefined} */
 Protocol.RuntimeAgent.AddBindingResponse;
