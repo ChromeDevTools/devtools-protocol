@@ -7110,6 +7110,13 @@ export namespace Protocol {
             hidden: boolean;
         }
 
+        export interface SetDocumentCookieDisabledRequest {
+            /**
+             * Whether document.coookie API should be disabled.
+             */
+            disabled: boolean;
+        }
+
         export interface SetEmitTouchEventsForMouseRequest {
             /**
              * Whether touch emulation based on mouse input should be enabled.
@@ -7299,6 +7306,8 @@ export namespace Protocol {
         setDeviceMetricsOverride(params: Emulation.SetDeviceMetricsOverrideRequest): Promise<void>;
 
         setScrollbarsHidden(params: Emulation.SetScrollbarsHiddenRequest): Promise<void>;
+
+        setDocumentCookieDisabled(params: Emulation.SetDocumentCookieDisabledRequest): Promise<void>;
 
         setEmitTouchEventsForMouse(params: Emulation.SetEmitTouchEventsForMouseRequest): Promise<void>;
 

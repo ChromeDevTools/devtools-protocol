@@ -2326,6 +2326,11 @@ domain Emulation
       # Whether scrollbars should be always hidden.
       boolean hidden
 
+  experimental command setDocumentCookieDisabled
+    parameters
+      # Whether document.coookie API should be disabled.
+      boolean disabled
+
   experimental command setEmitTouchEventsForMouse
     parameters
       # Whether touch emulation based on mouse input should be enabled.

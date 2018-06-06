@@ -5122,6 +5122,17 @@
                     ]
                 },
                 {
+                    "name": "setDocumentCookieDisabled",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "disabled",
+                            "description": "Whether document.coookie API should be disabled.",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
                     "name": "setEmitTouchEventsForMouse",
                     "experimental": true,
                     "parameters": [

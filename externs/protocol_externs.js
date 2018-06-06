@@ -2374,6 +2374,20 @@ Protocol.EmulationAgent.SetScrollbarsHiddenResponse;
 Protocol.EmulationAgent.prototype.invoke_setScrollbarsHidden = function(obj) {};
 
 /**
+ * @param {boolean} disabled
+ * @return {!Promise<undefined>}
+ */
+Protocol.EmulationAgent.prototype.setDocumentCookieDisabled = function(disabled) {};
+/** @typedef {!{disabled: boolean}} */
+Protocol.EmulationAgent.SetDocumentCookieDisabledRequest;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.SetDocumentCookieDisabledResponse;
+/**
+ * @param {!Protocol.EmulationAgent.SetDocumentCookieDisabledRequest} obj
+ * @return {!Promise<!Protocol.EmulationAgent.SetDocumentCookieDisabledResponse>} */
+Protocol.EmulationAgent.prototype.invoke_setDocumentCookieDisabled = function(obj) {};
+
+/**
  * @param {boolean} enabled
  * @param {string=} opt_configuration
  * @return {!Promise<undefined>}
