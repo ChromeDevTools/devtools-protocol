@@ -5024,6 +5024,20 @@ Protocol.PageAgent.SetFontFamiliesResponse;
 Protocol.PageAgent.prototype.invoke_setFontFamilies = function(obj) {};
 
 /**
+ * @param {Protocol.Page.FontSizes} fontSizes
+ * @return {!Promise<undefined>}
+ */
+Protocol.PageAgent.prototype.setFontSizes = function(fontSizes) {};
+/** @typedef {!{fontSizes: Protocol.Page.FontSizes}} */
+Protocol.PageAgent.SetFontSizesRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.SetFontSizesResponse;
+/**
+ * @param {!Protocol.PageAgent.SetFontSizesRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.SetFontSizesResponse>} */
+Protocol.PageAgent.prototype.invoke_setFontSizes = function(obj) {};
+
+/**
  * @param {Protocol.Page.FrameId} frameId
  * @param {string} html
  * @return {!Promise<undefined>}
@@ -5262,6 +5276,9 @@ Protocol.Page.Viewport;
 
 /** @typedef {!{standard:(string|undefined), fixed:(string|undefined), serif:(string|undefined), sansSerif:(string|undefined), cursive:(string|undefined), fantasy:(string|undefined), pictograph:(string|undefined)}} */
 Protocol.Page.FontFamilies;
+
+/** @typedef {!{standard:(number|undefined), fixed:(number|undefined)}} */
+Protocol.Page.FontSizes;
 /** @interface */
 Protocol.PageDispatcher = function() {};
 /**

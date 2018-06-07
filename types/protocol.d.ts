@@ -11566,6 +11566,21 @@ export namespace Protocol {
             pictograph?: string;
         }
 
+        /**
+         * Default font sizes.
+         */
+        export interface FontSizes {
+            /**
+             * Default standard font size.
+             */
+            standard?: integer;
+
+            /**
+             * Default fixed font size.
+             */
+            fixed?: integer;
+        }
+
         export interface AddScriptToEvaluateOnLoadRequest {
             scriptSource: string;
         }
@@ -12054,9 +12069,16 @@ export namespace Protocol {
 
         export interface SetFontFamiliesRequest {
             /**
-             * Specifies font families to set. If a font family is not set, it won't be changed.
+             * Specifies font families to set. If a font family is not specified, it won't be changed.
              */
             fontFamilies: FontFamilies;
+        }
+
+        export interface SetFontSizesRequest {
+            /**
+             * Specifies font sizes to set. If a font size is not specified, it won't be changed.
+             */
+            fontSizes: FontSizes;
         }
 
         export interface SetDocumentContentRequest {
@@ -12512,9 +12534,14 @@ export namespace Protocol {
         setDeviceOrientationOverride(params: Page.SetDeviceOrientationOverrideRequest): Promise<void>;
 
         /**
-         * Set commonly used font families.
+         * Set generic font families.
          */
         setFontFamilies(params: Page.SetFontFamiliesRequest): Promise<void>;
+
+        /**
+         * Set default font sizes.
+         */
+        setFontSizes(params: Page.SetFontSizesRequest): Promise<void>;
 
         /**
          * Sets given markup as the document's HTML.

@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r564968
+###### _2018-06-06 11:15:47_ | Diff: [78ab8c3...e6b9650](https://github.com/ChromeDevTools/devtools-protocol/compare/78ab8c3...e6b9650)
+#### `Network`: modified event
+* [`Network.loadingFinished`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-loadingFinished) - The `blockedCrossSiteDocument` in the parameters had `name` _updated_. The `blockedCrossSiteDocument` in the parameters had `description` _updated_. 
+
+
 ## Roll protocol to r564939
 ###### _2018-06-06 10:16:18_ | Diff: [8cc61c7...78ab8c3](https://github.com/ChromeDevTools/devtools-protocol/compare/8cc61c7...78ab8c3)
 #### `Page`: new command

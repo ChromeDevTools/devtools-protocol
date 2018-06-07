@@ -10136,6 +10136,26 @@
                             "type": "string"
                         }
                     ]
+                },
+                {
+                    "id": "FontSizes",
+                    "description": "Default font sizes.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "standard",
+                            "description": "Default standard font size.",
+                            "optional": true,
+                            "type": "integer"
+                        },
+                        {
+                            "name": "fixed",
+                            "description": "Default fixed font size.",
+                            "optional": true,
+                            "type": "integer"
+                        }
+                    ]
                 }
             ],
             "commands": [
@@ -10836,13 +10856,25 @@
                 },
                 {
                     "name": "setFontFamilies",
-                    "description": "Set commonly used font families.",
+                    "description": "Set generic font families.",
                     "experimental": true,
                     "parameters": [
                         {
                             "name": "fontFamilies",
-                            "description": "Specifies font families to set. If a font family is not set, it won't be changed.",
+                            "description": "Specifies font families to set. If a font family is not specified, it won't be changed.",
                             "$ref": "FontFamilies"
+                        }
+                    ]
+                },
+                {
+                    "name": "setFontSizes",
+                    "description": "Set default font sizes.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "fontSizes",
+                            "description": "Specifies font sizes to set. If a font size is not specified, it won't be changed.",
+                            "$ref": "FontSizes"
                         }
                     ]
                 },

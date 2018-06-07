@@ -4625,6 +4625,14 @@ domain Page
       # The pictograph font-family.
       optional string pictograph
 
+  # Default font sizes.
+  experimental type FontSizes extends object
+    properties
+      # Default standard font size.
+      optional integer standard
+      # Default fixed font size.
+      optional integer fixed
+
   # Deprecated, please use addScriptToEvaluateOnNewDocument instead.
   experimental deprecated command addScriptToEvaluateOnLoad
     parameters
@@ -4949,11 +4957,17 @@ domain Page
       # Mock gamma
       number gamma
 
-  # Set commonly used font families.
+  # Set generic font families.
   experimental command setFontFamilies
     parameters
-      # Specifies font families to set. If a font family is not set, it won't be changed.
+      # Specifies font families to set. If a font family is not specified, it won't be changed.
       FontFamilies fontFamilies
+
+  # Set default font sizes.
+  experimental command setFontSizes
+    parameters
+      # Specifies font sizes to set. If a font size is not specified, it won't be changed.
+      FontSizes fontSizes
 
   # Sets given markup as the document's HTML.
   command setDocumentContent
