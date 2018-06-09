@@ -9099,9 +9099,14 @@ export namespace Protocol {
          */
         export interface Request {
             /**
-             * Request URL.
+             * Request URL (without fragment).
              */
             url: string;
+
+            /**
+             * Fragment of the requested URL starting with hash, if present.
+             */
+            urlFragment?: string;
 
             /**
              * HTTP request method.

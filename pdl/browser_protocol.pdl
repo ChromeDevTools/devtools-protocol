@@ -3381,8 +3381,10 @@ domain Network
   # HTTP request data.
   type Request extends object
     properties
-      # Request URL.
+      # Request URL (without fragment).
       string url
+      # Fragment of the requested URL starting with hash, if present.
+      optional string urlFragment
       # HTTP request method.
       string method
       # HTTP request headers.

@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r565161
+###### _2018-06-06 20:15:42_ | Diff: [e6b9650...ef21b44](https://github.com/ChromeDevTools/devtools-protocol/compare/e6b9650...ef21b44)
+#### `Page`: new command
+* [`Page.setFontSizes`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setFontSizes)
+#### `Page`: modified command
+* [`Page.setFontFamilies`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setFontFamilies) - `description` updated. The `fontFamilies` in the parameters had `description` _updated_. 
+#### `Page`: new type
+* [`Page.FontSizes`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-FontSizes)
+
+
 ## Roll protocol to r564968
 ###### _2018-06-06 11:15:47_ | Diff: [78ab8c3...e6b9650](https://github.com/ChromeDevTools/devtools-protocol/compare/78ab8c3...e6b9650)
 #### `Network`: modified event
