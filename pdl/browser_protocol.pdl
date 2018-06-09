@@ -4433,6 +4433,8 @@ domain Page
       WebSocket
       Manifest
       SignedExchange
+      Ping
+      CSPViolationReport
       Other
 
   # Unique frame identifier.

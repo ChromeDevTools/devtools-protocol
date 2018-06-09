@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r565873
+###### _2018-06-09 01:15:38_ | Diff: [ef21b44...034b051](https://github.com/ChromeDevTools/devtools-protocol/compare/ef21b44...034b051)
+#### `Network`: modified type
+* [`Network.Request`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Request) - The `headers` in the properties had `$ref` _removed_. The `postData` in the properties had `optional` _removed_. The `postData` in the properties had `type` _removed_. The `mixedContentType` in the properties had `$ref` _removed_. The `referrerPolicy` in the properties had `type` _removed_. The `referrerPolicy` in the properties had `enum` _removed_. The `isLinkPreload` in the properties had `optional` _removed_. The `url` in the properties had `description` _updated_. The `method` in the properties had `name` _updated_. The `method` in the properties had `description` _updated_. The `headers` in the properties had `name` _updated_. The `headers` in the properties had `description` _updated_. The `postData` in the properties had `name` _updated_. The `postData` in the properties had `description` _updated_. The `hasPostData` in the properties had `name` _updated_. The `hasPostData` in the properties had `description` _updated_. The `hasPostData` in the properties had `type` _updated_. The `mixedContentType` in the properties had `name` _updated_. The `mixedContentType` in the properties had `description` _updated_. The `initialPriority` in the properties had `name` _updated_. The `initialPriority` in the properties had `description` _updated_. The `initialPriority` in the properties had `$ref` _updated_. The `referrerPolicy` in the properties had `name` _updated_. The `referrerPolicy` in the properties had `description` _updated_. The `isLinkPreload` in the properties had `name` _updated_. The `isLinkPreload` in the properties had `description` _updated_. The `isLinkPreload` in the properties had `type` _updated_. The properties's `optional` _added_ (2 times). The properties's `type` _added_ (2 times). The properties's `$ref` _added_ (2 times). The properties's `enum` _added_. The properties's `isLinkPreload` _added_. 
+
+
 ## Roll protocol to r565161
 ###### _2018-06-06 20:15:42_ | Diff: [e6b9650...ef21b44](https://github.com/ChromeDevTools/devtools-protocol/compare/e6b9650...ef21b44)
 #### `Page`: new command

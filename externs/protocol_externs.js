@@ -5211,6 +5211,8 @@ Protocol.Page.ResourceType = {
     WebSocket: "WebSocket",
     Manifest: "Manifest",
     SignedExchange: "SignedExchange",
+    Ping: "Ping",
+    CSPViolationReport: "CSPViolationReport",
     Other: "Other"
 };
 
