@@ -5976,6 +5976,21 @@ Protocol.TargetAgent.CloseTargetResponse;
 Protocol.TargetAgent.prototype.invoke_closeTarget = function(obj) {};
 
 /**
+ * @param {Protocol.Target.TargetID} targetId
+ * @param {string=} opt_bindingName
+ * @return {!Promise<undefined>}
+ */
+Protocol.TargetAgent.prototype.exposeDevToolsProtocol = function(targetId, opt_bindingName) {};
+/** @typedef {!{targetId: Protocol.Target.TargetID, bindingName: (string|undefined)}} */
+Protocol.TargetAgent.ExposeDevToolsProtocolRequest;
+/** @typedef {Object|undefined} */
+Protocol.TargetAgent.ExposeDevToolsProtocolResponse;
+/**
+ * @param {!Protocol.TargetAgent.ExposeDevToolsProtocolRequest} obj
+ * @return {!Promise<!Protocol.TargetAgent.ExposeDevToolsProtocolResponse>} */
+Protocol.TargetAgent.prototype.invoke_exposeDevToolsProtocol = function(obj) {};
+
+/**
  * @return {!Promise<?Protocol.Target.BrowserContextID>}
  */
 Protocol.TargetAgent.prototype.createBrowserContext = function() {};

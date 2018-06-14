@@ -13462,6 +13462,15 @@ export namespace Protocol {
             success: boolean;
         }
 
+        export interface ExposeDevToolsProtocolRequest {
+            targetId: TargetID;
+
+            /**
+             * Binding name, 'cdp' if not specified.
+             */
+            bindingName?: string;
+        }
+
         export interface CreateBrowserContextResponse {
             /**
              * The id of the context created.
@@ -13662,6 +13671,18 @@ export namespace Protocol {
          * Closes the target. If the target is a page that gets closed too.
          */
         closeTarget(params: Target.CloseTargetRequest): Promise<Target.CloseTargetResponse>;
+
+        /**
+         * Inject object to the target's main frame that provides a communication
+         * channel with browser target.
+         * 
+         * Injected object will be available as `window[bindingName]`.
+         * 
+         * The object has the follwing API:
+         * - `binding.send(json)` - a method to send messages over the remote debugging protocol
+         * - `binding.onmessage = json => handleMessage(json)` - a callback that will be called for the protocol notifications and command responses.
+         */
+        exposeDevToolsProtocol(params: Target.ExposeDevToolsProtocolRequest): Promise<void>;
 
         /**
          * Creates a new empty BrowserContext. Similar to an incognito profile but you can have more than

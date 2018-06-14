@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r565882
+###### _2018-06-09 08:15:49_ | Diff: [034b051...b8a5362](https://github.com/ChromeDevTools/devtools-protocol/compare/034b051...b8a5362)
+#### `Page`: modified type
+* [`Page.ResourceType`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ResourceType) - The enum's `Other` _updated_. The enum's `CSPViolationReport` _added_. The enum's `Other` _added_. 
+
+
 ## Roll protocol to r565873
 ###### _2018-06-09 01:15:38_ | Diff: [ef21b44...034b051](https://github.com/ChromeDevTools/devtools-protocol/compare/ef21b44...034b051)
 #### `Network`: modified type
