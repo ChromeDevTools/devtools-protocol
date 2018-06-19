@@ -4046,7 +4046,8 @@ Protocol.Network.BlockedReason = {
     Origin: "origin",
     Inspector: "inspector",
     SubresourceFilter: "subresource-filter",
-    ContentType: "content-type"
+    ContentType: "content-type",
+    CollapsedByClient: "collapsed-by-client"
 };
 
 /** @typedef {!{url:(string), status:(number), statusText:(string), headers:(Protocol.Network.Headers), headersText:(string|undefined), mimeType:(string), requestHeaders:(Protocol.Network.Headers|undefined), requestHeadersText:(string|undefined), connectionReused:(boolean), connectionId:(number), remoteIPAddress:(string|undefined), remotePort:(number|undefined), fromDiskCache:(boolean|undefined), fromServiceWorker:(boolean|undefined), encodedDataLength:(number), timing:(Protocol.Network.ResourceTiming|undefined), protocol:(string|undefined), securityState:(Protocol.Security.SecurityState), securityDetails:(Protocol.Network.SecurityDetails|undefined)}} */

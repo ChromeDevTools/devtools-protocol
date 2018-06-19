@@ -9272,7 +9272,7 @@ export namespace Protocol {
         /**
          * The reason why request was blocked.
          */
-        export type BlockedReason = ('other' | 'csp' | 'mixed-content' | 'origin' | 'inspector' | 'subresource-filter' | 'content-type');
+        export type BlockedReason = ('other' | 'csp' | 'mixed-content' | 'origin' | 'inspector' | 'subresource-filter' | 'content-type' | 'collapsed-by-client');
 
         /**
          * HTTP response data.

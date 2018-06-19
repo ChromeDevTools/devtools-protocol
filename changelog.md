@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r567107
+###### _2018-06-13 20:15:40_ | Diff: [b8a5362...6e2dac6](https://github.com/ChromeDevTools/devtools-protocol/compare/b8a5362...6e2dac6)
+#### `Target`: new command
+* [`Target.exposeDevToolsProtocol`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-exposeDevToolsProtocol)
+
+
 ## Roll protocol to r565882
 ###### _2018-06-09 08:15:49_ | Diff: [034b051...b8a5362](https://github.com/ChromeDevTools/devtools-protocol/compare/034b051...b8a5362)
 #### `Page`: modified type
