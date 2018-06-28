@@ -3183,6 +3183,41 @@
                     ]
                 },
                 {
+                    "name": "getContentQuads",
+                    "description": "Returns quads that describe node position on the page. This method\nmight return multiple quads for inline nodes.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "nodeId",
+                            "description": "Identifier of the node.",
+                            "optional": true,
+                            "$ref": "NodeId"
+                        },
+                        {
+                            "name": "backendNodeId",
+                            "description": "Identifier of the backend node.",
+                            "optional": true,
+                            "$ref": "BackendNodeId"
+                        },
+                        {
+                            "name": "objectId",
+                            "description": "JavaScript object id of the node wrapper.",
+                            "optional": true,
+                            "$ref": "Runtime.RemoteObjectId"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "quads",
+                            "description": "Quads that describe node layout relative to viewport.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "Quad"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "getDocument",
                     "description": "Returns the root DOM node (and optionally the subtree) to the caller.",
                     "parameters": [

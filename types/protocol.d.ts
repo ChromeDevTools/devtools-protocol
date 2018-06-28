@@ -5361,6 +5361,30 @@ export namespace Protocol {
             model: BoxModel;
         }
 
+        export interface GetContentQuadsRequest {
+            /**
+             * Identifier of the node.
+             */
+            nodeId?: NodeId;
+
+            /**
+             * Identifier of the backend node.
+             */
+            backendNodeId?: BackendNodeId;
+
+            /**
+             * JavaScript object id of the node wrapper.
+             */
+            objectId?: Runtime.RemoteObjectId;
+        }
+
+        export interface GetContentQuadsResponse {
+            /**
+             * Quads that describe node layout relative to viewport.
+             */
+            quads: Quad[];
+        }
+
         export interface GetDocumentRequest {
             /**
              * The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the
@@ -6006,6 +6030,12 @@ export namespace Protocol {
          * Returns boxes for the given node.
          */
         getBoxModel(params: DOM.GetBoxModelRequest): Promise<DOM.GetBoxModelResponse>;
+
+        /**
+         * Returns quads that describe node position on the page. This method
+         * might return multiple quads for inline nodes.
+         */
+        getContentQuads(params: DOM.GetContentQuadsRequest): Promise<DOM.GetContentQuadsResponse>;
 
         /**
          * Returns the root DOM node (and optionally the subtree) to the caller.

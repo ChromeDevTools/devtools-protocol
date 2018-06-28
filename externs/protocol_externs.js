@@ -1215,6 +1215,22 @@ Protocol.DOMAgent.GetBoxModelResponse;
 Protocol.DOMAgent.prototype.invoke_getBoxModel = function(obj) {};
 
 /**
+ * @param {Protocol.DOM.NodeId=} opt_nodeId
+ * @param {Protocol.DOM.BackendNodeId=} opt_backendNodeId
+ * @param {Protocol.Runtime.RemoteObjectId=} opt_objectId
+ * @return {!Promise<?Array<Protocol.DOM.Quad>>}
+ */
+Protocol.DOMAgent.prototype.getContentQuads = function(opt_nodeId, opt_backendNodeId, opt_objectId) {};
+/** @typedef {!{objectId: (Protocol.Runtime.RemoteObjectId|undefined), nodeId: (Protocol.DOM.NodeId|undefined), backendNodeId: (Protocol.DOM.BackendNodeId|undefined)}} */
+Protocol.DOMAgent.GetContentQuadsRequest;
+/** @typedef {!{quads: !Array<Protocol.DOM.Quad>}} */
+Protocol.DOMAgent.GetContentQuadsResponse;
+/**
+ * @param {!Protocol.DOMAgent.GetContentQuadsRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.GetContentQuadsResponse>} */
+Protocol.DOMAgent.prototype.invoke_getContentQuads = function(obj) {};
+
+/**
  * @param {number=} opt_depth
  * @param {boolean=} opt_pierce
  * @return {!Promise<?Protocol.DOM.Node>}

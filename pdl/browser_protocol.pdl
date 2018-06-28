@@ -1444,6 +1444,20 @@ domain DOM
       # Box model for the node.
       BoxModel model
 
+  # Returns quads that describe node position on the page. This method
+  # might return multiple quads for inline nodes.
+  experimental command getContentQuads
+    parameters
+      # Identifier of the node.
+      optional NodeId nodeId
+      # Identifier of the backend node.
+      optional BackendNodeId backendNodeId
+      # JavaScript object id of the node wrapper.
+      optional Runtime.RemoteObjectId objectId
+    returns
+      # Quads that describe node layout relative to viewport.
+      array of Quad quads
+
   # Returns the root DOM node (and optionally the subtree) to the caller.
   command getDocument
     parameters
