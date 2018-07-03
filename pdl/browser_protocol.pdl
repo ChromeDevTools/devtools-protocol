@@ -533,6 +533,9 @@ domain Browser
       # substring in their name are extracted. An empty or absent query returns
       # all histograms.
       optional string query
+      # If true, retrieve delta since last call.
+      optional boolean delta
+
     returns
       # Histograms.
       array of Histogram histograms
@@ -542,6 +545,8 @@ domain Browser
     parameters
       # Requested histogram name.
       string name
+      # If true, retrieve delta since last call.
+      optional boolean delta
     returns
       # Histogram.
       Histogram histogram

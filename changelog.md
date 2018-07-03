@@ -1,5 +1,24 @@
 
 
+## Roll protocol to r572315
+###### _2018-07-03 12:15:46_ | Diff: [a63ed5b...7388b4b](https://github.com/ChromeDevTools/devtools-protocol/compare/a63ed5b...7388b4b)
+#### `DOMSnapshot`: new command
+* [`DOMSnapshot.captureSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#method-captureSnapshot)
+#### `DOMSnapshot`: modified command
+* [`DOMSnapshot.getSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#method-getSnapshot) - `deprecated` added. 
+#### `DOMSnapshot`: new types
+* [`DOMSnapshot.StringIndex`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-StringIndex)
+* [`DOMSnapshot.ArrayOfStrings`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-ArrayOfStrings)
+* [`DOMSnapshot.RareStringData`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-RareStringData)
+* [`DOMSnapshot.RareBooleanData`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-RareBooleanData)
+* [`DOMSnapshot.RareIntegerData`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-RareIntegerData)
+* [`DOMSnapshot.Rectangle`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-Rectangle)
+* [`DOMSnapshot.DOMTreeSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DOMTreeSnapshot)
+* [`DOMSnapshot.TextBoxSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-TextBoxSnapshot)
+* [`DOMSnapshot.LayoutTreeSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-LayoutTreeSnapshot)
+* [`DOMSnapshot.StylesSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-StylesSnapshot)
+
+
 ## Roll protocol to r571238
 ###### _2018-06-28 13:16:10_ | Diff: [ca7022c...a63ed5b](https://github.com/ChromeDevTools/devtools-protocol/compare/ca7022c...a63ed5b)
 #### `DOM`: new command

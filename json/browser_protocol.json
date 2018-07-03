@@ -1119,6 +1119,12 @@
                             "description": "Requested substring in name. Only histograms which have query as a\nsubstring in their name are extracted. An empty or absent query returns\nall histograms.",
                             "optional": true,
                             "type": "string"
+                        },
+                        {
+                            "name": "delta",
+                            "description": "If true, retrieve delta since last call.",
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ],
                     "returns": [
@@ -1141,6 +1147,12 @@
                             "name": "name",
                             "description": "Requested histogram name.",
                             "type": "string"
+                        },
+                        {
+                            "name": "delta",
+                            "description": "If true, retrieve delta since last call.",
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ],
                     "returns": [

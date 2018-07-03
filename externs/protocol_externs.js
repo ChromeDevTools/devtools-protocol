@@ -462,10 +462,11 @@ Protocol.BrowserAgent.prototype.invoke_getBrowserCommandLine = function(obj) {};
 
 /**
  * @param {string=} opt_query
+ * @param {boolean=} opt_delta
  * @return {!Promise<?Array<Protocol.Browser.Histogram>>}
  */
-Protocol.BrowserAgent.prototype.getHistograms = function(opt_query) {};
-/** @typedef {!{query: (string|undefined)}} */
+Protocol.BrowserAgent.prototype.getHistograms = function(opt_query, opt_delta) {};
+/** @typedef {!{query: (string|undefined), delta: (boolean|undefined)}} */
 Protocol.BrowserAgent.GetHistogramsRequest;
 /** @typedef {!{histograms: !Array<Protocol.Browser.Histogram>}} */
 Protocol.BrowserAgent.GetHistogramsResponse;
@@ -476,10 +477,11 @@ Protocol.BrowserAgent.prototype.invoke_getHistograms = function(obj) {};
 
 /**
  * @param {string} name
+ * @param {boolean=} opt_delta
  * @return {!Promise<?Protocol.Browser.Histogram>}
  */
-Protocol.BrowserAgent.prototype.getHistogram = function(name) {};
-/** @typedef {!{name: string}} */
+Protocol.BrowserAgent.prototype.getHistogram = function(name, opt_delta) {};
+/** @typedef {!{name: string, delta: (boolean|undefined)}} */
 Protocol.BrowserAgent.GetHistogramRequest;
 /** @typedef {!{histogram: Protocol.Browser.Histogram}} */
 Protocol.BrowserAgent.GetHistogramResponse;

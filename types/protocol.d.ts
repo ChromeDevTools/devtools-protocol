@@ -3600,6 +3600,11 @@ export namespace Protocol {
              * all histograms.
              */
             query?: string;
+
+            /**
+             * If true, retrieve delta since last call.
+             */
+            delta?: boolean;
         }
 
         export interface GetHistogramsResponse {
@@ -3614,6 +3619,11 @@ export namespace Protocol {
              * Requested histogram name.
              */
             name: string;
+
+            /**
+             * If true, retrieve delta since last call.
+             */
+            delta?: boolean;
         }
 
         export interface GetHistogramResponse {
