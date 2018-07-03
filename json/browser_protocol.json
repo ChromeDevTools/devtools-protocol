@@ -4578,6 +4578,356 @@
                             "type": "string"
                         }
                     ]
+                },
+                {
+                    "id": "StringIndex",
+                    "description": "Index of the string in the strings table.",
+                    "type": "integer"
+                },
+                {
+                    "id": "ArrayOfStrings",
+                    "description": "Index of the string in the strings table.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "StringIndex"
+                    }
+                },
+                {
+                    "id": "RareStringData",
+                    "description": "Data that is only present on rare nodes.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "index",
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        },
+                        {
+                            "name": "value",
+                            "type": "array",
+                            "items": {
+                                "$ref": "StringIndex"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "RareBooleanData",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "index",
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "RareIntegerData",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "index",
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        },
+                        {
+                            "name": "value",
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "Rectangle",
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                {
+                    "id": "DOMTreeSnapshot",
+                    "description": "DOM tree snapshot.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "parentIndex",
+                            "description": "Parent node index.",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        },
+                        {
+                            "name": "nodeType",
+                            "description": "`Node`'s nodeType.",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        },
+                        {
+                            "name": "nodeName",
+                            "description": "`Node`'s nodeName.",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "StringIndex"
+                            }
+                        },
+                        {
+                            "name": "nodeValue",
+                            "description": "`Node`'s nodeValue.",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "StringIndex"
+                            }
+                        },
+                        {
+                            "name": "backendNodeId",
+                            "description": "`Node`'s id, corresponds to DOM.Node.backendNodeId.",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "DOM.BackendNodeId"
+                            }
+                        },
+                        {
+                            "name": "attributes",
+                            "description": "Attributes of an `Element` node. Flatten name, value pairs.",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "ArrayOfStrings"
+                            }
+                        },
+                        {
+                            "name": "layoutNodeIndex",
+                            "description": "The index of the node's related layout tree node in the `layoutTreeNodes` array returned by\n`captureSnapshot`, if any.",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        },
+                        {
+                            "name": "textValue",
+                            "description": "Only set for textarea elements, contains the text value.",
+                            "optional": true,
+                            "$ref": "RareStringData"
+                        },
+                        {
+                            "name": "inputValue",
+                            "description": "Only set for input elements, contains the input's associated text value.",
+                            "optional": true,
+                            "$ref": "RareStringData"
+                        },
+                        {
+                            "name": "inputChecked",
+                            "description": "Only set for radio and checkbox input elements, indicates if the element has been checked",
+                            "optional": true,
+                            "$ref": "RareBooleanData"
+                        },
+                        {
+                            "name": "optionSelected",
+                            "description": "Only set for option elements, indicates if the element has been selected",
+                            "optional": true,
+                            "$ref": "RareBooleanData"
+                        },
+                        {
+                            "name": "documentURL",
+                            "description": "Document URL that `Document` or `FrameOwner` node points to.",
+                            "optional": true,
+                            "$ref": "RareStringData"
+                        },
+                        {
+                            "name": "baseURL",
+                            "description": "Base URL that `Document` or `FrameOwner` node uses for URL completion.",
+                            "optional": true,
+                            "$ref": "RareStringData"
+                        },
+                        {
+                            "name": "contentLanguage",
+                            "description": "Only set for documents, contains the document's content language.",
+                            "optional": true,
+                            "$ref": "RareStringData"
+                        },
+                        {
+                            "name": "documentEncoding",
+                            "description": "Only set for documents, contains the document's character set encoding.",
+                            "optional": true,
+                            "$ref": "RareStringData"
+                        },
+                        {
+                            "name": "publicId",
+                            "description": "`DocumentType` node's publicId.",
+                            "optional": true,
+                            "$ref": "RareStringData"
+                        },
+                        {
+                            "name": "systemId",
+                            "description": "`DocumentType` node's systemId.",
+                            "optional": true,
+                            "$ref": "RareStringData"
+                        },
+                        {
+                            "name": "frameId",
+                            "description": "Frame ID for frame owner elements and also for the document node.",
+                            "optional": true,
+                            "$ref": "RareStringData"
+                        },
+                        {
+                            "name": "contentDocumentIndex",
+                            "description": "The index of a frame owner element's content document in the `domNodes` array returned by\n`captureSnapshot`, if any.",
+                            "optional": true,
+                            "$ref": "RareIntegerData"
+                        },
+                        {
+                            "name": "importedDocumentIndex",
+                            "description": "Index of the imported document's node of a link element in the `domNodes` array returned by\n`captureSnapshot`, if any.",
+                            "optional": true,
+                            "$ref": "RareIntegerData"
+                        },
+                        {
+                            "name": "templateContentIndex",
+                            "description": "Index of the content node of a template element in the `domNodes` array returned by\n`captureSnapshot`.",
+                            "optional": true,
+                            "$ref": "RareIntegerData"
+                        },
+                        {
+                            "name": "pseudoType",
+                            "description": "Type of a pseudo element node.",
+                            "optional": true,
+                            "$ref": "RareStringData"
+                        },
+                        {
+                            "name": "isClickable",
+                            "description": "Whether this DOM node responds to mouse clicks. This includes nodes that have had click\nevent listeners attached via JavaScript as well as anchor tags that naturally navigate when\nclicked.",
+                            "optional": true,
+                            "$ref": "RareBooleanData"
+                        },
+                        {
+                            "name": "currentSourceURL",
+                            "description": "The selected url for nodes with a srcset attribute.",
+                            "optional": true,
+                            "$ref": "RareStringData"
+                        },
+                        {
+                            "name": "originURL",
+                            "description": "The url of the script (if any) that generates this node.",
+                            "optional": true,
+                            "$ref": "RareStringData"
+                        }
+                    ]
+                },
+                {
+                    "id": "TextBoxSnapshot",
+                    "description": "Details of post layout rendered text positions. The exact layout should not be regarded as\nstable and may change between versions.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "layoutIndex",
+                            "description": "Intex of th elayout tree node that owns this box collection.",
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        },
+                        {
+                            "name": "bounds",
+                            "description": "The absolute position bounding box.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "Rectangle"
+                            }
+                        },
+                        {
+                            "name": "start",
+                            "description": "The starting index in characters, for this post layout textbox substring. Characters that\nwould be represented as a surrogate pair in UTF-16 have length 2.",
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        },
+                        {
+                            "name": "length",
+                            "description": "The number of characters in this post layout textbox substring. Characters that would be\nrepresented as a surrogate pair in UTF-16 have length 2.",
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "LayoutTreeSnapshot",
+                    "description": "Details of an element in the DOM tree with a LayoutObject.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "nodeIndex",
+                            "description": "The index of the related DOM node in the `domNodes` array returned by `getSnapshot`.",
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        },
+                        {
+                            "name": "styles",
+                            "description": "Index into the `computedStyles` array returned by `captureSnapshot`.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "ArrayOfStrings"
+                            }
+                        },
+                        {
+                            "name": "bounds",
+                            "description": "The absolute position bounding box.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "Rectangle"
+                            }
+                        },
+                        {
+                            "name": "text",
+                            "description": "Contents of the LayoutText, if any.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "StringIndex"
+                            }
+                        },
+                        {
+                            "name": "textBoxes",
+                            "description": "The post-layout inline text nodes",
+                            "$ref": "TextBoxSnapshot"
+                        }
+                    ]
+                },
+                {
+                    "id": "StylesSnapshot",
+                    "description": "Computed style snapshot.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "values",
+                            "description": "Whitelisted ComputedStyle property values referenced by styleIndex.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "ArrayOfStrings"
+                            }
+                        }
+                    ]
                 }
             ],
             "commands": [
@@ -4592,6 +4942,7 @@
                 {
                     "name": "getSnapshot",
                     "description": "Returns a document snapshot, including the full DOM tree of the root node (including iframes,\ntemplate contents, and imported documents) in a flattened array, as well as layout and\nwhite-listed computed style information for the nodes. Shadow DOM in the returned DOM tree is\nflattened.",
+                    "deprecated": true,
                     "parameters": [
                         {
                             "name": "computedStyleWhitelist",
@@ -4643,6 +4994,40 @@
                             "type": "array",
                             "items": {
                                 "$ref": "ComputedStyle"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "captureSnapshot",
+                    "description": "Returns a document snapshot, including the full DOM tree of the root node (including iframes,\ntemplate contents, and imported documents) in a flattened array, as well as layout and\nwhite-listed computed style information for the nodes. Shadow DOM in the returned DOM tree is\nflattened.",
+                    "parameters": [
+                        {
+                            "name": "computedStyles",
+                            "description": "Whitelist of computed styles to return.",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "nodes",
+                            "description": "The nodes in the DOM tree. The DOMNode at index 0 corresponds to the root document.",
+                            "$ref": "DOMTreeSnapshot"
+                        },
+                        {
+                            "name": "layout",
+                            "description": "The nodes in the layout tree.",
+                            "$ref": "LayoutTreeSnapshot"
+                        },
+                        {
+                            "name": "strings",
+                            "description": "Shared string table that all string properties refer to with indexes.",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
                             }
                         }
                     ]

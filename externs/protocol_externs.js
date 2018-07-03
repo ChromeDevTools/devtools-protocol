@@ -2009,6 +2009,20 @@ Protocol.DOMSnapshotAgent.GetSnapshotResponse;
  * @return {!Promise<!Protocol.DOMSnapshotAgent.GetSnapshotResponse>} */
 Protocol.DOMSnapshotAgent.prototype.invoke_getSnapshot = function(obj) {};
 
+/**
+ * @param {!Array<string>} computedStyles
+ * @return {!Promise<?Protocol.DOMSnapshot.DOMTreeSnapshot>}
+ */
+Protocol.DOMSnapshotAgent.prototype.captureSnapshot = function(computedStyles) {};
+/** @typedef {!{computedStyles: !Array<string>}} */
+Protocol.DOMSnapshotAgent.CaptureSnapshotRequest;
+/** @typedef {!{nodes: Protocol.DOMSnapshot.DOMTreeSnapshot, layout: Protocol.DOMSnapshot.LayoutTreeSnapshot, strings: !Array<string>}} */
+Protocol.DOMSnapshotAgent.CaptureSnapshotResponse;
+/**
+ * @param {!Protocol.DOMSnapshotAgent.CaptureSnapshotRequest} obj
+ * @return {!Promise<!Protocol.DOMSnapshotAgent.CaptureSnapshotResponse>} */
+Protocol.DOMSnapshotAgent.prototype.invoke_captureSnapshot = function(obj) {};
+
 /** @typedef {!{nodeType:(number), nodeName:(string), nodeValue:(string), textValue:(string|undefined), inputValue:(string|undefined), inputChecked:(boolean|undefined), optionSelected:(boolean|undefined), backendNodeId:(Protocol.DOM.BackendNodeId), childNodeIndexes:(!Array<number>|undefined), attributes:(!Array<Protocol.DOMSnapshot.NameValue>|undefined), pseudoElementIndexes:(!Array<number>|undefined), layoutNodeIndex:(number|undefined), documentURL:(string|undefined), baseURL:(string|undefined), contentLanguage:(string|undefined), documentEncoding:(string|undefined), publicId:(string|undefined), systemId:(string|undefined), frameId:(Protocol.Page.FrameId|undefined), contentDocumentIndex:(number|undefined), importedDocumentIndex:(number|undefined), templateContentIndex:(number|undefined), pseudoType:(Protocol.DOM.PseudoType|undefined), shadowRootType:(Protocol.DOM.ShadowRootType|undefined), isClickable:(boolean|undefined), eventListeners:(!Array<Protocol.DOMDebugger.EventListener>|undefined), currentSourceURL:(string|undefined), originURL:(string|undefined)}} */
 Protocol.DOMSnapshot.DOMNode;
 
@@ -2023,6 +2037,36 @@ Protocol.DOMSnapshot.ComputedStyle;
 
 /** @typedef {!{name:(string), value:(string)}} */
 Protocol.DOMSnapshot.NameValue;
+
+/** @typedef {number} */
+Protocol.DOMSnapshot.StringIndex;
+
+/** @typedef {!Array<!Protocol.DOMSnapshot.StringIndex>} */
+Protocol.DOMSnapshot.ArrayOfStrings;
+
+/** @typedef {!{index:(!Array<number>), value:(!Array<Protocol.DOMSnapshot.StringIndex>)}} */
+Protocol.DOMSnapshot.RareStringData;
+
+/** @typedef {!{index:(!Array<number>)}} */
+Protocol.DOMSnapshot.RareBooleanData;
+
+/** @typedef {!{index:(!Array<number>), value:(!Array<number>)}} */
+Protocol.DOMSnapshot.RareIntegerData;
+
+/** @typedef {!Array<!number>} */
+Protocol.DOMSnapshot.Rectangle;
+
+/** @typedef {!{parentIndex:(!Array<number>|undefined), nodeType:(!Array<number>|undefined), nodeName:(!Array<Protocol.DOMSnapshot.StringIndex>|undefined), nodeValue:(!Array<Protocol.DOMSnapshot.StringIndex>|undefined), backendNodeId:(!Array<Protocol.DOM.BackendNodeId>|undefined), attributes:(!Array<Protocol.DOMSnapshot.ArrayOfStrings>|undefined), layoutNodeIndex:(!Array<number>|undefined), textValue:(Protocol.DOMSnapshot.RareStringData|undefined), inputValue:(Protocol.DOMSnapshot.RareStringData|undefined), inputChecked:(Protocol.DOMSnapshot.RareBooleanData|undefined), optionSelected:(Protocol.DOMSnapshot.RareBooleanData|undefined), documentURL:(Protocol.DOMSnapshot.RareStringData|undefined), baseURL:(Protocol.DOMSnapshot.RareStringData|undefined), contentLanguage:(Protocol.DOMSnapshot.RareStringData|undefined), documentEncoding:(Protocol.DOMSnapshot.RareStringData|undefined), publicId:(Protocol.DOMSnapshot.RareStringData|undefined), systemId:(Protocol.DOMSnapshot.RareStringData|undefined), frameId:(Protocol.DOMSnapshot.RareStringData|undefined), contentDocumentIndex:(Protocol.DOMSnapshot.RareIntegerData|undefined), importedDocumentIndex:(Protocol.DOMSnapshot.RareIntegerData|undefined), templateContentIndex:(Protocol.DOMSnapshot.RareIntegerData|undefined), pseudoType:(Protocol.DOMSnapshot.RareStringData|undefined), isClickable:(Protocol.DOMSnapshot.RareBooleanData|undefined), currentSourceURL:(Protocol.DOMSnapshot.RareStringData|undefined), originURL:(Protocol.DOMSnapshot.RareStringData|undefined)}} */
+Protocol.DOMSnapshot.DOMTreeSnapshot;
+
+/** @typedef {!{layoutIndex:(!Array<number>), bounds:(!Array<Protocol.DOMSnapshot.Rectangle>), start:(!Array<number>), length:(!Array<number>)}} */
+Protocol.DOMSnapshot.TextBoxSnapshot;
+
+/** @typedef {!{nodeIndex:(!Array<number>), styles:(!Array<Protocol.DOMSnapshot.ArrayOfStrings>), bounds:(!Array<Protocol.DOMSnapshot.Rectangle>), text:(!Array<Protocol.DOMSnapshot.StringIndex>), textBoxes:(Protocol.DOMSnapshot.TextBoxSnapshot)}} */
+Protocol.DOMSnapshot.LayoutTreeSnapshot;
+
+/** @typedef {!{values:(!Array<Protocol.DOMSnapshot.ArrayOfStrings>)}} */
+Protocol.DOMSnapshot.StylesSnapshot;
 /** @interface */
 Protocol.DOMSnapshotDispatcher = function() {};
 Protocol.DOMStorage = {};

@@ -6732,6 +6732,241 @@ export namespace Protocol {
             value: string;
         }
 
+        /**
+         * Index of the string in the strings table.
+         */
+        export type StringIndex = integer;
+
+        /**
+         * Index of the string in the strings table.
+         */
+        export type ArrayOfStrings = StringIndex[];
+
+        /**
+         * Data that is only present on rare nodes.
+         */
+        export interface RareStringData {
+            index: integer[];
+
+            value: StringIndex[];
+        }
+
+        export interface RareBooleanData {
+            index: integer[];
+        }
+
+        export interface RareIntegerData {
+            index: integer[];
+
+            value: integer[];
+        }
+
+        export type Rectangle = number[];
+
+        /**
+         * DOM tree snapshot.
+         */
+        export interface DOMTreeSnapshot {
+            /**
+             * Parent node index.
+             */
+            parentIndex?: integer[];
+
+            /**
+             * `Node`'s nodeType.
+             */
+            nodeType?: integer[];
+
+            /**
+             * `Node`'s nodeName.
+             */
+            nodeName?: StringIndex[];
+
+            /**
+             * `Node`'s nodeValue.
+             */
+            nodeValue?: StringIndex[];
+
+            /**
+             * `Node`'s id, corresponds to DOM.Node.backendNodeId.
+             */
+            backendNodeId?: DOM.BackendNodeId[];
+
+            /**
+             * Attributes of an `Element` node. Flatten name, value pairs.
+             */
+            attributes?: ArrayOfStrings[];
+
+            /**
+             * The index of the node's related layout tree node in the `layoutTreeNodes` array returned by
+             * `captureSnapshot`, if any.
+             */
+            layoutNodeIndex?: integer[];
+
+            /**
+             * Only set for textarea elements, contains the text value.
+             */
+            textValue?: RareStringData;
+
+            /**
+             * Only set for input elements, contains the input's associated text value.
+             */
+            inputValue?: RareStringData;
+
+            /**
+             * Only set for radio and checkbox input elements, indicates if the element has been checked
+             */
+            inputChecked?: RareBooleanData;
+
+            /**
+             * Only set for option elements, indicates if the element has been selected
+             */
+            optionSelected?: RareBooleanData;
+
+            /**
+             * Document URL that `Document` or `FrameOwner` node points to.
+             */
+            documentURL?: RareStringData;
+
+            /**
+             * Base URL that `Document` or `FrameOwner` node uses for URL completion.
+             */
+            baseURL?: RareStringData;
+
+            /**
+             * Only set for documents, contains the document's content language.
+             */
+            contentLanguage?: RareStringData;
+
+            /**
+             * Only set for documents, contains the document's character set encoding.
+             */
+            documentEncoding?: RareStringData;
+
+            /**
+             * `DocumentType` node's publicId.
+             */
+            publicId?: RareStringData;
+
+            /**
+             * `DocumentType` node's systemId.
+             */
+            systemId?: RareStringData;
+
+            /**
+             * Frame ID for frame owner elements and also for the document node.
+             */
+            frameId?: RareStringData;
+
+            /**
+             * The index of a frame owner element's content document in the `domNodes` array returned by
+             * `captureSnapshot`, if any.
+             */
+            contentDocumentIndex?: RareIntegerData;
+
+            /**
+             * Index of the imported document's node of a link element in the `domNodes` array returned by
+             * `captureSnapshot`, if any.
+             */
+            importedDocumentIndex?: RareIntegerData;
+
+            /**
+             * Index of the content node of a template element in the `domNodes` array returned by
+             * `captureSnapshot`.
+             */
+            templateContentIndex?: RareIntegerData;
+
+            /**
+             * Type of a pseudo element node.
+             */
+            pseudoType?: RareStringData;
+
+            /**
+             * Whether this DOM node responds to mouse clicks. This includes nodes that have had click
+             * event listeners attached via JavaScript as well as anchor tags that naturally navigate when
+             * clicked.
+             */
+            isClickable?: RareBooleanData;
+
+            /**
+             * The selected url for nodes with a srcset attribute.
+             */
+            currentSourceURL?: RareStringData;
+
+            /**
+             * The url of the script (if any) that generates this node.
+             */
+            originURL?: RareStringData;
+        }
+
+        /**
+         * Details of post layout rendered text positions. The exact layout should not be regarded as
+         * stable and may change between versions.
+         */
+        export interface TextBoxSnapshot {
+            /**
+             * Intex of th elayout tree node that owns this box collection.
+             */
+            layoutIndex: integer[];
+
+            /**
+             * The absolute position bounding box.
+             */
+            bounds: Rectangle[];
+
+            /**
+             * The starting index in characters, for this post layout textbox substring. Characters that
+             * would be represented as a surrogate pair in UTF-16 have length 2.
+             */
+            start: integer[];
+
+            /**
+             * The number of characters in this post layout textbox substring. Characters that would be
+             * represented as a surrogate pair in UTF-16 have length 2.
+             */
+            length: integer[];
+        }
+
+        /**
+         * Details of an element in the DOM tree with a LayoutObject.
+         */
+        export interface LayoutTreeSnapshot {
+            /**
+             * The index of the related DOM node in the `domNodes` array returned by `getSnapshot`.
+             */
+            nodeIndex: integer[];
+
+            /**
+             * Index into the `computedStyles` array returned by `captureSnapshot`.
+             */
+            styles: ArrayOfStrings[];
+
+            /**
+             * The absolute position bounding box.
+             */
+            bounds: Rectangle[];
+
+            /**
+             * Contents of the LayoutText, if any.
+             */
+            text: StringIndex[];
+
+            /**
+             * The post-layout inline text nodes
+             */
+            textBoxes: TextBoxSnapshot;
+        }
+
+        /**
+         * Computed style snapshot.
+         */
+        export interface StylesSnapshot {
+            /**
+             * Whitelisted ComputedStyle property values referenced by styleIndex.
+             */
+            values: ArrayOfStrings[];
+        }
+
         export interface GetSnapshotRequest {
             /**
              * Whitelist of computed styles to return.
@@ -6770,6 +7005,30 @@ export namespace Protocol {
              */
             computedStyles: ComputedStyle[];
         }
+
+        export interface CaptureSnapshotRequest {
+            /**
+             * Whitelist of computed styles to return.
+             */
+            computedStyles: string[];
+        }
+
+        export interface CaptureSnapshotResponse {
+            /**
+             * The nodes in the DOM tree. The DOMNode at index 0 corresponds to the root document.
+             */
+            nodes: DOMTreeSnapshot;
+
+            /**
+             * The nodes in the layout tree.
+             */
+            layout: LayoutTreeSnapshot;
+
+            /**
+             * Shared string table that all string properties refer to with indexes.
+             */
+            strings: string[];
+        }
     }
 
     export interface DOMSnapshotApi {
@@ -6790,6 +7049,14 @@ export namespace Protocol {
          * flattened.
          */
         getSnapshot(params: DOMSnapshot.GetSnapshotRequest): Promise<DOMSnapshot.GetSnapshotResponse>;
+
+        /**
+         * Returns a document snapshot, including the full DOM tree of the root node (including iframes,
+         * template contents, and imported documents) in a flattened array, as well as layout and
+         * white-listed computed style information for the nodes. Shadow DOM in the returned DOM tree is
+         * flattened.
+         */
+        captureSnapshot(params: DOMSnapshot.CaptureSnapshotRequest): Promise<DOMSnapshot.CaptureSnapshotResponse>;
     }
 
     /**

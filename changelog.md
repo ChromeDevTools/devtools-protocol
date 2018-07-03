@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r571238
+###### _2018-06-28 13:16:10_ | Diff: [ca7022c...a63ed5b](https://github.com/ChromeDevTools/devtools-protocol/compare/ca7022c...a63ed5b)
+#### `DOM`: new command
+* [`DOM.getContentQuads`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getContentQuads)
+
+
 ## Roll protocol to r568337
 ###### _2018-06-18 21:15:42_ | Diff: [6e2dac6...0905e28](https://github.com/ChromeDevTools/devtools-protocol/compare/6e2dac6...0905e28)
 #### `Network`: modified type
