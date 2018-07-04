@@ -5806,6 +5806,8 @@ domain Target
   command attachToTarget
     parameters
       TargetID targetId
+      # Enables "flat" access to the session via specifying sessionId attribute in the commands.
+      experimental optional boolean flatten
     returns
       # Id assigned to the session.
       SessionID sessionId

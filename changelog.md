@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r572401
+###### _2018-07-03 17:15:50_ | Diff: [be1ed43...19fb3d2](https://github.com/ChromeDevTools/devtools-protocol/compare/be1ed43...19fb3d2)
+#### `Target`: modified command
+* [`Target.getTargetInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-getTargetInfo) - The parameters's `optional` _added_. 
+
+
 ## Roll protocol to r572389
 ###### _2018-07-03 16:15:52_ | Diff: [7388b4b...be1ed43](https://github.com/ChromeDevTools/devtools-protocol/compare/7388b4b...be1ed43)
 #### `Browser`: modified commands

@@ -13752,6 +13752,11 @@ export namespace Protocol {
 
         export interface AttachToTargetRequest {
             targetId: TargetID;
+
+            /**
+             * Enables "flat" access to the session via specifying sessionId attribute in the commands.
+             */
+            flatten?: boolean;
         }
 
         export interface AttachToTargetResponse {

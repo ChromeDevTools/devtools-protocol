@@ -6012,10 +6012,11 @@ Protocol.TargetAgent.prototype.invoke_activateTarget = function(obj) {};
 
 /**
  * @param {Protocol.Target.TargetID} targetId
+ * @param {boolean=} opt_flatten
  * @return {!Promise<?Protocol.Target.SessionID>}
  */
-Protocol.TargetAgent.prototype.attachToTarget = function(targetId) {};
-/** @typedef {!{targetId: Protocol.Target.TargetID}} */
+Protocol.TargetAgent.prototype.attachToTarget = function(targetId, opt_flatten) {};
+/** @typedef {!{targetId: Protocol.Target.TargetID, flatten: (boolean|undefined)}} */
 Protocol.TargetAgent.AttachToTargetRequest;
 /** @typedef {!{sessionId: Protocol.Target.SessionID}} */
 Protocol.TargetAgent.AttachToTargetResponse;
