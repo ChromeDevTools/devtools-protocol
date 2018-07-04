@@ -5879,7 +5879,7 @@ domain Target
   # Returns information about a target.
   experimental command getTargetInfo
     parameters
-      TargetID targetId
+      optional TargetID targetId
     returns
       TargetInfo targetInfo
 

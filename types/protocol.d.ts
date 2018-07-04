@@ -13844,7 +13844,7 @@ export namespace Protocol {
         }
 
         export interface GetTargetInfoRequest {
-            targetId: TargetID;
+            targetId?: TargetID;
         }
 
         export interface GetTargetInfoResponse {

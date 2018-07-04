@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r572389
+###### _2018-07-03 16:15:52_ | Diff: [7388b4b...be1ed43](https://github.com/ChromeDevTools/devtools-protocol/compare/7388b4b...be1ed43)
+#### `Browser`: modified commands
+* [`Browser.getHistograms`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-getHistograms) - The parameters's `delta` _added_. 
+* [`Browser.getHistogram`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-getHistogram) - The parameters's `delta` _added_. 
+
+
 ## Roll protocol to r572315
 ###### _2018-07-03 12:15:46_ | Diff: [a63ed5b...7388b4b](https://github.com/ChromeDevTools/devtools-protocol/compare/a63ed5b...7388b4b)
 #### `DOMSnapshot`: new command

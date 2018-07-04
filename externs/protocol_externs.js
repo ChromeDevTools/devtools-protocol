@@ -6127,11 +6127,11 @@ Protocol.TargetAgent.DisposeBrowserContextResponse;
 Protocol.TargetAgent.prototype.invoke_disposeBrowserContext = function(obj) {};
 
 /**
- * @param {Protocol.Target.TargetID} targetId
+ * @param {Protocol.Target.TargetID=} opt_targetId
  * @return {!Promise<?Protocol.Target.TargetInfo>}
  */
-Protocol.TargetAgent.prototype.getTargetInfo = function(targetId) {};
-/** @typedef {!{targetId: Protocol.Target.TargetID}} */
+Protocol.TargetAgent.prototype.getTargetInfo = function(opt_targetId) {};
+/** @typedef {!{targetId: (Protocol.Target.TargetID|undefined)}} */
 Protocol.TargetAgent.GetTargetInfoRequest;
 /** @typedef {!{targetInfo: Protocol.Target.TargetInfo}} */
 Protocol.TargetAgent.GetTargetInfoResponse;
