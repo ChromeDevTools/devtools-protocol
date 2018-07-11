@@ -1,5 +1,19 @@
 
 
+## Roll protocol to r574025
+###### _2018-07-10 18:15:41_ | Diff: [1aa7b31...26e4e07](https://github.com/ChromeDevTools/devtools-protocol/compare/1aa7b31...26e4e07)
+#### `DOMSnapshot`: modified command
+* [`DOMSnapshot.captureSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#method-captureSnapshot) - The return value's `strings` _removed_. The `nodes` in the return value had `$ref` _removed_. The `layout` in the return value had `$ref` _removed_. The `nodes` in the return value had `name` _updated_. The `layout` in the return value had `name` _updated_. The `layout` in the return value had `description` _updated_. The return value's `type` _added_ (2 times). The return value's `items` _added_ (2 times). 
+#### `DOMSnapshot`: new type
+* [`DOMSnapshot.DocumentSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DocumentSnapshot)
+#### `DOMSnapshot`: removed types
+* [`DOMSnapshot.DOMTreeSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DOMTreeSnapshot)
+* [`DOMSnapshot.StylesSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-StylesSnapshot)
+#### `DOMSnapshot`: modified types
+* [`DOMSnapshot.DOMNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DOMNode) - The properties's `currentSourceURL` _removed_. The properties's `originURL` _removed_. The `importedDocumentIndex` in the properties had `type` _removed_. The `templateContentIndex` in the properties had `type` _removed_. The `pseudoType` in the properties had `$ref` _removed_. The `shadowRootType` in the properties had `$ref` _removed_. The `eventListeners` in the properties had `items` _removed_. The `importedDocumentIndex` in the properties had `name` _updated_. The `importedDocumentIndex` in the properties had `description` _updated_. The `templateContentIndex` in the properties had `name` _updated_. The `templateContentIndex` in the properties had `description` _updated_. The `pseudoType` in the properties had `name` _updated_. The `pseudoType` in the properties had `description` _updated_. The `shadowRootType` in the properties had `name` _updated_. The `shadowRootType` in the properties had `description` _updated_. The `isClickable` in the properties had `name` _updated_. The `isClickable` in the properties had `description` _updated_. The `isClickable` in the properties had `type` _updated_. The `eventListeners` in the properties had `name` _updated_. The `eventListeners` in the properties had `description` _updated_. The `eventListeners` in the properties had `type` _updated_. The properties's `$ref` _added_ (2 times). The properties's `type` _added_ (2 times). The properties's `items` _added_. 
+* [`DOMSnapshot.LayoutTreeSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-LayoutTreeSnapshot) - The properties's `textBoxes` _removed_. 
+
+
 ## Roll protocol to r572598
 ###### _2018-07-04 09:15:41_ | Diff: [19fb3d2...1aa7b31](https://github.com/ChromeDevTools/devtools-protocol/compare/19fb3d2...1aa7b31)
 #### `Target`: modified command

@@ -2114,8 +2114,32 @@ experimental domain DOMSnapshot
 
   type Rectangle extends array of number
 
-  # DOM tree snapshot.
+  # Document snapshot.
   type DocumentSnapshot extends object
+    properties
+      # Document URL that `Document` or `FrameOwner` node points to.
+      StringIndex documentURL
+      # Base URL that `Document` or `FrameOwner` node uses for URL completion.
+      StringIndex baseURL
+      # Contains the document's content language.
+      StringIndex contentLanguage
+      # Contains the document's character set encoding.
+      StringIndex encodingName
+      # `DocumentType` node's publicId.
+      StringIndex publicId
+      # `DocumentType` node's systemId.
+      StringIndex systemId
+      # Frame ID for frame owner elements and also for the document node.
+      StringIndex frameId
+      # A table with dom nodes.
+      NodeTreeSnapshot nodes
+      # The nodes in the layout tree.
+      LayoutTreeSnapshot layout
+      # The post-layout inline text nodes.
+      TextBoxSnapshot textBoxes
+
+  # Table containing nodes.
+  type NodeTreeSnapshot extends object
     properties
       # Parent node index.
       optional array of integer parentIndex
@@ -2137,20 +2161,6 @@ experimental domain DOMSnapshot
       optional RareBooleanData inputChecked
       # Only set for option elements, indicates if the element has been selected
       optional RareBooleanData optionSelected
-      # Document URL that `Document` or `FrameOwner` node points to.
-      optional RareStringData documentURL
-      # Base URL that `Document` or `FrameOwner` node uses for URL completion.
-      optional RareStringData baseURL
-      # Only set for documents, contains the document's content language.
-      optional RareStringData contentLanguage
-      # Only set for documents, contains the document's character set encoding.
-      optional RareStringData documentEncoding
-      # `DocumentType` node's publicId.
-      optional RareStringData publicId
-      # `DocumentType` node's systemId.
-      optional RareStringData systemId
-      # Frame ID for frame owner elements and also for the document node.
-      optional RareStringData frameId
       # The index of the document in the list of the snapshot documents.
       optional RareIntegerData contentDocumentIndex
       # Type of a pseudo element node.
@@ -2163,10 +2173,18 @@ experimental domain DOMSnapshot
       optional RareStringData currentSourceURL
       # The url of the script (if any) that generates this node.
       optional RareStringData originURL
-      # The nodes in the layout tree.
-      LayoutTreeSnapshot layoutSnapshot
-      # The post-layout inline text nodes.
-      TextBoxSnapshot textBoxSnapshot
+
+  # Details of an element in the DOM tree with a LayoutObject.
+  type LayoutTreeSnapshot extends object
+    properties
+      # The index of the related DOM node in the `domNodes` array returned by `getSnapshot`.
+      array of integer nodeIndex
+      # Index into the `computedStyles` array returned by `captureSnapshot`.
+      array of ArrayOfStrings styles
+      # The absolute position bounding box.
+      array of Rectangle bounds
+      # Contents of the LayoutText, if any.
+      array of StringIndex text
 
   # Details of post layout rendered text positions. The exact layout should not be regarded as
   # stable and may change between versions.
@@ -2182,18 +2200,6 @@ experimental domain DOMSnapshot
       # The number of characters in this post layout textbox substring. Characters that would be
       # represented as a surrogate pair in UTF-16 have length 2.
       array of integer length
-
-  # Details of an element in the DOM tree with a LayoutObject.
-  type LayoutTreeSnapshot extends object
-    properties
-      # The index of the related DOM node in the `domNodes` array returned by `getSnapshot`.
-      array of integer nodeIndex
-      # Index into the `computedStyles` array returned by `captureSnapshot`.
-      array of ArrayOfStrings styles
-      # The absolute position bounding box.
-      array of Rectangle bounds
-      # Contents of the LayoutText, if any.
-      array of StringIndex text
 
   # Disables DOM snapshot agent for the given page.
   command disable

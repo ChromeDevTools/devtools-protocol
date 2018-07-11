@@ -4655,7 +4655,64 @@
                 },
                 {
                     "id": "DocumentSnapshot",
-                    "description": "DOM tree snapshot.",
+                    "description": "Document snapshot.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "documentURL",
+                            "description": "Document URL that `Document` or `FrameOwner` node points to.",
+                            "$ref": "StringIndex"
+                        },
+                        {
+                            "name": "baseURL",
+                            "description": "Base URL that `Document` or `FrameOwner` node uses for URL completion.",
+                            "$ref": "StringIndex"
+                        },
+                        {
+                            "name": "contentLanguage",
+                            "description": "Contains the document's content language.",
+                            "$ref": "StringIndex"
+                        },
+                        {
+                            "name": "encodingName",
+                            "description": "Contains the document's character set encoding.",
+                            "$ref": "StringIndex"
+                        },
+                        {
+                            "name": "publicId",
+                            "description": "`DocumentType` node's publicId.",
+                            "$ref": "StringIndex"
+                        },
+                        {
+                            "name": "systemId",
+                            "description": "`DocumentType` node's systemId.",
+                            "$ref": "StringIndex"
+                        },
+                        {
+                            "name": "frameId",
+                            "description": "Frame ID for frame owner elements and also for the document node.",
+                            "$ref": "StringIndex"
+                        },
+                        {
+                            "name": "nodes",
+                            "description": "A table with dom nodes.",
+                            "$ref": "NodeTreeSnapshot"
+                        },
+                        {
+                            "name": "layout",
+                            "description": "The nodes in the layout tree.",
+                            "$ref": "LayoutTreeSnapshot"
+                        },
+                        {
+                            "name": "textBoxes",
+                            "description": "The post-layout inline text nodes.",
+                            "$ref": "TextBoxSnapshot"
+                        }
+                    ]
+                },
+                {
+                    "id": "NodeTreeSnapshot",
+                    "description": "Table containing nodes.",
                     "type": "object",
                     "properties": [
                         {
@@ -4737,48 +4794,6 @@
                             "$ref": "RareBooleanData"
                         },
                         {
-                            "name": "documentURL",
-                            "description": "Document URL that `Document` or `FrameOwner` node points to.",
-                            "optional": true,
-                            "$ref": "RareStringData"
-                        },
-                        {
-                            "name": "baseURL",
-                            "description": "Base URL that `Document` or `FrameOwner` node uses for URL completion.",
-                            "optional": true,
-                            "$ref": "RareStringData"
-                        },
-                        {
-                            "name": "contentLanguage",
-                            "description": "Only set for documents, contains the document's content language.",
-                            "optional": true,
-                            "$ref": "RareStringData"
-                        },
-                        {
-                            "name": "documentEncoding",
-                            "description": "Only set for documents, contains the document's character set encoding.",
-                            "optional": true,
-                            "$ref": "RareStringData"
-                        },
-                        {
-                            "name": "publicId",
-                            "description": "`DocumentType` node's publicId.",
-                            "optional": true,
-                            "$ref": "RareStringData"
-                        },
-                        {
-                            "name": "systemId",
-                            "description": "`DocumentType` node's systemId.",
-                            "optional": true,
-                            "$ref": "RareStringData"
-                        },
-                        {
-                            "name": "frameId",
-                            "description": "Frame ID for frame owner elements and also for the document node.",
-                            "optional": true,
-                            "$ref": "RareStringData"
-                        },
-                        {
                             "name": "contentDocumentIndex",
                             "description": "The index of the document in the list of the snapshot documents.",
                             "optional": true,
@@ -4807,55 +4822,6 @@
                             "description": "The url of the script (if any) that generates this node.",
                             "optional": true,
                             "$ref": "RareStringData"
-                        },
-                        {
-                            "name": "layoutSnapshot",
-                            "description": "The nodes in the layout tree.",
-                            "$ref": "LayoutTreeSnapshot"
-                        },
-                        {
-                            "name": "textBoxSnapshot",
-                            "description": "The post-layout inline text nodes.",
-                            "$ref": "TextBoxSnapshot"
-                        }
-                    ]
-                },
-                {
-                    "id": "TextBoxSnapshot",
-                    "description": "Details of post layout rendered text positions. The exact layout should not be regarded as\nstable and may change between versions.",
-                    "type": "object",
-                    "properties": [
-                        {
-                            "name": "layoutIndex",
-                            "description": "Intex of th elayout tree node that owns this box collection.",
-                            "type": "array",
-                            "items": {
-                                "type": "integer"
-                            }
-                        },
-                        {
-                            "name": "bounds",
-                            "description": "The absolute position bounding box.",
-                            "type": "array",
-                            "items": {
-                                "$ref": "Rectangle"
-                            }
-                        },
-                        {
-                            "name": "start",
-                            "description": "The starting index in characters, for this post layout textbox substring. Characters that\nwould be represented as a surrogate pair in UTF-16 have length 2.",
-                            "type": "array",
-                            "items": {
-                                "type": "integer"
-                            }
-                        },
-                        {
-                            "name": "length",
-                            "description": "The number of characters in this post layout textbox substring. Characters that would be\nrepresented as a surrogate pair in UTF-16 have length 2.",
-                            "type": "array",
-                            "items": {
-                                "type": "integer"
-                            }
                         }
                     ]
                 },
@@ -4894,6 +4860,45 @@
                             "type": "array",
                             "items": {
                                 "$ref": "StringIndex"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "TextBoxSnapshot",
+                    "description": "Details of post layout rendered text positions. The exact layout should not be regarded as\nstable and may change between versions.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "layoutIndex",
+                            "description": "Intex of th elayout tree node that owns this box collection.",
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        },
+                        {
+                            "name": "bounds",
+                            "description": "The absolute position bounding box.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "Rectangle"
+                            }
+                        },
+                        {
+                            "name": "start",
+                            "description": "The starting index in characters, for this post layout textbox substring. Characters that\nwould be represented as a surrogate pair in UTF-16 have length 2.",
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        },
+                        {
+                            "name": "length",
+                            "description": "The number of characters in this post layout textbox substring. Characters that would be\nrepresented as a surrogate pair in UTF-16 have length 2.",
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
                             }
                         }
                     ]

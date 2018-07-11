@@ -6762,9 +6762,64 @@ export namespace Protocol {
         export type Rectangle = number[];
 
         /**
-         * DOM tree snapshot.
+         * Document snapshot.
          */
         export interface DocumentSnapshot {
+            /**
+             * Document URL that `Document` or `FrameOwner` node points to.
+             */
+            documentURL: StringIndex;
+
+            /**
+             * Base URL that `Document` or `FrameOwner` node uses for URL completion.
+             */
+            baseURL: StringIndex;
+
+            /**
+             * Contains the document's content language.
+             */
+            contentLanguage: StringIndex;
+
+            /**
+             * Contains the document's character set encoding.
+             */
+            encodingName: StringIndex;
+
+            /**
+             * `DocumentType` node's publicId.
+             */
+            publicId: StringIndex;
+
+            /**
+             * `DocumentType` node's systemId.
+             */
+            systemId: StringIndex;
+
+            /**
+             * Frame ID for frame owner elements and also for the document node.
+             */
+            frameId: StringIndex;
+
+            /**
+             * A table with dom nodes.
+             */
+            nodes: NodeTreeSnapshot;
+
+            /**
+             * The nodes in the layout tree.
+             */
+            layout: LayoutTreeSnapshot;
+
+            /**
+             * The post-layout inline text nodes.
+             */
+            textBoxes: TextBoxSnapshot;
+        }
+
+        /**
+         * Table containing nodes.
+         */
+        export interface NodeTreeSnapshot {
             /**
              * Parent node index.
              */
@@ -6816,41 +6871,6 @@ export namespace Protocol {
             optionSelected?: RareBooleanData;
 
             /**
-             * Document URL that `Document` or `FrameOwner` node points to.
-             */
-            documentURL?: RareStringData;
-
-            /**
-             * Base URL that `Document` or `FrameOwner` node uses for URL completion.
-             */
-            baseURL?: RareStringData;
-
-            /**
-             * Only set for documents, contains the document's content language.
-             */
-            contentLanguage?: RareStringData;
-
-            /**
-             * Only set for documents, contains the document's character set encoding.
-             */
-            documentEncoding?: RareStringData;
-
-            /**
-             * `DocumentType` node's publicId.
-             */
-            publicId?: RareStringData;
-
-            /**
-             * `DocumentType` node's systemId.
-             */
-            systemId?: RareStringData;
-
-            /**
-             * Frame ID for frame owner elements and also for the document node.
-             */
-            frameId?: RareStringData;
-
-            /**
              * The index of the document in the list of the snapshot documents.
              */
             contentDocumentIndex?: RareIntegerData;
@@ -6876,16 +6896,31 @@ export namespace Protocol {
              * The url of the script (if any) that generates this node.
              */
             originURL?: RareStringData;
+        }
+
+        /**
+         * Details of an element in the DOM tree with a LayoutObject.
+         */
+        export interface LayoutTreeSnapshot {
+            /**
+             * The index of the related DOM node in the `domNodes` array returned by `getSnapshot`.
+             */
+            nodeIndex: integer[];
 
             /**
-             * The nodes in the layout tree.
+             * Index into the `computedStyles` array returned by `captureSnapshot`.
              */
-            layoutSnapshot: LayoutTreeSnapshot;
+            styles: ArrayOfStrings[];
 
             /**
-             * The post-layout inline text nodes.
+             * The absolute position bounding box.
              */
-            textBoxSnapshot: TextBoxSnapshot;
+            bounds: Rectangle[];
+
+            /**
+             * Contents of the LayoutText, if any.
+             */
+            text: StringIndex[];
         }
 
         /**
@@ -6914,31 +6949,6 @@ export namespace Protocol {
              * represented as a surrogate pair in UTF-16 have length 2.
              */
             length: integer[];
-        }
-
-        /**
-         * Details of an element in the DOM tree with a LayoutObject.
-         */
-        export interface LayoutTreeSnapshot {
-            /**
-             * The index of the related DOM node in the `domNodes` array returned by `getSnapshot`.
-             */
-            nodeIndex: integer[];
-
-            /**
-             * Index into the `computedStyles` array returned by `captureSnapshot`.
-             */
-            styles: ArrayOfStrings[];
-
-            /**
-             * The absolute position bounding box.
-             */
-            bounds: Rectangle[];
-
-            /**
-             * Contents of the LayoutText, if any.
-             */
-            text: StringIndex[];
         }
 
         export interface GetSnapshotRequest {
