@@ -4441,18 +4441,6 @@
                             "type": "integer"
                         },
                         {
-                            "name": "importedDocumentIndex",
-                            "description": "Index of the imported document's node of a link element in the `domNodes` array returned by\n`getSnapshot`, if any.",
-                            "optional": true,
-                            "type": "integer"
-                        },
-                        {
-                            "name": "templateContentIndex",
-                            "description": "Index of the content node of a template element in the `domNodes` array returned by\n`getSnapshot`.",
-                            "optional": true,
-                            "type": "integer"
-                        },
-                        {
                             "name": "pseudoType",
                             "description": "Type of a pseudo element node.",
                             "optional": true,
@@ -4666,7 +4654,7 @@
                     }
                 },
                 {
-                    "id": "DOMTreeSnapshot",
+                    "id": "DocumentSnapshot",
                     "description": "DOM tree snapshot.",
                     "type": "object",
                     "properties": [
@@ -4722,15 +4710,6 @@
                             "type": "array",
                             "items": {
                                 "$ref": "ArrayOfStrings"
-                            }
-                        },
-                        {
-                            "name": "layoutNodeIndex",
-                            "description": "The index of the node's related layout tree node in the `layoutTreeNodes` array returned by\n`captureSnapshot`, if any.",
-                            "optional": true,
-                            "type": "array",
-                            "items": {
-                                "type": "integer"
                             }
                         },
                         {
@@ -4801,19 +4780,7 @@
                         },
                         {
                             "name": "contentDocumentIndex",
-                            "description": "The index of a frame owner element's content document in the `domNodes` array returned by\n`captureSnapshot`, if any.",
-                            "optional": true,
-                            "$ref": "RareIntegerData"
-                        },
-                        {
-                            "name": "importedDocumentIndex",
-                            "description": "Index of the imported document's node of a link element in the `domNodes` array returned by\n`captureSnapshot`, if any.",
-                            "optional": true,
-                            "$ref": "RareIntegerData"
-                        },
-                        {
-                            "name": "templateContentIndex",
-                            "description": "Index of the content node of a template element in the `domNodes` array returned by\n`captureSnapshot`.",
+                            "description": "The index of the document in the list of the snapshot documents.",
                             "optional": true,
                             "$ref": "RareIntegerData"
                         },
@@ -4840,6 +4807,16 @@
                             "description": "The url of the script (if any) that generates this node.",
                             "optional": true,
                             "$ref": "RareStringData"
+                        },
+                        {
+                            "name": "layoutSnapshot",
+                            "description": "The nodes in the layout tree.",
+                            "$ref": "LayoutTreeSnapshot"
+                        },
+                        {
+                            "name": "textBoxSnapshot",
+                            "description": "The post-layout inline text nodes.",
+                            "$ref": "TextBoxSnapshot"
                         }
                     ]
                 },
@@ -4917,26 +4894,6 @@
                             "type": "array",
                             "items": {
                                 "$ref": "StringIndex"
-                            }
-                        },
-                        {
-                            "name": "textBoxes",
-                            "description": "The post-layout inline text nodes",
-                            "$ref": "TextBoxSnapshot"
-                        }
-                    ]
-                },
-                {
-                    "id": "StylesSnapshot",
-                    "description": "Computed style snapshot.",
-                    "type": "object",
-                    "properties": [
-                        {
-                            "name": "values",
-                            "description": "Whitelisted ComputedStyle property values referenced by styleIndex.",
-                            "type": "array",
-                            "items": {
-                                "$ref": "ArrayOfStrings"
                             }
                         }
                     ]
@@ -5025,14 +4982,12 @@
                     ],
                     "returns": [
                         {
-                            "name": "nodes",
+                            "name": "documents",
                             "description": "The nodes in the DOM tree. The DOMNode at index 0 corresponds to the root document.",
-                            "$ref": "DOMTreeSnapshot"
-                        },
-                        {
-                            "name": "layout",
-                            "description": "The nodes in the layout tree.",
-                            "$ref": "LayoutTreeSnapshot"
+                            "type": "array",
+                            "items": {
+                                "$ref": "DocumentSnapshot"
+                            }
                         },
                         {
                             "name": "strings",

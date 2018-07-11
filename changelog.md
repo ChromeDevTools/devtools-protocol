@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r572598
+###### _2018-07-04 09:15:41_ | Diff: [19fb3d2...1aa7b31](https://github.com/ChromeDevTools/devtools-protocol/compare/19fb3d2...1aa7b31)
+#### `Target`: modified command
+* [`Target.attachToTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-attachToTarget) - The parameters's `flatten` _added_. 
+
+
 ## Roll protocol to r572401
 ###### _2018-07-03 17:15:50_ | Diff: [be1ed43...19fb3d2](https://github.com/ChromeDevTools/devtools-protocol/compare/be1ed43...19fb3d2)
 #### `Target`: modified command

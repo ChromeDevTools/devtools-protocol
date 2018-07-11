@@ -6613,18 +6613,6 @@ export namespace Protocol {
             contentDocumentIndex?: integer;
 
             /**
-             * Index of the imported document's node of a link element in the `domNodes` array returned by
-             * `getSnapshot`, if any.
-             */
-            importedDocumentIndex?: integer;
-
-            /**
-             * Index of the content node of a template element in the `domNodes` array returned by
-             * `getSnapshot`.
-             */
-            templateContentIndex?: integer;
-
-            /**
              * Type of a pseudo element node.
              */
             pseudoType?: DOM.PseudoType;
@@ -6776,7 +6764,7 @@ export namespace Protocol {
         /**
          * DOM tree snapshot.
          */
-        export interface DOMTreeSnapshot {
+        export interface DocumentSnapshot {
             /**
              * Parent node index.
              */
@@ -6806,12 +6794,6 @@ export namespace Protocol {
              * Attributes of an `Element` node. Flatten name, value pairs.
              */
             attributes?: ArrayOfStrings[];
-
-            /**
-             * The index of the node's related layout tree node in the `layoutTreeNodes` array returned by
-             * `captureSnapshot`, if any.
-             */
-            layoutNodeIndex?: integer[];
 
             /**
              * Only set for textarea elements, contains the text value.
@@ -6869,22 +6851,9 @@ export namespace Protocol {
             frameId?: RareStringData;
 
             /**
-             * The index of a frame owner element's content document in the `domNodes` array returned by
-             * `captureSnapshot`, if any.
+             * The index of the document in the list of the snapshot documents.
              */
             contentDocumentIndex?: RareIntegerData;
-
-            /**
-             * Index of the imported document's node of a link element in the `domNodes` array returned by
-             * `captureSnapshot`, if any.
-             */
-            importedDocumentIndex?: RareIntegerData;
-
-            /**
-             * Index of the content node of a template element in the `domNodes` array returned by
-             * `captureSnapshot`.
-             */
-            templateContentIndex?: RareIntegerData;
 
             /**
              * Type of a pseudo element node.
@@ -6907,6 +6876,16 @@ export namespace Protocol {
              * The url of the script (if any) that generates this node.
              */
             originURL?: RareStringData;
+
+            /**
+             * The nodes in the layout tree.
+             */
+            layoutSnapshot: LayoutTreeSnapshot;
+
+            /**
+             * The post-layout inline text nodes.
+             */
+            textBoxSnapshot: TextBoxSnapshot;
         }
 
         /**
@@ -6960,21 +6939,6 @@ export namespace Protocol {
              * Contents of the LayoutText, if any.
              */
             text: StringIndex[];
-
-            /**
-             * The post-layout inline text nodes
-             */
-            textBoxes: TextBoxSnapshot;
-        }
-
-        /**
-         * Computed style snapshot.
-         */
-        export interface StylesSnapshot {
-            /**
-             * Whitelisted ComputedStyle property values referenced by styleIndex.
-             */
-            values: ArrayOfStrings[];
         }
 
         export interface GetSnapshotRequest {
@@ -7027,12 +6991,7 @@ export namespace Protocol {
             /**
              * The nodes in the DOM tree. The DOMNode at index 0 corresponds to the root document.
              */
-            nodes: DOMTreeSnapshot;
-
-            /**
-             * The nodes in the layout tree.
-             */
-            layout: LayoutTreeSnapshot;
+            documents: DocumentSnapshot[];
 
             /**
              * Shared string table that all string properties refer to with indexes.

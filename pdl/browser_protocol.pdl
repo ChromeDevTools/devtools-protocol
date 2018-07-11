@@ -2031,12 +2031,6 @@ experimental domain DOMSnapshot
       # The index of a frame owner element's content document in the `domNodes` array returned by
       # `getSnapshot`, if any.
       optional integer contentDocumentIndex
-      # Index of the imported document's node of a link element in the `domNodes` array returned by
-      # `getSnapshot`, if any.
-      optional integer importedDocumentIndex
-      # Index of the content node of a template element in the `domNodes` array returned by
-      # `getSnapshot`.
-      optional integer templateContentIndex
       # Type of a pseudo element node.
       optional DOM.PseudoType pseudoType
       # Shadow root type.
@@ -2121,7 +2115,7 @@ experimental domain DOMSnapshot
   type Rectangle extends array of number
 
   # DOM tree snapshot.
-  type DOMTreeSnapshot extends object
+  type DocumentSnapshot extends object
     properties
       # Parent node index.
       optional array of integer parentIndex
@@ -2135,9 +2129,6 @@ experimental domain DOMSnapshot
       optional array of DOM.BackendNodeId backendNodeId
       # Attributes of an `Element` node. Flatten name, value pairs.
       optional array of ArrayOfStrings attributes
-      # The index of the node's related layout tree node in the `layoutTreeNodes` array returned by
-      # `captureSnapshot`, if any.
-      optional array of integer layoutNodeIndex
       # Only set for textarea elements, contains the text value.
       optional RareStringData textValue
       # Only set for input elements, contains the input's associated text value.
@@ -2160,15 +2151,8 @@ experimental domain DOMSnapshot
       optional RareStringData systemId
       # Frame ID for frame owner elements and also for the document node.
       optional RareStringData frameId
-      # The index of a frame owner element's content document in the `domNodes` array returned by
-      # `captureSnapshot`, if any.
+      # The index of the document in the list of the snapshot documents.
       optional RareIntegerData contentDocumentIndex
-      # Index of the imported document's node of a link element in the `domNodes` array returned by
-      # `captureSnapshot`, if any.
-      optional RareIntegerData importedDocumentIndex
-      # Index of the content node of a template element in the `domNodes` array returned by
-      # `captureSnapshot`.
-      optional RareIntegerData templateContentIndex
       # Type of a pseudo element node.
       optional RareStringData pseudoType
       # Whether this DOM node responds to mouse clicks. This includes nodes that have had click
@@ -2179,6 +2163,10 @@ experimental domain DOMSnapshot
       optional RareStringData currentSourceURL
       # The url of the script (if any) that generates this node.
       optional RareStringData originURL
+      # The nodes in the layout tree.
+      LayoutTreeSnapshot layoutSnapshot
+      # The post-layout inline text nodes.
+      TextBoxSnapshot textBoxSnapshot
 
   # Details of post layout rendered text positions. The exact layout should not be regarded as
   # stable and may change between versions.
@@ -2206,14 +2194,6 @@ experimental domain DOMSnapshot
       array of Rectangle bounds
       # Contents of the LayoutText, if any.
       array of StringIndex text
-      # The post-layout inline text nodes
-      TextBoxSnapshot textBoxes
-
-  # Computed style snapshot.
-  type StylesSnapshot extends object
-    properties
-      # Whitelisted ComputedStyle property values referenced by styleIndex.
-      array of ArrayOfStrings values
 
   # Disables DOM snapshot agent for the given page.
   command disable
@@ -2253,9 +2233,7 @@ experimental domain DOMSnapshot
       array of string computedStyles
     returns
       # The nodes in the DOM tree. The DOMNode at index 0 corresponds to the root document.
-      DOMTreeSnapshot nodes
-      # The nodes in the layout tree.
-      LayoutTreeSnapshot layout
+      array of DocumentSnapshot documents
       # Shared string table that all string properties refer to with indexes.
       array of string strings
 
