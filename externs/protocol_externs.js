@@ -6026,6 +6026,19 @@ Protocol.TargetAgent.AttachToTargetResponse;
 Protocol.TargetAgent.prototype.invoke_attachToTarget = function(obj) {};
 
 /**
+ * @return {!Promise<?Protocol.Target.SessionID>}
+ */
+Protocol.TargetAgent.prototype.attachToBrowserTarget = function() {};
+/** @typedef {Object|undefined} */
+Protocol.TargetAgent.AttachToBrowserTargetRequest;
+/** @typedef {!{sessionId: Protocol.Target.SessionID}} */
+Protocol.TargetAgent.AttachToBrowserTargetResponse;
+/**
+ * @param {!Protocol.TargetAgent.AttachToBrowserTargetRequest} obj
+ * @return {!Promise<!Protocol.TargetAgent.AttachToBrowserTargetResponse>} */
+Protocol.TargetAgent.prototype.invoke_attachToBrowserTarget = function(obj) {};
+
+/**
  * @param {Protocol.Target.TargetID} targetId
  * @return {!Promise<?boolean>}
  */

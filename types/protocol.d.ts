@@ -13735,6 +13735,13 @@ export namespace Protocol {
             sessionId: SessionID;
         }
 
+        export interface AttachToBrowserTargetResponse {
+            /**
+             * Id assigned to the session.
+             */
+            sessionId: SessionID;
+        }
+
         export interface CloseTargetRequest {
             targetId: TargetID;
         }
@@ -13947,6 +13954,11 @@ export namespace Protocol {
          * Attaches to the target with given id.
          */
         attachToTarget(params: Target.AttachToTargetRequest): Promise<Target.AttachToTargetResponse>;
+
+        /**
+         * Attaches to the browser target, only uses flat sessionId mode.
+         */
+        attachToBrowserTarget(): Promise<Target.AttachToBrowserTargetResponse>;
 
         /**
          * Closes the target. If the target is a page that gets closed too.

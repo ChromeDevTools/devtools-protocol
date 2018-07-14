@@ -12737,6 +12737,18 @@
                     ]
                 },
                 {
+                    "name": "attachToBrowserTarget",
+                    "description": "Attaches to the browser target, only uses flat sessionId mode.",
+                    "experimental": true,
+                    "returns": [
+                        {
+                            "name": "sessionId",
+                            "description": "Id assigned to the session.",
+                            "$ref": "SessionID"
+                        }
+                    ]
+                },
+                {
                     "name": "closeTarget",
                     "description": "Closes the target. If the target is a page that gets closed too.",
                     "parameters": [
