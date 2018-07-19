@@ -12457,6 +12457,19 @@ export namespace Protocol {
             state: ('frozen' | 'active');
         }
 
+        export interface SetProduceCompilationCacheRequest {
+            enabled: boolean;
+        }
+
+        export interface AddCompilationCacheRequest {
+            url: string;
+
+            /**
+             * Base64-encoded data
+             */
+            data: string;
+        }
+
         export interface DomContentEventFiredEvent {
             timestamp: Network.MonotonicTime;
         }
@@ -12653,6 +12666,15 @@ export namespace Protocol {
              * Whether or not it was triggered by user gesture.
              */
             userGesture: boolean;
+        }
+
+        export interface CompilationCacheProducedEvent {
+            url: string;
+
+            /**
+             * Base64-encoded data
+             */
+            data: string;
         }
     }
 
@@ -12882,6 +12904,22 @@ export namespace Protocol {
          */
         stopScreencast(): Promise<void>;
 
+        /**
+         * Forces compilation cache to be generated for every subresource script.
+         */
+        setProduceCompilationCache(params: Page.SetProduceCompilationCacheRequest): Promise<void>;
+
+        /**
+         * Seeds compilation cache for given url. Compilation cache does not survive
+         * cross-process navigation.
+         */
+        addCompilationCache(params: Page.AddCompilationCacheRequest): Promise<void>;
+
+        /**
+         * Clears seeded compilation cache.
+         */
+        clearCompilationCache(): Promise<void>;
+
         on(event: 'domContentEventFired', listener: (params: Page.DomContentEventFiredEvent) => void): void;
 
         /**
@@ -12970,6 +13008,12 @@ export namespace Protocol {
          * etc.
          */
         on(event: 'windowOpen', listener: (params: Page.WindowOpenEvent) => void): void;
+
+        /**
+         * Issued for every compilation cache generated. Is only available
+         * if Page.setGenerateCompilationCache is enabled.
+         */
+        on(event: 'compilationCacheProduced', listener: (params: Page.CompilationCacheProducedEvent) => void): void;
     }
 
     export namespace Performance {

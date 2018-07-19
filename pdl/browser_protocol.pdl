@@ -5202,6 +5202,22 @@ domain Page
   # Stops sending each frame in the `screencastFrame`.
   experimental command stopScreencast
 
+  # Forces compilation cache to be generated for every subresource script.
+  experimental command setProduceCompilationCache
+    parameters
+      boolean enabled
+
+  # Seeds compilation cache for given url. Compilation cache does not survive
+  # cross-process navigation.
+  experimental command addCompilationCache
+    parameters
+      string url
+      # Base64-encoded data
+      string data
+
+  # Clears seeded compilation cache.
+  experimental command clearCompilationCache
+
   event domContentEventFired
     parameters
       Network.MonotonicTime timestamp
@@ -5350,6 +5366,15 @@ domain Page
       array of string windowFeatures
       # Whether or not it was triggered by user gesture.
       boolean userGesture
+
+  # Issued for every compilation cache generated. Is only available
+  # if Page.setGenerateCompilationCache is enabled.
+  experimental event compilationCacheProduced
+    parameters
+      string url
+      # Base64-encoded data
+      string data
+
 
 domain Performance
 

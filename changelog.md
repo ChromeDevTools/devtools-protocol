@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r575147
+###### _2018-07-13 21:15:43_ | Diff: [090126c...05a3c0e](https://github.com/ChromeDevTools/devtools-protocol/compare/090126c...05a3c0e)
+#### `Target`: new command
+* [`Target.attachToBrowserTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-attachToBrowserTarget)
+
+
 ## Roll protocol to r574367
 ###### _2018-07-11 15:15:44_ | Diff: [26e4e07...090126c](https://github.com/ChromeDevTools/devtools-protocol/compare/26e4e07...090126c)
 #### `DOMSnapshot`: new type

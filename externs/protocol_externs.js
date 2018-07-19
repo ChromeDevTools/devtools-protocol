@@ -5259,6 +5259,48 @@ Protocol.PageAgent.StopScreencastResponse;
  * @return {!Promise<!Protocol.PageAgent.StopScreencastResponse>} */
 Protocol.PageAgent.prototype.invoke_stopScreencast = function(obj) {};
 
+/**
+ * @param {boolean} enabled
+ * @return {!Promise<undefined>}
+ */
+Protocol.PageAgent.prototype.setProduceCompilationCache = function(enabled) {};
+/** @typedef {!{enabled: boolean}} */
+Protocol.PageAgent.SetProduceCompilationCacheRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.SetProduceCompilationCacheResponse;
+/**
+ * @param {!Protocol.PageAgent.SetProduceCompilationCacheRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.SetProduceCompilationCacheResponse>} */
+Protocol.PageAgent.prototype.invoke_setProduceCompilationCache = function(obj) {};
+
+/**
+ * @param {string} url
+ * @param {string} data
+ * @return {!Promise<undefined>}
+ */
+Protocol.PageAgent.prototype.addCompilationCache = function(url, data) {};
+/** @typedef {!{url: string, data: string}} */
+Protocol.PageAgent.AddCompilationCacheRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.AddCompilationCacheResponse;
+/**
+ * @param {!Protocol.PageAgent.AddCompilationCacheRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.AddCompilationCacheResponse>} */
+Protocol.PageAgent.prototype.invoke_addCompilationCache = function(obj) {};
+
+/**
+ * @return {!Promise<undefined>}
+ */
+Protocol.PageAgent.prototype.clearCompilationCache = function() {};
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.ClearCompilationCacheRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.ClearCompilationCacheResponse;
+/**
+ * @param {!Protocol.PageAgent.ClearCompilationCacheRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.ClearCompilationCacheResponse>} */
+Protocol.PageAgent.prototype.invoke_clearCompilationCache = function(obj) {};
+
 /** @enum {string} */
 Protocol.Page.ResourceType = {
     Document: "Document",
@@ -5432,6 +5474,11 @@ Protocol.PageDispatcher.prototype.screencastVisibilityChanged = function(visible
  * @param {boolean} userGesture
  */
 Protocol.PageDispatcher.prototype.windowOpen = function(url, windowName, windowFeatures, userGesture) {};
+/**
+ * @param {string} url
+ * @param {string} data
+ */
+Protocol.PageDispatcher.prototype.compilationCacheProduced = function(url, data) {};
 Protocol.Performance = {};
 
 
