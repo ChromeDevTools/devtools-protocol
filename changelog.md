@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r576560
+###### _2018-07-19 11:16:22_ | Diff: [05a3c0e...5c95923](https://github.com/ChromeDevTools/devtools-protocol/compare/05a3c0e...5c95923)
+#### `Page`: new commands
+* [`Page.setProduceCompilationCache`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setProduceCompilationCache)
+* [`Page.addCompilationCache`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-addCompilationCache)
+* [`Page.clearCompilationCache`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-clearCompilationCache)
+#### `Page`: new event
+* [`Page.compilationCacheProduced`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-compilationCacheProduced)
+
+
 ## Roll protocol to r575147
 ###### _2018-07-13 21:15:43_ | Diff: [090126c...05a3c0e](https://github.com/ChromeDevTools/devtools-protocol/compare/090126c...05a3c0e)
 #### `Target`: new command

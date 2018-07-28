@@ -8294,6 +8294,13 @@ export namespace Protocol {
             location?: integer;
         }
 
+        export interface InsertTextRequest {
+            /**
+             * The text to insert.
+             */
+            text: string;
+        }
+
         export interface DispatchMouseEventRequest {
             /**
              * Type of the mouse event.
@@ -8551,6 +8558,12 @@ export namespace Protocol {
          * Dispatches a key event to the page.
          */
         dispatchKeyEvent(params: Input.DispatchKeyEventRequest): Promise<void>;
+
+        /**
+         * This method emulates inserting text that doesn't come from a key press,
+         * for example an emoji keyboard or an IME.
+         */
+        insertText(params: Input.InsertTextRequest): Promise<void>;
 
         /**
          * Dispatches a mouse event to the page.

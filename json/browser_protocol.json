@@ -6484,6 +6484,18 @@
                     ]
                 },
                 {
+                    "name": "insertText",
+                    "description": "This method emulates inserting text that doesn't come from a key press,\nfor example an emoji keyboard or an IME.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "text",
+                            "description": "The text to insert.",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "dispatchMouseEvent",
                     "description": "Dispatches a mouse event to the page.",
                     "parameters": [

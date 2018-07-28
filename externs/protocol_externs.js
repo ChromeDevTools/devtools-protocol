@@ -2953,6 +2953,20 @@ Protocol.InputAgent.DispatchKeyEventResponse;
 Protocol.InputAgent.prototype.invoke_dispatchKeyEvent = function(obj) {};
 
 /**
+ * @param {string} text
+ * @return {!Promise<undefined>}
+ */
+Protocol.InputAgent.prototype.insertText = function(text) {};
+/** @typedef {!{text: string}} */
+Protocol.InputAgent.InsertTextRequest;
+/** @typedef {Object|undefined} */
+Protocol.InputAgent.InsertTextResponse;
+/**
+ * @param {!Protocol.InputAgent.InsertTextRequest} obj
+ * @return {!Promise<!Protocol.InputAgent.InsertTextResponse>} */
+Protocol.InputAgent.prototype.invoke_insertText = function(obj) {};
+
+/**
  * @param {string} type
  * @param {number} x
  * @param {number} y

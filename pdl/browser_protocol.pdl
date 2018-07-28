@@ -2909,6 +2909,13 @@ domain Input
       # 0).
       optional integer location
 
+  # This method emulates inserting text that doesn't come from a key press,
+  # for example an emoji keyboard or an IME.
+  experimental command insertText
+    parameters
+      # The text to insert.
+      string text
+
   # Dispatches a mouse event to the page.
   command dispatchMouseEvent
     parameters
