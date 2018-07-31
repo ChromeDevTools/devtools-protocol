@@ -13921,6 +13921,11 @@ export namespace Protocol {
              * to run paused targets.
              */
             waitForDebuggerOnStart: boolean;
+
+            /**
+             * Enables "flat" access to the session via specifying sessionId attribute in the commands.
+             */
+            flatten?: boolean;
         }
 
         export interface SetDiscoverTargetsRequest {

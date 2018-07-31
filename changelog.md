@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r578934
+###### _2018-07-28 13:15:43_ | Diff: [5c95923...501e985](https://github.com/ChromeDevTools/devtools-protocol/compare/5c95923...501e985)
+#### `Input`: new command
+* [`Input.insertText`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-insertText)
+
+
 ## Roll protocol to r576560
 ###### _2018-07-19 11:16:22_ | Diff: [05a3c0e...5c95923](https://github.com/ChromeDevTools/devtools-protocol/compare/05a3c0e...5c95923)
 #### `Page`: new commands
