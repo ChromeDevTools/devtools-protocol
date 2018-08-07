@@ -9145,6 +9145,34 @@ export namespace Protocol {
          */
         export interface SamplingProfile {
             samples: SamplingProfileNode[];
+
+            modules: Module[];
+        }
+
+        /**
+         * Executable module information
+         */
+        export interface Module {
+            /**
+             * Name of the module.
+             */
+            name: string;
+
+            /**
+             * UUID of the module.
+             */
+            uuid: string;
+
+            /**
+             * Base address where the module is loaded into memory. Encoded as a decimal
+             * or hexadecimal (0x prefixed) string.
+             */
+            baseAddress: string;
+
+            /**
+             * Size of the module in bytes.
+             */
+            size: number;
         }
 
         export interface GetDOMCountersResponse {

@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r579242
+###### _2018-07-30 17:16:01_ | Diff: [501e985...45146f8](https://github.com/ChromeDevTools/devtools-protocol/compare/501e985...45146f8)
+#### `Target`: modified command
+* [`Target.setAutoAttach`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-setAutoAttach) - The parameters's `flatten` _added_. 
+
+
 ## Roll protocol to r578934
 ###### _2018-07-28 13:15:43_ | Diff: [5c95923...501e985](https://github.com/ChromeDevTools/devtools-protocol/compare/5c95923...501e985)
 #### `Input`: new command

@@ -7490,6 +7490,40 @@
                             "items": {
                                 "$ref": "SamplingProfileNode"
                             }
+                        },
+                        {
+                            "name": "modules",
+                            "type": "array",
+                            "items": {
+                                "$ref": "Module"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "Module",
+                    "description": "Executable module information",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "name",
+                            "description": "Name of the module.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "uuid",
+                            "description": "UUID of the module.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "baseAddress",
+                            "description": "Base address where the module is loaded into memory. Encoded as a decimal\nor hexadecimal (0x prefixed) string.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "size",
+                            "description": "Size of the module in bytes.",
+                            "type": "number"
                         }
                     ]
                 }

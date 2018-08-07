@@ -3414,6 +3414,20 @@ experimental domain Memory
   type SamplingProfile extends object
     properties
       array of SamplingProfileNode samples
+      array of Module modules
+
+  # Executable module information
+  type Module extends object
+    properties
+      # Name of the module.
+      string name
+      # UUID of the module.
+      string uuid
+      # Base address where the module is loaded into memory. Encoded as a decimal
+      # or hexadecimal (0x prefixed) string.
+      string baseAddress
+      # Size of the module in bytes.
+      number size
 
 # Network domain allows tracking network activities of the page. It exposes information about http,
 # file, data and other requests and responses, their headers, bodies, timing, etc.

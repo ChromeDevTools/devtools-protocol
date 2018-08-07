@@ -3592,8 +3592,11 @@ Protocol.Memory.PressureLevel = {
 /** @typedef {!{size:(number), total:(number), stack:(!Array<string>)}} */
 Protocol.Memory.SamplingProfileNode;
 
-/** @typedef {!{samples:(!Array<Protocol.Memory.SamplingProfileNode>)}} */
+/** @typedef {!{samples:(!Array<Protocol.Memory.SamplingProfileNode>), modules:(!Array<Protocol.Memory.Module>)}} */
 Protocol.Memory.SamplingProfile;
+
+/** @typedef {!{name:(string), uuid:(string), baseAddress:(string), size:(number)}} */
+Protocol.Memory.Module;
 /** @interface */
 Protocol.MemoryDispatcher = function() {};
 Protocol.Network = {};
