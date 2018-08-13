@@ -68,8 +68,8 @@ const emitDomain = (domain: P.Domain) => {
     emitDescription(domain.description)
     emitOpenBlock(`export module ${domainName}`)
     if (domain.types) domain.types.forEach(emitDomainType)
-    if (domain.commands) domain.commands.forEach(c => emitCommand(c))
-    if (domain.events) domain.events.forEach(e => emitEvent(e))
+    if (domain.commands) domain.commands.forEach(emitCommand)
+    if (domain.events) domain.events.forEach(emitEvent)
     emitCloseBlock()
 }
 
