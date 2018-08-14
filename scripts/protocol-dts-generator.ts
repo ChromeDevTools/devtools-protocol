@@ -169,9 +169,10 @@ const emitEvent = (event: P.Event) => {
 }
 
 const getEventMapping = (event: P.Event, domainName: string, modulePrefix: string): P.RefType & P.PropertyBaseType => {
+    // Use TS3.0+ tuples
     const payloadType = event.parameters ?
-        `${modulePrefix}.${domainName}.${toEventPayloadName(event.name)}` :
-        'void'
+        `[${modulePrefix}.${domainName}.${toEventPayloadName(event.name)}]` :
+        '[]'
 
     return {
         // domain-prefixed name since it will be used outside of the module.
