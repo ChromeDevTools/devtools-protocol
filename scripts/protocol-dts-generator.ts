@@ -177,8 +177,7 @@ const getEventMapping = (event: P.Event, domainName: string, modulePrefix: strin
     return {
         // domain-prefixed name since it will be used outside of the module.
         name: `${domainName}.${event.name}`,
-        // TODO(bckenny): does having a description help anywhere?
-        // description: event.description,
+        description: event.description,
         $ref: payloadType
     }
 }
@@ -200,8 +199,7 @@ const getCommandMapping = (command: P.Command, domainName: string, modulePrefix:
     return {
         type: 'object',
         name: `${domainName}.${command.name}`,
-        // TODO(bckenny): does having a description help anywhere?
-        // description: command.description,
+        description: command.description,
         properties: [{
             name: 'paramsType',
             $ref: requestType,
