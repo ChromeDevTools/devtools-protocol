@@ -49,7 +49,7 @@ const emitHeaderComments = () => {
 const emitModule = (moduleName: string, domains: P.Domain[]) => {
     moduleName = toTitleCase(moduleName)
     emitHeaderComments()
-    emitOpenBlock(`export module ${moduleName}`)
+    emitOpenBlock(`export namespace ${moduleName}`)
     emitGlobalTypeDefs()
     domains.forEach(emitDomain)
     emitCloseBlock()
@@ -66,7 +66,7 @@ const emitDomain = (domain: P.Domain) => {
     const domainName = toTitleCase(domain.domain)
     emitLine()
     emitDescription(domain.description)
-    emitOpenBlock(`export module ${domainName}`)
+    emitOpenBlock(`export namespace ${domainName}`)
     if (domain.types) domain.types.forEach(emitDomainType)
     if (domain.commands) domain.commands.forEach(emitCommand)
     if (domain.events) domain.events.forEach(emitEvent)
