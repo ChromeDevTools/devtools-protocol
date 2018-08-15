@@ -86,7 +86,7 @@ const emitDescription = (description?: string) => {
 
 const getPropertyDef = (prop: P.PropertyType): string => {
     // Quote key if it has a . in it.
-    const propName = /\./.test(prop.name) ? `'${prop.name}'` : prop.name
+    const propName = prop.name.includes('.') ? `'${prop.name}'` : prop.name
     return `${propName}${prop.optional ? '?' : ''}: ${getPropertyType(prop)}`
 }
 
