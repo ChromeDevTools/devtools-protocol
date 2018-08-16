@@ -101,13 +101,13 @@ const getPropertyType = (prop: P.ProtocolType): string  => {
             return `any`
         } else {
             // hack: access indent, \n directly
-            let objStr = '{\n';
+            let objStr = '{\n'
             numIndents++
             objStr += prop.properties
                 .map(p => `${getIndent()}${getPropertyDef(p)};\n`)
                 .join('')
             numIndents--
-            objStr += `${getIndent()}}`;
+            objStr += `${getIndent()}}`
             return objStr
         }
     else if (prop.type === 'string' && prop.enum)
@@ -218,7 +218,7 @@ const emitMapping = (moduleName: string, protocolModuleName: string, domains: P.
     emitLine(`import Protocol from './${protocolModuleName}'`)
     emitLine()
     emitDescription('Mappings from protocol event and command names to the types required for them.')
-    emitOpenBlock(`export module ${moduleName}`)
+    emitOpenBlock(`export namespace ${moduleName}`)
 
     const protocolModulePrefix = toTitleCase(protocolModuleName)
     const eventDefs = flatten(domains.map(d => {
@@ -236,6 +236,57 @@ const emitMapping = (moduleName: string, protocolModuleName: string, domains: P.
     emitInterface('Commands', commandDefs)
 
     emitCloseBlock()
+    emitLine()
+    emitLine(`export default ${moduleName};`)
+}
+
+const emitApiCommand = (command: P.Command, domainName: string, modulePrefix: string) => {
+    const prefix = `${modulePrefix}.${domainName}.`
+    emitDescription(command.description)
+    const params = command.parameters ? `params: ${prefix}${toCmdRequestName(command.name)}` : ''
+    const response = command.returns ? `${prefix}${toCmdResponseName(command.name)}` : 'void'
+    emitLine(`${command.name}(${params}): Promise<${response}>;`)
+    emitLine()
+}
+
+const emitApiEvent = (event: P.Event, domainName: string, modulePrefix: string) => {
+    const prefix = `${modulePrefix}.${domainName}.`
+    emitDescription(event.description)
+    const params = event.parameters ? `params: ${prefix}${toEventPayloadName(event.name)}` : ''
+    emitLine(`on(event: '${event.name}', listener: (${params}) => void): void;`)
+    emitLine()
+}
+
+const emitDomainApi = (domain: P.Domain, modulePrefix: string) => {
+    emitLine()
+    const domainName = toTitleCase(domain.domain)
+    emitOpenBlock(`export interface ${domainName}Api`)
+    if (domain.commands) domain.commands.forEach(c => emitApiCommand(c, domainName, modulePrefix))
+    if (domain.events) domain.events.forEach(e => emitApiEvent(e, domainName, modulePrefix))
+    emitCloseBlock()
+}
+
+const emitApi = (moduleName: string, protocolModuleName: string, domains: P.Domain[]) => {
+    moduleName = toTitleCase(moduleName)
+    emitHeaderComments()
+    emitLine(`import Protocol from './${protocolModuleName}'`)
+    emitLine()
+    emitDescription('API generated from Protocol commands and events.')
+    emitOpenBlock(`export namespace ${moduleName}`)
+
+    emitLine()
+    emitOpenBlock(`export interface ProtocolApi`)
+    domains.forEach(d => {
+        emitLine(`${d.domain}: ${d.domain}Api;`)
+        emitLine()
+    });
+    emitCloseBlock()
+    emitLine()
+
+    const protocolModulePrefix = toTitleCase(protocolModuleName)
+    domains.forEach(d => emitDomainApi(d, protocolModulePrefix))
+    emitCloseBlock()
+
     emitLine()
     emitLine(`export default ${moduleName};`)
 }
@@ -258,3 +309,8 @@ const destMappingFilePath = `${__dirname}/../types/protocol-mapping.d.ts`
 const mappingModuleName = 'ProtocolMapping'
 emitMapping(mappingModuleName, protocolModuleName, protocolDomains)
 flushEmitToFile(destMappingFilePath)
+
+const destApiFilePath = `${__dirname}/../types/protocol-api.d.ts`
+const apiModuleName = 'ProtocolApi'
+emitApi(apiModuleName, protocolModuleName, protocolDomains)
+flushEmitToFile(destApiFilePath)

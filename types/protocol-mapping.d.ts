@@ -7,7 +7,7 @@ import Protocol from './protocol'
 /**
  * Mappings from protocol event and command names to the types required for them.
  */
-export module ProtocolMapping {
+export namespace ProtocolMapping {
     export interface Events {
         /**
          * Issued when new console message is added.
