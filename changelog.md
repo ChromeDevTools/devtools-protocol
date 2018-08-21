@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r581326
+###### _2018-08-07 13:15:57_ | Diff: [45146f8...5fd6859](https://github.com/ChromeDevTools/devtools-protocol/compare/45146f8...5fd6859)
+#### `Memory`: new type
+* [`Memory.Module`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#type-Module)
+#### `Memory`: modified type
+* [`Memory.SamplingProfile`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#type-SamplingProfile) - The properties's `modules` _added_. 
+
+
 ## Roll protocol to r579242
 ###### _2018-07-30 17:16:01_ | Diff: [501e985...45146f8](https://github.com/ChromeDevTools/devtools-protocol/compare/501e985...45146f8)
 #### `Target`: modified command

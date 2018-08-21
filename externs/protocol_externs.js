@@ -2031,7 +2031,7 @@ Protocol.DOMSnapshot.DOMNode;
 /** @typedef {!{boundingBox:(Protocol.DOM.Rect), startCharacterIndex:(number), numCharacters:(number)}} */
 Protocol.DOMSnapshot.InlineTextBox;
 
-/** @typedef {!{domNodeIndex:(number), boundingBox:(Protocol.DOM.Rect), layoutText:(string|undefined), inlineTextNodes:(!Array<Protocol.DOMSnapshot.InlineTextBox>|undefined), styleIndex:(number|undefined), paintOrder:(number|undefined)}} */
+/** @typedef {!{domNodeIndex:(number), boundingBox:(Protocol.DOM.Rect), layoutText:(string|undefined), inlineTextNodes:(!Array<Protocol.DOMSnapshot.InlineTextBox>|undefined), styleIndex:(number|undefined), paintOrder:(number|undefined), isStackingContext:(boolean|undefined)}} */
 Protocol.DOMSnapshot.LayoutTreeNode;
 
 /** @typedef {!{properties:(!Array<Protocol.DOMSnapshot.NameValue>)}} */
@@ -2064,7 +2064,7 @@ Protocol.DOMSnapshot.DocumentSnapshot;
 /** @typedef {!{parentIndex:(!Array<number>|undefined), nodeType:(!Array<number>|undefined), nodeName:(!Array<Protocol.DOMSnapshot.StringIndex>|undefined), nodeValue:(!Array<Protocol.DOMSnapshot.StringIndex>|undefined), backendNodeId:(!Array<Protocol.DOM.BackendNodeId>|undefined), attributes:(!Array<Protocol.DOMSnapshot.ArrayOfStrings>|undefined), textValue:(Protocol.DOMSnapshot.RareStringData|undefined), inputValue:(Protocol.DOMSnapshot.RareStringData|undefined), inputChecked:(Protocol.DOMSnapshot.RareBooleanData|undefined), optionSelected:(Protocol.DOMSnapshot.RareBooleanData|undefined), contentDocumentIndex:(Protocol.DOMSnapshot.RareIntegerData|undefined), pseudoType:(Protocol.DOMSnapshot.RareStringData|undefined), isClickable:(Protocol.DOMSnapshot.RareBooleanData|undefined), currentSourceURL:(Protocol.DOMSnapshot.RareStringData|undefined), originURL:(Protocol.DOMSnapshot.RareStringData|undefined)}} */
 Protocol.DOMSnapshot.NodeTreeSnapshot;
 
-/** @typedef {!{nodeIndex:(!Array<number>), styles:(!Array<Protocol.DOMSnapshot.ArrayOfStrings>), bounds:(!Array<Protocol.DOMSnapshot.Rectangle>), text:(!Array<Protocol.DOMSnapshot.StringIndex>)}} */
+/** @typedef {!{nodeIndex:(!Array<number>), styles:(!Array<Protocol.DOMSnapshot.ArrayOfStrings>), bounds:(!Array<Protocol.DOMSnapshot.Rectangle>), text:(!Array<Protocol.DOMSnapshot.StringIndex>), stackingContexts:(Protocol.DOMSnapshot.RareBooleanData)}} */
 Protocol.DOMSnapshot.LayoutTreeSnapshot;
 
 /** @typedef {!{layoutIndex:(!Array<number>), bounds:(!Array<Protocol.DOMSnapshot.Rectangle>), start:(!Array<number>), length:(!Array<number>)}} */

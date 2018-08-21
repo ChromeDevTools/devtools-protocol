@@ -6703,6 +6703,11 @@ export namespace Protocol {
              * getSnapshot was true.
              */
             paintOrder?: integer;
+
+            /**
+             * Set to true to indicate the element begins a new stacking context.
+             */
+            isStackingContext?: boolean;
         }
 
         /**
@@ -6921,6 +6926,11 @@ export namespace Protocol {
              * Contents of the LayoutText, if any.
              */
             text: StringIndex[];
+
+            /**
+             * Stacking context information.
+             */
+            stackingContexts: RareBooleanData;
         }
 
         /**

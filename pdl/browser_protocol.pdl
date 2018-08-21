@@ -2076,6 +2076,8 @@ experimental domain DOMSnapshot
       # that are painted together will have the same index. Only provided if includePaintOrder in
       # getSnapshot was true.
       optional integer paintOrder
+      # Set to true to indicate the element begins a new stacking context.
+      optional boolean isStackingContext
 
   # A subset of the full ComputedStyle as defined by the request whitelist.
   type ComputedStyle extends object
@@ -2185,6 +2187,8 @@ experimental domain DOMSnapshot
       array of Rectangle bounds
       # Contents of the LayoutText, if any.
       array of StringIndex text
+      # Stacking context information.
+      RareBooleanData stackingContexts
 
   # Details of post layout rendered text positions. The exact layout should not be regarded as
   # stable and may change between versions.
