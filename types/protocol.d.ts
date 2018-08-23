@@ -3514,6 +3514,8 @@ export namespace Protocol {
             windowState?: WindowState;
         }
 
+        export type PermissionType = ('accessibilityEvents' | 'audioCapture' | 'backgroundSync' | 'clipboardRead' | 'clipboardWrite' | 'durableStorage' | 'flash' | 'geolocation' | 'midi' | 'midiSysex' | 'notifications' | 'paymentHandler' | 'protectedMediaIdentifier' | 'sensors' | 'videoCapture');
+
         /**
          * Chrome histogram bucket.
          */
@@ -3557,6 +3559,24 @@ export namespace Protocol {
              * Buckets.
              */
             buckets: Bucket[];
+        }
+
+        export interface GrantPermissionsRequest {
+            origin: string;
+
+            permissions: PermissionType[];
+
+            /**
+             * BrowserContext to override permissions. When omitted, default browser context is used.
+             */
+            browserContextId?: Target.BrowserContextID;
+        }
+
+        export interface ResetPermissionsRequest {
+            /**
+             * BrowserContext to reset permissions. When omitted, default browser context is used.
+             */
+            browserContextId?: Target.BrowserContextID;
         }
 
         export interface GetVersionResponse {
@@ -3683,6 +3703,16 @@ export namespace Protocol {
     }
 
     export interface BrowserApi {
+        /**
+         * Grant specific permissions to the given origin and reject all others.
+         */
+        grantPermissions(params: Browser.GrantPermissionsRequest): Promise<void>;
+
+        /**
+         * Reset all permission management for all origins.
+         */
+        resetPermissions(params: Browser.ResetPermissionsRequest): Promise<void>;
+
         /**
          * Close browser gracefully.
          */

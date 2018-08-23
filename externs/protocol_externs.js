@@ -422,6 +422,36 @@ Protocol.Browser = {};
 Protocol.BrowserAgent = function(){};
 
 /**
+ * @param {string} origin
+ * @param {!Array<Protocol.Browser.PermissionType>} permissions
+ * @param {Protocol.Target.BrowserContextID=} opt_browserContextId
+ * @return {!Promise<undefined>}
+ */
+Protocol.BrowserAgent.prototype.grantPermissions = function(origin, permissions, opt_browserContextId) {};
+/** @typedef {!{origin: string, browserContextId: (Protocol.Target.BrowserContextID|undefined), permissions: !Array<Protocol.Browser.PermissionType>}} */
+Protocol.BrowserAgent.GrantPermissionsRequest;
+/** @typedef {Object|undefined} */
+Protocol.BrowserAgent.GrantPermissionsResponse;
+/**
+ * @param {!Protocol.BrowserAgent.GrantPermissionsRequest} obj
+ * @return {!Promise<!Protocol.BrowserAgent.GrantPermissionsResponse>} */
+Protocol.BrowserAgent.prototype.invoke_grantPermissions = function(obj) {};
+
+/**
+ * @param {Protocol.Target.BrowserContextID=} opt_browserContextId
+ * @return {!Promise<undefined>}
+ */
+Protocol.BrowserAgent.prototype.resetPermissions = function(opt_browserContextId) {};
+/** @typedef {!{browserContextId: (Protocol.Target.BrowserContextID|undefined)}} */
+Protocol.BrowserAgent.ResetPermissionsRequest;
+/** @typedef {Object|undefined} */
+Protocol.BrowserAgent.ResetPermissionsResponse;
+/**
+ * @param {!Protocol.BrowserAgent.ResetPermissionsRequest} obj
+ * @return {!Promise<!Protocol.BrowserAgent.ResetPermissionsResponse>} */
+Protocol.BrowserAgent.prototype.invoke_resetPermissions = function(obj) {};
+
+/**
  * @return {!Promise<undefined>}
  */
 Protocol.BrowserAgent.prototype.close = function() {};
@@ -546,6 +576,25 @@ Protocol.Browser.WindowState = {
 
 /** @typedef {!{left:(number|undefined), top:(number|undefined), width:(number|undefined), height:(number|undefined), windowState:(Protocol.Browser.WindowState|undefined)}} */
 Protocol.Browser.Bounds;
+
+/** @enum {string} */
+Protocol.Browser.PermissionType = {
+    AccessibilityEvents: "accessibilityEvents",
+    AudioCapture: "audioCapture",
+    BackgroundSync: "backgroundSync",
+    ClipboardRead: "clipboardRead",
+    ClipboardWrite: "clipboardWrite",
+    DurableStorage: "durableStorage",
+    Flash: "flash",
+    Geolocation: "geolocation",
+    Midi: "midi",
+    MidiSysex: "midiSysex",
+    Notifications: "notifications",
+    PaymentHandler: "paymentHandler",
+    ProtectedMediaIdentifier: "protectedMediaIdentifier",
+    Sensors: "sensors",
+    VideoCapture: "videoCapture"
+};
 
 /** @typedef {!{low:(number), high:(number), count:(number)}} */
 Protocol.Browser.Bucket;

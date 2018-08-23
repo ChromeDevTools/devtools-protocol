@@ -1004,6 +1004,28 @@
                     ]
                 },
                 {
+                    "id": "PermissionType",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "accessibilityEvents",
+                        "audioCapture",
+                        "backgroundSync",
+                        "clipboardRead",
+                        "clipboardWrite",
+                        "durableStorage",
+                        "flash",
+                        "geolocation",
+                        "midi",
+                        "midiSysex",
+                        "notifications",
+                        "paymentHandler",
+                        "protectedMediaIdentifier",
+                        "sensors",
+                        "videoCapture"
+                    ]
+                },
+                {
                     "id": "Bucket",
                     "description": "Chrome histogram bucket.",
                     "experimental": true,
@@ -1059,6 +1081,43 @@
                 }
             ],
             "commands": [
+                {
+                    "name": "grantPermissions",
+                    "description": "Grant specific permissions to the given origin and reject all others.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "origin",
+                            "type": "string"
+                        },
+                        {
+                            "name": "permissions",
+                            "type": "array",
+                            "items": {
+                                "$ref": "PermissionType"
+                            }
+                        },
+                        {
+                            "name": "browserContextId",
+                            "description": "BrowserContext to override permissions. When omitted, default browser context is used.",
+                            "optional": true,
+                            "$ref": "Target.BrowserContextID"
+                        }
+                    ]
+                },
+                {
+                    "name": "resetPermissions",
+                    "description": "Reset all permission management for all origins.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "browserContextId",
+                            "description": "BrowserContext to reset permissions. When omitted, default browser context is used.",
+                            "optional": true,
+                            "$ref": "Target.BrowserContextID"
+                        }
+                    ]
+                },
                 {
                     "name": "close",
                     "description": "Close browser gracefully."

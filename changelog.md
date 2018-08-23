@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r584873
+###### _2018-08-21 12:15:50_ | Diff: [5fd6859...d4361d7](https://github.com/ChromeDevTools/devtools-protocol/compare/5fd6859...d4361d7)
+#### `DOMSnapshot`: modified types
+* [`DOMSnapshot.LayoutTreeNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-LayoutTreeNode) - The properties's `isStackingContext` _added_. 
+* [`DOMSnapshot.LayoutTreeSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-LayoutTreeSnapshot) - The properties's `stackingContexts` _added_. 
+
+
 ## Roll protocol to r581326
 ###### _2018-08-07 13:15:57_ | Diff: [45146f8...5fd6859](https://github.com/ChromeDevTools/devtools-protocol/compare/45146f8...5fd6859)
 #### `Memory`: new type

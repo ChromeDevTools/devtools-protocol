@@ -480,6 +480,39 @@ domain Browser
       # The window state. Default to normal.
       optional WindowState windowState
 
+  experimental type PermissionType extends string
+    enum
+      accessibilityEvents
+      audioCapture
+      backgroundSync
+      clipboardRead
+      clipboardWrite
+      durableStorage
+      flash
+      geolocation
+      midi
+      midiSysex
+      notifications
+      paymentHandler
+      protectedMediaIdentifier
+      sensors
+      videoCapture
+
+  # Grant specific permissions to the given origin and reject all others.
+  experimental command grantPermissions
+    parameters
+      string origin
+      array of PermissionType permissions
+      # BrowserContext to override permissions. When omitted, default browser context is used.
+      optional Target.BrowserContextID browserContextId
+
+  # Reset all permission management for all origins.
+  experimental command resetPermissions
+    parameters
+      # BrowserContext to reset permissions. When omitted, default browser context is used.
+      optional Target.BrowserContextID browserContextId
+
+
   # Close browser gracefully.
   command close
 
