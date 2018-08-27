@@ -5276,6 +5276,14 @@ domain Page
   # Clears seeded compilation cache.
   experimental command clearCompilationCache
 
+  # Generates a report for testing.
+  experimental command generateTestReport
+    parameters
+      # Message to be displayed in the report.
+      string message
+      # Specifies the endpoint group to deliver the report to.
+      optional string group
+
   event domContentEventFired
     parameters
       Network.MonotonicTime timestamp

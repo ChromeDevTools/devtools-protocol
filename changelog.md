@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r585632
+###### _2018-08-23 15:15:44_ | Diff: [d4361d7...fbe2ce1](https://github.com/ChromeDevTools/devtools-protocol/compare/d4361d7...fbe2ce1)
+#### `Browser`: new commands
+* [`Browser.grantPermissions`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-grantPermissions)
+* [`Browser.resetPermissions`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-resetPermissions)
+#### `Browser`: new type
+* [`Browser.PermissionType`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-PermissionType)
+
+
 ## Roll protocol to r584873
 ###### _2018-08-21 12:15:50_ | Diff: [5fd6859...d4361d7](https://github.com/ChromeDevTools/devtools-protocol/compare/5fd6859...d4361d7)
 #### `DOMSnapshot`: modified types

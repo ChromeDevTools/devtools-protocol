@@ -5367,6 +5367,21 @@ Protocol.PageAgent.ClearCompilationCacheResponse;
  * @return {!Promise<!Protocol.PageAgent.ClearCompilationCacheResponse>} */
 Protocol.PageAgent.prototype.invoke_clearCompilationCache = function(obj) {};
 
+/**
+ * @param {string} message
+ * @param {string=} opt_group
+ * @return {!Promise<undefined>}
+ */
+Protocol.PageAgent.prototype.generateTestReport = function(message, opt_group) {};
+/** @typedef {!{message: string, group: (string|undefined)}} */
+Protocol.PageAgent.GenerateTestReportRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.GenerateTestReportResponse;
+/**
+ * @param {!Protocol.PageAgent.GenerateTestReportRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.GenerateTestReportResponse>} */
+Protocol.PageAgent.prototype.invoke_generateTestReport = function(obj) {};
+
 /** @enum {string} */
 Protocol.Page.ResourceType = {
     Document: "Document",

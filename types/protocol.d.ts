@@ -12551,6 +12551,18 @@ export namespace Protocol {
             data: string;
         }
 
+        export interface GenerateTestReportRequest {
+            /**
+             * Message to be displayed in the report.
+             */
+            message: string;
+
+            /**
+             * Specifies the endpoint group to deliver the report to.
+             */
+            group?: string;
+        }
+
         export interface DomContentEventFiredEvent {
             timestamp: Network.MonotonicTime;
         }
@@ -13000,6 +13012,11 @@ export namespace Protocol {
          * Clears seeded compilation cache.
          */
         clearCompilationCache(): Promise<void>;
+
+        /**
+         * Generates a report for testing.
+         */
+        generateTestReport(params: Page.GenerateTestReportRequest): Promise<void>;
 
         on(event: 'domContentEventFired', listener: (params: Page.DomContentEventFiredEvent) => void): void;
 

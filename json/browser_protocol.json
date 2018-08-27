@@ -11603,6 +11603,24 @@
                     "name": "clearCompilationCache",
                     "description": "Clears seeded compilation cache.",
                     "experimental": true
+                },
+                {
+                    "name": "generateTestReport",
+                    "description": "Generates a report for testing.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "message",
+                            "description": "Message to be displayed in the report.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "group",
+                            "description": "Specifies the endpoint group to deliver the report to.",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
                 }
             ],
             "events": [
