@@ -84,6 +84,8 @@ export namespace Protocol {
         Tethering: TetheringApi;
 
         Tracing: TracingApi;
+
+        Testing: TestingApi;
     }
 
     /**
@@ -14461,6 +14463,32 @@ export namespace Protocol {
          * delivered via dataCollected events.
          */
         on(event: 'tracingComplete', listener: (params: Tracing.TracingCompleteEvent) => void): void;
+    }
+
+    /**
+     * Testing domain is a dumping ground for the capabilities requires for browser or app testing that do not fit other
+     * domains.
+     */
+    export namespace Testing {
+
+        export interface GenerateTestReportRequest {
+            /**
+             * Message to be displayed in the report.
+             */
+            message: string;
+
+            /**
+             * Specifies the endpoint group to deliver the report to.
+             */
+            group?: string;
+        }
+    }
+
+    export interface TestingApi {
+        /**
+         * Generates a report for testing.
+         */
+        generateTestReport(params: Testing.GenerateTestReportRequest): Promise<void>;
     }
 }
 
