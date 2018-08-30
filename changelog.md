@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r586443
+###### _2018-08-27 15:15:57_ | Diff: [cafc591...41333c5](https://github.com/ChromeDevTools/devtools-protocol/compare/cafc591...41333c5)
+#### `Testing`: new domain
+* [`Testing.Testing`](https://chromedevtools.github.io/devtools-protocol/tot/Testing/#domain-Testing)
+#### `Testing`: new command
+* [`Testing.generateTestReport`](https://chromedevtools.github.io/devtools-protocol/tot/Testing/#method-generateTestReport)
+
+
 ## Roll protocol to r586417
 ###### _2018-08-27 14:15:56_ | Diff: [fbe2ce1...cafc591](https://github.com/ChromeDevTools/devtools-protocol/compare/fbe2ce1...cafc591)
 #### `Page`: new command

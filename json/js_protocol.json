@@ -95,7 +95,8 @@
                         {
                             "name": "message",
                             "description": "Console message that has been added.",
-                            "$ref": "ConsoleMessage"
+                            "$ref": "ConsoleMessage",
+                            "type": "$ref"
                         }
                     ]
                 }
@@ -126,7 +127,8 @@
                         {
                             "name": "scriptId",
                             "description": "Script identifier as reported in the `Debugger.scriptParsed`.",
-                            "$ref": "Runtime.ScriptId"
+                            "$ref": "Runtime.ScriptId",
+                            "type": "$ref"
                         },
                         {
                             "name": "lineNumber",
@@ -165,7 +167,8 @@
                         {
                             "name": "callFrameId",
                             "description": "Call frame identifier. This identifier is only valid while the virtual machine is paused.",
-                            "$ref": "CallFrameId"
+                            "$ref": "CallFrameId",
+                            "type": "$ref"
                         },
                         {
                             "name": "functionName",
@@ -176,12 +179,14 @@
                             "name": "functionLocation",
                             "description": "Location in the source code.",
                             "optional": true,
-                            "$ref": "Location"
+                            "$ref": "Location",
+                            "type": "$ref"
                         },
                         {
                             "name": "location",
                             "description": "Location in the source code.",
-                            "$ref": "Location"
+                            "$ref": "Location",
+                            "type": "$ref"
                         },
                         {
                             "name": "url",
@@ -193,19 +198,22 @@
                             "description": "Scope chain for this call frame.",
                             "type": "array",
                             "items": {
-                                "$ref": "Scope"
+                                "$ref": "Scope",
+                                "type": "$ref"
                             }
                         },
                         {
                             "name": "this",
                             "description": "`this` object for this call frame.",
-                            "$ref": "Runtime.RemoteObject"
+                            "$ref": "Runtime.RemoteObject",
+                            "type": "$ref"
                         },
                         {
                             "name": "returnValue",
                             "description": "The value being returned, if the function is at return point.",
                             "optional": true,
-                            "$ref": "Runtime.RemoteObject"
+                            "$ref": "Runtime.RemoteObject",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -233,7 +241,8 @@
                         {
                             "name": "object",
                             "description": "Object representing the scope. For `global` and `with` scopes it represents the actual\nobject; for the rest of the scopes, it is artificial transient object enumerating scope\nvariables as its properties.",
-                            "$ref": "Runtime.RemoteObject"
+                            "$ref": "Runtime.RemoteObject",
+                            "type": "$ref"
                         },
                         {
                             "name": "name",
@@ -244,13 +253,15 @@
                             "name": "startLocation",
                             "description": "Location in the source code where scope starts",
                             "optional": true,
-                            "$ref": "Location"
+                            "$ref": "Location",
+                            "type": "$ref"
                         },
                         {
                             "name": "endLocation",
                             "description": "Location in the source code where scope ends",
                             "optional": true,
-                            "$ref": "Location"
+                            "$ref": "Location",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -278,7 +289,8 @@
                         {
                             "name": "scriptId",
                             "description": "Script identifier as reported in the `Debugger.scriptParsed`.",
-                            "$ref": "Runtime.ScriptId"
+                            "$ref": "Runtime.ScriptId",
+                            "type": "$ref"
                         },
                         {
                             "name": "lineNumber",
@@ -312,7 +324,8 @@
                         {
                             "name": "location",
                             "description": "Location to continue to.",
-                            "$ref": "Location"
+                            "$ref": "Location",
+                            "type": "$ref"
                         },
                         {
                             "name": "targetCallFrames",
@@ -337,7 +350,8 @@
                             "name": "debuggerId",
                             "description": "Unique identifier of the debugger.",
                             "experimental": true,
-                            "$ref": "Runtime.UniqueDebuggerId"
+                            "$ref": "Runtime.UniqueDebuggerId",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -348,7 +362,8 @@
                         {
                             "name": "callFrameId",
                             "description": "Call frame identifier to evaluate on.",
-                            "$ref": "CallFrameId"
+                            "$ref": "CallFrameId",
+                            "type": "$ref"
                         },
                         {
                             "name": "expression",
@@ -397,20 +412,23 @@
                             "description": "Terminate execution after timing out (number of milliseconds).",
                             "experimental": true,
                             "optional": true,
-                            "$ref": "Runtime.TimeDelta"
+                            "$ref": "Runtime.TimeDelta",
+                            "type": "$ref"
                         }
                     ],
                     "returns": [
                         {
                             "name": "result",
                             "description": "Object wrapper for the evaluation result.",
-                            "$ref": "Runtime.RemoteObject"
+                            "$ref": "Runtime.RemoteObject",
+                            "type": "$ref"
                         },
                         {
                             "name": "exceptionDetails",
                             "description": "Exception details.",
                             "optional": true,
-                            "$ref": "Runtime.ExceptionDetails"
+                            "$ref": "Runtime.ExceptionDetails",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -421,13 +439,15 @@
                         {
                             "name": "start",
                             "description": "Start of range to search possible breakpoint locations in.",
-                            "$ref": "Location"
+                            "$ref": "Location",
+                            "type": "$ref"
                         },
                         {
                             "name": "end",
                             "description": "End of range to search possible breakpoint locations in (excluding). When not specified, end\nof scripts is used as end of range.",
                             "optional": true,
-                            "$ref": "Location"
+                            "$ref": "Location",
+                            "type": "$ref"
                         },
                         {
                             "name": "restrictToFunction",
@@ -442,7 +462,8 @@
                             "description": "List of the possible breakpoint locations.",
                             "type": "array",
                             "items": {
-                                "$ref": "BreakLocation"
+                                "$ref": "BreakLocation",
+                                "type": "$ref"
                             }
                         }
                     ]
@@ -454,7 +475,8 @@
                         {
                             "name": "scriptId",
                             "description": "Id of the script to get source for.",
-                            "$ref": "Runtime.ScriptId"
+                            "$ref": "Runtime.ScriptId",
+                            "type": "$ref"
                         }
                     ],
                     "returns": [
@@ -472,13 +494,15 @@
                     "parameters": [
                         {
                             "name": "stackTraceId",
-                            "$ref": "Runtime.StackTraceId"
+                            "$ref": "Runtime.StackTraceId",
+                            "type": "$ref"
                         }
                     ],
                     "returns": [
                         {
                             "name": "stackTrace",
-                            "$ref": "Runtime.StackTrace"
+                            "$ref": "Runtime.StackTrace",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -493,7 +517,8 @@
                         {
                             "name": "parentStackTraceId",
                             "description": "Debugger will pause when async call with given stack trace is started.",
-                            "$ref": "Runtime.StackTraceId"
+                            "$ref": "Runtime.StackTraceId",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -503,7 +528,8 @@
                     "parameters": [
                         {
                             "name": "breakpointId",
-                            "$ref": "BreakpointId"
+                            "$ref": "BreakpointId",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -514,7 +540,8 @@
                         {
                             "name": "callFrameId",
                             "description": "Call frame identifier to evaluate on.",
-                            "$ref": "CallFrameId"
+                            "$ref": "CallFrameId",
+                            "type": "$ref"
                         }
                     ],
                     "returns": [
@@ -523,21 +550,24 @@
                             "description": "New stack trace.",
                             "type": "array",
                             "items": {
-                                "$ref": "CallFrame"
+                                "$ref": "CallFrame",
+                                "type": "$ref"
                             }
                         },
                         {
                             "name": "asyncStackTrace",
                             "description": "Async stack trace, if any.",
                             "optional": true,
-                            "$ref": "Runtime.StackTrace"
+                            "$ref": "Runtime.StackTrace",
+                            "type": "$ref"
                         },
                         {
                             "name": "asyncStackTraceId",
                             "description": "Async stack trace, if any.",
                             "experimental": true,
                             "optional": true,
-                            "$ref": "Runtime.StackTraceId"
+                            "$ref": "Runtime.StackTraceId",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -557,7 +587,8 @@
                         {
                             "name": "scriptId",
                             "description": "Id of the script to search in.",
-                            "$ref": "Runtime.ScriptId"
+                            "$ref": "Runtime.ScriptId",
+                            "type": "$ref"
                         },
                         {
                             "name": "query",
@@ -583,7 +614,8 @@
                             "description": "List of search matches.",
                             "type": "array",
                             "items": {
-                                "$ref": "SearchMatch"
+                                "$ref": "SearchMatch",
+                                "type": "$ref"
                             }
                         }
                     ]
@@ -622,13 +654,15 @@
                         {
                             "name": "scriptId",
                             "description": "Id of the script.",
-                            "$ref": "Runtime.ScriptId"
+                            "$ref": "Runtime.ScriptId",
+                            "type": "$ref"
                         },
                         {
                             "name": "positions",
                             "type": "array",
                             "items": {
-                                "$ref": "ScriptPosition"
+                                "$ref": "ScriptPosition",
+                                "type": "$ref"
                             }
                         }
                     ]
@@ -640,7 +674,8 @@
                         {
                             "name": "location",
                             "description": "Location to set breakpoint in.",
-                            "$ref": "Location"
+                            "$ref": "Location",
+                            "type": "$ref"
                         },
                         {
                             "name": "condition",
@@ -653,12 +688,14 @@
                         {
                             "name": "breakpointId",
                             "description": "Id of the created breakpoint for further reference.",
-                            "$ref": "BreakpointId"
+                            "$ref": "BreakpointId",
+                            "type": "$ref"
                         },
                         {
                             "name": "actualLocation",
                             "description": "Location this breakpoint resolved into.",
-                            "$ref": "Location"
+                            "$ref": "Location",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -706,14 +743,16 @@
                         {
                             "name": "breakpointId",
                             "description": "Id of the created breakpoint for further reference.",
-                            "$ref": "BreakpointId"
+                            "$ref": "BreakpointId",
+                            "type": "$ref"
                         },
                         {
                             "name": "locations",
                             "description": "List of the locations this breakpoint resolved into upon addition.",
                             "type": "array",
                             "items": {
-                                "$ref": "Location"
+                                "$ref": "Location",
+                                "type": "$ref"
                             }
                         }
                     ]
@@ -726,7 +765,8 @@
                         {
                             "name": "objectId",
                             "description": "Function object id.",
-                            "$ref": "Runtime.RemoteObjectId"
+                            "$ref": "Runtime.RemoteObjectId",
+                            "type": "$ref"
                         },
                         {
                             "name": "condition",
@@ -739,7 +779,8 @@
                         {
                             "name": "breakpointId",
                             "description": "Id of the created breakpoint for further reference.",
-                            "$ref": "BreakpointId"
+                            "$ref": "BreakpointId",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -778,7 +819,8 @@
                         {
                             "name": "newValue",
                             "description": "New return value.",
-                            "$ref": "Runtime.CallArgument"
+                            "$ref": "Runtime.CallArgument",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -789,7 +831,8 @@
                         {
                             "name": "scriptId",
                             "description": "Id of the script to edit.",
-                            "$ref": "Runtime.ScriptId"
+                            "$ref": "Runtime.ScriptId",
+                            "type": "$ref"
                         },
                         {
                             "name": "scriptSource",
@@ -810,7 +853,8 @@
                             "optional": true,
                             "type": "array",
                             "items": {
-                                "$ref": "CallFrame"
+                                "$ref": "CallFrame",
+                                "type": "$ref"
                             }
                         },
                         {
@@ -823,20 +867,23 @@
                             "name": "asyncStackTrace",
                             "description": "Async stack trace, if any.",
                             "optional": true,
-                            "$ref": "Runtime.StackTrace"
+                            "$ref": "Runtime.StackTrace",
+                            "type": "$ref"
                         },
                         {
                             "name": "asyncStackTraceId",
                             "description": "Async stack trace, if any.",
                             "experimental": true,
                             "optional": true,
-                            "$ref": "Runtime.StackTraceId"
+                            "$ref": "Runtime.StackTraceId",
+                            "type": "$ref"
                         },
                         {
                             "name": "exceptionDetails",
                             "description": "Exception details if any.",
                             "optional": true,
-                            "$ref": "Runtime.ExceptionDetails"
+                            "$ref": "Runtime.ExceptionDetails",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -868,12 +915,14 @@
                         {
                             "name": "newValue",
                             "description": "New variable value.",
-                            "$ref": "Runtime.CallArgument"
+                            "$ref": "Runtime.CallArgument",
+                            "type": "$ref"
                         },
                         {
                             "name": "callFrameId",
                             "description": "Id of callframe that holds variable.",
-                            "$ref": "CallFrameId"
+                            "$ref": "CallFrameId",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -907,12 +956,14 @@
                         {
                             "name": "breakpointId",
                             "description": "Breakpoint unique identifier.",
-                            "$ref": "BreakpointId"
+                            "$ref": "BreakpointId",
+                            "type": "$ref"
                         },
                         {
                             "name": "location",
                             "description": "Actual breakpoint location.",
-                            "$ref": "Location"
+                            "$ref": "Location",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -925,7 +976,8 @@
                             "description": "Call stack the virtual machine stopped on.",
                             "type": "array",
                             "items": {
-                                "$ref": "CallFrame"
+                                "$ref": "CallFrame",
+                                "type": "$ref"
                             }
                         },
                         {
@@ -964,21 +1016,24 @@
                             "name": "asyncStackTrace",
                             "description": "Async stack trace, if any.",
                             "optional": true,
-                            "$ref": "Runtime.StackTrace"
+                            "$ref": "Runtime.StackTrace",
+                            "type": "$ref"
                         },
                         {
                             "name": "asyncStackTraceId",
                             "description": "Async stack trace, if any.",
                             "experimental": true,
                             "optional": true,
-                            "$ref": "Runtime.StackTraceId"
+                            "$ref": "Runtime.StackTraceId",
+                            "type": "$ref"
                         },
                         {
                             "name": "asyncCallStackTraceId",
                             "description": "Just scheduled async call will have this stack trace as parent stack during async execution.\nThis field is available only after `Debugger.stepInto` call with `breakOnAsynCall` flag.",
                             "experimental": true,
                             "optional": true,
-                            "$ref": "Runtime.StackTraceId"
+                            "$ref": "Runtime.StackTraceId",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -993,7 +1048,8 @@
                         {
                             "name": "scriptId",
                             "description": "Identifier of the script parsed.",
-                            "$ref": "Runtime.ScriptId"
+                            "$ref": "Runtime.ScriptId",
+                            "type": "$ref"
                         },
                         {
                             "name": "url",
@@ -1023,7 +1079,8 @@
                         {
                             "name": "executionContextId",
                             "description": "Specifies script creation context.",
-                            "$ref": "Runtime.ExecutionContextId"
+                            "$ref": "Runtime.ExecutionContextId",
+                            "type": "$ref"
                         },
                         {
                             "name": "hash",
@@ -1065,7 +1122,8 @@
                             "description": "JavaScript top stack frame of where the script parsed event was triggered if available.",
                             "experimental": true,
                             "optional": true,
-                            "$ref": "Runtime.StackTrace"
+                            "$ref": "Runtime.StackTrace",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -1076,7 +1134,8 @@
                         {
                             "name": "scriptId",
                             "description": "Identifier of the script parsed.",
-                            "$ref": "Runtime.ScriptId"
+                            "$ref": "Runtime.ScriptId",
+                            "type": "$ref"
                         },
                         {
                             "name": "url",
@@ -1106,7 +1165,8 @@
                         {
                             "name": "executionContextId",
                             "description": "Specifies script creation context.",
-                            "$ref": "Runtime.ExecutionContextId"
+                            "$ref": "Runtime.ExecutionContextId",
+                            "type": "$ref"
                         },
                         {
                             "name": "hash",
@@ -1155,7 +1215,8 @@
                             "description": "JavaScript top stack frame of where the script parsed event was triggered if available.",
                             "experimental": true,
                             "optional": true,
-                            "$ref": "Runtime.StackTrace"
+                            "$ref": "Runtime.StackTrace",
+                            "type": "$ref"
                         }
                     ]
                 }
@@ -1181,7 +1242,8 @@
                         {
                             "name": "callFrame",
                             "description": "Function location.",
-                            "$ref": "Runtime.CallFrame"
+                            "$ref": "Runtime.CallFrame",
+                            "type": "$ref"
                         },
                         {
                             "name": "selfSize",
@@ -1193,7 +1255,8 @@
                             "description": "Child nodes.",
                             "type": "array",
                             "items": {
-                                "$ref": "SamplingHeapProfileNode"
+                                "$ref": "SamplingHeapProfileNode",
+                                "type": "$ref"
                             }
                         }
                     ]
@@ -1205,7 +1268,8 @@
                     "properties": [
                         {
                             "name": "head",
-                            "$ref": "SamplingHeapProfileNode"
+                            "$ref": "SamplingHeapProfileNode",
+                            "type": "$ref"
                         }
                     ]
                 }
@@ -1218,7 +1282,8 @@
                         {
                             "name": "heapObjectId",
                             "description": "Heap snapshot object id to be accessible by means of $x command line API.",
-                            "$ref": "HeapSnapshotObjectId"
+                            "$ref": "HeapSnapshotObjectId",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -1237,14 +1302,16 @@
                         {
                             "name": "objectId",
                             "description": "Identifier of the object to get heap object id for.",
-                            "$ref": "Runtime.RemoteObjectId"
+                            "$ref": "Runtime.RemoteObjectId",
+                            "type": "$ref"
                         }
                     ],
                     "returns": [
                         {
                             "name": "heapSnapshotObjectId",
                             "description": "Id of the heap snapshot object corresponding to the passed remote object id.",
-                            "$ref": "HeapSnapshotObjectId"
+                            "$ref": "HeapSnapshotObjectId",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -1253,7 +1320,8 @@
                     "parameters": [
                         {
                             "name": "objectId",
-                            "$ref": "HeapSnapshotObjectId"
+                            "$ref": "HeapSnapshotObjectId",
+                            "type": "$ref"
                         },
                         {
                             "name": "objectGroup",
@@ -1266,7 +1334,8 @@
                         {
                             "name": "result",
                             "description": "Evaluation result.",
-                            "$ref": "Runtime.RemoteObject"
+                            "$ref": "Runtime.RemoteObject",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -1276,7 +1345,8 @@
                         {
                             "name": "profile",
                             "description": "Return the sampling profile being collected.",
-                            "$ref": "SamplingHeapProfile"
+                            "$ref": "SamplingHeapProfile",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -1307,7 +1377,8 @@
                         {
                             "name": "profile",
                             "description": "Recorded sampling heap profile.",
-                            "$ref": "SamplingHeapProfile"
+                            "$ref": "SamplingHeapProfile",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -1415,7 +1486,8 @@
                         {
                             "name": "callFrame",
                             "description": "Function location.",
-                            "$ref": "Runtime.CallFrame"
+                            "$ref": "Runtime.CallFrame",
+                            "type": "$ref"
                         },
                         {
                             "name": "hitCount",
@@ -1444,7 +1516,8 @@
                             "optional": true,
                             "type": "array",
                             "items": {
-                                "$ref": "PositionTickInfo"
+                                "$ref": "PositionTickInfo",
+                                "type": "$ref"
                             }
                         }
                     ]
@@ -1459,7 +1532,8 @@
                             "description": "The list of profile nodes. First item is the root node.",
                             "type": "array",
                             "items": {
-                                "$ref": "ProfileNode"
+                                "$ref": "ProfileNode",
+                                "type": "$ref"
                             }
                         },
                         {
@@ -1546,7 +1620,8 @@
                             "description": "Source ranges inside the function with coverage data.",
                             "type": "array",
                             "items": {
-                                "$ref": "CoverageRange"
+                                "$ref": "CoverageRange",
+                                "type": "$ref"
                             }
                         },
                         {
@@ -1564,7 +1639,8 @@
                         {
                             "name": "scriptId",
                             "description": "JavaScript script id.",
-                            "$ref": "Runtime.ScriptId"
+                            "$ref": "Runtime.ScriptId",
+                            "type": "$ref"
                         },
                         {
                             "name": "url",
@@ -1576,7 +1652,8 @@
                             "description": "Functions contained in the script that has coverage data.",
                             "type": "array",
                             "items": {
-                                "$ref": "FunctionCoverage"
+                                "$ref": "FunctionCoverage",
+                                "type": "$ref"
                             }
                         }
                     ]
@@ -1610,7 +1687,8 @@
                             "description": "The types for this parameter or return value.",
                             "type": "array",
                             "items": {
-                                "$ref": "TypeObject"
+                                "$ref": "TypeObject",
+                                "type": "$ref"
                             }
                         }
                     ]
@@ -1624,7 +1702,8 @@
                         {
                             "name": "scriptId",
                             "description": "JavaScript script id.",
-                            "$ref": "Runtime.ScriptId"
+                            "$ref": "Runtime.ScriptId",
+                            "type": "$ref"
                         },
                         {
                             "name": "url",
@@ -1636,7 +1715,8 @@
                             "description": "Type profile entries for parameters and return values of the functions in the script.",
                             "type": "array",
                             "items": {
-                                "$ref": "TypeProfileEntry"
+                                "$ref": "TypeProfileEntry",
+                                "type": "$ref"
                             }
                         }
                     ]
@@ -1658,7 +1738,8 @@
                             "description": "Coverage data for the current isolate.",
                             "type": "array",
                             "items": {
-                                "$ref": "ScriptCoverage"
+                                "$ref": "ScriptCoverage",
+                                "type": "$ref"
                             }
                         }
                     ]
@@ -1706,7 +1787,8 @@
                         {
                             "name": "profile",
                             "description": "Recorded profile.",
-                            "$ref": "Profile"
+                            "$ref": "Profile",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -1728,7 +1810,8 @@
                             "description": "Coverage data for the current isolate.",
                             "type": "array",
                             "items": {
-                                "$ref": "ScriptCoverage"
+                                "$ref": "ScriptCoverage",
+                                "type": "$ref"
                             }
                         }
                     ]
@@ -1743,7 +1826,8 @@
                             "description": "Type profile for all scripts since startTypeProfile() was turned on.",
                             "type": "array",
                             "items": {
-                                "$ref": "ScriptTypeProfile"
+                                "$ref": "ScriptTypeProfile",
+                                "type": "$ref"
                             }
                         }
                     ]
@@ -1760,11 +1844,13 @@
                         {
                             "name": "location",
                             "description": "Location of console.profileEnd().",
-                            "$ref": "Debugger.Location"
+                            "$ref": "Debugger.Location",
+                            "type": "$ref"
                         },
                         {
                             "name": "profile",
-                            "$ref": "Profile"
+                            "$ref": "Profile",
+                            "type": "$ref"
                         },
                         {
                             "name": "title",
@@ -1785,7 +1871,8 @@
                         {
                             "name": "location",
                             "description": "Location of console.profile().",
-                            "$ref": "Debugger.Location"
+                            "$ref": "Debugger.Location",
+                            "type": "$ref"
                         },
                         {
                             "name": "title",
@@ -1875,7 +1962,8 @@
                             "name": "unserializableValue",
                             "description": "Primitive value which can not be JSON-stringified does not have `value`, but gets this\nproperty.",
                             "optional": true,
-                            "$ref": "UnserializableValue"
+                            "$ref": "UnserializableValue",
+                            "type": "$ref"
                         },
                         {
                             "name": "description",
@@ -1887,20 +1975,23 @@
                             "name": "objectId",
                             "description": "Unique object identifier (for non-primitive values).",
                             "optional": true,
-                            "$ref": "RemoteObjectId"
+                            "$ref": "RemoteObjectId",
+                            "type": "$ref"
                         },
                         {
                             "name": "preview",
                             "description": "Preview containing abbreviated property values. Specified for `object` type values only.",
                             "experimental": true,
                             "optional": true,
-                            "$ref": "ObjectPreview"
+                            "$ref": "ObjectPreview",
+                            "type": "$ref"
                         },
                         {
                             "name": "customPreview",
                             "experimental": true,
                             "optional": true,
-                            "$ref": "CustomPreview"
+                            "$ref": "CustomPreview",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -1919,16 +2010,19 @@
                         },
                         {
                             "name": "formatterObjectId",
-                            "$ref": "RemoteObjectId"
+                            "$ref": "RemoteObjectId",
+                            "type": "$ref"
                         },
                         {
                             "name": "bindRemoteObjectFunctionId",
-                            "$ref": "RemoteObjectId"
+                            "$ref": "RemoteObjectId",
+                            "type": "$ref"
                         },
                         {
                             "name": "configObjectId",
                             "optional": true,
-                            "$ref": "RemoteObjectId"
+                            "$ref": "RemoteObjectId",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -1989,7 +2083,8 @@
                             "description": "List of the properties.",
                             "type": "array",
                             "items": {
-                                "$ref": "PropertyPreview"
+                                "$ref": "PropertyPreview",
+                                "type": "$ref"
                             }
                         },
                         {
@@ -1998,7 +2093,8 @@
                             "optional": true,
                             "type": "array",
                             "items": {
-                                "$ref": "EntryPreview"
+                                "$ref": "EntryPreview",
+                                "type": "$ref"
                             }
                         }
                     ]
@@ -2039,7 +2135,8 @@
                             "name": "valuePreview",
                             "description": "Nested value preview.",
                             "optional": true,
-                            "$ref": "ObjectPreview"
+                            "$ref": "ObjectPreview",
+                            "type": "$ref"
                         },
                         {
                             "name": "subtype",
@@ -2072,12 +2169,14 @@
                             "name": "key",
                             "description": "Preview of the key. Specified for map-like collection entries.",
                             "optional": true,
-                            "$ref": "ObjectPreview"
+                            "$ref": "ObjectPreview",
+                            "type": "$ref"
                         },
                         {
                             "name": "value",
                             "description": "Preview of the value.",
-                            "$ref": "ObjectPreview"
+                            "$ref": "ObjectPreview",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -2095,7 +2194,8 @@
                             "name": "value",
                             "description": "The value associated with the property.",
                             "optional": true,
-                            "$ref": "RemoteObject"
+                            "$ref": "RemoteObject",
+                            "type": "$ref"
                         },
                         {
                             "name": "writable",
@@ -2107,13 +2207,15 @@
                             "name": "get",
                             "description": "A function which serves as a getter for the property, or `undefined` if there is no getter\n(accessor descriptors only).",
                             "optional": true,
-                            "$ref": "RemoteObject"
+                            "$ref": "RemoteObject",
+                            "type": "$ref"
                         },
                         {
                             "name": "set",
                             "description": "A function which serves as a setter for the property, or `undefined` if there is no setter\n(accessor descriptors only).",
                             "optional": true,
-                            "$ref": "RemoteObject"
+                            "$ref": "RemoteObject",
+                            "type": "$ref"
                         },
                         {
                             "name": "configurable",
@@ -2141,7 +2243,8 @@
                             "name": "symbol",
                             "description": "Property symbol object, if the property is of the `symbol` type.",
                             "optional": true,
-                            "$ref": "RemoteObject"
+                            "$ref": "RemoteObject",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -2159,7 +2262,8 @@
                             "name": "value",
                             "description": "The value associated with the property.",
                             "optional": true,
-                            "$ref": "RemoteObject"
+                            "$ref": "RemoteObject",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -2178,13 +2282,15 @@
                             "name": "unserializableValue",
                             "description": "Primitive value which can not be JSON-stringified.",
                             "optional": true,
-                            "$ref": "UnserializableValue"
+                            "$ref": "UnserializableValue",
+                            "type": "$ref"
                         },
                         {
                             "name": "objectId",
                             "description": "Remote object handle.",
                             "optional": true,
-                            "$ref": "RemoteObjectId"
+                            "$ref": "RemoteObjectId",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -2201,7 +2307,8 @@
                         {
                             "name": "id",
                             "description": "Unique id of the execution context. It can be used to specify in which execution context\nscript evaluation should be performed.",
-                            "$ref": "ExecutionContextId"
+                            "$ref": "ExecutionContextId",
+                            "type": "$ref"
                         },
                         {
                             "name": "origin",
@@ -2250,7 +2357,8 @@
                             "name": "scriptId",
                             "description": "Script ID of the exception location.",
                             "optional": true,
-                            "$ref": "ScriptId"
+                            "$ref": "ScriptId",
+                            "type": "$ref"
                         },
                         {
                             "name": "url",
@@ -2262,19 +2370,22 @@
                             "name": "stackTrace",
                             "description": "JavaScript stack trace if available.",
                             "optional": true,
-                            "$ref": "StackTrace"
+                            "$ref": "StackTrace",
+                            "type": "$ref"
                         },
                         {
                             "name": "exception",
                             "description": "Exception object if available.",
                             "optional": true,
-                            "$ref": "RemoteObject"
+                            "$ref": "RemoteObject",
+                            "type": "$ref"
                         },
                         {
                             "name": "executionContextId",
                             "description": "Identifier of the context where exception happened.",
                             "optional": true,
-                            "$ref": "ExecutionContextId"
+                            "$ref": "ExecutionContextId",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -2301,7 +2412,8 @@
                         {
                             "name": "scriptId",
                             "description": "JavaScript script id.",
-                            "$ref": "ScriptId"
+                            "$ref": "ScriptId",
+                            "type": "$ref"
                         },
                         {
                             "name": "url",
@@ -2336,21 +2448,24 @@
                             "description": "JavaScript function name.",
                             "type": "array",
                             "items": {
-                                "$ref": "CallFrame"
+                                "$ref": "CallFrame",
+                                "type": "$ref"
                             }
                         },
                         {
                             "name": "parent",
                             "description": "Asynchronous JavaScript stack trace that preceded this stack, if available.",
                             "optional": true,
-                            "$ref": "StackTrace"
+                            "$ref": "StackTrace",
+                            "type": "$ref"
                         },
                         {
                             "name": "parentId",
                             "description": "Asynchronous JavaScript stack trace that preceded this stack, if available.",
                             "experimental": true,
                             "optional": true,
-                            "$ref": "StackTraceId"
+                            "$ref": "StackTraceId",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -2373,7 +2488,8 @@
                         {
                             "name": "debuggerId",
                             "optional": true,
-                            "$ref": "UniqueDebuggerId"
+                            "$ref": "UniqueDebuggerId",
+                            "type": "$ref"
                         }
                     ]
                 }
@@ -2386,7 +2502,8 @@
                         {
                             "name": "promiseObjectId",
                             "description": "Identifier of the promise.",
-                            "$ref": "RemoteObjectId"
+                            "$ref": "RemoteObjectId",
+                            "type": "$ref"
                         },
                         {
                             "name": "returnByValue",
@@ -2405,13 +2522,15 @@
                         {
                             "name": "result",
                             "description": "Promise result. Will contain rejected value if promise was rejected.",
-                            "$ref": "RemoteObject"
+                            "$ref": "RemoteObject",
+                            "type": "$ref"
                         },
                         {
                             "name": "exceptionDetails",
                             "description": "Exception details if stack strace is available.",
                             "optional": true,
-                            "$ref": "ExceptionDetails"
+                            "$ref": "ExceptionDetails",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -2428,7 +2547,8 @@
                             "name": "objectId",
                             "description": "Identifier of the object to call function on. Either objectId or executionContextId should\nbe specified.",
                             "optional": true,
-                            "$ref": "RemoteObjectId"
+                            "$ref": "RemoteObjectId",
+                            "type": "$ref"
                         },
                         {
                             "name": "arguments",
@@ -2436,7 +2556,8 @@
                             "optional": true,
                             "type": "array",
                             "items": {
-                                "$ref": "CallArgument"
+                                "$ref": "CallArgument",
+                                "type": "$ref"
                             }
                         },
                         {
@@ -2474,7 +2595,8 @@
                             "name": "executionContextId",
                             "description": "Specifies execution context which global object will be used to call function on. Either\nexecutionContextId or objectId should be specified.",
                             "optional": true,
-                            "$ref": "ExecutionContextId"
+                            "$ref": "ExecutionContextId",
+                            "type": "$ref"
                         },
                         {
                             "name": "objectGroup",
@@ -2487,13 +2609,15 @@
                         {
                             "name": "result",
                             "description": "Call result.",
-                            "$ref": "RemoteObject"
+                            "$ref": "RemoteObject",
+                            "type": "$ref"
                         },
                         {
                             "name": "exceptionDetails",
                             "description": "Exception details.",
                             "optional": true,
-                            "$ref": "ExceptionDetails"
+                            "$ref": "ExceptionDetails",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -2520,7 +2644,8 @@
                             "name": "executionContextId",
                             "description": "Specifies in which execution context to perform script run. If the parameter is omitted the\nevaluation will be performed in the context of the inspected page.",
                             "optional": true,
-                            "$ref": "ExecutionContextId"
+                            "$ref": "ExecutionContextId",
+                            "type": "$ref"
                         }
                     ],
                     "returns": [
@@ -2528,13 +2653,15 @@
                             "name": "scriptId",
                             "description": "Id of the script.",
                             "optional": true,
-                            "$ref": "ScriptId"
+                            "$ref": "ScriptId",
+                            "type": "$ref"
                         },
                         {
                             "name": "exceptionDetails",
                             "description": "Exception details.",
                             "optional": true,
-                            "$ref": "ExceptionDetails"
+                            "$ref": "ExceptionDetails",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -2581,7 +2708,8 @@
                             "name": "contextId",
                             "description": "Specifies in which execution context to perform evaluation. If the parameter is omitted the\nevaluation will be performed in the context of the inspected page.",
                             "optional": true,
-                            "$ref": "ExecutionContextId"
+                            "$ref": "ExecutionContextId",
+                            "type": "$ref"
                         },
                         {
                             "name": "returnByValue",
@@ -2620,20 +2748,23 @@
                             "description": "Terminate execution after timing out (number of milliseconds).",
                             "experimental": true,
                             "optional": true,
-                            "$ref": "TimeDelta"
+                            "$ref": "TimeDelta",
+                            "type": "$ref"
                         }
                     ],
                     "returns": [
                         {
                             "name": "result",
                             "description": "Evaluation result.",
-                            "$ref": "RemoteObject"
+                            "$ref": "RemoteObject",
+                            "type": "$ref"
                         },
                         {
                             "name": "exceptionDetails",
                             "description": "Exception details.",
                             "optional": true,
-                            "$ref": "ExceptionDetails"
+                            "$ref": "ExceptionDetails",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -2673,7 +2804,8 @@
                         {
                             "name": "objectId",
                             "description": "Identifier of the object to return properties for.",
-                            "$ref": "RemoteObjectId"
+                            "$ref": "RemoteObjectId",
+                            "type": "$ref"
                         },
                         {
                             "name": "ownProperties",
@@ -2702,7 +2834,8 @@
                             "description": "Object properties.",
                             "type": "array",
                             "items": {
-                                "$ref": "PropertyDescriptor"
+                                "$ref": "PropertyDescriptor",
+                                "type": "$ref"
                             }
                         },
                         {
@@ -2711,14 +2844,16 @@
                             "optional": true,
                             "type": "array",
                             "items": {
-                                "$ref": "InternalPropertyDescriptor"
+                                "$ref": "InternalPropertyDescriptor",
+                                "type": "$ref"
                             }
                         },
                         {
                             "name": "exceptionDetails",
                             "description": "Exception details.",
                             "optional": true,
-                            "$ref": "ExceptionDetails"
+                            "$ref": "ExceptionDetails",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -2730,7 +2865,8 @@
                             "name": "executionContextId",
                             "description": "Specifies in which execution context to lookup global scope variables.",
                             "optional": true,
-                            "$ref": "ExecutionContextId"
+                            "$ref": "ExecutionContextId",
+                            "type": "$ref"
                         }
                     ],
                     "returns": [
@@ -2749,7 +2885,8 @@
                         {
                             "name": "prototypeObjectId",
                             "description": "Identifier of the prototype to return objects for.",
-                            "$ref": "RemoteObjectId"
+                            "$ref": "RemoteObjectId",
+                            "type": "$ref"
                         },
                         {
                             "name": "objectGroup",
@@ -2762,7 +2899,8 @@
                         {
                             "name": "objects",
                             "description": "Array with objects.",
-                            "$ref": "RemoteObject"
+                            "$ref": "RemoteObject",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -2773,7 +2911,8 @@
                         {
                             "name": "objectId",
                             "description": "Identifier of the object to release.",
-                            "$ref": "RemoteObjectId"
+                            "$ref": "RemoteObjectId",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -2799,13 +2938,15 @@
                         {
                             "name": "scriptId",
                             "description": "Id of the script to run.",
-                            "$ref": "ScriptId"
+                            "$ref": "ScriptId",
+                            "type": "$ref"
                         },
                         {
                             "name": "executionContextId",
                             "description": "Specifies in which execution context to perform script run. If the parameter is omitted the\nevaluation will be performed in the context of the inspected page.",
                             "optional": true,
-                            "$ref": "ExecutionContextId"
+                            "$ref": "ExecutionContextId",
+                            "type": "$ref"
                         },
                         {
                             "name": "objectGroup",
@@ -2848,13 +2989,15 @@
                         {
                             "name": "result",
                             "description": "Run result.",
-                            "$ref": "RemoteObject"
+                            "$ref": "RemoteObject",
+                            "type": "$ref"
                         },
                         {
                             "name": "exceptionDetails",
                             "description": "Exception details.",
                             "optional": true,
-                            "$ref": "ExceptionDetails"
+                            "$ref": "ExceptionDetails",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -2907,7 +3050,8 @@
                         {
                             "name": "executionContextId",
                             "optional": true,
-                            "$ref": "ExecutionContextId"
+                            "$ref": "ExecutionContextId",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -2940,7 +3084,8 @@
                         {
                             "name": "executionContextId",
                             "description": "Identifier of the context where the call was made.",
-                            "$ref": "ExecutionContextId"
+                            "$ref": "ExecutionContextId",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -2978,24 +3123,28 @@
                             "description": "Call arguments.",
                             "type": "array",
                             "items": {
-                                "$ref": "RemoteObject"
+                                "$ref": "RemoteObject",
+                                "type": "$ref"
                             }
                         },
                         {
                             "name": "executionContextId",
                             "description": "Identifier of the context where the call was made.",
-                            "$ref": "ExecutionContextId"
+                            "$ref": "ExecutionContextId",
+                            "type": "$ref"
                         },
                         {
                             "name": "timestamp",
                             "description": "Call timestamp.",
-                            "$ref": "Timestamp"
+                            "$ref": "Timestamp",
+                            "type": "$ref"
                         },
                         {
                             "name": "stackTrace",
                             "description": "Stack trace captured when the call was made.",
                             "optional": true,
-                            "$ref": "StackTrace"
+                            "$ref": "StackTrace",
+                            "type": "$ref"
                         },
                         {
                             "name": "context",
@@ -3029,11 +3178,13 @@
                         {
                             "name": "timestamp",
                             "description": "Timestamp of the exception.",
-                            "$ref": "Timestamp"
+                            "$ref": "Timestamp",
+                            "type": "$ref"
                         },
                         {
                             "name": "exceptionDetails",
-                            "$ref": "ExceptionDetails"
+                            "$ref": "ExceptionDetails",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -3044,7 +3195,8 @@
                         {
                             "name": "context",
                             "description": "A newly created execution context.",
-                            "$ref": "ExecutionContextDescription"
+                            "$ref": "ExecutionContextDescription",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -3055,7 +3207,8 @@
                         {
                             "name": "executionContextId",
                             "description": "Id of the destroyed context",
-                            "$ref": "ExecutionContextId"
+                            "$ref": "ExecutionContextId",
+                            "type": "$ref"
                         }
                     ]
                 },
@@ -3069,7 +3222,8 @@
                     "parameters": [
                         {
                             "name": "object",
-                            "$ref": "RemoteObject"
+                            "$ref": "RemoteObject",
+                            "type": "$ref"
                         },
                         {
                             "name": "hints",
@@ -3112,7 +3266,8 @@
                             "description": "List of supported domains.",
                             "type": "array",
                             "items": {
-                                "$ref": "Domain"
+                                "$ref": "Domain",
+                                "type": "$ref"
                             }
                         }
                     ]
