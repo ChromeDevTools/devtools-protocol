@@ -1,5 +1,489 @@
 
 
+## Roll protocol to r587766
+###### _2018-08-30 14:16:04_ | Diff: [41333c5...e191211](https://github.com/ChromeDevTools/devtools-protocol/compare/41333c5...e191211)
+#### `Console`: modified event
+* [`Console.messageAdded`](https://chromedevtools.github.io/devtools-protocol/tot/Console/#event-messageAdded) - The parameters's `type` _added_. 
+#### `Debugger`: modified commands
+* [`Debugger.continueToLocation`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-continueToLocation) - The parameters's `type` _added_. 
+* [`Debugger.enable`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-enable) - The return value's `type` _added_. 
+* [`Debugger.evaluateOnCallFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-evaluateOnCallFrame) - The parameters's `type` _added_ (2 times). The return value's `type` _added_ (2 times). 
+* [`Debugger.getPossibleBreakpoints`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-getPossibleBreakpoints) - The parameters's `type` _added_ (2 times). The `0` in the return value had `type` _added_. 
+* [`Debugger.getScriptSource`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-getScriptSource) - The parameters's `type` _added_. 
+* [`Debugger.getStackTrace`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-getStackTrace) - The parameters's `type` _added_. The return value's `type` _added_. 
+* [`Debugger.pauseOnAsyncCall`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-pauseOnAsyncCall) - The parameters's `type` _added_. 
+* [`Debugger.removeBreakpoint`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-removeBreakpoint) - The parameters's `type` _added_. 
+* [`Debugger.restartFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-restartFrame) - The parameters's `type` _added_. The `0` in the return value had `type` _added_. The return value's `type` _added_ (2 times). 
+* [`Debugger.searchInContent`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-searchInContent) - The parameters's `type` _added_. The `0` in the return value had `type` _added_. 
+* [`Debugger.setBlackboxedRanges`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setBlackboxedRanges) - The parameters's `type` _added_. The `1` in the parameters had `type` _added_. 
+* [`Debugger.setBreakpoint`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setBreakpoint) - The parameters's `type` _added_. The return value's `type` _added_ (2 times). 
+* [`Debugger.setBreakpointByUrl`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setBreakpointByUrl) - The return value's `type` _added_. The `1` in the return value had `type` _added_. 
+* [`Debugger.setBreakpointOnFunctionCall`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setBreakpointOnFunctionCall) - The parameters's `type` _added_. The return value's `type` _added_. 
+* [`Debugger.setReturnValue`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setReturnValue) - The parameters's `type` _added_. 
+* [`Debugger.setScriptSource`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setScriptSource) - The parameters's `type` _added_. The `0` in the return value had `type` _added_. The return value's `type` _added_ (3 times). 
+* [`Debugger.setVariableValue`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setVariableValue) - The parameters's `type` _added_ (2 times). 
+#### `Debugger`: modified events
+* [`Debugger.breakpointResolved`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-breakpointResolved) - The parameters's `type` _added_ (2 times). 
+* [`Debugger.paused`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-paused) - The `0` in the parameters had `type` _added_. The parameters's `type` _added_ (3 times). 
+* [`Debugger.scriptFailedToParse`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-scriptFailedToParse) - The parameters's `type` _added_ (3 times). 
+* [`Debugger.scriptParsed`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-scriptParsed) - The parameters's `type` _added_ (3 times). 
+#### `Debugger`: modified types
+* [`Debugger.Location`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#type-Location) - The properties's `type` _added_. 
+* [`Debugger.CallFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#type-CallFrame) - The properties's `type` _added_ (5 times). The `5` in the properties had `type` _added_. 
+* [`Debugger.Scope`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#type-Scope) - The properties's `type` _added_ (3 times). 
+* [`Debugger.BreakLocation`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#type-BreakLocation) - The properties's `type` _added_. 
+#### `HeapProfiler`: modified commands
+* [`HeapProfiler.addInspectedHeapObject`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#method-addInspectedHeapObject) - The parameters's `type` _added_. 
+* [`HeapProfiler.getHeapObjectId`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#method-getHeapObjectId) - The parameters's `type` _added_. The return value's `type` _added_. 
+* [`HeapProfiler.getObjectByHeapObjectId`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#method-getObjectByHeapObjectId) - The parameters's `type` _added_. The return value's `type` _added_. 
+* [`HeapProfiler.getSamplingProfile`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#method-getSamplingProfile) - The return value's `type` _added_. 
+* [`HeapProfiler.stopSampling`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#method-stopSampling) - The return value's `type` _added_. 
+#### `HeapProfiler`: modified types
+* [`HeapProfiler.SamplingHeapProfileNode`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#type-SamplingHeapProfileNode) - The properties's `type` _added_. The `2` in the properties had `type` _added_. 
+* [`HeapProfiler.SamplingHeapProfile`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#type-SamplingHeapProfile) - The properties's `type` _added_. 
+#### `Profiler`: modified commands
+* [`Profiler.getBestEffortCoverage`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-getBestEffortCoverage) - The `0` in the return value had `type` _added_. 
+* [`Profiler.stop`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-stop) - The return value's `type` _added_. 
+* [`Profiler.takePreciseCoverage`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-takePreciseCoverage) - The `0` in the return value had `type` _added_. 
+* [`Profiler.takeTypeProfile`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-takeTypeProfile) - The `0` in the return value had `type` _added_. 
+#### `Profiler`: modified events
+* [`Profiler.consoleProfileFinished`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#event-consoleProfileFinished) - The parameters's `type` _added_ (2 times). 
+* [`Profiler.consoleProfileStarted`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#event-consoleProfileStarted) - The parameters's `type` _added_. 
+#### `Profiler`: modified types
+* [`Profiler.ProfileNode`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-ProfileNode) - The properties's `type` _added_. The `5` in the properties had `type` _added_. 
+* [`Profiler.Profile`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-Profile) - The `0` in the properties had `type` _added_. 
+* [`Profiler.FunctionCoverage`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-FunctionCoverage) - The `1` in the properties had `type` _added_. 
+* [`Profiler.ScriptCoverage`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-ScriptCoverage) - The properties's `type` _added_. The `2` in the properties had `type` _added_. 
+* [`Profiler.TypeProfileEntry`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-TypeProfileEntry) - The `1` in the properties had `type` _added_. 
+* [`Profiler.ScriptTypeProfile`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-ScriptTypeProfile) - The properties's `type` _added_. The `2` in the properties had `type` _added_. 
+#### `Runtime`: modified commands
+* [`Runtime.awaitPromise`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-awaitPromise) - The parameters's `type` _added_. The return value's `type` _added_ (2 times). 
+* [`Runtime.callFunctionOn`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-callFunctionOn) - The parameters's `type` _added_ (2 times). The `2` in the parameters had `type` _added_. The return value's `type` _added_ (2 times). 
+* [`Runtime.compileScript`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-compileScript) - The parameters's `type` _added_. The return value's `type` _added_ (2 times). 
+* [`Runtime.evaluate`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-evaluate) - The parameters's `type` _added_ (2 times). The return value's `type` _added_ (2 times). 
+* [`Runtime.getProperties`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-getProperties) - The parameters's `type` _added_. The `0` in the return value had `type` _added_. The `1` in the return value had `type` _added_. The return value's `type` _added_. 
+* [`Runtime.globalLexicalScopeNames`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-globalLexicalScopeNames) - The parameters's `type` _added_. 
+* [`Runtime.queryObjects`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-queryObjects) - The parameters's `type` _added_. The return value's `type` _added_. 
+* [`Runtime.releaseObject`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-releaseObject) - The parameters's `type` _added_. 
+* [`Runtime.runScript`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-runScript) - The parameters's `type` _added_ (2 times). The return value's `type` _added_ (2 times). 
+* [`Runtime.addBinding`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-addBinding) - The parameters's `type` _added_. 
+#### `Runtime`: modified events
+* [`Runtime.bindingCalled`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#event-bindingCalled) - The parameters's `type` _added_. 
+* [`Runtime.consoleAPICalled`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#event-consoleAPICalled) - The `1` in the parameters had `type` _added_. The parameters's `type` _added_ (3 times). 
+* [`Runtime.exceptionThrown`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#event-exceptionThrown) - The parameters's `type` _added_ (2 times). 
+* [`Runtime.executionContextCreated`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#event-executionContextCreated) - The parameters's `type` _added_. 
+* [`Runtime.executionContextDestroyed`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#event-executionContextDestroyed) - The parameters's `type` _added_. 
+* [`Runtime.inspectRequested`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#event-inspectRequested) - The parameters's `type` _added_. 
+#### `Runtime`: modified types
+* [`Runtime.RemoteObject`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-RemoteObject) - The properties's `type` _added_ (4 times). 
+* [`Runtime.CustomPreview`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-CustomPreview) - The properties's `type` _added_ (3 times). 
+* [`Runtime.ObjectPreview`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-ObjectPreview) - The `4` in the properties had `type` _added_. The `5` in the properties had `type` _added_. 
+* [`Runtime.PropertyPreview`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-PropertyPreview) - The properties's `type` _added_. 
+* [`Runtime.EntryPreview`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-EntryPreview) - The properties's `type` _added_ (2 times). 
+* [`Runtime.PropertyDescriptor`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-PropertyDescriptor) - The properties's `type` _added_ (4 times). 
+* [`Runtime.InternalPropertyDescriptor`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-InternalPropertyDescriptor) - The properties's `type` _added_. 
+* [`Runtime.CallArgument`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-CallArgument) - The properties's `type` _added_ (2 times). 
+* [`Runtime.ExecutionContextDescription`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-ExecutionContextDescription) - The properties's `type` _added_. 
+* [`Runtime.ExceptionDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-ExceptionDetails) - The properties's `type` _added_ (4 times). 
+* [`Runtime.CallFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-CallFrame) - The properties's `type` _added_. 
+* [`Runtime.StackTrace`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-StackTrace) - The `1` in the properties had `type` _added_. The properties's `type` _added_ (2 times). 
+* [`Runtime.StackTraceId`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-StackTraceId) - The properties's `type` _added_. 
+#### `Schema`: modified command
+* [`Schema.getDomains`](https://chromedevtools.github.io/devtools-protocol/tot/Schema/#method-getDomains) - The `0` in the return value had `type` _added_. 
+#### `Accessibility`: modified command
+* [`Accessibility.getPartialAXTree`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#method-getPartialAXTree) - The parameters's `type` _added_ (3 times). The `0` in the return value had `type` _added_. 
+#### `Accessibility`: modified types
+* [`Accessibility.AXValueSource`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXValueSource) - The properties's `type` _added_ (5 times). 
+* [`Accessibility.AXRelatedNode`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXRelatedNode) - The properties's `type` _added_. 
+* [`Accessibility.AXProperty`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXProperty) - The properties's `type` _added_ (2 times). 
+* [`Accessibility.AXValue`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXValue) - The properties's `type` _added_. The `2` in the properties had `type` _added_. The `3` in the properties had `type` _added_. 
+* [`Accessibility.AXNode`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXNode) - The properties's `type` _added_ (6 times). The `2` in the properties had `type` _added_. The `7` in the properties had `type` _added_. The `8` in the properties had `type` _added_. 
+#### `Animation`: modified command
+* [`Animation.resolveAnimation`](https://chromedevtools.github.io/devtools-protocol/tot/Animation/#method-resolveAnimation) - The return value's `type` _added_. 
+#### `Animation`: modified event
+* [`Animation.animationStarted`](https://chromedevtools.github.io/devtools-protocol/tot/Animation/#event-animationStarted) - The parameters's `type` _added_. 
+#### `Animation`: modified types
+* [`Animation.Animation`](https://chromedevtools.github.io/devtools-protocol/tot/Animation/#type-Animation) - The properties's `type` _added_. 
+* [`Animation.AnimationEffect`](https://chromedevtools.github.io/devtools-protocol/tot/Animation/#type-AnimationEffect) - The properties's `type` _added_ (2 times). 
+* [`Animation.KeyframesRule`](https://chromedevtools.github.io/devtools-protocol/tot/Animation/#type-KeyframesRule) - The `1` in the properties had `type` _added_. 
+#### `ApplicationCache`: modified commands
+* [`ApplicationCache.getApplicationCacheForFrame`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#method-getApplicationCacheForFrame) - The parameters's `type` _added_. The return value's `type` _added_. 
+* [`ApplicationCache.getFramesWithManifests`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#method-getFramesWithManifests) - The `0` in the return value had `type` _added_. 
+* [`ApplicationCache.getManifestForFrame`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#method-getManifestForFrame) - The parameters's `type` _added_. 
+#### `ApplicationCache`: modified event
+* [`ApplicationCache.applicationCacheStatusUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#event-applicationCacheStatusUpdated) - The parameters's `type` _added_. 
+#### `ApplicationCache`: modified types
+* [`ApplicationCache.ApplicationCache`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#type-ApplicationCache) - The `4` in the properties had `type` _added_. 
+* [`ApplicationCache.FrameWithManifest`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#type-FrameWithManifest) - The properties's `type` _added_. 
+#### `Audits`: modified command
+* [`Audits.getEncodedResponse`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#method-getEncodedResponse) - The parameters's `type` _added_. 
+#### `Browser`: modified commands
+* [`Browser.grantPermissions`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-grantPermissions) - The `1` in the parameters had `type` _added_. The parameters's `type` _added_. 
+* [`Browser.resetPermissions`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-resetPermissions) - The parameters's `type` _added_. 
+* [`Browser.getHistograms`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-getHistograms) - The `0` in the return value had `type` _added_. 
+* [`Browser.getHistogram`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-getHistogram) - The return value's `type` _added_. 
+* [`Browser.getWindowBounds`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-getWindowBounds) - The parameters's `type` _added_. The return value's `type` _added_. 
+* [`Browser.getWindowForTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-getWindowForTarget) - The parameters's `type` _added_. The return value's `type` _added_ (2 times). 
+* [`Browser.setWindowBounds`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-setWindowBounds) - The parameters's `type` _added_ (2 times). 
+#### `Browser`: modified types
+* [`Browser.Bounds`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-Bounds) - The properties's `type` _added_. 
+* [`Browser.Histogram`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-Histogram) - The `3` in the properties had `type` _added_. 
+#### `CSS`: modified commands
+* [`CSS.addRule`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-addRule) - The parameters's `type` _added_ (2 times). The return value's `type` _added_. 
+* [`CSS.collectClassNames`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-collectClassNames) - The parameters's `type` _added_. 
+* [`CSS.createStyleSheet`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-createStyleSheet) - The parameters's `type` _added_. The return value's `type` _added_. 
+* [`CSS.forcePseudoState`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-forcePseudoState) - The parameters's `type` _added_. 
+* [`CSS.getBackgroundColors`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getBackgroundColors) - The parameters's `type` _added_. 
+* [`CSS.getComputedStyleForNode`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getComputedStyleForNode) - The parameters's `type` _added_. The `0` in the return value had `type` _added_. 
+* [`CSS.getInlineStylesForNode`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getInlineStylesForNode) - The parameters's `type` _added_. The return value's `type` _added_ (2 times). 
+* [`CSS.getMatchedStylesForNode`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getMatchedStylesForNode) - The parameters's `type` _added_. The return value's `type` _added_ (2 times). The `2` in the return value had `type` _added_. The `3` in the return value had `type` _added_. The `4` in the return value had `type` _added_. The `5` in the return value had `type` _added_. 
+* [`CSS.getMediaQueries`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getMediaQueries) - The `0` in the return value had `type` _added_. 
+* [`CSS.getPlatformFontsForNode`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getPlatformFontsForNode) - The parameters's `type` _added_. The `0` in the return value had `type` _added_. 
+* [`CSS.getStyleSheetText`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getStyleSheetText) - The parameters's `type` _added_. 
+* [`CSS.setEffectivePropertyValueForNode`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-setEffectivePropertyValueForNode) - The parameters's `type` _added_. 
+* [`CSS.setKeyframeKey`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-setKeyframeKey) - The parameters's `type` _added_ (2 times). The return value's `type` _added_. 
+* [`CSS.setMediaText`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-setMediaText) - The parameters's `type` _added_ (2 times). The return value's `type` _added_. 
+* [`CSS.setRuleSelector`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-setRuleSelector) - The parameters's `type` _added_ (2 times). The return value's `type` _added_. 
+* [`CSS.setStyleSheetText`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-setStyleSheetText) - The parameters's `type` _added_. 
+* [`CSS.setStyleTexts`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-setStyleTexts) - The `0` in the parameters had `type` _added_. The `0` in the return value had `type` _added_. 
+* [`CSS.stopRuleUsageTracking`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-stopRuleUsageTracking) - The `0` in the return value had `type` _added_. 
+* [`CSS.takeCoverageDelta`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-takeCoverageDelta) - The `0` in the return value had `type` _added_. 
+#### `CSS`: modified events
+* [`CSS.fontsUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#event-fontsUpdated) - The parameters's `type` _added_. 
+* [`CSS.styleSheetAdded`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#event-styleSheetAdded) - The parameters's `type` _added_. 
+* [`CSS.styleSheetChanged`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#event-styleSheetChanged) - The parameters's `type` _added_. 
+* [`CSS.styleSheetRemoved`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#event-styleSheetRemoved) - The parameters's `type` _added_. 
+#### `CSS`: modified types
+* [`CSS.PseudoElementMatches`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-PseudoElementMatches) - The properties's `type` _added_. The `1` in the properties had `type` _added_. 
+* [`CSS.InheritedStyleEntry`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-InheritedStyleEntry) - The properties's `type` _added_. The `1` in the properties had `type` _added_. 
+* [`CSS.RuleMatch`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-RuleMatch) - The properties's `type` _added_. 
+* [`CSS.Value`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-Value) - The properties's `type` _added_. 
+* [`CSS.SelectorList`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-SelectorList) - The `0` in the properties had `type` _added_. 
+* [`CSS.CSSStyleSheetHeader`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSStyleSheetHeader) - The properties's `type` _added_ (4 times). 
+* [`CSS.CSSRule`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSRule) - The properties's `type` _added_ (4 times). The `4` in the properties had `type` _added_. 
+* [`CSS.RuleUsage`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-RuleUsage) - The properties's `type` _added_. 
+* [`CSS.CSSStyle`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSStyle) - The properties's `type` _added_ (2 times). The `1` in the properties had `type` _added_. The `2` in the properties had `type` _added_. 
+* [`CSS.CSSProperty`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSProperty) - The properties's `type` _added_. 
+* [`CSS.CSSMedia`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSMedia) - The properties's `type` _added_ (2 times). The `5` in the properties had `type` _added_. 
+* [`CSS.MediaQuery`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-MediaQuery) - The `0` in the properties had `type` _added_. 
+* [`CSS.MediaQueryExpression`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-MediaQueryExpression) - The properties's `type` _added_. 
+* [`CSS.CSSKeyframesRule`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSKeyframesRule) - The properties's `type` _added_. The `1` in the properties had `type` _added_. 
+* [`CSS.CSSKeyframeRule`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSKeyframeRule) - The properties's `type` _added_ (4 times). 
+* [`CSS.StyleDeclarationEdit`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-StyleDeclarationEdit) - The properties's `type` _added_ (2 times). 
+#### `CacheStorage`: modified commands
+* [`CacheStorage.deleteCache`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#method-deleteCache) - The parameters's `type` _added_. 
+* [`CacheStorage.deleteEntry`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#method-deleteEntry) - The parameters's `type` _added_. 
+* [`CacheStorage.requestCacheNames`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#method-requestCacheNames) - The `0` in the return value had `type` _added_. 
+* [`CacheStorage.requestCachedResponse`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#method-requestCachedResponse) - The parameters's `type` _added_. The return value's `type` _added_. 
+* [`CacheStorage.requestEntries`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#method-requestEntries) - The parameters's `type` _added_. The `0` in the return value had `type` _added_. 
+#### `CacheStorage`: modified types
+* [`CacheStorage.DataEntry`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#type-DataEntry) - The `2` in the properties had `type` _added_. The `6` in the properties had `type` _added_. 
+* [`CacheStorage.Cache`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#type-Cache) - The properties's `type` _added_. 
+#### `DOM`: modified commands
+* [`DOM.collectClassNamesFromSubtree`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-collectClassNamesFromSubtree) - The parameters's `type` _added_. 
+* [`DOM.copyTo`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-copyTo) - The parameters's `type` _added_ (3 times). The return value's `type` _added_. 
+* [`DOM.describeNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-describeNode) - The parameters's `type` _added_ (3 times). The return value's `type` _added_. 
+* [`DOM.focus`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-focus) - The parameters's `type` _added_ (3 times). 
+* [`DOM.getAttributes`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getAttributes) - The parameters's `type` _added_. 
+* [`DOM.getBoxModel`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getBoxModel) - The parameters's `type` _added_ (3 times). The return value's `type` _added_. 
+* [`DOM.getContentQuads`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getContentQuads) - The parameters's `type` _added_ (3 times). The `0` in the return value had `type` _added_. 
+* [`DOM.getDocument`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getDocument) - The return value's `type` _added_. 
+* [`DOM.getFlattenedDocument`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getFlattenedDocument) - The `0` in the return value had `type` _added_. 
+* [`DOM.getNodeForLocation`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getNodeForLocation) - The return value's `type` _added_. 
+* [`DOM.getOuterHTML`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getOuterHTML) - The parameters's `type` _added_ (3 times). 
+* [`DOM.getRelayoutBoundary`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getRelayoutBoundary) - The parameters's `type` _added_. The return value's `type` _added_. 
+* [`DOM.getSearchResults`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getSearchResults) - The `0` in the return value had `type` _added_. 
+* [`DOM.moveTo`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-moveTo) - The parameters's `type` _added_ (3 times). The return value's `type` _added_. 
+* [`DOM.pushNodeByPathToFrontend`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-pushNodeByPathToFrontend) - The return value's `type` _added_. 
+* [`DOM.pushNodesByBackendIdsToFrontend`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-pushNodesByBackendIdsToFrontend) - The `0` in the parameters had `type` _added_. The `0` in the return value had `type` _added_. 
+* [`DOM.querySelector`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-querySelector) - The parameters's `type` _added_. The return value's `type` _added_. 
+* [`DOM.querySelectorAll`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-querySelectorAll) - The parameters's `type` _added_. The `0` in the return value had `type` _added_. 
+* [`DOM.removeAttribute`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-removeAttribute) - The parameters's `type` _added_. 
+* [`DOM.removeNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-removeNode) - The parameters's `type` _added_. 
+* [`DOM.requestChildNodes`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-requestChildNodes) - The parameters's `type` _added_. 
+* [`DOM.requestNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-requestNode) - The parameters's `type` _added_. The return value's `type` _added_. 
+* [`DOM.resolveNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-resolveNode) - The parameters's `type` _added_ (2 times). The return value's `type` _added_. 
+* [`DOM.setAttributeValue`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-setAttributeValue) - The parameters's `type` _added_. 
+* [`DOM.setAttributesAsText`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-setAttributesAsText) - The parameters's `type` _added_. 
+* [`DOM.setFileInputFiles`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-setFileInputFiles) - The parameters's `type` _added_ (3 times). 
+* [`DOM.setInspectedNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-setInspectedNode) - The parameters's `type` _added_. 
+* [`DOM.setNodeName`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-setNodeName) - The parameters's `type` _added_. The return value's `type` _added_. 
+* [`DOM.setNodeValue`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-setNodeValue) - The parameters's `type` _added_. 
+* [`DOM.setOuterHTML`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-setOuterHTML) - The parameters's `type` _added_. 
+* [`DOM.getFrameOwner`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getFrameOwner) - The parameters's `type` _added_. The return value's `type` _added_. 
+#### `DOM`: modified events
+* [`DOM.attributeModified`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-attributeModified) - The parameters's `type` _added_. 
+* [`DOM.attributeRemoved`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-attributeRemoved) - The parameters's `type` _added_. 
+* [`DOM.characterDataModified`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-characterDataModified) - The parameters's `type` _added_. 
+* [`DOM.childNodeCountUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-childNodeCountUpdated) - The parameters's `type` _added_. 
+* [`DOM.childNodeInserted`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-childNodeInserted) - The parameters's `type` _added_ (3 times). 
+* [`DOM.childNodeRemoved`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-childNodeRemoved) - The parameters's `type` _added_ (2 times). 
+* [`DOM.distributedNodesUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-distributedNodesUpdated) - The parameters's `type` _added_. The `1` in the parameters had `type` _added_. 
+* [`DOM.inlineStyleInvalidated`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-inlineStyleInvalidated) - The `0` in the parameters had `type` _added_. 
+* [`DOM.pseudoElementAdded`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-pseudoElementAdded) - The parameters's `type` _added_ (2 times). 
+* [`DOM.pseudoElementRemoved`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-pseudoElementRemoved) - The parameters's `type` _added_ (2 times). 
+* [`DOM.setChildNodes`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-setChildNodes) - The parameters's `type` _added_. The `1` in the parameters had `type` _added_. 
+* [`DOM.shadowRootPopped`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-shadowRootPopped) - The parameters's `type` _added_ (2 times). 
+* [`DOM.shadowRootPushed`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-shadowRootPushed) - The parameters's `type` _added_ (2 times). 
+#### `DOM`: modified types
+* [`DOM.BackendNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-BackendNode) - The properties's `type` _added_. 
+* [`DOM.Node`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-Node) - The properties's `type` _added_ (9 times). The `8` in the properties had `type` _added_. The `22` in the properties had `type` _added_. The `24` in the properties had `type` _added_. The `26` in the properties had `type` _added_. 
+* [`DOM.BoxModel`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-BoxModel) - The properties's `type` _added_ (5 times). 
+* [`DOM.ShapeOutsideInfo`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-ShapeOutsideInfo) - The properties's `type` _added_. 
+#### `DOMDebugger`: modified commands
+* [`DOMDebugger.getEventListeners`](https://chromedevtools.github.io/devtools-protocol/tot/DOMDebugger/#method-getEventListeners) - The parameters's `type` _added_. The `0` in the return value had `type` _added_. 
+* [`DOMDebugger.removeDOMBreakpoint`](https://chromedevtools.github.io/devtools-protocol/tot/DOMDebugger/#method-removeDOMBreakpoint) - The parameters's `type` _added_ (2 times). 
+* [`DOMDebugger.setDOMBreakpoint`](https://chromedevtools.github.io/devtools-protocol/tot/DOMDebugger/#method-setDOMBreakpoint) - The parameters's `type` _added_ (2 times). 
+#### `DOMDebugger`: modified type
+* [`DOMDebugger.EventListener`](https://chromedevtools.github.io/devtools-protocol/tot/DOMDebugger/#type-EventListener) - The properties's `type` _added_ (4 times). 
+#### `DOMSnapshot`: modified commands
+* [`DOMSnapshot.getSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#method-getSnapshot) - The `0` in the return value had `type` _added_. The `1` in the return value had `type` _added_. The `2` in the return value had `type` _added_. 
+* [`DOMSnapshot.captureSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#method-captureSnapshot) - The `0` in the return value had `type` _added_. 
+#### `DOMSnapshot`: modified types
+* [`DOMSnapshot.DOMNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DOMNode) - The properties's `type` _added_ (4 times). The `9` in the properties had `type` _added_. The `23` in the properties had `type` _added_. 
+* [`DOMSnapshot.InlineTextBox`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-InlineTextBox) - The properties's `type` _added_. 
+* [`DOMSnapshot.LayoutTreeNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-LayoutTreeNode) - The properties's `type` _added_. The `3` in the properties had `type` _added_. 
+* [`DOMSnapshot.ComputedStyle`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-ComputedStyle) - The `0` in the properties had `type` _added_. 
+* [`DOMSnapshot.ArrayOfStrings`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-ArrayOfStrings) - The items's `type` _added_. 
+* [`DOMSnapshot.RareStringData`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-RareStringData) - The `1` in the properties had `type` _added_. 
+* [`DOMSnapshot.DocumentSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DocumentSnapshot) - The properties's `type` _added_ (10 times). 
+* [`DOMSnapshot.NodeTreeSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-NodeTreeSnapshot) - The `2` in the properties had `type` _added_. The `3` in the properties had `type` _added_. The `4` in the properties had `type` _added_. The `5` in the properties had `type` _added_. The properties's `type` _added_ (9 times). 
+* [`DOMSnapshot.LayoutTreeSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-LayoutTreeSnapshot) - The `1` in the properties had `type` _added_. The `2` in the properties had `type` _added_. The `3` in the properties had `type` _added_. The properties's `type` _added_. 
+* [`DOMSnapshot.TextBoxSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-TextBoxSnapshot) - The `1` in the properties had `type` _added_. 
+#### `DOMStorage`: modified commands
+* [`DOMStorage.clear`](https://chromedevtools.github.io/devtools-protocol/tot/DOMStorage/#method-clear) - The parameters's `type` _added_. 
+* [`DOMStorage.getDOMStorageItems`](https://chromedevtools.github.io/devtools-protocol/tot/DOMStorage/#method-getDOMStorageItems) - The parameters's `type` _added_. The `0` in the return value had `type` _added_. 
+* [`DOMStorage.removeDOMStorageItem`](https://chromedevtools.github.io/devtools-protocol/tot/DOMStorage/#method-removeDOMStorageItem) - The parameters's `type` _added_. 
+* [`DOMStorage.setDOMStorageItem`](https://chromedevtools.github.io/devtools-protocol/tot/DOMStorage/#method-setDOMStorageItem) - The parameters's `type` _added_. 
+#### `DOMStorage`: modified events
+* [`DOMStorage.domStorageItemAdded`](https://chromedevtools.github.io/devtools-protocol/tot/DOMStorage/#event-domStorageItemAdded) - The parameters's `type` _added_. 
+* [`DOMStorage.domStorageItemRemoved`](https://chromedevtools.github.io/devtools-protocol/tot/DOMStorage/#event-domStorageItemRemoved) - The parameters's `type` _added_. 
+* [`DOMStorage.domStorageItemUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/DOMStorage/#event-domStorageItemUpdated) - The parameters's `type` _added_. 
+* [`DOMStorage.domStorageItemsCleared`](https://chromedevtools.github.io/devtools-protocol/tot/DOMStorage/#event-domStorageItemsCleared) - The parameters's `type` _added_. 
+#### `Database`: modified commands
+* [`Database.executeSQL`](https://chromedevtools.github.io/devtools-protocol/tot/Database/#method-executeSQL) - The parameters's `type` _added_. The return value's `type` _added_. 
+* [`Database.getDatabaseTableNames`](https://chromedevtools.github.io/devtools-protocol/tot/Database/#method-getDatabaseTableNames) - The parameters's `type` _added_. 
+#### `Database`: modified event
+* [`Database.addDatabase`](https://chromedevtools.github.io/devtools-protocol/tot/Database/#event-addDatabase) - The parameters's `type` _added_. 
+#### `Database`: modified type
+* [`Database.Database`](https://chromedevtools.github.io/devtools-protocol/tot/Database/#type-Database) - The properties's `type` _added_. 
+#### `Emulation`: modified commands
+* [`Emulation.setDefaultBackgroundColorOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setDefaultBackgroundColorOverride) - The parameters's `type` _added_. 
+* [`Emulation.setDeviceMetricsOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setDeviceMetricsOverride) - The parameters's `type` _added_ (2 times). 
+* [`Emulation.setVirtualTimePolicy`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setVirtualTimePolicy) - The parameters's `type` _added_ (2 times). 
+#### `HeadlessExperimental`: modified command
+* [`HeadlessExperimental.beginFrame`](https://chromedevtools.github.io/devtools-protocol/tot/HeadlessExperimental/#method-beginFrame) - The parameters's `type` _added_. 
+#### `IO`: modified commands
+* [`IO.close`](https://chromedevtools.github.io/devtools-protocol/tot/IO/#method-close) - The parameters's `type` _added_. 
+* [`IO.read`](https://chromedevtools.github.io/devtools-protocol/tot/IO/#method-read) - The parameters's `type` _added_. 
+* [`IO.resolveBlob`](https://chromedevtools.github.io/devtools-protocol/tot/IO/#method-resolveBlob) - The parameters's `type` _added_. 
+#### `IndexedDB`: modified commands
+* [`IndexedDB.deleteObjectStoreEntries`](https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#method-deleteObjectStoreEntries) - The parameters's `type` _added_. 
+* [`IndexedDB.requestData`](https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#method-requestData) - The parameters's `type` _added_. The `0` in the return value had `type` _added_. 
+* [`IndexedDB.requestDatabase`](https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#method-requestDatabase) - The return value's `type` _added_. 
+#### `IndexedDB`: modified types
+* [`IndexedDB.DatabaseWithObjectStores`](https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#type-DatabaseWithObjectStores) - The `2` in the properties had `type` _added_. 
+* [`IndexedDB.ObjectStore`](https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#type-ObjectStore) - The properties's `type` _added_. The `3` in the properties had `type` _added_. 
+* [`IndexedDB.ObjectStoreIndex`](https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#type-ObjectStoreIndex) - The properties's `type` _added_. 
+* [`IndexedDB.Key`](https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#type-Key) - The `4` in the properties had `type` _added_. 
+* [`IndexedDB.KeyRange`](https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#type-KeyRange) - The properties's `type` _added_ (2 times). 
+* [`IndexedDB.DataEntry`](https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#type-DataEntry) - The properties's `type` _added_ (3 times). 
+#### `Input`: modified commands
+* [`Input.dispatchKeyEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-dispatchKeyEvent) - The parameters's `type` _added_. 
+* [`Input.dispatchMouseEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-dispatchMouseEvent) - The parameters's `type` _added_. 
+* [`Input.dispatchTouchEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-dispatchTouchEvent) - The `1` in the parameters had `type` _added_. The parameters's `type` _added_. 
+* [`Input.emulateTouchFromMouseEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-emulateTouchFromMouseEvent) - The parameters's `type` _added_. 
+* [`Input.synthesizePinchGesture`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-synthesizePinchGesture) - The parameters's `type` _added_. 
+* [`Input.synthesizeScrollGesture`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-synthesizeScrollGesture) - The parameters's `type` _added_. 
+* [`Input.synthesizeTapGesture`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-synthesizeTapGesture) - The parameters's `type` _added_. 
+#### `LayerTree`: modified commands
+* [`LayerTree.compositingReasons`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#method-compositingReasons) - The parameters's `type` _added_. 
+* [`LayerTree.loadSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#method-loadSnapshot) - The `0` in the parameters had `type` _added_. The return value's `type` _added_. 
+* [`LayerTree.makeSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#method-makeSnapshot) - The parameters's `type` _added_. The return value's `type` _added_. 
+* [`LayerTree.profileSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#method-profileSnapshot) - The parameters's `type` _added_ (2 times). The `0` in the return value had `type` _added_. 
+* [`LayerTree.releaseSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#method-releaseSnapshot) - The parameters's `type` _added_. 
+* [`LayerTree.replaySnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#method-replaySnapshot) - The parameters's `type` _added_. 
+* [`LayerTree.snapshotCommandLog`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#method-snapshotCommandLog) - The parameters's `type` _added_. 
+#### `LayerTree`: modified events
+* [`LayerTree.layerPainted`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#event-layerPainted) - The parameters's `type` _added_ (2 times). 
+* [`LayerTree.layerTreeDidChange`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#event-layerTreeDidChange) - The `0` in the parameters had `type` _added_. 
+#### `LayerTree`: modified types
+* [`LayerTree.ScrollRect`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#type-ScrollRect) - The properties's `type` _added_. 
+* [`LayerTree.StickyPositionConstraint`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#type-StickyPositionConstraint) - The properties's `type` _added_ (4 times). 
+* [`LayerTree.Layer`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#type-Layer) - The properties's `type` _added_ (4 times). The `14` in the properties had `type` _added_. 
+#### `Log`: modified command
+* [`Log.startViolationsReport`](https://chromedevtools.github.io/devtools-protocol/tot/Log/#method-startViolationsReport) - The `0` in the parameters had `type` _added_. 
+#### `Log`: modified event
+* [`Log.entryAdded`](https://chromedevtools.github.io/devtools-protocol/tot/Log/#event-entryAdded) - The parameters's `type` _added_. 
+#### `Log`: modified type
+* [`Log.LogEntry`](https://chromedevtools.github.io/devtools-protocol/tot/Log/#type-LogEntry) - The properties's `type` _added_ (3 times). The `9` in the properties had `type` _added_. 
+#### `Memory`: modified commands
+* [`Memory.simulatePressureNotification`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#method-simulatePressureNotification) - The parameters's `type` _added_. 
+* [`Memory.getAllTimeSamplingProfile`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#method-getAllTimeSamplingProfile) - The return value's `type` _added_. 
+* [`Memory.getBrowserSamplingProfile`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#method-getBrowserSamplingProfile) - The return value's `type` _added_. 
+* [`Memory.getSamplingProfile`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#method-getSamplingProfile) - The return value's `type` _added_. 
+#### `Memory`: modified type
+* [`Memory.SamplingProfile`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#type-SamplingProfile) - The `0` in the properties had `type` _added_. The `1` in the properties had `type` _added_. 
+#### `Network`: modified commands
+* [`Network.continueInterceptedRequest`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-continueInterceptedRequest) - The parameters's `type` _added_ (4 times). 
+* [`Network.emulateNetworkConditions`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-emulateNetworkConditions) - The parameters's `type` _added_. 
+* [`Network.getAllCookies`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-getAllCookies) - The `0` in the return value had `type` _added_. 
+* [`Network.getCookies`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-getCookies) - The `0` in the return value had `type` _added_. 
+* [`Network.getResponseBody`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-getResponseBody) - The parameters's `type` _added_. 
+* [`Network.getRequestPostData`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-getRequestPostData) - The parameters's `type` _added_. 
+* [`Network.getResponseBodyForInterception`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-getResponseBodyForInterception) - The parameters's `type` _added_. 
+* [`Network.takeResponseBodyForInterceptionAsStream`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-takeResponseBodyForInterceptionAsStream) - The parameters's `type` _added_. The return value's `type` _added_. 
+* [`Network.replayXHR`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-replayXHR) - The parameters's `type` _added_. 
+* [`Network.searchInResponseBody`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-searchInResponseBody) - The parameters's `type` _added_. The `0` in the return value had `type` _added_. 
+* [`Network.setCookie`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setCookie) - The parameters's `type` _added_ (2 times). 
+* [`Network.setCookies`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setCookies) - The `0` in the parameters had `type` _added_. 
+* [`Network.setExtraHTTPHeaders`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setExtraHTTPHeaders) - The parameters's `type` _added_. 
+* [`Network.setRequestInterception`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setRequestInterception) - The `0` in the parameters had `type` _added_. 
+#### `Network`: modified events
+* [`Network.dataReceived`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-dataReceived) - The parameters's `type` _added_ (2 times). 
+* [`Network.eventSourceMessageReceived`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-eventSourceMessageReceived) - The parameters's `type` _added_ (2 times). 
+* [`Network.loadingFailed`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-loadingFailed) - The parameters's `type` _added_ (4 times). 
+* [`Network.loadingFinished`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-loadingFinished) - The parameters's `type` _added_ (2 times). 
+* [`Network.requestIntercepted`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestIntercepted) - The parameters's `type` _added_ (7 times). 
+* [`Network.requestServedFromCache`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestServedFromCache) - The parameters's `type` _added_. 
+* [`Network.requestWillBeSent`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestWillBeSent) - The parameters's `type` _added_ (9 times). 
+* [`Network.resourceChangedPriority`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-resourceChangedPriority) - The parameters's `type` _added_ (3 times). 
+* [`Network.signedExchangeReceived`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-signedExchangeReceived) - The parameters's `type` _added_ (2 times). 
+* [`Network.responseReceived`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-responseReceived) - The parameters's `type` _added_ (6 times). 
+* [`Network.webSocketClosed`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webSocketClosed) - The parameters's `type` _added_ (2 times). 
+* [`Network.webSocketCreated`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webSocketCreated) - The parameters's `type` _added_ (2 times). 
+* [`Network.webSocketFrameError`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webSocketFrameError) - The parameters's `type` _added_ (2 times). 
+* [`Network.webSocketFrameReceived`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webSocketFrameReceived) - The parameters's `type` _added_ (3 times). 
+* [`Network.webSocketFrameSent`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webSocketFrameSent) - The parameters's `type` _added_ (3 times). 
+* [`Network.webSocketHandshakeResponseReceived`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webSocketHandshakeResponseReceived) - The parameters's `type` _added_ (3 times). 
+* [`Network.webSocketWillSendHandshakeRequest`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webSocketWillSendHandshakeRequest) - The parameters's `type` _added_ (4 times). 
+#### `Network`: modified types
+* [`Network.Request`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Request) - The properties's `type` _added_ (3 times). 
+* [`Network.SignedCertificateTimestamp`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedCertificateTimestamp) - The properties's `type` _added_. 
+* [`Network.SecurityDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SecurityDetails) - The properties's `type` _added_ (4 times). The `11` in the properties had `type` _added_. 
+* [`Network.Response`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Response) - The properties's `type` _added_ (5 times). 
+* [`Network.WebSocketRequest`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-WebSocketRequest) - The properties's `type` _added_. 
+* [`Network.WebSocketResponse`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-WebSocketResponse) - The properties's `type` _added_ (2 times). 
+* [`Network.CachedResource`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CachedResource) - The properties's `type` _added_ (2 times). 
+* [`Network.Initiator`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Initiator) - The properties's `type` _added_. 
+* [`Network.Cookie`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Cookie) - The properties's `type` _added_. 
+* [`Network.CookieParam`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CookieParam) - The properties's `type` _added_ (2 times). 
+* [`Network.RequestPattern`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-RequestPattern) - The properties's `type` _added_ (2 times). 
+* [`Network.SignedExchangeHeader`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedExchangeHeader) - The properties's `type` _added_. The `4` in the properties had `type` _added_. 
+* [`Network.SignedExchangeError`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedExchangeError) - The properties's `type` _added_. 
+* [`Network.SignedExchangeInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedExchangeInfo) - The properties's `type` _added_ (3 times). The `3` in the properties had `type` _added_. 
+#### `Overlay`: modified commands
+* [`Overlay.getHighlightObjectForTest`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-getHighlightObjectForTest) - The parameters's `type` _added_. 
+* [`Overlay.highlightFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-highlightFrame) - The parameters's `type` _added_ (3 times). 
+* [`Overlay.highlightNode`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-highlightNode) - The parameters's `type` _added_ (4 times). 
+* [`Overlay.highlightQuad`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-highlightQuad) - The parameters's `type` _added_ (3 times). 
+* [`Overlay.highlightRect`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-highlightRect) - The parameters's `type` _added_ (2 times). 
+* [`Overlay.setInspectMode`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-setInspectMode) - The parameters's `type` _added_ (2 times). 
+#### `Overlay`: modified events
+* [`Overlay.inspectNodeRequested`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#event-inspectNodeRequested) - The parameters's `type` _added_. 
+* [`Overlay.nodeHighlightRequested`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#event-nodeHighlightRequested) - The parameters's `type` _added_. 
+* [`Overlay.screenshotRequested`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#event-screenshotRequested) - The parameters's `type` _added_. 
+#### `Overlay`: modified type
+* [`Overlay.HighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-HighlightConfig) - The properties's `type` _added_ (8 times). 
+#### `Page`: modified commands
+* [`Page.addScriptToEvaluateOnLoad`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-addScriptToEvaluateOnLoad) - The return value's `type` _added_. 
+* [`Page.addScriptToEvaluateOnNewDocument`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-addScriptToEvaluateOnNewDocument) - The return value's `type` _added_. 
+* [`Page.captureScreenshot`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-captureScreenshot) - The parameters's `type` _added_. 
+* [`Page.createIsolatedWorld`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-createIsolatedWorld) - The parameters's `type` _added_. The return value's `type` _added_. 
+* [`Page.getAppManifest`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getAppManifest) - The `1` in the return value had `type` _added_. 
+* [`Page.getCookies`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getCookies) - The `0` in the return value had `type` _added_. 
+* [`Page.getFrameTree`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getFrameTree) - The return value's `type` _added_. 
+* [`Page.getLayoutMetrics`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getLayoutMetrics) - The return value's `type` _added_ (3 times). 
+* [`Page.getNavigationHistory`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getNavigationHistory) - The `1` in the return value had `type` _added_. 
+* [`Page.getResourceContent`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getResourceContent) - The parameters's `type` _added_. 
+* [`Page.getResourceTree`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getResourceTree) - The return value's `type` _added_. 
+* [`Page.navigate`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-navigate) - The parameters's `type` _added_ (2 times). The return value's `type` _added_ (2 times). 
+* [`Page.removeScriptToEvaluateOnLoad`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-removeScriptToEvaluateOnLoad) - The parameters's `type` _added_. 
+* [`Page.removeScriptToEvaluateOnNewDocument`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-removeScriptToEvaluateOnNewDocument) - The parameters's `type` _added_. 
+* [`Page.searchInResource`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-searchInResource) - The parameters's `type` _added_. The `0` in the return value had `type` _added_. 
+* [`Page.setDeviceMetricsOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setDeviceMetricsOverride) - The parameters's `type` _added_ (2 times). 
+* [`Page.setFontFamilies`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setFontFamilies) - The parameters's `type` _added_. 
+* [`Page.setFontSizes`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setFontSizes) - The parameters's `type` _added_. 
+* [`Page.setDocumentContent`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setDocumentContent) - The parameters's `type` _added_. 
+#### `Page`: modified events
+* [`Page.domContentEventFired`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-domContentEventFired) - The parameters's `type` _added_. 
+* [`Page.frameAttached`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameAttached) - The parameters's `type` _added_ (3 times). 
+* [`Page.frameClearedScheduledNavigation`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameClearedScheduledNavigation) - The parameters's `type` _added_. 
+* [`Page.frameDetached`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameDetached) - The parameters's `type` _added_. 
+* [`Page.frameNavigated`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameNavigated) - The parameters's `type` _added_. 
+* [`Page.frameScheduledNavigation`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameScheduledNavigation) - The parameters's `type` _added_. 
+* [`Page.frameStartedLoading`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameStartedLoading) - The parameters's `type` _added_. 
+* [`Page.frameStoppedLoading`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameStoppedLoading) - The parameters's `type` _added_. 
+* [`Page.javascriptDialogOpening`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-javascriptDialogOpening) - The parameters's `type` _added_. 
+* [`Page.lifecycleEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-lifecycleEvent) - The parameters's `type` _added_ (3 times). 
+* [`Page.loadEventFired`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-loadEventFired) - The parameters's `type` _added_. 
+* [`Page.navigatedWithinDocument`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-navigatedWithinDocument) - The parameters's `type` _added_. 
+* [`Page.screencastFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-screencastFrame) - The parameters's `type` _added_. 
+#### `Page`: modified types
+* [`Page.Frame`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Frame) - The properties's `type` _added_. 
+* [`Page.FrameResource`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-FrameResource) - The properties's `type` _added_ (2 times). 
+* [`Page.FrameResourceTree`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-FrameResourceTree) - The properties's `type` _added_. The `1` in the properties had `type` _added_. The `2` in the properties had `type` _added_. 
+* [`Page.FrameTree`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-FrameTree) - The properties's `type` _added_. The `1` in the properties had `type` _added_. 
+* [`Page.NavigationEntry`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-NavigationEntry) - The properties's `type` _added_. 
+* [`Page.ScreencastFrameMetadata`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ScreencastFrameMetadata) - The properties's `type` _added_. 
+#### `Performance`: modified command
+* [`Performance.getMetrics`](https://chromedevtools.github.io/devtools-protocol/tot/Performance/#method-getMetrics) - The `0` in the return value had `type` _added_. 
+#### `Performance`: modified event
+* [`Performance.metrics`](https://chromedevtools.github.io/devtools-protocol/tot/Performance/#event-metrics) - The `0` in the parameters had `type` _added_. 
+#### `Security`: modified command
+* [`Security.handleCertificateError`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#method-handleCertificateError) - The parameters's `type` _added_. 
+#### `Security`: modified event
+* [`Security.securityStateChanged`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#event-securityStateChanged) - The parameters's `type` _added_ (2 times). The `2` in the parameters had `type` _added_. 
+#### `Security`: modified types
+* [`Security.SecurityStateExplanation`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#type-SecurityStateExplanation) - The properties's `type` _added_ (2 times). 
+* [`Security.InsecureContentStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#type-InsecureContentStatus) - The properties's `type` _added_ (2 times). 
+#### `ServiceWorker`: modified events
+* [`ServiceWorker.workerErrorReported`](https://chromedevtools.github.io/devtools-protocol/tot/ServiceWorker/#event-workerErrorReported) - The parameters's `type` _added_. 
+* [`ServiceWorker.workerRegistrationUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/ServiceWorker/#event-workerRegistrationUpdated) - The `0` in the parameters had `type` _added_. 
+* [`ServiceWorker.workerVersionUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/ServiceWorker/#event-workerVersionUpdated) - The `0` in the parameters had `type` _added_. 
+#### `ServiceWorker`: modified type
+* [`ServiceWorker.ServiceWorkerVersion`](https://chromedevtools.github.io/devtools-protocol/tot/ServiceWorker/#type-ServiceWorkerVersion) - The properties's `type` _added_ (3 times). The `7` in the properties had `type` _added_. 
+#### `Storage`: modified command
+* [`Storage.getUsageAndQuota`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#method-getUsageAndQuota) - The `2` in the return value had `type` _added_. 
+#### `Storage`: modified type
+* [`Storage.UsageForType`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-UsageForType) - The properties's `type` _added_. 
+#### `SystemInfo`: modified command
+* [`SystemInfo.getInfo`](https://chromedevtools.github.io/devtools-protocol/tot/SystemInfo/#method-getInfo) - The return value's `type` _added_. 
+#### `SystemInfo`: modified type
+* [`SystemInfo.GPUInfo`](https://chromedevtools.github.io/devtools-protocol/tot/SystemInfo/#type-GPUInfo) - The `0` in the properties had `type` _added_. 
+#### `Target`: modified commands
+* [`Target.activateTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-activateTarget) - The parameters's `type` _added_. 
+* [`Target.attachToTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-attachToTarget) - The parameters's `type` _added_. The return value's `type` _added_. 
+* [`Target.attachToBrowserTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-attachToBrowserTarget) - The return value's `type` _added_. 
+* [`Target.closeTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-closeTarget) - The parameters's `type` _added_. 
+* [`Target.exposeDevToolsProtocol`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-exposeDevToolsProtocol) - The parameters's `type` _added_. 
+* [`Target.createBrowserContext`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-createBrowserContext) - The return value's `type` _added_. 
+* [`Target.getBrowserContexts`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-getBrowserContexts) - The `0` in the return value had `type` _added_. 
+* [`Target.createTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-createTarget) - The parameters's `type` _added_. The return value's `type` _added_. 
+* [`Target.detachFromTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-detachFromTarget) - The parameters's `type` _added_ (2 times). 
+* [`Target.disposeBrowserContext`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-disposeBrowserContext) - The parameters's `type` _added_. 
+* [`Target.getTargetInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-getTargetInfo) - The parameters's `type` _added_. The return value's `type` _added_. 
+* [`Target.getTargets`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-getTargets) - The `0` in the return value had `type` _added_. 
+* [`Target.sendMessageToTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-sendMessageToTarget) - The parameters's `type` _added_ (2 times). 
+* [`Target.setRemoteLocations`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-setRemoteLocations) - The `0` in the parameters had `type` _added_. 
+#### `Target`: modified events
+* [`Target.attachedToTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#event-attachedToTarget) - The parameters's `type` _added_ (2 times). 
+* [`Target.detachedFromTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#event-detachedFromTarget) - The parameters's `type` _added_ (2 times). 
+* [`Target.receivedMessageFromTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#event-receivedMessageFromTarget) - The parameters's `type` _added_ (2 times). 
+* [`Target.targetCreated`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#event-targetCreated) - The parameters's `type` _added_. 
+* [`Target.targetDestroyed`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#event-targetDestroyed) - The parameters's `type` _added_. 
+* [`Target.targetCrashed`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#event-targetCrashed) - The parameters's `type` _added_. 
+* [`Target.targetInfoChanged`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#event-targetInfoChanged) - The parameters's `type` _added_. 
+#### `Target`: modified type
+* [`Target.TargetInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#type-TargetInfo) - The properties's `type` _added_ (3 times). 
+#### `Tracing`: modified command
+* [`Tracing.start`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#method-start) - The parameters's `type` _added_ (2 times). 
+#### `Tracing`: modified event
+* [`Tracing.tracingComplete`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#event-tracingComplete) - The parameters's `type` _added_ (2 times). 
+#### `Tracing`: modified type
+* [`Tracing.TraceConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#type-TraceConfig) - The properties's `type` _added_. 
+
+
 ## Roll protocol to r586443
 ###### _2018-08-27 15:15:57_ | Diff: [cafc591...41333c5](https://github.com/ChromeDevTools/devtools-protocol/compare/cafc591...41333c5)
 #### `Testing`: new domain
