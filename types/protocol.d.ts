@@ -10780,7 +10780,7 @@ export namespace Protocol {
      * Testing domain is a dumping ground for the capabilities requires for browser or app testing that do not fit other
      * domains.
      */
-    export module Testing {
+    export namespace Testing {
 
         export interface GenerateTestReportRequest {
             /**

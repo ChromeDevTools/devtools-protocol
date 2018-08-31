@@ -88,6 +88,8 @@ export namespace ProtocolApi {
 
         Tracing: TracingApi;
 
+        Testing: TestingApi;
+
     }
 
 
@@ -696,6 +698,16 @@ export namespace ProtocolApi {
     }
 
     export interface BrowserApi {
+        /**
+         * Grant specific permissions to the given origin and reject all others.
+         */
+        grantPermissions(params: Protocol.Browser.GrantPermissionsRequest): Promise<void>;
+
+        /**
+         * Reset all permission management for all origins.
+         */
+        resetPermissions(params: Protocol.Browser.ResetPermissionsRequest): Promise<void>;
+
         /**
          * Close browser gracefully.
          */
@@ -2320,6 +2332,11 @@ export namespace ProtocolApi {
          */
         clearCompilationCache(): Promise<void>;
 
+        /**
+         * Generates a report for testing.
+         */
+        generateTestReport(params: Protocol.Page.GenerateTestReportRequest): Promise<void>;
+
         on(event: 'domContentEventFired', listener: (params: Protocol.Page.DomContentEventFiredEvent) => void): void;
 
         /**
@@ -2767,6 +2784,14 @@ export namespace ProtocolApi {
          * delivered via dataCollected events.
          */
         on(event: 'tracingComplete', listener: (params: Protocol.Tracing.TracingCompleteEvent) => void): void;
+
+    }
+
+    export interface TestingApi {
+        /**
+         * Generates a report for testing.
+         */
+        generateTestReport(params: Protocol.Testing.GenerateTestReportRequest): Promise<void>;
 
     }
 }
