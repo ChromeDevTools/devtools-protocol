@@ -1,10 +1,13 @@
 {
     "compilerOptions": {
+        "noEmit": true,
         "module": "commonjs",
-        "noImplicitAny": true,
-        "removeComments": false,
-        "target": "ES6",
-        "moduleResolution": "node",
-        "typeRoots": ["node_modules/@types"]
-    }
+        "strict": true,
+        "target": "ES2017",
+        "typeRoots": ["node_modules/@types"],
+        "resolveJsonModule": true,
+    },
+    "include": [
+        "protocol-dts-generator.ts",
+    ]
 }
