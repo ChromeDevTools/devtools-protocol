@@ -7,7 +7,7 @@ import Protocol from './protocol'
 /**
  * API generated from Protocol commands and events.
  */
-export namespace ProtocolApi {
+export namespace ProtocolProxyApi {
 
     export interface ProtocolApi {
         Console: ConsoleApi;
@@ -2796,4 +2796,4 @@ export namespace ProtocolApi {
     }
 }
 
-export default ProtocolApi;
+export default ProtocolProxyApi;

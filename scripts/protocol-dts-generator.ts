@@ -310,7 +310,7 @@ const mappingModuleName = 'ProtocolMapping'
 emitMapping(mappingModuleName, protocolModuleName, protocolDomains)
 flushEmitToFile(destMappingFilePath)
 
-const destApiFilePath = `${__dirname}/../types/protocol-api.d.ts`
-const apiModuleName = 'ProtocolApi'
+const destApiFilePath = `${__dirname}/../types/protocol-proxy-api.d.ts`
+const apiModuleName = 'ProtocolProxyApi'
 emitApi(apiModuleName, protocolModuleName, protocolDomains)
 flushEmitToFile(destApiFilePath)
