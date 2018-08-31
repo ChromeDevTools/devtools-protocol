@@ -10,13 +10,15 @@ export module Protocol {
         minor: string
     }
 
-    export interface Domain extends BaseType {
+    export interface Domain {
         /** Name of domain */
         domain: string
+        /** Description of the domain */
+        description?: string
         /** Dependencies on other domains */
         dependencies?: string[]
         /** Types used by the domain. */
-        types?: PropertyType[]
+        types?: DomainType[]
         /** Commands accepted by the domain */
         commands?: Command[]
         /** Events fired by domain */
@@ -24,32 +26,17 @@ export module Protocol {
     }
 
     export interface Command extends Event {
-        returns?: ParameterType[]
+        returns?: PropertyType[]
         async?: boolean
         redirect?: string
     }
 
-    export interface Event extends BaseType {
+    export interface Event {
         name: string
-        parameters?: ParameterType[]
-        handlers?: string[]
+        parameters?: PropertyType[]
+        /** Description of the event */
+        description?: string
     }
-
-    type PropertyType = (
-        (StringType & PropBaseType) |
-        (ObjectType & PropBaseType) |
-        (ArrayType & PropBaseType) |
-        (PrimitiveType & PropBaseType)
-    )
-
-    type ParameterType = (
-        (ObjectType & ParamBaseType) |
-        (ArrayType & ParamBaseType) |
-        (StringType & ParamBaseType) |
-        (PrimitiveType & ParamBaseType) |
-        (AnyType & ParamBaseType) |
-        (RefType & ParamBaseType)
-    )
 
     export interface ArrayType {
         type: "array"
@@ -63,15 +50,13 @@ export module Protocol {
     export interface ObjectType {
         type: "object"
         /** Properties of the type. Maps to a typed object */
-        properties?: ParameterType[]
+        properties?: PropertyType[]
     }
 
     export interface StringType {
         type: "string"
         /** Possible values of a string. */
         enum?: string[]
-        /** Only one possible value, e.g. on(event: 'xyz') */
-        val?: string
     }
 
     export interface PrimitiveType {
@@ -87,35 +72,23 @@ export module Protocol {
         $ref: string
     }
 
-    export interface ParamBaseType extends BaseType {
+    export interface PropertyBaseType {
         /** Name of param */
         name: string
         /** Is the property optional ? */
         optional?: boolean
-    }
-
-    export interface PropBaseType extends BaseType {
-        /** Name of property */
-        id: string
-    }
-
-    export interface BaseType {
         /** Description of the type */
         description?: string
-        /** Not for public use */
-        hidden?: boolean
-        /** Is the api deprecated for future use ? */
-        deprecated?: boolean
-        /** Entities marked as exported:true have special generated C++ classes which can be used in public API */
-        exported?: boolean
-        /** The structure is still experimental. */
-        experimental?: boolean
     }
 
-    /** Interface that aids in the generation of client and adapter interfaces */
-    export interface FunctionType extends ParamBaseType {
-        type: "function" | "lambda"
-        accepts?: (FunctionType | ParameterType)[]
-        returns?: FunctionType | string
-    }
+    type DomainType = {
+        /** Name of property */
+        id: string
+        /** Description of the type */
+        description?: string
+    } & (StringType | ObjectType | ArrayType | PrimitiveType)
+
+    type ProtocolType = StringType | ObjectType | ArrayType | PrimitiveType | RefType  | AnyType
+
+    type PropertyType = PropertyBaseType & ProtocolType
 }
