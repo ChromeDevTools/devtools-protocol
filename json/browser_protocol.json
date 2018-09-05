@@ -4542,6 +4542,17 @@
                             "description": "The url of the script (if any) that generates this node.",
                             "optional": true,
                             "type": "string"
+                        },
+                        {
+                            "name": "scrollOffsetX",
+                            "description": "Scroll offsets, set when this node is a Document.",
+                            "optional": true,
+                            "type": "number"
+                        },
+                        {
+                            "name": "scrollOffsetY",
+                            "optional": true,
+                            "type": "number"
                         }
                     ]
                 },
@@ -4552,7 +4563,7 @@
                     "properties": [
                         {
                             "name": "boundingBox",
-                            "description": "The absolute position bounding box.",
+                            "description": "The bounding box in document coordinates. Note that scroll offset of the document is ignored.",
                             "$ref": "DOM.Rect"
                         },
                         {
@@ -4579,7 +4590,7 @@
                         },
                         {
                             "name": "boundingBox",
-                            "description": "The absolute position bounding box.",
+                            "description": "The bounding box in document coordinates. Note that scroll offset of the document is ignored.",
                             "$ref": "DOM.Rect"
                         },
                         {
@@ -4777,6 +4788,17 @@
                             "name": "textBoxes",
                             "description": "The post-layout inline text nodes.",
                             "$ref": "TextBoxSnapshot"
+                        },
+                        {
+                            "name": "scrollOffsetX",
+                            "description": "Scroll offsets.",
+                            "optional": true,
+                            "type": "number"
+                        },
+                        {
+                            "name": "scrollOffsetY",
+                            "optional": true,
+                            "type": "number"
                         }
                     ]
                 },

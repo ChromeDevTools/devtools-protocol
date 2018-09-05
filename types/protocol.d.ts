@@ -4994,6 +4994,11 @@ export namespace Protocol {
              * The url of the script (if any) that generates this node.
              */
             originURL?: string;
+            /**
+             * Scroll offsets, set when this node is a Document.
+             */
+            scrollOffsetX?: number;
+            scrollOffsetY?: number;
         }
 
         /**
@@ -5002,7 +5007,7 @@ export namespace Protocol {
          */
         export interface InlineTextBox {
             /**
-             * The absolute position bounding box.
+             * The bounding box in document coordinates. Note that scroll offset of the document is ignored.
              */
             boundingBox: DOM.Rect;
             /**
@@ -5026,7 +5031,7 @@ export namespace Protocol {
              */
             domNodeIndex: integer;
             /**
-             * The absolute position bounding box.
+             * The bounding box in document coordinates. Note that scroll offset of the document is ignored.
              */
             boundingBox: DOM.Rect;
             /**
@@ -5150,6 +5155,11 @@ export namespace Protocol {
              * The post-layout inline text nodes.
              */
             textBoxes: TextBoxSnapshot;
+            /**
+             * Scroll offsets.
+             */
+            scrollOffsetX?: number;
+            scrollOffsetY?: number;
         }
 
         /**

@@ -2081,12 +2081,15 @@ experimental domain DOMSnapshot
       optional string currentSourceURL
       # The url of the script (if any) that generates this node.
       optional string originURL
+      # Scroll offsets, set when this node is a Document.
+      optional number scrollOffsetX
+      optional number scrollOffsetY
 
   # Details of post layout rendered text positions. The exact layout should not be regarded as
   # stable and may change between versions.
   type InlineTextBox extends object
     properties
-      # The absolute position bounding box.
+      # The bounding box in document coordinates. Note that scroll offset of the document is ignored.
       DOM.Rect boundingBox
       # The starting index in characters, for this post layout textbox substring. Characters that
       # would be represented as a surrogate pair in UTF-16 have length 2.
@@ -2100,7 +2103,7 @@ experimental domain DOMSnapshot
     properties
       # The index of the related DOM node in the `domNodes` array returned by `getSnapshot`.
       integer domNodeIndex
-      # The absolute position bounding box.
+      # The bounding box in document coordinates. Note that scroll offset of the document is ignored.
       DOM.Rect boundingBox
       # Contents of the LayoutText, if any.
       optional string layoutText
@@ -2175,6 +2178,9 @@ experimental domain DOMSnapshot
       LayoutTreeSnapshot layout
       # The post-layout inline text nodes.
       TextBoxSnapshot textBoxes
+      # Scroll offsets.
+      optional number scrollOffsetX
+      optional number scrollOffsetY
 
   # Table containing nodes.
   type NodeTreeSnapshot extends object

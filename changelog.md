@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r588740
+###### _2018-09-04 19:16:30_ | Diff: [cb9aed5...359d29d](https://github.com/ChromeDevTools/devtools-protocol/compare/cb9aed5...359d29d)
+#### `Browser`: new command
+* [`Browser.crash`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-crash)
+#### `Page`: modified type
+* [`Page.TransitionType`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-TransitionType) - The enum's `auto_bookmark` _updated_. The enum's `auto_subframe` _updated_. The enum's `manual_subframe` _updated_. The enum's `generated` _updated_. The enum's `auto_toplevel` _updated_. The enum's `form_submit` _updated_. The enum's `reload` _updated_. The enum's `keyword` _updated_. The enum's `keyword_generated` _updated_. The enum's `other` _updated_. The enum's `other` _added_. 
+
+
 ## Roll protocol to r588169
 ###### _2018-08-31 14:15:50_ | Diff: [93338d7...352bea4](https://github.com/ChromeDevTools/devtools-protocol/compare/93338d7...352bea4)
 #### `Console`: modified event
