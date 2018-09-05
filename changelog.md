@@ -1,5 +1,489 @@
 
 
+## Roll protocol to r588169
+###### _2018-08-31 14:15:50_ | Diff: [93338d7...352bea4](https://github.com/ChromeDevTools/devtools-protocol/compare/93338d7...352bea4)
+#### `Console`: modified event
+* [`Console.messageAdded`](https://chromedevtools.github.io/devtools-protocol/tot/Console/#event-messageAdded) - The `message` in the parameters had `type` _removed_. 
+#### `Debugger`: modified commands
+* [`Debugger.continueToLocation`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-continueToLocation) - The `location` in the parameters had `type` _removed_. 
+* [`Debugger.enable`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-enable) - The `debuggerId` in the return value had `type` _removed_. 
+* [`Debugger.evaluateOnCallFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-evaluateOnCallFrame) - The `callFrameId` in the parameters had `type` _removed_. The `timeout` in the parameters had `type` _removed_. The `result` in the return value had `type` _removed_. The `exceptionDetails` in the return value had `type` _removed_. 
+* [`Debugger.getPossibleBreakpoints`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-getPossibleBreakpoints) - The `start` in the parameters had `type` _removed_. The `end` in the parameters had `type` _removed_. The `locations` in the return value had `type` _removed_. 
+* [`Debugger.getScriptSource`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-getScriptSource) - The `scriptId` in the parameters had `type` _removed_. 
+* [`Debugger.getStackTrace`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-getStackTrace) - The `stackTraceId` in the parameters had `type` _removed_. The `stackTrace` in the return value had `type` _removed_. 
+* [`Debugger.pauseOnAsyncCall`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-pauseOnAsyncCall) - The `parentStackTraceId` in the parameters had `type` _removed_. 
+* [`Debugger.removeBreakpoint`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-removeBreakpoint) - The `breakpointId` in the parameters had `type` _removed_. 
+* [`Debugger.restartFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-restartFrame) - The `callFrameId` in the parameters had `type` _removed_. The `callFrames` in the return value had `type` _removed_. The `asyncStackTrace` in the return value had `type` _removed_. The `asyncStackTraceId` in the return value had `type` _removed_. 
+* [`Debugger.searchInContent`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-searchInContent) - The `scriptId` in the parameters had `type` _removed_. The `result` in the return value had `type` _removed_. 
+* [`Debugger.setBlackboxedRanges`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setBlackboxedRanges) - The `scriptId` in the parameters had `type` _removed_. The `positions` in the parameters had `type` _removed_. 
+* [`Debugger.setBreakpoint`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setBreakpoint) - The `location` in the parameters had `type` _removed_. The `breakpointId` in the return value had `type` _removed_. The `actualLocation` in the return value had `type` _removed_. 
+* [`Debugger.setBreakpointByUrl`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setBreakpointByUrl) - The `breakpointId` in the return value had `type` _removed_. The `locations` in the return value had `type` _removed_. 
+* [`Debugger.setBreakpointOnFunctionCall`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setBreakpointOnFunctionCall) - The `objectId` in the parameters had `type` _removed_. The `breakpointId` in the return value had `type` _removed_. 
+* [`Debugger.setReturnValue`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setReturnValue) - The `newValue` in the parameters had `type` _removed_. 
+* [`Debugger.setScriptSource`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setScriptSource) - The `scriptId` in the parameters had `type` _removed_. The `callFrames` in the return value had `type` _removed_. The `asyncStackTrace` in the return value had `type` _removed_. The `asyncStackTraceId` in the return value had `type` _removed_. The `exceptionDetails` in the return value had `type` _removed_. 
+* [`Debugger.setVariableValue`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setVariableValue) - The `newValue` in the parameters had `type` _removed_. The `callFrameId` in the parameters had `type` _removed_. 
+#### `Debugger`: modified events
+* [`Debugger.breakpointResolved`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-breakpointResolved) - The `breakpointId` in the parameters had `type` _removed_. The `location` in the parameters had `type` _removed_. 
+* [`Debugger.paused`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-paused) - The `callFrames` in the parameters had `type` _removed_. The `asyncStackTrace` in the parameters had `type` _removed_. The `asyncStackTraceId` in the parameters had `type` _removed_. The `asyncCallStackTraceId` in the parameters had `type` _removed_. 
+* [`Debugger.scriptFailedToParse`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-scriptFailedToParse) - The `scriptId` in the parameters had `type` _removed_. The `executionContextId` in the parameters had `type` _removed_. The `stackTrace` in the parameters had `type` _removed_. 
+* [`Debugger.scriptParsed`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-scriptParsed) - The `scriptId` in the parameters had `type` _removed_. The `executionContextId` in the parameters had `type` _removed_. The `stackTrace` in the parameters had `type` _removed_. 
+#### `Debugger`: modified types
+* [`Debugger.Location`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#type-Location) - The `scriptId` in the properties had `type` _removed_. 
+* [`Debugger.CallFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#type-CallFrame) - The `callFrameId` in the properties had `type` _removed_. The `functionLocation` in the properties had `type` _removed_. The `location` in the properties had `type` _removed_. The `scopeChain` in the properties had `type` _removed_. The `this` in the properties had `type` _removed_. The `returnValue` in the properties had `type` _removed_. 
+* [`Debugger.Scope`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#type-Scope) - The `object` in the properties had `type` _removed_. The `startLocation` in the properties had `type` _removed_. The `endLocation` in the properties had `type` _removed_. 
+* [`Debugger.BreakLocation`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#type-BreakLocation) - The `scriptId` in the properties had `type` _removed_. 
+#### `HeapProfiler`: modified commands
+* [`HeapProfiler.addInspectedHeapObject`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#method-addInspectedHeapObject) - The `heapObjectId` in the parameters had `type` _removed_. 
+* [`HeapProfiler.getHeapObjectId`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#method-getHeapObjectId) - The `objectId` in the parameters had `type` _removed_. The `heapSnapshotObjectId` in the return value had `type` _removed_. 
+* [`HeapProfiler.getObjectByHeapObjectId`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#method-getObjectByHeapObjectId) - The `objectId` in the parameters had `type` _removed_. The `result` in the return value had `type` _removed_. 
+* [`HeapProfiler.getSamplingProfile`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#method-getSamplingProfile) - The `profile` in the return value had `type` _removed_. 
+* [`HeapProfiler.stopSampling`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#method-stopSampling) - The `profile` in the return value had `type` _removed_. 
+#### `HeapProfiler`: modified types
+* [`HeapProfiler.SamplingHeapProfileNode`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#type-SamplingHeapProfileNode) - The `callFrame` in the properties had `type` _removed_. The `children` in the properties had `type` _removed_. 
+* [`HeapProfiler.SamplingHeapProfile`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#type-SamplingHeapProfile) - The `head` in the properties had `type` _removed_. 
+#### `Profiler`: modified commands
+* [`Profiler.getBestEffortCoverage`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-getBestEffortCoverage) - The `result` in the return value had `type` _removed_. 
+* [`Profiler.stop`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-stop) - The `profile` in the return value had `type` _removed_. 
+* [`Profiler.takePreciseCoverage`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-takePreciseCoverage) - The `result` in the return value had `type` _removed_. 
+* [`Profiler.takeTypeProfile`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-takeTypeProfile) - The `result` in the return value had `type` _removed_. 
+#### `Profiler`: modified events
+* [`Profiler.consoleProfileFinished`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#event-consoleProfileFinished) - The `location` in the parameters had `type` _removed_. The `profile` in the parameters had `type` _removed_. 
+* [`Profiler.consoleProfileStarted`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#event-consoleProfileStarted) - The `location` in the parameters had `type` _removed_. 
+#### `Profiler`: modified types
+* [`Profiler.ProfileNode`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-ProfileNode) - The `callFrame` in the properties had `type` _removed_. The `positionTicks` in the properties had `type` _removed_. 
+* [`Profiler.Profile`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-Profile) - The `nodes` in the properties had `type` _removed_. 
+* [`Profiler.FunctionCoverage`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-FunctionCoverage) - The `ranges` in the properties had `type` _removed_. 
+* [`Profiler.ScriptCoverage`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-ScriptCoverage) - The `scriptId` in the properties had `type` _removed_. The `functions` in the properties had `type` _removed_. 
+* [`Profiler.TypeProfileEntry`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-TypeProfileEntry) - The `types` in the properties had `type` _removed_. 
+* [`Profiler.ScriptTypeProfile`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-ScriptTypeProfile) - The `scriptId` in the properties had `type` _removed_. The `entries` in the properties had `type` _removed_. 
+#### `Runtime`: modified commands
+* [`Runtime.awaitPromise`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-awaitPromise) - The `promiseObjectId` in the parameters had `type` _removed_. The `result` in the return value had `type` _removed_. The `exceptionDetails` in the return value had `type` _removed_. 
+* [`Runtime.callFunctionOn`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-callFunctionOn) - The `objectId` in the parameters had `type` _removed_. The `arguments` in the parameters had `type` _removed_. The `executionContextId` in the parameters had `type` _removed_. The `result` in the return value had `type` _removed_. The `exceptionDetails` in the return value had `type` _removed_. 
+* [`Runtime.compileScript`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-compileScript) - The `executionContextId` in the parameters had `type` _removed_. The `scriptId` in the return value had `type` _removed_. The `exceptionDetails` in the return value had `type` _removed_. 
+* [`Runtime.evaluate`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-evaluate) - The `contextId` in the parameters had `type` _removed_. The `timeout` in the parameters had `type` _removed_. The `result` in the return value had `type` _removed_. The `exceptionDetails` in the return value had `type` _removed_. 
+* [`Runtime.getProperties`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-getProperties) - The `objectId` in the parameters had `type` _removed_. The `result` in the return value had `type` _removed_. The `internalProperties` in the return value had `type` _removed_. The `exceptionDetails` in the return value had `type` _removed_. 
+* [`Runtime.globalLexicalScopeNames`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-globalLexicalScopeNames) - The `executionContextId` in the parameters had `type` _removed_. 
+* [`Runtime.queryObjects`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-queryObjects) - The `prototypeObjectId` in the parameters had `type` _removed_. The `objects` in the return value had `type` _removed_. 
+* [`Runtime.releaseObject`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-releaseObject) - The `objectId` in the parameters had `type` _removed_. 
+* [`Runtime.runScript`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-runScript) - The `scriptId` in the parameters had `type` _removed_. The `executionContextId` in the parameters had `type` _removed_. The `result` in the return value had `type` _removed_. The `exceptionDetails` in the return value had `type` _removed_. 
+* [`Runtime.addBinding`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-addBinding) - The `executionContextId` in the parameters had `type` _removed_. 
+#### `Runtime`: modified events
+* [`Runtime.bindingCalled`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#event-bindingCalled) - The `executionContextId` in the parameters had `type` _removed_. 
+* [`Runtime.consoleAPICalled`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#event-consoleAPICalled) - The `args` in the parameters had `type` _removed_. The `executionContextId` in the parameters had `type` _removed_. The `timestamp` in the parameters had `type` _removed_. The `stackTrace` in the parameters had `type` _removed_. 
+* [`Runtime.exceptionThrown`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#event-exceptionThrown) - The `timestamp` in the parameters had `type` _removed_. The `exceptionDetails` in the parameters had `type` _removed_. 
+* [`Runtime.executionContextCreated`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#event-executionContextCreated) - The `context` in the parameters had `type` _removed_. 
+* [`Runtime.executionContextDestroyed`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#event-executionContextDestroyed) - The `executionContextId` in the parameters had `type` _removed_. 
+* [`Runtime.inspectRequested`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#event-inspectRequested) - The `object` in the parameters had `type` _removed_. 
+#### `Runtime`: modified types
+* [`Runtime.RemoteObject`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-RemoteObject) - The `unserializableValue` in the properties had `type` _removed_. The `objectId` in the properties had `type` _removed_. The `preview` in the properties had `type` _removed_. The `customPreview` in the properties had `type` _removed_. 
+* [`Runtime.CustomPreview`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-CustomPreview) - The `formatterObjectId` in the properties had `type` _removed_. The `bindRemoteObjectFunctionId` in the properties had `type` _removed_. The `configObjectId` in the properties had `type` _removed_. 
+* [`Runtime.ObjectPreview`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-ObjectPreview) - The `properties` in the properties had `type` _removed_. The `entries` in the properties had `type` _removed_. 
+* [`Runtime.PropertyPreview`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-PropertyPreview) - The `valuePreview` in the properties had `type` _removed_. 
+* [`Runtime.EntryPreview`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-EntryPreview) - The `key` in the properties had `type` _removed_. The `value` in the properties had `type` _removed_. 
+* [`Runtime.PropertyDescriptor`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-PropertyDescriptor) - The `value` in the properties had `type` _removed_. The `get` in the properties had `type` _removed_. The `set` in the properties had `type` _removed_. The `symbol` in the properties had `type` _removed_. 
+* [`Runtime.InternalPropertyDescriptor`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-InternalPropertyDescriptor) - The `value` in the properties had `type` _removed_. 
+* [`Runtime.CallArgument`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-CallArgument) - The `unserializableValue` in the properties had `type` _removed_. The `objectId` in the properties had `type` _removed_. 
+* [`Runtime.ExecutionContextDescription`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-ExecutionContextDescription) - The `id` in the properties had `type` _removed_. 
+* [`Runtime.ExceptionDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-ExceptionDetails) - The `scriptId` in the properties had `type` _removed_. The `stackTrace` in the properties had `type` _removed_. The `exception` in the properties had `type` _removed_. The `executionContextId` in the properties had `type` _removed_. 
+* [`Runtime.CallFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-CallFrame) - The `scriptId` in the properties had `type` _removed_. 
+* [`Runtime.StackTrace`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-StackTrace) - The `callFrames` in the properties had `type` _removed_. The `parent` in the properties had `type` _removed_. The `parentId` in the properties had `type` _removed_. 
+* [`Runtime.StackTraceId`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-StackTraceId) - The `debuggerId` in the properties had `type` _removed_. 
+#### `Schema`: modified command
+* [`Schema.getDomains`](https://chromedevtools.github.io/devtools-protocol/tot/Schema/#method-getDomains) - The `domains` in the return value had `type` _removed_. 
+#### `Accessibility`: modified command
+* [`Accessibility.getPartialAXTree`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#method-getPartialAXTree) - The `nodeId` in the parameters had `type` _removed_. The `backendNodeId` in the parameters had `type` _removed_. The `objectId` in the parameters had `type` _removed_. The `nodes` in the return value had `type` _removed_. 
+#### `Accessibility`: modified types
+* [`Accessibility.AXValueSource`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXValueSource) - The `type` in the properties had `type` _removed_. The `value` in the properties had `type` _removed_. The `attributeValue` in the properties had `type` _removed_. The `nativeSource` in the properties had `type` _removed_. The `nativeSourceValue` in the properties had `type` _removed_. 
+* [`Accessibility.AXRelatedNode`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXRelatedNode) - The `backendDOMNodeId` in the properties had `type` _removed_. 
+* [`Accessibility.AXProperty`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXProperty) - The `name` in the properties had `type` _removed_. The `value` in the properties had `type` _removed_. 
+* [`Accessibility.AXValue`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXValue) - The `type` in the properties had `type` _removed_. The `relatedNodes` in the properties had `type` _removed_. The `sources` in the properties had `type` _removed_. 
+* [`Accessibility.AXNode`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXNode) - The `nodeId` in the properties had `type` _removed_. The `ignoredReasons` in the properties had `type` _removed_. The `role` in the properties had `type` _removed_. The `name` in the properties had `type` _removed_. The `description` in the properties had `type` _removed_. The `value` in the properties had `type` _removed_. The `properties` in the properties had `type` _removed_. The `childIds` in the properties had `type` _removed_. The `backendDOMNodeId` in the properties had `type` _removed_. 
+#### `Animation`: modified command
+* [`Animation.resolveAnimation`](https://chromedevtools.github.io/devtools-protocol/tot/Animation/#method-resolveAnimation) - The `remoteObject` in the return value had `type` _removed_. 
+#### `Animation`: modified event
+* [`Animation.animationStarted`](https://chromedevtools.github.io/devtools-protocol/tot/Animation/#event-animationStarted) - The `animation` in the parameters had `type` _removed_. 
+#### `Animation`: modified types
+* [`Animation.Animation`](https://chromedevtools.github.io/devtools-protocol/tot/Animation/#type-Animation) - The `source` in the properties had `type` _removed_. 
+* [`Animation.AnimationEffect`](https://chromedevtools.github.io/devtools-protocol/tot/Animation/#type-AnimationEffect) - The `backendNodeId` in the properties had `type` _removed_. The `keyframesRule` in the properties had `type` _removed_. 
+* [`Animation.KeyframesRule`](https://chromedevtools.github.io/devtools-protocol/tot/Animation/#type-KeyframesRule) - The `keyframes` in the properties had `type` _removed_. 
+#### `ApplicationCache`: modified commands
+* [`ApplicationCache.getApplicationCacheForFrame`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#method-getApplicationCacheForFrame) - The `frameId` in the parameters had `type` _removed_. The `applicationCache` in the return value had `type` _removed_. 
+* [`ApplicationCache.getFramesWithManifests`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#method-getFramesWithManifests) - The `frameIds` in the return value had `type` _removed_. 
+* [`ApplicationCache.getManifestForFrame`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#method-getManifestForFrame) - The `frameId` in the parameters had `type` _removed_. 
+#### `ApplicationCache`: modified event
+* [`ApplicationCache.applicationCacheStatusUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#event-applicationCacheStatusUpdated) - The `frameId` in the parameters had `type` _removed_. 
+#### `ApplicationCache`: modified types
+* [`ApplicationCache.ApplicationCache`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#type-ApplicationCache) - The `resources` in the properties had `type` _removed_. 
+* [`ApplicationCache.FrameWithManifest`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#type-FrameWithManifest) - The `frameId` in the properties had `type` _removed_. 
+#### `Audits`: modified command
+* [`Audits.getEncodedResponse`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#method-getEncodedResponse) - The `requestId` in the parameters had `type` _removed_. 
+#### `Browser`: modified commands
+* [`Browser.grantPermissions`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-grantPermissions) - The `permissions` in the parameters had `type` _removed_. The `browserContextId` in the parameters had `type` _removed_. 
+* [`Browser.resetPermissions`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-resetPermissions) - The `browserContextId` in the parameters had `type` _removed_. 
+* [`Browser.getHistograms`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-getHistograms) - The `histograms` in the return value had `type` _removed_. 
+* [`Browser.getHistogram`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-getHistogram) - The `histogram` in the return value had `type` _removed_. 
+* [`Browser.getWindowBounds`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-getWindowBounds) - The `windowId` in the parameters had `type` _removed_. The `bounds` in the return value had `type` _removed_. 
+* [`Browser.getWindowForTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-getWindowForTarget) - The `targetId` in the parameters had `type` _removed_. The `windowId` in the return value had `type` _removed_. The `bounds` in the return value had `type` _removed_. 
+* [`Browser.setWindowBounds`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-setWindowBounds) - The `windowId` in the parameters had `type` _removed_. The `bounds` in the parameters had `type` _removed_. 
+#### `Browser`: modified types
+* [`Browser.Bounds`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-Bounds) - The `windowState` in the properties had `type` _removed_. 
+* [`Browser.Histogram`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-Histogram) - The `buckets` in the properties had `type` _removed_. 
+#### `CSS`: modified commands
+* [`CSS.addRule`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-addRule) - The `styleSheetId` in the parameters had `type` _removed_. The `location` in the parameters had `type` _removed_. The `rule` in the return value had `type` _removed_. 
+* [`CSS.collectClassNames`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-collectClassNames) - The `styleSheetId` in the parameters had `type` _removed_. 
+* [`CSS.createStyleSheet`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-createStyleSheet) - The `frameId` in the parameters had `type` _removed_. The `styleSheetId` in the return value had `type` _removed_. 
+* [`CSS.forcePseudoState`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-forcePseudoState) - The `nodeId` in the parameters had `type` _removed_. 
+* [`CSS.getBackgroundColors`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getBackgroundColors) - The `nodeId` in the parameters had `type` _removed_. 
+* [`CSS.getComputedStyleForNode`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getComputedStyleForNode) - The `nodeId` in the parameters had `type` _removed_. The `computedStyle` in the return value had `type` _removed_. 
+* [`CSS.getInlineStylesForNode`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getInlineStylesForNode) - The `nodeId` in the parameters had `type` _removed_. The `inlineStyle` in the return value had `type` _removed_. The `attributesStyle` in the return value had `type` _removed_. 
+* [`CSS.getMatchedStylesForNode`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getMatchedStylesForNode) - The `nodeId` in the parameters had `type` _removed_. The `inlineStyle` in the return value had `type` _removed_. The `attributesStyle` in the return value had `type` _removed_. The `matchedCSSRules` in the return value had `type` _removed_. The `pseudoElements` in the return value had `type` _removed_. The `inherited` in the return value had `type` _removed_. The `cssKeyframesRules` in the return value had `type` _removed_. 
+* [`CSS.getMediaQueries`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getMediaQueries) - The `medias` in the return value had `type` _removed_. 
+* [`CSS.getPlatformFontsForNode`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getPlatformFontsForNode) - The `nodeId` in the parameters had `type` _removed_. The `fonts` in the return value had `type` _removed_. 
+* [`CSS.getStyleSheetText`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getStyleSheetText) - The `styleSheetId` in the parameters had `type` _removed_. 
+* [`CSS.setEffectivePropertyValueForNode`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-setEffectivePropertyValueForNode) - The `nodeId` in the parameters had `type` _removed_. 
+* [`CSS.setKeyframeKey`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-setKeyframeKey) - The `styleSheetId` in the parameters had `type` _removed_. The `range` in the parameters had `type` _removed_. The `keyText` in the return value had `type` _removed_. 
+* [`CSS.setMediaText`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-setMediaText) - The `styleSheetId` in the parameters had `type` _removed_. The `range` in the parameters had `type` _removed_. The `media` in the return value had `type` _removed_. 
+* [`CSS.setRuleSelector`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-setRuleSelector) - The `styleSheetId` in the parameters had `type` _removed_. The `range` in the parameters had `type` _removed_. The `selectorList` in the return value had `type` _removed_. 
+* [`CSS.setStyleSheetText`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-setStyleSheetText) - The `styleSheetId` in the parameters had `type` _removed_. 
+* [`CSS.setStyleTexts`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-setStyleTexts) - The `edits` in the parameters had `type` _removed_. The `styles` in the return value had `type` _removed_. 
+* [`CSS.stopRuleUsageTracking`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-stopRuleUsageTracking) - The `ruleUsage` in the return value had `type` _removed_. 
+* [`CSS.takeCoverageDelta`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-takeCoverageDelta) - The `coverage` in the return value had `type` _removed_. 
+#### `CSS`: modified events
+* [`CSS.fontsUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#event-fontsUpdated) - The `font` in the parameters had `type` _removed_. 
+* [`CSS.styleSheetAdded`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#event-styleSheetAdded) - The `header` in the parameters had `type` _removed_. 
+* [`CSS.styleSheetChanged`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#event-styleSheetChanged) - The `styleSheetId` in the parameters had `type` _removed_. 
+* [`CSS.styleSheetRemoved`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#event-styleSheetRemoved) - The `styleSheetId` in the parameters had `type` _removed_. 
+#### `CSS`: modified types
+* [`CSS.PseudoElementMatches`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-PseudoElementMatches) - The `pseudoType` in the properties had `type` _removed_. The `matches` in the properties had `type` _removed_. 
+* [`CSS.InheritedStyleEntry`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-InheritedStyleEntry) - The `inlineStyle` in the properties had `type` _removed_. The `matchedCSSRules` in the properties had `type` _removed_. 
+* [`CSS.RuleMatch`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-RuleMatch) - The `rule` in the properties had `type` _removed_. 
+* [`CSS.Value`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-Value) - The `range` in the properties had `type` _removed_. 
+* [`CSS.SelectorList`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-SelectorList) - The `selectors` in the properties had `type` _removed_. 
+* [`CSS.CSSStyleSheetHeader`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSStyleSheetHeader) - The `styleSheetId` in the properties had `type` _removed_. The `frameId` in the properties had `type` _removed_. The `origin` in the properties had `type` _removed_. The `ownerNode` in the properties had `type` _removed_. 
+* [`CSS.CSSRule`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSRule) - The `styleSheetId` in the properties had `type` _removed_. The `selectorList` in the properties had `type` _removed_. The `origin` in the properties had `type` _removed_. The `style` in the properties had `type` _removed_. The `media` in the properties had `type` _removed_. 
+* [`CSS.RuleUsage`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-RuleUsage) - The `styleSheetId` in the properties had `type` _removed_. 
+* [`CSS.CSSStyle`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSStyle) - The `styleSheetId` in the properties had `type` _removed_. The `cssProperties` in the properties had `type` _removed_. The `shorthandEntries` in the properties had `type` _removed_. The `range` in the properties had `type` _removed_. 
+* [`CSS.CSSProperty`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSProperty) - The `range` in the properties had `type` _removed_. 
+* [`CSS.CSSMedia`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSMedia) - The `range` in the properties had `type` _removed_. The `styleSheetId` in the properties had `type` _removed_. The `mediaList` in the properties had `type` _removed_. 
+* [`CSS.MediaQuery`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-MediaQuery) - The `expressions` in the properties had `type` _removed_. 
+* [`CSS.MediaQueryExpression`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-MediaQueryExpression) - The `valueRange` in the properties had `type` _removed_. 
+* [`CSS.CSSKeyframesRule`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSKeyframesRule) - The `animationName` in the properties had `type` _removed_. The `keyframes` in the properties had `type` _removed_. 
+* [`CSS.CSSKeyframeRule`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSKeyframeRule) - The `styleSheetId` in the properties had `type` _removed_. The `origin` in the properties had `type` _removed_. The `keyText` in the properties had `type` _removed_. The `style` in the properties had `type` _removed_. 
+* [`CSS.StyleDeclarationEdit`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-StyleDeclarationEdit) - The `styleSheetId` in the properties had `type` _removed_. The `range` in the properties had `type` _removed_. 
+#### `CacheStorage`: modified commands
+* [`CacheStorage.deleteCache`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#method-deleteCache) - The `cacheId` in the parameters had `type` _removed_. 
+* [`CacheStorage.deleteEntry`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#method-deleteEntry) - The `cacheId` in the parameters had `type` _removed_. 
+* [`CacheStorage.requestCacheNames`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#method-requestCacheNames) - The `caches` in the return value had `type` _removed_. 
+* [`CacheStorage.requestCachedResponse`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#method-requestCachedResponse) - The `cacheId` in the parameters had `type` _removed_. The `response` in the return value had `type` _removed_. 
+* [`CacheStorage.requestEntries`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#method-requestEntries) - The `cacheId` in the parameters had `type` _removed_. The `cacheDataEntries` in the return value had `type` _removed_. 
+#### `CacheStorage`: modified types
+* [`CacheStorage.DataEntry`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#type-DataEntry) - The `requestHeaders` in the properties had `type` _removed_. The `responseHeaders` in the properties had `type` _removed_. 
+* [`CacheStorage.Cache`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#type-Cache) - The `cacheId` in the properties had `type` _removed_. 
+#### `DOM`: modified commands
+* [`DOM.collectClassNamesFromSubtree`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-collectClassNamesFromSubtree) - The `nodeId` in the parameters had `type` _removed_. 
+* [`DOM.copyTo`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-copyTo) - The `nodeId` in the parameters had `type` _removed_. The `targetNodeId` in the parameters had `type` _removed_. The `insertBeforeNodeId` in the parameters had `type` _removed_. The `nodeId` in the return value had `type` _removed_. 
+* [`DOM.describeNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-describeNode) - The `nodeId` in the parameters had `type` _removed_. The `backendNodeId` in the parameters had `type` _removed_. The `objectId` in the parameters had `type` _removed_. The `node` in the return value had `type` _removed_. 
+* [`DOM.focus`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-focus) - The `nodeId` in the parameters had `type` _removed_. The `backendNodeId` in the parameters had `type` _removed_. The `objectId` in the parameters had `type` _removed_. 
+* [`DOM.getAttributes`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getAttributes) - The `nodeId` in the parameters had `type` _removed_. 
+* [`DOM.getBoxModel`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getBoxModel) - The `nodeId` in the parameters had `type` _removed_. The `backendNodeId` in the parameters had `type` _removed_. The `objectId` in the parameters had `type` _removed_. The `model` in the return value had `type` _removed_. 
+* [`DOM.getContentQuads`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getContentQuads) - The `nodeId` in the parameters had `type` _removed_. The `backendNodeId` in the parameters had `type` _removed_. The `objectId` in the parameters had `type` _removed_. The `quads` in the return value had `type` _removed_. 
+* [`DOM.getDocument`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getDocument) - The `root` in the return value had `type` _removed_. 
+* [`DOM.getFlattenedDocument`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getFlattenedDocument) - The `nodes` in the return value had `type` _removed_. 
+* [`DOM.getNodeForLocation`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getNodeForLocation) - The `nodeId` in the return value had `type` _removed_. 
+* [`DOM.getOuterHTML`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getOuterHTML) - The `nodeId` in the parameters had `type` _removed_. The `backendNodeId` in the parameters had `type` _removed_. The `objectId` in the parameters had `type` _removed_. 
+* [`DOM.getRelayoutBoundary`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getRelayoutBoundary) - The `nodeId` in the parameters had `type` _removed_. The `nodeId` in the return value had `type` _removed_. 
+* [`DOM.getSearchResults`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getSearchResults) - The `nodeIds` in the return value had `type` _removed_. 
+* [`DOM.moveTo`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-moveTo) - The `nodeId` in the parameters had `type` _removed_. The `targetNodeId` in the parameters had `type` _removed_. The `insertBeforeNodeId` in the parameters had `type` _removed_. The `nodeId` in the return value had `type` _removed_. 
+* [`DOM.pushNodeByPathToFrontend`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-pushNodeByPathToFrontend) - The `nodeId` in the return value had `type` _removed_. 
+* [`DOM.pushNodesByBackendIdsToFrontend`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-pushNodesByBackendIdsToFrontend) - The `backendNodeIds` in the parameters had `type` _removed_. The `nodeIds` in the return value had `type` _removed_. 
+* [`DOM.querySelector`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-querySelector) - The `nodeId` in the parameters had `type` _removed_. The `nodeId` in the return value had `type` _removed_. 
+* [`DOM.querySelectorAll`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-querySelectorAll) - The `nodeId` in the parameters had `type` _removed_. The `nodeIds` in the return value had `type` _removed_. 
+* [`DOM.removeAttribute`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-removeAttribute) - The `nodeId` in the parameters had `type` _removed_. 
+* [`DOM.removeNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-removeNode) - The `nodeId` in the parameters had `type` _removed_. 
+* [`DOM.requestChildNodes`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-requestChildNodes) - The `nodeId` in the parameters had `type` _removed_. 
+* [`DOM.requestNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-requestNode) - The `objectId` in the parameters had `type` _removed_. The `nodeId` in the return value had `type` _removed_. 
+* [`DOM.resolveNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-resolveNode) - The `nodeId` in the parameters had `type` _removed_. The `backendNodeId` in the parameters had `type` _removed_. The `object` in the return value had `type` _removed_. 
+* [`DOM.setAttributeValue`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-setAttributeValue) - The `nodeId` in the parameters had `type` _removed_. 
+* [`DOM.setAttributesAsText`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-setAttributesAsText) - The `nodeId` in the parameters had `type` _removed_. 
+* [`DOM.setFileInputFiles`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-setFileInputFiles) - The `nodeId` in the parameters had `type` _removed_. The `backendNodeId` in the parameters had `type` _removed_. The `objectId` in the parameters had `type` _removed_. 
+* [`DOM.setInspectedNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-setInspectedNode) - The `nodeId` in the parameters had `type` _removed_. 
+* [`DOM.setNodeName`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-setNodeName) - The `nodeId` in the parameters had `type` _removed_. The `nodeId` in the return value had `type` _removed_. 
+* [`DOM.setNodeValue`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-setNodeValue) - The `nodeId` in the parameters had `type` _removed_. 
+* [`DOM.setOuterHTML`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-setOuterHTML) - The `nodeId` in the parameters had `type` _removed_. 
+* [`DOM.getFrameOwner`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getFrameOwner) - The `frameId` in the parameters had `type` _removed_. The `nodeId` in the return value had `type` _removed_. 
+#### `DOM`: modified events
+* [`DOM.attributeModified`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-attributeModified) - The `nodeId` in the parameters had `type` _removed_. 
+* [`DOM.attributeRemoved`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-attributeRemoved) - The `nodeId` in the parameters had `type` _removed_. 
+* [`DOM.characterDataModified`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-characterDataModified) - The `nodeId` in the parameters had `type` _removed_. 
+* [`DOM.childNodeCountUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-childNodeCountUpdated) - The `nodeId` in the parameters had `type` _removed_. 
+* [`DOM.childNodeInserted`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-childNodeInserted) - The `parentNodeId` in the parameters had `type` _removed_. The `previousNodeId` in the parameters had `type` _removed_. The `node` in the parameters had `type` _removed_. 
+* [`DOM.childNodeRemoved`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-childNodeRemoved) - The `parentNodeId` in the parameters had `type` _removed_. The `nodeId` in the parameters had `type` _removed_. 
+* [`DOM.distributedNodesUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-distributedNodesUpdated) - The `insertionPointId` in the parameters had `type` _removed_. The `distributedNodes` in the parameters had `type` _removed_. 
+* [`DOM.inlineStyleInvalidated`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-inlineStyleInvalidated) - The `nodeIds` in the parameters had `type` _removed_. 
+* [`DOM.pseudoElementAdded`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-pseudoElementAdded) - The `parentId` in the parameters had `type` _removed_. The `pseudoElement` in the parameters had `type` _removed_. 
+* [`DOM.pseudoElementRemoved`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-pseudoElementRemoved) - The `parentId` in the parameters had `type` _removed_. The `pseudoElementId` in the parameters had `type` _removed_. 
+* [`DOM.setChildNodes`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-setChildNodes) - The `parentId` in the parameters had `type` _removed_. The `nodes` in the parameters had `type` _removed_. 
+* [`DOM.shadowRootPopped`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-shadowRootPopped) - The `hostId` in the parameters had `type` _removed_. The `rootId` in the parameters had `type` _removed_. 
+* [`DOM.shadowRootPushed`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-shadowRootPushed) - The `hostId` in the parameters had `type` _removed_. The `root` in the parameters had `type` _removed_. 
+#### `DOM`: modified types
+* [`DOM.BackendNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-BackendNode) - The `backendNodeId` in the properties had `type` _removed_. 
+* [`DOM.Node`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-Node) - The `nodeId` in the properties had `type` _removed_. The `parentId` in the properties had `type` _removed_. The `backendNodeId` in the properties had `type` _removed_. The `children` in the properties had `type` _removed_. The `pseudoType` in the properties had `type` _removed_. The `shadowRootType` in the properties had `type` _removed_. The `frameId` in the properties had `type` _removed_. The `contentDocument` in the properties had `type` _removed_. The `shadowRoots` in the properties had `type` _removed_. The `templateContent` in the properties had `type` _removed_. The `pseudoElements` in the properties had `type` _removed_. The `importedDocument` in the properties had `type` _removed_. The `distributedNodes` in the properties had `type` _removed_. 
+* [`DOM.BoxModel`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-BoxModel) - The `content` in the properties had `type` _removed_. The `padding` in the properties had `type` _removed_. The `border` in the properties had `type` _removed_. The `margin` in the properties had `type` _removed_. The `shapeOutside` in the properties had `type` _removed_. 
+* [`DOM.ShapeOutsideInfo`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-ShapeOutsideInfo) - The `bounds` in the properties had `type` _removed_. 
+#### `DOMDebugger`: modified commands
+* [`DOMDebugger.getEventListeners`](https://chromedevtools.github.io/devtools-protocol/tot/DOMDebugger/#method-getEventListeners) - The `objectId` in the parameters had `type` _removed_. The `listeners` in the return value had `type` _removed_. 
+* [`DOMDebugger.removeDOMBreakpoint`](https://chromedevtools.github.io/devtools-protocol/tot/DOMDebugger/#method-removeDOMBreakpoint) - The `nodeId` in the parameters had `type` _removed_. The `type` in the parameters had `type` _removed_. 
+* [`DOMDebugger.setDOMBreakpoint`](https://chromedevtools.github.io/devtools-protocol/tot/DOMDebugger/#method-setDOMBreakpoint) - The `nodeId` in the parameters had `type` _removed_. The `type` in the parameters had `type` _removed_. 
+#### `DOMDebugger`: modified type
+* [`DOMDebugger.EventListener`](https://chromedevtools.github.io/devtools-protocol/tot/DOMDebugger/#type-EventListener) - The `scriptId` in the properties had `type` _removed_. The `handler` in the properties had `type` _removed_. The `originalHandler` in the properties had `type` _removed_. The `backendNodeId` in the properties had `type` _removed_. 
+#### `DOMSnapshot`: modified commands
+* [`DOMSnapshot.getSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#method-getSnapshot) - The `domNodes` in the return value had `type` _removed_. The `layoutTreeNodes` in the return value had `type` _removed_. The `computedStyles` in the return value had `type` _removed_. 
+* [`DOMSnapshot.captureSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#method-captureSnapshot) - The `documents` in the return value had `type` _removed_. 
+#### `DOMSnapshot`: modified types
+* [`DOMSnapshot.DOMNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DOMNode) - The `backendNodeId` in the properties had `type` _removed_. The `attributes` in the properties had `type` _removed_. The `frameId` in the properties had `type` _removed_. The `pseudoType` in the properties had `type` _removed_. The `shadowRootType` in the properties had `type` _removed_. The `eventListeners` in the properties had `type` _removed_. 
+* [`DOMSnapshot.InlineTextBox`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-InlineTextBox) - The `boundingBox` in the properties had `type` _removed_. 
+* [`DOMSnapshot.LayoutTreeNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-LayoutTreeNode) - The `boundingBox` in the properties had `type` _removed_. The `inlineTextNodes` in the properties had `type` _removed_. 
+* [`DOMSnapshot.ComputedStyle`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-ComputedStyle) - The `properties` in the properties had `type` _removed_. 
+* [`DOMSnapshot.ArrayOfStrings`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-ArrayOfStrings) - The items's `type` _removed_. 
+* [`DOMSnapshot.RareStringData`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-RareStringData) - The `value` in the properties had `type` _removed_. 
+* [`DOMSnapshot.DocumentSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DocumentSnapshot) - The `documentURL` in the properties had `type` _removed_. The `baseURL` in the properties had `type` _removed_. The `contentLanguage` in the properties had `type` _removed_. The `encodingName` in the properties had `type` _removed_. The `publicId` in the properties had `type` _removed_. The `systemId` in the properties had `type` _removed_. The `frameId` in the properties had `type` _removed_. The `nodes` in the properties had `type` _removed_. The `layout` in the properties had `type` _removed_. The `textBoxes` in the properties had `type` _removed_. 
+* [`DOMSnapshot.NodeTreeSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-NodeTreeSnapshot) - The `nodeName` in the properties had `type` _removed_. The `nodeValue` in the properties had `type` _removed_. The `backendNodeId` in the properties had `type` _removed_. The `attributes` in the properties had `type` _removed_. The `textValue` in the properties had `type` _removed_. The `inputValue` in the properties had `type` _removed_. The `inputChecked` in the properties had `type` _removed_. The `optionSelected` in the properties had `type` _removed_. The `contentDocumentIndex` in the properties had `type` _removed_. The `pseudoType` in the properties had `type` _removed_. The `isClickable` in the properties had `type` _removed_. The `currentSourceURL` in the properties had `type` _removed_. The `originURL` in the properties had `type` _removed_. 
+* [`DOMSnapshot.LayoutTreeSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-LayoutTreeSnapshot) - The `styles` in the properties had `type` _removed_. The `bounds` in the properties had `type` _removed_. The `text` in the properties had `type` _removed_. The `stackingContexts` in the properties had `type` _removed_. 
+* [`DOMSnapshot.TextBoxSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-TextBoxSnapshot) - The `bounds` in the properties had `type` _removed_. 
+#### `DOMStorage`: modified commands
+* [`DOMStorage.clear`](https://chromedevtools.github.io/devtools-protocol/tot/DOMStorage/#method-clear) - The `storageId` in the parameters had `type` _removed_. 
+* [`DOMStorage.getDOMStorageItems`](https://chromedevtools.github.io/devtools-protocol/tot/DOMStorage/#method-getDOMStorageItems) - The `storageId` in the parameters had `type` _removed_. The `entries` in the return value had `type` _removed_. 
+* [`DOMStorage.removeDOMStorageItem`](https://chromedevtools.github.io/devtools-protocol/tot/DOMStorage/#method-removeDOMStorageItem) - The `storageId` in the parameters had `type` _removed_. 
+* [`DOMStorage.setDOMStorageItem`](https://chromedevtools.github.io/devtools-protocol/tot/DOMStorage/#method-setDOMStorageItem) - The `storageId` in the parameters had `type` _removed_. 
+#### `DOMStorage`: modified events
+* [`DOMStorage.domStorageItemAdded`](https://chromedevtools.github.io/devtools-protocol/tot/DOMStorage/#event-domStorageItemAdded) - The `storageId` in the parameters had `type` _removed_. 
+* [`DOMStorage.domStorageItemRemoved`](https://chromedevtools.github.io/devtools-protocol/tot/DOMStorage/#event-domStorageItemRemoved) - The `storageId` in the parameters had `type` _removed_. 
+* [`DOMStorage.domStorageItemUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/DOMStorage/#event-domStorageItemUpdated) - The `storageId` in the parameters had `type` _removed_. 
+* [`DOMStorage.domStorageItemsCleared`](https://chromedevtools.github.io/devtools-protocol/tot/DOMStorage/#event-domStorageItemsCleared) - The `storageId` in the parameters had `type` _removed_. 
+#### `Database`: modified commands
+* [`Database.executeSQL`](https://chromedevtools.github.io/devtools-protocol/tot/Database/#method-executeSQL) - The `databaseId` in the parameters had `type` _removed_. The `sqlError` in the return value had `type` _removed_. 
+* [`Database.getDatabaseTableNames`](https://chromedevtools.github.io/devtools-protocol/tot/Database/#method-getDatabaseTableNames) - The `databaseId` in the parameters had `type` _removed_. 
+#### `Database`: modified event
+* [`Database.addDatabase`](https://chromedevtools.github.io/devtools-protocol/tot/Database/#event-addDatabase) - The `database` in the parameters had `type` _removed_. 
+#### `Database`: modified type
+* [`Database.Database`](https://chromedevtools.github.io/devtools-protocol/tot/Database/#type-Database) - The `id` in the properties had `type` _removed_. 
+#### `Emulation`: modified commands
+* [`Emulation.setDefaultBackgroundColorOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setDefaultBackgroundColorOverride) - The `color` in the parameters had `type` _removed_. 
+* [`Emulation.setDeviceMetricsOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setDeviceMetricsOverride) - The `screenOrientation` in the parameters had `type` _removed_. The `viewport` in the parameters had `type` _removed_. 
+* [`Emulation.setVirtualTimePolicy`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setVirtualTimePolicy) - The `policy` in the parameters had `type` _removed_. The `initialVirtualTime` in the parameters had `type` _removed_. 
+#### `HeadlessExperimental`: modified command
+* [`HeadlessExperimental.beginFrame`](https://chromedevtools.github.io/devtools-protocol/tot/HeadlessExperimental/#method-beginFrame) - The `screenshot` in the parameters had `type` _removed_. 
+#### `IO`: modified commands
+* [`IO.close`](https://chromedevtools.github.io/devtools-protocol/tot/IO/#method-close) - The `handle` in the parameters had `type` _removed_. 
+* [`IO.read`](https://chromedevtools.github.io/devtools-protocol/tot/IO/#method-read) - The `handle` in the parameters had `type` _removed_. 
+* [`IO.resolveBlob`](https://chromedevtools.github.io/devtools-protocol/tot/IO/#method-resolveBlob) - The `objectId` in the parameters had `type` _removed_. 
+#### `IndexedDB`: modified commands
+* [`IndexedDB.deleteObjectStoreEntries`](https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#method-deleteObjectStoreEntries) - The `keyRange` in the parameters had `type` _removed_. 
+* [`IndexedDB.requestData`](https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#method-requestData) - The `keyRange` in the parameters had `type` _removed_. The `objectStoreDataEntries` in the return value had `type` _removed_. 
+* [`IndexedDB.requestDatabase`](https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#method-requestDatabase) - The `databaseWithObjectStores` in the return value had `type` _removed_. 
+#### `IndexedDB`: modified types
+* [`IndexedDB.DatabaseWithObjectStores`](https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#type-DatabaseWithObjectStores) - The `objectStores` in the properties had `type` _removed_. 
+* [`IndexedDB.ObjectStore`](https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#type-ObjectStore) - The `keyPath` in the properties had `type` _removed_. The `indexes` in the properties had `type` _removed_. 
+* [`IndexedDB.ObjectStoreIndex`](https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#type-ObjectStoreIndex) - The `keyPath` in the properties had `type` _removed_. 
+* [`IndexedDB.Key`](https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#type-Key) - The `array` in the properties had `type` _removed_. 
+* [`IndexedDB.KeyRange`](https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#type-KeyRange) - The `lower` in the properties had `type` _removed_. The `upper` in the properties had `type` _removed_. 
+* [`IndexedDB.DataEntry`](https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#type-DataEntry) - The `key` in the properties had `type` _removed_. The `primaryKey` in the properties had `type` _removed_. The `value` in the properties had `type` _removed_. 
+#### `Input`: modified commands
+* [`Input.dispatchKeyEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-dispatchKeyEvent) - The `timestamp` in the parameters had `type` _removed_. 
+* [`Input.dispatchMouseEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-dispatchMouseEvent) - The `timestamp` in the parameters had `type` _removed_. 
+* [`Input.dispatchTouchEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-dispatchTouchEvent) - The `touchPoints` in the parameters had `type` _removed_. The `timestamp` in the parameters had `type` _removed_. 
+* [`Input.emulateTouchFromMouseEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-emulateTouchFromMouseEvent) - The `timestamp` in the parameters had `type` _removed_. 
+* [`Input.synthesizePinchGesture`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-synthesizePinchGesture) - The `gestureSourceType` in the parameters had `type` _removed_. 
+* [`Input.synthesizeScrollGesture`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-synthesizeScrollGesture) - The `gestureSourceType` in the parameters had `type` _removed_. 
+* [`Input.synthesizeTapGesture`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-synthesizeTapGesture) - The `gestureSourceType` in the parameters had `type` _removed_. 
+#### `LayerTree`: modified commands
+* [`LayerTree.compositingReasons`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#method-compositingReasons) - The `layerId` in the parameters had `type` _removed_. 
+* [`LayerTree.loadSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#method-loadSnapshot) - The `tiles` in the parameters had `type` _removed_. The `snapshotId` in the return value had `type` _removed_. 
+* [`LayerTree.makeSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#method-makeSnapshot) - The `layerId` in the parameters had `type` _removed_. The `snapshotId` in the return value had `type` _removed_. 
+* [`LayerTree.profileSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#method-profileSnapshot) - The `snapshotId` in the parameters had `type` _removed_. The `clipRect` in the parameters had `type` _removed_. The `timings` in the return value had `type` _removed_. 
+* [`LayerTree.releaseSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#method-releaseSnapshot) - The `snapshotId` in the parameters had `type` _removed_. 
+* [`LayerTree.replaySnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#method-replaySnapshot) - The `snapshotId` in the parameters had `type` _removed_. 
+* [`LayerTree.snapshotCommandLog`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#method-snapshotCommandLog) - The `snapshotId` in the parameters had `type` _removed_. 
+#### `LayerTree`: modified events
+* [`LayerTree.layerPainted`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#event-layerPainted) - The `layerId` in the parameters had `type` _removed_. The `clip` in the parameters had `type` _removed_. 
+* [`LayerTree.layerTreeDidChange`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#event-layerTreeDidChange) - The `layers` in the parameters had `type` _removed_. 
+#### `LayerTree`: modified types
+* [`LayerTree.ScrollRect`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#type-ScrollRect) - The `rect` in the properties had `type` _removed_. 
+* [`LayerTree.StickyPositionConstraint`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#type-StickyPositionConstraint) - The `stickyBoxRect` in the properties had `type` _removed_. The `containingBlockRect` in the properties had `type` _removed_. The `nearestLayerShiftingStickyBox` in the properties had `type` _removed_. The `nearestLayerShiftingContainingBlock` in the properties had `type` _removed_. 
+* [`LayerTree.Layer`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#type-Layer) - The `layerId` in the properties had `type` _removed_. The `parentLayerId` in the properties had `type` _removed_. The `backendNodeId` in the properties had `type` _removed_. The `scrollRects` in the properties had `type` _removed_. The `stickyPositionConstraint` in the properties had `type` _removed_. 
+#### `Log`: modified command
+* [`Log.startViolationsReport`](https://chromedevtools.github.io/devtools-protocol/tot/Log/#method-startViolationsReport) - The `config` in the parameters had `type` _removed_. 
+#### `Log`: modified event
+* [`Log.entryAdded`](https://chromedevtools.github.io/devtools-protocol/tot/Log/#event-entryAdded) - The `entry` in the parameters had `type` _removed_. 
+#### `Log`: modified type
+* [`Log.LogEntry`](https://chromedevtools.github.io/devtools-protocol/tot/Log/#type-LogEntry) - The `timestamp` in the properties had `type` _removed_. The `stackTrace` in the properties had `type` _removed_. The `networkRequestId` in the properties had `type` _removed_. The `args` in the properties had `type` _removed_. 
+#### `Memory`: modified commands
+* [`Memory.simulatePressureNotification`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#method-simulatePressureNotification) - The `level` in the parameters had `type` _removed_. 
+* [`Memory.getAllTimeSamplingProfile`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#method-getAllTimeSamplingProfile) - The `profile` in the return value had `type` _removed_. 
+* [`Memory.getBrowserSamplingProfile`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#method-getBrowserSamplingProfile) - The `profile` in the return value had `type` _removed_. 
+* [`Memory.getSamplingProfile`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#method-getSamplingProfile) - The `profile` in the return value had `type` _removed_. 
+#### `Memory`: modified type
+* [`Memory.SamplingProfile`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#type-SamplingProfile) - The `samples` in the properties had `type` _removed_. The `modules` in the properties had `type` _removed_. 
+#### `Network`: modified commands
+* [`Network.continueInterceptedRequest`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-continueInterceptedRequest) - The `interceptionId` in the parameters had `type` _removed_. The `errorReason` in the parameters had `type` _removed_. The `headers` in the parameters had `type` _removed_. The `authChallengeResponse` in the parameters had `type` _removed_. 
+* [`Network.emulateNetworkConditions`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-emulateNetworkConditions) - The `connectionType` in the parameters had `type` _removed_. 
+* [`Network.getAllCookies`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-getAllCookies) - The `cookies` in the return value had `type` _removed_. 
+* [`Network.getCookies`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-getCookies) - The `cookies` in the return value had `type` _removed_. 
+* [`Network.getResponseBody`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-getResponseBody) - The `requestId` in the parameters had `type` _removed_. 
+* [`Network.getRequestPostData`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-getRequestPostData) - The `requestId` in the parameters had `type` _removed_. 
+* [`Network.getResponseBodyForInterception`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-getResponseBodyForInterception) - The `interceptionId` in the parameters had `type` _removed_. 
+* [`Network.takeResponseBodyForInterceptionAsStream`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-takeResponseBodyForInterceptionAsStream) - The `interceptionId` in the parameters had `type` _removed_. The `stream` in the return value had `type` _removed_. 
+* [`Network.replayXHR`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-replayXHR) - The `requestId` in the parameters had `type` _removed_. 
+* [`Network.searchInResponseBody`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-searchInResponseBody) - The `requestId` in the parameters had `type` _removed_. The `result` in the return value had `type` _removed_. 
+* [`Network.setCookie`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setCookie) - The `sameSite` in the parameters had `type` _removed_. The `expires` in the parameters had `type` _removed_. 
+* [`Network.setCookies`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setCookies) - The `cookies` in the parameters had `type` _removed_. 
+* [`Network.setExtraHTTPHeaders`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setExtraHTTPHeaders) - The `headers` in the parameters had `type` _removed_. 
+* [`Network.setRequestInterception`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setRequestInterception) - The `patterns` in the parameters had `type` _removed_. 
+#### `Network`: modified events
+* [`Network.dataReceived`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-dataReceived) - The `requestId` in the parameters had `type` _removed_. The `timestamp` in the parameters had `type` _removed_. 
+* [`Network.eventSourceMessageReceived`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-eventSourceMessageReceived) - The `requestId` in the parameters had `type` _removed_. The `timestamp` in the parameters had `type` _removed_. 
+* [`Network.loadingFailed`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-loadingFailed) - The `requestId` in the parameters had `type` _removed_. The `timestamp` in the parameters had `type` _removed_. The `type` in the parameters had `type` _removed_. The `blockedReason` in the parameters had `type` _removed_. 
+* [`Network.loadingFinished`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-loadingFinished) - The `requestId` in the parameters had `type` _removed_. The `timestamp` in the parameters had `type` _removed_. 
+* [`Network.requestIntercepted`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestIntercepted) - The `interceptionId` in the parameters had `type` _removed_. The `request` in the parameters had `type` _removed_. The `frameId` in the parameters had `type` _removed_. The `resourceType` in the parameters had `type` _removed_. The `authChallenge` in the parameters had `type` _removed_. The `responseErrorReason` in the parameters had `type` _removed_. The `responseHeaders` in the parameters had `type` _removed_. 
+* [`Network.requestServedFromCache`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestServedFromCache) - The `requestId` in the parameters had `type` _removed_. 
+* [`Network.requestWillBeSent`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestWillBeSent) - The `requestId` in the parameters had `type` _removed_. The `loaderId` in the parameters had `type` _removed_. The `request` in the parameters had `type` _removed_. The `timestamp` in the parameters had `type` _removed_. The `wallTime` in the parameters had `type` _removed_. The `initiator` in the parameters had `type` _removed_. The `redirectResponse` in the parameters had `type` _removed_. The `type` in the parameters had `type` _removed_. The `frameId` in the parameters had `type` _removed_. 
+* [`Network.resourceChangedPriority`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-resourceChangedPriority) - The `requestId` in the parameters had `type` _removed_. The `newPriority` in the parameters had `type` _removed_. The `timestamp` in the parameters had `type` _removed_. 
+* [`Network.signedExchangeReceived`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-signedExchangeReceived) - The `requestId` in the parameters had `type` _removed_. The `info` in the parameters had `type` _removed_. 
+* [`Network.responseReceived`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-responseReceived) - The `requestId` in the parameters had `type` _removed_. The `loaderId` in the parameters had `type` _removed_. The `timestamp` in the parameters had `type` _removed_. The `type` in the parameters had `type` _removed_. The `response` in the parameters had `type` _removed_. The `frameId` in the parameters had `type` _removed_. 
+* [`Network.webSocketClosed`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webSocketClosed) - The `requestId` in the parameters had `type` _removed_. The `timestamp` in the parameters had `type` _removed_. 
+* [`Network.webSocketCreated`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webSocketCreated) - The `requestId` in the parameters had `type` _removed_. The `initiator` in the parameters had `type` _removed_. 
+* [`Network.webSocketFrameError`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webSocketFrameError) - The `requestId` in the parameters had `type` _removed_. The `timestamp` in the parameters had `type` _removed_. 
+* [`Network.webSocketFrameReceived`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webSocketFrameReceived) - The `requestId` in the parameters had `type` _removed_. The `timestamp` in the parameters had `type` _removed_. The `response` in the parameters had `type` _removed_. 
+* [`Network.webSocketFrameSent`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webSocketFrameSent) - The `requestId` in the parameters had `type` _removed_. The `timestamp` in the parameters had `type` _removed_. The `response` in the parameters had `type` _removed_. 
+* [`Network.webSocketHandshakeResponseReceived`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webSocketHandshakeResponseReceived) - The `requestId` in the parameters had `type` _removed_. The `timestamp` in the parameters had `type` _removed_. The `response` in the parameters had `type` _removed_. 
+* [`Network.webSocketWillSendHandshakeRequest`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webSocketWillSendHandshakeRequest) - The `requestId` in the parameters had `type` _removed_. The `timestamp` in the parameters had `type` _removed_. The `wallTime` in the parameters had `type` _removed_. The `request` in the parameters had `type` _removed_. 
+#### `Network`: modified types
+* [`Network.Request`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Request) - The `headers` in the properties had `type` _removed_. The `mixedContentType` in the properties had `type` _removed_. The `initialPriority` in the properties had `type` _removed_. 
+* [`Network.SignedCertificateTimestamp`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedCertificateTimestamp) - The `timestamp` in the properties had `type` _removed_. 
+* [`Network.SecurityDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SecurityDetails) - The `certificateId` in the properties had `type` _removed_. The `validFrom` in the properties had `type` _removed_. The `validTo` in the properties had `type` _removed_. The `signedCertificateTimestampList` in the properties had `type` _removed_. The `certificateTransparencyCompliance` in the properties had `type` _removed_. 
+* [`Network.Response`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Response) - The `headers` in the properties had `type` _removed_. The `requestHeaders` in the properties had `type` _removed_. The `timing` in the properties had `type` _removed_. The `securityState` in the properties had `type` _removed_. The `securityDetails` in the properties had `type` _removed_. 
+* [`Network.WebSocketRequest`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-WebSocketRequest) - The `headers` in the properties had `type` _removed_. 
+* [`Network.WebSocketResponse`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-WebSocketResponse) - The `headers` in the properties had `type` _removed_. The `requestHeaders` in the properties had `type` _removed_. 
+* [`Network.CachedResource`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CachedResource) - The `type` in the properties had `type` _removed_. The `response` in the properties had `type` _removed_. 
+* [`Network.Initiator`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Initiator) - The `stack` in the properties had `type` _removed_. 
+* [`Network.Cookie`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Cookie) - The `sameSite` in the properties had `type` _removed_. 
+* [`Network.CookieParam`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CookieParam) - The `sameSite` in the properties had `type` _removed_. The `expires` in the properties had `type` _removed_. 
+* [`Network.RequestPattern`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-RequestPattern) - The `resourceType` in the properties had `type` _removed_. The `interceptionStage` in the properties had `type` _removed_. 
+* [`Network.SignedExchangeHeader`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedExchangeHeader) - The `responseHeaders` in the properties had `type` _removed_. The `signatures` in the properties had `type` _removed_. 
+* [`Network.SignedExchangeError`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedExchangeError) - The `errorField` in the properties had `type` _removed_. 
+* [`Network.SignedExchangeInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedExchangeInfo) - The `outerResponse` in the properties had `type` _removed_. The `header` in the properties had `type` _removed_. The `securityDetails` in the properties had `type` _removed_. The `errors` in the properties had `type` _removed_. 
+#### `Overlay`: modified commands
+* [`Overlay.getHighlightObjectForTest`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-getHighlightObjectForTest) - The `nodeId` in the parameters had `type` _removed_. 
+* [`Overlay.highlightFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-highlightFrame) - The `frameId` in the parameters had `type` _removed_. The `contentColor` in the parameters had `type` _removed_. The `contentOutlineColor` in the parameters had `type` _removed_. 
+* [`Overlay.highlightNode`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-highlightNode) - The `highlightConfig` in the parameters had `type` _removed_. The `nodeId` in the parameters had `type` _removed_. The `backendNodeId` in the parameters had `type` _removed_. The `objectId` in the parameters had `type` _removed_. 
+* [`Overlay.highlightQuad`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-highlightQuad) - The `quad` in the parameters had `type` _removed_. The `color` in the parameters had `type` _removed_. The `outlineColor` in the parameters had `type` _removed_. 
+* [`Overlay.highlightRect`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-highlightRect) - The `color` in the parameters had `type` _removed_. The `outlineColor` in the parameters had `type` _removed_. 
+* [`Overlay.setInspectMode`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-setInspectMode) - The `mode` in the parameters had `type` _removed_. The `highlightConfig` in the parameters had `type` _removed_. 
+#### `Overlay`: modified events
+* [`Overlay.inspectNodeRequested`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#event-inspectNodeRequested) - The `backendNodeId` in the parameters had `type` _removed_. 
+* [`Overlay.nodeHighlightRequested`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#event-nodeHighlightRequested) - The `nodeId` in the parameters had `type` _removed_. 
+* [`Overlay.screenshotRequested`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#event-screenshotRequested) - The `viewport` in the parameters had `type` _removed_. 
+#### `Overlay`: modified type
+* [`Overlay.HighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-HighlightConfig) - The `contentColor` in the properties had `type` _removed_. The `paddingColor` in the properties had `type` _removed_. The `borderColor` in the properties had `type` _removed_. The `marginColor` in the properties had `type` _removed_. The `eventTargetColor` in the properties had `type` _removed_. The `shapeColor` in the properties had `type` _removed_. The `shapeMarginColor` in the properties had `type` _removed_. The `cssGridColor` in the properties had `type` _removed_. 
+#### `Page`: modified commands
+* [`Page.addScriptToEvaluateOnLoad`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-addScriptToEvaluateOnLoad) - The `identifier` in the return value had `type` _removed_. 
+* [`Page.addScriptToEvaluateOnNewDocument`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-addScriptToEvaluateOnNewDocument) - The `identifier` in the return value had `type` _removed_. 
+* [`Page.captureScreenshot`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-captureScreenshot) - The `clip` in the parameters had `type` _removed_. 
+* [`Page.createIsolatedWorld`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-createIsolatedWorld) - The `frameId` in the parameters had `type` _removed_. The `executionContextId` in the return value had `type` _removed_. 
+* [`Page.getAppManifest`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getAppManifest) - The `errors` in the return value had `type` _removed_. 
+* [`Page.getCookies`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getCookies) - The `cookies` in the return value had `type` _removed_. 
+* [`Page.getFrameTree`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getFrameTree) - The `frameTree` in the return value had `type` _removed_. 
+* [`Page.getLayoutMetrics`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getLayoutMetrics) - The `layoutViewport` in the return value had `type` _removed_. The `visualViewport` in the return value had `type` _removed_. The `contentSize` in the return value had `type` _removed_. 
+* [`Page.getNavigationHistory`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getNavigationHistory) - The `entries` in the return value had `type` _removed_. 
+* [`Page.getResourceContent`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getResourceContent) - The `frameId` in the parameters had `type` _removed_. 
+* [`Page.getResourceTree`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getResourceTree) - The `frameTree` in the return value had `type` _removed_. 
+* [`Page.navigate`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-navigate) - The `transitionType` in the parameters had `type` _removed_. The `frameId` in the parameters had `type` _removed_. The `frameId` in the return value had `type` _removed_. The `loaderId` in the return value had `type` _removed_. 
+* [`Page.removeScriptToEvaluateOnLoad`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-removeScriptToEvaluateOnLoad) - The `identifier` in the parameters had `type` _removed_. 
+* [`Page.removeScriptToEvaluateOnNewDocument`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-removeScriptToEvaluateOnNewDocument) - The `identifier` in the parameters had `type` _removed_. 
+* [`Page.searchInResource`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-searchInResource) - The `frameId` in the parameters had `type` _removed_. The `result` in the return value had `type` _removed_. 
+* [`Page.setDeviceMetricsOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setDeviceMetricsOverride) - The `screenOrientation` in the parameters had `type` _removed_. The `viewport` in the parameters had `type` _removed_. 
+* [`Page.setFontFamilies`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setFontFamilies) - The `fontFamilies` in the parameters had `type` _removed_. 
+* [`Page.setFontSizes`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setFontSizes) - The `fontSizes` in the parameters had `type` _removed_. 
+* [`Page.setDocumentContent`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setDocumentContent) - The `frameId` in the parameters had `type` _removed_. 
+#### `Page`: modified events
+* [`Page.domContentEventFired`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-domContentEventFired) - The `timestamp` in the parameters had `type` _removed_. 
+* [`Page.frameAttached`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameAttached) - The `frameId` in the parameters had `type` _removed_. The `parentFrameId` in the parameters had `type` _removed_. The `stack` in the parameters had `type` _removed_. 
+* [`Page.frameClearedScheduledNavigation`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameClearedScheduledNavigation) - The `frameId` in the parameters had `type` _removed_. 
+* [`Page.frameDetached`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameDetached) - The `frameId` in the parameters had `type` _removed_. 
+* [`Page.frameNavigated`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameNavigated) - The `frame` in the parameters had `type` _removed_. 
+* [`Page.frameScheduledNavigation`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameScheduledNavigation) - The `frameId` in the parameters had `type` _removed_. 
+* [`Page.frameStartedLoading`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameStartedLoading) - The `frameId` in the parameters had `type` _removed_. 
+* [`Page.frameStoppedLoading`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameStoppedLoading) - The `frameId` in the parameters had `type` _removed_. 
+* [`Page.javascriptDialogOpening`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-javascriptDialogOpening) - The `type` in the parameters had `type` _removed_. 
+* [`Page.lifecycleEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-lifecycleEvent) - The `frameId` in the parameters had `type` _removed_. The `loaderId` in the parameters had `type` _removed_. The `timestamp` in the parameters had `type` _removed_. 
+* [`Page.loadEventFired`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-loadEventFired) - The `timestamp` in the parameters had `type` _removed_. 
+* [`Page.navigatedWithinDocument`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-navigatedWithinDocument) - The `frameId` in the parameters had `type` _removed_. 
+* [`Page.screencastFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-screencastFrame) - The `metadata` in the parameters had `type` _removed_. 
+#### `Page`: modified types
+* [`Page.Frame`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Frame) - The `loaderId` in the properties had `type` _removed_. 
+* [`Page.FrameResource`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-FrameResource) - The `type` in the properties had `type` _removed_. The `lastModified` in the properties had `type` _removed_. 
+* [`Page.FrameResourceTree`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-FrameResourceTree) - The `frame` in the properties had `type` _removed_. The `childFrames` in the properties had `type` _removed_. The `resources` in the properties had `type` _removed_. 
+* [`Page.FrameTree`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-FrameTree) - The `frame` in the properties had `type` _removed_. The `childFrames` in the properties had `type` _removed_. 
+* [`Page.NavigationEntry`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-NavigationEntry) - The `transitionType` in the properties had `type` _removed_. 
+* [`Page.ScreencastFrameMetadata`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ScreencastFrameMetadata) - The `timestamp` in the properties had `type` _removed_. 
+#### `Performance`: modified command
+* [`Performance.getMetrics`](https://chromedevtools.github.io/devtools-protocol/tot/Performance/#method-getMetrics) - The `metrics` in the return value had `type` _removed_. 
+#### `Performance`: modified event
+* [`Performance.metrics`](https://chromedevtools.github.io/devtools-protocol/tot/Performance/#event-metrics) - The `metrics` in the parameters had `type` _removed_. 
+#### `Security`: modified command
+* [`Security.handleCertificateError`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#method-handleCertificateError) - The `action` in the parameters had `type` _removed_. 
+#### `Security`: modified event
+* [`Security.securityStateChanged`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#event-securityStateChanged) - The `securityState` in the parameters had `type` _removed_. The `explanations` in the parameters had `type` _removed_. The `insecureContentStatus` in the parameters had `type` _removed_. 
+#### `Security`: modified types
+* [`Security.SecurityStateExplanation`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#type-SecurityStateExplanation) - The `securityState` in the properties had `type` _removed_. The `mixedContentType` in the properties had `type` _removed_. 
+* [`Security.InsecureContentStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#type-InsecureContentStatus) - The `ranInsecureContentStyle` in the properties had `type` _removed_. The `displayedInsecureContentStyle` in the properties had `type` _removed_. 
+#### `ServiceWorker`: modified events
+* [`ServiceWorker.workerErrorReported`](https://chromedevtools.github.io/devtools-protocol/tot/ServiceWorker/#event-workerErrorReported) - The `errorMessage` in the parameters had `type` _removed_. 
+* [`ServiceWorker.workerRegistrationUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/ServiceWorker/#event-workerRegistrationUpdated) - The `registrations` in the parameters had `type` _removed_. 
+* [`ServiceWorker.workerVersionUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/ServiceWorker/#event-workerVersionUpdated) - The `versions` in the parameters had `type` _removed_. 
+#### `ServiceWorker`: modified type
+* [`ServiceWorker.ServiceWorkerVersion`](https://chromedevtools.github.io/devtools-protocol/tot/ServiceWorker/#type-ServiceWorkerVersion) - The `runningStatus` in the properties had `type` _removed_. The `status` in the properties had `type` _removed_. The `controlledClients` in the properties had `type` _removed_. The `targetId` in the properties had `type` _removed_. 
+#### `Storage`: modified command
+* [`Storage.getUsageAndQuota`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#method-getUsageAndQuota) - The `usageBreakdown` in the return value had `type` _removed_. 
+#### `Storage`: modified type
+* [`Storage.UsageForType`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-UsageForType) - The `storageType` in the properties had `type` _removed_. 
+#### `SystemInfo`: modified command
+* [`SystemInfo.getInfo`](https://chromedevtools.github.io/devtools-protocol/tot/SystemInfo/#method-getInfo) - The `gpu` in the return value had `type` _removed_. 
+#### `SystemInfo`: modified type
+* [`SystemInfo.GPUInfo`](https://chromedevtools.github.io/devtools-protocol/tot/SystemInfo/#type-GPUInfo) - The `devices` in the properties had `type` _removed_. 
+#### `Target`: modified commands
+* [`Target.activateTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-activateTarget) - The `targetId` in the parameters had `type` _removed_. 
+* [`Target.attachToTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-attachToTarget) - The `targetId` in the parameters had `type` _removed_. The `sessionId` in the return value had `type` _removed_. 
+* [`Target.attachToBrowserTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-attachToBrowserTarget) - The `sessionId` in the return value had `type` _removed_. 
+* [`Target.closeTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-closeTarget) - The `targetId` in the parameters had `type` _removed_. 
+* [`Target.exposeDevToolsProtocol`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-exposeDevToolsProtocol) - The `targetId` in the parameters had `type` _removed_. 
+* [`Target.createBrowserContext`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-createBrowserContext) - The `browserContextId` in the return value had `type` _removed_. 
+* [`Target.getBrowserContexts`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-getBrowserContexts) - The `browserContextIds` in the return value had `type` _removed_. 
+* [`Target.createTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-createTarget) - The `browserContextId` in the parameters had `type` _removed_. The `targetId` in the return value had `type` _removed_. 
+* [`Target.detachFromTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-detachFromTarget) - The `sessionId` in the parameters had `type` _removed_. The `targetId` in the parameters had `type` _removed_. 
+* [`Target.disposeBrowserContext`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-disposeBrowserContext) - The `browserContextId` in the parameters had `type` _removed_. 
+* [`Target.getTargetInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-getTargetInfo) - The `targetId` in the parameters had `type` _removed_. The `targetInfo` in the return value had `type` _removed_. 
+* [`Target.getTargets`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-getTargets) - The `targetInfos` in the return value had `type` _removed_. 
+* [`Target.sendMessageToTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-sendMessageToTarget) - The `sessionId` in the parameters had `type` _removed_. The `targetId` in the parameters had `type` _removed_. 
+* [`Target.setRemoteLocations`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-setRemoteLocations) - The `locations` in the parameters had `type` _removed_. 
+#### `Target`: modified events
+* [`Target.attachedToTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#event-attachedToTarget) - The `sessionId` in the parameters had `type` _removed_. The `targetInfo` in the parameters had `type` _removed_. 
+* [`Target.detachedFromTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#event-detachedFromTarget) - The `sessionId` in the parameters had `type` _removed_. The `targetId` in the parameters had `type` _removed_. 
+* [`Target.receivedMessageFromTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#event-receivedMessageFromTarget) - The `sessionId` in the parameters had `type` _removed_. The `targetId` in the parameters had `type` _removed_. 
+* [`Target.targetCreated`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#event-targetCreated) - The `targetInfo` in the parameters had `type` _removed_. 
+* [`Target.targetDestroyed`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#event-targetDestroyed) - The `targetId` in the parameters had `type` _removed_. 
+* [`Target.targetCrashed`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#event-targetCrashed) - The `targetId` in the parameters had `type` _removed_. 
+* [`Target.targetInfoChanged`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#event-targetInfoChanged) - The `targetInfo` in the parameters had `type` _removed_. 
+#### `Target`: modified type
+* [`Target.TargetInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#type-TargetInfo) - The `targetId` in the properties had `type` _removed_. The `openerId` in the properties had `type` _removed_. The `browserContextId` in the properties had `type` _removed_. 
+#### `Tracing`: modified command
+* [`Tracing.start`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#method-start) - The `streamCompression` in the parameters had `type` _removed_. The `traceConfig` in the parameters had `type` _removed_. 
+#### `Tracing`: modified event
+* [`Tracing.tracingComplete`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#event-tracingComplete) - The `stream` in the parameters had `type` _removed_. The `streamCompression` in the parameters had `type` _removed_. 
+#### `Tracing`: modified type
+* [`Tracing.TraceConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#type-TraceConfig) - The `memoryDumpConfig` in the properties had `type` _removed_. 
+
+
 ## Roll protocol to r587766
 ###### _2018-08-30 14:16:04_ | Diff: [41333c5...e191211](https://github.com/ChromeDevTools/devtools-protocol/compare/41333c5...e191211)
 #### `Console`: modified event

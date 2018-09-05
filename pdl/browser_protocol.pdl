@@ -516,6 +516,9 @@ domain Browser
   # Close browser gracefully.
   command close
 
+  # Crashes browser on the main thread.
+  experimental command crash
+
   # Returns version information.
   command getVersion
     returns
@@ -4702,6 +4705,7 @@ domain Page
     enum
       link
       typed
+      address_bar
       auto_bookmark
       auto_subframe
       manual_subframe

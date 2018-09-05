@@ -714,6 +714,11 @@ export namespace ProtocolProxyApi {
         close(): Promise<void>;
 
         /**
+         * Crashes browser on the main thread.
+         */
+        crash(): Promise<void>;
+
+        /**
          * Returns version information.
          */
         getVersion(): Promise<Protocol.Browser.GetVersionResponse>;

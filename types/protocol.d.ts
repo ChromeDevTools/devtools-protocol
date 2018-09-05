@@ -8797,7 +8797,7 @@ export namespace Protocol {
         /**
          * Transition type.
          */
-        export type TransitionType = ('link' | 'typed' | 'auto_bookmark' | 'auto_subframe' | 'manual_subframe' | 'generated' | 'auto_toplevel' | 'form_submit' | 'reload' | 'keyword' | 'keyword_generated' | 'other');
+        export type TransitionType = ('link' | 'typed' | 'address_bar' | 'auto_bookmark' | 'auto_subframe' | 'manual_subframe' | 'generated' | 'auto_toplevel' | 'form_submit' | 'reload' | 'keyword' | 'keyword_generated' | 'other');
 
         /**
          * Navigation history entry.

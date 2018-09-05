@@ -465,6 +465,19 @@ Protocol.BrowserAgent.CloseResponse;
 Protocol.BrowserAgent.prototype.invoke_close = function(obj) {};
 
 /**
+ * @return {!Promise<undefined>}
+ */
+Protocol.BrowserAgent.prototype.crash = function() {};
+/** @typedef {Object|undefined} */
+Protocol.BrowserAgent.CrashRequest;
+/** @typedef {Object|undefined} */
+Protocol.BrowserAgent.CrashResponse;
+/**
+ * @param {!Protocol.BrowserAgent.CrashRequest} obj
+ * @return {!Promise<!Protocol.BrowserAgent.CrashResponse>} */
+Protocol.BrowserAgent.prototype.invoke_crash = function(obj) {};
+
+/**
  * @return {!Promise<?string>}
  */
 Protocol.BrowserAgent.prototype.getVersion = function() {};
@@ -5424,6 +5437,7 @@ Protocol.Page.ScriptIdentifier;
 Protocol.Page.TransitionType = {
     Link: "link",
     Typed: "typed",
+    Address_bar: "address_bar",
     Auto_bookmark: "auto_bookmark",
     Auto_subframe: "auto_subframe",
     Manual_subframe: "manual_subframe",

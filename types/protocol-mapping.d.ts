@@ -1127,6 +1127,13 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Crashes browser on the main thread.
+         */
+        'Browser.crash': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
          * Returns version information.
          */
         'Browser.getVersion': {
