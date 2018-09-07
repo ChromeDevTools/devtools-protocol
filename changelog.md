@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r588752
+###### _2018-09-04 20:15:55_ | Diff: [359d29d...59c4dec](https://github.com/ChromeDevTools/devtools-protocol/compare/359d29d...59c4dec)
+#### `DOMSnapshot`: modified types
+* [`DOMSnapshot.DOMNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DOMNode) - The properties's `scrollOffsetX` _added_. The properties's `scrollOffsetY` _added_. 
+* [`DOMSnapshot.InlineTextBox`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-InlineTextBox) - The `boundingBox` in the properties had `description` _updated_. 
+* [`DOMSnapshot.LayoutTreeNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-LayoutTreeNode) - The `boundingBox` in the properties had `description` _updated_. 
+* [`DOMSnapshot.DocumentSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DocumentSnapshot) - The properties's `scrollOffsetX` _added_. The properties's `scrollOffsetY` _added_. 
+
+
 ## Roll protocol to r588740
 ###### _2018-09-04 19:16:30_ | Diff: [cb9aed5...359d29d](https://github.com/ChromeDevTools/devtools-protocol/compare/cb9aed5...359d29d)
 #### `Browser`: new command

@@ -4084,6 +4084,26 @@ Protocol.NetworkAgent.SetUserAgentOverrideResponse;
  * @return {!Promise<!Protocol.NetworkAgent.SetUserAgentOverrideResponse>} */
 Protocol.NetworkAgent.prototype.invoke_setUserAgentOverride = function(obj) {};
 
+/** @enum {string} */
+Protocol.Network.ResourceType = {
+    Document: "Document",
+    Stylesheet: "Stylesheet",
+    Image: "Image",
+    Media: "Media",
+    Font: "Font",
+    Script: "Script",
+    TextTrack: "TextTrack",
+    XHR: "XHR",
+    Fetch: "Fetch",
+    EventSource: "EventSource",
+    WebSocket: "WebSocket",
+    Manifest: "Manifest",
+    SignedExchange: "SignedExchange",
+    Ping: "Ping",
+    CSPViolationReport: "CSPViolationReport",
+    Other: "Other"
+};
+
 /** @typedef {string} */
 Protocol.Network.LoaderId;
 
@@ -4203,7 +4223,7 @@ Protocol.Network.WebSocketResponse;
 /** @typedef {!{opcode:(number), mask:(boolean), payloadData:(string)}} */
 Protocol.Network.WebSocketFrame;
 
-/** @typedef {!{url:(string), type:(Protocol.Page.ResourceType), response:(Protocol.Network.Response|undefined), bodySize:(number)}} */
+/** @typedef {!{url:(string), type:(Protocol.Network.ResourceType), response:(Protocol.Network.Response|undefined), bodySize:(number)}} */
 Protocol.Network.CachedResource;
 
 /** @enum {string} */
@@ -4249,7 +4269,7 @@ Protocol.Network.InterceptionStage = {
     HeadersReceived: "HeadersReceived"
 };
 
-/** @typedef {!{urlPattern:(string|undefined), resourceType:(Protocol.Page.ResourceType|undefined), interceptionStage:(Protocol.Network.InterceptionStage|undefined)}} */
+/** @typedef {!{urlPattern:(string|undefined), resourceType:(Protocol.Network.ResourceType|undefined), interceptionStage:(Protocol.Network.InterceptionStage|undefined)}} */
 Protocol.Network.RequestPattern;
 
 /** @typedef {!{label:(string), signature:(string), integrity:(string), certUrl:(string|undefined), certSha256:(string|undefined), validityUrl:(string), date:(number), expires:(number), certificates:(!Array<string>|undefined)}} */
@@ -4293,7 +4313,7 @@ Protocol.NetworkDispatcher.prototype.eventSourceMessageReceived = function(reque
 /**
  * @param {Protocol.Network.RequestId} requestId
  * @param {Protocol.Network.MonotonicTime} timestamp
- * @param {Protocol.Page.ResourceType} type
+ * @param {Protocol.Network.ResourceType} type
  * @param {string} errorText
  * @param {boolean=} opt_canceled
  * @param {Protocol.Network.BlockedReason=} opt_blockedReason
@@ -4310,7 +4330,7 @@ Protocol.NetworkDispatcher.prototype.loadingFinished = function(requestId, times
  * @param {Protocol.Network.InterceptionId} interceptionId
  * @param {Protocol.Network.Request} request
  * @param {Protocol.Page.FrameId} frameId
- * @param {Protocol.Page.ResourceType} resourceType
+ * @param {Protocol.Network.ResourceType} resourceType
  * @param {boolean} isNavigationRequest
  * @param {boolean=} opt_isDownload
  * @param {string=} opt_redirectUrl
@@ -4333,7 +4353,7 @@ Protocol.NetworkDispatcher.prototype.requestServedFromCache = function(requestId
  * @param {Protocol.Network.TimeSinceEpoch} wallTime
  * @param {Protocol.Network.Initiator} initiator
  * @param {Protocol.Network.Response=} opt_redirectResponse
- * @param {Protocol.Page.ResourceType=} opt_type
+ * @param {Protocol.Network.ResourceType=} opt_type
  * @param {Protocol.Page.FrameId=} opt_frameId
  * @param {boolean=} opt_hasUserGesture
  */
@@ -4353,7 +4373,7 @@ Protocol.NetworkDispatcher.prototype.signedExchangeReceived = function(requestId
  * @param {Protocol.Network.RequestId} requestId
  * @param {Protocol.Network.LoaderId} loaderId
  * @param {Protocol.Network.MonotonicTime} timestamp
- * @param {Protocol.Page.ResourceType} type
+ * @param {Protocol.Network.ResourceType} type
  * @param {Protocol.Network.Response} response
  * @param {Protocol.Page.FrameId=} opt_frameId
  */
@@ -5395,33 +5415,13 @@ Protocol.PageAgent.GenerateTestReportResponse;
  * @return {!Promise<!Protocol.PageAgent.GenerateTestReportResponse>} */
 Protocol.PageAgent.prototype.invoke_generateTestReport = function(obj) {};
 
-/** @enum {string} */
-Protocol.Page.ResourceType = {
-    Document: "Document",
-    Stylesheet: "Stylesheet",
-    Image: "Image",
-    Media: "Media",
-    Font: "Font",
-    Script: "Script",
-    TextTrack: "TextTrack",
-    XHR: "XHR",
-    Fetch: "Fetch",
-    EventSource: "EventSource",
-    WebSocket: "WebSocket",
-    Manifest: "Manifest",
-    SignedExchange: "SignedExchange",
-    Ping: "Ping",
-    CSPViolationReport: "CSPViolationReport",
-    Other: "Other"
-};
-
 /** @typedef {string} */
 Protocol.Page.FrameId;
 
 /** @typedef {!{id:(string), parentId:(string|undefined), loaderId:(Protocol.Network.LoaderId), name:(string|undefined), url:(string), securityOrigin:(string), mimeType:(string), unreachableUrl:(string|undefined)}} */
 Protocol.Page.Frame;
 
-/** @typedef {!{url:(string), type:(Protocol.Page.ResourceType), mimeType:(string), lastModified:(Protocol.Network.TimeSinceEpoch|undefined), contentSize:(number|undefined), failed:(boolean|undefined), canceled:(boolean|undefined)}} */
+/** @typedef {!{url:(string), type:(Protocol.Network.ResourceType), mimeType:(string), lastModified:(Protocol.Network.TimeSinceEpoch|undefined), contentSize:(number|undefined), failed:(boolean|undefined), canceled:(boolean|undefined)}} */
 Protocol.Page.FrameResource;
 
 /** @typedef {!{frame:(Protocol.Page.Frame), childFrames:(!Array<Protocol.Page.FrameResourceTree>|undefined), resources:(!Array<Protocol.Page.FrameResource>)}} */

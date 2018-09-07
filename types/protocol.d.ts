@@ -6944,6 +6944,11 @@ export namespace Protocol {
     export namespace Network {
 
         /**
+         * Resource type as it was perceived by the rendering engine.
+         */
+        export type ResourceType = ('Document' | 'Stylesheet' | 'Image' | 'Media' | 'Font' | 'Script' | 'TextTrack' | 'XHR' | 'Fetch' | 'EventSource' | 'WebSocket' | 'Manifest' | 'SignedExchange' | 'Ping' | 'CSPViolationReport' | 'Other');
+
+        /**
          * Unique loader identifier.
          */
         export type LoaderId = string;
@@ -7370,7 +7375,7 @@ export namespace Protocol {
             /**
              * Type of this resource.
              */
-            type: Page.ResourceType;
+            type: ResourceType;
             /**
              * Cached response data.
              */
@@ -7555,7 +7560,7 @@ export namespace Protocol {
             /**
              * If set, only requests for matching resource types will be intercepted.
              */
-            resourceType?: Page.ResourceType;
+            resourceType?: ResourceType;
             /**
              * Stage at wich to begin intercepting requests. Default is Request.
              */
@@ -8096,7 +8101,7 @@ export namespace Protocol {
             /**
              * Resource type.
              */
-            type: Page.ResourceType;
+            type: ResourceType;
             /**
              * User friendly error message.
              */
@@ -8153,7 +8158,7 @@ export namespace Protocol {
             /**
              * How the requested resource will be used.
              */
-            resourceType: Page.ResourceType;
+            resourceType: ResourceType;
             /**
              * Whether this is a navigation request, which can abort the navigation completely.
              */
@@ -8238,7 +8243,7 @@ export namespace Protocol {
             /**
              * Type of this resource.
              */
-            type?: Page.ResourceType;
+            type?: ResourceType;
             /**
              * Frame identifier.
              */
@@ -8300,7 +8305,7 @@ export namespace Protocol {
             /**
              * Resource type.
              */
-            type: Page.ResourceType;
+            type: ResourceType;
             /**
              * Response data.
              */
@@ -8686,11 +8691,6 @@ export namespace Protocol {
     export namespace Page {
 
         /**
-         * Resource type as it was perceived by the rendering engine.
-         */
-        export type ResourceType = ('Document' | 'Stylesheet' | 'Image' | 'Media' | 'Font' | 'Script' | 'TextTrack' | 'XHR' | 'Fetch' | 'EventSource' | 'WebSocket' | 'Manifest' | 'SignedExchange' | 'Ping' | 'CSPViolationReport' | 'Other');
-
-        /**
          * Unique frame identifier.
          */
         export type FrameId = string;
@@ -8744,7 +8744,7 @@ export namespace Protocol {
             /**
              * Type of this resource.
              */
-            type: ResourceType;
+            type: Network.ResourceType;
             /**
              * Resource mimeType as determined by the browser.
              */

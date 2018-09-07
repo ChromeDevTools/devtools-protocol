@@ -1909,6 +1909,7 @@ domain DOM
 domain DOMDebugger
   depends on DOM
   depends on Debugger
+  depends on Runtime
 
   # DOM breakpoint type.
   type DOMBreakpointType extends string
@@ -3482,6 +3483,26 @@ domain Network
   depends on Runtime
   depends on Security
 
+  # Resource type as it was perceived by the rendering engine.
+  type ResourceType extends string
+    enum
+      Document
+      Stylesheet
+      Image
+      Media
+      Font
+      Script
+      TextTrack
+      XHR
+      Fetch
+      EventSource
+      WebSocket
+      Manifest
+      SignedExchange
+      Ping
+      CSPViolationReport
+      Other
+
   # Unique loader identifier.
   type LoaderId extends string
 
@@ -3765,7 +3786,7 @@ domain Network
       # Resource URL. This is the url of the original network request.
       string url
       # Type of this resource.
-      Page.ResourceType type
+      ResourceType type
       # Cached response data.
       optional Response response
       # Cached response body size.
@@ -3881,7 +3902,7 @@ domain Network
       # backslash. Omitting is equivalent to "*".
       optional string urlPattern
       # If set, only requests for matching resource types will be intercepted.
-      optional Page.ResourceType resourceType
+      optional ResourceType resourceType
       # Stage at wich to begin intercepting requests. Default is Request.
       optional InterceptionStage interceptionStage
 
@@ -4252,7 +4273,7 @@ domain Network
       # Timestamp.
       MonotonicTime timestamp
       # Resource type.
-      Page.ResourceType type
+      ResourceType type
       # User friendly error message.
       string errorText
       # True if loading was canceled.
@@ -4285,7 +4306,7 @@ domain Network
       # The id of the frame that initiated the request.
       Page.FrameId frameId
       # How the requested resource will be used.
-      Page.ResourceType resourceType
+      ResourceType resourceType
       # Whether this is a navigation request, which can abort the navigation completely.
       boolean isNavigationRequest
       # Set if the request is a navigation that will result in a download.
@@ -4332,7 +4353,7 @@ domain Network
       # Redirect response data.
       optional Response redirectResponse
       # Type of this resource.
-      optional Page.ResourceType type
+      optional ResourceType type
       # Frame identifier.
       optional Page.FrameId frameId
       # Whether the request is initiated by a user gesture. Defaults to false.
@@ -4366,7 +4387,7 @@ domain Network
       # Timestamp.
       MonotonicTime timestamp
       # Resource type.
-      Page.ResourceType type
+      ResourceType type
       # Response data.
       Response response
       # Frame identifier.
@@ -4623,26 +4644,7 @@ domain Page
   depends on Debugger
   depends on DOM
   depends on Network
-
-  # Resource type as it was perceived by the rendering engine.
-  type ResourceType extends string
-    enum
-      Document
-      Stylesheet
-      Image
-      Media
-      Font
-      Script
-      TextTrack
-      XHR
-      Fetch
-      EventSource
-      WebSocket
-      Manifest
-      SignedExchange
-      Ping
-      CSPViolationReport
-      Other
+  depends on Runtime
 
   # Unique frame identifier.
   type FrameId extends string
@@ -4673,7 +4675,7 @@ domain Page
       # Resource URL.
       string url
       # Type of this resource.
-      ResourceType type
+      Network.ResourceType type
       # Resource mimeType as determined by the browser.
       string mimeType
       # last-modified timestamp as reported by server.
