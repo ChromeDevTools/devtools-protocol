@@ -5523,6 +5523,13 @@ export namespace Protocol {
             result: boolean;
         }
 
+        export interface SetFocusEmulationEnabledRequest {
+            /**
+             * Whether to enable to disable focus emulation.
+             */
+            enabled: boolean;
+        }
+
         export interface SetCPUThrottlingRateRequest {
             /**
              * Throttling rate as a slowdown factor (1 is no throttle, 2 is 2x slowdown, etc).

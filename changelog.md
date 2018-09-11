@@ -1,5 +1,23 @@
 
 
+## Roll protocol to r589586
+###### _2018-09-07 11:22:54_ | Diff: [59c4dec...fd5476b](https://github.com/ChromeDevTools/devtools-protocol/compare/59c4dec...fd5476b)
+#### `Network`: modified events
+* [`Network.loadingFailed`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-loadingFailed) - The `type` in the parameters had `$ref` _updated_. 
+* [`Network.requestIntercepted`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestIntercepted) - The `resourceType` in the parameters had `$ref` _updated_. 
+* [`Network.requestWillBeSent`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestWillBeSent) - The `type` in the parameters had `$ref` _updated_. 
+* [`Network.responseReceived`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-responseReceived) - The `type` in the parameters had `$ref` _updated_. 
+#### `Network`: new type
+* [`Network.ResourceType`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ResourceType)
+#### `Network`: modified types
+* [`Network.CachedResource`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CachedResource) - The `type` in the properties had `$ref` _updated_. 
+* [`Network.RequestPattern`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-RequestPattern) - The `resourceType` in the properties had `$ref` _updated_. 
+#### `Page`: removed type
+* [`Page.ResourceType`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ResourceType)
+#### `Page`: modified type
+* [`Page.FrameResource`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-FrameResource) - The `type` in the properties had `$ref` _updated_. 
+
+
 ## Roll protocol to r588752
 ###### _2018-09-04 20:15:55_ | Diff: [359d29d...59c4dec](https://github.com/ChromeDevTools/devtools-protocol/compare/359d29d...59c4dec)
 #### `DOMSnapshot`: modified types

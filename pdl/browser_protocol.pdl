@@ -2461,6 +2461,12 @@ domain Emulation
   # Requests that page scale factor is reset to initial values.
   experimental command resetPageScaleFactor
 
+  # Enables or disables simulating a focused and active page.
+  experimental command setFocusEmulationEnabled
+    parameters
+      # Whether to enable to disable focus emulation.
+      boolean enabled
+
   # Enables CPU throttling to emulate slow CPUs.
   experimental command setCPUThrottlingRate
     parameters

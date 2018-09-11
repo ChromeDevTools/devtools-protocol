@@ -2431,6 +2431,20 @@ Protocol.EmulationAgent.ResetPageScaleFactorResponse;
 Protocol.EmulationAgent.prototype.invoke_resetPageScaleFactor = function(obj) {};
 
 /**
+ * @param {boolean} enabled
+ * @return {!Promise<undefined>}
+ */
+Protocol.EmulationAgent.prototype.setFocusEmulationEnabled = function(enabled) {};
+/** @typedef {!{enabled: boolean}} */
+Protocol.EmulationAgent.SetFocusEmulationEnabledRequest;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.SetFocusEmulationEnabledResponse;
+/**
+ * @param {!Protocol.EmulationAgent.SetFocusEmulationEnabledRequest} obj
+ * @return {!Promise<!Protocol.EmulationAgent.SetFocusEmulationEnabledResponse>} */
+Protocol.EmulationAgent.prototype.invoke_setFocusEmulationEnabled = function(obj) {};
+
+/**
  * @param {number} rate
  * @return {!Promise<undefined>}
  */

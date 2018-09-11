@@ -1380,6 +1380,11 @@ export namespace ProtocolProxyApi {
         resetPageScaleFactor(): Promise<void>;
 
         /**
+         * Enables or disables simulating a focused and active page.
+         */
+        setFocusEmulationEnabled(params: Protocol.Emulation.SetFocusEmulationEnabledRequest): Promise<void>;
+
+        /**
          * Enables CPU throttling to emulate slow CPUs.
          */
         setCPUThrottlingRate(params: Protocol.Emulation.SetCPUThrottlingRateRequest): Promise<void>;

@@ -1868,6 +1868,13 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Enables or disables simulating a focused and active page.
+         */
+        'Emulation.setFocusEmulationEnabled': {
+            paramsType: [Protocol.Emulation.SetFocusEmulationEnabledRequest];
+            returnType: void;
+        };
+        /**
          * Enables CPU throttling to emulate slow CPUs.
          */
         'Emulation.setCPUThrottlingRate': {

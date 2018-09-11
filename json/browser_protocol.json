@@ -5496,6 +5496,18 @@
                     "experimental": true
                 },
                 {
+                    "name": "setFocusEmulationEnabled",
+                    "description": "Enables or disables simulating a focused and active page.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "enabled",
+                            "description": "Whether to enable to disable focus emulation.",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
                     "name": "setCPUThrottlingRate",
                     "description": "Enables CPU throttling to emulate slow CPUs.",
                     "experimental": true,
