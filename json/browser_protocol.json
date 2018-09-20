@@ -361,6 +361,20 @@
                             }
                         }
                     ]
+                },
+                {
+                    "name": "getFullAXTree",
+                    "description": "Fetches the entire accessibility tree",
+                    "experimental": true,
+                    "returns": [
+                        {
+                            "name": "nodes",
+                            "type": "array",
+                            "items": {
+                                "$ref": "AXNode"
+                            }
+                        }
+                    ]
                 }
             ]
         },

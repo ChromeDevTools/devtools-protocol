@@ -2157,6 +2157,10 @@ export namespace Protocol {
              */
             nodes: AXNode[];
         }
+
+        export interface GetFullAXTreeResponse {
+            nodes: AXNode[];
+        }
     }
 
     export namespace Animation {

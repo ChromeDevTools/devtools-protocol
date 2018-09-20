@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r590503
+###### _2018-09-11 15:17:02_ | Diff: [fd5476b...171867f](https://github.com/ChromeDevTools/devtools-protocol/compare/fd5476b...171867f)
+#### `Emulation`: new command
+* [`Emulation.setFocusEmulationEnabled`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setFocusEmulationEnabled)
+
+
 ## Roll protocol to r589586
 ###### _2018-09-07 11:22:54_ | Diff: [59c4dec...fd5476b](https://github.com/ChromeDevTools/devtools-protocol/compare/59c4dec...fd5476b)
 #### `Network`: modified events

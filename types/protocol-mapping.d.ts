@@ -999,6 +999,13 @@ export namespace ProtocolMapping {
             returnType: Protocol.Accessibility.GetPartialAXTreeResponse;
         };
         /**
+         * Fetches the entire accessibility tree
+         */
+        'Accessibility.getFullAXTree': {
+            paramsType: [];
+            returnType: Protocol.Accessibility.GetFullAXTreeResponse;
+        };
+        /**
          * Disables animation domain notifications.
          */
         'Animation.disable': {

@@ -190,6 +190,11 @@ experimental domain Accessibility
       # children, if requested.
       array of AXNode nodes
 
+  # Fetches the entire accessibility tree
+  experimental command getFullAXTree
+    returns
+      array of AXNode nodes
+
 experimental domain Animation
   depends on Runtime
   depends on DOM

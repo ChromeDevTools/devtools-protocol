@@ -590,6 +590,11 @@ export namespace ProtocolProxyApi {
          */
         getPartialAXTree(params: Protocol.Accessibility.GetPartialAXTreeRequest): Promise<Protocol.Accessibility.GetPartialAXTreeResponse>;
 
+        /**
+         * Fetches the entire accessibility tree
+         */
+        getFullAXTree(): Promise<Protocol.Accessibility.GetFullAXTreeResponse>;
+
     }
 
     export interface AnimationApi {

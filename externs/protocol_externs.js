@@ -23,6 +23,19 @@ Protocol.AccessibilityAgent.GetPartialAXTreeResponse;
  * @return {!Promise<!Protocol.AccessibilityAgent.GetPartialAXTreeResponse>} */
 Protocol.AccessibilityAgent.prototype.invoke_getPartialAXTree = function(obj) {};
 
+/**
+ * @return {!Promise<?Array<Protocol.Accessibility.AXNode>>}
+ */
+Protocol.AccessibilityAgent.prototype.getFullAXTree = function() {};
+/** @typedef {Object|undefined} */
+Protocol.AccessibilityAgent.GetFullAXTreeRequest;
+/** @typedef {!{nodes: !Array<Protocol.Accessibility.AXNode>}} */
+Protocol.AccessibilityAgent.GetFullAXTreeResponse;
+/**
+ * @param {!Protocol.AccessibilityAgent.GetFullAXTreeRequest} obj
+ * @return {!Promise<!Protocol.AccessibilityAgent.GetFullAXTreeResponse>} */
+Protocol.AccessibilityAgent.prototype.invoke_getFullAXTree = function(obj) {};
+
 /** @typedef {string} */
 Protocol.Accessibility.AXNodeId;
 
