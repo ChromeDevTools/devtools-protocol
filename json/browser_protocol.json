@@ -10758,6 +10758,13 @@
                         {
                             "name": "source",
                             "type": "string"
+                        },
+                        {
+                            "name": "worldName",
+                            "description": "If specified, creates an isolated world with the given name and evaluates given script in it.\nThis world name will be used as the ExecutionContextDescription::name when the corresponding\nevent is emitted.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "string"
                         }
                     ],
                     "returns": [

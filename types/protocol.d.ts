@@ -9050,6 +9050,12 @@ export namespace Protocol {
 
         export interface AddScriptToEvaluateOnNewDocumentRequest {
             source: string;
+            /**
+             * If specified, creates an isolated world with the given name and evaluates given script in it.
+             * This world name will be used as the ExecutionContextDescription::name when the corresponding
+             * event is emitted.
+             */
+            worldName?: string;
         }
 
         export interface AddScriptToEvaluateOnNewDocumentResponse {

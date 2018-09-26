@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r592922
+###### _2018-09-20 13:19:12_ | Diff: [171867f...b797679](https://github.com/ChromeDevTools/devtools-protocol/compare/171867f...b797679)
+#### `Accessibility`: new command
+* [`Accessibility.getFullAXTree`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#method-getFullAXTree)
+
+
 ## Roll protocol to r590503
 ###### _2018-09-11 15:17:02_ | Diff: [fd5476b...171867f](https://github.com/ChromeDevTools/devtools-protocol/compare/fd5476b...171867f)
 #### `Emulation`: new command
