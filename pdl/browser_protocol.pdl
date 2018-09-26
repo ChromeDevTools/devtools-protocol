@@ -4870,10 +4870,6 @@ domain Page
   command addScriptToEvaluateOnNewDocument
     parameters
       string source
-      # If specified, creates an isolated world with the given name and evaluates given script in it.
-      # This world name will be used as the ExecutionContextDescription::name when the corresponding
-      # event is emitted.
-      experimental optional string worldName
     returns
       # Identifier of the added script.
       ScriptIdentifier identifier
