@@ -4736,10 +4736,11 @@ Protocol.PageAgent.prototype.invoke_addScriptToEvaluateOnLoad = function(obj) {}
 
 /**
  * @param {string} source
+ * @param {string=} opt_worldName
  * @return {!Promise<?Protocol.Page.ScriptIdentifier>}
  */
-Protocol.PageAgent.prototype.addScriptToEvaluateOnNewDocument = function(source) {};
-/** @typedef {!{source: string}} */
+Protocol.PageAgent.prototype.addScriptToEvaluateOnNewDocument = function(source, opt_worldName) {};
+/** @typedef {!{source: string, worldName: (string|undefined)}} */
 Protocol.PageAgent.AddScriptToEvaluateOnNewDocumentRequest;
 /** @typedef {!{identifier: Protocol.Page.ScriptIdentifier}} */
 Protocol.PageAgent.AddScriptToEvaluateOnNewDocumentResponse;
