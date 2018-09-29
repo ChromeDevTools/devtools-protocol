@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r594552
+###### _2018-09-26 18:16:07_ | Diff: [4b269f4...7d4e024](https://github.com/ChromeDevTools/devtools-protocol/compare/4b269f4...7d4e024)
+#### `Page`: modified command
+* [`Page.addScriptToEvaluateOnNewDocument`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-addScriptToEvaluateOnNewDocument) - The parameters's `worldName` _added_. 
+
+
 ## Roll protocol to r594206
 ###### _2018-09-25 20:15:47_ | Diff: [4cc8f92...4b269f4](https://github.com/ChromeDevTools/devtools-protocol/compare/4cc8f92...4b269f4)
 #### `Page`: modified command

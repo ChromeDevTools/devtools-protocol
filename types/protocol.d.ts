@@ -9854,6 +9854,13 @@ export namespace Protocol {
             value: number;
         }
 
+        export interface SetTimeDomainRequest {
+            /**
+             * Time domain
+             */
+            timeDomain: ('timeTicks' | 'threadTicks');
+        }
+
         export interface GetMetricsResponse {
             /**
              * Current values for run-time metrics.

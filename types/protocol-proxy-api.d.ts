@@ -2461,6 +2461,13 @@ export namespace ProtocolProxyApi {
         enable(): Promise<void>;
 
         /**
+         * Sets time domain to use for collecting and reporting duration metrics.
+         * Note that this must be called before enabling metrics collection. Calling
+         * this method while metrics collection is enabled returns an error.
+         */
+        setTimeDomain(params: Protocol.Performance.SetTimeDomainRequest): Promise<void>;
+
+        /**
          * Retrieve current values of run-time metrics.
          */
         getMetrics(): Promise<Protocol.Performance.GetMetricsResponse>;

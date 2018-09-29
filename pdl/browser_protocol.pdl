@@ -5485,6 +5485,18 @@ domain Performance
   # Enable collecting and reporting metrics.
   command enable
 
+  # Sets time domain to use for collecting and reporting duration metrics.
+  # Note that this must be called before enabling metrics collection. Calling
+  # this method while metrics collection is enabled returns an error.
+  experimental command setTimeDomain
+    parameters
+      # Time domain
+      enum timeDomain
+        # Use monotonically increasing abstract time (default).
+        timeTicks
+        # Use thread running time.
+        threadTicks
+
   # Retrieve current values of run-time metrics.
   command getMetrics
     returns

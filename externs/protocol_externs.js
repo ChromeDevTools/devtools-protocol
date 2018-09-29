@@ -5637,6 +5637,20 @@ Protocol.PerformanceAgent.EnableResponse;
 Protocol.PerformanceAgent.prototype.invoke_enable = function(obj) {};
 
 /**
+ * @param {string} timeDomain
+ * @return {!Promise<undefined>}
+ */
+Protocol.PerformanceAgent.prototype.setTimeDomain = function(timeDomain) {};
+/** @typedef {!{timeDomain: string}} */
+Protocol.PerformanceAgent.SetTimeDomainRequest;
+/** @typedef {Object|undefined} */
+Protocol.PerformanceAgent.SetTimeDomainResponse;
+/**
+ * @param {!Protocol.PerformanceAgent.SetTimeDomainRequest} obj
+ * @return {!Promise<!Protocol.PerformanceAgent.SetTimeDomainResponse>} */
+Protocol.PerformanceAgent.prototype.invoke_setTimeDomain = function(obj) {};
+
+/**
  * @return {!Promise<?Array<Protocol.Performance.Metric>>}
  */
 Protocol.PerformanceAgent.prototype.getMetrics = function() {};

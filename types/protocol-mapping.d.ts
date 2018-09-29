@@ -2992,6 +2992,15 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Sets time domain to use for collecting and reporting duration metrics.
+         * Note that this must be called before enabling metrics collection. Calling
+         * this method while metrics collection is enabled returns an error.
+         */
+        'Performance.setTimeDomain': {
+            paramsType: [Protocol.Performance.SetTimeDomainRequest];
+            returnType: void;
+        };
+        /**
          * Retrieve current values of run-time metrics.
          */
         'Performance.getMetrics': {
