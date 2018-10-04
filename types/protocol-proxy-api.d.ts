@@ -1000,7 +1000,8 @@ export namespace ProtocolProxyApi {
         getFlattenedDocument(params: Protocol.DOM.GetFlattenedDocumentRequest): Promise<Protocol.DOM.GetFlattenedDocumentResponse>;
 
         /**
-         * Returns node id at given location.
+         * Returns node id at given location. Depending on whether DOM domain is enabled, nodeId is
+         * either returned or not.
          */
         getNodeForLocation(params: Protocol.DOM.GetNodeForLocationRequest): Promise<Protocol.DOM.GetNodeForLocationResponse>;
 

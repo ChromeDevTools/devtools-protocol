@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r595262
+###### _2018-09-28 17:16:08_ | Diff: [7d4e024...7ad2b35](https://github.com/ChromeDevTools/devtools-protocol/compare/7d4e024...7ad2b35)
+#### `Performance`: new command
+* [`Performance.setTimeDomain`](https://chromedevtools.github.io/devtools-protocol/tot/Performance/#method-setTimeDomain)
+
+
 ## Roll protocol to r594552
 ###### _2018-09-26 18:16:07_ | Diff: [4b269f4...7d4e024](https://github.com/ChromeDevTools/devtools-protocol/compare/4b269f4...7d4e024)
 #### `Page`: modified command

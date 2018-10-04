@@ -4187,9 +4187,13 @@ export namespace Protocol {
 
         export interface GetNodeForLocationResponse {
             /**
-             * Id of the node at given coordinates.
+             * Resulting node.
              */
-            nodeId: NodeId;
+            backendNodeId: BackendNodeId;
+            /**
+             * Id of the node at given coordinates, only when enabled.
+             */
+            nodeId?: NodeId;
         }
 
         export interface GetOuterHTMLRequest {

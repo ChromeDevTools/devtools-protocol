@@ -3362,7 +3362,7 @@
                 },
                 {
                     "name": "getNodeForLocation",
-                    "description": "Returns node id at given location.",
+                    "description": "Returns node id at given location. Depending on whether DOM domain is enabled, nodeId is\neither returned or not.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -3384,8 +3384,14 @@
                     ],
                     "returns": [
                         {
+                            "name": "backendNodeId",
+                            "description": "Resulting node.",
+                            "$ref": "BackendNodeId"
+                        },
+                        {
                             "name": "nodeId",
-                            "description": "Id of the node at given coordinates.",
+                            "description": "Id of the node at given coordinates, only when enabled.",
+                            "optional": true,
                             "$ref": "NodeId"
                         }
                     ]

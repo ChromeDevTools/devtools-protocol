@@ -1473,7 +1473,8 @@ export namespace ProtocolMapping {
             returnType: Protocol.DOM.GetFlattenedDocumentResponse;
         };
         /**
-         * Returns node id at given location.
+         * Returns node id at given location. Depending on whether DOM domain is enabled, nodeId is
+         * either returned or not.
          */
         'DOM.getNodeForLocation': {
             paramsType: [Protocol.DOM.GetNodeForLocationRequest];
