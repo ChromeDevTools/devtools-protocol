@@ -4537,7 +4537,14 @@ export namespace Protocol {
         }
 
         export interface GetFrameOwnerResponse {
-            nodeId: NodeId;
+            /**
+             * Resulting node.
+             */
+            backendNodeId: BackendNodeId;
+            /**
+             * Id of the node at given coordinates, only when enabled.
+             */
+            nodeId?: NodeId;
         }
 
         /**

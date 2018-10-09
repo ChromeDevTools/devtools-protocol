@@ -1751,12 +1751,12 @@ Protocol.DOMAgent.prototype.invoke_undo = function(obj) {};
 
 /**
  * @param {Protocol.Page.FrameId} frameId
- * @return {!Promise<?Protocol.DOM.NodeId>}
+ * @return {!Promise<?Protocol.DOM.BackendNodeId>}
  */
 Protocol.DOMAgent.prototype.getFrameOwner = function(frameId) {};
 /** @typedef {!{frameId: Protocol.Page.FrameId}} */
 Protocol.DOMAgent.GetFrameOwnerRequest;
-/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+/** @typedef {!{nodeId: Protocol.DOM.NodeId, backendNodeId: Protocol.DOM.BackendNodeId}} */
 Protocol.DOMAgent.GetFrameOwnerResponse;
 /**
  * @param {!Protocol.DOMAgent.GetFrameOwnerRequest} obj

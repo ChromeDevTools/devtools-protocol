@@ -1800,7 +1800,10 @@ domain DOM
     parameters
       Page.FrameId frameId
     returns
-      NodeId nodeId
+      # Resulting node.
+      BackendNodeId backendNodeId
+      # Id of the node at given coordinates, only when enabled.
+      optional NodeId nodeId
 
   # Fired when `Element`'s attribute is modified.
   event attributeModified

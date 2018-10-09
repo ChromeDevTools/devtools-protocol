@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r596435
+###### _2018-10-03 17:15:54_ | Diff: [7ad2b35...32f4ced](https://github.com/ChromeDevTools/devtools-protocol/compare/7ad2b35...32f4ced)
+#### `DOM`: modified command
+* [`DOM.getNodeForLocation`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getNodeForLocation) - `description` updated. The `nodeId` in the return value had `name` _updated_. The `nodeId` in the return value had `description` _updated_. The `nodeId` in the return value had `$ref` _updated_. The return value's `nodeId` _added_. 
+
+
 ## Roll protocol to r595262
 ###### _2018-09-28 17:16:08_ | Diff: [7d4e024...7ad2b35](https://github.com/ChromeDevTools/devtools-protocol/compare/7d4e024...7ad2b35)
 #### `Performance`: new command
