@@ -490,6 +490,7 @@ domain Browser
       accessibilityEvents
       audioCapture
       backgroundSync
+      backgroundFetch
       clipboardRead
       clipboardWrite
       durableStorage

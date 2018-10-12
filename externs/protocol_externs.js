@@ -608,6 +608,7 @@ Protocol.Browser.PermissionType = {
     AccessibilityEvents: "accessibilityEvents",
     AudioCapture: "audioCapture",
     BackgroundSync: "backgroundSync",
+    BackgroundFetch: "backgroundFetch",
     ClipboardRead: "clipboardRead",
     ClipboardWrite: "clipboardWrite",
     DurableStorage: "durableStorage",

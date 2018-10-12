@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r597746
+###### _2018-10-08 17:16:03_ | Diff: [32f4ced...5efd10a](https://github.com/ChromeDevTools/devtools-protocol/compare/32f4ced...5efd10a)
+#### `DOM`: modified command
+* [`DOM.getFrameOwner`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getFrameOwner) - The `nodeId` in the return value had `name` _updated_. The `nodeId` in the return value had `$ref` _updated_. The return value's `description` _added_. The return value's `nodeId` _added_. 
+
+
 ## Roll protocol to r596435
 ###### _2018-10-03 17:15:54_ | Diff: [7ad2b35...32f4ced](https://github.com/ChromeDevTools/devtools-protocol/compare/7ad2b35...32f4ced)
 #### `DOM`: modified command
