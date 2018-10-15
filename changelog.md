@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r599293
+###### _2018-10-12 11:16:15_ | Diff: [5efd10a...3ad8e30](https://github.com/ChromeDevTools/devtools-protocol/compare/5efd10a...3ad8e30)
+#### `Browser`: modified type
+* [`Browser.PermissionType`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-PermissionType) - The enum's `clipboardRead` _updated_. The enum's `clipboardWrite` _updated_. The enum's `durableStorage` _updated_. The enum's `flash` _updated_. The enum's `geolocation` _updated_. The enum's `midi` _updated_. The enum's `midiSysex` _updated_. The enum's `notifications` _updated_. The enum's `paymentHandler` _updated_. The enum's `protectedMediaIdentifier` _updated_. The enum's `sensors` _updated_. The enum's `videoCapture` _updated_. The enum's `videoCapture` _added_. 
+
+
 ## Roll protocol to r597746
 ###### _2018-10-08 17:16:03_ | Diff: [32f4ced...5efd10a](https://github.com/ChromeDevTools/devtools-protocol/compare/32f4ced...5efd10a)
 #### `DOM`: modified command

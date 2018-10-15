@@ -116,10 +116,14 @@ experimental domain Accessibility
     enum
       busy
       disabled
+      editable
+      focusable
+      focused
       hidden
       hiddenRoot
       invalid
       keyshortcuts
+      settable
       roledescription
       live
       atomic
