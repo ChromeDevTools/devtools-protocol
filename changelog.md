@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r599771
+###### _2018-10-15 16:16:09_ | Diff: [3ad8e30...584d0c5](https://github.com/ChromeDevTools/devtools-protocol/compare/3ad8e30...584d0c5)
+#### `Accessibility`: modified type
+* [`Accessibility.AXPropertyName`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXPropertyName) - The enum's `hidden` _updated_. The enum's `hiddenRoot` _updated_. The enum's `invalid` _updated_. The enum's `keyshortcuts` _updated_. The enum's `roledescription` _updated_. The enum's `live` _updated_. The enum's `atomic` _updated_. The enum's `relevant` _updated_. The enum's `root` _updated_. The enum's `autocomplete` _updated_. The enum's `hasPopup` _updated_. The enum's `level` _updated_. The enum's `multiselectable` _updated_. The enum's `orientation` _updated_. The enum's `multiline` _updated_. The enum's `readonly` _updated_. The enum's `required` _updated_. The enum's `valuemin` _updated_. The enum's `valuemax` _updated_. The enum's `valuetext` _updated_. The enum's `checked` _updated_. The enum's `expanded` _updated_. The enum's `modal` _updated_. The enum's `pressed` _updated_. The enum's `selected` _updated_. The enum's `activedescendant` _updated_. The enum's `controls` _updated_. The enum's `describedby` _updated_. The enum's `details` _updated_. The enum's `errormessage` _updated_. The enum's `flowto` _updated_. The enum's `labelledby` _updated_. The enum's `owns` _updated_. The enum's `errormessage` _added_. The enum's `flowto` _added_. The enum's `labelledby` _added_. The enum's `owns` _added_. 
+
+
 ## Roll protocol to r599293
 ###### _2018-10-12 11:16:15_ | Diff: [5efd10a...3ad8e30](https://github.com/ChromeDevTools/devtools-protocol/compare/5efd10a...3ad8e30)
 #### `Browser`: modified type

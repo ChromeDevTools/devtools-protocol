@@ -178,6 +178,13 @@ experimental domain Accessibility
       # The backend ID for the associated DOM node, if any.
       optional DOM.BackendNodeId backendDOMNodeId
 
+  # Disables the accessibility domain.
+  command disable
+
+  # Enables the accessibility domain which causes `AXNodeId`s to remain consistent between method calls.
+  # This turns on accessibility for the page, which can impact performance until accessibility is disabled.
+  command enable
+
   # Fetches the accessibility node and partial accessibility tree for this DOM node, if it exists.
   experimental command getPartialAXTree
     parameters

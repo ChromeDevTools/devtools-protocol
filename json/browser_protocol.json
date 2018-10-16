@@ -326,6 +326,14 @@
             ],
             "commands": [
                 {
+                    "name": "disable",
+                    "description": "Disables the accessibility domain."
+                },
+                {
+                    "name": "enable",
+                    "description": "Enables the accessibility domain which causes `AXNodeId`s to remain consistent between method calls.\nThis turns on accessibility for the page, which can impact performance until accessibility is disabled."
+                },
+                {
                     "name": "getPartialAXTree",
                     "description": "Fetches the accessibility node and partial accessibility tree for this DOM node, if it exists.",
                     "experimental": true,

@@ -992,6 +992,21 @@ export namespace ProtocolMapping {
             returnType: Protocol.Schema.GetDomainsResponse;
         };
         /**
+         * Disables the accessibility domain.
+         */
+        'Accessibility.disable': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
+         * Enables the accessibility domain which causes `AXNodeId`s to remain consistent between method calls.
+         * This turns on accessibility for the page, which can impact performance until accessibility is disabled.
+         */
+        'Accessibility.enable': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
          * Fetches the accessibility node and partial accessibility tree for this DOM node, if it exists.
          */
         'Accessibility.getPartialAXTree': {
