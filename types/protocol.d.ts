@@ -1191,11 +1191,17 @@ export namespace Protocol {
         }
 
         export interface CustomPreview {
+            /**
+             * The JSON-stringified result of formatter.header(object, config) call.
+             * It contains json ML array that represents RemoteObject.
+             */
             header: string;
-            hasBody: boolean;
-            formatterObjectId: RemoteObjectId;
-            bindRemoteObjectFunctionId: RemoteObjectId;
-            configObjectId?: RemoteObjectId;
+            /**
+             * If formatter returns true as a result of formatter.hasBody call then bodyGetterId will
+             * contain RemoteObjectId for the function that returns result of formatter.body(object, config) call.
+             * The result value is json ML array.
+             */
+            bodyGetterId?: RemoteObjectId;
         }
 
         /**

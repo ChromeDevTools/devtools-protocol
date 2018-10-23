@@ -8082,7 +8082,7 @@ Protocol.Runtime.RemoteObjectSubtype = {
 /** @typedef {!{type:(Protocol.Runtime.RemoteObjectType), subtype:(Protocol.Runtime.RemoteObjectSubtype|undefined), className:(string|undefined), value:(*|undefined), unserializableValue:(Protocol.Runtime.UnserializableValue|undefined), description:(string|undefined), objectId:(Protocol.Runtime.RemoteObjectId|undefined), preview:(Protocol.Runtime.ObjectPreview|undefined), customPreview:(Protocol.Runtime.CustomPreview|undefined)}} */
 Protocol.Runtime.RemoteObject;
 
-/** @typedef {!{header:(string), hasBody:(boolean), formatterObjectId:(Protocol.Runtime.RemoteObjectId), bindRemoteObjectFunctionId:(Protocol.Runtime.RemoteObjectId), configObjectId:(Protocol.Runtime.RemoteObjectId|undefined)}} */
+/** @typedef {!{header:(string), bodyGetterId:(Protocol.Runtime.RemoteObjectId|undefined)}} */
 Protocol.Runtime.CustomPreview;
 
 /** @enum {string} */

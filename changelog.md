@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r599863
+###### _2018-10-15 22:16:05_ | Diff: [584d0c5...0d63470](https://github.com/ChromeDevTools/devtools-protocol/compare/584d0c5...0d63470)
+#### `Accessibility`: new commands
+* [`Accessibility.disable`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#method-disable)
+* [`Accessibility.enable`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#method-enable)
+
+
 ## Roll protocol to r599771
 ###### _2018-10-15 16:16:09_ | Diff: [3ad8e30...584d0c5](https://github.com/ChromeDevTools/devtools-protocol/compare/3ad8e30...584d0c5)
 #### `Accessibility`: modified type
