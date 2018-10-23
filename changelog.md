@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r601839
+###### _2018-10-22 20:15:59_ | Diff: [0d63470...2e4077a](https://github.com/ChromeDevTools/devtools-protocol/compare/0d63470...2e4077a)
+#### `Runtime`: modified type
+* [`Runtime.CustomPreview`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-CustomPreview) - The properties's `formatterObjectId` _removed_. The properties's `bindRemoteObjectFunctionId` _removed_. The properties's `configObjectId` _removed_. The `hasBody` in the properties had `type` _removed_. The `hasBody` in the properties had `name` _updated_. The properties's `description` _added_ (2 times). The properties's `optional` _added_. The properties's `$ref` _added_. 
+
+
 ## Roll protocol to r599863
 ###### _2018-10-15 22:16:05_ | Diff: [584d0c5...0d63470](https://github.com/ChromeDevTools/devtools-protocol/compare/584d0c5...0d63470)
 #### `Accessibility`: new commands

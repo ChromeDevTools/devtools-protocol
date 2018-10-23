@@ -7459,10 +7459,13 @@ Protocol.HeapProfilerAgent.prototype.invoke_takeHeapSnapshot = function(obj) {};
 /** @typedef {string} */
 Protocol.HeapProfiler.HeapSnapshotObjectId;
 
-/** @typedef {!{callFrame:(Protocol.Runtime.CallFrame), selfSize:(number), children:(!Array<Protocol.HeapProfiler.SamplingHeapProfileNode>)}} */
+/** @typedef {!{callFrame:(Protocol.Runtime.CallFrame), selfSize:(number), id:(number), children:(!Array<Protocol.HeapProfiler.SamplingHeapProfileNode>)}} */
 Protocol.HeapProfiler.SamplingHeapProfileNode;
 
-/** @typedef {!{head:(Protocol.HeapProfiler.SamplingHeapProfileNode)}} */
+/** @typedef {!{size:(number), nodeId:(number), ordinal:(number)}} */
+Protocol.HeapProfiler.SamplingHeapProfileSample;
+
+/** @typedef {!{head:(Protocol.HeapProfiler.SamplingHeapProfileNode), samples:(!Array<Protocol.HeapProfiler.SamplingHeapProfileSample>)}} */
 Protocol.HeapProfiler.SamplingHeapProfile;
 /** @constructor */
 Protocol.HeapProfilerDispatcher = function() {};

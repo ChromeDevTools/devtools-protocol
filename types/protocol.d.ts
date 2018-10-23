@@ -758,16 +758,40 @@ export namespace Protocol {
              */
             selfSize: number;
             /**
+             * Node id. Ids are unique across all profiles collected between startSampling and stopSampling.
+             */
+            id: integer;
+            /**
              * Child nodes.
              */
             children: SamplingHeapProfileNode[];
         }
 
         /**
-         * Profile.
+         * A single sample from a sampling profile.
+         */
+        export interface SamplingHeapProfileSample {
+            /**
+             * Allocation size in bytes attributed to the sample.
+             */
+            size: number;
+            /**
+             * Id of the corresponding profile tree node.
+             */
+            nodeId: integer;
+            /**
+             * Time-ordered sample ordinal number. It is unique across all profiles retrieved
+             * between startSampling and stopSampling.
+             */
+            ordinal: number;
+        }
+
+        /**
+         * Sampling profile.
          */
         export interface SamplingHeapProfile {
             head: SamplingHeapProfileNode;
+            samples: SamplingHeapProfileSample[];
         }
 
         export interface AddInspectedHeapObjectRequest {
