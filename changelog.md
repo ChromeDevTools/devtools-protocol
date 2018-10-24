@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r601846
+###### _2018-10-22 21:15:58_ | Diff: [2e4077a...f25bb99](https://github.com/ChromeDevTools/devtools-protocol/compare/2e4077a...f25bb99)
+#### `HeapProfiler`: new type
+* [`HeapProfiler.SamplingHeapProfileSample`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#type-SamplingHeapProfileSample)
+#### `HeapProfiler`: modified types
+* [`HeapProfiler.SamplingHeapProfileNode`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#type-SamplingHeapProfileNode) - The `children` in the properties had `items` _removed_. The `children` in the properties had `name` _updated_. The `children` in the properties had `description` _updated_. The `children` in the properties had `type` _updated_. The properties's `children` _added_. 
+* [`HeapProfiler.SamplingHeapProfile`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#type-SamplingHeapProfile) - `description` updated. The properties's `samples` _added_. 
+
+
 ## Roll protocol to r601839
 ###### _2018-10-22 20:15:59_ | Diff: [0d63470...2e4077a](https://github.com/ChromeDevTools/devtools-protocol/compare/0d63470...2e4077a)
 #### `Runtime`: modified type
