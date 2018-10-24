@@ -5,9 +5,12 @@
 
 set -x
 
-# These locations are very machine specific.
+# This location is very *machine specific*
 chromium_src_path="$HOME/chromium-tot/src"
-protocol_repo_path="$HOME/code/pristine/devtools-protocol"
+
+
+pwd="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+protocol_repo_path="$pwd/../"
 
 # => cd into protocol repo
 cd "$protocol_repo_path" || exit 1
@@ -51,7 +54,7 @@ cd "$protocol_repo_path" || exit 1
 git --no-pager diff
 
 # commit, push and publish, but only if there's a diff. ;)
-if ! git diff --no-ext-diff --quiet --ignore-submodules --exit-code; then
+if ! git diff --no-ext-diff --quiet --exit-code; then
 	# dirty repo, ready to commit.
 
 	# commit so we can use the new commit in the changelog
