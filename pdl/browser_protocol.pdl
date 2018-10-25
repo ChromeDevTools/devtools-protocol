@@ -5316,7 +5316,7 @@ domain Page
     parameters
       string url
       # Base64-encoded data
-      string data
+      binary data
 
   # Clears seeded compilation cache.
   experimental command clearCompilationCache
@@ -5484,7 +5484,7 @@ domain Page
     parameters
       string url
       # Base64-encoded data
-      string data
+      binary data
 
 
 domain Performance
