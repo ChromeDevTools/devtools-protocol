@@ -5567,6 +5567,8 @@ domain Security
       MixedContentType mixedContentType
       # Page certificate.
       array of string certificate
+      # Recommendations to fix any issues.
+      optional array of string recommendations
 
   # Information about insecure content on the page.
   type InsecureContentStatus extends object
