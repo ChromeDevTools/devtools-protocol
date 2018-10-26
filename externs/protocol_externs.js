@@ -1167,7 +1167,17 @@ Protocol.CacheStorageAgent.prototype.invoke_requestEntries = function(obj) {};
 /** @typedef {string} */
 Protocol.CacheStorage.CacheId;
 
-/** @typedef {!{requestURL:(string), requestMethod:(string), requestHeaders:(!Array<Protocol.CacheStorage.Header>), responseTime:(number), responseStatus:(number), responseStatusText:(string), responseHeaders:(!Array<Protocol.CacheStorage.Header>)}} */
+/** @enum {string} */
+Protocol.CacheStorage.CachedResponseType = {
+    Basic: "basic",
+    Cors: "cors",
+    Default: "default",
+    Error: "error",
+    OpaqueResponse: "opaqueResponse",
+    OpaqueRedirect: "opaqueRedirect"
+};
+
+/** @typedef {!{requestURL:(string), requestMethod:(string), requestHeaders:(!Array<Protocol.CacheStorage.Header>), responseTime:(number), responseStatus:(number), responseStatusText:(string), responseType:(Protocol.CacheStorage.CachedResponseType), responseHeaders:(!Array<Protocol.CacheStorage.Header>)}} */
 Protocol.CacheStorage.DataEntry;
 
 /** @typedef {!{cacheId:(Protocol.CacheStorage.CacheId), securityOrigin:(string), cacheName:(string)}} */

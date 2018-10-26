@@ -1155,6 +1155,16 @@ experimental domain CacheStorage
   # Unique identifier of the Cache object.
   type CacheId extends string
 
+  # type of HTTP response cached
+  type CachedResponseType extends string
+    enum
+      basic
+      cors
+      default
+      error
+      opaqueResponse
+      opaqueRedirect
+
   # Data entry.
   type DataEntry extends object
     properties
@@ -1170,6 +1180,8 @@ experimental domain CacheStorage
       integer responseStatus
       # HTTP response status text.
       string responseStatusText
+      # HTTP response type
+      CachedResponseType responseType
       # Response headers
       array of Header responseHeaders
 

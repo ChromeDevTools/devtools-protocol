@@ -2498,6 +2498,19 @@
                     "type": "string"
                 },
                 {
+                    "id": "CachedResponseType",
+                    "description": "type of HTTP response cached",
+                    "type": "string",
+                    "enum": [
+                        "basic",
+                        "cors",
+                        "default",
+                        "error",
+                        "opaqueResponse",
+                        "opaqueRedirect"
+                    ]
+                },
+                {
                     "id": "DataEntry",
                     "description": "Data entry.",
                     "type": "object",
@@ -2534,6 +2547,11 @@
                             "name": "responseStatusText",
                             "description": "HTTP response status text.",
                             "type": "string"
+                        },
+                        {
+                            "name": "responseType",
+                            "description": "HTTP response type",
+                            "$ref": "CachedResponseType"
                         },
                         {
                             "name": "responseHeaders",
