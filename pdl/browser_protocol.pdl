@@ -4054,7 +4054,7 @@ domain Network
       optional ErrorReason errorReason
       # If set the requests completes using with the provided base64 encoded raw response, including
       # HTTP status line and headers etc... Must not be set in response to an authChallenge.
-      optional string rawResponse
+      optional binary rawResponse
       # If set the request url will be modified in a way that's not observable by page. Must not be
       # set in response to an authChallenge.
       optional string url
