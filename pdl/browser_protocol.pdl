@@ -463,7 +463,7 @@ experimental domain Audits
       optional boolean sizeOnly
     returns
       # The encoded body as a base64 string. Omitted if sizeOnly is true.
-      optional string body
+      optional binary body
       # Size before re-encoding.
       integer originalSize
       # Size after re-encoding.
@@ -1204,7 +1204,7 @@ experimental domain CacheStorage
   type CachedResponse extends object
     properties
       # Entry content, base64-encoded.
-      string body
+      binary body
 
   # Deletes a cache.
   command deleteCache
@@ -2707,7 +2707,7 @@ experimental domain HeadlessExperimental
       # display. Reported for diagnostic uses, may be removed in the future.
       boolean hasDamage
       # Base64-encoded image data of the screenshot, if one was requested and successfully taken.
-      optional string screenshotData
+      optional binary screenshotData
 
   # Disables headless events for the target.
   command disable
@@ -3214,7 +3214,7 @@ experimental domain LayerTree
       # Offset from owning layer top boundary
       number y
       # Base64-encoded snapshot data.
-      string picture
+      binary picture
 
   # Information about a compositing layer.
   type Layer extends object
@@ -4926,7 +4926,7 @@ domain Page
       experimental optional boolean fromSurface
     returns
       # Base64-encoded image data.
-      string data
+      binary data
 
   # Clears the overriden device metrics.
   experimental deprecated command clearDeviceMetricsOverride
@@ -5113,7 +5113,7 @@ domain Page
       optional boolean preferCSSPageSize
     returns
       # Base64-encoded pdf data.
-      string data
+      binary data
 
   # Reloads given page optionally ignoring the cache.
   command reload
@@ -5465,7 +5465,7 @@ domain Page
   experimental event screencastFrame
     parameters
       # Base64-encoded compressed image.
-      string data
+      binary data
       # Screencast frame metadata.
       ScreencastFrameMetadata metadata
       # Frame number.
