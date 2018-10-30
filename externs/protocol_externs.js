@@ -6206,11 +6206,33 @@ Protocol.SystemInfoAgent.GetInfoResponse;
  * @return {!Promise<!Protocol.SystemInfoAgent.GetInfoResponse>} */
 Protocol.SystemInfoAgent.prototype.invoke_getInfo = function(obj) {};
 
+/**
+ * @return {!Promise<?Array<Protocol.SystemInfo.ProcessInfo>>}
+ */
+Protocol.SystemInfoAgent.prototype.getProcessInfo = function() {};
+/** @typedef {Object|undefined} */
+Protocol.SystemInfoAgent.GetProcessInfoRequest;
+/** @typedef {!{processInfo: !Array<Protocol.SystemInfo.ProcessInfo>}} */
+Protocol.SystemInfoAgent.GetProcessInfoResponse;
+/**
+ * @param {!Protocol.SystemInfoAgent.GetProcessInfoRequest} obj
+ * @return {!Promise<!Protocol.SystemInfoAgent.GetProcessInfoResponse>} */
+Protocol.SystemInfoAgent.prototype.invoke_getProcessInfo = function(obj) {};
+
 /** @typedef {!{vendorId:(number), deviceId:(number), vendorString:(string), deviceString:(string)}} */
 Protocol.SystemInfo.GPUDevice;
 
 /** @typedef {!{devices:(!Array<Protocol.SystemInfo.GPUDevice>), auxAttributes:(!Object|undefined), featureStatus:(!Object|undefined), driverBugWorkarounds:(!Array<string>)}} */
 Protocol.SystemInfo.GPUInfo;
+
+/** @enum {string} */
+Protocol.SystemInfo.ProcessType = {
+    Browser: "browser",
+    Renderer: "renderer"
+};
+
+/** @typedef {!{type:(Protocol.SystemInfo.ProcessType), id:(number), cpuTime:(number)}} */
+Protocol.SystemInfo.ProcessInfo;
 /** @interface */
 Protocol.SystemInfoDispatcher = function() {};
 Protocol.Target = {};

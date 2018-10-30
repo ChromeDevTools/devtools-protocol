@@ -5901,6 +5901,23 @@ experimental domain SystemInfo
       # An optional array of GPU driver bug workarounds.
       array of string driverBugWorkarounds
 
+  # Specifies process type.
+  type ProcessType extends string
+    enum
+      browser
+      renderer
+
+  # Represents process info.
+  type ProcessInfo extends object
+    properties
+      # Specifies process type.
+      ProcessType type
+      # Specifies process id.
+      integer id
+      # Specifies cumulative CPU usage in seconds across all threads of the
+      # process since the process start.
+      number cpuTime
+
   # Returns information about the system.
   command getInfo
     returns
@@ -5915,6 +5932,12 @@ experimental domain SystemInfo
       # The command line string used to launch the browser. Will be the empty string if not
       # supported.
       string commandLine
+
+  # Returns information about all running processes.
+  command getProcessInfo
+    returns
+      # An array of process info blocks.
+      array of ProcessInfo processInfo
 
 # Supports additional targets discovery and allows to attach to them.
 domain Target

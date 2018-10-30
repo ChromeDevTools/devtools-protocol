@@ -12911,6 +12911,37 @@
                             }
                         }
                     ]
+                },
+                {
+                    "id": "ProcessType",
+                    "description": "Specifies process type.",
+                    "type": "string",
+                    "enum": [
+                        "browser",
+                        "renderer"
+                    ]
+                },
+                {
+                    "id": "ProcessInfo",
+                    "description": "Represents process info.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "type",
+                            "description": "Specifies process type.",
+                            "$ref": "ProcessType"
+                        },
+                        {
+                            "name": "id",
+                            "description": "Specifies process id.",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "cpuTime",
+                            "description": "Specifies cumulative CPU usage in seconds across all threads of the\nprocess since the process start.",
+                            "type": "number"
+                        }
+                    ]
                 }
             ],
             "commands": [
@@ -12937,6 +12968,20 @@
                             "name": "commandLine",
                             "description": "The command line string used to launch the browser. Will be the empty string if not\nsupported.",
                             "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "getProcessInfo",
+                    "description": "Returns information about all running processes.",
+                    "returns": [
+                        {
+                            "name": "processInfo",
+                            "description": "An array of process info blocks.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "ProcessInfo"
+                            }
                         }
                     ]
                 }
