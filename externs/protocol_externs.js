@@ -6707,6 +6707,189 @@ Protocol.TestingAgent.GenerateTestReportResponse;
 Protocol.TestingAgent.prototype.invoke_generateTestReport = function(obj) {};
 /** @interface */
 Protocol.TestingDispatcher = function() {};
+Protocol.Fetch = {};
+
+
+/**
+ * @constructor
+*/
+Protocol.FetchAgent = function(){};
+
+/**
+ * @return {!Promise<undefined>}
+ */
+Protocol.FetchAgent.prototype.disable = function() {};
+/** @typedef {Object|undefined} */
+Protocol.FetchAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.FetchAgent.DisableResponse;
+/**
+ * @param {!Protocol.FetchAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.FetchAgent.DisableResponse>} */
+Protocol.FetchAgent.prototype.invoke_disable = function(obj) {};
+
+/**
+ * @param {!Array<Protocol.Fetch.RequestPattern>=} opt_patterns
+ * @param {boolean=} opt_handleAuthRequests
+ * @return {!Promise<undefined>}
+ */
+Protocol.FetchAgent.prototype.enable = function(opt_patterns, opt_handleAuthRequests) {};
+/** @typedef {!{patterns: (!Array<Protocol.Fetch.RequestPattern>|undefined), handleAuthRequests: (boolean|undefined)}} */
+Protocol.FetchAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.FetchAgent.EnableResponse;
+/**
+ * @param {!Protocol.FetchAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.FetchAgent.EnableResponse>} */
+Protocol.FetchAgent.prototype.invoke_enable = function(obj) {};
+
+/**
+ * @param {Protocol.Fetch.RequestId} requestId
+ * @param {Protocol.Network.ErrorReason} errorReason
+ * @return {!Promise<undefined>}
+ */
+Protocol.FetchAgent.prototype.failRequest = function(requestId, errorReason) {};
+/** @typedef {!{requestId: Protocol.Fetch.RequestId, errorReason: Protocol.Network.ErrorReason}} */
+Protocol.FetchAgent.FailRequestRequest;
+/** @typedef {Object|undefined} */
+Protocol.FetchAgent.FailRequestResponse;
+/**
+ * @param {!Protocol.FetchAgent.FailRequestRequest} obj
+ * @return {!Promise<!Protocol.FetchAgent.FailRequestResponse>} */
+Protocol.FetchAgent.prototype.invoke_failRequest = function(obj) {};
+
+/**
+ * @param {Protocol.Fetch.RequestId} requestId
+ * @param {number} responseCode
+ * @param {!Array<Protocol.Fetch.HeaderEntry>} responseHeaders
+ * @param {string=} opt_body
+ * @param {string=} opt_responsePhrase
+ * @return {!Promise<undefined>}
+ */
+Protocol.FetchAgent.prototype.fulfillRequest = function(requestId, responseCode, responseHeaders, opt_body, opt_responsePhrase) {};
+/** @typedef {!{body: (string|undefined), responsePhrase: (string|undefined), responseHeaders: !Array<Protocol.Fetch.HeaderEntry>, requestId: Protocol.Fetch.RequestId, responseCode: number}} */
+Protocol.FetchAgent.FulfillRequestRequest;
+/** @typedef {Object|undefined} */
+Protocol.FetchAgent.FulfillRequestResponse;
+/**
+ * @param {!Protocol.FetchAgent.FulfillRequestRequest} obj
+ * @return {!Promise<!Protocol.FetchAgent.FulfillRequestResponse>} */
+Protocol.FetchAgent.prototype.invoke_fulfillRequest = function(obj) {};
+
+/**
+ * @param {Protocol.Fetch.RequestId} requestId
+ * @param {string=} opt_url
+ * @param {string=} opt_method
+ * @param {string=} opt_postData
+ * @param {!Array<Protocol.Fetch.HeaderEntry>=} opt_headers
+ * @return {!Promise<undefined>}
+ */
+Protocol.FetchAgent.prototype.continueRequest = function(requestId, opt_url, opt_method, opt_postData, opt_headers) {};
+/** @typedef {!{url: (string|undefined), headers: (!Array<Protocol.Fetch.HeaderEntry>|undefined), requestId: Protocol.Fetch.RequestId, postData: (string|undefined), method: (string|undefined)}} */
+Protocol.FetchAgent.ContinueRequestRequest;
+/** @typedef {Object|undefined} */
+Protocol.FetchAgent.ContinueRequestResponse;
+/**
+ * @param {!Protocol.FetchAgent.ContinueRequestRequest} obj
+ * @return {!Promise<!Protocol.FetchAgent.ContinueRequestResponse>} */
+Protocol.FetchAgent.prototype.invoke_continueRequest = function(obj) {};
+
+/**
+ * @param {Protocol.Fetch.RequestId} requestId
+ * @param {Protocol.Fetch.AuthChallengeResponse} authChallengeResponse
+ * @return {!Promise<undefined>}
+ */
+Protocol.FetchAgent.prototype.continueWithAuth = function(requestId, authChallengeResponse) {};
+/** @typedef {!{authChallengeResponse: Protocol.Fetch.AuthChallengeResponse, requestId: Protocol.Fetch.RequestId}} */
+Protocol.FetchAgent.ContinueWithAuthRequest;
+/** @typedef {Object|undefined} */
+Protocol.FetchAgent.ContinueWithAuthResponse;
+/**
+ * @param {!Protocol.FetchAgent.ContinueWithAuthRequest} obj
+ * @return {!Promise<!Protocol.FetchAgent.ContinueWithAuthResponse>} */
+Protocol.FetchAgent.prototype.invoke_continueWithAuth = function(obj) {};
+
+/**
+ * @param {Protocol.Fetch.RequestId} requestId
+ * @return {!Promise<?string>}
+ */
+Protocol.FetchAgent.prototype.getResponseBody = function(requestId) {};
+/** @typedef {!{requestId: Protocol.Fetch.RequestId}} */
+Protocol.FetchAgent.GetResponseBodyRequest;
+/** @typedef {!{body: string, base64Encoded: boolean}} */
+Protocol.FetchAgent.GetResponseBodyResponse;
+/**
+ * @param {!Protocol.FetchAgent.GetResponseBodyRequest} obj
+ * @return {!Promise<!Protocol.FetchAgent.GetResponseBodyResponse>} */
+Protocol.FetchAgent.prototype.invoke_getResponseBody = function(obj) {};
+
+/**
+ * @param {Protocol.Fetch.RequestId} requestId
+ * @return {!Promise<?Protocol.IO.StreamHandle>}
+ */
+Protocol.FetchAgent.prototype.takeResponseBodyAsStream = function(requestId) {};
+/** @typedef {!{requestId: Protocol.Fetch.RequestId}} */
+Protocol.FetchAgent.TakeResponseBodyAsStreamRequest;
+/** @typedef {!{stream: Protocol.IO.StreamHandle}} */
+Protocol.FetchAgent.TakeResponseBodyAsStreamResponse;
+/**
+ * @param {!Protocol.FetchAgent.TakeResponseBodyAsStreamRequest} obj
+ * @return {!Promise<!Protocol.FetchAgent.TakeResponseBodyAsStreamResponse>} */
+Protocol.FetchAgent.prototype.invoke_takeResponseBodyAsStream = function(obj) {};
+
+/** @typedef {string} */
+Protocol.Fetch.RequestId;
+
+/** @enum {string} */
+Protocol.Fetch.RequestStage = {
+    Request: "Request",
+    Response: "Response"
+};
+
+/** @typedef {!{urlPattern:(string|undefined), resourceType:(Protocol.Network.ResourceType|undefined), requestStage:(Protocol.Fetch.RequestStage|undefined)}} */
+Protocol.Fetch.RequestPattern;
+
+/** @typedef {!{name:(string), value:(string)}} */
+Protocol.Fetch.HeaderEntry;
+
+/** @enum {string} */
+Protocol.Fetch.AuthChallengeSource = {
+    Server: "Server",
+    Proxy: "Proxy"
+};
+
+/** @typedef {!{source:(Protocol.Fetch.AuthChallengeSource|undefined), origin:(string), scheme:(string), realm:(string)}} */
+Protocol.Fetch.AuthChallenge;
+
+/** @enum {string} */
+Protocol.Fetch.AuthChallengeResponseResponse = {
+    Default: "Default",
+    CancelAuth: "CancelAuth",
+    ProvideCredentials: "ProvideCredentials"
+};
+
+/** @typedef {!{response:(Protocol.Fetch.AuthChallengeResponseResponse), username:(string|undefined), password:(string|undefined)}} */
+Protocol.Fetch.AuthChallengeResponse;
+/** @interface */
+Protocol.FetchDispatcher = function() {};
+/**
+ * @param {Protocol.Fetch.RequestId} requestId
+ * @param {Protocol.Network.Request} request
+ * @param {Protocol.Page.FrameId} frameId
+ * @param {Protocol.Network.ResourceType} resourceType
+ * @param {Protocol.Network.ErrorReason=} opt_responseErrorReason
+ * @param {number=} opt_responseStatusCode
+ * @param {!Array<Protocol.Fetch.HeaderEntry>=} opt_responseHeaders
+ */
+Protocol.FetchDispatcher.prototype.requestPaused = function(requestId, request, frameId, resourceType, opt_responseErrorReason, opt_responseStatusCode, opt_responseHeaders) {};
+/**
+ * @param {Protocol.Fetch.RequestId} requestId
+ * @param {Protocol.Network.Request} request
+ * @param {Protocol.Page.FrameId} frameId
+ * @param {Protocol.Network.ResourceType} resourceType
+ * @param {Protocol.Fetch.AuthChallenge} authChallenge
+ */
+Protocol.FetchDispatcher.prototype.authRequired = function(requestId, request, frameId, resourceType, authChallenge) {};
 Protocol.Console = {};
 
 
@@ -8491,6 +8674,12 @@ Protocol.TargetBase.prototype.testingAgent = function(){};
  * @param {!Protocol.TestingDispatcher} dispatcher
  */
 Protocol.TargetBase.prototype.registerTestingDispatcher = function(dispatcher) {}
+/** @return {!Protocol.FetchAgent}*/
+Protocol.TargetBase.prototype.fetchAgent = function(){};
+/**
+ * @param {!Protocol.FetchDispatcher} dispatcher
+ */
+Protocol.TargetBase.prototype.registerFetchDispatcher = function(dispatcher) {}
 /** @return {!Protocol.ConsoleAgent}*/
 Protocol.TargetBase.prototype.consoleAgent = function(){};
 /**
