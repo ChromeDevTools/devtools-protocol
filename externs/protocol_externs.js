@@ -8294,7 +8294,9 @@ Protocol.Runtime.RemoteObjectSubtype = {
     Error: "error",
     Proxy: "proxy",
     Promise: "promise",
-    Typedarray: "typedarray"
+    Typedarray: "typedarray",
+    Arraybuffer: "arraybuffer",
+    Dataview: "dataview"
 };
 
 /** @typedef {!{type:(Protocol.Runtime.RemoteObjectType), subtype:(Protocol.Runtime.RemoteObjectSubtype|undefined), className:(string|undefined), value:(*|undefined), unserializableValue:(Protocol.Runtime.UnserializableValue|undefined), description:(string|undefined), objectId:(Protocol.Runtime.RemoteObjectId|undefined), preview:(Protocol.Runtime.ObjectPreview|undefined), customPreview:(Protocol.Runtime.CustomPreview|undefined)}} */
