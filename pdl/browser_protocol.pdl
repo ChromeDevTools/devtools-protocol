@@ -5901,17 +5901,11 @@ experimental domain SystemInfo
       # An optional array of GPU driver bug workarounds.
       array of string driverBugWorkarounds
 
-  # Specifies process type.
-  type ProcessType extends string
-    enum
-      browser
-      renderer
-
   # Represents process info.
   type ProcessInfo extends object
     properties
       # Specifies process type.
-      ProcessType type
+      string type
       # Specifies process id.
       integer id
       # Specifies cumulative CPU usage in seconds across all threads of the

@@ -6225,13 +6225,7 @@ Protocol.SystemInfo.GPUDevice;
 /** @typedef {!{devices:(!Array<Protocol.SystemInfo.GPUDevice>), auxAttributes:(!Object|undefined), featureStatus:(!Object|undefined), driverBugWorkarounds:(!Array<string>)}} */
 Protocol.SystemInfo.GPUInfo;
 
-/** @enum {string} */
-Protocol.SystemInfo.ProcessType = {
-    Browser: "browser",
-    Renderer: "renderer"
-};
-
-/** @typedef {!{type:(Protocol.SystemInfo.ProcessType), id:(number), cpuTime:(number)}} */
+/** @typedef {!{type:(string), id:(number), cpuTime:(number)}} */
 Protocol.SystemInfo.ProcessInfo;
 /** @interface */
 Protocol.SystemInfoDispatcher = function() {};
