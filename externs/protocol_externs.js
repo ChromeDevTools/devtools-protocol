@@ -4821,6 +4821,20 @@ Protocol.PageAgent.CaptureScreenshotResponse;
 Protocol.PageAgent.prototype.invoke_captureScreenshot = function(obj) {};
 
 /**
+ * @param {string=} opt_format
+ * @return {!Promise<?string>}
+ */
+Protocol.PageAgent.prototype.captureSnapshot = function(opt_format) {};
+/** @typedef {!{format: (string|undefined)}} */
+Protocol.PageAgent.CaptureSnapshotRequest;
+/** @typedef {!{data: string}} */
+Protocol.PageAgent.CaptureSnapshotResponse;
+/**
+ * @param {!Protocol.PageAgent.CaptureSnapshotRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.CaptureSnapshotResponse>} */
+Protocol.PageAgent.prototype.invoke_captureSnapshot = function(obj) {};
+
+/**
  * @return {!Promise<undefined>}
  */
 Protocol.PageAgent.prototype.clearDeviceMetricsOverride = function() {};

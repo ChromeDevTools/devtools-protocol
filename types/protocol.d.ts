@@ -1185,7 +1185,7 @@ export namespace Protocol {
             /**
              * Object subtype hint. Specified for `object` type values only.
              */
-            subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error' | 'proxy' | 'promise' | 'typedarray');
+            subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'dataview');
             /**
              * Object class (constructor) name. Specified for `object` type values only.
              */
@@ -3599,6 +3599,11 @@ export namespace Protocol {
         export type CacheId = string;
 
         /**
+         * type of HTTP response cached
+         */
+        export type CachedResponseType = ('basic' | 'cors' | 'default' | 'error' | 'opaqueResponse' | 'opaqueRedirect');
+
+        /**
          * Data entry.
          */
         export interface DataEntry {
@@ -3626,6 +3631,10 @@ export namespace Protocol {
              * HTTP response status text.
              */
             responseStatusText: string;
+            /**
+             * HTTP response type
+             */
+            responseType: CachedResponseType;
             /**
              * Response headers
              */
@@ -9132,6 +9141,20 @@ export namespace Protocol {
             data: string;
         }
 
+        export interface CaptureSnapshotRequest {
+            /**
+             * Format (defaults to mhtml).
+             */
+            format?: ('mhtml');
+        }
+
+        export interface CaptureSnapshotResponse {
+            /**
+             * Serialized page data.
+             */
+            data: string;
+        }
+
         export interface CreateIsolatedWorldRequest {
             /**
              * Id of the frame in which the isolated world should be created.
@@ -9973,6 +9996,10 @@ export namespace Protocol {
              * Page certificate.
              */
             certificate: string[];
+            /**
+             * Recommendations to fix any issues.
+             */
+            recommendations?: string[];
         }
 
         /**
@@ -10378,6 +10405,25 @@ export namespace Protocol {
             driverBugWorkarounds: string[];
         }
 
+        /**
+         * Represents process info.
+         */
+        export interface ProcessInfo {
+            /**
+             * Specifies process type.
+             */
+            type: string;
+            /**
+             * Specifies process id.
+             */
+            id: integer;
+            /**
+             * Specifies cumulative CPU usage in seconds across all threads of the
+             * process since the process start.
+             */
+            cpuTime: number;
+        }
+
         export interface GetInfoResponse {
             /**
              * Information about the GPUs on the system.
@@ -10398,6 +10444,13 @@ export namespace Protocol {
              * supported.
              */
             commandLine: string;
+        }
+
+        export interface GetProcessInfoResponse {
+            /**
+             * An array of process info blocks.
+             */
+            processInfo: ProcessInfo[];
         }
     }
 
@@ -10866,6 +10919,269 @@ export namespace Protocol {
              * Specifies the endpoint group to deliver the report to.
              */
             group?: string;
+        }
+    }
+
+    /**
+     * A domain for letting clients substitute browser's network layer with client code.
+     */
+    export namespace Fetch {
+
+        /**
+         * Unique request identifier.
+         */
+        export type RequestId = string;
+
+        /**
+         * Stages of the request to handle. Request will intercept before the request is
+         * sent. Response will intercept after the response is received (but before response
+         * body is received.
+         */
+        export type RequestStage = ('Request' | 'Response');
+
+        export interface RequestPattern {
+            /**
+             * Wildcards ('*' -> zero or more, '?' -> exactly one) are allowed. Escape character is
+             * backslash. Omitting is equivalent to "*".
+             */
+            urlPattern?: string;
+            /**
+             * If set, only requests for matching resource types will be intercepted.
+             */
+            resourceType?: Network.ResourceType;
+            /**
+             * Stage at wich to begin intercepting requests. Default is Request.
+             */
+            requestStage?: RequestStage;
+        }
+
+        /**
+         * Response HTTP header entry
+         */
+        export interface HeaderEntry {
+            name: string;
+            value: string;
+        }
+
+        /**
+         * Authorization challenge for HTTP status code 401 or 407.
+         */
+        export interface AuthChallenge {
+            /**
+             * Source of the authentication challenge.
+             */
+            source?: ('Server' | 'Proxy');
+            /**
+             * Origin of the challenger.
+             */
+            origin: string;
+            /**
+             * The authentication scheme used, such as basic or digest
+             */
+            scheme: string;
+            /**
+             * The realm of the challenge. May be empty.
+             */
+            realm: string;
+        }
+
+        /**
+         * Response to an AuthChallenge.
+         */
+        export interface AuthChallengeResponse {
+            /**
+             * The decision on what to do in response to the authorization challenge.  Default means
+             * deferring to the default behavior of the net stack, which will likely either the Cancel
+             * authentication or display a popup dialog box.
+             */
+            response: ('Default' | 'CancelAuth' | 'ProvideCredentials');
+            /**
+             * The username to provide, possibly empty. Should only be set if response is
+             * ProvideCredentials.
+             */
+            username?: string;
+            /**
+             * The password to provide, possibly empty. Should only be set if response is
+             * ProvideCredentials.
+             */
+            password?: string;
+        }
+
+        export interface EnableRequest {
+            /**
+             * If specified, only requests matching any of these patterns will produce
+             * fetchRequested event and will be paused until clients response. If not set,
+             * all requests will be affected.
+             */
+            patterns?: RequestPattern[];
+            /**
+             * If true, authRequired events will be issued and requests will be paused
+             * expecting a call to continueWithAuth.
+             */
+            handleAuthRequests?: boolean;
+        }
+
+        export interface FailRequestRequest {
+            /**
+             * An id the client received in requestPaused event.
+             */
+            requestId: RequestId;
+            /**
+             * Causes the request to fail with the given reason.
+             */
+            errorReason: Network.ErrorReason;
+        }
+
+        export interface FulfillRequestRequest {
+            /**
+             * An id the client received in requestPaused event.
+             */
+            requestId: RequestId;
+            /**
+             * An HTTP response code.
+             */
+            responseCode: integer;
+            /**
+             * Response headers.
+             */
+            responseHeaders: HeaderEntry[];
+            /**
+             * A response body.
+             */
+            body?: string;
+            /**
+             * A textual representation of responseCode.
+             * If absent, a standard phrase mathcing responseCode is used.
+             */
+            responsePhrase?: string;
+        }
+
+        export interface ContinueRequestRequest {
+            /**
+             * An id the client received in requestPaused event.
+             */
+            requestId: RequestId;
+            /**
+             * If set, the request url will be modified in a way that's not observable by page.
+             */
+            url?: string;
+            /**
+             * If set, the request method is overridden.
+             */
+            method?: string;
+            /**
+             * If set, overrides the post data in the request.
+             */
+            postData?: string;
+            /**
+             * If set, overrides the request headrts.
+             */
+            headers?: HeaderEntry[];
+        }
+
+        export interface ContinueWithAuthRequest {
+            /**
+             * An id the client received in authRequired event.
+             */
+            requestId: RequestId;
+            /**
+             * Response to  with an authChallenge.
+             */
+            authChallengeResponse: AuthChallengeResponse;
+        }
+
+        export interface GetResponseBodyRequest {
+            /**
+             * Identifier for the intercepted request to get body for.
+             */
+            requestId: RequestId;
+        }
+
+        export interface GetResponseBodyResponse {
+            /**
+             * Response body.
+             */
+            body: string;
+            /**
+             * True, if content was sent as base64.
+             */
+            base64Encoded: boolean;
+        }
+
+        export interface TakeResponseBodyAsStreamRequest {
+            requestId: RequestId;
+        }
+
+        export interface TakeResponseBodyAsStreamResponse {
+            stream: IO.StreamHandle;
+        }
+
+        /**
+         * Issued when the domain is enabled and the request URL matches the
+         * specified filter. The request is paused until the client responds
+         * with one of continueRequest, failRequest or fulfillRequest.
+         * The stage of the request can be determined by presence of responseErrorReason
+         * and responseStatusCode -- the request is at the response stage if either
+         * of these fields is present and in the request stage otherwise.
+         */
+        export interface RequestPausedEvent {
+            /**
+             * Each request the page makes will have a unique id.
+             */
+            requestId: RequestId;
+            /**
+             * The details of the request.
+             */
+            request: Network.Request;
+            /**
+             * The id of the frame that initiated the request.
+             */
+            frameId: Page.FrameId;
+            /**
+             * How the requested resource will be used.
+             */
+            resourceType: Network.ResourceType;
+            /**
+             * Response error if intercepted at response stage.
+             */
+            responseErrorReason?: Network.ErrorReason;
+            /**
+             * Response code if intercepted at response stage.
+             */
+            responseStatusCode?: integer;
+            /**
+             * Response headers if intercepted at the response stage.
+             */
+            responseHeaders?: HeaderEntry[];
+        }
+
+        /**
+         * Issued when the domain is enabled with handleAuthRequests set to true.
+         * The request is paused until client responds with continueWithAuth.
+         */
+        export interface AuthRequiredEvent {
+            /**
+             * Each request the page makes will have a unique id.
+             */
+            requestId: RequestId;
+            /**
+             * The details of the request.
+             */
+            request: Network.Request;
+            /**
+             * The id of the frame that initiated the request.
+             */
+            frameId: Page.FrameId;
+            /**
+             * How the requested resource will be used.
+             */
+            resourceType: Network.ResourceType;
+            /**
+             * Details of the Authorization Challenge encountered.
+             * If this is set, client should respond with continueRequest that
+             * contains AuthChallengeResponse.
+             */
+            authChallenge: AuthChallenge;
         }
     }
 }

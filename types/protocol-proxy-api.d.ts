@@ -90,6 +90,8 @@ export namespace ProtocolProxyApi {
 
         Testing: TestingApi;
 
+        Fetch: FetchApi;
+
     }
 
 
@@ -2139,6 +2141,12 @@ export namespace ProtocolProxyApi {
         captureScreenshot(params: Protocol.Page.CaptureScreenshotRequest): Promise<Protocol.Page.CaptureScreenshotResponse>;
 
         /**
+         * Returns a snapshot of the page as a string. For MHTML format, the serialization includes
+         * iframes, shadow DOM, external resources, and element-inline styles.
+         */
+        captureSnapshot(params: Protocol.Page.CaptureSnapshotRequest): Promise<Protocol.Page.CaptureSnapshotResponse>;
+
+        /**
          * Clears the overriden device metrics.
          */
         clearDeviceMetricsOverride(): Promise<void>;
@@ -2625,6 +2633,11 @@ export namespace ProtocolProxyApi {
          */
         getInfo(): Promise<Protocol.SystemInfo.GetInfoResponse>;
 
+        /**
+         * Returns information about all running processes.
+         */
+        getProcessInfo(): Promise<Protocol.SystemInfo.GetProcessInfoResponse>;
+
     }
 
     export interface TargetApi {
@@ -2826,6 +2839,80 @@ export namespace ProtocolProxyApi {
          * Generates a report for testing.
          */
         generateTestReport(params: Protocol.Testing.GenerateTestReportRequest): Promise<void>;
+
+    }
+
+    export interface FetchApi {
+        /**
+         * Disables the fetch domain.
+         */
+        disable(): Promise<void>;
+
+        /**
+         * Enables issuing of requestPaused events. A request will be paused until client
+         * calls one of failRequest, fulfillRequest or continueRequest/continueWithAuth.
+         */
+        enable(params: Protocol.Fetch.EnableRequest): Promise<void>;
+
+        /**
+         * Causes the request to fail with specified reason.
+         */
+        failRequest(params: Protocol.Fetch.FailRequestRequest): Promise<void>;
+
+        /**
+         * Provides response to the request.
+         */
+        fulfillRequest(params: Protocol.Fetch.FulfillRequestRequest): Promise<void>;
+
+        /**
+         * Continues the request, optionally modifying some of its parameters.
+         */
+        continueRequest(params: Protocol.Fetch.ContinueRequestRequest): Promise<void>;
+
+        /**
+         * Continues a request supplying authChallengeResponse following authRequired event.
+         */
+        continueWithAuth(params: Protocol.Fetch.ContinueWithAuthRequest): Promise<void>;
+
+        /**
+         * Causes the body of the response to be received from the server and
+         * returned as a single string. May only be issued for a request that
+         * is paused in the Response stage and is mutually exclusive with
+         * takeResponseBodyForInterceptionAsStream. Calling other methods that
+         * affect the request or disabling fetch domain before body is received
+         * results in an undefined behavior.
+         */
+        getResponseBody(params: Protocol.Fetch.GetResponseBodyRequest): Promise<Protocol.Fetch.GetResponseBodyResponse>;
+
+        /**
+         * Returns a handle to the stream representing the response body.
+         * The request must be paused in the HeadersReceived stage.
+         * Note that after this command the request can't be continued
+         * as is -- client either needs to cancel it or to provide the
+         * response body.
+         * The stream only supports sequential read, IO.read will fail if the position
+         * is specified.
+         * This method is mutually exclusive with getResponseBody.
+         * Calling other methods that affect the request or disabling fetch
+         * domain before body is received results in an undefined behavior.
+         */
+        takeResponseBodyAsStream(params: Protocol.Fetch.TakeResponseBodyAsStreamRequest): Promise<Protocol.Fetch.TakeResponseBodyAsStreamResponse>;
+
+        /**
+         * Issued when the domain is enabled and the request URL matches the
+         * specified filter. The request is paused until the client responds
+         * with one of continueRequest, failRequest or fulfillRequest.
+         * The stage of the request can be determined by presence of responseErrorReason
+         * and responseStatusCode -- the request is at the response stage if either
+         * of these fields is present and in the request stage otherwise.
+         */
+        on(event: 'requestPaused', listener: (params: Protocol.Fetch.RequestPausedEvent) => void): void;
+
+        /**
+         * Issued when the domain is enabled with handleAuthRequests set to true.
+         * The request is paused until client responds with continueWithAuth.
+         */
+        on(event: 'authRequired', listener: (params: Protocol.Fetch.AuthRequiredEvent) => void): void;
 
     }
 }

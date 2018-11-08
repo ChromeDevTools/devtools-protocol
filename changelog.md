@@ -1,5 +1,67 @@
 
 
+## Roll protocol to r604763
+###### _2018-11-01 17:15:48_ | Diff: [717008e...2beb582](https://github.com/ChromeDevTools/devtools-protocol/compare/717008e...2beb582)
+#### `SystemInfo`: removed type
+* [`SystemInfo.ProcessType`](https://chromedevtools.github.io/devtools-protocol/tot/SystemInfo/#type-ProcessType)
+#### `SystemInfo`: modified type
+* [`SystemInfo.ProcessInfo`](https://chromedevtools.github.io/devtools-protocol/tot/SystemInfo/#type-ProcessInfo) - The `type` in the properties had `$ref` _removed_. The properties's `type` _added_. 
+
+
+## Roll protocol to r604639
+###### _2018-11-01 11:15:50_ | Diff: [fe05597...717008e](https://github.com/ChromeDevTools/devtools-protocol/compare/fe05597...717008e)
+#### `Runtime`: modified type
+* [`Runtime.RemoteObject`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-RemoteObject) - The `1` in the properties had `arraybuffer` _added_. The `1` in the properties had `dataview` _added_. 
+
+
+## Roll protocol to r604358
+###### _2018-10-31 12:15:51_ | Diff: [9801545...fe05597](https://github.com/ChromeDevTools/devtools-protocol/compare/9801545...fe05597)
+#### `Fetch`: new domain
+* [`Fetch.Fetch`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#domain-Fetch)
+#### `Fetch`: new commands
+* [`Fetch.disable`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#method-disable)
+* [`Fetch.enable`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#method-enable)
+* [`Fetch.failRequest`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#method-failRequest)
+* [`Fetch.fulfillRequest`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#method-fulfillRequest)
+* [`Fetch.continueRequest`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#method-continueRequest)
+* [`Fetch.continueWithAuth`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#method-continueWithAuth)
+* [`Fetch.getResponseBody`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#method-getResponseBody)
+* [`Fetch.takeResponseBodyAsStream`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#method-takeResponseBodyAsStream)
+#### `Fetch`: new events
+* [`Fetch.requestPaused`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#event-requestPaused)
+* [`Fetch.authRequired`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#event-authRequired)
+#### `Fetch`: new types
+* [`Fetch.RequestId`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#type-RequestId)
+* [`Fetch.RequestStage`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#type-RequestStage)
+* [`Fetch.RequestPattern`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#type-RequestPattern)
+* [`Fetch.HeaderEntry`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#type-HeaderEntry)
+* [`Fetch.AuthChallenge`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#type-AuthChallenge)
+* [`Fetch.AuthChallengeResponse`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#type-AuthChallengeResponse)
+
+
+## Roll protocol to r604014
+###### _2018-10-30 14:15:48_ | Diff: [0170df0...9801545](https://github.com/ChromeDevTools/devtools-protocol/compare/0170df0...9801545)
+#### `SystemInfo`: new command
+* [`SystemInfo.getProcessInfo`](https://chromedevtools.github.io/devtools-protocol/tot/SystemInfo/#method-getProcessInfo)
+#### `SystemInfo`: new types
+* [`SystemInfo.ProcessType`](https://chromedevtools.github.io/devtools-protocol/tot/SystemInfo/#type-ProcessType)
+* [`SystemInfo.ProcessInfo`](https://chromedevtools.github.io/devtools-protocol/tot/SystemInfo/#type-ProcessInfo)
+
+
+## Roll protocol to r603097
+###### _2018-10-26 08:16:21_ | Diff: [bf71ff9...1bfc9c2](https://github.com/ChromeDevTools/devtools-protocol/compare/bf71ff9...1bfc9c2)
+#### `CacheStorage`: new type
+* [`CacheStorage.CachedResponseType`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#type-CachedResponseType)
+#### `CacheStorage`: modified type
+* [`CacheStorage.DataEntry`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#type-DataEntry) - The `responseHeaders` in the properties had `type` _removed_. The `responseHeaders` in the properties had `items` _removed_. The `responseHeaders` in the properties had `name` _updated_. The `responseHeaders` in the properties had `description` _updated_. The properties's `$ref` _added_. The properties's `responseHeaders` _added_. 
+
+
+## Roll protocol to r602583
+###### _2018-10-24 19:16:02_ | Diff: [928efbe...bf71ff9](https://github.com/ChromeDevTools/devtools-protocol/compare/928efbe...bf71ff9)
+#### `Security`: modified type
+* [`Security.SecurityStateExplanation`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#type-SecurityStateExplanation) - The properties's `recommendations` _added_. 
+
+
 ## Roll protocol to r601846
 ###### _2018-10-22 21:15:58_ | Diff: [2e4077a...f25bb99](https://github.com/ChromeDevTools/devtools-protocol/compare/2e4077a...f25bb99)
 #### `HeapProfiler`: new type

@@ -4928,6 +4928,17 @@ domain Page
       # Base64-encoded image data.
       binary data
 
+  # Returns a snapshot of the page as a string. For MHTML format, the serialization includes
+  # iframes, shadow DOM, external resources, and element-inline styles.
+  experimental command captureSnapshot
+    parameters
+      # Format (defaults to mhtml).
+      optional enum format
+        mhtml
+    returns
+      # Serialized page data.
+      string data
+
   # Clears the overriden device metrics.
   experimental deprecated command clearDeviceMetricsOverride
     # Use 'Emulation.clearDeviceMetricsOverride' instead

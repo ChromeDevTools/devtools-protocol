@@ -454,6 +454,20 @@ export namespace ProtocolMapping {
          * delivered via dataCollected events.
          */
         'Tracing.tracingComplete': [Protocol.Tracing.TracingCompleteEvent];
+        /**
+         * Issued when the domain is enabled and the request URL matches the
+         * specified filter. The request is paused until the client responds
+         * with one of continueRequest, failRequest or fulfillRequest.
+         * The stage of the request can be determined by presence of responseErrorReason
+         * and responseStatusCode -- the request is at the response stage if either
+         * of these fields is present and in the request stage otherwise.
+         */
+        'Fetch.requestPaused': [Protocol.Fetch.RequestPausedEvent];
+        /**
+         * Issued when the domain is enabled with handleAuthRequests set to true.
+         * The request is paused until client responds with continueWithAuth.
+         */
+        'Fetch.authRequired': [Protocol.Fetch.AuthRequiredEvent];
     }
 
     export interface Commands {
@@ -2678,6 +2692,14 @@ export namespace ProtocolMapping {
             returnType: Protocol.Page.CaptureScreenshotResponse;
         };
         /**
+         * Returns a snapshot of the page as a string. For MHTML format, the serialization includes
+         * iframes, shadow DOM, external resources, and element-inline styles.
+         */
+        'Page.captureSnapshot': {
+            paramsType: [Protocol.Page.CaptureSnapshotRequest?];
+            returnType: Protocol.Page.CaptureSnapshotResponse;
+        };
+        /**
          * Clears the overriden device metrics.
          */
         'Page.clearDeviceMetricsOverride': {
@@ -3157,6 +3179,13 @@ export namespace ProtocolMapping {
             returnType: Protocol.SystemInfo.GetInfoResponse;
         };
         /**
+         * Returns information about all running processes.
+         */
+        'SystemInfo.getProcessInfo': {
+            paramsType: [];
+            returnType: Protocol.SystemInfo.GetProcessInfoResponse;
+        };
+        /**
          * Activates (focuses) the target.
          */
         'Target.activateTarget': {
@@ -3336,6 +3365,77 @@ export namespace ProtocolMapping {
         'Testing.generateTestReport': {
             paramsType: [Protocol.Testing.GenerateTestReportRequest];
             returnType: void;
+        };
+        /**
+         * Disables the fetch domain.
+         */
+        'Fetch.disable': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
+         * Enables issuing of requestPaused events. A request will be paused until client
+         * calls one of failRequest, fulfillRequest or continueRequest/continueWithAuth.
+         */
+        'Fetch.enable': {
+            paramsType: [Protocol.Fetch.EnableRequest?];
+            returnType: void;
+        };
+        /**
+         * Causes the request to fail with specified reason.
+         */
+        'Fetch.failRequest': {
+            paramsType: [Protocol.Fetch.FailRequestRequest];
+            returnType: void;
+        };
+        /**
+         * Provides response to the request.
+         */
+        'Fetch.fulfillRequest': {
+            paramsType: [Protocol.Fetch.FulfillRequestRequest];
+            returnType: void;
+        };
+        /**
+         * Continues the request, optionally modifying some of its parameters.
+         */
+        'Fetch.continueRequest': {
+            paramsType: [Protocol.Fetch.ContinueRequestRequest];
+            returnType: void;
+        };
+        /**
+         * Continues a request supplying authChallengeResponse following authRequired event.
+         */
+        'Fetch.continueWithAuth': {
+            paramsType: [Protocol.Fetch.ContinueWithAuthRequest];
+            returnType: void;
+        };
+        /**
+         * Causes the body of the response to be received from the server and
+         * returned as a single string. May only be issued for a request that
+         * is paused in the Response stage and is mutually exclusive with
+         * takeResponseBodyForInterceptionAsStream. Calling other methods that
+         * affect the request or disabling fetch domain before body is received
+         * results in an undefined behavior.
+         */
+        'Fetch.getResponseBody': {
+            paramsType: [Protocol.Fetch.GetResponseBodyRequest];
+            returnType: Protocol.Fetch.GetResponseBodyResponse;
+        };
+        /**
+         * Returns a handle to the stream representing the response body.
+         * The request must be paused in the HeadersReceived stage.
+         * Note that after this command the request can't be continued
+         * as is -- client either needs to cancel it or to provide the
+         * response body.
+         * The stream only supports sequential read, IO.read will fail if the position
+         * is specified.
+         * This method is mutually exclusive with getResponseBody.
+         * Calling other methods that affect the request or disabling fetch
+         * domain before body is received results in an undefined behavior.
+         */
+        'Fetch.takeResponseBodyAsStream': {
+            paramsType: [Protocol.Fetch.TakeResponseBodyAsStreamRequest];
+            returnType: Protocol.Fetch.TakeResponseBodyAsStreamResponse;
         };
     }
 }
