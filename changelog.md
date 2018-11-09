@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r606267
+###### _2018-11-07 17:15:52 -0800_ | Diff: [617d045...6503624](https://github.com/ChromeDevTools/devtools-protocol/compare/617d045...6503624)
+#### `Page`: new command
+* [`Page.captureSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-captureSnapshot)
+
+
 ## Roll protocol to r604763
 ###### _2018-11-01 17:15:48_ | Diff: [717008e...2beb582](https://github.com/ChromeDevTools/devtools-protocol/compare/717008e...2beb582)
 #### `SystemInfo`: removed type
