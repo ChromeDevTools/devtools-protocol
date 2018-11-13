@@ -2653,6 +2653,13 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Requests that backend shows hit-test borders on layers
+         */
+        'Overlay.setShowHitTestBorders': {
+            paramsType: [Protocol.Overlay.SetShowHitTestBordersRequest];
+            returnType: void;
+        };
+        /**
          * Paints viewport size upon main frame resize.
          */
         'Overlay.setShowViewportSizeOnResize': {

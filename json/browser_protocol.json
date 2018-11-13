@@ -10244,6 +10244,17 @@
                     ]
                 },
                 {
+                    "name": "setShowHitTestBorders",
+                    "description": "Requests that backend shows hit-test borders on layers",
+                    "parameters": [
+                        {
+                            "name": "show",
+                            "description": "True for showing hit-test borders",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
                     "name": "setShowViewportSizeOnResize",
                     "description": "Paints viewport size upon main frame resize.",
                     "parameters": [

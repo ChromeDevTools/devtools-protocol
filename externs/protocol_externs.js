@@ -4706,6 +4706,20 @@ Protocol.OverlayAgent.prototype.invoke_setShowScrollBottleneckRects = function(o
  * @param {boolean} show
  * @return {!Promise<undefined>}
  */
+Protocol.OverlayAgent.prototype.setShowHitTestBorders = function(show) {};
+/** @typedef {!{show: boolean}} */
+Protocol.OverlayAgent.SetShowHitTestBordersRequest;
+/** @typedef {Object|undefined} */
+Protocol.OverlayAgent.SetShowHitTestBordersResponse;
+/**
+ * @param {!Protocol.OverlayAgent.SetShowHitTestBordersRequest} obj
+ * @return {!Promise<!Protocol.OverlayAgent.SetShowHitTestBordersResponse>} */
+Protocol.OverlayAgent.prototype.invoke_setShowHitTestBorders = function(obj) {};
+
+/**
+ * @param {boolean} show
+ * @return {!Promise<undefined>}
+ */
 Protocol.OverlayAgent.prototype.setShowViewportSizeOnResize = function(show) {};
 /** @typedef {!{show: boolean}} */
 Protocol.OverlayAgent.SetShowViewportSizeOnResizeRequest;

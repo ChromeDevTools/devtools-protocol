@@ -8703,6 +8703,13 @@ export namespace Protocol {
             show: boolean;
         }
 
+        export interface SetShowHitTestBordersRequest {
+            /**
+             * True for showing hit-test borders
+             */
+            show: boolean;
+        }
+
         export interface SetShowViewportSizeOnResizeRequest {
             /**
              * Whether to paint size or not.

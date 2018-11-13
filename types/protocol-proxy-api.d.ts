@@ -2095,6 +2095,11 @@ export namespace ProtocolProxyApi {
         setShowScrollBottleneckRects(params: Protocol.Overlay.SetShowScrollBottleneckRectsRequest): Promise<void>;
 
         /**
+         * Requests that backend shows hit-test borders on layers
+         */
+        setShowHitTestBorders(params: Protocol.Overlay.SetShowHitTestBordersRequest): Promise<void>;
+
+        /**
          * Paints viewport size upon main frame resize.
          */
         setShowViewportSizeOnResize(params: Protocol.Overlay.SetShowViewportSizeOnResizeRequest): Promise<void>;
