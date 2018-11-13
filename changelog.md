@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r607463
+###### _2018-11-12 19:15:59 -0800_ | Diff: [2a3f184...87a8e2e](https://github.com/ChromeDevTools/devtools-protocol/compare/2a3f184...87a8e2e)
+#### `Overlay`: new command
+* [`Overlay.setShowHitTestBorders`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-setShowHitTestBorders)
+
+
 ## Roll protocol to r606267
 ###### _2018-11-07 17:15:52 -0800_ | Diff: [617d045...6503624](https://github.com/ChromeDevTools/devtools-protocol/compare/617d045...6503624)
 #### `Page`: new command
