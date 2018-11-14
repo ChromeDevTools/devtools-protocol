@@ -591,11 +591,11 @@ Protocol.BrowserAgent.GetWindowBoundsResponse;
 Protocol.BrowserAgent.prototype.invoke_getWindowBounds = function(obj) {};
 
 /**
- * @param {Protocol.Target.TargetID} targetId
+ * @param {Protocol.Target.TargetID=} opt_targetId
  * @return {!Promise<?Protocol.Browser.WindowID>}
  */
-Protocol.BrowserAgent.prototype.getWindowForTarget = function(targetId) {};
-/** @typedef {!{targetId: Protocol.Target.TargetID}} */
+Protocol.BrowserAgent.prototype.getWindowForTarget = function(opt_targetId) {};
+/** @typedef {!{targetId: (Protocol.Target.TargetID|undefined)}} */
 Protocol.BrowserAgent.GetWindowForTargetRequest;
 /** @typedef {!{windowId: Protocol.Browser.WindowID, bounds: Protocol.Browser.Bounds}} */
 Protocol.BrowserAgent.GetWindowForTargetResponse;

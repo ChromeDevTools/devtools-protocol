@@ -1209,7 +1209,7 @@ export namespace ProtocolMapping {
          * Get the browser window that contains the devtools target.
          */
         'Browser.getWindowForTarget': {
-            paramsType: [Protocol.Browser.GetWindowForTargetRequest];
+            paramsType: [Protocol.Browser.GetWindowForTargetRequest?];
             returnType: Protocol.Browser.GetWindowForTargetResponse;
         };
         /**

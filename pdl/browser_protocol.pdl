@@ -617,8 +617,8 @@ domain Browser
   # Get the browser window that contains the devtools target.
   experimental command getWindowForTarget
     parameters
-      # Devtools agent host id.
-      Target.TargetID targetId
+      # Devtools agent host id. If called as a part of the session, associated targetId is used.
+      optional Target.TargetID targetId
     returns
       # Browser window id.
       WindowID windowId

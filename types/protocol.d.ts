@@ -2774,9 +2774,9 @@ export namespace Protocol {
 
         export interface GetWindowForTargetRequest {
             /**
-             * Devtools agent host id.
+             * Devtools agent host id. If called as a part of the session, associated targetId is used.
              */
-            targetId: Target.TargetID;
+            targetId?: Target.TargetID;
         }
 
         export interface GetWindowForTargetResponse {
