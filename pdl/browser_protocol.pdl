@@ -635,6 +635,13 @@ domain Browser
       # with 'left', 'top', 'width' or 'height'. Leaves unspecified fields unchanged.
       Bounds bounds
 
+  # Set dock tile details, platform-specific.
+  experimental command setDockTile
+    parameters
+      optional string badgeLabel
+      # Png encoded image.
+      optional binary image
+
 # This domain exposes CSS read/write operations. All CSS objects (stylesheets, rules, and styles)
 # have an associated `id` used in subsequent operations on the related object. Each object type has
 # a specific `id` structure, and those are not interchangeable between objects of different kinds.

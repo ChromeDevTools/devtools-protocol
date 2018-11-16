@@ -619,6 +619,21 @@ Protocol.BrowserAgent.SetWindowBoundsResponse;
  * @return {!Promise<!Protocol.BrowserAgent.SetWindowBoundsResponse>} */
 Protocol.BrowserAgent.prototype.invoke_setWindowBounds = function(obj) {};
 
+/**
+ * @param {string=} opt_badgeLabel
+ * @param {string=} opt_image
+ * @return {!Promise<undefined>}
+ */
+Protocol.BrowserAgent.prototype.setDockTile = function(opt_badgeLabel, opt_image) {};
+/** @typedef {!{image: (string|undefined), badgeLabel: (string|undefined)}} */
+Protocol.BrowserAgent.SetDockTileRequest;
+/** @typedef {Object|undefined} */
+Protocol.BrowserAgent.SetDockTileResponse;
+/**
+ * @param {!Protocol.BrowserAgent.SetDockTileRequest} obj
+ * @return {!Promise<!Protocol.BrowserAgent.SetDockTileResponse>} */
+Protocol.BrowserAgent.prototype.invoke_setDockTile = function(obj) {};
+
 /** @typedef {number} */
 Protocol.Browser.WindowID;
 

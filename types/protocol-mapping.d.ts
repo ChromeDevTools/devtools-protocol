@@ -1220,6 +1220,13 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Set dock tile details, platform-specific.
+         */
+        'Browser.setDockTile': {
+            paramsType: [Protocol.Browser.SetDockTileRequest?];
+            returnType: void;
+        };
+        /**
          * Inserts a new rule with the given `ruleText` in a stylesheet with given `styleSheetId`, at the
          * position specified by `location`.
          */

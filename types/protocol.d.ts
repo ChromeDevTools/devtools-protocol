@@ -2802,6 +2802,14 @@ export namespace Protocol {
              */
             bounds: Bounds;
         }
+
+        export interface SetDockTileRequest {
+            badgeLabel?: string;
+            /**
+             * Png encoded image.
+             */
+            image?: string;
+        }
     }
 
     /**

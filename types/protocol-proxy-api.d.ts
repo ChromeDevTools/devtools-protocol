@@ -772,6 +772,11 @@ export namespace ProtocolProxyApi {
          */
         setWindowBounds(params: Protocol.Browser.SetWindowBoundsRequest): Promise<void>;
 
+        /**
+         * Set dock tile details, platform-specific.
+         */
+        setDockTile(params: Protocol.Browser.SetDockTileRequest): Promise<void>;
+
     }
 
     export interface CSSApi {

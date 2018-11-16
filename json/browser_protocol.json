@@ -1314,6 +1314,24 @@
                             "$ref": "Bounds"
                         }
                     ]
+                },
+                {
+                    "name": "setDockTile",
+                    "description": "Set dock tile details, platform-specific.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "badgeLabel",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "image",
+                            "description": "Png encoded image.",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
                 }
             ]
         },

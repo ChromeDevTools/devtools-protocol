@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r607825
+###### _2018-11-13 16:15:58 -0800_ | Diff: [be3e054...7d7cac5](https://github.com/ChromeDevTools/devtools-protocol/compare/be3e054...7d7cac5)
+#### `Browser`: modified command
+* [`Browser.getWindowForTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-getWindowForTarget) - The `targetId` in the parameters had `description` _updated_. The parameters's `optional` _added_. 
+
+
 ## Roll protocol to r607463
 ###### _2018-11-12 19:15:59 -0800_ | Diff: [2a3f184...87a8e2e](https://github.com/ChromeDevTools/devtools-protocol/compare/2a3f184...87a8e2e)
 #### `Overlay`: new command
