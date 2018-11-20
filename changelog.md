@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r608591
+###### _2018-11-15 16:15:59 -0800_ | Diff: [7d7cac5...0e63cc2](https://github.com/ChromeDevTools/devtools-protocol/compare/7d7cac5...0e63cc2)
+#### `Browser`: new command
+* [`Browser.setDockTile`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-setDockTile)
+
+
 ## Roll protocol to r607825
 ###### _2018-11-13 16:15:58 -0800_ | Diff: [be3e054...7d7cac5](https://github.com/ChromeDevTools/devtools-protocol/compare/be3e054...7d7cac5)
 #### `Browser`: modified command
