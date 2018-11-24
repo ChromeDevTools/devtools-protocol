@@ -4158,7 +4158,7 @@ domain Network
       # Identifier of the network request to get content for.
       RequestId requestId
     returns
-      # Base64-encoded request body.
+      # Request body string, omitting files from multipart requests
       string postData
 
   # Returns content served for the given currently intercepted request.

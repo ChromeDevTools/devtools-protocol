@@ -7927,7 +7927,7 @@ export namespace Protocol {
 
         export interface GetRequestPostDataResponse {
             /**
-             * Base64-encoded request body.
+             * Request body string, omitting files from multipart requests
              */
             postData: string;
         }

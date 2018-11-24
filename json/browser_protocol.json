@@ -9168,7 +9168,7 @@
                     "returns": [
                         {
                             "name": "postData",
-                            "description": "Base64-encoded request body.",
+                            "description": "Request body string, omitting files from multipart requests",
                             "type": "string"
                         }
                     ]
