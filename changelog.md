@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r610712
+###### _2018-11-24 14:15:45 -0800_ | Diff: [34cbbf0...0df7169](https://github.com/ChromeDevTools/devtools-protocol/compare/34cbbf0...0df7169)
+#### `Network`: modified command
+* [`Network.getRequestPostData`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-getRequestPostData) - The `postData` in the return value had `description` _updated_. 
+
+
 ## Roll protocol to r608591
 ###### _2018-11-15 16:15:59 -0800_ | Diff: [7d7cac5...0e63cc2](https://github.com/ChromeDevTools/devtools-protocol/compare/7d7cac5...0e63cc2)
 #### `Browser`: new command
