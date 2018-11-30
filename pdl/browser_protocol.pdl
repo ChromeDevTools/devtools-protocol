@@ -3818,14 +3818,14 @@ domain Network
       # HTTP request headers text.
       optional string requestHeadersText
 
-  # WebSocket frame data.
+  # WebSocket message data. This represents an entire WebSocket message, not just a fragmented frame as the name suggests.
   type WebSocketFrame extends object
     properties
-      # WebSocket frame opcode.
+      # WebSocket message opcode.
       number opcode
-      # WebSocke frame mask.
+      # WebSocket message mask.
       boolean mask
-      # WebSocke frame payload data.
+      # WebSocket message payload data.
       string payloadData
 
   # Information about the cached resource.
@@ -4459,17 +4459,17 @@ domain Network
       # Request initiator.
       optional Initiator initiator
 
-  # Fired when WebSocket frame error occurs.
+  # Fired when WebSocket message error occurs.
   event webSocketFrameError
     parameters
       # Request identifier.
       RequestId requestId
       # Timestamp.
       MonotonicTime timestamp
-      # WebSocket frame error message.
+      # WebSocket error message.
       string errorMessage
 
-  # Fired when WebSocket frame is received.
+  # Fired when WebSocket message is received.
   event webSocketFrameReceived
     parameters
       # Request identifier.
@@ -4479,7 +4479,7 @@ domain Network
       # WebSocket response data.
       WebSocketFrame response
 
-  # Fired when WebSocket frame is sent.
+  # Fired when WebSocket message is sent.
   event webSocketFrameSent
     parameters
       # Request identifier.

@@ -8413,22 +8413,22 @@
                 },
                 {
                     "id": "WebSocketFrame",
-                    "description": "WebSocket frame data.",
+                    "description": "WebSocket message data. This represents an entire WebSocket message, not just a fragmented frame as the name suggests.",
                     "type": "object",
                     "properties": [
                         {
                             "name": "opcode",
-                            "description": "WebSocket frame opcode.",
+                            "description": "WebSocket message opcode.",
                             "type": "number"
                         },
                         {
                             "name": "mask",
-                            "description": "WebSocke frame mask.",
+                            "description": "WebSocket message mask.",
                             "type": "boolean"
                         },
                         {
                             "name": "payloadData",
-                            "description": "WebSocke frame payload data.",
+                            "description": "WebSocket message payload data.",
                             "type": "string"
                         }
                     ]
@@ -9832,7 +9832,7 @@
                 },
                 {
                     "name": "webSocketFrameError",
-                    "description": "Fired when WebSocket frame error occurs.",
+                    "description": "Fired when WebSocket message error occurs.",
                     "parameters": [
                         {
                             "name": "requestId",
@@ -9846,14 +9846,14 @@
                         },
                         {
                             "name": "errorMessage",
-                            "description": "WebSocket frame error message.",
+                            "description": "WebSocket error message.",
                             "type": "string"
                         }
                     ]
                 },
                 {
                     "name": "webSocketFrameReceived",
-                    "description": "Fired when WebSocket frame is received.",
+                    "description": "Fired when WebSocket message is received.",
                     "parameters": [
                         {
                             "name": "requestId",
@@ -9874,7 +9874,7 @@
                 },
                 {
                     "name": "webSocketFrameSent",
-                    "description": "Fired when WebSocket frame is sent.",
+                    "description": "Fired when WebSocket message is sent.",
                     "parameters": [
                         {
                             "name": "requestId",
