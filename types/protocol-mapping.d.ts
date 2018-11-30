@@ -267,15 +267,15 @@ export namespace ProtocolMapping {
          */
         'Network.webSocketCreated': [Protocol.Network.WebSocketCreatedEvent];
         /**
-         * Fired when WebSocket frame error occurs.
+         * Fired when WebSocket message error occurs.
          */
         'Network.webSocketFrameError': [Protocol.Network.WebSocketFrameErrorEvent];
         /**
-         * Fired when WebSocket frame is received.
+         * Fired when WebSocket message is received.
          */
         'Network.webSocketFrameReceived': [Protocol.Network.WebSocketFrameReceivedEvent];
         /**
-         * Fired when WebSocket frame is sent.
+         * Fired when WebSocket message is sent.
          */
         'Network.webSocketFrameSent': [Protocol.Network.WebSocketFrameSentEvent];
         /**

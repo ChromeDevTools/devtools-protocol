@@ -2003,17 +2003,17 @@ export namespace ProtocolProxyApi {
         on(event: 'webSocketCreated', listener: (params: Protocol.Network.WebSocketCreatedEvent) => void): void;
 
         /**
-         * Fired when WebSocket frame error occurs.
+         * Fired when WebSocket message error occurs.
          */
         on(event: 'webSocketFrameError', listener: (params: Protocol.Network.WebSocketFrameErrorEvent) => void): void;
 
         /**
-         * Fired when WebSocket frame is received.
+         * Fired when WebSocket message is received.
          */
         on(event: 'webSocketFrameReceived', listener: (params: Protocol.Network.WebSocketFrameReceivedEvent) => void): void;
 
         /**
-         * Fired when WebSocket frame is sent.
+         * Fired when WebSocket message is sent.
          */
         on(event: 'webSocketFrameSent', listener: (params: Protocol.Network.WebSocketFrameSentEvent) => void): void;
 

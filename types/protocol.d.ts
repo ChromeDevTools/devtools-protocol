@@ -7416,19 +7416,19 @@ export namespace Protocol {
         }
 
         /**
-         * WebSocket frame data.
+         * WebSocket message data. This represents an entire WebSocket message, not just a fragmented frame as the name suggests.
          */
         export interface WebSocketFrame {
             /**
-             * WebSocket frame opcode.
+             * WebSocket message opcode.
              */
             opcode: number;
             /**
-             * WebSocke frame mask.
+             * WebSocket message mask.
              */
             mask: boolean;
             /**
-             * WebSocke frame payload data.
+             * WebSocket message payload data.
              */
             payloadData: string;
         }
@@ -8418,7 +8418,7 @@ export namespace Protocol {
         }
 
         /**
-         * Fired when WebSocket frame error occurs.
+         * Fired when WebSocket message error occurs.
          */
         export interface WebSocketFrameErrorEvent {
             /**
@@ -8430,13 +8430,13 @@ export namespace Protocol {
              */
             timestamp: MonotonicTime;
             /**
-             * WebSocket frame error message.
+             * WebSocket error message.
              */
             errorMessage: string;
         }
 
         /**
-         * Fired when WebSocket frame is received.
+         * Fired when WebSocket message is received.
          */
         export interface WebSocketFrameReceivedEvent {
             /**
@@ -8454,7 +8454,7 @@ export namespace Protocol {
         }
 
         /**
-         * Fired when WebSocket frame is sent.
+         * Fired when WebSocket message is sent.
          */
         export interface WebSocketFrameSentEvent {
             /**
