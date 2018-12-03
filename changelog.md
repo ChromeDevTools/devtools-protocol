@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r613054
+###### _2018-12-03 04:15:51 -0800_ | Diff: [d0e8e30...65909c1](https://github.com/ChromeDevTools/devtools-protocol/compare/d0e8e30...65909c1)
+#### `Debugger`: removed command
+* [`Debugger.scheduleStepIntoAsync`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-scheduleStepIntoAsync)
+
+
 ## Roll protocol to r612784 608637
 ###### _2018-11-30 13:15:53 -0800_ | Diff: [cffb4e1...6fd74c5](https://github.com/ChromeDevTools/devtools-protocol/compare/cffb4e1...6fd74c5)
 #### `Network`: modified events

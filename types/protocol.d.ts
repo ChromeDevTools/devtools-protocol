@@ -3716,7 +3716,7 @@ export namespace Protocol {
 
         export interface RequestCachedResponseRequest {
             /**
-             * Id of cache that contains the enty.
+             * Id of cache that contains the entry.
              */
             cacheId: CacheId;
             /**
@@ -3745,6 +3745,10 @@ export namespace Protocol {
              * Number of records to fetch.
              */
             pageSize: integer;
+            /**
+             * If present, only return the entries containing this substring in the path
+             */
+            pathFilter?: string;
         }
 
         export interface RequestEntriesResponse {

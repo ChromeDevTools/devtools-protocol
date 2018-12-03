@@ -2686,7 +2686,7 @@
                     "parameters": [
                         {
                             "name": "cacheId",
-                            "description": "Id of cache that contains the enty.",
+                            "description": "Id of cache that contains the entry.",
                             "$ref": "CacheId"
                         },
                         {
@@ -2721,6 +2721,12 @@
                             "name": "pageSize",
                             "description": "Number of records to fetch.",
                             "type": "integer"
+                        },
+                        {
+                            "name": "pathFilter",
+                            "description": "If present, only return the entries containing this substring in the path",
+                            "optional": true,
+                            "type": "string"
                         }
                     ],
                     "returns": [

@@ -1239,7 +1239,7 @@ experimental domain CacheStorage
   # Fetches cache entry.
   command requestCachedResponse
     parameters
-      # Id of cache that contains the enty.
+      # Id of cache that contains the entry.
       CacheId cacheId
       # URL spec of the request.
       string requestURL
@@ -1256,6 +1256,8 @@ experimental domain CacheStorage
       integer skipCount
       # Number of records to fetch.
       integer pageSize
+      # If present, only return the entries containing this substring in the path
+      optional string pathFilter
     returns
       # Array of object store data entries.
       array of DataEntry cacheDataEntries
