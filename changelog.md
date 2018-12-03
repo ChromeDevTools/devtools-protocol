@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r612784 608637
+###### _2018-11-30 13:15:53 -0800_ | Diff: [cffb4e1...6fd74c5](https://github.com/ChromeDevTools/devtools-protocol/compare/cffb4e1...6fd74c5)
+#### `Network`: modified events
+* [`Network.webSocketFrameError`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webSocketFrameError) - `description` updated. The `errorMessage` in the parameters had `description` _updated_. 
+* [`Network.webSocketFrameReceived`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webSocketFrameReceived) - `description` updated. 
+* [`Network.webSocketFrameSent`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webSocketFrameSent) - `description` updated. 
+#### `Network`: modified type
+* [`Network.WebSocketFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-WebSocketFrame) - `description` updated. The `opcode` in the properties had `description` _updated_. The `mask` in the properties had `description` _updated_. The `payloadData` in the properties had `description` _updated_. 
+
+
 ## Roll protocol to r610712
 ###### _2018-11-24 14:15:45 -0800_ | Diff: [34cbbf0...0df7169](https://github.com/ChromeDevTools/devtools-protocol/compare/34cbbf0...0df7169)
 #### `Network`: modified command

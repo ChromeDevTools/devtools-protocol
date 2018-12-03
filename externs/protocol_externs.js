@@ -7190,19 +7190,6 @@ Protocol.DebuggerAgent.ResumeResponse;
 Protocol.DebuggerAgent.prototype.invoke_resume = function(obj) {};
 
 /**
- * @return {!Promise<undefined>}
- */
-Protocol.DebuggerAgent.prototype.scheduleStepIntoAsync = function() {};
-/** @typedef {Object|undefined} */
-Protocol.DebuggerAgent.ScheduleStepIntoAsyncRequest;
-/** @typedef {Object|undefined} */
-Protocol.DebuggerAgent.ScheduleStepIntoAsyncResponse;
-/**
- * @param {!Protocol.DebuggerAgent.ScheduleStepIntoAsyncRequest} obj
- * @return {!Promise<!Protocol.DebuggerAgent.ScheduleStepIntoAsyncResponse>} */
-Protocol.DebuggerAgent.prototype.invoke_scheduleStepIntoAsync = function(obj) {};
-
-/**
  * @param {Protocol.Runtime.ScriptId} scriptId
  * @param {string} query
  * @param {boolean=} opt_caseSensitive
