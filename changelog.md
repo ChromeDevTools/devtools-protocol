@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r613210
+###### _2018-12-03 12:15:55 -0800_ | Diff: [65909c1...2135225](https://github.com/ChromeDevTools/devtools-protocol/compare/65909c1...2135225)
+#### `CacheStorage`: modified commands
+* [`CacheStorage.requestCachedResponse`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#method-requestCachedResponse) - The `cacheId` in the parameters had `description` _updated_. 
+* [`CacheStorage.requestEntries`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#method-requestEntries) - The parameters's `pathFilter` _added_. 
+
+
 ## Roll protocol to r613054
 ###### _2018-12-03 04:15:51 -0800_ | Diff: [d0e8e30...65909c1](https://github.com/ChromeDevTools/devtools-protocol/compare/d0e8e30...65909c1)
 #### `Debugger`: removed command
