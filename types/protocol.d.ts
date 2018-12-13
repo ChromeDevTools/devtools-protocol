@@ -6350,7 +6350,12 @@ export namespace Protocol {
             /**
              * Mouse button (default: "none").
              */
-            button?: ('none' | 'left' | 'middle' | 'right');
+            button?: ('none' | 'left' | 'middle' | 'right' | 'back' | 'forward');
+            /**
+             * A number indicating which buttons are pressed on the mouse when a mouse event is triggered.
+             * Left=1, Right=2, Middle=4, Back=8, Forward=16, None=0.
+             */
+            buttons?: integer;
             /**
              * Number of times the mouse button was clicked (default: 0).
              */

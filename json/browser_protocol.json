@@ -6734,8 +6734,16 @@
                                 "none",
                                 "left",
                                 "middle",
-                                "right"
+                                "right",
+                                "back",
+                                "forward"
                             ]
+                        },
+                        {
+                            "name": "buttons",
+                            "description": "A number indicating which buttons are pressed on the mouse when a mouse event is triggered.\nLeft=1, Right=2, Middle=4, Back=8, Forward=16, None=0.",
+                            "optional": true,
+                            "type": "integer"
                         },
                         {
                             "name": "clickCount",
