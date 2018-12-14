@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r616451
+###### _2018-12-13 14:15:51 -0800_ | Diff: [4e2e581...7fa0f03](https://github.com/ChromeDevTools/devtools-protocol/compare/4e2e581...7fa0f03)
+#### `Input`: modified command
+* [`Input.dispatchMouseEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-dispatchMouseEvent) - The `clickCount` in the parameters had `name` _updated_. The `clickCount` in the parameters had `description` _updated_. The `deltaX` in the parameters had `name` _updated_. The `deltaX` in the parameters had `description` _updated_. The `deltaX` in the parameters had `type` _updated_. The `deltaY` in the parameters had `name` _updated_. The `deltaY` in the parameters had `description` _updated_. The `5` in the parameters had `back` _added_. The `5` in the parameters had `forward` _added_. The parameters's `deltaY` _added_. 
+
+
 ## Roll protocol to r613210
 ###### _2018-12-03 12:15:55 -0800_ | Diff: [65909c1...2135225](https://github.com/ChromeDevTools/devtools-protocol/compare/65909c1...2135225)
 #### `CacheStorage`: modified commands

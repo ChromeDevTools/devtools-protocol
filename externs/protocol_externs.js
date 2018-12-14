@@ -5529,6 +5529,19 @@ Protocol.PageAgent.GenerateTestReportResponse;
  * @return {!Promise<!Protocol.PageAgent.GenerateTestReportResponse>} */
 Protocol.PageAgent.prototype.invoke_generateTestReport = function(obj) {};
 
+/**
+ * @return {!Promise<undefined>}
+ */
+Protocol.PageAgent.prototype.waitForDebugger = function() {};
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.WaitForDebuggerRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.WaitForDebuggerResponse;
+/**
+ * @param {!Protocol.PageAgent.WaitForDebuggerRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.WaitForDebuggerResponse>} */
+Protocol.PageAgent.prototype.invoke_waitForDebugger = function(obj) {};
+
 /** @typedef {string} */
 Protocol.Page.FrameId;
 

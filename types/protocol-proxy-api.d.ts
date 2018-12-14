@@ -2374,6 +2374,11 @@ export namespace ProtocolProxyApi {
          */
         generateTestReport(params: Protocol.Page.GenerateTestReportRequest): Promise<void>;
 
+        /**
+         * Pauses page execution. Can be resumed using generic Runtime.runIfWaitingForDebugger.
+         */
+        waitForDebugger(): Promise<void>;
+
         on(event: 'domContentEventFired', listener: (params: Protocol.Page.DomContentEventFiredEvent) => void): void;
 
         /**

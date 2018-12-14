@@ -5372,6 +5372,9 @@ domain Page
       # Specifies the endpoint group to deliver the report to.
       optional string group
 
+  # Pauses page execution. Can be resumed using generic Runtime.runIfWaitingForDebugger.
+  experimental command waitForDebugger
+
   event domContentEventFired
     parameters
       Network.MonotonicTime timestamp

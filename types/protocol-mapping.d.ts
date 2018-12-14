@@ -3020,6 +3020,13 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Pauses page execution. Can be resumed using generic Runtime.runIfWaitingForDebugger.
+         */
+        'Page.waitForDebugger': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
          * Disable collecting and reporting metrics.
          */
         'Performance.disable': {

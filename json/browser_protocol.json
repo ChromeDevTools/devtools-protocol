@@ -11795,6 +11795,11 @@
                             "type": "string"
                         }
                     ]
+                },
+                {
+                    "name": "waitForDebugger",
+                    "description": "Pauses page execution. Can be resumed using generic Runtime.runIfWaitingForDebugger.",
+                    "experimental": true
                 }
             ],
             "events": [
