@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r616542
+###### _2018-12-13 17:16:20 -0800_ | Diff: [7fa0f03...14070df](https://github.com/ChromeDevTools/devtools-protocol/compare/7fa0f03...14070df)
+#### `Page`: new command
+* [`Page.waitForDebugger`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-waitForDebugger)
+
+
 ## Roll protocol to r616451
 ###### _2018-12-13 14:15:51 -0800_ | Diff: [4e2e581...7fa0f03](https://github.com/ChromeDevTools/devtools-protocol/compare/4e2e581...7fa0f03)
 #### `Input`: modified command
