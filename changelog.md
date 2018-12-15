@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r616936
+###### _2018-12-14 19:15:51 -0800_ | Diff: [0fb03aa...cae0bbe](https://github.com/ChromeDevTools/devtools-protocol/compare/0fb03aa...cae0bbe)
+#### `Page`: new command
+* [`Page.resetNavigationHistory`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-resetNavigationHistory)
+
+
 ## Roll protocol to r616803
 ###### _2018-12-14 12:15:57 -0800_ | Diff: [41590b0...0fb03aa](https://github.com/ChromeDevTools/devtools-protocol/compare/41590b0...0fb03aa)
 #### `Network`: modified type

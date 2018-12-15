@@ -1735,6 +1735,20 @@ Protocol.DOMAgent.SetFileInputFilesResponse;
 Protocol.DOMAgent.prototype.invoke_setFileInputFiles = function(obj) {};
 
 /**
+ * @param {Protocol.Runtime.RemoteObjectId} objectId
+ * @return {!Promise<?string>}
+ */
+Protocol.DOMAgent.prototype.getFileInfo = function(objectId) {};
+/** @typedef {!{objectId: Protocol.Runtime.RemoteObjectId}} */
+Protocol.DOMAgent.GetFileInfoRequest;
+/** @typedef {!{path: string}} */
+Protocol.DOMAgent.GetFileInfoResponse;
+/**
+ * @param {!Protocol.DOMAgent.GetFileInfoRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.GetFileInfoResponse>} */
+Protocol.DOMAgent.prototype.invoke_getFileInfo = function(obj) {};
+
+/**
  * @param {Protocol.DOM.NodeId} nodeId
  * @return {!Promise<undefined>}
  */

@@ -1668,6 +1668,14 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Returns file information for the given
+         * File wrapper.
+         */
+        'DOM.getFileInfo': {
+            paramsType: [Protocol.DOM.GetFileInfoRequest];
+            returnType: Protocol.DOM.GetFileInfoResponse;
+        };
+        /**
          * Enables console to refer to the node with given id via $x (see Command Line API for more details
          * $x functions).
          */

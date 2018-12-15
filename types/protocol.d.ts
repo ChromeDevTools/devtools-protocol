@@ -4536,6 +4536,17 @@ export namespace Protocol {
             objectId?: Runtime.RemoteObjectId;
         }
 
+        export interface GetFileInfoRequest {
+            /**
+             * JavaScript object id of the node wrapper.
+             */
+            objectId: Runtime.RemoteObjectId;
+        }
+
+        export interface GetFileInfoResponse {
+            path: string;
+        }
+
         export interface SetInspectedNodeRequest {
             /**
              * DOM node id to be accessible by means of $x command line API.

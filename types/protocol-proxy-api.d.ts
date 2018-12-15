@@ -1133,6 +1133,12 @@ export namespace ProtocolProxyApi {
         setFileInputFiles(params: Protocol.DOM.SetFileInputFilesRequest): Promise<void>;
 
         /**
+         * Returns file information for the given
+         * File wrapper.
+         */
+        getFileInfo(params: Protocol.DOM.GetFileInfoRequest): Promise<Protocol.DOM.GetFileInfoResponse>;
+
+        /**
          * Enables console to refer to the node with given id via $x (see Command Line API for more details
          * $x functions).
          */
