@@ -5047,6 +5047,9 @@ domain Page
       # Array of navigation history entries.
       array of NavigationEntry entries
 
+  # Resets navigation history for the current page.
+  command resetNavigationHistory
+
   # Returns content of the given resource.
   experimental command getResourceContent
     parameters

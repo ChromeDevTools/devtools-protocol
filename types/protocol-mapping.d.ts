@@ -2786,6 +2786,13 @@ export namespace ProtocolMapping {
             returnType: Protocol.Page.GetNavigationHistoryResponse;
         };
         /**
+         * Resets navigation history for the current page.
+         */
+        'Page.resetNavigationHistory': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
          * Returns content of the given resource.
          */
         'Page.getResourceContent': {

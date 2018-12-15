@@ -2207,6 +2207,11 @@ export namespace ProtocolProxyApi {
         getNavigationHistory(): Promise<Protocol.Page.GetNavigationHistoryResponse>;
 
         /**
+         * Resets navigation history for the current page.
+         */
+        resetNavigationHistory(): Promise<void>;
+
+        /**
          * Returns content of the given resource.
          */
         getResourceContent(params: Protocol.Page.GetResourceContentRequest): Promise<Protocol.Page.GetResourceContentResponse>;

@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r616803
+###### _2018-12-14 12:15:57 -0800_ | Diff: [41590b0...0fb03aa](https://github.com/ChromeDevTools/devtools-protocol/compare/41590b0...0fb03aa)
+#### `Network`: modified type
+* [`Network.WebSocketFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-WebSocketFrame) - The `payloadData` in the properties had `description` _updated_. 
+
+
 ## Roll protocol to r616542
 ###### _2018-12-13 17:16:20 -0800_ | Diff: [7fa0f03...14070df](https://github.com/ChromeDevTools/devtools-protocol/compare/7fa0f03...14070df)
 #### `Page`: new command

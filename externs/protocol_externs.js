@@ -5027,6 +5027,19 @@ Protocol.PageAgent.GetNavigationHistoryResponse;
 Protocol.PageAgent.prototype.invoke_getNavigationHistory = function(obj) {};
 
 /**
+ * @return {!Promise<undefined>}
+ */
+Protocol.PageAgent.prototype.resetNavigationHistory = function() {};
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.ResetNavigationHistoryRequest;
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.ResetNavigationHistoryResponse;
+/**
+ * @param {!Protocol.PageAgent.ResetNavigationHistoryRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.ResetNavigationHistoryResponse>} */
+Protocol.PageAgent.prototype.invoke_resetNavigationHistory = function(obj) {};
+
+/**
  * @param {Protocol.Page.FrameId} frameId
  * @param {string} url
  * @return {!Promise<?string>}

@@ -11101,6 +11101,10 @@
                     ]
                 },
                 {
+                    "name": "resetNavigationHistory",
+                    "description": "Resets navigation history for the current page."
+                },
+                {
                     "name": "getResourceContent",
                     "description": "Returns content of the given resource.",
                     "experimental": true,
