@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r616947
+###### _2018-12-14 20:15:49 -0800_ | Diff: [cae0bbe...d229bf4](https://github.com/ChromeDevTools/devtools-protocol/compare/cae0bbe...d229bf4)
+#### `DOM`: new command
+* [`DOM.getFileInfo`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getFileInfo)
+
+
 ## Roll protocol to r616936
 ###### _2018-12-14 19:15:51 -0800_ | Diff: [0fb03aa...cae0bbe](https://github.com/ChromeDevTools/devtools-protocol/compare/0fb03aa...cae0bbe)
 #### `Page`: new command
