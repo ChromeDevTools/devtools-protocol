@@ -3137,10 +3137,11 @@ Protocol.InputAgent.prototype.invoke_insertText = function(obj) {};
  * @param {number=} opt_clickCount
  * @param {number=} opt_deltaX
  * @param {number=} opt_deltaY
+ * @param {string=} opt_pointerType
  * @return {!Promise<undefined>}
  */
-Protocol.InputAgent.prototype.dispatchMouseEvent = function(type, x, y, opt_modifiers, opt_timestamp, opt_button, opt_buttons, opt_clickCount, opt_deltaX, opt_deltaY) {};
-/** @typedef {!{modifiers: (number|undefined), clickCount: (number|undefined), deltaX: (number|undefined), timestamp: (Protocol.Input.TimeSinceEpoch|undefined), button: (string|undefined), buttons: (number|undefined), deltaY: (number|undefined), y: number, x: number, type: string}} */
+Protocol.InputAgent.prototype.dispatchMouseEvent = function(type, x, y, opt_modifiers, opt_timestamp, opt_button, opt_buttons, opt_clickCount, opt_deltaX, opt_deltaY, opt_pointerType) {};
+/** @typedef {!{modifiers: (number|undefined), clickCount: (number|undefined), deltaX: (number|undefined), timestamp: (Protocol.Input.TimeSinceEpoch|undefined), button: (string|undefined), buttons: (number|undefined), pointerType: (string|undefined), deltaY: (number|undefined), y: number, x: number, type: string}} */
 Protocol.InputAgent.DispatchMouseEventRequest;
 /** @typedef {Object|undefined} */
 Protocol.InputAgent.DispatchMouseEventResponse;

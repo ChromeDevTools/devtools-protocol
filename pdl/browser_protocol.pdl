@@ -3058,6 +3058,10 @@ domain Input
       optional number deltaX
       # Y delta in CSS pixels for mouse wheel event (default: 0).
       optional number deltaY
+      # Pointer type (default: "mouse").
+      optional enum pointerType
+        mouse
+        pen
 
   # Dispatches a touch event to the page.
   command dispatchTouchEvent

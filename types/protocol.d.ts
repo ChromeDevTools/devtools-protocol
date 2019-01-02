@@ -6379,6 +6379,10 @@ export namespace Protocol {
              * Y delta in CSS pixels for mouse wheel event (default: 0).
              */
             deltaY?: number;
+            /**
+             * Pointer type (default: "mouse").
+             */
+            pointerType?: ('mouse' | 'pen');
         }
 
         export interface DispatchTouchEventRequest {
