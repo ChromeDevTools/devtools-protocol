@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r619477
+###### _2019-01-02 12:16:22 -0800_ | Diff: [a254142...9ef310e](https://github.com/ChromeDevTools/devtools-protocol/compare/a254142...9ef310e)
+#### `Input`: modified command
+* [`Input.dispatchMouseEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-dispatchMouseEvent) - The parameters's `pointerType` _added_. 
+
+
 ## Roll protocol to r616947
 ###### _2018-12-14 20:15:49 -0800_ | Diff: [cae0bbe...d229bf4](https://github.com/ChromeDevTools/devtools-protocol/compare/cae0bbe...d229bf4)
 #### `DOM`: new command
