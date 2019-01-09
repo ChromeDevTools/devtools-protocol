@@ -122,6 +122,16 @@ export namespace ProtocolMapping {
          */
         'CSS.styleSheetRemoved': [Protocol.CSS.StyleSheetRemovedEvent];
         /**
+         * This is fired whenever the list of available sinks changes. A sink is a
+         * device or a software surface that you can cast to.
+         */
+        'Cast.sinksUpdated': [Protocol.Cast.SinksUpdatedEvent];
+        /**
+         * This is fired whenever the outstanding issue/error message changes.
+         * |issueMessage| is empty if there is no issue.
+         */
+        'Cast.issueUpdated': [Protocol.Cast.IssueUpdatedEvent];
+        /**
          * Fired when `Element`'s attribute is modified.
          */
         'DOM.attributeModified': [Protocol.DOM.AttributeModifiedEvent];
@@ -1409,6 +1419,46 @@ export namespace ProtocolMapping {
         'CacheStorage.requestEntries': {
             paramsType: [Protocol.CacheStorage.RequestEntriesRequest];
             returnType: Protocol.CacheStorage.RequestEntriesResponse;
+        };
+        /**
+         * Starts observing for sinks that can be used for tab mirroring, and if set,
+         * sinks compatible with |presentationUrl| as well. When sinks are found, a
+         * |sinksUpdated| event is fired.
+         * Also starts observing for issue messages. When an issue is added or removed,
+         * an |issueUpdated| event is fired.
+         */
+        'Cast.enable': {
+            paramsType: [Protocol.Cast.EnableRequest?];
+            returnType: void;
+        };
+        /**
+         * Stops observing for sinks and issues.
+         */
+        'Cast.disable': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
+         * Sets a sink to be used when the web page requests the browser to choose a
+         * sink via Presentation API, Remote Playback API, or Cast SDK.
+         */
+        'Cast.setSinkToUse': {
+            paramsType: [Protocol.Cast.SetSinkToUseRequest];
+            returnType: void;
+        };
+        /**
+         * Starts mirroring the tab to the sink.
+         */
+        'Cast.startTabMirroring': {
+            paramsType: [Protocol.Cast.StartTabMirroringRequest];
+            returnType: void;
+        };
+        /**
+         * Stops the active Cast session on the sink.
+         */
+        'Cast.stopCasting': {
+            paramsType: [Protocol.Cast.StopCastingRequest];
+            returnType: void;
         };
         /**
          * Collects class names for the node with given id and all of it's child nodes.
@@ -2861,10 +2911,6 @@ export namespace ProtocolMapping {
          */
         'Page.removeScriptToEvaluateOnNewDocument': {
             paramsType: [Protocol.Page.RemoveScriptToEvaluateOnNewDocumentRequest];
-            returnType: void;
-        };
-        'Page.requestAppBanner': {
-            paramsType: [];
             returnType: void;
         };
         /**

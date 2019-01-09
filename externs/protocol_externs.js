@@ -1206,6 +1206,92 @@ Protocol.CacheStorage.Header;
 Protocol.CacheStorage.CachedResponse;
 /** @interface */
 Protocol.CacheStorageDispatcher = function() {};
+Protocol.Cast = {};
+
+
+/**
+ * @constructor
+*/
+Protocol.CastAgent = function(){};
+
+/**
+ * @param {string=} opt_presentationUrl
+ * @return {!Promise<undefined>}
+ */
+Protocol.CastAgent.prototype.enable = function(opt_presentationUrl) {};
+/** @typedef {!{presentationUrl: (string|undefined)}} */
+Protocol.CastAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.CastAgent.EnableResponse;
+/**
+ * @param {!Protocol.CastAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.CastAgent.EnableResponse>} */
+Protocol.CastAgent.prototype.invoke_enable = function(obj) {};
+
+/**
+ * @return {!Promise<undefined>}
+ */
+Protocol.CastAgent.prototype.disable = function() {};
+/** @typedef {Object|undefined} */
+Protocol.CastAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.CastAgent.DisableResponse;
+/**
+ * @param {!Protocol.CastAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.CastAgent.DisableResponse>} */
+Protocol.CastAgent.prototype.invoke_disable = function(obj) {};
+
+/**
+ * @param {string} sinkName
+ * @return {!Promise<undefined>}
+ */
+Protocol.CastAgent.prototype.setSinkToUse = function(sinkName) {};
+/** @typedef {!{sinkName: string}} */
+Protocol.CastAgent.SetSinkToUseRequest;
+/** @typedef {Object|undefined} */
+Protocol.CastAgent.SetSinkToUseResponse;
+/**
+ * @param {!Protocol.CastAgent.SetSinkToUseRequest} obj
+ * @return {!Promise<!Protocol.CastAgent.SetSinkToUseResponse>} */
+Protocol.CastAgent.prototype.invoke_setSinkToUse = function(obj) {};
+
+/**
+ * @param {string} sinkName
+ * @return {!Promise<undefined>}
+ */
+Protocol.CastAgent.prototype.startTabMirroring = function(sinkName) {};
+/** @typedef {!{sinkName: string}} */
+Protocol.CastAgent.StartTabMirroringRequest;
+/** @typedef {Object|undefined} */
+Protocol.CastAgent.StartTabMirroringResponse;
+/**
+ * @param {!Protocol.CastAgent.StartTabMirroringRequest} obj
+ * @return {!Promise<!Protocol.CastAgent.StartTabMirroringResponse>} */
+Protocol.CastAgent.prototype.invoke_startTabMirroring = function(obj) {};
+
+/**
+ * @param {string} sinkName
+ * @return {!Promise<undefined>}
+ */
+Protocol.CastAgent.prototype.stopCasting = function(sinkName) {};
+/** @typedef {!{sinkName: string}} */
+Protocol.CastAgent.StopCastingRequest;
+/** @typedef {Object|undefined} */
+Protocol.CastAgent.StopCastingResponse;
+/**
+ * @param {!Protocol.CastAgent.StopCastingRequest} obj
+ * @return {!Promise<!Protocol.CastAgent.StopCastingResponse>} */
+Protocol.CastAgent.prototype.invoke_stopCasting = function(obj) {};
+/** @interface */
+Protocol.CastDispatcher = function() {};
+/**
+ * @param {!Array<string>} sinkNames
+ */
+Protocol.CastDispatcher.prototype.sinksUpdated = function(sinkNames) {};
+/**
+ * @param {string} issueMessage
+ */
+Protocol.CastDispatcher.prototype.issueUpdated = function(issueMessage) {};
 Protocol.DOM = {};
 
 
@@ -5200,19 +5286,6 @@ Protocol.PageAgent.RemoveScriptToEvaluateOnNewDocumentResponse;
 Protocol.PageAgent.prototype.invoke_removeScriptToEvaluateOnNewDocument = function(obj) {};
 
 /**
- * @return {!Promise<undefined>}
- */
-Protocol.PageAgent.prototype.requestAppBanner = function() {};
-/** @typedef {Object|undefined} */
-Protocol.PageAgent.RequestAppBannerRequest;
-/** @typedef {Object|undefined} */
-Protocol.PageAgent.RequestAppBannerResponse;
-/**
- * @param {!Protocol.PageAgent.RequestAppBannerRequest} obj
- * @return {!Promise<!Protocol.PageAgent.RequestAppBannerResponse>} */
-Protocol.PageAgent.prototype.invoke_requestAppBanner = function(obj) {};
-
-/**
  * @param {number} sessionId
  * @return {!Promise<undefined>}
  */
@@ -8581,6 +8654,12 @@ Protocol.TargetBase.prototype.cacheStorageAgent = function(){};
  * @param {!Protocol.CacheStorageDispatcher} dispatcher
  */
 Protocol.TargetBase.prototype.registerCacheStorageDispatcher = function(dispatcher) {}
+/** @return {!Protocol.CastAgent}*/
+Protocol.TargetBase.prototype.castAgent = function(){};
+/**
+ * @param {!Protocol.CastDispatcher} dispatcher
+ */
+Protocol.TargetBase.prototype.registerCastDispatcher = function(dispatcher) {}
 /** @return {!Protocol.DOMAgent}*/
 Protocol.TargetBase.prototype.domAgent = function(){};
 /**

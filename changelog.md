@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r619731
+###### _2019-01-03 12:15:54 -0800_ | Diff: [9ef310e...727df12](https://github.com/ChromeDevTools/devtools-protocol/compare/9ef310e...727df12)
+#### `Accessibility`: modified type
+* [`Accessibility.AXPropertyName`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXPropertyName) - `description` updated. 
+#### `Storage`: modified command
+* [`Storage.clearDataForOrigin`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#method-clearDataForOrigin) - The `storageTypes` in the parameters had `description` _updated_. 
+
+
 ## Roll protocol to r619477
 ###### _2019-01-02 12:16:22 -0800_ | Diff: [a254142...9ef310e](https://github.com/ChromeDevTools/devtools-protocol/compare/a254142...9ef310e)
 #### `Input`: modified command

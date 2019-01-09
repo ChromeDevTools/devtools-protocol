@@ -3765,6 +3765,45 @@ export namespace Protocol {
     }
 
     /**
+     * A domain for interacting with Cast, Presentation API, and Remote Playback API
+     * functionalities.
+     */
+    export namespace Cast {
+
+        export interface EnableRequest {
+            presentationUrl?: string;
+        }
+
+        export interface SetSinkToUseRequest {
+            sinkName: string;
+        }
+
+        export interface StartTabMirroringRequest {
+            sinkName: string;
+        }
+
+        export interface StopCastingRequest {
+            sinkName: string;
+        }
+
+        /**
+         * This is fired whenever the list of available sinks changes. A sink is a
+         * device or a software surface that you can cast to.
+         */
+        export interface SinksUpdatedEvent {
+            sinkNames: string[];
+        }
+
+        /**
+         * This is fired whenever the outstanding issue/error message changes.
+         * |issueMessage| is empty if there is no issue.
+         */
+        export interface IssueUpdatedEvent {
+            issueMessage: string;
+        }
+    }
+
+    /**
      * This domain exposes DOM read/write operations. Each DOM Node is represented with its mirror object
      * that has an `id`. This `id` can be used to get additional information on the Node, resolve it into
      * the JavaScript object wrapper, etc. It is important that client receives DOM events only for the

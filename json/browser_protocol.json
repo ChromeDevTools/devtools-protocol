@@ -2748,6 +2748,83 @@
             ]
         },
         {
+            "domain": "Cast",
+            "description": "A domain for interacting with Cast, Presentation API, and Remote Playback API\nfunctionalities.",
+            "experimental": true,
+            "commands": [
+                {
+                    "name": "enable",
+                    "description": "Starts observing for sinks that can be used for tab mirroring, and if set,\nsinks compatible with |presentationUrl| as well. When sinks are found, a\n|sinksUpdated| event is fired.\nAlso starts observing for issue messages. When an issue is added or removed,\nan |issueUpdated| event is fired.",
+                    "parameters": [
+                        {
+                            "name": "presentationUrl",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "disable",
+                    "description": "Stops observing for sinks and issues."
+                },
+                {
+                    "name": "setSinkToUse",
+                    "description": "Sets a sink to be used when the web page requests the browser to choose a\nsink via Presentation API, Remote Playback API, or Cast SDK.",
+                    "parameters": [
+                        {
+                            "name": "sinkName",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "startTabMirroring",
+                    "description": "Starts mirroring the tab to the sink.",
+                    "parameters": [
+                        {
+                            "name": "sinkName",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "stopCasting",
+                    "description": "Stops the active Cast session on the sink.",
+                    "parameters": [
+                        {
+                            "name": "sinkName",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ],
+            "events": [
+                {
+                    "name": "sinksUpdated",
+                    "description": "This is fired whenever the list of available sinks changes. A sink is a\ndevice or a software surface that you can cast to.",
+                    "parameters": [
+                        {
+                            "name": "sinkNames",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "issueUpdated",
+                    "description": "This is fired whenever the outstanding issue/error message changes.\n|issueMessage| is empty if there is no issue.",
+                    "parameters": [
+                        {
+                            "name": "issueMessage",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "domain": "DOM",
             "description": "This domain exposes DOM read/write operations. Each DOM Node is represented with its mirror object\nthat has an `id`. This `id` can be used to get additional information on the Node, resolve it into\nthe JavaScript object wrapper, etc. It is important that client receives DOM events only for the\nnodes that are known to the client. Backend keeps track of the nodes that were sent to the client\nand never sends the same node twice. It is client's responsibility to collect information about\nthe nodes that were sent to the client.<p>Note that `iframe` owner elements will return\ncorresponding document elements as their child nodes.</p>",
             "dependencies": [
@@ -11391,10 +11468,6 @@
                             "$ref": "ScriptIdentifier"
                         }
                     ]
-                },
-                {
-                    "name": "requestAppBanner",
-                    "experimental": true
                 },
                 {
                     "name": "screencastFrameAck",

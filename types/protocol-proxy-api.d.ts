@@ -36,6 +36,8 @@ export namespace ProtocolProxyApi {
 
         CacheStorage: CacheStorageApi;
 
+        Cast: CastApi;
+
         DOM: DOMApi;
 
         DOMDebugger: DOMDebuggerApi;
@@ -941,6 +943,51 @@ export namespace ProtocolProxyApi {
          * Requests data from cache.
          */
         requestEntries(params: Protocol.CacheStorage.RequestEntriesRequest): Promise<Protocol.CacheStorage.RequestEntriesResponse>;
+
+    }
+
+    export interface CastApi {
+        /**
+         * Starts observing for sinks that can be used for tab mirroring, and if set,
+         * sinks compatible with |presentationUrl| as well. When sinks are found, a
+         * |sinksUpdated| event is fired.
+         * Also starts observing for issue messages. When an issue is added or removed,
+         * an |issueUpdated| event is fired.
+         */
+        enable(params: Protocol.Cast.EnableRequest): Promise<void>;
+
+        /**
+         * Stops observing for sinks and issues.
+         */
+        disable(): Promise<void>;
+
+        /**
+         * Sets a sink to be used when the web page requests the browser to choose a
+         * sink via Presentation API, Remote Playback API, or Cast SDK.
+         */
+        setSinkToUse(params: Protocol.Cast.SetSinkToUseRequest): Promise<void>;
+
+        /**
+         * Starts mirroring the tab to the sink.
+         */
+        startTabMirroring(params: Protocol.Cast.StartTabMirroringRequest): Promise<void>;
+
+        /**
+         * Stops the active Cast session on the sink.
+         */
+        stopCasting(params: Protocol.Cast.StopCastingRequest): Promise<void>;
+
+        /**
+         * This is fired whenever the list of available sinks changes. A sink is a
+         * device or a software surface that you can cast to.
+         */
+        on(event: 'sinksUpdated', listener: (params: Protocol.Cast.SinksUpdatedEvent) => void): void;
+
+        /**
+         * This is fired whenever the outstanding issue/error message changes.
+         * |issueMessage| is empty if there is no issue.
+         */
+        on(event: 'issueUpdated', listener: (params: Protocol.Cast.IssueUpdatedEvent) => void): void;
 
     }
 
@@ -2261,8 +2308,6 @@ export namespace ProtocolProxyApi {
          * Removes given script from the list.
          */
         removeScriptToEvaluateOnNewDocument(params: Protocol.Page.RemoveScriptToEvaluateOnNewDocumentRequest): Promise<void>;
-
-        requestAppBanner(): Promise<void>;
 
         /**
          * Acknowledges that a screencast frame has been received by the frontend.
