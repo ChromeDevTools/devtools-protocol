@@ -1,5 +1,22 @@
 
 
+## Roll protocol to r621026
+###### _2019-01-08 19:15:50 -0800_ | Diff: [727df12...ea1122f](https://github.com/ChromeDevTools/devtools-protocol/compare/727df12...ea1122f)
+#### `Cast`: new domain
+* [`Cast.Cast`](https://chromedevtools.github.io/devtools-protocol/tot/Cast/#domain-Cast)
+#### `Cast`: new commands
+* [`Cast.enable`](https://chromedevtools.github.io/devtools-protocol/tot/Cast/#method-enable)
+* [`Cast.disable`](https://chromedevtools.github.io/devtools-protocol/tot/Cast/#method-disable)
+* [`Cast.setSinkToUse`](https://chromedevtools.github.io/devtools-protocol/tot/Cast/#method-setSinkToUse)
+* [`Cast.startTabMirroring`](https://chromedevtools.github.io/devtools-protocol/tot/Cast/#method-startTabMirroring)
+* [`Cast.stopCasting`](https://chromedevtools.github.io/devtools-protocol/tot/Cast/#method-stopCasting)
+#### `Cast`: new events
+* [`Cast.sinksUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/Cast/#event-sinksUpdated)
+* [`Cast.issueUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/Cast/#event-issueUpdated)
+#### `Page`: removed command
+* [`Page.requestAppBanner`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-requestAppBanner)
+
+
 ## Roll protocol to r619731
 ###### _2019-01-03 12:15:54 -0800_ | Diff: [9ef310e...727df12](https://github.com/ChromeDevTools/devtools-protocol/compare/9ef310e...727df12)
 #### `Accessibility`: modified type

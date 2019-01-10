@@ -4590,11 +4590,12 @@ experimental domain Overlay
     properties
       # Whether the node info tooltip should be shown (default: false).
       optional boolean showInfo
+      # Whether the node styles in the tooltip (default: false).
+      optional boolean showStyles
       # Whether the rulers should be shown (default: false).
       optional boolean showRulers
       # Whether the extension lines from node to the rulers should be shown (default: false).
       optional boolean showExtensionLines
-      optional boolean displayAsMaterial
       # The content box highlight fill color (default: transparent).
       optional DOM.RGBA contentColor
       # The padding highlight fill color (default: transparent).

@@ -4862,7 +4862,7 @@ Protocol.OverlayAgent.SetSuspendedResponse;
  * @return {!Promise<!Protocol.OverlayAgent.SetSuspendedResponse>} */
 Protocol.OverlayAgent.prototype.invoke_setSuspended = function(obj) {};
 
-/** @typedef {!{showInfo:(boolean|undefined), showRulers:(boolean|undefined), showExtensionLines:(boolean|undefined), displayAsMaterial:(boolean|undefined), contentColor:(Protocol.DOM.RGBA|undefined), paddingColor:(Protocol.DOM.RGBA|undefined), borderColor:(Protocol.DOM.RGBA|undefined), marginColor:(Protocol.DOM.RGBA|undefined), eventTargetColor:(Protocol.DOM.RGBA|undefined), shapeColor:(Protocol.DOM.RGBA|undefined), shapeMarginColor:(Protocol.DOM.RGBA|undefined), selectorList:(string|undefined), cssGridColor:(Protocol.DOM.RGBA|undefined)}} */
+/** @typedef {!{showInfo:(boolean|undefined), showStyles:(boolean|undefined), showRulers:(boolean|undefined), showExtensionLines:(boolean|undefined), contentColor:(Protocol.DOM.RGBA|undefined), paddingColor:(Protocol.DOM.RGBA|undefined), borderColor:(Protocol.DOM.RGBA|undefined), marginColor:(Protocol.DOM.RGBA|undefined), eventTargetColor:(Protocol.DOM.RGBA|undefined), shapeColor:(Protocol.DOM.RGBA|undefined), shapeMarginColor:(Protocol.DOM.RGBA|undefined), selectorList:(string|undefined), cssGridColor:(Protocol.DOM.RGBA|undefined)}} */
 Protocol.Overlay.HighlightConfig;
 
 /** @enum {string} */

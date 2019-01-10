@@ -10083,6 +10083,12 @@
                             "type": "boolean"
                         },
                         {
+                            "name": "showStyles",
+                            "description": "Whether the node styles in the tooltip (default: false).",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
                             "name": "showRulers",
                             "description": "Whether the rulers should be shown (default: false).",
                             "optional": true,
@@ -10091,11 +10097,6 @@
                         {
                             "name": "showExtensionLines",
                             "description": "Whether the extension lines from node to the rulers should be shown (default: false).",
-                            "optional": true,
-                            "type": "boolean"
-                        },
-                        {
-                            "name": "displayAsMaterial",
                             "optional": true,
                             "type": "boolean"
                         },

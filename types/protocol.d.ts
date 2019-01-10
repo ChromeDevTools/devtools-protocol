@@ -8592,6 +8592,10 @@ export namespace Protocol {
              */
             showInfo?: boolean;
             /**
+             * Whether the node styles in the tooltip (default: false).
+             */
+            showStyles?: boolean;
+            /**
              * Whether the rulers should be shown (default: false).
              */
             showRulers?: boolean;
@@ -8599,7 +8603,6 @@ export namespace Protocol {
              * Whether the extension lines from node to the rulers should be shown (default: false).
              */
             showExtensionLines?: boolean;
-            displayAsMaterial?: boolean;
             /**
              * The content box highlight fill color (default: transparent).
              */
