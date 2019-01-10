@@ -2833,8 +2833,9 @@ experimental domain IndexedDB
     properties
       # Database name.
       string name
-      # Database version.
-      integer version
+      # Database version (type is not 'integer', as the standard
+      # requires the version number to be 'unsigned long long')
+      number version
       # Object stores in this database.
       array of ObjectStore objectStores
 

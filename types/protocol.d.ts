@@ -6015,9 +6015,10 @@ export namespace Protocol {
              */
             name: string;
             /**
-             * Database version.
+             * Database version (type is not 'integer', as the standard
+             * requires the version number to be 'unsigned long long')
              */
-            version: integer;
+            version: number;
             /**
              * Object stores in this database.
              */

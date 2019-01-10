@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r621424
+###### _2019-01-09 18:15:57 -0800_ | Diff: [ea1122f...d7e10c3](https://github.com/ChromeDevTools/devtools-protocol/compare/ea1122f...d7e10c3)
+#### `Overlay`: modified type
+* [`Overlay.HighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-HighlightConfig) - The `showRulers` in the properties had `name` _updated_. The `showRulers` in the properties had `description` _updated_. The `showExtensionLines` in the properties had `name` _updated_. The `showExtensionLines` in the properties had `description` _updated_. The `displayAsMaterial` in the properties had `name` _updated_. The properties's `description` _added_. 
+
+
 ## Roll protocol to r621026
 ###### _2019-01-08 19:15:50 -0800_ | Diff: [727df12...ea1122f](https://github.com/ChromeDevTools/devtools-protocol/compare/727df12...ea1122f)
 #### `Cast`: new domain
