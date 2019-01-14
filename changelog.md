@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r621639
+###### _2019-01-10 10:16:08 -0800_ | Diff: [d7e10c3...53050a0](https://github.com/ChromeDevTools/devtools-protocol/compare/d7e10c3...53050a0)
+#### `IndexedDB`: modified type
+* [`IndexedDB.DatabaseWithObjectStores`](https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#type-DatabaseWithObjectStores) - The `version` in the properties had `description` _updated_. The `version` in the properties had `type` _updated_. 
+
+
 ## Roll protocol to r621424
 ###### _2019-01-09 18:15:57 -0800_ | Diff: [ea1122f...d7e10c3](https://github.com/ChromeDevTools/devtools-protocol/compare/ea1122f...d7e10c3)
 #### `Overlay`: modified type

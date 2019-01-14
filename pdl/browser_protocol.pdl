@@ -997,8 +997,6 @@ experimental domain CSS
       # The computed font weight for this node, as a CSS computed value string (e.g. 'normal' or
       # '100').
       optional string computedFontWeight
-      # The computed font size for the document body, as a computed CSS value string (e.g. '16px').
-      optional string computedBodyFontSize
 
   # Returns the computed style for a DOM node identified by `nodeId`.
   command getComputedStyleForNode

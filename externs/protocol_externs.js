@@ -775,7 +775,7 @@ Protocol.CSSAgent.prototype.invoke_forcePseudoState = function(obj) {};
 Protocol.CSSAgent.prototype.getBackgroundColors = function(nodeId) {};
 /** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
 Protocol.CSSAgent.GetBackgroundColorsRequest;
-/** @typedef {!{backgroundColors: !Array<string>, computedFontWeight: string, computedFontSize: string, computedBodyFontSize: string}} */
+/** @typedef {!{backgroundColors: !Array<string>, computedFontWeight: string, computedFontSize: string}} */
 Protocol.CSSAgent.GetBackgroundColorsResponse;
 /**
  * @param {!Protocol.CSSAgent.GetBackgroundColorsRequest} obj

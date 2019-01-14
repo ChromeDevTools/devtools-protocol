@@ -2123,12 +2123,6 @@
                             "description": "The computed font weight for this node, as a CSS computed value string (e.g. 'normal' or\n'100').",
                             "optional": true,
                             "type": "string"
-                        },
-                        {
-                            "name": "computedBodyFontSize",
-                            "description": "The computed font size for the document body, as a computed CSS value string (e.g. '16px').",
-                            "optional": true,
-                            "type": "string"
                         }
                     ]
                 },

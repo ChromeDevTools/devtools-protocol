@@ -3393,10 +3393,6 @@ export namespace Protocol {
              * '100').
              */
             computedFontWeight?: string;
-            /**
-             * The computed font size for the document body, as a computed CSS value string (e.g. '16px').
-             */
-            computedBodyFontSize?: string;
         }
 
         export interface GetComputedStyleForNodeRequest {
