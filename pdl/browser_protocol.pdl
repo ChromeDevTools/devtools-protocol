@@ -4758,7 +4758,7 @@ experimental domain Overlay
   # Fired when user asks to capture screenshot of some area on the page.
   event screenshotRequested
     parameters
-      # Viewport to capture, in CSS.
+      # Viewport to capture, in device independent pixels (dip).
       Page.Viewport viewport
 
 # Actions and events related to the inspected page belong to the page domain.
@@ -4928,17 +4928,19 @@ domain Page
       number clientHeight
       # Scale relative to the ideal viewport (size at width=device-width).
       number scale
+      # Page zoom factor (CSS to device independent pixels ratio).
+      optional number zoom
 
   # Viewport for capturing screenshot.
   type Viewport extends object
     properties
-      # X offset in CSS pixels.
+      # X offset in device independent pixels (dip).
       number x
-      # Y offset in CSS pixels
+      # Y offset in device independent pixels (dip).
       number y
-      # Rectangle width in CSS pixels
+      # Rectangle width in device independent pixels (dip).
       number width
-      # Rectangle height in CSS pixels
+      # Rectangle height in device independent pixels (dip).
       number height
       # Page scale factor.
       number scale

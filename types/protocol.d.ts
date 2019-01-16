@@ -8821,7 +8821,7 @@ export namespace Protocol {
          */
         export interface ScreenshotRequestedEvent {
             /**
-             * Viewport to capture, in CSS.
+             * Viewport to capture, in device independent pixels (dip).
              */
             viewport: Page.Viewport;
         }
@@ -9092,6 +9092,10 @@ export namespace Protocol {
              * Scale relative to the ideal viewport (size at width=device-width).
              */
             scale: number;
+            /**
+             * Page zoom factor (CSS to device independent pixels ratio).
+             */
+            zoom?: number;
         }
 
         /**
@@ -9099,19 +9103,19 @@ export namespace Protocol {
          */
         export interface Viewport {
             /**
-             * X offset in CSS pixels.
+             * X offset in device independent pixels (dip).
              */
             x: number;
             /**
-             * Y offset in CSS pixels
+             * Y offset in device independent pixels (dip).
              */
             y: number;
             /**
-             * Rectangle width in CSS pixels
+             * Rectangle width in device independent pixels (dip).
              */
             width: number;
             /**
-             * Rectangle height in CSS pixels
+             * Rectangle height in device independent pixels (dip).
              */
             height: number;
             /**

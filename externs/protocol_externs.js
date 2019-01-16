@@ -5698,7 +5698,7 @@ Protocol.Page.AppManifestError;
 /** @typedef {!{pageX:(number), pageY:(number), clientWidth:(number), clientHeight:(number)}} */
 Protocol.Page.LayoutViewport;
 
-/** @typedef {!{offsetX:(number), offsetY:(number), pageX:(number), pageY:(number), clientWidth:(number), clientHeight:(number), scale:(number)}} */
+/** @typedef {!{offsetX:(number), offsetY:(number), pageX:(number), pageY:(number), clientWidth:(number), clientHeight:(number), scale:(number), zoom:(number|undefined)}} */
 Protocol.Page.VisualViewport;
 
 /** @typedef {!{x:(number), y:(number), width:(number), height:(number), scale:(number)}} */
