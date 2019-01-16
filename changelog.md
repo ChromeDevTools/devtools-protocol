@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r622567
+###### _2019-01-14 12:15:49 -0800_ | Diff: [53050a0...44c8bde](https://github.com/ChromeDevTools/devtools-protocol/compare/53050a0...44c8bde)
+#### `CSS`: modified command
+* [`CSS.getBackgroundColors`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getBackgroundColors) - The return value's `computedBodyFontSize` _removed_. 
+
+
 ## Roll protocol to r621639
 ###### _2019-01-10 10:16:08 -0800_ | Diff: [d7e10c3...53050a0](https://github.com/ChromeDevTools/devtools-protocol/compare/d7e10c3...53050a0)
 #### `IndexedDB`: modified type
