@@ -2675,6 +2675,13 @@ export namespace ProtocolMapping {
             paramsType: [Protocol.Overlay.SetInspectModeRequest];
             returnType: void;
         };
+        /**
+         * Highlights owner element of all frames detected to be ads.
+         */
+        'Overlay.setShowAdHighlights': {
+            paramsType: [Protocol.Overlay.SetShowAdHighlightsRequest];
+            returnType: void;
+        };
         'Overlay.setPausedInDebuggerMessage': {
             paramsType: [Protocol.Overlay.SetPausedInDebuggerMessageRequest?];
             returnType: void;

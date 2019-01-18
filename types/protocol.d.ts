@@ -8742,6 +8742,13 @@ export namespace Protocol {
             highlightConfig?: HighlightConfig;
         }
 
+        export interface SetShowAdHighlightsRequest {
+            /**
+             * True for showing ad highlights
+             */
+            show: boolean;
+        }
+
         export interface SetPausedInDebuggerMessageRequest {
             /**
              * The message to display, also triggers resume and step over controls.

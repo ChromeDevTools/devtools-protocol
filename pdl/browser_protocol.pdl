@@ -4697,6 +4697,12 @@ experimental domain Overlay
       # == false`.
       optional HighlightConfig highlightConfig
 
+  # Highlights owner element of all frames detected to be ads.
+  command setShowAdHighlights
+    parameters
+      # True for showing ad highlights
+      boolean show
+
   command setPausedInDebuggerMessage
     parameters
       # The message to display, also triggers resume and step over controls.

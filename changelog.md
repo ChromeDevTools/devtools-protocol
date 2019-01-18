@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r623118
+###### _2019-01-15 21:15:54 -0800_ | Diff: [912ecd4...c5978d7](https://github.com/ChromeDevTools/devtools-protocol/compare/912ecd4...c5978d7)
+#### `Overlay`: modified event
+* [`Overlay.screenshotRequested`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#event-screenshotRequested) - The `viewport` in the parameters had `description` _updated_. 
+#### `Page`: modified types
+* [`Page.VisualViewport`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-VisualViewport) - The properties's `zoom` _added_. 
+* [`Page.Viewport`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Viewport) - The `x` in the properties had `description` _updated_. The `y` in the properties had `description` _updated_. The `width` in the properties had `description` _updated_. The `height` in the properties had `description` _updated_. 
+
+
 ## Roll protocol to r622567
 ###### _2019-01-14 12:15:49 -0800_ | Diff: [53050a0...44c8bde](https://github.com/ChromeDevTools/devtools-protocol/compare/53050a0...44c8bde)
 #### `CSS`: modified command

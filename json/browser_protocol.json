@@ -10322,6 +10322,17 @@
                     ]
                 },
                 {
+                    "name": "setShowAdHighlights",
+                    "description": "Highlights owner element of all frames detected to be ads.",
+                    "parameters": [
+                        {
+                            "name": "show",
+                            "description": "True for showing ad highlights",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
                     "name": "setPausedInDebuggerMessage",
                     "parameters": [
                         {

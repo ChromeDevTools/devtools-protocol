@@ -2122,6 +2122,11 @@ export namespace ProtocolProxyApi {
          */
         setInspectMode(params: Protocol.Overlay.SetInspectModeRequest): Promise<void>;
 
+        /**
+         * Highlights owner element of all frames detected to be ads.
+         */
+        setShowAdHighlights(params: Protocol.Overlay.SetShowAdHighlightsRequest): Promise<void>;
+
         setPausedInDebuggerMessage(params: Protocol.Overlay.SetPausedInDebuggerMessageRequest): Promise<void>;
 
         /**

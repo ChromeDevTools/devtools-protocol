@@ -4751,6 +4751,20 @@ Protocol.OverlayAgent.SetInspectModeResponse;
 Protocol.OverlayAgent.prototype.invoke_setInspectMode = function(obj) {};
 
 /**
+ * @param {boolean} show
+ * @return {!Promise<undefined>}
+ */
+Protocol.OverlayAgent.prototype.setShowAdHighlights = function(show) {};
+/** @typedef {!{show: boolean}} */
+Protocol.OverlayAgent.SetShowAdHighlightsRequest;
+/** @typedef {Object|undefined} */
+Protocol.OverlayAgent.SetShowAdHighlightsResponse;
+/**
+ * @param {!Protocol.OverlayAgent.SetShowAdHighlightsRequest} obj
+ * @return {!Promise<!Protocol.OverlayAgent.SetShowAdHighlightsResponse>} */
+Protocol.OverlayAgent.prototype.invoke_setShowAdHighlights = function(obj) {};
+
+/**
  * @param {string=} opt_message
  * @return {!Promise<undefined>}
  */
