@@ -1797,6 +1797,8 @@ domain DOM
       optional DOM.BackendNodeId backendNodeId
       # Symbolic group name that can be used to release multiple objects.
       optional string objectGroup
+      # Execution context in which to resolve the node.
+      optional Runtime.ExecutionContextId executionContextId
     returns
       # JavaScript object wrapper for given node.
       Runtime.RemoteObject object

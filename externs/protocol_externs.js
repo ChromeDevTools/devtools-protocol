@@ -1759,10 +1759,11 @@ Protocol.DOMAgent.prototype.invoke_requestNode = function(obj) {};
  * @param {Protocol.DOM.NodeId=} opt_nodeId
  * @param {Protocol.DOM.BackendNodeId=} opt_backendNodeId
  * @param {string=} opt_objectGroup
+ * @param {Protocol.Runtime.ExecutionContextId=} opt_executionContextId
  * @return {!Promise<?Protocol.Runtime.RemoteObject>}
  */
-Protocol.DOMAgent.prototype.resolveNode = function(opt_nodeId, opt_backendNodeId, opt_objectGroup) {};
-/** @typedef {!{objectGroup: (string|undefined), nodeId: (Protocol.DOM.NodeId|undefined), backendNodeId: (Protocol.DOM.BackendNodeId|undefined)}} */
+Protocol.DOMAgent.prototype.resolveNode = function(opt_nodeId, opt_backendNodeId, opt_objectGroup, opt_executionContextId) {};
+/** @typedef {!{objectGroup: (string|undefined), executionContextId: (Protocol.Runtime.ExecutionContextId|undefined), nodeId: (Protocol.DOM.NodeId|undefined), backendNodeId: (Protocol.DOM.BackendNodeId|undefined)}} */
 Protocol.DOMAgent.ResolveNodeRequest;
 /** @typedef {!{object: Protocol.Runtime.RemoteObject}} */
 Protocol.DOMAgent.ResolveNodeResponse;

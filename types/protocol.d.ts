@@ -4513,6 +4513,10 @@ export namespace Protocol {
              * Symbolic group name that can be used to release multiple objects.
              */
             objectGroup?: string;
+            /**
+             * Execution context in which to resolve the node.
+             */
+            executionContextId?: Runtime.ExecutionContextId;
         }
 
         export interface ResolveNodeResponse {

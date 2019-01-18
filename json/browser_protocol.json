@@ -3871,6 +3871,12 @@
                             "description": "Symbolic group name that can be used to release multiple objects.",
                             "optional": true,
                             "type": "string"
+                        },
+                        {
+                            "name": "executionContextId",
+                            "description": "Execution context in which to resolve the node.",
+                            "optional": true,
+                            "$ref": "Runtime.ExecutionContextId"
                         }
                     ],
                     "returns": [
