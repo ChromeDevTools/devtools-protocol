@@ -515,6 +515,7 @@ domain Browser
       protectedMediaIdentifier
       sensors
       videoCapture
+      idleDetection
 
   # Grant specific permissions to the given origin and reject all others.
   experimental command grantPermissions

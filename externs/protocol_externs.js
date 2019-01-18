@@ -665,7 +665,8 @@ Protocol.Browser.PermissionType = {
     PaymentHandler: "paymentHandler",
     ProtectedMediaIdentifier: "protectedMediaIdentifier",
     Sensors: "sensors",
-    VideoCapture: "videoCapture"
+    VideoCapture: "videoCapture",
+    IdleDetection: "idleDetection"
 };
 
 /** @typedef {!{low:(number), high:(number), count:(number)}} */
