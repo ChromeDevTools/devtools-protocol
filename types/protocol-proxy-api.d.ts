@@ -2177,6 +2177,11 @@ export namespace ProtocolProxyApi {
          */
         on(event: 'screenshotRequested', listener: (params: Protocol.Overlay.ScreenshotRequestedEvent) => void): void;
 
+        /**
+         * Fired when user cancels the inspect mode.
+         */
+        on(event: 'inspectModeCanceled', listener: () => void): void;
+
     }
 
     export interface PageApi {

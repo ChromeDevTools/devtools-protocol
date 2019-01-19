@@ -309,6 +309,10 @@ export namespace ProtocolMapping {
          * Fired when user asks to capture screenshot of some area on the page.
          */
         'Overlay.screenshotRequested': [Protocol.Overlay.ScreenshotRequestedEvent];
+        /**
+         * Fired when user cancels the inspect mode.
+         */
+        'Overlay.inspectModeCanceled': [];
         'Page.domContentEventFired': [Protocol.Page.DomContentEventFiredEvent];
         /**
          * Fired when frame has been attached to its parent.

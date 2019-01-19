@@ -4885,6 +4885,7 @@ Protocol.Overlay.HighlightConfig;
 Protocol.Overlay.InspectMode = {
     SearchForNode: "searchForNode",
     SearchForUAShadowDOM: "searchForUAShadowDOM",
+    CaptureAreaScreenshot: "captureAreaScreenshot",
     None: "none"
 };
 /** @interface */
@@ -4901,6 +4902,7 @@ Protocol.OverlayDispatcher.prototype.nodeHighlightRequested = function(nodeId) {
  * @param {Protocol.Page.Viewport} viewport
  */
 Protocol.OverlayDispatcher.prototype.screenshotRequested = function(viewport) {};
+Protocol.OverlayDispatcher.prototype.inspectModeCanceled = function() {};
 Protocol.Page = {};
 
 
