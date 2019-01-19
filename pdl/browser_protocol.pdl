@@ -4612,8 +4612,6 @@ experimental domain Overlay
       optional DOM.RGBA shapeColor
       # The shape margin fill color (default: transparent).
       optional DOM.RGBA shapeMarginColor
-      # Selectors to highlight relevant nodes.
-      optional string selectorList
       # The grid layout color (default: transparent).
       optional DOM.RGBA cssGridColor
 
@@ -4664,6 +4662,8 @@ experimental domain Overlay
       optional DOM.BackendNodeId backendNodeId
       # JavaScript object id of the node to be highlighted.
       optional Runtime.RemoteObjectId objectId
+      # Selectors to highlight relevant nodes.
+      optional string selector
 
   # Highlights given quad. Coordinates are absolute with respect to the main frame viewport.
   command highlightQuad

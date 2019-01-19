@@ -8633,10 +8633,6 @@ export namespace Protocol {
              */
             shapeMarginColor?: DOM.RGBA;
             /**
-             * Selectors to highlight relevant nodes.
-             */
-            selectorList?: string;
-            /**
              * The grid layout color (default: transparent).
              */
             cssGridColor?: DOM.RGBA;
@@ -8690,6 +8686,10 @@ export namespace Protocol {
              * JavaScript object id of the node to be highlighted.
              */
             objectId?: Runtime.RemoteObjectId;
+            /**
+             * Selectors to highlight relevant nodes.
+             */
+            selector?: string;
         }
 
         export interface HighlightQuadRequest {

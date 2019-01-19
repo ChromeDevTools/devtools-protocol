@@ -4690,10 +4690,11 @@ Protocol.OverlayAgent.prototype.invoke_highlightFrame = function(obj) {};
  * @param {Protocol.DOM.NodeId=} opt_nodeId
  * @param {Protocol.DOM.BackendNodeId=} opt_backendNodeId
  * @param {Protocol.Runtime.RemoteObjectId=} opt_objectId
+ * @param {string=} opt_selector
  * @return {!Promise<undefined>}
  */
-Protocol.OverlayAgent.prototype.highlightNode = function(highlightConfig, opt_nodeId, opt_backendNodeId, opt_objectId) {};
-/** @typedef {!{objectId: (Protocol.Runtime.RemoteObjectId|undefined), highlightConfig: Protocol.Overlay.HighlightConfig, backendNodeId: (Protocol.DOM.BackendNodeId|undefined), nodeId: (Protocol.DOM.NodeId|undefined)}} */
+Protocol.OverlayAgent.prototype.highlightNode = function(highlightConfig, opt_nodeId, opt_backendNodeId, opt_objectId, opt_selector) {};
+/** @typedef {!{selector: (string|undefined), objectId: (Protocol.Runtime.RemoteObjectId|undefined), highlightConfig: Protocol.Overlay.HighlightConfig, backendNodeId: (Protocol.DOM.BackendNodeId|undefined), nodeId: (Protocol.DOM.NodeId|undefined)}} */
 Protocol.OverlayAgent.HighlightNodeRequest;
 /** @typedef {Object|undefined} */
 Protocol.OverlayAgent.HighlightNodeResponse;
@@ -4878,7 +4879,7 @@ Protocol.OverlayAgent.SetSuspendedResponse;
  * @return {!Promise<!Protocol.OverlayAgent.SetSuspendedResponse>} */
 Protocol.OverlayAgent.prototype.invoke_setSuspended = function(obj) {};
 
-/** @typedef {!{showInfo:(boolean|undefined), showStyles:(boolean|undefined), showRulers:(boolean|undefined), showExtensionLines:(boolean|undefined), contentColor:(Protocol.DOM.RGBA|undefined), paddingColor:(Protocol.DOM.RGBA|undefined), borderColor:(Protocol.DOM.RGBA|undefined), marginColor:(Protocol.DOM.RGBA|undefined), eventTargetColor:(Protocol.DOM.RGBA|undefined), shapeColor:(Protocol.DOM.RGBA|undefined), shapeMarginColor:(Protocol.DOM.RGBA|undefined), selectorList:(string|undefined), cssGridColor:(Protocol.DOM.RGBA|undefined)}} */
+/** @typedef {!{showInfo:(boolean|undefined), showStyles:(boolean|undefined), showRulers:(boolean|undefined), showExtensionLines:(boolean|undefined), contentColor:(Protocol.DOM.RGBA|undefined), paddingColor:(Protocol.DOM.RGBA|undefined), borderColor:(Protocol.DOM.RGBA|undefined), marginColor:(Protocol.DOM.RGBA|undefined), eventTargetColor:(Protocol.DOM.RGBA|undefined), shapeColor:(Protocol.DOM.RGBA|undefined), shapeMarginColor:(Protocol.DOM.RGBA|undefined), cssGridColor:(Protocol.DOM.RGBA|undefined)}} */
 Protocol.Overlay.HighlightConfig;
 
 /** @enum {string} */

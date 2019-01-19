@@ -10144,12 +10144,6 @@
                             "$ref": "DOM.RGBA"
                         },
                         {
-                            "name": "selectorList",
-                            "description": "Selectors to highlight relevant nodes.",
-                            "optional": true,
-                            "type": "string"
-                        },
-                        {
                             "name": "cssGridColor",
                             "description": "The grid layout color (default: transparent).",
                             "optional": true,
@@ -10248,6 +10242,12 @@
                             "description": "JavaScript object id of the node to be highlighted.",
                             "optional": true,
                             "$ref": "Runtime.RemoteObjectId"
+                        },
+                        {
+                            "name": "selector",
+                            "description": "Selectors to highlight relevant nodes.",
+                            "optional": true,
+                            "type": "string"
                         }
                     ]
                 },
