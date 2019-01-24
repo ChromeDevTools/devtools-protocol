@@ -4053,8 +4053,6 @@ domain Network
     properties
       # Signed exchange request URL.
       string requestUrl
-      # Signed exchange request method.
-      string requestMethod
       # Signed exchange response code.
       integer responseCode
       # Signed exchange response headers.

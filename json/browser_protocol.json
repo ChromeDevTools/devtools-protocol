@@ -8905,11 +8905,6 @@
                             "type": "string"
                         },
                         {
-                            "name": "requestMethod",
-                            "description": "Signed exchange request method.",
-                            "type": "string"
-                        },
-                        {
                             "name": "responseCode",
                             "description": "Signed exchange response code.",
                             "type": "integer"

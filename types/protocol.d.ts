@@ -7756,10 +7756,6 @@ export namespace Protocol {
              */
             requestUrl: string;
             /**
-             * Signed exchange request method.
-             */
-            requestMethod: string;
-            /**
              * Signed exchange response code.
              */
             responseCode: integer;
