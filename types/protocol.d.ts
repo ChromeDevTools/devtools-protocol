@@ -4278,7 +4278,7 @@ export namespace Protocol {
              */
             backendNodeId: BackendNodeId;
             /**
-             * Id of the node at given coordinates, only when enabled.
+             * Id of the node at given coordinates, only when enabled and requested document.
              */
             nodeId?: NodeId;
         }
@@ -4644,7 +4644,7 @@ export namespace Protocol {
              */
             backendNodeId: BackendNodeId;
             /**
-             * Id of the node at given coordinates, only when enabled.
+             * Id of the node at given coordinates, only when enabled and requested document.
              */
             nodeId?: NodeId;
         }

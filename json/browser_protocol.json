@@ -3518,7 +3518,7 @@
                         },
                         {
                             "name": "nodeId",
-                            "description": "Id of the node at given coordinates, only when enabled.",
+                            "description": "Id of the node at given coordinates, only when enabled and requested document.",
                             "optional": true,
                             "$ref": "NodeId"
                         }
@@ -4071,7 +4071,7 @@
                         },
                         {
                             "name": "nodeId",
-                            "description": "Id of the node at given coordinates, only when enabled.",
+                            "description": "Id of the node at given coordinates, only when enabled and requested document.",
                             "optional": true,
                             "$ref": "NodeId"
                         }

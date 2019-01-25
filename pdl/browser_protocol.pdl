@@ -1621,7 +1621,7 @@ domain DOM
     returns
       # Resulting node.
       BackendNodeId backendNodeId
-      # Id of the node at given coordinates, only when enabled.
+      # Id of the node at given coordinates, only when enabled and requested document.
       optional NodeId nodeId
 
   # Returns node's HTML markup.
@@ -1891,7 +1891,7 @@ domain DOM
     returns
       # Resulting node.
       BackendNodeId backendNodeId
-      # Id of the node at given coordinates, only when enabled.
+      # Id of the node at given coordinates, only when enabled and requested document.
       optional NodeId nodeId
 
   # Fired when `Element`'s attribute is modified.
