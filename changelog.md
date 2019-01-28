@@ -1,5 +1,28 @@
 
 
+## Roll protocol to r626751
+###### _2019-01-28 13:59:29 -0800_ | Diff: [c5978d7...0115905](https://github.com/ChromeDevTools/devtools-protocol/compare/c5978d7...0115905)
+#### `Browser`: modified type
+* [`Browser.PermissionType`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-PermissionType) - The enum's `idleDetection` _added_. 
+#### `DOM`: modified commands
+* [`DOM.getNodeForLocation`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getNodeForLocation) - The `nodeId` in the return value had `description` _updated_. 
+* [`DOM.resolveNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-resolveNode) - The parameters's `executionContextId` _added_. 
+* [`DOM.getFrameOwner`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getFrameOwner) - The `nodeId` in the return value had `description` _updated_. 
+#### `Memory`: new command
+* [`Memory.forciblyPurgeJavaScriptMemory`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#method-forciblyPurgeJavaScriptMemory)
+#### `Network`: modified type
+* [`Network.SignedExchangeHeader`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedExchangeHeader) - The properties's `signatures` _removed_. The `responseCode` in the properties had `type` _removed_. The `responseHeaders` in the properties had `$ref` _removed_. The `requestMethod` in the properties had `name` _updated_. The `requestMethod` in the properties had `description` _updated_. The `requestMethod` in the properties had `type` _updated_. The `responseCode` in the properties had `name` _updated_. The `responseCode` in the properties had `description` _updated_. The `responseHeaders` in the properties had `name` _updated_. The `responseHeaders` in the properties had `description` _updated_. The properties's `$ref` _added_. The properties's `type` _added_. The properties's `items` _added_. 
+#### `Overlay`: new command
+* [`Overlay.setShowAdHighlights`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-setShowAdHighlights)
+#### `Overlay`: modified command
+* [`Overlay.highlightNode`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-highlightNode) - The parameters's `selector` _added_. 
+#### `Overlay`: new event
+* [`Overlay.inspectModeCanceled`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#event-inspectModeCanceled)
+#### `Overlay`: modified types
+* [`Overlay.HighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-HighlightConfig) - The properties's `cssGridColor` _removed_. The `selectorList` in the properties had `type` _removed_. The `selectorList` in the properties had `name` _updated_. The `selectorList` in the properties had `description` _updated_. The properties's `$ref` _added_. 
+* [`Overlay.InspectMode`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-InspectMode) - The enum's `none` _updated_. The enum's `none` _added_. 
+
+
 ## Roll protocol to r623118
 ###### _2019-01-15 21:15:54 -0800_ | Diff: [912ecd4...c5978d7](https://github.com/ChromeDevTools/devtools-protocol/compare/912ecd4...c5978d7)
 #### `Overlay`: modified event
