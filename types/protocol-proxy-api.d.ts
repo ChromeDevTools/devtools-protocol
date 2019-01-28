@@ -1796,6 +1796,11 @@ export namespace ProtocolProxyApi {
         prepareForLeakDetection(): Promise<void>;
 
         /**
+         * Simulate OomIntervention by purging V8 memory.
+         */
+        forciblyPurgeJavaScriptMemory(): Promise<void>;
+
+        /**
          * Enable/disable suppressing memory pressure notifications in all processes.
          */
         setPressureNotificationsSuppressed(params: Protocol.Memory.SetPressureNotificationsSuppressedRequest): Promise<void>;
@@ -2122,6 +2127,11 @@ export namespace ProtocolProxyApi {
          */
         setInspectMode(params: Protocol.Overlay.SetInspectModeRequest): Promise<void>;
 
+        /**
+         * Highlights owner element of all frames detected to be ads.
+         */
+        setShowAdHighlights(params: Protocol.Overlay.SetShowAdHighlightsRequest): Promise<void>;
+
         setPausedInDebuggerMessage(params: Protocol.Overlay.SetPausedInDebuggerMessageRequest): Promise<void>;
 
         /**
@@ -2171,6 +2181,11 @@ export namespace ProtocolProxyApi {
          * Fired when user asks to capture screenshot of some area on the page.
          */
         on(event: 'screenshotRequested', listener: (params: Protocol.Overlay.ScreenshotRequestedEvent) => void): void;
+
+        /**
+         * Fired when user cancels the inspect mode.
+         */
+        on(event: 'inspectModeCanceled', listener: () => void): void;
 
     }
 

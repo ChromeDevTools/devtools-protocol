@@ -2632,7 +2632,7 @@ export namespace Protocol {
             windowState?: WindowState;
         }
 
-        export type PermissionType = ('accessibilityEvents' | 'audioCapture' | 'backgroundSync' | 'backgroundFetch' | 'clipboardRead' | 'clipboardWrite' | 'durableStorage' | 'flash' | 'geolocation' | 'midi' | 'midiSysex' | 'notifications' | 'paymentHandler' | 'protectedMediaIdentifier' | 'sensors' | 'videoCapture');
+        export type PermissionType = ('accessibilityEvents' | 'audioCapture' | 'backgroundSync' | 'backgroundFetch' | 'clipboardRead' | 'clipboardWrite' | 'durableStorage' | 'flash' | 'geolocation' | 'midi' | 'midiSysex' | 'notifications' | 'paymentHandler' | 'protectedMediaIdentifier' | 'sensors' | 'videoCapture' | 'idleDetection');
 
         /**
          * Chrome histogram bucket.
@@ -4278,7 +4278,7 @@ export namespace Protocol {
              */
             backendNodeId: BackendNodeId;
             /**
-             * Id of the node at given coordinates, only when enabled.
+             * Id of the node at given coordinates, only when enabled and requested document.
              */
             nodeId?: NodeId;
         }
@@ -4513,6 +4513,10 @@ export namespace Protocol {
              * Symbolic group name that can be used to release multiple objects.
              */
             objectGroup?: string;
+            /**
+             * Execution context in which to resolve the node.
+             */
+            executionContextId?: Runtime.ExecutionContextId;
         }
 
         export interface ResolveNodeResponse {
@@ -4640,7 +4644,7 @@ export namespace Protocol {
              */
             backendNodeId: BackendNodeId;
             /**
-             * Id of the node at given coordinates, only when enabled.
+             * Id of the node at given coordinates, only when enabled and requested document.
              */
             nodeId?: NodeId;
         }
@@ -7752,10 +7756,6 @@ export namespace Protocol {
              */
             requestUrl: string;
             /**
-             * Signed exchange request method.
-             */
-            requestMethod: string;
-            /**
              * Signed exchange response code.
              */
             responseCode: integer;
@@ -8629,16 +8629,12 @@ export namespace Protocol {
              */
             shapeMarginColor?: DOM.RGBA;
             /**
-             * Selectors to highlight relevant nodes.
-             */
-            selectorList?: string;
-            /**
              * The grid layout color (default: transparent).
              */
             cssGridColor?: DOM.RGBA;
         }
 
-        export type InspectMode = ('searchForNode' | 'searchForUAShadowDOM' | 'none');
+        export type InspectMode = ('searchForNode' | 'searchForUAShadowDOM' | 'captureAreaScreenshot' | 'none');
 
         export interface GetHighlightObjectForTestRequest {
             /**
@@ -8686,6 +8682,10 @@ export namespace Protocol {
              * JavaScript object id of the node to be highlighted.
              */
             objectId?: Runtime.RemoteObjectId;
+            /**
+             * Selectors to highlight relevant nodes.
+             */
+            selector?: string;
         }
 
         export interface HighlightQuadRequest {
@@ -8740,6 +8740,13 @@ export namespace Protocol {
              * == false`.
              */
             highlightConfig?: HighlightConfig;
+        }
+
+        export interface SetShowAdHighlightsRequest {
+            /**
+             * True for showing ad highlights
+             */
+            show: boolean;
         }
 
         export interface SetPausedInDebuggerMessageRequest {

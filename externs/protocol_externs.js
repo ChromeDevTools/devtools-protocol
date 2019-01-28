@@ -665,7 +665,8 @@ Protocol.Browser.PermissionType = {
     PaymentHandler: "paymentHandler",
     ProtectedMediaIdentifier: "protectedMediaIdentifier",
     Sensors: "sensors",
-    VideoCapture: "videoCapture"
+    VideoCapture: "videoCapture",
+    IdleDetection: "idleDetection"
 };
 
 /** @typedef {!{low:(number), high:(number), count:(number)}} */
@@ -1759,10 +1760,11 @@ Protocol.DOMAgent.prototype.invoke_requestNode = function(obj) {};
  * @param {Protocol.DOM.NodeId=} opt_nodeId
  * @param {Protocol.DOM.BackendNodeId=} opt_backendNodeId
  * @param {string=} opt_objectGroup
+ * @param {Protocol.Runtime.ExecutionContextId=} opt_executionContextId
  * @return {!Promise<?Protocol.Runtime.RemoteObject>}
  */
-Protocol.DOMAgent.prototype.resolveNode = function(opt_nodeId, opt_backendNodeId, opt_objectGroup) {};
-/** @typedef {!{objectGroup: (string|undefined), nodeId: (Protocol.DOM.NodeId|undefined), backendNodeId: (Protocol.DOM.BackendNodeId|undefined)}} */
+Protocol.DOMAgent.prototype.resolveNode = function(opt_nodeId, opt_backendNodeId, opt_objectGroup, opt_executionContextId) {};
+/** @typedef {!{objectGroup: (string|undefined), executionContextId: (Protocol.Runtime.ExecutionContextId|undefined), nodeId: (Protocol.DOM.NodeId|undefined), backendNodeId: (Protocol.DOM.BackendNodeId|undefined)}} */
 Protocol.DOMAgent.ResolveNodeRequest;
 /** @typedef {!{object: Protocol.Runtime.RemoteObject}} */
 Protocol.DOMAgent.ResolveNodeResponse;
@@ -3737,6 +3739,19 @@ Protocol.MemoryAgent.PrepareForLeakDetectionResponse;
 Protocol.MemoryAgent.prototype.invoke_prepareForLeakDetection = function(obj) {};
 
 /**
+ * @return {!Promise<undefined>}
+ */
+Protocol.MemoryAgent.prototype.forciblyPurgeJavaScriptMemory = function() {};
+/** @typedef {Object|undefined} */
+Protocol.MemoryAgent.ForciblyPurgeJavaScriptMemoryRequest;
+/** @typedef {Object|undefined} */
+Protocol.MemoryAgent.ForciblyPurgeJavaScriptMemoryResponse;
+/**
+ * @param {!Protocol.MemoryAgent.ForciblyPurgeJavaScriptMemoryRequest} obj
+ * @return {!Promise<!Protocol.MemoryAgent.ForciblyPurgeJavaScriptMemoryResponse>} */
+Protocol.MemoryAgent.prototype.invoke_forciblyPurgeJavaScriptMemory = function(obj) {};
+
+/**
  * @param {boolean} suppressed
  * @return {!Promise<undefined>}
  */
@@ -4461,7 +4476,7 @@ Protocol.Network.RequestPattern;
 /** @typedef {!{label:(string), signature:(string), integrity:(string), certUrl:(string|undefined), certSha256:(string|undefined), validityUrl:(string), date:(number), expires:(number), certificates:(!Array<string>|undefined)}} */
 Protocol.Network.SignedExchangeSignature;
 
-/** @typedef {!{requestUrl:(string), requestMethod:(string), responseCode:(number), responseHeaders:(Protocol.Network.Headers), signatures:(!Array<Protocol.Network.SignedExchangeSignature>)}} */
+/** @typedef {!{requestUrl:(string), responseCode:(number), responseHeaders:(Protocol.Network.Headers), signatures:(!Array<Protocol.Network.SignedExchangeSignature>)}} */
 Protocol.Network.SignedExchangeHeader;
 
 /** @enum {string} */
@@ -4688,10 +4703,11 @@ Protocol.OverlayAgent.prototype.invoke_highlightFrame = function(obj) {};
  * @param {Protocol.DOM.NodeId=} opt_nodeId
  * @param {Protocol.DOM.BackendNodeId=} opt_backendNodeId
  * @param {Protocol.Runtime.RemoteObjectId=} opt_objectId
+ * @param {string=} opt_selector
  * @return {!Promise<undefined>}
  */
-Protocol.OverlayAgent.prototype.highlightNode = function(highlightConfig, opt_nodeId, opt_backendNodeId, opt_objectId) {};
-/** @typedef {!{objectId: (Protocol.Runtime.RemoteObjectId|undefined), highlightConfig: Protocol.Overlay.HighlightConfig, backendNodeId: (Protocol.DOM.BackendNodeId|undefined), nodeId: (Protocol.DOM.NodeId|undefined)}} */
+Protocol.OverlayAgent.prototype.highlightNode = function(highlightConfig, opt_nodeId, opt_backendNodeId, opt_objectId, opt_selector) {};
+/** @typedef {!{selector: (string|undefined), objectId: (Protocol.Runtime.RemoteObjectId|undefined), highlightConfig: Protocol.Overlay.HighlightConfig, backendNodeId: (Protocol.DOM.BackendNodeId|undefined), nodeId: (Protocol.DOM.NodeId|undefined)}} */
 Protocol.OverlayAgent.HighlightNodeRequest;
 /** @typedef {Object|undefined} */
 Protocol.OverlayAgent.HighlightNodeResponse;
@@ -4749,6 +4765,20 @@ Protocol.OverlayAgent.SetInspectModeResponse;
  * @param {!Protocol.OverlayAgent.SetInspectModeRequest} obj
  * @return {!Promise<!Protocol.OverlayAgent.SetInspectModeResponse>} */
 Protocol.OverlayAgent.prototype.invoke_setInspectMode = function(obj) {};
+
+/**
+ * @param {boolean} show
+ * @return {!Promise<undefined>}
+ */
+Protocol.OverlayAgent.prototype.setShowAdHighlights = function(show) {};
+/** @typedef {!{show: boolean}} */
+Protocol.OverlayAgent.SetShowAdHighlightsRequest;
+/** @typedef {Object|undefined} */
+Protocol.OverlayAgent.SetShowAdHighlightsResponse;
+/**
+ * @param {!Protocol.OverlayAgent.SetShowAdHighlightsRequest} obj
+ * @return {!Promise<!Protocol.OverlayAgent.SetShowAdHighlightsResponse>} */
+Protocol.OverlayAgent.prototype.invoke_setShowAdHighlights = function(obj) {};
 
 /**
  * @param {string=} opt_message
@@ -4862,13 +4892,14 @@ Protocol.OverlayAgent.SetSuspendedResponse;
  * @return {!Promise<!Protocol.OverlayAgent.SetSuspendedResponse>} */
 Protocol.OverlayAgent.prototype.invoke_setSuspended = function(obj) {};
 
-/** @typedef {!{showInfo:(boolean|undefined), showStyles:(boolean|undefined), showRulers:(boolean|undefined), showExtensionLines:(boolean|undefined), contentColor:(Protocol.DOM.RGBA|undefined), paddingColor:(Protocol.DOM.RGBA|undefined), borderColor:(Protocol.DOM.RGBA|undefined), marginColor:(Protocol.DOM.RGBA|undefined), eventTargetColor:(Protocol.DOM.RGBA|undefined), shapeColor:(Protocol.DOM.RGBA|undefined), shapeMarginColor:(Protocol.DOM.RGBA|undefined), selectorList:(string|undefined), cssGridColor:(Protocol.DOM.RGBA|undefined)}} */
+/** @typedef {!{showInfo:(boolean|undefined), showStyles:(boolean|undefined), showRulers:(boolean|undefined), showExtensionLines:(boolean|undefined), contentColor:(Protocol.DOM.RGBA|undefined), paddingColor:(Protocol.DOM.RGBA|undefined), borderColor:(Protocol.DOM.RGBA|undefined), marginColor:(Protocol.DOM.RGBA|undefined), eventTargetColor:(Protocol.DOM.RGBA|undefined), shapeColor:(Protocol.DOM.RGBA|undefined), shapeMarginColor:(Protocol.DOM.RGBA|undefined), cssGridColor:(Protocol.DOM.RGBA|undefined)}} */
 Protocol.Overlay.HighlightConfig;
 
 /** @enum {string} */
 Protocol.Overlay.InspectMode = {
     SearchForNode: "searchForNode",
     SearchForUAShadowDOM: "searchForUAShadowDOM",
+    CaptureAreaScreenshot: "captureAreaScreenshot",
     None: "none"
 };
 /** @interface */
@@ -4885,6 +4916,7 @@ Protocol.OverlayDispatcher.prototype.nodeHighlightRequested = function(nodeId) {
  * @param {Protocol.Page.Viewport} viewport
  */
 Protocol.OverlayDispatcher.prototype.screenshotRequested = function(viewport) {};
+Protocol.OverlayDispatcher.prototype.inspectModeCanceled = function() {};
 Protocol.Page = {};
 
 

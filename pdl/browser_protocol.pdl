@@ -515,6 +515,7 @@ domain Browser
       protectedMediaIdentifier
       sensors
       videoCapture
+      idleDetection
 
   # Grant specific permissions to the given origin and reject all others.
   experimental command grantPermissions
@@ -1620,7 +1621,7 @@ domain DOM
     returns
       # Resulting node.
       BackendNodeId backendNodeId
-      # Id of the node at given coordinates, only when enabled.
+      # Id of the node at given coordinates, only when enabled and requested document.
       optional NodeId nodeId
 
   # Returns node's HTML markup.
@@ -1797,6 +1798,8 @@ domain DOM
       optional DOM.BackendNodeId backendNodeId
       # Symbolic group name that can be used to release multiple objects.
       optional string objectGroup
+      # Execution context in which to resolve the node.
+      optional Runtime.ExecutionContextId executionContextId
     returns
       # JavaScript object wrapper for given node.
       Runtime.RemoteObject object
@@ -1888,7 +1891,7 @@ domain DOM
     returns
       # Resulting node.
       BackendNodeId backendNodeId
-      # Id of the node at given coordinates, only when enabled.
+      # Id of the node at given coordinates, only when enabled and requested document.
       optional NodeId nodeId
 
   # Fired when `Element`'s attribute is modified.
@@ -3519,6 +3522,9 @@ experimental domain Memory
 
   command prepareForLeakDetection
 
+  # Simulate OomIntervention by purging V8 memory.
+  command forciblyPurgeJavaScriptMemory
+
   # Enable/disable suppressing memory pressure notifications in all processes.
   command setPressureNotificationsSuppressed
     parameters
@@ -4050,8 +4056,6 @@ domain Network
     properties
       # Signed exchange request URL.
       string requestUrl
-      # Signed exchange request method.
-      string requestMethod
       # Signed exchange response code.
       integer responseCode
       # Signed exchange response headers.
@@ -4609,8 +4613,6 @@ experimental domain Overlay
       optional DOM.RGBA shapeColor
       # The shape margin fill color (default: transparent).
       optional DOM.RGBA shapeMarginColor
-      # Selectors to highlight relevant nodes.
-      optional string selectorList
       # The grid layout color (default: transparent).
       optional DOM.RGBA cssGridColor
 
@@ -4618,6 +4620,7 @@ experimental domain Overlay
     enum
       searchForNode
       searchForUAShadowDOM
+      captureAreaScreenshot
       none
 
   # Disables domain notifications.
@@ -4660,6 +4663,8 @@ experimental domain Overlay
       optional DOM.BackendNodeId backendNodeId
       # JavaScript object id of the node to be highlighted.
       optional Runtime.RemoteObjectId objectId
+      # Selectors to highlight relevant nodes.
+      optional string selector
 
   # Highlights given quad. Coordinates are absolute with respect to the main frame viewport.
   command highlightQuad
@@ -4696,6 +4701,12 @@ experimental domain Overlay
       # A descriptor for the highlight appearance of hovered-over nodes. May be omitted if `enabled
       # == false`.
       optional HighlightConfig highlightConfig
+
+  # Highlights owner element of all frames detected to be ads.
+  command setShowAdHighlights
+    parameters
+      # True for showing ad highlights
+      boolean show
 
   command setPausedInDebuggerMessage
     parameters
@@ -4760,6 +4771,9 @@ experimental domain Overlay
     parameters
       # Viewport to capture, in device independent pixels (dip).
       Page.Viewport viewport
+
+  # Fired when user cancels the inspect mode.
+  event inspectModeCanceled
 
 # Actions and events related to the inspected page belong to the page domain.
 domain Page

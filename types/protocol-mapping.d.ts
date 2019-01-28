@@ -309,6 +309,10 @@ export namespace ProtocolMapping {
          * Fired when user asks to capture screenshot of some area on the page.
          */
         'Overlay.screenshotRequested': [Protocol.Overlay.ScreenshotRequestedEvent];
+        /**
+         * Fired when user cancels the inspect mode.
+         */
+        'Overlay.inspectModeCanceled': [];
         'Page.domContentEventFired': [Protocol.Page.DomContentEventFiredEvent];
         /**
          * Fired when frame has been attached to its parent.
@@ -2353,6 +2357,13 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Simulate OomIntervention by purging V8 memory.
+         */
+        'Memory.forciblyPurgeJavaScriptMemory': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
          * Enable/disable suppressing memory pressure notifications in all processes.
          */
         'Memory.setPressureNotificationsSuppressed': {
@@ -2673,6 +2684,13 @@ export namespace ProtocolMapping {
          */
         'Overlay.setInspectMode': {
             paramsType: [Protocol.Overlay.SetInspectModeRequest];
+            returnType: void;
+        };
+        /**
+         * Highlights owner element of all frames detected to be ads.
+         */
+        'Overlay.setShowAdHighlights': {
+            paramsType: [Protocol.Overlay.SetShowAdHighlightsRequest];
             returnType: void;
         };
         'Overlay.setPausedInDebuggerMessage': {

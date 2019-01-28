@@ -1,5 +1,37 @@
 
 
+## Roll protocol to r626751
+###### _2019-01-28 13:59:29 -0800_ | Diff: [c5978d7...a921886](https://github.com/ChromeDevTools/devtools-protocol/compare/c5978d7...a921886)
+#### `Browser`: modified type
+* [`Browser.PermissionType`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-PermissionType) - The enum's `idleDetection` _added_. 
+#### `DOM`: modified commands
+* [`DOM.getNodeForLocation`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getNodeForLocation) - The `nodeId` in the return value had `description` _updated_. 
+* [`DOM.resolveNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-resolveNode) - The parameters's `executionContextId` _added_. 
+* [`DOM.getFrameOwner`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getFrameOwner) - The `nodeId` in the return value had `description` _updated_. 
+#### `Memory`: new command
+* [`Memory.forciblyPurgeJavaScriptMemory`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#method-forciblyPurgeJavaScriptMemory)
+#### `Network`: modified type
+* [`Network.SignedExchangeHeader`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedExchangeHeader) - The properties's `signatures` _removed_. The `responseCode` in the properties had `type` _removed_. The `responseHeaders` in the properties had `$ref` _removed_. The `requestMethod` in the properties had `name` _updated_. The `requestMethod` in the properties had `description` _updated_. The `requestMethod` in the properties had `type` _updated_. The `responseCode` in the properties had `name` _updated_. The `responseCode` in the properties had `description` _updated_. The `responseHeaders` in the properties had `name` _updated_. The `responseHeaders` in the properties had `description` _updated_. The properties's `$ref` _added_. The properties's `type` _added_. The properties's `items` _added_. 
+#### `Overlay`: new command
+* [`Overlay.setShowAdHighlights`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-setShowAdHighlights)
+#### `Overlay`: modified command
+* [`Overlay.highlightNode`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-highlightNode) - The parameters's `selector` _added_. 
+#### `Overlay`: new event
+* [`Overlay.inspectModeCanceled`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#event-inspectModeCanceled)
+#### `Overlay`: modified types
+* [`Overlay.HighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-HighlightConfig) - The properties's `cssGridColor` _removed_. The `selectorList` in the properties had `type` _removed_. The `selectorList` in the properties had `name` _updated_. The `selectorList` in the properties had `description` _updated_. The properties's `$ref` _added_. 
+* [`Overlay.InspectMode`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-InspectMode) - The enum's `none` _updated_. The enum's `none` _added_. 
+
+
+## Roll protocol to r623118
+###### _2019-01-15 21:15:54 -0800_ | Diff: [912ecd4...c5978d7](https://github.com/ChromeDevTools/devtools-protocol/compare/912ecd4...c5978d7)
+#### `Overlay`: modified event
+* [`Overlay.screenshotRequested`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#event-screenshotRequested) - The `viewport` in the parameters had `description` _updated_. 
+#### `Page`: modified types
+* [`Page.VisualViewport`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-VisualViewport) - The properties's `zoom` _added_. 
+* [`Page.Viewport`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Viewport) - The `x` in the properties had `description` _updated_. The `y` in the properties had `description` _updated_. The `width` in the properties had `description` _updated_. The `height` in the properties had `description` _updated_. 
+
+
 ## Roll protocol to r622567
 ###### _2019-01-14 12:15:49 -0800_ | Diff: [53050a0...44c8bde](https://github.com/ChromeDevTools/devtools-protocol/compare/53050a0...44c8bde)
 #### `CSS`: modified command
