@@ -3739,6 +3739,19 @@ Protocol.MemoryAgent.PrepareForLeakDetectionResponse;
 Protocol.MemoryAgent.prototype.invoke_prepareForLeakDetection = function(obj) {};
 
 /**
+ * @return {!Promise<undefined>}
+ */
+Protocol.MemoryAgent.prototype.forciblyPurgeJavaScriptMemory = function() {};
+/** @typedef {Object|undefined} */
+Protocol.MemoryAgent.ForciblyPurgeJavaScriptMemoryRequest;
+/** @typedef {Object|undefined} */
+Protocol.MemoryAgent.ForciblyPurgeJavaScriptMemoryResponse;
+/**
+ * @param {!Protocol.MemoryAgent.ForciblyPurgeJavaScriptMemoryRequest} obj
+ * @return {!Promise<!Protocol.MemoryAgent.ForciblyPurgeJavaScriptMemoryResponse>} */
+Protocol.MemoryAgent.prototype.invoke_forciblyPurgeJavaScriptMemory = function(obj) {};
+
+/**
  * @param {boolean} suppressed
  * @return {!Promise<undefined>}
  */

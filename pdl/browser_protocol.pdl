@@ -3522,6 +3522,9 @@ experimental domain Memory
 
   command prepareForLeakDetection
 
+  # Simulate OomIntervention by purging V8 memory.
+  command forciblyPurgeJavaScriptMemory
+
   # Enable/disable suppressing memory pressure notifications in all processes.
   command setPressureNotificationsSuppressed
     parameters

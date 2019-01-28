@@ -2357,6 +2357,13 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Simulate OomIntervention by purging V8 memory.
+         */
+        'Memory.forciblyPurgeJavaScriptMemory': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
          * Enable/disable suppressing memory pressure notifications in all processes.
          */
         'Memory.setPressureNotificationsSuppressed': {

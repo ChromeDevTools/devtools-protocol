@@ -1796,6 +1796,11 @@ export namespace ProtocolProxyApi {
         prepareForLeakDetection(): Promise<void>;
 
         /**
+         * Simulate OomIntervention by purging V8 memory.
+         */
+        forciblyPurgeJavaScriptMemory(): Promise<void>;
+
+        /**
          * Enable/disable suppressing memory pressure notifications in all processes.
          */
         setPressureNotificationsSuppressed(params: Protocol.Memory.SetPressureNotificationsSuppressedRequest): Promise<void>;
