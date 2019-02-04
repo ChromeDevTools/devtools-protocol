@@ -2867,15 +2867,7 @@ Protocol.Emulation.VirtualTimePolicy = {
 };
 /** @interface */
 Protocol.EmulationDispatcher = function() {};
-/**
- * @param {number} virtualTimeElapsed
- */
-Protocol.EmulationDispatcher.prototype.virtualTimeAdvanced = function(virtualTimeElapsed) {};
 Protocol.EmulationDispatcher.prototype.virtualTimeBudgetExpired = function() {};
-/**
- * @param {number} virtualTimeElapsed
- */
-Protocol.EmulationDispatcher.prototype.virtualTimePaused = function(virtualTimeElapsed) {};
 Protocol.HeadlessExperimental = {};
 
 

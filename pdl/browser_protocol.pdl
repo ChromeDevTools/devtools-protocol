@@ -2705,22 +2705,8 @@ domain Emulation
       # Frame height (DIP).
       integer height
 
-  # Notification sent after the virtual time has advanced.
-  experimental event virtualTimeAdvanced
-    parameters
-      # The amount of virtual time that has elapsed in milliseconds since virtual time was first
-      # enabled.
-      number virtualTimeElapsed
-
   # Notification sent after the virtual time budget for the current VirtualTimePolicy has run out.
   experimental event virtualTimeBudgetExpired
-
-  # Notification sent after the virtual time has paused.
-  experimental event virtualTimePaused
-    parameters
-      # The amount of virtual time that has elapsed in milliseconds since virtual time was first
-      # enabled.
-      number virtualTimeElapsed
 
   # Allows overriding user agent with the given string.
   command setUserAgentOverride

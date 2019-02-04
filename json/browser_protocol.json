@@ -6008,33 +6008,9 @@
             ],
             "events": [
                 {
-                    "name": "virtualTimeAdvanced",
-                    "description": "Notification sent after the virtual time has advanced.",
-                    "experimental": true,
-                    "parameters": [
-                        {
-                            "name": "virtualTimeElapsed",
-                            "description": "The amount of virtual time that has elapsed in milliseconds since virtual time was first\nenabled.",
-                            "type": "number"
-                        }
-                    ]
-                },
-                {
                     "name": "virtualTimeBudgetExpired",
                     "description": "Notification sent after the virtual time budget for the current VirtualTimePolicy has run out.",
                     "experimental": true
-                },
-                {
-                    "name": "virtualTimePaused",
-                    "description": "Notification sent after the virtual time has paused.",
-                    "experimental": true,
-                    "parameters": [
-                        {
-                            "name": "virtualTimeElapsed",
-                            "description": "The amount of virtual time that has elapsed in milliseconds since virtual time was first\nenabled.",
-                            "type": "number"
-                        }
-                    ]
                 }
             ]
         },
