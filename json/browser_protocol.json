@@ -2688,6 +2688,14 @@
                             "name": "requestURL",
                             "description": "URL spec of the request.",
                             "type": "string"
+                        },
+                        {
+                            "name": "requestHeaders",
+                            "description": "headers of the request.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "Header"
+                            }
                         }
                     ],
                     "returns": [

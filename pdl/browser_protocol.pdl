@@ -1243,6 +1243,8 @@ experimental domain CacheStorage
       CacheId cacheId
       # URL spec of the request.
       string requestURL
+      # headers of the request.
+      array of Header requestHeaders
     returns
       # Response read from the cache.
       CachedResponse response

@@ -1152,10 +1152,11 @@ Protocol.CacheStorageAgent.prototype.invoke_requestCacheNames = function(obj) {}
 /**
  * @param {Protocol.CacheStorage.CacheId} cacheId
  * @param {string} requestURL
+ * @param {!Array<Protocol.CacheStorage.Header>} requestHeaders
  * @return {!Promise<?Protocol.CacheStorage.CachedResponse>}
  */
-Protocol.CacheStorageAgent.prototype.requestCachedResponse = function(cacheId, requestURL) {};
-/** @typedef {!{cacheId: Protocol.CacheStorage.CacheId, requestURL: string}} */
+Protocol.CacheStorageAgent.prototype.requestCachedResponse = function(cacheId, requestURL, requestHeaders) {};
+/** @typedef {!{requestHeaders: !Array<Protocol.CacheStorage.Header>, cacheId: Protocol.CacheStorage.CacheId, requestURL: string}} */
 Protocol.CacheStorageAgent.RequestCachedResponseRequest;
 /** @typedef {!{response: Protocol.CacheStorage.CachedResponse}} */
 Protocol.CacheStorageAgent.RequestCachedResponseResponse;
