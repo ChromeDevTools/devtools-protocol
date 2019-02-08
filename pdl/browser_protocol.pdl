@@ -538,6 +538,9 @@ domain Browser
   # Crashes browser on the main thread.
   experimental command crash
 
+  # Crashes GPU process.
+  experimental command crashGpuProcess
+
   # Returns version information.
   command getVersion
     returns

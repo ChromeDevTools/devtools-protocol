@@ -521,6 +521,19 @@ Protocol.BrowserAgent.CrashResponse;
 Protocol.BrowserAgent.prototype.invoke_crash = function(obj) {};
 
 /**
+ * @return {!Promise<undefined>}
+ */
+Protocol.BrowserAgent.prototype.crashGpuProcess = function() {};
+/** @typedef {Object|undefined} */
+Protocol.BrowserAgent.CrashGpuProcessRequest;
+/** @typedef {Object|undefined} */
+Protocol.BrowserAgent.CrashGpuProcessResponse;
+/**
+ * @param {!Protocol.BrowserAgent.CrashGpuProcessRequest} obj
+ * @return {!Promise<!Protocol.BrowserAgent.CrashGpuProcessResponse>} */
+Protocol.BrowserAgent.prototype.invoke_crashGpuProcess = function(obj) {};
+
+/**
  * @return {!Promise<?string>}
  */
 Protocol.BrowserAgent.prototype.getVersion = function() {};

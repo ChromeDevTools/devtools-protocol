@@ -1156,6 +1156,11 @@
                     "experimental": true
                 },
                 {
+                    "name": "crashGpuProcess",
+                    "description": "Crashes GPU process.",
+                    "experimental": true
+                },
+                {
                     "name": "getVersion",
                     "description": "Returns version information.",
                     "returns": [
