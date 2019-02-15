@@ -3108,6 +3108,22 @@ Protocol.IndexedDBAgent.prototype.invoke_requestData = function(obj) {};
 /**
  * @param {string} securityOrigin
  * @param {string} databaseName
+ * @param {string} objectStoreName
+ * @return {!Promise<?number>}
+ */
+Protocol.IndexedDBAgent.prototype.getKeyGeneratorCurrentNumber = function(securityOrigin, databaseName, objectStoreName) {};
+/** @typedef {!{objectStoreName: string, databaseName: string, securityOrigin: string}} */
+Protocol.IndexedDBAgent.GetKeyGeneratorCurrentNumberRequest;
+/** @typedef {!{currentNumber: number}} */
+Protocol.IndexedDBAgent.GetKeyGeneratorCurrentNumberResponse;
+/**
+ * @param {!Protocol.IndexedDBAgent.GetKeyGeneratorCurrentNumberRequest} obj
+ * @return {!Promise<!Protocol.IndexedDBAgent.GetKeyGeneratorCurrentNumberResponse>} */
+Protocol.IndexedDBAgent.prototype.invoke_getKeyGeneratorCurrentNumber = function(obj) {};
+
+/**
+ * @param {string} securityOrigin
+ * @param {string} databaseName
  * @return {!Promise<?Protocol.IndexedDB.DatabaseWithObjectStores>}
  */
 Protocol.IndexedDBAgent.prototype.requestDatabase = function(securityOrigin, databaseName) {};

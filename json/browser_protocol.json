@@ -6555,6 +6555,34 @@
                     ]
                 },
                 {
+                    "name": "getKeyGeneratorCurrentNumber",
+                    "description": "Gets the auto increment number of an object store. Only meaningful\nwhen objectStore.autoIncrement is true.",
+                    "parameters": [
+                        {
+                            "name": "securityOrigin",
+                            "description": "Security origin.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "databaseName",
+                            "description": "Database name.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "objectStoreName",
+                            "description": "Object store name.",
+                            "type": "string"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "currentNumber",
+                            "description": "the current value of key generator, to become the next inserted\nkey into the object store.",
+                            "type": "number"
+                        }
+                    ]
+                },
+                {
                     "name": "requestDatabase",
                     "description": "Requests database with given name in given frame.",
                     "parameters": [
