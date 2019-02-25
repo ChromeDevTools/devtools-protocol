@@ -3720,6 +3720,10 @@ export namespace Protocol {
              * URL spec of the request.
              */
             requestURL: string;
+            /**
+             * headers of the request.
+             */
+            requestHeaders: Header[];
         }
 
         export interface RequestCachedResponseResponse {
@@ -5849,28 +5853,6 @@ export namespace Protocol {
              */
             platform?: string;
         }
-
-        /**
-         * Notification sent after the virtual time has advanced.
-         */
-        export interface VirtualTimeAdvancedEvent {
-            /**
-             * The amount of virtual time that has elapsed in milliseconds since virtual time was first
-             * enabled.
-             */
-            virtualTimeElapsed: number;
-        }
-
-        /**
-         * Notification sent after the virtual time has paused.
-         */
-        export interface VirtualTimePausedEvent {
-            /**
-             * The amount of virtual time that has elapsed in milliseconds since virtual time was first
-             * enabled.
-             */
-            virtualTimeElapsed: number;
-        }
     }
 
     /**
@@ -6229,6 +6211,29 @@ export namespace Protocol {
              * If true, there are more entries to fetch in the given range.
              */
             hasMore: boolean;
+        }
+
+        export interface GetKeyGeneratorCurrentNumberRequest {
+            /**
+             * Security origin.
+             */
+            securityOrigin: string;
+            /**
+             * Database name.
+             */
+            databaseName: string;
+            /**
+             * Object store name.
+             */
+            objectStoreName: string;
+        }
+
+        export interface GetKeyGeneratorCurrentNumberResponse {
+            /**
+             * the current value of key generator, to become the next inserted
+             * key into the object store.
+             */
+            currentNumber: number;
         }
 
         export interface RequestDatabaseRequest {

@@ -1,11 +1,7 @@
 
 
 ## Roll protocol to r626751
-<<<<<<< HEAD
 ###### _2019-01-28 13:59:29 -0800_ | Diff: [c5978d7...0115905](https://github.com/ChromeDevTools/devtools-protocol/compare/c5978d7...0115905)
-=======
-###### _2019-01-28 13:59:29 -0800_ | Diff: [c5978d7...a921886](https://github.com/ChromeDevTools/devtools-protocol/compare/c5978d7...a921886)
->>>>>>> 0115905f5c78a273ffaf5c765821ae4e7dfcf083
 #### `Browser`: modified type
 * [`Browser.PermissionType`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-PermissionType) - The enum's `idleDetection` _added_. 
 #### `DOM`: modified commands

@@ -194,17 +194,9 @@ export namespace ProtocolMapping {
         'DOMStorage.domStorageItemsCleared': [Protocol.DOMStorage.DomStorageItemsClearedEvent];
         'Database.addDatabase': [Protocol.Database.AddDatabaseEvent];
         /**
-         * Notification sent after the virtual time has advanced.
-         */
-        'Emulation.virtualTimeAdvanced': [Protocol.Emulation.VirtualTimeAdvancedEvent];
-        /**
          * Notification sent after the virtual time budget for the current VirtualTimePolicy has run out.
          */
         'Emulation.virtualTimeBudgetExpired': [];
-        /**
-         * Notification sent after the virtual time has paused.
-         */
-        'Emulation.virtualTimePaused': [Protocol.Emulation.VirtualTimePausedEvent];
         /**
          * Issued when the target starts or stops needing BeginFrames.
          */
@@ -1170,6 +1162,13 @@ export namespace ProtocolMapping {
          * Crashes browser on the main thread.
          */
         'Browser.crash': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
+         * Crashes GPU process.
+         */
+        'Browser.crashGpuProcess': {
             paramsType: [];
             returnType: void;
         };
@@ -2159,6 +2158,14 @@ export namespace ProtocolMapping {
         'IndexedDB.requestData': {
             paramsType: [Protocol.IndexedDB.RequestDataRequest];
             returnType: Protocol.IndexedDB.RequestDataResponse;
+        };
+        /**
+         * Gets the auto increment number of an object store. Only meaningful
+         * when objectStore.autoIncrement is true.
+         */
+        'IndexedDB.getKeyGeneratorCurrentNumber': {
+            paramsType: [Protocol.IndexedDB.GetKeyGeneratorCurrentNumberRequest];
+            returnType: Protocol.IndexedDB.GetKeyGeneratorCurrentNumberResponse;
         };
         /**
          * Requests database with given name in given frame.

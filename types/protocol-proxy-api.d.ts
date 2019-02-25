@@ -731,6 +731,11 @@ export namespace ProtocolProxyApi {
         crash(): Promise<void>;
 
         /**
+         * Crashes GPU process.
+         */
+        crashGpuProcess(): Promise<void>;
+
+        /**
          * Returns version information.
          */
         getVersion(): Promise<Protocol.Browser.GetVersionResponse>;
@@ -1527,19 +1532,9 @@ export namespace ProtocolProxyApi {
         setUserAgentOverride(params: Protocol.Emulation.SetUserAgentOverrideRequest): Promise<void>;
 
         /**
-         * Notification sent after the virtual time has advanced.
-         */
-        on(event: 'virtualTimeAdvanced', listener: (params: Protocol.Emulation.VirtualTimeAdvancedEvent) => void): void;
-
-        /**
          * Notification sent after the virtual time budget for the current VirtualTimePolicy has run out.
          */
         on(event: 'virtualTimeBudgetExpired', listener: () => void): void;
-
-        /**
-         * Notification sent after the virtual time has paused.
-         */
-        on(event: 'virtualTimePaused', listener: (params: Protocol.Emulation.VirtualTimePausedEvent) => void): void;
 
     }
 
@@ -1617,6 +1612,12 @@ export namespace ProtocolProxyApi {
          * Requests data from object store or index.
          */
         requestData(params: Protocol.IndexedDB.RequestDataRequest): Promise<Protocol.IndexedDB.RequestDataResponse>;
+
+        /**
+         * Gets the auto increment number of an object store. Only meaningful
+         * when objectStore.autoIncrement is true.
+         */
+        getKeyGeneratorCurrentNumber(params: Protocol.IndexedDB.GetKeyGeneratorCurrentNumberRequest): Promise<Protocol.IndexedDB.GetKeyGeneratorCurrentNumberResponse>;
 
         /**
          * Requests database with given name in given frame.
