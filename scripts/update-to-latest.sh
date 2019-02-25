@@ -58,7 +58,7 @@ if ! git diff --no-ext-diff --quiet --exit-code; then
 	# dirty repo, ready to commit.
 
 	# commit so we can use the new commit in the changelog
-	git commit --author="DevTools Bot <paulirish+bot@google.com>" --all -m "Roll protocol to r$commit_rev"
+	git commit --author="DevTools Bot <24444246+devtools-bot@users.noreply.github.com>" --all -m "Roll protocol to r$commit_rev"
 
 	# generate changelog
 	cd "$protocol_repo_path/scripts" || exit 1
@@ -70,7 +70,7 @@ if ! git diff --no-ext-diff --quiet --exit-code; then
 	. $protocol_repo_path/scripts/publish-to-npm.sh "$commit_rev"
 
 	# amend previous commit
-	git commit --amend --author="DevTools Bot <paulirish+bot@google.com>" --all -m "Roll protocol to r$commit_rev"
+	git commit --amend --author="DevTools Bot <24444246+devtools-bot@users.noreply.github.com>" --all -m "Roll protocol to r$commit_rev"
 	# push to devtools-protocol repo
 	git pull && git push
 fi
