@@ -1,26 +1,81 @@
 
 
-## Roll protocol to r626751
-###### _2019-01-28 13:59:29 -0800_ | Diff: [c5978d7...0115905](https://github.com/ChromeDevTools/devtools-protocol/compare/c5978d7...0115905)
-#### `Browser`: modified type
-* [`Browser.PermissionType`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-PermissionType) - The enum's `idleDetection` _added_. 
-#### `DOM`: modified commands
-* [`DOM.getNodeForLocation`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getNodeForLocation) - The `nodeId` in the return value had `description` _updated_. 
-* [`DOM.resolveNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-resolveNode) - The parameters's `executionContextId` _added_. 
-* [`DOM.getFrameOwner`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getFrameOwner) - The `nodeId` in the return value had `description` _updated_. 
+## Roll protocol to r632815
+###### _2019-02-15 15:15:52 -0800_ | Diff: [3423c2d...d0cca39](https://github.com/ChromeDevTools/devtools-protocol/compare/3423c2d...d0cca39)
+#### `IndexedDB`: new command
+* [`IndexedDB.getKeyGeneratorCurrentNumber`](https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#method-getKeyGeneratorCurrentNumber)
+
+
+## Roll protocol to r630203
+###### _2019-02-07 21:15:49 -0800_ | Diff: [f02e8a5...1506d25](https://github.com/ChromeDevTools/devtools-protocol/compare/f02e8a5...1506d25)
+#### `Browser`: new command
+* [`Browser.crashGpuProcess`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-crashGpuProcess)
+
+
+## Roll protocol to r630011
+###### _2019-02-07 10:16:02 -0800_ | Diff: [2a326d4...45f4bf9](https://github.com/ChromeDevTools/devtools-protocol/compare/2a326d4...45f4bf9)
+#### `CacheStorage`: modified command
+* [`CacheStorage.requestCachedResponse`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#method-requestCachedResponse) - The parameters's `requestHeaders` _added_. 
+
+
+## Roll protocol to r628773
+###### _2019-02-04 09:15:59 -0800_ | Diff: [0af8698...e134876](https://github.com/ChromeDevTools/devtools-protocol/compare/0af8698...e134876)
+#### `Emulation`: removed events
+* [`Emulation.virtualTimeAdvanced`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#event-virtualTimeAdvanced)
+* [`Emulation.virtualTimePaused`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#event-virtualTimePaused)
+
+
+## Roll protocol to r626433
+###### _2019-01-27 19:15:50 -0800_ | Diff: [d4274dd...0951f55](https://github.com/ChromeDevTools/devtools-protocol/compare/d4274dd...0951f55)
 #### `Memory`: new command
 * [`Memory.forciblyPurgeJavaScriptMemory`](https://chromedevtools.github.io/devtools-protocol/tot/Memory/#method-forciblyPurgeJavaScriptMemory)
+
+
+## Roll protocol to r626200
+###### _2019-01-25 13:16:05 -0800_ | Diff: [039679f...d4274dd](https://github.com/ChromeDevTools/devtools-protocol/compare/039679f...d4274dd)
+#### `DOM`: modified commands
+* [`DOM.getNodeForLocation`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getNodeForLocation) - The `nodeId` in the return value had `description` _updated_. 
+* [`DOM.getFrameOwner`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getFrameOwner) - The `nodeId` in the return value had `description` _updated_. 
+
+
+## Roll protocol to r625481
+###### _2019-01-23 18:15:49 -0800_ | Diff: [130d0d8...039679f](https://github.com/ChromeDevTools/devtools-protocol/compare/130d0d8...039679f)
 #### `Network`: modified type
 * [`Network.SignedExchangeHeader`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedExchangeHeader) - The properties's `signatures` _removed_. The `responseCode` in the properties had `type` _removed_. The `responseHeaders` in the properties had `$ref` _removed_. The `requestMethod` in the properties had `name` _updated_. The `requestMethod` in the properties had `description` _updated_. The `requestMethod` in the properties had `type` _updated_. The `responseCode` in the properties had `name` _updated_. The `responseCode` in the properties had `description` _updated_. The `responseHeaders` in the properties had `name` _updated_. The `responseHeaders` in the properties had `description` _updated_. The properties's `$ref` _added_. The properties's `type` _added_. The properties's `items` _added_. 
-#### `Overlay`: new command
-* [`Overlay.setShowAdHighlights`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-setShowAdHighlights)
+
+
+## Roll protocol to r624433
+###### _2019-01-18 19:15:57 -0800_ | Diff: [fdd58cb...130d0d8](https://github.com/ChromeDevTools/devtools-protocol/compare/fdd58cb...130d0d8)
 #### `Overlay`: modified command
 * [`Overlay.highlightNode`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-highlightNode) - The parameters's `selector` _added_. 
+#### `Overlay`: modified type
+* [`Overlay.HighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-HighlightConfig) - The properties's `cssGridColor` _removed_. The `selectorList` in the properties had `type` _removed_. The `selectorList` in the properties had `name` _updated_. The `selectorList` in the properties had `description` _updated_. The properties's `$ref` _added_. 
+
+
+## Roll protocol to r624373
+###### _2019-01-18 16:15:53 -0800_ | Diff: [023e7bc...fdd58cb](https://github.com/ChromeDevTools/devtools-protocol/compare/023e7bc...fdd58cb)
 #### `Overlay`: new event
 * [`Overlay.inspectModeCanceled`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#event-inspectModeCanceled)
-#### `Overlay`: modified types
-* [`Overlay.HighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-HighlightConfig) - The properties's `cssGridColor` _removed_. The `selectorList` in the properties had `type` _removed_. The `selectorList` in the properties had `name` _updated_. The `selectorList` in the properties had `description` _updated_. The properties's `$ref` _added_. 
+#### `Overlay`: modified type
 * [`Overlay.InspectMode`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-InspectMode) - The enum's `none` _updated_. The enum's `none` _added_. 
+
+
+## Roll protocol to r624315
+###### _2019-01-18 14:19:35 -0800_ | Diff: [99ce0ca...974d209](https://github.com/ChromeDevTools/devtools-protocol/compare/99ce0ca...974d209)
+#### `Browser`: modified type
+* [`Browser.PermissionType`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-PermissionType) - The enum's `idleDetection` _added_. 
+
+
+## Roll protocol to r624253
+###### _2019-01-18 12:15:51 -0800_ | Diff: [c5eefe1...99ce0ca](https://github.com/ChromeDevTools/devtools-protocol/compare/c5eefe1...99ce0ca)
+#### `DOM`: modified command
+* [`DOM.resolveNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-resolveNode) - The parameters's `executionContextId` _added_. 
+
+
+## Roll protocol to r624227
+###### _2019-01-18 11:15:48 -0800_ | Diff: [c5978d7...c5eefe1](https://github.com/ChromeDevTools/devtools-protocol/compare/c5978d7...c5eefe1)
+#### `Overlay`: new command
+* [`Overlay.setShowAdHighlights`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-setShowAdHighlights)
 
 
 ## Roll protocol to r623118
