@@ -228,6 +228,15 @@ class Formatter {
   }
 }
 
+
+const blacklistedCommits = [
+  'b97e97f476c04b6b91e17dbd83ccd4543c3229fd', // use private bot email
+  '366374904f0cfd931263af8e171015859c5d6339', // use private bot email
+  '88d913066a7a65796e5ecd171508ce0f3514e593', // resolve git conflict
+  '0eb828c0d972543692a74149d368ad122bf30cf2', // merge master
+
+];
+
 /**
  * CommitCrawler handles the git interaction and begins the diffing
  */
@@ -253,7 +262,8 @@ class CommitCrawler {
     await git.checkout('origin/HEAD');
     await wait();
     const commitlog = await git.log();
-    this.commitlogs = commitlog.all;
+    // Remove any commits we don't want to deal with.
+    this.commitlogs = commitlog.all.filter(commit => !blacklistedCommits.includes(commit.hash));
 
     for (let i = 0; i < this.commitlogs.length; i++) {
       // Skip the first commits of the repo.
