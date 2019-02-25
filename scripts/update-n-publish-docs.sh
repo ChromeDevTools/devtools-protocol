@@ -18,7 +18,7 @@ git pull $viewer_repo
 # generate latest docs on updated protocol
 yarn prep && yarn build;
 
-git commit --author="DevTools Bot <paulirish+bot@google.com>" -am "bump protocol"
+git commit --author="DevTools Bot <24444246+devtools-bot@users.noreply.github.com>" -am "bump protocol"
 #    git config user.name "devtools-bot"
 #    git config user.email "24444246+devtools-bot@users.noreply.github.com"
 
