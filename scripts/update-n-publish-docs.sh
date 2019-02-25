@@ -20,7 +20,7 @@ yarn prep && yarn build;
 
 git commit --author="DevTools Bot <paulirish+bot@google.com>" -am "bump protocol"
 #    git config user.name "devtools-bot"
-#    git config user.email "paulirish+bot@google.com"
+#    git config user.email "24444246+devtools-bot@users.noreply.github.com"
 
 # push protocol bump commit back to viewer repo
 git pull $viewer_repo && git push $viewer_repo
