@@ -971,6 +971,72 @@
             ]
         },
         {
+            "domain": "BackgroundService",
+            "description": "Defines events for background web platform features.",
+            "experimental": true,
+            "types": [
+                {
+                    "id": "ServiceName",
+                    "description": "The Background Service that will be associated with the commands/events.\nEvery Background Service operates independently, but they share the same\nAPI.",
+                    "type": "string",
+                    "enum": [
+                        "backgroundFetch",
+                        "backgroundSync"
+                    ]
+                }
+            ],
+            "commands": [
+                {
+                    "name": "enable",
+                    "parameters": [
+                        {
+                            "name": "service",
+                            "$ref": "ServiceName"
+                        }
+                    ]
+                },
+                {
+                    "name": "disable",
+                    "parameters": [
+                        {
+                            "name": "service",
+                            "$ref": "ServiceName"
+                        }
+                    ]
+                },
+                {
+                    "name": "setRecording",
+                    "description": "Set the recording state for the service.",
+                    "parameters": [
+                        {
+                            "name": "shouldRecord",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "service",
+                            "$ref": "ServiceName"
+                        }
+                    ]
+                }
+            ],
+            "events": [
+                {
+                    "name": "recordingStateChanged",
+                    "description": "Called when the recording state for the service has been updated.",
+                    "parameters": [
+                        {
+                            "name": "isRecording",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "service",
+                            "$ref": "ServiceName"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "domain": "Browser",
             "description": "The Browser domain defines methods and events for browser managing.",
             "types": [

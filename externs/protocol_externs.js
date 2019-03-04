@@ -456,6 +456,69 @@ Protocol.AuditsAgent.GetEncodedResponseResponse;
 Protocol.AuditsAgent.prototype.invoke_getEncodedResponse = function(obj) {};
 /** @interface */
 Protocol.AuditsDispatcher = function() {};
+Protocol.BackgroundService = {};
+
+
+/**
+ * @constructor
+*/
+Protocol.BackgroundServiceAgent = function(){};
+
+/**
+ * @param {Protocol.BackgroundService.ServiceName} service
+ * @return {!Promise<undefined>}
+ */
+Protocol.BackgroundServiceAgent.prototype.enable = function(service) {};
+/** @typedef {!{service: Protocol.BackgroundService.ServiceName}} */
+Protocol.BackgroundServiceAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.BackgroundServiceAgent.EnableResponse;
+/**
+ * @param {!Protocol.BackgroundServiceAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.BackgroundServiceAgent.EnableResponse>} */
+Protocol.BackgroundServiceAgent.prototype.invoke_enable = function(obj) {};
+
+/**
+ * @param {Protocol.BackgroundService.ServiceName} service
+ * @return {!Promise<undefined>}
+ */
+Protocol.BackgroundServiceAgent.prototype.disable = function(service) {};
+/** @typedef {!{service: Protocol.BackgroundService.ServiceName}} */
+Protocol.BackgroundServiceAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.BackgroundServiceAgent.DisableResponse;
+/**
+ * @param {!Protocol.BackgroundServiceAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.BackgroundServiceAgent.DisableResponse>} */
+Protocol.BackgroundServiceAgent.prototype.invoke_disable = function(obj) {};
+
+/**
+ * @param {boolean} shouldRecord
+ * @param {Protocol.BackgroundService.ServiceName} service
+ * @return {!Promise<undefined>}
+ */
+Protocol.BackgroundServiceAgent.prototype.setRecording = function(shouldRecord, service) {};
+/** @typedef {!{shouldRecord: boolean, service: Protocol.BackgroundService.ServiceName}} */
+Protocol.BackgroundServiceAgent.SetRecordingRequest;
+/** @typedef {Object|undefined} */
+Protocol.BackgroundServiceAgent.SetRecordingResponse;
+/**
+ * @param {!Protocol.BackgroundServiceAgent.SetRecordingRequest} obj
+ * @return {!Promise<!Protocol.BackgroundServiceAgent.SetRecordingResponse>} */
+Protocol.BackgroundServiceAgent.prototype.invoke_setRecording = function(obj) {};
+
+/** @enum {string} */
+Protocol.BackgroundService.ServiceName = {
+    BackgroundFetch: "backgroundFetch",
+    BackgroundSync: "backgroundSync"
+};
+/** @interface */
+Protocol.BackgroundServiceDispatcher = function() {};
+/**
+ * @param {boolean} isRecording
+ * @param {Protocol.BackgroundService.ServiceName} service
+ */
+Protocol.BackgroundServiceDispatcher.prototype.recordingStateChanged = function(isRecording, service) {};
 Protocol.Browser = {};
 
 
@@ -8690,6 +8753,12 @@ Protocol.TargetBase.prototype.auditsAgent = function(){};
  * @param {!Protocol.AuditsDispatcher} dispatcher
  */
 Protocol.TargetBase.prototype.registerAuditsDispatcher = function(dispatcher) {}
+/** @return {!Protocol.BackgroundServiceAgent}*/
+Protocol.TargetBase.prototype.backgroundServiceAgent = function(){};
+/**
+ * @param {!Protocol.BackgroundServiceDispatcher} dispatcher
+ */
+Protocol.TargetBase.prototype.registerBackgroundServiceDispatcher = function(dispatcher) {}
 /** @return {!Protocol.BrowserAgent}*/
 Protocol.TargetBase.prototype.browserAgent = function(){};
 /**

@@ -2595,6 +2595,40 @@ export namespace Protocol {
     }
 
     /**
+     * Defines events for background web platform features.
+     */
+    export namespace BackgroundService {
+
+        /**
+         * The Background Service that will be associated with the commands/events.
+         * Every Background Service operates independently, but they share the same
+         * API.
+         */
+        export type ServiceName = ('backgroundFetch' | 'backgroundSync');
+
+        export interface EnableRequest {
+            service: ServiceName;
+        }
+
+        export interface DisableRequest {
+            service: ServiceName;
+        }
+
+        export interface SetRecordingRequest {
+            shouldRecord: boolean;
+            service: ServiceName;
+        }
+
+        /**
+         * Called when the recording state for the service has been updated.
+         */
+        export interface RecordingStateChangedEvent {
+            isRecording: boolean;
+            service: ServiceName;
+        }
+    }
+
+    /**
      * The Browser domain defines methods and events for browser managing.
      */
     export namespace Browser {

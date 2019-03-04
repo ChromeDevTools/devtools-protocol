@@ -30,6 +30,8 @@ export namespace ProtocolProxyApi {
 
         Audits: AuditsApi;
 
+        BackgroundService: BackgroundServiceApi;
+
         Browser: BrowserApi;
 
         CSS: CSSApi;
@@ -706,6 +708,23 @@ export namespace ProtocolProxyApi {
          * applies to images.
          */
         getEncodedResponse(params: Protocol.Audits.GetEncodedResponseRequest): Promise<Protocol.Audits.GetEncodedResponseResponse>;
+
+    }
+
+    export interface BackgroundServiceApi {
+        enable(params: Protocol.BackgroundService.EnableRequest): Promise<void>;
+
+        disable(params: Protocol.BackgroundService.DisableRequest): Promise<void>;
+
+        /**
+         * Set the recording state for the service.
+         */
+        setRecording(params: Protocol.BackgroundService.SetRecordingRequest): Promise<void>;
+
+        /**
+         * Called when the recording state for the service has been updated.
+         */
+        on(event: 'recordingStateChanged', listener: (params: Protocol.BackgroundService.RecordingStateChangedEvent) => void): void;
 
     }
 

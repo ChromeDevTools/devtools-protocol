@@ -470,6 +470,36 @@ experimental domain Audits
       # Size after re-encoding.
       integer encodedSize
 
+# Defines events for background web platform features.
+experimental domain BackgroundService
+  # The Background Service that will be associated with the commands/events.
+  # Every Background Service operates independently, but they share the same
+  # API.
+  type ServiceName extends string
+    enum
+      backgroundFetch
+      backgroundSync
+
+  command enable
+    parameters
+      ServiceName service
+
+  command disable
+    parameters
+      ServiceName service
+
+  # Set the recording state for the service.
+  command setRecording
+    parameters
+      boolean shouldRecord
+      ServiceName service
+
+  # Called when the recording state for the service has been updated.
+  event recordingStateChanged
+    parameters
+      boolean isRecording
+      ServiceName service
+
 # The Browser domain defines methods and events for browser managing.
 domain Browser
 

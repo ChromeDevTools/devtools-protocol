@@ -100,6 +100,10 @@ export namespace ProtocolMapping {
         'ApplicationCache.applicationCacheStatusUpdated': [Protocol.ApplicationCache.ApplicationCacheStatusUpdatedEvent];
         'ApplicationCache.networkStateUpdated': [Protocol.ApplicationCache.NetworkStateUpdatedEvent];
         /**
+         * Called when the recording state for the service has been updated.
+         */
+        'BackgroundService.recordingStateChanged': [Protocol.BackgroundService.RecordingStateChangedEvent];
+        /**
          * Fires whenever a web font is updated.  A non-empty font parameter indicates a successfully loaded
          * web font
          */
@@ -1136,6 +1140,21 @@ export namespace ProtocolMapping {
         'Audits.getEncodedResponse': {
             paramsType: [Protocol.Audits.GetEncodedResponseRequest];
             returnType: Protocol.Audits.GetEncodedResponseResponse;
+        };
+        'BackgroundService.enable': {
+            paramsType: [Protocol.BackgroundService.EnableRequest];
+            returnType: void;
+        };
+        'BackgroundService.disable': {
+            paramsType: [Protocol.BackgroundService.DisableRequest];
+            returnType: void;
+        };
+        /**
+         * Set the recording state for the service.
+         */
+        'BackgroundService.setRecording': {
+            paramsType: [Protocol.BackgroundService.SetRecordingRequest];
+            returnType: void;
         };
         /**
          * Grant specific permissions to the given origin and reject all others.
