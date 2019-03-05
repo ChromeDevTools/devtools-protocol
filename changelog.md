@@ -1,5 +1,19 @@
 
 
+## Roll protocol to r637291
+###### _2019-03-04 07:16:13 -0800_ | Diff: [d305be1...6f27b14](https://github.com/ChromeDevTools/devtools-protocol/compare/d305be1...6f27b14)
+#### `BackgroundService`: new domain
+* [`BackgroundService.BackgroundService`](https://chromedevtools.github.io/devtools-protocol/tot/BackgroundService/#domain-BackgroundService)
+#### `BackgroundService`: new commands
+* [`BackgroundService.enable`](https://chromedevtools.github.io/devtools-protocol/tot/BackgroundService/#method-enable)
+* [`BackgroundService.disable`](https://chromedevtools.github.io/devtools-protocol/tot/BackgroundService/#method-disable)
+* [`BackgroundService.setRecording`](https://chromedevtools.github.io/devtools-protocol/tot/BackgroundService/#method-setRecording)
+#### `BackgroundService`: new event
+* [`BackgroundService.recordingStateChanged`](https://chromedevtools.github.io/devtools-protocol/tot/BackgroundService/#event-recordingStateChanged)
+#### `BackgroundService`: new type
+* [`BackgroundService.ServiceName`](https://chromedevtools.github.io/devtools-protocol/tot/BackgroundService/#type-ServiceName)
+
+
 ## Roll protocol to r632815
 ###### _2019-02-15 15:15:52 -0800_ | Diff: [3423c2d...d0cca39](https://github.com/ChromeDevTools/devtools-protocol/compare/3423c2d...d0cca39)
 #### `IndexedDB`: new command
