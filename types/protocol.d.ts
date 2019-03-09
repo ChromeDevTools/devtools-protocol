@@ -1357,6 +1357,20 @@ export namespace Protocol {
         }
 
         /**
+         * Object private field descriptor.
+         */
+        export interface PrivatePropertyDescriptor {
+            /**
+             * Private property name.
+             */
+            name: string;
+            /**
+             * The value associated with the private property.
+             */
+            value: RemoteObject;
+        }
+
+        /**
          * Represents function call argument. Either remote object id `objectId`, primitive `value`,
          * unserializable primitive value or neither of (for undefined) them should be specified.
          */
@@ -1745,6 +1759,10 @@ export namespace Protocol {
              * Internal object properties (only of the element itself).
              */
             internalProperties?: InternalPropertyDescriptor[];
+            /**
+             * Object private properties.
+             */
+            privateProperties?: PrivatePropertyDescriptor[];
             /**
              * Exception details.
              */

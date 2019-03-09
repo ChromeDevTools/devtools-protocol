@@ -2185,6 +2185,24 @@
                     ]
                 },
                 {
+                    "id": "PrivatePropertyDescriptor",
+                    "description": "Object private field descriptor.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "name",
+                            "description": "Private property name.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "value",
+                            "description": "The value associated with the private property.",
+                            "$ref": "RemoteObject"
+                        }
+                    ]
+                },
+                {
                     "id": "CallArgument",
                     "description": "Represents function call argument. Either remote object id `objectId`, primitive `value`,\nunserializable primitive value or neither of (for undefined) them should be specified.",
                     "type": "object",
@@ -2733,6 +2751,16 @@
                             "type": "array",
                             "items": {
                                 "$ref": "InternalPropertyDescriptor"
+                            }
+                        },
+                        {
+                            "name": "privateProperties",
+                            "description": "Object private properties.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "PrivatePropertyDescriptor"
                             }
                         },
                         {

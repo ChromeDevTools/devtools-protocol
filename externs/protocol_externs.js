@@ -8332,7 +8332,7 @@ Protocol.RuntimeAgent.prototype.invoke_getHeapUsage = function(obj) {};
 Protocol.RuntimeAgent.prototype.getProperties = function(objectId, opt_ownProperties, opt_accessorPropertiesOnly, opt_generatePreview) {};
 /** @typedef {!{ownProperties: (boolean|undefined), generatePreview: (boolean|undefined), accessorPropertiesOnly: (boolean|undefined), objectId: Protocol.Runtime.RemoteObjectId}} */
 Protocol.RuntimeAgent.GetPropertiesRequest;
-/** @typedef {!{internalProperties: !Array<Protocol.Runtime.InternalPropertyDescriptor>, exceptionDetails: Protocol.Runtime.ExceptionDetails, result: !Array<Protocol.Runtime.PropertyDescriptor>}} */
+/** @typedef {!{internalProperties: !Array<Protocol.Runtime.InternalPropertyDescriptor>, exceptionDetails: Protocol.Runtime.ExceptionDetails, result: !Array<Protocol.Runtime.PropertyDescriptor>, privateProperties: !Array<Protocol.Runtime.PrivatePropertyDescriptor>}} */
 Protocol.RuntimeAgent.GetPropertiesResponse;
 /**
  * @param {!Protocol.RuntimeAgent.GetPropertiesRequest} obj
@@ -8633,6 +8633,9 @@ Protocol.Runtime.PropertyDescriptor;
 
 /** @typedef {!{name:(string), value:(Protocol.Runtime.RemoteObject|undefined)}} */
 Protocol.Runtime.InternalPropertyDescriptor;
+
+/** @typedef {!{name:(string), value:(Protocol.Runtime.RemoteObject)}} */
+Protocol.Runtime.PrivatePropertyDescriptor;
 
 /** @typedef {!{value:(*|undefined), unserializableValue:(Protocol.Runtime.UnserializableValue|undefined), objectId:(Protocol.Runtime.RemoteObjectId|undefined)}} */
 Protocol.Runtime.CallArgument;
