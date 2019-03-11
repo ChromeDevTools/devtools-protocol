@@ -104,6 +104,11 @@ export namespace ProtocolMapping {
          */
         'BackgroundService.recordingStateChanged': [Protocol.BackgroundService.RecordingStateChangedEvent];
         /**
+         * Called with all existing backgroundServiceEvents when enabled, and all new
+         * events afterwards if enabled and recording.
+         */
+        'BackgroundService.backgroundServiceEventReceived': [Protocol.BackgroundService.BackgroundServiceEventReceivedEvent];
+        /**
          * Fires whenever a web font is updated.  A non-empty font parameter indicates a successfully loaded
          * web font
          */
@@ -1141,12 +1146,18 @@ export namespace ProtocolMapping {
             paramsType: [Protocol.Audits.GetEncodedResponseRequest];
             returnType: Protocol.Audits.GetEncodedResponseResponse;
         };
-        'BackgroundService.enable': {
-            paramsType: [Protocol.BackgroundService.EnableRequest];
+        /**
+         * Enables event updates for the service.
+         */
+        'BackgroundService.startObserving': {
+            paramsType: [Protocol.BackgroundService.StartObservingRequest];
             returnType: void;
         };
-        'BackgroundService.disable': {
-            paramsType: [Protocol.BackgroundService.DisableRequest];
+        /**
+         * Disables event updates for the service.
+         */
+        'BackgroundService.stopObserving': {
+            paramsType: [Protocol.BackgroundService.StopObservingRequest];
             returnType: void;
         };
         /**

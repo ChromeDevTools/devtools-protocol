@@ -712,9 +712,15 @@ export namespace ProtocolProxyApi {
     }
 
     export interface BackgroundServiceApi {
-        enable(params: Protocol.BackgroundService.EnableRequest): Promise<void>;
+        /**
+         * Enables event updates for the service.
+         */
+        startObserving(params: Protocol.BackgroundService.StartObservingRequest): Promise<void>;
 
-        disable(params: Protocol.BackgroundService.DisableRequest): Promise<void>;
+        /**
+         * Disables event updates for the service.
+         */
+        stopObserving(params: Protocol.BackgroundService.StopObservingRequest): Promise<void>;
 
         /**
          * Set the recording state for the service.
@@ -725,6 +731,12 @@ export namespace ProtocolProxyApi {
          * Called when the recording state for the service has been updated.
          */
         on(event: 'recordingStateChanged', listener: (params: Protocol.BackgroundService.RecordingStateChangedEvent) => void): void;
+
+        /**
+         * Called with all existing backgroundServiceEvents when enabled, and all new
+         * events afterwards if enabled and recording.
+         */
+        on(event: 'backgroundServiceEventReceived', listener: (params: Protocol.BackgroundService.BackgroundServiceEventReceivedEvent) => void): void;
 
     }
 

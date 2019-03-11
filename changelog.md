@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r639329
+###### _2019-03-08 23:15:55 -0800_ | Diff: [735cc58...fbad7ab](https://github.com/ChromeDevTools/devtools-protocol/compare/735cc58...fbad7ab)
+#### `Runtime`: modified command
+* [`Runtime.getProperties`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-getProperties) - The `exceptionDetails` in the return value had `$ref` _removed_. The `exceptionDetails` in the return value had `name` _updated_. The `exceptionDetails` in the return value had `description` _updated_. The return value's `experimental` _added_. The return value's `type` _added_. The return value's `items` _added_. The return value's `exceptionDetails` _added_. 
+#### `Runtime`: new type
+* [`Runtime.PrivatePropertyDescriptor`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-PrivatePropertyDescriptor)
+
+
 ## Roll protocol to r637291
 ###### _2019-03-04 07:16:13 -0800_ | Diff: [d305be1...6f27b14](https://github.com/ChromeDevTools/devtools-protocol/compare/d305be1...6f27b14)
 #### `BackgroundService`: new domain

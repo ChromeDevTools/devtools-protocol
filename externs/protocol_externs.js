@@ -468,29 +468,29 @@ Protocol.BackgroundServiceAgent = function(){};
  * @param {Protocol.BackgroundService.ServiceName} service
  * @return {!Promise<undefined>}
  */
-Protocol.BackgroundServiceAgent.prototype.enable = function(service) {};
+Protocol.BackgroundServiceAgent.prototype.startObserving = function(service) {};
 /** @typedef {!{service: Protocol.BackgroundService.ServiceName}} */
-Protocol.BackgroundServiceAgent.EnableRequest;
+Protocol.BackgroundServiceAgent.StartObservingRequest;
 /** @typedef {Object|undefined} */
-Protocol.BackgroundServiceAgent.EnableResponse;
+Protocol.BackgroundServiceAgent.StartObservingResponse;
 /**
- * @param {!Protocol.BackgroundServiceAgent.EnableRequest} obj
- * @return {!Promise<!Protocol.BackgroundServiceAgent.EnableResponse>} */
-Protocol.BackgroundServiceAgent.prototype.invoke_enable = function(obj) {};
+ * @param {!Protocol.BackgroundServiceAgent.StartObservingRequest} obj
+ * @return {!Promise<!Protocol.BackgroundServiceAgent.StartObservingResponse>} */
+Protocol.BackgroundServiceAgent.prototype.invoke_startObserving = function(obj) {};
 
 /**
  * @param {Protocol.BackgroundService.ServiceName} service
  * @return {!Promise<undefined>}
  */
-Protocol.BackgroundServiceAgent.prototype.disable = function(service) {};
+Protocol.BackgroundServiceAgent.prototype.stopObserving = function(service) {};
 /** @typedef {!{service: Protocol.BackgroundService.ServiceName}} */
-Protocol.BackgroundServiceAgent.DisableRequest;
+Protocol.BackgroundServiceAgent.StopObservingRequest;
 /** @typedef {Object|undefined} */
-Protocol.BackgroundServiceAgent.DisableResponse;
+Protocol.BackgroundServiceAgent.StopObservingResponse;
 /**
- * @param {!Protocol.BackgroundServiceAgent.DisableRequest} obj
- * @return {!Promise<!Protocol.BackgroundServiceAgent.DisableResponse>} */
-Protocol.BackgroundServiceAgent.prototype.invoke_disable = function(obj) {};
+ * @param {!Protocol.BackgroundServiceAgent.StopObservingRequest} obj
+ * @return {!Promise<!Protocol.BackgroundServiceAgent.StopObservingResponse>} */
+Protocol.BackgroundServiceAgent.prototype.invoke_stopObserving = function(obj) {};
 
 /**
  * @param {boolean} shouldRecord
@@ -512,6 +512,12 @@ Protocol.BackgroundService.ServiceName = {
     BackgroundFetch: "backgroundFetch",
     BackgroundSync: "backgroundSync"
 };
+
+/** @typedef {!{key:(string), value:(string)}} */
+Protocol.BackgroundService.EventMetadata;
+
+/** @typedef {!{timestamp:(Protocol.Network.TimeSinceEpoch), origin:(string), serviceWorkerRegistrationId:(Protocol.ServiceWorker.RegistrationID), service:(Protocol.BackgroundService.ServiceName), eventName:(string), instanceId:(string), eventMetadata:(!Array<Protocol.BackgroundService.EventMetadata>)}} */
+Protocol.BackgroundService.BackgroundServiceEvent;
 /** @interface */
 Protocol.BackgroundServiceDispatcher = function() {};
 /**
@@ -519,6 +525,10 @@ Protocol.BackgroundServiceDispatcher = function() {};
  * @param {Protocol.BackgroundService.ServiceName} service
  */
 Protocol.BackgroundServiceDispatcher.prototype.recordingStateChanged = function(isRecording, service) {};
+/**
+ * @param {Protocol.BackgroundService.BackgroundServiceEvent} backgroundServiceEvent
+ */
+Protocol.BackgroundServiceDispatcher.prototype.backgroundServiceEventReceived = function(backgroundServiceEvent) {};
 Protocol.Browser = {};
 
 
@@ -6122,12 +6132,12 @@ Protocol.ServiceWorkerAgent = function(){};
 
 /**
  * @param {string} origin
- * @param {string} registrationId
+ * @param {Protocol.ServiceWorker.RegistrationID} registrationId
  * @param {string} data
  * @return {!Promise<undefined>}
  */
 Protocol.ServiceWorkerAgent.prototype.deliverPushMessage = function(origin, registrationId, data) {};
-/** @typedef {!{origin: string, registrationId: string, data: string}} */
+/** @typedef {!{origin: string, registrationId: Protocol.ServiceWorker.RegistrationID, data: string}} */
 Protocol.ServiceWorkerAgent.DeliverPushMessageRequest;
 /** @typedef {Object|undefined} */
 Protocol.ServiceWorkerAgent.DeliverPushMessageResponse;
@@ -6151,13 +6161,13 @@ Protocol.ServiceWorkerAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {string} origin
- * @param {string} registrationId
+ * @param {Protocol.ServiceWorker.RegistrationID} registrationId
  * @param {string} tag
  * @param {boolean} lastChance
  * @return {!Promise<undefined>}
  */
 Protocol.ServiceWorkerAgent.prototype.dispatchSyncEvent = function(origin, registrationId, tag, lastChance) {};
-/** @typedef {!{origin: string, registrationId: string, tag: string, lastChance: boolean}} */
+/** @typedef {!{origin: string, registrationId: Protocol.ServiceWorker.RegistrationID, tag: string, lastChance: boolean}} */
 Protocol.ServiceWorkerAgent.DispatchSyncEventRequest;
 /** @typedef {Object|undefined} */
 Protocol.ServiceWorkerAgent.DispatchSyncEventResponse;
@@ -6290,7 +6300,10 @@ Protocol.ServiceWorkerAgent.UpdateRegistrationResponse;
  * @return {!Promise<!Protocol.ServiceWorkerAgent.UpdateRegistrationResponse>} */
 Protocol.ServiceWorkerAgent.prototype.invoke_updateRegistration = function(obj) {};
 
-/** @typedef {!{registrationId:(string), scopeURL:(string), isDeleted:(boolean)}} */
+/** @typedef {string} */
+Protocol.ServiceWorker.RegistrationID;
+
+/** @typedef {!{registrationId:(Protocol.ServiceWorker.RegistrationID), scopeURL:(string), isDeleted:(boolean)}} */
 Protocol.ServiceWorker.ServiceWorkerRegistration;
 
 /** @enum {string} */
@@ -6311,10 +6324,10 @@ Protocol.ServiceWorker.ServiceWorkerVersionStatus = {
     Redundant: "redundant"
 };
 
-/** @typedef {!{versionId:(string), registrationId:(string), scriptURL:(string), runningStatus:(Protocol.ServiceWorker.ServiceWorkerVersionRunningStatus), status:(Protocol.ServiceWorker.ServiceWorkerVersionStatus), scriptLastModified:(number|undefined), scriptResponseTime:(number|undefined), controlledClients:(!Array<Protocol.Target.TargetID>|undefined), targetId:(Protocol.Target.TargetID|undefined)}} */
+/** @typedef {!{versionId:(string), registrationId:(Protocol.ServiceWorker.RegistrationID), scriptURL:(string), runningStatus:(Protocol.ServiceWorker.ServiceWorkerVersionRunningStatus), status:(Protocol.ServiceWorker.ServiceWorkerVersionStatus), scriptLastModified:(number|undefined), scriptResponseTime:(number|undefined), controlledClients:(!Array<Protocol.Target.TargetID>|undefined), targetId:(Protocol.Target.TargetID|undefined)}} */
 Protocol.ServiceWorker.ServiceWorkerVersion;
 
-/** @typedef {!{errorMessage:(string), registrationId:(string), versionId:(string), sourceURL:(string), lineNumber:(number), columnNumber:(number)}} */
+/** @typedef {!{errorMessage:(string), registrationId:(Protocol.ServiceWorker.RegistrationID), versionId:(string), sourceURL:(string), lineNumber:(number), columnNumber:(number)}} */
 Protocol.ServiceWorker.ServiceWorkerErrorMessage;
 /** @interface */
 Protocol.ServiceWorkerDispatcher = function() {};

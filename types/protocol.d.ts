@@ -2624,11 +2624,50 @@ export namespace Protocol {
          */
         export type ServiceName = ('backgroundFetch' | 'backgroundSync');
 
-        export interface EnableRequest {
+        /**
+         * A key-value pair for additional event information to pass along.
+         */
+        export interface EventMetadata {
+            key: string;
+            value: string;
+        }
+
+        export interface BackgroundServiceEvent {
+            /**
+             * Timestamp of the event (in seconds).
+             */
+            timestamp: Network.TimeSinceEpoch;
+            /**
+             * The origin this event belongs to.
+             */
+            origin: string;
+            /**
+             * The Service Worker ID that initiated the event.
+             */
+            serviceWorkerRegistrationId: ServiceWorker.RegistrationID;
+            /**
+             * The Background Service this event belongs to.
+             */
+            service: ServiceName;
+            /**
+             * A description of the event.
+             */
+            eventName: string;
+            /**
+             * An identifier that groups related events together.
+             */
+            instanceId: string;
+            /**
+             * A list of event-specific information.
+             */
+            eventMetadata: EventMetadata[];
+        }
+
+        export interface StartObservingRequest {
             service: ServiceName;
         }
 
-        export interface DisableRequest {
+        export interface StopObservingRequest {
             service: ServiceName;
         }
 
@@ -2643,6 +2682,14 @@ export namespace Protocol {
         export interface RecordingStateChangedEvent {
             isRecording: boolean;
             service: ServiceName;
+        }
+
+        /**
+         * Called with all existing backgroundServiceEvents when enabled, and all new
+         * events afterwards if enabled and recording.
+         */
+        export interface BackgroundServiceEventReceivedEvent {
+            backgroundServiceEvent: BackgroundServiceEvent;
         }
     }
 
@@ -10269,11 +10316,13 @@ export namespace Protocol {
 
     export namespace ServiceWorker {
 
+        export type RegistrationID = string;
+
         /**
          * ServiceWorker registration.
          */
         export interface ServiceWorkerRegistration {
-            registrationId: string;
+            registrationId: RegistrationID;
             scopeURL: string;
             isDeleted: boolean;
         }
@@ -10287,7 +10336,7 @@ export namespace Protocol {
          */
         export interface ServiceWorkerVersion {
             versionId: string;
-            registrationId: string;
+            registrationId: RegistrationID;
             scriptURL: string;
             runningStatus: ServiceWorkerVersionRunningStatus;
             status: ServiceWorkerVersionStatus;
@@ -10309,7 +10358,7 @@ export namespace Protocol {
          */
         export interface ServiceWorkerErrorMessage {
             errorMessage: string;
-            registrationId: string;
+            registrationId: RegistrationID;
             versionId: string;
             sourceURL: string;
             lineNumber: integer;
@@ -10318,13 +10367,13 @@ export namespace Protocol {
 
         export interface DeliverPushMessageRequest {
             origin: string;
-            registrationId: string;
+            registrationId: RegistrationID;
             data: string;
         }
 
         export interface DispatchSyncEventRequest {
             origin: string;
-            registrationId: string;
+            registrationId: RegistrationID;
             tag: string;
             lastChance: boolean;
         }

@@ -480,11 +480,13 @@ experimental domain BackgroundService
       backgroundFetch
       backgroundSync
 
-  command enable
+  # Enables event updates for the service.
+  command startObserving
     parameters
       ServiceName service
 
-  command disable
+  # Disables event updates for the service.
+  command stopObserving
     parameters
       ServiceName service
 
@@ -499,6 +501,35 @@ experimental domain BackgroundService
     parameters
       boolean isRecording
       ServiceName service
+
+  # A key-value pair for additional event information to pass along.
+  type EventMetadata extends object
+    properties
+      string key
+      string value
+
+  type BackgroundServiceEvent extends object
+    properties
+      # Timestamp of the event (in seconds).
+      Network.TimeSinceEpoch timestamp
+      # The origin this event belongs to.
+      string origin
+      # The Service Worker ID that initiated the event.
+      ServiceWorker.RegistrationID serviceWorkerRegistrationId
+      # The Background Service this event belongs to.
+      ServiceName service
+      # A description of the event.
+      string eventName
+      # An identifier that groups related events together.
+      string instanceId
+      # A list of event-specific information.
+      array of EventMetadata eventMetadata
+
+  # Called with all existing backgroundServiceEvents when enabled, and all new
+  # events afterwards if enabled and recording.
+  event backgroundServiceEventReceived
+    parameters
+      BackgroundServiceEvent backgroundServiceEvent
 
 # The Browser domain defines methods and events for browser managing.
 domain Browser
@@ -5813,11 +5844,12 @@ domain Security
       optional string summary
 
 experimental domain ServiceWorker
+  type RegistrationID extends string
 
   # ServiceWorker registration.
   type ServiceWorkerRegistration extends object
     properties
-      string registrationId
+      RegistrationID registrationId
       string scopeURL
       boolean isDeleted
 
@@ -5841,7 +5873,7 @@ experimental domain ServiceWorker
   type ServiceWorkerVersion extends object
     properties
       string versionId
-      string registrationId
+      RegistrationID registrationId
       string scriptURL
       ServiceWorkerVersionRunningStatus runningStatus
       ServiceWorkerVersionStatus status
@@ -5857,7 +5889,7 @@ experimental domain ServiceWorker
   type ServiceWorkerErrorMessage extends object
     properties
       string errorMessage
-      string registrationId
+      RegistrationID registrationId
       string versionId
       string sourceURL
       integer lineNumber
@@ -5866,7 +5898,7 @@ experimental domain ServiceWorker
   command deliverPushMessage
     parameters
       string origin
-      string registrationId
+      RegistrationID registrationId
       string data
 
   command disable
@@ -5874,7 +5906,7 @@ experimental domain ServiceWorker
   command dispatchSyncEvent
     parameters
       string origin
-      string registrationId
+      RegistrationID registrationId
       string tag
       boolean lastChance
 
