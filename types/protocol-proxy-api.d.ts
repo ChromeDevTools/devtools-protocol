@@ -728,6 +728,11 @@ export namespace ProtocolProxyApi {
         setRecording(params: Protocol.BackgroundService.SetRecordingRequest): Promise<void>;
 
         /**
+         * Clears all stored data for the service.
+         */
+        clearEvents(params: Protocol.BackgroundService.ClearEventsRequest): Promise<void>;
+
+        /**
          * Called when the recording state for the service has been updated.
          */
         on(event: 'recordingStateChanged', listener: (params: Protocol.BackgroundService.RecordingStateChangedEvent) => void): void;

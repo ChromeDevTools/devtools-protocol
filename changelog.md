@@ -1,5 +1,29 @@
 
 
+## Roll protocol to r639462
+###### _2019-03-11 06:16:12_ | Diff: [fbad7ab...a7b00e7](https://github.com/ChromeDevTools/devtools-protocol/compare/fbad7ab...a7b00e7)
+#### `BackgroundService`: new commands
+* [`BackgroundService.startObserving`](https://chromedevtools.github.io/devtools-protocol/tot/BackgroundService/#method-startObserving)
+* [`BackgroundService.stopObserving`](https://chromedevtools.github.io/devtools-protocol/tot/BackgroundService/#method-stopObserving)
+#### `BackgroundService`: removed commands
+* [`BackgroundService.enable`](https://chromedevtools.github.io/devtools-protocol/tot/BackgroundService/#method-enable)
+* [`BackgroundService.disable`](https://chromedevtools.github.io/devtools-protocol/tot/BackgroundService/#method-disable)
+#### `BackgroundService`: new event
+* [`BackgroundService.backgroundServiceEventReceived`](https://chromedevtools.github.io/devtools-protocol/tot/BackgroundService/#event-backgroundServiceEventReceived)
+#### `BackgroundService`: new types
+* [`BackgroundService.EventMetadata`](https://chromedevtools.github.io/devtools-protocol/tot/BackgroundService/#type-EventMetadata)
+* [`BackgroundService.BackgroundServiceEvent`](https://chromedevtools.github.io/devtools-protocol/tot/BackgroundService/#type-BackgroundServiceEvent)
+#### `ServiceWorker`: modified commands
+* [`ServiceWorker.deliverPushMessage`](https://chromedevtools.github.io/devtools-protocol/tot/ServiceWorker/#method-deliverPushMessage) - The `registrationId` in the parameters had `type` _removed_. The parameters's `$ref` _added_. 
+* [`ServiceWorker.dispatchSyncEvent`](https://chromedevtools.github.io/devtools-protocol/tot/ServiceWorker/#method-dispatchSyncEvent) - The `registrationId` in the parameters had `type` _removed_. The parameters's `$ref` _added_. 
+#### `ServiceWorker`: new type
+* [`ServiceWorker.RegistrationID`](https://chromedevtools.github.io/devtools-protocol/tot/ServiceWorker/#type-RegistrationID)
+#### `ServiceWorker`: modified types
+* [`ServiceWorker.ServiceWorkerRegistration`](https://chromedevtools.github.io/devtools-protocol/tot/ServiceWorker/#type-ServiceWorkerRegistration) - The `registrationId` in the properties had `type` _removed_. The properties's `$ref` _added_. 
+* [`ServiceWorker.ServiceWorkerVersion`](https://chromedevtools.github.io/devtools-protocol/tot/ServiceWorker/#type-ServiceWorkerVersion) - The `registrationId` in the properties had `type` _removed_. The properties's `$ref` _added_. 
+* [`ServiceWorker.ServiceWorkerErrorMessage`](https://chromedevtools.github.io/devtools-protocol/tot/ServiceWorker/#type-ServiceWorkerErrorMessage) - The `registrationId` in the properties had `type` _removed_. The properties's `$ref` _added_. 
+
+
 ## Roll protocol to r639329
 ###### _2019-03-08 23:15:55 -0800_ | Diff: [735cc58...fbad7ab](https://github.com/ChromeDevTools/devtools-protocol/compare/735cc58...fbad7ab)
 #### `Runtime`: modified command

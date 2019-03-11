@@ -2676,6 +2676,10 @@ export namespace Protocol {
             service: ServiceName;
         }
 
+        export interface ClearEventsRequest {
+            service: ServiceName;
+        }
+
         /**
          * Called when the recording state for the service has been updated.
          */

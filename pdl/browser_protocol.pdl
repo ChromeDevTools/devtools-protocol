@@ -496,6 +496,11 @@ experimental domain BackgroundService
       boolean shouldRecord
       ServiceName service
 
+  # Clears all stored data for the service.
+  command clearEvents
+    parameters
+      ServiceName service
+
   # Called when the recording state for the service has been updated.
   event recordingStateChanged
     parameters

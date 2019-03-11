@@ -507,6 +507,20 @@ Protocol.BackgroundServiceAgent.SetRecordingResponse;
  * @return {!Promise<!Protocol.BackgroundServiceAgent.SetRecordingResponse>} */
 Protocol.BackgroundServiceAgent.prototype.invoke_setRecording = function(obj) {};
 
+/**
+ * @param {Protocol.BackgroundService.ServiceName} service
+ * @return {!Promise<undefined>}
+ */
+Protocol.BackgroundServiceAgent.prototype.clearEvents = function(service) {};
+/** @typedef {!{service: Protocol.BackgroundService.ServiceName}} */
+Protocol.BackgroundServiceAgent.ClearEventsRequest;
+/** @typedef {Object|undefined} */
+Protocol.BackgroundServiceAgent.ClearEventsResponse;
+/**
+ * @param {!Protocol.BackgroundServiceAgent.ClearEventsRequest} obj
+ * @return {!Promise<!Protocol.BackgroundServiceAgent.ClearEventsResponse>} */
+Protocol.BackgroundServiceAgent.prototype.invoke_clearEvents = function(obj) {};
+
 /** @enum {string} */
 Protocol.BackgroundService.ServiceName = {
     BackgroundFetch: "backgroundFetch",

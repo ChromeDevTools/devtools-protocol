@@ -1168,6 +1168,13 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Clears all stored data for the service.
+         */
+        'BackgroundService.clearEvents': {
+            paramsType: [Protocol.BackgroundService.ClearEventsRequest];
+            returnType: void;
+        };
+        /**
          * Grant specific permissions to the given origin and reject all others.
          */
         'Browser.grantPermissions': {
