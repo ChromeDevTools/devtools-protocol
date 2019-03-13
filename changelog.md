@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r639476
+###### _2019-03-11 07:16:12_ | Diff: [a7b00e7...2d8a43c](https://github.com/ChromeDevTools/devtools-protocol/compare/a7b00e7...2d8a43c)
+#### `BackgroundService`: new command
+* [`BackgroundService.clearEvents`](https://chromedevtools.github.io/devtools-protocol/tot/BackgroundService/#method-clearEvents)
+
+
 ## Roll protocol to r639462
 ###### _2019-03-11 06:16:12_ | Diff: [fbad7ab...a7b00e7](https://github.com/ChromeDevTools/devtools-protocol/compare/fbad7ab...a7b00e7)
 #### `BackgroundService`: new commands
