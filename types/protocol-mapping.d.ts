@@ -2783,10 +2783,6 @@ export namespace ProtocolMapping {
             paramsType: [Protocol.Overlay.SetShowViewportSizeOnResizeRequest];
             returnType: void;
         };
-        'Overlay.setSuspended': {
-            paramsType: [Protocol.Overlay.SetSuspendedRequest];
-            returnType: void;
-        };
         /**
          * Deprecated, please use addScriptToEvaluateOnNewDocument instead.
          */

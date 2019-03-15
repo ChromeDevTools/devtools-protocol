@@ -2201,8 +2201,6 @@ export namespace ProtocolProxyApi {
          */
         setShowViewportSizeOnResize(params: Protocol.Overlay.SetShowViewportSizeOnResizeRequest): Promise<void>;
 
-        setSuspended(params: Protocol.Overlay.SetSuspendedRequest): Promise<void>;
-
         /**
          * Fired when the node should be inspected. This happens after call to `setInspectMode` or when
          * user manually inspects an element.

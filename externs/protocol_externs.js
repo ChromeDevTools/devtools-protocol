@@ -4987,20 +4987,6 @@ Protocol.OverlayAgent.SetShowViewportSizeOnResizeResponse;
  * @return {!Promise<!Protocol.OverlayAgent.SetShowViewportSizeOnResizeResponse>} */
 Protocol.OverlayAgent.prototype.invoke_setShowViewportSizeOnResize = function(obj) {};
 
-/**
- * @param {boolean} suspended
- * @return {!Promise<undefined>}
- */
-Protocol.OverlayAgent.prototype.setSuspended = function(suspended) {};
-/** @typedef {!{suspended: boolean}} */
-Protocol.OverlayAgent.SetSuspendedRequest;
-/** @typedef {Object|undefined} */
-Protocol.OverlayAgent.SetSuspendedResponse;
-/**
- * @param {!Protocol.OverlayAgent.SetSuspendedRequest} obj
- * @return {!Promise<!Protocol.OverlayAgent.SetSuspendedResponse>} */
-Protocol.OverlayAgent.prototype.invoke_setSuspended = function(obj) {};
-
 /** @typedef {!{showInfo:(boolean|undefined), showStyles:(boolean|undefined), showRulers:(boolean|undefined), showExtensionLines:(boolean|undefined), contentColor:(Protocol.DOM.RGBA|undefined), paddingColor:(Protocol.DOM.RGBA|undefined), borderColor:(Protocol.DOM.RGBA|undefined), marginColor:(Protocol.DOM.RGBA|undefined), eventTargetColor:(Protocol.DOM.RGBA|undefined), shapeColor:(Protocol.DOM.RGBA|undefined), shapeMarginColor:(Protocol.DOM.RGBA|undefined), cssGridColor:(Protocol.DOM.RGBA|undefined)}} */
 Protocol.Overlay.HighlightConfig;
 

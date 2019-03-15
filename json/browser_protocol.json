@@ -10579,16 +10579,6 @@
                             "type": "boolean"
                         }
                     ]
-                },
-                {
-                    "name": "setSuspended",
-                    "parameters": [
-                        {
-                            "name": "suspended",
-                            "description": "Whether overlay should be suspended and not consume any resources until resumed.",
-                            "type": "boolean"
-                        }
-                    ]
                 }
             ],
             "events": [

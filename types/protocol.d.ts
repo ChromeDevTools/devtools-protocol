@@ -8906,13 +8906,6 @@ export namespace Protocol {
             show: boolean;
         }
 
-        export interface SetSuspendedRequest {
-            /**
-             * Whether overlay should be suspended and not consume any resources until resumed.
-             */
-            suspended: boolean;
-        }
-
         /**
          * Fired when the node should be inspected. This happens after call to `setInspectMode` or when
          * user manually inspects an element.

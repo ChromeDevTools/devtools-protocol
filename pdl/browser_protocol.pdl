@@ -4821,11 +4821,6 @@ experimental domain Overlay
       # Whether to paint size or not.
       boolean show
 
-  command setSuspended
-    parameters
-      # Whether overlay should be suspended and not consume any resources until resumed.
-      boolean suspended
-
   # Fired when the node should be inspected. This happens after call to `setInspectMode` or when
   # user manually inspects an element.
   event inspectNodeRequested
