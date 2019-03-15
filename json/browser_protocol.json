@@ -6702,8 +6702,8 @@
                     ]
                 },
                 {
-                    "name": "getKeyGeneratorCurrentNumber",
-                    "description": "Gets the auto increment number of an object store. Only meaningful\nwhen objectStore.autoIncrement is true.",
+                    "name": "getMetadata",
+                    "description": "Gets metadata of an object store",
                     "parameters": [
                         {
                             "name": "securityOrigin",
@@ -6723,8 +6723,13 @@
                     ],
                     "returns": [
                         {
-                            "name": "currentNumber",
-                            "description": "the current value of key generator, to become the next inserted\nkey into the object store.",
+                            "name": "entriesCount",
+                            "description": "the entries count",
+                            "type": "number"
+                        },
+                        {
+                            "name": "keyGeneratorValue",
+                            "description": "the current value of key generator, to become the next inserted\nkey into the object store. Valid if objectStore.autoIncrement\nis true.",
                             "type": "number"
                         }
                     ]

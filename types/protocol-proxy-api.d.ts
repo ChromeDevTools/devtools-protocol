@@ -1650,10 +1650,9 @@ export namespace ProtocolProxyApi {
         requestData(params: Protocol.IndexedDB.RequestDataRequest): Promise<Protocol.IndexedDB.RequestDataResponse>;
 
         /**
-         * Gets the auto increment number of an object store. Only meaningful
-         * when objectStore.autoIncrement is true.
+         * Gets metadata of an object store
          */
-        getKeyGeneratorCurrentNumber(params: Protocol.IndexedDB.GetKeyGeneratorCurrentNumberRequest): Promise<Protocol.IndexedDB.GetKeyGeneratorCurrentNumberResponse>;
+        getMetadata(params: Protocol.IndexedDB.GetMetadataRequest): Promise<Protocol.IndexedDB.GetMetadataResponse>;
 
         /**
          * Requests database with given name in given frame.

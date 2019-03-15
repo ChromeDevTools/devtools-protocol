@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r641004
+###### _2019-03-14 17:15:56_ | Diff: [f3edfef...ddaf4ff](https://github.com/ChromeDevTools/devtools-protocol/compare/f3edfef...ddaf4ff)
+#### `Overlay`: removed command
+* [`Overlay.setSuspended`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-setSuspended)
+
+
 ## Roll protocol to r639476
 ###### _2019-03-11 07:16:12_ | Diff: [a7b00e7...2d8a43c](https://github.com/ChromeDevTools/devtools-protocol/compare/a7b00e7...2d8a43c)
 #### `BackgroundService`: new command

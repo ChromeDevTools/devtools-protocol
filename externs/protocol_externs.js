@@ -3198,15 +3198,15 @@ Protocol.IndexedDBAgent.prototype.invoke_requestData = function(obj) {};
  * @param {string} objectStoreName
  * @return {!Promise<?number>}
  */
-Protocol.IndexedDBAgent.prototype.getKeyGeneratorCurrentNumber = function(securityOrigin, databaseName, objectStoreName) {};
+Protocol.IndexedDBAgent.prototype.getMetadata = function(securityOrigin, databaseName, objectStoreName) {};
 /** @typedef {!{objectStoreName: string, databaseName: string, securityOrigin: string}} */
-Protocol.IndexedDBAgent.GetKeyGeneratorCurrentNumberRequest;
-/** @typedef {!{currentNumber: number}} */
-Protocol.IndexedDBAgent.GetKeyGeneratorCurrentNumberResponse;
+Protocol.IndexedDBAgent.GetMetadataRequest;
+/** @typedef {!{entriesCount: number, keyGeneratorValue: number}} */
+Protocol.IndexedDBAgent.GetMetadataResponse;
 /**
- * @param {!Protocol.IndexedDBAgent.GetKeyGeneratorCurrentNumberRequest} obj
- * @return {!Promise<!Protocol.IndexedDBAgent.GetKeyGeneratorCurrentNumberResponse>} */
-Protocol.IndexedDBAgent.prototype.invoke_getKeyGeneratorCurrentNumber = function(obj) {};
+ * @param {!Protocol.IndexedDBAgent.GetMetadataRequest} obj
+ * @return {!Promise<!Protocol.IndexedDBAgent.GetMetadataResponse>} */
+Protocol.IndexedDBAgent.prototype.invoke_getMetadata = function(obj) {};
 
 /**
  * @param {string} securityOrigin

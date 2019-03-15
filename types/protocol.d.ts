@@ -6316,7 +6316,7 @@ export namespace Protocol {
             hasMore: boolean;
         }
 
-        export interface GetKeyGeneratorCurrentNumberRequest {
+        export interface GetMetadataRequest {
             /**
              * Security origin.
              */
@@ -6331,12 +6331,17 @@ export namespace Protocol {
             objectStoreName: string;
         }
 
-        export interface GetKeyGeneratorCurrentNumberResponse {
+        export interface GetMetadataResponse {
+            /**
+             * the entries count
+             */
+            entriesCount: number;
             /**
              * the current value of key generator, to become the next inserted
-             * key into the object store.
+             * key into the object store. Valid if objectStore.autoIncrement
+             * is true.
              */
-            currentNumber: number;
+            keyGeneratorValue: number;
         }
 
         export interface RequestDatabaseRequest {

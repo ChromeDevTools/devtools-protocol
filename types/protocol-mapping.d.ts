@@ -2197,12 +2197,11 @@ export namespace ProtocolMapping {
             returnType: Protocol.IndexedDB.RequestDataResponse;
         };
         /**
-         * Gets the auto increment number of an object store. Only meaningful
-         * when objectStore.autoIncrement is true.
+         * Gets metadata of an object store
          */
-        'IndexedDB.getKeyGeneratorCurrentNumber': {
-            paramsType: [Protocol.IndexedDB.GetKeyGeneratorCurrentNumberRequest];
-            returnType: Protocol.IndexedDB.GetKeyGeneratorCurrentNumberResponse;
+        'IndexedDB.getMetadata': {
+            paramsType: [Protocol.IndexedDB.GetMetadataRequest];
+            returnType: Protocol.IndexedDB.GetMetadataResponse;
         };
         /**
          * Requests database with given name in given frame.

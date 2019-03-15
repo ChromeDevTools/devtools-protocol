@@ -3029,10 +3029,9 @@ experimental domain IndexedDB
       array of DataEntry objectStoreDataEntries
       # If true, there are more entries to fetch in the given range.
       boolean hasMore
-
-  # Gets the auto increment number of an object store. Only meaningful
-  # when objectStore.autoIncrement is true.
-  command getKeyGeneratorCurrentNumber
+  
+  # Gets metadata of an object store
+  command getMetadata
     parameters
       # Security origin.
       string securityOrigin
@@ -3041,9 +3040,12 @@ experimental domain IndexedDB
       # Object store name.
       string objectStoreName
     returns
+      # the entries count
+      number entriesCount
       # the current value of key generator, to become the next inserted
-      # key into the object store.
-      number currentNumber
+      # key into the object store. Valid if objectStore.autoIncrement
+      # is true.
+      number keyGeneratorValue
 
   # Requests database with given name in given frame.
   command requestDatabase
