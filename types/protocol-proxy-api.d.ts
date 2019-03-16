@@ -138,7 +138,7 @@ export namespace ProtocolProxyApi {
          * Enables debugger for the given page. Clients should not assume that the debugging has been
          * enabled until the result for this command is received.
          */
-        enable(): Promise<Protocol.Debugger.EnableResponse>;
+        enable(params: Protocol.Debugger.EnableRequest): Promise<Protocol.Debugger.EnableResponse>;
 
         /**
          * Evaluates expression on a given call frame.

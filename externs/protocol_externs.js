@@ -7289,10 +7289,11 @@ Protocol.DebuggerAgent.DisableResponse;
 Protocol.DebuggerAgent.prototype.invoke_disable = function(obj) {};
 
 /**
+ * @param {number=} opt_maxScriptsCacheSize
  * @return {!Promise<?Protocol.Runtime.UniqueDebuggerId>}
  */
-Protocol.DebuggerAgent.prototype.enable = function() {};
-/** @typedef {Object|undefined} */
+Protocol.DebuggerAgent.prototype.enable = function(opt_maxScriptsCacheSize) {};
+/** @typedef {!{maxScriptsCacheSize: (number|undefined)}} */
 Protocol.DebuggerAgent.EnableRequest;
 /** @typedef {!{debuggerId: Protocol.Runtime.UniqueDebuggerId}} */
 Protocol.DebuggerAgent.EnableResponse;

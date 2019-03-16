@@ -195,6 +195,14 @@ export namespace Protocol {
             targetCallFrames?: ('any' | 'current');
         }
 
+        export interface EnableRequest {
+            /**
+             * The maximum size in bytes of collected scripts (not referenced by other heap objects)
+             * the debugger can hold. Puts no limit if paramter is omitted.
+             */
+            maxScriptsCacheSize?: number;
+        }
+
         export interface EnableResponse {
             /**
              * Unique identifier of the debugger.

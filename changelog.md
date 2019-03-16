@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r641075
+###### _2019-03-14 21:15:57_ | Diff: [ddaf4ff...dffb10a](https://github.com/ChromeDevTools/devtools-protocol/compare/ddaf4ff...dffb10a)
+#### `IndexedDB`: new command
+* [`IndexedDB.getMetadata`](https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#method-getMetadata)
+#### `IndexedDB`: removed command
+* [`IndexedDB.getKeyGeneratorCurrentNumber`](https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#method-getKeyGeneratorCurrentNumber)
+
+
 ## Roll protocol to r641004
 ###### _2019-03-14 17:15:56_ | Diff: [f3edfef...ddaf4ff](https://github.com/ChromeDevTools/devtools-protocol/compare/f3edfef...ddaf4ff)
 #### `Overlay`: removed command

@@ -527,7 +527,7 @@ export namespace ProtocolMapping {
          * enabled until the result for this command is received.
          */
         'Debugger.enable': {
-            paramsType: [];
+            paramsType: [Protocol.Debugger.EnableRequest?];
             returnType: Protocol.Debugger.EnableResponse;
         };
         /**
