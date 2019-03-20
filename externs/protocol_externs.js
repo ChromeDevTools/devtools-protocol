@@ -5836,17 +5836,6 @@ Protocol.Page.FontFamilies;
 
 /** @typedef {!{standard:(number|undefined), fixed:(number|undefined)}} */
 Protocol.Page.FontSizes;
-
-/** @enum {string} */
-Protocol.Page.ClientNavigationReason = {
-    FormSubmissionGet: "formSubmissionGet",
-    FormSubmissionPost: "formSubmissionPost",
-    HttpHeaderRefresh: "httpHeaderRefresh",
-    ScriptInitiated: "scriptInitiated",
-    MetaTagRefresh: "metaTagRefresh",
-    PageBlockInterstitial: "pageBlockInterstitial",
-    Reload: "reload"
-};
 /** @interface */
 Protocol.PageDispatcher = function() {};
 /**
@@ -5872,12 +5861,6 @@ Protocol.PageDispatcher.prototype.frameDetached = function(frameId) {};
  */
 Protocol.PageDispatcher.prototype.frameNavigated = function(frame) {};
 Protocol.PageDispatcher.prototype.frameResized = function() {};
-/**
- * @param {Protocol.Page.FrameId} frameId
- * @param {Protocol.Page.ClientNavigationReason} reason
- * @param {string} url
- */
-Protocol.PageDispatcher.prototype.frameRequestedNavigation = function(frameId, reason, url) {};
 /**
  * @param {Protocol.Page.FrameId} frameId
  * @param {number} delay

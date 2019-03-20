@@ -9293,8 +9293,6 @@ export namespace Protocol {
             fixed?: integer;
         }
 
-        export type ClientNavigationReason = ('formSubmissionGet' | 'formSubmissionPost' | 'httpHeaderRefresh' | 'scriptInitiated' | 'metaTagRefresh' | 'pageBlockInterstitial' | 'reload');
-
         export interface AddScriptToEvaluateOnLoadRequest {
             scriptSource: string;
         }
@@ -9923,25 +9921,6 @@ export namespace Protocol {
              * Frame object.
              */
             frame: Frame;
-        }
-
-        /**
-         * Fired when a renderer-initiated navigation is requested.
-         * Navigation may still be cancelled after the event is issued.
-         */
-        export interface FrameRequestedNavigationEvent {
-            /**
-             * Id of the frame that has scheduled a navigation.
-             */
-            frameId: FrameId;
-            /**
-             * The reason for the navigation.
-             */
-            reason: ClientNavigationReason;
-            /**
-             * The destination URL for the requested navigation.
-             */
-            url: string;
         }
 
         /**
