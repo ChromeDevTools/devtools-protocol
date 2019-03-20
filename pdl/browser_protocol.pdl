@@ -5054,6 +5054,16 @@ domain Page
       # Default fixed font size.
       optional integer fixed
 
+  experimental type ClientNavigationReason extends string
+    enum
+      formSubmissionGet
+      formSubmissionPost
+      httpHeaderRefresh
+      scriptInitiated
+      metaTagRefresh
+      pageBlockInterstitial
+      reload
+
   # Deprecated, please use addScriptToEvaluateOnNewDocument instead.
   experimental deprecated command addScriptToEvaluateOnLoad
     parameters
@@ -5537,7 +5547,7 @@ domain Page
       optional Runtime.StackTrace stack
 
   # Fired when frame no longer has a scheduled navigation.
-  experimental event frameClearedScheduledNavigation
+  deprecated event frameClearedScheduledNavigation
     parameters
       # Id of the frame that has cleared its scheduled navigation.
       FrameId frameId
@@ -5556,8 +5566,19 @@ domain Page
 
   experimental event frameResized
 
+  # Fired when a renderer-initiated navigation is requested.
+  # Navigation may still be cancelled after the event is issued.
+  experimental event frameRequestedNavigation
+    parameters
+      # Id of the frame that has scheduled a navigation.
+      FrameId frameId
+      # The reason for the navigation.
+      ClientNavigationReason reason
+      # The destination URL for the requested navigation.
+      string url
+
   # Fired when frame schedules a potential navigation.
-  experimental event frameScheduledNavigation
+  deprecated event frameScheduledNavigation
     parameters
       # Id of the frame that has scheduled a navigation.
       FrameId frameId

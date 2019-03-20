@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r641443
+###### _2019-03-16 09:16:06_ | Diff: [dffb10a...48c725a](https://github.com/ChromeDevTools/devtools-protocol/compare/dffb10a...48c725a)
+#### `Debugger`: modified command
+* [`Debugger.enable`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-enable)
+
+
 ## Roll protocol to r641075
 ###### _2019-03-14 21:15:57_ | Diff: [ddaf4ff...dffb10a](https://github.com/ChromeDevTools/devtools-protocol/compare/ddaf4ff...dffb10a)
 #### `IndexedDB`: new command

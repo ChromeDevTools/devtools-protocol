@@ -333,6 +333,11 @@ export namespace ProtocolMapping {
         'Page.frameNavigated': [Protocol.Page.FrameNavigatedEvent];
         'Page.frameResized': [];
         /**
+         * Fired when a renderer-initiated navigation is requested.
+         * Navigation may still be cancelled after the event is issued.
+         */
+        'Page.frameRequestedNavigation': [Protocol.Page.FrameRequestedNavigationEvent];
+        /**
          * Fired when frame schedules a potential navigation.
          */
         'Page.frameScheduledNavigation': [Protocol.Page.FrameScheduledNavigationEvent];
