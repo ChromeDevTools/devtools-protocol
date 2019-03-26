@@ -2509,6 +2509,12 @@ export namespace ProtocolProxyApi {
         on(event: 'frameResized', listener: () => void): void;
 
         /**
+         * Fired when a renderer-initiated navigation is requested.
+         * Navigation may still be cancelled after the event is issued.
+         */
+        on(event: 'frameRequestedNavigation', listener: (params: Protocol.Page.FrameRequestedNavigationEvent) => void): void;
+
+        /**
          * Fired when frame schedules a potential navigation.
          */
         on(event: 'frameScheduledNavigation', listener: (params: Protocol.Page.FrameScheduledNavigationEvent) => void): void;
