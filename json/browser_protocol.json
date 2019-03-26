@@ -2894,9 +2894,9 @@
                             }
                         },
                         {
-                            "name": "hasMore",
-                            "description": "If true, there are more entries to fetch in the given range.",
-                            "type": "boolean"
+                            "name": "returnCount",
+                            "description": "Count of returned entries from this storage. If pathFilter is empty, it\nis the count of all entries from this storage.",
+                            "type": "number"
                         }
                     ]
                 }

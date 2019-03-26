@@ -1332,8 +1332,9 @@ experimental domain CacheStorage
     returns
       # Array of object store data entries.
       array of DataEntry cacheDataEntries
-      # If true, there are more entries to fetch in the given range.
-      boolean hasMore
+      # Count of returned entries from this storage. If pathFilter is empty, it
+      # is the count of all entries from this storage.
+      number returnCount
 
 # A domain for interacting with Cast, Presentation API, and Remote Playback API
 # functionalities.

@@ -3869,9 +3869,10 @@ export namespace Protocol {
              */
             cacheDataEntries: DataEntry[];
             /**
-             * If true, there are more entries to fetch in the given range.
+             * Count of returned entries from this storage. If pathFilter is empty, it
+             * is the count of all entries from this storage.
              */
-            hasMore: boolean;
+            returnCount: number;
         }
     }
 

@@ -1275,7 +1275,7 @@ Protocol.CacheStorageAgent.prototype.invoke_requestCachedResponse = function(obj
 Protocol.CacheStorageAgent.prototype.requestEntries = function(cacheId, skipCount, pageSize, opt_pathFilter) {};
 /** @typedef {!{pathFilter: (string|undefined), cacheId: Protocol.CacheStorage.CacheId, skipCount: number, pageSize: number}} */
 Protocol.CacheStorageAgent.RequestEntriesRequest;
-/** @typedef {!{hasMore: boolean, cacheDataEntries: !Array<Protocol.CacheStorage.DataEntry>}} */
+/** @typedef {!{returnCount: number, cacheDataEntries: !Array<Protocol.CacheStorage.DataEntry>}} */
 Protocol.CacheStorageAgent.RequestEntriesResponse;
 /**
  * @param {!Protocol.CacheStorageAgent.RequestEntriesRequest} obj

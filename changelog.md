@@ -1,5 +1,16 @@
 
 
+## Roll protocol to r644145
+###### _2019-03-25 19:16:08_ | Diff: [19f4d92...a019aca](https://github.com/ChromeDevTools/devtools-protocol/compare/19f4d92...a019aca)
+#### `Page`: new event
+* [`Page.frameRequestedNavigation`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameRequestedNavigation)
+#### `Page`: modified events
+* [`Page.frameClearedScheduledNavigation`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameClearedScheduledNavigation) - `experimental` removed. `deprecated` added. 
+* [`Page.frameScheduledNavigation`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameScheduledNavigation) - `experimental` removed. `deprecated` added. 
+#### `Page`: new type
+* [`Page.ClientNavigationReason`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ClientNavigationReason)
+
+
 ## Roll protocol to r642320
 ###### _2019-03-19 19:16:03_ | Diff: [5016689...19f4d92](https://github.com/ChromeDevTools/devtools-protocol/compare/5016689...19f4d92)
 #### `Page`: removed event
