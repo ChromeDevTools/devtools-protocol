@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r644552
+###### _2019-03-26 15:16:08_ | Diff: [a019aca...6ee35f9](https://github.com/ChromeDevTools/devtools-protocol/compare/a019aca...6ee35f9)
+#### `CacheStorage`: modified command
+* [`CacheStorage.requestEntries`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#method-requestEntries) - The `hasMore` in the return value had `name` _updated_. The `hasMore` in the return value had `description` _updated_. The `hasMore` in the return value had `type` _updated_. 
+
+
 ## Roll protocol to r644145
 ###### _2019-03-25 19:16:08_ | Diff: [19f4d92...a019aca](https://github.com/ChromeDevTools/devtools-protocol/compare/19f4d92...a019aca)
 #### `Page`: new event

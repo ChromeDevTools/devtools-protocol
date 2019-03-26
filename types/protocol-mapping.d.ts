@@ -3494,13 +3494,6 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
-         * Generates a report for testing.
-         */
-        'Testing.generateTestReport': {
-            paramsType: [Protocol.Testing.GenerateTestReportRequest];
-            returnType: void;
-        };
-        /**
          * Disables the fetch domain.
          */
         'Fetch.disable': {

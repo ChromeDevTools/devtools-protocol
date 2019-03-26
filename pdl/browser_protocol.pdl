@@ -6478,19 +6478,6 @@ experimental domain Tracing
       # Compression format of returned stream.
       optional StreamCompression streamCompression
 
-# Testing domain is a dumping ground for the capabilities requires for browser or app testing that do not fit other
-# domains.
-experimental domain Testing
-  depends on Page
-
-  # Generates a report for testing.
-  command generateTestReport
-    parameters
-      # Message to be displayed in the report.
-      string message
-      # Specifies the endpoint group to deliver the report to.
-      optional string group
-
 # A domain for letting clients substitute browser's network layer with client code.
 experimental domain Fetch
   depends on Network

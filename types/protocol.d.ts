@@ -11135,24 +11135,6 @@ export namespace Protocol {
     }
 
     /**
-     * Testing domain is a dumping ground for the capabilities requires for browser or app testing that do not fit other
-     * domains.
-     */
-    export namespace Testing {
-
-        export interface GenerateTestReportRequest {
-            /**
-             * Message to be displayed in the report.
-             */
-            message: string;
-            /**
-             * Specifies the endpoint group to deliver the report to.
-             */
-            group?: string;
-        }
-    }
-
-    /**
      * A domain for letting clients substitute browser's network layer with client code.
      */
     export namespace Fetch {

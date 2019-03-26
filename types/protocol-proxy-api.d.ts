@@ -92,8 +92,6 @@ export namespace ProtocolProxyApi {
 
         Tracing: TracingApi;
 
-        Testing: TestingApi;
-
         Fetch: FetchApi;
 
     }
@@ -2949,14 +2947,6 @@ export namespace ProtocolProxyApi {
          * delivered via dataCollected events.
          */
         on(event: 'tracingComplete', listener: (params: Protocol.Tracing.TracingCompleteEvent) => void): void;
-
-    }
-
-    export interface TestingApi {
-        /**
-         * Generates a report for testing.
-         */
-        generateTestReport(params: Protocol.Testing.GenerateTestReportRequest): Promise<void>;
 
     }
 

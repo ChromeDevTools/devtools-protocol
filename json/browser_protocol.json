@@ -14140,33 +14140,6 @@
             ]
         },
         {
-            "domain": "Testing",
-            "description": "Testing domain is a dumping ground for the capabilities requires for browser or app testing that do not fit other\ndomains.",
-            "experimental": true,
-            "dependencies": [
-                "Page"
-            ],
-            "commands": [
-                {
-                    "name": "generateTestReport",
-                    "description": "Generates a report for testing.",
-                    "parameters": [
-                        {
-                            "name": "message",
-                            "description": "Message to be displayed in the report.",
-                            "type": "string"
-                        },
-                        {
-                            "name": "group",
-                            "description": "Specifies the endpoint group to deliver the report to.",
-                            "optional": true,
-                            "type": "string"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
             "domain": "Fetch",
             "description": "A domain for letting clients substitute browser's network layer with client code.",
             "experimental": true,
