@@ -3030,7 +3030,7 @@ experimental domain IndexedDB
       array of DataEntry objectStoreDataEntries
       # If true, there are more entries to fetch in the given range.
       boolean hasMore
-  
+
   # Gets metadata of an object store
   command getMetadata
     parameters
@@ -5786,7 +5786,7 @@ domain Security
       optional array of string recommendations
 
   # Information about insecure content on the page.
-  type InsecureContentStatus extends object
+  deprecated type InsecureContentStatus extends object
     properties
       # True if the page was loaded over HTTPS and ran mixed (HTTP) content such as scripts.
       boolean ranMixedContent
@@ -5863,7 +5863,7 @@ domain Security
       # `warning`, at least one corresponding explanation should be included.
       array of SecurityStateExplanation explanations
       # Information about insecure content on the page.
-      InsecureContentStatus insecureContentStatus
+      deprecated InsecureContentStatus insecureContentStatus
       # Overrides user-visible description of the state.
       optional string summary
 

@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r646048
+###### _2019-03-29 18:16:06_ | Diff: [313a238...87c65d3](https://github.com/ChromeDevTools/devtools-protocol/compare/313a238...87c65d3)
+#### `Runtime`: modified event
+* [`Runtime.consoleAPICalled`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#event-consoleAPICalled) - The `stackTrace` in the parameters had `description` _updated_. 
+
+
 ## Roll protocol to r644580
 ###### _2019-03-26 16:16:03_ | Diff: [6ee35f9...b99eee8](https://github.com/ChromeDevTools/devtools-protocol/compare/6ee35f9...b99eee8)
 #### `Testing`: removed domain
