@@ -6933,13 +6933,12 @@ Protocol.TracingAgent.prototype.invoke_requestMemoryDump = function(obj) {};
  * @param {string=} opt_options
  * @param {number=} opt_bufferUsageReportingInterval
  * @param {string=} opt_transferMode
- * @param {Protocol.Tracing.StreamFormat=} opt_streamFormat
  * @param {Protocol.Tracing.StreamCompression=} opt_streamCompression
  * @param {Protocol.Tracing.TraceConfig=} opt_traceConfig
  * @return {!Promise<undefined>}
  */
-Protocol.TracingAgent.prototype.start = function(opt_categories, opt_options, opt_bufferUsageReportingInterval, opt_transferMode, opt_streamFormat, opt_streamCompression, opt_traceConfig) {};
-/** @typedef {!{traceConfig: (Protocol.Tracing.TraceConfig|undefined), transferMode: (string|undefined), bufferUsageReportingInterval: (number|undefined), streamFormat: (Protocol.Tracing.StreamFormat|undefined), options: (string|undefined), categories: (string|undefined), streamCompression: (Protocol.Tracing.StreamCompression|undefined)}} */
+Protocol.TracingAgent.prototype.start = function(opt_categories, opt_options, opt_bufferUsageReportingInterval, opt_transferMode, opt_streamCompression, opt_traceConfig) {};
+/** @typedef {!{traceConfig: (Protocol.Tracing.TraceConfig|undefined), transferMode: (string|undefined), bufferUsageReportingInterval: (number|undefined), options: (string|undefined), categories: (string|undefined), streamCompression: (Protocol.Tracing.StreamCompression|undefined)}} */
 Protocol.TracingAgent.StartRequest;
 /** @typedef {Object|undefined} */
 Protocol.TracingAgent.StartResponse;
@@ -6963,12 +6962,6 @@ Protocol.Tracing.TraceConfigRecordMode = {
 Protocol.Tracing.TraceConfig;
 
 /** @enum {string} */
-Protocol.Tracing.StreamFormat = {
-    Json: "json",
-    Proto: "proto"
-};
-
-/** @enum {string} */
 Protocol.Tracing.StreamCompression = {
     None: "none",
     Gzip: "gzip"
@@ -6987,10 +6980,9 @@ Protocol.TracingDispatcher.prototype.bufferUsage = function(opt_percentFull, opt
 Protocol.TracingDispatcher.prototype.dataCollected = function(value) {};
 /**
  * @param {Protocol.IO.StreamHandle=} opt_stream
- * @param {Protocol.Tracing.StreamFormat=} opt_traceFormat
  * @param {Protocol.Tracing.StreamCompression=} opt_streamCompression
  */
-Protocol.TracingDispatcher.prototype.tracingComplete = function(opt_stream, opt_traceFormat, opt_streamCompression) {};
+Protocol.TracingDispatcher.prototype.tracingComplete = function(opt_stream, opt_streamCompression) {};
 Protocol.Fetch = {};
 
 

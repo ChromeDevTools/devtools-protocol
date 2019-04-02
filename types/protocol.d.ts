@@ -11040,12 +11040,6 @@ export namespace Protocol {
         }
 
         /**
-         * Data format of a trace. Can be either the legacy JSON format or the
-         * protocol buffer format. Note that the JSON format will be deprecated soon.
-         */
-        export type StreamFormat = ('json' | 'proto');
-
-        /**
          * Compression type to use for traces returned via streams.
          */
         export type StreamCompression = ('none' | 'gzip');
@@ -11094,11 +11088,6 @@ export namespace Protocol {
              */
             transferMode?: ('ReportEvents' | 'ReturnAsStream');
             /**
-             * Trace data format to use. This only applies when using `ReturnAsStream`
-             * transfer mode (defaults to `json`).
-             */
-            streamFormat?: StreamFormat;
-            /**
              * Compression format to use. This only applies when using `ReturnAsStream`
              * transfer mode (defaults to `none`)
              */
@@ -11140,10 +11129,6 @@ export namespace Protocol {
              * A handle of the stream that holds resulting trace data.
              */
             stream?: IO.StreamHandle;
-            /**
-             * Trace data format of returned stream.
-             */
-            traceFormat?: StreamFormat;
             /**
              * Compression format of returned stream.
              */
