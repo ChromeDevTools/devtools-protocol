@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r646409
+###### _2019-04-01 11:16:05_ | Diff: [87c65d3...9e59fdf](https://github.com/ChromeDevTools/devtools-protocol/compare/87c65d3...9e59fdf)
+#### `Security`: modified event
+* [`Security.securityStateChanged`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#event-securityStateChanged) - The parameters's `deprecated` _added_. 
+#### `Security`: modified type
+* [`Security.InsecureContentStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#type-InsecureContentStatus) - `deprecated` added. 
+
+
 ## Roll protocol to r646048
 ###### _2019-03-29 18:16:06_ | Diff: [313a238...87c65d3](https://github.com/ChromeDevTools/devtools-protocol/compare/313a238...87c65d3)
 #### `Runtime`: modified event
