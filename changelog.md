@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r647618
+###### _2019-04-03 21:16:27_ | Diff: [802c5b3...d59e473](https://github.com/ChromeDevTools/devtools-protocol/compare/802c5b3...d59e473)
+#### `Overlay`: modified type
+* [`Overlay.InspectMode`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-InspectMode) - The enum's `none` _updated_. The enum's `none` _added_. 
+
+
 ## Roll protocol to r646981
 ###### _2019-04-02 15:16:33_ | Diff: [fb73f39...802c5b3](https://github.com/ChromeDevTools/devtools-protocol/compare/fb73f39...802c5b3)
 #### `Tracing`: modified command
