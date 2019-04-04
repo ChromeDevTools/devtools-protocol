@@ -8758,7 +8758,7 @@ export namespace Protocol {
             cssGridColor?: DOM.RGBA;
         }
 
-        export type InspectMode = ('searchForNode' | 'searchForUAShadowDOM' | 'captureAreaScreenshot' | 'none');
+        export type InspectMode = ('searchForNode' | 'searchForUAShadowDOM' | 'captureAreaScreenshot' | 'showDistances' | 'none');
 
         export interface GetHighlightObjectForTestRequest {
             /**

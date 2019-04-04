@@ -4995,6 +4995,7 @@ Protocol.Overlay.InspectMode = {
     SearchForNode: "searchForNode",
     SearchForUAShadowDOM: "searchForUAShadowDOM",
     CaptureAreaScreenshot: "captureAreaScreenshot",
+    ShowDistances: "showDistances",
     None: "none"
 };
 /** @interface */

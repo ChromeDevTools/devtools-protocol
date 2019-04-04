@@ -4696,6 +4696,7 @@ experimental domain Overlay
       searchForNode
       searchForUAShadowDOM
       captureAreaScreenshot
+      showDistances
       none
 
   # Disables domain notifications.
