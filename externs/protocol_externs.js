@@ -4648,8 +4648,9 @@ Protocol.NetworkDispatcher.prototype.loadingFinished = function(requestId, times
  * @param {Protocol.Network.ErrorReason=} opt_responseErrorReason
  * @param {number=} opt_responseStatusCode
  * @param {Protocol.Network.Headers=} opt_responseHeaders
+ * @param {Protocol.Network.RequestId=} opt_requestId
  */
-Protocol.NetworkDispatcher.prototype.requestIntercepted = function(interceptionId, request, frameId, resourceType, isNavigationRequest, opt_isDownload, opt_redirectUrl, opt_authChallenge, opt_responseErrorReason, opt_responseStatusCode, opt_responseHeaders) {};
+Protocol.NetworkDispatcher.prototype.requestIntercepted = function(interceptionId, request, frameId, resourceType, isNavigationRequest, opt_isDownload, opt_redirectUrl, opt_authChallenge, opt_responseErrorReason, opt_responseStatusCode, opt_responseHeaders, opt_requestId) {};
 /**
  * @param {Protocol.Network.RequestId} requestId
  */
@@ -7165,8 +7166,9 @@ Protocol.FetchDispatcher = function() {};
  * @param {Protocol.Network.ErrorReason=} opt_responseErrorReason
  * @param {number=} opt_responseStatusCode
  * @param {!Array<Protocol.Fetch.HeaderEntry>=} opt_responseHeaders
+ * @param {Protocol.Fetch.RequestId=} opt_networkId
  */
-Protocol.FetchDispatcher.prototype.requestPaused = function(requestId, request, frameId, resourceType, opt_responseErrorReason, opt_responseStatusCode, opt_responseHeaders) {};
+Protocol.FetchDispatcher.prototype.requestPaused = function(requestId, request, frameId, resourceType, opt_responseErrorReason, opt_responseStatusCode, opt_responseHeaders, opt_networkId) {};
 /**
  * @param {Protocol.Fetch.RequestId} requestId
  * @param {Protocol.Network.Request} request

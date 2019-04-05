@@ -9925,6 +9925,12 @@
                             "description": "Response headers if intercepted at the response stage or if redirect occurred while\nintercepting request or auth retry occurred.",
                             "optional": true,
                             "$ref": "Headers"
+                        },
+                        {
+                            "name": "requestId",
+                            "description": "If the intercepted request had a corresponding requestWillBeSent event fired for it, then\nthis requestId will be the same as the requestId present in the requestWillBeSent event.",
+                            "optional": true,
+                            "$ref": "RequestId"
                         }
                     ]
                 },
@@ -14509,6 +14515,12 @@
                             "items": {
                                 "$ref": "HeaderEntry"
                             }
+                        },
+                        {
+                            "name": "networkId",
+                            "description": "If the intercepted request had a corresponding Network.requestWillBeSent event fired for it,\nthen this networkId will be the same as the requestId present in the requestWillBeSent event.",
+                            "optional": true,
+                            "$ref": "RequestId"
                         }
                     ]
                 },

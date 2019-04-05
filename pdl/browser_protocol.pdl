@@ -4520,6 +4520,9 @@ domain Network
       # Response headers if intercepted at the response stage or if redirect occurred while
       # intercepting request or auth retry occurred.
       optional Headers responseHeaders
+      # If the intercepted request had a corresponding requestWillBeSent event fired for it, then
+      # this requestId will be the same as the requestId present in the requestWillBeSent event.
+      optional RequestId requestId
 
   # Fired if request ended up loading from cache.
   event requestServedFromCache
@@ -6669,6 +6672,9 @@ experimental domain Fetch
       optional integer responseStatusCode
       # Response headers if intercepted at the response stage.
       optional array of HeaderEntry responseHeaders
+      # If the intercepted request had a corresponding Network.requestWillBeSent event fired for it,
+      # then this networkId will be the same as the requestId present in the requestWillBeSent event.
+      optional RequestId networkId
 
   # Issued when the domain is enabled with handleAuthRequests set to true.
   # The request is paused until client responds with continueWithAuth.
