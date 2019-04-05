@@ -8448,6 +8448,11 @@ export namespace Protocol {
              * intercepting request or auth retry occurred.
              */
             responseHeaders?: Headers;
+            /**
+             * If the intercepted request had a corresponding requestWillBeSent event fired for it, then
+             * this requestId will be the same as the requestId present in the requestWillBeSent event.
+             */
+            requestId?: RequestId;
         }
 
         /**
@@ -11382,6 +11387,11 @@ export namespace Protocol {
              * Response headers if intercepted at the response stage.
              */
             responseHeaders?: HeaderEntry[];
+            /**
+             * If the intercepted request had a corresponding Network.requestWillBeSent event fired for it,
+             * then this networkId will be the same as the requestId present in the requestWillBeSent event.
+             */
+            networkId?: RequestId;
         }
 
         /**

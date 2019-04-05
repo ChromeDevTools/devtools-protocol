@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r648288
+###### _2019-04-05 12:16:00_ | Diff: [f37cb70...9d1a903](https://github.com/ChromeDevTools/devtools-protocol/compare/f37cb70...9d1a903)
+#### `Tracing`: modified command
+* [`Tracing.start`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#method-start) - The `streamCompression` in the parameters had `name` _updated_. The `streamCompression` in the parameters had `description` _updated_. The `streamCompression` in the parameters had `$ref` _updated_. The `traceConfig` in the parameters had `name` _updated_. The `traceConfig` in the parameters had `$ref` _updated_. The parameters's `description` _added_. The parameters's `traceConfig` _added_. 
+#### `Tracing`: modified event
+* [`Tracing.tracingComplete`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#event-tracingComplete) - The `streamCompression` in the parameters had `name` _updated_. The `streamCompression` in the parameters had `description` _updated_. The `streamCompression` in the parameters had `$ref` _updated_. The parameters's `streamCompression` _added_. 
+#### `Tracing`: new type
+* [`Tracing.StreamFormat`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#type-StreamFormat)
+
+
 ## Roll protocol to r648019
 ###### _2019-04-04 18:16:14_ | Diff: [aad03c0...f37cb70](https://github.com/ChromeDevTools/devtools-protocol/compare/aad03c0...f37cb70)
 #### `Network`: modified command
