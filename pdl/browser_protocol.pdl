@@ -4415,7 +4415,7 @@ domain Network
       # Map with extra HTTP headers.
       Headers headers
 
-  # Sets the requests to intercept that match a the provided patterns and optionally resource types.
+  # Sets the requests to intercept that match the provided patterns and optionally resource types.
   experimental command setRequestInterception
     parameters
       # Requests matching any of these patterns will be forwarded and wait for the corresponding

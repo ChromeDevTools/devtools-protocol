@@ -2656,7 +2656,7 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
-         * Sets the requests to intercept that match a the provided patterns and optionally resource types.
+         * Sets the requests to intercept that match the provided patterns and optionally resource types.
          */
         'Network.setRequestInterception': {
             paramsType: [Protocol.Network.SetRequestInterceptionRequest];

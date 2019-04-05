@@ -9700,7 +9700,7 @@
                 },
                 {
                     "name": "setRequestInterception",
-                    "description": "Sets the requests to intercept that match a the provided patterns and optionally resource types.",
+                    "description": "Sets the requests to intercept that match the provided patterns and optionally resource types.",
                     "experimental": true,
                     "parameters": [
                         {

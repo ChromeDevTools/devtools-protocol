@@ -2016,7 +2016,7 @@ export namespace ProtocolProxyApi {
         setExtraHTTPHeaders(params: Protocol.Network.SetExtraHTTPHeadersRequest): Promise<void>;
 
         /**
-         * Sets the requests to intercept that match a the provided patterns and optionally resource types.
+         * Sets the requests to intercept that match the provided patterns and optionally resource types.
          */
         setRequestInterception(params: Protocol.Network.SetRequestInterceptionRequest): Promise<void>;
 
