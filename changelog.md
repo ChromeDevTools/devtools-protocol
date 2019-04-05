@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r648019
+###### _2019-04-04 18:16:14_ | Diff: [aad03c0...f37cb70](https://github.com/ChromeDevTools/devtools-protocol/compare/aad03c0...f37cb70)
+#### `Network`: modified command
+* [`Network.setRequestInterception`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setRequestInterception) - `description` updated. 
+
+
 ## Roll protocol to r647618
 ###### _2019-04-03 21:16:27_ | Diff: [802c5b3...d59e473](https://github.com/ChromeDevTools/devtools-protocol/compare/802c5b3...d59e473)
 #### `Overlay`: modified type
