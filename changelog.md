@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r648372 637670
+###### _2019-04-05 15:15:55_ | Diff: [9d1a903...401f203](https://github.com/ChromeDevTools/devtools-protocol/compare/9d1a903...401f203)
+#### `Network`: modified event
+* [`Network.requestIntercepted`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestIntercepted) - The parameters's `requestId` _added_. 
+#### `Fetch`: modified event
+* [`Fetch.requestPaused`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#event-requestPaused) - The parameters's `networkId` _added_. 
+
+
 ## Roll protocol to r648288
 ###### _2019-04-05 12:16:00_ | Diff: [f37cb70...9d1a903](https://github.com/ChromeDevTools/devtools-protocol/compare/f37cb70...9d1a903)
 #### `Tracing`: modified command

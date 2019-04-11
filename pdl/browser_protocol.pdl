@@ -5173,6 +5173,10 @@ domain Page
       # Manifest content.
       optional string data
 
+  experimental command getInstallabilityErrors
+    returns
+      array of string errors
+
   # Returns all browser cookies. Depending on the backend support, will return detailed cookie
   # information in the `cookies` field.
   experimental deprecated command getCookies
@@ -5704,7 +5708,6 @@ domain Page
       string url
       # Base64-encoded data
       binary data
-
 
 domain Performance
 

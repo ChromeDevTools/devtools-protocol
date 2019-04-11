@@ -9417,6 +9417,10 @@ export namespace Protocol {
             data?: string;
         }
 
+        export interface GetInstallabilityErrorsResponse {
+            errors: string[];
+        }
+
         export interface GetCookiesResponse {
             /**
              * Array of cookie objects.

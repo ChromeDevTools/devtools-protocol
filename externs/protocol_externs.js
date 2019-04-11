@@ -5205,6 +5205,19 @@ Protocol.PageAgent.GetAppManifestResponse;
 Protocol.PageAgent.prototype.invoke_getAppManifest = function(obj) {};
 
 /**
+ * @return {!Promise<?Array<string>>}
+ */
+Protocol.PageAgent.prototype.getInstallabilityErrors = function() {};
+/** @typedef {Object|undefined} */
+Protocol.PageAgent.GetInstallabilityErrorsRequest;
+/** @typedef {!{errors: !Array<string>}} */
+Protocol.PageAgent.GetInstallabilityErrorsResponse;
+/**
+ * @param {!Protocol.PageAgent.GetInstallabilityErrorsRequest} obj
+ * @return {!Promise<!Protocol.PageAgent.GetInstallabilityErrorsResponse>} */
+Protocol.PageAgent.prototype.invoke_getInstallabilityErrors = function(obj) {};
+
+/**
  * @return {!Promise<?Array<Protocol.Network.Cookie>>}
  */
 Protocol.PageAgent.prototype.getCookies = function() {};

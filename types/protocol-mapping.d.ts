@@ -2876,6 +2876,10 @@ export namespace ProtocolMapping {
             paramsType: [];
             returnType: Protocol.Page.GetAppManifestResponse;
         };
+        'Page.getInstallabilityErrors': {
+            paramsType: [];
+            returnType: Protocol.Page.GetInstallabilityErrorsResponse;
+        };
         /**
          * Returns all browser cookies. Depending on the backend support, will return detailed cookie
          * information in the `cookies` field.
