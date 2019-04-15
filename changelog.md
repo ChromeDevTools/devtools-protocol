@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r649764
+###### _2019-04-10 20:15:55_ | Diff: [37fb01d...20e84f7](https://github.com/ChromeDevTools/devtools-protocol/compare/37fb01d...20e84f7)
+#### `Page`: new command
+* [`Page.getInstallabilityErrors`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getInstallabilityErrors)
+
+
 ## Roll protocol to r648372 637670
 ###### _2019-04-05 15:15:55_ | Diff: [9d1a903...401f203](https://github.com/ChromeDevTools/devtools-protocol/compare/9d1a903...401f203)
 #### `Network`: modified event
