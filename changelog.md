@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r651096
+###### _2019-04-15 18:15:55_ | Diff: [a5c2d16...fe5e1f5](https://github.com/ChromeDevTools/devtools-protocol/compare/a5c2d16...fe5e1f5)
+#### `Security`: modified type
+* [`Security.InsecureContentStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#type-InsecureContentStatus) - The `ranMixedContent` in the properties had `description` _updated_. The `displayedMixedContent` in the properties had `description` _updated_. The `containedMixedForm` in the properties had `description` _updated_. The `ranContentWithCertErrors` in the properties had `description` _updated_. The `displayedContentWithCertErrors` in the properties had `description` _updated_. The `ranInsecureContentStyle` in the properties had `description` _updated_. The `displayedInsecureContentStyle` in the properties had `description` _updated_. 
+
+
 ## Roll protocol to r649764
 ###### _2019-04-10 20:15:55_ | Diff: [37fb01d...20e84f7](https://github.com/ChromeDevTools/devtools-protocol/compare/37fb01d...20e84f7)
 #### `Page`: new command
