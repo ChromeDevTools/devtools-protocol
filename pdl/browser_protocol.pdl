@@ -5795,21 +5795,19 @@ domain Security
   # Information about insecure content on the page.
   deprecated type InsecureContentStatus extends object
     properties
-      # True if the page was loaded over HTTPS and ran mixed (HTTP) content such as scripts.
+      # Always false.
       boolean ranMixedContent
-      # True if the page was loaded over HTTPS and displayed mixed (HTTP) content such as images.
+      # Always false.
       boolean displayedMixedContent
-      # True if the page was loaded over HTTPS and contained a form targeting an insecure url.
+      # Always false.
       boolean containedMixedForm
-      # True if the page was loaded over HTTPS without certificate errors, and ran content such as
-      # scripts that were loaded with certificate errors.
+      # Always false.
       boolean ranContentWithCertErrors
-      # True if the page was loaded over HTTPS without certificate errors, and displayed content
-      # such as images that were loaded with certificate errors.
+      # Always false.
       boolean displayedContentWithCertErrors
-      # Security state representing a page that ran insecure content.
+      # Always set to unknown.
       SecurityState ranInsecureContentStyle
-      # Security state representing a page that displayed insecure content.
+      # Always set to unknown.
       SecurityState displayedInsecureContentStyle
 
   # The action to take when a certificate error occurs. continue will continue processing the

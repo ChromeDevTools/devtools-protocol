@@ -12633,37 +12633,37 @@
                     "properties": [
                         {
                             "name": "ranMixedContent",
-                            "description": "True if the page was loaded over HTTPS and ran mixed (HTTP) content such as scripts.",
+                            "description": "Always false.",
                             "type": "boolean"
                         },
                         {
                             "name": "displayedMixedContent",
-                            "description": "True if the page was loaded over HTTPS and displayed mixed (HTTP) content such as images.",
+                            "description": "Always false.",
                             "type": "boolean"
                         },
                         {
                             "name": "containedMixedForm",
-                            "description": "True if the page was loaded over HTTPS and contained a form targeting an insecure url.",
+                            "description": "Always false.",
                             "type": "boolean"
                         },
                         {
                             "name": "ranContentWithCertErrors",
-                            "description": "True if the page was loaded over HTTPS without certificate errors, and ran content such as\nscripts that were loaded with certificate errors.",
+                            "description": "Always false.",
                             "type": "boolean"
                         },
                         {
                             "name": "displayedContentWithCertErrors",
-                            "description": "True if the page was loaded over HTTPS without certificate errors, and displayed content\nsuch as images that were loaded with certificate errors.",
+                            "description": "Always false.",
                             "type": "boolean"
                         },
                         {
                             "name": "ranInsecureContentStyle",
-                            "description": "Security state representing a page that ran insecure content.",
+                            "description": "Always set to unknown.",
                             "$ref": "SecurityState"
                         },
                         {
                             "name": "displayedInsecureContentStyle",
-                            "description": "Security state representing a page that displayed insecure content.",
+                            "description": "Always set to unknown.",
                             "$ref": "SecurityState"
                         }
                     ]
