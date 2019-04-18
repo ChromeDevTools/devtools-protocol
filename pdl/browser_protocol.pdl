@@ -5579,7 +5579,7 @@ domain Page
   # Navigation may still be cancelled after the event is issued.
   experimental event frameRequestedNavigation
     parameters
-      # Id of the frame that has scheduled a navigation.
+      # Id of the frame that is being navigated.
       FrameId frameId
       # The reason for the navigation.
       ClientNavigationReason reason

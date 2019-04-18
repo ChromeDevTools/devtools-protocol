@@ -9943,7 +9943,7 @@ export namespace Protocol {
          */
         export interface FrameRequestedNavigationEvent {
             /**
-             * Id of the frame that has scheduled a navigation.
+             * Id of the frame that is being navigated.
              */
             frameId: FrameId;
             /**

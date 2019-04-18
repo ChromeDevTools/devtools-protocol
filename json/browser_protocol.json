@@ -12200,7 +12200,7 @@
                     "parameters": [
                         {
                             "name": "frameId",
-                            "description": "Id of the frame that has scheduled a navigation.",
+                            "description": "Id of the frame that is being navigated.",
                             "$ref": "FrameId"
                         },
                         {
