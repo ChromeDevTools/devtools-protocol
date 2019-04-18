@@ -11425,6 +11425,96 @@ export namespace Protocol {
             authChallenge: AuthChallenge;
         }
     }
+
+    /**
+     * This domain allows inspection of Web Audio API.
+     * https://webaudio.github.io/web-audio-api/
+     */
+    export namespace WebAudio {
+
+        /**
+         * Context's UUID in string
+         */
+        export type ContextId = string;
+
+        /**
+         * Enum of BaseAudioContext types
+         */
+        export type ContextType = ('realtime' | 'offline');
+
+        /**
+         * Enum of AudioContextState from the spec
+         */
+        export type ContextState = ('suspended' | 'running' | 'closed');
+
+        /**
+         * Fields in AudioContext that change in real-time. These are not updated
+         * on OfflineAudioContext.
+         */
+        export interface ContextRealtimeData {
+            /**
+             * The current context time in second in BaseAudioContext.
+             */
+            currentTime?: number;
+            /**
+             * The time spent on rendering graph divided by render qunatum duration,
+             * and multiplied by 100. 100 means the audio renderer reached the full
+             * capacity and glitch may occur.
+             */
+            renderCapacity?: number;
+        }
+
+        /**
+         * Protocol object for BaseAudioContext
+         */
+        export interface BaseAudioContext {
+            contextId: ContextId;
+            contextType: ContextType;
+            contextState: ContextState;
+            realtimeData?: ContextRealtimeData;
+            /**
+             * Platform-dependent callback buffer size.
+             */
+            callbackBufferSize: number;
+            /**
+             * Number of output channels supported by audio hardware in use.
+             */
+            maxOutputChannelCount: number;
+            /**
+             * Context sample rate.
+             */
+            sampleRate: number;
+        }
+
+        export interface GetRealtimeDataRequest {
+            contextId: ContextId;
+        }
+
+        export interface GetRealtimeDataResponse {
+            realtimeData: ContextRealtimeData;
+        }
+
+        /**
+         * Notifies that a new BaseAudioContext has been created.
+         */
+        export interface ContextCreatedEvent {
+            context: BaseAudioContext;
+        }
+
+        /**
+         * Notifies that existing BaseAudioContext has been destroyed.
+         */
+        export interface ContextDestroyedEvent {
+            contextId: ContextId;
+        }
+
+        /**
+         * Notifies that existing BaseAudioContext has changed some properties (id stays the same)..
+         */
+        export interface ContextChangedEvent {
+            context: BaseAudioContext;
+        }
+    }
 }
 
 export default Protocol;

@@ -7190,6 +7190,89 @@ Protocol.FetchDispatcher.prototype.requestPaused = function(requestId, request, 
  * @param {Protocol.Fetch.AuthChallenge} authChallenge
  */
 Protocol.FetchDispatcher.prototype.authRequired = function(requestId, request, frameId, resourceType, authChallenge) {};
+Protocol.WebAudio = {};
+
+
+/**
+ * @constructor
+*/
+Protocol.WebAudioAgent = function(){};
+
+/**
+ * @return {!Promise<undefined>}
+ */
+Protocol.WebAudioAgent.prototype.enable = function() {};
+/** @typedef {Object|undefined} */
+Protocol.WebAudioAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.WebAudioAgent.EnableResponse;
+/**
+ * @param {!Protocol.WebAudioAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.WebAudioAgent.EnableResponse>} */
+Protocol.WebAudioAgent.prototype.invoke_enable = function(obj) {};
+
+/**
+ * @return {!Promise<undefined>}
+ */
+Protocol.WebAudioAgent.prototype.disable = function() {};
+/** @typedef {Object|undefined} */
+Protocol.WebAudioAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.WebAudioAgent.DisableResponse;
+/**
+ * @param {!Protocol.WebAudioAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.WebAudioAgent.DisableResponse>} */
+Protocol.WebAudioAgent.prototype.invoke_disable = function(obj) {};
+
+/**
+ * @param {Protocol.WebAudio.ContextId} contextId
+ * @return {!Promise<?Protocol.WebAudio.ContextRealtimeData>}
+ */
+Protocol.WebAudioAgent.prototype.getRealtimeData = function(contextId) {};
+/** @typedef {!{contextId: Protocol.WebAudio.ContextId}} */
+Protocol.WebAudioAgent.GetRealtimeDataRequest;
+/** @typedef {!{realtimeData: Protocol.WebAudio.ContextRealtimeData}} */
+Protocol.WebAudioAgent.GetRealtimeDataResponse;
+/**
+ * @param {!Protocol.WebAudioAgent.GetRealtimeDataRequest} obj
+ * @return {!Promise<!Protocol.WebAudioAgent.GetRealtimeDataResponse>} */
+Protocol.WebAudioAgent.prototype.invoke_getRealtimeData = function(obj) {};
+
+/** @typedef {string} */
+Protocol.WebAudio.ContextId;
+
+/** @enum {string} */
+Protocol.WebAudio.ContextType = {
+    Realtime: "realtime",
+    Offline: "offline"
+};
+
+/** @enum {string} */
+Protocol.WebAudio.ContextState = {
+    Suspended: "suspended",
+    Running: "running",
+    Closed: "closed"
+};
+
+/** @typedef {!{currentTime:(number|undefined), renderCapacity:(number|undefined)}} */
+Protocol.WebAudio.ContextRealtimeData;
+
+/** @typedef {!{contextId:(Protocol.WebAudio.ContextId), contextType:(Protocol.WebAudio.ContextType), contextState:(Protocol.WebAudio.ContextState), realtimeData:(Protocol.WebAudio.ContextRealtimeData|undefined), callbackBufferSize:(number), maxOutputChannelCount:(number), sampleRate:(number)}} */
+Protocol.WebAudio.BaseAudioContext;
+/** @interface */
+Protocol.WebAudioDispatcher = function() {};
+/**
+ * @param {Protocol.WebAudio.BaseAudioContext} context
+ */
+Protocol.WebAudioDispatcher.prototype.contextCreated = function(context) {};
+/**
+ * @param {Protocol.WebAudio.ContextId} contextId
+ */
+Protocol.WebAudioDispatcher.prototype.contextDestroyed = function(contextId) {};
+/**
+ * @param {Protocol.WebAudio.BaseAudioContext} context
+ */
+Protocol.WebAudioDispatcher.prototype.contextChanged = function(context) {};
 Protocol.Console = {};
 
 
@@ -8979,6 +9062,12 @@ Protocol.TargetBase.prototype.fetchAgent = function(){};
  * @param {!Protocol.FetchDispatcher} dispatcher
  */
 Protocol.TargetBase.prototype.registerFetchDispatcher = function(dispatcher) {}
+/** @return {!Protocol.WebAudioAgent}*/
+Protocol.TargetBase.prototype.webAudioAgent = function(){};
+/**
+ * @param {!Protocol.WebAudioDispatcher} dispatcher
+ */
+Protocol.TargetBase.prototype.registerWebAudioDispatcher = function(dispatcher) {}
 /** @return {!Protocol.ConsoleAgent}*/
 Protocol.TargetBase.prototype.consoleAgent = function(){};
 /**

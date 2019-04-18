@@ -488,6 +488,18 @@ export namespace ProtocolMapping {
          * The request is paused until client responds with continueWithAuth.
          */
         'Fetch.authRequired': [Protocol.Fetch.AuthRequiredEvent];
+        /**
+         * Notifies that a new BaseAudioContext has been created.
+         */
+        'WebAudio.contextCreated': [Protocol.WebAudio.ContextCreatedEvent];
+        /**
+         * Notifies that existing BaseAudioContext has been destroyed.
+         */
+        'WebAudio.contextDestroyed': [Protocol.WebAudio.ContextDestroyedEvent];
+        /**
+         * Notifies that existing BaseAudioContext has changed some properties (id stays the same)..
+         */
+        'WebAudio.contextChanged': [Protocol.WebAudio.ContextChangedEvent];
     }
 
     export interface Commands {
@@ -3567,6 +3579,27 @@ export namespace ProtocolMapping {
         'Fetch.takeResponseBodyAsStream': {
             paramsType: [Protocol.Fetch.TakeResponseBodyAsStreamRequest];
             returnType: Protocol.Fetch.TakeResponseBodyAsStreamResponse;
+        };
+        /**
+         * Enables the WebAudio domain and starts sending context lifetime events.
+         */
+        'WebAudio.enable': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
+         * Disables the WebAudio domain.
+         */
+        'WebAudio.disable': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
+         * Fetch the realtime data from the registered contexts.
+         */
+        'WebAudio.getRealtimeData': {
+            paramsType: [Protocol.WebAudio.GetRealtimeDataRequest];
+            returnType: Protocol.WebAudio.GetRealtimeDataResponse;
         };
     }
 }

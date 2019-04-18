@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r652253
+###### _2019-04-18 12:15:58_ | Diff: [b97d14d...7e6cca5](https://github.com/ChromeDevTools/devtools-protocol/compare/b97d14d...7e6cca5)
+#### `Page`: modified event
+* [`Page.frameRequestedNavigation`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameRequestedNavigation) - The `frameId` in the parameters had `description` _updated_. 
+
+
 ## Roll protocol to r651096
 ###### _2019-04-15 18:15:55_ | Diff: [a5c2d16...fe5e1f5](https://github.com/ChromeDevTools/devtools-protocol/compare/a5c2d16...fe5e1f5)
 #### `Security`: modified type

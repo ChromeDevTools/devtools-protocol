@@ -14569,6 +14569,153 @@
                     ]
                 }
             ]
+        },
+        {
+            "domain": "WebAudio",
+            "description": "This domain allows inspection of Web Audio API.\nhttps://webaudio.github.io/web-audio-api/",
+            "experimental": true,
+            "types": [
+                {
+                    "id": "ContextId",
+                    "description": "Context's UUID in string",
+                    "type": "string"
+                },
+                {
+                    "id": "ContextType",
+                    "description": "Enum of BaseAudioContext types",
+                    "type": "string",
+                    "enum": [
+                        "realtime",
+                        "offline"
+                    ]
+                },
+                {
+                    "id": "ContextState",
+                    "description": "Enum of AudioContextState from the spec",
+                    "type": "string",
+                    "enum": [
+                        "suspended",
+                        "running",
+                        "closed"
+                    ]
+                },
+                {
+                    "id": "ContextRealtimeData",
+                    "description": "Fields in AudioContext that change in real-time. These are not updated\non OfflineAudioContext.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "currentTime",
+                            "description": "The current context time in second in BaseAudioContext.",
+                            "optional": true,
+                            "type": "number"
+                        },
+                        {
+                            "name": "renderCapacity",
+                            "description": "The time spent on rendering graph divided by render qunatum duration,\nand multiplied by 100. 100 means the audio renderer reached the full\ncapacity and glitch may occur.",
+                            "optional": true,
+                            "type": "number"
+                        }
+                    ]
+                },
+                {
+                    "id": "BaseAudioContext",
+                    "description": "Protocol object for BaseAudioContext",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "contextId",
+                            "$ref": "ContextId"
+                        },
+                        {
+                            "name": "contextType",
+                            "$ref": "ContextType"
+                        },
+                        {
+                            "name": "contextState",
+                            "$ref": "ContextState"
+                        },
+                        {
+                            "name": "realtimeData",
+                            "optional": true,
+                            "$ref": "ContextRealtimeData"
+                        },
+                        {
+                            "name": "callbackBufferSize",
+                            "description": "Platform-dependent callback buffer size.",
+                            "type": "number"
+                        },
+                        {
+                            "name": "maxOutputChannelCount",
+                            "description": "Number of output channels supported by audio hardware in use.",
+                            "type": "number"
+                        },
+                        {
+                            "name": "sampleRate",
+                            "description": "Context sample rate.",
+                            "type": "number"
+                        }
+                    ]
+                }
+            ],
+            "commands": [
+                {
+                    "name": "enable",
+                    "description": "Enables the WebAudio domain and starts sending context lifetime events."
+                },
+                {
+                    "name": "disable",
+                    "description": "Disables the WebAudio domain."
+                },
+                {
+                    "name": "getRealtimeData",
+                    "description": "Fetch the realtime data from the registered contexts.",
+                    "parameters": [
+                        {
+                            "name": "contextId",
+                            "$ref": "ContextId"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "realtimeData",
+                            "$ref": "ContextRealtimeData"
+                        }
+                    ]
+                }
+            ],
+            "events": [
+                {
+                    "name": "contextCreated",
+                    "description": "Notifies that a new BaseAudioContext has been created.",
+                    "parameters": [
+                        {
+                            "name": "context",
+                            "$ref": "BaseAudioContext"
+                        }
+                    ]
+                },
+                {
+                    "name": "contextDestroyed",
+                    "description": "Notifies that existing BaseAudioContext has been destroyed.",
+                    "parameters": [
+                        {
+                            "name": "contextId",
+                            "$ref": "ContextId"
+                        }
+                    ]
+                },
+                {
+                    "name": "contextChanged",
+                    "description": "Notifies that existing BaseAudioContext has changed some properties (id stays the same)..",
+                    "parameters": [
+                        {
+                            "name": "context",
+                            "$ref": "BaseAudioContext"
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }

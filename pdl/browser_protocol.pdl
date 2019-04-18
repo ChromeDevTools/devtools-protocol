@@ -6693,3 +6693,76 @@ experimental domain Fetch
       # If this is set, client should respond with continueRequest that
       # contains AuthChallengeResponse.
       AuthChallenge authChallenge
+
+# This domain allows inspection of Web Audio API.
+# https://webaudio.github.io/web-audio-api/
+experimental domain WebAudio
+
+  # Context's UUID in string
+  type ContextId extends string
+
+  # Enum of BaseAudioContext types
+  type ContextType extends string
+    enum
+      realtime
+      offline
+
+  # Enum of AudioContextState from the spec
+  type ContextState extends string
+    enum
+      suspended
+      running
+      closed
+
+  # Fields in AudioContext that change in real-time. These are not updated
+  # on OfflineAudioContext.
+  type ContextRealtimeData extends object
+    properties
+      # The current context time in second in BaseAudioContext.
+      optional number currentTime
+      # The time spent on rendering graph divided by render qunatum duration,
+      # and multiplied by 100. 100 means the audio renderer reached the full
+      # capacity and glitch may occur.
+      optional number renderCapacity
+
+  # Protocol object for BaseAudioContext
+  type BaseAudioContext extends object
+    properties
+      ContextId contextId
+      ContextType contextType
+      ContextState contextState
+      optional ContextRealtimeData realtimeData
+      # Platform-dependent callback buffer size.
+      number callbackBufferSize
+      # Number of output channels supported by audio hardware in use.
+      number maxOutputChannelCount
+      # Context sample rate.
+      number sampleRate
+
+  # Enables the WebAudio domain and starts sending context lifetime events.
+  command enable
+
+  # Disables the WebAudio domain.
+  command disable
+
+  # Fetch the realtime data from the registered contexts.
+  command getRealtimeData
+    parameters
+      ContextId contextId
+    returns
+      ContextRealtimeData realtimeData
+
+  # Notifies that a new BaseAudioContext has been created.
+  event contextCreated
+    parameters
+      BaseAudioContext context
+
+  # Notifies that existing BaseAudioContext has been destroyed.
+  event contextDestroyed
+    parameters
+      ContextId contextId
+
+  # Notifies that existing BaseAudioContext has changed some properties (id stays the same)..
+  event contextChanged
+    parameters
+      BaseAudioContext context

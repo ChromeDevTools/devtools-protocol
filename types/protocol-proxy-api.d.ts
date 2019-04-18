@@ -94,6 +94,8 @@ export namespace ProtocolProxyApi {
 
         Fetch: FetchApi;
 
+        WebAudio: WebAudioApi;
+
     }
 
 
@@ -3023,6 +3025,39 @@ export namespace ProtocolProxyApi {
          * The request is paused until client responds with continueWithAuth.
          */
         on(event: 'authRequired', listener: (params: Protocol.Fetch.AuthRequiredEvent) => void): void;
+
+    }
+
+    export interface WebAudioApi {
+        /**
+         * Enables the WebAudio domain and starts sending context lifetime events.
+         */
+        enable(): Promise<void>;
+
+        /**
+         * Disables the WebAudio domain.
+         */
+        disable(): Promise<void>;
+
+        /**
+         * Fetch the realtime data from the registered contexts.
+         */
+        getRealtimeData(params: Protocol.WebAudio.GetRealtimeDataRequest): Promise<Protocol.WebAudio.GetRealtimeDataResponse>;
+
+        /**
+         * Notifies that a new BaseAudioContext has been created.
+         */
+        on(event: 'contextCreated', listener: (params: Protocol.WebAudio.ContextCreatedEvent) => void): void;
+
+        /**
+         * Notifies that existing BaseAudioContext has been destroyed.
+         */
+        on(event: 'contextDestroyed', listener: (params: Protocol.WebAudio.ContextDestroyedEvent) => void): void;
+
+        /**
+         * Notifies that existing BaseAudioContext has changed some properties (id stays the same)..
+         */
+        on(event: 'contextChanged', listener: (params: Protocol.WebAudio.ContextChangedEvent) => void): void;
 
     }
 }
