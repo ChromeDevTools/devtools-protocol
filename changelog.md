@@ -1,5 +1,25 @@
 
 
+## Roll protocol to r652382
+###### _2019-04-18 16:15:52_ | Diff: [7e6cca5...3348d18](https://github.com/ChromeDevTools/devtools-protocol/compare/7e6cca5...3348d18)
+#### `WebAudio`: new domain
+* [`WebAudio.WebAudio`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#domain-WebAudio)
+#### `WebAudio`: new commands
+* [`WebAudio.enable`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#method-enable)
+* [`WebAudio.disable`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#method-disable)
+* [`WebAudio.getRealtimeData`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#method-getRealtimeData)
+#### `WebAudio`: new events
+* [`WebAudio.contextCreated`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#event-contextCreated)
+* [`WebAudio.contextDestroyed`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#event-contextDestroyed)
+* [`WebAudio.contextChanged`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#event-contextChanged)
+#### `WebAudio`: new types
+* [`WebAudio.ContextId`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-ContextId)
+* [`WebAudio.ContextType`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-ContextType)
+* [`WebAudio.ContextState`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-ContextState)
+* [`WebAudio.ContextRealtimeData`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-ContextRealtimeData)
+* [`WebAudio.BaseAudioContext`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-BaseAudioContext)
+
+
 ## Roll protocol to r652253
 ###### _2019-04-18 12:15:58_ | Diff: [b97d14d...7e6cca5](https://github.com/ChromeDevTools/devtools-protocol/compare/b97d14d...7e6cca5)
 #### `Page`: modified event

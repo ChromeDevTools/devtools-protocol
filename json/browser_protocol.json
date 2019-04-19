@@ -8210,7 +8210,9 @@
                     "type": "string",
                     "enum": [
                         "Strict",
-                        "Lax"
+                        "Lax",
+                        "Extended",
+                        "None"
                     ]
                 },
                 {

@@ -3752,6 +3752,8 @@ domain Network
     enum
       Strict
       Lax
+      Extended
+      None
 
   # Timing information for the request.
   type ResourceTiming extends object

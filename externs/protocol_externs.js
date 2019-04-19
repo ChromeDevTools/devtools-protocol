@@ -4466,7 +4466,9 @@ Protocol.Network.ConnectionType = {
 /** @enum {string} */
 Protocol.Network.CookieSameSite = {
     Strict: "Strict",
-    Lax: "Lax"
+    Lax: "Lax",
+    Extended: "Extended",
+    None: "None"
 };
 
 /** @typedef {!{requestTime:(number), proxyStart:(number), proxyEnd:(number), dnsStart:(number), dnsEnd:(number), connectStart:(number), connectEnd:(number), sslStart:(number), sslEnd:(number), workerStart:(number), workerReady:(number), sendStart:(number), sendEnd:(number), pushStart:(number), pushEnd:(number), receiveHeadersEnd:(number)}} */

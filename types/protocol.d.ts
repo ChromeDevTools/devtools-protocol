@@ -7252,7 +7252,7 @@ export namespace Protocol {
          * Represents the cookie's 'SameSite' status:
          * https://tools.ietf.org/html/draft-west-first-party-cookies
          */
-        export type CookieSameSite = ('Strict' | 'Lax');
+        export type CookieSameSite = ('Strict' | 'Lax' | 'Extended' | 'None');
 
         /**
          * Timing information for the request.
