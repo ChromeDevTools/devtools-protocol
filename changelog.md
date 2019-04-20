@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r652664
+###### _2019-04-19 15:15:54_ | Diff: [3348d18...ba2ecc6](https://github.com/ChromeDevTools/devtools-protocol/compare/3348d18...ba2ecc6)
+#### `Network`: modified type
+* [`Network.CookieSameSite`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CookieSameSite) - The enum's `Extended` _added_. The enum's `None` _added_. 
+
+
 ## Roll protocol to r652382
 ###### _2019-04-18 16:15:52_ | Diff: [7e6cca5...3348d18](https://github.com/ChromeDevTools/devtools-protocol/compare/7e6cca5...3348d18)
 #### `WebAudio`: new domain
