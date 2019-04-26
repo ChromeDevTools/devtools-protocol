@@ -5910,6 +5910,11 @@ Protocol.PageDispatcher.prototype.frameStartedLoading = function(frameId) {};
  * @param {Protocol.Page.FrameId} frameId
  */
 Protocol.PageDispatcher.prototype.frameStoppedLoading = function(frameId) {};
+/**
+ * @param {Protocol.Page.FrameId} frameId
+ * @param {string} url
+ */
+Protocol.PageDispatcher.prototype.downloadWillBegin = function(frameId, url) {};
 Protocol.PageDispatcher.prototype.interstitialHidden = function() {};
 Protocol.PageDispatcher.prototype.interstitialShown = function() {};
 /**

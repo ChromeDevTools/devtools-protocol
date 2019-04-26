@@ -2532,6 +2532,11 @@ export namespace ProtocolProxyApi {
         on(event: 'frameStoppedLoading', listener: (params: Protocol.Page.FrameStoppedLoadingEvent) => void): void;
 
         /**
+         * Fired when page is about to start a download.
+         */
+        on(event: 'downloadWillBegin', listener: (params: Protocol.Page.DownloadWillBeginEvent) => void): void;
+
+        /**
          * Fired when interstitial page was hidden
          */
         on(event: 'interstitialHidden', listener: () => void): void;

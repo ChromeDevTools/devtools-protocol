@@ -12278,6 +12278,23 @@
                     ]
                 },
                 {
+                    "name": "downloadWillBegin",
+                    "description": "Fired when page is about to start a download.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "frameId",
+                            "description": "Id of the frame that caused download to begin.",
+                            "$ref": "FrameId"
+                        },
+                        {
+                            "name": "url",
+                            "description": "URL of the resource being downloaded.",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "interstitialHidden",
                     "description": "Fired when interstitial page was hidden"
                 },

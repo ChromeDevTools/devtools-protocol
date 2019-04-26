@@ -5620,6 +5620,14 @@ domain Page
       # Id of the frame that has stopped loading.
       FrameId frameId
 
+  # Fired when page is about to start a download.
+  experimental event downloadWillBegin
+    parameters
+      # Id of the frame that caused download to begin.
+      FrameId frameId
+      # URL of the resource being downloaded.
+      string url
+
   # Fired when interstitial page was hidden
   event interstitialHidden
 

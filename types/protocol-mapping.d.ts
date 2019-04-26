@@ -350,6 +350,10 @@ export namespace ProtocolMapping {
          */
         'Page.frameStoppedLoading': [Protocol.Page.FrameStoppedLoadingEvent];
         /**
+         * Fired when page is about to start a download.
+         */
+        'Page.downloadWillBegin': [Protocol.Page.DownloadWillBeginEvent];
+        /**
          * Fired when interstitial page was hidden
          */
         'Page.interstitialHidden': [];

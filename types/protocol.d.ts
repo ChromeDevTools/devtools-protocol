@@ -10000,6 +10000,20 @@ export namespace Protocol {
         }
 
         /**
+         * Fired when page is about to start a download.
+         */
+        export interface DownloadWillBeginEvent {
+            /**
+             * Id of the frame that caused download to begin.
+             */
+            frameId: FrameId;
+            /**
+             * URL of the resource being downloaded.
+             */
+            url: string;
+        }
+
+        /**
          * Fired when a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload) has been
          * closed.
          */
