@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r654576
+###### _2019-04-26 13:16:29_ | Diff: [52b6990...ac6e0e0](https://github.com/ChromeDevTools/devtools-protocol/compare/52b6990...ac6e0e0)
+#### `Page`: new event
+* [`Page.downloadWillBegin`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-downloadWillBegin)
+
+
 ## Roll protocol to r652664
 ###### _2019-04-19 15:15:54_ | Diff: [3348d18...ba2ecc6](https://github.com/ChromeDevTools/devtools-protocol/compare/3348d18...ba2ecc6)
 #### `Network`: modified type
