@@ -1194,6 +1194,7 @@
                         "midiSysex",
                         "notifications",
                         "paymentHandler",
+                        "periodicBackgroundSync",
                         "protectedMediaIdentifier",
                         "sensors",
                         "videoCapture",

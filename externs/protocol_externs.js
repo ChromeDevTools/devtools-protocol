@@ -763,6 +763,7 @@ Protocol.Browser.PermissionType = {
     MidiSysex: "midiSysex",
     Notifications: "notifications",
     PaymentHandler: "paymentHandler",
+    PeriodicBackgroundSync: "periodicBackgroundSync",
     ProtectedMediaIdentifier: "protectedMediaIdentifier",
     Sensors: "sensors",
     VideoCapture: "videoCapture",
