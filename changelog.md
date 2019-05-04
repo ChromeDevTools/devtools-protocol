@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r655971
+###### _2019-05-02 05:16:27_ | Diff: [f4514f1...2dfb37c](https://github.com/ChromeDevTools/devtools-protocol/compare/f4514f1...2dfb37c)
+#### `Browser`: modified type
+* [`Browser.PermissionType`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-PermissionType) - The enum's `protectedMediaIdentifier` _updated_. The enum's `sensors` _updated_. The enum's `videoCapture` _updated_. The enum's `idleDetection` _updated_. The enum's `idleDetection` _added_. 
+
+
 ## Roll protocol to r654576
 ###### _2019-04-26 13:16:29_ | Diff: [52b6990...ac6e0e0](https://github.com/ChromeDevTools/devtools-protocol/compare/52b6990...ac6e0e0)
 #### `Page`: new event
