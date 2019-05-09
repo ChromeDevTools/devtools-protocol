@@ -653,6 +653,13 @@ export namespace ProtocolMapping {
             returnType: Protocol.Debugger.SetBreakpointResponse;
         };
         /**
+         * Sets instrumentation breakpoint.
+         */
+        'Debugger.setInstrumentationBreakpoint': {
+            paramsType: [Protocol.Debugger.SetInstrumentationBreakpointRequest];
+            returnType: Protocol.Debugger.SetInstrumentationBreakpointResponse;
+        };
+        /**
          * Sets JavaScript breakpoint at given location specified either by URL or URL regex. Once this
          * command is issued, all existing parsed scripts will have breakpoints resolved and returned in
          * `locations` property. Further matching script parsing will result in subsequent

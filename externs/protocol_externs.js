@@ -7620,6 +7620,20 @@ Protocol.DebuggerAgent.SetBreakpointResponse;
 Protocol.DebuggerAgent.prototype.invoke_setBreakpoint = function(obj) {};
 
 /**
+ * @param {string} instrumentation
+ * @return {!Promise<?Protocol.Debugger.BreakpointId>}
+ */
+Protocol.DebuggerAgent.prototype.setInstrumentationBreakpoint = function(instrumentation) {};
+/** @typedef {!{instrumentation: string}} */
+Protocol.DebuggerAgent.SetInstrumentationBreakpointRequest;
+/** @typedef {!{breakpointId: Protocol.Debugger.BreakpointId}} */
+Protocol.DebuggerAgent.SetInstrumentationBreakpointResponse;
+/**
+ * @param {!Protocol.DebuggerAgent.SetInstrumentationBreakpointRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.SetInstrumentationBreakpointResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_setInstrumentationBreakpoint = function(obj) {};
+
+/**
  * @param {number} lineNumber
  * @param {string=} opt_url
  * @param {string=} opt_urlRegex

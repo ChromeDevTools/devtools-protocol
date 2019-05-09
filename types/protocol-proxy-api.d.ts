@@ -214,6 +214,11 @@ export namespace ProtocolProxyApi {
         setBreakpoint(params: Protocol.Debugger.SetBreakpointRequest): Promise<Protocol.Debugger.SetBreakpointResponse>;
 
         /**
+         * Sets instrumentation breakpoint.
+         */
+        setInstrumentationBreakpoint(params: Protocol.Debugger.SetInstrumentationBreakpointRequest): Promise<Protocol.Debugger.SetInstrumentationBreakpointResponse>;
+
+        /**
          * Sets JavaScript breakpoint at given location specified either by URL or URL regex. Once this
          * command is issued, all existing parsed scripts will have breakpoints resolved and returned in
          * `locations` property. Further matching script parsing will result in subsequent

@@ -413,6 +413,20 @@ export namespace Protocol {
             actualLocation: Location;
         }
 
+        export interface SetInstrumentationBreakpointRequest {
+            /**
+             * Instrumentation name.
+             */
+            instrumentation: ('beforeScriptExecution' | 'beforeScriptWithSourceMapExecution');
+        }
+
+        export interface SetInstrumentationBreakpointResponse {
+            /**
+             * Id of the created breakpoint for further reference.
+             */
+            breakpointId: BreakpointId;
+        }
+
         export interface SetBreakpointByUrlRequest {
             /**
              * Line number to set breakpoint at.
@@ -592,7 +606,7 @@ export namespace Protocol {
             /**
              * Pause reason.
              */
-            reason: ('XHR' | 'DOM' | 'EventListener' | 'exception' | 'assert' | 'debugCommand' | 'promiseRejection' | 'OOM' | 'other' | 'ambiguous');
+            reason: ('ambiguous' | 'assert' | 'debugCommand' | 'DOM' | 'EventListener' | 'exception' | 'instrumentation' | 'OOM' | 'other' | 'promiseRejection' | 'XHR');
             /**
              * Object containing break-specific auxiliary properties.
              */
