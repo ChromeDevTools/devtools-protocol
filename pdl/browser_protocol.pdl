@@ -4716,6 +4716,8 @@ experimental domain Overlay
     parameters
       # Id of the node to get highlight object for.
       DOM.NodeId nodeId
+      # Whether to include distance info.
+      optional boolean includeDistance
     returns
       # Highlight data for the node.
       object highlight

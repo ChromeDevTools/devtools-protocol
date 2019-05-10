@@ -10357,6 +10357,12 @@
                             "name": "nodeId",
                             "description": "Id of the node to get highlight object for.",
                             "$ref": "DOM.NodeId"
+                        },
+                        {
+                            "name": "includeDistance",
+                            "description": "Whether to include distance info.",
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ],
                     "returns": [

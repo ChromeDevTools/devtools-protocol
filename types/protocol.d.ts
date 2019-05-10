@@ -8784,6 +8784,10 @@ export namespace Protocol {
              * Id of the node to get highlight object for.
              */
             nodeId: DOM.NodeId;
+            /**
+             * Whether to include distance info.
+             */
+            includeDistance?: boolean;
         }
 
         export interface GetHighlightObjectForTestResponse {

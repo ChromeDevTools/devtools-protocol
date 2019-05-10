@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r658093
+###### _2019-05-09 06:16:29_ | Diff: [25da6a0...56dd9e6](https://github.com/ChromeDevTools/devtools-protocol/compare/25da6a0...56dd9e6)
+#### `Debugger`: new command
+* [`Debugger.setInstrumentationBreakpoint`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-setInstrumentationBreakpoint)
+#### `Debugger`: modified event
+* [`Debugger.paused`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-paused) - The `reason` in the parameters had `XHR` _updated_. The `reason` in the parameters had `DOM` _updated_. The `reason` in the parameters had `EventListener` _updated_. The `reason` in the parameters had `exception` _updated_. The `reason` in the parameters had `assert` _updated_. The `reason` in the parameters had `debugCommand` _updated_. The `reason` in the parameters had `promiseRejection` _updated_. The `reason` in the parameters had `ambiguous` _updated_. The `1` in the parameters had `XHR` _added_. 
+
+
 ## Roll protocol to r655971
 ###### _2019-05-02 05:16:27_ | Diff: [f4514f1...2dfb37c](https://github.com/ChromeDevTools/devtools-protocol/compare/f4514f1...2dfb37c)
 #### `Browser`: modified type
