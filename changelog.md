@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r658716
+###### _2019-05-10 13:15:57_ | Diff: [56dd9e6...13c78cc](https://github.com/ChromeDevTools/devtools-protocol/compare/56dd9e6...13c78cc)
+#### `Overlay`: modified command
+* [`Overlay.getHighlightObjectForTest`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-getHighlightObjectForTest) - The parameters's `includeDistance` _added_. 
+
+
 ## Roll protocol to r658093
 ###### _2019-05-09 06:16:29_ | Diff: [25da6a0...56dd9e6](https://github.com/ChromeDevTools/devtools-protocol/compare/25da6a0...56dd9e6)
 #### `Debugger`: new command
