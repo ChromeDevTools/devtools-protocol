@@ -524,7 +524,9 @@ Protocol.BackgroundServiceAgent.prototype.invoke_clearEvents = function(obj) {};
 /** @enum {string} */
 Protocol.BackgroundService.ServiceName = {
     BackgroundFetch: "backgroundFetch",
-    BackgroundSync: "backgroundSync"
+    BackgroundSync: "backgroundSync",
+    PushMessaging: "pushMessaging",
+    Notifications: "notifications"
 };
 
 /** @typedef {!{key:(string), value:(string)}} */
