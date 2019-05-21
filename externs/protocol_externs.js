@@ -6551,7 +6551,7 @@ Protocol.SystemInfoAgent.GetProcessInfoResponse;
  * @return {!Promise<!Protocol.SystemInfoAgent.GetProcessInfoResponse>} */
 Protocol.SystemInfoAgent.prototype.invoke_getProcessInfo = function(obj) {};
 
-/** @typedef {!{vendorId:(number), deviceId:(number), vendorString:(string), deviceString:(string)}} */
+/** @typedef {!{vendorId:(number), deviceId:(number), vendorString:(string), deviceString:(string), driverVendor:(string), driverVersion:(string)}} */
 Protocol.SystemInfo.GPUDevice;
 
 /** @typedef {!{devices:(!Array<Protocol.SystemInfo.GPUDevice>), auxAttributes:(!Object|undefined), featureStatus:(!Object|undefined), driverBugWorkarounds:(!Array<string>)}} */

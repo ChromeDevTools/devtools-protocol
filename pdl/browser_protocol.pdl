@@ -6112,6 +6112,10 @@ experimental domain SystemInfo
       string vendorString
       # String description of the GPU device, if the PCI ID is not available.
       string deviceString
+      # String description of the GPU driver vendor.
+      string driverVendor
+      # String description of the GPU driver version.
+      string driverVersion
 
   # Provides information about the GPU(s) on the system.
   type GPUInfo extends object

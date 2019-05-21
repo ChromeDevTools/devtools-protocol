@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r661407
+###### _2019-05-20 11:16:28_ | Diff: [95c7225...d249f2d](https://github.com/ChromeDevTools/devtools-protocol/compare/95c7225...d249f2d)
+#### `BackgroundService`: modified type
+* [`BackgroundService.ServiceName`](https://chromedevtools.github.io/devtools-protocol/tot/BackgroundService/#type-ServiceName) - The enum's `pushMessaging` _added_. The enum's `notifications` _added_. 
+
+
 ## Roll protocol to r658716
 ###### _2019-05-10 13:15:57_ | Diff: [56dd9e6...13c78cc](https://github.com/ChromeDevTools/devtools-protocol/compare/56dd9e6...13c78cc)
 #### `Overlay`: modified command

@@ -10652,6 +10652,14 @@ export namespace Protocol {
              * String description of the GPU device, if the PCI ID is not available.
              */
             deviceString: string;
+            /**
+             * String description of the GPU driver vendor.
+             */
+            driverVendor: string;
+            /**
+             * String description of the GPU driver version.
+             */
+            driverVersion: string;
         }
 
         /**
