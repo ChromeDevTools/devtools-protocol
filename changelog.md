@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r661591
+###### _2019-05-20 19:16:08_ | Diff: [d249f2d...4023d08](https://github.com/ChromeDevTools/devtools-protocol/compare/d249f2d...4023d08)
+#### `SystemInfo`: modified type
+* [`SystemInfo.GPUDevice`](https://chromedevtools.github.io/devtools-protocol/tot/SystemInfo/#type-GPUDevice) - The properties's `driverVendor` _added_. The properties's `driverVersion` _added_. 
+
+
 ## Roll protocol to r661407
 ###### _2019-05-20 11:16:28_ | Diff: [95c7225...d249f2d](https://github.com/ChromeDevTools/devtools-protocol/compare/95c7225...d249f2d)
 #### `BackgroundService`: modified type
