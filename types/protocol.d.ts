@@ -7557,6 +7557,10 @@ export namespace Protocol {
              */
             fromServiceWorker?: boolean;
             /**
+             * Specifies that the request was served from the prefetch cache.
+             */
+            fromPrefetchCache?: boolean;
+            /**
              * Total number of bytes received for this request so far.
              */
             encodedDataLength: number;

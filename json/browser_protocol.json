@@ -8628,6 +8628,12 @@
                             "type": "boolean"
                         },
                         {
+                            "name": "fromPrefetchCache",
+                            "description": "Specifies that the request was served from the prefetch cache.",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
                             "name": "encodedDataLength",
                             "description": "Total number of bytes received for this request so far.",
                             "type": "number"
