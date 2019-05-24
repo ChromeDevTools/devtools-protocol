@@ -1561,6 +1561,11 @@ export namespace ProtocolProxyApi {
         setVirtualTimePolicy(params: Protocol.Emulation.SetVirtualTimePolicyRequest): Promise<Protocol.Emulation.SetVirtualTimePolicyResponse>;
 
         /**
+         * Overrides default host system timezone with the specified one.
+         */
+        setTimezoneOverride(params: Protocol.Emulation.SetTimezoneOverrideRequest): Promise<void>;
+
+        /**
          * Resizes the frame/viewport of the page. Note that this does not affect the frame's container
          * (e.g. browser window). Can be used to produce screenshots of the specified size. Not supported
          * on Android.

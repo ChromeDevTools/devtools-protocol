@@ -6128,6 +6128,18 @@
                     ]
                 },
                 {
+                    "name": "setTimezoneOverride",
+                    "description": "Overrides default host system timezone with the specified one.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "timezoneId",
+                            "description": "The timezone identifier. If empty, disables the override and\nrestores default host system timezone.",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "setVisibleSize",
                     "description": "Resizes the frame/viewport of the page. Note that this does not affect the frame's container\n(e.g. browser window). Can be used to produce screenshots of the specified size. Not supported\non Android.",
                     "experimental": true,

@@ -2922,6 +2922,20 @@ Protocol.EmulationAgent.SetVirtualTimePolicyResponse;
 Protocol.EmulationAgent.prototype.invoke_setVirtualTimePolicy = function(obj) {};
 
 /**
+ * @param {string} timezoneId
+ * @return {!Promise<undefined>}
+ */
+Protocol.EmulationAgent.prototype.setTimezoneOverride = function(timezoneId) {};
+/** @typedef {!{timezoneId: string}} */
+Protocol.EmulationAgent.SetTimezoneOverrideRequest;
+/** @typedef {Object|undefined} */
+Protocol.EmulationAgent.SetTimezoneOverrideResponse;
+/**
+ * @param {!Protocol.EmulationAgent.SetTimezoneOverrideRequest} obj
+ * @return {!Promise<!Protocol.EmulationAgent.SetTimezoneOverrideResponse>} */
+Protocol.EmulationAgent.prototype.invoke_setTimezoneOverride = function(obj) {};
+
+/**
  * @param {number} width
  * @param {number} height
  * @return {!Promise<undefined>}

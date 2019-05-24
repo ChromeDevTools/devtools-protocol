@@ -2770,6 +2770,13 @@ domain Emulation
       # Absolute timestamp at which virtual time was first enabled (up time in milliseconds).
       number virtualTimeTicksBase
 
+  # Overrides default host system timezone with the specified one.
+  experimental command setTimezoneOverride
+    parameters
+      # The timezone identifier. If empty, disables the override and
+      # restores default host system timezone.
+      string timezoneId
+
   # Resizes the frame/viewport of the page. Note that this does not affect the frame's container
   # (e.g. browser window). Can be used to produce screenshots of the specified size. Not supported
   # on Android.

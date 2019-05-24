@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r662959
+###### _2019-05-23 21:16:03_ | Diff: [58c4454...7deb3ca](https://github.com/ChromeDevTools/devtools-protocol/compare/58c4454...7deb3ca)
+#### `Network`: modified type
+* [`Network.Response`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Response) - The `timing` in the properties had `optional` _removed_. The `timing` in the properties had `$ref` _removed_. The `protocol` in the properties had `type` _removed_. The `securityState` in the properties had `$ref` _removed_. The `securityDetails` in the properties had `optional` _removed_. The `encodedDataLength` in the properties had `name` _updated_. The `encodedDataLength` in the properties had `description` _updated_. The `encodedDataLength` in the properties had `type` _updated_. The `timing` in the properties had `name` _updated_. The `timing` in the properties had `description` _updated_. The `protocol` in the properties had `name` _updated_. The `protocol` in the properties had `description` _updated_. The `securityState` in the properties had `name` _updated_. The `securityState` in the properties had `description` _updated_. The `securityDetails` in the properties had `name` _updated_. The `securityDetails` in the properties had `description` _updated_. The `securityDetails` in the properties had `$ref` _updated_. The properties's `optional` _added_ (2 times). The properties's `type` _added_ (2 times). The properties's `$ref` _added_. The properties's `securityDetails` _added_. 
+
+
 ## Roll protocol to r661591
 ###### _2019-05-20 19:16:08_ | Diff: [d249f2d...4023d08](https://github.com/ChromeDevTools/devtools-protocol/compare/d249f2d...4023d08)
 #### `SystemInfo`: modified type

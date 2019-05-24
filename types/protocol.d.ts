@@ -5956,6 +5956,14 @@ export namespace Protocol {
             virtualTimeTicksBase: number;
         }
 
+        export interface SetTimezoneOverrideRequest {
+            /**
+             * The timezone identifier. If empty, disables the override and
+             * restores default host system timezone.
+             */
+            timezoneId: string;
+        }
+
         export interface SetVisibleSizeRequest {
             /**
              * Frame width (DIP).
