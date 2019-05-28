@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r663310
+###### _2019-05-24 16:16:12_ | Diff: [7deb3ca...9c1151e](https://github.com/ChromeDevTools/devtools-protocol/compare/7deb3ca...9c1151e)
+#### `Emulation`: new command
+* [`Emulation.setTimezoneOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setTimezoneOverride)
+
+
 ## Roll protocol to r662959
 ###### _2019-05-23 21:16:03_ | Diff: [58c4454...7deb3ca](https://github.com/ChromeDevTools/devtools-protocol/compare/58c4454...7deb3ca)
 #### `Network`: modified type
