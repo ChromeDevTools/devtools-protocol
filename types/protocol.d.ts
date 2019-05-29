@@ -11567,6 +11567,13 @@ export namespace Protocol {
             context: BaseAudioContext;
         }
     }
+
+    /**
+     * This domain allows configuring virtual authenticators to test the WebAuthn
+     * API.
+     */
+    export namespace WebAuthn {
+    }
 }
 
 export default Protocol;

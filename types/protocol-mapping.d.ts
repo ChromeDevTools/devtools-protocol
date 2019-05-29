@@ -3619,6 +3619,21 @@ export namespace ProtocolMapping {
             paramsType: [Protocol.WebAudio.GetRealtimeDataRequest];
             returnType: Protocol.WebAudio.GetRealtimeDataResponse;
         };
+        /**
+         * Enable the WebAuthn domain and start intercepting credential storage and
+         * retrieval with a virtual authenticator.
+         */
+        'WebAuthn.enable': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
+         * Disable the WebAuthn domain.
+         */
+        'WebAuthn.disable': {
+            paramsType: [];
+            returnType: void;
+        };
     }
 }
 

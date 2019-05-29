@@ -7298,6 +7298,41 @@ Protocol.WebAudioDispatcher.prototype.contextDestroyed = function(contextId) {};
  * @param {Protocol.WebAudio.BaseAudioContext} context
  */
 Protocol.WebAudioDispatcher.prototype.contextChanged = function(context) {};
+Protocol.WebAuthn = {};
+
+
+/**
+ * @constructor
+*/
+Protocol.WebAuthnAgent = function(){};
+
+/**
+ * @return {!Promise<undefined>}
+ */
+Protocol.WebAuthnAgent.prototype.enable = function() {};
+/** @typedef {Object|undefined} */
+Protocol.WebAuthnAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.WebAuthnAgent.EnableResponse;
+/**
+ * @param {!Protocol.WebAuthnAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.WebAuthnAgent.EnableResponse>} */
+Protocol.WebAuthnAgent.prototype.invoke_enable = function(obj) {};
+
+/**
+ * @return {!Promise<undefined>}
+ */
+Protocol.WebAuthnAgent.prototype.disable = function() {};
+/** @typedef {Object|undefined} */
+Protocol.WebAuthnAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.WebAuthnAgent.DisableResponse;
+/**
+ * @param {!Protocol.WebAuthnAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.WebAuthnAgent.DisableResponse>} */
+Protocol.WebAuthnAgent.prototype.invoke_disable = function(obj) {};
+/** @interface */
+Protocol.WebAuthnDispatcher = function() {};
 Protocol.Console = {};
 
 
@@ -9107,6 +9142,12 @@ Protocol.TargetBase.prototype.webAudioAgent = function(){};
  * @param {!Protocol.WebAudioDispatcher} dispatcher
  */
 Protocol.TargetBase.prototype.registerWebAudioDispatcher = function(dispatcher) {}
+/** @return {!Protocol.WebAuthnAgent}*/
+Protocol.TargetBase.prototype.webAuthnAgent = function(){};
+/**
+ * @param {!Protocol.WebAuthnDispatcher} dispatcher
+ */
+Protocol.TargetBase.prototype.registerWebAuthnDispatcher = function(dispatcher) {}
 /** @return {!Protocol.ConsoleAgent}*/
 Protocol.TargetBase.prototype.consoleAgent = function(){};
 /**

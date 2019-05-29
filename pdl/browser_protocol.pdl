@@ -6794,3 +6794,13 @@ experimental domain WebAudio
   event contextChanged
     parameters
       BaseAudioContext context
+
+# This domain allows configuring virtual authenticators to test the WebAuthn
+# API.
+experimental domain WebAuthn
+  # Enable the WebAuthn domain and start intercepting credential storage and
+  # retrieval with a virtual authenticator.
+  command enable
+
+  # Disable the WebAuthn domain.
+  command disable

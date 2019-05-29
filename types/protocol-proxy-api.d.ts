@@ -96,6 +96,8 @@ export namespace ProtocolProxyApi {
 
         WebAudio: WebAudioApi;
 
+        WebAuthn: WebAuthnApi;
+
     }
 
 
@@ -3073,6 +3075,20 @@ export namespace ProtocolProxyApi {
          * Notifies that existing BaseAudioContext has changed some properties (id stays the same)..
          */
         on(event: 'contextChanged', listener: (params: Protocol.WebAudio.ContextChangedEvent) => void): void;
+
+    }
+
+    export interface WebAuthnApi {
+        /**
+         * Enable the WebAuthn domain and start intercepting credential storage and
+         * retrieval with a virtual authenticator.
+         */
+        enable(): Promise<void>;
+
+        /**
+         * Disable the WebAuthn domain.
+         */
+        disable(): Promise<void>;
 
     }
 }
