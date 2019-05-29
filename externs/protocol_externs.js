@@ -1387,12 +1387,15 @@ Protocol.CastAgent.StopCastingResponse;
  * @param {!Protocol.CastAgent.StopCastingRequest} obj
  * @return {!Promise<!Protocol.CastAgent.StopCastingResponse>} */
 Protocol.CastAgent.prototype.invoke_stopCasting = function(obj) {};
+
+/** @typedef {!{name:(string), id:(string), session:(string|undefined)}} */
+Protocol.Cast.Sink;
 /** @interface */
 Protocol.CastDispatcher = function() {};
 /**
- * @param {!Array<string>} sinkNames
+ * @param {!Array<Protocol.Cast.Sink>} sinks
  */
-Protocol.CastDispatcher.prototype.sinksUpdated = function(sinkNames) {};
+Protocol.CastDispatcher.prototype.sinksUpdated = function(sinks) {};
 /**
  * @param {string} issueMessage
  */
@@ -6686,10 +6689,12 @@ Protocol.TargetAgent.prototype.invoke_getBrowserContexts = function(obj) {};
  * @param {number=} opt_height
  * @param {Protocol.Target.BrowserContextID=} opt_browserContextId
  * @param {boolean=} opt_enableBeginFrameControl
+ * @param {boolean=} opt_newWindow
+ * @param {boolean=} opt_background
  * @return {!Promise<?Protocol.Target.TargetID>}
  */
-Protocol.TargetAgent.prototype.createTarget = function(url, opt_width, opt_height, opt_browserContextId, opt_enableBeginFrameControl) {};
-/** @typedef {!{url: string, width: (number|undefined), browserContextId: (Protocol.Target.BrowserContextID|undefined), enableBeginFrameControl: (boolean|undefined), height: (number|undefined)}} */
+Protocol.TargetAgent.prototype.createTarget = function(url, opt_width, opt_height, opt_browserContextId, opt_enableBeginFrameControl, opt_newWindow, opt_background) {};
+/** @typedef {!{browserContextId: (Protocol.Target.BrowserContextID|undefined), url: string, newWindow: (boolean|undefined), width: (number|undefined), enableBeginFrameControl: (boolean|undefined), background: (boolean|undefined), height: (number|undefined)}} */
 Protocol.TargetAgent.CreateTargetRequest;
 /** @typedef {!{targetId: Protocol.Target.TargetID}} */
 Protocol.TargetAgent.CreateTargetResponse;

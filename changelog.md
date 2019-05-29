@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r664421
+###### _2019-05-29 13:15:58_ | Diff: [8246573...5a1d75b](https://github.com/ChromeDevTools/devtools-protocol/compare/8246573...5a1d75b)
+#### `WebAuthn`: new domain
+* [`WebAuthn.WebAuthn`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#domain-WebAuthn)
+#### `WebAuthn`: new commands
+* [`WebAuthn.enable`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#method-enable)
+* [`WebAuthn.disable`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#method-disable)
+
+
 ## Roll protocol to r663310
 ###### _2019-05-24 16:16:12_ | Diff: [7deb3ca...9c1151e](https://github.com/ChromeDevTools/devtools-protocol/compare/7deb3ca...9c1151e)
 #### `Emulation`: new command
