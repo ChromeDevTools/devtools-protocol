@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r664634
+###### _2019-05-29 20:15:49_ | Diff: [b5a873e...9326d45](https://github.com/ChromeDevTools/devtools-protocol/compare/b5a873e...9326d45)
+#### `Cast`: modified event
+* [`Cast.sinksUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/Cast/#event-sinksUpdated) - The `sinks` in the parameters had `$ref` _removed_. The `sinks` in the parameters had `name` _updated_. The `0` in the parameters had `type` _added_. 
+#### `Cast`: removed type
+* [`Cast.Sink`](https://chromedevtools.github.io/devtools-protocol/tot/Cast/#type-Sink)
+
+
 ## Roll protocol to r664496
 ###### _2019-05-29 15:15:58_ | Diff: [5a1d75b...b5a873e](https://github.com/ChromeDevTools/devtools-protocol/compare/5a1d75b...b5a873e)
 #### `Cast`: modified event
