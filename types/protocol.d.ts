@@ -3898,6 +3898,16 @@ export namespace Protocol {
      */
     export namespace Cast {
 
+        export interface Sink {
+            name: string;
+            id: string;
+            /**
+             * Text describing the current session. Present only if there is an active
+             * session on the sink.
+             */
+            session?: string;
+        }
+
         export interface EnableRequest {
             presentationUrl?: string;
         }
@@ -3919,7 +3929,7 @@ export namespace Protocol {
          * device or a software surface that you can cast to.
          */
         export interface SinksUpdatedEvent {
-            sinkNames: string[];
+            sinks: Sink[];
         }
 
         /**

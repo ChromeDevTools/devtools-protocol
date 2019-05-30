@@ -1387,12 +1387,15 @@ Protocol.CastAgent.StopCastingResponse;
  * @param {!Protocol.CastAgent.StopCastingRequest} obj
  * @return {!Promise<!Protocol.CastAgent.StopCastingResponse>} */
 Protocol.CastAgent.prototype.invoke_stopCasting = function(obj) {};
+
+/** @typedef {!{name:(string), id:(string), session:(string|undefined)}} */
+Protocol.Cast.Sink;
 /** @interface */
 Protocol.CastDispatcher = function() {};
 /**
- * @param {!Array<string>} sinkNames
+ * @param {!Array<Protocol.Cast.Sink>} sinks
  */
-Protocol.CastDispatcher.prototype.sinksUpdated = function(sinkNames) {};
+Protocol.CastDispatcher.prototype.sinksUpdated = function(sinks) {};
 /**
  * @param {string} issueMessage
  */
