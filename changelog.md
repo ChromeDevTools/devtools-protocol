@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r664496
+###### _2019-05-29 15:15:58_ | Diff: [5a1d75b...b5a873e](https://github.com/ChromeDevTools/devtools-protocol/compare/5a1d75b...b5a873e)
+#### `Cast`: modified event
+* [`Cast.sinksUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/Cast/#event-sinksUpdated) - The `sinkNames` in the parameters had `type` _removed_. The `sinkNames` in the parameters had `name` _updated_. The `0` in the parameters had `$ref` _added_. 
+#### `Cast`: new type
+* [`Cast.Sink`](https://chromedevtools.github.io/devtools-protocol/tot/Cast/#type-Sink)
+#### `Target`: modified command
+* [`Target.createTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-createTarget) - The parameters's `newWindow` _added_. The parameters's `background` _added_. 
+
+
 ## Roll protocol to r664421
 ###### _2019-05-29 13:15:58_ | Diff: [8246573...5a1d75b](https://github.com/ChromeDevTools/devtools-protocol/compare/8246573...5a1d75b)
 #### `WebAuthn`: new domain
