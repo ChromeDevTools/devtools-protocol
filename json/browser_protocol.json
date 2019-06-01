@@ -5156,12 +5156,13 @@
                         },
                         {
                             "name": "scrollOffsetX",
-                            "description": "Scroll offsets.",
+                            "description": "Horizontal scroll offset.",
                             "optional": true,
                             "type": "number"
                         },
                         {
                             "name": "scrollOffsetY",
+                            "description": "Vertical scroll offset.",
                             "optional": true,
                             "type": "number"
                         }
@@ -5284,12 +5285,12 @@
                 },
                 {
                     "id": "LayoutTreeSnapshot",
-                    "description": "Details of an element in the DOM tree with a LayoutObject.",
+                    "description": "Table of details of an element in the DOM tree with a LayoutObject.",
                     "type": "object",
                     "properties": [
                         {
                             "name": "nodeIndex",
-                            "description": "The index of the related DOM node in the `domNodes` array returned by `getSnapshot`.",
+                            "description": "Index of the corresponding node in the `NodeTreeSnapshot` array returned by `captureSnapshot`.",
                             "type": "array",
                             "items": {
                                 "type": "integer"
@@ -5297,7 +5298,7 @@
                         },
                         {
                             "name": "styles",
-                            "description": "Index into the `computedStyles` array returned by `captureSnapshot`.",
+                            "description": "Array of indexes specifying computed style strings, filtered according to the `computedStyles` parameter passed to `captureSnapshot`.",
                             "type": "array",
                             "items": {
                                 "$ref": "ArrayOfStrings"
@@ -5328,12 +5329,12 @@
                 },
                 {
                     "id": "TextBoxSnapshot",
-                    "description": "Details of post layout rendered text positions. The exact layout should not be regarded as\nstable and may change between versions.",
+                    "description": "Table of details of the post layout rendered text positions. The exact layout should not be regarded as\nstable and may change between versions.",
                     "type": "object",
                     "properties": [
                         {
                             "name": "layoutIndex",
-                            "description": "Intex of th elayout tree node that owns this box collection.",
+                            "description": "Index of the layout tree node that owns this box collection.",
                             "type": "array",
                             "items": {
                                 "type": "integer"

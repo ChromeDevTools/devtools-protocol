@@ -5415,9 +5415,12 @@ export namespace Protocol {
              */
             textBoxes: TextBoxSnapshot;
             /**
-             * Scroll offsets.
+             * Horizontal scroll offset.
              */
             scrollOffsetX?: number;
+            /**
+             * Vertical scroll offset.
+             */
             scrollOffsetY?: number;
         }
 
@@ -5490,15 +5493,15 @@ export namespace Protocol {
         }
 
         /**
-         * Details of an element in the DOM tree with a LayoutObject.
+         * Table of details of an element in the DOM tree with a LayoutObject.
          */
         export interface LayoutTreeSnapshot {
             /**
-             * The index of the related DOM node in the `domNodes` array returned by `getSnapshot`.
+             * Index of the corresponding node in the `NodeTreeSnapshot` array returned by `captureSnapshot`.
              */
             nodeIndex: integer[];
             /**
-             * Index into the `computedStyles` array returned by `captureSnapshot`.
+             * Array of indexes specifying computed style strings, filtered according to the `computedStyles` parameter passed to `captureSnapshot`.
              */
             styles: ArrayOfStrings[];
             /**
@@ -5516,12 +5519,12 @@ export namespace Protocol {
         }
 
         /**
-         * Details of post layout rendered text positions. The exact layout should not be regarded as
+         * Table of details of the post layout rendered text positions. The exact layout should not be regarded as
          * stable and may change between versions.
          */
         export interface TextBoxSnapshot {
             /**
-             * Intex of th elayout tree node that owns this box collection.
+             * Index of the layout tree node that owns this box collection.
              */
             layoutIndex: integer[];
             /**
