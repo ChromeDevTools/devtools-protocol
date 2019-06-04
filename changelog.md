@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r665395
+###### _2019-05-31 21:15:47_ | Diff: [fff326b...fab8221](https://github.com/ChromeDevTools/devtools-protocol/compare/fff326b...fab8221)
+#### `DOMSnapshot`: modified types
+* [`DOMSnapshot.DocumentSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DocumentSnapshot) - The `scrollOffsetX` in the properties had `description` _updated_. The properties's `description` _added_. 
+* [`DOMSnapshot.LayoutTreeSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-LayoutTreeSnapshot) - `description` updated. The `nodeIndex` in the properties had `description` _updated_. The `styles` in the properties had `description` _updated_. 
+* [`DOMSnapshot.TextBoxSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-TextBoxSnapshot) - `description` updated. The `layoutIndex` in the properties had `description` _updated_. 
+
+
 ## Roll protocol to r664845
 ###### _2019-05-30 12:15:53_ | Diff: [01a7aa9...1a6ebbc](https://github.com/ChromeDevTools/devtools-protocol/compare/01a7aa9...1a6ebbc)
 #### `Cast`: modified event
