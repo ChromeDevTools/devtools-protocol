@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r666393
+###### _2019-06-05 12:15:46_ | Diff: [30dd754...2bb413c](https://github.com/ChromeDevTools/devtools-protocol/compare/30dd754...2bb413c)
+#### `DOMSnapshot`: modified command
+* [`DOMSnapshot.captureSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#method-captureSnapshot) - The parameters's `includeDOMRects` _added_. 
+#### `DOMSnapshot`: modified type
+* [`DOMSnapshot.LayoutTreeSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-LayoutTreeSnapshot) - The properties's `offsetRects` _added_. The properties's `scrollRects` _added_. The properties's `clientRects` _added_. 
+#### `WebAudio`: modified type
+* [`WebAudio.ContextRealtimeData`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-ContextRealtimeData) - The `currentTime` in the properties had `optional` _removed_. The `renderCapacity` in the properties had `optional` _removed_. `description` updated. The properties's `callbackIntervalMean` _added_. The properties's `callbackIntervalVariance` _added_. 
+
+
 ## Roll protocol to r666105
 ###### _2019-06-04 18:15:57_ | Diff: [abac32e...30dd754](https://github.com/ChromeDevTools/devtools-protocol/compare/abac32e...30dd754)
 #### `WebAuthn`: new commands
