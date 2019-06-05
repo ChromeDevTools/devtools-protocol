@@ -2416,6 +2416,12 @@ experimental domain DOMSnapshot
       array of StringIndex text
       # Stacking context information.
       RareBooleanData stackingContexts
+      # The offset rect of nodes. Only available when includeDOMRects is set to true
+      optional array of Rectangle offsetRects
+      # The scroll rect of nodes. Only available when includeDOMRects is set to true
+      optional array of Rectangle scrollRects
+      # The client rect of nodes. Only available when includeDOMRects is set to true
+      optional array of Rectangle clientRects
 
   # Table of details of the post layout rendered text positions. The exact layout should not be regarded as
   # stable and may change between versions.
@@ -2468,6 +2474,8 @@ experimental domain DOMSnapshot
     parameters
       # Whitelist of computed styles to return.
       array of string computedStyles
+      # Whether to include DOM rectangles (offsetRects, clientRects, scrollRects) into the snapshot
+      optional boolean includeDOMRects
     returns
       # The nodes in the DOM tree. The DOMNode at index 0 corresponds to the root document.
       array of DocumentSnapshot documents
@@ -6756,16 +6764,19 @@ experimental domain WebAudio
       running
       closed
 
-  # Fields in AudioContext that change in real-time. These are not updated
-  # on OfflineAudioContext.
+  # Fields in AudioContext that change in real-time.
   type ContextRealtimeData extends object
     properties
       # The current context time in second in BaseAudioContext.
-      optional number currentTime
+      number currentTime
       # The time spent on rendering graph divided by render qunatum duration,
       # and multiplied by 100. 100 means the audio renderer reached the full
       # capacity and glitch may occur.
-      optional number renderCapacity
+      number renderCapacity
+      # A running mean of callback interval.
+      number callbackIntervalMean
+      # A running variance of callback interval.
+      number callbackIntervalVariance
 
   # Protocol object for BaseAudioContext
   type BaseAudioContext extends object

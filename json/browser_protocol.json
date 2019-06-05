@@ -5324,6 +5324,33 @@
                             "name": "stackingContexts",
                             "description": "Stacking context information.",
                             "$ref": "RareBooleanData"
+                        },
+                        {
+                            "name": "offsetRects",
+                            "description": "The offset rect of nodes. Only available when includeDOMRects is set to true",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "Rectangle"
+                            }
+                        },
+                        {
+                            "name": "scrollRects",
+                            "description": "The scroll rect of nodes. Only available when includeDOMRects is set to true",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "Rectangle"
+                            }
+                        },
+                        {
+                            "name": "clientRects",
+                            "description": "The client rect of nodes. Only available when includeDOMRects is set to true",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "Rectangle"
+                            }
                         }
                     ]
                 },
@@ -5446,6 +5473,12 @@
                             "items": {
                                 "type": "string"
                             }
+                        },
+                        {
+                            "name": "includeDOMRects",
+                            "description": "Whether to include DOM rectangles (offsetRects, clientRects, scrollRects) into the snapshot",
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ],
                     "returns": [
@@ -14692,19 +14725,27 @@
                 },
                 {
                     "id": "ContextRealtimeData",
-                    "description": "Fields in AudioContext that change in real-time. These are not updated\non OfflineAudioContext.",
+                    "description": "Fields in AudioContext that change in real-time.",
                     "type": "object",
                     "properties": [
                         {
                             "name": "currentTime",
                             "description": "The current context time in second in BaseAudioContext.",
-                            "optional": true,
                             "type": "number"
                         },
                         {
                             "name": "renderCapacity",
                             "description": "The time spent on rendering graph divided by render qunatum duration,\nand multiplied by 100. 100 means the audio renderer reached the full\ncapacity and glitch may occur.",
-                            "optional": true,
+                            "type": "number"
+                        },
+                        {
+                            "name": "callbackIntervalMean",
+                            "description": "A running mean of callback interval.",
+                            "type": "number"
+                        },
+                        {
+                            "name": "callbackIntervalVariance",
+                            "description": "A running variance of callback interval.",
                             "type": "number"
                         }
                     ]

@@ -5516,6 +5516,18 @@ export namespace Protocol {
              * Stacking context information.
              */
             stackingContexts: RareBooleanData;
+            /**
+             * The offset rect of nodes. Only available when includeDOMRects is set to true
+             */
+            offsetRects?: Rectangle[];
+            /**
+             * The scroll rect of nodes. Only available when includeDOMRects is set to true
+             */
+            scrollRects?: Rectangle[];
+            /**
+             * The client rect of nodes. Only available when includeDOMRects is set to true
+             */
+            clientRects?: Rectangle[];
         }
 
         /**
@@ -5582,6 +5594,10 @@ export namespace Protocol {
              * Whitelist of computed styles to return.
              */
             computedStyles: string[];
+            /**
+             * Whether to include DOM rectangles (offsetRects, clientRects, scrollRects) into the snapshot
+             */
+            includeDOMRects?: boolean;
         }
 
         export interface CaptureSnapshotResponse {
@@ -11522,20 +11538,27 @@ export namespace Protocol {
         export type ContextState = ('suspended' | 'running' | 'closed');
 
         /**
-         * Fields in AudioContext that change in real-time. These are not updated
-         * on OfflineAudioContext.
+         * Fields in AudioContext that change in real-time.
          */
         export interface ContextRealtimeData {
             /**
              * The current context time in second in BaseAudioContext.
              */
-            currentTime?: number;
+            currentTime: number;
             /**
              * The time spent on rendering graph divided by render qunatum duration,
              * and multiplied by 100. 100 means the audio renderer reached the full
              * capacity and glitch may occur.
              */
-            renderCapacity?: number;
+            renderCapacity: number;
+            /**
+             * A running mean of callback interval.
+             */
+            callbackIntervalMean: number;
+            /**
+             * A running variance of callback interval.
+             */
+            callbackIntervalVariance: number;
         }
 
         /**

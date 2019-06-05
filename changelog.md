@@ -1,5 +1,17 @@
 
 
+## Roll protocol to r666105
+###### _2019-06-04 18:15:57_ | Diff: [abac32e...30dd754](https://github.com/ChromeDevTools/devtools-protocol/compare/abac32e...30dd754)
+#### `WebAuthn`: new commands
+* [`WebAuthn.addVirtualAuthenticator`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#method-addVirtualAuthenticator)
+* [`WebAuthn.removeVirtualAuthenticator`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#method-removeVirtualAuthenticator)
+#### `WebAuthn`: new types
+* [`WebAuthn.AuthenticatorId`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#type-AuthenticatorId)
+* [`WebAuthn.AuthenticatorProtocol`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#type-AuthenticatorProtocol)
+* [`WebAuthn.AuthenticatorTransport`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#type-AuthenticatorTransport)
+* [`WebAuthn.VirtualAuthenticatorOptions`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#type-VirtualAuthenticatorOptions)
+
+
 ## Roll protocol to r665395
 ###### _2019-05-31 21:15:47_ | Diff: [fff326b...fab8221](https://github.com/ChromeDevTools/devtools-protocol/compare/fff326b...fab8221)
 #### `DOMSnapshot`: modified types
