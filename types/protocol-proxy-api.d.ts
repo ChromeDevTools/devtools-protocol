@@ -3090,6 +3090,16 @@ export namespace ProtocolProxyApi {
          */
         disable(): Promise<void>;
 
+        /**
+         * Creates and adds a virtual authenticator.
+         */
+        addVirtualAuthenticator(params: Protocol.WebAuthn.AddVirtualAuthenticatorRequest): Promise<Protocol.WebAuthn.AddVirtualAuthenticatorResponse>;
+
+        /**
+         * Removes the given authenticator.
+         */
+        removeVirtualAuthenticator(params: Protocol.WebAuthn.RemoveVirtualAuthenticatorRequest): Promise<void>;
+
     }
 }
 

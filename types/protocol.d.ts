@@ -11595,6 +11595,31 @@ export namespace Protocol {
      * API.
      */
     export namespace WebAuthn {
+
+        export type AuthenticatorId = string;
+
+        export type AuthenticatorProtocol = ('u2f' | 'ctap2');
+
+        export type AuthenticatorTransport = ('usb' | 'nfc' | 'ble' | 'cable' | 'internal');
+
+        export interface VirtualAuthenticatorOptions {
+            protocol: AuthenticatorProtocol;
+            transport: AuthenticatorTransport;
+            hasResidentKey: boolean;
+            hasUserVerification: boolean;
+        }
+
+        export interface AddVirtualAuthenticatorRequest {
+            options: VirtualAuthenticatorOptions;
+        }
+
+        export interface AddVirtualAuthenticatorResponse {
+            authenticatorId: AuthenticatorId;
+        }
+
+        export interface RemoveVirtualAuthenticatorRequest {
+            authenticatorId: AuthenticatorId;
+        }
     }
 }
 

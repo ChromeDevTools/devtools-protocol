@@ -3634,6 +3634,20 @@ export namespace ProtocolMapping {
             paramsType: [];
             returnType: void;
         };
+        /**
+         * Creates and adds a virtual authenticator.
+         */
+        'WebAuthn.addVirtualAuthenticator': {
+            paramsType: [Protocol.WebAuthn.AddVirtualAuthenticatorRequest];
+            returnType: Protocol.WebAuthn.AddVirtualAuthenticatorResponse;
+        };
+        /**
+         * Removes the given authenticator.
+         */
+        'WebAuthn.removeVirtualAuthenticator': {
+            paramsType: [Protocol.WebAuthn.RemoveVirtualAuthenticatorRequest];
+            returnType: void;
+        };
     }
 }
 

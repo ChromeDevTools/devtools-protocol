@@ -7336,6 +7336,55 @@ Protocol.WebAuthnAgent.DisableResponse;
  * @param {!Protocol.WebAuthnAgent.DisableRequest} obj
  * @return {!Promise<!Protocol.WebAuthnAgent.DisableResponse>} */
 Protocol.WebAuthnAgent.prototype.invoke_disable = function(obj) {};
+
+/**
+ * @param {Protocol.WebAuthn.VirtualAuthenticatorOptions} options
+ * @return {!Promise<?Protocol.WebAuthn.AuthenticatorId>}
+ */
+Protocol.WebAuthnAgent.prototype.addVirtualAuthenticator = function(options) {};
+/** @typedef {!{options: Protocol.WebAuthn.VirtualAuthenticatorOptions}} */
+Protocol.WebAuthnAgent.AddVirtualAuthenticatorRequest;
+/** @typedef {!{authenticatorId: Protocol.WebAuthn.AuthenticatorId}} */
+Protocol.WebAuthnAgent.AddVirtualAuthenticatorResponse;
+/**
+ * @param {!Protocol.WebAuthnAgent.AddVirtualAuthenticatorRequest} obj
+ * @return {!Promise<!Protocol.WebAuthnAgent.AddVirtualAuthenticatorResponse>} */
+Protocol.WebAuthnAgent.prototype.invoke_addVirtualAuthenticator = function(obj) {};
+
+/**
+ * @param {Protocol.WebAuthn.AuthenticatorId} authenticatorId
+ * @return {!Promise<undefined>}
+ */
+Protocol.WebAuthnAgent.prototype.removeVirtualAuthenticator = function(authenticatorId) {};
+/** @typedef {!{authenticatorId: Protocol.WebAuthn.AuthenticatorId}} */
+Protocol.WebAuthnAgent.RemoveVirtualAuthenticatorRequest;
+/** @typedef {Object|undefined} */
+Protocol.WebAuthnAgent.RemoveVirtualAuthenticatorResponse;
+/**
+ * @param {!Protocol.WebAuthnAgent.RemoveVirtualAuthenticatorRequest} obj
+ * @return {!Promise<!Protocol.WebAuthnAgent.RemoveVirtualAuthenticatorResponse>} */
+Protocol.WebAuthnAgent.prototype.invoke_removeVirtualAuthenticator = function(obj) {};
+
+/** @typedef {string} */
+Protocol.WebAuthn.AuthenticatorId;
+
+/** @enum {string} */
+Protocol.WebAuthn.AuthenticatorProtocol = {
+    U2f: "u2f",
+    Ctap2: "ctap2"
+};
+
+/** @enum {string} */
+Protocol.WebAuthn.AuthenticatorTransport = {
+    Usb: "usb",
+    Nfc: "nfc",
+    Ble: "ble",
+    Cable: "cable",
+    Internal: "internal"
+};
+
+/** @typedef {!{protocol:(Protocol.WebAuthn.AuthenticatorProtocol), transport:(Protocol.WebAuthn.AuthenticatorTransport), hasResidentKey:(boolean), hasUserVerification:(boolean)}} */
+Protocol.WebAuthn.VirtualAuthenticatorOptions;
 /** @interface */
 Protocol.WebAuthnDispatcher = function() {};
 Protocol.Console = {};
