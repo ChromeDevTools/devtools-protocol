@@ -8965,6 +8965,13 @@ export namespace Protocol {
             result: boolean;
         }
 
+        export interface SetShowLayoutShiftRegionsRequest {
+            /**
+             * True for showing layout shift regions
+             */
+            result: boolean;
+        }
+
         export interface SetShowScrollBottleneckRectsRequest {
             /**
              * True for showing scroll bottleneck rects

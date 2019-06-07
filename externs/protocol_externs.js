@@ -4971,6 +4971,20 @@ Protocol.OverlayAgent.SetShowPaintRectsResponse;
 Protocol.OverlayAgent.prototype.invoke_setShowPaintRects = function(obj) {};
 
 /**
+ * @param {boolean} result
+ * @return {!Promise<undefined>}
+ */
+Protocol.OverlayAgent.prototype.setShowLayoutShiftRegions = function(result) {};
+/** @typedef {!{result: boolean}} */
+Protocol.OverlayAgent.SetShowLayoutShiftRegionsRequest;
+/** @typedef {Object|undefined} */
+Protocol.OverlayAgent.SetShowLayoutShiftRegionsResponse;
+/**
+ * @param {!Protocol.OverlayAgent.SetShowLayoutShiftRegionsRequest} obj
+ * @return {!Promise<!Protocol.OverlayAgent.SetShowLayoutShiftRegionsResponse>} */
+Protocol.OverlayAgent.prototype.invoke_setShowLayoutShiftRegions = function(obj) {};
+
+/**
  * @param {boolean} show
  * @return {!Promise<undefined>}
  */

@@ -2198,6 +2198,11 @@ export namespace ProtocolProxyApi {
         setShowPaintRects(params: Protocol.Overlay.SetShowPaintRectsRequest): Promise<void>;
 
         /**
+         * Requests that backend shows layout shift regions
+         */
+        setShowLayoutShiftRegions(params: Protocol.Overlay.SetShowLayoutShiftRegionsRequest): Promise<void>;
+
+        /**
          * Requests that backend shows scroll bottleneck rects
          */
         setShowScrollBottleneckRects(params: Protocol.Overlay.SetShowScrollBottleneckRectsRequest): Promise<void>;

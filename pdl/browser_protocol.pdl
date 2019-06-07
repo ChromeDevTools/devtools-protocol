@@ -4843,6 +4843,12 @@ experimental domain Overlay
       # True for showing paint rectangles
       boolean result
 
+  # Requests that backend shows layout shift regions
+  command setShowLayoutShiftRegions
+    parameters
+      # True for showing layout shift regions
+      boolean result
+
   # Requests that backend shows scroll bottleneck rects
   command setShowScrollBottleneckRects
     parameters

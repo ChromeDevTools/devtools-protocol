@@ -2797,6 +2797,13 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Requests that backend shows layout shift regions
+         */
+        'Overlay.setShowLayoutShiftRegions': {
+            paramsType: [Protocol.Overlay.SetShowLayoutShiftRegionsRequest];
+            returnType: void;
+        };
+        /**
          * Requests that backend shows scroll bottleneck rects
          */
         'Overlay.setShowScrollBottleneckRects': {
