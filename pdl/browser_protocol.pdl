@@ -6855,6 +6855,20 @@ experimental domain WebAuthn
       boolean hasResidentKey
       boolean hasUserVerification
 
+  type Credential extends object
+    properties
+      binary credentialId
+      # SHA-256 hash of the Relying Party ID the credential is scoped to. Must
+      # be 32 bytes long.
+      # See https://w3c.github.io/webauthn/#rpidhash
+      binary rpIdHash
+      # The private key in PKCS#8 format.
+      binary privateKey
+      # Signature counter. This is incremented by one for each successful
+      # assertion.
+      # See https://w3c.github.io/webauthn/#signature-counter
+      integer signCount
+
   # Enable the WebAuthn domain and start intercepting credential storage and
   # retrieval with a virtual authenticator.
   command enable
@@ -6871,5 +6885,23 @@ experimental domain WebAuthn
 
   # Removes the given authenticator.
   command removeVirtualAuthenticator
+    parameters
+      AuthenticatorId authenticatorId
+
+  # Adds the credential to the specified authenticator.
+  command addCredential
+    parameters
+      AuthenticatorId authenticatorId
+      Credential credential
+
+  # Returns all the credentials stored in the given virtual authenticator.
+  command getCredentials
+    parameters
+      AuthenticatorId authenticatorId
+    returns
+      array of Credential credentials
+
+  # Clears all the credentials from the specified device.
+  command clearCredentials
     parameters
       AuthenticatorId authenticatorId

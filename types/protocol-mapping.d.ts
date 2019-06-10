@@ -3655,6 +3655,27 @@ export namespace ProtocolMapping {
             paramsType: [Protocol.WebAuthn.RemoveVirtualAuthenticatorRequest];
             returnType: void;
         };
+        /**
+         * Adds the credential to the specified authenticator.
+         */
+        'WebAuthn.addCredential': {
+            paramsType: [Protocol.WebAuthn.AddCredentialRequest];
+            returnType: void;
+        };
+        /**
+         * Returns all the credentials stored in the given virtual authenticator.
+         */
+        'WebAuthn.getCredentials': {
+            paramsType: [Protocol.WebAuthn.GetCredentialsRequest];
+            returnType: Protocol.WebAuthn.GetCredentialsResponse;
+        };
+        /**
+         * Clears all the credentials from the specified device.
+         */
+        'WebAuthn.clearCredentials': {
+            paramsType: [Protocol.WebAuthn.ClearCredentialsRequest];
+            returnType: void;
+        };
     }
 }
 

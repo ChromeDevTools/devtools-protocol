@@ -3105,6 +3105,21 @@ export namespace ProtocolProxyApi {
          */
         removeVirtualAuthenticator(params: Protocol.WebAuthn.RemoveVirtualAuthenticatorRequest): Promise<void>;
 
+        /**
+         * Adds the credential to the specified authenticator.
+         */
+        addCredential(params: Protocol.WebAuthn.AddCredentialRequest): Promise<void>;
+
+        /**
+         * Returns all the credentials stored in the given virtual authenticator.
+         */
+        getCredentials(params: Protocol.WebAuthn.GetCredentialsRequest): Promise<Protocol.WebAuthn.GetCredentialsResponse>;
+
+        /**
+         * Clears all the credentials from the specified device.
+         */
+        clearCredentials(params: Protocol.WebAuthn.ClearCredentialsRequest): Promise<void>;
+
     }
 }
 

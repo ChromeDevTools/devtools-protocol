@@ -11639,6 +11639,26 @@ export namespace Protocol {
             hasUserVerification: boolean;
         }
 
+        export interface Credential {
+            credentialId: string;
+            /**
+             * SHA-256 hash of the Relying Party ID the credential is scoped to. Must
+             * be 32 bytes long.
+             * See https://w3c.github.io/webauthn/#rpidhash
+             */
+            rpIdHash: string;
+            /**
+             * The private key in PKCS#8 format.
+             */
+            privateKey: string;
+            /**
+             * Signature counter. This is incremented by one for each successful
+             * assertion.
+             * See https://w3c.github.io/webauthn/#signature-counter
+             */
+            signCount: integer;
+        }
+
         export interface AddVirtualAuthenticatorRequest {
             options: VirtualAuthenticatorOptions;
         }
@@ -11648,6 +11668,23 @@ export namespace Protocol {
         }
 
         export interface RemoveVirtualAuthenticatorRequest {
+            authenticatorId: AuthenticatorId;
+        }
+
+        export interface AddCredentialRequest {
+            authenticatorId: AuthenticatorId;
+            credential: Credential;
+        }
+
+        export interface GetCredentialsRequest {
+            authenticatorId: AuthenticatorId;
+        }
+
+        export interface GetCredentialsResponse {
+            credentials: Credential[];
+        }
+
+        export interface ClearCredentialsRequest {
             authenticatorId: AuthenticatorId;
         }
     }

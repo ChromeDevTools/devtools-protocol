@@ -7380,6 +7380,49 @@ Protocol.WebAuthnAgent.RemoveVirtualAuthenticatorResponse;
  * @return {!Promise<!Protocol.WebAuthnAgent.RemoveVirtualAuthenticatorResponse>} */
 Protocol.WebAuthnAgent.prototype.invoke_removeVirtualAuthenticator = function(obj) {};
 
+/**
+ * @param {Protocol.WebAuthn.AuthenticatorId} authenticatorId
+ * @param {Protocol.WebAuthn.Credential} credential
+ * @return {!Promise<undefined>}
+ */
+Protocol.WebAuthnAgent.prototype.addCredential = function(authenticatorId, credential) {};
+/** @typedef {!{authenticatorId: Protocol.WebAuthn.AuthenticatorId, credential: Protocol.WebAuthn.Credential}} */
+Protocol.WebAuthnAgent.AddCredentialRequest;
+/** @typedef {Object|undefined} */
+Protocol.WebAuthnAgent.AddCredentialResponse;
+/**
+ * @param {!Protocol.WebAuthnAgent.AddCredentialRequest} obj
+ * @return {!Promise<!Protocol.WebAuthnAgent.AddCredentialResponse>} */
+Protocol.WebAuthnAgent.prototype.invoke_addCredential = function(obj) {};
+
+/**
+ * @param {Protocol.WebAuthn.AuthenticatorId} authenticatorId
+ * @return {!Promise<?Array<Protocol.WebAuthn.Credential>>}
+ */
+Protocol.WebAuthnAgent.prototype.getCredentials = function(authenticatorId) {};
+/** @typedef {!{authenticatorId: Protocol.WebAuthn.AuthenticatorId}} */
+Protocol.WebAuthnAgent.GetCredentialsRequest;
+/** @typedef {!{credentials: !Array<Protocol.WebAuthn.Credential>}} */
+Protocol.WebAuthnAgent.GetCredentialsResponse;
+/**
+ * @param {!Protocol.WebAuthnAgent.GetCredentialsRequest} obj
+ * @return {!Promise<!Protocol.WebAuthnAgent.GetCredentialsResponse>} */
+Protocol.WebAuthnAgent.prototype.invoke_getCredentials = function(obj) {};
+
+/**
+ * @param {Protocol.WebAuthn.AuthenticatorId} authenticatorId
+ * @return {!Promise<undefined>}
+ */
+Protocol.WebAuthnAgent.prototype.clearCredentials = function(authenticatorId) {};
+/** @typedef {!{authenticatorId: Protocol.WebAuthn.AuthenticatorId}} */
+Protocol.WebAuthnAgent.ClearCredentialsRequest;
+/** @typedef {Object|undefined} */
+Protocol.WebAuthnAgent.ClearCredentialsResponse;
+/**
+ * @param {!Protocol.WebAuthnAgent.ClearCredentialsRequest} obj
+ * @return {!Promise<!Protocol.WebAuthnAgent.ClearCredentialsResponse>} */
+Protocol.WebAuthnAgent.prototype.invoke_clearCredentials = function(obj) {};
+
 /** @typedef {string} */
 Protocol.WebAuthn.AuthenticatorId;
 
@@ -7400,6 +7443,9 @@ Protocol.WebAuthn.AuthenticatorTransport = {
 
 /** @typedef {!{protocol:(Protocol.WebAuthn.AuthenticatorProtocol), transport:(Protocol.WebAuthn.AuthenticatorTransport), hasResidentKey:(boolean), hasUserVerification:(boolean)}} */
 Protocol.WebAuthn.VirtualAuthenticatorOptions;
+
+/** @typedef {!{credentialId:(string), rpIdHash:(string), privateKey:(string), signCount:(number)}} */
+Protocol.WebAuthn.Credential;
 /** @interface */
 Protocol.WebAuthnDispatcher = function() {};
 Protocol.Console = {};

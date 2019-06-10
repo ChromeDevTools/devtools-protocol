@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r667155
+###### _2019-06-07 09:16:15_ | Diff: [047f15a...cd76fe0](https://github.com/ChromeDevTools/devtools-protocol/compare/047f15a...cd76fe0)
+#### `Overlay`: new command
+* [`Overlay.setShowLayoutShiftRegions`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-setShowLayoutShiftRegions)
+
+
 ## Roll protocol to r666393
 ###### _2019-06-05 12:15:46_ | Diff: [30dd754...2bb413c](https://github.com/ChromeDevTools/devtools-protocol/compare/30dd754...2bb413c)
 #### `DOMSnapshot`: modified command
