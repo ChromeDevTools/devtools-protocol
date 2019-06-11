@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r667807
+###### _2019-06-10 17:15:38_ | Diff: [c42a81a...a4a807c](https://github.com/ChromeDevTools/devtools-protocol/compare/c42a81a...a4a807c)
+#### `Page`: modified type
+* [`Page.Frame`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Frame) - The `unreachableUrl` in the properties had `experimental` _removed_. The `unreachableUrl` in the properties had `optional` _removed_. The `url` in the properties had `description` _updated_. The `securityOrigin` in the properties had `name` _updated_. The `securityOrigin` in the properties had `description` _updated_. The `mimeType` in the properties had `name` _updated_. The `mimeType` in the properties had `description` _updated_. The `unreachableUrl` in the properties had `name` _updated_. The `unreachableUrl` in the properties had `description` _updated_. The properties's `experimental` _added_. The properties's `optional` _added_. The properties's `unreachableUrl` _added_. 
+
+
 ## Roll protocol to r667801
 ###### _2019-06-10 16:16:30_ | Diff: [cd76fe0...c42a81a](https://github.com/ChromeDevTools/devtools-protocol/compare/cd76fe0...c42a81a)
 #### `WebAuthn`: new commands

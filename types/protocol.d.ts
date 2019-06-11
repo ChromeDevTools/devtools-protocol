@@ -9685,13 +9685,21 @@ export namespace Protocol {
              * in which case the content will be scaled to fit the paper size.
              */
             preferCSSPageSize?: boolean;
+            /**
+             * return as stream
+             */
+            transferMode?: ('ReturnAsBase64' | 'ReturnAsStream');
         }
 
         export interface PrintToPDFResponse {
             /**
-             * Base64-encoded pdf data.
+             * Base64-encoded pdf data. Empty if |returnAsStream| is specified.
              */
             data: string;
+            /**
+             * A handle of the stream that holds resulting PDF data.
+             */
+            stream?: IO.StreamHandle;
         }
 
         export interface ReloadRequest {

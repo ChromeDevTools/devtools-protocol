@@ -4892,6 +4892,7 @@ experimental domain Overlay
 domain Page
   depends on Debugger
   depends on DOM
+  depends on IO
   depends on Network
   depends on Runtime
 
@@ -5351,9 +5352,15 @@ domain Page
       # Whether or not to prefer page size as defined by css. Defaults to false,
       # in which case the content will be scaled to fit the paper size.
       optional boolean preferCSSPageSize
+      # return as stream
+      experimental optional enum transferMode
+        ReturnAsBase64
+        ReturnAsStream
     returns
-      # Base64-encoded pdf data.
+      # Base64-encoded pdf data. Empty if |returnAsStream| is specified.
       binary data
+      # A handle of the stream that holds resulting PDF data.
+      experimental optional IO.StreamHandle stream
 
   # Reloads given page optionally ignoring the cache.
   command reload

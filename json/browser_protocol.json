@@ -10734,6 +10734,7 @@
             "dependencies": [
                 "Debugger",
                 "DOM",
+                "IO",
                 "Network",
                 "Runtime"
             ],
@@ -11738,13 +11739,31 @@
                             "description": "Whether or not to prefer page size as defined by css. Defaults to false,\nin which case the content will be scaled to fit the paper size.",
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "transferMode",
+                            "description": "return as stream",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "string",
+                            "enum": [
+                                "ReturnAsBase64",
+                                "ReturnAsStream"
+                            ]
                         }
                     ],
                     "returns": [
                         {
                             "name": "data",
-                            "description": "Base64-encoded pdf data.",
+                            "description": "Base64-encoded pdf data. Empty if |returnAsStream| is specified.",
                             "type": "string"
+                        },
+                        {
+                            "name": "stream",
+                            "description": "A handle of the stream that holds resulting PDF data.",
+                            "experimental": true,
+                            "optional": true,
+                            "$ref": "IO.StreamHandle"
                         }
                     ]
                 },
