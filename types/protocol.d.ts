@@ -9053,9 +9053,13 @@ export namespace Protocol {
              */
             name?: string;
             /**
-             * Frame document's URL.
+             * Frame document's URL without fragment.
              */
             url: string;
+            /**
+             * Frame document's URL fragment including the '#'.
+             */
+            urlFragment?: string;
             /**
              * Frame document's security origin.
              */
@@ -9065,7 +9069,7 @@ export namespace Protocol {
              */
             mimeType: string;
             /**
-             * If the frame failed to load, this contains the URL that could not be loaded.
+             * If the frame failed to load, this contains the URL that could not be loaded. Note that unlike url above, this URL may contain a fragment.
              */
             unreachableUrl?: string;
         }

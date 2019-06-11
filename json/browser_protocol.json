@@ -10772,7 +10772,14 @@
                         },
                         {
                             "name": "url",
-                            "description": "Frame document's URL.",
+                            "description": "Frame document's URL without fragment.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "urlFragment",
+                            "description": "Frame document's URL fragment including the '#'.",
+                            "experimental": true,
+                            "optional": true,
                             "type": "string"
                         },
                         {
@@ -10787,7 +10794,7 @@
                         },
                         {
                             "name": "unreachableUrl",
-                            "description": "If the frame failed to load, this contains the URL that could not be loaded.",
+                            "description": "If the frame failed to load, this contains the URL that could not be loaded. Note that unlike url above, this URL may contain a fragment.",
                             "experimental": true,
                             "optional": true,
                             "type": "string"

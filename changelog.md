@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r667801
+###### _2019-06-10 16:16:30_ | Diff: [cd76fe0...c42a81a](https://github.com/ChromeDevTools/devtools-protocol/compare/cd76fe0...c42a81a)
+#### `WebAuthn`: new commands
+* [`WebAuthn.addCredential`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#method-addCredential)
+* [`WebAuthn.getCredentials`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#method-getCredentials)
+* [`WebAuthn.clearCredentials`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#method-clearCredentials)
+#### `WebAuthn`: new type
+* [`WebAuthn.Credential`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#type-Credential)
+
+
 ## Roll protocol to r667155
 ###### _2019-06-07 09:16:15_ | Diff: [047f15a...cd76fe0](https://github.com/ChromeDevTools/devtools-protocol/compare/047f15a...cd76fe0)
 #### `Overlay`: new command
