@@ -6158,6 +6158,59 @@ experimental domain SystemInfo
       # String description of the GPU driver version.
       string driverVersion
 
+  # Describes the width and height dimensions of an entity.
+  type Size extends object
+    properties
+      # Width in pixels.
+      integer width
+      # Height in pixels.
+      integer height
+
+  # Describes a supported video decoding profile with its associated minimum and
+  # maximum resolutions.
+  type VideoDecodeAcceleratorCapability extends object
+    properties
+      # Video codec profile that is supported, e.g. VP9 Profile 2.
+      string profile
+      # Maximum video dimensions in pixels supported for this |profile|.
+      Size maxResolution
+      # Minimum video dimensions in pixels supported for this |profile|.
+      Size minResolution
+
+  # Describes a supported video encoding profile with its associated maximum
+  # resolution and maximum framerate.
+  type VideoEncodeAcceleratorCapability extends object
+    properties
+      # Video codec profile that is supported, e.g H264 Main.
+      string profile
+      # Maximum video dimensions in pixels supported for this |profile|.
+      Size maxResolution
+      # Maximum encoding framerate in frames per second supported for this
+      # |profile|, as fraction's numerator and denominator, e.g. 24/1 fps,
+      # 24000/1001 fps, etc.
+      integer maxFramerateNumerator
+      integer maxFramerateDenominator
+
+  # YUV subsampling type of the pixels of a given image.
+  type SubsamplingFormat extends string
+    enum
+      yuv420
+      yuv422
+      yuv444
+
+  # Describes a supported image decoding profile with its associated minimum and
+  # maximum resolutions and subsampling.
+  type ImageDecodeAcceleratorCapability extends object
+    properties
+      # Image coded, e.g. Jpeg.
+      string imageType
+      # Maximum supported dimensions of the image in pixels.
+      Size maxDimensions
+      # Minimum supported dimensions of the image in pixels.
+      Size minDimensions
+      # Optional array of supported subsampling formats, e.g. 4:2:0, if known.
+      array of SubsamplingFormat subsamplings
+
   # Provides information about the GPU(s) on the system.
   type GPUInfo extends object
     properties
@@ -6169,6 +6222,12 @@ experimental domain SystemInfo
       optional object featureStatus
       # An optional array of GPU driver bug workarounds.
       array of string driverBugWorkarounds
+      # Supported accelerated video decoding capabilities.
+      array of VideoDecodeAcceleratorCapability videoDecoding
+      # Supported accelerated video encoding capabilities.
+      array of VideoEncodeAcceleratorCapability videoEncoding
+      # Supported accelerated image decoding capabilities.
+      array of ImageDecodeAcceleratorCapability imageDecoding
 
   # Represents process info.
   type ProcessInfo extends object
