@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r668114
+###### _2019-06-11 13:15:52_ | Diff: [937d75e...a40fe3f](https://github.com/ChromeDevTools/devtools-protocol/compare/937d75e...a40fe3f)
+#### `Page`: modified command
+* [`Page.printToPDF`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-printToPDF) - The `data` in the return value had `description` _updated_. The parameters's `transferMode` _added_. The return value's `stream` _added_. 
+
+
 ## Roll protocol to r667807
 ###### _2019-06-10 17:15:38_ | Diff: [c42a81a...a4a807c](https://github.com/ChromeDevTools/devtools-protocol/compare/c42a81a...a4a807c)
 #### `Page`: modified type

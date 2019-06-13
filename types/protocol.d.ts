@@ -10723,6 +10723,89 @@ export namespace Protocol {
         }
 
         /**
+         * Describes the width and height dimensions of an entity.
+         */
+        export interface Size {
+            /**
+             * Width in pixels.
+             */
+            width: integer;
+            /**
+             * Height in pixels.
+             */
+            height: integer;
+        }
+
+        /**
+         * Describes a supported video decoding profile with its associated minimum and
+         * maximum resolutions.
+         */
+        export interface VideoDecodeAcceleratorCapability {
+            /**
+             * Video codec profile that is supported, e.g. VP9 Profile 2.
+             */
+            profile: string;
+            /**
+             * Maximum video dimensions in pixels supported for this |profile|.
+             */
+            maxResolution: Size;
+            /**
+             * Minimum video dimensions in pixels supported for this |profile|.
+             */
+            minResolution: Size;
+        }
+
+        /**
+         * Describes a supported video encoding profile with its associated maximum
+         * resolution and maximum framerate.
+         */
+        export interface VideoEncodeAcceleratorCapability {
+            /**
+             * Video codec profile that is supported, e.g H264 Main.
+             */
+            profile: string;
+            /**
+             * Maximum video dimensions in pixels supported for this |profile|.
+             */
+            maxResolution: Size;
+            /**
+             * Maximum encoding framerate in frames per second supported for this
+             * |profile|, as fraction's numerator and denominator, e.g. 24/1 fps,
+             * 24000/1001 fps, etc.
+             */
+            maxFramerateNumerator: integer;
+            maxFramerateDenominator: integer;
+        }
+
+        /**
+         * YUV subsampling type of the pixels of a given image.
+         */
+        export type SubsamplingFormat = ('yuv420' | 'yuv422' | 'yuv444');
+
+        /**
+         * Describes a supported image decoding profile with its associated minimum and
+         * maximum resolutions and subsampling.
+         */
+        export interface ImageDecodeAcceleratorCapability {
+            /**
+             * Image coded, e.g. Jpeg.
+             */
+            imageType: string;
+            /**
+             * Maximum supported dimensions of the image in pixels.
+             */
+            maxDimensions: Size;
+            /**
+             * Minimum supported dimensions of the image in pixels.
+             */
+            minDimensions: Size;
+            /**
+             * Optional array of supported subsampling formats, e.g. 4:2:0, if known.
+             */
+            subsamplings: SubsamplingFormat[];
+        }
+
+        /**
          * Provides information about the GPU(s) on the system.
          */
         export interface GPUInfo {
@@ -10742,6 +10825,18 @@ export namespace Protocol {
              * An optional array of GPU driver bug workarounds.
              */
             driverBugWorkarounds: string[];
+            /**
+             * Supported accelerated video decoding capabilities.
+             */
+            videoDecoding: VideoDecodeAcceleratorCapability[];
+            /**
+             * Supported accelerated video encoding capabilities.
+             */
+            videoEncoding: VideoEncodeAcceleratorCapability[];
+            /**
+             * Supported accelerated image decoding capabilities.
+             */
+            imageDecoding: ImageDecodeAcceleratorCapability[];
         }
 
         /**
