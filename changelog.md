@@ -1,5 +1,17 @@
 
 
+## Roll protocol to r668850 668434
+###### _2019-06-13 09:16:01_ | Diff: [a40fe3f...b24d4a4](https://github.com/ChromeDevTools/devtools-protocol/compare/a40fe3f...b24d4a4)
+#### `SystemInfo`: new types
+* [`SystemInfo.Size`](https://chromedevtools.github.io/devtools-protocol/tot/SystemInfo/#type-Size)
+* [`SystemInfo.VideoDecodeAcceleratorCapability`](https://chromedevtools.github.io/devtools-protocol/tot/SystemInfo/#type-VideoDecodeAcceleratorCapability)
+* [`SystemInfo.VideoEncodeAcceleratorCapability`](https://chromedevtools.github.io/devtools-protocol/tot/SystemInfo/#type-VideoEncodeAcceleratorCapability)
+* [`SystemInfo.SubsamplingFormat`](https://chromedevtools.github.io/devtools-protocol/tot/SystemInfo/#type-SubsamplingFormat)
+* [`SystemInfo.ImageDecodeAcceleratorCapability`](https://chromedevtools.github.io/devtools-protocol/tot/SystemInfo/#type-ImageDecodeAcceleratorCapability)
+#### `SystemInfo`: modified type
+* [`SystemInfo.GPUInfo`](https://chromedevtools.github.io/devtools-protocol/tot/SystemInfo/#type-GPUInfo) - The properties's `videoDecoding` _added_. The properties's `videoEncoding` _added_. The properties's `imageDecoding` _added_. 
+
+
 ## Roll protocol to r668114
 ###### _2019-06-11 13:15:52_ | Diff: [937d75e...a40fe3f](https://github.com/ChromeDevTools/devtools-protocol/compare/937d75e...a40fe3f)
 #### `Page`: modified command
