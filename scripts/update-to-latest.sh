@@ -23,7 +23,7 @@ git submodule foreach git pull origin master
 cd "$chromium_src_path" || exit 1
 
 # get latest from chromium master
-git fetch origin
+git fetch origin master
 git checkout -f origin/master
 env GYP_DEFINES=disable_nacl=1 gclient sync --jobs=70 --nohooks
 
