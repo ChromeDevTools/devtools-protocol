@@ -14,6 +14,7 @@ protocol_repo_path="$pwd/../"
 
 # => cd into protocol repo
 cd "$protocol_repo_path" || exit 1
+git pull origin master
 git submodule update --init
 # always work with the latest inspector_protocol repo
 git submodule foreach git pull origin master
