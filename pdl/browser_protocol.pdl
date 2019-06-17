@@ -6922,6 +6922,9 @@ experimental domain WebAuthn
       AuthenticatorTransport transport
       boolean hasResidentKey
       boolean hasUserVerification
+      # If set to true, tests of user presence will succeed immediately.
+      # Otherwise, they will not be resolved. Defaults to true.
+      optional boolean automaticPresenceSimulation
 
   type Credential extends object
     properties

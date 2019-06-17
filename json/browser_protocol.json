@@ -15062,6 +15062,12 @@
                         {
                             "name": "hasUserVerification",
                             "type": "boolean"
+                        },
+                        {
+                            "name": "automaticPresenceSimulation",
+                            "description": "If set to true, tests of user presence will succeed immediately.\nOtherwise, they will not be resolved. Defaults to true.",
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ]
                 },
