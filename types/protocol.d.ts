@@ -11744,6 +11744,11 @@ export namespace Protocol {
             transport: AuthenticatorTransport;
             hasResidentKey: boolean;
             hasUserVerification: boolean;
+            /**
+             * If set to true, tests of user presence will succeed immediately.
+             * Otherwise, they will not be resolved. Defaults to true.
+             */
+            automaticPresenceSimulation?: boolean;
         }
 
         export interface Credential {

@@ -5410,12 +5410,13 @@ Protocol.PageAgent.prototype.invoke_navigateToHistoryEntry = function(obj) {};
  * @param {string=} opt_headerTemplate
  * @param {string=} opt_footerTemplate
  * @param {boolean=} opt_preferCSSPageSize
+ * @param {string=} opt_transferMode
  * @return {!Promise<?string>}
  */
-Protocol.PageAgent.prototype.printToPDF = function(opt_landscape, opt_displayHeaderFooter, opt_printBackground, opt_scale, opt_paperWidth, opt_paperHeight, opt_marginTop, opt_marginBottom, opt_marginLeft, opt_marginRight, opt_pageRanges, opt_ignoreInvalidPageRanges, opt_headerTemplate, opt_footerTemplate, opt_preferCSSPageSize) {};
-/** @typedef {!{paperHeight: (number|undefined), scale: (number|undefined), footerTemplate: (string|undefined), displayHeaderFooter: (boolean|undefined), marginBottom: (number|undefined), paperWidth: (number|undefined), headerTemplate: (string|undefined), marginLeft: (number|undefined), preferCSSPageSize: (boolean|undefined), printBackground: (boolean|undefined), marginRight: (number|undefined), ignoreInvalidPageRanges: (boolean|undefined), pageRanges: (string|undefined), marginTop: (number|undefined), landscape: (boolean|undefined)}} */
+Protocol.PageAgent.prototype.printToPDF = function(opt_landscape, opt_displayHeaderFooter, opt_printBackground, opt_scale, opt_paperWidth, opt_paperHeight, opt_marginTop, opt_marginBottom, opt_marginLeft, opt_marginRight, opt_pageRanges, opt_ignoreInvalidPageRanges, opt_headerTemplate, opt_footerTemplate, opt_preferCSSPageSize, opt_transferMode) {};
+/** @typedef {!{paperHeight: (number|undefined), scale: (number|undefined), footerTemplate: (string|undefined), displayHeaderFooter: (boolean|undefined), transferMode: (string|undefined), marginBottom: (number|undefined), paperWidth: (number|undefined), headerTemplate: (string|undefined), marginLeft: (number|undefined), preferCSSPageSize: (boolean|undefined), printBackground: (boolean|undefined), marginRight: (number|undefined), ignoreInvalidPageRanges: (boolean|undefined), pageRanges: (string|undefined), marginTop: (number|undefined), landscape: (boolean|undefined)}} */
 Protocol.PageAgent.PrintToPDFRequest;
-/** @typedef {!{data: string}} */
+/** @typedef {!{data: string, stream: Protocol.IO.StreamHandle}} */
 Protocol.PageAgent.PrintToPDFResponse;
 /**
  * @param {!Protocol.PageAgent.PrintToPDFRequest} obj
@@ -6586,7 +6587,26 @@ Protocol.SystemInfoAgent.prototype.invoke_getProcessInfo = function(obj) {};
 /** @typedef {!{vendorId:(number), deviceId:(number), vendorString:(string), deviceString:(string), driverVendor:(string), driverVersion:(string)}} */
 Protocol.SystemInfo.GPUDevice;
 
-/** @typedef {!{devices:(!Array<Protocol.SystemInfo.GPUDevice>), auxAttributes:(!Object|undefined), featureStatus:(!Object|undefined), driverBugWorkarounds:(!Array<string>)}} */
+/** @typedef {!{width:(number), height:(number)}} */
+Protocol.SystemInfo.Size;
+
+/** @typedef {!{profile:(string), maxResolution:(Protocol.SystemInfo.Size), minResolution:(Protocol.SystemInfo.Size)}} */
+Protocol.SystemInfo.VideoDecodeAcceleratorCapability;
+
+/** @typedef {!{profile:(string), maxResolution:(Protocol.SystemInfo.Size), maxFramerateNumerator:(number), maxFramerateDenominator:(number)}} */
+Protocol.SystemInfo.VideoEncodeAcceleratorCapability;
+
+/** @enum {string} */
+Protocol.SystemInfo.SubsamplingFormat = {
+    Yuv420: "yuv420",
+    Yuv422: "yuv422",
+    Yuv444: "yuv444"
+};
+
+/** @typedef {!{imageType:(string), maxDimensions:(Protocol.SystemInfo.Size), minDimensions:(Protocol.SystemInfo.Size), subsamplings:(!Array<Protocol.SystemInfo.SubsamplingFormat>)}} */
+Protocol.SystemInfo.ImageDecodeAcceleratorCapability;
+
+/** @typedef {!{devices:(!Array<Protocol.SystemInfo.GPUDevice>), auxAttributes:(!Object|undefined), featureStatus:(!Object|undefined), driverBugWorkarounds:(!Array<string>), videoDecoding:(!Array<Protocol.SystemInfo.VideoDecodeAcceleratorCapability>), videoEncoding:(!Array<Protocol.SystemInfo.VideoEncodeAcceleratorCapability>), imageDecoding:(!Array<Protocol.SystemInfo.ImageDecodeAcceleratorCapability>)}} */
 Protocol.SystemInfo.GPUInfo;
 
 /** @typedef {!{type:(string), id:(number), cpuTime:(number)}} */
@@ -7441,7 +7461,7 @@ Protocol.WebAuthn.AuthenticatorTransport = {
     Internal: "internal"
 };
 
-/** @typedef {!{protocol:(Protocol.WebAuthn.AuthenticatorProtocol), transport:(Protocol.WebAuthn.AuthenticatorTransport), hasResidentKey:(boolean), hasUserVerification:(boolean)}} */
+/** @typedef {!{protocol:(Protocol.WebAuthn.AuthenticatorProtocol), transport:(Protocol.WebAuthn.AuthenticatorTransport), hasResidentKey:(boolean), hasUserVerification:(boolean), automaticPresenceSimulation:(boolean|undefined)}} */
 Protocol.WebAuthn.VirtualAuthenticatorOptions;
 
 /** @typedef {!{credentialId:(string), rpIdHash:(string), privateKey:(string), signCount:(number)}} */

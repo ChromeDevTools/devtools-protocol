@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r669732
+###### _2019-06-17 11:16:03_ | Diff: [d9cb7e4...de8b6d9](https://github.com/ChromeDevTools/devtools-protocol/compare/d9cb7e4...de8b6d9)
+#### `WebAuthn`: modified type
+* [`WebAuthn.VirtualAuthenticatorOptions`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#type-VirtualAuthenticatorOptions) - The properties's `automaticPresenceSimulation` _added_. 
+
+
 ## Roll protocol to r668850 668434
 ###### _2019-06-13 09:16:01_ | Diff: [a40fe3f...b24d4a4](https://github.com/ChromeDevTools/devtools-protocol/compare/a40fe3f...b24d4a4)
 #### `SystemInfo`: new types
