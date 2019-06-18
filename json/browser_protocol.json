@@ -15176,6 +15176,20 @@
                             "$ref": "AuthenticatorId"
                         }
                     ]
+                },
+                {
+                    "name": "setUserVerified",
+                    "description": "Sets whether User Verification succeeds or fails for an authenticator.\nThe default is true.",
+                    "parameters": [
+                        {
+                            "name": "authenticatorId",
+                            "$ref": "AuthenticatorId"
+                        },
+                        {
+                            "name": "isUserVerified",
+                            "type": "boolean"
+                        }
+                    ]
                 }
             ]
         }

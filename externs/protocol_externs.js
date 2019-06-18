@@ -7445,6 +7445,21 @@ Protocol.WebAuthnAgent.ClearCredentialsResponse;
  * @return {!Promise<!Protocol.WebAuthnAgent.ClearCredentialsResponse>} */
 Protocol.WebAuthnAgent.prototype.invoke_clearCredentials = function(obj) {};
 
+/**
+ * @param {Protocol.WebAuthn.AuthenticatorId} authenticatorId
+ * @param {boolean} isUserVerified
+ * @return {!Promise<undefined>}
+ */
+Protocol.WebAuthnAgent.prototype.setUserVerified = function(authenticatorId, isUserVerified) {};
+/** @typedef {!{authenticatorId: Protocol.WebAuthn.AuthenticatorId, isUserVerified: boolean}} */
+Protocol.WebAuthnAgent.SetUserVerifiedRequest;
+/** @typedef {Object|undefined} */
+Protocol.WebAuthnAgent.SetUserVerifiedResponse;
+/**
+ * @param {!Protocol.WebAuthnAgent.SetUserVerifiedRequest} obj
+ * @return {!Promise<!Protocol.WebAuthnAgent.SetUserVerifiedResponse>} */
+Protocol.WebAuthnAgent.prototype.invoke_setUserVerified = function(obj) {};
+
 /** @typedef {string} */
 Protocol.WebAuthn.AuthenticatorId;
 

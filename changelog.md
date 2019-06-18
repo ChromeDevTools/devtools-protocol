@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r670021
+###### _2019-06-18 02:15:55_ | Diff: [7fc59b2...fd73e0c](https://github.com/ChromeDevTools/devtools-protocol/compare/7fc59b2...fd73e0c)
+#### `Browser`: modified type
+* [`Browser.PermissionType`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-PermissionType) - The enum's `wakeLockScreen` _added_. The enum's `wakeLockSystem` _added_. 
+
+
 ## Roll protocol to r669732
 ###### _2019-06-17 11:16:03_ | Diff: [d9cb7e4...de8b6d9](https://github.com/ChromeDevTools/devtools-protocol/compare/d9cb7e4...de8b6d9)
 #### `WebAuthn`: modified type

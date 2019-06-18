@@ -3120,6 +3120,12 @@ export namespace ProtocolProxyApi {
          */
         clearCredentials(params: Protocol.WebAuthn.ClearCredentialsRequest): Promise<void>;
 
+        /**
+         * Sets whether User Verification succeeds or fails for an authenticator.
+         * The default is true.
+         */
+        setUserVerified(params: Protocol.WebAuthn.SetUserVerifiedRequest): Promise<void>;
+
     }
 }
 

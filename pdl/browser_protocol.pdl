@@ -6978,3 +6978,10 @@ experimental domain WebAuthn
   command clearCredentials
     parameters
       AuthenticatorId authenticatorId
+
+  # Sets whether User Verification succeeds or fails for an authenticator.
+  # The default is true.
+  command setUserVerified
+    parameters
+      AuthenticatorId authenticatorId
+      boolean isUserVerified

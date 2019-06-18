@@ -11799,6 +11799,11 @@ export namespace Protocol {
         export interface ClearCredentialsRequest {
             authenticatorId: AuthenticatorId;
         }
+
+        export interface SetUserVerifiedRequest {
+            authenticatorId: AuthenticatorId;
+            isUserVerified: boolean;
+        }
     }
 }
 

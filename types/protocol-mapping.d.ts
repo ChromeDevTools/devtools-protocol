@@ -3676,6 +3676,14 @@ export namespace ProtocolMapping {
             paramsType: [Protocol.WebAuthn.ClearCredentialsRequest];
             returnType: void;
         };
+        /**
+         * Sets whether User Verification succeeds or fails for an authenticator.
+         * The default is true.
+         */
+        'WebAuthn.setUserVerified': {
+            paramsType: [Protocol.WebAuthn.SetUserVerifiedRequest];
+            returnType: void;
+        };
     }
 }
 
