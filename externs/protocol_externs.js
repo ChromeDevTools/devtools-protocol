@@ -769,7 +769,9 @@ Protocol.Browser.PermissionType = {
     ProtectedMediaIdentifier: "protectedMediaIdentifier",
     Sensors: "sensors",
     VideoCapture: "videoCapture",
-    IdleDetection: "idleDetection"
+    IdleDetection: "idleDetection",
+    WakeLockScreen: "wakeLockScreen",
+    WakeLockSystem: "wakeLockSystem"
 };
 
 /** @typedef {!{low:(number), high:(number), count:(number)}} */

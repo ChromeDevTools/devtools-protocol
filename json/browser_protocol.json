@@ -1200,7 +1200,9 @@
                         "protectedMediaIdentifier",
                         "sensors",
                         "videoCapture",
-                        "idleDetection"
+                        "idleDetection",
+                        "wakeLockScreen",
+                        "wakeLockSystem"
                     ]
                 },
                 {

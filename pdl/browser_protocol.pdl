@@ -585,6 +585,8 @@ domain Browser
       sensors
       videoCapture
       idleDetection
+      wakeLockScreen
+      wakeLockSystem
 
   # Grant specific permissions to the given origin and reject all others.
   experimental command grantPermissions
