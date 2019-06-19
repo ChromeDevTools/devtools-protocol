@@ -5921,7 +5921,7 @@ domain Security
       # Security state.
       SecurityState securityState
       # True if the page was loaded over cryptographic transport such as HTTPS.
-      boolean schemeIsCryptographic
+      deprecated boolean schemeIsCryptographic
       # List of explanations for the security state. If the overall security state is `insecure` or
       # `warning`, at least one corresponding explanation should be included.
       array of SecurityStateExplanation explanations

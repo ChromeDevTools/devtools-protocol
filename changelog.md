@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r670203
+###### _2019-06-18 14:15:55_ | Diff: [fd73e0c...471ce93](https://github.com/ChromeDevTools/devtools-protocol/compare/fd73e0c...471ce93)
+#### `WebAuthn`: new command
+* [`WebAuthn.setUserVerified`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#method-setUserVerified)
+
+
 ## Roll protocol to r670021
 ###### _2019-06-18 02:15:55_ | Diff: [7fc59b2...fd73e0c](https://github.com/ChromeDevTools/devtools-protocol/compare/7fc59b2...fd73e0c)
 #### `Browser`: modified type
