@@ -6614,6 +6614,9 @@ experimental domain Tracing
   # delivered via dataCollected events.
   event tracingComplete
     parameters
+      # Indicates whether some trace data is known to have been lost, e.g. because the trace ring
+      # buffer wrapped around.
+      boolean dataLossOccurred
       # A handle of the stream that holds resulting trace data.
       optional IO.StreamHandle stream
       # Trace data format of returned stream.

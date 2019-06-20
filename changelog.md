@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r670335
+###### _2019-06-18 18:16:11_ | Diff: [471ce93...927ebde](https://github.com/ChromeDevTools/devtools-protocol/compare/471ce93...927ebde)
+#### `Security`: modified event
+* [`Security.securityStateChanged`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#event-securityStateChanged) - The parameters's `deprecated` _added_. 
+
+
 ## Roll protocol to r670203
 ###### _2019-06-18 14:15:55_ | Diff: [fd73e0c...471ce93](https://github.com/ChromeDevTools/devtools-protocol/compare/fd73e0c...471ce93)
 #### `WebAuthn`: new command

@@ -11348,6 +11348,11 @@ export namespace Protocol {
          */
         export interface TracingCompleteEvent {
             /**
+             * Indicates whether some trace data is known to have been lost, e.g. because the trace ring
+             * buffer wrapped around.
+             */
+            dataLossOccurred: boolean;
+            /**
              * A handle of the stream that holds resulting trace data.
              */
             stream?: IO.StreamHandle;

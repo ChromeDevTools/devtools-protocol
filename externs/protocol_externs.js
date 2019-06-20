@@ -7068,11 +7068,12 @@ Protocol.TracingDispatcher.prototype.bufferUsage = function(opt_percentFull, opt
  */
 Protocol.TracingDispatcher.prototype.dataCollected = function(value) {};
 /**
+ * @param {boolean} dataLossOccurred
  * @param {Protocol.IO.StreamHandle=} opt_stream
  * @param {Protocol.Tracing.StreamFormat=} opt_traceFormat
  * @param {Protocol.Tracing.StreamCompression=} opt_streamCompression
  */
-Protocol.TracingDispatcher.prototype.tracingComplete = function(opt_stream, opt_traceFormat, opt_streamCompression) {};
+Protocol.TracingDispatcher.prototype.tracingComplete = function(dataLossOccurred, opt_stream, opt_traceFormat, opt_streamCompression) {};
 Protocol.Fetch = {};
 
 
