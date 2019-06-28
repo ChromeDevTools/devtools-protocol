@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r673382
+###### _2019-06-28 10:16:01_ | Diff: [55a3386...c27026e](https://github.com/ChromeDevTools/devtools-protocol/compare/55a3386...c27026e)
+#### `Network`: modified commands
+* [`Network.continueInterceptedRequest`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-continueInterceptedRequest) - `description` updated. `deprecated` added. 
+* [`Network.setRequestInterception`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setRequestInterception) - `description` updated. `deprecated` added. 
+#### `Network`: modified event
+* [`Network.requestIntercepted`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestIntercepted) - `description` updated. `deprecated` added. 
+
+
 ## Roll protocol to r673135
 ###### _2019-06-27 17:16:12_ | Diff: [fb3f546...c137a23](https://github.com/ChromeDevTools/devtools-protocol/compare/fb3f546...c137a23)
 #### `Page`: new commands
