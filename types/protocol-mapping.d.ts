@@ -316,6 +316,10 @@ export namespace ProtocolMapping {
         'Overlay.inspectModeCanceled': [];
         'Page.domContentEventFired': [Protocol.Page.DomContentEventFiredEvent];
         /**
+         * Emitted only when `page.interceptFileChooser` is enabled.
+         */
+        'Page.fileChooserOpened': [Protocol.Page.FileChooserOpenedEvent];
+        /**
          * Fired when frame has been attached to its parent.
          */
         'Page.frameAttached': [Protocol.Page.FrameAttachedEvent];
@@ -3188,6 +3192,23 @@ export namespace ProtocolMapping {
          */
         'Page.waitForDebugger': {
             paramsType: [];
+            returnType: void;
+        };
+        /**
+         * Intercept file chooser requests and transfer control to protocol clients.
+         * When file chooser interception is enabled, native file chooser dialog is not shown.
+         * Instead, a protocol event `Page.fileChooserOpened` is emitted.
+         * File chooser can be handled with `page.handleFileChooser` command.
+         */
+        'Page.setInterceptFileChooserDialog': {
+            paramsType: [Protocol.Page.SetInterceptFileChooserDialogRequest];
+            returnType: void;
+        };
+        /**
+         * Accepts or cancels an intercepted file chooser dialog.
+         */
+        'Page.handleFileChooser': {
+            paramsType: [Protocol.Page.HandleFileChooserRequest];
             returnType: void;
         };
         /**

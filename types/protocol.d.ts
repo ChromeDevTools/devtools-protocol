@@ -9963,8 +9963,27 @@ export namespace Protocol {
             group?: string;
         }
 
+        export interface SetInterceptFileChooserDialogRequest {
+            enabled: boolean;
+        }
+
+        export interface HandleFileChooserRequest {
+            action: ('accept' | 'cancel' | 'fallback');
+            /**
+             * Array of absolute file paths to set, only respected with `accept` action.
+             */
+            files?: string[];
+        }
+
         export interface DomContentEventFiredEvent {
             timestamp: Network.MonotonicTime;
+        }
+
+        /**
+         * Emitted only when `page.interceptFileChooser` is enabled.
+         */
+        export interface FileChooserOpenedEvent {
+            mode: ('selectSingle' | 'selectMultiple');
         }
 
         /**

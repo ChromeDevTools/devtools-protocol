@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r670852
+###### _2019-06-20 04:15:55_ | Diff: [927ebde...fef5eb9](https://github.com/ChromeDevTools/devtools-protocol/compare/927ebde...fef5eb9)
+#### `Tracing`: modified event
+* [`Tracing.tracingComplete`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#event-tracingComplete) - The `stream` in the parameters had `optional` _removed_. The `stream` in the parameters had `$ref` _removed_. The `stream` in the parameters had `name` _updated_. The `stream` in the parameters had `description` _updated_. The `traceFormat` in the parameters had `name` _updated_. The `traceFormat` in the parameters had `description` _updated_. The `traceFormat` in the parameters had `$ref` _updated_. The `streamCompression` in the parameters had `name` _updated_. The `streamCompression` in the parameters had `description` _updated_. The `streamCompression` in the parameters had `$ref` _updated_. The parameters's `type` _added_. The parameters's `streamCompression` _added_. 
+
+
 ## Roll protocol to r670335
 ###### _2019-06-18 18:16:11_ | Diff: [471ce93...927ebde](https://github.com/ChromeDevTools/devtools-protocol/compare/471ce93...927ebde)
 #### `Security`: modified event
