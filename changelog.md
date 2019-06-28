@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r673135
+###### _2019-06-27 17:16:12_ | Diff: [fb3f546...c137a23](https://github.com/ChromeDevTools/devtools-protocol/compare/fb3f546...c137a23)
+#### `Page`: new commands
+* [`Page.setInterceptFileChooserDialog`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setInterceptFileChooserDialog)
+* [`Page.handleFileChooser`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-handleFileChooser)
+#### `Page`: new event
+* [`Page.fileChooserOpened`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-fileChooserOpened)
+
+
 ## Roll protocol to r670852
 ###### _2019-06-20 04:15:55_ | Diff: [927ebde...fef5eb9](https://github.com/ChromeDevTools/devtools-protocol/compare/927ebde...fef5eb9)
 #### `Tracing`: modified event
