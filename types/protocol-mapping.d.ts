@@ -247,6 +247,7 @@ export namespace ProtocolMapping {
         /**
          * Details of an intercepted HTTP request, which must be either allowed, blocked, modified or
          * mocked.
+         * Deprecated, use Fetch.requestPaused instead.
          */
         'Network.requestIntercepted': [Protocol.Network.RequestInterceptedEvent];
         /**
@@ -2537,6 +2538,7 @@ export namespace ProtocolMapping {
          * modifications, or blocks it, or completes it with the provided response bytes. If a network
          * fetch occurs as a result which encounters a redirect an additional Network.requestIntercepted
          * event will be sent with the same InterceptionId.
+         * Deprecated, use Fetch.continueRequest, Fetch.fulfillRequest and Fetch.failRequest instead.
          */
         'Network.continueInterceptedRequest': {
             paramsType: [Protocol.Network.ContinueInterceptedRequestRequest];
@@ -2691,6 +2693,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Sets the requests to intercept that match the provided patterns and optionally resource types.
+         * Deprecated, please use Fetch.enable instead.
          */
         'Network.setRequestInterception': {
             paramsType: [Protocol.Network.SetRequestInterceptionRequest];

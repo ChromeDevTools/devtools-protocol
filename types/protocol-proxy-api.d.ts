@@ -1919,6 +1919,7 @@ export namespace ProtocolProxyApi {
          * modifications, or blocks it, or completes it with the provided response bytes. If a network
          * fetch occurs as a result which encounters a redirect an additional Network.requestIntercepted
          * event will be sent with the same InterceptionId.
+         * Deprecated, use Fetch.continueRequest, Fetch.fulfillRequest and Fetch.failRequest instead.
          */
         continueInterceptedRequest(params: Protocol.Network.ContinueInterceptedRequestRequest): Promise<void>;
 
@@ -2031,6 +2032,7 @@ export namespace ProtocolProxyApi {
 
         /**
          * Sets the requests to intercept that match the provided patterns and optionally resource types.
+         * Deprecated, please use Fetch.enable instead.
          */
         setRequestInterception(params: Protocol.Network.SetRequestInterceptionRequest): Promise<void>;
 
@@ -2062,6 +2064,7 @@ export namespace ProtocolProxyApi {
         /**
          * Details of an intercepted HTTP request, which must be either allowed, blocked, modified or
          * mocked.
+         * Deprecated, use Fetch.requestPaused instead.
          */
         on(event: 'requestIntercepted', listener: (params: Protocol.Network.RequestInterceptedEvent) => void): void;
 

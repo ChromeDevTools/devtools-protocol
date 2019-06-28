@@ -4231,7 +4231,8 @@ domain Network
   # modifications, or blocks it, or completes it with the provided response bytes. If a network
   # fetch occurs as a result which encounters a redirect an additional Network.requestIntercepted
   # event will be sent with the same InterceptionId.
-  experimental command continueInterceptedRequest
+  # Deprecated, use Fetch.continueRequest, Fetch.fulfillRequest and Fetch.failRequest instead.
+  experimental deprecated command continueInterceptedRequest
     parameters
       InterceptionId interceptionId
       # If set this causes the request to fail with the given reason. Passing `Aborted` for requests
@@ -4449,7 +4450,8 @@ domain Network
       Headers headers
 
   # Sets the requests to intercept that match the provided patterns and optionally resource types.
-  experimental command setRequestInterception
+  # Deprecated, please use Fetch.enable instead.
+  experimental deprecated command setRequestInterception
     parameters
       # Requests matching any of these patterns will be forwarded and wait for the corresponding
       # continueInterceptedRequest call.
@@ -4523,7 +4525,8 @@ domain Network
 
   # Details of an intercepted HTTP request, which must be either allowed, blocked, modified or
   # mocked.
-  experimental event requestIntercepted
+  # Deprecated, use Fetch.requestPaused instead.
+  experimental deprecated event requestIntercepted
     parameters
       # Each request the page makes will have a unique id, however if any redirects are encountered
       # while processing that fetch, they will be reported with the same id as the original fetch.
