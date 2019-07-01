@@ -4170,6 +4170,8 @@ domain Network
       Headers responseHeaders
       # Signed exchange response signature.
       array of SignedExchangeSignature signatures
+      # Signed exchange header integrity hash in the form of "sha256-<base64-hash-value>".
+      string headerIntegrity
 
   # Field type for a signed exchange related error.
   experimental type SignedExchangeErrorField extends string

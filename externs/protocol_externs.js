@@ -4610,7 +4610,7 @@ Protocol.Network.RequestPattern;
 /** @typedef {!{label:(string), signature:(string), integrity:(string), certUrl:(string|undefined), certSha256:(string|undefined), validityUrl:(string), date:(number), expires:(number), certificates:(!Array<string>|undefined)}} */
 Protocol.Network.SignedExchangeSignature;
 
-/** @typedef {!{requestUrl:(string), responseCode:(number), responseHeaders:(Protocol.Network.Headers), signatures:(!Array<Protocol.Network.SignedExchangeSignature>)}} */
+/** @typedef {!{requestUrl:(string), responseCode:(number), responseHeaders:(Protocol.Network.Headers), signatures:(!Array<Protocol.Network.SignedExchangeSignature>), headerIntegrity:(string)}} */
 Protocol.Network.SignedExchangeHeader;
 
 /** @enum {string} */

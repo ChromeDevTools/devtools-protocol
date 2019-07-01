@@ -7946,6 +7946,10 @@ export namespace Protocol {
              * Signed exchange response signature.
              */
             signatures: SignedExchangeSignature[];
+            /**
+             * Signed exchange header integrity hash in the form of "sha256-<base64-hash-value>".
+             */
+            headerIntegrity: string;
         }
 
         /**
