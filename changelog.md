@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r673641
+###### _2019-06-30 22:16:04_ | Diff: [7eda722...8282023](https://github.com/ChromeDevTools/devtools-protocol/compare/7eda722...8282023)
+#### `Network`: modified type
+* [`Network.SignedExchangeHeader`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedExchangeHeader) - The properties's `headerIntegrity` _added_. 
+
+
 ## Roll protocol to r673382
 ###### _2019-06-28 10:16:01_ | Diff: [55a3386...c27026e](https://github.com/ChromeDevTools/devtools-protocol/compare/55a3386...c27026e)
 #### `Network`: modified commands
