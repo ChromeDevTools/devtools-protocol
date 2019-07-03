@@ -526,7 +526,8 @@ Protocol.BackgroundService.ServiceName = {
     BackgroundFetch: "backgroundFetch",
     BackgroundSync: "backgroundSync",
     PushMessaging: "pushMessaging",
-    Notifications: "notifications"
+    Notifications: "notifications",
+    PaymentHandler: "paymentHandler"
 };
 
 /** @typedef {!{key:(string), value:(string)}} */

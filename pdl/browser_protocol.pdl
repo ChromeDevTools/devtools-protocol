@@ -481,6 +481,7 @@ experimental domain BackgroundService
       backgroundSync
       pushMessaging
       notifications
+      paymentHandler
 
   # Enables event updates for the service.
   command startObserving
