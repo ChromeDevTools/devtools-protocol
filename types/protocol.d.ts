@@ -2646,7 +2646,7 @@ export namespace Protocol {
          * Every Background Service operates independently, but they share the same
          * API.
          */
-        export type ServiceName = ('backgroundFetch' | 'backgroundSync' | 'pushMessaging' | 'notifications');
+        export type ServiceName = ('backgroundFetch' | 'backgroundSync' | 'pushMessaging' | 'notifications' | 'paymentHandler');
 
         /**
          * A key-value pair for additional event information to pass along.
