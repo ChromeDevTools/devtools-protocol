@@ -8834,6 +8834,10 @@ export namespace Protocol {
              * Whether to include distance info.
              */
             includeDistance?: boolean;
+            /**
+             * Whether to include style info.
+             */
+            includeStyle?: boolean;
         }
 
         export interface GetHighlightObjectForTestResponse {

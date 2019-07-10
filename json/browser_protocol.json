@@ -10450,6 +10450,12 @@
                             "description": "Whether to include distance info.",
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "includeStyle",
+                            "description": "Whether to include style info.",
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ],
                     "returns": [

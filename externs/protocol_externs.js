@@ -4794,10 +4794,11 @@ Protocol.OverlayAgent.prototype.invoke_enable = function(obj) {};
 /**
  * @param {Protocol.DOM.NodeId} nodeId
  * @param {boolean=} opt_includeDistance
+ * @param {boolean=} opt_includeStyle
  * @return {!Promise<?Object>}
  */
-Protocol.OverlayAgent.prototype.getHighlightObjectForTest = function(nodeId, opt_includeDistance) {};
-/** @typedef {!{includeDistance: (boolean|undefined), nodeId: Protocol.DOM.NodeId}} */
+Protocol.OverlayAgent.prototype.getHighlightObjectForTest = function(nodeId, opt_includeDistance, opt_includeStyle) {};
+/** @typedef {!{includeDistance: (boolean|undefined), nodeId: Protocol.DOM.NodeId, includeStyle: (boolean|undefined)}} */
 Protocol.OverlayAgent.GetHighlightObjectForTestRequest;
 /** @typedef {!{highlight: !Object}} */
 Protocol.OverlayAgent.GetHighlightObjectForTestResponse;

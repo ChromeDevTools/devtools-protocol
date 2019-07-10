@@ -4754,6 +4754,8 @@ experimental domain Overlay
       DOM.NodeId nodeId
       # Whether to include distance info.
       optional boolean includeDistance
+      # Whether to include style info.
+      optional boolean includeStyle
     returns
       # Highlight data for the node.
       object highlight

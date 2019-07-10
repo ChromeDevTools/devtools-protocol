@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r674615 641719
+###### _2019-07-03 14:16:20_ | Diff: [b44b935...e639d55](https://github.com/ChromeDevTools/devtools-protocol/compare/b44b935...e639d55)
+#### `BackgroundService`: modified type
+* [`BackgroundService.ServiceName`](https://chromedevtools.github.io/devtools-protocol/tot/BackgroundService/#type-ServiceName) - The enum's `paymentHandler` _added_. 
+
+
 ## Roll protocol to r673641
 ###### _2019-06-30 22:16:04_ | Diff: [7eda722...8282023](https://github.com/ChromeDevTools/devtools-protocol/compare/7eda722...8282023)
 #### `Network`: modified type
