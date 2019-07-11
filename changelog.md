@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r676164
+###### _2019-07-10 16:16:22_ | Diff: [eabfde3...783cc86](https://github.com/ChromeDevTools/devtools-protocol/compare/eabfde3...783cc86)
+#### `Overlay`: modified command
+* [`Overlay.getHighlightObjectForTest`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-getHighlightObjectForTest) - The parameters's `includeStyle` _added_. 
+
+
 ## Roll protocol to r674615 641719
 ###### _2019-07-03 14:16:20_ | Diff: [b44b935...e639d55](https://github.com/ChromeDevTools/devtools-protocol/compare/b44b935...e639d55)
 #### `BackgroundService`: modified type
