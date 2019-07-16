@@ -7771,6 +7771,51 @@ export namespace Protocol {
         }
 
         /**
+         * Types of reasons why a cookie may not be stored from a response.
+         */
+        export type SetCookieBlockedReason = ('SecureOnly' | 'SameSiteStrict' | 'SameSiteLax' | 'SameSiteExtended' | 'SameSiteUnspecifiedTreatedAsLax' | 'SameSiteNoneInsecure' | 'UserPreferences' | 'SyntaxError' | 'SchemeNotSupported' | 'OverwriteSecure' | 'InvalidDomain' | 'InvalidPrefix' | 'UnknownError');
+
+        /**
+         * Types of reasons why a cookie may not be sent with a request.
+         */
+        export type CookieBlockedReason = ('SecureOnly' | 'NotOnPath' | 'DomainMismatch' | 'SameSiteStrict' | 'SameSiteLax' | 'SameSiteExtended' | 'SameSiteUnspecifiedTreatedAsLax' | 'SameSiteNoneInsecure' | 'UserPreferences' | 'UnknownError');
+
+        /**
+         * A cookie which was not stored from a response with the corresponding reason.
+         */
+        export interface BlockedSetCookieWithReason {
+            /**
+             * The reason this cookie was blocked.
+             */
+            blockedReason: SetCookieBlockedReason;
+            /**
+             * The string representing this individual cookie as it would appear in the header.
+             * This is not the entire "cookie" or "set-cookie" header which could have multiple cookies.
+             */
+            cookieLine: string;
+            /**
+             * The cookie object which represents the cookie which was not stored. It is optional because
+             * sometimes complete cookie information is not available, such as in the case of parsing
+             * errors.
+             */
+            cookie?: Cookie;
+        }
+
+        /**
+         * A cookie with was not sent with a request with the corresponding reason.
+         */
+        export interface BlockedCookieWithReason {
+            /**
+             * The reason the cookie was blocked.
+             */
+            blockedReason: CookieBlockedReason;
+            /**
+             * The cookie object representing the cookie which was not sent.
+             */
+            cookie: Cookie;
+        }
+
+        /**
          * Cookie parameter object
          */
         export interface CookieParam {
@@ -8761,6 +8806,55 @@ export namespace Protocol {
              * WebSocket request data.
              */
             request: WebSocketRequest;
+        }
+
+        /**
+         * Fired when additional information about a requestWillBeSent event is available from the
+         * network stack. Not every requestWillBeSent event will have an additional
+         * requestWillBeSentExtraInfo fired for it, and there is no guarantee whether requestWillBeSent
+         * or requestWillBeSentExtraInfo will be fired first for the same request.
+         */
+        export interface RequestWillBeSentExtraInfoEvent {
+            /**
+             * Request identifier. Used to match this information to an existing requestWillBeSent event.
+             */
+            requestId: RequestId;
+            /**
+             * A list of cookies which will not be sent with this request along with corresponding reasons
+             * for blocking.
+             */
+            blockedCookies: BlockedCookieWithReason[];
+            /**
+             * Raw request headers as they will be sent over the wire.
+             */
+            headers: Headers;
+        }
+
+        /**
+         * Fired when additional information about a responseReceived event is available from the network
+         * stack. Not every responseReceived event will have an additional responseReceivedExtraInfo for
+         * it, and responseReceivedExtraInfo may be fired before or after responseReceived.
+         */
+        export interface ResponseReceivedExtraInfoEvent {
+            /**
+             * Request identifier. Used to match this information to another responseReceived event.
+             */
+            requestId: RequestId;
+            /**
+             * A list of cookies which were not stored from the response along with the corresponding
+             * reasons for blocking. The cookies here may not be valid due to syntax errors, which
+             * are represented by the invalid cookie line string instead of a proper cookie.
+             */
+            blockedCookies: BlockedSetCookieWithReason[];
+            /**
+             * Raw response headers as they were received over the wire.
+             */
+            headers: Headers;
+            /**
+             * Raw response header text as it was received over the wire. The raw text may not always be
+             * available, such as in the case of HTTP/2 or QUIC.
+             */
+            headersText?: string;
         }
     }
 

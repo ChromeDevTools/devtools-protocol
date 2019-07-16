@@ -8932,6 +8932,87 @@
                     ]
                 },
                 {
+                    "id": "SetCookieBlockedReason",
+                    "description": "Types of reasons why a cookie may not be stored from a response.",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "SecureOnly",
+                        "SameSiteStrict",
+                        "SameSiteLax",
+                        "SameSiteExtended",
+                        "SameSiteUnspecifiedTreatedAsLax",
+                        "SameSiteNoneInsecure",
+                        "UserPreferences",
+                        "SyntaxError",
+                        "SchemeNotSupported",
+                        "OverwriteSecure",
+                        "InvalidDomain",
+                        "InvalidPrefix",
+                        "UnknownError"
+                    ]
+                },
+                {
+                    "id": "CookieBlockedReason",
+                    "description": "Types of reasons why a cookie may not be sent with a request.",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "SecureOnly",
+                        "NotOnPath",
+                        "DomainMismatch",
+                        "SameSiteStrict",
+                        "SameSiteLax",
+                        "SameSiteExtended",
+                        "SameSiteUnspecifiedTreatedAsLax",
+                        "SameSiteNoneInsecure",
+                        "UserPreferences",
+                        "UnknownError"
+                    ]
+                },
+                {
+                    "id": "BlockedSetCookieWithReason",
+                    "description": "A cookie which was not stored from a response with the corresponding reason.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "blockedReason",
+                            "description": "The reason this cookie was blocked.",
+                            "$ref": "SetCookieBlockedReason"
+                        },
+                        {
+                            "name": "cookieLine",
+                            "description": "The string representing this individual cookie as it would appear in the header.\nThis is not the entire \"cookie\" or \"set-cookie\" header which could have multiple cookies.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "cookie",
+                            "description": "The cookie object which represents the cookie which was not stored. It is optional because\nsometimes complete cookie information is not available, such as in the case of parsing\nerrors.",
+                            "optional": true,
+                            "$ref": "Cookie"
+                        }
+                    ]
+                },
+                {
+                    "id": "BlockedCookieWithReason",
+                    "description": "A cookie with was not sent with a request with the corresponding reason.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "blockedReason",
+                            "description": "The reason the cookie was blocked.",
+                            "$ref": "CookieBlockedReason"
+                        },
+                        {
+                            "name": "cookie",
+                            "description": "The cookie object representing the cookie which was not sent.",
+                            "$ref": "Cookie"
+                        }
+                    ]
+                },
+                {
                     "id": "CookieParam",
                     "description": "Cookie parameter object",
                     "type": "object",
@@ -10321,6 +10402,62 @@
                             "name": "request",
                             "description": "WebSocket request data.",
                             "$ref": "WebSocketRequest"
+                        }
+                    ]
+                },
+                {
+                    "name": "requestWillBeSentExtraInfo",
+                    "description": "Fired when additional information about a requestWillBeSent event is available from the\nnetwork stack. Not every requestWillBeSent event will have an additional\nrequestWillBeSentExtraInfo fired for it, and there is no guarantee whether requestWillBeSent\nor requestWillBeSentExtraInfo will be fired first for the same request.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "requestId",
+                            "description": "Request identifier. Used to match this information to an existing requestWillBeSent event.",
+                            "$ref": "RequestId"
+                        },
+                        {
+                            "name": "blockedCookies",
+                            "description": "A list of cookies which will not be sent with this request along with corresponding reasons\nfor blocking.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "BlockedCookieWithReason"
+                            }
+                        },
+                        {
+                            "name": "headers",
+                            "description": "Raw request headers as they will be sent over the wire.",
+                            "$ref": "Headers"
+                        }
+                    ]
+                },
+                {
+                    "name": "responseReceivedExtraInfo",
+                    "description": "Fired when additional information about a responseReceived event is available from the network\nstack. Not every responseReceived event will have an additional responseReceivedExtraInfo for\nit, and responseReceivedExtraInfo may be fired before or after responseReceived.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "requestId",
+                            "description": "Request identifier. Used to match this information to another responseReceived event.",
+                            "$ref": "RequestId"
+                        },
+                        {
+                            "name": "blockedCookies",
+                            "description": "A list of cookies which were not stored from the response along with the corresponding\nreasons for blocking. The cookies here may not be valid due to syntax errors, which\nare represented by the invalid cookie line string instead of a proper cookie.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "BlockedSetCookieWithReason"
+                            }
+                        },
+                        {
+                            "name": "headers",
+                            "description": "Raw response headers as they were received over the wire.",
+                            "$ref": "Headers"
+                        },
+                        {
+                            "name": "headersText",
+                            "description": "Raw response header text as it was received over the wire. The raw text may not always be\navailable, such as in the case of HTTP/2 or QUIC.",
+                            "optional": true,
+                            "type": "string"
                         }
                     ]
                 }

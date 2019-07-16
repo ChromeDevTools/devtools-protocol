@@ -2128,6 +2128,21 @@ export namespace ProtocolProxyApi {
          */
         on(event: 'webSocketWillSendHandshakeRequest', listener: (params: Protocol.Network.WebSocketWillSendHandshakeRequestEvent) => void): void;
 
+        /**
+         * Fired when additional information about a requestWillBeSent event is available from the
+         * network stack. Not every requestWillBeSent event will have an additional
+         * requestWillBeSentExtraInfo fired for it, and there is no guarantee whether requestWillBeSent
+         * or requestWillBeSentExtraInfo will be fired first for the same request.
+         */
+        on(event: 'requestWillBeSentExtraInfo', listener: (params: Protocol.Network.RequestWillBeSentExtraInfoEvent) => void): void;
+
+        /**
+         * Fired when additional information about a responseReceived event is available from the network
+         * stack. Not every responseReceived event will have an additional responseReceivedExtraInfo for
+         * it, and responseReceivedExtraInfo may be fired before or after responseReceived.
+         */
+        on(event: 'responseReceivedExtraInfo', listener: (params: Protocol.Network.ResponseReceivedExtraInfoEvent) => void): void;
+
     }
 
     export interface OverlayApi {

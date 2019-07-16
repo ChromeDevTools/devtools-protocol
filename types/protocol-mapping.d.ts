@@ -299,6 +299,19 @@ export namespace ProtocolMapping {
          */
         'Network.webSocketWillSendHandshakeRequest': [Protocol.Network.WebSocketWillSendHandshakeRequestEvent];
         /**
+         * Fired when additional information about a requestWillBeSent event is available from the
+         * network stack. Not every requestWillBeSent event will have an additional
+         * requestWillBeSentExtraInfo fired for it, and there is no guarantee whether requestWillBeSent
+         * or requestWillBeSentExtraInfo will be fired first for the same request.
+         */
+        'Network.requestWillBeSentExtraInfo': [Protocol.Network.RequestWillBeSentExtraInfoEvent];
+        /**
+         * Fired when additional information about a responseReceived event is available from the network
+         * stack. Not every responseReceived event will have an additional responseReceivedExtraInfo for
+         * it, and responseReceivedExtraInfo may be fired before or after responseReceived.
+         */
+        'Network.responseReceivedExtraInfo': [Protocol.Network.ResponseReceivedExtraInfoEvent];
+        /**
          * Fired when the node should be inspected. This happens after call to `setInspectMode` or when
          * user manually inspects an element.
          */

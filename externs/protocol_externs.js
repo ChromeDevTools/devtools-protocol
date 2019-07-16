@@ -4577,6 +4577,43 @@ Protocol.Network.Initiator;
 /** @typedef {!{name:(string), value:(string), domain:(string), path:(string), expires:(number), size:(number), httpOnly:(boolean), secure:(boolean), session:(boolean), sameSite:(Protocol.Network.CookieSameSite|undefined)}} */
 Protocol.Network.Cookie;
 
+/** @enum {string} */
+Protocol.Network.SetCookieBlockedReason = {
+    SecureOnly: "SecureOnly",
+    SameSiteStrict: "SameSiteStrict",
+    SameSiteLax: "SameSiteLax",
+    SameSiteExtended: "SameSiteExtended",
+    SameSiteUnspecifiedTreatedAsLax: "SameSiteUnspecifiedTreatedAsLax",
+    SameSiteNoneInsecure: "SameSiteNoneInsecure",
+    UserPreferences: "UserPreferences",
+    SyntaxError: "SyntaxError",
+    SchemeNotSupported: "SchemeNotSupported",
+    OverwriteSecure: "OverwriteSecure",
+    InvalidDomain: "InvalidDomain",
+    InvalidPrefix: "InvalidPrefix",
+    UnknownError: "UnknownError"
+};
+
+/** @enum {string} */
+Protocol.Network.CookieBlockedReason = {
+    SecureOnly: "SecureOnly",
+    NotOnPath: "NotOnPath",
+    DomainMismatch: "DomainMismatch",
+    SameSiteStrict: "SameSiteStrict",
+    SameSiteLax: "SameSiteLax",
+    SameSiteExtended: "SameSiteExtended",
+    SameSiteUnspecifiedTreatedAsLax: "SameSiteUnspecifiedTreatedAsLax",
+    SameSiteNoneInsecure: "SameSiteNoneInsecure",
+    UserPreferences: "UserPreferences",
+    UnknownError: "UnknownError"
+};
+
+/** @typedef {!{blockedReason:(Protocol.Network.SetCookieBlockedReason), cookieLine:(string), cookie:(Protocol.Network.Cookie|undefined)}} */
+Protocol.Network.BlockedSetCookieWithReason;
+
+/** @typedef {!{blockedReason:(Protocol.Network.CookieBlockedReason), cookie:(Protocol.Network.Cookie)}} */
+Protocol.Network.BlockedCookieWithReason;
+
 /** @typedef {!{name:(string), value:(string), url:(string|undefined), domain:(string|undefined), path:(string|undefined), secure:(boolean|undefined), httpOnly:(boolean|undefined), sameSite:(Protocol.Network.CookieSameSite|undefined), expires:(Protocol.Network.TimeSinceEpoch|undefined)}} */
 Protocol.Network.CookieParam;
 
@@ -4757,6 +4794,19 @@ Protocol.NetworkDispatcher.prototype.webSocketHandshakeResponseReceived = functi
  * @param {Protocol.Network.WebSocketRequest} request
  */
 Protocol.NetworkDispatcher.prototype.webSocketWillSendHandshakeRequest = function(requestId, timestamp, wallTime, request) {};
+/**
+ * @param {Protocol.Network.RequestId} requestId
+ * @param {!Array<Protocol.Network.BlockedCookieWithReason>} blockedCookies
+ * @param {Protocol.Network.Headers} headers
+ */
+Protocol.NetworkDispatcher.prototype.requestWillBeSentExtraInfo = function(requestId, blockedCookies, headers) {};
+/**
+ * @param {Protocol.Network.RequestId} requestId
+ * @param {!Array<Protocol.Network.BlockedSetCookieWithReason>} blockedCookies
+ * @param {Protocol.Network.Headers} headers
+ * @param {string=} opt_headersText
+ */
+Protocol.NetworkDispatcher.prototype.responseReceivedExtraInfo = function(requestId, blockedCookies, headers, opt_headersText) {};
 Protocol.Overlay = {};
 
 
