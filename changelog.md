@@ -1,5 +1,17 @@
 
 
+## Roll protocol to r678025
+###### _2019-07-16 16:15:58_ | Diff: [15eb83b...436e5f2](https://github.com/ChromeDevTools/devtools-protocol/compare/15eb83b...436e5f2)
+#### `Network`: new events
+* [`Network.requestWillBeSentExtraInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestWillBeSentExtraInfo)
+* [`Network.responseReceivedExtraInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-responseReceivedExtraInfo)
+#### `Network`: new types
+* [`Network.SetCookieBlockedReason`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SetCookieBlockedReason)
+* [`Network.CookieBlockedReason`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CookieBlockedReason)
+* [`Network.BlockedSetCookieWithReason`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-BlockedSetCookieWithReason)
+* [`Network.BlockedCookieWithReason`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-BlockedCookieWithReason)
+
+
 ## Roll protocol to r676164
 ###### _2019-07-10 16:16:22_ | Diff: [eabfde3...783cc86](https://github.com/ChromeDevTools/devtools-protocol/compare/eabfde3...783cc86)
 #### `Overlay`: modified command
