@@ -6690,7 +6690,14 @@ Protocol.SystemInfo.SubsamplingFormat = {
     Yuv444: "yuv444"
 };
 
-/** @typedef {!{imageType:(string), maxDimensions:(Protocol.SystemInfo.Size), minDimensions:(Protocol.SystemInfo.Size), subsamplings:(!Array<Protocol.SystemInfo.SubsamplingFormat>)}} */
+/** @enum {string} */
+Protocol.SystemInfo.ImageType = {
+    Jpeg: "jpeg",
+    Webp: "webp",
+    Unknown: "unknown"
+};
+
+/** @typedef {!{imageType:(Protocol.SystemInfo.ImageType), maxDimensions:(Protocol.SystemInfo.Size), minDimensions:(Protocol.SystemInfo.Size), subsamplings:(!Array<Protocol.SystemInfo.SubsamplingFormat>)}} */
 Protocol.SystemInfo.ImageDecodeAcceleratorCapability;
 
 /** @typedef {!{devices:(!Array<Protocol.SystemInfo.GPUDevice>), auxAttributes:(!Object|undefined), featureStatus:(!Object|undefined), driverBugWorkarounds:(!Array<string>), videoDecoding:(!Array<Protocol.SystemInfo.VideoDecodeAcceleratorCapability>), videoEncoding:(!Array<Protocol.SystemInfo.VideoEncodeAcceleratorCapability>), imageDecoding:(!Array<Protocol.SystemInfo.ImageDecodeAcceleratorCapability>)}} */

@@ -10905,6 +10905,11 @@ export namespace Protocol {
         export type SubsamplingFormat = ('yuv420' | 'yuv422' | 'yuv444');
 
         /**
+         * Image format of a given image.
+         */
+        export type ImageType = ('jpeg' | 'webp' | 'unknown');
+
+        /**
          * Describes a supported image decoding profile with its associated minimum and
          * maximum resolutions and subsampling.
          */
@@ -10912,7 +10917,7 @@ export namespace Protocol {
             /**
              * Image coded, e.g. Jpeg.
              */
-            imageType: string;
+            imageType: ImageType;
             /**
              * Maximum supported dimensions of the image in pixels.
              */

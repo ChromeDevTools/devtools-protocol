@@ -6352,12 +6352,19 @@ experimental domain SystemInfo
       yuv422
       yuv444
 
+  # Image format of a given image.
+  type ImageType extends string
+    enum
+      jpeg
+      webp
+      unknown
+
   # Describes a supported image decoding profile with its associated minimum and
   # maximum resolutions and subsampling.
   type ImageDecodeAcceleratorCapability extends object
     properties
       # Image coded, e.g. Jpeg.
-      string imageType
+      ImageType imageType
       # Maximum supported dimensions of the image in pixels.
       Size maxDimensions
       # Minimum supported dimensions of the image in pixels.
