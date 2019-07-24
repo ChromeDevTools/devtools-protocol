@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r680180
+###### _2019-07-23 15:16:11_ | Diff: [06d8e60...0334ffc](https://github.com/ChromeDevTools/devtools-protocol/compare/06d8e60...0334ffc)
+#### `SystemInfo`: new type
+* [`SystemInfo.ImageType`](https://chromedevtools.github.io/devtools-protocol/tot/SystemInfo/#type-ImageType)
+#### `SystemInfo`: modified type
+* [`SystemInfo.ImageDecodeAcceleratorCapability`](https://chromedevtools.github.io/devtools-protocol/tot/SystemInfo/#type-ImageDecodeAcceleratorCapability) - The `imageType` in the properties had `type` _removed_. The properties's `$ref` _added_. 
+
+
 ## Roll protocol to r678025
 ###### _2019-07-16 16:15:58_ | Diff: [15eb83b...436e5f2](https://github.com/ChromeDevTools/devtools-protocol/compare/15eb83b...436e5f2)
 #### `Network`: new events
