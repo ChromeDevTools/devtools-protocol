@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r680546 678539
+###### _2019-07-24 12:15:59_ | Diff: [0334ffc...f2a777d](https://github.com/ChromeDevTools/devtools-protocol/compare/0334ffc...f2a777d)
+#### `BackgroundService`: modified type
+* [`BackgroundService.ServiceName`](https://chromedevtools.github.io/devtools-protocol/tot/BackgroundService/#type-ServiceName) - The enum's `periodicBackgroundSync` _added_. 
+
+
 ## Roll protocol to r680180
 ###### _2019-07-23 15:16:11_ | Diff: [06d8e60...0334ffc](https://github.com/ChromeDevTools/devtools-protocol/compare/06d8e60...0334ffc)
 #### `SystemInfo`: new type
