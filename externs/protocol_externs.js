@@ -1934,6 +1934,34 @@ Protocol.DOMAgent.SetFileInputFilesResponse;
 Protocol.DOMAgent.prototype.invoke_setFileInputFiles = function(obj) {};
 
 /**
+ * @param {boolean} enable
+ * @return {!Promise<undefined>}
+ */
+Protocol.DOMAgent.prototype.setNodeStackTracesEnabled = function(enable) {};
+/** @typedef {!{enable: boolean}} */
+Protocol.DOMAgent.SetNodeStackTracesEnabledRequest;
+/** @typedef {Object|undefined} */
+Protocol.DOMAgent.SetNodeStackTracesEnabledResponse;
+/**
+ * @param {!Protocol.DOMAgent.SetNodeStackTracesEnabledRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.SetNodeStackTracesEnabledResponse>} */
+Protocol.DOMAgent.prototype.invoke_setNodeStackTracesEnabled = function(obj) {};
+
+/**
+ * @param {Protocol.DOM.NodeId} nodeId
+ * @return {!Promise<?Protocol.Runtime.StackTrace>}
+ */
+Protocol.DOMAgent.prototype.getNodeStackTraces = function(nodeId) {};
+/** @typedef {!{nodeId: Protocol.DOM.NodeId}} */
+Protocol.DOMAgent.GetNodeStackTracesRequest;
+/** @typedef {!{creation: Protocol.Runtime.StackTrace}} */
+Protocol.DOMAgent.GetNodeStackTracesResponse;
+/**
+ * @param {!Protocol.DOMAgent.GetNodeStackTracesRequest} obj
+ * @return {!Promise<!Protocol.DOMAgent.GetNodeStackTracesResponse>} */
+Protocol.DOMAgent.prototype.invoke_getNodeStackTraces = function(obj) {};
+
+/**
  * @param {Protocol.Runtime.RemoteObjectId} objectId
  * @return {!Promise<?string>}
  */

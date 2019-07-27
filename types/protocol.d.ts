@@ -4718,6 +4718,27 @@ export namespace Protocol {
             objectId?: Runtime.RemoteObjectId;
         }
 
+        export interface SetNodeStackTracesEnabledRequest {
+            /**
+             * Enable or disable.
+             */
+            enable: boolean;
+        }
+
+        export interface GetNodeStackTracesRequest {
+            /**
+             * Id of the node to get stack traces for.
+             */
+            nodeId: NodeId;
+        }
+
+        export interface GetNodeStackTracesResponse {
+            /**
+             * Creation stack trace, if available.
+             */
+            creation?: Runtime.StackTrace;
+        }
+
         export interface GetFileInfoRequest {
             /**
              * JavaScript object id of the node wrapper.

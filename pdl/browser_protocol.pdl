@@ -1925,6 +1925,21 @@ domain DOM
       # JavaScript object id of the node wrapper.
       optional Runtime.RemoteObjectId objectId
 
+  # Sets if stack traces should be captured for Nodes. See `Node.getNodeStackTraces`. Default is disabled.
+  experimental command setNodeStackTracesEnabled
+    parameters
+      # Enable or disable.
+      boolean enable
+
+  # Gets stack traces associated with a Node. As of now, only provides stack trace for Node creation.
+  experimental command getNodeStackTraces
+    parameters
+      # Id of the node to get stack traces for.
+      NodeId nodeId
+    returns
+      # Creation stack trace, if available.
+      optional Runtime.StackTrace creation
+
   # Returns file information for the given
   # File wrapper.
   experimental command getFileInfo

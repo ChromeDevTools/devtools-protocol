@@ -1804,6 +1804,20 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Sets if stack traces should be captured for Nodes. See `Node.getNodeStackTraces`. Default is disabled.
+         */
+        'DOM.setNodeStackTracesEnabled': {
+            paramsType: [Protocol.DOM.SetNodeStackTracesEnabledRequest];
+            returnType: void;
+        };
+        /**
+         * Gets stack traces associated with a Node. As of now, only provides stack trace for Node creation.
+         */
+        'DOM.getNodeStackTraces': {
+            paramsType: [Protocol.DOM.GetNodeStackTracesRequest];
+            returnType: Protocol.DOM.GetNodeStackTracesResponse;
+        };
+        /**
          * Returns file information for the given
          * File wrapper.
          */

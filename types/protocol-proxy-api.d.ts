@@ -1228,6 +1228,16 @@ export namespace ProtocolProxyApi {
         setFileInputFiles(params: Protocol.DOM.SetFileInputFilesRequest): Promise<void>;
 
         /**
+         * Sets if stack traces should be captured for Nodes. See `Node.getNodeStackTraces`. Default is disabled.
+         */
+        setNodeStackTracesEnabled(params: Protocol.DOM.SetNodeStackTracesEnabledRequest): Promise<void>;
+
+        /**
+         * Gets stack traces associated with a Node. As of now, only provides stack trace for Node creation.
+         */
+        getNodeStackTraces(params: Protocol.DOM.GetNodeStackTracesRequest): Promise<Protocol.DOM.GetNodeStackTracesResponse>;
+
+        /**
          * Returns file information for the given
          * File wrapper.
          */
