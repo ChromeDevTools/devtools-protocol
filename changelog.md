@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r681549
+###### _2019-07-26 17:15:55_ | Diff: [ccba565...0712e15](https://github.com/ChromeDevTools/devtools-protocol/compare/ccba565...0712e15)
+#### `DOM`: new commands
+* [`DOM.setNodeStackTracesEnabled`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-setNodeStackTracesEnabled)
+* [`DOM.getNodeStackTraces`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getNodeStackTraces)
+
+
 ## Roll protocol to r680546 678539
 ###### _2019-07-24 12:15:59_ | Diff: [0334ffc...f2a777d](https://github.com/ChromeDevTools/devtools-protocol/compare/0334ffc...f2a777d)
 #### `BackgroundService`: modified type

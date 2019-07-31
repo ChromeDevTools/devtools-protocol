@@ -3118,9 +3118,9 @@ export namespace ProtocolProxyApi {
         on(event: 'contextCreated', listener: (params: Protocol.WebAudio.ContextCreatedEvent) => void): void;
 
         /**
-         * Notifies that existing BaseAudioContext has been destroyed.
+         * Notifies that an existing BaseAudioContext will be destroyed.
          */
-        on(event: 'contextDestroyed', listener: (params: Protocol.WebAudio.ContextDestroyedEvent) => void): void;
+        on(event: 'contextWillBeDestroyed', listener: (params: Protocol.WebAudio.ContextWillBeDestroyedEvent) => void): void;
 
         /**
          * Notifies that existing BaseAudioContext has changed some properties (id stays the same)..

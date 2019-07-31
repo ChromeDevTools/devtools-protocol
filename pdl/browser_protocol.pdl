@@ -7064,8 +7064,8 @@ experimental domain WebAudio
     parameters
       BaseAudioContext context
 
-  # Notifies that existing BaseAudioContext has been destroyed.
-  event contextDestroyed
+  # Notifies that an existing BaseAudioContext will be destroyed.
+  event contextWillBeDestroyed
     parameters
       ContextId contextId
 

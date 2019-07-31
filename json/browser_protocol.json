@@ -15247,8 +15247,8 @@
                     ]
                 },
                 {
-                    "name": "contextDestroyed",
-                    "description": "Notifies that existing BaseAudioContext has been destroyed.",
+                    "name": "contextWillBeDestroyed",
+                    "description": "Notifies that an existing BaseAudioContext will be destroyed.",
                     "parameters": [
                         {
                             "name": "contextId",

@@ -7457,7 +7457,7 @@ Protocol.WebAudioDispatcher.prototype.contextCreated = function(context) {};
 /**
  * @param {Protocol.WebAudio.ContextId} contextId
  */
-Protocol.WebAudioDispatcher.prototype.contextDestroyed = function(contextId) {};
+Protocol.WebAudioDispatcher.prototype.contextWillBeDestroyed = function(contextId) {};
 /**
  * @param {Protocol.WebAudio.BaseAudioContext} context
  */

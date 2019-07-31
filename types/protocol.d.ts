@@ -11866,9 +11866,9 @@ export namespace Protocol {
         }
 
         /**
-         * Notifies that existing BaseAudioContext has been destroyed.
+         * Notifies that an existing BaseAudioContext will be destroyed.
          */
-        export interface ContextDestroyedEvent {
+        export interface ContextWillBeDestroyedEvent {
             contextId: ContextId;
         }
 

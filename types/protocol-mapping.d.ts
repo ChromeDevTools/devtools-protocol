@@ -515,9 +515,9 @@ export namespace ProtocolMapping {
          */
         'WebAudio.contextCreated': [Protocol.WebAudio.ContextCreatedEvent];
         /**
-         * Notifies that existing BaseAudioContext has been destroyed.
+         * Notifies that an existing BaseAudioContext will be destroyed.
          */
-        'WebAudio.contextDestroyed': [Protocol.WebAudio.ContextDestroyedEvent];
+        'WebAudio.contextWillBeDestroyed': [Protocol.WebAudio.ContextWillBeDestroyedEvent];
         /**
          * Notifies that existing BaseAudioContext has changed some properties (id stays the same)..
          */
