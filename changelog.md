@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r682524
+###### _2019-07-30 17:16:09_ | Diff: [0712e15...497b3f8](https://github.com/ChromeDevTools/devtools-protocol/compare/0712e15...497b3f8)
+#### `WebAudio`: new event
+* [`WebAudio.contextWillBeDestroyed`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#event-contextWillBeDestroyed)
+#### `WebAudio`: removed event
+* [`WebAudio.contextDestroyed`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#event-contextDestroyed)
+
+
 ## Roll protocol to r681549
 ###### _2019-07-26 17:15:55_ | Diff: [ccba565...0712e15](https://github.com/ChromeDevTools/devtools-protocol/compare/ccba565...0712e15)
 #### `DOM`: new commands
