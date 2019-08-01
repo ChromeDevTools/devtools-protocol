@@ -11906,16 +11906,21 @@ export namespace Protocol {
 
         export interface Credential {
             credentialId: string;
+            isResidentCredential: boolean;
             /**
-             * SHA-256 hash of the Relying Party ID the credential is scoped to. Must
-             * be 32 bytes long.
-             * See https://w3c.github.io/webauthn/#rpidhash
+             * Relying Party ID the credential is scoped to. Must be set when adding a
+             * credential.
              */
-            rpIdHash: string;
+            rpId?: string;
             /**
-             * The private key in PKCS#8 format.
+             * The ECDSA P-256 private key in PKCS#8 format.
              */
             privateKey: string;
+            /**
+             * An opaque byte sequence with a maximum size of 64 bytes mapping the
+             * credential to a specific user.
+             */
+            userHandle?: string;
             /**
              * Signature counter. This is incremented by one for each successful
              * assertion.

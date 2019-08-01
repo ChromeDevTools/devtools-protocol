@@ -7603,7 +7603,7 @@ Protocol.WebAuthn.AuthenticatorTransport = {
 /** @typedef {!{protocol:(Protocol.WebAuthn.AuthenticatorProtocol), transport:(Protocol.WebAuthn.AuthenticatorTransport), hasResidentKey:(boolean), hasUserVerification:(boolean), automaticPresenceSimulation:(boolean|undefined)}} */
 Protocol.WebAuthn.VirtualAuthenticatorOptions;
 
-/** @typedef {!{credentialId:(string), rpIdHash:(string), privateKey:(string), signCount:(number)}} */
+/** @typedef {!{credentialId:(string), isResidentCredential:(boolean), rpId:(string|undefined), privateKey:(string), userHandle:(string|undefined), signCount:(number)}} */
 Protocol.WebAuthn.Credential;
 /** @interface */
 Protocol.WebAuthnDispatcher = function() {};

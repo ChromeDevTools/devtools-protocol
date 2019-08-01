@@ -7109,12 +7109,15 @@ experimental domain WebAuthn
   type Credential extends object
     properties
       binary credentialId
-      # SHA-256 hash of the Relying Party ID the credential is scoped to. Must
-      # be 32 bytes long.
-      # See https://w3c.github.io/webauthn/#rpidhash
-      binary rpIdHash
-      # The private key in PKCS#8 format.
+      boolean isResidentCredential
+      # Relying Party ID the credential is scoped to. Must be set when adding a
+      # credential.
+      optional string rpId
+      # The ECDSA P-256 private key in PKCS#8 format.
       binary privateKey
+      # An opaque byte sequence with a maximum size of 64 bytes mapping the
+      # credential to a specific user.
+      optional binary userHandle
       # Signature counter. This is incremented by one for each successful
       # assertion.
       # See https://w3c.github.io/webauthn/#signature-counter
