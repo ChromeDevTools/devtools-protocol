@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r683290
+###### _2019-08-01 13:16:10_ | Diff: [8e07b77...5856a13](https://github.com/ChromeDevTools/devtools-protocol/compare/8e07b77...5856a13)
+#### `WebAuthn`: modified type
+* [`WebAuthn.Credential`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#type-Credential) - The `rpIdHash` in the properties had `description` _removed_. The `rpIdHash` in the properties had `name` _updated_. The `rpIdHash` in the properties had `type` _updated_. The `privateKey` in the properties had `name` _updated_. The `privateKey` in the properties had `description` _updated_. The `signCount` in the properties had `name` _updated_. The `signCount` in the properties had `description` _updated_. The `signCount` in the properties had `type` _updated_. The properties's `optional` _added_. The properties's `userHandle` _added_. The properties's `signCount` _added_. 
+
+
 ## Roll protocol to r682524
 ###### _2019-07-30 17:16:09_ | Diff: [0712e15...497b3f8](https://github.com/ChromeDevTools/devtools-protocol/compare/0712e15...497b3f8)
 #### `WebAudio`: new event

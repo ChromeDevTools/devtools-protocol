@@ -7166,3 +7166,60 @@ experimental domain WebAuthn
     parameters
       AuthenticatorId authenticatorId
       boolean isUserVerified
+
+# This domain allows detailed inspection of media elements
+experimental domain Media
+
+  # Players will get an ID that is unique within the agent context.
+  type PlayerId extends string
+
+  type Timestamp extends number
+
+  # Player Property type
+  type PlayerProperty extends object
+    properties
+      string name
+      optional string value
+
+  # Break out events into different types
+  type PlayerEventType extends string
+    enum
+      playbackEvent
+      systemEvent
+      messageEvent
+
+  type PlayerEvent extends object
+    properties
+      PlayerEventType type
+      # Events are timestamped relative to the start of the player creation
+      # not relative to the start of playback.
+      Timestamp timestamp
+      string name
+      string value
+
+  # This can be called multiple times, and can be used to set / override /
+  # remove player properties. A null propValue indicates removal.
+  event playerPropertiesChanged
+    parameters
+      PlayerId playerId
+      array of PlayerProperty properties
+
+  # Send events as a list, allowing them to be batched on the browser for less
+  # congestion. If batched, events must ALWAYS be in chronological order.
+  event playerEventsAdded
+    parameters
+      PlayerId playerId
+      array of PlayerEvent events
+
+  # Called whenever a player is created, or when a new agent joins and recieves
+  # a list of active players. If an agent is restored, it will recieve the full
+  # list of player ids and all events again.
+  event playersCreated
+    parameters
+      array of PlayerId players
+
+  # Enables the Media domain
+  command enable
+
+  # Disables the Media domain.
+  command disable

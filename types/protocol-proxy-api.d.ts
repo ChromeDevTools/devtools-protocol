@@ -98,6 +98,8 @@ export namespace ProtocolProxyApi {
 
         WebAuthn: WebAuthnApi;
 
+        Media: MediaApi;
+
     }
 
 
@@ -3171,6 +3173,38 @@ export namespace ProtocolProxyApi {
          * The default is true.
          */
         setUserVerified(params: Protocol.WebAuthn.SetUserVerifiedRequest): Promise<void>;
+
+    }
+
+    export interface MediaApi {
+        /**
+         * Enables the Media domain
+         */
+        enable(): Promise<void>;
+
+        /**
+         * Disables the Media domain.
+         */
+        disable(): Promise<void>;
+
+        /**
+         * This can be called multiple times, and can be used to set / override /
+         * remove player properties. A null propValue indicates removal.
+         */
+        on(event: 'playerPropertiesChanged', listener: (params: Protocol.Media.PlayerPropertiesChangedEvent) => void): void;
+
+        /**
+         * Send events as a list, allowing them to be batched on the browser for less
+         * congestion. If batched, events must ALWAYS be in chronological order.
+         */
+        on(event: 'playerEventsAdded', listener: (params: Protocol.Media.PlayerEventsAddedEvent) => void): void;
+
+        /**
+         * Called whenever a player is created, or when a new agent joins and recieves
+         * a list of active players. If an agent is restored, it will recieve the full
+         * list of player ids and all events again.
+         */
+        on(event: 'playersCreated', listener: (params: Protocol.Media.PlayersCreatedEvent) => void): void;
 
     }
 }

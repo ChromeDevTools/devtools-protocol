@@ -11963,6 +11963,70 @@ export namespace Protocol {
             isUserVerified: boolean;
         }
     }
+
+    /**
+     * This domain allows detailed inspection of media elements
+     */
+    export namespace Media {
+
+        /**
+         * Players will get an ID that is unique within the agent context.
+         */
+        export type PlayerId = string;
+
+        export type Timestamp = number;
+
+        /**
+         * Player Property type
+         */
+        export interface PlayerProperty {
+            name: string;
+            value?: string;
+        }
+
+        /**
+         * Break out events into different types
+         */
+        export type PlayerEventType = ('playbackEvent' | 'systemEvent' | 'messageEvent');
+
+        export interface PlayerEvent {
+            type: PlayerEventType;
+            /**
+             * Events are timestamped relative to the start of the player creation
+             * not relative to the start of playback.
+             */
+            timestamp: Timestamp;
+            name: string;
+            value: string;
+        }
+
+        /**
+         * This can be called multiple times, and can be used to set / override /
+         * remove player properties. A null propValue indicates removal.
+         */
+        export interface PlayerPropertiesChangedEvent {
+            playerId: PlayerId;
+            properties: PlayerProperty[];
+        }
+
+        /**
+         * Send events as a list, allowing them to be batched on the browser for less
+         * congestion. If batched, events must ALWAYS be in chronological order.
+         */
+        export interface PlayerEventsAddedEvent {
+            playerId: PlayerId;
+            events: PlayerEvent[];
+        }
+
+        /**
+         * Called whenever a player is created, or when a new agent joins and recieves
+         * a list of active players. If an agent is restored, it will recieve the full
+         * list of player ids and all events again.
+         */
+        export interface PlayersCreatedEvent {
+            players: PlayerId[];
+        }
+    }
 }
 
 export default Protocol;

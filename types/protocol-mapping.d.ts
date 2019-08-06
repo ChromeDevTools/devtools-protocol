@@ -522,6 +522,22 @@ export namespace ProtocolMapping {
          * Notifies that existing BaseAudioContext has changed some properties (id stays the same)..
          */
         'WebAudio.contextChanged': [Protocol.WebAudio.ContextChangedEvent];
+        /**
+         * This can be called multiple times, and can be used to set / override /
+         * remove player properties. A null propValue indicates removal.
+         */
+        'Media.playerPropertiesChanged': [Protocol.Media.PlayerPropertiesChangedEvent];
+        /**
+         * Send events as a list, allowing them to be batched on the browser for less
+         * congestion. If batched, events must ALWAYS be in chronological order.
+         */
+        'Media.playerEventsAdded': [Protocol.Media.PlayerEventsAddedEvent];
+        /**
+         * Called whenever a player is created, or when a new agent joins and recieves
+         * a list of active players. If an agent is restored, it will recieve the full
+         * list of player ids and all events again.
+         */
+        'Media.playersCreated': [Protocol.Media.PlayersCreatedEvent];
     }
 
     export interface Commands {
@@ -3733,6 +3749,20 @@ export namespace ProtocolMapping {
          */
         'WebAuthn.setUserVerified': {
             paramsType: [Protocol.WebAuthn.SetUserVerifiedRequest];
+            returnType: void;
+        };
+        /**
+         * Enables the Media domain
+         */
+        'Media.enable': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
+         * Disables the Media domain.
+         */
+        'Media.disable': {
+            paramsType: [];
             returnType: void;
         };
     }

@@ -7607,6 +7607,74 @@ Protocol.WebAuthn.VirtualAuthenticatorOptions;
 Protocol.WebAuthn.Credential;
 /** @interface */
 Protocol.WebAuthnDispatcher = function() {};
+Protocol.Media = {};
+
+
+/**
+ * @constructor
+*/
+Protocol.MediaAgent = function(){};
+
+/**
+ * @return {!Promise<undefined>}
+ */
+Protocol.MediaAgent.prototype.enable = function() {};
+/** @typedef {Object|undefined} */
+Protocol.MediaAgent.EnableRequest;
+/** @typedef {Object|undefined} */
+Protocol.MediaAgent.EnableResponse;
+/**
+ * @param {!Protocol.MediaAgent.EnableRequest} obj
+ * @return {!Promise<!Protocol.MediaAgent.EnableResponse>} */
+Protocol.MediaAgent.prototype.invoke_enable = function(obj) {};
+
+/**
+ * @return {!Promise<undefined>}
+ */
+Protocol.MediaAgent.prototype.disable = function() {};
+/** @typedef {Object|undefined} */
+Protocol.MediaAgent.DisableRequest;
+/** @typedef {Object|undefined} */
+Protocol.MediaAgent.DisableResponse;
+/**
+ * @param {!Protocol.MediaAgent.DisableRequest} obj
+ * @return {!Promise<!Protocol.MediaAgent.DisableResponse>} */
+Protocol.MediaAgent.prototype.invoke_disable = function(obj) {};
+
+/** @typedef {string} */
+Protocol.Media.PlayerId;
+
+/** @typedef {number} */
+Protocol.Media.Timestamp;
+
+/** @typedef {!{name:(string), value:(string|undefined)}} */
+Protocol.Media.PlayerProperty;
+
+/** @enum {string} */
+Protocol.Media.PlayerEventType = {
+    PlaybackEvent: "playbackEvent",
+    SystemEvent: "systemEvent",
+    MessageEvent: "messageEvent"
+};
+
+/** @typedef {!{type:(Protocol.Media.PlayerEventType), timestamp:(Protocol.Media.Timestamp), name:(string), value:(string)}} */
+Protocol.Media.PlayerEvent;
+/** @interface */
+Protocol.MediaDispatcher = function() {};
+/**
+ * @param {Protocol.Media.PlayerId} playerId
+ * @param {!Array<Protocol.Media.PlayerProperty>} properties
+ */
+Protocol.MediaDispatcher.prototype.playerPropertiesChanged = function(playerId, properties) {};
+/**
+ * @param {Protocol.Media.PlayerId} playerId
+ * @param {!Array<Protocol.Media.PlayerEvent>} events
+ */
+Protocol.MediaDispatcher.prototype.playerEventsAdded = function(playerId, events) {};
+/**
+ * @param {!Array<Protocol.Media.PlayerId>} players
+ */
+Protocol.MediaDispatcher.prototype.playersCreated = function(players) {};
 Protocol.Console = {};
 
 
@@ -9422,6 +9490,12 @@ Protocol.TargetBase.prototype.webAuthnAgent = function(){};
  * @param {!Protocol.WebAuthnDispatcher} dispatcher
  */
 Protocol.TargetBase.prototype.registerWebAuthnDispatcher = function(dispatcher) {}
+/** @return {!Protocol.MediaAgent}*/
+Protocol.TargetBase.prototype.mediaAgent = function(){};
+/**
+ * @param {!Protocol.MediaDispatcher} dispatcher
+ */
+Protocol.TargetBase.prototype.registerMediaDispatcher = function(dispatcher) {}
 /** @return {!Protocol.ConsoleAgent}*/
 Protocol.TargetBase.prototype.consoleAgent = function(){};
 /**
