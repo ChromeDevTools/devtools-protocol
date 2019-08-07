@@ -11946,6 +11946,15 @@ export namespace Protocol {
             credential: Credential;
         }
 
+        export interface GetCredentialRequest {
+            authenticatorId: AuthenticatorId;
+            credentialId: string;
+        }
+
+        export interface GetCredentialResponse {
+            credential: Credential;
+        }
+
         export interface GetCredentialsRequest {
             authenticatorId: AuthenticatorId;
         }

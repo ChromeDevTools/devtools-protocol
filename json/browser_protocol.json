@@ -15411,6 +15411,26 @@
                     ]
                 },
                 {
+                    "name": "getCredential",
+                    "description": "Returns a single credential stored in the given virtual authenticator that\nmatches the credential ID.",
+                    "parameters": [
+                        {
+                            "name": "authenticatorId",
+                            "$ref": "AuthenticatorId"
+                        },
+                        {
+                            "name": "credentialId",
+                            "type": "string"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "credential",
+                            "$ref": "Credential"
+                        }
+                    ]
+                },
+                {
                     "name": "getCredentials",
                     "description": "Returns all the credentials stored in the given virtual authenticator.",
                     "parameters": [

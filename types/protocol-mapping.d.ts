@@ -3730,6 +3730,14 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Returns a single credential stored in the given virtual authenticator that
+         * matches the credential ID.
+         */
+        'WebAuthn.getCredential': {
+            paramsType: [Protocol.WebAuthn.GetCredentialRequest];
+            returnType: Protocol.WebAuthn.GetCredentialResponse;
+        };
+        /**
          * Returns all the credentials stored in the given virtual authenticator.
          */
         'WebAuthn.getCredentials': {

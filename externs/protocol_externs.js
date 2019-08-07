@@ -7541,6 +7541,21 @@ Protocol.WebAuthnAgent.prototype.invoke_addCredential = function(obj) {};
 
 /**
  * @param {Protocol.WebAuthn.AuthenticatorId} authenticatorId
+ * @param {string} credentialId
+ * @return {!Promise<?Protocol.WebAuthn.Credential>}
+ */
+Protocol.WebAuthnAgent.prototype.getCredential = function(authenticatorId, credentialId) {};
+/** @typedef {!{credentialId: string, authenticatorId: Protocol.WebAuthn.AuthenticatorId}} */
+Protocol.WebAuthnAgent.GetCredentialRequest;
+/** @typedef {!{credential: Protocol.WebAuthn.Credential}} */
+Protocol.WebAuthnAgent.GetCredentialResponse;
+/**
+ * @param {!Protocol.WebAuthnAgent.GetCredentialRequest} obj
+ * @return {!Promise<!Protocol.WebAuthnAgent.GetCredentialResponse>} */
+Protocol.WebAuthnAgent.prototype.invoke_getCredential = function(obj) {};
+
+/**
+ * @param {Protocol.WebAuthn.AuthenticatorId} authenticatorId
  * @return {!Promise<?Array<Protocol.WebAuthn.Credential>>}
  */
 Protocol.WebAuthnAgent.prototype.getCredentials = function(authenticatorId) {};

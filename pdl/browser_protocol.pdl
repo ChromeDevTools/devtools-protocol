@@ -7148,6 +7148,15 @@ experimental domain WebAuthn
       AuthenticatorId authenticatorId
       Credential credential
 
+  # Returns a single credential stored in the given virtual authenticator that
+  # matches the credential ID.
+  command getCredential
+    parameters
+      AuthenticatorId authenticatorId
+      binary credentialId
+    returns
+      Credential credential
+
   # Returns all the credentials stored in the given virtual authenticator.
   command getCredentials
     parameters

@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r684601
+###### _2019-08-06 18:16:06_ | Diff: [64b5368...0433fdf](https://github.com/ChromeDevTools/devtools-protocol/compare/64b5368...0433fdf)
+#### `Page`: modified type
+* [`Page.Frame`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Frame) - The `id` in the properties had `type` _removed_. The properties's `$ref` _added_. 
+
+
 ## Roll protocol to r684555
 ###### _2019-08-06 16:16:01_ | Diff: [5856a13...64b5368](https://github.com/ChromeDevTools/devtools-protocol/compare/5856a13...64b5368)
 #### `Media`: new domain

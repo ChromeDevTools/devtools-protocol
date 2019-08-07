@@ -3159,6 +3159,12 @@ export namespace ProtocolProxyApi {
         addCredential(params: Protocol.WebAuthn.AddCredentialRequest): Promise<void>;
 
         /**
+         * Returns a single credential stored in the given virtual authenticator that
+         * matches the credential ID.
+         */
+        getCredential(params: Protocol.WebAuthn.GetCredentialRequest): Promise<Protocol.WebAuthn.GetCredentialResponse>;
+
+        /**
          * Returns all the credentials stored in the given virtual authenticator.
          */
         getCredentials(params: Protocol.WebAuthn.GetCredentialsRequest): Promise<Protocol.WebAuthn.GetCredentialsResponse>;
