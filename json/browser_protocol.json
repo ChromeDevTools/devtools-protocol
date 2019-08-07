@@ -1208,6 +1208,47 @@
                     ]
                 },
                 {
+                    "id": "PermissionSetting",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "granted",
+                        "denied",
+                        "prompt"
+                    ]
+                },
+                {
+                    "id": "PermissionDescriptor",
+                    "description": "Definition of PermissionDescriptor defined in the Permissions API:\nhttps://w3c.github.io/permissions/#dictdef-permissiondescriptor.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "name",
+                            "description": "Name of permission.\nSee https://cs.chromium.org/chromium/src/third_party/blink/renderer/modules/permissions/permission_descriptor.idl for valid permission names.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "sysex",
+                            "description": "For \"midi\" permission, may also specify sysex control.",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "userVisibleOnly",
+                            "description": "For \"push\" permission, may specify userVisibleOnly.\nNote that userVisibleOnly = true is the only currently supported type.",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "type",
+                            "description": "For \"wake-lock\" permission, must specify type as either \"screen\" or \"system\".",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "id": "Bucket",
                     "description": "Chrome histogram bucket.",
                     "experimental": true,
@@ -1263,6 +1304,34 @@
                 }
             ],
             "commands": [
+                {
+                    "name": "setPermission",
+                    "description": "Set permission settings for given origin.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "origin",
+                            "description": "Origin the permission applies to.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "permission",
+                            "description": "Descriptor of permission to override.",
+                            "$ref": "PermissionDescriptor"
+                        },
+                        {
+                            "name": "setting",
+                            "description": "Setting of the permission.",
+                            "$ref": "PermissionSetting"
+                        },
+                        {
+                            "name": "browserContextId",
+                            "description": "Context to override. When omitted, default browser context is used.",
+                            "optional": true,
+                            "$ref": "Target.TargetID"
+                        }
+                    ]
+                },
                 {
                     "name": "grantPermissions",
                     "description": "Grant specific permissions to the given origin and reject all others.",

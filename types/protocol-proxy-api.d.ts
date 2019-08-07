@@ -756,6 +756,11 @@ export namespace ProtocolProxyApi {
 
     export interface BrowserApi {
         /**
+         * Set permission settings for given origin.
+         */
+        setPermission(params: Protocol.Browser.SetPermissionRequest): Promise<void>;
+
+        /**
          * Grant specific permissions to the given origin and reject all others.
          */
         grantPermissions(params: Protocol.Browser.GrantPermissionsRequest): Promise<void>;

@@ -557,6 +557,23 @@ Protocol.BrowserAgent = function(){};
 
 /**
  * @param {string} origin
+ * @param {Protocol.Browser.PermissionDescriptor} permission
+ * @param {Protocol.Browser.PermissionSetting} setting
+ * @param {Protocol.Target.TargetID=} opt_browserContextId
+ * @return {!Promise<undefined>}
+ */
+Protocol.BrowserAgent.prototype.setPermission = function(origin, permission, setting, opt_browserContextId) {};
+/** @typedef {!{origin: string, browserContextId: (Protocol.Target.TargetID|undefined), setting: Protocol.Browser.PermissionSetting, permission: Protocol.Browser.PermissionDescriptor}} */
+Protocol.BrowserAgent.SetPermissionRequest;
+/** @typedef {Object|undefined} */
+Protocol.BrowserAgent.SetPermissionResponse;
+/**
+ * @param {!Protocol.BrowserAgent.SetPermissionRequest} obj
+ * @return {!Promise<!Protocol.BrowserAgent.SetPermissionResponse>} */
+Protocol.BrowserAgent.prototype.invoke_setPermission = function(obj) {};
+
+/**
+ * @param {string} origin
  * @param {!Array<Protocol.Browser.PermissionType>} permissions
  * @param {Protocol.Target.BrowserContextID=} opt_browserContextId
  * @return {!Promise<undefined>}
@@ -775,6 +792,16 @@ Protocol.Browser.PermissionType = {
     WakeLockScreen: "wakeLockScreen",
     WakeLockSystem: "wakeLockSystem"
 };
+
+/** @enum {string} */
+Protocol.Browser.PermissionSetting = {
+    Granted: "granted",
+    Denied: "denied",
+    Prompt: "prompt"
+};
+
+/** @typedef {!{name:(string), sysex:(boolean|undefined), userVisibleOnly:(boolean|undefined), type:(string|undefined)}} */
+Protocol.Browser.PermissionDescriptor;
 
 /** @typedef {!{low:(number), high:(number), count:(number)}} */
 Protocol.Browser.Bucket;

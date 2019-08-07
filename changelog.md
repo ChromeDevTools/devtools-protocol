@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r684970
+###### _2019-08-07 15:16:04_ | Diff: [0433fdf...3be7296](https://github.com/ChromeDevTools/devtools-protocol/compare/0433fdf...3be7296)
+#### `WebAuthn`: new command
+* [`WebAuthn.getCredential`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#method-getCredential)
+
+
 ## Roll protocol to r684601
 ###### _2019-08-06 18:16:06_ | Diff: [64b5368...0433fdf](https://github.com/ChromeDevTools/devtools-protocol/compare/64b5368...0433fdf)
 #### `Page`: modified type

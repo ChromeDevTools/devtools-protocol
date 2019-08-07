@@ -2761,6 +2761,33 @@ export namespace Protocol {
 
         export type PermissionType = ('accessibilityEvents' | 'audioCapture' | 'backgroundSync' | 'backgroundFetch' | 'clipboardRead' | 'clipboardWrite' | 'durableStorage' | 'flash' | 'geolocation' | 'midi' | 'midiSysex' | 'notifications' | 'paymentHandler' | 'periodicBackgroundSync' | 'protectedMediaIdentifier' | 'sensors' | 'videoCapture' | 'idleDetection' | 'wakeLockScreen' | 'wakeLockSystem');
 
+        export type PermissionSetting = ('granted' | 'denied' | 'prompt');
+
+        /**
+         * Definition of PermissionDescriptor defined in the Permissions API:
+         * https://w3c.github.io/permissions/#dictdef-permissiondescriptor.
+         */
+        export interface PermissionDescriptor {
+            /**
+             * Name of permission.
+             * See https://cs.chromium.org/chromium/src/third_party/blink/renderer/modules/permissions/permission_descriptor.idl for valid permission names.
+             */
+            name: string;
+            /**
+             * For "midi" permission, may also specify sysex control.
+             */
+            sysex?: boolean;
+            /**
+             * For "push" permission, may specify userVisibleOnly.
+             * Note that userVisibleOnly = true is the only currently supported type.
+             */
+            userVisibleOnly?: boolean;
+            /**
+             * For "wake-lock" permission, must specify type as either "screen" or "system".
+             */
+            type?: string;
+        }
+
         /**
          * Chrome histogram bucket.
          */
@@ -2799,6 +2826,25 @@ export namespace Protocol {
              * Buckets.
              */
             buckets: Bucket[];
+        }
+
+        export interface SetPermissionRequest {
+            /**
+             * Origin the permission applies to.
+             */
+            origin: string;
+            /**
+             * Descriptor of permission to override.
+             */
+            permission: PermissionDescriptor;
+            /**
+             * Setting of the permission.
+             */
+            setting: PermissionSetting;
+            /**
+             * Context to override. When omitted, default browser context is used.
+             */
+            browserContextId?: Target.TargetID;
         }
 
         export interface GrantPermissionsRequest {

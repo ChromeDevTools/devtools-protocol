@@ -590,6 +590,39 @@ domain Browser
       wakeLockScreen
       wakeLockSystem
 
+  experimental type PermissionSetting extends string
+    enum
+      granted
+      denied
+      prompt
+
+  # Definition of PermissionDescriptor defined in the Permissions API:
+  # https://w3c.github.io/permissions/#dictdef-permissiondescriptor.
+  experimental type PermissionDescriptor extends object
+    properties
+      # Name of permission.
+      # See https://cs.chromium.org/chromium/src/third_party/blink/renderer/modules/permissions/permission_descriptor.idl for valid permission names.
+      string name
+      # For "midi" permission, may also specify sysex control.
+      optional boolean sysex
+      # For "push" permission, may specify userVisibleOnly.
+      # Note that userVisibleOnly = true is the only currently supported type.
+      optional boolean userVisibleOnly
+      # For "wake-lock" permission, must specify type as either "screen" or "system".
+      optional string type
+
+  # Set permission settings for given origin.
+  experimental command setPermission
+    parameters
+      # Origin the permission applies to.
+      string origin
+      # Descriptor of permission to override.
+      PermissionDescriptor permission
+      # Setting of the permission.
+      PermissionSetting setting
+      # Context to override. When omitted, default browser context is used.
+      optional Target.TargetID browserContextId
+
   # Grant specific permissions to the given origin and reject all others.
   experimental command grantPermissions
     parameters
