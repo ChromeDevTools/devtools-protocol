@@ -9163,7 +9163,7 @@ export namespace Protocol {
             /**
              * Frame unique identifier.
              */
-            id: string;
+            id: FrameId;
             /**
              * Parent frame identifier.
              */

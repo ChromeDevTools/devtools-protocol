@@ -1,5 +1,24 @@
 
 
+## Roll protocol to r684555
+###### _2019-08-06 16:16:01_ | Diff: [5856a13...64b5368](https://github.com/ChromeDevTools/devtools-protocol/compare/5856a13...64b5368)
+#### `Media`: new domain
+* [`Media.Media`](https://chromedevtools.github.io/devtools-protocol/tot/Media/#domain-Media)
+#### `Media`: new commands
+* [`Media.enable`](https://chromedevtools.github.io/devtools-protocol/tot/Media/#method-enable)
+* [`Media.disable`](https://chromedevtools.github.io/devtools-protocol/tot/Media/#method-disable)
+#### `Media`: new events
+* [`Media.playerPropertiesChanged`](https://chromedevtools.github.io/devtools-protocol/tot/Media/#event-playerPropertiesChanged)
+* [`Media.playerEventsAdded`](https://chromedevtools.github.io/devtools-protocol/tot/Media/#event-playerEventsAdded)
+* [`Media.playersCreated`](https://chromedevtools.github.io/devtools-protocol/tot/Media/#event-playersCreated)
+#### `Media`: new types
+* [`Media.PlayerId`](https://chromedevtools.github.io/devtools-protocol/tot/Media/#type-PlayerId)
+* [`Media.Timestamp`](https://chromedevtools.github.io/devtools-protocol/tot/Media/#type-Timestamp)
+* [`Media.PlayerProperty`](https://chromedevtools.github.io/devtools-protocol/tot/Media/#type-PlayerProperty)
+* [`Media.PlayerEventType`](https://chromedevtools.github.io/devtools-protocol/tot/Media/#type-PlayerEventType)
+* [`Media.PlayerEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Media/#type-PlayerEvent)
+
+
 ## Roll protocol to r683290
 ###### _2019-08-01 13:16:10_ | Diff: [8e07b77...5856a13](https://github.com/ChromeDevTools/devtools-protocol/compare/8e07b77...5856a13)
 #### `WebAuthn`: modified type

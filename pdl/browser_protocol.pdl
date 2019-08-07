@@ -5048,7 +5048,7 @@ domain Page
   type Frame extends object
     properties
       # Frame unique identifier.
-      string id
+      FrameId id
       # Parent frame identifier.
       optional string parentId
       # Identifier of the loader associated with this frame.
