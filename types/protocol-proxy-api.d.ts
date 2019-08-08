@@ -3134,6 +3134,56 @@ export namespace ProtocolProxyApi {
          */
         on(event: 'contextChanged', listener: (params: Protocol.WebAudio.ContextChangedEvent) => void): void;
 
+        /**
+         * Notifies that the construction of an AudioListener has finished.
+         */
+        on(event: 'audioListenerCreated', listener: (params: Protocol.WebAudio.AudioListenerCreatedEvent) => void): void;
+
+        /**
+         * Notifies that a new AudioListener has been created.
+         */
+        on(event: 'audioListenerWillBeDestroyed', listener: (params: Protocol.WebAudio.AudioListenerWillBeDestroyedEvent) => void): void;
+
+        /**
+         * Notifies that a new AudioNode has been created.
+         */
+        on(event: 'audioNodeCreated', listener: (params: Protocol.WebAudio.AudioNodeCreatedEvent) => void): void;
+
+        /**
+         * Notifies that an existing AudioNode has been destroyed.
+         */
+        on(event: 'audioNodeWillBeDestroyed', listener: (params: Protocol.WebAudio.AudioNodeWillBeDestroyedEvent) => void): void;
+
+        /**
+         * Notifies that a new AudioParam has been created.
+         */
+        on(event: 'audioParamCreated', listener: (params: Protocol.WebAudio.AudioParamCreatedEvent) => void): void;
+
+        /**
+         * Notifies that an existing AudioParam has been destroyed.
+         */
+        on(event: 'audioParamWillBeDestroyed', listener: (params: Protocol.WebAudio.AudioParamWillBeDestroyedEvent) => void): void;
+
+        /**
+         * Notifies that two AudioNodes are connected.
+         */
+        on(event: 'nodesConnected', listener: (params: Protocol.WebAudio.NodesConnectedEvent) => void): void;
+
+        /**
+         * Notifies that AudioNodes are disconnected. The destination can be null, and it means all the outgoing connections from the source are disconnected.
+         */
+        on(event: 'nodesDisconnected', listener: (params: Protocol.WebAudio.NodesDisconnectedEvent) => void): void;
+
+        /**
+         * Notifies that an AudioNode is connected to an AudioParam.
+         */
+        on(event: 'nodeParamConnected', listener: (params: Protocol.WebAudio.NodeParamConnectedEvent) => void): void;
+
+        /**
+         * Notifies that an AudioNode is disconnected to an AudioParam.
+         */
+        on(event: 'nodeParamDisconnected', listener: (params: Protocol.WebAudio.NodeParamDisconnectedEvent) => void): void;
+
     }
 
     export interface WebAuthnApi {

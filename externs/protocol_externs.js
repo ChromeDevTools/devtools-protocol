@@ -7441,11 +7441,11 @@ Protocol.WebAudioAgent.DisableResponse;
 Protocol.WebAudioAgent.prototype.invoke_disable = function(obj) {};
 
 /**
- * @param {Protocol.WebAudio.ContextId} contextId
+ * @param {Protocol.WebAudio.GraphObjectId} contextId
  * @return {!Promise<?Protocol.WebAudio.ContextRealtimeData>}
  */
 Protocol.WebAudioAgent.prototype.getRealtimeData = function(contextId) {};
-/** @typedef {!{contextId: Protocol.WebAudio.ContextId}} */
+/** @typedef {!{contextId: Protocol.WebAudio.GraphObjectId}} */
 Protocol.WebAudioAgent.GetRealtimeDataRequest;
 /** @typedef {!{realtimeData: Protocol.WebAudio.ContextRealtimeData}} */
 Protocol.WebAudioAgent.GetRealtimeDataResponse;
@@ -7455,7 +7455,7 @@ Protocol.WebAudioAgent.GetRealtimeDataResponse;
 Protocol.WebAudioAgent.prototype.invoke_getRealtimeData = function(obj) {};
 
 /** @typedef {string} */
-Protocol.WebAudio.ContextId;
+Protocol.WebAudio.GraphObjectId;
 
 /** @enum {string} */
 Protocol.WebAudio.ContextType = {
@@ -7470,11 +7470,45 @@ Protocol.WebAudio.ContextState = {
     Closed: "closed"
 };
 
+/** @typedef {string} */
+Protocol.WebAudio.NodeType;
+
+/** @enum {string} */
+Protocol.WebAudio.ChannelCountMode = {
+    ClampedMax: "clamped-max",
+    Explicit: "explicit",
+    Max: "max"
+};
+
+/** @enum {string} */
+Protocol.WebAudio.ChannelInterpretation = {
+    Discrete: "discrete",
+    Speakers: "speakers"
+};
+
+/** @typedef {string} */
+Protocol.WebAudio.ParamType;
+
+/** @enum {string} */
+Protocol.WebAudio.AutomationRate = {
+    ARate: "a-rate",
+    KRate: "k-rate"
+};
+
 /** @typedef {!{currentTime:(number), renderCapacity:(number), callbackIntervalMean:(number), callbackIntervalVariance:(number)}} */
 Protocol.WebAudio.ContextRealtimeData;
 
-/** @typedef {!{contextId:(Protocol.WebAudio.ContextId), contextType:(Protocol.WebAudio.ContextType), contextState:(Protocol.WebAudio.ContextState), realtimeData:(Protocol.WebAudio.ContextRealtimeData|undefined), callbackBufferSize:(number), maxOutputChannelCount:(number), sampleRate:(number)}} */
+/** @typedef {!{contextId:(Protocol.WebAudio.GraphObjectId), contextType:(Protocol.WebAudio.ContextType), contextState:(Protocol.WebAudio.ContextState), realtimeData:(Protocol.WebAudio.ContextRealtimeData|undefined), callbackBufferSize:(number), maxOutputChannelCount:(number), sampleRate:(number)}} */
 Protocol.WebAudio.BaseAudioContext;
+
+/** @typedef {!{listenerId:(Protocol.WebAudio.GraphObjectId), contextId:(Protocol.WebAudio.GraphObjectId)}} */
+Protocol.WebAudio.AudioListener;
+
+/** @typedef {!{nodeId:(Protocol.WebAudio.GraphObjectId), contextId:(Protocol.WebAudio.GraphObjectId), nodeType:(Protocol.WebAudio.NodeType), numberOfInputs:(number), numberOfOutputs:(number), channelCount:(number), channelCountMode:(Protocol.WebAudio.ChannelCountMode), channelInterpretation:(Protocol.WebAudio.ChannelInterpretation)}} */
+Protocol.WebAudio.AudioNode;
+
+/** @typedef {!{paramId:(Protocol.WebAudio.GraphObjectId), nodeId:(Protocol.WebAudio.GraphObjectId), contextId:(Protocol.WebAudio.GraphObjectId), paramType:(Protocol.WebAudio.ParamType), rate:(Protocol.WebAudio.AutomationRate), defaultValue:(number), minValue:(number), maxValue:(number)}} */
+Protocol.WebAudio.AudioParam;
 /** @interface */
 Protocol.WebAudioDispatcher = function() {};
 /**
@@ -7482,13 +7516,71 @@ Protocol.WebAudioDispatcher = function() {};
  */
 Protocol.WebAudioDispatcher.prototype.contextCreated = function(context) {};
 /**
- * @param {Protocol.WebAudio.ContextId} contextId
+ * @param {Protocol.WebAudio.GraphObjectId} contextId
  */
 Protocol.WebAudioDispatcher.prototype.contextWillBeDestroyed = function(contextId) {};
 /**
  * @param {Protocol.WebAudio.BaseAudioContext} context
  */
 Protocol.WebAudioDispatcher.prototype.contextChanged = function(context) {};
+/**
+ * @param {Protocol.WebAudio.AudioListener} listener
+ */
+Protocol.WebAudioDispatcher.prototype.audioListenerCreated = function(listener) {};
+/**
+ * @param {Protocol.WebAudio.GraphObjectId} contextId
+ * @param {Protocol.WebAudio.GraphObjectId} listenerId
+ */
+Protocol.WebAudioDispatcher.prototype.audioListenerWillBeDestroyed = function(contextId, listenerId) {};
+/**
+ * @param {Protocol.WebAudio.AudioNode} node
+ */
+Protocol.WebAudioDispatcher.prototype.audioNodeCreated = function(node) {};
+/**
+ * @param {Protocol.WebAudio.GraphObjectId} contextId
+ * @param {Protocol.WebAudio.GraphObjectId} nodeId
+ */
+Protocol.WebAudioDispatcher.prototype.audioNodeWillBeDestroyed = function(contextId, nodeId) {};
+/**
+ * @param {Protocol.WebAudio.AudioParam} param
+ */
+Protocol.WebAudioDispatcher.prototype.audioParamCreated = function(param) {};
+/**
+ * @param {Protocol.WebAudio.GraphObjectId} contextId
+ * @param {Protocol.WebAudio.GraphObjectId} nodeId
+ * @param {Protocol.WebAudio.GraphObjectId} paramId
+ */
+Protocol.WebAudioDispatcher.prototype.audioParamWillBeDestroyed = function(contextId, nodeId, paramId) {};
+/**
+ * @param {Protocol.WebAudio.GraphObjectId} contextId
+ * @param {Protocol.WebAudio.GraphObjectId} sourceId
+ * @param {Protocol.WebAudio.GraphObjectId} destinationId
+ * @param {number=} opt_sourceOutputIndex
+ * @param {number=} opt_destinationInputIndex
+ */
+Protocol.WebAudioDispatcher.prototype.nodesConnected = function(contextId, sourceId, destinationId, opt_sourceOutputIndex, opt_destinationInputIndex) {};
+/**
+ * @param {Protocol.WebAudio.GraphObjectId} contextId
+ * @param {Protocol.WebAudio.GraphObjectId} sourceId
+ * @param {Protocol.WebAudio.GraphObjectId} destinationId
+ * @param {number=} opt_sourceOutputIndex
+ * @param {number=} opt_destinationInputIndex
+ */
+Protocol.WebAudioDispatcher.prototype.nodesDisconnected = function(contextId, sourceId, destinationId, opt_sourceOutputIndex, opt_destinationInputIndex) {};
+/**
+ * @param {Protocol.WebAudio.GraphObjectId} contextId
+ * @param {Protocol.WebAudio.GraphObjectId} sourceId
+ * @param {Protocol.WebAudio.GraphObjectId} destinationId
+ * @param {number=} opt_sourceOutputIndex
+ */
+Protocol.WebAudioDispatcher.prototype.nodeParamConnected = function(contextId, sourceId, destinationId, opt_sourceOutputIndex) {};
+/**
+ * @param {Protocol.WebAudio.GraphObjectId} contextId
+ * @param {Protocol.WebAudio.GraphObjectId} sourceId
+ * @param {Protocol.WebAudio.GraphObjectId} destinationId
+ * @param {number=} opt_sourceOutputIndex
+ */
+Protocol.WebAudioDispatcher.prototype.nodeParamDisconnected = function(contextId, sourceId, destinationId, opt_sourceOutputIndex) {};
 Protocol.WebAuthn = {};
 
 

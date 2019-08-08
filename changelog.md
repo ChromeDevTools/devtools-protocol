@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r684999
+###### _2019-08-07 16:16:04_ | Diff: [3be7296...8ab49c8](https://github.com/ChromeDevTools/devtools-protocol/compare/3be7296...8ab49c8)
+#### `Browser`: new command
+* [`Browser.setPermission`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-setPermission)
+#### `Browser`: new types
+* [`Browser.PermissionSetting`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-PermissionSetting)
+* [`Browser.PermissionDescriptor`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-PermissionDescriptor)
+
+
 ## Roll protocol to r684970
 ###### _2019-08-07 15:16:04_ | Diff: [0433fdf...3be7296](https://github.com/ChromeDevTools/devtools-protocol/compare/0433fdf...3be7296)
 #### `WebAuthn`: new command

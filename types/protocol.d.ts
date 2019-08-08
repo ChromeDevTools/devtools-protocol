@@ -11836,9 +11836,9 @@ export namespace Protocol {
     export namespace WebAudio {
 
         /**
-         * Context's UUID in string
+         * An unique ID for a graph object (AudioContext, AudioNode, AudioParam) in Web Audio API
          */
-        export type ContextId = string;
+        export type GraphObjectId = string;
 
         /**
          * Enum of BaseAudioContext types
@@ -11849,6 +11849,31 @@ export namespace Protocol {
          * Enum of AudioContextState from the spec
          */
         export type ContextState = ('suspended' | 'running' | 'closed');
+
+        /**
+         * Enum of AudioNode types
+         */
+        export type NodeType = string;
+
+        /**
+         * Enum of AudioNode::ChannelCountMode from the spec
+         */
+        export type ChannelCountMode = ('clamped-max' | 'explicit' | 'max');
+
+        /**
+         * Enum of AudioNode::ChannelInterpretation from the spec
+         */
+        export type ChannelInterpretation = ('discrete' | 'speakers');
+
+        /**
+         * Enum of AudioParam types
+         */
+        export type ParamType = string;
+
+        /**
+         * Enum of AudioParam::AutomationRate from the spec
+         */
+        export type AutomationRate = ('a-rate' | 'k-rate');
 
         /**
          * Fields in AudioContext that change in real-time.
@@ -11878,7 +11903,7 @@ export namespace Protocol {
          * Protocol object for BaseAudioContext
          */
         export interface BaseAudioContext {
-            contextId: ContextId;
+            contextId: GraphObjectId;
             contextType: ContextType;
             contextState: ContextState;
             realtimeData?: ContextRealtimeData;
@@ -11896,8 +11921,44 @@ export namespace Protocol {
             sampleRate: number;
         }
 
+        /**
+         * Protocol object for AudioListner
+         */
+        export interface AudioListener {
+            listenerId: GraphObjectId;
+            contextId: GraphObjectId;
+        }
+
+        /**
+         * Protocol object for AudioNode
+         */
+        export interface AudioNode {
+            nodeId: GraphObjectId;
+            contextId: GraphObjectId;
+            nodeType: NodeType;
+            numberOfInputs: number;
+            numberOfOutputs: number;
+            channelCount: number;
+            channelCountMode: ChannelCountMode;
+            channelInterpretation: ChannelInterpretation;
+        }
+
+        /**
+         * Protocol object for AudioParam
+         */
+        export interface AudioParam {
+            paramId: GraphObjectId;
+            nodeId: GraphObjectId;
+            contextId: GraphObjectId;
+            paramType: ParamType;
+            rate: AutomationRate;
+            defaultValue: number;
+            minValue: number;
+            maxValue: number;
+        }
+
         export interface GetRealtimeDataRequest {
-            contextId: ContextId;
+            contextId: GraphObjectId;
         }
 
         export interface GetRealtimeDataResponse {
@@ -11915,7 +11976,7 @@ export namespace Protocol {
          * Notifies that an existing BaseAudioContext will be destroyed.
          */
         export interface ContextWillBeDestroyedEvent {
-            contextId: ContextId;
+            contextId: GraphObjectId;
         }
 
         /**
@@ -11923,6 +11984,94 @@ export namespace Protocol {
          */
         export interface ContextChangedEvent {
             context: BaseAudioContext;
+        }
+
+        /**
+         * Notifies that the construction of an AudioListener has finished.
+         */
+        export interface AudioListenerCreatedEvent {
+            listener: AudioListener;
+        }
+
+        /**
+         * Notifies that a new AudioListener has been created.
+         */
+        export interface AudioListenerWillBeDestroyedEvent {
+            contextId: GraphObjectId;
+            listenerId: GraphObjectId;
+        }
+
+        /**
+         * Notifies that a new AudioNode has been created.
+         */
+        export interface AudioNodeCreatedEvent {
+            node: AudioNode;
+        }
+
+        /**
+         * Notifies that an existing AudioNode has been destroyed.
+         */
+        export interface AudioNodeWillBeDestroyedEvent {
+            contextId: GraphObjectId;
+            nodeId: GraphObjectId;
+        }
+
+        /**
+         * Notifies that a new AudioParam has been created.
+         */
+        export interface AudioParamCreatedEvent {
+            param: AudioParam;
+        }
+
+        /**
+         * Notifies that an existing AudioParam has been destroyed.
+         */
+        export interface AudioParamWillBeDestroyedEvent {
+            contextId: GraphObjectId;
+            nodeId: GraphObjectId;
+            paramId: GraphObjectId;
+        }
+
+        /**
+         * Notifies that two AudioNodes are connected.
+         */
+        export interface NodesConnectedEvent {
+            contextId: GraphObjectId;
+            sourceId: GraphObjectId;
+            destinationId: GraphObjectId;
+            sourceOutputIndex?: number;
+            destinationInputIndex?: number;
+        }
+
+        /**
+         * Notifies that AudioNodes are disconnected. The destination can be null, and it means all the outgoing connections from the source are disconnected.
+         */
+        export interface NodesDisconnectedEvent {
+            contextId: GraphObjectId;
+            sourceId: GraphObjectId;
+            destinationId: GraphObjectId;
+            sourceOutputIndex?: number;
+            destinationInputIndex?: number;
+        }
+
+        /**
+         * Notifies that an AudioNode is connected to an AudioParam.
+         */
+        export interface NodeParamConnectedEvent {
+            contextId: GraphObjectId;
+            sourceId: GraphObjectId;
+            destinationId: GraphObjectId;
+            sourceOutputIndex?: number;
+        }
+
+        /**
+         * Notifies that an AudioNode is disconnected to an AudioParam.
+         */
+        export interface NodeParamDisconnectedEvent {
+            contextId: GraphObjectId;
+            sourceId: GraphObjectId;
+            destinationId: GraphObjectId;
+            sourceOutputIndex?: number;
         }
     }
 

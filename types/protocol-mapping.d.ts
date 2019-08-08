@@ -523,6 +523,46 @@ export namespace ProtocolMapping {
          */
         'WebAudio.contextChanged': [Protocol.WebAudio.ContextChangedEvent];
         /**
+         * Notifies that the construction of an AudioListener has finished.
+         */
+        'WebAudio.audioListenerCreated': [Protocol.WebAudio.AudioListenerCreatedEvent];
+        /**
+         * Notifies that a new AudioListener has been created.
+         */
+        'WebAudio.audioListenerWillBeDestroyed': [Protocol.WebAudio.AudioListenerWillBeDestroyedEvent];
+        /**
+         * Notifies that a new AudioNode has been created.
+         */
+        'WebAudio.audioNodeCreated': [Protocol.WebAudio.AudioNodeCreatedEvent];
+        /**
+         * Notifies that an existing AudioNode has been destroyed.
+         */
+        'WebAudio.audioNodeWillBeDestroyed': [Protocol.WebAudio.AudioNodeWillBeDestroyedEvent];
+        /**
+         * Notifies that a new AudioParam has been created.
+         */
+        'WebAudio.audioParamCreated': [Protocol.WebAudio.AudioParamCreatedEvent];
+        /**
+         * Notifies that an existing AudioParam has been destroyed.
+         */
+        'WebAudio.audioParamWillBeDestroyed': [Protocol.WebAudio.AudioParamWillBeDestroyedEvent];
+        /**
+         * Notifies that two AudioNodes are connected.
+         */
+        'WebAudio.nodesConnected': [Protocol.WebAudio.NodesConnectedEvent];
+        /**
+         * Notifies that AudioNodes are disconnected. The destination can be null, and it means all the outgoing connections from the source are disconnected.
+         */
+        'WebAudio.nodesDisconnected': [Protocol.WebAudio.NodesDisconnectedEvent];
+        /**
+         * Notifies that an AudioNode is connected to an AudioParam.
+         */
+        'WebAudio.nodeParamConnected': [Protocol.WebAudio.NodeParamConnectedEvent];
+        /**
+         * Notifies that an AudioNode is disconnected to an AudioParam.
+         */
+        'WebAudio.nodeParamDisconnected': [Protocol.WebAudio.NodeParamDisconnectedEvent];
+        /**
          * This can be called multiple times, and can be used to set / override /
          * remove player properties. A null propValue indicates removal.
          */

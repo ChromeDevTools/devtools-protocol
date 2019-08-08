@@ -15188,8 +15188,8 @@
             "experimental": true,
             "types": [
                 {
-                    "id": "ContextId",
-                    "description": "Context's UUID in string",
+                    "id": "GraphObjectId",
+                    "description": "An unique ID for a graph object (AudioContext, AudioNode, AudioParam) in Web Audio API",
                     "type": "string"
                 },
                 {
@@ -15209,6 +15209,44 @@
                         "suspended",
                         "running",
                         "closed"
+                    ]
+                },
+                {
+                    "id": "NodeType",
+                    "description": "Enum of AudioNode types",
+                    "type": "string"
+                },
+                {
+                    "id": "ChannelCountMode",
+                    "description": "Enum of AudioNode::ChannelCountMode from the spec",
+                    "type": "string",
+                    "enum": [
+                        "clamped-max",
+                        "explicit",
+                        "max"
+                    ]
+                },
+                {
+                    "id": "ChannelInterpretation",
+                    "description": "Enum of AudioNode::ChannelInterpretation from the spec",
+                    "type": "string",
+                    "enum": [
+                        "discrete",
+                        "speakers"
+                    ]
+                },
+                {
+                    "id": "ParamType",
+                    "description": "Enum of AudioParam types",
+                    "type": "string"
+                },
+                {
+                    "id": "AutomationRate",
+                    "description": "Enum of AudioParam::AutomationRate from the spec",
+                    "type": "string",
+                    "enum": [
+                        "a-rate",
+                        "k-rate"
                     ]
                 },
                 {
@@ -15245,7 +15283,7 @@
                     "properties": [
                         {
                             "name": "contextId",
-                            "$ref": "ContextId"
+                            "$ref": "GraphObjectId"
                         },
                         {
                             "name": "contextType",
@@ -15276,6 +15314,99 @@
                             "type": "number"
                         }
                     ]
+                },
+                {
+                    "id": "AudioListener",
+                    "description": "Protocol object for AudioListner",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "listenerId",
+                            "$ref": "GraphObjectId"
+                        },
+                        {
+                            "name": "contextId",
+                            "$ref": "GraphObjectId"
+                        }
+                    ]
+                },
+                {
+                    "id": "AudioNode",
+                    "description": "Protocol object for AudioNode",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "nodeId",
+                            "$ref": "GraphObjectId"
+                        },
+                        {
+                            "name": "contextId",
+                            "$ref": "GraphObjectId"
+                        },
+                        {
+                            "name": "nodeType",
+                            "$ref": "NodeType"
+                        },
+                        {
+                            "name": "numberOfInputs",
+                            "type": "number"
+                        },
+                        {
+                            "name": "numberOfOutputs",
+                            "type": "number"
+                        },
+                        {
+                            "name": "channelCount",
+                            "type": "number"
+                        },
+                        {
+                            "name": "channelCountMode",
+                            "$ref": "ChannelCountMode"
+                        },
+                        {
+                            "name": "channelInterpretation",
+                            "$ref": "ChannelInterpretation"
+                        }
+                    ]
+                },
+                {
+                    "id": "AudioParam",
+                    "description": "Protocol object for AudioParam",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "paramId",
+                            "$ref": "GraphObjectId"
+                        },
+                        {
+                            "name": "nodeId",
+                            "$ref": "GraphObjectId"
+                        },
+                        {
+                            "name": "contextId",
+                            "$ref": "GraphObjectId"
+                        },
+                        {
+                            "name": "paramType",
+                            "$ref": "ParamType"
+                        },
+                        {
+                            "name": "rate",
+                            "$ref": "AutomationRate"
+                        },
+                        {
+                            "name": "defaultValue",
+                            "type": "number"
+                        },
+                        {
+                            "name": "minValue",
+                            "type": "number"
+                        },
+                        {
+                            "name": "maxValue",
+                            "type": "number"
+                        }
+                    ]
                 }
             ],
             "commands": [
@@ -15293,7 +15424,7 @@
                     "parameters": [
                         {
                             "name": "contextId",
-                            "$ref": "ContextId"
+                            "$ref": "GraphObjectId"
                         }
                     ],
                     "returns": [
@@ -15321,7 +15452,7 @@
                     "parameters": [
                         {
                             "name": "contextId",
-                            "$ref": "ContextId"
+                            "$ref": "GraphObjectId"
                         }
                     ]
                 },
@@ -15332,6 +15463,184 @@
                         {
                             "name": "context",
                             "$ref": "BaseAudioContext"
+                        }
+                    ]
+                },
+                {
+                    "name": "audioListenerCreated",
+                    "description": "Notifies that the construction of an AudioListener has finished.",
+                    "parameters": [
+                        {
+                            "name": "listener",
+                            "$ref": "AudioListener"
+                        }
+                    ]
+                },
+                {
+                    "name": "audioListenerWillBeDestroyed",
+                    "description": "Notifies that a new AudioListener has been created.",
+                    "parameters": [
+                        {
+                            "name": "contextId",
+                            "$ref": "GraphObjectId"
+                        },
+                        {
+                            "name": "listenerId",
+                            "$ref": "GraphObjectId"
+                        }
+                    ]
+                },
+                {
+                    "name": "audioNodeCreated",
+                    "description": "Notifies that a new AudioNode has been created.",
+                    "parameters": [
+                        {
+                            "name": "node",
+                            "$ref": "AudioNode"
+                        }
+                    ]
+                },
+                {
+                    "name": "audioNodeWillBeDestroyed",
+                    "description": "Notifies that an existing AudioNode has been destroyed.",
+                    "parameters": [
+                        {
+                            "name": "contextId",
+                            "$ref": "GraphObjectId"
+                        },
+                        {
+                            "name": "nodeId",
+                            "$ref": "GraphObjectId"
+                        }
+                    ]
+                },
+                {
+                    "name": "audioParamCreated",
+                    "description": "Notifies that a new AudioParam has been created.",
+                    "parameters": [
+                        {
+                            "name": "param",
+                            "$ref": "AudioParam"
+                        }
+                    ]
+                },
+                {
+                    "name": "audioParamWillBeDestroyed",
+                    "description": "Notifies that an existing AudioParam has been destroyed.",
+                    "parameters": [
+                        {
+                            "name": "contextId",
+                            "$ref": "GraphObjectId"
+                        },
+                        {
+                            "name": "nodeId",
+                            "$ref": "GraphObjectId"
+                        },
+                        {
+                            "name": "paramId",
+                            "$ref": "GraphObjectId"
+                        }
+                    ]
+                },
+                {
+                    "name": "nodesConnected",
+                    "description": "Notifies that two AudioNodes are connected.",
+                    "parameters": [
+                        {
+                            "name": "contextId",
+                            "$ref": "GraphObjectId"
+                        },
+                        {
+                            "name": "sourceId",
+                            "$ref": "GraphObjectId"
+                        },
+                        {
+                            "name": "destinationId",
+                            "$ref": "GraphObjectId"
+                        },
+                        {
+                            "name": "sourceOutputIndex",
+                            "optional": true,
+                            "type": "number"
+                        },
+                        {
+                            "name": "destinationInputIndex",
+                            "optional": true,
+                            "type": "number"
+                        }
+                    ]
+                },
+                {
+                    "name": "nodesDisconnected",
+                    "description": "Notifies that AudioNodes are disconnected. The destination can be null, and it means all the outgoing connections from the source are disconnected.",
+                    "parameters": [
+                        {
+                            "name": "contextId",
+                            "$ref": "GraphObjectId"
+                        },
+                        {
+                            "name": "sourceId",
+                            "$ref": "GraphObjectId"
+                        },
+                        {
+                            "name": "destinationId",
+                            "$ref": "GraphObjectId"
+                        },
+                        {
+                            "name": "sourceOutputIndex",
+                            "optional": true,
+                            "type": "number"
+                        },
+                        {
+                            "name": "destinationInputIndex",
+                            "optional": true,
+                            "type": "number"
+                        }
+                    ]
+                },
+                {
+                    "name": "nodeParamConnected",
+                    "description": "Notifies that an AudioNode is connected to an AudioParam.",
+                    "parameters": [
+                        {
+                            "name": "contextId",
+                            "$ref": "GraphObjectId"
+                        },
+                        {
+                            "name": "sourceId",
+                            "$ref": "GraphObjectId"
+                        },
+                        {
+                            "name": "destinationId",
+                            "$ref": "GraphObjectId"
+                        },
+                        {
+                            "name": "sourceOutputIndex",
+                            "optional": true,
+                            "type": "number"
+                        }
+                    ]
+                },
+                {
+                    "name": "nodeParamDisconnected",
+                    "description": "Notifies that an AudioNode is disconnected to an AudioParam.",
+                    "parameters": [
+                        {
+                            "name": "contextId",
+                            "$ref": "GraphObjectId"
+                        },
+                        {
+                            "name": "sourceId",
+                            "$ref": "GraphObjectId"
+                        },
+                        {
+                            "name": "destinationId",
+                            "$ref": "GraphObjectId"
+                        },
+                        {
+                            "name": "sourceOutputIndex",
+                            "optional": true,
+                            "type": "number"
                         }
                     ]
                 }
