@@ -2743,6 +2743,8 @@ export namespace ProtocolProxyApi {
 
         dispatchSyncEvent(params: Protocol.ServiceWorker.DispatchSyncEventRequest): Promise<void>;
 
+        dispatchPeriodicSyncEvent(params: Protocol.ServiceWorker.DispatchPeriodicSyncEventRequest): Promise<void>;
+
         enable(): Promise<void>;
 
         inspectWorker(params: Protocol.ServiceWorker.InspectWorkerRequest): Promise<void>;

@@ -6396,6 +6396,22 @@ Protocol.ServiceWorkerAgent.DispatchSyncEventResponse;
 Protocol.ServiceWorkerAgent.prototype.invoke_dispatchSyncEvent = function(obj) {};
 
 /**
+ * @param {string} origin
+ * @param {Protocol.ServiceWorker.RegistrationID} registrationId
+ * @param {string} tag
+ * @return {!Promise<undefined>}
+ */
+Protocol.ServiceWorkerAgent.prototype.dispatchPeriodicSyncEvent = function(origin, registrationId, tag) {};
+/** @typedef {!{origin: string, registrationId: Protocol.ServiceWorker.RegistrationID, tag: string}} */
+Protocol.ServiceWorkerAgent.DispatchPeriodicSyncEventRequest;
+/** @typedef {Object|undefined} */
+Protocol.ServiceWorkerAgent.DispatchPeriodicSyncEventResponse;
+/**
+ * @param {!Protocol.ServiceWorkerAgent.DispatchPeriodicSyncEventRequest} obj
+ * @return {!Promise<!Protocol.ServiceWorkerAgent.DispatchPeriodicSyncEventResponse>} */
+Protocol.ServiceWorkerAgent.prototype.invoke_dispatchPeriodicSyncEvent = function(obj) {};
+
+/**
  * @return {!Promise<undefined>}
  */
 Protocol.ServiceWorkerAgent.prototype.enable = function() {};

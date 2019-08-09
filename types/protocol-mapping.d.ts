@@ -3382,6 +3382,10 @@ export namespace ProtocolMapping {
             paramsType: [Protocol.ServiceWorker.DispatchSyncEventRequest];
             returnType: void;
         };
+        'ServiceWorker.dispatchPeriodicSyncEvent': {
+            paramsType: [Protocol.ServiceWorker.DispatchPeriodicSyncEventRequest];
+            returnType: void;
+        };
         'ServiceWorker.enable': {
             paramsType: [];
             returnType: void;

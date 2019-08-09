@@ -6198,6 +6198,12 @@ experimental domain ServiceWorker
       string tag
       boolean lastChance
 
+  command dispatchPeriodicSyncEvent
+    parameters
+      string origin
+      RegistrationID registrationId
+      string tag
+
   command enable
 
   command inspectWorker

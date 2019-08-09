@@ -10700,6 +10700,12 @@ export namespace Protocol {
             lastChance: boolean;
         }
 
+        export interface DispatchPeriodicSyncEventRequest {
+            origin: string;
+            registrationId: RegistrationID;
+            tag: string;
+        }
+
         export interface InspectWorkerRequest {
             versionId: string;
         }

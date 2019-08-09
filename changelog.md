@@ -1,5 +1,38 @@
 
 
+## Roll protocol to r685049
+###### _2019-08-07 18:16:05_ | Diff: [8ab49c8...dd87c1c](https://github.com/ChromeDevTools/devtools-protocol/compare/8ab49c8...dd87c1c)
+#### `WebAudio`: modified command
+* [`WebAudio.getRealtimeData`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#method-getRealtimeData) - The `contextId` in the parameters had `$ref` _updated_. 
+#### `WebAudio`: new events
+* [`WebAudio.audioListenerCreated`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#event-audioListenerCreated)
+* [`WebAudio.audioListenerWillBeDestroyed`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#event-audioListenerWillBeDestroyed)
+* [`WebAudio.audioNodeCreated`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#event-audioNodeCreated)
+* [`WebAudio.audioNodeWillBeDestroyed`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#event-audioNodeWillBeDestroyed)
+* [`WebAudio.audioParamCreated`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#event-audioParamCreated)
+* [`WebAudio.audioParamWillBeDestroyed`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#event-audioParamWillBeDestroyed)
+* [`WebAudio.nodesConnected`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#event-nodesConnected)
+* [`WebAudio.nodesDisconnected`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#event-nodesDisconnected)
+* [`WebAudio.nodeParamConnected`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#event-nodeParamConnected)
+* [`WebAudio.nodeParamDisconnected`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#event-nodeParamDisconnected)
+#### `WebAudio`: modified event
+* [`WebAudio.contextWillBeDestroyed`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#event-contextWillBeDestroyed) - The `contextId` in the parameters had `$ref` _updated_. 
+#### `WebAudio`: new types
+* [`WebAudio.GraphObjectId`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-GraphObjectId)
+* [`WebAudio.NodeType`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-NodeType)
+* [`WebAudio.ChannelCountMode`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-ChannelCountMode)
+* [`WebAudio.ChannelInterpretation`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-ChannelInterpretation)
+* [`WebAudio.ParamType`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-ParamType)
+* [`WebAudio.AutomationRate`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-AutomationRate)
+* [`WebAudio.AudioListener`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-AudioListener)
+* [`WebAudio.AudioNode`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-AudioNode)
+* [`WebAudio.AudioParam`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-AudioParam)
+#### `WebAudio`: removed type
+* [`WebAudio.ContextId`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-ContextId)
+#### `WebAudio`: modified type
+* [`WebAudio.BaseAudioContext`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-BaseAudioContext) - The `contextId` in the properties had `$ref` _updated_. 
+
+
 ## Roll protocol to r684999
 ###### _2019-08-07 16:16:04_ | Diff: [3be7296...8ab49c8](https://github.com/ChromeDevTools/devtools-protocol/compare/3be7296...8ab49c8)
 #### `Browser`: new command
