@@ -2468,6 +2468,10 @@ experimental domain DOMSnapshot
       array of StringIndex text
       # Stacking context information.
       RareBooleanData stackingContexts
+      # Global paint order index, which is determined by the stacking order of the nodes. Nodes
+      # that are painted together will have the same index. Only provided if includePaintOrder in
+      # captureSnapshot was true.
+      optional array of integer paintOrders
       # The offset rect of nodes. Only available when includeDOMRects is set to true
       optional array of Rectangle offsetRects
       # The scroll rect of nodes. Only available when includeDOMRects is set to true
@@ -2526,6 +2530,8 @@ experimental domain DOMSnapshot
     parameters
       # Whitelist of computed styles to return.
       array of string computedStyles
+      # Whether to include layout object paint orders into the snapshot.
+      optional boolean includePaintOrder
       # Whether to include DOM rectangles (offsetRects, clientRects, scrollRects) into the snapshot
       optional boolean includeDOMRects
     returns
