@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r685550
+###### _2019-08-09 07:15:54_ | Diff: [dd87c1c...13e7205](https://github.com/ChromeDevTools/devtools-protocol/compare/dd87c1c...13e7205)
+#### `ServiceWorker`: new command
+* [`ServiceWorker.dispatchPeriodicSyncEvent`](https://chromedevtools.github.io/devtools-protocol/tot/ServiceWorker/#method-dispatchPeriodicSyncEvent)
+
+
 ## Roll protocol to r685049
 ###### _2019-08-07 18:16:05_ | Diff: [8ab49c8...dd87c1c](https://github.com/ChromeDevTools/devtools-protocol/compare/8ab49c8...dd87c1c)
 #### `WebAudio`: modified command

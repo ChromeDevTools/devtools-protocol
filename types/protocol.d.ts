@@ -5584,6 +5584,12 @@ export namespace Protocol {
              */
             stackingContexts: RareBooleanData;
             /**
+             * Global paint order index, which is determined by the stacking order of the nodes. Nodes
+             * that are painted together will have the same index. Only provided if includePaintOrder in
+             * captureSnapshot was true.
+             */
+            paintOrders?: integer[];
+            /**
              * The offset rect of nodes. Only available when includeDOMRects is set to true
              */
             offsetRects?: Rectangle[];
@@ -5661,6 +5667,10 @@ export namespace Protocol {
              * Whitelist of computed styles to return.
              */
             computedStyles: string[];
+            /**
+             * Whether to include layout object paint orders into the snapshot.
+             */
+            includePaintOrder?: boolean;
             /**
              * Whether to include DOM rectangles (offsetRects, clientRects, scrollRects) into the snapshot
              */
