@@ -3796,6 +3796,13 @@ export namespace ProtocolMapping {
             returnType: Protocol.WebAuthn.GetCredentialsResponse;
         };
         /**
+         * Removes a credential from the authenticator.
+         */
+        'WebAuthn.removeCredential': {
+            paramsType: [Protocol.WebAuthn.RemoveCredentialRequest];
+            returnType: void;
+        };
+        /**
          * Clears all the credentials from the specified device.
          */
         'WebAuthn.clearCredentials': {

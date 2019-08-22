@@ -7332,6 +7332,12 @@ experimental domain WebAuthn
     returns
       array of Credential credentials
 
+  # Removes a credential from the authenticator.
+  command removeCredential
+    parameters
+      AuthenticatorId authenticatorId
+      binary credentialId
+
   # Clears all the credentials from the specified device.
   command clearCredentials
     parameters

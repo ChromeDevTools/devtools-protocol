@@ -3227,6 +3227,11 @@ export namespace ProtocolProxyApi {
         getCredentials(params: Protocol.WebAuthn.GetCredentialsRequest): Promise<Protocol.WebAuthn.GetCredentialsResponse>;
 
         /**
+         * Removes a credential from the authenticator.
+         */
+        removeCredential(params: Protocol.WebAuthn.RemoveCredentialRequest): Promise<void>;
+
+        /**
          * Clears all the credentials from the specified device.
          */
         clearCredentials(params: Protocol.WebAuthn.ClearCredentialsRequest): Promise<void>;

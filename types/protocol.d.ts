@@ -12174,6 +12174,11 @@ export namespace Protocol {
             credentials: Credential[];
         }
 
+        export interface RemoveCredentialRequest {
+            authenticatorId: AuthenticatorId;
+            credentialId: string;
+        }
+
         export interface ClearCredentialsRequest {
             authenticatorId: AuthenticatorId;
         }

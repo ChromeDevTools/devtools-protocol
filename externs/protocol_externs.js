@@ -7706,6 +7706,21 @@ Protocol.WebAuthnAgent.prototype.invoke_getCredentials = function(obj) {};
 
 /**
  * @param {Protocol.WebAuthn.AuthenticatorId} authenticatorId
+ * @param {string} credentialId
+ * @return {!Promise<undefined>}
+ */
+Protocol.WebAuthnAgent.prototype.removeCredential = function(authenticatorId, credentialId) {};
+/** @typedef {!{credentialId: string, authenticatorId: Protocol.WebAuthn.AuthenticatorId}} */
+Protocol.WebAuthnAgent.RemoveCredentialRequest;
+/** @typedef {Object|undefined} */
+Protocol.WebAuthnAgent.RemoveCredentialResponse;
+/**
+ * @param {!Protocol.WebAuthnAgent.RemoveCredentialRequest} obj
+ * @return {!Promise<!Protocol.WebAuthnAgent.RemoveCredentialResponse>} */
+Protocol.WebAuthnAgent.prototype.invoke_removeCredential = function(obj) {};
+
+/**
+ * @param {Protocol.WebAuthn.AuthenticatorId} authenticatorId
  * @return {!Promise<undefined>}
  */
 Protocol.WebAuthnAgent.prototype.clearCredentials = function(authenticatorId) {};

@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r687122 686719
+###### _2019-08-14 19:15:58_ | Diff: [13e7205...443c7a4](https://github.com/ChromeDevTools/devtools-protocol/compare/13e7205...443c7a4)
+#### `DOMSnapshot`: modified command
+* [`DOMSnapshot.captureSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#method-captureSnapshot) - The `includeDOMRects` in the parameters had `name` _updated_. The `includeDOMRects` in the parameters had `description` _updated_. The parameters's `includeDOMRects` _added_. 
+#### `DOMSnapshot`: modified type
+* [`DOMSnapshot.LayoutTreeSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-LayoutTreeSnapshot) - The `offsetRects` in the properties had `$ref` _removed_. The `offsetRects` in the properties had `name` _updated_. The `offsetRects` in the properties had `description` _updated_. The `scrollRects` in the properties had `name` _updated_. The `scrollRects` in the properties had `description` _updated_. The `clientRects` in the properties had `name` _updated_. The `clientRects` in the properties had `description` _updated_. The `5` in the properties had `type` _added_. The properties's `clientRects` _added_. 
+
+
 ## Roll protocol to r685550
 ###### _2019-08-09 07:15:54_ | Diff: [dd87c1c...13e7205](https://github.com/ChromeDevTools/devtools-protocol/compare/dd87c1c...13e7205)
 #### `ServiceWorker`: new command

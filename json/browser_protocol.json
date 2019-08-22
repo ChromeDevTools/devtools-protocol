@@ -15860,6 +15860,20 @@
                     ]
                 },
                 {
+                    "name": "removeCredential",
+                    "description": "Removes a credential from the authenticator.",
+                    "parameters": [
+                        {
+                            "name": "authenticatorId",
+                            "$ref": "AuthenticatorId"
+                        },
+                        {
+                            "name": "credentialId",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "clearCredentials",
                     "description": "Clears all the credentials from the specified device.",
                     "parameters": [
