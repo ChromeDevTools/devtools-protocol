@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r689523
+###### _2019-08-22 10:15:59_ | Diff: [78e5621...e1fb93b](https://github.com/ChromeDevTools/devtools-protocol/compare/78e5621...e1fb93b)
+#### `WebAuthn`: new command
+* [`WebAuthn.removeCredential`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#method-removeCredential)
+
+
 ## Roll protocol to r687122 686719
 ###### _2019-08-14 19:15:58_ | Diff: [13e7205...443c7a4](https://github.com/ChromeDevTools/devtools-protocol/compare/13e7205...443c7a4)
 #### `DOMSnapshot`: modified command
