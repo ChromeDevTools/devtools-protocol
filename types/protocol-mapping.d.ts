@@ -208,8 +208,6 @@ export namespace ProtocolMapping {
         'Emulation.virtualTimeBudgetExpired': [];
         /**
          * Issued when the target starts or stops needing BeginFrames.
-         * Deprecated. Issue beginFrame unconditionally instead and use result from
-         * beginFrame to detect whether the frames were suppressed.
          */
         'HeadlessExperimental.needsBeginFramesChanged': [Protocol.HeadlessExperimental.NeedsBeginFramesChangedEvent];
         /**

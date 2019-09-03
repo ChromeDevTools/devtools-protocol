@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r692736
+###### _2019-09-03 11:16:12_ | Diff: [82e6b82...108d389](https://github.com/ChromeDevTools/devtools-protocol/compare/82e6b82...108d389)
+#### `HeadlessExperimental`: modified event
+* [`HeadlessExperimental.needsBeginFramesChanged`](https://chromedevtools.github.io/devtools-protocol/tot/HeadlessExperimental/#event-needsBeginFramesChanged) - `description` updated. `deprecated` added. 
+
+
 ## Roll protocol to r689523
 ###### _2019-08-22 10:15:59_ | Diff: [78e5621...e1fb93b](https://github.com/ChromeDevTools/devtools-protocol/compare/78e5621...e1fb93b)
 #### `WebAuthn`: new command
