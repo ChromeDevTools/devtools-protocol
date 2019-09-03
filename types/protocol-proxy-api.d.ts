@@ -1624,6 +1624,8 @@ export namespace ProtocolProxyApi {
 
         /**
          * Issued when the target starts or stops needing BeginFrames.
+         * Deprecated. Issue beginFrame unconditionally instead and use result from
+         * beginFrame to detect whether the frames were suppressed.
          */
         on(event: 'needsBeginFramesChanged', listener: (params: Protocol.HeadlessExperimental.NeedsBeginFramesChangedEvent) => void): void;
 
