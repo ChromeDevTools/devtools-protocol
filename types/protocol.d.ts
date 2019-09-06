@@ -4458,6 +4458,10 @@ export namespace Protocol {
              * False to skip to the nearest non-UA shadow root ancestor (default: false).
              */
             includeUserAgentShadowDOM?: boolean;
+            /**
+             * Whether to ignore pointer-events: none on elements and hit test them.
+             */
+            ignorePointerEventsNone?: boolean;
         }
 
         export interface GetNodeForLocationResponse {
@@ -4465,6 +4469,10 @@ export namespace Protocol {
              * Resulting node.
              */
             backendNodeId: BackendNodeId;
+            /**
+             * Frame this node belongs to.
+             */
+            frameId: Page.FrameId;
             /**
              * Id of the node at given coordinates, only when enabled and requested document.
              */

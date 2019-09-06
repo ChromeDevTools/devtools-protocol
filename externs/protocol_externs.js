@@ -1623,12 +1623,13 @@ Protocol.DOMAgent.prototype.invoke_getFlattenedDocument = function(obj) {};
  * @param {number} x
  * @param {number} y
  * @param {boolean=} opt_includeUserAgentShadowDOM
+ * @param {boolean=} opt_ignorePointerEventsNone
  * @return {!Promise<?Protocol.DOM.BackendNodeId>}
  */
-Protocol.DOMAgent.prototype.getNodeForLocation = function(x, y, opt_includeUserAgentShadowDOM) {};
-/** @typedef {!{y: number, x: number, includeUserAgentShadowDOM: (boolean|undefined)}} */
+Protocol.DOMAgent.prototype.getNodeForLocation = function(x, y, opt_includeUserAgentShadowDOM, opt_ignorePointerEventsNone) {};
+/** @typedef {!{y: number, x: number, ignorePointerEventsNone: (boolean|undefined), includeUserAgentShadowDOM: (boolean|undefined)}} */
 Protocol.DOMAgent.GetNodeForLocationRequest;
-/** @typedef {!{nodeId: Protocol.DOM.NodeId, backendNodeId: Protocol.DOM.BackendNodeId}} */
+/** @typedef {!{nodeId: Protocol.DOM.NodeId, backendNodeId: Protocol.DOM.BackendNodeId, frameId: Protocol.Page.FrameId}} */
 Protocol.DOMAgent.GetNodeForLocationResponse;
 /**
  * @param {!Protocol.DOMAgent.GetNodeForLocationRequest} obj
