@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r692805
+###### _2019-09-03 13:15:58_ | Diff: [108d389...a6f7aeb](https://github.com/ChromeDevTools/devtools-protocol/compare/108d389...a6f7aeb)
+#### `HeadlessExperimental`: modified event
+* [`HeadlessExperimental.needsBeginFramesChanged`](https://chromedevtools.github.io/devtools-protocol/tot/HeadlessExperimental/#event-needsBeginFramesChanged) - `deprecated` removed. `description` updated. 
+
+
 ## Roll protocol to r692736
 ###### _2019-09-03 11:16:12_ | Diff: [82e6b82...108d389](https://github.com/ChromeDevTools/devtools-protocol/compare/82e6b82...108d389)
 #### `HeadlessExperimental`: modified event
