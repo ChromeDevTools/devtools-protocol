@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r694415
+###### _2019-09-06 14:15:53_ | Diff: [308aa38...81a5ef8](https://github.com/ChromeDevTools/devtools-protocol/compare/308aa38...81a5ef8)
+#### `DOM`: modified command
+* [`DOM.getNodeForLocation`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getNodeForLocation) - `experimental` removed. The `nodeId` in the return value had `optional` _removed_. The `nodeId` in the return value had `name` _updated_. The `nodeId` in the return value had `description` _updated_. The `nodeId` in the return value had `$ref` _updated_. The parameters's `ignorePointerEventsNone` _added_. The return value's `nodeId` _added_. 
+
+
 ## Roll protocol to r694293
 ###### _2019-09-06 10:16:24_ | Diff: [a6f7aeb...308aa38](https://github.com/ChromeDevTools/devtools-protocol/compare/a6f7aeb...308aa38)
 #### `HeadlessExperimental`: modified event
