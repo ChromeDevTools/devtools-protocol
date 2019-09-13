@@ -4666,10 +4666,10 @@ Protocol.Network.CookieBlockedReason = {
     UnknownError: "UnknownError"
 };
 
-/** @typedef {!{blockedReason:(Protocol.Network.SetCookieBlockedReason), cookieLine:(string), cookie:(Protocol.Network.Cookie|undefined)}} */
+/** @typedef {!{blockedReasons:(!Array<Protocol.Network.SetCookieBlockedReason>), cookieLine:(string), cookie:(Protocol.Network.Cookie|undefined)}} */
 Protocol.Network.BlockedSetCookieWithReason;
 
-/** @typedef {!{blockedReason:(Protocol.Network.CookieBlockedReason), cookie:(Protocol.Network.Cookie)}} */
+/** @typedef {!{blockedReasons:(!Array<Protocol.Network.CookieBlockedReason>), cookie:(Protocol.Network.Cookie)}} */
 Protocol.Network.BlockedCookieWithReason;
 
 /** @typedef {!{name:(string), value:(string), url:(string|undefined), domain:(string|undefined), path:(string|undefined), secure:(boolean|undefined), httpOnly:(boolean|undefined), sameSite:(Protocol.Network.CookieSameSite|undefined), expires:(Protocol.Network.TimeSinceEpoch|undefined)}} */

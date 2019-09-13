@@ -7871,9 +7871,9 @@ export namespace Protocol {
          */
         export interface BlockedSetCookieWithReason {
             /**
-             * The reason this cookie was blocked.
+             * The reason(s) this cookie was blocked.
              */
-            blockedReason: SetCookieBlockedReason;
+            blockedReasons: SetCookieBlockedReason[];
             /**
              * The string representing this individual cookie as it would appear in the header.
              * This is not the entire "cookie" or "set-cookie" header which could have multiple cookies.
@@ -7892,9 +7892,9 @@ export namespace Protocol {
          */
         export interface BlockedCookieWithReason {
             /**
-             * The reason the cookie was blocked.
+             * The reason(s) the cookie was blocked.
              */
-            blockedReason: CookieBlockedReason;
+            blockedReasons: CookieBlockedReason[];
             /**
              * The cookie object representing the cookie which was not sent.
              */

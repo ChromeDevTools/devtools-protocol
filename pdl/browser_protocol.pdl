@@ -4195,8 +4195,8 @@ domain Network
   # A cookie which was not stored from a response with the corresponding reason.
   experimental type BlockedSetCookieWithReason extends object
     properties
-      # The reason this cookie was blocked.
-      SetCookieBlockedReason blockedReason
+      # The reason(s) this cookie was blocked.
+      array of SetCookieBlockedReason blockedReasons
       # The string representing this individual cookie as it would appear in the header.
       # This is not the entire "cookie" or "set-cookie" header which could have multiple cookies.
       string cookieLine
@@ -4208,8 +4208,8 @@ domain Network
   # A cookie with was not sent with a request with the corresponding reason.
   experimental type BlockedCookieWithReason extends object
     properties
-      # The reason the cookie was blocked.
-      CookieBlockedReason blockedReason
+      # The reason(s) the cookie was blocked.
+      array of CookieBlockedReason blockedReasons
       # The cookie object representing the cookie which was not sent.
       Cookie cookie
 

@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r696317
+###### _2019-09-13 01:16:13_ | Diff: [ca69194...2103701](https://github.com/ChromeDevTools/devtools-protocol/compare/ca69194...2103701)
+#### `Debugger`: modified commands
+* [`Debugger.pauseOnAsyncCall`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-pauseOnAsyncCall) - `deprecated` added. 
+* [`Debugger.stepInto`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-stepInto) - The `breakOnAsyncCall` in the parameters had `description` _updated_. 
+#### `Debugger`: modified event
+* [`Debugger.paused`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-paused) - The `asyncCallStackTraceId` in the parameters had `description` _updated_. The parameters's `deprecated` _added_. 
+
+
 ## Roll protocol to r694415
 ###### _2019-09-06 14:15:53_ | Diff: [308aa38...81a5ef8](https://github.com/ChromeDevTools/devtools-protocol/compare/308aa38...81a5ef8)
 #### `DOM`: modified command
