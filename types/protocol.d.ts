@@ -575,7 +575,7 @@ export namespace Protocol {
 
         export interface StepIntoRequest {
             /**
-             * Debugger will issue additional Debugger.paused notification if any async task is scheduled
+             * Debugger will pause on the execution of the first async task which was scheduled
              * before next pause.
              */
             breakOnAsyncCall?: boolean;
@@ -624,8 +624,7 @@ export namespace Protocol {
              */
             asyncStackTraceId?: Runtime.StackTraceId;
             /**
-             * Just scheduled async call will have this stack trace as parent stack during async execution.
-             * This field is available only after `Debugger.stepInto` call with `breakOnAsynCall` flag.
+             * Never present, will be removed.
              */
             asyncCallStackTraceId?: Runtime.StackTraceId;
         }

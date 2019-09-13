@@ -498,6 +498,7 @@
                 {
                     "name": "pauseOnAsyncCall",
                     "experimental": true,
+                    "deprecated": true,
                     "parameters": [
                         {
                             "name": "parentStackTraceId",
@@ -909,7 +910,7 @@
                     "parameters": [
                         {
                             "name": "breakOnAsyncCall",
-                            "description": "Debugger will issue additional Debugger.paused notification if any async task is scheduled\nbefore next pause.",
+                            "description": "Debugger will pause on the execution of the first async task which was scheduled\nbefore next pause.",
                             "experimental": true,
                             "optional": true,
                             "type": "boolean"
@@ -1002,8 +1003,9 @@
                         },
                         {
                             "name": "asyncCallStackTraceId",
-                            "description": "Just scheduled async call will have this stack trace as parent stack during async execution.\nThis field is available only after `Debugger.stepInto` call with `breakOnAsynCall` flag.",
+                            "description": "Never present, will be removed.",
                             "experimental": true,
+                            "deprecated": true,
                             "optional": true,
                             "$ref": "Runtime.StackTraceId"
                         }
