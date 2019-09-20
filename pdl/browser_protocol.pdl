@@ -6945,11 +6945,16 @@ experimental domain Fetch
       # An HTTP response code.
       integer responseCode
       # Response headers.
-      array of HeaderEntry responseHeaders
+      optional array of HeaderEntry responseHeaders
+      # Alternative way of specifying response headers as a \0-separated
+      # series of name: value pairs. Prefer the above method unless you
+      # need to represent some non-UTF8 values that can't be transmitted
+      # over the protocol as text.
+      optional binary binaryResponseHeaders
       # A response body.
       optional binary body
       # A textual representation of responseCode.
-      # If absent, a standard phrase mathcing responseCode is used.
+      # If absent, a standard phrase matching responseCode is used.
       optional string responsePhrase
 
   # Continues the request, optionally modifying some of its parameters.

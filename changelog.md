@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r696576
+###### _2019-09-13 16:16:04_ | Diff: [2103701...86165c9](https://github.com/ChromeDevTools/devtools-protocol/compare/2103701...86165c9)
+#### `Network`: modified types
+* [`Network.BlockedSetCookieWithReason`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-BlockedSetCookieWithReason) - The `blockedReason` in the properties had `$ref` _removed_. The `blockedReason` in the properties had `name` _updated_. The `blockedReason` in the properties had `description` _updated_. The properties's `type` _added_. The properties's `items` _added_. 
+* [`Network.BlockedCookieWithReason`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-BlockedCookieWithReason) - The `blockedReason` in the properties had `$ref` _removed_. The `blockedReason` in the properties had `name` _updated_. The `blockedReason` in the properties had `description` _updated_. The properties's `type` _added_. The properties's `items` _added_. 
+
+
 ## Roll protocol to r696317
 ###### _2019-09-13 01:16:13_ | Diff: [ca69194...2103701](https://github.com/ChromeDevTools/devtools-protocol/compare/ca69194...2103701)
 #### `Debugger`: modified commands

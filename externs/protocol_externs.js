@@ -7294,13 +7294,14 @@ Protocol.FetchAgent.prototype.invoke_failRequest = function(obj) {};
 /**
  * @param {Protocol.Fetch.RequestId} requestId
  * @param {number} responseCode
- * @param {!Array<Protocol.Fetch.HeaderEntry>} responseHeaders
+ * @param {!Array<Protocol.Fetch.HeaderEntry>=} opt_responseHeaders
+ * @param {string=} opt_binaryResponseHeaders
  * @param {string=} opt_body
  * @param {string=} opt_responsePhrase
  * @return {!Promise<undefined>}
  */
-Protocol.FetchAgent.prototype.fulfillRequest = function(requestId, responseCode, responseHeaders, opt_body, opt_responsePhrase) {};
-/** @typedef {!{body: (string|undefined), responsePhrase: (string|undefined), responseHeaders: !Array<Protocol.Fetch.HeaderEntry>, requestId: Protocol.Fetch.RequestId, responseCode: number}} */
+Protocol.FetchAgent.prototype.fulfillRequest = function(requestId, responseCode, opt_responseHeaders, opt_binaryResponseHeaders, opt_body, opt_responsePhrase) {};
+/** @typedef {!{body: (string|undefined), binaryResponseHeaders: (string|undefined), requestId: Protocol.Fetch.RequestId, responseCode: number, responsePhrase: (string|undefined), responseHeaders: (!Array<Protocol.Fetch.HeaderEntry>|undefined)}} */
 Protocol.FetchAgent.FulfillRequestRequest;
 /** @typedef {Object|undefined} */
 Protocol.FetchAgent.FulfillRequestResponse;

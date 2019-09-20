@@ -11708,14 +11708,21 @@ export namespace Protocol {
             /**
              * Response headers.
              */
-            responseHeaders: HeaderEntry[];
+            responseHeaders?: HeaderEntry[];
+            /**
+             * Alternative way of specifying response headers as a \0-separated
+             * series of name: value pairs. Prefer the above method unless you
+             * need to represent some non-UTF8 values that can't be transmitted
+             * over the protocol as text.
+             */
+            binaryResponseHeaders?: string;
             /**
              * A response body.
              */
             body?: string;
             /**
              * A textual representation of responseCode.
-             * If absent, a standard phrase mathcing responseCode is used.
+             * If absent, a standard phrase matching responseCode is used.
              */
             responsePhrase?: string;
         }
