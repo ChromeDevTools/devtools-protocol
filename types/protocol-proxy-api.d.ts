@@ -161,6 +161,11 @@ export namespace ProtocolProxyApi {
         getScriptSource(params: Protocol.Debugger.GetScriptSourceRequest): Promise<Protocol.Debugger.GetScriptSourceResponse>;
 
         /**
+         * Returns bytecode for the WebAssembly script with given id.
+         */
+        getWasmBytecode(params: Protocol.Debugger.GetWasmBytecodeRequest): Promise<Protocol.Debugger.GetWasmBytecodeResponse>;
+
+        /**
          * Returns stack trace with given `stackTraceId`.
          */
         getStackTrace(params: Protocol.Debugger.GetStackTraceRequest): Promise<Protocol.Debugger.GetStackTraceResponse>;

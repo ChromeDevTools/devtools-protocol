@@ -7960,10 +7960,11 @@ Protocol.DebuggerAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {number=} opt_maxScriptsCacheSize
+ * @param {boolean=} opt_supportsWasmDwarf
  * @return {!Promise<?Protocol.Runtime.UniqueDebuggerId>}
  */
-Protocol.DebuggerAgent.prototype.enable = function(opt_maxScriptsCacheSize) {};
-/** @typedef {!{maxScriptsCacheSize: (number|undefined)}} */
+Protocol.DebuggerAgent.prototype.enable = function(opt_maxScriptsCacheSize, opt_supportsWasmDwarf) {};
+/** @typedef {!{maxScriptsCacheSize: (number|undefined), supportsWasmDwarf: (boolean|undefined)}} */
 Protocol.DebuggerAgent.EnableRequest;
 /** @typedef {!{debuggerId: Protocol.Runtime.UniqueDebuggerId}} */
 Protocol.DebuggerAgent.EnableResponse;
@@ -8023,6 +8024,20 @@ Protocol.DebuggerAgent.GetScriptSourceResponse;
  * @param {!Protocol.DebuggerAgent.GetScriptSourceRequest} obj
  * @return {!Promise<!Protocol.DebuggerAgent.GetScriptSourceResponse>} */
 Protocol.DebuggerAgent.prototype.invoke_getScriptSource = function(obj) {};
+
+/**
+ * @param {Protocol.Runtime.ScriptId} scriptId
+ * @return {!Promise<?string>}
+ */
+Protocol.DebuggerAgent.prototype.getWasmBytecode = function(scriptId) {};
+/** @typedef {!{scriptId: Protocol.Runtime.ScriptId}} */
+Protocol.DebuggerAgent.GetWasmBytecodeRequest;
+/** @typedef {!{bytecode: string}} */
+Protocol.DebuggerAgent.GetWasmBytecodeResponse;
+/**
+ * @param {!Protocol.DebuggerAgent.GetWasmBytecodeRequest} obj
+ * @return {!Promise<!Protocol.DebuggerAgent.GetWasmBytecodeResponse>} */
+Protocol.DebuggerAgent.prototype.invoke_getWasmBytecode = function(obj) {};
 
 /**
  * @param {Protocol.Runtime.StackTraceId} stackTraceId

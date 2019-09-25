@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r698331
+###### _2019-09-19 20:16:05_ | Diff: [86165c9...d1cec58](https://github.com/ChromeDevTools/devtools-protocol/compare/86165c9...d1cec58)
+#### `Fetch`: modified command
+* [`Fetch.fulfillRequest`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#method-fulfillRequest) - The `body` in the parameters had `name` _updated_. The `body` in the parameters had `description` _updated_. The `responsePhrase` in the parameters had `name` _updated_. The `responsePhrase` in the parameters had `description` _updated_. The parameters's `optional` _added_. The parameters's `responsePhrase` _added_. 
+
+
 ## Roll protocol to r696576
 ###### _2019-09-13 16:16:04_ | Diff: [2103701...86165c9](https://github.com/ChromeDevTools/devtools-protocol/compare/2103701...86165c9)
 #### `Network`: modified types

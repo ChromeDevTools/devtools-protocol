@@ -650,6 +650,13 @@ export namespace ProtocolMapping {
             returnType: Protocol.Debugger.GetScriptSourceResponse;
         };
         /**
+         * Returns bytecode for the WebAssembly script with given id.
+         */
+        'Debugger.getWasmBytecode': {
+            paramsType: [Protocol.Debugger.GetWasmBytecodeRequest];
+            returnType: Protocol.Debugger.GetWasmBytecodeResponse;
+        };
+        /**
          * Returns stack trace with given `stackTraceId`.
          */
         'Debugger.getStackTrace': {

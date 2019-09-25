@@ -201,6 +201,10 @@ export namespace Protocol {
              * the debugger can hold. Puts no limit if paramter is omitted.
              */
             maxScriptsCacheSize?: number;
+            /**
+             * Whether to report Wasm modules as raw binaries instead of disassembled functions.
+             */
+            supportsWasmDwarf?: boolean;
         }
 
         export interface EnableResponse {
@@ -298,6 +302,20 @@ export namespace Protocol {
              * Script source.
              */
             scriptSource: string;
+        }
+
+        export interface GetWasmBytecodeRequest {
+            /**
+             * Id of the Wasm script to get source for.
+             */
+            scriptId: Runtime.ScriptId;
+        }
+
+        export interface GetWasmBytecodeResponse {
+            /**
+             * Script source.
+             */
+            bytecode: string;
         }
 
         export interface GetStackTraceRequest {
