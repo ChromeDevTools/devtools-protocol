@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r700395
+###### _2019-09-26 13:16:11_ | Diff: [4b981c0...324d30c](https://github.com/ChromeDevTools/devtools-protocol/compare/4b981c0...324d30c)
+#### `SystemInfo`: modified type
+* [`SystemInfo.GPUDevice`](https://chromedevtools.github.io/devtools-protocol/tot/SystemInfo/#type-GPUDevice) - The `vendorString` in the properties had `name` _updated_. The `vendorString` in the properties had `description` _updated_. The `vendorString` in the properties had `type` _updated_. The `deviceString` in the properties had `name` _updated_. The `deviceString` in the properties had `description` _updated_. The `deviceString` in the properties had `type` _updated_. The `driverVendor` in the properties had `name` _updated_. The `driverVendor` in the properties had `description` _updated_. The `driverVersion` in the properties had `name` _updated_. The `driverVersion` in the properties had `description` _updated_. The properties's `optional` _added_ (2 times). The properties's `driverVendor` _added_. The properties's `driverVersion` _added_. 
+
+
 ## Roll protocol to r699881
 ###### _2019-09-25 11:16:02_ | Diff: [d1cec58...4b981c0](https://github.com/ChromeDevTools/devtools-protocol/compare/d1cec58...4b981c0)
 #### `Debugger`: new command

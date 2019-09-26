@@ -3582,6 +3582,8 @@ export namespace ProtocolMapping {
         };
         /**
          * Sends protocol message over session with given id.
+         * Consider using flat mode instead; see commands attachToTarget, setAutoAttach,
+         * and crbug.com/991325.
          */
         'Target.sendMessageToTarget': {
             paramsType: [Protocol.Target.SendMessageToTargetRequest];

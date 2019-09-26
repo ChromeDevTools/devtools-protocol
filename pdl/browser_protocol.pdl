@@ -6530,7 +6530,9 @@ domain Target
     parameters
       TargetID targetId
       # Enables "flat" access to the session via specifying sessionId attribute in the commands.
-      experimental optional boolean flatten
+      # We plan to make this the default, deprecate non-flattened mode,
+      # and eventually retire it. See crbug.com/991325.
+      optional boolean flatten
     returns
       # Id assigned to the session.
       SessionID sessionId
@@ -6626,7 +6628,9 @@ domain Target
       array of TargetInfo targetInfos
 
   # Sends protocol message over session with given id.
-  command sendMessageToTarget
+  # Consider using flat mode instead; see commands attachToTarget, setAutoAttach,
+  # and crbug.com/991325.
+  deprecated command sendMessageToTarget
     parameters
       string message
       # Identifier of the session.
@@ -6645,7 +6649,9 @@ domain Target
       # to run paused targets.
       boolean waitForDebuggerOnStart
       # Enables "flat" access to the session via specifying sessionId attribute in the commands.
-      experimental optional boolean flatten
+      # We plan to make this the default, deprecate non-flattened mode,
+      # and eventually retire it. See crbug.com/991325.
+      optional boolean flatten
 
   # Controls whether to discover available targets and notify via
   # `targetCreated/targetInfoChanged/targetDestroyed` events.
