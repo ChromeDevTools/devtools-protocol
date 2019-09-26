@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r699881
+###### _2019-09-25 11:16:02_ | Diff: [d1cec58...4b981c0](https://github.com/ChromeDevTools/devtools-protocol/compare/d1cec58...4b981c0)
+#### `Debugger`: new command
+* [`Debugger.getWasmBytecode`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-getWasmBytecode)
+#### `Debugger`: modified command
+* [`Debugger.enable`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-enable) - The parameters's `supportsWasmDwarf` _added_. 
+
+
 ## Roll protocol to r698331
 ###### _2019-09-19 20:16:05_ | Diff: [86165c9...d1cec58](https://github.com/ChromeDevTools/devtools-protocol/compare/86165c9...d1cec58)
 #### `Fetch`: modified command

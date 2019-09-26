@@ -10937,6 +10937,14 @@ export namespace Protocol {
              */
             deviceId: number;
             /**
+             * Sub sys ID of the GPU, only available on Windows.
+             */
+            subSysId?: number;
+            /**
+             * Revision of the GPU, only available on Windows.
+             */
+            revision?: number;
+            /**
              * String description of the GPU vendor, if the PCI ID is not available.
              */
             vendorString: string;

@@ -6370,6 +6370,10 @@ experimental domain SystemInfo
       number vendorId
       # PCI ID of the GPU device, if available; 0 otherwise.
       number deviceId
+      # Sub sys ID of the GPU, only available on Windows.
+      optional number subSysId
+      # Revision of the GPU, only available on Windows.
+      optional number revision
       # String description of the GPU vendor, if the PCI ID is not available.
       string vendorString
       # String description of the GPU device, if the PCI ID is not available.

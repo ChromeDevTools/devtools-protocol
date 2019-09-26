@@ -13782,6 +13782,18 @@
                             "type": "number"
                         },
                         {
+                            "name": "subSysId",
+                            "description": "Sub sys ID of the GPU, only available on Windows.",
+                            "optional": true,
+                            "type": "number"
+                        },
+                        {
+                            "name": "revision",
+                            "description": "Revision of the GPU, only available on Windows.",
+                            "optional": true,
+                            "type": "number"
+                        },
+                        {
                             "name": "vendorString",
                             "description": "String description of the GPU vendor, if the PCI ID is not available.",
                             "type": "string"
