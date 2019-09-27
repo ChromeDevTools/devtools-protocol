@@ -6982,10 +6982,11 @@ Protocol.TargetAgent.prototype.invoke_sendMessageToTarget = function(obj) {};
  * @param {boolean} autoAttach
  * @param {boolean} waitForDebuggerOnStart
  * @param {boolean=} opt_flatten
+ * @param {boolean=} opt_windowOpen
  * @return {!Promise<undefined>}
  */
-Protocol.TargetAgent.prototype.setAutoAttach = function(autoAttach, waitForDebuggerOnStart, opt_flatten) {};
-/** @typedef {!{waitForDebuggerOnStart: boolean, autoAttach: boolean, flatten: (boolean|undefined)}} */
+Protocol.TargetAgent.prototype.setAutoAttach = function(autoAttach, waitForDebuggerOnStart, opt_flatten, opt_windowOpen) {};
+/** @typedef {!{waitForDebuggerOnStart: boolean, autoAttach: boolean, flatten: (boolean|undefined), windowOpen: (boolean|undefined)}} */
 Protocol.TargetAgent.SetAutoAttachRequest;
 /** @typedef {Object|undefined} */
 Protocol.TargetAgent.SetAutoAttachResponse;

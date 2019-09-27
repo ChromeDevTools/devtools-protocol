@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r700421
+###### _2019-09-26 14:16:16_ | Diff: [324d30c...6af45a3](https://github.com/ChromeDevTools/devtools-protocol/compare/324d30c...6af45a3)
+#### `Target`: modified commands
+* [`Target.attachToTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-attachToTarget) - The `flatten` in the parameters had `experimental` _removed_. The `flatten` in the parameters had `description` _updated_. 
+* [`Target.sendMessageToTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-sendMessageToTarget) - `description` updated. `deprecated` added. 
+* [`Target.setAutoAttach`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-setAutoAttach) - The `flatten` in the parameters had `experimental` _removed_. The `flatten` in the parameters had `description` _updated_. 
+
+
 ## Roll protocol to r700395
 ###### _2019-09-26 13:16:11_ | Diff: [4b981c0...324d30c](https://github.com/ChromeDevTools/devtools-protocol/compare/4b981c0...324d30c)
 #### `SystemInfo`: modified type

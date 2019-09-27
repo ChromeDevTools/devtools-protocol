@@ -11324,6 +11324,10 @@ export namespace Protocol {
              * and eventually retire it. See crbug.com/991325.
              */
             flatten?: boolean;
+            /**
+             * Auto-attach to the targets created via window.open from current target.
+             */
+            windowOpen?: boolean;
         }
 
         export interface SetDiscoverTargetsRequest {

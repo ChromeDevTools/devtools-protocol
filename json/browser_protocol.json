@@ -14395,6 +14395,13 @@
                             "description": "Enables \"flat\" access to the session via specifying sessionId attribute in the commands.\nWe plan to make this the default, deprecate non-flattened mode,\nand eventually retire it. See crbug.com/991325.",
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "windowOpen",
+                            "description": "Auto-attach to the targets created via window.open from current target.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ]
                 },
