@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r700642
+###### _2019-09-27 03:15:57_ | Diff: [fc7a6b7...1bafeca](https://github.com/ChromeDevTools/devtools-protocol/compare/fc7a6b7...1bafeca)
+#### `Tracing`: modified command
+* [`Tracing.requestMemoryDump`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#method-requestMemoryDump)
+
+
 ## Roll protocol to r700528
 ###### _2019-09-26 18:16:06_ | Diff: [6af45a3...fc7a6b7](https://github.com/ChromeDevTools/devtools-protocol/compare/6af45a3...fc7a6b7)
 #### `Target`: modified command

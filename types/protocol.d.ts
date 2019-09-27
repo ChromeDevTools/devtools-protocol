@@ -1731,12 +1731,17 @@ export namespace Protocol {
             awaitPromise?: boolean;
             /**
              * Whether to throw an exception if side effect cannot be ruled out during evaluation.
+             * This implies `disableBreaks` below.
              */
             throwOnSideEffect?: boolean;
             /**
              * Terminate execution after timing out (number of milliseconds).
              */
             timeout?: TimeDelta;
+            /**
+             * Disable breakpoints during execution.
+             */
+            disableBreaks?: boolean;
         }
 
         export interface EvaluateResponse {
