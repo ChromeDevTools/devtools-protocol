@@ -14726,6 +14726,14 @@
                 {
                     "name": "requestMemoryDump",
                     "description": "Request a global memory dump.",
+                    "parameters": [
+                        {
+                            "name": "deterministic",
+                            "description": "Enables more deterministic results by forcing garbage collection",
+                            "optional": true,
+                            "type": "boolean"
+                        }
+                    ],
                     "returns": [
                         {
                             "name": "dumpGuid",

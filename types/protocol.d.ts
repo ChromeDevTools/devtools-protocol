@@ -11528,6 +11528,13 @@ export namespace Protocol {
             syncId: string;
         }
 
+        export interface RequestMemoryDumpRequest {
+            /**
+             * Enables more deterministic results by forcing garbage collection
+             */
+            deterministic?: boolean;
+        }
+
         export interface RequestMemoryDumpResponse {
             /**
              * GUID of the resulting global memory dump.

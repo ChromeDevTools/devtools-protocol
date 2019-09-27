@@ -6803,6 +6803,9 @@ experimental domain Tracing
 
   # Request a global memory dump.
   command requestMemoryDump
+    parameters
+      # Enables more deterministic results by forcing garbage collection
+      optional boolean deterministic
     returns
       # GUID of the resulting global memory dump.
       string dumpGuid

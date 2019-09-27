@@ -7165,10 +7165,11 @@ Protocol.TracingAgent.RecordClockSyncMarkerResponse;
 Protocol.TracingAgent.prototype.invoke_recordClockSyncMarker = function(obj) {};
 
 /**
+ * @param {boolean=} opt_deterministic
  * @return {!Promise<?string>}
  */
-Protocol.TracingAgent.prototype.requestMemoryDump = function() {};
-/** @typedef {Object|undefined} */
+Protocol.TracingAgent.prototype.requestMemoryDump = function(opt_deterministic) {};
+/** @typedef {!{deterministic: (boolean|undefined)}} */
 Protocol.TracingAgent.RequestMemoryDumpRequest;
 /** @typedef {!{dumpGuid: string, success: boolean}} */
 Protocol.TracingAgent.RequestMemoryDumpResponse;

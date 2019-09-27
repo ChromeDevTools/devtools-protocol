@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r700528
+###### _2019-09-26 18:16:06_ | Diff: [6af45a3...fc7a6b7](https://github.com/ChromeDevTools/devtools-protocol/compare/6af45a3...fc7a6b7)
+#### `Target`: modified command
+* [`Target.setAutoAttach`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-setAutoAttach) - The parameters's `windowOpen` _added_. 
+
+
 ## Roll protocol to r700421
 ###### _2019-09-26 14:16:16_ | Diff: [324d30c...6af45a3](https://github.com/ChromeDevTools/devtools-protocol/compare/324d30c...6af45a3)
 #### `Target`: modified commands

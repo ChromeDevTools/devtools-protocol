@@ -3653,7 +3653,7 @@ export namespace ProtocolMapping {
          * Request a global memory dump.
          */
         'Tracing.requestMemoryDump': {
-            paramsType: [];
+            paramsType: [Protocol.Tracing.RequestMemoryDumpRequest?];
             returnType: Protocol.Tracing.RequestMemoryDumpResponse;
         };
         /**

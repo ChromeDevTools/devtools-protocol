@@ -3017,7 +3017,7 @@ export namespace ProtocolProxyApi {
         /**
          * Request a global memory dump.
          */
-        requestMemoryDump(): Promise<Protocol.Tracing.RequestMemoryDumpResponse>;
+        requestMemoryDump(params: Protocol.Tracing.RequestMemoryDumpRequest): Promise<Protocol.Tracing.RequestMemoryDumpResponse>;
 
         /**
          * Start trace events collection.
