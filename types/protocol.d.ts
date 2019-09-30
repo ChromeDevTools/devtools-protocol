@@ -5476,6 +5476,10 @@ export namespace Protocol {
              */
             documentURL: StringIndex;
             /**
+             * Document title.
+             */
+            title: StringIndex;
+            /**
              * Base URL that `Document` or `FrameOwner` node uses for URL completion.
              */
             baseURL: StringIndex;
@@ -5519,6 +5523,14 @@ export namespace Protocol {
              * Vertical scroll offset.
              */
             scrollOffsetY?: number;
+            /**
+             * Document content width.
+             */
+            contentWidth?: number;
+            /**
+             * Document content height.
+             */
+            contentHeight?: number;
         }
 
         /**

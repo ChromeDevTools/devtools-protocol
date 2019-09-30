@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r701085
+###### _2019-09-30 06:16:15_ | Diff: [52e455c...b9558e4](https://github.com/ChromeDevTools/devtools-protocol/compare/52e455c...b9558e4)
+#### `Emulation`: modified command
+* [`Emulation.setEmulatedMedia`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setEmulatedMedia) - `description` updated. The parameters's `optional` _added_. The parameters's `features` _added_. 
+#### `Emulation`: new type
+* [`Emulation.MediaFeature`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#type-MediaFeature)
+
+
 ## Roll protocol to r700880
 ###### _2019-09-27 15:16:00_ | Diff: [1bafeca...52e455c](https://github.com/ChromeDevTools/devtools-protocol/compare/1bafeca...52e455c)
 #### `Runtime`: modified command

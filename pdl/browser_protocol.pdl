@@ -2400,6 +2400,8 @@ experimental domain DOMSnapshot
     properties
       # Document URL that `Document` or `FrameOwner` node points to.
       StringIndex documentURL
+      # Document title.
+      StringIndex title
       # Base URL that `Document` or `FrameOwner` node uses for URL completion.
       StringIndex baseURL
       # Contains the document's content language.
@@ -2422,6 +2424,10 @@ experimental domain DOMSnapshot
       optional number scrollOffsetX
       # Vertical scroll offset.
       optional number scrollOffsetY
+      # Document content width.
+      optional number contentWidth
+      # Document content height.
+      optional number contentHeight
 
   # Table containing nodes.
   type NodeTreeSnapshot extends object
