@@ -2175,10 +2175,10 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
-         * Emulates the given media for CSS media queries.
+         * Emulates the given media type or media feature for CSS media queries.
          */
         'Emulation.setEmulatedMedia': {
-            paramsType: [Protocol.Emulation.SetEmulatedMediaRequest];
+            paramsType: [Protocol.Emulation.SetEmulatedMediaRequest?];
             returnType: void;
         };
         /**

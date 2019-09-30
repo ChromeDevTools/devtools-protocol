@@ -1548,7 +1548,7 @@ export namespace ProtocolProxyApi {
         setEmitTouchEventsForMouse(params: Protocol.Emulation.SetEmitTouchEventsForMouseRequest): Promise<void>;
 
         /**
-         * Emulates the given media for CSS media queries.
+         * Emulates the given media type or media feature for CSS media queries.
          */
         setEmulatedMedia(params: Protocol.Emulation.SetEmulatedMediaRequest): Promise<void>;
 

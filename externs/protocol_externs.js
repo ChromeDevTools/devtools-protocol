@@ -2882,11 +2882,12 @@ Protocol.EmulationAgent.SetEmitTouchEventsForMouseResponse;
 Protocol.EmulationAgent.prototype.invoke_setEmitTouchEventsForMouse = function(obj) {};
 
 /**
- * @param {string} media
+ * @param {string=} opt_media
+ * @param {!Array<Protocol.Emulation.MediaFeature>=} opt_features
  * @return {!Promise<undefined>}
  */
-Protocol.EmulationAgent.prototype.setEmulatedMedia = function(media) {};
-/** @typedef {!{media: string}} */
+Protocol.EmulationAgent.prototype.setEmulatedMedia = function(opt_media, opt_features) {};
+/** @typedef {!{media: (string|undefined), features: (!Array<Protocol.Emulation.MediaFeature>|undefined)}} */
 Protocol.EmulationAgent.SetEmulatedMediaRequest;
 /** @typedef {Object|undefined} */
 Protocol.EmulationAgent.SetEmulatedMediaResponse;
@@ -3041,6 +3042,9 @@ Protocol.Emulation.ScreenOrientationType = {
 
 /** @typedef {!{type:(Protocol.Emulation.ScreenOrientationType), angle:(number)}} */
 Protocol.Emulation.ScreenOrientation;
+
+/** @typedef {!{name:(string), value:(string)}} */
+Protocol.Emulation.MediaFeature;
 
 /** @enum {string} */
 Protocol.Emulation.VirtualTimePolicy = {

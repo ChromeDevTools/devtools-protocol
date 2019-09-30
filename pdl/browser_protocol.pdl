@@ -2690,6 +2690,11 @@ domain Emulation
       # Orientation angle.
       integer angle
 
+  type MediaFeature extends object
+    properties
+      string name
+      string value
+
   # advance: If the scheduler runs out of immediate work, the virtual time base may fast forward to
   # allow the next delayed task (if any) to run; pause: The virtual time base may not advance;
   # pauseIfNetworkFetchesPending: The virtual time base may not advance if there are any pending
@@ -2786,11 +2791,13 @@ domain Emulation
         mobile
         desktop
 
-  # Emulates the given media for CSS media queries.
+  # Emulates the given media type or media feature for CSS media queries.
   command setEmulatedMedia
     parameters
       # Media type to emulate. Empty string disables the override.
-      string media
+      optional string media
+      # Media features to emulate.
+      optional array of MediaFeature features
 
   # Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position
   # unavailable.

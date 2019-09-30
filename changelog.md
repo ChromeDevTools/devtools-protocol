@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r700880
+###### _2019-09-27 15:16:00_ | Diff: [1bafeca...52e455c](https://github.com/ChromeDevTools/devtools-protocol/compare/1bafeca...52e455c)
+#### `Runtime`: modified command
+* [`Runtime.evaluate`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-evaluate) - The `throwOnSideEffect` in the parameters had `description` _updated_. The parameters's `disableBreaks` _added_. 
+
+
 ## Roll protocol to r700642
 ###### _2019-09-27 03:15:57_ | Diff: [fc7a6b7...1bafeca](https://github.com/ChromeDevTools/devtools-protocol/compare/fc7a6b7...1bafeca)
 #### `Tracing`: modified command

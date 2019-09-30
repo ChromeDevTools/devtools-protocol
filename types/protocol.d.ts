@@ -5893,6 +5893,11 @@ export namespace Protocol {
             angle: integer;
         }
 
+        export interface MediaFeature {
+            name: string;
+            value: string;
+        }
+
         /**
          * advance: If the scheduler runs out of immediate work, the virtual time base may fast forward to
          * allow the next delayed task (if any) to run; pause: The virtual time base may not advance;
@@ -6012,7 +6017,11 @@ export namespace Protocol {
             /**
              * Media type to emulate. Empty string disables the override.
              */
-            media: string;
+            media?: string;
+            /**
+             * Media features to emulate.
+             */
+            features?: MediaFeature[];
         }
 
         export interface SetGeolocationOverrideRequest {
