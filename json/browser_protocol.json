@@ -15811,15 +15811,25 @@
                         },
                         {
                             "name": "hasResidentKey",
+                            "description": "Defaults to false.",
+                            "optional": true,
                             "type": "boolean"
                         },
                         {
                             "name": "hasUserVerification",
+                            "description": "Defaults to false.",
+                            "optional": true,
                             "type": "boolean"
                         },
                         {
                             "name": "automaticPresenceSimulation",
                             "description": "If set to true, tests of user presence will succeed immediately.\nOtherwise, they will not be resolved. Defaults to true.",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "isUserVerified",
+                            "description": "Sets whether User Verification succeeds or fails for an authenticator.\nDefaults to false.",
                             "optional": true,
                             "type": "boolean"
                         }

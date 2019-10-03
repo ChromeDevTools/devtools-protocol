@@ -7774,7 +7774,7 @@ Protocol.WebAuthn.AuthenticatorTransport = {
     Internal: "internal"
 };
 
-/** @typedef {!{protocol:(Protocol.WebAuthn.AuthenticatorProtocol), transport:(Protocol.WebAuthn.AuthenticatorTransport), hasResidentKey:(boolean), hasUserVerification:(boolean), automaticPresenceSimulation:(boolean|undefined)}} */
+/** @typedef {!{protocol:(Protocol.WebAuthn.AuthenticatorProtocol), transport:(Protocol.WebAuthn.AuthenticatorTransport), hasResidentKey:(boolean|undefined), hasUserVerification:(boolean|undefined), automaticPresenceSimulation:(boolean|undefined), isUserVerified:(boolean|undefined)}} */
 Protocol.WebAuthn.VirtualAuthenticatorOptions;
 
 /** @typedef {!{credentialId:(string), isResidentCredential:(boolean), rpId:(string|undefined), privateKey:(string), userHandle:(string|undefined), signCount:(number)}} */

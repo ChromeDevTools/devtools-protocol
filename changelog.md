@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r701341
+###### _2019-09-30 16:15:58_ | Diff: [b9558e4...848e8db](https://github.com/ChromeDevTools/devtools-protocol/compare/b9558e4...848e8db)
+#### `DOMSnapshot`: modified type
+* [`DOMSnapshot.DocumentSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DocumentSnapshot) - The `scrollOffsetX` in the properties had `optional` _removed_. The `scrollOffsetX` in the properties had `type` _removed_. The `baseURL` in the properties had `name` _updated_. The `baseURL` in the properties had `description` _updated_. The `contentLanguage` in the properties had `name` _updated_. The `contentLanguage` in the properties had `description` _updated_. The `encodingName` in the properties had `name` _updated_. The `encodingName` in the properties had `description` _updated_. The `publicId` in the properties had `name` _updated_. The `publicId` in the properties had `description` _updated_. The `systemId` in the properties had `name` _updated_. The `systemId` in the properties had `description` _updated_. The `frameId` in the properties had `name` _updated_. The `frameId` in the properties had `description` _updated_. The `nodes` in the properties had `name` _updated_. The `nodes` in the properties had `description` _updated_. The `nodes` in the properties had `$ref` _updated_. The `layout` in the properties had `name` _updated_. The `layout` in the properties had `description` _updated_. The `layout` in the properties had `$ref` _updated_. The `textBoxes` in the properties had `name` _updated_. The `textBoxes` in the properties had `description` _updated_. The `textBoxes` in the properties had `$ref` _updated_. The `scrollOffsetX` in the properties had `name` _updated_. The `scrollOffsetX` in the properties had `description` _updated_. The `scrollOffsetY` in the properties had `name` _updated_. The `scrollOffsetY` in the properties had `description` _updated_. The properties's `$ref` _added_. The properties's `scrollOffsetY` _added_. The properties's `contentWidth` _added_. The properties's `contentHeight` _added_. 
+
+
 ## Roll protocol to r701085
 ###### _2019-09-30 06:16:15_ | Diff: [52e455c...b9558e4](https://github.com/ChromeDevTools/devtools-protocol/compare/52e455c...b9558e4)
 #### `Emulation`: modified command

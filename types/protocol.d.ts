@@ -12189,13 +12189,24 @@ export namespace Protocol {
         export interface VirtualAuthenticatorOptions {
             protocol: AuthenticatorProtocol;
             transport: AuthenticatorTransport;
-            hasResidentKey: boolean;
-            hasUserVerification: boolean;
+            /**
+             * Defaults to false.
+             */
+            hasResidentKey?: boolean;
+            /**
+             * Defaults to false.
+             */
+            hasUserVerification?: boolean;
             /**
              * If set to true, tests of user presence will succeed immediately.
              * Otherwise, they will not be resolved. Defaults to true.
              */
             automaticPresenceSimulation?: boolean;
+            /**
+             * Sets whether User Verification succeeds or fails for an authenticator.
+             * Defaults to false.
+             */
+            isUserVerified?: boolean;
         }
 
         export interface Credential {
