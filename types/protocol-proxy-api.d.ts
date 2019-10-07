@@ -2739,6 +2739,11 @@ export namespace ProtocolProxyApi {
         /**
          * The security state of the page changed.
          */
+        on(event: 'visibleSecurityStateChanged', listener: (params: Protocol.Security.VisibleSecurityStateChangedEvent) => void): void;
+
+        /**
+         * The security state of the page changed.
+         */
         on(event: 'securityStateChanged', listener: (params: Protocol.Security.SecurityStateChangedEvent) => void): void;
 
     }

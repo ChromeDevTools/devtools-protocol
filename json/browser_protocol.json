@@ -13095,6 +13095,126 @@
                     ]
                 },
                 {
+                    "id": "CertificateSecurityState",
+                    "description": "Details about the security state of the page certificate.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "protocol",
+                            "description": "Protocol name (e.g. \"TLS 1.2\" or \"QUIC\").",
+                            "type": "string"
+                        },
+                        {
+                            "name": "keyExchange",
+                            "description": "Key Exchange used by the connection, or the empty string if not applicable.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "keyExchangeGroup",
+                            "description": "(EC)DH group used by the connection, if applicable.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "cipher",
+                            "description": "Cipher name.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "mac",
+                            "description": "TLS MAC. Note that AEAD ciphers do not have separate MACs.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "certificate",
+                            "description": "Page certificate.",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        {
+                            "name": "subjectName",
+                            "description": "Certificate subject name.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "issuer",
+                            "description": "Name of the issuing CA.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "validFrom",
+                            "description": "Certificate valid from date.",
+                            "$ref": "Network.TimeSinceEpoch"
+                        },
+                        {
+                            "name": "validTo",
+                            "description": "Certificate valid to (expiration) date",
+                            "$ref": "Network.TimeSinceEpoch"
+                        },
+                        {
+                            "name": "certifcateHasWeakSignature",
+                            "description": "True if the certificate uses a weak signature aglorithm.",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "modernSSL",
+                            "description": "True if modern SSL",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "obsoleteSslProtocol",
+                            "description": "True if the connection is using an obsolete SSL protocol.",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "obsoleteSslKeyExchange",
+                            "description": "True if the connection is using an obsolete SSL key exchange.",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "obsoleteSslCipher",
+                            "description": "True if the connection is using an obsolete SSL cipher.",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "obsoleteSslSignature",
+                            "description": "True if the connection is using an obsolete SSL signature.",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
+                    "id": "VisibleSecurityState",
+                    "description": "Security state information about the page.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "securityState",
+                            "description": "The security level of the page.",
+                            "$ref": "SecurityState"
+                        },
+                        {
+                            "name": "certificateSecurityState",
+                            "description": "Security state details about the page certificate.",
+                            "optional": true,
+                            "$ref": "CertificateSecurityState"
+                        },
+                        {
+                            "name": "securityStateIssueIds",
+                            "description": "Array of security state issues ids.",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                {
                     "id": "SecurityStateExplanation",
                     "description": "An explanation of an factor contributing to the security state.",
                     "type": "object",
@@ -13267,6 +13387,18 @@
                             "name": "requestURL",
                             "description": "The url that was requested.",
                             "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "visibleSecurityStateChanged",
+                    "description": "The security state of the page changed.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "visibleSecurityState",
+                            "description": "Security state information about the page.",
+                            "$ref": "VisibleSecurityState"
                         }
                     ]
                 },

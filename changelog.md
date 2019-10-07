@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r702485
+###### _2019-10-03 11:15:58_ | Diff: [848e8db...9458ee4](https://github.com/ChromeDevTools/devtools-protocol/compare/848e8db...9458ee4)
+#### `WebAuthn`: modified type
+* [`WebAuthn.VirtualAuthenticatorOptions`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#type-VirtualAuthenticatorOptions) - The properties's `description` _added_ (2 times). The properties's `optional` _added_ (2 times). The properties's `isUserVerified` _added_. 
+
+
 ## Roll protocol to r701341
 ###### _2019-09-30 16:15:58_ | Diff: [b9558e4...848e8db](https://github.com/ChromeDevTools/devtools-protocol/compare/b9558e4...848e8db)
 #### `DOMSnapshot`: modified type

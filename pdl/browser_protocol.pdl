@@ -6058,6 +6058,52 @@ domain Security
       secure
       info
 
+  # Details about the security state of the page certificate.
+  experimental type CertificateSecurityState extends object
+    properties
+      # Protocol name (e.g. "TLS 1.2" or "QUIC").
+      string protocol
+      # Key Exchange used by the connection, or the empty string if not applicable.
+      string keyExchange
+      # (EC)DH group used by the connection, if applicable.
+      optional string keyExchangeGroup
+      # Cipher name.
+      string cipher
+      # TLS MAC. Note that AEAD ciphers do not have separate MACs.
+      optional string mac
+      # Page certificate.
+      array of string certificate
+      # Certificate subject name.
+      string subjectName
+      # Name of the issuing CA.
+      string issuer
+      # Certificate valid from date.
+      Network.TimeSinceEpoch validFrom
+      # Certificate valid to (expiration) date
+      Network.TimeSinceEpoch validTo
+      # True if the certificate uses a weak signature aglorithm.
+      boolean certifcateHasWeakSignature
+      # True if modern SSL
+      boolean modernSSL
+      # True if the connection is using an obsolete SSL protocol.
+      boolean obsoleteSslProtocol
+      # True if the connection is using an obsolete SSL key exchange.
+      boolean obsoleteSslKeyExchange
+      # True if the connection is using an obsolete SSL cipher.
+      boolean obsoleteSslCipher
+      # True if the connection is using an obsolete SSL signature.
+      boolean obsoleteSslSignature
+
+  # Security state information about the page.
+  experimental type VisibleSecurityState extends object
+    properties
+      # The security level of the page.
+      SecurityState securityState
+      # Security state details about the page certificate.
+      optional CertificateSecurityState certificateSecurityState
+      # Array of security state issues ids.
+      array of string securityStateIssueIds
+
   # An explanation of an factor contributing to the security state.
   type SecurityStateExplanation extends object
     properties
@@ -6140,6 +6186,12 @@ domain Security
       string errorType
       # The url that was requested.
       string requestURL
+
+  # The security state of the page changed.
+  experimental event visibleSecurityStateChanged
+    parameters
+      # Security state information about the page.
+      VisibleSecurityState visibleSecurityState
 
   # The security state of the page changed.
   event securityStateChanged

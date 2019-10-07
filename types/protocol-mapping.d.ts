@@ -432,6 +432,10 @@ export namespace ProtocolMapping {
         /**
          * The security state of the page changed.
          */
+        'Security.visibleSecurityStateChanged': [Protocol.Security.VisibleSecurityStateChangedEvent];
+        /**
+         * The security state of the page changed.
+         */
         'Security.securityStateChanged': [Protocol.Security.SecurityStateChangedEvent];
         'ServiceWorker.workerErrorReported': [Protocol.ServiceWorker.WorkerErrorReportedEvent];
         'ServiceWorker.workerRegistrationUpdated': [Protocol.ServiceWorker.WorkerRegistrationUpdatedEvent];

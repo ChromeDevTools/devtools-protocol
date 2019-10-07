@@ -6320,6 +6320,12 @@ Protocol.Security.SecurityState = {
     Info: "info"
 };
 
+/** @typedef {!{protocol:(string), keyExchange:(string), keyExchangeGroup:(string|undefined), cipher:(string), mac:(string|undefined), certificate:(!Array<string>), subjectName:(string), issuer:(string), validFrom:(Protocol.Network.TimeSinceEpoch), validTo:(Protocol.Network.TimeSinceEpoch), certifcateHasWeakSignature:(boolean), modernSSL:(boolean), obsoleteSslProtocol:(boolean), obsoleteSslKeyExchange:(boolean), obsoleteSslCipher:(boolean), obsoleteSslSignature:(boolean)}} */
+Protocol.Security.CertificateSecurityState;
+
+/** @typedef {!{securityState:(Protocol.Security.SecurityState), certificateSecurityState:(Protocol.Security.CertificateSecurityState|undefined), securityStateIssueIds:(!Array<string>)}} */
+Protocol.Security.VisibleSecurityState;
+
 /** @typedef {!{securityState:(Protocol.Security.SecurityState), title:(string), summary:(string), description:(string), mixedContentType:(Protocol.Security.MixedContentType), certificate:(!Array<string>), recommendations:(!Array<string>|undefined)}} */
 Protocol.Security.SecurityStateExplanation;
 
@@ -6339,6 +6345,10 @@ Protocol.SecurityDispatcher = function() {};
  * @param {string} requestURL
  */
 Protocol.SecurityDispatcher.prototype.certificateError = function(eventId, errorType, requestURL) {};
+/**
+ * @param {Protocol.Security.VisibleSecurityState} visibleSecurityState
+ */
+Protocol.SecurityDispatcher.prototype.visibleSecurityStateChanged = function(visibleSecurityState) {};
 /**
  * @param {Protocol.Security.SecurityState} securityState
  * @param {boolean} schemeIsCryptographic

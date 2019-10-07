@@ -10552,6 +10552,94 @@ export namespace Protocol {
         export type SecurityState = ('unknown' | 'neutral' | 'insecure' | 'secure' | 'info');
 
         /**
+         * Details about the security state of the page certificate.
+         */
+        export interface CertificateSecurityState {
+            /**
+             * Protocol name (e.g. "TLS 1.2" or "QUIC").
+             */
+            protocol: string;
+            /**
+             * Key Exchange used by the connection, or the empty string if not applicable.
+             */
+            keyExchange: string;
+            /**
+             * (EC)DH group used by the connection, if applicable.
+             */
+            keyExchangeGroup?: string;
+            /**
+             * Cipher name.
+             */
+            cipher: string;
+            /**
+             * TLS MAC. Note that AEAD ciphers do not have separate MACs.
+             */
+            mac?: string;
+            /**
+             * Page certificate.
+             */
+            certificate: string[];
+            /**
+             * Certificate subject name.
+             */
+            subjectName: string;
+            /**
+             * Name of the issuing CA.
+             */
+            issuer: string;
+            /**
+             * Certificate valid from date.
+             */
+            validFrom: Network.TimeSinceEpoch;
+            /**
+             * Certificate valid to (expiration) date
+             */
+            validTo: Network.TimeSinceEpoch;
+            /**
+             * True if the certificate uses a weak signature aglorithm.
+             */
+            certifcateHasWeakSignature: boolean;
+            /**
+             * True if modern SSL
+             */
+            modernSSL: boolean;
+            /**
+             * True if the connection is using an obsolete SSL protocol.
+             */
+            obsoleteSslProtocol: boolean;
+            /**
+             * True if the connection is using an obsolete SSL key exchange.
+             */
+            obsoleteSslKeyExchange: boolean;
+            /**
+             * True if the connection is using an obsolete SSL cipher.
+             */
+            obsoleteSslCipher: boolean;
+            /**
+             * True if the connection is using an obsolete SSL signature.
+             */
+            obsoleteSslSignature: boolean;
+        }
+
+        /**
+         * Security state information about the page.
+         */
+        export interface VisibleSecurityState {
+            /**
+             * The security level of the page.
+             */
+            securityState: SecurityState;
+            /**
+             * Security state details about the page certificate.
+             */
+            certificateSecurityState?: CertificateSecurityState;
+            /**
+             * Array of security state issues ids.
+             */
+            securityStateIssueIds: string[];
+        }
+
+        /**
          * An explanation of an factor contributing to the security state.
          */
         export interface SecurityStateExplanation {
@@ -10669,6 +10757,16 @@ export namespace Protocol {
              * The url that was requested.
              */
             requestURL: string;
+        }
+
+        /**
+         * The security state of the page changed.
+         */
+        export interface VisibleSecurityStateChangedEvent {
+            /**
+             * Security state information about the page.
+             */
+            visibleSecurityState: VisibleSecurityState;
         }
 
         /**
