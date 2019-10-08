@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r703432
+###### _2019-10-07 13:16:21_ | Diff: [9458ee4...1b9bba2](https://github.com/ChromeDevTools/devtools-protocol/compare/9458ee4...1b9bba2)
+#### `Security`: new event
+* [`Security.visibleSecurityStateChanged`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#event-visibleSecurityStateChanged)
+#### `Security`: new types
+* [`Security.CertificateSecurityState`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#type-CertificateSecurityState)
+* [`Security.VisibleSecurityState`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#type-VisibleSecurityState)
+
+
 ## Roll protocol to r702485
 ###### _2019-10-03 11:15:58_ | Diff: [848e8db...9458ee4](https://github.com/ChromeDevTools/devtools-protocol/compare/848e8db...9458ee4)
 #### `WebAuthn`: modified type

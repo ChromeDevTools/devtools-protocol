@@ -339,13 +339,6 @@
                             "experimental": true,
                             "optional": true,
                             "type": "number"
-                        },
-                        {
-                            "name": "supportsWasmDwarf",
-                            "description": "Whether to report Wasm modules as raw binaries instead of disassembled functions.",
-                            "experimental": true,
-                            "optional": true,
-                            "type": "boolean"
                         }
                     ],
                     "returns": [

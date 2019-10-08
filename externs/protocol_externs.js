@@ -7976,11 +7976,10 @@ Protocol.DebuggerAgent.prototype.invoke_disable = function(obj) {};
 
 /**
  * @param {number=} opt_maxScriptsCacheSize
- * @param {boolean=} opt_supportsWasmDwarf
  * @return {!Promise<?Protocol.Runtime.UniqueDebuggerId>}
  */
-Protocol.DebuggerAgent.prototype.enable = function(opt_maxScriptsCacheSize, opt_supportsWasmDwarf) {};
-/** @typedef {!{maxScriptsCacheSize: (number|undefined), supportsWasmDwarf: (boolean|undefined)}} */
+Protocol.DebuggerAgent.prototype.enable = function(opt_maxScriptsCacheSize) {};
+/** @typedef {!{maxScriptsCacheSize: (number|undefined)}} */
 Protocol.DebuggerAgent.EnableRequest;
 /** @typedef {!{debuggerId: Protocol.Runtime.UniqueDebuggerId}} */
 Protocol.DebuggerAgent.EnableResponse;

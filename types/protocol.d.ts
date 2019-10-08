@@ -201,10 +201,6 @@ export namespace Protocol {
              * the debugger can hold. Puts no limit if paramter is omitted.
              */
             maxScriptsCacheSize?: number;
-            /**
-             * Whether to report Wasm modules as raw binaries instead of disassembled functions.
-             */
-            supportsWasmDwarf?: boolean;
         }
 
         export interface EnableResponse {
