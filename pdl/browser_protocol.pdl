@@ -844,6 +844,10 @@ experimental domain CSS
       number startColumn
       # Size of the content (in characters).
       number length
+      # Line offset of the end of the stylesheet within the resource (zero based).
+      number endLine
+      # Column offset of the end of the stylesheet within the resource (zero based).
+      number endColumn
 
   # CSS rule representation.
   type CSSRule extends object

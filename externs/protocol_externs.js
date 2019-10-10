@@ -1158,7 +1158,7 @@ Protocol.CSS.Value;
 /** @typedef {!{selectors:(!Array<Protocol.CSS.Value>), text:(string)}} */
 Protocol.CSS.SelectorList;
 
-/** @typedef {!{styleSheetId:(Protocol.CSS.StyleSheetId), frameId:(Protocol.Page.FrameId), sourceURL:(string), sourceMapURL:(string|undefined), origin:(Protocol.CSS.StyleSheetOrigin), title:(string), ownerNode:(Protocol.DOM.BackendNodeId|undefined), disabled:(boolean), hasSourceURL:(boolean|undefined), isInline:(boolean), startLine:(number), startColumn:(number), length:(number)}} */
+/** @typedef {!{styleSheetId:(Protocol.CSS.StyleSheetId), frameId:(Protocol.Page.FrameId), sourceURL:(string), sourceMapURL:(string|undefined), origin:(Protocol.CSS.StyleSheetOrigin), title:(string), ownerNode:(Protocol.DOM.BackendNodeId|undefined), disabled:(boolean), hasSourceURL:(boolean|undefined), isInline:(boolean), startLine:(number), startColumn:(number), length:(number), endLine:(number), endColumn:(number)}} */
 Protocol.CSS.CSSStyleSheetHeader;
 
 /** @typedef {!{styleSheetId:(Protocol.CSS.StyleSheetId|undefined), selectorList:(Protocol.CSS.SelectorList), origin:(Protocol.CSS.StyleSheetOrigin), style:(Protocol.CSS.CSSStyle), media:(!Array<Protocol.CSS.CSSMedia>|undefined)}} */

@@ -1758,6 +1758,16 @@
                             "name": "length",
                             "description": "Size of the content (in characters).",
                             "type": "number"
+                        },
+                        {
+                            "name": "endLine",
+                            "description": "Line offset of the end of the stylesheet within the resource (zero based).",
+                            "type": "number"
+                        },
+                        {
+                            "name": "endColumn",
+                            "description": "Column offset of the end of the stylesheet within the resource (zero based).",
+                            "type": "number"
                         }
                     ]
                 },

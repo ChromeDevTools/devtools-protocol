@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r703825
+###### _2019-10-08 11:16:23_ | Diff: [1b9bba2...6db8af2](https://github.com/ChromeDevTools/devtools-protocol/compare/1b9bba2...6db8af2)
+#### `Debugger`: modified command
+* [`Debugger.enable`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-enable) - The parameters's `supportsWasmDwarf` _removed_. 
+
+
 ## Roll protocol to r703432
 ###### _2019-10-07 13:16:21_ | Diff: [9458ee4...1b9bba2](https://github.com/ChromeDevTools/devtools-protocol/compare/9458ee4...1b9bba2)
 #### `Security`: new event

@@ -3150,6 +3150,14 @@ export namespace Protocol {
              * Size of the content (in characters).
              */
             length: number;
+            /**
+             * Line offset of the end of the stylesheet within the resource (zero based).
+             */
+            endLine: number;
+            /**
+             * Column offset of the end of the stylesheet within the resource (zero based).
+             */
+            endColumn: number;
         }
 
         /**
