@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r704542
+###### _2019-10-10 03:15:57_ | Diff: [6db8af2...176dc88](https://github.com/ChromeDevTools/devtools-protocol/compare/6db8af2...176dc88)
+#### `CSS`: modified type
+* [`CSS.CSSStyleSheetHeader`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSStyleSheetHeader) - The properties's `endLine` _added_. The properties's `endColumn` _added_. 
+
+
 ## Roll protocol to r703825
 ###### _2019-10-08 11:16:23_ | Diff: [1b9bba2...6db8af2](https://github.com/ChromeDevTools/devtools-protocol/compare/1b9bba2...6db8af2)
 #### `Debugger`: modified command
