@@ -1738,6 +1738,10 @@ export namespace Protocol {
              * Disable breakpoints during execution.
              */
             disableBreaks?: boolean;
+            /**
+             * Reserved flag for future REPL mode support. Setting this flag has currently no effect.
+             */
+            replMode?: boolean;
         }
 
         export interface EvaluateResponse {
