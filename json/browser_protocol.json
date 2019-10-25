@@ -2956,11 +2956,13 @@
                         {
                             "name": "skipCount",
                             "description": "Number of records to skip.",
+                            "optional": true,
                             "type": "integer"
                         },
                         {
                             "name": "pageSize",
                             "description": "Number of records to fetch.",
+                            "optional": true,
                             "type": "integer"
                         },
                         {
@@ -13101,7 +13103,8 @@
                         "neutral",
                         "insecure",
                         "secure",
-                        "info"
+                        "info",
+                        "insecure-broken"
                     ]
                 },
                 {

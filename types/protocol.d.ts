@@ -3944,11 +3944,11 @@ export namespace Protocol {
             /**
              * Number of records to skip.
              */
-            skipCount: integer;
+            skipCount?: integer;
             /**
              * Number of records to fetch.
              */
-            pageSize: integer;
+            pageSize?: integer;
             /**
              * If present, only return the entries containing this substring in the path
              */
@@ -10557,7 +10557,7 @@ export namespace Protocol {
         /**
          * The security level of a page or resource.
          */
-        export type SecurityState = ('unknown' | 'neutral' | 'insecure' | 'secure' | 'info');
+        export type SecurityState = ('unknown' | 'neutral' | 'insecure' | 'secure' | 'info' | 'insecure-broken');
 
         /**
          * Details about the security state of the page certificate.

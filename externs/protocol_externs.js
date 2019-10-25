@@ -1301,13 +1301,13 @@ Protocol.CacheStorageAgent.prototype.invoke_requestCachedResponse = function(obj
 
 /**
  * @param {Protocol.CacheStorage.CacheId} cacheId
- * @param {number} skipCount
- * @param {number} pageSize
+ * @param {number=} opt_skipCount
+ * @param {number=} opt_pageSize
  * @param {string=} opt_pathFilter
  * @return {!Promise<?Array<Protocol.CacheStorage.DataEntry>>}
  */
-Protocol.CacheStorageAgent.prototype.requestEntries = function(cacheId, skipCount, pageSize, opt_pathFilter) {};
-/** @typedef {!{pathFilter: (string|undefined), cacheId: Protocol.CacheStorage.CacheId, skipCount: number, pageSize: number}} */
+Protocol.CacheStorageAgent.prototype.requestEntries = function(cacheId, opt_skipCount, opt_pageSize, opt_pathFilter) {};
+/** @typedef {!{pathFilter: (string|undefined), cacheId: Protocol.CacheStorage.CacheId, skipCount: (number|undefined), pageSize: (number|undefined)}} */
 Protocol.CacheStorageAgent.RequestEntriesRequest;
 /** @typedef {!{returnCount: number, cacheDataEntries: !Array<Protocol.CacheStorage.DataEntry>}} */
 Protocol.CacheStorageAgent.RequestEntriesResponse;
@@ -6317,7 +6317,8 @@ Protocol.Security.SecurityState = {
     Neutral: "neutral",
     Insecure: "insecure",
     Secure: "secure",
-    Info: "info"
+    Info: "info",
+    InsecureBroken: "insecure-broken"
 };
 
 /** @typedef {!{protocol:(string), keyExchange:(string), keyExchangeGroup:(string|undefined), cipher:(string), mac:(string|undefined), certificate:(!Array<string>), subjectName:(string), issuer:(string), validFrom:(Protocol.Network.TimeSinceEpoch), validTo:(Protocol.Network.TimeSinceEpoch), certifcateHasWeakSignature:(boolean), modernSSL:(boolean), obsoleteSslProtocol:(boolean), obsoleteSslKeyExchange:(boolean), obsoleteSslCipher:(boolean), obsoleteSslSignature:(boolean)}} */

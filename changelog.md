@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r708320
+###### _2019-10-22 13:16:41_ | Diff: [0eb89cb...cc0ccbf](https://github.com/ChromeDevTools/devtools-protocol/compare/0eb89cb...cc0ccbf)
+#### `Runtime`: modified command
+* [`Runtime.evaluate`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-evaluate) - The parameters's `replMode` _added_. 
+
+
 ## Roll protocol to r704542
 ###### _2019-10-10 03:15:57_ | Diff: [6db8af2...176dc88](https://github.com/ChromeDevTools/devtools-protocol/compare/6db8af2...176dc88)
 #### `CSS`: modified type
