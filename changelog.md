@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r709494
+###### _2019-10-25 09:19:12_ | Diff: [cc0ccbf...cc2df42](https://github.com/ChromeDevTools/devtools-protocol/compare/cc0ccbf...cc2df42)
+#### `CacheStorage`: modified command
+* [`CacheStorage.requestEntries`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#method-requestEntries) - The parameters's `optional` _added_ (2 times). 
+#### `Security`: modified type
+* [`Security.SecurityState`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#type-SecurityState) - The enum's `insecure-broken` _added_. 
+
+
 ## Roll protocol to r708320
 ###### _2019-10-22 13:16:41_ | Diff: [0eb89cb...cc0ccbf](https://github.com/ChromeDevTools/devtools-protocol/compare/0eb89cb...cc0ccbf)
 #### `Runtime`: modified command
