@@ -4553,7 +4553,6 @@ Protocol.Network.ConnectionType = {
 Protocol.Network.CookieSameSite = {
     Strict: "Strict",
     Lax: "Lax",
-    Extended: "Extended",
     None: "None"
 };
 

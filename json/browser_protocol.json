@@ -8466,7 +8466,6 @@
                     "enum": [
                         "Strict",
                         "Lax",
-                        "Extended",
                         "None"
                     ]
                 },
