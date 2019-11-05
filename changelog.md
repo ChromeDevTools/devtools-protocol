@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r712350
+###### _2019-11-04 16:16:27 -0800_ | Diff: [450eb90...7bbe86e](https://github.com/ChromeDevTools/devtools-protocol/compare/450eb90...7bbe86e)
+#### `Network`: modified types
+* [`Network.SetCookieBlockedReason`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SetCookieBlockedReason) - The enum's `UnknownError` _removed_. The enum's `SameSiteExtended` _updated_. The enum's `SameSiteUnspecifiedTreatedAsLax` _updated_. The enum's `SameSiteNoneInsecure` _updated_. The enum's `UserPreferences` _updated_. The enum's `SyntaxError` _updated_. The enum's `SchemeNotSupported` _updated_. The enum's `OverwriteSecure` _updated_. The enum's `InvalidDomain` _updated_. The enum's `InvalidPrefix` _updated_. 
+* [`Network.CookieBlockedReason`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CookieBlockedReason) - The enum's `UnknownError` _removed_. The enum's `SameSiteExtended` _updated_. The enum's `SameSiteUnspecifiedTreatedAsLax` _updated_. The enum's `SameSiteNoneInsecure` _updated_. The enum's `UserPreferences` _updated_. 
+
+
 ## Roll protocol to r710913
 ###### _2019-10-30 12:16:27_ | Diff: [b315ec7...450eb90](https://github.com/ChromeDevTools/devtools-protocol/compare/b315ec7...450eb90)
 #### `Network`: modified type

@@ -1196,6 +1196,7 @@
                         "geolocation",
                         "midi",
                         "midiSysex",
+                        "nfc",
                         "notifications",
                         "paymentHandler",
                         "periodicBackgroundSync",
