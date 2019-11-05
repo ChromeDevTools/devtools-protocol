@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r710913
+###### _2019-10-30 12:16:27_ | Diff: [b315ec7...450eb90](https://github.com/ChromeDevTools/devtools-protocol/compare/b315ec7...450eb90)
+#### `Network`: modified type
+* [`Network.CookieSameSite`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CookieSameSite) - The enum's `None` _removed_. The enum's `Extended` _updated_. 
+
+
 ## Roll protocol to r709494
 ###### _2019-10-25 09:19:12_ | Diff: [cc0ccbf...cc2df42](https://github.com/ChromeDevTools/devtools-protocol/compare/cc0ccbf...cc2df42)
 #### `CacheStorage`: modified command
