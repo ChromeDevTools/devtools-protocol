@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r712476
+###### _2019-11-04 23:16:15 -0800_ | Diff: [7bbe86e...66e3abc](https://github.com/ChromeDevTools/devtools-protocol/compare/7bbe86e...66e3abc)
+#### `Browser`: modified type
+* [`Browser.PermissionType`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-PermissionType) - The enum's `notifications` _updated_. The enum's `paymentHandler` _updated_. The enum's `periodicBackgroundSync` _updated_. The enum's `protectedMediaIdentifier` _updated_. The enum's `sensors` _updated_. The enum's `videoCapture` _updated_. The enum's `idleDetection` _updated_. The enum's `wakeLockScreen` _updated_. The enum's `wakeLockSystem` _updated_. The enum's `wakeLockSystem` _added_. 
+
+
 ## Roll protocol to r712350
 ###### _2019-11-04 16:16:27 -0800_ | Diff: [450eb90...7bbe86e](https://github.com/ChromeDevTools/devtools-protocol/compare/450eb90...7bbe86e)
 #### `Network`: modified types

@@ -960,6 +960,27 @@ export namespace ProtocolMapping {
             returnType: Protocol.Profiler.TakeTypeProfileResponse;
         };
         /**
+         * Enable run time call stats collection.
+         */
+        'Profiler.enableRuntimeCallStats': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
+         * Disable run time call stats collection.
+         */
+        'Profiler.disableRuntimeCallStats': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
+         * Retrieve run time call stats.
+         */
+        'Profiler.getRuntimeCallStats': {
+            paramsType: [];
+            returnType: Protocol.Profiler.GetRuntimeCallStatsResponse;
+        };
+        /**
          * Add handler to promise with given promise object id.
          */
         'Runtime.awaitPromise': {

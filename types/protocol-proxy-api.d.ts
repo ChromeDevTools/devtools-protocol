@@ -420,6 +420,21 @@ export namespace ProtocolProxyApi {
          */
         takeTypeProfile(): Promise<Protocol.Profiler.TakeTypeProfileResponse>;
 
+        /**
+         * Enable run time call stats collection.
+         */
+        enableRuntimeCallStats(): Promise<void>;
+
+        /**
+         * Disable run time call stats collection.
+         */
+        disableRuntimeCallStats(): Promise<void>;
+
+        /**
+         * Retrieve run time call stats.
+         */
+        getRuntimeCallStats(): Promise<Protocol.Profiler.GetRuntimeCallStatsResponse>;
+
         on(event: 'consoleProfileFinished', listener: (params: Protocol.Profiler.ConsoleProfileFinishedEvent) => void): void;
 
         /**

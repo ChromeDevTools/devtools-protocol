@@ -1109,6 +1109,20 @@ export namespace Protocol {
             entries: TypeProfileEntry[];
         }
 
+        /**
+         * Collected counter information.
+         */
+        export interface CounterInfo {
+            /**
+             * Counter name.
+             */
+            name: string;
+            /**
+             * Counter value.
+             */
+            value: integer;
+        }
+
         export interface GetBestEffortCoverageResponse {
             /**
              * Coverage data for the current isolate.
@@ -1153,6 +1167,13 @@ export namespace Protocol {
              * Type profile for all scripts since startTypeProfile() was turned on.
              */
             result: ScriptTypeProfile[];
+        }
+
+        export interface GetRuntimeCallStatsResponse {
+            /**
+             * Collected counter information.
+             */
+            result: CounterInfo[];
         }
 
         export interface ConsoleProfileFinishedEvent {

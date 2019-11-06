@@ -1721,6 +1721,24 @@
                             }
                         }
                     ]
+                },
+                {
+                    "id": "CounterInfo",
+                    "description": "Collected counter information.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "name",
+                            "description": "Counter name.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "value",
+                            "description": "Counter value.",
+                            "type": "integer"
+                        }
+                    ]
                 }
             ],
             "commands": [
@@ -1825,6 +1843,31 @@
                             "type": "array",
                             "items": {
                                 "$ref": "ScriptTypeProfile"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "enableRuntimeCallStats",
+                    "description": "Enable run time call stats collection.",
+                    "experimental": true
+                },
+                {
+                    "name": "disableRuntimeCallStats",
+                    "description": "Disable run time call stats collection.",
+                    "experimental": true
+                },
+                {
+                    "name": "getRuntimeCallStats",
+                    "description": "Retrieve run time call stats.",
+                    "experimental": true,
+                    "returns": [
+                        {
+                            "name": "result",
+                            "description": "Collected counter information.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "CounterInfo"
                             }
                         }
                     ]
