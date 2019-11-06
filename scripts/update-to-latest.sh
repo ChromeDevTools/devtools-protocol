@@ -28,7 +28,9 @@ git checkout -f origin/master
 env GYP_DEFINES=disable_nacl=1 gclient sync --jobs=70 --nohooks
 
 
-browser_protocol_path="$chromium_src_path/third_party/blink/renderer/core/inspector/browser_protocol.pdl"
+# This path was used previous to https://chromium-review.googlesource.com/c/chromium/src/+/1898538 landing
+old_browser_protocol_path="$chromium_src_path/third_party/blink/renderer/core/inspector/browser_protocol.pdl"
+browser_protocol_path="$chromium_src_path/third_party/blink/public/devtools_protocol/browser_protocol.pdl"
 # This path was used previous to https://chromium-review.googlesource.com/c/v8/v8/+/1649355 landing
 old_js_protocol_path="$chromium_src_path/v8/src/inspector/js_protocol.pdl"
 js_protocol_path="$chromium_src_path/v8/include/js_protocol.pdl"
@@ -37,6 +39,7 @@ js_protocol_path="$chromium_src_path/v8/include/js_protocol.pdl"
 cp "$old_js_protocol_path" "$protocol_repo_path/pdl"
 cp "$js_protocol_path" "$protocol_repo_path/pdl"
 
+cp "$old_browser_protocol_path" "$protocol_repo_path/pdl"
 cp "$browser_protocol_path" "$protocol_repo_path/pdl"
 
 # extract cr revision number
