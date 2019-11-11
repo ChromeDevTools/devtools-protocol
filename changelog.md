@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r712820
+###### _2019-11-05 16:16:33 -0800_ | Diff: [66e3abc...87a8f04](https://github.com/ChromeDevTools/devtools-protocol/compare/66e3abc...87a8f04)
+#### `Profiler`: new commands
+* [`Profiler.enableRuntimeCallStats`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-enableRuntimeCallStats)
+* [`Profiler.disableRuntimeCallStats`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-disableRuntimeCallStats)
+* [`Profiler.getRuntimeCallStats`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-getRuntimeCallStats)
+#### `Profiler`: new type
+* [`Profiler.CounterInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-CounterInfo)
+
+
 ## Roll protocol to r712476
 ###### _2019-11-04 23:16:15 -0800_ | Diff: [7bbe86e...66e3abc](https://github.com/ChromeDevTools/devtools-protocol/compare/7bbe86e...66e3abc)
 #### `Browser`: modified type
