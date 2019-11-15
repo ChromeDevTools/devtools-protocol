@@ -295,9 +295,13 @@ export namespace Protocol {
 
         export interface GetScriptSourceResponse {
             /**
-             * Script source.
+             * Script source (empty in case of Wasm bytecode).
              */
             scriptSource: string;
+            /**
+             * Wasm bytecode.
+             */
+            bytecode?: string;
         }
 
         export interface GetWasmBytecodeRequest {

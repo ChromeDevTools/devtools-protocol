@@ -654,7 +654,7 @@ export namespace ProtocolMapping {
             returnType: Protocol.Debugger.GetScriptSourceResponse;
         };
         /**
-         * Returns bytecode for the WebAssembly script with given id.
+         * This command is deprecated. Use getScriptSource instead.
          */
         'Debugger.getWasmBytecode': {
             paramsType: [Protocol.Debugger.GetWasmBytecodeRequest];

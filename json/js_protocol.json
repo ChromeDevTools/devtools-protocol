@@ -469,14 +469,21 @@
                     "returns": [
                         {
                             "name": "scriptSource",
-                            "description": "Script source.",
+                            "description": "Script source (empty in case of Wasm bytecode).",
+                            "type": "string"
+                        },
+                        {
+                            "name": "bytecode",
+                            "description": "Wasm bytecode.",
+                            "optional": true,
                             "type": "string"
                         }
                     ]
                 },
                 {
                     "name": "getWasmBytecode",
-                    "description": "Returns bytecode for the WebAssembly script with given id.",
+                    "description": "This command is deprecated. Use getScriptSource instead.",
+                    "deprecated": true,
                     "parameters": [
                         {
                             "name": "scriptId",

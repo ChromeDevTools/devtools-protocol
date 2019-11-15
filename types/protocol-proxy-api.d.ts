@@ -161,7 +161,7 @@ export namespace ProtocolProxyApi {
         getScriptSource(params: Protocol.Debugger.GetScriptSourceRequest): Promise<Protocol.Debugger.GetScriptSourceResponse>;
 
         /**
-         * Returns bytecode for the WebAssembly script with given id.
+         * This command is deprecated. Use getScriptSource instead.
          */
         getWasmBytecode(params: Protocol.Debugger.GetWasmBytecodeRequest): Promise<Protocol.Debugger.GetWasmBytecodeResponse>;
 
