@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r715684
+###### _2019-11-15 07:16:23 -0800_ | Diff: [2f6e00a...241adc5](https://github.com/ChromeDevTools/devtools-protocol/compare/2f6e00a...241adc5)
+#### `Debugger`: modified commands
+* [`Debugger.getScriptSource`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-getScriptSource) - The `scriptSource` in the return value had `description` _updated_. The return value's `bytecode` _added_. 
+* [`Debugger.getWasmBytecode`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-getWasmBytecode) - `description` updated. `deprecated` added. 
+
+
 ## Roll protocol to r712820
 ###### _2019-11-05 16:16:33 -0800_ | Diff: [66e3abc...87a8f04](https://github.com/ChromeDevTools/devtools-protocol/compare/66e3abc...87a8f04)
 #### `Profiler`: new commands
