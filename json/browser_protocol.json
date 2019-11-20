@@ -13199,6 +13199,33 @@
                     ]
                 },
                 {
+                    "id": "SafetyTipStatus",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "badReputation",
+                        "lookalike"
+                    ]
+                },
+                {
+                    "id": "SafetyTipInfo",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "safetyTipStatus",
+                            "description": "Describes whether the page triggers any safety tips or reputation warnings. Default is unknown.",
+                            "$ref": "SafetyTipStatus"
+                        },
+                        {
+                            "name": "safeUrl",
+                            "description": "The URL the safety tip suggested (\"Did you mean?\"). Only filled in for lookalike matches.",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "id": "VisibleSecurityState",
                     "description": "Security state information about the page.",
                     "experimental": true,
@@ -13214,6 +13241,12 @@
                             "description": "Security state details about the page certificate.",
                             "optional": true,
                             "$ref": "CertificateSecurityState"
+                        },
+                        {
+                            "name": "safetyTipInfo",
+                            "description": "The type of Safety Tip triggered on the page. Note that this field will be set even if the Safety Tip UI was not actually shown.",
+                            "optional": true,
+                            "$ref": "SafetyTipInfo"
                         },
                         {
                             "name": "securityStateIssueIds",

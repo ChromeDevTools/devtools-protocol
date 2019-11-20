@@ -6094,6 +6094,18 @@ domain Security
       # True if the connection is using an obsolete SSL signature.
       boolean obsoleteSslSignature
 
+  experimental type SafetyTipStatus extends string
+    enum
+      badReputation
+      lookalike
+
+  experimental type SafetyTipInfo extends object
+    properties
+      # Describes whether the page triggers any safety tips or reputation warnings. Default is unknown.
+      SafetyTipStatus safetyTipStatus
+      # The URL the safety tip suggested ("Did you mean?"). Only filled in for lookalike matches.
+      optional string safeUrl
+
   # Security state information about the page.
   experimental type VisibleSecurityState extends object
     properties
@@ -6101,6 +6113,8 @@ domain Security
       SecurityState securityState
       # Security state details about the page certificate.
       optional CertificateSecurityState certificateSecurityState
+      # The type of Safety Tip triggered on the page. Note that this field will be set even if the Safety Tip UI was not actually shown.
+      optional SafetyTipInfo safetyTipInfo
       # Array of security state issues ids.
       array of string securityStateIssueIds
 

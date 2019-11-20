@@ -10654,6 +10654,19 @@ export namespace Protocol {
             obsoleteSslSignature: boolean;
         }
 
+        export type SafetyTipStatus = ('badReputation' | 'lookalike');
+
+        export interface SafetyTipInfo {
+            /**
+             * Describes whether the page triggers any safety tips or reputation warnings. Default is unknown.
+             */
+            safetyTipStatus: SafetyTipStatus;
+            /**
+             * The URL the safety tip suggested ("Did you mean?"). Only filled in for lookalike matches.
+             */
+            safeUrl?: string;
+        }
+
         /**
          * Security state information about the page.
          */
@@ -10666,6 +10679,10 @@ export namespace Protocol {
              * Security state details about the page certificate.
              */
             certificateSecurityState?: CertificateSecurityState;
+            /**
+             * The type of Safety Tip triggered on the page. Note that this field will be set even if the Safety Tip UI was not actually shown.
+             */
+            safetyTipInfo?: SafetyTipInfo;
             /**
              * Array of security state issues ids.
              */
