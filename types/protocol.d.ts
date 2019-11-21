@@ -2773,6 +2773,8 @@ export namespace Protocol {
      */
     export namespace Browser {
 
+        export type BrowserContextID = string;
+
         export type WindowID = integer;
 
         /**
@@ -2891,7 +2893,7 @@ export namespace Protocol {
             /**
              * Context to override. When omitted, default browser context is used.
              */
-            browserContextId?: Target.TargetID;
+            browserContextId?: BrowserContextID;
         }
 
         export interface GrantPermissionsRequest {
@@ -2900,14 +2902,14 @@ export namespace Protocol {
             /**
              * BrowserContext to override permissions. When omitted, default browser context is used.
              */
-            browserContextId?: Target.BrowserContextID;
+            browserContextId?: BrowserContextID;
         }
 
         export interface ResetPermissionsRequest {
             /**
              * BrowserContext to reset permissions. When omitted, default browser context is used.
              */
-            browserContextId?: Target.BrowserContextID;
+            browserContextId?: BrowserContextID;
         }
 
         export interface GetVersionResponse {
@@ -10990,6 +10992,38 @@ export namespace Protocol {
             storageTypes: string;
         }
 
+        export interface GetCookiesRequest {
+            /**
+             * Browser context to use when called on the browser endpoint.
+             */
+            browserContextId?: Browser.BrowserContextID;
+        }
+
+        export interface GetCookiesResponse {
+            /**
+             * Array of cookie objects.
+             */
+            cookies: Network.Cookie[];
+        }
+
+        export interface SetCookiesRequest {
+            /**
+             * Cookies to be set.
+             */
+            cookies: Network.CookieParam[];
+            /**
+             * Browser context to use when called on the browser endpoint.
+             */
+            browserContextId?: Browser.BrowserContextID;
+        }
+
+        export interface ClearCookiesRequest {
+            /**
+             * Browser context to use when called on the browser endpoint.
+             */
+            browserContextId?: Browser.BrowserContextID;
+        }
+
         export interface GetUsageAndQuotaRequest {
             /**
              * Security origin.
@@ -11319,8 +11353,6 @@ export namespace Protocol {
          */
         export type SessionID = string;
 
-        export type BrowserContextID = string;
-
         export interface TargetInfo {
             targetId: TargetID;
             type: string;
@@ -11334,7 +11366,7 @@ export namespace Protocol {
              * Opener target Id
              */
             openerId?: TargetID;
-            browserContextId?: BrowserContextID;
+            browserContextId?: Browser.BrowserContextID;
         }
 
         export interface RemoteLocation {
@@ -11390,14 +11422,14 @@ export namespace Protocol {
             /**
              * The id of the context created.
              */
-            browserContextId: BrowserContextID;
+            browserContextId: Browser.BrowserContextID;
         }
 
         export interface GetBrowserContextsResponse {
             /**
              * An array of browser context ids.
              */
-            browserContextIds: BrowserContextID[];
+            browserContextIds: Browser.BrowserContextID[];
         }
 
         export interface CreateTargetRequest {
@@ -11416,7 +11448,7 @@ export namespace Protocol {
             /**
              * The browser context to create the page in.
              */
-            browserContextId?: BrowserContextID;
+            browserContextId?: Browser.BrowserContextID;
             /**
              * Whether BeginFrames for this target will be controlled via DevTools (headless chrome only,
              * not supported on MacOS yet, false by default).
@@ -11452,7 +11484,7 @@ export namespace Protocol {
         }
 
         export interface DisposeBrowserContextRequest {
-            browserContextId: BrowserContextID;
+            browserContextId: Browser.BrowserContextID;
         }
 
         export interface GetTargetInfoRequest {

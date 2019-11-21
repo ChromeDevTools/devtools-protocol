@@ -2805,6 +2805,21 @@ export namespace ProtocolProxyApi {
         clearDataForOrigin(params: Protocol.Storage.ClearDataForOriginRequest): Promise<void>;
 
         /**
+         * Returns all browser cookies.
+         */
+        getCookies(params: Protocol.Storage.GetCookiesRequest): Promise<Protocol.Storage.GetCookiesResponse>;
+
+        /**
+         * Sets given cookies.
+         */
+        setCookies(params: Protocol.Storage.SetCookiesRequest): Promise<void>;
+
+        /**
+         * Clears cookies.
+         */
+        clearCookies(params: Protocol.Storage.ClearCookiesRequest): Promise<void>;
+
+        /**
          * Returns usage and quota in bytes.
          */
         getUsageAndQuota(params: Protocol.Storage.GetUsageAndQuotaRequest): Promise<Protocol.Storage.GetUsageAndQuotaResponse>;

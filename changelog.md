@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r717319
+###### _2019-11-20 15:15:58 -0800_ | Diff: [0da6eeb...e794044](https://github.com/ChromeDevTools/devtools-protocol/compare/0da6eeb...e794044)
+#### `Security`: new types
+* [`Security.SafetyTipStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#type-SafetyTipStatus)
+* [`Security.SafetyTipInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#type-SafetyTipInfo)
+#### `Security`: modified type
+* [`Security.VisibleSecurityState`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#type-VisibleSecurityState) - The `securityStateIssueIds` in the properties had `type` _removed_. The `securityStateIssueIds` in the properties had `items` _removed_. The `securityStateIssueIds` in the properties had `name` _updated_. The `securityStateIssueIds` in the properties had `description` _updated_. The properties's `optional` _added_. The properties's `$ref` _added_. The properties's `securityStateIssueIds` _added_. 
+
+
 ## Roll protocol to r715684
 ###### _2019-11-15 07:16:23 -0800_ | Diff: [2f6e00a...241adc5](https://github.com/ChromeDevTools/devtools-protocol/compare/2f6e00a...241adc5)
 #### `Debugger`: modified commands

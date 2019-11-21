@@ -3464,6 +3464,27 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Returns all browser cookies.
+         */
+        'Storage.getCookies': {
+            paramsType: [Protocol.Storage.GetCookiesRequest?];
+            returnType: Protocol.Storage.GetCookiesResponse;
+        };
+        /**
+         * Sets given cookies.
+         */
+        'Storage.setCookies': {
+            paramsType: [Protocol.Storage.SetCookiesRequest];
+            returnType: void;
+        };
+        /**
+         * Clears cookies.
+         */
+        'Storage.clearCookies': {
+            paramsType: [Protocol.Storage.ClearCookiesRequest?];
+            returnType: void;
+        };
+        /**
          * Returns usage and quota in bytes.
          */
         'Storage.getUsageAndQuota': {
