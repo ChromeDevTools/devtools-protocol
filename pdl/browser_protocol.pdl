@@ -6081,8 +6081,12 @@ domain Security
       Network.TimeSinceEpoch validFrom
       # Certificate valid to (expiration) date
       Network.TimeSinceEpoch validTo
+      # The highest priority network error code, if the certificate has an error.
+      optional string certificateNetworkError
       # True if the certificate uses a weak signature aglorithm.
-      boolean certifcateHasWeakSignature
+      boolean certificateHasWeakSignature
+      # True if the certificate has a SHA1 signature in the chain.
+      boolean certificateHasSha1Signature
       # True if modern SSL
       boolean modernSSL
       # True if the connection is using an obsolete SSL protocol.

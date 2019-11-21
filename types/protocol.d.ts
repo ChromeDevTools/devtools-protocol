@@ -10631,9 +10631,17 @@ export namespace Protocol {
              */
             validTo: Network.TimeSinceEpoch;
             /**
+             * The highest priority network error code, if the certificate has an error.
+             */
+            certificateNetworkError?: string;
+            /**
              * True if the certificate uses a weak signature aglorithm.
              */
-            certifcateHasWeakSignature: boolean;
+            certificateHasWeakSignature: boolean;
+            /**
+             * True if the certificate has a SHA1 signature in the chain.
+             */
+            certificateHasSha1Signature: boolean;
             /**
              * True if modern SSL
              */

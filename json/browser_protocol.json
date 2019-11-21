@@ -13172,8 +13172,19 @@
                             "$ref": "Network.TimeSinceEpoch"
                         },
                         {
-                            "name": "certifcateHasWeakSignature",
+                            "name": "certificateNetworkError",
+                            "description": "The highest priority network error code, if the certificate has an error.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "certificateHasWeakSignature",
                             "description": "True if the certificate uses a weak signature aglorithm.",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "certificateHasSha1Signature",
+                            "description": "True if the certificate has a SHA1 signature in the chain.",
                             "type": "boolean"
                         },
                         {

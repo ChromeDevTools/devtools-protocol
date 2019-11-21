@@ -1,5 +1,28 @@
 
 
+## Roll protocol to r717360
+###### _2019-11-20 16:15:59 -0800_ | Diff: [e794044...38fbc08](https://github.com/ChromeDevTools/devtools-protocol/compare/e794044...38fbc08)
+#### `Browser`: modified commands
+* [`Browser.setPermission`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-setPermission) - The `browserContextId` in the parameters had `$ref` _updated_. 
+* [`Browser.grantPermissions`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-grantPermissions) - The `browserContextId` in the parameters had `$ref` _updated_. 
+* [`Browser.resetPermissions`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-resetPermissions) - The `browserContextId` in the parameters had `$ref` _updated_. 
+#### `Browser`: new type
+* [`Browser.BrowserContextID`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-BrowserContextID)
+#### `Storage`: new commands
+* [`Storage.getCookies`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#method-getCookies)
+* [`Storage.setCookies`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#method-setCookies)
+* [`Storage.clearCookies`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#method-clearCookies)
+#### `Target`: modified commands
+* [`Target.createBrowserContext`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-createBrowserContext) - The `browserContextId` in the return value had `$ref` _updated_. 
+* [`Target.getBrowserContexts`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-getBrowserContexts) - The `browserContextIds` in the return value had `$ref` _updated_. 
+* [`Target.createTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-createTarget) - The `browserContextId` in the parameters had `$ref` _updated_. 
+* [`Target.disposeBrowserContext`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-disposeBrowserContext) - The `browserContextId` in the parameters had `$ref` _updated_. 
+#### `Target`: removed type
+* [`Target.BrowserContextID`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#type-BrowserContextID)
+#### `Target`: modified type
+* [`Target.TargetInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#type-TargetInfo) - The `browserContextId` in the properties had `$ref` _updated_. 
+
+
 ## Roll protocol to r717319
 ###### _2019-11-20 15:15:58 -0800_ | Diff: [0da6eeb...e794044](https://github.com/ChromeDevTools/devtools-protocol/compare/0da6eeb...e794044)
 #### `Security`: new types
