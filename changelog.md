@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r717480
+###### _2019-11-20 20:15:58 -0800_ | Diff: [38fbc08...146c682](https://github.com/ChromeDevTools/devtools-protocol/compare/38fbc08...146c682)
+#### `Security`: modified type
+* [`Security.CertificateSecurityState`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#type-CertificateSecurityState) - The `certifcateHasWeakSignature` in the properties had `name` _updated_. The `certifcateHasWeakSignature` in the properties had `description` _updated_. The `certifcateHasWeakSignature` in the properties had `type` _updated_. The `modernSSL` in the properties had `name` _updated_. The `modernSSL` in the properties had `description` _updated_. The `obsoleteSslProtocol` in the properties had `name` _updated_. The `obsoleteSslProtocol` in the properties had `description` _updated_. The `obsoleteSslKeyExchange` in the properties had `name` _updated_. The `obsoleteSslKeyExchange` in the properties had `description` _updated_. The `obsoleteSslCipher` in the properties had `name` _updated_. The `obsoleteSslCipher` in the properties had `description` _updated_. The `obsoleteSslSignature` in the properties had `name` _updated_. The `obsoleteSslSignature` in the properties had `description` _updated_. The properties's `optional` _added_. The properties's `obsoleteSslCipher` _added_. The properties's `obsoleteSslSignature` _added_. 
+
+
 ## Roll protocol to r717360
 ###### _2019-11-20 16:15:59 -0800_ | Diff: [e794044...38fbc08](https://github.com/ChromeDevTools/devtools-protocol/compare/e794044...38fbc08)
 #### `Browser`: modified commands
