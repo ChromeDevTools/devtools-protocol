@@ -10235,14 +10235,6 @@ export namespace Protocol {
             enabled: boolean;
         }
 
-        export interface HandleFileChooserRequest {
-            action: ('accept' | 'cancel' | 'fallback');
-            /**
-             * Array of absolute file paths to set, only respected with `accept` action.
-             */
-            files?: string[];
-        }
-
         export interface DomContentEventFiredEvent {
             timestamp: Network.MonotonicTime;
         }
@@ -10251,6 +10243,17 @@ export namespace Protocol {
          * Emitted only when `page.interceptFileChooser` is enabled.
          */
         export interface FileChooserOpenedEvent {
+            /**
+             * Id of the frame containing input node.
+             */
+            frameId: FrameId;
+            /**
+             * Input node id.
+             */
+            backendNodeId: DOM.BackendNodeId;
+            /**
+             * Input mode.
+             */
             mode: ('selectSingle' | 'selectMultiple');
         }
 

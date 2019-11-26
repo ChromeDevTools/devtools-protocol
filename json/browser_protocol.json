@@ -12590,37 +12590,12 @@
                 },
                 {
                     "name": "setInterceptFileChooserDialog",
-                    "description": "Intercept file chooser requests and transfer control to protocol clients.\nWhen file chooser interception is enabled, native file chooser dialog is not shown.\nInstead, a protocol event `Page.fileChooserOpened` is emitted.\nFile chooser can be handled with `page.handleFileChooser` command.",
+                    "description": "Intercept file chooser requests and transfer control to protocol clients.\nWhen file chooser interception is enabled, native file chooser dialog is not shown.\nInstead, a protocol event `Page.fileChooserOpened` is emitted.",
                     "experimental": true,
                     "parameters": [
                         {
                             "name": "enabled",
                             "type": "boolean"
-                        }
-                    ]
-                },
-                {
-                    "name": "handleFileChooser",
-                    "description": "Accepts or cancels an intercepted file chooser dialog.",
-                    "experimental": true,
-                    "parameters": [
-                        {
-                            "name": "action",
-                            "type": "string",
-                            "enum": [
-                                "accept",
-                                "cancel",
-                                "fallback"
-                            ]
-                        },
-                        {
-                            "name": "files",
-                            "description": "Array of absolute file paths to set, only respected with `accept` action.",
-                            "optional": true,
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
                         }
                     ]
                 }
@@ -12640,7 +12615,20 @@
                     "description": "Emitted only when `page.interceptFileChooser` is enabled.",
                     "parameters": [
                         {
+                            "name": "frameId",
+                            "description": "Id of the frame containing input node.",
+                            "experimental": true,
+                            "$ref": "FrameId"
+                        },
+                        {
+                            "name": "backendNodeId",
+                            "description": "Input node id.",
+                            "experimental": true,
+                            "$ref": "DOM.BackendNodeId"
+                        },
+                        {
                             "name": "mode",
+                            "description": "Input mode.",
                             "type": "string",
                             "enum": [
                                 "selectSingle",

@@ -2564,14 +2564,8 @@ export namespace ProtocolProxyApi {
          * Intercept file chooser requests and transfer control to protocol clients.
          * When file chooser interception is enabled, native file chooser dialog is not shown.
          * Instead, a protocol event `Page.fileChooserOpened` is emitted.
-         * File chooser can be handled with `page.handleFileChooser` command.
          */
         setInterceptFileChooserDialog(params: Protocol.Page.SetInterceptFileChooserDialogRequest): Promise<void>;
-
-        /**
-         * Accepts or cancels an intercepted file chooser dialog.
-         */
-        handleFileChooser(params: Protocol.Page.HandleFileChooserRequest): Promise<void>;
 
         on(event: 'domContentEventFired', listener: (params: Protocol.Page.DomContentEventFiredEvent) => void): void;
 

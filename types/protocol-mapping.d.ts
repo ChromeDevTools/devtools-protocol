@@ -3325,17 +3325,9 @@ export namespace ProtocolMapping {
          * Intercept file chooser requests and transfer control to protocol clients.
          * When file chooser interception is enabled, native file chooser dialog is not shown.
          * Instead, a protocol event `Page.fileChooserOpened` is emitted.
-         * File chooser can be handled with `page.handleFileChooser` command.
          */
         'Page.setInterceptFileChooserDialog': {
             paramsType: [Protocol.Page.SetInterceptFileChooserDialogRequest];
-            returnType: void;
-        };
-        /**
-         * Accepts or cancels an intercepted file chooser dialog.
-         */
-        'Page.handleFileChooser': {
-            paramsType: [Protocol.Page.HandleFileChooserRequest];
             returnType: void;
         };
         /**
