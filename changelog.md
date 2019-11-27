@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r719330
+###### _2019-11-26 13:16:17 -0800_ | Diff: [13ccbfe...14ad3ca](https://github.com/ChromeDevTools/devtools-protocol/compare/13ccbfe...14ad3ca)
+#### `Page`: removed command
+* [`Page.handleFileChooser`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-handleFileChooser)
+#### `Page`: modified command
+* [`Page.setInterceptFileChooserDialog`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setInterceptFileChooserDialog) - `description` updated. 
+#### `Page`: modified event
+* [`Page.fileChooserOpened`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-fileChooserOpened) - The `mode` in the parameters had `type` _removed_. The `mode` in the parameters had `enum` _removed_. The `mode` in the parameters had `name` _updated_. The parameters's `description` _added_. The parameters's `experimental` _added_. The parameters's `$ref` _added_. The parameters's `backendNodeId` _added_. The parameters's `mode` _added_. 
+
+
 ## Roll protocol to r717480
 ###### _2019-11-20 20:15:58 -0800_ | Diff: [38fbc08...146c682](https://github.com/ChromeDevTools/devtools-protocol/compare/38fbc08...146c682)
 #### `Security`: modified type
