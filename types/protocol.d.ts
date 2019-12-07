@@ -2808,7 +2808,7 @@ export namespace Protocol {
             windowState?: WindowState;
         }
 
-        export type PermissionType = ('accessibilityEvents' | 'audioCapture' | 'backgroundSync' | 'backgroundFetch' | 'clipboardRead' | 'clipboardWrite' | 'durableStorage' | 'flash' | 'geolocation' | 'midi' | 'midiSysex' | 'nfc' | 'notifications' | 'paymentHandler' | 'periodicBackgroundSync' | 'protectedMediaIdentifier' | 'sensors' | 'videoCapture' | 'idleDetection' | 'wakeLockScreen' | 'wakeLockSystem');
+        export type PermissionType = ('accessibilityEvents' | 'audioCapture' | 'backgroundSync' | 'backgroundFetch' | 'clipboardReadWrite' | 'clipboardSanitizedWrite' | 'durableStorage' | 'flash' | 'geolocation' | 'midi' | 'midiSysex' | 'nfc' | 'notifications' | 'paymentHandler' | 'periodicBackgroundSync' | 'protectedMediaIdentifier' | 'sensors' | 'videoCapture' | 'idleDetection' | 'wakeLockScreen' | 'wakeLockSystem');
 
         export type PermissionSetting = ('granted' | 'denied' | 'prompt');
 
@@ -2835,6 +2835,10 @@ export namespace Protocol {
              * For "wake-lock" permission, must specify type as either "screen" or "system".
              */
             type?: string;
+            /**
+             * For "clipboard" permission, may specify allowWithoutSanitization.
+             */
+            allowWithoutSanitization?: boolean;
         }
 
         /**
