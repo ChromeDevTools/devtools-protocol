@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r722700
+###### _2019-12-06 16:16:07 -0800_ | Diff: [7f775e3...f747da9](https://github.com/ChromeDevTools/devtools-protocol/compare/7f775e3...f747da9)
+#### `Browser`: modified types
+* [`Browser.PermissionType`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-PermissionType) - The enum's `clipboardRead` _updated_. The enum's `clipboardWrite` _updated_. 
+* [`Browser.PermissionDescriptor`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-PermissionDescriptor) - The properties's `allowWithoutSanitization` _added_. 
+
+
 ## Roll protocol to r719330
 ###### _2019-11-26 13:16:17 -0800_ | Diff: [13ccbfe...14ad3ca](https://github.com/ChromeDevTools/devtools-protocol/compare/13ccbfe...14ad3ca)
 #### `Page`: removed command

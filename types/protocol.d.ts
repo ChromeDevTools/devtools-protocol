@@ -1427,7 +1427,17 @@ export namespace Protocol {
             /**
              * The value associated with the private property.
              */
-            value: RemoteObject;
+            value?: RemoteObject;
+            /**
+             * A function which serves as a getter for the private property,
+             * or `undefined` if there is no getter (accessor descriptors only).
+             */
+            get?: RemoteObject;
+            /**
+             * A function which serves as a setter for the private property,
+             * or `undefined` if there is no setter (accessor descriptors only).
+             */
+            set?: RemoteObject;
         }
 
         /**

@@ -2300,6 +2300,19 @@
                         {
                             "name": "value",
                             "description": "The value associated with the private property.",
+                            "optional": true,
+                            "$ref": "RemoteObject"
+                        },
+                        {
+                            "name": "get",
+                            "description": "A function which serves as a getter for the private property,\nor `undefined` if there is no getter (accessor descriptors only).",
+                            "optional": true,
+                            "$ref": "RemoteObject"
+                        },
+                        {
+                            "name": "set",
+                            "description": "A function which serves as a setter for the private property,\nor `undefined` if there is no setter (accessor descriptors only).",
+                            "optional": true,
                             "$ref": "RemoteObject"
                         }
                     ]
