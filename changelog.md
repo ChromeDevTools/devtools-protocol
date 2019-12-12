@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r723051
+###### _2019-12-09 12:16:02 -0800_ | Diff: [f747da9...0ad933c](https://github.com/ChromeDevTools/devtools-protocol/compare/f747da9...0ad933c)
+#### `Runtime`: modified type
+* [`Runtime.PrivatePropertyDescriptor`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-PrivatePropertyDescriptor) - The properties's `optional` _added_. The properties's `get` _added_. The properties's `set` _added_. 
+
+
 ## Roll protocol to r722700
 ###### _2019-12-06 16:16:07 -0800_ | Diff: [7f775e3...f747da9](https://github.com/ChromeDevTools/devtools-protocol/compare/7f775e3...f747da9)
 #### `Browser`: modified types

@@ -3148,6 +3148,7 @@
                         "first-letter",
                         "before",
                         "after",
+                        "marker",
                         "backdrop",
                         "selection",
                         "first-line-inherited",
