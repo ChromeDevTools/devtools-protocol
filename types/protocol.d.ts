@@ -6654,6 +6654,8 @@ export namespace Protocol {
 
         export type GestureSourceType = ('default' | 'touch' | 'mouse');
 
+        export type MouseButton = ('none' | 'left' | 'middle' | 'right' | 'back' | 'forward');
+
         /**
          * UTC time in seconds, counted from January 1, 1970.
          */
@@ -6756,7 +6758,7 @@ export namespace Protocol {
             /**
              * Mouse button (default: "none").
              */
-            button?: ('none' | 'left' | 'middle' | 'right' | 'back' | 'forward');
+            button?: MouseButton;
             /**
              * A number indicating which buttons are pressed on the mouse when a mouse event is triggered.
              * Left=1, Right=2, Middle=4, Back=8, Forward=16, None=0.
@@ -6817,9 +6819,9 @@ export namespace Protocol {
              */
             y: integer;
             /**
-             * Mouse button.
+             * Mouse button. Only "none", "left", "right" are supported.
              */
-            button: ('none' | 'left' | 'middle' | 'right');
+            button: MouseButton;
             /**
              * Time at which the event occurred (default: current time).
              */
