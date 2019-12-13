@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r724701
+###### _2019-12-13 10:16:09 -0800_ | Diff: [7c8e4c5...2559025](https://github.com/ChromeDevTools/devtools-protocol/compare/7c8e4c5...2559025)
+#### `Page`: modified command
+* [`Page.getAppManifest`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getAppManifest) - The return value's `parsed` _added_. 
+#### `Page`: new type
+* [`Page.AppManifestParsedProperties`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-AppManifestParsedProperties)
+
+
 ## Roll protocol to r724596
 ###### _2019-12-13 04:15:55 -0800_ | Diff: [cc1ba9f...7c8e4c5](https://github.com/ChromeDevTools/devtools-protocol/compare/cc1ba9f...7c8e4c5)
 #### `Network`: modified command
