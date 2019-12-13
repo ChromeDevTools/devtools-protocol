@@ -3865,6 +3865,14 @@ domain Network
       Lax
       None
 
+  # Represents the cookie's 'Priority' status:
+  # https://tools.ietf.org/html/draft-west-cookie-priority-00
+  experimental type CookiePriority extends string
+    enum
+      Low
+      Medium
+      High
+
   # Timing information for the request.
   type ResourceTiming extends object
     properties
@@ -4143,6 +4151,8 @@ domain Network
       boolean session
       # Cookie SameSite type.
       optional CookieSameSite sameSite
+      # Cookie Priority
+      experimental CookiePriority priority
 
   # Types of reasons why a cookie may not be stored from a response.
   experimental type SetCookieBlockedReason extends string
@@ -4249,6 +4259,8 @@ domain Network
       optional CookieSameSite sameSite
       # Cookie expiration date, session cookie if not set
       optional TimeSinceEpoch expires
+      # Cookie Priority.
+      optional CookiePriority priority
 
   # Authorization challenge for HTTP status code 401 or 407.
   experimental type AuthChallenge extends object
@@ -4591,6 +4603,8 @@ domain Network
       optional CookieSameSite sameSite
       # Cookie expiration date, session cookie if not set
       optional TimeSinceEpoch expires
+      # Cookie Priority type.
+      optional CookiePriority priority
     returns
       # True if successfully set cookie.
       boolean success

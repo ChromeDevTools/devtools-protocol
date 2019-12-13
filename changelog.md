@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r724568
+###### _2019-12-13 02:15:57 -0800_ | Diff: [5c57d0d...cc1ba9f](https://github.com/ChromeDevTools/devtools-protocol/compare/5c57d0d...cc1ba9f)
+#### `Input`: modified commands
+* [`Input.dispatchMouseEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-dispatchMouseEvent) - The `button` in the parameters had `type` _removed_. The `button` in the parameters had `enum` _removed_. The parameters's `$ref` _added_. 
+* [`Input.emulateTouchFromMouseEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-emulateTouchFromMouseEvent) - The `button` in the parameters had `type` _removed_. The `button` in the parameters had `enum` _removed_. The `button` in the parameters had `description` _updated_. The parameters's `$ref` _added_. 
+#### `Input`: new type
+* [`Input.MouseButton`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#type-MouseButton)
+
+
 ## Roll protocol to r724110
 ###### _2019-12-11 18:15:58 -0800_ | Diff: [0ad933c...6130de0](https://github.com/ChromeDevTools/devtools-protocol/compare/0ad933c...6130de0)
 #### `DOM`: modified type

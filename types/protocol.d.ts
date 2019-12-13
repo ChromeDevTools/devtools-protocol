@@ -7487,6 +7487,12 @@ export namespace Protocol {
         export type CookieSameSite = ('Strict' | 'Lax' | 'None');
 
         /**
+         * Represents the cookie's 'Priority' status:
+         * https://tools.ietf.org/html/draft-west-cookie-priority-00
+         */
+        export type CookiePriority = ('Low' | 'Medium' | 'High');
+
+        /**
          * Timing information for the request.
          */
         export interface ResourceTiming {
@@ -7949,6 +7955,10 @@ export namespace Protocol {
              * Cookie SameSite type.
              */
             sameSite?: CookieSameSite;
+            /**
+             * Cookie Priority
+             */
+            priority: CookiePriority;
         }
 
         /**
@@ -8037,6 +8047,10 @@ export namespace Protocol {
              * Cookie expiration date, session cookie if not set
              */
             expires?: TimeSinceEpoch;
+            /**
+             * Cookie Priority.
+             */
+            priority?: CookiePriority;
         }
 
         /**
@@ -8522,6 +8536,10 @@ export namespace Protocol {
              * Cookie expiration date, session cookie if not set
              */
             expires?: TimeSinceEpoch;
+            /**
+             * Cookie Priority type.
+             */
+            priority?: CookiePriority;
         }
 
         export interface SetCookieResponse {
