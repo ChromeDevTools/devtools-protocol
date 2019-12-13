@@ -5247,6 +5247,12 @@ domain Page
       # Error column.
       integer column
 
+  # Parsed app manifest properties.
+  experimental type AppManifestParsedProperties extends object
+    properties
+      # Computed scope value
+      string scope
+
   # Layout viewport position and dimensions.
   type LayoutViewport extends object
     properties
@@ -5432,6 +5438,8 @@ domain Page
       array of AppManifestError errors
       # Manifest content.
       optional string data
+      # Parsed manifest properties
+      experimental optional AppManifestParsedProperties parsed
 
   experimental command getInstallabilityErrors
     returns

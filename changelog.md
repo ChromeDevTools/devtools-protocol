@@ -1,5 +1,16 @@
 
 
+## Roll protocol to r724596
+###### _2019-12-13 04:15:55 -0800_ | Diff: [cc1ba9f...7c8e4c5](https://github.com/ChromeDevTools/devtools-protocol/compare/cc1ba9f...7c8e4c5)
+#### `Network`: modified command
+* [`Network.setCookie`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setCookie) - The parameters's `priority` _added_. 
+#### `Network`: new type
+* [`Network.CookiePriority`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CookiePriority)
+#### `Network`: modified types
+* [`Network.Cookie`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Cookie) - The properties's `priority` _added_. 
+* [`Network.CookieParam`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CookieParam) - The properties's `priority` _added_. 
+
+
 ## Roll protocol to r724568
 ###### _2019-12-13 02:15:57 -0800_ | Diff: [5c57d0d...cc1ba9f](https://github.com/ChromeDevTools/devtools-protocol/compare/5c57d0d...cc1ba9f)
 #### `Input`: modified commands

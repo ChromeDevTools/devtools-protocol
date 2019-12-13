@@ -11418,6 +11418,19 @@
                     ]
                 },
                 {
+                    "id": "AppManifestParsedProperties",
+                    "description": "Parsed app manifest properties.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "scope",
+                            "description": "Computed scope value",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "id": "LayoutViewport",
                     "description": "Layout viewport position and dimensions.",
                     "type": "object",
@@ -11819,6 +11832,13 @@
                             "description": "Manifest content.",
                             "optional": true,
                             "type": "string"
+                        },
+                        {
+                            "name": "parsed",
+                            "description": "Parsed manifest properties",
+                            "experimental": true,
+                            "optional": true,
+                            "$ref": "AppManifestParsedProperties"
                         }
                     ]
                 },

@@ -9540,6 +9540,16 @@ export namespace Protocol {
         }
 
         /**
+         * Parsed app manifest properties.
+         */
+        export interface AppManifestParsedProperties {
+            /**
+             * Computed scope value
+             */
+            scope: string;
+        }
+
+        /**
          * Layout viewport position and dimensions.
          */
         export interface LayoutViewport {
@@ -9787,6 +9797,10 @@ export namespace Protocol {
              * Manifest content.
              */
             data?: string;
+            /**
+             * Parsed manifest properties
+             */
+            parsed?: AppManifestParsedProperties;
         }
 
         export interface GetInstallabilityErrorsResponse {
