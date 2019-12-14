@@ -9807,6 +9807,10 @@ export namespace Protocol {
             errors: string[];
         }
 
+        export interface GetManifestIconsResponse {
+            primaryIcon?: string;
+        }
+
         export interface GetCookiesResponse {
             /**
              * Array of cookie objects.

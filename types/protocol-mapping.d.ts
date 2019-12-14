@@ -3048,6 +3048,10 @@ export namespace ProtocolMapping {
             paramsType: [];
             returnType: Protocol.Page.GetInstallabilityErrorsResponse;
         };
+        'Page.getManifestIcons': {
+            paramsType: [];
+            returnType: Protocol.Page.GetManifestIconsResponse;
+        };
         /**
          * Returns all browser cookies. Depending on the backend support, will return detailed cookie
          * information in the `cookies` field.

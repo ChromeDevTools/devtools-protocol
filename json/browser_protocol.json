@@ -11856,6 +11856,17 @@
                     ]
                 },
                 {
+                    "name": "getManifestIcons",
+                    "experimental": true,
+                    "returns": [
+                        {
+                            "name": "primaryIcon",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "getCookies",
                     "description": "Returns all browser cookies. Depending on the backend support, will return detailed cookie\ninformation in the `cookies` field.",
                     "experimental": true,

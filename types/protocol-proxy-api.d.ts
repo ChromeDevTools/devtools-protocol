@@ -2363,6 +2363,8 @@ export namespace ProtocolProxyApi {
 
         getInstallabilityErrors(): Promise<Protocol.Page.GetInstallabilityErrorsResponse>;
 
+        getManifestIcons(): Promise<Protocol.Page.GetManifestIconsResponse>;
+
         /**
          * Returns all browser cookies. Depending on the backend support, will return detailed cookie
          * information in the `cookies` field.
