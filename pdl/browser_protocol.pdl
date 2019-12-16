@@ -4604,7 +4604,7 @@ domain Network
       # Cookie expiration date, session cookie if not set
       optional TimeSinceEpoch expires
       # Cookie Priority type.
-      optional CookiePriority priority
+      experimental optional CookiePriority priority
     returns
       # True if successfully set cookie.
       boolean success
