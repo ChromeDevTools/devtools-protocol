@@ -9284,6 +9284,7 @@
                         {
                             "name": "priority",
                             "description": "Cookie Priority.",
+                            "experimental": true,
                             "optional": true,
                             "$ref": "CookiePriority"
                         }

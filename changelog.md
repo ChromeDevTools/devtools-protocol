@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r724935
+###### _2019-12-14 01:16:01 -0800_ | Diff: [1e81930...7e60474](https://github.com/ChromeDevTools/devtools-protocol/compare/1e81930...7e60474)
+#### `Page`: new command
+* [`Page.getManifestIcons`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getManifestIcons)
+
+
 ## Roll protocol to r724701
 ###### _2019-12-13 10:16:09 -0800_ | Diff: [7c8e4c5...2559025](https://github.com/ChromeDevTools/devtools-protocol/compare/7c8e4c5...2559025)
 #### `Page`: modified command

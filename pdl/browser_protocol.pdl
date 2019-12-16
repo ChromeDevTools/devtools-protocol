@@ -4260,7 +4260,7 @@ domain Network
       # Cookie expiration date, session cookie if not set
       optional TimeSinceEpoch expires
       # Cookie Priority.
-      optional CookiePriority priority
+      experimental optional CookiePriority priority
 
   # Authorization challenge for HTTP status code 401 or 407.
   experimental type AuthChallenge extends object
