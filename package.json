@@ -1,6 +1,6 @@
 {
   "name": "devtools-protocol",
-  "version": "0.0.725056",
+  "version": "0.0.725104",
   "description": "The Chrome DevTools Protocol JSON",
   "repository": "https://github.com/ChromeDevTools/devtools-protocol",
   "author": "The Chromium Authors",
