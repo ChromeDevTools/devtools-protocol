@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r725087 724985 724981
+###### _2019-12-16 05:16:11 -0800_ | Diff: [4e63e49...05cef16](https://github.com/ChromeDevTools/devtools-protocol/compare/4e63e49...05cef16)
+#### `Network`: modified command
+* [`Network.setCookie`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setCookie) - The parameters's `experimental` _added_. 
+
+
 ## Roll protocol to r725056
 ###### _2019-12-16 02:16:13 -0800_ | Diff: [7e60474...4e63e49](https://github.com/ChromeDevTools/devtools-protocol/compare/7e60474...4e63e49)
 #### `Network`: modified type
