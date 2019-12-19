@@ -901,6 +901,7 @@ export namespace Protocol {
              * when the tracking is stopped.
              */
             reportProgress?: boolean;
+            treatGlobalObjectsAsRoots?: boolean;
         }
 
         export interface TakeHeapSnapshotRequest {
@@ -908,6 +909,10 @@ export namespace Protocol {
              * If true 'reportHeapSnapshotProgress' events will be generated while snapshot is being taken.
              */
             reportProgress?: boolean;
+            /**
+             * If true, a raw snapshot without artifical roots will be generated
+             */
+            treatGlobalObjectsAsRoots?: boolean;
         }
 
         export interface AddHeapSnapshotChunkEvent {
