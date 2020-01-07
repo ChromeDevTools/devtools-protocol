@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r726364
+###### _2019-12-19 06:16:08 -0800_ | Diff: [1d614ea...db57660](https://github.com/ChromeDevTools/devtools-protocol/compare/1d614ea...db57660)
+#### `HeapProfiler`: modified commands
+* [`HeapProfiler.stopTrackingHeapObjects`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#method-stopTrackingHeapObjects) - The parameters's `treatGlobalObjectsAsRoots` _added_. 
+* [`HeapProfiler.takeHeapSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#method-takeHeapSnapshot) - The parameters's `treatGlobalObjectsAsRoots` _added_. 
+
+
 ## Roll protocol to r725087 724985 724981
 ###### _2019-12-16 05:16:11 -0800_ | Diff: [4e63e49...05cef16](https://github.com/ChromeDevTools/devtools-protocol/compare/4e63e49...05cef16)
 #### `Network`: modified command
