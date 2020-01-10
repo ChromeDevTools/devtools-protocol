@@ -1157,6 +1157,13 @@ export namespace Protocol {
             detailed?: boolean;
         }
 
+        export interface StartPreciseCoverageResponse {
+            /**
+             * The timestamp (in milliseconds) the coverage update was taken in the backend.
+             */
+            timestamp: number;
+        }
+
         export interface StopResponse {
             /**
              * Recorded profile.
@@ -1169,6 +1176,10 @@ export namespace Protocol {
              * Coverage data for the current isolate.
              */
             result: ScriptCoverage[];
+            /**
+             * The timestamp (in milliseconds) the coverage update was taken in the backend.
+             */
+            timestamp: number;
         }
 
         export interface TakeTypeProfileResponse {

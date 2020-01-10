@@ -1810,6 +1810,13 @@
                             "optional": true,
                             "type": "boolean"
                         }
+                    ],
+                    "returns": [
+                        {
+                            "name": "timestamp",
+                            "description": "The timestamp (in milliseconds) the coverage update was taken in the backend.",
+                            "type": "number"
+                        }
                     ]
                 },
                 {
@@ -1847,6 +1854,11 @@
                             "items": {
                                 "$ref": "ScriptCoverage"
                             }
+                        },
+                        {
+                            "name": "timestamp",
+                            "description": "The timestamp (in milliseconds) the coverage update was taken in the backend.",
+                            "type": "number"
                         }
                     ]
                 },

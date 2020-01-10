@@ -916,7 +916,7 @@ export namespace ProtocolMapping {
          */
         'Profiler.startPreciseCoverage': {
             paramsType: [Protocol.Profiler.StartPreciseCoverageRequest?];
-            returnType: void;
+            returnType: Protocol.Profiler.StartPreciseCoverageResponse;
         };
         /**
          * Enable type profile.

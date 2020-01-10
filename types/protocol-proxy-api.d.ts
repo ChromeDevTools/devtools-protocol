@@ -389,7 +389,7 @@ export namespace ProtocolProxyApi {
          * coverage may be incomplete. Enabling prevents running optimized code and resets execution
          * counters.
          */
-        startPreciseCoverage(params: Protocol.Profiler.StartPreciseCoverageRequest): Promise<void>;
+        startPreciseCoverage(params: Protocol.Profiler.StartPreciseCoverageRequest): Promise<Protocol.Profiler.StartPreciseCoverageResponse>;
 
         /**
          * Enable type profile.
