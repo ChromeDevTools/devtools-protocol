@@ -1159,7 +1159,7 @@ export namespace Protocol {
 
         export interface StartPreciseCoverageResponse {
             /**
-             * The timestamp (in milliseconds) the coverage update was taken in the backend.
+             * Monotonically increasing time (in seconds) when the coverage update was taken in the backend.
              */
             timestamp: number;
         }
@@ -1177,7 +1177,7 @@ export namespace Protocol {
              */
             result: ScriptCoverage[];
             /**
-             * The timestamp (in milliseconds) the coverage update was taken in the backend.
+             * Monotonically increasing time (in seconds) when the coverage update was taken in the backend.
              */
             timestamp: number;
         }

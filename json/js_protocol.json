@@ -1814,7 +1814,7 @@
                     "returns": [
                         {
                             "name": "timestamp",
-                            "description": "The timestamp (in milliseconds) the coverage update was taken in the backend.",
+                            "description": "Monotonically increasing time (in seconds) when the coverage update was taken in the backend.",
                             "type": "number"
                         }
                     ]
@@ -1857,7 +1857,7 @@
                         },
                         {
                             "name": "timestamp",
-                            "description": "The timestamp (in milliseconds) the coverage update was taken in the backend.",
+                            "description": "Monotonically increasing time (in seconds) when the coverage update was taken in the backend.",
                             "type": "number"
                         }
                     ]

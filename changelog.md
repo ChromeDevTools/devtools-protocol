@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r730280
+###### _2020-01-10 12:16:05 -0800_ | Diff: [e4ef206...b8266f8](https://github.com/ChromeDevTools/devtools-protocol/compare/e4ef206...b8266f8)
+#### `Profiler`: modified commands
+* [`Profiler.startPreciseCoverage`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-startPreciseCoverage)
+* [`Profiler.takePreciseCoverage`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-takePreciseCoverage) - The return value's `timestamp` _added_. 
+
+
 ## Roll protocol to r726364
 ###### _2019-12-19 06:16:08 -0800_ | Diff: [1d614ea...db57660](https://github.com/ChromeDevTools/devtools-protocol/compare/1d614ea...db57660)
 #### `HeapProfiler`: modified commands
