@@ -3815,6 +3815,10 @@ export namespace Protocol {
 
         export interface TakeCoverageDeltaResponse {
             coverage: RuleUsage[];
+            /**
+             * Monotonically increasing time, in seconds.
+             */
+            timestamp: number;
         }
 
         /**
