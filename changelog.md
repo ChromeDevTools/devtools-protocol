@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r731173
+###### _2020-01-14 01:15:59 -0800_ | Diff: [a88e2e8...a8ab994](https://github.com/ChromeDevTools/devtools-protocol/compare/a88e2e8...a8ab994)
+#### `CSS`: modified command
+* [`CSS.takeCoverageDelta`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-takeCoverageDelta) - The return value's `timestamp` _added_. 
+
+
 ## Roll protocol to r730699
 ###### _2020-01-13 11:16:22 -0800_ | Diff: [b8266f8...a88e2e8](https://github.com/ChromeDevTools/devtools-protocol/compare/b8266f8...a88e2e8)
 #### `Profiler`: modified commands
