@@ -9703,7 +9703,7 @@ export namespace Protocol {
             fixed?: integer;
         }
 
-        export type ClientNavigationReason = ('formSubmissionGet' | 'formSubmissionPost' | 'httpHeaderRefresh' | 'scriptInitiated' | 'metaTagRefresh' | 'pageBlockInterstitial' | 'reload');
+        export type ClientNavigationReason = ('formSubmissionGet' | 'formSubmissionPost' | 'httpHeaderRefresh' | 'scriptInitiated' | 'metaTagRefresh' | 'pageBlockInterstitial' | 'reload' | 'anchorClick');
 
         export interface AddScriptToEvaluateOnLoadRequest {
             scriptSource: string;
@@ -10412,7 +10412,7 @@ export namespace Protocol {
             /**
              * The reason for the navigation.
              */
-            reason: ('formSubmissionGet' | 'formSubmissionPost' | 'httpHeaderRefresh' | 'scriptInitiated' | 'metaTagRefresh' | 'pageBlockInterstitial' | 'reload');
+            reason: ClientNavigationReason;
             /**
              * The destination URL for the scheduled navigation.
              */

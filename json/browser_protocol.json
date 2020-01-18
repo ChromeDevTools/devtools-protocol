@@ -11625,7 +11625,8 @@
                         "scriptInitiated",
                         "metaTagRefresh",
                         "pageBlockInterstitial",
-                        "reload"
+                        "reload",
+                        "anchorClick"
                     ]
                 }
             ],
@@ -12809,16 +12810,7 @@
                         {
                             "name": "reason",
                             "description": "The reason for the navigation.",
-                            "type": "string",
-                            "enum": [
-                                "formSubmissionGet",
-                                "formSubmissionPost",
-                                "httpHeaderRefresh",
-                                "scriptInitiated",
-                                "metaTagRefresh",
-                                "pageBlockInterstitial",
-                                "reload"
-                            ]
+                            "$ref": "ClientNavigationReason"
                         },
                         {
                             "name": "url",
