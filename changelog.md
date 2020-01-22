@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r733814
+###### _2020-01-21 16:16:31 -0800_ | Diff: [b801714...34770ad](https://github.com/ChromeDevTools/devtools-protocol/compare/b801714...34770ad)
+#### `Profiler`: new event
+* [`Profiler.preciseCoverageDeltaUpdate`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#event-preciseCoverageDeltaUpdate)
+
+
 ## Roll protocol to r733150
 ###### _2020-01-17 23:16:18 -0800_ | Diff: [e147044...b801714](https://github.com/ChromeDevTools/devtools-protocol/compare/e147044...b801714)
 #### `Page`: modified event
