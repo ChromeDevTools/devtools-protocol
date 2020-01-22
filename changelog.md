@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r733150
+###### _2020-01-17 23:16:18 -0800_ | Diff: [e147044...b801714](https://github.com/ChromeDevTools/devtools-protocol/compare/e147044...b801714)
+#### `Page`: modified event
+* [`Page.frameScheduledNavigation`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameScheduledNavigation) - The `reason` in the parameters had `type` _removed_. The `reason` in the parameters had `enum` _removed_. The parameters's `$ref` _added_. 
+#### `Page`: modified type
+* [`Page.ClientNavigationReason`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ClientNavigationReason) - The enum's `anchorClick` _added_. 
+
+
 ## Roll protocol to r731173
 ###### _2020-01-14 01:15:59 -0800_ | Diff: [a88e2e8...a8ab994](https://github.com/ChromeDevTools/devtools-protocol/compare/a88e2e8...a8ab994)
 #### `CSS`: modified command

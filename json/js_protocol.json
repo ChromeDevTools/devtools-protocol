@@ -1948,6 +1948,31 @@
                             "type": "string"
                         }
                     ]
+                },
+                {
+                    "name": "preciseCoverageDeltaUpdate",
+                    "description": "Reports coverage delta since the last poll (either from an event like this, or from\n`takePreciseCoverage` for the current isolate. May only be sent if precise code\ncoverage has been started. This event can be trigged by the embedder to, for example,\ntrigger collection of coverage data immediatelly at a certain point in time.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "timestamp",
+                            "description": "Monotonically increasing time (in seconds) when the coverage update was taken in the backend.",
+                            "type": "number"
+                        },
+                        {
+                            "name": "occassion",
+                            "description": "Identifier for distinguishing coverage events.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "result",
+                            "description": "Coverage data for the current isolate.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "ScriptCoverage"
+                            }
+                        }
+                    ]
                 }
             ]
         },

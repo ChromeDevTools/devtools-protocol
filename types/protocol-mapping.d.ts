@@ -53,6 +53,13 @@ export namespace ProtocolMapping {
          */
         'Profiler.consoleProfileStarted': [Protocol.Profiler.ConsoleProfileStartedEvent];
         /**
+         * Reports coverage delta since the last poll (either from an event like this, or from
+         * `takePreciseCoverage` for the current isolate. May only be sent if precise code
+         * coverage has been started. This event can be trigged by the embedder to, for example,
+         * trigger collection of coverage data immediatelly at a certain point in time.
+         */
+        'Profiler.preciseCoverageDeltaUpdate': [Protocol.Profiler.PreciseCoverageDeltaUpdateEvent];
+        /**
          * Notification is issued every time when binding is called.
          */
         'Runtime.bindingCalled': [Protocol.Runtime.BindingCalledEvent];
