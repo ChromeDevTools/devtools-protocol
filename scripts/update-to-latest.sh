@@ -43,7 +43,7 @@ cp "$old_browser_protocol_path" "$protocol_repo_path/pdl"
 cp "$browser_protocol_path" "$protocol_repo_path/pdl"
 
 # extract cr revision number
-commit_pos_line=$(git log --date=iso --no-color --max-count=1 | gtac | grep -E -o "Cr-Commit-Position.*")
+commit_pos_line=$(git log --date=iso --no-color --max-count=1 | gtac | grep -E -o "Cr-Commit-Position.*" | head -n1)
 commit_rev=$(echo "$commit_pos_line" | grep -E -o "\d+")
 
 # generate json from pdl
