@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r734342
+###### _2020-01-22 20:16:01 -0800_ | Diff: [887b29e...36518ec](https://github.com/ChromeDevTools/devtools-protocol/compare/887b29e...36518ec)
+#### `Page`: modified command
+* [`Page.getInstallabilityErrors`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getInstallabilityErrors) - The return value's `deprecated` _added_. The return value's `installabilityErrors` _added_. 
+#### `Page`: new types
+* [`Page.InstallabilityErrorArgument`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-InstallabilityErrorArgument)
+* [`Page.InstallabilityError`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-InstallabilityError)
+
+
 ## Roll protocol to r733814
 ###### _2020-01-21 16:16:31 -0800_ | Diff: [b801714...34770ad](https://github.com/ChromeDevTools/devtools-protocol/compare/b801714...34770ad)
 #### `Profiler`: new event
