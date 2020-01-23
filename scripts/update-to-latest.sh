@@ -25,7 +25,7 @@ cd "$chromium_src_path" || exit 1
 # get latest from chromium master
 git fetch origin master
 git checkout -f origin/master
-env GYP_DEFINES=disable_nacl=1 gclient sync --jobs=70 --nohooks
+env GYP_DEFINES=disable_nacl=1 gclient sync --jobs=70 --nohooks --delete_unversioned_trees --reset
 
 
 # This path was used previous to https://chromium-review.googlesource.com/c/chromium/src/+/1898538 landing
