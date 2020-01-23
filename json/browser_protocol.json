@@ -11628,6 +11628,44 @@
                         "reload",
                         "anchorClick"
                     ]
+                },
+                {
+                    "id": "InstallabilityErrorArgument",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "name",
+                            "description": "Argument name (e.g. name:'minimum-icon-size-in-pixels').",
+                            "type": "string"
+                        },
+                        {
+                            "name": "value",
+                            "description": "Argument value (e.g. value:'64').",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "id": "InstallabilityError",
+                    "description": "The installability error",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "errorId",
+                            "description": "The error id (e.g. 'manifest-missing-suitable-icon').",
+                            "type": "string"
+                        },
+                        {
+                            "name": "errorArguments",
+                            "description": "The list of error arguments (e.g. {name:'minimum-icon-size-in-pixels', value:'64'}).",
+                            "type": "array",
+                            "items": {
+                                "$ref": "InstallabilityErrorArgument"
+                            }
+                        }
+                    ]
                 }
             ],
             "commands": [
@@ -11856,9 +11894,18 @@
                     "returns": [
                         {
                             "name": "errors",
+                            "deprecated": true,
                             "type": "array",
                             "items": {
                                 "type": "string"
+                            }
+                        },
+                        {
+                            "name": "installabilityErrors",
+                            "experimental": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "InstallabilityError"
                             }
                         }
                     ]

@@ -9726,6 +9726,31 @@ export namespace Protocol {
 
         export type ClientNavigationReason = ('formSubmissionGet' | 'formSubmissionPost' | 'httpHeaderRefresh' | 'scriptInitiated' | 'metaTagRefresh' | 'pageBlockInterstitial' | 'reload' | 'anchorClick');
 
+        export interface InstallabilityErrorArgument {
+            /**
+             * Argument name (e.g. name:'minimum-icon-size-in-pixels').
+             */
+            name: string;
+            /**
+             * Argument value (e.g. value:'64').
+             */
+            value: string;
+        }
+
+        /**
+         * The installability error
+         */
+        export interface InstallabilityError {
+            /**
+             * The error id (e.g. 'manifest-missing-suitable-icon').
+             */
+            errorId: string;
+            /**
+             * The list of error arguments (e.g. {name:'minimum-icon-size-in-pixels', value:'64'}).
+             */
+            errorArguments: InstallabilityErrorArgument[];
+        }
+
         export interface AddScriptToEvaluateOnLoadRequest {
             scriptSource: string;
         }
@@ -9846,6 +9871,7 @@ export namespace Protocol {
 
         export interface GetInstallabilityErrorsResponse {
             errors: string[];
+            installabilityErrors: InstallabilityError[];
         }
 
         export interface GetManifestIconsResponse {
