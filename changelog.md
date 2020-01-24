@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r734741
+###### _2020-01-23 16:16:00 -0800_ | Diff: [b28dfe5...48ffb48](https://github.com/ChromeDevTools/devtools-protocol/compare/b28dfe5...48ffb48)
+#### `Media`: modified type
+* [`Media.PlayerEventType`](https://chromedevtools.github.io/devtools-protocol/tot/Media/#type-PlayerEventType) - The enum's `playbackEvent` _updated_. The enum's `systemEvent` _updated_. 
+
+
 ## Roll protocol to r734342
 ###### _2020-01-22 20:16:01 -0800_ | Diff: [887b29e...36518ec](https://github.com/ChromeDevTools/devtools-protocol/compare/887b29e...36518ec)
 #### `Page`: modified command
