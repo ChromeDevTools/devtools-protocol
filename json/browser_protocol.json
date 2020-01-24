@@ -16379,8 +16379,8 @@
                     "description": "Break out events into different types",
                     "type": "string",
                     "enum": [
-                        "playbackEvent",
-                        "systemEvent",
+                        "errorEvent",
+                        "triggeredEvent",
                         "messageEvent"
                     ]
                 },

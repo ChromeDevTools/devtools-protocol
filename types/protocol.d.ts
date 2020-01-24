@@ -12616,7 +12616,7 @@ export namespace Protocol {
         /**
          * Break out events into different types
          */
-        export type PlayerEventType = ('playbackEvent' | 'systemEvent' | 'messageEvent');
+        export type PlayerEventType = ('errorEvent' | 'triggeredEvent' | 'messageEvent');
 
         export interface PlayerEvent {
             type: PlayerEventType;
