@@ -7163,6 +7163,10 @@ export namespace Protocol {
              * A list of strings specifying reasons for the given layer to become composited.
              */
             compositingReasons: string[];
+            /**
+             * A list of strings specifying reason IDs for the given layer to become composited.
+             */
+            compositingReasonIds: string[];
         }
 
         export interface LoadSnapshotRequest {

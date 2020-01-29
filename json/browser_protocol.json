@@ -7827,6 +7827,15 @@
                         {
                             "name": "compositingReasons",
                             "description": "A list of strings specifying reasons for the given layer to become composited.",
+                            "deprecated": true,
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        {
+                            "name": "compositingReasonIds",
+                            "description": "A list of strings specifying reason IDs for the given layer to become composited.",
                             "type": "array",
                             "items": {
                                 "type": "string"
