@@ -746,6 +746,19 @@ export namespace ProtocolProxyApi {
          */
         getEncodedResponse(params: Protocol.Audits.GetEncodedResponseRequest): Promise<Protocol.Audits.GetEncodedResponseResponse>;
 
+        /**
+         * Disables issues domain, prevents further issues from being reported to the client.
+         */
+        disable(): Promise<void>;
+
+        /**
+         * Enables issues domain, sends the issues collected so far to the client by means of the
+         * `issueAdded` event.
+         */
+        enable(): Promise<void>;
+
+        on(event: 'issueAdded', listener: (params: Protocol.Audits.IssueAddedEvent) => void): void;
+
     }
 
     export interface BackgroundServiceApi {

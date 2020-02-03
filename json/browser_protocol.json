@@ -916,6 +916,18 @@
             "dependencies": [
                 "Network"
             ],
+            "types": [
+                {
+                    "id": "Issue",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "code",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ],
             "commands": [
                 {
                     "name": "getEncodedResponse",
@@ -965,6 +977,25 @@
                             "name": "encodedSize",
                             "description": "Size after re-encoding.",
                             "type": "integer"
+                        }
+                    ]
+                },
+                {
+                    "name": "disable",
+                    "description": "Disables issues domain, prevents further issues from being reported to the client."
+                },
+                {
+                    "name": "enable",
+                    "description": "Enables issues domain, sends the issues collected so far to the client by means of the\n`issueAdded` event."
+                }
+            ],
+            "events": [
+                {
+                    "name": "issueAdded",
+                    "parameters": [
+                        {
+                            "name": "issue",
+                            "$ref": "Issue"
                         }
                     ]
                 }

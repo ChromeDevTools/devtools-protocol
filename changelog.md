@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r736603
+###### _2020-01-29 15:15:58 -0800_ | Diff: [b9fb38a...807de1a](https://github.com/ChromeDevTools/devtools-protocol/compare/b9fb38a...807de1a)
+#### `LayerTree`: modified command
+* [`LayerTree.compositingReasons`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#method-compositingReasons) - The return value's `deprecated` _added_. The return value's `compositingReasonIds` _added_. 
+
+
 ## Roll protocol to r734741
 ###### _2020-01-23 16:16:00 -0800_ | Diff: [b28dfe5...48ffb48](https://github.com/ChromeDevTools/devtools-protocol/compare/b28dfe5...48ffb48)
 #### `Media`: modified type

@@ -106,6 +106,7 @@ export namespace ProtocolMapping {
         'Animation.animationStarted': [Protocol.Animation.AnimationStartedEvent];
         'ApplicationCache.applicationCacheStatusUpdated': [Protocol.ApplicationCache.ApplicationCacheStatusUpdatedEvent];
         'ApplicationCache.networkStateUpdated': [Protocol.ApplicationCache.NetworkStateUpdatedEvent];
+        'Audits.issueAdded': [Protocol.Audits.IssueAddedEvent];
         /**
          * Called when the recording state for the service has been updated.
          */
@@ -1288,6 +1289,21 @@ export namespace ProtocolMapping {
         'Audits.getEncodedResponse': {
             paramsType: [Protocol.Audits.GetEncodedResponseRequest];
             returnType: Protocol.Audits.GetEncodedResponseResponse;
+        };
+        /**
+         * Disables issues domain, prevents further issues from being reported to the client.
+         */
+        'Audits.disable': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
+         * Enables issues domain, sends the issues collected so far to the client by means of the
+         * `issueAdded` event.
+         */
+        'Audits.enable': {
+            paramsType: [];
+            returnType: void;
         };
         /**
          * Enables event updates for the service.

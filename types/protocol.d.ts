@@ -2695,6 +2695,10 @@ export namespace Protocol {
      */
     export namespace Audits {
 
+        export interface Issue {
+            code: string;
+        }
+
         export interface GetEncodedResponseRequest {
             /**
              * Identifier of the network request to get content for.
@@ -2727,6 +2731,10 @@ export namespace Protocol {
              * Size after re-encoding.
              */
             encodedSize: integer;
+        }
+
+        export interface IssueAddedEvent {
+            issue: Issue;
         }
     }
 
