@@ -1,5 +1,16 @@
 
 
+## Roll protocol to r737833
+###### _2020-02-03 10:16:52 -0800_ | Diff: [807de1a...6d0f4a7](https://github.com/ChromeDevTools/devtools-protocol/compare/807de1a...6d0f4a7)
+#### `Audits`: new commands
+* [`Audits.disable`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#method-disable)
+* [`Audits.enable`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#method-enable)
+#### `Audits`: new event
+* [`Audits.issueAdded`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#event-issueAdded)
+#### `Audits`: new type
+* [`Audits.Issue`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-Issue)
+
+
 ## Roll protocol to r736603
 ###### _2020-01-29 15:15:58 -0800_ | Diff: [b9fb38a...807de1a](https://github.com/ChromeDevTools/devtools-protocol/compare/b9fb38a...807de1a)
 #### `LayerTree`: modified command
