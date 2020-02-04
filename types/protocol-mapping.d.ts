@@ -704,7 +704,7 @@ export namespace ProtocolMapping {
          * Resumes JavaScript execution.
          */
         'Debugger.resume': {
-            paramsType: [];
+            paramsType: [Protocol.Debugger.ResumeRequest?];
             returnType: void;
         };
         /**

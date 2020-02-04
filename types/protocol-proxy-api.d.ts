@@ -190,7 +190,7 @@ export namespace ProtocolProxyApi {
         /**
          * Resumes JavaScript execution.
          */
-        resume(): Promise<void>;
+        resume(params: Protocol.Debugger.ResumeRequest): Promise<void>;
 
         /**
          * Searches for given string in script content.

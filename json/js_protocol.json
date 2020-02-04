@@ -578,7 +578,15 @@
                 },
                 {
                     "name": "resume",
-                    "description": "Resumes JavaScript execution."
+                    "description": "Resumes JavaScript execution.",
+                    "parameters": [
+                        {
+                            "name": "terminateOnResume",
+                            "description": "Set to true to terminate execution upon resuming execution. In contrast\nto Runtime.terminateExecution, this will allows to execute further\nJavaScript (i.e. via evaluation) until execution of the paused code\nis actually resumed, at which point termination is triggered.\nIf execution is currently not paused, this parameter has no effect.",
+                            "optional": true,
+                            "type": "boolean"
+                        }
+                    ]
                 },
                 {
                     "name": "searchInContent",

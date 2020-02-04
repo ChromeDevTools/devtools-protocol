@@ -359,6 +359,17 @@ export namespace Protocol {
             asyncStackTraceId?: Runtime.StackTraceId;
         }
 
+        export interface ResumeRequest {
+            /**
+             * Set to true to terminate execution upon resuming execution. In contrast
+             * to Runtime.terminateExecution, this will allows to execute further
+             * JavaScript (i.e. via evaluation) until execution of the paused code
+             * is actually resumed, at which point termination is triggered.
+             * If execution is currently not paused, this parameter has no effect.
+             */
+            terminateOnResume?: boolean;
+        }
+
         export interface SearchInContentRequest {
             /**
              * Id of the script to search in.
