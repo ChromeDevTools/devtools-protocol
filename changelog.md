@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r738996
+###### _2020-02-06 09:16:41 -0800_ | Diff: [44116de...4675295](https://github.com/ChromeDevTools/devtools-protocol/compare/44116de...4675295)
+#### `DOM`: new command
+* [`DOM.scrollIntoViewIfNeeded`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-scrollIntoViewIfNeeded)
+
+
 ## Roll protocol to r738234
 ###### _2020-02-04 10:16:09 -0800_ | Diff: [28602ab...c48e06f](https://github.com/ChromeDevTools/devtools-protocol/compare/28602ab...c48e06f)
 #### `Debugger`: modified command
