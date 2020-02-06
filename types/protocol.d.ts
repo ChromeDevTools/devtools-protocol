@@ -4456,6 +4456,26 @@ export namespace Protocol {
             node: Node;
         }
 
+        export interface ScrollIntoViewIfNeededRequest {
+            /**
+             * Identifier of the node.
+             */
+            nodeId?: NodeId;
+            /**
+             * Identifier of the backend node.
+             */
+            backendNodeId?: BackendNodeId;
+            /**
+             * JavaScript object id of the node wrapper.
+             */
+            objectId?: Runtime.RemoteObjectId;
+            /**
+             * The rect to be scrolled into view, relative to the node's border box, in CSS pixels.
+             * When omitted, center of the node will be used, similar to Element.scrollIntoView.
+             */
+            rect?: Rect;
+        }
+
         export interface DiscardSearchResultsRequest {
             /**
              * Unique search session identifier.
