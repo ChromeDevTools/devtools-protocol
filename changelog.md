@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r738234
+###### _2020-02-04 10:16:09 -0800_ | Diff: [28602ab...c48e06f](https://github.com/ChromeDevTools/devtools-protocol/compare/28602ab...c48e06f)
+#### `Debugger`: modified command
+* [`Debugger.resume`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-resume)
+
+
 ## Roll protocol to r737833
 ###### _2020-02-03 10:16:52 -0800_ | Diff: [807de1a...6d0f4a7](https://github.com/ChromeDevTools/devtools-protocol/compare/807de1a...6d0f4a7)
 #### `Audits`: new commands
