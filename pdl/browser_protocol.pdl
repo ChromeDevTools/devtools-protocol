@@ -5491,8 +5491,7 @@ domain Page
 
   experimental command getInstallabilityErrors
     returns
-      deprecated array of string errors
-      experimental array of InstallabilityError installabilityErrors
+      array of InstallabilityError installabilityErrors
 
   experimental command getManifestIcons
     returns

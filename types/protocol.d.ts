@@ -9913,7 +9913,6 @@ export namespace Protocol {
         }
 
         export interface GetInstallabilityErrorsResponse {
-            errors: string[];
             installabilityErrors: InstallabilityError[];
         }
 
