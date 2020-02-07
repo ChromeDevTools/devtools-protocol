@@ -1690,13 +1690,6 @@ export namespace ProtocolMapping {
             returnType: Protocol.DOM.DescribeNodeResponse;
         };
         /**
-         * Scrolls the specified rect of the given node into view if not already visible.
-         */
-        'DOM.scrollIntoViewIfNeeded': {
-            paramsType: [Protocol.DOM.ScrollIntoViewIfNeededRequest?];
-            returnType: void;
-        };
-        /**
          * Disables DOM agent for the given page.
          */
         'DOM.disable': {
