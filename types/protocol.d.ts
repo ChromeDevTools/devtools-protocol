@@ -11590,6 +11590,13 @@ export namespace Protocol {
             bindingName?: string;
         }
 
+        export interface CreateBrowserContextRequest {
+            /**
+             * If specified, disposes this context when debugging session disconnects.
+             */
+            disposeOnDetach?: boolean;
+        }
+
         export interface CreateBrowserContextResponse {
             /**
              * The id of the context created.

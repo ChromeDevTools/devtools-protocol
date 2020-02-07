@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r739180
+###### _2020-02-06 16:15:54 -0800_ | Diff: [13d0d9d...b442932](https://github.com/ChromeDevTools/devtools-protocol/compare/13d0d9d...b442932)
+#### `Page`: modified command
+* [`Page.getInstallabilityErrors`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getInstallabilityErrors) - The return value's `installabilityErrors` _removed_. The `errors` in the return value had `deprecated` _removed_. The `errors` in the return value had `type` _removed_. The `errors` in the return value had `name` _updated_. The `0` in the return value had `$ref` _added_. 
+
+
 ## Roll protocol to r738996
 ###### _2020-02-06 09:16:41 -0800_ | Diff: [44116de...4675295](https://github.com/ChromeDevTools/devtools-protocol/compare/44116de...4675295)
 #### `DOM`: new command

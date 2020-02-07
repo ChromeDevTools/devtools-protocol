@@ -2938,7 +2938,7 @@ export namespace ProtocolProxyApi {
          * Creates a new empty BrowserContext. Similar to an incognito profile but you can have more than
          * one.
          */
-        createBrowserContext(): Promise<Protocol.Target.CreateBrowserContextResponse>;
+        createBrowserContext(params: Protocol.Target.CreateBrowserContextRequest): Promise<Protocol.Target.CreateBrowserContextResponse>;
 
         /**
          * Returns all browser contexts created with `Target.createBrowserContext` method.

@@ -6736,6 +6736,9 @@ domain Target
   # Creates a new empty BrowserContext. Similar to an incognito profile but you can have more than
   # one.
   experimental command createBrowserContext
+    parameters
+      # If specified, disposes this context when debugging session disconnects.
+      optional boolean disposeOnDetach
     returns
       # The id of the context created.
       Browser.BrowserContextID browserContextId

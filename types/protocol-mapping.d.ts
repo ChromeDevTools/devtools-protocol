@@ -3606,7 +3606,7 @@ export namespace ProtocolMapping {
          * one.
          */
         'Target.createBrowserContext': {
-            paramsType: [];
+            paramsType: [Protocol.Target.CreateBrowserContextRequest?];
             returnType: Protocol.Target.CreateBrowserContextResponse;
         };
         /**
