@@ -1106,6 +1106,13 @@ export namespace ProtocolProxyApi {
         describeNode(params: Protocol.DOM.DescribeNodeRequest): Promise<Protocol.DOM.DescribeNodeResponse>;
 
         /**
+         * Scrolls the specified rect of the given node into view if not already visible.
+         * Note: exactly one between nodeId, backendNodeId and objectId should be passed
+         * to identify the node.
+         */
+        scrollIntoViewIfNeeded(params: Protocol.DOM.ScrollIntoViewIfNeededRequest): Promise<void>;
+
+        /**
          * Disables DOM agent for the given page.
          */
         disable(): Promise<void>;

@@ -1668,6 +1668,21 @@ domain DOM
       # Node description.
       Node node
 
+  # Scrolls the specified rect of the given node into view if not already visible.
+  # Note: exactly one between nodeId, backendNodeId and objectId should be passed
+  # to identify the node.
+  experimental command scrollIntoViewIfNeeded
+    parameters
+      # Identifier of the node.
+      optional NodeId nodeId
+      # Identifier of the backend node.
+      optional BackendNodeId backendNodeId
+      # JavaScript object id of the node wrapper.
+      optional Runtime.RemoteObjectId objectId
+      # The rect to be scrolled into view, relative to the node's border box, in CSS pixels.
+      # When omitted, center of the node will be used, similar to Element.scrollIntoView.
+      optional Rect rect
+
   # Disables DOM agent for the given page.
   command disable
 

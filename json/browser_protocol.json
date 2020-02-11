@@ -3624,6 +3624,37 @@
                     ]
                 },
                 {
+                    "name": "scrollIntoViewIfNeeded",
+                    "description": "Scrolls the specified rect of the given node into view if not already visible.\nNote: exactly one between nodeId, backendNodeId and objectId should be passed\nto identify the node.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "nodeId",
+                            "description": "Identifier of the node.",
+                            "optional": true,
+                            "$ref": "NodeId"
+                        },
+                        {
+                            "name": "backendNodeId",
+                            "description": "Identifier of the backend node.",
+                            "optional": true,
+                            "$ref": "BackendNodeId"
+                        },
+                        {
+                            "name": "objectId",
+                            "description": "JavaScript object id of the node wrapper.",
+                            "optional": true,
+                            "$ref": "Runtime.RemoteObjectId"
+                        },
+                        {
+                            "name": "rect",
+                            "description": "The rect to be scrolled into view, relative to the node's border box, in CSS pixels.\nWhen omitted, center of the node will be used, similar to Element.scrollIntoView.",
+                            "optional": true,
+                            "$ref": "Rect"
+                        }
+                    ]
+                },
+                {
                     "name": "disable",
                     "description": "Disables DOM agent for the given page."
                 },
