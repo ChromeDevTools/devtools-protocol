@@ -6246,6 +6246,14 @@ export namespace Protocol {
             virtualTimeTicksBase: number;
         }
 
+        export interface SetLocaleOverrideRequest {
+            /**
+             * ICU style C locale (e.g. "en_US"). If not specified or empty, disables the override and
+             * restores default host system locale.
+             */
+            locale?: string;
+        }
+
         export interface SetTimezoneOverrideRequest {
             /**
              * The timezone identifier. If empty, disables the override and

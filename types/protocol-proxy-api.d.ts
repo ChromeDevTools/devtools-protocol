@@ -1628,6 +1628,11 @@ export namespace ProtocolProxyApi {
         setVirtualTimePolicy(params: Protocol.Emulation.SetVirtualTimePolicyRequest): Promise<Protocol.Emulation.SetVirtualTimePolicyResponse>;
 
         /**
+         * Overrides default host system locale with the specified one.
+         */
+        setLocaleOverride(params: Protocol.Emulation.SetLocaleOverrideRequest): Promise<void>;
+
+        /**
          * Overrides default host system timezone with the specified one.
          */
         setTimezoneOverride(params: Protocol.Emulation.SetTimezoneOverrideRequest): Promise<void>;

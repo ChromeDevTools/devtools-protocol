@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r740745
+###### _2020-02-12 10:16:48 -0800_ | Diff: [2369f6b...23be539](https://github.com/ChromeDevTools/devtools-protocol/compare/2369f6b...23be539)
+#### `Profiler`: modified command
+* [`Profiler.startPreciseCoverage`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-startPreciseCoverage) - The parameters's `allowTriggeredUpdates` _added_. 
+
+
 ## Roll protocol to r740289
 ###### _2020-02-11 06:17:02 -0800_ | Diff: [395db8b...2369f6b](https://github.com/ChromeDevTools/devtools-protocol/compare/395db8b...2369f6b)
 #### `DOM`: new command

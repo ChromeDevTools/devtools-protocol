@@ -2902,6 +2902,13 @@ domain Emulation
       # Absolute timestamp at which virtual time was first enabled (up time in milliseconds).
       number virtualTimeTicksBase
 
+  # Overrides default host system locale with the specified one.
+  experimental command setLocaleOverride
+    parameters
+      # ICU style C locale (e.g. "en_US"). If not specified or empty, disables the override and
+      # restores default host system locale.
+      optional string locale
+
   # Overrides default host system timezone with the specified one.
   experimental command setTimezoneOverride
     parameters

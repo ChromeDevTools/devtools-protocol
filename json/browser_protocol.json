@@ -6447,6 +6447,19 @@
                     ]
                 },
                 {
+                    "name": "setLocaleOverride",
+                    "description": "Overrides default host system locale with the specified one.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "locale",
+                            "description": "ICU style C locale (e.g. \"en_US\"). If not specified or empty, disables the override and\nrestores default host system locale.",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "setTimezoneOverride",
                     "description": "Overrides default host system timezone with the specified one.",
                     "experimental": true,

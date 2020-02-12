@@ -2283,6 +2283,13 @@ export namespace ProtocolMapping {
             returnType: Protocol.Emulation.SetVirtualTimePolicyResponse;
         };
         /**
+         * Overrides default host system locale with the specified one.
+         */
+        'Emulation.setLocaleOverride': {
+            paramsType: [Protocol.Emulation.SetLocaleOverrideRequest?];
+            returnType: void;
+        };
+        /**
          * Overrides default host system timezone with the specified one.
          */
         'Emulation.setTimezoneOverride': {
