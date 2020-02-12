@@ -1166,6 +1166,10 @@ export namespace Protocol {
              * Collect block-based coverage.
              */
             detailed?: boolean;
+            /**
+             * Allow the backend to send updates on its own initiative
+             */
+            allowTriggeredUpdates?: boolean;
         }
 
         export interface StartPreciseCoverageResponse {
