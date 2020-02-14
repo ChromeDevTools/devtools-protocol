@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r740866
+###### _2020-02-12 15:15:59 -0800_ | Diff: [23be539...7b97e49](https://github.com/ChromeDevTools/devtools-protocol/compare/23be539...7b97e49)
+#### `Emulation`: new command
+* [`Emulation.setLocaleOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setLocaleOverride)
+
+
 ## Roll protocol to r740745
 ###### _2020-02-12 10:16:48 -0800_ | Diff: [2369f6b...23be539](https://github.com/ChromeDevTools/devtools-protocol/compare/2369f6b...23be539)
 #### `Profiler`: modified command
