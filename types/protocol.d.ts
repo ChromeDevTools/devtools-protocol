@@ -9806,6 +9806,11 @@ export namespace Protocol {
             errorArguments: InstallabilityErrorArgument[];
         }
 
+        /**
+         * The referring-policy used for the navigation.
+         */
+        export type ReferrerPolicy = ('noReferrer' | 'noReferrerWhenDowngrade' | 'origin' | 'originWhenCrossOrigin' | 'sameOrigin' | 'strictOrigin' | 'strictOriginWhenCrossOrigin' | 'unsafeUrl');
+
         export interface AddScriptToEvaluateOnLoadRequest {
             scriptSource: string;
         }
@@ -10030,6 +10035,10 @@ export namespace Protocol {
              * Frame id to navigate, if not specified navigates the top frame.
              */
             frameId?: FrameId;
+            /**
+             * Referrer-policy used for the navigation.
+             */
+            referrerPolicy?: ReferrerPolicy;
         }
 
         export interface NavigateResponse {

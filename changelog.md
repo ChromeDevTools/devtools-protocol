@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r741364
+###### _2020-02-13 22:15:58 -0800_ | Diff: [7b97e49...34b27ba](https://github.com/ChromeDevTools/devtools-protocol/compare/7b97e49...34b27ba)
+#### `Target`: modified command
+* [`Target.setAutoAttach`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-setAutoAttach) - The parameters's `windowOpen` _removed_. 
+
+
 ## Roll protocol to r740866
 ###### _2020-02-12 15:15:59 -0800_ | Diff: [23be539...7b97e49](https://github.com/ChromeDevTools/devtools-protocol/compare/23be539...7b97e49)
 #### `Emulation`: new command
