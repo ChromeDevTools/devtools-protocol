@@ -2847,7 +2847,7 @@
                         },
                         {
                             "name": "replMode",
-                            "description": "Reserved flag for future REPL mode support. Setting this flag has currently no effect.",
+                            "description": "Setting this flag to true enables `let` re-declaration and top-level `await`.\nNote that `let` variables can only be re-declared if they originate from\n`replMode` themselves.",
                             "experimental": true,
                             "optional": true,
                             "type": "boolean"

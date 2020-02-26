@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r743773
+###### _2020-02-21 19:15:58 -0800_ | Diff: [34b27ba...a54f251](https://github.com/ChromeDevTools/devtools-protocol/compare/34b27ba...a54f251)
+#### `Page`: modified command
+* [`Page.navigate`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-navigate) - The parameters's `referrerPolicy` _added_. 
+#### `Page`: new type
+* [`Page.ReferrerPolicy`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ReferrerPolicy)
+
+
 ## Roll protocol to r741364
 ###### _2020-02-13 22:15:58 -0800_ | Diff: [7b97e49...34b27ba](https://github.com/ChromeDevTools/devtools-protocol/compare/7b97e49...34b27ba)
 #### `Target`: modified command

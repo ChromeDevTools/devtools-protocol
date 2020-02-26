@@ -1826,7 +1826,9 @@ export namespace Protocol {
              */
             disableBreaks?: boolean;
             /**
-             * Reserved flag for future REPL mode support. Setting this flag has currently no effect.
+             * Setting this flag to true enables `let` re-declaration and top-level `await`.
+             * Note that `let` variables can only be re-declared if they originate from
+             * `replMode` themselves.
              */
             replMode?: boolean;
         }
