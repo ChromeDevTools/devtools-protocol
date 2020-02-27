@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r744719
+###### _2020-02-26 10:16:06 -0800_ | Diff: [a54f251...ecd17e2](https://github.com/ChromeDevTools/devtools-protocol/compare/a54f251...ecd17e2)
+#### `Runtime`: modified command
+* [`Runtime.evaluate`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-evaluate) - The `replMode` in the parameters had `description` _updated_. 
+
+
 ## Roll protocol to r743773
 ###### _2020-02-21 19:15:58 -0800_ | Diff: [34b27ba...a54f251](https://github.com/ChromeDevTools/devtools-protocol/compare/34b27ba...a54f251)
 #### `Page`: modified command
