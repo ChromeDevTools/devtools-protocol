@@ -2724,7 +2724,7 @@ export namespace ProtocolProxyApi {
         /**
          * Enable collecting and reporting metrics.
          */
-        enable(): Promise<void>;
+        enable(params: Protocol.Performance.EnableRequest): Promise<void>;
 
         /**
          * Sets time domain to use for collecting and reporting duration metrics.

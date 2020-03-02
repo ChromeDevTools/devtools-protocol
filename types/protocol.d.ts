@@ -10723,6 +10723,13 @@ export namespace Protocol {
             value: number;
         }
 
+        export interface EnableRequest {
+            /**
+             * Time domain to use for collecting and reporting duration metrics.
+             */
+            timeDomain?: ('timeTicks' | 'threadTicks');
+        }
+
         export interface SetTimeDomainRequest {
             /**
              * Time domain

@@ -3384,7 +3384,7 @@ export namespace ProtocolMapping {
          * Enable collecting and reporting metrics.
          */
         'Performance.enable': {
-            paramsType: [];
+            paramsType: [Protocol.Performance.EnableRequest?];
             returnType: void;
         };
         /**
