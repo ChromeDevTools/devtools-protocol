@@ -1596,6 +1596,11 @@ export namespace ProtocolProxyApi {
         setEmulatedMedia(params: Protocol.Emulation.SetEmulatedMediaRequest): Promise<void>;
 
         /**
+         * Emulates the given vision deficiency.
+         */
+        setEmulatedVisionDeficiency(params: Protocol.Emulation.SetEmulatedVisionDeficiencyRequest): Promise<void>;
+
+        /**
          * Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position
          * unavailable.
          */

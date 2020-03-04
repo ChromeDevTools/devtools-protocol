@@ -6328,6 +6328,30 @@
                     ]
                 },
                 {
+                    "name": "setEmulatedVisionDeficiency",
+                    "description": "Emulates the given vision deficiency.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "type",
+                            "description": "Vision deficiency to emulate.",
+                            "type": "string",
+                            "enum": [
+                                "none",
+                                "achromatomaly",
+                                "achromatopsia",
+                                "blurredVision",
+                                "deuteranomaly",
+                                "deuteranopia",
+                                "protanomaly",
+                                "protanopia",
+                                "tritanomaly",
+                                "tritanopia"
+                            ]
+                        }
+                    ]
+                },
+                {
                     "name": "setGeolocationOverride",
                     "description": "Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position\nunavailable.",
                     "parameters": [

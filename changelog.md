@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r746007
+###### _2020-03-02 10:15:56 -0800_ | Diff: [d446869...1226014](https://github.com/ChromeDevTools/devtools-protocol/compare/d446869...1226014)
+#### `Performance`: modified commands
+* [`Performance.enable`](https://chromedevtools.github.io/devtools-protocol/tot/Performance/#method-enable)
+* [`Performance.setTimeDomain`](https://chromedevtools.github.io/devtools-protocol/tot/Performance/#method-setTimeDomain) - `deprecated` added. 
+
+
 ## Roll protocol to r745916
 ###### _2020-03-02 05:15:52 -0800_ | Diff: [2251a98...d446869](https://github.com/ChromeDevTools/devtools-protocol/compare/2251a98...d446869)
 #### `Network`: modified type
