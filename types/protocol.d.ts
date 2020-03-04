@@ -6171,13 +6171,6 @@ export namespace Protocol {
             features?: MediaFeature[];
         }
 
-        export interface SetEmulatedVisionDeficiencyRequest {
-            /**
-             * Vision deficiency to emulate.
-             */
-            type: ('none' | 'achromatomaly' | 'achromatopsia' | 'blurredVision' | 'deuteranomaly' | 'deuteranopia' | 'protanomaly' | 'protanopia' | 'tritanomaly' | 'tritanopia');
-        }
-
         export interface SetGeolocationOverrideRequest {
             /**
              * Mock latitude
