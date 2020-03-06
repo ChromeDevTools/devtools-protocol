@@ -2239,6 +2239,13 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Emulates the given vision deficiency.
+         */
+        'Emulation.setEmulatedVisionDeficiency': {
+            paramsType: [Protocol.Emulation.SetEmulatedVisionDeficiencyRequest];
+            returnType: void;
+        };
+        /**
          * Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position
          * unavailable.
          */
