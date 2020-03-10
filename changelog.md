@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r747773
+###### _2020-03-06 10:15:59 -0800_ | Diff: [be5771f...b79c621](https://github.com/ChromeDevTools/devtools-protocol/compare/be5771f...b79c621)
+#### `Emulation`: new command
+* [`Emulation.setEmulatedVisionDeficiency`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setEmulatedVisionDeficiency)
+
+
 ## Roll protocol to r746878
 ###### _2020-03-04 11:15:58 -0800_ | Diff: [951d841...be5771f](https://github.com/ChromeDevTools/devtools-protocol/compare/951d841...be5771f)
 #### `Emulation`: removed command
