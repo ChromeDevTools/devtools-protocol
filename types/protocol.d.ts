@@ -2955,9 +2955,9 @@ export namespace Protocol {
 
         export interface SetPermissionRequest {
             /**
-             * Origin the permission applies to.
+             * Origin the permission applies to, all origins if not specified.
              */
-            origin: string;
+            origin?: string;
             /**
              * Descriptor of permission to override.
              */
@@ -2973,7 +2973,10 @@ export namespace Protocol {
         }
 
         export interface GrantPermissionsRequest {
-            origin: string;
+            /**
+             * Origin the permission applies to, all origins if not specified.
+             */
+            origin?: string;
             permissions: PermissionType[];
             /**
              * BrowserContext to override permissions. When omitted, default browser context is used.

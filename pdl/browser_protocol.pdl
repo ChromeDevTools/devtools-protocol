@@ -632,8 +632,8 @@ domain Browser
   # Set permission settings for given origin.
   experimental command setPermission
     parameters
-      # Origin the permission applies to.
-      string origin
+      # Origin the permission applies to, all origins if not specified.
+      optional string origin
       # Descriptor of permission to override.
       PermissionDescriptor permission
       # Setting of the permission.
@@ -644,7 +644,8 @@ domain Browser
   # Grant specific permissions to the given origin and reject all others.
   experimental command grantPermissions
     parameters
-      string origin
+      # Origin the permission applies to, all origins if not specified.
+      optional string origin
       array of PermissionType permissions
       # BrowserContext to override permissions. When omitted, default browser context is used.
       optional BrowserContextID browserContextId
