@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r750324
+###### _2020-03-13 15:17:35_ | Diff: [2ad8c1b...41bfd0c](https://github.com/ChromeDevTools/devtools-protocol/compare/2ad8c1b...41bfd0c)
+#### `Browser`: modified commands
+* [`Browser.setPermission`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-setPermission) - The `origin` in the parameters had `description` _updated_. The parameters's `optional` _added_. 
+* [`Browser.grantPermissions`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-grantPermissions) - The parameters's `description` _added_. The parameters's `optional` _added_. 
+
+
 ## Roll protocol to r747773
 ###### _2020-03-06 10:15:59 -0800_ | Diff: [be5771f...b79c621](https://github.com/ChromeDevTools/devtools-protocol/compare/be5771f...b79c621)
 #### `Emulation`: new command

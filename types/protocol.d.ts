@@ -187,6 +187,11 @@ export namespace Protocol {
             type?: ('debuggerStatement' | 'call' | 'return');
         }
 
+        /**
+         * Enum of possible script languages.
+         */
+        export type ScriptLanguage = ('JavaScript' | 'WebAssembly');
+
         export interface ContinueToLocationRequest {
             /**
              * Location to continue to.
@@ -718,6 +723,14 @@ export namespace Protocol {
              * JavaScript top stack frame of where the script parsed event was triggered if available.
              */
             stackTrace?: Runtime.StackTrace;
+            /**
+             * If the scriptLanguage is WebAssembly, the code section offset in the module.
+             */
+            codeOffset?: integer;
+            /**
+             * The language of the script.
+             */
+            scriptLanguage?: Debugger.ScriptLanguage;
         }
 
         /**
@@ -785,6 +798,14 @@ export namespace Protocol {
              * JavaScript top stack frame of where the script parsed event was triggered if available.
              */
             stackTrace?: Runtime.StackTrace;
+            /**
+             * If the scriptLanguage is WebAssembly, the code section offset in the module.
+             */
+            codeOffset?: integer;
+            /**
+             * The language of the script.
+             */
+            scriptLanguage?: Debugger.ScriptLanguage;
         }
     }
 

@@ -302,6 +302,15 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "id": "ScriptLanguage",
+                    "description": "Enum of possible script languages.",
+                    "type": "string",
+                    "enum": [
+                        "JavaScript",
+                        "WebAssembly"
+                    ]
                 }
             ],
             "commands": [
@@ -1128,6 +1137,20 @@
                             "experimental": true,
                             "optional": true,
                             "$ref": "Runtime.StackTrace"
+                        },
+                        {
+                            "name": "codeOffset",
+                            "description": "If the scriptLanguage is WebAssembly, the code section offset in the module.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "integer"
+                        },
+                        {
+                            "name": "scriptLanguage",
+                            "description": "The language of the script.",
+                            "experimental": true,
+                            "optional": true,
+                            "$ref": "Debugger.ScriptLanguage"
                         }
                     ]
                 },
@@ -1218,6 +1241,20 @@
                             "experimental": true,
                             "optional": true,
                             "$ref": "Runtime.StackTrace"
+                        },
+                        {
+                            "name": "codeOffset",
+                            "description": "If the scriptLanguage is WebAssembly, the code section offset in the module.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "integer"
+                        },
+                        {
+                            "name": "scriptLanguage",
+                            "description": "The language of the script.",
+                            "experimental": true,
+                            "optional": true,
+                            "$ref": "Debugger.ScriptLanguage"
                         }
                     ]
                 }
