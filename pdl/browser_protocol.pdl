@@ -2852,14 +2852,10 @@ domain Emulation
       # Vision deficiency to emulate.
       enum type
         none
-        achromatomaly
         achromatopsia
         blurredVision
-        deuteranomaly
         deuteranopia
-        protanomaly
         protanopia
-        tritanomaly
         tritanopia
 
   # Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position

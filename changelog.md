@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r751145
+###### _2020-03-17 15:16:22_ | Diff: [41bfd0c...702b3cd](https://github.com/ChromeDevTools/devtools-protocol/compare/41bfd0c...702b3cd)
+#### `Debugger`: modified events
+* [`Debugger.scriptFailedToParse`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-scriptFailedToParse) - The parameters's `codeOffset` _added_. The parameters's `scriptLanguage` _added_. 
+* [`Debugger.scriptParsed`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-scriptParsed) - The parameters's `codeOffset` _added_. The parameters's `scriptLanguage` _added_. 
+#### `Debugger`: new type
+* [`Debugger.ScriptLanguage`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#type-ScriptLanguage)
+
+
 ## Roll protocol to r750324
 ###### _2020-03-13 15:17:35_ | Diff: [2ad8c1b...41bfd0c](https://github.com/ChromeDevTools/devtools-protocol/compare/2ad8c1b...41bfd0c)
 #### `Browser`: modified commands

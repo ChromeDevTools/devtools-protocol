@@ -6341,14 +6341,10 @@
                             "type": "string",
                             "enum": [
                                 "none",
-                                "achromatomaly",
                                 "achromatopsia",
                                 "blurredVision",
-                                "deuteranomaly",
                                 "deuteranopia",
-                                "protanomaly",
                                 "protanopia",
-                                "tritanomaly",
                                 "tritanopia"
                             ]
                         }

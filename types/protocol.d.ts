@@ -6199,7 +6199,7 @@ export namespace Protocol {
             /**
              * Vision deficiency to emulate.
              */
-            type: ('none' | 'achromatomaly' | 'achromatopsia' | 'blurredVision' | 'deuteranomaly' | 'deuteranopia' | 'protanomaly' | 'protanopia' | 'tritanomaly' | 'tritanopia');
+            type: ('none' | 'achromatopsia' | 'blurredVision' | 'deuteranopia' | 'protanopia' | 'tritanopia');
         }
 
         export interface SetGeolocationOverrideRequest {
