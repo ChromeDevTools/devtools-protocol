@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r751783
+###### _2020-03-19 13:16:05_ | Diff: [702b3cd...f8b3800](https://github.com/ChromeDevTools/devtools-protocol/compare/702b3cd...f8b3800)
+#### `Emulation`: modified command
+* [`Emulation.setEmulatedVisionDeficiency`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setEmulatedVisionDeficiency) - The `type` in the parameters had `protanomaly` _removed_. The `type` in the parameters had `protanopia` _removed_. The `type` in the parameters had `tritanomaly` _removed_. The `type` in the parameters had `tritanopia` _removed_. The `type` in the parameters had `achromatomaly` _updated_. The `type` in the parameters had `achromatopsia` _updated_. The `type` in the parameters had `blurredVision` _updated_. The `type` in the parameters had `deuteranomaly` _updated_. The `type` in the parameters had `deuteranopia` _updated_. 
+
+
 ## Roll protocol to r751145
 ###### _2020-03-17 15:16:22_ | Diff: [41bfd0c...702b3cd](https://github.com/ChromeDevTools/devtools-protocol/compare/41bfd0c...702b3cd)
 #### `Debugger`: modified events
