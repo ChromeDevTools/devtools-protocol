@@ -2733,8 +2733,65 @@ export namespace Protocol {
      */
     export namespace Audits {
 
-        export interface Issue {
-            code: string;
+        /**
+         * Information about a cookie that is affected by an inspector issue.
+         */
+        export interface AffectedCookie {
+            /**
+             * The following three properties uniquely identify a cookie
+             */
+            name: string;
+            path: string;
+            domain: string;
+            /**
+             * Optionally identifies the site-for-cookies, which may be used by the
+             * front-end as additional context.
+             */
+            siteForCookies?: string;
+        }
+
+        export type SameSiteCookieExclusionReason = ('ExcludeSameSiteUnspecifiedTreatedAsLax' | 'ExcludeSameSiteNoneInsecure');
+
+        export type SameSiteCookieWarningReason = ('WarnSameSiteUnspecifiedCrossSiteContext' | 'WarnSameSiteNoneInsecure' | 'WarnSameSiteUnspecifiedLaxAllowUnsafe' | 'WarnSameSiteCrossSchemeSecureUrlMethodUnsafe' | 'WarnSameSiteCrossSchemeSecureUrlLax' | 'WarnSameSiteCrossSchemeSecureUrlStrict' | 'WarnSameSiteCrossSchemeInsecureUrlMethodUnsafe' | 'WarnSameSiteCrossSchemeInsecureUrlLax' | 'WarnSameSiteCrossSchemeInsecureUrlStrict');
+
+        /**
+         * This information is currently necessary, as the front-end has a difficult
+         * time finding a specific cookie. With this, we can convey specific error
+         * information without the cookie.
+         */
+        export interface SameSiteCookieIssueDetails {
+            cookieWarningReasons: SameSiteCookieWarningReason[];
+            cookieExclusionReasons: SameSiteCookieExclusionReason[];
+        }
+
+        export interface AffectedResources {
+            cookies?: AffectedCookie[];
+        }
+
+        /**
+         * A unique identifier for the type of issue. Each type may use one of the
+         * optional fields in InspectorIssueDetails to convey more specific
+         * information about the kind of issue, and AffectedResources to identify
+         * resources that are affected by this issue.
+         */
+        export type InspectorIssueCode = ('SameSiteCookieIssue');
+
+        /**
+         * This struct holds a list of optional fields with additional information
+         * pertaining to the kind of issue. This is useful if there is a number of
+         * very similar issues that only differ in details.
+         */
+        export interface InspectorIssueDetails {
+            sameSiteCookieIssueDetails?: SameSiteCookieIssueDetails;
+        }
+
+        /**
+         * An inspector issue reported from the back-end.
+         */
+        export interface InspectorIssue {
+            code: InspectorIssueCode;
+            details: InspectorIssueDetails;
+            resources: AffectedResources;
         }
 
         export interface GetEncodedResponseRequest {
@@ -2772,7 +2829,7 @@ export namespace Protocol {
         }
 
         export interface IssueAddedEvent {
-            issue: Issue;
+            issue: InspectorIssue;
         }
     }
 
