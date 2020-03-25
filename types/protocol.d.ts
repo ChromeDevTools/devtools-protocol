@@ -12285,7 +12285,7 @@ export namespace Protocol {
              */
             postData?: string;
             /**
-             * If set, overrides the request headrts.
+             * If set, overrides the request headers.
              */
             headers?: HeaderEntry[];
         }

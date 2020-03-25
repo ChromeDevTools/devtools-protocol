@@ -7259,7 +7259,7 @@ experimental domain Fetch
       optional string method
       # If set, overrides the post data in the request.
       optional string postData
-      # If set, overrides the request headrts.
+      # If set, overrides the request headers.
       optional array of HeaderEntry headers
 
   # Continues a request supplying authChallengeResponse following authRequired event.

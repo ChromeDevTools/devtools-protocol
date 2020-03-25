@@ -1,5 +1,22 @@
 
 
+## Roll protocol to r752415
+###### _2020-03-23 05:16:00_ | Diff: [4b21417...0d94fba](https://github.com/ChromeDevTools/devtools-protocol/compare/4b21417...0d94fba)
+#### `Audits`: modified event
+* [`Audits.issueAdded`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#event-issueAdded) - The `issue` in the parameters had `$ref` _updated_. 
+#### `Audits`: new types
+* [`Audits.AffectedCookie`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AffectedCookie)
+* [`Audits.SameSiteCookieExclusionReason`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SameSiteCookieExclusionReason)
+* [`Audits.SameSiteCookieWarningReason`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SameSiteCookieWarningReason)
+* [`Audits.SameSiteCookieIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SameSiteCookieIssueDetails)
+* [`Audits.AffectedResources`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AffectedResources)
+* [`Audits.InspectorIssueCode`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueCode)
+* [`Audits.InspectorIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueDetails)
+* [`Audits.InspectorIssue`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssue)
+#### `Audits`: removed type
+* [`Audits.Issue`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-Issue)
+
+
 ## Roll protocol to r751783
 ###### _2020-03-19 13:16:05_ | Diff: [702b3cd...f8b3800](https://github.com/ChromeDevTools/devtools-protocol/compare/702b3cd...f8b3800)
 #### `Emulation`: modified command
