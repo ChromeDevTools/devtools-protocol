@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r753288
+###### _2020-03-25 11:16:18_ | Diff: [0d94fba...fb19e63](https://github.com/ChromeDevTools/devtools-protocol/compare/0d94fba...fb19e63)
+#### `Fetch`: modified command
+* [`Fetch.continueRequest`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#method-continueRequest) - The `headers` in the parameters had `description` _updated_. 
+
+
 ## Roll protocol to r752415
 ###### _2020-03-23 05:16:00_ | Diff: [4b21417...0d94fba](https://github.com/ChromeDevTools/devtools-protocol/compare/4b21417...0d94fba)
 #### `Audits`: modified event
