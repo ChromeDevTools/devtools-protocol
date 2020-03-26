@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r753371
+###### _2020-03-25 14:16:15_ | Diff: [fb19e63...54331b7](https://github.com/ChromeDevTools/devtools-protocol/compare/fb19e63...54331b7)
+#### `Runtime`: modified type
+* [`Runtime.RemoteObject`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-RemoteObject) - The `subtype` in the properties had `description` _updated_. The `0` in the properties had `wasm` _added_. The `1` in the properties had `i32` _added_. The `1` in the properties had `i64` _added_. The `1` in the properties had `f32` _added_. The `1` in the properties had `f64` _added_. The `1` in the properties had `v128` _added_. 
+
+
 ## Roll protocol to r753288
 ###### _2020-03-25 11:16:18_ | Diff: [0d94fba...fb19e63](https://github.com/ChromeDevTools/devtools-protocol/compare/0d94fba...fb19e63)
 #### `Fetch`: modified command

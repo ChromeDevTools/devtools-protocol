@@ -139,7 +139,7 @@ export namespace Protocol {
             /**
              * Scope type.
              */
-            type: ('global' | 'local' | 'with' | 'closure' | 'catch' | 'block' | 'script' | 'eval' | 'module');
+            type: ('global' | 'local' | 'with' | 'closure' | 'catch' | 'block' | 'script' | 'eval' | 'module' | 'wasm-expression-stack');
             /**
              * Object representing the scope. For `global` and `with` scopes it represents the actual
              * object; for the rest of the scopes, it is artificial transient object enumerating scope
