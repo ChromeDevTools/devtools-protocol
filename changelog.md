@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r753577
+###### _2020-03-26 04:16:32_ | Diff: [54331b7...3a31fb9](https://github.com/ChromeDevTools/devtools-protocol/compare/54331b7...3a31fb9)
+#### `Debugger`: modified type
+* [`Debugger.Scope`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#type-Scope) - The `0` in the properties had `wasm-expression-stack` _added_. 
+
+
 ## Roll protocol to r753371
 ###### _2020-03-25 14:16:15_ | Diff: [fb19e63...54331b7](https://github.com/ChromeDevTools/devtools-protocol/compare/fb19e63...54331b7)
 #### `Runtime`: modified type

@@ -3069,6 +3069,24 @@ export namespace Protocol {
             browserContextId?: BrowserContextID;
         }
 
+        export interface SetDownloadBehaviorRequest {
+            /**
+             * Whether to allow all or deny all download requests, or use default Chrome behavior if
+             * available (otherwise deny). |allowAndName| allows download and names files according to
+             * their dowmload guids.
+             */
+            behavior: ('deny' | 'allow' | 'allowAndName' | 'default');
+            /**
+             * BrowserContext to set download behavior. When omitted, default browser context is used.
+             */
+            browserContextId?: BrowserContextID;
+            /**
+             * The default path to save downloaded files to. This is requred if behavior is set to 'allow'
+             * or 'allowAndName'.
+             */
+            downloadPath?: string;
+        }
+
         export interface GetVersionResponse {
             /**
              * Protocol version.
@@ -10648,9 +10666,35 @@ export namespace Protocol {
              */
             frameId: FrameId;
             /**
+             * Global unique identifier of the download.
+             */
+            guid: string;
+            /**
              * URL of the resource being downloaded.
              */
             url: string;
+        }
+
+        /**
+         * Fired when download makes progress. Last call has |done| == true.
+         */
+        export interface DownloadProgressEvent {
+            /**
+             * Global unique identifier of the download.
+             */
+            guid: string;
+            /**
+             * Total expected bytes to download.
+             */
+            totalBytes: number;
+            /**
+             * Total bytes received.
+             */
+            receivedBytes: number;
+            /**
+             * Download status.
+             */
+            state: ('inProgress' | 'completed' | 'canceled');
         }
 
         /**
