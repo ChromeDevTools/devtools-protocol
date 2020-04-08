@@ -1,5 +1,17 @@
 
 
+## Roll protocol to r754670
+###### _2020-03-30 15:16:08_ | Diff: [3a31fb9...93daff4](https://github.com/ChromeDevTools/devtools-protocol/compare/3a31fb9...93daff4)
+#### `Browser`: new command
+* [`Browser.setDownloadBehavior`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-setDownloadBehavior)
+#### `Page`: modified command
+* [`Page.setDownloadBehavior`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setDownloadBehavior) - `deprecated` added. 
+#### `Page`: new event
+* [`Page.downloadProgress`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-downloadProgress)
+#### `Page`: modified event
+* [`Page.downloadWillBegin`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-downloadWillBegin) - The `url` in the parameters had `name` _updated_. The `url` in the parameters had `description` _updated_. The parameters's `url` _added_. 
+
+
 ## Roll protocol to r753577
 ###### _2020-03-26 04:16:32_ | Diff: [54331b7...3a31fb9](https://github.com/ChromeDevTools/devtools-protocol/compare/54331b7...3a31fb9)
 #### `Debugger`: modified type

@@ -2743,16 +2743,24 @@ export namespace Protocol {
             name: string;
             path: string;
             domain: string;
+        }
+
+        /**
+         * Information about a request that is affected by an inspector issue.
+         */
+        export interface AffectedRequest {
             /**
-             * Optionally identifies the site-for-cookies, which may be used by the
-             * front-end as additional context.
+             * The unique request id.
              */
-            siteForCookies?: string;
+            requestId: Network.RequestId;
+            url?: string;
         }
 
         export type SameSiteCookieExclusionReason = ('ExcludeSameSiteUnspecifiedTreatedAsLax' | 'ExcludeSameSiteNoneInsecure');
 
         export type SameSiteCookieWarningReason = ('WarnSameSiteUnspecifiedCrossSiteContext' | 'WarnSameSiteNoneInsecure' | 'WarnSameSiteUnspecifiedLaxAllowUnsafe' | 'WarnSameSiteCrossSchemeSecureUrlMethodUnsafe' | 'WarnSameSiteCrossSchemeSecureUrlLax' | 'WarnSameSiteCrossSchemeSecureUrlStrict' | 'WarnSameSiteCrossSchemeInsecureUrlMethodUnsafe' | 'WarnSameSiteCrossSchemeInsecureUrlLax' | 'WarnSameSiteCrossSchemeInsecureUrlStrict');
+
+        export type SameSiteCookieOperation = ('SetCookie' | 'ReadCookie');
 
         /**
          * This information is currently necessary, as the front-end has a difficult
@@ -2760,26 +2768,30 @@ export namespace Protocol {
          * information without the cookie.
          */
         export interface SameSiteCookieIssueDetails {
+            cookie: AffectedCookie;
             cookieWarningReasons: SameSiteCookieWarningReason[];
             cookieExclusionReasons: SameSiteCookieExclusionReason[];
-        }
-
-        export interface AffectedResources {
-            cookies?: AffectedCookie[];
+            /**
+             * Optionally identifies the site-for-cookies and the cookie url, which
+             * may be used by the front-end as additional context.
+             */
+            operation: SameSiteCookieOperation;
+            siteForCookies?: string;
+            cookieUrl?: string;
+            request?: AffectedRequest;
         }
 
         /**
          * A unique identifier for the type of issue. Each type may use one of the
          * optional fields in InspectorIssueDetails to convey more specific
-         * information about the kind of issue, and AffectedResources to identify
-         * resources that are affected by this issue.
+         * information about the kind of issue.
          */
         export type InspectorIssueCode = ('SameSiteCookieIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
-         * pertaining to the kind of issue. This is useful if there is a number of
-         * very similar issues that only differ in details.
+         * specific to the kind of issue. When adding a new issue code, please also
+         * add a new optional field to this type.
          */
         export interface InspectorIssueDetails {
             sameSiteCookieIssueDetails?: SameSiteCookieIssueDetails;
@@ -2791,7 +2803,6 @@ export namespace Protocol {
         export interface InspectorIssue {
             code: InspectorIssueCode;
             details: InspectorIssueDetails;
-            resources: AffectedResources;
         }
 
         export interface GetEncodedResponseRequest {

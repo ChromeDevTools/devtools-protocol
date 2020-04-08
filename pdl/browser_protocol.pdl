@@ -454,9 +454,13 @@ experimental domain Audits
       string name
       string path
       string domain
-      # Optionally identifies the site-for-cookies, which may be used by the
-      # front-end as additional context.
-      optional string siteForCookies
+
+  # Information about a request that is affected by an inspector issue.
+  type AffectedRequest extends object
+    properties
+      # The unique request id.
+      Network.RequestId requestId
+      optional string url
 
   type SameSiteCookieExclusionReason extends string
     enum
@@ -475,29 +479,36 @@ experimental domain Audits
       WarnSameSiteCrossSchemeInsecureUrlLax
       WarnSameSiteCrossSchemeInsecureUrlStrict
 
+  type SameSiteCookieOperation extends string
+    enum
+      SetCookie
+      ReadCookie
+
   # This information is currently necessary, as the front-end has a difficult
   # time finding a specific cookie. With this, we can convey specific error
   # information without the cookie.
   type SameSiteCookieIssueDetails extends object
     properties
+      AffectedCookie cookie
       array of SameSiteCookieWarningReason cookieWarningReasons
       array of SameSiteCookieExclusionReason cookieExclusionReasons
-
-  type AffectedResources extends object
-    properties
-      optional array of AffectedCookie cookies
+      # Optionally identifies the site-for-cookies and the cookie url, which
+      # may be used by the front-end as additional context.
+      SameSiteCookieOperation operation
+      optional string siteForCookies
+      optional string cookieUrl
+      optional AffectedRequest request
 
   # A unique identifier for the type of issue. Each type may use one of the
   # optional fields in InspectorIssueDetails to convey more specific
-  # information about the kind of issue, and AffectedResources to identify
-  # resources that are affected by this issue.
+  # information about the kind of issue.
   type InspectorIssueCode extends string
     enum
       SameSiteCookieIssue
 
   # This struct holds a list of optional fields with additional information
-  # pertaining to the kind of issue. This is useful if there is a number of
-  # very similar issues that only differ in details.
+  # specific to the kind of issue. When adding a new issue code, please also
+  # add a new optional field to this type.
   type InspectorIssueDetails extends object
     properties
       optional SameSiteCookieIssueDetails sameSiteCookieIssueDetails
@@ -507,7 +518,6 @@ experimental domain Audits
     properties
       InspectorIssueCode code
       InspectorIssueDetails details
-      AffectedResources resources
 
   # Returns the response body and size if it were re-encoded with the specified settings. Only
   # applies to images.
