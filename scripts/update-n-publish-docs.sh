@@ -16,7 +16,7 @@ git checkout master
 git pull $viewer_repo
 
 # generate latest docs on updated protocol
-yarn && yarn prep && yarn build;
+npm i && npm run prep && npm run build;
 
 git commit --author="DevTools Bot <24444246+devtools-bot@users.noreply.github.com>" -am "bump protocol"
 #    git config user.name "devtools-bot"
@@ -26,4 +26,4 @@ git commit --author="DevTools Bot <24444246+devtools-bot@users.noreply.github.co
 git pull $viewer_repo && git push $viewer_repo
 
 # publish to https://chromedevtools.github.io/devtools-protocol/
-yarn deploy
+npm run deploy
