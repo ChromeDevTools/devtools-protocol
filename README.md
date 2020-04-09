@@ -1,6 +1,8 @@
 # devtools-protocol
 
-Please [file issues on crbug.com](https://bugs.chromium.org/p/chromium/issues/entry?template=DevTools+issue) if you have concerns or problems with the DevTools Protocol (aka Chrome Remote Debugging Protocol).
+:warning:
+This repository is related to Chrome DevTools Protocol, but does not track issues regarding its definition or implementation.
+If you want to file an issue for the Chrome DevTools Protocol, please open an issue on https://crbug.com under [`component: Platform>DevTools>Platform`](https://bugs.chromium.org/p/chromium/issues/entry?components=Platform%3EDevTools%3EPlatform).
 
 Use the [protocol viewer](https://chromedevtools.github.io/devtools-protocol/) for navigating the protocol.
 
