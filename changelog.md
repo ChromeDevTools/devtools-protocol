@@ -1,5 +1,50 @@
 
 
+## Merge pull request #209 from ChromeDevTools/bug-report-template
+###### _2020-04-09 12:55:10 +0200_ | Diff: [d0bcd8d...b53777c](https://github.com/ChromeDevTools/devtools-protocol/compare/d0bcd8d...b53777c)
+#### `Audits`: new types
+* [`Audits.AffectedRequest`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AffectedRequest)
+* [`Audits.SameSiteCookieOperation`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SameSiteCookieOperation)
+#### `Audits`: removed type
+* [`Audits.AffectedResources`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AffectedResources)
+#### `Audits`: modified types
+* [`Audits.AffectedCookie`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AffectedCookie) - The properties's `siteForCookies` _removed_. 
+* [`Audits.SameSiteCookieIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SameSiteCookieIssueDetails) - The `cookieWarningReasons` in the properties had `type` _removed_. The `cookieWarningReasons` in the properties had `items` _removed_. The `cookieWarningReasons` in the properties had `name` _updated_. The `cookieExclusionReasons` in the properties had `name` _updated_. The `cookieExclusionReasons` in the properties had `$ref` _updated_. The properties's `$ref` _added_. The properties's `cookieExclusionReasons` _added_. The properties's `operation` _added_. The properties's `siteForCookies` _added_. The properties's `cookieUrl` _added_. The properties's `request` _added_. 
+* [`Audits.InspectorIssueCode`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueCode) - `description` updated. 
+* [`Audits.InspectorIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueDetails) - `description` updated. 
+* [`Audits.InspectorIssue`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssue) - The properties's `resources` _removed_. 
+
+
+## Update bug report guidance to point to CRBug
+###### _2020-04-09 11:51:30 +0100_ | Diff: [7f53fbc...d0bcd8d](https://github.com/ChromeDevTools/devtools-protocol/compare/7f53fbc...d0bcd8d)
+#### `Audits`: new type
+* [`Audits.AffectedResources`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AffectedResources)
+#### `Audits`: removed types
+* [`Audits.AffectedRequest`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AffectedRequest)
+* [`Audits.SameSiteCookieOperation`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SameSiteCookieOperation)
+#### `Audits`: modified types
+* [`Audits.AffectedCookie`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AffectedCookie) - The properties's `siteForCookies` _added_. 
+* [`Audits.SameSiteCookieIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SameSiteCookieIssueDetails) - The properties's `cookieExclusionReasons` _removed_. The properties's `operation` _removed_. The properties's `siteForCookies` _removed_. The properties's `cookieUrl` _removed_. The properties's `request` _removed_. The `cookie` in the properties had `$ref` _removed_. The `cookie` in the properties had `name` _updated_. The `cookieWarningReasons` in the properties had `name` _updated_. The `cookieWarningReasons` in the properties had `$ref` _updated_. The properties's `type` _added_. The properties's `items` _added_. 
+* [`Audits.InspectorIssueCode`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueCode) - `description` updated. 
+* [`Audits.InspectorIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueDetails) - `description` updated. 
+* [`Audits.InspectorIssue`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssue) - The properties's `resources` _added_. 
+
+
+## Roll protocol to r757450
+###### _2020-04-08 09:16:24_ | Diff: [93daff4...7f53fbc](https://github.com/ChromeDevTools/devtools-protocol/compare/93daff4...7f53fbc)
+#### `Audits`: new types
+* [`Audits.AffectedRequest`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AffectedRequest)
+* [`Audits.SameSiteCookieOperation`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SameSiteCookieOperation)
+#### `Audits`: removed type
+* [`Audits.AffectedResources`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AffectedResources)
+#### `Audits`: modified types
+* [`Audits.AffectedCookie`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AffectedCookie) - The properties's `siteForCookies` _removed_. 
+* [`Audits.SameSiteCookieIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SameSiteCookieIssueDetails) - The `cookieWarningReasons` in the properties had `type` _removed_. The `cookieWarningReasons` in the properties had `items` _removed_. The `cookieWarningReasons` in the properties had `name` _updated_. The `cookieExclusionReasons` in the properties had `name` _updated_. The `cookieExclusionReasons` in the properties had `$ref` _updated_. The properties's `$ref` _added_. The properties's `cookieExclusionReasons` _added_. The properties's `operation` _added_. The properties's `siteForCookies` _added_. The properties's `cookieUrl` _added_. The properties's `request` _added_. 
+* [`Audits.InspectorIssueCode`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueCode) - `description` updated. 
+* [`Audits.InspectorIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueDetails) - `description` updated. 
+* [`Audits.InspectorIssue`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssue) - The properties's `resources` _removed_. 
+
+
 ## Roll protocol to r754670
 ###### _2020-03-30 15:16:08_ | Diff: [3a31fb9...93daff4](https://github.com/ChromeDevTools/devtools-protocol/compare/3a31fb9...93daff4)
 #### `Browser`: new command

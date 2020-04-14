@@ -1491,12 +1491,6 @@
                     "experimental": true,
                     "parameters": [
                         {
-                            "name": "origin",
-                            "description": "Origin the permission applies to, all origins if not specified.",
-                            "optional": true,
-                            "type": "string"
-                        },
-                        {
                             "name": "permission",
                             "description": "Descriptor of permission to override.",
                             "$ref": "PermissionDescriptor"
@@ -1505,6 +1499,12 @@
                             "name": "setting",
                             "description": "Setting of the permission.",
                             "$ref": "PermissionSetting"
+                        },
+                        {
+                            "name": "origin",
+                            "description": "Origin the permission applies to, all origins if not specified.",
+                            "optional": true,
+                            "type": "string"
                         },
                         {
                             "name": "browserContextId",
@@ -1520,17 +1520,17 @@
                     "experimental": true,
                     "parameters": [
                         {
-                            "name": "origin",
-                            "description": "Origin the permission applies to, all origins if not specified.",
-                            "optional": true,
-                            "type": "string"
-                        },
-                        {
                             "name": "permissions",
                             "type": "array",
                             "items": {
                                 "$ref": "PermissionType"
                             }
+                        },
+                        {
+                            "name": "origin",
+                            "description": "Origin the permission applies to, all origins if not specified.",
+                            "optional": true,
+                            "type": "string"
                         },
                         {
                             "name": "browserContextId",
