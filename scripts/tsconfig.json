@@ -6,6 +6,9 @@
         "target": "ES2017",
         "typeRoots": ["node_modules/@types"],
         "resolveJsonModule": true,
+        "plugins": [
+            { "transform": "typescript-is/lib/transform-inline/transformer" }
+        ]
     },
     "include": [
         "protocol-dts-generator.ts",

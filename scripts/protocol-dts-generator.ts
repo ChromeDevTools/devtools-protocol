@@ -1,10 +1,10 @@
 import * as fs from 'fs'
 import * as path from 'path'
+import { assertType } from 'typescript-is';
 import {IProtocol, Protocol as P} from './protocol-schema'
 
-// TODO: @noj validate this via https://github.com/andischerer/typescript-json-typesafe against protocol-schema.d.ts
-const jsProtocol: IProtocol = require('../json/js_protocol.json')
-const browserProtocol: IProtocol = require('../json/browser_protocol.json')
+const jsProtocol = assertType<IProtocol>(require('../json/js_protocol.json'))
+const browserProtocol = assertType<IProtocol>(require('../json/browser_protocol.json'))
 const protocolDomains: P.Domain[] = jsProtocol.domains.concat(browserProtocol.domains)
 
 let numIndents = 0
