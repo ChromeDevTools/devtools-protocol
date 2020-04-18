@@ -1,10 +1,9 @@
 import * as fs from 'fs'
 import * as path from 'path'
-import {IProtocol, Protocol as P} from './protocol-schema'
+import {Protocol as P} from '../types/protocol-json-schema'
+import jsProtocol from './json_as_ts/js_protocol';
+import browserProtocol from './json_as_ts/browser_protocol';
 
-// TODO: @noj validate this via https://github.com/andischerer/typescript-json-typesafe against protocol-schema.d.ts
-const jsProtocol: IProtocol = require('../json/js_protocol.json')
-const browserProtocol: IProtocol = require('../json/browser_protocol.json')
 const protocolDomains: P.Domain[] = jsProtocol.domains.concat(browserProtocol.domains)
 
 let numIndents = 0
@@ -162,7 +161,7 @@ const emitEvent = (event: P.Event) => {
     if (!event.parameters) {
         return
     }
-    
+
     emitLine()
     emitDescription(event.description)
     emitInterface(toEventPayloadName(event.name), event.parameters)

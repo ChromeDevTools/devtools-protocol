@@ -15,6 +15,10 @@ export module Protocol {
         domain: string
         /** Description of the domain */
         description?: string
+        /** Is domain deprecated? */
+        deprecated?: boolean
+        /** Is domain experimental? */
+        experimental?: boolean
         /** Dependencies on other domains */
         dependencies?: string[]
         /** Types used by the domain. */
@@ -34,8 +38,9 @@ export module Protocol {
     export interface Event {
         name: string
         parameters?: PropertyType[]
-        /** Description of the event */
         description?: string
+        experimental?: boolean
+        deprecated?: boolean
     }
 
     export interface ArrayType {
@@ -79,6 +84,8 @@ export module Protocol {
         optional?: boolean
         /** Description of the type */
         description?: string
+        experimental?: boolean
+        deprecated?: boolean
     }
 
     type DomainType = {
@@ -86,6 +93,8 @@ export module Protocol {
         id: string
         /** Description of the type */
         description?: string
+        experimental?: boolean
+        deprecated?: boolean
     } & (StringType | ObjectType | ArrayType | PrimitiveType)
 
     type ProtocolType = StringType | ObjectType | ArrayType | PrimitiveType | RefType  | AnyType

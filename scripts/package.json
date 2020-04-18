@@ -2,7 +2,7 @@
   "version": "0.0.510771",
   "license": "SEE LICENSE IN https://chromium.googlesource.com/chromium/src/+/master/LICENSE",
   "scripts": {
-    "build-protocol-dts": "ts-node protocol-dts-generator.ts",
+    "build-protocol-dts": "ts-node protocol-json-as-ts.ts && ts-node protocol-dts-generator.ts",
     "type-check": "tsc -p tsconfig.json",
     "changelog": "node generate-changelog.js"
   },

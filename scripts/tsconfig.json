@@ -5,9 +5,9 @@
         "strict": true,
         "target": "ES2017",
         "typeRoots": ["node_modules/@types"],
-        "resolveJsonModule": true,
     },
     "include": [
         "protocol-dts-generator.ts",
+        "protocol-json-as-ts.ts",
     ]
 }
