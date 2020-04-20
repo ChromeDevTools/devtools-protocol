@@ -740,6 +740,9 @@
         {
             "domain": "ApplicationCache",
             "experimental": true,
+            "dependencies": [
+                "Page"
+            ],
             "types": [
                 {
                     "id": "ApplicationCacheResource",
@@ -1783,7 +1786,8 @@
             "description": "This domain exposes CSS read/write operations. All CSS objects (stylesheets, rules, and styles)\nhave an associated `id` used in subsequent operations on the related object. Each object type has\na specific `id` structure, and those are not interchangeable between objects of different kinds.\nCSS objects can be loaded using the `get*ForNode()` calls (which accept a DOM node id). A client\ncan also keep track of stylesheets via the `styleSheetAdded`/`styleSheetRemoved` events and\nsubsequently load the required stylesheet contents using the `getStyleSheet[Text]()` methods.",
             "experimental": true,
             "dependencies": [
-                "DOM"
+                "DOM",
+                "Page"
             ],
             "types": [
                 {
@@ -13948,6 +13952,9 @@
         {
             "domain": "ServiceWorker",
             "experimental": true,
+            "dependencies": [
+                "Target"
+            ],
             "types": [
                 {
                     "id": "RegistrationID",

@@ -366,6 +366,7 @@ experimental domain Animation
       Animation animation
 
 experimental domain ApplicationCache
+  depends on Page
 
   # Detailed application cache resource information.
   type ApplicationCacheResource extends object
@@ -864,6 +865,7 @@ domain Browser
 # subsequently load the required stylesheet contents using the `getStyleSheet[Text]()` methods.
 experimental domain CSS
   depends on DOM
+  depends on Page
 
   type StyleSheetId extends string
 
@@ -6439,6 +6441,8 @@ domain Security
       optional string summary
 
 experimental domain ServiceWorker
+  depends on Target
+
   type RegistrationID extends string
 
   # ServiceWorker registration.

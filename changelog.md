@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r758979
+###### _2020-04-14 13:16:08_ | Diff: [fc07ba2...4b02082](https://github.com/ChromeDevTools/devtools-protocol/compare/fc07ba2...4b02082)
+#### `Browser`: modified commands
+* [`Browser.setPermission`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-setPermission) - The `origin` in the parameters had `optional` _removed_. The `origin` in the parameters had `type` _removed_. The `setting` in the parameters had `$ref` _removed_. The `origin` in the parameters had `name` _updated_. The `origin` in the parameters had `description` _updated_. The `permission` in the parameters had `name` _updated_. The `permission` in the parameters had `description` _updated_. The `permission` in the parameters had `$ref` _updated_. The `setting` in the parameters had `name` _updated_. The `setting` in the parameters had `description` _updated_. The parameters's `$ref` _added_. The parameters's `optional` _added_. The parameters's `type` _added_. 
+* [`Browser.grantPermissions`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-grantPermissions) - The `origin` in the parameters had `description` _removed_. The `origin` in the parameters had `optional` _removed_. The `permissions` in the parameters had `items` _removed_. The `origin` in the parameters had `name` _updated_. The `origin` in the parameters had `type` _updated_. The `permissions` in the parameters had `name` _updated_. The `permissions` in the parameters had `type` _updated_. The parameters's `items` _added_. The parameters's `description` _added_. The parameters's `optional` _added_. 
+
+
 ## Merge pull request #209 from ChromeDevTools/bug-report-template
 ###### _2020-04-09 12:55:10 +0200_ | Diff: [d0bcd8d...b53777c](https://github.com/ChromeDevTools/devtools-protocol/compare/d0bcd8d...b53777c)
 #### `Audits`: new types
