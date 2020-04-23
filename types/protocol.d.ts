@@ -2756,6 +2756,13 @@ export namespace Protocol {
             url?: string;
         }
 
+        /**
+         * Information about the frame affected by an inspector issue.
+         */
+        export interface AffectedFrame {
+            frameId: Page.FrameId;
+        }
+
         export type SameSiteCookieExclusionReason = ('ExcludeSameSiteUnspecifiedTreatedAsLax' | 'ExcludeSameSiteNoneInsecure');
 
         export type SameSiteCookieWarningReason = ('WarnSameSiteUnspecifiedCrossSiteContext' | 'WarnSameSiteNoneInsecure' | 'WarnSameSiteUnspecifiedLaxAllowUnsafe' | 'WarnSameSiteCrossSchemeSecureUrlMethodUnsafe' | 'WarnSameSiteCrossSchemeSecureUrlLax' | 'WarnSameSiteCrossSchemeSecureUrlStrict' | 'WarnSameSiteCrossSchemeInsecureUrlMethodUnsafe' | 'WarnSameSiteCrossSchemeInsecureUrlLax' | 'WarnSameSiteCrossSchemeInsecureUrlStrict');
@@ -2781,12 +2788,47 @@ export namespace Protocol {
             request?: AffectedRequest;
         }
 
+        export type MixedContentResolutionStatus = ('MixedContentBlocked' | 'MixedContentAutomaticallyUpgraded' | 'MixedContentWarning');
+
+        export type MixedContentResourceType = ('Audio' | 'Beacon' | 'CSPReport' | 'Download' | 'EventSource' | 'Favicon' | 'Font' | 'Form' | 'Frame' | 'Image' | 'Import' | 'Manifest' | 'Ping' | 'PluginData' | 'PluginResource' | 'Prefetch' | 'Resource' | 'Script' | 'ServiceWorker' | 'SharedWorker' | 'Stylesheet' | 'Track' | 'Video' | 'Worker' | 'XMLHttpRequest' | 'XSLT');
+
+        export interface MixedContentIssueDetails {
+            /**
+             * The type of resource causing the mixed content issue (css, js, iframe,
+             * form,...). Marked as optional because it is mapped to from
+             * blink::mojom::RequestContextType, which will be replaced
+             * by network::mojom::RequestDestination
+             */
+            resourceType?: MixedContentResourceType;
+            /**
+             * The way the mixed content issue is being resolved.
+             */
+            resolutionStatus: MixedContentResolutionStatus;
+            /**
+             * The unsafe http url causing the mixed content issue.
+             */
+            insecureURL: string;
+            /**
+             * The url responsible for the call to an unsafe url.
+             */
+            mainResourceURL: string;
+            /**
+             * The mixed content request.
+             * Does not always exist (e.g. for unsafe form submission urls).
+             */
+            request?: AffectedRequest;
+            /**
+             * Optional because not every mixed content issue is necessarily linked to a frame.
+             */
+            frame?: AffectedFrame;
+        }
+
         /**
          * A unique identifier for the type of issue. Each type may use one of the
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('SameSiteCookieIssue');
+        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -2795,6 +2837,7 @@ export namespace Protocol {
          */
         export interface InspectorIssueDetails {
             sameSiteCookieIssueDetails?: SameSiteCookieIssueDetails;
+            mixedContentIssueDetails?: MixedContentIssueDetails;
         }
 
         /**

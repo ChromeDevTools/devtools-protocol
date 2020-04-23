@@ -958,6 +958,17 @@
                     ]
                 },
                 {
+                    "id": "AffectedFrame",
+                    "description": "Information about the frame affected by an inspector issue.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "frameId",
+                            "$ref": "Page.FrameId"
+                        }
+                    ]
+                },
+                {
                     "id": "SameSiteCookieExclusionReason",
                     "type": "string",
                     "enum": [
@@ -1034,11 +1045,92 @@
                     ]
                 },
                 {
+                    "id": "MixedContentResolutionStatus",
+                    "type": "string",
+                    "enum": [
+                        "MixedContentBlocked",
+                        "MixedContentAutomaticallyUpgraded",
+                        "MixedContentWarning"
+                    ]
+                },
+                {
+                    "id": "MixedContentResourceType",
+                    "type": "string",
+                    "enum": [
+                        "Audio",
+                        "Beacon",
+                        "CSPReport",
+                        "Download",
+                        "EventSource",
+                        "Favicon",
+                        "Font",
+                        "Form",
+                        "Frame",
+                        "Image",
+                        "Import",
+                        "Manifest",
+                        "Ping",
+                        "PluginData",
+                        "PluginResource",
+                        "Prefetch",
+                        "Resource",
+                        "Script",
+                        "ServiceWorker",
+                        "SharedWorker",
+                        "Stylesheet",
+                        "Track",
+                        "Video",
+                        "Worker",
+                        "XMLHttpRequest",
+                        "XSLT"
+                    ]
+                },
+                {
+                    "id": "MixedContentIssueDetails",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "resourceType",
+                            "description": "The type of resource causing the mixed content issue (css, js, iframe,\nform,...). Marked as optional because it is mapped to from\nblink::mojom::RequestContextType, which will be replaced\nby network::mojom::RequestDestination",
+                            "optional": true,
+                            "$ref": "MixedContentResourceType"
+                        },
+                        {
+                            "name": "resolutionStatus",
+                            "description": "The way the mixed content issue is being resolved.",
+                            "$ref": "MixedContentResolutionStatus"
+                        },
+                        {
+                            "name": "insecureURL",
+                            "description": "The unsafe http url causing the mixed content issue.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "mainResourceURL",
+                            "description": "The url responsible for the call to an unsafe url.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "request",
+                            "description": "The mixed content request.\nDoes not always exist (e.g. for unsafe form submission urls).",
+                            "optional": true,
+                            "$ref": "AffectedRequest"
+                        },
+                        {
+                            "name": "frame",
+                            "description": "Optional because not every mixed content issue is necessarily linked to a frame.",
+                            "optional": true,
+                            "$ref": "AffectedFrame"
+                        }
+                    ]
+                },
+                {
                     "id": "InspectorIssueCode",
                     "description": "A unique identifier for the type of issue. Each type may use one of the\noptional fields in InspectorIssueDetails to convey more specific\ninformation about the kind of issue.",
                     "type": "string",
                     "enum": [
-                        "SameSiteCookieIssue"
+                        "SameSiteCookieIssue",
+                        "MixedContentIssue"
                     ]
                 },
                 {
@@ -1050,6 +1142,11 @@
                             "name": "sameSiteCookieIssueDetails",
                             "optional": true,
                             "$ref": "SameSiteCookieIssueDetails"
+                        },
+                        {
+                            "name": "mixedContentIssueDetails",
+                            "optional": true,
+                            "$ref": "MixedContentIssueDetails"
                         }
                     ]
                 },

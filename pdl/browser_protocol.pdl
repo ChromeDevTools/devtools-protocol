@@ -463,6 +463,11 @@ experimental domain Audits
       Network.RequestId requestId
       optional string url
 
+  # Information about the frame affected by an inspector issue.
+  type AffectedFrame extends object
+    properties
+      Page.FrameId frameId
+
   type SameSiteCookieExclusionReason extends string
     enum
       ExcludeSameSiteUnspecifiedTreatedAsLax
@@ -500,12 +505,67 @@ experimental domain Audits
       optional string cookieUrl
       optional AffectedRequest request
 
+  type MixedContentResolutionStatus extends string
+    enum
+      MixedContentBlocked
+      MixedContentAutomaticallyUpgraded
+      MixedContentWarning
+
+  type MixedContentResourceType extends string
+    enum
+      Audio
+      Beacon
+      CSPReport
+      Download
+      EventSource
+      Favicon
+      Font
+      Form
+      Frame
+      Image
+      Import
+      Manifest
+      Ping
+      PluginData
+      PluginResource
+      Prefetch
+      Resource
+      Script
+      ServiceWorker
+      SharedWorker
+      Stylesheet
+      Track
+      Video
+      Worker
+      XMLHttpRequest
+      XSLT
+
+  type MixedContentIssueDetails extends object
+    properties
+      # The type of resource causing the mixed content issue (css, js, iframe,
+      # form,...). Marked as optional because it is mapped to from
+      # blink::mojom::RequestContextType, which will be replaced
+      # by network::mojom::RequestDestination
+      optional MixedContentResourceType resourceType
+      # The way the mixed content issue is being resolved.
+      MixedContentResolutionStatus resolutionStatus
+      # The unsafe http url causing the mixed content issue.
+      string insecureURL
+      # The url responsible for the call to an unsafe url.
+      string mainResourceURL
+      # The mixed content request.
+      # Does not always exist (e.g. for unsafe form submission urls).
+      optional AffectedRequest request
+      # Optional because not every mixed content issue is necessarily linked to a frame.
+      optional AffectedFrame frame
+
   # A unique identifier for the type of issue. Each type may use one of the
   # optional fields in InspectorIssueDetails to convey more specific
   # information about the kind of issue.
   type InspectorIssueCode extends string
     enum
       SameSiteCookieIssue
+      MixedContentIssue
 
   # This struct holds a list of optional fields with additional information
   # specific to the kind of issue. When adding a new issue code, please also
@@ -513,6 +573,7 @@ experimental domain Audits
   type InspectorIssueDetails extends object
     properties
       optional SameSiteCookieIssueDetails sameSiteCookieIssueDetails
+      optional MixedContentIssueDetails mixedContentIssueDetails
 
   # An inspector issue reported from the back-end.
   type InspectorIssue extends object

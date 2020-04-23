@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r760817
+###### _2020-04-20 21:16:08_ | Diff: [f973935...65061a8](https://github.com/ChromeDevTools/devtools-protocol/compare/f973935...65061a8)
+#### `Runtime`: modified type
+* [`Runtime.RemoteObject`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-RemoteObject) - The `1` in the properties had `anyref` _added_. 
+
+
 ## Roll protocol to r758979
 ###### _2020-04-14 13:16:08_ | Diff: [fc07ba2...4b02082](https://github.com/ChromeDevTools/devtools-protocol/compare/fc07ba2...4b02082)
 #### `Browser`: modified commands
