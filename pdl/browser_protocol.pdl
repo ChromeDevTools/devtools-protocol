@@ -5542,6 +5542,13 @@ domain Page
       reload
       anchorClick
 
+  experimental type ClientNavigationDisposition extends string
+    enum
+      currentTab
+      newTab
+      newWindow
+      download
+
   experimental type InstallabilityErrorArgument extends object
     properties
       # Argument name (e.g. name:'minimum-icon-size-in-pixels').
@@ -6118,6 +6125,8 @@ domain Page
       ClientNavigationReason reason
       # The destination URL for the requested navigation.
       string url
+      # The disposition for the navigation.
+      ClientNavigationDisposition disposition
 
   # Fired when frame schedules a potential navigation.
   deprecated event frameScheduledNavigation

@@ -1,5 +1,20 @@
 
 
+## Roll protocol to r762397
+###### _2020-04-24 10:17:12_ | Diff: [a7f028b...37db537](https://github.com/ChromeDevTools/devtools-protocol/compare/a7f028b...37db537)
+#### `Media`: new events
+* [`Media.playerMessagesLogged`](https://chromedevtools.github.io/devtools-protocol/tot/Media/#event-playerMessagesLogged)
+* [`Media.playerErrorsRaised`](https://chromedevtools.github.io/devtools-protocol/tot/Media/#event-playerErrorsRaised)
+#### `Media`: new types
+* [`Media.PlayerMessage`](https://chromedevtools.github.io/devtools-protocol/tot/Media/#type-PlayerMessage)
+* [`Media.PlayerError`](https://chromedevtools.github.io/devtools-protocol/tot/Media/#type-PlayerError)
+#### `Media`: removed type
+* [`Media.PlayerEventType`](https://chromedevtools.github.io/devtools-protocol/tot/Media/#type-PlayerEventType)
+#### `Media`: modified types
+* [`Media.PlayerProperty`](https://chromedevtools.github.io/devtools-protocol/tot/Media/#type-PlayerProperty) - The `value` in the properties had `optional` _removed_. `description` updated. 
+* [`Media.PlayerEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Media/#type-PlayerEvent) - The properties's `name` _removed_. The properties's `value` _removed_. The `timestamp` in the properties had `description` _removed_. The `timestamp` in the properties had `$ref` _removed_. The `type` in the properties had `name` _updated_. The `type` in the properties had `$ref` _updated_. The `timestamp` in the properties had `name` _updated_. `description` added. The properties's `type` _added_. 
+
+
 ## Roll protocol to r761827
 ###### _2020-04-23 00:16:09_ | Diff: [65061a8...a7f028b](https://github.com/ChromeDevTools/devtools-protocol/compare/65061a8...a7f028b)
 #### `Audits`: new types

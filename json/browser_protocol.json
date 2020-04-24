@@ -12011,6 +12011,17 @@
                     ]
                 },
                 {
+                    "id": "ClientNavigationDisposition",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "currentTab",
+                        "newTab",
+                        "newWindow",
+                        "download"
+                    ]
+                },
+                {
                     "id": "InstallabilityErrorArgument",
                     "experimental": true,
                     "type": "object",
@@ -13232,6 +13243,11 @@
                             "name": "url",
                             "description": "The destination URL for the requested navigation.",
                             "type": "string"
+                        },
+                        {
+                            "name": "disposition",
+                            "description": "The disposition for the navigation.",
+                            "$ref": "ClientNavigationDisposition"
                         }
                     ]
                 },

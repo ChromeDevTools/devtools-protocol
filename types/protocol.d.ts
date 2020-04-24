@@ -9943,6 +9943,8 @@ export namespace Protocol {
 
         export type ClientNavigationReason = ('formSubmissionGet' | 'formSubmissionPost' | 'httpHeaderRefresh' | 'scriptInitiated' | 'metaTagRefresh' | 'pageBlockInterstitial' | 'reload' | 'anchorClick');
 
+        export type ClientNavigationDisposition = ('currentTab' | 'newTab' | 'newWindow' | 'download');
+
         export interface InstallabilityErrorArgument {
             /**
              * Argument name (e.g. name:'minimum-icon-size-in-pixels').
@@ -10666,6 +10668,10 @@ export namespace Protocol {
              * The destination URL for the requested navigation.
              */
             url: string;
+            /**
+             * The disposition for the navigation.
+             */
+            disposition: ClientNavigationDisposition;
         }
 
         /**
