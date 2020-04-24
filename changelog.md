@@ -1,5 +1,17 @@
 
 
+## Roll protocol to r761827
+###### _2020-04-23 00:16:09_ | Diff: [65061a8...a7f028b](https://github.com/ChromeDevTools/devtools-protocol/compare/65061a8...a7f028b)
+#### `Audits`: new types
+* [`Audits.AffectedFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AffectedFrame)
+* [`Audits.MixedContentResolutionStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-MixedContentResolutionStatus)
+* [`Audits.MixedContentResourceType`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-MixedContentResourceType)
+* [`Audits.MixedContentIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-MixedContentIssueDetails)
+#### `Audits`: modified types
+* [`Audits.InspectorIssueCode`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueCode) - The enum's `MixedContentIssue` _added_. 
+* [`Audits.InspectorIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueDetails) - The properties's `mixedContentIssueDetails` _added_. 
+
+
 ## Roll protocol to r760817
 ###### _2020-04-20 21:16:08_ | Diff: [f973935...65061a8](https://github.com/ChromeDevTools/devtools-protocol/compare/f973935...65061a8)
 #### `Runtime`: modified type

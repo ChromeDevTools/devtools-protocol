@@ -12867,27 +12867,54 @@ export namespace Protocol {
         export type Timestamp = number;
 
         /**
-         * Player Property type
+         * Have one type per entry in MediaLogRecord::Type
+         * Corresponds to kMessage
          */
-        export interface PlayerProperty {
-            name: string;
-            value?: string;
+        export interface PlayerMessage {
+            /**
+             * Keep in sync with MediaLogMessageLevel
+             * We are currently keeping the message level 'error' separate from the
+             * PlayerError type because right now they represent different things,
+             * this one being a DVLOG(ERROR) style log message that gets printed
+             * based on what log level is selected in the UI, and the other is a
+             * representation of a media::PipelineStatus object. Soon however we're
+             * going to be moving away from using PipelineStatus for errors and
+             * introducing a new error type which should hopefully let us integrate
+             * the error log level into the PlayerError type.
+             */
+            level: ('error' | 'warning' | 'info' | 'debug');
+            message: string;
         }
 
         /**
-         * Break out events into different types
+         * Corresponds to kMediaPropertyChange
          */
-        export type PlayerEventType = ('errorEvent' | 'triggeredEvent' | 'messageEvent');
-
-        export interface PlayerEvent {
-            type: PlayerEventType;
-            /**
-             * Events are timestamped relative to the start of the player creation
-             * not relative to the start of playback.
-             */
-            timestamp: Timestamp;
+        export interface PlayerProperty {
             name: string;
             value: string;
+        }
+
+        /**
+         * Corresponds to kMediaEventTriggered
+         */
+        export interface PlayerEvent {
+            timestamp: Timestamp;
+            value: string;
+        }
+
+        /**
+         * Corresponds to kMediaError
+         */
+        export interface PlayerError {
+            type: ('pipeline_error' | 'media_error');
+            /**
+             * When this switches to using media::Status instead of PipelineStatus
+             * we can remove "errorCode" and replace it with the fields from
+             * a Status instance. This also seems like a duplicate of the error
+             * level enum - there is a todo bug to have that level removed and
+             * use this instead. (crbug.com/1068454)
+             */
+            errorCode: string;
         }
 
         /**
@@ -12906,6 +12933,22 @@ export namespace Protocol {
         export interface PlayerEventsAddedEvent {
             playerId: PlayerId;
             events: PlayerEvent[];
+        }
+
+        /**
+         * Send a list of any messages that need to be delivered.
+         */
+        export interface PlayerMessagesLoggedEvent {
+            playerId: PlayerId;
+            messages: PlayerMessage[];
+        }
+
+        /**
+         * Send a list of any errors that need to be delivered.
+         */
+        export interface PlayerErrorsRaisedEvent {
+            playerId: PlayerId;
+            errors: PlayerError[];
         }
 
         /**
