@@ -9374,6 +9374,24 @@ export namespace Protocol {
             cssGridColor?: DOM.RGBA;
         }
 
+        /**
+         * Configuration for dual screen hinge
+         */
+        export interface HingeConfig {
+            /**
+             * A rectangle represent hinge
+             */
+            rect: DOM.Rect;
+            /**
+             * The content box highlight fill color (default: a dark color).
+             */
+            contentColor?: DOM.RGBA;
+            /**
+             * The content box highlight outline color (default: transparent).
+             */
+            outlineColor?: DOM.RGBA;
+        }
+
         export type InspectMode = ('searchForNode' | 'searchForUAShadowDOM' | 'captureAreaScreenshot' | 'showDistances' | 'none');
 
         export interface GetHighlightObjectForTestRequest {
@@ -9551,6 +9569,13 @@ export namespace Protocol {
              * Whether to paint size or not.
              */
             show: boolean;
+        }
+
+        export interface SetShowHingeRequest {
+            /**
+             * hinge data, null means hideHinge
+             */
+            hingeConfig?: HingeConfig;
         }
 
         /**

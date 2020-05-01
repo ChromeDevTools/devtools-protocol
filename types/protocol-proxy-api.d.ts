@@ -2318,6 +2318,11 @@ export namespace ProtocolProxyApi {
         setShowViewportSizeOnResize(params: Protocol.Overlay.SetShowViewportSizeOnResizeRequest): Promise<void>;
 
         /**
+         * Add a dual screen device hinge
+         */
+        setShowHinge(params: Protocol.Overlay.SetShowHingeRequest): Promise<void>;
+
+        /**
          * Fired when the node should be inspected. This happens after call to `setInspectMode` or when
          * user manually inspects an element.
          */

@@ -5147,6 +5147,16 @@ experimental domain Overlay
       # The grid layout color (default: transparent).
       optional DOM.RGBA cssGridColor
 
+  # Configuration for dual screen hinge
+  type HingeConfig extends object
+    properties
+      # A rectangle represent hinge
+      DOM.Rect rect
+      # The content box highlight fill color (default: a dark color).
+      optional DOM.RGBA contentColor
+      # The content box highlight outline color (default: transparent).
+      optional DOM.RGBA outlineColor
+
   type InspectMode extends string
     enum
       searchForNode
@@ -5290,6 +5300,12 @@ experimental domain Overlay
     parameters
       # Whether to paint size or not.
       boolean show
+
+  # Add a dual screen device hinge
+  command setShowHinge
+    parameters
+      # hinge data, null means hideHinge
+      optional HingeConfig hingeConfig
 
   # Fired when the node should be inspected. This happens after call to `setInspectMode` or when
   # user manually inspects an element.

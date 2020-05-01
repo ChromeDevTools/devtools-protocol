@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r762508
+###### _2020-04-24 14:16:30_ | Diff: [37db537...fb81f45](https://github.com/ChromeDevTools/devtools-protocol/compare/37db537...fb81f45)
+#### `Page`: modified event
+* [`Page.frameRequestedNavigation`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameRequestedNavigation) - The parameters's `disposition` _added_. 
+#### `Page`: new type
+* [`Page.ClientNavigationDisposition`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ClientNavigationDisposition)
+
+
 ## Roll protocol to r762397
 ###### _2020-04-24 10:17:12_ | Diff: [a7f028b...37db537](https://github.com/ChromeDevTools/devtools-protocol/compare/a7f028b...37db537)
 #### `Media`: new events
