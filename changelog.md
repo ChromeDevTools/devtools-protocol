@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r764791
+###### _2020-05-01 14:16:14_ | Diff: [fb81f45...61f90ac](https://github.com/ChromeDevTools/devtools-protocol/compare/fb81f45...61f90ac)
+#### `Overlay`: new command
+* [`Overlay.setShowHinge`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-setShowHinge)
+#### `Overlay`: new type
+* [`Overlay.HingeConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-HingeConfig)
+
+
 ## Roll protocol to r762508
 ###### _2020-04-24 14:16:30_ | Diff: [37db537...fb81f45](https://github.com/ChromeDevTools/devtools-protocol/compare/37db537...fb81f45)
 #### `Page`: modified event

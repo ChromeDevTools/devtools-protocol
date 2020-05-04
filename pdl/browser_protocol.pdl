@@ -5146,6 +5146,14 @@ experimental domain Overlay
       optional DOM.RGBA shapeMarginColor
       # The grid layout color (default: transparent).
       optional DOM.RGBA cssGridColor
+      # The color format used to format color styles (default: hex).
+      optional ColorFormat colorFormat
+
+  type ColorFormat extends string
+    enum
+      rgb
+      hsl
+      hex
 
   # Configuration for dual screen hinge
   type HingeConfig extends object
@@ -5180,6 +5188,8 @@ experimental domain Overlay
       optional boolean includeDistance
       # Whether to include style info.
       optional boolean includeStyle
+      # The color format to get config with (default: hex)
+      optional ColorFormat colorFormat
     returns
       # Highlight data for the node.
       object highlight

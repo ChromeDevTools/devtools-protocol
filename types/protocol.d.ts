@@ -9372,7 +9372,13 @@ export namespace Protocol {
              * The grid layout color (default: transparent).
              */
             cssGridColor?: DOM.RGBA;
+            /**
+             * The color format used to format color styles (default: hex).
+             */
+            colorFormat?: ColorFormat;
         }
+
+        export type ColorFormat = ('rgb' | 'hsl' | 'hex');
 
         /**
          * Configuration for dual screen hinge
@@ -9407,6 +9413,10 @@ export namespace Protocol {
              * Whether to include style info.
              */
             includeStyle?: boolean;
+            /**
+             * The color format to get config with (default: hex)
+             */
+            colorFormat?: ColorFormat;
         }
 
         export interface GetHighlightObjectForTestResponse {
