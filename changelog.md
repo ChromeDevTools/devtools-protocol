@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r765004
+###### _2020-05-04 01:16:14_ | Diff: [61f90ac...6b310c4](https://github.com/ChromeDevTools/devtools-protocol/compare/61f90ac...6b310c4)
+#### `Overlay`: modified command
+* [`Overlay.getHighlightObjectForTest`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-getHighlightObjectForTest) - The parameters's `colorFormat` _added_. 
+#### `Overlay`: new type
+* [`Overlay.ColorFormat`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-ColorFormat)
+#### `Overlay`: modified type
+* [`Overlay.HighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-HighlightConfig) - The properties's `colorFormat` _added_. 
+
+
 ## Roll protocol to r764791
 ###### _2020-05-01 14:16:14_ | Diff: [fb81f45...61f90ac](https://github.com/ChromeDevTools/devtools-protocol/compare/fb81f45...61f90ac)
 #### `Overlay`: new command
