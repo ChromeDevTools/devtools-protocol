@@ -192,6 +192,20 @@ export namespace Protocol {
          */
         export type ScriptLanguage = ('JavaScript' | 'WebAssembly');
 
+        /**
+         * Debug symbols available for a wasm script.
+         */
+        export interface DebugSymbols {
+            /**
+             * Type of the debug symbols.
+             */
+            type: ('None' | 'SourceMap' | 'EmbeddedDWARF' | 'ExternalDWARF');
+            /**
+             * URL of the external symbol source.
+             */
+            externalURL?: string;
+        }
+
         export interface ContinueToLocationRequest {
             /**
              * Location to continue to.
@@ -258,6 +272,32 @@ export namespace Protocol {
         }
 
         export interface EvaluateOnCallFrameResponse {
+            /**
+             * Object wrapper for the evaluation result.
+             */
+            result: Runtime.RemoteObject;
+            /**
+             * Exception details.
+             */
+            exceptionDetails?: Runtime.ExceptionDetails;
+        }
+
+        export interface ExecuteWasmEvaluatorRequest {
+            /**
+             * WebAssembly call frame identifier to evaluate on.
+             */
+            callFrameId: CallFrameId;
+            /**
+             * Code of the evaluator module.
+             */
+            evaluator: string;
+            /**
+             * Terminate execution after timing out (number of milliseconds).
+             */
+            timeout?: Runtime.TimeDelta;
+        }
+
+        export interface ExecuteWasmEvaluatorResponse {
             /**
              * Object wrapper for the evaluation result.
              */
@@ -806,6 +846,10 @@ export namespace Protocol {
              * The language of the script.
              */
             scriptLanguage?: Debugger.ScriptLanguage;
+            /**
+             * If the scriptLanguage is WebASsembly, the source of debug symbols for the module.
+             */
+            debugSymbols?: Debugger.DebugSymbols;
         }
     }
 

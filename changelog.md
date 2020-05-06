@@ -1,5 +1,16 @@
 
 
+## Roll protocol to r765803
+###### _2020-05-05 16:16:02_ | Diff: [6b310c4...90a2227](https://github.com/ChromeDevTools/devtools-protocol/compare/6b310c4...90a2227)
+#### `Emulation`: modified command
+* [`Emulation.setUserAgentOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setUserAgentOverride) - The parameters's `userAgentMetadata` _added_. 
+#### `Emulation`: new types
+* [`Emulation.UserAgentBrandVersion`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#type-UserAgentBrandVersion)
+* [`Emulation.UserAgentMetadata`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#type-UserAgentMetadata)
+#### `Network`: modified command
+* [`Network.setUserAgentOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setUserAgentOverride) - The parameters's `userAgentMetadata` _added_. 
+
+
 ## Roll protocol to r765004
 ###### _2020-05-04 01:16:14_ | Diff: [61f90ac...6b310c4](https://github.com/ChromeDevTools/devtools-protocol/compare/61f90ac...6b310c4)
 #### `Overlay`: modified command
