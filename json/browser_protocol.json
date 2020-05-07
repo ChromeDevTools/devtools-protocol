@@ -13514,6 +13514,11 @@
                             "name": "url",
                             "description": "URL of the resource being downloaded.",
                             "type": "string"
+                        },
+                        {
+                            "name": "filename",
+                            "description": "Filename of the resource (may diverge from the actual filename saved on disk)",
+                            "type": "string"
                         }
                     ]
                 },

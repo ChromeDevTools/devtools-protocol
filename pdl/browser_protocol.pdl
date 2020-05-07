@@ -6234,6 +6234,8 @@ domain Page
       string guid
       # URL of the resource being downloaded.
       string url
+      # Filename of the resource (may diverge from the actual filename saved on disk)
+      string filename
 
   # Fired when download makes progress. Last call has |done| == true.
   experimental event downloadProgress

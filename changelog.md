@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r766603
+###### _2020-05-07 15:16:08_ | Diff: [795f478...0e007a5](https://github.com/ChromeDevTools/devtools-protocol/compare/795f478...0e007a5)
+#### `Overlay`: new type
+* [`Overlay.GridHighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-GridHighlightConfig)
+#### `Overlay`: modified type
+* [`Overlay.HighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-HighlightConfig) - The properties's `gridHighlightConfig` _added_. 
+
+
 ## Roll protocol to r766377
 ###### _2020-05-07 05:15:58_ | Diff: [4577b7f...795f478](https://github.com/ChromeDevTools/devtools-protocol/compare/4577b7f...795f478)
 #### `Network`: modified event

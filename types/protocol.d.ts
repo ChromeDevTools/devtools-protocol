@@ -10887,6 +10887,10 @@ export namespace Protocol {
              * URL of the resource being downloaded.
              */
             url: string;
+            /**
+             * Filename of the resource (may diverge from the actual filename saved on disk)
+             */
+            filename: string;
         }
 
         /**
