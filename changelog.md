@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r766017
+###### _2020-05-06 09:17:41_ | Diff: [90a2227...4577b7f](https://github.com/ChromeDevTools/devtools-protocol/compare/90a2227...4577b7f)
+#### `Debugger`: new command
+* [`Debugger.executeWasmEvaluator`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-executeWasmEvaluator)
+#### `Debugger`: modified event
+* [`Debugger.scriptParsed`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-scriptParsed) - The parameters's `debugSymbols` _added_. 
+#### `Debugger`: new type
+* [`Debugger.DebugSymbols`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#type-DebugSymbols)
+
+
 ## Roll protocol to r765803
 ###### _2020-05-05 16:16:02_ | Diff: [6b310c4...90a2227](https://github.com/ChromeDevTools/devtools-protocol/compare/6b310c4...90a2227)
 #### `Emulation`: modified command
