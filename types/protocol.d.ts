@@ -9394,6 +9394,48 @@ export namespace Protocol {
     export namespace Overlay {
 
         /**
+         * Configuration data for the highlighting of Grid elements.
+         */
+        export interface GridHighlightConfig {
+            /**
+             * Whether the extension lines from grid cells to the rulers should be shown (default: false).
+             */
+            showGridExtensionLines?: boolean;
+            /**
+             * The grid container border highlight color (default: transparent).
+             */
+            gridBorderColor?: DOM.RGBA;
+            /**
+             * The cell border color (default: transparent).
+             */
+            cellBorderColor?: DOM.RGBA;
+            /**
+             * Whether the grid border is dashed (default: false).
+             */
+            gridBorderDash?: boolean;
+            /**
+             * Whether the cell border is dashed (default: false).
+             */
+            cellBorderDash?: boolean;
+            /**
+             * The row gap highlight fill color (default: transparent).
+             */
+            rowGapColor?: DOM.RGBA;
+            /**
+             * The row gap hatching fill color (default: transparent).
+             */
+            rowHatchColor?: DOM.RGBA;
+            /**
+             * The column gap highlight fill color (default: transparent).
+             */
+            columnGapColor?: DOM.RGBA;
+            /**
+             * The column gap hatching fill color (default: transparent).
+             */
+            columnHatchColor?: DOM.RGBA;
+        }
+
+        /**
          * Configuration data for the highlighting of page elements.
          */
         export interface HighlightConfig {
@@ -9449,6 +9491,10 @@ export namespace Protocol {
              * The color format used to format color styles (default: hex).
              */
             colorFormat?: ColorFormat;
+            /**
+             * The grid layout highlight configuration (default: all transparent).
+             */
+            gridHighlightConfig?: GridHighlightConfig;
         }
 
         export type ColorFormat = ('rgb' | 'hsl' | 'hex');

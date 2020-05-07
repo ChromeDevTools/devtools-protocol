@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r766377
+###### _2020-05-07 05:15:58_ | Diff: [4577b7f...795f478](https://github.com/ChromeDevTools/devtools-protocol/compare/4577b7f...795f478)
+#### `Network`: modified event
+* [`Network.requestWillBeSentExtraInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestWillBeSentExtraInfo) - The `blockedCookies` in the parameters had `name` _updated_. The `blockedCookies` in the parameters had `description` _updated_. 
+
+
 ## Roll protocol to r766017
 ###### _2020-05-06 09:17:41_ | Diff: [90a2227...4577b7f](https://github.com/ChromeDevTools/devtools-protocol/compare/90a2227...4577b7f)
 #### `Debugger`: new command
