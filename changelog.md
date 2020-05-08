@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r766630
+###### _2020-05-07 16:16:09_ | Diff: [0e007a5...08a3c82](https://github.com/ChromeDevTools/devtools-protocol/compare/0e007a5...08a3c82)
+#### `Page`: modified event
+* [`Page.downloadWillBegin`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-downloadWillBegin) - The parameters's `filename` _added_. 
+
+
 ## Roll protocol to r766603
 ###### _2020-05-07 15:16:08_ | Diff: [795f478...0e007a5](https://github.com/ChromeDevTools/devtools-protocol/compare/795f478...0e007a5)
 #### `Overlay`: new type

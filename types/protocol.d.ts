@@ -10888,9 +10888,9 @@ export namespace Protocol {
              */
             url: string;
             /**
-             * Filename of the resource (may diverge from the actual filename saved on disk)
+             * Suggested file name of the resource (the actual name of the file saved on disk may differ).
              */
-            filename: string;
+            suggestedFilename: string;
         }
 
         /**
