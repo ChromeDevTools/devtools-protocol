@@ -2809,7 +2809,7 @@ export namespace Protocol {
 
         export type SameSiteCookieExclusionReason = ('ExcludeSameSiteUnspecifiedTreatedAsLax' | 'ExcludeSameSiteNoneInsecure');
 
-        export type SameSiteCookieWarningReason = ('WarnSameSiteUnspecifiedCrossSiteContext' | 'WarnSameSiteNoneInsecure' | 'WarnSameSiteUnspecifiedLaxAllowUnsafe' | 'WarnSameSiteCrossSchemeSecureUrlMethodUnsafe' | 'WarnSameSiteCrossSchemeSecureUrlLax' | 'WarnSameSiteCrossSchemeSecureUrlStrict' | 'WarnSameSiteCrossSchemeInsecureUrlMethodUnsafe' | 'WarnSameSiteCrossSchemeInsecureUrlLax' | 'WarnSameSiteCrossSchemeInsecureUrlStrict');
+        export type SameSiteCookieWarningReason = ('WarnSameSiteUnspecifiedCrossSiteContext' | 'WarnSameSiteNoneInsecure' | 'WarnSameSiteUnspecifiedLaxAllowUnsafe' | 'WarnSameSiteStrictLaxDowngradeStrict' | 'WarnSameSiteStrictCrossDowngradeStrict' | 'WarnSameSiteStrictCrossDowngradeLax' | 'WarnSameSiteLaxCrossDowngradeStrict' | 'WarnSameSiteLaxCrossDowngradeLax');
 
         export type SameSiteCookieOperation = ('SetCookie' | 'ReadCookie');
 
