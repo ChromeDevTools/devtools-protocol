@@ -4,7 +4,7 @@
   "description": "The Chrome DevTools Protocol JSON",
   "repository": "https://github.com/ChromeDevTools/devtools-protocol",
   "author": "The Chromium Authors",
-  "license": "LicenseRef-LICENSE",
+  "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/ChromeDevTools/devtools-protocol/issues"
   },
