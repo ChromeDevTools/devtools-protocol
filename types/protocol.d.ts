@@ -2868,11 +2868,28 @@ export namespace Protocol {
         }
 
         /**
+         * Enum indicating the reason a response has been blocked. These reasons are
+         * refinements of the net error BLOCKED_BY_RESPONSE.
+         */
+        export type BlockedByResponseReason = ('CoepFrameResourceNeedsCoepHeader' | 'CoopSandboxedIFrameCannotNavigateToCoopPage' | 'CorpNotSameOrigin' | 'CorpNotSameOriginAfterDefaultedToSameOriginByCoep' | 'CorpNotSameSite');
+
+        /**
+         * Details for a request that has been blocked with the BLOCKED_BY_RESPONSE
+         * code. Currently only used for COEP/COOP, but may be extended to include
+         * some CSP errors in the future.
+         */
+        export interface BlockedByResponseIssueDetails {
+            request: AffectedRequest;
+            frame?: AffectedFrame;
+            reason: BlockedByResponseReason;
+        }
+
+        /**
          * A unique identifier for the type of issue. Each type may use one of the
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue');
+        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -2882,6 +2899,7 @@ export namespace Protocol {
         export interface InspectorIssueDetails {
             sameSiteCookieIssueDetails?: SameSiteCookieIssueDetails;
             mixedContentIssueDetails?: MixedContentIssueDetails;
+            blockedByResponseIssueDetails?: BlockedByResponseIssueDetails;
         }
 
         /**

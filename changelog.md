@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r767361
+###### _2020-05-11 10:16:19_ | Diff: [76c859e...0a94929](https://github.com/ChromeDevTools/devtools-protocol/compare/76c859e...0a94929)
+#### `Audits`: modified type
+* [`Audits.SameSiteCookieWarningReason`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SameSiteCookieWarningReason) - The enum's `WarnSameSiteCrossSchemeInsecureUrlStrict` _removed_. The enum's `WarnSameSiteCrossSchemeSecureUrlMethodUnsafe` _updated_. The enum's `WarnSameSiteCrossSchemeSecureUrlLax` _updated_. The enum's `WarnSameSiteCrossSchemeSecureUrlStrict` _updated_. The enum's `WarnSameSiteCrossSchemeInsecureUrlMethodUnsafe` _updated_. The enum's `WarnSameSiteCrossSchemeInsecureUrlLax` _updated_. 
+
+
 ## Roll protocol to r767035
 ###### _2020-05-08 16:17:20_ | Diff: [08a3c82...76c859e](https://github.com/ChromeDevTools/devtools-protocol/compare/08a3c82...76c859e)
 #### `Page`: modified event
