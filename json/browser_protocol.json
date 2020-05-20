@@ -9034,6 +9034,18 @@
                             "type": "number"
                         },
                         {
+                            "name": "workerFetchStart",
+                            "description": "Started fetch event.",
+                            "experimental": true,
+                            "type": "number"
+                        },
+                        {
+                            "name": "workerRespondWithSettled",
+                            "description": "Settled fetch event respondWith promise.",
+                            "experimental": true,
+                            "type": "number"
+                        },
+                        {
                             "name": "sendStart",
                             "description": "Started sending request.",
                             "type": "number"

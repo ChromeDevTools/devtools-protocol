@@ -7887,6 +7887,14 @@ export namespace Protocol {
              */
             workerReady: number;
             /**
+             * Started fetch event.
+             */
+            workerFetchStart: number;
+            /**
+             * Settled fetch event respondWith promise.
+             */
+            workerRespondWithSettled: number;
+            /**
              * Started sending request.
              */
             sendStart: number;

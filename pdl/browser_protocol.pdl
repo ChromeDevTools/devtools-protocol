@@ -4140,6 +4140,10 @@ domain Network
       experimental number workerStart
       # Finished Starting ServiceWorker.
       experimental number workerReady
+      # Started fetch event.
+      experimental number workerFetchStart
+      # Settled fetch event respondWith promise.
+      experimental number workerRespondWithSettled
       # Started sending request.
       number sendStart
       # Finished sending request.

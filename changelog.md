@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r770080
+###### _2020-05-19 05:16:05_ | Diff: [c669e10...2cb3356](https://github.com/ChromeDevTools/devtools-protocol/compare/c669e10...2cb3356)
+#### `Audits`: new types
+* [`Audits.BlockedByResponseReason`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-BlockedByResponseReason)
+* [`Audits.BlockedByResponseIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-BlockedByResponseIssueDetails)
+#### `Audits`: modified types
+* [`Audits.InspectorIssueCode`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueCode) - The enum's `BlockedByResponseIssue` _added_. 
+* [`Audits.InspectorIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueDetails) - The properties's `blockedByResponseIssueDetails` _added_. 
+
+
 ## Roll protocol to r767361
 ###### _2020-05-11 10:16:19_ | Diff: [76c859e...0a94929](https://github.com/ChromeDevTools/devtools-protocol/compare/76c859e...0a94929)
 #### `Audits`: modified type
