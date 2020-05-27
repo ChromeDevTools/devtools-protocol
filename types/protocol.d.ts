@@ -11,6 +11,28 @@ export namespace Protocol {
      */
     export namespace Console {
 
+        export enum ConsoleMessageSource {
+            XML = 'xml',
+            Javascript = 'javascript',
+            Network = 'network',
+            ConsoleAPI = 'console-api',
+            Storage = 'storage',
+            Appcache = 'appcache',
+            Rendering = 'rendering',
+            Security = 'security',
+            Other = 'other',
+            Deprecation = 'deprecation',
+            Worker = 'worker',
+        }
+
+        export enum ConsoleMessageLevel {
+            Log = 'log',
+            Warning = 'warning',
+            Error = 'error',
+            Debug = 'debug',
+            Info = 'info',
+        }
+
         /**
          * Console message.
          */
@@ -18,11 +40,11 @@ export namespace Protocol {
             /**
              * Message source.
              */
-            source: ('xml' | 'javascript' | 'network' | 'console-api' | 'storage' | 'appcache' | 'rendering' | 'security' | 'other' | 'deprecation' | 'worker');
+            source: ConsoleMessageSource;
             /**
              * Message severity.
              */
-            level: ('log' | 'warning' | 'error' | 'debug' | 'info');
+            level: ConsoleMessageLevel;
             /**
              * Message text.
              */
@@ -132,6 +154,19 @@ export namespace Protocol {
             returnValue?: Runtime.RemoteObject;
         }
 
+        export enum ScopeType {
+            Global = 'global',
+            Local = 'local',
+            With = 'with',
+            Closure = 'closure',
+            Catch = 'catch',
+            Block = 'block',
+            Script = 'script',
+            Eval = 'eval',
+            Module = 'module',
+            WasmExpressionStack = 'wasm-expression-stack',
+        }
+
         /**
          * Scope description.
          */
@@ -139,7 +174,7 @@ export namespace Protocol {
             /**
              * Scope type.
              */
-            type: ('global' | 'local' | 'with' | 'closure' | 'catch' | 'block' | 'script' | 'eval' | 'module' | 'wasm-expression-stack');
+            type: ScopeType;
             /**
              * Object representing the scope. For `global` and `with` scopes it represents the actual
              * object; for the rest of the scopes, it is artificial transient object enumerating scope
@@ -171,6 +206,12 @@ export namespace Protocol {
             lineContent: string;
         }
 
+        export enum BreakLocationType {
+            DebuggerStatement = 'debuggerStatement',
+            Call = 'call',
+            Return = 'return',
+        }
+
         export interface BreakLocation {
             /**
              * Script identifier as reported in the `Debugger.scriptParsed`.
@@ -184,13 +225,20 @@ export namespace Protocol {
              * Column number in the script (0-based).
              */
             columnNumber?: integer;
-            type?: ('debuggerStatement' | 'call' | 'return');
+            type?: BreakLocationType;
         }
 
         /**
          * Enum of possible script languages.
          */
         export type ScriptLanguage = ('JavaScript' | 'WebAssembly');
+
+        export enum DebugSymbolsType {
+            None = 'None',
+            SourceMap = 'SourceMap',
+            EmbeddedDWARF = 'EmbeddedDWARF',
+            ExternalDWARF = 'ExternalDWARF',
+        }
 
         /**
          * Debug symbols available for a wasm script.
@@ -199,11 +247,16 @@ export namespace Protocol {
             /**
              * Type of the debug symbols.
              */
-            type: ('None' | 'SourceMap' | 'EmbeddedDWARF' | 'ExternalDWARF');
+            type: DebugSymbolsType;
             /**
              * URL of the external symbol source.
              */
             externalURL?: string;
+        }
+
+        export enum ContinueToLocationRequestTargetCallFrames {
+            Any = 'any',
+            Current = 'current',
         }
 
         export interface ContinueToLocationRequest {
@@ -211,7 +264,7 @@ export namespace Protocol {
              * Location to continue to.
              */
             location: Location;
-            targetCallFrames?: ('any' | 'current');
+            targetCallFrames?: ContinueToLocationRequestTargetCallFrames;
         }
 
         export interface EnableRequest {
@@ -487,11 +540,16 @@ export namespace Protocol {
             actualLocation: Location;
         }
 
+        export enum SetInstrumentationBreakpointRequestInstrumentation {
+            BeforeScriptExecution = 'beforeScriptExecution',
+            BeforeScriptWithSourceMapExecution = 'beforeScriptWithSourceMapExecution',
+        }
+
         export interface SetInstrumentationBreakpointRequest {
             /**
              * Instrumentation name.
              */
-            instrumentation: ('beforeScriptExecution' | 'beforeScriptWithSourceMapExecution');
+            instrumentation: SetInstrumentationBreakpointRequestInstrumentation;
         }
 
         export interface SetInstrumentationBreakpointResponse {
@@ -567,11 +625,17 @@ export namespace Protocol {
             active: boolean;
         }
 
+        export enum SetPauseOnExceptionsRequestState {
+            None = 'none',
+            Uncaught = 'uncaught',
+            All = 'all',
+        }
+
         export interface SetPauseOnExceptionsRequest {
             /**
              * Pause on exceptions mode.
              */
-            state: ('none' | 'uncaught' | 'all');
+            state: SetPauseOnExceptionsRequestState;
         }
 
         export interface SetReturnValueRequest {
@@ -669,6 +733,20 @@ export namespace Protocol {
             location: Location;
         }
 
+        export enum PausedEventReason {
+            Ambiguous = 'ambiguous',
+            Assert = 'assert',
+            DebugCommand = 'debugCommand',
+            DOM = 'DOM',
+            EventListener = 'EventListener',
+            Exception = 'exception',
+            Instrumentation = 'instrumentation',
+            OOM = 'OOM',
+            Other = 'other',
+            PromiseRejection = 'promiseRejection',
+            XHR = 'XHR',
+        }
+
         /**
          * Fired when the virtual machine stopped on breakpoint or exception or any other stop criteria.
          */
@@ -680,7 +758,7 @@ export namespace Protocol {
             /**
              * Pause reason.
              */
-            reason: ('ambiguous' | 'assert' | 'debugCommand' | 'DOM' | 'EventListener' | 'exception' | 'instrumentation' | 'OOM' | 'other' | 'promiseRejection' | 'XHR');
+            reason: PausedEventReason;
             /**
              * Object containing break-specific auxiliary properties.
              */
@@ -1351,6 +1429,44 @@ export namespace Protocol {
          */
         export type UnserializableValue = string;
 
+        export enum RemoteObjectType {
+            Object = 'object',
+            Function = 'function',
+            Undefined = 'undefined',
+            String = 'string',
+            Number = 'number',
+            Boolean = 'boolean',
+            Symbol = 'symbol',
+            Bigint = 'bigint',
+            Wasm = 'wasm',
+        }
+
+        export enum RemoteObjectSubtype {
+            Array = 'array',
+            Null = 'null',
+            Node = 'node',
+            Regexp = 'regexp',
+            Date = 'date',
+            Map = 'map',
+            Set = 'set',
+            Weakmap = 'weakmap',
+            Weakset = 'weakset',
+            Iterator = 'iterator',
+            Generator = 'generator',
+            Error = 'error',
+            Proxy = 'proxy',
+            Promise = 'promise',
+            Typedarray = 'typedarray',
+            Arraybuffer = 'arraybuffer',
+            Dataview = 'dataview',
+            I32 = 'i32',
+            I64 = 'i64',
+            F32 = 'f32',
+            F64 = 'f64',
+            V128 = 'v128',
+            Anyref = 'anyref',
+        }
+
         /**
          * Mirror object referencing original JavaScript object.
          */
@@ -1358,11 +1474,11 @@ export namespace Protocol {
             /**
              * Object type.
              */
-            type: ('object' | 'function' | 'undefined' | 'string' | 'number' | 'boolean' | 'symbol' | 'bigint' | 'wasm');
+            type: RemoteObjectType;
             /**
              * Object subtype hint. Specified for `object` or `wasm` type values only.
              */
-            subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'dataview' | 'i32' | 'i64' | 'f32' | 'f64' | 'v128' | 'anyref');
+            subtype?: RemoteObjectSubtype;
             /**
              * Object class (constructor) name. Specified for `object` type values only.
              */
@@ -1405,6 +1521,32 @@ export namespace Protocol {
             bodyGetterId?: RemoteObjectId;
         }
 
+        export enum ObjectPreviewType {
+            Object = 'object',
+            Function = 'function',
+            Undefined = 'undefined',
+            String = 'string',
+            Number = 'number',
+            Boolean = 'boolean',
+            Symbol = 'symbol',
+            Bigint = 'bigint',
+        }
+
+        export enum ObjectPreviewSubtype {
+            Array = 'array',
+            Null = 'null',
+            Node = 'node',
+            Regexp = 'regexp',
+            Date = 'date',
+            Map = 'map',
+            Set = 'set',
+            Weakmap = 'weakmap',
+            Weakset = 'weakset',
+            Iterator = 'iterator',
+            Generator = 'generator',
+            Error = 'error',
+        }
+
         /**
          * Object containing abbreviated remote object value.
          */
@@ -1412,11 +1554,11 @@ export namespace Protocol {
             /**
              * Object type.
              */
-            type: ('object' | 'function' | 'undefined' | 'string' | 'number' | 'boolean' | 'symbol' | 'bigint');
+            type: ObjectPreviewType;
             /**
              * Object subtype hint. Specified for `object` type values only.
              */
-            subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error');
+            subtype?: ObjectPreviewSubtype;
             /**
              * String representation of the object.
              */
@@ -1435,6 +1577,33 @@ export namespace Protocol {
             entries?: EntryPreview[];
         }
 
+        export enum PropertyPreviewType {
+            Object = 'object',
+            Function = 'function',
+            Undefined = 'undefined',
+            String = 'string',
+            Number = 'number',
+            Boolean = 'boolean',
+            Symbol = 'symbol',
+            Accessor = 'accessor',
+            Bigint = 'bigint',
+        }
+
+        export enum PropertyPreviewSubtype {
+            Array = 'array',
+            Null = 'null',
+            Node = 'node',
+            Regexp = 'regexp',
+            Date = 'date',
+            Map = 'map',
+            Set = 'set',
+            Weakmap = 'weakmap',
+            Weakset = 'weakset',
+            Iterator = 'iterator',
+            Generator = 'generator',
+            Error = 'error',
+        }
+
         export interface PropertyPreview {
             /**
              * Property name.
@@ -1443,7 +1612,7 @@ export namespace Protocol {
             /**
              * Object type. Accessor means that the property itself is an accessor property.
              */
-            type: ('object' | 'function' | 'undefined' | 'string' | 'number' | 'boolean' | 'symbol' | 'accessor' | 'bigint');
+            type: PropertyPreviewType;
             /**
              * User-friendly property value string.
              */
@@ -1455,7 +1624,7 @@ export namespace Protocol {
             /**
              * Object subtype hint. Specified for `object` type values only.
              */
-            subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error');
+            subtype?: PropertyPreviewSubtype;
         }
 
         export interface EntryPreview {
@@ -2096,6 +2265,27 @@ export namespace Protocol {
             executionContextId: ExecutionContextId;
         }
 
+        export enum ConsoleAPICalledEventType {
+            Log = 'log',
+            Debug = 'debug',
+            Info = 'info',
+            Error = 'error',
+            Warning = 'warning',
+            Dir = 'dir',
+            DirXML = 'dirxml',
+            Table = 'table',
+            Trace = 'trace',
+            Clear = 'clear',
+            StartGroup = 'startGroup',
+            StartGroupCollapsed = 'startGroupCollapsed',
+            EndGroup = 'endGroup',
+            Assert = 'assert',
+            Profile = 'profile',
+            ProfileEnd = 'profileEnd',
+            Count = 'count',
+            TimeEnd = 'timeEnd',
+        }
+
         /**
          * Issued when console API was called.
          */
@@ -2103,7 +2293,7 @@ export namespace Protocol {
             /**
              * Type of the call.
              */
-            type: ('log' | 'debug' | 'info' | 'error' | 'warning' | 'dir' | 'dirxml' | 'table' | 'trace' | 'clear' | 'startGroup' | 'startGroupCollapsed' | 'endGroup' | 'assert' | 'profile' | 'profileEnd' | 'count' | 'timeEnd');
+            type: ConsoleAPICalledEventType;
             /**
              * Call arguments.
              */
@@ -2414,6 +2604,12 @@ export namespace Protocol {
 
     export namespace Animation {
 
+        export enum AnimationType {
+            CSSTransition = 'CSSTransition',
+            CSSAnimation = 'CSSAnimation',
+            WebAnimation = 'WebAnimation',
+        }
+
         /**
          * Animation instance.
          */
@@ -2449,7 +2645,7 @@ export namespace Protocol {
             /**
              * Animation type of `Animation`.
              */
-            type: ('CSSTransition' | 'CSSAnimation' | 'WebAnimation');
+            type: AnimationType;
             /**
              * `Animation`'s source animation node.
              */
@@ -2910,6 +3106,12 @@ export namespace Protocol {
             details: InspectorIssueDetails;
         }
 
+        export enum GetEncodedResponseRequestEncoding {
+            Webp = 'webp',
+            Jpeg = 'jpeg',
+            Png = 'png',
+        }
+
         export interface GetEncodedResponseRequest {
             /**
              * Identifier of the network request to get content for.
@@ -2918,7 +3120,7 @@ export namespace Protocol {
             /**
              * The encoding to use.
              */
-            encoding: ('webp' | 'jpeg' | 'png');
+            encoding: GetEncodedResponseRequestEncoding;
             /**
              * The quality of the encoding (0-1). (defaults to 1)
              */
@@ -3185,13 +3387,20 @@ export namespace Protocol {
             browserContextId?: BrowserContextID;
         }
 
+        export enum SetDownloadBehaviorRequestBehavior {
+            Deny = 'deny',
+            Allow = 'allow',
+            AllowAndName = 'allowAndName',
+            Default = 'default',
+        }
+
         export interface SetDownloadBehaviorRequest {
             /**
              * Whether to allow all or deny all download requests, or use default Chrome behavior if
              * available (otherwise deny). |allowAndName| allows download and names files according to
              * their dowmload guids.
              */
-            behavior: ('deny' | 'allow' | 'allowAndName' | 'default');
+            behavior: SetDownloadBehaviorRequestBehavior;
             /**
              * BrowserContext to set download behavior. When omitted, default browser context is used.
              */
@@ -3646,6 +3855,13 @@ export namespace Protocol {
             range?: SourceRange;
         }
 
+        export enum CSSMediaSource {
+            MediaRule = 'mediaRule',
+            ImportRule = 'importRule',
+            LinkedSheet = 'linkedSheet',
+            InlineSheet = 'inlineSheet',
+        }
+
         /**
          * CSS media rule descriptor.
          */
@@ -3660,7 +3876,7 @@ export namespace Protocol {
              * stylesheet's LINK tag, "inlineSheet" if specified by a "media" attribute in an inline
              * stylesheet's STYLE tag.
              */
-            source: ('mediaRule' | 'importRule' | 'linkedSheet' | 'inlineSheet');
+            source: CSSMediaSource;
             /**
              * URL of the document containing the media query description.
              */
@@ -6241,6 +6457,13 @@ export namespace Protocol {
      */
     export namespace Emulation {
 
+        export enum ScreenOrientationType {
+            PortraitPrimary = 'portraitPrimary',
+            PortraitSecondary = 'portraitSecondary',
+            LandscapePrimary = 'landscapePrimary',
+            LandscapeSecondary = 'landscapeSecondary',
+        }
+
         /**
          * Screen orientation.
          */
@@ -6248,7 +6471,7 @@ export namespace Protocol {
             /**
              * Orientation type.
              */
-            type: ('portraitPrimary' | 'portraitSecondary' | 'landscapePrimary' | 'landscapeSecondary');
+            type: ScreenOrientationType;
             /**
              * Orientation angle.
              */
@@ -6385,6 +6608,11 @@ export namespace Protocol {
             disabled: boolean;
         }
 
+        export enum SetEmitTouchEventsForMouseRequestConfiguration {
+            Mobile = 'mobile',
+            Desktop = 'desktop',
+        }
+
         export interface SetEmitTouchEventsForMouseRequest {
             /**
              * Whether touch emulation based on mouse input should be enabled.
@@ -6393,7 +6621,7 @@ export namespace Protocol {
             /**
              * Touch/gesture events configuration. Default: current platform.
              */
-            configuration?: ('mobile' | 'desktop');
+            configuration?: SetEmitTouchEventsForMouseRequestConfiguration;
         }
 
         export interface SetEmulatedMediaRequest {
@@ -6407,11 +6635,20 @@ export namespace Protocol {
             features?: MediaFeature[];
         }
 
+        export enum SetEmulatedVisionDeficiencyRequestType {
+            None = 'none',
+            Achromatopsia = 'achromatopsia',
+            BlurredVision = 'blurredVision',
+            Deuteranopia = 'deuteranopia',
+            Protanopia = 'protanopia',
+            Tritanopia = 'tritanopia',
+        }
+
         export interface SetEmulatedVisionDeficiencyRequest {
             /**
              * Vision deficiency to emulate.
              */
-            type: ('none' | 'achromatopsia' | 'blurredVision' | 'deuteranopia' | 'protanopia' | 'tritanopia');
+            type: SetEmulatedVisionDeficiencyRequestType;
         }
 
         export interface SetGeolocationOverrideRequest {
@@ -6543,6 +6780,11 @@ export namespace Protocol {
      */
     export namespace HeadlessExperimental {
 
+        export enum ScreenshotParamsFormat {
+            Jpeg = 'jpeg',
+            Png = 'png',
+        }
+
         /**
          * Encoding options for a screenshot.
          */
@@ -6550,7 +6792,7 @@ export namespace Protocol {
             /**
              * Image compression format (defaults to png).
              */
-            format?: ('jpeg' | 'png');
+            format?: ScreenshotParamsFormat;
             /**
              * Compression quality from range [0..100] (jpeg only).
              */
@@ -6736,6 +6978,13 @@ export namespace Protocol {
             multiEntry: boolean;
         }
 
+        export enum KeyType {
+            Number = 'number',
+            String = 'string',
+            Date = 'date',
+            Array = 'array',
+        }
+
         /**
          * Key.
          */
@@ -6743,7 +6992,7 @@ export namespace Protocol {
             /**
              * Key type.
              */
-            type: ('number' | 'string' | 'date' | 'array');
+            type: KeyType;
             /**
              * Number value.
              */
@@ -6802,6 +7051,12 @@ export namespace Protocol {
             value: Runtime.RemoteObject;
         }
 
+        export enum KeyPathType {
+            Null = 'null',
+            String = 'string',
+            Array = 'array',
+        }
+
         /**
          * Key path.
          */
@@ -6809,7 +7064,7 @@ export namespace Protocol {
             /**
              * Key path type.
              */
-            type: ('null' | 'string' | 'array');
+            type: KeyPathType;
             /**
              * String value.
              */
@@ -7002,11 +7257,18 @@ export namespace Protocol {
          */
         export type TimeSinceEpoch = number;
 
+        export enum DispatchKeyEventRequestType {
+            KeyDown = 'keyDown',
+            KeyUp = 'keyUp',
+            RawKeyDown = 'rawKeyDown',
+            Char = 'char',
+        }
+
         export interface DispatchKeyEventRequest {
             /**
              * Type of the key event.
              */
-            type: ('keyDown' | 'keyUp' | 'rawKeyDown' | 'char');
+            type: DispatchKeyEventRequestType;
             /**
              * Bit field representing pressed modifier keys. Alt=1, Ctrl=2, Meta/Command=4, Shift=8
              * (default: 0).
@@ -7073,11 +7335,23 @@ export namespace Protocol {
             text: string;
         }
 
+        export enum DispatchMouseEventRequestType {
+            MousePressed = 'mousePressed',
+            MouseReleased = 'mouseReleased',
+            MouseMoved = 'mouseMoved',
+            MouseWheel = 'mouseWheel',
+        }
+
+        export enum DispatchMouseEventRequestPointerType {
+            Mouse = 'mouse',
+            Pen = 'pen',
+        }
+
         export interface DispatchMouseEventRequest {
             /**
              * Type of the mouse event.
              */
-            type: ('mousePressed' | 'mouseReleased' | 'mouseMoved' | 'mouseWheel');
+            type: DispatchMouseEventRequestType;
             /**
              * X coordinate of the event relative to the main frame's viewport in CSS pixels.
              */
@@ -7120,7 +7394,14 @@ export namespace Protocol {
             /**
              * Pointer type (default: "mouse").
              */
-            pointerType?: ('mouse' | 'pen');
+            pointerType?: DispatchMouseEventRequestPointerType;
+        }
+
+        export enum DispatchTouchEventRequestType {
+            TouchStart = 'touchStart',
+            TouchEnd = 'touchEnd',
+            TouchMove = 'touchMove',
+            TouchCancel = 'touchCancel',
         }
 
         export interface DispatchTouchEventRequest {
@@ -7128,7 +7409,7 @@ export namespace Protocol {
              * Type of the touch event. TouchEnd and TouchCancel must not contain any touch points, while
              * TouchStart and TouchMove must contains at least one.
              */
-            type: ('touchStart' | 'touchEnd' | 'touchMove' | 'touchCancel');
+            type: DispatchTouchEventRequestType;
             /**
              * Active touch points on the touch device. One event per any changed point (compared to
              * previous touch event in a sequence) is generated, emulating pressing/moving/releasing points
@@ -7146,11 +7427,18 @@ export namespace Protocol {
             timestamp?: TimeSinceEpoch;
         }
 
+        export enum EmulateTouchFromMouseEventRequestType {
+            MousePressed = 'mousePressed',
+            MouseReleased = 'mouseReleased',
+            MouseMoved = 'mouseMoved',
+            MouseWheel = 'mouseWheel',
+        }
+
         export interface EmulateTouchFromMouseEventRequest {
             /**
              * Type of the mouse event.
              */
-            type: ('mousePressed' | 'mouseReleased' | 'mouseMoved' | 'mouseWheel');
+            type: EmulateTouchFromMouseEventRequestType;
             /**
              * X coordinate of the mouse pointer in DIP.
              */
@@ -7321,6 +7609,12 @@ export namespace Protocol {
          */
         export type SnapshotId = string;
 
+        export enum ScrollRectType {
+            RepaintsOnScroll = 'RepaintsOnScroll',
+            TouchEventHandler = 'TouchEventHandler',
+            WheelEventHandler = 'WheelEventHandler',
+        }
+
         /**
          * Rectangle where scrolling happens on the main thread.
          */
@@ -7332,7 +7626,7 @@ export namespace Protocol {
             /**
              * Reason for rectangle to force scrolling on the main thread
              */
-            type: ('RepaintsOnScroll' | 'TouchEventHandler' | 'WheelEventHandler');
+            type: ScrollRectType;
         }
 
         /**
@@ -7594,6 +7888,29 @@ export namespace Protocol {
      */
     export namespace Log {
 
+        export enum LogEntrySource {
+            XML = 'xml',
+            Javascript = 'javascript',
+            Network = 'network',
+            Storage = 'storage',
+            Appcache = 'appcache',
+            Rendering = 'rendering',
+            Security = 'security',
+            Deprecation = 'deprecation',
+            Worker = 'worker',
+            Violation = 'violation',
+            Intervention = 'intervention',
+            Recommendation = 'recommendation',
+            Other = 'other',
+        }
+
+        export enum LogEntryLevel {
+            Verbose = 'verbose',
+            Info = 'info',
+            Warning = 'warning',
+            Error = 'error',
+        }
+
         /**
          * Log entry.
          */
@@ -7601,11 +7918,11 @@ export namespace Protocol {
             /**
              * Log entry source.
              */
-            source: ('xml' | 'javascript' | 'network' | 'storage' | 'appcache' | 'rendering' | 'security' | 'deprecation' | 'worker' | 'violation' | 'intervention' | 'recommendation' | 'other');
+            source: LogEntrySource;
             /**
              * Log entry severity.
              */
-            level: ('verbose' | 'info' | 'warning' | 'error');
+            level: LogEntryLevel;
             /**
              * Logged text.
              */
@@ -7640,6 +7957,16 @@ export namespace Protocol {
             args?: Runtime.RemoteObject[];
         }
 
+        export enum ViolationSettingName {
+            LongTask = 'longTask',
+            LongLayout = 'longLayout',
+            BlockedEvent = 'blockedEvent',
+            BlockedParser = 'blockedParser',
+            DiscouragedAPIUse = 'discouragedAPIUse',
+            Handler = 'handler',
+            RecurringHandler = 'recurringHandler',
+        }
+
         /**
          * Violation configuration setting.
          */
@@ -7647,7 +7974,7 @@ export namespace Protocol {
             /**
              * Violation type.
              */
-            name: ('longTask' | 'longLayout' | 'blockedEvent' | 'blockedParser' | 'discouragedAPIUse' | 'handler' | 'recurringHandler');
+            name: ViolationSettingName;
             /**
              * Time threshold to trigger upon.
              */
@@ -7921,6 +8248,17 @@ export namespace Protocol {
          */
         export type ResourcePriority = ('VeryLow' | 'Low' | 'Medium' | 'High' | 'VeryHigh');
 
+        export enum RequestReferrerPolicy {
+            UnsafeUrl = 'unsafe-url',
+            NoReferrerWhenDowngrade = 'no-referrer-when-downgrade',
+            NoReferrer = 'no-referrer',
+            Origin = 'origin',
+            OriginWhenCrossOrigin = 'origin-when-cross-origin',
+            SameOrigin = 'same-origin',
+            StrictOrigin = 'strict-origin',
+            StrictOriginWhenCrossOrigin = 'strict-origin-when-cross-origin',
+        }
+
         /**
          * HTTP request data.
          */
@@ -7960,7 +8298,7 @@ export namespace Protocol {
             /**
              * The referrer policy of the request, as defined in https://www.w3.org/TR/referrer-policy/
              */
-            referrerPolicy: ('unsafe-url' | 'no-referrer-when-downgrade' | 'no-referrer' | 'origin' | 'origin-when-cross-origin' | 'same-origin' | 'strict-origin' | 'strict-origin-when-cross-origin');
+            referrerPolicy: RequestReferrerPolicy;
             /**
              * Whether is loaded via link preload.
              */
@@ -8241,6 +8579,14 @@ export namespace Protocol {
             bodySize: number;
         }
 
+        export enum InitiatorType {
+            Parser = 'parser',
+            Script = 'script',
+            Preload = 'preload',
+            SignedExchange = 'SignedExchange',
+            Other = 'other',
+        }
+
         /**
          * Information about the request initiator.
          */
@@ -8248,7 +8594,7 @@ export namespace Protocol {
             /**
              * Type of this initiator.
              */
-            type: ('parser' | 'script' | 'preload' | 'SignedExchange' | 'other');
+            type: InitiatorType;
             /**
              * Initiator JavaScript stack trace, set for Script only.
              */
@@ -8406,6 +8752,11 @@ export namespace Protocol {
             priority?: CookiePriority;
         }
 
+        export enum AuthChallengeSource {
+            Server = 'Server',
+            Proxy = 'Proxy',
+        }
+
         /**
          * Authorization challenge for HTTP status code 401 or 407.
          */
@@ -8413,7 +8764,7 @@ export namespace Protocol {
             /**
              * Source of the authentication challenge.
              */
-            source?: ('Server' | 'Proxy');
+            source?: AuthChallengeSource;
             /**
              * Origin of the challenger.
              */
@@ -8428,6 +8779,12 @@ export namespace Protocol {
             realm: string;
         }
 
+        export enum AuthChallengeResponseResponse {
+            Default = 'Default',
+            CancelAuth = 'CancelAuth',
+            ProvideCredentials = 'ProvideCredentials',
+        }
+
         /**
          * Response to an AuthChallenge.
          */
@@ -8437,7 +8794,7 @@ export namespace Protocol {
              * deferring to the default behavior of the net stack, which will likely either the Cancel
              * authentication or display a popup dialog box.
              */
-            response: ('Default' | 'CancelAuth' | 'ProvideCredentials');
+            response: AuthChallengeResponseResponse;
             /**
              * The username to provide, possibly empty. Should only be set if response is
              * ProvideCredentials.
@@ -10183,11 +10540,16 @@ export namespace Protocol {
             identifier: ScriptIdentifier;
         }
 
+        export enum CaptureScreenshotRequestFormat {
+            Jpeg = 'jpeg',
+            Png = 'png',
+        }
+
         export interface CaptureScreenshotRequest {
             /**
              * Image compression format (defaults to png).
              */
-            format?: ('jpeg' | 'png');
+            format?: CaptureScreenshotRequestFormat;
             /**
              * Compression quality from range [0..100] (jpeg only).
              */
@@ -10209,11 +10571,15 @@ export namespace Protocol {
             data: string;
         }
 
+        export enum CaptureSnapshotRequestFormat {
+            MHTML = 'mhtml',
+        }
+
         export interface CaptureSnapshotRequest {
             /**
              * Format (defaults to mhtml).
              */
-            format?: ('mhtml');
+            format?: CaptureSnapshotRequestFormat;
         }
 
         export interface CaptureSnapshotResponse {
@@ -10407,6 +10773,11 @@ export namespace Protocol {
             entryId: integer;
         }
 
+        export enum PrintToPDFRequestTransferMode {
+            ReturnAsBase64 = 'ReturnAsBase64',
+            ReturnAsStream = 'ReturnAsStream',
+        }
+
         export interface PrintToPDFRequest {
             /**
              * Paper orientation. Defaults to false.
@@ -10482,7 +10853,7 @@ export namespace Protocol {
             /**
              * return as stream
              */
-            transferMode?: ('ReturnAsBase64' | 'ReturnAsStream');
+            transferMode?: PrintToPDFRequestTransferMode;
         }
 
         export interface PrintToPDFResponse {
@@ -10659,12 +11030,18 @@ export namespace Protocol {
             html: string;
         }
 
+        export enum SetDownloadBehaviorRequestBehavior {
+            Deny = 'deny',
+            Allow = 'allow',
+            Default = 'default',
+        }
+
         export interface SetDownloadBehaviorRequest {
             /**
              * Whether to allow all or deny all download requests, or use default Chrome behavior if
              * available (otherwise deny).
              */
-            behavior: ('deny' | 'allow' | 'default');
+            behavior: SetDownloadBehaviorRequestBehavior;
             /**
              * The default path to save downloaded files to. This is requred if behavior is set to 'allow'
              */
@@ -10693,6 +11070,11 @@ export namespace Protocol {
             enabled: boolean;
         }
 
+        export enum SetTouchEmulationEnabledRequestConfiguration {
+            Mobile = 'mobile',
+            Desktop = 'desktop',
+        }
+
         export interface SetTouchEmulationEnabledRequest {
             /**
              * Whether the touch event emulation should be enabled.
@@ -10701,14 +11083,19 @@ export namespace Protocol {
             /**
              * Touch/gesture events configuration. Default: current platform.
              */
-            configuration?: ('mobile' | 'desktop');
+            configuration?: SetTouchEmulationEnabledRequestConfiguration;
+        }
+
+        export enum StartScreencastRequestFormat {
+            Jpeg = 'jpeg',
+            Png = 'png',
         }
 
         export interface StartScreencastRequest {
             /**
              * Image compression format.
              */
-            format?: ('jpeg' | 'png');
+            format?: StartScreencastRequestFormat;
             /**
              * Compression quality from range [0..100].
              */
@@ -10727,11 +11114,16 @@ export namespace Protocol {
             everyNthFrame?: integer;
         }
 
+        export enum SetWebLifecycleStateRequestState {
+            Frozen = 'frozen',
+            Active = 'active',
+        }
+
         export interface SetWebLifecycleStateRequest {
             /**
              * Target lifecycle state
              */
-            state: ('frozen' | 'active');
+            state: SetWebLifecycleStateRequestState;
         }
 
         export interface SetProduceCompilationCacheRequest {
@@ -10765,6 +11157,11 @@ export namespace Protocol {
             timestamp: Network.MonotonicTime;
         }
 
+        export enum FileChooserOpenedEventMode {
+            SelectSingle = 'selectSingle',
+            SelectMultiple = 'selectMultiple',
+        }
+
         /**
          * Emitted only when `page.interceptFileChooser` is enabled.
          */
@@ -10780,7 +11177,7 @@ export namespace Protocol {
             /**
              * Input mode.
              */
-            mode: ('selectSingle' | 'selectMultiple');
+            mode: FileChooserOpenedEventMode;
         }
 
         /**
@@ -10919,6 +11316,12 @@ export namespace Protocol {
             suggestedFilename: string;
         }
 
+        export enum DownloadProgressEventState {
+            InProgress = 'inProgress',
+            Completed = 'completed',
+            Canceled = 'canceled',
+        }
+
         /**
          * Fired when download makes progress. Last call has |done| == true.
          */
@@ -10938,7 +11341,7 @@ export namespace Protocol {
             /**
              * Download status.
              */
-            state: ('inProgress' | 'completed' | 'canceled');
+            state: DownloadProgressEventState;
         }
 
         /**
@@ -11099,18 +11502,28 @@ export namespace Protocol {
             value: number;
         }
 
+        export enum EnableRequestTimeDomain {
+            TimeTicks = 'timeTicks',
+            ThreadTicks = 'threadTicks',
+        }
+
         export interface EnableRequest {
             /**
              * Time domain to use for collecting and reporting duration metrics.
              */
-            timeDomain?: ('timeTicks' | 'threadTicks');
+            timeDomain?: EnableRequestTimeDomain;
+        }
+
+        export enum SetTimeDomainRequestTimeDomain {
+            TimeTicks = 'timeTicks',
+            ThreadTicks = 'threadTicks',
         }
 
         export interface SetTimeDomainRequest {
             /**
              * Time domain
              */
-            timeDomain: ('timeTicks' | 'threadTicks');
+            timeDomain: SetTimeDomainRequestTimeDomain;
         }
 
         export interface GetMetricsResponse {
@@ -12255,11 +12668,18 @@ export namespace Protocol {
             [key: string]: string;
         }
 
+        export enum TraceConfigRecordMode {
+            RecordUntilFull = 'recordUntilFull',
+            RecordContinuously = 'recordContinuously',
+            RecordAsMuchAsPossible = 'recordAsMuchAsPossible',
+            EchoToConsole = 'echoToConsole',
+        }
+
         export interface TraceConfig {
             /**
              * Controls how the trace buffer stores data.
              */
-            recordMode?: ('recordUntilFull' | 'recordContinuously' | 'recordAsMuchAsPossible' | 'echoToConsole');
+            recordMode?: TraceConfigRecordMode;
             /**
              * Turns on JavaScript stack sampling.
              */
@@ -12333,6 +12753,11 @@ export namespace Protocol {
             success: boolean;
         }
 
+        export enum StartRequestTransferMode {
+            ReportEvents = 'ReportEvents',
+            ReturnAsStream = 'ReturnAsStream',
+        }
+
         export interface StartRequest {
             /**
              * Category/tag filter
@@ -12350,7 +12775,7 @@ export namespace Protocol {
              * Whether to report trace events as series of dataCollected events or to save trace to a
              * stream (defaults to `ReportEvents`).
              */
-            transferMode?: ('ReportEvents' | 'ReturnAsStream');
+            transferMode?: StartRequestTransferMode;
             /**
              * Trace data format to use. This only applies when using `ReturnAsStream`
              * transfer mode (defaults to `json`).
@@ -12455,6 +12880,11 @@ export namespace Protocol {
             value: string;
         }
 
+        export enum AuthChallengeSource {
+            Server = 'Server',
+            Proxy = 'Proxy',
+        }
+
         /**
          * Authorization challenge for HTTP status code 401 or 407.
          */
@@ -12462,7 +12892,7 @@ export namespace Protocol {
             /**
              * Source of the authentication challenge.
              */
-            source?: ('Server' | 'Proxy');
+            source?: AuthChallengeSource;
             /**
              * Origin of the challenger.
              */
@@ -12477,6 +12907,12 @@ export namespace Protocol {
             realm: string;
         }
 
+        export enum AuthChallengeResponseResponse {
+            Default = 'Default',
+            CancelAuth = 'CancelAuth',
+            ProvideCredentials = 'ProvideCredentials',
+        }
+
         /**
          * Response to an AuthChallenge.
          */
@@ -12486,7 +12922,7 @@ export namespace Protocol {
              * deferring to the default behavior of the net stack, which will likely either the Cancel
              * authentication or display a popup dialog box.
              */
-            response: ('Default' | 'CancelAuth' | 'ProvideCredentials');
+            response: AuthChallengeResponseResponse;
             /**
              * The username to provide, possibly empty. Should only be set if response is
              * ProvideCredentials.
@@ -13056,6 +13492,13 @@ export namespace Protocol {
 
         export type Timestamp = number;
 
+        export enum PlayerMessageLevel {
+            Error = 'error',
+            Warning = 'warning',
+            Info = 'info',
+            Debug = 'debug',
+        }
+
         /**
          * Have one type per entry in MediaLogRecord::Type
          * Corresponds to kMessage
@@ -13072,7 +13515,7 @@ export namespace Protocol {
              * introducing a new error type which should hopefully let us integrate
              * the error log level into the PlayerError type.
              */
-            level: ('error' | 'warning' | 'info' | 'debug');
+            level: PlayerMessageLevel;
             message: string;
         }
 
@@ -13092,11 +13535,16 @@ export namespace Protocol {
             value: string;
         }
 
+        export enum PlayerErrorType {
+            Pipeline_error = 'pipeline_error',
+            Media_error = 'media_error',
+        }
+
         /**
          * Corresponds to kMediaError
          */
         export interface PlayerError {
-            type: ('pipeline_error' | 'media_error');
+            type: PlayerErrorType;
             /**
              * When this switches to using media::Status instead of PipelineStatus
              * we can remove "errorCode" and replace it with the fields from
