@@ -4270,6 +4270,14 @@ domain Network
       corp-not-same-origin-after-defaulted-to-same-origin-by-coep
       corp-not-same-site
 
+  # Source of serviceworker response.
+  type ServiceWorkerResponseSource extends string
+    enum
+      cache-storage
+      http-cache
+      fallback-code
+      network
+
   # HTTP response data.
   type Response extends object
     properties
@@ -4307,6 +4315,12 @@ domain Network
       number encodedDataLength
       # Timing information for the given request.
       optional ResourceTiming timing
+      # Response source of response from ServiceWorker.
+      optional ServiceWorkerResponseSource serviceWorkerResponseSource
+      # The time at which the returned response was generated.
+      optional TimeSinceEpoch responseTime
+      # Cache Storage Cache Name.
+      optional string cacheStorageCacheName
       # Protocol used to fetch this request.
       optional string protocol
       # Security state of the request resource.

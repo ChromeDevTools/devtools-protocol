@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r770484
+###### _2020-05-20 00:16:02_ | Diff: [2cb3356...69d3d03](https://github.com/ChromeDevTools/devtools-protocol/compare/2cb3356...69d3d03)
+#### `Network`: modified type
+* [`Network.ResourceTiming`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ResourceTiming) - The `pushStart` in the properties had `experimental` _removed_. The `pushEnd` in the properties had `experimental` _removed_. The `sendStart` in the properties had `name` _updated_. The `sendStart` in the properties had `description` _updated_. The `sendEnd` in the properties had `name` _updated_. The `sendEnd` in the properties had `description` _updated_. The `pushStart` in the properties had `name` _updated_. The `pushStart` in the properties had `description` _updated_. The `pushEnd` in the properties had `name` _updated_. The `pushEnd` in the properties had `description` _updated_. The `receiveHeadersEnd` in the properties had `name` _updated_. The `receiveHeadersEnd` in the properties had `description` _updated_. The properties's `experimental` _added_ (3 times). The properties's `pushEnd` _added_. The properties's `receiveHeadersEnd` _added_. 
+
+
 ## Roll protocol to r770080
 ###### _2020-05-19 05:16:05_ | Diff: [c669e10...2cb3356](https://github.com/ChromeDevTools/devtools-protocol/compare/c669e10...2cb3356)
 #### `Audits`: new types

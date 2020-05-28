@@ -9316,6 +9316,17 @@
                     ]
                 },
                 {
+                    "id": "ServiceWorkerResponseSource",
+                    "description": "Source of serviceworker response.",
+                    "type": "string",
+                    "enum": [
+                        "cache-storage",
+                        "http-cache",
+                        "fallback-code",
+                        "network"
+                    ]
+                },
+                {
                     "id": "Response",
                     "description": "HTTP response data.",
                     "type": "object",
@@ -9413,6 +9424,24 @@
                             "description": "Timing information for the given request.",
                             "optional": true,
                             "$ref": "ResourceTiming"
+                        },
+                        {
+                            "name": "serviceWorkerResponseSource",
+                            "description": "Response source of response from ServiceWorker.",
+                            "optional": true,
+                            "$ref": "ServiceWorkerResponseSource"
+                        },
+                        {
+                            "name": "responseTime",
+                            "description": "The time at which the returned response was generated.",
+                            "optional": true,
+                            "$ref": "TimeSinceEpoch"
+                        },
+                        {
+                            "name": "cacheStorageCacheName",
+                            "description": "Cache Storage Cache Name.",
+                            "optional": true,
+                            "type": "string"
                         },
                         {
                             "name": "protocol",

@@ -8074,6 +8074,11 @@ export namespace Protocol {
         export type BlockedReason = ('other' | 'csp' | 'mixed-content' | 'origin' | 'inspector' | 'subresource-filter' | 'content-type' | 'collapsed-by-client' | 'coep-frame-resource-needs-coep-header' | 'coop-sandboxed-iframe-cannot-navigate-to-coop-page' | 'corp-not-same-origin' | 'corp-not-same-origin-after-defaulted-to-same-origin-by-coep' | 'corp-not-same-site');
 
         /**
+         * Source of serviceworker response.
+         */
+        export type ServiceWorkerResponseSource = ('cache-storage' | 'http-cache' | 'fallback-code' | 'network');
+
+        /**
          * HTTP response data.
          */
         export interface Response {
@@ -8145,6 +8150,18 @@ export namespace Protocol {
              * Timing information for the given request.
              */
             timing?: ResourceTiming;
+            /**
+             * Response source of response from ServiceWorker.
+             */
+            serviceWorkerResponseSource?: ServiceWorkerResponseSource;
+            /**
+             * The time at which the returned response was generated.
+             */
+            responseTime?: TimeSinceEpoch;
+            /**
+             * Cache Storage Cache Name.
+             */
+            cacheStorageCacheName?: string;
             /**
              * Protocol used to fetch this request.
              */
