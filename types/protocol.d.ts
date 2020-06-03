@@ -12018,6 +12018,14 @@ export namespace Protocol {
              * If specified, disposes this context when debugging session disconnects.
              */
             disposeOnDetach?: boolean;
+            /**
+             * Proxy server, similar to the one passed to --proxy-server
+             */
+            proxyServer?: string;
+            /**
+             * Proxy bypass list, similar to the one passed to --proxy-bypass-list
+             */
+            proxyBypassList?: string;
         }
 
         export interface CreateBrowserContextResponse {

@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r772852
+###### _2020-05-28 13:16:11_ | Diff: [69d3d03...3386102](https://github.com/ChromeDevTools/devtools-protocol/compare/69d3d03...3386102)
+#### `Network`: new type
+* [`Network.ServiceWorkerResponseSource`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ServiceWorkerResponseSource)
+#### `Network`: modified type
+* [`Network.Response`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Response) - The `protocol` in the properties had `type` _removed_. The `securityDetails` in the properties had `$ref` _removed_. The `protocol` in the properties had `name` _updated_. The `protocol` in the properties had `description` _updated_. The `securityState` in the properties had `name` _updated_. The `securityState` in the properties had `description` _updated_. The `securityState` in the properties had `$ref` _updated_. The `securityDetails` in the properties had `name` _updated_. The `securityDetails` in the properties had `description` _updated_. The properties's `$ref` _added_. The properties's `optional` _added_. The properties's `type` _added_. The properties's `protocol` _added_. The properties's `securityState` _added_. The properties's `securityDetails` _added_. 
+
+
 ## Roll protocol to r770484
 ###### _2020-05-20 00:16:02_ | Diff: [2cb3356...69d3d03](https://github.com/ChromeDevTools/devtools-protocol/compare/2cb3356...69d3d03)
 #### `Network`: modified type

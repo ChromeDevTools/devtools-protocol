@@ -15343,6 +15343,18 @@
                             "description": "If specified, disposes this context when debugging session disconnects.",
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "proxyServer",
+                            "description": "Proxy server, similar to the one passed to --proxy-server",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "proxyBypassList",
+                            "description": "Proxy bypass list, similar to the one passed to --proxy-bypass-list",
+                            "optional": true,
+                            "type": "string"
                         }
                     ],
                     "returns": [
