@@ -59,7 +59,7 @@ const fixCamelCase = (name: string): string => {
 
 
 const emitEnum = (enumName: string, enumValues: string[]) => {
-    emitOpenBlock(`export enum ${enumName}`);
+    emitOpenBlock(`export const enum ${enumName}`);
     enumValues.forEach(value => {
       emitLine(`${fixCamelCase(value)} = '${value}',`);
     });
@@ -114,13 +114,8 @@ const isPropertyInlineEnum = (prop: P.ProtocolType): boolean => {
 const getPropertyDef = (interfaceName: string, prop: P.PropertyType): string => {
     // Quote key if it has a . in it.
     const propName = prop.name.includes('.') ? `'${prop.name}'` : prop.name
-      let type: string;
-      if (isPropertyInlineEnum(prop)) {
-        type = interfaceName + toTitleCase(prop.name);
-      } else {
-        type = getPropertyType(interfaceName, prop);
-      }
-      return `${propName}${prop.optional ? '?' : ''}: ${type}`;
+    const type = getPropertyType(interfaceName, prop);
+    return `${propName}${prop.optional ? '?' : ''}: ${type}`;
 };
 
 const getPropertyType = (interfaceName: string, prop: P.ProtocolType): string  => {
@@ -149,10 +144,16 @@ const getPropertyType = (interfaceName: string, prop: P.ProtocolType): string  =
 }
 
 const emitProperty = (interfaceName: string, prop: P.PropertyType) => {
-    emitDescription(prop.description)
-    emitLine(`${getPropertyDef(interfaceName, prop)};`)
+  let description = prop.description;
+  if (isPropertyInlineEnum(prop)) {
+    const enumName = interfaceName + toTitleCase(prop.name);
+    description = `${description || ''} (${enumName} enum)`;
+  }
+
+  emitDescription(description)
+  emitLine(`${getPropertyDef(interfaceName, prop)};`)
 }
- 
+
 
 const emitInlineEnumForDomainType = (type: P.DomainType) => {
   if (type.type === 'object') {
