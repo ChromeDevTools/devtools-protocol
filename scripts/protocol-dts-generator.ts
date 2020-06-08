@@ -46,6 +46,26 @@ const emitHeaderComments = () => {
     emitLine()
 }
 
+const fixCamelCase = (name: string): string => {
+    let prefix = '';
+    let result = name;
+    if (name[0] === '-') {
+      prefix = 'Negative';
+      result = name.substring(1);
+    }
+    const refined = result.split('-').map(toTitleCase).join('');
+    return prefix + refined.replace(/HTML|XML|WML|API/i, match => match.toUpperCase());
+};
+
+
+const emitEnum = (enumName: string, enumValues: string[]) => {
+    emitOpenBlock(`export const enum ${enumName}`);
+    enumValues.forEach(value => {
+      emitLine(`${fixCamelCase(value)} = '${value}',`);
+    });
+    emitCloseBlock();
+};
+
 const emitModule = (moduleName: string, domains: P.Domain[]) => {
     moduleName = toTitleCase(moduleName)
     emitHeaderComments()
@@ -84,17 +104,25 @@ const emitDescription = (description?: string) => {
     if (description) getCommentLines(description).map(l => emitLine(l))
 }
 
-const getPropertyDef = (prop: P.PropertyType): string => {
+const isPropertyInlineEnum = (prop: P.ProtocolType): boolean => {
+  if ('$ref' in prop) {
+    return false;
+  }
+  return prop.type === 'string' && prop.enum !== null && prop.enum !== undefined;
+};
+
+const getPropertyDef = (interfaceName: string, prop: P.PropertyType): string => {
     // Quote key if it has a . in it.
     const propName = prop.name.includes('.') ? `'${prop.name}'` : prop.name
-    return `${propName}${prop.optional ? '?' : ''}: ${getPropertyType(prop)}`
-}
+    const type = getPropertyType(interfaceName, prop);
+    return `${propName}${prop.optional ? '?' : ''}: ${type}`;
+};
 
-const getPropertyType = (prop: P.ProtocolType): string  => {
+const getPropertyType = (interfaceName: string, prop: P.ProtocolType): string  => {
     if ('$ref' in prop)
         return prop.$ref
     else if (prop.type === 'array')
-        return `${getPropertyType(prop.items)}[]`
+        return `${getPropertyType(interfaceName, prop.items)}[]`
     else if (prop.type === 'object')
         if (!prop.properties) {
             // TODO: actually 'any'? or can use generic '[key: string]: string'?
@@ -104,7 +132,7 @@ const getPropertyType = (prop: P.ProtocolType): string  => {
             let objStr = '{\n'
             numIndents++
             objStr += prop.properties
-                .map(p => `${getIndent()}${getPropertyDef(p)};\n`)
+                .map(p => `${getIndent()}${getPropertyDef(interfaceName, p)};\n`)
                 .join('')
             numIndents--
             objStr += `${getIndent()}}`
@@ -115,25 +143,62 @@ const getPropertyType = (prop: P.ProtocolType): string  => {
     return prop.type
 }
 
-const emitProperty = (prop: P.PropertyType) => {
-    emitDescription(prop.description)
-    emitLine(`${getPropertyDef(prop)};`)
+const emitProperty = (interfaceName: string, prop: P.PropertyType) => {
+  let description = prop.description;
+  if (isPropertyInlineEnum(prop)) {
+    const enumName = interfaceName + toTitleCase(prop.name);
+    description = `${description || ''} (${enumName} enum)`;
+  }
+
+  emitDescription(description)
+  emitLine(`${getPropertyDef(interfaceName, prop)};`)
 }
+
+
+const emitInlineEnumForDomainType = (type: P.DomainType) => {
+  if (type.type === 'object') {
+    emitInlineEnums(type.id, type.properties);
+  }
+};
+
+const emitInlineEnumsForCommands = (command: P.Command) => {
+  emitInlineEnums(toCmdRequestName(command.name), command.parameters);
+  emitInlineEnums(toCmdResponseName(command.name), command.returns);
+};
+
+const emitInlineEnumsForEvents = (event: P.Event) => {
+  emitInlineEnums(toEventPayloadName(event.name), event.parameters);
+};
+
+const emitInlineEnums = (prefix: string, propertyTypes?: P.PropertyType[]) => {
+  if (!propertyTypes) {
+    return;
+  }
+  for (const type of propertyTypes) {
+    if (isPropertyInlineEnum(type)) {
+      emitLine();
+      const enumName = prefix + toTitleCase(type.name);
+      emitEnum(enumName, (type as P.StringType).enum || []);
+    }
+  }
+};
+
 
 const emitInterface = (interfaceName: string, props?: P.PropertyType[]) => {
     emitOpenBlock(`export interface ${interfaceName}`)
-    props ? props.forEach(emitProperty) : emitLine('[key: string]: string;')
+    props ? props.forEach(prop => emitProperty(interfaceName, prop)) : emitLine('[key: string]: string;')
     emitCloseBlock()
 }
 
 const emitDomainType = (type: P.DomainType) => {
+    emitInlineEnumForDomainType(type);
     emitLine()
     emitDescription(type.description)
 
     if (type.type === 'object') {
         emitInterface(type.id, type.properties)
     } else {
-        emitLine(`export type ${type.id} = ${getPropertyType(type)};`)
+        emitLine(`export type ${type.id} = ${getPropertyType(type.id, type)};`)
     }
 }
 
@@ -144,6 +209,7 @@ const toCmdRequestName = (commandName: string) => `${toTitleCase(commandName)}Re
 const toCmdResponseName = (commandName: string) => `${toTitleCase(commandName)}Response`
 
 const emitCommand = (command: P.Command) => {
+    emitInlineEnumsForCommands(command);
     // TODO(bckenny): should description be emitted for params and return types?
     if (command.parameters) {
         emitLine()
@@ -163,6 +229,7 @@ const emitEvent = (event: P.Event) => {
         return
     }
     
+    emitInlineEnumsForEvents(event);
     emitLine()
     emitDescription(event.description)
     emitInterface(toEventPayloadName(event.name), event.parameters)
