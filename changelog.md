@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r774686
+###### _2020-06-03 10:15:57_ | Diff: [3386102...8d9fa2d](https://github.com/ChromeDevTools/devtools-protocol/compare/3386102...8d9fa2d)
+#### `Target`: modified command
+* [`Target.createBrowserContext`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-createBrowserContext) - The parameters's `proxyServer` _added_. The parameters's `proxyBypassList` _added_. 
+
+
 ## Roll protocol to r772852
 ###### _2020-05-28 13:16:11_ | Diff: [69d3d03...3386102](https://github.com/ChromeDevTools/devtools-protocol/compare/69d3d03...3386102)
 #### `Network`: new type
