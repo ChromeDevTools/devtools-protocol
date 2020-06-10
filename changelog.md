@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r776422
+###### _2020-06-09 00:16:08_ | Diff: [bca028b...c5f2d31](https://github.com/ChromeDevTools/devtools-protocol/compare/bca028b...c5f2d31)
+#### `CSS`: modified type
+* [`CSS.CSSStyleSheetHeader`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSStyleSheetHeader) - The `startLine` in the properties had `name` _updated_. The `startLine` in the properties had `description` _updated_. The `startLine` in the properties had `type` _updated_. The `startColumn` in the properties had `name` _updated_. The `startColumn` in the properties had `description` _updated_. The `length` in the properties had `name` _updated_. The `length` in the properties had `description` _updated_. The `endLine` in the properties had `name` _updated_. The `endLine` in the properties had `description` _updated_. The `endColumn` in the properties had `name` _updated_. The `endColumn` in the properties had `description` _updated_. The properties's `endColumn` _added_. 
+
+
 ## Roll protocol to r774686
 ###### _2020-06-03 10:15:57_ | Diff: [3386102...8d9fa2d](https://github.com/ChromeDevTools/devtools-protocol/compare/3386102...8d9fa2d)
 #### `Target`: modified command
