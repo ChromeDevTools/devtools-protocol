@@ -9815,6 +9815,10 @@ export namespace Protocol {
              */
             showGridExtensionLines?: boolean;
             /**
+             * Show Positive line number labels (default: false).
+             */
+            showPositiveLineNumbers?: boolean;
+            /**
              * The grid container border highlight color (default: transparent).
              */
             gridBorderColor?: DOM.RGBA;
