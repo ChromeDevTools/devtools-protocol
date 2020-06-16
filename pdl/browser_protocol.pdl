@@ -5192,6 +5192,8 @@ experimental domain Overlay
       optional boolean showGridExtensionLines
       # Show Positive line number labels (default: false).
       optional boolean showPositiveLineNumbers
+      # Show Negative line number labels (default: false).
+      optional boolean showNegativeLineNumbers
       # The grid container border highlight color (default: transparent).
       optional DOM.RGBA gridBorderColor
       # The cell border color (default: transparent).
