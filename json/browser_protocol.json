@@ -11334,6 +11334,12 @@
                             "type": "boolean"
                         },
                         {
+                            "name": "showAccessibilityInfo",
+                            "description": "Whether the a11y info should be shown (default: true).",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
                             "name": "showExtensionLines",
                             "description": "Whether the extension lines from node to the rulers should be shown (default: false).",
                             "optional": true,
@@ -11478,9 +11484,15 @@
                         },
                         {
                             "name": "colorFormat",
-                            "description": "The color format to get config with (default: hex)",
+                            "description": "The color format to get config with (default: hex).",
                             "optional": true,
                             "$ref": "ColorFormat"
+                        },
+                        {
+                            "name": "showAccessibilityInfo",
+                            "description": "Whether to show accessibility info (default: true).",
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ],
                     "returns": [

@@ -9873,6 +9873,10 @@ export namespace Protocol {
              */
             showRulers?: boolean;
             /**
+             * Whether the a11y info should be shown (default: true).
+             */
+            showAccessibilityInfo?: boolean;
+            /**
              * Whether the extension lines from node to the rulers should be shown (default: false).
              */
             showExtensionLines?: boolean;
@@ -9954,9 +9958,13 @@ export namespace Protocol {
              */
             includeStyle?: boolean;
             /**
-             * The color format to get config with (default: hex)
+             * The color format to get config with (default: hex).
              */
             colorFormat?: ColorFormat;
+            /**
+             * Whether to show accessibility info (default: true).
+             */
+            showAccessibilityInfo?: boolean;
         }
 
         export interface GetHighlightObjectForTestResponse {
