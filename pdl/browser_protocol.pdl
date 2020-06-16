@@ -5220,8 +5220,6 @@ experimental domain Overlay
       optional boolean showStyles
       # Whether the rulers should be shown (default: false).
       optional boolean showRulers
-      # Whether the a11y info should be shown (default: true).
-      optional boolean showAccessibilityInfo
       # Whether the extension lines from node to the rulers should be shown (default: false).
       optional boolean showExtensionLines
       # The content box highlight fill color (default: transparent).
@@ -5284,10 +5282,8 @@ experimental domain Overlay
       optional boolean includeDistance
       # Whether to include style info.
       optional boolean includeStyle
-      # The color format to get config with (default: hex).
+      # The color format to get config with (default: hex)
       optional ColorFormat colorFormat
-      # Whether to show accessibility info (default: true).
-      optional boolean showAccessibilityInfo
     returns
       # Highlight data for the node.
       object highlight
