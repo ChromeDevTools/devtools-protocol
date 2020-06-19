@@ -2071,6 +2071,13 @@ export namespace Protocol {
              * `replMode` themselves.
              */
             replMode?: boolean;
+            /**
+             * The Content Security Policy (CSP) for the target might block 'unsafe-eval'
+             * which includes eval(), Function(), setTimeout() and setInterval()
+             * when called with non-callable arguments. This flag bypasses CSP for this
+             * evaluation and allows unsafe-eval. Defaults to true.
+             */
+            allowUnsafeEvalBlockedByCSP?: boolean;
         }
 
         export interface EvaluateResponse {

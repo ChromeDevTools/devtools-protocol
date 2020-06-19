@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r779350
+###### _2020-06-17 09:16:03_ | Diff: [447fb97...c99e7da](https://github.com/ChromeDevTools/devtools-protocol/compare/447fb97...c99e7da)
+#### `Overlay`: modified command
+* [`Overlay.getHighlightObjectForTest`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-getHighlightObjectForTest) - The `colorFormat` in the parameters had `description` _updated_. The parameters's `showAccessibilityInfo` _added_. 
+#### `Overlay`: modified type
+* [`Overlay.HighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-HighlightConfig) - The `contentColor` in the properties had `$ref` _removed_. The `showExtensionLines` in the properties had `name` _updated_. The `showExtensionLines` in the properties had `description` _updated_. The `contentColor` in the properties had `name` _updated_. The `contentColor` in the properties had `description` _updated_. The `paddingColor` in the properties had `name` _updated_. The `paddingColor` in the properties had `description` _updated_. The `borderColor` in the properties had `name` _updated_. The `borderColor` in the properties had `description` _updated_. The `marginColor` in the properties had `name` _updated_. The `marginColor` in the properties had `description` _updated_. The `eventTargetColor` in the properties had `name` _updated_. The `eventTargetColor` in the properties had `description` _updated_. The `shapeColor` in the properties had `name` _updated_. The `shapeColor` in the properties had `description` _updated_. The `shapeMarginColor` in the properties had `name` _updated_. The `shapeMarginColor` in the properties had `description` _updated_. The `cssGridColor` in the properties had `name` _updated_. The `cssGridColor` in the properties had `description` _updated_. The `colorFormat` in the properties had `name` _updated_. The `colorFormat` in the properties had `description` _updated_. The `colorFormat` in the properties had `$ref` _updated_. The `gridHighlightConfig` in the properties had `name` _updated_. The `gridHighlightConfig` in the properties had `description` _updated_. The `gridHighlightConfig` in the properties had `$ref` _updated_. The properties's `type` _added_. The properties's `gridHighlightConfig` _added_. 
+
+
 ## Roll protocol to r778922
 ###### _2020-06-16 12:16:05_ | Diff: [2049521...447fb97](https://github.com/ChromeDevTools/devtools-protocol/compare/2049521...447fb97)
 #### `Overlay`: modified command
