@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r780326
+###### _2020-06-19 09:16:14_ | Diff: [c99e7da...2488f11](https://github.com/ChromeDevTools/devtools-protocol/compare/c99e7da...2488f11)
+#### `Runtime`: modified command
+* [`Runtime.evaluate`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-evaluate) - The parameters's `allowUnsafeEvalBlockedByCSP` _added_. 
+
+
 ## Roll protocol to r779350
 ###### _2020-06-17 09:16:03_ | Diff: [447fb97...c99e7da](https://github.com/ChromeDevTools/devtools-protocol/compare/447fb97...c99e7da)
 #### `Overlay`: modified command
