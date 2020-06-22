@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r780876
+###### _2020-06-22 11:16:04_ | Diff: [2488f11...1ec1519](https://github.com/ChromeDevTools/devtools-protocol/compare/2488f11...1ec1519)
+#### `Input`: modified command
+* [`Input.dispatchKeyEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-dispatchKeyEvent) - The parameters's `commands` _added_. 
+
+
 ## Roll protocol to r780326
 ###### _2020-06-19 09:16:14_ | Diff: [c99e7da...2488f11](https://github.com/ChromeDevTools/devtools-protocol/compare/c99e7da...2488f11)
 #### `Runtime`: modified command
