@@ -1,5 +1,16 @@
 
 
+## Roll protocol to r780980
+###### _2020-06-22 14:16:09_ | Diff: [1ec1519...9277d63](https://github.com/ChromeDevTools/devtools-protocol/compare/1ec1519...9277d63)
+#### `Audits`: new types
+* [`Audits.HeavyAdResolutionStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-HeavyAdResolutionStatus)
+* [`Audits.HeavyAdReason`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-HeavyAdReason)
+* [`Audits.HeavyAdIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-HeavyAdIssueDetails)
+#### `Audits`: modified types
+* [`Audits.InspectorIssueCode`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueCode) - The enum's `HeavyAdIssue` _added_. 
+* [`Audits.InspectorIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueDetails) - The properties's `heavyAdIssueDetails` _added_. 
+
+
 ## Roll protocol to r780876
 ###### _2020-06-22 11:16:04_ | Diff: [2488f11...1ec1519](https://github.com/ChromeDevTools/devtools-protocol/compare/2488f11...1ec1519)
 #### `Input`: modified command
