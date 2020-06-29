@@ -1618,6 +1618,13 @@ export namespace ProtocolMapping {
             returnType: Protocol.CSS.TakeCoverageDeltaResponse;
         };
         /**
+         * Enables/disables rendering of local CSS fonts (enabled by default).
+         */
+        'CSS.setLocalFontsEnabled': {
+            paramsType: [Protocol.CSS.SetLocalFontsEnabledRequest];
+            returnType: void;
+        };
+        /**
          * Deletes a cache.
          */
         'CacheStorage.deleteCache': {

@@ -3093,6 +3093,18 @@
                             "type": "number"
                         }
                     ]
+                },
+                {
+                    "name": "setLocalFontsEnabled",
+                    "description": "Enables/disables rendering of local CSS fonts (enabled by default).",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "enabled",
+                            "description": "Whether rendering of local fonts is enabled.",
+                            "type": "boolean"
+                        }
+                    ]
                 }
             ],
             "events": [

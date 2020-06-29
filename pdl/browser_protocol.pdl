@@ -1457,6 +1457,12 @@ experimental domain CSS
       # Monotonically increasing time, in seconds.
       number timestamp
 
+  # Enables/disables rendering of local CSS fonts (enabled by default).
+  experimental command setLocalFontsEnabled
+    parameters
+      # Whether rendering of local fonts is enabled.
+      boolean enabled
+
   # Fires whenever a web font is updated.  A non-empty font parameter indicates a successfully loaded
   # web font
   event fontsUpdated

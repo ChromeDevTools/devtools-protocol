@@ -4338,6 +4338,13 @@ export namespace Protocol {
             timestamp: number;
         }
 
+        export interface SetLocalFontsEnabledRequest {
+            /**
+             * Whether rendering of local fonts is enabled.
+             */
+            enabled: boolean;
+        }
+
         /**
          * Fires whenever a web font is updated.  A non-empty font parameter indicates a successfully loaded
          * web font

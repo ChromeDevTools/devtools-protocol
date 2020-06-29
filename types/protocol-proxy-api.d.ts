@@ -996,6 +996,11 @@ export namespace ProtocolProxyApi {
         takeCoverageDelta(): Promise<Protocol.CSS.TakeCoverageDeltaResponse>;
 
         /**
+         * Enables/disables rendering of local CSS fonts (enabled by default).
+         */
+        setLocalFontsEnabled(params: Protocol.CSS.SetLocalFontsEnabledRequest): Promise<void>;
+
+        /**
          * Fires whenever a web font is updated.  A non-empty font parameter indicates a successfully loaded
          * web font
          */
