@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r783554
+###### _2020-06-29 09:17:02_ | Diff: [dae56d1...38c54b5](https://github.com/ChromeDevTools/devtools-protocol/compare/dae56d1...38c54b5)
+#### `CSS`: new command
+* [`CSS.setLocalFontsEnabled`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-setLocalFontsEnabled)
+
+
 ## Roll protocol to r780980
 ###### _2020-06-22 14:16:09_ | Diff: [1ec1519...9277d63](https://github.com/ChromeDevTools/devtools-protocol/compare/1ec1519...9277d63)
 #### `Audits`: new types
