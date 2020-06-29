@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r783602
+###### _2020-06-29 11:16:09_ | Diff: [38c54b5...c480f8a](https://github.com/ChromeDevTools/devtools-protocol/compare/38c54b5...c480f8a)
+#### `Audits`: new types
+* [`Audits.ContentSecurityPolicyViolationType`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-ContentSecurityPolicyViolationType)
+* [`Audits.ContentSecurityPolicyIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-ContentSecurityPolicyIssueDetails)
+#### `Audits`: modified types
+* [`Audits.InspectorIssueCode`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueCode) - The enum's `ContentSecurityPolicyIssue` _added_. 
+* [`Audits.InspectorIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueDetails) - The properties's `contentSecurityPolicyIssueDetails` _added_. 
+
+
 ## Roll protocol to r783554
 ###### _2020-06-29 09:17:02_ | Diff: [dae56d1...38c54b5](https://github.com/ChromeDevTools/devtools-protocol/compare/dae56d1...38c54b5)
 #### `CSS`: new command
