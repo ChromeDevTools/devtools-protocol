@@ -3112,12 +3112,27 @@ export namespace Protocol {
             frame: AffectedFrame;
         }
 
+        export type ContentSecurityPolicyViolationType = ('kInlineViolation' | 'kEvalViolation' | 'kURLViolation' | 'kTrustedTypesSinkViolation' | 'kTrustedTypesPolicyViolation');
+
+        export interface ContentSecurityPolicyIssueDetails {
+            /**
+             * The url not included in allowed sources.
+             */
+            blockedURL?: string;
+            /**
+             * Specific directive that is violated, causing the CSP issue.
+             */
+            violatedDirective: string;
+            contentSecurityPolicyViolationType: ContentSecurityPolicyViolationType;
+            frameAncestor?: AffectedFrame;
+        }
+
         /**
          * A unique identifier for the type of issue. Each type may use one of the
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue');
+        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3129,6 +3144,7 @@ export namespace Protocol {
             mixedContentIssueDetails?: MixedContentIssueDetails;
             blockedByResponseIssueDetails?: BlockedByResponseIssueDetails;
             heavyAdIssueDetails?: HeavyAdIssueDetails;
+            contentSecurityPolicyIssueDetails?: ContentSecurityPolicyIssueDetails;
         }
 
         /**
