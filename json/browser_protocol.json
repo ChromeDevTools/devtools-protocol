@@ -17233,6 +17233,20 @@
                             "type": "boolean"
                         }
                     ]
+                },
+                {
+                    "name": "setAutomaticPresenceSimulation",
+                    "description": "Sets whether tests of user presence will succeed immediately (if true) or fail to resolve (if false) for an authenticator.\nThe default is true.",
+                    "parameters": [
+                        {
+                            "name": "authenticatorId",
+                            "$ref": "AuthenticatorId"
+                        },
+                        {
+                            "name": "enabled",
+                            "type": "boolean"
+                        }
+                    ]
                 }
             ]
         },

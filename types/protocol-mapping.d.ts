@@ -3957,6 +3957,14 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Sets whether tests of user presence will succeed immediately (if true) or fail to resolve (if false) for an authenticator.
+         * The default is true.
+         */
+        'WebAuthn.setAutomaticPresenceSimulation': {
+            paramsType: [Protocol.WebAuthn.SetAutomaticPresenceSimulationRequest];
+            returnType: void;
+        };
+        /**
          * Enables the Media domain
          */
         'Media.enable': {

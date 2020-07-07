@@ -3345,6 +3345,12 @@ export namespace ProtocolProxyApi {
          */
         setUserVerified(params: Protocol.WebAuthn.SetUserVerifiedRequest): Promise<void>;
 
+        /**
+         * Sets whether tests of user presence will succeed immediately (if true) or fail to resolve (if false) for an authenticator.
+         * The default is true.
+         */
+        setAutomaticPresenceSimulation(params: Protocol.WebAuthn.SetAutomaticPresenceSimulationRequest): Promise<void>;
+
     }
 
     export interface MediaApi {

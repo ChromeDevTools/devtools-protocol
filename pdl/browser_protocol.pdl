@@ -7955,6 +7955,13 @@ experimental domain WebAuthn
       AuthenticatorId authenticatorId
       boolean isUserVerified
 
+  # Sets whether tests of user presence will succeed immediately (if true) or fail to resolve (if false) for an authenticator.
+  # The default is true.
+  command setAutomaticPresenceSimulation
+    parameters
+      AuthenticatorId authenticatorId
+      boolean enabled
+
 # This domain allows detailed inspection of media elements
 experimental domain Media
 

@@ -13588,6 +13588,11 @@ export namespace Protocol {
             authenticatorId: AuthenticatorId;
             isUserVerified: boolean;
         }
+
+        export interface SetAutomaticPresenceSimulationRequest {
+            authenticatorId: AuthenticatorId;
+            enabled: boolean;
+        }
     }
 
     /**
