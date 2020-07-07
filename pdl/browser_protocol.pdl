@@ -5244,6 +5244,8 @@ experimental domain Overlay
       optional boolean showPositiveLineNumbers
       # Show Negative line number labels (default: false).
       optional boolean showNegativeLineNumbers
+      # Show area name labels (default: false).
+      optional boolean showAreaNames
       # The grid container border highlight color (default: transparent).
       optional DOM.RGBA gridBorderColor
       # The cell border color (default: transparent).
@@ -5260,6 +5262,8 @@ experimental domain Overlay
       optional DOM.RGBA columnGapColor
       # The column gap hatching fill color (default: transparent).
       optional DOM.RGBA columnHatchColor
+      # The named grid areas border color (Default: transparent).
+      optional DOM.RGBA areaBorderColor
 
   # Configuration data for the highlighting of page elements.
   type HighlightConfig extends object

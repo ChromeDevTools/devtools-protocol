@@ -9879,6 +9879,10 @@ export namespace Protocol {
              */
             showNegativeLineNumbers?: boolean;
             /**
+             * Show area name labels (default: false).
+             */
+            showAreaNames?: boolean;
+            /**
              * The grid container border highlight color (default: transparent).
              */
             gridBorderColor?: DOM.RGBA;
@@ -9910,6 +9914,10 @@ export namespace Protocol {
              * The column gap hatching fill color (default: transparent).
              */
             columnHatchColor?: DOM.RGBA;
+            /**
+             * The named grid areas border color (Default: transparent).
+             */
+            areaBorderColor?: DOM.RGBA;
         }
 
         /**

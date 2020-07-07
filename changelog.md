@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r785822
+###### _2020-07-07 10:16:29_ | Diff: [20413fc...448edcd](https://github.com/ChromeDevTools/devtools-protocol/compare/20413fc...448edcd)
+#### `WebAuthn`: new command
+* [`WebAuthn.setAutomaticPresenceSimulation`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#method-setAutomaticPresenceSimulation)
+
+
 ## Roll protocol to r784747
 ###### _2020-07-02 02:16:05_ | Diff: [f814796...20413fc](https://github.com/ChromeDevTools/devtools-protocol/compare/f814796...20413fc)
 #### `Audits`: new types

@@ -11370,6 +11370,12 @@
                             "type": "boolean"
                         },
                         {
+                            "name": "showAreaNames",
+                            "description": "Show area name labels (default: false).",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
                             "name": "gridBorderColor",
                             "description": "The grid container border highlight color (default: transparent).",
                             "optional": true,
@@ -11414,6 +11420,12 @@
                         {
                             "name": "columnHatchColor",
                             "description": "The column gap hatching fill color (default: transparent).",
+                            "optional": true,
+                            "$ref": "DOM.RGBA"
+                        },
+                        {
+                            "name": "areaBorderColor",
+                            "description": "The named grid areas border color (Default: transparent).",
                             "optional": true,
                             "$ref": "DOM.RGBA"
                         }
