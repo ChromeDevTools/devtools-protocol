@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r786047
+###### _2020-07-07 16:16:12_ | Diff: [448edcd...d0d50cd](https://github.com/ChromeDevTools/devtools-protocol/compare/448edcd...d0d50cd)
+#### `Overlay`: modified type
+* [`Overlay.GridHighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-GridHighlightConfig) - The `gridBorderColor` in the properties had `$ref` _removed_. The `gridBorderDash` in the properties had `type` _removed_. The `rowGapColor` in the properties had `$ref` _removed_. The `gridBorderColor` in the properties had `name` _updated_. The `gridBorderColor` in the properties had `description` _updated_. The `cellBorderColor` in the properties had `name` _updated_. The `cellBorderColor` in the properties had `description` _updated_. The `gridBorderDash` in the properties had `name` _updated_. The `gridBorderDash` in the properties had `description` _updated_. The `cellBorderDash` in the properties had `name` _updated_. The `cellBorderDash` in the properties had `description` _updated_. The `rowGapColor` in the properties had `name` _updated_. The `rowGapColor` in the properties had `description` _updated_. The `rowHatchColor` in the properties had `name` _updated_. The `rowHatchColor` in the properties had `description` _updated_. The `columnGapColor` in the properties had `name` _updated_. The `columnGapColor` in the properties had `description` _updated_. The `columnHatchColor` in the properties had `name` _updated_. The `columnHatchColor` in the properties had `description` _updated_. The properties's `type` _added_ (2 times). The properties's `$ref` _added_. The properties's `columnHatchColor` _added_. The properties's `areaBorderColor` _added_. 
+
+
 ## Roll protocol to r785822
 ###### _2020-07-07 10:16:29_ | Diff: [20413fc...448edcd](https://github.com/ChromeDevTools/devtools-protocol/compare/20413fc...448edcd)
 #### `WebAuthn`: new command
