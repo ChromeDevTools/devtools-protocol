@@ -6541,6 +6541,29 @@ export namespace Protocol {
             angle: integer;
         }
 
+        export const enum DisplayFeatureOrientation {
+            Vertical = 'vertical',
+            Horizontal = 'horizontal',
+        }
+
+        export interface DisplayFeature {
+            /**
+             * Orientation of a display feature in relation to screen (DisplayFeatureOrientation enum)
+             */
+            orientation: ('vertical' | 'horizontal');
+            /**
+             * The offset from the screen origin in either the x (for vertical
+             * orientation) or y (for horizontal orientation) direction.
+             */
+            offset: integer;
+            /**
+             * A display feature may mask content such that it is not physically
+             * displayed - this length along with the offset describes this area.
+             * A display feature that only splits content will have a 0 mask_length.
+             */
+            maskLength: integer;
+        }
+
         export interface MediaFeature {
             name: string;
             value: string;
@@ -6655,6 +6678,11 @@ export namespace Protocol {
              * change is not observed by the page, e.g. viewport-relative elements do not change positions.
              */
             viewport?: Page.Viewport;
+            /**
+             * If set, the display feature of a multi-segment screen. If not set, multi-segment support
+             * is turned-off.
+             */
+            displayFeature?: DisplayFeature;
         }
 
         export interface SetScrollbarsHiddenRequest {
