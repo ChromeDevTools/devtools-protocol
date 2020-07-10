@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r786951
+###### _2020-07-09 15:16:05_ | Diff: [3e005aa...88c2dab](https://github.com/ChromeDevTools/devtools-protocol/compare/3e005aa...88c2dab)
+#### `Emulation`: modified command
+* [`Emulation.setDeviceMetricsOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setDeviceMetricsOverride) - The parameters's `displayFeature` _added_. 
+#### `Emulation`: new type
+* [`Emulation.DisplayFeature`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#type-DisplayFeature)
+
+
 ## Roll protocol to r786047
 ###### _2020-07-07 16:16:12_ | Diff: [448edcd...d0d50cd](https://github.com/ChromeDevTools/devtools-protocol/compare/448edcd...d0d50cd)
 #### `Overlay`: modified type

@@ -1229,7 +1229,22 @@ experimental domain CSS
       # Amount of glyphs that were rendered with this font.
       number glyphCount
 
+  # Information about font variation axes for variable fonts
+  type FontVariationAxis extends object
+    properties
+      # The font-variation-setting tag (a.k.a. "axis tag").
+      string tag
+      # Human-readable variation name in the default language (normally, "en").
+      string name
+      # The minimum value (inclusive) the font supports for this tag.
+      number minValue
+      # The maximum value (inclusive) the font supports for this tag.
+      number maxValue
+      # The default value.
+      number defaultValue
+
   # Properties of a web font: https://www.w3.org/TR/2008/REC-CSS2-20080411/fonts.html#font-descriptions
+  # and additional information such as platformFontFamily and fontVariationAxes.
   type FontFace extends object
     properties
       # The font-family.
@@ -1248,6 +1263,8 @@ experimental domain CSS
       string src
       # The resolved platform font family
       string platformFontFamily
+      # Available variation settings (a.k.a. "axes").
+      optional array of FontVariationAxis fontVariationAxes
 
   # CSS keyframes rule representation.
   type CSSKeyframesRule extends object

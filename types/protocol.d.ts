@@ -4011,7 +4011,34 @@ export namespace Protocol {
         }
 
         /**
+         * Information about font variation axes for variable fonts
+         */
+        export interface FontVariationAxis {
+            /**
+             * The font-variation-setting tag (a.k.a. "axis tag").
+             */
+            tag: string;
+            /**
+             * Human-readable variation name in the default language (normally, "en").
+             */
+            name: string;
+            /**
+             * The minimum value (inclusive) the font supports for this tag.
+             */
+            minValue: number;
+            /**
+             * The maximum value (inclusive) the font supports for this tag.
+             */
+            maxValue: number;
+            /**
+             * The default value.
+             */
+            defaultValue: number;
+        }
+
+        /**
          * Properties of a web font: https://www.w3.org/TR/2008/REC-CSS2-20080411/fonts.html#font-descriptions
+         * and additional information such as platformFontFamily and fontVariationAxes.
          */
         export interface FontFace {
             /**
@@ -4046,6 +4073,10 @@ export namespace Protocol {
              * The resolved platform font family
              */
             platformFontFamily: string;
+            /**
+             * Available variation settings (a.k.a. "axes").
+             */
+            fontVariationAxes?: FontVariationAxis[];
         }
 
         /**

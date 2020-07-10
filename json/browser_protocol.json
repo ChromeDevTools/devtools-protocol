@@ -2565,8 +2565,40 @@
                     ]
                 },
                 {
+                    "id": "FontVariationAxis",
+                    "description": "Information about font variation axes for variable fonts",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "tag",
+                            "description": "The font-variation-setting tag (a.k.a. \"axis tag\").",
+                            "type": "string"
+                        },
+                        {
+                            "name": "name",
+                            "description": "Human-readable variation name in the default language (normally, \"en\").",
+                            "type": "string"
+                        },
+                        {
+                            "name": "minValue",
+                            "description": "The minimum value (inclusive) the font supports for this tag.",
+                            "type": "number"
+                        },
+                        {
+                            "name": "maxValue",
+                            "description": "The maximum value (inclusive) the font supports for this tag.",
+                            "type": "number"
+                        },
+                        {
+                            "name": "defaultValue",
+                            "description": "The default value.",
+                            "type": "number"
+                        }
+                    ]
+                },
+                {
                     "id": "FontFace",
-                    "description": "Properties of a web font: https://www.w3.org/TR/2008/REC-CSS2-20080411/fonts.html#font-descriptions",
+                    "description": "Properties of a web font: https://www.w3.org/TR/2008/REC-CSS2-20080411/fonts.html#font-descriptions\nand additional information such as platformFontFamily and fontVariationAxes.",
                     "type": "object",
                     "properties": [
                         {
@@ -2608,6 +2640,15 @@
                             "name": "platformFontFamily",
                             "description": "The resolved platform font family",
                             "type": "string"
+                        },
+                        {
+                            "name": "fontVariationAxes",
+                            "description": "Available variation settings (a.k.a. \"axes\").",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "FontVariationAxis"
+                            }
                         }
                     ]
                 },
