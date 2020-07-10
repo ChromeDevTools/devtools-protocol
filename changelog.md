@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r787108
+###### _2020-07-09 23:16:07_ | Diff: [88c2dab...65755e2](https://github.com/ChromeDevTools/devtools-protocol/compare/88c2dab...65755e2)
+#### `CSS`: new type
+* [`CSS.FontVariationAxis`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-FontVariationAxis)
+#### `CSS`: modified type
+* [`CSS.FontFace`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-FontFace) - `description` updated. The properties's `fontVariationAxes` _added_. 
+
+
 ## Roll protocol to r786951
 ###### _2020-07-09 15:16:05_ | Diff: [3e005aa...88c2dab](https://github.com/ChromeDevTools/devtools-protocol/compare/3e005aa...88c2dab)
 #### `Emulation`: modified command

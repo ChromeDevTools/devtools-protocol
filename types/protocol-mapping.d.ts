@@ -2931,6 +2931,13 @@ export namespace ProtocolMapping {
             returnType: Protocol.Overlay.GetHighlightObjectForTestResponse;
         };
         /**
+         * For Persistent Grid testing.
+         */
+        'Overlay.getGridHighlightObjectsForTest': {
+            paramsType: [Protocol.Overlay.GetGridHighlightObjectsForTestRequest];
+            returnType: Protocol.Overlay.GetGridHighlightObjectsForTestResponse;
+        };
+        /**
          * Hides any highlight.
          */
         'Overlay.hideHighlight': {
@@ -2997,6 +3004,13 @@ export namespace ProtocolMapping {
          */
         'Overlay.setShowFPSCounter': {
             paramsType: [Protocol.Overlay.SetShowFPSCounterRequest];
+            returnType: void;
+        };
+        /**
+         * Highlight multiple elements with the CSS Grid overlay.
+         */
+        'Overlay.setShowGridOverlays': {
+            paramsType: [Protocol.Overlay.SetShowGridOverlaysRequest];
             returnType: void;
         };
         /**

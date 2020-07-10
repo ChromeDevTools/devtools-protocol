@@ -2254,6 +2254,11 @@ export namespace ProtocolProxyApi {
         getHighlightObjectForTest(params: Protocol.Overlay.GetHighlightObjectForTestRequest): Promise<Protocol.Overlay.GetHighlightObjectForTestResponse>;
 
         /**
+         * For Persistent Grid testing.
+         */
+        getGridHighlightObjectsForTest(params: Protocol.Overlay.GetGridHighlightObjectsForTestRequest): Promise<Protocol.Overlay.GetGridHighlightObjectsForTestResponse>;
+
+        /**
          * Hides any highlight.
          */
         hideHighlight(): Promise<void>;
@@ -2301,6 +2306,11 @@ export namespace ProtocolProxyApi {
          * Requests that backend shows the FPS counter
          */
         setShowFPSCounter(params: Protocol.Overlay.SetShowFPSCounterRequest): Promise<void>;
+
+        /**
+         * Highlight multiple elements with the CSS Grid overlay.
+         */
+        setShowGridOverlays(params: Protocol.Overlay.SetShowGridOverlaysRequest): Promise<void>;
 
         /**
          * Requests that backend shows paint rectangles
