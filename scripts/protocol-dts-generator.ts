@@ -66,9 +66,17 @@ const emitEnum = (enumName: string, enumValues: string[]) => {
     emitCloseBlock();
 };
 
+const emitPublicDocDeclaration = () => {
+    emitLine('/**');
+    emitLine(' * The Chrome DevTools Protocol.');
+    emitLine(' * @public')
+    emitLine(' */')
+}
+
 const emitModule = (moduleName: string, domains: P.Domain[]) => {
     moduleName = toTitleCase(moduleName)
     emitHeaderComments()
+    emitPublicDocDeclaration()
     emitOpenBlock(`export namespace ${moduleName}`)
     emitGlobalTypeDefs()
     domains.forEach(emitDomain)
