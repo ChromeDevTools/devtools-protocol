@@ -5558,6 +5558,15 @@ domain Page
   # Unique frame identifier.
   type FrameId extends string
 
+  # Indicates whether a frame has been identified as an ad.
+  experimental type AdFrameType extends string
+    enum
+      none
+      # This frame is a subframe of an ad frame.
+      child
+      # This frame is the root of an ad frame.
+      root
+
   # Information about the Frame on the page.
   type Frame extends object
     properties
@@ -5579,6 +5588,8 @@ domain Page
       string mimeType
       # If the frame failed to load, this contains the URL that could not be loaded. Note that unlike url above, this URL may contain a fragment.
       experimental optional string unreachableUrl
+      # Indicates whether this frame was tagged as an ad.
+      experimental optional AdFrameType adFrameType
 
   # Information about the Resource on the page.
   experimental type FrameResource extends object

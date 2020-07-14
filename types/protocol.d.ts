@@ -10338,6 +10338,11 @@ export namespace Protocol {
         export type FrameId = string;
 
         /**
+         * Indicates whether a frame has been identified as an ad.
+         */
+        export type AdFrameType = ('none' | 'child' | 'root');
+
+        /**
          * Information about the Frame on the page.
          */
         export interface Frame {
@@ -10377,6 +10382,10 @@ export namespace Protocol {
              * If the frame failed to load, this contains the URL that could not be loaded. Note that unlike url above, this URL may contain a fragment.
              */
             unreachableUrl?: string;
+            /**
+             * Indicates whether this frame was tagged as an ad.
+             */
+            adFrameType?: AdFrameType;
         }
 
         /**

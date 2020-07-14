@@ -12057,6 +12057,17 @@
                     "type": "string"
                 },
                 {
+                    "id": "AdFrameType",
+                    "description": "Indicates whether a frame has been identified as an ad.",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "none",
+                        "child",
+                        "root"
+                    ]
+                },
+                {
                     "id": "Frame",
                     "description": "Information about the Frame on the page.",
                     "type": "object",
@@ -12111,6 +12122,13 @@
                             "experimental": true,
                             "optional": true,
                             "type": "string"
+                        },
+                        {
+                            "name": "adFrameType",
+                            "description": "Indicates whether this frame was tagged as an ad.",
+                            "experimental": true,
+                            "optional": true,
+                            "$ref": "AdFrameType"
                         }
                     ]
                 },

@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r787341
+###### _2020-07-10 13:16:13_ | Diff: [65755e2...370db8f](https://github.com/ChromeDevTools/devtools-protocol/compare/65755e2...370db8f)
+#### `Overlay`: new commands
+* [`Overlay.getGridHighlightObjectsForTest`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-getGridHighlightObjectsForTest)
+* [`Overlay.setShowGridOverlays`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-setShowGridOverlays)
+#### `Overlay`: new type
+* [`Overlay.GridNodeHighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-GridNodeHighlightConfig)
+
+
 ## Roll protocol to r787108
 ###### _2020-07-09 23:16:07_ | Diff: [88c2dab...65755e2](https://github.com/ChromeDevTools/devtools-protocol/compare/88c2dab...65755e2)
 #### `CSS`: new type
