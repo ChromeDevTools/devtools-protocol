@@ -3118,6 +3118,12 @@ export namespace Protocol {
 
         export type ContentSecurityPolicyViolationType = ('kInlineViolation' | 'kEvalViolation' | 'kURLViolation' | 'kTrustedTypesSinkViolation' | 'kTrustedTypesPolicyViolation');
 
+        export interface SourceCodeLocation {
+            url: string;
+            lineNumber: integer;
+            columnNumber: integer;
+        }
+
         export interface ContentSecurityPolicyIssueDetails {
             /**
              * The url not included in allowed sources.
@@ -3129,6 +3135,7 @@ export namespace Protocol {
             violatedDirective: string;
             contentSecurityPolicyViolationType: ContentSecurityPolicyViolationType;
             frameAncestor?: AffectedFrame;
+            sourceCodeLocation?: SourceCodeLocation;
         }
 
         /**

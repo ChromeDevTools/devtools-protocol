@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r788135
+###### _2020-07-14 06:16:33_ | Diff: [40acafd...1e13543](https://github.com/ChromeDevTools/devtools-protocol/compare/40acafd...1e13543)
+#### `Page`: new type
+* [`Page.AdFrameType`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-AdFrameType)
+#### `Page`: modified type
+* [`Page.Frame`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Frame) - The properties's `adFrameType` _added_. 
+
+
 ## Roll protocol to r787341
 ###### _2020-07-10 13:16:13_ | Diff: [65755e2...370db8f](https://github.com/ChromeDevTools/devtools-protocol/compare/65755e2...370db8f)
 #### `Overlay`: new commands
