@@ -9953,6 +9953,10 @@ export namespace Protocol {
              */
             showAreaNames?: boolean;
             /**
+             * Show line name labels (default: false).
+             */
+            showLineNames?: boolean;
+            /**
              * The grid container border highlight color (default: transparent).
              */
             gridBorderColor?: DOM.RGBA;

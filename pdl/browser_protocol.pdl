@@ -5287,6 +5287,8 @@ experimental domain Overlay
       optional boolean showNegativeLineNumbers
       # Show area name labels (default: false).
       optional boolean showAreaNames
+      # Show line name labels (default: false).
+      optional boolean showLineNames
       # The grid container border highlight color (default: transparent).
       optional DOM.RGBA gridBorderColor
       # The cell border color (default: transparent).

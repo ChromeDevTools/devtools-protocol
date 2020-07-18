@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r788664
+###### _2020-07-15 09:16:17_ | Diff: [1e13543...ffbd7f9](https://github.com/ChromeDevTools/devtools-protocol/compare/1e13543...ffbd7f9)
+#### `Audits`: new type
+* [`Audits.SourceCodeLocation`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SourceCodeLocation)
+#### `Audits`: modified type
+* [`Audits.ContentSecurityPolicyIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-ContentSecurityPolicyIssueDetails) - The properties's `sourceCodeLocation` _added_. 
+
+
 ## Roll protocol to r788135
 ###### _2020-07-14 06:16:33_ | Diff: [40acafd...1e13543](https://github.com/ChromeDevTools/devtools-protocol/compare/40acafd...1e13543)
 #### `Page`: new type
