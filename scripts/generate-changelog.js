@@ -214,7 +214,7 @@ class Formatter {
       text += textChange + (count > 1 ? ` (${count} times). ` : '. ');
     };
 
-    return text;
+    return text.trimEnd();
   }
 
   static getKey(obj) {
