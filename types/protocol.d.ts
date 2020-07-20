@@ -9957,6 +9957,10 @@ export namespace Protocol {
              */
             showLineNames?: boolean;
             /**
+             * Show track size labels (default: false).
+             */
+            showTrackSizes?: boolean;
+            /**
              * The grid container border highlight color (default: transparent).
              */
             gridBorderColor?: DOM.RGBA;
