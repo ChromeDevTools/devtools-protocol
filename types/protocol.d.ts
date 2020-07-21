@@ -8387,6 +8387,13 @@ export namespace Protocol {
          */
         export type ResourcePriority = ('VeryLow' | 'Low' | 'Medium' | 'High' | 'VeryHigh');
 
+        /**
+         * Post data entry for HTTP request
+         */
+        export interface PostDataEntry {
+            bytes?: string;
+        }
+
         export const enum RequestReferrerPolicy {
             UnsafeUrl = 'unsafe-url',
             NoReferrerWhenDowngrade = 'no-referrer-when-downgrade',
@@ -8426,6 +8433,10 @@ export namespace Protocol {
              * True when the request has POST data. Note that postData might still be omitted when this flag is true when the data is too long.
              */
             hasPostData?: boolean;
+            /**
+             * Request body elements. This will be converted from base64 to binary
+             */
+            postDataEntries?: PostDataEntry[];
             /**
              * The mixed content type of the request.
              */

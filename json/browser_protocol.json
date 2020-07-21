@@ -9297,6 +9297,18 @@
                     ]
                 },
                 {
+                    "id": "PostDataEntry",
+                    "description": "Post data entry for HTTP request",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "bytes",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "id": "Request",
                     "description": "HTTP request data.",
                     "type": "object",
@@ -9333,6 +9345,16 @@
                             "description": "True when the request has POST data. Note that postData might still be omitted when this flag is true when the data is too long.",
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "postDataEntries",
+                            "description": "Request body elements. This will be converted from base64 to binary",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "PostDataEntry"
+                            }
                         },
                         {
                             "name": "mixedContentType",
