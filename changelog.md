@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r790520
+###### _2020-07-21 13:16:17_ | Diff: [bfd8ad7...7f76206](https://github.com/ChromeDevTools/devtools-protocol/compare/bfd8ad7...7f76206)
+#### `Network`: new type
+* [`Network.PostDataEntry`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-PostDataEntry)
+#### `Network`: modified type
+* [`Network.Request`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Request) - The `mixedContentType` in the properties had `$ref` _removed_. The `referrerPolicy` in the properties had `type` _removed_. The `referrerPolicy` in the properties had `enum` _removed_. The `isLinkPreload` in the properties had `optional` _removed_. The `mixedContentType` in the properties had `name` _updated_. The `mixedContentType` in the properties had `description` _updated_. The `initialPriority` in the properties had `name` _updated_. The `initialPriority` in the properties had `description` _updated_. The `initialPriority` in the properties had `$ref` _updated_. The `referrerPolicy` in the properties had `name` _updated_. The `referrerPolicy` in the properties had `description` _updated_. The `isLinkPreload` in the properties had `name` _updated_. The `isLinkPreload` in the properties had `description` _updated_. The `isLinkPreload` in the properties had `type` _updated_. The properties's `experimental` _added_. The properties's `type` _added_. The properties's `items` _added_. The properties's `optional` _added_. The properties's `$ref` _added_. The properties's `enum` _added_. The properties's `isLinkPreload` _added_.
+
+
 ## Roll protocol to r789877
 ###### _2020-07-20 03:16:15_ | Diff: [2dc3bb9...294ad98](https://github.com/ChromeDevTools/devtools-protocol/compare/2dc3bb9...294ad98)
 #### `Overlay`: modified type
