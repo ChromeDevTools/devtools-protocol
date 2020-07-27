@@ -859,6 +859,10 @@ export namespace Protocol {
              * The language of the script.
              */
             scriptLanguage?: Debugger.ScriptLanguage;
+            /**
+             * The name the embedder supplied for this script.
+             */
+            embedderName?: string;
         }
 
         /**
@@ -938,6 +942,10 @@ export namespace Protocol {
              * If the scriptLanguage is WebASsembly, the source of debug symbols for the module.
              */
             debugSymbols?: Debugger.DebugSymbols;
+            /**
+             * The name the embedder supplied for this script.
+             */
+            embedderName?: string;
         }
     }
 

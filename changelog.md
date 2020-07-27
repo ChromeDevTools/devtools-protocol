@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r791394
+###### _2020-07-25 02:16:14_ | Diff: [c5d82e9...5b2db53](https://github.com/ChromeDevTools/devtools-protocol/compare/c5d82e9...5b2db53)
+#### `Network`: modified command
+* [`Network.getCookies`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-getCookies) - The `urls` in the parameters had `description` _updated_.
+
+
 ## Roll protocol to r790520
 ###### _2020-07-21 13:16:17_ | Diff: [bfd8ad7...7f76206](https://github.com/ChromeDevTools/devtools-protocol/compare/bfd8ad7...7f76206)
 #### `Network`: new type
