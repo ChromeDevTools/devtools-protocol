@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r792702
+###### _2020-07-29 08:16:16_ | Diff: [6404206...25ef76c](https://github.com/ChromeDevTools/devtools-protocol/compare/6404206...25ef76c)
+#### `Audits`: modified type
+* [`Audits.SameSiteCookieExclusionReason`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SameSiteCookieExclusionReason) - The enum's `ExcludeSameSiteLax` _added_. The enum's `ExcludeSameSiteStrict` _added_.
+
+
 ## Roll protocol to r792050
 ###### _2020-07-27 16:16:18_ | Diff: [5b2db53...6404206](https://github.com/ChromeDevTools/devtools-protocol/compare/5b2db53...6404206)
 #### `Debugger`: modified events

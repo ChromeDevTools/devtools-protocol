@@ -3148,6 +3148,17 @@ domain Emulation
       # Mock accuracy
       optional number accuracy
 
+  # Overrides the Idle state.
+  experimental command setIdleOverride
+    parameters
+      # Mock isUserActive
+      boolean isUserActive
+      # Mock isScreenUnlocked
+      boolean isScreenUnlocked
+
+  # Clears Idle state overrides.
+  experimental command clearIdleOverride
+
   # Overrides value returned by the javascript navigator object.
   experimental deprecated command setNavigatorOverrides
     parameters

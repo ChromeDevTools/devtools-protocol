@@ -1622,6 +1622,16 @@ export namespace ProtocolProxyApi {
         setGeolocationOverride(params: Protocol.Emulation.SetGeolocationOverrideRequest): Promise<void>;
 
         /**
+         * Overrides the Idle state.
+         */
+        setIdleOverride(params: Protocol.Emulation.SetIdleOverrideRequest): Promise<void>;
+
+        /**
+         * Clears Idle state overrides.
+         */
+        clearIdleOverride(): Promise<void>;
+
+        /**
          * Overrides value returned by the javascript navigator object.
          */
         setNavigatorOverrides(params: Protocol.Emulation.SetNavigatorOverridesRequest): Promise<void>;

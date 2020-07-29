@@ -6807,6 +6807,17 @@ export namespace Protocol {
             accuracy?: number;
         }
 
+        export interface SetIdleOverrideRequest {
+            /**
+             * Mock isUserActive
+             */
+            isUserActive: boolean;
+            /**
+             * Mock isScreenUnlocked
+             */
+            isScreenUnlocked: boolean;
+        }
+
         export interface SetNavigatorOverridesRequest {
             /**
              * The platform navigator.platform should return.

@@ -6938,6 +6938,28 @@
                     ]
                 },
                 {
+                    "name": "setIdleOverride",
+                    "description": "Overrides the Idle state.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "isUserActive",
+                            "description": "Mock isUserActive",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "isScreenUnlocked",
+                            "description": "Mock isScreenUnlocked",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
+                    "name": "clearIdleOverride",
+                    "description": "Clears Idle state overrides.",
+                    "experimental": true
+                },
+                {
                     "name": "setNavigatorOverrides",
                     "description": "Overrides value returned by the javascript navigator object.",
                     "experimental": true,
