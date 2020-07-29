@@ -973,7 +973,9 @@
                     "type": "string",
                     "enum": [
                         "ExcludeSameSiteUnspecifiedTreatedAsLax",
-                        "ExcludeSameSiteNoneInsecure"
+                        "ExcludeSameSiteNoneInsecure",
+                        "ExcludeSameSiteLax",
+                        "ExcludeSameSiteStrict"
                     ]
                 },
                 {

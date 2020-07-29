@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r792050
+###### _2020-07-27 16:16:18_ | Diff: [5b2db53...6404206](https://github.com/ChromeDevTools/devtools-protocol/compare/5b2db53...6404206)
+#### `Debugger`: modified events
+* [`Debugger.scriptFailedToParse`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-scriptFailedToParse) - The parameters's `embedderName` _added_.
+* [`Debugger.scriptParsed`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-scriptParsed) - The parameters's `embedderName` _added_.
+
+
 ## Roll protocol to r791394
 ###### _2020-07-25 02:16:14_ | Diff: [c5d82e9...5b2db53](https://github.com/ChromeDevTools/devtools-protocol/compare/c5d82e9...5b2db53)
 #### `Network`: modified command
