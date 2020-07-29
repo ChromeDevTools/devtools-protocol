@@ -2952,6 +2952,13 @@ export namespace ProtocolMapping {
             returnType: Protocol.Overlay.GetGridHighlightObjectsForTestResponse;
         };
         /**
+         * For Source Order Viewer testing.
+         */
+        'Overlay.getSourceOrderHighlightObjectForTest': {
+            paramsType: [Protocol.Overlay.GetSourceOrderHighlightObjectForTestRequest];
+            returnType: Protocol.Overlay.GetSourceOrderHighlightObjectForTestResponse;
+        };
+        /**
          * Hides any highlight.
          */
         'Overlay.hideHighlight': {
@@ -2985,6 +2992,14 @@ export namespace ProtocolMapping {
          */
         'Overlay.highlightRect': {
             paramsType: [Protocol.Overlay.HighlightRectRequest];
+            returnType: void;
+        };
+        /**
+         * Highlights the source order of the children of the DOM node with given id or with the given
+         * JavaScript object wrapper. Either nodeId or objectId must be specified.
+         */
+        'Overlay.highlightSourceOrder': {
+            paramsType: [Protocol.Overlay.HighlightSourceOrderRequest];
             returnType: void;
         };
         /**

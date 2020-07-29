@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r792754
+###### _2020-07-29 10:16:33_ | Diff: [25ef76c...158ed24](https://github.com/ChromeDevTools/devtools-protocol/compare/25ef76c...158ed24)
+#### `Emulation`: new commands
+* [`Emulation.setIdleOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setIdleOverride)
+* [`Emulation.clearIdleOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-clearIdleOverride)
+
+
 ## Roll protocol to r792702
 ###### _2020-07-29 08:16:16_ | Diff: [6404206...25ef76c](https://github.com/ChromeDevTools/devtools-protocol/compare/6404206...25ef76c)
 #### `Audits`: modified type

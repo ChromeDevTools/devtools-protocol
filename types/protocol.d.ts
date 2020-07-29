@@ -9965,6 +9965,20 @@ export namespace Protocol {
     export namespace Overlay {
 
         /**
+         * Configuration data for drawing the source order of an elements children.
+         */
+        export interface SourceOrderConfig {
+            /**
+             * the color to outline the givent element in.
+             */
+            parentOutlineColor: DOM.RGBA;
+            /**
+             * the color to outline the child elements in.
+             */
+            childOutlineColor: DOM.RGBA;
+        }
+
+        /**
          * Configuration data for the highlighting of Grid elements.
          */
         export interface GridHighlightConfig {
@@ -10176,6 +10190,20 @@ export namespace Protocol {
             highlights: any;
         }
 
+        export interface GetSourceOrderHighlightObjectForTestRequest {
+            /**
+             * Id of the node to highlight.
+             */
+            nodeId: DOM.NodeId;
+        }
+
+        export interface GetSourceOrderHighlightObjectForTestResponse {
+            /**
+             * Source order highlight data for the node id provided.
+             */
+            highlight: any;
+        }
+
         export interface HighlightFrameRequest {
             /**
              * Identifier of the frame to highlight.
@@ -10254,6 +10282,25 @@ export namespace Protocol {
              * The highlight outline color (default: transparent).
              */
             outlineColor?: DOM.RGBA;
+        }
+
+        export interface HighlightSourceOrderRequest {
+            /**
+             * A descriptor for the appearance of the overlay drawing.
+             */
+            sourceOrderConfig: SourceOrderConfig;
+            /**
+             * Identifier of the node to highlight.
+             */
+            nodeId?: DOM.NodeId;
+            /**
+             * Identifier of the backend node to highlight.
+             */
+            backendNodeId?: DOM.BackendNodeId;
+            /**
+             * JavaScript object id of the node to be highlighted.
+             */
+            objectId?: Runtime.RemoteObjectId;
         }
 
         export interface SetInspectModeRequest {
