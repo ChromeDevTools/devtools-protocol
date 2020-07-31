@@ -576,7 +576,8 @@ experimental domain Audits
   type BlockedByResponseIssueDetails extends object
     properties
       AffectedRequest request
-      optional AffectedFrame frame
+      optional AffectedFrame parentFrame
+      optional AffectedFrame blockedFrame
       BlockedByResponseReason reason
 
   type HeavyAdResolutionStatus extends string

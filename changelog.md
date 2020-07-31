@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r792906
+###### _2020-07-29 15:16:14_ | Diff: [158ed24...f67ba47](https://github.com/ChromeDevTools/devtools-protocol/compare/158ed24...f67ba47)
+#### `Overlay`: new commands
+* [`Overlay.getSourceOrderHighlightObjectForTest`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-getSourceOrderHighlightObjectForTest)
+* [`Overlay.highlightSourceOrder`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-highlightSourceOrder)
+#### `Overlay`: new type
+* [`Overlay.SourceOrderConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-SourceOrderConfig)
+
+
 ## Roll protocol to r792754
 ###### _2020-07-29 10:16:33_ | Diff: [25ef76c...158ed24](https://github.com/ChromeDevTools/devtools-protocol/compare/25ef76c...158ed24)
 #### `Emulation`: new commands
