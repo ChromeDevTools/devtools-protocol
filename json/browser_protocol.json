@@ -1257,6 +1257,11 @@
                             "name": "sourceCodeLocation",
                             "optional": true,
                             "$ref": "SourceCodeLocation"
+                        },
+                        {
+                            "name": "violatingNodeId",
+                            "optional": true,
+                            "type": "integer"
                         }
                     ]
                 },

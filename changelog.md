@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r794471
+###### _2020-08-04 04:16:10_ | Diff: [6dad424...8f538a9](https://github.com/ChromeDevTools/devtools-protocol/compare/6dad424...8f538a9)
+#### `CSS`: new commands
+* [`CSS.trackComputedStyleUpdates`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-trackComputedStyleUpdates)
+* [`CSS.takeComputedStyleUpdates`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-takeComputedStyleUpdates)
+
+
 ## Roll protocol to r794453
 ###### _2020-08-04 03:16:08_ | Diff: [efe2c1f...6dad424](https://github.com/ChromeDevTools/devtools-protocol/compare/efe2c1f...6dad424)
 #### `Overlay`: modified type

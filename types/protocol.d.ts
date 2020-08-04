@@ -3145,6 +3145,7 @@ export namespace Protocol {
             contentSecurityPolicyViolationType: ContentSecurityPolicyViolationType;
             frameAncestor?: AffectedFrame;
             sourceCodeLocation?: SourceCodeLocation;
+            violatingNodeId?: integer;
         }
 
         /**
