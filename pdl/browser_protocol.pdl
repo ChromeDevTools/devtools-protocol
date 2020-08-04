@@ -5324,12 +5324,20 @@ experimental domain Overlay
       optional boolean showTrackSizes
       # The grid container border highlight color (default: transparent).
       optional DOM.RGBA gridBorderColor
-      # The cell border color (default: transparent).
-      optional DOM.RGBA cellBorderColor
+      # The cell border color (default: transparent). Deprecated, please use rowLineColor and columnLineColor instead.
+      deprecated optional DOM.RGBA cellBorderColor
+      # The row line color (default: transparent).
+      optional DOM.RGBA rowLineColor
+      # The column line color (default: transparent).
+      optional DOM.RGBA columnLineColor
       # Whether the grid border is dashed (default: false).
       optional boolean gridBorderDash
-      # Whether the cell border is dashed (default: false).
-      optional boolean cellBorderDash
+      # Whether the cell border is dashed (default: false). Deprecated, please us rowLineDash and columnLineDash instead.
+      deprecated optional boolean cellBorderDash
+      # Whether row lines are dashed (default: false).
+      optional boolean rowLineDash
+      # Whether column lines are dashed (default: false).
+      optional boolean columnLineDash
       # The row gap highlight fill color (default: transparent).
       optional DOM.RGBA rowGapColor
       # The row gap hatching fill color (default: transparent).

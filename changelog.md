@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r794398
+###### _2020-08-03 22:16:06_ | Diff: [979117d...efe2c1f](https://github.com/ChromeDevTools/devtools-protocol/compare/979117d...efe2c1f)
+#### `Page`: modified type
+* [`Page.Frame`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Frame) - The `unreachableUrl` in the properties had `experimental` _removed_. The `unreachableUrl` in the properties had `optional` _removed_. The `adFrameType` in the properties had `$ref` _removed_. The `securityOrigin` in the properties had `name` _updated_. The `securityOrigin` in the properties had `description` _updated_. The `mimeType` in the properties had `name` _updated_. The `mimeType` in the properties had `description` _updated_. The `unreachableUrl` in the properties had `name` _updated_. The `unreachableUrl` in the properties had `description` _updated_. The `adFrameType` in the properties had `name` _updated_. The `adFrameType` in the properties had `description` _updated_. The properties's `experimental` _added_. The properties's `type` _added_. The properties's `adFrameType` _added_.
+
+
 ## Roll protocol to r793541
 ###### _2020-07-31 01:16:13_ | Diff: [f67ba47...979117d](https://github.com/ChromeDevTools/devtools-protocol/compare/f67ba47...979117d)
 #### `Audits`: modified type

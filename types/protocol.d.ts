@@ -10012,17 +10012,33 @@ export namespace Protocol {
              */
             gridBorderColor?: DOM.RGBA;
             /**
-             * The cell border color (default: transparent).
+             * The cell border color (default: transparent). Deprecated, please use rowLineColor and columnLineColor instead.
              */
             cellBorderColor?: DOM.RGBA;
+            /**
+             * The row line color (default: transparent).
+             */
+            rowLineColor?: DOM.RGBA;
+            /**
+             * The column line color (default: transparent).
+             */
+            columnLineColor?: DOM.RGBA;
             /**
              * Whether the grid border is dashed (default: false).
              */
             gridBorderDash?: boolean;
             /**
-             * Whether the cell border is dashed (default: false).
+             * Whether the cell border is dashed (default: false). Deprecated, please us rowLineDash and columnLineDash instead.
              */
             cellBorderDash?: boolean;
+            /**
+             * Whether row lines are dashed (default: false).
+             */
+            rowLineDash?: boolean;
+            /**
+             * Whether column lines are dashed (default: false).
+             */
+            columnLineDash?: boolean;
             /**
              * The row gap highlight fill color (default: transparent).
              */

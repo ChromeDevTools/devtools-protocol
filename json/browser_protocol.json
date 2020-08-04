@@ -11559,7 +11559,20 @@
                         },
                         {
                             "name": "cellBorderColor",
-                            "description": "The cell border color (default: transparent).",
+                            "description": "The cell border color (default: transparent). Deprecated, please use rowLineColor and columnLineColor instead.",
+                            "deprecated": true,
+                            "optional": true,
+                            "$ref": "DOM.RGBA"
+                        },
+                        {
+                            "name": "rowLineColor",
+                            "description": "The row line color (default: transparent).",
+                            "optional": true,
+                            "$ref": "DOM.RGBA"
+                        },
+                        {
+                            "name": "columnLineColor",
+                            "description": "The column line color (default: transparent).",
                             "optional": true,
                             "$ref": "DOM.RGBA"
                         },
@@ -11571,7 +11584,20 @@
                         },
                         {
                             "name": "cellBorderDash",
-                            "description": "Whether the cell border is dashed (default: false).",
+                            "description": "Whether the cell border is dashed (default: false). Deprecated, please us rowLineDash and columnLineDash instead.",
+                            "deprecated": true,
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "rowLineDash",
+                            "description": "Whether row lines are dashed (default: false).",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "columnLineDash",
+                            "description": "Whether column lines are dashed (default: false).",
                             "optional": true,
                             "type": "boolean"
                         },
