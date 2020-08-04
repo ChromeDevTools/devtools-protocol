@@ -854,7 +854,7 @@ export namespace ProtocolMapping {
          * Steps over the statement.
          */
         'Debugger.stepOver': {
-            paramsType: [];
+            paramsType: [Protocol.Debugger.StepOverRequest?];
             returnType: void;
         };
         /**

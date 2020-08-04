@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r794596
+###### _2020-08-04 10:16:13_ | Diff: [8f538a9...92769fe](https://github.com/ChromeDevTools/devtools-protocol/compare/8f538a9...92769fe)
+#### `Audits`: modified type
+* [`Audits.ContentSecurityPolicyIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-ContentSecurityPolicyIssueDetails) - The properties's `violatingNodeId` _added_.
+
+
 ## Roll protocol to r794471
 ###### _2020-08-04 04:16:10_ | Diff: [6dad424...8f538a9](https://github.com/ChromeDevTools/devtools-protocol/compare/6dad424...8f538a9)
 #### `CSS`: new commands

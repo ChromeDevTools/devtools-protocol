@@ -292,7 +292,7 @@ export namespace ProtocolProxyApi {
         /**
          * Steps over the statement.
          */
-        stepOver(): Promise<void>;
+        stepOver(params: Protocol.Debugger.StepOverRequest): Promise<void>;
 
         /**
          * Fired when breakpoint is resolved to an actual script and location.
