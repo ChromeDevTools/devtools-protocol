@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r793541
+###### _2020-07-31 01:16:13_ | Diff: [f67ba47...979117d](https://github.com/ChromeDevTools/devtools-protocol/compare/f67ba47...979117d)
+#### `Audits`: modified type
+* [`Audits.BlockedByResponseIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-BlockedByResponseIssueDetails) - The `frame` in the properties had `name` _updated_. The `reason` in the properties had `name` _updated_. The `reason` in the properties had `$ref` _updated_. The properties's `optional` _added_. The properties's `reason` _added_.
+
+
 ## Roll protocol to r792906
 ###### _2020-07-29 15:16:14_ | Diff: [158ed24...f67ba47](https://github.com/ChromeDevTools/devtools-protocol/compare/158ed24...f67ba47)
 #### `Overlay`: new commands

@@ -10466,6 +10466,13 @@ export namespace Protocol {
              */
             urlFragment?: string;
             /**
+             * Frame document's registered domain, taking the public suffixes list into account.
+             * Extracted from the Frame's url.
+             * Example URLs: http://www.google.com/file.html -> "google.com"
+             *               http://a.b.co.uk/file.html      -> "b.co.uk"
+             */
+            domainAndRegistry: string;
+            /**
              * Frame document's security origin.
              */
             securityOrigin: string;

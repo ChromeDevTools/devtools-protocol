@@ -12257,6 +12257,12 @@
                             "type": "string"
                         },
                         {
+                            "name": "domainAndRegistry",
+                            "description": "Frame document's registered domain, taking the public suffixes list into account.\nExtracted from the Frame's url.\nExample URLs: http://www.google.com/file.html -> \"google.com\"\n              http://a.b.co.uk/file.html      -> \"b.co.uk\"",
+                            "experimental": true,
+                            "type": "string"
+                        },
+                        {
                             "name": "securityOrigin",
                             "description": "Frame document's security origin.",
                             "type": "string"
