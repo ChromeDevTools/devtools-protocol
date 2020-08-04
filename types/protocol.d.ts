@@ -4322,6 +4322,17 @@ export namespace Protocol {
             text: string;
         }
 
+        export interface TrackComputedStyleUpdatesRequest {
+            propertiesToTrack: CSSComputedStyleProperty[];
+        }
+
+        export interface TakeComputedStyleUpdatesResponse {
+            /**
+             * The list of node Ids that have their tracked computed styles updated
+             */
+            nodeIds: DOM.NodeId[];
+        }
+
         export interface SetEffectivePropertyValueForNodeRequest {
             /**
              * The element id for which to set property.

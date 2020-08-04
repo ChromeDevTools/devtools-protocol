@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r794453
+###### _2020-08-04 03:16:08_ | Diff: [efe2c1f...6dad424](https://github.com/ChromeDevTools/devtools-protocol/compare/efe2c1f...6dad424)
+#### `Overlay`: modified type
+* [`Overlay.GridHighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-GridHighlightConfig) - The `gridBorderDash` in the properties had `type` _removed_. The `cellBorderDash` in the properties had `type` _removed_. The `rowGapColor` in the properties had `$ref` _removed_. The `rowHatchColor` in the properties had `$ref` _removed_. The `columnGapColor` in the properties had `$ref` _removed_. The `columnHatchColor` in the properties had `$ref` _removed_. The `cellBorderColor` in the properties had `description` _updated_. The `gridBorderDash` in the properties had `name` _updated_. The `gridBorderDash` in the properties had `description` _updated_. The `cellBorderDash` in the properties had `name` _updated_. The `cellBorderDash` in the properties had `description` _updated_. The `rowGapColor` in the properties had `name` _updated_. The `rowGapColor` in the properties had `description` _updated_. The `rowHatchColor` in the properties had `name` _updated_. The `rowHatchColor` in the properties had `description` _updated_. The `columnGapColor` in the properties had `name` _updated_. The `columnGapColor` in the properties had `description` _updated_. The `columnHatchColor` in the properties had `name` _updated_. The `columnHatchColor` in the properties had `description` _updated_. The `areaBorderColor` in the properties had `name` _updated_. The `areaBorderColor` in the properties had `description` _updated_. The properties's `deprecated` _added_ (2 times). The properties's `$ref` _added_ (2 times). The properties's `type` _added_ (4 times). The properties's `rowHatchColor` _added_. The properties's `columnGapColor` _added_. The properties's `columnHatchColor` _added_. The properties's `areaBorderColor` _added_.
+
+
 ## Roll protocol to r794398
 ###### _2020-08-03 22:16:06_ | Diff: [979117d...efe2c1f](https://github.com/ChromeDevTools/devtools-protocol/compare/979117d...efe2c1f)
 #### `Page`: modified type
