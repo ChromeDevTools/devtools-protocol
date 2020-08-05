@@ -15740,6 +15740,12 @@
                             "$ref": "TargetID"
                         },
                         {
+                            "name": "canAccessOpener",
+                            "description": "Whether the opened window has access to the originating window.",
+                            "experimental": true,
+                            "type": "boolean"
+                        },
+                        {
                             "name": "browserContextId",
                             "experimental": true,
                             "optional": true,

@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r794659
+###### _2020-08-04 12:16:29_ | Diff: [92769fe...9f93887](https://github.com/ChromeDevTools/devtools-protocol/compare/92769fe...9f93887)
+#### `Debugger`: modified commands
+* [`Debugger.stepInto`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-stepInto) - The parameters's `skipList` _added_.
+* [`Debugger.stepOver`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-stepOver)
+#### `Debugger`: new type
+* [`Debugger.LocationRange`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#type-LocationRange)
+
+
 ## Roll protocol to r794596
 ###### _2020-08-04 10:16:13_ | Diff: [8f538a9...92769fe](https://github.com/ChromeDevTools/devtools-protocol/compare/8f538a9...92769fe)
 #### `Audits`: modified type

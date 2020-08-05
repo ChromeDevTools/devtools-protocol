@@ -12724,6 +12724,10 @@ export namespace Protocol {
              * Opener target Id
              */
             openerId?: TargetID;
+            /**
+             * Whether the opened window has access to the originating window.
+             */
+            canAccessOpener: boolean;
             browserContextId?: Browser.BrowserContextID;
         }
 
