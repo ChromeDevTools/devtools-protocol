@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r795004
+###### _2020-08-05 07:16:20_ | Diff: [9f93887...40517aa](https://github.com/ChromeDevTools/devtools-protocol/compare/9f93887...40517aa)
+#### `Target`: modified type
+* [`Target.TargetInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#type-TargetInfo) - The `browserContextId` in the properties had `optional` _removed_. The `browserContextId` in the properties had `$ref` _removed_. The `browserContextId` in the properties had `name` _updated_. The properties's `description` _added_. The properties's `type` _added_. The properties's `browserContextId` _added_.
+
+
 ## Roll protocol to r794659
 ###### _2020-08-04 12:16:29_ | Diff: [92769fe...9f93887](https://github.com/ChromeDevTools/devtools-protocol/compare/92769fe...9f93887)
 #### `Debugger`: modified commands

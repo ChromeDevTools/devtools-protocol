@@ -1810,6 +1810,8 @@ export namespace ProtocolMapping {
         };
         /**
          * Returns the root DOM node (and optionally the subtree) to the caller.
+         * Deprecated, as it is not designed to work well with the rest of the DOM agent.
+         * Use DOMSnapshot.captureSnapshot instead.
          */
         'DOM.getFlattenedDocument': {
             paramsType: [Protocol.DOM.GetFlattenedDocumentRequest?];
