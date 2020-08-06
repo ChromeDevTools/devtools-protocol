@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r795133
+###### _2020-08-05 12:16:31_ | Diff: [40517aa...c89b1a6](https://github.com/ChromeDevTools/devtools-protocol/compare/40517aa...c89b1a6)
+#### `DOM`: modified command
+* [`DOM.getFlattenedDocument`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getFlattenedDocument) - `description` updated. `deprecated` added.
+
+
 ## Roll protocol to r795004
 ###### _2020-08-05 07:16:20_ | Diff: [9f93887...40517aa](https://github.com/ChromeDevTools/devtools-protocol/compare/9f93887...40517aa)
 #### `Target`: modified type
