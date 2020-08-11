@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r795450
+###### _2020-08-06 07:16:06_ | Diff: [c89b1a6...6b171b5](https://github.com/ChromeDevTools/devtools-protocol/compare/c89b1a6...6b171b5)
+#### `Audits`: modified type
+* [`Audits.ContentSecurityPolicyIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-ContentSecurityPolicyIssueDetails) - The `violatingNodeId` in the properties had `type` _removed_. The properties's `$ref` _added_.
+
+
 ## Roll protocol to r795133
 ###### _2020-08-05 12:16:31_ | Diff: [40517aa...c89b1a6](https://github.com/ChromeDevTools/devtools-protocol/compare/40517aa...c89b1a6)
 #### `DOM`: modified command

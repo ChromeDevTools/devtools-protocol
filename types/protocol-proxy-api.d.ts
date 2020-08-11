@@ -1192,6 +1192,11 @@ export namespace ProtocolProxyApi {
         getFlattenedDocument(params: Protocol.DOM.GetFlattenedDocumentRequest): Promise<Protocol.DOM.GetFlattenedDocumentResponse>;
 
         /**
+         * Finds nodes with a given computed style in a subtree.
+         */
+        getNodesForSubtreeByStyle(params: Protocol.DOM.GetNodesForSubtreeByStyleRequest): Promise<Protocol.DOM.GetNodesForSubtreeByStyleResponse>;
+
+        /**
          * Returns node id at given location. Depending on whether DOM domain is enabled, nodeId is
          * either returned or not.
          */

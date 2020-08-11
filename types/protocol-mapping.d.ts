@@ -1818,6 +1818,13 @@ export namespace ProtocolMapping {
             returnType: Protocol.DOM.GetFlattenedDocumentResponse;
         };
         /**
+         * Finds nodes with a given computed style in a subtree.
+         */
+        'DOM.getNodesForSubtreeByStyle': {
+            paramsType: [Protocol.DOM.GetNodesForSubtreeByStyleRequest];
+            returnType: Protocol.DOM.GetNodesForSubtreeByStyleResponse;
+        };
+        /**
          * Returns node id at given location. Depending on whether DOM domain is enabled, nodeId is
          * either returned or not.
          */
