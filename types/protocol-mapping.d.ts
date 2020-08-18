@@ -2952,6 +2952,13 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Returns information about the COEP/COOP isolation status.
+         */
+        'Network.getSecurityIsolationStatus': {
+            paramsType: [Protocol.Network.GetSecurityIsolationStatusRequest?];
+            returnType: Protocol.Network.GetSecurityIsolationStatusResponse;
+        };
+        /**
          * Disables domain notifications.
          */
         'Overlay.disable': {

@@ -2166,6 +2166,11 @@ export namespace ProtocolProxyApi {
         setUserAgentOverride(params: Protocol.Network.SetUserAgentOverrideRequest): Promise<void>;
 
         /**
+         * Returns information about the COEP/COOP isolation status.
+         */
+        getSecurityIsolationStatus(params: Protocol.Network.GetSecurityIsolationStatusRequest): Promise<Protocol.Network.GetSecurityIsolationStatusResponse>;
+
+        /**
          * Fired when data chunk was received over the network.
          */
         on(event: 'dataReceived', listener: (params: Protocol.Network.DataReceivedEvent) => void): void;

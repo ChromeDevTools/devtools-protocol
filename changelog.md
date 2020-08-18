@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r796752
+###### _2020-08-11 02:16:15_ | Diff: [6b171b5...3c9bb33](https://github.com/ChromeDevTools/devtools-protocol/compare/6b171b5...3c9bb33)
+#### `DOM`: new command
+* [`DOM.getNodesForSubtreeByStyle`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getNodesForSubtreeByStyle)
+#### `DOM`: new type
+* [`DOM.CSSComputedStyleProperty`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-CSSComputedStyleProperty)
+
+
 ## Roll protocol to r795450
 ###### _2020-08-06 07:16:06_ | Diff: [c89b1a6...6b171b5](https://github.com/ChromeDevTools/devtools-protocol/compare/c89b1a6...6b171b5)
 #### `Audits`: modified type
