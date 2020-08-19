@@ -10548,6 +10548,16 @@ export namespace Protocol {
         export type AdFrameType = ('none' | 'child' | 'root');
 
         /**
+         * Indicates whether the frame is a secure context and why it is the case.
+         */
+        export type SecureContextType = ('Secure' | 'SecureLocalhost' | 'InsecureScheme' | 'InsecureAncestor');
+
+        /**
+         * Indicates whether the frame is cross-origin isolated and why it is the case.
+         */
+        export type CrossOriginIsolatedContextType = ('Isolated' | 'NotIsolated' | 'NotIsolatedFeatureDisabled');
+
+        /**
          * Information about the Frame on the page.
          */
         export interface Frame {
@@ -10598,6 +10608,14 @@ export namespace Protocol {
              * Indicates whether this frame was tagged as an ad.
              */
             adFrameType?: AdFrameType;
+            /**
+             * Indicates whether the main document is a secure context and explains why that is the case.
+             */
+            secureContextType: SecureContextType;
+            /**
+             * Indicates whether this is a cross origin isolated context.
+             */
+            crossOriginIsolatedContextType: CrossOriginIsolatedContextType;
         }
 
         /**

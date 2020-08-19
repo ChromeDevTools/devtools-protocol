@@ -1,5 +1,17 @@
 
 
+## Roll protocol to r799090
+###### _2020-08-18 07:16:17_ | Diff: [3c9bb33...0e651b0](https://github.com/ChromeDevTools/devtools-protocol/compare/3c9bb33...0e651b0)
+#### `Network`: new command
+* [`Network.getSecurityIsolationStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-getSecurityIsolationStatus)
+#### `Network`: new types
+* [`Network.CrossOriginOpenerPolicyValue`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CrossOriginOpenerPolicyValue)
+* [`Network.CrossOriginOpenerPolicyStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CrossOriginOpenerPolicyStatus)
+* [`Network.CrossOriginEmbedderPolicyValue`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CrossOriginEmbedderPolicyValue)
+* [`Network.CrossOriginEmbedderPolicyStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CrossOriginEmbedderPolicyStatus)
+* [`Network.SecurityIsolationStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SecurityIsolationStatus)
+
+
 ## Roll protocol to r796752
 ###### _2020-08-11 02:16:15_ | Diff: [6b171b5...3c9bb33](https://github.com/ChromeDevTools/devtools-protocol/compare/6b171b5...3c9bb33)
 #### `DOM`: new command
