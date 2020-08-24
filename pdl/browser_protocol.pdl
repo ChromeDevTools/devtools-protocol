@@ -826,8 +826,6 @@ domain Browser
       # For "push" permission, may specify userVisibleOnly.
       # Note that userVisibleOnly = true is the only currently supported type.
       optional boolean userVisibleOnly
-      # For "wake-lock" permission, must specify type as either "screen" or "system".
-      optional string type
       # For "clipboard" permission, may specify allowWithoutSanitization.
       optional boolean allowWithoutSanitization
 

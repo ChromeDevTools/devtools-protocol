@@ -3390,10 +3390,6 @@ export namespace Protocol {
              */
             userVisibleOnly?: boolean;
             /**
-             * For "wake-lock" permission, must specify type as either "screen" or "system".
-             */
-            type?: string;
-            /**
              * For "clipboard" permission, may specify allowWithoutSanitization.
              */
             allowWithoutSanitization?: boolean;

@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r799653
+###### _2020-08-19 09:16:16_ | Diff: [0e651b0...5ac7d2e](https://github.com/ChromeDevTools/devtools-protocol/compare/0e651b0...5ac7d2e)
+#### `Page`: new types
+* [`Page.SecureContextType`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-SecureContextType)
+* [`Page.CrossOriginIsolatedContextType`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-CrossOriginIsolatedContextType)
+#### `Page`: modified type
+* [`Page.Frame`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Frame) - The properties's `secureContextType` _added_. The properties's `crossOriginIsolatedContextType` _added_.
+
+
 ## Roll protocol to r799090
 ###### _2020-08-18 07:16:17_ | Diff: [3c9bb33...0e651b0](https://github.com/ChromeDevTools/devtools-protocol/compare/3c9bb33...0e651b0)
 #### `Network`: new command
