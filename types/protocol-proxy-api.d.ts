@@ -2155,6 +2155,11 @@ export namespace ProtocolProxyApi {
         setExtraHTTPHeaders(params: Protocol.Network.SetExtraHTTPHeadersRequest): Promise<void>;
 
         /**
+         * Specifies whether to sned a debug header to all outgoing requests.
+         */
+        setAttachDebugHeader(params: Protocol.Network.SetAttachDebugHeaderRequest): Promise<void>;
+
+        /**
          * Sets the requests to intercept that match the provided patterns and optionally resource types.
          * Deprecated, please use Fetch.enable instead.
          */

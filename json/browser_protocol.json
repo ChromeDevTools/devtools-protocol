@@ -11019,6 +11019,18 @@
                     ]
                 },
                 {
+                    "name": "setAttachDebugHeader",
+                    "description": "Specifies whether to sned a debug header to all outgoing requests.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "enabled",
+                            "description": "Whether to send a debug header.",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
                     "name": "setRequestInterception",
                     "description": "Sets the requests to intercept that match the provided patterns and optionally resource types.\nDeprecated, please use Fetch.enable instead.",
                     "experimental": true,

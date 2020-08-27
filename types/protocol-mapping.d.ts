@@ -2937,6 +2937,13 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Specifies whether to sned a debug header to all outgoing requests.
+         */
+        'Network.setAttachDebugHeader': {
+            paramsType: [Protocol.Network.SetAttachDebugHeaderRequest];
+            returnType: void;
+        };
+        /**
          * Sets the requests to intercept that match the provided patterns and optionally resource types.
          * Deprecated, please use Fetch.enable instead.
          */

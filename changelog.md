@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r801017
+###### _2020-08-24 09:16:09_ | Diff: [5ac7d2e...4d26309](https://github.com/ChromeDevTools/devtools-protocol/compare/5ac7d2e...4d26309)
+#### `Browser`: modified type
+* [`Browser.PermissionDescriptor`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-PermissionDescriptor) - The properties's `allowWithoutSanitization` _removed_. The `type` in the properties had `name` _updated_. The `type` in the properties had `description` _updated_. The `type` in the properties had `type` _updated_.
+
+
 ## Roll protocol to r799653
 ###### _2020-08-19 09:16:16_ | Diff: [0e651b0...5ac7d2e](https://github.com/ChromeDevTools/devtools-protocol/compare/0e651b0...5ac7d2e)
 #### `Page`: new types
