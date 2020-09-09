@@ -13705,7 +13705,7 @@ export namespace Protocol {
         }
 
         /**
-         * Protocol object for AudioListner
+         * Protocol object for AudioListener
          */
         export interface AudioListener {
             listenerId: GraphObjectId;

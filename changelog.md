@@ -1,5 +1,17 @@
 
 
+## Roll protocol to r805182
+###### _2020-09-08 19:16:15_ | Diff: [4f48bef...caa0ede](https://github.com/ChromeDevTools/devtools-protocol/compare/4f48bef...caa0ede)
+#### `Profiler`: new commands
+* [`Profiler.enableCounters`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-enableCounters)
+* [`Profiler.disableCounters`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-disableCounters)
+* [`Profiler.getCounters`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-getCounters)
+#### `Profiler`: modified command
+* [`Profiler.getRuntimeCallStats`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-getRuntimeCallStats) - The `result` in the return value had `description` _updated_. The `result` in the return value had `$ref` _updated_.
+#### `Profiler`: new type
+* [`Profiler.RuntimeCallCounterInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-RuntimeCallCounterInfo)
+
+
 ## Roll protocol to r802093
 ###### _2020-08-26 20:16:11_ | Diff: [4d26309...4f48bef](https://github.com/ChromeDevTools/devtools-protocol/compare/4d26309...4f48bef)
 #### `Network`: new command
