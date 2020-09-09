@@ -987,6 +987,27 @@ export namespace ProtocolMapping {
             returnType: Protocol.Profiler.TakeTypeProfileResponse;
         };
         /**
+         * Enable counters collection.
+         */
+        'Profiler.enableCounters': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
+         * Disable counters collection.
+         */
+        'Profiler.disableCounters': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
+         * Retrieve counters.
+         */
+        'Profiler.getCounters': {
+            paramsType: [];
+            returnType: Protocol.Profiler.GetCountersResponse;
+        };
+        /**
          * Enable run time call stats collection.
          */
         'Profiler.enableRuntimeCallStats': {

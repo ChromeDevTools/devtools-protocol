@@ -1324,6 +1324,24 @@ export namespace Protocol {
             value: integer;
         }
 
+        /**
+         * Runtime call counter information.
+         */
+        export interface RuntimeCallCounterInfo {
+            /**
+             * Counter name.
+             */
+            name: string;
+            /**
+             * Counter value.
+             */
+            value: number;
+            /**
+             * Counter time in seconds.
+             */
+            time: number;
+        }
+
         export interface GetBestEffortCoverageResponse {
             /**
              * Coverage data for the current isolate.
@@ -1385,11 +1403,18 @@ export namespace Protocol {
             result: ScriptTypeProfile[];
         }
 
-        export interface GetRuntimeCallStatsResponse {
+        export interface GetCountersResponse {
             /**
-             * Collected counter information.
+             * Collected counters information.
              */
             result: CounterInfo[];
+        }
+
+        export interface GetRuntimeCallStatsResponse {
+            /**
+             * Collected runtime call counter information.
+             */
+            result: RuntimeCallCounterInfo[];
         }
 
         export interface ConsoleProfileFinishedEvent {

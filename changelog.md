@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r802093
+###### _2020-08-26 20:16:11_ | Diff: [4d26309...4f48bef](https://github.com/ChromeDevTools/devtools-protocol/compare/4d26309...4f48bef)
+#### `Network`: new command
+* [`Network.setAttachDebugHeader`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setAttachDebugHeader)
+
+
 ## Roll protocol to r801017
 ###### _2020-08-24 09:16:09_ | Diff: [5ac7d2e...4d26309](https://github.com/ChromeDevTools/devtools-protocol/compare/5ac7d2e...4d26309)
 #### `Browser`: modified type

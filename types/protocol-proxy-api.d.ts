@@ -426,6 +426,21 @@ export namespace ProtocolProxyApi {
         takeTypeProfile(): Promise<Protocol.Profiler.TakeTypeProfileResponse>;
 
         /**
+         * Enable counters collection.
+         */
+        enableCounters(): Promise<void>;
+
+        /**
+         * Disable counters collection.
+         */
+        disableCounters(): Promise<void>;
+
+        /**
+         * Retrieve counters.
+         */
+        getCounters(): Promise<Protocol.Profiler.GetCountersResponse>;
+
+        /**
          * Enable run time call stats collection.
          */
         enableRuntimeCallStats(): Promise<void>;
