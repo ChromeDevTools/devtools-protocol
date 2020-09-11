@@ -3783,10 +3783,14 @@ export namespace Protocol {
             /**
              * Whether this stylesheet is mutable. Inline stylesheets become mutable
              * after they have been modified via CSSOM API.
-             * <link> element's stylesheets are never mutable. Constructed stylesheets
-             * (new CSSStyleSheet()) are mutable immediately after creation.
+             * <link> element's stylesheets become mutable only if DevTools modifies them.
+             * Constructed stylesheets (new CSSStyleSheet()) are mutable immediately after creation.
              */
             isMutable: boolean;
+            /**
+             * Whether this stylesheet is a constructed stylesheet (created using new CSSStyleSheet()).
+             */
+            isConstructed: boolean;
             /**
              * Line offset of the stylesheet within the resource (zero based).
              */

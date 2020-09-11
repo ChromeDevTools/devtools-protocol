@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r805376
+###### _2020-09-09 10:16:20_ | Diff: [caa0ede...23323c5](https://github.com/ChromeDevTools/devtools-protocol/compare/caa0ede...23323c5)
+#### `WebAudio`: modified type
+* [`WebAudio.AudioListener`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-AudioListener) - `description` updated.
+
+
 ## Roll protocol to r805182
 ###### _2020-09-08 19:16:15_ | Diff: [4f48bef...caa0ede](https://github.com/ChromeDevTools/devtools-protocol/compare/4f48bef...caa0ede)
 #### `Profiler`: new commands
