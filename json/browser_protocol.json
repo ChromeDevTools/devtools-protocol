@@ -11804,6 +11804,12 @@
                             "description": "The named grid areas border color (Default: transparent).",
                             "optional": true,
                             "$ref": "DOM.RGBA"
+                        },
+                        {
+                            "name": "gridBackgroundColor",
+                            "description": "The grid container background color (Default: transparent).",
+                            "optional": true,
+                            "$ref": "DOM.RGBA"
                         }
                     ]
                 },

@@ -10185,6 +10185,10 @@ export namespace Protocol {
              * The named grid areas border color (Default: transparent).
              */
             areaBorderColor?: DOM.RGBA;
+            /**
+             * The grid container background color (Default: transparent).
+             */
+            gridBackgroundColor?: DOM.RGBA;
         }
 
         /**

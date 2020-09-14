@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r806105
+###### _2020-09-11 02:16:20_ | Diff: [23323c5...176b07f](https://github.com/ChromeDevTools/devtools-protocol/compare/23323c5...176b07f)
+#### `CSS`: modified type
+* [`CSS.CSSStyleSheetHeader`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSStyleSheetHeader) - The `isMutable` in the properties had `description` _updated_. The `startLine` in the properties had `name` _updated_. The `startLine` in the properties had `description` _updated_. The `startLine` in the properties had `type` _updated_. The `startColumn` in the properties had `name` _updated_. The `startColumn` in the properties had `description` _updated_. The `length` in the properties had `name` _updated_. The `length` in the properties had `description` _updated_. The `endLine` in the properties had `name` _updated_. The `endLine` in the properties had `description` _updated_. The `endColumn` in the properties had `name` _updated_. The `endColumn` in the properties had `description` _updated_. The properties's `endColumn` _added_.
+
+
 ## Roll protocol to r805376
 ###### _2020-09-09 10:16:20_ | Diff: [caa0ede...23323c5](https://github.com/ChromeDevTools/devtools-protocol/compare/caa0ede...23323c5)
 #### `WebAudio`: modified type
