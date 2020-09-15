@@ -16707,7 +16707,6 @@
         {
             "domain": "Fetch",
             "description": "A domain for letting clients substitute browser's network layer with client code.",
-            "experimental": true,
             "dependencies": [
                 "Network",
                 "IO",
@@ -16722,7 +16721,6 @@
                 {
                     "id": "RequestStage",
                     "description": "Stages of the request to handle. Request will intercept before the request is\nsent. Response will intercept after the response is received (but before response\nbody is received.",
-                    "experimental": true,
                     "type": "string",
                     "enum": [
                         "Request",
@@ -16731,7 +16729,6 @@
                 },
                 {
                     "id": "RequestPattern",
-                    "experimental": true,
                     "type": "object",
                     "properties": [
                         {
@@ -16772,7 +16769,6 @@
                 {
                     "id": "AuthChallenge",
                     "description": "Authorization challenge for HTTP status code 401 or 407.",
-                    "experimental": true,
                     "type": "object",
                     "properties": [
                         {
@@ -16805,7 +16801,6 @@
                 {
                     "id": "AuthChallengeResponse",
                     "description": "Response to an AuthChallenge.",
-                    "experimental": true,
                     "type": "object",
                     "properties": [
                         {

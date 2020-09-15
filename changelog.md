@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r806611
+###### _2020-09-14 05:16:27_ | Diff: [176b07f...2155b85](https://github.com/ChromeDevTools/devtools-protocol/compare/176b07f...2155b85)
+#### `Overlay`: modified type
+* [`Overlay.GridHighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-GridHighlightConfig) - The properties's `gridBackgroundColor` _added_.
+
+
 ## Roll protocol to r806105
 ###### _2020-09-11 02:16:20_ | Diff: [23323c5...176b07f](https://github.com/ChromeDevTools/devtools-protocol/compare/23323c5...176b07f)
 #### `CSS`: modified type
