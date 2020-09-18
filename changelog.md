@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r806843
+###### _2020-09-14 19:16:32_ | Diff: [2155b85...9e2e943](https://github.com/ChromeDevTools/devtools-protocol/compare/2155b85...9e2e943)
+#### `Fetch`: modified types
+* [`Fetch.RequestStage`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#type-RequestStage) - `experimental` removed.
+* [`Fetch.RequestPattern`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#type-RequestPattern) - `experimental` removed.
+* [`Fetch.AuthChallenge`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#type-AuthChallenge) - `experimental` removed.
+* [`Fetch.AuthChallengeResponse`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#type-AuthChallengeResponse) - `experimental` removed.
+
+
 ## Roll protocol to r806611
 ###### _2020-09-14 05:16:27_ | Diff: [176b07f...2155b85](https://github.com/ChromeDevTools/devtools-protocol/compare/176b07f...2155b85)
 #### `Overlay`: modified type

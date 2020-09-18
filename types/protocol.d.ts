@@ -9229,12 +9229,18 @@ export namespace Protocol {
 
         export interface CrossOriginOpenerPolicyStatus {
             value: CrossOriginOpenerPolicyValue;
+            reportOnlyValue: CrossOriginOpenerPolicyValue;
+            reportingEndpoint?: string;
+            reportOnlyReportingEndpoint?: string;
         }
 
         export type CrossOriginEmbedderPolicyValue = ('None' | 'RequireCorp');
 
         export interface CrossOriginEmbedderPolicyStatus {
             value: CrossOriginEmbedderPolicyValue;
+            reportOnlyValue: CrossOriginEmbedderPolicyValue;
+            reportingEndpoint?: string;
+            reportOnlyReportingEndpoint?: string;
         }
 
         export interface SecurityIsolationStatus {
