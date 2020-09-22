@@ -2670,6 +2670,37 @@ export namespace Protocol {
         export interface GetFullAXTreeResponse {
             nodes: AXNode[];
         }
+
+        export interface QueryAXTreeRequest {
+            /**
+             * Identifier of the node for the root to query.
+             */
+            nodeId?: DOM.NodeId;
+            /**
+             * Identifier of the backend node for the root to query.
+             */
+            backendNodeId?: DOM.BackendNodeId;
+            /**
+             * JavaScript object id of the node wrapper for the root to query.
+             */
+            objectId?: Runtime.RemoteObjectId;
+            /**
+             * Find nodes with this computed name.
+             */
+            accessibleName?: string;
+            /**
+             * Find nodes with this computed role.
+             */
+            role?: string;
+        }
+
+        export interface QueryAXTreeResponse {
+            /**
+             * A list of `Accessibility.AXNode` matching the specified attributes,
+             * including nodes that are ignored for accessibility.
+             */
+            nodes: AXNode[];
+        }
     }
 
     export namespace Animation {

@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r808307
+###### _2020-09-18 04:16:16_ | Diff: [9e2e943...01dd54b](https://github.com/ChromeDevTools/devtools-protocol/compare/9e2e943...01dd54b)
+#### `Network`: modified types
+* [`Network.CrossOriginOpenerPolicyStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CrossOriginOpenerPolicyStatus) - The properties's `reportOnlyValue` _added_. The properties's `reportingEndpoint` _added_. The properties's `reportOnlyReportingEndpoint` _added_.
+* [`Network.CrossOriginEmbedderPolicyStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CrossOriginEmbedderPolicyStatus) - The properties's `reportOnlyValue` _added_. The properties's `reportingEndpoint` _added_. The properties's `reportOnlyReportingEndpoint` _added_.
+
+
 ## Roll protocol to r806843
 ###### _2020-09-14 19:16:32_ | Diff: [2155b85...9e2e943](https://github.com/ChromeDevTools/devtools-protocol/compare/2155b85...9e2e943)
 #### `Fetch`: modified types
