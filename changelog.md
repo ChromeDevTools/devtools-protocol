@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r809251
+###### _2020-09-22 02:16:18_ | Diff: [01dd54b...ea0b910](https://github.com/ChromeDevTools/devtools-protocol/compare/01dd54b...ea0b910)
+#### `Accessibility`: new command
+* [`Accessibility.queryAXTree`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#method-queryAXTree)
+
+
 ## Roll protocol to r808307
 ###### _2020-09-18 04:16:16_ | Diff: [9e2e943...01dd54b](https://github.com/ChromeDevTools/devtools-protocol/compare/9e2e943...01dd54b)
 #### `Network`: modified types

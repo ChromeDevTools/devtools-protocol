@@ -2200,6 +2200,11 @@ export namespace ProtocolProxyApi {
         getSecurityIsolationStatus(params: Protocol.Network.GetSecurityIsolationStatusRequest): Promise<Protocol.Network.GetSecurityIsolationStatusResponse>;
 
         /**
+         * Fetches the resource and returns the content.
+         */
+        loadNetworkResource(params: Protocol.Network.LoadNetworkResourceRequest): Promise<Protocol.Network.LoadNetworkResourceResponse>;
+
+        /**
          * Fired when data chunk was received over the network.
          */
         on(event: 'dataReceived', listener: (params: Protocol.Network.DataReceivedEvent) => void): void;

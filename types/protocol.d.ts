@@ -9279,6 +9279,36 @@ export namespace Protocol {
             coep: CrossOriginEmbedderPolicyStatus;
         }
 
+        /**
+         * An object providing the result of a network resource load.
+         */
+        export interface LoadNetworkResourcePageResult {
+            success: boolean;
+            /**
+             * Optional values used for error reporting.
+             */
+            netError?: number;
+            netErrorName?: string;
+            httpStatusCode?: number;
+            /**
+             * If successful, one of the following two fields holds the result.
+             */
+            stream?: IO.StreamHandle;
+            /**
+             * Response headers.
+             */
+            headers?: Network.Headers;
+        }
+
+        /**
+         * An options object that may be extended later to better support CORS,
+         * CORB and streaming.
+         */
+        export interface LoadNetworkResourceOptions {
+            disableCache: boolean;
+            includeCredentials: boolean;
+        }
+
         export interface CanClearBrowserCacheResponse {
             /**
              * True if browser cache can be cleared.
@@ -9661,6 +9691,25 @@ export namespace Protocol {
 
         export interface GetSecurityIsolationStatusResponse {
             status: SecurityIsolationStatus;
+        }
+
+        export interface LoadNetworkResourceRequest {
+            /**
+             * Frame id to get the resource for.
+             */
+            frameId: Page.FrameId;
+            /**
+             * URL of the resource to get content for.
+             */
+            url: string;
+            /**
+             * Options for the request.
+             */
+            options: LoadNetworkResourceOptions;
+        }
+
+        export interface LoadNetworkResourceResponse {
+            resource: LoadNetworkResourcePageResult;
         }
 
         /**
