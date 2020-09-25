@@ -11107,7 +11107,8 @@
                     "returns": [
                         {
                             "name": "success",
-                            "description": "True if successfully set cookie.",
+                            "description": "Always set to true. If an error occurs, the response indicates protocol error.",
+                            "deprecated": true,
                             "type": "boolean"
                         }
                     ]
@@ -16167,6 +16168,8 @@
                     "returns": [
                         {
                             "name": "success",
+                            "description": "Always set to true. If an error occurs, the response indicates protocol error.",
+                            "deprecated": true,
                             "type": "boolean"
                         }
                     ]

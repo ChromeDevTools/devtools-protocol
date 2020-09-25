@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r810188
+###### _2020-09-24 07:16:32_ | Diff: [ea0b910...362b549](https://github.com/ChromeDevTools/devtools-protocol/compare/ea0b910...362b549)
+#### `Network`: new command
+* [`Network.loadNetworkResource`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-loadNetworkResource)
+#### `Network`: new types
+* [`Network.LoadNetworkResourcePageResult`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-LoadNetworkResourcePageResult)
+* [`Network.LoadNetworkResourceOptions`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-LoadNetworkResourceOptions)
+
+
 ## Roll protocol to r809251
 ###### _2020-09-22 02:16:18_ | Diff: [01dd54b...ea0b910](https://github.com/ChromeDevTools/devtools-protocol/compare/01dd54b...ea0b910)
 #### `Accessibility`: new command

@@ -9618,7 +9618,7 @@ export namespace Protocol {
 
         export interface SetCookieResponse {
             /**
-             * True if successfully set cookie.
+             * Always set to true. If an error occurs, the response indicates protocol error.
              */
             success: boolean;
         }
@@ -12971,6 +12971,9 @@ export namespace Protocol {
         }
 
         export interface CloseTargetResponse {
+            /**
+             * Always set to true. If an error occurs, the response indicates protocol error.
+             */
             success: boolean;
         }
 
