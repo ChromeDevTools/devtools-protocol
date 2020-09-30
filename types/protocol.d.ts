@@ -12927,9 +12927,13 @@ export namespace Protocol {
              */
             openerId?: TargetID;
             /**
-             * Whether the opened window has access to the originating window.
+             * Whether the target has access to the originating window.
              */
             canAccessOpener: boolean;
+            /**
+             * Frame id of originating window (is only set if target has an opener).
+             */
+            openerFrameId?: Page.FrameId;
             browserContextId?: Browser.BrowserContextID;
         }
 

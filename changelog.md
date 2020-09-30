@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r810467
+###### _2020-09-24 21:16:27_ | Diff: [362b549...9f36776](https://github.com/ChromeDevTools/devtools-protocol/compare/362b549...9f36776)
+#### `Network`: modified command
+* [`Network.setCookie`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setCookie) - The `success` in the return value had `description` _updated_. The return value's `deprecated` _added_.
+#### `Target`: modified command
+* [`Target.closeTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-closeTarget) - The return value's `description` _added_. The return value's `deprecated` _added_.
+
+
 ## Roll protocol to r810188
 ###### _2020-09-24 07:16:32_ | Diff: [ea0b910...362b549](https://github.com/ChromeDevTools/devtools-protocol/compare/ea0b910...362b549)
 #### `Network`: new command
