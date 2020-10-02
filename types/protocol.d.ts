@@ -13983,6 +13983,12 @@ export namespace Protocol {
              */
             hasUserVerification?: boolean;
             /**
+             * If set to true, the authenticator will support the largeBlob extension.
+             * https://w3c.github.io/webauthn#largeBlob
+             * Defaults to false.
+             */
+            hasLargeBlob?: boolean;
+            /**
              * If set to true, tests of user presence will succeed immediately.
              * Otherwise, they will not be resolved. Defaults to true.
              */

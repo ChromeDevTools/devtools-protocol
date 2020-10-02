@@ -17780,6 +17780,12 @@
                             "type": "boolean"
                         },
                         {
+                            "name": "hasLargeBlob",
+                            "description": "If set to true, the authenticator will support the largeBlob extension.\nhttps://w3c.github.io/webauthn#largeBlob\nDefaults to false.",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
                             "name": "automaticPresenceSimulation",
                             "description": "If set to true, tests of user presence will succeed immediately.\nOtherwise, they will not be resolved. Defaults to true.",
                             "optional": true,

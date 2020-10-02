@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r812116
+###### _2020-09-30 09:16:20_ | Diff: [9f36776...81d36b6](https://github.com/ChromeDevTools/devtools-protocol/compare/9f36776...81d36b6)
+#### `Target`: modified type
+* [`Target.TargetInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#type-TargetInfo) - The `canAccessOpener` in the properties had `description` _updated_. The `browserContextId` in the properties had `name` _updated_. The `browserContextId` in the properties had `$ref` _updated_. The properties's `description` _added_. The properties's `browserContextId` _added_.
+
+
 ## Roll protocol to r810467
 ###### _2020-09-24 21:16:27_ | Diff: [362b549...9f36776](https://github.com/ChromeDevTools/devtools-protocol/compare/362b549...9f36776)
 #### `Network`: modified command
