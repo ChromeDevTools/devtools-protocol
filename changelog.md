@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r814141
+###### _2020-10-06 02:16:18_ | Diff: [46e9147...e736452](https://github.com/ChromeDevTools/devtools-protocol/compare/46e9147...e736452)
+#### `Network`: modified type
+* [`Network.Initiator`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Initiator) - The properties's `columnNumber` _added_.
+
+
 ## Roll protocol to r814033
 ###### _2020-10-05 18:16:13_ | Diff: [3e55bd0...46e9147](https://github.com/ChromeDevTools/devtools-protocol/compare/3e55bd0...46e9147)
 #### `Console`: new domains
