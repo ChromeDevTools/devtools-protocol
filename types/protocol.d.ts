@@ -8917,6 +8917,11 @@ export namespace Protocol {
              * module) (0-based).
              */
             lineNumber?: number;
+            /**
+             * Initiator column number, set for Parser type or for Script type (when script is importing
+             * module) (0-based).
+             */
+            columnNumber?: number;
         }
 
         /**
