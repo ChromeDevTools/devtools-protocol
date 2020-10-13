@@ -10136,7 +10136,10 @@
                         "OverwriteSecure",
                         "InvalidDomain",
                         "InvalidPrefix",
-                        "UnknownError"
+                        "UnknownError",
+                        "SchemefulSameSiteStrict",
+                        "SchemefulSameSiteLax",
+                        "SchemefulSameSiteUnspecifiedTreatedAsLax"
                     ]
                 },
                 {
@@ -10153,7 +10156,10 @@
                         "SameSiteUnspecifiedTreatedAsLax",
                         "SameSiteNoneInsecure",
                         "UserPreferences",
-                        "UnknownError"
+                        "UnknownError",
+                        "SchemefulSameSiteStrict",
+                        "SchemefulSameSiteLax",
+                        "SchemefulSameSiteUnspecifiedTreatedAsLax"
                     ]
                 },
                 {

@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r816501
+###### _2020-10-13 03:16:04_ | Diff: [b72ea89...d268e57](https://github.com/ChromeDevTools/devtools-protocol/compare/b72ea89...d268e57)
+#### `Browser`: modified types
+* [`Browser.PermissionType`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-PermissionType) - The enum's `idleDetection` _updated_. The enum's `wakeLockScreen` _updated_. The enum's `wakeLockSystem` _updated_. The enum's `wakeLockSystem` _added_.
+* [`Browser.PermissionDescriptor`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-PermissionDescriptor) - The properties's `panTiltZoom` _added_.
+
+
 ## Roll protocol to r815575
 ###### _2020-10-09 05:16:03_ | Diff: [5c44cf2...b72ea89](https://github.com/ChromeDevTools/devtools-protocol/compare/5c44cf2...b72ea89)
 #### `Network`: new types
