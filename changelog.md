@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r815575
+###### _2020-10-09 05:16:03_ | Diff: [5c44cf2...b72ea89](https://github.com/ChromeDevTools/devtools-protocol/compare/5c44cf2...b72ea89)
+#### `Network`: new types
+* [`Network.TrustTokenParams`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-TrustTokenParams)
+* [`Network.TrustTokenOperationType`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-TrustTokenOperationType)
+#### `Network`: modified type
+* [`Network.Request`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Request) - The properties's `trustTokenParams` _added_.
+
+
 ## Roll protocol to r814213
 ###### _2020-10-06 08:18:01_ | Diff: [f99d711...5c44cf2](https://github.com/ChromeDevTools/devtools-protocol/compare/f99d711...5c44cf2)
 #### `Console`: new domains

@@ -3422,7 +3422,7 @@ export namespace Protocol {
             windowState?: WindowState;
         }
 
-        export type PermissionType = ('accessibilityEvents' | 'audioCapture' | 'backgroundSync' | 'backgroundFetch' | 'clipboardReadWrite' | 'clipboardSanitizedWrite' | 'durableStorage' | 'flash' | 'geolocation' | 'midi' | 'midiSysex' | 'nfc' | 'notifications' | 'paymentHandler' | 'periodicBackgroundSync' | 'protectedMediaIdentifier' | 'sensors' | 'videoCapture' | 'idleDetection' | 'wakeLockScreen' | 'wakeLockSystem');
+        export type PermissionType = ('accessibilityEvents' | 'audioCapture' | 'backgroundSync' | 'backgroundFetch' | 'clipboardReadWrite' | 'clipboardSanitizedWrite' | 'durableStorage' | 'flash' | 'geolocation' | 'midi' | 'midiSysex' | 'nfc' | 'notifications' | 'paymentHandler' | 'periodicBackgroundSync' | 'protectedMediaIdentifier' | 'sensors' | 'videoCapture' | 'videoCapturePanTiltZoom' | 'idleDetection' | 'wakeLockScreen' | 'wakeLockSystem');
 
         export type PermissionSetting = ('granted' | 'denied' | 'prompt');
 
@@ -3449,6 +3449,10 @@ export namespace Protocol {
              * For "clipboard" permission, may specify allowWithoutSanitization.
              */
             allowWithoutSanitization?: boolean;
+            /**
+             * For "camera" permission, may specify panTiltZoom.
+             */
+            panTiltZoom?: boolean;
         }
 
         /**
