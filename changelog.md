@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r816699
+###### _2020-10-13 12:16:04_ | Diff: [d268e57...f72d9f7](https://github.com/ChromeDevTools/devtools-protocol/compare/d268e57...f72d9f7)
+#### `Network`: modified types
+* [`Network.SetCookieBlockedReason`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SetCookieBlockedReason) - The enum's `SchemefulSameSiteStrict` _added_. The enum's `SchemefulSameSiteLax` _added_. The enum's `SchemefulSameSiteUnspecifiedTreatedAsLax` _added_.
+* [`Network.CookieBlockedReason`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CookieBlockedReason) - The enum's `SchemefulSameSiteStrict` _added_. The enum's `SchemefulSameSiteLax` _added_. The enum's `SchemefulSameSiteUnspecifiedTreatedAsLax` _added_.
+
+
 ## Roll protocol to r816501
 ###### _2020-10-13 03:16:04_ | Diff: [b72ea89...d268e57](https://github.com/ChromeDevTools/devtools-protocol/compare/b72ea89...d268e57)
 #### `Browser`: modified types

@@ -2976,6 +2976,11 @@ export namespace ProtocolProxyApi {
         getUsageAndQuota(params: Protocol.Storage.GetUsageAndQuotaRequest): Promise<Protocol.Storage.GetUsageAndQuotaResponse>;
 
         /**
+         * Override quota for the specified origin
+         */
+        overrideQuotaForOrigin(params: Protocol.Storage.OverrideQuotaForOriginRequest): Promise<void>;
+
+        /**
          * Registers origin to be notified when an update occurs to its cache storage list.
          */
         trackCacheStorageForOrigin(params: Protocol.Storage.TrackCacheStorageForOriginRequest): Promise<void>;

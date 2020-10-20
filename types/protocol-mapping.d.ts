@@ -3698,6 +3698,13 @@ export namespace ProtocolMapping {
             returnType: Protocol.Storage.GetUsageAndQuotaResponse;
         };
         /**
+         * Override quota for the specified origin
+         */
+        'Storage.overrideQuotaForOrigin': {
+            paramsType: [Protocol.Storage.OverrideQuotaForOriginRequest];
+            returnType: void;
+        };
+        /**
          * Registers origin to be notified when an update occurs to its cache storage list.
          */
         'Storage.trackCacheStorageForOrigin': {
