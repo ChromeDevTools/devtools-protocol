@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r818844
+###### _2020-10-20 03:15:54_ | Diff: [e1b8740...1feb204](https://github.com/ChromeDevTools/devtools-protocol/compare/e1b8740...1feb204)
+#### `Audits`: modified type
+* [`Audits.ContentSecurityPolicyIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-ContentSecurityPolicyIssueDetails) - The `contentSecurityPolicyViolationType` in the properties had `$ref` _removed_. The `frameAncestor` in the properties had `optional` _removed_. The `contentSecurityPolicyViolationType` in the properties had `name` _updated_. The `frameAncestor` in the properties had `name` _updated_. The `frameAncestor` in the properties had `$ref` _updated_. The `sourceCodeLocation` in the properties had `name` _updated_. The `sourceCodeLocation` in the properties had `$ref` _updated_. The `violatingNodeId` in the properties had `name` _updated_. The `violatingNodeId` in the properties had `$ref` _updated_. The properties's `type` _added_. The properties's `violatingNodeId` _added_.
+
+
 ## Roll protocol to r818814
 ###### _2020-10-20 00:15:59_ | Diff: [f72d9f7...e1b8740](https://github.com/ChromeDevTools/devtools-protocol/compare/f72d9f7...e1b8740)
 #### `Storage`: new command

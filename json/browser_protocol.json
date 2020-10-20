@@ -3762,6 +3762,7 @@
                         "marker",
                         "backdrop",
                         "selection",
+                        "target-text",
                         "first-line-inherited",
                         "scrollbar",
                         "scrollbar-thumb",
