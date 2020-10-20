@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r818814
+###### _2020-10-20 00:15:59_ | Diff: [f72d9f7...e1b8740](https://github.com/ChromeDevTools/devtools-protocol/compare/f72d9f7...e1b8740)
+#### `Storage`: new command
+* [`Storage.overrideQuotaForOrigin`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#method-overrideQuotaForOrigin)
+#### `Storage`: modified command
+* [`Storage.getUsageAndQuota`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#method-getUsageAndQuota) - The `usageBreakdown` in the return value had `items` _removed_. The `usageBreakdown` in the return value had `name` _updated_. The `usageBreakdown` in the return value had `description` _updated_. The `usageBreakdown` in the return value had `type` _updated_. The return value's `usageBreakdown` _added_.
+
+
 ## Roll protocol to r816699
 ###### _2020-10-13 12:16:04_ | Diff: [d268e57...f72d9f7](https://github.com/ChromeDevTools/devtools-protocol/compare/d268e57...f72d9f7)
 #### `Network`: modified types
