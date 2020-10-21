@@ -17839,6 +17839,14 @@
                     ]
                 },
                 {
+                    "id": "Ctap2Version",
+                    "type": "string",
+                    "enum": [
+                        "ctap2_0",
+                        "ctap2_1"
+                    ]
+                },
+                {
                     "id": "AuthenticatorTransport",
                     "type": "string",
                     "enum": [
@@ -17856,6 +17864,12 @@
                         {
                             "name": "protocol",
                             "$ref": "AuthenticatorProtocol"
+                        },
+                        {
+                            "name": "ctap2Version",
+                            "description": "Defaults to ctap2_0. Ignored if |protocol| == u2f.",
+                            "optional": true,
+                            "$ref": "Ctap2Version"
                         },
                         {
                             "name": "transport",
@@ -17926,6 +17940,12 @@
                             "name": "signCount",
                             "description": "Signature counter. This is incremented by one for each successful\nassertion.\nSee https://w3c.github.io/webauthn/#signature-counter",
                             "type": "integer"
+                        },
+                        {
+                            "name": "largeBlob",
+                            "description": "The large blob associated with the credential.\nSee https://w3c.github.io/webauthn/#sctn-large-blob-extension",
+                            "optional": true,
+                            "type": "string"
                         }
                     ]
                 }

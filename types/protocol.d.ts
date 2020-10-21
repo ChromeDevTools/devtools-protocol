@@ -14030,10 +14030,16 @@ export namespace Protocol {
 
         export type AuthenticatorProtocol = ('u2f' | 'ctap2');
 
+        export type Ctap2Version = ('ctap2_0' | 'ctap2_1');
+
         export type AuthenticatorTransport = ('usb' | 'nfc' | 'ble' | 'cable' | 'internal');
 
         export interface VirtualAuthenticatorOptions {
             protocol: AuthenticatorProtocol;
+            /**
+             * Defaults to ctap2_0. Ignored if |protocol| == u2f.
+             */
+            ctap2Version?: Ctap2Version;
             transport: AuthenticatorTransport;
             /**
              * Defaults to false.
@@ -14084,6 +14090,11 @@ export namespace Protocol {
              * See https://w3c.github.io/webauthn/#signature-counter
              */
             signCount: integer;
+            /**
+             * The large blob associated with the credential.
+             * See https://w3c.github.io/webauthn/#sctn-large-blob-extension
+             */
+            largeBlob?: string;
         }
 
         export interface AddVirtualAuthenticatorRequest {

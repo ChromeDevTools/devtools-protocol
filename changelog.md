@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r818974
+###### _2020-10-20 10:16:05_ | Diff: [1feb204...89f0fa5](https://github.com/ChromeDevTools/devtools-protocol/compare/1feb204...89f0fa5)
+#### `DOM`: modified type
+* [`DOM.PseudoType`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-PseudoType) - The enum's `first-line-inherited` _updated_. The enum's `scrollbar` _updated_. The enum's `scrollbar-thumb` _updated_. The enum's `scrollbar-button` _updated_. The enum's `scrollbar-track` _updated_. The enum's `scrollbar-track-piece` _updated_. The enum's `scrollbar-corner` _updated_. The enum's `resizer` _updated_. The enum's `input-list-button` _updated_. The enum's `input-list-button` _added_.
+
+
 ## Roll protocol to r818844
 ###### _2020-10-20 03:15:54_ | Diff: [e1b8740...1feb204](https://github.com/ChromeDevTools/devtools-protocol/compare/e1b8740...1feb204)
 #### `Audits`: modified type
