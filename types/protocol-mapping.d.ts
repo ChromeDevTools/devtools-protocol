@@ -1491,6 +1491,13 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Invoke custom browser commands used by telemetry.
+         */
+        'Browser.executeBrowserCommand': {
+            paramsType: [Protocol.Browser.ExecuteBrowserCommandRequest];
+            returnType: void;
+        };
+        /**
          * Inserts a new rule with the given `ruleText` in a stylesheet with given `styleSheetId`, at the
          * position specified by `location`.
          */

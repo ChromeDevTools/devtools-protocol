@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r820081
+###### _2020-10-22 18:16:08_ | Diff: [109271e...d0179ab](https://github.com/ChromeDevTools/devtools-protocol/compare/109271e...d0179ab)
+#### `Input`: modified command
+* [`Input.dispatchMouseEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-dispatchMouseEvent) - The `pointerType` in the parameters had `enum` _removed_. The `deltaX` in the parameters had `name` _updated_. The `deltaX` in the parameters had `description` _updated_. The `deltaY` in the parameters had `name` _updated_. The `deltaY` in the parameters had `description` _updated_. The `pointerType` in the parameters had `name` _updated_. The `pointerType` in the parameters had `description` _updated_. The `pointerType` in the parameters had `type` _updated_. The parameters's `experimental` _added_ (3 times). The parameters's `tiltY` _added_. The parameters's `twist` _added_. The parameters's `deltaX` _added_. The parameters's `deltaY` _added_. The parameters's `pointerType` _added_.
+#### `Input`: modified type
+* [`Input.TouchPoint`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#type-TouchPoint) - The `id` in the properties had `name` _updated_. The `id` in the properties had `description` _updated_. The properties's `experimental` _added_. The properties's `tiltX` _added_. The properties's `tiltY` _added_. The properties's `twist` _added_. The properties's `id` _added_.
+
+
 ## Roll protocol to r819498
 ###### _2020-10-21 13:16:11_ | Diff: [89f0fa5...109271e](https://github.com/ChromeDevTools/devtools-protocol/compare/89f0fa5...109271e)
 #### `WebAuthn`: new type

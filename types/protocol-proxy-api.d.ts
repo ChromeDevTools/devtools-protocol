@@ -901,6 +901,11 @@ export namespace ProtocolProxyApi {
          */
         setDockTile(params: Protocol.Browser.SetDockTileRequest): Promise<void>;
 
+        /**
+         * Invoke custom browser commands used by telemetry.
+         */
+        executeBrowserCommand(params: Protocol.Browser.ExecuteBrowserCommandRequest): Promise<void>;
+
     }
 
     export interface CSSApi {

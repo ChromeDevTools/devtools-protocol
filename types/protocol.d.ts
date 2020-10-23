@@ -3457,6 +3457,11 @@ export namespace Protocol {
         }
 
         /**
+         * Browser command ids used by executeBrowserCommand.
+         */
+        export type BrowserCommandId = ('openTabSearch');
+
+        /**
          * Chrome histogram bucket.
          */
         export interface Bucket {
@@ -3679,6 +3684,10 @@ export namespace Protocol {
              * Png encoded image.
              */
             image?: string;
+        }
+
+        export interface ExecuteBrowserCommandRequest {
+            commandId: BrowserCommandId;
         }
     }
 

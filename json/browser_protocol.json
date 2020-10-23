@@ -1741,6 +1741,15 @@
                     ]
                 },
                 {
+                    "id": "BrowserCommandId",
+                    "description": "Browser command ids used by executeBrowserCommand.",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "openTabSearch"
+                    ]
+                },
+                {
                     "id": "Bucket",
                     "description": "Chrome histogram bucket.",
                     "experimental": true,
@@ -2084,6 +2093,17 @@
                             "description": "Png encoded image.",
                             "optional": true,
                             "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "executeBrowserCommand",
+                    "description": "Invoke custom browser commands used by telemetry.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "commandId",
+                            "$ref": "BrowserCommandId"
                         }
                     ]
                 }
