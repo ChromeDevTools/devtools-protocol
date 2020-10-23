@@ -7523,6 +7523,22 @@ export namespace Protocol {
              */
             force?: number;
             /**
+             * The normalized tangential pressure, which has a range of [-1,1] (default: 0).
+             */
+            tangentialPressure?: number;
+            /**
+             * The plane angle between the Y-Z plane and the plane containing both the stylus axis and the Y axis, in degrees of the range [-90,90], a positive tiltX is to the right (default: 0)
+             */
+            tiltX?: integer;
+            /**
+             * The plane angle between the X-Z plane and the plane containing both the stylus axis and the X axis, in degrees of the range [-90,90], a positive tiltY is towards the user (default: 0).
+             */
+            tiltY?: integer;
+            /**
+             * The clockwise rotation of a pen stylus around its own major axis, in degrees in the range [0,359] (default: 0).
+             */
+            twist?: integer;
+            /**
              * Identifier used to track touch sources between events, must be unique within an event.
              */
             id?: number;
@@ -7669,6 +7685,26 @@ export namespace Protocol {
              * Number of times the mouse button was clicked (default: 0).
              */
             clickCount?: integer;
+            /**
+             * The normalized pressure, which has a range of [0,1] (default: 0).
+             */
+            force?: number;
+            /**
+             * The normalized tangential pressure, which has a range of [-1,1] (default: 0).
+             */
+            tangentialPressure?: number;
+            /**
+             * The plane angle between the Y-Z plane and the plane containing both the stylus axis and the Y axis, in degrees of the range [-90,90], a positive tiltX is to the right (default: 0).
+             */
+            tiltX?: integer;
+            /**
+             * The plane angle between the X-Z plane and the plane containing both the stylus axis and the X axis, in degrees of the range [-90,90], a positive tiltY is towards the user (default: 0).
+             */
+            tiltY?: integer;
+            /**
+             * The clockwise rotation of a pen stylus around its own major axis, in degrees in the range [0,359] (default: 0).
+             */
+            twist?: integer;
             /**
              * X delta in CSS pixels for mouse wheel event (default: 0).
              */

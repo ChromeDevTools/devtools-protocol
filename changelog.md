@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r819498
+###### _2020-10-21 13:16:11_ | Diff: [89f0fa5...109271e](https://github.com/ChromeDevTools/devtools-protocol/compare/89f0fa5...109271e)
+#### `WebAuthn`: new type
+* [`WebAuthn.Ctap2Version`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#type-Ctap2Version)
+#### `WebAuthn`: modified types
+* [`WebAuthn.VirtualAuthenticatorOptions`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#type-VirtualAuthenticatorOptions) - The `hasResidentKey` in the properties had `description` _removed_. The `hasResidentKey` in the properties had `optional` _removed_. The `hasResidentKey` in the properties had `type` _removed_. The `transport` in the properties had `name` _updated_. The `transport` in the properties had `$ref` _updated_. The `hasResidentKey` in the properties had `name` _updated_. The `hasUserVerification` in the properties had `name` _updated_. The `hasLargeBlob` in the properties had `name` _updated_. The `hasLargeBlob` in the properties had `description` _updated_. The `automaticPresenceSimulation` in the properties had `name` _updated_. The `automaticPresenceSimulation` in the properties had `description` _updated_. The `isUserVerified` in the properties had `name` _updated_. The `isUserVerified` in the properties had `description` _updated_. The properties's `description` _added_. The properties's `optional` _added_. The properties's `$ref` _added_. The properties's `isUserVerified` _added_.
+* [`WebAuthn.Credential`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#type-Credential) - The properties's `largeBlob` _added_.
+
+
 ## Roll protocol to r818974
 ###### _2020-10-20 10:16:05_ | Diff: [1feb204...89f0fa5](https://github.com/ChromeDevTools/devtools-protocol/compare/1feb204...89f0fa5)
 #### `DOM`: modified type
