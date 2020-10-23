@@ -2976,10 +2976,10 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
-         * Specifies whether to sned a debug header to all outgoing requests.
+         * Specifies whether to attach a page script stack id in requests
          */
-        'Network.setAttachDebugHeader': {
-            paramsType: [Protocol.Network.SetAttachDebugHeaderRequest];
+        'Network.setAttachDebugStack': {
+            paramsType: [Protocol.Network.SetAttachDebugStackRequest];
             returnType: void;
         };
         /**

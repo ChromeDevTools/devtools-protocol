@@ -11310,13 +11310,13 @@
                     ]
                 },
                 {
-                    "name": "setAttachDebugHeader",
-                    "description": "Specifies whether to sned a debug header to all outgoing requests.",
+                    "name": "setAttachDebugStack",
+                    "description": "Specifies whether to attach a page script stack id in requests",
                     "experimental": true,
                     "parameters": [
                         {
                             "name": "enabled",
-                            "description": "Whether to send a debug header.",
+                            "description": "Whether to attach a page script stack for debugging purpose.",
                             "type": "boolean"
                         }
                     ]

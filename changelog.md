@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r820101
+###### _2020-10-22 19:16:05_ | Diff: [d0179ab...d246615](https://github.com/ChromeDevTools/devtools-protocol/compare/d0179ab...d246615)
+#### `Browser`: new command
+* [`Browser.executeBrowserCommand`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-executeBrowserCommand)
+#### `Browser`: new type
+* [`Browser.BrowserCommandId`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-BrowserCommandId)
+
+
 ## Roll protocol to r820081
 ###### _2020-10-22 18:16:08_ | Diff: [109271e...d0179ab](https://github.com/ChromeDevTools/devtools-protocol/compare/109271e...d0179ab)
 #### `Input`: modified command

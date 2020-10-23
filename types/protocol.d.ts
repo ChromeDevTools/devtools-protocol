@@ -9733,9 +9733,9 @@ export namespace Protocol {
             headers: Headers;
         }
 
-        export interface SetAttachDebugHeaderRequest {
+        export interface SetAttachDebugStackRequest {
             /**
-             * Whether to send a debug header.
+             * Whether to attach a page script stack for debugging purpose.
              */
             enabled: boolean;
         }

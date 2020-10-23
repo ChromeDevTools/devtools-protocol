@@ -2184,9 +2184,9 @@ export namespace ProtocolProxyApi {
         setExtraHTTPHeaders(params: Protocol.Network.SetExtraHTTPHeadersRequest): Promise<void>;
 
         /**
-         * Specifies whether to sned a debug header to all outgoing requests.
+         * Specifies whether to attach a page script stack id in requests
          */
-        setAttachDebugHeader(params: Protocol.Network.SetAttachDebugHeaderRequest): Promise<void>;
+        setAttachDebugStack(params: Protocol.Network.SetAttachDebugStackRequest): Promise<void>;
 
         /**
          * Sets the requests to intercept that match the provided patterns and optionally resource types.
