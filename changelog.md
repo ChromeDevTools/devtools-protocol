@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r820307
+###### _2020-10-23 10:16:09_ | Diff: [d246615...31947f3](https://github.com/ChromeDevTools/devtools-protocol/compare/d246615...31947f3)
+#### `Network`: new command
+* [`Network.setAttachDebugStack`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setAttachDebugStack)
+#### `Network`: removed command
+* [`Network.setAttachDebugHeader`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setAttachDebugHeader)
+
+
 ## Roll protocol to r820101
 ###### _2020-10-22 19:16:05_ | Diff: [d0179ab...d246615](https://github.com/ChromeDevTools/devtools-protocol/compare/d0179ab...d246615)
 #### `Browser`: new command
