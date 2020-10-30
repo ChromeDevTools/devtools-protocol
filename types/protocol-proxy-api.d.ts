@@ -1725,6 +1725,8 @@ export namespace ProtocolProxyApi {
          */
         setVisibleSize(params: Protocol.Emulation.SetVisibleSizeRequest): Promise<void>;
 
+        setDisabledImageTypes(params: Protocol.Emulation.SetDisabledImageTypesRequest): Promise<void>;
+
         /**
          * Allows overriding user agent with the given string.
          */

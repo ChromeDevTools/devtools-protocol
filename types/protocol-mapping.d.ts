@@ -2426,6 +2426,10 @@ export namespace ProtocolMapping {
             paramsType: [Protocol.Emulation.SetVisibleSizeRequest];
             returnType: void;
         };
+        'Emulation.setDisabledImageTypes': {
+            paramsType: [Protocol.Emulation.SetDisabledImageTypesRequest];
+            returnType: void;
+        };
         /**
          * Allows overriding user agent with the given string.
          */

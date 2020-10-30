@@ -6785,6 +6785,11 @@ export namespace Protocol {
             mobile: boolean;
         }
 
+        /**
+         * Enum of image types that can be disabled.
+         */
+        export type DisabledImageType = ('avif' | 'webp');
+
         export interface CanEmulateResponse {
             /**
              * True if emulation is supported.
@@ -7042,6 +7047,13 @@ export namespace Protocol {
              * Frame height (DIP).
              */
             height: integer;
+        }
+
+        export interface SetDisabledImageTypesRequest {
+            /**
+             * Image types to disable.
+             */
+            imageTypes: DisabledImageType[];
         }
 
         export interface SetUserAgentOverrideRequest {

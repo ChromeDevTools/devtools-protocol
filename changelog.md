@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r822096
+###### _2020-10-29 03:16:12_ | Diff: [31947f3...260c66a](https://github.com/ChromeDevTools/devtools-protocol/compare/31947f3...260c66a)
+#### `Network`: modified event
+* [`Network.loadingFailed`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-loadingFailed) - The parameters's `corsErrorStatus` _added_.
+#### `Network`: new types
+* [`Network.CorsError`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CorsError)
+* [`Network.CorsErrorStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CorsErrorStatus)
+
+
 ## Roll protocol to r820307
 ###### _2020-10-23 10:16:09_ | Diff: [d246615...31947f3](https://github.com/ChromeDevTools/devtools-protocol/compare/d246615...31947f3)
 #### `Network`: new command
