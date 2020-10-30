@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r822651
+###### _2020-10-30 08:16:03_ | Diff: [260c66a...b4c97ed](https://github.com/ChromeDevTools/devtools-protocol/compare/260c66a...b4c97ed)
+#### `Emulation`: new command
+* [`Emulation.setDisabledImageTypes`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setDisabledImageTypes)
+#### `Emulation`: new type
+* [`Emulation.DisabledImageType`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#type-DisabledImageType)
+
+
 ## Roll protocol to r822096
 ###### _2020-10-29 03:16:12_ | Diff: [31947f3...260c66a](https://github.com/ChromeDevTools/devtools-protocol/compare/31947f3...260c66a)
 #### `Network`: modified event

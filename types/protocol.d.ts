@@ -13441,6 +13441,13 @@ export namespace Protocol {
          */
         export type StreamCompression = ('none' | 'gzip');
 
+        /**
+         * Details exposed when memory request explicitly declared.
+         * Keep consistent with memory_dump_request_args.h and
+         * memory_instrumentation.mojom
+         */
+        export type MemoryDumpLevelOfDetail = ('background' | 'light' | 'detailed');
+
         export interface GetCategoriesResponse {
             /**
              * A list of supported tracing categories.
@@ -13460,6 +13467,10 @@ export namespace Protocol {
              * Enables more deterministic results by forcing garbage collection
              */
             deterministic?: boolean;
+            /**
+             * Specifies level of details in memory dump. Defaults to "detailed".
+             */
+            levelOfDetail?: MemoryDumpLevelOfDetail;
         }
 
         export interface RequestMemoryDumpResponse {
