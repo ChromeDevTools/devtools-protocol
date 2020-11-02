@@ -9863,7 +9863,8 @@
                         "InvalidAllowHeadersPreflightResponse",
                         "MethodDisallowedByPreflightResponse",
                         "HeaderDisallowedByPreflightResponse",
-                        "RedirectContainsCredentials"
+                        "RedirectContainsCredentials",
+                        "InsecurePrivateNetwork"
                     ]
                 },
                 {

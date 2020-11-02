@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r822788
+###### _2020-10-30 13:16:09_ | Diff: [b4c97ed...fcb68d1](https://github.com/ChromeDevTools/devtools-protocol/compare/b4c97ed...fcb68d1)
+#### `Tracing`: modified command
+* [`Tracing.requestMemoryDump`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#method-requestMemoryDump) - The parameters's `levelOfDetail` _added_.
+#### `Tracing`: new type
+* [`Tracing.MemoryDumpLevelOfDetail`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#type-MemoryDumpLevelOfDetail)
+
+
 ## Roll protocol to r822651
 ###### _2020-10-30 08:16:03_ | Diff: [260c66a...b4c97ed](https://github.com/ChromeDevTools/devtools-protocol/compare/260c66a...b4c97ed)
 #### `Emulation`: new command
