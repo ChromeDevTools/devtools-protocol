@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r823269
+###### _2020-11-02 12:16:02 -0800_ | Diff: [fcb68d1...3f62bad](https://github.com/ChromeDevTools/devtools-protocol/compare/fcb68d1...3f62bad)
+#### `Network`: modified type
+* [`Network.CorsError`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CorsError) - The enum's `InsecurePrivateNetwork` _added_.
+
+
 ## Roll protocol to r822788
 ###### _2020-10-30 13:16:09_ | Diff: [b4c97ed...fcb68d1](https://github.com/ChromeDevTools/devtools-protocol/compare/b4c97ed...fcb68d1)
 #### `Tracing`: modified command

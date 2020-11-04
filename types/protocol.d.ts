@@ -10790,6 +10790,8 @@ export namespace Protocol {
          */
         export type CrossOriginIsolatedContextType = ('Isolated' | 'NotIsolated' | 'NotIsolatedFeatureDisabled');
 
+        export type GatedAPIFeatures = ('SharedArrayBuffers' | 'SharedArrayBuffersTransferAllowed' | 'PerformanceMeasureMemory' | 'PerformanceProfile');
+
         /**
          * Information about the Frame on the page.
          */
@@ -10849,6 +10851,10 @@ export namespace Protocol {
              * Indicates whether this is a cross origin isolated context.
              */
             crossOriginIsolatedContextType: CrossOriginIsolatedContextType;
+            /**
+             * Indicated which gated APIs / features are available.
+             */
+            gatedAPIFeatures: GatedAPIFeatures[];
         }
 
         /**
