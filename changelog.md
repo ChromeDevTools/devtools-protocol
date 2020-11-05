@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r823956
+###### _2020-11-04 04:16:00 -0800_ | Diff: [3f62bad...8c7ee2c](https://github.com/ChromeDevTools/devtools-protocol/compare/3f62bad...8c7ee2c)
+#### `Page`: new type
+* [`Page.GatedAPIFeatures`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-GatedAPIFeatures)
+#### `Page`: modified type
+* [`Page.Frame`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Frame) - The properties's `gatedAPIFeatures` _added_.
+
+
 ## Roll protocol to r823269
 ###### _2020-11-02 12:16:02 -0800_ | Diff: [fcb68d1...3f62bad](https://github.com/ChromeDevTools/devtools-protocol/compare/fcb68d1...3f62bad)
 #### `Network`: modified type

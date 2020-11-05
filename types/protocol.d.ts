@@ -10389,6 +10389,35 @@ export namespace Protocol {
         }
 
         /**
+         * Configuration data for the highlighting of Flex container elements.
+         */
+        export interface FlexContainerHighlightConfig {
+            /**
+             * The style of the container border
+             */
+            containerBorder?: LineStyle;
+        }
+
+        export const enum LineStylePattern {
+            Dashed = 'dashed',
+            Dotted = 'dotted',
+        }
+
+        /**
+         * Style information for drawing a line.
+         */
+        export interface LineStyle {
+            /**
+             * The color of the line (default: transparent)
+             */
+            color?: DOM.RGBA;
+            /**
+             * The line pattern (default: solid) (LineStylePattern enum)
+             */
+            pattern?: ('dashed' | 'dotted');
+        }
+
+        /**
          * Configuration data for the highlighting of page elements.
          */
         export interface HighlightConfig {
@@ -10452,6 +10481,10 @@ export namespace Protocol {
              * The grid layout highlight configuration (default: all transparent).
              */
             gridHighlightConfig?: GridHighlightConfig;
+            /**
+             * The flex container highlight configuration (default: all transparent).
+             */
+            flexContainerHighlightConfig?: FlexContainerHighlightConfig;
         }
 
         export type ColorFormat = ('rgb' | 'hsl' | 'hex');
