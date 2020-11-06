@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r824785
+###### _2020-11-06 01:16:19 -0800_ | Diff: [7b37fcd...e944f55](https://github.com/ChromeDevTools/devtools-protocol/compare/7b37fcd...e944f55)
+#### `Network`: modified type
+* [`Network.SecurityIsolationStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SecurityIsolationStatus) - The properties's `optional` _added_ (2 times).
+
+
 ## Roll protocol to r824362
 ###### _2020-11-05 02:16:30 -0800_ | Diff: [8c7ee2c...7b37fcd](https://github.com/ChromeDevTools/devtools-protocol/compare/8c7ee2c...7b37fcd)
 #### `Overlay`: new types

@@ -1746,7 +1746,8 @@
                     "experimental": true,
                     "type": "string",
                     "enum": [
-                        "openTabSearch"
+                        "openTabSearch",
+                        "closeTabSearch"
                     ]
                 },
                 {

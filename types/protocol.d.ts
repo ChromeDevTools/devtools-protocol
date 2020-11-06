@@ -3459,7 +3459,7 @@ export namespace Protocol {
         /**
          * Browser command ids used by executeBrowserCommand.
          */
-        export type BrowserCommandId = ('openTabSearch');
+        export type BrowserCommandId = ('openTabSearch' | 'closeTabSearch');
 
         /**
          * Chrome histogram bucket.
