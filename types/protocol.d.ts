@@ -9382,8 +9382,8 @@ export namespace Protocol {
         }
 
         export interface SecurityIsolationStatus {
-            coop: CrossOriginOpenerPolicyStatus;
-            coep: CrossOriginEmbedderPolicyStatus;
+            coop?: CrossOriginOpenerPolicyStatus;
+            coep?: CrossOriginEmbedderPolicyStatus;
         }
 
         /**

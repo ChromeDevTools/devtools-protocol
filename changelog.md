@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r824362
+###### _2020-11-05 02:16:30 -0800_ | Diff: [8c7ee2c...7b37fcd](https://github.com/ChromeDevTools/devtools-protocol/compare/8c7ee2c...7b37fcd)
+#### `Overlay`: new types
+* [`Overlay.FlexContainerHighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-FlexContainerHighlightConfig)
+* [`Overlay.LineStyle`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-LineStyle)
+#### `Overlay`: modified type
+* [`Overlay.HighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-HighlightConfig) - The properties's `flexContainerHighlightConfig` _added_.
+
+
 ## Roll protocol to r823956
 ###### _2020-11-04 04:16:00 -0800_ | Diff: [3f62bad...8c7ee2c](https://github.com/ChromeDevTools/devtools-protocol/compare/3f62bad...8c7ee2c)
 #### `Page`: new type

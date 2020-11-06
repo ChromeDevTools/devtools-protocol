@@ -10778,10 +10778,12 @@
                     "properties": [
                         {
                             "name": "coop",
+                            "optional": true,
                             "$ref": "CrossOriginOpenerPolicyStatus"
                         },
                         {
                             "name": "coep",
+                            "optional": true,
                             "$ref": "CrossOriginEmbedderPolicyStatus"
                         }
                     ]
