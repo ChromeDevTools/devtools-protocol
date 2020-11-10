@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r825064
+###### _2020-11-06 14:16:27 -0800_ | Diff: [e944f55...c2862c9](https://github.com/ChromeDevTools/devtools-protocol/compare/e944f55...c2862c9)
+#### `Browser`: modified type
+* [`Browser.BrowserCommandId`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-BrowserCommandId) - The enum's `closeTabSearch` _added_.
+
+
 ## Roll protocol to r824785
 ###### _2020-11-06 01:16:19 -0800_ | Diff: [7b37fcd...e944f55](https://github.com/ChromeDevTools/devtools-protocol/compare/7b37fcd...e944f55)
 #### `Network`: modified type

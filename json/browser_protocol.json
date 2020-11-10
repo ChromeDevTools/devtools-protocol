@@ -9895,7 +9895,7 @@
                 },
                 {
                     "id": "TrustTokenParams",
-                    "description": "Determines what type of Trust Token operation is executed and\ndepending on the type, some additional parameters.",
+                    "description": "Determines what type of Trust Token operation is executed and\ndepending on the type, some additional parameters. The values\nare specified in third_party/blink/renderer/core/fetch/trust_token.idl.",
                     "experimental": true,
                     "type": "object",
                     "properties": [
@@ -9905,7 +9905,7 @@
                         },
                         {
                             "name": "refreshPolicy",
-                            "description": "Only set for \"srr-token-redemption\" type and determine whether\nto request a fresh SRR or use a still valid cached SRR.",
+                            "description": "Only set for \"token-redemption\" type and determine whether\nto request a fresh SRR or use a still valid cached SRR.",
                             "type": "string",
                             "enum": [
                                 "UseCached",

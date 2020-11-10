@@ -8792,12 +8792,13 @@ export namespace Protocol {
 
         /**
          * Determines what type of Trust Token operation is executed and
-         * depending on the type, some additional parameters.
+         * depending on the type, some additional parameters. The values
+         * are specified in third_party/blink/renderer/core/fetch/trust_token.idl.
          */
         export interface TrustTokenParams {
             type: TrustTokenOperationType;
             /**
-             * Only set for "srr-token-redemption" type and determine whether
+             * Only set for "token-redemption" type and determine whether
              * to request a fresh SRR or use a still valid cached SRR. (TrustTokenParamsRefreshPolicy enum)
              */
             refreshPolicy: ('UseCached' | 'Refresh');
