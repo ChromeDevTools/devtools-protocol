@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r825619
+###### _2020-11-09 18:16:08 -0800_ | Diff: [c2862c9...0d4d761](https://github.com/ChromeDevTools/devtools-protocol/compare/c2862c9...0d4d761)
+#### `Network`: modified type
+* [`Network.TrustTokenParams`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-TrustTokenParams) - `description` updated. The `refreshPolicy` in the properties had `description` _updated_.
+
+
 ## Roll protocol to r825064
 ###### _2020-11-06 14:16:27 -0800_ | Diff: [e944f55...c2862c9](https://github.com/ChromeDevTools/devtools-protocol/compare/e944f55...c2862c9)
 #### `Browser`: modified type

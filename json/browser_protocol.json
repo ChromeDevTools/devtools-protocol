@@ -12216,6 +12216,18 @@
                             "description": "The style of the container border",
                             "optional": true,
                             "$ref": "LineStyle"
+                        },
+                        {
+                            "name": "lineSeparator",
+                            "description": "The style of the separator between lines",
+                            "optional": true,
+                            "$ref": "LineStyle"
+                        },
+                        {
+                            "name": "itemSeparator",
+                            "description": "The style of the separator between items",
+                            "optional": true,
+                            "$ref": "LineStyle"
                         }
                     ]
                 },

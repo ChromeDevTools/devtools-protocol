@@ -10397,6 +10397,14 @@ export namespace Protocol {
              * The style of the container border
              */
             containerBorder?: LineStyle;
+            /**
+             * The style of the separator between lines
+             */
+            lineSeparator?: LineStyle;
+            /**
+             * The style of the separator between items
+             */
+            itemSeparator?: LineStyle;
         }
 
         export const enum LineStylePattern {
