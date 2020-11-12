@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r826264
+###### _2020-11-11 06:16:49 -0800_ | Diff: [0d4d761...433d00b](https://github.com/ChromeDevTools/devtools-protocol/compare/0d4d761...433d00b)
+#### `Overlay`: modified type
+* [`Overlay.FlexContainerHighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-FlexContainerHighlightConfig) - The properties's `lineSeparator` _added_. The properties's `itemSeparator` _added_.
+
+
 ## Roll protocol to r825619
 ###### _2020-11-09 18:16:08 -0800_ | Diff: [c2862c9...0d4d761](https://github.com/ChromeDevTools/devtools-protocol/compare/c2862c9...0d4d761)
 #### `Network`: modified type

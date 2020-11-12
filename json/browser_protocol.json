@@ -14634,6 +14634,15 @@
                             "name": "frameId",
                             "description": "Id of the frame that has been detached.",
                             "$ref": "FrameId"
+                        },
+                        {
+                            "name": "reason",
+                            "experimental": true,
+                            "type": "string",
+                            "enum": [
+                                "remove",
+                                "swap"
+                            ]
                         }
                     ]
                 },

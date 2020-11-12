@@ -11936,6 +11936,11 @@ export namespace Protocol {
             frameId: FrameId;
         }
 
+        export const enum FrameDetachedEventReason {
+            Remove = 'remove',
+            Swap = 'swap',
+        }
+
         /**
          * Fired when frame has been detached from its parent.
          */
@@ -11944,6 +11949,10 @@ export namespace Protocol {
              * Id of the frame that has been detached.
              */
             frameId: FrameId;
+            /**
+             *  (FrameDetachedEventReason enum)
+             */
+            reason: ('remove' | 'swap');
         }
 
         /**
