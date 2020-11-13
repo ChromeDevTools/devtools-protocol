@@ -13584,6 +13584,13 @@
                             "experimental": true,
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "captureBeyondViewport",
+                            "description": "Capture the screenshot beyond the viewport. Defaults to false.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ],
                     "returns": [

@@ -11290,6 +11290,10 @@ export namespace Protocol {
              * Capture the screenshot from the surface, rather than the view. Defaults to true.
              */
             fromSurface?: boolean;
+            /**
+             * Capture the screenshot beyond the viewport. Defaults to false.
+             */
+            captureBeyondViewport?: boolean;
         }
 
         export interface CaptureScreenshotResponse {

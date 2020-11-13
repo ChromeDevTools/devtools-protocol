@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r826646
+###### _2020-11-11 20:16:12 -0800_ | Diff: [433d00b...51e7a7e](https://github.com/ChromeDevTools/devtools-protocol/compare/433d00b...51e7a7e)
+#### `Page`: modified event
+* [`Page.frameDetached`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameDetached) - The parameters's `reason` _added_.
+
+
 ## Roll protocol to r826264
 ###### _2020-11-11 06:16:49 -0800_ | Diff: [0d4d761...433d00b](https://github.com/ChromeDevTools/devtools-protocol/compare/0d4d761...433d00b)
 #### `Overlay`: modified type
