@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r827510
+###### _2020-11-13 17:16:11 -0800_ | Diff: [7406169...6614ce6](https://github.com/ChromeDevTools/devtools-protocol/compare/7406169...6614ce6)
+#### `Page`: modified command
+* [`Page.captureScreenshot`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-captureScreenshot) - The parameters's `captureBeyondViewport` _removed_.
+
+
 ## Roll protocol to r827467
 ###### _2020-11-13 15:16:26 -0800_ | Diff: [51e7a7e...7406169](https://github.com/ChromeDevTools/devtools-protocol/compare/51e7a7e...7406169)
 #### `Page`: modified command
