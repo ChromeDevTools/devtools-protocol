@@ -2760,11 +2760,6 @@ export namespace ProtocolProxyApi {
          */
         on(event: 'frameNavigated', listener: (params: Protocol.Page.FrameNavigatedEvent) => void): void;
 
-        /**
-         * Fired when opening document to write to.
-         */
-        on(event: 'documentOpened', listener: (params: Protocol.Page.DocumentOpenedEvent) => void): void;
-
         on(event: 'frameResized', listener: () => void): void;
 
         /**

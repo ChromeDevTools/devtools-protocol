@@ -1,5 +1,21 @@
 
 
+## Roll protocol to r828217
+###### _2020-11-17 08:16:16 -0800_ | Diff: [0f382c6...4a38aba](https://github.com/ChromeDevTools/devtools-protocol/compare/0f382c6...4a38aba)
+#### `DOMDebugger`: new command
+* [`DOMDebugger.setBreakOnCSPViolation`](https://chromedevtools.github.io/devtools-protocol/tot/DOMDebugger/#method-setBreakOnCSPViolation)
+#### `DOMDebugger`: new type
+* [`DOMDebugger.CSPViolationType`](https://chromedevtools.github.io/devtools-protocol/tot/DOMDebugger/#type-CSPViolationType)
+
+
+## Roll protocol to r828143
+###### _2020-11-17 03:15:46 -0800_ | Diff: [fc3a2fd...0f382c6](https://github.com/ChromeDevTools/devtools-protocol/compare/fc3a2fd...0f382c6)
+#### `Overlay`: new command
+* [`Overlay.setShowFlexOverlays`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-setShowFlexOverlays)
+#### `Overlay`: new type
+* [`Overlay.FlexNodeHighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-FlexNodeHighlightConfig)
+
+
 ## Roll protocol to r828125
 ###### _2020-11-17 01:16:07 -0800_ | Diff: [6614ce6...fc3a2fd](https://github.com/ChromeDevTools/devtools-protocol/compare/6614ce6...fc3a2fd)
 #### `Page`: new event
