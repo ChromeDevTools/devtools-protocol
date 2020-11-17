@@ -1495,6 +1495,11 @@ export namespace ProtocolProxyApi {
         removeXHRBreakpoint(params: Protocol.DOMDebugger.RemoveXHRBreakpointRequest): Promise<void>;
 
         /**
+         * Sets breakpoint on particular CSP violations.
+         */
+        setBreakOnCSPViolation(params: Protocol.DOMDebugger.SetBreakOnCSPViolationRequest): Promise<void>;
+
+        /**
          * Sets breakpoint on particular operation with DOM.
          */
         setDOMBreakpoint(params: Protocol.DOMDebugger.SetDOMBreakpointRequest): Promise<void>;

@@ -5904,6 +5904,11 @@ export namespace Protocol {
         export type DOMBreakpointType = ('subtree-modified' | 'attribute-modified' | 'node-removed');
 
         /**
+         * CSP Violation type.
+         */
+        export type CSPViolationType = ('trustedtype-sink-violation' | 'trustedtype-policy-violation');
+
+        /**
          * Object event listener.
          */
         export interface EventListener {
@@ -6007,6 +6012,13 @@ export namespace Protocol {
              * Resource URL substring.
              */
             url: string;
+        }
+
+        export interface SetBreakOnCSPViolationRequest {
+            /**
+             * CSP Violations to stop upon.
+             */
+            violationTypes: CSPViolationType[];
         }
 
         export interface SetDOMBreakpointRequest {

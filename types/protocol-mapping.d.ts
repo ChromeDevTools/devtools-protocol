@@ -2137,6 +2137,13 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Sets breakpoint on particular CSP violations.
+         */
+        'DOMDebugger.setBreakOnCSPViolation': {
+            paramsType: [Protocol.DOMDebugger.SetBreakOnCSPViolationRequest];
+            returnType: void;
+        };
+        /**
          * Sets breakpoint on particular operation with DOM.
          */
         'DOMDebugger.setDOMBreakpoint': {
