@@ -3138,6 +3138,10 @@ export namespace ProtocolMapping {
             paramsType: [Protocol.Overlay.SetShowGridOverlaysRequest];
             returnType: void;
         };
+        'Overlay.setShowFlexOverlays': {
+            paramsType: [Protocol.Overlay.SetShowFlexOverlaysRequest];
+            returnType: void;
+        };
         /**
          * Requests that backend shows paint rectangles
          */

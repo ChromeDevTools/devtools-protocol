@@ -2401,6 +2401,8 @@ export namespace ProtocolProxyApi {
          */
         setShowGridOverlays(params: Protocol.Overlay.SetShowGridOverlaysRequest): Promise<void>;
 
+        setShowFlexOverlays(params: Protocol.Overlay.SetShowFlexOverlaysRequest): Promise<void>;
+
         /**
          * Requests that backend shows paint rectangles
          */

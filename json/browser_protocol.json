@@ -12384,6 +12384,22 @@
                     ]
                 },
                 {
+                    "id": "FlexNodeHighlightConfig",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "flexContainerHighlightConfig",
+                            "description": "A descriptor for the highlight appearance of flex containers.",
+                            "$ref": "FlexContainerHighlightConfig"
+                        },
+                        {
+                            "name": "nodeId",
+                            "description": "Identifier of the node to highlight.",
+                            "$ref": "DOM.NodeId"
+                        }
+                    ]
+                },
+                {
                     "id": "HingeConfig",
                     "description": "Configuration for dual screen hinge",
                     "type": "object",
@@ -12732,6 +12748,19 @@
                             "type": "array",
                             "items": {
                                 "$ref": "GridNodeHighlightConfig"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setShowFlexOverlays",
+                    "parameters": [
+                        {
+                            "name": "flexNodeHighlightConfigs",
+                            "description": "An array of node identifiers and descriptors for the highlight appearance.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "FlexNodeHighlightConfig"
                             }
                         }
                     ]
