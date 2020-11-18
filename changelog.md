@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r828424
+###### _2020-11-17 14:16:15 -0800_ | Diff: [4a38aba...ae1d9fd](https://github.com/ChromeDevTools/devtools-protocol/compare/4a38aba...ae1d9fd)
+#### `Page`: removed event
+* [`Page.documentOpened`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-documentOpened)
+
+
 ## Roll protocol to r828217
 ###### _2020-11-17 08:16:16 -0800_ | Diff: [0f382c6...4a38aba](https://github.com/ChromeDevTools/devtools-protocol/compare/0f382c6...4a38aba)
 #### `DOMDebugger`: new command

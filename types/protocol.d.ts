@@ -10417,6 +10417,22 @@ export namespace Protocol {
              * The style of the separator between items
              */
             itemSeparator?: LineStyle;
+            /**
+             * Style of content-distribution space on the main axis (justify-content).
+             */
+            mainDistributedSpace?: BoxStyle;
+            /**
+             * Style of content-distribution space on the cross axis (align-content).
+             */
+            crossDistributedSpace?: BoxStyle;
+            /**
+             * Style of empty space caused by row gaps (gap/row-gap).
+             */
+            rowGapSpace?: BoxStyle;
+            /**
+             * Style of empty space caused by columns gaps (gap/column-gap).
+             */
+            columnGapSpace?: BoxStyle;
         }
 
         export const enum LineStylePattern {
@@ -10436,6 +10452,20 @@ export namespace Protocol {
              * The line pattern (default: solid) (LineStylePattern enum)
              */
             pattern?: ('dashed' | 'dotted');
+        }
+
+        /**
+         * Style information for drawing a box.
+         */
+        export interface BoxStyle {
+            /**
+             * The background color for the box (default: transparent)
+             */
+            fillColor?: DOM.RGBA;
+            /**
+             * The hatching color for the box (default: transparent)
+             */
+            hatchColor?: DOM.RGBA;
         }
 
         /**
