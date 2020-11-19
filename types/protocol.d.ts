@@ -11350,10 +11350,6 @@ export namespace Protocol {
              * Capture the screenshot from the surface, rather than the view. Defaults to true.
              */
             fromSurface?: boolean;
-            /**
-             * Capture the screenshot beyond the viewport. Defaults to false.
-             */
-            captureBeyondViewport?: boolean;
         }
 
         export interface CaptureScreenshotResponse {
@@ -12023,6 +12019,16 @@ export namespace Protocol {
          * Fired once navigation of the frame has completed. Frame is now associated with the new loader.
          */
         export interface FrameNavigatedEvent {
+            /**
+             * Frame object.
+             */
+            frame: Frame;
+        }
+
+        /**
+         * Fired when opening document to write to.
+         */
+        export interface DocumentOpenedEvent {
             /**
              * Frame object.
              */

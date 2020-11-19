@@ -6314,8 +6314,6 @@ domain Page
       optional Viewport clip
       # Capture the screenshot from the surface, rather than the view. Defaults to true.
       experimental optional boolean fromSurface
-      # Capture the screenshot beyond the viewport. Defaults to false.
-      experimental optional boolean captureBeyondViewport
     returns
       # Base64-encoded image data.
       binary data
@@ -6819,6 +6817,12 @@ domain Page
 
   # Fired once navigation of the frame has completed. Frame is now associated with the new loader.
   event frameNavigated
+    parameters
+      # Frame object.
+      Frame frame
+
+  # Fired when opening document to write to.
+  experimental event documentOpened
     parameters
       # Frame object.
       Frame frame
