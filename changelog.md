@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r828856
+###### _2020-11-18 12:16:13 -0800_ | Diff: [ae1d9fd...84c2cfc](https://github.com/ChromeDevTools/devtools-protocol/compare/ae1d9fd...84c2cfc)
+#### `Overlay`: new type
+* [`Overlay.BoxStyle`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-BoxStyle)
+#### `Overlay`: modified type
+* [`Overlay.FlexContainerHighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-FlexContainerHighlightConfig) - The properties's `mainDistributedSpace` _added_. The properties's `crossDistributedSpace` _added_. The properties's `rowGapSpace` _added_. The properties's `columnGapSpace` _added_.
+
+
 ## Roll protocol to r828424
 ###### _2020-11-17 14:16:15 -0800_ | Diff: [4a38aba...ae1d9fd](https://github.com/ChromeDevTools/devtools-protocol/compare/4a38aba...ae1d9fd)
 #### `Page`: removed event
