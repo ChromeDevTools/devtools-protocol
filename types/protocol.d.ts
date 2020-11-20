@@ -9376,6 +9376,16 @@ export namespace Protocol {
             errors?: SignedExchangeError[];
         }
 
+        export type PrivateNetworkRequestPolicy = ('Allow' | 'BlockFromInsecureToMorePrivate');
+
+        export type IPAddressSpace = ('Local' | 'Private' | 'Public' | 'Unknown');
+
+        export interface ClientSecurityState {
+            initiatorIsSecureContext: boolean;
+            initiatorIPAddressSpace: IPAddressSpace;
+            privateNetworkRequestPolicy: PrivateNetworkRequestPolicy;
+        }
+
         export type CrossOriginOpenerPolicyValue = ('SameOrigin' | 'SameOriginAllowPopups' | 'UnsafeNone' | 'SameOriginPlusCoep');
 
         export interface CrossOriginOpenerPolicyStatus {
@@ -10266,6 +10276,10 @@ export namespace Protocol {
              * Raw request headers as they will be sent over the wire.
              */
             headers: Headers;
+            /**
+             * The client security state set for the request.
+             */
+            clientSecurityState?: ClientSecurityState;
         }
 
         /**
