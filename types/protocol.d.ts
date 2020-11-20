@@ -10468,6 +10468,8 @@ export namespace Protocol {
             hatchColor?: DOM.RGBA;
         }
 
+        export type ContrastAlgorithm = ('aa' | 'aaa' | 'apca');
+
         /**
          * Configuration data for the highlighting of page elements.
          */
@@ -10536,6 +10538,10 @@ export namespace Protocol {
              * The flex container highlight configuration (default: all transparent).
              */
             flexContainerHighlightConfig?: FlexContainerHighlightConfig;
+            /**
+             * The contrast algorithm to use for the contrast ratio (default: aa).
+             */
+            contrastAlgorithm?: ContrastAlgorithm;
         }
 
         export type ColorFormat = ('rgb' | 'hsl' | 'hex');

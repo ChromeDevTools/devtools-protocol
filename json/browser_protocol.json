@@ -12323,6 +12323,15 @@
                     ]
                 },
                 {
+                    "id": "ContrastAlgorithm",
+                    "type": "string",
+                    "enum": [
+                        "aa",
+                        "aaa",
+                        "apca"
+                    ]
+                },
+                {
                     "id": "HighlightConfig",
                     "description": "Configuration data for the highlighting of page elements.",
                     "type": "object",
@@ -12422,6 +12431,12 @@
                             "description": "The flex container highlight configuration (default: all transparent).",
                             "optional": true,
                             "$ref": "FlexContainerHighlightConfig"
+                        },
+                        {
+                            "name": "contrastAlgorithm",
+                            "description": "The contrast algorithm to use for the contrast ratio (default: aa).",
+                            "optional": true,
+                            "$ref": "ContrastAlgorithm"
                         }
                     ]
                 },
