@@ -1,5 +1,23 @@
 
 
+## Roll protocol to r829624
+###### _2020-11-20 04:16:20 -0800_ | Diff: [b9d4d51...e3d5a68](https://github.com/ChromeDevTools/devtools-protocol/compare/b9d4d51...e3d5a68)
+#### `Network`: modified event
+* [`Network.requestWillBeSentExtraInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestWillBeSentExtraInfo) - The parameters's `clientSecurityState` _added_.
+#### `Network`: new types
+* [`Network.PrivateNetworkRequestPolicy`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-PrivateNetworkRequestPolicy)
+* [`Network.IPAddressSpace`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-IPAddressSpace)
+* [`Network.ClientSecurityState`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ClientSecurityState)
+
+
+## Roll protocol to r829612
+###### _2020-11-20 03:16:03 -0800_ | Diff: [7507a70...b9d4d51](https://github.com/ChromeDevTools/devtools-protocol/compare/7507a70...b9d4d51)
+#### `Overlay`: new type
+* [`Overlay.ContrastAlgorithm`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-ContrastAlgorithm)
+#### `Overlay`: modified type
+* [`Overlay.HighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-HighlightConfig) - The properties's `contrastAlgorithm` _added_.
+
+
 ## Roll protocol to r829242
 ###### _2020-11-19 08:16:09 -0800_ | Diff: [2f03057...7507a70](https://github.com/ChromeDevTools/devtools-protocol/compare/2f03057...7507a70)
 #### `Page`: modified command
