@@ -8463,7 +8463,7 @@ export namespace Protocol {
         /**
          * Resource type as it was perceived by the rendering engine.
          */
-        export type ResourceType = ('Document' | 'Stylesheet' | 'Image' | 'Media' | 'Font' | 'Script' | 'TextTrack' | 'XHR' | 'Fetch' | 'EventSource' | 'WebSocket' | 'Manifest' | 'SignedExchange' | 'Ping' | 'CSPViolationReport' | 'Other');
+        export type ResourceType = ('Document' | 'Stylesheet' | 'Image' | 'Media' | 'Font' | 'Script' | 'TextTrack' | 'XHR' | 'Fetch' | 'EventSource' | 'WebSocket' | 'Manifest' | 'SignedExchange' | 'Ping' | 'CSPViolationReport' | 'Preflight' | 'Other');
 
         /**
          * Unique loader identifier.
@@ -9008,6 +9008,7 @@ export namespace Protocol {
             Script = 'script',
             Preload = 'preload',
             SignedExchange = 'SignedExchange',
+            Preflight = 'preflight',
             Other = 'other',
         }
 
@@ -9018,7 +9019,7 @@ export namespace Protocol {
             /**
              * Type of this initiator. (InitiatorType enum)
              */
-            type: ('parser' | 'script' | 'preload' | 'SignedExchange' | 'other');
+            type: ('parser' | 'script' | 'preload' | 'SignedExchange' | 'preflight' | 'other');
             /**
              * Initiator JavaScript stack trace, set for Script only.
              */
@@ -9037,6 +9038,10 @@ export namespace Protocol {
              * module) (0-based).
              */
             columnNumber?: number;
+            /**
+             * Set if another request triggered this request (e.g. preflight).
+             */
+            requestId?: RequestId;
         }
 
         /**

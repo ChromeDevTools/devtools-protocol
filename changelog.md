@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r831300
+###### _2020-11-26 02:16:17 -0800_ | Diff: [e7d16f6...4829241](https://github.com/ChromeDevTools/devtools-protocol/compare/e7d16f6...4829241)
+#### `Overlay`: modified type
+* [`Overlay.FlexContainerHighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-FlexContainerHighlightConfig) - The properties's `crossAlignment` _added_.
+
+
 ## Roll protocol to r829642
 ###### _2020-11-20 06:16:14 -0800_ | Diff: [e3d5a68...e7d16f6](https://github.com/ChromeDevTools/devtools-protocol/compare/e3d5a68...e7d16f6)
 #### `Page`: modified command

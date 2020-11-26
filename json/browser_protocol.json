@@ -9397,6 +9397,7 @@
                         "SignedExchange",
                         "Ping",
                         "CSPViolationReport",
+                        "Preflight",
                         "Other"
                     ]
                 },
@@ -10210,6 +10211,7 @@
                                 "script",
                                 "preload",
                                 "SignedExchange",
+                                "preflight",
                                 "other"
                             ]
                         },
@@ -10236,6 +10238,12 @@
                             "description": "Initiator column number, set for Parser type or for Script type (when script is importing\nmodule) (0-based).",
                             "optional": true,
                             "type": "number"
+                        },
+                        {
+                            "name": "requestId",
+                            "description": "Set if another request triggered this request (e.g. preflight).",
+                            "optional": true,
+                            "$ref": "RequestId"
                         }
                     ]
                 },
