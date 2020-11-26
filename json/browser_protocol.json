@@ -12322,6 +12322,12 @@
                             "description": "Style of empty space caused by columns gaps (gap/column-gap).",
                             "optional": true,
                             "$ref": "BoxStyle"
+                        },
+                        {
+                            "name": "crossAlignment",
+                            "description": "Style of the self-alignment line (align-items).",
+                            "optional": true,
+                            "$ref": "LineStyle"
                         }
                     ]
                 },
