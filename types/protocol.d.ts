@@ -10262,6 +10262,31 @@ export namespace Protocol {
         }
 
         /**
+         * Fired upon WebTransport creation.
+         */
+        export interface WebTransportCreatedEvent {
+            /**
+             * WebTransport identifier.
+             */
+            transportId: RequestId;
+            /**
+             * WebTransport request URL.
+             */
+            url: string;
+            /**
+             * Request initiator.
+             */
+            initiator?: Initiator;
+        }
+
+        export interface WebTransportClosedEvent {
+            /**
+             * WebTransport identifier.
+             */
+            transportId: RequestId;
+        }
+
+        /**
          * Fired when additional information about a requestWillBeSent event is available from the
          * network stack. Not every requestWillBeSent event will have an additional
          * requestWillBeSentExtraInfo fired for it, and there is no guarantee whether requestWillBeSent

@@ -12065,6 +12065,38 @@
                     ]
                 },
                 {
+                    "name": "webTransportCreated",
+                    "description": "Fired upon WebTransport creation.",
+                    "parameters": [
+                        {
+                            "name": "transportId",
+                            "description": "WebTransport identifier.",
+                            "$ref": "RequestId"
+                        },
+                        {
+                            "name": "url",
+                            "description": "WebTransport request URL.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "initiator",
+                            "description": "Request initiator.",
+                            "optional": true,
+                            "$ref": "Initiator"
+                        }
+                    ]
+                },
+                {
+                    "name": "webTransportClosed",
+                    "parameters": [
+                        {
+                            "name": "transportId",
+                            "description": "WebTransport identifier.",
+                            "$ref": "RequestId"
+                        }
+                    ]
+                },
+                {
                     "name": "requestWillBeSentExtraInfo",
                     "description": "Fired when additional information about a requestWillBeSent event is available from the\nnetwork stack. Not every requestWillBeSent event will have an additional\nrequestWillBeSentExtraInfo fired for it, and there is no guarantee whether requestWillBeSent\nor requestWillBeSentExtraInfo will be fired first for the same request.",
                     "experimental": true,

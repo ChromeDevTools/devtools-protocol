@@ -2304,6 +2304,13 @@ export namespace ProtocolProxyApi {
         on(event: 'webSocketWillSendHandshakeRequest', listener: (params: Protocol.Network.WebSocketWillSendHandshakeRequestEvent) => void): void;
 
         /**
+         * Fired upon WebTransport creation.
+         */
+        on(event: 'webTransportCreated', listener: (params: Protocol.Network.WebTransportCreatedEvent) => void): void;
+
+        on(event: 'webTransportClosed', listener: (params: Protocol.Network.WebTransportClosedEvent) => void): void;
+
+        /**
          * Fired when additional information about a requestWillBeSent event is available from the
          * network stack. Not every requestWillBeSent event will have an additional
          * requestWillBeSentExtraInfo fired for it, and there is no guarantee whether requestWillBeSent

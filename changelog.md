@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r831315
+###### _2020-11-26 04:16:14 -0800_ | Diff: [4829241...bf6d675](https://github.com/ChromeDevTools/devtools-protocol/compare/4829241...bf6d675)
+#### `Network`: modified types
+* [`Network.ResourceType`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ResourceType) - The enum's `Other` _updated_. The enum's `Other` _added_.
+* [`Network.Initiator`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Initiator) - The `type` in the properties had `other` _updated_. The `0` in the properties had `other` _added_. The properties's `requestId` _added_.
+
+
 ## Roll protocol to r831300
 ###### _2020-11-26 02:16:17 -0800_ | Diff: [e7d16f6...4829241](https://github.com/ChromeDevTools/devtools-protocol/compare/e7d16f6...4829241)
 #### `Overlay`: modified type
