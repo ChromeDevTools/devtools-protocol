@@ -2325,6 +2325,14 @@ export namespace ProtocolProxyApi {
          */
         on(event: 'responseReceivedExtraInfo', listener: (params: Protocol.Network.ResponseReceivedExtraInfoEvent) => void): void;
 
+        /**
+         * Fired exactly once for each Trust Token operation. Depending on
+         * the type of the operation and whether the operation succeeded or
+         * failed, the event is fired before the corresponding request was sent
+         * or after the response was received.
+         */
+        on(event: 'trustTokenOperationDone', listener: (params: Protocol.Network.TrustTokenOperationDoneEvent) => void): void;
+
     }
 
     export interface OverlayApi {

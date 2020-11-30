@@ -327,6 +327,13 @@ export namespace ProtocolMapping {
          */
         'Network.responseReceivedExtraInfo': [Protocol.Network.ResponseReceivedExtraInfoEvent];
         /**
+         * Fired exactly once for each Trust Token operation. Depending on
+         * the type of the operation and whether the operation succeeded or
+         * failed, the event is fired before the corresponding request was sent
+         * or after the response was received.
+         */
+        'Network.trustTokenOperationDone': [Protocol.Network.TrustTokenOperationDoneEvent];
+        /**
          * Fired when the node should be inspected. This happens after call to `setInspectMode` or when
          * user manually inspects an element.
          */

@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r831461
+###### _2020-11-26 19:16:01 -0800_ | Diff: [bf6d675...ebd3663](https://github.com/ChromeDevTools/devtools-protocol/compare/bf6d675...ebd3663)
+#### `Network`: new events
+* [`Network.webTransportCreated`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webTransportCreated)
+* [`Network.webTransportClosed`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webTransportClosed)
+
+
 ## Roll protocol to r831315
 ###### _2020-11-26 04:16:14 -0800_ | Diff: [4829241...bf6d675](https://github.com/ChromeDevTools/devtools-protocol/compare/4829241...bf6d675)
 #### `Network`: modified types
