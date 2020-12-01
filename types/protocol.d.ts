@@ -2492,7 +2492,7 @@ export namespace Protocol {
         /**
          * Enum of possible native property sources (as a subtype of a particular AXValueSourceType).
          */
-        export type AXValueNativeSourceType = ('figcaption' | 'label' | 'labelfor' | 'labelwrapped' | 'legend' | 'tablecaption' | 'title' | 'other');
+        export type AXValueNativeSourceType = ('figcaption' | 'label' | 'labelfor' | 'labelwrapped' | 'legend' | 'rubyannotation' | 'tablecaption' | 'title' | 'other');
 
         /**
          * A single source for a computed AX property.

@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r831994
+###### _2020-11-30 13:16:16 -0800_ | Diff: [ebd3663...30c0c44](https://github.com/ChromeDevTools/devtools-protocol/compare/ebd3663...30c0c44)
+#### `Network`: new event
+* [`Network.trustTokenOperationDone`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-trustTokenOperationDone)
+
+
 ## Roll protocol to r831461
 ###### _2020-11-26 19:16:01 -0800_ | Diff: [bf6d675...ebd3663](https://github.com/ChromeDevTools/devtools-protocol/compare/bf6d675...ebd3663)
 #### `Network`: new events
