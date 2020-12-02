@@ -2667,7 +2667,23 @@ export namespace Protocol {
             nodes: AXNode[];
         }
 
+        export interface GetFullAXTreeRequest {
+            /**
+             * The maximum depth at which descendants of the root node should be retrieved.
+             * If omitted, the full tree is returned.
+             */
+            max_depth?: integer;
+        }
+
         export interface GetFullAXTreeResponse {
+            nodes: AXNode[];
+        }
+
+        export interface GetChildAXNodesRequest {
+            id: AXNodeId;
+        }
+
+        export interface GetChildAXNodesResponse {
             nodes: AXNode[];
         }
 

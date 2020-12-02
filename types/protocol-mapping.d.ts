@@ -1233,11 +1233,19 @@ export namespace ProtocolMapping {
             returnType: Protocol.Accessibility.GetPartialAXTreeResponse;
         };
         /**
-         * Fetches the entire accessibility tree
+         * Fetches the entire accessibility tree for the root Document
          */
         'Accessibility.getFullAXTree': {
-            paramsType: [];
+            paramsType: [Protocol.Accessibility.GetFullAXTreeRequest?];
             returnType: Protocol.Accessibility.GetFullAXTreeResponse;
+        };
+        /**
+         * Fetches a particular accessibility node by AXNodeId.
+         * Requires `enable()` to have been called previously.
+         */
+        'Accessibility.getChildAXNodes': {
+            paramsType: [Protocol.Accessibility.GetChildAXNodesRequest];
+            returnType: Protocol.Accessibility.GetChildAXNodesResponse;
         };
         /**
          * Query a DOM node's accessibility subtree for accessible name and role.

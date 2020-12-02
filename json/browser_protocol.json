@@ -377,8 +377,36 @@
                 },
                 {
                     "name": "getFullAXTree",
-                    "description": "Fetches the entire accessibility tree",
+                    "description": "Fetches the entire accessibility tree for the root Document",
                     "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "max_depth",
+                            "description": "The maximum depth at which descendants of the root node should be retrieved.\nIf omitted, the full tree is returned.",
+                            "optional": true,
+                            "type": "integer"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "nodes",
+                            "type": "array",
+                            "items": {
+                                "$ref": "AXNode"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getChildAXNodes",
+                    "description": "Fetches a particular accessibility node by AXNodeId.\nRequires `enable()` to have been called previously.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "$ref": "AXNodeId"
+                        }
+                    ],
                     "returns": [
                         {
                             "name": "nodes",

@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r832201
+###### _2020-11-30 20:16:12 -0800_ | Diff: [30c0c44...1d63b26](https://github.com/ChromeDevTools/devtools-protocol/compare/30c0c44...1d63b26)
+#### `Accessibility`: modified type
+* [`Accessibility.AXValueNativeSourceType`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXValueNativeSourceType) - The enum's `tablecaption` _updated_. The enum's `title` _updated_. The enum's `other` _updated_. The enum's `other` _added_.
+
+
 ## Roll protocol to r831994
 ###### _2020-11-30 13:16:16 -0800_ | Diff: [ebd3663...30c0c44](https://github.com/ChromeDevTools/devtools-protocol/compare/ebd3663...30c0c44)
 #### `Network`: new event
