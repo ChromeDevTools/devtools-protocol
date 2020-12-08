@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r832784
+###### _2020-12-02 05:16:13 -0800_ | Diff: [1d63b26...9e09a22](https://github.com/ChromeDevTools/devtools-protocol/compare/1d63b26...9e09a22)
+#### `Accessibility`: new command
+* [`Accessibility.getChildAXNodes`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#method-getChildAXNodes)
+#### `Accessibility`: modified command
+* [`Accessibility.getFullAXTree`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#method-getFullAXTree) - `description` updated.
+
+
 ## Roll protocol to r832201
 ###### _2020-11-30 20:16:12 -0800_ | Diff: [30c0c44...1d63b26](https://github.com/ChromeDevTools/devtools-protocol/compare/30c0c44...1d63b26)
 #### `Accessibility`: modified type

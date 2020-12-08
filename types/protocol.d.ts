@@ -10290,6 +10290,10 @@ export namespace Protocol {
              */
             url: string;
             /**
+             * Timestamp.
+             */
+            timestamp: MonotonicTime;
+            /**
              * Request initiator.
              */
             initiator?: Initiator;
@@ -10300,6 +10304,10 @@ export namespace Protocol {
              * WebTransport identifier.
              */
             transportId: RequestId;
+            /**
+             * Timestamp.
+             */
+            timestamp: MonotonicTime;
         }
 
         /**
