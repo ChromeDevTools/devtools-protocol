@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r834467
+###### _2020-12-07 16:16:11 -0800_ | Diff: [9e09a22...53c89eb](https://github.com/ChromeDevTools/devtools-protocol/compare/9e09a22...53c89eb)
+#### `Network`: modified events
+* [`Network.webTransportCreated`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webTransportCreated) - The `initiator` in the parameters had `optional` _removed_. The `initiator` in the parameters had `name` _updated_. The `initiator` in the parameters had `description` _updated_. The `initiator` in the parameters had `$ref` _updated_. The parameters's `initiator` _added_.
+* [`Network.webTransportClosed`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webTransportClosed) - The parameters's `timestamp` _added_.
+
+
 ## Roll protocol to r832784
 ###### _2020-12-02 05:16:13 -0800_ | Diff: [1d63b26...9e09a22](https://github.com/ChromeDevTools/devtools-protocol/compare/1d63b26...9e09a22)
 #### `Accessibility`: new command
