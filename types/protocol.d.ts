@@ -3439,7 +3439,7 @@ export namespace Protocol {
             windowState?: WindowState;
         }
 
-        export type PermissionType = ('accessibilityEvents' | 'audioCapture' | 'backgroundSync' | 'backgroundFetch' | 'clipboardReadWrite' | 'clipboardSanitizedWrite' | 'durableStorage' | 'flash' | 'geolocation' | 'midi' | 'midiSysex' | 'nfc' | 'notifications' | 'paymentHandler' | 'periodicBackgroundSync' | 'protectedMediaIdentifier' | 'sensors' | 'videoCapture' | 'videoCapturePanTiltZoom' | 'idleDetection' | 'wakeLockScreen' | 'wakeLockSystem');
+        export type PermissionType = ('accessibilityEvents' | 'audioCapture' | 'backgroundSync' | 'backgroundFetch' | 'clipboardReadWrite' | 'clipboardSanitizedWrite' | 'displayCapture' | 'durableStorage' | 'flash' | 'geolocation' | 'midi' | 'midiSysex' | 'nfc' | 'notifications' | 'paymentHandler' | 'periodicBackgroundSync' | 'protectedMediaIdentifier' | 'sensors' | 'videoCapture' | 'videoCapturePanTiltZoom' | 'idleDetection' | 'wakeLockScreen' | 'wakeLockSystem');
 
         export type PermissionSetting = ('granted' | 'denied' | 'prompt');
 

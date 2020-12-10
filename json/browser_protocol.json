@@ -1704,6 +1704,7 @@
                         "backgroundFetch",
                         "clipboardReadWrite",
                         "clipboardSanitizedWrite",
+                        "displayCapture",
                         "durableStorage",
                         "flash",
                         "geolocation",
