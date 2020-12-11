@@ -17468,6 +17468,12 @@
                             "name": "traceConfig",
                             "optional": true,
                             "$ref": "TraceConfig"
+                        },
+                        {
+                            "name": "perfettoConfig",
+                            "description": "Base64-encoded serialized perfetto.protos.TraceConfig protobuf message\nWhen specified, the parameters `categories`, `options`, `traceConfig`\nare ignored.",
+                            "optional": true,
+                            "type": "string"
                         }
                     ]
                 }

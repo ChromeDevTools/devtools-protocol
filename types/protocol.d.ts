@@ -13770,6 +13770,12 @@ export namespace Protocol {
              */
             streamCompression?: StreamCompression;
             traceConfig?: TraceConfig;
+            /**
+             * Base64-encoded serialized perfetto.protos.TraceConfig protobuf message
+             * When specified, the parameters `categories`, `options`, `traceConfig`
+             * are ignored.
+             */
+            perfettoConfig?: string;
         }
 
         export interface BufferUsageEvent {
