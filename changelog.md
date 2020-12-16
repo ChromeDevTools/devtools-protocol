@@ -1,5 +1,17 @@
 
 
+## Roll protocol to r836089
+###### _2020-12-11 05:16:22 -0800_ | Diff: [d6d3da3...17b7d75](https://github.com/ChromeDevTools/devtools-protocol/compare/d6d3da3...17b7d75)
+#### `Tracing`: modified command
+* [`Tracing.start`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#method-start) - The parameters's `perfettoConfig` _added_.
+
+
+## Roll protocol to r835626
+###### _2020-12-10 04:17:42 -0800_ | Diff: [7f3af2e...d6d3da3](https://github.com/ChromeDevTools/devtools-protocol/compare/7f3af2e...d6d3da3)
+#### `Browser`: modified type
+* [`Browser.PermissionType`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-PermissionType) - The enum's `durableStorage` _updated_. The enum's `flash` _updated_. The enum's `geolocation` _updated_. The enum's `midi` _updated_. The enum's `midiSysex` _updated_. The enum's `nfc` _updated_. The enum's `notifications` _updated_. The enum's `paymentHandler` _updated_. The enum's `periodicBackgroundSync` _updated_. The enum's `protectedMediaIdentifier` _updated_. The enum's `sensors` _updated_. The enum's `videoCapture` _updated_. The enum's `videoCapturePanTiltZoom` _updated_. The enum's `idleDetection` _updated_. The enum's `wakeLockScreen` _updated_. The enum's `wakeLockSystem` _updated_. The enum's `wakeLockSystem` _added_.
+
+
 ## Roll protocol to r834467
 ###### _2020-12-07 16:16:11 -0800_ | Diff: [9e09a22...53c89eb](https://github.com/ChromeDevTools/devtools-protocol/compare/9e09a22...53c89eb)
 #### `Network`: modified events

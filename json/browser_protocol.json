@@ -1346,6 +1346,21 @@
                     ]
                 },
                 {
+                    "id": "SharedArrayBufferTransferIssueDetails",
+                    "description": "Details for a request that has been blocked with the BLOCKED_BY_RESPONSE\ncode. Currently only used for COEP/COOP, but may be extended to include\nsome CSP errors in the future.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "sourceCodeLocation",
+                            "$ref": "SourceCodeLocation"
+                        },
+                        {
+                            "name": "isWarning",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
                     "id": "InspectorIssueCode",
                     "description": "A unique identifier for the type of issue. Each type may use one of the\noptional fields in InspectorIssueDetails to convey more specific\ninformation about the kind of issue.",
                     "type": "string",
@@ -1354,7 +1369,8 @@
                         "MixedContentIssue",
                         "BlockedByResponseIssue",
                         "HeavyAdIssue",
-                        "ContentSecurityPolicyIssue"
+                        "ContentSecurityPolicyIssue",
+                        "SharedArrayBufferTransferIssue"
                     ]
                 },
                 {
@@ -1386,6 +1402,11 @@
                             "name": "contentSecurityPolicyIssueDetails",
                             "optional": true,
                             "$ref": "ContentSecurityPolicyIssueDetails"
+                        },
+                        {
+                            "name": "sharedArrayBufferTransferIssueDetails",
+                            "optional": true,
+                            "$ref": "SharedArrayBufferTransferIssueDetails"
                         }
                     ]
                 },
