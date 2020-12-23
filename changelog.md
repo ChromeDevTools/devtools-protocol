@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r837676
+###### _2020-12-16 11:16:09 -0800_ | Diff: [17b7d75...84b9b60](https://github.com/ChromeDevTools/devtools-protocol/compare/17b7d75...84b9b60)
+#### `Audits`: new type
+* [`Audits.SharedArrayBufferTransferIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SharedArrayBufferTransferIssueDetails)
+#### `Audits`: modified types
+* [`Audits.InspectorIssueCode`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueCode) - The enum's `SharedArrayBufferTransferIssue` _added_.
+* [`Audits.InspectorIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueDetails) - The properties's `sharedArrayBufferTransferIssueDetails` _added_.
+
+
 ## Roll protocol to r836089
 ###### _2020-12-11 05:16:22 -0800_ | Diff: [d6d3da3...17b7d75](https://github.com/ChromeDevTools/devtools-protocol/compare/d6d3da3...17b7d75)
 #### `Tracing`: modified command
