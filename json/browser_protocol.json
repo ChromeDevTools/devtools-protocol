@@ -1462,7 +1462,7 @@
                     "returns": [
                         {
                             "name": "body",
-                            "description": "The encoded body as a base64 string. Omitted if sizeOnly is true.",
+                            "description": "The encoded body as a base64 string. Omitted if sizeOnly is true. (Encoded as a base64 string when passed over JSON)",
                             "optional": true,
                             "type": "string"
                         },
@@ -2142,7 +2142,7 @@
                         },
                         {
                             "name": "image",
-                            "description": "Png encoded image.",
+                            "description": "Png encoded image. (Encoded as a base64 string when passed over JSON)",
                             "optional": true,
                             "type": "string"
                         }
@@ -3553,7 +3553,7 @@
                     "properties": [
                         {
                             "name": "body",
-                            "description": "Entry content, base64-encoded.",
+                            "description": "Entry content, base64-encoded. (Encoded as a base64 string when passed over JSON)",
                             "type": "string"
                         }
                     ]
@@ -7478,7 +7478,7 @@
                         },
                         {
                             "name": "screenshotData",
-                            "description": "Base64-encoded image data of the screenshot, if one was requested and successfully taken.",
+                            "description": "Base64-encoded image data of the screenshot, if one was requested and successfully taken. (Encoded as a base64 string when passed over JSON)",
                             "optional": true,
                             "type": "string"
                         }
@@ -8730,7 +8730,7 @@
                         },
                         {
                             "name": "picture",
-                            "description": "Base64-encoded snapshot data.",
+                            "description": "Base64-encoded snapshot data. (Encoded as a base64 string when passed over JSON)",
                             "type": "string"
                         }
                     ]
@@ -11032,7 +11032,7 @@
                         },
                         {
                             "name": "rawResponse",
-                            "description": "If set the requests completes using with the provided base64 encoded raw response, including\nHTTP status line and headers etc... Must not be set in response to an authChallenge.",
+                            "description": "If set the requests completes using with the provided base64 encoded raw response, including\nHTTP status line and headers etc... Must not be set in response to an authChallenge. (Encoded as a base64 string when passed over JSON)",
                             "optional": true,
                             "type": "string"
                         },
@@ -13910,7 +13910,7 @@
                     "returns": [
                         {
                             "name": "data",
-                            "description": "Base64-encoded image data.",
+                            "description": "Base64-encoded image data. (Encoded as a base64 string when passed over JSON)",
                             "type": "string"
                         }
                     ]
@@ -14374,7 +14374,7 @@
                     "returns": [
                         {
                             "name": "data",
-                            "description": "Base64-encoded pdf data. Empty if |returnAsStream| is specified.",
+                            "description": "Base64-encoded pdf data. Empty if |returnAsStream| is specified. (Encoded as a base64 string when passed over JSON)",
                             "type": "string"
                         },
                         {
@@ -14831,7 +14831,7 @@
                         },
                         {
                             "name": "data",
-                            "description": "Base64-encoded data",
+                            "description": "Base64-encoded data (Encoded as a base64 string when passed over JSON)",
                             "type": "string"
                         }
                     ]
@@ -15244,7 +15244,7 @@
                     "parameters": [
                         {
                             "name": "data",
-                            "description": "Base64-encoded compressed image.",
+                            "description": "Base64-encoded compressed image. (Encoded as a base64 string when passed over JSON)",
                             "type": "string"
                         },
                         {
@@ -15311,7 +15311,7 @@
                         },
                         {
                             "name": "data",
-                            "description": "Base64-encoded data",
+                            "description": "Base64-encoded data (Encoded as a base64 string when passed over JSON)",
                             "type": "string"
                         }
                     ]
@@ -17492,7 +17492,7 @@
                         },
                         {
                             "name": "perfettoConfig",
-                            "description": "Base64-encoded serialized perfetto.protos.TraceConfig protobuf message\nWhen specified, the parameters `categories`, `options`, `traceConfig`\nare ignored.",
+                            "description": "Base64-encoded serialized perfetto.protos.TraceConfig protobuf message\nWhen specified, the parameters `categories`, `options`, `traceConfig`\nare ignored. (Encoded as a base64 string when passed over JSON)",
                             "optional": true,
                             "type": "string"
                         }
@@ -17758,13 +17758,13 @@
                         },
                         {
                             "name": "binaryResponseHeaders",
-                            "description": "Alternative way of specifying response headers as a \\0-separated\nseries of name: value pairs. Prefer the above method unless you\nneed to represent some non-UTF8 values that can't be transmitted\nover the protocol as text.",
+                            "description": "Alternative way of specifying response headers as a \\0-separated\nseries of name: value pairs. Prefer the above method unless you\nneed to represent some non-UTF8 values that can't be transmitted\nover the protocol as text. (Encoded as a base64 string when passed over JSON)",
                             "optional": true,
                             "type": "string"
                         },
                         {
                             "name": "body",
-                            "description": "A response body.",
+                            "description": "A response body. (Encoded as a base64 string when passed over JSON)",
                             "optional": true,
                             "type": "string"
                         },
@@ -17799,7 +17799,7 @@
                         },
                         {
                             "name": "postData",
-                            "description": "If set, overrides the post data in the request.",
+                            "description": "If set, overrides the post data in the request. (Encoded as a base64 string when passed over JSON)",
                             "optional": true,
                             "type": "string"
                         },
@@ -18527,12 +18527,12 @@
                         },
                         {
                             "name": "privateKey",
-                            "description": "The ECDSA P-256 private key in PKCS#8 format.",
+                            "description": "The ECDSA P-256 private key in PKCS#8 format. (Encoded as a base64 string when passed over JSON)",
                             "type": "string"
                         },
                         {
                             "name": "userHandle",
-                            "description": "An opaque byte sequence with a maximum size of 64 bytes mapping the\ncredential to a specific user.",
+                            "description": "An opaque byte sequence with a maximum size of 64 bytes mapping the\ncredential to a specific user. (Encoded as a base64 string when passed over JSON)",
                             "optional": true,
                             "type": "string"
                         },
@@ -18543,7 +18543,7 @@
                         },
                         {
                             "name": "largeBlob",
-                            "description": "The large blob associated with the credential.\nSee https://w3c.github.io/webauthn/#sctn-large-blob-extension",
+                            "description": "The large blob associated with the credential.\nSee https://w3c.github.io/webauthn/#sctn-large-blob-extension (Encoded as a base64 string when passed over JSON)",
                             "optional": true,
                             "type": "string"
                         }

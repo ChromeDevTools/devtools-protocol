@@ -360,7 +360,7 @@ export namespace Protocol {
              */
             callFrameId: CallFrameId;
             /**
-             * Code of the evaluator module.
+             * Code of the evaluator module. (Encoded as a base64 string when passed over JSON)
              */
             evaluator: string;
             /**
@@ -416,7 +416,7 @@ export namespace Protocol {
              */
             scriptSource: string;
             /**
-             * Wasm bytecode.
+             * Wasm bytecode. (Encoded as a base64 string when passed over JSON)
              */
             bytecode?: string;
         }
@@ -430,7 +430,7 @@ export namespace Protocol {
 
         export interface GetWasmBytecodeResponse {
             /**
-             * Script source.
+             * Script source. (Encoded as a base64 string when passed over JSON)
              */
             bytecode: string;
         }
@@ -3307,7 +3307,7 @@ export namespace Protocol {
 
         export interface GetEncodedResponseResponse {
             /**
-             * The encoded body as a base64 string. Omitted if sizeOnly is true.
+             * The encoded body as a base64 string. Omitted if sizeOnly is true. (Encoded as a base64 string when passed over JSON)
              */
             body?: string;
             /**
@@ -3708,7 +3708,7 @@ export namespace Protocol {
         export interface SetDockTileRequest {
             badgeLabel?: string;
             /**
-             * Png encoded image.
+             * Png encoded image. (Encoded as a base64 string when passed over JSON)
              */
             image?: string;
         }
@@ -4658,7 +4658,7 @@ export namespace Protocol {
          */
         export interface CachedResponse {
             /**
-             * Entry content, base64-encoded.
+             * Entry content, base64-encoded. (Encoded as a base64 string when passed over JSON)
              */
             body: string;
         }
@@ -7171,7 +7171,7 @@ export namespace Protocol {
              */
             hasDamage: boolean;
             /**
-             * Base64-encoded image data of the screenshot, if one was requested and successfully taken.
+             * Base64-encoded image data of the screenshot, if one was requested and successfully taken. (Encoded as a base64 string when passed over JSON)
              */
             screenshotData?: string;
         }
@@ -8046,7 +8046,7 @@ export namespace Protocol {
              */
             y: number;
             /**
-             * Base64-encoded snapshot data.
+             * Base64-encoded snapshot data. (Encoded as a base64 string when passed over JSON)
              */
             picture: string;
         }
@@ -9502,7 +9502,7 @@ export namespace Protocol {
             errorReason?: ErrorReason;
             /**
              * If set the requests completes using with the provided base64 encoded raw response, including
-             * HTTP status line and headers etc... Must not be set in response to an authChallenge.
+             * HTTP status line and headers etc... Must not be set in response to an authChallenge. (Encoded as a base64 string when passed over JSON)
              */
             rawResponse?: string;
             /**
@@ -11490,7 +11490,7 @@ export namespace Protocol {
 
         export interface CaptureScreenshotResponse {
             /**
-             * Base64-encoded image data.
+             * Base64-encoded image data. (Encoded as a base64 string when passed over JSON)
              */
             data: string;
         }
@@ -11782,7 +11782,7 @@ export namespace Protocol {
 
         export interface PrintToPDFResponse {
             /**
-             * Base64-encoded pdf data. Empty if |returnAsStream| is specified.
+             * Base64-encoded pdf data. Empty if |returnAsStream| is specified. (Encoded as a base64 string when passed over JSON)
              */
             data: string;
             /**
@@ -12057,7 +12057,7 @@ export namespace Protocol {
         export interface AddCompilationCacheRequest {
             url: string;
             /**
-             * Base64-encoded data
+             * Base64-encoded data (Encoded as a base64 string when passed over JSON)
              */
             data: string;
         }
@@ -12370,7 +12370,7 @@ export namespace Protocol {
          */
         export interface ScreencastFrameEvent {
             /**
-             * Base64-encoded compressed image.
+             * Base64-encoded compressed image. (Encoded as a base64 string when passed over JSON)
              */
             data: string;
             /**
@@ -12423,7 +12423,7 @@ export namespace Protocol {
         export interface CompilationCacheProducedEvent {
             url: string;
             /**
-             * Base64-encoded data
+             * Base64-encoded data (Encoded as a base64 string when passed over JSON)
              */
             data: string;
         }
@@ -13784,7 +13784,7 @@ export namespace Protocol {
             /**
              * Base64-encoded serialized perfetto.protos.TraceConfig protobuf message
              * When specified, the parameters `categories`, `options`, `traceConfig`
-             * are ignored.
+             * are ignored. (Encoded as a base64 string when passed over JSON)
              */
             perfettoConfig?: string;
         }
@@ -13977,11 +13977,11 @@ export namespace Protocol {
              * Alternative way of specifying response headers as a \0-separated
              * series of name: value pairs. Prefer the above method unless you
              * need to represent some non-UTF8 values that can't be transmitted
-             * over the protocol as text.
+             * over the protocol as text. (Encoded as a base64 string when passed over JSON)
              */
             binaryResponseHeaders?: string;
             /**
-             * A response body.
+             * A response body. (Encoded as a base64 string when passed over JSON)
              */
             body?: string;
             /**
@@ -14005,7 +14005,7 @@ export namespace Protocol {
              */
             method?: string;
             /**
-             * If set, overrides the post data in the request.
+             * If set, overrides the post data in the request. (Encoded as a base64 string when passed over JSON)
              */
             postData?: string;
             /**
@@ -14427,12 +14427,12 @@ export namespace Protocol {
              */
             rpId?: string;
             /**
-             * The ECDSA P-256 private key in PKCS#8 format.
+             * The ECDSA P-256 private key in PKCS#8 format. (Encoded as a base64 string when passed over JSON)
              */
             privateKey: string;
             /**
              * An opaque byte sequence with a maximum size of 64 bytes mapping the
-             * credential to a specific user.
+             * credential to a specific user. (Encoded as a base64 string when passed over JSON)
              */
             userHandle?: string;
             /**
@@ -14443,7 +14443,7 @@ export namespace Protocol {
             signCount: integer;
             /**
              * The large blob associated with the credential.
-             * See https://w3c.github.io/webauthn/#sctn-large-blob-extension
+             * See https://w3c.github.io/webauthn/#sctn-large-blob-extension (Encoded as a base64 string when passed over JSON)
              */
             largeBlob?: string;
         }
