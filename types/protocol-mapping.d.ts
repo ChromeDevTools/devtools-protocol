@@ -451,6 +451,10 @@ export namespace ProtocolMapping {
          */
         'Performance.metrics': [Protocol.Performance.MetricsEvent];
         /**
+         * Sent when a performance timeline event is added. See reportPerformanceTimeline method.
+         */
+        'PerformanceTimeline.timelineEventAdded': [Protocol.PerformanceTimeline.TimelineEventAddedEvent];
+        /**
          * There is a certificate error. If overriding certificate errors is enabled, then it should be
          * handled with the `handleCertificateError` command. Note: this event does not fire if the
          * certificate error has been allowed internally. Only one client per target should override
@@ -3619,6 +3623,17 @@ export namespace ProtocolMapping {
         'Performance.getMetrics': {
             paramsType: [];
             returnType: Protocol.Performance.GetMetricsResponse;
+        };
+        /**
+         * Previously buffered events would be reported before method returns.
+         * The specified filter overrides any previous filters, passing empty
+         * filter disables recording.
+         * Note that not all types exposed to the web platform are currently supported.
+         * See also: timelineEventAdded
+         */
+        'PerformanceTimeline.enable': {
+            paramsType: [Protocol.PerformanceTimeline.EnableRequest];
+            returnType: void;
         };
         /**
          * Disables tracking security state changes.

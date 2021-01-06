@@ -1,5 +1,39 @@
 
 
+## Roll protocol to r839267
+###### _2020-12-24 08:16:47 -0800_ | Diff: [3f62f47...e056996](https://github.com/ChromeDevTools/devtools-protocol/compare/3f62f47...e056996)
+#### `Debugger`: modified commands
+* [`Debugger.executeWasmEvaluator`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-executeWasmEvaluator) - The `evaluator` in the parameters had `description` _updated_.
+* [`Debugger.getScriptSource`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-getScriptSource) - The `bytecode` in the return value had `description` _updated_.
+* [`Debugger.getWasmBytecode`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-getWasmBytecode) - The `bytecode` in the return value had `description` _updated_.
+#### `Audits`: modified command
+* [`Audits.getEncodedResponse`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#method-getEncodedResponse) - The `body` in the return value had `description` _updated_.
+#### `Browser`: modified command
+* [`Browser.setDockTile`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-setDockTile) - The `image` in the parameters had `description` _updated_.
+#### `CacheStorage`: modified type
+* [`CacheStorage.CachedResponse`](https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#type-CachedResponse) - The `body` in the properties had `description` _updated_.
+#### `HeadlessExperimental`: modified command
+* [`HeadlessExperimental.beginFrame`](https://chromedevtools.github.io/devtools-protocol/tot/HeadlessExperimental/#method-beginFrame) - The `screenshotData` in the return value had `description` _updated_.
+#### `LayerTree`: modified type
+* [`LayerTree.PictureTile`](https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#type-PictureTile) - The `picture` in the properties had `description` _updated_.
+#### `Network`: modified command
+* [`Network.continueInterceptedRequest`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-continueInterceptedRequest) - The `rawResponse` in the parameters had `description` _updated_.
+#### `Page`: modified commands
+* [`Page.captureScreenshot`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-captureScreenshot) - The `data` in the return value had `description` _updated_.
+* [`Page.printToPDF`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-printToPDF) - The `data` in the return value had `description` _updated_.
+* [`Page.addCompilationCache`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-addCompilationCache) - The `data` in the parameters had `description` _updated_.
+#### `Page`: modified events
+* [`Page.screencastFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-screencastFrame) - The `data` in the parameters had `description` _updated_.
+* [`Page.compilationCacheProduced`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-compilationCacheProduced) - The `data` in the parameters had `description` _updated_.
+#### `Tracing`: modified command
+* [`Tracing.start`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#method-start) - The `perfettoConfig` in the parameters had `description` _updated_.
+#### `Fetch`: modified commands
+* [`Fetch.fulfillRequest`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#method-fulfillRequest) - The `binaryResponseHeaders` in the parameters had `description` _updated_. The `body` in the parameters had `description` _updated_.
+* [`Fetch.continueRequest`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#method-continueRequest) - The `postData` in the parameters had `description` _updated_.
+#### `WebAuthn`: modified type
+* [`WebAuthn.Credential`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#type-Credential) - The `privateKey` in the properties had `description` _updated_. The `userHandle` in the properties had `description` _updated_. The `largeBlob` in the properties had `description` _updated_.
+
+
 ## Roll protocol to r837676
 ###### _2020-12-16 11:16:09 -0800_ | Diff: [17b7d75...84b9b60](https://github.com/ChromeDevTools/devtools-protocol/compare/17b7d75...84b9b60)
 #### `Audits`: new type

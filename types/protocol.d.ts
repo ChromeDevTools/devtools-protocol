@@ -12492,6 +12492,63 @@ export namespace Protocol {
     }
 
     /**
+     * Reporting of performance timeline events, as specified in
+     * https://w3c.github.io/performance-timeline/#dom-performanceobserver.
+     */
+    export namespace PerformanceTimeline {
+
+        /**
+         * See https://github.com/WICG/LargestContentfulPaint and largest_contentful_paint.idl
+         */
+        export interface LargestContentfulPaint {
+            renderTime: number;
+            loadTime: number;
+            /**
+             * The number of pixels being painted.
+             */
+            size: number;
+            /**
+             * The id attribute of the element, if available.
+             */
+            elementId?: string;
+            /**
+             * The URL of the image (may be trimmed).
+             */
+            url?: string;
+            nodeId?: DOM.BackendNodeId;
+        }
+
+        export interface TimelineEvent {
+            /**
+             * Identifies the frame that this event is related to. Empty for non-frame targets.
+             */
+            frameId: Page.FrameId;
+            type: string;
+            name: string;
+            /**
+             * Time in seconds since Epoch, monotonically increasing within document lifetime.
+             */
+            time: Network.TimeSinceEpoch;
+            /**
+             * Event duration, if applicable.
+             */
+            duration?: number;
+            lcpDetails?: LargestContentfulPaint;
+        }
+
+        export interface EnableRequest {
+            eventTypes: string[];
+        }
+
+        /**
+         * Sent when a performance timeline event is added. See reportPerformanceTimeline method.
+         */
+        export interface TimelineEventAddedEvent {
+            event: TimelineEvent;
+        }
+    }
+
+    /**
      * Security
      */
     export namespace Security {

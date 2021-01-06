@@ -78,6 +78,8 @@ export namespace ProtocolProxyApi {
 
         Performance: PerformanceApi;
 
+        PerformanceTimeline: PerformanceTimelineApi;
+
         Security: SecurityApi;
 
         ServiceWorker: ServiceWorkerApi;
@@ -2904,6 +2906,23 @@ export namespace ProtocolProxyApi {
          * Current values of the metrics.
          */
         on(event: 'metrics', listener: (params: Protocol.Performance.MetricsEvent) => void): void;
+
+    }
+
+    export interface PerformanceTimelineApi {
+        /**
+         * Previously buffered events would be reported before method returns.
+         * The specified filter overrides any previous filters, passing empty
+         * filter disables recording.
+         * Note that not all types exposed to the web platform are currently supported.
+         * See also: timelineEventAdded
+         */
+        enable(params: Protocol.PerformanceTimeline.EnableRequest): Promise<void>;
+
+        /**
+         * Sent when a performance timeline event is added. See reportPerformanceTimeline method.
+         */
+        on(event: 'timelineEventAdded', listener: (params: Protocol.PerformanceTimeline.TimelineEventAddedEvent) => void): void;
 
     }
 

@@ -15415,6 +15415,116 @@
             ]
         },
         {
+            "domain": "PerformanceTimeline",
+            "description": "Reporting of performance timeline events, as specified in\nhttps://w3c.github.io/performance-timeline/#dom-performanceobserver.",
+            "experimental": true,
+            "dependencies": [
+                "DOM",
+                "Network"
+            ],
+            "types": [
+                {
+                    "id": "LargestContentfulPaint",
+                    "description": "See https://github.com/WICG/LargestContentfulPaint and largest_contentful_paint.idl",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "renderTime",
+                            "type": "number"
+                        },
+                        {
+                            "name": "loadTime",
+                            "type": "number"
+                        },
+                        {
+                            "name": "size",
+                            "description": "The number of pixels being painted.",
+                            "type": "number"
+                        },
+                        {
+                            "name": "elementId",
+                            "description": "The id attribute of the element, if available.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "url",
+                            "description": "The URL of the image (may be trimmed).",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "nodeId",
+                            "optional": true,
+                            "$ref": "DOM.BackendNodeId"
+                        }
+                    ]
+                },
+                {
+                    "id": "TimelineEvent",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "frameId",
+                            "description": "Identifies the frame that this event is related to. Empty for non-frame targets.",
+                            "$ref": "Page.FrameId"
+                        },
+                        {
+                            "name": "type",
+                            "type": "string"
+                        },
+                        {
+                            "name": "name",
+                            "type": "string"
+                        },
+                        {
+                            "name": "time",
+                            "description": "Time in seconds since Epoch, monotonically increasing within document lifetime.",
+                            "$ref": "Network.TimeSinceEpoch"
+                        },
+                        {
+                            "name": "duration",
+                            "description": "Event duration, if applicable.",
+                            "optional": true,
+                            "type": "number"
+                        },
+                        {
+                            "name": "lcpDetails",
+                            "optional": true,
+                            "$ref": "LargestContentfulPaint"
+                        }
+                    ]
+                }
+            ],
+            "commands": [
+                {
+                    "name": "enable",
+                    "description": "Previously buffered events would be reported before method returns.\nThe specified filter overrides any previous filters, passing empty\nfilter disables recording.\nNote that not all types exposed to the web platform are currently supported.\nSee also: timelineEventAdded",
+                    "parameters": [
+                        {
+                            "name": "eventTypes",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "events": [
+                {
+                    "name": "timelineEventAdded",
+                    "description": "Sent when a performance timeline event is added. See reportPerformanceTimeline method.",
+                    "parameters": [
+                        {
+                            "name": "event",
+                            "$ref": "TimelineEvent"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "domain": "Security",
             "description": "Security",
             "types": [
