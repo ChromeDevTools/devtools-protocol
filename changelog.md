@@ -1,5 +1,18 @@
 
 
+## Roll protocol to r840500
+###### _2021-01-05 22:16:00 -0800_ | Diff: [e056996...a5b6b3e](https://github.com/ChromeDevTools/devtools-protocol/compare/e056996...a5b6b3e)
+#### `PerformanceTimeline`: new domain
+* [`PerformanceTimeline.PerformanceTimeline`](https://chromedevtools.github.io/devtools-protocol/tot/PerformanceTimeline/#domain-PerformanceTimeline)
+#### `PerformanceTimeline`: new command
+* [`PerformanceTimeline.enable`](https://chromedevtools.github.io/devtools-protocol/tot/PerformanceTimeline/#method-enable)
+#### `PerformanceTimeline`: new event
+* [`PerformanceTimeline.timelineEventAdded`](https://chromedevtools.github.io/devtools-protocol/tot/PerformanceTimeline/#event-timelineEventAdded)
+#### `PerformanceTimeline`: new types
+* [`PerformanceTimeline.LargestContentfulPaint`](https://chromedevtools.github.io/devtools-protocol/tot/PerformanceTimeline/#type-LargestContentfulPaint)
+* [`PerformanceTimeline.TimelineEvent`](https://chromedevtools.github.io/devtools-protocol/tot/PerformanceTimeline/#type-TimelineEvent)
+
+
 ## Roll protocol to r839267
 ###### _2020-12-24 08:16:47 -0800_ | Diff: [3f62f47...e056996](https://github.com/ChromeDevTools/devtools-protocol/compare/3f62f47...e056996)
 #### `Debugger`: modified commands

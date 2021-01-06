@@ -2912,9 +2912,6 @@ export namespace ProtocolProxyApi {
     export interface PerformanceTimelineApi {
         /**
          * Previously buffered events would be reported before method returns.
-         * The specified filter overrides any previous filters, passing empty
-         * filter disables recording.
-         * Note that not all types exposed to the web platform are currently supported.
          * See also: timelineEventAdded
          */
         enable(params: Protocol.PerformanceTimeline.EnableRequest): Promise<void>;

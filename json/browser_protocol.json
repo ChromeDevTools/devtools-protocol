@@ -15430,11 +15430,11 @@
                     "properties": [
                         {
                             "name": "renderTime",
-                            "type": "number"
+                            "$ref": "Network.TimeSinceEpoch"
                         },
                         {
                             "name": "loadTime",
-                            "type": "number"
+                            "$ref": "Network.TimeSinceEpoch"
                         },
                         {
                             "name": "size",
@@ -15461,6 +15461,52 @@
                     ]
                 },
                 {
+                    "id": "LayoutShiftAttribution",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "previousRect",
+                            "$ref": "DOM.Rect"
+                        },
+                        {
+                            "name": "currentRect",
+                            "$ref": "DOM.Rect"
+                        },
+                        {
+                            "name": "nodeId",
+                            "optional": true,
+                            "$ref": "DOM.BackendNodeId"
+                        }
+                    ]
+                },
+                {
+                    "id": "LayoutShift",
+                    "description": "See https://wicg.github.io/layout-instability/#sec-layout-shift and layout_shift.idl",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "value",
+                            "description": "Score increment produced by this event.",
+                            "type": "number"
+                        },
+                        {
+                            "name": "hadRecentInput",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "lastInputTime",
+                            "$ref": "Network.TimeSinceEpoch"
+                        },
+                        {
+                            "name": "sources",
+                            "type": "array",
+                            "items": {
+                                "$ref": "LayoutShiftAttribution"
+                            }
+                        }
+                    ]
+                },
+                {
                     "id": "TimelineEvent",
                     "type": "object",
                     "properties": [
@@ -15471,10 +15517,12 @@
                         },
                         {
                             "name": "type",
+                            "description": "The event type, as specified in https://w3c.github.io/performance-timeline/#dom-performanceentry-entrytype\nThis determines which of the optional \"details\" fiedls is present.",
                             "type": "string"
                         },
                         {
                             "name": "name",
+                            "description": "Name may be empty depending on the type.",
                             "type": "string"
                         },
                         {
@@ -15492,6 +15540,11 @@
                             "name": "lcpDetails",
                             "optional": true,
                             "$ref": "LargestContentfulPaint"
+                        },
+                        {
+                            "name": "layoutShiftDetails",
+                            "optional": true,
+                            "$ref": "LayoutShift"
                         }
                     ]
                 }
@@ -15499,10 +15552,11 @@
             "commands": [
                 {
                     "name": "enable",
-                    "description": "Previously buffered events would be reported before method returns.\nThe specified filter overrides any previous filters, passing empty\nfilter disables recording.\nNote that not all types exposed to the web platform are currently supported.\nSee also: timelineEventAdded",
+                    "description": "Previously buffered events would be reported before method returns.\nSee also: timelineEventAdded",
                     "parameters": [
                         {
                             "name": "eventTypes",
+                            "description": "The types of event to report, as specified in\nhttps://w3c.github.io/performance-timeline/#dom-performanceentry-entrytype\nThe specified filter overrides any previous filters, passing empty\nfilter disables recording.\nNote that not all types exposed to the web platform are currently supported.",
                             "type": "array",
                             "items": {
                                 "type": "string"
