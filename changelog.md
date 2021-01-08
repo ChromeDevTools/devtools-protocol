@@ -1,5 +1,17 @@
 
 
+## Roll protocol to r840815
+###### _2021-01-06 15:16:17 -0800_ | Diff: [a5b6b3e...0f61a92](https://github.com/ChromeDevTools/devtools-protocol/compare/a5b6b3e...0f61a92)
+#### `PerformanceTimeline`: modified command
+* [`PerformanceTimeline.enable`](https://chromedevtools.github.io/devtools-protocol/tot/PerformanceTimeline/#method-enable) - `description` updated. The parameters's `description` _added_.
+#### `PerformanceTimeline`: new types
+* [`PerformanceTimeline.LayoutShiftAttribution`](https://chromedevtools.github.io/devtools-protocol/tot/PerformanceTimeline/#type-LayoutShiftAttribution)
+* [`PerformanceTimeline.LayoutShift`](https://chromedevtools.github.io/devtools-protocol/tot/PerformanceTimeline/#type-LayoutShift)
+#### `PerformanceTimeline`: modified types
+* [`PerformanceTimeline.LargestContentfulPaint`](https://chromedevtools.github.io/devtools-protocol/tot/PerformanceTimeline/#type-LargestContentfulPaint) - The `renderTime` in the properties had `type` _removed_. The `loadTime` in the properties had `type` _removed_. The properties's `$ref` _added_ (2 times).
+* [`PerformanceTimeline.TimelineEvent`](https://chromedevtools.github.io/devtools-protocol/tot/PerformanceTimeline/#type-TimelineEvent) - The properties's `description` _added_ (2 times). The properties's `layoutShiftDetails` _added_.
+
+
 ## Roll protocol to r840500
 ###### _2021-01-05 22:16:00 -0800_ | Diff: [e056996...a5b6b3e](https://github.com/ChromeDevTools/devtools-protocol/compare/e056996...a5b6b3e)
 #### `PerformanceTimeline`: new domain
