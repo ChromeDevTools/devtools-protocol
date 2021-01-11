@@ -9119,6 +9119,10 @@ export namespace Protocol {
              * Cookie Priority
              */
             priority: CookiePriority;
+            /**
+             * True if cookie is SameParty.
+             */
+            sameParty: boolean;
         }
 
         /**
