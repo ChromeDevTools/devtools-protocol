@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r841965
+###### _2021-01-11 02:16:08 -0800_ | Diff: [92c0fc5...529289e](https://github.com/ChromeDevTools/devtools-protocol/compare/92c0fc5...529289e)
+#### `Network`: modified type
+* [`Network.Cookie`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Cookie) - The properties's `sameParty` _added_.
+
+
 ## Roll protocol to r841450
 ###### _2021-01-08 04:16:13 -0800_ | Diff: [0f61a92...92c0fc5](https://github.com/ChromeDevTools/devtools-protocol/compare/0f61a92...92c0fc5)
 #### `DOM`: modified type
