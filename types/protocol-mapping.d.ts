@@ -3202,6 +3202,13 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Request that backend shows an overlay with web vital metrics.
+         */
+        'Overlay.setShowWebVitals': {
+            paramsType: [Protocol.Overlay.SetShowWebVitalsRequest];
+            returnType: void;
+        };
+        /**
          * Paints viewport size upon main frame resize.
          */
         'Overlay.setShowViewportSizeOnResize': {

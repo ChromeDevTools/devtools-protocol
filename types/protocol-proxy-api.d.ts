@@ -2452,6 +2452,11 @@ export namespace ProtocolProxyApi {
         setShowHitTestBorders(params: Protocol.Overlay.SetShowHitTestBordersRequest): Promise<void>;
 
         /**
+         * Request that backend shows an overlay with web vital metrics.
+         */
+        setShowWebVitals(params: Protocol.Overlay.SetShowWebVitalsRequest): Promise<void>;
+
+        /**
          * Paints viewport size upon main frame resize.
          */
         setShowViewportSizeOnResize(params: Protocol.Overlay.SetShowViewportSizeOnResizeRequest): Promise<void>;
