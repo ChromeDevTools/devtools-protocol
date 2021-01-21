@@ -3251,12 +3251,33 @@ export namespace Protocol {
             isWarning: boolean;
         }
 
+        export type TwaQualityEnforcementViolationType = ('kHttpError' | 'kUnavailableOffline' | 'kDigitalAssetLinks');
+
+        export interface TrustedWebActivityIssueDetails {
+            /**
+             * The url that triggers the violation.
+             */
+            url: string;
+            violationType: TwaQualityEnforcementViolationType;
+            httpStatusCode?: integer;
+            /**
+             * The package name of the Trusted Web Activity client app. This field is
+             * only used when violation type is kDigitalAssetLinks.
+             */
+            packageName?: string;
+            /**
+             * The signature of the Trusted Web Activity client app. This field is only
+             * used when violation type is kDigitalAssetLinks.
+             */
+            signature?: string;
+        }
+
         /**
          * A unique identifier for the type of issue. Each type may use one of the
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferTransferIssue');
+        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferTransferIssue' | 'TrustedWebActivityIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3270,6 +3291,7 @@ export namespace Protocol {
             heavyAdIssueDetails?: HeavyAdIssueDetails;
             contentSecurityPolicyIssueDetails?: ContentSecurityPolicyIssueDetails;
             sharedArrayBufferTransferIssueDetails?: SharedArrayBufferTransferIssueDetails;
+            twaQualityEnforcementDetails?: TrustedWebActivityIssueDetails;
         }
 
         /**

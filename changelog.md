@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r845564
+###### _2021-01-21 01:16:18 -0800_ | Diff: [47a861d...3941c7e](https://github.com/ChromeDevTools/devtools-protocol/compare/47a861d...3941c7e)
+#### `Storage`: new command
+* [`Storage.getTrustTokens`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#method-getTrustTokens)
+#### `Storage`: new type
+* [`Storage.TrustTokens`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-TrustTokens)
+
+
 ## Roll protocol to r845301
 ###### _2021-01-20 12:16:06 -0800_ | Diff: [7f780af...47a861d](https://github.com/ChromeDevTools/devtools-protocol/compare/7f780af...47a861d)
 #### `Overlay`: new command
