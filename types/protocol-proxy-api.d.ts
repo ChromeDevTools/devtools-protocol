@@ -3062,6 +3062,12 @@ export namespace ProtocolProxyApi {
         untrackIndexedDBForOrigin(params: Protocol.Storage.UntrackIndexedDBForOriginRequest): Promise<void>;
 
         /**
+         * Returns the number of stored Trust Tokens per issuer for the
+         * current browsing context.
+         */
+        getTrustTokens(): Promise<Protocol.Storage.GetTrustTokensResponse>;
+
+        /**
          * A cache's contents have been modified.
          */
         on(event: 'cacheStorageContentUpdated', listener: (params: Protocol.Storage.CacheStorageContentUpdatedEvent) => void): void;

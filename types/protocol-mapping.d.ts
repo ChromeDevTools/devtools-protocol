@@ -3798,6 +3798,14 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Returns the number of stored Trust Tokens per issuer for the
+         * current browsing context.
+         */
+        'Storage.getTrustTokens': {
+            paramsType: [];
+            returnType: Protocol.Storage.GetTrustTokensResponse;
+        };
+        /**
          * Returns information about the system.
          */
         'SystemInfo.getInfo': {

@@ -13014,6 +13014,15 @@ export namespace Protocol {
             usage: number;
         }
 
+        /**
+         * Pair of issuer origin and number of available (signed, but not used) Trust
+         * Tokens from that issuer.
+         */
+        export interface TrustTokens {
+            issuerOrigin: string;
+            count: number;
+        }
+
         export interface ClearDataForOriginRequest {
             /**
              * Security origin.
@@ -13126,6 +13135,10 @@ export namespace Protocol {
              * Security origin.
              */
             origin: string;
+        }
+
+        export interface GetTrustTokensResponse {
+            tokens: TrustTokens[];
         }
 
         /**

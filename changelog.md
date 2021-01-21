@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r845301
+###### _2021-01-20 12:16:06 -0800_ | Diff: [7f780af...47a861d](https://github.com/ChromeDevTools/devtools-protocol/compare/7f780af...47a861d)
+#### `Overlay`: new command
+* [`Overlay.setShowWebVitals`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-setShowWebVitals)
+
+
 ## Roll protocol to r841965
 ###### _2021-01-11 02:16:08 -0800_ | Diff: [92c0fc5...529289e](https://github.com/ChromeDevTools/devtools-protocol/compare/92c0fc5...529289e)
 #### `Network`: modified type
