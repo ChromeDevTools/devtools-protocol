@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r845780
+###### _2021-01-21 12:16:08 -0800_ | Diff: [3941c7e...d88313d](https://github.com/ChromeDevTools/devtools-protocol/compare/3941c7e...d88313d)
+#### `Audits`: new types
+* [`Audits.TwaQualityEnforcementViolationType`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-TwaQualityEnforcementViolationType)
+* [`Audits.TrustedWebActivityIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-TrustedWebActivityIssueDetails)
+#### `Audits`: modified types
+* [`Audits.InspectorIssueCode`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueCode) - The enum's `TrustedWebActivityIssue` _added_.
+* [`Audits.InspectorIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueDetails) - The properties's `twaQualityEnforcementDetails` _added_.
+
+
 ## Roll protocol to r845564
 ###### _2021-01-21 01:16:18 -0800_ | Diff: [47a861d...3941c7e](https://github.com/ChromeDevTools/devtools-protocol/compare/47a861d...3941c7e)
 #### `Storage`: new command

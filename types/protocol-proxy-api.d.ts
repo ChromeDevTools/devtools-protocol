@@ -2316,6 +2316,14 @@ export namespace ProtocolProxyApi {
          */
         on(event: 'webTransportCreated', listener: (params: Protocol.Network.WebTransportCreatedEvent) => void): void;
 
+        /**
+         * Fired when WebTransport handshake is finished.
+         */
+        on(event: 'webTransportConnectionEstablished', listener: (params: Protocol.Network.WebTransportConnectionEstablishedEvent) => void): void;
+
+        /**
+         * Fired when WebTransport is disposed.
+         */
         on(event: 'webTransportClosed', listener: (params: Protocol.Network.WebTransportClosedEvent) => void): void;
 
         /**
