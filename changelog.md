@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r846936
+###### _2021-01-25 15:16:27 -0800_ | Diff: [d88313d...181f9b3](https://github.com/ChromeDevTools/devtools-protocol/compare/d88313d...181f9b3)
+#### `Network`: new event
+* [`Network.webTransportConnectionEstablished`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webTransportConnectionEstablished)
+#### `Network`: modified event
+* [`Network.webTransportClosed`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-webTransportClosed) - `description` added.
+
+
 ## Roll protocol to r845780
 ###### _2021-01-21 12:16:08 -0800_ | Diff: [3941c7e...d88313d](https://github.com/ChromeDevTools/devtools-protocol/compare/3941c7e...d88313d)
 #### `Audits`: new types
