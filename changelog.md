@@ -1,5 +1,17 @@
 
 
+## Roll protocol to r847122
+###### _2021-01-26 04:16:07 -0800_ | Diff: [181f9b3...769185f](https://github.com/ChromeDevTools/devtools-protocol/compare/181f9b3...769185f)
+#### `Audits`: new types
+* [`Audits.SharedArrayBufferIssueType`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SharedArrayBufferIssueType)
+* [`Audits.SharedArrayBufferIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SharedArrayBufferIssueDetails)
+#### `Audits`: removed type
+* [`Audits.SharedArrayBufferTransferIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SharedArrayBufferTransferIssueDetails)
+#### `Audits`: modified types
+* [`Audits.InspectorIssueCode`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueCode) - The enum's `SharedArrayBufferTransferIssue` _updated_.
+* [`Audits.InspectorIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueDetails) - The `sharedArrayBufferTransferIssueDetails` in the properties had `name` _updated_. The `sharedArrayBufferTransferIssueDetails` in the properties had `$ref` _updated_.
+
+
 ## Roll protocol to r846936
 ###### _2021-01-25 15:16:27 -0800_ | Diff: [d88313d...181f9b3](https://github.com/ChromeDevTools/devtools-protocol/compare/d88313d...181f9b3)
 #### `Network`: new event

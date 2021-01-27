@@ -3220,6 +3220,7 @@ export namespace Protocol {
         export type ContentSecurityPolicyViolationType = ('kInlineViolation' | 'kEvalViolation' | 'kURLViolation' | 'kTrustedTypesSinkViolation' | 'kTrustedTypesPolicyViolation');
 
         export interface SourceCodeLocation {
+            scriptId?: Runtime.ScriptId;
             url: string;
             lineNumber: integer;
             columnNumber: integer;
