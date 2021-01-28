@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r848169
+###### _2021-01-28 10:16:15 -0800_ | Diff: [0284109...51065d6](https://github.com/ChromeDevTools/devtools-protocol/compare/0284109...51065d6)
+#### `Network`: modified event
+* [`Network.responseReceivedExtraInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-responseReceivedExtraInfo) - The `headersText` in the parameters had `optional` _removed_. The `headersText` in the parameters had `type` _removed_. The `headersText` in the parameters had `name` _updated_. The `headersText` in the parameters had `description` _updated_. The parameters's `$ref` _added_. The parameters's `headersText` _added_.
+
+
 ## Roll protocol to r847576
 ###### _2021-01-27 03:16:08 -0800_ | Diff: [769185f...0284109](https://github.com/ChromeDevTools/devtools-protocol/compare/769185f...0284109)
 #### `Audits`: modified type
