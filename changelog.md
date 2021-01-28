@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r847576
+###### _2021-01-27 03:16:08 -0800_ | Diff: [769185f...0284109](https://github.com/ChromeDevTools/devtools-protocol/compare/769185f...0284109)
+#### `Audits`: modified type
+* [`Audits.SourceCodeLocation`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SourceCodeLocation) - The `url` in the properties had `type` _removed_. The `url` in the properties had `name` _updated_. The `lineNumber` in the properties had `name` _updated_. The `lineNumber` in the properties had `type` _updated_. The `columnNumber` in the properties had `name` _updated_. The properties's `optional` _added_. The properties's `$ref` _added_. The properties's `columnNumber` _added_.
+
+
 ## Roll protocol to r847122
 ###### _2021-01-26 04:16:07 -0800_ | Diff: [181f9b3...769185f](https://github.com/ChromeDevTools/devtools-protocol/compare/181f9b3...769185f)
 #### `Audits`: new types

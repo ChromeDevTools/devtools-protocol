@@ -10415,6 +10415,11 @@ export namespace Protocol {
              */
             headers: Headers;
             /**
+             * The IP address space of the resource. The address space can only be determined once the transport
+             * established the connection, so we can't send it in `requestWillBeSentExtraInfo`.
+             */
+            resourceIPAddressSpace: IPAddressSpace;
+            /**
              * Raw response header text as it was received over the wire. The raw text may not always be
              * available, such as in the case of HTTP/2 or QUIC.
              */
