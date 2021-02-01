@@ -1392,6 +1392,14 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Runs the contrast check for the target page. Found issues are reported
+         * using Audits.issueAdded event.
+         */
+        'Audits.checkContrast': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
          * Enables event updates for the service.
          */
         'BackgroundService.startObserving': {

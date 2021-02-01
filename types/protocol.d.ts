@@ -3276,12 +3276,22 @@ export namespace Protocol {
             signature?: string;
         }
 
+        export interface LowTextContrastIssueDetails {
+            violatingNodeId: DOM.BackendNodeId;
+            violatingNodeSelector: string;
+            contrastRatio: number;
+            thresholdAA: number;
+            thresholdAAA: number;
+            fontSize: string;
+            fontWeight: string;
+        }
+
         /**
          * A unique identifier for the type of issue. Each type may use one of the
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'TrustedWebActivityIssue');
+        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'TrustedWebActivityIssue' | 'LowTextContrastIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3296,6 +3306,7 @@ export namespace Protocol {
             contentSecurityPolicyIssueDetails?: ContentSecurityPolicyIssueDetails;
             sharedArrayBufferIssueDetails?: SharedArrayBufferIssueDetails;
             twaQualityEnforcementDetails?: TrustedWebActivityIssueDetails;
+            lowTextContrastIssueDetails?: LowTextContrastIssueDetails;
         }
 
         /**

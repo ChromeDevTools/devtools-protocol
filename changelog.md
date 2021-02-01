@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r848227
+###### _2021-01-28 12:16:06 -0800_ | Diff: [51065d6...78112b8](https://github.com/ChromeDevTools/devtools-protocol/compare/51065d6...78112b8)
+#### `Emulation`: modified type
+* [`Emulation.UserAgentMetadata`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#type-UserAgentMetadata) - `description` updated. The properties's `optional` _added_ (2 times).
+
+
 ## Roll protocol to r848169
 ###### _2021-01-28 10:16:15 -0800_ | Diff: [0284109...51065d6](https://github.com/ChromeDevTools/devtools-protocol/compare/0284109...51065d6)
 #### `Network`: modified event
