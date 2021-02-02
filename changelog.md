@@ -1,5 +1,16 @@
 
 
+## Roll protocol to r849057
+###### _2021-02-01 03:16:00 -0800_ | Diff: [78112b8...8a7c1b5](https://github.com/ChromeDevTools/devtools-protocol/compare/78112b8...8a7c1b5)
+#### `Audits`: new command
+* [`Audits.checkContrast`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#method-checkContrast)
+#### `Audits`: new type
+* [`Audits.LowTextContrastIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-LowTextContrastIssueDetails)
+#### `Audits`: modified types
+* [`Audits.InspectorIssueCode`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueCode) - The enum's `LowTextContrastIssue` _added_.
+* [`Audits.InspectorIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueDetails) - The properties's `lowTextContrastIssueDetails` _added_.
+
+
 ## Roll protocol to r848227
 ###### _2021-01-28 12:16:06 -0800_ | Diff: [51065d6...78112b8](https://github.com/ChromeDevTools/devtools-protocol/compare/51065d6...78112b8)
 #### `Emulation`: modified type

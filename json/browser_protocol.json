@@ -10500,7 +10500,9 @@
                         "UnknownError",
                         "SchemefulSameSiteStrict",
                         "SchemefulSameSiteLax",
-                        "SchemefulSameSiteUnspecifiedTreatedAsLax"
+                        "SchemefulSameSiteUnspecifiedTreatedAsLax",
+                        "SamePartyFromCrossPartyContext",
+                        "SamePartyConflictsWithOtherAttributes"
                     ]
                 },
                 {
@@ -10520,7 +10522,8 @@
                         "UnknownError",
                         "SchemefulSameSiteStrict",
                         "SchemefulSameSiteLax",
-                        "SchemefulSameSiteUnspecifiedTreatedAsLax"
+                        "SchemefulSameSiteUnspecifiedTreatedAsLax",
+                        "SamePartyFromCrossPartyContext"
                     ]
                 },
                 {
