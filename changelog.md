@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r849788
+###### _2021-02-02 14:16:09 -0800_ | Diff: [8a7c1b5...6393746](https://github.com/ChromeDevTools/devtools-protocol/compare/8a7c1b5...6393746)
+#### `Network`: modified types
+* [`Network.SetCookieBlockedReason`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SetCookieBlockedReason) - The enum's `SamePartyFromCrossPartyContext` _added_. The enum's `SamePartyConflictsWithOtherAttributes` _added_.
+* [`Network.CookieBlockedReason`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CookieBlockedReason) - The enum's `SamePartyFromCrossPartyContext` _added_.
+
+
 ## Roll protocol to r849057
 ###### _2021-02-01 03:16:00 -0800_ | Diff: [78112b8...8a7c1b5](https://github.com/ChromeDevTools/devtools-protocol/compare/78112b8...8a7c1b5)
 #### `Audits`: new command

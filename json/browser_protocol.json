@@ -12626,6 +12626,31 @@
                     ]
                 },
                 {
+                    "id": "FlexItemHighlightConfig",
+                    "description": "Configuration data for the highlighting of Flex item elements.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "baseSizeBox",
+                            "description": "Style of the box representing the item's base size",
+                            "optional": true,
+                            "$ref": "BoxStyle"
+                        },
+                        {
+                            "name": "baseSizeBorder",
+                            "description": "Style of the border around the box representing the item's base size",
+                            "optional": true,
+                            "$ref": "LineStyle"
+                        },
+                        {
+                            "name": "flexibilityArrow",
+                            "description": "Style of the arrow representing if the item grew or shrank",
+                            "optional": true,
+                            "$ref": "LineStyle"
+                        }
+                    ]
+                },
+                {
                     "id": "LineStyle",
                     "description": "Style information for drawing a line.",
                     "type": "object",
@@ -12776,6 +12801,12 @@
                             "description": "The flex container highlight configuration (default: all transparent).",
                             "optional": true,
                             "$ref": "FlexContainerHighlightConfig"
+                        },
+                        {
+                            "name": "flexItemHighlightConfig",
+                            "description": "The flex item highlight configuration (default: all transparent).",
+                            "optional": true,
+                            "$ref": "FlexItemHighlightConfig"
                         },
                         {
                             "name": "contrastAlgorithm",

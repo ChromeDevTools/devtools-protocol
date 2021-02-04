@@ -10625,6 +10625,24 @@ export namespace Protocol {
             crossAlignment?: LineStyle;
         }
 
+        /**
+         * Configuration data for the highlighting of Flex item elements.
+         */
+        export interface FlexItemHighlightConfig {
+            /**
+             * Style of the box representing the item's base size
+             */
+            baseSizeBox?: BoxStyle;
+            /**
+             * Style of the border around the box representing the item's base size
+             */
+            baseSizeBorder?: LineStyle;
+            /**
+             * Style of the arrow representing if the item grew or shrank
+             */
+            flexibilityArrow?: LineStyle;
+        }
+
         export const enum LineStylePattern {
             Dashed = 'dashed',
             Dotted = 'dotted',
@@ -10728,6 +10746,10 @@ export namespace Protocol {
              * The flex container highlight configuration (default: all transparent).
              */
             flexContainerHighlightConfig?: FlexContainerHighlightConfig;
+            /**
+             * The flex item highlight configuration (default: all transparent).
+             */
+            flexItemHighlightConfig?: FlexItemHighlightConfig;
             /**
              * The contrast algorithm to use for the contrast ratio (default: aa).
              */
