@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r850520
+###### _2021-02-04 02:16:11 -0800_ | Diff: [6393746...5a47400](https://github.com/ChromeDevTools/devtools-protocol/compare/6393746...5a47400)
+#### `Overlay`: new type
+* [`Overlay.FlexItemHighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-FlexItemHighlightConfig)
+#### `Overlay`: modified type
+* [`Overlay.HighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-HighlightConfig) - The `contrastAlgorithm` in the properties had `name` _updated_. The `contrastAlgorithm` in the properties had `description` _updated_. The `contrastAlgorithm` in the properties had `$ref` _updated_. The properties's `contrastAlgorithm` _added_.
+
+
 ## Roll protocol to r849788
 ###### _2021-02-02 14:16:09 -0800_ | Diff: [8a7c1b5...6393746](https://github.com/ChromeDevTools/devtools-protocol/compare/8a7c1b5...6393746)
 #### `Network`: modified types
