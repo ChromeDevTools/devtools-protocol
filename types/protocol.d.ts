@@ -11174,6 +11174,28 @@ export namespace Protocol {
         export type GatedAPIFeatures = ('SharedArrayBuffers' | 'SharedArrayBuffersTransferAllowed' | 'PerformanceMeasureMemory' | 'PerformanceProfile');
 
         /**
+         * All Permissions Policy features. This enum should match the one defined
+         * in renderer/core/feature_policy/feature_policy_features.json5.
+         */
+        export type PermissionsPolicyFeature = ('accelerometer' | 'ambient-light-sensor' | 'autoplay' | 'camera' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-lang' | 'ch-rtt' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-full-version' | 'ch-ua-platform-version' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'conversion-measurement' | 'cross-origin-isolated' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'hid' | 'idle-detection' | 'interest-cohort' | 'magnetometer' | 'microphone' | 'midi' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'publickey-credentials-get' | 'screen-wake-lock' | 'serial' | 'storage-access-api' | 'sync-xhr' | 'trust-token-redemption' | 'usb' | 'vertical-scroll' | 'web-share' | 'xr-spatial-tracking');
+
+        /**
+         * Reason for a permissions policy feature to be disabled.
+         */
+        export type PermissionsPolicyBlockReason = ('Header' | 'IframeAttribute');
+
+        export interface PermissionsPolicyBlockLocator {
+            frameId: FrameId;
+            blockReason: PermissionsPolicyBlockReason;
+        }
+
+        export interface PermissionsPolicyFeatureState {
+            feature: PermissionsPolicyFeature;
+            allowed: boolean;
+            locator?: PermissionsPolicyBlockLocator;
+        }
+
+        /**
          * Information about the Frame on the page.
          */
         export interface Frame {
@@ -12007,6 +12029,14 @@ export namespace Protocol {
              * Whether to bypass page CSP.
              */
             enabled: boolean;
+        }
+
+        export interface GetPermissionsPolicyStateRequest {
+            frameId: FrameId;
+        }
+
+        export interface GetPermissionsPolicyStateResponse {
+            states: PermissionsPolicyFeatureState[];
         }
 
         export interface SetDeviceMetricsOverrideRequest {

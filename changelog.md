@@ -1,5 +1,16 @@
 
 
+## Roll protocol to r854538
+###### _2021-02-16 16:16:05 -0800_ | Diff: [014525d...13b10d1](https://github.com/ChromeDevTools/devtools-protocol/compare/014525d...13b10d1)
+#### `Network`: modified command
+* [`Network.setCookie`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setCookie) - The `url` in the parameters had `description` _updated_. The parameters's `sameParty` _added_. The parameters's `sourceScheme` _added_. The parameters's `sourcePort` _added_.
+#### `Network`: new type
+* [`Network.CookieSourceScheme`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CookieSourceScheme)
+#### `Network`: modified types
+* [`Network.Cookie`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Cookie) - The properties's `sourceScheme` _added_. The properties's `sourcePort` _added_.
+* [`Network.CookieParam`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CookieParam) - The `url` in the properties had `description` _updated_. The properties's `sameParty` _added_. The properties's `sourceScheme` _added_. The properties's `sourcePort` _added_.
+
+
 ## Roll protocol to r852555
 ###### _2021-02-10 01:16:01 -0800_ | Diff: [5a47400...014525d](https://github.com/ChromeDevTools/devtools-protocol/compare/5a47400...014525d)
 #### `Audits`: new type
