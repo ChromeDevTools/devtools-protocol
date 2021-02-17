@@ -1,5 +1,17 @@
 
 
+## Roll protocol to r852555
+###### _2021-02-10 01:16:01 -0800_ | Diff: [5a47400...014525d](https://github.com/ChromeDevTools/devtools-protocol/compare/5a47400...014525d)
+#### `Audits`: new type
+* [`Audits.CorsIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-CorsIssueDetails)
+#### `Audits`: modified types
+* [`Audits.SharedArrayBufferIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SharedArrayBufferIssueDetails) - `description` updated.
+* [`Audits.InspectorIssueCode`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueCode) - The enum's `CorsIssue` _added_.
+* [`Audits.InspectorIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueDetails) - The properties's `corsIssueDetails` _added_.
+#### `Network`: modified type
+* [`Network.PrivateNetworkRequestPolicy`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-PrivateNetworkRequestPolicy) - The enum's `WarnFromInsecureToMorePrivate` _added_.
+
+
 ## Roll protocol to r850520
 ###### _2021-02-04 02:16:11 -0800_ | Diff: [6393746...5a47400](https://github.com/ChromeDevTools/devtools-protocol/compare/6393746...5a47400)
 #### `Overlay`: new type
