@@ -1627,7 +1627,15 @@
                 },
                 {
                     "name": "checkContrast",
-                    "description": "Runs the contrast check for the target page. Found issues are reported\nusing Audits.issueAdded event."
+                    "description": "Runs the contrast check for the target page. Found issues are reported\nusing Audits.issueAdded event.",
+                    "parameters": [
+                        {
+                            "name": "reportAAA",
+                            "description": "Whether to report WCAG AAA level issues. Default is false.",
+                            "optional": true,
+                            "type": "boolean"
+                        }
+                    ]
                 }
             ],
             "events": [

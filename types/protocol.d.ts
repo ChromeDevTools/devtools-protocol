@@ -3369,6 +3369,13 @@ export namespace Protocol {
             encodedSize: integer;
         }
 
+        export interface CheckContrastRequest {
+            /**
+             * Whether to report WCAG AAA level issues. Default is false.
+             */
+            reportAAA?: boolean;
+        }
+
         export interface IssueAddedEvent {
             issue: InspectorIssue;
         }

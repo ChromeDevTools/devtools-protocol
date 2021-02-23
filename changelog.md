@@ -1,5 +1,16 @@
 
 
+## Roll protocol to r854822
+###### _2021-02-17 09:16:17 -0800_ | Diff: [13b10d1...498a1e5](https://github.com/ChromeDevTools/devtools-protocol/compare/13b10d1...498a1e5)
+#### `Page`: new command
+* [`Page.getPermissionsPolicyState`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getPermissionsPolicyState)
+#### `Page`: new types
+* [`Page.PermissionsPolicyFeature`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-PermissionsPolicyFeature)
+* [`Page.PermissionsPolicyBlockReason`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-PermissionsPolicyBlockReason)
+* [`Page.PermissionsPolicyBlockLocator`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-PermissionsPolicyBlockLocator)
+* [`Page.PermissionsPolicyFeatureState`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-PermissionsPolicyFeatureState)
+
+
 ## Roll protocol to r854538
 ###### _2021-02-16 16:16:05 -0800_ | Diff: [014525d...13b10d1](https://github.com/ChromeDevTools/devtools-protocol/compare/014525d...13b10d1)
 #### `Network`: modified command

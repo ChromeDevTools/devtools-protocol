@@ -1396,7 +1396,7 @@ export namespace ProtocolMapping {
          * using Audits.issueAdded event.
          */
         'Audits.checkContrast': {
-            paramsType: [];
+            paramsType: [Protocol.Audits.CheckContrastRequest?];
             returnType: void;
         };
         /**

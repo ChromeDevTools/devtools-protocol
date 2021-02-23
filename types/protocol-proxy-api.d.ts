@@ -798,7 +798,7 @@ export namespace ProtocolProxyApi {
          * Runs the contrast check for the target page. Found issues are reported
          * using Audits.issueAdded event.
          */
-        checkContrast(): Promise<void>;
+        checkContrast(params: Protocol.Audits.CheckContrastRequest): Promise<void>;
 
         on(event: 'issueAdded', listener: (params: Protocol.Audits.IssueAddedEvent) => void): void;
 
