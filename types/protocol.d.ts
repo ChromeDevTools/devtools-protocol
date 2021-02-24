@@ -354,32 +354,6 @@ export namespace Protocol {
             exceptionDetails?: Runtime.ExceptionDetails;
         }
 
-        export interface ExecuteWasmEvaluatorRequest {
-            /**
-             * WebAssembly call frame identifier to evaluate on.
-             */
-            callFrameId: CallFrameId;
-            /**
-             * Code of the evaluator module. (Encoded as a base64 string when passed over JSON)
-             */
-            evaluator: string;
-            /**
-             * Terminate execution after timing out (number of milliseconds).
-             */
-            timeout?: Runtime.TimeDelta;
-        }
-
-        export interface ExecuteWasmEvaluatorResponse {
-            /**
-             * Object wrapper for the evaluation result.
-             */
-            result: Runtime.RemoteObject;
-            /**
-             * Exception details.
-             */
-            exceptionDetails?: Runtime.ExceptionDetails;
-        }
-
         export interface GetPossibleBreakpointsRequest {
             /**
              * Start of range to search possible breakpoint locations in.
@@ -766,6 +740,7 @@ export namespace Protocol {
         export const enum PausedEventReason {
             Ambiguous = 'ambiguous',
             Assert = 'assert',
+            CSPViolation = 'CSPViolation',
             DebugCommand = 'debugCommand',
             DOM = 'DOM',
             EventListener = 'EventListener',
@@ -788,7 +763,7 @@ export namespace Protocol {
             /**
              * Pause reason. (PausedEventReason enum)
              */
-            reason: ('ambiguous' | 'assert' | 'debugCommand' | 'DOM' | 'EventListener' | 'exception' | 'instrumentation' | 'OOM' | 'other' | 'promiseRejection' | 'XHR');
+            reason: ('ambiguous' | 'assert' | 'CSPViolation' | 'debugCommand' | 'DOM' | 'EventListener' | 'exception' | 'instrumentation' | 'OOM' | 'other' | 'promiseRejection' | 'XHR');
             /**
              * Object containing break-specific auxiliary properties.
              */
@@ -1501,7 +1476,6 @@ export namespace Protocol {
             Boolean = 'boolean',
             Symbol = 'symbol',
             Bigint = 'bigint',
-            Wasm = 'wasm',
         }
 
         export const enum RemoteObjectSubtype {
@@ -1522,12 +1496,8 @@ export namespace Protocol {
             Typedarray = 'typedarray',
             Arraybuffer = 'arraybuffer',
             Dataview = 'dataview',
-            I32 = 'i32',
-            I64 = 'i64',
-            F32 = 'f32',
-            F64 = 'f64',
-            V128 = 'v128',
-            Externref = 'externref',
+            Webassemblymemory = 'webassemblymemory',
+            Wasmvalue = 'wasmvalue',
         }
 
         /**
@@ -1537,11 +1507,13 @@ export namespace Protocol {
             /**
              * Object type. (RemoteObjectType enum)
              */
-            type: ('object' | 'function' | 'undefined' | 'string' | 'number' | 'boolean' | 'symbol' | 'bigint' | 'wasm');
+            type: ('object' | 'function' | 'undefined' | 'string' | 'number' | 'boolean' | 'symbol' | 'bigint');
             /**
-             * Object subtype hint. Specified for `object` or `wasm` type values only. (RemoteObjectSubtype enum)
+             * Object subtype hint. Specified for `object` type values only.
+             * NOTE: If you change anything here, make sure to also update
+             * `subtype` in `ObjectPreview` and `PropertyPreview` below. (RemoteObjectSubtype enum)
              */
-            subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'dataview' | 'i32' | 'i64' | 'f32' | 'f64' | 'v128' | 'externref');
+            subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'dataview' | 'webassemblymemory' | 'wasmvalue');
             /**
              * Object class (constructor) name. Specified for `object` type values only.
              */
@@ -1608,6 +1580,13 @@ export namespace Protocol {
             Iterator = 'iterator',
             Generator = 'generator',
             Error = 'error',
+            Proxy = 'proxy',
+            Promise = 'promise',
+            Typedarray = 'typedarray',
+            Arraybuffer = 'arraybuffer',
+            Dataview = 'dataview',
+            Webassemblymemory = 'webassemblymemory',
+            Wasmvalue = 'wasmvalue',
         }
 
         /**
@@ -1621,7 +1600,7 @@ export namespace Protocol {
             /**
              * Object subtype hint. Specified for `object` type values only. (ObjectPreviewSubtype enum)
              */
-            subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error');
+            subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'dataview' | 'webassemblymemory' | 'wasmvalue');
             /**
              * String representation of the object.
              */
@@ -1665,6 +1644,13 @@ export namespace Protocol {
             Iterator = 'iterator',
             Generator = 'generator',
             Error = 'error',
+            Proxy = 'proxy',
+            Promise = 'promise',
+            Typedarray = 'typedarray',
+            Arraybuffer = 'arraybuffer',
+            Dataview = 'dataview',
+            Webassemblymemory = 'webassemblymemory',
+            Wasmvalue = 'wasmvalue',
         }
 
         export interface PropertyPreview {
@@ -1687,7 +1673,7 @@ export namespace Protocol {
             /**
              * Object subtype hint. Specified for `object` type values only. (PropertyPreviewSubtype enum)
              */
-            subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error');
+            subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'dataview' | 'webassemblymemory' | 'wasmvalue');
         }
 
         export interface EntryPreview {
@@ -1830,6 +1816,12 @@ export namespace Protocol {
              * Human readable name describing given context.
              */
             name: string;
+            /**
+             * A system-unique execution context identifier. Unlike the id, this is unique accross
+             * multiple processes, so can be reliably used to identify specific context while backend
+             * performs a cross-process navigation.
+             */
+            uniqueId: string;
             /**
              * Embedder-specific auxiliary data.
              */
@@ -2090,6 +2082,9 @@ export namespace Protocol {
             /**
              * Specifies in which execution context to perform evaluation. If the parameter is omitted the
              * evaluation will be performed in the context of the inspected page.
+             * This is mutually exclusive with `uniqueContextId`, which offers an
+             * alternative way to identify the execution context that is more reliable
+             * in a multi-process environment.
              */
             contextId?: ExecutionContextId;
             /**
@@ -2135,6 +2130,15 @@ export namespace Protocol {
              * evaluation and allows unsafe-eval. Defaults to true.
              */
             allowUnsafeEvalBlockedByCSP?: boolean;
+            /**
+             * An alternative way to specify the execution context to evaluate in.
+             * Compared to contextId that may be reused accross processes, this is guaranteed to be
+             * system-unique, so it can be used to prevent accidental evaluation of the expression
+             * in context different than intended (e.g. as a result of navigation accross process
+             * boundaries).
+             * This is mutually exclusive with `contextId`.
+             */
+            uniqueContextId?: string;
         }
 
         export interface EvaluateResponse {
@@ -2316,7 +2320,21 @@ export namespace Protocol {
 
         export interface AddBindingRequest {
             name: string;
+            /**
+             * If specified, the binding would only be exposed to the specified
+             * execution context. If omitted and `executionContextName` is not set,
+             * the binding is exposed to all execution contexts of the target.
+             * This parameter is mutually exclusive with `executionContextName`.
+             */
             executionContextId?: ExecutionContextId;
+            /**
+             * If specified, the binding is exposed to the executionContext with
+             * matching name, even for contexts created after the binding is added.
+             * See also `ExecutionContext.name` and `worldName` parameter to
+             * `Page.addScriptToEvaluateOnNewDocument`.
+             * This parameter is mutually exclusive with `executionContextId`.
+             */
+            executionContextName?: string;
         }
 
         export interface RemoveBindingRequest {

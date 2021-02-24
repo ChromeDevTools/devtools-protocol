@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r856702
+###### _2021-02-23 08:16:10 -0800_ | Diff: [498a1e5...fe49497](https://github.com/ChromeDevTools/devtools-protocol/compare/498a1e5...fe49497)
+#### `Audits`: modified command
+* [`Audits.checkContrast`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#method-checkContrast)
+
+
 ## Roll protocol to r854822
 ###### _2021-02-17 09:16:17 -0800_ | Diff: [13b10d1...498a1e5](https://github.com/ChromeDevTools/devtools-protocol/compare/13b10d1...498a1e5)
 #### `Page`: new command
