@@ -1,5 +1,21 @@
 
 
+## Roll protocol to r856957
+###### _2021-02-23 18:16:02 -0800_ | Diff: [fe49497...b726157](https://github.com/ChromeDevTools/devtools-protocol/compare/fe49497...b726157)
+#### `Debugger`: removed command
+* [`Debugger.executeWasmEvaluator`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-executeWasmEvaluator)
+#### `Debugger`: modified event
+* [`Debugger.paused`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-paused) - The `reason` in the parameters had `debugCommand` _updated_. The `reason` in the parameters had `DOM` _updated_. The `reason` in the parameters had `EventListener` _updated_. The `reason` in the parameters had `exception` _updated_. The `reason` in the parameters had `instrumentation` _updated_. The `reason` in the parameters had `OOM` _updated_. The `reason` in the parameters had `other` _updated_. The `reason` in the parameters had `promiseRejection` _updated_. The `reason` in the parameters had `XHR` _updated_. The `1` in the parameters had `XHR` _added_.
+#### `Runtime`: modified commands
+* [`Runtime.evaluate`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-evaluate) - The `contextId` in the parameters had `description` _updated_. The parameters's `uniqueContextId` _added_.
+* [`Runtime.addBinding`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-addBinding) - `description` updated. The parameters's `description` _added_. The parameters's `executionContextName` _added_.
+#### `Runtime`: modified types
+* [`Runtime.RemoteObject`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-RemoteObject) - The `type` in the properties had `wasm` _removed_. The `subtype` in the properties had `f32` _removed_. The `subtype` in the properties had `f64` _removed_. The `subtype` in the properties had `v128` _removed_. The `subtype` in the properties had `externref` _removed_. The `subtype` in the properties had `description` _updated_. The `subtype` in the properties had `i32` _updated_. The `subtype` in the properties had `i64` _updated_.
+* [`Runtime.ObjectPreview`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-ObjectPreview) - The `1` in the properties had `proxy` _added_. The `1` in the properties had `promise` _added_. The `1` in the properties had `typedarray` _added_. The `1` in the properties had `arraybuffer` _added_. The `1` in the properties had `dataview` _added_. The `1` in the properties had `webassemblymemory` _added_. The `1` in the properties had `wasmvalue` _added_.
+* [`Runtime.PropertyPreview`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-PropertyPreview) - The `4` in the properties had `proxy` _added_. The `4` in the properties had `promise` _added_. The `4` in the properties had `typedarray` _added_. The `4` in the properties had `arraybuffer` _added_. The `4` in the properties had `dataview` _added_. The `4` in the properties had `webassemblymemory` _added_. The `4` in the properties had `wasmvalue` _added_.
+* [`Runtime.ExecutionContextDescription`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-ExecutionContextDescription) - The `auxData` in the properties had `optional` _removed_. The `auxData` in the properties had `name` _updated_. The `auxData` in the properties had `description` _updated_. The `auxData` in the properties had `type` _updated_. The properties's `experimental` _added_. The properties's `auxData` _added_.
+
+
 ## Roll protocol to r856702
 ###### _2021-02-23 08:16:10 -0800_ | Diff: [498a1e5...fe49497](https://github.com/ChromeDevTools/devtools-protocol/compare/498a1e5...fe49497)
 #### `Audits`: modified command
