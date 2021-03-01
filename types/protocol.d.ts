@@ -11626,6 +11626,21 @@ export namespace Protocol {
          */
         export type ReferrerPolicy = ('noReferrer' | 'noReferrerWhenDowngrade' | 'origin' | 'originWhenCrossOrigin' | 'sameOrigin' | 'strictOrigin' | 'strictOriginWhenCrossOrigin' | 'unsafeUrl');
 
+        /**
+         * Per-script compilation cache parameters for `Page.produceCompilationCache`
+         */
+        export interface CompilationCacheParams {
+            /**
+             * The URL of the script to produce a compilation cache entry for.
+             */
+            url: string;
+            /**
+             * A hint to the backend whether eager compilation is recommended.
+             * (the actual compilation mode used is upon backend discretion).
+             */
+            eager?: boolean;
+        }
+
         export interface AddScriptToEvaluateOnLoadRequest {
             scriptSource: string;
         }
@@ -12254,6 +12269,10 @@ export namespace Protocol {
 
         export interface SetProduceCompilationCacheRequest {
             enabled: boolean;
+        }
+
+        export interface ProduceCompilationCacheRequest {
+            scripts: CompilationCacheParams[];
         }
 
         export interface AddCompilationCacheRequest {
