@@ -2107,6 +2107,24 @@
                     ]
                 },
                 {
+                    "name": "cancelDownload",
+                    "description": "Cancel a download if in progress",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "guid",
+                            "description": "Global unique identifier of the download.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "browserContextId",
+                            "description": "BrowserContext to perform the action in. When omitted, default browser context is used.",
+                            "optional": true,
+                            "$ref": "BrowserContextID"
+                        }
+                    ]
+                },
+                {
                     "name": "close",
                     "description": "Close browser gracefully."
                 },

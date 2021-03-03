@@ -853,6 +853,11 @@ export namespace ProtocolProxyApi {
         setDownloadBehavior(params: Protocol.Browser.SetDownloadBehaviorRequest): Promise<void>;
 
         /**
+         * Cancel a download if in progress
+         */
+        cancelDownload(params: Protocol.Browser.CancelDownloadRequest): Promise<void>;
+
+        /**
          * Close browser gracefully.
          */
         close(): Promise<void>;

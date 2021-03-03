@@ -3665,6 +3665,17 @@ export namespace Protocol {
             downloadPath?: string;
         }
 
+        export interface CancelDownloadRequest {
+            /**
+             * Global unique identifier of the download.
+             */
+            guid: string;
+            /**
+             * BrowserContext to perform the action in. When omitted, default browser context is used.
+             */
+            browserContextId?: BrowserContextID;
+        }
+
         export interface GetVersionResponse {
             /**
              * Protocol version.

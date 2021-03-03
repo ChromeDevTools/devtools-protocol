@@ -1447,6 +1447,13 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Cancel a download if in progress
+         */
+        'Browser.cancelDownload': {
+            paramsType: [Protocol.Browser.CancelDownloadRequest];
+            returnType: void;
+        };
+        /**
          * Close browser gracefully.
          */
         'Browser.close': {
