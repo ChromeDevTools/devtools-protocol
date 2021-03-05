@@ -236,7 +236,7 @@ const emitEvent = (event: P.Event) => {
     if (!event.parameters) {
         return
     }
-    
+
     emitInlineEnumsForEvents(event);
     emitLine()
     emitDescription(event.description)
@@ -329,6 +329,7 @@ const emitApiEvent = (event: P.Event, domainName: string, modulePrefix: string) 
     emitDescription(event.description)
     const params = event.parameters ? `params: ${prefix}${toEventPayloadName(event.name)}` : ''
     emitLine(`on(event: '${event.name}', listener: (${params}) => void): void;`)
+    emitLine(`off(event: '${event.name}', listener: (${params}) => void): void;`)
     emitLine()
 }
 
