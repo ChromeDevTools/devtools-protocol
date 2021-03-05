@@ -11807,17 +11807,29 @@ export namespace Protocol {
 
         export interface GetLayoutMetricsResponse {
             /**
-             * Metrics relating to the layout viewport.
+             * Deprecated metrics relating to the layout viewport. Can be in DP or in CSS pixels depending on the `enable-use-zoom-for-dsf` flag. Use `normalisedLayoutViewport` instead.
              */
             layoutViewport: LayoutViewport;
             /**
-             * Metrics relating to the visual viewport.
+             * Deprecated metrics relating to the visual viewport. Can be in DP or in CSS pixels depending on the `enable-use-zoom-for-dsf` flag. Use `normalisedVisualViewport` instead.
              */
             visualViewport: VisualViewport;
             /**
-             * Size of scrollable area.
+             * Deprecated size of scrollable area. Can be in DP or in CSS pixels depending on the `enable-use-zoom-for-dsf` flag. Use `normalisedContentSize` instead.
              */
             contentSize: DOM.Rect;
+            /**
+             * Metrics relating to the layout viewport in CSS pixels.
+             */
+            cssLayoutViewport: LayoutViewport;
+            /**
+             * Metrics relating to the visual viewport in CSS pixels.
+             */
+            cssVisualViewport: VisualViewport;
+            /**
+             * Size of scrollable area in CSS pixels.
+             */
+            cssContentSize: DOM.Rect;
         }
 
         export interface GetNavigationHistoryResponse {

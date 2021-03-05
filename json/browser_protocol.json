@@ -14539,17 +14539,35 @@
                     "returns": [
                         {
                             "name": "layoutViewport",
-                            "description": "Metrics relating to the layout viewport.",
+                            "description": "Deprecated metrics relating to the layout viewport. Can be in DP or in CSS pixels depending on the `enable-use-zoom-for-dsf` flag. Use `normalisedLayoutViewport` instead.",
+                            "deprecated": true,
                             "$ref": "LayoutViewport"
                         },
                         {
                             "name": "visualViewport",
-                            "description": "Metrics relating to the visual viewport.",
+                            "description": "Deprecated metrics relating to the visual viewport. Can be in DP or in CSS pixels depending on the `enable-use-zoom-for-dsf` flag. Use `normalisedVisualViewport` instead.",
+                            "deprecated": true,
                             "$ref": "VisualViewport"
                         },
                         {
                             "name": "contentSize",
-                            "description": "Size of scrollable area.",
+                            "description": "Deprecated size of scrollable area. Can be in DP or in CSS pixels depending on the `enable-use-zoom-for-dsf` flag. Use `normalisedContentSize` instead.",
+                            "deprecated": true,
+                            "$ref": "DOM.Rect"
+                        },
+                        {
+                            "name": "cssLayoutViewport",
+                            "description": "Metrics relating to the layout viewport in CSS pixels.",
+                            "$ref": "LayoutViewport"
+                        },
+                        {
+                            "name": "cssVisualViewport",
+                            "description": "Metrics relating to the visual viewport in CSS pixels.",
+                            "$ref": "VisualViewport"
+                        },
+                        {
+                            "name": "cssContentSize",
+                            "description": "Size of scrollable area in CSS pixels.",
                             "$ref": "DOM.Rect"
                         }
                     ]

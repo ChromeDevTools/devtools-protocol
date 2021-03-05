@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r859327
+###### _2021-03-03 04:16:01 -0800_ | Diff: [dee574b...219a9d6](https://github.com/ChromeDevTools/devtools-protocol/compare/dee574b...219a9d6)
+#### `Browser`: new command
+* [`Browser.cancelDownload`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-cancelDownload)
+
+
 ## Roll protocol to r858754
 ###### _2021-03-01 15:16:13 -0800_ | Diff: [78470ce...dee574b](https://github.com/ChromeDevTools/devtools-protocol/compare/78470ce...dee574b)
 #### `Page`: new command
