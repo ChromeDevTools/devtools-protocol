@@ -3842,6 +3842,14 @@ export namespace ProtocolMapping {
             returnType: Protocol.Storage.GetTrustTokensResponse;
         };
         /**
+         * Removes all Trust Tokens issued by the provided issuerOrigin.
+         * Leaves other stored data, including the issuer's Redemption Records, intact.
+         */
+        'Storage.clearTrustTokens': {
+            paramsType: [Protocol.Storage.ClearTrustTokensRequest];
+            returnType: Protocol.Storage.ClearTrustTokensResponse;
+        };
+        /**
          * Returns information about the system.
          */
         'SystemInfo.getInfo': {

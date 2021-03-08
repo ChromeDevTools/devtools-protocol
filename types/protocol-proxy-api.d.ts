@@ -3099,6 +3099,12 @@ export namespace ProtocolProxyApi {
         getTrustTokens(): Promise<Protocol.Storage.GetTrustTokensResponse>;
 
         /**
+         * Removes all Trust Tokens issued by the provided issuerOrigin.
+         * Leaves other stored data, including the issuer's Redemption Records, intact.
+         */
+        clearTrustTokens(params: Protocol.Storage.ClearTrustTokensRequest): Promise<Protocol.Storage.ClearTrustTokensResponse>;
+
+        /**
          * A cache's contents have been modified.
          */
         on(event: 'cacheStorageContentUpdated', listener: (params: Protocol.Storage.CacheStorageContentUpdatedEvent) => void): void;

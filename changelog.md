@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r860415
+###### _2021-03-05 15:16:15 -0800_ | Diff: [219a9d6...f3a387f](https://github.com/ChromeDevTools/devtools-protocol/compare/219a9d6...f3a387f)
+#### `Page`: modified command
+* [`Page.getLayoutMetrics`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getLayoutMetrics) - The `layoutViewport` in the return value had `description` _updated_. The `visualViewport` in the return value had `description` _updated_. The `contentSize` in the return value had `description` _updated_. The return value's `deprecated` _added_ (3 times). The return value's `cssLayoutViewport` _added_. The return value's `cssVisualViewport` _added_. The return value's `cssContentSize` _added_.
+
+
 ## Roll protocol to r859327
 ###### _2021-03-03 04:16:01 -0800_ | Diff: [dee574b...219a9d6](https://github.com/ChromeDevTools/devtools-protocol/compare/dee574b...219a9d6)
 #### `Browser`: new command

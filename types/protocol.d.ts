@@ -13377,6 +13377,17 @@ export namespace Protocol {
             tokens: TrustTokens[];
         }
 
+        export interface ClearTrustTokensRequest {
+            issuerOrigin: string;
+        }
+
+        export interface ClearTrustTokensResponse {
+            /**
+             * True if any tokens were deleted, false otherwise.
+             */
+            didDeleteTokens: boolean;
+        }
+
         /**
          * A cache's contents have been modified.
          */
