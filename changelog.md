@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r860658
+###### _2021-03-08 01:16:00 -0800_ | Diff: [f3a387f...4d52df1](https://github.com/ChromeDevTools/devtools-protocol/compare/f3a387f...4d52df1)
+#### `Storage`: new command
+* [`Storage.clearTrustTokens`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#method-clearTrustTokens)
+
+
 ## Roll protocol to r860415
 ###### _2021-03-05 15:16:15 -0800_ | Diff: [219a9d6...f3a387f](https://github.com/ChromeDevTools/devtools-protocol/compare/219a9d6...f3a387f)
 #### `Page`: modified command
