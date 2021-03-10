@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r860858
+###### _2021-03-08 13:16:14 -0800_ | Diff: [5fd49a5...1cdf17e](https://github.com/ChromeDevTools/devtools-protocol/compare/5fd49a5...1cdf17e)
+#### `Network`: modified type
+* [`Network.CrossOriginEmbedderPolicyValue`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CrossOriginEmbedderPolicyValue) - The enum's `RequireCorp` _updated_. The enum's `RequireCorp` _added_.
+
+
 ## Roll protocol to r860658
 ###### _2021-03-08 01:16:00 -0800_ | Diff: [f3a387f...4d52df1](https://github.com/ChromeDevTools/devtools-protocol/compare/f3a387f...4d52df1)
 #### `Storage`: new command
