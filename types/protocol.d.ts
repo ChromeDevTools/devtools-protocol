@@ -13774,7 +13774,7 @@ export namespace Protocol {
 
         export interface CreateTargetRequest {
             /**
-             * The initial URL the page will be navigated to.
+             * The initial URL the page will be navigated to. An empty string indicates about:blank.
              */
             url: string;
             /**

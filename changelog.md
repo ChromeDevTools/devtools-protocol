@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r861447
+###### _2021-03-09 22:16:12 -0800_ | Diff: [b434e14...7622144](https://github.com/ChromeDevTools/devtools-protocol/compare/b434e14...7622144)
+#### `Page`: removed event
+* [`Page.historyNavigationOutcomeReported`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-historyNavigationOutcomeReported)
+
+
 ## Roll protocol to r861373
 ###### _2021-03-09 17:16:11 -0800_ | Diff: [1cdf17e...b434e14](https://github.com/ChromeDevTools/devtools-protocol/compare/1cdf17e...b434e14)
 #### `Page`: new event
