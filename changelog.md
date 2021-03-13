@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r861504
+###### _2021-03-10 02:16:14 -0800_ | Diff: [7622144...3704a77](https://github.com/ChromeDevTools/devtools-protocol/compare/7622144...3704a77)
+#### `Target`: modified command
+* [`Target.createTarget`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-createTarget) - The `url` in the parameters had `description` _updated_.
+
+
 ## Roll protocol to r861447
 ###### _2021-03-09 22:16:12 -0800_ | Diff: [b434e14...7622144](https://github.com/ChromeDevTools/devtools-protocol/compare/b434e14...7622144)
 #### `Page`: removed event
