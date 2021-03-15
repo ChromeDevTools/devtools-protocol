@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r862653
+###### _2021-03-12 20:16:21 -0800_ | Diff: [3704a77...c5bd6c3](https://github.com/ChromeDevTools/devtools-protocol/compare/3704a77...c5bd6c3)
+#### `Network`: modified type
+* [`Network.BlockedReason`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-BlockedReason) - The enum's `corp-not-same-site` _removed_. The enum's `collapsed-by-client` _updated_. The enum's `coep-frame-resource-needs-coep-header` _updated_. The enum's `coop-sandboxed-iframe-cannot-navigate-to-coop-page` _updated_. The enum's `corp-not-same-origin` _updated_. The enum's `corp-not-same-origin-after-defaulted-to-same-origin-by-coep` _updated_.
+
+
 ## Roll protocol to r861504
 ###### _2021-03-10 02:16:14 -0800_ | Diff: [7622144...3704a77](https://github.com/ChromeDevTools/devtools-protocol/compare/7622144...3704a77)
 #### `Target`: modified command

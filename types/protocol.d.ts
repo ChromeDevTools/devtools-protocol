@@ -14070,6 +14070,15 @@ export namespace Protocol {
          */
         export type MemoryDumpLevelOfDetail = ('background' | 'light' | 'detailed');
 
+        /**
+         * Backend type to use for tracing. `chrome` uses the Chrome-integrated
+         * tracing service and is supported on all platforms. `system` is only
+         * supported on Chrome OS and uses the Perfetto system tracing service.
+         * `auto` chooses `system` when the perfettoConfig provided to Tracing.start
+         * specifies at least one non-Chrome data source; otherwise uses `chrome`.
+         */
+        export type TracingBackend = ('auto' | 'chrome' | 'system');
+
         export interface GetCategoriesResponse {
             /**
              * A list of supported tracing categories.
@@ -14146,6 +14155,10 @@ export namespace Protocol {
              * are ignored. (Encoded as a base64 string when passed over JSON)
              */
             perfettoConfig?: string;
+            /**
+             * Backend type (defaults to `auto`)
+             */
+            tracingBackend?: TracingBackend;
         }
 
         export interface BufferUsageEvent {
