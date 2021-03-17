@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r862770
+###### _2021-03-15 04:16:04_ | Diff: [c5bd6c3...576a381](https://github.com/ChromeDevTools/devtools-protocol/compare/c5bd6c3...576a381)
+#### `Tracing`: modified command
+* [`Tracing.start`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#method-start) - The parameters's `tracingBackend` _added_.
+#### `Tracing`: new type
+* [`Tracing.TracingBackend`](https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#type-TracingBackend)
+
+
 ## Roll protocol to r862653
 ###### _2021-03-12 20:16:21 -0800_ | Diff: [3704a77...c5bd6c3](https://github.com/ChromeDevTools/devtools-protocol/compare/3704a77...c5bd6c3)
 #### `Network`: modified type
