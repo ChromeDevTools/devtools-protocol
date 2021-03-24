@@ -9529,6 +9529,11 @@ export namespace Protocol {
             errors?: SignedExchangeError[];
         }
 
+        /**
+         * List of content encodings supported by the backend.
+         */
+        export type ContentEncoding = ('deflate' | 'gzip' | 'br');
+
         export type PrivateNetworkRequestPolicy = ('Allow' | 'BlockFromInsecureToMorePrivate' | 'WarnFromInsecureToMorePrivate');
 
         export type IPAddressSpace = ('Local' | 'Private' | 'Public' | 'Unknown');
@@ -9590,6 +9595,13 @@ export namespace Protocol {
         export interface LoadNetworkResourceOptions {
             disableCache: boolean;
             includeCredentials: boolean;
+        }
+
+        export interface SetAcceptedEncodingsRequest {
+            /**
+             * List of accepted content encodings.
+             */
+            encodings: ContentEncoding[];
         }
 
         export interface CanClearBrowserCacheResponse {
