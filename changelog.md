@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r866105
+###### _2021-03-24 07:16:09_ | Diff: [6024018...70fd1b8](https://github.com/ChromeDevTools/devtools-protocol/compare/6024018...70fd1b8)
+#### `Network`: new commands
+* [`Network.setAcceptedEncodings`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setAcceptedEncodings)
+* [`Network.clearAcceptedEncodingsOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-clearAcceptedEncodingsOverride)
+#### `Network`: new type
+* [`Network.ContentEncoding`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ContentEncoding)
+
+
 ## Roll protocol to r863986
 ###### _2021-03-17 16:16:09_ | Diff: [576a381...6024018](https://github.com/ChromeDevTools/devtools-protocol/compare/576a381...6024018)
 #### `Page`: modified command

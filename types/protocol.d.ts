@@ -3311,6 +3311,7 @@ export namespace Protocol {
             corsErrorStatus: Network.CorsErrorStatus;
             isWarning: boolean;
             request: AffectedRequest;
+            initiatorOrigin?: string;
             resourceIPAddressSpace?: Network.IPAddressSpace;
             clientSecurityState?: Network.ClientSecurityState;
         }
