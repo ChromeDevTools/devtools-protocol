@@ -3200,6 +3200,10 @@ export namespace ProtocolMapping {
             paramsType: [Protocol.Overlay.SetShowFlexOverlaysRequest];
             returnType: void;
         };
+        'Overlay.setShowScrollSnapOverlays': {
+            paramsType: [Protocol.Overlay.SetShowScrollSnapOverlaysRequest];
+            returnType: void;
+        };
         /**
          * Requests that backend shows paint rectangles
          */

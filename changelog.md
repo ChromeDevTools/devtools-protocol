@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r866556
+###### _2021-03-25 05:16:07_ | Diff: [70fd1b8...f7c029d](https://github.com/ChromeDevTools/devtools-protocol/compare/70fd1b8...f7c029d)
+#### `Audits`: modified type
+* [`Audits.CorsIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-CorsIssueDetails) - The `resourceIPAddressSpace` in the properties had `$ref` _removed_. The `resourceIPAddressSpace` in the properties had `name` _updated_. The `clientSecurityState` in the properties had `name` _updated_. The `clientSecurityState` in the properties had `$ref` _updated_. The properties's `type` _added_. The properties's `clientSecurityState` _added_.
+
+
 ## Roll protocol to r866105
 ###### _2021-03-24 07:16:09_ | Diff: [6024018...70fd1b8](https://github.com/ChromeDevTools/devtools-protocol/compare/6024018...70fd1b8)
 #### `Network`: new commands
