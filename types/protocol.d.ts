@@ -10889,6 +10889,36 @@ export namespace Protocol {
             nodeId: DOM.NodeId;
         }
 
+        export interface ScrollSnapContainerHighlightConfig {
+            /**
+             * The style of the snapport border (default: transparent)
+             */
+            snapportBorder?: LineStyle;
+            /**
+             * The style of the snap area border (default: transparent)
+             */
+            snapAreaBorder?: LineStyle;
+            /**
+             * The margin highlight fill color (default: transparent).
+             */
+            scrollMarginColor?: DOM.RGBA;
+            /**
+             * The padding highlight fill color (default: transparent).
+             */
+            scrollPaddingColor?: DOM.RGBA;
+        }
+
+        export interface ScrollSnapHighlightConfig {
+            /**
+             * A descriptor for the highlight appearance of scroll snap containers.
+             */
+            scrollSnapContainerHighlightConfig: ScrollSnapContainerHighlightConfig;
+            /**
+             * Identifier of the node to highlight.
+             */
+            nodeId: DOM.NodeId;
+        }
+
         /**
          * Configuration for dual screen hinge
          */
@@ -11118,6 +11148,13 @@ export namespace Protocol {
              * An array of node identifiers and descriptors for the highlight appearance.
              */
             flexNodeHighlightConfigs: FlexNodeHighlightConfig[];
+        }
+
+        export interface SetShowScrollSnapOverlaysRequest {
+            /**
+             * An array of node identifiers and descriptors for the highlight appearance.
+             */
+            scrollSnapHighlightConfigs: ScrollSnapHighlightConfig[];
         }
 
         export interface SetShowPaintRectsRequest {

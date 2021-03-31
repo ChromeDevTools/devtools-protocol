@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r867593
+###### _2021-03-30 07:16:08_ | Diff: [154b166...3948369](https://github.com/ChromeDevTools/devtools-protocol/compare/154b166...3948369)
+#### `Overlay`: removed command
+* [`Overlay.setShowScrollSnapOverlays`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-setShowScrollSnapOverlays)
+#### `Overlay`: removed types
+* [`Overlay.ScrollSnapContainerHighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-ScrollSnapContainerHighlightConfig)
+* [`Overlay.ScrollSnapHighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-ScrollSnapHighlightConfig)
+
+
 ## Roll protocol to r867545
 ###### _2021-03-30 03:16:09_ | Diff: [f7c029d...154b166](https://github.com/ChromeDevTools/devtools-protocol/compare/f7c029d...154b166)
 #### `Overlay`: new command
