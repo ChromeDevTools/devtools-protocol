@@ -2108,6 +2108,12 @@
                             "description": "The default path to save downloaded files to. This is requred if behavior is set to 'allow'\nor 'allowAndName'.",
                             "optional": true,
                             "type": "string"
+                        },
+                        {
+                            "name": "eventsEnabled",
+                            "description": "Whether to emit download events (defaults to false).",
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ]
                 },
@@ -2330,6 +2336,67 @@
                         {
                             "name": "commandId",
                             "$ref": "BrowserCommandId"
+                        }
+                    ]
+                }
+            ],
+            "events": [
+                {
+                    "name": "downloadWillBegin",
+                    "description": "Fired when page is about to start a download.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "frameId",
+                            "description": "Id of the frame that caused the download to begin.",
+                            "$ref": "Page.FrameId"
+                        },
+                        {
+                            "name": "guid",
+                            "description": "Global unique identifier of the download.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "url",
+                            "description": "URL of the resource being downloaded.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "suggestedFilename",
+                            "description": "Suggested file name of the resource (the actual name of the file saved on disk may differ).",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "downloadProgress",
+                    "description": "Fired when download makes progress. Last call has |done| == true.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "guid",
+                            "description": "Global unique identifier of the download.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "totalBytes",
+                            "description": "Total expected bytes to download.",
+                            "type": "number"
+                        },
+                        {
+                            "name": "receivedBytes",
+                            "description": "Total bytes received.",
+                            "type": "number"
+                        },
+                        {
+                            "name": "state",
+                            "description": "Download status.",
+                            "type": "string",
+                            "enum": [
+                                "inProgress",
+                                "completed",
+                                "canceled"
+                            ]
                         }
                     ]
                 }
@@ -15743,8 +15810,9 @@
                 },
                 {
                     "name": "downloadWillBegin",
-                    "description": "Fired when page is about to start a download.",
+                    "description": "Fired when page is about to start a download.\nDeprecated. Use Browser.downloadWillBegin instead.",
                     "experimental": true,
+                    "deprecated": true,
                     "parameters": [
                         {
                             "name": "frameId",
@@ -15770,8 +15838,9 @@
                 },
                 {
                     "name": "downloadProgress",
-                    "description": "Fired when download makes progress. Last call has |done| == true.",
+                    "description": "Fired when download makes progress. Last call has |done| == true.\nDeprecated. Use Browser.downloadProgress instead.",
                     "experimental": true,
+                    "deprecated": true,
                     "parameters": [
                         {
                             "name": "guid",

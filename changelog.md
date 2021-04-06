@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r869402
+###### _2021-04-05 23:16:05_ | Diff: [a3a5f92...0210b99](https://github.com/ChromeDevTools/devtools-protocol/compare/a3a5f92...0210b99)
+#### `Input`: new command
+* [`Input.dispatchDragEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-dispatchDragEvent)
+#### `Input`: new types
+* [`Input.DragDataItem`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#type-DragDataItem)
+* [`Input.DragData`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#type-DragData)
+
+
 ## Roll protocol to r868034
 ###### _2021-03-31 03:16:20_ | Diff: [3948369...a3a5f92](https://github.com/ChromeDevTools/devtools-protocol/compare/3948369...a3a5f92)
 #### `Overlay`: new command

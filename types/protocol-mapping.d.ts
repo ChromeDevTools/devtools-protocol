@@ -117,6 +117,14 @@ export namespace ProtocolMapping {
          */
         'BackgroundService.backgroundServiceEventReceived': [Protocol.BackgroundService.BackgroundServiceEventReceivedEvent];
         /**
+         * Fired when page is about to start a download.
+         */
+        'Browser.downloadWillBegin': [Protocol.Browser.DownloadWillBeginEvent];
+        /**
+         * Fired when download makes progress. Last call has |done| == true.
+         */
+        'Browser.downloadProgress': [Protocol.Browser.DownloadProgressEvent];
+        /**
          * Fires whenever a web font is updated.  A non-empty font parameter indicates a successfully loaded
          * web font
          */
@@ -402,10 +410,12 @@ export namespace ProtocolMapping {
         'Page.frameStoppedLoading': [Protocol.Page.FrameStoppedLoadingEvent];
         /**
          * Fired when page is about to start a download.
+         * Deprecated. Use Browser.downloadWillBegin instead.
          */
         'Page.downloadWillBegin': [Protocol.Page.DownloadWillBeginEvent];
         /**
          * Fired when download makes progress. Last call has |done| == true.
+         * Deprecated. Use Browser.downloadProgress instead.
          */
         'Page.downloadProgress': [Protocol.Page.DownloadProgressEvent];
         /**

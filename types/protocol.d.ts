@@ -3664,6 +3664,10 @@ export namespace Protocol {
              * or 'allowAndName'.
              */
             downloadPath?: string;
+            /**
+             * Whether to emit download events (defaults to false).
+             */
+            eventsEnabled?: boolean;
         }
 
         export interface CancelDownloadRequest {
@@ -3801,6 +3805,56 @@ export namespace Protocol {
 
         export interface ExecuteBrowserCommandRequest {
             commandId: BrowserCommandId;
+        }
+
+        /**
+         * Fired when page is about to start a download.
+         */
+        export interface DownloadWillBeginEvent {
+            /**
+             * Id of the frame that caused the download to begin.
+             */
+            frameId: Page.FrameId;
+            /**
+             * Global unique identifier of the download.
+             */
+            guid: string;
+            /**
+             * URL of the resource being downloaded.
+             */
+            url: string;
+            /**
+             * Suggested file name of the resource (the actual name of the file saved on disk may differ).
+             */
+            suggestedFilename: string;
+        }
+
+        export const enum DownloadProgressEventState {
+            InProgress = 'inProgress',
+            Completed = 'completed',
+            Canceled = 'canceled',
+        }
+
+        /**
+         * Fired when download makes progress. Last call has |done| == true.
+         */
+        export interface DownloadProgressEvent {
+            /**
+             * Global unique identifier of the download.
+             */
+            guid: string;
+            /**
+             * Total expected bytes to download.
+             */
+            totalBytes: number;
+            /**
+             * Total bytes received.
+             */
+            receivedBytes: number;
+            /**
+             * Download status. (DownloadProgressEventState enum)
+             */
+            state: ('inProgress' | 'completed' | 'canceled');
         }
     }
 
@@ -12591,6 +12645,7 @@ export namespace Protocol {
 
         /**
          * Fired when page is about to start a download.
+         * Deprecated. Use Browser.downloadWillBegin instead.
          */
         export interface DownloadWillBeginEvent {
             /**
@@ -12619,6 +12674,7 @@ export namespace Protocol {
 
         /**
          * Fired when download makes progress. Last call has |done| == true.
+         * Deprecated. Use Browser.downloadProgress instead.
          */
         export interface DownloadProgressEvent {
             /**

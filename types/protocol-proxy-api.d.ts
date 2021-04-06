@@ -918,6 +918,16 @@ export namespace ProtocolProxyApi {
          */
         executeBrowserCommand(params: Protocol.Browser.ExecuteBrowserCommandRequest): Promise<void>;
 
+        /**
+         * Fired when page is about to start a download.
+         */
+        on(event: 'downloadWillBegin', listener: (params: Protocol.Browser.DownloadWillBeginEvent) => void): void;
+
+        /**
+         * Fired when download makes progress. Last call has |done| == true.
+         */
+        on(event: 'downloadProgress', listener: (params: Protocol.Browser.DownloadProgressEvent) => void): void;
+
     }
 
     export interface CSSApi {
@@ -2866,11 +2876,13 @@ export namespace ProtocolProxyApi {
 
         /**
          * Fired when page is about to start a download.
+         * Deprecated. Use Browser.downloadWillBegin instead.
          */
         on(event: 'downloadWillBegin', listener: (params: Protocol.Page.DownloadWillBeginEvent) => void): void;
 
         /**
          * Fired when download makes progress. Last call has |done| == true.
+         * Deprecated. Use Browser.downloadProgress instead.
          */
         on(event: 'downloadProgress', listener: (params: Protocol.Page.DownloadProgressEvent) => void): void;
 
