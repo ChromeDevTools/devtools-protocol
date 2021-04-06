@@ -1852,6 +1852,11 @@ export namespace ProtocolProxyApi {
 
     export interface InputApi {
         /**
+         * Dispatches a drag event into the page.
+         */
+        dispatchDragEvent(params: Protocol.Input.DispatchDragEventRequest): Promise<void>;
+
+        /**
          * Dispatches a key event to the page.
          */
         dispatchKeyEvent(params: Protocol.Input.DispatchKeyEventRequest): Promise<void>;

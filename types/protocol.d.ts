@@ -7700,6 +7700,64 @@ export namespace Protocol {
          */
         export type TimeSinceEpoch = number;
 
+        export interface DragDataItem {
+            /**
+             * Mime type of the dragged data.
+             */
+            mimeType: string;
+            /**
+             * Depending of the value of `mimeType`, it contains the dragged link,
+             * text, HTML markup or any other data.
+             */
+            data: string;
+            /**
+             * Title associated with a link. Only valid when `mimeType` == "text/uri-list".
+             */
+            title?: string;
+            /**
+             * Stores the base URL for the contained markup. Only valid when `mimeType`
+             * == "text/html".
+             */
+            baseURL?: string;
+        }
+
+        export interface DragData {
+            items: DragDataItem[];
+            /**
+             * Bit field representing allowed drag operations. Copy = 1, Link = 2, Move = 16
+             */
+            dragOperationsMask: integer;
+        }
+
+        export const enum DispatchDragEventRequestType {
+            DragEnter = 'dragEnter',
+            DragOver = 'dragOver',
+            Drop = 'drop',
+            DragCancel = 'dragCancel',
+        }
+
+        export interface DispatchDragEventRequest {
+            /**
+             * Type of the drag event. (DispatchDragEventRequestType enum)
+             */
+            type: ('dragEnter' | 'dragOver' | 'drop' | 'dragCancel');
+            /**
+             * X coordinate of the event relative to the main frame's viewport in CSS pixels.
+             */
+            x: number;
+            /**
+             * Y coordinate of the event relative to the main frame's viewport in CSS pixels. 0 refers to
+             * the top of the viewport and Y increases as it proceeds towards the bottom of the viewport.
+             */
+            y: number;
+            data: DragData;
+            /**
+             * Bit field representing pressed modifier keys. Alt=1, Ctrl=2, Meta/Command=4, Shift=8
+             * (default: 0).
+             */
+            modifiers?: integer;
+        }
+
         export const enum DispatchKeyEventRequestType {
             KeyDown = 'keyDown',
             KeyUp = 'keyUp',

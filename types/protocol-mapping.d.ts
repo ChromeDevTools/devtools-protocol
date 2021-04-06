@@ -2594,6 +2594,13 @@ export namespace ProtocolMapping {
             returnType: Protocol.IndexedDB.RequestDatabaseNamesResponse;
         };
         /**
+         * Dispatches a drag event into the page.
+         */
+        'Input.dispatchDragEvent': {
+            paramsType: [Protocol.Input.DispatchDragEventRequest];
+            returnType: void;
+        };
+        /**
          * Dispatches a key event to the page.
          */
         'Input.dispatchKeyEvent': {

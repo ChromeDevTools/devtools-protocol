@@ -8295,9 +8295,95 @@
                     "id": "TimeSinceEpoch",
                     "description": "UTC time in seconds, counted from January 1, 1970.",
                     "type": "number"
+                },
+                {
+                    "id": "DragDataItem",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "mimeType",
+                            "description": "Mime type of the dragged data.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "data",
+                            "description": "Depending of the value of `mimeType`, it contains the dragged link,\ntext, HTML markup or any other data.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "title",
+                            "description": "Title associated with a link. Only valid when `mimeType` == \"text/uri-list\".",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "baseURL",
+                            "description": "Stores the base URL for the contained markup. Only valid when `mimeType`\n== \"text/html\".",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "id": "DragData",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "items",
+                            "type": "array",
+                            "items": {
+                                "$ref": "DragDataItem"
+                            }
+                        },
+                        {
+                            "name": "dragOperationsMask",
+                            "description": "Bit field representing allowed drag operations. Copy = 1, Link = 2, Move = 16",
+                            "type": "integer"
+                        }
+                    ]
                 }
             ],
             "commands": [
+                {
+                    "name": "dispatchDragEvent",
+                    "description": "Dispatches a drag event into the page.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "type",
+                            "description": "Type of the drag event.",
+                            "type": "string",
+                            "enum": [
+                                "dragEnter",
+                                "dragOver",
+                                "drop",
+                                "dragCancel"
+                            ]
+                        },
+                        {
+                            "name": "x",
+                            "description": "X coordinate of the event relative to the main frame's viewport in CSS pixels.",
+                            "type": "number"
+                        },
+                        {
+                            "name": "y",
+                            "description": "Y coordinate of the event relative to the main frame's viewport in CSS pixels. 0 refers to\nthe top of the viewport and Y increases as it proceeds towards the bottom of the viewport.",
+                            "type": "number"
+                        },
+                        {
+                            "name": "data",
+                            "$ref": "DragData"
+                        },
+                        {
+                            "name": "modifiers",
+                            "description": "Bit field representing pressed modifier keys. Alt=1, Ctrl=2, Meta/Command=4, Shift=8\n(default: 0).",
+                            "optional": true,
+                            "type": "integer"
+                        }
+                    ]
+                },
                 {
                     "name": "dispatchKeyEvent",
                     "description": "Dispatches a key event to the page.",
