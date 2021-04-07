@@ -8794,6 +8794,17 @@
                     ]
                 },
                 {
+                    "name": "setInterceptDrags",
+                    "description": "Prevents default drag and drop behavior and instead emits `Input.dragIntercepted` events.\nDrag and drop behavior can be directly controlled via `Input.dispatchDragEvent`.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "enabled",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
                     "name": "synthesizePinchGesture",
                     "description": "Synthesizes a pinch gesture over a time period by issuing appropriate touch events.",
                     "experimental": true,
@@ -8936,6 +8947,19 @@
                             "description": "Which type of input events to be generated (default: 'default', which queries the platform\nfor the preferred input type).",
                             "optional": true,
                             "$ref": "GestureSourceType"
+                        }
+                    ]
+                }
+            ],
+            "events": [
+                {
+                    "name": "dragIntercepted",
+                    "description": "Emitted only when `Input.setInterceptDrags` is enabled. Use this data with `Input.dispatchDragEvent` to\nrestore normal drag and drop behavior.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "data",
+                            "$ref": "DragData"
                         }
                     ]
                 }

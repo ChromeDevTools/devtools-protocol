@@ -1898,6 +1898,12 @@ export namespace ProtocolProxyApi {
         setIgnoreInputEvents(params: Protocol.Input.SetIgnoreInputEventsRequest): Promise<void>;
 
         /**
+         * Prevents default drag and drop behavior and instead emits `Input.dragIntercepted` events.
+         * Drag and drop behavior can be directly controlled via `Input.dispatchDragEvent`.
+         */
+        setInterceptDrags(params: Protocol.Input.SetInterceptDragsRequest): Promise<void>;
+
+        /**
          * Synthesizes a pinch gesture over a time period by issuing appropriate touch events.
          */
         synthesizePinchGesture(params: Protocol.Input.SynthesizePinchGestureRequest): Promise<void>;
@@ -1911,6 +1917,12 @@ export namespace ProtocolProxyApi {
          * Synthesizes a tap gesture over a time period by issuing appropriate touch events.
          */
         synthesizeTapGesture(params: Protocol.Input.SynthesizeTapGestureRequest): Promise<void>;
+
+        /**
+         * Emitted only when `Input.setInterceptDrags` is enabled. Use this data with `Input.dispatchDragEvent` to
+         * restore normal drag and drop behavior.
+         */
+        on(event: 'dragIntercepted', listener: (params: Protocol.Input.DragInterceptedEvent) => void): void;
 
     }
 

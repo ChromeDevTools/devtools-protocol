@@ -1,5 +1,17 @@
 
 
+## Roll protocol to r869754
+###### _2021-04-06 16:16:23_ | Diff: [0210b99...b2ed548](https://github.com/ChromeDevTools/devtools-protocol/compare/0210b99...b2ed548)
+#### `Browser`: modified command
+* [`Browser.setDownloadBehavior`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-setDownloadBehavior) - The parameters's `eventsEnabled` _added_.
+#### `Browser`: new events
+* [`Browser.downloadWillBegin`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#event-downloadWillBegin)
+* [`Browser.downloadProgress`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#event-downloadProgress)
+#### `Page`: modified events
+* [`Page.downloadWillBegin`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-downloadWillBegin) - `description` updated. `deprecated` added.
+* [`Page.downloadProgress`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-downloadProgress) - `description` updated. `deprecated` added.
+
+
 ## Roll protocol to r869402
 ###### _2021-04-05 23:16:05_ | Diff: [a3a5f92...0210b99](https://github.com/ChromeDevTools/devtools-protocol/compare/a3a5f92...0210b99)
 #### `Input`: new command

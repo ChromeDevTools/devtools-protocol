@@ -229,6 +229,11 @@ export namespace ProtocolMapping {
          */
         'HeadlessExperimental.needsBeginFramesChanged': [Protocol.HeadlessExperimental.NeedsBeginFramesChangedEvent];
         /**
+         * Emitted only when `Input.setInterceptDrags` is enabled. Use this data with `Input.dispatchDragEvent` to
+         * restore normal drag and drop behavior.
+         */
+        'Input.dragIntercepted': [Protocol.Input.DragInterceptedEvent];
+        /**
          * Fired when remote debugging connection is about to be terminated. Contains detach reason.
          */
         'Inspector.detached': [Protocol.Inspector.DetachedEvent];
@@ -2651,6 +2656,14 @@ export namespace ProtocolMapping {
          */
         'Input.setIgnoreInputEvents': {
             paramsType: [Protocol.Input.SetIgnoreInputEventsRequest];
+            returnType: void;
+        };
+        /**
+         * Prevents default drag and drop behavior and instead emits `Input.dragIntercepted` events.
+         * Drag and drop behavior can be directly controlled via `Input.dispatchDragEvent`.
+         */
+        'Input.setInterceptDrags': {
+            paramsType: [Protocol.Input.SetInterceptDragsRequest];
             returnType: void;
         };
         /**

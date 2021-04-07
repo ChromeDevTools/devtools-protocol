@@ -8062,6 +8062,10 @@ export namespace Protocol {
             ignore: boolean;
         }
 
+        export interface SetInterceptDragsRequest {
+            enabled: boolean;
+        }
+
         export interface SynthesizePinchGestureRequest {
             /**
              * X coordinate of the start of the gesture in CSS pixels.
@@ -8162,6 +8166,14 @@ export namespace Protocol {
              * for the preferred input type).
              */
             gestureSourceType?: GestureSourceType;
+        }
+
+        /**
+         * Emitted only when `Input.setInterceptDrags` is enabled. Use this data with `Input.dispatchDragEvent` to
+         * restore normal drag and drop behavior.
+         */
+        export interface DragInterceptedEvent {
+            data: DragData;
         }
     }
 
