@@ -6968,7 +6968,7 @@ export namespace Protocol {
         /**
          * Enum of image types that can be disabled.
          */
-        export type DisabledImageType = ('avif' | 'webp');
+        export type DisabledImageType = ('avif' | 'jxl' | 'webp');
 
         export interface CanEmulateResponse {
             /**

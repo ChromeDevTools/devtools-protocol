@@ -7178,6 +7178,7 @@
                     "type": "string",
                     "enum": [
                         "avif",
+                        "jxl",
                         "webp"
                     ]
                 }

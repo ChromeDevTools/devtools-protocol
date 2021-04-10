@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r869921
+###### _2021-04-07 01:16:07_ | Diff: [b2ed548...7dd7cbb](https://github.com/ChromeDevTools/devtools-protocol/compare/b2ed548...7dd7cbb)
+#### `Input`: new command
+* [`Input.setInterceptDrags`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-setInterceptDrags)
+#### `Input`: new event
+* [`Input.dragIntercepted`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#event-dragIntercepted)
+
+
 ## Roll protocol to r869754
 ###### _2021-04-06 16:16:23_ | Diff: [0210b99...b2ed548](https://github.com/ChromeDevTools/devtools-protocol/compare/0210b99...b2ed548)
 #### `Browser`: modified command
