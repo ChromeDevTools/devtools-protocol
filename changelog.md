@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r871249
+###### _2021-04-10 04:16:12_ | Diff: [7dd7cbb...ca9d8a4](https://github.com/ChromeDevTools/devtools-protocol/compare/7dd7cbb...ca9d8a4)
+#### `Emulation`: modified type
+* [`Emulation.DisabledImageType`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#type-DisabledImageType) - The enum's `webp` _updated_. The enum's `webp` _added_.
+
+
 ## Roll protocol to r869921
 ###### _2021-04-07 01:16:07_ | Diff: [b2ed548...7dd7cbb](https://github.com/ChromeDevTools/devtools-protocol/compare/b2ed548...7dd7cbb)
 #### `Input`: new command
