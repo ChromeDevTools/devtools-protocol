@@ -4262,7 +4262,8 @@
                         },
                         {
                             "name": "importedDocument",
-                            "description": "Import document for the HTMLImport links.",
+                            "description": "Deprecated, as the HTML Imports API has been removed (crbug.com/937746).\nThis property used to return the imported document for the HTMLImport links.\nThe property is always undefined now.",
+                            "deprecated": true,
                             "optional": true,
                             "$ref": "Node"
                         },

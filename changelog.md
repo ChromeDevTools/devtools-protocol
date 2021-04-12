@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r871496
+###### _2021-04-12 09:16:00_ | Diff: [ca9d8a4...910add1](https://github.com/ChromeDevTools/devtools-protocol/compare/ca9d8a4...910add1)
+#### `DOMSnapshot`: modified command
+* [`DOMSnapshot.captureSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#method-captureSnapshot) - The parameters's `includeBlendedBackgroundColors` _added_. The parameters's `includeTextColorOpacities` _added_.
+#### `DOMSnapshot`: modified type
+* [`DOMSnapshot.LayoutTreeSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-LayoutTreeSnapshot) - The properties's `blendedBackgroundColors` _added_. The properties's `textColorOpacities` _added_.
+
+
 ## Roll protocol to r871249
 ###### _2021-04-10 04:16:12_ | Diff: [7dd7cbb...ca9d8a4](https://github.com/ChromeDevTools/devtools-protocol/compare/7dd7cbb...ca9d8a4)
 #### `Emulation`: modified type
