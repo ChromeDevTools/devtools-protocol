@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r871615
+###### _2021-04-12 13:16:16_ | Diff: [910add1...a45730c](https://github.com/ChromeDevTools/devtools-protocol/compare/910add1...a45730c)
+#### `DOM`: modified type
+* [`DOM.Node`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-Node) - The `importedDocument` in the properties had `description` _updated_. The properties's `deprecated` _added_.
+
+
 ## Roll protocol to r871496
 ###### _2021-04-12 09:16:00_ | Diff: [ca9d8a4...910add1](https://github.com/ChromeDevTools/devtools-protocol/compare/ca9d8a4...910add1)
 #### `DOMSnapshot`: modified command

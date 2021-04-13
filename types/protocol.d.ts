@@ -3316,12 +3316,25 @@ export namespace Protocol {
             clientSecurityState?: Network.ClientSecurityState;
         }
 
+        export type AttributionReportingIssueType = ('PermissionPolicyDisabled');
+
+        /**
+         * Details for issues around "Attribution Reporting API" usage.
+         * Explainer: https://github.com/WICG/conversion-measurement-api
+         */
+        export interface AttributionReportingIssueDetails {
+            violationType: AttributionReportingIssueType;
+            frame?: AffectedFrame;
+            request?: AffectedRequest;
+            violatingNodeId?: DOM.BackendNodeId;
+        }
+
         /**
          * A unique identifier for the type of issue. Each type may use one of the
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'TrustedWebActivityIssue' | 'LowTextContrastIssue' | 'CorsIssue');
+        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'TrustedWebActivityIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3338,6 +3351,7 @@ export namespace Protocol {
             twaQualityEnforcementDetails?: TrustedWebActivityIssueDetails;
             lowTextContrastIssueDetails?: LowTextContrastIssueDetails;
             corsIssueDetails?: CorsIssueDetails;
+            attributionReportingIssueDetails?: AttributionReportingIssueDetails;
         }
 
         /**
