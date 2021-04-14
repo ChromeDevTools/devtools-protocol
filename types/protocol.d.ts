@@ -11862,6 +11862,11 @@ export namespace Protocol {
             eager?: boolean;
         }
 
+        /**
+         * The type of a frameNavigated event.
+         */
+        export type NavigationType = ('Navigation' | 'BackForwardCacheRestore');
+
         export interface AddScriptToEvaluateOnLoadRequest {
             scriptSource: string;
         }
@@ -12613,6 +12618,7 @@ export namespace Protocol {
              * Frame object.
              */
             frame: Frame;
+            type: NavigationType;
         }
 
         /**

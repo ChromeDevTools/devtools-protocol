@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r871838
+###### _2021-04-13 01:16:03_ | Diff: [a45730c...0dacfa7](https://github.com/ChromeDevTools/devtools-protocol/compare/a45730c...0dacfa7)
+#### `Audits`: new types
+* [`Audits.AttributionReportingIssueType`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AttributionReportingIssueType)
+* [`Audits.AttributionReportingIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AttributionReportingIssueDetails)
+#### `Audits`: modified types
+* [`Audits.InspectorIssueCode`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueCode) - The enum's `AttributionReportingIssue` _added_.
+* [`Audits.InspectorIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueDetails) - The properties's `attributionReportingIssueDetails` _added_.
+
+
 ## Roll protocol to r871615
 ###### _2021-04-12 13:16:16_ | Diff: [910add1...a45730c](https://github.com/ChromeDevTools/devtools-protocol/compare/910add1...a45730c)
 #### `DOM`: modified type
