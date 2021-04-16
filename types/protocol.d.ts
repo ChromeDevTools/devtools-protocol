@@ -12809,6 +12809,23 @@ export namespace Protocol {
             timestamp: Network.MonotonicTime;
         }
 
+        /**
+         * Fired for failed bfcache history navigations if BackForwardCache feature is enabled. Do
+         * not assume any ordering with the Page.frameNavigated event. This event is fired only for
+         * main-frame history navigation where the document changes (non-same-document navigations),
+         * when bfcache navigation fails.
+         */
+        export interface BackForwardCacheNotUsedEvent {
+            /**
+             * The loader id for the associated navgation.
+             */
+            loaderId: Network.LoaderId;
+            /**
+             * The frame id of the associated frame.
+             */
+            frameId: FrameId;
+        }
+
         export interface LoadEventFiredEvent {
             timestamp: Network.MonotonicTime;
         }

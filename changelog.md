@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r872298
+###### _2021-04-13 23:16:06_ | Diff: [0dacfa7...1a49020](https://github.com/ChromeDevTools/devtools-protocol/compare/0dacfa7...1a49020)
+#### `Page`: modified event
+* [`Page.frameNavigated`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameNavigated) - The parameters's `type` _added_.
+#### `Page`: new type
+* [`Page.NavigationType`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-NavigationType)
+
+
 ## Roll protocol to r871838
 ###### _2021-04-13 01:16:03_ | Diff: [a45730c...0dacfa7](https://github.com/ChromeDevTools/devtools-protocol/compare/a45730c...0dacfa7)
 #### `Audits`: new types

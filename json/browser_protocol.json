@@ -16064,6 +16064,23 @@
                     ]
                 },
                 {
+                    "name": "backForwardCacheNotUsed",
+                    "description": "Fired for failed bfcache history navigations if BackForwardCache feature is enabled. Do\nnot assume any ordering with the Page.frameNavigated event. This event is fired only for\nmain-frame history navigation where the document changes (non-same-document navigations),\nwhen bfcache navigation fails.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "loaderId",
+                            "description": "The loader id for the associated navgation.",
+                            "$ref": "Network.LoaderId"
+                        },
+                        {
+                            "name": "frameId",
+                            "description": "The frame id of the associated frame.",
+                            "$ref": "FrameId"
+                        }
+                    ]
+                },
+                {
                     "name": "loadEventFired",
                     "parameters": [
                         {

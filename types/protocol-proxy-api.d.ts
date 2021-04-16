@@ -2925,6 +2925,14 @@ export namespace ProtocolProxyApi {
          */
         on(event: 'lifecycleEvent', listener: (params: Protocol.Page.LifecycleEventEvent) => void): void;
 
+        /**
+         * Fired for failed bfcache history navigations if BackForwardCache feature is enabled. Do
+         * not assume any ordering with the Page.frameNavigated event. This event is fired only for
+         * main-frame history navigation where the document changes (non-same-document navigations),
+         * when bfcache navigation fails.
+         */
+        on(event: 'backForwardCacheNotUsed', listener: (params: Protocol.Page.BackForwardCacheNotUsedEvent) => void): void;
+
         on(event: 'loadEventFired', listener: (params: Protocol.Page.LoadEventFiredEvent) => void): void;
 
         /**
