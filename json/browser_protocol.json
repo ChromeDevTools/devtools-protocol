@@ -1490,7 +1490,8 @@
                     "id": "AttributionReportingIssueType",
                     "type": "string",
                     "enum": [
-                        "PermissionPolicyDisabled"
+                        "PermissionPolicyDisabled",
+                        "InvalidAttributionData"
                     ]
                 },
                 {
@@ -1516,6 +1517,11 @@
                             "name": "violatingNodeId",
                             "optional": true,
                             "$ref": "DOM.BackendNodeId"
+                        },
+                        {
+                            "name": "invalidParameter",
+                            "optional": true,
+                            "type": "string"
                         }
                     ]
                 },
