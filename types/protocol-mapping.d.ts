@@ -181,7 +181,7 @@ export namespace ProtocolMapping {
          */
         'DOM.childNodeRemoved': [Protocol.DOM.ChildNodeRemovedEvent];
         /**
-         * Called when distrubution is changed.
+         * Called when distribution is changed.
          */
         'DOM.distributedNodesUpdated': [Protocol.DOM.DistributedNodesUpdatedEvent];
         /**
@@ -648,8 +648,8 @@ export namespace ProtocolMapping {
          */
         'Media.playerErrorsRaised': [Protocol.Media.PlayerErrorsRaisedEvent];
         /**
-         * Called whenever a player is created, or when a new agent joins and recieves
-         * a list of active players. If an agent is restored, it will recieve the full
+         * Called whenever a player is created, or when a new agent joins and receives
+         * a list of active players. If an agent is restored, it will receive the full
          * list of player ids and all events again.
          */
         'Media.playersCreated': [Protocol.Media.PlayersCreatedEvent];
@@ -2338,14 +2338,14 @@ export namespace ProtocolMapping {
             returnType: Protocol.Emulation.CanEmulateResponse;
         };
         /**
-         * Clears the overriden device metrics.
+         * Clears the overridden device metrics.
          */
         'Emulation.clearDeviceMetricsOverride': {
             paramsType: [];
             returnType: void;
         };
         /**
-         * Clears the overriden Geolocation Position and Error.
+         * Clears the overridden Geolocation Position and Error.
          */
         'Emulation.clearGeolocationOverride': {
             paramsType: [];
@@ -3327,7 +3327,7 @@ export namespace ProtocolMapping {
             returnType: Protocol.Page.CaptureSnapshotResponse;
         };
         /**
-         * Clears the overriden device metrics.
+         * Clears the overridden device metrics.
          */
         'Page.clearDeviceMetricsOverride': {
             paramsType: [];
@@ -3341,7 +3341,7 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
-         * Clears the overriden Geolocation Position and Error.
+         * Clears the overridden Geolocation Position and Error.
          */
         'Page.clearGeolocationOverride': {
             paramsType: [];

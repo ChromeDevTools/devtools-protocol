@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r873728
+###### _2021-04-19 01:16:10_ | Diff: [3e18e97...8676f73](https://github.com/ChromeDevTools/devtools-protocol/compare/3e18e97...8676f73)
+#### `Audits`: modified types
+* [`Audits.AttributionReportingIssueType`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AttributionReportingIssueType) - The enum's `InvalidAttributionData` _added_.
+* [`Audits.AttributionReportingIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AttributionReportingIssueDetails) - The properties's `invalidParameter` _added_.
+
+
 ## Roll protocol to r873348
 ###### _2021-04-16 10:16:32_ | Diff: [143b9aa...3e18e97](https://github.com/ChromeDevTools/devtools-protocol/compare/143b9aa...3e18e97)
 #### `WebAuthn`: modified type
