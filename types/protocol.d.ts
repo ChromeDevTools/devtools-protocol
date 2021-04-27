@@ -3316,7 +3316,7 @@ export namespace Protocol {
             clientSecurityState?: Network.ClientSecurityState;
         }
 
-        export type AttributionReportingIssueType = ('PermissionPolicyDisabled' | 'InvalidAttributionData');
+        export type AttributionReportingIssueType = ('PermissionPolicyDisabled' | 'InvalidAttributionData' | 'AttributionSourceUntrustworthyOrigin');
 
         /**
          * Details for issues around "Attribution Reporting API" usage.

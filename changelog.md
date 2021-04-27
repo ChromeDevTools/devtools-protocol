@@ -1,5 +1,37 @@
 
 
+## Roll protocol to r876073
+###### _2021-04-26 01:16:05_ | Diff: [8676f73...ce4cfab](https://github.com/ChromeDevTools/devtools-protocol/compare/8676f73...ce4cfab)
+#### `Audits`: modified type
+* [`Audits.SharedArrayBufferIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SharedArrayBufferIssueDetails) - `description` updated.
+#### `Browser`: modified command
+* [`Browser.setDownloadBehavior`](https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-setDownloadBehavior) - The `downloadPath` in the parameters had `description` _updated_.
+#### `DOM`: modified event
+* [`DOM.distributedNodesUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#event-distributedNodesUpdated) - `description` updated. The `insertionPointId` in the parameters had `description` _updated_.
+#### `Emulation`: modified commands
+* [`Emulation.clearDeviceMetricsOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-clearDeviceMetricsOverride) - `description` updated.
+* [`Emulation.clearGeolocationOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-clearGeolocationOverride) - `description` updated.
+* [`Emulation.setVirtualTimePolicy`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setVirtualTimePolicy) - The `initialVirtualTime` in the parameters had `description` _updated_.
+#### `IO`: modified command
+* [`IO.read`](https://chromedevtools.github.io/devtools-protocol/tot/IO/#method-read) - The `eof` in the return value had `description` _updated_.
+#### `IO`: modified type
+* [`IO.StreamHandle`](https://chromedevtools.github.io/devtools-protocol/tot/IO/#type-StreamHandle) - `description` updated.
+#### `Network`: modified type
+* [`Network.RequestPattern`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-RequestPattern) - The `interceptionStage` in the properties had `description` _updated_.
+#### `Page`: modified commands
+* [`Page.clearDeviceMetricsOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-clearDeviceMetricsOverride) - `description` updated.
+* [`Page.clearGeolocationOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-clearGeolocationOverride) - `description` updated.
+* [`Page.setDownloadBehavior`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setDownloadBehavior) - The `downloadPath` in the parameters had `description` _updated_.
+#### `Storage`: modified command
+* [`Storage.overrideQuotaForOrigin`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#method-overrideQuotaForOrigin) - The `quotaSize` in the parameters had `description` _updated_.
+#### `Fetch`: modified type
+* [`Fetch.RequestPattern`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#type-RequestPattern) - The `requestStage` in the properties had `description` _updated_.
+#### `WebAudio`: modified type
+* [`WebAudio.ContextRealtimeData`](https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-ContextRealtimeData) - The `renderCapacity` in the properties had `description` _updated_.
+#### `Media`: modified event
+* [`Media.playersCreated`](https://chromedevtools.github.io/devtools-protocol/tot/Media/#event-playersCreated) - `description` updated.
+
+
 ## Roll protocol to r873728
 ###### _2021-04-19 01:16:10_ | Diff: [3e18e97...8676f73](https://github.com/ChromeDevTools/devtools-protocol/compare/3e18e97...8676f73)
 #### `Audits`: modified types
