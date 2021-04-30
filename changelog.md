@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r876958
+###### _2021-04-28 01:16:04_ | Diff: [7eb19da...987bbb1](https://github.com/ChromeDevTools/devtools-protocol/compare/7eb19da...987bbb1)
+#### `Audits`: modified type
+* [`Audits.AttributionReportingIssueType`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AttributionReportingIssueType) - The enum's `InvalidAttributionData` _updated_. The enum's `AttributionSourceUntrustworthyOrigin` _updated_. The enum's `AttributionSourceUntrustworthyOrigin` _added_. The enum's `AttributionUntrustworthyOrigin` _added_.
+
+
 ## Roll protocol to r876535
 ###### _2021-04-27 04:16:08_ | Diff: [ce4cfab...7eb19da](https://github.com/ChromeDevTools/devtools-protocol/compare/ce4cfab...7eb19da)
 #### `Audits`: modified type
