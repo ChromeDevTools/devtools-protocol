@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r877890
+###### _2021-04-30 06:16:13_ | Diff: [987bbb1...c3a5cc5](https://github.com/ChromeDevTools/devtools-protocol/compare/987bbb1...c3a5cc5)
+#### `Page`: modified type
+* [`Page.PermissionsPolicyFeature`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-PermissionsPolicyFeature) - The enum's `storage-access-api` _updated_. The enum's `sync-xhr` _updated_. The enum's `trust-token-redemption` _updated_. The enum's `usb` _updated_. The enum's `vertical-scroll` _updated_. The enum's `web-share` _updated_. The enum's `xr-spatial-tracking` _updated_. The enum's `xr-spatial-tracking` _added_.
+
+
 ## Roll protocol to r876958
 ###### _2021-04-28 01:16:04_ | Diff: [7eb19da...987bbb1](https://github.com/ChromeDevTools/devtools-protocol/compare/7eb19da...987bbb1)
 #### `Audits`: modified type

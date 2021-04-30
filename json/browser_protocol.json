@@ -11091,7 +11091,7 @@
                     "properties": [
                         {
                             "name": "urlPattern",
-                            "description": "Wildcards ('*' -> zero or more, '?' -> exactly one) are allowed. Escape character is\nbackslash. Omitting is equivalent to \"*\".",
+                            "description": "Wildcards (`'*'` -> zero or more, `'?'` -> exactly one) are allowed. Escape character is\nbackslash. Omitting is equivalent to `\"*\"`.",
                             "optional": true,
                             "type": "string"
                         },
@@ -18703,7 +18703,7 @@
                     "properties": [
                         {
                             "name": "urlPattern",
-                            "description": "Wildcards ('*' -> zero or more, '?' -> exactly one) are allowed. Escape character is\nbackslash. Omitting is equivalent to \"*\".",
+                            "description": "Wildcards (`'*'` -> zero or more, `'?'` -> exactly one) are allowed. Escape character is\nbackslash. Omitting is equivalent to `\"*\"`.",
                             "optional": true,
                             "type": "string"
                         },

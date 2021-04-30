@@ -9562,8 +9562,8 @@ export namespace Protocol {
          */
         export interface RequestPattern {
             /**
-             * Wildcards ('*' -> zero or more, '?' -> exactly one) are allowed. Escape character is
-             * backslash. Omitting is equivalent to "*".
+             * Wildcards (`'*'` -> zero or more, `'?'` -> exactly one) are allowed. Escape character is
+             * backslash. Omitting is equivalent to `"*"`.
              */
             urlPattern?: string;
             /**
@@ -14466,8 +14466,8 @@ export namespace Protocol {
 
         export interface RequestPattern {
             /**
-             * Wildcards ('*' -> zero or more, '?' -> exactly one) are allowed. Escape character is
-             * backslash. Omitting is equivalent to "*".
+             * Wildcards (`'*'` -> zero or more, `'?'` -> exactly one) are allowed. Escape character is
+             * backslash. Omitting is equivalent to `"*"`.
              */
             urlPattern?: string;
             /**
