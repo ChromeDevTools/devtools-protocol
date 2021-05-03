@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r878026
+###### _2021-04-30 12:16:18_ | Diff: [c3a5cc5...08981cb](https://github.com/ChromeDevTools/devtools-protocol/compare/c3a5cc5...08981cb)
+#### `Network`: modified type
+* [`Network.RequestPattern`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-RequestPattern) - The `urlPattern` in the properties had `description` _updated_.
+#### `Fetch`: modified type
+* [`Fetch.RequestPattern`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#type-RequestPattern) - The `urlPattern` in the properties had `description` _updated_.
+
+
 ## Roll protocol to r877890
 ###### _2021-04-30 06:16:13_ | Diff: [987bbb1...c3a5cc5](https://github.com/ChromeDevTools/devtools-protocol/compare/987bbb1...c3a5cc5)
 #### `Page`: modified type

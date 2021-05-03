@@ -11887,6 +11887,11 @@ export namespace Protocol {
              * event is emitted.
              */
             worldName?: string;
+            /**
+             * Specifies whether command line API should be available to the script, defaults
+             * to false.
+             */
+            includeCommandLineAPI?: boolean;
         }
 
         export interface AddScriptToEvaluateOnNewDocumentResponse {
