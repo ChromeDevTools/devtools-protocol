@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r878340
+###### _2021-05-03 01:16:03_ | Diff: [08981cb...2dd45d5](https://github.com/ChromeDevTools/devtools-protocol/compare/08981cb...2dd45d5)
+#### `Page`: modified command
+* [`Page.addScriptToEvaluateOnNewDocument`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-addScriptToEvaluateOnNewDocument) - The parameters's `includeCommandLineAPI` _added_.
+
+
 ## Roll protocol to r878026
 ###### _2021-04-30 12:16:18_ | Diff: [c3a5cc5...08981cb](https://github.com/ChromeDevTools/devtools-protocol/compare/c3a5cc5...08981cb)
 #### `Network`: modified type
