@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r880455
+###### _2021-05-07 10:16:12_ | Diff: [2dd45d5...a81e89d](https://github.com/ChromeDevTools/devtools-protocol/compare/2dd45d5...a81e89d)
+#### `Page`: modified type
+* [`Page.PermissionsPolicyFeature`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-PermissionsPolicyFeature) - The enum's `display-capture` _updated_. The enum's `document-domain` _updated_. The enum's `encrypted-media` _updated_. The enum's `execution-while-out-of-viewport` _updated_. The enum's `execution-while-not-rendered` _updated_. The enum's `focus-without-user-activation` _updated_. The enum's `fullscreen` _updated_. The enum's `frobulate` _updated_. The enum's `gamepad` _updated_. The enum's `geolocation` _updated_. The enum's `gyroscope` _updated_. The enum's `hid` _updated_. The enum's `idle-detection` _updated_. The enum's `interest-cohort` _updated_. The enum's `magnetometer` _updated_. The enum's `microphone` _updated_. The enum's `midi` _updated_. The enum's `otp-credentials` _updated_. The enum's `payment` _updated_. The enum's `picture-in-picture` _updated_. The enum's `publickey-credentials-get` _updated_. The enum's `screen-wake-lock` _updated_. The enum's `serial` _updated_. The enum's `shared-autofill` _updated_. The enum's `storage-access-api` _updated_. The enum's `sync-xhr` _updated_. The enum's `trust-token-redemption` _updated_. The enum's `usb` _updated_. The enum's `vertical-scroll` _updated_. The enum's `web-share` _updated_. The enum's `xr-spatial-tracking` _updated_. The enum's `xr-spatial-tracking` _added_.
+
+
 ## Roll protocol to r878340
 ###### _2021-05-03 01:16:03_ | Diff: [08981cb...2dd45d5](https://github.com/ChromeDevTools/devtools-protocol/compare/08981cb...2dd45d5)
 #### `Page`: modified command

@@ -11443,6 +11443,44 @@ export namespace Protocol {
         }
 
         /**
+         * Origin Trial(https://www.chromium.org/blink/origin-trials) support.
+         * Status for an Origin Trial token.
+         */
+        export type OriginTrialTokenStatus = ('Success' | 'NotSupported' | 'Insecure' | 'Expired' | 'WrongOrigin' | 'InvalidSignature' | 'Malformed' | 'WrongVersion' | 'FeatureDisabled' | 'TokenDisabled' | 'FeatureDisabledForUser');
+
+        /**
+         * Status for an Origin Trial.
+         */
+        export type OriginTrialStatus = ('Enabled' | 'ValidTokenNotProvided' | 'OSNotSupported' | 'TrialNotAllowed');
+
+        export type OriginTrialUsageRestriction = ('None' | 'Subset');
+
+        export interface OriginTrialToken {
+            origin: string;
+            matchSubDomains: boolean;
+            trialName: string;
+            expiryTime: Network.TimeSinceEpoch;
+            isThirdParty: boolean;
+            usageRestriction: OriginTrialUsageRestriction;
+        }
+
+        export interface OriginTrialTokenWithStatus {
+            rawTokenText: string;
+            /**
+             * `parsedToken` is present only when the token is extractable and
+             * parsable.
+             */
+            parsedToken?: OriginTrialToken;
+            status: OriginTrialTokenStatus;
+        }
+
+        export interface OriginTrial {
+            trialName: string;
+            status: OriginTrialStatus;
+            tokensWithStatus: OriginTrialTokenWithStatus[];
+        }
+
+        /**
          * Information about the Frame on the page.
          */
         export interface Frame {
@@ -11505,6 +11543,10 @@ export namespace Protocol {
              * Indicated which gated APIs / features are available.
              */
             gatedAPIFeatures: GatedAPIFeatures[];
+            /**
+             * Frame document's origin trials with at least one token present.
+             */
+            originTrials?: OriginTrial[];
         }
 
         /**

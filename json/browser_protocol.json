@@ -13994,6 +13994,120 @@
                     ]
                 },
                 {
+                    "id": "OriginTrialTokenStatus",
+                    "description": "Origin Trial(https://www.chromium.org/blink/origin-trials) support.\nStatus for an Origin Trial token.",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "Success",
+                        "NotSupported",
+                        "Insecure",
+                        "Expired",
+                        "WrongOrigin",
+                        "InvalidSignature",
+                        "Malformed",
+                        "WrongVersion",
+                        "FeatureDisabled",
+                        "TokenDisabled",
+                        "FeatureDisabledForUser"
+                    ]
+                },
+                {
+                    "id": "OriginTrialStatus",
+                    "description": "Status for an Origin Trial.",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "Enabled",
+                        "ValidTokenNotProvided",
+                        "OSNotSupported",
+                        "TrialNotAllowed"
+                    ]
+                },
+                {
+                    "id": "OriginTrialUsageRestriction",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "None",
+                        "Subset"
+                    ]
+                },
+                {
+                    "id": "OriginTrialToken",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "origin",
+                            "type": "string"
+                        },
+                        {
+                            "name": "matchSubDomains",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "trialName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "expiryTime",
+                            "$ref": "Network.TimeSinceEpoch"
+                        },
+                        {
+                            "name": "isThirdParty",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "usageRestriction",
+                            "$ref": "OriginTrialUsageRestriction"
+                        }
+                    ]
+                },
+                {
+                    "id": "OriginTrialTokenWithStatus",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "rawTokenText",
+                            "type": "string"
+                        },
+                        {
+                            "name": "parsedToken",
+                            "description": "`parsedToken` is present only when the token is extractable and\nparsable.",
+                            "optional": true,
+                            "$ref": "OriginTrialToken"
+                        },
+                        {
+                            "name": "status",
+                            "$ref": "OriginTrialTokenStatus"
+                        }
+                    ]
+                },
+                {
+                    "id": "OriginTrial",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "trialName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "status",
+                            "$ref": "OriginTrialStatus"
+                        },
+                        {
+                            "name": "tokensWithStatus",
+                            "type": "array",
+                            "items": {
+                                "$ref": "OriginTrialTokenWithStatus"
+                            }
+                        }
+                    ]
+                },
+                {
                     "id": "Frame",
                     "description": "Information about the Frame on the page.",
                     "type": "object",
@@ -14081,6 +14195,16 @@
                             "type": "array",
                             "items": {
                                 "$ref": "GatedAPIFeatures"
+                            }
+                        },
+                        {
+                            "name": "originTrials",
+                            "description": "Frame document's origin trials with at least one token present.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "OriginTrial"
                             }
                         }
                     ]
