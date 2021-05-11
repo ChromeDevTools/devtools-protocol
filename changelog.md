@@ -1,5 +1,18 @@
 
 
+## Roll protocol to r881010
+###### _2021-05-10 09:16:13_ | Diff: [a81e89d...febcae4](https://github.com/ChromeDevTools/devtools-protocol/compare/a81e89d...febcae4)
+#### `Page`: new types
+* [`Page.OriginTrialTokenStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-OriginTrialTokenStatus)
+* [`Page.OriginTrialStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-OriginTrialStatus)
+* [`Page.OriginTrialUsageRestriction`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-OriginTrialUsageRestriction)
+* [`Page.OriginTrialToken`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-OriginTrialToken)
+* [`Page.OriginTrialTokenWithStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-OriginTrialTokenWithStatus)
+* [`Page.OriginTrial`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-OriginTrial)
+#### `Page`: modified type
+* [`Page.Frame`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Frame) - The properties's `originTrials` _added_.
+
+
 ## Roll protocol to r880455
 ###### _2021-05-07 10:16:12_ | Diff: [2dd45d5...a81e89d](https://github.com/ChromeDevTools/devtools-protocol/compare/2dd45d5...a81e89d)
 #### `Page`: modified type
