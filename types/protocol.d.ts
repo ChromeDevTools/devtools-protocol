@@ -3331,27 +3331,11 @@ export namespace Protocol {
         }
 
         /**
-         * Details for issues about documents in Quirks Mode
-         * or Limited Quirks Mode that affects page layouting.
-         */
-        export interface QuirksModeIssueDetails {
-            /**
-             * If false, it means the document's mode is "quirks"
-             * instead of "limited-quirks".
-             */
-            isLimitedQuirksMode: boolean;
-            documentNodeId: DOM.BackendNodeId;
-            url: string;
-            frameId: Page.FrameId;
-            loaderId: Network.LoaderId;
-        }
-
-        /**
          * A unique identifier for the type of issue. Each type may use one of the
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'TrustedWebActivityIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue');
+        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'TrustedWebActivityIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3369,7 +3353,6 @@ export namespace Protocol {
             lowTextContrastIssueDetails?: LowTextContrastIssueDetails;
             corsIssueDetails?: CorsIssueDetails;
             attributionReportingIssueDetails?: AttributionReportingIssueDetails;
-            quirksModeIssueDetails?: QuirksModeIssueDetails;
         }
 
         /**

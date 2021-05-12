@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r881485
+###### _2021-05-11 04:16:33_ | Diff: [febcae4...8ce157a](https://github.com/ChromeDevTools/devtools-protocol/compare/febcae4...8ce157a)
+#### `Audits`: new type
+* [`Audits.QuirksModeIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-QuirksModeIssueDetails)
+#### `Audits`: modified types
+* [`Audits.InspectorIssueCode`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueCode) - The enum's `QuirksModeIssue` _added_.
+* [`Audits.InspectorIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueDetails) - The properties's `quirksModeIssueDetails` _added_.
+
+
 ## Roll protocol to r881010
 ###### _2021-05-10 09:16:13_ | Diff: [a81e89d...febcae4](https://github.com/ChromeDevTools/devtools-protocol/compare/a81e89d...febcae4)
 #### `Page`: new types
