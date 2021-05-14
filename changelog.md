@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r882921
+###### _2021-05-14 02:16:15_ | Diff: [56788fe...96c89c5](https://github.com/ChromeDevTools/devtools-protocol/compare/56788fe...96c89c5)
+#### `Audits`: modified type
+* [`Audits.CorsIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-CorsIssueDetails) - The `initiatorOrigin` in the properties had `type` _removed_. The `resourceIPAddressSpace` in the properties had `$ref` _removed_. The `initiatorOrigin` in the properties had `name` _updated_. The `resourceIPAddressSpace` in the properties had `name` _updated_. The `clientSecurityState` in the properties had `name` _updated_. The `clientSecurityState` in the properties had `$ref` _updated_. The properties's `$ref` _added_. The properties's `type` _added_. The properties's `clientSecurityState` _added_.
+#### `Network`: modified type
+* [`Network.CorsError`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CorsError) - The enum's `NoCorsRedirectModeNotFollow` _added_.
+
+
 ## Roll protocol to r882324
 ###### _2021-05-12 15:16:51_ | Diff: [9062efe...56788fe](https://github.com/ChromeDevTools/devtools-protocol/compare/9062efe...56788fe)
 #### `Audits`: new type
