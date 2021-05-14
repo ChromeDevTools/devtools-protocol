@@ -1470,6 +1470,11 @@
                             "$ref": "AffectedRequest"
                         },
                         {
+                            "name": "location",
+                            "optional": true,
+                            "$ref": "SourceCodeLocation"
+                        },
+                        {
                             "name": "initiatorOrigin",
                             "optional": true,
                             "type": "string"
@@ -10425,7 +10430,8 @@
                         "MethodDisallowedByPreflightResponse",
                         "HeaderDisallowedByPreflightResponse",
                         "RedirectContainsCredentials",
-                        "InsecurePrivateNetwork"
+                        "InsecurePrivateNetwork",
+                        "NoCorsRedirectModeNotFollow"
                     ]
                 },
                 {
