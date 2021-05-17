@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r882987
+###### _2021-05-14 09:16:22_ | Diff: [96c89c5...ea8402f](https://github.com/ChromeDevTools/devtools-protocol/compare/96c89c5...ea8402f)
+#### `Page`: modified type
+* [`Page.PermissionsPolicyFeature`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-PermissionsPolicyFeature) - The enum's `autoplay` _updated_. The enum's `camera` _updated_. The enum's `ch-dpr` _updated_. The enum's `ch-device-memory` _updated_. The enum's `ch-downlink` _updated_. The enum's `ch-ect` _updated_. The enum's `ch-lang` _updated_. The enum's `ch-rtt` _updated_. The enum's `ch-ua` _updated_. The enum's `ch-ua-arch` _updated_. The enum's `ch-ua-platform` _updated_. The enum's `ch-ua-model` _updated_. The enum's `ch-ua-mobile` _updated_. The enum's `ch-ua-full-version` _updated_. The enum's `ch-ua-platform-version` _updated_. The enum's `ch-viewport-width` _updated_. The enum's `ch-width` _updated_. The enum's `clipboard-read` _updated_. The enum's `clipboard-write` _updated_. The enum's `conversion-measurement` _updated_.
+
+
 ## Roll protocol to r882921
 ###### _2021-05-14 02:16:15_ | Diff: [56788fe...96c89c5](https://github.com/ChromeDevTools/devtools-protocol/compare/56788fe...96c89c5)
 #### `Audits`: modified type

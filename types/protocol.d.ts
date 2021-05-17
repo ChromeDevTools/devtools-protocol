@@ -5019,6 +5019,11 @@ export namespace Protocol {
         export type ShadowRootType = ('user-agent' | 'open' | 'closed');
 
         /**
+         * Document compatibility mode.
+         */
+        export type CompatibilityMode = ('QuirksMode' | 'LimitedQuirksMode' | 'NoQuirksMode');
+
+        /**
          * DOM interaction is implemented in terms of mirror objects that represent the actual DOM nodes.
          * DOMNode is a base node mirror type.
          */
@@ -5139,6 +5144,7 @@ export namespace Protocol {
              * Whether the node is SVG.
              */
             isSVG?: boolean;
+            compatibilityMode?: CompatibilityMode;
         }
 
         /**
