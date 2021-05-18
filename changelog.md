@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r883894
+###### _2021-05-18 04:16:08_ | Diff: [56b0f11...bc63f36](https://github.com/ChromeDevTools/devtools-protocol/compare/56b0f11...bc63f36)
+#### `Page`: modified type
+* [`Page.PermissionsPolicyFeature`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-PermissionsPolicyFeature) - `description` updated. The enum's `ch-rtt` _updated_. The enum's `ch-ua` _updated_. The enum's `ch-ua-arch` _updated_. The enum's `ch-ua-platform` _updated_. The enum's `ch-ua-model` _updated_. The enum's `ch-ua-mobile` _updated_. The enum's `ch-ua-full-version` _updated_. The enum's `ch-ua-platform-version` _updated_. The enum's `ch-viewport-width` _updated_. The enum's `ch-width` _updated_. The enum's `clipboard-read` _updated_. The enum's `clipboard-write` _updated_. The enum's `cross-origin-isolated` _updated_. The enum's `direct-sockets` _updated_. The enum's `display-capture` _updated_. The enum's `document-domain` _updated_. The enum's `encrypted-media` _updated_. The enum's `execution-while-out-of-viewport` _updated_. The enum's `execution-while-not-rendered` _updated_. The enum's `focus-without-user-activation` _updated_. The enum's `fullscreen` _updated_. The enum's `frobulate` _updated_. The enum's `gamepad` _updated_. The enum's `geolocation` _updated_. The enum's `gyroscope` _updated_. The enum's `hid` _updated_. The enum's `idle-detection` _updated_. The enum's `interest-cohort` _updated_. The enum's `magnetometer` _updated_. The enum's `microphone` _updated_. The enum's `midi` _updated_. The enum's `otp-credentials` _updated_. The enum's `payment` _updated_. The enum's `picture-in-picture` _updated_. The enum's `publickey-credentials-get` _updated_. The enum's `screen-wake-lock` _updated_. The enum's `serial` _updated_. The enum's `shared-autofill` _updated_. The enum's `storage-access-api` _updated_. The enum's `sync-xhr` _updated_. The enum's `trust-token-redemption` _updated_. The enum's `usb` _updated_. The enum's `vertical-scroll` _updated_. The enum's `web-share` _updated_. The enum's `xr-spatial-tracking` _updated_. The enum's `xr-spatial-tracking` _added_.
+
+
 ## Roll protocol to r883449
 ###### _2021-05-17 06:16:08_ | Diff: [ea8402f...56b0f11](https://github.com/ChromeDevTools/devtools-protocol/compare/ea8402f...56b0f11)
 #### `DOM`: new type
