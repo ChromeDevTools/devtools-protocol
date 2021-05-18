@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r883449
+###### _2021-05-17 06:16:08_ | Diff: [ea8402f...56b0f11](https://github.com/ChromeDevTools/devtools-protocol/compare/ea8402f...56b0f11)
+#### `DOM`: new type
+* [`DOM.CompatibilityMode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-CompatibilityMode)
+#### `DOM`: modified type
+* [`DOM.Node`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-Node) - The properties's `compatibilityMode` _added_.
+
+
 ## Roll protocol to r882987
 ###### _2021-05-14 09:16:22_ | Diff: [96c89c5...ea8402f](https://github.com/ChromeDevTools/devtools-protocol/compare/96c89c5...ea8402f)
 #### `Page`: modified type
