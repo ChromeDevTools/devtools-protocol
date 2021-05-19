@@ -3347,12 +3347,17 @@ export namespace Protocol {
             loaderId: Network.LoaderId;
         }
 
+        export interface NavigatorUserAgentIssueDetails {
+            url: string;
+            location?: SourceCodeLocation;
+        }
+
         /**
          * A unique identifier for the type of issue. Each type may use one of the
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'TrustedWebActivityIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue');
+        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'TrustedWebActivityIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3371,6 +3376,7 @@ export namespace Protocol {
             corsIssueDetails?: CorsIssueDetails;
             attributionReportingIssueDetails?: AttributionReportingIssueDetails;
             quirksModeIssueDetails?: QuirksModeIssueDetails;
+            navigatorUserAgentIssueDetails?: NavigatorUserAgentIssueDetails;
         }
 
         /**

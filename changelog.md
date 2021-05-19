@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r884179
+###### _2021-05-18 15:16:18_ | Diff: [bc63f36...f8d7e27](https://github.com/ChromeDevTools/devtools-protocol/compare/bc63f36...f8d7e27)
+#### `Page`: modified type
+* [`Page.PermissionsPolicyFeature`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-PermissionsPolicyFeature) - The enum's `xr-spatial-tracking` _updated_. The enum's `xr-spatial-tracking` _added_.
+
+
 ## Roll protocol to r883894
 ###### _2021-05-18 04:16:08_ | Diff: [56b0f11...bc63f36](https://github.com/ChromeDevTools/devtools-protocol/compare/56b0f11...bc63f36)
 #### `Page`: modified type
