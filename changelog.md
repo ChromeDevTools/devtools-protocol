@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r884484
+###### _2021-05-19 08:16:15_ | Diff: [f8d7e27...dfcf9be](https://github.com/ChromeDevTools/devtools-protocol/compare/f8d7e27...dfcf9be)
+#### `Audits`: new type
+* [`Audits.NavigatorUserAgentIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-NavigatorUserAgentIssueDetails)
+#### `Audits`: modified types
+* [`Audits.InspectorIssueCode`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueCode) - The enum's `NavigatorUserAgentIssue` _added_.
+* [`Audits.InspectorIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueDetails) - The properties's `navigatorUserAgentIssueDetails` _added_.
+
+
 ## Roll protocol to r884179
 ###### _2021-05-18 15:16:18_ | Diff: [bc63f36...f8d7e27](https://github.com/ChromeDevTools/devtools-protocol/compare/bc63f36...f8d7e27)
 #### `Page`: modified type
