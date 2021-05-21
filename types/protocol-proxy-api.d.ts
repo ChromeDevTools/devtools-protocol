@@ -2390,6 +2390,28 @@ export namespace ProtocolProxyApi {
          */
         on(event: 'trustTokenOperationDone', listener: (params: Protocol.Network.TrustTokenOperationDoneEvent) => void): void;
 
+        /**
+         * Fired once when parsing the .wbn file has succeeded.
+         * The event contains the information about the web bundle contents.
+         */
+        on(event: 'subresourceWebBundleMetadataReceived', listener: (params: Protocol.Network.SubresourceWebBundleMetadataReceivedEvent) => void): void;
+
+        /**
+         * Fired once when parsing the .wbn file has failed.
+         */
+        on(event: 'subresourceWebBundleMetadataError', listener: (params: Protocol.Network.SubresourceWebBundleMetadataErrorEvent) => void): void;
+
+        /**
+         * Fired when handling requests for resources within a .wbn file.
+         * Note: this will only be fired for resources that are requested by the webpage.
+         */
+        on(event: 'subresourceWebBundleInnerResponseParsed', listener: (params: Protocol.Network.SubresourceWebBundleInnerResponseParsedEvent) => void): void;
+
+        /**
+         * Fired when request for resources within a .wbn file failed.
+         */
+        on(event: 'subresourceWebBundleInnerResponseError', listener: (params: Protocol.Network.SubresourceWebBundleInnerResponseErrorEvent) => void): void;
+
     }
 
     export interface OverlayApi {

@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r884712
+###### _2021-05-19 15:16:10_ | Diff: [dfcf9be...d9ce37e](https://github.com/ChromeDevTools/devtools-protocol/compare/dfcf9be...d9ce37e)
+#### `Fetch`: modified type
+* [`Fetch.RequestStage`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#type-RequestStage) - `description` updated.
+
+
 ## Roll protocol to r884484
 ###### _2021-05-19 08:16:15_ | Diff: [f8d7e27...dfcf9be](https://github.com/ChromeDevTools/devtools-protocol/compare/f8d7e27...dfcf9be)
 #### `Audits`: new type
