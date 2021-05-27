@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r885657
+###### _2021-05-21 14:16:03_ | Diff: [d9ce37e...35ec89b](https://github.com/ChromeDevTools/devtools-protocol/compare/d9ce37e...35ec89b)
+#### `Network`: new events
+* [`Network.subresourceWebBundleMetadataReceived`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-subresourceWebBundleMetadataReceived)
+* [`Network.subresourceWebBundleMetadataError`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-subresourceWebBundleMetadataError)
+* [`Network.subresourceWebBundleInnerResponseParsed`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-subresourceWebBundleInnerResponseParsed)
+* [`Network.subresourceWebBundleInnerResponseError`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-subresourceWebBundleInnerResponseError)
+
+
 ## Roll protocol to r884712
 ###### _2021-05-19 15:16:10_ | Diff: [dfcf9be...d9ce37e](https://github.com/ChromeDevTools/devtools-protocol/compare/dfcf9be...d9ce37e)
 #### `Fetch`: modified type

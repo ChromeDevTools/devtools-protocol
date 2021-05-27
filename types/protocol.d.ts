@@ -3138,7 +3138,7 @@ export namespace Protocol {
             frameId: Page.FrameId;
         }
 
-        export type SameSiteCookieExclusionReason = ('ExcludeSameSiteUnspecifiedTreatedAsLax' | 'ExcludeSameSiteNoneInsecure' | 'ExcludeSameSiteLax' | 'ExcludeSameSiteStrict');
+        export type SameSiteCookieExclusionReason = ('ExcludeSameSiteUnspecifiedTreatedAsLax' | 'ExcludeSameSiteNoneInsecure' | 'ExcludeSameSiteLax' | 'ExcludeSameSiteStrict' | 'ExcludeInvalidSameParty');
 
         export type SameSiteCookieWarningReason = ('WarnSameSiteUnspecifiedCrossSiteContext' | 'WarnSameSiteNoneInsecure' | 'WarnSameSiteUnspecifiedLaxAllowUnsafe' | 'WarnSameSiteStrictLaxDowngradeStrict' | 'WarnSameSiteStrictCrossDowngradeStrict' | 'WarnSameSiteStrictCrossDowngradeLax' | 'WarnSameSiteLaxCrossDowngradeStrict' | 'WarnSameSiteLaxCrossDowngradeLax');
 
@@ -3150,7 +3150,14 @@ export namespace Protocol {
          * information without the cookie.
          */
         export interface SameSiteCookieIssueDetails {
-            cookie: AffectedCookie;
+            /**
+             * If AffectedCookie is not set then rawCookieLine contains the raw
+             * Set-Cookie header string. This hints at a problem where the
+             * cookie line is syntactically or semantically malformed in a way
+             * that no valid cookie could be created.
+             */
+            cookie?: AffectedCookie;
+            rawCookieLine?: string;
             cookieWarningReasons: SameSiteCookieWarningReason[];
             cookieExclusionReasons: SameSiteCookieExclusionReason[];
             /**
