@@ -9757,7 +9757,7 @@ export namespace Protocol {
             reportOnlyReportingEndpoint?: string;
         }
 
-        export type CrossOriginEmbedderPolicyValue = ('None' | 'CorsOrCredentialless' | 'RequireCorp');
+        export type CrossOriginEmbedderPolicyValue = ('None' | 'Credentialless' | 'RequireCorp');
 
         export interface CrossOriginEmbedderPolicyStatus {
             value: CrossOriginEmbedderPolicyValue;

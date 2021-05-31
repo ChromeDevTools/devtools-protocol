@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r887710
+###### _2021-05-31 04:16:13_ | Diff: [d440402...76e104a](https://github.com/ChromeDevTools/devtools-protocol/compare/d440402...76e104a)
+#### `Audits`: modified type
+* [`Audits.InspectorIssue`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssue) - The properties's `issueId` _added_.
+
+
 ## Roll protocol to r887064
 ###### _2021-05-27 00:16:11_ | Diff: [35ec89b...d440402](https://github.com/ChromeDevTools/devtools-protocol/compare/35ec89b...d440402)
 #### `Audits`: modified types
