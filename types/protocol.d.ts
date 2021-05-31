@@ -3392,6 +3392,11 @@ export namespace Protocol {
         export interface InspectorIssue {
             code: InspectorIssueCode;
             details: InspectorIssueDetails;
+            /**
+             * A unique id for this issue. May be omitted if no other entity (e.g.
+             * exception, CDP message, etc.) is referencing this issue.
+             */
+            issueId?: string;
         }
 
         export const enum GetEncodedResponseRequestEncoding {

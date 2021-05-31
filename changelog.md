@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r887064
+###### _2021-05-27 00:16:11_ | Diff: [35ec89b...d440402](https://github.com/ChromeDevTools/devtools-protocol/compare/35ec89b...d440402)
+#### `Audits`: modified types
+* [`Audits.SameSiteCookieExclusionReason`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SameSiteCookieExclusionReason) - The enum's `ExcludeInvalidSameParty` _added_.
+* [`Audits.SameSiteCookieIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SameSiteCookieIssueDetails) - The `cookieWarningReasons` in the properties had `items` _removed_. The `operation` in the properties had `description` _removed_. The `operation` in the properties had `$ref` _removed_. The `siteForCookies` in the properties had `optional` _removed_. The `siteForCookies` in the properties had `type` _removed_. The `request` in the properties had `$ref` _removed_. The `cookieWarningReasons` in the properties had `name` _updated_. The `cookieWarningReasons` in the properties had `type` _updated_. The `cookieExclusionReasons` in the properties had `name` _updated_. The `cookieExclusionReasons` in the properties had `$ref` _updated_. The `operation` in the properties had `name` _updated_. The `siteForCookies` in the properties had `name` _updated_. The `cookieUrl` in the properties had `name` _updated_. The `request` in the properties had `name` _updated_. The properties's `description` _added_ (2 times). The properties's `optional` _added_ (2 times). The properties's `type` _added_ (2 times). The properties's `items` _added_. The properties's `$ref` _added_. The properties's `request` _added_.
+
+
 ## Roll protocol to r885657
 ###### _2021-05-21 14:16:03_ | Diff: [d9ce37e...35ec89b](https://github.com/ChromeDevTools/devtools-protocol/compare/d9ce37e...35ec89b)
 #### `Network`: new events

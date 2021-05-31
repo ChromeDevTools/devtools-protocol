@@ -1682,6 +1682,12 @@
                         {
                             "name": "details",
                             "$ref": "InspectorIssueDetails"
+                        },
+                        {
+                            "name": "issueId",
+                            "description": "A unique id for this issue. May be omitted if no other entity (e.g.\nexception, CDP message, etc.) is referencing this issue.",
+                            "optional": true,
+                            "type": "string"
                         }
                     ]
                 }
