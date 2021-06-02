@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r887728
+###### _2021-05-31 05:16:11_ | Diff: [76e104a...564611d](https://github.com/ChromeDevTools/devtools-protocol/compare/76e104a...564611d)
+#### `Network`: modified type
+* [`Network.CrossOriginEmbedderPolicyValue`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CrossOriginEmbedderPolicyValue) - The enum's `CorsOrCredentialless` _updated_.
+
+
 ## Roll protocol to r887710
 ###### _2021-05-31 04:16:13_ | Diff: [d440402...76e104a](https://github.com/ChromeDevTools/devtools-protocol/compare/d440402...76e104a)
 #### `Audits`: modified type
