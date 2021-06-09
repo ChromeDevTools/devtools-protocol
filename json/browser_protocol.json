@@ -3665,6 +3665,32 @@
                     ]
                 },
                 {
+                    "name": "setContainerQueryText",
+                    "description": "Modifies the expression of a container query.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "styleSheetId",
+                            "$ref": "StyleSheetId"
+                        },
+                        {
+                            "name": "range",
+                            "$ref": "SourceRange"
+                        },
+                        {
+                            "name": "text",
+                            "type": "string"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "containerQuery",
+                            "description": "The resulting CSS container query rule after modification.",
+                            "$ref": "CSSContainerQuery"
+                        }
+                    ]
+                },
+                {
                     "name": "setRuleSelector",
                     "description": "Modifies the rule selector.",
                     "parameters": [

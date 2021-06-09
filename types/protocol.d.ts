@@ -4701,6 +4701,19 @@ export namespace Protocol {
             media: CSSMedia;
         }
 
+        export interface SetContainerQueryTextRequest {
+            styleSheetId: StyleSheetId;
+            range: SourceRange;
+            text: string;
+        }
+
+        export interface SetContainerQueryTextResponse {
+            /**
+             * The resulting CSS container query rule after modification.
+             */
+            containerQuery: CSSContainerQuery;
+        }
+
         export interface SetRuleSelectorRequest {
             styleSheetId: StyleSheetId;
             range: SourceRange;

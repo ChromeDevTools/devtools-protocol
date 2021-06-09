@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r888392
+###### _2021-06-02 04:16:05_ | Diff: [564611d...bfcd0a3](https://github.com/ChromeDevTools/devtools-protocol/compare/564611d...bfcd0a3)
+#### `CSS`: new type
+* [`CSS.CSSContainerQuery`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSContainerQuery)
+#### `CSS`: modified type
+* [`CSS.CSSRule`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSRule) - The properties's `containerQueries` _added_.
+
+
 ## Roll protocol to r887728
 ###### _2021-05-31 05:16:11_ | Diff: [76e104a...564611d](https://github.com/ChromeDevTools/devtools-protocol/compare/76e104a...564611d)
 #### `Network`: modified type

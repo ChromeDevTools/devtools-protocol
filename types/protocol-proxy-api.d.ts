@@ -1030,6 +1030,11 @@ export namespace ProtocolProxyApi {
         setMediaText(params: Protocol.CSS.SetMediaTextRequest): Promise<Protocol.CSS.SetMediaTextResponse>;
 
         /**
+         * Modifies the expression of a container query.
+         */
+        setContainerQueryText(params: Protocol.CSS.SetContainerQueryTextRequest): Promise<Protocol.CSS.SetContainerQueryTextResponse>;
+
+        /**
          * Modifies the rule selector.
          */
         setRuleSelector(params: Protocol.CSS.SetRuleSelectorRequest): Promise<Protocol.CSS.SetRuleSelectorResponse>;
