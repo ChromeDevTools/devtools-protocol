@@ -12052,6 +12052,27 @@ export namespace Protocol {
          */
         export type NavigationType = ('Navigation' | 'BackForwardCacheRestore');
 
+        /**
+         * List of not restored reasons for back-forward cache.
+         */
+        export type BackForwardCacheNotRestoredReason = ('NotMainFrame' | 'BackForwardCacheDisabled' | 'RelatedActiveContentsExist' | 'HTTPStatusNotOK' | 'SchemeNotHTTPOrHTTPS' | 'Loading' | 'WasGrantedMediaAccess' | 'DisableForRenderFrameHostCalled' | 'DomainNotAllowed' | 'HTTPMethodNotGET' | 'SubframeIsNavigating' | 'Timeout' | 'CacheLimit' | 'JavaScriptExecution' | 'RendererProcessKilled' | 'RendererProcessCrashed' | 'GrantedMediaStreamAccess' | 'SchedulerTrackedFeatureUsed' | 'ConflictingBrowsingInstance' | 'CacheFlushed' | 'ServiceWorkerVersionActivation' | 'SessionRestored' | 'ServiceWorkerPostMessage' | 'EnteredBackForwardCacheBeforeServiceWorkerHostAdded' | 'RenderFrameHostReused_SameSite' | 'RenderFrameHostReused_CrossSite' | 'ServiceWorkerClaim' | 'IgnoreEventAndEvict' | 'HaveInnerContents' | 'TimeoutPuttingInCache' | 'BackForwardCacheDisabledByLowMemory' | 'BackForwardCacheDisabledByCommandLine' | 'NetworkRequestDatapipeDrainedAsBytesConsumer' | 'NetworkRequestRedirected' | 'NetworkRequestTimeout' | 'NetworkExceedsBufferLimit' | 'NavigationCancelledWhileRestoring' | 'NotMostRecentNavigationEntry' | 'BackForwardCacheDisabledForPrerender' | 'UserAgentOverrideDiffers' | 'ForegroundCacheLimit' | 'BrowsingInstanceNotSwapped' | 'BackForwardCacheDisabledForDelegate' | 'OptInUnloadHeaderNotPresent' | 'UnloadHandlerExistsInMainFrame' | 'UnloadHandlerExistsInSubFrame' | 'WebSocket' | 'WebRTC' | 'MainResourceHasCacheControlNoStore' | 'MainResourceHasCacheControlNoCache' | 'SubresourceHasCacheControlNoStore' | 'SubresourceHasCacheControlNoCache' | 'PageShowEventListener' | 'PageHideEventListener' | 'BeforeUnloadEventListener' | 'UnloadEventListener' | 'FreezeEventListener' | 'ResumeEventListener' | 'ContainsPlugins' | 'DocumentLoaded' | 'DedicatedWorkerOrWorklet' | 'OutstandingNetworkRequestOthers' | 'OutstandingIndexedDBTransaction' | 'RequestedGeolocationPermission' | 'RequestedNotificationsPermission' | 'RequestedMIDIPermission' | 'RequestedAudioCapturePermission' | 'RequestedVideoCapturePermission' | 'RequestedBackForwardCacheBlockedSensors' | 'RequestedBackgroundWorkPermission' | 'BroadcastChannel' | 'IndexedDBConnection' | 'WebVR' | 'WebXR' | 'SharedWorker' | 'WebLocks' | 'WebHID' | 'WebShare' | 'RequestedStorageAccessGrant' | 'WebNfc' | 'WebFileSystem' | 'OutstandingNetworkRequestFetch' | 'OutstandingNetworkRequestXHR' | 'AppBanner' | 'Printing' | 'WebDatabase' | 'PictureInPicture' | 'Portal' | 'SpeechRecognizer' | 'IdleManager' | 'PaymentManager' | 'SpeechSynthesis' | 'KeyboardLock' | 'WebOTPService' | 'OutstandingNetworkRequestDirectSocket' | 'IsolatedWorldScript' | 'InjectedStyleSheet' | 'MediaSessionImplOnServiceCreated' | 'Unknown');
+
+        /**
+         * Types of not restored reasons for back-forward cache.
+         */
+        export type BackForwardCacheNotRestoredReasonType = ('SupportPending' | 'PageSupportNeeded' | 'Circumstantial');
+
+        export interface BackForwardCacheNotRestoredExplanation {
+            /**
+             * Type of the reason
+             */
+            type: BackForwardCacheNotRestoredReasonType;
+            /**
+             * Not restored reason
+             */
+            reason: BackForwardCacheNotRestoredReason;
+        }
+
         export interface AddScriptToEvaluateOnLoadRequest {
             scriptSource: string;
         }
@@ -13014,6 +13035,10 @@ export namespace Protocol {
              * The frame id of the associated frame.
              */
             frameId: FrameId;
+            /**
+             * Array of reasons why the page could not be cached. This must not be empty.
+             */
+            notRestoredExplanations: BackForwardCacheNotRestoredExplanation[];
         }
 
         export interface LoadEventFiredEvent {
