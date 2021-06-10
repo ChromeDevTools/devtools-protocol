@@ -12174,23 +12174,6 @@
                     ]
                 },
                 {
-                    "name": "setDataSizeLimitsForTest",
-                    "description": "For testing.",
-                    "experimental": true,
-                    "parameters": [
-                        {
-                            "name": "maxTotalSize",
-                            "description": "Maximum total buffer size.",
-                            "type": "integer"
-                        },
-                        {
-                            "name": "maxResourceSize",
-                            "description": "Maximum per-resource size.",
-                            "type": "integer"
-                        }
-                    ]
-                },
-                {
                     "name": "setExtraHTTPHeaders",
                     "description": "Specifies whether to always send extra HTTP headers with the requests from this page.",
                     "parameters": [

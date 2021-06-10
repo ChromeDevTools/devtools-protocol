@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r890975
+###### _2021-06-09 15:17:50_ | Diff: [bfcd0a3...cbc2ddb](https://github.com/ChromeDevTools/devtools-protocol/compare/bfcd0a3...cbc2ddb)
+#### `CSS`: new command
+* [`CSS.setContainerQueryText`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-setContainerQueryText)
+
+
 ## Roll protocol to r888392
 ###### _2021-06-02 04:16:05_ | Diff: [564611d...bfcd0a3](https://github.com/ChromeDevTools/devtools-protocol/compare/564611d...bfcd0a3)
 #### `CSS`: new type

@@ -3090,13 +3090,6 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
-         * For testing.
-         */
-        'Network.setDataSizeLimitsForTest': {
-            paramsType: [Protocol.Network.SetDataSizeLimitsForTestRequest];
-            returnType: void;
-        };
-        /**
          * Specifies whether to always send extra HTTP headers with the requests from this page.
          */
         'Network.setExtraHTTPHeaders': {

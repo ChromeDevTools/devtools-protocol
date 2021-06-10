@@ -2235,11 +2235,6 @@ export namespace ProtocolProxyApi {
         setCookies(params: Protocol.Network.SetCookiesRequest): Promise<void>;
 
         /**
-         * For testing.
-         */
-        setDataSizeLimitsForTest(params: Protocol.Network.SetDataSizeLimitsForTestRequest): Promise<void>;
-
-        /**
          * Specifies whether to always send extra HTTP headers with the requests from this page.
          */
         setExtraHTTPHeaders(params: Protocol.Network.SetExtraHTTPHeadersRequest): Promise<void>;

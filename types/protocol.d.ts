@@ -10180,17 +10180,6 @@ export namespace Protocol {
             cookies: CookieParam[];
         }
 
-        export interface SetDataSizeLimitsForTestRequest {
-            /**
-             * Maximum total buffer size.
-             */
-            maxTotalSize: integer;
-            /**
-             * Maximum per-resource size.
-             */
-            maxResourceSize: integer;
-        }
-
         export interface SetExtraHTTPHeadersRequest {
             /**
              * Map with extra HTTP headers.
