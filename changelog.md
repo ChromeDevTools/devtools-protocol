@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r891247
+###### _2021-06-10 09:16:15_ | Diff: [28c241d...077a282](https://github.com/ChromeDevTools/devtools-protocol/compare/28c241d...077a282)
+#### `Page`: modified event
+* [`Page.backForwardCacheNotUsed`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-backForwardCacheNotUsed) - The parameters's `notRestoredExplanations` _added_.
+#### `Page`: new types
+* [`Page.BackForwardCacheNotRestoredReason`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-BackForwardCacheNotRestoredReason)
+* [`Page.BackForwardCacheNotRestoredReasonType`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-BackForwardCacheNotRestoredReasonType)
+* [`Page.BackForwardCacheNotRestoredExplanation`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-BackForwardCacheNotRestoredExplanation)
+
+
 ## Roll protocol to r891108
 ###### _2021-06-09 23:16:17_ | Diff: [cbc2ddb...28c241d](https://github.com/ChromeDevTools/devtools-protocol/compare/cbc2ddb...28c241d)
 #### `Network`: removed command

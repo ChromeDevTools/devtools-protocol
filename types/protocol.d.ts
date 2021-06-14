@@ -11550,6 +11550,16 @@ export namespace Protocol {
          */
         export type AdFrameType = ('none' | 'child' | 'root');
 
+        export type AdFrameExplanation = ('ParentIsAd' | 'CreatedByAdScript' | 'MatchedBlockingRule');
+
+        /**
+         * Indicates whether a frame has been identified as an ad and why.
+         */
+        export interface AdFrameStatus {
+            adFrameType: AdFrameType;
+            explanations?: AdFrameExplanation[];
+        }
+
         /**
          * Indicates whether the frame is a secure context and why it is the case.
          */
@@ -11670,9 +11680,9 @@ export namespace Protocol {
              */
             unreachableUrl?: string;
             /**
-             * Indicates whether this frame was tagged as an ad.
+             * Indicates whether this frame was tagged as an ad and why.
              */
-            adFrameType?: AdFrameType;
+            adFrameStatus?: AdFrameStatus;
             /**
              * Indicates whether the main document is a secure context and explains why that is the case.
              */
