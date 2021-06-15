@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r892366
+###### _2021-06-14 18:16:09_ | Diff: [6286308...042399a](https://github.com/ChromeDevTools/devtools-protocol/compare/6286308...042399a)
+#### `Page`: modified type
+* [`Page.BackForwardCacheNotRestoredReason`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-BackForwardCacheNotRestoredReason) - The enum's `Unknown` _removed_. The enum's `WebVR` _updated_. The enum's `WebXR` _updated_. The enum's `SharedWorker` _updated_. The enum's `WebLocks` _updated_. The enum's `WebHID` _updated_. The enum's `WebShare` _updated_. The enum's `RequestedStorageAccessGrant` _updated_. The enum's `WebNfc` _updated_. The enum's `WebFileSystem` _updated_. The enum's `OutstandingNetworkRequestFetch` _updated_. The enum's `OutstandingNetworkRequestXHR` _updated_. The enum's `AppBanner` _updated_. The enum's `Printing` _updated_. The enum's `WebDatabase` _updated_. The enum's `PictureInPicture` _updated_. The enum's `Portal` _updated_. The enum's `SpeechRecognizer` _updated_. The enum's `IdleManager` _updated_. The enum's `PaymentManager` _updated_. The enum's `SpeechSynthesis` _updated_. The enum's `KeyboardLock` _updated_. The enum's `WebOTPService` _updated_. The enum's `OutstandingNetworkRequestDirectSocket` _updated_. The enum's `IsolatedWorldScript` _updated_. The enum's `InjectedStyleSheet` _updated_. The enum's `MediaSessionImplOnServiceCreated` _updated_.
+
+
 ## Roll protocol to r892017
 ###### _2021-06-14 03:15:55_ | Diff: [077a282...6286308](https://github.com/ChromeDevTools/devtools-protocol/compare/077a282...6286308)
 #### `Page`: new types

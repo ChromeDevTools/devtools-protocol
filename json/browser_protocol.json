@@ -15051,6 +15051,7 @@
                         "OptInUnloadHeaderNotPresent",
                         "UnloadHandlerExistsInMainFrame",
                         "UnloadHandlerExistsInSubFrame",
+                        "ServiceWorkerUnregistration",
                         "WebSocket",
                         "WebRTC",
                         "MainResourceHasCacheControlNoStore",
