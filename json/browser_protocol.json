@@ -15077,7 +15077,6 @@
                         "RequestedBackgroundWorkPermission",
                         "BroadcastChannel",
                         "IndexedDBConnection",
-                        "WebVR",
                         "WebXR",
                         "SharedWorker",
                         "WebLocks",

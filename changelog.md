@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r892017
+###### _2021-06-14 03:15:55_ | Diff: [077a282...6286308](https://github.com/ChromeDevTools/devtools-protocol/compare/077a282...6286308)
+#### `Page`: new types
+* [`Page.AdFrameExplanation`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-AdFrameExplanation)
+* [`Page.AdFrameStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-AdFrameStatus)
+#### `Page`: modified type
+* [`Page.Frame`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Frame) - The `adFrameType` in the properties had `name` _updated_. The `adFrameType` in the properties had `description` _updated_. The `adFrameType` in the properties had `$ref` _updated_.
+
+
 ## Roll protocol to r891247
 ###### _2021-06-10 09:16:15_ | Diff: [28c241d...077a282](https://github.com/ChromeDevTools/devtools-protocol/compare/28c241d...077a282)
 #### `Page`: modified event
