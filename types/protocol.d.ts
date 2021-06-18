@@ -12119,13 +12119,14 @@ export namespace Protocol {
         export const enum CaptureScreenshotRequestFormat {
             Jpeg = 'jpeg',
             Png = 'png',
+            Webp = 'webp',
         }
 
         export interface CaptureScreenshotRequest {
             /**
              * Image compression format (defaults to png). (CaptureScreenshotRequestFormat enum)
              */
-            format?: ('jpeg' | 'png');
+            format?: ('jpeg' | 'png' | 'webp');
             /**
              * Compression quality from range [0..100] (jpeg only).
              */
