@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r894020
+###### _2021-06-18 16:16:01_ | Diff: [6abba71...e7ab713](https://github.com/ChromeDevTools/devtools-protocol/compare/6abba71...e7ab713)
+#### `Page`: modified command
+* [`Page.captureScreenshot`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-captureScreenshot) - The `0` in the parameters had `webp` _added_.
+
+
 ## Roll protocol to r893712
 ###### _2021-06-17 23:16:15_ | Diff: [7ad22bc...6abba71](https://github.com/ChromeDevTools/devtools-protocol/compare/7ad22bc...6abba71)
 #### `Page`: modified type
