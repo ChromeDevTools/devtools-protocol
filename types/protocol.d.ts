@@ -4011,7 +4011,9 @@ export namespace Protocol {
              */
             frameId: Page.FrameId;
             /**
-             * Stylesheet resource URL.
+             * Stylesheet resource URL. Empty if this is a constructed stylesheet created using
+             * new CSSStyleSheet() (but non-empty if this is a constructed sylesheet imported
+             * as a CSS module script).
              */
             sourceURL: string;
             /**
@@ -4051,7 +4053,8 @@ export namespace Protocol {
              */
             isMutable: boolean;
             /**
-             * Whether this stylesheet is a constructed stylesheet (created using new CSSStyleSheet()).
+             * True if this stylesheet is created through new CSSStyleSheet() or imported as a
+             * CSS module script.
              */
             isConstructed: boolean;
             /**

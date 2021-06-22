@@ -2664,7 +2664,7 @@
                         },
                         {
                             "name": "sourceURL",
-                            "description": "Stylesheet resource URL.",
+                            "description": "Stylesheet resource URL. Empty if this is a constructed stylesheet created using\nnew CSSStyleSheet() (but non-empty if this is a constructed sylesheet imported\nas a CSS module script).",
                             "type": "string"
                         },
                         {
@@ -2712,7 +2712,7 @@
                         },
                         {
                             "name": "isConstructed",
-                            "description": "Whether this stylesheet is a constructed stylesheet (created using new CSSStyleSheet()).",
+                            "description": "True if this stylesheet is created through new CSSStyleSheet() or imported as a\nCSS module script.",
                             "type": "boolean"
                         },
                         {
