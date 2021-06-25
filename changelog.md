@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r895982
+###### _2021-06-25 03:16:12_ | Diff: [6544760...95234d8](https://github.com/ChromeDevTools/devtools-protocol/compare/6544760...95234d8)
+#### `Audits`: new type
+* [`Audits.IssueId`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-IssueId)
+#### `Audits`: modified type
+* [`Audits.InspectorIssue`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssue) - The `issueId` in the properties had `type` _removed_. The properties's `$ref` _added_.
+
+
 ## Roll protocol to r894467
 ###### _2021-06-21 17:16:13_ | Diff: [aaf1569...6544760](https://github.com/ChromeDevTools/devtools-protocol/compare/aaf1569...6544760)
 #### `CSS`: modified type
