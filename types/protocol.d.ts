@@ -9044,11 +9044,6 @@ export namespace Protocol {
              * passed by the developer (e.g. via "fetch") as understood by the backend.
              */
             trustTokenParams?: TrustTokenParams;
-            /**
-             * True if this resource request is considered to be the 'same site' as the
-             * request correspondinfg to the main frame.
-             */
-            isSameSite?: boolean;
         }
 
         /**
