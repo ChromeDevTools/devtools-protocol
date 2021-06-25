@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r894467
+###### _2021-06-21 17:16:13_ | Diff: [aaf1569...6544760](https://github.com/ChromeDevTools/devtools-protocol/compare/aaf1569...6544760)
+#### `CSS`: modified type
+* [`CSS.CSSStyleSheetHeader`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSStyleSheetHeader) - The `sourceURL` in the properties had `description` _updated_. The `isConstructed` in the properties had `description` _updated_.
+
+
 ## Roll protocol to r894172
 ###### _2021-06-21 01:16:09_ | Diff: [fe543d9...aaf1569](https://github.com/ChromeDevTools/devtools-protocol/compare/fe543d9...aaf1569)
 #### `Page`: modified type

@@ -3387,6 +3387,12 @@ export namespace Protocol {
         }
 
         /**
+         * A unique id for a DevTools inspector issue. Allows other entities (e.g.
+         * exceptions, CDP message, console messages, etc.) to reference an issue.
+         */
+        export type IssueId = string;
+
+        /**
          * An inspector issue reported from the back-end.
          */
         export interface InspectorIssue {
@@ -3396,7 +3402,7 @@ export namespace Protocol {
              * A unique id for this issue. May be omitted if no other entity (e.g.
              * exception, CDP message, etc.) is referencing this issue.
              */
-            issueId?: string;
+            issueId?: IssueId;
         }
 
         export const enum GetEncodedResponseRequestEncoding {
