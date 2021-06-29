@@ -4352,6 +4352,10 @@ export namespace Protocol {
              * Identifier of the stylesheet containing this object (if exists).
              */
             styleSheetId?: StyleSheetId;
+            /**
+             * Optional name for the container.
+             */
+            name?: string;
         }
 
         /**
@@ -5972,6 +5976,18 @@ export namespace Protocol {
             backendNodeId: BackendNodeId;
             /**
              * Id of the node at given coordinates, only when enabled and requested document.
+             */
+            nodeId?: NodeId;
+        }
+
+        export interface GetContainerForNodeRequest {
+            nodeId: NodeId;
+            containerName?: string;
+        }
+
+        export interface GetContainerForNodeResponse {
+            /**
+             * The container node for the given node, or null if not found.
              */
             nodeId?: NodeId;
         }

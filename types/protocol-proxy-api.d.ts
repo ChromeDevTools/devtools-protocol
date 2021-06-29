@@ -1423,6 +1423,13 @@ export namespace ProtocolProxyApi {
         getFrameOwner(params: Protocol.DOM.GetFrameOwnerRequest): Promise<Protocol.DOM.GetFrameOwnerResponse>;
 
         /**
+         * Returns the container of the given node based on container query conditions.
+         * If containerName is given, it will find the nearest container with a matching name;
+         * otherwise it will find the nearest container regardless of its container name.
+         */
+        getContainerForNode(params: Protocol.DOM.GetContainerForNodeRequest): Promise<Protocol.DOM.GetContainerForNodeResponse>;
+
+        /**
          * Fired when `Element`'s attribute is modified.
          */
         on(event: 'attributeModified', listener: (params: Protocol.DOM.AttributeModifiedEvent) => void): void;

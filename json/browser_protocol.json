@@ -3106,6 +3106,12 @@
                             "description": "Identifier of the stylesheet containing this object (if exists).",
                             "optional": true,
                             "$ref": "StyleSheetId"
+                        },
+                        {
+                            "name": "name",
+                            "description": "Optional name for the container.",
+                            "optional": true,
+                            "type": "string"
                         }
                     ]
                 },
@@ -5612,6 +5618,30 @@
                         {
                             "name": "nodeId",
                             "description": "Id of the node at given coordinates, only when enabled and requested document.",
+                            "optional": true,
+                            "$ref": "NodeId"
+                        }
+                    ]
+                },
+                {
+                    "name": "getContainerForNode",
+                    "description": "Returns the container of the given node based on container query conditions.\nIf containerName is given, it will find the nearest container with a matching name;\notherwise it will find the nearest container regardless of its container name.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "nodeId",
+                            "$ref": "NodeId"
+                        },
+                        {
+                            "name": "containerName",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "nodeId",
+                            "description": "The container node for the given node, or null if not found.",
                             "optional": true,
                             "$ref": "NodeId"
                         }
