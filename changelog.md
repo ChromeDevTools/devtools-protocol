@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r896856
+###### _2021-06-29 04:16:10_ | Diff: [06ee96a...65148a9](https://github.com/ChromeDevTools/devtools-protocol/compare/06ee96a...65148a9)
+#### `CSS`: modified type
+* [`CSS.CSSContainerQuery`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSContainerQuery) - The properties's `name` _added_.
+#### `DOM`: new command
+* [`DOM.getContainerForNode`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getContainerForNode)
+
+
 ## Roll protocol to r896125
 ###### _2021-06-25 11:16:15_ | Diff: [6362220...06ee96a](https://github.com/ChromeDevTools/devtools-protocol/compare/6362220...06ee96a)
 #### `Network`: modified type

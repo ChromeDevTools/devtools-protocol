@@ -10388,6 +10388,13 @@
                             "experimental": true,
                             "optional": true,
                             "$ref": "TrustTokenParams"
+                        },
+                        {
+                            "name": "isSameSite",
+                            "description": "True if this resource request is considered to be the 'same site' as the\nrequest correspondinfg to the main frame.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ]
                 },
