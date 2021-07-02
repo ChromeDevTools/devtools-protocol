@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r898124
+###### _2021-07-02 05:16:12_ | Diff: [6814a59...b531de2](https://github.com/ChromeDevTools/devtools-protocol/compare/6814a59...b531de2)
+#### `Audits`: new type
+* [`Audits.WasmCrossOriginModuleSharingIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-WasmCrossOriginModuleSharingIssueDetails)
+#### `Audits`: modified types
+* [`Audits.InspectorIssueCode`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueCode) - The enum's `WasmCrossOriginModuleSharingIssue` _added_.
+* [`Audits.InspectorIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueDetails) - The properties's `wasmCrossOriginModuleSharingIssue` _added_.
+
+
 ## Roll protocol to r897295
 ###### _2021-06-30 02:16:16_ | Diff: [65148a9...6814a59](https://github.com/ChromeDevTools/devtools-protocol/compare/65148a9...6814a59)
 #### `Network`: modified type
