@@ -3359,12 +3359,19 @@ export namespace Protocol {
             location?: SourceCodeLocation;
         }
 
+        export interface WasmCrossOriginModuleSharingIssueDetails {
+            wasmModuleUrl: string;
+            sourceOrigin: string;
+            targetOrigin: string;
+            isWarning: boolean;
+        }
+
         /**
          * A unique identifier for the type of issue. Each type may use one of the
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'TrustedWebActivityIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue');
+        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'TrustedWebActivityIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue' | 'WasmCrossOriginModuleSharingIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3384,6 +3391,7 @@ export namespace Protocol {
             attributionReportingIssueDetails?: AttributionReportingIssueDetails;
             quirksModeIssueDetails?: QuirksModeIssueDetails;
             navigatorUserAgentIssueDetails?: NavigatorUserAgentIssueDetails;
+            wasmCrossOriginModuleSharingIssue?: WasmCrossOriginModuleSharingIssueDetails;
         }
 
         /**

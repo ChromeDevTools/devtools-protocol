@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r897295
+###### _2021-06-30 02:16:16_ | Diff: [65148a9...6814a59](https://github.com/ChromeDevTools/devtools-protocol/compare/65148a9...6814a59)
+#### `Network`: modified type
+* [`Network.Request`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Request) - The properties's `isSameSite` _added_.
+
+
 ## Roll protocol to r896856
 ###### _2021-06-29 04:16:10_ | Diff: [06ee96a...65148a9](https://github.com/ChromeDevTools/devtools-protocol/compare/06ee96a...65148a9)
 #### `CSS`: modified type
