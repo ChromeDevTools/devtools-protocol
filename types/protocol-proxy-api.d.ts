@@ -2511,6 +2511,8 @@ export namespace ProtocolProxyApi {
 
         setShowScrollSnapOverlays(params: Protocol.Overlay.SetShowScrollSnapOverlaysRequest): Promise<void>;
 
+        setShowContainerQueryOverlays(params: Protocol.Overlay.SetShowContainerQueryOverlaysRequest): Promise<void>;
+
         /**
          * Requests that backend shows paint rectangles
          */

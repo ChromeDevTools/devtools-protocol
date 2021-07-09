@@ -3268,6 +3268,10 @@ export namespace ProtocolMapping {
             paramsType: [Protocol.Overlay.SetShowScrollSnapOverlaysRequest];
             returnType: void;
         };
+        'Overlay.setShowContainerQueryOverlays': {
+            paramsType: [Protocol.Overlay.SetShowContainerQueryOverlaysRequest];
+            returnType: void;
+        };
         /**
          * Requests that backend shows paint rectangles
          */

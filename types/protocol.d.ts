@@ -11201,6 +11201,10 @@ export namespace Protocol {
              * The contrast algorithm to use for the contrast ratio (default: aa).
              */
             contrastAlgorithm?: ContrastAlgorithm;
+            /**
+             * The container query container highlight configuration (default: all transparent).
+             */
+            containerQueryContainerHighlightConfig?: ContainerQueryContainerHighlightConfig;
         }
 
         export type ColorFormat = ('rgb' | 'hsl' | 'hex');
@@ -11276,6 +11280,24 @@ export namespace Protocol {
              * The content box highlight outline color (default: transparent).
              */
             outlineColor?: DOM.RGBA;
+        }
+
+        export interface ContainerQueryHighlightConfig {
+            /**
+             * A descriptor for the highlight appearance of container query containers.
+             */
+            containerQueryContainerHighlightConfig: ContainerQueryContainerHighlightConfig;
+            /**
+             * Identifier of the container node to highlight.
+             */
+            nodeId: DOM.NodeId;
+        }
+
+        export interface ContainerQueryContainerHighlightConfig {
+            /**
+             * The style of the container border
+             */
+            containerBorder?: LineStyle;
         }
 
         export type InspectMode = ('searchForNode' | 'searchForUAShadowDOM' | 'captureAreaScreenshot' | 'showDistances' | 'none');
@@ -11496,6 +11518,13 @@ export namespace Protocol {
              * An array of node identifiers and descriptors for the highlight appearance.
              */
             scrollSnapHighlightConfigs: ScrollSnapHighlightConfig[];
+        }
+
+        export interface SetShowContainerQueryOverlaysRequest {
+            /**
+             * An array of node identifiers and descriptors for the highlight appearance.
+             */
+            containerQueryHighlightConfigs: ContainerQueryHighlightConfig[];
         }
 
         export interface SetShowPaintRectsRequest {
