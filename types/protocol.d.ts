@@ -6670,6 +6670,10 @@ export namespace Protocol {
              */
             nodeType?: integer[];
             /**
+             * Type of the shadow root the `Node` is in. String values are equal to the `ShadowRootType` enum.
+             */
+            shadowRootType?: RareStringData;
+            /**
              * `Node`'s nodeName.
              */
             nodeName?: StringIndex[];

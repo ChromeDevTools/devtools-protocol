@@ -1,5 +1,16 @@
 
 
+## Roll protocol to r900033
+###### _2021-07-09 09:16:22_ | Diff: [cbb20a9...db8965f](https://github.com/ChromeDevTools/devtools-protocol/compare/cbb20a9...db8965f)
+#### `Overlay`: new command
+* [`Overlay.setShowContainerQueryOverlays`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-setShowContainerQueryOverlays)
+#### `Overlay`: new types
+* [`Overlay.ContainerQueryHighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-ContainerQueryHighlightConfig)
+* [`Overlay.ContainerQueryContainerHighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-ContainerQueryContainerHighlightConfig)
+#### `Overlay`: modified type
+* [`Overlay.HighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-HighlightConfig) - The properties's `containerQueryContainerHighlightConfig` _added_.
+
+
 ## Roll protocol to r898382
 ###### _2021-07-02 16:16:12_ | Diff: [b531de2...c935633](https://github.com/ChromeDevTools/devtools-protocol/compare/b531de2...c935633)
 #### `DOM`: modified type
