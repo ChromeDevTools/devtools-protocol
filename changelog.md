@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r900855
+###### _2021-07-12 23:16:27_ | Diff: [56bb0ce...2609869](https://github.com/ChromeDevTools/devtools-protocol/compare/56bb0ce...2609869)
+#### `Page`: modified type
+* [`Page.BackForwardCacheNotRestoredReason`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-BackForwardCacheNotRestoredReason) - The enum's `Unknown` _removed_. The enum's `RequestedGeolocationPermission` _updated_. The enum's `RequestedNotificationsPermission` _updated_. The enum's `RequestedMIDIPermission` _updated_. The enum's `RequestedAudioCapturePermission` _updated_. The enum's `RequestedVideoCapturePermission` _updated_. The enum's `RequestedBackForwardCacheBlockedSensors` _updated_. The enum's `RequestedBackgroundWorkPermission` _updated_. The enum's `BroadcastChannel` _updated_. The enum's `IndexedDBConnection` _updated_. The enum's `WebXR` _updated_. The enum's `SharedWorker` _updated_. The enum's `WebLocks` _updated_. The enum's `WebHID` _updated_. The enum's `WebShare` _updated_. The enum's `RequestedStorageAccessGrant` _updated_. The enum's `WebNfc` _updated_. The enum's `WebFileSystem` _updated_. The enum's `OutstandingNetworkRequestFetch` _updated_. The enum's `OutstandingNetworkRequestXHR` _updated_. The enum's `AppBanner` _updated_. The enum's `Printing` _updated_. The enum's `WebDatabase` _updated_. The enum's `PictureInPicture` _updated_. The enum's `Portal` _updated_. The enum's `SpeechRecognizer` _updated_. The enum's `IdleManager` _updated_. The enum's `PaymentManager` _updated_. The enum's `SpeechSynthesis` _updated_. The enum's `KeyboardLock` _updated_. The enum's `WebOTPService` _updated_. The enum's `OutstandingNetworkRequestDirectSocket` _updated_. The enum's `IsolatedWorldScript` _updated_. The enum's `InjectedStyleSheet` _updated_. The enum's `MediaSessionImplOnServiceCreated` _updated_.
+
+
 ## Roll protocol to r900357
 ###### _2021-07-11 23:16:08_ | Diff: [db8965f...56bb0ce](https://github.com/ChromeDevTools/devtools-protocol/compare/db8965f...56bb0ce)
 #### `DOMSnapshot`: modified type
