@@ -2454,6 +2454,9 @@ export namespace ProtocolProxyApi {
 
         /**
          * Highlights owner element of the frame with given id.
+         * Deprecated: Doesn't work reliablity and cannot be fixed due to process
+         * separatation (the owner node might be in a different process). Determine
+         * the owner node in the client and use highlightNode.
          */
         highlightFrame(params: Protocol.Overlay.HighlightFrameRequest): Promise<void>;
 

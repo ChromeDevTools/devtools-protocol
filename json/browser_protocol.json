@@ -13793,7 +13793,8 @@
                 },
                 {
                     "name": "highlightFrame",
-                    "description": "Highlights owner element of the frame with given id.",
+                    "description": "Highlights owner element of the frame with given id.\nDeprecated: Doesn't work reliablity and cannot be fixed due to process\nseparatation (the owner node might be in a different process). Determine\nthe owner node in the client and use highlightNode.",
+                    "deprecated": true,
                     "parameters": [
                         {
                             "name": "frameId",
