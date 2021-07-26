@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r901419
+###### _2021-07-14 02:15:57_ | Diff: [f94c0d3...ddfd9ff](https://github.com/ChromeDevTools/devtools-protocol/compare/f94c0d3...ddfd9ff)
+#### `Overlay`: modified command
+* [`Overlay.highlightFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-highlightFrame) - `description` updated. `deprecated` added.
+
+
 ## Roll protocol to r901394
 ###### _2021-07-14 00:16:11_ | Diff: [2609869...f94c0d3](https://github.com/ChromeDevTools/devtools-protocol/compare/2609869...f94c0d3)
 #### `Page`: modified type

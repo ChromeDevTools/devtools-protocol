@@ -8709,6 +8709,15 @@
                             }
                         },
                         {
+                            "name": "files",
+                            "description": "List of filenames that should be included when dropping",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        {
                             "name": "dragOperationsMask",
                             "description": "Bit field representing allowed drag operations. Copy = 1, Link = 2, Move = 16",
                             "type": "integer"

@@ -7931,6 +7931,10 @@ export namespace Protocol {
         export interface DragData {
             items: DragDataItem[];
             /**
+             * List of filenames that should be included when dropping
+             */
+            files?: string[];
+            /**
              * Bit field representing allowed drag operations. Copy = 1, Link = 2, Move = 16
              */
             dragOperationsMask: integer;
