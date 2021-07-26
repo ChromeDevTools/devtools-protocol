@@ -10813,6 +10813,11 @@ export namespace Protocol {
              */
             resourceIPAddressSpace: IPAddressSpace;
             /**
+             * The status code of the response. This is useful in cases the request failed and no responseReceived
+             * event is triggered, which is the case for, e.g., CORS errors.
+             */
+            statusCode: integer;
+            /**
              * Raw response header text as it was received over the wire. The raw text may not always be
              * available, such as in the case of HTTP/2 or QUIC.
              */

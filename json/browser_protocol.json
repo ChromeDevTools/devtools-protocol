@@ -12999,6 +12999,11 @@
                             "$ref": "IPAddressSpace"
                         },
                         {
+                            "name": "statusCode",
+                            "description": "The status code of the response. This is useful in cases the request failed and no responseReceived\nevent is triggered, which is the case for, e.g., CORS errors.",
+                            "type": "integer"
+                        },
+                        {
                             "name": "headersText",
                             "description": "Raw response header text as it was received over the wire. The raw text may not always be\navailable, such as in the case of HTTP/2 or QUIC.",
                             "optional": true,

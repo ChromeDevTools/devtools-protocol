@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r905235
+###### _2021-07-26 07:16:05_ | Diff: [ddfd9ff...6da1a03](https://github.com/ChromeDevTools/devtools-protocol/compare/ddfd9ff...6da1a03)
+#### `Input`: modified type
+* [`Input.DragData`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#type-DragData) - The `dragOperationsMask` in the properties had `name` _updated_. The `dragOperationsMask` in the properties had `description` _updated_. The `dragOperationsMask` in the properties had `type` _updated_. The properties's `optional` _added_. The properties's `items` _added_. The properties's `dragOperationsMask` _added_.
+
+
 ## Roll protocol to r901419
 ###### _2021-07-14 02:15:57_ | Diff: [f94c0d3...ddfd9ff](https://github.com/ChromeDevTools/devtools-protocol/compare/f94c0d3...ddfd9ff)
 #### `Overlay`: modified command
