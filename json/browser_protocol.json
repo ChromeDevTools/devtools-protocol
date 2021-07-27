@@ -15194,6 +15194,7 @@
                         "CacheControlNoStore",
                         "CacheControlNoStoreCookieModified",
                         "CacheControlNoStoreHTTPOnlyCookieModified",
+                        "NoResponseHead",
                         "WebSocket",
                         "WebRTC",
                         "MainResourceHasCacheControlNoStore",
