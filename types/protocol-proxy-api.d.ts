@@ -1890,6 +1890,13 @@ export namespace ProtocolProxyApi {
         insertText(params: Protocol.Input.InsertTextRequest): Promise<void>;
 
         /**
+         * This method sets the current candidate text for ime.
+         * Use imeCommitComposition to commit the final text.
+         * Use imeSetComposition with empty string as text to cancel composition.
+         */
+        imeSetComposition(params: Protocol.Input.ImeSetCompositionRequest): Promise<void>;
+
+        /**
          * Dispatches a mouse event to the page.
          */
         dispatchMouseEvent(params: Protocol.Input.DispatchMouseEventRequest): Promise<void>;

@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r906505
+###### _2021-07-28 18:16:19_ | Diff: [fa458e7...1c8cd5c](https://github.com/ChromeDevTools/devtools-protocol/compare/fa458e7...1c8cd5c)
+#### `Page`: modified type
+* [`Page.PermissionsPolicyFeature`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-PermissionsPolicyFeature) - The enum's `ch-viewport-width` _updated_. The enum's `ch-width` _updated_. The enum's `clipboard-read` _updated_. The enum's `clipboard-write` _updated_. The enum's `cross-origin-isolated` _updated_. The enum's `direct-sockets` _updated_. The enum's `display-capture` _updated_. The enum's `document-domain` _updated_. The enum's `encrypted-media` _updated_. The enum's `execution-while-out-of-viewport` _updated_. The enum's `execution-while-not-rendered` _updated_. The enum's `focus-without-user-activation` _updated_. The enum's `fullscreen` _updated_. The enum's `frobulate` _updated_. The enum's `gamepad` _updated_. The enum's `geolocation` _updated_. The enum's `gyroscope` _updated_. The enum's `hid` _updated_. The enum's `idle-detection` _updated_. The enum's `interest-cohort` _updated_. The enum's `magnetometer` _updated_. The enum's `microphone` _updated_. The enum's `midi` _updated_. The enum's `otp-credentials` _updated_. The enum's `payment` _updated_. The enum's `picture-in-picture` _updated_. The enum's `publickey-credentials-get` _updated_. The enum's `screen-wake-lock` _updated_. The enum's `serial` _updated_. The enum's `shared-autofill` _updated_. The enum's `storage-access-api` _updated_. The enum's `sync-xhr` _updated_. The enum's `trust-token-redemption` _updated_. The enum's `usb` _updated_. The enum's `vertical-scroll` _updated_. The enum's `web-share` _updated_. The enum's `window-placement` _updated_. The enum's `xr-spatial-tracking` _updated_. The enum's `xr-spatial-tracking` _added_.
+
+
 ## Roll protocol to r905680
 ###### _2021-07-27 04:16:20_ | Diff: [52195bf...fa458e7](https://github.com/ChromeDevTools/devtools-protocol/compare/52195bf...fa458e7)
 #### `Page`: modified type

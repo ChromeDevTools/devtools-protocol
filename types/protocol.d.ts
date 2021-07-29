@@ -8053,6 +8053,29 @@ export namespace Protocol {
             text: string;
         }
 
+        export interface ImeSetCompositionRequest {
+            /**
+             * The text to insert
+             */
+            text: string;
+            /**
+             * selection start
+             */
+            selectionStart: integer;
+            /**
+             * selection end
+             */
+            selectionEnd: integer;
+            /**
+             * replacement start
+             */
+            replacementStart?: integer;
+            /**
+             * replacement end
+             */
+            replacementEnd?: integer;
+        }
+
         export const enum DispatchMouseEventRequestType {
             MousePressed = 'mousePressed',
             MouseReleased = 'mouseReleased',

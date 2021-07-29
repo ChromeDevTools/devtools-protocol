@@ -2672,6 +2672,15 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * This method sets the current candidate text for ime.
+         * Use imeCommitComposition to commit the final text.
+         * Use imeSetComposition with empty string as text to cancel composition.
+         */
+        'Input.imeSetComposition': {
+            paramsType: [Protocol.Input.ImeSetCompositionRequest];
+            returnType: void;
+        };
+        /**
          * Dispatches a mouse event to the page.
          */
         'Input.dispatchMouseEvent': {

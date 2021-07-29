@@ -8882,6 +8882,40 @@
                     ]
                 },
                 {
+                    "name": "imeSetComposition",
+                    "description": "This method sets the current candidate text for ime.\nUse imeCommitComposition to commit the final text.\nUse imeSetComposition with empty string as text to cancel composition.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "text",
+                            "description": "The text to insert",
+                            "type": "string"
+                        },
+                        {
+                            "name": "selectionStart",
+                            "description": "selection start",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "selectionEnd",
+                            "description": "selection end",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "replacementStart",
+                            "description": "replacement start",
+                            "optional": true,
+                            "type": "integer"
+                        },
+                        {
+                            "name": "replacementEnd",
+                            "description": "replacement end",
+                            "optional": true,
+                            "type": "integer"
+                        }
+                    ]
+                },
+                {
                     "name": "dispatchMouseEvent",
                     "description": "Dispatches a mouse event to the page.",
                     "parameters": [
