@@ -2195,6 +2195,14 @@ export namespace ProtocolMapping {
             returnType: Protocol.DOM.GetContainerForNodeResponse;
         };
         /**
+         * Returns the descendants of a container query container that have
+         * container queries against this container.
+         */
+        'DOM.getQueryingDescendantsForContainer': {
+            paramsType: [Protocol.DOM.GetQueryingDescendantsForContainerRequest];
+            returnType: Protocol.DOM.GetQueryingDescendantsForContainerResponse;
+        };
+        /**
          * Returns event listeners of the given object.
          */
         'DOMDebugger.getEventListeners': {

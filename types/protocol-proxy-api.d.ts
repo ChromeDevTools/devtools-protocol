@@ -1430,6 +1430,12 @@ export namespace ProtocolProxyApi {
         getContainerForNode(params: Protocol.DOM.GetContainerForNodeRequest): Promise<Protocol.DOM.GetContainerForNodeResponse>;
 
         /**
+         * Returns the descendants of a container query container that have
+         * container queries against this container.
+         */
+        getQueryingDescendantsForContainer(params: Protocol.DOM.GetQueryingDescendantsForContainerRequest): Promise<Protocol.DOM.GetQueryingDescendantsForContainerResponse>;
+
+        /**
          * Fired when `Element`'s attribute is modified.
          */
         on(event: 'attributeModified', listener: (params: Protocol.DOM.AttributeModifiedEvent) => void): void;

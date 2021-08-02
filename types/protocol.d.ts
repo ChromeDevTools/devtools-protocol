@@ -6000,6 +6000,20 @@ export namespace Protocol {
             nodeId?: NodeId;
         }
 
+        export interface GetQueryingDescendantsForContainerRequest {
+            /**
+             * Id of the container node to find querying descendants from.
+             */
+            nodeId: NodeId;
+        }
+
+        export interface GetQueryingDescendantsForContainerResponse {
+            /**
+             * Descendant nodes with container queries against the given container.
+             */
+            nodeIds: NodeId[];
+        }
+
         /**
          * Fired when `Element`'s attribute is modified.
          */

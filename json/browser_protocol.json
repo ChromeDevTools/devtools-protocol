@@ -5675,6 +5675,28 @@
                             "$ref": "NodeId"
                         }
                     ]
+                },
+                {
+                    "name": "getQueryingDescendantsForContainer",
+                    "description": "Returns the descendants of a container query container that have\ncontainer queries against this container.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "nodeId",
+                            "description": "Id of the container node to find querying descendants from.",
+                            "$ref": "NodeId"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "nodeIds",
+                            "description": "Descendant nodes with container queries against the given container.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "NodeId"
+                            }
+                        }
+                    ]
                 }
             ],
             "events": [

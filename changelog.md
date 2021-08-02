@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r906795
+###### _2021-07-29 12:17:01_ | Diff: [1c8cd5c...2ae3b1d](https://github.com/ChromeDevTools/devtools-protocol/compare/1c8cd5c...2ae3b1d)
+#### `Input`: new command
+* [`Input.imeSetComposition`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-imeSetComposition)
+
+
 ## Roll protocol to r906505
 ###### _2021-07-28 18:16:19_ | Diff: [fa458e7...1c8cd5c](https://github.com/ChromeDevTools/devtools-protocol/compare/fa458e7...1c8cd5c)
 #### `Page`: modified type
