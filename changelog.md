@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r907573
+###### _2021-08-02 09:16:14_ | Diff: [2ae3b1d...39a8210](https://github.com/ChromeDevTools/devtools-protocol/compare/2ae3b1d...39a8210)
+#### `DOM`: new command
+* [`DOM.getQueryingDescendantsForContainer`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-getQueryingDescendantsForContainer)
+
+
 ## Roll protocol to r906795
 ###### _2021-07-29 12:17:01_ | Diff: [1c8cd5c...2ae3b1d](https://github.com/ChromeDevTools/devtools-protocol/compare/1c8cd5c...2ae3b1d)
 #### `Input`: new command
