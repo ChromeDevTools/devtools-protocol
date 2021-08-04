@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r908187
+###### _2021-08-03 16:16:22_ | Diff: [39a8210...c707d30](https://github.com/ChromeDevTools/devtools-protocol/compare/39a8210...c707d30)
+#### `Network`: modified event
+* [`Network.responseReceivedExtraInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-responseReceivedExtraInfo) - The `statusCode` in the parameters had `description` _updated_.
+#### `Network`: modified type
+* [`Network.Response`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Response) - The `headersText` in the properties had `description` _updated_. The `requestHeadersText` in the properties had `description` _updated_. The properties's `deprecated` _added_ (2 times).
+#### `Fetch`: modified command
+* [`Fetch.continueRequest`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#method-continueRequest) - The parameters's `interceptResponse` _added_.
+
+
 ## Roll protocol to r907573
 ###### _2021-08-02 09:16:14_ | Diff: [2ae3b1d...39a8210](https://github.com/ChromeDevTools/devtools-protocol/compare/2ae3b1d...39a8210)
 #### `DOM`: new command

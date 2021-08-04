@@ -16065,6 +16065,26 @@
                     ]
                 },
                 {
+                    "name": "getOriginTrials",
+                    "description": "Get Origin Trials on given frame.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "frameId",
+                            "$ref": "FrameId"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "originTrials",
+                            "type": "array",
+                            "items": {
+                                "$ref": "OriginTrial"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "setDeviceMetricsOverride",
                     "description": "Overrides the values of device screen dimensions (window.screen.width, window.screen.height,\nwindow.innerWidth, window.innerHeight, and \"device-width\"/\"device-height\"-related CSS media\nquery results).",
                     "experimental": true,

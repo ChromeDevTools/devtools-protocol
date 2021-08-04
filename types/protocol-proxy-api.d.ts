@@ -2752,6 +2752,11 @@ export namespace ProtocolProxyApi {
         getPermissionsPolicyState(params: Protocol.Page.GetPermissionsPolicyStateRequest): Promise<Protocol.Page.GetPermissionsPolicyStateResponse>;
 
         /**
+         * Get Origin Trials on given frame.
+         */
+        getOriginTrials(params: Protocol.Page.GetOriginTrialsRequest): Promise<Protocol.Page.GetOriginTrialsResponse>;
+
+        /**
          * Overrides the values of device screen dimensions (window.screen.width, window.screen.height,
          * window.innerWidth, window.innerHeight, and "device-width"/"device-height"-related CSS media
          * query results).

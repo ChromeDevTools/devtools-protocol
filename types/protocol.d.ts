@@ -12657,6 +12657,14 @@ export namespace Protocol {
             states: PermissionsPolicyFeatureState[];
         }
 
+        export interface GetOriginTrialsRequest {
+            frameId: FrameId;
+        }
+
+        export interface GetOriginTrialsResponse {
+            originTrials: OriginTrial[];
+        }
+
         export interface SetDeviceMetricsOverrideRequest {
             /**
              * Overriding width value in pixels (minimum 0, maximum 10000000). 0 disables the override.

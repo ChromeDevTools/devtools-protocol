@@ -3573,6 +3573,13 @@ export namespace ProtocolMapping {
             returnType: Protocol.Page.GetPermissionsPolicyStateResponse;
         };
         /**
+         * Get Origin Trials on given frame.
+         */
+        'Page.getOriginTrials': {
+            paramsType: [Protocol.Page.GetOriginTrialsRequest];
+            returnType: Protocol.Page.GetOriginTrialsResponse;
+        };
+        /**
          * Overrides the values of device screen dimensions (window.screen.width, window.screen.height,
          * window.innerWidth, window.innerHeight, and "device-width"/"device-height"-related CSS media
          * query results).
