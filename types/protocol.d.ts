@@ -11346,9 +11346,13 @@ export namespace Protocol {
 
         export interface ContainerQueryContainerHighlightConfig {
             /**
-             * The style of the container border
+             * The style of the container border.
              */
             containerBorder?: LineStyle;
+            /**
+             * The style of the descendants' borders.
+             */
+            descendantBorder?: LineStyle;
         }
 
         export type InspectMode = ('searchForNode' | 'searchForUAShadowDOM' | 'captureAreaScreenshot' | 'showDistances' | 'none');

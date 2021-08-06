@@ -13751,7 +13751,13 @@
                     "properties": [
                         {
                             "name": "containerBorder",
-                            "description": "The style of the container border",
+                            "description": "The style of the container border.",
+                            "optional": true,
+                            "$ref": "LineStyle"
+                        },
+                        {
+                            "name": "descendantBorder",
+                            "description": "The style of the descendants' borders.",
                             "optional": true,
                             "$ref": "LineStyle"
                         }

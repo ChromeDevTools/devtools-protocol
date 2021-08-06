@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r908589
+###### _2021-08-04 13:16:22_ | Diff: [c707d30...8e161fc](https://github.com/ChromeDevTools/devtools-protocol/compare/c707d30...8e161fc)
+#### `Page`: new command
+* [`Page.getOriginTrials`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getOriginTrials)
+
+
 ## Roll protocol to r908187
 ###### _2021-08-03 16:16:22_ | Diff: [39a8210...c707d30](https://github.com/ChromeDevTools/devtools-protocol/compare/39a8210...c707d30)
 #### `Network`: modified event
