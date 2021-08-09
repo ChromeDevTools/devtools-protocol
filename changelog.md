@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r909375
+###### _2021-08-06 11:16:33_ | Diff: [8e161fc...94b504e](https://github.com/ChromeDevTools/devtools-protocol/compare/8e161fc...94b504e)
+#### `Overlay`: modified type
+* [`Overlay.ContainerQueryContainerHighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-ContainerQueryContainerHighlightConfig) - The `containerBorder` in the properties had `description` _updated_. The properties's `descendantBorder` _added_.
+
+
 ## Roll protocol to r908589
 ###### _2021-08-04 13:16:22_ | Diff: [c707d30...8e161fc](https://github.com/ChromeDevTools/devtools-protocol/compare/c707d30...8e161fc)
 #### `Page`: new command

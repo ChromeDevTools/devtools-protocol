@@ -1052,7 +1052,8 @@
                         "ExcludeSameSiteNoneInsecure",
                         "ExcludeSameSiteLax",
                         "ExcludeSameSiteStrict",
-                        "ExcludeInvalidSameParty"
+                        "ExcludeInvalidSameParty",
+                        "ExcludeSamePartyCrossPartyContext"
                     ]
                 },
                 {
