@@ -14581,7 +14581,7 @@
                             "name": "parentId",
                             "description": "Parent frame identifier.",
                             "optional": true,
-                            "type": "string"
+                            "$ref": "FrameId"
                         },
                         {
                             "name": "loaderId",

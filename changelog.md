@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r909734
+###### _2021-08-09 02:16:28_ | Diff: [94b504e...d1e1cbf](https://github.com/ChromeDevTools/devtools-protocol/compare/94b504e...d1e1cbf)
+#### `Audits`: modified type
+* [`Audits.SameSiteCookieExclusionReason`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SameSiteCookieExclusionReason) - The enum's `ExcludeSamePartyCrossPartyContext` _added_.
+
+
 ## Roll protocol to r909375
 ###### _2021-08-06 11:16:33_ | Diff: [8e161fc...94b504e](https://github.com/ChromeDevTools/devtools-protocol/compare/8e161fc...94b504e)
 #### `Overlay`: modified type
