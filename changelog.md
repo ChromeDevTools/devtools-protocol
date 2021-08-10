@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r910184
+###### _2021-08-10 00:16:07_ | Diff: [d1e1cbf...caec9d3](https://github.com/ChromeDevTools/devtools-protocol/compare/d1e1cbf...caec9d3)
+#### `Page`: modified type
+* [`Page.Frame`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Frame) - The `parentId` in the properties had `type` _removed_. The properties's `$ref` _added_.
+
+
 ## Roll protocol to r909734
 ###### _2021-08-09 02:16:28_ | Diff: [94b504e...d1e1cbf](https://github.com/ChromeDevTools/devtools-protocol/compare/94b504e...d1e1cbf)
 #### `Audits`: modified type
