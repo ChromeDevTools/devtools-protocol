@@ -324,11 +324,15 @@ const emitApiCommand = (command: P.Command, domainName: string, modulePrefix: st
     emitLine()
 }
 
-const emitApiEvent = (event: P.Event, domainName: string, modulePrefix: string) => {
+const emitApiEvent = (event: P.Event, domainName: string, modulePrefix: string, promiseApi: boolean) => {
     const prefix = `${modulePrefix}.${domainName}.`
     emitDescription(event.description)
     const params = event.parameters ? `params: ${prefix}${toEventPayloadName(event.name)}` : ''
-    emitLine(`on(event: '${event.name}', listener: (${params}) => void): void;`)
+    if (promiseApi) {
+        emitLine(`${event.name}(): Promise<${params ? params.slice(8) : 'void'}>;`)
+    } else {
+        emitLine(`on(event: '${event.name}', listener: (${params}) => void): void;`)
+    }
     emitLine()
 }
 
@@ -337,7 +341,10 @@ const emitDomainApi = (domain: P.Domain, modulePrefix: string) => {
     const domainName = toTitleCase(domain.domain)
     emitOpenBlock(`export interface ${domainName}Api`)
     if (domain.commands) domain.commands.forEach(c => emitApiCommand(c, domainName, modulePrefix))
-    if (domain.events) domain.events.forEach(e => emitApiEvent(e, domainName, modulePrefix))
+    if (domain.events) {
+        domain.events.forEach(e => emitApiEvent(e, domainName, modulePrefix, false))
+        domain.events.forEach(e => emitApiEvent(e, domainName, modulePrefix, true))
+    }
     emitCloseBlock()
 }
 
