@@ -385,6 +385,12 @@
                             "description": "The maximum depth at which descendants of the root node should be retrieved.\nIf omitted, the full tree is returned.",
                             "optional": true,
                             "type": "integer"
+                        },
+                        {
+                            "name": "frameId",
+                            "description": "The frame for whose document the AX tree should be retrieved.\nIf omited, the root frame is used.",
+                            "optional": true,
+                            "$ref": "Page.FrameId"
                         }
                     ],
                     "returns": [
@@ -405,6 +411,12 @@
                         {
                             "name": "id",
                             "$ref": "AXNodeId"
+                        },
+                        {
+                            "name": "frameId",
+                            "description": "The frame in whose document the node resides.\nIf omitted, the root frame is used.",
+                            "optional": true,
+                            "$ref": "Page.FrameId"
                         }
                     ],
                     "returns": [
@@ -15262,6 +15274,7 @@
                         "CacheControlNoStoreCookieModified",
                         "CacheControlNoStoreHTTPOnlyCookieModified",
                         "NoResponseHead",
+                        "Unknown",
                         "WebSocket",
                         "WebRTC",
                         "MainResourceHasCacheControlNoStore",
@@ -15306,7 +15319,15 @@
                         "IsolatedWorldScript",
                         "InjectedStyleSheet",
                         "MediaSessionImplOnServiceCreated",
-                        "Unknown"
+                        "SecurityHandler",
+                        "WebAuthenticationAPI",
+                        "FileChooser",
+                        "Serial",
+                        "FileSystemAccess",
+                        "MediaDevicesDispatcherHost",
+                        "WebBluetooth",
+                        "WebUSB",
+                        "MediaSession"
                     ]
                 },
                 {

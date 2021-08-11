@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r910293
+###### _2021-08-10 07:16:40_ | Diff: [caec9d3...5cff1bc](https://github.com/ChromeDevTools/devtools-protocol/compare/caec9d3...5cff1bc)
+#### `Network`: modified command
+* [`Network.loadNetworkResource`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-loadNetworkResource) - The `frameId` in the parameters had `description` _updated_. The parameters's `optional` _added_.
+
+
 ## Roll protocol to r910184
 ###### _2021-08-10 00:16:07_ | Diff: [d1e1cbf...caec9d3](https://github.com/ChromeDevTools/devtools-protocol/compare/d1e1cbf...caec9d3)
 #### `Page`: modified type
