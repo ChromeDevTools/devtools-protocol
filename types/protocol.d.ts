@@ -14474,6 +14474,15 @@ export namespace Protocol {
             flatten?: boolean;
         }
 
+        export interface AutoAttachRelatedRequest {
+            targetId: TargetID;
+            /**
+             * Whether to pause new targets when attaching to them. Use `Runtime.runIfWaitingForDebugger`
+             * to run paused targets.
+             */
+            waitForDebuggerOnStart: boolean;
+        }
+
         export interface SetDiscoverTargetsRequest {
             /**
              * Whether to discover available targets.
