@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r911675
+###### _2021-08-13 01:16:24_ | Diff: [85bc00a...e811304](https://github.com/ChromeDevTools/devtools-protocol/compare/85bc00a...e811304)
+#### `Audits`: modified type
+* [`Audits.AttributionReportingIssueType`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AttributionReportingIssueType) - The enum's `AttributionTriggerDataTooLarge` _added_.
+
+
 ## Roll protocol to r911543
 ###### _2021-08-12 16:17:07_ | Diff: [3c9fa3b...85bc00a](https://github.com/ChromeDevTools/devtools-protocol/compare/3c9fa3b...85bc00a)
 #### `Target`: new command

@@ -9872,6 +9872,15 @@ export namespace Protocol {
 
         export type IPAddressSpace = ('Local' | 'Private' | 'Public' | 'Unknown');
 
+        export interface ConnectTiming {
+            /**
+             * Timing's requestTime is a baseline in seconds, while the other numbers are ticks in
+             * milliseconds relatively to this requestTime. Matches ResourceTiming's requestTime for
+             * the same request (but not for redirected requests).
+             */
+            requestTime: number;
+        }
+
         export interface ClientSecurityState {
             initiatorIsSecureContext: boolean;
             initiatorIPAddressSpace: IPAddressSpace;
@@ -10829,6 +10838,10 @@ export namespace Protocol {
              * Raw request headers as they will be sent over the wire.
              */
             headers: Headers;
+            /**
+             * Connection timing information for the request.
+             */
+            connectTiming: ConnectTiming;
             /**
              * The client security state set for the request.
              */
