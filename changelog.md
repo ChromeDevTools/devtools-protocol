@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r911543
+###### _2021-08-12 16:17:07_ | Diff: [3c9fa3b...85bc00a](https://github.com/ChromeDevTools/devtools-protocol/compare/3c9fa3b...85bc00a)
+#### `Target`: new command
+* [`Target.autoAttachRelated`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-autoAttachRelated)
+#### `Target`: modified command
+* [`Target.setAutoAttach`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-setAutoAttach) - `description` updated.
+
+
 ## Roll protocol to r911116
 ###### _2021-08-11 19:16:24_ | Diff: [2b18125...3c9fa3b](https://github.com/ChromeDevTools/devtools-protocol/compare/2b18125...3c9fa3b)
 #### `Page`: modified type
