@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r911867
+###### _2021-08-13 13:16:18_ | Diff: [e811304...b3fb07a](https://github.com/ChromeDevTools/devtools-protocol/compare/e811304...b3fb07a)
+#### `Network`: modified event
+* [`Network.requestWillBeSentExtraInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestWillBeSentExtraInfo) - The `clientSecurityState` in the parameters had `optional` _removed_. The `clientSecurityState` in the parameters had `name` _updated_. The `clientSecurityState` in the parameters had `description` _updated_. The `clientSecurityState` in the parameters had `$ref` _updated_. The parameters's `experimental` _added_. The parameters's `clientSecurityState` _added_.
+#### `Network`: new type
+* [`Network.ConnectTiming`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ConnectTiming)
+
+
 ## Roll protocol to r911675
 ###### _2021-08-13 01:16:24_ | Diff: [85bc00a...e811304](https://github.com/ChromeDevTools/devtools-protocol/compare/85bc00a...e811304)
 #### `Audits`: modified type
