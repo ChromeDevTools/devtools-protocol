@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r912566
+###### _2021-08-17 07:15:28_ | Diff: [5c0761c...9b427a9](https://github.com/ChromeDevTools/devtools-protocol/compare/5c0761c...9b427a9)
+#### `Page`: modified type
+* [`Page.BackForwardCacheNotRestoredReason`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-BackForwardCacheNotRestoredReason) - The enum's `MediaSession` _removed_. The enum's `WebFileSystem` _updated_. The enum's `OutstandingNetworkRequestFetch` _updated_. The enum's `OutstandingNetworkRequestXHR` _updated_. The enum's `AppBanner` _updated_. The enum's `Printing` _updated_. The enum's `WebDatabase` _updated_. The enum's `PictureInPicture` _updated_. The enum's `Portal` _updated_. The enum's `SpeechRecognizer` _updated_. The enum's `IdleManager` _updated_. The enum's `PaymentManager` _updated_. The enum's `SpeechSynthesis` _updated_. The enum's `KeyboardLock` _updated_. The enum's `WebOTPService` _updated_. The enum's `OutstandingNetworkRequestDirectSocket` _updated_. The enum's `IsolatedWorldScript` _updated_. The enum's `InjectedStyleSheet` _updated_. The enum's `MediaSessionImplOnServiceCreated` _updated_. The enum's `SecurityHandler` _updated_. The enum's `WebAuthenticationAPI` _updated_. The enum's `FileChooser` _updated_. The enum's `Serial` _updated_. The enum's `FileSystemAccess` _updated_. The enum's `MediaDevicesDispatcherHost` _updated_. The enum's `WebBluetooth` _updated_. The enum's `WebUSB` _updated_.
+
+
 ## Roll protocol to r912314
 ###### _2021-08-16 13:16:28_ | Diff: [289585c...5c0761c](https://github.com/ChromeDevTools/devtools-protocol/compare/289585c...5c0761c)
 #### `Network`: removed command
