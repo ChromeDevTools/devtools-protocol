@@ -1,5 +1,20 @@
 
 
+## Roll protocol to r912314
+###### _2021-08-16 13:16:28_ | Diff: [289585c...5c0761c](https://github.com/ChromeDevTools/devtools-protocol/compare/289585c...5c0761c)
+#### `Network`: removed command
+* [`Network.enableReportingApi`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-enableReportingApi)
+#### `Network`: removed event
+* [`Network.reportingApiReportAdded`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-reportingApiReportAdded)
+#### `Network`: removed types
+* [`Network.ReportStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ReportStatus)
+* [`Network.ReportingApiReport`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ReportingApiReport)
+#### `Page`: modified type
+* [`Page.PermissionsPolicyFeature`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-PermissionsPolicyFeature) - The enum's `ch-viewport-width` _updated_. The enum's `ch-width` _updated_. The enum's `clipboard-read` _updated_. The enum's `clipboard-write` _updated_. The enum's `cross-origin-isolated` _updated_. The enum's `direct-sockets` _updated_. The enum's `display-capture` _updated_. The enum's `document-domain` _updated_. The enum's `encrypted-media` _updated_. The enum's `execution-while-out-of-viewport` _updated_. The enum's `execution-while-not-rendered` _updated_. The enum's `focus-without-user-activation` _updated_. The enum's `fullscreen` _updated_. The enum's `frobulate` _updated_. The enum's `gamepad` _updated_. The enum's `geolocation` _updated_. The enum's `gyroscope` _updated_. The enum's `hid` _updated_. The enum's `idle-detection` _updated_. The enum's `interest-cohort` _updated_. The enum's `magnetometer` _updated_. The enum's `microphone` _updated_. The enum's `midi` _updated_. The enum's `otp-credentials` _updated_. The enum's `payment` _updated_. The enum's `picture-in-picture` _updated_. The enum's `publickey-credentials-get` _updated_. The enum's `screen-wake-lock` _updated_. The enum's `serial` _updated_. The enum's `shared-autofill` _updated_. The enum's `storage-access-api` _updated_. The enum's `sync-xhr` _updated_. The enum's `trust-token-redemption` _updated_. The enum's `usb` _updated_. The enum's `vertical-scroll` _updated_. The enum's `web-share` _updated_. The enum's `window-placement` _updated_. The enum's `xr-spatial-tracking` _updated_. The enum's `xr-spatial-tracking` _added_.
+#### `Fetch`: modified event
+* [`Fetch.requestPaused`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#event-requestPaused) - The `responseHeaders` in the parameters had `items` _removed_. The `networkId` in the parameters had `$ref` _removed_. The `responseHeaders` in the parameters had `name` _updated_. The `responseHeaders` in the parameters had `description` _updated_. The `responseHeaders` in the parameters had `type` _updated_. The `networkId` in the parameters had `name` _updated_. The `networkId` in the parameters had `description` _updated_. The parameters's `type` _added_. The parameters's `items` _added_. The parameters's `networkId` _added_.
+
+
 ## Roll protocol to r912162
 ###### _2021-08-16 07:16:23_ | Diff: [5000852...289585c](https://github.com/ChromeDevTools/devtools-protocol/compare/5000852...289585c)
 #### `Network`: new command
