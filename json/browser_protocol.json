@@ -381,8 +381,15 @@
                     "experimental": true,
                     "parameters": [
                         {
-                            "name": "max_depth",
+                            "name": "depth",
                             "description": "The maximum depth at which descendants of the root node should be retrieved.\nIf omitted, the full tree is returned.",
+                            "optional": true,
+                            "type": "integer"
+                        },
+                        {
+                            "name": "max_depth",
+                            "description": "Deprecated. This parameter has been renamed to `depth`. If depth is not provided, max_depth will be used.",
+                            "deprecated": true,
                             "optional": true,
                             "type": "integer"
                         },

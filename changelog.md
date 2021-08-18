@@ -1,5 +1,16 @@
 
 
+## Roll protocol to r912603
+###### _2021-08-17 09:15:25_ | Diff: [9b427a9...ba60fa4](https://github.com/ChromeDevTools/devtools-protocol/compare/9b427a9...ba60fa4)
+#### `Network`: new command
+* [`Network.enableReportingApi`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-enableReportingApi)
+#### `Network`: new event
+* [`Network.reportingApiReportAdded`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-reportingApiReportAdded)
+#### `Network`: new types
+* [`Network.ReportStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ReportStatus)
+* [`Network.ReportingApiReport`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ReportingApiReport)
+
+
 ## Roll protocol to r912566
 ###### _2021-08-17 07:15:28_ | Diff: [5c0761c...9b427a9](https://github.com/ChromeDevTools/devtools-protocol/compare/5c0761c...9b427a9)
 #### `Page`: modified type

@@ -2690,6 +2690,10 @@ export namespace Protocol {
              * The maximum depth at which descendants of the root node should be retrieved.
              * If omitted, the full tree is returned.
              */
+            depth?: integer;
+            /**
+             * Deprecated. This parameter has been renamed to `depth`. If depth is not provided, max_depth will be used.
+             */
             max_depth?: integer;
             /**
              * The frame for whose document the AX tree should be retrieved.
