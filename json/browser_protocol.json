@@ -9858,6 +9858,14 @@
                             "type": "string"
                         },
                         {
+                            "name": "category",
+                            "optional": true,
+                            "type": "string",
+                            "enum": [
+                                "cors"
+                            ]
+                        },
+                        {
                             "name": "timestamp",
                             "description": "Timestamp when this entry was added.",
                             "$ref": "Runtime.Timestamp"

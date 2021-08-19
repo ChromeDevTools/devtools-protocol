@@ -8712,6 +8712,10 @@ export namespace Protocol {
             Error = 'error',
         }
 
+        export const enum LogEntryCategory {
+            Cors = 'cors',
+        }
+
         /**
          * Log entry.
          */
@@ -8728,6 +8732,10 @@ export namespace Protocol {
              * Logged text.
              */
             text: string;
+            /**
+             *  (LogEntryCategory enum)
+             */
+            category?: ('cors');
             /**
              * Timestamp when this entry was added.
              */

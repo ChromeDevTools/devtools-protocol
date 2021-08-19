@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r912925
+###### _2021-08-18 01:15:25_ | Diff: [ba60fa4...d30492e](https://github.com/ChromeDevTools/devtools-protocol/compare/ba60fa4...d30492e)
+#### `Accessibility`: modified command
+* [`Accessibility.getFullAXTree`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#method-getFullAXTree) - The `frameId` in the parameters had `$ref` _removed_. The `max_depth` in the parameters had `name` _updated_. The `frameId` in the parameters had `name` _updated_. The `frameId` in the parameters had `description` _updated_. The parameters's `deprecated` _added_. The parameters's `type` _added_. The parameters's `frameId` _added_.
+
+
 ## Roll protocol to r912603
 ###### _2021-08-17 09:15:25_ | Diff: [9b427a9...ba60fa4](https://github.com/ChromeDevTools/devtools-protocol/compare/9b427a9...ba60fa4)
 #### `Network`: new command
