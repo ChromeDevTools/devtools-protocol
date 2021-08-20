@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r913327
+###### _2021-08-19 02:15:31_ | Diff: [d30492e...a558ebd](https://github.com/ChromeDevTools/devtools-protocol/compare/d30492e...a558ebd)
+#### `Log`: modified type
+* [`Log.LogEntry`](https://chromedevtools.github.io/devtools-protocol/tot/Log/#type-LogEntry) - The `timestamp` in the properties had `description` _removed_. The `timestamp` in the properties had `$ref` _removed_. The `url` in the properties had `optional` _removed_. The `url` in the properties had `type` _removed_. The `stackTrace` in the properties had `$ref` _removed_. The `workerId` in the properties had `type` _removed_. The `args` in the properties had `items` _removed_. The `timestamp` in the properties had `name` _updated_. The `url` in the properties had `name` _updated_. The `url` in the properties had `description` _updated_. The `lineNumber` in the properties had `name` _updated_. The `lineNumber` in the properties had `description` _updated_. The `lineNumber` in the properties had `type` _updated_. The `stackTrace` in the properties had `name` _updated_. The `stackTrace` in the properties had `description` _updated_. The `networkRequestId` in the properties had `name` _updated_. The `networkRequestId` in the properties had `description` _updated_. The `networkRequestId` in the properties had `$ref` _updated_. The `workerId` in the properties had `name` _updated_. The `workerId` in the properties had `description` _updated_. The `args` in the properties had `name` _updated_. The `args` in the properties had `description` _updated_. The `args` in the properties had `type` _updated_. The properties's `optional` _added_. The properties's `type` _added_ (2 times). The properties's `enum` _added_. The properties's `$ref` _added_ (2 times). The properties's `args` _added_.
+
+
 ## Roll protocol to r912925
 ###### _2021-08-18 01:15:25_ | Diff: [ba60fa4...d30492e](https://github.com/ChromeDevTools/devtools-protocol/compare/ba60fa4...d30492e)
 #### `Accessibility`: modified command

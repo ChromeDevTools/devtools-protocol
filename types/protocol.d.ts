@@ -15036,7 +15036,9 @@ export namespace Protocol {
              */
             binaryResponseHeaders?: string;
             /**
-             * A response body. (Encoded as a base64 string when passed over JSON)
+             * A response body. If absent, original response body will be used if
+             * the request is intercepted at the response stage and empty body
+             * will be used if the request is intercepted at the request stage. (Encoded as a base64 string when passed over JSON)
              */
             body?: string;
             /**
@@ -15082,6 +15084,33 @@ export namespace Protocol {
              * Response to  with an authChallenge.
              */
             authChallengeResponse: AuthChallengeResponse;
+        }
+
+        export interface ContinueResponseRequest {
+            /**
+             * An id the client received in requestPaused event.
+             */
+            requestId: RequestId;
+            /**
+             * An HTTP response code. If absent, original response code will be used.
+             */
+            responseCode?: integer;
+            /**
+             * A textual representation of responseCode.
+             * If absent, a standard phrase matching responseCode is used.
+             */
+            responsePhrase?: string;
+            /**
+             * Response headers. If absent, original response headers will be used.
+             */
+            responseHeaders?: HeaderEntry[];
+            /**
+             * Alternative way of specifying response headers as a \0-separated
+             * series of name: value pairs. Prefer the above method unless you
+             * need to represent some non-UTF8 values that can't be transmitted
+             * over the protocol as text. (Encoded as a base64 string when passed over JSON)
+             */
+            binaryResponseHeaders?: string;
         }
 
         export interface GetResponseBodyRequest {

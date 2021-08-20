@@ -3491,6 +3491,13 @@ export namespace ProtocolProxyApi {
         continueWithAuth(params: Protocol.Fetch.ContinueWithAuthRequest): Promise<void>;
 
         /**
+         * Continues loading of the paused response, optionally modifying the
+         * response headers. If either responseCode or headers are modified, all of them
+         * must be present.
+         */
+        continueResponse(params: Protocol.Fetch.ContinueResponseRequest): Promise<void>;
+
+        /**
          * Causes the body of the response to be received from the server and
          * returned as a single string. May only be issued for a request that
          * is paused in the Response stage and is mutually exclusive with
