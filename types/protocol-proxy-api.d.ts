@@ -2668,6 +2668,11 @@ export namespace ProtocolProxyApi {
         getManifestIcons(): Promise<Protocol.Page.GetManifestIconsResponse>;
 
         /**
+         * Returns the unique (PWA) app id.
+         */
+        getAppId(): Promise<Protocol.Page.GetAppIdResponse>;
+
+        /**
          * Returns all browser cookies. Depending on the backend support, will return detailed cookie
          * information in the `cookies` field.
          */

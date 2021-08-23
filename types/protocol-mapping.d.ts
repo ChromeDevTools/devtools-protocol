@@ -3452,6 +3452,13 @@ export namespace ProtocolMapping {
             returnType: Protocol.Page.GetManifestIconsResponse;
         };
         /**
+         * Returns the unique (PWA) app id.
+         */
+        'Page.getAppId': {
+            paramsType: [];
+            returnType: Protocol.Page.GetAppIdResponse;
+        };
+        /**
          * Returns all browser cookies. Depending on the backend support, will return detailed cookie
          * information in the `cookies` field.
          */

@@ -12433,6 +12433,13 @@ export namespace Protocol {
             primaryIcon?: string;
         }
 
+        export interface GetAppIdResponse {
+            /**
+             * Only returns a value if the feature flag 'WebAppEnableManifestId' is enabled
+             */
+            appId?: string;
+        }
+
         export interface GetCookiesResponse {
             /**
              * Array of cookie objects.

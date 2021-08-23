@@ -15741,6 +15741,19 @@
                     ]
                 },
                 {
+                    "name": "getAppId",
+                    "description": "Returns the unique (PWA) app id.",
+                    "experimental": true,
+                    "returns": [
+                        {
+                            "name": "appId",
+                            "description": "Only returns a value if the feature flag 'WebAppEnableManifestId' is enabled",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "getCookies",
                     "description": "Returns all browser cookies. Depending on the backend support, will return detailed cookie\ninformation in the `cookies` field.",
                     "experimental": true,
