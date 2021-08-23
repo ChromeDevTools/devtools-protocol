@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r913948
+###### _2021-08-20 13:15:44_ | Diff: [a558ebd...e355d86](https://github.com/ChromeDevTools/devtools-protocol/compare/a558ebd...e355d86)
+#### `Fetch`: new command
+* [`Fetch.continueResponse`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#method-continueResponse)
+#### `Fetch`: modified command
+* [`Fetch.fulfillRequest`](https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#method-fulfillRequest) - The `body` in the parameters had `description` _updated_.
+
+
 ## Roll protocol to r913327
 ###### _2021-08-19 02:15:31_ | Diff: [d30492e...a558ebd](https://github.com/ChromeDevTools/devtools-protocol/compare/d30492e...a558ebd)
 #### `Log`: modified type
