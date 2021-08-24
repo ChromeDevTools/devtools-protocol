@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r914246
+###### _2021-08-23 03:15:24_ | Diff: [e36e630...cebcf39](https://github.com/ChromeDevTools/devtools-protocol/compare/e36e630...cebcf39)
+#### `Page`: new command
+* [`Page.getAppId`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getAppId)
+
+
 ## Roll protocol to r914207
 ###### _2021-08-23 00:15:27_ | Diff: [e355d86...e36e630](https://github.com/ChromeDevTools/devtools-protocol/compare/e355d86...e36e630)
 #### `Page`: modified type
