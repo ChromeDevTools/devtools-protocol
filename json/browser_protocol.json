@@ -14774,16 +14774,6 @@
                             "items": {
                                 "$ref": "GatedAPIFeatures"
                             }
-                        },
-                        {
-                            "name": "originTrials",
-                            "description": "Frame document's origin trials with at least one token present.",
-                            "experimental": true,
-                            "optional": true,
-                            "type": "array",
-                            "items": {
-                                "$ref": "OriginTrial"
-                            }
                         }
                     ]
                 },

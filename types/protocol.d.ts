@@ -11900,10 +11900,6 @@ export namespace Protocol {
              * Indicated which gated APIs / features are available.
              */
             gatedAPIFeatures: GatedAPIFeatures[];
-            /**
-             * Frame document's origin trials with at least one token present.
-             */
-            originTrials?: OriginTrial[];
         }
 
         /**

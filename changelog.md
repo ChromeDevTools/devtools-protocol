@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r914774
+###### _2021-08-24 10:15:43_ | Diff: [6626782...5b380d1](https://github.com/ChromeDevTools/devtools-protocol/compare/6626782...5b380d1)
+#### `Target`: modified command
+* [`Target.autoAttachRelated`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-autoAttachRelated) - `description` updated.
+
+
 ## Roll protocol to r914689
 ###### _2021-08-24 04:15:27_ | Diff: [cebcf39...6626782](https://github.com/ChromeDevTools/devtools-protocol/compare/cebcf39...6626782)
 #### `Page`: modified type
