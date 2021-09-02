@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r915197
+###### _2021-08-25 08:15:50_ | Diff: [5b380d1...3ac2966](https://github.com/ChromeDevTools/devtools-protocol/compare/5b380d1...3ac2966)
+#### `Page`: modified type
+* [`Page.Frame`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Frame) - The properties's `originTrials` _removed_.
+
+
 ## Roll protocol to r914774
 ###### _2021-08-24 10:15:43_ | Diff: [6626782...5b380d1](https://github.com/ChromeDevTools/devtools-protocol/compare/6626782...5b380d1)
 #### `Target`: modified command
