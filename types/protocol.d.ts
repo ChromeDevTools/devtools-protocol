@@ -9954,7 +9954,12 @@ export namespace Protocol {
              * How many uploads deep the related request was.
              */
             depth: integer;
+            /**
+             * The number of delivery attempts made so far, not including an active attempt.
+             */
+            completedAttempts: integer;
             body: any;
+            status: ReportStatus;
         }
 
         /**
@@ -11062,6 +11067,10 @@ export namespace Protocol {
          * And after 'enableReportingApi' for all existing reports.
          */
         export interface ReportingApiReportAddedEvent {
+            report: ReportingApiReport;
+        }
+
+        export interface ReportingApiReportUpdatedEvent {
             report: ReportingApiReport;
         }
     }

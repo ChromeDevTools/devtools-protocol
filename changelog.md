@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r918695
+###### _2021-09-06 23:15:26_ | Diff: [69ec1d8...841918b](https://github.com/ChromeDevTools/devtools-protocol/compare/69ec1d8...841918b)
+#### `Network`: modified type
+* [`Network.ReportStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ReportStatus) - The enum's `MarkedForRemoval` _added_. The enum's `Success` _added_.
+
+
 ## Roll protocol to r918555
 ###### _2021-09-06 04:15:31_ | Diff: [e4f6e30...69ec1d8](https://github.com/ChromeDevTools/devtools-protocol/compare/e4f6e30...69ec1d8)
 #### `Network`: new type

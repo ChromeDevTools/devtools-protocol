@@ -11805,8 +11805,17 @@
                             "type": "integer"
                         },
                         {
+                            "name": "completedAttempts",
+                            "description": "The number of delivery attempts made so far, not including an active attempt.",
+                            "type": "integer"
+                        },
+                        {
                             "name": "body",
                             "type": "object"
+                        },
+                        {
+                            "name": "status",
+                            "$ref": "ReportStatus"
                         }
                     ]
                 },
@@ -13328,6 +13337,16 @@
                 {
                     "name": "reportingApiReportAdded",
                     "description": "Is sent whenever a new report is added.\nAnd after 'enableReportingApi' for all existing reports.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "report",
+                            "$ref": "ReportingApiReport"
+                        }
+                    ]
+                },
+                {
+                    "name": "reportingApiReportUpdated",
                     "experimental": true,
                     "parameters": [
                         {
