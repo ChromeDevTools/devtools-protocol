@@ -1678,6 +1678,11 @@ export namespace ProtocolProxyApi {
         setFocusEmulationEnabled(params: Protocol.Emulation.SetFocusEmulationEnabledRequest): Promise<void>;
 
         /**
+         * Automatically render all web contents using a dark theme.
+         */
+        setAutoDarkModeOverride(params: Protocol.Emulation.SetAutoDarkModeOverrideRequest): Promise<void>;
+
+        /**
          * Enables CPU throttling to emulate slow CPUs.
          */
         setCPUThrottlingRate(params: Protocol.Emulation.SetCPUThrottlingRateRequest): Promise<void>;

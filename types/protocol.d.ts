@@ -7165,6 +7165,14 @@ export namespace Protocol {
             enabled: boolean;
         }
 
+        export interface SetAutoDarkModeOverrideRequest {
+            /**
+             * Whether to enable or disable automatic dark mode.
+             * If not specified, any existing override will be cleared.
+             */
+            enabled?: boolean;
+        }
+
         export interface SetCPUThrottlingRateRequest {
             /**
              * Throttling rate as a slowdown factor (1 is no throttle, 2 is 2x slowdown, etc).

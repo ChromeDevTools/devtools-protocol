@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r918755
+###### _2021-09-07 05:15:26_ | Diff: [841918b...f18b042](https://github.com/ChromeDevTools/devtools-protocol/compare/841918b...f18b042)
+#### `Network`: new event
+* [`Network.reportingApiReportUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-reportingApiReportUpdated)
+#### `Network`: modified type
+* [`Network.ReportingApiReport`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ReportingApiReport) - The `body` in the properties had `name` _updated_. The `body` in the properties had `type` _updated_. The properties's `description` _added_. The properties's `body` _added_. The properties's `status` _added_.
+
+
 ## Roll protocol to r918695
 ###### _2021-09-06 23:15:26_ | Diff: [69ec1d8...841918b](https://github.com/ChromeDevTools/devtools-protocol/compare/69ec1d8...841918b)
 #### `Network`: modified type
