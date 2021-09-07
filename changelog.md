@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r918800
+###### _2021-09-07 08:15:38_ | Diff: [f18b042...8759635](https://github.com/ChromeDevTools/devtools-protocol/compare/f18b042...8759635)
+#### `Emulation`: new command
+* [`Emulation.setAutoDarkModeOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setAutoDarkModeOverride)
+
+
 ## Roll protocol to r918755
 ###### _2021-09-07 05:15:26_ | Diff: [841918b...f18b042](https://github.com/ChromeDevTools/devtools-protocol/compare/841918b...f18b042)
 #### `Network`: new event

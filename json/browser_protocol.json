@@ -15456,7 +15456,7 @@
                         "KeyboardLock",
                         "WebOTPService",
                         "OutstandingNetworkRequestDirectSocket",
-                        "IsolatedWorldScript",
+                        "InjectedJavascript",
                         "InjectedStyleSheet",
                         "ContentSecurityHandler",
                         "ContentWebAuthenticationAPI",
