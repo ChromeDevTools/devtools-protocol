@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r918555
+###### _2021-09-06 04:15:31_ | Diff: [e4f6e30...69ec1d8](https://github.com/ChromeDevTools/devtools-protocol/compare/e4f6e30...69ec1d8)
+#### `Network`: new type
+* [`Network.ReportId`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ReportId)
+#### `Network`: modified type
+* [`Network.ReportingApiReport`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ReportingApiReport) - The `initiatorUrl` in the properties had `description` _removed_. The `initiatorUrl` in the properties had `type` _removed_. The `timestamp` in the properties had `$ref` _removed_. The `depth` in the properties had `type` _removed_. The `initiatorUrl` in the properties had `name` _updated_. The `destination` in the properties had `name` _updated_. The `destination` in the properties had `description` _updated_. The `type` in the properties had `name` _updated_. The `type` in the properties had `description` _updated_. The `timestamp` in the properties had `name` _updated_. The `timestamp` in the properties had `description` _updated_. The `depth` in the properties had `name` _updated_. The `depth` in the properties had `description` _updated_. The `body` in the properties had `name` _updated_. The `body` in the properties had `type` _updated_. The properties's `$ref` _added_ (2 times). The properties's `type` _added_. The properties's `description` _added_. The properties's `body` _added_.
+
+
 ## Roll protocol to r917689
 ###### _2021-09-02 09:15:35_ | Diff: [3ac2966...e4f6e30](https://github.com/ChromeDevTools/devtools-protocol/compare/3ac2966...e4f6e30)
 #### `Page`: modified type

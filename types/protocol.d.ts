@@ -9925,7 +9925,7 @@ export namespace Protocol {
         /**
          * The status of a Reporting API report.
          */
-        export type ReportStatus = ('Queued' | 'Pending');
+        export type ReportStatus = ('Queued' | 'Pending' | 'MarkedForRemoval' | 'Success');
 
         export type ReportId = string;
 
