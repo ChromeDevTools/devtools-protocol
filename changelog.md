@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r918852
+###### _2021-09-07 11:15:30_ | Diff: [8759635...2bce709](https://github.com/ChromeDevTools/devtools-protocol/compare/8759635...2bce709)
+#### `Page`: modified type
+* [`Page.BackForwardCacheNotRestoredReason`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-BackForwardCacheNotRestoredReason) - The enum's `IsolatedWorldScript` _updated_.
+
+
 ## Roll protocol to r918800
 ###### _2021-09-07 08:15:38_ | Diff: [f18b042...8759635](https://github.com/ChromeDevTools/devtools-protocol/compare/f18b042...8759635)
 #### `Emulation`: new command
