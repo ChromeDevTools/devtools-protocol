@@ -3338,7 +3338,7 @@ export namespace Protocol {
             clientSecurityState?: Network.ClientSecurityState;
         }
 
-        export type AttributionReportingIssueType = ('PermissionPolicyDisabled' | 'InvalidAttributionSourceEventId' | 'InvalidAttributionData' | 'AttributionSourceUntrustworthyOrigin' | 'AttributionUntrustworthyOrigin' | 'AttributionTriggerDataTooLarge');
+        export type AttributionReportingIssueType = ('PermissionPolicyDisabled' | 'InvalidAttributionSourceEventId' | 'InvalidAttributionData' | 'AttributionSourceUntrustworthyOrigin' | 'AttributionUntrustworthyOrigin' | 'AttributionTriggerDataTooLarge' | 'AttributionEventSourceTriggerDataTooLarge');
 
         /**
          * Details for issues around "Attribution Reporting API" usage.
