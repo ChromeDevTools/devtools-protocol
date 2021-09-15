@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r919640
+###### _2021-09-08 22:15:45_ | Diff: [a27d92f...2e2333f](https://github.com/ChromeDevTools/devtools-protocol/compare/a27d92f...2e2333f)
+#### `Page`: modified type
+* [`Page.BackForwardCacheNotRestoredReason`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-BackForwardCacheNotRestoredReason) - The enum's `ContentSecurityHandler` _updated_. The enum's `ContentWebAuthenticationAPI` _updated_. The enum's `ContentFileChooser` _updated_. The enum's `ContentSerial` _updated_. The enum's `ContentFileSystemAccess` _updated_. The enum's `ContentMediaDevicesDispatcherHost` _updated_. The enum's `ContentWebBluetooth` _updated_. The enum's `ContentWebUSB` _updated_. The enum's `ContentMediaSession` _updated_. The enum's `EmbedderPopupBlockerTabHelper` _updated_. The enum's `EmbedderSafeBrowsingTriggeredPopupBlocker` _updated_. The enum's `EmbedderSafeBrowsingThreatDetails` _updated_. The enum's `EmbedderAppBannerManager` _updated_. The enum's `EmbedderDomDistillerViewerSource` _updated_. The enum's `EmbedderDomDistillerSelfDeletingRequestDelegate` _updated_. The enum's `EmbedderOomInterventionTabHelper` _updated_. The enum's `EmbedderOfflinePage` _updated_. The enum's `EmbedderChromePasswordManagerClientBindCredentialManager` _updated_. The enum's `EmbedderPermissionRequestManager` _updated_. The enum's `EmbedderModalDialog` _updated_. The enum's `EmbedderExtensions` _updated_. The enum's `EmbedderExtensionMessaging` _updated_. The enum's `EmbedderExtensionMessagingForOpenPort` _updated_. The enum's `EmbedderExtensionSentMessageToCachedFrame` _updated_. The enum's `EmbedderExtensionSentMessageToCachedFrame` _added_.
+
+
 ## Roll protocol to r919376
 ###### _2021-09-08 12:15:34_ | Diff: [c80e5d1...a27d92f](https://github.com/ChromeDevTools/devtools-protocol/compare/c80e5d1...a27d92f)
 #### `Audits`: modified type
