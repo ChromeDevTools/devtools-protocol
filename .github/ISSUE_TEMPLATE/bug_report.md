@@ -1,6 +1,6 @@
 ---
-name: STOP, file a bug report or a feature request on crbug.com
-about: STOP, file a bug report or a feature request on crbug.com
+name: Bug report
+about: Create a report to help us improve
 title: ''
 labels: ''
 assignees: ''
