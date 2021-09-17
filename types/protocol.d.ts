@@ -11823,7 +11823,7 @@ export namespace Protocol {
          * Origin Trial(https://www.chromium.org/blink/origin-trials) support.
          * Status for an Origin Trial token.
          */
-        export type OriginTrialTokenStatus = ('Success' | 'NotSupported' | 'Insecure' | 'Expired' | 'WrongOrigin' | 'InvalidSignature' | 'Malformed' | 'WrongVersion' | 'FeatureDisabled' | 'TokenDisabled' | 'FeatureDisabledForUser');
+        export type OriginTrialTokenStatus = ('Success' | 'NotSupported' | 'Insecure' | 'Expired' | 'WrongOrigin' | 'InvalidSignature' | 'Malformed' | 'WrongVersion' | 'FeatureDisabled' | 'TokenDisabled' | 'FeatureDisabledForUser' | 'UnknownTrial');
 
         /**
          * Status for an Origin Trial.
