@@ -109,7 +109,7 @@ class Formatter {
     if (changes.length === 0) return;
 
     // simple-git adds this "(HEAD, origin/master)" string to the first commit's message...
-    const commitMessage = commit.message.replace(/\(HEAD.*/, '').replace(' (master)', '').trim();
+    const commitMessage = commit.message.replace(/\(HEAD.*/, '').replace(' (master)', '').replace(' (main)', '').trim();
     results += `\n\n## ${commitMessage}\n`;
     results += `###### _${commit.date.replace(' -0700', '')}_ `;
     const hashCompareStr = `${previousCommit.hash.slice(0, 7)}...${commit.hash.slice(0, 7)}`;

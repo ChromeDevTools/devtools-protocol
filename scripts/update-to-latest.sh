@@ -17,14 +17,14 @@ cd "$protocol_repo_path" || exit 1
 git pull origin master
 git submodule update --init
 # always work with the latest inspector_protocol repo
-git submodule foreach git pull origin master
+git submodule foreach git pull origin main
 
 # => cd into chromium
 cd "$chromium_src_path" || exit 1
 
-# get latest from chromium master
-git fetch origin master
-git checkout -f origin/master
+# get latest from chromium main
+git fetch origin main
+git checkout -f origin/main
 env GYP_DEFINES=disable_nacl=1 gclient sync --jobs=70 --nohooks --delete_unversioned_trees --reset
 
 
