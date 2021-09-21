@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r922637
+###### _2021-09-17 13:15:26_ | Diff: [d99de50...b86f904](https://github.com/ChromeDevTools/devtools-protocol/compare/d99de50...b86f904)
+#### `Page`: modified type
+* [`Page.OriginTrialTokenStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-OriginTrialTokenStatus) - The enum's `UnknownTrial` _added_.
+
+
 ## Roll protocol to r921910
 ###### _2021-09-15 16:15:28_ | Diff: [2e2333f...d99de50](https://github.com/ChromeDevTools/devtools-protocol/compare/2e2333f...d99de50)
 #### `Page`: modified type

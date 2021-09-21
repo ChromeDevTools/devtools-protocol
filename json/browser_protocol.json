@@ -15469,6 +15469,7 @@
                         "ContentWebBluetooth",
                         "ContentWebUSB",
                         "ContentMediaSession",
+                        "ContentMediaSessionService",
                         "EmbedderPopupBlockerTabHelper",
                         "EmbedderSafeBrowsingTriggeredPopupBlocker",
                         "EmbedderSafeBrowsingThreatDetails",
