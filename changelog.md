@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r923359
+###### _2021-09-21 06:15:22_ | Diff: [384a24c...d6f4069](https://github.com/ChromeDevTools/devtools-protocol/compare/384a24c...d6f4069)
+#### `Network`: modified types
+* [`Network.SetCookieBlockedReason`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SetCookieBlockedReason) - The enum's `NameValuePairExceedsMaxSize` _added_.
+* [`Network.CookieBlockedReason`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CookieBlockedReason) - The enum's `NameValuePairExceedsMaxSize` _added_.
+
+
 ## Roll protocol to r923255
 ###### _2021-09-20 23:15:25_ | Diff: [f62186c...384a24c](https://github.com/ChromeDevTools/devtools-protocol/compare/f62186c...384a24c)
 #### `Page`: modified type
