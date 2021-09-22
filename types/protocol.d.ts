@@ -2997,6 +2997,9 @@ export namespace Protocol {
         }
     }
 
+    /**
+     * The domain is deprecated as AppCache is being removed (see crbug.com/582750).
+     */
     export namespace ApplicationCache {
 
         /**

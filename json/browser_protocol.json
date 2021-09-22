@@ -834,7 +834,9 @@
         },
         {
             "domain": "ApplicationCache",
+            "description": "The domain is deprecated as AppCache is being removed (see crbug.com/582750).",
             "experimental": true,
+            "deprecated": true,
             "dependencies": [
                 "Page"
             ],
