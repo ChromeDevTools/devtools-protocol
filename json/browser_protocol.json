@@ -15782,12 +15782,18 @@
                 },
                 {
                     "name": "getAppId",
-                    "description": "Returns the unique (PWA) app id.",
+                    "description": "Returns the unique (PWA) app id.\nOnly returns values if the feature flag 'WebAppEnableManifestId' is enabled",
                     "experimental": true,
                     "returns": [
                         {
                             "name": "appId",
-                            "description": "Only returns a value if the feature flag 'WebAppEnableManifestId' is enabled",
+                            "description": "App id, either from manifest's id attribute or computed from start_url",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "recommendedId",
+                            "description": "Recommendation for manifest's id attribute to match current id computed from start_url",
                             "optional": true,
                             "type": "string"
                         }

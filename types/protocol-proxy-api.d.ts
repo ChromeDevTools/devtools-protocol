@@ -2676,6 +2676,7 @@ export namespace ProtocolProxyApi {
 
         /**
          * Returns the unique (PWA) app id.
+         * Only returns values if the feature flag 'WebAppEnableManifestId' is enabled
          */
         getAppId(): Promise<Protocol.Page.GetAppIdResponse>;
 

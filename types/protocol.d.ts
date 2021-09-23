@@ -12454,9 +12454,13 @@ export namespace Protocol {
 
         export interface GetAppIdResponse {
             /**
-             * Only returns a value if the feature flag 'WebAppEnableManifestId' is enabled
+             * App id, either from manifest's id attribute or computed from start_url
              */
             appId?: string;
+            /**
+             * Recommendation for manifest's id attribute to match current id computed from start_url
+             */
+            recommendedId?: string;
         }
 
         export interface GetCookiesResponse {

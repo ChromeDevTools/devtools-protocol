@@ -3461,6 +3461,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Returns the unique (PWA) app id.
+         * Only returns values if the feature flag 'WebAppEnableManifestId' is enabled
          */
         'Page.getAppId': {
             paramsType: [];
