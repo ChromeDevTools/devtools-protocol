@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r924232
+###### _2021-09-23 02:15:23_ | Diff: [f300e4d...b32cbf9](https://github.com/ChromeDevTools/devtools-protocol/compare/f300e4d...b32cbf9)
+#### `Page`: modified command
+* [`Page.getAppId`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-getAppId) - `description` updated. The `appId` in the return value had `description` _updated_. The return value's `recommendedId` _added_.
+
+
 ## Roll protocol to r923714
 ###### _2021-09-21 20:15:27_ | Diff: [d6f4069...3c9570a](https://github.com/ChromeDevTools/devtools-protocol/compare/d6f4069...3c9570a)
 #### `Page`: modified type

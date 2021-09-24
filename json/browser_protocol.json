@@ -1631,6 +1631,30 @@
                     ]
                 },
                 {
+                    "id": "GenericIssueErrorType",
+                    "type": "string",
+                    "enum": [
+                        "CrossOriginPortalPostMessageError"
+                    ]
+                },
+                {
+                    "id": "GenericIssueDetails",
+                    "description": "Depending on the concrete errorType, different properties are set.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "errorType",
+                            "description": "Issues with the same errorType are aggregated in the frontend.",
+                            "$ref": "GenericIssueErrorType"
+                        },
+                        {
+                            "name": "frameId",
+                            "optional": true,
+                            "$ref": "Page.FrameId"
+                        }
+                    ]
+                },
+                {
                     "id": "InspectorIssueCode",
                     "description": "A unique identifier for the type of issue. Each type may use one of the\noptional fields in InspectorIssueDetails to convey more specific\ninformation about the kind of issue.",
                     "type": "string",
@@ -1647,7 +1671,8 @@
                         "AttributionReportingIssue",
                         "QuirksModeIssue",
                         "NavigatorUserAgentIssue",
-                        "WasmCrossOriginModuleSharingIssue"
+                        "WasmCrossOriginModuleSharingIssue",
+                        "GenericIssue"
                     ]
                 },
                 {
@@ -1719,6 +1744,11 @@
                             "name": "wasmCrossOriginModuleSharingIssue",
                             "optional": true,
                             "$ref": "WasmCrossOriginModuleSharingIssueDetails"
+                        },
+                        {
+                            "name": "genericIssueDetails",
+                            "optional": true,
+                            "$ref": "GenericIssueDetails"
                         }
                     ]
                 },

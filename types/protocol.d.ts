@@ -3383,12 +3383,25 @@ export namespace Protocol {
             isWarning: boolean;
         }
 
+        export type GenericIssueErrorType = ('CrossOriginPortalPostMessageError');
+
+        /**
+         * Depending on the concrete errorType, different properties are set.
+         */
+        export interface GenericIssueDetails {
+            /**
+             * Issues with the same errorType are aggregated in the frontend.
+             */
+            errorType: GenericIssueErrorType;
+            frameId?: Page.FrameId;
+        }
+
         /**
          * A unique identifier for the type of issue. Each type may use one of the
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'TrustedWebActivityIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue' | 'WasmCrossOriginModuleSharingIssue');
+        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'TrustedWebActivityIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue' | 'WasmCrossOriginModuleSharingIssue' | 'GenericIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3409,6 +3422,7 @@ export namespace Protocol {
             quirksModeIssueDetails?: QuirksModeIssueDetails;
             navigatorUserAgentIssueDetails?: NavigatorUserAgentIssueDetails;
             wasmCrossOriginModuleSharingIssue?: WasmCrossOriginModuleSharingIssueDetails;
+            genericIssueDetails?: GenericIssueDetails;
         }
 
         /**
