@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r924707
+###### _2021-09-24 03:15:21_ | Diff: [b32cbf9...8157ba0](https://github.com/ChromeDevTools/devtools-protocol/compare/b32cbf9...8157ba0)
+#### `Audits`: new types
+* [`Audits.GenericIssueErrorType`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-GenericIssueErrorType)
+* [`Audits.GenericIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-GenericIssueDetails)
+#### `Audits`: modified types
+* [`Audits.InspectorIssueCode`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueCode) - The enum's `GenericIssue` _added_.
+* [`Audits.InspectorIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueDetails) - The properties's `genericIssueDetails` _added_.
+
+
 ## Roll protocol to r924232
 ###### _2021-09-23 02:15:23_ | Diff: [f300e4d...b32cbf9](https://github.com/ChromeDevTools/devtools-protocol/compare/f300e4d...b32cbf9)
 #### `Page`: modified command
