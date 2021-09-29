@@ -2584,6 +2584,11 @@ export namespace ProtocolProxyApi {
         setShowHinge(params: Protocol.Overlay.SetShowHingeRequest): Promise<void>;
 
         /**
+         * Show elements in isolation mode with overlays.
+         */
+        setShowIsolatedElements(params: Protocol.Overlay.SetShowIsolatedElementsRequest): Promise<void>;
+
+        /**
          * Fired when the node should be inspected. This happens after call to `setInspectMode` or when
          * user manually inspects an element.
          */

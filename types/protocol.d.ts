@@ -11475,6 +11475,32 @@ export namespace Protocol {
             descendantBorder?: LineStyle;
         }
 
+        export interface IsolatedElementHighlightConfig {
+            /**
+             * A descriptor for the highlight appearance of an element in isolation mode.
+             */
+            isolationModeHighlightConfig: IsolationModeHighlightConfig;
+            /**
+             * Identifier of the isolated element to highlight.
+             */
+            nodeId: DOM.NodeId;
+        }
+
+        export interface IsolationModeHighlightConfig {
+            /**
+             * The fill color of the resizers (default: transparent).
+             */
+            resizerColor?: DOM.RGBA;
+            /**
+             * The fill color for resizer handles (default: transparent).
+             */
+            resizerHandleColor?: DOM.RGBA;
+            /**
+             * The fill color for the mask covering non-isolated elements (default: transparent).
+             */
+            maskColor?: DOM.RGBA;
+        }
+
         export type InspectMode = ('searchForNode' | 'searchForUAShadowDOM' | 'captureAreaScreenshot' | 'showDistances' | 'none');
 
         export interface GetHighlightObjectForTestRequest {
@@ -11746,6 +11772,13 @@ export namespace Protocol {
              * hinge data, null means hideHinge
              */
             hingeConfig?: HingeConfig;
+        }
+
+        export interface SetShowIsolatedElementsRequest {
+            /**
+             * An array of node identifiers and descriptors for the highlight appearance.
+             */
+            isolatedElementHighlightConfigs: IsolatedElementHighlightConfig[];
         }
 
         /**

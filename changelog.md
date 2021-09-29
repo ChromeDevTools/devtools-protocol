@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r925217
+###### _2021-09-27 04:15:29_ | Diff: [8157ba0...929d048](https://github.com/ChromeDevTools/devtools-protocol/compare/8157ba0...929d048)
+#### `Network`: modified type
+* [`Network.CorsError`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CorsError) - The enum's `NoCorsRedirectModeNotFollow` _updated_. The enum's `NoCorsRedirectModeNotFollow` _added_.
+
+
 ## Roll protocol to r924707
 ###### _2021-09-24 03:15:21_ | Diff: [b32cbf9...8157ba0](https://github.com/ChromeDevTools/devtools-protocol/compare/b32cbf9...8157ba0)
 #### `Audits`: new types
