@@ -104,8 +104,6 @@ export namespace ProtocolMapping {
          * Event for animation that has been started.
          */
         'Animation.animationStarted': [Protocol.Animation.AnimationStartedEvent];
-        'ApplicationCache.applicationCacheStatusUpdated': [Protocol.ApplicationCache.ApplicationCacheStatusUpdatedEvent];
-        'ApplicationCache.networkStateUpdated': [Protocol.ApplicationCache.NetworkStateUpdatedEvent];
         'Audits.issueAdded': [Protocol.Audits.IssueAddedEvent];
         /**
          * Called when the recording state for the service has been updated.
@@ -1375,35 +1373,6 @@ export namespace ProtocolMapping {
         'Animation.setTiming': {
             paramsType: [Protocol.Animation.SetTimingRequest];
             returnType: void;
-        };
-        /**
-         * Enables application cache domain notifications.
-         */
-        'ApplicationCache.enable': {
-            paramsType: [];
-            returnType: void;
-        };
-        /**
-         * Returns relevant application cache data for the document in given frame.
-         */
-        'ApplicationCache.getApplicationCacheForFrame': {
-            paramsType: [Protocol.ApplicationCache.GetApplicationCacheForFrameRequest];
-            returnType: Protocol.ApplicationCache.GetApplicationCacheForFrameResponse;
-        };
-        /**
-         * Returns array of frame identifiers with manifest urls for each frame containing a document
-         * associated with some application cache.
-         */
-        'ApplicationCache.getFramesWithManifests': {
-            paramsType: [];
-            returnType: Protocol.ApplicationCache.GetFramesWithManifestsResponse;
-        };
-        /**
-         * Returns manifest URL for document in the given frame.
-         */
-        'ApplicationCache.getManifestForFrame': {
-            paramsType: [Protocol.ApplicationCache.GetManifestForFrameRequest];
-            returnType: Protocol.ApplicationCache.GetManifestForFrameResponse;
         };
         /**
          * Returns the response body and size if it were re-encoded with the specified settings. Only

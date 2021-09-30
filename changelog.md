@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r926181
+###### _2021-09-29 02:15:25_ | Diff: [929d048...5459753](https://github.com/ChromeDevTools/devtools-protocol/compare/929d048...5459753)
+#### `Overlay`: new command
+* [`Overlay.setShowIsolatedElements`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-setShowIsolatedElements)
+#### `Overlay`: new types
+* [`Overlay.IsolatedElementHighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-IsolatedElementHighlightConfig)
+* [`Overlay.IsolationModeHighlightConfig`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-IsolationModeHighlightConfig)
+
+
 ## Roll protocol to r925217
 ###### _2021-09-27 04:15:29_ | Diff: [8157ba0...929d048](https://github.com/ChromeDevTools/devtools-protocol/compare/8157ba0...929d048)
 #### `Network`: modified type
