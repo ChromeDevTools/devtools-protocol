@@ -2998,6 +2998,129 @@ export namespace Protocol {
     }
 
     /**
+     * The domain is deprecated as AppCache is being removed (see crbug.com/582750).
+     */
+    export namespace ApplicationCache {
+
+        /**
+         * Detailed application cache resource information.
+         */
+        export interface ApplicationCacheResource {
+            /**
+             * Resource url.
+             */
+            url: string;
+            /**
+             * Resource size.
+             */
+            size: integer;
+            /**
+             * Resource type.
+             */
+            type: string;
+        }
+
+        /**
+         * Detailed application cache information.
+         */
+        export interface ApplicationCache {
+            /**
+             * Manifest URL.
+             */
+            manifestURL: string;
+            /**
+             * Application cache size.
+             */
+            size: number;
+            /**
+             * Application cache creation time.
+             */
+            creationTime: number;
+            /**
+             * Application cache update time.
+             */
+            updateTime: number;
+            /**
+             * Application cache resources.
+             */
+            resources: ApplicationCacheResource[];
+        }
+
+        /**
+         * Frame identifier - manifest URL pair.
+         */
+        export interface FrameWithManifest {
+            /**
+             * Frame identifier.
+             */
+            frameId: Page.FrameId;
+            /**
+             * Manifest URL.
+             */
+            manifestURL: string;
+            /**
+             * Application cache status.
+             */
+            status: integer;
+        }
+
+        export interface GetApplicationCacheForFrameRequest {
+            /**
+             * Identifier of the frame containing document whose application cache is retrieved.
+             */
+            frameId: Page.FrameId;
+        }
+
+        export interface GetApplicationCacheForFrameResponse {
+            /**
+             * Relevant application cache data for the document in given frame.
+             */
+            applicationCache: ApplicationCache;
+        }
+
+        export interface GetFramesWithManifestsResponse {
+            /**
+             * Array of frame identifiers with manifest urls for each frame containing a document
+             * associated with some application cache.
+             */
+            frameIds: FrameWithManifest[];
+        }
+
+        export interface GetManifestForFrameRequest {
+            /**
+             * Identifier of the frame containing document whose manifest is retrieved.
+             */
+            frameId: Page.FrameId;
+        }
+
+        export interface GetManifestForFrameResponse {
+            /**
+             * Manifest URL for document in the given frame.
+             */
+            manifestURL: string;
+        }
+
+        export interface ApplicationCacheStatusUpdatedEvent {
+            /**
+             * Identifier of the frame containing document whose application cache updated status.
+             */
+            frameId: Page.FrameId;
+            /**
+             * Manifest URL.
+             */
+            manifestURL: string;
+            /**
+             * Updated application cache status.
+             */
+            status: integer;
+        }
+
+        export interface NetworkStateUpdatedEvent {
+            isNowOnline: boolean;
+        }
+    }
+
+    /**
      * Audits domain allows investigation of page violations and possible improvements.
      */
     export namespace Audits {

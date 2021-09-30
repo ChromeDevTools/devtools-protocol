@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r926578
+###### _2021-09-29 18:15:25_ | Diff: [5459753...5cc536e](https://github.com/ChromeDevTools/devtools-protocol/compare/5459753...5cc536e)
+#### `ApplicationCache`: removed domain
+* [`ApplicationCache.ApplicationCache`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#domain-ApplicationCache)
+
+
 ## Roll protocol to r926181
 ###### _2021-09-29 02:15:25_ | Diff: [929d048...5459753](https://github.com/ChromeDevTools/devtools-protocol/compare/929d048...5459753)
 #### `Overlay`: new command
