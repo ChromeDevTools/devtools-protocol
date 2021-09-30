@@ -422,36 +422,6 @@ export namespace ProtocolProxyApi {
          */
         takeTypeProfile(): Promise<Protocol.Profiler.TakeTypeProfileResponse>;
 
-        /**
-         * Enable counters collection.
-         */
-        enableCounters(): Promise<void>;
-
-        /**
-         * Disable counters collection.
-         */
-        disableCounters(): Promise<void>;
-
-        /**
-         * Retrieve counters.
-         */
-        getCounters(): Promise<Protocol.Profiler.GetCountersResponse>;
-
-        /**
-         * Enable run time call stats collection.
-         */
-        enableRuntimeCallStats(): Promise<void>;
-
-        /**
-         * Disable run time call stats collection.
-         */
-        disableRuntimeCallStats(): Promise<void>;
-
-        /**
-         * Retrieve run time call stats.
-         */
-        getRuntimeCallStats(): Promise<Protocol.Profiler.GetRuntimeCallStatsResponse>;
-
         on(event: 'consoleProfileFinished', listener: (params: Protocol.Profiler.ConsoleProfileFinishedEvent) => void): void;
 
         /**
@@ -463,7 +433,7 @@ export namespace ProtocolProxyApi {
          * Reports coverage delta since the last poll (either from an event like this, or from
          * `takePreciseCoverage` for the current isolate. May only be sent if precise code
          * coverage has been started. This event can be trigged by the embedder to, for example,
-         * trigger collection of coverage data immediatelly at a certain point in time.
+         * trigger collection of coverage data immediately at a certain point in time.
          */
         on(event: 'preciseCoverageDeltaUpdate', listener: (params: Protocol.Profiler.PreciseCoverageDeltaUpdateEvent) => void): void;
 

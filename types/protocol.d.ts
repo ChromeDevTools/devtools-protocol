@@ -289,7 +289,7 @@ export namespace Protocol {
         export interface EnableRequest {
             /**
              * The maximum size in bytes of collected scripts (not referenced by other heap objects)
-             * the debugger can hold. Puts no limit if paramter is omitted.
+             * the debugger can hold. Puts no limit if parameter is omitted.
              */
             maxScriptsCacheSize?: number;
         }
@@ -1069,6 +1069,10 @@ export namespace Protocol {
              */
             reportProgress?: boolean;
             treatGlobalObjectsAsRoots?: boolean;
+            /**
+             * If true, numerical values are included in the snapshot
+             */
+            captureNumericValue?: boolean;
         }
 
         export interface TakeHeapSnapshotRequest {
@@ -1077,9 +1081,13 @@ export namespace Protocol {
              */
             reportProgress?: boolean;
             /**
-             * If true, a raw snapshot without artifical roots will be generated
+             * If true, a raw snapshot without artificial roots will be generated
              */
             treatGlobalObjectsAsRoots?: boolean;
+            /**
+             * If true, numerical values are included in the snapshot
+             */
+            captureNumericValue?: boolean;
         }
 
         export interface AddHeapSnapshotChunkEvent {
@@ -1285,38 +1293,6 @@ export namespace Protocol {
             entries: TypeProfileEntry[];
         }
 
-        /**
-         * Collected counter information.
-         */
-        export interface CounterInfo {
-            /**
-             * Counter name.
-             */
-            name: string;
-            /**
-             * Counter value.
-             */
-            value: integer;
-        }
-
-        /**
-         * Runtime call counter information.
-         */
-        export interface RuntimeCallCounterInfo {
-            /**
-             * Counter name.
-             */
-            name: string;
-            /**
-             * Counter value.
-             */
-            value: number;
-            /**
-             * Counter time in seconds.
-             */
-            time: number;
-        }
-
         export interface GetBestEffortCoverageResponse {
             /**
              * Coverage data for the current isolate.
@@ -1378,20 +1354,6 @@ export namespace Protocol {
             result: ScriptTypeProfile[];
         }
 
-        export interface GetCountersResponse {
-            /**
-             * Collected counters information.
-             */
-            result: CounterInfo[];
-        }
-
-        export interface GetRuntimeCallStatsResponse {
-            /**
-             * Collected runtime call counter information.
-             */
-            result: RuntimeCallCounterInfo[];
-        }
-
         export interface ConsoleProfileFinishedEvent {
             id: string;
             /**
@@ -1424,7 +1386,7 @@ export namespace Protocol {
          * Reports coverage delta since the last poll (either from an event like this, or from
          * `takePreciseCoverage` for the current isolate. May only be sent if precise code
          * coverage has been started. This event can be trigged by the embedder to, for example,
-         * trigger collection of coverage data immediatelly at a certain point in time.
+         * trigger collection of coverage data immediately at a certain point in time.
          */
         export interface PreciseCoverageDeltaUpdateEvent {
             /**
@@ -1434,7 +1396,7 @@ export namespace Protocol {
             /**
              * Identifier for distinguishing coverage events.
              */
-            occassion: string;
+            occasion: string;
             /**
              * Coverage data for the current isolate.
              */
@@ -1817,7 +1779,7 @@ export namespace Protocol {
              */
             name: string;
             /**
-             * A system-unique execution context identifier. Unlike the id, this is unique accross
+             * A system-unique execution context identifier. Unlike the id, this is unique across
              * multiple processes, so can be reliably used to identify specific context while backend
              * performs a cross-process navigation.
              */
@@ -1869,6 +1831,12 @@ export namespace Protocol {
              * Identifier of the context where exception happened.
              */
             executionContextId?: ExecutionContextId;
+            /**
+             * Dictionary with entries of meta data that the client associated
+             * with this exception, such as information about associated network
+             * requests, etc.
+             */
+            exceptionMetaData?: any;
         }
 
         /**
@@ -2017,6 +1985,10 @@ export namespace Protocol {
              * specified and objectId is, objectGroup will be inherited from object.
              */
             objectGroup?: string;
+            /**
+             * Whether to throw an exception if side effect cannot be ruled out during evaluation.
+             */
+            throwOnSideEffect?: boolean;
         }
 
         export interface CallFunctionOnResponse {
@@ -2132,9 +2104,9 @@ export namespace Protocol {
             allowUnsafeEvalBlockedByCSP?: boolean;
             /**
              * An alternative way to specify the execution context to evaluate in.
-             * Compared to contextId that may be reused accross processes, this is guaranteed to be
+             * Compared to contextId that may be reused across processes, this is guaranteed to be
              * system-unique, so it can be used to prevent accidental evaluation of the expression
-             * in context different than intended (e.g. as a result of navigation accross process
+             * in context different than intended (e.g. as a result of navigation across process
              * boundaries).
              * This is mutually exclusive with `contextId`.
              */
@@ -2189,6 +2161,10 @@ export namespace Protocol {
              * Whether preview should be generated for the results.
              */
             generatePreview?: boolean;
+            /**
+             * If true, returns non-indexed properties only.
+             */
+            nonIndexedPropertiesOnly?: boolean;
         }
 
         export interface GetPropertiesResponse {
@@ -2325,6 +2301,9 @@ export namespace Protocol {
              * execution context. If omitted and `executionContextName` is not set,
              * the binding is exposed to all execution contexts of the target.
              * This parameter is mutually exclusive with `executionContextName`.
+             * Deprecated in favor of `executionContextName` due to an unclear use case
+             * and bugs in implementation (crbug.com/1169639). `executionContextId` will be
+             * removed in the future.
              */
             executionContextId?: ExecutionContextId;
             /**
@@ -2460,6 +2439,10 @@ export namespace Protocol {
         export interface InspectRequestedEvent {
             object: RemoteObject;
             hints: any;
+            /**
+             * Identifier of the context where the call was made.
+             */
+            executionContextId?: ExecutionContextId;
         }
     }
 
