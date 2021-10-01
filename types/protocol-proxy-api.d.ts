@@ -26,8 +26,6 @@ export namespace ProtocolProxyApi {
 
         Animation: AnimationApi;
 
-        ApplicationCache: ApplicationCacheApi;
-
         Audits: AuditsApi;
 
         BackgroundService: BackgroundServiceApi;
@@ -708,34 +706,6 @@ export namespace ProtocolProxyApi {
          * Event for animation that has been started.
          */
         on(event: 'animationStarted', listener: (params: Protocol.Animation.AnimationStartedEvent) => void): void;
-
-    }
-
-    export interface ApplicationCacheApi {
-        /**
-         * Enables application cache domain notifications.
-         */
-        enable(): Promise<void>;
-
-        /**
-         * Returns relevant application cache data for the document in given frame.
-         */
-        getApplicationCacheForFrame(params: Protocol.ApplicationCache.GetApplicationCacheForFrameRequest): Promise<Protocol.ApplicationCache.GetApplicationCacheForFrameResponse>;
-
-        /**
-         * Returns array of frame identifiers with manifest urls for each frame containing a document
-         * associated with some application cache.
-         */
-        getFramesWithManifests(): Promise<Protocol.ApplicationCache.GetFramesWithManifestsResponse>;
-
-        /**
-         * Returns manifest URL for document in the given frame.
-         */
-        getManifestForFrame(params: Protocol.ApplicationCache.GetManifestForFrameRequest): Promise<Protocol.ApplicationCache.GetManifestForFrameResponse>;
-
-        on(event: 'applicationCacheStatusUpdated', listener: (params: Protocol.ApplicationCache.ApplicationCacheStatusUpdatedEvent) => void): void;
-
-        on(event: 'networkStateUpdated', listener: (params: Protocol.ApplicationCache.NetworkStateUpdatedEvent) => void): void;
 
     }
 

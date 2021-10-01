@@ -1,5 +1,37 @@
 
 
+## Roll protocol to r926768
+###### _2021-09-30 08:28:28_ | Diff: [2f92c4d...6b5fb3f](https://github.com/ChromeDevTools/devtools-protocol/compare/2f92c4d...6b5fb3f)
+#### `Debugger`: modified commands
+* [`Debugger.enable`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-enable) - The `maxScriptsCacheSize` in the parameters had `description` _updated_.
+* [`Debugger.restartFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-restartFrame) - `deprecated` added.
+#### `HeapProfiler`: modified commands
+* [`HeapProfiler.stopTrackingHeapObjects`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#method-stopTrackingHeapObjects) - The parameters's `captureNumericValue` _added_.
+* [`HeapProfiler.takeHeapSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#method-takeHeapSnapshot) - The `treatGlobalObjectsAsRoots` in the parameters had `description` _updated_. The parameters's `captureNumericValue` _added_.
+#### `Profiler`: removed commands
+* [`Profiler.enableCounters`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-enableCounters)
+* [`Profiler.disableCounters`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-disableCounters)
+* [`Profiler.getCounters`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-getCounters)
+* [`Profiler.enableRuntimeCallStats`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-enableRuntimeCallStats)
+* [`Profiler.disableRuntimeCallStats`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-disableRuntimeCallStats)
+* [`Profiler.getRuntimeCallStats`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#method-getRuntimeCallStats)
+#### `Profiler`: modified event
+* [`Profiler.preciseCoverageDeltaUpdate`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#event-preciseCoverageDeltaUpdate) - `description` updated. The `occassion` in the parameters had `name` _updated_.
+#### `Profiler`: removed types
+* [`Profiler.CounterInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-CounterInfo)
+* [`Profiler.RuntimeCallCounterInfo`](https://chromedevtools.github.io/devtools-protocol/tot/Profiler/#type-RuntimeCallCounterInfo)
+#### `Runtime`: modified commands
+* [`Runtime.callFunctionOn`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-callFunctionOn) - The parameters's `throwOnSideEffect` _added_.
+* [`Runtime.evaluate`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-evaluate) - The `uniqueContextId` in the parameters had `description` _updated_.
+* [`Runtime.getProperties`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-getProperties) - The parameters's `nonIndexedPropertiesOnly` _added_.
+* [`Runtime.addBinding`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-addBinding) - The `executionContextId` in the parameters had `description` _updated_. The parameters's `deprecated` _added_.
+#### `Runtime`: modified event
+* [`Runtime.inspectRequested`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#event-inspectRequested) - The parameters's `executionContextId` _added_.
+#### `Runtime`: modified types
+* [`Runtime.ExecutionContextDescription`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-ExecutionContextDescription) - The `uniqueId` in the properties had `description` _updated_.
+* [`Runtime.ExceptionDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#type-ExceptionDetails) - The properties's `exceptionMetaData` _added_.
+
+
 ## Roll protocol to r926580
 ###### _2021-09-29 21:15:20_ | Diff: [5cc536e...2f92c4d](https://github.com/ChromeDevTools/devtools-protocol/compare/5cc536e...2f92c4d)
 #### `ApplicationCache`: new domain
