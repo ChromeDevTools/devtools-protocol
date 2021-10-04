@@ -1,5 +1,23 @@
 
 
+## Roll protocol to r927104
+###### _2021-09-30 22:15:28_ | Diff: [75edf97...d24ecc6](https://github.com/ChromeDevTools/devtools-protocol/compare/75edf97...d24ecc6)
+#### `ApplicationCache`: new domain
+* [`ApplicationCache.ApplicationCache`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#domain-ApplicationCache)
+#### `ApplicationCache`: new commands
+* [`ApplicationCache.enable`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#method-enable)
+* [`ApplicationCache.getApplicationCacheForFrame`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#method-getApplicationCacheForFrame)
+* [`ApplicationCache.getFramesWithManifests`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#method-getFramesWithManifests)
+* [`ApplicationCache.getManifestForFrame`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#method-getManifestForFrame)
+#### `ApplicationCache`: new events
+* [`ApplicationCache.applicationCacheStatusUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#event-applicationCacheStatusUpdated)
+* [`ApplicationCache.networkStateUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#event-networkStateUpdated)
+#### `ApplicationCache`: new types
+* [`ApplicationCache.ApplicationCacheResource`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#type-ApplicationCacheResource)
+* [`ApplicationCache.ApplicationCache`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#type-ApplicationCache)
+* [`ApplicationCache.FrameWithManifest`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#type-FrameWithManifest)
+
+
 ## Roll protocol to r927069
 ###### _2021-09-30 19:15:27_ | Diff: [6b5fb3f...75edf97](https://github.com/ChromeDevTools/devtools-protocol/compare/6b5fb3f...75edf97)
 #### `ApplicationCache`: removed domain
