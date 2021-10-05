@@ -10583,6 +10583,7 @@
                         "RedirectContainsCredentials",
                         "InsecurePrivateNetwork",
                         "InvalidPrivateNetworkAccess",
+                        "UnexpectedPrivateNetworkAccess",
                         "NoCorsRedirectModeNotFollow"
                     ]
                 },
@@ -11491,7 +11492,9 @@
                     "enum": [
                         "Allow",
                         "BlockFromInsecureToMorePrivate",
-                        "WarnFromInsecureToMorePrivate"
+                        "WarnFromInsecureToMorePrivate",
+                        "PreflightBlock",
+                        "PreflightWarn"
                     ]
                 },
                 {

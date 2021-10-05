@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r927854
+###### _2021-10-04 15:15:31_ | Diff: [d24ecc6...6d3ed49](https://github.com/ChromeDevTools/devtools-protocol/compare/d24ecc6...6d3ed49)
+#### `ApplicationCache`: removed domain
+* [`ApplicationCache.ApplicationCache`](https://chromedevtools.github.io/devtools-protocol/tot/ApplicationCache/#domain-ApplicationCache)
+
+
 ## Roll protocol to r927104
 ###### _2021-09-30 22:15:28_ | Diff: [75edf97...d24ecc6](https://github.com/ChromeDevTools/devtools-protocol/compare/75edf97...d24ecc6)
 #### `ApplicationCache`: new domain
