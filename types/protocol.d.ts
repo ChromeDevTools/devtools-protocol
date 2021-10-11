@@ -12877,10 +12877,6 @@ export namespace Protocol {
             state: ('frozen' | 'active');
         }
 
-        export interface SetProduceCompilationCacheRequest {
-            enabled: boolean;
-        }
-
         export interface ProduceCompilationCacheRequest {
             scripts: CompilationCacheParams[];
         }

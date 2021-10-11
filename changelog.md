@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r928170
+###### _2021-10-05 09:15:26_ | Diff: [6d3ed49...5f55be2](https://github.com/ChromeDevTools/devtools-protocol/compare/6d3ed49...5f55be2)
+#### `Network`: modified types
+* [`Network.CorsError`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CorsError) - The enum's `NoCorsRedirectModeNotFollow` _updated_. The enum's `NoCorsRedirectModeNotFollow` _added_.
+* [`Network.PrivateNetworkRequestPolicy`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-PrivateNetworkRequestPolicy) - The enum's `PreflightBlock` _added_. The enum's `PreflightWarn` _added_.
+
+
 ## Roll protocol to r927854
 ###### _2021-10-04 15:15:31_ | Diff: [d24ecc6...6d3ed49](https://github.com/ChromeDevTools/devtools-protocol/compare/d24ecc6...6d3ed49)
 #### `ApplicationCache`: removed domain

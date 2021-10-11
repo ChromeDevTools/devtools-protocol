@@ -16509,19 +16509,8 @@
                     "experimental": true
                 },
                 {
-                    "name": "setProduceCompilationCache",
-                    "description": "Forces compilation cache to be generated for every subresource script.\nSee also: `Page.produceCompilationCache`.",
-                    "experimental": true,
-                    "parameters": [
-                        {
-                            "name": "enabled",
-                            "type": "boolean"
-                        }
-                    ]
-                },
-                {
                     "name": "produceCompilationCache",
-                    "description": "Requests backend to produce compilation cache for the specified scripts.\nUnlike setProduceCompilationCache, this allows client to only produce cache\nfor specific scripts. `scripts` are appeneded to the list of scripts\nfor which the cache for would produced. Disabling compilation cache with\n`setProduceCompilationCache` would reset all pending cache requests.\nThe list may also be reset during page navigation.\nWhen script with a matching URL is encountered, the cache is optionally\nproduced upon backend discretion, based on internal heuristics.\nSee also: `Page.compilationCacheProduced`.",
+                    "description": "Requests backend to produce compilation cache for the specified scripts.\n`scripts` are appeneded to the list of scripts for which the cache\nwould be produced. The list may be reset during page navigation.\nWhen script with a matching URL is encountered, the cache is optionally\nproduced upon backend discretion, based on internal heuristics.\nSee also: `Page.compilationCacheProduced`.",
                     "experimental": true,
                     "parameters": [
                         {
