@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r930289
+###### _2021-10-11 14:15:33_ | Diff: [5f55be2...35e6406](https://github.com/ChromeDevTools/devtools-protocol/compare/5f55be2...35e6406)
+#### `Page`: removed command
+* [`Page.setProduceCompilationCache`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setProduceCompilationCache)
+#### `Page`: modified command
+* [`Page.produceCompilationCache`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-produceCompilationCache) - `description` updated.
+
+
 ## Roll protocol to r928170
 ###### _2021-10-05 09:15:26_ | Diff: [6d3ed49...5f55be2](https://github.com/ChromeDevTools/devtools-protocol/compare/6d3ed49...5f55be2)
 #### `Network`: modified types

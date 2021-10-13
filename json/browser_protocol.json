@@ -58,6 +58,7 @@
                     "description": "Enum of possible native property sources (as a subtype of a particular AXValueSourceType).",
                     "type": "string",
                     "enum": [
+                        "description",
                         "figcaption",
                         "label",
                         "labelfor",
