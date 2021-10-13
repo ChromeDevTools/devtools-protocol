@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r931171
+###### _2021-10-13 12:15:29_ | Diff: [35e6406...76bd05b](https://github.com/ChromeDevTools/devtools-protocol/compare/35e6406...76bd05b)
+#### `Accessibility`: modified type
+* [`Accessibility.AXValueNativeSourceType`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXValueNativeSourceType) - The enum's `figcaption` _updated_. The enum's `label` _updated_. The enum's `labelfor` _updated_. The enum's `labelwrapped` _updated_. The enum's `legend` _updated_. The enum's `rubyannotation` _updated_. The enum's `tablecaption` _updated_. The enum's `title` _updated_. The enum's `other` _updated_. The enum's `other` _added_.
+
+
 ## Roll protocol to r930289
 ###### _2021-10-11 14:15:33_ | Diff: [5f55be2...35e6406](https://github.com/ChromeDevTools/devtools-protocol/compare/5f55be2...35e6406)
 #### `Page`: removed command

@@ -3119,7 +3119,7 @@ export namespace Protocol {
             frame: AffectedFrame;
         }
 
-        export type ContentSecurityPolicyViolationType = ('kInlineViolation' | 'kEvalViolation' | 'kURLViolation' | 'kTrustedTypesSinkViolation' | 'kTrustedTypesPolicyViolation');
+        export type ContentSecurityPolicyViolationType = ('kInlineViolation' | 'kEvalViolation' | 'kURLViolation' | 'kTrustedTypesSinkViolation' | 'kTrustedTypesPolicyViolation' | 'kWasmEvalViolation');
 
         export interface SourceCodeLocation {
             scriptId?: Runtime.ScriptId;
