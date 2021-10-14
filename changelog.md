@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r931234
+###### _2021-10-13 14:15:26_ | Diff: [76bd05b...8bbdba3](https://github.com/ChromeDevTools/devtools-protocol/compare/76bd05b...8bbdba3)
+#### `Audits`: modified type
+* [`Audits.ContentSecurityPolicyViolationType`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-ContentSecurityPolicyViolationType) - The enum's `kWasmEvalViolation` _added_.
+
+
 ## Roll protocol to r931171
 ###### _2021-10-13 12:15:29_ | Diff: [35e6406...76bd05b](https://github.com/ChromeDevTools/devtools-protocol/compare/35e6406...76bd05b)
 #### `Accessibility`: modified type
