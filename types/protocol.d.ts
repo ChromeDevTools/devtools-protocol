@@ -10507,6 +10507,12 @@ export namespace Protocol {
              */
             initiator: Initiator;
             /**
+             * In the case that redirectResponse is populated, this flag indicates whether
+             * requestWillBeSentExtraInfo and responseReceivedExtraInfo events will be or were emitted
+             * for the request which was just redirected.
+             */
+            redirectHasExtraInfo: boolean;
+            /**
              * Redirect response data.
              */
             redirectResponse?: Response;
@@ -10580,6 +10586,11 @@ export namespace Protocol {
              * Response data.
              */
             response: Response;
+            /**
+             * Indicates whether requestWillBeSentExtraInfo and responseReceivedExtraInfo events will be
+             * or were emitted for this request.
+             */
+            hasExtraInfo: boolean;
             /**
              * Frame identifier.
              */

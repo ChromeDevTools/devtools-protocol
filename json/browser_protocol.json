@@ -12687,6 +12687,12 @@
                             "$ref": "Initiator"
                         },
                         {
+                            "name": "redirectHasExtraInfo",
+                            "description": "In the case that redirectResponse is populated, this flag indicates whether\nrequestWillBeSentExtraInfo and responseReceivedExtraInfo events will be or were emitted\nfor the request which was just redirected.",
+                            "experimental": true,
+                            "type": "boolean"
+                        },
+                        {
                             "name": "redirectResponse",
                             "description": "Redirect response data.",
                             "optional": true,
@@ -12779,6 +12785,12 @@
                             "name": "response",
                             "description": "Response data.",
                             "$ref": "Response"
+                        },
+                        {
+                            "name": "hasExtraInfo",
+                            "description": "Indicates whether requestWillBeSentExtraInfo and responseReceivedExtraInfo events will be\nor were emitted for this request.",
+                            "experimental": true,
+                            "type": "boolean"
                         },
                         {
                             "name": "frameId",
