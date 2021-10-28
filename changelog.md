@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r933220
+###### _2021-10-19 16:15:31_ | Diff: [ed35fe7...df7c5a3](https://github.com/ChromeDevTools/devtools-protocol/compare/ed35fe7...df7c5a3)
+#### `Network`: modified events
+* [`Network.requestWillBeSent`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-requestWillBeSent) - The `redirectResponse` in the parameters had `optional` _removed_. The `redirectResponse` in the parameters had `$ref` _removed_. The `hasUserGesture` in the parameters had `type` _removed_. The `redirectResponse` in the parameters had `name` _updated_. The `redirectResponse` in the parameters had `description` _updated_. The `type` in the parameters had `name` _updated_. The `type` in the parameters had `description` _updated_. The `type` in the parameters had `$ref` _updated_. The `frameId` in the parameters had `name` _updated_. The `frameId` in the parameters had `description` _updated_. The `frameId` in the parameters had `$ref` _updated_. The `hasUserGesture` in the parameters had `name` _updated_. The `hasUserGesture` in the parameters had `description` _updated_. The parameters's `experimental` _added_. The parameters's `type` _added_. The parameters's `$ref` _added_. The parameters's `hasUserGesture` _added_.
+* [`Network.responseReceived`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-responseReceived) - The `frameId` in the parameters had `optional` _removed_. The `frameId` in the parameters had `$ref` _removed_. The `frameId` in the parameters had `name` _updated_. The `frameId` in the parameters had `description` _updated_. The parameters's `experimental` _added_. The parameters's `type` _added_. The parameters's `frameId` _added_.
+
+
 ## Roll protocol to r932485
 ###### _2021-10-18 05:15:24_ | Diff: [204c97a...ed35fe7](https://github.com/ChromeDevTools/devtools-protocol/compare/204c97a...ed35fe7)
 #### `Page`: modified type
