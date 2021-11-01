@@ -3257,11 +3257,31 @@ export namespace Protocol {
         }
 
         /**
+         * This issue tracks information needed to print a deprecation message.
+         * The formatting is inherited from the old console.log version, see more at:
+         * https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/frame/deprecation.cc
+         * TODO(crbug.com/1264960): Re-work format to add i18n support per:
+         * https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/public/devtools_protocol/README.md
+         */
+        export interface DeprecationIssueDetails {
+            affectedFrame?: AffectedFrame;
+            sourceCodeLocation: SourceCodeLocation;
+            /**
+             * The content of the deprecation issue (this won't be translated),
+             * e.g. "window.inefficientLegacyStorageMethod will be removed in M97,
+             * around January 2022. Please use Web Storage or Indexed Database
+             * instead. This standard was abandoned in January, 1970. See
+             * https://www.chromestatus.com/feature/5684870116278272 for more details."
+             */
+            message?: string;
+        }
+
+        /**
          * A unique identifier for the type of issue. Each type may use one of the
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'TrustedWebActivityIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue' | 'WasmCrossOriginModuleSharingIssue' | 'GenericIssue');
+        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'TrustedWebActivityIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue' | 'WasmCrossOriginModuleSharingIssue' | 'GenericIssue' | 'DeprecationIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3283,6 +3303,7 @@ export namespace Protocol {
             navigatorUserAgentIssueDetails?: NavigatorUserAgentIssueDetails;
             wasmCrossOriginModuleSharingIssue?: WasmCrossOriginModuleSharingIssueDetails;
             genericIssueDetails?: GenericIssueDetails;
+            deprecationIssueDetails?: DeprecationIssueDetails;
         }
 
         /**
