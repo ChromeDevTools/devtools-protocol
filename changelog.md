@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r937044
+###### _2021-11-01 14:15:26_ | Diff: [bc8fa61...3a36442](https://github.com/ChromeDevTools/devtools-protocol/compare/bc8fa61...3a36442)
+#### `Audits`: new type
+* [`Audits.DeprecationIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-DeprecationIssueDetails)
+#### `Audits`: modified types
+* [`Audits.InspectorIssueCode`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueCode) - The enum's `DeprecationIssue` _added_.
+* [`Audits.InspectorIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueDetails) - The properties's `deprecationIssueDetails` _added_.
+
+
 ## Roll protocol to r933220
 ###### _2021-10-19 16:15:31_ | Diff: [ed35fe7...df7c5a3](https://github.com/ChromeDevTools/devtools-protocol/compare/ed35fe7...df7c5a3)
 #### `Network`: modified events

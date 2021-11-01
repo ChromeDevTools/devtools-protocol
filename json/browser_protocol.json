@@ -6097,6 +6097,35 @@
             ]
         },
         {
+            "domain": "EventBreakpoints",
+            "description": "EventBreakpoints permits setting breakpoints on particular operations and\nevents in targets that run JavaScript but do not have a DOM.\nJavaScript execution will stop on these operations as if there was a regular\nbreakpoint set.",
+            "experimental": true,
+            "commands": [
+                {
+                    "name": "setInstrumentationBreakpoint",
+                    "description": "Sets breakpoint on particular native event.",
+                    "parameters": [
+                        {
+                            "name": "eventName",
+                            "description": "Instrumentation name to stop on.",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "removeInstrumentationBreakpoint",
+                    "description": "Removes breakpoint on particular native event.",
+                    "parameters": [
+                        {
+                            "name": "eventName",
+                            "description": "Instrumentation name to stop on.",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "domain": "DOMSnapshot",
             "description": "This domain facilitates obtaining document snapshots with DOM, layout, and style information.",
             "experimental": true,

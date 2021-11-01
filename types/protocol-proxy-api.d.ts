@@ -42,6 +42,8 @@ export namespace ProtocolProxyApi {
 
         DOMDebugger: DOMDebuggerApi;
 
+        EventBreakpoints: EventBreakpointsApi;
+
         DOMSnapshot: DOMSnapshotApi;
 
         DOMStorage: DOMStorageApi;
@@ -1498,6 +1500,19 @@ export namespace ProtocolProxyApi {
          * Sets breakpoint on XMLHttpRequest.
          */
         setXHRBreakpoint(params: Protocol.DOMDebugger.SetXHRBreakpointRequest): Promise<void>;
+
+    }
+
+    export interface EventBreakpointsApi {
+        /**
+         * Sets breakpoint on particular native event.
+         */
+        setInstrumentationBreakpoint(params: Protocol.EventBreakpoints.SetInstrumentationBreakpointRequest): Promise<void>;
+
+        /**
+         * Removes breakpoint on particular native event.
+         */
+        removeInstrumentationBreakpoint(params: Protocol.EventBreakpoints.RemoveInstrumentationBreakpointRequest): Promise<void>;
 
     }
 

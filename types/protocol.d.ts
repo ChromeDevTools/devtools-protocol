@@ -6282,6 +6282,29 @@ export namespace Protocol {
     }
 
     /**
+     * EventBreakpoints permits setting breakpoints on particular operations and
+     * events in targets that run JavaScript but do not have a DOM.
+     * JavaScript execution will stop on these operations as if there was a regular
+     * breakpoint set.
+     */
+    export namespace EventBreakpoints {
+
+        export interface SetInstrumentationBreakpointRequest {
+            /**
+             * Instrumentation name to stop on.
+             */
+            eventName: string;
+        }
+
+        export interface RemoveInstrumentationBreakpointRequest {
+            /**
+             * Instrumentation name to stop on.
+             */
+            eventName: string;
+        }
+    }
+
+    /**
      * This domain facilitates obtaining document snapshots with DOM, layout, and style information.
      */
     export namespace DOMSnapshot {
