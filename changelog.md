@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r937072
+###### _2021-11-01 15:15:26_ | Diff: [3a36442...23061aa](https://github.com/ChromeDevTools/devtools-protocol/compare/3a36442...23061aa)
+#### `EventBreakpoints`: new domain
+* [`EventBreakpoints.EventBreakpoints`](https://chromedevtools.github.io/devtools-protocol/tot/EventBreakpoints/#domain-EventBreakpoints)
+#### `EventBreakpoints`: new commands
+* [`EventBreakpoints.setInstrumentationBreakpoint`](https://chromedevtools.github.io/devtools-protocol/tot/EventBreakpoints/#method-setInstrumentationBreakpoint)
+* [`EventBreakpoints.removeInstrumentationBreakpoint`](https://chromedevtools.github.io/devtools-protocol/tot/EventBreakpoints/#method-removeInstrumentationBreakpoint)
+
+
 ## Roll protocol to r937044
 ###### _2021-11-01 14:15:26_ | Diff: [bc8fa61...3a36442](https://github.com/ChromeDevTools/devtools-protocol/compare/bc8fa61...3a36442)
 #### `Audits`: new type
