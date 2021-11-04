@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r938446
+###### _2021-11-04 13:15:28_ | Diff: [e73ddb9...0fe9d20](https://github.com/ChromeDevTools/devtools-protocol/compare/e73ddb9...0fe9d20)
+#### `Network`: modified type
+* [`Network.SignedCertificateTimestamp`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedCertificateTimestamp) - The `timestamp` in the properties had `$ref` _removed_. The `timestamp` in the properties had `description` _updated_. The properties's `type` _added_.
+
+
 ## Roll protocol to r937139
 ###### _2021-11-01 17:15:24_ | Diff: [23061aa...e73ddb9](https://github.com/ChromeDevTools/devtools-protocol/compare/23061aa...e73ddb9)
 #### `Audits`: modified type

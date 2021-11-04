@@ -13766,8 +13766,8 @@ export namespace Protocol {
              */
             schemeIsCryptographic: boolean;
             /**
-             * List of explanations for the security state. If the overall security state is `insecure` or
-             * `warning`, at least one corresponding explanation should be included.
+             * Previously a list of explanations for the security state. Now always
+             * empty.
              */
             explanations: SecurityStateExplanation[];
             /**
@@ -13775,7 +13775,7 @@ export namespace Protocol {
              */
             insecureContentStatus: InsecureContentStatus;
             /**
-             * Overrides user-visible description of the state.
+             * Overrides user-visible description of the state. Always omitted.
              */
             summary?: string;
         }
