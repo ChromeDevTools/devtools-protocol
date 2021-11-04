@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r938504
+###### _2021-11-04 14:15:28_ | Diff: [0fe9d20...4957f55](https://github.com/ChromeDevTools/devtools-protocol/compare/0fe9d20...4957f55)
+#### `Security`: modified event
+* [`Security.securityStateChanged`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#event-securityStateChanged) - The `explanations` in the parameters had `description` _updated_. The `summary` in the parameters had `description` _updated_. The parameters's `deprecated` _added_ (2 times).
+
+
 ## Roll protocol to r938446
 ###### _2021-11-04 13:15:28_ | Diff: [e73ddb9...0fe9d20](https://github.com/ChromeDevTools/devtools-protocol/compare/e73ddb9...0fe9d20)
 #### `Network`: modified type

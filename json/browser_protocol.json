@@ -16616,6 +16616,22 @@
                     "experimental": true
                 },
                 {
+                    "name": "setSPCTransactionMode",
+                    "description": "Sets the Secure Payment Confirmation transaction mode.\nhttps://w3c.github.io/secure-payment-confirmation/#sctn-automation-set-spc-transaction-mode",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "mode",
+                            "type": "string",
+                            "enum": [
+                                "none",
+                                "autoaccept",
+                                "autoreject"
+                            ]
+                        }
+                    ]
+                },
+                {
                     "name": "generateTestReport",
                     "description": "Generates a report for testing.",
                     "experimental": true,

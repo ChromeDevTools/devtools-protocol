@@ -2843,6 +2843,12 @@ export namespace ProtocolProxyApi {
         clearCompilationCache(): Promise<void>;
 
         /**
+         * Sets the Secure Payment Confirmation transaction mode.
+         * https://w3c.github.io/secure-payment-confirmation/#sctn-automation-set-spc-transaction-mode
+         */
+        setSPCTransactionMode(params: Protocol.Page.SetSPCTransactionModeRequest): Promise<void>;
+
+        /**
          * Generates a report for testing.
          */
         generateTestReport(params: Protocol.Page.GenerateTestReportRequest): Promise<void>;

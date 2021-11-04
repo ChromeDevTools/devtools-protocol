@@ -12945,6 +12945,19 @@ export namespace Protocol {
             data: string;
         }
 
+        export const enum SetSPCTransactionModeRequestMode {
+            None = 'none',
+            Autoaccept = 'autoaccept',
+            Autoreject = 'autoreject',
+        }
+
+        export interface SetSPCTransactionModeRequest {
+            /**
+             *  (SetSPCTransactionModeRequestMode enum)
+             */
+            mode: ('none' | 'autoaccept' | 'autoreject');
+        }
+
         export interface GenerateTestReportRequest {
             /**
              * Message to be displayed in the report.

@@ -3694,6 +3694,14 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Sets the Secure Payment Confirmation transaction mode.
+         * https://w3c.github.io/secure-payment-confirmation/#sctn-automation-set-spc-transaction-mode
+         */
+        'Page.setSPCTransactionMode': {
+            paramsType: [Protocol.Page.SetSPCTransactionModeRequest];
+            returnType: void;
+        };
+        /**
          * Generates a report for testing.
          */
         'Page.generateTestReport': {
