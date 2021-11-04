@@ -9092,9 +9092,10 @@ export namespace Protocol {
              */
             logId: string;
             /**
-             * Issuance date.
+             * Issuance date. Unlike TimeSinceEpoch, this contains the number of
+             * milliseconds since January 1, 1970, UTC, not the number of seconds.
              */
-            timestamp: TimeSinceEpoch;
+            timestamp: number;
             /**
              * Hash algorithm.
              */

@@ -10483,8 +10483,8 @@
                         },
                         {
                             "name": "timestamp",
-                            "description": "Issuance date.",
-                            "$ref": "TimeSinceEpoch"
+                            "description": "Issuance date. Unlike TimeSinceEpoch, this contains the number of\nmilliseconds since January 1, 1970, UTC, not the number of seconds.",
+                            "type": "number"
                         },
                         {
                             "name": "hashAlgorithm",

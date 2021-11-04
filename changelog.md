@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r937139
+###### _2021-11-01 17:15:24_ | Diff: [23061aa...e73ddb9](https://github.com/ChromeDevTools/devtools-protocol/compare/23061aa...e73ddb9)
+#### `Audits`: modified type
+* [`Audits.DeprecationIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-DeprecationIssueDetails) - The properties's `deprecated` _added_.
+
+
 ## Roll protocol to r937072
 ###### _2021-11-01 15:15:26_ | Diff: [3a36442...23061aa](https://github.com/ChromeDevTools/devtools-protocol/compare/3a36442...23061aa)
 #### `EventBreakpoints`: new domain
