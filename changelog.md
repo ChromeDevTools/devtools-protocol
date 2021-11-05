@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r938546
+###### _2021-11-04 15:15:26_ | Diff: [4957f55...3c2ebcf](https://github.com/ChromeDevTools/devtools-protocol/compare/4957f55...3c2ebcf)
+#### `Page`: new command
+* [`Page.setSPCTransactionMode`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setSPCTransactionMode)
+
+
 ## Roll protocol to r938504
 ###### _2021-11-04 14:15:28_ | Diff: [0fe9d20...4957f55](https://github.com/ChromeDevTools/devtools-protocol/compare/0fe9d20...4957f55)
 #### `Security`: modified event
