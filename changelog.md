@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r938885
+###### _2021-11-05 12:15:27_ | Diff: [3c2ebcf...790428e](https://github.com/ChromeDevTools/devtools-protocol/compare/3c2ebcf...790428e)
+#### `Page`: modified type
+* [`Page.PermissionsPolicyFeature`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-PermissionsPolicyFeature) - The enum's `keyboard-map` _updated_. The enum's `magnetometer` _updated_. The enum's `microphone` _updated_. The enum's `midi` _updated_. The enum's `otp-credentials` _updated_. The enum's `payment` _updated_. The enum's `picture-in-picture` _updated_. The enum's `publickey-credentials-get` _updated_. The enum's `screen-wake-lock` _updated_. The enum's `serial` _updated_. The enum's `shared-autofill` _updated_. The enum's `storage-access-api` _updated_. The enum's `sync-xhr` _updated_. The enum's `trust-token-redemption` _updated_. The enum's `usb` _updated_. The enum's `vertical-scroll` _updated_. The enum's `web-share` _updated_. The enum's `window-placement` _updated_. The enum's `xr-spatial-tracking` _updated_. The enum's `window-placement` _added_. The enum's `xr-spatial-tracking` _added_.
+
+
 ## Roll protocol to r938546
 ###### _2021-11-04 15:15:26_ | Diff: [4957f55...3c2ebcf](https://github.com/ChromeDevTools/devtools-protocol/compare/4957f55...3c2ebcf)
 #### `Page`: new command
