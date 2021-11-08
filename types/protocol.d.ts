@@ -2697,6 +2697,18 @@ export namespace Protocol {
             nodes: AXNode[];
         }
 
+        export interface GetRootAXNodeRequest {
+            /**
+             * The frame in whose document the node resides.
+             * If omitted, the root frame is used.
+             */
+            frameId?: Page.FrameId;
+        }
+
+        export interface GetRootAXNodeResponse {
+            node: AXNode;
+        }
+
         export interface GetChildAXNodesRequest {
             id: AXNodeId;
             /**

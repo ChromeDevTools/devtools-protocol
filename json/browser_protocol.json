@@ -424,6 +424,25 @@
                     ]
                 },
                 {
+                    "name": "getRootAXNode",
+                    "description": "Fetches the root node.\nRequires `enable()` to have been called previously.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "frameId",
+                            "description": "The frame in whose document the node resides.\nIf omitted, the root frame is used.",
+                            "optional": true,
+                            "$ref": "Page.FrameId"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "node",
+                            "$ref": "AXNode"
+                        }
+                    ]
+                },
+                {
                     "name": "getChildAXNodes",
                     "description": "Fetches a particular accessibility node by AXNodeId.\nRequires `enable()` to have been called previously.",
                     "experimental": true,

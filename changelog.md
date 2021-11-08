@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r939359
+###### _2021-11-08 07:15:23 -0800_ | Diff: [e42953d...8ae67d9](https://github.com/ChromeDevTools/devtools-protocol/compare/e42953d...8ae67d9)
+#### `Accessibility`: modified type
+* [`Accessibility.AXNode`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXNode) - The `childIds` in the properties had `type` _removed_. The `childIds` in the properties had `items` _removed_. The `backendDOMNodeId` in the properties had `$ref` _removed_. The `childIds` in the properties had `name` _updated_. The `childIds` in the properties had `description` _updated_. The `backendDOMNodeId` in the properties had `name` _updated_. The `backendDOMNodeId` in the properties had `description` _updated_. The properties's `$ref` _added_. The properties's `type` _added_. The properties's `items` _added_. The properties's `backendDOMNodeId` _added_. The properties's `frameId` _added_.
+
+
 ## Roll protocol to r938885
 ###### _2021-11-05 12:15:27_ | Diff: [3c2ebcf...790428e](https://github.com/ChromeDevTools/devtools-protocol/compare/3c2ebcf...790428e)
 #### `Page`: modified type

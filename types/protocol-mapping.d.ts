@@ -1244,6 +1244,14 @@ export namespace ProtocolMapping {
             returnType: Protocol.Accessibility.GetFullAXTreeResponse;
         };
         /**
+         * Fetches the root node.
+         * Requires `enable()` to have been called previously.
+         */
+        'Accessibility.getRootAXNode': {
+            paramsType: [Protocol.Accessibility.GetRootAXNodeRequest?];
+            returnType: Protocol.Accessibility.GetRootAXNodeResponse;
+        };
+        /**
          * Fetches a particular accessibility node by AXNodeId.
          * Requires `enable()` to have been called previously.
          */
