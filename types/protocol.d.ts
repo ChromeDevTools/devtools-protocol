@@ -2632,6 +2632,10 @@ export namespace Protocol {
              */
             properties?: AXProperty[];
             /**
+             * ID for this node's parent.
+             */
+            parentId?: AXNodeId;
+            /**
              * IDs for each of this node's child nodes.
              */
             childIds?: AXNodeId[];
@@ -2639,6 +2643,10 @@ export namespace Protocol {
              * The backend ID for the associated DOM node, if any.
              */
             backendDOMNodeId?: DOM.BackendNodeId;
+            /**
+             * The frame ID for the frame associated with this nodes document.
+             */
+            frameId?: Page.FrameId;
         }
 
         export interface GetPartialAXTreeRequest {
