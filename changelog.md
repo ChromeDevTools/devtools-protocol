@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r939882
+###### _2021-11-09 09:15:27 -0800_ | Diff: [e9d7ebc...ef5e053](https://github.com/ChromeDevTools/devtools-protocol/compare/e9d7ebc...ef5e053)
+#### `Security`: modified event
+* [`Security.securityStateChanged`](https://chromedevtools.github.io/devtools-protocol/tot/Security/#event-securityStateChanged) - `description` updated. `deprecated` added.
+
+
 ## Roll protocol to r939725
 ###### _2021-11-08 23:16:13 -0800_ | Diff: [ec485f2...e9d7ebc](https://github.com/ChromeDevTools/devtools-protocol/compare/ec485f2...e9d7ebc)
 #### `Accessibility`: new command
