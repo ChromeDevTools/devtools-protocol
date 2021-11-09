@@ -443,6 +443,40 @@
                     ]
                 },
                 {
+                    "name": "getAXNodeAndAncestors",
+                    "description": "Fetches a node and all ancestors up to and including the root.\nRequires `enable()` to have been called previously.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "nodeId",
+                            "description": "Identifier of the node to get.",
+                            "optional": true,
+                            "$ref": "DOM.NodeId"
+                        },
+                        {
+                            "name": "backendNodeId",
+                            "description": "Identifier of the backend node to get.",
+                            "optional": true,
+                            "$ref": "DOM.BackendNodeId"
+                        },
+                        {
+                            "name": "objectId",
+                            "description": "JavaScript object id of the node wrapper to get.",
+                            "optional": true,
+                            "$ref": "Runtime.RemoteObjectId"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "nodes",
+                            "type": "array",
+                            "items": {
+                                "$ref": "AXNode"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "getChildAXNodes",
                     "description": "Fetches a particular accessibility node by AXNodeId.\nRequires `enable()` to have been called previously.",
                     "experimental": true,

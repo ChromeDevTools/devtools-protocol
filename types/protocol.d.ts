@@ -2709,6 +2709,25 @@ export namespace Protocol {
             node: AXNode;
         }
 
+        export interface GetAXNodeAndAncestorsRequest {
+            /**
+             * Identifier of the node to get.
+             */
+            nodeId?: DOM.NodeId;
+            /**
+             * Identifier of the backend node to get.
+             */
+            backendNodeId?: DOM.BackendNodeId;
+            /**
+             * JavaScript object id of the node wrapper to get.
+             */
+            objectId?: Runtime.RemoteObjectId;
+        }
+
+        export interface GetAXNodeAndAncestorsResponse {
+            nodes: AXNode[];
+        }
+
         export interface GetChildAXNodesRequest {
             id: AXNodeId;
             /**

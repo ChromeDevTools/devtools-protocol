@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r939404
+###### _2021-11-08 09:15:45 -0800_ | Diff: [8ae67d9...ec485f2](https://github.com/ChromeDevTools/devtools-protocol/compare/8ae67d9...ec485f2)
+#### `Accessibility`: new command
+* [`Accessibility.getRootAXNode`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#method-getRootAXNode)
+
+
 ## Roll protocol to r939359
 ###### _2021-11-08 07:15:23 -0800_ | Diff: [e42953d...8ae67d9](https://github.com/ChromeDevTools/devtools-protocol/compare/e42953d...8ae67d9)
 #### `Accessibility`: modified type

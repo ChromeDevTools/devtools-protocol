@@ -1252,6 +1252,14 @@ export namespace ProtocolMapping {
             returnType: Protocol.Accessibility.GetRootAXNodeResponse;
         };
         /**
+         * Fetches a node and all ancestors up to and including the root.
+         * Requires `enable()` to have been called previously.
+         */
+        'Accessibility.getAXNodeAndAncestors': {
+            paramsType: [Protocol.Accessibility.GetAXNodeAndAncestorsRequest?];
+            returnType: Protocol.Accessibility.GetAXNodeAndAncestorsResponse;
+        };
+        /**
          * Fetches a particular accessibility node by AXNodeId.
          * Requires `enable()` to have been called previously.
          */

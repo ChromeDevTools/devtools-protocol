@@ -633,6 +633,12 @@ export namespace ProtocolProxyApi {
         getRootAXNode(params: Protocol.Accessibility.GetRootAXNodeRequest): Promise<Protocol.Accessibility.GetRootAXNodeResponse>;
 
         /**
+         * Fetches a node and all ancestors up to and including the root.
+         * Requires `enable()` to have been called previously.
+         */
+        getAXNodeAndAncestors(params: Protocol.Accessibility.GetAXNodeAndAncestorsRequest): Promise<Protocol.Accessibility.GetAXNodeAndAncestorsResponse>;
+
+        /**
          * Fetches a particular accessibility node by AXNodeId.
          * Requires `enable()` to have been called previously.
          */
