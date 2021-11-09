@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r939725
+###### _2021-11-08 23:16:13 -0800_ | Diff: [ec485f2...e9d7ebc](https://github.com/ChromeDevTools/devtools-protocol/compare/ec485f2...e9d7ebc)
+#### `Accessibility`: new command
+* [`Accessibility.getAXNodeAndAncestors`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#method-getAXNodeAndAncestors)
+
+
 ## Roll protocol to r939404
 ###### _2021-11-08 09:15:45 -0800_ | Diff: [8ae67d9...ec485f2](https://github.com/ChromeDevTools/devtools-protocol/compare/8ae67d9...ec485f2)
 #### `Accessibility`: new command

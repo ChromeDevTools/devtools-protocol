@@ -13806,7 +13806,7 @@ export namespace Protocol {
         }
 
         /**
-         * The security state of the page changed.
+         * The security state of the page changed. No longer being sent.
          */
         export interface SecurityStateChangedEvent {
             /**

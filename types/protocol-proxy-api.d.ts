@@ -3095,7 +3095,7 @@ export namespace ProtocolProxyApi {
         on(event: 'visibleSecurityStateChanged', listener: (params: Protocol.Security.VisibleSecurityStateChangedEvent) => void): void;
 
         /**
-         * The security state of the page changed.
+         * The security state of the page changed. No longer being sent.
          */
         on(event: 'securityStateChanged', listener: (params: Protocol.Security.SecurityStateChangedEvent) => void): void;
 

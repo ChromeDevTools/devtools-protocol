@@ -517,7 +517,7 @@ export namespace ProtocolMapping {
          */
         'Security.visibleSecurityStateChanged': [Protocol.Security.VisibleSecurityStateChangedEvent];
         /**
-         * The security state of the page changed.
+         * The security state of the page changed. No longer being sent.
          */
         'Security.securityStateChanged': [Protocol.Security.SecurityStateChangedEvent];
         'ServiceWorker.workerErrorReported': [Protocol.ServiceWorker.WorkerErrorReportedEvent];
