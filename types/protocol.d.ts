@@ -2771,6 +2771,27 @@ export namespace Protocol {
              */
             nodes: AXNode[];
         }
+
+        /**
+         * The loadComplete event mirrors the load complete event sent by the browser to assistive
+         * technology when the web page has finished loading.
+         */
+        export interface LoadCompleteEvent {
+            /**
+             * New document root node.
+             */
+            root: AXNode;
+        }
+
+        /**
+         * The nodesUpdated event is sent every time a previously requested node has changed the in tree.
+         */
+        export interface NodesUpdatedEvent {
+            /**
+             * Updated node data.
+             */
+            nodes: AXNode[];
+        }
     }
 
     export namespace Animation {

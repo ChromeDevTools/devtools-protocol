@@ -93,6 +93,15 @@ export namespace ProtocolMapping {
          */
         'Runtime.inspectRequested': [Protocol.Runtime.InspectRequestedEvent];
         /**
+         * The loadComplete event mirrors the load complete event sent by the browser to assistive
+         * technology when the web page has finished loading.
+         */
+        'Accessibility.loadComplete': [Protocol.Accessibility.LoadCompleteEvent];
+        /**
+         * The nodesUpdated event is sent every time a previously requested node has changed the in tree.
+         */
+        'Accessibility.nodesUpdated': [Protocol.Accessibility.NodesUpdatedEvent];
+        /**
          * Event for when an animation has been cancelled.
          */
         'Animation.animationCanceled': [Protocol.Animation.AnimationCanceledEvent];

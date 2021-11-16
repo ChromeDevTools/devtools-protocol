@@ -653,6 +653,17 @@ export namespace ProtocolProxyApi {
          */
         queryAXTree(params: Protocol.Accessibility.QueryAXTreeRequest): Promise<Protocol.Accessibility.QueryAXTreeResponse>;
 
+        /**
+         * The loadComplete event mirrors the load complete event sent by the browser to assistive
+         * technology when the web page has finished loading.
+         */
+        on(event: 'loadComplete', listener: (params: Protocol.Accessibility.LoadCompleteEvent) => void): void;
+
+        /**
+         * The nodesUpdated event is sent every time a previously requested node has changed the in tree.
+         */
+        on(event: 'nodesUpdated', listener: (params: Protocol.Accessibility.NodesUpdatedEvent) => void): void;
+
     }
 
     export interface AnimationApi {
