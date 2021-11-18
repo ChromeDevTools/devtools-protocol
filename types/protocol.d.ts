@@ -9563,6 +9563,15 @@ export namespace Protocol {
              * This is a temporary ability and it will be removed in the future.
              */
             sourcePort: integer;
+            /**
+             * Cookie partition key. The site of the top-level URL the browser was visiting at the start
+             * of the request to the endpoint that set the cookie.
+             */
+            partitionKey?: string;
+            /**
+             * True if cookie partition key is opaque.
+             */
+            partitionKeyOpaque?: boolean;
         }
 
         /**
@@ -9669,6 +9678,12 @@ export namespace Protocol {
              * This is a temporary ability and it will be removed in the future.
              */
             sourcePort?: integer;
+            /**
+             * Cookie partition key. The site of the top-level URL the browser was visiting at the start
+             * of the request to the endpoint that set the cookie.
+             * If not set, the cookie will be set as not partitioned.
+             */
+            partitionKey?: string;
         }
 
         export const enum AuthChallengeSource {
@@ -10309,6 +10324,12 @@ export namespace Protocol {
              * This is a temporary ability and it will be removed in the future.
              */
             sourcePort?: integer;
+            /**
+             * Cookie partition key. The site of the top-level URL the browser was visiting at the start
+             * of the request to the endpoint that set the cookie.
+             * If not set, the cookie will be set as not partitioned.
+             */
+            partitionKey?: string;
         }
 
         export interface SetCookieResponse {

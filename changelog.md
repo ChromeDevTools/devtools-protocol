@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r942138
+###### _2021-11-16 06:15:29 -0800_ | Diff: [0308368...22bc316](https://github.com/ChromeDevTools/devtools-protocol/compare/0308368...22bc316)
+#### `Accessibility`: new events
+* [`Accessibility.loadComplete`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#event-loadComplete)
+* [`Accessibility.nodesUpdated`](https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#event-nodesUpdated)
+
+
 ## Roll protocol to r940865
 ###### _2021-11-11 11:15:26 -0800_ | Diff: [a2c84e8...0308368](https://github.com/ChromeDevTools/devtools-protocol/compare/a2c84e8...0308368)
 #### `Emulation`: modified type
