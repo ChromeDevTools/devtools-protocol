@@ -2429,6 +2429,8 @@ export namespace ProtocolProxyApi {
 
         on(event: 'reportingApiReportUpdated', listener: (params: Protocol.Network.ReportingApiReportUpdatedEvent) => void): void;
 
+        on(event: 'reportingApiEndpointsChangedForOrigin', listener: (params: Protocol.Network.ReportingApiEndpointsChangedForOriginEvent) => void): void;
+
     }
 
     export interface OverlayApi {

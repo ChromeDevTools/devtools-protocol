@@ -9968,6 +9968,17 @@ export namespace Protocol {
             status: ReportStatus;
         }
 
+        export interface ReportingApiEndpoint {
+            /**
+             * The URL of the endpoint to which reports may be delivered.
+             */
+            url: string;
+            /**
+             * Name of the endpoint group.
+             */
+            groupName: string;
+        }
+
         /**
          * An object providing the result of a network resource load.
          */
@@ -11095,6 +11106,14 @@ export namespace Protocol {
 
         export interface ReportingApiReportUpdatedEvent {
             report: ReportingApiReport;
+        }
+
+        export interface ReportingApiEndpointsChangedForOriginEvent {
+            /**
+             * Origin of the document(s) which configured the endpoints.
+             */
+            origin: string;
+            endpoints: ReportingApiEndpoint[];
         }
     }
 

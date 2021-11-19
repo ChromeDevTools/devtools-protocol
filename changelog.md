@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r943026
+###### _2021-11-18 03:15:23 -0800_ | Diff: [22bc316...bee0143](https://github.com/ChromeDevTools/devtools-protocol/compare/22bc316...bee0143)
+#### `Network`: modified command
+* [`Network.setCookie`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#method-setCookie) - The parameters's `partitionKey` _added_.
+#### `Network`: modified types
+* [`Network.Cookie`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Cookie) - The properties's `partitionKey` _added_. The properties's `partitionKeyOpaque` _added_.
+* [`Network.CookieParam`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CookieParam) - The properties's `partitionKey` _added_.
+
+
 ## Roll protocol to r942138
 ###### _2021-11-16 06:15:29 -0800_ | Diff: [0308368...22bc316](https://github.com/ChromeDevTools/devtools-protocol/compare/0308368...22bc316)
 #### `Accessibility`: new events
