@@ -14533,6 +14533,10 @@ export namespace Protocol {
              * Proxy bypass list, similar to the one passed to --proxy-bypass-list
              */
             proxyBypassList?: string;
+            /**
+             * An optional list of origins to grant unlimited cross-origin access to.
+             */
+            originsWithUniversalNetworkAccess?: string[];
         }
 
         export interface CreateBrowserContextResponse {

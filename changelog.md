@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r943452
+###### _2021-11-19 01:15:22 -0800_ | Diff: [bee0143...946136a](https://github.com/ChromeDevTools/devtools-protocol/compare/bee0143...946136a)
+#### `Network`: new event
+* [`Network.reportingApiEndpointsChangedForOrigin`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#event-reportingApiEndpointsChangedForOrigin)
+#### `Network`: new type
+* [`Network.ReportingApiEndpoint`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ReportingApiEndpoint)
+
+
 ## Roll protocol to r943026
 ###### _2021-11-18 03:15:23 -0800_ | Diff: [22bc316...bee0143](https://github.com/ChromeDevTools/devtools-protocol/compare/22bc316...bee0143)
 #### `Network`: modified command
