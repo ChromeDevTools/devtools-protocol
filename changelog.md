@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r943687
+###### _2021-11-19 14:15:27 -0800_ | Diff: [946136a...15f524c](https://github.com/ChromeDevTools/devtools-protocol/compare/946136a...15f524c)
+#### `Target`: modified command
+* [`Target.createBrowserContext`](https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-createBrowserContext) - The parameters's `originsWithUniversalNetworkAccess` _added_.
+
+
 ## Roll protocol to r943452
 ###### _2021-11-19 01:15:22 -0800_ | Diff: [bee0143...946136a](https://github.com/ChromeDevTools/devtools-protocol/compare/bee0143...946136a)
 #### `Network`: new event

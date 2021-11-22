@@ -19101,7 +19101,7 @@
                         },
                         {
                             "name": "originsWithUniversalNetworkAccess",
-                            "description": "An optional list of origins to grant unlimited cross-origin access to.",
+                            "description": "An optional list of origins to grant unlimited cross-origin access to.\nParts of the URL other than those constituting origin are ignored.",
                             "optional": true,
                             "type": "array",
                             "items": {

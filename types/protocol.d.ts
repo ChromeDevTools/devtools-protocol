@@ -14535,6 +14535,7 @@ export namespace Protocol {
             proxyBypassList?: string;
             /**
              * An optional list of origins to grant unlimited cross-origin access to.
+             * Parts of the URL other than those constituting origin are ignored.
              */
             originsWithUniversalNetworkAccess?: string[];
         }
