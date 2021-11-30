@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r945905
+###### _2021-11-29 03:15:22 -0800_ | Diff: [47ce494...76839dc](https://github.com/ChromeDevTools/devtools-protocol/compare/47ce494...76839dc)
+#### `Network`: modified type
+* [`Network.CorsError`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CorsError) - The enum's `InvalidAllowMethodsPreflightResponse` _updated_. The enum's `InvalidAllowHeadersPreflightResponse` _updated_. The enum's `MethodDisallowedByPreflightResponse` _updated_. The enum's `HeaderDisallowedByPreflightResponse` _updated_. The enum's `RedirectContainsCredentials` _updated_. The enum's `InsecurePrivateNetwork` _updated_. The enum's `InvalidPrivateNetworkAccess` _updated_. The enum's `UnexpectedPrivateNetworkAccess` _updated_. The enum's `NoCorsRedirectModeNotFollow` _updated_. The enum's `UnexpectedPrivateNetworkAccess` _added_. The enum's `NoCorsRedirectModeNotFollow` _added_.
+
+
 ## Roll protocol to r944179
 ###### _2021-11-22 11:15:40 -0800_ | Diff: [15f524c...47ce494](https://github.com/ChromeDevTools/devtools-protocol/compare/15f524c...47ce494)
 #### `Target`: modified command

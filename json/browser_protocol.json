@@ -15629,6 +15629,7 @@
                         "ContentWebUSB",
                         "ContentMediaSession",
                         "ContentMediaSessionService",
+                        "ContentScreenReader",
                         "EmbedderPopupBlockerTabHelper",
                         "EmbedderSafeBrowsingTriggeredPopupBlocker",
                         "EmbedderSafeBrowsingThreatDetails",
