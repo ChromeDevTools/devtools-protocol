@@ -1115,6 +1115,11 @@ export namespace ProtocolProxyApi {
         setSinkToUse(params: Protocol.Cast.SetSinkToUseRequest): Promise<void>;
 
         /**
+         * Starts mirroring the desktop to the sink.
+         */
+        startDesktopMirroring(params: Protocol.Cast.StartDesktopMirroringRequest): Promise<void>;
+
+        /**
          * Starts mirroring the tab to the sink.
          */
         startTabMirroring(params: Protocol.Cast.StartTabMirroringRequest): Promise<void>;

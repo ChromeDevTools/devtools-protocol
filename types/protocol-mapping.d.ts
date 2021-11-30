@@ -1791,6 +1791,13 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Starts mirroring the desktop to the sink.
+         */
+        'Cast.startDesktopMirroring': {
+            paramsType: [Protocol.Cast.StartDesktopMirroringRequest];
+            returnType: void;
+        };
+        /**
          * Starts mirroring the tab to the sink.
          */
         'Cast.startTabMirroring': {

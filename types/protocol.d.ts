@@ -4994,6 +4994,10 @@ export namespace Protocol {
             sinkName: string;
         }
 
+        export interface StartDesktopMirroringRequest {
+            sinkName: string;
+        }
+
         export interface StartTabMirroringRequest {
             sinkName: string;
         }
