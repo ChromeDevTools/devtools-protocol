@@ -290,7 +290,7 @@ const flatten = <T>(arr: T[][]) => ([] as T[]).concat(...arr)
 const emitMapping = (moduleName: string, protocolModuleName: string, domains: P.Domain[]) => {
     moduleName = toTitleCase(moduleName)
     emitHeaderComments()
-    emitLine(`import Protocol from './${protocolModuleName}'`)
+    emitLine(`import Protocol from './${protocolModuleName}.d.ts'`)
     emitLine()
     emitDescription('Mappings from protocol event and command names to the types required for them.')
     emitOpenBlock(`export namespace ${moduleName}`)
@@ -344,7 +344,7 @@ const emitDomainApi = (domain: P.Domain, modulePrefix: string) => {
 const emitApi = (moduleName: string, protocolModuleName: string, domains: P.Domain[]) => {
     moduleName = toTitleCase(moduleName)
     emitHeaderComments()
-    emitLine(`import Protocol from './${protocolModuleName}'`)
+    emitLine(`import Protocol from './${protocolModuleName}.d.ts'`)
     emitLine()
     emitDescription('API generated from Protocol commands and events.')
     emitOpenBlock(`export namespace ${moduleName}`)
