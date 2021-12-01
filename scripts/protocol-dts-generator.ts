@@ -383,7 +383,7 @@ const flushEmitToFile = (path: string) => {
 type ModuleType = "commonjs" | "esm";
 
 // Main
-const moduleType: ModuleType = process.argv[2];
+const moduleType = process.argv[2] as ModuleType;
 const destModuleDir: string = process.argv[3];
 
 const destProtocolFilePath = `${__dirname}/../${destModuleDir}/protocol.d.ts`
