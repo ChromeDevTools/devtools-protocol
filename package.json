@@ -9,9 +9,16 @@
     "url": "https://github.com/ChromeDevTools/devtools-protocol/issues"
   },
   "files": [
+    "esm",
     "json",
     "pdl",
     "types"
   ],
-  "types": "types/protocol.d.ts"
+  "types": "types/protocol.d.ts",
+  "main": "./types/protocol.d.ts",
+  "module": "./esm/protocol.d.ts",
+  "exports": {
+    "import": "./esm/protocol.d.ts",
+    "require": "./types/protocol.d.ts"
+  }
 }

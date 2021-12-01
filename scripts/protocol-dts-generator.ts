@@ -287,10 +287,10 @@ const getCommandMapping = (command: P.Command, domainName: string, modulePrefix:
 
 const flatten = <T>(arr: T[][]) => ([] as T[]).concat(...arr)
 
-const emitMapping = (moduleName: string, protocolModuleName: string, domains: P.Domain[]) => {
+const emitMapping = (moduleName: string, protocolModuleName: string, domains: P.Domain[], moduleType: ModuleType) => {
     moduleName = toTitleCase(moduleName)
     emitHeaderComments()
-    emitLine(`import Protocol from './${protocolModuleName}.d.ts'`)
+    emitProtocolImport(protocolModuleName, moduleType)
     emitLine()
     emitDescription('Mappings from protocol event and command names to the types required for them.')
     emitOpenBlock(`export namespace ${moduleName}`)
@@ -341,10 +341,16 @@ const emitDomainApi = (domain: P.Domain, modulePrefix: string) => {
     emitCloseBlock()
 }
 
-const emitApi = (moduleName: string, protocolModuleName: string, domains: P.Domain[]) => {
+const emitProtocolImport = (protocolModuleName: string, moduleType: ModuleType) => {
+    let protocolModuleImportPath = `./${protocolModuleName}`;
+    if (moduleType === "esm") protocolModuleImportPath += ".d.ts"
+    emitLine(`import Protocol from '${protocolModuleImportPath}'`)
+}
+
+const emitApi = (moduleName: string, protocolModuleName: string, domains: P.Domain[], moduleType: ModuleType) => {
     moduleName = toTitleCase(moduleName)
     emitHeaderComments()
-    emitLine(`import Protocol from './${protocolModuleName}.d.ts'`)
+    emitProtocolImport(protocolModuleName, moduleType)
     emitLine()
     emitDescription('API generated from Protocol commands and events.')
     emitOpenBlock(`export namespace ${moduleName}`)
@@ -374,18 +380,23 @@ const flushEmitToFile = (path: string) => {
     emitStr = ''
 }
 
+type ModuleType = "commonjs" | "esm";
+
 // Main
-const destProtocolFilePath = `${__dirname}/../types/protocol.d.ts`
+const moduleType: ModuleType = process.argv[2];
+const destModuleDir: string = process.argv[3];
+
+const destProtocolFilePath = `${__dirname}/../${destModuleDir}/protocol.d.ts`
 const protocolModuleName = path.basename(destProtocolFilePath, '.d.ts')
 emitModule(protocolModuleName, protocolDomains)
 flushEmitToFile(destProtocolFilePath)
 
-const destMappingFilePath = `${__dirname}/../types/protocol-mapping.d.ts`
+const destMappingFilePath = `${__dirname}/../${destModuleDir}/protocol-mapping.d.ts`
 const mappingModuleName = 'ProtocolMapping'
-emitMapping(mappingModuleName, protocolModuleName, protocolDomains)
+emitMapping(mappingModuleName, protocolModuleName, protocolDomains, moduleType)
 flushEmitToFile(destMappingFilePath)
 
-const destApiFilePath = `${__dirname}/../types/protocol-proxy-api.d.ts`
+const destApiFilePath = `${__dirname}/../${destModuleDir}/protocol-proxy-api.d.ts`
 const apiModuleName = 'ProtocolProxyApi'
-emitApi(apiModuleName, protocolModuleName, protocolDomains)
+emitApi(apiModuleName, protocolModuleName, protocolDomains, moduleType)
 flushEmitToFile(destApiFilePath)
