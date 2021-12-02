@@ -1450,7 +1450,9 @@
                         "AttributionSourceUntrustworthyOrigin",
                         "AttributionUntrustworthyOrigin",
                         "AttributionTriggerDataTooLarge",
-                        "AttributionEventSourceTriggerDataTooLarge"
+                        "AttributionEventSourceTriggerDataTooLarge",
+                        "InvalidAttributionSourceExpiry",
+                        "InvalidAttributionSourcePriority"
                     ]
                 },
                 {

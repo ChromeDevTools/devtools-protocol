@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r946693
+###### _2021-11-30 14:15:35 -0800_ | Diff: [baf4231...2a18d25](https://github.com/ChromeDevTools/devtools-protocol/compare/baf4231...2a18d25)
+#### `Cast`: new command
+* [`Cast.startDesktopMirroring`](https://chromedevtools.github.io/devtools-protocol/tot/Cast/#method-startDesktopMirroring)
+
+
 ## Roll protocol to r946318
 ###### _2021-11-29 20:15:44 -0800_ | Diff: [76839dc...baf4231](https://github.com/ChromeDevTools/devtools-protocol/compare/76839dc...baf4231)
 #### `Page`: modified type
