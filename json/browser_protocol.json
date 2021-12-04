@@ -1452,7 +1452,10 @@
                         "AttributionTriggerDataTooLarge",
                         "AttributionEventSourceTriggerDataTooLarge",
                         "InvalidAttributionSourceExpiry",
-                        "InvalidAttributionSourcePriority"
+                        "InvalidAttributionSourcePriority",
+                        "InvalidEventSourceTriggerData",
+                        "InvalidTriggerPriority",
+                        "InvalidTriggerDedupKey"
                     ]
                 },
                 {

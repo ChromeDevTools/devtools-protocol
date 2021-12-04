@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r947303
+###### _2021-12-01 17:15:26 -0800_ | Diff: [2a18d25...11ea32a](https://github.com/ChromeDevTools/devtools-protocol/compare/2a18d25...11ea32a)
+#### `Audits`: modified type
+* [`Audits.AttributionReportingIssueType`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AttributionReportingIssueType) - The enum's `InvalidAttributionSourceExpiry` _added_. The enum's `InvalidAttributionSourcePriority` _added_.
+
+
 ## Roll protocol to r946693
 ###### _2021-11-30 14:15:35 -0800_ | Diff: [baf4231...2a18d25](https://github.com/ChromeDevTools/devtools-protocol/compare/baf4231...2a18d25)
 #### `Cast`: new command
