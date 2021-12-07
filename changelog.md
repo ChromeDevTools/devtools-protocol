@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r948336
+###### _2021-12-04 09:15:26 -0800_ | Diff: [11ea32a...dc1b71a](https://github.com/ChromeDevTools/devtools-protocol/compare/11ea32a...dc1b71a)
+#### `Audits`: modified type
+* [`Audits.AttributionReportingIssueType`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AttributionReportingIssueType) - The enum's `InvalidEventSourceTriggerData` _added_. The enum's `InvalidTriggerPriority` _added_. The enum's `InvalidTriggerDedupKey` _added_.
+
+
 ## Roll protocol to r947303
 ###### _2021-12-01 17:15:26 -0800_ | Diff: [2a18d25...11ea32a](https://github.com/ChromeDevTools/devtools-protocol/compare/2a18d25...11ea32a)
 #### `Audits`: modified type
