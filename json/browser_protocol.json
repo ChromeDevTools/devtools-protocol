@@ -1602,6 +1602,29 @@
                     ]
                 },
                 {
+                    "id": "ClientHintIssueReason",
+                    "type": "string",
+                    "enum": [
+                        "MetaTagAllowListInvalidOrigin",
+                        "MetaTagModifiedHTML"
+                    ]
+                },
+                {
+                    "id": "ClientHintIssueDetails",
+                    "description": "This issue tracks client hints related issues. It's used to deprecate old\nfeatures, encourage the use of new ones, and provide general guidance.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "sourceCodeLocation",
+                            "$ref": "SourceCodeLocation"
+                        },
+                        {
+                            "name": "clientHintIssueReason",
+                            "$ref": "ClientHintIssueReason"
+                        }
+                    ]
+                },
+                {
                     "id": "InspectorIssueCode",
                     "description": "A unique identifier for the type of issue. Each type may use one of the\noptional fields in InspectorIssueDetails to convey more specific\ninformation about the kind of issue.",
                     "type": "string",
@@ -1620,7 +1643,8 @@
                         "NavigatorUserAgentIssue",
                         "WasmCrossOriginModuleSharingIssue",
                         "GenericIssue",
-                        "DeprecationIssue"
+                        "DeprecationIssue",
+                        "ClientHintIssue"
                     ]
                 },
                 {
@@ -1702,6 +1726,11 @@
                             "name": "deprecationIssueDetails",
                             "optional": true,
                             "$ref": "DeprecationIssueDetails"
+                        },
+                        {
+                            "name": "clientHintIssueDetails",
+                            "optional": true,
+                            "$ref": "ClientHintIssueDetails"
                         }
                     ]
                 },
