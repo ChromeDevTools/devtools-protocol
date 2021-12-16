@@ -4355,7 +4355,11 @@
                         "scrollbar-track-piece",
                         "scrollbar-corner",
                         "resizer",
-                        "input-list-button"
+                        "input-list-button",
+                        "transition",
+                        "transition-container",
+                        "transition-old-content",
+                        "transition-new-content"
                     ]
                 },
                 {

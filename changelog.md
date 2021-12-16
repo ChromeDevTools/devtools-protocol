@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r952091
+###### _2021-12-15 13:15:35 -0800_ | Diff: [e96cb74...12d9e69](https://github.com/ChromeDevTools/devtools-protocol/compare/e96cb74...12d9e69)
+#### `Audits`: new types
+* [`Audits.ClientHintIssueReason`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-ClientHintIssueReason)
+* [`Audits.ClientHintIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-ClientHintIssueDetails)
+#### `Audits`: modified types
+* [`Audits.InspectorIssueCode`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueCode) - The enum's `ClientHintIssue` _added_.
+* [`Audits.InspectorIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueDetails) - The properties's `clientHintIssueDetails` _added_.
+
+
 ## Roll protocol to r948336
 ###### _2021-12-04 09:15:26 -0800_ | Diff: [11ea32a...dc1b71a](https://github.com/ChromeDevTools/devtools-protocol/compare/11ea32a...dc1b71a)
 #### `Audits`: modified type
