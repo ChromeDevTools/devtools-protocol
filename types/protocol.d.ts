@@ -15648,6 +15648,12 @@ export namespace Protocol {
              */
             hasCredBlob?: boolean;
             /**
+             * If set to true, the authenticator will support the minPinLength extension.
+             * https://fidoalliance.org/specs/fido-v2.1-ps-20210615/fido-client-to-authenticator-protocol-v2.1-ps-20210615.html#sctn-minpinlength-extension
+             * Defaults to false.
+             */
+            hasMinPinLength?: boolean;
+            /**
              * If set to true, tests of user presence will succeed immediately.
              * Otherwise, they will not be resolved. Defaults to true.
              */

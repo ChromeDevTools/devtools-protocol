@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r953752
+###### _2021-12-22 21:15:20 -0800_ | Diff: [b411e13...17a9c3e](https://github.com/ChromeDevTools/devtools-protocol/compare/b411e13...17a9c3e)
+#### `Page`: modified event
+* [`Page.backForwardCacheNotUsed`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-backForwardCacheNotUsed) - The parameters's `notRestoredExplanationsTree` _added_.
+#### `Page`: new type
+* [`Page.BackForwardCacheNotRestoredExplanationTree`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-BackForwardCacheNotRestoredExplanationTree)
+
+
 ## Roll protocol to r952438
 ###### _2021-12-16 10:15:30 -0800_ | Diff: [12d9e69...b411e13](https://github.com/ChromeDevTools/devtools-protocol/compare/12d9e69...b411e13)
 #### `DOM`: modified type
