@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r952438
+###### _2021-12-16 10:15:30 -0800_ | Diff: [12d9e69...b411e13](https://github.com/ChromeDevTools/devtools-protocol/compare/12d9e69...b411e13)
+#### `DOM`: modified type
+* [`DOM.PseudoType`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-PseudoType) - The enum's `transition` _added_. The enum's `transition-container` _added_. The enum's `transition-old-content` _added_. The enum's `transition-new-content` _added_.
+
+
 ## Roll protocol to r952091
 ###### _2021-12-15 13:15:35 -0800_ | Diff: [e96cb74...12d9e69](https://github.com/ChromeDevTools/devtools-protocol/compare/e96cb74...12d9e69)
 #### `Audits`: new types
