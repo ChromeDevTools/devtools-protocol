@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r953906
+###### _2021-12-23 11:15:37 -0800_ | Diff: [17a9c3e...96ead19](https://github.com/ChromeDevTools/devtools-protocol/compare/17a9c3e...96ead19)
+#### `WebAuthn`: modified type
+* [`WebAuthn.VirtualAuthenticatorOptions`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#type-VirtualAuthenticatorOptions) - The `automaticPresenceSimulation` in the properties had `name` _updated_. The `automaticPresenceSimulation` in the properties had `description` _updated_. The `isUserVerified` in the properties had `name` _updated_. The `isUserVerified` in the properties had `description` _updated_. The properties's `isUserVerified` _added_.
+
+
 ## Roll protocol to r953752
 ###### _2021-12-22 21:15:20 -0800_ | Diff: [b411e13...17a9c3e](https://github.com/ChromeDevTools/devtools-protocol/compare/b411e13...17a9c3e)
 #### `Page`: modified event
