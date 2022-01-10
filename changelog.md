@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r955664
+###### _2022-01-05 04:15:53 -0800_ | Diff: [90efbcc...d0d815e](https://github.com/ChromeDevTools/devtools-protocol/compare/90efbcc...d0d815e)
+#### `Audits`: modified type
+* [`Audits.DeprecationIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-DeprecationIssueDetails) - The properties's `deprecationType` _added_.
+
+
 ## Roll protocol to r953906
 ###### _2021-12-23 11:15:37 -0800_ | Diff: [17a9c3e...96ead19](https://github.com/ChromeDevTools/devtools-protocol/compare/17a9c3e...96ead19)
 #### `WebAuthn`: modified type
