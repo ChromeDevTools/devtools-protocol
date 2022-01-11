@@ -14522,7 +14522,8 @@
                 },
                 {
                     "name": "setShowHitTestBorders",
-                    "description": "Requests that backend shows hit-test borders on layers",
+                    "description": "Deprecated, no longer has any effect.",
+                    "deprecated": true,
                     "parameters": [
                         {
                             "name": "show",

@@ -3309,7 +3309,7 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
-         * Requests that backend shows hit-test borders on layers
+         * Deprecated, no longer has any effect.
          */
         'Overlay.setShowHitTestBorders': {
             paramsType: [Protocol.Overlay.SetShowHitTestBordersRequest];
