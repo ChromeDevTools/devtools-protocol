@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r957544
+###### _2022-01-11 06:15:23 -0800_ | Diff: [4f0ee26...a1608c5](https://github.com/ChromeDevTools/devtools-protocol/compare/4f0ee26...a1608c5)
+#### `Overlay`: modified command
+* [`Overlay.setShowHitTestBorders`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#method-setShowHitTestBorders) - `description` updated. `deprecated` added.
+
+
 ## Roll protocol to r955664
 ###### _2022-01-05 04:15:53 -0800_ | Diff: [90efbcc...d0d815e](https://github.com/ChromeDevTools/devtools-protocol/compare/90efbcc...d0d815e)
 #### `Audits`: modified type
