@@ -15441,6 +15441,24 @@
                     ]
                 },
                 {
+                    "id": "ScriptFontFamilies",
+                    "description": "Font families collection for a script.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "script",
+                            "description": "Name of the script which these font families are defined for.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "fontFamilies",
+                            "description": "Generic font families collection for the script.",
+                            "$ref": "FontFamilies"
+                        }
+                    ]
+                },
+                {
                     "id": "FontSizes",
                     "description": "Default font sizes.",
                     "experimental": true,
@@ -16640,6 +16658,15 @@
                             "name": "fontFamilies",
                             "description": "Specifies font families to set. If a font family is not specified, it won't be changed.",
                             "$ref": "FontFamilies"
+                        },
+                        {
+                            "name": "forScripts",
+                            "description": "Specifies font families to set for individual scripts.",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "ScriptFontFamilies"
+                            }
                         }
                     ]
                 },

@@ -12300,6 +12300,20 @@ export namespace Protocol {
         }
 
         /**
+         * Font families collection for a script.
+         */
+        export interface ScriptFontFamilies {
+            /**
+             * Name of the script which these font families are defined for.
+             */
+            script: string;
+            /**
+             * Generic font families collection for the script.
+             */
+            fontFamilies: FontFamilies;
+        }
+
+        /**
          * Default font sizes.
          */
         export interface FontSizes {
@@ -12950,6 +12964,10 @@ export namespace Protocol {
              * Specifies font families to set. If a font family is not specified, it won't be changed.
              */
             fontFamilies: FontFamilies;
+            /**
+             * Specifies font families to set for individual scripts.
+             */
+            forScripts?: ScriptFontFamilies[];
         }
 
         export interface SetFontSizesRequest {
