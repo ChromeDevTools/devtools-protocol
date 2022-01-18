@@ -550,6 +550,10 @@ export namespace ProtocolMapping {
          */
         'Storage.indexedDBListUpdated': [Protocol.Storage.IndexedDBListUpdatedEvent];
         /**
+         * One of the interest groups was accessed by the associated page.
+         */
+        'Storage.interestGroupAccessed': [Protocol.Storage.InterestGroupAccessedEvent];
+        /**
          * Issued when attached to target because of auto-attach or `attachToTarget` command.
          */
         'Target.attachedToTarget': [Protocol.Target.AttachedToTargetEvent];
@@ -3968,6 +3972,20 @@ export namespace ProtocolMapping {
         'Storage.clearTrustTokens': {
             paramsType: [Protocol.Storage.ClearTrustTokensRequest];
             returnType: Protocol.Storage.ClearTrustTokensResponse;
+        };
+        /**
+         * Gets details for a named interest group.
+         */
+        'Storage.getInterestGroupDetails': {
+            paramsType: [Protocol.Storage.GetInterestGroupDetailsRequest];
+            returnType: Protocol.Storage.GetInterestGroupDetailsResponse;
+        };
+        /**
+         * Enables/Disables issuing of interestGroupAccessed events.
+         */
+        'Storage.setInterestGroupTracking': {
+            paramsType: [Protocol.Storage.SetInterestGroupTrackingRequest];
+            returnType: void;
         };
         /**
          * Returns information about the system.

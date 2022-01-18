@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r959523
+###### _2022-01-14 20:15:23 -0800_ | Diff: [f7a5f38...87addc3](https://github.com/ChromeDevTools/devtools-protocol/compare/f7a5f38...87addc3)
+#### `Page`: modified command
+* [`Page.setFontFamilies`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-setFontFamilies) - The parameters's `forScripts` _added_.
+#### `Page`: new type
+* [`Page.ScriptFontFamilies`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ScriptFontFamilies)
+
+
 ## Roll protocol to r957544
 ###### _2022-01-11 06:15:23 -0800_ | Diff: [4f0ee26...a1608c5](https://github.com/ChromeDevTools/devtools-protocol/compare/4f0ee26...a1608c5)
 #### `Overlay`: modified command

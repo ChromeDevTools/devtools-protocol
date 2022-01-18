@@ -14065,7 +14065,7 @@ export namespace Protocol {
         /**
          * Enum of possible storage types.
          */
-        export type StorageType = ('appcache' | 'cookies' | 'file_systems' | 'indexeddb' | 'local_storage' | 'shader_cache' | 'websql' | 'service_workers' | 'cache_storage' | 'all' | 'other');
+        export type StorageType = ('appcache' | 'cookies' | 'file_systems' | 'indexeddb' | 'local_storage' | 'shader_cache' | 'websql' | 'service_workers' | 'cache_storage' | 'interest_groups' | 'all' | 'other');
 
         /**
          * Usage for a storage type.
@@ -14088,6 +14088,37 @@ export namespace Protocol {
         export interface TrustTokens {
             issuerOrigin: string;
             count: number;
+        }
+
+        /**
+         * Enum of interest group access types.
+         */
+        export type InterestGroupAccessType = ('join' | 'leave' | 'update' | 'bid' | 'win');
+
+        /**
+         * Ad advertising element inside an interest group.
+         */
+        export interface InterestGroupAd {
+            renderUrl: string;
+            metadata?: string;
+        }
+
+        /**
+         * The full details of an interest group.
+         */
+        export interface InterestGroupDetails {
+            ownerOrigin: string;
+            name: string;
+            expirationTime: number;
+            joiningOrigin: string;
+            biddingUrl?: string;
+            biddingWasmHelperUrl?: string;
+            updateUrl?: string;
+            trustedBiddingSignalsUrl?: string;
+            trustedBiddingSignalsKeys: string[];
+            userBiddingSignals?: string;
+            ads: InterestGroupAd[];
+            adComponents: InterestGroupAd[];
         }
 
         export interface ClearDataForOriginRequest {
@@ -14219,6 +14250,19 @@ export namespace Protocol {
             didDeleteTokens: boolean;
         }
 
+        export interface GetInterestGroupDetailsRequest {
+            ownerOrigin: string;
+            name: string;
+        }
+
+        export interface GetInterestGroupDetailsResponse {
+            details: InterestGroupDetails;
+        }
+
+        export interface SetInterestGroupTrackingRequest {
+            enable: boolean;
+        }
+
         /**
          * A cache's contents have been modified.
          */
@@ -14269,6 +14313,15 @@ export namespace Protocol {
              * Origin to update.
              */
             origin: string;
+        }
+
+        /**
+         * One of the interest groups was accessed by the associated page.
+         */
+        export interface InterestGroupAccessedEvent {
+            type: InterestGroupAccessType;
+            ownerOrigin: string;
+            name: string;
         }
     }
 
