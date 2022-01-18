@@ -1,5 +1,20 @@
 
 
+## Roll protocol to r960453
+###### _2022-01-18 09:15:26 -0800_ | Diff: [87addc3...7572c21](https://github.com/ChromeDevTools/devtools-protocol/compare/87addc3...7572c21)
+#### `Storage`: new commands
+* [`Storage.getInterestGroupDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#method-getInterestGroupDetails)
+* [`Storage.setInterestGroupTracking`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#method-setInterestGroupTracking)
+#### `Storage`: new event
+* [`Storage.interestGroupAccessed`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#event-interestGroupAccessed)
+#### `Storage`: new types
+* [`Storage.InterestGroupAccessType`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-InterestGroupAccessType)
+* [`Storage.InterestGroupAd`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-InterestGroupAd)
+* [`Storage.InterestGroupDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-InterestGroupDetails)
+#### `Storage`: modified type
+* [`Storage.StorageType`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-StorageType) - The enum's `all` _updated_. The enum's `other` _updated_. The enum's `other` _added_.
+
+
 ## Roll protocol to r959523
 ###### _2022-01-14 20:15:23 -0800_ | Diff: [f7a5f38...87addc3](https://github.com/ChromeDevTools/devtools-protocol/compare/f7a5f38...87addc3)
 #### `Page`: modified command
