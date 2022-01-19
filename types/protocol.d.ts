@@ -11890,7 +11890,7 @@ export namespace Protocol {
         /**
          * Reason for a permissions policy feature to be disabled.
          */
-        export type PermissionsPolicyBlockReason = ('Header' | 'IframeAttribute');
+        export type PermissionsPolicyBlockReason = ('Header' | 'IframeAttribute' | 'InFencedFrameTree');
 
         export interface PermissionsPolicyBlockLocator {
             frameId: FrameId;

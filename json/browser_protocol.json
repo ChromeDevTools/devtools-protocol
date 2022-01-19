@@ -14788,7 +14788,8 @@
                     "type": "string",
                     "enum": [
                         "Header",
-                        "IframeAttribute"
+                        "IframeAttribute",
+                        "InFencedFrameTree"
                     ]
                 },
                 {
