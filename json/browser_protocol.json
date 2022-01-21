@@ -1533,28 +1533,6 @@
                     ]
                 },
                 {
-                    "id": "WasmCrossOriginModuleSharingIssueDetails",
-                    "type": "object",
-                    "properties": [
-                        {
-                            "name": "wasmModuleUrl",
-                            "type": "string"
-                        },
-                        {
-                            "name": "sourceOrigin",
-                            "type": "string"
-                        },
-                        {
-                            "name": "targetOrigin",
-                            "type": "string"
-                        },
-                        {
-                            "name": "isWarning",
-                            "type": "boolean"
-                        }
-                    ]
-                },
-                {
                     "id": "GenericIssueErrorType",
                     "type": "string",
                     "enum": [
@@ -1645,7 +1623,6 @@
                         "AttributionReportingIssue",
                         "QuirksModeIssue",
                         "NavigatorUserAgentIssue",
-                        "WasmCrossOriginModuleSharingIssue",
                         "GenericIssue",
                         "DeprecationIssue",
                         "ClientHintIssue"
@@ -1715,11 +1692,6 @@
                             "name": "navigatorUserAgentIssueDetails",
                             "optional": true,
                             "$ref": "NavigatorUserAgentIssueDetails"
-                        },
-                        {
-                            "name": "wasmCrossOriginModuleSharingIssue",
-                            "optional": true,
-                            "$ref": "WasmCrossOriginModuleSharingIssueDetails"
                         },
                         {
                             "name": "genericIssueDetails",

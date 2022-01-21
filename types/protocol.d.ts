@@ -3296,13 +3296,6 @@ export namespace Protocol {
             location?: SourceCodeLocation;
         }
 
-        export interface WasmCrossOriginModuleSharingIssueDetails {
-            wasmModuleUrl: string;
-            sourceOrigin: string;
-            targetOrigin: string;
-            isWarning: boolean;
-        }
-
         export type GenericIssueErrorType = ('CrossOriginPortalPostMessageError');
 
         /**
@@ -3353,7 +3346,7 @@ export namespace Protocol {
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'TrustedWebActivityIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue' | 'WasmCrossOriginModuleSharingIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue');
+        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'TrustedWebActivityIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3373,7 +3366,6 @@ export namespace Protocol {
             attributionReportingIssueDetails?: AttributionReportingIssueDetails;
             quirksModeIssueDetails?: QuirksModeIssueDetails;
             navigatorUserAgentIssueDetails?: NavigatorUserAgentIssueDetails;
-            wasmCrossOriginModuleSharingIssue?: WasmCrossOriginModuleSharingIssueDetails;
             genericIssueDetails?: GenericIssueDetails;
             deprecationIssueDetails?: DeprecationIssueDetails;
             clientHintIssueDetails?: ClientHintIssueDetails;
