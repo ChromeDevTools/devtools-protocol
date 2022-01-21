@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r960912
+###### _2022-01-19 05:15:30 -0800_ | Diff: [3e458bc...53c4a9a](https://github.com/ChromeDevTools/devtools-protocol/compare/3e458bc...53c4a9a)
+#### `Page`: modified type
+* [`Page.PermissionsPolicyBlockReason`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-PermissionsPolicyBlockReason) - The enum's `InFencedFrameTree` _added_.
+
+
 ## Roll protocol to r960453
 ###### _2022-01-18 09:15:26 -0800_ | Diff: [87addc3...7572c21](https://github.com/ChromeDevTools/devtools-protocol/compare/87addc3...7572c21)
 #### `Storage`: new commands
