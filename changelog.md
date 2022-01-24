@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r961891
+###### _2022-01-21 06:15:27 -0800_ | Diff: [dac32a8...0abe20f](https://github.com/ChromeDevTools/devtools-protocol/compare/dac32a8...0abe20f)
+#### `Audits`: removed type
+* [`Audits.WasmCrossOriginModuleSharingIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-WasmCrossOriginModuleSharingIssueDetails)
+#### `Audits`: modified types
+* [`Audits.InspectorIssueCode`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueCode) - The enum's `ClientHintIssue` _removed_. The enum's `WasmCrossOriginModuleSharingIssue` _updated_. The enum's `GenericIssue` _updated_. The enum's `DeprecationIssue` _updated_.
+* [`Audits.InspectorIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueDetails) - The properties's `clientHintIssueDetails` _removed_. The `wasmCrossOriginModuleSharingIssue` in the properties had `name` _updated_. The `wasmCrossOriginModuleSharingIssue` in the properties had `$ref` _updated_. The `genericIssueDetails` in the properties had `name` _updated_. The `genericIssueDetails` in the properties had `$ref` _updated_. The `deprecationIssueDetails` in the properties had `name` _updated_. The `deprecationIssueDetails` in the properties had `$ref` _updated_.
+
+
 ## Roll protocol to r960912
 ###### _2022-01-19 05:15:30 -0800_ | Diff: [3e458bc...53c4a9a](https://github.com/ChromeDevTools/devtools-protocol/compare/3e458bc...53c4a9a)
 #### `Page`: modified type
