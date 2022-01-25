@@ -18489,7 +18489,7 @@
                         },
                         {
                             "name": "expirationTime",
-                            "type": "number"
+                            "$ref": "Network.TimeSinceEpoch"
                         },
                         {
                             "name": "joiningOrigin",
@@ -18842,6 +18842,10 @@
                     "name": "interestGroupAccessed",
                     "description": "One of the interest groups was accessed by the associated page.",
                     "parameters": [
+                        {
+                            "name": "accessTime",
+                            "$ref": "Network.TimeSinceEpoch"
+                        },
                         {
                             "name": "type",
                             "$ref": "InterestGroupAccessType"

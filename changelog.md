@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r962425
+###### _2022-01-24 03:15:20 -0800_ | Diff: [0abe20f...398dc33](https://github.com/ChromeDevTools/devtools-protocol/compare/0abe20f...398dc33)
+#### `Input`: modified command
+* [`Input.dispatchKeyEvent`](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-dispatchKeyEvent) - The `commands` in the parameters had `description` _updated_.
+
+
 ## Roll protocol to r961891
 ###### _2022-01-21 06:15:27 -0800_ | Diff: [dac32a8...0abe20f](https://github.com/ChromeDevTools/devtools-protocol/compare/dac32a8...0abe20f)
 #### `Audits`: removed type

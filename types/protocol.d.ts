@@ -14101,7 +14101,7 @@ export namespace Protocol {
         export interface InterestGroupDetails {
             ownerOrigin: string;
             name: string;
-            expirationTime: number;
+            expirationTime: Network.TimeSinceEpoch;
             joiningOrigin: string;
             biddingUrl?: string;
             biddingWasmHelperUrl?: string;
@@ -14311,6 +14311,7 @@ export namespace Protocol {
          * One of the interest groups was accessed by the associated page.
          */
         export interface InterestGroupAccessedEvent {
+            accessTime: Network.TimeSinceEpoch;
             type: InterestGroupAccessType;
             ownerOrigin: string;
             name: string;
