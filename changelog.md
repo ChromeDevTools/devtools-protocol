@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r963043
+###### _2022-01-25 09:15:34 -0800_ | Diff: [398dc33...4d3be9f](https://github.com/ChromeDevTools/devtools-protocol/compare/398dc33...4d3be9f)
+#### `Storage`: modified event
+* [`Storage.interestGroupAccessed`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#event-interestGroupAccessed) - The `ownerOrigin` in the parameters had `type` _removed_. The `type` in the parameters had `name` _updated_. The `type` in the parameters had `$ref` _updated_. The `ownerOrigin` in the parameters had `name` _updated_. The `name` in the parameters had `name` _updated_. The parameters's `$ref` _added_. The parameters's `name` _added_.
+#### `Storage`: modified type
+* [`Storage.InterestGroupDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-InterestGroupDetails) - The `expirationTime` in the properties had `type` _removed_. The properties's `$ref` _added_.
+
+
 ## Roll protocol to r962425
 ###### _2022-01-24 03:15:20 -0800_ | Diff: [0abe20f...398dc33](https://github.com/ChromeDevTools/devtools-protocol/compare/0abe20f...398dc33)
 #### `Input`: modified command

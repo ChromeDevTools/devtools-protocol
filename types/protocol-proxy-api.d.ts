@@ -1182,7 +1182,7 @@ export namespace ProtocolProxyApi {
         /**
          * Enables DOM agent for the given page.
          */
-        enable(): Promise<void>;
+        enable(params: Protocol.DOM.EnableRequest): Promise<void>;
 
         /**
          * Focuses the given element.

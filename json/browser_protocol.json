@@ -4844,7 +4844,20 @@
                 },
                 {
                     "name": "enable",
-                    "description": "Enables DOM agent for the given page."
+                    "description": "Enables DOM agent for the given page.",
+                    "parameters": [
+                        {
+                            "name": "includeWhitespace",
+                            "description": "Whether to include whitespaces in the children array of returned Nodes.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "string",
+                            "enum": [
+                                "none",
+                                "all"
+                            ]
+                        }
+                    ]
                 },
                 {
                     "name": "focus",
@@ -15566,7 +15579,7 @@
                     "experimental": true,
                     "type": "string",
                     "enum": [
-                        "NotMainFrame",
+                        "NotPrimaryMainFrame",
                         "BackForwardCacheDisabled",
                         "RelatedActiveContentsExist",
                         "HTTPStatusNotOK",

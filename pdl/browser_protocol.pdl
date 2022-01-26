@@ -2259,6 +2259,13 @@ domain DOM
 
   # Enables DOM agent for the given page.
   command enable
+    parameters
+      # Whether to include whitespaces in the children array of returned Nodes.
+      experimental optional enum includeWhitespace
+        # Strip whitespaces from child arrays (default).
+        none
+        # Return all children including block-level whitespace nodes.
+        all
 
   # Focuses the given element.
   command focus
@@ -7961,7 +7968,7 @@ domain Page
   # List of not restored reasons for back-forward cache.
   experimental type BackForwardCacheNotRestoredReason extends string
     enum
-      NotMainFrame
+      NotPrimaryMainFrame
       BackForwardCacheDisabled
       RelatedActiveContentsExist
       HTTPStatusNotOK

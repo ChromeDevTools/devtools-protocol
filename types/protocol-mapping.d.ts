@@ -1866,7 +1866,7 @@ export namespace ProtocolMapping {
          * Enables DOM agent for the given page.
          */
         'DOM.enable': {
-            paramsType: [];
+            paramsType: [Protocol.DOM.EnableRequest?];
             returnType: void;
         };
         /**
