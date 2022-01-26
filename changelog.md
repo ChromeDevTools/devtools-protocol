@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r963409
+###### _2022-01-25 22:15:29 -0800_ | Diff: [4d3be9f...81838df](https://github.com/ChromeDevTools/devtools-protocol/compare/4d3be9f...81838df)
+#### `DOM`: modified command
+* [`DOM.enable`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#method-enable)
+#### `Page`: modified type
+* [`Page.BackForwardCacheNotRestoredReason`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-BackForwardCacheNotRestoredReason) - The enum's `NotMainFrame` _updated_.
+
+
 ## Roll protocol to r963043
 ###### _2022-01-25 09:15:34 -0800_ | Diff: [398dc33...4d3be9f](https://github.com/ChromeDevTools/devtools-protocol/compare/398dc33...4d3be9f)
 #### `Storage`: modified event
