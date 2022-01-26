@@ -11770,7 +11770,8 @@
                         "SameOrigin",
                         "SameOriginAllowPopups",
                         "UnsafeNone",
-                        "SameOriginPlusCoep"
+                        "SameOriginPlusCoep",
+                        "SameOriginAllowPopupsPlusCoep"
                     ]
                 },
                 {

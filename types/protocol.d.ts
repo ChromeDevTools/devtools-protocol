@@ -9926,7 +9926,7 @@ export namespace Protocol {
             privateNetworkRequestPolicy: PrivateNetworkRequestPolicy;
         }
 
-        export type CrossOriginOpenerPolicyValue = ('SameOrigin' | 'SameOriginAllowPopups' | 'UnsafeNone' | 'SameOriginPlusCoep');
+        export type CrossOriginOpenerPolicyValue = ('SameOrigin' | 'SameOriginAllowPopups' | 'UnsafeNone' | 'SameOriginPlusCoep' | 'SameOriginAllowPopupsPlusCoep');
 
         export interface CrossOriginOpenerPolicyStatus {
             value: CrossOriginOpenerPolicyValue;
