@@ -3332,6 +3332,18 @@ export namespace Protocol {
 
         export type ClientHintIssueReason = ('MetaTagAllowListInvalidOrigin' | 'MetaTagModifiedHTML');
 
+        export interface FederatedAuthRequestIssueDetails {
+            federatedAuthRequestIssueReason: FederatedAuthRequestIssueReason;
+        }
+
+        /**
+         * Represents the failure reason when a federated authentication reason fails.
+         * Should be updated alongside RequestIdTokenStatus in
+         * third_party/blink/public/mojom/webid/federated_auth_request.mojom to include
+         * all cases except for success.
+         */
+        export type FederatedAuthRequestIssueReason = ('ApprovalDeclined' | 'TooManyRequests' | 'WellKnownHttpNotFound' | 'WellKnownNoResponse' | 'WellKnownInvalidResponse' | 'ClientIdMetadataHttpNotFound' | 'ClientIdMetadataNoResponse' | 'ClientIdMetadataInvalidResponse' | 'ErrorFetchingSignin' | 'InvalidSigninResponse' | 'AccountsHttpNotFound' | 'AccountsNoResponse' | 'AccountsInvalidResponse' | 'IdTokenHttpNotFound' | 'IdTokenNoResponse' | 'IdTokenInvalidResponse' | 'IdTokenInvalidRequest' | 'ErrorIdToken' | 'Canceled');
+
         /**
          * This issue tracks client hints related issues. It's used to deprecate old
          * features, encourage the use of new ones, and provide general guidance.
@@ -3346,7 +3358,7 @@ export namespace Protocol {
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'TrustedWebActivityIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue');
+        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'TrustedWebActivityIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3369,6 +3381,7 @@ export namespace Protocol {
             genericIssueDetails?: GenericIssueDetails;
             deprecationIssueDetails?: DeprecationIssueDetails;
             clientHintIssueDetails?: ClientHintIssueDetails;
+            federatedAuthRequestIssueDetails?: FederatedAuthRequestIssueDetails;
         }
 
         /**

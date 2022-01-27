@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r963632
+###### _2022-01-26 11:16:12 -0800_ | Diff: [f687d75...f559f4a](https://github.com/ChromeDevTools/devtools-protocol/compare/f687d75...f559f4a)
+#### `Network`: modified type
+* [`Network.CrossOriginOpenerPolicyValue`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CrossOriginOpenerPolicyValue) - The enum's `SameOriginAllowPopupsPlusCoep` _added_.
+
+
 ## Roll protocol to r963595
 ###### _2022-01-26 10:15:28 -0800_ | Diff: [81838df...f687d75](https://github.com/ChromeDevTools/devtools-protocol/compare/81838df...f687d75)
 #### `Page`: modified type

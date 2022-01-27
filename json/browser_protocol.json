@@ -1592,6 +1592,42 @@
                     ]
                 },
                 {
+                    "id": "FederatedAuthRequestIssueDetails",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "federatedAuthRequestIssueReason",
+                            "$ref": "FederatedAuthRequestIssueReason"
+                        }
+                    ]
+                },
+                {
+                    "id": "FederatedAuthRequestIssueReason",
+                    "description": "Represents the failure reason when a federated authentication reason fails.\nShould be updated alongside RequestIdTokenStatus in\nthird_party/blink/public/mojom/webid/federated_auth_request.mojom to include\nall cases except for success.",
+                    "type": "string",
+                    "enum": [
+                        "ApprovalDeclined",
+                        "TooManyRequests",
+                        "WellKnownHttpNotFound",
+                        "WellKnownNoResponse",
+                        "WellKnownInvalidResponse",
+                        "ClientIdMetadataHttpNotFound",
+                        "ClientIdMetadataNoResponse",
+                        "ClientIdMetadataInvalidResponse",
+                        "ErrorFetchingSignin",
+                        "InvalidSigninResponse",
+                        "AccountsHttpNotFound",
+                        "AccountsNoResponse",
+                        "AccountsInvalidResponse",
+                        "IdTokenHttpNotFound",
+                        "IdTokenNoResponse",
+                        "IdTokenInvalidResponse",
+                        "IdTokenInvalidRequest",
+                        "ErrorIdToken",
+                        "Canceled"
+                    ]
+                },
+                {
                     "id": "ClientHintIssueDetails",
                     "description": "This issue tracks client hints related issues. It's used to deprecate old\nfeatures, encourage the use of new ones, and provide general guidance.",
                     "type": "object",
@@ -1625,7 +1661,8 @@
                         "NavigatorUserAgentIssue",
                         "GenericIssue",
                         "DeprecationIssue",
-                        "ClientHintIssue"
+                        "ClientHintIssue",
+                        "FederatedAuthRequestIssue"
                     ]
                 },
                 {
@@ -1707,6 +1744,11 @@
                             "name": "clientHintIssueDetails",
                             "optional": true,
                             "$ref": "ClientHintIssueDetails"
+                        },
+                        {
+                            "name": "federatedAuthRequestIssueDetails",
+                            "optional": true,
+                            "$ref": "FederatedAuthRequestIssueDetails"
                         }
                     ]
                 },
