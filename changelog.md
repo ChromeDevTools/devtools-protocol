@@ -1,5 +1,15 @@
 
 
+## Roll protocol to r964215
+###### _2022-01-27 12:15:27 -0800_ | Diff: [f559f4a...57a4bb8](https://github.com/ChromeDevTools/devtools-protocol/compare/f559f4a...57a4bb8)
+#### `Audits`: new types
+* [`Audits.FederatedAuthRequestIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-FederatedAuthRequestIssueDetails)
+* [`Audits.FederatedAuthRequestIssueReason`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-FederatedAuthRequestIssueReason)
+#### `Audits`: modified types
+* [`Audits.InspectorIssueCode`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueCode) - The enum's `FederatedAuthRequestIssue` _added_.
+* [`Audits.InspectorIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueDetails) - The properties's `federatedAuthRequestIssueDetails` _added_.
+
+
 ## Roll protocol to r963632
 ###### _2022-01-26 11:16:12 -0800_ | Diff: [f687d75...f559f4a](https://github.com/ChromeDevTools/devtools-protocol/compare/f687d75...f559f4a)
 #### `Network`: modified type
