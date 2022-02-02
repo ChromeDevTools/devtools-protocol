@@ -2873,6 +2873,16 @@
                             "items": {
                                 "$ref": "CSSContainerQuery"
                             }
+                        },
+                        {
+                            "name": "supports",
+                            "description": "@supports CSS at-rule array.\nThe array enumerates @supports at-rules starting with the innermost one, going outwards.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "CSSSupports"
+                            }
                         }
                     ]
                 },
@@ -3194,6 +3204,31 @@
                             "description": "Optional name for the container.",
                             "optional": true,
                             "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "id": "CSSSupports",
+                    "description": "CSS Supports at-rule descriptor.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "text",
+                            "description": "Supports rule text.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "range",
+                            "description": "The associated rule header range in the enclosing stylesheet (if\navailable).",
+                            "optional": true,
+                            "$ref": "SourceRange"
+                        },
+                        {
+                            "name": "styleSheetId",
+                            "description": "Identifier of the stylesheet containing this object (if exists).",
+                            "optional": true,
+                            "$ref": "StyleSheetId"
                         }
                     ]
                 },

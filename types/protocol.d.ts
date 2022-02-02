@@ -4114,6 +4114,11 @@ export namespace Protocol {
              * The array enumerates container queries starting with the innermost one, going outwards.
              */
             containerQueries?: CSSContainerQuery[];
+            /**
+             * @supports CSS at-rule array.
+             * The array enumerates @supports at-rules starting with the innermost one, going outwards.
+             */
+            supports?: CSSSupports[];
         }
 
         /**
@@ -4354,6 +4359,25 @@ export namespace Protocol {
              * Optional name for the container.
              */
             name?: string;
+        }
+
+        /**
+         * CSS Supports at-rule descriptor.
+         */
+        export interface CSSSupports {
+            /**
+             * Supports rule text.
+             */
+            text: string;
+            /**
+             * The associated rule header range in the enclosing stylesheet (if
+             * available).
+             */
+            range?: SourceRange;
+            /**
+             * Identifier of the stylesheet containing this object (if exists).
+             */
+            styleSheetId?: StyleSheetId;
         }
 
         /**
