@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r966116
+###### _2022-02-02 02:15:28 -0800_ | Diff: [1600334...1d22b7b](https://github.com/ChromeDevTools/devtools-protocol/compare/1600334...1d22b7b)
+#### `CSS`: new type
+* [`CSS.CSSSupports`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSSupports)
+#### `CSS`: modified type
+* [`CSS.CSSRule`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSRule) - The properties's `supports` _added_.
+
+
 ## Roll protocol to r965299
 ###### _2022-01-31 11:15:27 -0800_ | Diff: [8c4f892...1600334](https://github.com/ChromeDevTools/devtools-protocol/compare/8c4f892...1600334)
 #### `Page`: modified type
