@@ -7414,11 +7414,6 @@ export namespace Protocol {
              */
             maxVirtualTimeTaskStarvationCount?: integer;
             /**
-             * If set the virtual time policy change should be deferred until any frame starts navigating.
-             * Note any previous deferred policy change is superseded.
-             */
-            waitForNavigation?: boolean;
-            /**
              * If set, base::Time::Now will be overridden to initially return this value.
              */
             initialVirtualTime?: Network.TimeSinceEpoch;
