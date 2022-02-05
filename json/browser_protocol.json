@@ -14817,7 +14817,6 @@
                         "gyroscope",
                         "hid",
                         "idle-detection",
-                        "interest-cohort",
                         "join-ad-interest-group",
                         "keyboard-map",
                         "magnetometer",

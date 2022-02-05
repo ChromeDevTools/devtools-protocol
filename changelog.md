@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r966979
+###### _2022-02-03 15:15:30 -0800_ | Diff: [d15d202...72f90a8](https://github.com/ChromeDevTools/devtools-protocol/compare/d15d202...72f90a8)
+#### `Emulation`: modified command
+* [`Emulation.setVirtualTimePolicy`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setVirtualTimePolicy) - The parameters's `initialVirtualTime` _removed_. The `waitForNavigation` in the parameters had `type` _removed_. The `waitForNavigation` in the parameters had `name` _updated_. The `waitForNavigation` in the parameters had `description` _updated_. The parameters's `$ref` _added_.
+
+
 ## Roll protocol to r966949
 ###### _2022-02-03 14:15:32 -0800_ | Diff: [1d22b7b...d15d202](https://github.com/ChromeDevTools/devtools-protocol/compare/1d22b7b...d15d202)
 #### `Page`: modified type
