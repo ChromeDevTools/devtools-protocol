@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r969947
+###### _2022-02-11 07:15:21 -0800_ | Diff: [4562919...22b098a](https://github.com/ChromeDevTools/devtools-protocol/compare/4562919...22b098a)
+#### `Audits`: modified type
+* [`Audits.FederatedAuthRequestIssueReason`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-FederatedAuthRequestIssueReason) - The enum's `ClientIdMetadataHttpNotFound` _updated_. The enum's `ClientIdMetadataNoResponse` _updated_. The enum's `ClientIdMetadataInvalidResponse` _updated_.
+
+
 ## Roll protocol to r967529
 ###### _2022-02-04 16:15:30 -0800_ | Diff: [72f90a8...5b91f46](https://github.com/ChromeDevTools/devtools-protocol/compare/72f90a8...5b91f46)
 #### `Page`: modified type
