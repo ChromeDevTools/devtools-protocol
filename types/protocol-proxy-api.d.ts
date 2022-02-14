@@ -1000,6 +1000,11 @@ export namespace ProtocolProxyApi {
         setContainerQueryText(params: Protocol.CSS.SetContainerQueryTextRequest): Promise<Protocol.CSS.SetContainerQueryTextResponse>;
 
         /**
+         * Modifies the expression of a supports at-rule.
+         */
+        setSupportsText(params: Protocol.CSS.SetSupportsTextRequest): Promise<Protocol.CSS.SetSupportsTextResponse>;
+
+        /**
          * Modifies the rule selector.
          */
         setRuleSelector(params: Protocol.CSS.SetRuleSelectorRequest): Promise<Protocol.CSS.SetRuleSelectorResponse>;

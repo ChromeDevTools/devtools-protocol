@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r969999
+###### _2022-02-11 09:15:13 -0800_ | Diff: [22b098a...9f8c559](https://github.com/ChromeDevTools/devtools-protocol/compare/22b098a...9f8c559)
+#### `Audits`: modified type
+* [`Audits.FederatedAuthRequestIssueReason`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-FederatedAuthRequestIssueReason) - The enum's `WellKnownHttpNotFound` _updated_. The enum's `WellKnownNoResponse` _updated_. The enum's `WellKnownInvalidResponse` _updated_.
+
+
 ## Roll protocol to r969947
 ###### _2022-02-11 07:15:21 -0800_ | Diff: [4562919...22b098a](https://github.com/ChromeDevTools/devtools-protocol/compare/4562919...22b098a)
 #### `Audits`: modified type

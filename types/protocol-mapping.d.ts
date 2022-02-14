@@ -1683,6 +1683,13 @@ export namespace ProtocolMapping {
             returnType: Protocol.CSS.SetContainerQueryTextResponse;
         };
         /**
+         * Modifies the expression of a supports at-rule.
+         */
+        'CSS.setSupportsText': {
+            paramsType: [Protocol.CSS.SetSupportsTextRequest];
+            returnType: Protocol.CSS.SetSupportsTextResponse;
+        };
+        /**
          * Modifies the rule selector.
          */
         'CSS.setRuleSelector': {
