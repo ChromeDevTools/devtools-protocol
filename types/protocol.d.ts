@@ -4749,19 +4749,6 @@ export namespace Protocol {
             containerQuery: CSSContainerQuery;
         }
 
-        export interface SetSupportsTextRequest {
-            styleSheetId: StyleSheetId;
-            range: SourceRange;
-            text: string;
-        }
-
-        export interface SetSupportsTextResponse {
-            /**
-             * The resulting CSS Supports rule after modification.
-             */
-            supports: CSSSupports;
-        }
-
         export interface SetRuleSelectorRequest {
             styleSheetId: StyleSheetId;
             range: SourceRange;
