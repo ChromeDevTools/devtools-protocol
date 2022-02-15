@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r971103
+###### _2022-02-15 00:15:18 -0800_ | Diff: [84f7cd0...cfe04f6](https://github.com/ChromeDevTools/devtools-protocol/compare/84f7cd0...cfe04f6)
+#### `CSS`: new command
+* [`CSS.setSupportsText`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-setSupportsText)
+
+
 ## Roll protocol to r970590
 ###### _2022-02-14 05:15:13 -0800_ | Diff: [1b1e643...9a655fe](https://github.com/ChromeDevTools/devtools-protocol/compare/1b1e643...9a655fe)
 #### `CSS`: removed command
