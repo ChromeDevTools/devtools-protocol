@@ -1604,7 +1604,7 @@
                 },
                 {
                     "id": "FederatedAuthRequestIssueReason",
-                    "description": "Represents the failure reason when a federated authentication reason fails.\nShould be updated alongside RequestIdTokenStatus in\nthird_party/blink/public/mojom/webid/federated_auth_request.mojom to include\nall cases except for success.",
+                    "description": "Represents the failure reason when a federated authentication reason fails.\nShould be updated alongside RequestIdTokenStatus in\nthird_party/blink/public/mojom/devtools/inspector_issue.mojom to include\nall cases except for success.",
                     "type": "string",
                     "enum": [
                         "ApprovalDeclined",

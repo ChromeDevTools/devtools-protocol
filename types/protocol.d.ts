@@ -3339,7 +3339,7 @@ export namespace Protocol {
         /**
          * Represents the failure reason when a federated authentication reason fails.
          * Should be updated alongside RequestIdTokenStatus in
-         * third_party/blink/public/mojom/webid/federated_auth_request.mojom to include
+         * third_party/blink/public/mojom/devtools/inspector_issue.mojom to include
          * all cases except for success.
          */
         export type FederatedAuthRequestIssueReason = ('ApprovalDeclined' | 'TooManyRequests' | 'ManifestHttpNotFound' | 'ManifestNoResponse' | 'ManifestInvalidResponse' | 'ClientMetadataHttpNotFound' | 'ClientMetadataNoResponse' | 'ClientMetadataInvalidResponse' | 'ErrorFetchingSignin' | 'InvalidSigninResponse' | 'AccountsHttpNotFound' | 'AccountsNoResponse' | 'AccountsInvalidResponse' | 'IdTokenHttpNotFound' | 'IdTokenNoResponse' | 'IdTokenInvalidResponse' | 'IdTokenInvalidRequest' | 'ErrorIdToken' | 'Canceled');

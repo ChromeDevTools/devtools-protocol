@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r971358
+###### _2022-02-15 11:15:32 -0800_ | Diff: [cfe04f6...b960aa4](https://github.com/ChromeDevTools/devtools-protocol/compare/cfe04f6...b960aa4)
+#### `Audits`: modified type
+* [`Audits.MixedContentResourceType`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-MixedContentResourceType) - The enum's `Audio` _updated_. The enum's `Beacon` _updated_. The enum's `CSPReport` _updated_. The enum's `Download` _updated_. The enum's `EventSource` _updated_. The enum's `Favicon` _updated_. The enum's `Font` _updated_. The enum's `Form` _updated_. The enum's `Frame` _updated_. The enum's `Image` _updated_. The enum's `Import` _updated_. The enum's `Manifest` _updated_. The enum's `Ping` _updated_. The enum's `PluginData` _updated_. The enum's `PluginResource` _updated_. The enum's `Prefetch` _updated_. The enum's `Resource` _updated_. The enum's `Script` _updated_. The enum's `ServiceWorker` _updated_. The enum's `SharedWorker` _updated_. The enum's `Stylesheet` _updated_. The enum's `Track` _updated_. The enum's `Video` _updated_. The enum's `Worker` _updated_. The enum's `XMLHttpRequest` _updated_. The enum's `XSLT` _updated_. The enum's `XSLT` _added_.
+
+
 ## Roll protocol to r971103
 ###### _2022-02-15 00:15:18 -0800_ | Diff: [84f7cd0...cfe04f6](https://github.com/ChromeDevTools/devtools-protocol/compare/84f7cd0...cfe04f6)
 #### `CSS`: new command
