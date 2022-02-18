@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r972468
+###### _2022-02-17 08:15:22 -0800_ | Diff: [b960aa4...474a6e6](https://github.com/ChromeDevTools/devtools-protocol/compare/b960aa4...474a6e6)
+#### `Audits`: modified type
+* [`Audits.FederatedAuthRequestIssueReason`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-FederatedAuthRequestIssueReason) - `description` updated.
+
+
 ## Roll protocol to r971358
 ###### _2022-02-15 11:15:32 -0800_ | Diff: [cfe04f6...b960aa4](https://github.com/ChromeDevTools/devtools-protocol/compare/cfe04f6...b960aa4)
 #### `Audits`: modified type
