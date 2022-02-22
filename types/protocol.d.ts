@@ -7487,6 +7487,13 @@ export namespace Protocol {
              */
             userAgentMetadata?: UserAgentMetadata;
         }
+
+        export interface SetAutomationOverrideRequest {
+            /**
+             * Whether the override should be enabled.
+             */
+            enabled: boolean;
+        }
     }
 
     /**

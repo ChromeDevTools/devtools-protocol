@@ -1771,6 +1771,11 @@ export namespace ProtocolProxyApi {
         setUserAgentOverride(params: Protocol.Emulation.SetUserAgentOverrideRequest): Promise<void>;
 
         /**
+         * Allows overriding the automation flag.
+         */
+        setAutomationOverride(params: Protocol.Emulation.SetAutomationOverrideRequest): Promise<void>;
+
+        /**
          * Notification sent after the virtual time budget for the current VirtualTimePolicy has run out.
          */
         on(event: 'virtualTimeBudgetExpired', listener: () => void): void;

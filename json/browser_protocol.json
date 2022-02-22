@@ -8150,6 +8150,18 @@
                             "$ref": "UserAgentMetadata"
                         }
                     ]
+                },
+                {
+                    "name": "setAutomationOverride",
+                    "description": "Allows overriding the automation flag.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "enabled",
+                            "description": "Whether the override should be enabled.",
+                            "type": "boolean"
+                        }
+                    ]
                 }
             ],
             "events": [
