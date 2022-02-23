@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r973690
+###### _2022-02-22 04:15:13 -0800_ | Diff: [df434f1...fe82e94](https://github.com/ChromeDevTools/devtools-protocol/compare/df434f1...fe82e94)
+#### `Emulation`: new command
+* [`Emulation.setAutomationOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setAutomationOverride)
+
+
 ## Roll protocol to r973088
 ###### _2022-02-18 12:15:24 -0800_ | Diff: [1c7f0c1...df434f1](https://github.com/ChromeDevTools/devtools-protocol/compare/1c7f0c1...df434f1)
 #### `DOM`: modified type
