@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r974996
+###### _2022-02-24 20:15:23 -0800_ | Diff: [aebe16a...51bf736](https://github.com/ChromeDevTools/devtools-protocol/compare/aebe16a...51bf736)
+#### `Page`: modified type
+* [`Page.BackForwardCacheNotRestoredExplanation`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-BackForwardCacheNotRestoredExplanation) - The properties's `context` _added_.
+
+
 ## Roll protocol to r974265
 ###### _2022-02-23 11:15:15 -0800_ | Diff: [fe82e94...aebe16a](https://github.com/ChromeDevTools/devtools-protocol/compare/fe82e94...aebe16a)
 #### `CSS`: new command

@@ -3071,18 +3071,18 @@ export namespace Protocol {
             frameId: Page.FrameId;
         }
 
-        export type SameSiteCookieExclusionReason = ('ExcludeSameSiteUnspecifiedTreatedAsLax' | 'ExcludeSameSiteNoneInsecure' | 'ExcludeSameSiteLax' | 'ExcludeSameSiteStrict' | 'ExcludeInvalidSameParty' | 'ExcludeSamePartyCrossPartyContext');
+        export type CookieExclusionReason = ('ExcludeSameSiteUnspecifiedTreatedAsLax' | 'ExcludeSameSiteNoneInsecure' | 'ExcludeSameSiteLax' | 'ExcludeSameSiteStrict' | 'ExcludeInvalidSameParty' | 'ExcludeSamePartyCrossPartyContext');
 
-        export type SameSiteCookieWarningReason = ('WarnSameSiteUnspecifiedCrossSiteContext' | 'WarnSameSiteNoneInsecure' | 'WarnSameSiteUnspecifiedLaxAllowUnsafe' | 'WarnSameSiteStrictLaxDowngradeStrict' | 'WarnSameSiteStrictCrossDowngradeStrict' | 'WarnSameSiteStrictCrossDowngradeLax' | 'WarnSameSiteLaxCrossDowngradeStrict' | 'WarnSameSiteLaxCrossDowngradeLax');
+        export type CookieWarningReason = ('WarnSameSiteUnspecifiedCrossSiteContext' | 'WarnSameSiteNoneInsecure' | 'WarnSameSiteUnspecifiedLaxAllowUnsafe' | 'WarnSameSiteStrictLaxDowngradeStrict' | 'WarnSameSiteStrictCrossDowngradeStrict' | 'WarnSameSiteStrictCrossDowngradeLax' | 'WarnSameSiteLaxCrossDowngradeStrict' | 'WarnSameSiteLaxCrossDowngradeLax');
 
-        export type SameSiteCookieOperation = ('SetCookie' | 'ReadCookie');
+        export type CookieOperation = ('SetCookie' | 'ReadCookie');
 
         /**
          * This information is currently necessary, as the front-end has a difficult
          * time finding a specific cookie. With this, we can convey specific error
          * information without the cookie.
          */
-        export interface SameSiteCookieIssueDetails {
+        export interface CookieIssueDetails {
             /**
              * If AffectedCookie is not set then rawCookieLine contains the raw
              * Set-Cookie header string. This hints at a problem where the
@@ -3091,13 +3091,13 @@ export namespace Protocol {
              */
             cookie?: AffectedCookie;
             rawCookieLine?: string;
-            cookieWarningReasons: SameSiteCookieWarningReason[];
-            cookieExclusionReasons: SameSiteCookieExclusionReason[];
+            cookieWarningReasons: CookieWarningReason[];
+            cookieExclusionReasons: CookieExclusionReason[];
             /**
              * Optionally identifies the site-for-cookies and the cookie url, which
              * may be used by the front-end as additional context.
              */
-            operation: SameSiteCookieOperation;
+            operation: CookieOperation;
             siteForCookies?: string;
             cookieUrl?: string;
             request?: AffectedRequest;
@@ -3354,7 +3354,7 @@ export namespace Protocol {
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('SameSiteCookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'TrustedWebActivityIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue');
+        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'TrustedWebActivityIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3362,7 +3362,7 @@ export namespace Protocol {
          * add a new optional field to this type.
          */
         export interface InspectorIssueDetails {
-            sameSiteCookieIssueDetails?: SameSiteCookieIssueDetails;
+            cookieIssueDetails?: CookieIssueDetails;
             mixedContentIssueDetails?: MixedContentIssueDetails;
             blockedByResponseIssueDetails?: BlockedByResponseIssueDetails;
             heavyAdIssueDetails?: HeavyAdIssueDetails;
