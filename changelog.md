@@ -1,5 +1,16 @@
 
 
+## Roll protocol to r974265
+###### _2022-02-23 11:15:15 -0800_ | Diff: [fe82e94...aebe16a](https://github.com/ChromeDevTools/devtools-protocol/compare/fe82e94...aebe16a)
+#### `CSS`: new command
+* [`CSS.getLayersForNode`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getLayersForNode)
+#### `CSS`: new types
+* [`CSS.CSSLayer`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSLayer)
+* [`CSS.CSSLayerData`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSLayerData)
+#### `CSS`: modified type
+* [`CSS.CSSRule`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSRule) - The properties's `layers` _added_.
+
+
 ## Roll protocol to r973690
 ###### _2022-02-22 04:15:13 -0800_ | Diff: [df434f1...fe82e94](https://github.com/ChromeDevTools/devtools-protocol/compare/df434f1...fe82e94)
 #### `Emulation`: new command
