@@ -11515,7 +11515,7 @@ export namespace Protocol {
             containerQueryContainerHighlightConfig?: ContainerQueryContainerHighlightConfig;
         }
 
-        export type ColorFormat = ('rgb' | 'hsl' | 'hex');
+        export type ColorFormat = ('rgb' | 'hsl' | 'hwb' | 'hex');
 
         /**
          * Configurations for Persistent Grid Highlight

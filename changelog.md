@@ -1,5 +1,22 @@
 
 
+## Roll protocol to r975298
+###### _2022-02-25 14:15:19 -0800_ | Diff: [51bf736...14c3fe0](https://github.com/ChromeDevTools/devtools-protocol/compare/51bf736...14c3fe0)
+#### `Audits`: new types
+* [`Audits.CookieExclusionReason`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-CookieExclusionReason)
+* [`Audits.CookieWarningReason`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-CookieWarningReason)
+* [`Audits.CookieOperation`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-CookieOperation)
+* [`Audits.CookieIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-CookieIssueDetails)
+#### `Audits`: removed types
+* [`Audits.SameSiteCookieExclusionReason`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SameSiteCookieExclusionReason)
+* [`Audits.SameSiteCookieWarningReason`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SameSiteCookieWarningReason)
+* [`Audits.SameSiteCookieOperation`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SameSiteCookieOperation)
+* [`Audits.SameSiteCookieIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SameSiteCookieIssueDetails)
+#### `Audits`: modified types
+* [`Audits.InspectorIssueCode`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueCode) - The enum's `SameSiteCookieIssue` _updated_.
+* [`Audits.InspectorIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-InspectorIssueDetails) - The `sameSiteCookieIssueDetails` in the properties had `name` _updated_. The `sameSiteCookieIssueDetails` in the properties had `$ref` _updated_.
+
+
 ## Roll protocol to r974996
 ###### _2022-02-24 20:15:23 -0800_ | Diff: [aebe16a...51bf736](https://github.com/ChromeDevTools/devtools-protocol/compare/aebe16a...51bf736)
 #### `Page`: modified type
