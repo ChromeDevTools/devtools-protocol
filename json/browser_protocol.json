@@ -999,7 +999,8 @@
                         "WarnSameSiteStrictCrossDowngradeStrict",
                         "WarnSameSiteStrictCrossDowngradeLax",
                         "WarnSameSiteLaxCrossDowngradeStrict",
-                        "WarnSameSiteLaxCrossDowngradeLax"
+                        "WarnSameSiteLaxCrossDowngradeLax",
+                        "WarnAttributeValueExceedsMaxSize"
                     ]
                 },
                 {

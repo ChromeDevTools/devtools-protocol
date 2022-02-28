@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r975498
+###### _2022-02-26 12:15:19 -0800_ | Diff: [14c3fe0...a7bfbac](https://github.com/ChromeDevTools/devtools-protocol/compare/14c3fe0...a7bfbac)
+#### `Overlay`: modified type
+* [`Overlay.ColorFormat`](https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-ColorFormat) - The enum's `hex` _updated_. The enum's `hex` _added_.
+
+
 ## Roll protocol to r975298
 ###### _2022-02-25 14:15:19 -0800_ | Diff: [51bf736...14c3fe0](https://github.com/ChromeDevTools/devtools-protocol/compare/51bf736...14c3fe0)
 #### `Audits`: new types
