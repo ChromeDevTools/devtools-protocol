@@ -3957,6 +3957,16 @@ export namespace Protocol {
         }
 
         /**
+         * Inherited pseudo element matches from pseudos of an ancestor node.
+         */
+        export interface InheritedPseudoElementMatches {
+            /**
+             * Matches of pseudo styles from the pseudos of an ancestor node.
+             */
+            pseudoElements: PseudoElementMatches[];
+        }
+
+        /**
          * Match data for a CSS rule.
          */
         export interface RuleMatch {
@@ -4697,6 +4707,10 @@ export namespace Protocol {
              * A chain of inherited styles (from the immediate node parent up to the DOM tree root).
              */
             inherited?: InheritedStyleEntry[];
+            /**
+             * A chain of inherited pseudo element styles (from the immediate node parent up to the DOM tree root).
+             */
+            inheritedPseudoElements?: InheritedPseudoElementMatches[];
             /**
              * A list of CSS keyframed animations matching this node.
              */
