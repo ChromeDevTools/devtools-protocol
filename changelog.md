@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r975963
+###### _2022-02-28 14:15:14 -0800_ | Diff: [a7bfbac...d232328](https://github.com/ChromeDevTools/devtools-protocol/compare/a7bfbac...d232328)
+#### `Audits`: modified type
+* [`Audits.CookieWarningReason`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-CookieWarningReason) - The enum's `WarnAttributeValueExceedsMaxSize` _added_.
+
+
 ## Roll protocol to r975498
 ###### _2022-02-26 12:15:19 -0800_ | Diff: [14c3fe0...a7bfbac](https://github.com/ChromeDevTools/devtools-protocol/compare/14c3fe0...a7bfbac)
 #### `Overlay`: modified type
