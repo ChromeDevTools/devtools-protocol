@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r977795
+###### _2022-03-04 12:15:28 -0800_ | Diff: [2e0912d...a0800ab](https://github.com/ChromeDevTools/devtools-protocol/compare/2e0912d...a0800ab)
+#### `CSS`: modified command
+* [`CSS.getMatchedStylesForNode`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#method-getMatchedStylesForNode) - The `cssKeyframesRules` in the return value had `name` _updated_. The `cssKeyframesRules` in the return value had `description` _updated_. The `cssKeyframesRules` in the return value had `$ref` _updated_. The return value's `cssKeyframesRules` _added_.
+#### `CSS`: new type
+* [`CSS.InheritedPseudoElementMatches`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-InheritedPseudoElementMatches)
+
+
 ## Roll protocol to r977469
 ###### _2022-03-03 19:15:12 -0800_ | Diff: [d232328...2e0912d](https://github.com/ChromeDevTools/devtools-protocol/compare/d232328...2e0912d)
 #### `Audits`: modified type
