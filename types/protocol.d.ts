@@ -3338,7 +3338,7 @@ export namespace Protocol {
          * third_party/blink/public/mojom/devtools/inspector_issue.mojom to include
          * all cases except for success.
          */
-        export type FederatedAuthRequestIssueReason = ('ApprovalDeclined' | 'TooManyRequests' | 'ManifestHttpNotFound' | 'ManifestNoResponse' | 'ManifestInvalidResponse' | 'ClientMetadataHttpNotFound' | 'ClientMetadataNoResponse' | 'ClientMetadataInvalidResponse' | 'ClientMetadataMissingPrivacyPolicyUrl' | 'ErrorFetchingSignin' | 'InvalidSigninResponse' | 'AccountsHttpNotFound' | 'AccountsNoResponse' | 'AccountsInvalidResponse' | 'IdTokenHttpNotFound' | 'IdTokenNoResponse' | 'IdTokenInvalidResponse' | 'IdTokenInvalidRequest' | 'ErrorIdToken' | 'Canceled');
+        export type FederatedAuthRequestIssueReason = ('ApprovalDeclined' | 'TooManyRequests' | 'ManifestHttpNotFound' | 'ManifestNoResponse' | 'ManifestInvalidResponse' | 'ClientMetadataHttpNotFound' | 'ClientMetadataNoResponse' | 'ClientMetadataInvalidResponse' | 'ClientMetadataMissingPrivacyPolicyUrl' | 'DisabledInSettings' | 'ErrorFetchingSignin' | 'InvalidSigninResponse' | 'AccountsHttpNotFound' | 'AccountsNoResponse' | 'AccountsInvalidResponse' | 'IdTokenHttpNotFound' | 'IdTokenNoResponse' | 'IdTokenInvalidResponse' | 'IdTokenInvalidRequest' | 'ErrorIdToken' | 'Canceled');
 
         /**
          * This issue tracks client hints related issues. It's used to deprecate old
