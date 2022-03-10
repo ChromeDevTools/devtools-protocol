@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r979353
+###### _2022-03-09 11:15:15 -0800_ | Diff: [3084cb9...8b70878](https://github.com/ChromeDevTools/devtools-protocol/compare/3084cb9...8b70878)
+#### `Audits`: modified type
+* [`Audits.FederatedAuthRequestIssueReason`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-FederatedAuthRequestIssueReason) - The enum's `ErrorFetchingSignin` _updated_. The enum's `InvalidSigninResponse` _updated_. The enum's `AccountsHttpNotFound` _updated_. The enum's `AccountsNoResponse` _updated_. The enum's `AccountsInvalidResponse` _updated_. The enum's `IdTokenHttpNotFound` _updated_. The enum's `IdTokenNoResponse` _updated_. The enum's `IdTokenInvalidResponse` _updated_. The enum's `IdTokenInvalidRequest` _updated_. The enum's `ErrorIdToken` _updated_. The enum's `Canceled` _updated_. The enum's `Canceled` _added_.
+
+
 ## Roll protocol to r977795
 ###### _2022-03-04 12:15:28 -0800_ | Diff: [2e0912d...a0800ab](https://github.com/ChromeDevTools/devtools-protocol/compare/2e0912d...a0800ab)
 #### `CSS`: modified command
