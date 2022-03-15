@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r979918
+###### _2022-03-10 12:15:19 -0800_ | Diff: [8b70878...5dd0348](https://github.com/ChromeDevTools/devtools-protocol/compare/8b70878...5dd0348)
+#### `Audits`: modified type
+* [`Audits.DeprecationIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-DeprecationIssueDetails) - The `message` in the properties had `description` _updated_. The properties's `description` _added_. The properties's `deprecated` _added_.
+
+
 ## Roll protocol to r979353
 ###### _2022-03-09 11:15:15 -0800_ | Diff: [3084cb9...8b70878](https://github.com/ChromeDevTools/devtools-protocol/compare/3084cb9...8b70878)
 #### `Audits`: modified type
