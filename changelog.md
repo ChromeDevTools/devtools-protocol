@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r982238
+###### _2022-03-17 09:15:18_ | Diff: [e35b84a...052c603](https://github.com/ChromeDevTools/devtools-protocol/compare/e35b84a...052c603)
+#### `CSS`: modified type
+* [`CSS.CSSSupports`](https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSSupports) - The `range` in the properties had `optional` _removed_. The `range` in the properties had `$ref` _removed_. The `range` in the properties had `name` _updated_. The `range` in the properties had `description` _updated_. The `styleSheetId` in the properties had `name` _updated_. The `styleSheetId` in the properties had `description` _updated_. The `styleSheetId` in the properties had `$ref` _updated_. The properties's `type` _added_. The properties's `styleSheetId` _added_.
+
+
 ## Roll protocol to r981034
 ###### _2022-03-15 03:15:13_ | Diff: [5dd0348...65adbf7](https://github.com/ChromeDevTools/devtools-protocol/compare/5dd0348...65adbf7)
 #### `Page`: modified type
