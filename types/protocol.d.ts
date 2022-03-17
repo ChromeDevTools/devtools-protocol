@@ -4384,6 +4384,10 @@ export namespace Protocol {
              */
             text: string;
             /**
+             * Whether the supports condition is satisfied.
+             */
+            active: boolean;
+            /**
              * The associated rule header range in the enclosing stylesheet (if
              * available).
              */

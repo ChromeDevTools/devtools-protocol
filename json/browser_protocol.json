@@ -3243,6 +3243,11 @@
                             "type": "string"
                         },
                         {
+                            "name": "active",
+                            "description": "Whether the supports condition is satisfied.",
+                            "type": "boolean"
+                        },
+                        {
                             "name": "range",
                             "description": "The associated rule header range in the enclosing stylesheet (if\navailable).",
                             "optional": true,
