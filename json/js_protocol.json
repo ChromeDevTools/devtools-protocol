@@ -227,6 +227,13 @@
                             "description": "The value being returned, if the function is at return point.",
                             "optional": true,
                             "$ref": "Runtime.RemoteObject"
+                        },
+                        {
+                            "name": "canBeRestarted",
+                            "description": "Valid only while the VM is paused and indicates whether this frame\ncan be restarted or not. Note that a `true` value here does not\nguarantee that Debugger#restartFrame with this CallFrameId will be\nsuccessful, but it is very likely.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ]
                 },
@@ -2097,6 +2104,52 @@
                     "type": "string"
                 },
                 {
+                    "id": "WebDriverValue",
+                    "description": "Represents the value serialiazed by the WebDriver BiDi specification\nhttps://w3c.github.io/webdriver-bidi.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "type",
+                            "type": "string",
+                            "enum": [
+                                "undefined",
+                                "null",
+                                "string",
+                                "number",
+                                "boolean",
+                                "bigint",
+                                "regexp",
+                                "date",
+                                "symbol",
+                                "array",
+                                "object",
+                                "function",
+                                "map",
+                                "set",
+                                "weakmap",
+                                "weakset",
+                                "error",
+                                "proxy",
+                                "promise",
+                                "typedarray",
+                                "arraybuffer",
+                                "node",
+                                "window"
+                            ]
+                        },
+                        {
+                            "name": "value",
+                            "optional": true,
+                            "type": "any"
+                        },
+                        {
+                            "name": "objectId",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "id": "RemoteObjectId",
                     "description": "Unique object identifier.",
                     "type": "string"
@@ -2176,6 +2229,13 @@
                             "description": "String representation of the object.",
                             "optional": true,
                             "type": "string"
+                        },
+                        {
+                            "name": "webDriverValue",
+                            "description": "WebDriver BiDi representation of the value.",
+                            "experimental": true,
+                            "optional": true,
+                            "$ref": "WebDriverValue"
                         },
                         {
                             "name": "objectId",
@@ -2830,6 +2890,13 @@
                             "experimental": true,
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "generateWebDriverValue",
+                            "description": "Whether the result should be serialized according to https://w3c.github.io/webdriver-bidi.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ],
                     "returns": [
@@ -2998,6 +3065,13 @@
                             "experimental": true,
                             "optional": true,
                             "type": "string"
+                        },
+                        {
+                            "name": "generateWebDriverValue",
+                            "description": "Whether the result should be serialized according to https://w3c.github.io/webdriver-bidi.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ],
                     "returns": [

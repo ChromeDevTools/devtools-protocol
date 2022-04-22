@@ -151,6 +151,8 @@ export namespace Protocol {
             location: Location;
             /**
              * JavaScript script name or url.
+             * Deprecated in favor of using the `location.scriptId` to resolve the URL via a previously
+             * sent `Debugger.scriptParsed` event.
              */
             url: string;
             /**
@@ -165,6 +167,13 @@ export namespace Protocol {
              * The value being returned, if the function is at return point.
              */
             returnValue?: Runtime.RemoteObject;
+            /**
+             * Valid only while the VM is paused and indicates whether this frame
+             * can be restarted or not. Note that a `true` value here does not
+             * guarantee that Debugger#restartFrame with this CallFrameId will be
+             * successful, but it is very likely.
+             */
+            canBeRestarted?: boolean;
         }
 
         export const enum ScopeType {
@@ -1418,6 +1427,45 @@ export namespace Protocol {
          */
         export type ScriptId = string;
 
+        export const enum WebDriverValueType {
+            Undefined = 'undefined',
+            Null = 'null',
+            String = 'string',
+            Number = 'number',
+            Boolean = 'boolean',
+            Bigint = 'bigint',
+            Regexp = 'regexp',
+            Date = 'date',
+            Symbol = 'symbol',
+            Array = 'array',
+            Object = 'object',
+            Function = 'function',
+            Map = 'map',
+            Set = 'set',
+            Weakmap = 'weakmap',
+            Weakset = 'weakset',
+            Error = 'error',
+            Proxy = 'proxy',
+            Promise = 'promise',
+            Typedarray = 'typedarray',
+            Arraybuffer = 'arraybuffer',
+            Node = 'node',
+            Window = 'window',
+        }
+
+        /**
+         * Represents the value serialiazed by the WebDriver BiDi specification
+         * https://w3c.github.io/webdriver-bidi.
+         */
+        export interface WebDriverValue {
+            /**
+             *  (WebDriverValueType enum)
+             */
+            type: ('undefined' | 'null' | 'string' | 'number' | 'boolean' | 'bigint' | 'regexp' | 'date' | 'symbol' | 'array' | 'object' | 'function' | 'map' | 'set' | 'weakmap' | 'weakset' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'node' | 'window');
+            value?: any;
+            objectId?: string;
+        }
+
         /**
          * Unique object identifier.
          */
@@ -1493,6 +1541,10 @@ export namespace Protocol {
              * String representation of the object.
              */
             description?: string;
+            /**
+             * WebDriver BiDi representation of the value.
+             */
+            webDriverValue?: WebDriverValue;
             /**
              * Unique object identifier (for non-primitive values).
              */
@@ -1989,6 +2041,10 @@ export namespace Protocol {
              * Whether to throw an exception if side effect cannot be ruled out during evaluation.
              */
             throwOnSideEffect?: boolean;
+            /**
+             * Whether the result should be serialized according to https://w3c.github.io/webdriver-bidi.
+             */
+            generateWebDriverValue?: boolean;
         }
 
         export interface CallFunctionOnResponse {
@@ -2111,6 +2167,10 @@ export namespace Protocol {
              * This is mutually exclusive with `contextId`.
              */
             uniqueContextId?: string;
+            /**
+             * Whether the result should be serialized according to https://w3c.github.io/webdriver-bidi.
+             */
+            generateWebDriverValue?: boolean;
         }
 
         export interface EvaluateResponse {
@@ -2318,6 +2378,17 @@ export namespace Protocol {
 
         export interface RemoveBindingRequest {
             name: string;
+        }
+
+        export interface GetExceptionDetailsRequest {
+            /**
+             * The error object for which to resolve the exception details.
+             */
+            errorObjectId: RemoteObjectId;
+        }
+
+        export interface GetExceptionDetailsResponse {
+            exceptionDetails?: ExceptionDetails;
         }
 
         /**
@@ -3257,7 +3328,7 @@ export namespace Protocol {
             clientSecurityState?: Network.ClientSecurityState;
         }
 
-        export type AttributionReportingIssueType = ('PermissionPolicyDisabled' | 'InvalidAttributionSourceEventId' | 'InvalidAttributionData' | 'AttributionSourceUntrustworthyOrigin' | 'AttributionUntrustworthyOrigin' | 'AttributionTriggerDataTooLarge' | 'AttributionEventSourceTriggerDataTooLarge' | 'InvalidAttributionSourceExpiry' | 'InvalidAttributionSourcePriority' | 'InvalidEventSourceTriggerData' | 'InvalidTriggerPriority' | 'InvalidTriggerDedupKey');
+        export type AttributionReportingIssueType = ('PermissionPolicyDisabled' | 'InvalidAttributionSourceEventId' | 'AttributionSourceUntrustworthyOrigin' | 'AttributionUntrustworthyOrigin' | 'InvalidAttributionSourceExpiry' | 'InvalidAttributionSourcePriority');
 
         /**
          * Details for issues around "Attribution Reporting API" usage.
@@ -3305,6 +3376,8 @@ export namespace Protocol {
             frameId?: Page.FrameId;
         }
 
+        export type DeprecationIssueType = ('AuthorizationCoveredByWildcard' | 'CookieWithTruncatingChar' | 'CrossOriginAccessBasedOnDocumentDomain' | 'CrossOriginWindowAlert' | 'CrossOriginWindowConfirm' | 'DeprecationExample' | 'DocumentDomainSettingWithoutOriginAgentClusterHeader' | 'GeolocationInsecureOrigin' | 'GeolocationInsecureOriginDeprecatedNotRemoved' | 'GetUserMediaInsecureOrigin' | 'LegacyConstraintGoogCpuOveruseDetection' | 'LegacyConstraintGoogIPv6' | 'LegacyConstraintGoogScreencastMinBitrate' | 'LegacyConstraintGoogSuspendBelowMinBitrate' | 'LocalCSSFileExtensionRejected' | 'NotificationInsecureOrigin' | 'ObsoleteWebRtcCipherSuite' | 'PictureSourceSrc' | 'PrefixedCancelAnimationFrame' | 'PrefixedRequestAnimationFrame' | 'RTCConstraintEnableDtlsSrtpFalse' | 'RTCConstraintEnableDtlsSrtpTrue' | 'RTCPeerConnectionComplexPlanBSdpUsingDefaultSdpSemantics' | 'RTCPeerConnectionLegacyCreateWithMediaConstraints' | 'RTPDataChannel' | 'SharedArrayBufferConstructedWithoutIsolation' | 'Untranslated' | 'V8SharedArrayBufferConstructedInExtensionWithoutIsolation' | 'WebCodecsVideoFrameDefaultTimestamp' | 'XHRJSONEncodingDetection' | 'XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload');
+
         /**
          * This issue tracks information needed to print a deprecation message.
          * The formatting is inherited from the old console.log version, see more at:
@@ -3326,7 +3399,8 @@ export namespace Protocol {
             /**
              * The id of an untranslated deprecation issue e.g. PrefixedStorageInfo.
              */
-            deprecationType: string;
+            deprecationType?: string;
+            type: DeprecationIssueType;
         }
 
         export type ClientHintIssueReason = ('MetaTagAllowListInvalidOrigin' | 'MetaTagModifiedHTML');
@@ -3341,7 +3415,7 @@ export namespace Protocol {
          * third_party/blink/public/mojom/devtools/inspector_issue.mojom to include
          * all cases except for success.
          */
-        export type FederatedAuthRequestIssueReason = ('ApprovalDeclined' | 'TooManyRequests' | 'ManifestHttpNotFound' | 'ManifestNoResponse' | 'ManifestInvalidResponse' | 'ClientMetadataHttpNotFound' | 'ClientMetadataNoResponse' | 'ClientMetadataInvalidResponse' | 'ClientMetadataMissingPrivacyPolicyUrl' | 'DisabledInSettings' | 'ErrorFetchingSignin' | 'InvalidSigninResponse' | 'AccountsHttpNotFound' | 'AccountsNoResponse' | 'AccountsInvalidResponse' | 'IdTokenHttpNotFound' | 'IdTokenNoResponse' | 'IdTokenInvalidResponse' | 'IdTokenInvalidRequest' | 'ErrorIdToken' | 'Canceled');
+        export type FederatedAuthRequestIssueReason = ('ApprovalDeclined' | 'TooManyRequests' | 'ManifestListHttpNotFound' | 'ManifestListNoResponse' | 'ManifestListInvalidResponse' | 'ManifestNotInManifestList' | 'ManifestListTooBig' | 'ManifestHttpNotFound' | 'ManifestNoResponse' | 'ManifestInvalidResponse' | 'ClientMetadataHttpNotFound' | 'ClientMetadataNoResponse' | 'ClientMetadataInvalidResponse' | 'ClientMetadataMissingPrivacyPolicyUrl' | 'DisabledInSettings' | 'ErrorFetchingSignin' | 'InvalidSigninResponse' | 'AccountsHttpNotFound' | 'AccountsNoResponse' | 'AccountsInvalidResponse' | 'IdTokenHttpNotFound' | 'IdTokenNoResponse' | 'IdTokenInvalidResponse' | 'IdTokenInvalidRequest' | 'ErrorIdToken' | 'Canceled');
 
         /**
          * This issue tracks client hints related issues. It's used to deprecate old
@@ -7265,6 +7339,8 @@ export namespace Protocol {
             architecture: string;
             model: string;
             mobile: boolean;
+            bitness?: string;
+            wow64?: boolean;
         }
 
         /**
@@ -12009,7 +12085,7 @@ export namespace Protocol {
          * All Permissions Policy features. This enum should match the one defined
          * in third_party/blink/renderer/core/permissions_policy/permissions_policy_features.json5.
          */
-        export type PermissionsPolicyFeature = ('accelerometer' | 'ambient-light-sensor' | 'attribution-reporting' | 'autoplay' | 'browsing-topics' | 'camera' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-prefers-color-scheme' | 'ch-rtt' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-full' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-reduced' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'ch-partitioned-cookies' | 'clipboard-read' | 'clipboard-write' | 'cross-origin-isolated' | 'direct-sockets' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'hid' | 'idle-detection' | 'interest-cohort' | 'join-ad-interest-group' | 'keyboard-map' | 'magnetometer' | 'microphone' | 'midi' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'publickey-credentials-get' | 'run-ad-auction' | 'screen-wake-lock' | 'serial' | 'shared-autofill' | 'storage-access-api' | 'sync-xhr' | 'trust-token-redemption' | 'usb' | 'vertical-scroll' | 'web-share' | 'window-placement' | 'xr-spatial-tracking');
+        export type PermissionsPolicyFeature = ('accelerometer' | 'ambient-light-sensor' | 'attribution-reporting' | 'autoplay' | 'browsing-topics' | 'camera' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-partitioned-cookies' | 'ch-prefers-color-scheme' | 'ch-rtt' | 'ch-save-data' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-full' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-reduced' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'cross-origin-isolated' | 'direct-sockets' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'hid' | 'idle-detection' | 'interest-cohort' | 'join-ad-interest-group' | 'keyboard-map' | 'magnetometer' | 'microphone' | 'midi' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'publickey-credentials-get' | 'run-ad-auction' | 'screen-wake-lock' | 'serial' | 'shared-autofill' | 'storage-access-api' | 'sync-xhr' | 'trust-token-redemption' | 'usb' | 'vertical-scroll' | 'web-share' | 'window-placement' | 'xr-spatial-tracking');
 
         /**
          * Reason for a permissions policy feature to be disabled.
@@ -12417,10 +12493,6 @@ export namespace Protocol {
              * The fantasy font-family.
              */
             fantasy?: string;
-            /**
-             * The pictograph font-family.
-             */
-            pictograph?: string;
         }
 
         /**
@@ -12508,7 +12580,7 @@ export namespace Protocol {
         /**
          * List of not restored reasons for back-forward cache.
          */
-        export type BackForwardCacheNotRestoredReason = ('NotPrimaryMainFrame' | 'BackForwardCacheDisabled' | 'RelatedActiveContentsExist' | 'HTTPStatusNotOK' | 'SchemeNotHTTPOrHTTPS' | 'Loading' | 'WasGrantedMediaAccess' | 'DisableForRenderFrameHostCalled' | 'DomainNotAllowed' | 'HTTPMethodNotGET' | 'SubframeIsNavigating' | 'Timeout' | 'CacheLimit' | 'JavaScriptExecution' | 'RendererProcessKilled' | 'RendererProcessCrashed' | 'GrantedMediaStreamAccess' | 'SchedulerTrackedFeatureUsed' | 'ConflictingBrowsingInstance' | 'CacheFlushed' | 'ServiceWorkerVersionActivation' | 'SessionRestored' | 'ServiceWorkerPostMessage' | 'EnteredBackForwardCacheBeforeServiceWorkerHostAdded' | 'RenderFrameHostReused_SameSite' | 'RenderFrameHostReused_CrossSite' | 'ServiceWorkerClaim' | 'IgnoreEventAndEvict' | 'HaveInnerContents' | 'TimeoutPuttingInCache' | 'BackForwardCacheDisabledByLowMemory' | 'BackForwardCacheDisabledByCommandLine' | 'NetworkRequestDatapipeDrainedAsBytesConsumer' | 'NetworkRequestRedirected' | 'NetworkRequestTimeout' | 'NetworkExceedsBufferLimit' | 'NavigationCancelledWhileRestoring' | 'NotMostRecentNavigationEntry' | 'BackForwardCacheDisabledForPrerender' | 'UserAgentOverrideDiffers' | 'ForegroundCacheLimit' | 'BrowsingInstanceNotSwapped' | 'BackForwardCacheDisabledForDelegate' | 'OptInUnloadHeaderNotPresent' | 'UnloadHandlerExistsInMainFrame' | 'UnloadHandlerExistsInSubFrame' | 'ServiceWorkerUnregistration' | 'CacheControlNoStore' | 'CacheControlNoStoreCookieModified' | 'CacheControlNoStoreHTTPOnlyCookieModified' | 'NoResponseHead' | 'Unknown' | 'ActivationNavigationsDisallowedForBug1234857' | 'ErrorDocument' | 'WebSocket' | 'WebTransport' | 'WebRTC' | 'MainResourceHasCacheControlNoStore' | 'MainResourceHasCacheControlNoCache' | 'SubresourceHasCacheControlNoStore' | 'SubresourceHasCacheControlNoCache' | 'ContainsPlugins' | 'DocumentLoaded' | 'DedicatedWorkerOrWorklet' | 'OutstandingNetworkRequestOthers' | 'OutstandingIndexedDBTransaction' | 'RequestedNotificationsPermission' | 'RequestedMIDIPermission' | 'RequestedAudioCapturePermission' | 'RequestedVideoCapturePermission' | 'RequestedBackForwardCacheBlockedSensors' | 'RequestedBackgroundWorkPermission' | 'BroadcastChannel' | 'IndexedDBConnection' | 'WebXR' | 'SharedWorker' | 'WebLocks' | 'WebHID' | 'WebShare' | 'RequestedStorageAccessGrant' | 'WebNfc' | 'OutstandingNetworkRequestFetch' | 'OutstandingNetworkRequestXHR' | 'AppBanner' | 'Printing' | 'WebDatabase' | 'PictureInPicture' | 'Portal' | 'SpeechRecognizer' | 'IdleManager' | 'PaymentManager' | 'SpeechSynthesis' | 'KeyboardLock' | 'WebOTPService' | 'OutstandingNetworkRequestDirectSocket' | 'InjectedJavascript' | 'InjectedStyleSheet' | 'Dummy' | 'ContentSecurityHandler' | 'ContentWebAuthenticationAPI' | 'ContentFileChooser' | 'ContentSerial' | 'ContentFileSystemAccess' | 'ContentMediaDevicesDispatcherHost' | 'ContentWebBluetooth' | 'ContentWebUSB' | 'ContentMediaSession' | 'ContentMediaSessionService' | 'ContentScreenReader' | 'EmbedderPopupBlockerTabHelper' | 'EmbedderSafeBrowsingTriggeredPopupBlocker' | 'EmbedderSafeBrowsingThreatDetails' | 'EmbedderAppBannerManager' | 'EmbedderDomDistillerViewerSource' | 'EmbedderDomDistillerSelfDeletingRequestDelegate' | 'EmbedderOomInterventionTabHelper' | 'EmbedderOfflinePage' | 'EmbedderChromePasswordManagerClientBindCredentialManager' | 'EmbedderPermissionRequestManager' | 'EmbedderModalDialog' | 'EmbedderExtensions' | 'EmbedderExtensionMessaging' | 'EmbedderExtensionMessagingForOpenPort' | 'EmbedderExtensionSentMessageToCachedFrame');
+        export type BackForwardCacheNotRestoredReason = ('NotPrimaryMainFrame' | 'BackForwardCacheDisabled' | 'RelatedActiveContentsExist' | 'HTTPStatusNotOK' | 'SchemeNotHTTPOrHTTPS' | 'Loading' | 'WasGrantedMediaAccess' | 'DisableForRenderFrameHostCalled' | 'DomainNotAllowed' | 'HTTPMethodNotGET' | 'SubframeIsNavigating' | 'Timeout' | 'CacheLimit' | 'JavaScriptExecution' | 'RendererProcessKilled' | 'RendererProcessCrashed' | 'SchedulerTrackedFeatureUsed' | 'ConflictingBrowsingInstance' | 'CacheFlushed' | 'ServiceWorkerVersionActivation' | 'SessionRestored' | 'ServiceWorkerPostMessage' | 'EnteredBackForwardCacheBeforeServiceWorkerHostAdded' | 'RenderFrameHostReused_SameSite' | 'RenderFrameHostReused_CrossSite' | 'ServiceWorkerClaim' | 'IgnoreEventAndEvict' | 'HaveInnerContents' | 'TimeoutPuttingInCache' | 'BackForwardCacheDisabledByLowMemory' | 'BackForwardCacheDisabledByCommandLine' | 'NetworkRequestDatapipeDrainedAsBytesConsumer' | 'NetworkRequestRedirected' | 'NetworkRequestTimeout' | 'NetworkExceedsBufferLimit' | 'NavigationCancelledWhileRestoring' | 'NotMostRecentNavigationEntry' | 'BackForwardCacheDisabledForPrerender' | 'UserAgentOverrideDiffers' | 'ForegroundCacheLimit' | 'BrowsingInstanceNotSwapped' | 'BackForwardCacheDisabledForDelegate' | 'UnloadHandlerExistsInMainFrame' | 'UnloadHandlerExistsInSubFrame' | 'ServiceWorkerUnregistration' | 'CacheControlNoStore' | 'CacheControlNoStoreCookieModified' | 'CacheControlNoStoreHTTPOnlyCookieModified' | 'NoResponseHead' | 'Unknown' | 'ActivationNavigationsDisallowedForBug1234857' | 'ErrorDocument' | 'FencedFramesEmbedder' | 'WebSocket' | 'WebTransport' | 'WebRTC' | 'MainResourceHasCacheControlNoStore' | 'MainResourceHasCacheControlNoCache' | 'SubresourceHasCacheControlNoStore' | 'SubresourceHasCacheControlNoCache' | 'ContainsPlugins' | 'DocumentLoaded' | 'DedicatedWorkerOrWorklet' | 'OutstandingNetworkRequestOthers' | 'OutstandingIndexedDBTransaction' | 'RequestedNotificationsPermission' | 'RequestedMIDIPermission' | 'RequestedAudioCapturePermission' | 'RequestedVideoCapturePermission' | 'RequestedBackForwardCacheBlockedSensors' | 'RequestedBackgroundWorkPermission' | 'BroadcastChannel' | 'IndexedDBConnection' | 'WebXR' | 'SharedWorker' | 'WebLocks' | 'WebHID' | 'WebShare' | 'RequestedStorageAccessGrant' | 'WebNfc' | 'OutstandingNetworkRequestFetch' | 'OutstandingNetworkRequestXHR' | 'AppBanner' | 'Printing' | 'WebDatabase' | 'PictureInPicture' | 'Portal' | 'SpeechRecognizer' | 'IdleManager' | 'PaymentManager' | 'SpeechSynthesis' | 'KeyboardLock' | 'WebOTPService' | 'OutstandingNetworkRequestDirectSocket' | 'InjectedJavascript' | 'InjectedStyleSheet' | 'Dummy' | 'ContentSecurityHandler' | 'ContentWebAuthenticationAPI' | 'ContentFileChooser' | 'ContentSerial' | 'ContentFileSystemAccess' | 'ContentMediaDevicesDispatcherHost' | 'ContentWebBluetooth' | 'ContentWebUSB' | 'ContentMediaSession' | 'ContentMediaSessionService' | 'ContentScreenReader' | 'EmbedderPopupBlockerTabHelper' | 'EmbedderSafeBrowsingTriggeredPopupBlocker' | 'EmbedderSafeBrowsingThreatDetails' | 'EmbedderAppBannerManager' | 'EmbedderDomDistillerViewerSource' | 'EmbedderDomDistillerSelfDeletingRequestDelegate' | 'EmbedderOomInterventionTabHelper' | 'EmbedderOfflinePage' | 'EmbedderChromePasswordManagerClientBindCredentialManager' | 'EmbedderPermissionRequestManager' | 'EmbedderModalDialog' | 'EmbedderExtensions' | 'EmbedderExtensionMessaging' | 'EmbedderExtensionMessagingForOpenPort' | 'EmbedderExtensionSentMessageToCachedFrame');
 
         /**
          * Types of not restored reasons for back-forward cache.
@@ -12546,6 +12618,11 @@ export namespace Protocol {
              */
             children: BackForwardCacheNotRestoredExplanationTree[];
         }
+
+        /**
+         * List of FinalStatus reasons for Prerender2.
+         */
+        export type PrerenderFinalStatus = ('Activated');
 
         export interface AddScriptToEvaluateOnLoadRequest {
             scriptSource: string;
@@ -12719,15 +12796,15 @@ export namespace Protocol {
 
         export interface GetLayoutMetricsResponse {
             /**
-             * Deprecated metrics relating to the layout viewport. Can be in DP or in CSS pixels depending on the `enable-use-zoom-for-dsf` flag. Use `cssLayoutViewport` instead.
+             * Deprecated metrics relating to the layout viewport. Is in device pixels. Use `cssLayoutViewport` instead.
              */
             layoutViewport: LayoutViewport;
             /**
-             * Deprecated metrics relating to the visual viewport. Can be in DP or in CSS pixels depending on the `enable-use-zoom-for-dsf` flag. Use `cssVisualViewport` instead.
+             * Deprecated metrics relating to the visual viewport. Is in device pixels. Use `cssVisualViewport` instead.
              */
             visualViewport: VisualViewport;
             /**
-             * Deprecated size of scrollable area. Can be in DP or in CSS pixels depending on the `enable-use-zoom-for-dsf` flag. Use `cssContentSize` instead.
+             * Deprecated size of scrollable area. Is in DP. Use `cssContentSize` instead.
              */
             contentSize: DOM.Rect;
             /**
@@ -13550,6 +13627,18 @@ export namespace Protocol {
              * Tree structure of reasons why the page could not be cached for each frame.
              */
             notRestoredExplanationsTree?: BackForwardCacheNotRestoredExplanationTree;
+        }
+
+        /**
+         * Fired when a prerender attempt is completed.
+         */
+        export interface PrerenderAttemptCompletedEvent {
+            /**
+             * The frame id of the frame initiating prerendering.
+             */
+            initiatingFrameId: FrameId;
+            prerenderingUrl: string;
+            finalStatus: PrerenderFinalStatus;
         }
 
         export interface LoadEventFiredEvent {
@@ -16007,27 +16096,38 @@ export namespace Protocol {
             value: string;
         }
 
-        export const enum PlayerErrorType {
-            Pipeline_error = 'pipeline_error',
-            Media_error = 'media_error',
+        /**
+         * Represents logged source line numbers reported in an error.
+         * NOTE: file and line are from chromium c++ implementation code, not js.
+         */
+        export interface PlayerErrorSourceLocation {
+            file: string;
+            line: integer;
         }
 
         /**
          * Corresponds to kMediaError
          */
         export interface PlayerError {
+            errorType: string;
             /**
-             *  (PlayerErrorType enum)
+             * Code is the numeric enum entry for a specific set of error codes, such
+             * as PipelineStatusCodes in media/base/pipeline_status.h
              */
-            type: ('pipeline_error' | 'media_error');
+            code: integer;
             /**
-             * When this switches to using media::Status instead of PipelineStatus
-             * we can remove "errorCode" and replace it with the fields from
-             * a Status instance. This also seems like a duplicate of the error
-             * level enum - there is a todo bug to have that level removed and
-             * use this instead. (crbug.com/1068454)
+             * A trace of where this error was caused / where it passed through.
              */
-            errorCode: string;
+            stack: PlayerErrorSourceLocation[];
+            /**
+             * Errors potentially have a root cause error, ie, a DecoderError might be
+             * caused by an WindowsError
+             */
+            cause: PlayerError[];
+            /**
+             * Extra data attached to an error, such as an HRESULT, Video Codec, etc.
+             */
+            data: any;
         }
 
         /**

@@ -484,6 +484,10 @@ export namespace ProtocolMapping {
          * when bfcache navigation fails.
          */
         'Page.backForwardCacheNotUsed': [Protocol.Page.BackForwardCacheNotUsedEvent];
+        /**
+         * Fired when a prerender attempt is completed.
+         */
+        'Page.prerenderAttemptCompleted': [Protocol.Page.PrerenderAttemptCompletedEvent];
         'Page.loadEventFired': [Protocol.Page.LoadEventFiredEvent];
         /**
          * Fired when same-document navigation happens, e.g. due to history API usage or anchor navigation.
@@ -1220,6 +1224,17 @@ export namespace ProtocolMapping {
         'Runtime.removeBinding': {
             paramsType: [Protocol.Runtime.RemoveBindingRequest];
             returnType: void;
+        };
+        /**
+         * This method tries to lookup and populate exception details for a
+         * JavaScript Error object.
+         * Note that the stackTrace portion of the resulting exceptionDetails will
+         * only be populated if the Runtime domain was enabled at the time when the
+         * Error was thrown.
+         */
+        'Runtime.getExceptionDetails': {
+            paramsType: [Protocol.Runtime.GetExceptionDetailsRequest];
+            returnType: Protocol.Runtime.GetExceptionDetailsResponse;
         };
         /**
          * Returns supported domains.

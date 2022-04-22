@@ -554,6 +554,15 @@ export namespace ProtocolProxyApi {
         removeBinding(params: Protocol.Runtime.RemoveBindingRequest): Promise<void>;
 
         /**
+         * This method tries to lookup and populate exception details for a
+         * JavaScript Error object.
+         * Note that the stackTrace portion of the resulting exceptionDetails will
+         * only be populated if the Runtime domain was enabled at the time when the
+         * Error was thrown.
+         */
+        getExceptionDetails(params: Protocol.Runtime.GetExceptionDetailsRequest): Promise<Protocol.Runtime.GetExceptionDetailsResponse>;
+
+        /**
          * Notification is issued every time when binding is called.
          */
         on(event: 'bindingCalled', listener: (params: Protocol.Runtime.BindingCalledEvent) => void): void;
@@ -3014,6 +3023,11 @@ export namespace ProtocolProxyApi {
          * when bfcache navigation fails.
          */
         on(event: 'backForwardCacheNotUsed', listener: (params: Protocol.Page.BackForwardCacheNotUsedEvent) => void): void;
+
+        /**
+         * Fired when a prerender attempt is completed.
+         */
+        on(event: 'prerenderAttemptCompleted', listener: (params: Protocol.Page.PrerenderAttemptCompletedEvent) => void): void;
 
         on(event: 'loadEventFired', listener: (params: Protocol.Page.LoadEventFiredEvent) => void): void;
 
