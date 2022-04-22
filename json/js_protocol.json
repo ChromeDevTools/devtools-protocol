@@ -205,7 +205,8 @@
                         },
                         {
                             "name": "url",
-                            "description": "JavaScript script name or url.",
+                            "description": "JavaScript script name or url.\nDeprecated in favor of using the `location.scriptId` to resolve the URL via a previously\nsent `Debugger.scriptParsed` event.",
+                            "deprecated": true,
                             "type": "string"
                         },
                         {
@@ -3321,6 +3322,25 @@
                         {
                             "name": "name",
                             "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "getExceptionDetails",
+                    "description": "This method tries to lookup and populate exception details for a\nJavaScript Error object.\nNote that the stackTrace portion of the resulting exceptionDetails will\nonly be populated if the Runtime domain was enabled at the time when the\nError was thrown.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "errorObjectId",
+                            "description": "The error object for which to resolve the exception details.",
+                            "$ref": "RemoteObjectId"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "exceptionDetails",
+                            "optional": true,
+                            "$ref": "ExceptionDetails"
                         }
                     ]
                 }
