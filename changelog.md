@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r995510
+###### _2022-04-23 09:15:16_ | Diff: [7c8b6ad...5c44be1](https://github.com/ChromeDevTools/devtools-protocol/compare/7c8b6ad...5c44be1)
+#### `Page`: modified command
+* [`Page.printToPDF`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-printToPDF) - The parameters's `transferMode` _removed_. The `pageRanges` in the parameters had `description` _updated_. The `ignoreInvalidPageRanges` in the parameters had `name` _updated_. The `ignoreInvalidPageRanges` in the parameters had `description` _updated_. The `ignoreInvalidPageRanges` in the parameters had `type` _updated_. The `headerTemplate` in the parameters had `name` _updated_. The `headerTemplate` in the parameters had `description` _updated_. The `footerTemplate` in the parameters had `name` _updated_. The `footerTemplate` in the parameters had `description` _updated_. The `footerTemplate` in the parameters had `type` _updated_. The `preferCSSPageSize` in the parameters had `name` _updated_. The `preferCSSPageSize` in the parameters had `description` _updated_. The `preferCSSPageSize` in the parameters had `type` _updated_. The parameters's `experimental` _added_. The parameters's `enum` _added_.
+
+
 ## Roll protocol to r995287
 ###### _2022-04-22 11:54:30_ | Diff: [8ac7575...7c8b6ad](https://github.com/ChromeDevTools/devtools-protocol/compare/8ac7575...7c8b6ad)
 #### `Debugger`: modified type
