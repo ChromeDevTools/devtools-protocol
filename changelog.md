@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r995853
+###### _2022-04-25 16:15:20_ | Diff: [5c44be1...d153258](https://github.com/ChromeDevTools/devtools-protocol/compare/5c44be1...d153258)
+#### `Page`: modified type
+* [`Page.PermissionsPolicyFeature`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-PermissionsPolicyFeature) - The enum's `magnetometer` _updated_. The enum's `microphone` _updated_. The enum's `midi` _updated_. The enum's `otp-credentials` _updated_. The enum's `payment` _updated_. The enum's `picture-in-picture` _updated_. The enum's `publickey-credentials-get` _updated_. The enum's `run-ad-auction` _updated_. The enum's `screen-wake-lock` _updated_. The enum's `serial` _updated_. The enum's `shared-autofill` _updated_. The enum's `storage-access-api` _updated_. The enum's `sync-xhr` _updated_. The enum's `trust-token-redemption` _updated_. The enum's `usb` _updated_. The enum's `vertical-scroll` _updated_. The enum's `web-share` _updated_. The enum's `window-placement` _updated_. The enum's `xr-spatial-tracking` _updated_. The enum's `xr-spatial-tracking` _added_.
+
+
 ## Roll protocol to r995510
 ###### _2022-04-23 09:15:16_ | Diff: [7c8b6ad...5c44be1](https://github.com/ChromeDevTools/devtools-protocol/compare/7c8b6ad...5c44be1)
 #### `Page`: modified command
