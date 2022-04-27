@@ -15724,6 +15724,12 @@
                             "description": "The fantasy font-family.",
                             "optional": true,
                             "type": "string"
+                        },
+                        {
+                            "name": "math",
+                            "description": "The math font-family.",
+                            "optional": true,
+                            "type": "string"
                         }
                     ]
                 },

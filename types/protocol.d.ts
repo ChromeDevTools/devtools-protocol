@@ -12493,6 +12493,10 @@ export namespace Protocol {
              * The fantasy font-family.
              */
             fantasy?: string;
+            /**
+             * The math font-family.
+             */
+            math?: string;
         }
 
         /**
