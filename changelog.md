@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r996622
+###### _2022-04-27 03:15:18_ | Diff: [61057f3...477bbc9](https://github.com/ChromeDevTools/devtools-protocol/compare/61057f3...477bbc9)
+#### `Page`: modified type
+* [`Page.FontFamilies`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-FontFamilies) - The properties's `math` _added_.
+
+
 ## Roll protocol to r996285
 ###### _2022-04-26 11:15:23_ | Diff: [d153258...6a83a61](https://github.com/ChromeDevTools/devtools-protocol/compare/d153258...6a83a61)
 #### `Audits`: modified type
