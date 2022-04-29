@@ -1,5 +1,12 @@
 
 
+## Roll protocol to r997149
+###### _2022-04-28 04:15:16_ | Diff: [477bbc9...83726e8](https://github.com/ChromeDevTools/devtools-protocol/compare/477bbc9...83726e8)
+#### `Audits`: modified types
+* [`Audits.DeprecationIssueType`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-DeprecationIssueType) - The enum's `XRSupportsSession` _removed_. The enum's `Untranslated` _updated_. The enum's `V8SharedArrayBufferConstructedInExtensionWithoutIsolation` _updated_. The enum's `WebCodecsVideoFrameDefaultTimestamp` _updated_. The enum's `XHRJSONEncodingDetection` _updated_. The enum's `XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload` _updated_.
+* [`Audits.DeprecationIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-DeprecationIssueDetails) - The properties's `deprecationType` _removed_. The properties's `type` _removed_. The `message` in the properties had `description` _removed_. The `message` in the properties had `deprecated` _removed_. The `message` in the properties had `optional` _removed_. The `message` in the properties had `type` _removed_. `description` updated. The `message` in the properties had `name` _updated_. The properties's `$ref` _added_.
+
+
 ## Roll protocol to r996622
 ###### _2022-04-27 03:15:18_ | Diff: [61057f3...477bbc9](https://github.com/ChromeDevTools/devtools-protocol/compare/61057f3...477bbc9)
 #### `Page`: modified type

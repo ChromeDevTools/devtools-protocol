@@ -1550,7 +1550,6 @@
                     "type": "string",
                     "enum": [
                         "AuthorizationCoveredByWildcard",
-                        "BatteryStatusInsecureOrigin",
                         "CanRequestURLHTTPContainingNewline",
                         "ChromeLoadTimesConnectionInfo",
                         "ChromeLoadTimesFirstPaintAfterLoadTime",
