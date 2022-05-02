@@ -8387,7 +8387,7 @@
             "commands": [
                 {
                     "name": "beginFrame",
-                    "description": "Sends a BeginFrame to the target and returns when the frame was completed. Optionally captures a\nscreenshot from the resulting frame. Requires that the target was created with enabled\nBeginFrameControl. Designed for use with --run-all-compositor-stages-before-draw, see also\nhttps://goo.gl/3zHXhB for more background.",
+                    "description": "Sends a BeginFrame to the target and returns when the frame was completed. Optionally captures a\nscreenshot from the resulting frame. Requires that the target was created with enabled\nBeginFrameControl. Designed for use with --run-all-compositor-stages-before-draw, see also\nhttps://goo.gle/chrome-headless-rendering for more background.",
                     "parameters": [
                         {
                             "name": "frameTimeTicks",
