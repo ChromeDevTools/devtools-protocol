@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r998277
+###### _2022-05-02 01:15:16_ | Diff: [10b0375...a6daed6](https://github.com/ChromeDevTools/devtools-protocol/compare/10b0375...a6daed6)
+#### `HeadlessExperimental`: modified command
+* [`HeadlessExperimental.beginFrame`](https://chromedevtools.github.io/devtools-protocol/tot/HeadlessExperimental/#method-beginFrame) - `description` updated.
+
+
 ## Roll protocol to r997803
 ###### _2022-04-29 11:15:25_ | Diff: [83726e8...10b0375](https://github.com/ChromeDevTools/devtools-protocol/compare/83726e8...10b0375)
 #### `Audits`: modified type
