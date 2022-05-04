@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r998712
+###### _2022-05-02 20:15:18_ | Diff: [a6daed6...3a7051b](https://github.com/ChromeDevTools/devtools-protocol/compare/a6daed6...3a7051b)
+#### `Audits`: modified type
+* [`Audits.DeprecationIssueType`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-DeprecationIssueType) - The enum's `XRSupportsSession` _removed_. The enum's `WebCodecsVideoFrameDefaultTimestamp` _updated_. The enum's `XHRJSONEncodingDetection` _updated_. The enum's `XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload` _updated_.
+
+
 ## Roll protocol to r998277
 ###### _2022-05-02 01:15:16_ | Diff: [10b0375...a6daed6](https://github.com/ChromeDevTools/devtools-protocol/compare/10b0375...a6daed6)
 #### `HeadlessExperimental`: modified command

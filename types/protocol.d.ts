@@ -828,7 +828,7 @@ export namespace Protocol {
              */
             executionContextId: Runtime.ExecutionContextId;
             /**
-             * Content hash of the script.
+             * Content hash of the script, SHA-256.
              */
             hash: string;
             /**
@@ -903,7 +903,7 @@ export namespace Protocol {
              */
             executionContextId: Runtime.ExecutionContextId;
             /**
-             * Content hash of the script.
+             * Content hash of the script, SHA-256.
              */
             hash: string;
             /**
@@ -2042,7 +2042,9 @@ export namespace Protocol {
              */
             throwOnSideEffect?: boolean;
             /**
-             * Whether the result should be serialized according to https://w3c.github.io/webdriver-bidi.
+             * Whether the result should contain `webDriverValue`, serialized according to
+             * https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but
+             * resulting `objectId` is still provided.
              */
             generateWebDriverValue?: boolean;
         }

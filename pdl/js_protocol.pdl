@@ -559,7 +559,7 @@ domain Debugger
       integer endColumn
       # Specifies script creation context.
       Runtime.ExecutionContextId executionContextId
-      # Content hash of the script.
+      # Content hash of the script, SHA-256.
       string hash
       # Embedder-specific auxiliary data.
       optional object executionContextAuxData
@@ -598,7 +598,7 @@ domain Debugger
       integer endColumn
       # Specifies script creation context.
       Runtime.ExecutionContextId executionContextId
-      # Content hash of the script.
+      # Content hash of the script, SHA-256.
       string hash
       # Embedder-specific auxiliary data.
       optional object executionContextAuxData
@@ -1347,7 +1347,9 @@ domain Runtime
       optional string objectGroup
       # Whether to throw an exception if side effect cannot be ruled out during evaluation.
       experimental optional boolean throwOnSideEffect
-      # Whether the result should be serialized according to https://w3c.github.io/webdriver-bidi.
+      # Whether the result should contain `webDriverValue`, serialized according to
+      # https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but
+      # resulting `objectId` is still provided.
       experimental optional boolean generateWebDriverValue
     returns
       # Call result.
