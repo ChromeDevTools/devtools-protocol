@@ -1,5 +1,17 @@
 
 
+## Roll protocol to r1000974
+###### _2022-05-09 06:15:16_ | Diff: [a9ad264...1dd3de6](https://github.com/ChromeDevTools/devtools-protocol/compare/a9ad264...1dd3de6)
+#### `DOMStorage`: new command
+* [`DOMStorage.getStorageKeyForFrame`](https://chromedevtools.github.io/devtools-protocol/tot/DOMStorage/#method-getStorageKeyForFrame)
+#### `DOMStorage`: new type
+* [`DOMStorage.SerializedStorageKey`](https://chromedevtools.github.io/devtools-protocol/tot/DOMStorage/#type-SerializedStorageKey)
+#### `DOMStorage`: modified type
+* [`DOMStorage.StorageId`](https://chromedevtools.github.io/devtools-protocol/tot/DOMStorage/#type-StorageId) - The `isLocalStorage` in the properties had `type` _removed_. The `isLocalStorage` in the properties had `name` _updated_. The `isLocalStorage` in the properties had `description` _updated_. The properties's `optional` _added_ (2 times). The properties's `$ref` _added_. The properties's `isLocalStorage` _added_.
+#### `Storage`: new type
+* [`Storage.SerializedStorageKey`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-SerializedStorageKey)
+
+
 ## Roll protocol to r1000917
 ###### _2022-05-09 01:15:16_ | Diff: [93a65bd...a9ad264](https://github.com/ChromeDevTools/devtools-protocol/compare/93a65bd...a9ad264)
 #### `Audits`: modified type
