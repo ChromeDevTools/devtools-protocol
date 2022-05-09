@@ -1,5 +1,14 @@
 
 
+## Roll protocol to r999451
+###### _2022-05-04 09:45:22_ | Diff: [3a7051b...93a65bd](https://github.com/ChromeDevTools/devtools-protocol/compare/3a7051b...93a65bd)
+#### `Debugger`: modified events
+* [`Debugger.scriptFailedToParse`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-scriptFailedToParse) - The `hash` in the parameters had `description` _updated_.
+* [`Debugger.scriptParsed`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#event-scriptParsed) - The `hash` in the parameters had `description` _updated_.
+#### `Runtime`: modified command
+* [`Runtime.callFunctionOn`](https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-callFunctionOn) - The `generateWebDriverValue` in the parameters had `description` _updated_.
+
+
 ## Roll protocol to r998712
 ###### _2022-05-02 20:15:18_ | Diff: [a6daed6...3a7051b](https://github.com/ChromeDevTools/devtools-protocol/compare/a6daed6...3a7051b)
 #### `Audits`: modified type
