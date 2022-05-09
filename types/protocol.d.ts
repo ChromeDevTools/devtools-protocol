@@ -7093,6 +7093,8 @@ export namespace Protocol {
      */
     export namespace DOMStorage {
 
+        export type SerializedStorageKey = string;
+
         /**
          * DOM Storage identifier.
          */
@@ -7100,7 +7102,11 @@ export namespace Protocol {
             /**
              * Security origin for the storage.
              */
-            securityOrigin: string;
+            securityOrigin?: string;
+            /**
+             * Represents a key by which DOM Storage keys its CachedStorageAreas
+             */
+            storageKey?: SerializedStorageKey;
             /**
              * Whether the storage is local storage (not session storage).
              */
@@ -7133,6 +7139,14 @@ export namespace Protocol {
             storageId: StorageId;
             key: string;
             value: string;
+        }
+
+        export interface GetStorageKeyForFrameRequest {
+            frameId: Page.FrameId;
+        }
+
+        export interface GetStorageKeyForFrameResponse {
+            storageKey: SerializedStorageKey;
         }
 
         export interface DomStorageItemAddedEvent {
@@ -14272,6 +14286,8 @@ export namespace Protocol {
     }
 
     export namespace Storage {
+
+        export type SerializedStorageKey = string;
 
         /**
          * Enum of possible storage types.

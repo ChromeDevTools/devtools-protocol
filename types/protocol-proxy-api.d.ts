@@ -1614,6 +1614,8 @@ export namespace ProtocolProxyApi {
 
         setDOMStorageItem(params: Protocol.DOMStorage.SetDOMStorageItemRequest): Promise<void>;
 
+        getStorageKeyForFrame(params: Protocol.DOMStorage.GetStorageKeyForFrameRequest): Promise<Protocol.DOMStorage.GetStorageKeyForFrameResponse>;
+
         on(event: 'domStorageItemAdded', listener: (params: Protocol.DOMStorage.DomStorageItemAddedEvent) => void): void;
 
         on(event: 'domStorageItemRemoved', listener: (params: Protocol.DOMStorage.DomStorageItemRemovedEvent) => void): void;
