@@ -1594,7 +1594,6 @@
                         "RTCConstraintEnableDtlsSrtpFalse",
                         "RTCConstraintEnableDtlsSrtpTrue",
                         "RTCPeerConnectionComplexPlanBSdpUsingDefaultSdpSemantics",
-                        "RTCPeerConnectionLegacyCreateWithMediaConstraints",
                         "RTCPeerConnectionSdpSemanticsPlanB",
                         "RtcpMuxPolicyNegotiate",
                         "RTPDataChannel",
