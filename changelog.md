@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r1001033
+###### _2022-05-09 09:15:18_ | Diff: [4df4c30...4d9109d](https://github.com/ChromeDevTools/devtools-protocol/compare/4df4c30...4d9109d)
+#### `Audits`: modified type
+* [`Audits.DeprecationIssueType`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-DeprecationIssueType) - The enum's `XRSupportsSession` _removed_. The enum's `RTCPeerConnectionLegacyCreateWithMediaConstraints` _updated_. The enum's `RTCPeerConnectionSdpSemanticsPlanB` _updated_. The enum's `RtcpMuxPolicyNegotiate` _updated_. The enum's `RTPDataChannel` _updated_. The enum's `SharedArrayBufferConstructedWithoutIsolation` _updated_. The enum's `TextToSpeech_DisallowedByAutoplay` _updated_. The enum's `V8SharedArrayBufferConstructedInExtensionWithoutIsolation` _updated_. The enum's `XHRJSONEncodingDetection` _updated_. The enum's `XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload` _updated_.
+
+
 ## Roll protocol to r1001016
 ###### _2022-05-09 08:15:24_ | Diff: [1dd3de6...4df4c30](https://github.com/ChromeDevTools/devtools-protocol/compare/1dd3de6...4df4c30)
 #### `Audits`: modified type
