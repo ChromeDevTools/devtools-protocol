@@ -3330,7 +3330,7 @@ export namespace Protocol {
             clientSecurityState?: Network.ClientSecurityState;
         }
 
-        export type AttributionReportingIssueType = ('PermissionPolicyDisabled' | 'AttributionSourceUntrustworthyOrigin' | 'AttributionUntrustworthyOrigin');
+        export type AttributionReportingIssueType = ('PermissionPolicyDisabled' | 'AttributionSourceUntrustworthyOrigin' | 'AttributionUntrustworthyOrigin' | 'InvalidHeader');
 
         /**
          * Details for issues around "Attribution Reporting API" usage.

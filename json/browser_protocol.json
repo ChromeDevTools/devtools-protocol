@@ -1441,7 +1441,8 @@
                     "enum": [
                         "PermissionPolicyDisabled",
                         "AttributionSourceUntrustworthyOrigin",
-                        "AttributionUntrustworthyOrigin"
+                        "AttributionUntrustworthyOrigin",
+                        "InvalidHeader"
                     ]
                 },
                 {
