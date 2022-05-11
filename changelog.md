@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r1001785
+###### _2022-05-10 16:15:25_ | Diff: [6d1c894...ae07002](https://github.com/ChromeDevTools/devtools-protocol/compare/6d1c894...ae07002)
+#### `Audits`: modified type
+* [`Audits.AttributionReportingIssueType`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AttributionReportingIssueType) - The enum's `InvalidHeader` _added_.
+
+
 ## Roll protocol to r1001754
 ###### _2022-05-10 15:15:23_ | Diff: [4d9109d...6d1c894](https://github.com/ChromeDevTools/devtools-protocol/compare/4d9109d...6d1c894)
 #### `Audits`: modified type
