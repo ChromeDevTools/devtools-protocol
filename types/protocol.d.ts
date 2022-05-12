@@ -15995,6 +15995,17 @@ export namespace Protocol {
             largeBlob?: string;
         }
 
+        export interface EnableRequest {
+            /**
+             * Whether to enable the WebAuthn user interface. Enabling the UI is
+             * recommended for debugging and demo purposes, as it is closer to the real
+             * experience. Disabling the UI is recommended for automated testing.
+             * Supported at the embedder's discretion if UI is available.
+             * Defaults to false.
+             */
+            enableUI?: boolean;
+        }
+
         export interface AddVirtualAuthenticatorRequest {
             options: VirtualAuthenticatorOptions;
         }

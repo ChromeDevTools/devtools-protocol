@@ -4339,7 +4339,7 @@ export namespace ProtocolMapping {
          * retrieval with a virtual authenticator.
          */
         'WebAuthn.enable': {
-            paramsType: [];
+            paramsType: [Protocol.WebAuthn.EnableRequest?];
             returnType: void;
         };
         /**

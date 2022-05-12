@@ -3677,7 +3677,7 @@ export namespace ProtocolProxyApi {
          * Enable the WebAuthn domain and start intercepting credential storage and
          * retrieval with a virtual authenticator.
          */
-        enable(): Promise<void>;
+        enable(params: Protocol.WebAuthn.EnableRequest): Promise<void>;
 
         /**
          * Disable the WebAuthn domain.

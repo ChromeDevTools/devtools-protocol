@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r1001819
+###### _2022-05-10 17:15:32_ | Diff: [ae07002...02d7a84](https://github.com/ChromeDevTools/devtools-protocol/compare/ae07002...02d7a84)
+#### `Page`: modified type
+* [`Page.PrerenderFinalStatus`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-PrerenderFinalStatus) - The enum's `Destroyed` _added_. The enum's `LowEndDevice` _added_. The enum's `CrossOriginRedirect` _added_. The enum's `CrossOriginNavigation` _added_. The enum's `InvalidSchemeRedirect` _added_. The enum's `InvalidSchemeNavigation` _added_. The enum's `InProgressNavigation` _added_. The enum's `NavigationRequestBlockedByCsp` _added_. The enum's `MainFrameNavigation` _added_. The enum's `MojoBinderPolicy` _added_. The enum's `RendererProcessCrashed` _added_. The enum's `RendererProcessKilled` _added_. The enum's `Download` _added_. The enum's `TriggerDestroyed` _added_. The enum's `NavigationNotCommitted` _added_. The enum's `NavigationBadHttpStatus` _added_. The enum's `ClientCertRequested` _added_. The enum's `NavigationRequestNetworkError` _added_. The enum's `MaxNumOfRunningPrerendersExceeded` _added_. The enum's `CancelAllHostsForTesting` _added_. The enum's `DidFailLoad` _added_. The enum's `Stop` _added_. The enum's `SslCertificateError` _added_. The enum's `LoginAuthRequested` _added_. The enum's `UaChangeRequiresReload` _added_. The enum's `BlockedByClient` _added_. The enum's `AudioOutputDeviceRequested` _added_. The enum's `MixedContent` _added_. The enum's `TriggerBackgrounded` _added_. The enum's `EmbedderTriggeredAndSameOriginRedirected` _added_. The enum's `EmbedderTriggeredAndCrossOriginRedirected` _added_. The enum's `EmbedderTriggeredAndDestroyed` _added_.
+
+
 ## Roll protocol to r1001785
 ###### _2022-05-10 16:15:25_ | Diff: [6d1c894...ae07002](https://github.com/ChromeDevTools/devtools-protocol/compare/6d1c894...ae07002)
 #### `Audits`: modified type
