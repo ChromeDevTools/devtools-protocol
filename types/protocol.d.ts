@@ -12907,7 +12907,8 @@ export namespace Protocol {
              */
             frameId: FrameId;
             /**
-             * Loader identifier.
+             * Loader identifier. This is omitted in case of same-document navigation,
+             * as the previously committed loaderId would not change.
              */
             loaderId?: Network.LoaderId;
             /**

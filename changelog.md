@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r1002782
+###### _2022-05-12 12:15:18_ | Diff: [02d7a84...6db5938](https://github.com/ChromeDevTools/devtools-protocol/compare/02d7a84...6db5938)
+#### `WebAuthn`: modified command
+* [`WebAuthn.enable`](https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#method-enable)
+
+
 ## Roll protocol to r1001819
 ###### _2022-05-10 17:15:32_ | Diff: [ae07002...02d7a84](https://github.com/ChromeDevTools/devtools-protocol/compare/ae07002...02d7a84)
 #### `Page`: modified type
