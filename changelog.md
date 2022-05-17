@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r1003898
+###### _2022-05-16 13:15:25_ | Diff: [6db5938...deb61a0](https://github.com/ChromeDevTools/devtools-protocol/compare/6db5938...deb61a0)
+#### `Page`: modified command
+* [`Page.navigate`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#method-navigate) - The `loaderId` in the return value had `description` _updated_.
+
+
 ## Roll protocol to r1002782
 ###### _2022-05-12 12:15:18_ | Diff: [02d7a84...6db5938](https://github.com/ChromeDevTools/devtools-protocol/compare/02d7a84...6db5938)
 #### `WebAuthn`: modified command

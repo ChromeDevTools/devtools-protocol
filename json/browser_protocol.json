@@ -15008,6 +15008,7 @@
                         "ambient-light-sensor",
                         "attribution-reporting",
                         "autoplay",
+                        "bluetooth",
                         "browsing-topics",
                         "camera",
                         "ch-dpr",
