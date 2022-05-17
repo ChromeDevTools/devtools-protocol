@@ -5381,6 +5381,7 @@ export namespace Protocol {
              */
             isSVG?: boolean;
             compatibilityMode?: CompatibilityMode;
+            assignedSlot?: BackendNode;
         }
 
         /**
