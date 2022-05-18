@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r1004164
+###### _2022-05-17 02:15:39_ | Diff: [218b848...cdd508b](https://github.com/ChromeDevTools/devtools-protocol/compare/218b848...cdd508b)
+#### `DOM`: modified type
+* [`DOM.Node`](https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-Node) - The properties's `assignedSlot` _added_.
+
+
 ## Roll protocol to r1004052
 ###### _2022-05-16 18:15:19_ | Diff: [deb61a0...218b848](https://github.com/ChromeDevTools/devtools-protocol/compare/deb61a0...218b848)
 #### `Page`: modified type
