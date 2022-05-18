@@ -1575,7 +1575,6 @@
                         "NotificationPermissionRequestedIframe",
                         "ObsoleteWebRtcCipherSuite",
                         "PaymentRequestBasicCard",
-                        "PaymentRequestShowWithoutGesture",
                         "PictureSourceSrc",
                         "PrefixedCancelAnimationFrame",
                         "PrefixedRequestAnimationFrame",
