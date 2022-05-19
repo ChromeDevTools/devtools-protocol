@@ -7142,14 +7142,6 @@ export namespace Protocol {
             value: string;
         }
 
-        export interface GetStorageKeyForFrameRequest {
-            frameId: Page.FrameId;
-        }
-
-        export interface GetStorageKeyForFrameResponse {
-            storageKey: SerializedStorageKey;
-        }
-
         export interface DomStorageItemAddedEvent {
             storageId: StorageId;
             key: string;
@@ -14348,6 +14340,14 @@ export namespace Protocol {
             userBiddingSignals?: string;
             ads: InterestGroupAd[];
             adComponents: InterestGroupAd[];
+        }
+
+        export interface GetStorageKeyForFrameRequest {
+            frameId: Page.FrameId;
+        }
+
+        export interface GetStorageKeyForFrameResponse {
+            storageKey: SerializedStorageKey;
         }
 
         export interface ClearDataForOriginRequest {

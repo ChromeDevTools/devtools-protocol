@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r1004730
+###### _2022-05-18 06:15:20_ | Diff: [838223b...210ddf8](https://github.com/ChromeDevTools/devtools-protocol/compare/838223b...210ddf8)
+#### `Audits`: modified type
+* [`Audits.DeprecationIssueType`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-DeprecationIssueType) - The enum's `XRSupportsSession` _removed_. The enum's `PaymentRequestShowWithoutGesture` _updated_. The enum's `PictureSourceSrc` _updated_. The enum's `PrefixedCancelAnimationFrame` _updated_. The enum's `PrefixedRequestAnimationFrame` _updated_. The enum's `PrefixedStorageInfo` _updated_. The enum's `PrefixedVideoDisplayingFullscreen` _updated_. The enum's `PrefixedVideoEnterFullscreen` _updated_. The enum's `PrefixedVideoEnterFullScreen` _updated_. The enum's `PrefixedVideoExitFullscreen` _updated_. The enum's `PrefixedVideoExitFullScreen` _updated_. The enum's `PrefixedVideoSupportsFullscreen` _updated_. The enum's `RangeExpand` _updated_. The enum's `RequestedSubresourceWithEmbeddedCredentials` _updated_. The enum's `RTCConstraintEnableDtlsSrtpFalse` _updated_. The enum's `RTCConstraintEnableDtlsSrtpTrue` _updated_. The enum's `RTCPeerConnectionComplexPlanBSdpUsingDefaultSdpSemantics` _updated_. The enum's `RTCPeerConnectionSdpSemanticsPlanB` _updated_. The enum's `RtcpMuxPolicyNegotiate` _updated_. The enum's `RTPDataChannel` _updated_. The enum's `SharedArrayBufferConstructedWithoutIsolation` _updated_. The enum's `TextToSpeech_DisallowedByAutoplay` _updated_. The enum's `V8SharedArrayBufferConstructedInExtensionWithoutIsolation` _updated_. The enum's `XHRJSONEncodingDetection` _updated_. The enum's `XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload` _updated_.
+
+
 ## Roll protocol to r1004709
 ###### _2022-05-18 05:15:18_ | Diff: [cdd508b...838223b](https://github.com/ChromeDevTools/devtools-protocol/compare/cdd508b...838223b)
 #### `Audits`: modified type

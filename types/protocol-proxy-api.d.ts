@@ -1614,8 +1614,6 @@ export namespace ProtocolProxyApi {
 
         setDOMStorageItem(params: Protocol.DOMStorage.SetDOMStorageItemRequest): Promise<void>;
 
-        getStorageKeyForFrame(params: Protocol.DOMStorage.GetStorageKeyForFrameRequest): Promise<Protocol.DOMStorage.GetStorageKeyForFrameResponse>;
-
         on(event: 'domStorageItemAdded', listener: (params: Protocol.DOMStorage.DomStorageItemAddedEvent) => void): void;
 
         on(event: 'domStorageItemRemoved', listener: (params: Protocol.DOMStorage.DomStorageItemRemovedEvent) => void): void;
@@ -3189,6 +3187,11 @@ export namespace ProtocolProxyApi {
     }
 
     export interface StorageApi {
+        /**
+         * Returns a storage key given a frame id.
+         */
+        getStorageKeyForFrame(params: Protocol.Storage.GetStorageKeyForFrameRequest): Promise<Protocol.Storage.GetStorageKeyForFrameResponse>;
+
         /**
          * Clears storage for origin.
          */
