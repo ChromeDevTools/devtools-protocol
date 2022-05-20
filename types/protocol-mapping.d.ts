@@ -2565,6 +2565,10 @@ export namespace ProtocolMapping {
             paramsType: [Protocol.Emulation.SetDisabledImageTypesRequest];
             returnType: void;
         };
+        'Emulation.setHardwareConcurrencyOverride': {
+            paramsType: [Protocol.Emulation.SetHardwareConcurrencyOverrideRequest];
+            returnType: void;
+        };
         /**
          * Allows overriding user agent with the given string.
          */
