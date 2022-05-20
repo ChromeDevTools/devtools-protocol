@@ -1,5 +1,13 @@
 
 
+## Roll protocol to r1005172
+###### _2022-05-19 02:15:19_ | Diff: [210ddf8...363a231](https://github.com/ChromeDevTools/devtools-protocol/compare/210ddf8...363a231)
+#### `DOMStorage`: removed command
+* [`DOMStorage.getStorageKeyForFrame`](https://chromedevtools.github.io/devtools-protocol/tot/DOMStorage/#method-getStorageKeyForFrame)
+#### `Storage`: new command
+* [`Storage.getStorageKeyForFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Storage/#method-getStorageKeyForFrame)
+
+
 ## Roll protocol to r1004730
 ###### _2022-05-18 06:15:20_ | Diff: [838223b...210ddf8](https://github.com/ChromeDevTools/devtools-protocol/compare/838223b...210ddf8)
 #### `Audits`: modified type
