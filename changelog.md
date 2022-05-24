@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r1006825
+###### _2022-05-24 03:15:23_ | Diff: [fff96f6...09fd7be](https://github.com/ChromeDevTools/devtools-protocol/compare/fff96f6...09fd7be)
+#### `Audits`: modified type
+* [`Audits.DeprecationIssueType`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-DeprecationIssueType) - The enum's `XRSupportsSession` _removed_. The enum's `RTPDataChannel` _updated_. The enum's `SharedArrayBufferConstructedWithoutIsolation` _updated_. The enum's `TextToSpeech_DisallowedByAutoplay` _updated_. The enum's `V8SharedArrayBufferConstructedInExtensionWithoutIsolation` _updated_. The enum's `XHRJSONEncodingDetection` _updated_. The enum's `XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload` _updated_.
+
+
 ## Roll protocol to r1005767
 ###### _2022-05-20 07:15:15_ | Diff: [44eb39e...fff96f6](https://github.com/ChromeDevTools/devtools-protocol/compare/44eb39e...fff96f6)
 #### `Emulation`: new command
