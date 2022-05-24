@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r1005767
+###### _2022-05-20 07:15:15_ | Diff: [44eb39e...fff96f6](https://github.com/ChromeDevTools/devtools-protocol/compare/44eb39e...fff96f6)
+#### `Emulation`: new command
+* [`Emulation.setHardwareConcurrencyOverride`](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setHardwareConcurrencyOverride)
+
+
 ## Roll protocol to r1005560
 ###### _2022-05-19 18:15:18_ | Diff: [363a231...44eb39e](https://github.com/ChromeDevTools/devtools-protocol/compare/363a231...44eb39e)
 #### `Audits`: modified type
