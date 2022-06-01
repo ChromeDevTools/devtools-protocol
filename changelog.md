@@ -1,5 +1,11 @@
 
 
+## Roll protocol to r1008748
+###### _2022-05-30 00:15:13_ | Diff: [bc53a73...a56eb21](https://github.com/ChromeDevTools/devtools-protocol/compare/bc53a73...a56eb21)
+#### `Page`: modified type
+* [`Page.BackForwardCacheNotRestoredReason`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-BackForwardCacheNotRestoredReason) - The enum's `EmbedderExtensionSentMessageToCachedFrame` _removed_. The enum's `ContentMediaSession` _updated_. The enum's `ContentMediaSessionService` _updated_. The enum's `ContentScreenReader` _updated_. The enum's `EmbedderPopupBlockerTabHelper` _updated_. The enum's `EmbedderSafeBrowsingTriggeredPopupBlocker` _updated_. The enum's `EmbedderSafeBrowsingThreatDetails` _updated_. The enum's `EmbedderAppBannerManager` _updated_. The enum's `EmbedderDomDistillerViewerSource` _updated_. The enum's `EmbedderDomDistillerSelfDeletingRequestDelegate` _updated_. The enum's `EmbedderOomInterventionTabHelper` _updated_. The enum's `EmbedderOfflinePage` _updated_. The enum's `EmbedderChromePasswordManagerClientBindCredentialManager` _updated_. The enum's `EmbedderPermissionRequestManager` _updated_. The enum's `EmbedderModalDialog` _updated_. The enum's `EmbedderExtensions` _updated_. The enum's `EmbedderExtensionMessaging` _updated_. The enum's `EmbedderExtensionMessagingForOpenPort` _updated_.
+
+
 ## Roll protocol to r1007616
 ###### _2022-05-25 16:15:13_ | Diff: [7e4a41a...82c45d0](https://github.com/ChromeDevTools/devtools-protocol/compare/7e4a41a...82c45d0)
 #### `Page`: modified type
