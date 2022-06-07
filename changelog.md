@@ -1,5 +1,23 @@
 
 
+## Roll protocol to r1011705
+###### _2022-06-07 15:28:08_ | Diff: [a5e142a...06f6515](https://github.com/ChromeDevTools/devtools-protocol/compare/a5e142a...06f6515)
+#### `Debugger`: modified command
+* [`Debugger.restartFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-restartFrame) - `deprecated` removed. The `asyncStackTraceId` in the return value had `experimental` _removed_. `description` updated. The parameters's `mode` _added_. The return value's `deprecated` _added_ (3 times).
+#### `HeapProfiler`: modified commands
+* [`HeapProfiler.stopTrackingHeapObjects`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#method-stopTrackingHeapObjects) - The parameters's `description` _added_. The parameters's `deprecated` _added_. The parameters's `exposeInternals` _added_.
+* [`HeapProfiler.takeHeapSnapshot`](https://chromedevtools.github.io/devtools-protocol/tot/HeapProfiler/#method-takeHeapSnapshot) - The `treatGlobalObjectsAsRoots` in the parameters had `description` _updated_. The parameters's `deprecated` _added_. The parameters's `exposeInternals` _added_.
+#### `Audits`: modified types
+* [`Audits.AttributionReportingIssueDetails`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AttributionReportingIssueDetails) - `description` updated.
+* [`Audits.DeprecationIssueType`](https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-DeprecationIssueType) - The enum's `XRSupportsSession` _removed_. The enum's `PaymentRequestBasicCard` _updated_. The enum's `PictureSourceSrc` _updated_. The enum's `PrefixedCancelAnimationFrame` _updated_. The enum's `PrefixedRequestAnimationFrame` _updated_. The enum's `PrefixedStorageInfo` _updated_. The enum's `PrefixedVideoDisplayingFullscreen` _updated_. The enum's `PrefixedVideoEnterFullscreen` _updated_. The enum's `PrefixedVideoEnterFullScreen` _updated_. The enum's `PrefixedVideoExitFullscreen` _updated_. The enum's `PrefixedVideoExitFullScreen` _updated_. The enum's `PrefixedVideoSupportsFullscreen` _updated_. The enum's `RangeExpand` _updated_. The enum's `RequestedSubresourceWithEmbeddedCredentials` _updated_. The enum's `RTCConstraintEnableDtlsSrtpFalse` _updated_. The enum's `RTCConstraintEnableDtlsSrtpTrue` _updated_. The enum's `RTCPeerConnectionComplexPlanBSdpUsingDefaultSdpSemantics` _updated_. The enum's `RTCPeerConnectionSdpSemanticsPlanB` _updated_. The enum's `RtcpMuxPolicyNegotiate` _updated_. The enum's `SharedArrayBufferConstructedWithoutIsolation` _updated_. The enum's `TextToSpeech_DisallowedByAutoplay` _updated_. The enum's `V8SharedArrayBufferConstructedInExtensionWithoutIsolation` _updated_. The enum's `XHRJSONEncodingDetection` _updated_. The enum's `XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload` _updated_.
+#### `Network`: modified type
+* [`Network.CrossOriginOpenerPolicyValue`](https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CrossOriginOpenerPolicyValue) - The enum's `UnsafeNone` _updated_. The enum's `SameOriginPlusCoep` _updated_. The enum's `SameOriginAllowPopupsPlusCoep` _updated_. The enum's `RestrictPropertiesPlusCoep` _added_.
+#### `Page`: modified event
+* [`Page.frameAttached`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#event-frameAttached) - The parameters's `adScriptId` _added_.
+#### `Page`: new type
+* [`Page.AdScriptId`](https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-AdScriptId)
+
+
 ## Roll protocol to r1008748
 ###### _2022-05-30 00:15:13_ | Diff: [bc53a73...a56eb21](https://github.com/ChromeDevTools/devtools-protocol/compare/bc53a73...a56eb21)
 #### `Page`: modified type

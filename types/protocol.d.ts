@@ -437,11 +437,20 @@ export namespace Protocol {
             breakpointId: BreakpointId;
         }
 
+        export const enum RestartFrameRequestMode {
+            StepInto = 'StepInto',
+        }
+
         export interface RestartFrameRequest {
             /**
              * Call frame identifier to evaluate on.
              */
             callFrameId: CallFrameId;
+            /**
+             * The `mode` parameter must be present and set to 'StepInto', otherwise
+             * `restartFrame` will error out. (RestartFrameRequestMode enum)
+             */
+            mode?: ('StepInto');
         }
 
         export interface RestartFrameResponse {
@@ -1077,11 +1086,18 @@ export namespace Protocol {
              * when the tracking is stopped.
              */
             reportProgress?: boolean;
+            /**
+             * Deprecated in favor of `exposeInternals`.
+             */
             treatGlobalObjectsAsRoots?: boolean;
             /**
              * If true, numerical values are included in the snapshot
              */
             captureNumericValue?: boolean;
+            /**
+             * If true, exposes internals of the snapshot.
+             */
+            exposeInternals?: boolean;
         }
 
         export interface TakeHeapSnapshotRequest {
@@ -1090,13 +1106,18 @@ export namespace Protocol {
              */
             reportProgress?: boolean;
             /**
-             * If true, a raw snapshot without artificial roots will be generated
+             * If true, a raw snapshot without artificial roots will be generated.
+             * Deprecated in favor of `exposeInternals`.
              */
             treatGlobalObjectsAsRoots?: boolean;
             /**
              * If true, numerical values are included in the snapshot
              */
             captureNumericValue?: boolean;
+            /**
+             * If true, exposes internals of the snapshot.
+             */
+            exposeInternals?: boolean;
         }
 
         export interface AddHeapSnapshotChunkEvent {
@@ -3334,7 +3355,7 @@ export namespace Protocol {
 
         /**
          * Details for issues around "Attribution Reporting API" usage.
-         * Explainer: https://github.com/WICG/conversion-measurement-api
+         * Explainer: https://github.com/WICG/attribution-reporting-api
          */
         export interface AttributionReportingIssueDetails {
             violationType: AttributionReportingIssueType;
@@ -3378,7 +3399,7 @@ export namespace Protocol {
             frameId?: Page.FrameId;
         }
 
-        export type DeprecationIssueType = ('AuthorizationCoveredByWildcard' | 'CanRequestURLHTTPContainingNewline' | 'ChromeLoadTimesConnectionInfo' | 'ChromeLoadTimesFirstPaintAfterLoadTime' | 'ChromeLoadTimesWasAlternateProtocolAvailable' | 'CookieWithTruncatingChar' | 'CrossOriginAccessBasedOnDocumentDomain' | 'CrossOriginWindowAlert' | 'CrossOriginWindowConfirm' | 'CSSSelectorInternalMediaControlsOverlayCastButton' | 'DeprecationExample' | 'DocumentDomainSettingWithoutOriginAgentClusterHeader' | 'EventPath' | 'GeolocationInsecureOrigin' | 'GeolocationInsecureOriginDeprecatedNotRemoved' | 'GetUserMediaInsecureOrigin' | 'HostCandidateAttributeGetter' | 'InsecurePrivateNetworkSubresourceRequest' | 'LegacyConstraintGoogIPv6' | 'LocalCSSFileExtensionRejected' | 'MediaSourceAbortRemove' | 'MediaSourceDurationTruncatingBuffered' | 'NoSysexWebMIDIWithoutPermission' | 'NotificationInsecureOrigin' | 'NotificationPermissionRequestedIframe' | 'ObsoleteWebRtcCipherSuite' | 'PaymentRequestBasicCard' | 'PictureSourceSrc' | 'PrefixedCancelAnimationFrame' | 'PrefixedRequestAnimationFrame' | 'PrefixedStorageInfo' | 'PrefixedVideoDisplayingFullscreen' | 'PrefixedVideoEnterFullscreen' | 'PrefixedVideoEnterFullScreen' | 'PrefixedVideoExitFullscreen' | 'PrefixedVideoExitFullScreen' | 'PrefixedVideoSupportsFullscreen' | 'RangeExpand' | 'RequestedSubresourceWithEmbeddedCredentials' | 'RTCConstraintEnableDtlsSrtpFalse' | 'RTCConstraintEnableDtlsSrtpTrue' | 'RTCPeerConnectionComplexPlanBSdpUsingDefaultSdpSemantics' | 'RTCPeerConnectionSdpSemanticsPlanB' | 'RtcpMuxPolicyNegotiate' | 'SharedArrayBufferConstructedWithoutIsolation' | 'TextToSpeech_DisallowedByAutoplay' | 'V8SharedArrayBufferConstructedInExtensionWithoutIsolation' | 'XHRJSONEncodingDetection' | 'XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload' | 'XRSupportsSession');
+        export type DeprecationIssueType = ('AuthorizationCoveredByWildcard' | 'CanRequestURLHTTPContainingNewline' | 'ChromeLoadTimesConnectionInfo' | 'ChromeLoadTimesFirstPaintAfterLoadTime' | 'ChromeLoadTimesWasAlternateProtocolAvailable' | 'CookieWithTruncatingChar' | 'CrossOriginAccessBasedOnDocumentDomain' | 'CrossOriginWindowAlert' | 'CrossOriginWindowConfirm' | 'CSSSelectorInternalMediaControlsOverlayCastButton' | 'DeprecationExample' | 'DocumentDomainSettingWithoutOriginAgentClusterHeader' | 'EventPath' | 'GeolocationInsecureOrigin' | 'GeolocationInsecureOriginDeprecatedNotRemoved' | 'GetUserMediaInsecureOrigin' | 'HostCandidateAttributeGetter' | 'InsecurePrivateNetworkSubresourceRequest' | 'LegacyConstraintGoogIPv6' | 'LocalCSSFileExtensionRejected' | 'MediaSourceAbortRemove' | 'MediaSourceDurationTruncatingBuffered' | 'NoSysexWebMIDIWithoutPermission' | 'NotificationInsecureOrigin' | 'NotificationPermissionRequestedIframe' | 'ObsoleteWebRtcCipherSuite' | 'PictureSourceSrc' | 'PrefixedCancelAnimationFrame' | 'PrefixedRequestAnimationFrame' | 'PrefixedStorageInfo' | 'PrefixedVideoDisplayingFullscreen' | 'PrefixedVideoEnterFullscreen' | 'PrefixedVideoEnterFullScreen' | 'PrefixedVideoExitFullscreen' | 'PrefixedVideoExitFullScreen' | 'PrefixedVideoSupportsFullscreen' | 'RangeExpand' | 'RequestedSubresourceWithEmbeddedCredentials' | 'RTCConstraintEnableDtlsSrtpFalse' | 'RTCConstraintEnableDtlsSrtpTrue' | 'RTCPeerConnectionComplexPlanBSdpUsingDefaultSdpSemantics' | 'RTCPeerConnectionSdpSemanticsPlanB' | 'RtcpMuxPolicyNegotiate' | 'SharedArrayBufferConstructedWithoutIsolation' | 'TextToSpeech_DisallowedByAutoplay' | 'V8SharedArrayBufferConstructedInExtensionWithoutIsolation' | 'XHRJSONEncodingDetection' | 'XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload' | 'XRSupportsSession');
 
         /**
          * This issue tracks information needed to print a deprecation message.
@@ -10123,7 +10144,7 @@ export namespace Protocol {
             privateNetworkRequestPolicy: PrivateNetworkRequestPolicy;
         }
 
-        export type CrossOriginOpenerPolicyValue = ('SameOrigin' | 'SameOriginAllowPopups' | 'UnsafeNone' | 'SameOriginPlusCoep' | 'SameOriginAllowPopupsPlusCoep');
+        export type CrossOriginOpenerPolicyValue = ('SameOrigin' | 'SameOriginAllowPopups' | 'RestrictProperties' | 'UnsafeNone' | 'SameOriginPlusCoep' | 'RestrictPropertiesPlusCoep');
 
         export interface CrossOriginOpenerPolicyStatus {
             value: CrossOriginOpenerPolicyValue;
@@ -12071,6 +12092,22 @@ export namespace Protocol {
         }
 
         /**
+         * Identifies the bottom-most script which caused the frame to be labelled
+         * as an ad.
+         */
+        export interface AdScriptId {
+            /**
+             * Script Id of the bottom-most script which caused the frame to be labelled
+             * as an ad.
+             */
+            scriptId: Runtime.ScriptId;
+            /**
+             * Id of adScriptId's debugger.
+             */
+            debuggerId: Runtime.UniqueDebuggerId;
+        }
+
+        /**
          * Indicates whether the frame is a secure context and why it is the case.
          */
         export type SecureContextType = ('Secure' | 'SecureLocalhost' | 'InsecureScheme' | 'InsecureAncestor');
@@ -13381,6 +13418,11 @@ export namespace Protocol {
              * JavaScript stack trace of when frame was attached, only set if frame initiated from script.
              */
             stack?: Runtime.StackTrace;
+            /**
+             * Identifies the bottom-most script which caused the frame to be labelled
+             * as an ad. Only sent if frame is labelled as an ad and id is available.
+             */
+            adScriptId?: AdScriptId;
         }
 
         /**
