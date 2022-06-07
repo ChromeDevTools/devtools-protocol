@@ -3,9 +3,10 @@
 # This script rolls new protocol files into https://github.com/ChromeDevTools/devtools-protocol
 # This script is intended to be run on a regular schedule, e.g. via cron.
 
-set -x
+set -euxo pipefail
 
 # This location is very *machine specific*
+# Ideally we'd only need just the frontend repo and its deps, but we need the cr rev. And its pretty much only avail in the full repo
 chromium_src_path="$HOME/chromium-tot/src"
 
 
@@ -25,21 +26,15 @@ cd "$chromium_src_path" || exit 1
 # get latest from chromium main
 git fetch origin main
 git checkout -f origin/main
-env GYP_DEFINES=disable_nacl=1 gclient sync --jobs=70 --nohooks --delete_unversioned_trees --reset
+gclient sync --nohooks --delete_unversioned_trees --reset --force # no hooks needed.
 
+python_bin="$chromium_src_path/third_party/depot_tools/vpython3"
 
-# This path was used previous to https://chromium-review.googlesource.com/c/chromium/src/+/1898538 landing
-old_browser_protocol_path="$chromium_src_path/third_party/blink/renderer/core/inspector/browser_protocol.pdl"
 browser_protocol_path="$chromium_src_path/third_party/blink/public/devtools_protocol/browser_protocol.pdl"
-# This path was used previous to https://chromium-review.googlesource.com/c/v8/v8/+/1649355 landing
-old_js_protocol_path="$chromium_src_path/v8/src/inspector/js_protocol.pdl"
 js_protocol_path="$chromium_src_path/v8/include/js_protocol.pdl"
 
 # copy the two protocol.pdl files over.
-cp "$old_js_protocol_path" "$protocol_repo_path/pdl"
 cp "$js_protocol_path" "$protocol_repo_path/pdl"
-
-cp "$old_browser_protocol_path" "$protocol_repo_path/pdl"
 cp "$browser_protocol_path" "$protocol_repo_path/pdl"
 
 # extract cr revision number
@@ -48,8 +43,8 @@ commit_rev=$(echo "$commit_pos_line" | grep -E -o "\d+")
 
 # generate json from pdl
 convert_script="$protocol_repo_path/scripts/inspector_protocol/convert_protocol_to_json.py"
-python2.7 "$convert_script" --map_binary_to_string=true "$protocol_repo_path/pdl/browser_protocol.pdl" "$protocol_repo_path/json/browser_protocol.json"
-python2.7 "$convert_script" --map_binary_to_string=true "$protocol_repo_path/pdl/js_protocol.pdl" "$protocol_repo_path/json/js_protocol.json"
+"$python_bin" "$convert_script" --map_binary_to_string=true "$protocol_repo_path/pdl/browser_protocol.pdl" "$protocol_repo_path/json/browser_protocol.json"
+"$python_bin" "$convert_script" --map_binary_to_string=true "$protocol_repo_path/pdl/js_protocol.pdl" "$protocol_repo_path/json/js_protocol.json"
 # The conversion script leaves json files next to the pdl's. Because reasons.
 rm -f "$protocol_repo_path"/pdl/*.json
 
