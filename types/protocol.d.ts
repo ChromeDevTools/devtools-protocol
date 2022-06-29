@@ -656,6 +656,13 @@ export namespace Protocol {
             newValue: Runtime.CallArgument;
         }
 
+        export const enum SetScriptSourceResponseStatus {
+            Ok = 'Ok',
+            CompileError = 'CompileError',
+            BlockedByActiveGenerator = 'BlockedByActiveGenerator',
+            BlockedByActiveFunction = 'BlockedByActiveFunction',
+        }
+
         export interface SetScriptSourceRequest {
             /**
              * Id of the script to edit.
@@ -670,6 +677,11 @@ export namespace Protocol {
              * description without actually modifying the code.
              */
             dryRun?: boolean;
+            /**
+             * If true, then `scriptSource` is allowed to change the function on top of the stack
+             * as long as the top-most stack frame is the only activation of that function.
+             */
+            allowTopFrameEditing?: boolean;
         }
 
         export interface SetScriptSourceResponse {
@@ -690,7 +702,13 @@ export namespace Protocol {
              */
             asyncStackTraceId?: Runtime.StackTraceId;
             /**
-             * Exception details if any.
+             * Whether the operation was successful or not. Only `Ok` denotes a
+             * successful live edit while the other enum variants denote why
+             * the live edit failed. (SetScriptSourceResponseStatus enum)
+             */
+            status: ('Ok' | 'CompileError' | 'BlockedByActiveGenerator' | 'BlockedByActiveFunction');
+            /**
+             * Exception details if any. Only present when `status` is `CompileError`.
              */
             exceptionDetails?: Runtime.ExceptionDetails;
         }
@@ -3399,7 +3417,7 @@ export namespace Protocol {
             frameId?: Page.FrameId;
         }
 
-        export type DeprecationIssueType = ('AuthorizationCoveredByWildcard' | 'CanRequestURLHTTPContainingNewline' | 'ChromeLoadTimesConnectionInfo' | 'ChromeLoadTimesFirstPaintAfterLoadTime' | 'ChromeLoadTimesWasAlternateProtocolAvailable' | 'CookieWithTruncatingChar' | 'CrossOriginAccessBasedOnDocumentDomain' | 'CrossOriginWindowAlert' | 'CrossOriginWindowConfirm' | 'CSSSelectorInternalMediaControlsOverlayCastButton' | 'DeprecationExample' | 'DocumentDomainSettingWithoutOriginAgentClusterHeader' | 'EventPath' | 'GeolocationInsecureOrigin' | 'GeolocationInsecureOriginDeprecatedNotRemoved' | 'GetUserMediaInsecureOrigin' | 'HostCandidateAttributeGetter' | 'InsecurePrivateNetworkSubresourceRequest' | 'LegacyConstraintGoogIPv6' | 'LocalCSSFileExtensionRejected' | 'MediaSourceAbortRemove' | 'MediaSourceDurationTruncatingBuffered' | 'NoSysexWebMIDIWithoutPermission' | 'NotificationInsecureOrigin' | 'NotificationPermissionRequestedIframe' | 'ObsoleteWebRtcCipherSuite' | 'PictureSourceSrc' | 'PrefixedCancelAnimationFrame' | 'PrefixedRequestAnimationFrame' | 'PrefixedStorageInfo' | 'PrefixedVideoDisplayingFullscreen' | 'PrefixedVideoEnterFullscreen' | 'PrefixedVideoEnterFullScreen' | 'PrefixedVideoExitFullscreen' | 'PrefixedVideoExitFullScreen' | 'PrefixedVideoSupportsFullscreen' | 'RangeExpand' | 'RequestedSubresourceWithEmbeddedCredentials' | 'RTCConstraintEnableDtlsSrtpFalse' | 'RTCConstraintEnableDtlsSrtpTrue' | 'RTCPeerConnectionComplexPlanBSdpUsingDefaultSdpSemantics' | 'RTCPeerConnectionSdpSemanticsPlanB' | 'RtcpMuxPolicyNegotiate' | 'SharedArrayBufferConstructedWithoutIsolation' | 'TextToSpeech_DisallowedByAutoplay' | 'V8SharedArrayBufferConstructedInExtensionWithoutIsolation' | 'XHRJSONEncodingDetection' | 'XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload' | 'XRSupportsSession');
+        export type DeprecationIssueType = ('AuthorizationCoveredByWildcard' | 'CanRequestURLHTTPContainingNewline' | 'ChromeLoadTimesConnectionInfo' | 'ChromeLoadTimesFirstPaintAfterLoadTime' | 'ChromeLoadTimesWasAlternateProtocolAvailable' | 'CookieWithTruncatingChar' | 'CrossOriginAccessBasedOnDocumentDomain' | 'CrossOriginWindowAlert' | 'CrossOriginWindowConfirm' | 'CSSSelectorInternalMediaControlsOverlayCastButton' | 'DeprecationExample' | 'DocumentDomainSettingWithoutOriginAgentClusterHeader' | 'EventPath' | 'GeolocationInsecureOrigin' | 'GeolocationInsecureOriginDeprecatedNotRemoved' | 'GetUserMediaInsecureOrigin' | 'HostCandidateAttributeGetter' | 'IdentityInCanMakePaymentEvent' | 'InsecurePrivateNetworkSubresourceRequest' | 'LegacyConstraintGoogIPv6' | 'LocalCSSFileExtensionRejected' | 'MediaSourceAbortRemove' | 'MediaSourceDurationTruncatingBuffered' | 'NoSysexWebMIDIWithoutPermission' | 'NotificationInsecureOrigin' | 'NotificationPermissionRequestedIframe' | 'ObsoleteWebRtcCipherSuite' | 'OpenWebDatabaseInsecureContext' | 'PictureSourceSrc' | 'PrefixedCancelAnimationFrame' | 'PrefixedRequestAnimationFrame' | 'PrefixedStorageInfo' | 'PrefixedVideoDisplayingFullscreen' | 'PrefixedVideoEnterFullscreen' | 'PrefixedVideoEnterFullScreen' | 'PrefixedVideoExitFullscreen' | 'PrefixedVideoExitFullScreen' | 'PrefixedVideoSupportsFullscreen' | 'RangeExpand' | 'RequestedSubresourceWithEmbeddedCredentials' | 'RTCConstraintEnableDtlsSrtpFalse' | 'RTCConstraintEnableDtlsSrtpTrue' | 'RTCPeerConnectionComplexPlanBSdpUsingDefaultSdpSemantics' | 'RTCPeerConnectionSdpSemanticsPlanB' | 'RtcpMuxPolicyNegotiate' | 'SharedArrayBufferConstructedWithoutIsolation' | 'TextToSpeech_DisallowedByAutoplay' | 'V8SharedArrayBufferConstructedInExtensionWithoutIsolation' | 'XHRJSONEncodingDetection' | 'XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload' | 'XRSupportsSession');
 
         /**
          * This issue tracks information needed to print a deprecation message.
@@ -4022,6 +4040,10 @@ export namespace Protocol {
              */
             pseudoType: DOM.PseudoType;
             /**
+             * Pseudo element custom ident.
+             */
+            pseudoIdentifier?: string;
+            /**
              * Matches of CSS rules applicable to the pseudo style.
              */
             matches: RuleMatch[];
@@ -4215,6 +4237,11 @@ export namespace Protocol {
              * with the innermost layer and going outwards.
              */
             layers?: CSSLayer[];
+            /**
+             * @scope CSS at-rule array.
+             * The array enumerates @scope at-rules starting with the innermost one, going outwards.
+             */
+            scopes?: CSSScope[];
         }
 
         /**
@@ -4481,6 +4508,25 @@ export namespace Protocol {
         }
 
         /**
+         * CSS Scope at-rule descriptor.
+         */
+        export interface CSSScope {
+            /**
+             * Scope rule text.
+             */
+            text: string;
+            /**
+             * The associated rule header range in the enclosing stylesheet (if
+             * available).
+             */
+            range?: SourceRange;
+            /**
+             * Identifier of the stylesheet containing this object (if exists).
+             */
+            styleSheetId?: StyleSheetId;
+        }
+
+        /**
          * CSS Layer at-rule descriptor.
          */
         export interface CSSLayer {
@@ -4587,6 +4633,10 @@ export namespace Protocol {
              * The font-stretch.
              */
             fontStretch: string;
+            /**
+             * The font-display.
+             */
+            fontDisplay: string;
             /**
              * The unicode-range.
              */
@@ -4910,6 +4960,19 @@ export namespace Protocol {
              * The resulting CSS Supports rule after modification.
              */
             supports: CSSSupports;
+        }
+
+        export interface SetScopeTextRequest {
+            styleSheetId: StyleSheetId;
+            range: SourceRange;
+            text: string;
+        }
+
+        export interface SetScopeTextResponse {
+            /**
+             * The resulting CSS Scope rule after modification.
+             */
+            scope: CSSScope;
         }
 
         export interface SetRuleSelectorRequest {
@@ -5363,6 +5426,11 @@ export namespace Protocol {
              * Pseudo element type for this node.
              */
             pseudoType?: PseudoType;
+            /**
+             * Pseudo element identifier for this node. Only present if there is a
+             * valid pseudoType.
+             */
+            pseudoIdentifier?: string;
             /**
              * Shadow root type.
              */
@@ -5959,6 +6027,13 @@ export namespace Protocol {
         export interface QuerySelectorAllResponse {
             /**
              * Query selector result.
+             */
+            nodeIds: NodeId[];
+        }
+
+        export interface GetTopLayerElementsResponse {
+            /**
+             * NodeIds of top layer elements
              */
             nodeIds: NodeId[];
         }
@@ -6944,6 +7019,11 @@ export namespace Protocol {
              * Type of a pseudo element node.
              */
             pseudoType?: RareStringData;
+            /**
+             * Pseudo element identifier for this node. Only present if there is a
+             * valid pseudoType.
+             */
+            pseudoIdentifier?: RareStringData;
             /**
              * Whether this DOM node responds to mouse clicks. This includes nodes that have had click
              * event listeners attached via JavaScript as well as anchor tags that naturally navigate when
@@ -12123,12 +12203,12 @@ export namespace Protocol {
          * All Permissions Policy features. This enum should match the one defined
          * in third_party/blink/renderer/core/permissions_policy/permissions_policy_features.json5.
          */
-        export type PermissionsPolicyFeature = ('accelerometer' | 'ambient-light-sensor' | 'attribution-reporting' | 'autoplay' | 'bluetooth' | 'browsing-topics' | 'camera' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-prefers-color-scheme' | 'ch-rtt' | 'ch-save-data' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-full' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-reduced' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'cross-origin-isolated' | 'direct-sockets' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'hid' | 'idle-detection' | 'interest-cohort' | 'join-ad-interest-group' | 'keyboard-map' | 'local-fonts' | 'magnetometer' | 'microphone' | 'midi' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'publickey-credentials-get' | 'run-ad-auction' | 'screen-wake-lock' | 'serial' | 'shared-autofill' | 'storage-access-api' | 'sync-xhr' | 'trust-token-redemption' | 'usb' | 'vertical-scroll' | 'web-share' | 'window-placement' | 'xr-spatial-tracking');
+        export type PermissionsPolicyFeature = ('accelerometer' | 'ambient-light-sensor' | 'attribution-reporting' | 'autoplay' | 'bluetooth' | 'browsing-topics' | 'camera' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-prefers-color-scheme' | 'ch-rtt' | 'ch-save-data' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-full' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-reduced' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'cross-origin-isolated' | 'direct-sockets' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'federated-credentials' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'hid' | 'idle-detection' | 'interest-cohort' | 'join-ad-interest-group' | 'keyboard-map' | 'local-fonts' | 'magnetometer' | 'microphone' | 'midi' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'publickey-credentials-get' | 'run-ad-auction' | 'screen-wake-lock' | 'serial' | 'shared-autofill' | 'storage-access-api' | 'sync-xhr' | 'trust-token-redemption' | 'usb' | 'vertical-scroll' | 'web-share' | 'window-placement' | 'xr-spatial-tracking');
 
         /**
          * Reason for a permissions policy feature to be disabled.
          */
-        export type PermissionsPolicyBlockReason = ('Header' | 'IframeAttribute' | 'InFencedFrameTree');
+        export type PermissionsPolicyBlockReason = ('Header' | 'IframeAttribute' | 'InFencedFrameTree' | 'InIsolatedApp');
 
         export interface PermissionsPolicyBlockLocator {
             frameId: FrameId;
@@ -13393,13 +13473,13 @@ export namespace Protocol {
              */
             frameId: FrameId;
             /**
-             * Input node id.
-             */
-            backendNodeId: DOM.BackendNodeId;
-            /**
              * Input mode. (FileChooserOpenedEventMode enum)
              */
             mode: ('selectSingle' | 'selectMultiple');
+            /**
+             * Input node id. Only present for file choosers opened via an <input type="file"> element.
+             */
+            backendNodeId?: DOM.BackendNodeId;
         }
 
         /**
@@ -15199,6 +15279,11 @@ export namespace Protocol {
              * Controls how the trace buffer stores data. (TraceConfigRecordMode enum)
              */
             recordMode?: ('recordUntilFull' | 'recordContinuously' | 'recordAsMuchAsPossible' | 'echoToConsole');
+            /**
+             * Size of the trace buffer in kilobytes. If not specified or zero is passed, a default value
+             * of 200 MB would be used.
+             */
+            traceBufferSizeInKb?: number;
             /**
              * Turns on JavaScript stack sampling.
              */

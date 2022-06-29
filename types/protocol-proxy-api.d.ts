@@ -274,6 +274,12 @@ export namespace ProtocolProxyApi {
 
         /**
          * Edits JavaScript source live.
+         * 
+         * In general, functions that are currently on the stack can not be edited with
+         * a single exception: If the edited function is the top-most stack frame and
+         * that is the only activation of that function on the stack. In this case
+         * the live edit will be successful and a `Debugger.restartFrame` for the
+         * top-most function is automatically triggered.
          */
         setScriptSource(params: Protocol.Debugger.SetScriptSourceRequest): Promise<Protocol.Debugger.SetScriptSourceResponse>;
 
@@ -1034,6 +1040,11 @@ export namespace ProtocolProxyApi {
         setSupportsText(params: Protocol.CSS.SetSupportsTextRequest): Promise<Protocol.CSS.SetSupportsTextResponse>;
 
         /**
+         * Modifies the expression of a scope at-rule.
+         */
+        setScopeText(params: Protocol.CSS.SetScopeTextRequest): Promise<Protocol.CSS.SetScopeTextResponse>;
+
+        /**
          * Modifies the rule selector.
          */
         setRuleSelector(params: Protocol.CSS.SetRuleSelectorRequest): Promise<Protocol.CSS.SetRuleSelectorResponse>;
@@ -1330,6 +1341,13 @@ export namespace ProtocolProxyApi {
         querySelectorAll(params: Protocol.DOM.QuerySelectorAllRequest): Promise<Protocol.DOM.QuerySelectorAllResponse>;
 
         /**
+         * Returns NodeIds of current top layer elements.
+         * Top layer is rendered closest to the user within a viewport, therefore its elements always
+         * appear on top of all other content.
+         */
+        getTopLayerElements(): Promise<Protocol.DOM.GetTopLayerElementsResponse>;
+
+        /**
          * Re-does the last undone action.
          */
         redo(): Promise<void>;
@@ -1488,6 +1506,11 @@ export namespace ProtocolProxyApi {
          * Called when a pseudo element is added to an element.
          */
         on(event: 'pseudoElementAdded', listener: (params: Protocol.DOM.PseudoElementAddedEvent) => void): void;
+
+        /**
+         * Called when top layer elements are changed.
+         */
+        on(event: 'topLayerElementsUpdated', listener: () => void): void;
 
         /**
          * Called when a pseudo element is removed from an element.

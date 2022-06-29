@@ -1,7 +1,7 @@
 
 
 ## Roll protocol to r1011705
-###### _2022-06-07 15:28:08_ | Diff: [a5e142a...06f6515](https://github.com/ChromeDevTools/devtools-protocol/compare/a5e142a...06f6515)
+###### _2022-06-07 15:28:08_ | Diff: [a5e142a...a0e4067](https://github.com/ChromeDevTools/devtools-protocol/compare/a5e142a...a0e4067)
 #### `Debugger`: modified command
 * [`Debugger.restartFrame`](https://chromedevtools.github.io/devtools-protocol/tot/Debugger/#method-restartFrame) - `deprecated` removed. The `asyncStackTraceId` in the return value had `experimental` _removed_. `description` updated. The parameters's `mode` _added_. The return value's `deprecated` _added_ (3 times).
 #### `HeapProfiler`: modified commands
