@@ -126,6 +126,8 @@ export namespace ProtocolProxyApi {
          * Issued when new console message is added.
          */
         on(event: 'messageAdded', listener: (params: Protocol.Console.MessageAddedEvent) => void): void;
+        once(event: 'messageAdded', listener: (params: Protocol.Console.MessageAddedEvent) => void): void;
+        off(event: 'messageAdded', listener: (params: Protocol.Console.MessageAddedEvent) => void): void;
 
     }
 
@@ -313,27 +315,37 @@ export namespace ProtocolProxyApi {
          * Fired when breakpoint is resolved to an actual script and location.
          */
         on(event: 'breakpointResolved', listener: (params: Protocol.Debugger.BreakpointResolvedEvent) => void): void;
+        once(event: 'breakpointResolved', listener: (params: Protocol.Debugger.BreakpointResolvedEvent) => void): void;
+        off(event: 'breakpointResolved', listener: (params: Protocol.Debugger.BreakpointResolvedEvent) => void): void;
 
         /**
          * Fired when the virtual machine stopped on breakpoint or exception or any other stop criteria.
          */
         on(event: 'paused', listener: (params: Protocol.Debugger.PausedEvent) => void): void;
+        once(event: 'paused', listener: (params: Protocol.Debugger.PausedEvent) => void): void;
+        off(event: 'paused', listener: (params: Protocol.Debugger.PausedEvent) => void): void;
 
         /**
          * Fired when the virtual machine resumed execution.
          */
         on(event: 'resumed', listener: () => void): void;
+        once(event: 'resumed', listener: () => void): void;
+        off(event: 'resumed', listener: () => void): void;
 
         /**
          * Fired when virtual machine fails to parse the script.
          */
         on(event: 'scriptFailedToParse', listener: (params: Protocol.Debugger.ScriptFailedToParseEvent) => void): void;
+        once(event: 'scriptFailedToParse', listener: (params: Protocol.Debugger.ScriptFailedToParseEvent) => void): void;
+        off(event: 'scriptFailedToParse', listener: (params: Protocol.Debugger.ScriptFailedToParseEvent) => void): void;
 
         /**
          * Fired when virtual machine parses script. This event is also fired for all known and uncollected
          * scripts upon enabling debugger.
          */
         on(event: 'scriptParsed', listener: (params: Protocol.Debugger.ScriptParsedEvent) => void): void;
+        once(event: 'scriptParsed', listener: (params: Protocol.Debugger.ScriptParsedEvent) => void): void;
+        off(event: 'scriptParsed', listener: (params: Protocol.Debugger.ScriptParsedEvent) => void): void;
 
     }
 
@@ -367,11 +379,15 @@ export namespace ProtocolProxyApi {
         takeHeapSnapshot(params: Protocol.HeapProfiler.TakeHeapSnapshotRequest): Promise<void>;
 
         on(event: 'addHeapSnapshotChunk', listener: (params: Protocol.HeapProfiler.AddHeapSnapshotChunkEvent) => void): void;
+        once(event: 'addHeapSnapshotChunk', listener: (params: Protocol.HeapProfiler.AddHeapSnapshotChunkEvent) => void): void;
+        off(event: 'addHeapSnapshotChunk', listener: (params: Protocol.HeapProfiler.AddHeapSnapshotChunkEvent) => void): void;
 
         /**
          * If heap objects tracking has been started then backend may send update for one or more fragments
          */
         on(event: 'heapStatsUpdate', listener: (params: Protocol.HeapProfiler.HeapStatsUpdateEvent) => void): void;
+        once(event: 'heapStatsUpdate', listener: (params: Protocol.HeapProfiler.HeapStatsUpdateEvent) => void): void;
+        off(event: 'heapStatsUpdate', listener: (params: Protocol.HeapProfiler.HeapStatsUpdateEvent) => void): void;
 
         /**
          * If heap objects tracking has been started then backend regularly sends a current value for last
@@ -379,10 +395,16 @@ export namespace ProtocolProxyApi {
          * then one or more heapStatsUpdate events will be sent before a new lastSeenObjectId event.
          */
         on(event: 'lastSeenObjectId', listener: (params: Protocol.HeapProfiler.LastSeenObjectIdEvent) => void): void;
+        once(event: 'lastSeenObjectId', listener: (params: Protocol.HeapProfiler.LastSeenObjectIdEvent) => void): void;
+        off(event: 'lastSeenObjectId', listener: (params: Protocol.HeapProfiler.LastSeenObjectIdEvent) => void): void;
 
         on(event: 'reportHeapSnapshotProgress', listener: (params: Protocol.HeapProfiler.ReportHeapSnapshotProgressEvent) => void): void;
+        once(event: 'reportHeapSnapshotProgress', listener: (params: Protocol.HeapProfiler.ReportHeapSnapshotProgressEvent) => void): void;
+        off(event: 'reportHeapSnapshotProgress', listener: (params: Protocol.HeapProfiler.ReportHeapSnapshotProgressEvent) => void): void;
 
         on(event: 'resetProfiles', listener: () => void): void;
+        once(event: 'resetProfiles', listener: () => void): void;
+        off(event: 'resetProfiles', listener: () => void): void;
 
     }
 
@@ -441,11 +463,15 @@ export namespace ProtocolProxyApi {
         takeTypeProfile(): Promise<Protocol.Profiler.TakeTypeProfileResponse>;
 
         on(event: 'consoleProfileFinished', listener: (params: Protocol.Profiler.ConsoleProfileFinishedEvent) => void): void;
+        once(event: 'consoleProfileFinished', listener: (params: Protocol.Profiler.ConsoleProfileFinishedEvent) => void): void;
+        off(event: 'consoleProfileFinished', listener: (params: Protocol.Profiler.ConsoleProfileFinishedEvent) => void): void;
 
         /**
          * Sent when new profile recording is started using console.profile() call.
          */
         on(event: 'consoleProfileStarted', listener: (params: Protocol.Profiler.ConsoleProfileStartedEvent) => void): void;
+        once(event: 'consoleProfileStarted', listener: (params: Protocol.Profiler.ConsoleProfileStartedEvent) => void): void;
+        off(event: 'consoleProfileStarted', listener: (params: Protocol.Profiler.ConsoleProfileStartedEvent) => void): void;
 
         /**
          * Reports coverage delta since the last poll (either from an event like this, or from
@@ -454,6 +480,8 @@ export namespace ProtocolProxyApi {
          * trigger collection of coverage data immediately at a certain point in time.
          */
         on(event: 'preciseCoverageDeltaUpdate', listener: (params: Protocol.Profiler.PreciseCoverageDeltaUpdateEvent) => void): void;
+        once(event: 'preciseCoverageDeltaUpdate', listener: (params: Protocol.Profiler.PreciseCoverageDeltaUpdateEvent) => void): void;
+        off(event: 'preciseCoverageDeltaUpdate', listener: (params: Protocol.Profiler.PreciseCoverageDeltaUpdateEvent) => void): void;
 
     }
 
@@ -584,42 +612,58 @@ export namespace ProtocolProxyApi {
          * Notification is issued every time when binding is called.
          */
         on(event: 'bindingCalled', listener: (params: Protocol.Runtime.BindingCalledEvent) => void): void;
+        once(event: 'bindingCalled', listener: (params: Protocol.Runtime.BindingCalledEvent) => void): void;
+        off(event: 'bindingCalled', listener: (params: Protocol.Runtime.BindingCalledEvent) => void): void;
 
         /**
          * Issued when console API was called.
          */
         on(event: 'consoleAPICalled', listener: (params: Protocol.Runtime.ConsoleAPICalledEvent) => void): void;
+        once(event: 'consoleAPICalled', listener: (params: Protocol.Runtime.ConsoleAPICalledEvent) => void): void;
+        off(event: 'consoleAPICalled', listener: (params: Protocol.Runtime.ConsoleAPICalledEvent) => void): void;
 
         /**
          * Issued when unhandled exception was revoked.
          */
         on(event: 'exceptionRevoked', listener: (params: Protocol.Runtime.ExceptionRevokedEvent) => void): void;
+        once(event: 'exceptionRevoked', listener: (params: Protocol.Runtime.ExceptionRevokedEvent) => void): void;
+        off(event: 'exceptionRevoked', listener: (params: Protocol.Runtime.ExceptionRevokedEvent) => void): void;
 
         /**
          * Issued when exception was thrown and unhandled.
          */
         on(event: 'exceptionThrown', listener: (params: Protocol.Runtime.ExceptionThrownEvent) => void): void;
+        once(event: 'exceptionThrown', listener: (params: Protocol.Runtime.ExceptionThrownEvent) => void): void;
+        off(event: 'exceptionThrown', listener: (params: Protocol.Runtime.ExceptionThrownEvent) => void): void;
 
         /**
          * Issued when new execution context is created.
          */
         on(event: 'executionContextCreated', listener: (params: Protocol.Runtime.ExecutionContextCreatedEvent) => void): void;
+        once(event: 'executionContextCreated', listener: (params: Protocol.Runtime.ExecutionContextCreatedEvent) => void): void;
+        off(event: 'executionContextCreated', listener: (params: Protocol.Runtime.ExecutionContextCreatedEvent) => void): void;
 
         /**
          * Issued when execution context is destroyed.
          */
         on(event: 'executionContextDestroyed', listener: (params: Protocol.Runtime.ExecutionContextDestroyedEvent) => void): void;
+        once(event: 'executionContextDestroyed', listener: (params: Protocol.Runtime.ExecutionContextDestroyedEvent) => void): void;
+        off(event: 'executionContextDestroyed', listener: (params: Protocol.Runtime.ExecutionContextDestroyedEvent) => void): void;
 
         /**
          * Issued when all executionContexts were cleared in browser
          */
         on(event: 'executionContextsCleared', listener: () => void): void;
+        once(event: 'executionContextsCleared', listener: () => void): void;
+        off(event: 'executionContextsCleared', listener: () => void): void;
 
         /**
          * Issued when object should be inspected (for example, as a result of inspect() command line API
          * call).
          */
         on(event: 'inspectRequested', listener: (params: Protocol.Runtime.InspectRequestedEvent) => void): void;
+        once(event: 'inspectRequested', listener: (params: Protocol.Runtime.InspectRequestedEvent) => void): void;
+        off(event: 'inspectRequested', listener: (params: Protocol.Runtime.InspectRequestedEvent) => void): void;
 
     }
 
@@ -685,11 +729,15 @@ export namespace ProtocolProxyApi {
          * technology when the web page has finished loading.
          */
         on(event: 'loadComplete', listener: (params: Protocol.Accessibility.LoadCompleteEvent) => void): void;
+        once(event: 'loadComplete', listener: (params: Protocol.Accessibility.LoadCompleteEvent) => void): void;
+        off(event: 'loadComplete', listener: (params: Protocol.Accessibility.LoadCompleteEvent) => void): void;
 
         /**
          * The nodesUpdated event is sent every time a previously requested node has changed the in tree.
          */
         on(event: 'nodesUpdated', listener: (params: Protocol.Accessibility.NodesUpdatedEvent) => void): void;
+        once(event: 'nodesUpdated', listener: (params: Protocol.Accessibility.NodesUpdatedEvent) => void): void;
+        off(event: 'nodesUpdated', listener: (params: Protocol.Accessibility.NodesUpdatedEvent) => void): void;
 
     }
 
@@ -748,16 +796,22 @@ export namespace ProtocolProxyApi {
          * Event for when an animation has been cancelled.
          */
         on(event: 'animationCanceled', listener: (params: Protocol.Animation.AnimationCanceledEvent) => void): void;
+        once(event: 'animationCanceled', listener: (params: Protocol.Animation.AnimationCanceledEvent) => void): void;
+        off(event: 'animationCanceled', listener: (params: Protocol.Animation.AnimationCanceledEvent) => void): void;
 
         /**
          * Event for each animation that has been created.
          */
         on(event: 'animationCreated', listener: (params: Protocol.Animation.AnimationCreatedEvent) => void): void;
+        once(event: 'animationCreated', listener: (params: Protocol.Animation.AnimationCreatedEvent) => void): void;
+        off(event: 'animationCreated', listener: (params: Protocol.Animation.AnimationCreatedEvent) => void): void;
 
         /**
          * Event for animation that has been started.
          */
         on(event: 'animationStarted', listener: (params: Protocol.Animation.AnimationStartedEvent) => void): void;
+        once(event: 'animationStarted', listener: (params: Protocol.Animation.AnimationStartedEvent) => void): void;
+        off(event: 'animationStarted', listener: (params: Protocol.Animation.AnimationStartedEvent) => void): void;
 
     }
 
@@ -786,6 +840,8 @@ export namespace ProtocolProxyApi {
         checkContrast(params: Protocol.Audits.CheckContrastRequest): Promise<void>;
 
         on(event: 'issueAdded', listener: (params: Protocol.Audits.IssueAddedEvent) => void): void;
+        once(event: 'issueAdded', listener: (params: Protocol.Audits.IssueAddedEvent) => void): void;
+        off(event: 'issueAdded', listener: (params: Protocol.Audits.IssueAddedEvent) => void): void;
 
     }
 
@@ -814,12 +870,16 @@ export namespace ProtocolProxyApi {
          * Called when the recording state for the service has been updated.
          */
         on(event: 'recordingStateChanged', listener: (params: Protocol.BackgroundService.RecordingStateChangedEvent) => void): void;
+        once(event: 'recordingStateChanged', listener: (params: Protocol.BackgroundService.RecordingStateChangedEvent) => void): void;
+        off(event: 'recordingStateChanged', listener: (params: Protocol.BackgroundService.RecordingStateChangedEvent) => void): void;
 
         /**
          * Called with all existing backgroundServiceEvents when enabled, and all new
          * events afterwards if enabled and recording.
          */
         on(event: 'backgroundServiceEventReceived', listener: (params: Protocol.BackgroundService.BackgroundServiceEventReceivedEvent) => void): void;
+        once(event: 'backgroundServiceEventReceived', listener: (params: Protocol.BackgroundService.BackgroundServiceEventReceivedEvent) => void): void;
+        off(event: 'backgroundServiceEventReceived', listener: (params: Protocol.BackgroundService.BackgroundServiceEventReceivedEvent) => void): void;
 
     }
 
@@ -914,11 +974,15 @@ export namespace ProtocolProxyApi {
          * Fired when page is about to start a download.
          */
         on(event: 'downloadWillBegin', listener: (params: Protocol.Browser.DownloadWillBeginEvent) => void): void;
+        once(event: 'downloadWillBegin', listener: (params: Protocol.Browser.DownloadWillBeginEvent) => void): void;
+        off(event: 'downloadWillBegin', listener: (params: Protocol.Browser.DownloadWillBeginEvent) => void): void;
 
         /**
          * Fired when download makes progress. Last call has |done| == true.
          */
         on(event: 'downloadProgress', listener: (params: Protocol.Browser.DownloadProgressEvent) => void): void;
+        once(event: 'downloadProgress', listener: (params: Protocol.Browser.DownloadProgressEvent) => void): void;
+        off(event: 'downloadProgress', listener: (params: Protocol.Browser.DownloadProgressEvent) => void): void;
 
     }
 
@@ -1086,27 +1150,37 @@ export namespace ProtocolProxyApi {
          * web font
          */
         on(event: 'fontsUpdated', listener: (params: Protocol.CSS.FontsUpdatedEvent) => void): void;
+        once(event: 'fontsUpdated', listener: (params: Protocol.CSS.FontsUpdatedEvent) => void): void;
+        off(event: 'fontsUpdated', listener: (params: Protocol.CSS.FontsUpdatedEvent) => void): void;
 
         /**
          * Fires whenever a MediaQuery result changes (for example, after a browser window has been
          * resized.) The current implementation considers only viewport-dependent media features.
          */
         on(event: 'mediaQueryResultChanged', listener: () => void): void;
+        once(event: 'mediaQueryResultChanged', listener: () => void): void;
+        off(event: 'mediaQueryResultChanged', listener: () => void): void;
 
         /**
          * Fired whenever an active document stylesheet is added.
          */
         on(event: 'styleSheetAdded', listener: (params: Protocol.CSS.StyleSheetAddedEvent) => void): void;
+        once(event: 'styleSheetAdded', listener: (params: Protocol.CSS.StyleSheetAddedEvent) => void): void;
+        off(event: 'styleSheetAdded', listener: (params: Protocol.CSS.StyleSheetAddedEvent) => void): void;
 
         /**
          * Fired whenever a stylesheet is changed as a result of the client operation.
          */
         on(event: 'styleSheetChanged', listener: (params: Protocol.CSS.StyleSheetChangedEvent) => void): void;
+        once(event: 'styleSheetChanged', listener: (params: Protocol.CSS.StyleSheetChangedEvent) => void): void;
+        off(event: 'styleSheetChanged', listener: (params: Protocol.CSS.StyleSheetChangedEvent) => void): void;
 
         /**
          * Fired whenever an active document stylesheet is removed.
          */
         on(event: 'styleSheetRemoved', listener: (params: Protocol.CSS.StyleSheetRemovedEvent) => void): void;
+        once(event: 'styleSheetRemoved', listener: (params: Protocol.CSS.StyleSheetRemovedEvent) => void): void;
+        off(event: 'styleSheetRemoved', listener: (params: Protocol.CSS.StyleSheetRemovedEvent) => void): void;
 
     }
 
@@ -1179,12 +1253,16 @@ export namespace ProtocolProxyApi {
          * device or a software surface that you can cast to.
          */
         on(event: 'sinksUpdated', listener: (params: Protocol.Cast.SinksUpdatedEvent) => void): void;
+        once(event: 'sinksUpdated', listener: (params: Protocol.Cast.SinksUpdatedEvent) => void): void;
+        off(event: 'sinksUpdated', listener: (params: Protocol.Cast.SinksUpdatedEvent) => void): void;
 
         /**
          * This is fired whenever the outstanding issue/error message changes.
          * |issueMessage| is empty if there is no issue.
          */
         on(event: 'issueUpdated', listener: (params: Protocol.Cast.IssueUpdatedEvent) => void): void;
+        once(event: 'issueUpdated', listener: (params: Protocol.Cast.IssueUpdatedEvent) => void): void;
+        off(event: 'issueUpdated', listener: (params: Protocol.Cast.IssueUpdatedEvent) => void): void;
 
     }
 
@@ -1461,77 +1539,107 @@ export namespace ProtocolProxyApi {
          * Fired when `Element`'s attribute is modified.
          */
         on(event: 'attributeModified', listener: (params: Protocol.DOM.AttributeModifiedEvent) => void): void;
+        once(event: 'attributeModified', listener: (params: Protocol.DOM.AttributeModifiedEvent) => void): void;
+        off(event: 'attributeModified', listener: (params: Protocol.DOM.AttributeModifiedEvent) => void): void;
 
         /**
          * Fired when `Element`'s attribute is removed.
          */
         on(event: 'attributeRemoved', listener: (params: Protocol.DOM.AttributeRemovedEvent) => void): void;
+        once(event: 'attributeRemoved', listener: (params: Protocol.DOM.AttributeRemovedEvent) => void): void;
+        off(event: 'attributeRemoved', listener: (params: Protocol.DOM.AttributeRemovedEvent) => void): void;
 
         /**
          * Mirrors `DOMCharacterDataModified` event.
          */
         on(event: 'characterDataModified', listener: (params: Protocol.DOM.CharacterDataModifiedEvent) => void): void;
+        once(event: 'characterDataModified', listener: (params: Protocol.DOM.CharacterDataModifiedEvent) => void): void;
+        off(event: 'characterDataModified', listener: (params: Protocol.DOM.CharacterDataModifiedEvent) => void): void;
 
         /**
          * Fired when `Container`'s child node count has changed.
          */
         on(event: 'childNodeCountUpdated', listener: (params: Protocol.DOM.ChildNodeCountUpdatedEvent) => void): void;
+        once(event: 'childNodeCountUpdated', listener: (params: Protocol.DOM.ChildNodeCountUpdatedEvent) => void): void;
+        off(event: 'childNodeCountUpdated', listener: (params: Protocol.DOM.ChildNodeCountUpdatedEvent) => void): void;
 
         /**
          * Mirrors `DOMNodeInserted` event.
          */
         on(event: 'childNodeInserted', listener: (params: Protocol.DOM.ChildNodeInsertedEvent) => void): void;
+        once(event: 'childNodeInserted', listener: (params: Protocol.DOM.ChildNodeInsertedEvent) => void): void;
+        off(event: 'childNodeInserted', listener: (params: Protocol.DOM.ChildNodeInsertedEvent) => void): void;
 
         /**
          * Mirrors `DOMNodeRemoved` event.
          */
         on(event: 'childNodeRemoved', listener: (params: Protocol.DOM.ChildNodeRemovedEvent) => void): void;
+        once(event: 'childNodeRemoved', listener: (params: Protocol.DOM.ChildNodeRemovedEvent) => void): void;
+        off(event: 'childNodeRemoved', listener: (params: Protocol.DOM.ChildNodeRemovedEvent) => void): void;
 
         /**
          * Called when distribution is changed.
          */
         on(event: 'distributedNodesUpdated', listener: (params: Protocol.DOM.DistributedNodesUpdatedEvent) => void): void;
+        once(event: 'distributedNodesUpdated', listener: (params: Protocol.DOM.DistributedNodesUpdatedEvent) => void): void;
+        off(event: 'distributedNodesUpdated', listener: (params: Protocol.DOM.DistributedNodesUpdatedEvent) => void): void;
 
         /**
          * Fired when `Document` has been totally updated. Node ids are no longer valid.
          */
         on(event: 'documentUpdated', listener: () => void): void;
+        once(event: 'documentUpdated', listener: () => void): void;
+        off(event: 'documentUpdated', listener: () => void): void;
 
         /**
          * Fired when `Element`'s inline style is modified via a CSS property modification.
          */
         on(event: 'inlineStyleInvalidated', listener: (params: Protocol.DOM.InlineStyleInvalidatedEvent) => void): void;
+        once(event: 'inlineStyleInvalidated', listener: (params: Protocol.DOM.InlineStyleInvalidatedEvent) => void): void;
+        off(event: 'inlineStyleInvalidated', listener: (params: Protocol.DOM.InlineStyleInvalidatedEvent) => void): void;
 
         /**
          * Called when a pseudo element is added to an element.
          */
         on(event: 'pseudoElementAdded', listener: (params: Protocol.DOM.PseudoElementAddedEvent) => void): void;
+        once(event: 'pseudoElementAdded', listener: (params: Protocol.DOM.PseudoElementAddedEvent) => void): void;
+        off(event: 'pseudoElementAdded', listener: (params: Protocol.DOM.PseudoElementAddedEvent) => void): void;
 
         /**
          * Called when top layer elements are changed.
          */
         on(event: 'topLayerElementsUpdated', listener: () => void): void;
+        once(event: 'topLayerElementsUpdated', listener: () => void): void;
+        off(event: 'topLayerElementsUpdated', listener: () => void): void;
 
         /**
          * Called when a pseudo element is removed from an element.
          */
         on(event: 'pseudoElementRemoved', listener: (params: Protocol.DOM.PseudoElementRemovedEvent) => void): void;
+        once(event: 'pseudoElementRemoved', listener: (params: Protocol.DOM.PseudoElementRemovedEvent) => void): void;
+        off(event: 'pseudoElementRemoved', listener: (params: Protocol.DOM.PseudoElementRemovedEvent) => void): void;
 
         /**
          * Fired when backend wants to provide client with the missing DOM structure. This happens upon
          * most of the calls requesting node ids.
          */
         on(event: 'setChildNodes', listener: (params: Protocol.DOM.SetChildNodesEvent) => void): void;
+        once(event: 'setChildNodes', listener: (params: Protocol.DOM.SetChildNodesEvent) => void): void;
+        off(event: 'setChildNodes', listener: (params: Protocol.DOM.SetChildNodesEvent) => void): void;
 
         /**
          * Called when shadow root is popped from the element.
          */
         on(event: 'shadowRootPopped', listener: (params: Protocol.DOM.ShadowRootPoppedEvent) => void): void;
+        once(event: 'shadowRootPopped', listener: (params: Protocol.DOM.ShadowRootPoppedEvent) => void): void;
+        off(event: 'shadowRootPopped', listener: (params: Protocol.DOM.ShadowRootPoppedEvent) => void): void;
 
         /**
          * Called when shadow root is pushed into the element.
          */
         on(event: 'shadowRootPushed', listener: (params: Protocol.DOM.ShadowRootPushedEvent) => void): void;
+        once(event: 'shadowRootPushed', listener: (params: Protocol.DOM.ShadowRootPushedEvent) => void): void;
+        off(event: 'shadowRootPushed', listener: (params: Protocol.DOM.ShadowRootPushedEvent) => void): void;
 
     }
 
@@ -1650,12 +1758,20 @@ export namespace ProtocolProxyApi {
         setDOMStorageItem(params: Protocol.DOMStorage.SetDOMStorageItemRequest): Promise<void>;
 
         on(event: 'domStorageItemAdded', listener: (params: Protocol.DOMStorage.DomStorageItemAddedEvent) => void): void;
+        once(event: 'domStorageItemAdded', listener: (params: Protocol.DOMStorage.DomStorageItemAddedEvent) => void): void;
+        off(event: 'domStorageItemAdded', listener: (params: Protocol.DOMStorage.DomStorageItemAddedEvent) => void): void;
 
         on(event: 'domStorageItemRemoved', listener: (params: Protocol.DOMStorage.DomStorageItemRemovedEvent) => void): void;
+        once(event: 'domStorageItemRemoved', listener: (params: Protocol.DOMStorage.DomStorageItemRemovedEvent) => void): void;
+        off(event: 'domStorageItemRemoved', listener: (params: Protocol.DOMStorage.DomStorageItemRemovedEvent) => void): void;
 
         on(event: 'domStorageItemUpdated', listener: (params: Protocol.DOMStorage.DomStorageItemUpdatedEvent) => void): void;
+        once(event: 'domStorageItemUpdated', listener: (params: Protocol.DOMStorage.DomStorageItemUpdatedEvent) => void): void;
+        off(event: 'domStorageItemUpdated', listener: (params: Protocol.DOMStorage.DomStorageItemUpdatedEvent) => void): void;
 
         on(event: 'domStorageItemsCleared', listener: (params: Protocol.DOMStorage.DomStorageItemsClearedEvent) => void): void;
+        once(event: 'domStorageItemsCleared', listener: (params: Protocol.DOMStorage.DomStorageItemsClearedEvent) => void): void;
+        off(event: 'domStorageItemsCleared', listener: (params: Protocol.DOMStorage.DomStorageItemsClearedEvent) => void): void;
 
     }
 
@@ -1675,6 +1791,8 @@ export namespace ProtocolProxyApi {
         getDatabaseTableNames(params: Protocol.Database.GetDatabaseTableNamesRequest): Promise<Protocol.Database.GetDatabaseTableNamesResponse>;
 
         on(event: 'addDatabase', listener: (params: Protocol.Database.AddDatabaseEvent) => void): void;
+        once(event: 'addDatabase', listener: (params: Protocol.Database.AddDatabaseEvent) => void): void;
+        off(event: 'addDatabase', listener: (params: Protocol.Database.AddDatabaseEvent) => void): void;
 
     }
 
@@ -1833,6 +1951,8 @@ export namespace ProtocolProxyApi {
          * Notification sent after the virtual time budget for the current VirtualTimePolicy has run out.
          */
         on(event: 'virtualTimeBudgetExpired', listener: () => void): void;
+        once(event: 'virtualTimeBudgetExpired', listener: () => void): void;
+        off(event: 'virtualTimeBudgetExpired', listener: () => void): void;
 
     }
 
@@ -1861,6 +1981,8 @@ export namespace ProtocolProxyApi {
          * beginFrame to detect whether the frames were suppressed.
          */
         on(event: 'needsBeginFramesChanged', listener: (params: Protocol.HeadlessExperimental.NeedsBeginFramesChangedEvent) => void): void;
+        once(event: 'needsBeginFramesChanged', listener: (params: Protocol.HeadlessExperimental.NeedsBeginFramesChangedEvent) => void): void;
+        off(event: 'needsBeginFramesChanged', listener: (params: Protocol.HeadlessExperimental.NeedsBeginFramesChangedEvent) => void): void;
 
     }
 
@@ -2000,6 +2122,8 @@ export namespace ProtocolProxyApi {
          * restore normal drag and drop behavior.
          */
         on(event: 'dragIntercepted', listener: (params: Protocol.Input.DragInterceptedEvent) => void): void;
+        once(event: 'dragIntercepted', listener: (params: Protocol.Input.DragInterceptedEvent) => void): void;
+        off(event: 'dragIntercepted', listener: (params: Protocol.Input.DragInterceptedEvent) => void): void;
 
     }
 
@@ -2018,16 +2142,22 @@ export namespace ProtocolProxyApi {
          * Fired when remote debugging connection is about to be terminated. Contains detach reason.
          */
         on(event: 'detached', listener: (params: Protocol.Inspector.DetachedEvent) => void): void;
+        once(event: 'detached', listener: (params: Protocol.Inspector.DetachedEvent) => void): void;
+        off(event: 'detached', listener: (params: Protocol.Inspector.DetachedEvent) => void): void;
 
         /**
          * Fired when debugging target has crashed
          */
         on(event: 'targetCrashed', listener: () => void): void;
+        once(event: 'targetCrashed', listener: () => void): void;
+        off(event: 'targetCrashed', listener: () => void): void;
 
         /**
          * Fired when debugging target has reloaded after crash
          */
         on(event: 'targetReloadedAfterCrash', listener: () => void): void;
+        once(event: 'targetReloadedAfterCrash', listener: () => void): void;
+        off(event: 'targetReloadedAfterCrash', listener: () => void): void;
 
     }
 
@@ -2075,8 +2205,12 @@ export namespace ProtocolProxyApi {
         snapshotCommandLog(params: Protocol.LayerTree.SnapshotCommandLogRequest): Promise<Protocol.LayerTree.SnapshotCommandLogResponse>;
 
         on(event: 'layerPainted', listener: (params: Protocol.LayerTree.LayerPaintedEvent) => void): void;
+        once(event: 'layerPainted', listener: (params: Protocol.LayerTree.LayerPaintedEvent) => void): void;
+        off(event: 'layerPainted', listener: (params: Protocol.LayerTree.LayerPaintedEvent) => void): void;
 
         on(event: 'layerTreeDidChange', listener: (params: Protocol.LayerTree.LayerTreeDidChangeEvent) => void): void;
+        once(event: 'layerTreeDidChange', listener: (params: Protocol.LayerTree.LayerTreeDidChangeEvent) => void): void;
+        off(event: 'layerTreeDidChange', listener: (params: Protocol.LayerTree.LayerTreeDidChangeEvent) => void): void;
 
     }
 
@@ -2111,6 +2245,8 @@ export namespace ProtocolProxyApi {
          * Issued when new message was logged.
          */
         on(event: 'entryAdded', listener: (params: Protocol.Log.EntryAddedEvent) => void): void;
+        once(event: 'entryAdded', listener: (params: Protocol.Log.EntryAddedEvent) => void): void;
+        off(event: 'entryAdded', listener: (params: Protocol.Log.EntryAddedEvent) => void): void;
 
     }
 
@@ -2347,21 +2483,29 @@ export namespace ProtocolProxyApi {
          * Fired when data chunk was received over the network.
          */
         on(event: 'dataReceived', listener: (params: Protocol.Network.DataReceivedEvent) => void): void;
+        once(event: 'dataReceived', listener: (params: Protocol.Network.DataReceivedEvent) => void): void;
+        off(event: 'dataReceived', listener: (params: Protocol.Network.DataReceivedEvent) => void): void;
 
         /**
          * Fired when EventSource message is received.
          */
         on(event: 'eventSourceMessageReceived', listener: (params: Protocol.Network.EventSourceMessageReceivedEvent) => void): void;
+        once(event: 'eventSourceMessageReceived', listener: (params: Protocol.Network.EventSourceMessageReceivedEvent) => void): void;
+        off(event: 'eventSourceMessageReceived', listener: (params: Protocol.Network.EventSourceMessageReceivedEvent) => void): void;
 
         /**
          * Fired when HTTP request has failed to load.
          */
         on(event: 'loadingFailed', listener: (params: Protocol.Network.LoadingFailedEvent) => void): void;
+        once(event: 'loadingFailed', listener: (params: Protocol.Network.LoadingFailedEvent) => void): void;
+        off(event: 'loadingFailed', listener: (params: Protocol.Network.LoadingFailedEvent) => void): void;
 
         /**
          * Fired when HTTP request has finished loading.
          */
         on(event: 'loadingFinished', listener: (params: Protocol.Network.LoadingFinishedEvent) => void): void;
+        once(event: 'loadingFinished', listener: (params: Protocol.Network.LoadingFinishedEvent) => void): void;
+        off(event: 'loadingFinished', listener: (params: Protocol.Network.LoadingFinishedEvent) => void): void;
 
         /**
          * Details of an intercepted HTTP request, which must be either allowed, blocked, modified or
@@ -2369,81 +2513,113 @@ export namespace ProtocolProxyApi {
          * Deprecated, use Fetch.requestPaused instead.
          */
         on(event: 'requestIntercepted', listener: (params: Protocol.Network.RequestInterceptedEvent) => void): void;
+        once(event: 'requestIntercepted', listener: (params: Protocol.Network.RequestInterceptedEvent) => void): void;
+        off(event: 'requestIntercepted', listener: (params: Protocol.Network.RequestInterceptedEvent) => void): void;
 
         /**
          * Fired if request ended up loading from cache.
          */
         on(event: 'requestServedFromCache', listener: (params: Protocol.Network.RequestServedFromCacheEvent) => void): void;
+        once(event: 'requestServedFromCache', listener: (params: Protocol.Network.RequestServedFromCacheEvent) => void): void;
+        off(event: 'requestServedFromCache', listener: (params: Protocol.Network.RequestServedFromCacheEvent) => void): void;
 
         /**
          * Fired when page is about to send HTTP request.
          */
         on(event: 'requestWillBeSent', listener: (params: Protocol.Network.RequestWillBeSentEvent) => void): void;
+        once(event: 'requestWillBeSent', listener: (params: Protocol.Network.RequestWillBeSentEvent) => void): void;
+        off(event: 'requestWillBeSent', listener: (params: Protocol.Network.RequestWillBeSentEvent) => void): void;
 
         /**
          * Fired when resource loading priority is changed
          */
         on(event: 'resourceChangedPriority', listener: (params: Protocol.Network.ResourceChangedPriorityEvent) => void): void;
+        once(event: 'resourceChangedPriority', listener: (params: Protocol.Network.ResourceChangedPriorityEvent) => void): void;
+        off(event: 'resourceChangedPriority', listener: (params: Protocol.Network.ResourceChangedPriorityEvent) => void): void;
 
         /**
          * Fired when a signed exchange was received over the network
          */
         on(event: 'signedExchangeReceived', listener: (params: Protocol.Network.SignedExchangeReceivedEvent) => void): void;
+        once(event: 'signedExchangeReceived', listener: (params: Protocol.Network.SignedExchangeReceivedEvent) => void): void;
+        off(event: 'signedExchangeReceived', listener: (params: Protocol.Network.SignedExchangeReceivedEvent) => void): void;
 
         /**
          * Fired when HTTP response is available.
          */
         on(event: 'responseReceived', listener: (params: Protocol.Network.ResponseReceivedEvent) => void): void;
+        once(event: 'responseReceived', listener: (params: Protocol.Network.ResponseReceivedEvent) => void): void;
+        off(event: 'responseReceived', listener: (params: Protocol.Network.ResponseReceivedEvent) => void): void;
 
         /**
          * Fired when WebSocket is closed.
          */
         on(event: 'webSocketClosed', listener: (params: Protocol.Network.WebSocketClosedEvent) => void): void;
+        once(event: 'webSocketClosed', listener: (params: Protocol.Network.WebSocketClosedEvent) => void): void;
+        off(event: 'webSocketClosed', listener: (params: Protocol.Network.WebSocketClosedEvent) => void): void;
 
         /**
          * Fired upon WebSocket creation.
          */
         on(event: 'webSocketCreated', listener: (params: Protocol.Network.WebSocketCreatedEvent) => void): void;
+        once(event: 'webSocketCreated', listener: (params: Protocol.Network.WebSocketCreatedEvent) => void): void;
+        off(event: 'webSocketCreated', listener: (params: Protocol.Network.WebSocketCreatedEvent) => void): void;
 
         /**
          * Fired when WebSocket message error occurs.
          */
         on(event: 'webSocketFrameError', listener: (params: Protocol.Network.WebSocketFrameErrorEvent) => void): void;
+        once(event: 'webSocketFrameError', listener: (params: Protocol.Network.WebSocketFrameErrorEvent) => void): void;
+        off(event: 'webSocketFrameError', listener: (params: Protocol.Network.WebSocketFrameErrorEvent) => void): void;
 
         /**
          * Fired when WebSocket message is received.
          */
         on(event: 'webSocketFrameReceived', listener: (params: Protocol.Network.WebSocketFrameReceivedEvent) => void): void;
+        once(event: 'webSocketFrameReceived', listener: (params: Protocol.Network.WebSocketFrameReceivedEvent) => void): void;
+        off(event: 'webSocketFrameReceived', listener: (params: Protocol.Network.WebSocketFrameReceivedEvent) => void): void;
 
         /**
          * Fired when WebSocket message is sent.
          */
         on(event: 'webSocketFrameSent', listener: (params: Protocol.Network.WebSocketFrameSentEvent) => void): void;
+        once(event: 'webSocketFrameSent', listener: (params: Protocol.Network.WebSocketFrameSentEvent) => void): void;
+        off(event: 'webSocketFrameSent', listener: (params: Protocol.Network.WebSocketFrameSentEvent) => void): void;
 
         /**
          * Fired when WebSocket handshake response becomes available.
          */
         on(event: 'webSocketHandshakeResponseReceived', listener: (params: Protocol.Network.WebSocketHandshakeResponseReceivedEvent) => void): void;
+        once(event: 'webSocketHandshakeResponseReceived', listener: (params: Protocol.Network.WebSocketHandshakeResponseReceivedEvent) => void): void;
+        off(event: 'webSocketHandshakeResponseReceived', listener: (params: Protocol.Network.WebSocketHandshakeResponseReceivedEvent) => void): void;
 
         /**
          * Fired when WebSocket is about to initiate handshake.
          */
         on(event: 'webSocketWillSendHandshakeRequest', listener: (params: Protocol.Network.WebSocketWillSendHandshakeRequestEvent) => void): void;
+        once(event: 'webSocketWillSendHandshakeRequest', listener: (params: Protocol.Network.WebSocketWillSendHandshakeRequestEvent) => void): void;
+        off(event: 'webSocketWillSendHandshakeRequest', listener: (params: Protocol.Network.WebSocketWillSendHandshakeRequestEvent) => void): void;
 
         /**
          * Fired upon WebTransport creation.
          */
         on(event: 'webTransportCreated', listener: (params: Protocol.Network.WebTransportCreatedEvent) => void): void;
+        once(event: 'webTransportCreated', listener: (params: Protocol.Network.WebTransportCreatedEvent) => void): void;
+        off(event: 'webTransportCreated', listener: (params: Protocol.Network.WebTransportCreatedEvent) => void): void;
 
         /**
          * Fired when WebTransport handshake is finished.
          */
         on(event: 'webTransportConnectionEstablished', listener: (params: Protocol.Network.WebTransportConnectionEstablishedEvent) => void): void;
+        once(event: 'webTransportConnectionEstablished', listener: (params: Protocol.Network.WebTransportConnectionEstablishedEvent) => void): void;
+        off(event: 'webTransportConnectionEstablished', listener: (params: Protocol.Network.WebTransportConnectionEstablishedEvent) => void): void;
 
         /**
          * Fired when WebTransport is disposed.
          */
         on(event: 'webTransportClosed', listener: (params: Protocol.Network.WebTransportClosedEvent) => void): void;
+        once(event: 'webTransportClosed', listener: (params: Protocol.Network.WebTransportClosedEvent) => void): void;
+        off(event: 'webTransportClosed', listener: (params: Protocol.Network.WebTransportClosedEvent) => void): void;
 
         /**
          * Fired when additional information about a requestWillBeSent event is available from the
@@ -2452,6 +2628,8 @@ export namespace ProtocolProxyApi {
          * or requestWillBeSentExtraInfo will be fired first for the same request.
          */
         on(event: 'requestWillBeSentExtraInfo', listener: (params: Protocol.Network.RequestWillBeSentExtraInfoEvent) => void): void;
+        once(event: 'requestWillBeSentExtraInfo', listener: (params: Protocol.Network.RequestWillBeSentExtraInfoEvent) => void): void;
+        off(event: 'requestWillBeSentExtraInfo', listener: (params: Protocol.Network.RequestWillBeSentExtraInfoEvent) => void): void;
 
         /**
          * Fired when additional information about a responseReceived event is available from the network
@@ -2459,6 +2637,8 @@ export namespace ProtocolProxyApi {
          * it, and responseReceivedExtraInfo may be fired before or after responseReceived.
          */
         on(event: 'responseReceivedExtraInfo', listener: (params: Protocol.Network.ResponseReceivedExtraInfoEvent) => void): void;
+        once(event: 'responseReceivedExtraInfo', listener: (params: Protocol.Network.ResponseReceivedExtraInfoEvent) => void): void;
+        off(event: 'responseReceivedExtraInfo', listener: (params: Protocol.Network.ResponseReceivedExtraInfoEvent) => void): void;
 
         /**
          * Fired exactly once for each Trust Token operation. Depending on
@@ -2467,38 +2647,54 @@ export namespace ProtocolProxyApi {
          * or after the response was received.
          */
         on(event: 'trustTokenOperationDone', listener: (params: Protocol.Network.TrustTokenOperationDoneEvent) => void): void;
+        once(event: 'trustTokenOperationDone', listener: (params: Protocol.Network.TrustTokenOperationDoneEvent) => void): void;
+        off(event: 'trustTokenOperationDone', listener: (params: Protocol.Network.TrustTokenOperationDoneEvent) => void): void;
 
         /**
          * Fired once when parsing the .wbn file has succeeded.
          * The event contains the information about the web bundle contents.
          */
         on(event: 'subresourceWebBundleMetadataReceived', listener: (params: Protocol.Network.SubresourceWebBundleMetadataReceivedEvent) => void): void;
+        once(event: 'subresourceWebBundleMetadataReceived', listener: (params: Protocol.Network.SubresourceWebBundleMetadataReceivedEvent) => void): void;
+        off(event: 'subresourceWebBundleMetadataReceived', listener: (params: Protocol.Network.SubresourceWebBundleMetadataReceivedEvent) => void): void;
 
         /**
          * Fired once when parsing the .wbn file has failed.
          */
         on(event: 'subresourceWebBundleMetadataError', listener: (params: Protocol.Network.SubresourceWebBundleMetadataErrorEvent) => void): void;
+        once(event: 'subresourceWebBundleMetadataError', listener: (params: Protocol.Network.SubresourceWebBundleMetadataErrorEvent) => void): void;
+        off(event: 'subresourceWebBundleMetadataError', listener: (params: Protocol.Network.SubresourceWebBundleMetadataErrorEvent) => void): void;
 
         /**
          * Fired when handling requests for resources within a .wbn file.
          * Note: this will only be fired for resources that are requested by the webpage.
          */
         on(event: 'subresourceWebBundleInnerResponseParsed', listener: (params: Protocol.Network.SubresourceWebBundleInnerResponseParsedEvent) => void): void;
+        once(event: 'subresourceWebBundleInnerResponseParsed', listener: (params: Protocol.Network.SubresourceWebBundleInnerResponseParsedEvent) => void): void;
+        off(event: 'subresourceWebBundleInnerResponseParsed', listener: (params: Protocol.Network.SubresourceWebBundleInnerResponseParsedEvent) => void): void;
 
         /**
          * Fired when request for resources within a .wbn file failed.
          */
         on(event: 'subresourceWebBundleInnerResponseError', listener: (params: Protocol.Network.SubresourceWebBundleInnerResponseErrorEvent) => void): void;
+        once(event: 'subresourceWebBundleInnerResponseError', listener: (params: Protocol.Network.SubresourceWebBundleInnerResponseErrorEvent) => void): void;
+        off(event: 'subresourceWebBundleInnerResponseError', listener: (params: Protocol.Network.SubresourceWebBundleInnerResponseErrorEvent) => void): void;
 
         /**
          * Is sent whenever a new report is added.
          * And after 'enableReportingApi' for all existing reports.
          */
         on(event: 'reportingApiReportAdded', listener: (params: Protocol.Network.ReportingApiReportAddedEvent) => void): void;
+        once(event: 'reportingApiReportAdded', listener: (params: Protocol.Network.ReportingApiReportAddedEvent) => void): void;
+        off(event: 'reportingApiReportAdded', listener: (params: Protocol.Network.ReportingApiReportAddedEvent) => void): void;
 
         on(event: 'reportingApiReportUpdated', listener: (params: Protocol.Network.ReportingApiReportUpdatedEvent) => void): void;
+        once(event: 'reportingApiReportUpdated', listener: (params: Protocol.Network.ReportingApiReportUpdatedEvent) => void): void;
+        off(event: 'reportingApiReportUpdated', listener: (params: Protocol.Network.ReportingApiReportUpdatedEvent) => void): void;
 
         on(event: 'reportingApiEndpointsChangedForOrigin', listener: (params: Protocol.Network.ReportingApiEndpointsChangedForOriginEvent) => void): void;
+        once(event: 'reportingApiEndpointsChangedForOrigin', listener: (params: Protocol.Network.ReportingApiEndpointsChangedForOriginEvent) => void): void;
+        off(event: 'reportingApiEndpointsChangedForOrigin', listener: (params: Protocol.Network.ReportingApiEndpointsChangedForOriginEvent) => void): void;
 
     }
 
@@ -2642,21 +2838,29 @@ export namespace ProtocolProxyApi {
          * user manually inspects an element.
          */
         on(event: 'inspectNodeRequested', listener: (params: Protocol.Overlay.InspectNodeRequestedEvent) => void): void;
+        once(event: 'inspectNodeRequested', listener: (params: Protocol.Overlay.InspectNodeRequestedEvent) => void): void;
+        off(event: 'inspectNodeRequested', listener: (params: Protocol.Overlay.InspectNodeRequestedEvent) => void): void;
 
         /**
          * Fired when the node should be highlighted. This happens after call to `setInspectMode`.
          */
         on(event: 'nodeHighlightRequested', listener: (params: Protocol.Overlay.NodeHighlightRequestedEvent) => void): void;
+        once(event: 'nodeHighlightRequested', listener: (params: Protocol.Overlay.NodeHighlightRequestedEvent) => void): void;
+        off(event: 'nodeHighlightRequested', listener: (params: Protocol.Overlay.NodeHighlightRequestedEvent) => void): void;
 
         /**
          * Fired when user asks to capture screenshot of some area on the page.
          */
         on(event: 'screenshotRequested', listener: (params: Protocol.Overlay.ScreenshotRequestedEvent) => void): void;
+        once(event: 'screenshotRequested', listener: (params: Protocol.Overlay.ScreenshotRequestedEvent) => void): void;
+        off(event: 'screenshotRequested', listener: (params: Protocol.Overlay.ScreenshotRequestedEvent) => void): void;
 
         /**
          * Fired when user cancels the inspect mode.
          */
         on(event: 'inspectModeCanceled', listener: () => void): void;
+        once(event: 'inspectModeCanceled', listener: () => void): void;
+        off(event: 'inspectModeCanceled', listener: () => void): void;
 
     }
 
@@ -2960,98 +3164,136 @@ export namespace ProtocolProxyApi {
         setInterceptFileChooserDialog(params: Protocol.Page.SetInterceptFileChooserDialogRequest): Promise<void>;
 
         on(event: 'domContentEventFired', listener: (params: Protocol.Page.DomContentEventFiredEvent) => void): void;
+        once(event: 'domContentEventFired', listener: (params: Protocol.Page.DomContentEventFiredEvent) => void): void;
+        off(event: 'domContentEventFired', listener: (params: Protocol.Page.DomContentEventFiredEvent) => void): void;
 
         /**
          * Emitted only when `page.interceptFileChooser` is enabled.
          */
         on(event: 'fileChooserOpened', listener: (params: Protocol.Page.FileChooserOpenedEvent) => void): void;
+        once(event: 'fileChooserOpened', listener: (params: Protocol.Page.FileChooserOpenedEvent) => void): void;
+        off(event: 'fileChooserOpened', listener: (params: Protocol.Page.FileChooserOpenedEvent) => void): void;
 
         /**
          * Fired when frame has been attached to its parent.
          */
         on(event: 'frameAttached', listener: (params: Protocol.Page.FrameAttachedEvent) => void): void;
+        once(event: 'frameAttached', listener: (params: Protocol.Page.FrameAttachedEvent) => void): void;
+        off(event: 'frameAttached', listener: (params: Protocol.Page.FrameAttachedEvent) => void): void;
 
         /**
          * Fired when frame no longer has a scheduled navigation.
          */
         on(event: 'frameClearedScheduledNavigation', listener: (params: Protocol.Page.FrameClearedScheduledNavigationEvent) => void): void;
+        once(event: 'frameClearedScheduledNavigation', listener: (params: Protocol.Page.FrameClearedScheduledNavigationEvent) => void): void;
+        off(event: 'frameClearedScheduledNavigation', listener: (params: Protocol.Page.FrameClearedScheduledNavigationEvent) => void): void;
 
         /**
          * Fired when frame has been detached from its parent.
          */
         on(event: 'frameDetached', listener: (params: Protocol.Page.FrameDetachedEvent) => void): void;
+        once(event: 'frameDetached', listener: (params: Protocol.Page.FrameDetachedEvent) => void): void;
+        off(event: 'frameDetached', listener: (params: Protocol.Page.FrameDetachedEvent) => void): void;
 
         /**
          * Fired once navigation of the frame has completed. Frame is now associated with the new loader.
          */
         on(event: 'frameNavigated', listener: (params: Protocol.Page.FrameNavigatedEvent) => void): void;
+        once(event: 'frameNavigated', listener: (params: Protocol.Page.FrameNavigatedEvent) => void): void;
+        off(event: 'frameNavigated', listener: (params: Protocol.Page.FrameNavigatedEvent) => void): void;
 
         /**
          * Fired when opening document to write to.
          */
         on(event: 'documentOpened', listener: (params: Protocol.Page.DocumentOpenedEvent) => void): void;
+        once(event: 'documentOpened', listener: (params: Protocol.Page.DocumentOpenedEvent) => void): void;
+        off(event: 'documentOpened', listener: (params: Protocol.Page.DocumentOpenedEvent) => void): void;
 
         on(event: 'frameResized', listener: () => void): void;
+        once(event: 'frameResized', listener: () => void): void;
+        off(event: 'frameResized', listener: () => void): void;
 
         /**
          * Fired when a renderer-initiated navigation is requested.
          * Navigation may still be cancelled after the event is issued.
          */
         on(event: 'frameRequestedNavigation', listener: (params: Protocol.Page.FrameRequestedNavigationEvent) => void): void;
+        once(event: 'frameRequestedNavigation', listener: (params: Protocol.Page.FrameRequestedNavigationEvent) => void): void;
+        off(event: 'frameRequestedNavigation', listener: (params: Protocol.Page.FrameRequestedNavigationEvent) => void): void;
 
         /**
          * Fired when frame schedules a potential navigation.
          */
         on(event: 'frameScheduledNavigation', listener: (params: Protocol.Page.FrameScheduledNavigationEvent) => void): void;
+        once(event: 'frameScheduledNavigation', listener: (params: Protocol.Page.FrameScheduledNavigationEvent) => void): void;
+        off(event: 'frameScheduledNavigation', listener: (params: Protocol.Page.FrameScheduledNavigationEvent) => void): void;
 
         /**
          * Fired when frame has started loading.
          */
         on(event: 'frameStartedLoading', listener: (params: Protocol.Page.FrameStartedLoadingEvent) => void): void;
+        once(event: 'frameStartedLoading', listener: (params: Protocol.Page.FrameStartedLoadingEvent) => void): void;
+        off(event: 'frameStartedLoading', listener: (params: Protocol.Page.FrameStartedLoadingEvent) => void): void;
 
         /**
          * Fired when frame has stopped loading.
          */
         on(event: 'frameStoppedLoading', listener: (params: Protocol.Page.FrameStoppedLoadingEvent) => void): void;
+        once(event: 'frameStoppedLoading', listener: (params: Protocol.Page.FrameStoppedLoadingEvent) => void): void;
+        off(event: 'frameStoppedLoading', listener: (params: Protocol.Page.FrameStoppedLoadingEvent) => void): void;
 
         /**
          * Fired when page is about to start a download.
          * Deprecated. Use Browser.downloadWillBegin instead.
          */
         on(event: 'downloadWillBegin', listener: (params: Protocol.Page.DownloadWillBeginEvent) => void): void;
+        once(event: 'downloadWillBegin', listener: (params: Protocol.Page.DownloadWillBeginEvent) => void): void;
+        off(event: 'downloadWillBegin', listener: (params: Protocol.Page.DownloadWillBeginEvent) => void): void;
 
         /**
          * Fired when download makes progress. Last call has |done| == true.
          * Deprecated. Use Browser.downloadProgress instead.
          */
         on(event: 'downloadProgress', listener: (params: Protocol.Page.DownloadProgressEvent) => void): void;
+        once(event: 'downloadProgress', listener: (params: Protocol.Page.DownloadProgressEvent) => void): void;
+        off(event: 'downloadProgress', listener: (params: Protocol.Page.DownloadProgressEvent) => void): void;
 
         /**
          * Fired when interstitial page was hidden
          */
         on(event: 'interstitialHidden', listener: () => void): void;
+        once(event: 'interstitialHidden', listener: () => void): void;
+        off(event: 'interstitialHidden', listener: () => void): void;
 
         /**
          * Fired when interstitial page was shown
          */
         on(event: 'interstitialShown', listener: () => void): void;
+        once(event: 'interstitialShown', listener: () => void): void;
+        off(event: 'interstitialShown', listener: () => void): void;
 
         /**
          * Fired when a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload) has been
          * closed.
          */
         on(event: 'javascriptDialogClosed', listener: (params: Protocol.Page.JavascriptDialogClosedEvent) => void): void;
+        once(event: 'javascriptDialogClosed', listener: (params: Protocol.Page.JavascriptDialogClosedEvent) => void): void;
+        off(event: 'javascriptDialogClosed', listener: (params: Protocol.Page.JavascriptDialogClosedEvent) => void): void;
 
         /**
          * Fired when a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload) is about to
          * open.
          */
         on(event: 'javascriptDialogOpening', listener: (params: Protocol.Page.JavascriptDialogOpeningEvent) => void): void;
+        once(event: 'javascriptDialogOpening', listener: (params: Protocol.Page.JavascriptDialogOpeningEvent) => void): void;
+        off(event: 'javascriptDialogOpening', listener: (params: Protocol.Page.JavascriptDialogOpeningEvent) => void): void;
 
         /**
          * Fired for top level page lifecycle events such as navigation, load, paint, etc.
          */
         on(event: 'lifecycleEvent', listener: (params: Protocol.Page.LifecycleEventEvent) => void): void;
+        once(event: 'lifecycleEvent', listener: (params: Protocol.Page.LifecycleEventEvent) => void): void;
+        off(event: 'lifecycleEvent', listener: (params: Protocol.Page.LifecycleEventEvent) => void): void;
 
         /**
          * Fired for failed bfcache history navigations if BackForwardCache feature is enabled. Do
@@ -3060,40 +3302,56 @@ export namespace ProtocolProxyApi {
          * when bfcache navigation fails.
          */
         on(event: 'backForwardCacheNotUsed', listener: (params: Protocol.Page.BackForwardCacheNotUsedEvent) => void): void;
+        once(event: 'backForwardCacheNotUsed', listener: (params: Protocol.Page.BackForwardCacheNotUsedEvent) => void): void;
+        off(event: 'backForwardCacheNotUsed', listener: (params: Protocol.Page.BackForwardCacheNotUsedEvent) => void): void;
 
         /**
          * Fired when a prerender attempt is completed.
          */
         on(event: 'prerenderAttemptCompleted', listener: (params: Protocol.Page.PrerenderAttemptCompletedEvent) => void): void;
+        once(event: 'prerenderAttemptCompleted', listener: (params: Protocol.Page.PrerenderAttemptCompletedEvent) => void): void;
+        off(event: 'prerenderAttemptCompleted', listener: (params: Protocol.Page.PrerenderAttemptCompletedEvent) => void): void;
 
         on(event: 'loadEventFired', listener: (params: Protocol.Page.LoadEventFiredEvent) => void): void;
+        once(event: 'loadEventFired', listener: (params: Protocol.Page.LoadEventFiredEvent) => void): void;
+        off(event: 'loadEventFired', listener: (params: Protocol.Page.LoadEventFiredEvent) => void): void;
 
         /**
          * Fired when same-document navigation happens, e.g. due to history API usage or anchor navigation.
          */
         on(event: 'navigatedWithinDocument', listener: (params: Protocol.Page.NavigatedWithinDocumentEvent) => void): void;
+        once(event: 'navigatedWithinDocument', listener: (params: Protocol.Page.NavigatedWithinDocumentEvent) => void): void;
+        off(event: 'navigatedWithinDocument', listener: (params: Protocol.Page.NavigatedWithinDocumentEvent) => void): void;
 
         /**
          * Compressed image data requested by the `startScreencast`.
          */
         on(event: 'screencastFrame', listener: (params: Protocol.Page.ScreencastFrameEvent) => void): void;
+        once(event: 'screencastFrame', listener: (params: Protocol.Page.ScreencastFrameEvent) => void): void;
+        off(event: 'screencastFrame', listener: (params: Protocol.Page.ScreencastFrameEvent) => void): void;
 
         /**
          * Fired when the page with currently enabled screencast was shown or hidden `.
          */
         on(event: 'screencastVisibilityChanged', listener: (params: Protocol.Page.ScreencastVisibilityChangedEvent) => void): void;
+        once(event: 'screencastVisibilityChanged', listener: (params: Protocol.Page.ScreencastVisibilityChangedEvent) => void): void;
+        off(event: 'screencastVisibilityChanged', listener: (params: Protocol.Page.ScreencastVisibilityChangedEvent) => void): void;
 
         /**
          * Fired when a new window is going to be opened, via window.open(), link click, form submission,
          * etc.
          */
         on(event: 'windowOpen', listener: (params: Protocol.Page.WindowOpenEvent) => void): void;
+        once(event: 'windowOpen', listener: (params: Protocol.Page.WindowOpenEvent) => void): void;
+        off(event: 'windowOpen', listener: (params: Protocol.Page.WindowOpenEvent) => void): void;
 
         /**
          * Issued for every compilation cache generated. Is only available
          * if Page.setGenerateCompilationCache is enabled.
          */
         on(event: 'compilationCacheProduced', listener: (params: Protocol.Page.CompilationCacheProducedEvent) => void): void;
+        once(event: 'compilationCacheProduced', listener: (params: Protocol.Page.CompilationCacheProducedEvent) => void): void;
+        off(event: 'compilationCacheProduced', listener: (params: Protocol.Page.CompilationCacheProducedEvent) => void): void;
 
     }
 
@@ -3124,6 +3382,8 @@ export namespace ProtocolProxyApi {
          * Current values of the metrics.
          */
         on(event: 'metrics', listener: (params: Protocol.Performance.MetricsEvent) => void): void;
+        once(event: 'metrics', listener: (params: Protocol.Performance.MetricsEvent) => void): void;
+        off(event: 'metrics', listener: (params: Protocol.Performance.MetricsEvent) => void): void;
 
     }
 
@@ -3138,6 +3398,8 @@ export namespace ProtocolProxyApi {
          * Sent when a performance timeline event is added. See reportPerformanceTimeline method.
          */
         on(event: 'timelineEventAdded', listener: (params: Protocol.PerformanceTimeline.TimelineEventAddedEvent) => void): void;
+        once(event: 'timelineEventAdded', listener: (params: Protocol.PerformanceTimeline.TimelineEventAddedEvent) => void): void;
+        off(event: 'timelineEventAdded', listener: (params: Protocol.PerformanceTimeline.TimelineEventAddedEvent) => void): void;
 
     }
 
@@ -3175,16 +3437,22 @@ export namespace ProtocolProxyApi {
          * certificate errors at the same time.
          */
         on(event: 'certificateError', listener: (params: Protocol.Security.CertificateErrorEvent) => void): void;
+        once(event: 'certificateError', listener: (params: Protocol.Security.CertificateErrorEvent) => void): void;
+        off(event: 'certificateError', listener: (params: Protocol.Security.CertificateErrorEvent) => void): void;
 
         /**
          * The security state of the page changed.
          */
         on(event: 'visibleSecurityStateChanged', listener: (params: Protocol.Security.VisibleSecurityStateChangedEvent) => void): void;
+        once(event: 'visibleSecurityStateChanged', listener: (params: Protocol.Security.VisibleSecurityStateChangedEvent) => void): void;
+        off(event: 'visibleSecurityStateChanged', listener: (params: Protocol.Security.VisibleSecurityStateChangedEvent) => void): void;
 
         /**
          * The security state of the page changed. No longer being sent.
          */
         on(event: 'securityStateChanged', listener: (params: Protocol.Security.SecurityStateChangedEvent) => void): void;
+        once(event: 'securityStateChanged', listener: (params: Protocol.Security.SecurityStateChangedEvent) => void): void;
+        off(event: 'securityStateChanged', listener: (params: Protocol.Security.SecurityStateChangedEvent) => void): void;
 
     }
 
@@ -3216,10 +3484,16 @@ export namespace ProtocolProxyApi {
         updateRegistration(params: Protocol.ServiceWorker.UpdateRegistrationRequest): Promise<void>;
 
         on(event: 'workerErrorReported', listener: (params: Protocol.ServiceWorker.WorkerErrorReportedEvent) => void): void;
+        once(event: 'workerErrorReported', listener: (params: Protocol.ServiceWorker.WorkerErrorReportedEvent) => void): void;
+        off(event: 'workerErrorReported', listener: (params: Protocol.ServiceWorker.WorkerErrorReportedEvent) => void): void;
 
         on(event: 'workerRegistrationUpdated', listener: (params: Protocol.ServiceWorker.WorkerRegistrationUpdatedEvent) => void): void;
+        once(event: 'workerRegistrationUpdated', listener: (params: Protocol.ServiceWorker.WorkerRegistrationUpdatedEvent) => void): void;
+        off(event: 'workerRegistrationUpdated', listener: (params: Protocol.ServiceWorker.WorkerRegistrationUpdatedEvent) => void): void;
 
         on(event: 'workerVersionUpdated', listener: (params: Protocol.ServiceWorker.WorkerVersionUpdatedEvent) => void): void;
+        once(event: 'workerVersionUpdated', listener: (params: Protocol.ServiceWorker.WorkerVersionUpdatedEvent) => void): void;
+        off(event: 'workerVersionUpdated', listener: (params: Protocol.ServiceWorker.WorkerVersionUpdatedEvent) => void): void;
 
     }
 
@@ -3305,26 +3579,36 @@ export namespace ProtocolProxyApi {
          * A cache's contents have been modified.
          */
         on(event: 'cacheStorageContentUpdated', listener: (params: Protocol.Storage.CacheStorageContentUpdatedEvent) => void): void;
+        once(event: 'cacheStorageContentUpdated', listener: (params: Protocol.Storage.CacheStorageContentUpdatedEvent) => void): void;
+        off(event: 'cacheStorageContentUpdated', listener: (params: Protocol.Storage.CacheStorageContentUpdatedEvent) => void): void;
 
         /**
          * A cache has been added/deleted.
          */
         on(event: 'cacheStorageListUpdated', listener: (params: Protocol.Storage.CacheStorageListUpdatedEvent) => void): void;
+        once(event: 'cacheStorageListUpdated', listener: (params: Protocol.Storage.CacheStorageListUpdatedEvent) => void): void;
+        off(event: 'cacheStorageListUpdated', listener: (params: Protocol.Storage.CacheStorageListUpdatedEvent) => void): void;
 
         /**
          * The origin's IndexedDB object store has been modified.
          */
         on(event: 'indexedDBContentUpdated', listener: (params: Protocol.Storage.IndexedDBContentUpdatedEvent) => void): void;
+        once(event: 'indexedDBContentUpdated', listener: (params: Protocol.Storage.IndexedDBContentUpdatedEvent) => void): void;
+        off(event: 'indexedDBContentUpdated', listener: (params: Protocol.Storage.IndexedDBContentUpdatedEvent) => void): void;
 
         /**
          * The origin's IndexedDB database list has been modified.
          */
         on(event: 'indexedDBListUpdated', listener: (params: Protocol.Storage.IndexedDBListUpdatedEvent) => void): void;
+        once(event: 'indexedDBListUpdated', listener: (params: Protocol.Storage.IndexedDBListUpdatedEvent) => void): void;
+        off(event: 'indexedDBListUpdated', listener: (params: Protocol.Storage.IndexedDBListUpdatedEvent) => void): void;
 
         /**
          * One of the interest groups was accessed by the associated page.
          */
         on(event: 'interestGroupAccessed', listener: (params: Protocol.Storage.InterestGroupAccessedEvent) => void): void;
+        once(event: 'interestGroupAccessed', listener: (params: Protocol.Storage.InterestGroupAccessedEvent) => void): void;
+        off(event: 'interestGroupAccessed', listener: (params: Protocol.Storage.InterestGroupAccessedEvent) => void): void;
 
     }
 
@@ -3452,39 +3736,53 @@ export namespace ProtocolProxyApi {
          * Issued when attached to target because of auto-attach or `attachToTarget` command.
          */
         on(event: 'attachedToTarget', listener: (params: Protocol.Target.AttachedToTargetEvent) => void): void;
+        once(event: 'attachedToTarget', listener: (params: Protocol.Target.AttachedToTargetEvent) => void): void;
+        off(event: 'attachedToTarget', listener: (params: Protocol.Target.AttachedToTargetEvent) => void): void;
 
         /**
          * Issued when detached from target for any reason (including `detachFromTarget` command). Can be
          * issued multiple times per target if multiple sessions have been attached to it.
          */
         on(event: 'detachedFromTarget', listener: (params: Protocol.Target.DetachedFromTargetEvent) => void): void;
+        once(event: 'detachedFromTarget', listener: (params: Protocol.Target.DetachedFromTargetEvent) => void): void;
+        off(event: 'detachedFromTarget', listener: (params: Protocol.Target.DetachedFromTargetEvent) => void): void;
 
         /**
          * Notifies about a new protocol message received from the session (as reported in
          * `attachedToTarget` event).
          */
         on(event: 'receivedMessageFromTarget', listener: (params: Protocol.Target.ReceivedMessageFromTargetEvent) => void): void;
+        once(event: 'receivedMessageFromTarget', listener: (params: Protocol.Target.ReceivedMessageFromTargetEvent) => void): void;
+        off(event: 'receivedMessageFromTarget', listener: (params: Protocol.Target.ReceivedMessageFromTargetEvent) => void): void;
 
         /**
          * Issued when a possible inspection target is created.
          */
         on(event: 'targetCreated', listener: (params: Protocol.Target.TargetCreatedEvent) => void): void;
+        once(event: 'targetCreated', listener: (params: Protocol.Target.TargetCreatedEvent) => void): void;
+        off(event: 'targetCreated', listener: (params: Protocol.Target.TargetCreatedEvent) => void): void;
 
         /**
          * Issued when a target is destroyed.
          */
         on(event: 'targetDestroyed', listener: (params: Protocol.Target.TargetDestroyedEvent) => void): void;
+        once(event: 'targetDestroyed', listener: (params: Protocol.Target.TargetDestroyedEvent) => void): void;
+        off(event: 'targetDestroyed', listener: (params: Protocol.Target.TargetDestroyedEvent) => void): void;
 
         /**
          * Issued when a target has crashed.
          */
         on(event: 'targetCrashed', listener: (params: Protocol.Target.TargetCrashedEvent) => void): void;
+        once(event: 'targetCrashed', listener: (params: Protocol.Target.TargetCrashedEvent) => void): void;
+        off(event: 'targetCrashed', listener: (params: Protocol.Target.TargetCrashedEvent) => void): void;
 
         /**
          * Issued when some information about a target has changed. This only happens between
          * `targetCreated` and `targetDestroyed`.
          */
         on(event: 'targetInfoChanged', listener: (params: Protocol.Target.TargetInfoChangedEvent) => void): void;
+        once(event: 'targetInfoChanged', listener: (params: Protocol.Target.TargetInfoChangedEvent) => void): void;
+        off(event: 'targetInfoChanged', listener: (params: Protocol.Target.TargetInfoChangedEvent) => void): void;
 
     }
 
@@ -3503,6 +3801,8 @@ export namespace ProtocolProxyApi {
          * Informs that port was successfully bound and got a specified connection id.
          */
         on(event: 'accepted', listener: (params: Protocol.Tethering.AcceptedEvent) => void): void;
+        once(event: 'accepted', listener: (params: Protocol.Tethering.AcceptedEvent) => void): void;
+        off(event: 'accepted', listener: (params: Protocol.Tethering.AcceptedEvent) => void): void;
 
     }
 
@@ -3533,18 +3833,24 @@ export namespace ProtocolProxyApi {
         start(params: Protocol.Tracing.StartRequest): Promise<void>;
 
         on(event: 'bufferUsage', listener: (params: Protocol.Tracing.BufferUsageEvent) => void): void;
+        once(event: 'bufferUsage', listener: (params: Protocol.Tracing.BufferUsageEvent) => void): void;
+        off(event: 'bufferUsage', listener: (params: Protocol.Tracing.BufferUsageEvent) => void): void;
 
         /**
          * Contains an bucket of collected trace events. When tracing is stopped collected events will be
          * send as a sequence of dataCollected events followed by tracingComplete event.
          */
         on(event: 'dataCollected', listener: (params: Protocol.Tracing.DataCollectedEvent) => void): void;
+        once(event: 'dataCollected', listener: (params: Protocol.Tracing.DataCollectedEvent) => void): void;
+        off(event: 'dataCollected', listener: (params: Protocol.Tracing.DataCollectedEvent) => void): void;
 
         /**
          * Signals that tracing is stopped and there is no trace buffers pending flush, all data were
          * delivered via dataCollected events.
          */
         on(event: 'tracingComplete', listener: (params: Protocol.Tracing.TracingCompleteEvent) => void): void;
+        once(event: 'tracingComplete', listener: (params: Protocol.Tracing.TracingCompleteEvent) => void): void;
+        off(event: 'tracingComplete', listener: (params: Protocol.Tracing.TracingCompleteEvent) => void): void;
 
     }
 
@@ -3620,12 +3926,16 @@ export namespace ProtocolProxyApi {
          * of these fields is present and in the request stage otherwise.
          */
         on(event: 'requestPaused', listener: (params: Protocol.Fetch.RequestPausedEvent) => void): void;
+        once(event: 'requestPaused', listener: (params: Protocol.Fetch.RequestPausedEvent) => void): void;
+        off(event: 'requestPaused', listener: (params: Protocol.Fetch.RequestPausedEvent) => void): void;
 
         /**
          * Issued when the domain is enabled with handleAuthRequests set to true.
          * The request is paused until client responds with continueWithAuth.
          */
         on(event: 'authRequired', listener: (params: Protocol.Fetch.AuthRequiredEvent) => void): void;
+        once(event: 'authRequired', listener: (params: Protocol.Fetch.AuthRequiredEvent) => void): void;
+        off(event: 'authRequired', listener: (params: Protocol.Fetch.AuthRequiredEvent) => void): void;
 
     }
 
@@ -3649,66 +3959,92 @@ export namespace ProtocolProxyApi {
          * Notifies that a new BaseAudioContext has been created.
          */
         on(event: 'contextCreated', listener: (params: Protocol.WebAudio.ContextCreatedEvent) => void): void;
+        once(event: 'contextCreated', listener: (params: Protocol.WebAudio.ContextCreatedEvent) => void): void;
+        off(event: 'contextCreated', listener: (params: Protocol.WebAudio.ContextCreatedEvent) => void): void;
 
         /**
          * Notifies that an existing BaseAudioContext will be destroyed.
          */
         on(event: 'contextWillBeDestroyed', listener: (params: Protocol.WebAudio.ContextWillBeDestroyedEvent) => void): void;
+        once(event: 'contextWillBeDestroyed', listener: (params: Protocol.WebAudio.ContextWillBeDestroyedEvent) => void): void;
+        off(event: 'contextWillBeDestroyed', listener: (params: Protocol.WebAudio.ContextWillBeDestroyedEvent) => void): void;
 
         /**
          * Notifies that existing BaseAudioContext has changed some properties (id stays the same)..
          */
         on(event: 'contextChanged', listener: (params: Protocol.WebAudio.ContextChangedEvent) => void): void;
+        once(event: 'contextChanged', listener: (params: Protocol.WebAudio.ContextChangedEvent) => void): void;
+        off(event: 'contextChanged', listener: (params: Protocol.WebAudio.ContextChangedEvent) => void): void;
 
         /**
          * Notifies that the construction of an AudioListener has finished.
          */
         on(event: 'audioListenerCreated', listener: (params: Protocol.WebAudio.AudioListenerCreatedEvent) => void): void;
+        once(event: 'audioListenerCreated', listener: (params: Protocol.WebAudio.AudioListenerCreatedEvent) => void): void;
+        off(event: 'audioListenerCreated', listener: (params: Protocol.WebAudio.AudioListenerCreatedEvent) => void): void;
 
         /**
          * Notifies that a new AudioListener has been created.
          */
         on(event: 'audioListenerWillBeDestroyed', listener: (params: Protocol.WebAudio.AudioListenerWillBeDestroyedEvent) => void): void;
+        once(event: 'audioListenerWillBeDestroyed', listener: (params: Protocol.WebAudio.AudioListenerWillBeDestroyedEvent) => void): void;
+        off(event: 'audioListenerWillBeDestroyed', listener: (params: Protocol.WebAudio.AudioListenerWillBeDestroyedEvent) => void): void;
 
         /**
          * Notifies that a new AudioNode has been created.
          */
         on(event: 'audioNodeCreated', listener: (params: Protocol.WebAudio.AudioNodeCreatedEvent) => void): void;
+        once(event: 'audioNodeCreated', listener: (params: Protocol.WebAudio.AudioNodeCreatedEvent) => void): void;
+        off(event: 'audioNodeCreated', listener: (params: Protocol.WebAudio.AudioNodeCreatedEvent) => void): void;
 
         /**
          * Notifies that an existing AudioNode has been destroyed.
          */
         on(event: 'audioNodeWillBeDestroyed', listener: (params: Protocol.WebAudio.AudioNodeWillBeDestroyedEvent) => void): void;
+        once(event: 'audioNodeWillBeDestroyed', listener: (params: Protocol.WebAudio.AudioNodeWillBeDestroyedEvent) => void): void;
+        off(event: 'audioNodeWillBeDestroyed', listener: (params: Protocol.WebAudio.AudioNodeWillBeDestroyedEvent) => void): void;
 
         /**
          * Notifies that a new AudioParam has been created.
          */
         on(event: 'audioParamCreated', listener: (params: Protocol.WebAudio.AudioParamCreatedEvent) => void): void;
+        once(event: 'audioParamCreated', listener: (params: Protocol.WebAudio.AudioParamCreatedEvent) => void): void;
+        off(event: 'audioParamCreated', listener: (params: Protocol.WebAudio.AudioParamCreatedEvent) => void): void;
 
         /**
          * Notifies that an existing AudioParam has been destroyed.
          */
         on(event: 'audioParamWillBeDestroyed', listener: (params: Protocol.WebAudio.AudioParamWillBeDestroyedEvent) => void): void;
+        once(event: 'audioParamWillBeDestroyed', listener: (params: Protocol.WebAudio.AudioParamWillBeDestroyedEvent) => void): void;
+        off(event: 'audioParamWillBeDestroyed', listener: (params: Protocol.WebAudio.AudioParamWillBeDestroyedEvent) => void): void;
 
         /**
          * Notifies that two AudioNodes are connected.
          */
         on(event: 'nodesConnected', listener: (params: Protocol.WebAudio.NodesConnectedEvent) => void): void;
+        once(event: 'nodesConnected', listener: (params: Protocol.WebAudio.NodesConnectedEvent) => void): void;
+        off(event: 'nodesConnected', listener: (params: Protocol.WebAudio.NodesConnectedEvent) => void): void;
 
         /**
          * Notifies that AudioNodes are disconnected. The destination can be null, and it means all the outgoing connections from the source are disconnected.
          */
         on(event: 'nodesDisconnected', listener: (params: Protocol.WebAudio.NodesDisconnectedEvent) => void): void;
+        once(event: 'nodesDisconnected', listener: (params: Protocol.WebAudio.NodesDisconnectedEvent) => void): void;
+        off(event: 'nodesDisconnected', listener: (params: Protocol.WebAudio.NodesDisconnectedEvent) => void): void;
 
         /**
          * Notifies that an AudioNode is connected to an AudioParam.
          */
         on(event: 'nodeParamConnected', listener: (params: Protocol.WebAudio.NodeParamConnectedEvent) => void): void;
+        once(event: 'nodeParamConnected', listener: (params: Protocol.WebAudio.NodeParamConnectedEvent) => void): void;
+        off(event: 'nodeParamConnected', listener: (params: Protocol.WebAudio.NodeParamConnectedEvent) => void): void;
 
         /**
          * Notifies that an AudioNode is disconnected to an AudioParam.
          */
         on(event: 'nodeParamDisconnected', listener: (params: Protocol.WebAudio.NodeParamDisconnectedEvent) => void): void;
+        once(event: 'nodeParamDisconnected', listener: (params: Protocol.WebAudio.NodeParamDisconnectedEvent) => void): void;
+        off(event: 'nodeParamDisconnected', listener: (params: Protocol.WebAudio.NodeParamDisconnectedEvent) => void): void;
 
     }
 
@@ -3790,22 +4126,30 @@ export namespace ProtocolProxyApi {
          * remove player properties. A null propValue indicates removal.
          */
         on(event: 'playerPropertiesChanged', listener: (params: Protocol.Media.PlayerPropertiesChangedEvent) => void): void;
+        once(event: 'playerPropertiesChanged', listener: (params: Protocol.Media.PlayerPropertiesChangedEvent) => void): void;
+        off(event: 'playerPropertiesChanged', listener: (params: Protocol.Media.PlayerPropertiesChangedEvent) => void): void;
 
         /**
          * Send events as a list, allowing them to be batched on the browser for less
          * congestion. If batched, events must ALWAYS be in chronological order.
          */
         on(event: 'playerEventsAdded', listener: (params: Protocol.Media.PlayerEventsAddedEvent) => void): void;
+        once(event: 'playerEventsAdded', listener: (params: Protocol.Media.PlayerEventsAddedEvent) => void): void;
+        off(event: 'playerEventsAdded', listener: (params: Protocol.Media.PlayerEventsAddedEvent) => void): void;
 
         /**
          * Send a list of any messages that need to be delivered.
          */
         on(event: 'playerMessagesLogged', listener: (params: Protocol.Media.PlayerMessagesLoggedEvent) => void): void;
+        once(event: 'playerMessagesLogged', listener: (params: Protocol.Media.PlayerMessagesLoggedEvent) => void): void;
+        off(event: 'playerMessagesLogged', listener: (params: Protocol.Media.PlayerMessagesLoggedEvent) => void): void;
 
         /**
          * Send a list of any errors that need to be delivered.
          */
         on(event: 'playerErrorsRaised', listener: (params: Protocol.Media.PlayerErrorsRaisedEvent) => void): void;
+        once(event: 'playerErrorsRaised', listener: (params: Protocol.Media.PlayerErrorsRaisedEvent) => void): void;
+        off(event: 'playerErrorsRaised', listener: (params: Protocol.Media.PlayerErrorsRaisedEvent) => void): void;
 
         /**
          * Called whenever a player is created, or when a new agent joins and receives
@@ -3813,6 +4157,8 @@ export namespace ProtocolProxyApi {
          * list of player ids and all events again.
          */
         on(event: 'playersCreated', listener: (params: Protocol.Media.PlayersCreatedEvent) => void): void;
+        once(event: 'playersCreated', listener: (params: Protocol.Media.PlayersCreatedEvent) => void): void;
+        off(event: 'playersCreated', listener: (params: Protocol.Media.PlayersCreatedEvent) => void): void;
 
     }
 }
