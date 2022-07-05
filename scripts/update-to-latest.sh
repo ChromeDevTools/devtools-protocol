@@ -5,11 +5,6 @@
 
 set -euxo pipefail
 
-# This location is very *machine specific*
-# Ideally we'd only need just the frontend repo and its deps, but we need the cr rev. And its pretty much only avail in the full repo
-chromium_src_path="$HOME/chromium-tot/src"
-
-
 pwd="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 protocol_repo_path="$pwd/../"
 
@@ -20,33 +15,28 @@ git submodule update --init
 # always work with the latest inspector_protocol repo
 git submodule foreach git pull origin main
 
-# => cd into chromium
-cd "$chromium_src_path" || exit 1
+python_bin="python3"
 
-# get latest from chromium main
-git fetch origin main
-git checkout -f origin/main
-gclient sync --nohooks --delete_unversioned_trees --reset --force # no hooks needed.
+chromium_deps_url="https://chromium.googlesource.com/chromium/src.git/+/refs/heads/main/DEPS?format=TEXT"
+v8_revision=$(curl --silent "${chromium_deps_url}" | base64 --decode | grep "'v8_revision':" | cut -d "'" -f4)
+browser_protocol_url="https://chromium.googlesource.com/chromium/src.git/+/refs/heads/main/third_party/blink/public/devtools_protocol/browser_protocol.pdl?format=TEXT"
+js_protocol_url="https://chromium.googlesource.com/v8/v8.git/+/${v8_revision}/include/js_protocol.pdl?format=TEXT"
 
-python_bin="$chromium_src_path/third_party/depot_tools/vpython3"
-
-browser_protocol_path="$chromium_src_path/third_party/blink/public/devtools_protocol/browser_protocol.pdl"
-js_protocol_path="$chromium_src_path/v8/include/js_protocol.pdl"
-
-# copy the two protocol.pdl files over.
-cp "$js_protocol_path" "$protocol_repo_path/pdl"
-cp "$browser_protocol_path" "$protocol_repo_path/pdl"
+curl --silent "${browser_protocol_url}" | base64 --decode > pdl/browser_protocol.pdl
+curl --silent "${js_protocol_url}" | base64 --decode > pdl/js_protocol.pdl
 
 # extract cr revision number
-commit_pos_line=$(git log --date=iso --no-color --max-count=1 | gtac | grep -E -o "Cr-Commit-Position.*" | head -n1)
-commit_rev=$(echo "$commit_pos_line" | grep -E -o "\d+")
+chromium_git_log_url="https://chromium.googlesource.com/chromium/src.git/+log/refs/heads/main?format=JSON"
+commit_rev=$(curl --silent "${chromium_git_log_url}" | tail -n +2 | \
+  "$python_bin" -c 'import json,sys;print(json.load(sys.stdin)["log"][0]["message"])' | \
+  grep -E -o "^Cr-Commit-Position.*" | grep -E -o "\d+")
 
 # generate json from pdl
 convert_script="$protocol_repo_path/scripts/inspector_protocol/convert_protocol_to_json.py"
 "$python_bin" "$convert_script" --map_binary_to_string=true "$protocol_repo_path/pdl/browser_protocol.pdl" "$protocol_repo_path/json/browser_protocol.json"
 "$python_bin" "$convert_script" --map_binary_to_string=true "$protocol_repo_path/pdl/js_protocol.pdl" "$protocol_repo_path/json/js_protocol.json"
-# The conversion script leaves json files next to the pdl's. Because reasons.
-rm -f "$protocol_repo_path"/pdl/*.json
+# The conversion script leaves json files next to the PDLs. Because reasons.
+rm -f -- "$protocol_repo_path"/pdl/*.json
 
 # => cd into protocol repo
 cd "$protocol_repo_path" || exit 1
