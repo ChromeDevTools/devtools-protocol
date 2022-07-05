@@ -67,6 +67,7 @@ if ! git diff --no-ext-diff --quiet --exit-code; then
 	npm run changelog
 
 	# bump npm version
+	cd "$protocol_repo_path"
 	npm version --no-git-tag-version "0.0.$commit_rev"
 
 	# amend previous commit
