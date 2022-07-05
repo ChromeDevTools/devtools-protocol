@@ -14,7 +14,6 @@ jobs:
       - name: Publish
         env:
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}
-        working-directory: scripts
         run: |
           npm config set registry 'https://wombat-dressing-room.appspot.com/'
           npm config set '//wombat-dressing-room.appspot.com/:_authToken' '${NPM_TOKEN}'
