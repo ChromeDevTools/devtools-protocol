@@ -62,9 +62,9 @@ if ! git diff --no-ext-diff --quiet --exit-code; then
 
 	# generate changelog
 	cd "$protocol_repo_path/scripts" || exit 1
-	$HOME/bin/yarn install --non-interactive
-	$HOME/bin/yarn run build-protocol-dts
-	$HOME/bin/yarn run changelog
+	npm install
+	npm run build-protocol-dts
+	npm run changelog
 
 	# publish to npm
 	. $protocol_repo_path/scripts/publish-to-npm.sh "$commit_rev"
