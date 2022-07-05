@@ -66,11 +66,15 @@ if ! git diff --no-ext-diff --quiet --exit-code; then
 	$HOME/bin/yarn run build-protocol-dts
 	$HOME/bin/yarn run changelog
 
-	# publish to npm
-	. $protocol_repo_path/scripts/publish-to-npm.sh "$commit_rev"
+	# bump npm version
+	npm version --no-git-tag-version "0.0.$commit_rev"
 
 	# amend previous commit
 	git commit --amend --author="DevTools Bot <24444246+devtools-bot@users.noreply.github.com>" --all -m "Roll protocol to r$commit_rev"
+
+	# tag this version
+	git tag "v0.0.$commit_rev"
+
 	# push to devtools-protocol repo
-	git pull && git push
+	git pull && git push && git push --tags
 fi

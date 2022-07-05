@@ -1,6 +1,7 @@
 {
   "version": "0.0.510771",
   "license": "SEE LICENSE IN https://chromium.googlesource.com/chromium/src/+/main/LICENSE",
+  "repository": "ChromeDevTools/devtools-protocol",
   "scripts": {
     "build-protocol-dts": "ts-node protocol-dts-generator.ts",
     "type-check": "tsc -p tsconfig.json",
