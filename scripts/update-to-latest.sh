@@ -15,13 +15,11 @@ git submodule update --init
 # always work with the latest inspector_protocol repo
 git submodule foreach git pull origin main
 
-python_bin="python3"
-
 # get latest commit hash + cr revision number
 chromium_git_log_url="https://chromium.googlesource.com/chromium/src.git/+log/refs/heads/main?format=JSON"
 curl --silent "${chromium_git_log_url}" | tail -n +2 > tmp.json
-commit_sha=$("$python_bin" -c 'import json;print(json.load(open("tmp.json"))["log"][0]["commit"])')
-commit_rev=$("$python_bin" -c 'import json;print(json.load(open("tmp.json"))["log"][0]["message"])' | \
+commit_sha=$(python3 -c 'import json;print(json.load(open("tmp.json"))["log"][0]["commit"])')
+commit_rev=$(python3 -c 'import json;print(json.load(open("tmp.json"))["log"][0]["message"])' | \
   grep -E -o "^Cr-Commit-Position.*" | grep -E -o "\d+")
 rm tmp.json
 
@@ -35,8 +33,8 @@ curl --silent "${js_protocol_url}" | base64 --decode > pdl/js_protocol.pdl
 
 # generate json from pdl
 convert_script="$protocol_repo_path/scripts/inspector_protocol/convert_protocol_to_json.py"
-"$python_bin" "$convert_script" --map_binary_to_string=true "$protocol_repo_path/pdl/browser_protocol.pdl" "$protocol_repo_path/json/browser_protocol.json"
-"$python_bin" "$convert_script" --map_binary_to_string=true "$protocol_repo_path/pdl/js_protocol.pdl" "$protocol_repo_path/json/js_protocol.json"
+python3 "$convert_script" --map_binary_to_string=true "$protocol_repo_path/pdl/browser_protocol.pdl" "$protocol_repo_path/json/browser_protocol.json"
+python3 "$convert_script" --map_binary_to_string=true "$protocol_repo_path/pdl/js_protocol.pdl" "$protocol_repo_path/json/js_protocol.json"
 # The conversion script leaves json files next to the PDLs. Because reasons.
 rm -f -- "$protocol_repo_path"/pdl/*.json
 
