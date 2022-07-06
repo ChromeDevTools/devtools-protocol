@@ -20,7 +20,7 @@ chromium_git_log_url="https://chromium.googlesource.com/chromium/src.git/+log/re
 curl --silent "${chromium_git_log_url}" | tail -n +2 > tmp.json
 commit_sha=$(python3 -c 'import json;print(json.load(open("tmp.json"))["log"][0]["commit"])')
 commit_rev=$(python3 -c 'import json;print(json.load(open("tmp.json"))["log"][0]["message"])' | \
-  grep -E -o "^Cr-Commit-Position.*" | grep -E -o "\d+")
+  grep -E -o "^Cr-Commit-Position.*" | grep -E -o "[0-9]+")
 rm tmp.json
 
 chromium_deps_url="https://chromium.googlesource.com/chromium/src.git/+/${commit_sha}/DEPS?format=TEXT"
