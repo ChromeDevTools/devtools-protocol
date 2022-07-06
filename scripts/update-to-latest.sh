@@ -6,7 +6,7 @@
 set -euxo pipefail
 
 pwd="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-protocol_repo_path="$pwd/../"
+protocol_repo_path="$pwd/.."
 
 # => cd into protocol repo
 cd "$protocol_repo_path" || exit 1
