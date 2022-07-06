@@ -17,19 +17,23 @@ git submodule foreach git pull origin main
 
 python_bin="python3"
 
-chromium_deps_url="https://chromium.googlesource.com/chromium/src.git/+/refs/heads/main/DEPS?format=TEXT"
+# get latest commit hash + cr revision number
+chromium_git_log_url="https://chromium.googlesource.com/chromium/src.git/+log/refs/heads/main?format=JSON"
+curl --silent "${chromium_git_log_url}" | tail -n +2 > tmp.json
+commit_sha=$(cat tmp.json | \
+  "$python_bin" -c 'import json,sys;print(json.load(sys.stdin)["log"][0]["commit"])')
+commit_rev=$(cat tmp.json | \
+  "$python_bin" -c 'import json,sys;print(json.load(sys.stdin)["log"][0]["message"])' | \
+  grep -E -o "^Cr-Commit-Position.*" | grep -E -o "\d+")
+rm tmp.json
+
+chromium_deps_url="https://chromium.googlesource.com/chromium/src.git/+/${commit_sha}/DEPS?format=TEXT"
 v8_revision=$(curl --silent "${chromium_deps_url}" | base64 --decode | grep "'v8_revision':" | cut -d "'" -f4)
-browser_protocol_url="https://chromium.googlesource.com/chromium/src.git/+/refs/heads/main/third_party/blink/public/devtools_protocol/browser_protocol.pdl?format=TEXT"
+browser_protocol_url="https://chromium.googlesource.com/chromium/src.git/+/${commit_sha}/third_party/blink/public/devtools_protocol/browser_protocol.pdl?format=TEXT"
 js_protocol_url="https://chromium.googlesource.com/v8/v8.git/+/${v8_revision}/include/js_protocol.pdl?format=TEXT"
 
 curl --silent "${browser_protocol_url}" | base64 --decode > pdl/browser_protocol.pdl
 curl --silent "${js_protocol_url}" | base64 --decode > pdl/js_protocol.pdl
-
-# extract cr revision number
-chromium_git_log_url="https://chromium.googlesource.com/chromium/src.git/+log/refs/heads/main?format=JSON"
-commit_rev=$(curl --silent "${chromium_git_log_url}" | tail -n +2 | \
-  "$python_bin" -c 'import json,sys;print(json.load(sys.stdin)["log"][0]["message"])' | \
-  grep -E -o "^Cr-Commit-Position.*" | grep -E -o "\d+")
 
 # generate json from pdl
 convert_script="$protocol_repo_path/scripts/inspector_protocol/convert_protocol_to_json.py"
