@@ -1,0 +1,17 @@
+name: update
+
+on:
+  schedule:
+    # Run daily at 04:20 UTC.
+    - cron: '20 4 * * *'
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Update
+        run: |
+          scripts/update-to-latest.sh
