@@ -324,11 +324,20 @@ const emitApiCommand = (command: P.Command, domainName: string, modulePrefix: st
     emitLine()
 }
 
+/**
+ * @param event the event
+ * @param domainName second part of type prefix
+ * @param modulePrefix first part of type prefix
+ */
 const emitApiEvent = (event: P.Event, domainName: string, modulePrefix: string) => {
     const prefix = `${modulePrefix}.${domainName}.`
     emitDescription(event.description)
     const params = event.parameters ? `params: ${prefix}${toEventPayloadName(event.name)}` : ''
     emitLine(`on(event: '${event.name}', listener: (${params}) => void): void;`)
+    emitLine(`once(event: '${event.name}', listener: (${params}) => void): void;`)
+    emitLine(`off(event: '${event.name}', listener: (${params}) => void): void;`)
+    // alternative to once syntax
+    // emitLine(`${event.name}(listener: (${params}) => void): void;`)
     emitLine()
 }
 
