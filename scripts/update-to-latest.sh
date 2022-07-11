@@ -47,8 +47,11 @@ git --no-pager diff
 if ! git diff --no-ext-diff --quiet --exit-code; then
 	# dirty repo, ready to commit.
 
+	git config user.name 'DevTools Bot'
+	git config user.email '24444246+devtools-bot@users.noreply.github.com'
+
 	# commit so we can use the new commit in the changelog
-	git commit --author="DevTools Bot <24444246+devtools-bot@users.noreply.github.com>" --all -m "Roll protocol to r$commit_rev"
+	git commit --all -m "Roll protocol to r$commit_rev"
 
 	# generate changelog
 	cd "$protocol_repo_path/scripts" || exit 1
@@ -61,7 +64,7 @@ if ! git diff --no-ext-diff --quiet --exit-code; then
 	npm version --no-git-tag-version "0.0.$commit_rev"
 
 	# amend previous commit
-	git commit --amend --author="DevTools Bot <24444246+devtools-bot@users.noreply.github.com>" --all -m "Roll protocol to r$commit_rev"
+	git commit --amend --all -m "Roll protocol to r$commit_rev"
 
 	# tag this version
 	git tag "v0.0.$commit_rev"
