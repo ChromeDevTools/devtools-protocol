@@ -15,6 +15,12 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
       - name: Update
         run: |
           scripts/update-to-latest.sh
