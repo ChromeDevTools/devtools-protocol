@@ -10,7 +10,7 @@
     "@types/node": "^9.6.0",
     "just-diff": "^2.1.0",
     "obj-list-diff": "^1.0.0",
-    "simple-git": "^1.75.0",
+    "simple-git": "^3.5.0",
     "ts-node": "^7.0.0",
     "typescript": "3.0.1"
   }
