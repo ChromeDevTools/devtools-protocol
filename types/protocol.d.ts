@@ -4854,6 +4854,10 @@ export namespace Protocol {
              * A list of CSS keyframed animations matching this node.
              */
             cssKeyframesRules?: CSSKeyframesRule[];
+            /**
+             * Id of the first parent element that does not have display: contents.
+             */
+            parentLayoutNodeId?: DOM.NodeId;
         }
 
         export interface GetMediaQueriesResponse {
