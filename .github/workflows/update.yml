@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: Update
         run: |
           scripts/update-to-latest.sh
