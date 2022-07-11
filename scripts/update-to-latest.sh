@@ -70,5 +70,5 @@ if ! git diff --no-ext-diff --quiet --exit-code; then
 	git tag "v0.0.$commit_rev"
 
 	# push to devtools-protocol repo
-	git pull && git push && git push --tags
+	git push && git push --tags
 fi
