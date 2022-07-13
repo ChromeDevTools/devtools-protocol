@@ -50,17 +50,21 @@ if ! git diff --no-ext-diff --quiet --exit-code; then
 	git config user.name 'DevTools Bot'
 	git config user.email '24444246+devtools-bot@users.noreply.github.com'
 
-	# generate protocol.d.ts
+	# commit so we can use the new commit in the changelog
+	git commit --all -m "Roll protocol to r$commit_rev"
+
+	# generate changelog
 	cd "$protocol_repo_path/scripts" || exit 1
 	npm install
 	npm run build-protocol-dts
+	npm run changelog
 
 	# bump npm version
 	cd "$protocol_repo_path"
 	npm version --no-git-tag-version "0.0.$commit_rev"
 
-	# commit
-	git commit --all -m "Roll protocol to r$commit_rev"
+	# amend previous commit
+	git commit --amend --all -m "Roll protocol to r$commit_rev"
 
 	# tag this version
 	git tag "v0.0.$commit_rev"
