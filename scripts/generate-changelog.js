@@ -6,8 +6,15 @@ const path = require('path');
 const simpleGit = require('simple-git');
 const objListDiff = require('obj-list-diff');
 const justDiff = require('just-diff').diff;
+const jsonDiff = require('json-diff');
 
-let results = '';
+const util = require('util');
+util.inspect.defaultOptions.depth = 10;
+
+const maxCommitsInChangelog = 100;
+
+let results = `Last ${maxCommitsInChangelog} changes to the protocol`;
+
 const wait = (n = 100) => new Promise(res => setTimeout(res, n));
 
 /**
@@ -45,7 +52,6 @@ class Changeset {
     const itemKey = Formatter.getKey(prev) || Formatter.getKey(current);
 
     const itemDiff = objListDiff(prev, current, {key: itemKey});
-
     // get detailed modification changes
     const childChanges = itemDiff.modified.forEach(change => {
         const changeName = change[itemKey];
@@ -101,20 +107,33 @@ class Changeset {
  * Formatter purely taking the diff objects and formatting them to markdown
  */
 class Formatter {
-  static logCommit(previousCommit, commit, changes) {
+  static logCommit(previousCommit, commit, gitdiff) {
 
-    // Don't log commits that don't change the protocol.
-    changes.forEach(change => Formatter.cleanDiff(change));
-    changes = changes.filter(change => change.diff.added.length || change.diff.removed.length || change.diff.modified.length);
-    if (changes.length === 0) return;
+    if (!gitdiff || !gitdiff.length) return;
+
+
+    const gitdiffLines = gitdiff.split('\n');
+    const filename = gitdiffLines[0].replace(/.*? b\/pdl\//, '');
+    const lineNo = gitdiffLines[4].match(/@@.*?(?<lineno>\d+)/);
+    const hunkHeaderContext = gitdiffLines[4].replace(/@@.*@@ /, '');
+
+    const adjustedDiff = [
+      `@@ ${filename}:${lineNo.groups.lineno} @@ ${hunkHeaderContext}`,
+      ...gitdiffLines.slice(5)
+    ].join('\n');
+
+    // // Don't log commits that don't change the protocol.
+    // changes.forEach(change => Formatter.cleanDiff(change));
+    // changes = changes.filter(change => change.diff.added.length || change.diff.removed.length || change.diff.modified.length);
+    // if (changes.length === 0) return;
 
     // simple-git adds this "(HEAD, origin/master)" string to the first commit's message...
     const commitMessage = commit.message.replace(/\(HEAD.*/, '').replace(' (master)', '').replace(' (main)', '').trim();
-    results += `\n\n## ${commitMessage}\n`;
-    results += `###### _${commit.date.replace(' -0700', '')}_ `;
-    const hashCompareStr = `${previousCommit.hash.slice(0, 7)}...${commit.hash.slice(0, 7)}`;
-    results += `| Diff: [${hashCompareStr}](https://github.com/ChromeDevTools/devtools-protocol/compare/${hashCompareStr})\n`;
-    changes.forEach(change => Formatter.logDiff(change));
+    const commitDateStr = new Date(commit.date).toLocaleString('ja', { dateStyle: 'medium', timeStyle: 'medium' }); // my fave.
+    results += `\n\n## ${commitMessage} — _${commitDateStr}_\n`;
+    const hashCompareStr = `\`${previousCommit.hash.slice(0, 7)}...${commit.hash.slice(0, 7)}\``;
+    results += `######  Diff: [${hashCompareStr}](https://github.com/ChromeDevTools/devtools-protocol/compare/${hashCompareStr})\n`;
+    results += `\n\`\`\`diff\n${adjustedDiff}\n\`\`\`\``;
   }
 
   static cleanDiff({itemType, domainName, diff}) {
@@ -155,6 +174,7 @@ class Formatter {
   }
 
   static generateChildChanges(childChanges) {
+    // console.log(childChanges);
     if (!childChanges || !childChanges.length) return '';
     let textChanges = [];
 
@@ -188,6 +208,12 @@ class Formatter {
         //     The return value's errorText type updated.
         const propName = eoPath;
         if (restOfPath.length === 1) {
+          // An array gained/removed an item. lets not talk about the positional changes…
+          if (path[0] === 'enum' && change.op == 'replace') {
+            return;
+          }
+          if (path[0] === 'enum') 
+
           textChanges.push(`The ${locationToText(restOfPath[0])}'s \`${propName}\` _${opToText[change.op]}_`);
         } else if (restOfPath.length > 1) {
           textChanges.push(`The \`${restOfPath[1]}\` in the ${locationToText(restOfPath[0])} had \`${propName}\` _${opToText[change.op]}_`);
@@ -209,9 +235,9 @@ class Formatter {
       else return all.set(curr, 1);
     }, new Map());
 
-    let text = ' - ';
+    let text = ':';
     for (const [textChange, count] of changesByCount) {
-      text += textChange + (count > 1 ? ` (${count} times). ` : '. ');
+      text += '\n   - ' + textChange + (count > 1 ? ` (${count} times). ` : '. ');
     };
 
     return text.trimEnd();
@@ -234,7 +260,11 @@ const blacklistedCommits = [
   '366374904f0cfd931263af8e171015859c5d6339', // use private bot email
   '88d913066a7a65796e5ecd171508ce0f3514e593', // resolve git conflict
   '0eb828c0d972543692a74149d368ad122bf30cf2', // merge master
-
+  '5c44cf21a81f13f968bc347340c7da7846ce11f6', // messy diff. fix the empty
+  'f72d9f75a707f841c866931b90b14b60929e9675', // messy diff. fix the empty
+  'f99d7112f04b237322dd30aceb3f40c8834c9939', // bad commit. emptied things.
+  '3e55bd00c7f9fb6490e2dd28b01825300c00ea88', // bad commit. emptied things.
+  '874a0ee4cc41a2d73cf4261822ef8604afd5cba9', // bad commit. emptied things.
 ];
 
 /**
@@ -265,20 +295,23 @@ class CommitCrawler {
     // Remove any commits we don't want to deal with.
     this.commitlogs = commitlog.all.filter(commit => !blacklistedCommits.includes(commit.hash));
 
-    for (let i = 0; i < this.commitlogs.length; i++) {
+    for (let i = 0; i < maxCommitsInChangelog; i++) {
       // Skip the first commits of the repo.
       if (i >= (this.commitlogs.length - 3)) continue;
 
       // Hack to quit early.
-      // if (i < 2) continue;
+      if (i < 35) continue;
       // if (i > 6) continue;
 
       const commit = this.commitlogs[i];
       const previousCommit = this.commitlogs[i + 1];
       if (!previousCommit) continue;
 
-      const changes = await this.checkoutAndDiff(commit, previousCommit);
-      Formatter.logCommit(previousCommit, commit, changes);
+      const gitdiff = await this.git.diff([commit.hash, previousCommit.hash, './pdl']);
+
+      
+      // const changes = await this.checkoutAndDiff(commit, previousCommit);
+      Formatter.logCommit(previousCommit, commit, gitdiff);
     }
   }
 
