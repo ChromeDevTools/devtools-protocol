@@ -5,9 +5,9 @@ const path = require('path');
 
 const simpleGit = require('simple-git');
 
-const maxCommitsInChangelog = 100;
+const maxCommitsInChangelog = 400;
 
-let results = `Last ${maxCommitsInChangelog} changes to the protocol`;
+let results = '';
 
 const wait = (n = 100) => new Promise(res => setTimeout(res, n));
 
@@ -36,7 +36,10 @@ class Formatter {
     results += `\n\n## ${commitMessage} — _${commitDateStr}_\n`;
     const hashCompareStr = `\`${previousCommit.hash.slice(0, 7)}...${commit.hash.slice(0, 7)}\``;
     results += `######  Diff: [${hashCompareStr}](https://github.com/ChromeDevTools/devtools-protocol/compare/${hashCompareStr})\n`;
-    results += `\n\`\`\`diff\n${adjustedDiff}\n\`\`\`\``;
+    results += `
+\`\`\`diff
+${adjustedDiff.trim()}
+\`\`\``;
   }
 }
 
@@ -81,20 +84,27 @@ class CommitCrawler {
     // Remove any commits we don't want to deal with.
     this.commitlogs = commitlog.all.filter(commit => !blacklistedCommits.includes(commit.hash));
 
-    for (let i = 0; i < maxCommitsInChangelog; i++) {
+    const max = Math.min(this.commitlogs.length, maxCommitsInChangelog);
+
+    console.log('i'.padEnd(5), 'commit hash'.padEnd(42), 'diff length');
+    for (let i = 0; i < max; i++) {
       // Skip the first commits of the repo.
       if (i >= (this.commitlogs.length - 3)) continue;
 
       // Hack to quit early.
-      // if (i < 35) continue;
+      // if (i < 885) continue;
       // if (i > 6) continue;
 
       const commit = this.commitlogs[i];
       const previousCommit = this.commitlogs[i + 1];
       if (!previousCommit) continue;
 
-      const gitdiff = await this.git.diff([commit.hash, previousCommit.hash, './pdl']);
+      // If we've walked back to the creation of the .pdl, we done.
+      if (commit.hash === '1904d4bb5367c5b24b648641f219d14eaa871c00') return;
 
+      const gitdiff = await this.git.diff([commit.hash, previousCommit.hash, './pdl']);
+      // log status
+      console.log(i, new Array(4 - i.toString().split('').length).fill(' ').join(''), commit.hash, gitdiff.length.toLocaleString().padStart(8));
       Formatter.logCommit(previousCommit, commit, gitdiff);
     }
   }
