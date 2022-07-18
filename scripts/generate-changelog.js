@@ -11,6 +11,39 @@ let results = '';
 
 const wait = (n = 100) => new Promise(res => setTimeout(res, n));
 
+const dateTimeFormatter = new Intl.DateTimeFormat('en-US', {
+  timezone: 'UTC',
+  year: 'numeric',
+  month: 'numeric',
+  day: 'numeric',
+  hour: 'numeric',
+  minute: 'numeric',
+  second: 'numeric',
+  hour12: false,
+});
+const formatDateString = (dateString) => {
+  const date = new Date(dateString);
+  const parts = dateTimeFormatter.formatToParts(date);
+  const map = new Map();
+  for (const part of parts) {
+    const type = part.type;
+    let value = part.value;
+    if (type === 'literal') continue;
+    if (type === 'day' || type === 'month') {
+      value = value.padStart(2, '0');
+    }
+    map.set(type, value);
+  }
+  const YYYY = map.get('year');
+  const MM = map.get('month');
+  const DD = map.get('day');
+  const hh = map.get('hour');
+  const mm = map.get('minute');
+  const ss = map.get('second');
+  // Match `toISOString` format, e.g. '2022-07-18T09:20:09.350Z'.
+  return `${YYYY}-${MM}-${DD}T${hh}:${mm}:${ss}Z`;
+};
+
 /**
  * Formatter purely taking the diff objects and formatting them to markdown
  */
@@ -32,7 +65,7 @@ class Formatter {
 
     // simple-git adds this "(HEAD, origin/master)" string to the first commit's message...
     const commitMessage = commit.message.replace(/\(HEAD.*/, '').replace(' (master)', '').replace(' (main)', '').trim();
-    const commitDateStr = new Date(commit.date).toLocaleString('ja', { dateStyle: 'medium', timeStyle: 'medium' }); // my fave.
+    const commitDateStr = formatDateString(commit.date);
     results += `\n\n## ${commitMessage} — _${commitDateStr}_\n`;
     const hashCompareStr = `\`${previousCommit.hash.slice(0, 7)}...${commit.hash.slice(0, 7)}\``;
     results += `######  Diff: [${hashCompareStr}](https://github.com/ChromeDevTools/devtools-protocol/compare/${hashCompareStr})\n`;
