@@ -6,6 +6,7 @@
 set -x
 
 # These locations are very machine specific.
+# https://github.com/ChromeDevTools/debugger-protocol-viewer
 viewer_repo_path="$HOME/code/pristine/debugger-protocol-viewer-pristine"
 local_script_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
