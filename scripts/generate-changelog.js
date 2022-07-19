@@ -11,37 +11,11 @@ let results = '';
 
 const wait = (n = 100) => new Promise(res => setTimeout(res, n));
 
-const dateTimeFormatter = new Intl.DateTimeFormat('en-US', {
-  timezone: 'UTC',
-  year: 'numeric',
-  month: 'numeric',
-  day: 'numeric',
-  hour: 'numeric',
-  minute: 'numeric',
-  second: 'numeric',
-  hour12: false,
-});
 const formatDateString = (dateString) => {
+  // `dateString` is of the form `'2022-07-19T04:49:30+00:00'`.
   const date = new Date(dateString);
-  const parts = dateTimeFormatter.formatToParts(date);
-  const map = new Map();
-  for (const part of parts) {
-    const type = part.type;
-    let value = part.value;
-    if (type === 'literal') continue;
-    if (type === 'day' || type === 'month') {
-      value = value.padStart(2, '0');
-    }
-    map.set(type, value);
-  }
-  const YYYY = map.get('year');
-  const MM = map.get('month');
-  const DD = map.get('day');
-  const hh = map.get('hour');
-  const mm = map.get('minute');
-  const ss = map.get('second');
-  // Match `toISOString` format, e.g. '2022-07-18T09:20:09.350Z'.
-  return `${YYYY}-${MM}-${DD}T${hh}:${mm}:${ss}Z`;
+  const formatted = date.toISOString();
+  return formatted;
 };
 
 /**
