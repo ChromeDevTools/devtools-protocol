@@ -1,6 +1,33 @@
 
 
-## Roll protocol to r1025007 — _2022-07-16T06:32:11Z_
+## Roll protocol to r1025565 — _2022-07-19T04:49:30Z_
+######  Diff: [`4946b04...7a6b3b1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4946b04...7a6b3b1`)
+
+```diff
+@@ browser_protocol.pdl:754 @@ experimental domain Audits
+       DeprecationExample
+       DocumentDomainSettingWithoutOriginAgentClusterHeader
+       EventPath
++      ExpectCTHeader
+       GeolocationInsecureOrigin
+       GeolocationInsecureOriginDeprecatedNotRemoved
+       GetUserMediaInsecureOrigin
+@@ -5104,12 +5105,6 @@ domain Network
+       array of SignedCertificateTimestamp signedCertificateTimestampList
+       # Whether the request complied with Certificate Transparency policy
+       CertificateTransparencyCompliance certificateTransparencyCompliance
+-      # The signature algorithm used by the server in the TLS server signature,
+-      # represented as a TLS SignatureScheme code point. Omitted if not
+-      # applicable or not known.
+-      optional integer serverSignatureAlgorithm
+-      # Whether the connection used Encrypted ClientHello
+-      boolean encryptedClientHello
+ 
+   # Whether the request complied with Certificate Transparency policy.
+   type CertificateTransparencyCompliance extends string
+```
+
+## Roll protocol to r1025007 — _2022-07-16T04:32:11Z_
 ######  Diff: [`a7636c9...7263e11`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a7636c9...7263e11`)
 
 ```diff
@@ -22,7 +49,7 @@
        Manifest
 ```
 
-## Roll protocol to r1024111 — _2022-07-14T06:35:31Z_
+## Roll protocol to r1024111 — _2022-07-14T04:35:31Z_
 ######  Diff: [`ec96605...28ec0d8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ec96605...28ec0d8`)
 
 ```diff
@@ -47,7 +74,7 @@
    event prerenderAttemptCompleted
 ```
 
-## Roll protocol to r1023572 — _2022-07-13T06:33:15Z_
+## Roll protocol to r1023572 — _2022-07-13T04:33:15Z_
 ######  Diff: [`e4b5ddd...3f04136`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e4b5ddd...3f04136`)
 
 ```diff
@@ -64,7 +91,7 @@
    event prerenderAttemptCompleted
 ```
 
-## Roll protocol to r1022601 — _2022-07-11T09:28:20Z_
+## Roll protocol to r1022601 — _2022-07-11T07:28:20Z_
 ######  Diff: [`5cde748...82bd267`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5cde748...82bd267`)
 
 ```diff
@@ -79,7 +106,7 @@
    command getMediaQueries
 ```
 
-## Roll protocol to r1019158 — _2022-06-29T17:28:08Z_
+## Roll protocol to r1019158 — _2022-06-29T15:28:08Z_
 ######  Diff: [`a0e4067...f41d3ce`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a0e4067...f41d3ce`)
 
 ```diff
@@ -301,7 +328,7 @@ index 8e436953..18cf0c76 100644
    # Makes page not interrupt on any pauses (breakpoint, exception, dom exception etc).
 ```
 
-## Roll protocol to r1011700 — _2022-06-08T24:15:32Z_
+## Roll protocol to r1011700 — _2022-06-07T22:15:32Z_
 ######  Diff: [`1ed415a...44cc592`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1ed415a...44cc592`)
 
 ```diff
@@ -376,7 +403,7 @@ index 8e436953..18cf0c76 100644
      parameters
 ```
 
-## Roll protocol to r1010518 — _2022-06-03T13:15:25Z_
+## Roll protocol to r1010518 — _2022-06-03T11:15:25Z_
 ######  Diff: [`b877f90...1ed415a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b877f90...1ed415a`)
 
 ```diff
@@ -409,7 +436,7 @@ index 8e436953..18cf0c76 100644
    deprecated event frameClearedScheduledNavigation
 ```
 
-## Roll protocol to r1010249 — _2022-06-02T22:15:24Z_
+## Roll protocol to r1010249 — _2022-06-02T20:15:24Z_
 ######  Diff: [`741c799...4ef6135`](https://github.com/ChromeDevTools/devtools-protocol/compare/`741c799...4ef6135`)
 
 ```diff
@@ -423,7 +450,7 @@ index 8e436953..18cf0c76 100644
        PrefixedRequestAnimationFrame
 ```
 
-## Roll protocol to r1010123 — _2022-06-02T18:15:31Z_
+## Roll protocol to r1010123 — _2022-06-02T16:15:31Z_
 ######  Diff: [`a3a4df3...741c799`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a3a4df3...741c799`)
 
 ```diff
@@ -438,7 +465,7 @@ index 8e436953..18cf0c76 100644
        AttributionReportingIssueType violationType
 ```
 
-## Roll protocol to r1009745 — _2022-06-01T21:15:37Z_
+## Roll protocol to r1009745 — _2022-06-01T19:15:37Z_
 ######  Diff: [`a56eb21...a3a4df3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a56eb21...a3a4df3`)
 
 ```diff
@@ -456,7 +483,7 @@ index 8e436953..18cf0c76 100644
      properties
 ```
 
-## Roll protocol to r1008748 — _2022-05-30T09:15:13Z_
+## Roll protocol to r1008748 — _2022-05-30T07:15:13Z_
 ######  Diff: [`bc53a73...a56eb21`](https://github.com/ChromeDevTools/devtools-protocol/compare/`bc53a73...a56eb21`)
 
 ```diff
@@ -469,7 +496,7 @@ index 8e436953..18cf0c76 100644
        ContentScreenReader
 ```
 
-## Roll protocol to r1007616 — _2022-05-26T01:15:13Z_
+## Roll protocol to r1007616 — _2022-05-25T23:15:13Z_
 ######  Diff: [`7e4a41a...82c45d0`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7e4a41a...82c45d0`)
 
 ```diff
@@ -483,7 +510,7 @@ index 8e436953..18cf0c76 100644
        ch-save-data
 ```
 
-## Roll protocol to r1007249 — _2022-05-25T08:15:14Z_
+## Roll protocol to r1007249 — _2022-05-25T06:15:14Z_
 ######  Diff: [`cb58d1b...7e4a41a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`cb58d1b...7e4a41a`)
 
 ```diff
@@ -497,7 +524,7 @@ index 8e436953..18cf0c76 100644
        ch-save-data
 ```
 
-## Roll protocol to r1007179 — _2022-05-25T03:15:17Z_
+## Roll protocol to r1007179 — _2022-05-25T01:15:17Z_
 ######  Diff: [`9b60b54...cb58d1b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9b60b54...cb58d1b`)
 
 ```diff
@@ -511,7 +538,7 @@ index 8e436953..18cf0c76 100644
        ch-save-data
 ```
 
-## Roll protocol to r1006825 — _2022-05-24T12:15:23Z_
+## Roll protocol to r1006825 — _2022-05-24T10:15:23Z_
 ######  Diff: [`fff96f6...09fd7be`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fff96f6...09fd7be`)
 
 ```diff
@@ -525,7 +552,7 @@ index 8e436953..18cf0c76 100644
        V8SharedArrayBufferConstructedInExtensionWithoutIsolation
 ```
 
-## Roll protocol to r1005767 — _2022-05-20T16:15:15Z_
+## Roll protocol to r1005767 — _2022-05-20T14:15:15Z_
 ######  Diff: [`44eb39e...fff96f6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`44eb39e...fff96f6`)
 
 ```diff
@@ -543,7 +570,7 @@ index 8e436953..18cf0c76 100644
      parameters
 ```
 
-## Roll protocol to r1005560 — _2022-05-20T03:15:18Z_
+## Roll protocol to r1005560 — _2022-05-20T01:15:18Z_
 ######  Diff: [`363a231...44eb39e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`363a231...44eb39e`)
 
 ```diff
@@ -557,7 +584,7 @@ index 8e436953..18cf0c76 100644
        EventPath
 ```
 
-## Roll protocol to r1005172 — _2022-05-19T11:15:19Z_
+## Roll protocol to r1005172 — _2022-05-19T09:15:19Z_
 ######  Diff: [`210ddf8...363a231`](https://github.com/ChromeDevTools/devtools-protocol/compare/`210ddf8...363a231`)
 
 ```diff
@@ -590,7 +617,7 @@ index 8e436953..18cf0c76 100644
      parameters
 ```
 
-## Roll protocol to r1004730 — _2022-05-18T15:15:20Z_
+## Roll protocol to r1004730 — _2022-05-18T13:15:20Z_
 ######  Diff: [`838223b...210ddf8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`838223b...210ddf8`)
 
 ```diff
@@ -604,7 +631,7 @@ index 8e436953..18cf0c76 100644
        PrefixedRequestAnimationFrame
 ```
 
-## Roll protocol to r1004709 — _2022-05-18T14:15:18Z_
+## Roll protocol to r1004709 — _2022-05-18T12:15:18Z_
 ######  Diff: [`cdd508b...838223b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`cdd508b...838223b`)
 
 ```diff
@@ -618,7 +645,7 @@ index 8e436953..18cf0c76 100644
        NoSysexWebMIDIWithoutPermission
 ```
 
-## Roll protocol to r1004164 — _2022-05-17T11:15:39Z_
+## Roll protocol to r1004164 — _2022-05-17T09:15:39Z_
 ######  Diff: [`218b848...cdd508b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`218b848...cdd508b`)
 
 ```diff
@@ -632,7 +659,7 @@ index 8e436953..18cf0c76 100644
    type RGBA extends object
 ```
 
-## Roll protocol to r1004052 — _2022-05-17T03:15:19Z_
+## Roll protocol to r1004052 — _2022-05-17T01:15:19Z_
 ######  Diff: [`deb61a0...218b848`](https://github.com/ChromeDevTools/devtools-protocol/compare/`deb61a0...218b848`)
 
 ```diff
@@ -646,7 +673,7 @@ index 8e436953..18cf0c76 100644
        ch-dpr
 ```
 
-## Roll protocol to r1003898 — _2022-05-16T22:15:25Z_
+## Roll protocol to r1003898 — _2022-05-16T20:15:25Z_
 ######  Diff: [`6db5938...deb61a0`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6db5938...deb61a0`)
 
 ```diff
@@ -662,7 +689,7 @@ index 8e436953..18cf0c76 100644
        optional string errorText
 ```
 
-## Roll protocol to r1002782 — _2022-05-12T21:15:18Z_
+## Roll protocol to r1002782 — _2022-05-12T19:15:18Z_
 ######  Diff: [`02d7a84...6db5938`](https://github.com/ChromeDevTools/devtools-protocol/compare/`02d7a84...6db5938`)
 
 ```diff
@@ -682,7 +709,7 @@ index 8e436953..18cf0c76 100644
    command disable
 ```
 
-## Roll protocol to r1001819 — _2022-05-11T02:15:32Z_
+## Roll protocol to r1001819 — _2022-05-11T24:15:32Z_
 ######  Diff: [`ae07002...02d7a84`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ae07002...02d7a84`)
 
 ```diff
@@ -727,7 +754,7 @@ index 8e436953..18cf0c76 100644
    event prerenderAttemptCompleted
 ```
 
-## Roll protocol to r1001785 — _2022-05-11T01:15:25Z_
+## Roll protocol to r1001785 — _2022-05-10T23:15:25Z_
 ######  Diff: [`6d1c894...ae07002`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6d1c894...ae07002`)
 
 ```diff
@@ -741,7 +768,7 @@ index 8e436953..18cf0c76 100644
    # Explainer: https://github.com/WICG/conversion-measurement-api
 ```
 
-## Roll protocol to r1001754 — _2022-05-11T24:15:23Z_
+## Roll protocol to r1001754 — _2022-05-10T22:15:23Z_
 ######  Diff: [`4d9109d...6d1c894`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4d9109d...6d1c894`)
 
 ```diff
@@ -759,7 +786,7 @@ index 8e436953..18cf0c76 100644
    # Explainer: https://github.com/WICG/conversion-measurement-api
 ```
 
-## Roll protocol to r1001033 — _2022-05-09T18:15:18Z_
+## Roll protocol to r1001033 — _2022-05-09T16:15:18Z_
 ######  Diff: [`4df4c30...4d9109d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4df4c30...4d9109d`)
 
 ```diff
@@ -773,7 +800,7 @@ index 8e436953..18cf0c76 100644
        RTPDataChannel
 ```
 
-## Roll protocol to r1001016 — _2022-05-09T17:15:24Z_
+## Roll protocol to r1001016 — _2022-05-09T15:15:24Z_
 ######  Diff: [`1dd3de6...4df4c30`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1dd3de6...4df4c30`)
 
 ```diff
@@ -790,7 +817,7 @@ index 8e436953..18cf0c76 100644
        MediaSourceAbortRemove
 ```
 
-## Roll protocol to r1000974 — _2022-05-09T15:15:16Z_
+## Roll protocol to r1000974 — _2022-05-09T13:15:16Z_
 ######  Diff: [`a9ad264...1dd3de6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a9ad264...1dd3de6`)
 
 ```diff
@@ -835,7 +862,7 @@ index 8e436953..18cf0c76 100644
      enum
 ```
 
-## Roll protocol to r1000917 — _2022-05-09T10:15:16Z_
+## Roll protocol to r1000917 — _2022-05-09T08:15:16Z_
 ######  Diff: [`93a65bd...a9ad264`](https://github.com/ChromeDevTools/devtools-protocol/compare/`93a65bd...a9ad264`)
 
 ```diff
@@ -849,7 +876,7 @@ index 8e436953..18cf0c76 100644
        V8SharedArrayBufferConstructedInExtensionWithoutIsolation
 ```
 
-## Roll protocol to r999451 — _2022-05-04T18:45:22Z_
+## Roll protocol to r999451 — _2022-05-04T16:45:22Z_
 ######  Diff: [`3a7051b...93a65bd`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3a7051b...93a65bd`)
 
 ```diff
@@ -884,7 +911,7 @@ index 8e436953..18cf0c76 100644
        # Call result.
 ```
 
-## Roll protocol to r998712 — _2022-05-03T05:15:18Z_
+## Roll protocol to r998712 — _2022-05-03T03:15:18Z_
 ######  Diff: [`a6daed6...3a7051b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a6daed6...3a7051b`)
 
 ```diff
@@ -898,7 +925,7 @@ index 8e436953..18cf0c76 100644
        XRSupportsSession
 ```
 
-## Roll protocol to r998277 — _2022-05-02T10:15:16Z_
+## Roll protocol to r998277 — _2022-05-02T08:15:16Z_
 ######  Diff: [`10b0375...a6daed6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`10b0375...a6daed6`)
 
 ```diff
@@ -922,7 +949,7 @@ index 8e436953..18cf0c76 100644
        # Timestamp of this BeginFrame in Renderer TimeTicks (milliseconds of uptime). If not set,
 ```
 
-## Roll protocol to r997803 — _2022-04-29T20:15:25Z_
+## Roll protocol to r997803 — _2022-04-29T18:15:25Z_
 ######  Diff: [`83726e8...10b0375`](https://github.com/ChromeDevTools/devtools-protocol/compare/`83726e8...10b0375`)
 
 ```diff
@@ -936,7 +963,7 @@ index 8e436953..18cf0c76 100644
        ChromeLoadTimesFirstPaintAfterLoadTime
 ```
 
-## Roll protocol to r997149 — _2022-04-28T13:15:16Z_
+## Roll protocol to r997149 — _2022-04-28T11:15:16Z_
 ######  Diff: [`477bbc9...83726e8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`477bbc9...83726e8`)
 
 ```diff
@@ -974,7 +1001,7 @@ index 8e436953..18cf0c76 100644
    type ClientHintIssueReason extends string
 ```
 
-## Roll protocol to r996622 — _2022-04-27T12:15:18Z_
+## Roll protocol to r996622 — _2022-04-27T10:15:18Z_
 ######  Diff: [`61057f3...477bbc9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`61057f3...477bbc9`)
 
 ```diff
@@ -989,7 +1016,7 @@ index 8e436953..18cf0c76 100644
    experimental type ScriptFontFamilies extends object
 ```
 
-## Roll protocol to r996285 — _2022-04-26T20:15:23Z_
+## Roll protocol to r996285 — _2022-04-26T18:15:23Z_
 ######  Diff: [`d153258...6a83a61`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d153258...6a83a61`)
 
 ```diff
@@ -1063,7 +1090,7 @@ index 8e436953..18cf0c76 100644
    # The formatting is inherited from the old console.log version, see more at:
 ```
 
-## Roll protocol to r995853 — _2022-04-26T01:15:20Z_
+## Roll protocol to r995853 — _2022-04-25T23:15:20Z_
 ######  Diff: [`5c44be1...d153258`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5c44be1...d153258`)
 
 ```diff
@@ -1077,7 +1104,7 @@ index 8e436953..18cf0c76 100644
        midi
 ```
 
-## Roll protocol to r995510 — _2022-04-23T18:15:16Z_
+## Roll protocol to r995510 — _2022-04-23T16:15:16Z_
 ######  Diff: [`7c8b6ad...5c44be1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7c8b6ad...5c44be1`)
 
 ```diff
@@ -1104,7 +1131,7 @@ index 8e436953..18cf0c76 100644
        # - `date`: formatted print date
 ```
 
-## Roll protocol to r995287 — _2022-04-22T20:54:30Z_
+## Roll protocol to r995287 — _2022-04-22T18:54:30Z_
 ######  Diff: [`8ac7575...7c8b6ad`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8ac7575...7c8b6ad`)
 
 ```diff
@@ -1405,7 +1432,7 @@ index bd277eb0..09c420e3 100644
        RemoteObject result
 ```
 
-## Roll protocol to r982567 — _2022-04-22T20:52:45Z_
+## Roll protocol to r982567 — _2022-04-22T18:52:45Z_
 ######  Diff: [`6aec757...8ac7575`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6aec757...8ac7575`)
 
 ```diff
@@ -1441,7 +1468,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r982423 — _2022-03-17T22:15:26Z_
+## Roll protocol to r982423 — _2022-03-17T21:15:26Z_
 ######  Diff: [`052c603...6aec757`](https://github.com/ChromeDevTools/devtools-protocol/compare/`052c603...6aec757`)
 
 ```diff
@@ -1463,7 +1490,7 @@ index bd277eb0..09c420e3 100644
        magnetometer
 ```
 
-## Roll protocol to r982238 — _2022-03-17T17:15:18Z_
+## Roll protocol to r982238 — _2022-03-17T16:15:18Z_
 ######  Diff: [`e35b84a...052c603`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e35b84a...052c603`)
 
 ```diff
@@ -1478,7 +1505,7 @@ index bd277eb0..09c420e3 100644
        optional SourceRange range
 ```
 
-## Roll protocol to r981034 — _2022-03-15T11:15:13Z_
+## Roll protocol to r981034 — _2022-03-15T10:15:13Z_
 ######  Diff: [`5dd0348...65adbf7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5dd0348...65adbf7`)
 
 ```diff
@@ -1492,7 +1519,7 @@ index bd277eb0..09c420e3 100644
        WebTransport
 ```
 
-## Roll protocol to r979918 — _2022-03-10T21:15:19Z_
+## Roll protocol to r979918 — _2022-03-10T20:15:19Z_
 ######  Diff: [`8b70878...5dd0348`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8b70878...5dd0348`)
 
 ```diff
@@ -1515,7 +1542,7 @@ index bd277eb0..09c420e3 100644
      enum
 ```
 
-## Roll protocol to r979353 — _2022-03-09T20:15:15Z_
+## Roll protocol to r979353 — _2022-03-09T19:15:15Z_
 ######  Diff: [`3084cb9...8b70878`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3084cb9...8b70878`)
 
 ```diff
@@ -1529,7 +1556,7 @@ index bd277eb0..09c420e3 100644
        AccountsHttpNotFound
 ```
 
-## Roll protocol to r977795 — _2022-03-04T21:15:28Z_
+## Roll protocol to r977795 — _2022-03-04T20:15:28Z_
 ######  Diff: [`2e0912d...a0800ab`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2e0912d...a0800ab`)
 
 ```diff
@@ -1556,7 +1583,7 @@ index bd277eb0..09c420e3 100644
        optional array of CSSKeyframesRule cssKeyframesRules
 ```
 
-## Roll protocol to r977469 — _2022-03-04T04:15:12Z_
+## Roll protocol to r977469 — _2022-03-04T03:15:12Z_
 ######  Diff: [`d232328...2e0912d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d232328...2e0912d`)
 
 ```diff
@@ -1570,7 +1597,7 @@ index bd277eb0..09c420e3 100644
        AccountsHttpNotFound
 ```
 
-## Roll protocol to r975963 — _2022-02-28T23:15:14Z_
+## Roll protocol to r975963 — _2022-02-28T22:15:14Z_
 ######  Diff: [`a7bfbac...d232328`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a7bfbac...d232328`)
 
 ```diff
@@ -1584,7 +1611,7 @@ index bd277eb0..09c420e3 100644
      enum
 ```
 
-## Roll protocol to r975498 — _2022-02-26T21:15:19Z_
+## Roll protocol to r975498 — _2022-02-26T20:15:19Z_
 ######  Diff: [`14c3fe0...a7bfbac`](https://github.com/ChromeDevTools/devtools-protocol/compare/`14c3fe0...a7bfbac`)
 
 ```diff
@@ -1598,7 +1625,7 @@ index bd277eb0..09c420e3 100644
    # Configurations for Persistent Grid Highlight
 ```
 
-## Roll protocol to r975298 — _2022-02-25T23:15:19Z_
+## Roll protocol to r975298 — _2022-02-25T22:15:19Z_
 ######  Diff: [`51bf736...14c3fe0`](https://github.com/ChromeDevTools/devtools-protocol/compare/`51bf736...14c3fe0`)
 
 ```diff
@@ -1673,7 +1700,7 @@ index bd277eb0..09c420e3 100644
        optional HeavyAdIssueDetails heavyAdIssueDetails
 ```
 
-## Roll protocol to r974996 — _2022-02-25T05:15:23Z_
+## Roll protocol to r974996 — _2022-02-25T04:15:23Z_
 ######  Diff: [`aebe16a...51bf736`](https://github.com/ChromeDevTools/devtools-protocol/compare/`aebe16a...51bf736`)
 
 ```diff
@@ -1691,7 +1718,7 @@ index bd277eb0..09c420e3 100644
      properties
 ```
 
-## Roll protocol to r974265 — _2022-02-23T20:15:15Z_
+## Roll protocol to r974265 — _2022-02-23T19:15:15Z_
 ######  Diff: [`fe82e94...aebe16a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fe82e94...aebe16a`)
 
 ```diff
@@ -1753,7 +1780,7 @@ index bd277eb0..09c420e3 100644
    # Use takeComputedStyleUpdates to retrieve the list of nodes that had properties modified.
 ```
 
-## Roll protocol to r973690 — _2022-02-22T13:15:13Z_
+## Roll protocol to r973690 — _2022-02-22T12:15:13Z_
 ######  Diff: [`df434f1...fe82e94`](https://github.com/ChromeDevTools/devtools-protocol/compare/`df434f1...fe82e94`)
 
 ```diff
@@ -1772,7 +1799,7 @@ index bd277eb0..09c420e3 100644
    depends on Page
 ```
 
-## Roll protocol to r973088 — _2022-02-18T21:15:24Z_
+## Roll protocol to r973088 — _2022-02-18T20:15:24Z_
 ######  Diff: [`1c7f0c1...df434f1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1c7f0c1...df434f1`)
 
 ```diff
@@ -1794,7 +1821,7 @@ index bd277eb0..09c420e3 100644
    type ShadowRootType extends string
 ```
 
-## Roll protocol to r972883 — _2022-02-18T11:15:14Z_
+## Roll protocol to r972883 — _2022-02-18T10:15:14Z_
 ######  Diff: [`474a6e6...1c7f0c1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`474a6e6...1c7f0c1`)
 
 ```diff
@@ -1809,7 +1836,7 @@ index bd277eb0..09c420e3 100644
        optional Page.FrameId frameId
 ```
 
-## Roll protocol to r972468 — _2022-02-17T17:15:22Z_
+## Roll protocol to r972468 — _2022-02-17T16:15:22Z_
 ######  Diff: [`b960aa4...474a6e6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b960aa4...474a6e6`)
 
 ```diff
@@ -1824,7 +1851,7 @@ index bd277eb0..09c420e3 100644
      enum
 ```
 
-## Roll protocol to r971358 — _2022-02-15T20:15:32Z_
+## Roll protocol to r971358 — _2022-02-15T19:15:32Z_
 ######  Diff: [`cfe04f6...b960aa4`](https://github.com/ChromeDevTools/devtools-protocol/compare/`cfe04f6...b960aa4`)
 
 ```diff
@@ -1838,7 +1865,7 @@ index bd277eb0..09c420e3 100644
        CSPReport
 ```
 
-## Roll protocol to r971103 — _2022-02-15T09:15:18Z_
+## Roll protocol to r971103 — _2022-02-15T08:15:18Z_
 ######  Diff: [`84f7cd0...cfe04f6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`84f7cd0...cfe04f6`)
 
 ```diff
@@ -1861,7 +1888,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r970590 — _2022-02-14T14:15:13Z_
+## Roll protocol to r970590 — _2022-02-14T13:15:13Z_
 ######  Diff: [`1b1e643...9a655fe`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1b1e643...9a655fe`)
 
 ```diff
@@ -1884,7 +1911,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r970581 — _2022-02-14T13:15:16Z_
+## Roll protocol to r970581 — _2022-02-14T12:15:16Z_
 ######  Diff: [`9f8c559...1b1e643`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9f8c559...1b1e643`)
 
 ```diff
@@ -1907,7 +1934,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r969999 — _2022-02-11T18:15:13Z_
+## Roll protocol to r969999 — _2022-02-11T17:15:13Z_
 ######  Diff: [`22b098a...9f8c559`](https://github.com/ChromeDevTools/devtools-protocol/compare/`22b098a...9f8c559`)
 
 ```diff
@@ -1926,7 +1953,7 @@ index bd277eb0..09c420e3 100644
        ClientMetadataInvalidResponse
 ```
 
-## Roll protocol to r969947 — _2022-02-11T16:15:21Z_
+## Roll protocol to r969947 — _2022-02-11T15:15:21Z_
 ######  Diff: [`4562919...22b098a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4562919...22b098a`)
 
 ```diff
@@ -1945,7 +1972,7 @@ index bd277eb0..09c420e3 100644
        AccountsHttpNotFound
 ```
 
-## Roll protocol to r967529 — _2022-02-05T01:15:30Z_
+## Roll protocol to r967529 — _2022-02-05T24:15:30Z_
 ######  Diff: [`72f90a8...5b91f46`](https://github.com/ChromeDevTools/devtools-protocol/compare/`72f90a8...5b91f46`)
 
 ```diff
@@ -1959,7 +1986,7 @@ index bd277eb0..09c420e3 100644
        magnetometer
 ```
 
-## Roll protocol to r966979 — _2022-02-04T24:15:30Z_
+## Roll protocol to r966979 — _2022-02-03T23:15:30Z_
 ######  Diff: [`d15d202...72f90a8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d15d202...72f90a8`)
 
 ```diff
@@ -1975,7 +2002,7 @@ index bd277eb0..09c420e3 100644
      returns
 ```
 
-## Roll protocol to r966949 — _2022-02-03T23:15:32Z_
+## Roll protocol to r966949 — _2022-02-03T22:15:32Z_
 ######  Diff: [`1d22b7b...d15d202`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1d22b7b...d15d202`)
 
 ```diff
@@ -1989,7 +2016,7 @@ index bd277eb0..09c420e3 100644
        cross-origin-isolated
 ```
 
-## Roll protocol to r966116 — _2022-02-02T11:15:28Z_
+## Roll protocol to r966116 — _2022-02-02T10:15:28Z_
 ######  Diff: [`1600334...1d22b7b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1600334...1d22b7b`)
 
 ```diff
@@ -2023,7 +2050,7 @@ index bd277eb0..09c420e3 100644
      properties
 ```
 
-## Roll protocol to r965299 — _2022-01-31T20:15:27Z_
+## Roll protocol to r965299 — _2022-01-31T19:15:27Z_
 ######  Diff: [`8c4f892...1600334`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8c4f892...1600334`)
 
 ```diff
@@ -2037,7 +2064,7 @@ index bd277eb0..09c420e3 100644
        ch-width
 ```
 
-## Roll protocol to r964215 — _2022-01-27T21:15:27Z_
+## Roll protocol to r964215 — _2022-01-27T20:15:27Z_
 ######  Diff: [`f559f4a...57a4bb8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f559f4a...57a4bb8`)
 
 ```diff
@@ -2096,7 +2123,7 @@ index bd277eb0..09c420e3 100644
    # exceptions, CDP message, console messages, etc.) to reference an issue.
 ```
 
-## Roll protocol to r963632 — _2022-01-26T20:16:12Z_
+## Roll protocol to r963632 — _2022-01-26T19:16:12Z_
 ######  Diff: [`f687d75...f559f4a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f687d75...f559f4a`)
 
 ```diff
@@ -2110,7 +2137,7 @@ index bd277eb0..09c420e3 100644
      properties
 ```
 
-## Roll protocol to r963595 — _2022-01-26T19:15:28Z_
+## Roll protocol to r963595 — _2022-01-26T18:15:28Z_
 ######  Diff: [`81838df...f687d75`](https://github.com/ChromeDevTools/devtools-protocol/compare/`81838df...f687d75`)
 
 ```diff
@@ -2124,7 +2151,7 @@ index bd277eb0..09c420e3 100644
        ch-ua-platform-version
 ```
 
-## Roll protocol to r963409 — _2022-01-26T07:15:29Z_
+## Roll protocol to r963409 — _2022-01-26T06:15:29Z_
 ######  Diff: [`4d3be9f...81838df`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4d3be9f...81838df`)
 
 ```diff
@@ -2153,7 +2180,7 @@ index bd277eb0..09c420e3 100644
        HTTPStatusNotOK
 ```
 
-## Roll protocol to r963043 — _2022-01-25T18:15:34Z_
+## Roll protocol to r963043 — _2022-01-25T17:15:34Z_
 ######  Diff: [`398dc33...4d3be9f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`398dc33...4d3be9f`)
 
 ```diff
@@ -2176,7 +2203,7 @@ index bd277eb0..09c420e3 100644
        string name
 ```
 
-## Roll protocol to r962425 — _2022-01-24T12:15:20Z_
+## Roll protocol to r962425 — _2022-01-24T11:15:20Z_
 ######  Diff: [`0abe20f...398dc33`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0abe20f...398dc33`)
 
 ```diff
@@ -2191,7 +2218,7 @@ index bd277eb0..09c420e3 100644
    # This method emulates inserting text that doesn't come from a key press,
 ```
 
-## Roll protocol to r961891 — _2022-01-21T15:15:27Z_
+## Roll protocol to r961891 — _2022-01-21T14:15:27Z_
 ######  Diff: [`dac32a8...0abe20f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`dac32a8...0abe20f`)
 
 ```diff
@@ -2227,7 +2254,7 @@ index bd277eb0..09c420e3 100644
        optional ClientHintIssueDetails clientHintIssueDetails
 ```
 
-## Roll protocol to r960912 — _2022-01-19T14:15:30Z_
+## Roll protocol to r960912 — _2022-01-19T13:15:30Z_
 ######  Diff: [`3e458bc...53c4a9a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3e458bc...53c4a9a`)
 
 ```diff
@@ -2242,7 +2269,7 @@ index bd277eb0..09c420e3 100644
      properties
 ```
 
-## Roll protocol to r960519 — _2022-01-18T20:15:30Z_
+## Roll protocol to r960519 — _2022-01-18T19:15:30Z_
 ######  Diff: [`7572c21...3e458bc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7572c21...3e458bc`)
 
 ```diff
@@ -2275,7 +2302,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r960453 — _2022-01-18T18:15:26Z_
+## Roll protocol to r960453 — _2022-01-18T17:15:26Z_
 ######  Diff: [`87addc3...7572c21`](https://github.com/ChromeDevTools/devtools-protocol/compare/`87addc3...7572c21`)
 
 ```diff
@@ -2361,7 +2388,7 @@ index bd277eb0..09c420e3 100644
  experimental domain SystemInfo
 ```
 
-## Roll protocol to r959523 — _2022-01-15T05:15:23Z_
+## Roll protocol to r959523 — _2022-01-15T04:15:23Z_
 ######  Diff: [`f7a5f38...87addc3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f7a5f38...87addc3`)
 
 ```diff
@@ -2391,7 +2418,7 @@ index bd277eb0..09c420e3 100644
    experimental command setFontSizes
 ```
 
-## Roll protocol to r957544 — _2022-01-11T15:15:23Z_
+## Roll protocol to r957544 — _2022-01-11T14:15:23Z_
 ######  Diff: [`4f0ee26...a1608c5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4f0ee26...a1608c5`)
 
 ```diff
@@ -2408,7 +2435,7 @@ index bd277eb0..09c420e3 100644
        boolean show
 ```
 
-## Roll protocol to r955664 — _2022-01-05T13:15:53Z_
+## Roll protocol to r955664 — _2022-01-05T12:15:53Z_
 ######  Diff: [`90efbcc...d0d815e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`90efbcc...d0d815e`)
 
 ```diff
@@ -2422,7 +2449,7 @@ index bd277eb0..09c420e3 100644
      enum
 ```
 
-## Roll protocol to r953906 — _2021-12-23T20:15:37Z_
+## Roll protocol to r953906 — _2021-12-23T19:15:37Z_
 ######  Diff: [`17a9c3e...96ead19`](https://github.com/ChromeDevTools/devtools-protocol/compare/`17a9c3e...96ead19`)
 
 ```diff
@@ -2439,7 +2466,7 @@ index bd277eb0..09c420e3 100644
        optional boolean automaticPresenceSimulation
 ```
 
-## Roll protocol to r953752 — _2021-12-23T06:15:20Z_
+## Roll protocol to r953752 — _2021-12-23T05:15:20Z_
 ######  Diff: [`b411e13...17a9c3e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b411e13...17a9c3e`)
 
 ```diff
@@ -2470,7 +2497,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r952438 — _2021-12-16T19:15:30Z_
+## Roll protocol to r952438 — _2021-12-16T18:15:30Z_
 ######  Diff: [`12d9e69...b411e13`](https://github.com/ChromeDevTools/devtools-protocol/compare/`12d9e69...b411e13`)
 
 ```diff
@@ -2487,7 +2514,7 @@ index bd277eb0..09c420e3 100644
    type ShadowRootType extends string
 ```
 
-## Roll protocol to r952091 — _2021-12-15T22:15:35Z_
+## Roll protocol to r952091 — _2021-12-15T21:15:35Z_
 ######  Diff: [`e96cb74...12d9e69`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e96cb74...12d9e69`)
 
 ```diff
@@ -2532,7 +2559,7 @@ index bd277eb0..09c420e3 100644
    # exceptions, CDP message, console messages, etc.) to reference an issue.
 ```
 
-## Roll protocol to r948336 — _2021-12-04T18:15:26Z_
+## Roll protocol to r948336 — _2021-12-04T17:15:26Z_
 ######  Diff: [`11ea32a...dc1b71a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`11ea32a...dc1b71a`)
 
 ```diff
@@ -2548,7 +2575,7 @@ index bd277eb0..09c420e3 100644
    # Explainer: https://github.com/WICG/conversion-measurement-api
 ```
 
-## Roll protocol to r947303 — _2021-12-02T02:15:26Z_
+## Roll protocol to r947303 — _2021-12-02T01:15:26Z_
 ######  Diff: [`2a18d25...11ea32a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2a18d25...11ea32a`)
 
 ```diff
@@ -2563,7 +2590,7 @@ index bd277eb0..09c420e3 100644
    # Explainer: https://github.com/WICG/conversion-measurement-api
 ```
 
-## Roll protocol to r946693 — _2021-11-30T23:15:35Z_
+## Roll protocol to r946693 — _2021-11-30T22:15:35Z_
 ######  Diff: [`baf4231...2a18d25`](https://github.com/ChromeDevTools/devtools-protocol/compare/`baf4231...2a18d25`)
 
 ```diff
@@ -2581,7 +2608,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r946318 — _2021-11-30T05:15:44Z_
+## Roll protocol to r946318 — _2021-11-30T04:15:44Z_
 ######  Diff: [`76839dc...baf4231`](https://github.com/ChromeDevTools/devtools-protocol/compare/`76839dc...baf4231`)
 
 ```diff
@@ -2595,7 +2622,7 @@ index bd277eb0..09c420e3 100644
        EmbedderPopupBlockerTabHelper
 ```
 
-## Roll protocol to r945905 — _2021-11-29T12:15:22Z_
+## Roll protocol to r945905 — _2021-11-29T11:15:22Z_
 ######  Diff: [`47ce494...76839dc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`47ce494...76839dc`)
 
 ```diff
@@ -2616,7 +2643,7 @@ index bd277eb0..09c420e3 100644
        MethodDisallowedByPreflightResponse
 ```
 
-## Roll protocol to r944179 — _2021-11-22T20:15:40Z_
+## Roll protocol to r944179 — _2021-11-22T19:15:40Z_
 ######  Diff: [`15f524c...47ce494`](https://github.com/ChromeDevTools/devtools-protocol/compare/`15f524c...47ce494`)
 
 ```diff
@@ -2630,7 +2657,7 @@ index bd277eb0..09c420e3 100644
      returns
 ```
 
-## Roll protocol to r943687 — _2021-11-19T23:15:27Z_
+## Roll protocol to r943687 — _2021-11-19T22:15:27Z_
 ######  Diff: [`946136a...15f524c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`946136a...15f524c`)
 
 ```diff
@@ -2645,7 +2672,7 @@ index bd277eb0..09c420e3 100644
        # The id of the context created.
 ```
 
-## Roll protocol to r943452 — _2021-11-19T10:15:22Z_
+## Roll protocol to r943452 — _2021-11-19T09:15:22Z_
 ######  Diff: [`bee0143...946136a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`bee0143...946136a`)
 
 ```diff
@@ -2671,7 +2698,7 @@ index bd277eb0..09c420e3 100644
      properties
 ```
 
-## Roll protocol to r943026 — _2021-11-18T12:15:23Z_
+## Roll protocol to r943026 — _2021-11-18T11:15:23Z_
 ######  Diff: [`22bc316...bee0143`](https://github.com/ChromeDevTools/devtools-protocol/compare/`22bc316...bee0143`)
 
 ```diff
@@ -2711,7 +2738,7 @@ index bd277eb0..09c420e3 100644
        deprecated boolean success
 ```
 
-## Roll protocol to r942138 — _2021-11-16T15:15:29Z_
+## Roll protocol to r942138 — _2021-11-16T14:15:29Z_
 ######  Diff: [`0308368...22bc316`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0308368...22bc316`)
 
 ```diff
@@ -2737,7 +2764,7 @@ index bd277eb0..09c420e3 100644
    depends on DOM
 ```
 
-## Roll protocol to r940865 — _2021-11-11T20:15:26Z_
+## Roll protocol to r940865 — _2021-11-11T19:15:26Z_
 ######  Diff: [`a2c84e8...0308368`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a2c84e8...0308368`)
 
 ```diff
@@ -2761,7 +2788,7 @@ index bd277eb0..09c420e3 100644
        ch-viewport-height
 ```
 
-## Roll protocol to r939882 — _2021-11-09T18:15:27Z_
+## Roll protocol to r939882 — _2021-11-09T17:15:27Z_
 ######  Diff: [`e9d7ebc...ef5e053`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e9d7ebc...ef5e053`)
 
 ```diff
@@ -2778,7 +2805,7 @@ index bd277eb0..09c420e3 100644
        SecurityState securityState
 ```
 
-## Roll protocol to r939725 — _2021-11-09T08:16:13Z_
+## Roll protocol to r939725 — _2021-11-09T07:16:13Z_
 ######  Diff: [`ec485f2...e9d7ebc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ec485f2...e9d7ebc`)
 
 ```diff
@@ -2804,7 +2831,7 @@ index bd277eb0..09c420e3 100644
    experimental command getChildAXNodes
 ```
 
-## Roll protocol to r939404 — _2021-11-08T18:15:45Z_
+## Roll protocol to r939404 — _2021-11-08T17:15:45Z_
 ######  Diff: [`8ae67d9...ec485f2`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8ae67d9...ec485f2`)
 
 ```diff
@@ -2827,7 +2854,7 @@ index bd277eb0..09c420e3 100644
    experimental command getChildAXNodes
 ```
 
-## Roll protocol to r939359 — _2021-11-08T16:15:23Z_
+## Roll protocol to r939359 — _2021-11-08T15:15:23Z_
 ######  Diff: [`e42953d...8ae67d9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e42953d...8ae67d9`)
 
 ```diff
@@ -2848,7 +2875,7 @@ index bd277eb0..09c420e3 100644
    command disable
 ```
 
-## Roll protocol to r938885 — _2021-11-05T20:15:27Z_
+## Roll protocol to r938885 — _2021-11-05T19:15:27Z_
 ######  Diff: [`3c2ebcf...790428e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3c2ebcf...790428e`)
 
 ```diff
@@ -2870,7 +2897,7 @@ index bd277eb0..09c420e3 100644
        shared-autofill
 ```
 
-## Roll protocol to r938546 — _2021-11-04T23:15:26Z_
+## Roll protocol to r938546 — _2021-11-04T22:15:26Z_
 ######  Diff: [`4957f55...3c2ebcf`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4957f55...3c2ebcf`)
 
 ```diff
@@ -2892,7 +2919,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r938504 — _2021-11-04T22:15:28Z_
+## Roll protocol to r938504 — _2021-11-04T21:15:28Z_
 ######  Diff: [`0fe9d20...4957f55`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0fe9d20...4957f55`)
 
 ```diff
@@ -2917,7 +2944,7 @@ index bd277eb0..09c420e3 100644
    depends on Target
 ```
 
-## Roll protocol to r938446 — _2021-11-04T21:15:28Z_
+## Roll protocol to r938446 — _2021-11-04T20:15:28Z_
 ######  Diff: [`e73ddb9...0fe9d20`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e73ddb9...0fe9d20`)
 
 ```diff
@@ -2935,7 +2962,7 @@ index bd277eb0..09c420e3 100644
        # Signature algorithm.
 ```
 
-## Roll protocol to r937139 — _2021-11-02T01:15:24Z_
+## Roll protocol to r937139 — _2021-11-02T24:15:24Z_
 ######  Diff: [`23061aa...e73ddb9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`23061aa...e73ddb9`)
 
 ```diff
@@ -2950,7 +2977,7 @@ index bd277eb0..09c420e3 100644
    # optional fields in InspectorIssueDetails to convey more specific
 ```
 
-## Roll protocol to r937072 — _2021-11-01T23:15:26Z_
+## Roll protocol to r937072 — _2021-11-01T22:15:26Z_
 ######  Diff: [`3a36442...23061aa`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3a36442...23061aa`)
 
 ```diff
@@ -2980,7 +3007,7 @@ index bd277eb0..09c420e3 100644
    depends on CSS
 ```
 
-## Roll protocol to r937044 — _2021-11-01T22:15:26Z_
+## Roll protocol to r937044 — _2021-11-01T21:15:26Z_
 ######  Diff: [`bc8fa61...3a36442`](https://github.com/ChromeDevTools/devtools-protocol/compare/`bc8fa61...3a36442`)
 
 ```diff
@@ -3025,7 +3052,7 @@ index bd277eb0..09c420e3 100644
    # exceptions, CDP message, console messages, etc.) to reference an issue.
 ```
 
-## Roll protocol to r933220 — _2021-10-20T01:15:31Z_
+## Roll protocol to r933220 — _2021-10-19T23:15:31Z_
 ######  Diff: [`ed35fe7...df7c5a3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ed35fe7...df7c5a3`)
 
 ```diff
@@ -3051,7 +3078,7 @@ index bd277eb0..09c420e3 100644
        optional Page.FrameId frameId
 ```
 
-## Roll protocol to r932485 — _2021-10-18T14:15:24Z_
+## Roll protocol to r932485 — _2021-10-18T12:15:24Z_
 ######  Diff: [`204c97a...ed35fe7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`204c97a...ed35fe7`)
 
 ```diff
@@ -3065,7 +3092,7 @@ index bd277eb0..09c420e3 100644
        EmbedderPopupBlockerTabHelper
 ```
 
-## Roll protocol to r931720 — _2021-10-15T24:15:25Z_
+## Roll protocol to r931720 — _2021-10-14T22:15:25Z_
 ######  Diff: [`5095a49...204c97a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5095a49...204c97a`)
 
 ```diff
@@ -3080,7 +3107,7 @@ index bd277eb0..09c420e3 100644
        experimental optional boolean enableBeginFrameControl
 ```
 
-## Roll protocol to r931360 — _2021-10-14T05:15:26Z_
+## Roll protocol to r931360 — _2021-10-14T03:15:26Z_
 ######  Diff: [`8bbdba3...5095a49`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8bbdba3...5095a49`)
 
 ```diff
@@ -3094,7 +3121,7 @@ index bd277eb0..09c420e3 100644
        midi
 ```
 
-## Roll protocol to r931234 — _2021-10-13T23:15:26Z_
+## Roll protocol to r931234 — _2021-10-13T21:15:26Z_
 ######  Diff: [`76bd05b...8bbdba3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`76bd05b...8bbdba3`)
 
 ```diff
@@ -3108,7 +3135,7 @@ index bd277eb0..09c420e3 100644
      properties
 ```
 
-## Roll protocol to r931171 — _2021-10-13T21:15:29Z_
+## Roll protocol to r931171 — _2021-10-13T19:15:29Z_
 ######  Diff: [`35e6406...76bd05b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`35e6406...76bd05b`)
 
 ```diff
@@ -3122,7 +3149,7 @@ index bd277eb0..09c420e3 100644
        labelfor
 ```
 
-## Roll protocol to r930289 — _2021-10-11T23:15:33Z_
+## Roll protocol to r930289 — _2021-10-11T21:15:33Z_
 ######  Diff: [`5f55be2...35e6406`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5f55be2...35e6406`)
 
 ```diff
@@ -3149,7 +3176,7 @@ index bd277eb0..09c420e3 100644
    # See also: `Page.compilationCacheProduced`.
 ```
 
-## Roll protocol to r928170 — _2021-10-05T18:15:26Z_
+## Roll protocol to r928170 — _2021-10-05T16:15:26Z_
 ######  Diff: [`6d3ed49...5f55be2`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6d3ed49...5f55be2`)
 
 ```diff
@@ -3179,7 +3206,7 @@ index bd277eb0..09c420e3 100644
      enum
 ```
 
-## Roll protocol to r927854 — _2021-10-05T24:15:31Z_
+## Roll protocol to r927854 — _2021-10-04T22:15:31Z_
 ######  Diff: [`d24ecc6...6d3ed49`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d24ecc6...6d3ed49`)
 
 ```diff
@@ -3272,7 +3299,7 @@ index bd277eb0..09c420e3 100644
    depends on Network
 ```
 
-## Roll protocol to r927104 — _2021-10-01T07:15:28Z_
+## Roll protocol to r927104 — _2021-10-01T05:15:28Z_
 ######  Diff: [`75edf97...d24ecc6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`75edf97...d24ecc6`)
 
 ```diff
@@ -3365,7 +3392,7 @@ index bd277eb0..09c420e3 100644
    depends on Network
 ```
 
-## Roll protocol to r927069 — _2021-10-01T04:15:27Z_
+## Roll protocol to r927069 — _2021-10-01T02:15:27Z_
 ######  Diff: [`6b5fb3f...75edf97`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6b5fb3f...75edf97`)
 
 ```diff
@@ -3458,7 +3485,7 @@ index bd277eb0..09c420e3 100644
    depends on Network
 ```
 
-## Roll protocol to r926768 — _2021-09-30T17:28:28Z_
+## Roll protocol to r926768 — _2021-09-30T15:28:28Z_
 ######  Diff: [`2f92c4d...6b5fb3f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2f92c4d...6b5fb3f`)
 
 ```diff
@@ -3644,7 +3671,7 @@ index bd277eb0..09c420e3 100644
  deprecated domain Schema
 ```
 
-## Roll protocol to r926580 — _2021-09-30T06:15:20Z_
+## Roll protocol to r926580 — _2021-09-30T04:15:20Z_
 ######  Diff: [`5cc536e...2f92c4d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5cc536e...2f92c4d`)
 
 ```diff
@@ -3737,7 +3764,7 @@ index bd277eb0..09c420e3 100644
    depends on Network
 ```
 
-## Roll protocol to r926578 — _2021-09-30T03:15:25Z_
+## Roll protocol to r926578 — _2021-09-30T01:15:25Z_
 ######  Diff: [`5459753...5cc536e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5459753...5cc536e`)
 
 ```diff
@@ -3830,7 +3857,7 @@ index bd277eb0..09c420e3 100644
    depends on Network
 ```
 
-## Roll protocol to r926181 — _2021-09-29T11:15:25Z_
+## Roll protocol to r926181 — _2021-09-29T09:15:25Z_
 ######  Diff: [`929d048...5459753`](https://github.com/ChromeDevTools/devtools-protocol/compare/`929d048...5459753`)
 
 ```diff
@@ -3872,7 +3899,7 @@ index bd277eb0..09c420e3 100644
    event inspectNodeRequested
 ```
 
-## Roll protocol to r925217 — _2021-09-27T13:15:29Z_
+## Roll protocol to r925217 — _2021-09-27T11:15:29Z_
 ######  Diff: [`8157ba0...929d048`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8157ba0...929d048`)
 
 ```diff
@@ -3886,7 +3913,7 @@ index bd277eb0..09c420e3 100644
    type CorsErrorStatus extends object
 ```
 
-## Roll protocol to r924707 — _2021-09-24T12:15:21Z_
+## Roll protocol to r924707 — _2021-09-24T10:15:21Z_
 ######  Diff: [`b32cbf9...8157ba0`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b32cbf9...8157ba0`)
 
 ```diff
@@ -3926,7 +3953,7 @@ index bd277eb0..09c420e3 100644
    # exceptions, CDP message, console messages, etc.) to reference an issue.
 ```
 
-## Roll protocol to r924232 — _2021-09-23T11:15:23Z_
+## Roll protocol to r924232 — _2021-09-23T09:15:23Z_
 ######  Diff: [`f300e4d...b32cbf9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f300e4d...b32cbf9`)
 
 ```diff
@@ -3947,7 +3974,7 @@ index bd277eb0..09c420e3 100644
    # information in the `cookies` field.
 ```
 
-## Roll protocol to r924041 — _2021-09-22T23:15:29Z_
+## Roll protocol to r924041 — _2021-09-22T21:15:29Z_
 ######  Diff: [`3c9570a...f300e4d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3c9570a...f300e4d`)
 
 ```diff
@@ -3963,7 +3990,7 @@ index bd277eb0..09c420e3 100644
    # Detailed application cache resource information.
 ```
 
-## Roll protocol to r923714 — _2021-09-22T05:15:27Z_
+## Roll protocol to r923714 — _2021-09-22T03:15:27Z_
 ######  Diff: [`d6f4069...3c9570a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d6f4069...3c9570a`)
 
 ```diff
@@ -3987,7 +4014,7 @@ index bd277eb0..09c420e3 100644
        EmbedderSafeBrowsingThreatDetails
 ```
 
-## Roll protocol to r923359 — _2021-09-21T15:15:22Z_
+## Roll protocol to r923359 — _2021-09-21T13:15:22Z_
 ######  Diff: [`384a24c...d6f4069`](https://github.com/ChromeDevTools/devtools-protocol/compare/`384a24c...d6f4069`)
 
 ```diff
@@ -4013,7 +4040,7 @@ index bd277eb0..09c420e3 100644
    experimental type BlockedSetCookieWithReason extends object
 ```
 
-## Roll protocol to r923255 — _2021-09-21T08:15:25Z_
+## Roll protocol to r923255 — _2021-09-21T06:15:25Z_
 ######  Diff: [`f62186c...384a24c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f62186c...384a24c`)
 
 ```diff
@@ -4027,7 +4054,7 @@ index bd277eb0..09c420e3 100644
        EmbedderSafeBrowsingThreatDetails
 ```
 
-## Roll protocol to r922637 — _2021-09-17T22:15:26Z_
+## Roll protocol to r922637 — _2021-09-17T20:15:26Z_
 ######  Diff: [`d99de50...b86f904`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d99de50...b86f904`)
 
 ```diff
@@ -4041,7 +4068,7 @@ index bd277eb0..09c420e3 100644
    experimental type OriginTrialStatus extends string
 ```
 
-## Roll protocol to r921910 — _2021-09-16T01:15:28Z_
+## Roll protocol to r921910 — _2021-09-15T23:15:28Z_
 ######  Diff: [`2e2333f...d99de50`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2e2333f...d99de50`)
 
 ```diff
@@ -4055,7 +4082,7 @@ index bd277eb0..09c420e3 100644
        ch-ua
 ```
 
-## Roll protocol to r919640 — _2021-09-09T07:15:45Z_
+## Roll protocol to r919640 — _2021-09-09T05:15:45Z_
 ######  Diff: [`a27d92f...2e2333f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a27d92f...2e2333f`)
 
 ```diff
@@ -4069,7 +4096,7 @@ index bd277eb0..09c420e3 100644
        ContentWebAuthenticationAPI
 ```
 
-## Roll protocol to r919376 — _2021-09-08T21:15:34Z_
+## Roll protocol to r919376 — _2021-09-08T19:15:34Z_
 ######  Diff: [`c80e5d1...a27d92f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c80e5d1...a27d92f`)
 
 ```diff
@@ -4083,7 +4110,7 @@ index bd277eb0..09c420e3 100644
    # Explainer: https://github.com/WICG/conversion-measurement-api
 ```
 
-## Roll protocol to r919343 — _2021-09-08T20:15:31Z_
+## Roll protocol to r919343 — _2021-09-08T18:15:31Z_
 ######  Diff: [`3caee55...c80e5d1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3caee55...c80e5d1`)
 
 ```diff
@@ -4097,7 +4124,7 @@ index bd277eb0..09c420e3 100644
        EmbedderSafeBrowsingThreatDetails
 ```
 
-## Roll protocol to r919243 — _2021-09-08T16:15:32Z_
+## Roll protocol to r919243 — _2021-09-08T14:15:32Z_
 ######  Diff: [`2bce709...3caee55`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2bce709...3caee55`)
 
 ```diff
@@ -4111,7 +4138,7 @@ index bd277eb0..09c420e3 100644
        EmbedderSafeBrowsingThreatDetails
 ```
 
-## Roll protocol to r918852 — _2021-09-07T20:15:30Z_
+## Roll protocol to r918852 — _2021-09-07T18:15:30Z_
 ######  Diff: [`8759635...2bce709`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8759635...2bce709`)
 
 ```diff
@@ -4126,7 +4153,7 @@ index bd277eb0..09c420e3 100644
        ContentSecurityHandler
 ```
 
-## Roll protocol to r918800 — _2021-09-07T17:15:38Z_
+## Roll protocol to r918800 — _2021-09-07T15:15:38Z_
 ######  Diff: [`f18b042...8759635`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f18b042...8759635`)
 
 ```diff
@@ -4146,7 +4173,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r918755 — _2021-09-07T14:15:26Z_
+## Roll protocol to r918755 — _2021-09-07T12:15:26Z_
 ######  Diff: [`841918b...f18b042`](https://github.com/ChromeDevTools/devtools-protocol/compare/`841918b...f18b042`)
 
 ```diff
@@ -4174,7 +4201,7 @@ index bd277eb0..09c420e3 100644
      properties
 ```
 
-## Roll protocol to r918695 — _2021-09-07T08:15:26Z_
+## Roll protocol to r918695 — _2021-09-07T06:15:26Z_
 ######  Diff: [`69ec1d8...841918b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`69ec1d8...841918b`)
 
 ```diff
@@ -4198,7 +4225,7 @@ index bd277eb0..09c420e3 100644
    experimental type ReportId extends string
 ```
 
-## Roll protocol to r918555 — _2021-09-06T13:15:31Z_
+## Roll protocol to r918555 — _2021-09-06T11:15:31Z_
 ######  Diff: [`e4f6e30...69ec1d8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e4f6e30...69ec1d8`)
 
 ```diff
@@ -4217,7 +4244,7 @@ index bd277eb0..09c420e3 100644
        # The name of the endpoint group that should be used to deliver the report.
 ```
 
-## Roll protocol to r917689 — _2021-09-02T18:15:35Z_
+## Roll protocol to r917689 — _2021-09-02T16:15:35Z_
 ######  Diff: [`3ac2966...e4f6e30`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3ac2966...e4f6e30`)
 
 ```diff
@@ -4231,7 +4258,7 @@ index bd277eb0..09c420e3 100644
        CacheControlNoStore
 ```
 
-## Roll protocol to r915197 — _2021-08-25T17:15:50Z_
+## Roll protocol to r915197 — _2021-08-25T15:15:50Z_
 ######  Diff: [`5b380d1...3ac2966`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5b380d1...3ac2966`)
 
 ```diff
@@ -4246,7 +4273,7 @@ index bd277eb0..09c420e3 100644
    experimental type FrameResource extends object
 ```
 
-## Roll protocol to r914774 — _2021-08-24T19:15:43Z_
+## Roll protocol to r914774 — _2021-08-24T17:15:43Z_
 ######  Diff: [`6626782...5b380d1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6626782...5b380d1`)
 
 ```diff
@@ -4264,7 +4291,7 @@ index bd277eb0..09c420e3 100644
        TargetID targetId
 ```
 
-## Roll protocol to r914689 — _2021-08-24T13:15:27Z_
+## Roll protocol to r914689 — _2021-08-24T11:15:27Z_
 ######  Diff: [`cebcf39...6626782`](https://github.com/ChromeDevTools/devtools-protocol/compare/`cebcf39...6626782`)
 
 ```diff
@@ -4280,7 +4307,7 @@ index bd277eb0..09c420e3 100644
        ContentFileChooser
 ```
 
-## Roll protocol to r914246 — _2021-08-23T12:15:24Z_
+## Roll protocol to r914246 — _2021-08-23T10:15:24Z_
 ######  Diff: [`e36e630...cebcf39`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e36e630...cebcf39`)
 
 ```diff
@@ -4299,7 +4326,7 @@ index bd277eb0..09c420e3 100644
    experimental deprecated command getCookies
 ```
 
-## Roll protocol to r914207 — _2021-08-23T09:15:27Z_
+## Roll protocol to r914207 — _2021-08-23T07:15:27Z_
 ######  Diff: [`e355d86...e36e630`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e355d86...e36e630`)
 
 ```diff
@@ -4349,7 +4376,7 @@ index bd277eb0..09c420e3 100644
    experimental type BackForwardCacheNotRestoredReasonType extends string
 ```
 
-## Roll protocol to r913948 — _2021-08-20T22:15:44Z_
+## Roll protocol to r913948 — _2021-08-20T20:15:44Z_
 ######  Diff: [`a558ebd...e355d86`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a558ebd...e355d86`)
 
 ```diff
@@ -4393,7 +4420,7 @@ index bd277eb0..09c420e3 100644
    # is paused in the Response stage and is mutually exclusive with
 ```
 
-## Roll protocol to r913327 — _2021-08-19T11:15:31Z_
+## Roll protocol to r913327 — _2021-08-19T09:15:31Z_
 ######  Diff: [`d30492e...a558ebd`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d30492e...a558ebd`)
 
 ```diff
@@ -4408,7 +4435,7 @@ index bd277eb0..09c420e3 100644
        # URL of the resource if known.
 ```
 
-## Roll protocol to r912925 — _2021-08-18T10:15:25Z_
+## Roll protocol to r912925 — _2021-08-18T08:15:25Z_
 ######  Diff: [`ba60fa4...d30492e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ba60fa4...d30492e`)
 
 ```diff
@@ -4425,7 +4452,7 @@ index bd277eb0..09c420e3 100644
        optional Page.FrameId frameId
 ```
 
-## Roll protocol to r912603 — _2021-08-17T18:15:25Z_
+## Roll protocol to r912603 — _2021-08-17T16:15:25Z_
 ######  Diff: [`9b427a9...ba60fa4`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9b427a9...ba60fa4`)
 
 ```diff
@@ -4475,7 +4502,7 @@ index bd277eb0..09c420e3 100644
      properties
 ```
 
-## Roll protocol to r912566 — _2021-08-17T16:15:28Z_
+## Roll protocol to r912566 — _2021-08-17T14:15:28Z_
 ######  Diff: [`5c0761c...9b427a9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5c0761c...9b427a9`)
 
 ```diff
@@ -4489,7 +4516,7 @@ index bd277eb0..09c420e3 100644
        AppBanner
 ```
 
-## Roll protocol to r912314 — _2021-08-16T22:16:28Z_
+## Roll protocol to r912314 — _2021-08-16T20:16:28Z_
 ######  Diff: [`289585c...5c0761c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`289585c...5c0761c`)
 
 ```diff
@@ -4556,7 +4583,7 @@ index bd277eb0..09c420e3 100644
        # If the intercepted request had a corresponding Network.requestWillBeSent event fired for it,
 ```
 
-## Roll protocol to r912162 — _2021-08-16T16:16:23Z_
+## Roll protocol to r912162 — _2021-08-16T14:16:23Z_
 ######  Diff: [`5000852...289585c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5000852...289585c`)
 
 ```diff
@@ -4606,7 +4633,7 @@ index bd277eb0..09c420e3 100644
      properties
 ```
 
-## Roll protocol to r911867 — _2021-08-13T22:16:18Z_
+## Roll protocol to r911867 — _2021-08-13T20:16:18Z_
 ######  Diff: [`e811304...b3fb07a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e811304...b3fb07a`)
 
 ```diff
@@ -4634,7 +4661,7 @@ index bd277eb0..09c420e3 100644
        optional ClientSecurityState clientSecurityState
 ```
 
-## Roll protocol to r911675 — _2021-08-13T10:16:24Z_
+## Roll protocol to r911675 — _2021-08-13T08:16:24Z_
 ######  Diff: [`85bc00a...e811304`](https://github.com/ChromeDevTools/devtools-protocol/compare/`85bc00a...e811304`)
 
 ```diff
@@ -4648,7 +4675,7 @@ index bd277eb0..09c420e3 100644
    # Explainer: https://github.com/WICG/conversion-measurement-api
 ```
 
-## Roll protocol to r911543 — _2021-08-13T01:17:07Z_
+## Roll protocol to r911543 — _2021-08-12T23:17:07Z_
 ######  Diff: [`3c9fa3b...85bc00a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3c9fa3b...85bc00a`)
 
 ```diff
@@ -4681,7 +4708,7 @@ index bd277eb0..09c420e3 100644
    command setDiscoverTargets
 ```
 
-## Roll protocol to r911116 — _2021-08-12T04:16:24Z_
+## Roll protocol to r911116 — _2021-08-12T02:16:24Z_
 ######  Diff: [`2b18125...3c9fa3b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2b18125...3c9fa3b`)
 
 ```diff
@@ -4698,7 +4725,7 @@ index bd277eb0..09c420e3 100644
        MainResourceHasCacheControlNoCache
 ```
 
-## Roll protocol to r910715 — _2021-08-11T10:16:14Z_
+## Roll protocol to r910715 — _2021-08-11T08:16:14Z_
 ######  Diff: [`5cff1bc...2b18125`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5cff1bc...2b18125`)
 
 ```diff
@@ -4751,7 +4778,7 @@ index bd277eb0..09c420e3 100644
    experimental type BackForwardCacheNotRestoredReasonType extends string
 ```
 
-## Roll protocol to r910293 — _2021-08-10T16:16:40Z_
+## Roll protocol to r910293 — _2021-08-10T14:16:40Z_
 ######  Diff: [`caec9d3...5cff1bc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`caec9d3...5cff1bc`)
 
 ```diff
@@ -4769,7 +4796,7 @@ index bd277eb0..09c420e3 100644
        # Options for the request.
 ```
 
-## Roll protocol to r910184 — _2021-08-10T09:16:07Z_
+## Roll protocol to r910184 — _2021-08-10T07:16:07Z_
 ######  Diff: [`d1e1cbf...caec9d3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d1e1cbf...caec9d3`)
 
 ```diff
@@ -4784,7 +4811,7 @@ index bd277eb0..09c420e3 100644
        # Frame's name as specified in the tag.
 ```
 
-## Roll protocol to r909734 — _2021-08-09T11:16:28Z_
+## Roll protocol to r909734 — _2021-08-09T09:16:28Z_
 ######  Diff: [`94b504e...d1e1cbf`](https://github.com/ChromeDevTools/devtools-protocol/compare/`94b504e...d1e1cbf`)
 
 ```diff
@@ -4798,7 +4825,7 @@ index bd277eb0..09c420e3 100644
      enum
 ```
 
-## Roll protocol to r909375 — _2021-08-06T20:16:33Z_
+## Roll protocol to r909375 — _2021-08-06T18:16:33Z_
 ######  Diff: [`8e161fc...94b504e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8e161fc...94b504e`)
 
 ```diff
@@ -4816,7 +4843,7 @@ index bd277eb0..09c420e3 100644
      enum
 ```
 
-## Roll protocol to r908589 — _2021-08-04T22:16:22Z_
+## Roll protocol to r908589 — _2021-08-04T20:16:22Z_
 ######  Diff: [`c707d30...8e161fc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c707d30...8e161fc`)
 
 ```diff
@@ -4836,7 +4863,7 @@ index bd277eb0..09c420e3 100644
    # query results).
 ```
 
-## Roll protocol to r908187 — _2021-08-04T01:16:22Z_
+## Roll protocol to r908187 — _2021-08-03T23:16:22Z_
 ######  Diff: [`39a8210...c707d30`](https://github.com/ChromeDevTools/devtools-protocol/compare/`39a8210...c707d30`)
 
 ```diff
@@ -4880,7 +4907,7 @@ index bd277eb0..09c420e3 100644
    command continueWithAuth
 ```
 
-## Roll protocol to r907573 — _2021-08-02T18:16:14Z_
+## Roll protocol to r907573 — _2021-08-02T16:16:14Z_
 ######  Diff: [`2ae3b1d...39a8210`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2ae3b1d...39a8210`)
 
 ```diff
@@ -4903,7 +4930,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r906795 — _2021-07-29T21:17:01Z_
+## Roll protocol to r906795 — _2021-07-29T19:17:01Z_
 ######  Diff: [`1c8cd5c...2ae3b1d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1c8cd5c...2ae3b1d`)
 
 ```diff
@@ -4932,7 +4959,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r906505 — _2021-07-29T03:16:19Z_
+## Roll protocol to r906505 — _2021-07-29T01:16:19Z_
 ######  Diff: [`fa458e7...1c8cd5c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fa458e7...1c8cd5c`)
 
 ```diff
@@ -4946,7 +4973,7 @@ index bd277eb0..09c420e3 100644
        clipboard-read
 ```
 
-## Roll protocol to r905680 — _2021-07-27T13:16:20Z_
+## Roll protocol to r905680 — _2021-07-27T11:16:20Z_
 ######  Diff: [`52195bf...fa458e7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`52195bf...fa458e7`)
 
 ```diff
@@ -4960,7 +4987,7 @@ index bd277eb0..09c420e3 100644
        WebRTC
 ```
 
-## Roll protocol to r905252 — _2021-07-26T17:16:11Z_
+## Roll protocol to r905252 — _2021-07-26T15:16:11Z_
 ######  Diff: [`6da1a03...52195bf`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6da1a03...52195bf`)
 
 ```diff
@@ -4976,7 +5003,7 @@ index bd277eb0..09c420e3 100644
        optional string headersText
 ```
 
-## Roll protocol to r905235 — _2021-07-26T16:16:05Z_
+## Roll protocol to r905235 — _2021-07-26T14:16:05Z_
 ######  Diff: [`ddfd9ff...6da1a03`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ddfd9ff...6da1a03`)
 
 ```diff
@@ -4990,7 +5017,7 @@ index bd277eb0..09c420e3 100644
        integer dragOperationsMask
 ```
 
-## Roll protocol to r901419 — _2021-07-14T11:15:57Z_
+## Roll protocol to r901419 — _2021-07-14T09:15:57Z_
 ######  Diff: [`f94c0d3...ddfd9ff`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f94c0d3...ddfd9ff`)
 
 ```diff
@@ -5008,7 +5035,7 @@ index bd277eb0..09c420e3 100644
        Page.FrameId frameId
 ```
 
-## Roll protocol to r901394 — _2021-07-14T09:16:11Z_
+## Roll protocol to r901394 — _2021-07-14T07:16:11Z_
 ######  Diff: [`2609869...f94c0d3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2609869...f94c0d3`)
 
 ```diff
@@ -5024,7 +5051,7 @@ index bd277eb0..09c420e3 100644
        WebRTC
 ```
 
-## Roll protocol to r900855 — _2021-07-13T08:16:27Z_
+## Roll protocol to r900855 — _2021-07-13T06:16:27Z_
 ######  Diff: [`56bb0ce...2609869`](https://github.com/ChromeDevTools/devtools-protocol/compare/`56bb0ce...2609869`)
 
 ```diff
@@ -5038,7 +5065,7 @@ index bd277eb0..09c420e3 100644
        RequestedAudioCapturePermission
 ```
 
-## Roll protocol to r900357 — _2021-07-12T08:16:08Z_
+## Roll protocol to r900357 — _2021-07-12T06:16:08Z_
 ######  Diff: [`db8965f...56bb0ce`](https://github.com/ChromeDevTools/devtools-protocol/compare/`db8965f...56bb0ce`)
 
 ```diff
@@ -5053,7 +5080,7 @@ index bd277eb0..09c420e3 100644
        # `Node`'s nodeValue.
 ```
 
-## Roll protocol to r900033 — _2021-07-09T18:16:22Z_
+## Roll protocol to r900033 — _2021-07-09T16:16:22Z_
 ######  Diff: [`cbb20a9...db8965f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`cbb20a9...db8965f`)
 
 ```diff
@@ -5099,7 +5126,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r898382 — _2021-07-03T01:16:12Z_
+## Roll protocol to r898382 — _2021-07-02T23:16:12Z_
 ######  Diff: [`b531de2...c935633`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b531de2...c935633`)
 
 ```diff
@@ -5113,7 +5140,7 @@ index bd277eb0..09c420e3 100644
        scrollbar-thumb
 ```
 
-## Roll protocol to r898124 — _2021-07-02T14:16:12Z_
+## Roll protocol to r898124 — _2021-07-02T12:16:12Z_
 ######  Diff: [`6814a59...b531de2`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6814a59...b531de2`)
 
 ```diff
@@ -5149,7 +5176,7 @@ index bd277eb0..09c420e3 100644
    # exceptions, CDP message, console messages, etc.) to reference an issue.
 ```
 
-## Roll protocol to r897295 — _2021-06-30T11:16:16Z_
+## Roll protocol to r897295 — _2021-06-30T09:16:16Z_
 ######  Diff: [`65148a9...6814a59`](https://github.com/ChromeDevTools/devtools-protocol/compare/`65148a9...6814a59`)
 
 ```diff
@@ -5165,7 +5192,7 @@ index bd277eb0..09c420e3 100644
    type SignedCertificateTimestamp extends object
 ```
 
-## Roll protocol to r896856 — _2021-06-29T13:16:10Z_
+## Roll protocol to r896856 — _2021-06-29T11:16:10Z_
 ######  Diff: [`06ee96a...65148a9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`06ee96a...65148a9`)
 
 ```diff
@@ -5198,7 +5225,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r896125 — _2021-06-25T20:16:15Z_
+## Roll protocol to r896125 — _2021-06-25T18:16:15Z_
 ######  Diff: [`6362220...06ee96a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6362220...06ee96a`)
 
 ```diff
@@ -5214,7 +5241,7 @@ index bd277eb0..09c420e3 100644
    type SignedCertificateTimestamp extends object
 ```
 
-## Roll protocol to r896035 — _2021-06-25T16:16:07Z_
+## Roll protocol to r896035 — _2021-06-25T14:16:07Z_
 ######  Diff: [`95234d8...6362220`](https://github.com/ChromeDevTools/devtools-protocol/compare/`95234d8...6362220`)
 
 ```diff
@@ -5230,7 +5257,7 @@ index bd277eb0..09c420e3 100644
    type SignedCertificateTimestamp extends object
 ```
 
-## Roll protocol to r895982 — _2021-06-25T12:16:12Z_
+## Roll protocol to r895982 — _2021-06-25T10:16:12Z_
 ######  Diff: [`6544760...95234d8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6544760...95234d8`)
 
 ```diff
@@ -5256,7 +5283,7 @@ index bd277eb0..09c420e3 100644
    # applies to images.
 ```
 
-## Roll protocol to r894467 — _2021-06-22T02:16:13Z_
+## Roll protocol to r894467 — _2021-06-22T24:16:13Z_
 ######  Diff: [`aaf1569...6544760`](https://github.com/ChromeDevTools/devtools-protocol/compare/`aaf1569...6544760`)
 
 ```diff
@@ -5283,7 +5310,7 @@ index bd277eb0..09c420e3 100644
        number startLine
 ```
 
-## Roll protocol to r894172 — _2021-06-21T10:16:09Z_
+## Roll protocol to r894172 — _2021-06-21T08:16:09Z_
 ######  Diff: [`fe543d9...aaf1569`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fe543d9...aaf1569`)
 
 ```diff
@@ -5297,7 +5324,7 @@ index bd277eb0..09c420e3 100644
        #Blocklisted features
 ```
 
-## Roll protocol to r894033 — _2021-06-19T02:16:28Z_
+## Roll protocol to r894033 — _2021-06-19T24:16:28Z_
 ######  Diff: [`e7ab713...fe543d9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e7ab713...fe543d9`)
 
 ```diff
@@ -5311,7 +5338,7 @@ index bd277eb0..09c420e3 100644
        ch-ua-mobile
 ```
 
-## Roll protocol to r894020 — _2021-06-19T01:16:01Z_
+## Roll protocol to r894020 — _2021-06-18T23:16:01Z_
 ######  Diff: [`6abba71...e7ab713`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6abba71...e7ab713`)
 
 ```diff
@@ -5325,7 +5352,7 @@ index bd277eb0..09c420e3 100644
        # Capture the screenshot of a given region only.
 ```
 
-## Roll protocol to r893712 — _2021-06-18T08:16:15Z_
+## Roll protocol to r893712 — _2021-06-18T06:16:15Z_
 ######  Diff: [`7ad22bc...6abba71`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7ad22bc...6abba71`)
 
 ```diff
@@ -5344,7 +5371,7 @@ index bd277eb0..09c420e3 100644
        DedicatedWorkerOrWorklet
 ```
 
-## Roll protocol to r892514 — _2021-06-15T12:16:15Z_
+## Roll protocol to r892514 — _2021-06-15T10:16:15Z_
 ######  Diff: [`042399a...7ad22bc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`042399a...7ad22bc`)
 
 ```diff
@@ -5360,7 +5387,7 @@ index bd277eb0..09c420e3 100644
        MainResourceHasCacheControlNoStore
 ```
 
-## Roll protocol to r892366 — _2021-06-15T03:16:09Z_
+## Roll protocol to r892366 — _2021-06-15T01:16:09Z_
 ######  Diff: [`6286308...042399a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6286308...042399a`)
 
 ```diff
@@ -5374,7 +5401,7 @@ index bd277eb0..09c420e3 100644
        WebLocks
 ```
 
-## Roll protocol to r892017 — _2021-06-14T12:15:55Z_
+## Roll protocol to r892017 — _2021-06-14T10:15:55Z_
 ######  Diff: [`077a282...6286308`](https://github.com/ChromeDevTools/devtools-protocol/compare/`077a282...6286308`)
 
 ```diff
@@ -5410,7 +5437,7 @@ index bd277eb0..09c420e3 100644
        # Indicates whether this is a cross origin isolated context.
 ```
 
-## Roll protocol to r891247 — _2021-06-10T18:16:15Z_
+## Roll protocol to r891247 — _2021-06-10T16:16:15Z_
 ######  Diff: [`28c241d...077a282`](https://github.com/ChromeDevTools/devtools-protocol/compare/`28c241d...077a282`)
 
 ```diff
@@ -5550,7 +5577,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r891108 — _2021-06-10T08:16:17Z_
+## Roll protocol to r891108 — _2021-06-10T06:16:17Z_
 ######  Diff: [`cbc2ddb...28c241d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`cbc2ddb...28c241d`)
 
 ```diff
@@ -5571,7 +5598,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r890975 — _2021-06-10T24:17:50Z_
+## Roll protocol to r890975 — _2021-06-09T22:17:50Z_
 ######  Diff: [`bfcd0a3...cbc2ddb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`bfcd0a3...cbc2ddb`)
 
 ```diff
@@ -5594,7 +5621,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r888392 — _2021-06-02T13:16:05Z_
+## Roll protocol to r888392 — _2021-06-02T11:16:05Z_
 ######  Diff: [`564611d...bfcd0a3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`564611d...bfcd0a3`)
 
 ```diff
@@ -5628,7 +5655,7 @@ index bd277eb0..09c420e3 100644
      properties
 ```
 
-## Roll protocol to r887728 — _2021-05-31T14:16:11Z_
+## Roll protocol to r887728 — _2021-05-31T12:16:11Z_
 ######  Diff: [`76e104a...564611d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`76e104a...564611d`)
 
 ```diff
@@ -5643,7 +5670,7 @@ index bd277eb0..09c420e3 100644
    experimental type CrossOriginEmbedderPolicyStatus extends object
 ```
 
-## Roll protocol to r887710 — _2021-05-31T13:16:13Z_
+## Roll protocol to r887710 — _2021-05-31T11:16:13Z_
 ######  Diff: [`d440402...76e104a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d440402...76e104a`)
 
 ```diff
@@ -5659,7 +5686,7 @@ index bd277eb0..09c420e3 100644
    # applies to images.
 ```
 
-## Roll protocol to r887064 — _2021-05-27T09:16:11Z_
+## Roll protocol to r887064 — _2021-05-27T07:16:11Z_
 ######  Diff: [`35ec89b...d440402`](https://github.com/ChromeDevTools/devtools-protocol/compare/`35ec89b...d440402`)
 
 ```diff
@@ -5687,7 +5714,7 @@ index bd277eb0..09c420e3 100644
        # Optionally identifies the site-for-cookies and the cookie url, which
 ```
 
-## Roll protocol to r885657 — _2021-05-21T23:16:03Z_
+## Roll protocol to r885657 — _2021-05-21T21:16:03Z_
 ######  Diff: [`d9ce37e...35ec89b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d9ce37e...35ec89b`)
 
 ```diff
@@ -5744,7 +5771,7 @@ index bd277eb0..09c420e3 100644
        SameOrigin
 ```
 
-## Roll protocol to r884712 — _2021-05-20T24:16:10Z_
+## Roll protocol to r884712 — _2021-05-19T22:16:10Z_
 ######  Diff: [`dfcf9be...d9ce37e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`dfcf9be...d9ce37e`)
 
 ```diff
@@ -5759,7 +5786,7 @@ index bd277eb0..09c420e3 100644
        Request
 ```
 
-## Roll protocol to r884484 — _2021-05-19T17:16:15Z_
+## Roll protocol to r884484 — _2021-05-19T15:16:15Z_
 ######  Diff: [`f8d7e27...dfcf9be`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f8d7e27...dfcf9be`)
 
 ```diff
@@ -5793,7 +5820,7 @@ index bd277eb0..09c420e3 100644
    type InspectorIssue extends object
 ```
 
-## Roll protocol to r884179 — _2021-05-19T24:16:18Z_
+## Roll protocol to r884179 — _2021-05-18T22:16:18Z_
 ######  Diff: [`bc63f36...f8d7e27`](https://github.com/ChromeDevTools/devtools-protocol/compare/`bc63f36...f8d7e27`)
 
 ```diff
@@ -5807,7 +5834,7 @@ index bd277eb0..09c420e3 100644
    # Reason for a permissions policy feature to be disabled.
 ```
 
-## Roll protocol to r883894 — _2021-05-18T13:16:08Z_
+## Roll protocol to r883894 — _2021-05-18T11:16:08Z_
 ######  Diff: [`56b0f11...bc63f36`](https://github.com/ChromeDevTools/devtools-protocol/compare/`56b0f11...bc63f36`)
 
 ```diff
@@ -5830,7 +5857,7 @@ index bd277eb0..09c420e3 100644
        ch-ua-arch
 ```
 
-## Roll protocol to r883449 — _2021-05-17T15:16:08Z_
+## Roll protocol to r883449 — _2021-05-17T13:16:08Z_
 ######  Diff: [`ea8402f...56b0f11`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ea8402f...56b0f11`)
 
 ```diff
@@ -5858,7 +5885,7 @@ index bd277eb0..09c420e3 100644
    type RGBA extends object
 ```
 
-## Roll protocol to r882987 — _2021-05-14T18:16:22Z_
+## Roll protocol to r882987 — _2021-05-14T16:16:22Z_
 ######  Diff: [`96c89c5...ea8402f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`96c89c5...ea8402f`)
 
 ```diff
@@ -5880,7 +5907,7 @@ index bd277eb0..09c420e3 100644
        display-capture
 ```
 
-## Roll protocol to r882921 — _2021-05-14T11:16:15Z_
+## Roll protocol to r882921 — _2021-05-14T09:16:15Z_
 ######  Diff: [`56788fe...96c89c5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`56788fe...96c89c5`)
 
 ```diff
@@ -5902,7 +5929,7 @@ index bd277eb0..09c420e3 100644
      properties
 ```
 
-## Roll protocol to r882324 — _2021-05-13T24:16:51Z_
+## Roll protocol to r882324 — _2021-05-12T22:16:51Z_
 ######  Diff: [`9062efe...56788fe`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9062efe...56788fe`)
 
 ```diff
@@ -5943,7 +5970,7 @@ index bd277eb0..09c420e3 100644
    type InspectorIssue extends object
 ```
 
-## Roll protocol to r882098 — _2021-05-12T18:16:24Z_
+## Roll protocol to r882098 — _2021-05-12T16:16:24Z_
 ######  Diff: [`8ce157a...9062efe`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8ce157a...9062efe`)
 
 ```diff
@@ -5984,7 +6011,7 @@ index bd277eb0..09c420e3 100644
    type InspectorIssue extends object
 ```
 
-## Roll protocol to r881485 — _2021-05-11T13:16:33Z_
+## Roll protocol to r881485 — _2021-05-11T11:16:33Z_
 ######  Diff: [`febcae4...8ce157a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`febcae4...8ce157a`)
 
 ```diff
@@ -6025,7 +6052,7 @@ index bd277eb0..09c420e3 100644
    type InspectorIssue extends object
 ```
 
-## Roll protocol to r881010 — _2021-05-10T18:16:13Z_
+## Roll protocol to r881010 — _2021-05-10T16:16:13Z_
 ######  Diff: [`a81e89d...febcae4`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a81e89d...febcae4`)
 
 ```diff
@@ -6099,7 +6126,7 @@ index bd277eb0..09c420e3 100644
    experimental type FrameResource extends object
 ```
 
-## Roll protocol to r880455 — _2021-05-07T19:16:12Z_
+## Roll protocol to r880455 — _2021-05-07T17:16:12Z_
 ######  Diff: [`2dd45d5...a81e89d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2dd45d5...a81e89d`)
 
 ```diff
@@ -6113,7 +6140,7 @@ index bd277eb0..09c420e3 100644
        encrypted-media
 ```
 
-## Roll protocol to r878340 — _2021-05-03T10:16:03Z_
+## Roll protocol to r878340 — _2021-05-03T08:16:03Z_
 ######  Diff: [`08981cb...2dd45d5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`08981cb...2dd45d5`)
 
 ```diff
@@ -6129,7 +6156,7 @@ index bd277eb0..09c420e3 100644
        ScriptIdentifier identifier
 ```
 
-## Roll protocol to r878026 — _2021-04-30T21:16:18Z_
+## Roll protocol to r878026 — _2021-04-30T19:16:18Z_
 ######  Diff: [`c3a5cc5...08981cb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c3a5cc5...08981cb`)
 
 ```diff
@@ -6157,7 +6184,7 @@ index bd277eb0..09c420e3 100644
        optional Network.ResourceType resourceType
 ```
 
-## Roll protocol to r877890 — _2021-04-30T15:16:13Z_
+## Roll protocol to r877890 — _2021-04-30T13:16:13Z_
 ######  Diff: [`987bbb1...c3a5cc5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`987bbb1...c3a5cc5`)
 
 ```diff
@@ -6171,7 +6198,7 @@ index bd277eb0..09c420e3 100644
        trust-token-redemption
 ```
 
-## Roll protocol to r876958 — _2021-04-28T10:16:04Z_
+## Roll protocol to r876958 — _2021-04-28T08:16:04Z_
 ######  Diff: [`7eb19da...987bbb1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7eb19da...987bbb1`)
 
 ```diff
@@ -6188,7 +6215,7 @@ index bd277eb0..09c420e3 100644
    # Explainer: https://github.com/WICG/conversion-measurement-api
 ```
 
-## Roll protocol to r876535 — _2021-04-27T13:16:08Z_
+## Roll protocol to r876535 — _2021-04-27T11:16:08Z_
 ######  Diff: [`ce4cfab...7eb19da`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ce4cfab...7eb19da`)
 
 ```diff
@@ -6202,7 +6229,7 @@ index bd277eb0..09c420e3 100644
    # Explainer: https://github.com/WICG/conversion-measurement-api
 ```
 
-## Roll protocol to r876073 — _2021-04-26T10:16:05Z_
+## Roll protocol to r876073 — _2021-04-26T08:16:05Z_
 ######  Diff: [`8676f73...ce4cfab`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8676f73...ce4cfab`)
 
 ```diff
@@ -6353,7 +6380,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r873728 — _2021-04-19T10:16:10Z_
+## Roll protocol to r873728 — _2021-04-19T08:16:10Z_
 ######  Diff: [`3e18e97...8676f73`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3e18e97...8676f73`)
 
 ```diff
@@ -6375,7 +6402,7 @@ index bd277eb0..09c420e3 100644
    # optional fields in InspectorIssueDetails to convey more specific
 ```
 
-## Roll protocol to r873348 — _2021-04-16T19:16:32Z_
+## Roll protocol to r873348 — _2021-04-16T17:16:32Z_
 ######  Diff: [`143b9aa...3e18e97`](https://github.com/ChromeDevTools/devtools-protocol/compare/`143b9aa...3e18e97`)
 
 ```diff
@@ -6392,7 +6419,7 @@ index bd277eb0..09c420e3 100644
        optional boolean automaticPresenceSimulation
 ```
 
-## Roll protocol to r873231 — _2021-04-16T10:16:19Z_
+## Roll protocol to r873231 — _2021-04-16T08:16:19Z_
 ######  Diff: [`1a49020...143b9aa`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1a49020...143b9aa`)
 
 ```diff
@@ -6416,7 +6443,7 @@ index bd277eb0..09c420e3 100644
        Network.MonotonicTime timestamp
 ```
 
-## Roll protocol to r872298 — _2021-04-14T08:16:06Z_
+## Roll protocol to r872298 — _2021-04-14T06:16:06Z_
 ######  Diff: [`0dacfa7...1a49020`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0dacfa7...1a49020`)
 
 ```diff
@@ -6441,7 +6468,7 @@ index bd277eb0..09c420e3 100644
    experimental event documentOpened
 ```
 
-## Roll protocol to r871838 — _2021-04-13T10:16:03Z_
+## Roll protocol to r871838 — _2021-04-13T08:16:03Z_
 ######  Diff: [`a45730c...0dacfa7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a45730c...0dacfa7`)
 
 ```diff
@@ -6483,7 +6510,7 @@ index bd277eb0..09c420e3 100644
    type InspectorIssue extends object
 ```
 
-## Roll protocol to r871615 — _2021-04-12T22:16:16Z_
+## Roll protocol to r871615 — _2021-04-12T20:16:16Z_
 ######  Diff: [`910add1...a45730c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`910add1...a45730c`)
 
 ```diff
@@ -6502,7 +6529,7 @@ index bd277eb0..09c420e3 100644
        # Whether the node is SVG.
 ```
 
-## Roll protocol to r871496 — _2021-04-12T18:16:00Z_
+## Roll protocol to r871496 — _2021-04-12T16:16:00Z_
 ######  Diff: [`ca9d8a4...910add1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ca9d8a4...910add1`)
 
 ```diff
@@ -6534,7 +6561,7 @@ index bd277eb0..09c420e3 100644
        array of DocumentSnapshot documents
 ```
 
-## Roll protocol to r871249 — _2021-04-10T13:16:12Z_
+## Roll protocol to r871249 — _2021-04-10T11:16:12Z_
 ######  Diff: [`7dd7cbb...ca9d8a4`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7dd7cbb...ca9d8a4`)
 
 ```diff
@@ -6548,7 +6575,7 @@ index bd277eb0..09c420e3 100644
    experimental command setDisabledImageTypes
 ```
 
-## Roll protocol to r869921 — _2021-04-07T10:16:07Z_
+## Roll protocol to r869921 — _2021-04-07T08:16:07Z_
 ######  Diff: [`b2ed548...7dd7cbb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b2ed548...7dd7cbb`)
 
 ```diff
@@ -6580,7 +6607,7 @@ index bd277eb0..09c420e3 100644
    # Disables inspector domain notifications.
 ```
 
-## Roll protocol to r869754 — _2021-04-07T01:16:23Z_
+## Roll protocol to r869754 — _2021-04-06T23:16:23Z_
 ######  Diff: [`0210b99...b2ed548`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0210b99...b2ed548`)
 
 ```diff
@@ -6649,7 +6676,7 @@ index bd277eb0..09c420e3 100644
        string guid
 ```
 
-## Roll protocol to r869402 — _2021-04-06T08:16:05Z_
+## Roll protocol to r869402 — _2021-04-06T06:16:05Z_
 ######  Diff: [`a3a5f92...0210b99`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a3a5f92...0210b99`)
 
 ```diff
@@ -6703,7 +6730,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r868034 — _2021-03-31T12:16:20Z_
+## Roll protocol to r868034 — _2021-03-31T10:16:20Z_
 ######  Diff: [`3948369...a3a5f92`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3948369...a3a5f92`)
 
 ```diff
@@ -6746,7 +6773,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r867593 — _2021-03-30T16:16:08Z_
+## Roll protocol to r867593 — _2021-03-30T14:16:08Z_
 ######  Diff: [`154b166...3948369`](https://github.com/ChromeDevTools/devtools-protocol/compare/`154b166...3948369`)
 
 ```diff
@@ -6789,7 +6816,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r867545 — _2021-03-30T12:16:09Z_
+## Roll protocol to r867545 — _2021-03-30T10:16:09Z_
 ######  Diff: [`f7c029d...154b166`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f7c029d...154b166`)
 
 ```diff
@@ -6832,7 +6859,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r866556 — _2021-03-25T13:16:07Z_
+## Roll protocol to r866556 — _2021-03-25T12:16:07Z_
 ######  Diff: [`70fd1b8...f7c029d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`70fd1b8...f7c029d`)
 
 ```diff
@@ -6845,7 +6872,7 @@ index bd277eb0..09c420e3 100644
        optional Network.ClientSecurityState clientSecurityState
 ```
 
-## Roll protocol to r866105 — _2021-03-24T15:16:09Z_
+## Roll protocol to r866105 — _2021-03-24T14:16:09Z_
 ######  Diff: [`6024018...70fd1b8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6024018...70fd1b8`)
 
 ```diff
@@ -6874,7 +6901,7 @@ index bd277eb0..09c420e3 100644
      returns
 ```
 
-## Roll protocol to r863986 — _2021-03-18T24:16:09Z_
+## Roll protocol to r863986 — _2021-03-17T23:16:09Z_
 ######  Diff: [`576a381...6024018`](https://github.com/ChromeDevTools/devtools-protocol/compare/`576a381...6024018`)
 
 ```diff
@@ -6895,7 +6922,7 @@ index bd277eb0..09c420e3 100644
        LayoutViewport cssLayoutViewport
 ```
 
-## Roll protocol to r862770 — _2021-03-15T12:16:04Z_
+## Roll protocol to r862770 — _2021-03-15T11:16:04Z_
 ######  Diff: [`c5bd6c3...576a381`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c5bd6c3...576a381`)
 
 ```diff
@@ -6928,7 +6955,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r862653 — _2021-03-13T05:16:21Z_
+## Roll protocol to r862653 — _2021-03-13T04:16:21Z_
 ######  Diff: [`3704a77...c5bd6c3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3704a77...c5bd6c3`)
 
 ```diff
@@ -6942,7 +6969,7 @@ index bd277eb0..09c420e3 100644
        corp-not-same-origin
 ```
 
-## Roll protocol to r861504 — _2021-03-10T11:16:14Z_
+## Roll protocol to r861504 — _2021-03-10T10:16:14Z_
 ######  Diff: [`7622144...3704a77`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7622144...3704a77`)
 
 ```diff
@@ -6957,7 +6984,7 @@ index bd277eb0..09c420e3 100644
        optional integer width
 ```
 
-## Roll protocol to r861447 — _2021-03-10T07:16:12Z_
+## Roll protocol to r861447 — _2021-03-10T06:16:12Z_
 ######  Diff: [`b434e14...7622144`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b434e14...7622144`)
 
 ```diff
@@ -6982,7 +7009,7 @@ index bd277eb0..09c420e3 100644
        Network.MonotonicTime timestamp
 ```
 
-## Roll protocol to r861373 — _2021-03-10T02:16:11Z_
+## Roll protocol to r861373 — _2021-03-10T01:16:11Z_
 ######  Diff: [`1cdf17e...b434e14`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1cdf17e...b434e14`)
 
 ```diff
@@ -7007,7 +7034,7 @@ index bd277eb0..09c420e3 100644
        Network.MonotonicTime timestamp
 ```
 
-## Roll protocol to r860858 — _2021-03-08T22:16:14Z_
+## Roll protocol to r860858 — _2021-03-08T21:16:14Z_
 ######  Diff: [`5fd49a5...1cdf17e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5fd49a5...1cdf17e`)
 
 ```diff
@@ -7021,7 +7048,7 @@ index bd277eb0..09c420e3 100644
    experimental type CrossOriginEmbedderPolicyStatus extends object
 ```
 
-## Roll protocol to r860658 — _2021-03-08T10:16:00Z_
+## Roll protocol to r860658 — _2021-03-08T09:16:00Z_
 ######  Diff: [`f3a387f...4d52df1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f3a387f...4d52df1`)
 
 ```diff
@@ -7043,7 +7070,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r860415 — _2021-03-06T24:16:15Z_
+## Roll protocol to r860415 — _2021-03-05T23:16:15Z_
 ######  Diff: [`219a9d6...f3a387f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`219a9d6...f3a387f`)
 
 ```diff
@@ -7074,7 +7101,7 @@ index bd277eb0..09c420e3 100644
    command getNavigationHistory
 ```
 
-## Roll protocol to r859327 — _2021-03-03T13:16:01Z_
+## Roll protocol to r859327 — _2021-03-03T12:16:01Z_
 ######  Diff: [`dee574b...219a9d6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`dee574b...219a9d6`)
 
 ```diff
@@ -7094,7 +7121,7 @@ index bd277eb0..09c420e3 100644
    command close
 ```
 
-## Roll protocol to r858754 — _2021-03-02T24:16:13Z_
+## Roll protocol to r858754 — _2021-03-01T23:16:13Z_
 ######  Diff: [`78470ce...dee574b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`78470ce...dee574b`)
 
 ```diff
@@ -7141,7 +7168,7 @@ index bd277eb0..09c420e3 100644
    experimental command addCompilationCache
 ```
 
-## Roll protocol to r856957 — _2021-02-24T03:16:02Z_
+## Roll protocol to r856957 — _2021-02-24T02:16:02Z_
 ######  Diff: [`fe49497...b726157`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fe49497...b726157`)
 
 ```diff
@@ -7293,7 +7320,7 @@ index bd277eb0..09c420e3 100644
    # unsubscribes current runtime agent from Runtime.bindingCalled notifications.
 ```
 
-## Roll protocol to r856702 — _2021-02-23T17:16:10Z_
+## Roll protocol to r856702 — _2021-02-23T16:16:10Z_
 ######  Diff: [`498a1e5...fe49497`](https://github.com/ChromeDevTools/devtools-protocol/compare/`498a1e5...fe49497`)
 
 ```diff
@@ -7309,7 +7336,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r854822 — _2021-02-17T18:16:17Z_
+## Roll protocol to r854822 — _2021-02-17T17:16:17Z_
 ######  Diff: [`13b10d1...498a1e5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`13b10d1...498a1e5`)
 
 ```diff
@@ -7413,7 +7440,7 @@ index bd277eb0..09c420e3 100644
    # query results).
 ```
 
-## Roll protocol to r854538 — _2021-02-17T01:16:05Z_
+## Roll protocol to r854538 — _2021-02-17T24:16:05Z_
 ######  Diff: [`014525d...13b10d1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`014525d...13b10d1`)
 
 ```diff
@@ -7496,7 +7523,7 @@ index bd277eb0..09c420e3 100644
        deprecated boolean success
 ```
 
-## Roll protocol to r852555 — _2021-02-10T10:16:01Z_
+## Roll protocol to r852555 — _2021-02-10T09:16:01Z_
 ######  Diff: [`5a47400...014525d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5a47400...014525d`)
 
 ```diff
@@ -7555,7 +7582,7 @@ index bd277eb0..09c420e3 100644
      enum
 ```
 
-## Roll protocol to r850520 — _2021-02-04T11:16:11Z_
+## Roll protocol to r850520 — _2021-02-04T10:16:11Z_
 ######  Diff: [`6393746...5a47400`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6393746...5a47400`)
 
 ```diff
@@ -7586,7 +7613,7 @@ index bd277eb0..09c420e3 100644
        optional ContrastAlgorithm contrastAlgorithm
 ```
 
-## Roll protocol to r849788 — _2021-02-02T23:16:09Z_
+## Roll protocol to r849788 — _2021-02-02T22:16:09Z_
 ######  Diff: [`8a7c1b5...6393746`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8a7c1b5...6393746`)
 
 ```diff
@@ -7614,7 +7641,7 @@ index bd277eb0..09c420e3 100644
    experimental type BlockedSetCookieWithReason extends object
 ```
 
-## Roll protocol to r849057 — _2021-02-01T12:16:00Z_
+## Roll protocol to r849057 — _2021-02-01T11:16:00Z_
 ######  Diff: [`78112b8...8a7c1b5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`78112b8...8a7c1b5`)
 
 ```diff
@@ -7664,7 +7691,7 @@ index bd277eb0..09c420e3 100644
        InspectorIssue issue
 ```
 
-## Roll protocol to r848227 — _2021-01-28T21:16:06Z_
+## Roll protocol to r848227 — _2021-01-28T20:16:06Z_
 ######  Diff: [`51065d6...78112b8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`51065d6...78112b8`)
 
 ```diff
@@ -7684,7 +7711,7 @@ index bd277eb0..09c420e3 100644
        string architecture
 ```
 
-## Roll protocol to r848169 — _2021-01-28T19:16:15Z_
+## Roll protocol to r848169 — _2021-01-28T18:16:15Z_
 ######  Diff: [`0284109...51065d6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0284109...51065d6`)
 
 ```diff
@@ -7700,7 +7727,7 @@ index bd277eb0..09c420e3 100644
        optional string headersText
 ```
 
-## Roll protocol to r847576 — _2021-01-27T12:16:08Z_
+## Roll protocol to r847576 — _2021-01-27T11:16:08Z_
 ######  Diff: [`769185f...0284109`](https://github.com/ChromeDevTools/devtools-protocol/compare/`769185f...0284109`)
 
 ```diff
@@ -7714,7 +7741,7 @@ index bd277eb0..09c420e3 100644
        integer columnNumber
 ```
 
-## Roll protocol to r847122 — _2021-01-26T13:16:07Z_
+## Roll protocol to r847122 — _2021-01-26T12:16:07Z_
 ######  Diff: [`181f9b3...769185f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`181f9b3...769185f`)
 
 ```diff
@@ -7759,7 +7786,7 @@ index bd277eb0..09c420e3 100644
    # An inspector issue reported from the back-end.
 ```
 
-## Roll protocol to r846936 — _2021-01-26T24:16:27Z_
+## Roll protocol to r846936 — _2021-01-25T23:16:27Z_
 ######  Diff: [`d88313d...181f9b3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d88313d...181f9b3`)
 
 ```diff
@@ -7781,7 +7808,7 @@ index bd277eb0..09c420e3 100644
        # WebTransport identifier.
 ```
 
-## Roll protocol to r845780 — _2021-01-21T21:16:08Z_
+## Roll protocol to r845780 — _2021-01-21T20:16:08Z_
 ######  Diff: [`3941c7e...d88313d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3941c7e...d88313d`)
 
 ```diff
@@ -7829,7 +7856,7 @@ index bd277eb0..09c420e3 100644
    type InspectorIssue extends object
 ```
 
-## Roll protocol to r845564 — _2021-01-21T10:16:18Z_
+## Roll protocol to r845564 — _2021-01-21T09:16:18Z_
 ######  Diff: [`47a861d...3941c7e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`47a861d...3941c7e`)
 
 ```diff
@@ -7862,7 +7889,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r845301 — _2021-01-20T21:16:06Z_
+## Roll protocol to r845301 — _2021-01-20T20:16:06Z_
 ######  Diff: [`7f780af...47a861d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7f780af...47a861d`)
 
 ```diff
@@ -7880,7 +7907,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r841965 — _2021-01-11T11:16:08Z_
+## Roll protocol to r841965 — _2021-01-11T10:16:08Z_
 ######  Diff: [`92c0fc5...529289e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`92c0fc5...529289e`)
 
 ```diff
@@ -7895,7 +7922,7 @@ index bd277eb0..09c420e3 100644
    experimental type SetCookieBlockedReason extends string
 ```
 
-## Roll protocol to r841450 — _2021-01-08T13:16:13Z_
+## Roll protocol to r841450 — _2021-01-08T12:16:13Z_
 ######  Diff: [`0f61a92...92c0fc5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0f61a92...92c0fc5`)
 
 ```diff
@@ -7910,7 +7937,7 @@ index bd277eb0..09c420e3 100644
        scrollbar-thumb
 ```
 
-## Roll protocol to r840815 — _2021-01-07T24:16:17Z_
+## Roll protocol to r840815 — _2021-01-06T23:16:17Z_
 ######  Diff: [`a5b6b3e...0f61a92`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a5b6b3e...0f61a92`)
 
 ```diff
@@ -7977,7 +8004,7 @@ index bd277eb0..09c420e3 100644
    # Sent when a performance timeline event is added. See reportPerformanceTimeline method.
 ```
 
-## Roll protocol to r840500 — _2021-01-06T07:16:00Z_
+## Roll protocol to r840500 — _2021-01-06T06:16:00Z_
 ######  Diff: [`e056996...a5b6b3e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e056996...a5b6b3e`)
 
 ```diff
@@ -8034,7 +8061,7 @@ index bd277eb0..09c420e3 100644
  domain Security
 ```
 
-## Roll protocol to r837676 — _2020-12-16T20:16:09Z_
+## Roll protocol to r837676 — _2020-12-16T19:16:09Z_
 ######  Diff: [`17b7d75...84b9b60`](https://github.com/ChromeDevTools/devtools-protocol/compare/`17b7d75...84b9b60`)
 
 ```diff
@@ -8071,7 +8098,7 @@ index bd277eb0..09c420e3 100644
    type InspectorIssue extends object
 ```
 
-## Roll protocol to r836089 — _2020-12-11T14:16:22Z_
+## Roll protocol to r836089 — _2020-12-11T13:16:22Z_
 ######  Diff: [`d6d3da3...17b7d75`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d6d3da3...17b7d75`)
 
 ```diff
@@ -8088,7 +8115,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r835626 — _2020-12-10T13:17:42Z_
+## Roll protocol to r835626 — _2020-12-10T12:17:42Z_
 ######  Diff: [`7f3af2e...d6d3da3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7f3af2e...d6d3da3`)
 
 ```diff
@@ -8102,7 +8129,7 @@ index bd277eb0..09c420e3 100644
        geolocation
 ```
 
-## Roll protocol to r834467 — _2020-12-08T01:16:11Z_
+## Roll protocol to r834467 — _2020-12-08T24:16:11Z_
 ######  Diff: [`9e09a22...53c89eb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9e09a22...53c89eb`)
 
 ```diff
@@ -8126,7 +8153,7 @@ index bd277eb0..09c420e3 100644
      enum
 ```
 
-## Roll protocol to r832784 — _2020-12-02T14:16:13Z_
+## Roll protocol to r832784 — _2020-12-02T13:16:13Z_
 ######  Diff: [`1d63b26...9e09a22`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1d63b26...9e09a22`)
 
 ```diff
@@ -8153,7 +8180,7 @@ index bd277eb0..09c420e3 100644
        array of AXNode nodes
 ```
 
-## Roll protocol to r832201 — _2020-12-01T05:16:12Z_
+## Roll protocol to r832201 — _2020-12-01T04:16:12Z_
 ######  Diff: [`30c0c44...1d63b26`](https://github.com/ChromeDevTools/devtools-protocol/compare/`30c0c44...1d63b26`)
 
 ```diff
@@ -8167,7 +8194,7 @@ index bd277eb0..09c420e3 100644
        other
 ```
 
-## Roll protocol to r831994 — _2020-11-30T22:16:16Z_
+## Roll protocol to r831994 — _2020-11-30T21:16:16Z_
 ######  Diff: [`ebd3663...30c0c44`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ebd3663...30c0c44`)
 
 ```diff
@@ -8210,7 +8237,7 @@ index bd277eb0..09c420e3 100644
        SameOrigin
 ```
 
-## Roll protocol to r831461 — _2020-11-27T04:16:01Z_
+## Roll protocol to r831461 — _2020-11-27T03:16:01Z_
 ######  Diff: [`bf6d675...ebd3663`](https://github.com/ChromeDevTools/devtools-protocol/compare/`bf6d675...ebd3663`)
 
 ```diff
@@ -8238,7 +8265,7 @@ index bd277eb0..09c420e3 100644
        Allow
 ```
 
-## Roll protocol to r831315 — _2020-11-26T13:16:14Z_
+## Roll protocol to r831315 — _2020-11-26T12:16:14Z_
 ######  Diff: [`4829241...bf6d675`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4829241...bf6d675`)
 
 ```diff
@@ -8269,7 +8296,7 @@ index bd277eb0..09c420e3 100644
    type Cookie extends object
 ```
 
-## Roll protocol to r831300 — _2020-11-26T11:16:17Z_
+## Roll protocol to r831300 — _2020-11-26T10:16:17Z_
 ######  Diff: [`e7d16f6...4829241`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e7d16f6...4829241`)
 
 ```diff
@@ -8284,7 +8311,7 @@ index bd277eb0..09c420e3 100644
    type LineStyle extends object
 ```
 
-## Roll protocol to r829642 — _2020-11-20T15:16:14Z_
+## Roll protocol to r829642 — _2020-11-20T14:16:14Z_
 ######  Diff: [`e3d5a68...e7d16f6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e3d5a68...e7d16f6`)
 
 ```diff
@@ -8299,7 +8326,7 @@ index bd277eb0..09c420e3 100644
        binary data
 ```
 
-## Roll protocol to r829624 — _2020-11-20T13:16:20Z_
+## Roll protocol to r829624 — _2020-11-20T12:16:20Z_
 ######  Diff: [`b9d4d51...e3d5a68`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b9d4d51...e3d5a68`)
 
 ```diff
@@ -8339,7 +8366,7 @@ index bd277eb0..09c420e3 100644
    # stack. Not every responseReceived event will have an additional responseReceivedExtraInfo for
 ```
 
-## Roll protocol to r829612 — _2020-11-20T12:16:03Z_
+## Roll protocol to r829612 — _2020-11-20T11:16:03Z_
 ######  Diff: [`7507a70...b9d4d51`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7507a70...b9d4d51`)
 
 ```diff
@@ -8367,7 +8394,7 @@ index bd277eb0..09c420e3 100644
      enum
 ```
 
-## Roll protocol to r829242 — _2020-11-19T17:16:09Z_
+## Roll protocol to r829242 — _2020-11-19T16:16:09Z_
 ######  Diff: [`2f03057...7507a70`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2f03057...7507a70`)
 
 ```diff
@@ -8395,7 +8422,7 @@ index bd277eb0..09c420e3 100644
    # Fired when a renderer-initiated navigation is requested.
 ```
 
-## Roll protocol to r829162 — _2020-11-19T11:16:16Z_
+## Roll protocol to r829162 — _2020-11-19T10:16:16Z_
 ######  Diff: [`84c2cfc...2f03057`](https://github.com/ChromeDevTools/devtools-protocol/compare/`84c2cfc...2f03057`)
 
 ```diff
@@ -8410,7 +8437,7 @@ index bd277eb0..09c420e3 100644
        binary data
 ```
 
-## Roll protocol to r828856 — _2020-11-18T21:16:13Z_
+## Roll protocol to r828856 — _2020-11-18T20:16:13Z_
 ######  Diff: [`ae1d9fd...84c2cfc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ae1d9fd...84c2cfc`)
 
 ```diff
@@ -8446,7 +8473,7 @@ index bd277eb0..09c420e3 100644
      properties
 ```
 
-## Roll protocol to r828424 — _2020-11-17T23:16:15Z_
+## Roll protocol to r828424 — _2020-11-17T22:16:15Z_
 ######  Diff: [`4a38aba...ae1d9fd`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4a38aba...ae1d9fd`)
 
 ```diff
@@ -8465,7 +8492,7 @@ index bd277eb0..09c420e3 100644
    # Fired when a renderer-initiated navigation is requested.
 ```
 
-## Roll protocol to r828217 — _2020-11-17T17:16:16Z_
+## Roll protocol to r828217 — _2020-11-17T16:16:16Z_
 ######  Diff: [`0f382c6...4a38aba`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0f382c6...4a38aba`)
 
 ```diff
@@ -8497,7 +8524,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r828143 — _2020-11-17T12:15:46Z_
+## Roll protocol to r828143 — _2020-11-17T11:15:46Z_
 ######  Diff: [`fc3a2fd...0f382c6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fc3a2fd...0f382c6`)
 
 ```diff
@@ -8529,7 +8556,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r828125 — _2020-11-17T10:16:07Z_
+## Roll protocol to r828125 — _2020-11-17T09:16:07Z_
 ######  Diff: [`6614ce6...fc3a2fd`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6614ce6...fc3a2fd`)
 
 ```diff
@@ -8548,7 +8575,7 @@ index bd277eb0..09c420e3 100644
    # Fired when a renderer-initiated navigation is requested.
 ```
 
-## Roll protocol to r827510 — _2020-11-14T02:16:11Z_
+## Roll protocol to r827510 — _2020-11-14T01:16:11Z_
 ######  Diff: [`7406169...6614ce6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7406169...6614ce6`)
 
 ```diff
@@ -8563,7 +8590,7 @@ index bd277eb0..09c420e3 100644
        binary data
 ```
 
-## Roll protocol to r827467 — _2020-11-14T24:16:26Z_
+## Roll protocol to r827467 — _2020-11-13T23:16:26Z_
 ######  Diff: [`51e7a7e...7406169`](https://github.com/ChromeDevTools/devtools-protocol/compare/`51e7a7e...7406169`)
 
 ```diff
@@ -8578,7 +8605,7 @@ index bd277eb0..09c420e3 100644
        binary data
 ```
 
-## Roll protocol to r826646 — _2020-11-12T05:16:12Z_
+## Roll protocol to r826646 — _2020-11-12T04:16:12Z_
 ######  Diff: [`433d00b...51e7a7e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`433d00b...51e7a7e`)
 
 ```diff
@@ -8597,7 +8624,7 @@ index bd277eb0..09c420e3 100644
    event frameNavigated
 ```
 
-## Roll protocol to r826264 — _2020-11-11T15:16:49Z_
+## Roll protocol to r826264 — _2020-11-11T14:16:49Z_
 ######  Diff: [`0d4d761...433d00b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0d4d761...433d00b`)
 
 ```diff
@@ -8614,7 +8641,7 @@ index bd277eb0..09c420e3 100644
    type LineStyle extends object
 ```
 
-## Roll protocol to r825619 — _2020-11-10T03:16:08Z_
+## Roll protocol to r825619 — _2020-11-10T02:16:08Z_
 ######  Diff: [`c2862c9...0d4d761`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c2862c9...0d4d761`)
 
 ```diff
@@ -8648,7 +8675,7 @@ index bd277eb0..09c420e3 100644
    # HTTP response data.
 ```
 
-## Roll protocol to r825064 — _2020-11-06T23:16:27Z_
+## Roll protocol to r825064 — _2020-11-06T22:16:27Z_
 ######  Diff: [`e944f55...c2862c9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e944f55...c2862c9`)
 
 ```diff
@@ -8662,7 +8689,7 @@ index bd277eb0..09c420e3 100644
    experimental command setPermission
 ```
 
-## Roll protocol to r824785 — _2020-11-06T10:16:19Z_
+## Roll protocol to r824785 — _2020-11-06T09:16:19Z_
 ######  Diff: [`7b37fcd...e944f55`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7b37fcd...e944f55`)
 
 ```diff
@@ -8679,7 +8706,7 @@ index bd277eb0..09c420e3 100644
    experimental command getSecurityIsolationStatus
 ```
 
-## Roll protocol to r824362 — _2020-11-05T11:16:30Z_
+## Roll protocol to r824362 — _2020-11-05T10:16:30Z_
 ######  Diff: [`8c7ee2c...7b37fcd`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8c7ee2c...7b37fcd`)
 
 ```diff
@@ -8717,7 +8744,7 @@ index bd277eb0..09c420e3 100644
      enum
 ```
 
-## Roll protocol to r823956 — _2020-11-04T13:16:00Z_
+## Roll protocol to r823956 — _2020-11-04T12:16:00Z_
 ######  Diff: [`3f62bad...8c7ee2c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3f62bad...8c7ee2c`)
 
 ```diff
@@ -8746,7 +8773,7 @@ index bd277eb0..09c420e3 100644
    experimental type FrameResource extends object
 ```
 
-## Roll protocol to r823269 — _2020-11-02T21:16:02Z_
+## Roll protocol to r823269 — _2020-11-02T20:16:02Z_
 ######  Diff: [`fcb68d1...3f62bad`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fcb68d1...3f62bad`)
 
 ```diff
@@ -8760,7 +8787,7 @@ index bd277eb0..09c420e3 100644
      properties
 ```
 
-## Roll protocol to r822788 — _2020-10-30T21:16:09Z_
+## Roll protocol to r822788 — _2020-10-30T20:16:09Z_
 ######  Diff: [`b4c97ed...fcb68d1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b4c97ed...fcb68d1`)
 
 ```diff
@@ -8791,7 +8818,7 @@ index bd277eb0..09c420e3 100644
        string dumpGuid
 ```
 
-## Roll protocol to r822651 — _2020-10-30T16:16:03Z_
+## Roll protocol to r822651 — _2020-10-30T15:16:03Z_
 ######  Diff: [`260c66a...b4c97ed`](https://github.com/ChromeDevTools/devtools-protocol/compare/`260c66a...b4c97ed`)
 
 ```diff
@@ -8815,7 +8842,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r822096 — _2020-10-29T11:16:12Z_
+## Roll protocol to r822096 — _2020-10-29T10:16:12Z_
 ######  Diff: [`31947f3...260c66a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`31947f3...260c66a`)
 
 ```diff
@@ -8870,7 +8897,7 @@ index bd277eb0..09c420e3 100644
    event loadingFinished
 ```
 
-## Roll protocol to r820307 — _2020-10-23T19:16:09Z_
+## Roll protocol to r820307 — _2020-10-23T17:16:09Z_
 ######  Diff: [`d246615...31947f3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d246615...31947f3`)
 
 ```diff
@@ -8890,7 +8917,7 @@ index bd277eb0..09c420e3 100644
    # Sets the requests to intercept that match the provided patterns and optionally resource types.
 ```
 
-## Roll protocol to r820101 — _2020-10-23T04:16:05Z_
+## Roll protocol to r820101 — _2020-10-23T02:16:05Z_
 ######  Diff: [`d0179ab...d246615`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d0179ab...d246615`)
 
 ```diff
@@ -8920,7 +8947,7 @@ index bd277eb0..09c420e3 100644
  # a specific `id` structure, and those are not interchangeable between objects of different kinds.
 ```
 
-## Roll protocol to r820081 — _2020-10-23T03:16:08Z_
+## Roll protocol to r820081 — _2020-10-23T01:16:08Z_
 ######  Diff: [`109271e...d0179ab`](https://github.com/ChromeDevTools/devtools-protocol/compare/`109271e...d0179ab`)
 
 ```diff
@@ -8958,7 +8985,7 @@ index bd277eb0..09c420e3 100644
        # Y delta in CSS pixels for mouse wheel event (default: 0).
 ```
 
-## Roll protocol to r819498 — _2020-10-21T22:16:11Z_
+## Roll protocol to r819498 — _2020-10-21T20:16:11Z_
 ######  Diff: [`89f0fa5...109271e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`89f0fa5...109271e`)
 
 ```diff
@@ -8995,7 +9022,7 @@ index bd277eb0..09c420e3 100644
    # retrieval with a virtual authenticator.
 ```
 
-## Roll protocol to r818974 — _2020-10-20T19:16:05Z_
+## Roll protocol to r818974 — _2020-10-20T17:16:05Z_
 ######  Diff: [`1feb204...89f0fa5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1feb204...89f0fa5`)
 
 ```diff
@@ -9009,7 +9036,7 @@ index bd277eb0..09c420e3 100644
        scrollbar-thumb
 ```
 
-## Roll protocol to r818844 — _2020-10-20T12:15:54Z_
+## Roll protocol to r818844 — _2020-10-20T10:15:54Z_
 ######  Diff: [`e1b8740...1feb204`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e1b8740...1feb204`)
 
 ```diff
@@ -9023,7 +9050,7 @@ index bd277eb0..09c420e3 100644
        optional SourceCodeLocation sourceCodeLocation
 ```
 
-## Roll protocol to r818814 — _2020-10-20T09:15:59Z_
+## Roll protocol to r818814 — _2020-10-20T07:15:59Z_
 ######  Diff: [`d268e57...e1b8740`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d268e57...e1b8740`)
 
 ```diff
@@ -9097,7 +9124,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r816501 — _2020-10-13T12:16:04Z_
+## Roll protocol to r816501 — _2020-10-13T10:16:04Z_
 ######  Diff: [`b72ea89...d268e57`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b72ea89...d268e57`)
 
 ```diff
@@ -9120,7 +9147,7 @@ index bd277eb0..09c420e3 100644
    experimental command setPermission
 ```
 
-## Roll protocol to r815575 — _2020-10-09T14:16:03Z_
+## Roll protocol to r815575 — _2020-10-09T12:16:03Z_
 ######  Diff: [`e736452...b72ea89`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e736452...b72ea89`)
 
 ```diff
@@ -9168,7 +9195,7 @@ index bd277eb0..09c420e3 100644
      properties
 ```
 
-## Roll protocol to r814141 — _2020-10-06T11:16:18Z_
+## Roll protocol to r814141 — _2020-10-06T09:16:18Z_
 ######  Diff: [`46e9147...e736452`](https://github.com/ChromeDevTools/devtools-protocol/compare/`46e9147...e736452`)
 
 ```diff
@@ -9184,7 +9211,7 @@ index bd277eb0..09c420e3 100644
    type Cookie extends object
 ```
 
-## Roll protocol to r813281 — _2020-10-02T20:16:02Z_
+## Roll protocol to r813281 — _2020-10-02T18:16:02Z_
 ######  Diff: [`81d36b6...e98f67b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`81d36b6...e98f67b`)
 
 ```diff
@@ -9201,7 +9228,7 @@ index bd277eb0..09c420e3 100644
        optional boolean automaticPresenceSimulation
 ```
 
-## Roll protocol to r812116 — _2020-09-30T18:16:20Z_
+## Roll protocol to r812116 — _2020-09-30T16:16:20Z_
 ######  Diff: [`9f36776...81d36b6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9f36776...81d36b6`)
 
 ```diff
@@ -9219,7 +9246,7 @@ index bd277eb0..09c420e3 100644
    experimental type RemoteLocation extends object
 ```
 
-## Roll protocol to r810467 — _2020-09-25T06:16:27Z_
+## Roll protocol to r810467 — _2020-09-25T04:16:27Z_
 ######  Diff: [`362b549...9f36776`](https://github.com/ChromeDevTools/devtools-protocol/compare/`362b549...9f36776`)
 
 ```diff
@@ -9246,7 +9273,7 @@ index bd277eb0..09c420e3 100644
    # channel with browser target.
 ```
 
-## Roll protocol to r810188 — _2020-09-24T16:16:32Z_
+## Roll protocol to r810188 — _2020-09-24T14:16:32Z_
 ######  Diff: [`ea0b910...362b549`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ea0b910...362b549`)
 
 ```diff
@@ -9291,7 +9318,7 @@ index bd277eb0..09c420e3 100644
    depends on DOM
 ```
 
-## Roll protocol to r809251 — _2020-09-22T11:16:18Z_
+## Roll protocol to r809251 — _2020-09-22T09:16:18Z_
 ######  Diff: [`01dd54b...ea0b910`](https://github.com/ChromeDevTools/devtools-protocol/compare/`01dd54b...ea0b910`)
 
 ```diff
@@ -9326,7 +9353,7 @@ index bd277eb0..09c420e3 100644
    depends on DOM
 ```
 
-## Roll protocol to r808307 — _2020-09-18T13:16:16Z_
+## Roll protocol to r808307 — _2020-09-18T11:16:16Z_
 ######  Diff: [`9e2e943...01dd54b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9e2e943...01dd54b`)
 
 ```diff
@@ -9352,7 +9379,7 @@ index bd277eb0..09c420e3 100644
      properties
 ```
 
-## Roll protocol to r806843 — _2020-09-15T04:16:32Z_
+## Roll protocol to r806843 — _2020-09-15T02:16:32Z_
 ######  Diff: [`2155b85...9e2e943`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2155b85...9e2e943`)
 
 ```diff
@@ -9400,7 +9427,7 @@ index bd277eb0..09c420e3 100644
        # deferring to the default behavior of the net stack, which will likely either the Cancel
 ```
 
-## Roll protocol to r806611 — _2020-09-14T14:16:27Z_
+## Roll protocol to r806611 — _2020-09-14T12:16:27Z_
 ######  Diff: [`176b07f...2155b85`](https://github.com/ChromeDevTools/devtools-protocol/compare/`176b07f...2155b85`)
 
 ```diff
@@ -9415,7 +9442,7 @@ index bd277eb0..09c420e3 100644
    type HighlightConfig extends object
 ```
 
-## Roll protocol to r806105 — _2020-09-11T11:16:20Z_
+## Roll protocol to r806105 — _2020-09-11T09:16:20Z_
 ######  Diff: [`23323c5...176b07f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`23323c5...176b07f`)
 
 ```diff
@@ -9435,7 +9462,7 @@ index bd277eb0..09c420e3 100644
        # Column offset of the stylesheet within the resource (zero based).
 ```
 
-## Roll protocol to r805376 — _2020-09-09T19:16:20Z_
+## Roll protocol to r805376 — _2020-09-09T17:16:20Z_
 ######  Diff: [`caa0ede...23323c5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`caa0ede...23323c5`)
 
 ```diff
@@ -9450,7 +9477,7 @@ index bd277eb0..09c420e3 100644
        GraphObjectId listenerId
 ```
 
-## Roll protocol to r805182 — _2020-09-09T04:16:15Z_
+## Roll protocol to r805182 — _2020-09-09T02:16:15Z_
 ######  Diff: [`4f48bef...caa0ede`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4f48bef...caa0ede`)
 
 ```diff
@@ -9503,7 +9530,7 @@ index bd277eb0..09c420e3 100644
      parameters
 ```
 
-## Roll protocol to r802093 — _2020-08-27T05:16:11Z_
+## Roll protocol to r802093 — _2020-08-27T03:16:11Z_
 ######  Diff: [`4d26309...4f48bef`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4d26309...4f48bef`)
 
 ```diff
@@ -9522,7 +9549,7 @@ index bd277eb0..09c420e3 100644
    experimental deprecated command setRequestInterception
 ```
 
-## Roll protocol to r801017 — _2020-08-24T18:16:09Z_
+## Roll protocol to r801017 — _2020-08-24T16:16:09Z_
 ######  Diff: [`5ac7d2e...4d26309`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5ac7d2e...4d26309`)
 
 ```diff
@@ -9536,7 +9563,7 @@ index bd277eb0..09c420e3 100644
        optional boolean allowWithoutSanitization
 ```
 
-## Roll protocol to r799653 — _2020-08-19T18:16:16Z_
+## Roll protocol to r799653 — _2020-08-19T16:16:16Z_
 ######  Diff: [`0e651b0...5ac7d2e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0e651b0...5ac7d2e`)
 
 ```diff
@@ -9582,7 +9609,7 @@ index bd277eb0..09c420e3 100644
    experimental type FrameResource extends object
 ```
 
-## Roll protocol to r799090 — _2020-08-18T16:16:17Z_
+## Roll protocol to r799090 — _2020-08-18T14:16:17Z_
 ######  Diff: [`3c9bb33...0e651b0`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3c9bb33...0e651b0`)
 
 ```diff
@@ -9628,7 +9655,7 @@ index bd277eb0..09c420e3 100644
    depends on DOM
 ```
 
-## Roll protocol to r796752 — _2020-08-11T11:16:15Z_
+## Roll protocol to r796752 — _2020-08-11T09:16:15Z_
 ######  Diff: [`6b171b5...3c9bb33`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6b171b5...3c9bb33`)
 
 ```diff
@@ -9669,7 +9696,7 @@ index bd277eb0..09c420e3 100644
    command getNodeForLocation
 ```
 
-## Roll protocol to r795450 — _2020-08-06T16:16:06Z_
+## Roll protocol to r795450 — _2020-08-06T14:16:06Z_
 ######  Diff: [`c89b1a6...6b171b5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c89b1a6...6b171b5`)
 
 ```diff
@@ -9684,7 +9711,7 @@ index bd277eb0..09c420e3 100644
    # optional fields in InspectorIssueDetails to convey more specific
 ```
 
-## Roll protocol to r795133 — _2020-08-05T21:16:31Z_
+## Roll protocol to r795133 — _2020-08-05T19:16:31Z_
 ######  Diff: [`40517aa...c89b1a6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`40517aa...c89b1a6`)
 
 ```diff
@@ -9701,7 +9728,7 @@ index bd277eb0..09c420e3 100644
        # entire subtree or provide an integer larger than 0.
 ```
 
-## Roll protocol to r795004 — _2020-08-05T16:16:20Z_
+## Roll protocol to r795004 — _2020-08-05T14:16:20Z_
 ######  Diff: [`9f93887...40517aa`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9f93887...40517aa`)
 
 ```diff
@@ -9716,7 +9743,7 @@ index bd277eb0..09c420e3 100644
    experimental type RemoteLocation extends object
 ```
 
-## Roll protocol to r794659 — _2020-08-04T21:16:29Z_
+## Roll protocol to r794659 — _2020-08-04T19:16:29Z_
 ######  Diff: [`92769fe...9f93887`](https://github.com/ChromeDevTools/devtools-protocol/compare/`92769fe...9f93887`)
 
 ```diff
@@ -9754,7 +9781,7 @@ index bd277eb0..09c420e3 100644
    event breakpointResolved
 ```
 
-## Roll protocol to r794596 — _2020-08-04T19:16:13Z_
+## Roll protocol to r794596 — _2020-08-04T17:16:13Z_
 ######  Diff: [`8f538a9...92769fe`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8f538a9...92769fe`)
 
 ```diff
@@ -9768,7 +9795,7 @@ index bd277eb0..09c420e3 100644
    # optional fields in InspectorIssueDetails to convey more specific
 ```
 
-## Roll protocol to r794471 — _2020-08-04T13:16:10Z_
+## Roll protocol to r794471 — _2020-08-04T11:16:10Z_
 ######  Diff: [`6dad424...8f538a9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6dad424...8f538a9`)
 
 ```diff
@@ -9797,7 +9824,7 @@ index bd277eb0..09c420e3 100644
    command setEffectivePropertyValueForNode
 ```
 
-## Roll protocol to r794453 — _2020-08-04T12:16:08Z_
+## Roll protocol to r794453 — _2020-08-04T10:16:08Z_
 ######  Diff: [`efe2c1f...6dad424`](https://github.com/ChromeDevTools/devtools-protocol/compare/`efe2c1f...6dad424`)
 
 ```diff
@@ -9826,38 +9853,4 @@ index bd277eb0..09c420e3 100644
        # The row gap highlight fill color (default: transparent).
        optional DOM.RGBA rowGapColor
        # The row gap hatching fill color (default: transparent).
-```
-
-## Roll protocol to r794398 — _2020-08-04T07:16:06Z_
-######  Diff: [`979117d...efe2c1f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`979117d...efe2c1f`)
-
-```diff
-@@ browser_protocol.pdl:5646 @@ domain Page
-       string url
-       # Frame document's URL fragment including the '#'.
-       experimental optional string urlFragment
--      # Frame document's registered domain, taking the public suffixes list into account.
--      # Extracted from the Frame's url.
--      # Example URLs: http://www.google.com/file.html -> "google.com"
--      #               http://a.b.co.uk/file.html      -> "b.co.uk"
--      experimental string domainAndRegistry
-       # Frame document's security origin.
-       string securityOrigin
-       # Frame document's mimeType as determined by the browser.
-```
-
-## Roll protocol to r793541 — _2020-07-31T10:16:13Z_
-######  Diff: [`f67ba47...979117d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f67ba47...979117d`)
-
-```diff
-@@ browser_protocol.pdl:576 @@ experimental domain Audits
-   type BlockedByResponseIssueDetails extends object
-     properties
-       AffectedRequest request
--      optional AffectedFrame parentFrame
--      optional AffectedFrame blockedFrame
-+      optional AffectedFrame frame
-       BlockedByResponseReason reason
- 
-   type HeavyAdResolutionStatus extends string
 ```

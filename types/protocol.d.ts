@@ -3417,7 +3417,7 @@ export namespace Protocol {
             frameId?: Page.FrameId;
         }
 
-        export type DeprecationIssueType = ('AuthorizationCoveredByWildcard' | 'CanRequestURLHTTPContainingNewline' | 'ChromeLoadTimesConnectionInfo' | 'ChromeLoadTimesFirstPaintAfterLoadTime' | 'ChromeLoadTimesWasAlternateProtocolAvailable' | 'CookieWithTruncatingChar' | 'CrossOriginAccessBasedOnDocumentDomain' | 'CrossOriginWindowAlert' | 'CrossOriginWindowConfirm' | 'CSSSelectorInternalMediaControlsOverlayCastButton' | 'DeprecationExample' | 'DocumentDomainSettingWithoutOriginAgentClusterHeader' | 'EventPath' | 'ExpectCTHeader' | 'GeolocationInsecureOrigin' | 'GeolocationInsecureOriginDeprecatedNotRemoved' | 'GetUserMediaInsecureOrigin' | 'HostCandidateAttributeGetter' | 'IdentityInCanMakePaymentEvent' | 'InsecurePrivateNetworkSubresourceRequest' | 'LegacyConstraintGoogIPv6' | 'LocalCSSFileExtensionRejected' | 'MediaSourceAbortRemove' | 'MediaSourceDurationTruncatingBuffered' | 'NoSysexWebMIDIWithoutPermission' | 'NotificationInsecureOrigin' | 'NotificationPermissionRequestedIframe' | 'ObsoleteWebRtcCipherSuite' | 'OpenWebDatabaseInsecureContext' | 'PictureSourceSrc' | 'PrefixedCancelAnimationFrame' | 'PrefixedRequestAnimationFrame' | 'PrefixedStorageInfo' | 'PrefixedVideoDisplayingFullscreen' | 'PrefixedVideoEnterFullscreen' | 'PrefixedVideoEnterFullScreen' | 'PrefixedVideoExitFullscreen' | 'PrefixedVideoExitFullScreen' | 'PrefixedVideoSupportsFullscreen' | 'RangeExpand' | 'RequestedSubresourceWithEmbeddedCredentials' | 'RTCConstraintEnableDtlsSrtpFalse' | 'RTCConstraintEnableDtlsSrtpTrue' | 'RTCPeerConnectionComplexPlanBSdpUsingDefaultSdpSemantics' | 'RTCPeerConnectionSdpSemanticsPlanB' | 'RtcpMuxPolicyNegotiate' | 'SharedArrayBufferConstructedWithoutIsolation' | 'TextToSpeech_DisallowedByAutoplay' | 'V8SharedArrayBufferConstructedInExtensionWithoutIsolation' | 'XHRJSONEncodingDetection' | 'XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload' | 'XRSupportsSession');
+        export type DeprecationIssueType = ('AuthorizationCoveredByWildcard' | 'CanRequestURLHTTPContainingNewline' | 'ChromeLoadTimesConnectionInfo' | 'ChromeLoadTimesFirstPaintAfterLoadTime' | 'ChromeLoadTimesWasAlternateProtocolAvailable' | 'CookieWithTruncatingChar' | 'CrossOriginAccessBasedOnDocumentDomain' | 'CrossOriginWindowAlert' | 'CrossOriginWindowConfirm' | 'CSSSelectorInternalMediaControlsOverlayCastButton' | 'DeprecationExample' | 'DocumentDomainSettingWithoutOriginAgentClusterHeader' | 'EventPath' | 'GeolocationInsecureOrigin' | 'GeolocationInsecureOriginDeprecatedNotRemoved' | 'GetUserMediaInsecureOrigin' | 'HostCandidateAttributeGetter' | 'IdentityInCanMakePaymentEvent' | 'InsecurePrivateNetworkSubresourceRequest' | 'LegacyConstraintGoogIPv6' | 'LocalCSSFileExtensionRejected' | 'MediaSourceAbortRemove' | 'MediaSourceDurationTruncatingBuffered' | 'NoSysexWebMIDIWithoutPermission' | 'NotificationInsecureOrigin' | 'NotificationPermissionRequestedIframe' | 'ObsoleteWebRtcCipherSuite' | 'OpenWebDatabaseInsecureContext' | 'PictureSourceSrc' | 'PrefixedCancelAnimationFrame' | 'PrefixedRequestAnimationFrame' | 'PrefixedStorageInfo' | 'PrefixedVideoDisplayingFullscreen' | 'PrefixedVideoEnterFullscreen' | 'PrefixedVideoEnterFullScreen' | 'PrefixedVideoExitFullscreen' | 'PrefixedVideoExitFullScreen' | 'PrefixedVideoSupportsFullscreen' | 'RangeExpand' | 'RequestedSubresourceWithEmbeddedCredentials' | 'RTCConstraintEnableDtlsSrtpFalse' | 'RTCConstraintEnableDtlsSrtpTrue' | 'RTCPeerConnectionComplexPlanBSdpUsingDefaultSdpSemantics' | 'RTCPeerConnectionSdpSemanticsPlanB' | 'RtcpMuxPolicyNegotiate' | 'SharedArrayBufferConstructedWithoutIsolation' | 'TextToSpeech_DisallowedByAutoplay' | 'V8SharedArrayBufferConstructedInExtensionWithoutIsolation' | 'XHRJSONEncodingDetection' | 'XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload' | 'XRSupportsSession');
 
         /**
          * This issue tracks information needed to print a deprecation message.
@@ -9550,6 +9550,16 @@ export namespace Protocol {
              * Whether the request complied with Certificate Transparency policy
              */
             certificateTransparencyCompliance: CertificateTransparencyCompliance;
+            /**
+             * The signature algorithm used by the server in the TLS server signature,
+             * represented as a TLS SignatureScheme code point. Omitted if not
+             * applicable or not known.
+             */
+            serverSignatureAlgorithm?: integer;
+            /**
+             * Whether the connection used Encrypted ClientHello
+             */
+            encryptedClientHello: boolean;
         }
 
         /**
