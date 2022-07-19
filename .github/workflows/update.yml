@@ -23,6 +23,27 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
-      - name: Update
+      - name: Build
         run: |
           scripts/update-to-latest.sh
+
+      - name: Check out debugger-protocol-viewer
+        uses: actions/checkout@v2
+        with:
+          repository: ChromeDevTools/debugger-protocol-viewer
+          path: debugger-protocol-viewer
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+      - name: Build site
+        working-directory: debugger-protocol-viewer
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: debugger-protocol-viewer/devtools-protocol
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          single-commit: true
