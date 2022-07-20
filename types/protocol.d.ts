@@ -253,6 +253,17 @@ export namespace Protocol {
             type?: ('debuggerStatement' | 'call' | 'return');
         }
 
+        export interface WasmDisassemblyChunk {
+            /**
+             * The next chunk of disassembled lines.
+             */
+            lines: string[];
+            /**
+             * The bytecode offsets describing the start of each line.
+             */
+            bytecodeOffsets: integer[];
+        }
+
         /**
          * Enum of possible script languages.
          */
@@ -402,6 +413,45 @@ export namespace Protocol {
              * Wasm bytecode. (Encoded as a base64 string when passed over JSON)
              */
             bytecode?: string;
+        }
+
+        export interface DisassembleWasmModuleRequest {
+            /**
+             * Id of the script to disassemble
+             */
+            scriptId: Runtime.ScriptId;
+        }
+
+        export interface DisassembleWasmModuleResponse {
+            /**
+             * For large modules, return a stream from which additional chunks of
+             * disassembly can be read successively.
+             */
+            streamId?: string;
+            /**
+             * The total number of lines in the disassembly text.
+             */
+            totalNumberOfLines: integer;
+            /**
+             * The offsets of all function bodies plus one additional entry pointing
+             * one by past the end of the last function.
+             */
+            functionBodyOffsets: integer[];
+            /**
+             * The first chunk of disassembly.
+             */
+            chunk: WasmDisassemblyChunk;
+        }
+
+        export interface NextWasmDisassemblyChunkRequest {
+            streamId: string;
+        }
+
+        export interface NextWasmDisassemblyChunkResponse {
+            /**
+             * The next chunk of disassembly.
+             */
+            chunk: WasmDisassemblyChunk;
         }
 
         export interface GetWasmBytecodeRequest {
@@ -3417,7 +3467,7 @@ export namespace Protocol {
             frameId?: Page.FrameId;
         }
 
-        export type DeprecationIssueType = ('AuthorizationCoveredByWildcard' | 'CanRequestURLHTTPContainingNewline' | 'ChromeLoadTimesConnectionInfo' | 'ChromeLoadTimesFirstPaintAfterLoadTime' | 'ChromeLoadTimesWasAlternateProtocolAvailable' | 'CookieWithTruncatingChar' | 'CrossOriginAccessBasedOnDocumentDomain' | 'CrossOriginWindowAlert' | 'CrossOriginWindowConfirm' | 'CSSSelectorInternalMediaControlsOverlayCastButton' | 'DeprecationExample' | 'DocumentDomainSettingWithoutOriginAgentClusterHeader' | 'EventPath' | 'GeolocationInsecureOrigin' | 'GeolocationInsecureOriginDeprecatedNotRemoved' | 'GetUserMediaInsecureOrigin' | 'HostCandidateAttributeGetter' | 'IdentityInCanMakePaymentEvent' | 'InsecurePrivateNetworkSubresourceRequest' | 'LegacyConstraintGoogIPv6' | 'LocalCSSFileExtensionRejected' | 'MediaSourceAbortRemove' | 'MediaSourceDurationTruncatingBuffered' | 'NoSysexWebMIDIWithoutPermission' | 'NotificationInsecureOrigin' | 'NotificationPermissionRequestedIframe' | 'ObsoleteWebRtcCipherSuite' | 'OpenWebDatabaseInsecureContext' | 'PictureSourceSrc' | 'PrefixedCancelAnimationFrame' | 'PrefixedRequestAnimationFrame' | 'PrefixedStorageInfo' | 'PrefixedVideoDisplayingFullscreen' | 'PrefixedVideoEnterFullscreen' | 'PrefixedVideoEnterFullScreen' | 'PrefixedVideoExitFullscreen' | 'PrefixedVideoExitFullScreen' | 'PrefixedVideoSupportsFullscreen' | 'RangeExpand' | 'RequestedSubresourceWithEmbeddedCredentials' | 'RTCConstraintEnableDtlsSrtpFalse' | 'RTCConstraintEnableDtlsSrtpTrue' | 'RTCPeerConnectionComplexPlanBSdpUsingDefaultSdpSemantics' | 'RTCPeerConnectionSdpSemanticsPlanB' | 'RtcpMuxPolicyNegotiate' | 'SharedArrayBufferConstructedWithoutIsolation' | 'TextToSpeech_DisallowedByAutoplay' | 'V8SharedArrayBufferConstructedInExtensionWithoutIsolation' | 'XHRJSONEncodingDetection' | 'XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload' | 'XRSupportsSession');
+        export type DeprecationIssueType = ('AuthorizationCoveredByWildcard' | 'CanRequestURLHTTPContainingNewline' | 'ChromeLoadTimesConnectionInfo' | 'ChromeLoadTimesFirstPaintAfterLoadTime' | 'ChromeLoadTimesWasAlternateProtocolAvailable' | 'CookieWithTruncatingChar' | 'CrossOriginAccessBasedOnDocumentDomain' | 'CrossOriginWindowAlert' | 'CrossOriginWindowConfirm' | 'CSSSelectorInternalMediaControlsOverlayCastButton' | 'DeprecationExample' | 'DocumentDomainSettingWithoutOriginAgentClusterHeader' | 'EventPath' | 'ExpectCTHeader' | 'GeolocationInsecureOrigin' | 'GeolocationInsecureOriginDeprecatedNotRemoved' | 'GetUserMediaInsecureOrigin' | 'HostCandidateAttributeGetter' | 'IdentityInCanMakePaymentEvent' | 'InsecurePrivateNetworkSubresourceRequest' | 'LegacyConstraintGoogIPv6' | 'LocalCSSFileExtensionRejected' | 'MediaSourceAbortRemove' | 'MediaSourceDurationTruncatingBuffered' | 'NoSysexWebMIDIWithoutPermission' | 'NotificationInsecureOrigin' | 'NotificationPermissionRequestedIframe' | 'ObsoleteWebRtcCipherSuite' | 'OpenWebDatabaseInsecureContext' | 'PictureSourceSrc' | 'PrefixedCancelAnimationFrame' | 'PrefixedRequestAnimationFrame' | 'PrefixedStorageInfo' | 'PrefixedVideoDisplayingFullscreen' | 'PrefixedVideoEnterFullscreen' | 'PrefixedVideoEnterFullScreen' | 'PrefixedVideoExitFullscreen' | 'PrefixedVideoExitFullScreen' | 'PrefixedVideoSupportsFullscreen' | 'RangeExpand' | 'RequestedSubresourceWithEmbeddedCredentials' | 'RTCConstraintEnableDtlsSrtpFalse' | 'RTCConstraintEnableDtlsSrtpTrue' | 'RTCPeerConnectionComplexPlanBSdpUsingDefaultSdpSemantics' | 'RTCPeerConnectionSdpSemanticsPlanB' | 'RtcpMuxPolicyNegotiate' | 'SharedArrayBufferConstructedWithoutIsolation' | 'TextToSpeech_DisallowedByAutoplay' | 'V8SharedArrayBufferConstructedInExtensionWithoutIsolation' | 'XHRJSONEncodingDetection' | 'XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload' | 'XRSupportsSession');
 
         /**
          * This issue tracks information needed to print a deprecation message.

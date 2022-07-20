@@ -1,5 +1,64 @@
 
 
+## Roll protocol to r1026105 — _2022-07-20T04:34:23.000Z_
+######  Diff: [`c9c207e...54e44b6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c9c207e...54e44b6`)
+
+```diff
+@@ browser_protocol.pdl:754 @@ experimental domain Audits
+       DeprecationExample
+       DocumentDomainSettingWithoutOriginAgentClusterHeader
+       EventPath
+-      ExpectCTHeader
+       GeolocationInsecureOrigin
+       GeolocationInsecureOriginDeprecatedNotRemoved
+       GetUserMediaInsecureOrigin
+diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
+index 7fd51df..8e43695 100644
+--- a/pdl/js_protocol.pdl
++++ b/pdl/js_protocol.pdl
+@@ -244,40 +244,6 @@ domain Debugger
+       # Wasm bytecode.
+       optional binary bytecode
+ 
+-  experimental type WasmDisassemblyChunk extends object
+-    properties
+-      # The next chunk of disassembled lines.
+-      array of string lines
+-      # The bytecode offsets describing the start of each line.
+-      array of integer bytecodeOffsets
+-
+-  experimental command disassembleWasmModule
+-    parameters
+-      # Id of the script to disassemble
+-      Runtime.ScriptId scriptId
+-    returns
+-      # For large modules, return a stream from which additional chunks of
+-      # disassembly can be read successively.
+-      optional string streamId
+-      # The total number of lines in the disassembly text.
+-      integer totalNumberOfLines
+-      # The offsets of all function bodies plus one additional entry pointing
+-      # one by past the end of the last function.
+-      array of integer functionBodyOffsets
+-      # The first chunk of disassembly.
+-      WasmDisassemblyChunk chunk
+-
+-  # Disassemble the next chunk of lines for the module corresponding to the
+-  # stream. If disassembly is complete, this API will invalidate the streamId
+-  # and return an empty chunk. Any subsequent calls for the now invalid stream
+-  # will return errors.
+-  experimental command nextWasmDisassemblyChunk
+-    parameters
+-      string streamId
+-    returns
+-      # The next chunk of disassembly.
+-      WasmDisassemblyChunk chunk
+-
+   # This command is deprecated. Use getScriptSource instead.
+   deprecated command getWasmBytecode
+     parameters
+```
+
 ## Roll protocol to r1025565 — _2022-07-19T04:49:30.000Z_
 ######  Diff: [`4946b04...d27d2d7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4946b04...d27d2d7`)
 
@@ -277,7 +336,7 @@
        optional boolean enableSampling
        # Turns on system tracing.
 diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
-index 8e436953..18cf0c76 100644
+index 8e43695..18cf0c7 100644
 --- a/pdl/js_protocol.pdl
 +++ b/pdl/js_protocol.pdl
 @@ -441,12 +441,6 @@ domain Debugger
@@ -1350,7 +1409,7 @@ index 8e436953..18cf0c76 100644
    # This can be called multiple times, and can be used to set / override /
    # remove player properties. A null propValue indicates removal.
 diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
-index bd277eb0..09c420e3 100644
+index bd277eb..09c420e 100644
 --- a/pdl/js_protocol.pdl
 +++ b/pdl/js_protocol.pdl
 @@ -113,11 +113,6 @@ domain Debugger
@@ -9741,116 +9800,4 @@ index bd277eb0..09c420e3 100644
        experimental optional Browser.BrowserContextID browserContextId
  
    experimental type RemoteLocation extends object
-```
-
-## Roll protocol to r794659 — _2020-08-04T19:16:29.000Z_
-######  Diff: [`92769fe...9f93887`](https://github.com/ChromeDevTools/devtools-protocol/compare/`92769fe...9f93887`)
-
-```diff
-@@ js_protocol.pdl:85 @@ domain Debugger
-       integer lineNumber
-       integer columnNumber
- 
--  # Location range within one script.
--  experimental type LocationRange extends object
--    properties
--      Runtime.ScriptId scriptId
--      ScriptPosition start
--      ScriptPosition end
--
-   # JavaScript call frame. Array of call frames form the call stack.
-   type CallFrame extends object
-     properties
-@@ -479,17 +472,12 @@ domain Debugger
-       # Debugger will pause on the execution of the first async task which was scheduled
-       # before next pause.
-       experimental optional boolean breakOnAsyncCall
--      # The skipList specifies location ranges that should be skipped on step into.
--      experimental optional array of LocationRange skipList
- 
-   # Steps out of the function call.
-   command stepOut
- 
-   # Steps over the statement.
-   command stepOver
--    parameters
--      # The skipList specifies location ranges that should be skipped on step over.
--      experimental optional array of LocationRange skipList
- 
-   # Fired when breakpoint is resolved to an actual script and location.
-   event breakpointResolved
-```
-
-## Roll protocol to r794596 — _2020-08-04T17:16:13.000Z_
-######  Diff: [`8f538a9...92769fe`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8f538a9...92769fe`)
-
-```diff
-@@ browser_protocol.pdl:623 @@ experimental domain Audits
-       ContentSecurityPolicyViolationType contentSecurityPolicyViolationType
-       optional AffectedFrame frameAncestor
-       optional SourceCodeLocation sourceCodeLocation
--      optional integer violatingNodeId
- 
-   # A unique identifier for the type of issue. Each type may use one of the
-   # optional fields in InspectorIssueDetails to convey more specific
-```
-
-## Roll protocol to r794471 — _2020-08-04T11:16:10.000Z_
-######  Diff: [`6dad424...8f538a9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6dad424...8f538a9`)
-
-```diff
-@@ browser_protocol.pdl:1430 @@ experimental domain CSS
-       # The stylesheet text.
-       string text
- 
--  # Starts tracking the given computed styles for updates. The specified array of properties
--  # replaces the one previously specified. Pass empty array to disable tracking.
--  # Use takeComputedStyleUpdates to retrieve the list of nodes that had properties modified.
--  # The changes to computed style properties are only tracked for nodes pushed to the front-end
--  # by the DOM agent. If no changes to the tracked properties occur after the node has been pushed
--  # to the front-end, no updates will be issued for the node.
--  experimental command trackComputedStyleUpdates
--    parameters
--      array of CSSComputedStyleProperty propertiesToTrack
--
--  # Polls the next batch of computed style updates.
--  experimental command takeComputedStyleUpdates
--    returns
--      # The list of node Ids that have their tracked computed styles updated
--      array of DOM.NodeId nodeIds
--
-   # Find a rule with the given active property for the given node and set the new value for this
-   # property
-   command setEffectivePropertyValueForNode
-```
-
-## Roll protocol to r794453 — _2020-08-04T10:16:08.000Z_
-######  Diff: [`efe2c1f...6dad424`](https://github.com/ChromeDevTools/devtools-protocol/compare/`efe2c1f...6dad424`)
-
-```diff
-@@ browser_protocol.pdl:5324 @@ experimental domain Overlay
-       optional boolean showTrackSizes
-       # The grid container border highlight color (default: transparent).
-       optional DOM.RGBA gridBorderColor
--      # The cell border color (default: transparent). Deprecated, please use rowLineColor and columnLineColor instead.
--      deprecated optional DOM.RGBA cellBorderColor
--      # The row line color (default: transparent).
--      optional DOM.RGBA rowLineColor
--      # The column line color (default: transparent).
--      optional DOM.RGBA columnLineColor
-+      # The cell border color (default: transparent).
-+      optional DOM.RGBA cellBorderColor
-       # Whether the grid border is dashed (default: false).
-       optional boolean gridBorderDash
--      # Whether the cell border is dashed (default: false). Deprecated, please us rowLineDash and columnLineDash instead.
--      deprecated optional boolean cellBorderDash
--      # Whether row lines are dashed (default: false).
--      optional boolean rowLineDash
--      # Whether column lines are dashed (default: false).
--      optional boolean columnLineDash
-+      # Whether the cell border is dashed (default: false).
-+      optional boolean cellBorderDash
-       # The row gap highlight fill color (default: transparent).
-       optional DOM.RGBA rowGapColor
-       # The row gap hatching fill color (default: transparent).
 ```
