@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1026613 — _2022-07-21T04:34:49.000Z_
+######  Diff: [`523543a...4e1eb3a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`523543a...4e1eb3a`)
+
+```diff
+@@ browser_protocol.pdl:765 @@ experimental domain Audits
+       LocalCSSFileExtensionRejected
+       MediaSourceAbortRemove
+       MediaSourceDurationTruncatingBuffered
+-      NavigateEventRestoreScroll
+-      NavigateEventTransitionWhile
+       NoSysexWebMIDIWithoutPermission
+       NotificationInsecureOrigin
+       NotificationPermissionRequestedIframe
+```
+
 ## Roll protocol to r1026105 — _2022-07-20T04:34:23.000Z_
-######  Diff: [`c9c207e...54e44b6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c9c207e...54e44b6`)
+######  Diff: [`c9c207e...523543a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c9c207e...523543a`)
 
 ```diff
 @@ browser_protocol.pdl:754 @@ experimental domain Audits
@@ -9785,19 +9800,4 @@ index bd277eb..09c420e 100644
      parameters
        # The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the
        # entire subtree or provide an integer larger than 0.
-```
-
-## Roll protocol to r795004 — _2020-08-05T14:16:20.000Z_
-######  Diff: [`9f93887...40517aa`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9f93887...40517aa`)
-
-```diff
-@@ browser_protocol.pdl:7247 @@ domain Target
-       boolean attached
-       # Opener target Id
-       optional TargetID openerId
--      # Whether the opened window has access to the originating window.
--      experimental boolean canAccessOpener
-       experimental optional Browser.BrowserContextID browserContextId
- 
-   experimental type RemoteLocation extends object
 ```
