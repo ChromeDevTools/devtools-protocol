@@ -3245,6 +3245,11 @@ export namespace ProtocolProxyApi {
         clearDataForOrigin(params: Protocol.Storage.ClearDataForOriginRequest): Promise<void>;
 
         /**
+         * Clears storage for storage key.
+         */
+        clearDataForStorageKey(params: Protocol.Storage.ClearDataForStorageKeyRequest): Promise<void>;
+
+        /**
          * Returns all browser cookies.
          */
         getCookies(params: Protocol.Storage.GetCookiesRequest): Promise<Protocol.Storage.GetCookiesResponse>;

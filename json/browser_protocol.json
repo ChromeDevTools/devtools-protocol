@@ -282,6 +282,12 @@
                             "$ref": "AXValue"
                         },
                         {
+                            "name": "chromeRole",
+                            "description": "This `Node`'s Chrome raw role.",
+                            "optional": true,
+                            "$ref": "AXValue"
+                        },
+                        {
                             "name": "name",
                             "description": "The accessible name for this `Node`.",
                             "optional": true,
@@ -1578,6 +1584,7 @@
                         "NotificationPermissionRequestedIframe",
                         "ObsoleteWebRtcCipherSuite",
                         "OpenWebDatabaseInsecureContext",
+                        "OverflowVisibleOnReplacedElement",
                         "PictureSourceSrc",
                         "PrefixedCancelAnimationFrame",
                         "PrefixedRequestAnimationFrame",
@@ -19106,6 +19113,22 @@
                         {
                             "name": "origin",
                             "description": "Security origin.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "storageTypes",
+                            "description": "Comma separated list of StorageType to clear.",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "clearDataForStorageKey",
+                    "description": "Clears storage for storage key.",
+                    "parameters": [
+                        {
+                            "name": "storageKey",
+                            "description": "Storage key.",
                             "type": "string"
                         },
                         {

@@ -1,7 +1,54 @@
 
 
+## Roll protocol to r1027117 — _2022-07-22T04:34:56.000Z_
+######  Diff: [`d99c911...fb4c292`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d99c911...fb4c292`)
+
+```diff
+@@ browser_protocol.pdl:168 @@ experimental domain Accessibility
+       optional array of AXProperty ignoredReasons
+       # This `Node`'s role, whether explicit or implicit.
+       optional AXValue role
+-      # This `Node`'s Chrome raw role.
+-      optional AXValue chromeRole
+       # The accessible name for this `Node`.
+       optional AXValue name
+       # The accessible description for this `Node`.
+@@ -774,7 +772,6 @@ experimental domain Audits
+       NotificationPermissionRequestedIframe
+       ObsoleteWebRtcCipherSuite
+       OpenWebDatabaseInsecureContext
+-      OverflowVisibleOnReplacedElement
+       PictureSourceSrc
+       PrefixedCancelAnimationFrame
+       PrefixedRequestAnimationFrame
+@@ -2685,7 +2682,7 @@ domain DOM
+       array of NodeId nodeIds
+ 
+   # Returns NodeIds of current top layer elements.
+-  # Top layer is rendered closest to the user within a viewport, therefore its elements always
++  # Top layer is rendered closest to the user within a viewport, therefore its elements always 
+   # appear on top of all other content.
+   experimental command getTopLayerElements
+     returns
+@@ -8993,14 +8990,6 @@ experimental domain Storage
+       # Comma separated list of StorageType to clear.
+       string storageTypes
+ 
+-  # Clears storage for storage key.
+-  command clearDataForStorageKey
+-    parameters
+-      # Storage key.
+-      string storageKey
+-      # Comma separated list of StorageType to clear.
+-      string storageTypes
+-
+   # Returns all browser cookies.
+   command getCookies
+     parameters
+```
+
 ## Roll protocol to r1026613 — _2022-07-21T04:34:49.000Z_
-######  Diff: [`523543a...4e1eb3a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`523543a...4e1eb3a`)
+######  Diff: [`523543a...d99c911`](https://github.com/ChromeDevTools/devtools-protocol/compare/`523543a...d99c911`)
 
 ```diff
 @@ browser_protocol.pdl:765 @@ experimental domain Audits
@@ -9783,21 +9830,4 @@ index bd277eb..09c420e 100644
  
    # A unique identifier for the type of issue. Each type may use one of the
    # optional fields in InspectorIssueDetails to convey more specific
-```
-
-## Roll protocol to r795133 — _2020-08-05T19:16:31.000Z_
-######  Diff: [`40517aa...c89b1a6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`40517aa...c89b1a6`)
-
-```diff
-@@ browser_protocol.pdl:2020 @@ domain DOM
-       Node root
- 
-   # Returns the root DOM node (and optionally the subtree) to the caller.
--  # Deprecated, as it is not designed to work well with the rest of the DOM agent.
--  # Use DOMSnapshot.captureSnapshot instead.
--  deprecated command getFlattenedDocument
-+  command getFlattenedDocument
-     parameters
-       # The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the
-       # entire subtree or provide an integer larger than 0.
 ```
