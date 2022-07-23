@@ -1,7 +1,24 @@
 
 
+## Roll protocol to r1027518 — _2022-07-23T04:32:37.000Z_
+######  Diff: [`84a4545...6885546`](https://github.com/ChromeDevTools/devtools-protocol/compare/`84a4545...6885546`)
+
+```diff
+@@ js_protocol.pdl:261 @@ domain Debugger
+       optional string streamId
+       # The total number of lines in the disassembly text.
+       integer totalNumberOfLines
+-      # The offsets of all function bodies, in the format [start1, end1,
+-      # start2, end2, ...] where all ends are exclusive.
++      # The offsets of all function bodies plus one additional entry pointing
++      # one by past the end of the last function.
+       array of integer functionBodyOffsets
+       # The first chunk of disassembly.
+       WasmDisassemblyChunk chunk
+```
+
 ## Roll protocol to r1027117 — _2022-07-22T04:34:56.000Z_
-######  Diff: [`d99c911...fb4c292`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d99c911...fb4c292`)
+######  Diff: [`d99c911...84a4545`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d99c911...84a4545`)
 
 ```diff
 @@ browser_protocol.pdl:168 @@ experimental domain Accessibility
@@ -9815,19 +9832,4 @@ index bd277eb..09c420e 100644
    # Returns node id at given location. Depending on whether DOM domain is enabled, nodeId is
    # either returned or not.
    command getNodeForLocation
-```
-
-## Roll protocol to r795450 — _2020-08-06T14:16:06.000Z_
-######  Diff: [`c89b1a6...6b171b5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c89b1a6...6b171b5`)
-
-```diff
-@@ browser_protocol.pdl:623 @@ experimental domain Audits
-       ContentSecurityPolicyViolationType contentSecurityPolicyViolationType
-       optional AffectedFrame frameAncestor
-       optional SourceCodeLocation sourceCodeLocation
--      optional DOM.BackendNodeId violatingNodeId
-+      optional integer violatingNodeId
- 
-   # A unique identifier for the type of issue. Each type may use one of the
-   # optional fields in InspectorIssueDetails to convey more specific
 ```

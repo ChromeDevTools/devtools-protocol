@@ -589,7 +589,7 @@
                         },
                         {
                             "name": "functionBodyOffsets",
-                            "description": "The offsets of all function bodies plus one additional entry pointing\none by past the end of the last function.",
+                            "description": "The offsets of all function bodies, in the format [start1, end1,\nstart2, end2, ...] where all ends are exclusive.",
                             "type": "array",
                             "items": {
                                 "type": "integer"
