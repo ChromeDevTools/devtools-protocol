@@ -3423,7 +3423,7 @@ export namespace Protocol {
             clientSecurityState?: Network.ClientSecurityState;
         }
 
-        export type AttributionReportingIssueType = ('PermissionPolicyDisabled' | 'AttributionSourceUntrustworthyOrigin' | 'AttributionUntrustworthyOrigin' | 'InvalidHeader');
+        export type AttributionReportingIssueType = ('PermissionPolicyDisabled' | 'AttributionSourceUntrustworthyOrigin' | 'AttributionUntrustworthyOrigin' | 'UntrustworthyReportingOrigin' | 'InsecureContext' | 'InvalidHeader' | 'InvalidRegisterTriggerHeader');
 
         /**
          * Details for issues around "Attribution Reporting API" usage.
@@ -3431,6 +3431,9 @@ export namespace Protocol {
          */
         export interface AttributionReportingIssueDetails {
             violationType: AttributionReportingIssueType;
+            /**
+             * TODO(apaseltiner): Remove this once it is no longer referenced by the frontend.
+             */
             frame?: AffectedFrame;
             request?: AffectedRequest;
             violatingNodeId?: DOM.BackendNodeId;
@@ -8106,9 +8109,14 @@ export namespace Protocol {
 
         export interface ClearObjectStoreRequest {
             /**
+             * At least and at most one of securityOrigin, storageKey must be specified.
              * Security origin.
              */
-            securityOrigin: string;
+            securityOrigin?: string;
+            /**
+             * Storage key.
+             */
+            storageKey?: string;
             /**
              * Database name.
              */
@@ -8121,9 +8129,14 @@ export namespace Protocol {
 
         export interface DeleteDatabaseRequest {
             /**
+             * At least and at most one of securityOrigin, storageKey must be specified.
              * Security origin.
              */
-            securityOrigin: string;
+            securityOrigin?: string;
+            /**
+             * Storage key.
+             */
+            storageKey?: string;
             /**
              * Database name.
              */
@@ -12812,7 +12825,7 @@ export namespace Protocol {
         /**
          * List of FinalStatus reasons for Prerender2.
          */
-        export type PrerenderFinalStatus = ('Activated' | 'Destroyed' | 'LowEndDevice' | 'CrossOriginRedirect' | 'CrossOriginNavigation' | 'InvalidSchemeRedirect' | 'InvalidSchemeNavigation' | 'InProgressNavigation' | 'NavigationRequestBlockedByCsp' | 'MainFrameNavigation' | 'MojoBinderPolicy' | 'RendererProcessCrashed' | 'RendererProcessKilled' | 'Download' | 'TriggerDestroyed' | 'NavigationNotCommitted' | 'NavigationBadHttpStatus' | 'ClientCertRequested' | 'NavigationRequestNetworkError' | 'MaxNumOfRunningPrerendersExceeded' | 'CancelAllHostsForTesting' | 'DidFailLoad' | 'Stop' | 'SslCertificateError' | 'LoginAuthRequested' | 'UaChangeRequiresReload' | 'BlockedByClient' | 'AudioOutputDeviceRequested' | 'MixedContent' | 'TriggerBackgrounded' | 'EmbedderTriggeredAndSameOriginRedirected' | 'EmbedderTriggeredAndCrossOriginRedirected' | 'EmbedderTriggeredAndDestroyed');
+        export type PrerenderFinalStatus = ('Activated' | 'Destroyed' | 'LowEndDevice' | 'CrossOriginRedirect' | 'CrossOriginNavigation' | 'InvalidSchemeRedirect' | 'InvalidSchemeNavigation' | 'InProgressNavigation' | 'NavigationRequestBlockedByCsp' | 'MainFrameNavigation' | 'MojoBinderPolicy' | 'RendererProcessCrashed' | 'RendererProcessKilled' | 'Download' | 'TriggerDestroyed' | 'NavigationNotCommitted' | 'NavigationBadHttpStatus' | 'ClientCertRequested' | 'NavigationRequestNetworkError' | 'MaxNumOfRunningPrerendersExceeded' | 'CancelAllHostsForTesting' | 'DidFailLoad' | 'Stop' | 'SslCertificateError' | 'LoginAuthRequested' | 'UaChangeRequiresReload' | 'BlockedByClient' | 'AudioOutputDeviceRequested' | 'MixedContent' | 'TriggerBackgrounded' | 'EmbedderTriggeredAndSameOriginRedirected' | 'EmbedderTriggeredAndCrossOriginRedirected' | 'EmbedderTriggeredAndDestroyed' | 'MemoryLimitExceeded' | 'FailToGetMemoryUsage');
 
         export interface AddScriptToEvaluateOnLoadRequest {
             scriptSource: string;

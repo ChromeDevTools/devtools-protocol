@@ -1,7 +1,73 @@
 
 
+## Roll protocol to r1028116 — _2022-07-26T04:49:26.000Z_
+######  Diff: [`5036b2e...ce2ee61`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5036b2e...ce2ee61`)
+
+```diff
+@@ browser_protocol.pdl:699 @@ experimental domain Audits
+   type AttributionReportingIssueType extends string
+     enum
+       PermissionPolicyDisabled
+-      # TODO(apaseltiner): Remove this once it is no longer referenced by the frontend.
+       AttributionSourceUntrustworthyOrigin
+-      # TODO(apaseltiner): Remove this once it is no longer referenced by the frontend.
+       AttributionUntrustworthyOrigin
+-      UntrustworthyReportingOrigin
+-      InsecureContext
+-      # TODO(apaseltiner): Rename this to InvalidRegisterSourceHeader
+       InvalidHeader
+-      InvalidRegisterTriggerHeader
+ 
+   # Details for issues around "Attribution Reporting API" usage.
+   # Explainer: https://github.com/WICG/attribution-reporting-api
+   type AttributionReportingIssueDetails extends object
+     properties
+       AttributionReportingIssueType violationType
+-      # TODO(apaseltiner): Remove this once it is no longer referenced by the frontend.
+       optional AffectedFrame frame
+       optional AffectedRequest request
+       optional DOM.BackendNodeId violatingNodeId
+@@ -4081,11 +4074,8 @@ experimental domain IndexedDB
+   # Clears all entries from an object store.
+   command clearObjectStore
+     parameters
+-      # At least and at most one of securityOrigin, storageKey must be specified.
+       # Security origin.
+-      optional string securityOrigin
+-      # Storage key.
+-      optional string storageKey
++      string securityOrigin
+       # Database name.
+       string databaseName
+       # Object store name.
+@@ -4094,11 +4084,8 @@ experimental domain IndexedDB
+   # Deletes a database.
+   command deleteDatabase
+     parameters
+-      # At least and at most one of securityOrigin, storageKey must be specified.
+       # Security origin.
+-      optional string securityOrigin
+-      # Storage key.
+-      optional string storageKey
++      string securityOrigin
+       # Database name.
+       string databaseName
+ 
+@@ -8439,10 +8426,6 @@ domain Page
+       EmbedderTriggeredAndSameOriginRedirected
+       EmbedderTriggeredAndCrossOriginRedirected
+       EmbedderTriggeredAndDestroyed
+-      MemoryLimitExceeded
+-      # Prerenders can be cancelled when Chrome uses excessive memory. This is
+-      # recorded when it fails to get the memory usage.
+-      FailToGetMemoryUsage
+ 
+   # Fired when a prerender attempt is completed.
+   event prerenderAttemptCompleted
+```
+
 ## Roll protocol to r1027518 — _2022-07-23T04:32:37.000Z_
-######  Diff: [`84a4545...6885546`](https://github.com/ChromeDevTools/devtools-protocol/compare/`84a4545...6885546`)
+######  Diff: [`84a4545...5036b2e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`84a4545...5036b2e`)
 
 ```diff
 @@ js_protocol.pdl:261 @@ domain Debugger
@@ -9791,45 +9857,4 @@ index bd277eb..09c420e 100644
  # This domain provides various functionality related to drawing atop the inspected page.
  experimental domain Overlay
    depends on DOM
-```
-
-## Roll protocol to r796752 — _2020-08-11T09:16:15.000Z_
-######  Diff: [`6b171b5...3c9bb33`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6b171b5...3c9bb33`)
-
-```diff
-@@ browser_protocol.pdl:1888 @@ domain DOM
-       # Rectangle height
-       number height
- 
--  type CSSComputedStyleProperty extends object
--    properties
--      # Computed style property name.
--      string name
--      # Computed style property value.
--      string value
--
-   # Collects class names for the node with given id and all of it's child nodes.
-   experimental command collectClassNamesFromSubtree
-     parameters
-@@ -2041,20 +2034,6 @@ domain DOM
-       # Resulting node.
-       array of Node nodes
- 
--  # Finds nodes with a given computed style in a subtree.
--  experimental command getNodesForSubtreeByStyle
--    parameters
--      # Node ID pointing to the root of a subtree.
--      NodeId nodeId
--      # The style to filter nodes by (includes nodes if any of properties matches).
--      array of CSSComputedStyleProperty computedStyles
--      # Whether or not iframes and shadow roots in the same target should be traversed when returning the
--      # results (default is false).
--      optional boolean pierce
--    returns
--      # Resulting nodes.
--      array of NodeId nodeIds
--
-   # Returns node id at given location. Depending on whether DOM domain is enabled, nodeId is
-   # either returned or not.
-   command getNodeForLocation
 ```
