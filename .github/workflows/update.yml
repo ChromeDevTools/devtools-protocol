@@ -38,6 +38,7 @@ jobs:
         working-directory: debugger-protocol-viewer
         run: |
           npm install
+          npm run prep
           npm run build
 
       - name: Deploy to gh-pages
