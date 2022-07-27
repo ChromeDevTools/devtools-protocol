@@ -1,7 +1,47 @@
 
 
+## Roll protocol to r1028580 — _2022-07-27T04:39:00.000Z_
+######  Diff: [`51ea7c8...43cf68c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`51ea7c8...43cf68c`)
+
+```diff
+@@ browser_protocol.pdl:782 @@ experimental domain Audits
+       ObsoleteWebRtcCipherSuite
+       OpenWebDatabaseInsecureContext
+       OverflowVisibleOnReplacedElement
+-      PersistentQuotaType
+       PictureSourceSrc
+       PrefixedCancelAnimationFrame
+       PrefixedRequestAnimationFrame
+@@ -4106,11 +4105,7 @@ experimental domain IndexedDB
+   # Delete a range of entries from an object store
+   command deleteObjectStoreEntries
+     parameters
+-      # At least and at most one of securityOrigin, storageKey must be specified.
+-      # Security origin.
+-      optional string securityOrigin
+-      # Storage key.
+-      optional string storageKey
++      string securityOrigin
+       string databaseName
+       string objectStoreName
+       # Range of entry keys to delete
+@@ -4148,11 +4143,8 @@ experimental domain IndexedDB
+   # Gets metadata of an object store
+   command getMetadata
+     parameters
+-      # At least and at most one of securityOrigin, storageKey must be specified.
+       # Security origin.
+-      optional string securityOrigin
+-      # Storage key.
+-      optional string storageKey
++      string securityOrigin
+       # Database name.
+       string databaseName
+       # Object store name.
+```
+
 ## Roll protocol to r1028116 — _2022-07-26T04:49:26.000Z_
-######  Diff: [`5036b2e...ce2ee61`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5036b2e...ce2ee61`)
+######  Diff: [`5036b2e...2a10dd2`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5036b2e...2a10dd2`)
 
 ```diff
 @@ browser_protocol.pdl:699 @@ experimental domain Audits
@@ -9765,96 +9805,4 @@ index bd277eb..09c420e 100644
 +      optional string type
        # For "clipboard" permission, may specify allowWithoutSanitization.
        optional boolean allowWithoutSanitization
-```
-
-## Roll protocol to r799653 — _2020-08-19T16:16:16.000Z_
-######  Diff: [`0e651b0...5ac7d2e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0e651b0...5ac7d2e`)
-
-```diff
-@@ browser_protocol.pdl:5712 @@ domain Page
-       # This frame is the root of an ad frame.
-       root
- 
--  # Indicates whether the frame is a secure context and why it is the case.
--  experimental type SecureContextType extends string
--    enum
--      # The origin is a secure context.
--      Secure
--      # The host is localhost and hence is considered secure.
--      SecureLocalhost
--      # The origin has an insecure scheme and is not localhost.
--      InsecureScheme
--      # One of the ancestor frames is not a secure context.
--      InsecureAncestor
--
--  # Indicates whether the frame is cross-origin isolated and why it is the case.
--  experimental type CrossOriginIsolatedContextType extends string
--    enum
--      # The origin is cross-origin isolated.
--      Isolated
--      # The origin is not cross-origin isolated.
--      NotIsolated
--      # The cross-origin isolation feature is disabled.
--      NotIsolatedFeatureDisabled
--
-   # Information about the Frame on the page.
-   type Frame extends object
-     properties
-@@ -5762,10 +5740,6 @@ domain Page
-       experimental optional string unreachableUrl
-       # Indicates whether this frame was tagged as an ad.
-       experimental optional AdFrameType adFrameType
--      # Indicates whether the main document is a secure context and explains why that is the case.
--      experimental SecureContextType secureContextType
--      # Indicates whether this is a cross origin isolated context.
--      experimental CrossOriginIsolatedContextType crossOriginIsolatedContextType
- 
-   # Information about the Resource on the page.
-   experimental type FrameResource extends object
-```
-
-## Roll protocol to r799090 — _2020-08-18T14:16:17.000Z_
-######  Diff: [`3c9bb33...0e651b0`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3c9bb33...0e651b0`)
-
-```diff
-@@ browser_protocol.pdl:5333 @@ domain Network
-       # available, such as in the case of HTTP/2 or QUIC.
-       optional string headersText
- 
--  experimental type CrossOriginOpenerPolicyValue extends string
--    enum
--      SameOrigin
--      SameOriginAllowPopups
--      UnsafeNone
--      SameOriginPlusCoep
--
--  experimental type CrossOriginOpenerPolicyStatus extends object
--    properties
--      CrossOriginOpenerPolicyValue value
--
--  experimental type CrossOriginEmbedderPolicyValue extends string
--    enum
--      None
--      RequireCorp
--
--  experimental type CrossOriginEmbedderPolicyStatus extends object
--    properties
--      CrossOriginEmbedderPolicyValue value
--
--  experimental type SecurityIsolationStatus extends object
--    properties
--      CrossOriginOpenerPolicyStatus coop
--      CrossOriginEmbedderPolicyStatus coep
--
--  # Returns information about the COEP/COOP isolation status.
--  experimental command getSecurityIsolationStatus
--    parameters
--      # If no frameId is provided, the status of the target is provided.
--      optional Page.FrameId frameId
--    returns
--      SecurityIsolationStatus status
--
- # This domain provides various functionality related to drawing atop the inspected page.
- experimental domain Overlay
-   depends on DOM
 ```
