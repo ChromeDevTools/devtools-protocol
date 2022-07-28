@@ -3423,7 +3423,7 @@ export namespace Protocol {
             clientSecurityState?: Network.ClientSecurityState;
         }
 
-        export type AttributionReportingIssueType = ('PermissionPolicyDisabled' | 'AttributionSourceUntrustworthyOrigin' | 'AttributionUntrustworthyOrigin' | 'UntrustworthyReportingOrigin' | 'InsecureContext' | 'InvalidHeader' | 'InvalidRegisterTriggerHeader');
+        export type AttributionReportingIssueType = ('PermissionPolicyDisabled' | 'UntrustworthyReportingOrigin' | 'InsecureContext' | 'InvalidHeader' | 'InvalidRegisterTriggerHeader' | 'InvalidEligibleHeader');
 
         /**
          * Details for issues around "Attribution Reporting API" usage.
@@ -3431,10 +3431,6 @@ export namespace Protocol {
          */
         export interface AttributionReportingIssueDetails {
             violationType: AttributionReportingIssueType;
-            /**
-             * TODO(apaseltiner): Remove this once it is no longer referenced by the frontend.
-             */
-            frame?: AffectedFrame;
             request?: AffectedRequest;
             violatingNodeId?: DOM.BackendNodeId;
             invalidParameter?: string;
@@ -8163,9 +8159,14 @@ export namespace Protocol {
 
         export interface RequestDataRequest {
             /**
+             * At least and at most one of securityOrigin, storageKey must be specified.
              * Security origin.
              */
-            securityOrigin: string;
+            securityOrigin?: string;
+            /**
+             * Storage key.
+             */
+            storageKey?: string;
             /**
              * Database name.
              */
@@ -8238,9 +8239,14 @@ export namespace Protocol {
 
         export interface RequestDatabaseRequest {
             /**
+             * At least and at most one of securityOrigin, storageKey must be specified.
              * Security origin.
              */
-            securityOrigin: string;
+            securityOrigin?: string;
+            /**
+             * Storage key.
+             */
+            storageKey?: string;
             /**
              * Database name.
              */

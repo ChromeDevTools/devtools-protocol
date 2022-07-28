@@ -1,7 +1,64 @@
 
 
+## Roll protocol to r1029085 — _2022-07-28T04:34:38.000Z_
+######  Diff: [`47224e5...0a03ce5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`47224e5...0a03ce5`)
+
+```diff
+@@ browser_protocol.pdl:699 @@ experimental domain Audits
+   type AttributionReportingIssueType extends string
+     enum
+       PermissionPolicyDisabled
++      # TODO(apaseltiner): Remove this once it is no longer referenced by the frontend.
++      AttributionSourceUntrustworthyOrigin
++      # TODO(apaseltiner): Remove this once it is no longer referenced by the frontend.
++      AttributionUntrustworthyOrigin
+       UntrustworthyReportingOrigin
+       InsecureContext
+       # TODO(apaseltiner): Rename this to InvalidRegisterSourceHeader
+       InvalidHeader
+       InvalidRegisterTriggerHeader
+-      InvalidEligibleHeader
+ 
+   # Details for issues around "Attribution Reporting API" usage.
+   # Explainer: https://github.com/WICG/attribution-reporting-api
+   type AttributionReportingIssueDetails extends object
+     properties
+       AttributionReportingIssueType violationType
++      # TODO(apaseltiner): Remove this once it is no longer referenced by the frontend.
++      optional AffectedFrame frame
+       optional AffectedRequest request
+       optional DOM.BackendNodeId violatingNodeId
+       optional string invalidParameter
+@@ -4120,11 +4125,8 @@ experimental domain IndexedDB
+   # Requests data from object store or index.
+   command requestData
+     parameters
+-      # At least and at most one of securityOrigin, storageKey must be specified.
+       # Security origin.
+-      optional string securityOrigin
+-      # Storage key.
+-      optional string storageKey
++      string securityOrigin
+       # Database name.
+       string databaseName
+       # Object store name.
+@@ -4166,11 +4168,8 @@ experimental domain IndexedDB
+   # Requests database with given name in given frame.
+   command requestDatabase
+     parameters
+-      # At least and at most one of securityOrigin, storageKey must be specified.
+       # Security origin.
+-      optional string securityOrigin
+-      # Storage key.
+-      optional string storageKey
++      string securityOrigin
+       # Database name.
+       string databaseName
+     returns
+```
+
 ## Roll protocol to r1028580 — _2022-07-27T04:39:00.000Z_
-######  Diff: [`51ea7c8...43cf68c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`51ea7c8...43cf68c`)
+######  Diff: [`51ea7c8...47224e5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`51ea7c8...47224e5`)
 
 ```diff
 @@ browser_protocol.pdl:782 @@ experimental domain Audits
@@ -9791,18 +9848,4 @@ index bd277eb..09c420e 100644
    # Sets the requests to intercept that match the provided patterns and optionally resource types.
    # Deprecated, please use Fetch.enable instead.
    experimental deprecated command setRequestInterception
-```
-
-## Roll protocol to r801017 — _2020-08-24T16:16:09.000Z_
-######  Diff: [`5ac7d2e...4d26309`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5ac7d2e...4d26309`)
-
-```diff
-@@ browser_protocol.pdl:826 @@ domain Browser
-       # For "push" permission, may specify userVisibleOnly.
-       # Note that userVisibleOnly = true is the only currently supported type.
-       optional boolean userVisibleOnly
-+      # For "wake-lock" permission, must specify type as either "screen" or "system".
-+      optional string type
-       # For "clipboard" permission, may specify allowWithoutSanitization.
-       optional boolean allowWithoutSanitization
 ```
