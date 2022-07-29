@@ -15045,6 +15045,27 @@ export namespace Protocol {
             browserContextId?: Browser.BrowserContextID;
         }
 
+        /**
+         * A filter used by target query/discovery/auto-attach operations.
+         */
+        export interface FilterEntry {
+            /**
+             * If set, causes exclusion of mathcing targets from the list.
+             * The remainder of filter entries in the filter arrat are ignored.
+             */
+            exclude?: boolean;
+            /**
+             * If not present, matches any type.
+             */
+            type?: string;
+        }
+
+        /**
+         * If filter is not specified, the one assumed is [{type: "browser", exclude: true}, {}]
+         * (i.e. include everything but browser).
+         */
+        export type TargetFilter = FilterEntry[];
+
         export interface RemoteLocation {
             host: string;
             port: integer;
@@ -15194,6 +15215,15 @@ export namespace Protocol {
             targetInfo: TargetInfo;
         }
 
+        export interface GetTargetsRequest {
+            /**
+             * Only targets matching filter will be reported. If filter is not specified
+             * and target discovery is currently enabled, a filter used for target discovery
+             * is used for consistency.
+             */
+            filter?: TargetFilter;
+        }
+
         export interface GetTargetsResponse {
             /**
              * The list of targets.
@@ -15229,6 +15259,10 @@ export namespace Protocol {
              * and eventually retire it. See crbug.com/991325.
              */
             flatten?: boolean;
+            /**
+             * Only targets matching filter will be attached.
+             */
+            filter?: TargetFilter;
         }
 
         export interface AutoAttachRelatedRequest {
@@ -15238,6 +15272,10 @@ export namespace Protocol {
              * to run paused targets.
              */
             waitForDebuggerOnStart: boolean;
+            /**
+             * Only targets matching filter will be attached.
+             */
+            filter?: TargetFilter;
         }
 
         export interface SetDiscoverTargetsRequest {
@@ -15245,6 +15283,11 @@ export namespace Protocol {
              * Whether to discover available targets.
              */
             discover: boolean;
+            /**
+             * Only targets matching filter will be attached. If `discover` is false,
+             * `filter` must be omitted or empty.
+             */
+            filter?: TargetFilter;
         }
 
         export interface SetRemoteLocationsRequest {

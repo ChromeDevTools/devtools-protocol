@@ -1,7 +1,81 @@
 
 
+## Roll protocol to r1029622 — _2022-07-29T04:36:32.000Z_
+######  Diff: [`d36a521...cb63d2f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d36a521...cb63d2f`)
+
+```diff
+@@ browser_protocol.pdl:9326 @@ domain Target
+       experimental optional Page.FrameId openerFrameId
+       experimental optional Browser.BrowserContextID browserContextId
+ 
+-  # A filter used by target query/discovery/auto-attach operations.
+-  experimental type FilterEntry extends object
+-    properties
+-      # If set, causes exclusion of mathcing targets from the list.
+-      # The remainder of filter entries in the filter arrat are ignored.
+-      optional boolean exclude
+-      # If not present, matches any type.
+-      optional string type
+-
+-  # If filter is not specified, the one assumed is [{type: "browser", exclude: true}, {}]
+-  # (i.e. include everything but browser).
+-  experimental type TargetFilter extends array of FilterEntry
+-
+   experimental type RemoteLocation extends object
+     properties
+       string host
+@@ -9402,6 +9389,7 @@ domain Target
+       # An optional list of origins to grant unlimited cross-origin access to.
+       # Parts of the URL other than those constituting origin are ignored.
+       optional array of string originsWithUniversalNetworkAccess
++
+     returns
+       # The id of the context created.
+       Browser.BrowserContextID browserContextId
+@@ -9458,11 +9446,6 @@ domain Target
+ 
+   # Retrieves a list of available targets.
+   command getTargets
+-    parameters
+-      # Only targets matching filter will be reported. If filter is not specified
+-      # and target discovery is currently enabled, a filter used for target discovery
+-      # is used for consistency.
+-      experimental optional TargetFilter filter
+     returns
+       # The list of targets.
+       array of TargetInfo targetInfos
+@@ -9494,8 +9477,6 @@ domain Target
+       # We plan to make this the default, deprecate non-flattened mode,
+       # and eventually retire it. See crbug.com/991325.
+       optional boolean flatten
+-      # Only targets matching filter will be attached.
+-      experimental optional TargetFilter filter
+ 
+   # Adds the specified target to the list of targets that will be monitored for any related target
+   # creation (such as child frames, child workers and new versions of service worker) and reported
+@@ -9508,8 +9489,6 @@ domain Target
+       # Whether to pause new targets when attaching to them. Use `Runtime.runIfWaitingForDebugger`
+       # to run paused targets.
+       boolean waitForDebuggerOnStart
+-      # Only targets matching filter will be attached.
+-      experimental optional TargetFilter filter
+ 
+   # Controls whether to discover available targets and notify via
+   # `targetCreated/targetInfoChanged/targetDestroyed` events.
+@@ -9517,9 +9496,6 @@ domain Target
+     parameters
+       # Whether to discover available targets.
+       boolean discover
+-      # Only targets matching filter will be attached. If `discover` is false,
+-      # `filter` must be omitted or empty.
+-      experimental optional TargetFilter filter
+ 
+   # Enables target discovery for the specified locations, when `setDiscoverTargets` was set to
+   # `true`.
+```
+
 ## Roll protocol to r1029085 — _2022-07-28T04:34:38.000Z_
-######  Diff: [`47224e5...0a03ce5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`47224e5...0a03ce5`)
+######  Diff: [`47224e5...d36a521`](https://github.com/ChromeDevTools/devtools-protocol/compare/`47224e5...d36a521`)
 
 ```diff
 @@ browser_protocol.pdl:699 @@ experimental domain Audits
@@ -9829,23 +9903,4 @@ index bd277eb..09c420e 100644
  
    event consoleProfileFinished
      parameters
-```
-
-## Roll protocol to r802093 — _2020-08-27T03:16:11.000Z_
-######  Diff: [`4d26309...4f48bef`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4d26309...4f48bef`)
-
-```diff
-@@ browser_protocol.pdl:5050 @@ domain Network
-       # Map with extra HTTP headers.
-       Headers headers
- 
--  # Specifies whether to sned a debug header to all outgoing requests.
--  experimental command setAttachDebugHeader
--    parameters
--      # Whether to send a debug header.
--      boolean enabled
--
-   # Sets the requests to intercept that match the provided patterns and optionally resource types.
-   # Deprecated, please use Fetch.enable instead.
-   experimental deprecated command setRequestInterception
 ```

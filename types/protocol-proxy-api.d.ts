@@ -3424,7 +3424,7 @@ export namespace ProtocolProxyApi {
         /**
          * Retrieves a list of available targets.
          */
-        getTargets(): Promise<Protocol.Target.GetTargetsResponse>;
+        getTargets(params: Protocol.Target.GetTargetsRequest): Promise<Protocol.Target.GetTargetsResponse>;
 
         /**
          * Sends protocol message over session with given id.

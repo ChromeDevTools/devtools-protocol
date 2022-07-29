@@ -4200,7 +4200,7 @@ export namespace ProtocolMapping {
          * Retrieves a list of available targets.
          */
         'Target.getTargets': {
-            paramsType: [];
+            paramsType: [Protocol.Target.GetTargetsRequest?];
             returnType: Protocol.Target.GetTargetsResponse;
         };
         /**
