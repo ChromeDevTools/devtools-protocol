@@ -19312,6 +19312,17 @@
                     ]
                 },
                 {
+                    "name": "trackIndexedDBForStorageKey",
+                    "description": "Registers storage key to be notified when an update occurs to its IndexedDB.",
+                    "parameters": [
+                        {
+                            "name": "storageKey",
+                            "description": "Storage key.",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "untrackCacheStorageForOrigin",
                     "description": "Unregisters origin from receiving notifications for cache storage.",
                     "parameters": [
@@ -19329,6 +19340,17 @@
                         {
                             "name": "origin",
                             "description": "Security origin.",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "untrackIndexedDBForStorageKey",
+                    "description": "Unregisters storage key from receiving notifications for IndexedDB.",
+                    "parameters": [
+                        {
+                            "name": "storageKey",
+                            "description": "Storage key.",
                             "type": "string"
                         }
                     ]
@@ -19436,6 +19458,11 @@
                             "type": "string"
                         },
                         {
+                            "name": "storageKey",
+                            "description": "Storage key to update.",
+                            "type": "string"
+                        },
+                        {
                             "name": "databaseName",
                             "description": "Database to update.",
                             "type": "string"
@@ -19454,6 +19481,11 @@
                         {
                             "name": "origin",
                             "description": "Origin to update.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "storageKey",
+                            "description": "Storage key to update.",
                             "type": "string"
                         }
                     ]
@@ -19849,7 +19881,7 @@
                     "properties": [
                         {
                             "name": "exclude",
-                            "description": "If set, causes exclusion of mathcing targets from the list.\nThe remainder of filter entries in the filter arrat are ignored.",
+                            "description": "If set, causes exclusion of mathcing targets from the list.",
                             "optional": true,
                             "type": "boolean"
                         },
@@ -19863,7 +19895,7 @@
                 },
                 {
                     "id": "TargetFilter",
-                    "description": "If filter is not specified, the one assumed is [{type: \"browser\", exclude: true}, {}]\n(i.e. include everything but browser).",
+                    "description": "The entries in TargetFilter are matched sequentially against targets and\nthe first entry that matches determines if the target is included or not,\ndepending on the value of `exclude` field in the entry.\nIf filter is not specified, the one assumed is\n[{type: \"browser\", exclude: true}, {type: \"tab\", exclude: true}, {}]\n(i.e. include everything but `browser` and `tab`).",
                     "experimental": true,
                     "type": "array",
                     "items": {

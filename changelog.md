@@ -1,7 +1,77 @@
 
 
+## Roll protocol to r1030018 — _2022-07-30T04:33:35.000Z_
+######  Diff: [`1ad73ad...8501576`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1ad73ad...8501576`)
+
+```diff
+@@ browser_protocol.pdl:9091 @@ experimental domain Storage
+       # Security origin.
+       string origin
+ 
+-  # Registers storage key to be notified when an update occurs to its IndexedDB.
+-  command trackIndexedDBForStorageKey
+-    parameters
+-      # Storage key.
+-      string storageKey
+-
+   # Unregisters origin from receiving notifications for cache storage.
+   command untrackCacheStorageForOrigin
+     parameters
+@@ -9109,12 +9103,6 @@ experimental domain Storage
+       # Security origin.
+       string origin
+ 
+-  # Unregisters storage key from receiving notifications for IndexedDB.
+-  command untrackIndexedDBForStorageKey
+-    parameters
+-      # Storage key.
+-      string storageKey
+-
+   # Returns the number of stored Trust Tokens per issuer for the
+   # current browsing context.
+   experimental command getTrustTokens
+@@ -9162,8 +9150,6 @@ experimental domain Storage
+     parameters
+       # Origin to update.
+       string origin
+-      # Storage key to update.
+-      string storageKey
+       # Database to update.
+       string databaseName
+       # ObjectStore to update.
+@@ -9174,8 +9160,6 @@ experimental domain Storage
+     parameters
+       # Origin to update.
+       string origin
+-      # Storage key to update.
+-      string storageKey
+ 
+   # One of the interest groups was accessed by the associated page.
+   event interestGroupAccessed
+@@ -9346,16 +9330,13 @@ domain Target
+   experimental type FilterEntry extends object
+     properties
+       # If set, causes exclusion of mathcing targets from the list.
++      # The remainder of filter entries in the filter arrat are ignored.
+       optional boolean exclude
+       # If not present, matches any type.
+       optional string type
+ 
+-  # The entries in TargetFilter are matched sequentially against targets and
+-  # the first entry that matches determines if the target is included or not,
+-  # depending on the value of `exclude` field in the entry.
+-  # If filter is not specified, the one assumed is
+-  # [{type: "browser", exclude: true}, {type: "tab", exclude: true}, {}]
+-  # (i.e. include everything but `browser` and `tab`).
++  # If filter is not specified, the one assumed is [{type: "browser", exclude: true}, {}]
++  # (i.e. include everything but browser).
+   experimental type TargetFilter extends array of FilterEntry
+ 
+   experimental type RemoteLocation extends object
+```
+
 ## Roll protocol to r1029622 — _2022-07-29T04:36:32.000Z_
-######  Diff: [`d36a521...cb63d2f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d36a521...cb63d2f`)
+######  Diff: [`d36a521...1ad73ad`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d36a521...1ad73ad`)
 
 ```diff
 @@ browser_protocol.pdl:9326 @@ domain Target
@@ -9850,57 +9920,4 @@ index bd277eb..09c420e 100644
    type AudioListener extends object
      properties
        GraphObjectId listenerId
-```
-
-## Roll protocol to r805182 — _2020-09-09T02:16:15.000Z_
-######  Diff: [`4f48bef...caa0ede`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4f48bef...caa0ede`)
-
-```diff
-@@ js_protocol.pdl:863 @@ domain Profiler
-       # Counter value.
-       integer value
- 
--  # Runtime call counter information.
--  experimental type RuntimeCallCounterInfo extends object
--    properties
--      # Counter name.
--      string name
--      # Counter value.
--      number value
--      # Counter time in seconds.
--      number time
--
-   command disable
- 
-   command enable
-@@ -937,18 +927,6 @@ domain Profiler
-       # Type profile for all scripts since startTypeProfile() was turned on.
-       array of ScriptTypeProfile result
- 
--  # Enable counters collection.
--  experimental command enableCounters
--
--  # Disable counters collection.
--  experimental command disableCounters
--
--  # Retrieve counters.
--  experimental command getCounters
--    returns
--      # Collected counters information.
--      array of CounterInfo result
--
-   # Enable run time call stats collection.
-   experimental command enableRuntimeCallStats
- 
-@@ -958,8 +936,8 @@ domain Profiler
-   # Retrieve run time call stats.
-   experimental command getRuntimeCallStats
-     returns
--      # Collected runtime call counter information.
--      array of RuntimeCallCounterInfo result
-+      # Collected counter information.
-+      array of CounterInfo result
- 
-   event consoleProfileFinished
-     parameters
 ```

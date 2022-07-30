@@ -9091,6 +9091,12 @@ experimental domain Storage
       # Security origin.
       string origin
 
+  # Registers storage key to be notified when an update occurs to its IndexedDB.
+  command trackIndexedDBForStorageKey
+    parameters
+      # Storage key.
+      string storageKey
+
   # Unregisters origin from receiving notifications for cache storage.
   command untrackCacheStorageForOrigin
     parameters
@@ -9102,6 +9108,12 @@ experimental domain Storage
     parameters
       # Security origin.
       string origin
+
+  # Unregisters storage key from receiving notifications for IndexedDB.
+  command untrackIndexedDBForStorageKey
+    parameters
+      # Storage key.
+      string storageKey
 
   # Returns the number of stored Trust Tokens per issuer for the
   # current browsing context.
@@ -9150,6 +9162,8 @@ experimental domain Storage
     parameters
       # Origin to update.
       string origin
+      # Storage key to update.
+      string storageKey
       # Database to update.
       string databaseName
       # ObjectStore to update.
@@ -9160,6 +9174,8 @@ experimental domain Storage
     parameters
       # Origin to update.
       string origin
+      # Storage key to update.
+      string storageKey
 
   # One of the interest groups was accessed by the associated page.
   event interestGroupAccessed
@@ -9330,13 +9346,16 @@ domain Target
   experimental type FilterEntry extends object
     properties
       # If set, causes exclusion of mathcing targets from the list.
-      # The remainder of filter entries in the filter arrat are ignored.
       optional boolean exclude
       # If not present, matches any type.
       optional string type
 
-  # If filter is not specified, the one assumed is [{type: "browser", exclude: true}, {}]
-  # (i.e. include everything but browser).
+  # The entries in TargetFilter are matched sequentially against targets and
+  # the first entry that matches determines if the target is included or not,
+  # depending on the value of `exclude` field in the entry.
+  # If filter is not specified, the one assumed is
+  # [{type: "browser", exclude: true}, {type: "tab", exclude: true}, {}]
+  # (i.e. include everything but `browser` and `tab`).
   experimental type TargetFilter extends array of FilterEntry
 
   experimental type RemoteLocation extends object

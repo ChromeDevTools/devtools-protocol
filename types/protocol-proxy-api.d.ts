@@ -3285,6 +3285,11 @@ export namespace ProtocolProxyApi {
         trackIndexedDBForOrigin(params: Protocol.Storage.TrackIndexedDBForOriginRequest): Promise<void>;
 
         /**
+         * Registers storage key to be notified when an update occurs to its IndexedDB.
+         */
+        trackIndexedDBForStorageKey(params: Protocol.Storage.TrackIndexedDBForStorageKeyRequest): Promise<void>;
+
+        /**
          * Unregisters origin from receiving notifications for cache storage.
          */
         untrackCacheStorageForOrigin(params: Protocol.Storage.UntrackCacheStorageForOriginRequest): Promise<void>;
@@ -3293,6 +3298,11 @@ export namespace ProtocolProxyApi {
          * Unregisters origin from receiving notifications for IndexedDB.
          */
         untrackIndexedDBForOrigin(params: Protocol.Storage.UntrackIndexedDBForOriginRequest): Promise<void>;
+
+        /**
+         * Unregisters storage key from receiving notifications for IndexedDB.
+         */
+        untrackIndexedDBForStorageKey(params: Protocol.Storage.UntrackIndexedDBForStorageKeyRequest): Promise<void>;
 
         /**
          * Returns the number of stored Trust Tokens per issuer for the

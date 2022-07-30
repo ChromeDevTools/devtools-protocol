@@ -14690,6 +14690,13 @@ export namespace Protocol {
             origin: string;
         }
 
+        export interface TrackIndexedDBForStorageKeyRequest {
+            /**
+             * Storage key.
+             */
+            storageKey: string;
+        }
+
         export interface UntrackCacheStorageForOriginRequest {
             /**
              * Security origin.
@@ -14702,6 +14709,13 @@ export namespace Protocol {
              * Security origin.
              */
             origin: string;
+        }
+
+        export interface UntrackIndexedDBForStorageKeyRequest {
+            /**
+             * Storage key.
+             */
+            storageKey: string;
         }
 
         export interface GetTrustTokensResponse {
@@ -14765,6 +14779,10 @@ export namespace Protocol {
              */
             origin: string;
             /**
+             * Storage key to update.
+             */
+            storageKey: string;
+            /**
              * Database to update.
              */
             databaseName: string;
@@ -14782,6 +14800,10 @@ export namespace Protocol {
              * Origin to update.
              */
             origin: string;
+            /**
+             * Storage key to update.
+             */
+            storageKey: string;
         }
 
         /**
@@ -15051,7 +15073,6 @@ export namespace Protocol {
         export interface FilterEntry {
             /**
              * If set, causes exclusion of mathcing targets from the list.
-             * The remainder of filter entries in the filter arrat are ignored.
              */
             exclude?: boolean;
             /**
@@ -15061,8 +15082,12 @@ export namespace Protocol {
         }
 
         /**
-         * If filter is not specified, the one assumed is [{type: "browser", exclude: true}, {}]
-         * (i.e. include everything but browser).
+         * The entries in TargetFilter are matched sequentially against targets and
+         * the first entry that matches determines if the target is included or not,
+         * depending on the value of `exclude` field in the entry.
+         * If filter is not specified, the one assumed is
+         * [{type: "browser", exclude: true}, {type: "tab", exclude: true}, {}]
+         * (i.e. include everything but `browser` and `tab`).
          */
         export type TargetFilter = FilterEntry[];
 

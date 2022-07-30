@@ -4053,6 +4053,13 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Registers storage key to be notified when an update occurs to its IndexedDB.
+         */
+        'Storage.trackIndexedDBForStorageKey': {
+            paramsType: [Protocol.Storage.TrackIndexedDBForStorageKeyRequest];
+            returnType: void;
+        };
+        /**
          * Unregisters origin from receiving notifications for cache storage.
          */
         'Storage.untrackCacheStorageForOrigin': {
@@ -4064,6 +4071,13 @@ export namespace ProtocolMapping {
          */
         'Storage.untrackIndexedDBForOrigin': {
             paramsType: [Protocol.Storage.UntrackIndexedDBForOriginRequest];
+            returnType: void;
+        };
+        /**
+         * Unregisters storage key from receiving notifications for IndexedDB.
+         */
+        'Storage.untrackIndexedDBForStorageKey': {
+            paramsType: [Protocol.Storage.UntrackIndexedDBForStorageKeyRequest];
             returnType: void;
         };
         /**
