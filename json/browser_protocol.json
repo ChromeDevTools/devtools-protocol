@@ -1450,7 +1450,8 @@
                         "InsecureContext",
                         "InvalidHeader",
                         "InvalidRegisterTriggerHeader",
-                        "InvalidEligibleHeader"
+                        "InvalidEligibleHeader",
+                        "TooManyConcurrentRequests"
                     ]
                 },
                 {

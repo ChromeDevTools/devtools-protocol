@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1030398 — _2022-08-02T04:50:11.000Z_
+######  Diff: [`18fb7c3...7f635d7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`18fb7c3...7f635d7`)
+
+```diff
+@@ browser_protocol.pdl:705 @@ experimental domain Audits
+       InvalidHeader
+       InvalidRegisterTriggerHeader
+       InvalidEligibleHeader
+-      TooManyConcurrentRequests
+ 
+   # Details for issues around "Attribution Reporting API" usage.
+   # Explainer: https://github.com/WICG/attribution-reporting-api
+```
+
 ## Roll protocol to r1030018 — _2022-07-30T04:33:35.000Z_
-######  Diff: [`1ad73ad...8501576`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1ad73ad...8501576`)
+######  Diff: [`1ad73ad...18fb7c3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1ad73ad...18fb7c3`)
 
 ```diff
 @@ browser_protocol.pdl:9091 @@ experimental domain Storage
@@ -9905,19 +9919,4 @@ index bd277eb..09c420e 100644
        # Line offset of the stylesheet within the resource (zero based).
        number startLine
        # Column offset of the stylesheet within the resource (zero based).
-```
-
-## Roll protocol to r805376 — _2020-09-09T17:16:20.000Z_
-######  Diff: [`caa0ede...23323c5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`caa0ede...23323c5`)
-
-```diff
-@@ browser_protocol.pdl:7970 @@ experimental domain WebAudio
-       # Context sample rate.
-       number sampleRate
- 
--# Protocol object for AudioListener
-+# Protocol object for AudioListner
-   type AudioListener extends object
-     properties
-       GraphObjectId listenerId
 ```
