@@ -2740,7 +2740,7 @@ export namespace ProtocolMapping {
          * Requests database names for given security origin.
          */
         'IndexedDB.requestDatabaseNames': {
-            paramsType: [Protocol.IndexedDB.RequestDatabaseNamesRequest];
+            paramsType: [Protocol.IndexedDB.RequestDatabaseNamesRequest?];
             returnType: Protocol.IndexedDB.RequestDatabaseNamesResponse;
         };
         /**

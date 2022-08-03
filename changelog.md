@@ -1,7 +1,42 @@
 
 
+## Roll protocol to r1030896 — _2022-08-03T04:47:29.000Z_
+######  Diff: [`750f434...3065636`](https://github.com/ChromeDevTools/devtools-protocol/compare/`750f434...3065636`)
+
+```diff
+@@ browser_protocol.pdl:481 @@ experimental domain Audits
+       ExcludeSameSiteStrict
+       ExcludeInvalidSameParty
+       ExcludeSamePartyCrossPartyContext
+-      ExcludeDomainNonASCII
+ 
+   type CookieWarningReason extends string
+     enum
+@@ -494,7 +493,6 @@ experimental domain Audits
+       WarnSameSiteLaxCrossDowngradeStrict
+       WarnSameSiteLaxCrossDowngradeLax
+       WarnAttributeValueExceedsMaxSize
+-      WarnDomainNonASCII
+ 
+   type CookieOperation extends string
+     enum
+@@ -4183,11 +4181,8 @@ experimental domain IndexedDB
+   # Requests database names for given security origin.
+   command requestDatabaseNames
+     parameters
+-      # At least and at most one of securityOrigin, storageKey must be specified.
+       # Security origin.
+-      optional string securityOrigin
+-      # Storage key.
+-      optional string storageKey
++      string securityOrigin
+     returns
+       # Database names for origin.
+       array of string databaseNames
+```
+
 ## Roll protocol to r1030398 — _2022-08-02T04:50:11.000Z_
-######  Diff: [`18fb7c3...7f635d7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`18fb7c3...7f635d7`)
+######  Diff: [`18fb7c3...750f434`](https://github.com/ChromeDevTools/devtools-protocol/compare/`18fb7c3...750f434`)
 
 ```diff
 @@ browser_protocol.pdl:705 @@ experimental domain Audits
@@ -9899,24 +9934,4 @@ index bd277eb..09c420e 100644
  
    # Configuration data for the highlighting of page elements.
    type HighlightConfig extends object
-```
-
-## Roll protocol to r806105 — _2020-09-11T09:16:20.000Z_
-######  Diff: [`23323c5...176b07f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`23323c5...176b07f`)
-
-```diff
-@@ browser_protocol.pdl:1076 @@ experimental domain CSS
-       boolean isInline
-       # Whether this stylesheet is mutable. Inline stylesheets become mutable
-       # after they have been modified via CSSOM API.
--      # <link> element's stylesheets become mutable only if DevTools modifies them.
--      # Constructed stylesheets (new CSSStyleSheet()) are mutable immediately after creation.
-+      # <link> element's stylesheets are never mutable. Constructed stylesheets
-+      # (new CSSStyleSheet()) are mutable immediately after creation.
-       boolean isMutable
--      # Whether this stylesheet is a constructed stylesheet (created using new CSSStyleSheet()).
--      boolean isConstructed
-       # Line offset of the stylesheet within the resource (zero based).
-       number startLine
-       # Column offset of the stylesheet within the resource (zero based).
 ```

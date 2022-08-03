@@ -991,7 +991,8 @@
                         "ExcludeSameSiteLax",
                         "ExcludeSameSiteStrict",
                         "ExcludeInvalidSameParty",
-                        "ExcludeSamePartyCrossPartyContext"
+                        "ExcludeSamePartyCrossPartyContext",
+                        "ExcludeDomainNonASCII"
                     ]
                 },
                 {
@@ -1006,7 +1007,8 @@
                         "WarnSameSiteStrictCrossDowngradeLax",
                         "WarnSameSiteLaxCrossDowngradeStrict",
                         "WarnSameSiteLaxCrossDowngradeLax",
-                        "WarnAttributeValueExceedsMaxSize"
+                        "WarnAttributeValueExceedsMaxSize",
+                        "WarnDomainNonASCII"
                     ]
                 },
                 {
@@ -9120,7 +9122,14 @@
                     "parameters": [
                         {
                             "name": "securityOrigin",
-                            "description": "Security origin.",
+                            "description": "At least and at most one of securityOrigin, storageKey must be specified.\nSecurity origin.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "storageKey",
+                            "description": "Storage key.",
+                            "optional": true,
                             "type": "string"
                         }
                     ],
