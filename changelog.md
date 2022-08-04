@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1031356 — _2022-08-04T04:34:29.000Z_
+######  Diff: [`ced9091...7fa58bb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ced9091...7fa58bb`)
+
+```diff
+@@ browser_protocol.pdl:845 @@ experimental domain Audits
+       ClientMetadataHttpNotFound
+       ClientMetadataNoResponse
+       ClientMetadataInvalidResponse
++      ClientMetadataMissingPrivacyPolicyUrl
+       DisabledInSettings
+       ErrorFetchingSignin
+       InvalidSigninResponse
+```
+
 ## Roll protocol to r1030896 — _2022-08-03T04:47:29.000Z_
-######  Diff: [`750f434...3065636`](https://github.com/ChromeDevTools/devtools-protocol/compare/`750f434...3065636`)
+######  Diff: [`750f434...ced9091`](https://github.com/ChromeDevTools/devtools-protocol/compare/`750f434...ced9091`)
 
 ```diff
 @@ browser_protocol.pdl:481 @@ experimental domain Audits
@@ -9919,19 +9933,4 @@ index bd277eb..09c420e 100644
      properties
        # The decision on what to do in response to the authorization challenge.  Default means
        # deferring to the default behavior of the net stack, which will likely either the Cancel
-```
-
-## Roll protocol to r806611 — _2020-09-14T12:16:27.000Z_
-######  Diff: [`176b07f...2155b85`](https://github.com/ChromeDevTools/devtools-protocol/compare/`176b07f...2155b85`)
-
-```diff
-@@ browser_protocol.pdl:5427 @@ experimental domain Overlay
-       optional DOM.RGBA columnHatchColor
-       # The named grid areas border color (Default: transparent).
-       optional DOM.RGBA areaBorderColor
--      # The grid container background color (Default: transparent).
--      optional DOM.RGBA gridBackgroundColor
- 
-   # Configuration data for the highlighting of page elements.
-   type HighlightConfig extends object
 ```

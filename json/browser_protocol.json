@@ -1667,7 +1667,6 @@
                         "ClientMetadataHttpNotFound",
                         "ClientMetadataNoResponse",
                         "ClientMetadataInvalidResponse",
-                        "ClientMetadataMissingPrivacyPolicyUrl",
                         "DisabledInSettings",
                         "ErrorFetchingSignin",
                         "InvalidSigninResponse",
