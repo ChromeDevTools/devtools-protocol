@@ -1453,7 +1453,8 @@
                         "InvalidHeader",
                         "InvalidRegisterTriggerHeader",
                         "InvalidEligibleHeader",
-                        "TooManyConcurrentRequests"
+                        "TooManyConcurrentRequests",
+                        "SourceAndTriggerHeaders"
                     ]
                 },
                 {
@@ -17869,6 +17870,7 @@
                 {
                     "name": "prerenderAttemptCompleted",
                     "description": "Fired when a prerender attempt is completed.",
+                    "experimental": true,
                     "parameters": [
                         {
                             "name": "initiatingFrameId",
@@ -17882,6 +17884,12 @@
                         {
                             "name": "finalStatus",
                             "$ref": "PrerenderFinalStatus"
+                        },
+                        {
+                            "name": "reasonDetails",
+                            "description": "This is used to give users more information about the cancellation details,\nand this will be formatted for display.",
+                            "optional": true,
+                            "type": "string"
                         }
                     ]
                 },

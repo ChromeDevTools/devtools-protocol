@@ -1,7 +1,38 @@
 
 
+## Roll protocol to r1032240 — _2022-08-06T04:31:26.000Z_
+######  Diff: [`4b0d166...de806be`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4b0d166...de806be`)
+
+```diff
+@@ browser_protocol.pdl:708 @@ experimental domain Audits
+       InvalidRegisterTriggerHeader
+       InvalidEligibleHeader
+       TooManyConcurrentRequests
+-      SourceAndTriggerHeaders
+ 
+   # Details for issues around "Attribution Reporting API" usage.
+   # Explainer: https://github.com/WICG/attribution-reporting-api
+@@ -8460,15 +8459,12 @@ domain Page
+       FailToGetMemoryUsage
+ 
+   # Fired when a prerender attempt is completed.
+-  experimental event prerenderAttemptCompleted
++  event prerenderAttemptCompleted
+     parameters
+       # The frame id of the frame initiating prerendering.
+       FrameId initiatingFrameId
+       string prerenderingUrl
+       PrerenderFinalStatus finalStatus
+-      # This is used to give users more information about the cancellation details,
+-      # and this will be formatted for display.
+-      optional string reasonDetails
+ 
+   event loadEventFired
+     parameters
+```
+
 ## Roll protocol to r1031356 — _2022-08-04T04:34:29.000Z_
-######  Diff: [`ced9091...7fa58bb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ced9091...7fa58bb`)
+######  Diff: [`ced9091...4b0d166`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ced9091...4b0d166`)
 
 ```diff
 @@ browser_protocol.pdl:845 @@ experimental domain Audits
@@ -9885,52 +9916,4 @@ index bd277eb..09c420e 100644
  
    experimental type SecurityIsolationStatus extends object
      properties
-```
-
-## Roll protocol to r806843 — _2020-09-15T02:16:32.000Z_
-######  Diff: [`2155b85...9e2e943`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2155b85...9e2e943`)
-
-```diff
-@@ browser_protocol.pdl:7698 @@ experimental domain Tracing
-       optional StreamCompression streamCompression
- 
- # A domain for letting clients substitute browser's network layer with client code.
--domain Fetch
-+experimental domain Fetch
-   depends on Network
-   depends on IO
-   depends on Page
-@@ -7709,12 +7709,12 @@ domain Fetch
-   # Stages of the request to handle. Request will intercept before the request is
-   # sent. Response will intercept after the response is received (but before response
-   # body is received.
--  type RequestStage extends string
-+  experimental type RequestStage extends string
-     enum
-       Request
-       Response
- 
--  type RequestPattern extends object
-+  experimental type RequestPattern extends object
-     properties
-       # Wildcards ('*' -> zero or more, '?' -> exactly one) are allowed. Escape character is
-       # backslash. Omitting is equivalent to "*".
-@@ -7731,7 +7731,7 @@ domain Fetch
-       string value
- 
-   # Authorization challenge for HTTP status code 401 or 407.
--  type AuthChallenge extends object
-+  experimental type AuthChallenge extends object
-     properties
-       # Source of the authentication challenge.
-       optional enum source
-@@ -7745,7 +7745,7 @@ domain Fetch
-       string realm
- 
-   # Response to an AuthChallenge.
--  type AuthChallengeResponse extends object
-+  experimental type AuthChallengeResponse extends object
-     properties
-       # The decision on what to do in response to the authorization challenge.  Default means
-       # deferring to the default behavior of the net stack, which will likely either the Cancel
 ```

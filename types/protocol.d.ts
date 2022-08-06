@@ -3423,7 +3423,7 @@ export namespace Protocol {
             clientSecurityState?: Network.ClientSecurityState;
         }
 
-        export type AttributionReportingIssueType = ('PermissionPolicyDisabled' | 'UntrustworthyReportingOrigin' | 'InsecureContext' | 'InvalidHeader' | 'InvalidRegisterTriggerHeader' | 'InvalidEligibleHeader' | 'TooManyConcurrentRequests');
+        export type AttributionReportingIssueType = ('PermissionPolicyDisabled' | 'UntrustworthyReportingOrigin' | 'InsecureContext' | 'InvalidHeader' | 'InvalidRegisterTriggerHeader' | 'InvalidEligibleHeader' | 'TooManyConcurrentRequests' | 'SourceAndTriggerHeaders');
 
         /**
          * Details for issues around "Attribution Reporting API" usage.
@@ -13873,6 +13873,11 @@ export namespace Protocol {
             initiatingFrameId: FrameId;
             prerenderingUrl: string;
             finalStatus: PrerenderFinalStatus;
+            /**
+             * This is used to give users more information about the cancellation details,
+             * and this will be formatted for display.
+             */
+            reasonDetails?: string;
         }
 
         export interface LoadEventFiredEvent {
