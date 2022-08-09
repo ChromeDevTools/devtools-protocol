@@ -1454,7 +1454,9 @@
                         "InvalidRegisterTriggerHeader",
                         "InvalidEligibleHeader",
                         "TooManyConcurrentRequests",
-                        "SourceAndTriggerHeaders"
+                        "SourceAndTriggerHeaders",
+                        "SourceIgnored",
+                        "TriggerIgnored"
                     ]
                 },
                 {

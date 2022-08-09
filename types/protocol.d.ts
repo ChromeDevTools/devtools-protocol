@@ -3423,7 +3423,7 @@ export namespace Protocol {
             clientSecurityState?: Network.ClientSecurityState;
         }
 
-        export type AttributionReportingIssueType = ('PermissionPolicyDisabled' | 'UntrustworthyReportingOrigin' | 'InsecureContext' | 'InvalidHeader' | 'InvalidRegisterTriggerHeader' | 'InvalidEligibleHeader' | 'TooManyConcurrentRequests' | 'SourceAndTriggerHeaders');
+        export type AttributionReportingIssueType = ('PermissionPolicyDisabled' | 'UntrustworthyReportingOrigin' | 'InsecureContext' | 'InvalidHeader' | 'InvalidRegisterTriggerHeader' | 'InvalidEligibleHeader' | 'TooManyConcurrentRequests' | 'SourceAndTriggerHeaders' | 'SourceIgnored' | 'TriggerIgnored');
 
         /**
          * Details for issues around "Attribution Reporting API" usage.

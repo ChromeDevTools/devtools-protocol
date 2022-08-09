@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1032873 — _2022-08-09T04:34:16.000Z_
+######  Diff: [`4f1ab67...44dd159`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4f1ab67...44dd159`)
+
+```diff
+@@ browser_protocol.pdl:709 @@ experimental domain Audits
+       InvalidEligibleHeader
+       TooManyConcurrentRequests
+       SourceAndTriggerHeaders
+-      SourceIgnored
+-      TriggerIgnored
+ 
+   # Details for issues around "Attribution Reporting API" usage.
+   # Explainer: https://github.com/WICG/attribution-reporting-api
+```
+
 ## Roll protocol to r1032240 — _2022-08-06T04:31:26.000Z_
-######  Diff: [`4b0d166...de806be`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4b0d166...de806be`)
+######  Diff: [`4b0d166...4f1ab67`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4b0d166...4f1ab67`)
 
 ```diff
 @@ browser_protocol.pdl:708 @@ experimental domain Audits
@@ -9890,30 +9905,4 @@ index bd277eb..09c420e 100644
  experimental domain Animation
    depends on Runtime
    depends on DOM
-```
-
-## Roll protocol to r808307 — _2020-09-18T11:16:16.000Z_
-######  Diff: [`9e2e943...01dd54b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9e2e943...01dd54b`)
-
-```diff
-@@ browser_protocol.pdl:5349 @@ domain Network
-   experimental type CrossOriginOpenerPolicyStatus extends object
-     properties
-       CrossOriginOpenerPolicyValue value
--      CrossOriginOpenerPolicyValue reportOnlyValue
--      optional string reportingEndpoint
--      optional string reportOnlyReportingEndpoint
- 
-   experimental type CrossOriginEmbedderPolicyValue extends string
-     enum
-@@ -5361,9 +5358,6 @@ domain Network
-   experimental type CrossOriginEmbedderPolicyStatus extends object
-     properties
-       CrossOriginEmbedderPolicyValue value
--      CrossOriginEmbedderPolicyValue reportOnlyValue
--      optional string reportingEndpoint
--      optional string reportOnlyReportingEndpoint
- 
-   experimental type SecurityIsolationStatus extends object
-     properties
 ```
