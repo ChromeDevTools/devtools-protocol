@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1033355 — _2022-08-10T04:31:04.000Z_
+######  Diff: [`958f979...cbb6538`](https://github.com/ChromeDevTools/devtools-protocol/compare/`958f979...cbb6538`)
+
+```diff
+@@ browser_protocol.pdl:7156 @@ domain Page
+       storage-access-api
+       sync-xhr
+       trust-token-redemption
+-      unload
+       usb
+       vertical-scroll
+       web-share
+```
+
 ## Roll protocol to r1032873 — _2022-08-09T04:34:16.000Z_
-######  Diff: [`4f1ab67...44dd159`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4f1ab67...44dd159`)
+######  Diff: [`4f1ab67...958f979`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4f1ab67...958f979`)
 
 ```diff
 @@ browser_protocol.pdl:709 @@ experimental domain Audits
@@ -9869,40 +9883,5 @@ index bd277eb..09c420e 100644
 -
  # This domain provides various functionality related to drawing atop the inspected page.
  experimental domain Overlay
-   depends on DOM
-```
-
-## Roll protocol to r809251 — _2020-09-22T09:16:18.000Z_
-######  Diff: [`01dd54b...ea0b910`](https://github.com/ChromeDevTools/devtools-protocol/compare/`01dd54b...ea0b910`)
-
-```diff
-@@ browser_protocol.pdl:207 @@ experimental domain Accessibility
-     returns
-       array of AXNode nodes
- 
--  # Query a DOM node's accessibility subtree for accessible name and role.
--  # This command computes the name and role for all nodes in the subtree, including those that are
--  # ignored for accessibility, and returns those that mactch the specified name and role. If no DOM
--  # node is specified, or the DOM node does not exist, the command returns an error. If neither
--  # `accessibleName` or `role` is specified, it returns all the accessibility nodes in the subtree.
--  experimental command queryAXTree
--    parameters
--      # Identifier of the node for the root to query.
--      optional DOM.NodeId nodeId
--      # Identifier of the backend node for the root to query.
--      optional DOM.BackendNodeId backendNodeId
--      # JavaScript object id of the node wrapper for the root to query.
--      optional Runtime.RemoteObjectId objectId
--      # Find nodes with this computed name.
--      optional string accessibleName
--      # Find nodes with this computed role.
--      optional string role
--    returns
--      # A list of `Accessibility.AXNode` matching the specified attributes,
--      # including nodes that are ignored for accessibility.
--      array of AXNode nodes
--
- experimental domain Animation
-   depends on Runtime
    depends on DOM
 ```
