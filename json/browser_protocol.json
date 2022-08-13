@@ -3167,6 +3167,16 @@
                             "description": "The entire property range in the enclosing style declaration (if available).",
                             "optional": true,
                             "$ref": "SourceRange"
+                        },
+                        {
+                            "name": "longhandProperties",
+                            "description": "Parsed longhand components of this property if it is a shorthand.\nThis field will be empty if the given property is not a shorthand.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "CSSProperty"
+                            }
                         }
                     ]
                 },

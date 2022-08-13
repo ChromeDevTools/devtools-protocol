@@ -1,7 +1,23 @@
 
 
+## Roll protocol to r1034791 — _2022-08-13T04:31:31.000Z_
+######  Diff: [`181b0dd...2c61b43`](https://github.com/ChromeDevTools/devtools-protocol/compare/`181b0dd...2c61b43`)
+
+```diff
+@@ browser_protocol.pdl:1537 @@ experimental domain CSS
+       optional boolean disabled
+       # The entire property range in the enclosing style declaration (if available).
+       optional SourceRange range
+-      # Parsed longhand components of this property if it is a shorthand.
+-      # This field will be empty if the given property is not a shorthand.
+-      experimental optional array of CSSProperty longhandProperties
+ 
+   # CSS media rule descriptor.
+   type CSSMedia extends object
+```
+
 ## Roll protocol to r1033355 — _2022-08-10T04:31:04.000Z_
-######  Diff: [`958f979...cbb6538`](https://github.com/ChromeDevTools/devtools-protocol/compare/`958f979...cbb6538`)
+######  Diff: [`958f979...181b0dd`](https://github.com/ChromeDevTools/devtools-protocol/compare/`958f979...181b0dd`)
 
 ```diff
 @@ browser_protocol.pdl:7156 @@ domain Page
@@ -9839,49 +9855,4 @@ index bd277eb..09c420e 100644
  
    # Inject object to the target's main frame that provides a communication
    # channel with browser target.
-```
-
-## Roll protocol to r810188 — _2020-09-24T14:16:32.000Z_
-######  Diff: [`ea0b910...362b549`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ea0b910...362b549`)
-
-```diff
-@@ browser_protocol.pdl:5400 @@ domain Network
-     returns
-       SecurityIsolationStatus status
- 
--  # An object providing the result of a network resource load.
--  experimental type LoadNetworkResourcePageResult extends object
--    properties
--      boolean success
--      # Optional values used for error reporting.
--      optional number netError
--      optional string netErrorName
--      optional number httpStatusCode
--      # If successful, one of the following two fields holds the result.
--      optional IO.StreamHandle stream
--      # Response headers.
--      optional Network.Headers headers
--
--  # An options object that may be extended later to better support CORS,
--  # CORB and streaming.
--  experimental type LoadNetworkResourceOptions extends object
--    properties
--      boolean disableCache
--      boolean includeCredentials
--
--  # Fetches the resource and returns the content.
--  experimental command loadNetworkResource
--    parameters
--      # Frame id to get the resource for.
--      Page.FrameId frameId
--      # URL of the resource to get content for.
--      string url
--      # Options for the request.
--      LoadNetworkResourceOptions options
--    returns
--      LoadNetworkResourcePageResult resource
--
- # This domain provides various functionality related to drawing atop the inspected page.
- experimental domain Overlay
-   depends on DOM
 ```

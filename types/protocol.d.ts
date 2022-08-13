@@ -4431,6 +4431,11 @@ export namespace Protocol {
              * The entire property range in the enclosing style declaration (if available).
              */
             range?: SourceRange;
+            /**
+             * Parsed longhand components of this property if it is a shorthand.
+             * This field will be empty if the given property is not a shorthand.
+             */
+            longhandProperties?: CSSProperty[];
         }
 
         export const enum CSSMediaSource {
