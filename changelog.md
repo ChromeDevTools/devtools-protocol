@@ -1,7 +1,26 @@
 
 
+## Roll protocol to r1034970 — _2022-08-15T04:47:01.000Z_
+######  Diff: [`c5cb34c...d62faba`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c5cb34c...d62faba`)
+
+```diff
+@@ browser_protocol.pdl:8459 @@ domain Page
+       TriggerBackgrounded
+       EmbedderTriggeredAndSameOriginRedirected
+       EmbedderTriggeredAndCrossOriginRedirected
++      EmbedderTriggeredAndDestroyed
+       MemoryLimitExceeded
+       # Prerenders can be cancelled when Chrome uses excessive memory. This is
+       # recorded when it fails to get the memory usage.
+       FailToGetMemoryUsage
+-      DataSaverEnabled
+ 
+   # Fired when a prerender attempt is completed.
+   experimental event prerenderAttemptCompleted
+```
+
 ## Roll protocol to r1034791 — _2022-08-13T04:31:31.000Z_
-######  Diff: [`181b0dd...2c61b43`](https://github.com/ChromeDevTools/devtools-protocol/compare/`181b0dd...2c61b43`)
+######  Diff: [`181b0dd...c5cb34c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`181b0dd...c5cb34c`)
 
 ```diff
 @@ browser_protocol.pdl:1537 @@ experimental domain CSS
@@ -9828,31 +9847,4 @@ index bd277eb..09c420e 100644
        experimental optional Browser.BrowserContextID browserContextId
  
    experimental type RemoteLocation extends object
-```
-
-## Roll protocol to r810467 — _2020-09-25T04:16:27.000Z_
-######  Diff: [`362b549...9f36776`](https://github.com/ChromeDevTools/devtools-protocol/compare/`362b549...9f36776`)
-
-```diff
-@@ browser_protocol.pdl:5051 @@ domain Network
-       # Cookie Priority type.
-       experimental optional CookiePriority priority
-     returns
--      # Always set to true. If an error occurs, the response indicates protocol error.
--      deprecated boolean success
-+      # True if successfully set cookie.
-+      boolean success
- 
-   # Sets given cookies.
-   command setCookies
-@@ -7434,8 +7434,7 @@ domain Target
-     parameters
-       TargetID targetId
-     returns
--      # Always set to true. If an error occurs, the response indicates protocol error.
--      deprecated boolean success
-+      boolean success
- 
-   # Inject object to the target's main frame that provides a communication
-   # channel with browser target.
 ```

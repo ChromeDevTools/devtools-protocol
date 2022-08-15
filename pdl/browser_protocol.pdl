@@ -8459,11 +8459,11 @@ domain Page
       TriggerBackgrounded
       EmbedderTriggeredAndSameOriginRedirected
       EmbedderTriggeredAndCrossOriginRedirected
-      EmbedderTriggeredAndDestroyed
       MemoryLimitExceeded
       # Prerenders can be cancelled when Chrome uses excessive memory. This is
       # recorded when it fails to get the memory usage.
       FailToGetMemoryUsage
+      DataSaverEnabled
 
   # Fired when a prerender attempt is completed.
   experimental event prerenderAttemptCompleted
