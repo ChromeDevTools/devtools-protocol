@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1036444 — _2022-08-18T04:47:13.000Z_
+######  Diff: [`5bd2c6a...bfd7787`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5bd2c6a...bfd7787`)
+
+```diff
+@@ browser_protocol.pdl:7156 @@ domain Page
+       serial
+       shared-autofill
+       shared-storage
+-      storage-access
++      storage-access-api
+       sync-xhr
+       trust-token-redemption
+       unload
+```
+
 ## Roll protocol to r1034970 — _2022-08-15T04:47:01.000Z_
-######  Diff: [`c5cb34c...d62faba`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c5cb34c...d62faba`)
+######  Diff: [`c5cb34c...5bd2c6a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c5cb34c...5bd2c6a`)
 
 ```diff
 @@ browser_protocol.pdl:8459 @@ domain Page
@@ -9829,22 +9844,4 @@ index bd277eb..09c420e 100644
        # If set to true, tests of user presence will succeed immediately.
        # Otherwise, they will not be resolved. Defaults to true.
        optional boolean automaticPresenceSimulation
-```
-
-## Roll protocol to r812116 — _2020-09-30T16:16:20.000Z_
-######  Diff: [`9f36776...81d36b6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9f36776...81d36b6`)
-
-```diff
-@@ browser_protocol.pdl:7397 @@ domain Target
-       boolean attached
-       # Opener target Id
-       optional TargetID openerId
--      # Whether the target has access to the originating window.
-+      # Whether the opened window has access to the originating window.
-       experimental boolean canAccessOpener
--      # Frame id of originating window (is only set if target has an opener).
--      experimental optional Page.FrameId openerFrameId
-       experimental optional Browser.BrowserContextID browserContextId
- 
-   experimental type RemoteLocation extends object
 ```
