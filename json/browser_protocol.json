@@ -16330,7 +16330,8 @@
                         "EmbedderTriggeredAndCrossOriginRedirected",
                         "MemoryLimitExceeded",
                         "FailToGetMemoryUsage",
-                        "DataSaverEnabled"
+                        "DataSaverEnabled",
+                        "HasEffectiveUrl"
                     ]
                 }
             ],

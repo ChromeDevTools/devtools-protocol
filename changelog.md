@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1039585 — _2022-08-26T04:57:38.000Z_
+######  Diff: [`c6dfb99...80b9788`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c6dfb99...80b9788`)
+
+```diff
+@@ browser_protocol.pdl:8464 @@ domain Page
+       # recorded when it fails to get the memory usage.
+       FailToGetMemoryUsage
+       DataSaverEnabled
+-      HasEffectiveUrl
+ 
+   # Fired when a prerender attempt is completed.
+   experimental event prerenderAttemptCompleted
+```
+
 ## Roll protocol to r1036444 — _2022-08-18T04:47:13.000Z_
-######  Diff: [`5bd2c6a...bfd7787`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5bd2c6a...bfd7787`)
+######  Diff: [`5bd2c6a...c6dfb99`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5bd2c6a...c6dfb99`)
 
 ```diff
 @@ browser_protocol.pdl:7156 @@ domain Page
@@ -9827,21 +9841,4 @@ index bd277eb..09c420e 100644
  
    # Cookie object
    type Cookie extends object
-```
-
-## Roll protocol to r813281 — _2020-10-02T18:16:02.000Z_
-######  Diff: [`81d36b6...e98f67b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`81d36b6...e98f67b`)
-
-```diff
-@@ browser_protocol.pdl:8193 @@ experimental domain WebAuthn
-       optional boolean hasResidentKey
-       # Defaults to false.
-       optional boolean hasUserVerification
--      # If set to true, the authenticator will support the largeBlob extension.
--      # https://w3c.github.io/webauthn#largeBlob
--      # Defaults to false.
--      optional boolean hasLargeBlob
-       # If set to true, tests of user presence will succeed immediately.
-       # Otherwise, they will not be resolved. Defaults to true.
-       optional boolean automaticPresenceSimulation
 ```
