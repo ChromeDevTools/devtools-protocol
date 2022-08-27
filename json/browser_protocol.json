@@ -1657,7 +1657,7 @@
                     "description": "Represents the failure reason when a federated authentication reason fails.\nShould be updated alongside RequestIdTokenStatus in\nthird_party/blink/public/mojom/devtools/inspector_issue.mojom to include\nall cases except for success.",
                     "type": "string",
                     "enum": [
-                        "ApprovalDeclined",
+                        "ShouldEmbargo",
                         "TooManyRequests",
                         "ManifestListHttpNotFound",
                         "ManifestListNoResponse",
@@ -1681,7 +1681,8 @@
                         "IdTokenInvalidResponse",
                         "IdTokenInvalidRequest",
                         "ErrorIdToken",
-                        "Canceled"
+                        "Canceled",
+                        "RpPageNotVisible"
                     ]
                 },
                 {

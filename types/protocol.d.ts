@@ -3494,7 +3494,7 @@ export namespace Protocol {
          * third_party/blink/public/mojom/devtools/inspector_issue.mojom to include
          * all cases except for success.
          */
-        export type FederatedAuthRequestIssueReason = ('ApprovalDeclined' | 'TooManyRequests' | 'ManifestListHttpNotFound' | 'ManifestListNoResponse' | 'ManifestListInvalidResponse' | 'ManifestNotInManifestList' | 'ManifestListTooBig' | 'ManifestHttpNotFound' | 'ManifestNoResponse' | 'ManifestInvalidResponse' | 'ClientMetadataHttpNotFound' | 'ClientMetadataNoResponse' | 'ClientMetadataInvalidResponse' | 'DisabledInSettings' | 'ErrorFetchingSignin' | 'InvalidSigninResponse' | 'AccountsHttpNotFound' | 'AccountsNoResponse' | 'AccountsInvalidResponse' | 'IdTokenHttpNotFound' | 'IdTokenNoResponse' | 'IdTokenInvalidResponse' | 'IdTokenInvalidRequest' | 'ErrorIdToken' | 'Canceled');
+        export type FederatedAuthRequestIssueReason = ('ShouldEmbargo' | 'TooManyRequests' | 'ManifestListHttpNotFound' | 'ManifestListNoResponse' | 'ManifestListInvalidResponse' | 'ManifestNotInManifestList' | 'ManifestListTooBig' | 'ManifestHttpNotFound' | 'ManifestNoResponse' | 'ManifestInvalidResponse' | 'ClientMetadataHttpNotFound' | 'ClientMetadataNoResponse' | 'ClientMetadataInvalidResponse' | 'DisabledInSettings' | 'ErrorFetchingSignin' | 'InvalidSigninResponse' | 'AccountsHttpNotFound' | 'AccountsNoResponse' | 'AccountsInvalidResponse' | 'IdTokenHttpNotFound' | 'IdTokenNoResponse' | 'IdTokenInvalidResponse' | 'IdTokenInvalidRequest' | 'ErrorIdToken' | 'Canceled' | 'RpPageNotVisible');
 
         /**
          * This issue tracks client hints related issues. It's used to deprecate old

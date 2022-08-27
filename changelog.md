@@ -1,7 +1,30 @@
 
 
+## Roll protocol to r1040073 — _2022-08-27T04:44:13.000Z_
+######  Diff: [`4561609...58754bc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4561609...58754bc`)
+
+```diff
+@@ browser_protocol.pdl:835 @@ experimental domain Audits
+   # all cases except for success.
+   type FederatedAuthRequestIssueReason extends string
+     enum
+-      ShouldEmbargo
++      ApprovalDeclined
+       TooManyRequests
+       ManifestListHttpNotFound
+       ManifestListNoResponse
+@@ -860,7 +860,6 @@ experimental domain Audits
+       IdTokenInvalidRequest
+       ErrorIdToken
+       Canceled
+-      RpPageNotVisible
+ 
+   # This issue tracks client hints related issues. It's used to deprecate old
+   # features, encourage the use of new ones, and provide general guidance.
+```
+
 ## Roll protocol to r1039585 — _2022-08-26T04:57:38.000Z_
-######  Diff: [`c6dfb99...80b9788`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c6dfb99...80b9788`)
+######  Diff: [`c6dfb99...4561609`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c6dfb99...4561609`)
 
 ```diff
 @@ browser_protocol.pdl:8464 @@ domain Page
