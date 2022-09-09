@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1044932 — _2022-09-09T04:49:16.000Z_
+######  Diff: [`6ea69cb...c217a33`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6ea69cb...c217a33`)
+
+```diff
+@@ browser_protocol.pdl:2926 @@ domain DOM
+     parameters
+       # Id of the node that has changed.
+       NodeId parentNodeId
+-      # Id of the previous sibling.
++      # If of the previous siblint.
+       NodeId previousNodeId
+       # Inserted node data.
+       Node node
+```
+
 ## Roll protocol to r1040073 — _2022-08-27T04:44:13.000Z_
-######  Diff: [`4561609...58754bc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4561609...58754bc`)
+######  Diff: [`4561609...6ea69cb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4561609...6ea69cb`)
 
 ```diff
 @@ browser_protocol.pdl:835 @@ experimental domain Audits

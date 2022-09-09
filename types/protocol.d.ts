@@ -6414,7 +6414,7 @@ export namespace Protocol {
              */
             parentNodeId: NodeId;
             /**
-             * If of the previous siblint.
+             * Id of the previous sibling.
              */
             previousNodeId: NodeId;
             /**
