@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1045489 — _2022-09-10T04:51:55.000Z_
+######  Diff: [`08793fb...4794e83`](https://github.com/ChromeDevTools/devtools-protocol/compare/`08793fb...4794e83`)
+
+```diff
+@@ browser_protocol.pdl:701 @@ experimental domain Audits
+   type AttributionReportingIssueType extends string
+     enum
+       PermissionPolicyDisabled
+-      PermissionPolicyNotDelegated
+       UntrustworthyReportingOrigin
+       InsecureContext
+       # TODO(apaseltiner): Rename this to InvalidRegisterSourceHeader
+```
+
 ## Roll protocol to r1044932 — _2022-09-09T04:49:16.000Z_
-######  Diff: [`6ea69cb...c217a33`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6ea69cb...c217a33`)
+######  Diff: [`6ea69cb...08793fb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6ea69cb...08793fb`)
 
 ```diff
 @@ browser_protocol.pdl:2926 @@ domain DOM
@@ -9863,20 +9877,4 @@ index bd277eb..09c420e 100644
    # HTTP response data.
    type Response extends object
      properties
-```
-
-## Roll protocol to r814141 — _2020-10-06T09:16:18.000Z_
-######  Diff: [`46e9147...e736452`](https://github.com/ChromeDevTools/devtools-protocol/compare/`46e9147...e736452`)
-
-```diff
-@@ browser_protocol.pdl:4570 @@ domain Network
-       # Initiator line number, set for Parser type or for Script type (when script is importing
-       # module) (0-based).
-       optional number lineNumber
--      # Initiator column number, set for Parser type or for Script type (when script is importing
--      # module) (0-based).
--      optional number columnNumber
- 
-   # Cookie object
-   type Cookie extends object
 ```
