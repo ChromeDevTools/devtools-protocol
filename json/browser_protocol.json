@@ -17902,8 +17902,8 @@
                             "$ref": "PrerenderFinalStatus"
                         },
                         {
-                            "name": "reasonDetails",
-                            "description": "This is used to give users more information about the cancellation details,\nand this will be formatted for display.",
+                            "name": "disallowedApiMethod",
+                            "description": "This is used to give users more information about the name of the API call\nthat is incompatible with prerender and has caused the cancellation of the attempt",
                             "optional": true,
                             "type": "string"
                         }

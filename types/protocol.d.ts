@@ -13879,10 +13879,10 @@ export namespace Protocol {
             prerenderingUrl: string;
             finalStatus: PrerenderFinalStatus;
             /**
-             * This is used to give users more information about the cancellation details,
-             * and this will be formatted for display.
+             * This is used to give users more information about the name of the API call
+             * that is incompatible with prerender and has caused the cancellation of the attempt
              */
-            reasonDetails?: string;
+            disallowedApiMethod?: string;
         }
 
         export interface LoadEventFiredEvent {

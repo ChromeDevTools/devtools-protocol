@@ -1,7 +1,26 @@
 
 
+## Roll protocol to r1046751 — _2022-09-14T04:56:53.000Z_
+######  Diff: [`379658e...b5f296d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`379658e...b5f296d`)
+
+```diff
+@@ browser_protocol.pdl:8475 @@ domain Page
+       FrameId initiatingFrameId
+       string prerenderingUrl
+       PrerenderFinalStatus finalStatus
+-      # This is used to give users more information about the name of the API call
+-      # that is incompatible with prerender and has caused the cancellation of the attempt
+-      optional string disallowedApiMethod
++      # This is used to give users more information about the cancellation details,
++      # and this will be formatted for display.
++      optional string reasonDetails
+ 
+   event loadEventFired
+     parameters
+```
+
 ## Roll protocol to r1045489 — _2022-09-10T04:51:55.000Z_
-######  Diff: [`08793fb...4794e83`](https://github.com/ChromeDevTools/devtools-protocol/compare/`08793fb...4794e83`)
+######  Diff: [`08793fb...379658e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`08793fb...379658e`)
 
 ```diff
 @@ browser_protocol.pdl:701 @@ experimental domain Audits
@@ -9829,52 +9848,4 @@ index bd277eb..09c420e 100644
  
    # Set permission settings for given origin.
    experimental command setPermission
-```
-
-## Roll protocol to r815575 — _2020-10-09T12:16:03.000Z_
-######  Diff: [`e736452...b72ea89`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e736452...b72ea89`)
-
-```diff
-@@ browser_protocol.pdl:4374 @@ domain Network
-         strict-origin-when-cross-origin
-       # Whether is loaded via link preload.
-       optional boolean isLinkPreload
--      # Set for requests when the TrustToken API is used. Contains the parameters
--      # passed by the developer (e.g. via "fetch") as understood by the backend.
--      experimental optional TrustTokenParams trustTokenParams
- 
-   # Details of a signed certificate timestamp (SCT).
-   type SignedCertificateTimestamp extends object
-@@ -4460,31 +4457,6 @@ domain Network
-       fallback-code
-       network
- 
--  # Determines what type of Trust Token operation is executed and
--  # depending on the type, some additional parameters.
--  experimental type TrustTokenParams extends object
--    properties
--      TrustTokenOperationType type
--
--      # Only set for "srr-token-redemption" type and determine whether
--      # to request a fresh SRR or use a still valid cached SRR.
--      enum refreshPolicy
--        UseCached
--        Refresh
--
--      # Origins of issuers from whom to request tokens or redemption
--      # records.
--      optional array of string issuers
--
--  experimental type TrustTokenOperationType extends string
--    enum
--      # Type "token-request" in the Trust Token API.
--      Issuance
--      # Type "srr-token-redemption" in the Trust Token API.
--      Redemption
--      # Type "send-srr" in the Trust Token API.
--      Signing
--
-   # HTTP response data.
-   type Response extends object
-     properties
 ```
