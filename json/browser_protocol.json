@@ -16333,7 +16333,8 @@
                         "MemoryLimitExceeded",
                         "FailToGetMemoryUsage",
                         "DataSaverEnabled",
-                        "HasEffectiveUrl"
+                        "HasEffectiveUrl",
+                        "ActivatedBeforeStarted"
                     ]
                 }
             ],

@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1047822 — _2022-09-16T04:59:17.000Z_
+######  Diff: [`3c081bc...6b4ce9c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3c081bc...6b4ce9c`)
+
+```diff
+@@ browser_protocol.pdl:8467 @@ domain Page
+       FailToGetMemoryUsage
+       DataSaverEnabled
+       HasEffectiveUrl
+-      ActivatedBeforeStarted
+ 
+   # Fired when a prerender attempt is completed.
+   experimental event prerenderAttemptCompleted
+```
+
 ## Roll protocol to r1046751 — _2022-09-14T04:56:53.000Z_
-######  Diff: [`379658e...b5f296d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`379658e...b5f296d`)
+######  Diff: [`379658e...3c081bc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`379658e...3c081bc`)
 
 ```diff
 @@ browser_protocol.pdl:8475 @@ domain Page
@@ -9825,27 +9839,4 @@ index bd277eb..09c420e 100644
    # Registers origin to be notified when an update occurs to its cache storage list.
    command trackCacheStorageForOrigin
      parameters
-```
-
-## Roll protocol to r816501 — _2020-10-13T10:16:04.000Z_
-######  Diff: [`b72ea89...d268e57`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b72ea89...d268e57`)
-
-```diff
-@@ browser_protocol.pdl:826 @@ domain Browser
-       protectedMediaIdentifier
-       sensors
-       videoCapture
--      videoCapturePanTiltZoom
-       idleDetection
-       wakeLockScreen
-       wakeLockSystem
-@@ -851,8 +850,6 @@ domain Browser
-       optional boolean userVisibleOnly
-       # For "clipboard" permission, may specify allowWithoutSanitization.
-       optional boolean allowWithoutSanitization
--      # For "camera" permission, may specify panTiltZoom.
--      optional boolean panTiltZoom
- 
-   # Set permission settings for given origin.
-   experimental command setPermission
 ```
