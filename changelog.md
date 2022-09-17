@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1048352 — _2022-09-17T04:46:41.000Z_
+######  Diff: [`f628653...5c49cd2`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f628653...5c49cd2`)
+
+```diff
+@@ browser_protocol.pdl:772 @@ experimental domain Audits
+       HostCandidateAttributeGetter
+       IdentityInCanMakePaymentEvent
+       InsecurePrivateNetworkSubresourceRequest
++      LegacyConstraintGoogIPv6
+       LocalCSSFileExtensionRejected
+       MediaSourceAbortRemove
+       MediaSourceDurationTruncatingBuffered
+```
+
 ## Roll protocol to r1047822 — _2022-09-16T04:59:17.000Z_
-######  Diff: [`3c081bc...6b4ce9c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3c081bc...6b4ce9c`)
+######  Diff: [`3c081bc...f628653`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3c081bc...f628653`)
 
 ```diff
 @@ browser_protocol.pdl:8467 @@ domain Page
@@ -9765,78 +9779,4 @@ index bd277eb..09c420e 100644
        ContentSecurityPolicyViolationType contentSecurityPolicyViolationType
        optional AffectedFrame frameAncestor
        optional SourceCodeLocation sourceCodeLocation
-```
-
-## Roll protocol to r818814 — _2020-10-20T07:15:59.000Z_
-######  Diff: [`d268e57...e1b8740`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d268e57...e1b8740`)
-
-```diff
-@@ browser_protocol.pdl:4664 @@ domain Network
-       InvalidPrefix
-       # An unknown error was encountered when trying to store this cookie.
-       UnknownError
--      # The cookie had the "SameSite=Strict" attribute but came from a response
--      # with the same registrable domain but a different scheme.
--      # This includes navigation requests intitiated by other origins.
--      # This is the "Schemeful Same-Site" version of the blocked reason.
--      SchemefulSameSiteStrict
--      # The cookie had the "SameSite=Lax" attribute but came from a response
--      # with the same registrable domain but a different scheme.
--      # This is the "Schemeful Same-Site" version of the blocked reason.
--      SchemefulSameSiteLax
--      # The cookie didn't specify a "SameSite" attribute and was defaulted to
--      # "SameSite=Lax" and broke the same rules specified in the SchemefulSameSiteLax
--      # value.
--      # This is the "Schemeful Same-Site" version of the blocked reason.
--      SchemefulSameSiteUnspecifiedTreatedAsLax
- 
-   # Types of reasons why a cookie may not be sent with a request.
-   experimental type CookieBlockedReason extends string
-@@ -4706,20 +4692,6 @@ domain Network
-       UserPreferences
-       # An unknown error was encountered when trying to send this cookie.
-       UnknownError
--      # The cookie had the "SameSite=Strict" attribute but came from a response
--      # with the same registrable domain but a different scheme.
--      # This includes navigation requests intitiated by other origins.
--      # This is the "Schemeful Same-Site" version of the blocked reason.
--      SchemefulSameSiteStrict
--      # The cookie had the "SameSite=Lax" attribute but came from a response
--      # with the same registrable domain but a different scheme.
--      # This is the "Schemeful Same-Site" version of the blocked reason.
--      SchemefulSameSiteLax
--      # The cookie didn't specify a "SameSite" attribute and was defaulted to
--      # "SameSite=Lax" and broke the same rules specified in the SchemefulSameSiteLax
--      # value.
--      # This is the "Schemeful Same-Site" version of the blocked reason.
--      SchemefulSameSiteUnspecifiedTreatedAsLax
- 
-   # A cookie which was not stored from a response with the corresponding reason.
-   experimental type BlockedSetCookieWithReason extends object
-@@ -7251,25 +7223,9 @@ experimental domain Storage
-       number usage
-       # Storage quota (bytes).
-       number quota
--      # Whether or not the origin has an active storage quota override
--      boolean overrideActive
-       # Storage usage per type (bytes).
-       array of UsageForType usageBreakdown
- 
--  # Override quota for the specified origin
--  experimental command overrideQuotaForOrigin
--    parameters
--      # Security origin.
--      string origin
--      # The quota size (in bytes) to override the original quota with.
--      # If this is called multiple times, the overriden quota will be equal to
--      # the quotaSize provided in the final call. If this is called without
--      # specifying a quotaSize, the quota will be reset to the default value for
--      # the specified origin. If this is called multiple times with different
--      # origins, the override will be maintained for each origin until it is
--      # disabled (called without a quotaSize).
--      optional number quotaSize
--
-   # Registers origin to be notified when an update occurs to its cache storage list.
-   command trackCacheStorageForOrigin
-     parameters
 ```

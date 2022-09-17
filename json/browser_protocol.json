@@ -1577,7 +1577,6 @@
                         "HostCandidateAttributeGetter",
                         "IdentityInCanMakePaymentEvent",
                         "InsecurePrivateNetworkSubresourceRequest",
-                        "LegacyConstraintGoogIPv6",
                         "LocalCSSFileExtensionRejected",
                         "MediaSourceAbortRemove",
                         "MediaSourceDurationTruncatingBuffered",
