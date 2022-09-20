@@ -1,7 +1,48 @@
 
 
+## Roll protocol to r1048947 — _2022-09-20T04:57:57.000Z_
+######  Diff: [`8fd85c8...4b32bca`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8fd85c8...4b32bca`)
+
+```diff
+@@ browser_protocol.pdl:8458 @@ domain Page
+       AudioOutputDeviceRequested
+       MixedContent
+       TriggerBackgrounded
++      EmbedderTriggeredAndSameOriginRedirected
+       EmbedderTriggeredAndCrossOriginRedirected
+       MemoryLimitExceeded
+       # Prerenders can be cancelled when Chrome uses excessive memory. This is
+diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
+index 2d56043..8d8211b 100644
+--- a/pdl/js_protocol.pdl
++++ b/pdl/js_protocol.pdl
+@@ -766,22 +766,6 @@ experimental domain HeapProfiler
+       # Average sample interval in bytes. Poisson distribution is used for the intervals. The
+       # default value is 32768 bytes.
+       optional number samplingInterval
+-      # By default, the sampling heap profiler reports only objects which are
+-      # still alive when the profile is returned via getSamplingProfile or
+-      # stopSampling, which is useful for determining what functions contribute
+-      # the most to steady-state memory usage. This flag instructs the sampling
+-      # heap profiler to also include information about objects discarded by
+-      # major GC, which will show which functions cause large temporary memory
+-      # usage or long GC pauses.
+-      optional boolean includeObjectsCollectedByMajorGC
+-      # By default, the sampling heap profiler reports only objects which are
+-      # still alive when the profile is returned via getSamplingProfile or
+-      # stopSampling, which is useful for determining what functions contribute
+-      # the most to steady-state memory usage. This flag instructs the sampling
+-      # heap profiler to also include information about objects discarded by
+-      # minor GC, which is useful when tuning a latency-sensitive application
+-      # for minimal GC activity.
+-      optional boolean includeObjectsCollectedByMinorGC
+ 
+   command startTrackingHeapObjects
+     parameters
+```
+
 ## Roll protocol to r1048352 — _2022-09-17T04:46:41.000Z_
-######  Diff: [`f628653...5c49cd2`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f628653...5c49cd2`)
+######  Diff: [`f628653...8fd85c8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f628653...8fd85c8`)
 
 ```diff
 @@ browser_protocol.pdl:772 @@ experimental domain Audits
@@ -9765,18 +9806,4 @@ index bd277eb..09c420e 100644
        first-line-inherited
        scrollbar
        scrollbar-thumb
-```
-
-## Roll protocol to r818844 — _2020-10-20T10:15:54.000Z_
-######  Diff: [`e1b8740...1feb204`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e1b8740...1feb204`)
-
-```diff
-@@ browser_protocol.pdl:642 @@ experimental domain Audits
-       optional string blockedURL
-       # Specific directive that is violated, causing the CSP issue.
-       string violatedDirective
--      boolean isReportOnly
-       ContentSecurityPolicyViolationType contentSecurityPolicyViolationType
-       optional AffectedFrame frameAncestor
-       optional SourceCodeLocation sourceCodeLocation
 ```

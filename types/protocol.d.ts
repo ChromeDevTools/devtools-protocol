@@ -1135,6 +1135,26 @@ export namespace Protocol {
              * default value is 32768 bytes.
              */
             samplingInterval?: number;
+            /**
+             * By default, the sampling heap profiler reports only objects which are
+             * still alive when the profile is returned via getSamplingProfile or
+             * stopSampling, which is useful for determining what functions contribute
+             * the most to steady-state memory usage. This flag instructs the sampling
+             * heap profiler to also include information about objects discarded by
+             * major GC, which will show which functions cause large temporary memory
+             * usage or long GC pauses.
+             */
+            includeObjectsCollectedByMajorGC?: boolean;
+            /**
+             * By default, the sampling heap profiler reports only objects which are
+             * still alive when the profile is returned via getSamplingProfile or
+             * stopSampling, which is useful for determining what functions contribute
+             * the most to steady-state memory usage. This flag instructs the sampling
+             * heap profiler to also include information about objects discarded by
+             * minor GC, which is useful when tuning a latency-sensitive application
+             * for minimal GC activity.
+             */
+            includeObjectsCollectedByMinorGC?: boolean;
         }
 
         export interface StartTrackingHeapObjectsRequest {
@@ -12854,7 +12874,7 @@ export namespace Protocol {
         /**
          * List of FinalStatus reasons for Prerender2.
          */
-        export type PrerenderFinalStatus = ('Activated' | 'Destroyed' | 'LowEndDevice' | 'CrossOriginRedirect' | 'CrossOriginNavigation' | 'InvalidSchemeRedirect' | 'InvalidSchemeNavigation' | 'InProgressNavigation' | 'NavigationRequestBlockedByCsp' | 'MainFrameNavigation' | 'MojoBinderPolicy' | 'RendererProcessCrashed' | 'RendererProcessKilled' | 'Download' | 'TriggerDestroyed' | 'NavigationNotCommitted' | 'NavigationBadHttpStatus' | 'ClientCertRequested' | 'NavigationRequestNetworkError' | 'MaxNumOfRunningPrerendersExceeded' | 'CancelAllHostsForTesting' | 'DidFailLoad' | 'Stop' | 'SslCertificateError' | 'LoginAuthRequested' | 'UaChangeRequiresReload' | 'BlockedByClient' | 'AudioOutputDeviceRequested' | 'MixedContent' | 'TriggerBackgrounded' | 'EmbedderTriggeredAndSameOriginRedirected' | 'EmbedderTriggeredAndCrossOriginRedirected' | 'MemoryLimitExceeded' | 'FailToGetMemoryUsage' | 'DataSaverEnabled' | 'HasEffectiveUrl' | 'ActivatedBeforeStarted');
+        export type PrerenderFinalStatus = ('Activated' | 'Destroyed' | 'LowEndDevice' | 'CrossOriginRedirect' | 'CrossOriginNavigation' | 'InvalidSchemeRedirect' | 'InvalidSchemeNavigation' | 'InProgressNavigation' | 'NavigationRequestBlockedByCsp' | 'MainFrameNavigation' | 'MojoBinderPolicy' | 'RendererProcessCrashed' | 'RendererProcessKilled' | 'Download' | 'TriggerDestroyed' | 'NavigationNotCommitted' | 'NavigationBadHttpStatus' | 'ClientCertRequested' | 'NavigationRequestNetworkError' | 'MaxNumOfRunningPrerendersExceeded' | 'CancelAllHostsForTesting' | 'DidFailLoad' | 'Stop' | 'SslCertificateError' | 'LoginAuthRequested' | 'UaChangeRequiresReload' | 'BlockedByClient' | 'AudioOutputDeviceRequested' | 'MixedContent' | 'TriggerBackgrounded' | 'EmbedderTriggeredAndCrossOriginRedirected' | 'MemoryLimitExceeded' | 'FailToGetMemoryUsage' | 'DataSaverEnabled' | 'HasEffectiveUrl' | 'ActivatedBeforeStarted');
 
         export interface AddScriptToEvaluateOnLoadRequest {
             scriptSource: string;

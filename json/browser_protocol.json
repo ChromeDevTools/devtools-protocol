@@ -16327,7 +16327,6 @@
                         "AudioOutputDeviceRequested",
                         "MixedContent",
                         "TriggerBackgrounded",
-                        "EmbedderTriggeredAndSameOriginRedirected",
                         "EmbedderTriggeredAndCrossOriginRedirected",
                         "MemoryLimitExceeded",
                         "FailToGetMemoryUsage",
