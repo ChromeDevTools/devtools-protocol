@@ -16332,7 +16332,9 @@
                         "FailToGetMemoryUsage",
                         "DataSaverEnabled",
                         "HasEffectiveUrl",
-                        "ActivatedBeforeStarted"
+                        "ActivatedBeforeStarted",
+                        "InactivePageRestriction",
+                        "StartFailed"
                     ]
                 }
             ],

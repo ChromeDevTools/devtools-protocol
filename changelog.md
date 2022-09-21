@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1049481 — _2022-09-21T04:59:07.000Z_
+######  Diff: [`8f2c950...d1b7f59`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8f2c950...d1b7f59`)
+
+```diff
+@@ browser_protocol.pdl:8466 @@ domain Page
+       DataSaverEnabled
+       HasEffectiveUrl
+       ActivatedBeforeStarted
+-      InactivePageRestriction
+-      StartFailed
+ 
+   # Fired when a prerender attempt is completed.
+   experimental event prerenderAttemptCompleted
+```
+
 ## Roll protocol to r1048947 — _2022-09-20T04:57:57.000Z_
-######  Diff: [`8fd85c8...4b32bca`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8fd85c8...4b32bca`)
+######  Diff: [`8fd85c8...8f2c950`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8fd85c8...8f2c950`)
 
 ```diff
 @@ browser_protocol.pdl:8458 @@ domain Page
@@ -9792,18 +9807,4 @@ index bd277eb..09c420e 100644
  
    # Enable the WebAuthn domain and start intercepting credential storage and
    # retrieval with a virtual authenticator.
-```
-
-## Roll protocol to r818974 — _2020-10-20T17:16:05.000Z_
-######  Diff: [`1feb204...89f0fa5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1feb204...89f0fa5`)
-
-```diff
-@@ browser_protocol.pdl:1779 @@ domain DOM
-       marker
-       backdrop
-       selection
--      target-text
-       first-line-inherited
-       scrollbar
-       scrollbar-thumb
 ```
