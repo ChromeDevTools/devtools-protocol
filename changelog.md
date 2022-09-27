@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1051614 — _2022-09-27T04:54:05.000Z_
+######  Diff: [`32a0581...d4f5173`](https://github.com/ChromeDevTools/devtools-protocol/compare/`32a0581...d4f5173`)
+
+```diff
+@@ browser_protocol.pdl:783 @@ experimental domain Audits
+       ObsoleteWebRtcCipherSuite
+       OpenWebDatabaseInsecureContext
+       OverflowVisibleOnReplacedElement
+-      PaymentInstruments
+       PersistentQuotaType
+       PictureSourceSrc
+       PrefixedCancelAnimationFrame
+```
+
 ## Roll protocol to r1049481 — _2022-09-21T04:59:07.000Z_
-######  Diff: [`8f2c950...d1b7f59`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8f2c950...d1b7f59`)
+######  Diff: [`8f2c950...32a0581`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8f2c950...32a0581`)
 
 ```diff
 @@ browser_protocol.pdl:8466 @@ domain Page
@@ -9770,41 +9784,4 @@ index bd277eb..09c420e 100644
        # X delta in CSS pixels for mouse wheel event (default: 0).
        optional number deltaX
        # Y delta in CSS pixels for mouse wheel event (default: 0).
-```
-
-## Roll protocol to r819498 — _2020-10-21T20:16:11.000Z_
-######  Diff: [`89f0fa5...109271e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`89f0fa5...109271e`)
-
-```diff
-@@ browser_protocol.pdl:8255 @@ experimental domain WebAuthn
-       # Client To Authenticator Protocol 2.
-       ctap2
- 
--  type Ctap2Version extends string
--    enum
--      ctap2_0
--      ctap2_1
--
-   type AuthenticatorTransport extends string
-     enum
-       # Cross-Platform authenticator attachments:
-@@ -8273,8 +8268,6 @@ experimental domain WebAuthn
-   type VirtualAuthenticatorOptions extends object
-     properties
-       AuthenticatorProtocol protocol
--      # Defaults to ctap2_0. Ignored if |protocol| == u2f.
--      optional Ctap2Version ctap2Version
-       AuthenticatorTransport transport
-       # Defaults to false.
-       optional boolean hasResidentKey
-@@ -8307,9 +8300,6 @@ experimental domain WebAuthn
-       # assertion.
-       # See https://w3c.github.io/webauthn/#signature-counter
-       integer signCount
--      # The large blob associated with the credential.
--      # See https://w3c.github.io/webauthn/#sctn-large-blob-extension
--      optional binary largeBlob
- 
-   # Enable the WebAuthn domain and start intercepting credential storage and
-   # retrieval with a virtual authenticator.
 ```
