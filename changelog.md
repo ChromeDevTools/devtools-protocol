@@ -1,7 +1,46 @@
 
 
+## Roll protocol to r1052219 — _2022-09-28T04:58:58.000Z_
+######  Diff: [`7688064...339d804`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7688064...339d804`)
+
+```diff
+@@ browser_protocol.pdl:1 @@ @@ -1,4 +1,4 @@
+-# Copyright 2017 The Chromium Authors
++# Copyright 2017 The Chromium Authors. All rights reserved.
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ #
+@@ -775,6 +775,8 @@ experimental domain Audits
+       LocalCSSFileExtensionRejected
+       MediaSourceAbortRemove
+       MediaSourceDurationTruncatingBuffered
++      NavigateEventRestoreScroll
++      NavigateEventTransitionWhile
+       NoSysexWebMIDIWithoutPermission
+       NotificationInsecureOrigin
+       NotificationPermissionRequestedIframe
+@@ -782,7 +784,6 @@ experimental domain Audits
+       OpenWebDatabaseInsecureContext
+       OverflowVisibleOnReplacedElement
+       PaymentInstruments
+-      PaymentRequestCSPViolation
+       PersistentQuotaType
+       PictureSourceSrc
+       PrefixedCancelAnimationFrame
+@@ -9360,9 +9361,6 @@ domain Target
+       # Frame id of originating window (is only set if target has an opener).
+       experimental optional Page.FrameId openerFrameId
+       experimental optional Browser.BrowserContextID browserContextId
+-      # Provides additional details for specific target types. For example, for
+-      # the type of "page", this may be set to "portal" or "prerender".
+-      experimental optional string subtype
+ 
+   # A filter used by target query/discovery/auto-attach operations.
+   experimental type FilterEntry extends object
+```
+
 ## Roll protocol to r1051614 — _2022-09-27T04:54:05.000Z_
-######  Diff: [`32a0581...d4f5173`](https://github.com/ChromeDevTools/devtools-protocol/compare/`32a0581...d4f5173`)
+######  Diff: [`32a0581...7688064`](https://github.com/ChromeDevTools/devtools-protocol/compare/`32a0581...7688064`)
 
 ```diff
 @@ browser_protocol.pdl:783 @@ experimental domain Audits
@@ -9746,42 +9785,4 @@ index bd277eb..09c420e 100644
  # This domain exposes CSS read/write operations. All CSS objects (stylesheets, rules, and styles)
  # have an associated `id` used in subsequent operations on the related object. Each object type has
  # a specific `id` structure, and those are not interchangeable between objects of different kinds.
-```
-
-## Roll protocol to r820081 — _2020-10-23T01:16:08.000Z_
-######  Diff: [`109271e...d0179ab`](https://github.com/ChromeDevTools/devtools-protocol/compare/`109271e...d0179ab`)
-
-```diff
-@@ browser_protocol.pdl:3609 @@ domain Input
-       optional number rotationAngle
-       # Force (default: 1.0).
-       optional number force
--      # The normalized tangential pressure, which has a range of [-1,1] (default: 0).
--      experimental optional number tangentialPressure
--      # The plane angle between the Y-Z plane and the plane containing both the stylus axis and the Y axis, in degrees of the range [-90,90], a positive tiltX is to the right (default: 0)
--      experimental optional integer tiltX
--      # The plane angle between the X-Z plane and the plane containing both the stylus axis and the X axis, in degrees of the range [-90,90], a positive tiltY is towards the user (default: 0).
--      experimental optional integer tiltY
--      # The clockwise rotation of a pen stylus around its own major axis, in degrees in the range [0,359] (default: 0).
--      experimental optional integer twist
-       # Identifier used to track touch sources between events, must be unique within an event.
-       optional number id
- 
-@@ -3716,16 +3708,6 @@ domain Input
-       optional integer buttons
-       # Number of times the mouse button was clicked (default: 0).
-       optional integer clickCount
--      # The normalized pressure, which has a range of [0,1] (default: 0).
--      experimental optional number force
--      # The normalized tangential pressure, which has a range of [-1,1] (default: 0).
--      experimental optional number tangentialPressure
--      # The plane angle between the Y-Z plane and the plane containing both the stylus axis and the Y axis, in degrees of the range [-90,90], a positive tiltX is to the right (default: 0).
--      experimental optional integer tiltX
--      # The plane angle between the X-Z plane and the plane containing both the stylus axis and the X axis, in degrees of the range [-90,90], a positive tiltY is towards the user (default: 0).
--      experimental optional integer tiltY
--      # The clockwise rotation of a pen stylus around its own major axis, in degrees in the range [0,359] (default: 0).
--      experimental optional integer twist
-       # X delta in CSS pixels for mouse wheel event (default: 0).
-       optional number deltaX
-       # Y delta in CSS pixels for mouse wheel event (default: 0).
 ```
