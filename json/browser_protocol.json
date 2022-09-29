@@ -11351,6 +11351,22 @@
                     ]
                 },
                 {
+                    "id": "AlternateProtocolUsage",
+                    "description": "The reason why Chrome uses a specific transport protocol for HTTP semantics.",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "alternativeJobWonWithoutRace",
+                        "alternativeJobWonRace",
+                        "mainJobWonRace",
+                        "mappingMissing",
+                        "broken",
+                        "dnsAlpnH3JobWonWithoutRace",
+                        "dnsAlpnH3JobWonRace",
+                        "unspecifiedReason"
+                    ]
+                },
+                {
                     "id": "Response",
                     "description": "HTTP response data.",
                     "type": "object",
@@ -11474,6 +11490,13 @@
                             "description": "Protocol used to fetch this request.",
                             "optional": true,
                             "type": "string"
+                        },
+                        {
+                            "name": "alternateProtocolUsage",
+                            "description": "The reason why Chrome uses a specific transport protocol for HTTP semantics.",
+                            "experimental": true,
+                            "optional": true,
+                            "$ref": "AlternateProtocolUsage"
                         },
                         {
                             "name": "securityState",
@@ -15230,6 +15253,7 @@
                         "ch-downlink",
                         "ch-ect",
                         "ch-prefers-color-scheme",
+                        "ch-prefers-reduced-motion",
                         "ch-rtt",
                         "ch-save-data",
                         "ch-ua",
@@ -15256,7 +15280,6 @@
                         "encrypted-media",
                         "execution-while-out-of-viewport",
                         "execution-while-not-rendered",
-                        "federated-credentials",
                         "focus-without-user-activation",
                         "fullscreen",
                         "frobulate",
@@ -15264,6 +15287,7 @@
                         "geolocation",
                         "gyroscope",
                         "hid",
+                        "identity-credential-get",
                         "idle-detection",
                         "interest-cohort",
                         "join-ad-interest-group",

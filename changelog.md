@@ -1,7 +1,77 @@
 
 
+## Roll protocol to r1052822 — _2022-09-29T04:58:25.000Z_
+######  Diff: [`0ce6bcb...7878ab6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0ce6bcb...7878ab6`)
+
+```diff
+@@ browser_protocol.pdl:5256 @@ domain Network
+       # Type "send-redemption-record" in the Trust Token API.
+       Signing
+ 
+-  # The reason why Chrome uses a specific transport protocol for HTTP semantics.
+-  experimental type AlternateProtocolUsage extends string
+-    enum
+-      # Alternate Protocol was used without racing a normal connection.
+-      alternativeJobWonWithoutRace
+-      # Alternate Protocol was used by winning a race with a normal connection.
+-      alternativeJobWonRace
+-      # Alternate Protocol was not used by losing a race with a normal connection.
+-      mainJobWonRace
+-      # Alternate Protocol was not used because no Alternate-Protocol information
+-      # was available when the request was issued, but an Alternate-Protocol header
+-      # was present in the response.
+-      mappingMissing
+-      # Alternate Protocol was not used because it was marked broken.
+-      broken
+-      # HTTPS DNS protocol upgrade job was used without racing with a normal
+-      # connection and an Alternate Protocol job.
+-      dnsAlpnH3JobWonWithoutRace
+-      # HTTPS DNS protocol upgrade job won a race with a normal connection and
+-      # an Alternate Protocol job.
+-      dnsAlpnH3JobWonRace
+-      # When the reason is unspecified.
+-      unspecifiedReason
+-
+   # HTTP response data.
+   type Response extends object
+     properties
+@@ -5325,8 +5301,6 @@ domain Network
+       optional string cacheStorageCacheName
+       # Protocol used to fetch this request.
+       optional string protocol
+-      # The reason why Chrome uses a specific transport protocol for HTTP semantics.
+-      experimental optional AlternateProtocolUsage alternateProtocolUsage
+       # Security state of the request resource.
+       Security.SecurityState securityState
+       # Security details for the request.
+@@ -7132,7 +7106,6 @@ domain Page
+       ch-downlink
+       ch-ect
+       ch-prefers-color-scheme
+-      ch-prefers-reduced-motion
+       ch-rtt
+       ch-save-data
+       ch-ua
+@@ -7159,6 +7132,7 @@ domain Page
+       encrypted-media
+       execution-while-out-of-viewport
+       execution-while-not-rendered
++      federated-credentials
+       focus-without-user-activation
+       fullscreen
+       frobulate
+@@ -7166,7 +7140,6 @@ domain Page
+       geolocation
+       gyroscope
+       hid
+-      identity-credential-get
+       idle-detection
+       interest-cohort
+       join-ad-interest-group
+```
+
 ## Roll protocol to r1052219 — _2022-09-28T04:58:58.000Z_
-######  Diff: [`7688064...339d804`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7688064...339d804`)
+######  Diff: [`7688064...0ce6bcb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7688064...0ce6bcb`)
 
 ```diff
 @@ browser_protocol.pdl:1 @@ @@ -1,4 +1,4 @@
@@ -9755,34 +9825,4 @@ index bd277eb..09c420e 100644
        boolean enabled
  
    # Sets the requests to intercept that match the provided patterns and optionally resource types.
-```
-
-## Roll protocol to r820101 — _2020-10-23T02:16:05.000Z_
-######  Diff: [`d0179ab...d246615`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d0179ab...d246615`)
-
-```diff
-@@ browser_protocol.pdl:855 @@ domain Browser
-       # For "camera" permission, may specify panTiltZoom.
-       optional boolean panTiltZoom
- 
--  # Browser command ids used by executeBrowserCommand.
--  experimental type BrowserCommandId extends string
--    enum
--      openTabSearch
--
-   # Set permission settings for given origin.
-   experimental command setPermission
-     parameters
-@@ -1019,11 +1014,6 @@ domain Browser
-       # Png encoded image.
-       optional binary image
- 
--  # Invoke custom browser commands used by telemetry.
--  experimental command executeBrowserCommand
--    parameters
--      BrowserCommandId commandId
--
- # This domain exposes CSS read/write operations. All CSS objects (stylesheets, rules, and styles)
- # have an associated `id` used in subsequent operations on the related object. Each object type has
- # a specific `id` structure, and those are not interchangeable between objects of different kinds.
 ```
