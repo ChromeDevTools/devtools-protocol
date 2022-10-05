@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1055124 — _2022-10-05T04:35:05.000Z_
+######  Diff: [`6e37e04...c654162`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6e37e04...c654162`)
+
+```diff
+@@ browser_protocol.pdl:8495 @@ domain Page
+       ActivatedBeforeStarted
+       InactivePageRestriction
+       StartFailed
+-      TimeoutBackgrounded
+ 
+   # Fired when a prerender attempt is completed.
+   experimental event prerenderAttemptCompleted
+```
+
 ## Roll protocol to r1052822 — _2022-09-29T04:58:25.000Z_
-######  Diff: [`0ce6bcb...7878ab6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0ce6bcb...7878ab6`)
+######  Diff: [`0ce6bcb...6e37e04`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0ce6bcb...6e37e04`)
 
 ```diff
 @@ browser_protocol.pdl:5256 @@ domain Network
@@ -9805,24 +9819,4 @@ index bd277eb..09c420e 100644
  
    # Fired when HTTP request has finished loading.
    event loadingFinished
-```
-
-## Roll protocol to r820307 — _2020-10-23T17:16:09.000Z_
-######  Diff: [`d246615...31947f3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d246615...31947f3`)
-
-```diff
-@@ browser_protocol.pdl:5166 @@ domain Network
-       # Map with extra HTTP headers.
-       Headers headers
- 
--  # Specifies whether to attach a page script stack id in requests
--  experimental command setAttachDebugStack
-+  # Specifies whether to sned a debug header to all outgoing requests.
-+  experimental command setAttachDebugHeader
-     parameters
--      # Whether to attach a page script stack for debugging purpose.
-+      # Whether to send a debug header.
-       boolean enabled
- 
-   # Sets the requests to intercept that match the provided patterns and optionally resource types.
 ```

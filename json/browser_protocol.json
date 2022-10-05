@@ -16358,7 +16358,8 @@
                         "HasEffectiveUrl",
                         "ActivatedBeforeStarted",
                         "InactivePageRestriction",
-                        "StartFailed"
+                        "StartFailed",
+                        "TimeoutBackgrounded"
                     ]
                 }
             ],
