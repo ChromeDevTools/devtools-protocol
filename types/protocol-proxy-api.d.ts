@@ -2745,8 +2745,9 @@ export namespace ProtocolProxyApi {
         getAppId(): Promise<Protocol.Page.GetAppIdResponse>;
 
         /**
-         * Returns all browser cookies. Depending on the backend support, will return detailed cookie
-         * information in the `cookies` field.
+         * Returns all browser cookies for the page and all of its subframes. Depending
+         * on the backend support, will return detailed cookie information in the
+         * `cookies` field.
          */
         getCookies(): Promise<Protocol.Page.GetCookiesResponse>;
 

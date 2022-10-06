@@ -1,7 +1,34 @@
 
 
+## Roll protocol to r1055599 — _2022-10-06T04:34:37.000Z_
+######  Diff: [`221d16f...a83daeb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`221d16f...a83daeb`)
+
+```diff
+@@ browser_protocol.pdl:7166 @@ domain Page
+       geolocation
+       gyroscope
+       hid
+-      identity-credentials-get
++      identity-credential-get
+       idle-detection
+       interest-cohort
+       join-ad-interest-group
+@@ -7682,9 +7682,8 @@ domain Page
+       # Recommendation for manifest's id attribute to match current id computed from start_url
+       optional string recommendedId
+ 
+-  # Returns all browser cookies for the page and all of its subframes. Depending
+-  # on the backend support, will return detailed cookie information in the
+-  # `cookies` field.
++  # Returns all browser cookies. Depending on the backend support, will return detailed cookie
++  # information in the `cookies` field.
+   experimental deprecated command getCookies
+     # Use 'Network.getCookies' instead
+     redirect Network
+```
+
 ## Roll protocol to r1055124 — _2022-10-05T04:35:05.000Z_
-######  Diff: [`6e37e04...c654162`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6e37e04...c654162`)
+######  Diff: [`6e37e04...221d16f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6e37e04...221d16f`)
 
 ```diff
 @@ browser_protocol.pdl:8495 @@ domain Page
@@ -9764,59 +9791,4 @@ index bd277eb..09c420e 100644
    # Allows overriding user agent with the given string.
    command setUserAgentOverride
      parameters
-```
-
-## Roll protocol to r822096 — _2020-10-29T10:16:12.000Z_
-######  Diff: [`31947f3...260c66a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`31947f3...260c66a`)
-
-```diff
-@@ browser_protocol.pdl:4485 @@ domain Network
-       corp-not-same-origin-after-defaulted-to-same-origin-by-coep
-       corp-not-same-site
- 
--  # The reason why request was blocked.
--  type CorsError extends string
--    enum
--      DisallowedByMode
--      InvalidResponse
--      WildcardOriginNotAllowed
--      MissingAllowOriginHeader
--      MultipleAllowOriginValues
--      InvalidAllowOriginValue
--      AllowOriginMismatch
--      InvalidAllowCredentials
--      CorsDisabledScheme
--      PreflightInvalidStatus
--      PreflightDisallowedRedirect
--      PreflightWildcardOriginNotAllowed
--      PreflightMissingAllowOriginHeader
--      PreflightMultipleAllowOriginValues
--      PreflightInvalidAllowOriginValue
--      PreflightAllowOriginMismatch
--      PreflightInvalidAllowCredentials
--      PreflightMissingAllowExternal
--      PreflightInvalidAllowExternal
--      InvalidAllowMethodsPreflightResponse
--      InvalidAllowHeadersPreflightResponse
--      MethodDisallowedByPreflightResponse
--      HeaderDisallowedByPreflightResponse
--      RedirectContainsCredentials
--
--  type CorsErrorStatus extends object
--    properties
--      CorsError corsError
--      string failedParameter
--
-   # Source of serviceworker response.
-   type ServiceWorkerResponseSource extends string
-     enum
-@@ -5268,8 +5235,6 @@ domain Network
-       optional boolean canceled
-       # The reason why loading was blocked, if any.
-       optional BlockedReason blockedReason
--       # The reason why loading was blocked by CORS, if any.
--      optional CorsErrorStatus corsErrorStatus
- 
-   # Fired when HTTP request has finished loading.
-   event loadingFinished
 ```

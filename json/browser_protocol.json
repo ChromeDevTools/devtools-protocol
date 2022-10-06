@@ -15287,7 +15287,7 @@
                         "geolocation",
                         "gyroscope",
                         "hid",
-                        "identity-credential-get",
+                        "identity-credentials-get",
                         "idle-detection",
                         "interest-cohort",
                         "join-ad-interest-group",
@@ -16643,7 +16643,7 @@
                 },
                 {
                     "name": "getCookies",
-                    "description": "Returns all browser cookies. Depending on the backend support, will return detailed cookie\ninformation in the `cookies` field.",
+                    "description": "Returns all browser cookies for the page and all of its subframes. Depending\non the backend support, will return detailed cookie information in the\n`cookies` field.",
                     "experimental": true,
                     "deprecated": true,
                     "redirect": "Network",
