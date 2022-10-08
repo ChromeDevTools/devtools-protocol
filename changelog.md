@@ -1,7 +1,25 @@
 
 
+## Roll protocol to r1056622 — _2022-10-08T04:34:15.000Z_
+######  Diff: [`871805f...6fc7bf6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`871805f...6fc7bf6`)
+
+```diff
+@@ browser_protocol.pdl:10036 @@ domain Fetch
+       optional array of HeaderEntry responseHeaders
+       # If the intercepted request had a corresponding Network.requestWillBeSent event fired for it,
+       # then this networkId will be the same as the requestId present in the requestWillBeSent event.
+-      optional Network.RequestId networkId
+-      # If the request is due to a redirect response from the server, the id of the request that
+-      # has caused the redirect.
+-      experimental optional RequestId redirectedRequestId
++      optional RequestId networkId
+ 
+   # Issued when the domain is enabled with handleAuthRequests set to true.
+   # The request is paused until client responds with continueWithAuth.
+```
+
 ## Roll protocol to r1055599 — _2022-10-06T04:34:37.000Z_
-######  Diff: [`221d16f...a83daeb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`221d16f...a83daeb`)
+######  Diff: [`221d16f...871805f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`221d16f...871805f`)
 
 ```diff
 @@ browser_protocol.pdl:7166 @@ domain Page
@@ -9767,28 +9785,4 @@ index bd277eb..09c420e 100644
      returns
        # GUID of the resulting global memory dump.
        string dumpGuid
-```
-
-## Roll protocol to r822651 — _2020-10-30T15:16:03.000Z_
-######  Diff: [`260c66a...b4c97ed`](https://github.com/ChromeDevTools/devtools-protocol/compare/`260c66a...b4c97ed`)
-
-```diff
-@@ browser_protocol.pdl:3310 @@ domain Emulation
-   # Notification sent after the virtual time budget for the current VirtualTimePolicy has run out.
-   experimental event virtualTimeBudgetExpired
- 
--  # Enum of image types that can be disabled.
--  experimental type DisabledImageType extends string
--    enum
--      avif
--      webp
--
--  experimental command setDisabledImageTypes
--    parameters
--      # Image types to disable.
--      array of DisabledImageType imageTypes
--
-   # Allows overriding user agent with the given string.
-   command setUserAgentOverride
-     parameters
 ```

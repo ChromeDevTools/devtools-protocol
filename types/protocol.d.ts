@@ -15991,7 +15991,12 @@ export namespace Protocol {
              * If the intercepted request had a corresponding Network.requestWillBeSent event fired for it,
              * then this networkId will be the same as the requestId present in the requestWillBeSent event.
              */
-            networkId?: RequestId;
+            networkId?: Network.RequestId;
+            /**
+             * If the request is due to a redirect response from the server, the id of the request that
+             * has caused the redirect.
+             */
+            redirectedRequestId?: RequestId;
         }
 
         /**
