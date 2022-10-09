@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1056733 — _2022-10-09T04:46:56.000Z_
+######  Diff: [`1e2a599...920b25c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1e2a599...920b25c`)
+
+```diff
+@@ browser_protocol.pdl:5277 @@ domain Network
+       # HTTPS DNS protocol upgrade job won a race with a normal connection and
+       # an Alternate Protocol job.
+       dnsAlpnH3JobWonRace
+-      # This value is used when the reason is unknown.
++      # When the reason is unspecified.
+       unspecifiedReason
+ 
+   # HTTP response data.
+```
+
 ## Roll protocol to r1056622 — _2022-10-08T04:34:15.000Z_
-######  Diff: [`871805f...6fc7bf6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`871805f...6fc7bf6`)
+######  Diff: [`871805f...1e2a599`](https://github.com/ChromeDevTools/devtools-protocol/compare/`871805f...1e2a599`)
 
 ```diff
 @@ browser_protocol.pdl:10036 @@ domain Fetch
@@ -9754,35 +9769,4 @@ index bd277eb..09c420e 100644
  
    type CorsErrorStatus extends object
      properties
-```
-
-## Roll protocol to r822788 — _2020-10-30T20:16:09.000Z_
-######  Diff: [`b4c97ed...fcb68d1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b4c97ed...fcb68d1`)
-
-```diff
-@@ browser_protocol.pdl:7835 @@ experimental domain Tracing
-       none
-       gzip
- 
--  # Details exposed when memory request explicitly declared.
--  # Keep consistent with memory_dump_request_args.h and
--  # memory_instrumentation.mojom
--  type MemoryDumpLevelOfDetail extends string
--    enum
--      background
--      light
--      detailed
--
-   # Stop trace events collection.
-   command end
- 
-@@ -7864,8 +7855,6 @@ experimental domain Tracing
-     parameters
-       # Enables more deterministic results by forcing garbage collection
-       optional boolean deterministic
--      # Specifies level of details in memory dump. Defaults to "detailed".
--      optional MemoryDumpLevelOfDetail levelOfDetail
-     returns
-       # GUID of the resulting global memory dump.
-       string dumpGuid
 ```
