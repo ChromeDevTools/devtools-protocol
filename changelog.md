@@ -1,7 +1,77 @@
 
 
+## Roll protocol to r1057312 — _2022-10-11T04:55:46.000Z_
+######  Diff: [`02af7d8...1763130`](https://github.com/ChromeDevTools/devtools-protocol/compare/`02af7d8...1763130`)
+
+```diff
+@@ js_protocol.pdl:918 @@ domain Profiler
+       # Functions contained in the script that has coverage data.
+       array of FunctionCoverage functions
+ 
++  # Describes a type collected during runtime.
++  experimental type TypeObject extends object
++    properties
++      # Name of a type collected with type profiling.
++      string name
++
++  # Source offset and types for a parameter or return value.
++  experimental type TypeProfileEntry extends object
++    properties
++      # Source offset of the parameter or end of function for return values.
++      integer offset
++      # The types for this parameter or return value.
++      array of TypeObject types
++
++  # Type profile data collected during runtime for a JavaScript script.
++  experimental type ScriptTypeProfile extends object
++    properties
++      # JavaScript script id.
++      Runtime.ScriptId scriptId
++      # JavaScript script name or url.
++      string url
++      # Type profile entries for parameters and return values of the functions in the script.
++      array of TypeProfileEntry entries
++
+   command disable
+ 
+   command enable
+@@ -952,6 +976,9 @@ domain Profiler
+       # Monotonically increasing time (in seconds) when the coverage update was taken in the backend.
+       number timestamp
+ 
++  # Enable type profile.
++  experimental command startTypeProfile
++
+   command stop
+     returns
+       # Recorded profile.
+@@ -961,6 +988,9 @@ domain Profiler
+   # executing optimized code.
+   command stopPreciseCoverage
+ 
++  # Disable type profile. Disabling releases type profile data collected so far.
++  experimental command stopTypeProfile
++
+   # Collect coverage data for the current isolate, and resets execution counters. Precise code
+   # coverage needs to have started.
+   command takePreciseCoverage
+@@ -970,6 +1000,12 @@ domain Profiler
+       # Monotonically increasing time (in seconds) when the coverage update was taken in the backend.
+       number timestamp
+ 
++  # Collect type profile.
++  experimental command takeTypeProfile
++    returns
++      # Type profile for all scripts since startTypeProfile() was turned on.
++      array of ScriptTypeProfile result
++
+   event consoleProfileFinished
+     parameters
+       string id
+```
+
 ## Roll protocol to r1056733 — _2022-10-09T04:46:56.000Z_
-######  Diff: [`1e2a599...920b25c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1e2a599...920b25c`)
+######  Diff: [`1e2a599...02af7d8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1e2a599...02af7d8`)
 
 ```diff
 @@ browser_protocol.pdl:5277 @@ domain Network
@@ -9755,18 +9825,4 @@ index bd277eb..09c420e 100644
  
    # Information about the Resource on the page.
    experimental type FrameResource extends object
-```
-
-## Roll protocol to r823269 — _2020-11-02T20:16:02.000Z_
-######  Diff: [`fcb68d1...3f62bad`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fcb68d1...3f62bad`)
-
-```diff
-@@ browser_protocol.pdl:4523 @@ domain Network
-       MethodDisallowedByPreflightResponse
-       HeaderDisallowedByPreflightResponse
-       RedirectContainsCredentials
--      InsecurePrivateNetwork
- 
-   type CorsErrorStatus extends object
-     properties
 ```

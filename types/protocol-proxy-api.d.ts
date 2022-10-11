@@ -421,11 +421,6 @@ export namespace ProtocolProxyApi {
          */
         startPreciseCoverage(params: Protocol.Profiler.StartPreciseCoverageRequest): Promise<Protocol.Profiler.StartPreciseCoverageResponse>;
 
-        /**
-         * Enable type profile.
-         */
-        startTypeProfile(): Promise<void>;
-
         stop(): Promise<Protocol.Profiler.StopResponse>;
 
         /**
@@ -435,20 +430,10 @@ export namespace ProtocolProxyApi {
         stopPreciseCoverage(): Promise<void>;
 
         /**
-         * Disable type profile. Disabling releases type profile data collected so far.
-         */
-        stopTypeProfile(): Promise<void>;
-
-        /**
          * Collect coverage data for the current isolate, and resets execution counters. Precise code
          * coverage needs to have started.
          */
         takePreciseCoverage(): Promise<Protocol.Profiler.TakePreciseCoverageResponse>;
-
-        /**
-         * Collect type profile.
-         */
-        takeTypeProfile(): Promise<Protocol.Profiler.TakeTypeProfileResponse>;
 
         on(event: 'consoleProfileFinished', listener: (params: Protocol.Profiler.ConsoleProfileFinishedEvent) => void): void;
 

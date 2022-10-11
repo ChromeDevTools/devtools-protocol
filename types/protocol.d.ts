@@ -1369,48 +1369,6 @@ export namespace Protocol {
             functions: FunctionCoverage[];
         }
 
-        /**
-         * Describes a type collected during runtime.
-         */
-        export interface TypeObject {
-            /**
-             * Name of a type collected with type profiling.
-             */
-            name: string;
-        }
-
-        /**
-         * Source offset and types for a parameter or return value.
-         */
-        export interface TypeProfileEntry {
-            /**
-             * Source offset of the parameter or end of function for return values.
-             */
-            offset: integer;
-            /**
-             * The types for this parameter or return value.
-             */
-            types: TypeObject[];
-        }
-
-        /**
-         * Type profile data collected during runtime for a JavaScript script.
-         */
-        export interface ScriptTypeProfile {
-            /**
-             * JavaScript script id.
-             */
-            scriptId: Runtime.ScriptId;
-            /**
-             * JavaScript script name or url.
-             */
-            url: string;
-            /**
-             * Type profile entries for parameters and return values of the functions in the script.
-             */
-            entries: TypeProfileEntry[];
-        }
-
         export interface GetBestEffortCoverageResponse {
             /**
              * Coverage data for the current isolate.
@@ -1463,13 +1421,6 @@ export namespace Protocol {
              * Monotonically increasing time (in seconds) when the coverage update was taken in the backend.
              */
             timestamp: number;
-        }
-
-        export interface TakeTypeProfileResponse {
-            /**
-             * Type profile for all scripts since startTypeProfile() was turned on.
-             */
-            result: ScriptTypeProfile[];
         }
 
         export interface ConsoleProfileFinishedEvent {
