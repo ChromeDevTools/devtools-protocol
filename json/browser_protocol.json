@@ -21078,7 +21078,7 @@
                         },
                         {
                             "name": "headers",
-                            "description": "If set, overrides the request headers.",
+                            "description": "If set, overrides the request headers. Note that the overrides do not\nextend to subsequent redirect hops, if a redirect happens. Another override\nmay be applied to a different request produced by a redirect.",
                             "optional": true,
                             "type": "array",
                             "items": {

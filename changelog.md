@@ -1,7 +1,24 @@
 
 
+## Roll protocol to r1059094 — _2022-10-14T04:59:20.000Z_
+######  Diff: [`366164c...544fb20`](https://github.com/ChromeDevTools/devtools-protocol/compare/`366164c...544fb20`)
+
+```diff
+@@ browser_protocol.pdl:9945 @@ domain Fetch
+       optional string method
+       # If set, overrides the post data in the request.
+       optional binary postData
+-      # If set, overrides the request headers. Note that the overrides do not
+-      # extend to subsequent redirect hops, if a redirect happens. Another override
+-      # may be applied to a different request produced by a redirect.
++      # If set, overrides the request headers.
+       optional array of HeaderEntry headers
+       # If set, overrides response interception behavior for this request.
+       experimental optional boolean interceptResponse
+```
+
 ## Roll protocol to r1057312 — _2022-10-11T04:55:46.000Z_
-######  Diff: [`02af7d8...1763130`](https://github.com/ChromeDevTools/devtools-protocol/compare/`02af7d8...1763130`)
+######  Diff: [`02af7d8...366164c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`02af7d8...366164c`)
 
 ```diff
 @@ js_protocol.pdl:918 @@ domain Profiler
@@ -9796,33 +9813,4 @@ index bd277eb..09c420e 100644
  
    type ColorFormat extends string
      enum
-```
-
-## Roll protocol to r823956 — _2020-11-04T12:16:00.000Z_
-######  Diff: [`3f62bad...8c7ee2c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3f62bad...8c7ee2c`)
-
-```diff
-@@ browser_protocol.pdl:5941 @@ domain Page
-       # The cross-origin isolation feature is disabled.
-       NotIsolatedFeatureDisabled
- 
--  experimental type GatedAPIFeatures extends string
--    enum
--      SharedArrayBuffers
--      SharedArrayBuffersTransferAllowed
--      PerformanceMeasureMemory
--      PerformanceProfile
--
-   # Information about the Frame on the page.
-   type Frame extends object
-     properties
-@@ -5980,8 +5973,6 @@ domain Page
-       experimental SecureContextType secureContextType
-       # Indicates whether this is a cross origin isolated context.
-       experimental CrossOriginIsolatedContextType crossOriginIsolatedContextType
--      # Indicated which gated APIs / features are available.
--      experimental array of GatedAPIFeatures gatedAPIFeatures
- 
-   # Information about the Resource on the page.
-   experimental type FrameResource extends object
 ```

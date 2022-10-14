@@ -15824,7 +15824,9 @@ export namespace Protocol {
              */
             postData?: string;
             /**
-             * If set, overrides the request headers.
+             * If set, overrides the request headers. Note that the overrides do not
+             * extend to subsequent redirect hops, if a redirect happens. Another override
+             * may be applied to a different request produced by a redirect.
              */
             headers?: HeaderEntry[];
             /**
