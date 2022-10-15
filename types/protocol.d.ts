@@ -12992,6 +12992,18 @@ export namespace Protocol {
             recommendedId?: string;
         }
 
+        export interface GetAdScriptIdRequest {
+            frameId: FrameId;
+        }
+
+        export interface GetAdScriptIdResponse {
+            /**
+             * Identifies the bottom-most script which caused the frame to be labelled
+             * as an ad. Only sent if frame is labelled as an ad and id is available.
+             */
+            adScriptId?: AdScriptId;
+        }
+
         export interface GetCookiesResponse {
             /**
              * Array of cookie objects.
@@ -13591,6 +13603,7 @@ export namespace Protocol {
             /**
              * Identifies the bottom-most script which caused the frame to be labelled
              * as an ad. Only sent if frame is labelled as an ad and id is available.
+             * Deprecated: use Page.getAdScriptId instead.
              */
             adScriptId?: AdScriptId;
         }

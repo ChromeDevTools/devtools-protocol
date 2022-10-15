@@ -1,7 +1,38 @@
 
 
+## Roll protocol to r1059612 — _2022-10-15T04:53:37.000Z_
+######  Diff: [`ddedcee...bdae811`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ddedcee...bdae811`)
+
+```diff
+@@ browser_protocol.pdl:7682 @@ domain Page
+       # Recommendation for manifest's id attribute to match current id computed from start_url
+       optional string recommendedId
+ 
+-  experimental command getAdScriptId
+-    parameters
+-      FrameId frameId
+-    returns
+-      # Identifies the bottom-most script which caused the frame to be labelled
+-      # as an ad. Only sent if frame is labelled as an ad and id is available.
+-      optional AdScriptId adScriptId
+-
+   # Returns all browser cookies for the page and all of its subframes. Depending
+   # on the backend support, will return detailed cookie information in the
+   # `cookies` field.
+@@ -8137,8 +8129,7 @@ domain Page
+       optional Runtime.StackTrace stack
+       # Identifies the bottom-most script which caused the frame to be labelled
+       # as an ad. Only sent if frame is labelled as an ad and id is available.
+-      # Deprecated: use Page.getAdScriptId instead.
+-      experimental deprecated optional AdScriptId adScriptId
++      experimental optional AdScriptId adScriptId
+ 
+   # Fired when frame no longer has a scheduled navigation.
+   deprecated event frameClearedScheduledNavigation
+```
+
 ## Roll protocol to r1059094 — _2022-10-14T04:59:20.000Z_
-######  Diff: [`366164c...544fb20`](https://github.com/ChromeDevTools/devtools-protocol/compare/`366164c...544fb20`)
+######  Diff: [`366164c...ddedcee`](https://github.com/ChromeDevTools/devtools-protocol/compare/`366164c...ddedcee`)
 
 ```diff
 @@ browser_protocol.pdl:9945 @@ domain Fetch
@@ -9775,42 +9806,4 @@ index bd277eb..09c420e 100644
  
    # Returns information about the COEP/COOP isolation status.
    experimental command getSecurityIsolationStatus
-```
-
-## Roll protocol to r824362 — _2020-11-05T10:16:30.000Z_
-######  Diff: [`8c7ee2c...7b37fcd`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8c7ee2c...7b37fcd`)
-
-```diff
-@@ browser_protocol.pdl:5629 @@ experimental domain Overlay
-       # The grid container background color (Default: transparent).
-       optional DOM.RGBA gridBackgroundColor
- 
--  # Configuration data for the highlighting of Flex container elements.
--  type FlexContainerHighlightConfig extends object
--    properties
--      # The style of the container border
--      optional LineStyle containerBorder
--
--  # Style information for drawing a line.
--  type LineStyle extends object
--    properties
--      # The color of the line (default: transparent)
--      optional DOM.RGBA color
--      # The line pattern (default: solid)
--      optional enum pattern
--        dashed
--        dotted
--
-   # Configuration data for the highlighting of page elements.
-   type HighlightConfig extends object
-     properties
-@@ -5678,8 +5662,6 @@ experimental domain Overlay
-       optional ColorFormat colorFormat
-       # The grid layout highlight configuration (default: all transparent).
-       optional GridHighlightConfig gridHighlightConfig
--      # The flex container highlight configuration (default: all transparent).
--      optional FlexContainerHighlightConfig flexContainerHighlightConfig
- 
-   type ColorFormat extends string
-     enum
 ```

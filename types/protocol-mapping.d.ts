@@ -3526,6 +3526,10 @@ export namespace ProtocolMapping {
             paramsType: [];
             returnType: Protocol.Page.GetAppIdResponse;
         };
+        'Page.getAdScriptId': {
+            paramsType: [Protocol.Page.GetAdScriptIdRequest];
+            returnType: Protocol.Page.GetAdScriptIdResponse;
+        };
         /**
          * Returns all browser cookies for the page and all of its subframes. Depending
          * on the backend support, will return detailed cookie information in the
