@@ -1,7 +1,24 @@
 
 
+## Roll protocol to r1060866 — _2022-10-19T05:00:30.000Z_
+######  Diff: [`aca7212...f7c9092`](https://github.com/ChromeDevTools/devtools-protocol/compare/`aca7212...f7c9092`)
+
+```diff
+@@ browser_protocol.pdl:8135 @@ domain Page
+       FrameId parentFrameId
+       # JavaScript stack trace of when frame was attached, only set if frame initiated from script.
+       optional Runtime.StackTrace stack
++      # Identifies the bottom-most script which caused the frame to be labelled
++      # as an ad. Only sent if frame is labelled as an ad and id is available.
++      # Deprecated: use Page.getAdScriptId instead.
++      experimental deprecated optional AdScriptId adScriptId
+ 
+   # Fired when frame no longer has a scheduled navigation.
+   deprecated event frameClearedScheduledNavigation
+```
+
 ## Roll protocol to r1059612 — _2022-10-15T04:53:37.000Z_
-######  Diff: [`ddedcee...bdae811`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ddedcee...bdae811`)
+######  Diff: [`ddedcee...aca7212`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ddedcee...aca7212`)
 
 ```diff
 @@ browser_protocol.pdl:7682 @@ domain Page
@@ -9789,21 +9806,4 @@ index bd277eb..09c420e 100644
  
    # Set permission settings for given origin.
    experimental command setPermission
-```
-
-## Roll protocol to r824785 — _2020-11-06T09:16:19.000Z_
-######  Diff: [`7b37fcd...e944f55`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7b37fcd...e944f55`)
-
-```diff
-@@ browser_protocol.pdl:5528 @@ domain Network
- 
-   experimental type SecurityIsolationStatus extends object
-     properties
--      optional CrossOriginOpenerPolicyStatus coop
--      optional CrossOriginEmbedderPolicyStatus coep
-+      CrossOriginOpenerPolicyStatus coop
-+      CrossOriginEmbedderPolicyStatus coep
- 
-   # Returns information about the COEP/COOP isolation status.
-   experimental command getSecurityIsolationStatus
 ```

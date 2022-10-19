@@ -17603,14 +17603,6 @@
                             "description": "JavaScript stack trace of when frame was attached, only set if frame initiated from script.",
                             "optional": true,
                             "$ref": "Runtime.StackTrace"
-                        },
-                        {
-                            "name": "adScriptId",
-                            "description": "Identifies the bottom-most script which caused the frame to be labelled\nas an ad. Only sent if frame is labelled as an ad and id is available.\nDeprecated: use Page.getAdScriptId instead.",
-                            "experimental": true,
-                            "deprecated": true,
-                            "optional": true,
-                            "$ref": "AdScriptId"
                         }
                     ]
                 },
