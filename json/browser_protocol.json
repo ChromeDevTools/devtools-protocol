@@ -16226,6 +16226,7 @@
                         "OutstandingNetworkRequestDirectSocket",
                         "InjectedJavascript",
                         "InjectedStyleSheet",
+                        "KeepaliveRequest",
                         "Dummy",
                         "ContentSecurityHandler",
                         "ContentWebAuthenticationAPI",
@@ -16455,6 +16456,13 @@
                         {
                             "name": "captureBeyondViewport",
                             "description": "Capture the screenshot beyond the viewport. Defaults to false.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "optimizeForSpeed",
+                            "description": "Optimize image encoding for speed, not for resulting size (defaults to false)",
                             "experimental": true,
                             "optional": true,
                             "type": "boolean"

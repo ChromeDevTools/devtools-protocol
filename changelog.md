@@ -1,7 +1,30 @@
 
 
+## Roll protocol to r1061415 — _2022-10-20T04:46:58.000Z_
+######  Diff: [`d42b588...4de1889`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d42b588...4de1889`)
+
+```diff
+@@ browser_protocol.pdl:7595 @@ domain Page
+       experimental optional boolean fromSurface
+       # Capture the screenshot beyond the viewport. Defaults to false.
+       experimental optional boolean captureBeyondViewport
+-      # Optimize image encoding for speed, not for resulting size (defaults to false)
+-      experimental optional boolean optimizeForSpeed
+     returns
+       # Base64-encoded image data.
+       binary data
+@@ -8386,7 +8384,6 @@ domain Page
+       OutstandingNetworkRequestDirectSocket
+       InjectedJavascript
+       InjectedStyleSheet
+-      KeepaliveRequest
+       Dummy
+       # Disabled for render frame host reasons
+       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
+```
+
 ## Roll protocol to r1060866 — _2022-10-19T05:00:30.000Z_
-######  Diff: [`aca7212...f7c9092`](https://github.com/ChromeDevTools/devtools-protocol/compare/`aca7212...f7c9092`)
+######  Diff: [`aca7212...d42b588`](https://github.com/ChromeDevTools/devtools-protocol/compare/`aca7212...d42b588`)
 
 ```diff
 @@ browser_protocol.pdl:8135 @@ domain Page
@@ -9792,18 +9815,4 @@ index bd277eb..09c420e 100644
        Signing
  
    # HTTP response data.
-```
-
-## Roll protocol to r825064 — _2020-11-06T22:16:27.000Z_
-######  Diff: [`e944f55...c2862c9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e944f55...c2862c9`)
-
-```diff
-@@ browser_protocol.pdl:859 @@ domain Browser
-   experimental type BrowserCommandId extends string
-     enum
-       openTabSearch
--      closeTabSearch
- 
-   # Set permission settings for given origin.
-   experimental command setPermission
 ```

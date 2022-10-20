@@ -7595,6 +7595,8 @@ domain Page
       experimental optional boolean fromSurface
       # Capture the screenshot beyond the viewport. Defaults to false.
       experimental optional boolean captureBeyondViewport
+      # Optimize image encoding for speed, not for resulting size (defaults to false)
+      experimental optional boolean optimizeForSpeed
     returns
       # Base64-encoded image data.
       binary data
@@ -8384,6 +8386,7 @@ domain Page
       OutstandingNetworkRequestDirectSocket
       InjectedJavascript
       InjectedStyleSheet
+      KeepaliveRequest
       Dummy
       # Disabled for render frame host reasons
       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
