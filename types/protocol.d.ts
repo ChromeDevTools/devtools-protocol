@@ -7787,6 +7787,7 @@ export namespace Protocol {
         export const enum ScreenshotParamsFormat {
             Jpeg = 'jpeg',
             Png = 'png',
+            Webp = 'webp',
         }
 
         /**
@@ -7796,11 +7797,15 @@ export namespace Protocol {
             /**
              * Image compression format (defaults to png). (ScreenshotParamsFormat enum)
              */
-            format?: ('jpeg' | 'png');
+            format?: ('jpeg' | 'png' | 'webp');
             /**
              * Compression quality from range [0..100] (jpeg only).
              */
             quality?: integer;
+            /**
+             * Optimize image encoding for speed, not for resulting size (defaults to false)
+             */
+            optimizeForSpeed?: boolean;
         }
 
         export interface BeginFrameRequest {

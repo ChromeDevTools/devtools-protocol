@@ -1,7 +1,34 @@
 
 
+## Roll protocol to r1061995 — _2022-10-21T04:47:34.000Z_
+######  Diff: [`3dde831...525a744`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3dde831...525a744`)
+
+```diff
+@@ browser_protocol.pdl:3908 @@ experimental domain HeadlessExperimental
+       optional enum format
+         jpeg
+         png
+-        webp
+       # Compression quality from range [0..100] (jpeg only).
+       optional integer quality
+-      # Optimize image encoding for speed, not for resulting size (defaults to false)
+-      optional boolean optimizeForSpeed
+ 
+   # Sends a BeginFrame to the target and returns when the frame was completed. Optionally captures a
+   # screenshot from the resulting frame. Requires that the target was created with enabled
+@@ -8391,7 +8388,7 @@ domain Page
+       InjectedStyleSheet
+       KeepaliveRequest
+       Dummy
+-      # Disabled for RenderFrameHost reasons
++      # Disabled for render frame host reasons
+       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
+       ContentSecurityHandler
+       ContentWebAuthenticationAPI
+```
+
 ## Roll protocol to r1061415 — _2022-10-20T04:46:58.000Z_
-######  Diff: [`d42b588...4de1889`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d42b588...4de1889`)
+######  Diff: [`d42b588...3dde831`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d42b588...3dde831`)
 
 ```diff
 @@ browser_protocol.pdl:7595 @@ domain Page
@@ -9781,38 +9808,4 @@ index bd277eb..09c420e 100644
  
    # Style information for drawing a line.
    type LineStyle extends object
-```
-
-## Roll protocol to r825619 — _2020-11-10T02:16:08.000Z_
-######  Diff: [`c2862c9...0d4d761`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c2862c9...0d4d761`)
-
-```diff
-@@ browser_protocol.pdl:4540 @@ domain Network
-       network
- 
-   # Determines what type of Trust Token operation is executed and
--  # depending on the type, some additional parameters. The values
--  # are specified in third_party/blink/renderer/core/fetch/trust_token.idl.
-+  # depending on the type, some additional parameters.
-   experimental type TrustTokenParams extends object
-     properties
-       TrustTokenOperationType type
- 
--      # Only set for "token-redemption" type and determine whether
-+      # Only set for "srr-token-redemption" type and determine whether
-       # to request a fresh SRR or use a still valid cached SRR.
-       enum refreshPolicy
-         UseCached
-@@ -4560,9 +4559,9 @@ domain Network
-     enum
-       # Type "token-request" in the Trust Token API.
-       Issuance
--      # Type "token-redemption" in the Trust Token API.
-+      # Type "srr-token-redemption" in the Trust Token API.
-       Redemption
--      # Type "send-redemption-record" in the Trust Token API.
-+      # Type "send-srr" in the Trust Token API.
-       Signing
- 
-   # HTTP response data.
 ```

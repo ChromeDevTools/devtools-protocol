@@ -3908,8 +3908,11 @@ experimental domain HeadlessExperimental
       optional enum format
         jpeg
         png
+        webp
       # Compression quality from range [0..100] (jpeg only).
       optional integer quality
+      # Optimize image encoding for speed, not for resulting size (defaults to false)
+      optional boolean optimizeForSpeed
 
   # Sends a BeginFrame to the target and returns when the frame was completed. Optionally captures a
   # screenshot from the resulting frame. Requires that the target was created with enabled
@@ -8388,7 +8391,7 @@ domain Page
       InjectedStyleSheet
       KeepaliveRequest
       Dummy
-      # Disabled for render frame host reasons
+      # Disabled for RenderFrameHost reasons
       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
       ContentSecurityHandler
       ContentWebAuthenticationAPI
