@@ -16332,8 +16332,6 @@
                         "Activated",
                         "Destroyed",
                         "LowEndDevice",
-                        "CrossOriginRedirect",
-                        "CrossOriginNavigation",
                         "InvalidSchemeRedirect",
                         "InvalidSchemeNavigation",
                         "InProgressNavigation",
@@ -16367,7 +16365,13 @@
                         "ActivatedBeforeStarted",
                         "InactivePageRestriction",
                         "StartFailed",
-                        "TimeoutBackgrounded"
+                        "TimeoutBackgrounded",
+                        "CrossSiteRedirect",
+                        "CrossSiteNavigation",
+                        "SameSiteCrossOriginRedirect",
+                        "SameSiteCrossOriginNavigation",
+                        "SameSiteCrossOriginRedirectNotOptIn",
+                        "SameSiteCrossOriginNavigationNotOptIn"
                     ]
                 }
             ],
@@ -19082,6 +19086,7 @@
                         "service_workers",
                         "cache_storage",
                         "interest_groups",
+                        "shared_storage",
                         "all",
                         "other"
                     ]
@@ -19213,6 +19218,40 @@
                             "items": {
                                 "$ref": "InterestGroupAd"
                             }
+                        }
+                    ]
+                },
+                {
+                    "id": "SharedStorageEntry",
+                    "description": "Struct for a single key-value pair in an origin's shared storage.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "key",
+                            "type": "string"
+                        },
+                        {
+                            "name": "value",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "id": "SharedStorageMetadata",
+                    "description": "Details for an origin's shared storage.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "creationTime",
+                            "$ref": "Network.TimeSinceEpoch"
+                        },
+                        {
+                            "name": "length",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "remainingBudget",
+                            "type": "number"
                         }
                     ]
                 }
@@ -19501,6 +19540,43 @@
                         {
                             "name": "enable",
                             "type": "boolean"
+                        }
+                    ]
+                },
+                {
+                    "name": "getSharedStorageMetadata",
+                    "description": "Gets metadata for an origin's shared storage.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "ownerOrigin",
+                            "type": "string"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "metadata",
+                            "$ref": "SharedStorageMetadata"
+                        }
+                    ]
+                },
+                {
+                    "name": "getSharedStorageEntries",
+                    "description": "Gets the entries in an given origin's shared storage.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "ownerOrigin",
+                            "type": "string"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "entries",
+                            "type": "array",
+                            "items": {
+                                "$ref": "SharedStorageEntry"
+                            }
                         }
                     ]
                 }

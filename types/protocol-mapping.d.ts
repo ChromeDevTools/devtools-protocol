@@ -4095,6 +4095,20 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Gets metadata for an origin's shared storage.
+         */
+        'Storage.getSharedStorageMetadata': {
+            paramsType: [Protocol.Storage.GetSharedStorageMetadataRequest];
+            returnType: Protocol.Storage.GetSharedStorageMetadataResponse;
+        };
+        /**
+         * Gets the entries in an given origin's shared storage.
+         */
+        'Storage.getSharedStorageEntries': {
+            paramsType: [Protocol.Storage.GetSharedStorageEntriesRequest];
+            returnType: Protocol.Storage.GetSharedStorageEntriesResponse;
+        };
+        /**
          * Returns information about the system.
          */
         'SystemInfo.getInfo': {

@@ -12839,7 +12839,7 @@ export namespace Protocol {
         /**
          * List of FinalStatus reasons for Prerender2.
          */
-        export type PrerenderFinalStatus = ('Activated' | 'Destroyed' | 'LowEndDevice' | 'CrossOriginRedirect' | 'CrossOriginNavigation' | 'InvalidSchemeRedirect' | 'InvalidSchemeNavigation' | 'InProgressNavigation' | 'NavigationRequestBlockedByCsp' | 'MainFrameNavigation' | 'MojoBinderPolicy' | 'RendererProcessCrashed' | 'RendererProcessKilled' | 'Download' | 'TriggerDestroyed' | 'NavigationNotCommitted' | 'NavigationBadHttpStatus' | 'ClientCertRequested' | 'NavigationRequestNetworkError' | 'MaxNumOfRunningPrerendersExceeded' | 'CancelAllHostsForTesting' | 'DidFailLoad' | 'Stop' | 'SslCertificateError' | 'LoginAuthRequested' | 'UaChangeRequiresReload' | 'BlockedByClient' | 'AudioOutputDeviceRequested' | 'MixedContent' | 'TriggerBackgrounded' | 'EmbedderTriggeredAndCrossOriginRedirected' | 'MemoryLimitExceeded' | 'FailToGetMemoryUsage' | 'DataSaverEnabled' | 'HasEffectiveUrl' | 'ActivatedBeforeStarted' | 'InactivePageRestriction' | 'StartFailed' | 'TimeoutBackgrounded');
+        export type PrerenderFinalStatus = ('Activated' | 'Destroyed' | 'LowEndDevice' | 'InvalidSchemeRedirect' | 'InvalidSchemeNavigation' | 'InProgressNavigation' | 'NavigationRequestBlockedByCsp' | 'MainFrameNavigation' | 'MojoBinderPolicy' | 'RendererProcessCrashed' | 'RendererProcessKilled' | 'Download' | 'TriggerDestroyed' | 'NavigationNotCommitted' | 'NavigationBadHttpStatus' | 'ClientCertRequested' | 'NavigationRequestNetworkError' | 'MaxNumOfRunningPrerendersExceeded' | 'CancelAllHostsForTesting' | 'DidFailLoad' | 'Stop' | 'SslCertificateError' | 'LoginAuthRequested' | 'UaChangeRequiresReload' | 'BlockedByClient' | 'AudioOutputDeviceRequested' | 'MixedContent' | 'TriggerBackgrounded' | 'EmbedderTriggeredAndCrossOriginRedirected' | 'MemoryLimitExceeded' | 'FailToGetMemoryUsage' | 'DataSaverEnabled' | 'HasEffectiveUrl' | 'ActivatedBeforeStarted' | 'InactivePageRestriction' | 'StartFailed' | 'TimeoutBackgrounded' | 'CrossSiteRedirect' | 'CrossSiteNavigation' | 'SameSiteCrossOriginRedirect' | 'SameSiteCrossOriginNavigation' | 'SameSiteCrossOriginRedirectNotOptIn' | 'SameSiteCrossOriginNavigationNotOptIn');
 
         export interface AddScriptToEvaluateOnLoadRequest {
             scriptSource: string;
@@ -14526,7 +14526,7 @@ export namespace Protocol {
         /**
          * Enum of possible storage types.
          */
-        export type StorageType = ('appcache' | 'cookies' | 'file_systems' | 'indexeddb' | 'local_storage' | 'shader_cache' | 'websql' | 'service_workers' | 'cache_storage' | 'interest_groups' | 'all' | 'other');
+        export type StorageType = ('appcache' | 'cookies' | 'file_systems' | 'indexeddb' | 'local_storage' | 'shader_cache' | 'websql' | 'service_workers' | 'cache_storage' | 'interest_groups' | 'shared_storage' | 'all' | 'other');
 
         /**
          * Usage for a storage type.
@@ -14580,6 +14580,23 @@ export namespace Protocol {
             userBiddingSignals?: string;
             ads: InterestGroupAd[];
             adComponents: InterestGroupAd[];
+        }
+
+        /**
+         * Struct for a single key-value pair in an origin's shared storage.
+         */
+        export interface SharedStorageEntry {
+            key: string;
+            value: string;
+        }
+
+        /**
+         * Details for an origin's shared storage.
+         */
+        export interface SharedStorageMetadata {
+            creationTime: Network.TimeSinceEpoch;
+            length: integer;
+            remainingBudget: number;
         }
 
         export interface GetStorageKeyForFrameRequest {
@@ -14755,6 +14772,22 @@ export namespace Protocol {
 
         export interface SetInterestGroupTrackingRequest {
             enable: boolean;
+        }
+
+        export interface GetSharedStorageMetadataRequest {
+            ownerOrigin: string;
+        }
+
+        export interface GetSharedStorageMetadataResponse {
+            metadata: SharedStorageMetadata;
+        }
+
+        export interface GetSharedStorageEntriesRequest {
+            ownerOrigin: string;
+        }
+
+        export interface GetSharedStorageEntriesResponse {
+            entries: SharedStorageEntry[];
         }
 
         /**

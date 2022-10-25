@@ -8470,8 +8470,6 @@ domain Page
       Activated
       Destroyed
       LowEndDevice
-      CrossOriginRedirect
-      CrossOriginNavigation
       InvalidSchemeRedirect
       InvalidSchemeNavigation
       InProgressNavigation
@@ -8508,6 +8506,12 @@ domain Page
       InactivePageRestriction
       StartFailed
       TimeoutBackgrounded
+      CrossSiteRedirect
+      CrossSiteNavigation
+      SameSiteCrossOriginRedirect
+      SameSiteCrossOriginNavigation
+      SameSiteCrossOriginRedirectNotOptIn
+      SameSiteCrossOriginNavigationNotOptIn
 
   # Fired when a prerender attempt is completed.
   experimental event prerenderAttemptCompleted
@@ -9014,6 +9018,7 @@ experimental domain Storage
       service_workers
       cache_storage
       interest_groups
+      shared_storage
       all
       other
 
@@ -9062,6 +9067,19 @@ experimental domain Storage
       optional string userBiddingSignals
       array of InterestGroupAd ads
       array of InterestGroupAd adComponents
+
+  # Struct for a single key-value pair in an origin's shared storage.
+  type SharedStorageEntry extends object
+    properties
+      string key
+      string value
+
+  # Details for an origin's shared storage.
+  type SharedStorageMetadata extends object
+    properties
+      Network.TimeSinceEpoch creationTime
+      integer length
+      number remainingBudget
 
   # Returns a storage key given a frame id.
   command getStorageKeyForFrame
@@ -9201,6 +9219,20 @@ experimental domain Storage
   experimental command setInterestGroupTracking
     parameters
       boolean enable
+
+  # Gets metadata for an origin's shared storage.
+  experimental command getSharedStorageMetadata
+    parameters
+      string ownerOrigin
+    returns
+      SharedStorageMetadata metadata
+
+  # Gets the entries in an given origin's shared storage.
+  experimental command getSharedStorageEntries
+    parameters
+      string ownerOrigin
+    returns
+      array of SharedStorageEntry entries
 
   # A cache's contents have been modified.
   event cacheStorageContentUpdated

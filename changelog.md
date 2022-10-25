@@ -1,7 +1,84 @@
 
 
+## Roll protocol to r1063155 — _2022-10-25T05:01:53.000Z_
+######  Diff: [`c84ff3d...f18f35d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c84ff3d...f18f35d`)
+
+```diff
+@@ browser_protocol.pdl:8470 @@ domain Page
+       Activated
+       Destroyed
+       LowEndDevice
++      CrossOriginRedirect
++      CrossOriginNavigation
+       InvalidSchemeRedirect
+       InvalidSchemeNavigation
+       InProgressNavigation
+@@ -8506,12 +8508,6 @@ domain Page
+       InactivePageRestriction
+       StartFailed
+       TimeoutBackgrounded
+-      CrossSiteRedirect
+-      CrossSiteNavigation
+-      SameSiteCrossOriginRedirect
+-      SameSiteCrossOriginNavigation
+-      SameSiteCrossOriginRedirectNotOptIn
+-      SameSiteCrossOriginNavigationNotOptIn
+ 
+   # Fired when a prerender attempt is completed.
+   experimental event prerenderAttemptCompleted
+@@ -9018,7 +9014,6 @@ experimental domain Storage
+       service_workers
+       cache_storage
+       interest_groups
+-      shared_storage
+       all
+       other
+ 
+@@ -9068,19 +9063,6 @@ experimental domain Storage
+       array of InterestGroupAd ads
+       array of InterestGroupAd adComponents
+ 
+-  # Struct for a single key-value pair in an origin's shared storage.
+-  type SharedStorageEntry extends object
+-    properties
+-      string key
+-      string value
+-
+-  # Details for an origin's shared storage.
+-  type SharedStorageMetadata extends object
+-    properties
+-      Network.TimeSinceEpoch creationTime
+-      integer length
+-      number remainingBudget
+-
+   # Returns a storage key given a frame id.
+   command getStorageKeyForFrame
+     parameters
+@@ -9220,20 +9202,6 @@ experimental domain Storage
+     parameters
+       boolean enable
+ 
+-  # Gets metadata for an origin's shared storage.
+-  experimental command getSharedStorageMetadata
+-    parameters
+-      string ownerOrigin
+-    returns
+-      SharedStorageMetadata metadata
+-
+-  # Gets the entries in an given origin's shared storage.
+-  experimental command getSharedStorageEntries
+-    parameters
+-      string ownerOrigin
+-    returns
+-      array of SharedStorageEntry entries
+-
+   # A cache's contents have been modified.
+   event cacheStorageContentUpdated
+     parameters
+```
+
 ## Roll protocol to r1061995 — _2022-10-21T04:47:34.000Z_
-######  Diff: [`3dde831...525a744`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3dde831...525a744`)
+######  Diff: [`3dde831...c84ff3d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3dde831...c84ff3d`)
 
 ```diff
 @@ browser_protocol.pdl:3908 @@ experimental domain HeadlessExperimental
@@ -9791,21 +9868,4 @@ index bd277eb..09c420e 100644
  
    # Fired once navigation of the frame has completed. Frame is now associated with the new loader.
    event frameNavigated
-```
-
-## Roll protocol to r826264 — _2020-11-11T14:16:49.000Z_
-######  Diff: [`0d4d761...433d00b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0d4d761...433d00b`)
-
-```diff
-@@ browser_protocol.pdl:5636 @@ experimental domain Overlay
-     properties
-       # The style of the container border
-       optional LineStyle containerBorder
--      # The style of the separator between lines
--      optional LineStyle lineSeparator
--      # The style of the separator between items
--      optional LineStyle itemSeparator
- 
-   # Style information for drawing a line.
-   type LineStyle extends object
 ```
