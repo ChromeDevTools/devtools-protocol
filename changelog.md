@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1063652 — _2022-10-26T04:39:27.000Z_
+######  Diff: [`4194c0a...035f710`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4194c0a...035f710`)
+
+```diff
+@@ browser_protocol.pdl:8512 @@ domain Page
+       SameSiteCrossOriginNavigation
+       SameSiteCrossOriginRedirectNotOptIn
+       SameSiteCrossOriginNavigationNotOptIn
+-      ActivationNavigationParameterMismatch
+ 
+   # Fired when a prerender attempt is completed.
+   experimental event prerenderAttemptCompleted
+```
+
 ## Roll protocol to r1063155 — _2022-10-25T05:01:53.000Z_
-######  Diff: [`c84ff3d...f18f35d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c84ff3d...f18f35d`)
+######  Diff: [`c84ff3d...4194c0a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c84ff3d...4194c0a`)
 
 ```diff
 @@ browser_protocol.pdl:8470 @@ domain Page
@@ -9849,23 +9863,4 @@ index bd277eb..09c420e 100644
      returns
        # Base64-encoded image data.
        binary data
-```
-
-## Roll protocol to r826646 — _2020-11-12T04:16:12.000Z_
-######  Diff: [`433d00b...51e7a7e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`433d00b...51e7a7e`)
-
-```diff
-@@ browser_protocol.pdl:6768 @@ domain Page
-     parameters
-       # Id of the frame that has been detached.
-       FrameId frameId
--      experimental enum reason
--        # The frame is removed from the DOM.
--        remove
--        # The frame is being swapped out in favor of an out-of-process iframe.
--        # A new frame target will be created (see Target.attachedToTarget).
--        swap
- 
-   # Fired once navigation of the frame has completed. Frame is now associated with the new loader.
-   event frameNavigated
 ```
