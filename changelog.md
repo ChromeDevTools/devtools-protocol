@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1064177 — _2022-10-27T04:35:18.000Z_
+######  Diff: [`c2f8047...7da3934`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c2f8047...7da3934`)
+
+```diff
+@@ browser_protocol.pdl:7155 @@ domain Page
+       ch-width
+       clipboard-read
+       clipboard-write
+-      compute-pressure
+       cross-origin-isolated
+       direct-sockets
+       display-capture
+```
+
 ## Roll protocol to r1063652 — _2022-10-26T04:39:27.000Z_
-######  Diff: [`4194c0a...035f710`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4194c0a...035f710`)
+######  Diff: [`4194c0a...c2f8047`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4194c0a...c2f8047`)
 
 ```diff
 @@ browser_protocol.pdl:8512 @@ domain Page
@@ -9845,21 +9859,6 @@ index bd277eb..09c420e 100644
        experimental optional boolean fromSurface
 +      # Capture the screenshot beyond the viewport. Defaults to false.
 +      experimental optional boolean captureBeyondViewport
-     returns
-       # Base64-encoded image data.
-       binary data
-```
-
-## Roll protocol to r827467 — _2020-11-13T23:16:26.000Z_
-######  Diff: [`51e7a7e...7406169`](https://github.com/ChromeDevTools/devtools-protocol/compare/`51e7a7e...7406169`)
-
-```diff
-@@ browser_protocol.pdl:6274 @@ domain Page
-       optional Viewport clip
-       # Capture the screenshot from the surface, rather than the view. Defaults to true.
-       experimental optional boolean fromSurface
--      # Capture the screenshot beyond the viewport. Defaults to false.
--      experimental optional boolean captureBeyondViewport
      returns
        # Base64-encoded image data.
        binary data
