@@ -3325,6 +3325,11 @@ export namespace ProtocolProxyApi {
         getSharedStorageEntries(params: Protocol.Storage.GetSharedStorageEntriesRequest): Promise<Protocol.Storage.GetSharedStorageEntriesResponse>;
 
         /**
+         * Enables/disables issuing of sharedStorageAccessed events.
+         */
+        setSharedStorageTracking(params: Protocol.Storage.SetSharedStorageTrackingRequest): Promise<void>;
+
+        /**
          * A cache's contents have been modified.
          */
         on(event: 'cacheStorageContentUpdated', listener: (params: Protocol.Storage.CacheStorageContentUpdatedEvent) => void): void;
@@ -3348,6 +3353,12 @@ export namespace ProtocolProxyApi {
          * One of the interest groups was accessed by the associated page.
          */
         on(event: 'interestGroupAccessed', listener: (params: Protocol.Storage.InterestGroupAccessedEvent) => void): void;
+
+        /**
+         * Shared storage was accessed by the associated page.
+         * The following parameters are included in all events.
+         */
+        on(event: 'sharedStorageAccessed', listener: (params: Protocol.Storage.SharedStorageAccessedEvent) => void): void;
 
     }
 

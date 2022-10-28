@@ -14583,6 +14583,11 @@ export namespace Protocol {
         }
 
         /**
+         * Enum of shared storage access types.
+         */
+        export type SharedStorageAccessType = ('documentAddModule' | 'documentSelectURL' | 'documentRun' | 'documentSet' | 'documentAppend' | 'documentDelete' | 'documentClear' | 'workletSet' | 'workletAppend' | 'workletDelete' | 'workletClear' | 'workletGet' | 'workletKeys' | 'workletEntries' | 'workletLength' | 'workletRemainingBudget');
+
+        /**
          * Struct for a single key-value pair in an origin's shared storage.
          */
         export interface SharedStorageEntry {
@@ -14597,6 +14602,82 @@ export namespace Protocol {
             creationTime: Network.TimeSinceEpoch;
             length: integer;
             remainingBudget: number;
+        }
+
+        /**
+         * Pair of reporting metadata details for a candidate URL for `selectURL()`.
+         */
+        export interface SharedStorageReportingMetadata {
+            eventType: string;
+            reportingUrl: string;
+        }
+
+        /**
+         * Bundles a candidate URL with its reporting metadata.
+         */
+        export interface SharedStorageUrlWithMetadata {
+            /**
+             * Spec of candidate URL.
+             */
+            url: string;
+            /**
+             * Any associated reporting metadata.
+             */
+            reportingMetadata: SharedStorageReportingMetadata[];
+        }
+
+        /**
+         * Bundles the parameters for shared storage access events whose
+         * presence/absence can vary according to SharedStorageAccessType.
+         */
+        export interface SharedStorageAccessParams {
+            /**
+             * Spec of the module script URL.
+             * Present only for SharedStorageAccessType.documentAddModule.
+             */
+            scriptSourceUrl?: string;
+            /**
+             * Name of the registered operation to be run.
+             * Present only for SharedStorageAccessType.documentRun and
+             * SharedStorageAccessType.documentSelectURL.
+             */
+            operationName?: string;
+            /**
+             * The operation's serialized data in bytes (converted to a string).
+             * Present only for SharedStorageAccessType.documentRun and
+             * SharedStorageAccessType.documentSelectURL.
+             */
+            serializedData?: string;
+            /**
+             * Array of candidate URLs' specs, along with any associated metadata.
+             * Present only for SharedStorageAccessType.documentSelectURL.
+             */
+            urlsWithMetadata?: SharedStorageUrlWithMetadata[];
+            /**
+             * Key for a specific entry in an origin's shared storage.
+             * Present only for SharedStorageAccessType.documentSet,
+             * SharedStorageAccessType.documentAppend,
+             * SharedStorageAccessType.documentDelete,
+             * SharedStorageAccessType.workletSet,
+             * SharedStorageAccessType.workletAppend,
+             * SharedStorageAccessType.workletDelete, and
+             * SharedStorageAccessType.workletGet.
+             */
+            key?: string;
+            /**
+             * Value for a specific entry in an origin's shared storage.
+             * Present only for SharedStorageAccessType.documentSet,
+             * SharedStorageAccessType.documentAppend,
+             * SharedStorageAccessType.workletSet, and
+             * SharedStorageAccessType.workletAppend.
+             */
+            value?: string;
+            /**
+             * Whether or not to set an entry for a key if that key is already present.
+             * Present only for SharedStorageAccessType.documentSet and
+             * SharedStorageAccessType.workletSet.
+             */
+            ignoreIfPresent?: boolean;
         }
 
         export interface GetStorageKeyForFrameRequest {
@@ -14790,6 +14871,10 @@ export namespace Protocol {
             entries: SharedStorageEntry[];
         }
 
+        export interface SetSharedStorageTrackingRequest {
+            enable: boolean;
+        }
+
         /**
          * A cache's contents have been modified.
          */
@@ -14858,6 +14943,34 @@ export namespace Protocol {
             type: InterestGroupAccessType;
             ownerOrigin: string;
             name: string;
+        }
+
+        /**
+         * Shared storage was accessed by the associated page.
+         * The following parameters are included in all events.
+         */
+        export interface SharedStorageAccessedEvent {
+            /**
+             * Time of the access.
+             */
+            accessTime: Network.TimeSinceEpoch;
+            /**
+             * Enum value indicating the Shared Storage API method invoked.
+             */
+            type: SharedStorageAccessType;
+            /**
+             * DevTools Frame Token for the primary frame tree's root.
+             */
+            mainFrameId: Page.FrameId;
+            /**
+             * Serialized origin for the context that invoked the Shared Storage API.
+             */
+            ownerOrigin: string;
+            /**
+             * The sub-parameters warapped by `params` are all optional and their
+             * presence/absence depends on `type`.
+             */
+            params: SharedStorageAccessParams;
         }
     }
 

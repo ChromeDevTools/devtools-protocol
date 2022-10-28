@@ -562,6 +562,11 @@ export namespace ProtocolMapping {
          */
         'Storage.interestGroupAccessed': [Protocol.Storage.InterestGroupAccessedEvent];
         /**
+         * Shared storage was accessed by the associated page.
+         * The following parameters are included in all events.
+         */
+        'Storage.sharedStorageAccessed': [Protocol.Storage.SharedStorageAccessedEvent];
+        /**
          * Issued when attached to target because of auto-attach or `attachToTarget` command.
          */
         'Target.attachedToTarget': [Protocol.Target.AttachedToTargetEvent];
@@ -4107,6 +4112,13 @@ export namespace ProtocolMapping {
         'Storage.getSharedStorageEntries': {
             paramsType: [Protocol.Storage.GetSharedStorageEntriesRequest];
             returnType: Protocol.Storage.GetSharedStorageEntriesResponse;
+        };
+        /**
+         * Enables/disables issuing of sharedStorageAccessed events.
+         */
+        'Storage.setSharedStorageTracking': {
+            paramsType: [Protocol.Storage.SetSharedStorageTrackingRequest];
+            returnType: void;
         };
         /**
          * Returns information about the system.

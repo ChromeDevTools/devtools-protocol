@@ -1,7 +1,133 @@
 
 
+## Roll protocol to r1064701 — _2022-10-28T04:35:09.000Z_
+######  Diff: [`9be9b0f...baf99f2`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9be9b0f...baf99f2`)
+
+```diff
+@@ browser_protocol.pdl:9070 @@ experimental domain Storage
+       array of InterestGroupAd ads
+       array of InterestGroupAd adComponents
+ 
+-  # Enum of shared storage access types.
+-  type SharedStorageAccessType extends string
+-    enum
+-      documentAddModule
+-      documentSelectURL
+-      documentRun
+-      documentSet
+-      documentAppend
+-      documentDelete
+-      documentClear
+-      workletSet
+-      workletAppend
+-      workletDelete
+-      workletClear
+-      workletGet
+-      workletKeys
+-      workletEntries
+-      workletLength
+-      workletRemainingBudget
+-
+   # Struct for a single key-value pair in an origin's shared storage.
+   type SharedStorageEntry extends object
+     properties
+@@ -9103,58 +9083,6 @@ experimental domain Storage
+       integer length
+       number remainingBudget
+ 
+-  # Pair of reporting metadata details for a candidate URL for `selectURL()`.
+-  type SharedStorageReportingMetadata extends object
+-    properties
+-      string eventType
+-      string reportingUrl
+-
+-  # Bundles a candidate URL with its reporting metadata.
+-  type SharedStorageUrlWithMetadata extends object
+-    properties
+-      # Spec of candidate URL.
+-      string url
+-      # Any associated reporting metadata.
+-      array of SharedStorageReportingMetadata reportingMetadata
+-
+-  # Bundles the parameters for shared storage access events whose
+-  # presence/absence can vary according to SharedStorageAccessType.
+-  type SharedStorageAccessParams extends object
+-    properties
+-      # Spec of the module script URL.
+-      # Present only for SharedStorageAccessType.documentAddModule.
+-      optional string scriptSourceUrl
+-      # Name of the registered operation to be run.
+-      # Present only for SharedStorageAccessType.documentRun and
+-      # SharedStorageAccessType.documentSelectURL.
+-      optional string operationName
+-      # The operation's serialized data in bytes (converted to a string).
+-      # Present only for SharedStorageAccessType.documentRun and
+-      # SharedStorageAccessType.documentSelectURL.
+-      optional string serializedData
+-      # Array of candidate URLs' specs, along with any associated metadata.
+-      # Present only for SharedStorageAccessType.documentSelectURL.
+-      optional array of SharedStorageUrlWithMetadata urlsWithMetadata
+-      # Key for a specific entry in an origin's shared storage.
+-      # Present only for SharedStorageAccessType.documentSet,
+-      # SharedStorageAccessType.documentAppend,
+-      # SharedStorageAccessType.documentDelete,
+-      # SharedStorageAccessType.workletSet,
+-      # SharedStorageAccessType.workletAppend,
+-      # SharedStorageAccessType.workletDelete, and
+-      # SharedStorageAccessType.workletGet.
+-      optional string key
+-      # Value for a specific entry in an origin's shared storage.
+-      # Present only for SharedStorageAccessType.documentSet,
+-      # SharedStorageAccessType.documentAppend,
+-      # SharedStorageAccessType.workletSet, and
+-      # SharedStorageAccessType.workletAppend.
+-      optional string value
+-      # Whether or not to set an entry for a key if that key is already present.
+-      # Present only for SharedStorageAccessType.documentSet and
+-      # SharedStorageAccessType.workletSet.
+-      optional boolean ignoreIfPresent
+-
+   # Returns a storage key given a frame id.
+   command getStorageKeyForFrame
+     parameters
+@@ -9308,11 +9236,6 @@ experimental domain Storage
+     returns
+       array of SharedStorageEntry entries
+ 
+-  # Enables/disables issuing of sharedStorageAccessed events.
+-  experimental command setSharedStorageTracking
+-    parameters
+-      boolean enable
+-
+   # A cache's contents have been modified.
+   event cacheStorageContentUpdated
+     parameters
+@@ -9355,22 +9278,6 @@ experimental domain Storage
+       string ownerOrigin
+       string name
+ 
+-  # Shared storage was accessed by the associated page.
+-  # The following parameters are included in all events.
+-  event sharedStorageAccessed
+-    parameters
+-      # Time of the access.
+-      Network.TimeSinceEpoch accessTime
+-      # Enum value indicating the Shared Storage API method invoked.
+-      SharedStorageAccessType type
+-      # DevTools Frame Token for the primary frame tree's root.
+-      Page.FrameId mainFrameId
+-      # Serialized origin for the context that invoked the Shared Storage API.
+-      string ownerOrigin
+-      # The sub-parameters warapped by `params` are all optional and their
+-      # presence/absence depends on `type`.
+-      SharedStorageAccessParams params
+-
+ # The SystemInfo domain defines methods and events for querying low-level system information.
+ experimental domain SystemInfo
+```
+
 ## Roll protocol to r1064177 — _2022-10-27T04:35:18.000Z_
-######  Diff: [`c2f8047...7da3934`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c2f8047...7da3934`)
+######  Diff: [`c2f8047...9be9b0f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c2f8047...9be9b0f`)
 
 ```diff
 @@ browser_protocol.pdl:7155 @@ domain Page
@@ -9847,19 +9973,4 @@ index bd277eb..09c420e 100644
    experimental event frameResized
  
    # Fired when a renderer-initiated navigation is requested.
-```
-
-## Roll protocol to r827510 — _2020-11-14T01:16:11.000Z_
-######  Diff: [`7406169...6614ce6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7406169...6614ce6`)
-
-```diff
-@@ browser_protocol.pdl:6274 @@ domain Page
-       optional Viewport clip
-       # Capture the screenshot from the surface, rather than the view. Defaults to true.
-       experimental optional boolean fromSurface
-+      # Capture the screenshot beyond the viewport. Defaults to false.
-+      experimental optional boolean captureBeyondViewport
-     returns
-       # Base64-encoded image data.
-       binary data
 ```
