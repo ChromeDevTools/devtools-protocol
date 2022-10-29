@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1065144 — _2022-10-29T04:33:23.000Z_
+######  Diff: [`272cd26...1e79e4b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`272cd26...1e79e4b`)
+
+```diff
+@@ browser_protocol.pdl:8359 @@ domain Page
+       DedicatedWorkerOrWorklet
+       OutstandingNetworkRequestOthers
+       OutstandingIndexedDBTransaction
++      RequestedNotificationsPermission
+       RequestedMIDIPermission
+       RequestedAudioCapturePermission
+       RequestedVideoCapturePermission
+```
+
 ## Roll protocol to r1064701 — _2022-10-28T04:35:09.000Z_
-######  Diff: [`9be9b0f...baf99f2`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9be9b0f...baf99f2`)
+######  Diff: [`9be9b0f...272cd26`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9be9b0f...272cd26`)
 
 ```diff
 @@ browser_protocol.pdl:9070 @@ experimental domain Storage
@@ -9954,23 +9968,4 @@ index bd277eb..09c420e 100644
    # Requests that backend shows paint rectangles
    command setShowPaintRects
      parameters
-```
-
-## Roll protocol to r828125 — _2020-11-17T09:16:07.000Z_
-######  Diff: [`6614ce6...fc3a2fd`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6614ce6...fc3a2fd`)
-
-```diff
-@@ browser_protocol.pdl:6781 @@ domain Page
-       # Frame object.
-       Frame frame
- 
--  # Fired when opening document to write to.
--  experimental event documentOpened
--    parameters
--      # Frame object.
--      Frame frame
--
-   experimental event frameResized
- 
-   # Fired when a renderer-initiated navigation is requested.
 ```

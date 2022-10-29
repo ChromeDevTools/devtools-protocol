@@ -16203,7 +16203,6 @@
                         "DedicatedWorkerOrWorklet",
                         "OutstandingNetworkRequestOthers",
                         "OutstandingIndexedDBTransaction",
-                        "RequestedNotificationsPermission",
                         "RequestedMIDIPermission",
                         "RequestedAudioCapturePermission",
                         "RequestedVideoCapturePermission",
