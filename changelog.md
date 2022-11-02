@@ -1,7 +1,34 @@
 
 
+## Roll protocol to r1066334 — _2022-11-02T04:46:36.000Z_
+######  Diff: [`a417f5f...3e512a7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a417f5f...3e512a7`)
+
+```diff
+@@ browser_protocol.pdl:10493 @@ experimental domain WebAuthn
+     returns
+       AuthenticatorId authenticatorId
+ 
+-  # Resets parameters isBogusSignature, isBadUV, isBadUP to false if they are not present.
+-  command setResponseOverrideBits
+-    parameters
+-      AuthenticatorId authenticatorId
+-      # If isBogusSignature is set, overrides the signature in the authenticator response to be zero.
+-      # Defaults to false.
+-      optional boolean isBogusSignature
+-      # If isBadUV is set, overrides the UV bit in the flags in the authenticator response to
+-      # be zero. Defaults to false.
+-      optional boolean isBadUV
+-      # If isBadUP is set, overrides the UP bit in the flags in the authenticator response to
+-      # be zero. Defaults to false.
+-      optional boolean isBadUP
+-
+   # Removes the given authenticator.
+   command removeVirtualAuthenticator
+     parameters
+```
+
 ## Roll protocol to r1065144 — _2022-10-29T04:33:23.000Z_
-######  Diff: [`272cd26...1e79e4b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`272cd26...1e79e4b`)
+######  Diff: [`272cd26...a417f5f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`272cd26...a417f5f`)
 
 ```diff
 @@ browser_protocol.pdl:8359 @@ domain Page
@@ -9935,37 +9962,5 @@ index bd277eb..09c420e 100644
 -
    # Sets breakpoint on particular operation with DOM.
    command setDOMBreakpoint
-     parameters
-```
-
-## Roll protocol to r828143 — _2020-11-17T11:15:46.000Z_
-######  Diff: [`fc3a2fd...0f382c6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fc3a2fd...0f382c6`)
-
-```diff
-@@ browser_protocol.pdl:5701 @@ experimental domain Overlay
-       # Identifier of the node to highlight.
-       DOM.NodeId nodeId
- 
--  type FlexNodeHighlightConfig extends object
--    properties
--      # A descriptor for the highlight appearance of flex containers.
--      FlexContainerHighlightConfig flexContainerHighlightConfig
--      # Identifier of the node to highlight.
--      DOM.NodeId nodeId
--
-   # Configuration for dual screen hinge
-   type HingeConfig extends object
-     properties
-@@ -5873,11 +5866,6 @@ experimental domain Overlay
-       # An array of node identifiers and descriptors for the highlight appearance.
-       array of GridNodeHighlightConfig gridNodeHighlightConfigs
- 
--  command setShowFlexOverlays
--    parameters
--      # An array of node identifiers and descriptors for the highlight appearance.
--      array of FlexNodeHighlightConfig flexNodeHighlightConfigs
--
-   # Requests that backend shows paint rectangles
-   command setShowPaintRects
      parameters
 ```

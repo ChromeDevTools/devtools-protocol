@@ -16498,6 +16498,25 @@ export namespace Protocol {
             authenticatorId: AuthenticatorId;
         }
 
+        export interface SetResponseOverrideBitsRequest {
+            authenticatorId: AuthenticatorId;
+            /**
+             * If isBogusSignature is set, overrides the signature in the authenticator response to be zero.
+             * Defaults to false.
+             */
+            isBogusSignature?: boolean;
+            /**
+             * If isBadUV is set, overrides the UV bit in the flags in the authenticator response to
+             * be zero. Defaults to false.
+             */
+            isBadUV?: boolean;
+            /**
+             * If isBadUP is set, overrides the UP bit in the flags in the authenticator response to
+             * be zero. Defaults to false.
+             */
+            isBadUP?: boolean;
+        }
+
         export interface RemoveVirtualAuthenticatorRequest {
             authenticatorId: AuthenticatorId;
         }

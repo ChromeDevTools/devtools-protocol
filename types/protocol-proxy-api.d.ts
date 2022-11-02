@@ -3764,6 +3764,11 @@ export namespace ProtocolProxyApi {
         addVirtualAuthenticator(params: Protocol.WebAuthn.AddVirtualAuthenticatorRequest): Promise<Protocol.WebAuthn.AddVirtualAuthenticatorResponse>;
 
         /**
+         * Resets parameters isBogusSignature, isBadUV, isBadUP to false if they are not present.
+         */
+        setResponseOverrideBits(params: Protocol.WebAuthn.SetResponseOverrideBitsRequest): Promise<void>;
+
+        /**
          * Removes the given authenticator.
          */
         removeVirtualAuthenticator(params: Protocol.WebAuthn.RemoveVirtualAuthenticatorRequest): Promise<void>;

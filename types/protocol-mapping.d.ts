@@ -4447,6 +4447,13 @@ export namespace ProtocolMapping {
             returnType: Protocol.WebAuthn.AddVirtualAuthenticatorResponse;
         };
         /**
+         * Resets parameters isBogusSignature, isBadUV, isBadUP to false if they are not present.
+         */
+        'WebAuthn.setResponseOverrideBits': {
+            paramsType: [Protocol.WebAuthn.SetResponseOverrideBitsRequest];
+            returnType: void;
+        };
+        /**
          * Removes the given authenticator.
          */
         'WebAuthn.removeVirtualAuthenticator': {
