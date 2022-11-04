@@ -2173,8 +2173,7 @@
                     "type": "string",
                     "enum": [
                         "granted",
-                        "denied",
-                        "prompt"
+                        "denied"
                     ]
                 },
                 {
@@ -8588,25 +8587,13 @@
                 },
                 {
                     "name": "disable",
-                    "description": "Disables headless events for the target."
+                    "description": "Disables headless events for the target.",
+                    "deprecated": true
                 },
                 {
                     "name": "enable",
-                    "description": "Enables headless events for the target."
-                }
-            ],
-            "events": [
-                {
-                    "name": "needsBeginFramesChanged",
-                    "description": "Issued when the target starts or stops needing BeginFrames.\nDeprecated. Issue beginFrame unconditionally instead and use result from\nbeginFrame to detect whether the frames were suppressed.",
-                    "deprecated": true,
-                    "parameters": [
-                        {
-                            "name": "needsBeginFrames",
-                            "description": "True if BeginFrames are needed, false otherwise.",
-                            "type": "boolean"
-                        }
-                    ]
+                    "description": "Enables headless events for the target.",
+                    "deprecated": true
                 }
             ]
         },
@@ -13814,6 +13801,12 @@
                             "description": "The client security state set for the request.",
                             "optional": true,
                             "$ref": "ClientSecurityState"
+                        },
+                        {
+                            "name": "siteHasCookieInOtherPartition",
+                            "description": "Whether the site has partitioned cookies stored in a partition different than the current one.",
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ]
                 },
@@ -19688,6 +19681,32 @@
                             "items": {
                                 "$ref": "SharedStorageEntry"
                             }
+                        }
+                    ]
+                },
+                {
+                    "name": "deleteSharedStorageEntry",
+                    "description": "Deletes entry for `key` (if it exists) for a given origin's shared storage.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "ownerOrigin",
+                            "type": "string"
+                        },
+                        {
+                            "name": "key",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "clearSharedStorageEntries",
+                    "description": "Clears all entries for a given origin's shared storage.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "ownerOrigin",
+                            "type": "string"
                         }
                     ]
                 },

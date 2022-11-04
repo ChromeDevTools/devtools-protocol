@@ -1,7 +1,69 @@
 
 
+## Roll protocol to r1067399 — _2022-11-04T04:34:35.000Z_
+######  Diff: [`62e017d...07b82d4`](https://github.com/ChromeDevTools/devtools-protocol/compare/`62e017d...07b82d4`)
+
+```diff
+@@ browser_protocol.pdl:1094 @@ domain Browser
+     enum
+       granted
+       denied
++      prompt
+ 
+   # Definition of PermissionDescriptor defined in the Permissions API:
+   # https://w3c.github.io/permissions/#dictdef-permissiondescriptor.
+@@ -3941,10 +3942,18 @@ experimental domain HeadlessExperimental
+       optional binary screenshotData
+ 
+   # Disables headless events for the target.
+-  deprecated command disable
++  command disable
+ 
+   # Enables headless events for the target.
+-  deprecated command enable
++  command enable
++
++  # Issued when the target starts or stops needing BeginFrames.
++  # Deprecated. Issue beginFrame unconditionally instead and use result from
++  # beginFrame to detect whether the frames were suppressed.
++  deprecated event needsBeginFramesChanged
++    parameters
++      # True if BeginFrames are needed, false otherwise.
++      boolean needsBeginFrames
+ 
+ # Input/Output operations for streams produced by DevTools.
+ domain IO
+@@ -6324,8 +6333,6 @@ domain Network
+       experimental ConnectTiming connectTiming
+       # The client security state set for the request.
+       optional ClientSecurityState clientSecurityState
+-      # Whether the site has partitioned cookies stored in a partition different than the current one.
+-      optional boolean siteHasCookieInOtherPartition
+ 
+   # Fired when additional information about a responseReceived event is available from the network
+   # stack. Not every responseReceived event will have an additional responseReceivedExtraInfo for
+@@ -9300,17 +9307,6 @@ experimental domain Storage
+     returns
+       array of SharedStorageEntry entries
+ 
+-  # Deletes entry for `key` (if it exists) for a given origin's shared storage.
+-  experimental command deleteSharedStorageEntry
+-    parameters
+-      string ownerOrigin
+-      string key
+-
+-  # Clears all entries for a given origin's shared storage.
+-  experimental command clearSharedStorageEntries
+-    parameters
+-      string ownerOrigin
+-
+   # Enables/disables issuing of sharedStorageAccessed events.
+   experimental command setSharedStorageTracking
+     parameters
+```
+
 ## Roll protocol to r1066334 — _2022-11-02T04:46:36.000Z_
-######  Diff: [`a417f5f...3e512a7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a417f5f...3e512a7`)
+######  Diff: [`a417f5f...62e017d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a417f5f...62e017d`)
 
 ```diff
 @@ browser_protocol.pdl:10493 @@ experimental domain WebAuthn
@@ -9931,36 +9993,4 @@ index bd277eb..09c420e 100644
    experimental event frameResized
  
    # Fired when a renderer-initiated navigation is requested.
-```
-
-## Roll protocol to r828217 — _2020-11-17T16:16:16.000Z_
-######  Diff: [`0f382c6...4a38aba`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0f382c6...4a38aba`)
-
-```diff
-@@ browser_protocol.pdl:2522 @@ domain DOMDebugger
-       attribute-modified
-       node-removed
- 
--  # CSP Violation type.
--  experimental type CSPViolationType extends string
--    enum
--      trustedtype-sink-violation
--      trustedtype-policy-violation
--
-   # Object event listener.
-   type EventListener extends object
-     properties
-@@ -2595,12 +2589,6 @@ domain DOMDebugger
-       # Resource URL substring.
-       string url
- 
--  # Sets breakpoint on particular CSP violations.
--  experimental command setBreakOnCSPViolation
--    parameters
--      # CSP Violations to stop upon.
--      array of CSPViolationType violationTypes
--
-   # Sets breakpoint on particular operation with DOM.
-   command setDOMBreakpoint
-     parameters
 ```

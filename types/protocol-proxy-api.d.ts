@@ -1850,13 +1850,6 @@ export namespace ProtocolProxyApi {
          */
         enable(): Promise<void>;
 
-        /**
-         * Issued when the target starts or stops needing BeginFrames.
-         * Deprecated. Issue beginFrame unconditionally instead and use result from
-         * beginFrame to detect whether the frames were suppressed.
-         */
-        on(event: 'needsBeginFramesChanged', listener: (params: Protocol.HeadlessExperimental.NeedsBeginFramesChangedEvent) => void): void;
-
     }
 
     export interface IOApi {
@@ -3323,6 +3316,16 @@ export namespace ProtocolProxyApi {
          * Gets the entries in an given origin's shared storage.
          */
         getSharedStorageEntries(params: Protocol.Storage.GetSharedStorageEntriesRequest): Promise<Protocol.Storage.GetSharedStorageEntriesResponse>;
+
+        /**
+         * Deletes entry for `key` (if it exists) for a given origin's shared storage.
+         */
+        deleteSharedStorageEntry(params: Protocol.Storage.DeleteSharedStorageEntryRequest): Promise<void>;
+
+        /**
+         * Clears all entries for a given origin's shared storage.
+         */
+        clearSharedStorageEntries(params: Protocol.Storage.ClearSharedStorageEntriesRequest): Promise<void>;
 
         /**
          * Enables/disables issuing of sharedStorageAccessed events.

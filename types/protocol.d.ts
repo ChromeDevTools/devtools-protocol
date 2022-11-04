@@ -3705,7 +3705,7 @@ export namespace Protocol {
 
         export type PermissionType = ('accessibilityEvents' | 'audioCapture' | 'backgroundSync' | 'backgroundFetch' | 'clipboardReadWrite' | 'clipboardSanitizedWrite' | 'displayCapture' | 'durableStorage' | 'flash' | 'geolocation' | 'midi' | 'midiSysex' | 'nfc' | 'notifications' | 'paymentHandler' | 'periodicBackgroundSync' | 'protectedMediaIdentifier' | 'sensors' | 'videoCapture' | 'videoCapturePanTiltZoom' | 'idleDetection' | 'wakeLockScreen' | 'wakeLockSystem');
 
-        export type PermissionSetting = ('granted' | 'denied' | 'prompt');
+        export type PermissionSetting = ('granted' | 'denied');
 
         /**
          * Definition of PermissionDescriptor defined in the Permissions API:
@@ -7844,18 +7844,6 @@ export namespace Protocol {
              */
             screenshotData?: string;
         }
-
-        /**
-         * Issued when the target starts or stops needing BeginFrames.
-         * Deprecated. Issue beginFrame unconditionally instead and use result from
-         * beginFrame to detect whether the frames were suppressed.
-         */
-        export interface NeedsBeginFramesChangedEvent {
-            /**
-             * True if BeginFrames are needed, false otherwise.
-             */
-            needsBeginFrames: boolean;
-        }
     }
 
     /**
@@ -11353,6 +11341,10 @@ export namespace Protocol {
              * The client security state set for the request.
              */
             clientSecurityState?: ClientSecurityState;
+            /**
+             * Whether the site has partitioned cookies stored in a partition different than the current one.
+             */
+            siteHasCookieInOtherPartition?: boolean;
         }
 
         /**
@@ -14869,6 +14861,15 @@ export namespace Protocol {
 
         export interface GetSharedStorageEntriesResponse {
             entries: SharedStorageEntry[];
+        }
+
+        export interface DeleteSharedStorageEntryRequest {
+            ownerOrigin: string;
+            key: string;
+        }
+
+        export interface ClearSharedStorageEntriesRequest {
+            ownerOrigin: string;
         }
 
         export interface SetSharedStorageTrackingRequest {

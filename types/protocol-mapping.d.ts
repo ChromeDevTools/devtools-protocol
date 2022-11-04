@@ -234,12 +234,6 @@ export namespace ProtocolMapping {
          */
         'Emulation.virtualTimeBudgetExpired': [];
         /**
-         * Issued when the target starts or stops needing BeginFrames.
-         * Deprecated. Issue beginFrame unconditionally instead and use result from
-         * beginFrame to detect whether the frames were suppressed.
-         */
-        'HeadlessExperimental.needsBeginFramesChanged': [Protocol.HeadlessExperimental.NeedsBeginFramesChangedEvent];
-        /**
          * Emitted only when `Input.setInterceptDrags` is enabled. Use this data with `Input.dispatchDragEvent` to
          * restore normal drag and drop behavior.
          */
@@ -4112,6 +4106,20 @@ export namespace ProtocolMapping {
         'Storage.getSharedStorageEntries': {
             paramsType: [Protocol.Storage.GetSharedStorageEntriesRequest];
             returnType: Protocol.Storage.GetSharedStorageEntriesResponse;
+        };
+        /**
+         * Deletes entry for `key` (if it exists) for a given origin's shared storage.
+         */
+        'Storage.deleteSharedStorageEntry': {
+            paramsType: [Protocol.Storage.DeleteSharedStorageEntryRequest];
+            returnType: void;
+        };
+        /**
+         * Clears all entries for a given origin's shared storage.
+         */
+        'Storage.clearSharedStorageEntries': {
+            paramsType: [Protocol.Storage.ClearSharedStorageEntriesRequest];
+            returnType: void;
         };
         /**
          * Enables/disables issuing of sharedStorageAccessed events.
