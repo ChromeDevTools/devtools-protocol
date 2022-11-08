@@ -2218,9 +2218,10 @@ export namespace ProtocolMapping {
             returnType: Protocol.DOM.GetFrameOwnerResponse;
         };
         /**
-         * Returns the container of the given node based on container query conditions.
-         * If containerName is given, it will find the nearest container with a matching name;
-         * otherwise it will find the nearest container regardless of its container name.
+         * Returns the query container of the given node based on container query
+         * conditions: containerName, physical, and logical axes. If no axes are
+         * provided, the style container is returned, which is the direct parent or the
+         * closest element with a matching container-name.
          */
         'DOM.getContainerForNode': {
             paramsType: [Protocol.DOM.GetContainerForNodeRequest];
@@ -4106,6 +4107,13 @@ export namespace ProtocolMapping {
         'Storage.getSharedStorageEntries': {
             paramsType: [Protocol.Storage.GetSharedStorageEntriesRequest];
             returnType: Protocol.Storage.GetSharedStorageEntriesResponse;
+        };
+        /**
+         * Sets entry with `key` and `value` for a given origin's shared storage.
+         */
+        'Storage.setSharedStorageEntry': {
+            paramsType: [Protocol.Storage.SetSharedStorageEntryRequest];
+            returnType: void;
         };
         /**
          * Deletes entry for `key` (if it exists) for a given origin's shared storage.

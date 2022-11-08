@@ -1,7 +1,82 @@
 
 
+## Roll protocol to r1068494 — _2022-11-08T04:34:24.000Z_
+######  Diff: [`f88fa8b...213c521`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f88fa8b...213c521`)
+
+```diff
+@@ browser_protocol.pdl:1599 @@ experimental domain CSS
+       optional StyleSheetId styleSheetId
+       # Optional name for the container.
+       optional string name
+-      # Optional physical axes queried for the container.
+-      optional DOM.PhysicalAxes physicalAxes
+-      # Optional logical axes queried for the container.
+-      optional DOM.LogicalAxes logicalAxes
+ 
+   # CSS Supports at-rule descriptor.
+   experimental type CSSSupports extends object
+@@ -2257,20 +2253,6 @@ domain DOM
+       LimitedQuirksMode
+       NoQuirksMode
+ 
+-  # ContainerSelector physical axes
+-  type PhysicalAxes extends string
+-    enum
+-      Horizontal
+-      Vertical
+-      Both
+-
+-  # ContainerSelector logical axes
+-  type LogicalAxes extends string
+-    enum
+-      Inline
+-      Block
+-      Both
+-
+   # DOM interaction is implemented in terms of mirror objects that represent the actual DOM nodes.
+   # DOMNode is a base node mirror type.
+   type Node extends object
+@@ -2883,16 +2865,13 @@ domain DOM
+       # Id of the node at given coordinates, only when enabled and requested document.
+       optional NodeId nodeId
+ 
+-  # Returns the query container of the given node based on container query
+-  # conditions: containerName, physical, and logical axes. If no axes are
+-  # provided, the style container is returned, which is the direct parent or the
+-  # closest element with a matching container-name.
++  # Returns the container of the given node based on container query conditions.
++  # If containerName is given, it will find the nearest container with a matching name;
++  # otherwise it will find the nearest container regardless of its container name.
+   experimental command getContainerForNode
+     parameters
+       NodeId nodeId
+       optional string containerName
+-      optional PhysicalAxes physicalAxes
+-      optional LogicalAxes logicalAxes
+     returns
+       # The container node for the given node, or null if not found.
+       optional NodeId nodeId
+@@ -9321,16 +9300,6 @@ experimental domain Storage
+     returns
+       array of SharedStorageEntry entries
+ 
+-  # Sets entry with `key` and `value` for a given origin's shared storage.
+-  experimental command setSharedStorageEntry
+-    parameters
+-      string ownerOrigin
+-      string key
+-      string value
+-      # If `ignoreIfPresent` is included and true, then only sets the entry if
+-      # `key` doesn't already exist.
+-      optional boolean ignoreIfPresent
+-
+   # Deletes entry for `key` (if it exists) for a given origin's shared storage.
+   experimental command deleteSharedStorageEntry
+     parameters
+```
+
 ## Roll protocol to r1067399 — _2022-11-04T04:34:35.000Z_
-######  Diff: [`62e017d...07b82d4`](https://github.com/ChromeDevTools/devtools-protocol/compare/`62e017d...07b82d4`)
+######  Diff: [`62e017d...f88fa8b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`62e017d...f88fa8b`)
 
 ```diff
 @@ browser_protocol.pdl:1094 @@ domain Browser
@@ -9974,23 +10049,4 @@ index bd277eb..09c420e 100644
    # Configuration data for the highlighting of page elements.
    type HighlightConfig extends object
      properties
-```
-
-## Roll protocol to r828424 — _2020-11-17T22:16:15.000Z_
-######  Diff: [`4a38aba...ae1d9fd`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4a38aba...ae1d9fd`)
-
-```diff
-@@ browser_protocol.pdl:6805 @@ domain Page
-       # Frame object.
-       Frame frame
- 
-+  # Fired when opening document to write to.
-+  experimental event documentOpened
-+    parameters
-+      # Frame object.
-+      Frame frame
-+
-   experimental event frameResized
- 
-   # Fired when a renderer-initiated navigation is requested.
 ```

@@ -1440,9 +1440,10 @@ export namespace ProtocolProxyApi {
         getFrameOwner(params: Protocol.DOM.GetFrameOwnerRequest): Promise<Protocol.DOM.GetFrameOwnerResponse>;
 
         /**
-         * Returns the container of the given node based on container query conditions.
-         * If containerName is given, it will find the nearest container with a matching name;
-         * otherwise it will find the nearest container regardless of its container name.
+         * Returns the query container of the given node based on container query
+         * conditions: containerName, physical, and logical axes. If no axes are
+         * provided, the style container is returned, which is the direct parent or the
+         * closest element with a matching container-name.
          */
         getContainerForNode(params: Protocol.DOM.GetContainerForNodeRequest): Promise<Protocol.DOM.GetContainerForNodeResponse>;
 
@@ -3316,6 +3317,11 @@ export namespace ProtocolProxyApi {
          * Gets the entries in an given origin's shared storage.
          */
         getSharedStorageEntries(params: Protocol.Storage.GetSharedStorageEntriesRequest): Promise<Protocol.Storage.GetSharedStorageEntriesResponse>;
+
+        /**
+         * Sets entry with `key` and `value` for a given origin's shared storage.
+         */
+        setSharedStorageEntry(params: Protocol.Storage.SetSharedStorageEntryRequest): Promise<void>;
 
         /**
          * Deletes entry for `key` (if it exists) for a given origin's shared storage.

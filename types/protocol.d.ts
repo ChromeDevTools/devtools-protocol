@@ -4511,6 +4511,14 @@ export namespace Protocol {
              * Optional name for the container.
              */
             name?: string;
+            /**
+             * Optional physical axes queried for the container.
+             */
+            physicalAxes?: DOM.PhysicalAxes;
+            /**
+             * Optional logical axes queried for the container.
+             */
+            logicalAxes?: DOM.LogicalAxes;
         }
 
         /**
@@ -5375,6 +5383,16 @@ export namespace Protocol {
          * Document compatibility mode.
          */
         export type CompatibilityMode = ('QuirksMode' | 'LimitedQuirksMode' | 'NoQuirksMode');
+
+        /**
+         * ContainerSelector physical axes
+         */
+        export type PhysicalAxes = ('Horizontal' | 'Vertical' | 'Both');
+
+        /**
+         * ContainerSelector logical axes
+         */
+        export type LogicalAxes = ('Inline' | 'Block' | 'Both');
 
         /**
          * DOM interaction is implemented in terms of mirror objects that represent the actual DOM nodes.
@@ -6293,6 +6311,8 @@ export namespace Protocol {
         export interface GetContainerForNodeRequest {
             nodeId: NodeId;
             containerName?: string;
+            physicalAxes?: PhysicalAxes;
+            logicalAxes?: LogicalAxes;
         }
 
         export interface GetContainerForNodeResponse {
@@ -14861,6 +14881,17 @@ export namespace Protocol {
 
         export interface GetSharedStorageEntriesResponse {
             entries: SharedStorageEntry[];
+        }
+
+        export interface SetSharedStorageEntryRequest {
+            ownerOrigin: string;
+            key: string;
+            value: string;
+            /**
+             * If `ignoreIfPresent` is included and true, then only sets the entry if
+             * `key` doesn't already exist.
+             */
+            ignoreIfPresent?: boolean;
         }
 
         export interface DeleteSharedStorageEntryRequest {
