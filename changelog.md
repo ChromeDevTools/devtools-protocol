@@ -1,7 +1,30 @@
 
 
+## Roll protocol to r1068969 — _2022-11-09T04:35:00.000Z_
+######  Diff: [`8a54e06...457298b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8a54e06...457298b`)
+
+```diff
+@@ browser_protocol.pdl:2237 @@ domain DOM
+       scrollbar-corner
+       resizer
+       input-list-button
+-      view-transition
+-      view-transition-group
+-      view-transition-image-pair
+-      view-transition-old
+-      view-transition-new
++      page-transition
++      page-transition-container
++      page-transition-image-wrapper
++      page-transition-outgoing-image
++      page-transition-incoming-image
+ 
+   # Shadow root type.
+   type ShadowRootType extends string
+```
+
 ## Roll protocol to r1068494 — _2022-11-08T04:34:24.000Z_
-######  Diff: [`f88fa8b...213c521`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f88fa8b...213c521`)
+######  Diff: [`f88fa8b...8a54e06`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f88fa8b...8a54e06`)
 
 ```diff
 @@ browser_protocol.pdl:1599 @@ experimental domain CSS
@@ -10013,40 +10036,4 @@ index bd277eb..09c420e 100644
      returns
        # Base64-encoded image data.
        binary data
-```
-
-## Roll protocol to r828856 — _2020-11-18T20:16:13.000Z_
-######  Diff: [`ae1d9fd...84c2cfc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ae1d9fd...84c2cfc`)
-
-```diff
-@@ browser_protocol.pdl:5652 @@ experimental domain Overlay
-       optional LineStyle lineSeparator
-       # The style of the separator between items
-       optional LineStyle itemSeparator
--      # Style of content-distribution space on the main axis (justify-content).
--      optional BoxStyle mainDistributedSpace
--      # Style of content-distribution space on the cross axis (align-content).
--      optional BoxStyle crossDistributedSpace
--      # Style of empty space caused by row gaps (gap/row-gap).
--      optional BoxStyle rowGapSpace
--      # Style of empty space caused by columns gaps (gap/column-gap).
--      optional BoxStyle columnGapSpace
- 
-   # Style information for drawing a line.
-   type LineStyle extends object
-@@ -5671,14 +5663,6 @@ experimental domain Overlay
-         dashed
-         dotted
- 
--  # Style information for drawing a box.
--  type BoxStyle extends object
--    properties
--      # The background color for the box (default: transparent)
--      optional DOM.RGBA fillColor
--      # The hatching color for the box (default: transparent)
--      optional DOM.RGBA hatchColor
--
-   # Configuration data for the highlighting of page elements.
-   type HighlightConfig extends object
-     properties
 ```
