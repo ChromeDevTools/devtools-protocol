@@ -272,8 +272,8 @@ export namespace ProtocolProxyApi {
         setBreakpointsActive(params: Protocol.Debugger.SetBreakpointsActiveRequest): Promise<void>;
 
         /**
-         * Defines pause on exceptions state. Can be set to stop on all exceptions, uncaught exceptions or
-         * no exceptions. Initial pause on exceptions state is `none`.
+         * Defines pause on exceptions state. Can be set to stop on all exceptions, uncaught exceptions,
+         * or caught exceptions, no exceptions. Initial pause on exceptions state is `none`.
          */
         setPauseOnExceptions(params: Protocol.Debugger.SetPauseOnExceptionsRequest): Promise<void>;
 

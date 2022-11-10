@@ -1,7 +1,56 @@
 
 
+## Roll protocol to r1069585 — _2022-11-10T04:34:05.000Z_
+######  Diff: [`bac0463...8ef1375`](https://github.com/ChromeDevTools/devtools-protocol/compare/`bac0463...8ef1375`)
+
+```diff
+@@ browser_protocol.pdl:1076 @@ domain Browser
+       durableStorage
+       flash
+       geolocation
+-      idleDetection
+-      localFonts
+       midi
+       midiSysex
+       nfc
+@@ -1086,12 +1084,11 @@ domain Browser
+       periodicBackgroundSync
+       protectedMediaIdentifier
+       sensors
+-      storageAccess
+       videoCapture
+       videoCapturePanTiltZoom
++      idleDetection
+       wakeLockScreen
+       wakeLockSystem
+-      windowManagement
+ 
+   experimental type PermissionSetting extends string
+     enum
+diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
+index 6efcf78..b3b97fa 100644
+--- a/pdl/js_protocol.pdl
++++ b/pdl/js_protocol.pdl
+@@ -458,14 +458,13 @@ domain Debugger
+       # New value for breakpoints active state.
+       boolean active
+ 
+-  # Defines pause on exceptions state. Can be set to stop on all exceptions, uncaught exceptions,
+-  # or caught exceptions, no exceptions. Initial pause on exceptions state is `none`.
++  # Defines pause on exceptions state. Can be set to stop on all exceptions, uncaught exceptions or
++  # no exceptions. Initial pause on exceptions state is `none`.
+   command setPauseOnExceptions
+     parameters
+       # Pause on exceptions mode.
+       enum state
+         none
+-        caught
+         uncaught
+         all
+```
+
 ## Roll protocol to r1068969 — _2022-11-09T04:35:00.000Z_
-######  Diff: [`8a54e06...457298b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8a54e06...457298b`)
+######  Diff: [`8a54e06...bac0463`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8a54e06...bac0463`)
 
 ```diff
 @@ browser_protocol.pdl:2237 @@ domain DOM
@@ -10021,19 +10070,4 @@ index bd277eb..09c420e 100644
    experimental event frameResized
  
    # Fired when a renderer-initiated navigation is requested.
-```
-
-## Roll protocol to r829162 — _2020-11-19T10:16:16.000Z_
-######  Diff: [`84c2cfc...2f03057`](https://github.com/ChromeDevTools/devtools-protocol/compare/`84c2cfc...2f03057`)
-
-```diff
-@@ browser_protocol.pdl:6314 @@ domain Page
-       optional Viewport clip
-       # Capture the screenshot from the surface, rather than the view. Defaults to true.
-       experimental optional boolean fromSurface
--      # Capture the screenshot beyond the viewport. Defaults to false.
--      experimental optional boolean captureBeyondViewport
-     returns
-       # Base64-encoded image data.
-       binary data
 ```

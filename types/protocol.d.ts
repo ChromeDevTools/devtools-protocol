@@ -688,6 +688,7 @@ export namespace Protocol {
 
         export const enum SetPauseOnExceptionsRequestState {
             None = 'none',
+            Caught = 'caught',
             Uncaught = 'uncaught',
             All = 'all',
         }
@@ -696,7 +697,7 @@ export namespace Protocol {
             /**
              * Pause on exceptions mode. (SetPauseOnExceptionsRequestState enum)
              */
-            state: ('none' | 'uncaught' | 'all');
+            state: ('none' | 'caught' | 'uncaught' | 'all');
         }
 
         export interface SetReturnValueRequest {
@@ -3703,7 +3704,7 @@ export namespace Protocol {
             windowState?: WindowState;
         }
 
-        export type PermissionType = ('accessibilityEvents' | 'audioCapture' | 'backgroundSync' | 'backgroundFetch' | 'clipboardReadWrite' | 'clipboardSanitizedWrite' | 'displayCapture' | 'durableStorage' | 'flash' | 'geolocation' | 'midi' | 'midiSysex' | 'nfc' | 'notifications' | 'paymentHandler' | 'periodicBackgroundSync' | 'protectedMediaIdentifier' | 'sensors' | 'videoCapture' | 'videoCapturePanTiltZoom' | 'idleDetection' | 'wakeLockScreen' | 'wakeLockSystem');
+        export type PermissionType = ('accessibilityEvents' | 'audioCapture' | 'backgroundSync' | 'backgroundFetch' | 'clipboardReadWrite' | 'clipboardSanitizedWrite' | 'displayCapture' | 'durableStorage' | 'flash' | 'geolocation' | 'idleDetection' | 'localFonts' | 'midi' | 'midiSysex' | 'nfc' | 'notifications' | 'paymentHandler' | 'periodicBackgroundSync' | 'protectedMediaIdentifier' | 'sensors' | 'storageAccess' | 'videoCapture' | 'videoCapturePanTiltZoom' | 'wakeLockScreen' | 'wakeLockSystem' | 'windowManagement');
 
         export type PermissionSetting = ('granted' | 'denied');
 

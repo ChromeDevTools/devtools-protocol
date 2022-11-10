@@ -2152,6 +2152,8 @@
                         "durableStorage",
                         "flash",
                         "geolocation",
+                        "idleDetection",
+                        "localFonts",
                         "midi",
                         "midiSysex",
                         "nfc",
@@ -2160,11 +2162,12 @@
                         "periodicBackgroundSync",
                         "protectedMediaIdentifier",
                         "sensors",
+                        "storageAccess",
                         "videoCapture",
                         "videoCapturePanTiltZoom",
-                        "idleDetection",
                         "wakeLockScreen",
-                        "wakeLockSystem"
+                        "wakeLockSystem",
+                        "windowManagement"
                     ]
                 },
                 {
