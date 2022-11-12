@@ -5174,6 +5174,10 @@ export namespace Protocol {
              */
             securityOrigin: string;
             /**
+             * Storage key of the cache.
+             */
+            storageKey: string;
+            /**
              * The name of the cache.
              */
             cacheName: string;

@@ -4373,6 +4373,11 @@
                             "type": "string"
                         },
                         {
+                            "name": "storageKey",
+                            "description": "Storage key of the cache.",
+                            "type": "string"
+                        },
+                        {
                             "name": "cacheName",
                             "description": "The name of the cache.",
                             "type": "string"

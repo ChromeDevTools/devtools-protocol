@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1070637 — _2022-11-12T04:32:08.000Z_
+######  Diff: [`6bf5d82...72f8e12`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6bf5d82...72f8e12`)
+
+```diff
+@@ browser_protocol.pdl:2065 @@ experimental domain CacheStorage
+       CacheId cacheId
+       # Security origin of the cache.
+       string securityOrigin
+-      # Storage key of the cache.
+-      string storageKey
+       # The name of the cache.
+       string cacheName
+```
+
 ## Roll protocol to r1069585 — _2022-11-10T04:34:05.000Z_
-######  Diff: [`bac0463...8ef1375`](https://github.com/ChromeDevTools/devtools-protocol/compare/`bac0463...8ef1375`)
+######  Diff: [`bac0463...6bf5d82`](https://github.com/ChromeDevTools/devtools-protocol/compare/`bac0463...6bf5d82`)
 
 ```diff
 @@ browser_protocol.pdl:1076 @@ domain Browser
@@ -10042,32 +10056,4 @@ index bd277eb..09c420e 100644
  
    type ColorFormat extends string
      enum
-```
-
-## Roll protocol to r829242 — _2020-11-19T16:16:09.000Z_
-######  Diff: [`2f03057...7507a70`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2f03057...7507a70`)
-
-```diff
-@@ browser_protocol.pdl:6314 @@ domain Page
-       optional Viewport clip
-       # Capture the screenshot from the surface, rather than the view. Defaults to true.
-       experimental optional boolean fromSurface
-+      # Capture the screenshot beyond the viewport. Defaults to false.
-+      experimental optional boolean captureBeyondViewport
-     returns
-       # Base64-encoded image data.
-       binary data
-@@ -6821,12 +6823,6 @@ domain Page
-       # Frame object.
-       Frame frame
- 
--  # Fired when opening document to write to.
--  experimental event documentOpened
--    parameters
--      # Frame object.
--      Frame frame
--
-   experimental event frameResized
- 
-   # Fired when a renderer-initiated navigation is requested.
 ```
