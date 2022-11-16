@@ -1,7 +1,41 @@
 
 
+## Roll protocol to r1072049 — _2022-11-16T04:31:33.000Z_
+######  Diff: [`d66082e...c2e61dc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d66082e...c2e61dc`)
+
+```diff
+@@ browser_protocol.pdl:482 @@ experimental domain Audits
+       ExcludeInvalidSameParty
+       ExcludeSamePartyCrossPartyContext
+       ExcludeDomainNonASCII
+-      ExcludeThirdPartyCookieBlockedInFirstPartySet
+ 
+   type CookieWarningReason extends string
+     enum
+@@ -5480,9 +5479,6 @@ domain Network
+       SameSiteNoneInsecure
+       # The cookie was not stored due to user preferences.
+       UserPreferences
+-      # The cookie was blocked by third-party cookie blocking between sites in
+-      # the same First-Party Set.
+-      ThirdPartyBlockedInFirstPartySet
+       # The syntax of the Set-Cookie header of the response was invalid.
+       SyntaxError
+       # The scheme of the connection is not allowed to store cookies.
+@@ -5547,9 +5543,6 @@ domain Network
+       SameSiteNoneInsecure
+       # The cookie was not sent due to user preferences.
+       UserPreferences
+-      # The cookie was blocked by third-party cookie blocking between sites in
+-      # the same First-Party Set.
+-      ThirdPartyBlockedInFirstPartySet
+       # An unknown error was encountered when trying to send this cookie.
+       UnknownError
+       # The cookie had the "SameSite=Strict" attribute but came from a response
+```
+
 ## Roll protocol to r1070637 — _2022-11-12T04:32:08.000Z_
-######  Diff: [`6bf5d82...72f8e12`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6bf5d82...72f8e12`)
+######  Diff: [`6bf5d82...d66082e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6bf5d82...d66082e`)
 
 ```diff
 @@ browser_protocol.pdl:2065 @@ experimental domain CacheStorage
@@ -10028,32 +10062,4 @@ index bd277eb..09c420e 100644
  
    # Fired when additional information about a responseReceived event is available from the network
    # stack. Not every responseReceived event will have an additional responseReceivedExtraInfo for
-```
-
-## Roll protocol to r829612 — _2020-11-20T11:16:03.000Z_
-######  Diff: [`7507a70...b9d4d51`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7507a70...b9d4d51`)
-
-```diff
-@@ browser_protocol.pdl:5679 @@ experimental domain Overlay
-       # The hatching color for the box (default: transparent)
-       optional DOM.RGBA hatchColor
- 
--  type ContrastAlgorithm extends string
--    enum
--      aa
--      aaa
--      apca
--
-   # Configuration data for the highlighting of page elements.
-   type HighlightConfig extends object
-     properties
-@@ -5720,8 +5714,6 @@ experimental domain Overlay
-       optional GridHighlightConfig gridHighlightConfig
-       # The flex container highlight configuration (default: all transparent).
-       optional FlexContainerHighlightConfig flexContainerHighlightConfig
--      # The contrast algorithm to use for the contrast ratio (default: aa).
--      optional ContrastAlgorithm contrastAlgorithm
- 
-   type ColorFormat extends string
-     enum
 ```

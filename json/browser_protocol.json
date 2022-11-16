@@ -992,7 +992,8 @@
                         "ExcludeSameSiteStrict",
                         "ExcludeInvalidSameParty",
                         "ExcludeSamePartyCrossPartyContext",
-                        "ExcludeDomainNonASCII"
+                        "ExcludeDomainNonASCII",
+                        "ExcludeThirdPartyCookieBlockedInFirstPartySet"
                     ]
                 },
                 {
@@ -11815,6 +11816,7 @@
                         "SameSiteUnspecifiedTreatedAsLax",
                         "SameSiteNoneInsecure",
                         "UserPreferences",
+                        "ThirdPartyBlockedInFirstPartySet",
                         "SyntaxError",
                         "SchemeNotSupported",
                         "OverwriteSecure",
@@ -11843,6 +11845,7 @@
                         "SameSiteUnspecifiedTreatedAsLax",
                         "SameSiteNoneInsecure",
                         "UserPreferences",
+                        "ThirdPartyBlockedInFirstPartySet",
                         "UnknownError",
                         "SchemefulSameSiteStrict",
                         "SchemefulSameSiteLax",
