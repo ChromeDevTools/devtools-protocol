@@ -1,7 +1,25 @@
 
 
+## Roll protocol to r1073708 — _2022-11-19T04:30:08.000Z_
+######  Diff: [`5690c4d...a833b45`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5690c4d...a833b45`)
+
+```diff
+@@ browser_protocol.pdl:8121 @@ domain Page
+     parameters
+       enum mode
+         none
+-        autoAccept
+-        autoReject
+-        autoOptOut
++        autoaccept
++        autoreject
+ 
+   # Generates a report for testing.
+   experimental command generateTestReport
+```
+
 ## Roll protocol to r1072049 — _2022-11-16T04:31:33.000Z_
-######  Diff: [`d66082e...c2e61dc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d66082e...c2e61dc`)
+######  Diff: [`d66082e...5690c4d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d66082e...5690c4d`)
 
 ```diff
 @@ browser_protocol.pdl:482 @@ experimental domain Audits
@@ -10022,44 +10040,4 @@ index bd277eb..09c420e 100644
      returns
        # Base64-encoded image data.
        binary data
-```
-
-## Roll protocol to r829624 — _2020-11-20T12:16:20.000Z_
-######  Diff: [`b9d4d51...e3d5a68`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b9d4d51...e3d5a68`)
-
-```diff
-@@ browser_protocol.pdl:5483 @@ domain Network
-       # WebSocket request data.
-       WebSocketRequest request
- 
--  experimental type PrivateNetworkRequestPolicy extends string
--    enum
--      Allow
--      BlockFromInsecureToMorePrivate
--
--  experimental type IPAddressSpace extends string
--    enum
--      Local
--      Private
--      Public
--      Unknown
--
--  experimental type ClientSecurityState extends object
--    properties
--      boolean initiatorIsSecureContext
--      IPAddressSpace initiatorIPAddressSpace
--      PrivateNetworkRequestPolicy privateNetworkRequestPolicy
--
-   # Fired when additional information about a requestWillBeSent event is available from the
-   # network stack. Not every requestWillBeSent event will have an additional
-   # requestWillBeSentExtraInfo fired for it, and there is no guarantee whether requestWillBeSent
-@@ -5514,8 +5496,6 @@ domain Network
-       array of BlockedCookieWithReason associatedCookies
-       # Raw request headers as they will be sent over the wire.
-       Headers headers
--      # The client security state set for the request.
--      optional ClientSecurityState clientSecurityState
- 
-   # Fired when additional information about a responseReceived event is available from the network
-   # stack. Not every responseReceived event will have an additional responseReceivedExtraInfo for
 ```

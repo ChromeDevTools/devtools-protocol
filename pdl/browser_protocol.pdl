@@ -8121,8 +8121,9 @@ domain Page
     parameters
       enum mode
         none
-        autoaccept
-        autoreject
+        autoAccept
+        autoReject
+        autoOptOut
 
   # Generates a report for testing.
   experimental command generateTestReport

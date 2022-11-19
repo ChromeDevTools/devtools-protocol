@@ -13557,15 +13557,16 @@ export namespace Protocol {
 
         export const enum SetSPCTransactionModeRequestMode {
             None = 'none',
-            Autoaccept = 'autoaccept',
-            Autoreject = 'autoreject',
+            AutoAccept = 'autoAccept',
+            AutoReject = 'autoReject',
+            AutoOptOut = 'autoOptOut',
         }
 
         export interface SetSPCTransactionModeRequest {
             /**
              *  (SetSPCTransactionModeRequestMode enum)
              */
-            mode: ('none' | 'autoaccept' | 'autoreject');
+            mode: ('none' | 'autoAccept' | 'autoReject' | 'autoOptOut');
         }
 
         export interface GenerateTestReportRequest {
