@@ -14810,6 +14810,13 @@ export namespace Protocol {
             origin: string;
         }
 
+        export interface TrackCacheStorageForStorageKeyRequest {
+            /**
+             * Storage key.
+             */
+            storageKey: string;
+        }
+
         export interface TrackIndexedDBForOriginRequest {
             /**
              * Security origin.
@@ -14829,6 +14836,13 @@ export namespace Protocol {
              * Security origin.
              */
             origin: string;
+        }
+
+        export interface UntrackCacheStorageForStorageKeyRequest {
+            /**
+             * Storage key.
+             */
+            storageKey: string;
         }
 
         export interface UntrackIndexedDBForOriginRequest {
@@ -14922,6 +14936,10 @@ export namespace Protocol {
              */
             origin: string;
             /**
+             * Storage key to update.
+             */
+            storageKey: string;
+            /**
              * Name of cache in origin.
              */
             cacheName: string;
@@ -14935,6 +14953,10 @@ export namespace Protocol {
              * Origin to update.
              */
             origin: string;
+            /**
+             * Storage key to update.
+             */
+            storageKey: string;
         }
 
         /**

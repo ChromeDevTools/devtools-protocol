@@ -3262,6 +3262,11 @@ export namespace ProtocolProxyApi {
         trackCacheStorageForOrigin(params: Protocol.Storage.TrackCacheStorageForOriginRequest): Promise<void>;
 
         /**
+         * Registers storage key to be notified when an update occurs to its cache storage list.
+         */
+        trackCacheStorageForStorageKey(params: Protocol.Storage.TrackCacheStorageForStorageKeyRequest): Promise<void>;
+
+        /**
          * Registers origin to be notified when an update occurs to its IndexedDB.
          */
         trackIndexedDBForOrigin(params: Protocol.Storage.TrackIndexedDBForOriginRequest): Promise<void>;
@@ -3275,6 +3280,11 @@ export namespace ProtocolProxyApi {
          * Unregisters origin from receiving notifications for cache storage.
          */
         untrackCacheStorageForOrigin(params: Protocol.Storage.UntrackCacheStorageForOriginRequest): Promise<void>;
+
+        /**
+         * Unregisters storage key from receiving notifications for cache storage.
+         */
+        untrackCacheStorageForStorageKey(params: Protocol.Storage.UntrackCacheStorageForStorageKeyRequest): Promise<void>;
 
         /**
          * Unregisters origin from receiving notifications for IndexedDB.

@@ -1,7 +1,57 @@
 
 
+## Roll protocol to r1074451 — _2022-11-22T04:30:40.000Z_
+######  Diff: [`f504866...6d862e8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f504866...6d862e8`)
+
+```diff
+@@ browser_protocol.pdl:9262 @@ experimental domain Storage
+       # Security origin.
+       string origin
+ 
+-  # Registers storage key to be notified when an update occurs to its cache storage list.
+-  command trackCacheStorageForStorageKey
+-    parameters
+-      # Storage key.
+-      string storageKey
+-
+   # Registers origin to be notified when an update occurs to its IndexedDB.
+   command trackIndexedDBForOrigin
+     parameters
+@@ -9286,12 +9280,6 @@ experimental domain Storage
+       # Security origin.
+       string origin
+ 
+-  # Unregisters storage key from receiving notifications for cache storage.
+-  command untrackCacheStorageForStorageKey
+-    parameters
+-      # Storage key.
+-      string storageKey
+-
+   # Unregisters origin from receiving notifications for IndexedDB.
+   command untrackIndexedDBForOrigin
+     parameters
+@@ -9377,8 +9365,6 @@ experimental domain Storage
+     parameters
+       # Origin to update.
+       string origin
+-      # Storage key to update.
+-      string storageKey
+       # Name of cache in origin.
+       string cacheName
+ 
+@@ -9387,8 +9373,6 @@ experimental domain Storage
+     parameters
+       # Origin to update.
+       string origin
+-      # Storage key to update.
+-      string storageKey
+ 
+   # The origin's IndexedDB object store has been modified.
+   event indexedDBContentUpdated
+```
+
 ## Roll protocol to r1073708 — _2022-11-19T04:30:08.000Z_
-######  Diff: [`5690c4d...a833b45`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5690c4d...a833b45`)
+######  Diff: [`5690c4d...f504866`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5690c4d...f504866`)
 
 ```diff
 @@ browser_protocol.pdl:8121 @@ domain Page
@@ -10025,19 +10075,4 @@ index bd277eb..09c420e 100644
  
    # Style information for drawing a line.
    type LineStyle extends object
-```
-
-## Roll protocol to r829642 — _2020-11-20T14:16:14.000Z_
-######  Diff: [`e3d5a68...e7d16f6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e3d5a68...e7d16f6`)
-
-```diff
-@@ browser_protocol.pdl:6342 @@ domain Page
-       optional Viewport clip
-       # Capture the screenshot from the surface, rather than the view. Defaults to true.
-       experimental optional boolean fromSurface
--      # Capture the screenshot beyond the viewport. Defaults to false.
--      experimental optional boolean captureBeyondViewport
-     returns
-       # Base64-encoded image data.
-       binary data
 ```

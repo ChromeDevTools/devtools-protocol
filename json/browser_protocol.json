@@ -19583,6 +19583,17 @@
                     ]
                 },
                 {
+                    "name": "trackCacheStorageForStorageKey",
+                    "description": "Registers storage key to be notified when an update occurs to its cache storage list.",
+                    "parameters": [
+                        {
+                            "name": "storageKey",
+                            "description": "Storage key.",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "trackIndexedDBForOrigin",
                     "description": "Registers origin to be notified when an update occurs to its IndexedDB.",
                     "parameters": [
@@ -19611,6 +19622,17 @@
                         {
                             "name": "origin",
                             "description": "Security origin.",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "untrackCacheStorageForStorageKey",
+                    "description": "Unregisters storage key from receiving notifications for cache storage.",
+                    "parameters": [
+                        {
+                            "name": "storageKey",
+                            "description": "Storage key.",
                             "type": "string"
                         }
                     ]
@@ -19812,6 +19834,11 @@
                             "type": "string"
                         },
                         {
+                            "name": "storageKey",
+                            "description": "Storage key to update.",
+                            "type": "string"
+                        },
+                        {
                             "name": "cacheName",
                             "description": "Name of cache in origin.",
                             "type": "string"
@@ -19825,6 +19852,11 @@
                         {
                             "name": "origin",
                             "description": "Origin to update.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "storageKey",
+                            "description": "Storage key to update.",
                             "type": "string"
                         }
                     ]
