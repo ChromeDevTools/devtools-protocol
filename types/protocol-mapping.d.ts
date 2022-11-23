@@ -1804,7 +1804,7 @@ export namespace ProtocolMapping {
          * Requests cache names.
          */
         'CacheStorage.requestCacheNames': {
-            paramsType: [Protocol.CacheStorage.RequestCacheNamesRequest];
+            paramsType: [Protocol.CacheStorage.RequestCacheNamesRequest?];
             returnType: Protocol.CacheStorage.RequestCacheNamesResponse;
         };
         /**

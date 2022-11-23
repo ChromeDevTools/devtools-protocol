@@ -5218,9 +5218,14 @@ export namespace Protocol {
 
         export interface RequestCacheNamesRequest {
             /**
+             * At least and at most one of securityOrigin, storageKey must be specified.
              * Security origin.
              */
-            securityOrigin: string;
+            securityOrigin?: string;
+            /**
+             * Storage key.
+             */
+            storageKey?: string;
         }
 
         export interface RequestCacheNamesResponse {

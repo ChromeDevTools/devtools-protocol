@@ -1,7 +1,26 @@
 
 
+## Roll protocol to r1075032 — _2022-11-23T04:29:43.000Z_
+######  Diff: [`55143fc...29cfced`](https://github.com/ChromeDevTools/devtools-protocol/compare/`55143fc...29cfced`)
+
+```diff
+@@ browser_protocol.pdl:2099 @@ experimental domain CacheStorage
+   # Requests cache names.
+   command requestCacheNames
+     parameters
+-      # At least and at most one of securityOrigin, storageKey must be specified.
+       # Security origin.
+-      optional string securityOrigin
+-      # Storage key.
+-      optional string storageKey
++      string securityOrigin
+     returns
+       # Caches for the security origin.
+       array of Cache caches
+```
+
 ## Roll protocol to r1074451 — _2022-11-22T04:30:40.000Z_
-######  Diff: [`f504866...6d862e8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f504866...6d862e8`)
+######  Diff: [`f504866...55143fc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f504866...55143fc`)
 
 ```diff
 @@ browser_protocol.pdl:9262 @@ experimental domain Storage
@@ -10060,19 +10079,4 @@ index bd277eb..09c420e 100644
  
    # Cookie object
    type Cookie extends object
-```
-
-## Roll protocol to r831300 — _2020-11-26T10:16:17.000Z_
-######  Diff: [`e7d16f6...4829241`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e7d16f6...4829241`)
-
-```diff
-@@ browser_protocol.pdl:5680 @@ experimental domain Overlay
-       optional BoxStyle rowGapSpace
-       # Style of empty space caused by columns gaps (gap/column-gap).
-       optional BoxStyle columnGapSpace
--      # Style of the self-alignment line (align-items).
--      optional LineStyle crossAlignment
- 
-   # Style information for drawing a line.
-   type LineStyle extends object
 ```
