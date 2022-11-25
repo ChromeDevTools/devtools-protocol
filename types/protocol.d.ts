@@ -3628,6 +3628,10 @@ export namespace Protocol {
              * A list of event-specific information.
              */
             eventMetadata: EventMetadata[];
+            /**
+             * Storage key this event belongs to.
+             */
+            storageKey: string;
         }
 
         export interface StartObservingRequest {

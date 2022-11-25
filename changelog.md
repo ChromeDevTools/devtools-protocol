@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1075693 — _2022-11-25T04:29:29.000Z_
+######  Diff: [`3a71cd0...ec9da6e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3a71cd0...ec9da6e`)
+
+```diff
+@@ browser_protocol.pdl:1031 @@ experimental domain BackgroundService
+       string instanceId
+       # A list of event-specific information.
+       array of EventMetadata eventMetadata
+-      # Storage key this event belongs to.
+-      string storageKey
+ 
+   # Called with all existing backgroundServiceEvents when enabled, and all new
+   # events afterwards if enabled and recording.
+```
+
 ## Roll protocol to r1075032 — _2022-11-23T04:29:43.000Z_
-######  Diff: [`55143fc...29cfced`](https://github.com/ChromeDevTools/devtools-protocol/compare/`55143fc...29cfced`)
+######  Diff: [`55143fc...3a71cd0`](https://github.com/ChromeDevTools/devtools-protocol/compare/`55143fc...3a71cd0`)
 
 ```diff
 @@ browser_protocol.pdl:2099 @@ experimental domain CacheStorage
@@ -10048,35 +10063,4 @@ index bd277eb..09c420e 100644
    experimental type PrivateNetworkRequestPolicy extends string
      enum
        Allow
-```
-
-## Roll protocol to r831315 — _2020-11-26T12:16:14.000Z_
-######  Diff: [`4829241...bf6d675`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4829241...bf6d675`)
-
-```diff
-@@ browser_protocol.pdl:4276 @@ domain Network
-       SignedExchange
-       Ping
-       CSPViolationReport
--      Preflight
-       Other
- 
-   # Unique loader identifier.
-@@ -4683,7 +4682,6 @@ domain Network
-         script
-         preload
-         SignedExchange
--        preflight
-         other
-       # Initiator JavaScript stack trace, set for Script only.
-       optional Runtime.StackTrace stack
-@@ -4695,8 +4693,6 @@ domain Network
-       # Initiator column number, set for Parser type or for Script type (when script is importing
-       # module) (0-based).
-       optional number columnNumber
--      # Set if another request triggered this request (e.g. preflight).
--      optional RequestId requestId
- 
-   # Cookie object
-   type Cookie extends object
 ```

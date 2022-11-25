@@ -1997,6 +1997,11 @@
                             "items": {
                                 "$ref": "EventMetadata"
                             }
+                        },
+                        {
+                            "name": "storageKey",
+                            "description": "Storage key this event belongs to.",
+                            "type": "string"
                         }
                     ]
                 }
