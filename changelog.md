@@ -1,7 +1,40 @@
 
 
+## Roll protocol to r1077862 — _2022-12-01T04:30:06.000Z_
+######  Diff: [`151a19b...22faff3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`151a19b...22faff3`)
+
+```diff
+@@ browser_protocol.pdl:8423 @@ domain Page
+       InjectedStyleSheet
+       KeepaliveRequest
+       Dummy
+-      AuthorizationHeader
+       # Disabled for RenderFrameHost reasons
+       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
+       ContentSecurityHandler
+@@ -9077,7 +9076,6 @@ experimental domain Storage
+       join
+       leave
+       update
+-      loaded
+       bid
+       win
+ 
+@@ -10013,8 +10011,8 @@ experimental domain Tracing
+       # total size.
+       optional number value
+ 
+-  # Contains a bucket of collected trace events. When tracing is stopped collected events will be
+-  # sent as a sequence of dataCollected events followed by tracingComplete event.
++  # Contains an bucket of collected trace events. When tracing is stopped collected events will be
++  # send as a sequence of dataCollected events followed by tracingComplete event.
+   event dataCollected
+     parameters
+       array of object value
+```
+
 ## Roll protocol to r1075693 — _2022-11-25T04:29:29.000Z_
-######  Diff: [`3a71cd0...ec9da6e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3a71cd0...ec9da6e`)
+######  Diff: [`3a71cd0...151a19b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3a71cd0...151a19b`)
 
 ```diff
 @@ browser_protocol.pdl:1031 @@ experimental domain BackgroundService
@@ -10035,32 +10068,4 @@ index bd277eb..09c420e 100644
    experimental type CrossOriginOpenerPolicyValue extends string
      enum
        SameOrigin
-```
-
-## Roll protocol to r831461 — _2020-11-27T03:16:01.000Z_
-######  Diff: [`bf6d675...ebd3663`](https://github.com/ChromeDevTools/devtools-protocol/compare/`bf6d675...ebd3663`)
-
-```diff
-@@ browser_protocol.pdl:5487 @@ domain Network
-       # WebSocket request data.
-       WebSocketRequest request
- 
--  # Fired upon WebTransport creation.
--  event webTransportCreated
--    parameters
--      # WebTransport identifier.
--      RequestId transportId
--      # WebTransport request URL.
--      string url
--      # Request initiator.
--      optional Initiator initiator
--
--  event webTransportClosed
--    parameters
--      # WebTransport identifier.
--      RequestId transportId
--
-   experimental type PrivateNetworkRequestPolicy extends string
-     enum
-       Allow
 ```
