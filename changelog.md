@@ -1,7 +1,31 @@
 
 
+## Roll protocol to r1078443 — _2022-12-02T04:28:44.000Z_
+######  Diff: [`23c561a...524f046`](https://github.com/ChromeDevTools/devtools-protocol/compare/`23c561a...524f046`)
+
+```diff
+@@ browser_protocol.pdl:10630 @@ experimental domain WebAuthn
+       AuthenticatorId authenticatorId
+       boolean enabled
+ 
+-  # Triggered when a credential is added to an authenticator.
+-  event credentialAdded
+-    parameters
+-      AuthenticatorId authenticatorId
+-      Credential credential
+-
+-  # Triggered when a credential is used in a webauthn assertion.
+-  event credentialAsserted
+-    parameters
+-      AuthenticatorId authenticatorId
+-      Credential credential
+-
+ # This domain allows detailed inspection of media elements
+ experimental domain Media
+```
+
 ## Roll protocol to r1077862 — _2022-12-01T04:30:06.000Z_
-######  Diff: [`151a19b...22faff3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`151a19b...22faff3`)
+######  Diff: [`151a19b...23c561a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`151a19b...23c561a`)
 
 ```diff
 @@ browser_protocol.pdl:8423 @@ domain Page
@@ -10025,47 +10049,4 @@ index bd277eb..09c420e 100644
        tablecaption
        title
        other
-```
-
-## Roll protocol to r831994 — _2020-11-30T21:16:16.000Z_
-######  Diff: [`ebd3663...30c0c44`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ebd3663...30c0c44`)
-
-```diff
-@@ browser_protocol.pdl:5553 @@ domain Network
-       # available, such as in the case of HTTP/2 or QUIC.
-       optional string headersText
- 
--  # Fired exactly once for each Trust Token operation. Depending on
--  # the type of the operation and whether the operation succeeded or
--  # failed, the event is fired before the corresponding request was sent
--  # or after the response was received.
--  experimental event trustTokenOperationDone
--    parameters
--      # Detailed success or error status of the operation.
--      # 'AlreadyExists' also signifies a successful operation, as the result
--      # of the operation already exists und thus, the operation was abort
--      # preemptively (e.g. a cache hit).
--      enum status
--        Ok
--        InvalidArgument
--        FailedPrecondition
--        ResourceExhausted
--        AlreadyExists
--        Unavailable
--        BadResponse
--        InternalError
--        UnknownError
--        FulfilledLocally
--      TrustTokenOperationType type
--      RequestId requestId
--      # Top level origin. The context in which the operation was attempted.
--      optional string topLevelOrigin
--      # Origin of the issuer in case of a "Issuance" or "Redemption" operation.
--      optional string issuerOrigin
--      # The number of obtained Trust Tokens on a successful "Issuance" operation.
--      optional integer issuedTokenCount
--
-   experimental type CrossOriginOpenerPolicyValue extends string
-     enum
-       SameOrigin
 ```

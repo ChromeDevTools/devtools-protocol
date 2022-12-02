@@ -16630,6 +16630,22 @@ export namespace Protocol {
             authenticatorId: AuthenticatorId;
             enabled: boolean;
         }
+
+        /**
+         * Triggered when a credential is added to an authenticator.
+         */
+        export interface CredentialAddedEvent {
+            authenticatorId: AuthenticatorId;
+            credential: Credential;
+        }
+
+        /**
+         * Triggered when a credential is used in a webauthn assertion.
+         */
+        export interface CredentialAssertedEvent {
+            authenticatorId: AuthenticatorId;
+            credential: Credential;
+        }
     }
 
     /**

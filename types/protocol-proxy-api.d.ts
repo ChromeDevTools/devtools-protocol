@@ -3830,6 +3830,16 @@ export namespace ProtocolProxyApi {
          */
         setAutomaticPresenceSimulation(params: Protocol.WebAuthn.SetAutomaticPresenceSimulationRequest): Promise<void>;
 
+        /**
+         * Triggered when a credential is added to an authenticator.
+         */
+        on(event: 'credentialAdded', listener: (params: Protocol.WebAuthn.CredentialAddedEvent) => void): void;
+
+        /**
+         * Triggered when a credential is used in a webauthn assertion.
+         */
+        on(event: 'credentialAsserted', listener: (params: Protocol.WebAuthn.CredentialAssertedEvent) => void): void;
+
     }
 
     export interface MediaApi {
