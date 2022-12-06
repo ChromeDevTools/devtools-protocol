@@ -2182,7 +2182,8 @@
                     "type": "string",
                     "enum": [
                         "granted",
-                        "denied"
+                        "denied",
+                        "prompt"
                     ]
                 },
                 {

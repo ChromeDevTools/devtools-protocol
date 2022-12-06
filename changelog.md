@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1079624 — _2022-12-06T04:28:29.000Z_
+######  Diff: [`8af7bb2...f0eeac7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8af7bb2...f0eeac7`)
+
+```diff
+@@ browser_protocol.pdl:1100 @@ domain Browser
+     enum
+       granted
+       denied
+-      prompt
+ 
+   # Definition of PermissionDescriptor defined in the Permissions API:
+   # https://w3c.github.io/permissions/#dictdef-permissiondescriptor.
+```
+
 ## Roll protocol to r1078443 — _2022-12-02T04:28:44.000Z_
-######  Diff: [`23c561a...524f046`](https://github.com/ChromeDevTools/devtools-protocol/compare/`23c561a...524f046`)
+######  Diff: [`23c561a...8af7bb2`](https://github.com/ChromeDevTools/devtools-protocol/compare/`23c561a...8af7bb2`)
 
 ```diff
 @@ browser_protocol.pdl:10630 @@ experimental domain WebAuthn
@@ -10035,18 +10049,4 @@ index bd277eb..09c420e 100644
 -      AXNodeId id
      returns
        array of AXNode nodes
-```
-
-## Roll protocol to r832201 — _2020-12-01T04:16:12.000Z_
-######  Diff: [`30c0c44...1d63b26`](https://github.com/ChromeDevTools/devtools-protocol/compare/`30c0c44...1d63b26`)
-
-```diff
-@@ browser_protocol.pdl:53 @@ experimental domain Accessibility
-       labelfor
-       labelwrapped
-       legend
--      rubyannotation
-       tablecaption
-       title
-       other
 ```

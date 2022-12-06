@@ -3710,7 +3710,7 @@ export namespace Protocol {
 
         export type PermissionType = ('accessibilityEvents' | 'audioCapture' | 'backgroundSync' | 'backgroundFetch' | 'clipboardReadWrite' | 'clipboardSanitizedWrite' | 'displayCapture' | 'durableStorage' | 'flash' | 'geolocation' | 'idleDetection' | 'localFonts' | 'midi' | 'midiSysex' | 'nfc' | 'notifications' | 'paymentHandler' | 'periodicBackgroundSync' | 'protectedMediaIdentifier' | 'sensors' | 'storageAccess' | 'videoCapture' | 'videoCapturePanTiltZoom' | 'wakeLockScreen' | 'wakeLockSystem' | 'windowManagement');
 
-        export type PermissionSetting = ('granted' | 'denied');
+        export type PermissionSetting = ('granted' | 'denied' | 'prompt');
 
         /**
          * Definition of PermissionDescriptor defined in the Permissions API:
