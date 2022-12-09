@@ -3388,6 +3388,11 @@ export namespace ProtocolProxyApi {
         getInfo(): Promise<Protocol.SystemInfo.GetInfoResponse>;
 
         /**
+         * Returns information about the feature state.
+         */
+        getFeatureState(params: Protocol.SystemInfo.GetFeatureStateRequest): Promise<Protocol.SystemInfo.GetFeatureStateResponse>;
+
+        /**
          * Returns information about all running processes.
          */
         getProcessInfo(): Promise<Protocol.SystemInfo.GetProcessInfoResponse>;

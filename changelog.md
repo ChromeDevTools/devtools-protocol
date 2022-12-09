@@ -1,7 +1,27 @@
 
 
+## Roll protocol to r1081314 — _2022-12-09T04:28:47.000Z_
+######  Diff: [`c1e172c...f275bdb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c1e172c...f275bdb`)
+
+```diff
+@@ browser_protocol.pdl:9569 @@ experimental domain SystemInfo
+       # supported.
+       string commandLine
+ 
+-  # Returns information about the feature state.
+-  command getFeatureState
+-    parameters
+-      string featureState
+-    returns
+-      boolean featureEnabled
+-
+   # Returns information about all running processes.
+   command getProcessInfo
+     returns
+```
+
 ## Roll protocol to r1079624 — _2022-12-06T04:28:29.000Z_
-######  Diff: [`8af7bb2...f0eeac7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8af7bb2...f0eeac7`)
+######  Diff: [`8af7bb2...c1e172c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8af7bb2...c1e172c`)
 
 ```diff
 @@ browser_protocol.pdl:1100 @@ domain Browser
@@ -10022,31 +10042,4 @@ index bd277eb..09c420e 100644
  
    experimental type PrivateNetworkRequestPolicy extends string
      enum
-```
-
-## Roll protocol to r832784 — _2020-12-02T13:16:13.000Z_
-######  Diff: [`1d63b26...9e09a22`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1d63b26...9e09a22`)
-
-```diff
-@@ browser_protocol.pdl:203 @@ experimental domain Accessibility
-       # children, if requested.
-       array of AXNode nodes
- 
--  # Fetches the entire accessibility tree for the root Document
-+  # Fetches the entire accessibility tree
-   experimental command getFullAXTree
--    parameters
--      # The maximum depth at which descendants of the root node should be retrieved.
--      # If omitted, the full tree is returned.
--      optional integer max_depth
--    returns
--      array of AXNode nodes
--
--  # Fetches a particular accessibility node by AXNodeId.
--  # Requires `enable()` to have been called previously.
--  experimental command getChildAXNodes
--    parameters
--      AXNodeId id
-     returns
-       array of AXNode nodes
 ```

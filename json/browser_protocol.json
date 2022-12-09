@@ -20252,6 +20252,22 @@
                     ]
                 },
                 {
+                    "name": "getFeatureState",
+                    "description": "Returns information about the feature state.",
+                    "parameters": [
+                        {
+                            "name": "featureState",
+                            "type": "string"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "featureEnabled",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
                     "name": "getProcessInfo",
                     "description": "Returns information about all running processes.",
                     "returns": [

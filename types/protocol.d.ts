@@ -15249,6 +15249,14 @@ export namespace Protocol {
             commandLine: string;
         }
 
+        export interface GetFeatureStateRequest {
+            featureState: string;
+        }
+
+        export interface GetFeatureStateResponse {
+            featureEnabled: boolean;
+        }
+
         export interface GetProcessInfoResponse {
             /**
              * An array of process info blocks.
