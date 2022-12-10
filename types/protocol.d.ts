@@ -3466,7 +3466,7 @@ export namespace Protocol {
          * third_party/blink/public/mojom/devtools/inspector_issue.mojom to include
          * all cases except for success.
          */
-        export type FederatedAuthRequestIssueReason = ('ShouldEmbargo' | 'TooManyRequests' | 'ManifestListHttpNotFound' | 'ManifestListNoResponse' | 'ManifestListInvalidResponse' | 'ManifestNotInManifestList' | 'ManifestListTooBig' | 'ManifestHttpNotFound' | 'ManifestNoResponse' | 'ManifestInvalidResponse' | 'ClientMetadataHttpNotFound' | 'ClientMetadataNoResponse' | 'ClientMetadataInvalidResponse' | 'DisabledInSettings' | 'ErrorFetchingSignin' | 'InvalidSigninResponse' | 'AccountsHttpNotFound' | 'AccountsNoResponse' | 'AccountsInvalidResponse' | 'IdTokenHttpNotFound' | 'IdTokenNoResponse' | 'IdTokenInvalidResponse' | 'IdTokenInvalidRequest' | 'ErrorIdToken' | 'Canceled' | 'RpPageNotVisible');
+        export type FederatedAuthRequestIssueReason = ('ShouldEmbargo' | 'TooManyRequests' | 'WellKnownHttpNotFound' | 'WellKnownNoResponse' | 'WellKnownInvalidResponse' | 'ConfigNotInWellKnown' | 'WellKnownTooBig' | 'ConfigHttpNotFound' | 'ConfigNoResponse' | 'ConfigInvalidResponse' | 'ClientMetadataHttpNotFound' | 'ClientMetadataNoResponse' | 'ClientMetadataInvalidResponse' | 'DisabledInSettings' | 'ErrorFetchingSignin' | 'InvalidSigninResponse' | 'AccountsHttpNotFound' | 'AccountsNoResponse' | 'AccountsInvalidResponse' | 'IdTokenHttpNotFound' | 'IdTokenNoResponse' | 'IdTokenInvalidResponse' | 'IdTokenInvalidRequest' | 'ErrorIdToken' | 'Canceled' | 'RpPageNotVisible');
 
         /**
          * This issue tracks client hints related issues. It's used to deprecate old
@@ -7508,7 +7508,7 @@ export namespace Protocol {
         /**
          * Enum of image types that can be disabled.
          */
-        export type DisabledImageType = ('avif' | 'jxl' | 'webp');
+        export type DisabledImageType = ('avif' | 'webp');
 
         export interface CanEmulateResponse {
             /**
@@ -12324,7 +12324,7 @@ export namespace Protocol {
          * All Permissions Policy features. This enum should match the one defined
          * in third_party/blink/renderer/core/permissions_policy/permissions_policy_features.json5.
          */
-        export type PermissionsPolicyFeature = ('accelerometer' | 'ambient-light-sensor' | 'attribution-reporting' | 'autoplay' | 'bluetooth' | 'browsing-topics' | 'camera' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-prefers-color-scheme' | 'ch-prefers-reduced-motion' | 'ch-rtt' | 'ch-save-data' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-full' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-reduced' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'compute-pressure' | 'cross-origin-isolated' | 'direct-sockets' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'hid' | 'identity-credentials-get' | 'idle-detection' | 'interest-cohort' | 'join-ad-interest-group' | 'keyboard-map' | 'local-fonts' | 'magnetometer' | 'microphone' | 'midi' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'publickey-credentials-get' | 'run-ad-auction' | 'screen-wake-lock' | 'serial' | 'shared-autofill' | 'shared-storage' | 'storage-access' | 'sync-xhr' | 'trust-token-redemption' | 'unload' | 'usb' | 'vertical-scroll' | 'web-share' | 'window-placement' | 'xr-spatial-tracking');
+        export type PermissionsPolicyFeature = ('accelerometer' | 'ambient-light-sensor' | 'attribution-reporting' | 'autoplay' | 'bluetooth' | 'browsing-topics' | 'camera' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-prefers-color-scheme' | 'ch-prefers-reduced-motion' | 'ch-rtt' | 'ch-save-data' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-full' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-reduced' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'compute-pressure' | 'cross-origin-isolated' | 'direct-sockets' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'hid' | 'identity-credentials-get' | 'idle-detection' | 'interest-cohort' | 'join-ad-interest-group' | 'keyboard-map' | 'local-fonts' | 'magnetometer' | 'microphone' | 'midi' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'publickey-credentials-get' | 'run-ad-auction' | 'screen-wake-lock' | 'serial' | 'shared-autofill' | 'shared-storage' | 'smart-card' | 'storage-access' | 'sync-xhr' | 'trust-token-redemption' | 'unload' | 'usb' | 'vertical-scroll' | 'web-share' | 'window-placement' | 'xr-spatial-tracking');
 
         /**
          * Reason for a permissions policy feature to be disabled.

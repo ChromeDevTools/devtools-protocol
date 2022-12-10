@@ -1660,14 +1660,14 @@
                     "enum": [
                         "ShouldEmbargo",
                         "TooManyRequests",
-                        "ManifestListHttpNotFound",
-                        "ManifestListNoResponse",
-                        "ManifestListInvalidResponse",
-                        "ManifestNotInManifestList",
-                        "ManifestListTooBig",
-                        "ManifestHttpNotFound",
-                        "ManifestNoResponse",
-                        "ManifestInvalidResponse",
+                        "WellKnownHttpNotFound",
+                        "WellKnownNoResponse",
+                        "WellKnownInvalidResponse",
+                        "ConfigNotInWellKnown",
+                        "WellKnownTooBig",
+                        "ConfigHttpNotFound",
+                        "ConfigNoResponse",
+                        "ConfigInvalidResponse",
                         "ClientMetadataHttpNotFound",
                         "ClientMetadataNoResponse",
                         "ClientMetadataInvalidResponse",
@@ -8060,7 +8060,6 @@
                     "type": "string",
                     "enum": [
                         "avif",
-                        "jxl",
                         "webp"
                     ]
                 }
@@ -15372,6 +15371,7 @@
                         "serial",
                         "shared-autofill",
                         "shared-storage",
+                        "smart-card",
                         "storage-access",
                         "sync-xhr",
                         "trust-token-redemption",

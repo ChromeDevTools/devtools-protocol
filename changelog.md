@@ -1,7 +1,52 @@
 
 
+## Roll protocol to r1081726 — _2022-12-10T04:28:45.000Z_
+######  Diff: [`d4cef45...a5a35ce`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d4cef45...a5a35ce`)
+
+```diff
+@@ browser_protocol.pdl:838 @@ experimental domain Audits
+     enum
+       ShouldEmbargo
+       TooManyRequests
+-      WellKnownHttpNotFound
+-      WellKnownNoResponse
+-      WellKnownInvalidResponse
+-      ConfigNotInWellKnown
+-      WellKnownTooBig
+-      ConfigHttpNotFound
+-      ConfigNoResponse
+-      ConfigInvalidResponse
++      ManifestListHttpNotFound
++      ManifestListNoResponse
++      ManifestListInvalidResponse
++      ManifestNotInManifestList
++      ManifestListTooBig
++      ManifestHttpNotFound
++      ManifestNoResponse
++      ManifestInvalidResponse
+       ClientMetadataHttpNotFound
+       ClientMetadataNoResponse
+       ClientMetadataInvalidResponse
+@@ -3897,6 +3897,7 @@ domain Emulation
+   experimental type DisabledImageType extends string
+     enum
+       avif
++      jxl
+       webp
+ 
+   experimental command setDisabledImageTypes
+@@ -7219,7 +7220,6 @@ domain Page
+       serial
+       shared-autofill
+       shared-storage
+-      smart-card
+       storage-access
+       sync-xhr
+       trust-token-redemption
+```
+
 ## Roll protocol to r1081314 — _2022-12-09T04:28:47.000Z_
-######  Diff: [`c1e172c...f275bdb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c1e172c...f275bdb`)
+######  Diff: [`c1e172c...d4cef45`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c1e172c...d4cef45`)
 
 ```diff
 @@ browser_protocol.pdl:9569 @@ experimental domain SystemInfo
@@ -10018,28 +10063,4 @@ index bd277eb..09c420e 100644
        durableStorage
        flash
        geolocation
-```
-
-## Roll protocol to r834467 — _2020-12-08T00:16:11.000Z_
-######  Diff: [`9e09a22...53c89eb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9e09a22...53c89eb`)
-
-```diff
-@@ browser_protocol.pdl:5507 @@ domain Network
-       RequestId transportId
-       # WebTransport request URL.
-       string url
--      # Timestamp.
--      MonotonicTime timestamp
-       # Request initiator.
-       optional Initiator initiator
- 
-@@ -5516,8 +5514,6 @@ domain Network
-     parameters
-       # WebTransport identifier.
-       RequestId transportId
--      # Timestamp.
--      MonotonicTime timestamp
- 
-   experimental type PrivateNetworkRequestPolicy extends string
-     enum
 ```
