@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1082281 — _2022-12-13T04:28:57.000Z_
+######  Diff: [`178dea5...2e64c20`](https://github.com/ChromeDevTools/devtools-protocol/compare/`178dea5...2e64c20`)
+
+```diff
+@@ browser_protocol.pdl:8547 @@ domain Page
+       SameSiteCrossOriginRedirectNotOptIn
+       SameSiteCrossOriginNavigationNotOptIn
+       ActivationNavigationParameterMismatch
+-      ActivatedInBackground
+ 
+   # Fired when a prerender attempt is completed.
+   experimental event prerenderAttemptCompleted
+```
+
 ## Roll protocol to r1081726 — _2022-12-10T04:28:45.000Z_
-######  Diff: [`d4cef45...a5a35ce`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d4cef45...a5a35ce`)
+######  Diff: [`d4cef45...178dea5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d4cef45...178dea5`)
 
 ```diff
 @@ browser_protocol.pdl:838 @@ experimental domain Audits

@@ -16432,7 +16432,8 @@
                         "SameSiteCrossOriginNavigation",
                         "SameSiteCrossOriginRedirectNotOptIn",
                         "SameSiteCrossOriginNavigationNotOptIn",
-                        "ActivationNavigationParameterMismatch"
+                        "ActivationNavigationParameterMismatch",
+                        "ActivatedInBackground"
                     ]
                 }
             ],
