@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1082910 — _2022-12-14T04:29:01.000Z_
+######  Diff: [`5428889...66cdddc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5428889...66cdddc`)
+
+```diff
+@@ browser_protocol.pdl:8548 @@ domain Page
+       SameSiteCrossOriginNavigationNotOptIn
+       ActivationNavigationParameterMismatch
+       ActivatedInBackground
+-      EmbedderHostDisallowed
+ 
+   # Fired when a prerender attempt is completed.
+   experimental event prerenderAttemptCompleted
+```
+
 ## Roll protocol to r1082281 — _2022-12-13T04:28:57.000Z_
-######  Diff: [`178dea5...2e64c20`](https://github.com/ChromeDevTools/devtools-protocol/compare/`178dea5...2e64c20`)
+######  Diff: [`178dea5...5428889`](https://github.com/ChromeDevTools/devtools-protocol/compare/`178dea5...5428889`)
 
 ```diff
 @@ browser_protocol.pdl:8547 @@ domain Page
@@ -10063,18 +10077,4 @@ index bd277eb..09c420e 100644
  
    event bufferUsage
      parameters
-```
-
-## Roll protocol to r835626 — _2020-12-10T12:17:42.000Z_
-######  Diff: [`7f3af2e...d6d3da3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7f3af2e...d6d3da3`)
-
-```diff
-@@ browser_protocol.pdl:828 @@ domain Browser
-       backgroundFetch
-       clipboardReadWrite
-       clipboardSanitizedWrite
--      displayCapture
-       durableStorage
-       flash
-       geolocation
 ```
