@@ -743,6 +743,7 @@ experimental domain Audits
   type GenericIssueErrorType extends string
     enum
       CrossOriginPortalPostMessageError
+      FormLabelForNameError
 
   # Depending on the concrete errorType, different properties are set.
   type GenericIssueDetails extends object
@@ -750,6 +751,7 @@ experimental domain Audits
       # Issues with the same errorType are aggregated in the frontend.
       GenericIssueErrorType errorType
       optional Page.FrameId frameId
+      optional DOM.BackendNodeId violatingNodeId
 
   type DeprecationIssueType extends string
     enum
@@ -6406,6 +6408,7 @@ domain Network
         ResourceExhausted
         AlreadyExists
         Unavailable
+        Unauthorized
         BadResponse
         InternalError
         UnknownError
@@ -8423,6 +8426,7 @@ domain Page
       InjectedJavascript
       InjectedStyleSheet
       KeepaliveRequest
+      IndexedDBEvent
       Dummy
       AuthorizationHeader
       # Disabled for RenderFrameHost reasons

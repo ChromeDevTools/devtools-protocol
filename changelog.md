@@ -1,7 +1,45 @@
 
 
+## Roll protocol to r1084174 — _2022-12-16T04:27:47.000Z_
+######  Diff: [`1e921af...dc00448`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1e921af...dc00448`)
+
+```diff
+@@ browser_protocol.pdl:743 @@ experimental domain Audits
+   type GenericIssueErrorType extends string
+     enum
+       CrossOriginPortalPostMessageError
+-      FormLabelForNameError
+ 
+   # Depending on the concrete errorType, different properties are set.
+   type GenericIssueDetails extends object
+@@ -751,7 +750,6 @@ experimental domain Audits
+       # Issues with the same errorType are aggregated in the frontend.
+       GenericIssueErrorType errorType
+       optional Page.FrameId frameId
+-      optional DOM.BackendNodeId violatingNodeId
+ 
+   type DeprecationIssueType extends string
+     enum
+@@ -6408,7 +6406,6 @@ domain Network
+         ResourceExhausted
+         AlreadyExists
+         Unavailable
+-        Unauthorized
+         BadResponse
+         InternalError
+         UnknownError
+@@ -8426,7 +8423,6 @@ domain Page
+       InjectedJavascript
+       InjectedStyleSheet
+       KeepaliveRequest
+-      IndexedDBEvent
+       Dummy
+       AuthorizationHeader
+       # Disabled for RenderFrameHost reasons
+```
+
 ## Roll protocol to r1082910 — _2022-12-14T04:29:01.000Z_
-######  Diff: [`5428889...66cdddc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5428889...66cdddc`)
+######  Diff: [`5428889...1e921af`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5428889...1e921af`)
 
 ```diff
 @@ browser_protocol.pdl:8548 @@ domain Page
@@ -10060,21 +10098,4 @@ index bd277eb..09c420e 100644
  
    # An inspector issue reported from the back-end.
    type InspectorIssue extends object
-```
-
-## Roll protocol to r836089 — _2020-12-11T13:16:22.000Z_
-######  Diff: [`d6d3da3...17b7d75`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d6d3da3...17b7d75`)
-
-```diff
-@@ browser_protocol.pdl:8078 @@ experimental domain Tracing
-       # transfer mode (defaults to `none`)
-       optional StreamCompression streamCompression
-       optional TraceConfig traceConfig
--      # Base64-encoded serialized perfetto.protos.TraceConfig protobuf message
--      # When specified, the parameters `categories`, `options`, `traceConfig`
--      # are ignored.
--      optional binary perfettoConfig
- 
-   event bufferUsage
-     parameters
 ```
