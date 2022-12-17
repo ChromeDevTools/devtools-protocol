@@ -20593,6 +20593,13 @@
                             "description": "Whether to create the target in background or foreground (chrome-only,\nfalse by default).",
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "forTab",
+                            "description": "Whether to create the target of type \"tab\".",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ],
                     "returns": [

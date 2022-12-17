@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1084670 — _2022-12-17T04:27:45.000Z_
+######  Diff: [`8b04aee...243b8b8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8b04aee...243b8b8`)
+
+```diff
+@@ browser_protocol.pdl:9723 @@ domain Target
+       # Whether to create the target in background or foreground (chrome-only,
+       # false by default).
+       optional boolean background
+-      # Whether to create the target of type "tab".
+-      experimental optional boolean forTab
+     returns
+       # The id of the page opened.
+       TargetID targetId
+```
+
 ## Roll protocol to r1084174 — _2022-12-16T04:27:47.000Z_
-######  Diff: [`1e921af...dc00448`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1e921af...dc00448`)
+######  Diff: [`1e921af...8b04aee`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1e921af...8b04aee`)
 
 ```diff
 @@ browser_protocol.pdl:743 @@ experimental domain Audits
@@ -10061,41 +10076,4 @@ index bd277eb..09c420e 100644
 -
  # Security
  domain Security
-```
-
-## Roll protocol to r837676 — _2020-12-16T19:16:09.000Z_
-######  Diff: [`17b7d75...84b9b60`](https://github.com/ChromeDevTools/devtools-protocol/compare/`17b7d75...84b9b60`)
-
-```diff
-@@ browser_protocol.pdl:661 @@ experimental domain Audits
-       optional SourceCodeLocation sourceCodeLocation
-       optional DOM.BackendNodeId violatingNodeId
- 
--  # Details for a request that has been blocked with the BLOCKED_BY_RESPONSE
--  # code. Currently only used for COEP/COOP, but may be extended to include
--  # some CSP errors in the future.
--  type SharedArrayBufferTransferIssueDetails extends object
--    properties
--      SourceCodeLocation sourceCodeLocation
--      boolean isWarning
--
-   # A unique identifier for the type of issue. Each type may use one of the
-   # optional fields in InspectorIssueDetails to convey more specific
-   # information about the kind of issue.
-@@ -679,7 +671,6 @@ experimental domain Audits
-       BlockedByResponseIssue
-       HeavyAdIssue
-       ContentSecurityPolicyIssue
--      SharedArrayBufferTransferIssue
- 
-   # This struct holds a list of optional fields with additional information
-   # specific to the kind of issue. When adding a new issue code, please also
-@@ -691,7 +682,6 @@ experimental domain Audits
-       optional BlockedByResponseIssueDetails blockedByResponseIssueDetails
-       optional HeavyAdIssueDetails heavyAdIssueDetails
-       optional ContentSecurityPolicyIssueDetails contentSecurityPolicyIssueDetails
--      optional SharedArrayBufferTransferIssueDetails sharedArrayBufferTransferIssueDetails
- 
-   # An inspector issue reported from the back-end.
-   type InspectorIssue extends object
 ```

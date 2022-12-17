@@ -15449,6 +15449,10 @@ export namespace Protocol {
              * false by default).
              */
             background?: boolean;
+            /**
+             * Whether to create the target of type "tab".
+             */
+            forTab?: boolean;
         }
 
         export interface CreateTargetResponse {
