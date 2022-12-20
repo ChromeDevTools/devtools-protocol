@@ -3344,6 +3344,11 @@ export namespace ProtocolProxyApi {
         clearSharedStorageEntries(params: Protocol.Storage.ClearSharedStorageEntriesRequest): Promise<void>;
 
         /**
+         * Resets the budget for `ownerOrigin` by clearing all budget withdrawals.
+         */
+        resetSharedStorageBudget(params: Protocol.Storage.ResetSharedStorageBudgetRequest): Promise<void>;
+
+        /**
          * Enables/disables issuing of sharedStorageAccessed events.
          */
         setSharedStorageTracking(params: Protocol.Storage.SetSharedStorageTrackingRequest): Promise<void>;

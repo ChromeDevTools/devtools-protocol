@@ -1,7 +1,25 @@
 
 
+## Roll protocol to r1085283 — _2022-12-20T04:28:00.000Z_
+######  Diff: [`1ff2246...572fb67`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1ff2246...572fb67`)
+
+```diff
+@@ browser_protocol.pdl:9381 @@ experimental domain Storage
+     parameters
+       string ownerOrigin
+ 
+-  # Resets the budget for `ownerOrigin` by clearing all budget withdrawals.
+-  experimental command resetSharedStorageBudget
+-    parameters
+-      string ownerOrigin
+-
+   # Enables/disables issuing of sharedStorageAccessed events.
+   experimental command setSharedStorageTracking
+     parameters
+```
+
 ## Roll protocol to r1084670 — _2022-12-17T04:27:45.000Z_
-######  Diff: [`8b04aee...243b8b8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8b04aee...243b8b8`)
+######  Diff: [`8b04aee...1ff2246`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8b04aee...1ff2246`)
 
 ```diff
 @@ browser_protocol.pdl:9723 @@ domain Target

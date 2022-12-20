@@ -19837,6 +19837,17 @@
                     ]
                 },
                 {
+                    "name": "resetSharedStorageBudget",
+                    "description": "Resets the budget for `ownerOrigin` by clearing all budget withdrawals.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "ownerOrigin",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "name": "setSharedStorageTracking",
                     "description": "Enables/disables issuing of sharedStorageAccessed events.",
                     "experimental": true,

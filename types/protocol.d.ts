@@ -14934,6 +14934,10 @@ export namespace Protocol {
             ownerOrigin: string;
         }
 
+        export interface ResetSharedStorageBudgetRequest {
+            ownerOrigin: string;
+        }
+
         export interface SetSharedStorageTrackingRequest {
             enable: boolean;
         }
