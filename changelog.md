@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1085790 — _2022-12-21T04:28:10.000Z_
+######  Diff: [`9e8e363...595ed22`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9e8e363...595ed22`)
+
+```diff
+@@ browser_protocol.pdl:8553 @@ domain Page
+       ActivationNavigationParameterMismatch
+       ActivatedInBackground
+       EmbedderHostDisallowed
+-      ActivationNavigationDestroyedBeforeSuccess
+ 
+   # Fired when a prerender attempt is completed.
+   experimental event prerenderAttemptCompleted
+```
+
 ## Roll protocol to r1085283 — _2022-12-20T04:28:00.000Z_
-######  Diff: [`1ff2246...572fb67`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1ff2246...572fb67`)
+######  Diff: [`1ff2246...9e8e363`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1ff2246...9e8e363`)
 
 ```diff
 @@ browser_protocol.pdl:9381 @@ experimental domain Storage
