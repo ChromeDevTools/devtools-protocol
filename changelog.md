@@ -1,7 +1,27 @@
 
 
+## Roll protocol to r1087487 — _2022-12-29T04:28:09.000Z_
+######  Diff: [`56c97c0...15f8b25`](https://github.com/ChromeDevTools/devtools-protocol/compare/`56c97c0...15f8b25`)
+
+```diff
+@@ js_protocol.pdl:1402 @@ domain Runtime
+       optional string objectGroup
+       # Whether to throw an exception if side effect cannot be ruled out during evaluation.
+       experimental optional boolean throwOnSideEffect
+-      # An alternative way to specify the execution context to call function on.
+-      # Compared to contextId that may be reused across processes, this is guaranteed to be
+-      # system-unique, so it can be used to prevent accidental function call
+-      # in context different than intended (e.g. as a result of navigation across process
+-      # boundaries).
+-      # This is mutually exclusive with `executionContextId`.
+-      experimental optional string uniqueContextId
+       # Whether the result should contain `webDriverValue`, serialized according to
+       # https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but
+       # resulting `objectId` is still provided.
+```
+
 ## Roll protocol to r1085790 — _2022-12-21T04:28:10.000Z_
-######  Diff: [`9e8e363...595ed22`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9e8e363...595ed22`)
+######  Diff: [`9e8e363...56c97c0`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9e8e363...56c97c0`)
 
 ```diff
 @@ browser_protocol.pdl:8553 @@ domain Page
@@ -10051,61 +10071,4 @@ index bd277eb..09c420e 100644
        array of string eventTypes
  
    # Sent when a performance timeline event is added. See reportPerformanceTimeline method.
-```
-
-## Roll protocol to r840500 — _2021-01-06T06:16:00.000Z_
-######  Diff: [`e056996...a5b6b3e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e056996...a5b6b3e`)
-
-```diff
-@@ browser_protocol.pdl:7143 @@ domain Performance
-       # Timestamp title.
-       string title
- 
--# Reporting of performance timeline events, as specified in
--# https://w3c.github.io/performance-timeline/#dom-performanceobserver.
--experimental domain PerformanceTimeline
--  depends on DOM
--  depends on Network
--
--  # See https://github.com/WICG/LargestContentfulPaint and largest_contentful_paint.idl
--  type LargestContentfulPaint extends object
--    properties
--      number renderTime
--      number loadTime
--      # The number of pixels being painted.
--      number size
--      # The id attribute of the element, if available.
--      optional string elementId
--      # The URL of the image (may be trimmed).
--      optional string url
--      optional DOM.BackendNodeId nodeId
--
--  type TimelineEvent extends object
--    properties
--      # Identifies the frame that this event is related to. Empty for non-frame targets.
--      Page.FrameId frameId
--      string type
--      string name
--      # Time in seconds since Epoch, monotonically increasing within document lifetime.
--      Network.TimeSinceEpoch time
--      # Event duration, if applicable.
--      optional number duration
--      optional LargestContentfulPaint lcpDetails
--
--  # Previously buffered events would be reported before method returns.
--  # The specified filter overrides any previous filters, passing empty
--  # filter disables recording.
--  # Note that not all types exposed to the web platform are currently supported.
--  # See also: timelineEventAdded
--  command enable
--    parameters
--      array of string eventTypes
--
--  # Sent when a performance timeline event is added. See reportPerformanceTimeline method.
--  event timelineEventAdded
--    parameters
--      TimelineEvent event
--
- # Security
- domain Security
 ```
