@@ -12789,7 +12789,8 @@
                 },
                 {
                     "name": "getAllCookies",
-                    "description": "Returns all browser cookies. Depending on the backend support, will return detailed cookie\ninformation in the `cookies` field.",
+                    "description": "Returns all browser cookies. Depending on the backend support, will return detailed cookie\ninformation in the `cookies` field.\nDeprecated. Use Storage.getCookies instead.",
+                    "deprecated": true,
                     "returns": [
                         {
                             "name": "cookies",

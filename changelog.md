@@ -1,7 +1,23 @@
 
 
+## Roll protocol to r1087713 — _2022-12-30T04:27:43.000Z_
+######  Diff: [`1e60c0d...c6a4592`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1e60c0d...c6a4592`)
+
+```diff
+@@ browser_protocol.pdl:5867 @@ domain Network
+ 
+   # Returns all browser cookies. Depending on the backend support, will return detailed cookie
+   # information in the `cookies` field.
+-  # Deprecated. Use Storage.getCookies instead.
+-  deprecated command getAllCookies
++  command getAllCookies
+     returns
+       # Array of cookie objects.
+       array of Cookie cookies
+```
+
 ## Roll protocol to r1087487 — _2022-12-29T04:28:09.000Z_
-######  Diff: [`56c97c0...15f8b25`](https://github.com/ChromeDevTools/devtools-protocol/compare/`56c97c0...15f8b25`)
+######  Diff: [`56c97c0...1e60c0d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`56c97c0...1e60c0d`)
 
 ```diff
 @@ js_protocol.pdl:1402 @@ domain Runtime
@@ -10004,71 +10020,4 @@ index bd277eb..09c420e 100644
        first-line-inherited
        scrollbar
        scrollbar-thumb
-```
-
-## Roll protocol to r840815 — _2021-01-06T23:16:17.000Z_
-######  Diff: [`a5b6b3e...0f61a92`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a5b6b3e...0f61a92`)
-
-```diff
-@@ browser_protocol.pdl:7152 @@ experimental domain PerformanceTimeline
-   # See https://github.com/WICG/LargestContentfulPaint and largest_contentful_paint.idl
-   type LargestContentfulPaint extends object
-     properties
--      Network.TimeSinceEpoch renderTime
--      Network.TimeSinceEpoch loadTime
-+      number renderTime
-+      number loadTime
-       # The number of pixels being painted.
-       number size
-       # The id attribute of the element, if available.
-@@ -7162,46 +7162,25 @@ experimental domain PerformanceTimeline
-       optional string url
-       optional DOM.BackendNodeId nodeId
- 
--  type LayoutShiftAttribution extends object
--    properties
--      DOM.Rect previousRect
--      DOM.Rect currentRect
--      optional DOM.BackendNodeId nodeId
--
--  # See https://wicg.github.io/layout-instability/#sec-layout-shift and layout_shift.idl
--  type LayoutShift extends object
--    properties
--      # Score increment produced by this event.
--      number value
--      boolean hadRecentInput
--      Network.TimeSinceEpoch lastInputTime
--      array of LayoutShiftAttribution sources
--
-   type TimelineEvent extends object
-     properties
-       # Identifies the frame that this event is related to. Empty for non-frame targets.
-       Page.FrameId frameId
--      # The event type, as specified in https://w3c.github.io/performance-timeline/#dom-performanceentry-entrytype
--      # This determines which of the optional "details" fiedls is present.
-       string type
--      # Name may be empty depending on the type.
-       string name
-       # Time in seconds since Epoch, monotonically increasing within document lifetime.
-       Network.TimeSinceEpoch time
-       # Event duration, if applicable.
-       optional number duration
-       optional LargestContentfulPaint lcpDetails
--      optional LayoutShift layoutShiftDetails
- 
-   # Previously buffered events would be reported before method returns.
-+  # The specified filter overrides any previous filters, passing empty
-+  # filter disables recording.
-+  # Note that not all types exposed to the web platform are currently supported.
-   # See also: timelineEventAdded
-   command enable
-     parameters
--      # The types of event to report, as specified in
--      # https://w3c.github.io/performance-timeline/#dom-performanceentry-entrytype
--      # The specified filter overrides any previous filters, passing empty
--      # filter disables recording.
--      # Note that not all types exposed to the web platform are currently supported.
-       array of string eventTypes
- 
-   # Sent when a performance timeline event is added. See reportPerformanceTimeline method.
 ```
