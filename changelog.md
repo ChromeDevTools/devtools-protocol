@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1087818 — _2022-12-31T04:27:46.000Z_
+######  Diff: [`47facb7...d1ccc8c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`47facb7...d1ccc8c`)
+
+```diff
+@@ browser_protocol.pdl:8555 @@ domain Page
+       ActivatedInBackground
+       EmbedderHostDisallowed
+       ActivationNavigationDestroyedBeforeSuccess
+-      TabClosedByUserGesture
+-      TabClosedWithoutUserGesture
+ 
+   # Fired when a prerender attempt is completed.
+   experimental event prerenderAttemptCompleted
+```
+
 ## Roll protocol to r1087713 — _2022-12-30T04:27:43.000Z_
-######  Diff: [`1e60c0d...c6a4592`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1e60c0d...c6a4592`)
+######  Diff: [`1e60c0d...47facb7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1e60c0d...47facb7`)
 
 ```diff
 @@ browser_protocol.pdl:5867 @@ domain Network
@@ -10005,19 +10020,4 @@ index bd277eb..09c420e 100644
  
    # Types of reasons why a cookie may not be stored from a response.
    experimental type SetCookieBlockedReason extends string
-```
-
-## Roll protocol to r841450 — _2021-01-08T12:16:13.000Z_
-######  Diff: [`0f61a92...92c0fc5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0f61a92...92c0fc5`)
-
-```diff
-@@ browser_protocol.pdl:1815 @@ domain DOM
-       backdrop
-       selection
-       target-text
--      spelling-error
--      grammar-error
-       first-line-inherited
-       scrollbar
-       scrollbar-thumb
 ```

@@ -16444,7 +16444,9 @@
                         "ActivationNavigationParameterMismatch",
                         "ActivatedInBackground",
                         "EmbedderHostDisallowed",
-                        "ActivationNavigationDestroyedBeforeSuccess"
+                        "ActivationNavigationDestroyedBeforeSuccess",
+                        "TabClosedByUserGesture",
+                        "TabClosedWithoutUserGesture"
                     ]
                 }
             ],
