@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1088570 — _2023-01-04T04:27:47.000Z_
+######  Diff: [`0400c45...f32c3a5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0400c45...f32c3a5`)
+
+```diff
+@@ browser_protocol.pdl:1092 @@ domain Browser
+       protectedMediaIdentifier
+       sensors
+       storageAccess
+-      topLevelStorageAccess
+       videoCapture
+       videoCapturePanTiltZoom
+       wakeLockScreen
+```
+
 ## Roll protocol to r1087818 — _2022-12-31T04:27:46.000Z_
-######  Diff: [`47facb7...d1ccc8c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`47facb7...d1ccc8c`)
+######  Diff: [`47facb7...0400c45`](https://github.com/ChromeDevTools/devtools-protocol/compare/`47facb7...0400c45`)
 
 ```diff
 @@ browser_protocol.pdl:8555 @@ domain Page
@@ -10005,19 +10019,4 @@ index bd277eb..09c420e 100644
    # Paints viewport size upon main frame resize.
    command setShowViewportSizeOnResize
      parameters
-```
-
-## Roll protocol to r841965 — _2021-01-11T10:16:08.000Z_
-######  Diff: [`92c0fc5...529289e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`92c0fc5...529289e`)
-
-```diff
-@@ browser_protocol.pdl:4749 @@ domain Network
-       optional CookieSameSite sameSite
-       # Cookie Priority
-       experimental CookiePriority priority
--      # True if cookie is SameParty.
--      experimental boolean sameParty
- 
-   # Types of reasons why a cookie may not be stored from a response.
-   experimental type SetCookieBlockedReason extends string
 ```

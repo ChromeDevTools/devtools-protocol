@@ -3718,7 +3718,7 @@ export namespace Protocol {
             windowState?: WindowState;
         }
 
-        export type PermissionType = ('accessibilityEvents' | 'audioCapture' | 'backgroundSync' | 'backgroundFetch' | 'clipboardReadWrite' | 'clipboardSanitizedWrite' | 'displayCapture' | 'durableStorage' | 'flash' | 'geolocation' | 'idleDetection' | 'localFonts' | 'midi' | 'midiSysex' | 'nfc' | 'notifications' | 'paymentHandler' | 'periodicBackgroundSync' | 'protectedMediaIdentifier' | 'sensors' | 'storageAccess' | 'videoCapture' | 'videoCapturePanTiltZoom' | 'wakeLockScreen' | 'wakeLockSystem' | 'windowManagement');
+        export type PermissionType = ('accessibilityEvents' | 'audioCapture' | 'backgroundSync' | 'backgroundFetch' | 'clipboardReadWrite' | 'clipboardSanitizedWrite' | 'displayCapture' | 'durableStorage' | 'flash' | 'geolocation' | 'idleDetection' | 'localFonts' | 'midi' | 'midiSysex' | 'nfc' | 'notifications' | 'paymentHandler' | 'periodicBackgroundSync' | 'protectedMediaIdentifier' | 'sensors' | 'storageAccess' | 'topLevelStorageAccess' | 'videoCapture' | 'videoCapturePanTiltZoom' | 'wakeLockScreen' | 'wakeLockSystem' | 'windowManagement');
 
         export type PermissionSetting = ('granted' | 'denied' | 'prompt');
 
