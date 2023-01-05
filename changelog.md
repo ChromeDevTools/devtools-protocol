@@ -1,7 +1,28 @@
 
 
+## Roll protocol to r1089107 — _2023-01-05T04:28:22.000Z_
+######  Diff: [`253af7d...4b05a81`](https://github.com/ChromeDevTools/devtools-protocol/compare/`253af7d...4b05a81`)
+
+```diff
+@@ browser_protocol.pdl:7218 @@ domain Page
+       otp-credentials
+       payment
+       picture-in-picture
+-      private-aggregation
+       publickey-credentials-get
+       run-ad-auction
+       screen-wake-lock
+       serial
+       shared-autofill
+       shared-storage
+-      shared-storage-select-url
+       smart-card
+       storage-access
+       sync-xhr
+```
+
 ## Roll protocol to r1088570 — _2023-01-04T04:27:47.000Z_
-######  Diff: [`0400c45...f32c3a5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0400c45...f32c3a5`)
+######  Diff: [`0400c45...253af7d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0400c45...253af7d`)
 
 ```diff
 @@ browser_protocol.pdl:1092 @@ domain Browser
