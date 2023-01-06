@@ -1,7 +1,24 @@
 
 
+## Roll protocol to r1089613 — _2023-01-06T04:28:04.000Z_
+######  Diff: [`6eb86f8...b435ce1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6eb86f8...b435ce1`)
+
+```diff
+@@ js_protocol.pdl:1741 @@ domain Runtime
+   event executionContextDestroyed
+     parameters
+       # Id of the destroyed context
+-      deprecated ExecutionContextId executionContextId
+-      # Unique Id of the destroyed context
+-      experimental string executionContextUniqueId
++      ExecutionContextId executionContextId
+ 
+   # Issued when all executionContexts were cleared in browser
+   event executionContextsCleared
+```
+
 ## Roll protocol to r1089107 — _2023-01-05T04:28:22.000Z_
-######  Diff: [`253af7d...4b05a81`](https://github.com/ChromeDevTools/devtools-protocol/compare/`253af7d...4b05a81`)
+######  Diff: [`253af7d...6eb86f8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`253af7d...6eb86f8`)
 
 ```diff
 @@ browser_protocol.pdl:7218 @@ domain Page
@@ -10021,23 +10038,5 @@ index bd277eb..09c420e 100644
 -
    # A cache's contents have been modified.
    event cacheStorageContentUpdated
-     parameters
-```
-
-## Roll protocol to r845301 — _2021-01-20T20:16:06.000Z_
-######  Diff: [`7f780af...47a861d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7f780af...47a861d`)
-
-```diff
-@@ browser_protocol.pdl:6041 @@ experimental domain Overlay
-       # True for showing hit-test borders
-       boolean show
- 
--  # Request that backend shows an overlay with web vital metrics.
--  command setShowWebVitals
--    parameters
--      boolean show
--
-   # Paints viewport size upon main frame resize.
-   command setShowViewportSizeOnResize
      parameters
 ```

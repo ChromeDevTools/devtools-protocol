@@ -2573,6 +2573,10 @@ export namespace Protocol {
              * Id of the destroyed context
              */
             executionContextId: ExecutionContextId;
+            /**
+             * Unique Id of the destroyed context
+             */
+            executionContextUniqueId: string;
         }
 
         /**

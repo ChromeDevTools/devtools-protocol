@@ -3614,7 +3614,14 @@
                         {
                             "name": "executionContextId",
                             "description": "Id of the destroyed context",
+                            "deprecated": true,
                             "$ref": "ExecutionContextId"
+                        },
+                        {
+                            "name": "executionContextUniqueId",
+                            "description": "Unique Id of the destroyed context",
+                            "experimental": true,
+                            "type": "string"
                         }
                     ]
                 },
