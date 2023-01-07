@@ -1,7 +1,29 @@
 
 
+## Roll protocol to r1090008 — _2023-01-07T04:27:59.000Z_
+######  Diff: [`e97a9e4...e8a92ea`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e97a9e4...e8a92ea`)
+
+```diff
+@@ browser_protocol.pdl:843 @@ experimental domain Audits
+       WellKnownHttpNotFound
+       WellKnownNoResponse
+       WellKnownInvalidResponse
+-      WellKnownListEmpty
+       ConfigNotInWellKnown
+       WellKnownTooBig
+       ConfigHttpNotFound
+@@ -858,7 +857,6 @@ experimental domain Audits
+       AccountsHttpNotFound
+       AccountsNoResponse
+       AccountsInvalidResponse
+-      AccountsListEmpty
+       IdTokenHttpNotFound
+       IdTokenNoResponse
+       IdTokenInvalidResponse
+```
+
 ## Roll protocol to r1089613 — _2023-01-06T04:28:04.000Z_
-######  Diff: [`6eb86f8...b435ce1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6eb86f8...b435ce1`)
+######  Diff: [`6eb86f8...e97a9e4`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6eb86f8...e97a9e4`)
 
 ```diff
 @@ js_protocol.pdl:1741 @@ domain Runtime
@@ -10006,37 +10028,4 @@ index bd277eb..09c420e 100644
  
    # An inspector issue reported from the back-end.
    type InspectorIssue extends object
-```
-
-## Roll protocol to r845564 — _2021-01-21T09:16:18.000Z_
-######  Diff: [`47a861d...3941c7e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`47a861d...3941c7e`)
-
-```diff
-@@ browser_protocol.pdl:7556 @@ experimental domain Storage
-       # Storage usage (bytes).
-       number usage
- 
--  # Pair of issuer origin and number of available (signed, but not used) Trust
--  # Tokens from that issuer.
--  experimental type TrustTokens extends object
--    properties
--      string issuerOrigin
--      number count
--
-   # Clears storage for origin.
-   command clearDataForOrigin
-     parameters
-@@ -7647,12 +7640,6 @@ experimental domain Storage
-       # Security origin.
-       string origin
- 
--  # Returns the number of stored Trust Tokens per issuer for the
--  # current browsing context.
--  experimental command getTrustTokens
--    returns
--      array of TrustTokens tokens
--
-   # A cache's contents have been modified.
-   event cacheStorageContentUpdated
-     parameters
 ```
