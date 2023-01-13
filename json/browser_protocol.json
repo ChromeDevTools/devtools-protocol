@@ -1535,7 +1535,8 @@
                     "type": "string",
                     "enum": [
                         "CrossOriginPortalPostMessageError",
-                        "FormLabelForNameError"
+                        "FormLabelForNameError",
+                        "FormDuplicateIdForInputError"
                     ]
                 },
                 {
@@ -15392,6 +15393,7 @@
                         "usb",
                         "vertical-scroll",
                         "web-share",
+                        "window-management",
                         "window-placement",
                         "xr-spatial-tracking"
                     ]

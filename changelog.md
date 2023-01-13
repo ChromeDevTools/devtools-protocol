@@ -1,7 +1,29 @@
 
 
+## Roll protocol to r1092232 — _2023-01-13T04:28:35.000Z_
+######  Diff: [`aef3081...f2a9b6e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`aef3081...f2a9b6e`)
+
+```diff
+@@ browser_protocol.pdl:744 @@ experimental domain Audits
+     enum
+       CrossOriginPortalPostMessageError
+       FormLabelForNameError
+-      FormDuplicateIdForInputError
+ 
+   # Depending on the concrete errorType, different properties are set.
+   type GenericIssueDetails extends object
+@@ -7237,8 +7236,6 @@ domain Page
+       usb
+       vertical-scroll
+       web-share
+-      # Alias for 'window-placement' (crbug.com/1328581).
+-      window-management
+       window-placement
+       xr-spatial-tracking
+```
+
 ## Roll protocol to r1090008 — _2023-01-07T04:27:59.000Z_
-######  Diff: [`e97a9e4...e8a92ea`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e97a9e4...e8a92ea`)
+######  Diff: [`e97a9e4...aef3081`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e97a9e4...aef3081`)
 
 ```diff
 @@ browser_protocol.pdl:843 @@ experimental domain Audits
@@ -9980,52 +10002,4 @@ index bd277eb..09c420e 100644
    event webTransportClosed
      parameters
        # WebTransport identifier.
-```
-
-## Roll protocol to r845780 — _2021-01-21T20:16:08.000Z_
-######  Diff: [`3941c7e...d88313d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3941c7e...d88313d`)
-
-```diff
-@@ browser_protocol.pdl:669 @@ experimental domain Audits
-       SourceCodeLocation sourceCodeLocation
-       boolean isWarning
- 
--  type TwaQualityEnforcementViolationType extends string
--    enum
--      kHttpError
--      kUnavailableOffline
--      kDigitalAssetLinks
--
--  type TrustedWebActivityIssueDetails extends object
--    properties
--      # The url that triggers the violation.
--      string url
--      TwaQualityEnforcementViolationType violationType
--      optional integer httpStatusCode
--      # The package name of the Trusted Web Activity client app. This field is
--      # only used when violation type is kDigitalAssetLinks.
--      optional string packageName
--      # The signature of the Trusted Web Activity client app. This field is only
--      # used when violation type is kDigitalAssetLinks.
--      optional string signature
--
-   # A unique identifier for the type of issue. Each type may use one of the
-   # optional fields in InspectorIssueDetails to convey more specific
-   # information about the kind of issue.
-@@ -699,7 +680,6 @@ experimental domain Audits
-       HeavyAdIssue
-       ContentSecurityPolicyIssue
-       SharedArrayBufferTransferIssue
--      TrustedWebActivityIssue
- 
-   # This struct holds a list of optional fields with additional information
-   # specific to the kind of issue. When adding a new issue code, please also
-@@ -712,7 +692,6 @@ experimental domain Audits
-       optional HeavyAdIssueDetails heavyAdIssueDetails
-       optional ContentSecurityPolicyIssueDetails contentSecurityPolicyIssueDetails
-       optional SharedArrayBufferTransferIssueDetails sharedArrayBufferTransferIssueDetails
--      optional TrustedWebActivityIssueDetails twaQualityEnforcementDetails
- 
-   # An inspector issue reported from the back-end.
-   type InspectorIssue extends object
 ```
