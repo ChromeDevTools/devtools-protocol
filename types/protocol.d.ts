@@ -3442,7 +3442,7 @@ export namespace Protocol {
             location?: SourceCodeLocation;
         }
 
-        export type GenericIssueErrorType = ('CrossOriginPortalPostMessageError' | 'FormLabelForNameError' | 'FormDuplicateIdForInputError');
+        export type GenericIssueErrorType = ('CrossOriginPortalPostMessageError' | 'FormLabelForNameError' | 'FormDuplicateIdForInputError' | 'FormInputWithNoLabelError');
 
         /**
          * Depending on the concrete errorType, different properties are set.

@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1092731 — _2023-01-14T04:27:49.000Z_
+######  Diff: [`a9c500f...3c8dcf9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a9c500f...3c8dcf9`)
+
+```diff
+@@ browser_protocol.pdl:745 @@ experimental domain Audits
+       CrossOriginPortalPostMessageError
+       FormLabelForNameError
+       FormDuplicateIdForInputError
+-      FormInputWithNoLabelError
+ 
+   # Depending on the concrete errorType, different properties are set.
+   type GenericIssueDetails extends object
+```
+
 ## Roll protocol to r1092232 — _2023-01-13T04:28:35.000Z_
-######  Diff: [`aef3081...f2a9b6e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`aef3081...f2a9b6e`)
+######  Diff: [`aef3081...a9c500f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`aef3081...a9c500f`)
 
 ```diff
 @@ browser_protocol.pdl:744 @@ experimental domain Audits
@@ -9980,26 +9994,4 @@ index bd277eb..09c420e 100644
        optional TrustedWebActivityIssueDetails twaQualityEnforcementDetails
  
    # An inspector issue reported from the back-end.
-```
-
-## Roll protocol to r846936 — _2021-01-25T23:16:27.000Z_
-######  Diff: [`d88313d...181f9b3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d88313d...181f9b3`)
-
-```diff
-@@ browser_protocol.pdl:5548 @@ domain Network
-       # Request initiator.
-       optional Initiator initiator
- 
--  # Fired when WebTransport handshake is finished.
--  event webTransportConnectionEstablished
--    parameters
--      # WebTransport identifier.
--      RequestId transportId
--      # Timestamp.
--      MonotonicTime timestamp
--
--  # Fired when WebTransport is disposed.
-   event webTransportClosed
-     parameters
-       # WebTransport identifier.
 ```

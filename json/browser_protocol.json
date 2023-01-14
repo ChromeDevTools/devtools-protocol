@@ -1536,7 +1536,8 @@
                     "enum": [
                         "CrossOriginPortalPostMessageError",
                         "FormLabelForNameError",
-                        "FormDuplicateIdForInputError"
+                        "FormDuplicateIdForInputError",
+                        "FormInputWithNoLabelError"
                     ]
                 },
                 {
