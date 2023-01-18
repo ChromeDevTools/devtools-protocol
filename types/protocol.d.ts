@@ -3456,7 +3456,7 @@ export namespace Protocol {
             violatingNodeId?: DOM.BackendNodeId;
         }
 
-        export type DeprecationIssueType = ('AuthorizationCoveredByWildcard' | 'CanRequestURLHTTPContainingNewline' | 'ChromeLoadTimesConnectionInfo' | 'ChromeLoadTimesFirstPaintAfterLoadTime' | 'ChromeLoadTimesWasAlternateProtocolAvailable' | 'CookieWithTruncatingChar' | 'CrossOriginAccessBasedOnDocumentDomain' | 'CrossOriginWindowAlert' | 'CrossOriginWindowConfirm' | 'CSSSelectorInternalMediaControlsOverlayCastButton' | 'DeprecationExample' | 'DocumentDomainSettingWithoutOriginAgentClusterHeader' | 'EventPath' | 'ExpectCTHeader' | 'GeolocationInsecureOrigin' | 'GeolocationInsecureOriginDeprecatedNotRemoved' | 'GetUserMediaInsecureOrigin' | 'HostCandidateAttributeGetter' | 'IdentityInCanMakePaymentEvent' | 'InsecurePrivateNetworkSubresourceRequest' | 'LocalCSSFileExtensionRejected' | 'MediaSourceAbortRemove' | 'MediaSourceDurationTruncatingBuffered' | 'NoSysexWebMIDIWithoutPermission' | 'NotificationInsecureOrigin' | 'NotificationPermissionRequestedIframe' | 'ObsoleteWebRtcCipherSuite' | 'OpenWebDatabaseInsecureContext' | 'OverflowVisibleOnReplacedElement' | 'PaymentInstruments' | 'PaymentRequestCSPViolation' | 'PersistentQuotaType' | 'PictureSourceSrc' | 'PrefixedCancelAnimationFrame' | 'PrefixedRequestAnimationFrame' | 'PrefixedStorageInfo' | 'PrefixedVideoDisplayingFullscreen' | 'PrefixedVideoEnterFullscreen' | 'PrefixedVideoEnterFullScreen' | 'PrefixedVideoExitFullscreen' | 'PrefixedVideoExitFullScreen' | 'PrefixedVideoSupportsFullscreen' | 'RangeExpand' | 'RequestedSubresourceWithEmbeddedCredentials' | 'RTCConstraintEnableDtlsSrtpFalse' | 'RTCConstraintEnableDtlsSrtpTrue' | 'RTCPeerConnectionComplexPlanBSdpUsingDefaultSdpSemantics' | 'RTCPeerConnectionSdpSemanticsPlanB' | 'RtcpMuxPolicyNegotiate' | 'SharedArrayBufferConstructedWithoutIsolation' | 'TextToSpeech_DisallowedByAutoplay' | 'V8SharedArrayBufferConstructedInExtensionWithoutIsolation' | 'XHRJSONEncodingDetection' | 'XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload' | 'XRSupportsSession');
+        export type DeprecationIssueType = ('AuthorizationCoveredByWildcard' | 'CanRequestURLHTTPContainingNewline' | 'ChromeLoadTimesConnectionInfo' | 'ChromeLoadTimesFirstPaintAfterLoadTime' | 'ChromeLoadTimesWasAlternateProtocolAvailable' | 'CookieWithTruncatingChar' | 'CrossOriginAccessBasedOnDocumentDomain' | 'CrossOriginWindowAlert' | 'CrossOriginWindowConfirm' | 'CSSSelectorInternalMediaControlsOverlayCastButton' | 'DeprecationExample' | 'DocumentDomainSettingWithoutOriginAgentClusterHeader' | 'EventPath' | 'ExpectCTHeader' | 'GeolocationInsecureOrigin' | 'GeolocationInsecureOriginDeprecatedNotRemoved' | 'GetUserMediaInsecureOrigin' | 'HostCandidateAttributeGetter' | 'IdentityInCanMakePaymentEvent' | 'InsecurePrivateNetworkSubresourceRequest' | 'LocalCSSFileExtensionRejected' | 'MediaSourceAbortRemove' | 'MediaSourceDurationTruncatingBuffered' | 'NoSysexWebMIDIWithoutPermission' | 'NotificationInsecureOrigin' | 'NotificationPermissionRequestedIframe' | 'ObsoleteCreateImageBitmapImageOrientationNone' | 'ObsoleteWebRtcCipherSuite' | 'OpenWebDatabaseInsecureContext' | 'OverflowVisibleOnReplacedElement' | 'PaymentInstruments' | 'PaymentRequestCSPViolation' | 'PersistentQuotaType' | 'PictureSourceSrc' | 'PrefixedCancelAnimationFrame' | 'PrefixedRequestAnimationFrame' | 'PrefixedStorageInfo' | 'PrefixedVideoDisplayingFullscreen' | 'PrefixedVideoEnterFullscreen' | 'PrefixedVideoEnterFullScreen' | 'PrefixedVideoExitFullscreen' | 'PrefixedVideoExitFullScreen' | 'PrefixedVideoSupportsFullscreen' | 'RangeExpand' | 'RequestedSubresourceWithEmbeddedCredentials' | 'RTCConstraintEnableDtlsSrtpFalse' | 'RTCConstraintEnableDtlsSrtpTrue' | 'RTCPeerConnectionComplexPlanBSdpUsingDefaultSdpSemantics' | 'RTCPeerConnectionSdpSemanticsPlanB' | 'RtcpMuxPolicyNegotiate' | 'SharedArrayBufferConstructedWithoutIsolation' | 'TextToSpeech_DisallowedByAutoplay' | 'V8SharedArrayBufferConstructedInExtensionWithoutIsolation' | 'XHRJSONEncodingDetection' | 'XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload' | 'XRSupportsSession');
 
         /**
          * This issue tracks information needed to print a deprecation message.
@@ -7507,7 +7507,13 @@ export namespace Protocol {
          * Missing optional values will be filled in by the target with what it would normally use.
          */
         export interface UserAgentMetadata {
+            /**
+             * Brands appearing in Sec-CH-UA.
+             */
             brands?: UserAgentBrandVersion[];
+            /**
+             * Brands appearing in Sec-CH-UA-Full-Version-List.
+             */
             fullVersionList?: UserAgentBrandVersion[];
             fullVersion?: string;
             platform: string;
@@ -16537,6 +16543,12 @@ export namespace Protocol {
              * Defaults to false.
              */
             hasMinPinLength?: boolean;
+            /**
+             * If set to true, the authenticator will support the prf extension.
+             * https://w3c.github.io/webauthn/#prf-extension
+             * Defaults to false.
+             */
+            hasPrf?: boolean;
             /**
              * If set to true, tests of user presence will succeed immediately.
              * Otherwise, they will not be resolved. Defaults to true.

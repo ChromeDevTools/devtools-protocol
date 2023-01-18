@@ -1,7 +1,42 @@
 
 
+## Roll protocol to r1093722 — _2023-01-18T04:28:24.000Z_
+######  Diff: [`c03647c...169bca1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c03647c...169bca1`)
+
+```diff
+@@ browser_protocol.pdl:783 @@ experimental domain Audits
+       NoSysexWebMIDIWithoutPermission
+       NotificationInsecureOrigin
+       NotificationPermissionRequestedIframe
+-      ObsoleteCreateImageBitmapImageOrientationNone
+       ObsoleteWebRtcCipherSuite
+       OpenWebDatabaseInsecureContext
+       OverflowVisibleOnReplacedElement
+@@ -3682,9 +3681,7 @@ domain Emulation
+   # Missing optional values will be filled in by the target with what it would normally use.
+   experimental type UserAgentMetadata extends object
+     properties
+-      # Brands appearing in Sec-CH-UA.
+       optional array of UserAgentBrandVersion brands
+-      # Brands appearing in Sec-CH-UA-Full-Version-List.
+       optional array of UserAgentBrandVersion fullVersionList
+       deprecated optional string fullVersion
+       string platform
+@@ -10553,10 +10550,6 @@ experimental domain WebAuthn
+       # https://fidoalliance.org/specs/fido-v2.1-ps-20210615/fido-client-to-authenticator-protocol-v2.1-ps-20210615.html#sctn-minpinlength-extension
+       # Defaults to false.
+       optional boolean hasMinPinLength
+-      # If set to true, the authenticator will support the prf extension.
+-      # https://w3c.github.io/webauthn/#prf-extension
+-      # Defaults to false.
+-      optional boolean hasPrf
+       # If set to true, tests of user presence will succeed immediately.
+       # Otherwise, they will not be resolved. Defaults to true.
+       optional boolean automaticPresenceSimulation
+```
+
 ## Roll protocol to r1092731 — _2023-01-14T04:27:49.000Z_
-######  Diff: [`a9c500f...3c8dcf9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a9c500f...3c8dcf9`)
+######  Diff: [`a9c500f...c03647c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a9c500f...c03647c`)
 
 ```diff
 @@ browser_protocol.pdl:745 @@ experimental domain Audits
@@ -9949,49 +9984,4 @@ index bd277eb..09c420e 100644
        string url
        integer lineNumber
        integer columnNumber
-```
-
-## Roll protocol to r847122 — _2021-01-26T12:16:07.000Z_
-######  Diff: [`181f9b3...769185f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`181f9b3...769185f`)
-
-```diff
-@@ browser_protocol.pdl:661 @@ experimental domain Audits
-       optional SourceCodeLocation sourceCodeLocation
-       optional DOM.BackendNodeId violatingNodeId
- 
--  type SharedArrayBufferIssueType extends string
--    enum
--      TransferIssue
--      CreationIssue
--
-   # Details for a request that has been blocked with the BLOCKED_BY_RESPONSE
-   # code. Currently only used for COEP/COOP, but may be extended to include
-   # some CSP errors in the future.
--  type SharedArrayBufferIssueDetails extends object
-+  type SharedArrayBufferTransferIssueDetails extends object
-     properties
-       SourceCodeLocation sourceCodeLocation
-       boolean isWarning
--      SharedArrayBufferIssueType type
- 
-   type TwaQualityEnforcementViolationType extends string
-     enum
-@@ -704,7 +698,7 @@ experimental domain Audits
-       BlockedByResponseIssue
-       HeavyAdIssue
-       ContentSecurityPolicyIssue
--      SharedArrayBufferIssue
-+      SharedArrayBufferTransferIssue
-       TrustedWebActivityIssue
- 
-   # This struct holds a list of optional fields with additional information
-@@ -717,7 +711,7 @@ experimental domain Audits
-       optional BlockedByResponseIssueDetails blockedByResponseIssueDetails
-       optional HeavyAdIssueDetails heavyAdIssueDetails
-       optional ContentSecurityPolicyIssueDetails contentSecurityPolicyIssueDetails
--      optional SharedArrayBufferIssueDetails sharedArrayBufferIssueDetails
-+      optional SharedArrayBufferTransferIssueDetails sharedArrayBufferTransferIssueDetails
-       optional TrustedWebActivityIssueDetails twaQualityEnforcementDetails
- 
-   # An inspector issue reported from the back-end.
 ```

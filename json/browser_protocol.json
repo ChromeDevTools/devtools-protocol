@@ -1592,6 +1592,7 @@
                         "NoSysexWebMIDIWithoutPermission",
                         "NotificationInsecureOrigin",
                         "NotificationPermissionRequestedIframe",
+                        "ObsoleteCreateImageBitmapImageOrientationNone",
                         "ObsoleteWebRtcCipherSuite",
                         "OpenWebDatabaseInsecureContext",
                         "OverflowVisibleOnReplacedElement",
@@ -8012,6 +8013,7 @@
                     "properties": [
                         {
                             "name": "brands",
+                            "description": "Brands appearing in Sec-CH-UA.",
                             "optional": true,
                             "type": "array",
                             "items": {
@@ -8020,6 +8022,7 @@
                         },
                         {
                             "name": "fullVersionList",
+                            "description": "Brands appearing in Sec-CH-UA-Full-Version-List.",
                             "optional": true,
                             "type": "array",
                             "items": {
@@ -22290,6 +22293,12 @@
                         {
                             "name": "hasMinPinLength",
                             "description": "If set to true, the authenticator will support the minPinLength extension.\nhttps://fidoalliance.org/specs/fido-v2.1-ps-20210615/fido-client-to-authenticator-protocol-v2.1-ps-20210615.html#sctn-minpinlength-extension\nDefaults to false.",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "hasPrf",
+                            "description": "If set to true, the authenticator will support the prf extension.\nhttps://w3c.github.io/webauthn/#prf-extension\nDefaults to false.",
                             "optional": true,
                             "type": "boolean"
                         },
