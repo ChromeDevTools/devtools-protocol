@@ -1,7 +1,23 @@
 
 
+## Roll protocol to r1094278 — _2023-01-19T04:28:56.000Z_
+######  Diff: [`370c224...8e6aab6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`370c224...8e6aab6`)
+
+```diff
+@@ browser_protocol.pdl:8569 @@ domain Page
+       ActivationNavigationDestroyedBeforeSuccess
+       TabClosedByUserGesture
+       TabClosedWithoutUserGesture
+-      PrimaryMainFrameRendererProcessCrashed
+-      PrimaryMainFrameRendererProcessKilled
+-      ActivationFramePolicyNotCompatible
+ 
+   # Fired when a prerender attempt is completed.
+   experimental event prerenderAttemptCompleted
+```
+
 ## Roll protocol to r1093722 — _2023-01-18T04:28:24.000Z_
-######  Diff: [`c03647c...169bca1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c03647c...169bca1`)
+######  Diff: [`c03647c...370c224`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c03647c...370c224`)
 
 ```diff
 @@ browser_protocol.pdl:783 @@ experimental domain Audits
@@ -9970,18 +9986,4 @@ index bd277eb..09c420e 100644
        # Raw response header text as it was received over the wire. The raw text may not always be
        # available, such as in the case of HTTP/2 or QUIC.
        optional string headersText
-```
-
-## Roll protocol to r847576 — _2021-01-27T11:16:08.000Z_
-######  Diff: [`769185f...0284109`](https://github.com/ChromeDevTools/devtools-protocol/compare/`769185f...0284109`)
-
-```diff
-@@ browser_protocol.pdl:645 @@ experimental domain Audits
- 
-   type SourceCodeLocation extends object
-     properties
--      optional Runtime.ScriptId scriptId
-       string url
-       integer lineNumber
-       integer columnNumber
 ```
