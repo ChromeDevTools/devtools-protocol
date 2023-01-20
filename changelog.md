@@ -1,7 +1,25 @@
 
 
+## Roll protocol to r1094867 — _2023-01-20T04:28:35.000Z_
+######  Diff: [`6b557d0...1ee4d73`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6b557d0...1ee4d73`)
+
+```diff
+@@ browser_protocol.pdl:5271 @@ domain Network
+   # are specified in third_party/blink/renderer/core/fetch/trust_token.idl.
+   experimental type TrustTokenParams extends object
+     properties
+-      TrustTokenOperationType operation
++      TrustTokenOperationType type
+ 
+-      # Only set for "token-redemption" operation and determine whether
++      # Only set for "token-redemption" type and determine whether
+       # to request a fresh SRR or use a still valid cached SRR.
+       enum refreshPolicy
+         UseCached
+```
+
 ## Roll protocol to r1094278 — _2023-01-19T04:28:56.000Z_
-######  Diff: [`370c224...8e6aab6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`370c224...8e6aab6`)
+######  Diff: [`370c224...6b557d0`](https://github.com/ChromeDevTools/devtools-protocol/compare/`370c224...6b557d0`)
 
 ```diff
 @@ browser_protocol.pdl:8569 @@ domain Page
@@ -9970,20 +9988,4 @@ index bd277eb..09c420e 100644
        string platform
        string platformVersion
        string architecture
-```
-
-## Roll protocol to r848169 — _2021-01-28T18:16:15.000Z_
-######  Diff: [`0284109...51065d6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0284109...51065d6`)
-
-```diff
-@@ browser_protocol.pdl:5618 @@ domain Network
-       array of BlockedSetCookieWithReason blockedCookies
-       # Raw response headers as they were received over the wire.
-       Headers headers
--      # The IP address space of the resource. The address space can only be determined once the transport
--      # established the connection, so we can't send it in `requestWillBeSentExtraInfo`.
--      IPAddressSpace resourceIPAddressSpace
-       # Raw response header text as it was received over the wire. The raw text may not always be
-       # available, such as in the case of HTTP/2 or QUIC.
-       optional string headersText
 ```
