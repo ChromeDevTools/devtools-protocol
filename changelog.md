@@ -1,7 +1,31 @@
 
 
+## Roll protocol to r1096014 — _2023-01-24T04:28:10.000Z_
+######  Diff: [`9b03384...ac6de49`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9b03384...ac6de49`)
+
+```diff
+@@ browser_protocol.pdl:1273 @@ domain Browser
+       # substring in their name are extracted. An empty or absent query returns
+       # all histograms.
+       optional string query
+-      # If true, retrieve delta since last delta call.
++      # If true, retrieve delta since last call.
+       optional boolean delta
+ 
+     returns
+@@ -1285,7 +1285,7 @@ domain Browser
+     parameters
+       # Requested histogram name.
+       string name
+-      # If true, retrieve delta since last delta call.
++      # If true, retrieve delta since last call.
+       optional boolean delta
+     returns
+       # Histogram.
+```
+
 ## Roll protocol to r1094867 — _2023-01-20T04:28:35.000Z_
-######  Diff: [`6b557d0...1ee4d73`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6b557d0...1ee4d73`)
+######  Diff: [`6b557d0...9b03384`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6b557d0...9b03384`)
 
 ```diff
 @@ browser_protocol.pdl:5271 @@ domain Network
@@ -9968,24 +9992,4 @@ index bd277eb..09c420e 100644
    event issueAdded
      parameters
        InspectorIssue issue
-```
-
-## Roll protocol to r848227 — _2021-01-28T20:16:06.000Z_
-######  Diff: [`51065d6...78112b8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`51065d6...78112b8`)
-
-```diff
-@@ browser_protocol.pdl:3163 @@ domain Emulation
-       string version
- 
-   # Used to specify User Agent Cient Hints to emulate. See https://wicg.github.io/ua-client-hints
--  # Missing optional values will be filled in by the target with what it would normally use.
-   experimental type UserAgentMetadata extends object
-     properties
--      optional array of UserAgentBrandVersion brands
--      optional string fullVersion
-+      array of UserAgentBrandVersion brands
-+      string fullVersion
-       string platform
-       string platformVersion
-       string architecture
 ```

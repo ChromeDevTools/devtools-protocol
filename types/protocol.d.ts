@@ -3916,7 +3916,7 @@ export namespace Protocol {
              */
             query?: string;
             /**
-             * If true, retrieve delta since last call.
+             * If true, retrieve delta since last delta call.
              */
             delta?: boolean;
         }
@@ -3934,7 +3934,7 @@ export namespace Protocol {
              */
             name: string;
             /**
-             * If true, retrieve delta since last call.
+             * If true, retrieve delta since last delta call.
              */
             delta?: boolean;
         }
