@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1096618 — _2023-01-25T04:27:58.000Z_
+######  Diff: [`23801b1...b2e73d6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`23801b1...b2e73d6`)
+
+```diff
+@@ browser_protocol.pdl:746 @@ experimental domain Audits
+       FormLabelForNameError
+       FormDuplicateIdForInputError
+       FormInputWithNoLabelError
+-      FormAutocompleteAttributeEmptyError
+ 
+   # Depending on the concrete errorType, different properties are set.
+   type GenericIssueDetails extends object
+```
+
 ## Roll protocol to r1096014 — _2023-01-24T04:28:10.000Z_
-######  Diff: [`9b03384...ac6de49`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9b03384...ac6de49`)
+######  Diff: [`9b03384...23801b1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9b03384...23801b1`)
 
 ```diff
 @@ browser_protocol.pdl:1273 @@ domain Browser
@@ -9942,54 +9956,4 @@ index bd277eb..09c420e 100644
  
    # A cookie which was not stored from a response with the corresponding reason.
    experimental type BlockedSetCookieWithReason extends object
-```
-
-## Roll protocol to r849057 — _2021-02-01T11:16:00.000Z_
-######  Diff: [`78112b8...8a7c1b5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`78112b8...8a7c1b5`)
-
-```diff
-@@ browser_protocol.pdl:695 @@ experimental domain Audits
-       # used when violation type is kDigitalAssetLinks.
-       optional string signature
- 
--  type LowTextContrastIssueDetails extends object
--    properties
--      DOM.BackendNodeId violatingNodeId
--      string violatingNodeSelector
--      number contrastRatio
--      number thresholdAA
--      number thresholdAAA
--      string fontSize
--      string fontWeight
--
-   # A unique identifier for the type of issue. Each type may use one of the
-   # optional fields in InspectorIssueDetails to convey more specific
-   # information about the kind of issue.
-@@ -717,7 +707,6 @@ experimental domain Audits
-       ContentSecurityPolicyIssue
-       SharedArrayBufferIssue
-       TrustedWebActivityIssue
--      LowTextContrastIssue
- 
-   # This struct holds a list of optional fields with additional information
-   # specific to the kind of issue. When adding a new issue code, please also
-@@ -731,7 +720,6 @@ experimental domain Audits
-       optional ContentSecurityPolicyIssueDetails contentSecurityPolicyIssueDetails
-       optional SharedArrayBufferIssueDetails sharedArrayBufferIssueDetails
-       optional TrustedWebActivityIssueDetails twaQualityEnforcementDetails
--      optional LowTextContrastIssueDetails lowTextContrastIssueDetails
- 
-   # An inspector issue reported from the back-end.
-   type InspectorIssue extends object
-@@ -769,10 +757,6 @@ experimental domain Audits
-   # `issueAdded` event.
-   command enable
- 
--  # Runs the contrast check for the target page. Found issues are reported
--  # using Audits.issueAdded event.
--  command checkContrast
--
-   event issueAdded
-     parameters
-       InspectorIssue issue
 ```

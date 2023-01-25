@@ -1537,7 +1537,8 @@
                         "CrossOriginPortalPostMessageError",
                         "FormLabelForNameError",
                         "FormDuplicateIdForInputError",
-                        "FormInputWithNoLabelError"
+                        "FormInputWithNoLabelError",
+                        "FormAutocompleteAttributeEmptyError"
                     ]
                 },
                 {
