@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1097235 — _2023-01-26T04:28:05.000Z_
+######  Diff: [`5caaeb9...af078e0`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5caaeb9...af078e0`)
+
+```diff
+@@ browser_protocol.pdl:747 @@ experimental domain Audits
+       FormDuplicateIdForInputError
+       FormInputWithNoLabelError
+       FormAutocompleteAttributeEmptyError
+-      FormEmptyIdAndNameAttributesForInputError
+ 
+   # Depending on the concrete errorType, different properties are set.
+   type GenericIssueDetails extends object
+```
+
 ## Roll protocol to r1096618 — _2023-01-25T04:27:58.000Z_
-######  Diff: [`23801b1...b2e73d6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`23801b1...b2e73d6`)
+######  Diff: [`23801b1...5caaeb9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`23801b1...5caaeb9`)
 
 ```diff
 @@ browser_protocol.pdl:746 @@ experimental domain Audits
@@ -9928,32 +9942,4 @@ index bd277eb..09c420e 100644
 -      optional FlexItemHighlightConfig flexItemHighlightConfig
        # The contrast algorithm to use for the contrast ratio (default: aa).
        optional ContrastAlgorithm contrastAlgorithm
-```
-
-## Roll protocol to r849788 — _2021-02-02T22:16:09.000Z_
-######  Diff: [`8a7c1b5...6393746`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8a7c1b5...6393746`)
-
-```diff
-@@ browser_protocol.pdl:4844 @@ domain Network
-       # value.
-       # This is the "Schemeful Same-Site" version of the blocked reason.
-       SchemefulSameSiteUnspecifiedTreatedAsLax
--      # The cookie had the "SameParty" attribute but came from a cross-party response.
--      SamePartyFromCrossPartyContext
--      # The cookie had the "SameParty" attribute but did not specify the "Secure" attribute
--      # (which is required in order to use "SameParty"); or specified the "SameSite=Strict"
--      # attribute (which is forbidden when using "SameParty").
--      SamePartyConflictsWithOtherAttributes
- 
-   # Types of reasons why a cookie may not be sent with a request.
-   experimental type CookieBlockedReason extends string
-@@ -4892,8 +4886,6 @@ domain Network
-       # value.
-       # This is the "Schemeful Same-Site" version of the blocked reason.
-       SchemefulSameSiteUnspecifiedTreatedAsLax
--      # The cookie had the "SameParty" attribute and the request was made from a cross-party context.
--      SamePartyFromCrossPartyContext
- 
-   # A cookie which was not stored from a response with the corresponding reason.
-   experimental type BlockedSetCookieWithReason extends object
 ```
