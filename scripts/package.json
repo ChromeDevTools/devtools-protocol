@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "@types/node": "^9.6.0",
-    "simple-git": "^3.10.0",
+    "simple-git": "^3.16.0",
     "ts-node": "^7.0.0",
     "typescript": "3.0.1"
   }
