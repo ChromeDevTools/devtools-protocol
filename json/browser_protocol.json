@@ -1611,6 +1611,7 @@
                         "PrefixedVideoExitFullscreen",
                         "PrefixedVideoExitFullScreen",
                         "PrefixedVideoSupportsFullscreen",
+                        "PrivacySandboxExtensionsAPI",
                         "RangeExpand",
                         "RequestedSubresourceWithEmbeddedCredentials",
                         "RTCConstraintEnableDtlsSrtpFalse",
@@ -13930,6 +13931,18 @@
                             "description": "Raw response header text as it was received over the wire. The raw text may not always be\navailable, such as in the case of HTTP/2 or QUIC.",
                             "optional": true,
                             "type": "string"
+                        },
+                        {
+                            "name": "cookiePartitionKey",
+                            "description": "The cookie partition key that will be used to store partitioned cookies set in this response.\nOnly sent when partitioned cookies are enabled.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "cookiePartitionKeyOpaque",
+                            "description": "True if partitioned cookies are enabled, but the partition key is not serializeable to string.",
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ]
                 },
@@ -16462,7 +16475,9 @@
                         "TabClosedWithoutUserGesture",
                         "PrimaryMainFrameRendererProcessCrashed",
                         "PrimaryMainFrameRendererProcessKilled",
-                        "ActivationFramePolicyNotCompatible"
+                        "ActivationFramePolicyNotCompatible",
+                        "PreloadingDisabled",
+                        "BatterySaverEnabled"
                     ]
                 }
             ],

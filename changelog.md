@@ -1,7 +1,42 @@
 
 
+## Roll protocol to r1097787 — _2023-01-27T04:28:00.000Z_
+######  Diff: [`c72fa9e...dcfda04`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c72fa9e...dcfda04`)
+
+```diff
+@@ browser_protocol.pdl:802 @@ experimental domain Audits
+       PrefixedVideoExitFullscreen
+       PrefixedVideoExitFullScreen
+       PrefixedVideoSupportsFullscreen
+-      PrivacySandboxExtensionsAPI
+       RangeExpand
+       RequestedSubresourceWithEmbeddedCredentials
+       RTCConstraintEnableDtlsSrtpFalse
+@@ -6402,11 +6401,6 @@ domain Network
+       # Raw response header text as it was received over the wire. The raw text may not always be
+       # available, such as in the case of HTTP/2 or QUIC.
+       optional string headersText
+-      # The cookie partition key that will be used to store partitioned cookies set in this response.
+-      # Only sent when partitioned cookies are enabled.
+-      optional string cookiePartitionKey
+-      # True if partitioned cookies are enabled, but the partition key is not serializeable to string.
+-      optional boolean cookiePartitionKeyOpaque
+ 
+   # Fired exactly once for each Trust Token operation. Depending on
+   # the type of the operation and whether the operation succeeded or
+@@ -8580,8 +8574,6 @@ domain Page
+       PrimaryMainFrameRendererProcessCrashed
+       PrimaryMainFrameRendererProcessKilled
+       ActivationFramePolicyNotCompatible
+-      PreloadingDisabled
+-      BatterySaverEnabled
+ 
+   # Fired when a prerender attempt is completed.
+   experimental event prerenderAttemptCompleted
+```
+
 ## Roll protocol to r1097235 — _2023-01-26T04:28:05.000Z_
-######  Diff: [`5caaeb9...af078e0`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5caaeb9...af078e0`)
+######  Diff: [`5caaeb9...c72fa9e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5caaeb9...c72fa9e`)
 
 ```diff
 @@ browser_protocol.pdl:747 @@ experimental domain Audits
@@ -9911,35 +9946,4 @@ index bd277eb..09c420e 100644
  
    experimental type IPAddressSpace extends string
      enum
-```
-
-## Roll protocol to r850520 — _2021-02-04T10:16:11.000Z_
-######  Diff: [`6393746...5a47400`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6393746...5a47400`)
-
-```diff
-@@ browser_protocol.pdl:5829 @@ experimental domain Overlay
-       # Style of the self-alignment line (align-items).
-       optional LineStyle crossAlignment
- 
--  # Configuration data for the highlighting of Flex item elements.
--  type FlexItemHighlightConfig extends object
--    properties
--      # Style of the box representing the item's base size
--      optional BoxStyle baseSizeBox
--      # Style of the border around the box representing the item's base size
--      optional LineStyle baseSizeBorder
--      # Style of the arrow representing if the item grew or shrank
--      optional LineStyle flexibilityArrow
--
-   # Style information for drawing a line.
-   type LineStyle extends object
-     properties
-@@ -5898,8 +5888,6 @@ experimental domain Overlay
-       optional GridHighlightConfig gridHighlightConfig
-       # The flex container highlight configuration (default: all transparent).
-       optional FlexContainerHighlightConfig flexContainerHighlightConfig
--      # The flex item highlight configuration (default: all transparent).
--      optional FlexItemHighlightConfig flexItemHighlightConfig
-       # The contrast algorithm to use for the contrast ratio (default: aa).
-       optional ContrastAlgorithm contrastAlgorithm
 ```
