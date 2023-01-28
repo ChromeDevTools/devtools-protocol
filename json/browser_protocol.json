@@ -1539,7 +1539,8 @@
                         "FormDuplicateIdForInputError",
                         "FormInputWithNoLabelError",
                         "FormAutocompleteAttributeEmptyError",
-                        "FormEmptyIdAndNameAttributesForInputError"
+                        "FormEmptyIdAndNameAttributesForInputError",
+                        "FormAriaLabelledByToNonExistingId"
                     ]
                 },
                 {

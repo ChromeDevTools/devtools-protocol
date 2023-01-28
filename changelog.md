@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1098258 — _2023-01-28T04:27:44.000Z_
+######  Diff: [`a73bac7...fddaf2e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a73bac7...fddaf2e`)
+
+```diff
+@@ browser_protocol.pdl:748 @@ experimental domain Audits
+       FormInputWithNoLabelError
+       FormAutocompleteAttributeEmptyError
+       FormEmptyIdAndNameAttributesForInputError
+-      FormAriaLabelledByToNonExistingId
+ 
+   # Depending on the concrete errorType, different properties are set.
+   type GenericIssueDetails extends object
+```
+
 ## Roll protocol to r1097787 — _2023-01-27T04:28:00.000Z_
-######  Diff: [`c72fa9e...dcfda04`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c72fa9e...dcfda04`)
+######  Diff: [`c72fa9e...a73bac7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c72fa9e...a73bac7`)
 
 ```diff
 @@ browser_protocol.pdl:802 @@ experimental domain Audits
@@ -9887,63 +9901,4 @@ index bd277eb..09c420e 100644
      returns
        # Always set to true. If an error occurs, the response indicates protocol error.
        deprecated boolean success
-```
-
-## Roll protocol to r852555 — _2021-02-10T09:16:01.000Z_
-######  Diff: [`5a47400...014525d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5a47400...014525d`)
-
-```diff
-@@ browser_protocol.pdl:667 @@ experimental domain Audits
-       TransferIssue
-       CreationIssue
- 
--  # Details for a issue arising from an SAB being instantiated in, or
--  # transfered to a context that is not cross-origin isolated.
-+  # Details for a request that has been blocked with the BLOCKED_BY_RESPONSE
-+  # code. Currently only used for COEP/COOP, but may be extended to include
-+  # some CSP errors in the future.
-   type SharedArrayBufferIssueDetails extends object
-     properties
-       SourceCodeLocation sourceCodeLocation
-@@ -704,16 +705,6 @@ experimental domain Audits
-       string fontSize
-       string fontWeight
- 
--  # Details for a CORS related issue, e.g. a warning or error related to
--  # CORS RFC1918 enforcement.
--  type CorsIssueDetails extends object
--    properties
--      Network.CorsErrorStatus corsErrorStatus
--      boolean isWarning
--      AffectedRequest request
--      optional Network.IPAddressSpace resourceIPAddressSpace
--      optional Network.ClientSecurityState clientSecurityState
--
-   # A unique identifier for the type of issue. Each type may use one of the
-   # optional fields in InspectorIssueDetails to convey more specific
-   # information about the kind of issue.
-@@ -727,7 +718,6 @@ experimental domain Audits
-       SharedArrayBufferIssue
-       TrustedWebActivityIssue
-       LowTextContrastIssue
--      CorsIssue
- 
-   # This struct holds a list of optional fields with additional information
-   # specific to the kind of issue. When adding a new issue code, please also
-@@ -742,7 +732,6 @@ experimental domain Audits
-       optional SharedArrayBufferIssueDetails sharedArrayBufferIssueDetails
-       optional TrustedWebActivityIssueDetails twaQualityEnforcementDetails
-       optional LowTextContrastIssueDetails lowTextContrastIssueDetails
--      optional CorsIssueDetails corsIssueDetails
- 
-   # An inspector issue reported from the back-end.
-   type InspectorIssue extends object
-@@ -5611,7 +5600,6 @@ domain Network
-     enum
-       Allow
-       BlockFromInsecureToMorePrivate
--      WarnFromInsecureToMorePrivate
- 
-   experimental type IPAddressSpace extends string
-     enum
 ```
