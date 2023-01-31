@@ -1540,7 +1540,8 @@
                         "FormInputWithNoLabelError",
                         "FormAutocompleteAttributeEmptyError",
                         "FormEmptyIdAndNameAttributesForInputError",
-                        "FormAriaLabelledByToNonExistingId"
+                        "FormAriaLabelledByToNonExistingId",
+                        "FormInputAssignedAutocompleteValueToIdOrNameAttributeError"
                     ]
                 },
                 {

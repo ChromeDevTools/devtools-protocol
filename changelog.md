@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1099089 — _2023-01-31T04:27:53.000Z_
+######  Diff: [`58bc3b6...995e685`](https://github.com/ChromeDevTools/devtools-protocol/compare/`58bc3b6...995e685`)
+
+```diff
+@@ browser_protocol.pdl:749 @@ experimental domain Audits
+       FormAutocompleteAttributeEmptyError
+       FormEmptyIdAndNameAttributesForInputError
+       FormAriaLabelledByToNonExistingId
+-      FormInputAssignedAutocompleteValueToIdOrNameAttributeError
+ 
+   # Depending on the concrete errorType, different properties are set.
+   type GenericIssueDetails extends object
+```
+
 ## Roll protocol to r1098258 — _2023-01-28T04:27:44.000Z_
-######  Diff: [`a73bac7...fddaf2e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a73bac7...fddaf2e`)
+######  Diff: [`a73bac7...58bc3b6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a73bac7...58bc3b6`)
 
 ```diff
 @@ browser_protocol.pdl:748 @@ experimental domain Audits
@@ -9818,87 +9832,4 @@ index bd277eb..09c420e 100644
    # Overrides the values of device screen dimensions (window.screen.width, window.screen.height,
    # window.innerWidth, window.innerHeight, and "device-width"/"device-height"-related CSS media
    # query results).
-```
-
-## Roll protocol to r854538 — _2021-02-17T00:16:05.000Z_
-######  Diff: [`014525d...13b10d1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`014525d...13b10d1`)
-
-```diff
-@@ browser_protocol.pdl:4426 @@ domain Network
-       Medium
-       High
- 
--  # Represents the source scheme of the origin that originally set the cookie.
--  # A value of "Unset" allows protocol clients to emulate legacy cookie scope for the scheme.
--  # This is a temporary ability and it will be removed in the future.
--  experimental type CookieSourceScheme extends string
--    enum
--      Unset
--      NonSecure
--      Secure
--
-   # Timing information for the request.
-   type ResourceTiming extends object
-     properties
-@@ -4816,12 +4807,6 @@ domain Network
-       experimental CookiePriority priority
-       # True if cookie is SameParty.
-       experimental boolean sameParty
--      # Cookie source scheme type.
--      experimental CookieSourceScheme sourceScheme
--      # Cookie source port. Valid values are {-1, [1, 65535]}, -1 indicates an unspecified port.
--      # An unspecified port value allows protocol clients to emulate legacy cookie scope for the port.
--      # This is a temporary ability and it will be removed in the future.
--      experimental integer sourcePort
- 
-   # Types of reasons why a cookie may not be stored from a response.
-   experimental type SetCookieBlockedReason extends string
-@@ -4950,7 +4935,7 @@ domain Network
-       # Cookie value.
-       string value
-       # The request-URI to associate with the setting of the cookie. This value can affect the
--      # default domain, path, source port, and source scheme values of the created cookie.
-+      # default domain and path values of the created cookie.
-       optional string url
-       # Cookie domain.
-       optional string domain
-@@ -4966,14 +4951,6 @@ domain Network
-       optional TimeSinceEpoch expires
-       # Cookie Priority.
-       experimental optional CookiePriority priority
--      # True if cookie is SameParty.
--      experimental optional boolean sameParty
--      # Cookie source scheme type.
--      experimental optional CookieSourceScheme sourceScheme
--      # Cookie source port. Valid values are {-1, [1, 65535]}, -1 indicates an unspecified port.
--      # An unspecified port value allows protocol clients to emulate legacy cookie scope for the port.
--      # This is a temporary ability and it will be removed in the future.
--      experimental optional integer sourcePort
- 
-   # Authorization challenge for HTTP status code 401 or 407.
-   experimental type AuthChallenge extends object
-@@ -5304,7 +5281,7 @@ domain Network
-       # Cookie value.
-       string value
-       # The request-URI to associate with the setting of the cookie. This value can affect the
--      # default domain, path, source port, and source scheme values of the created cookie.
-+      # default domain and path values of the created cookie.
-       optional string url
-       # Cookie domain.
-       optional string domain
-@@ -5320,14 +5297,6 @@ domain Network
-       optional TimeSinceEpoch expires
-       # Cookie Priority type.
-       experimental optional CookiePriority priority
--      # True if cookie is SameParty.
--      experimental optional boolean sameParty
--      # Cookie source scheme type.
--      experimental optional CookieSourceScheme sourceScheme
--      # Cookie source port. Valid values are {-1, [1, 65535]}, -1 indicates an unspecified port.
--      # An unspecified port value allows protocol clients to emulate legacy cookie scope for the port.
--      # This is a temporary ability and it will be removed in the future.
--      experimental optional integer sourcePort
-     returns
-       # Always set to true. If an error occurs, the response indicates protocol error.
-       deprecated boolean success
 ```
