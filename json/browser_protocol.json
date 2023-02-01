@@ -16479,7 +16479,8 @@
                         "PrimaryMainFrameRendererProcessKilled",
                         "ActivationFramePolicyNotCompatible",
                         "PreloadingDisabled",
-                        "BatterySaverEnabled"
+                        "BatterySaverEnabled",
+                        "ActivatedDuringMainFrameNavigation"
                     ]
                 }
             ],

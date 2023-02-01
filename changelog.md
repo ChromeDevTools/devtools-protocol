@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1099658 — _2023-02-01T04:28:12.000Z_
+######  Diff: [`2a08589...095ca23`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2a08589...095ca23`)
+
+```diff
+@@ browser_protocol.pdl:8584 @@ domain Page
+       ActivationFramePolicyNotCompatible
+       PreloadingDisabled
+       BatterySaverEnabled
+-      ActivatedDuringMainFrameNavigation
+ 
+   # Fired when a prerender attempt is completed.
+   experimental event prerenderAttemptCompleted
+```
+
 ## Roll protocol to r1099089 — _2023-01-31T04:27:53.000Z_
-######  Diff: [`58bc3b6...995e685`](https://github.com/ChromeDevTools/devtools-protocol/compare/`58bc3b6...995e685`)
+######  Diff: [`58bc3b6...2a08589`](https://github.com/ChromeDevTools/devtools-protocol/compare/`58bc3b6...2a08589`)
 
 ```diff
 @@ browser_protocol.pdl:749 @@ experimental domain Audits
@@ -9728,108 +9742,4 @@ index bd277eb..09c420e 100644
  
    event issueAdded
      parameters
-```
-
-## Roll protocol to r854822 — _2021-02-17T17:16:17.000Z_
-######  Diff: [`13b10d1...498a1e5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`13b10d1...498a1e5`)
-
-```diff
-@@ browser_protocol.pdl:6248 @@ domain Page
-       PerformanceMeasureMemory
-       PerformanceProfile
- 
--  # All Permissions Policy features. This enum should match the one defined
--  # in renderer/core/feature_policy/feature_policy_features.json5.
--  experimental type PermissionsPolicyFeature extends string
--    enum
--      accelerometer
--      ambient-light-sensor
--      autoplay
--      camera
--      ch-dpr
--      ch-device-memory
--      ch-downlink
--      ch-ect
--      ch-lang
--      ch-rtt
--      ch-ua
--      ch-ua-arch
--      ch-ua-platform
--      ch-ua-model
--      ch-ua-mobile
--      ch-ua-full-version
--      ch-ua-platform-version
--      ch-viewport-width
--      ch-width
--      clipboard-read
--      clipboard-write
--      conversion-measurement
--      cross-origin-isolated
--      display-capture
--      document-domain
--      encrypted-media
--      execution-while-out-of-viewport
--      execution-while-not-rendered
--      focus-without-user-activation
--      fullscreen
--      frobulate
--      gamepad
--      geolocation
--      gyroscope
--      hid
--      idle-detection
--      interest-cohort
--      magnetometer
--      microphone
--      midi
--      otp-credentials
--      payment
--      picture-in-picture
--      publickey-credentials-get
--      screen-wake-lock
--      serial
--      storage-access-api
--      sync-xhr
--      trust-token-redemption
--      usb
--      vertical-scroll
--      web-share
--      xr-spatial-tracking
--
--  # Reason for a permissions policy feature to be disabled.
--  experimental type PermissionsPolicyBlockReason extends string
--    enum
--      # Declaration in HTTP header.
--      Header
--      # Declaration in iframe attribute.
--      IframeAttribute
--
--  experimental type PermissionsPolicyBlockLocator extends object
--    properties
--      FrameId frameId
--      PermissionsPolicyBlockReason blockReason
--
--  experimental type PermissionsPolicyFeatureState extends object
--    properties
--      PermissionsPolicyFeature feature
--      boolean allowed
--      optional PermissionsPolicyBlockLocator locator
--
-   # Information about the Frame on the page.
-   type Frame extends object
-     properties
-@@ -6906,13 +6829,6 @@ domain Page
-       # Whether to bypass page CSP.
-       boolean enabled
- 
--  # Get Permissions Policy state on given frame.
--  experimental command getPermissionsPolicyState
--    parameters
--      FrameId frameId
--    returns
--      array of PermissionsPolicyFeatureState states
--
-   # Overrides the values of device screen dimensions (window.screen.width, window.screen.height,
-   # window.innerWidth, window.innerHeight, and "device-width"/"device-height"-related CSS media
-   # query results).
 ```
