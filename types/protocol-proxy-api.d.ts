@@ -3304,12 +3304,6 @@ export namespace ProtocolProxyApi {
         getTrustTokens(): Promise<Protocol.Storage.GetTrustTokensResponse>;
 
         /**
-         * Removes all Trust Tokens issued by the provided issuerOrigin.
-         * Leaves other stored data, including the issuer's Redemption Records, intact.
-         */
-        clearTrustTokens(params: Protocol.Storage.ClearTrustTokensRequest): Promise<Protocol.Storage.ClearTrustTokensResponse>;
-
-        /**
          * Gets details for a named interest group.
          */
         getInterestGroupDetails(params: Protocol.Storage.GetInterestGroupDetailsRequest): Promise<Protocol.Storage.GetInterestGroupDetailsResponse>;

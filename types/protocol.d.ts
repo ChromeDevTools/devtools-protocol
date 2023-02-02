@@ -3442,7 +3442,7 @@ export namespace Protocol {
             location?: SourceCodeLocation;
         }
 
-        export type GenericIssueErrorType = ('CrossOriginPortalPostMessageError' | 'FormLabelForNameError' | 'FormDuplicateIdForInputError' | 'FormInputWithNoLabelError' | 'FormAutocompleteAttributeEmptyError' | 'FormEmptyIdAndNameAttributesForInputError' | 'FormAriaLabelledByToNonExistingId' | 'FormInputAssignedAutocompleteValueToIdOrNameAttributeError');
+        export type GenericIssueErrorType = ('CrossOriginPortalPostMessageError' | 'FormLabelForNameError' | 'FormDuplicateIdForInputError' | 'FormInputWithNoLabelError' | 'FormAutocompleteAttributeEmptyError' | 'FormEmptyIdAndNameAttributesForInputError' | 'FormAriaLabelledByToNonExistingId' | 'FormInputAssignedAutocompleteValueToIdOrNameAttributeError' | 'FormLabelHasNeitherForNorNestedInput');
 
         /**
          * Depending on the concrete errorType, different properties are set.
@@ -14900,17 +14900,6 @@ export namespace Protocol {
 
         export interface GetTrustTokensResponse {
             tokens: TrustTokens[];
-        }
-
-        export interface ClearTrustTokensRequest {
-            issuerOrigin: string;
-        }
-
-        export interface ClearTrustTokensResponse {
-            /**
-             * True if any tokens were deleted, false otherwise.
-             */
-            didDeleteTokens: boolean;
         }
 
         export interface GetInterestGroupDetailsRequest {

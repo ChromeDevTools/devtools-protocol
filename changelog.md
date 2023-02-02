@@ -1,7 +1,37 @@
 
 
+## Roll protocol to r1100268 — _2023-02-02T04:28:14.000Z_
+######  Diff: [`01899e6...6597445`](https://github.com/ChromeDevTools/devtools-protocol/compare/`01899e6...6597445`)
+
+```diff
+@@ browser_protocol.pdl:750 @@ experimental domain Audits
+       FormEmptyIdAndNameAttributesForInputError
+       FormAriaLabelledByToNonExistingId
+       FormInputAssignedAutocompleteValueToIdOrNameAttributeError
+-      FormLabelHasNeitherForNorNestedInput
+ 
+   # Depending on the concrete errorType, different properties are set.
+   type GenericIssueDetails extends object
+@@ -9357,6 +9356,15 @@ experimental domain Storage
+     returns
+       array of TrustTokens tokens
+ 
++  # Removes all Trust Tokens issued by the provided issuerOrigin.
++  # Leaves other stored data, including the issuer's Redemption Records, intact.
++  experimental command clearTrustTokens
++    parameters
++      string issuerOrigin
++    returns
++      # True if any tokens were deleted, false otherwise.
++      boolean didDeleteTokens
++
+   # Gets details for a named interest group.
+   experimental command getInterestGroupDetails
+     parameters
+```
+
 ## Roll protocol to r1099658 — _2023-02-01T04:28:12.000Z_
-######  Diff: [`2a08589...095ca23`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2a08589...095ca23`)
+######  Diff: [`2a08589...01899e6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2a08589...01899e6`)
 
 ```diff
 @@ browser_protocol.pdl:8584 @@ domain Page
@@ -9726,20 +9756,4 @@ index bd277eb..09c420e 100644
  
    # This method does not remove binding function from global object but
    # unsubscribes current runtime agent from Runtime.bindingCalled notifications.
-```
-
-## Roll protocol to r856702 — _2021-02-23T16:16:10.000Z_
-######  Diff: [`498a1e5...fe49497`](https://github.com/ChromeDevTools/devtools-protocol/compare/`498a1e5...fe49497`)
-
-```diff
-@@ browser_protocol.pdl:783 @@ experimental domain Audits
-   # Runs the contrast check for the target page. Found issues are reported
-   # using Audits.issueAdded event.
-   command checkContrast
--    parameters
--      # Whether to report WCAG AAA level issues. Default is false.
--      optional boolean reportAAA
- 
-   event issueAdded
-     parameters
 ```
