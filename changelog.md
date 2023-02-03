@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1100832 — _2023-02-03T04:28:21.000Z_
+######  Diff: [`41637d7...fb12a2d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`41637d7...fb12a2d`)
+
+```diff
+@@ browser_protocol.pdl:751 @@ experimental domain Audits
+       FormAriaLabelledByToNonExistingId
+       FormInputAssignedAutocompleteValueToIdOrNameAttributeError
+       FormLabelHasNeitherForNorNestedInput
+-      FormLabelForMatchesNonExistingIdError
+ 
+   # Depending on the concrete errorType, different properties are set.
+   type GenericIssueDetails extends object
+```
+
 ## Roll protocol to r1100268 — _2023-02-02T04:28:14.000Z_
-######  Diff: [`01899e6...6597445`](https://github.com/ChromeDevTools/devtools-protocol/compare/`01899e6...6597445`)
+######  Diff: [`01899e6...41637d7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`01899e6...41637d7`)
 
 ```diff
 @@ browser_protocol.pdl:750 @@ experimental domain Audits
@@ -9604,156 +9618,4 @@ index bd277eb..09c420e 100644
    # Seeds compilation cache for given url. Compilation cache does not survive
    # cross-process navigation.
    experimental command addCompilationCache
-```
-
-## Roll protocol to r856957 — _2021-02-24T02:16:02.000Z_
-######  Diff: [`fe49497...b726157`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fe49497...b726157`)
-
-```diff
-@@ js_protocol.pdl:211 @@ domain Debugger
-       # Exception details.
-       optional Runtime.ExceptionDetails exceptionDetails
- 
-+  # Execute a Wasm Evaluator module on a given call frame.
-+  experimental command executeWasmEvaluator
-+    parameters
-+      # WebAssembly call frame identifier to evaluate on.
-+      CallFrameId callFrameId
-+      # Code of the evaluator module.
-+      binary evaluator
-+      # Terminate execution after timing out (number of milliseconds).
-+      experimental optional Runtime.TimeDelta timeout
-+    returns
-+      # Object wrapper for the evaluation result.
-+      Runtime.RemoteObject result
-+      # Exception details.
-+      optional Runtime.ExceptionDetails exceptionDetails
-+
-   # Returns possible locations for breakpoint. scriptId in start and end range locations should be
-   # the same.
-   command getPossibleBreakpoints
-@@ -493,7 +508,6 @@ domain Debugger
-       enum reason
-         ambiguous
-         assert
--        CSPViolation
-         debugCommand
-         DOM
-         EventListener
-@@ -1008,9 +1022,8 @@ domain Runtime
-         boolean
-         symbol
-         bigint
--      # Object subtype hint. Specified for `object` type values only.
--      # NOTE: If you change anything here, make sure to also update
--      # `subtype` in `ObjectPreview` and `PropertyPreview` below.
-+        wasm
-+      # Object subtype hint. Specified for `object` or `wasm` type values only.
-       optional enum subtype
-         array
-         null
-@@ -1029,8 +1042,12 @@ domain Runtime
-         typedarray
-         arraybuffer
-         dataview
--        webassemblymemory
--        wasmvalue
-+        i32
-+        i64
-+        f32
-+        f64
-+        v128
-+        externref
-       # Object class (constructor) name. Specified for `object` type values only.
-       optional string className
-       # Remote object value in case of primitive values or JSON values (if it was requested).
-@@ -1083,13 +1100,6 @@ domain Runtime
-         iterator
-         generator
-         error
--        proxy
--        promise
--        typedarray
--        arraybuffer
--        dataview
--        webassemblymemory
--        wasmvalue
-       # String representation of the object.
-       optional string description
-       # True iff some of the properties or entries of the original object did not fit.
-@@ -1132,13 +1142,6 @@ domain Runtime
-         iterator
-         generator
-         error
--        proxy
--        promise
--        typedarray
--        arraybuffer
--        dataview
--        webassemblymemory
--        wasmvalue
- 
-   experimental type EntryPreview extends object
-     properties
-@@ -1221,10 +1224,6 @@ domain Runtime
-       string origin
-       # Human readable name describing given context.
-       string name
--      # A system-unique execution context identifier. Unlike the id, this is unique accross
--      # multiple processes, so can be reliably used to identify specific context while backend
--      # performs a cross-process navigation.
--      experimental string uniqueId
-       # Embedder-specific auxiliary data.
-       optional object auxData
- 
-@@ -1388,9 +1387,6 @@ domain Runtime
-       optional boolean silent
-       # Specifies in which execution context to perform evaluation. If the parameter is omitted the
-       # evaluation will be performed in the context of the inspected page.
--      # This is mutually exclusive with `uniqueContextId`, which offers an
--      # alternative way to identify the execution context that is more reliable
--      # in a multi-process environment.
-       optional ExecutionContextId contextId
-       # Whether the result is expected to be a JSON object that should be sent by value.
-       optional boolean returnByValue
-@@ -1417,13 +1413,6 @@ domain Runtime
-       # when called with non-callable arguments. This flag bypasses CSP for this
-       # evaluation and allows unsafe-eval. Defaults to true.
-       experimental optional boolean allowUnsafeEvalBlockedByCSP
--      # An alternative way to specify the execution context to evaluate in.
--      # Compared to contextId that may be reused accross processes, this is guaranteed to be
--      # system-unique, so it can be used to prevent accidental evaluation of the expression
--      # in context different than intended (e.g. as a result of navigation accross process
--      # boundaries).
--      # This is mutually exclusive with `contextId`.
--      experimental optional string uniqueContextId
-     returns
-       # Evaluation result.
-       RemoteObject result
-@@ -1553,23 +1542,15 @@ domain Runtime
-   # If executionContextId is empty, adds binding with the given name on the
-   # global objects of all inspected contexts, including those created later,
-   # bindings survive reloads.
-+  # If executionContextId is specified, adds binding only on global object of
-+  # given execution context.
-   # Binding function takes exactly one argument, this argument should be string,
-   # in case of any other input, function throws an exception.
-   # Each binding function call produces Runtime.bindingCalled notification.
-   experimental command addBinding
-     parameters
-       string name
--      # If specified, the binding would only be exposed to the specified
--      # execution context. If omitted and `executionContextName` is not set,
--      # the binding is exposed to all execution contexts of the target.
--      # This parameter is mutually exclusive with `executionContextName`.
-       optional ExecutionContextId executionContextId
--      # If specified, the binding is exposed to the executionContext with
--      # matching name, even for contexts created after the binding is added.
--      # See also `ExecutionContext.name` and `worldName` parameter to
--      # `Page.addScriptToEvaluateOnNewDocument`.
--      # This parameter is mutually exclusive with `executionContextId`.
--      experimental optional string executionContextName
- 
-   # This method does not remove binding function from global object but
-   # unsubscribes current runtime agent from Runtime.bindingCalled notifications.
 ```
