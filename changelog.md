@@ -1,7 +1,37 @@
 
 
+## Roll protocol to r1101329 — _2023-02-04T04:27:44.000Z_
+######  Diff: [`5d7fa4e...142ba1a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5d7fa4e...142ba1a`)
+
+```diff
+@@ browser_protocol.pdl:8159 @@ domain Page
+         autoReject
+         autoOptOut
+ 
+-  # Extensions for Custom Handlers API:
+-  # https://html.spec.whatwg.org/multipage/system-state.html#rph-automation
+-  experimental command setRPHRegistrationMode
+-    parameters
+-      enum mode
+-        none
+-        autoaccept
+-        autoreject
+-
+   # Generates a report for testing.
+   experimental command generateTestReport
+     parameters
+@@ -8596,7 +8587,6 @@ domain Page
+       PreloadingDisabled
+       BatterySaverEnabled
+       ActivatedDuringMainFrameNavigation
+-      PreloadingUnsupportedByWebContents
+ 
+   # Fired when a prerender attempt is completed.
+   experimental event prerenderAttemptCompleted
+```
+
 ## Roll protocol to r1100832 — _2023-02-03T04:28:21.000Z_
-######  Diff: [`41637d7...fb12a2d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`41637d7...fb12a2d`)
+######  Diff: [`41637d7...5d7fa4e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`41637d7...5d7fa4e`)
 
 ```diff
 @@ browser_protocol.pdl:751 @@ experimental domain Audits

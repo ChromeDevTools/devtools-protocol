@@ -16482,7 +16482,8 @@
                         "ActivationFramePolicyNotCompatible",
                         "PreloadingDisabled",
                         "BatterySaverEnabled",
-                        "ActivatedDuringMainFrameNavigation"
+                        "ActivatedDuringMainFrameNavigation",
+                        "PreloadingUnsupportedByWebContents"
                     ]
                 }
             ],
@@ -17638,6 +17639,22 @@
                                 "autoAccept",
                                 "autoReject",
                                 "autoOptOut"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "setRPHRegistrationMode",
+                    "description": "Extensions for Custom Handlers API:\nhttps://html.spec.whatwg.org/multipage/system-state.html#rph-automation",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "mode",
+                            "type": "string",
+                            "enum": [
+                                "none",
+                                "autoaccept",
+                                "autoreject"
                             ]
                         }
                     ]

@@ -2936,6 +2936,12 @@ export namespace ProtocolProxyApi {
         setSPCTransactionMode(params: Protocol.Page.SetSPCTransactionModeRequest): Promise<void>;
 
         /**
+         * Extensions for Custom Handlers API:
+         * https://html.spec.whatwg.org/multipage/system-state.html#rph-automation
+         */
+        setRPHRegistrationMode(params: Protocol.Page.SetRPHRegistrationModeRequest): Promise<void>;
+
+        /**
          * Generates a report for testing.
          */
         generateTestReport(params: Protocol.Page.GenerateTestReportRequest): Promise<void>;

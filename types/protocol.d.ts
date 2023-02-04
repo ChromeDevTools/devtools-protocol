@@ -12895,7 +12895,7 @@ export namespace Protocol {
         /**
          * List of FinalStatus reasons for Prerender2.
          */
-        export type PrerenderFinalStatus = ('Activated' | 'Destroyed' | 'LowEndDevice' | 'InvalidSchemeRedirect' | 'InvalidSchemeNavigation' | 'InProgressNavigation' | 'NavigationRequestBlockedByCsp' | 'MainFrameNavigation' | 'MojoBinderPolicy' | 'RendererProcessCrashed' | 'RendererProcessKilled' | 'Download' | 'TriggerDestroyed' | 'NavigationNotCommitted' | 'NavigationBadHttpStatus' | 'ClientCertRequested' | 'NavigationRequestNetworkError' | 'MaxNumOfRunningPrerendersExceeded' | 'CancelAllHostsForTesting' | 'DidFailLoad' | 'Stop' | 'SslCertificateError' | 'LoginAuthRequested' | 'UaChangeRequiresReload' | 'BlockedByClient' | 'AudioOutputDeviceRequested' | 'MixedContent' | 'TriggerBackgrounded' | 'EmbedderTriggeredAndCrossOriginRedirected' | 'MemoryLimitExceeded' | 'FailToGetMemoryUsage' | 'DataSaverEnabled' | 'HasEffectiveUrl' | 'ActivatedBeforeStarted' | 'InactivePageRestriction' | 'StartFailed' | 'TimeoutBackgrounded' | 'CrossSiteRedirect' | 'CrossSiteNavigation' | 'SameSiteCrossOriginRedirect' | 'SameSiteCrossOriginNavigation' | 'SameSiteCrossOriginRedirectNotOptIn' | 'SameSiteCrossOriginNavigationNotOptIn' | 'ActivationNavigationParameterMismatch' | 'ActivatedInBackground' | 'EmbedderHostDisallowed' | 'ActivationNavigationDestroyedBeforeSuccess' | 'TabClosedByUserGesture' | 'TabClosedWithoutUserGesture' | 'PrimaryMainFrameRendererProcessCrashed' | 'PrimaryMainFrameRendererProcessKilled' | 'ActivationFramePolicyNotCompatible' | 'PreloadingDisabled' | 'BatterySaverEnabled' | 'ActivatedDuringMainFrameNavigation');
+        export type PrerenderFinalStatus = ('Activated' | 'Destroyed' | 'LowEndDevice' | 'InvalidSchemeRedirect' | 'InvalidSchemeNavigation' | 'InProgressNavigation' | 'NavigationRequestBlockedByCsp' | 'MainFrameNavigation' | 'MojoBinderPolicy' | 'RendererProcessCrashed' | 'RendererProcessKilled' | 'Download' | 'TriggerDestroyed' | 'NavigationNotCommitted' | 'NavigationBadHttpStatus' | 'ClientCertRequested' | 'NavigationRequestNetworkError' | 'MaxNumOfRunningPrerendersExceeded' | 'CancelAllHostsForTesting' | 'DidFailLoad' | 'Stop' | 'SslCertificateError' | 'LoginAuthRequested' | 'UaChangeRequiresReload' | 'BlockedByClient' | 'AudioOutputDeviceRequested' | 'MixedContent' | 'TriggerBackgrounded' | 'EmbedderTriggeredAndCrossOriginRedirected' | 'MemoryLimitExceeded' | 'FailToGetMemoryUsage' | 'DataSaverEnabled' | 'HasEffectiveUrl' | 'ActivatedBeforeStarted' | 'InactivePageRestriction' | 'StartFailed' | 'TimeoutBackgrounded' | 'CrossSiteRedirect' | 'CrossSiteNavigation' | 'SameSiteCrossOriginRedirect' | 'SameSiteCrossOriginNavigation' | 'SameSiteCrossOriginRedirectNotOptIn' | 'SameSiteCrossOriginNavigationNotOptIn' | 'ActivationNavigationParameterMismatch' | 'ActivatedInBackground' | 'EmbedderHostDisallowed' | 'ActivationNavigationDestroyedBeforeSuccess' | 'TabClosedByUserGesture' | 'TabClosedWithoutUserGesture' | 'PrimaryMainFrameRendererProcessCrashed' | 'PrimaryMainFrameRendererProcessKilled' | 'ActivationFramePolicyNotCompatible' | 'PreloadingDisabled' | 'BatterySaverEnabled' | 'ActivatedDuringMainFrameNavigation' | 'PreloadingUnsupportedByWebContents');
 
         export interface AddScriptToEvaluateOnLoadRequest {
             scriptSource: string;
@@ -13606,6 +13606,19 @@ export namespace Protocol {
              *  (SetSPCTransactionModeRequestMode enum)
              */
             mode: ('none' | 'autoAccept' | 'autoReject' | 'autoOptOut');
+        }
+
+        export const enum SetRPHRegistrationModeRequestMode {
+            None = 'none',
+            Autoaccept = 'autoaccept',
+            Autoreject = 'autoreject',
+        }
+
+        export interface SetRPHRegistrationModeRequest {
+            /**
+             *  (SetRPHRegistrationModeRequestMode enum)
+             */
+            mode: ('none' | 'autoaccept' | 'autoreject');
         }
 
         export interface GenerateTestReportRequest {

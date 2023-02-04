@@ -3827,6 +3827,14 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Extensions for Custom Handlers API:
+         * https://html.spec.whatwg.org/multipage/system-state.html#rph-automation
+         */
+        'Page.setRPHRegistrationMode': {
+            paramsType: [Protocol.Page.SetRPHRegistrationModeRequest];
+            returnType: void;
+        };
+        /**
          * Generates a report for testing.
          */
         'Page.generateTestReport': {
