@@ -7735,7 +7735,8 @@ domain Page
     returns
       array of InstallabilityError installabilityErrors
 
-  experimental command getManifestIcons
+  # Deprecated because it's not guaranteed that the returned icon is in fact the one used for PWA installation.
+  experimental deprecated command getManifestIcons
     returns
       optional binary primaryIcon
 
@@ -8149,24 +8150,25 @@ domain Page
   # Clears seeded compilation cache.
   experimental command clearCompilationCache
 
-  # Sets the Secure Payment Confirmation transaction mode.
+  # Enum of possible auto-reponse for permisison / prompt dialogs.
+  experimental type AutoResponseMode extends string
+    enum
+      none
+      autoAccept
+      autoReject
+      autoOptOut
+
+# Sets the Secure Payment Confirmation transaction mode.
   # https://w3c.github.io/secure-payment-confirmation/#sctn-automation-set-spc-transaction-mode
   experimental command setSPCTransactionMode
     parameters
-      enum mode
-        none
-        autoAccept
-        autoReject
-        autoOptOut
+      AutoResponseMode mode
 
   # Extensions for Custom Handlers API:
   # https://html.spec.whatwg.org/multipage/system-state.html#rph-automation
   experimental command setRPHRegistrationMode
     parameters
-      enum mode
-        none
-        autoaccept
-        autoreject
+      AutoResponseMode mode
 
   # Generates a report for testing.
   experimental command generateTestReport

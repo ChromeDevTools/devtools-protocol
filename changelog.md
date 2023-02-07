@@ -1,7 +1,59 @@
 
 
+## Roll protocol to r1101985 — _2023-02-07T04:28:15.000Z_
+######  Diff: [`81bd251...ef941dc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`81bd251...ef941dc`)
+
+```diff
+@@ browser_protocol.pdl:7735 @@ domain Page
+     returns
+       array of InstallabilityError installabilityErrors
+ 
+-  # Deprecated because it's not guaranteed that the returned icon is in fact the one used for PWA installation.
+-  experimental deprecated command getManifestIcons
++  experimental command getManifestIcons
+     returns
+       optional binary primaryIcon
+ 
+@@ -8150,25 +8149,24 @@ domain Page
+   # Clears seeded compilation cache.
+   experimental command clearCompilationCache
+ 
+-  # Enum of possible auto-reponse for permisison / prompt dialogs.
+-  experimental type AutoResponseMode extends string
+-    enum
+-      none
+-      autoAccept
+-      autoReject
+-      autoOptOut
+-
+-# Sets the Secure Payment Confirmation transaction mode.
++  # Sets the Secure Payment Confirmation transaction mode.
+   # https://w3c.github.io/secure-payment-confirmation/#sctn-automation-set-spc-transaction-mode
+   experimental command setSPCTransactionMode
+     parameters
+-      AutoResponseMode mode
++      enum mode
++        none
++        autoAccept
++        autoReject
++        autoOptOut
+ 
+   # Extensions for Custom Handlers API:
+   # https://html.spec.whatwg.org/multipage/system-state.html#rph-automation
+   experimental command setRPHRegistrationMode
+     parameters
+-      AutoResponseMode mode
++      enum mode
++        none
++        autoaccept
++        autoreject
+ 
+   # Generates a report for testing.
+   experimental command generateTestReport
+```
+
 ## Roll protocol to r1101329 — _2023-02-04T04:27:44.000Z_
-######  Diff: [`5d7fa4e...142ba1a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5d7fa4e...142ba1a`)
+######  Diff: [`5d7fa4e...81bd251`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5d7fa4e...81bd251`)
 
 ```diff
 @@ browser_protocol.pdl:8159 @@ domain Page
@@ -9601,51 +9653,4 @@ index bd277eb..09c420e 100644
 -
    # Close browser gracefully.
    command close
-```
-
-## Roll protocol to r858754 — _2021-03-01T23:16:13.000Z_
-######  Diff: [`78470ce...dee574b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`78470ce...dee574b`)
-
-```diff
-@@ browser_protocol.pdl:6594 @@ domain Page
-       strictOriginWhenCrossOrigin
-       unsafeUrl
- 
--  # Per-script compilation cache parameters for `Page.produceCompilationCache`
--  experimental type CompilationCacheParams extends object
--    properties
--      # The URL of the script to produce a compilation cache entry for.
--      string url
--      # A hint to the backend whether eager compilation is recommended.
--      # (the actual compilation mode used is upon backend discretion).
--      optional boolean eager
--
-   # Deprecated, please use addScriptToEvaluateOnNewDocument instead.
-   experimental deprecated command addScriptToEvaluateOnLoad
-     parameters
-@@ -7072,24 +7063,10 @@ domain Page
-   experimental command stopScreencast
- 
-   # Forces compilation cache to be generated for every subresource script.
--  # See also: `Page.produceCompilationCache`.
-   experimental command setProduceCompilationCache
-     parameters
-       boolean enabled
- 
--  # Requests backend to produce compilation cache for the specified scripts.
--  # Unlike setProduceCompilationCache, this allows client to only produce cache
--  # for specific scripts. `scripts` are appeneded to the list of scripts
--  # for which the cache for would produced. Disabling compilation cache with
--  # `setProduceCompilationCache` would reset all pending cache requests.
--  # The list may also be reset during page navigation.
--  # When script with a matching URL is encountered, the cache is optionally
--  # produced upon backend discretion, based on internal heuristics.
--  # See also: `Page.compilationCacheProduced`.
--  experimental command produceCompilationCache
--    parameters
--      array of CompilationCacheParams scripts
--
-   # Seeds compilation cache for given url. Compilation cache does not survive
-   # cross-process navigation.
-   experimental command addCompilationCache
 ```

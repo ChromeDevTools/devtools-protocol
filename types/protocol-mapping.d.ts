@@ -3523,6 +3523,9 @@ export namespace ProtocolMapping {
             paramsType: [];
             returnType: Protocol.Page.GetInstallabilityErrorsResponse;
         };
+        /**
+         * Deprecated because it's not guaranteed that the returned icon is in fact the one used for PWA installation.
+         */
         'Page.getManifestIcons': {
             paramsType: [];
             returnType: Protocol.Page.GetManifestIconsResponse;

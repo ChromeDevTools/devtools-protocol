@@ -2716,6 +2716,9 @@ export namespace ProtocolProxyApi {
 
         getInstallabilityErrors(): Promise<Protocol.Page.GetInstallabilityErrorsResponse>;
 
+        /**
+         * Deprecated because it's not guaranteed that the returned icon is in fact the one used for PWA installation.
+         */
         getManifestIcons(): Promise<Protocol.Page.GetManifestIconsResponse>;
 
         /**
