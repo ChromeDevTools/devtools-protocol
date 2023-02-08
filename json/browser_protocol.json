@@ -5414,7 +5414,7 @@
                 },
                 {
                     "name": "getDocument",
-                    "description": "Returns the root DOM node (and optionally the subtree) to the caller.",
+                    "description": "Returns the root DOM node (and optionally the subtree) to the caller.\nImplicitly enables the DOM domain events for the current target.",
                     "parameters": [
                         {
                             "name": "depth",

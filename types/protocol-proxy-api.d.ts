@@ -1247,6 +1247,7 @@ export namespace ProtocolProxyApi {
 
         /**
          * Returns the root DOM node (and optionally the subtree) to the caller.
+         * Implicitly enables the DOM domain events for the current target.
          */
         getDocument(params: Protocol.DOM.GetDocumentRequest): Promise<Protocol.DOM.GetDocumentResponse>;
 

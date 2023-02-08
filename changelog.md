@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1102555 — _2023-02-08T04:29:03.000Z_
+######  Diff: [`e088ea1...da334ef`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e088ea1...da334ef`)
+
+```diff
+@@ browser_protocol.pdl:2556 @@ domain DOM
+       array of Quad quads
+ 
+   # Returns the root DOM node (and optionally the subtree) to the caller.
+-  # Implicitly enables the DOM domain events for the current target.
+   command getDocument
+     parameters
+       # The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the
+```
+
 ## Roll protocol to r1101985 — _2023-02-07T04:28:15.000Z_
-######  Diff: [`81bd251...ef941dc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`81bd251...ef941dc`)
+######  Diff: [`81bd251...e088ea1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`81bd251...e088ea1`)
 
 ```diff
 @@ browser_protocol.pdl:7735 @@ domain Page
@@ -9633,24 +9647,4 @@ index bd277eb..09c420e 100644
  
    # Returns navigation history for the current page.
    command getNavigationHistory
-```
-
-## Roll protocol to r859327 — _2021-03-03T12:16:01.000Z_
-######  Diff: [`dee574b...219a9d6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`dee574b...219a9d6`)
-
-```diff
-@@ browser_protocol.pdl:987 @@ domain Browser
-       # or 'allowAndName'.
-       optional string downloadPath
- 
--  # Cancel a download if in progress
--  experimental command cancelDownload
--    parameters
--      # Global unique identifier of the download.
--      string guid
--      # BrowserContext to perform the action in. When omitted, default browser context is used.
--      optional BrowserContextID browserContextId
--
-   # Close browser gracefully.
-   command close
 ```
