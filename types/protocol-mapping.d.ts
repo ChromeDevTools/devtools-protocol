@@ -133,7 +133,7 @@ export namespace ProtocolMapping {
         'Browser.downloadProgress': [Protocol.Browser.DownloadProgressEvent];
         /**
          * Fires whenever a web font is updated.  A non-empty font parameter indicates a successfully loaded
-         * web font
+         * web font.
          */
         'CSS.fontsUpdated': [Protocol.CSS.FontsUpdatedEvent];
         /**
@@ -1773,7 +1773,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Stop tracking rule usage and return the list of rules that were used since last call to
-         * `takeCoverageDelta` (or since start of coverage instrumentation)
+         * `takeCoverageDelta` (or since start of coverage instrumentation).
          */
         'CSS.stopRuleUsageTracking': {
             paramsType: [];
@@ -1781,7 +1781,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Obtain list of rules that became used since last call to this method (or since start of coverage
-         * instrumentation)
+         * instrumentation).
          */
         'CSS.takeCoverageDelta': {
             paramsType: [];
@@ -2711,7 +2711,7 @@ export namespace ProtocolMapping {
             returnType: Protocol.IndexedDB.RequestDataResponse;
         };
         /**
-         * Gets metadata of an object store
+         * Gets metadata of an object store.
          */
         'IndexedDB.getMetadata': {
             paramsType: [Protocol.IndexedDB.GetMetadataRequest];
@@ -4106,6 +4106,14 @@ export namespace ProtocolMapping {
         'Storage.getTrustTokens': {
             paramsType: [];
             returnType: Protocol.Storage.GetTrustTokensResponse;
+        };
+        /**
+         * Removes all Trust Tokens issued by the provided issuerOrigin.
+         * Leaves other stored data, including the issuer's Redemption Records, intact.
+         */
+        'Storage.clearTrustTokens': {
+            paramsType: [Protocol.Storage.ClearTrustTokensRequest];
+            returnType: Protocol.Storage.ClearTrustTokensResponse;
         };
         /**
          * Gets details for a named interest group.

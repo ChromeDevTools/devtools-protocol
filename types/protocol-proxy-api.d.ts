@@ -1061,13 +1061,13 @@ export namespace ProtocolProxyApi {
 
         /**
          * Stop tracking rule usage and return the list of rules that were used since last call to
-         * `takeCoverageDelta` (or since start of coverage instrumentation)
+         * `takeCoverageDelta` (or since start of coverage instrumentation).
          */
         stopRuleUsageTracking(): Promise<Protocol.CSS.StopRuleUsageTrackingResponse>;
 
         /**
          * Obtain list of rules that became used since last call to this method (or since start of coverage
-         * instrumentation)
+         * instrumentation).
          */
         takeCoverageDelta(): Promise<Protocol.CSS.TakeCoverageDeltaResponse>;
 
@@ -1078,7 +1078,7 @@ export namespace ProtocolProxyApi {
 
         /**
          * Fires whenever a web font is updated.  A non-empty font parameter indicates a successfully loaded
-         * web font
+         * web font.
          */
         on(event: 'fontsUpdated', listener: (params: Protocol.CSS.FontsUpdatedEvent) => void): void;
 
@@ -1904,7 +1904,7 @@ export namespace ProtocolProxyApi {
         requestData(params: Protocol.IndexedDB.RequestDataRequest): Promise<Protocol.IndexedDB.RequestDataResponse>;
 
         /**
-         * Gets metadata of an object store
+         * Gets metadata of an object store.
          */
         getMetadata(params: Protocol.IndexedDB.GetMetadataRequest): Promise<Protocol.IndexedDB.GetMetadataResponse>;
 
@@ -3312,6 +3312,12 @@ export namespace ProtocolProxyApi {
          * current browsing context.
          */
         getTrustTokens(): Promise<Protocol.Storage.GetTrustTokensResponse>;
+
+        /**
+         * Removes all Trust Tokens issued by the provided issuerOrigin.
+         * Leaves other stored data, including the issuer's Redemption Records, intact.
+         */
+        clearTrustTokens(params: Protocol.Storage.ClearTrustTokensRequest): Promise<Protocol.Storage.ClearTrustTokensResponse>;
 
         /**
          * Gets details for a named interest group.

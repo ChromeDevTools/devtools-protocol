@@ -712,6 +712,7 @@ export namespace Protocol {
             CompileError = 'CompileError',
             BlockedByActiveGenerator = 'BlockedByActiveGenerator',
             BlockedByActiveFunction = 'BlockedByActiveFunction',
+            BlockedByTopLevelEsModuleChange = 'BlockedByTopLevelEsModuleChange',
         }
 
         export interface SetScriptSourceRequest {
@@ -757,7 +758,7 @@ export namespace Protocol {
              * successful live edit while the other enum variants denote why
              * the live edit failed. (SetScriptSourceResponseStatus enum)
              */
-            status: ('Ok' | 'CompileError' | 'BlockedByActiveGenerator' | 'BlockedByActiveFunction');
+            status: ('Ok' | 'CompileError' | 'BlockedByActiveGenerator' | 'BlockedByActiveFunction' | 'BlockedByTopLevelEsModuleChange');
             /**
              * Exception details if any. Only present when `status` is `CompileError`.
              */
@@ -2814,7 +2815,7 @@ export namespace Protocol {
              */
             objectId?: Runtime.RemoteObjectId;
             /**
-             * Whether to fetch this nodes ancestors, siblings and children. Defaults to true.
+             * Whether to fetch this node's ancestors, siblings and children. Defaults to true.
              */
             fetchRelatives?: boolean;
         }
@@ -3456,8 +3457,6 @@ export namespace Protocol {
             violatingNodeId?: DOM.BackendNodeId;
         }
 
-        export type DeprecationIssueType = ('AuthorizationCoveredByWildcard' | 'CanRequestURLHTTPContainingNewline' | 'ChromeLoadTimesConnectionInfo' | 'ChromeLoadTimesFirstPaintAfterLoadTime' | 'ChromeLoadTimesWasAlternateProtocolAvailable' | 'CookieWithTruncatingChar' | 'CrossOriginAccessBasedOnDocumentDomain' | 'CrossOriginWindowAlert' | 'CrossOriginWindowConfirm' | 'CSSSelectorInternalMediaControlsOverlayCastButton' | 'DeprecationExample' | 'DocumentDomainSettingWithoutOriginAgentClusterHeader' | 'EventPath' | 'ExpectCTHeader' | 'GeolocationInsecureOrigin' | 'GeolocationInsecureOriginDeprecatedNotRemoved' | 'GetUserMediaInsecureOrigin' | 'HostCandidateAttributeGetter' | 'IdentityInCanMakePaymentEvent' | 'InsecurePrivateNetworkSubresourceRequest' | 'LocalCSSFileExtensionRejected' | 'MediaSourceAbortRemove' | 'MediaSourceDurationTruncatingBuffered' | 'NoSysexWebMIDIWithoutPermission' | 'NotificationInsecureOrigin' | 'NotificationPermissionRequestedIframe' | 'ObsoleteCreateImageBitmapImageOrientationNone' | 'ObsoleteWebRtcCipherSuite' | 'OpenWebDatabaseInsecureContext' | 'OverflowVisibleOnReplacedElement' | 'PaymentInstruments' | 'PaymentRequestCSPViolation' | 'PersistentQuotaType' | 'PictureSourceSrc' | 'PrefixedCancelAnimationFrame' | 'PrefixedRequestAnimationFrame' | 'PrefixedStorageInfo' | 'PrefixedVideoDisplayingFullscreen' | 'PrefixedVideoEnterFullscreen' | 'PrefixedVideoEnterFullScreen' | 'PrefixedVideoExitFullscreen' | 'PrefixedVideoExitFullScreen' | 'PrefixedVideoSupportsFullscreen' | 'PrivacySandboxExtensionsAPI' | 'RangeExpand' | 'RequestedSubresourceWithEmbeddedCredentials' | 'RTCConstraintEnableDtlsSrtpFalse' | 'RTCConstraintEnableDtlsSrtpTrue' | 'RTCPeerConnectionComplexPlanBSdpUsingDefaultSdpSemantics' | 'RTCPeerConnectionSdpSemanticsPlanB' | 'RtcpMuxPolicyNegotiate' | 'SharedArrayBufferConstructedWithoutIsolation' | 'TextToSpeech_DisallowedByAutoplay' | 'V8SharedArrayBufferConstructedInExtensionWithoutIsolation' | 'XHRJSONEncodingDetection' | 'XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload' | 'XRSupportsSession');
-
         /**
          * This issue tracks information needed to print a deprecation message.
          * https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/frame/third_party/blink/renderer/core/frame/deprecation/README.md
@@ -3465,7 +3464,10 @@ export namespace Protocol {
         export interface DeprecationIssueDetails {
             affectedFrame?: AffectedFrame;
             sourceCodeLocation: SourceCodeLocation;
-            type: DeprecationIssueType;
+            /**
+             * One of the deprecation names from third_party/blink/renderer/core/frame/deprecation/deprecation.json5
+             */
+            type: string;
         }
 
         export type ClientHintIssueReason = ('MetaTagAllowListInvalidOrigin' | 'MetaTagModifiedHTML');
@@ -4956,7 +4958,7 @@ export namespace Protocol {
 
         export interface TakeComputedStyleUpdatesResponse {
             /**
-             * The list of node Ids that have their tracked computed styles updated
+             * The list of node Ids that have their tracked computed styles updated.
              */
             nodeIds: DOM.NodeId[];
         }
@@ -5092,7 +5094,7 @@ export namespace Protocol {
 
         /**
          * Fires whenever a web font is updated.  A non-empty font parameter indicates a successfully loaded
-         * web font
+         * web font.
          */
         export interface FontsUpdatedEvent {
             /**
@@ -7668,8 +7670,9 @@ export namespace Protocol {
 
         export const enum SetEmulatedVisionDeficiencyRequestType {
             None = 'none',
-            Achromatopsia = 'achromatopsia',
             BlurredVision = 'blurredVision',
+            ReducedContrast = 'reducedContrast',
+            Achromatopsia = 'achromatopsia',
             Deuteranopia = 'deuteranopia',
             Protanopia = 'protanopia',
             Tritanopia = 'tritanopia',
@@ -7677,9 +7680,10 @@ export namespace Protocol {
 
         export interface SetEmulatedVisionDeficiencyRequest {
             /**
-             * Vision deficiency to emulate. (SetEmulatedVisionDeficiencyRequestType enum)
+             * Vision deficiency to emulate. Order: best-effort emulations come first, followed by any
+             * physiologically accurate emulations for medically recognized color vision deficiencies. (SetEmulatedVisionDeficiencyRequestType enum)
              */
-            type: ('none' | 'achromatopsia' | 'blurredVision' | 'deuteranopia' | 'protanopia' | 'tritanopia');
+            type: ('none' | 'blurredVision' | 'reducedContrast' | 'achromatopsia' | 'deuteranopia' | 'protanopia' | 'tritanopia');
         }
 
         export interface SetGeolocationOverrideRequest {
@@ -14899,6 +14903,17 @@ export namespace Protocol {
 
         export interface GetTrustTokensResponse {
             tokens: TrustTokens[];
+        }
+
+        export interface ClearTrustTokensRequest {
+            issuerOrigin: string;
+        }
+
+        export interface ClearTrustTokensResponse {
+            /**
+             * True if any tokens were deleted, false otherwise.
+             */
+            didDeleteTokens: boolean;
         }
 
         export interface GetInterestGroupDetailsRequest {

@@ -1,7 +1,184 @@
 
 
+## Roll protocol to r1103117 — _2023-02-09T04:28:18.000Z_
+######  Diff: [`db5327b...1b8ec9d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`db5327b...1b8ec9d`)
+
+```diff
+@@ browser_protocol.pdl:203 @@ experimental domain Accessibility
+       optional DOM.BackendNodeId backendNodeId
+       # JavaScript object id of the node wrapper to get the partial accessibility tree for.
+       optional Runtime.RemoteObjectId objectId
+-      # Whether to fetch this node's ancestors, siblings and children. Defaults to true.
++      # Whether to fetch this nodes ancestors, siblings and children. Defaults to true.
+       optional boolean fetchRelatives
+     returns
+       # The `Accessibility.AXNode` for this DOM node, if it exists, plus its ancestors, siblings and
+@@ -761,14 +761,73 @@ experimental domain Audits
+       optional Page.FrameId frameId
+       optional DOM.BackendNodeId violatingNodeId
+ 
++  type DeprecationIssueType extends string
++    enum
++      AuthorizationCoveredByWildcard
++      CanRequestURLHTTPContainingNewline
++      ChromeLoadTimesConnectionInfo
++      ChromeLoadTimesFirstPaintAfterLoadTime
++      ChromeLoadTimesWasAlternateProtocolAvailable
++      CookieWithTruncatingChar
++      CrossOriginAccessBasedOnDocumentDomain
++      CrossOriginWindowAlert
++      CrossOriginWindowConfirm
++      CSSSelectorInternalMediaControlsOverlayCastButton
++      DeprecationExample
++      DocumentDomainSettingWithoutOriginAgentClusterHeader
++      EventPath
++      ExpectCTHeader
++      GeolocationInsecureOrigin
++      GeolocationInsecureOriginDeprecatedNotRemoved
++      GetUserMediaInsecureOrigin
++      HostCandidateAttributeGetter
++      IdentityInCanMakePaymentEvent
++      InsecurePrivateNetworkSubresourceRequest
++      LocalCSSFileExtensionRejected
++      MediaSourceAbortRemove
++      MediaSourceDurationTruncatingBuffered
++      NoSysexWebMIDIWithoutPermission
++      NotificationInsecureOrigin
++      NotificationPermissionRequestedIframe
++      ObsoleteCreateImageBitmapImageOrientationNone
++      ObsoleteWebRtcCipherSuite
++      OpenWebDatabaseInsecureContext
++      OverflowVisibleOnReplacedElement
++      PaymentInstruments
++      PaymentRequestCSPViolation
++      PersistentQuotaType
++      PictureSourceSrc
++      PrefixedCancelAnimationFrame
++      PrefixedRequestAnimationFrame
++      PrefixedStorageInfo
++      PrefixedVideoDisplayingFullscreen
++      PrefixedVideoEnterFullscreen
++      PrefixedVideoEnterFullScreen
++      PrefixedVideoExitFullscreen
++      PrefixedVideoExitFullScreen
++      PrefixedVideoSupportsFullscreen
++      PrivacySandboxExtensionsAPI
++      RangeExpand
++      RequestedSubresourceWithEmbeddedCredentials
++      RTCConstraintEnableDtlsSrtpFalse
++      RTCConstraintEnableDtlsSrtpTrue
++      RTCPeerConnectionComplexPlanBSdpUsingDefaultSdpSemantics
++      RTCPeerConnectionSdpSemanticsPlanB
++      RtcpMuxPolicyNegotiate
++      SharedArrayBufferConstructedWithoutIsolation
++      TextToSpeech_DisallowedByAutoplay
++      V8SharedArrayBufferConstructedInExtensionWithoutIsolation
++      XHRJSONEncodingDetection
++      XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload
++      XRSupportsSession
++
+   # This issue tracks information needed to print a deprecation message.
+   # https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/frame/third_party/blink/renderer/core/frame/deprecation/README.md
+   type DeprecationIssueDetails extends object
+     properties
+       optional AffectedFrame affectedFrame
+       SourceCodeLocation sourceCodeLocation
+-      # One of the deprecation names from third_party/blink/renderer/core/frame/deprecation/deprecation.json5
+-      string type
++      DeprecationIssueType type
+ 
+   type ClientHintIssueReason extends string
+     enum
+@@ -1843,7 +1902,7 @@ experimental domain CSS
+   # Polls the next batch of computed style updates.
+   experimental command takeComputedStyleUpdates
+     returns
+-      # The list of node Ids that have their tracked computed styles updated.
++      # The list of node Ids that have their tracked computed styles updated
+       array of DOM.NodeId nodeIds
+ 
+   # Find a rule with the given active property for the given node and set the new value for this
+@@ -1936,13 +1995,13 @@ experimental domain CSS
+   command startRuleUsageTracking
+ 
+   # Stop tracking rule usage and return the list of rules that were used since last call to
+-  # `takeCoverageDelta` (or since start of coverage instrumentation).
++  # `takeCoverageDelta` (or since start of coverage instrumentation)
+   command stopRuleUsageTracking
+     returns
+       array of RuleUsage ruleUsage
+ 
+   # Obtain list of rules that became used since last call to this method (or since start of coverage
+-  # instrumentation).
++  # instrumentation)
+   command takeCoverageDelta
+     returns
+       array of RuleUsage coverage
+@@ -1956,7 +2015,7 @@ experimental domain CSS
+       boolean enabled
+ 
+   # Fires whenever a web font is updated.  A non-empty font parameter indicates a successfully loaded
+-  # web font.
++  # web font
+   event fontsUpdated
+     parameters
+       # The web font that has loaded.
+@@ -3751,13 +3810,11 @@ domain Emulation
+   # Emulates the given vision deficiency.
+   experimental command setEmulatedVisionDeficiency
+     parameters
+-      # Vision deficiency to emulate. Order: best-effort emulations come first, followed by any
+-      # physiologically accurate emulations for medically recognized color vision deficiencies.
++      # Vision deficiency to emulate.
+       enum type
+         none
+-        blurredVision
+-        reducedContrast
+         achromatopsia
++        blurredVision
+         deuteranopia
+         protanopia
+         tritanopia
+@@ -4139,7 +4196,7 @@ experimental domain IndexedDB
+       # If true, there are more entries to fetch in the given range.
+       boolean hasMore
+ 
+-  # Gets metadata of an object store.
++  # Gets metadata of an object store
+   command getMetadata
+     parameters
+       # At least and at most one of securityOrigin, storageKey must be specified.
+@@ -9314,15 +9371,6 @@ experimental domain Storage
+     returns
+       array of TrustTokens tokens
+ 
+-  # Removes all Trust Tokens issued by the provided issuerOrigin.
+-  # Leaves other stored data, including the issuer's Redemption Records, intact.
+-  experimental command clearTrustTokens
+-    parameters
+-      string issuerOrigin
+-    returns
+-      # True if any tokens were deleted, false otherwise.
+-      boolean didDeleteTokens
+-
+   # Gets details for a named interest group.
+   experimental command getInterestGroupDetails
+     parameters
+diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
+index 6285d9b..d4102f5 100644
+--- a/pdl/js_protocol.pdl
++++ b/pdl/js_protocol.pdl
+@@ -511,7 +511,6 @@ domain Debugger
+         CompileError
+         BlockedByActiveGenerator
+         BlockedByActiveFunction
+-        BlockedByTopLevelEsModuleChange
+       # Exception details if any. Only present when `status` is `CompileError`.
+       optional Runtime.ExceptionDetails exceptionDetails
+```
+
 ## Roll protocol to r1102555 — _2023-02-08T04:29:03.000Z_
-######  Diff: [`e088ea1...da334ef`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e088ea1...da334ef`)
+######  Diff: [`e088ea1...db5327b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e088ea1...db5327b`)
 
 ```diff
 @@ browser_protocol.pdl:2556 @@ domain DOM
@@ -9616,35 +9793,4 @@ index bd277eb..09c420e 100644
    # A cache's contents have been modified.
    event cacheStorageContentUpdated
      parameters
-```
-
-## Roll protocol to r860415 — _2021-03-05T23:16:15.000Z_
-######  Diff: [`219a9d6...f3a387f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`219a9d6...f3a387f`)
-
-```diff
-@@ browser_protocol.pdl:6745 @@ domain Page
-   # Returns metrics relating to the layouting of the page, such as viewport bounds/scale.
-   command getLayoutMetrics
-     returns
--      # Deprecated metrics relating to the layout viewport. Can be in DP or in CSS pixels depending on the `enable-use-zoom-for-dsf` flag. Use `normalisedLayoutViewport` instead.
--      deprecated LayoutViewport layoutViewport
--      # Deprecated metrics relating to the visual viewport. Can be in DP or in CSS pixels depending on the `enable-use-zoom-for-dsf` flag. Use `normalisedVisualViewport` instead.
--      deprecated VisualViewport visualViewport
--      # Deprecated size of scrollable area. Can be in DP or in CSS pixels depending on the `enable-use-zoom-for-dsf` flag. Use `normalisedContentSize` instead.
--      deprecated DOM.Rect contentSize
--      # Metrics relating to the layout viewport in CSS pixels.
--      LayoutViewport cssLayoutViewport
--      # Metrics relating to the visual viewport in CSS pixels.
--      VisualViewport cssVisualViewport
--      # Size of scrollable area in CSS pixels.
--      DOM.Rect cssContentSize
-+      # Metrics relating to the layout viewport.
-+      LayoutViewport layoutViewport
-+      # Metrics relating to the visual viewport.
-+      VisualViewport visualViewport
-+      # Size of scrollable area.
-+      DOM.Rect contentSize
- 
-   # Returns navigation history for the current page.
-   command getNavigationHistory
 ```
