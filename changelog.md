@@ -1,7 +1,81 @@
 
 
+## Roll protocol to r1103684 — _2023-02-10T04:28:55.000Z_
+######  Diff: [`8cf7384...048bbdf`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8cf7384...048bbdf`)
+
+```diff
+@@ browser_protocol.pdl:8555 @@ domain Page
+       # that is incompatible with prerender and has caused the cancellation of the attempt
+       optional string disallowedApiMethod
+ 
+-  # List of Prefetch status, which refers to PreloadingTriggeringOutcome.
+-  type PrefetchStatus extends string
+-    enum
+-      Running
+-      Ready
+-      Success
+-      Failure
+-      # PreloadingTriggeringOutcome which not used by prefetch.
+-      NotSupported
+-
+-  # TODO(crbug/1384419): Create a dedicated domain for preloading.
+-  # Fired when a prefetch attempt is updated.
+-  experimental event prefetchStatusUpdated
+-    parameters
+-      # The frame id of the frame initiating prefetch.
+-      FrameId initiatingFrameId
+-      string prefetchUrl
+-      PrefetchStatus status
+-
+   event loadEventFired
+     parameters
+       Network.MonotonicTime timestamp
+@@ -10776,41 +10757,3 @@ experimental domain Media
+ 
+   # Disables the Media domain.
+   command disable
+-
+-experimental domain DeviceAccess
+-  # Device request id.
+-  type RequestId extends string
+-
+-  # A device id.
+-  type DeviceId extends string
+-
+-  # Device information displayed in a user prompt to select a device.
+-  type PromptDevice extends object
+-    properties
+-      DeviceId id
+-      # Display name as it appears in a device request user prompt.
+-      string name
+-
+-  # Enable events in this domain.
+-  command enable
+-
+-  # Disable events in this domain.
+-  command disable
+-
+-  # Select a device in response to a DeviceAccess.deviceRequestPrompted event.
+-  command selectPrompt
+-    parameters
+-      RequestId id
+-      DeviceId deviceId
+-
+-  # Cancel a prompt in response to a DeviceAccess.deviceRequestPrompted event.
+-  command cancelPrompt
+-    parameters
+-      RequestId id
+-
+-  # A device request opened a user prompt to select a device. Respond with the
+-  # selectPrompt or cancelPrompt command.
+-  event deviceRequestPrompted
+-    parameters
+-      RequestId id
+-      array of PromptDevice devices
+```
+
 ## Roll protocol to r1103117 — _2023-02-09T04:28:18.000Z_
-######  Diff: [`db5327b...1b8ec9d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`db5327b...1b8ec9d`)
+######  Diff: [`db5327b...8cf7384`](https://github.com/ChromeDevTools/devtools-protocol/compare/`db5327b...8cf7384`)
 
 ```diff
 @@ browser_protocol.pdl:203 @@ experimental domain Accessibility
@@ -9771,26 +9845,4 @@ index bd277eb..09c420e 100644
        RequireCorp
  
    experimental type CrossOriginEmbedderPolicyStatus extends object
-```
-
-## Roll protocol to r860658 — _2021-03-08T09:16:00.000Z_
-######  Diff: [`f3a387f...4d52df1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f3a387f...4d52df1`)
-
-```diff
-@@ browser_protocol.pdl:7897 @@ experimental domain Storage
-     returns
-       array of TrustTokens tokens
- 
--  # Removes all Trust Tokens issued by the provided issuerOrigin.
--  # Leaves other stored data, including the issuer's Redemption Records, intact.
--  experimental command clearTrustTokens
--    parameters
--      string issuerOrigin
--    returns
--      # True if any tokens were deleted, false otherwise.
--      boolean didDeleteTokens
--
-   # A cache's contents have been modified.
-   event cacheStorageContentUpdated
-     parameters
 ```

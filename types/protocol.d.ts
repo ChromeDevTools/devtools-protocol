@@ -12906,6 +12906,11 @@ export namespace Protocol {
          */
         export type PrerenderFinalStatus = ('Activated' | 'Destroyed' | 'LowEndDevice' | 'InvalidSchemeRedirect' | 'InvalidSchemeNavigation' | 'InProgressNavigation' | 'NavigationRequestBlockedByCsp' | 'MainFrameNavigation' | 'MojoBinderPolicy' | 'RendererProcessCrashed' | 'RendererProcessKilled' | 'Download' | 'TriggerDestroyed' | 'NavigationNotCommitted' | 'NavigationBadHttpStatus' | 'ClientCertRequested' | 'NavigationRequestNetworkError' | 'MaxNumOfRunningPrerendersExceeded' | 'CancelAllHostsForTesting' | 'DidFailLoad' | 'Stop' | 'SslCertificateError' | 'LoginAuthRequested' | 'UaChangeRequiresReload' | 'BlockedByClient' | 'AudioOutputDeviceRequested' | 'MixedContent' | 'TriggerBackgrounded' | 'EmbedderTriggeredAndCrossOriginRedirected' | 'MemoryLimitExceeded' | 'FailToGetMemoryUsage' | 'DataSaverEnabled' | 'HasEffectiveUrl' | 'ActivatedBeforeStarted' | 'InactivePageRestriction' | 'StartFailed' | 'TimeoutBackgrounded' | 'CrossSiteRedirect' | 'CrossSiteNavigation' | 'SameSiteCrossOriginRedirect' | 'SameSiteCrossOriginNavigation' | 'SameSiteCrossOriginRedirectNotOptIn' | 'SameSiteCrossOriginNavigationNotOptIn' | 'ActivationNavigationParameterMismatch' | 'ActivatedInBackground' | 'EmbedderHostDisallowed' | 'ActivationNavigationDestroyedBeforeSuccess' | 'TabClosedByUserGesture' | 'TabClosedWithoutUserGesture' | 'PrimaryMainFrameRendererProcessCrashed' | 'PrimaryMainFrameRendererProcessKilled' | 'ActivationFramePolicyNotCompatible' | 'PreloadingDisabled' | 'BatterySaverEnabled' | 'ActivatedDuringMainFrameNavigation' | 'PreloadingUnsupportedByWebContents');
 
+        /**
+         * List of Prefetch status, which refers to PreloadingTriggeringOutcome.
+         */
+        export type PrefetchStatus = ('Running' | 'Ready' | 'Success' | 'Failure' | 'NotSupported');
+
         export interface AddScriptToEvaluateOnLoadRequest {
             scriptSource: string;
         }
@@ -13939,6 +13944,19 @@ export namespace Protocol {
              * that is incompatible with prerender and has caused the cancellation of the attempt
              */
             disallowedApiMethod?: string;
+        }
+
+        /**
+         * TODO(crbug/1384419): Create a dedicated domain for preloading.
+         * Fired when a prefetch attempt is updated.
+         */
+        export interface PrefetchStatusUpdatedEvent {
+            /**
+             * The frame id of the frame initiating prefetch.
+             */
+            initiatingFrameId: FrameId;
+            prefetchUrl: string;
+            status: PrefetchStatus;
         }
 
         export interface LoadEventFiredEvent {
@@ -16833,6 +16851,48 @@ export namespace Protocol {
          */
         export interface PlayersCreatedEvent {
             players: PlayerId[];
+        }
+    }
+
+    export namespace DeviceAccess {
+
+        /**
+         * Device request id.
+         */
+        export type RequestId = string;
+
+        /**
+         * A device id.
+         */
+        export type DeviceId = string;
+
+        /**
+         * Device information displayed in a user prompt to select a device.
+         */
+        export interface PromptDevice {
+            id: DeviceId;
+            /**
+             * Display name as it appears in a device request user prompt.
+             */
+            name: string;
+        }
+
+        export interface SelectPromptRequest {
+            id: RequestId;
+            deviceId: DeviceId;
+        }
+
+        export interface CancelPromptRequest {
+            id: RequestId;
+        }
+
+        /**
+         * A device request opened a user prompt to select a device. Respond with the
+         * selectPrompt or cancelPrompt command.
+         */
+        export interface DeviceRequestPromptedEvent {
+            id: RequestId;
+            devices: PromptDevice[];
         }
     }
 }
