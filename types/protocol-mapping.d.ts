@@ -714,6 +714,11 @@ export namespace ProtocolMapping {
          * selectPrompt or cancelPrompt command.
          */
         'DeviceAccess.deviceRequestPrompted': [Protocol.DeviceAccess.DeviceRequestPromptedEvent];
+        /**
+         * Upsert. Currently, it is only emitted when a rule set added.
+         */
+        'Preload.ruleSetUpdated': [Protocol.Preload.RuleSetUpdatedEvent];
+        'Preload.ruleSetRemoved': [Protocol.Preload.RuleSetRemovedEvent];
     }
 
     export interface Commands {
@@ -4627,6 +4632,14 @@ export namespace ProtocolMapping {
          */
         'DeviceAccess.cancelPrompt': {
             paramsType: [Protocol.DeviceAccess.CancelPromptRequest];
+            returnType: void;
+        };
+        'Preload.enable': {
+            paramsType: [];
+            returnType: void;
+        };
+        'Preload.disable': {
+            paramsType: [];
             returnType: void;
         };
     }

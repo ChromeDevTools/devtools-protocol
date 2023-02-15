@@ -104,6 +104,8 @@ export namespace ProtocolProxyApi {
 
         DeviceAccess: DeviceAccessApi;
 
+        Preload: PreloadApi;
+
     }
 
 
@@ -3939,6 +3941,20 @@ export namespace ProtocolProxyApi {
          * selectPrompt or cancelPrompt command.
          */
         on(event: 'deviceRequestPrompted', listener: (params: Protocol.DeviceAccess.DeviceRequestPromptedEvent) => void): void;
+
+    }
+
+    export interface PreloadApi {
+        enable(): Promise<void>;
+
+        disable(): Promise<void>;
+
+        /**
+         * Upsert. Currently, it is only emitted when a rule set added.
+         */
+        on(event: 'ruleSetUpdated', listener: (params: Protocol.Preload.RuleSetUpdatedEvent) => void): void;
+
+        on(event: 'ruleSetRemoved', listener: (params: Protocol.Preload.RuleSetRemovedEvent) => void): void;
 
     }
 }

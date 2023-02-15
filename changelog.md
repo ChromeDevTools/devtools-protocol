@@ -1,7 +1,49 @@
 
 
+## Roll protocol to r1105486 — _2023-02-15T04:28:51.000Z_
+######  Diff: [`97f8fcb...9319ef4`](https://github.com/ChromeDevTools/devtools-protocol/compare/`97f8fcb...9319ef4`)
+
+```diff
+@@ browser_protocol.pdl:10814 @@ experimental domain DeviceAccess
+     parameters
+       RequestId id
+       array of PromptDevice devices
+-
+-experimental domain Preload
+-  # Unique id
+-  type RuleSetId extends string
+-
+-  # Corresponds to SpeculationRuleSet
+-  type RuleSet extends object
+-    properties
+-      RuleSetId id
+-      # Identifies a document which the rule set is associated with.
+-      Network.LoaderId loaderId
+-      # Source text of JSON representing the rule set. If it comes from
+-      # <script> tag, it is the textContent of the node. Note that it is
+-      # a JSON for valid case.
+-      #
+-      # See also:
+-      # - https://wicg.github.io/nav-speculation/speculation-rules.html
+-      # - https://github.com/WICG/nav-speculation/blob/main/triggers.md
+-      string sourceText
+-
+-  command enable
+-
+-  command disable
+-
+-  # Upsert. Currently, it is only emitted when a rule set added.
+-  event ruleSetUpdated
+-    parameters
+-      RuleSet ruleSet
+-
+-  event ruleSetRemoved
+-    parameters
+-      RuleSetId id
+```
+
 ## Roll protocol to r1103684 — _2023-02-10T04:28:55.000Z_
-######  Diff: [`8cf7384...048bbdf`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8cf7384...048bbdf`)
+######  Diff: [`8cf7384...97f8fcb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8cf7384...97f8fcb`)
 
 ```diff
 @@ browser_protocol.pdl:8555 @@ domain Page
