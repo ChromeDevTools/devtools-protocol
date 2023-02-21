@@ -12907,9 +12907,10 @@ export namespace Protocol {
         export type PrerenderFinalStatus = ('Activated' | 'Destroyed' | 'LowEndDevice' | 'InvalidSchemeRedirect' | 'InvalidSchemeNavigation' | 'InProgressNavigation' | 'NavigationRequestBlockedByCsp' | 'MainFrameNavigation' | 'MojoBinderPolicy' | 'RendererProcessCrashed' | 'RendererProcessKilled' | 'Download' | 'TriggerDestroyed' | 'NavigationNotCommitted' | 'NavigationBadHttpStatus' | 'ClientCertRequested' | 'NavigationRequestNetworkError' | 'MaxNumOfRunningPrerendersExceeded' | 'CancelAllHostsForTesting' | 'DidFailLoad' | 'Stop' | 'SslCertificateError' | 'LoginAuthRequested' | 'UaChangeRequiresReload' | 'BlockedByClient' | 'AudioOutputDeviceRequested' | 'MixedContent' | 'TriggerBackgrounded' | 'EmbedderTriggeredAndCrossOriginRedirected' | 'MemoryLimitExceeded' | 'FailToGetMemoryUsage' | 'DataSaverEnabled' | 'HasEffectiveUrl' | 'ActivatedBeforeStarted' | 'InactivePageRestriction' | 'StartFailed' | 'TimeoutBackgrounded' | 'CrossSiteRedirect' | 'CrossSiteNavigation' | 'SameSiteCrossOriginRedirect' | 'SameSiteCrossOriginNavigation' | 'SameSiteCrossOriginRedirectNotOptIn' | 'SameSiteCrossOriginNavigationNotOptIn' | 'ActivationNavigationParameterMismatch' | 'ActivatedInBackground' | 'EmbedderHostDisallowed' | 'ActivationNavigationDestroyedBeforeSuccess' | 'TabClosedByUserGesture' | 'TabClosedWithoutUserGesture' | 'PrimaryMainFrameRendererProcessCrashed' | 'PrimaryMainFrameRendererProcessKilled' | 'ActivationFramePolicyNotCompatible' | 'PreloadingDisabled' | 'BatterySaverEnabled' | 'ActivatedDuringMainFrameNavigation' | 'PreloadingUnsupportedByWebContents');
 
         /**
-         * List of Prefetch status, which refers to PreloadingTriggeringOutcome.
+         * Preloading status values, see also PreloadingTriggeringOutcome. This
+         * status is shared by prefetchStatusUpdated and prerenderStatusUpdated.
          */
-        export type PrefetchStatus = ('Running' | 'Ready' | 'Success' | 'Failure' | 'NotSupported');
+        export type PreloadingStatus = ('Pending' | 'Running' | 'Ready' | 'Success' | 'Failure' | 'NotSupported');
 
         export interface AddScriptToEvaluateOnLoadRequest {
             scriptSource: string;
@@ -13956,7 +13957,20 @@ export namespace Protocol {
              */
             initiatingFrameId: FrameId;
             prefetchUrl: string;
-            status: PrefetchStatus;
+            status: PreloadingStatus;
+        }
+
+        /**
+         * TODO(crbug/1384419): Create a dedicated domain for preloading.
+         * Fired when a prerender attempt is updated.
+         */
+        export interface PrerenderStatusUpdatedEvent {
+            /**
+             * The frame id of the frame initiating prerender.
+             */
+            initiatingFrameId: FrameId;
+            prerenderingUrl: string;
+            status: PreloadingStatus;
         }
 
         export interface LoadEventFiredEvent {

@@ -3079,6 +3079,12 @@ export namespace ProtocolProxyApi {
          */
         on(event: 'prefetchStatusUpdated', listener: (params: Protocol.Page.PrefetchStatusUpdatedEvent) => void): void;
 
+        /**
+         * TODO(crbug/1384419): Create a dedicated domain for preloading.
+         * Fired when a prerender attempt is updated.
+         */
+        on(event: 'prerenderStatusUpdated', listener: (params: Protocol.Page.PrerenderStatusUpdatedEvent) => void): void;
+
         on(event: 'loadEventFired', listener: (params: Protocol.Page.LoadEventFiredEvent) => void): void;
 
         /**

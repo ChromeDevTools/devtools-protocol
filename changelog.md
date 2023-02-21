@@ -1,7 +1,51 @@
 
 
+## Roll protocol to r1107588 — _2023-02-21T04:28:49.000Z_
+######  Diff: [`30ceb43...76c17d6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`30ceb43...76c17d6`)
+
+```diff
+@@ browser_protocol.pdl:8555 @@ domain Page
+       # that is incompatible with prerender and has caused the cancellation of the attempt
+       optional string disallowedApiMethod
+ 
+-  # Preloading status values, see also PreloadingTriggeringOutcome. This
+-  # status is shared by prefetchStatusUpdated and prerenderStatusUpdated.
+-  type PreloadingStatus extends string
++  # List of Prefetch status, which refers to PreloadingTriggeringOutcome.
++  type PrefetchStatus extends string
+     enum
+-      Pending
+       Running
+       Ready
+       Success
+       Failure
+-      # PreloadingTriggeringOutcome which not used by prefetch nor prerender.
++      # PreloadingTriggeringOutcome which not used by prefetch.
+       NotSupported
+ 
+   # TODO(crbug/1384419): Create a dedicated domain for preloading.
+@@ -8574,16 +8572,7 @@ domain Page
+       # The frame id of the frame initiating prefetch.
+       FrameId initiatingFrameId
+       string prefetchUrl
+-      PreloadingStatus status
+-
+-  # TODO(crbug/1384419): Create a dedicated domain for preloading.
+-  # Fired when a prerender attempt is updated.
+-  experimental event prerenderStatusUpdated
+-    parameters
+-      # The frame id of the frame initiating prerender.
+-      FrameId initiatingFrameId
+-      string prerenderingUrl
+-      PreloadingStatus status
++      PrefetchStatus status
+ 
+   event loadEventFired
+     parameters
+```
+
 ## Roll protocol to r1105486 — _2023-02-15T04:28:51.000Z_
-######  Diff: [`97f8fcb...9319ef4`](https://github.com/ChromeDevTools/devtools-protocol/compare/`97f8fcb...9319ef4`)
+######  Diff: [`97f8fcb...30ceb43`](https://github.com/ChromeDevTools/devtools-protocol/compare/`97f8fcb...30ceb43`)
 
 ```diff
 @@ browser_protocol.pdl:10814 @@ experimental domain DeviceAccess
@@ -9873,18 +9917,4 @@ index bd277eb..09c420e 100644
    event loadEventFired
      parameters
        Network.MonotonicTime timestamp
-```
-
-## Roll protocol to r860858 — _2021-03-08T21:16:14.000Z_
-######  Diff: [`5fd49a5...1cdf17e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5fd49a5...1cdf17e`)
-
-```diff
-@@ browser_protocol.pdl:5751 @@ domain Network
-   experimental type CrossOriginEmbedderPolicyValue extends string
-     enum
-       None
--      CorsOrCredentialless
-       RequireCorp
- 
-   experimental type CrossOriginEmbedderPolicyStatus extends object
 ```
