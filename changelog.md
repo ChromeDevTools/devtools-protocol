@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1111422 — _2023-03-01T04:29:07.000Z_
+######  Diff: [`41a0227...5730586`](https://github.com/ChromeDevTools/devtools-protocol/compare/`41a0227...5730586`)
+
+```diff
+@@ browser_protocol.pdl:752 @@ experimental domain Audits
+       FormInputAssignedAutocompleteValueToIdOrNameAttributeError
+       FormLabelHasNeitherForNorNestedInput
+       FormLabelForMatchesNonExistingIdError
++      FormHasPasswordFieldWithoutUsernameFieldError
+ 
+   # Depending on the concrete errorType, different properties are set.
+   type GenericIssueDetails extends object
+```
+
 ## Roll protocol to r1109433 — _2023-02-24T04:29:05.000Z_
-######  Diff: [`8e5df71...17389d0`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8e5df71...17389d0`)
+######  Diff: [`8e5df71...41a0227`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8e5df71...41a0227`)
 
 ```diff
 @@ browser_protocol.pdl:752 @@ experimental domain Audits
@@ -9881,29 +9895,4 @@ index bd277eb..09c420e 100644
        string url
        # Frame width in DIP (headless chrome only).
        optional integer width
-```
-
-## Roll protocol to r861447 — _2021-03-10T06:16:12.000Z_
-######  Diff: [`b434e14...7622144`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b434e14...7622144`)
-
-```diff
-@@ browser_protocol.pdl:7299 @@ domain Page
-       string name
-       Network.MonotonicTime timestamp
- 
-+  # Fired for all history navigations if BackForwardCache feature is enabled. Do not assume
-+  # any ordering with the Page.frameNavigated event. This event is fired only for main-frame
-+  # history navigation where the document changes (non-same-document navigations).
-+  experimental event historyNavigationOutcomeReported
-+    parameters
-+      # The request id of the associated navigation.
-+      Network.RequestId requestId
-+      # The frame id of the associated frame.
-+      FrameId frameId
-+      # Indicates whether the frame is restored from BackForwardCache.
-+      boolean isRestoredFromBackForwardCache
-+
-   event loadEventFired
-     parameters
-       Network.MonotonicTime timestamp
 ```
