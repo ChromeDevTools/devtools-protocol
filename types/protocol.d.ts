@@ -16949,6 +16949,12 @@ export namespace Protocol {
             id: RuleSetId;
         }
     }
+
+    /**
+     * This domain allows interacting with the FedCM dialog.
+     */
+    export namespace FedCm {
+    }
 }
 
 export default Protocol;

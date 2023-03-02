@@ -1,7 +1,24 @@
 
 
+## Roll protocol to r1112051 — _2023-03-02T04:29:08.000Z_
+######  Diff: [`b7cc171...1401710`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b7cc171...1401710`)
+
+```diff
+@@ browser_protocol.pdl:10857 @@ experimental domain Preload
+   event ruleSetRemoved
+     parameters
+       RuleSetId id
+-
+-# This domain allows interacting with the FedCM dialog.
+-experimental domain FedCm
+-  event dialogShown
+-
+-  command enable
+-  command disable
+```
+
 ## Roll protocol to r1111422 — _2023-03-01T04:29:07.000Z_
-######  Diff: [`41a0227...5730586`](https://github.com/ChromeDevTools/devtools-protocol/compare/`41a0227...5730586`)
+######  Diff: [`41a0227...b7cc171`](https://github.com/ChromeDevTools/devtools-protocol/compare/`41a0227...b7cc171`)
 
 ```diff
 @@ browser_protocol.pdl:752 @@ experimental domain Audits
@@ -9880,19 +9897,4 @@ index bd277eb..09c420e 100644
        coep-frame-resource-needs-coep-header
        coop-sandboxed-iframe-cannot-navigate-to-coop-page
        corp-not-same-origin
-```
-
-## Roll protocol to r861504 — _2021-03-10T10:16:14.000Z_
-######  Diff: [`7622144...3704a77`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7622144...3704a77`)
-
-```diff
-@@ browser_protocol.pdl:8168 @@ domain Target
-   # Creates a new page.
-   command createTarget
-     parameters
--      # The initial URL the page will be navigated to. An empty string indicates about:blank.
-+      # The initial URL the page will be navigated to.
-       string url
-       # Frame width in DIP (headless chrome only).
-       optional integer width
 ```

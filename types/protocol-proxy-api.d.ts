@@ -106,6 +106,8 @@ export namespace ProtocolProxyApi {
 
         Preload: PreloadApi;
 
+        FedCm: FedCmApi;
+
     }
 
 
@@ -3961,6 +3963,15 @@ export namespace ProtocolProxyApi {
         on(event: 'ruleSetUpdated', listener: (params: Protocol.Preload.RuleSetUpdatedEvent) => void): void;
 
         on(event: 'ruleSetRemoved', listener: (params: Protocol.Preload.RuleSetRemovedEvent) => void): void;
+
+    }
+
+    export interface FedCmApi {
+        enable(): Promise<void>;
+
+        disable(): Promise<void>;
+
+        on(event: 'dialogShown', listener: () => void): void;
 
     }
 }

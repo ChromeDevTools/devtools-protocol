@@ -22962,6 +22962,24 @@
                     ]
                 }
             ]
+        },
+        {
+            "domain": "FedCm",
+            "description": "This domain allows interacting with the FedCM dialog.",
+            "experimental": true,
+            "events": [
+                {
+                    "name": "dialogShown"
+                }
+            ],
+            "commands": [
+                {
+                    "name": "enable"
+                },
+                {
+                    "name": "disable"
+                }
+            ]
         }
     ]
 }

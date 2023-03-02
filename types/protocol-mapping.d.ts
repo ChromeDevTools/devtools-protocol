@@ -724,6 +724,7 @@ export namespace ProtocolMapping {
          */
         'Preload.ruleSetUpdated': [Protocol.Preload.RuleSetUpdatedEvent];
         'Preload.ruleSetRemoved': [Protocol.Preload.RuleSetRemovedEvent];
+        'FedCm.dialogShown': [];
     }
 
     export interface Commands {
@@ -4644,6 +4645,14 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         'Preload.disable': {
+            paramsType: [];
+            returnType: void;
+        };
+        'FedCm.enable': {
+            paramsType: [];
+            returnType: void;
+        };
+        'FedCm.disable': {
             paramsType: [];
             returnType: void;
         };
