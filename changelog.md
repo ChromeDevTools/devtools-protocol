@@ -1,7 +1,231 @@
 
 
+## Roll protocol to r1113120 — _2023-03-04T04:28:32.000Z_
+######  Diff: [`6aab256...6c3027d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6aab256...6c3027d`)
+
+```diff
+@@ browser_protocol.pdl:8482 @@ domain Page
+       # Tree structure of reasons why the page could not be cached for each frame.
+       optional BackForwardCacheNotRestoredExplanationTree notRestoredExplanationsTree
+ 
++  # List of FinalStatus reasons for Prerender2.
++  type PrerenderFinalStatus extends string
++    enum
++      Activated
++      Destroyed
++      LowEndDevice
++      InvalidSchemeRedirect
++      InvalidSchemeNavigation
++      InProgressNavigation
++      NavigationRequestBlockedByCsp
++      MainFrameNavigation
++      MojoBinderPolicy
++      RendererProcessCrashed
++      RendererProcessKilled
++      Download
++      TriggerDestroyed
++      NavigationNotCommitted
++      NavigationBadHttpStatus
++      ClientCertRequested
++      NavigationRequestNetworkError
++      MaxNumOfRunningPrerendersExceeded
++      CancelAllHostsForTesting
++      DidFailLoad
++      Stop
++      SslCertificateError
++      LoginAuthRequested
++      UaChangeRequiresReload
++      BlockedByClient
++      AudioOutputDeviceRequested
++      MixedContent
++      TriggerBackgrounded
++      EmbedderTriggeredAndCrossOriginRedirected
++      MemoryLimitExceeded
++      # Prerenders can be cancelled when Chrome uses excessive memory. This is
++      # recorded when it fails to get the memory usage.
++      FailToGetMemoryUsage
++      DataSaverEnabled
++      HasEffectiveUrl
++      ActivatedBeforeStarted
++      InactivePageRestriction
++      StartFailed
++      TimeoutBackgrounded
++      CrossSiteRedirect
++      CrossSiteNavigation
++      SameSiteCrossOriginRedirect
++      SameSiteCrossOriginNavigation
++      SameSiteCrossOriginRedirectNotOptIn
++      SameSiteCrossOriginNavigationNotOptIn
++      ActivationNavigationParameterMismatch
++      ActivatedInBackground
++      EmbedderHostDisallowed
++      ActivationNavigationDestroyedBeforeSuccess
++      TabClosedByUserGesture
++      TabClosedWithoutUserGesture
++      PrimaryMainFrameRendererProcessCrashed
++      PrimaryMainFrameRendererProcessKilled
++      ActivationFramePolicyNotCompatible
++      PreloadingDisabled
++      BatterySaverEnabled
++      ActivatedDuringMainFrameNavigation
++      PreloadingUnsupportedByWebContents
++
++  # Fired when a prerender attempt is completed.
++  experimental event prerenderAttemptCompleted
++    parameters
++      # The frame id of the frame initiating prerendering.
++      FrameId initiatingFrameId
++      string prerenderingUrl
++      PrerenderFinalStatus finalStatus
++      # This is used to give users more information about the name of the API call
++      # that is incompatible with prerender and has caused the cancellation of the attempt
++      optional string disallowedApiMethod
++
++  # Preloading status values, see also PreloadingTriggeringOutcome. This
++  # status is shared by prefetchStatusUpdated and prerenderStatusUpdated.
++  type PreloadingStatus extends string
++    enum
++      Pending
++      Running
++      Ready
++      Success
++      Failure
++      # PreloadingTriggeringOutcome which not used by prefetch nor prerender.
++      NotSupported
++
++  # TODO(crbug/1384419): Create a dedicated domain for preloading.
++  # Fired when a prefetch attempt is updated.
++  experimental event prefetchStatusUpdated
++    parameters
++      # The frame id of the frame initiating prefetch.
++      FrameId initiatingFrameId
++      string prefetchUrl
++      PreloadingStatus status
++
++  # TODO(crbug/1384419): Create a dedicated domain for preloading.
++  # Fired when a prerender attempt is updated.
++  experimental event prerenderStatusUpdated
++    parameters
++      # The frame id of the frame initiating prerender.
++      FrameId initiatingFrameId
++      string prerenderingUrl
++      PreloadingStatus status
++
+   event loadEventFired
+     parameters
+       Network.MonotonicTime timestamp
+@@ -10755,107 +10858,6 @@ experimental domain Preload
+     parameters
+       RuleSetId id
+ 
+-  # List of FinalStatus reasons for Prerender2.
+-  type PrerenderFinalStatus extends string
+-    enum
+-      Activated
+-      Destroyed
+-      LowEndDevice
+-      InvalidSchemeRedirect
+-      InvalidSchemeNavigation
+-      InProgressNavigation
+-      NavigationRequestBlockedByCsp
+-      MainFrameNavigation
+-      MojoBinderPolicy
+-      RendererProcessCrashed
+-      RendererProcessKilled
+-      Download
+-      TriggerDestroyed
+-      NavigationNotCommitted
+-      NavigationBadHttpStatus
+-      ClientCertRequested
+-      NavigationRequestNetworkError
+-      MaxNumOfRunningPrerendersExceeded
+-      CancelAllHostsForTesting
+-      DidFailLoad
+-      Stop
+-      SslCertificateError
+-      LoginAuthRequested
+-      UaChangeRequiresReload
+-      BlockedByClient
+-      AudioOutputDeviceRequested
+-      MixedContent
+-      TriggerBackgrounded
+-      EmbedderTriggeredAndCrossOriginRedirected
+-      MemoryLimitExceeded
+-      # Prerenders can be cancelled when Chrome uses excessive memory. This is
+-      # recorded when it fails to get the memory usage.
+-      FailToGetMemoryUsage
+-      DataSaverEnabled
+-      HasEffectiveUrl
+-      ActivatedBeforeStarted
+-      InactivePageRestriction
+-      StartFailed
+-      TimeoutBackgrounded
+-      CrossSiteRedirect
+-      CrossSiteNavigation
+-      SameSiteCrossOriginRedirect
+-      SameSiteCrossOriginNavigation
+-      SameSiteCrossOriginRedirectNotOptIn
+-      SameSiteCrossOriginNavigationNotOptIn
+-      ActivationNavigationParameterMismatch
+-      ActivatedInBackground
+-      EmbedderHostDisallowed
+-      ActivationNavigationDestroyedBeforeSuccess
+-      TabClosedByUserGesture
+-      TabClosedWithoutUserGesture
+-      PrimaryMainFrameRendererProcessCrashed
+-      PrimaryMainFrameRendererProcessKilled
+-      ActivationFramePolicyNotCompatible
+-      PreloadingDisabled
+-      BatterySaverEnabled
+-      ActivatedDuringMainFrameNavigation
+-      PreloadingUnsupportedByWebContents
+-
+-  # Fired when a prerender attempt is completed.
+-  event prerenderAttemptCompleted
+-    parameters
+-      # The frame id of the frame initiating prerendering.
+-      Page.FrameId initiatingFrameId
+-      string prerenderingUrl
+-      PrerenderFinalStatus finalStatus
+-      # This is used to give users more information about the name of the API call
+-      # that is incompatible with prerender and has caused the cancellation of the attempt
+-      optional string disallowedApiMethod
+-
+-  # Preloading status values, see also PreloadingTriggeringOutcome. This
+-  # status is shared by prefetchStatusUpdated and prerenderStatusUpdated.
+-  type PreloadingStatus extends string
+-    enum
+-      Pending
+-      Running
+-      Ready
+-      Success
+-      Failure
+-      # PreloadingTriggeringOutcome which not used by prefetch nor prerender.
+-      NotSupported
+-
+-  # Fired when a prefetch attempt is updated.
+-  event prefetchStatusUpdated
+-    parameters
+-      # The frame id of the frame initiating prefetch.
+-      Page.FrameId initiatingFrameId
+-      string prefetchUrl
+-      PreloadingStatus status
+-
+-  # Fired when a prerender attempt is updated.
+-  event prerenderStatusUpdated
+-    parameters
+-      # The frame id of the frame initiating prerender.
+-      Page.FrameId initiatingFrameId
+-      string prerenderingUrl
+-      PreloadingStatus status
+-
+ # This domain allows interacting with the FedCM dialog.
+ experimental domain FedCm
+   event dialogShown
+```
+
 ## Roll protocol to r1112051 — _2023-03-02T04:29:08.000Z_
-######  Diff: [`b7cc171...1401710`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b7cc171...1401710`)
+######  Diff: [`b7cc171...6aab256`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b7cc171...6aab256`)
 
 ```diff
 @@ browser_protocol.pdl:10857 @@ experimental domain Preload
@@ -9883,18 +10107,4 @@ index bd277eb..09c420e 100644
  
    event bufferUsage
      parameters
-```
-
-## Roll protocol to r862653 — _2021-03-13T04:16:21.000Z_
-######  Diff: [`3704a77...c5bd6c3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3704a77...c5bd6c3`)
-
-```diff
-@@ browser_protocol.pdl:4605 @@ domain Network
-       inspector
-       subresource-filter
-       content-type
-+      collapsed-by-client
-       coep-frame-resource-needs-coep-header
-       coop-sandboxed-iframe-cannot-navigate-to-coop-page
-       corp-not-same-origin
 ```

@@ -12901,17 +12901,6 @@ export namespace Protocol {
             children: BackForwardCacheNotRestoredExplanationTree[];
         }
 
-        /**
-         * List of FinalStatus reasons for Prerender2.
-         */
-        export type PrerenderFinalStatus = ('Activated' | 'Destroyed' | 'LowEndDevice' | 'InvalidSchemeRedirect' | 'InvalidSchemeNavigation' | 'InProgressNavigation' | 'NavigationRequestBlockedByCsp' | 'MainFrameNavigation' | 'MojoBinderPolicy' | 'RendererProcessCrashed' | 'RendererProcessKilled' | 'Download' | 'TriggerDestroyed' | 'NavigationNotCommitted' | 'NavigationBadHttpStatus' | 'ClientCertRequested' | 'NavigationRequestNetworkError' | 'MaxNumOfRunningPrerendersExceeded' | 'CancelAllHostsForTesting' | 'DidFailLoad' | 'Stop' | 'SslCertificateError' | 'LoginAuthRequested' | 'UaChangeRequiresReload' | 'BlockedByClient' | 'AudioOutputDeviceRequested' | 'MixedContent' | 'TriggerBackgrounded' | 'EmbedderTriggeredAndCrossOriginRedirected' | 'MemoryLimitExceeded' | 'FailToGetMemoryUsage' | 'DataSaverEnabled' | 'HasEffectiveUrl' | 'ActivatedBeforeStarted' | 'InactivePageRestriction' | 'StartFailed' | 'TimeoutBackgrounded' | 'CrossSiteRedirect' | 'CrossSiteNavigation' | 'SameSiteCrossOriginRedirect' | 'SameSiteCrossOriginNavigation' | 'SameSiteCrossOriginRedirectNotOptIn' | 'SameSiteCrossOriginNavigationNotOptIn' | 'ActivationNavigationParameterMismatch' | 'ActivatedInBackground' | 'EmbedderHostDisallowed' | 'ActivationNavigationDestroyedBeforeSuccess' | 'TabClosedByUserGesture' | 'TabClosedWithoutUserGesture' | 'PrimaryMainFrameRendererProcessCrashed' | 'PrimaryMainFrameRendererProcessKilled' | 'ActivationFramePolicyNotCompatible' | 'PreloadingDisabled' | 'BatterySaverEnabled' | 'ActivatedDuringMainFrameNavigation' | 'PreloadingUnsupportedByWebContents');
-
-        /**
-         * Preloading status values, see also PreloadingTriggeringOutcome. This
-         * status is shared by prefetchStatusUpdated and prerenderStatusUpdated.
-         */
-        export type PreloadingStatus = ('Pending' | 'Running' | 'Ready' | 'Success' | 'Failure' | 'NotSupported');
-
         export interface AddScriptToEvaluateOnLoadRequest {
             scriptSource: string;
         }
@@ -13928,49 +13917,6 @@ export namespace Protocol {
              * Tree structure of reasons why the page could not be cached for each frame.
              */
             notRestoredExplanationsTree?: BackForwardCacheNotRestoredExplanationTree;
-        }
-
-        /**
-         * Fired when a prerender attempt is completed.
-         */
-        export interface PrerenderAttemptCompletedEvent {
-            /**
-             * The frame id of the frame initiating prerendering.
-             */
-            initiatingFrameId: FrameId;
-            prerenderingUrl: string;
-            finalStatus: PrerenderFinalStatus;
-            /**
-             * This is used to give users more information about the name of the API call
-             * that is incompatible with prerender and has caused the cancellation of the attempt
-             */
-            disallowedApiMethod?: string;
-        }
-
-        /**
-         * TODO(crbug/1384419): Create a dedicated domain for preloading.
-         * Fired when a prefetch attempt is updated.
-         */
-        export interface PrefetchStatusUpdatedEvent {
-            /**
-             * The frame id of the frame initiating prefetch.
-             */
-            initiatingFrameId: FrameId;
-            prefetchUrl: string;
-            status: PreloadingStatus;
-        }
-
-        /**
-         * TODO(crbug/1384419): Create a dedicated domain for preloading.
-         * Fired when a prerender attempt is updated.
-         */
-        export interface PrerenderStatusUpdatedEvent {
-            /**
-             * The frame id of the frame initiating prerender.
-             */
-            initiatingFrameId: FrameId;
-            prerenderingUrl: string;
-            status: PreloadingStatus;
         }
 
         export interface LoadEventFiredEvent {
@@ -16939,6 +16885,17 @@ export namespace Protocol {
         }
 
         /**
+         * List of FinalStatus reasons for Prerender2.
+         */
+        export type PrerenderFinalStatus = ('Activated' | 'Destroyed' | 'LowEndDevice' | 'InvalidSchemeRedirect' | 'InvalidSchemeNavigation' | 'InProgressNavigation' | 'NavigationRequestBlockedByCsp' | 'MainFrameNavigation' | 'MojoBinderPolicy' | 'RendererProcessCrashed' | 'RendererProcessKilled' | 'Download' | 'TriggerDestroyed' | 'NavigationNotCommitted' | 'NavigationBadHttpStatus' | 'ClientCertRequested' | 'NavigationRequestNetworkError' | 'MaxNumOfRunningPrerendersExceeded' | 'CancelAllHostsForTesting' | 'DidFailLoad' | 'Stop' | 'SslCertificateError' | 'LoginAuthRequested' | 'UaChangeRequiresReload' | 'BlockedByClient' | 'AudioOutputDeviceRequested' | 'MixedContent' | 'TriggerBackgrounded' | 'EmbedderTriggeredAndCrossOriginRedirected' | 'MemoryLimitExceeded' | 'FailToGetMemoryUsage' | 'DataSaverEnabled' | 'HasEffectiveUrl' | 'ActivatedBeforeStarted' | 'InactivePageRestriction' | 'StartFailed' | 'TimeoutBackgrounded' | 'CrossSiteRedirect' | 'CrossSiteNavigation' | 'SameSiteCrossOriginRedirect' | 'SameSiteCrossOriginNavigation' | 'SameSiteCrossOriginRedirectNotOptIn' | 'SameSiteCrossOriginNavigationNotOptIn' | 'ActivationNavigationParameterMismatch' | 'ActivatedInBackground' | 'EmbedderHostDisallowed' | 'ActivationNavigationDestroyedBeforeSuccess' | 'TabClosedByUserGesture' | 'TabClosedWithoutUserGesture' | 'PrimaryMainFrameRendererProcessCrashed' | 'PrimaryMainFrameRendererProcessKilled' | 'ActivationFramePolicyNotCompatible' | 'PreloadingDisabled' | 'BatterySaverEnabled' | 'ActivatedDuringMainFrameNavigation' | 'PreloadingUnsupportedByWebContents');
+
+        /**
+         * Preloading status values, see also PreloadingTriggeringOutcome. This
+         * status is shared by prefetchStatusUpdated and prerenderStatusUpdated.
+         */
+        export type PreloadingStatus = ('Pending' | 'Running' | 'Ready' | 'Success' | 'Failure' | 'NotSupported');
+
+        /**
          * Upsert. Currently, it is only emitted when a rule set added.
          */
         export interface RuleSetUpdatedEvent {
@@ -16947,6 +16904,47 @@ export namespace Protocol {
 
         export interface RuleSetRemovedEvent {
             id: RuleSetId;
+        }
+
+        /**
+         * Fired when a prerender attempt is completed.
+         */
+        export interface PrerenderAttemptCompletedEvent {
+            /**
+             * The frame id of the frame initiating prerendering.
+             */
+            initiatingFrameId: Page.FrameId;
+            prerenderingUrl: string;
+            finalStatus: PrerenderFinalStatus;
+            /**
+             * This is used to give users more information about the name of the API call
+             * that is incompatible with prerender and has caused the cancellation of the attempt
+             */
+            disallowedApiMethod?: string;
+        }
+
+        /**
+         * Fired when a prefetch attempt is updated.
+         */
+        export interface PrefetchStatusUpdatedEvent {
+            /**
+             * The frame id of the frame initiating prefetch.
+             */
+            initiatingFrameId: Page.FrameId;
+            prefetchUrl: string;
+            status: PreloadingStatus;
+        }
+
+        /**
+         * Fired when a prerender attempt is updated.
+         */
+        export interface PrerenderStatusUpdatedEvent {
+            /**
+             * The frame id of the frame initiating prerender.
+             */
+            initiatingFrameId: Page.FrameId;
+            prerenderingUrl: string;
+            status: PreloadingStatus;
         }
     }
 

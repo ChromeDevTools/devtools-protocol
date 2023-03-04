@@ -3070,23 +3070,6 @@ export namespace ProtocolProxyApi {
          */
         on(event: 'backForwardCacheNotUsed', listener: (params: Protocol.Page.BackForwardCacheNotUsedEvent) => void): void;
 
-        /**
-         * Fired when a prerender attempt is completed.
-         */
-        on(event: 'prerenderAttemptCompleted', listener: (params: Protocol.Page.PrerenderAttemptCompletedEvent) => void): void;
-
-        /**
-         * TODO(crbug/1384419): Create a dedicated domain for preloading.
-         * Fired when a prefetch attempt is updated.
-         */
-        on(event: 'prefetchStatusUpdated', listener: (params: Protocol.Page.PrefetchStatusUpdatedEvent) => void): void;
-
-        /**
-         * TODO(crbug/1384419): Create a dedicated domain for preloading.
-         * Fired when a prerender attempt is updated.
-         */
-        on(event: 'prerenderStatusUpdated', listener: (params: Protocol.Page.PrerenderStatusUpdatedEvent) => void): void;
-
         on(event: 'loadEventFired', listener: (params: Protocol.Page.LoadEventFiredEvent) => void): void;
 
         /**
@@ -3963,6 +3946,21 @@ export namespace ProtocolProxyApi {
         on(event: 'ruleSetUpdated', listener: (params: Protocol.Preload.RuleSetUpdatedEvent) => void): void;
 
         on(event: 'ruleSetRemoved', listener: (params: Protocol.Preload.RuleSetRemovedEvent) => void): void;
+
+        /**
+         * Fired when a prerender attempt is completed.
+         */
+        on(event: 'prerenderAttemptCompleted', listener: (params: Protocol.Preload.PrerenderAttemptCompletedEvent) => void): void;
+
+        /**
+         * Fired when a prefetch attempt is updated.
+         */
+        on(event: 'prefetchStatusUpdated', listener: (params: Protocol.Preload.PrefetchStatusUpdatedEvent) => void): void;
+
+        /**
+         * Fired when a prerender attempt is updated.
+         */
+        on(event: 'prerenderStatusUpdated', listener: (params: Protocol.Preload.PrerenderStatusUpdatedEvent) => void): void;
 
     }
 
