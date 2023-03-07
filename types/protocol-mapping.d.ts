@@ -722,6 +722,10 @@ export namespace ProtocolMapping {
          * Fired when a prerender attempt is updated.
          */
         'Preload.prerenderStatusUpdated': [Protocol.Preload.PrerenderStatusUpdatedEvent];
+        /**
+         * Send a list of sources for all preloading attempts.
+         */
+        'Preload.preloadingAttemptSourcesUpdated': [Protocol.Preload.PreloadingAttemptSourcesUpdatedEvent];
         'FedCm.dialogShown': [];
     }
 

@@ -16885,6 +16885,47 @@ export namespace Protocol {
         }
 
         /**
+         * The type of preloading attempted. It corresponds to
+         * mojom::SpeculationAction (although PrefetchWithSubresources is omitted as it
+         * isn't being used by clients).
+         */
+        export type SpeculationAction = ('Prefetch' | 'Prerender');
+
+        /**
+         * Corresponds to mojom::SpeculationTargetHint.
+         * See https://github.com/WICG/nav-speculation/blob/main/triggers.md#window-name-targeting-hints
+         */
+        export type SpeculationTargetHint = ('Blank' | 'Self');
+
+        /**
+         * A key that identifies a preloading attempt.
+         * 
+         * The url used is the url specified by the trigger (i.e. the initial URL), and
+         * not the final url that is navigated to. For example, prerendering allows
+         * same-origin main frame navigations during the attempt, but the attempt is
+         * still keyed with the initial URL.
+         */
+        export interface PreloadingAttemptKey {
+            loaderId: Network.LoaderId;
+            action: SpeculationAction;
+            url: string;
+            targetHint?: SpeculationTargetHint;
+        }
+
+        /**
+         * Lists sources for a preloading attempt, specifically the ids of rule sets
+         * that had a speculation rule that triggered the attempt, and the
+         * BackendNodeIds of <a href> or <area href> elements that triggered the
+         * attempt (in the case of attempts triggered by a document rule). It is
+         * possible for mulitple rule sets and links to trigger a single attempt.
+         */
+        export interface PreloadingAttemptSource {
+            key: PreloadingAttemptKey;
+            ruleSetIds: RuleSetId[];
+            nodeIds: DOM.BackendNodeId[];
+        }
+
+        /**
          * List of FinalStatus reasons for Prerender2.
          */
         export type PrerenderFinalStatus = ('Activated' | 'Destroyed' | 'LowEndDevice' | 'InvalidSchemeRedirect' | 'InvalidSchemeNavigation' | 'InProgressNavigation' | 'NavigationRequestBlockedByCsp' | 'MainFrameNavigation' | 'MojoBinderPolicy' | 'RendererProcessCrashed' | 'RendererProcessKilled' | 'Download' | 'TriggerDestroyed' | 'NavigationNotCommitted' | 'NavigationBadHttpStatus' | 'ClientCertRequested' | 'NavigationRequestNetworkError' | 'MaxNumOfRunningPrerendersExceeded' | 'CancelAllHostsForTesting' | 'DidFailLoad' | 'Stop' | 'SslCertificateError' | 'LoginAuthRequested' | 'UaChangeRequiresReload' | 'BlockedByClient' | 'AudioOutputDeviceRequested' | 'MixedContent' | 'TriggerBackgrounded' | 'EmbedderTriggeredAndCrossOriginRedirected' | 'MemoryLimitExceeded' | 'FailToGetMemoryUsage' | 'DataSaverEnabled' | 'HasEffectiveUrl' | 'ActivatedBeforeStarted' | 'InactivePageRestriction' | 'StartFailed' | 'TimeoutBackgrounded' | 'CrossSiteRedirect' | 'CrossSiteNavigation' | 'SameSiteCrossOriginRedirect' | 'SameSiteCrossOriginNavigation' | 'SameSiteCrossOriginRedirectNotOptIn' | 'SameSiteCrossOriginNavigationNotOptIn' | 'ActivationNavigationParameterMismatch' | 'ActivatedInBackground' | 'EmbedderHostDisallowed' | 'ActivationNavigationDestroyedBeforeSuccess' | 'TabClosedByUserGesture' | 'TabClosedWithoutUserGesture' | 'PrimaryMainFrameRendererProcessCrashed' | 'PrimaryMainFrameRendererProcessKilled' | 'ActivationFramePolicyNotCompatible' | 'PreloadingDisabled' | 'BatterySaverEnabled' | 'ActivatedDuringMainFrameNavigation' | 'PreloadingUnsupportedByWebContents');
@@ -16945,6 +16986,13 @@ export namespace Protocol {
             initiatingFrameId: Page.FrameId;
             prerenderingUrl: string;
             status: PreloadingStatus;
+        }
+
+        /**
+         * Send a list of sources for all preloading attempts.
+         */
+        export interface PreloadingAttemptSourcesUpdatedEvent {
+            preloadingAttemptSources: PreloadingAttemptSource[];
         }
     }
 

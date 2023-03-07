@@ -1,7 +1,71 @@
 
 
+## Roll protocol to r1113774 — _2023-03-07T04:29:03.000Z_
+######  Diff: [`3ca05ae...7092869`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3ca05ae...7092869`)
+
+```diff
+@@ browser_protocol.pdl:10742 @@ experimental domain Preload
+       # - https://github.com/WICG/nav-speculation/blob/main/triggers.md
+       string sourceText
+ 
+-  # The type of preloading attempted. It corresponds to
+-  # mojom::SpeculationAction (although PrefetchWithSubresources is omitted as it
+-  # isn't being used by clients).
+-  type SpeculationAction extends string
+-    enum
+-      Prefetch
+-      Prerender
+-
+-  # Corresponds to mojom::SpeculationTargetHint.
+-  # See https://github.com/WICG/nav-speculation/blob/main/triggers.md#window-name-targeting-hints
+-  type SpeculationTargetHint extends string
+-    enum
+-      Blank
+-      Self
+-
+-  # A key that identifies a preloading attempt.
+-  #
+-  # The url used is the url specified by the trigger (i.e. the initial URL), and
+-  # not the final url that is navigated to. For example, prerendering allows
+-  # same-origin main frame navigations during the attempt, but the attempt is
+-  # still keyed with the initial URL.
+-  type PreloadingAttemptKey extends object
+-    properties
+-      Network.LoaderId loaderId
+-      SpeculationAction action
+-      string url
+-      optional SpeculationTargetHint targetHint
+-
+-  # Lists sources for a preloading attempt, specifically the ids of rule sets
+-  # that had a speculation rule that triggered the attempt, and the
+-  # BackendNodeIds of <a href> or <area href> elements that triggered the
+-  # attempt (in the case of attempts triggered by a document rule). It is
+-  # possible for mulitple rule sets and links to trigger a single attempt.
+-  type PreloadingAttemptSource extends object
+-    properties
+-      PreloadingAttemptKey key
+-      array of RuleSetId ruleSetIds
+-      array of DOM.BackendNodeId nodeIds
+-
+   command enable
+ 
+   command disable
+@@ -10895,11 +10856,6 @@ experimental domain Preload
+       string prerenderingUrl
+       PreloadingStatus status
+ 
+-  # Send a list of sources for all preloading attempts.
+-  event preloadingAttemptSourcesUpdated
+-    parameters
+-      array of PreloadingAttemptSource preloadingAttemptSources
+-
+ # This domain allows interacting with the FedCM dialog.
+ experimental domain FedCm
+   event dialogShown
+```
+
 ## Roll protocol to r1113120 — _2023-03-04T04:28:32.000Z_
-######  Diff: [`6aab256...6c3027d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6aab256...6c3027d`)
+######  Diff: [`6aab256...3ca05ae`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6aab256...3ca05ae`)
 
 ```diff
 @@ browser_protocol.pdl:8482 @@ domain Page
@@ -10074,37 +10138,4 @@ index bd277eb..09c420e 100644
        deprecated DOM.Rect contentSize
        # Metrics relating to the layout viewport in CSS pixels.
        LayoutViewport cssLayoutViewport
-```
-
-## Roll protocol to r862770 — _2021-03-15T11:16:04.000Z_
-######  Diff: [`c5bd6c3...576a381`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c5bd6c3...576a381`)
-
-```diff
-@@ browser_protocol.pdl:8380 @@ experimental domain Tracing
-       light
-       detailed
- 
--  # Backend type to use for tracing. `chrome` uses the Chrome-integrated
--  # tracing service and is supported on all platforms. `system` is only
--  # supported on Chrome OS and uses the Perfetto system tracing service.
--  # `auto` chooses `system` when the perfettoConfig provided to Tracing.start
--  # specifies at least one non-Chrome data source; otherwise uses `chrome`.
--  type TracingBackend extends string
--    enum
--      auto
--      chrome
--      system
--
-   # Stop trace events collection.
-   command end
- 
-@@ -8444,8 +8433,6 @@ experimental domain Tracing
-       # When specified, the parameters `categories`, `options`, `traceConfig`
-       # are ignored.
-       optional binary perfettoConfig
--      # Backend type (defaults to `auto`)
--      optional TracingBackend tracingBackend
- 
-   event bufferUsage
-     parameters
 ```
