@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1114386 — _2023-03-08T04:28:54.000Z_
+######  Diff: [`e4e18e5...9d91304`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e4e18e5...9d91304`)
+
+```diff
+@@ browser_protocol.pdl:702 @@ experimental domain Audits
+   type AttributionReportingIssueType extends string
+     enum
+       PermissionPolicyDisabled
++      PermissionPolicyNotDelegated
+       UntrustworthyReportingOrigin
+       InsecureContext
+       # TODO(apaseltiner): Rename this to InvalidRegisterSourceHeader
+```
+
 ## Roll protocol to r1113774 — _2023-03-07T04:29:03.000Z_
-######  Diff: [`3ca05ae...7092869`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3ca05ae...7092869`)
+######  Diff: [`3ca05ae...e4e18e5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3ca05ae...e4e18e5`)
 
 ```diff
 @@ browser_protocol.pdl:10742 @@ experimental domain Preload
@@ -10117,25 +10131,4 @@ index bd277eb..09c420e 100644
    # Tells whether clearing browser cache is supported.
    deprecated command canClearBrowserCache
      returns
-```
-
-## Roll protocol to r863986 — _2021-03-17T23:16:09.000Z_
-######  Diff: [`576a381...6024018`](https://github.com/ChromeDevTools/devtools-protocol/compare/`576a381...6024018`)
-
-```diff
-@@ browser_protocol.pdl:6745 @@ domain Page
-   # Returns metrics relating to the layouting of the page, such as viewport bounds/scale.
-   command getLayoutMetrics
-     returns
--      # Deprecated metrics relating to the layout viewport. Can be in DP or in CSS pixels depending on the `enable-use-zoom-for-dsf` flag. Use `cssLayoutViewport` instead.
-+      # Deprecated metrics relating to the layout viewport. Can be in DP or in CSS pixels depending on the `enable-use-zoom-for-dsf` flag. Use `normalisedLayoutViewport` instead.
-       deprecated LayoutViewport layoutViewport
--      # Deprecated metrics relating to the visual viewport. Can be in DP or in CSS pixels depending on the `enable-use-zoom-for-dsf` flag. Use `cssVisualViewport` instead.
-+      # Deprecated metrics relating to the visual viewport. Can be in DP or in CSS pixels depending on the `enable-use-zoom-for-dsf` flag. Use `normalisedVisualViewport` instead.
-       deprecated VisualViewport visualViewport
--      # Deprecated size of scrollable area. Can be in DP or in CSS pixels depending on the `enable-use-zoom-for-dsf` flag. Use `cssContentSize` instead.
-+      # Deprecated size of scrollable area. Can be in DP or in CSS pixels depending on the `enable-use-zoom-for-dsf` flag. Use `normalisedContentSize` instead.
-       deprecated DOM.Rect contentSize
-       # Metrics relating to the layout viewport in CSS pixels.
-       LayoutViewport cssLayoutViewport
 ```

@@ -1449,7 +1449,6 @@
                     "type": "string",
                     "enum": [
                         "PermissionPolicyDisabled",
-                        "PermissionPolicyNotDelegated",
                         "UntrustworthyReportingOrigin",
                         "InsecureContext",
                         "InvalidHeader",
