@@ -22901,7 +22901,6 @@
                         "CrossSiteRedirect",
                         "CrossSiteNavigation",
                         "SameSiteCrossOriginRedirect",
-                        "SameSiteCrossOriginNavigation",
                         "SameSiteCrossOriginRedirectNotOptIn",
                         "SameSiteCrossOriginNavigationNotOptIn",
                         "ActivationNavigationParameterMismatch",

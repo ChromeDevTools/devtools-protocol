@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1114954 — _2023-03-09T04:29:10.000Z_
+######  Diff: [`1cd77ce...d2c9933`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1cd77ce...d2c9933`)
+
+```diff
+@@ browser_protocol.pdl:10838 @@ experimental domain Preload
+       CrossSiteRedirect
+       CrossSiteNavigation
+       SameSiteCrossOriginRedirect
++      SameSiteCrossOriginNavigation
+       SameSiteCrossOriginRedirectNotOptIn
+       SameSiteCrossOriginNavigationNotOptIn
+       ActivationNavigationParameterMismatch
+```
+
 ## Roll protocol to r1114386 — _2023-03-08T04:28:54.000Z_
-######  Diff: [`e4e18e5...9d91304`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e4e18e5...9d91304`)
+######  Diff: [`e4e18e5...1cd77ce`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e4e18e5...1cd77ce`)
 
 ```diff
 @@ browser_protocol.pdl:702 @@ experimental domain Audits
@@ -10102,33 +10116,4 @@ index bd277eb..09c420e 100644
 -      optional string initiatorOrigin
        optional Network.IPAddressSpace resourceIPAddressSpace
        optional Network.ClientSecurityState clientSecurityState
-```
-
-## Roll protocol to r866105 — _2021-03-24T14:16:09.000Z_
-######  Diff: [`6024018...70fd1b8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6024018...70fd1b8`)
-
-```diff
-@@ browser_protocol.pdl:5104 @@ domain Network
-       # Errors occurred while handling the signed exchagne.
-       optional array of SignedExchangeError errors
- 
--  # List of content encodings supported by the backend.
--  experimental type ContentEncoding extends string
--    enum
--      deflate
--      gzip
--      br
--
--  # Sets a list of content encodings that will be accepted. Empty list means no encoding is accepted.
--  experimental command setAcceptedEncodings
--    parameters
--      # List of accepted content encodings.
--      array of ContentEncoding encodings
--
--  # Clears accepted encodings set by setAcceptedEncodings
--  experimental command clearAcceptedEncodingsOverride
--
-   # Tells whether clearing browser cache is supported.
-   deprecated command canClearBrowserCache
-     returns
 ```
