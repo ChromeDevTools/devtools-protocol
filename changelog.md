@@ -1,7 +1,33 @@
 
 
+## Roll protocol to r1115542 — _2023-03-10T04:29:00.000Z_
+######  Diff: [`3b5916a...a5ff2e3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3b5916a...a5ff2e3`)
+
+```diff
+@@ browser_protocol.pdl:10900 @@ experimental domain Preload
+ 
+ # This domain allows interacting with the FedCM dialog.
+ experimental domain FedCm
+-  # Corresponds to IdentityRequestAccount
+-  type Account extends object
+-    properties
+-      string accountId
+-      string email
+-      string name
+-      string givenName
+-      string pictureUrl
+-      string idpConfigUrl
+-
+   event dialogShown
+-    parameters
+-      array of Account accounts
+ 
+   command enable
+   command disable
+```
+
 ## Roll protocol to r1114954 — _2023-03-09T04:29:10.000Z_
-######  Diff: [`1cd77ce...d2c9933`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1cd77ce...d2c9933`)
+######  Diff: [`1cd77ce...3b5916a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1cd77ce...3b5916a`)
 
 ```diff
 @@ browser_protocol.pdl:10838 @@ experimental domain Preload
@@ -10103,17 +10129,4 @@ index bd277eb..09c420e 100644
    # Requests that backend shows paint rectangles
    command setShowPaintRects
      parameters
-```
-
-## Roll protocol to r866556 — _2021-03-25T12:16:07.000Z_
-######  Diff: [`70fd1b8...f7c029d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`70fd1b8...f7c029d`)
-
-```diff
-@@ browser_protocol.pdl:711 @@ experimental domain Audits
-       Network.CorsErrorStatus corsErrorStatus
-       boolean isWarning
-       AffectedRequest request
--      optional string initiatorOrigin
-       optional Network.IPAddressSpace resourceIPAddressSpace
-       optional Network.ClientSecurityState clientSecurityState
 ```

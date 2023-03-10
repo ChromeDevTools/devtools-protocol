@@ -23042,9 +23042,51 @@
             "domain": "FedCm",
             "description": "This domain allows interacting with the FedCM dialog.",
             "experimental": true,
+            "types": [
+                {
+                    "id": "Account",
+                    "description": "Corresponds to IdentityRequestAccount",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "accountId",
+                            "type": "string"
+                        },
+                        {
+                            "name": "email",
+                            "type": "string"
+                        },
+                        {
+                            "name": "name",
+                            "type": "string"
+                        },
+                        {
+                            "name": "givenName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "pictureUrl",
+                            "type": "string"
+                        },
+                        {
+                            "name": "idpConfigUrl",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ],
             "events": [
                 {
-                    "name": "dialogShown"
+                    "name": "dialogShown",
+                    "parameters": [
+                        {
+                            "name": "accounts",
+                            "type": "array",
+                            "items": {
+                                "$ref": "Account"
+                            }
+                        }
+                    ]
                 }
             ],
             "commands": [

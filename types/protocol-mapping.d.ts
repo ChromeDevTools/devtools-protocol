@@ -726,7 +726,7 @@ export namespace ProtocolMapping {
          * Send a list of sources for all preloading attempts.
          */
         'Preload.preloadingAttemptSourcesUpdated': [Protocol.Preload.PreloadingAttemptSourcesUpdatedEvent];
-        'FedCm.dialogShown': [];
+        'FedCm.dialogShown': [Protocol.FedCm.DialogShownEvent];
     }
 
     export interface Commands {

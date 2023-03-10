@@ -17000,6 +17000,22 @@ export namespace Protocol {
      * This domain allows interacting with the FedCM dialog.
      */
     export namespace FedCm {
+
+        /**
+         * Corresponds to IdentityRequestAccount
+         */
+        export interface Account {
+            accountId: string;
+            email: string;
+            name: string;
+            givenName: string;
+            pictureUrl: string;
+            idpConfigUrl: string;
+        }
+
+        export interface DialogShownEvent {
+            accounts: Account[];
+        }
     }
 }
 

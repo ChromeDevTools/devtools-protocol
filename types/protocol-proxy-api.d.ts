@@ -3974,7 +3974,7 @@ export namespace ProtocolProxyApi {
 
         disable(): Promise<void>;
 
-        on(event: 'dialogShown', listener: () => void): void;
+        on(event: 'dialogShown', listener: (params: Protocol.FedCm.DialogShownEvent) => void): void;
 
     }
 }
