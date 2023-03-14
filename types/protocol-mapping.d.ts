@@ -4658,6 +4658,14 @@ export namespace ProtocolMapping {
             paramsType: [];
             returnType: void;
         };
+        'FedCm.selectAccount': {
+            paramsType: [Protocol.FedCm.SelectAccountRequest];
+            returnType: void;
+        };
+        'FedCm.dismissDialog': {
+            paramsType: [Protocol.FedCm.DismissDialogRequest];
+            returnType: void;
+        };
     }
 }
 

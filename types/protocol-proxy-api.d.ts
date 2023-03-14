@@ -3974,6 +3974,10 @@ export namespace ProtocolProxyApi {
 
         disable(): Promise<void>;
 
+        selectAccount(params: Protocol.FedCm.SelectAccountRequest): Promise<void>;
+
+        dismissDialog(params: Protocol.FedCm.DismissDialogRequest): Promise<void>;
+
         on(event: 'dialogShown', listener: (params: Protocol.FedCm.DialogShownEvent) => void): void;
 
     }

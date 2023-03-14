@@ -1,7 +1,65 @@
 
 
+## Roll protocol to r1116775 — _2023-03-14T04:28:31.000Z_
+######  Diff: [`bc17667...79b4548`](https://github.com/ChromeDevTools/devtools-protocol/compare/`bc17667...79b4548`)
+
+```diff
+@@ browser_protocol.pdl:712 @@ experimental domain Audits
+       SourceAndTriggerHeaders
+       SourceIgnored
+       TriggerIgnored
+-      OsSourceIgnored
+-      OsTriggerIgnored
+-      InvalidRegisterOsSourceHeader
+-      InvalidRegisterOsTriggerHeader
+-      WebAndOsHeaders
+ 
+   # Details for issues around "Attribution Reporting API" usage.
+   # Explainer: https://github.com/WICG/attribution-reporting-api
+@@ -10905,13 +10900,6 @@ experimental domain Preload
+ 
+ # This domain allows interacting with the FedCM dialog.
+ experimental domain FedCm
+-  # Whether this is a sign-up or sign-in action for this account, i.e.
+-  # whether this account has ever been used to sign in to this RP before.
+-  type LoginState extends string
+-    enum
+-      SignIn
+-      SignUp
+-
+   # Corresponds to IdentityRequestAccount
+   type Account extends object
+     properties
+@@ -10921,25 +10909,10 @@ experimental domain FedCm
+       string givenName
+       string pictureUrl
+       string idpConfigUrl
+-      string idpSigninUrl
+-      LoginState loginState
+-      # These two are only set if the loginState is signUp
+-      optional string termsOfServiceUrl
+-      optional string privacyPolicyUrl
+ 
+   event dialogShown
+     parameters
+-      string dialogId
+       array of Account accounts
+ 
+   command enable
+   command disable
+-
+-  command selectAccount
+-    parameters
+-      string dialogId
+-      integer accountIndex
+-
+-  command dismissDialog
+-    parameters
+-      string dialogId
+```
+
 ## Roll protocol to r1115542 — _2023-03-10T04:29:00.000Z_
-######  Diff: [`3b5916a...a5ff2e3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3b5916a...a5ff2e3`)
+######  Diff: [`3b5916a...bc17667`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3b5916a...bc17667`)
 
 ```diff
 @@ browser_protocol.pdl:10900 @@ experimental domain Preload
@@ -10083,49 +10141,6 @@ index bd277eb..09c420e 100644
 +      # An array of node identifiers and descriptors for the highlight appearance.
 +      array of ScrollSnapHighlightConfig scrollSnapHighlightConfigs
 +
-   # Requests that backend shows paint rectangles
-   command setShowPaintRects
-     parameters
-```
-
-## Roll protocol to r867545 — _2021-03-30T10:16:09.000Z_
-######  Diff: [`f7c029d...154b166`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f7c029d...154b166`)
-
-```diff
-@@ browser_protocol.pdl:5995 @@ experimental domain Overlay
-       # Identifier of the node to highlight.
-       DOM.NodeId nodeId
- 
--  type ScrollSnapContainerHighlightConfig extends object
--    properties
--      # The style of the snapport border (default: transparent)
--      optional LineStyle snapportBorder
--      # The style of the snap area border (default: transparent)
--      optional LineStyle snapAreaBorder
--      # The margin highlight fill color (default: transparent).
--      optional DOM.RGBA scrollMarginColor
--      # The padding highlight fill color (default: transparent).
--      optional DOM.RGBA scrollPaddingColor
--
--  type ScrollSnapHighlightConfig extends object
--    properties
--      # A descriptor for the highlight appearance of scroll snap containers.
--      ScrollSnapContainerHighlightConfig scrollSnapContainerHighlightConfig
--      # Identifier of the node to highlight.
--      DOM.NodeId nodeId
--
-   # Configuration for dual screen hinge
-   type HingeConfig extends object
-     properties
-@@ -6183,11 +6165,6 @@ experimental domain Overlay
-       # An array of node identifiers and descriptors for the highlight appearance.
-       array of FlexNodeHighlightConfig flexNodeHighlightConfigs
- 
--  command setShowScrollSnapOverlays
--    parameters
--      # An array of node identifiers and descriptors for the highlight appearance.
--      array of ScrollSnapHighlightConfig scrollSnapHighlightConfigs
--
    # Requests that backend shows paint rectangles
    command setShowPaintRects
      parameters

@@ -3409,7 +3409,7 @@ export namespace Protocol {
             clientSecurityState?: Network.ClientSecurityState;
         }
 
-        export type AttributionReportingIssueType = ('PermissionPolicyDisabled' | 'UntrustworthyReportingOrigin' | 'InsecureContext' | 'InvalidHeader' | 'InvalidRegisterTriggerHeader' | 'InvalidEligibleHeader' | 'TooManyConcurrentRequests' | 'SourceAndTriggerHeaders' | 'SourceIgnored' | 'TriggerIgnored');
+        export type AttributionReportingIssueType = ('PermissionPolicyDisabled' | 'UntrustworthyReportingOrigin' | 'InsecureContext' | 'InvalidHeader' | 'InvalidRegisterTriggerHeader' | 'InvalidEligibleHeader' | 'TooManyConcurrentRequests' | 'SourceAndTriggerHeaders' | 'SourceIgnored' | 'TriggerIgnored' | 'OsSourceIgnored' | 'OsTriggerIgnored' | 'InvalidRegisterOsSourceHeader' | 'InvalidRegisterOsTriggerHeader' | 'WebAndOsHeaders');
 
         /**
          * Details for issues around "Attribution Reporting API" usage.
@@ -17002,6 +17002,12 @@ export namespace Protocol {
     export namespace FedCm {
 
         /**
+         * Whether this is a sign-up or sign-in action for this account, i.e.
+         * whether this account has ever been used to sign in to this RP before.
+         */
+        export type LoginState = ('SignIn' | 'SignUp');
+
+        /**
          * Corresponds to IdentityRequestAccount
          */
         export interface Account {
@@ -17011,9 +17017,26 @@ export namespace Protocol {
             givenName: string;
             pictureUrl: string;
             idpConfigUrl: string;
+            idpSigninUrl: string;
+            loginState: LoginState;
+            /**
+             * These two are only set if the loginState is signUp
+             */
+            termsOfServiceUrl?: string;
+            privacyPolicyUrl?: string;
+        }
+
+        export interface SelectAccountRequest {
+            dialogId: string;
+            accountIndex: integer;
+        }
+
+        export interface DismissDialogRequest {
+            dialogId: string;
         }
 
         export interface DialogShownEvent {
+            dialogId: string;
             accounts: Account[];
         }
     }
