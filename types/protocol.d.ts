@@ -4255,6 +4255,10 @@ export namespace Protocol {
              */
             selectorList: SelectorList;
             /**
+             * Array of selectors from ancestor style rules, sorted by distance from the current rule.
+             */
+            nestingSelectors?: string[];
+            /**
              * Parent stylesheet's origin.
              */
             origin: StyleSheetOrigin;

@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1119014 — _2023-03-18T04:27:47.000Z_
+######  Diff: [`4e13b66...5862fcd`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4e13b66...5862fcd`)
+
+```diff
+@@ browser_protocol.pdl:1409 @@ experimental domain CSS
+       optional StyleSheetId styleSheetId
+       # Rule selector data.
+       SelectorList selectorList
+-      # Array of selectors from ancestor style rules, sorted by distance from the current rule.
+-      experimental optional array of string nestingSelectors
+       # Parent stylesheet's origin.
+       StyleSheetOrigin origin
+       # Associated style declaration.
+```
+
 ## Roll protocol to r1116775 — _2023-03-14T04:28:31.000Z_
-######  Diff: [`bc17667...79b4548`](https://github.com/ChromeDevTools/devtools-protocol/compare/`bc17667...79b4548`)
+######  Diff: [`bc17667...4e13b66`](https://github.com/ChromeDevTools/devtools-protocol/compare/`bc17667...4e13b66`)
 
 ```diff
 @@ browser_protocol.pdl:712 @@ experimental domain Audits
@@ -10098,49 +10113,6 @@ index bd277eb..09c420e 100644
 -      # An array of node identifiers and descriptors for the highlight appearance.
 -      array of ScrollSnapHighlightConfig scrollSnapHighlightConfigs
 -
-   # Requests that backend shows paint rectangles
-   command setShowPaintRects
-     parameters
-```
-
-## Roll protocol to r867593 — _2021-03-30T14:16:08.000Z_
-######  Diff: [`154b166...3948369`](https://github.com/ChromeDevTools/devtools-protocol/compare/`154b166...3948369`)
-
-```diff
-@@ browser_protocol.pdl:5995 @@ experimental domain Overlay
-       # Identifier of the node to highlight.
-       DOM.NodeId nodeId
- 
-+  type ScrollSnapContainerHighlightConfig extends object
-+    properties
-+      # The style of the snapport border (default: transparent)
-+      optional LineStyle snapportBorder
-+      # The style of the snap area border (default: transparent)
-+      optional LineStyle snapAreaBorder
-+      # The margin highlight fill color (default: transparent).
-+      optional DOM.RGBA scrollMarginColor
-+      # The padding highlight fill color (default: transparent).
-+      optional DOM.RGBA scrollPaddingColor
-+
-+  type ScrollSnapHighlightConfig extends object
-+    properties
-+      # A descriptor for the highlight appearance of scroll snap containers.
-+      ScrollSnapContainerHighlightConfig scrollSnapContainerHighlightConfig
-+      # Identifier of the node to highlight.
-+      DOM.NodeId nodeId
-+
-   # Configuration for dual screen hinge
-   type HingeConfig extends object
-     properties
-@@ -6165,6 +6183,11 @@ experimental domain Overlay
-       # An array of node identifiers and descriptors for the highlight appearance.
-       array of FlexNodeHighlightConfig flexNodeHighlightConfigs
- 
-+  command setShowScrollSnapOverlays
-+    parameters
-+      # An array of node identifiers and descriptors for the highlight appearance.
-+      array of ScrollSnapHighlightConfig scrollSnapHighlightConfigs
-+
    # Requests that backend shows paint rectangles
    command setShowPaintRects
      parameters
