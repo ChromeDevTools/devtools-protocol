@@ -4651,7 +4651,7 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         'FedCm.enable': {
-            paramsType: [];
+            paramsType: [Protocol.FedCm.EnableRequest?];
             returnType: void;
         };
         'FedCm.disable': {

@@ -3970,7 +3970,7 @@ export namespace ProtocolProxyApi {
     }
 
     export interface FedCmApi {
-        enable(): Promise<void>;
+        enable(params: Protocol.FedCm.EnableRequest): Promise<void>;
 
         disable(): Promise<void>;
 

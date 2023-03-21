@@ -22913,11 +22913,10 @@
                         "InactivePageRestriction",
                         "StartFailed",
                         "TimeoutBackgrounded",
-                        "CrossSiteRedirect",
-                        "CrossSiteNavigation",
-                        "SameSiteCrossOriginRedirect",
-                        "SameSiteCrossOriginRedirectNotOptIn",
-                        "SameSiteCrossOriginNavigationNotOptIn",
+                        "CrossSiteRedirectInInitialNavigation",
+                        "CrossSiteNavigationInInitialNavigation",
+                        "SameSiteCrossOriginRedirectNotOptInInInitialNavigation",
+                        "SameSiteCrossOriginNavigationNotOptInInInitialNavigation",
                         "ActivationNavigationParameterMismatch",
                         "ActivatedInBackground",
                         "EmbedderHostDisallowed",
@@ -22930,7 +22929,11 @@
                         "PreloadingDisabled",
                         "BatterySaverEnabled",
                         "ActivatedDuringMainFrameNavigation",
-                        "PreloadingUnsupportedByWebContents"
+                        "PreloadingUnsupportedByWebContents",
+                        "CrossSiteRedirectInMainFrameNavigation",
+                        "CrossSiteNavigationInMainFrameNavigation",
+                        "SameSiteCrossOriginRedirectNotOptInInMainFrameNavigation",
+                        "SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation"
                     ]
                 },
                 {
@@ -23138,7 +23141,15 @@
             ],
             "commands": [
                 {
-                    "name": "enable"
+                    "name": "enable",
+                    "parameters": [
+                        {
+                            "name": "disableRejectionDelay",
+                            "description": "Allows callers to disable the promise rejection delay that would\nnormally happen, if this is unimportant to what's being tested.\n(step 4 of https://fedidcg.github.io/FedCM/#browser-api-rp-sign-in)",
+                            "optional": true,
+                            "type": "boolean"
+                        }
+                    ]
                 },
                 {
                     "name": "disable"

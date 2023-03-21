@@ -1,7 +1,53 @@
 
 
+## Roll protocol to r1119769 — _2023-03-21T04:27:17.000Z_
+######  Diff: [`40d0eff...c8649d6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`40d0eff...c8649d6`)
+
+```diff
+@@ browser_protocol.pdl:10842 @@ experimental domain Preload
+       InactivePageRestriction
+       StartFailed
+       TimeoutBackgrounded
+-      CrossSiteRedirectInInitialNavigation
+-      CrossSiteNavigationInInitialNavigation
+-      SameSiteCrossOriginRedirectNotOptInInInitialNavigation
+-      SameSiteCrossOriginNavigationNotOptInInInitialNavigation
++      CrossSiteRedirect
++      CrossSiteNavigation
++      SameSiteCrossOriginRedirect
++      SameSiteCrossOriginRedirectNotOptIn
++      SameSiteCrossOriginNavigationNotOptIn
+       ActivationNavigationParameterMismatch
+       ActivatedInBackground
+       EmbedderHostDisallowed
+@@ -10859,10 +10860,6 @@ experimental domain Preload
+       BatterySaverEnabled
+       ActivatedDuringMainFrameNavigation
+       PreloadingUnsupportedByWebContents
+-      CrossSiteRedirectInMainFrameNavigation
+-      CrossSiteNavigationInMainFrameNavigation
+-      SameSiteCrossOriginRedirectNotOptInInMainFrameNavigation
+-      SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation
+ 
+   # Fired when a prerender attempt is completed.
+   event prerenderAttemptCompleted
+@@ -10938,12 +10935,6 @@ experimental domain FedCm
+       array of Account accounts
+ 
+   command enable
+-    parameters
+-      # Allows callers to disable the promise rejection delay that would
+-      # normally happen, if this is unimportant to what's being tested.
+-      # (step 4 of https://fedidcg.github.io/FedCM/#browser-api-rp-sign-in)
+-      optional boolean disableRejectionDelay
+-
+   command disable
+ 
+   command selectAccount
+```
+
 ## Roll protocol to r1119014 — _2023-03-18T04:27:47.000Z_
-######  Diff: [`4e13b66...5862fcd`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4e13b66...5862fcd`)
+######  Diff: [`4e13b66...40d0eff`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4e13b66...40d0eff`)
 
 ```diff
 @@ browser_protocol.pdl:1409 @@ experimental domain CSS
@@ -10072,48 +10118,5 @@ index bd277eb..09c420e 100644
 -
    # Dispatches a key event to the page.
    command dispatchKeyEvent
-     parameters
-```
-
-## Roll protocol to r868034 — _2021-03-31T10:16:20.000Z_
-######  Diff: [`3948369...a3a5f92`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3948369...a3a5f92`)
-
-```diff
-@@ browser_protocol.pdl:5995 @@ experimental domain Overlay
-       # Identifier of the node to highlight.
-       DOM.NodeId nodeId
- 
--  type ScrollSnapContainerHighlightConfig extends object
--    properties
--      # The style of the snapport border (default: transparent)
--      optional LineStyle snapportBorder
--      # The style of the snap area border (default: transparent)
--      optional LineStyle snapAreaBorder
--      # The margin highlight fill color (default: transparent).
--      optional DOM.RGBA scrollMarginColor
--      # The padding highlight fill color (default: transparent).
--      optional DOM.RGBA scrollPaddingColor
--
--  type ScrollSnapHighlightConfig extends object
--    properties
--      # A descriptor for the highlight appearance of scroll snap containers.
--      ScrollSnapContainerHighlightConfig scrollSnapContainerHighlightConfig
--      # Identifier of the node to highlight.
--      DOM.NodeId nodeId
--
-   # Configuration for dual screen hinge
-   type HingeConfig extends object
-     properties
-@@ -6183,11 +6165,6 @@ experimental domain Overlay
-       # An array of node identifiers and descriptors for the highlight appearance.
-       array of FlexNodeHighlightConfig flexNodeHighlightConfigs
- 
--  command setShowScrollSnapOverlays
--    parameters
--      # An array of node identifiers and descriptors for the highlight appearance.
--      array of ScrollSnapHighlightConfig scrollSnapHighlightConfigs
--
-   # Requests that backend shows paint rectangles
-   command setShowPaintRects
      parameters
 ```
