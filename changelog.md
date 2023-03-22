@@ -1,7 +1,33 @@
 
 
+## Roll protocol to r1120367 — _2023-03-22T04:27:34.000Z_
+######  Diff: [`d451302...7632f73`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d451302...7632f73`)
+
+```diff
+@@ browser_protocol.pdl:756 @@ experimental domain Audits
+       FormInputAssignedAutocompleteValueToIdOrNameAttributeError
+       FormLabelHasNeitherForNorNestedInput
+       FormLabelForMatchesNonExistingIdError
+-      FormInputHasWrongButWellIntendedAutocompleteValueError
+ 
+   # Depending on the concrete errorType, different properties are set.
+   type GenericIssueDetails extends object
+@@ -10904,10 +10903,9 @@ experimental domain Preload
+       string prerenderingUrl
+       PreloadingStatus status
+ 
+-  # Send a list of sources for all preloading attempts in a document.
++  # Send a list of sources for all preloading attempts.
+   event preloadingAttemptSourcesUpdated
+     parameters
+-      Network.LoaderId loaderId
+       array of PreloadingAttemptSource preloadingAttemptSources
+ 
+ # This domain allows interacting with the FedCM dialog.
+```
+
 ## Roll protocol to r1119769 — _2023-03-21T04:27:17.000Z_
-######  Diff: [`40d0eff...c8649d6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`40d0eff...c8649d6`)
+######  Diff: [`40d0eff...d451302`](https://github.com/ChromeDevTools/devtools-protocol/compare/`40d0eff...d451302`)
 
 ```diff
 @@ browser_protocol.pdl:10842 @@ experimental domain Preload
@@ -10065,58 +10091,4 @@ index bd277eb..09c420e 100644
      parameters
        # Global unique identifier of the download.
        string guid
-```
-
-## Roll protocol to r869402 — _2021-04-06T06:16:05.000Z_
-######  Diff: [`a3a5f92...0210b99`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a3a5f92...0210b99`)
-
-```diff
-@@ browser_protocol.pdl:3766 @@ domain Input
-   # UTC time in seconds, counted from January 1, 1970.
-   type TimeSinceEpoch extends number
- 
--  experimental type DragDataItem extends object
--    properties
--      # Mime type of the dragged data.
--      string mimeType
--      # Depending of the value of `mimeType`, it contains the dragged link,
--      # text, HTML markup or any other data.
--      string data
--
--      # Title associated with a link. Only valid when `mimeType` == "text/uri-list".
--      optional string title
--
--      # Stores the base URL for the contained markup. Only valid when `mimeType`
--      # == "text/html".
--      optional string baseURL
--
--
--  experimental type DragData extends object
--    properties
--      array of DragDataItem items
--      # Bit field representing allowed drag operations. Copy = 1, Link = 2, Move = 16
--      integer dragOperationsMask
--
--  # Dispatches a drag event into the page.
--  experimental command dispatchDragEvent
--    parameters
--      # Type of the drag event.
--      enum type
--        dragEnter
--        dragOver
--        drop
--        dragCancel
--      # X coordinate of the event relative to the main frame's viewport in CSS pixels.
--      number x
--      # Y coordinate of the event relative to the main frame's viewport in CSS pixels. 0 refers to
--      # the top of the viewport and Y increases as it proceeds towards the bottom of the viewport.
--      number y
--      DragData data
--      # Bit field representing pressed modifier keys. Alt=1, Ctrl=2, Meta/Command=4, Shift=8
--      # (default: 0).
--      optional integer modifiers
--
-   # Dispatches a key event to the page.
-   command dispatchKeyEvent
-     parameters
 ```

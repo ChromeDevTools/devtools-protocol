@@ -1547,7 +1547,8 @@
                         "FormAriaLabelledByToNonExistingId",
                         "FormInputAssignedAutocompleteValueToIdOrNameAttributeError",
                         "FormLabelHasNeitherForNorNestedInput",
-                        "FormLabelForMatchesNonExistingIdError"
+                        "FormLabelForMatchesNonExistingIdError",
+                        "FormInputHasWrongButWellIntendedAutocompleteValueError"
                     ]
                 },
                 {
@@ -23043,8 +23044,12 @@
                 },
                 {
                     "name": "preloadingAttemptSourcesUpdated",
-                    "description": "Send a list of sources for all preloading attempts.",
+                    "description": "Send a list of sources for all preloading attempts in a document.",
                     "parameters": [
+                        {
+                            "name": "loaderId",
+                            "$ref": "Network.LoaderId"
+                        },
                         {
                             "name": "preloadingAttemptSources",
                             "type": "array",

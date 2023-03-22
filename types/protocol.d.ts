@@ -3443,7 +3443,7 @@ export namespace Protocol {
             location?: SourceCodeLocation;
         }
 
-        export type GenericIssueErrorType = ('CrossOriginPortalPostMessageError' | 'FormLabelForNameError' | 'FormDuplicateIdForInputError' | 'FormInputWithNoLabelError' | 'FormAutocompleteAttributeEmptyError' | 'FormEmptyIdAndNameAttributesForInputError' | 'FormAriaLabelledByToNonExistingId' | 'FormInputAssignedAutocompleteValueToIdOrNameAttributeError' | 'FormLabelHasNeitherForNorNestedInput' | 'FormLabelForMatchesNonExistingIdError');
+        export type GenericIssueErrorType = ('CrossOriginPortalPostMessageError' | 'FormLabelForNameError' | 'FormDuplicateIdForInputError' | 'FormInputWithNoLabelError' | 'FormAutocompleteAttributeEmptyError' | 'FormEmptyIdAndNameAttributesForInputError' | 'FormAriaLabelledByToNonExistingId' | 'FormInputAssignedAutocompleteValueToIdOrNameAttributeError' | 'FormLabelHasNeitherForNorNestedInput' | 'FormLabelForMatchesNonExistingIdError' | 'FormInputHasWrongButWellIntendedAutocompleteValueError');
 
         /**
          * Depending on the concrete errorType, different properties are set.
@@ -16993,9 +16993,10 @@ export namespace Protocol {
         }
 
         /**
-         * Send a list of sources for all preloading attempts.
+         * Send a list of sources for all preloading attempts in a document.
          */
         export interface PreloadingAttemptSourcesUpdatedEvent {
+            loaderId: Network.LoaderId;
             preloadingAttemptSources: PreloadingAttemptSource[];
         }
     }

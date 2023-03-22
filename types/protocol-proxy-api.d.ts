@@ -3963,7 +3963,7 @@ export namespace ProtocolProxyApi {
         on(event: 'prerenderStatusUpdated', listener: (params: Protocol.Preload.PrerenderStatusUpdatedEvent) => void): void;
 
         /**
-         * Send a list of sources for all preloading attempts.
+         * Send a list of sources for all preloading attempts in a document.
          */
         on(event: 'preloadingAttemptSourcesUpdated', listener: (params: Protocol.Preload.PreloadingAttemptSourcesUpdatedEvent) => void): void;
 
