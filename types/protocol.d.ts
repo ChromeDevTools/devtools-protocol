@@ -16955,6 +16955,7 @@ export namespace Protocol {
          * Fired when a prerender attempt is completed.
          */
         export interface PrerenderAttemptCompletedEvent {
+            key: PreloadingAttemptKey;
             /**
              * The frame id of the frame initiating prerendering.
              */
@@ -16972,6 +16973,7 @@ export namespace Protocol {
          * Fired when a prefetch attempt is updated.
          */
         export interface PrefetchStatusUpdatedEvent {
+            key: PreloadingAttemptKey;
             /**
              * The frame id of the frame initiating prefetch.
              */
@@ -16984,6 +16986,7 @@ export namespace Protocol {
          * Fired when a prerender attempt is updated.
          */
         export interface PrerenderStatusUpdatedEvent {
+            key: PreloadingAttemptKey;
             /**
              * The frame id of the frame initiating prerender.
              */

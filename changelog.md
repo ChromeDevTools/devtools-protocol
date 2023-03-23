@@ -1,7 +1,37 @@
 
 
+## Roll protocol to r1120988 — _2023-03-23T04:27:35.000Z_
+######  Diff: [`7bd9b6c...f3a17c7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7bd9b6c...f3a17c7`)
+
+```diff
+@@ browser_protocol.pdl:10868 @@ experimental domain Preload
+   # Fired when a prerender attempt is completed.
+   event prerenderAttemptCompleted
+     parameters
+-      PreloadingAttemptKey key
+       # The frame id of the frame initiating prerendering.
+       Page.FrameId initiatingFrameId
+       string prerenderingUrl
+@@ -10892,7 +10891,6 @@ experimental domain Preload
+   # Fired when a prefetch attempt is updated.
+   event prefetchStatusUpdated
+     parameters
+-      PreloadingAttemptKey key
+       # The frame id of the frame initiating prefetch.
+       Page.FrameId initiatingFrameId
+       string prefetchUrl
+@@ -10901,7 +10899,6 @@ experimental domain Preload
+   # Fired when a prerender attempt is updated.
+   event prerenderStatusUpdated
+     parameters
+-      PreloadingAttemptKey key
+       # The frame id of the frame initiating prerender.
+       Page.FrameId initiatingFrameId
+       string prerenderingUrl
+```
+
 ## Roll protocol to r1120367 — _2023-03-22T04:27:34.000Z_
-######  Diff: [`d451302...7632f73`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d451302...7632f73`)
+######  Diff: [`d451302...7bd9b6c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d451302...7bd9b6c`)
 
 ```diff
 @@ browser_protocol.pdl:756 @@ experimental domain Audits
@@ -10022,73 +10052,4 @@ index bd277eb..09c420e 100644
  experimental domain Inspector
  
    # Disables inspector domain notifications.
-```
-
-## Roll protocol to r869754 — _2021-04-06T23:16:23.000Z_
-######  Diff: [`0210b99...b2ed548`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0210b99...b2ed548`)
-
-```diff
-@@ browser_protocol.pdl:987 @@ domain Browser
-       # The default path to save downloaded files to. This is requred if behavior is set to 'allow'
-       # or 'allowAndName'.
-       optional string downloadPath
--      # Whether to emit download events (defaults to false).
--      optional boolean eventsEnabled
- 
-   # Cancel a download if in progress
-   experimental command cancelDownload
-@@ -998,33 +996,6 @@ domain Browser
-       # BrowserContext to perform the action in. When omitted, default browser context is used.
-       optional BrowserContextID browserContextId
- 
--  # Fired when page is about to start a download.
--  experimental event downloadWillBegin
--    parameters
--      # Id of the frame that caused the download to begin.
--      Page.FrameId frameId
--      # Global unique identifier of the download.
--      string guid
--      # URL of the resource being downloaded.
--      string url
--      # Suggested file name of the resource (the actual name of the file saved on disk may differ).
--      string suggestedFilename
--
--  # Fired when download makes progress. Last call has |done| == true.
--  experimental event downloadProgress
--    parameters
--      # Global unique identifier of the download.
--      string guid
--      # Total expected bytes to download.
--      number totalBytes
--      # Total bytes received.
--      number receivedBytes
--      # Download status.
--      enum state
--        inProgress
--        completed
--        canceled
--
-   # Close browser gracefully.
-   command close
- 
-@@ -7340,8 +7311,7 @@ domain Page
-       FrameId frameId
- 
-   # Fired when page is about to start a download.
--  # Deprecated. Use Browser.downloadWillBegin instead.
--  experimental deprecated event downloadWillBegin
-+  experimental event downloadWillBegin
-     parameters
-       # Id of the frame that caused download to begin.
-       FrameId frameId
-@@ -7353,8 +7323,7 @@ domain Page
-       string suggestedFilename
- 
-   # Fired when download makes progress. Last call has |done| == true.
--  # Deprecated. Use Browser.downloadProgress instead.
--  experimental deprecated event downloadProgress
-+  experimental event downloadProgress
-     parameters
-       # Global unique identifier of the download.
-       string guid
 ```
