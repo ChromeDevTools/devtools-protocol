@@ -1,7 +1,117 @@
 
 
+## Roll protocol to r1121538 — _2023-03-24T04:27:33.000Z_
+######  Diff: [`6a030f2...527540a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6a030f2...527540a`)
+
+```diff
+@@ browser_protocol.pdl:8984 @@ experimental domain Storage
+       cache_storage
+       interest_groups
+       shared_storage
+-      storage_buckets
+       all
+       other
+ 
+@@ -9120,23 +9119,6 @@ experimental domain Storage
+       # SharedStorageAccessType.workletSet.
+       optional boolean ignoreIfPresent
+ 
+-  type StorageBucketsDurability extends string
+-    enum
+-      relaxed
+-      strict
+-
+-  type StorageBucketInfo extends object
+-    properties
+-      SerializedStorageKey storageKey
+-      string id
+-      string name
+-      boolean isDefault
+-      Network.TimeSinceEpoch expiration
+-      # Storage quota (bytes).
+-      number quota
+-      boolean persistent
+-      StorageBucketsDurability durability
+-
+   # Returns a storage key given a frame id.
+   command getStorageKeyForFrame
+     parameters
+@@ -9333,18 +9315,6 @@ experimental domain Storage
+     parameters
+       boolean enable
+ 
+-  # Set tracking for a storage key's buckets.
+-  experimental command setStorageBucketTracking
+-    parameters
+-      string storageKey
+-      boolean enable
+-
+-  # Deletes the Storage Bucket with the given storage key and bucket name.
+-  experimental command deleteStorageBucket
+-    parameters
+-      string storageKey
+-      string bucketName
+-
+   # A cache's contents have been modified.
+   event cacheStorageContentUpdated
+     parameters
+@@ -9407,14 +9377,6 @@ experimental domain Storage
+       # presence/absence depends on `type`.
+       SharedStorageAccessParams params
+ 
+-  event storageBucketCreatedOrUpdated
+-    parameters
+-      StorageBucketInfo bucket
+-
+-  event storageBucketDeleted
+-    parameters
+-      string bucketId
+-
+ # The SystemInfo domain defines methods and events for querying low-level system information.
+ experimental domain SystemInfo
+ 
+@@ -10786,16 +10748,6 @@ experimental domain Preload
+       # - https://wicg.github.io/nav-speculation/speculation-rules.html
+       # - https://github.com/WICG/nav-speculation/blob/main/triggers.md
+       string sourceText
+-      # Error information
+-      # `errorMessage` is null iff `errorType` is null.
+-      optional RuleSetErrorType errorType
+-      # TODO(https://crbug.com/1425354): Replace this property with structured error.
+-      deprecated optional string errorMessage
+-
+-  type RuleSetErrorType extends string
+-    enum
+-      SourceIsNotJsonObject
+-      InvalidRulesSkipped
+ 
+   # The type of preloading attempted. It corresponds to
+   # mojom::SpeculationAction (although PrefetchWithSubresources is omitted as it
+@@ -10989,10 +10941,6 @@ experimental domain FedCm
+     parameters
+       string dialogId
+       array of Account accounts
+-      # These exist primarily so that the caller can verify the
+-      # RP context was used appropriately.
+-      string title
+-      optional string subtitle
+ 
+   command enable
+     parameters
+@@ -11011,9 +10959,3 @@ experimental domain FedCm
+   command dismissDialog
+     parameters
+       string dialogId
+-      optional boolean triggerCooldown
+-
+-  # Resets the cooldown time, if any, to allow the next FedCM call to show
+-  # a dialog even if one was recently dismissed by the user.
+-  command resetCooldown
+-
+```
+
 ## Roll protocol to r1120988 — _2023-03-23T04:27:35.000Z_
-######  Diff: [`7bd9b6c...f3a17c7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7bd9b6c...f3a17c7`)
+######  Diff: [`7bd9b6c...6a030f2`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7bd9b6c...6a030f2`)
 
 ```diff
 @@ browser_protocol.pdl:10868 @@ experimental domain Preload
@@ -10020,36 +10130,4 @@ index bd277eb..09c420e 100644
        webp
  
    experimental command setDisabledImageTypes
-```
-
-## Roll protocol to r869921 — _2021-04-07T08:16:07.000Z_
-######  Diff: [`b2ed548...7dd7cbb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b2ed548...7dd7cbb`)
-
-```diff
-@@ browser_protocol.pdl:3986 @@ domain Input
-       # Ignores input events processing when set to true.
-       boolean ignore
- 
--  # Prevents default drag and drop behavior and instead emits `Input.dragIntercepted` events.
--  # Drag and drop behavior can be directly controlled via `Input.dispatchDragEvent`.
--  experimental command setInterceptDrags
--    parameters
--      boolean enabled
--
-   # Synthesizes a pinch gesture over a time period by issuing appropriate touch events.
-   experimental command synthesizePinchGesture
-     parameters
-@@ -4053,12 +4047,6 @@ domain Input
-       # for the preferred input type).
-       optional GestureSourceType gestureSourceType
- 
--  # Emitted only when `Input.setInterceptDrags` is enabled. Use this data with `Input.dispatchDragEvent` to
--  # restore normal drag and drop behavior.
--  experimental event dragIntercepted
--    parameters
--      DragData data
--
- experimental domain Inspector
- 
-   # Disables inspector domain notifications.
 ```

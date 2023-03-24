@@ -14568,7 +14568,7 @@ export namespace Protocol {
         /**
          * Enum of possible storage types.
          */
-        export type StorageType = ('appcache' | 'cookies' | 'file_systems' | 'indexeddb' | 'local_storage' | 'shader_cache' | 'websql' | 'service_workers' | 'cache_storage' | 'interest_groups' | 'shared_storage' | 'all' | 'other');
+        export type StorageType = ('appcache' | 'cookies' | 'file_systems' | 'indexeddb' | 'local_storage' | 'shader_cache' | 'websql' | 'service_workers' | 'cache_storage' | 'interest_groups' | 'shared_storage' | 'storage_buckets' | 'all' | 'other');
 
         /**
          * Usage for a storage type.
@@ -14720,6 +14720,22 @@ export namespace Protocol {
              * SharedStorageAccessType.workletSet.
              */
             ignoreIfPresent?: boolean;
+        }
+
+        export type StorageBucketsDurability = ('relaxed' | 'strict');
+
+        export interface StorageBucketInfo {
+            storageKey: SerializedStorageKey;
+            id: string;
+            name: string;
+            isDefault: boolean;
+            expiration: Network.TimeSinceEpoch;
+            /**
+             * Storage quota (bytes).
+             */
+            quota: number;
+            persistent: boolean;
+            durability: StorageBucketsDurability;
         }
 
         export interface GetStorageKeyForFrameRequest {
@@ -14955,6 +14971,16 @@ export namespace Protocol {
             enable: boolean;
         }
 
+        export interface SetStorageBucketTrackingRequest {
+            storageKey: string;
+            enable: boolean;
+        }
+
+        export interface DeleteStorageBucketRequest {
+            storageKey: string;
+            bucketName: string;
+        }
+
         /**
          * A cache's contents have been modified.
          */
@@ -15059,6 +15085,14 @@ export namespace Protocol {
              * presence/absence depends on `type`.
              */
             params: SharedStorageAccessParams;
+        }
+
+        export interface StorageBucketCreatedOrUpdatedEvent {
+            bucket: StorageBucketInfo;
+        }
+
+        export interface StorageBucketDeletedEvent {
+            bucketId: string;
         }
     }
 
@@ -16886,7 +16920,18 @@ export namespace Protocol {
              * - https://github.com/WICG/nav-speculation/blob/main/triggers.md
              */
             sourceText: string;
+            /**
+             * Error information
+             * `errorMessage` is null iff `errorType` is null.
+             */
+            errorType?: RuleSetErrorType;
+            /**
+             * TODO(https://crbug.com/1425354): Replace this property with structured error.
+             */
+            errorMessage?: string;
         }
+
+        export type RuleSetErrorType = ('SourceIsNotJsonObject' | 'InvalidRulesSkipped');
 
         /**
          * The type of preloading attempted. It corresponds to
@@ -17050,11 +17095,18 @@ export namespace Protocol {
 
         export interface DismissDialogRequest {
             dialogId: string;
+            triggerCooldown?: boolean;
         }
 
         export interface DialogShownEvent {
             dialogId: string;
             accounts: Account[];
+            /**
+             * These exist primarily so that the caller can verify the
+             * RP context was used appropriately.
+             */
+            title: string;
+            subtitle?: string;
         }
     }
 }
