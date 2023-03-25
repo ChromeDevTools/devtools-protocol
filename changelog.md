@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1122063 — _2023-03-25T04:27:16.000Z_
+######  Diff: [`4295d0a...cb69dcf`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4295d0a...cb69dcf`)
+
+```diff
+@@ js_protocol.pdl:580 @@ domain Debugger
+         other
+         promiseRejection
+         XHR
+-        step
+       # Object containing break-specific auxiliary properties.
+       optional object data
+       # Hit breakpoints IDs
+```
+
 ## Roll protocol to r1121538 — _2023-03-24T04:27:33.000Z_
-######  Diff: [`6a030f2...527540a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6a030f2...527540a`)
+######  Diff: [`6a030f2...4295d0a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6a030f2...4295d0a`)
 
 ```diff
 @@ browser_protocol.pdl:8984 @@ experimental domain Storage
@@ -10116,18 +10130,4 @@ index bd277eb..09c420e 100644
      returns
        # The nodes in the DOM tree. The DOMNode at index 0 corresponds to the root document.
        array of DocumentSnapshot documents
-```
-
-## Roll protocol to r871249 — _2021-04-10T11:16:12.000Z_
-######  Diff: [`7dd7cbb...ca9d8a4`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7dd7cbb...ca9d8a4`)
-
-```diff
-@@ browser_protocol.pdl:3450 @@ domain Emulation
-   experimental type DisabledImageType extends string
-     enum
-       avif
--      jxl
-       webp
- 
-   experimental command setDisabledImageTypes
 ```

@@ -838,6 +838,7 @@ export namespace Protocol {
             Other = 'other',
             PromiseRejection = 'promiseRejection',
             XHR = 'XHR',
+            Step = 'step',
         }
 
         /**
@@ -851,7 +852,7 @@ export namespace Protocol {
             /**
              * Pause reason. (PausedEventReason enum)
              */
-            reason: ('ambiguous' | 'assert' | 'CSPViolation' | 'debugCommand' | 'DOM' | 'EventListener' | 'exception' | 'instrumentation' | 'OOM' | 'other' | 'promiseRejection' | 'XHR');
+            reason: ('ambiguous' | 'assert' | 'CSPViolation' | 'debugCommand' | 'DOM' | 'EventListener' | 'exception' | 'instrumentation' | 'OOM' | 'other' | 'promiseRejection' | 'XHR' | 'step');
             /**
              * Object containing break-specific auxiliary properties.
              */
