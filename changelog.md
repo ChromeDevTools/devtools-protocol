@@ -1,7 +1,46 @@
 
 
+## Roll protocol to r1122837 — _2023-03-28T04:27:31.000Z_
+######  Diff: [`0b187a3...a23fa07`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0b187a3...a23fa07`)
+
+```diff
+@@ browser_protocol.pdl:1669 @@ experimental domain CSS
+       # Available variation settings (a.k.a. "axes").
+       optional array of FontVariationAxis fontVariationAxes
+ 
+-  # CSS try rule representation.
+-  type CSSTryRule extends object
+-    properties
+-      # The css style sheet identifier (absent for user agent stylesheet and user-specified
+-      # stylesheet rules) this rule came from.
+-      optional StyleSheetId styleSheetId
+-      # Parent stylesheet's origin.
+-      StyleSheetOrigin origin
+-      # Associated style declaration.
+-      optional CSSStyle style
+-
+-  # CSS position-fallback rule representation.
+-  type CSSPositionFallbackRule extends object
+-    properties
+-      Value name
+-      # List of keyframes.
+-      array of CSSTryRule tryRules
+-
+   # CSS keyframes rule representation.
+   type CSSKeyframesRule extends object
+     properties
+@@ -1820,8 +1802,6 @@ experimental domain CSS
+       optional array of InheritedPseudoElementMatches inheritedPseudoElements
+       # A list of CSS keyframed animations matching this node.
+       optional array of CSSKeyframesRule cssKeyframesRules
+-      # A list of CSS position fallbacks matching this node.
+-      optional array of CSSPositionFallbackRule cssPositionFallbackRules
+       # Id of the first parent element that does not have display: contents.
+       experimental optional DOM.NodeId parentLayoutNodeId
+```
+
 ## Roll protocol to r1122063 — _2023-03-25T04:27:16.000Z_
-######  Diff: [`4295d0a...cb69dcf`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4295d0a...cb69dcf`)
+######  Diff: [`4295d0a...0b187a3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4295d0a...0b187a3`)
 
 ```diff
 @@ js_protocol.pdl:580 @@ domain Debugger
@@ -10098,36 +10137,4 @@ index bd277eb..09c420e 100644
        # Distributed nodes for given insertion point.
        optional array of BackendNode distributedNodes
        # Whether the node is SVG.
-```
-
-## Roll protocol to r871496 — _2021-04-12T16:16:00.000Z_
-######  Diff: [`ca9d8a4...910add1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ca9d8a4...910add1`)
-
-```diff
-@@ browser_protocol.pdl:2987 @@ experimental domain DOMSnapshot
-       optional array of Rectangle scrollRects
-       # The client rect of nodes. Only available when includeDOMRects is set to true
-       optional array of Rectangle clientRects
--      # The list of background colors that are blended with colors of overlapping elements.
--      experimental optional array of StringIndex blendedBackgroundColors
--      # The list of computed text opacities.
--      experimental optional array of number textColorOpacities
- 
-   # Table of details of the post layout rendered text positions. The exact layout should not be regarded as
-   # stable and may change between versions.
-@@ -3047,14 +3043,6 @@ experimental domain DOMSnapshot
-       optional boolean includePaintOrder
-       # Whether to include DOM rectangles (offsetRects, clientRects, scrollRects) into the snapshot
-       optional boolean includeDOMRects
--      # Whether to include blended background colors in the snapshot (default: false).
--      # Blended background color is achieved by blending background colors of all elements
--      # that overlap with the current element.
--      experimental optional boolean includeBlendedBackgroundColors
--      # Whether to include text color opacity in the snapshot (default: false).
--      # An element might have the opacity property set that affects the text color of the element.
--      # The final text color opacity is computed based on the opacity of all overlapping elements.
--      experimental optional boolean includeTextColorOpacities
-     returns
-       # The nodes in the DOM tree. The DOMNode at index 0 corresponds to the root document.
-       array of DocumentSnapshot documents
 ```
