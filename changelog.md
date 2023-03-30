@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1124027 — _2023-03-30T04:27:29.000Z_
+######  Diff: [`bab8b36...4c515f8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`bab8b36...4c515f8`)
+
+```diff
+@@ browser_protocol.pdl:765 @@ experimental domain Audits
+       GenericIssueErrorType errorType
+       optional Page.FrameId frameId
+       optional DOM.BackendNodeId violatingNodeId
+-      optional string violatingNodeAttribute
+ 
+   # This issue tracks information needed to print a deprecation message.
+   # https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/frame/third_party/blink/renderer/core/frame/deprecation/README.md
+```
+
 ## Roll protocol to r1122837 — _2023-03-28T04:27:31.000Z_
-######  Diff: [`0b187a3...a23fa07`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0b187a3...a23fa07`)
+######  Diff: [`0b187a3...bab8b36`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0b187a3...bab8b36`)
 
 ```diff
 @@ browser_protocol.pdl:1669 @@ experimental domain CSS
@@ -10118,23 +10132,4 @@ index bd277eb..09c420e 100644
  
    # An inspector issue reported from the back-end.
    type InspectorIssue extends object
-```
-
-## Roll protocol to r871615 — _2021-04-12T20:16:16.000Z_
-######  Diff: [`910add1...a45730c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`910add1...a45730c`)
-
-```diff
-@@ browser_protocol.pdl:1986 @@ domain DOM
-       optional Node templateContent
-       # Pseudo elements associated with this node.
-       optional array of Node pseudoElements
--      # Deprecated, as the HTML Imports API has been removed (crbug.com/937746).
--      # This property used to return the imported document for the HTMLImport links.
--      # The property is always undefined now.
--      deprecated optional Node importedDocument
-+      # Import document for the HTMLImport links.
-+      optional Node importedDocument
-       # Distributed nodes for given insertion point.
-       optional array of BackendNode distributedNodes
-       # Whether the node is SVG.
 ```

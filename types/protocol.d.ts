@@ -3456,6 +3456,7 @@ export namespace Protocol {
             errorType: GenericIssueErrorType;
             frameId?: Page.FrameId;
             violatingNodeId?: DOM.BackendNodeId;
+            violatingNodeAttribute?: string;
         }
 
         /**
