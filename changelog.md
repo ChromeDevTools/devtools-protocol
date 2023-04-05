@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1126404 — _2023-04-05T04:27:02.000Z_
+######  Diff: [`4cb5368...7c69fb5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4cb5368...7c69fb5`)
+
+```diff
+@@ browser_protocol.pdl:1679 @@ experimental domain CSS
+       # Parent stylesheet's origin.
+       StyleSheetOrigin origin
+       # Associated style declaration.
+-      CSSStyle style
++      optional CSSStyle style
+ 
+   # CSS position-fallback rule representation.
+   type CSSPositionFallbackRule extends object
+```
+
 ## Roll protocol to r1124027 — _2023-03-30T04:27:29.000Z_
-######  Diff: [`bab8b36...4c515f8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`bab8b36...4c515f8`)
+######  Diff: [`bab8b36...4cb5368`](https://github.com/ChromeDevTools/devtools-protocol/compare/`bab8b36...4cb5368`)
 
 ```diff
 @@ browser_protocol.pdl:765 @@ experimental domain Audits
@@ -10090,46 +10105,4 @@ index bd277eb..09c420e 100644
  
    # Fired when opening document to write to.
    experimental event documentOpened
-```
-
-## Roll protocol to r871838 — _2021-04-13T08:16:03.000Z_
-######  Diff: [`a45730c...0dacfa7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a45730c...0dacfa7`)
-
-```diff
-@@ browser_protocol.pdl:715 @@ experimental domain Audits
-       optional Network.IPAddressSpace resourceIPAddressSpace
-       optional Network.ClientSecurityState clientSecurityState
- 
--  type AttributionReportingIssueType extends string
--    enum
--      PermissionPolicyDisabled
--
--  # Details for issues around "Attribution Reporting API" usage.
--  # Explainer: https://github.com/WICG/conversion-measurement-api
--  type AttributionReportingIssueDetails extends object
--    properties
--      AttributionReportingIssueType violationType
--      optional AffectedFrame frame
--      optional AffectedRequest request
--      optional DOM.BackendNodeId violatingNodeId
--
-   # A unique identifier for the type of issue. Each type may use one of the
-   # optional fields in InspectorIssueDetails to convey more specific
-   # information about the kind of issue.
-@@ -742,7 +729,6 @@ experimental domain Audits
-       TrustedWebActivityIssue
-       LowTextContrastIssue
-       CorsIssue
--      AttributionReportingIssue
- 
-   # This struct holds a list of optional fields with additional information
-   # specific to the kind of issue. When adding a new issue code, please also
-@@ -758,7 +744,6 @@ experimental domain Audits
-       optional TrustedWebActivityIssueDetails twaQualityEnforcementDetails
-       optional LowTextContrastIssueDetails lowTextContrastIssueDetails
-       optional CorsIssueDetails corsIssueDetails
--      optional AttributionReportingIssueDetails attributionReportingIssueDetails
- 
-   # An inspector issue reported from the back-end.
-   type InspectorIssue extends object
 ```

@@ -3555,7 +3555,6 @@
                         {
                             "name": "style",
                             "description": "Associated style declaration.",
-                            "optional": true,
                             "$ref": "CSSStyle"
                         }
                     ]

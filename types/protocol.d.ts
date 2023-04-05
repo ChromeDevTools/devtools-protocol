@@ -4735,7 +4735,7 @@ export namespace Protocol {
             /**
              * Associated style declaration.
              */
-            style?: CSSStyle;
+            style: CSSStyle;
         }
 
         /**
