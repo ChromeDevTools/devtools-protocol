@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1129085 — _2023-04-12T04:26:50.000Z_
+######  Diff: [`22ae458...f81e2a7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`22ae458...f81e2a7`)
+
+```diff
+@@ browser_protocol.pdl:708 @@ experimental domain Audits
+       InvalidHeader
+       InvalidRegisterTriggerHeader
+       InvalidEligibleHeader
+-      # TODO(crbug.com/1431942): Remove this issue once DevTools stops
+-      # referencing it
+       TooManyConcurrentRequests
+       SourceAndTriggerHeaders
+       SourceIgnored
+```
+
 ## Roll protocol to r1126404 — _2023-04-05T04:27:02.000Z_
-######  Diff: [`4cb5368...7c69fb5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4cb5368...7c69fb5`)
+######  Diff: [`4cb5368...22ae458`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4cb5368...22ae458`)
 
 ```diff
 @@ browser_protocol.pdl:1679 @@ experimental domain CSS
@@ -10080,29 +10095,4 @@ index bd277eb..09c420e 100644
    event loadEventFired
      parameters
        Network.MonotonicTime timestamp
-```
-
-## Roll protocol to r872298 — _2021-04-14T06:16:06.000Z_
-######  Diff: [`0dacfa7...1a49020`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0dacfa7...1a49020`)
-
-```diff
-@@ browser_protocol.pdl:7329 @@ domain Page
-         # A new frame target will be created (see Target.attachedToTarget).
-         swap
- 
--  # The type of a frameNavigated event.
--  experimental type NavigationType extends string
--    enum
--      Navigation
--      BackForwardCacheRestore
--
-   # Fired once navigation of the frame has completed. Frame is now associated with the new loader.
-   event frameNavigated
-     parameters
-       # Frame object.
-       Frame frame
--      experimental NavigationType type
- 
-   # Fired when opening document to write to.
-   experimental event documentOpened
 ```
