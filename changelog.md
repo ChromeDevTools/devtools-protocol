@@ -1,7 +1,23 @@
 
 
+## Roll protocol to r1129676 — _2023-04-13T04:27:09.000Z_
+######  Diff: [`d7c1808...5f583d4`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d7c1808...5f583d4`)
+
+```diff
+@@ browser_protocol.pdl:708 @@ experimental domain Audits
+       InvalidHeader
+       InvalidRegisterTriggerHeader
+       InvalidEligibleHeader
++      # TODO(crbug.com/1431942): Remove this issue once DevTools stops
++      # referencing it
++      TooManyConcurrentRequests
+       SourceAndTriggerHeaders
+       SourceIgnored
+       TriggerIgnored
+```
+
 ## Roll protocol to r1129085 — _2023-04-12T04:26:50.000Z_
-######  Diff: [`22ae458...f81e2a7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`22ae458...f81e2a7`)
+######  Diff: [`22ae458...d7c1808`](https://github.com/ChromeDevTools/devtools-protocol/compare/`22ae458...d7c1808`)
 
 ```diff
 @@ browser_protocol.pdl:708 @@ experimental domain Audits
@@ -10071,28 +10087,4 @@ index bd277eb..09c420e 100644
        # If set to true, tests of user presence will succeed immediately.
        # Otherwise, they will not be resolved. Defaults to true.
        optional boolean automaticPresenceSimulation
-```
-
-## Roll protocol to r873231 — _2021-04-16T08:16:19.000Z_
-######  Diff: [`1a49020...143b9aa`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1a49020...143b9aa`)
-
-```diff
-@@ browser_protocol.pdl:7459 @@ domain Page
-       string name
-       Network.MonotonicTime timestamp
- 
--  # Fired for failed bfcache history navigations if BackForwardCache feature is enabled. Do
--  # not assume any ordering with the Page.frameNavigated event. This event is fired only for
--  # main-frame history navigation where the document changes (non-same-document navigations),
--  # when bfcache navigation fails.
--  experimental event backForwardCacheNotUsed
--    parameters
--      # The loader id for the associated navgation.
--      Network.LoaderId loaderId
--      # The frame id of the associated frame.
--      FrameId frameId
--
-   event loadEventFired
-     parameters
-       Network.MonotonicTime timestamp
 ```
