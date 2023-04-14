@@ -1599,6 +1599,20 @@
                     ]
                 },
                 {
+                    "id": "BounceTrackingIssueDetails",
+                    "description": "This issue warns about sites in the redirect chain of a finished navigation\nthat may be flagged as trackers and have their state cleared if they don't\nreceive a user interaction. Note that in this context 'site' means eTLD+1.\nFor example, if the URL `https://example.test:80/bounce` was in the\nredirect chain, the site reported would be `example.test`.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "trackingSites",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                {
                     "id": "ClientHintIssueReason",
                     "type": "string",
                     "enum": [
@@ -1686,7 +1700,8 @@
                         "GenericIssue",
                         "DeprecationIssue",
                         "ClientHintIssue",
-                        "FederatedAuthRequestIssue"
+                        "FederatedAuthRequestIssue",
+                        "BounceTrackingIssue"
                     ]
                 },
                 {
@@ -1773,6 +1788,11 @@
                             "name": "federatedAuthRequestIssueDetails",
                             "optional": true,
                             "$ref": "FederatedAuthRequestIssueDetails"
+                        },
+                        {
+                            "name": "bounceTrackingIssueDetails",
+                            "optional": true,
+                            "$ref": "BounceTrackingIssueDetails"
                         }
                     ]
                 },

@@ -1,7 +1,45 @@
 
 
+## Roll protocol to r1130274 — _2023-04-14T04:26:53.000Z_
+######  Diff: [`adde591...9086bbe`](https://github.com/ChromeDevTools/devtools-protocol/compare/`adde591...9086bbe`)
+
+```diff
+@@ browser_protocol.pdl:775 @@ experimental domain Audits
+       # One of the deprecation names from third_party/blink/renderer/core/frame/deprecation/deprecation.json5
+       string type
+ 
+-  # This issue warns about sites in the redirect chain of a finished navigation
+-  # that may be flagged as trackers and have their state cleared if they don't
+-  # receive a user interaction. Note that in this context 'site' means eTLD+1. 
+-  # For example, if the URL `https://example.test:80/bounce` was in the 
+-  # redirect chain, the site reported would be `example.test`.
+-  type BounceTrackingIssueDetails extends object
+-    properties
+-      array of string trackingSites
+-
+   type ClientHintIssueReason extends string
+     enum
+       # Items in the accept-ch meta tag allow list must be valid origins.
+@@ -860,7 +851,6 @@ experimental domain Audits
+       DeprecationIssue
+       ClientHintIssue
+       FederatedAuthRequestIssue
+-      BounceTrackingIssue
+ 
+   # This struct holds a list of optional fields with additional information
+   # specific to the kind of issue. When adding a new issue code, please also
+@@ -883,7 +873,6 @@ experimental domain Audits
+       optional DeprecationIssueDetails deprecationIssueDetails
+       optional ClientHintIssueDetails clientHintIssueDetails
+       optional FederatedAuthRequestIssueDetails federatedAuthRequestIssueDetails
+-      optional BounceTrackingIssueDetails bounceTrackingIssueDetails
+ 
+   # A unique id for a DevTools inspector issue. Allows other entities (e.g.
+   # exceptions, CDP message, console messages, etc.) to reference an issue.
+```
+
 ## Roll protocol to r1129676 — _2023-04-13T04:27:09.000Z_
-######  Diff: [`d7c1808...5f583d4`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d7c1808...5f583d4`)
+######  Diff: [`d7c1808...adde591`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d7c1808...adde591`)
 
 ```diff
 @@ browser_protocol.pdl:708 @@ experimental domain Audits
@@ -10070,21 +10108,4 @@ index bd277eb..09c420e 100644
  
    # A unique identifier for the type of issue. Each type may use one of the
    # optional fields in InspectorIssueDetails to convey more specific
-```
-
-## Roll protocol to r873348 — _2021-04-16T17:16:32.000Z_
-######  Diff: [`143b9aa...3e18e97`](https://github.com/ChromeDevTools/devtools-protocol/compare/`143b9aa...3e18e97`)
-
-```diff
-@@ browser_protocol.pdl:9094 @@ experimental domain WebAuthn
-       # https://w3c.github.io/webauthn#largeBlob
-       # Defaults to false.
-       optional boolean hasLargeBlob
--      # If set to true, the authenticator will support the credBlob extension.
--      # https://fidoalliance.org/specs/fido-v2.1-rd-20201208/fido-client-to-authenticator-protocol-v2.1-rd-20201208.html#sctn-credBlob-extension
--      # Defaults to false.
--      optional boolean hasCredBlob
-       # If set to true, tests of user presence will succeed immediately.
-       # Otherwise, they will not be resolved. Defaults to true.
-       optional boolean automaticPresenceSimulation
 ```
