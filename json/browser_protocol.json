@@ -2900,6 +2900,13 @@
                             "name": "endColumn",
                             "description": "Column offset of the end of the stylesheet within the resource (zero based).",
                             "type": "number"
+                        },
+                        {
+                            "name": "loadingFailed",
+                            "description": "If the style sheet was loaded from a network resource, this indicates when the resource failed to load",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ]
                 },

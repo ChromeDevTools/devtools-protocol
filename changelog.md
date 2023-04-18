@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1131670 — _2023-04-18T04:26:48.000Z_
+######  Diff: [`ad86c64...355b027`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ad86c64...355b027`)
+
+```diff
+@@ browser_protocol.pdl:1412 @@ experimental domain CSS
+       number endLine
+       # Column offset of the end of the stylesheet within the resource (zero based).
+       number endColumn
+-      # If the style sheet was loaded from a network resource, this indicates when the resource failed to load
+-      experimental optional boolean loadingFailed
+ 
+   # CSS rule representation.
+   type CSSRule extends object
+```
+
 ## Roll protocol to r1130274 — _2023-04-14T04:26:53.000Z_
-######  Diff: [`adde591...9086bbe`](https://github.com/ChromeDevTools/devtools-protocol/compare/`adde591...9086bbe`)
+######  Diff: [`adde591...ad86c64`](https://github.com/ChromeDevTools/devtools-protocol/compare/`adde591...ad86c64`)
 
 ```diff
 @@ browser_protocol.pdl:775 @@ experimental domain Audits
@@ -10086,26 +10101,4 @@ index bd277eb..09c420e 100644
    # list of player ids and all events again.
    event playersCreated
      parameters
-```
-
-## Roll protocol to r873728 — _2021-04-19T08:16:10.000Z_
-######  Diff: [`3e18e97...8676f73`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3e18e97...8676f73`)
-
-```diff
-@@ browser_protocol.pdl:718 @@ experimental domain Audits
-   type AttributionReportingIssueType extends string
-     enum
-       PermissionPolicyDisabled
--      InvalidAttributionData
- 
-   # Details for issues around "Attribution Reporting API" usage.
-   # Explainer: https://github.com/WICG/conversion-measurement-api
-@@ -728,7 +727,6 @@ experimental domain Audits
-       optional AffectedFrame frame
-       optional AffectedRequest request
-       optional DOM.BackendNodeId violatingNodeId
--      optional string invalidParameter
- 
-   # A unique identifier for the type of issue. Each type may use one of the
-   # optional fields in InspectorIssueDetails to convey more specific
 ```

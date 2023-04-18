@@ -4253,6 +4253,10 @@ export namespace Protocol {
              * Column offset of the end of the stylesheet within the resource (zero based).
              */
             endColumn: number;
+            /**
+             * If the style sheet was loaded from a network resource, this indicates when the resource failed to load
+             */
+            loadingFailed?: boolean;
         }
 
         /**
