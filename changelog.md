@@ -1,7 +1,44 @@
 
 
+## Roll protocol to r1132318 — _2023-04-19T04:27:21.000Z_
+######  Diff: [`e60aecf...36bfb8c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e60aecf...36bfb8c`)
+
+```diff
+@@ browser_protocol.pdl:809 @@ experimental domain Audits
+       WellKnownNoResponse
+       WellKnownInvalidResponse
+       WellKnownListEmpty
+-      WellKnownInvalidContentType
+       ConfigNotInWellKnown
+       WellKnownTooBig
+       ConfigHttpNotFound
+       ConfigNoResponse
+       ConfigInvalidResponse
+-      ConfigInvalidContentType
+       ClientMetadataHttpNotFound
+       ClientMetadataNoResponse
+       ClientMetadataInvalidResponse
+-      ClientMetadataInvalidContentType
+       DisabledInSettings
+       ErrorFetchingSignin
+       InvalidSigninResponse
+@@ -827,12 +824,10 @@ experimental domain Audits
+       AccountsNoResponse
+       AccountsInvalidResponse
+       AccountsListEmpty
+-      AccountsInvalidContentType
+       IdTokenHttpNotFound
+       IdTokenNoResponse
+       IdTokenInvalidResponse
+       IdTokenInvalidRequest
+-      IdTokenInvalidContentType
+       ErrorIdToken
+       Canceled
+       RpPageNotVisible
+```
+
 ## Roll protocol to r1131670 — _2023-04-18T04:26:48.000Z_
-######  Diff: [`ad86c64...355b027`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ad86c64...355b027`)
+######  Diff: [`ad86c64...e60aecf`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ad86c64...e60aecf`)
 
 ```diff
 @@ browser_protocol.pdl:1412 @@ experimental domain CSS
@@ -9950,155 +9987,4 @@ index bd277eb..09c420e 100644
  
    # Details for issues around "Attribution Reporting API" usage.
    # Explainer: https://github.com/WICG/conversion-measurement-api
-```
-
-## Roll protocol to r876073 — _2021-04-26T08:16:05.000Z_
-######  Diff: [`8676f73...ce4cfab`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8676f73...ce4cfab`)
-
-```diff
-@@ browser_protocol.pdl:668 @@ experimental domain Audits
-       CreationIssue
- 
-   # Details for a issue arising from an SAB being instantiated in, or
--  # transferred to a context that is not cross-origin isolated.
-+  # transfered to a context that is not cross-origin isolated.
-   type SharedArrayBufferIssueDetails extends object
-     properties
-       SourceCodeLocation sourceCodeLocation
-@@ -1001,7 +1001,7 @@ domain Browser
-         default
-       # BrowserContext to set download behavior. When omitted, default browser context is used.
-       optional BrowserContextID browserContextId
--      # The default path to save downloaded files to. This is required if behavior is set to 'allow'
-+      # The default path to save downloaded files to. This is requred if behavior is set to 'allow'
-       # or 'allowAndName'.
-       optional string downloadPath
-       # Whether to emit download events (defaults to false).
-@@ -2591,10 +2591,10 @@ domain DOM
-       # Id of the node that has been removed.
-       NodeId nodeId
- 
--  # Called when distribution is changed.
-+  # Called when distrubution is changed.
-   experimental event distributedNodesUpdated
-     parameters
--      # Insertion point where distributed nodes were updated.
-+      # Insertion point where distrubuted nodes were updated.
-       NodeId insertionPointId
-       # Distributed nodes for given insertion point.
-       array of BackendNode distributedNodes
-@@ -3279,10 +3279,10 @@ domain Emulation
-       # True if emulation is supported.
-       boolean result
- 
--  # Clears the overridden device metrics.
-+  # Clears the overriden device metrics.
-   command clearDeviceMetricsOverride
- 
--  # Clears the overridden Geolocation Position and Error.
-+  # Clears the overriden Geolocation Position and Error.
-   command clearGeolocationOverride
- 
-   # Requests that page scale factor is reset to initial values.
-@@ -3444,7 +3444,7 @@ domain Emulation
-       # If set the virtual time policy change should be deferred until any frame starts navigating.
-       # Note any previous deferred policy change is superseded.
-       optional boolean waitForNavigation
--      # If set, base::Time::Now will be overridden to initially return this value.
-+      # If set, base::Time::Now will be overriden to initially return this value.
-       optional Network.TimeSinceEpoch initialVirtualTime
-     returns
-       # Absolute timestamp at which virtual time was first enabled (up time in milliseconds).
-@@ -3560,7 +3560,7 @@ experimental domain HeadlessExperimental
- # Input/Output operations for streams produced by DevTools.
- domain IO
- 
--  # This is either obtained from another method or specified as `blob:&lt;uuid&gt;` where
-+  # This is either obtained from another method or specifed as `blob:&lt;uuid&gt;` where
-   # `&lt;uuid&gt` is an UUID of a Blob.
-   type StreamHandle extends string
- 
-@@ -3585,7 +3585,7 @@ domain IO
-       optional boolean base64Encoded
-       # Data that were read.
-       string data
--      # Set if the end-of-file condition occurred while reading.
-+      # Set if the end-of-file condition occured while reading.
-       boolean eof
- 
-   # Return UUID of Blob object specified by a remote object id.
-@@ -5146,7 +5146,7 @@ domain Network
-       optional string urlPattern
-       # If set, only requests for matching resource types will be intercepted.
-       optional ResourceType resourceType
--      # Stage at which to begin intercepting requests. Default is Request.
-+      # Stage at wich to begin intercepting requests. Default is Request.
-       optional InterceptionStage interceptionStage
- 
-   # Information about a signed exchange signature.
-@@ -6818,7 +6818,7 @@ domain Page
-       # Serialized page data.
-       string data
- 
--  # Clears the overridden device metrics.
-+  # Clears the overriden device metrics.
-   experimental deprecated command clearDeviceMetricsOverride
-     # Use 'Emulation.clearDeviceMetricsOverride' instead
-     redirect Emulation
-@@ -6828,7 +6828,7 @@ domain Page
-     # Use 'DeviceOrientation.clearDeviceOrientationOverride' instead
-     redirect DeviceOrientation
- 
--  # Clears the overridden Geolocation Position and Error.
-+  # Clears the overriden Geolocation Position and Error.
-   deprecated command clearGeolocationOverride
-     # Use 'Emulation.clearGeolocationOverride' instead
-     redirect Emulation
-@@ -7167,7 +7167,7 @@ domain Page
-         deny
-         allow
-         default
--      # The default path to save downloaded files to. This is required if behavior is set to 'allow'
-+      # The default path to save downloaded files to. This is requred if behavior is set to 'allow'
-       optional string downloadPath
- 
-   # Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position
-@@ -8033,7 +8033,7 @@ experimental domain Storage
-       # Security origin.
-       string origin
-       # The quota size (in bytes) to override the original quota with.
--      # If this is called multiple times, the overridden quota will be equal to
-+      # If this is called multiple times, the overriden quota will be equal to
-       # the quotaSize provided in the final call. If this is called without
-       # specifying a quotaSize, the quota will be reset to the default value for
-       # the specified origin. If this is called multiple times with different
-@@ -8676,7 +8676,7 @@ domain Fetch
-       optional string urlPattern
-       # If set, only requests for matching resource types will be intercepted.
-       optional Network.ResourceType resourceType
--      # Stage at which to begin intercepting requests. Default is Request.
-+      # Stage at wich to begin intercepting requests. Default is Request.
-       optional RequestStage requestStage
- 
-   # Response HTTP header entry
-@@ -8906,7 +8906,7 @@ experimental domain WebAudio
-     properties
-       # The current context time in second in BaseAudioContext.
-       number currentTime
--      # The time spent on rendering graph divided by render quantum duration,
-+      # The time spent on rendering graph divided by render qunatum duration,
-       # and multiplied by 100. 100 means the audio renderer reached the full
-       # capacity and glitch may occur.
-       number renderCapacity
-@@ -9273,8 +9273,8 @@ experimental domain Media
-       PlayerId playerId
-       array of PlayerError errors
- 
--  # Called whenever a player is created, or when a new agent joins and receives
--  # a list of active players. If an agent is restored, it will receive the full
-+  # Called whenever a player is created, or when a new agent joins and recieves
-+  # a list of active players. If an agent is restored, it will recieve the full
-   # list of player ids and all events again.
-   event playersCreated
-     parameters
 ```
