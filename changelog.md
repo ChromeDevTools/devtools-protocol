@@ -1,7 +1,45 @@
 
 
+## Roll protocol to r1133601 — _2023-04-21T04:27:13.000Z_
+######  Diff: [`84eeee8...8afe079`](https://github.com/ChromeDevTools/devtools-protocol/compare/`84eeee8...8afe079`)
+
+```diff
+@@ browser_protocol.pdl:777 @@ experimental domain Audits
+ 
+   # This issue warns about sites in the redirect chain of a finished navigation
+   # that may be flagged as trackers and have their state cleared if they don't
+-  # receive a user interaction. Note that in this context 'site' means eTLD+1.
+-  # For example, if the URL `https://example.test:80/bounce` was in the
++  # receive a user interaction. Note that in this context 'site' means eTLD+1. 
++  # For example, if the URL `https://example.test:80/bounce` was in the 
+   # redirect chain, the site reported would be `example.test`.
+   type BounceTrackingIssueDetails extends object
+     properties
+@@ -10963,20 +10963,6 @@ experimental domain Preload
+       # that is incompatible with prerender and has caused the cancellation of the attempt
+       optional string disallowedApiMethod
+ 
+-  type PreloadEnabledState extends string
+-    enum
+-      Enabled
+-      DisabledByDataSaver
+-      DisabledByBatterySaver
+-      DisabledByPreference
+-      # Service not available.
+-      NotSupported
+-
+-  # Fired when a preload enabled state is updated.
+-  event preloadEnabledStateUpdated
+-    parameters
+-      PreloadEnabledState state
+-
+   # Preloading status values, see also PreloadingTriggeringOutcome. This
+   # status is shared by prefetchStatusUpdated and prerenderStatusUpdated.
+   type PreloadingStatus extends string
+```
+
 ## Roll protocol to r1132318 — _2023-04-19T04:27:21.000Z_
-######  Diff: [`e60aecf...36bfb8c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e60aecf...36bfb8c`)
+######  Diff: [`e60aecf...84eeee8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e60aecf...84eeee8`)
 
 ```diff
 @@ browser_protocol.pdl:809 @@ experimental domain Audits
@@ -9970,20 +10008,6 @@ index bd277eb..09c420e 100644
        InvalidAttributionData
        AttributionSourceUntrustworthyOrigin
 -      AttributionUntrustworthyOrigin
- 
-   # Details for issues around "Attribution Reporting API" usage.
-   # Explainer: https://github.com/WICG/conversion-measurement-api
-```
-
-## Roll protocol to r876535 — _2021-04-27T11:16:08.000Z_
-######  Diff: [`ce4cfab...7eb19da`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ce4cfab...7eb19da`)
-
-```diff
-@@ browser_protocol.pdl:719 @@ experimental domain Audits
-     enum
-       PermissionPolicyDisabled
-       InvalidAttributionData
--      AttributionSourceUntrustworthyOrigin
  
    # Details for issues around "Attribution Reporting API" usage.
    # Explainer: https://github.com/WICG/conversion-measurement-api

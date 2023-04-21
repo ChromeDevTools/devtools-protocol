@@ -3967,6 +3967,11 @@ export namespace ProtocolProxyApi {
         on(event: 'prerenderAttemptCompleted', listener: (params: Protocol.Preload.PrerenderAttemptCompletedEvent) => void): void;
 
         /**
+         * Fired when a preload enabled state is updated.
+         */
+        on(event: 'preloadEnabledStateUpdated', listener: (params: Protocol.Preload.PreloadEnabledStateUpdatedEvent) => void): void;
+
+        /**
          * Fired when a prefetch attempt is updated.
          */
         on(event: 'prefetchStatusUpdated', listener: (params: Protocol.Preload.PrefetchStatusUpdatedEvent) => void): void;
