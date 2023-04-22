@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1134181 — _2023-04-22T04:26:52.000Z_
+######  Diff: [`052cf2f...56bbadb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`052cf2f...56bbadb`)
+
+```diff
+@@ browser_protocol.pdl:10950 @@ experimental domain Preload
+       CrossSiteNavigationInMainFrameNavigation
+       SameSiteCrossOriginRedirectNotOptInInMainFrameNavigation
+       SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation
+-      MemoryPressureOnTrigger
+-      MemoryPressureAfterTriggered
+ 
+   # Fired when a prerender attempt is completed.
+   event prerenderAttemptCompleted
+```
+
 ## Roll protocol to r1133601 — _2023-04-21T04:27:13.000Z_
-######  Diff: [`84eeee8...8afe079`](https://github.com/ChromeDevTools/devtools-protocol/compare/`84eeee8...8afe079`)
+######  Diff: [`84eeee8...052cf2f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`84eeee8...052cf2f`)
 
 ```diff
 @@ browser_protocol.pdl:777 @@ experimental domain Audits
@@ -9994,21 +10009,4 @@ index bd277eb..09c420e 100644
        storage-access-api
        sync-xhr
        trust-token-redemption
-```
-
-## Roll protocol to r876958 — _2021-04-28T08:16:04.000Z_
-######  Diff: [`7eb19da...987bbb1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7eb19da...987bbb1`)
-
-```diff
-@@ browser_protocol.pdl:718 @@ experimental domain Audits
-   type AttributionReportingIssueType extends string
-     enum
-       PermissionPolicyDisabled
--      InvalidAttributionSourceEventId
-       InvalidAttributionData
-       AttributionSourceUntrustworthyOrigin
--      AttributionUntrustworthyOrigin
- 
-   # Details for issues around "Attribution Reporting API" usage.
-   # Explainer: https://github.com/WICG/conversion-measurement-api
 ```
