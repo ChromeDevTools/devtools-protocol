@@ -1,7 +1,40 @@
 
 
+## Roll protocol to r1134390 — _2023-04-24T04:27:12.000Z_
+######  Diff: [`4dd6c67...6463970`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4dd6c67...6463970`)
+
+```diff
+@@ js_protocol.pdl:632 @@ domain Debugger
+       Runtime.ExecutionContextId executionContextId
+       # Content hash of the script, SHA-256.
+       string hash
+-      # Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}
++      # Embedder-specific auxiliary data.
+       optional object executionContextAuxData
+       # URL of source map associated with script (if any).
+       optional string sourceMapURL
+@@ -671,7 +671,7 @@ domain Debugger
+       Runtime.ExecutionContextId executionContextId
+       # Content hash of the script, SHA-256.
+       string hash
+-      # Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}
++      # Embedder-specific auxiliary data.
+       optional object executionContextAuxData
+       # True, if this script is generated as a result of the live edit operation.
+       experimental optional boolean isLiveEdit
+@@ -1284,7 +1284,7 @@ domain Runtime
+       # multiple processes, so can be reliably used to identify specific context while backend
+       # performs a cross-process navigation.
+       experimental string uniqueId
+-      # Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}
++      # Embedder-specific auxiliary data.
+       optional object auxData
+ 
+   # Detailed information about exception (or error) that was thrown during script compilation or
+```
+
 ## Roll protocol to r1134181 — _2023-04-22T04:26:52.000Z_
-######  Diff: [`052cf2f...56bbadb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`052cf2f...56bbadb`)
+######  Diff: [`052cf2f...4dd6c67`](https://github.com/ChromeDevTools/devtools-protocol/compare/`052cf2f...4dd6c67`)
 
 ```diff
 @@ browser_protocol.pdl:10950 @@ experimental domain Preload
@@ -9995,18 +10028,4 @@ index bd277eb..09c420e 100644
        optional string urlPattern
        # If set, only requests for matching resource types will be intercepted.
        optional Network.ResourceType resourceType
-```
-
-## Roll protocol to r877890 — _2021-04-30T13:16:13.000Z_
-######  Diff: [`987bbb1...c3a5cc5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`987bbb1...c3a5cc5`)
-
-```diff
-@@ browser_protocol.pdl:6466 @@ domain Page
-       publickey-credentials-get
-       screen-wake-lock
-       serial
--      shared-autofill
-       storage-access-api
-       sync-xhr
-       trust-token-redemption
 ```

@@ -912,7 +912,7 @@ export namespace Protocol {
              */
             hash: string;
             /**
-             * Embedder-specific auxiliary data.
+             * Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}
              */
             executionContextAuxData?: any;
             /**
@@ -987,7 +987,7 @@ export namespace Protocol {
              */
             hash: string;
             /**
-             * Embedder-specific auxiliary data.
+             * Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}
              */
             executionContextAuxData?: any;
             /**
@@ -1900,7 +1900,7 @@ export namespace Protocol {
              */
             uniqueId: string;
             /**
-             * Embedder-specific auxiliary data.
+             * Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}
              */
             auxData?: any;
         }

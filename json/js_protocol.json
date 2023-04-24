@@ -1294,7 +1294,7 @@
                         },
                         {
                             "name": "executionContextAuxData",
-                            "description": "Embedder-specific auxiliary data.",
+                            "description": "Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}",
                             "optional": true,
                             "type": "object"
                         },
@@ -1398,7 +1398,7 @@
                         },
                         {
                             "name": "executionContextAuxData",
-                            "description": "Embedder-specific auxiliary data.",
+                            "description": "Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}",
                             "optional": true,
                             "type": "object"
                         },
@@ -2668,7 +2668,7 @@
                         },
                         {
                             "name": "auxData",
-                            "description": "Embedder-specific auxiliary data.",
+                            "description": "Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}",
                             "optional": true,
                             "type": "object"
                         }
