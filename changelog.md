@@ -1,7 +1,37 @@
 
 
+## Roll protocol to r1135028 — _2023-04-25T04:27:09.000Z_
+######  Diff: [`4e41c0d...2709f36`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4e41c0d...2709f36`)
+
+```diff
+@@ browser_protocol.pdl:716 @@ experimental domain Audits
+       InvalidRegisterOsSourceHeader
+       InvalidRegisterOsTriggerHeader
+       WebAndOsHeaders
+-      NoWebOrOsSupport
+ 
+   # Details for issues around "Attribution Reporting API" usage.
+   # Explainer: https://github.com/WICG/attribution-reporting-api
+@@ -7228,7 +7227,6 @@ domain Page
+       payment
+       picture-in-picture
+       private-aggregation
+-      private-state-token-redemption
+       publickey-credentials-get
+       run-ad-auction
+       screen-wake-lock
+@@ -7239,6 +7237,7 @@ domain Page
+       smart-card
+       storage-access
+       sync-xhr
++      trust-token-redemption
+       unload
+       usb
+       vertical-scroll
+```
+
 ## Roll protocol to r1134390 — _2023-04-24T04:27:12.000Z_
-######  Diff: [`4dd6c67...6463970`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4dd6c67...6463970`)
+######  Diff: [`4dd6c67...4e41c0d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4dd6c67...4e41c0d`)
 
 ```diff
 @@ js_protocol.pdl:632 @@ domain Debugger
@@ -10000,32 +10030,4 @@ index bd277eb..09c420e 100644
      returns
        # Identifier of the added script.
        ScriptIdentifier identifier
-```
-
-## Roll protocol to r878026 — _2021-04-30T19:16:18.000Z_
-######  Diff: [`c3a5cc5...08981cb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c3a5cc5...08981cb`)
-
-```diff
-@@ browser_protocol.pdl:5144 @@ domain Network
-   # Request pattern for interception.
-   experimental type RequestPattern extends object
-     properties
--      # Wildcards (`'*'` -> zero or more, `'?'` -> exactly one) are allowed. Escape character is
--      # backslash. Omitting is equivalent to `"*"`.
-+      # Wildcards ('*' -> zero or more, '?' -> exactly one) are allowed. Escape character is
-+      # backslash. Omitting is equivalent to "*".
-       optional string urlPattern
-       # If set, only requests for matching resource types will be intercepted.
-       optional ResourceType resourceType
-@@ -8675,8 +8675,8 @@ domain Fetch
- 
-   type RequestPattern extends object
-     properties
--      # Wildcards (`'*'` -> zero or more, `'?'` -> exactly one) are allowed. Escape character is
--      # backslash. Omitting is equivalent to `"*"`.
-+      # Wildcards ('*' -> zero or more, '?' -> exactly one) are allowed. Escape character is
-+      # backslash. Omitting is equivalent to "*".
-       optional string urlPattern
-       # If set, only requests for matching resource types will be intercepted.
-       optional Network.ResourceType resourceType
 ```
