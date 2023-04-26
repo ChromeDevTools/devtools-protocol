@@ -4222,6 +4222,13 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Deletes state for sites identified as potential bounce trackers, immediately.
+         */
+        'Storage.runBounceTrackingMitigations': {
+            paramsType: [];
+            returnType: Protocol.Storage.RunBounceTrackingMitigationsResponse;
+        };
+        /**
          * Returns information about the system.
          */
         'SystemInfo.getInfo': {

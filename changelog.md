@@ -1,7 +1,42 @@
 
 
+## Roll protocol to r1135726 — _2023-04-26T04:27:01.000Z_
+######  Diff: [`72f4d4e...08b6cb7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`72f4d4e...08b6cb7`)
+
+```diff
+@@ browser_protocol.pdl:4668 @@ experimental domain LayerTree
+       LayerId layerId
+     returns
+       # A list of strings specifying reasons for the given layer to become composited.
+-      array of string compositingReasons
++      deprecated array of string compositingReasons
+       # A list of strings specifying reason IDs for the given layer to become composited.
+       array of string compositingReasonIds
+ 
+@@ -7228,7 +7228,6 @@ domain Page
+       payment
+       picture-in-picture
+       private-aggregation
+-      private-state-token-issuance
+       private-state-token-redemption
+       publickey-credentials-get
+       run-ad-auction
+@@ -9385,11 +9384,6 @@ experimental domain Storage
+       string storageKey
+       string bucketName
+ 
+-  # Deletes state for sites identified as potential bounce trackers, immediately.
+-  experimental command runBounceTrackingMitigations
+-    returns
+-      array of string deletedSites
+-
+   # A cache's contents have been modified.
+   event cacheStorageContentUpdated
+     parameters
+```
+
 ## Roll protocol to r1135028 — _2023-04-25T04:27:09.000Z_
-######  Diff: [`4e41c0d...2709f36`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4e41c0d...2709f36`)
+######  Diff: [`4e41c0d...72f4d4e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4e41c0d...72f4d4e`)
 
 ```diff
 @@ browser_protocol.pdl:716 @@ experimental domain Audits
@@ -10014,20 +10049,4 @@ index bd277eb..09c420e 100644
        display-capture
        document-domain
        encrypted-media
-```
-
-## Roll protocol to r878340 — _2021-05-03T08:16:03.000Z_
-######  Diff: [`08981cb...2dd45d5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`08981cb...2dd45d5`)
-
-```diff
-@@ browser_protocol.pdl:6785 @@ domain Page
-       # This world name will be used as the ExecutionContextDescription::name when the corresponding
-       # event is emitted.
-       experimental optional string worldName
--      # Specifies whether command line API should be available to the script, defaults
--      # to false.
--      experimental optional boolean includeCommandLineAPI
-     returns
-       # Identifier of the added script.
-       ScriptIdentifier identifier
 ```

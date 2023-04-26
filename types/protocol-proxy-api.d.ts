@@ -3376,6 +3376,11 @@ export namespace ProtocolProxyApi {
         deleteStorageBucket(params: Protocol.Storage.DeleteStorageBucketRequest): Promise<void>;
 
         /**
+         * Deletes state for sites identified as potential bounce trackers, immediately.
+         */
+        runBounceTrackingMitigations(): Promise<Protocol.Storage.RunBounceTrackingMitigationsResponse>;
+
+        /**
          * A cache's contents have been modified.
          */
         on(event: 'cacheStorageContentUpdated', listener: (params: Protocol.Storage.CacheStorageContentUpdatedEvent) => void): void;
