@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1136950 — _2023-04-28T04:26:58.000Z_
+######  Diff: [`7a08255...9195782`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7a08255...9195782`)
+
+```diff
+@@ browser_protocol.pdl:707 @@ experimental domain Audits
+       # TODO(apaseltiner): Rename this to InvalidRegisterSourceHeader
+       InvalidHeader
+       InvalidRegisterTriggerHeader
+-      # TODO(apaseltiner): Remove this issue once DevTools stops referencing it.
+       InvalidEligibleHeader
+       SourceAndTriggerHeaders
+       SourceIgnored
+```
+
 ## Roll protocol to r1135726 — _2023-04-26T04:27:01.000Z_
-######  Diff: [`72f4d4e...08b6cb7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`72f4d4e...08b6cb7`)
+######  Diff: [`72f4d4e...7a08255`](https://github.com/ChromeDevTools/devtools-protocol/compare/`72f4d4e...7a08255`)
 
 ```diff
 @@ browser_protocol.pdl:4668 @@ experimental domain LayerTree
@@ -10035,18 +10049,4 @@ index bd277eb..09c420e 100644
  
    # Information about the Resource on the page.
    experimental type FrameResource extends object
-```
-
-## Roll protocol to r880455 — _2021-05-07T17:16:12.000Z_
-######  Diff: [`2dd45d5...a81e89d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2dd45d5...a81e89d`)
-
-```diff
-@@ browser_protocol.pdl:6443 @@ domain Page
-       clipboard-write
-       conversion-measurement
-       cross-origin-isolated
--      direct-sockets
-       display-capture
-       document-domain
-       encrypted-media
 ```
