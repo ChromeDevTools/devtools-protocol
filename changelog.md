@@ -1,7 +1,202 @@
 
 
+## Roll protocol to r1137505 — _2023-04-29T04:26:38.000Z_
+######  Diff: [`7530c23...be7a371`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7530c23...be7a371`)
+
+```diff
+@@ browser_protocol.pdl:4028 @@ domain IO
+ 
+ experimental domain IndexedDB
+   depends on Runtime
+-  depends on Storage
+ 
+   # Database with an array of object stores.
+   type DatabaseWithObjectStores extends object
+@@ -4121,13 +4120,11 @@ experimental domain IndexedDB
+   # Clears all entries from an object store.
+   command clearObjectStore
+     parameters
+-      # At least and at most one of securityOrigin, storageKey, or storageBucket must be specified.
++      # At least and at most one of securityOrigin, storageKey must be specified.
+       # Security origin.
+       optional string securityOrigin
+       # Storage key.
+       optional string storageKey
+-      # Storage bucket. If not specified, it uses the default bucket.
+-      optional Storage.StorageBucket storageBucket
+       # Database name.
+       string databaseName
+       # Object store name.
+@@ -4136,26 +4133,22 @@ experimental domain IndexedDB
+   # Deletes a database.
+   command deleteDatabase
+     parameters
+-      # At least and at most one of securityOrigin, storageKey, or storageBucket must be specified.
++      # At least and at most one of securityOrigin, storageKey must be specified.
+       # Security origin.
+       optional string securityOrigin
+       # Storage key.
+       optional string storageKey
+-      # Storage bucket. If not specified, it uses the default bucket.
+-      optional Storage.StorageBucket storageBucket
+       # Database name.
+       string databaseName
+ 
+   # Delete a range of entries from an object store
+   command deleteObjectStoreEntries
+     parameters
+-      # At least and at most one of securityOrigin, storageKey, or storageBucket must be specified.
++      # At least and at most one of securityOrigin, storageKey must be specified.
+       # Security origin.
+       optional string securityOrigin
+       # Storage key.
+       optional string storageKey
+-      # Storage bucket. If not specified, it uses the default bucket.
+-      optional Storage.StorageBucket storageBucket
+       string databaseName
+       string objectStoreName
+       # Range of entry keys to delete
+@@ -4170,13 +4163,11 @@ experimental domain IndexedDB
+   # Requests data from object store or index.
+   command requestData
+     parameters
+-      # At least and at most one of securityOrigin, storageKey, or storageBucket must be specified.
++      # At least and at most one of securityOrigin, storageKey must be specified.
+       # Security origin.
+       optional string securityOrigin
+       # Storage key.
+       optional string storageKey
+-      # Storage bucket. If not specified, it uses the default bucket.
+-      optional Storage.StorageBucket storageBucket
+       # Database name.
+       string databaseName
+       # Object store name.
+@@ -4198,13 +4189,11 @@ experimental domain IndexedDB
+   # Gets metadata of an object store.
+   command getMetadata
+     parameters
+-      # At least and at most one of securityOrigin, storageKey, or storageBucket must be specified.
++      # At least and at most one of securityOrigin, storageKey must be specified.
+       # Security origin.
+       optional string securityOrigin
+       # Storage key.
+       optional string storageKey
+-      # Storage bucket. If not specified, it uses the default bucket.
+-      optional Storage.StorageBucket storageBucket
+       # Database name.
+       string databaseName
+       # Object store name.
+@@ -4220,13 +4209,11 @@ experimental domain IndexedDB
+   # Requests database with given name in given frame.
+   command requestDatabase
+     parameters
+-      # At least and at most one of securityOrigin, storageKey, or storageBucket must be specified.
++      # At least and at most one of securityOrigin, storageKey must be specified.
+       # Security origin.
+       optional string securityOrigin
+       # Storage key.
+       optional string storageKey
+-      # Storage bucket. If not specified, it uses the default bucket.
+-      optional Storage.StorageBucket storageBucket
+       # Database name.
+       string databaseName
+     returns
+@@ -4236,13 +4223,11 @@ experimental domain IndexedDB
+   # Requests database names for given security origin.
+   command requestDatabaseNames
+     parameters
+-      # At least and at most one of securityOrigin, storageKey, or storageBucket must be specified.
++      # At least and at most one of securityOrigin, storageKey must be specified.
+       # Security origin.
+       optional string securityOrigin
+       # Storage key.
+       optional string storageKey
+-      # Storage bucket. If not specified, it uses the default bucket.
+-      optional Storage.StorageBucket storageBucket
+     returns
+       # Database names for origin.
+       array of string databaseNames
+@@ -9181,16 +9166,12 @@ experimental domain Storage
+       relaxed
+       strict
+ 
+-  type StorageBucket extends object
+-    properties
+-      SerializedStorageKey storageKey
+-      # If not specified, it is the default bucket of the storageKey.
+-      optional string name
+-
+   type StorageBucketInfo extends object
+     properties
+-      StorageBucket bucket
++      SerializedStorageKey storageKey
+       string id
++      string name
++      boolean isDefault
+       Network.TimeSinceEpoch expiration
+       # Storage quota (bytes).
+       number quota
+@@ -9402,7 +9383,8 @@ experimental domain Storage
+   # Deletes the Storage Bucket with the given storage key and bucket name.
+   experimental command deleteStorageBucket
+     parameters
+-      StorageBucket bucket
++      string storageKey
++      string bucketName
+ 
+   # Deletes state for sites identified as potential bounce trackers, immediately.
+   experimental command runBounceTrackingMitigations
+@@ -9434,8 +9416,6 @@ experimental domain Storage
+       string origin
+       # Storage key to update.
+       string storageKey
+-      # Storage bucket to update.
+-      string bucketId
+       # Database to update.
+       string databaseName
+       # ObjectStore to update.
+@@ -9448,8 +9428,6 @@ experimental domain Storage
+       string origin
+       # Storage key to update.
+       string storageKey
+-      # Storage bucket to update.
+-      string bucketId
+ 
+   # One of the interest groups was accessed by the associated page.
+   event interestGroupAccessed
+@@ -9477,7 +9455,7 @@ experimental domain Storage
+ 
+   event storageBucketCreatedOrUpdated
+     parameters
+-      StorageBucketInfo bucketInfo
++      StorageBucketInfo bucket
+ 
+   event storageBucketDeleted
+     parameters
+@@ -10854,19 +10832,6 @@ experimental domain Preload
+       # - https://wicg.github.io/nav-speculation/speculation-rules.html
+       # - https://github.com/WICG/nav-speculation/blob/main/triggers.md
+       string sourceText
+-      # A speculation rule set is either added through an inline
+-      # <script> tag or through an external resource via the
+-      # 'Speculation-Rules' HTTP header. For the first case, we include
+-      # the BackendNodeId of the relevant <script> tag. For the second
+-      # case, we include the external URL where the rule set was loaded
+-      # from, and also RequestId if Network domain is enabled.
+-      #
+-      # See also:
+-      # - https://wicg.github.io/nav-speculation/speculation-rules.html#speculation-rules-script
+-      # - https://wicg.github.io/nav-speculation/speculation-rules.html#speculation-rules-header
+-      optional DOM.BackendNodeId backendNodeId
+-      optional string url
+-      optional Network.RequestId requestId
+       # Error information
+       # `errorMessage` is null iff `errorType` is null.
+       optional RuleSetErrorType errorType
+```
+
 ## Roll protocol to r1136950 — _2023-04-28T04:26:58.000Z_
-######  Diff: [`7a08255...9195782`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7a08255...9195782`)
+######  Diff: [`7a08255...7530c23`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7a08255...7530c23`)
 
 ```diff
 @@ browser_protocol.pdl:707 @@ experimental domain Audits
@@ -9975,78 +10170,4 @@ index bd277eb..09c420e 100644
  
    # An inspector issue reported from the back-end.
    type InspectorIssue extends object
-```
-
-## Roll protocol to r881010 — _2021-05-10T16:16:13.000Z_
-######  Diff: [`a81e89d...febcae4`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a81e89d...febcae4`)
-
-```diff
-@@ browser_protocol.pdl:6495 @@ domain Page
-       boolean allowed
-       optional PermissionsPolicyBlockLocator locator
- 
--  # Origin Trial(https://www.chromium.org/blink/origin-trials) support.
--  # Status for an Origin Trial token.
--  experimental type OriginTrialTokenStatus extends string
--    enum
--      Success
--      NotSupported
--      Insecure
--      Expired
--      WrongOrigin
--      InvalidSignature
--      Malformed
--      WrongVersion
--      FeatureDisabled
--      TokenDisabled
--      FeatureDisabledForUser
--
--  # Status for an Origin Trial.
--  experimental type OriginTrialStatus extends string
--    enum
--      Enabled
--      ValidTokenNotProvided
--      OSNotSupported
--      TrialNotAllowed
--
--  experimental type OriginTrialUsageRestriction extends string
--    enum
--      None
--      Subset
--
--  experimental type OriginTrialToken extends object
--    properties
--      string origin
--      boolean matchSubDomains
--      string trialName
--      Network.TimeSinceEpoch expiryTime
--      boolean isThirdParty
--      OriginTrialUsageRestriction usageRestriction
--
--  experimental type OriginTrialTokenWithStatus extends object
--    properties
--      string rawTokenText
--      # `parsedToken` is present only when the token is extractable and
--      # parsable.
--      optional OriginTrialToken parsedToken
--      OriginTrialTokenStatus status
--
--  experimental type OriginTrial extends object
--    properties
--      string trialName
--      OriginTrialStatus status
--      array of OriginTrialTokenWithStatus tokensWithStatus
--
-   # Information about the Frame on the page.
-   type Frame extends object
-     properties
-@@ -6581,8 +6529,6 @@ domain Page
-       experimental CrossOriginIsolatedContextType crossOriginIsolatedContextType
-       # Indicated which gated APIs / features are available.
-       experimental array of GatedAPIFeatures gatedAPIFeatures
--      # Frame document's origin trials with at least one token present.
--      experimental optional array of OriginTrial originTrials
- 
-   # Information about the Resource on the page.
-   experimental type FrameResource extends object
 ```
