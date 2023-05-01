@@ -2204,6 +2204,12 @@
                             "name": "objectId",
                             "optional": true,
                             "type": "string"
+                        },
+                        {
+                            "name": "weakLocalObjectReference",
+                            "description": "Set if value reference met more then once during serialization. In such\ncase, value is provided only to one of the serialized values. Unique\nper value in the scope of one CDP call.",
+                            "optional": true,
+                            "type": "integer"
                         }
                     ]
                 },

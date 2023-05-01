@@ -1,7 +1,24 @@
 
 
+## Roll protocol to r1137730 — _2023-05-01T04:26:59.000Z_
+######  Diff: [`a74f8b5...c76a858`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a74f8b5...c76a858`)
+
+```diff
+@@ js_protocol.pdl:1044 @@ domain Runtime
+         window
+       optional any value
+       optional string objectId
+-      # Set if value reference met more then once during serialization. In such
+-      # case, value is provided only to one of the serialized values. Unique
+-      # per value in the scope of one CDP call.
+-      optional integer weakLocalObjectReference
+ 
+   # Unique object identifier.
+   type RemoteObjectId extends string
+```
+
 ## Roll protocol to r1137505 — _2023-04-29T04:26:38.000Z_
-######  Diff: [`7530c23...be7a371`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7530c23...be7a371`)
+######  Diff: [`7530c23...a74f8b5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7530c23...a74f8b5`)
 
 ```diff
 @@ browser_protocol.pdl:4028 @@ domain IO
@@ -10126,47 +10143,6 @@ index bd277eb..09c420e 100644
        optional CorsIssueDetails corsIssueDetails
        optional AttributionReportingIssueDetails attributionReportingIssueDetails
 +      optional QuirksModeIssueDetails quirksModeIssueDetails
- 
-   # An inspector issue reported from the back-end.
-   type InspectorIssue extends object
-```
-
-## Roll protocol to r881485 — _2021-05-11T11:16:33.000Z_
-######  Diff: [`febcae4...8ce157a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`febcae4...8ce157a`)
-
-```diff
-@@ browser_protocol.pdl:733 @@ experimental domain Audits
-       optional DOM.BackendNodeId violatingNodeId
-       optional string invalidParameter
- 
--# Details for issues about documents in Quirks Mode
--# or Limited Quirks Mode that affects page layouting.
--  type QuirksModeIssueDetails extends object
--    properties
--      # If false, it means the document's mode is "quirks"
--      # instead of "limited-quirks".
--      boolean isLimitedQuirksMode
--      DOM.BackendNodeId documentNodeId
--      string url
--      Page.FrameId frameId
--      Network.LoaderId loaderId
--
-   # A unique identifier for the type of issue. Each type may use one of the
-   # optional fields in InspectorIssueDetails to convey more specific
-   # information about the kind of issue.
-@@ -760,7 +748,6 @@ experimental domain Audits
-       LowTextContrastIssue
-       CorsIssue
-       AttributionReportingIssue
--      QuirksModeIssue
- 
-   # This struct holds a list of optional fields with additional information
-   # specific to the kind of issue. When adding a new issue code, please also
-@@ -777,7 +764,6 @@ experimental domain Audits
-       optional LowTextContrastIssueDetails lowTextContrastIssueDetails
-       optional CorsIssueDetails corsIssueDetails
-       optional AttributionReportingIssueDetails attributionReportingIssueDetails
--      optional QuirksModeIssueDetails quirksModeIssueDetails
  
    # An inspector issue reported from the back-end.
    type InspectorIssue extends object

@@ -1527,6 +1527,12 @@ export namespace Protocol {
             type: ('undefined' | 'null' | 'string' | 'number' | 'boolean' | 'bigint' | 'regexp' | 'date' | 'symbol' | 'array' | 'object' | 'function' | 'map' | 'set' | 'weakmap' | 'weakset' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'node' | 'window');
             value?: any;
             objectId?: string;
+            /**
+             * Set if value reference met more then once during serialization. In such
+             * case, value is provided only to one of the serialized values. Unique
+             * per value in the scope of one CDP call.
+             */
+            weakLocalObjectReference?: integer;
         }
 
         /**
