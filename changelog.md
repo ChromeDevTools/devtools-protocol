@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1138159 — _2023-05-02T04:26:48.000Z_
+######  Diff: [`fb39cd1...ad8ce98`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fb39cd1...ad8ce98`)
+
+```diff
+@@ browser_protocol.pdl:707 @@ experimental domain Audits
+       # TODO(apaseltiner): Rename this to InvalidRegisterSourceHeader
+       InvalidHeader
+       InvalidRegisterTriggerHeader
++      # TODO(apaseltiner): Remove this issue once DevTools stops referencing it.
++      InvalidEligibleHeader
+       SourceAndTriggerHeaders
+       SourceIgnored
+       TriggerIgnored
+```
+
 ## Roll protocol to r1137730 — _2023-05-01T04:26:59.000Z_
-######  Diff: [`a74f8b5...c76a858`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a74f8b5...c76a858`)
+######  Diff: [`a74f8b5...fb39cd1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a74f8b5...fb39cd1`)
 
 ```diff
 @@ js_protocol.pdl:1044 @@ domain Runtime
@@ -10102,47 +10117,6 @@ index bd277eb..09c420e 100644
        optional CorsIssueDetails corsIssueDetails
        optional AttributionReportingIssueDetails attributionReportingIssueDetails
 -      optional QuirksModeIssueDetails quirksModeIssueDetails
- 
-   # An inspector issue reported from the back-end.
-   type InspectorIssue extends object
-```
-
-## Roll protocol to r882098 — _2021-05-12T16:16:24.000Z_
-######  Diff: [`8ce157a...9062efe`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8ce157a...9062efe`)
-
-```diff
-@@ browser_protocol.pdl:733 @@ experimental domain Audits
-       optional DOM.BackendNodeId violatingNodeId
-       optional string invalidParameter
- 
-+# Details for issues about documents in Quirks Mode
-+# or Limited Quirks Mode that affects page layouting.
-+  type QuirksModeIssueDetails extends object
-+    properties
-+      # If false, it means the document's mode is "quirks"
-+      # instead of "limited-quirks".
-+      boolean isLimitedQuirksMode
-+      DOM.BackendNodeId documentNodeId
-+      string url
-+      Page.FrameId frameId
-+      Network.LoaderId loaderId
-+
-   # A unique identifier for the type of issue. Each type may use one of the
-   # optional fields in InspectorIssueDetails to convey more specific
-   # information about the kind of issue.
-@@ -748,6 +760,7 @@ experimental domain Audits
-       LowTextContrastIssue
-       CorsIssue
-       AttributionReportingIssue
-+      QuirksModeIssue
- 
-   # This struct holds a list of optional fields with additional information
-   # specific to the kind of issue. When adding a new issue code, please also
-@@ -764,6 +777,7 @@ experimental domain Audits
-       optional LowTextContrastIssueDetails lowTextContrastIssueDetails
-       optional CorsIssueDetails corsIssueDetails
-       optional AttributionReportingIssueDetails attributionReportingIssueDetails
-+      optional QuirksModeIssueDetails quirksModeIssueDetails
  
    # An inspector issue reported from the back-end.
    type InspectorIssue extends object
