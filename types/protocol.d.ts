@@ -1490,7 +1490,7 @@ export namespace Protocol {
          */
         export type ScriptId = string;
 
-        export const enum WebDriverValueType {
+        export const enum DeepSerializedValueType {
             Undefined = 'undefined',
             Null = 'null',
             String = 'string',
@@ -1518,11 +1518,11 @@ export namespace Protocol {
 
         /**
          * Represents the value serialiazed by the WebDriver BiDi specification
-         * https://w3c.github.io/webdriver-bidi.
+         * https://goo.gle/browser-automation-deepserialization.
          */
-        export interface WebDriverValue {
+        export interface DeepSerializedValue {
             /**
-             *  (WebDriverValueType enum)
+             *  (DeepSerializedValueType enum)
              */
             type: ('undefined' | 'null' | 'string' | 'number' | 'boolean' | 'bigint' | 'regexp' | 'date' | 'symbol' | 'array' | 'object' | 'function' | 'map' | 'set' | 'weakmap' | 'weakset' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'node' | 'window');
             value?: any;
@@ -1613,7 +1613,7 @@ export namespace Protocol {
             /**
              * WebDriver BiDi representation of the value.
              */
-            webDriverValue?: WebDriverValue;
+            webDriverValue?: DeepSerializedValue;
             /**
              * Unique object identifier (for non-primitive values).
              */
@@ -2121,8 +2121,8 @@ export namespace Protocol {
             uniqueContextId?: string;
             /**
              * Whether the result should contain `webDriverValue`, serialized according to
-             * https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but
-             * resulting `objectId` is still provided.
+             * https://goo.gle/browser-automation-deepserialization. This is mutually
+             * exclusive with `returnByValue`, but resulting `objectId` is still provided.
              */
             generateWebDriverValue?: boolean;
         }
@@ -2248,7 +2248,7 @@ export namespace Protocol {
              */
             uniqueContextId?: string;
             /**
-             * Whether the result should be serialized according to https://w3c.github.io/webdriver-bidi.
+             * Whether the result should be serialized according to https://goo.gle/browser-automation-deepserialization.
              */
             generateWebDriverValue?: boolean;
         }

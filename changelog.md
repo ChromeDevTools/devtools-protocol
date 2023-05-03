@@ -1,7 +1,53 @@
 
 
+## Roll protocol to r1138800 — _2023-05-03T04:26:34.000Z_
+######  Diff: [`fd2e02b...9e04ddb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fd2e02b...9e04ddb`)
+
+```diff
+@@ js_protocol.pdl:1015 @@ domain Runtime
+   type ScriptId extends string
+ 
+   # Represents the value serialiazed by the WebDriver BiDi specification
+-  # https://goo.gle/browser-automation-deepserialization.
+-  type DeepSerializedValue extends object
++  # https://w3c.github.io/webdriver-bidi.
++  type WebDriverValue extends object
+     properties
+       enum type
+         undefined
+@@ -1102,7 +1102,7 @@ domain Runtime
+       # String representation of the object.
+       optional string description
+       # WebDriver BiDi representation of the value.
+-      experimental optional DeepSerializedValue webDriverValue
++      experimental optional WebDriverValue webDriverValue
+       # Unique object identifier (for non-primitive values).
+       optional RemoteObjectId objectId
+       # Preview containing abbreviated property values. Specified for `object` type values only.
+@@ -1416,8 +1416,8 @@ domain Runtime
+       # This is mutually exclusive with `executionContextId`.
+       experimental optional string uniqueContextId
+       # Whether the result should contain `webDriverValue`, serialized according to
+-      # https://goo.gle/browser-automation-deepserialization. This is mutually
+-      # exclusive with `returnByValue`, but resulting `objectId` is still provided.
++      # https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but
++      # resulting `objectId` is still provided.
+       experimental optional boolean generateWebDriverValue
+     returns
+       # Call result.
+@@ -1504,7 +1504,7 @@ domain Runtime
+       # boundaries).
+       # This is mutually exclusive with `contextId`.
+       experimental optional string uniqueContextId
+-      # Whether the result should be serialized according to https://goo.gle/browser-automation-deepserialization.
++      # Whether the result should be serialized according to https://w3c.github.io/webdriver-bidi.
+       experimental optional boolean generateWebDriverValue
+     returns
+       # Evaluation result.
+```
+
 ## Roll protocol to r1138159 — _2023-05-02T04:26:48.000Z_
-######  Diff: [`fb39cd1...ad8ce98`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fb39cd1...ad8ce98`)
+######  Diff: [`fb39cd1...fd2e02b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fb39cd1...fd2e02b`)
 
 ```diff
 @@ browser_protocol.pdl:707 @@ experimental domain Audits
@@ -10079,45 +10125,4 @@ index bd277eb..09c420e 100644
  
    type CorsErrorStatus extends object
      properties
-```
-
-## Roll protocol to r882324 — _2021-05-12T22:16:51.000Z_
-######  Diff: [`9062efe...56788fe`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9062efe...56788fe`)
-
-```diff
-@@ browser_protocol.pdl:733 @@ experimental domain Audits
-       optional DOM.BackendNodeId violatingNodeId
-       optional string invalidParameter
- 
--# Details for issues about documents in Quirks Mode
--# or Limited Quirks Mode that affects page layouting.
--  type QuirksModeIssueDetails extends object
--    properties
--      # If false, it means the document's mode is "quirks"
--      # instead of "limited-quirks".
--      boolean isLimitedQuirksMode
--      DOM.BackendNodeId documentNodeId
--      string url
--      Page.FrameId frameId
--      Network.LoaderId loaderId
--
-   # A unique identifier for the type of issue. Each type may use one of the
-   # optional fields in InspectorIssueDetails to convey more specific
-   # information about the kind of issue.
-@@ -760,7 +748,6 @@ experimental domain Audits
-       LowTextContrastIssue
-       CorsIssue
-       AttributionReportingIssue
--      QuirksModeIssue
- 
-   # This struct holds a list of optional fields with additional information
-   # specific to the kind of issue. When adding a new issue code, please also
-@@ -777,7 +764,6 @@ experimental domain Audits
-       optional LowTextContrastIssueDetails lowTextContrastIssueDetails
-       optional CorsIssueDetails corsIssueDetails
-       optional AttributionReportingIssueDetails attributionReportingIssueDetails
--      optional QuirksModeIssueDetails quirksModeIssueDetails
- 
-   # An inspector issue reported from the back-end.
-   type InspectorIssue extends object
 ```
