@@ -28,6 +28,8 @@ export namespace ProtocolProxyApi {
 
         Audits: AuditsApi;
 
+        Autofill: AutofillApi;
+
         BackgroundService: BackgroundServiceApi;
 
         Browser: BrowserApi;
@@ -787,6 +789,15 @@ export namespace ProtocolProxyApi {
         checkContrast(params: Protocol.Audits.CheckContrastRequest): Promise<void>;
 
         on(event: 'issueAdded', listener: (params: Protocol.Audits.IssueAddedEvent) => void): void;
+
+    }
+
+    export interface AutofillApi {
+        /**
+         * Trigger autofill on a form identified by the fieldId.
+         * If the field and related form cannot be autofilled, returns an error.
+         */
+        trigger(params: Protocol.Autofill.TriggerRequest): Promise<void>;
 
     }
 

@@ -1,7 +1,44 @@
 
 
+## Roll protocol to r1139346 — _2023-05-04T04:26:49.000Z_
+######  Diff: [`5b4da4d...f26f5e2`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5b4da4d...f26f5e2`)
+
+```diff
+@@ browser_protocol.pdl:944 @@ experimental domain Audits
+     parameters
+       InspectorIssue issue
+ 
+-# Defines commands and events for Autofill.
+-experimental domain Autofill
+-  type CreditCard extends object
+-    properties
+-      # 16-digit credit card number.
+-      string number
+-      # Name of the credit card owner.
+-      string name
+-      # 2-digit expiry month.
+-      string expiryMonth
+-      # 4-digit expiry year.
+-      string expiryYear
+-      # 3-digit card verification code.
+-      string cvc
+-
+-  # Trigger autofill on a form identified by the fieldId.
+-  # If the field and related form cannot be autofilled, returns an error.
+-  command trigger
+-    parameters
+-      # Identifies a field that serves as an anchor for autofill.
+-      DOM.BackendNodeId fieldId
+-      # Credit card information to fill out the form. Credit card data is not saved.
+-      CreditCard card
+-
+ # Defines events for background web platform features.
+ experimental domain BackgroundService
+   # The Background Service that will be associated with the commands/events.
+```
+
 ## Roll protocol to r1138800 — _2023-05-03T04:26:34.000Z_
-######  Diff: [`fd2e02b...9e04ddb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fd2e02b...9e04ddb`)
+######  Diff: [`fd2e02b...5b4da4d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fd2e02b...5b4da4d`)
 
 ```diff
 @@ js_protocol.pdl:1015 @@ domain Runtime
@@ -10103,26 +10140,4 @@ index bd277eb..09c420e 100644
        cross-origin-isolated
        direct-sockets
        display-capture
-```
-
-## Roll protocol to r882921 — _2021-05-14T09:16:15.000Z_
-######  Diff: [`56788fe...96c89c5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`56788fe...96c89c5`)
-
-```diff
-@@ browser_protocol.pdl:711 @@ experimental domain Audits
-       Network.CorsErrorStatus corsErrorStatus
-       boolean isWarning
-       AffectedRequest request
--      optional SourceCodeLocation location
-       optional string initiatorOrigin
-       optional Network.IPAddressSpace resourceIPAddressSpace
-       optional Network.ClientSecurityState clientSecurityState
-@@ -4772,7 +4771,6 @@ domain Network
-       HeaderDisallowedByPreflightResponse
-       RedirectContainsCredentials
-       InsecurePrivateNetwork
--      NoCorsRedirectModeNotFollow
- 
-   type CorsErrorStatus extends object
-     properties
 ```

@@ -1914,6 +1914,62 @@
             ]
         },
         {
+            "domain": "Autofill",
+            "description": "Defines commands and events for Autofill.",
+            "experimental": true,
+            "types": [
+                {
+                    "id": "CreditCard",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "number",
+                            "description": "16-digit credit card number.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "name",
+                            "description": "Name of the credit card owner.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "expiryMonth",
+                            "description": "2-digit expiry month.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "expiryYear",
+                            "description": "4-digit expiry year.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "cvc",
+                            "description": "3-digit card verification code.",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ],
+            "commands": [
+                {
+                    "name": "trigger",
+                    "description": "Trigger autofill on a form identified by the fieldId.\nIf the field and related form cannot be autofilled, returns an error.",
+                    "parameters": [
+                        {
+                            "name": "fieldId",
+                            "description": "Identifies a field that serves as an anchor for autofill.",
+                            "$ref": "DOM.BackendNodeId"
+                        },
+                        {
+                            "name": "card",
+                            "description": "Credit card information to fill out the form. Credit card data is not saved.",
+                            "$ref": "CreditCard"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "domain": "BackgroundService",
             "description": "Defines events for background web platform features.",
             "experimental": true,

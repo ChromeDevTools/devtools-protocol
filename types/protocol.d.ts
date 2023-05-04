@@ -3616,6 +3616,46 @@ export namespace Protocol {
     }
 
     /**
+     * Defines commands and events for Autofill.
+     */
+    export namespace Autofill {
+
+        export interface CreditCard {
+            /**
+             * 16-digit credit card number.
+             */
+            number: string;
+            /**
+             * Name of the credit card owner.
+             */
+            name: string;
+            /**
+             * 2-digit expiry month.
+             */
+            expiryMonth: string;
+            /**
+             * 4-digit expiry year.
+             */
+            expiryYear: string;
+            /**
+             * 3-digit card verification code.
+             */
+            cvc: string;
+        }
+
+        export interface TriggerRequest {
+            /**
+             * Identifies a field that serves as an anchor for autofill.
+             */
+            fieldId: DOM.BackendNodeId;
+            /**
+             * Credit card information to fill out the form. Credit card data is not saved.
+             */
+            card: CreditCard;
+        }
+    }
+
+    /**
      * Defines events for background web platform features.
      */
     export namespace BackgroundService {
