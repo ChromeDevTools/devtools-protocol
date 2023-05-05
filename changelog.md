@@ -1,7 +1,55 @@
 
 
+## Roll protocol to r1139932 — _2023-05-05T04:26:32.000Z_
+######  Diff: [`3a37ac7...fcb5fc7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3a37ac7...fcb5fc7`)
+
+```diff
+@@ browser_protocol.pdl:658 @@ experimental domain Audits
+       boolean isWarning
+       SharedArrayBufferIssueType type
+ 
++  type TwaQualityEnforcementViolationType extends string
++    enum
++      kHttpError
++      kUnavailableOffline
++      kDigitalAssetLinks
++
++  type TrustedWebActivityIssueDetails extends object
++    properties
++      # The url that triggers the violation.
++      string url
++      TwaQualityEnforcementViolationType violationType
++      optional integer httpStatusCode
++      # The package name of the Trusted Web Activity client app. This field is
++      # only used when violation type is kDigitalAssetLinks.
++      optional string packageName
++      # The signature of the Trusted Web Activity client app. This field is only
++      # used when violation type is kDigitalAssetLinks.
++      optional string signature
++
+   type LowTextContrastIssueDetails extends object
+     properties
+       DOM.BackendNodeId violatingNodeId
+@@ -836,6 +855,7 @@ experimental domain Audits
+       HeavyAdIssue
+       ContentSecurityPolicyIssue
+       SharedArrayBufferIssue
++      TrustedWebActivityIssue
+       LowTextContrastIssue
+       CorsIssue
+       AttributionReportingIssue
+@@ -858,6 +878,7 @@ experimental domain Audits
+       optional HeavyAdIssueDetails heavyAdIssueDetails
+       optional ContentSecurityPolicyIssueDetails contentSecurityPolicyIssueDetails
+       optional SharedArrayBufferIssueDetails sharedArrayBufferIssueDetails
++      optional TrustedWebActivityIssueDetails twaQualityEnforcementDetails
+       optional LowTextContrastIssueDetails lowTextContrastIssueDetails
+       optional CorsIssueDetails corsIssueDetails
+       optional AttributionReportingIssueDetails attributionReportingIssueDetails
+```
+
 ## Roll protocol to r1139346 — _2023-05-04T04:26:49.000Z_
-######  Diff: [`5b4da4d...f26f5e2`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5b4da4d...f26f5e2`)
+######  Diff: [`5b4da4d...3a37ac7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5b4da4d...3a37ac7`)
 
 ```diff
 @@ browser_protocol.pdl:944 @@ experimental domain Audits
@@ -10118,26 +10166,4 @@ index bd277eb..09c420e 100644
  
    # A structure holding an RGBA color.
    type RGBA extends object
-```
-
-## Roll protocol to r882987 — _2021-05-14T16:16:22.000Z_
-######  Diff: [`96c89c5...ea8402f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`96c89c5...ea8402f`)
-
-```diff
-@@ browser_protocol.pdl:6438 @@ domain Page
-     enum
-       accelerometer
-       ambient-light-sensor
--      attribution-reporting
-       autoplay
-       camera
-       ch-dpr
-@@ -6458,6 +6457,7 @@ domain Page
-       ch-width
-       clipboard-read
-       clipboard-write
-+      conversion-measurement
-       cross-origin-isolated
-       direct-sockets
-       display-capture
 ```

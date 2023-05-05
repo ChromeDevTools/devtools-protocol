@@ -3371,27 +3371,6 @@ export namespace Protocol {
             type: SharedArrayBufferIssueType;
         }
 
-        export type TwaQualityEnforcementViolationType = ('kHttpError' | 'kUnavailableOffline' | 'kDigitalAssetLinks');
-
-        export interface TrustedWebActivityIssueDetails {
-            /**
-             * The url that triggers the violation.
-             */
-            url: string;
-            violationType: TwaQualityEnforcementViolationType;
-            httpStatusCode?: integer;
-            /**
-             * The package name of the Trusted Web Activity client app. This field is
-             * only used when violation type is kDigitalAssetLinks.
-             */
-            packageName?: string;
-            /**
-             * The signature of the Trusted Web Activity client app. This field is only
-             * used when violation type is kDigitalAssetLinks.
-             */
-            signature?: string;
-        }
-
         export interface LowTextContrastIssueDetails {
             violatingNodeId: DOM.BackendNodeId;
             violatingNodeSelector: string;
@@ -3517,7 +3496,7 @@ export namespace Protocol {
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'TrustedWebActivityIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue');
+        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3531,7 +3510,6 @@ export namespace Protocol {
             heavyAdIssueDetails?: HeavyAdIssueDetails;
             contentSecurityPolicyIssueDetails?: ContentSecurityPolicyIssueDetails;
             sharedArrayBufferIssueDetails?: SharedArrayBufferIssueDetails;
-            twaQualityEnforcementDetails?: TrustedWebActivityIssueDetails;
             lowTextContrastIssueDetails?: LowTextContrastIssueDetails;
             corsIssueDetails?: CorsIssueDetails;
             attributionReportingIssueDetails?: AttributionReportingIssueDetails;
