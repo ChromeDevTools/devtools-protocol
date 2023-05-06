@@ -2162,8 +2162,30 @@
                     "type": "string"
                 },
                 {
+                    "id": "SerializationOptions",
+                    "description": "Represents options for serialization. Overrides `generatePreview`, `returnByValue` and\n`generateWebDriverValue`.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "serialization",
+                            "type": "string",
+                            "enum": [
+                                "deep",
+                                "json",
+                                "idOnly"
+                            ]
+                        },
+                        {
+                            "name": "maxDepth",
+                            "description": "Deep serialization depth. Default is full depth. Respected only in `deep` serialization mode.",
+                            "optional": true,
+                            "type": "integer"
+                        }
+                    ]
+                },
+                {
                     "id": "DeepSerializedValue",
-                    "description": "Represents the value serialiazed by the WebDriver BiDi specification\nhttps://goo.gle/browser-automation-deepserialization.",
+                    "description": "Represents deep serialized value.",
                     "type": "object",
                     "properties": [
                         {
@@ -2296,7 +2318,14 @@
                         },
                         {
                             "name": "webDriverValue",
-                            "description": "WebDriver BiDi representation of the value.",
+                            "description": "Deprecated. Use `deepSerializedValue` instead. WebDriver BiDi representation of the value.",
+                            "deprecated": true,
+                            "optional": true,
+                            "$ref": "DeepSerializedValue"
+                        },
+                        {
+                            "name": "deepSerializedValue",
+                            "description": "Deep serialized value.",
                             "experimental": true,
                             "optional": true,
                             "$ref": "DeepSerializedValue"
@@ -2913,7 +2942,7 @@
                         },
                         {
                             "name": "returnByValue",
-                            "description": "Whether the result is expected to be a JSON object which should be sent by value.",
+                            "description": "Whether the result is expected to be a JSON object which should be sent by value.\nCan be overriden by `serializationOptions`.",
                             "optional": true,
                             "type": "boolean"
                         },
@@ -2964,10 +2993,17 @@
                         },
                         {
                             "name": "generateWebDriverValue",
-                            "description": "Whether the result should contain `webDriverValue`, serialized according to\nhttps://goo.gle/browser-automation-deepserialization. This is mutually\nexclusive with `returnByValue`, but resulting `objectId` is still provided.",
-                            "experimental": true,
+                            "description": "Deprecated. Use `serializationOptions: {serialization:\"deep\"}` instead.\nWhether the result should contain `webDriverValue`, serialized according to\nhttps://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but\nresulting `objectId` is still provided.",
+                            "deprecated": true,
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "serializationOptions",
+                            "description": "Specifies the result serialization. If provided, overrides\n`returnByValue` and `generateWebDriverValue`.",
+                            "experimental": true,
+                            "optional": true,
+                            "$ref": "SerializationOptions"
                         }
                     ],
                     "returns": [
@@ -3139,10 +3175,17 @@
                         },
                         {
                             "name": "generateWebDriverValue",
-                            "description": "Whether the result should be serialized according to https://goo.gle/browser-automation-deepserialization.",
-                            "experimental": true,
+                            "description": "Deprecated. Use `serializationOptions: {serialization:\"deep\"}` instead.\nWhether the result should contain `webDriverValue`, serialized\naccording to\nhttps://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but\nresulting `objectId` is still provided.",
+                            "deprecated": true,
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "serializationOptions",
+                            "description": "Specifies the result serialization. If provided, overrides\n`returnByValue` and `generateWebDriverValue`.",
+                            "experimental": true,
+                            "optional": true,
+                            "$ref": "SerializationOptions"
                         }
                     ],
                     "returns": [

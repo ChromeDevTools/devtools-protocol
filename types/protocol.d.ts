@@ -1490,6 +1490,27 @@ export namespace Protocol {
          */
         export type ScriptId = string;
 
+        export const enum SerializationOptionsSerialization {
+            Deep = 'deep',
+            Json = 'json',
+            IdOnly = 'idOnly',
+        }
+
+        /**
+         * Represents options for serialization. Overrides `generatePreview`, `returnByValue` and
+         * `generateWebDriverValue`.
+         */
+        export interface SerializationOptions {
+            /**
+             *  (SerializationOptionsSerialization enum)
+             */
+            serialization: ('deep' | 'json' | 'idOnly');
+            /**
+             * Deep serialization depth. Default is full depth. Respected only in `deep` serialization mode.
+             */
+            maxDepth?: integer;
+        }
+
         export const enum DeepSerializedValueType {
             Undefined = 'undefined',
             Null = 'null',
@@ -1517,8 +1538,7 @@ export namespace Protocol {
         }
 
         /**
-         * Represents the value serialiazed by the WebDriver BiDi specification
-         * https://goo.gle/browser-automation-deepserialization.
+         * Represents deep serialized value.
          */
         export interface DeepSerializedValue {
             /**
@@ -1611,9 +1631,13 @@ export namespace Protocol {
              */
             description?: string;
             /**
-             * WebDriver BiDi representation of the value.
+             * Deprecated. Use `deepSerializedValue` instead. WebDriver BiDi representation of the value.
              */
             webDriverValue?: DeepSerializedValue;
+            /**
+             * Deep serialized value.
+             */
+            deepSerializedValue?: DeepSerializedValue;
             /**
              * Unique object identifier (for non-primitive values).
              */
@@ -2081,6 +2105,7 @@ export namespace Protocol {
             silent?: boolean;
             /**
              * Whether the result is expected to be a JSON object which should be sent by value.
+             * Can be overriden by `serializationOptions`.
              */
             returnByValue?: boolean;
             /**
@@ -2120,11 +2145,17 @@ export namespace Protocol {
              */
             uniqueContextId?: string;
             /**
+             * Deprecated. Use `serializationOptions: {serialization:"deep"}` instead.
              * Whether the result should contain `webDriverValue`, serialized according to
-             * https://goo.gle/browser-automation-deepserialization. This is mutually
-             * exclusive with `returnByValue`, but resulting `objectId` is still provided.
+             * https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but
+             * resulting `objectId` is still provided.
              */
             generateWebDriverValue?: boolean;
+            /**
+             * Specifies the result serialization. If provided, overrides
+             * `returnByValue` and `generateWebDriverValue`.
+             */
+            serializationOptions?: SerializationOptions;
         }
 
         export interface CallFunctionOnResponse {
@@ -2248,9 +2279,18 @@ export namespace Protocol {
              */
             uniqueContextId?: string;
             /**
-             * Whether the result should be serialized according to https://goo.gle/browser-automation-deepserialization.
+             * Deprecated. Use `serializationOptions: {serialization:"deep"}` instead.
+             * Whether the result should contain `webDriverValue`, serialized
+             * according to
+             * https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but
+             * resulting `objectId` is still provided.
              */
             generateWebDriverValue?: boolean;
+            /**
+             * Specifies the result serialization. If provided, overrides
+             * `returnByValue` and `generateWebDriverValue`.
+             */
+            serializationOptions?: SerializationOptions;
         }
 
         export interface EvaluateResponse {

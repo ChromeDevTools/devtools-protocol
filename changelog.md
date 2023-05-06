@@ -1,7 +1,101 @@
 
 
+## Roll protocol to r1140464 — _2023-05-06T04:26:18.000Z_
+######  Diff: [`8469893...425784a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8469893...425784a`)
+
+```diff
+@@ js_protocol.pdl:1014 @@ domain Runtime
+   # Unique script identifier.
+   type ScriptId extends string
+ 
+-  # Represents options for serialization. Overrides `generatePreview`, `returnByValue` and
+-  # `generateWebDriverValue`.
+-  type SerializationOptions extends object
+-    properties
+-      enum serialization
+-        # Whether the result should be deep-serialized. The result is put into
+-        # `deepSerializedValue` and `ObjectId` is provided.
+-        deep
+-        # Whether the result is expected to be a JSON object which should be sent by value.
+-        # The result is put either into `value` or into `unserializableValue`. Synonym of
+-        # `returnByValue: true`. Overrides `returnByValue`.
+-        json
+-        # Only remote object id is put in the result. Same bahaviour as if no
+-        # `serializationOptions`, `generatePreview`, `returnByValue` nor `generateWebDriverValue`
+-        # are provided.
+-        idOnly
+-
+-      # Deep serialization depth. Default is full depth. Respected only in `deep` serialization mode.
+-      optional integer maxDepth
+-
+-  # Represents deep serialized value.
++  # Represents the value serialiazed by the WebDriver BiDi specification
++  # https://goo.gle/browser-automation-deepserialization.
+   type DeepSerializedValue extends object
+     properties
+       enum type
+@@ -1120,10 +1101,8 @@ domain Runtime
+       optional UnserializableValue unserializableValue
+       # String representation of the object.
+       optional string description
+-      # Deprecated. Use `deepSerializedValue` instead. WebDriver BiDi representation of the value.
+-      deprecated optional DeepSerializedValue webDriverValue
+-      # Deep serialized value.
+-      experimental optional DeepSerializedValue deepSerializedValue
++      # WebDriver BiDi representation of the value.
++      experimental optional DeepSerializedValue webDriverValue
+       # Unique object identifier (for non-primitive values).
+       optional RemoteObjectId objectId
+       # Preview containing abbreviated property values. Specified for `object` type values only.
+@@ -1413,7 +1392,6 @@ domain Runtime
+       # execution. Overrides `setPauseOnException` state.
+       optional boolean silent
+       # Whether the result is expected to be a JSON object which should be sent by value.
+-      # Can be overriden by `serializationOptions`.
+       optional boolean returnByValue
+       # Whether preview should be generated for the result.
+       experimental optional boolean generatePreview
+@@ -1437,15 +1415,10 @@ domain Runtime
+       # boundaries).
+       # This is mutually exclusive with `executionContextId`.
+       experimental optional string uniqueContextId
+-      # Deprecated. Use `serializationOptions: {serialization:"deep"}` instead.
+       # Whether the result should contain `webDriverValue`, serialized according to
+-      # https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but
+-      # resulting `objectId` is still provided.
+-      deprecated optional boolean generateWebDriverValue
+-      # Specifies the result serialization. If provided, overrides
+-      # `returnByValue` and `generateWebDriverValue`.
+-      experimental optional SerializationOptions serializationOptions
+-
++      # https://goo.gle/browser-automation-deepserialization. This is mutually
++      # exclusive with `returnByValue`, but resulting `objectId` is still provided.
++      experimental optional boolean generateWebDriverValue
+     returns
+       # Call result.
+       RemoteObject result
+@@ -1531,15 +1504,8 @@ domain Runtime
+       # boundaries).
+       # This is mutually exclusive with `contextId`.
+       experimental optional string uniqueContextId
+-      # Deprecated. Use `serializationOptions: {serialization:"deep"}` instead.
+-      # Whether the result should contain `webDriverValue`, serialized
+-      # according to
+-      # https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but
+-      # resulting `objectId` is still provided.
+-      deprecated optional boolean generateWebDriverValue
+-      # Specifies the result serialization. If provided, overrides
+-      # `returnByValue` and `generateWebDriverValue`.
+-      experimental optional SerializationOptions serializationOptions
++      # Whether the result should be serialized according to https://goo.gle/browser-automation-deepserialization.
++      experimental optional boolean generateWebDriverValue
+     returns
+       # Evaluation result.
+       RemoteObject result
+```
+
 ## Roll protocol to r1139932 — _2023-05-05T04:26:32.000Z_
-######  Diff: [`3a37ac7...fcb5fc7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3a37ac7...fcb5fc7`)
+######  Diff: [`3a37ac7...8469893`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3a37ac7...8469893`)
 
 ```diff
 @@ browser_protocol.pdl:658 @@ experimental domain Audits
@@ -10138,32 +10232,4 @@ index bd277eb..09c420e 100644
        ch-rtt
        ch-ua
        ch-ua-arch
-```
-
-## Roll protocol to r883449 — _2021-05-17T13:16:08.000Z_
-######  Diff: [`ea8402f...56b0f11`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ea8402f...56b0f11`)
-
-```diff
-@@ browser_protocol.pdl:1965 @@ domain DOM
-       open
-       closed
- 
--  # Document compatibility mode.
--  type CompatibilityMode extends string
--    enum
--      QuirksMode
--      LimitedQuirksMode
--      NoQuirksMode
--
-   # DOM interaction is implemented in terms of mirror objects that represent the actual DOM nodes.
-   # DOMNode is a base node mirror type.
-   type Node extends object
-@@ -2036,7 +2029,6 @@ domain DOM
-       optional array of BackendNode distributedNodes
-       # Whether the node is SVG.
-       optional boolean isSVG
--      optional CompatibilityMode compatibilityMode
- 
-   # A structure holding an RGBA color.
-   type RGBA extends object
 ```
