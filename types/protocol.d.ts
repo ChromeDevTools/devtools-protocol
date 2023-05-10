@@ -17246,6 +17246,11 @@ export namespace Protocol {
         export type LoginState = ('SignIn' | 'SignUp');
 
         /**
+         * Whether the dialog shown is an account chooser or an auto re-authentication dialog.
+         */
+        export type DialogType = ('AccountChooser' | 'AutoReauthn');
+
+        /**
          * Corresponds to IdentityRequestAccount
          */
         export interface Account {
@@ -17285,6 +17290,7 @@ export namespace Protocol {
 
         export interface DialogShownEvent {
             dialogId: string;
+            dialogType: DialogType;
             accounts: Account[];
             /**
              * These exist primarily so that the caller can verify the

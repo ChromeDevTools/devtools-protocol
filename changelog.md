@@ -1,7 +1,34 @@
 
 
+## Roll protocol to r1141857 — _2023-05-10T04:26:34.000Z_
+######  Diff: [`1e3d3e0...ddc96d5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1e3d3e0...ddc96d5`)
+
+```diff
+@@ browser_protocol.pdl:11068 @@ experimental domain FedCm
+       SignIn
+       SignUp
+ 
+-  # Whether the dialog shown is an account chooser or an auto re-authentication dialog.
+-  type DialogType extends string
+-    enum
+-      AccountChooser
+-      AutoReauthn
+-
+   # Corresponds to IdentityRequestAccount
+   type Account extends object
+     properties
+@@ -11092,7 +11086,6 @@ experimental domain FedCm
+   event dialogShown
+     parameters
+       string dialogId
+-      DialogType dialogType
+       array of Account accounts
+       # These exist primarily so that the caller can verify the
+       # RP context was used appropriately.
+```
+
 ## Roll protocol to r1140464 — _2023-05-06T04:26:18.000Z_
-######  Diff: [`8469893...425784a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8469893...425784a`)
+######  Diff: [`8469893...1e3d3e0`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8469893...1e3d3e0`)
 
 ```diff
 @@ js_protocol.pdl:1014 @@ domain Runtime
@@ -10209,27 +10236,4 @@ index bd277eb..09c420e 100644
        xr-spatial-tracking
  
    # Reason for a permissions policy feature to be disabled.
-```
-
-## Roll protocol to r883894 — _2021-05-18T11:16:08.000Z_
-######  Diff: [`56b0f11...bc63f36`](https://github.com/ChromeDevTools/devtools-protocol/compare/`56b0f11...bc63f36`)
-
-```diff
-@@ browser_protocol.pdl:6441 @@ domain Page
-       PerformanceProfile
- 
-   # All Permissions Policy features. This enum should match the one defined
--  # in third_party/blink/renderer/core/permissions_policy/permissions_policy_features.json5.
-+  # in renderer/core/feature_policy/feature_policy_features.json5.
-   experimental type PermissionsPolicyFeature extends string
-     enum
-       accelerometer
-@@ -6454,7 +6454,6 @@ domain Page
-       ch-downlink
-       ch-ect
-       ch-lang
--      ch-prefers-color-scheme
-       ch-rtt
-       ch-ua
-       ch-ua-arch
 ```

@@ -23411,6 +23411,15 @@
                     ]
                 },
                 {
+                    "id": "DialogType",
+                    "description": "Whether the dialog shown is an account chooser or an auto re-authentication dialog.",
+                    "type": "string",
+                    "enum": [
+                        "AccountChooser",
+                        "AutoReauthn"
+                    ]
+                },
+                {
                     "id": "Account",
                     "description": "Corresponds to IdentityRequestAccount",
                     "type": "object",
@@ -23468,6 +23477,10 @@
                         {
                             "name": "dialogId",
                             "type": "string"
+                        },
+                        {
+                            "name": "dialogType",
+                            "$ref": "DialogType"
                         },
                         {
                             "name": "accounts",

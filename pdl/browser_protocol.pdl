@@ -11068,6 +11068,12 @@ experimental domain FedCm
       SignIn
       SignUp
 
+  # Whether the dialog shown is an account chooser or an auto re-authentication dialog.
+  type DialogType extends string
+    enum
+      AccountChooser
+      AutoReauthn
+
   # Corresponds to IdentityRequestAccount
   type Account extends object
     properties
@@ -11086,6 +11092,7 @@ experimental domain FedCm
   event dialogShown
     parameters
       string dialogId
+      DialogType dialogType
       array of Account accounts
       # These exist primarily so that the caller can verify the
       # RP context was used appropriately.
