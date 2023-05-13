@@ -1,7 +1,76 @@
 
 
+## Roll protocol to r1143632 — _2023-05-13T04:26:23.000Z_
+######  Diff: [`53a0f38...a551954`](https://github.com/ChromeDevTools/devtools-protocol/compare/`53a0f38...a551954`)
+
+```diff
+@@ browser_protocol.pdl:10996 @@ experimental domain Preload
+       SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation
+       MemoryPressureOnTrigger
+       MemoryPressureAfterTriggered
+-      SpeculationRuleRemoved
+-      TriggerPageNavigated
+-      OtherPrerenderedPageActivated
+ 
+   # Fired when a prerender attempt is completed.
+   event prerenderAttemptCompleted
+@@ -11038,44 +11035,6 @@ experimental domain Preload
+       # PreloadingTriggeringOutcome which not used by prefetch nor prerender.
+       NotSupported
+ 
+-  # TODO(https://crbug.com/1384419): revisit the list of PrefetchStatus and
+-  # filter out the ones that aren't necessary to the developers.
+-  type PrefetchStatus extends string
+-    enum
+-      # Prefetch is not disabled by PrefetchHeldback.
+-      PrefetchAllowed
+-      PrefetchFailedIneligibleRedirect
+-      PrefetchFailedInvalidRedirect
+-      PrefetchFailedMIMENotSupported
+-      PrefetchFailedNetError
+-      PrefetchFailedNon2XX
+-      PrefetchFailedPerPageLimitExceeded
+-      PrefetchHeldback
+-      # A previous prefetch to the origin got a HTTP 503 response with an
+-      # Retry-After header that has no elapsed yet.
+-      PrefetchIneligibleRetryAfter
+-      PrefetchIsPrivacyDecoy
+-      PrefetchIsStale
+-      PrefetchNotEligibleBrowserContextOffTheRecord
+-      PrefetchNotEligibleDataSaverEnabled
+-      PrefetchNotEligibleExistingProxy
+-      PrefetchNotEligibleHostIsNonUnique
+-      PrefetchNotEligibleNonDefaultStoragePartition
+-      PrefetchNotEligibleSameSiteCrossOriginPrefetchRequiredProxy
+-      PrefetchNotEligibleSchemeIsNotHttps
+-      PrefetchNotEligibleUserHasCookies
+-      PrefetchNotEligibleUserHasServiceWorker
+-      PrefetchNotFinishedInTime
+-      PrefetchNotStarted
+-      PrefetchNotUsedCookiesChanged
+-      PrefetchProxyNotAvailable
+-      # The response of the prefetch is used for the next navigation. This is
+-      # the final successful state.
+-      PrefetchResponseUsed
+-      # The prefetch finished successfully but was never used.
+-      PrefetchSuccessfulButNotUsed
+-      PrefetchNotUsedProbeFailed
+-
+   # Fired when a prefetch attempt is updated.
+   event prefetchStatusUpdated
+     parameters
+@@ -11084,7 +11043,6 @@ experimental domain Preload
+       Page.FrameId initiatingFrameId
+       string prefetchUrl
+       PreloadingStatus status
+-      PrefetchStatus prefetchStatus
+ 
+   # Fired when a prerender attempt is updated.
+   event prerenderStatusUpdated
+```
+
 ## Roll protocol to r1141857 — _2023-05-10T04:26:34.000Z_
-######  Diff: [`1e3d3e0...ddc96d5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1e3d3e0...ddc96d5`)
+######  Diff: [`1e3d3e0...53a0f38`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1e3d3e0...53a0f38`)
 
 ```diff
 @@ browser_protocol.pdl:11068 @@ experimental domain FedCm
@@ -10222,18 +10291,4 @@ index bd277eb..09c420e 100644
  
    # An inspector issue reported from the back-end.
    type InspectorIssue extends object
-```
-
-## Roll protocol to r884179 — _2021-05-18T22:16:18.000Z_
-######  Diff: [`bc63f36...f8d7e27`](https://github.com/ChromeDevTools/devtools-protocol/compare/`bc63f36...f8d7e27`)
-
-```diff
-@@ browser_protocol.pdl:6499 @@ domain Page
-       usb
-       vertical-scroll
-       web-share
--      window-placement
-       xr-spatial-tracking
- 
-   # Reason for a permissions policy feature to be disabled.
 ```
