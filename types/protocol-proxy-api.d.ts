@@ -788,6 +788,12 @@ export namespace ProtocolProxyApi {
          */
         checkContrast(params: Protocol.Audits.CheckContrastRequest): Promise<void>;
 
+        /**
+         * Runs the form issues check for the target page. Found issues are reported
+         * using Audits.issueAdded event.
+         */
+        checkFormsIssues(): Promise<Protocol.Audits.CheckFormsIssuesResponse>;
+
         on(event: 'issueAdded', listener: (params: Protocol.Audits.IssueAddedEvent) => void): void;
 
     }

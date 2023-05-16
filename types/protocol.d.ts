@@ -3628,6 +3628,10 @@ export namespace Protocol {
             reportAAA?: boolean;
         }
 
+        export interface CheckFormsIssuesResponse {
+            formIssues: GenericIssueDetails[];
+        }
+
         export interface IssueAddedEvent {
             issue: InspectorIssue;
         }
@@ -3666,6 +3670,10 @@ export namespace Protocol {
              * Identifies a field that serves as an anchor for autofill.
              */
             fieldId: DOM.BackendNodeId;
+            /**
+             * Identifies the frame that field belongs to.
+             */
+            frameId?: Page.FrameId;
             /**
              * Credit card information to fill out the form. Credit card data is not saved.
              */

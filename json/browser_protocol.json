@@ -1852,6 +1852,19 @@
                             "type": "boolean"
                         }
                     ]
+                },
+                {
+                    "name": "checkFormsIssues",
+                    "description": "Runs the form issues check for the target page. Found issues are reported\nusing Audits.issueAdded event.",
+                    "returns": [
+                        {
+                            "name": "formIssues",
+                            "type": "array",
+                            "items": {
+                                "$ref": "GenericIssueDetails"
+                            }
+                        }
+                    ]
                 }
             ],
             "events": [
@@ -1912,6 +1925,12 @@
                             "name": "fieldId",
                             "description": "Identifies a field that serves as an anchor for autofill.",
                             "$ref": "DOM.BackendNodeId"
+                        },
+                        {
+                            "name": "frameId",
+                            "description": "Identifies the frame that field belongs to.",
+                            "optional": true,
+                            "$ref": "Page.FrameId"
                         },
                         {
                             "name": "card",
