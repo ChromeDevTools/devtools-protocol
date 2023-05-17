@@ -23255,10 +23255,7 @@
                         "SameSiteCrossOriginRedirectNotOptInInMainFrameNavigation",
                         "SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation",
                         "MemoryPressureOnTrigger",
-                        "MemoryPressureAfterTriggered",
-                        "SpeculationRuleRemoved",
-                        "TriggerPageNavigated",
-                        "OtherPrerenderedPageActivated"
+                        "MemoryPressureAfterTriggered"
                     ]
                 },
                 {
@@ -23434,6 +23431,11 @@
                         {
                             "name": "status",
                             "$ref": "PreloadingStatus"
+                        },
+                        {
+                            "name": "prerenderStatus",
+                            "optional": true,
+                            "$ref": "PrerenderFinalStatus"
                         }
                     ]
                 },

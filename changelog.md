@@ -1,7 +1,31 @@
 
 
+## Roll protocol to r1145140 — _2023-05-17T04:26:30.000Z_
+######  Diff: [`81e97fb...06903fe`](https://github.com/ChromeDevTools/devtools-protocol/compare/`81e97fb...06903fe`)
+
+```diff
+@@ browser_protocol.pdl:11004 @@ experimental domain Preload
+       SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation
+       MemoryPressureOnTrigger
+       MemoryPressureAfterTriggered
++      SpeculationRuleRemoved
++      TriggerPageNavigated
++      OtherPrerenderedPageActivated
+ 
+   # Fired when a prerender attempt is completed.
+   event prerenderAttemptCompleted
+@@ -11099,7 +11102,6 @@ experimental domain Preload
+       Page.FrameId initiatingFrameId
+       string prerenderingUrl
+       PreloadingStatus status
+-      optional PrerenderFinalStatus prerenderStatus
+ 
+   # Send a list of sources for all preloading attempts in a document.
+   event preloadingAttemptSourcesUpdated
+```
+
 ## Roll protocol to r1144541 — _2023-05-16T04:27:03.000Z_
-######  Diff: [`3c6f201...2076e50`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3c6f201...2076e50`)
+######  Diff: [`3c6f201...81e97fb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3c6f201...81e97fb`)
 
 ```diff
 @@ browser_protocol.pdl:919 @@ experimental domain Audits
@@ -10269,19 +10293,4 @@ index bd277eb..09c420e 100644
    experimental type CrossOriginOpenerPolicyValue extends string
      enum
        SameOrigin
-```
-
-## Roll protocol to r884712 — _2021-05-19T22:16:10.000Z_
-######  Diff: [`dfcf9be...d9ce37e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`dfcf9be...d9ce37e`)
-
-```diff
-@@ browser_protocol.pdl:8758 @@ domain Fetch
- 
-   # Stages of the request to handle. Request will intercept before the request is
-   # sent. Response will intercept after the response is received (but before response
--  # body is received).
-+  # body is received.
-   type RequestStage extends string
-     enum
-       Request
 ```
