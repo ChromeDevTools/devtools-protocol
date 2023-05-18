@@ -1,7 +1,37 @@
 
 
+## Roll protocol to r1145810 — _2023-05-18T04:26:32.000Z_
+######  Diff: [`467c277...09ae462`](https://github.com/ChromeDevTools/devtools-protocol/compare/`467c277...09ae462`)
+
+```diff
+@@ browser_protocol.pdl:11070 @@ experimental domain Preload
+       PrefetchNotEligibleSchemeIsNotHttps
+       PrefetchNotEligibleUserHasCookies
+       PrefetchNotEligibleUserHasServiceWorker
+-      PrefetchNotEligibleBatterySaverEnabled
+-      PrefetchNotEligiblePreloadingDisabled
+       PrefetchNotFinishedInTime
+       PrefetchNotStarted
+       PrefetchNotUsedCookiesChanged
+@@ -11097,6 +11095,9 @@ experimental domain Preload
+   event prerenderStatusUpdated
+     parameters
+       PreloadingAttemptKey key
++      # The frame id of the frame initiating prerender.
++      Page.FrameId initiatingFrameId
++      string prerenderingUrl
+       PreloadingStatus status
+       optional PrerenderFinalStatus prerenderStatus
+ 
+@@ -11168,3 +11169,4 @@ experimental domain FedCm
+   # Resets the cooldown time, if any, to allow the next FedCM call to show
+   # a dialog even if one was recently dismissed by the user.
+   command resetCooldown
++
+```
+
 ## Roll protocol to r1145140 — _2023-05-17T04:26:30.000Z_
-######  Diff: [`81e97fb...06903fe`](https://github.com/ChromeDevTools/devtools-protocol/compare/`81e97fb...06903fe`)
+######  Diff: [`81e97fb...467c277`](https://github.com/ChromeDevTools/devtools-protocol/compare/`81e97fb...467c277`)
 
 ```diff
 @@ browser_protocol.pdl:11004 @@ experimental domain Preload
@@ -10236,61 +10266,4 @@ index bd277eb..09c420e 100644
        array of SameSiteCookieWarningReason cookieWarningReasons
        array of SameSiteCookieExclusionReason cookieExclusionReasons
        # Optionally identifies the site-for-cookies and the cookie url, which
-```
-
-## Roll protocol to r885657 — _2021-05-21T21:16:03.000Z_
-######  Diff: [`d9ce37e...35ec89b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d9ce37e...35ec89b`)
-
-```diff
-@@ browser_protocol.pdl:5898 @@ domain Network
-       # The number of obtained Trust Tokens on a successful "Issuance" operation.
-       optional integer issuedTokenCount
- 
--  # Fired once when parsing the .wbn file has succeeded.
--  # The event contains the information about the web bundle contents.
--  experimental event subresourceWebBundleMetadataReceived
--    parameters
--      # Request identifier. Used to match this information to another event.
--      RequestId requestId
--      # A list of URLs of resources in the subresource Web Bundle.
--      array of string urls
--
--  # Fired once when parsing the .wbn file has failed.
--  experimental event subresourceWebBundleMetadataError
--    parameters
--      # Request identifier. Used to match this information to another event.
--      RequestId requestId
--      # Error message
--      string errorMessage
--
--  # Fired when handling requests for resources within a .wbn file.
--  # Note: this will only be fired for resources that are requested by the webpage.
--  experimental event subresourceWebBundleInnerResponseParsed
--    parameters
--      # Request identifier of the subresource request
--      RequestId innerRequestId
--      # URL of the subresource resource.
--      string innerRequestURL
--      # Bundle request identifier. Used to match this information to another event.
--      # This made be absent in case when the instrumentation was enabled only
--      # after webbundle was parsed.
--      optional RequestId bundleRequestId
--
--  # Fired when request for resources within a .wbn file failed.
--  experimental event subresourceWebBundleInnerResponseError
--    parameters
--      # Request identifier of the subresource request
--      RequestId innerRequestId
--      # URL of the subresource resource.
--      string innerRequestURL
--      # Error message
--      string errorMessage
--      # Bundle request identifier. Used to match this information to another event.
--      # This made be absent in case when the instrumentation was enabled only
--      # after webbundle was parsed.
--      optional RequestId bundleRequestId
--
-   experimental type CrossOriginOpenerPolicyValue extends string
-     enum
-       SameOrigin
 ```
