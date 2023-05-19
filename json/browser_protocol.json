@@ -1626,7 +1626,8 @@
                         "IdTokenInvalidContentType",
                         "ErrorIdToken",
                         "Canceled",
-                        "RpPageNotVisible"
+                        "RpPageNotVisible",
+                        "SilentMediationFailure"
                     ]
                 },
                 {
@@ -2631,6 +2632,16 @@
                         {
                             "name": "commandId",
                             "$ref": "BrowserCommandId"
+                        }
+                    ]
+                },
+                {
+                    "name": "addPrivacySandboxEnrollmentOverride",
+                    "description": "Allows a site to use privacy sandbox features that require enrollment\nwithout the site actually being enrolled. Only supported on page targets.",
+                    "parameters": [
+                        {
+                            "name": "url",
+                            "type": "string"
                         }
                     ]
                 }
@@ -23294,6 +23305,7 @@
                         "PrefetchFailedNetError",
                         "PrefetchFailedNon2XX",
                         "PrefetchFailedPerPageLimitExceeded",
+                        "PrefetchEvicted",
                         "PrefetchHeldback",
                         "PrefetchIneligibleRetryAfter",
                         "PrefetchIsPrivacyDecoy",

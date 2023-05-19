@@ -929,6 +929,12 @@ export namespace ProtocolProxyApi {
         executeBrowserCommand(params: Protocol.Browser.ExecuteBrowserCommandRequest): Promise<void>;
 
         /**
+         * Allows a site to use privacy sandbox features that require enrollment
+         * without the site actually being enrolled. Only supported on page targets.
+         */
+        addPrivacySandboxEnrollmentOverride(params: Protocol.Browser.AddPrivacySandboxEnrollmentOverrideRequest): Promise<void>;
+
+        /**
          * Fired when page is about to start a download.
          */
         on(event: 'downloadWillBegin', listener: (params: Protocol.Browser.DownloadWillBeginEvent) => void): void;

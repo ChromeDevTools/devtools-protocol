@@ -1624,6 +1624,14 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Allows a site to use privacy sandbox features that require enrollment
+         * without the site actually being enrolled. Only supported on page targets.
+         */
+        'Browser.addPrivacySandboxEnrollmentOverride': {
+            paramsType: [Protocol.Browser.AddPrivacySandboxEnrollmentOverrideRequest];
+            returnType: void;
+        };
+        /**
          * Inserts a new rule with the given `ruleText` in a stylesheet with given `styleSheetId`, at the
          * position specified by `location`.
          */

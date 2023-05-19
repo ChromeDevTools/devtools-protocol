@@ -3520,7 +3520,7 @@ export namespace Protocol {
          * third_party/blink/public/mojom/devtools/inspector_issue.mojom to include
          * all cases except for success.
          */
-        export type FederatedAuthRequestIssueReason = ('ShouldEmbargo' | 'TooManyRequests' | 'WellKnownHttpNotFound' | 'WellKnownNoResponse' | 'WellKnownInvalidResponse' | 'WellKnownListEmpty' | 'WellKnownInvalidContentType' | 'ConfigNotInWellKnown' | 'WellKnownTooBig' | 'ConfigHttpNotFound' | 'ConfigNoResponse' | 'ConfigInvalidResponse' | 'ConfigInvalidContentType' | 'ClientMetadataHttpNotFound' | 'ClientMetadataNoResponse' | 'ClientMetadataInvalidResponse' | 'ClientMetadataInvalidContentType' | 'DisabledInSettings' | 'ErrorFetchingSignin' | 'InvalidSigninResponse' | 'AccountsHttpNotFound' | 'AccountsNoResponse' | 'AccountsInvalidResponse' | 'AccountsListEmpty' | 'AccountsInvalidContentType' | 'IdTokenHttpNotFound' | 'IdTokenNoResponse' | 'IdTokenInvalidResponse' | 'IdTokenInvalidRequest' | 'IdTokenInvalidContentType' | 'ErrorIdToken' | 'Canceled' | 'RpPageNotVisible');
+        export type FederatedAuthRequestIssueReason = ('ShouldEmbargo' | 'TooManyRequests' | 'WellKnownHttpNotFound' | 'WellKnownNoResponse' | 'WellKnownInvalidResponse' | 'WellKnownListEmpty' | 'WellKnownInvalidContentType' | 'ConfigNotInWellKnown' | 'WellKnownTooBig' | 'ConfigHttpNotFound' | 'ConfigNoResponse' | 'ConfigInvalidResponse' | 'ConfigInvalidContentType' | 'ClientMetadataHttpNotFound' | 'ClientMetadataNoResponse' | 'ClientMetadataInvalidResponse' | 'ClientMetadataInvalidContentType' | 'DisabledInSettings' | 'ErrorFetchingSignin' | 'InvalidSigninResponse' | 'AccountsHttpNotFound' | 'AccountsNoResponse' | 'AccountsInvalidResponse' | 'AccountsListEmpty' | 'AccountsInvalidContentType' | 'IdTokenHttpNotFound' | 'IdTokenNoResponse' | 'IdTokenInvalidResponse' | 'IdTokenInvalidRequest' | 'IdTokenInvalidContentType' | 'ErrorIdToken' | 'Canceled' | 'RpPageNotVisible' | 'SilentMediationFailure');
 
         /**
          * This issue tracks client hints related issues. It's used to deprecate old
@@ -4090,6 +4090,10 @@ export namespace Protocol {
 
         export interface ExecuteBrowserCommandRequest {
             commandId: BrowserCommandId;
+        }
+
+        export interface AddPrivacySandboxEnrollmentOverrideRequest {
+            url: string;
         }
 
         /**
@@ -17175,7 +17179,7 @@ export namespace Protocol {
          * TODO(https://crbug.com/1384419): revisit the list of PrefetchStatus and
          * filter out the ones that aren't necessary to the developers.
          */
-        export type PrefetchStatus = ('PrefetchAllowed' | 'PrefetchFailedIneligibleRedirect' | 'PrefetchFailedInvalidRedirect' | 'PrefetchFailedMIMENotSupported' | 'PrefetchFailedNetError' | 'PrefetchFailedNon2XX' | 'PrefetchFailedPerPageLimitExceeded' | 'PrefetchHeldback' | 'PrefetchIneligibleRetryAfter' | 'PrefetchIsPrivacyDecoy' | 'PrefetchIsStale' | 'PrefetchNotEligibleBrowserContextOffTheRecord' | 'PrefetchNotEligibleDataSaverEnabled' | 'PrefetchNotEligibleExistingProxy' | 'PrefetchNotEligibleHostIsNonUnique' | 'PrefetchNotEligibleNonDefaultStoragePartition' | 'PrefetchNotEligibleSameSiteCrossOriginPrefetchRequiredProxy' | 'PrefetchNotEligibleSchemeIsNotHttps' | 'PrefetchNotEligibleUserHasCookies' | 'PrefetchNotEligibleUserHasServiceWorker' | 'PrefetchNotEligibleBatterySaverEnabled' | 'PrefetchNotEligiblePreloadingDisabled' | 'PrefetchNotFinishedInTime' | 'PrefetchNotStarted' | 'PrefetchNotUsedCookiesChanged' | 'PrefetchProxyNotAvailable' | 'PrefetchResponseUsed' | 'PrefetchSuccessfulButNotUsed' | 'PrefetchNotUsedProbeFailed');
+        export type PrefetchStatus = ('PrefetchAllowed' | 'PrefetchFailedIneligibleRedirect' | 'PrefetchFailedInvalidRedirect' | 'PrefetchFailedMIMENotSupported' | 'PrefetchFailedNetError' | 'PrefetchFailedNon2XX' | 'PrefetchFailedPerPageLimitExceeded' | 'PrefetchEvicted' | 'PrefetchHeldback' | 'PrefetchIneligibleRetryAfter' | 'PrefetchIsPrivacyDecoy' | 'PrefetchIsStale' | 'PrefetchNotEligibleBrowserContextOffTheRecord' | 'PrefetchNotEligibleDataSaverEnabled' | 'PrefetchNotEligibleExistingProxy' | 'PrefetchNotEligibleHostIsNonUnique' | 'PrefetchNotEligibleNonDefaultStoragePartition' | 'PrefetchNotEligibleSameSiteCrossOriginPrefetchRequiredProxy' | 'PrefetchNotEligibleSchemeIsNotHttps' | 'PrefetchNotEligibleUserHasCookies' | 'PrefetchNotEligibleUserHasServiceWorker' | 'PrefetchNotEligibleBatterySaverEnabled' | 'PrefetchNotEligiblePreloadingDisabled' | 'PrefetchNotFinishedInTime' | 'PrefetchNotStarted' | 'PrefetchNotUsedCookiesChanged' | 'PrefetchProxyNotAvailable' | 'PrefetchResponseUsed' | 'PrefetchSuccessfulButNotUsed' | 'PrefetchNotUsedProbeFailed');
 
         /**
          * Upsert. Currently, it is only emitted when a rule set added.

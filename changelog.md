@@ -1,7 +1,42 @@
 
 
+## Roll protocol to r1146363 — _2023-05-19T04:26:26.000Z_
+######  Diff: [`d1a5b89...4f65cf8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d1a5b89...4f65cf8`)
+
+```diff
+@@ browser_protocol.pdl:817 @@ experimental domain Audits
+       ErrorIdToken
+       Canceled
+       RpPageNotVisible
+-      SilentMediationFailure
+ 
+   # This issue tracks client hints related issues. It's used to deprecate old
+   # features, encourage the use of new ones, and provide general guidance.
+@@ -1315,12 +1314,6 @@ domain Browser
+     parameters
+       BrowserCommandId commandId
+ 
+-  # Allows a site to use privacy sandbox features that require enrollment
+-  # without the site actually being enrolled. Only supported on page targets.
+-  command addPrivacySandboxEnrollmentOverride
+-    parameters
+-      string url
+-
+ # This domain exposes CSS read/write operations. All CSS objects (stylesheets, rules, and styles)
+ # have an associated `id` used in subsequent operations on the related object. Each object type has
+ # a specific `id` structure, and those are not interchangeable between objects of different kinds.
+@@ -11062,7 +11055,6 @@ experimental domain Preload
+       PrefetchFailedNetError
+       PrefetchFailedNon2XX
+       PrefetchFailedPerPageLimitExceeded
+-      PrefetchEvicted
+       PrefetchHeldback
+       # A previous prefetch to the origin got a HTTP 503 response with an
+       # Retry-After header that has no elapsed yet.
+```
+
 ## Roll protocol to r1145810 — _2023-05-18T04:26:32.000Z_
-######  Diff: [`467c277...09ae462`](https://github.com/ChromeDevTools/devtools-protocol/compare/`467c277...09ae462`)
+######  Diff: [`467c277...d1a5b89`](https://github.com/ChromeDevTools/devtools-protocol/compare/`467c277...d1a5b89`)
 
 ```diff
 @@ browser_protocol.pdl:11070 @@ experimental domain Preload
@@ -10238,32 +10273,4 @@ index bd277eb..09c420e 100644
  
    # Returns the response body and size if it were re-encoded with the specified settings. Only
    # applies to images.
-```
-
-## Roll protocol to r887064 — _2021-05-27T07:16:11.000Z_
-######  Diff: [`35ec89b...d440402`](https://github.com/ChromeDevTools/devtools-protocol/compare/`35ec89b...d440402`)
-
-```diff
-@@ browser_protocol.pdl:509 @@ experimental domain Audits
-       ExcludeSameSiteNoneInsecure
-       ExcludeSameSiteLax
-       ExcludeSameSiteStrict
--      ExcludeInvalidSameParty
- 
-   type SameSiteCookieWarningReason extends string
-     enum
-@@ -532,12 +531,7 @@ experimental domain Audits
-   # information without the cookie.
-   type SameSiteCookieIssueDetails extends object
-     properties
--      # If AffectedCookie is not set then rawCookieLine contains the raw
--      # Set-Cookie header string. This hints at a problem where the
--      # cookie line is syntactically or semantically malformed in a way
--      # that no valid cookie could be created.
--      optional AffectedCookie cookie
--      optional string rawCookieLine
-+      AffectedCookie cookie
-       array of SameSiteCookieWarningReason cookieWarningReasons
-       array of SameSiteCookieExclusionReason cookieExclusionReasons
-       # Optionally identifies the site-for-cookies and the cookie url, which
 ```

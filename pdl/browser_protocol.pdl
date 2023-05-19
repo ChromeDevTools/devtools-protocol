@@ -817,6 +817,7 @@ experimental domain Audits
       ErrorIdToken
       Canceled
       RpPageNotVisible
+      SilentMediationFailure
 
   # This issue tracks client hints related issues. It's used to deprecate old
   # features, encourage the use of new ones, and provide general guidance.
@@ -1313,6 +1314,12 @@ domain Browser
   experimental command executeBrowserCommand
     parameters
       BrowserCommandId commandId
+
+  # Allows a site to use privacy sandbox features that require enrollment
+  # without the site actually being enrolled. Only supported on page targets.
+  command addPrivacySandboxEnrollmentOverride
+    parameters
+      string url
 
 # This domain exposes CSS read/write operations. All CSS objects (stylesheets, rules, and styles)
 # have an associated `id` used in subsequent operations on the related object. Each object type has
@@ -11055,6 +11062,7 @@ experimental domain Preload
       PrefetchFailedNetError
       PrefetchFailedNon2XX
       PrefetchFailedPerPageLimitExceeded
+      PrefetchEvicted
       PrefetchHeldback
       # A previous prefetch to the origin got a HTTP 503 response with an
       # Retry-After header that has no elapsed yet.
