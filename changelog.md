@@ -1,7 +1,86 @@
 
 
+## Roll protocol to r1146845 — _2023-05-20T04:26:10.000Z_
+######  Diff: [`8445d84...596eda2`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8445d84...596eda2`)
+
+```diff
+@@ browser_protocol.pdl:2047 @@ experimental domain CSS
+       StyleSheetId styleSheetId
+ 
+ experimental domain CacheStorage
+-  depends on Storage
+ 
+   # Unique identifier of the Cache object.
+   type CacheId extends string
+@@ -2091,8 +2090,6 @@ experimental domain CacheStorage
+       string securityOrigin
+       # Storage key of the cache.
+       string storageKey
+-      # Storage bucket of the cache.
+-      optional Storage.StorageBucket storageBucket
+       # The name of the cache.
+       string cacheName
+ 
+@@ -2124,13 +2121,11 @@ experimental domain CacheStorage
+   # Requests cache names.
+   command requestCacheNames
+     parameters
+-      # At least and at most one of securityOrigin, storageKey, storageBucket must be specified.
++      # At least and at most one of securityOrigin, storageKey must be specified.
+       # Security origin.
+       optional string securityOrigin
+       # Storage key.
+       optional string storageKey
+-      # Storage bucket. If not specified, it uses the default bucket.
+-      optional Storage.StorageBucket storageBucket
+     returns
+       # Caches for the security origin.
+       array of Cache caches
+@@ -9437,8 +9432,6 @@ experimental domain Storage
+       string origin
+       # Storage key to update.
+       string storageKey
+-      # Storage bucket to update.
+-      string bucketId
+       # Name of cache in origin.
+       string cacheName
+ 
+@@ -9449,8 +9442,6 @@ experimental domain Storage
+       string origin
+       # Storage key to update.
+       string storageKey
+-      # Storage bucket to update.
+-      string bucketId
+ 
+   # The origin's IndexedDB object store has been modified.
+   event indexedDBContentUpdated
+@@ -11033,12 +11024,19 @@ experimental domain Preload
+       # that is incompatible with prerender and has caused the cancellation of the attempt
+       optional string disallowedApiMethod
+ 
++  type PreloadEnabledState extends string
++    enum
++      Enabled
++      DisabledByDataSaver
++      DisabledByBatterySaver
++      DisabledByPreference
++      # Service not available.
++      NotSupported
++
+   # Fired when a preload enabled state is updated.
+   event preloadEnabledStateUpdated
+     parameters
+-      boolean disabledByPreference
+-      boolean disabledByDataSaver
+-      boolean disabledByBatterySaver
++      PreloadEnabledState state
+ 
+   # Preloading status values, see also PreloadingTriggeringOutcome. This
+   # status is shared by prefetchStatusUpdated and prerenderStatusUpdated.
+```
+
 ## Roll protocol to r1146363 — _2023-05-19T04:26:26.000Z_
-######  Diff: [`d1a5b89...4f65cf8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d1a5b89...4f65cf8`)
+######  Diff: [`d1a5b89...8445d84`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d1a5b89...8445d84`)
 
 ```diff
 @@ browser_protocol.pdl:817 @@ experimental domain Audits
@@ -10257,20 +10336,4 @@ index bd277eb..09c420e 100644
        RequireCorp
  
    experimental type CrossOriginEmbedderPolicyStatus extends object
-```
-
-## Roll protocol to r887710 — _2021-05-31T11:16:13.000Z_
-######  Diff: [`d440402...76e104a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d440402...76e104a`)
-
-```diff
-@@ browser_protocol.pdl:798 @@ experimental domain Audits
-     properties
-       InspectorIssueCode code
-       InspectorIssueDetails details
--      # A unique id for this issue. May be omitted if no other entity (e.g.
--      # exception, CDP message, etc.) is referencing this issue.
--      optional string issueId
- 
-   # Returns the response body and size if it were re-encoded with the specified settings. Only
-   # applies to images.
 ```

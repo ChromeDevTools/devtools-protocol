@@ -5330,6 +5330,10 @@ export namespace Protocol {
              */
             storageKey: string;
             /**
+             * Storage bucket of the cache.
+             */
+            storageBucket?: Storage.StorageBucket;
+            /**
              * The name of the cache.
              */
             cacheName: string;
@@ -5370,7 +5374,7 @@ export namespace Protocol {
 
         export interface RequestCacheNamesRequest {
             /**
-             * At least and at most one of securityOrigin, storageKey must be specified.
+             * At least and at most one of securityOrigin, storageKey, storageBucket must be specified.
              * Security origin.
              */
             securityOrigin?: string;
@@ -5378,6 +5382,10 @@ export namespace Protocol {
              * Storage key.
              */
             storageKey?: string;
+            /**
+             * Storage bucket. If not specified, it uses the default bucket.
+             */
+            storageBucket?: Storage.StorageBucket;
         }
 
         export interface RequestCacheNamesResponse {
@@ -15159,6 +15167,10 @@ export namespace Protocol {
              */
             storageKey: string;
             /**
+             * Storage bucket to update.
+             */
+            bucketId: string;
+            /**
              * Name of cache in origin.
              */
             cacheName: string;
@@ -15176,6 +15188,10 @@ export namespace Protocol {
              * Storage key to update.
              */
             storageKey: string;
+            /**
+             * Storage bucket to update.
+             */
+            bucketId: string;
         }
 
         /**
@@ -17167,8 +17183,6 @@ export namespace Protocol {
          */
         export type PrerenderFinalStatus = ('Activated' | 'Destroyed' | 'LowEndDevice' | 'InvalidSchemeRedirect' | 'InvalidSchemeNavigation' | 'InProgressNavigation' | 'NavigationRequestBlockedByCsp' | 'MainFrameNavigation' | 'MojoBinderPolicy' | 'RendererProcessCrashed' | 'RendererProcessKilled' | 'Download' | 'TriggerDestroyed' | 'NavigationNotCommitted' | 'NavigationBadHttpStatus' | 'ClientCertRequested' | 'NavigationRequestNetworkError' | 'MaxNumOfRunningPrerendersExceeded' | 'CancelAllHostsForTesting' | 'DidFailLoad' | 'Stop' | 'SslCertificateError' | 'LoginAuthRequested' | 'UaChangeRequiresReload' | 'BlockedByClient' | 'AudioOutputDeviceRequested' | 'MixedContent' | 'TriggerBackgrounded' | 'EmbedderTriggeredAndCrossOriginRedirected' | 'MemoryLimitExceeded' | 'FailToGetMemoryUsage' | 'DataSaverEnabled' | 'HasEffectiveUrl' | 'ActivatedBeforeStarted' | 'InactivePageRestriction' | 'StartFailed' | 'TimeoutBackgrounded' | 'CrossSiteRedirectInInitialNavigation' | 'CrossSiteNavigationInInitialNavigation' | 'SameSiteCrossOriginRedirectNotOptInInInitialNavigation' | 'SameSiteCrossOriginNavigationNotOptInInInitialNavigation' | 'ActivationNavigationParameterMismatch' | 'ActivatedInBackground' | 'EmbedderHostDisallowed' | 'ActivationNavigationDestroyedBeforeSuccess' | 'TabClosedByUserGesture' | 'TabClosedWithoutUserGesture' | 'PrimaryMainFrameRendererProcessCrashed' | 'PrimaryMainFrameRendererProcessKilled' | 'ActivationFramePolicyNotCompatible' | 'PreloadingDisabled' | 'BatterySaverEnabled' | 'ActivatedDuringMainFrameNavigation' | 'PreloadingUnsupportedByWebContents' | 'CrossSiteRedirectInMainFrameNavigation' | 'CrossSiteNavigationInMainFrameNavigation' | 'SameSiteCrossOriginRedirectNotOptInInMainFrameNavigation' | 'SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation' | 'MemoryPressureOnTrigger' | 'MemoryPressureAfterTriggered');
 
-        export type PreloadEnabledState = ('Enabled' | 'DisabledByDataSaver' | 'DisabledByBatterySaver' | 'DisabledByPreference' | 'NotSupported');
-
         /**
          * Preloading status values, see also PreloadingTriggeringOutcome. This
          * status is shared by prefetchStatusUpdated and prerenderStatusUpdated.
@@ -17214,7 +17228,9 @@ export namespace Protocol {
          * Fired when a preload enabled state is updated.
          */
         export interface PreloadEnabledStateUpdatedEvent {
-            state: PreloadEnabledState;
+            disabledByPreference: boolean;
+            disabledByDataSaver: boolean;
+            disabledByBatterySaver: boolean;
         }
 
         /**
