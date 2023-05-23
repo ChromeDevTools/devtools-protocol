@@ -1,7 +1,34 @@
 
 
+## Roll protocol to r1147663 — _2023-05-23T04:26:36.000Z_
+######  Diff: [`60a039d...e8ea7a6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`60a039d...e8ea7a6`)
+
+```diff
+@@ browser_protocol.pdl:1382 @@ experimental domain CSS
+       string text
+       # Value range in the underlying resource (if available).
+       optional SourceRange range
+-      # Specificity of the selector.
+-      experimental optional Specificity specificity
+-
+-  # Specificity:
+-  # https://drafts.csswg.org/selectors/#specificity-rules
+-  experimental type Specificity extends object
+-    properties
+-      # The a component, which represents the number of ID selectors.
+-      integer a
+-      # The b component, which represents the number of class selectors, attributes selectors, and
+-      # pseudo-classes.
+-      integer b
+-      # The c component, which represents the number of type selectors and pseudo-elements.
+-      integer c
+ 
+   # Selector list data.
+   type SelectorList extends object
+```
+
 ## Roll protocol to r1146845 — _2023-05-20T04:26:10.000Z_
-######  Diff: [`8445d84...596eda2`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8445d84...596eda2`)
+######  Diff: [`8445d84...60a039d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8445d84...60a039d`)
 
 ```diff
 @@ browser_protocol.pdl:2047 @@ experimental domain CSS
@@ -10321,19 +10348,4 @@ index bd277eb..09c420e 100644
    # Information about amount of glyphs that were rendered with given font.
    type PlatformFontUsage extends object
      properties
-```
-
-## Roll protocol to r887728 — _2021-05-31T12:16:11.000Z_
-######  Diff: [`76e104a...564611d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`76e104a...564611d`)
-
-```diff
-@@ browser_protocol.pdl:5968 @@ domain Network
-   experimental type CrossOriginEmbedderPolicyValue extends string
-     enum
-       None
--      Credentialless
-+      CorsOrCredentialless
-       RequireCorp
- 
-   experimental type CrossOriginEmbedderPolicyStatus extends object
 ```
