@@ -9677,6 +9677,10 @@ export namespace Protocol {
              */
             pushEnd: number;
             /**
+             * Started receiving response headers.
+             */
+            receiveHeadersStart: number;
+            /**
              * Finished receiving response headers.
              */
             receiveHeadersEnd: number;

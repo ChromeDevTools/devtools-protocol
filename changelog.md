@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1148337 — _2023-05-24T04:27:07.000Z_
+######  Diff: [`fb80158...ebeeb6b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fb80158...ebeeb6b`)
+
+```diff
+@@ browser_protocol.pdl:5121 @@ domain Network
+       experimental number pushStart
+       # Time the server finished pushing request.
+       experimental number pushEnd
+-      # Started receiving response headers.
+-      experimental number receiveHeadersStart
+       # Finished receiving response headers.
+       number receiveHeadersEnd
+```
+
 ## Roll protocol to r1147663 — _2023-05-23T04:26:36.000Z_
-######  Diff: [`60a039d...e8ea7a6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`60a039d...e8ea7a6`)
+######  Diff: [`60a039d...fb80158`](https://github.com/ChromeDevTools/devtools-protocol/compare/`60a039d...fb80158`)
 
 ```diff
 @@ browser_protocol.pdl:1382 @@ experimental domain CSS
@@ -10314,38 +10328,4 @@ index bd277eb..09c420e 100644
    # Modifies the rule selector.
    command setRuleSelector
      parameters
-```
-
-## Roll protocol to r888392 — _2021-06-02T11:16:05.000Z_
-######  Diff: [`564611d...bfcd0a3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`564611d...bfcd0a3`)
-
-```diff
-@@ browser_protocol.pdl:1315 @@ experimental domain CSS
-       # Media list array (for rules involving media queries). The array enumerates media queries
-       # starting with the innermost one, going outwards.
-       optional array of CSSMedia media
--      # Container query list array (for rules involving container queries).
--      # The array enumerates container queries starting with the innermost one, going outwards.
--      experimental optional array of CSSContainerQuery containerQueries
- 
-   # CSS coverage information.
-   type RuleUsage extends object
-@@ -1441,17 +1438,6 @@ experimental domain CSS
-       # Computed length of media query expression (if applicable).
-       optional number computedLength
- 
--  # CSS container query rule descriptor.
--  experimental type CSSContainerQuery extends object
--    properties
--      # Container query text.
--      string text
--      # The associated rule header range in the enclosing stylesheet (if
--      # available).
--      optional SourceRange range
--      # Identifier of the stylesheet containing this object (if exists).
--      optional StyleSheetId styleSheetId
--
-   # Information about amount of glyphs that were rendered with given font.
-   type PlatformFontUsage extends object
-     properties
 ```
