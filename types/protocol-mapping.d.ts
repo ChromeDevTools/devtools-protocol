@@ -3915,6 +3915,19 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Enable/disable prerendering manually.
+         * 
+         * This command is a short-term solution for https://crbug.com/1440085.
+         * See https://docs.google.com/document/d/12HVmFxYj5Jc-eJr5OmWsa2bqTJsbgGLKI6ZIyx0_wpA
+         * for more details.
+         * 
+         * TODO(https://crbug.com/1440085): Remove this once Puppeteer supports tab targets.
+         */
+        'Page.setPrerenderingAllowed': {
+            paramsType: [Protocol.Page.SetPrerenderingAllowedRequest];
+            returnType: void;
+        };
+        /**
          * Disable collecting and reporting metrics.
          */
         'Performance.disable': {

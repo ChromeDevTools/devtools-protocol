@@ -17806,6 +17806,17 @@
                             "type": "boolean"
                         }
                     ]
+                },
+                {
+                    "name": "setPrerenderingAllowed",
+                    "description": "Enable/disable prerendering manually.\n\nThis command is a short-term solution for https://crbug.com/1440085.\nSee https://docs.google.com/document/d/12HVmFxYj5Jc-eJr5OmWsa2bqTJsbgGLKI6ZIyx0_wpA\nfor more details.\n\nTODO(https://crbug.com/1440085): Remove this once Puppeteer supports tab targets.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "isAllowed",
+                            "type": "boolean"
+                        }
+                    ]
                 }
             ],
             "events": [
@@ -23327,7 +23338,8 @@
                         "SameSiteCrossOriginRedirectNotOptInInMainFrameNavigation",
                         "SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation",
                         "MemoryPressureOnTrigger",
-                        "MemoryPressureAfterTriggered"
+                        "MemoryPressureAfterTriggered",
+                        "PrerenderingDisabledByDevTools"
                     ]
                 },
                 {

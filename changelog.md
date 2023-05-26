@@ -1,7 +1,61 @@
 
 
+## Roll protocol to r1149535 — _2023-05-26T04:26:25.000Z_
+######  Diff: [`4f898ab...ad6de0e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4f898ab...ad6de0e`)
+
+```diff
+@@ browser_protocol.pdl:8631 @@ domain Page
+       # Base64-encoded data
+       binary data
+ 
+-  # Enable/disable prerendering manually.
+-  #
+-  # This command is a short-term solution for https://crbug.com/1440085.
+-  # See https://docs.google.com/document/d/12HVmFxYj5Jc-eJr5OmWsa2bqTJsbgGLKI6ZIyx0_wpA
+-  # for more details.
+-  #
+-  # TODO(https://crbug.com/1440085): Remove this once Puppeteer supports tab targets.
+-  experimental command setPrerenderingAllowed
+-    parameters
+-      boolean isAllowed
+-
+ domain Performance
+ 
+   # Run-time execution metric.
+@@ -11047,7 +11036,6 @@ experimental domain Preload
+       SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation
+       MemoryPressureOnTrigger
+       MemoryPressureAfterTriggered
+-      PrerenderingDisabledByDevTools
+ 
+   # Fired when a prerender attempt is completed.
+   event prerenderAttemptCompleted
+diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
+index 7a3c772..0dbdc01 100644
+--- a/pdl/js_protocol.pdl
++++ b/pdl/js_protocol.pdl
+@@ -1443,7 +1443,7 @@ domain Runtime
+       # resulting `objectId` is still provided.
+       deprecated optional boolean generateWebDriverValue
+       # Specifies the result serialization. If provided, overrides
+-      # `generatePreview`, `returnByValue` and `generateWebDriverValue`.
++      # `returnByValue` and `generateWebDriverValue`.
+       experimental optional SerializationOptions serializationOptions
+ 
+     returns
+@@ -1538,7 +1538,7 @@ domain Runtime
+       # resulting `objectId` is still provided.
+       deprecated optional boolean generateWebDriverValue
+       # Specifies the result serialization. If provided, overrides
+-      # `generatePreview`, `returnByValue` and `generateWebDriverValue`.
++      # `returnByValue` and `generateWebDriverValue`.
+       experimental optional SerializationOptions serializationOptions
+     returns
+       # Evaluation result.
+```
+
 ## Roll protocol to r1148337 — _2023-05-24T04:27:07.000Z_
-######  Diff: [`fb80158...ebeeb6b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fb80158...ebeeb6b`)
+######  Diff: [`fb80158...4f898ab`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fb80158...4f898ab`)
 
 ```diff
 @@ browser_protocol.pdl:5121 @@ domain Network
@@ -10304,28 +10358,5 @@ index bd277eb..09c420e 100644
 +
    # Specifies whether to always send extra HTTP headers with the requests from this page.
    command setExtraHTTPHeaders
-     parameters
-```
-
-## Roll protocol to r890975 — _2021-06-09T22:17:50.000Z_
-######  Diff: [`bfcd0a3...cbc2ddb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`bfcd0a3...cbc2ddb`)
-
-```diff
-@@ browser_protocol.pdl:1698 @@ experimental domain CSS
-       # The resulting CSS media rule after modification.
-       CSSMedia media
- 
--  # Modifies the expression of a container query.
--  experimental command setContainerQueryText
--    parameters
--      StyleSheetId styleSheetId
--      SourceRange range
--      string text
--    returns
--      # The resulting CSS container query rule after modification.
--      CSSContainerQuery containerQuery
--
-   # Modifies the rule selector.
-   command setRuleSelector
      parameters
 ```
