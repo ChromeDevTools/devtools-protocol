@@ -1,7 +1,29 @@
 
 
+## Roll protocol to r1151065 — _2023-05-31T04:26:30.000Z_
+######  Diff: [`44ad3c8...056c5f8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`44ad3c8...056c5f8`)
+
+```diff
+@@ browser_protocol.pdl:818 @@ experimental domain Audits
+       Canceled
+       RpPageNotVisible
+       SilentMediationFailure
+-      ThirdPartyCookiesBlocked
+ 
+   # This issue tracks client hints related issues. It's used to deprecate old
+   # features, encourage the use of new ones, and provide general guidance.
+@@ -8463,7 +8462,6 @@ domain Page
+       ActivationNavigationsDisallowedForBug1234857
+       ErrorDocument
+       FencedFramesEmbedder
+-      CookieDisabled
+       #Blocklisted features
+       WebSocket
+       WebTransport
+```
+
 ## Roll protocol to r1149535 — _2023-05-26T04:26:25.000Z_
-######  Diff: [`4f898ab...ad6de0e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4f898ab...ad6de0e`)
+######  Diff: [`4f898ab...44ad3c8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4f898ab...44ad3c8`)
 
 ```diff
 @@ browser_protocol.pdl:8631 @@ domain Page
@@ -10337,26 +10359,5 @@ index bd277eb..09c420e 100644
 -      array of BackForwardCacheNotRestoredExplanation notRestoredExplanations
  
    event loadEventFired
-     parameters
-```
-
-## Roll protocol to r891108 — _2021-06-10T06:16:17.000Z_
-######  Diff: [`cbc2ddb...28c241d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`cbc2ddb...28c241d`)
-
-```diff
-@@ browser_protocol.pdl:5546 @@ domain Network
-       # Cookies to be set.
-       array of CookieParam cookies
- 
-+  # For testing.
-+  experimental command setDataSizeLimitsForTest
-+    parameters
-+      # Maximum total buffer size.
-+      integer maxTotalSize
-+      # Maximum per-resource size.
-+      integer maxResourceSize
-+
-   # Specifies whether to always send extra HTTP headers with the requests from this page.
-   command setExtraHTTPHeaders
      parameters
 ```
