@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1152352 — _2023-06-02T04:26:31.000Z_
+######  Diff: [`11fd654...df3ae87`](https://github.com/ChromeDevTools/devtools-protocol/compare/`11fd654...df3ae87`)
+
+```diff
+@@ browser_protocol.pdl:3984 @@ experimental domain HeadlessExperimental
+         jpeg
+         png
+         webp
+-      # Compression quality from range [0..100] (jpeg and webp only).
++      # Compression quality from range [0..100] (jpeg only).
+       optional integer quality
+       # Optimize image encoding for speed, not for resulting size (defaults to false)
+       optional boolean optimizeForSpeed
+```
+
 ## Roll protocol to r1151065 — _2023-05-31T04:26:30.000Z_
-######  Diff: [`44ad3c8...056c5f8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`44ad3c8...056c5f8`)
+######  Diff: [`44ad3c8...11fd654`](https://github.com/ChromeDevTools/devtools-protocol/compare/`44ad3c8...11fd654`)
 
 ```diff
 @@ browser_protocol.pdl:818 @@ experimental domain Audits
@@ -10220,144 +10235,4 @@ index bd277eb..09c420e 100644
        # Indicates whether the main document is a secure context and explains why that is the case.
        experimental SecureContextType secureContextType
        # Indicates whether this is a cross origin isolated context.
-```
-
-## Roll protocol to r891247 — _2021-06-10T16:16:15.000Z_
-######  Diff: [`28c241d...077a282`](https://github.com/ChromeDevTools/devtools-protocol/compare/`28c241d...077a282`)
-
-```diff
-@@ browser_protocol.pdl:7625 @@ domain Page
-       string name
-       Network.MonotonicTime timestamp
- 
--  # List of not restored reasons for back-forward cache.
--  experimental type BackForwardCacheNotRestoredReason extends string
--    enum
--      NotMainFrame
--      BackForwardCacheDisabled
--      RelatedActiveContentsExist
--      HTTPStatusNotOK
--      SchemeNotHTTPOrHTTPS
--      Loading
--      WasGrantedMediaAccess
--      DisableForRenderFrameHostCalled
--      DomainNotAllowed
--      HTTPMethodNotGET
--      SubframeIsNavigating
--      Timeout
--      CacheLimit
--      JavaScriptExecution
--      RendererProcessKilled
--      RendererProcessCrashed
--      GrantedMediaStreamAccess
--      SchedulerTrackedFeatureUsed
--      ConflictingBrowsingInstance
--      CacheFlushed
--      ServiceWorkerVersionActivation
--      SessionRestored
--      ServiceWorkerPostMessage
--      EnteredBackForwardCacheBeforeServiceWorkerHostAdded
--      RenderFrameHostReused_SameSite
--      RenderFrameHostReused_CrossSite
--      ServiceWorkerClaim
--      IgnoreEventAndEvict
--      HaveInnerContents
--      TimeoutPuttingInCache
--      BackForwardCacheDisabledByLowMemory
--      BackForwardCacheDisabledByCommandLine
--      NetworkRequestDatapipeDrainedAsBytesConsumer
--      NetworkRequestRedirected
--      NetworkRequestTimeout
--      NetworkExceedsBufferLimit
--      NavigationCancelledWhileRestoring
--      NotMostRecentNavigationEntry
--      BackForwardCacheDisabledForPrerender
--      UserAgentOverrideDiffers
--      ForegroundCacheLimit
--      BrowsingInstanceNotSwapped
--      BackForwardCacheDisabledForDelegate
--      OptInUnloadHeaderNotPresent
--      UnloadHandlerExistsInMainFrame
--      UnloadHandlerExistsInSubFrame
--      # Blocklisted features
--      WebSocket
--      WebRTC
--      MainResourceHasCacheControlNoStore
--      MainResourceHasCacheControlNoCache
--      SubresourceHasCacheControlNoStore
--      SubresourceHasCacheControlNoCache
--      PageShowEventListener
--      PageHideEventListener
--      BeforeUnloadEventListener
--      UnloadEventListener
--      FreezeEventListener
--      ResumeEventListener
--      ContainsPlugins
--      DocumentLoaded
--      DedicatedWorkerOrWorklet
--      OutstandingNetworkRequestOthers
--      OutstandingIndexedDBTransaction
--      RequestedGeolocationPermission
--      RequestedNotificationsPermission
--      RequestedMIDIPermission
--      RequestedAudioCapturePermission
--      RequestedVideoCapturePermission
--      RequestedBackForwardCacheBlockedSensors
--      RequestedBackgroundWorkPermission
--      BroadcastChannel
--      IndexedDBConnection
--      WebVR
--      WebXR
--      SharedWorker
--      WebLocks
--      WebHID
--      WebShare
--      RequestedStorageAccessGrant
--      WebNfc
--      WebFileSystem
--      OutstandingNetworkRequestFetch
--      OutstandingNetworkRequestXHR
--      AppBanner
--      Printing
--      WebDatabase
--      PictureInPicture
--      Portal
--      SpeechRecognizer
--      IdleManager
--      PaymentManager
--      SpeechSynthesis
--      KeyboardLock
--      WebOTPService
--      OutstandingNetworkRequestDirectSocket
--      IsolatedWorldScript
--      InjectedStyleSheet
--      MediaSessionImplOnServiceCreated
--      Unknown
--
--  # Types of not restored reasons for back-forward cache.
--  experimental type BackForwardCacheNotRestoredReasonType extends string
--    enum
--      SupportPending
--      PageSupportNeeded
--      Circumstantial
--
--  experimental type BackForwardCacheNotRestoredExplanation extends object
--    properties
--      # Type of the reason
--      BackForwardCacheNotRestoredReasonType type
--      # Not restored reason
--      BackForwardCacheNotRestoredReason reason
--
-   # Fired for failed bfcache history navigations if BackForwardCache feature is enabled. Do
-   # not assume any ordering with the Page.frameNavigated event. This event is fired only for
-   # main-frame history navigation where the document changes (non-same-document navigations),
-@@ -7753,8 +7635,6 @@ domain Page
-       Network.LoaderId loaderId
-       # The frame id of the associated frame.
-       FrameId frameId
--      # Array of reasons why the page could not be cached. This must not be empty.
--      array of BackForwardCacheNotRestoredExplanation notRestoredExplanations
- 
-   event loadEventFired
-     parameters
 ```

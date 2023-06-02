@@ -8738,7 +8738,7 @@
                         },
                         {
                             "name": "quality",
-                            "description": "Compression quality from range [0..100] (jpeg only).",
+                            "description": "Compression quality from range [0..100] (jpeg and webp only).",
                             "optional": true,
                             "type": "integer"
                         },

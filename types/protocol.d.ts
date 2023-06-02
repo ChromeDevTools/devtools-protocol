@@ -8021,7 +8021,7 @@ export namespace Protocol {
              */
             format?: ('jpeg' | 'png' | 'webp');
             /**
-             * Compression quality from range [0..100] (jpeg only).
+             * Compression quality from range [0..100] (jpeg and webp only).
              */
             quality?: integer;
             /**
