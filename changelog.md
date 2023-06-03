@@ -1,7 +1,44 @@
 
 
+## Roll protocol to r1152884 — _2023-06-03T04:26:19.000Z_
+######  Diff: [`7eaf459...00fdf92`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7eaf459...00fdf92`)
+
+```diff
+@@ browser_protocol.pdl:6560 @@ domain Network
+       optional string reportingEndpoint
+       optional string reportOnlyReportingEndpoint
+ 
+-  experimental type ContentSecurityPolicySource extends string
+-    enum
+-      HTTP
+-      Meta
+-
+-  experimental type ContentSecurityPolicyStatus extends object
+-    properties
+-      string effectiveDirectives
+-      boolean isEnforced
+-      ContentSecurityPolicySource source
+-
+   experimental type SecurityIsolationStatus extends object
+     properties
+       optional CrossOriginOpenerPolicyStatus coop
+       optional CrossOriginEmbedderPolicyStatus coep
+-      optional array of ContentSecurityPolicyStatus csp
+ 
+   # Returns information about the COEP/COOP isolation status.
+   experimental command getSecurityIsolationStatus
+@@ -8523,7 +8511,6 @@ domain Page
+       IndexedDBEvent
+       Dummy
+       AuthorizationHeader
+-      WebSerial
+       # Disabled for RenderFrameHost reasons
+       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
+       ContentSecurityHandler
+```
+
 ## Roll protocol to r1152352 — _2023-06-02T04:26:31.000Z_
-######  Diff: [`11fd654...df3ae87`](https://github.com/ChromeDevTools/devtools-protocol/compare/`11fd654...df3ae87`)
+######  Diff: [`11fd654...7eaf459`](https://github.com/ChromeDevTools/devtools-protocol/compare/`11fd654...7eaf459`)
 
 ```diff
 @@ browser_protocol.pdl:3984 @@ experimental domain HeadlessExperimental
@@ -10199,40 +10236,4 @@ index bd277eb..09c420e 100644
        WebXR
        SharedWorker
        WebLocks
-```
-
-## Roll protocol to r892017 — _2021-06-14T10:15:55.000Z_
-######  Diff: [`077a282...6286308`](https://github.com/ChromeDevTools/devtools-protocol/compare/`077a282...6286308`)
-
-```diff
-@@ browser_protocol.pdl:6487 @@ domain Page
-       # This frame is the root of an ad frame.
-       root
- 
--  experimental type AdFrameExplanation extends string
--    enum
--      ParentIsAd
--      CreatedByAdScript
--      MatchedBlockingRule
--
--  # Indicates whether a frame has been identified as an ad and why.
--  experimental type AdFrameStatus extends object
--    properties
--      AdFrameType adFrameType
--      optional array of AdFrameExplanation explanations
--
-   # Indicates whether the frame is a secure context and why it is the case.
-   experimental type SecureContextType extends string
-     enum
-@@ -6687,8 +6675,8 @@ domain Page
-       string mimeType
-       # If the frame failed to load, this contains the URL that could not be loaded. Note that unlike url above, this URL may contain a fragment.
-       experimental optional string unreachableUrl
--      # Indicates whether this frame was tagged as an ad and why.
--      experimental optional AdFrameStatus adFrameStatus
-+      # Indicates whether this frame was tagged as an ad.
-+      experimental optional AdFrameType adFrameType
-       # Indicates whether the main document is a secure context and explains why that is the case.
-       experimental SecureContextType secureContextType
-       # Indicates whether this is a cross origin isolated context.
 ```
