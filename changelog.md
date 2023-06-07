@@ -1,7 +1,58 @@
 
 
+## Roll protocol to r1154250 — _2023-06-07T04:26:56.000Z_
+######  Diff: [`d9d9e42...b2acfea`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d9d9e42...b2acfea`)
+
+```diff
+@@ browser_protocol.pdl:827 @@ experimental domain Audits
+       SourceCodeLocation sourceCodeLocation
+       ClientHintIssueReason clientHintIssueReason
+ 
+-  type FailedRequestInfo extends object
+-    properties
+-      # The URL that failed to load.
+-      string url
+-      # The failure message for the failed request.
+-      string failureMessage
+-
+-  type StyleSheetLoadingIssueReason extends string
+-    enum
+-      LateImportRule
+-      RequestFailed
+-
+-  # This issue warns when a referenced stylesheet couldn't be loaded.
+-  type StylesheetLoadingIssueDetails extends object
+-    properties
+-      # Source code position that referenced the failing stylesheet.
+-      SourceCodeLocation sourceCodeLocation
+-      # Reason why the stylesheet couldn't be loaded.
+-      StyleSheetLoadingIssueReason styleSheetLoadingIssueReason
+-      # Contains additional info when the failure was due to a request.
+-      optional FailedRequestInfo failedRequestInfo
+-
+   # A unique identifier for the type of issue. Each type may use one of the
+   # optional fields in InspectorIssueDetails to convey more specific
+   # information about the kind of issue.
+@@ -870,7 +848,6 @@ experimental domain Audits
+       ClientHintIssue
+       FederatedAuthRequestIssue
+       BounceTrackingIssue
+-      StylesheetLoadingIssue
+ 
+   # This struct holds a list of optional fields with additional information
+   # specific to the kind of issue. When adding a new issue code, please also
+@@ -893,7 +870,6 @@ experimental domain Audits
+       optional ClientHintIssueDetails clientHintIssueDetails
+       optional FederatedAuthRequestIssueDetails federatedAuthRequestIssueDetails
+       optional BounceTrackingIssueDetails bounceTrackingIssueDetails
+-      optional StylesheetLoadingIssueDetails stylesheetLoadingIssueDetails
+ 
+   # A unique id for a DevTools inspector issue. Allows other entities (e.g.
+   # exceptions, CDP message, console messages, etc.) to reference an issue.
+```
+
 ## Roll protocol to r1152884 — _2023-06-03T04:26:19.000Z_
-######  Diff: [`7eaf459...00fdf92`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7eaf459...00fdf92`)
+######  Diff: [`7eaf459...d9d9e42`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7eaf459...d9d9e42`)
 
 ```diff
 @@ browser_protocol.pdl:6560 @@ domain Network
@@ -10222,18 +10273,4 @@ index bd277eb..09c420e 100644
        WebSocket
        WebRTC
        MainResourceHasCacheControlNoStore
-```
-
-## Roll protocol to r892366 — _2021-06-15T01:16:09.000Z_
-######  Diff: [`6286308...042399a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6286308...042399a`)
-
-```diff
-@@ browser_protocol.pdl:7713 @@ domain Page
-       RequestedBackgroundWorkPermission
-       BroadcastChannel
-       IndexedDBConnection
-+      WebVR
-       WebXR
-       SharedWorker
-       WebLocks
 ```

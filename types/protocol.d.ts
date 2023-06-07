@@ -3531,12 +3531,43 @@ export namespace Protocol {
             clientHintIssueReason: ClientHintIssueReason;
         }
 
+        export interface FailedRequestInfo {
+            /**
+             * The URL that failed to load.
+             */
+            url: string;
+            /**
+             * The failure message for the failed request.
+             */
+            failureMessage: string;
+        }
+
+        export type StyleSheetLoadingIssueReason = ('LateImportRule' | 'RequestFailed');
+
+        /**
+         * This issue warns when a referenced stylesheet couldn't be loaded.
+         */
+        export interface StylesheetLoadingIssueDetails {
+            /**
+             * Source code position that referenced the failing stylesheet.
+             */
+            sourceCodeLocation: SourceCodeLocation;
+            /**
+             * Reason why the stylesheet couldn't be loaded.
+             */
+            styleSheetLoadingIssueReason: StyleSheetLoadingIssueReason;
+            /**
+             * Contains additional info when the failure was due to a request.
+             */
+            failedRequestInfo?: FailedRequestInfo;
+        }
+
         /**
          * A unique identifier for the type of issue. Each type may use one of the
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue');
+        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'StylesheetLoadingIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3560,6 +3591,7 @@ export namespace Protocol {
             clientHintIssueDetails?: ClientHintIssueDetails;
             federatedAuthRequestIssueDetails?: FederatedAuthRequestIssueDetails;
             bounceTrackingIssueDetails?: BounceTrackingIssueDetails;
+            stylesheetLoadingIssueDetails?: StylesheetLoadingIssueDetails;
         }
 
         /**
