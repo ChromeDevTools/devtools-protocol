@@ -3522,6 +3522,17 @@ export namespace Protocol {
          */
         export type FederatedAuthRequestIssueReason = ('ShouldEmbargo' | 'TooManyRequests' | 'WellKnownHttpNotFound' | 'WellKnownNoResponse' | 'WellKnownInvalidResponse' | 'WellKnownListEmpty' | 'WellKnownInvalidContentType' | 'ConfigNotInWellKnown' | 'WellKnownTooBig' | 'ConfigHttpNotFound' | 'ConfigNoResponse' | 'ConfigInvalidResponse' | 'ConfigInvalidContentType' | 'ClientMetadataHttpNotFound' | 'ClientMetadataNoResponse' | 'ClientMetadataInvalidResponse' | 'ClientMetadataInvalidContentType' | 'DisabledInSettings' | 'ErrorFetchingSignin' | 'InvalidSigninResponse' | 'AccountsHttpNotFound' | 'AccountsNoResponse' | 'AccountsInvalidResponse' | 'AccountsListEmpty' | 'AccountsInvalidContentType' | 'IdTokenHttpNotFound' | 'IdTokenNoResponse' | 'IdTokenInvalidResponse' | 'IdTokenInvalidRequest' | 'IdTokenInvalidContentType' | 'ErrorIdToken' | 'Canceled' | 'RpPageNotVisible' | 'SilentMediationFailure' | 'ThirdPartyCookiesBlocked');
 
+        export interface FederatedAuthUserInfoRequestIssueDetails {
+            federatedAuthUserInfoRequestIssueReason: FederatedAuthUserInfoRequestIssueReason;
+        }
+
+        /**
+         * Represents the failure reason when a getUserInfo() call fails.
+         * Should be updated alongside FederatedAuthUserInfoRequestResult in
+         * third_party/blink/public/mojom/devtools/inspector_issue.mojom.
+         */
+        export type FederatedAuthUserInfoRequestIssueReason = ('NotSameOrigin' | 'NotIframe' | 'NotPotentiallyTrustworthy' | 'NoApiPermission' | 'NotSignedInWithIdp' | 'NoAccountSharingPermission' | 'InvalidConfigOrWellKnown' | 'InvalidAccountsResponse' | 'NoReturningUserFromFetchedAccounts');
+
         /**
          * This issue tracks client hints related issues. It's used to deprecate old
          * features, encourage the use of new ones, and provide general guidance.
@@ -3567,7 +3578,7 @@ export namespace Protocol {
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'StylesheetLoadingIssue');
+        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3592,6 +3603,7 @@ export namespace Protocol {
             federatedAuthRequestIssueDetails?: FederatedAuthRequestIssueDetails;
             bounceTrackingIssueDetails?: BounceTrackingIssueDetails;
             stylesheetLoadingIssueDetails?: StylesheetLoadingIssueDetails;
+            federatedAuthUserInfoRequestIssueDetails?: FederatedAuthUserInfoRequestIssueDetails;
         }
 
         /**
@@ -11692,6 +11704,7 @@ export namespace Protocol {
         export const enum TrustTokenOperationDoneEventStatus {
             Ok = 'Ok',
             InvalidArgument = 'InvalidArgument',
+            MissingIssuerKeys = 'MissingIssuerKeys',
             FailedPrecondition = 'FailedPrecondition',
             ResourceExhausted = 'ResourceExhausted',
             AlreadyExists = 'AlreadyExists',
@@ -11716,7 +11729,7 @@ export namespace Protocol {
              * of the operation already exists und thus, the operation was abort
              * preemptively (e.g. a cache hit). (TrustTokenOperationDoneEventStatus enum)
              */
-            status: ('Ok' | 'InvalidArgument' | 'FailedPrecondition' | 'ResourceExhausted' | 'AlreadyExists' | 'Unavailable' | 'Unauthorized' | 'BadResponse' | 'InternalError' | 'UnknownError' | 'FulfilledLocally');
+            status: ('Ok' | 'InvalidArgument' | 'MissingIssuerKeys' | 'FailedPrecondition' | 'ResourceExhausted' | 'AlreadyExists' | 'Unavailable' | 'Unauthorized' | 'BadResponse' | 'InternalError' | 'UnknownError' | 'FulfilledLocally');
             type: TrustTokenOperationType;
             requestId: RequestId;
             /**
@@ -12595,7 +12608,7 @@ export namespace Protocol {
          * All Permissions Policy features. This enum should match the one defined
          * in third_party/blink/renderer/core/permissions_policy/permissions_policy_features.json5.
          */
-        export type PermissionsPolicyFeature = ('accelerometer' | 'ambient-light-sensor' | 'attribution-reporting' | 'autoplay' | 'bluetooth' | 'browsing-topics' | 'camera' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-prefers-color-scheme' | 'ch-prefers-reduced-motion' | 'ch-rtt' | 'ch-save-data' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-full' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-reduced' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'compute-pressure' | 'cross-origin-isolated' | 'direct-sockets' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'hid' | 'identity-credentials-get' | 'idle-detection' | 'interest-cohort' | 'join-ad-interest-group' | 'keyboard-map' | 'local-fonts' | 'magnetometer' | 'microphone' | 'midi' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'private-aggregation' | 'private-state-token-issuance' | 'private-state-token-redemption' | 'publickey-credentials-get' | 'run-ad-auction' | 'screen-wake-lock' | 'serial' | 'shared-autofill' | 'shared-storage' | 'shared-storage-select-url' | 'smart-card' | 'storage-access' | 'sync-xhr' | 'unload' | 'usb' | 'vertical-scroll' | 'web-share' | 'window-management' | 'window-placement' | 'xr-spatial-tracking');
+        export type PermissionsPolicyFeature = ('accelerometer' | 'ambient-light-sensor' | 'attribution-reporting' | 'autoplay' | 'bluetooth' | 'browsing-topics' | 'camera' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-prefers-color-scheme' | 'ch-prefers-reduced-motion' | 'ch-rtt' | 'ch-save-data' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'compute-pressure' | 'cross-origin-isolated' | 'direct-sockets' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'hid' | 'identity-credentials-get' | 'idle-detection' | 'interest-cohort' | 'join-ad-interest-group' | 'keyboard-map' | 'local-fonts' | 'magnetometer' | 'microphone' | 'midi' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'private-aggregation' | 'private-state-token-issuance' | 'private-state-token-redemption' | 'publickey-credentials-get' | 'run-ad-auction' | 'screen-wake-lock' | 'serial' | 'shared-autofill' | 'shared-storage' | 'shared-storage-select-url' | 'smart-card' | 'storage-access' | 'sync-xhr' | 'unload' | 'usb' | 'vertical-scroll' | 'web-share' | 'window-management' | 'window-placement' | 'xr-spatial-tracking');
 
         /**
          * Reason for a permissions policy feature to be disabled.
@@ -17254,7 +17267,7 @@ export namespace Protocol {
         /**
          * List of FinalStatus reasons for Prerender2.
          */
-        export type PrerenderFinalStatus = ('Activated' | 'Destroyed' | 'LowEndDevice' | 'InvalidSchemeRedirect' | 'InvalidSchemeNavigation' | 'InProgressNavigation' | 'NavigationRequestBlockedByCsp' | 'MainFrameNavigation' | 'MojoBinderPolicy' | 'RendererProcessCrashed' | 'RendererProcessKilled' | 'Download' | 'TriggerDestroyed' | 'NavigationNotCommitted' | 'NavigationBadHttpStatus' | 'ClientCertRequested' | 'NavigationRequestNetworkError' | 'MaxNumOfRunningPrerendersExceeded' | 'CancelAllHostsForTesting' | 'DidFailLoad' | 'Stop' | 'SslCertificateError' | 'LoginAuthRequested' | 'UaChangeRequiresReload' | 'BlockedByClient' | 'AudioOutputDeviceRequested' | 'MixedContent' | 'TriggerBackgrounded' | 'EmbedderTriggeredAndCrossOriginRedirected' | 'MemoryLimitExceeded' | 'FailToGetMemoryUsage' | 'DataSaverEnabled' | 'HasEffectiveUrl' | 'ActivatedBeforeStarted' | 'InactivePageRestriction' | 'StartFailed' | 'TimeoutBackgrounded' | 'CrossSiteRedirectInInitialNavigation' | 'CrossSiteNavigationInInitialNavigation' | 'SameSiteCrossOriginRedirectNotOptInInInitialNavigation' | 'SameSiteCrossOriginNavigationNotOptInInInitialNavigation' | 'ActivationNavigationParameterMismatch' | 'ActivatedInBackground' | 'EmbedderHostDisallowed' | 'ActivationNavigationDestroyedBeforeSuccess' | 'TabClosedByUserGesture' | 'TabClosedWithoutUserGesture' | 'PrimaryMainFrameRendererProcessCrashed' | 'PrimaryMainFrameRendererProcessKilled' | 'ActivationFramePolicyNotCompatible' | 'PreloadingDisabled' | 'BatterySaverEnabled' | 'ActivatedDuringMainFrameNavigation' | 'PreloadingUnsupportedByWebContents' | 'CrossSiteRedirectInMainFrameNavigation' | 'CrossSiteNavigationInMainFrameNavigation' | 'SameSiteCrossOriginRedirectNotOptInInMainFrameNavigation' | 'SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation' | 'MemoryPressureOnTrigger' | 'MemoryPressureAfterTriggered' | 'PrerenderingDisabledByDevTools');
+        export type PrerenderFinalStatus = ('Activated' | 'Destroyed' | 'LowEndDevice' | 'InvalidSchemeRedirect' | 'InvalidSchemeNavigation' | 'InProgressNavigation' | 'NavigationRequestBlockedByCsp' | 'MainFrameNavigation' | 'MojoBinderPolicy' | 'RendererProcessCrashed' | 'RendererProcessKilled' | 'Download' | 'TriggerDestroyed' | 'NavigationNotCommitted' | 'NavigationBadHttpStatus' | 'ClientCertRequested' | 'NavigationRequestNetworkError' | 'MaxNumOfRunningPrerendersExceeded' | 'CancelAllHostsForTesting' | 'DidFailLoad' | 'Stop' | 'SslCertificateError' | 'LoginAuthRequested' | 'UaChangeRequiresReload' | 'BlockedByClient' | 'AudioOutputDeviceRequested' | 'MixedContent' | 'TriggerBackgrounded' | 'EmbedderTriggeredAndCrossOriginRedirected' | 'MemoryLimitExceeded' | 'FailToGetMemoryUsage' | 'DataSaverEnabled' | 'HasEffectiveUrl' | 'ActivatedBeforeStarted' | 'InactivePageRestriction' | 'StartFailed' | 'TimeoutBackgrounded' | 'CrossSiteRedirectInInitialNavigation' | 'CrossSiteNavigationInInitialNavigation' | 'SameSiteCrossOriginRedirectNotOptInInInitialNavigation' | 'SameSiteCrossOriginNavigationNotOptInInInitialNavigation' | 'ActivationNavigationParameterMismatch' | 'ActivatedInBackground' | 'EmbedderHostDisallowed' | 'ActivationNavigationDestroyedBeforeSuccess' | 'TabClosedByUserGesture' | 'TabClosedWithoutUserGesture' | 'PrimaryMainFrameRendererProcessCrashed' | 'PrimaryMainFrameRendererProcessKilled' | 'ActivationFramePolicyNotCompatible' | 'PreloadingDisabled' | 'BatterySaverEnabled' | 'ActivatedDuringMainFrameNavigation' | 'PreloadingUnsupportedByWebContents' | 'CrossSiteRedirectInMainFrameNavigation' | 'CrossSiteNavigationInMainFrameNavigation' | 'SameSiteCrossOriginRedirectNotOptInInMainFrameNavigation' | 'SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation' | 'MemoryPressureOnTrigger' | 'MemoryPressureAfterTriggered' | 'PrerenderingDisabledByDevTools' | 'ResourceLoadBlockedByClient');
 
         /**
          * Preloading status values, see also PreloadingTriggeringOutcome. This

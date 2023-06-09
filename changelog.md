@@ -1,7 +1,83 @@
 
 
+## Roll protocol to r1155343 — _2023-06-09T04:26:30.000Z_
+######  Diff: [`0c65644...c423bab`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0c65644...c423bab`)
+
+```diff
+@@ browser_protocol.pdl:820 @@ experimental domain Audits
+       SilentMediationFailure
+       ThirdPartyCookiesBlocked
+ 
+-  type FederatedAuthUserInfoRequestIssueDetails extends object
+-    properties
+-      FederatedAuthUserInfoRequestIssueReason federatedAuthUserInfoRequestIssueReason
+-
+-  # Represents the failure reason when a getUserInfo() call fails.
+-  # Should be updated alongside FederatedAuthUserInfoRequestResult in
+-  # third_party/blink/public/mojom/devtools/inspector_issue.mojom.
+-  type FederatedAuthUserInfoRequestIssueReason extends string
+-    enum
+-      NotSameOrigin
+-      NotIframe
+-      NotPotentiallyTrustworthy
+-      NoApiPermission
+-      NotSignedInWithIdp
+-      NoAccountSharingPermission
+-      InvalidConfigOrWellKnown
+-      InvalidAccountsResponse
+-      NoReturningUserFromFetchedAccounts
+-
+   # This issue tracks client hints related issues. It's used to deprecate old
+   # features, encourage the use of new ones, and provide general guidance.
+   type ClientHintIssueDetails extends object
+@@ -890,7 +871,6 @@ experimental domain Audits
+       FederatedAuthRequestIssue
+       BounceTrackingIssue
+       StylesheetLoadingIssue
+-      FederatedAuthUserInfoRequestIssue
+ 
+   # This struct holds a list of optional fields with additional information
+   # specific to the kind of issue. When adding a new issue code, please also
+@@ -914,7 +894,6 @@ experimental domain Audits
+       optional FederatedAuthRequestIssueDetails federatedAuthRequestIssueDetails
+       optional BounceTrackingIssueDetails bounceTrackingIssueDetails
+       optional StylesheetLoadingIssueDetails stylesheetLoadingIssueDetails
+-      optional FederatedAuthUserInfoRequestIssueDetails federatedAuthUserInfoRequestIssueDetails
+ 
+   # A unique id for a DevTools inspector issue. Allows other entities (e.g.
+   # exceptions, CDP message, console messages, etc.) to reference an issue.
+@@ -6514,7 +6493,6 @@ domain Network
+       enum status
+         Ok
+         InvalidArgument
+-        MissingIssuerKeys
+         FailedPrecondition
+         ResourceExhausted
+         AlreadyExists
+@@ -7301,9 +7279,11 @@ domain Page
+       ch-ua-platform
+       ch-ua-model
+       ch-ua-mobile
++      ch-ua-full
+       ch-ua-full-version
+       ch-ua-full-version-list
+       ch-ua-platform-version
++      ch-ua-reduced
+       ch-ua-wow64
+       ch-viewport-height
+       ch-viewport-width
+@@ -11107,7 +11087,6 @@ experimental domain Preload
+       MemoryPressureOnTrigger
+       MemoryPressureAfterTriggered
+       PrerenderingDisabledByDevTools
+-      ResourceLoadBlockedByClient
+ 
+   # Fired when a prerender attempt is completed.
+   event prerenderAttemptCompleted
+```
+
 ## Roll protocol to r1154250 — _2023-06-07T04:26:56.000Z_
-######  Diff: [`d9d9e42...b2acfea`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d9d9e42...b2acfea`)
+######  Diff: [`d9d9e42...0c65644`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d9d9e42...0c65644`)
 
 ```diff
 @@ browser_protocol.pdl:827 @@ experimental domain Audits
@@ -10257,20 +10333,4 @@ index bd277eb..09c420e 100644
        ContainsPlugins
        DocumentLoaded
        DedicatedWorkerOrWorklet
-```
-
-## Roll protocol to r892514 — _2021-06-15T10:16:15.000Z_
-######  Diff: [`042399a...7ad22bc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`042399a...7ad22bc`)
-
-```diff
-@@ browser_protocol.pdl:7686 @@ domain Page
-       OptInUnloadHeaderNotPresent
-       UnloadHandlerExistsInMainFrame
-       UnloadHandlerExistsInSubFrame
--      ServiceWorkerUnregistration
--      #Blocklisted features
-+      # Blocklisted features
-       WebSocket
-       WebRTC
-       MainResourceHasCacheControlNoStore
 ```
