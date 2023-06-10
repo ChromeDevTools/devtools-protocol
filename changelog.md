@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1155872 — _2023-06-10T04:26:19.000Z_
+######  Diff: [`7ca37f8...0fd2b5e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7ca37f8...0fd2b5e`)
+
+```diff
+@@ browser_protocol.pdl:8567 @@ domain Page
+       IndexedDBEvent
+       Dummy
+       AuthorizationHeader
++      WebSerial
+       # Disabled for RenderFrameHost reasons
+       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
+       ContentSecurityHandler
+```
+
 ## Roll protocol to r1155343 — _2023-06-09T04:26:30.000Z_
-######  Diff: [`0c65644...c423bab`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0c65644...c423bab`)
+######  Diff: [`0c65644...7ca37f8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0c65644...7ca37f8`)
 
 ```diff
 @@ browser_protocol.pdl:820 @@ experimental domain Audits
@@ -10314,23 +10328,4 @@ index bd277eb..09c420e 100644
        # Compression quality from range [0..100] (jpeg only).
        optional integer quality
        # Capture the screenshot of a given region only.
-```
-
-## Roll protocol to r893712 — _2021-06-18T06:16:15.000Z_
-######  Diff: [`7ad22bc...6abba71`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7ad22bc...6abba71`)
-
-```diff
-@@ browser_protocol.pdl:7694 @@ domain Page
-       MainResourceHasCacheControlNoCache
-       SubresourceHasCacheControlNoStore
-       SubresourceHasCacheControlNoCache
-+      PageShowEventListener
-+      PageHideEventListener
-+      BeforeUnloadEventListener
-+      UnloadEventListener
-+      FreezeEventListener
-+      ResumeEventListener
-       ContainsPlugins
-       DocumentLoaded
-       DedicatedWorkerOrWorklet
 ```

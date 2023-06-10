@@ -16642,7 +16642,6 @@
                         "IndexedDBEvent",
                         "Dummy",
                         "AuthorizationHeader",
-                        "WebSerial",
                         "ContentSecurityHandler",
                         "ContentWebAuthenticationAPI",
                         "ContentFileChooser",
