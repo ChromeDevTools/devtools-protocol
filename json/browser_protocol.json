@@ -1685,6 +1685,11 @@
                             "name": "failureMessage",
                             "description": "The failure message for the failed request.",
                             "type": "string"
+                        },
+                        {
+                            "name": "requestId",
+                            "optional": true,
+                            "$ref": "Network.RequestId"
                         }
                     ]
                 },
@@ -16641,7 +16646,8 @@
                         "KeepaliveRequest",
                         "IndexedDBEvent",
                         "Dummy",
-                        "AuthorizationHeader",
+                        "JsNetworkRequestReceivedCacheControlNoStoreResource",
+                        "WebSerial",
                         "ContentSecurityHandler",
                         "ContentWebAuthenticationAPI",
                         "ContentFileChooser",

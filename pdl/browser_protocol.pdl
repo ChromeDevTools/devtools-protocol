@@ -852,6 +852,7 @@ experimental domain Audits
       string url
       # The failure message for the failed request.
       string failureMessage
+      optional Network.RequestId requestId
 
   type StyleSheetLoadingIssueReason extends string
     enum
@@ -8566,7 +8567,8 @@ domain Page
       KeepaliveRequest
       IndexedDBEvent
       Dummy
-      AuthorizationHeader
+      JsNetworkRequestReceivedCacheControlNoStoreResource
+      WebSerial
       # Disabled for RenderFrameHost reasons
       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
       ContentSecurityHandler

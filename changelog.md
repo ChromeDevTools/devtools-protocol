@@ -1,7 +1,31 @@
 
 
+## Roll protocol to r1156692 — _2023-06-13T04:26:37.000Z_
+######  Diff: [`2a2181a...7c07f82`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2a2181a...7c07f82`)
+
+```diff
+@@ browser_protocol.pdl:852 @@ experimental domain Audits
+       string url
+       # The failure message for the failed request.
+       string failureMessage
+-      optional Network.RequestId requestId
+ 
+   type StyleSheetLoadingIssueReason extends string
+     enum
+@@ -8567,8 +8566,7 @@ domain Page
+       KeepaliveRequest
+       IndexedDBEvent
+       Dummy
+-      JsNetworkRequestReceivedCacheControlNoStoreResource
+-      WebSerial
++      AuthorizationHeader
+       # Disabled for RenderFrameHost reasons
+       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
+       ContentSecurityHandler
+```
+
 ## Roll protocol to r1155872 — _2023-06-10T04:26:19.000Z_
-######  Diff: [`7ca37f8...0fd2b5e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7ca37f8...0fd2b5e`)
+######  Diff: [`7ca37f8...2a2181a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7ca37f8...2a2181a`)
 
 ```diff
 @@ browser_protocol.pdl:8567 @@ domain Page
@@ -10314,18 +10338,4 @@ index bd277eb..09c420e 100644
        ch-ua-platform
        ch-ua-model
        ch-ua-mobile
-```
-
-## Roll protocol to r894020 — _2021-06-18T23:16:01.000Z_
-######  Diff: [`6abba71...e7ab713`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6abba71...e7ab713`)
-
-```diff
-@@ browser_protocol.pdl:6971 @@ domain Page
-       optional enum format
-         jpeg
-         png
--        webp
-       # Compression quality from range [0..100] (jpeg only).
-       optional integer quality
-       # Capture the screenshot of a given region only.
 ```
