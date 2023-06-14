@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1157354 — _2023-06-14T04:26:43.000Z_
+######  Diff: [`e4caf5f...1e83e56`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e4caf5f...1e83e56`)
+
+```diff
+@@ browser_protocol.pdl:8568 @@ domain Page
+       IndexedDBEvent
+       Dummy
+       JsNetworkRequestReceivedCacheControlNoStoreResource
++      WebSerial
+       # Disabled for RenderFrameHost reasons
+       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
+       ContentSecurityHandler
+```
+
 ## Roll protocol to r1156692 — _2023-06-13T04:26:37.000Z_
-######  Diff: [`2a2181a...7c07f82`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2a2181a...7c07f82`)
+######  Diff: [`2a2181a...e4caf5f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2a2181a...e4caf5f`)
 
 ```diff
 @@ browser_protocol.pdl:852 @@ experimental domain Audits
@@ -10324,18 +10338,4 @@ index bd277eb..09c420e 100644
        UnloadHandlerExistsInSubFrame
        ServiceWorkerUnregistration
        #Blocklisted features
-```
-
-## Roll protocol to r894033 — _2021-06-19T00:16:28.000Z_
-######  Diff: [`e7ab713...fe543d9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e7ab713...fe543d9`)
-
-```diff
-@@ browser_protocol.pdl:6546 @@ domain Page
-       ch-rtt
-       ch-ua
-       ch-ua-arch
--      ch-ua-bitness
-       ch-ua-platform
-       ch-ua-model
-       ch-ua-mobile
 ```

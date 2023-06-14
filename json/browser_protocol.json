@@ -16647,7 +16647,6 @@
                         "IndexedDBEvent",
                         "Dummy",
                         "JsNetworkRequestReceivedCacheControlNoStoreResource",
-                        "WebSerial",
                         "ContentSecurityHandler",
                         "ContentWebAuthenticationAPI",
                         "ContentFileChooser",
