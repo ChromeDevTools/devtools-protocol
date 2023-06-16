@@ -805,6 +805,11 @@ export namespace ProtocolProxyApi {
          */
         trigger(params: Protocol.Autofill.TriggerRequest): Promise<void>;
 
+        /**
+         * Set addresses so that developers can verify their forms implementation.
+         */
+        setAddresses(params: Protocol.Autofill.SetAddressesRequest): Promise<void>;
+
     }
 
     export interface BackgroundServiceApi {

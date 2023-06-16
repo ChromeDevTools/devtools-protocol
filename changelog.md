@@ -1,7 +1,46 @@
 
 
+## Roll protocol to r1158625 — _2023-06-16T04:26:28.000Z_
+######  Diff: [`b8200ca...4491277`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b8200ca...4491277`)
+
+```diff
+@@ browser_protocol.pdl:992 @@ experimental domain Autofill
+       # 3-digit card verification code.
+       string cvc
+ 
+-  type AddressField extends object
+-    properties
+-      # address field name, for example GIVEN_NAME.
+-      string name
+-      # address field name, for example Jon Doe.
+-      string value
+-
+-  type Address extends object
+-    properties
+-      # fields and values defining a test address.
+-      array of AddressField fields
+-
+   # Trigger autofill on a form identified by the fieldId.
+   # If the field and related form cannot be autofilled, returns an error.
+   command trigger
+@@ -1015,13 +1003,6 @@ experimental domain Autofill
+       # Credit card information to fill out the form. Credit card data is not saved.
+       CreditCard card
+ 
+-  # Set addresses so that developers can verify their forms implementation.
+-  command setAddresses
+-    # Test addresses for the available countries.
+-    parameters
+-      array of Address addresses
+-
+-
+ # Defines events for background web platform features.
+ experimental domain BackgroundService
+   # The Background Service that will be associated with the commands/events.
+```
+
 ## Roll protocol to r1157354 — _2023-06-14T04:26:43.000Z_
-######  Diff: [`e4caf5f...1e83e56`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e4caf5f...1e83e56`)
+######  Diff: [`e4caf5f...b8200ca`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e4caf5f...b8200ca`)
 
 ```diff
 @@ browser_protocol.pdl:8568 @@ domain Page
@@ -10324,18 +10363,4 @@ index bd277eb..09c420e 100644
        boolean isConstructed
        # Line offset of the stylesheet within the resource (zero based).
        number startLine
-```
-
-## Roll protocol to r894172 — _2021-06-21T08:16:09.000Z_
-######  Diff: [`fe543d9...aaf1569`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fe543d9...aaf1569`)
-
-```diff
-@@ browser_protocol.pdl:7686 @@ domain Page
-       BrowsingInstanceNotSwapped
-       BackForwardCacheDisabledForDelegate
-       OptInUnloadHeaderNotPresent
-+      UnloadHandlerExistsInMainFrame
-       UnloadHandlerExistsInSubFrame
-       ServiceWorkerUnregistration
-       #Blocklisted features
 ```

@@ -3710,6 +3710,24 @@ export namespace Protocol {
             cvc: string;
         }
 
+        export interface AddressField {
+            /**
+             * address field name, for example GIVEN_NAME.
+             */
+            name: string;
+            /**
+             * address field name, for example Jon Doe.
+             */
+            value: string;
+        }
+
+        export interface Address {
+            /**
+             * fields and values defining a test address.
+             */
+            fields: AddressField[];
+        }
+
         export interface TriggerRequest {
             /**
              * Identifies a field that serves as an anchor for autofill.
@@ -3723,6 +3741,10 @@ export namespace Protocol {
              * Credit card information to fill out the form. Credit card data is not saved.
              */
             card: CreditCard;
+        }
+
+        export interface SetAddressesRequest {
+            addresses: Address[];
         }
     }
 
