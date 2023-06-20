@@ -1,7 +1,23 @@
 
 
+## Roll protocol to r1159816 — _2023-06-20T04:26:35.000Z_
+######  Diff: [`1663e91...e887ea9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1663e91...e887ea9`)
+
+```diff
+@@ browser_protocol.pdl:8587 @@ domain Page
+       IndexedDBEvent
+       Dummy
+       JsNetworkRequestReceivedCacheControlNoStoreResource
+-      WebRTCSticky
+-      WebTransportSticky
+-      WebSocketSticky
+       # Disabled for RenderFrameHost reasons
+       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
+       ContentSecurityHandler
+```
+
 ## Roll protocol to r1158625 — _2023-06-16T04:26:28.000Z_
-######  Diff: [`b8200ca...4491277`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b8200ca...4491277`)
+######  Diff: [`b8200ca...1663e91`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b8200ca...1663e91`)
 
 ```diff
 @@ browser_protocol.pdl:992 @@ experimental domain Autofill
@@ -10336,31 +10352,4 @@ index bd277eb..09c420e 100644
  
    # Returns the response body and size if it were re-encoded with the specified settings. Only
    # applies to images.
-```
-
-## Roll protocol to r894467 — _2021-06-22T00:16:13.000Z_
-######  Diff: [`aaf1569...6544760`](https://github.com/ChromeDevTools/devtools-protocol/compare/`aaf1569...6544760`)
-
-```diff
-@@ browser_protocol.pdl:1265 @@ experimental domain CSS
-       StyleSheetId styleSheetId
-       # Owner frame identifier.
-       Page.FrameId frameId
--      # Stylesheet resource URL. Empty if this is a constructed stylesheet created using
--      # new CSSStyleSheet() (but non-empty if this is a constructed sylesheet imported
--      # as a CSS module script).
-+      # Stylesheet resource URL.
-       string sourceURL
-       # URL of source map associated with the stylesheet (if any).
-       optional string sourceMapURL
-@@ -1289,8 +1287,7 @@ experimental domain CSS
-       # <link> element's stylesheets become mutable only if DevTools modifies them.
-       # Constructed stylesheets (new CSSStyleSheet()) are mutable immediately after creation.
-       boolean isMutable
--      # True if this stylesheet is created through new CSSStyleSheet() or imported as a
--      # CSS module script.
-+      # Whether this stylesheet is a constructed stylesheet (created using new CSSStyleSheet()).
-       boolean isConstructed
-       # Line offset of the stylesheet within the resource (zero based).
-       number startLine
 ```
