@@ -1,7 +1,43 @@
 
 
+## Roll protocol to r1161029 — _2023-06-22T04:26:26.000Z_
+######  Diff: [`6ef566f...46069f7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6ef566f...46069f7`)
+
+```diff
+@@ browser_protocol.pdl:5368 @@ domain Network
+       # address space.
+       UnexpectedPrivateNetworkAccess
+       NoCorsRedirectModeNotFollow
+-      # Request was a private network request and needed user permission yet did
+-      # not carry `Private-Network-Access-Id` in the preflight response.
+-      # https://github.com/WICG/private-network-access/blob/main/permission_prompt/explainer.md
+-      PreflightMissingPrivateNetworkAccessId
+-      # Request was a private network request and needed user permission yet did
+-      # not carry `Private-Network-Access-Name` in the preflight response.
+-      # https://github.com/WICG/private-network-access/blob/main/permission_prompt/explainer.md
+-      PreflightMissingPrivateNetworkAccessName
+-      # Request was a private network request and needed user permission yet not
+-      # able to request for permission.
+-      # https://github.com/WICG/private-network-access/blob/main/permission_prompt/explainer.md
+-      PrivateNetworkAccessPermissionUnavailable
+-      # Request was a private network request and is denied by user permission.
+-      # https://github.com/WICG/private-network-access/blob/main/permission_prompt/explainer.md
+-      PrivateNetworkAccessPermissionDenied
+ 
+   type CorsErrorStatus extends object
+     properties
+@@ -8555,7 +8540,6 @@ domain Page
+       ErrorDocument
+       FencedFramesEmbedder
+       CookieDisabled
+-      HTTPAuthRequired
+       #Blocklisted features
+       WebSocket
+       WebTransport
+```
+
 ## Roll protocol to r1159816 — _2023-06-20T04:26:35.000Z_
-######  Diff: [`1663e91...e887ea9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1663e91...e887ea9`)
+######  Diff: [`1663e91...6ef566f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1663e91...6ef566f`)
 
 ```diff
 @@ browser_protocol.pdl:8587 @@ domain Page
@@ -10326,30 +10362,4 @@ index bd277eb..09c420e 100644
  
    # Details of a signed certificate timestamp (SCT).
    type SignedCertificateTimestamp extends object
-```
-
-## Roll protocol to r895982 — _2021-06-25T10:16:12.000Z_
-######  Diff: [`6544760...95234d8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6544760...95234d8`)
-
-```diff
-@@ browser_protocol.pdl:793 @@ experimental domain Audits
-       optional QuirksModeIssueDetails quirksModeIssueDetails
-       optional NavigatorUserAgentIssueDetails navigatorUserAgentIssueDetails
- 
--  # A unique id for a DevTools inspector issue. Allows other entities (e.g.
--  # exceptions, CDP message, console messages, etc.) to reference an issue.
--  type IssueId extends string
--
-   # An inspector issue reported from the back-end.
-   type InspectorIssue extends object
-     properties
-@@ -804,7 +800,7 @@ experimental domain Audits
-       InspectorIssueDetails details
-       # A unique id for this issue. May be omitted if no other entity (e.g.
-       # exception, CDP message, etc.) is referencing this issue.
--      optional IssueId issueId
-+      optional string issueId
- 
-   # Returns the response body and size if it were re-encoded with the specified settings. Only
-   # applies to images.
 ```
