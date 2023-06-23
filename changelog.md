@@ -1,7 +1,52 @@
 
 
+## Roll protocol to r1161598 — _2023-06-23T04:28:28.000Z_
+######  Diff: [`7b1ec35...a52b09f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7b1ec35...a52b09f`)
+
+```diff
+@@ browser_protocol.pdl:7336 @@ domain Page
+       ch-ua-platform
+       ch-ua-model
+       ch-ua-mobile
+-      ch-ua-form-factor
+       ch-ua-full-version
+       ch-ua-full-version-list
+       ch-ua-platform-version
+@@ -8569,12 +8568,14 @@ domain Page
+       DocumentLoaded
+       DedicatedWorkerOrWorklet
+       OutstandingNetworkRequestOthers
++      OutstandingIndexedDBTransaction
+       RequestedMIDIPermission
+       RequestedAudioCapturePermission
+       RequestedVideoCapturePermission
+       RequestedBackForwardCacheBlockedSensors
+       RequestedBackgroundWorkPermission
+       BroadcastChannel
++      IndexedDBConnection
+       WebXR
+       SharedWorker
+       WebLocks
+diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
+index ed62263..7a3c772 100644
+--- a/pdl/js_protocol.pdl
++++ b/pdl/js_protocol.pdl
+@@ -1034,11 +1034,6 @@ domain Runtime
+       # Deep serialization depth. Default is full depth. Respected only in `deep` serialization mode.
+       optional integer maxDepth
+ 
+-      # Embedder-specific parameters. For example if connected to V8 in Chrome these control DOM
+-      # serialization via `maxNodeDepth: integer` and `includeShadowTree: "none" | "open" | "all"`.
+-      # Values can be only of type string or integer.
+-      optional object additionalParameters
+-
+   # Represents deep serialized value.
+   type DeepSerializedValue extends object
+     properties
+```
+
 ## Roll protocol to r1161029 — _2023-06-22T04:26:26.000Z_
-######  Diff: [`6ef566f...46069f7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6ef566f...46069f7`)
+######  Diff: [`6ef566f...7b1ec35`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6ef566f...7b1ec35`)
 
 ```diff
 @@ browser_protocol.pdl:5368 @@ domain Network
@@ -10343,22 +10388,6 @@ index bd277eb..09c420e 100644
 +      # True if this resource request is considered to be the 'same site' as the
 +      # request correspondinfg to the main frame.
 +      experimental optional boolean isSameSite
- 
-   # Details of a signed certificate timestamp (SCT).
-   type SignedCertificateTimestamp extends object
-```
-
-## Roll protocol to r896035 — _2021-06-25T14:16:07.000Z_
-######  Diff: [`95234d8...6362220`](https://github.com/ChromeDevTools/devtools-protocol/compare/`95234d8...6362220`)
-
-```diff
-@@ browser_protocol.pdl:4725 @@ domain Network
-       # Set for requests when the TrustToken API is used. Contains the parameters
-       # passed by the developer (e.g. via "fetch") as understood by the backend.
-       experimental optional TrustTokenParams trustTokenParams
--      # True if this resource request is considered to be the 'same site' as the
--      # request correspondinfg to the main frame.
--      experimental optional boolean isSameSite
  
    # Details of a signed certificate timestamp (SCT).
    type SignedCertificateTimestamp extends object
