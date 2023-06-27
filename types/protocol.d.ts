@@ -13204,6 +13204,11 @@ export namespace Protocol {
              * to false.
              */
             includeCommandLineAPI?: boolean;
+            /**
+             * If true, runs the script immediately on existing execution contexts or worlds.
+             * Default: false.
+             */
+            runImmediately?: boolean;
         }
 
         export interface AddScriptToEvaluateOnNewDocumentResponse {
@@ -17346,6 +17351,8 @@ export namespace Protocol {
             disabledByPreference: boolean;
             disabledByDataSaver: boolean;
             disabledByBatterySaver: boolean;
+            disabledByHoldbackPrefetchSpeculationRules: boolean;
+            disabledByHoldbackPrerenderSpeculationRules: boolean;
         }
 
         /**
@@ -17360,6 +17367,7 @@ export namespace Protocol {
             prefetchUrl: string;
             status: PreloadingStatus;
             prefetchStatus: PrefetchStatus;
+            requestId: Network.RequestId;
         }
 
         /**
@@ -17369,6 +17377,11 @@ export namespace Protocol {
             key: PreloadingAttemptKey;
             status: PreloadingStatus;
             prerenderStatus?: PrerenderFinalStatus;
+            /**
+             * This is used to give users more information about the name of Mojo interface
+             * that is incompatible with prerender and has caused the cancellation of the attempt.
+             */
+            disallowedMojoInterface?: string;
         }
 
         /**

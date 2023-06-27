@@ -1,7 +1,50 @@
 
 
+## Roll protocol to r1162774 — _2023-06-27T04:28:23.000Z_
+######  Diff: [`3494f54...73aee98`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3494f54...73aee98`)
+
+```diff
+@@ browser_protocol.pdl:7773 @@ domain Page
+       # Specifies whether command line API should be available to the script, defaults
+       # to false.
+       experimental optional boolean includeCommandLineAPI
+-      # If true, runs the script immediately on existing execution contexts or worlds.
+-      # Default: false.
+-      experimental optional boolean runImmediately
+     returns
+       # Identifier of the added script.
+       ScriptIdentifier identifier
+@@ -11167,8 +11164,6 @@ experimental domain Preload
+       boolean disabledByPreference
+       boolean disabledByDataSaver
+       boolean disabledByBatterySaver
+-      boolean disabledByHoldbackPrefetchSpeculationRules
+-      boolean disabledByHoldbackPrerenderSpeculationRules
+ 
+   # Preloading status values, see also PreloadingTriggeringOutcome. This
+   # status is shared by prefetchStatusUpdated and prerenderStatusUpdated.
+@@ -11232,7 +11227,6 @@ experimental domain Preload
+       string prefetchUrl
+       PreloadingStatus status
+       PrefetchStatus prefetchStatus
+-      Network.RequestId requestId
+ 
+   # Fired when a prerender attempt is updated.
+   event prerenderStatusUpdated
+@@ -11240,9 +11234,6 @@ experimental domain Preload
+       PreloadingAttemptKey key
+       PreloadingStatus status
+       optional PrerenderFinalStatus prerenderStatus
+-      # This is used to give users more information about the name of Mojo interface
+-      # that is incompatible with prerender and has caused the cancellation of the attempt.
+-      optional string disallowedMojoInterface
+ 
+   # Send a list of sources for all preloading attempts in a document.
+   event preloadingAttemptSourcesUpdated
+```
+
 ## Roll protocol to r1161598 — _2023-06-23T04:28:28.000Z_
-######  Diff: [`7b1ec35...a52b09f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7b1ec35...a52b09f`)
+######  Diff: [`7b1ec35...3494f54`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7b1ec35...3494f54`)
 
 ```diff
 @@ browser_protocol.pdl:7336 @@ domain Page
@@ -10375,20 +10418,4 @@ index bd277eb..09c420e 100644
    # Fired when `Element`'s attribute is modified.
    event attributeModified
      parameters
-```
-
-## Roll protocol to r896125 — _2021-06-25T18:16:15.000Z_
-######  Diff: [`6362220...06ee96a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6362220...06ee96a`)
-
-```diff
-@@ browser_protocol.pdl:4725 @@ domain Network
-       # Set for requests when the TrustToken API is used. Contains the parameters
-       # passed by the developer (e.g. via "fetch") as understood by the backend.
-       experimental optional TrustTokenParams trustTokenParams
-+      # True if this resource request is considered to be the 'same site' as the
-+      # request correspondinfg to the main frame.
-+      experimental optional boolean isSameSite
- 
-   # Details of a signed certificate timestamp (SCT).
-   type SignedCertificateTimestamp extends object
 ```
