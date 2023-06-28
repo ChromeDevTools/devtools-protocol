@@ -1,7 +1,25 @@
 
 
+## Roll protocol to r1163380 — _2023-06-28T04:28:21.000Z_
+######  Diff: [`67ae7fb...bf8b6da`](https://github.com/ChromeDevTools/devtools-protocol/compare/`67ae7fb...bf8b6da`)
+
+```diff
+@@ browser_protocol.pdl:9634 @@ experimental domain Storage
+     parameters
+       string bucketId
+ 
+-  # https://wicg.github.io/attribution-reporting-api/
+-  experimental command setAttributionReportingLocalTestingMode
+-    parameters
+-      # If enabled, noise is suppressed and reports are sent immediately.
+-      boolean enabled
+-
+ # The SystemInfo domain defines methods and events for querying low-level system information.
+ experimental domain SystemInfo
+```
+
 ## Roll protocol to r1162774 — _2023-06-27T04:28:23.000Z_
-######  Diff: [`3494f54...73aee98`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3494f54...73aee98`)
+######  Diff: [`3494f54...67ae7fb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3494f54...67ae7fb`)
 
 ```diff
 @@ browser_protocol.pdl:7773 @@ domain Page
@@ -10385,37 +10403,4 @@ index bd277eb..09c420e 100644
  
    # Details of a signed certificate timestamp (SCT).
    type SignedCertificateTimestamp extends object
-```
-
-## Roll protocol to r896856 — _2021-06-29T11:16:10.000Z_
-######  Diff: [`06ee96a...65148a9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`06ee96a...65148a9`)
-
-```diff
-@@ browser_protocol.pdl:1458 @@ experimental domain CSS
-       optional SourceRange range
-       # Identifier of the stylesheet containing this object (if exists).
-       optional StyleSheetId styleSheetId
--      # Optional name for the container.
--      optional string name
- 
-   # Information about amount of glyphs that were rendered with given font.
-   type PlatformFontUsage extends object
-@@ -2614,17 +2612,6 @@ domain DOM
-       # Id of the node at given coordinates, only when enabled and requested document.
-       optional NodeId nodeId
- 
--  # Returns the container of the given node based on container query conditions.
--  # If containerName is given, it will find the nearest container with a matching name;
--  # otherwise it will find the nearest container regardless of its container name.
--  experimental command getContainerForNode
--    parameters
--      NodeId nodeId
--      optional string containerName
--    returns
--      # The container node for the given node, or null if not found.
--      optional NodeId nodeId
--
-   # Fired when `Element`'s attribute is modified.
-   event attributeModified
-     parameters
 ```

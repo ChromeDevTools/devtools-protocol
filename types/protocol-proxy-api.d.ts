@@ -3420,6 +3420,11 @@ export namespace ProtocolProxyApi {
         runBounceTrackingMitigations(): Promise<Protocol.Storage.RunBounceTrackingMitigationsResponse>;
 
         /**
+         * https://wicg.github.io/attribution-reporting-api/
+         */
+        setAttributionReportingLocalTestingMode(params: Protocol.Storage.SetAttributionReportingLocalTestingModeRequest): Promise<void>;
+
+        /**
          * A cache's contents have been modified.
          */
         on(event: 'cacheStorageContentUpdated', listener: (params: Protocol.Storage.CacheStorageContentUpdatedEvent) => void): void;

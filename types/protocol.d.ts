@@ -15274,6 +15274,13 @@ export namespace Protocol {
             deletedSites: string[];
         }
 
+        export interface SetAttributionReportingLocalTestingModeRequest {
+            /**
+             * If enabled, noise is suppressed and reports are sent immediately.
+             */
+            enabled: boolean;
+        }
+
         /**
          * A cache's contents have been modified.
          */

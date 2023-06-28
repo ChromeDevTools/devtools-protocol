@@ -20293,6 +20293,18 @@
                             }
                         }
                     ]
+                },
+                {
+                    "name": "setAttributionReportingLocalTestingMode",
+                    "description": "https://wicg.github.io/attribution-reporting-api/",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "enabled",
+                            "description": "If enabled, noise is suppressed and reports are sent immediately.",
+                            "type": "boolean"
+                        }
+                    ]
                 }
             ],
             "events": [
