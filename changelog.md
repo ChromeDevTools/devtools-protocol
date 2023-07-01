@@ -1,7 +1,55 @@
 
 
+## Roll protocol to r1165014 — _2023-07-01T04:27:51.000Z_
+######  Diff: [`f92e635...02dff86`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f92e635...02dff86`)
+
+```diff
+@@ browser_protocol.pdl:719 @@ experimental domain Audits
+       Page.FrameId frameId
+       Network.LoaderId loaderId
+ 
+-  deprecated type NavigatorUserAgentIssueDetails extends object
++  type NavigatorUserAgentIssueDetails extends object
+     properties
+       string url
+       optional SourceCodeLocation location
+@@ -737,7 +737,6 @@ experimental domain Audits
+       FormLabelHasNeitherForNorNestedInput
+       FormLabelForMatchesNonExistingIdError
+       FormInputHasWrongButWellIntendedAutocompleteValueError
+-      ResponseWasBlockedByORB
+ 
+   # Depending on the concrete errorType, different properties are set.
+   type GenericIssueDetails extends object
+@@ -747,7 +746,6 @@ experimental domain Audits
+       optional Page.FrameId frameId
+       optional DOM.BackendNodeId violatingNodeId
+       optional string violatingNodeAttribute
+-      optional AffectedRequest request
+ 
+   # This issue tracks information needed to print a deprecation message.
+   # https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/frame/third_party/blink/renderer/core/frame/deprecation/README.md
+@@ -886,7 +884,6 @@ experimental domain Audits
+       CorsIssue
+       AttributionReportingIssue
+       QuirksModeIssue
+-      # Deprecated
+       NavigatorUserAgentIssue
+       GenericIssue
+       DeprecationIssue
+@@ -911,7 +908,7 @@ experimental domain Audits
+       optional CorsIssueDetails corsIssueDetails
+       optional AttributionReportingIssueDetails attributionReportingIssueDetails
+       optional QuirksModeIssueDetails quirksModeIssueDetails
+-      deprecated optional NavigatorUserAgentIssueDetails navigatorUserAgentIssueDetails
++      optional NavigatorUserAgentIssueDetails navigatorUserAgentIssueDetails
+       optional GenericIssueDetails genericIssueDetails
+       optional DeprecationIssueDetails deprecationIssueDetails
+       optional ClientHintIssueDetails clientHintIssueDetails
+```
+
 ## Roll protocol to r1163380 — _2023-06-28T04:28:21.000Z_
-######  Diff: [`67ae7fb...bf8b6da`](https://github.com/ChromeDevTools/devtools-protocol/compare/`67ae7fb...bf8b6da`)
+######  Diff: [`67ae7fb...f92e635`](https://github.com/ChromeDevTools/devtools-protocol/compare/`67ae7fb...f92e635`)
 
 ```diff
 @@ browser_protocol.pdl:9634 @@ experimental domain Storage
@@ -10387,20 +10435,4 @@ index bd277eb..09c420e 100644
  
    # A unique id for a DevTools inspector issue. Allows other entities (e.g.
    # exceptions, CDP message, console messages, etc.) to reference an issue.
-```
-
-## Roll protocol to r897295 — _2021-06-30T09:16:16.000Z_
-######  Diff: [`65148a9...6814a59`](https://github.com/ChromeDevTools/devtools-protocol/compare/`65148a9...6814a59`)
-
-```diff
-@@ browser_protocol.pdl:4738 @@ domain Network
-       # Set for requests when the TrustToken API is used. Contains the parameters
-       # passed by the developer (e.g. via "fetch") as understood by the backend.
-       experimental optional TrustTokenParams trustTokenParams
--      # True if this resource request is considered to be the 'same site' as the
--      # request correspondinfg to the main frame.
--      experimental optional boolean isSameSite
- 
-   # Details of a signed certificate timestamp (SCT).
-   type SignedCertificateTimestamp extends object
 ```

@@ -1479,6 +1479,7 @@
                 },
                 {
                     "id": "NavigatorUserAgentIssueDetails",
+                    "deprecated": true,
                     "type": "object",
                     "properties": [
                         {
@@ -1506,7 +1507,8 @@
                         "FormInputAssignedAutocompleteValueToIdOrNameAttributeError",
                         "FormLabelHasNeitherForNorNestedInput",
                         "FormLabelForMatchesNonExistingIdError",
-                        "FormInputHasWrongButWellIntendedAutocompleteValueError"
+                        "FormInputHasWrongButWellIntendedAutocompleteValueError",
+                        "ResponseWasBlockedByORB"
                     ]
                 },
                 {
@@ -1533,6 +1535,11 @@
                             "name": "violatingNodeAttribute",
                             "optional": true,
                             "type": "string"
+                        },
+                        {
+                            "name": "request",
+                            "optional": true,
+                            "$ref": "AffectedRequest"
                         }
                     ]
                 },
@@ -1806,6 +1813,7 @@
                         },
                         {
                             "name": "navigatorUserAgentIssueDetails",
+                            "deprecated": true,
                             "optional": true,
                             "$ref": "NavigatorUserAgentIssueDetails"
                         },
