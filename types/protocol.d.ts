@@ -4483,7 +4483,17 @@ export namespace Protocol {
              * The array enumerates @scope at-rules starting with the innermost one, going outwards.
              */
             scopes?: CSSScope[];
+            /**
+             * The array keeps the types of ancestor CSSRules from the innermost going outwards.
+             */
+            ruleTypes?: CSSRuleType[];
         }
+
+        /**
+         * Enum indicating the type of a CSS rule, used to represent the order of a style rule's ancestors.
+         * This list only contains rule types that are collected during the ancestor rule collection.
+         */
+        export type CSSRuleType = ('MediaRule' | 'SupportsRule' | 'ContainerRule' | 'LayerRule' | 'ScopeRule');
 
         /**
          * CSS coverage information.

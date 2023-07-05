@@ -3210,7 +3210,30 @@
                             "items": {
                                 "$ref": "CSSScope"
                             }
+                        },
+                        {
+                            "name": "ruleTypes",
+                            "description": "The array keeps the types of ancestor CSSRules from the innermost going outwards.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "CSSRuleType"
+                            }
                         }
+                    ]
+                },
+                {
+                    "id": "CSSRuleType",
+                    "description": "Enum indicating the type of a CSS rule, used to represent the order of a style rule's ancestors.\nThis list only contains rule types that are collected during the ancestor rule collection.",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "MediaRule",
+                        "SupportsRule",
+                        "ContainerRule",
+                        "LayerRule",
+                        "ScopeRule"
                     ]
                 },
                 {

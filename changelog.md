@@ -1,7 +1,32 @@
 
 
+## Roll protocol to r1165779 — _2023-07-05T04:28:56.000Z_
+######  Diff: [`a96ac10...8f2b376`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a96ac10...8f2b376`)
+
+```diff
+@@ browser_protocol.pdl:1550 @@ experimental domain CSS
+       # @scope CSS at-rule array.
+       # The array enumerates @scope at-rules starting with the innermost one, going outwards.
+       experimental optional array of CSSScope scopes
+-      # The array keeps the types of ancestor CSSRules from the innermost going outwards.
+-      experimental optional array of CSSRuleType ruleTypes
+-
+-  # Enum indicating the type of a CSS rule, used to represent the order of a style rule's ancestors.
+-  # This list only contains rule types that are collected during the ancestor rule collection.
+-  experimental type CSSRuleType extends string
+-    enum
+-      MediaRule
+-      SupportsRule
+-      ContainerRule
+-      LayerRule
+-      ScopeRule
+ 
+   # CSS coverage information.
+   type RuleUsage extends object
+```
+
 ## Roll protocol to r1165014 — _2023-07-01T04:27:51.000Z_
-######  Diff: [`f92e635...02dff86`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f92e635...02dff86`)
+######  Diff: [`f92e635...a96ac10`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f92e635...a96ac10`)
 
 ```diff
 @@ browser_protocol.pdl:719 @@ experimental domain Audits
@@ -10399,40 +10424,4 @@ index bd277eb..09c420e 100644
        first-line-inherited
        scrollbar
        scrollbar-thumb
-```
-
-## Roll protocol to r898124 — _2021-07-02T12:16:12.000Z_
-######  Diff: [`6814a59...b531de2`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6814a59...b531de2`)
-
-```diff
-@@ browser_protocol.pdl:757 @@ experimental domain Audits
-       string url
-       optional SourceCodeLocation location
- 
--  type WasmCrossOriginModuleSharingIssueDetails extends object
--    properties
--      string wasmModuleUrl
--      string sourceOrigin
--      string targetOrigin
--      boolean isWarning
--
-   # A unique identifier for the type of issue. Each type may use one of the
-   # optional fields in InspectorIssueDetails to convey more specific
-   # information about the kind of issue.
-@@ -781,7 +774,6 @@ experimental domain Audits
-       AttributionReportingIssue
-       QuirksModeIssue
-       NavigatorUserAgentIssue
--      WasmCrossOriginModuleSharingIssue
- 
-   # This struct holds a list of optional fields with additional information
-   # specific to the kind of issue. When adding a new issue code, please also
-@@ -800,7 +792,6 @@ experimental domain Audits
-       optional AttributionReportingIssueDetails attributionReportingIssueDetails
-       optional QuirksModeIssueDetails quirksModeIssueDetails
-       optional NavigatorUserAgentIssueDetails navigatorUserAgentIssueDetails
--      optional WasmCrossOriginModuleSharingIssueDetails wasmCrossOriginModuleSharingIssue
- 
-   # A unique id for a DevTools inspector issue. Allows other entities (e.g.
-   # exceptions, CDP message, console messages, etc.) to reference an issue.
 ```
