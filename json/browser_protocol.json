@@ -3233,7 +3233,8 @@
                         "SupportsRule",
                         "ContainerRule",
                         "LayerRule",
-                        "ScopeRule"
+                        "ScopeRule",
+                        "StyleRule"
                     ]
                 },
                 {
@@ -19864,6 +19865,155 @@
                             "$ref": "StorageBucketsDurability"
                         }
                     ]
+                },
+                {
+                    "id": "AttributionReportingSourceType",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "navigation",
+                        "event"
+                    ]
+                },
+                {
+                    "id": "UnsignedInt64AsBase10",
+                    "experimental": true,
+                    "type": "string"
+                },
+                {
+                    "id": "UnsignedInt128AsBase16",
+                    "experimental": true,
+                    "type": "string"
+                },
+                {
+                    "id": "SignedInt64AsBase10",
+                    "experimental": true,
+                    "type": "string"
+                },
+                {
+                    "id": "AttributionReportingFilterDataEntry",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "key",
+                            "type": "string"
+                        },
+                        {
+                            "name": "values",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "AttributionReportingAggregationKeysEntry",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "key",
+                            "type": "string"
+                        },
+                        {
+                            "name": "value",
+                            "$ref": "UnsignedInt128AsBase16"
+                        }
+                    ]
+                },
+                {
+                    "id": "AttributionReportingSourceRegistration",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "time",
+                            "$ref": "Network.TimeSinceEpoch"
+                        },
+                        {
+                            "name": "expiry",
+                            "description": "duration in seconds",
+                            "optional": true,
+                            "type": "integer"
+                        },
+                        {
+                            "name": "eventReportWindow",
+                            "description": "duration in seconds",
+                            "optional": true,
+                            "type": "integer"
+                        },
+                        {
+                            "name": "aggregatableReportWindow",
+                            "description": "duration in seconds",
+                            "optional": true,
+                            "type": "integer"
+                        },
+                        {
+                            "name": "type",
+                            "$ref": "AttributionReportingSourceType"
+                        },
+                        {
+                            "name": "sourceOrigin",
+                            "type": "string"
+                        },
+                        {
+                            "name": "reportingOrigin",
+                            "type": "string"
+                        },
+                        {
+                            "name": "destinationSites",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        {
+                            "name": "eventId",
+                            "$ref": "UnsignedInt64AsBase10"
+                        },
+                        {
+                            "name": "priority",
+                            "$ref": "SignedInt64AsBase10"
+                        },
+                        {
+                            "name": "filterData",
+                            "type": "array",
+                            "items": {
+                                "$ref": "AttributionReportingFilterDataEntry"
+                            }
+                        },
+                        {
+                            "name": "aggregationKeys",
+                            "type": "array",
+                            "items": {
+                                "$ref": "AttributionReportingAggregationKeysEntry"
+                            }
+                        },
+                        {
+                            "name": "debugKey",
+                            "optional": true,
+                            "$ref": "UnsignedInt64AsBase10"
+                        }
+                    ]
+                },
+                {
+                    "id": "AttributionReportingSourceRegistrationResult",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "success",
+                        "internalError",
+                        "insufficientSourceCapacity",
+                        "insufficientUniqueDestinationCapacity",
+                        "excessiveReportingOrigins",
+                        "prohibitedByBrowserPolicy",
+                        "successNoised",
+                        "destinationReportingLimitReached",
+                        "destinationGlobalLimitReached",
+                        "destinationBothLimitsReached"
+                    ]
                 }
             ],
             "commands": [
@@ -20336,6 +20486,17 @@
                             "type": "boolean"
                         }
                     ]
+                },
+                {
+                    "name": "setAttributionReportingTracking",
+                    "description": "Enables/disables issuing of Attribution Reporting events.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "enable",
+                            "type": "boolean"
+                        }
+                    ]
                 }
             ],
             "events": [
@@ -20506,6 +20667,21 @@
                         {
                             "name": "bucketId",
                             "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "attributionReportingSourceRegistered",
+                    "description": "TODO(crbug.com/1458532): Add other Attribution Reporting events, e.g.\ntrigger registration.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "registration",
+                            "$ref": "AttributionReportingSourceRegistration"
+                        },
+                        {
+                            "name": "result",
+                            "$ref": "AttributionReportingSourceRegistrationResult"
                         }
                     ]
                 }

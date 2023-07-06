@@ -1,7 +1,90 @@
 
 
+## Roll protocol to r1166296 — _2023-07-06T04:28:50.000Z_
+######  Diff: [`02fc905...be328c8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`02fc905...be328c8`)
+
+```diff
+@@ browser_protocol.pdl:1562 @@ experimental domain CSS
+       ContainerRule
+       LayerRule
+       ScopeRule
+-      StyleRule
+ 
+   # CSS coverage information.
+   type RuleUsage extends object
+@@ -9656,69 +9655,6 @@ experimental domain Storage
+       # If enabled, noise is suppressed and reports are sent immediately.
+       boolean enabled
+ 
+-  # Enables/disables issuing of Attribution Reporting events.
+-  experimental command setAttributionReportingTracking
+-    parameters
+-      boolean enable
+-
+-  experimental type AttributionReportingSourceType extends string
+-    enum
+-      navigation
+-      event
+-
+-  experimental type UnsignedInt64AsBase10 extends string
+-  experimental type UnsignedInt128AsBase16 extends string
+-  experimental type SignedInt64AsBase10 extends string
+-
+-  experimental type AttributionReportingFilterDataEntry extends object
+-    properties
+-      string key
+-      array of string values
+-
+-  experimental type AttributionReportingAggregationKeysEntry extends object
+-    properties
+-      string key
+-      UnsignedInt128AsBase16 value
+-
+-  experimental type AttributionReportingSourceRegistration extends object
+-    properties
+-      Network.TimeSinceEpoch time
+-      # duration in seconds
+-      optional integer expiry
+-      # duration in seconds
+-      optional integer eventReportWindow
+-      # duration in seconds
+-      optional integer aggregatableReportWindow
+-      AttributionReportingSourceType type
+-      string sourceOrigin
+-      string reportingOrigin
+-      array of string destinationSites
+-      UnsignedInt64AsBase10 eventId
+-      SignedInt64AsBase10 priority
+-      array of AttributionReportingFilterDataEntry filterData
+-      array of AttributionReportingAggregationKeysEntry aggregationKeys
+-      optional UnsignedInt64AsBase10 debugKey
+-
+-  experimental type AttributionReportingSourceRegistrationResult extends string
+-    enum
+-      success
+-      internalError
+-      insufficientSourceCapacity
+-      insufficientUniqueDestinationCapacity
+-      excessiveReportingOrigins
+-      prohibitedByBrowserPolicy
+-      successNoised
+-      destinationReportingLimitReached
+-      destinationGlobalLimitReached
+-      destinationBothLimitsReached
+-
+-  # TODO(crbug.com/1458532): Add other Attribution Reporting events, e.g.
+-  # trigger registration.
+-  experimental event attributionReportingSourceRegistered
+-    parameters
+-      AttributionReportingSourceRegistration registration
+-      AttributionReportingSourceRegistrationResult result
+-
+ # The SystemInfo domain defines methods and events for querying low-level system information.
+ experimental domain SystemInfo
+```
+
 ## Roll protocol to r1165779 — _2023-07-05T04:28:56.000Z_
-######  Diff: [`a96ac10...8f2b376`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a96ac10...8f2b376`)
+######  Diff: [`a96ac10...02fc905`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a96ac10...02fc905`)
 
 ```diff
 @@ browser_protocol.pdl:1550 @@ experimental domain CSS
@@ -10410,18 +10493,4 @@ index bd277eb..09c420e 100644
    # Requests that backend shows paint rectangles
    command setShowPaintRects
      parameters
-```
-
-## Roll protocol to r898382 — _2021-07-02T23:16:12.000Z_
-######  Diff: [`b531de2...c935633`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b531de2...c935633`)
-
-```diff
-@@ browser_protocol.pdl:2006 @@ domain DOM
-       target-text
-       spelling-error
-       grammar-error
--      highlight
-       first-line-inherited
-       scrollbar
-       scrollbar-thumb
 ```

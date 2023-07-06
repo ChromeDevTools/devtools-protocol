@@ -3425,6 +3425,11 @@ export namespace ProtocolProxyApi {
         setAttributionReportingLocalTestingMode(params: Protocol.Storage.SetAttributionReportingLocalTestingModeRequest): Promise<void>;
 
         /**
+         * Enables/disables issuing of Attribution Reporting events.
+         */
+        setAttributionReportingTracking(params: Protocol.Storage.SetAttributionReportingTrackingRequest): Promise<void>;
+
+        /**
          * A cache's contents have been modified.
          */
         on(event: 'cacheStorageContentUpdated', listener: (params: Protocol.Storage.CacheStorageContentUpdatedEvent) => void): void;
@@ -3458,6 +3463,12 @@ export namespace ProtocolProxyApi {
         on(event: 'storageBucketCreatedOrUpdated', listener: (params: Protocol.Storage.StorageBucketCreatedOrUpdatedEvent) => void): void;
 
         on(event: 'storageBucketDeleted', listener: (params: Protocol.Storage.StorageBucketDeletedEvent) => void): void;
+
+        /**
+         * TODO(crbug.com/1458532): Add other Attribution Reporting events, e.g.
+         * trigger registration.
+         */
+        on(event: 'attributionReportingSourceRegistered', listener: (params: Protocol.Storage.AttributionReportingSourceRegisteredEvent) => void): void;
 
     }
 

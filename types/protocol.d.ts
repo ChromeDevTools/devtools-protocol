@@ -4493,7 +4493,7 @@ export namespace Protocol {
          * Enum indicating the type of a CSS rule, used to represent the order of a style rule's ancestors.
          * This list only contains rule types that are collected during the ancestor rule collection.
          */
-        export type CSSRuleType = ('MediaRule' | 'SupportsRule' | 'ContainerRule' | 'LayerRule' | 'ScopeRule');
+        export type CSSRuleType = ('MediaRule' | 'SupportsRule' | 'ContainerRule' | 'LayerRule' | 'ScopeRule' | 'StyleRule');
 
         /**
          * CSS coverage information.
@@ -15039,6 +15039,51 @@ export namespace Protocol {
             durability: StorageBucketsDurability;
         }
 
+        export type AttributionReportingSourceType = ('navigation' | 'event');
+
+        export type UnsignedInt64AsBase10 = string;
+
+        export type UnsignedInt128AsBase16 = string;
+
+        export type SignedInt64AsBase10 = string;
+
+        export interface AttributionReportingFilterDataEntry {
+            key: string;
+            values: string[];
+        }
+
+        export interface AttributionReportingAggregationKeysEntry {
+            key: string;
+            value: UnsignedInt128AsBase16;
+        }
+
+        export interface AttributionReportingSourceRegistration {
+            time: Network.TimeSinceEpoch;
+            /**
+             * duration in seconds
+             */
+            expiry?: integer;
+            /**
+             * duration in seconds
+             */
+            eventReportWindow?: integer;
+            /**
+             * duration in seconds
+             */
+            aggregatableReportWindow?: integer;
+            type: AttributionReportingSourceType;
+            sourceOrigin: string;
+            reportingOrigin: string;
+            destinationSites: string[];
+            eventId: UnsignedInt64AsBase10;
+            priority: SignedInt64AsBase10;
+            filterData: AttributionReportingFilterDataEntry[];
+            aggregationKeys: AttributionReportingAggregationKeysEntry[];
+            debugKey?: UnsignedInt64AsBase10;
+        }
+
+        export type AttributionReportingSourceRegistrationResult = ('success' | 'internalError' | 'insufficientSourceCapacity' | 'insufficientUniqueDestinationCapacity' | 'excessiveReportingOrigins' | 'prohibitedByBrowserPolicy' | 'successNoised' | 'destinationReportingLimitReached' | 'destinationGlobalLimitReached' | 'destinationBothLimitsReached');
+
         export interface GetStorageKeyForFrameRequest {
             frameId: Page.FrameId;
         }
@@ -15292,6 +15337,10 @@ export namespace Protocol {
             enabled: boolean;
         }
 
+        export interface SetAttributionReportingTrackingRequest {
+            enable: boolean;
+        }
+
         /**
          * A cache's contents have been modified.
          */
@@ -15420,6 +15469,15 @@ export namespace Protocol {
 
         export interface StorageBucketDeletedEvent {
             bucketId: string;
+        }
+
+        /**
+         * TODO(crbug.com/1458532): Add other Attribution Reporting events, e.g.
+         * trigger registration.
+         */
+        export interface AttributionReportingSourceRegisteredEvent {
+            registration: AttributionReportingSourceRegistration;
+            result: AttributionReportingSourceRegistrationResult;
         }
     }
 
