@@ -20012,7 +20012,8 @@
                         "successNoised",
                         "destinationReportingLimitReached",
                         "destinationGlobalLimitReached",
-                        "destinationBothLimitsReached"
+                        "destinationBothLimitsReached",
+                        "reportingOriginsPerSiteLimitReached"
                     ]
                 }
             ],

@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1167732 — _2023-07-08T04:27:37.000Z_
+######  Diff: [`f3b3b51...f0a56e4`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f3b3b51...f0a56e4`)
+
+```diff
+@@ browser_protocol.pdl:9711 @@ experimental domain Storage
+       destinationReportingLimitReached
+       destinationGlobalLimitReached
+       destinationBothLimitsReached
+-      reportingOriginsPerSiteLimitReached
+ 
+   # TODO(crbug.com/1458532): Add other Attribution Reporting events, e.g.
+   # trigger registration.
+```
+
 ## Roll protocol to r1166296 — _2023-07-06T04:28:50.000Z_
-######  Diff: [`02fc905...be328c8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`02fc905...be328c8`)
+######  Diff: [`02fc905...f3b3b51`](https://github.com/ChromeDevTools/devtools-protocol/compare/`02fc905...f3b3b51`)
 
 ```diff
 @@ browser_protocol.pdl:1562 @@ experimental domain CSS
