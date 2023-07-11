@@ -1,7 +1,31 @@
 
 
+## Roll protocol to r1168520 — _2023-07-11T04:28:09.000Z_
+######  Diff: [`8b56da5...4d6fd48`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8b56da5...4d6fd48`)
+
+```diff
+@@ browser_protocol.pdl:697 @@ experimental domain Audits
+       InvalidRegisterOsTriggerHeader
+       WebAndOsHeaders
+       NoWebOrOsSupport
+-      NavigationRegistrationWithoutTransientUserActivation
+ 
+   # Details for issues around "Attribution Reporting API" usage.
+   # Explainer: https://github.com/WICG/attribution-reporting-api
+@@ -4587,9 +4586,6 @@ domain Input
+       # Time at which the event occurred.
+       optional TimeSinceEpoch timestamp
+ 
+-  # Cancels any active dragging in the page.
+-  command cancelDragging
+-
+   # Emulates touch event from the mouse event parameters.
+   experimental command emulateTouchFromMouseEvent
+     parameters
+```
+
 ## Roll protocol to r1167732 — _2023-07-08T04:27:37.000Z_
-######  Diff: [`f3b3b51...f0a56e4`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f3b3b51...f0a56e4`)
+######  Diff: [`f3b3b51...8b56da5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f3b3b51...8b56da5`)
 
 ```diff
 @@ browser_protocol.pdl:9711 @@ experimental domain Storage

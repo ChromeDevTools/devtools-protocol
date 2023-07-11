@@ -1989,6 +1989,11 @@ export namespace ProtocolProxyApi {
         dispatchTouchEvent(params: Protocol.Input.DispatchTouchEventRequest): Promise<void>;
 
         /**
+         * Cancels any active dragging in the page.
+         */
+        cancelDragging(): Promise<void>;
+
+        /**
          * Emulates touch event from the mouse event parameters.
          */
         emulateTouchFromMouseEvent(params: Protocol.Input.EmulateTouchFromMouseEventRequest): Promise<void>;

@@ -3441,7 +3441,7 @@ export namespace Protocol {
             clientSecurityState?: Network.ClientSecurityState;
         }
 
-        export type AttributionReportingIssueType = ('PermissionPolicyDisabled' | 'UntrustworthyReportingOrigin' | 'InsecureContext' | 'InvalidHeader' | 'InvalidRegisterTriggerHeader' | 'SourceAndTriggerHeaders' | 'SourceIgnored' | 'TriggerIgnored' | 'OsSourceIgnored' | 'OsTriggerIgnored' | 'InvalidRegisterOsSourceHeader' | 'InvalidRegisterOsTriggerHeader' | 'WebAndOsHeaders' | 'NoWebOrOsSupport');
+        export type AttributionReportingIssueType = ('PermissionPolicyDisabled' | 'UntrustworthyReportingOrigin' | 'InsecureContext' | 'InvalidHeader' | 'InvalidRegisterTriggerHeader' | 'SourceAndTriggerHeaders' | 'SourceIgnored' | 'TriggerIgnored' | 'OsSourceIgnored' | 'OsTriggerIgnored' | 'InvalidRegisterOsSourceHeader' | 'InvalidRegisterOsTriggerHeader' | 'WebAndOsHeaders' | 'NoWebOrOsSupport' | 'NavigationRegistrationWithoutTransientUserActivation');
 
         /**
          * Details for issues around "Attribution Reporting API" usage.

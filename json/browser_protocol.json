@@ -1420,7 +1420,8 @@
                         "InvalidRegisterOsSourceHeader",
                         "InvalidRegisterOsTriggerHeader",
                         "WebAndOsHeaders",
-                        "NoWebOrOsSupport"
+                        "NoWebOrOsSupport",
+                        "NavigationRegistrationWithoutTransientUserActivation"
                     ]
                 },
                 {
@@ -10073,6 +10074,10 @@
                             "$ref": "TimeSinceEpoch"
                         }
                     ]
+                },
+                {
+                    "name": "cancelDragging",
+                    "description": "Cancels any active dragging in the page."
                 },
                 {
                     "name": "emulateTouchFromMouseEvent",

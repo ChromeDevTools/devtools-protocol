@@ -2842,6 +2842,13 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Cancels any active dragging in the page.
+         */
+        'Input.cancelDragging': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
          * Emulates touch event from the mouse event parameters.
          */
         'Input.emulateTouchFromMouseEvent': {
