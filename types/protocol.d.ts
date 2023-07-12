@@ -10624,7 +10624,7 @@ export namespace Protocol {
         /**
          * List of content encodings supported by the backend.
          */
-        export type ContentEncoding = ('deflate' | 'gzip' | 'br');
+        export type ContentEncoding = ('deflate' | 'gzip' | 'br' | 'zstd');
 
         export type PrivateNetworkRequestPolicy = ('Allow' | 'BlockFromInsecureToMorePrivate' | 'WarnFromInsecureToMorePrivate' | 'PreflightBlock' | 'PreflightWarn');
 

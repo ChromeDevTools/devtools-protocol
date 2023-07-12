@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1169132 — _2023-07-12T04:28:03.000Z_
+######  Diff: [`863ba3f...b8b48de`](https://github.com/ChromeDevTools/devtools-protocol/compare/`863ba3f...b8b48de`)
+
+```diff
+@@ browser_protocol.pdl:5921 @@ domain Network
+       deflate
+       gzip
+       br
+-      zstd
+ 
+   # Sets a list of content encodings that will be accepted. Empty list means no encoding is accepted.
+   experimental command setAcceptedEncodings
+```
+
 ## Roll protocol to r1168520 — _2023-07-11T04:28:09.000Z_
-######  Diff: [`8b56da5...4d6fd48`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8b56da5...4d6fd48`)
+######  Diff: [`8b56da5...863ba3f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8b56da5...863ba3f`)
 
 ```diff
 @@ browser_protocol.pdl:697 @@ experimental domain Audits
@@ -10485,50 +10499,4 @@ index bd277eb..09c420e 100644
        # `Node`'s nodeName.
        optional array of StringIndex nodeName
        # `Node`'s nodeValue.
-```
-
-## Roll protocol to r900033 — _2021-07-09T16:16:22.000Z_
-######  Diff: [`cbb20a9...db8965f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`cbb20a9...db8965f`)
-
-```diff
-@@ browser_protocol.pdl:6223 @@ experimental domain Overlay
-       optional FlexItemHighlightConfig flexItemHighlightConfig
-       # The contrast algorithm to use for the contrast ratio (default: aa).
-       optional ContrastAlgorithm contrastAlgorithm
--      # The container query container highlight configuration (default: all transparent).
--      optional ContainerQueryContainerHighlightConfig containerQueryContainerHighlightConfig
- 
-   type ColorFormat extends string
-     enum
-@@ -6275,18 +6273,6 @@ experimental domain Overlay
-       # The content box highlight outline color (default: transparent).
-       optional DOM.RGBA outlineColor
- 
--  type ContainerQueryHighlightConfig extends object
--    properties
--      # A descriptor for the highlight appearance of container query containers.
--      ContainerQueryContainerHighlightConfig containerQueryContainerHighlightConfig
--      # Identifier of the container node to highlight.
--      DOM.NodeId nodeId
--
--  type ContainerQueryContainerHighlightConfig extends object
--    properties
--      # The style of the container border
--      optional LineStyle containerBorder
--
-   type InspectMode extends string
-     enum
-       searchForNode
-@@ -6452,11 +6438,6 @@ experimental domain Overlay
-       # An array of node identifiers and descriptors for the highlight appearance.
-       array of ScrollSnapHighlightConfig scrollSnapHighlightConfigs
- 
--  command setShowContainerQueryOverlays
--    parameters
--      # An array of node identifiers and descriptors for the highlight appearance.
--      array of ContainerQueryHighlightConfig containerQueryHighlightConfigs
--
-   # Requests that backend shows paint rectangles
-   command setShowPaintRects
-     parameters
 ```
