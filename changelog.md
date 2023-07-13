@@ -1,7 +1,29 @@
 
 
+## Roll protocol to r1169739 — _2023-07-13T04:27:48.000Z_
+######  Diff: [`697a922...e66dc69`](https://github.com/ChromeDevTools/devtools-protocol/compare/`697a922...e66dc69`)
+
+```diff
+@@ browser_protocol.pdl:8581 @@ domain Page
+       FencedFramesEmbedder
+       CookieDisabled
+       HTTPAuthRequired
+-      CookieFlushed
+       #Blocklisted features
+       WebSocket
+       WebTransport
+@@ -11240,7 +11239,6 @@ experimental domain Preload
+       MemoryPressureAfterTriggered
+       PrerenderingDisabledByDevTools
+       ResourceLoadBlockedByClient
+-      SpeculationRuleRemoved
+ 
+   # Fired when a prerender attempt is completed.
+   event prerenderAttemptCompleted
+```
+
 ## Roll protocol to r1169132 — _2023-07-12T04:28:03.000Z_
-######  Diff: [`863ba3f...b8b48de`](https://github.com/ChromeDevTools/devtools-protocol/compare/`863ba3f...b8b48de`)
+######  Diff: [`863ba3f...697a922`](https://github.com/ChromeDevTools/devtools-protocol/compare/`863ba3f...697a922`)
 
 ```diff
 @@ browser_protocol.pdl:5921 @@ domain Network
@@ -10484,19 +10506,4 @@ index bd277eb..09c420e 100644
        RequestedNotificationsPermission
        RequestedMIDIPermission
        RequestedAudioCapturePermission
-```
-
-## Roll protocol to r900357 — _2021-07-12T06:16:08.000Z_
-######  Diff: [`db8965f...56bb0ce`](https://github.com/ChromeDevTools/devtools-protocol/compare/`db8965f...56bb0ce`)
-
-```diff
-@@ browser_protocol.pdl:3050 @@ experimental domain DOMSnapshot
-       optional array of integer parentIndex
-       # `Node`'s nodeType.
-       optional array of integer nodeType
--      # Type of the shadow root the `Node` is in. String values are equal to the `ShadowRootType` enum.
--      optional RareStringData shadowRootType
-       # `Node`'s nodeName.
-       optional array of StringIndex nodeName
-       # `Node`'s nodeValue.
 ```
