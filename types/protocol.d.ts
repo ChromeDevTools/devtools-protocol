@@ -11283,11 +11283,6 @@ export namespace Protocol {
              * Total number of bytes received for this request.
              */
             encodedDataLength: number;
-            /**
-             * Set when 1) response was blocked by Cross-Origin Read Blocking and also
-             * 2) this needs to be reported to the DevTools console.
-             */
-            shouldReportCorbBlocking?: boolean;
         }
 
         /**

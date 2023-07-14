@@ -1,7 +1,23 @@
 
 
+## Roll protocol to r1170333 — _2023-07-14T04:28:05.000Z_
+######  Diff: [`dd37d9b...d604230`](https://github.com/ChromeDevTools/devtools-protocol/compare/`dd37d9b...d604230`)
+
+```diff
+@@ browser_protocol.pdl:6268 @@ domain Network
+       MonotonicTime timestamp
+       # Total number of bytes received for this request.
+       number encodedDataLength
++      # Set when 1) response was blocked by Cross-Origin Read Blocking and also
++      # 2) this needs to be reported to the DevTools console.
++      optional boolean shouldReportCorbBlocking
+ 
+   # Details of an intercepted HTTP request, which must be either allowed, blocked, modified or
+   # mocked.
+```
+
 ## Roll protocol to r1169739 — _2023-07-13T04:27:48.000Z_
-######  Diff: [`697a922...e66dc69`](https://github.com/ChromeDevTools/devtools-protocol/compare/`697a922...e66dc69`)
+######  Diff: [`697a922...dd37d9b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`697a922...dd37d9b`)
 
 ```diff
 @@ browser_protocol.pdl:8581 @@ domain Page
@@ -10492,18 +10508,4 @@ index bd277eb..09c420e 100644
        #Blocklisted features
        WebSocket
        WebRTC
-```
-
-## Roll protocol to r900855 — _2021-07-13T06:16:27.000Z_
-######  Diff: [`56bb0ce...2609869`](https://github.com/ChromeDevTools/devtools-protocol/compare/`56bb0ce...2609869`)
-
-```diff
-@@ browser_protocol.pdl:7754 @@ domain Page
-       DedicatedWorkerOrWorklet
-       OutstandingNetworkRequestOthers
-       OutstandingIndexedDBTransaction
-+      RequestedGeolocationPermission
-       RequestedNotificationsPermission
-       RequestedMIDIPermission
-       RequestedAudioCapturePermission
 ```
