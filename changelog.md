@@ -1,7 +1,36 @@
 
 
+## Roll protocol to r1170846 — _2023-07-15T04:27:50.000Z_
+######  Diff: [`b1cb882...98db89c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b1cb882...98db89c`)
+
+```diff
+@@ browser_protocol.pdl:10485 @@ domain Fetch
+   # takeResponseBodyForInterceptionAsStream. Calling other methods that
+   # affect the request or disabling fetch domain before body is received
+   # results in an undefined behavior.
+-  # Note that the response body is not available for redirects. Requests
+-  # paused in the _redirect received_ state may be differentiated by
+-  # `responseCode` and presence of `location` response header, see
+-  # comments to `requestPaused` for details.
+   command getResponseBody
+     parameters
+       # Identifier for the intercepted request to get body for.
+@@ -10521,11 +10517,6 @@ domain Fetch
+   # The stage of the request can be determined by presence of responseErrorReason
+   # and responseStatusCode -- the request is at the response stage if either
+   # of these fields is present and in the request stage otherwise.
+-  # Redirect responses and subsequent requests are reported similarly to regular
+-  # responses and requests. Redirect responses may be distinguished by the value
+-  # of `responseStatusCode` (which is one of 301, 302, 303, 307, 308) along with
+-  # presence of the `location` header. Requests resulting from a redirect will
+-  # have `redirectedRequestId` field set.
+   event requestPaused
+     parameters
+       # Each request the page makes will have a unique id.
+```
+
 ## Roll protocol to r1170333 — _2023-07-14T04:28:05.000Z_
-######  Diff: [`dd37d9b...d604230`](https://github.com/ChromeDevTools/devtools-protocol/compare/`dd37d9b...d604230`)
+######  Diff: [`dd37d9b...b1cb882`](https://github.com/ChromeDevTools/devtools-protocol/compare/`dd37d9b...b1cb882`)
 
 ```diff
 @@ browser_protocol.pdl:6268 @@ domain Network
@@ -10492,20 +10521,4 @@ index bd277eb..09c420e 100644
      parameters
        # Identifier of the frame to highlight.
        Page.FrameId frameId
-```
-
-## Roll protocol to r901394 — _2021-07-14T07:16:11.000Z_
-######  Diff: [`2609869...f94c0d3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2609869...f94c0d3`)
-
-```diff
-@@ browser_protocol.pdl:7742 @@ domain Page
-       OptInUnloadHeaderNotPresent
-       UnloadHandlerExistsInSubFrame
-       ServiceWorkerUnregistration
--      CacheControlNoStore
--      CacheControlNoStoreCookieModified
--      CacheControlNoStoreHTTPOnlyCookieModified
-       #Blocklisted features
-       WebSocket
-       WebRTC
 ```

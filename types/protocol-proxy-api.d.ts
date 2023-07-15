@@ -3748,6 +3748,10 @@ export namespace ProtocolProxyApi {
          * takeResponseBodyForInterceptionAsStream. Calling other methods that
          * affect the request or disabling fetch domain before body is received
          * results in an undefined behavior.
+         * Note that the response body is not available for redirects. Requests
+         * paused in the _redirect received_ state may be differentiated by
+         * `responseCode` and presence of `location` response header, see
+         * comments to `requestPaused` for details.
          */
         getResponseBody(params: Protocol.Fetch.GetResponseBodyRequest): Promise<Protocol.Fetch.GetResponseBodyResponse>;
 
@@ -3772,6 +3776,11 @@ export namespace ProtocolProxyApi {
          * The stage of the request can be determined by presence of responseErrorReason
          * and responseStatusCode -- the request is at the response stage if either
          * of these fields is present and in the request stage otherwise.
+         * Redirect responses and subsequent requests are reported similarly to regular
+         * responses and requests. Redirect responses may be distinguished by the value
+         * of `responseStatusCode` (which is one of 301, 302, 303, 307, 308) along with
+         * presence of the `location` header. Requests resulting from a redirect will
+         * have `redirectedRequestId` field set.
          */
         on(event: 'requestPaused', listener: (params: Protocol.Fetch.RequestPausedEvent) => void): void;
 
