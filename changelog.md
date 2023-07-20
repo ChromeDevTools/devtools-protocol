@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1172767 — _2023-07-20T04:26:30.000Z_
+######  Diff: [`5ed816f...36dc9b6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5ed816f...36dc9b6`)
+
+```diff
+@@ browser_protocol.pdl:11247 @@ experimental domain Preload
+       PrerenderingDisabledByDevTools
+       ResourceLoadBlockedByClient
+       SpeculationRuleRemoved
+-      ActivatedWithAuxiliaryBrowsingContexts
+ 
+   # Fired when a prerender attempt is completed.
+   event prerenderAttemptCompleted
+```
+
 ## Roll protocol to r1170846 — _2023-07-15T04:27:50.000Z_
-######  Diff: [`b1cb882...98db89c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b1cb882...98db89c`)
+######  Diff: [`b1cb882...5ed816f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b1cb882...5ed816f`)
 
 ```diff
 @@ browser_protocol.pdl:10485 @@ domain Fetch
@@ -10503,22 +10517,4 @@ index bd277eb..09c420e 100644
 -      optional array of string files
        # Bit field representing allowed drag operations. Copy = 1, Link = 2, Move = 16
        integer dragOperationsMask
-```
-
-## Roll protocol to r901419 — _2021-07-14T09:15:57.000Z_
-######  Diff: [`f94c0d3...ddfd9ff`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f94c0d3...ddfd9ff`)
-
-```diff
-@@ browser_protocol.pdl:6342 @@ experimental domain Overlay
-   command hideHighlight
- 
-   # Highlights owner element of the frame with given id.
--  # Deprecated: Doesn't work reliablity and cannot be fixed due to process
--  # separatation (the owner node might be in a different process). Determine
--  # the owner node in the client and use highlightNode.
--  deprecated command highlightFrame
-+  command highlightFrame
-     parameters
-       # Identifier of the frame to highlight.
-       Page.FrameId frameId
 ```
