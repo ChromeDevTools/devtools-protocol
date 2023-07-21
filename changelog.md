@@ -1,7 +1,100 @@
 
 
+## Roll protocol to r1173320 — _2023-07-21T04:26:31.000Z_
+######  Diff: [`68de33a...640b99f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`68de33a...640b99f`)
+
+```diff
+@@ browser_protocol.pdl:72 @@ experimental domain Accessibility
+       optional AXValue attributeValue
+       # Whether this source is superseded by a higher priority source.
+       optional boolean superseded
+-      # The native markup source for this value, e.g. a `<label>` element.
++      # The native markup source for this value, e.g. a <label> element.
+       optional AXValueNativeSourceType nativeSource
+       # The value, such as a node or node list, of the native source.
+       optional AXValue nativeSourceValue
+@@ -1503,7 +1503,7 @@ experimental domain CSS
+       boolean isInline
+       # Whether this stylesheet is mutable. Inline stylesheets become mutable
+       # after they have been modified via CSSOM API.
+-      # `<link>` element's stylesheets become mutable only if DevTools modifies them.
++      # <link> element's stylesheets become mutable only if DevTools modifies them.
+       # Constructed stylesheets (new CSSStyleSheet()) are mutable immediately after creation.
+       boolean isMutable
+       # True if this stylesheet is created through new CSSStyleSheet() or imported as a
+@@ -2326,8 +2326,8 @@ experimental domain Cast
+ # the JavaScript object wrapper, etc. It is important that client receives DOM events only for the
+ # nodes that are known to the client. Backend keeps track of the nodes that were sent to the client
+ # and never sends the same node twice. It is client's responsibility to collect information about
+-# the nodes that were sent to the client. Note that `iframe` owner elements will return
+-# corresponding document elements as their child nodes.
++# the nodes that were sent to the client.<p>Note that `iframe` owner elements will return
++# corresponding document elements as their child nodes.</p>
+ domain DOM
+   depends on Runtime
+ 
+@@ -4107,8 +4107,8 @@ experimental domain HeadlessExperimental
+ # Input/Output operations for streams produced by DevTools.
+ domain IO
+ 
+-  # This is either obtained from another method or specified as `blob:<uuid>` where
+-  # `<uuid>` is an UUID of a Blob.
++  # This is either obtained from another method or specified as `blob:&lt;uuid&gt;` where
++  # `&lt;uuid&gt` is an UUID of a Blob.
+   type StreamHandle extends string
+ 
+   # Close the stream, discard any temporary backing storage.
+@@ -5880,7 +5880,7 @@ domain Network
+       Headers responseHeaders
+       # Signed exchange response signature.
+       array of SignedExchangeSignature signatures
+-      # Signed exchange header integrity hash in the form of `sha256-<base64-hash-value>`.
++      # Signed exchange header integrity hash in the form of "sha256-<base64-hash-value>".
+       string headerIntegrity
+ 
+   # Field type for a signed exchange related error.
+@@ -8359,7 +8359,7 @@ domain Page
+       enum mode
+         selectSingle
+         selectMultiple
+-      # Input node id. Only present for file choosers opened via an `<input type="file">` element.
++      # Input node id. Only present for file choosers opened via an <input type="file"> element.
+       experimental optional DOM.BackendNodeId backendNodeId
+ 
+   # Fired when frame has been attached to its parent.
+@@ -11096,7 +11096,7 @@ experimental domain Preload
+       # Identifies a document which the rule set is associated with.
+       Network.LoaderId loaderId
+       # Source text of JSON representing the rule set. If it comes from
+-      # `<script>` tag, it is the textContent of the node. Note that it is
++      # <script> tag, it is the textContent of the node. Note that it is
+       # a JSON for valid case.
+       #
+       # See also:
+@@ -11104,9 +11104,9 @@ experimental domain Preload
+       # - https://github.com/WICG/nav-speculation/blob/main/triggers.md
+       string sourceText
+       # A speculation rule set is either added through an inline
+-      # `<script>` tag or through an external resource via the
++      # <script> tag or through an external resource via the
+       # 'Speculation-Rules' HTTP header. For the first case, we include
+-      # the BackendNodeId of the relevant `<script>` tag. For the second
++      # the BackendNodeId of the relevant <script> tag. For the second
+       # case, we include the external URL where the rule set was loaded
+       # from, and also RequestId if Network domain is enabled.
+       #
+@@ -11210,6 +11210,7 @@ experimental domain Preload
+       AudioOutputDeviceRequested
+       MixedContent
+       TriggerBackgrounded
++      EmbedderTriggeredAndCrossOriginRedirected
+       MemoryLimitExceeded
+       # Prerenders can be cancelled when Chrome uses excessive memory. This is
+       # recorded when it fails to get the memory usage.
+```
+
 ## Roll protocol to r1172767 — _2023-07-20T04:26:30.000Z_
-######  Diff: [`5ed816f...36dc9b6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5ed816f...36dc9b6`)
+######  Diff: [`5ed816f...68de33a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5ed816f...68de33a`)
 
 ```diff
 @@ browser_protocol.pdl:11247 @@ experimental domain Preload
@@ -10503,18 +10596,4 @@ index bd277eb..09c420e 100644
        # Raw response header text as it was received over the wire. The raw text may not always be
        # available, such as in the case of HTTP/2 or QUIC.
        optional string headersText
-```
-
-## Roll protocol to r905235 — _2021-07-26T14:16:05.000Z_
-######  Diff: [`ddfd9ff...6da1a03`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ddfd9ff...6da1a03`)
-
-```diff
-@@ browser_protocol.pdl:3944 @@ domain Input
-   experimental type DragData extends object
-     properties
-       array of DragDataItem items
--      # List of filenames that should be included when dropping
--      optional array of string files
-       # Bit field representing allowed drag operations. Copy = 1, Link = 2, Move = 16
-       integer dragOperationsMask
 ```

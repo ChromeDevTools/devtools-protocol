@@ -2721,7 +2721,7 @@ export namespace Protocol {
              */
             superseded?: boolean;
             /**
-             * The native markup source for this value, e.g. a <label> element.
+             * The native markup source for this value, e.g. a `<label>` element.
              */
             nativeSource?: AXValueNativeSourceType;
             /**
@@ -4398,7 +4398,7 @@ export namespace Protocol {
             /**
              * Whether this stylesheet is mutable. Inline stylesheets become mutable
              * after they have been modified via CSSOM API.
-             * <link> element's stylesheets become mutable only if DevTools modifies them.
+             * `<link>` element's stylesheets become mutable only if DevTools modifies them.
              * Constructed stylesheets (new CSSStyleSheet()) are mutable immediately after creation.
              */
             isMutable: boolean;
@@ -5616,8 +5616,8 @@ export namespace Protocol {
      * the JavaScript object wrapper, etc. It is important that client receives DOM events only for the
      * nodes that are known to the client. Backend keeps track of the nodes that were sent to the client
      * and never sends the same node twice. It is client's responsibility to collect information about
-     * the nodes that were sent to the client.<p>Note that `iframe` owner elements will return
-     * corresponding document elements as their child nodes.</p>
+     * the nodes that were sent to the client. Note that `iframe` owner elements will return
+     * corresponding document elements as their child nodes.
      */
     export namespace DOM {
 
@@ -8158,8 +8158,8 @@ export namespace Protocol {
     export namespace IO {
 
         /**
-         * This is either obtained from another method or specified as `blob:&lt;uuid&gt;` where
-         * `&lt;uuid&gt` is an UUID of a Blob.
+         * This is either obtained from another method or specified as `blob:<uuid>` where
+         * `<uuid>` is an UUID of a Blob.
          */
         export type StreamHandle = string;
 
@@ -10571,7 +10571,7 @@ export namespace Protocol {
              */
             signatures: SignedExchangeSignature[];
             /**
-             * Signed exchange header integrity hash in the form of "sha256-<base64-hash-value>".
+             * Signed exchange header integrity hash in the form of `sha256-<base64-hash-value>`.
              */
             headerIntegrity: string;
         }
@@ -13937,7 +13937,7 @@ export namespace Protocol {
              */
             mode: ('selectSingle' | 'selectMultiple');
             /**
-             * Input node id. Only present for file choosers opened via an <input type="file"> element.
+             * Input node id. Only present for file choosers opened via an `<input type="file">` element.
              */
             backendNodeId?: DOM.BackendNodeId;
         }
@@ -17297,7 +17297,7 @@ export namespace Protocol {
             loaderId: Network.LoaderId;
             /**
              * Source text of JSON representing the rule set. If it comes from
-             * <script> tag, it is the textContent of the node. Note that it is
+             * `<script>` tag, it is the textContent of the node. Note that it is
              * a JSON for valid case.
              * 
              * See also:
@@ -17307,9 +17307,9 @@ export namespace Protocol {
             sourceText: string;
             /**
              * A speculation rule set is either added through an inline
-             * <script> tag or through an external resource via the
+             * `<script>` tag or through an external resource via the
              * 'Speculation-Rules' HTTP header. For the first case, we include
-             * the BackendNodeId of the relevant <script> tag. For the second
+             * the BackendNodeId of the relevant `<script>` tag. For the second
              * case, we include the external URL where the rule set was loaded
              * from, and also RequestId if Network domain is enabled.
              * 
@@ -17377,7 +17377,7 @@ export namespace Protocol {
         /**
          * List of FinalStatus reasons for Prerender2.
          */
-        export type PrerenderFinalStatus = ('Activated' | 'Destroyed' | 'LowEndDevice' | 'InvalidSchemeRedirect' | 'InvalidSchemeNavigation' | 'InProgressNavigation' | 'NavigationRequestBlockedByCsp' | 'MainFrameNavigation' | 'MojoBinderPolicy' | 'RendererProcessCrashed' | 'RendererProcessKilled' | 'Download' | 'TriggerDestroyed' | 'NavigationNotCommitted' | 'NavigationBadHttpStatus' | 'ClientCertRequested' | 'NavigationRequestNetworkError' | 'MaxNumOfRunningPrerendersExceeded' | 'CancelAllHostsForTesting' | 'DidFailLoad' | 'Stop' | 'SslCertificateError' | 'LoginAuthRequested' | 'UaChangeRequiresReload' | 'BlockedByClient' | 'AudioOutputDeviceRequested' | 'MixedContent' | 'TriggerBackgrounded' | 'EmbedderTriggeredAndCrossOriginRedirected' | 'MemoryLimitExceeded' | 'FailToGetMemoryUsage' | 'DataSaverEnabled' | 'HasEffectiveUrl' | 'ActivatedBeforeStarted' | 'InactivePageRestriction' | 'StartFailed' | 'TimeoutBackgrounded' | 'CrossSiteRedirectInInitialNavigation' | 'CrossSiteNavigationInInitialNavigation' | 'SameSiteCrossOriginRedirectNotOptInInInitialNavigation' | 'SameSiteCrossOriginNavigationNotOptInInInitialNavigation' | 'ActivationNavigationParameterMismatch' | 'ActivatedInBackground' | 'EmbedderHostDisallowed' | 'ActivationNavigationDestroyedBeforeSuccess' | 'TabClosedByUserGesture' | 'TabClosedWithoutUserGesture' | 'PrimaryMainFrameRendererProcessCrashed' | 'PrimaryMainFrameRendererProcessKilled' | 'ActivationFramePolicyNotCompatible' | 'PreloadingDisabled' | 'BatterySaverEnabled' | 'ActivatedDuringMainFrameNavigation' | 'PreloadingUnsupportedByWebContents' | 'CrossSiteRedirectInMainFrameNavigation' | 'CrossSiteNavigationInMainFrameNavigation' | 'SameSiteCrossOriginRedirectNotOptInInMainFrameNavigation' | 'SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation' | 'MemoryPressureOnTrigger' | 'MemoryPressureAfterTriggered' | 'PrerenderingDisabledByDevTools' | 'ResourceLoadBlockedByClient' | 'SpeculationRuleRemoved' | 'ActivatedWithAuxiliaryBrowsingContexts');
+        export type PrerenderFinalStatus = ('Activated' | 'Destroyed' | 'LowEndDevice' | 'InvalidSchemeRedirect' | 'InvalidSchemeNavigation' | 'InProgressNavigation' | 'NavigationRequestBlockedByCsp' | 'MainFrameNavigation' | 'MojoBinderPolicy' | 'RendererProcessCrashed' | 'RendererProcessKilled' | 'Download' | 'TriggerDestroyed' | 'NavigationNotCommitted' | 'NavigationBadHttpStatus' | 'ClientCertRequested' | 'NavigationRequestNetworkError' | 'MaxNumOfRunningPrerendersExceeded' | 'CancelAllHostsForTesting' | 'DidFailLoad' | 'Stop' | 'SslCertificateError' | 'LoginAuthRequested' | 'UaChangeRequiresReload' | 'BlockedByClient' | 'AudioOutputDeviceRequested' | 'MixedContent' | 'TriggerBackgrounded' | 'MemoryLimitExceeded' | 'FailToGetMemoryUsage' | 'DataSaverEnabled' | 'HasEffectiveUrl' | 'ActivatedBeforeStarted' | 'InactivePageRestriction' | 'StartFailed' | 'TimeoutBackgrounded' | 'CrossSiteRedirectInInitialNavigation' | 'CrossSiteNavigationInInitialNavigation' | 'SameSiteCrossOriginRedirectNotOptInInInitialNavigation' | 'SameSiteCrossOriginNavigationNotOptInInInitialNavigation' | 'ActivationNavigationParameterMismatch' | 'ActivatedInBackground' | 'EmbedderHostDisallowed' | 'ActivationNavigationDestroyedBeforeSuccess' | 'TabClosedByUserGesture' | 'TabClosedWithoutUserGesture' | 'PrimaryMainFrameRendererProcessCrashed' | 'PrimaryMainFrameRendererProcessKilled' | 'ActivationFramePolicyNotCompatible' | 'PreloadingDisabled' | 'BatterySaverEnabled' | 'ActivatedDuringMainFrameNavigation' | 'PreloadingUnsupportedByWebContents' | 'CrossSiteRedirectInMainFrameNavigation' | 'CrossSiteNavigationInMainFrameNavigation' | 'SameSiteCrossOriginRedirectNotOptInInMainFrameNavigation' | 'SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation' | 'MemoryPressureOnTrigger' | 'MemoryPressureAfterTriggered' | 'PrerenderingDisabledByDevTools' | 'ResourceLoadBlockedByClient' | 'SpeculationRuleRemoved' | 'ActivatedWithAuxiliaryBrowsingContexts');
 
         /**
          * Preloading status values, see also PreloadingTriggeringOutcome. This
