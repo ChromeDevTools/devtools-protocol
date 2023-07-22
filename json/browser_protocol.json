@@ -1009,7 +1009,8 @@
                         "WarnSameSiteLaxCrossDowngradeStrict",
                         "WarnSameSiteLaxCrossDowngradeLax",
                         "WarnAttributeValueExceedsMaxSize",
-                        "WarnDomainNonASCII"
+                        "WarnDomainNonASCII",
+                        "WarnThirdPartyPhaseout"
                     ]
                 },
                 {

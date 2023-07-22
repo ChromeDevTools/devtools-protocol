@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1173815 — _2023-07-22T04:25:56.000Z_
+######  Diff: [`57ca382...47f547e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`57ca382...47f547e`)
+
+```diff
+@@ browser_protocol.pdl:496 @@ experimental domain Audits
+       WarnSameSiteLaxCrossDowngradeLax
+       WarnAttributeValueExceedsMaxSize
+       WarnDomainNonASCII
+-      WarnThirdPartyPhaseout
+ 
+   type CookieOperation extends string
+     enum
+```
+
 ## Roll protocol to r1173320 — _2023-07-21T04:26:31.000Z_
-######  Diff: [`68de33a...640b99f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`68de33a...640b99f`)
+######  Diff: [`68de33a...57ca382`](https://github.com/ChromeDevTools/devtools-protocol/compare/`68de33a...57ca382`)
 
 ```diff
 @@ browser_protocol.pdl:72 @@ experimental domain Accessibility
@@ -10580,20 +10594,4 @@ index bd277eb..09c420e 100644
        #Blocklisted features
        WebSocket
        WebRTC
-```
-
-## Roll protocol to r905252 — _2021-07-26T15:16:11.000Z_
-######  Diff: [`6da1a03...52195bf`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6da1a03...52195bf`)
-
-```diff
-@@ browser_protocol.pdl:5926 @@ domain Network
-       # The IP address space of the resource. The address space can only be determined once the transport
-       # established the connection, so we can't send it in `requestWillBeSentExtraInfo`.
-       IPAddressSpace resourceIPAddressSpace
--      # The status code of the response. This is useful in cases the request failed and no responseReceived
--      # event is triggered, which is the case for, e.g., CORS errors.
--      integer statusCode
-       # Raw response header text as it was received over the wire. The raw text may not always be
-       # available, such as in the case of HTTP/2 or QUIC.
-       optional string headersText
 ```

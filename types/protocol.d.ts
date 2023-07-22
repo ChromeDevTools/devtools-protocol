@@ -3278,7 +3278,7 @@ export namespace Protocol {
 
         export type CookieExclusionReason = ('ExcludeSameSiteUnspecifiedTreatedAsLax' | 'ExcludeSameSiteNoneInsecure' | 'ExcludeSameSiteLax' | 'ExcludeSameSiteStrict' | 'ExcludeInvalidSameParty' | 'ExcludeSamePartyCrossPartyContext' | 'ExcludeDomainNonASCII' | 'ExcludeThirdPartyCookieBlockedInFirstPartySet');
 
-        export type CookieWarningReason = ('WarnSameSiteUnspecifiedCrossSiteContext' | 'WarnSameSiteNoneInsecure' | 'WarnSameSiteUnspecifiedLaxAllowUnsafe' | 'WarnSameSiteStrictLaxDowngradeStrict' | 'WarnSameSiteStrictCrossDowngradeStrict' | 'WarnSameSiteStrictCrossDowngradeLax' | 'WarnSameSiteLaxCrossDowngradeStrict' | 'WarnSameSiteLaxCrossDowngradeLax' | 'WarnAttributeValueExceedsMaxSize' | 'WarnDomainNonASCII');
+        export type CookieWarningReason = ('WarnSameSiteUnspecifiedCrossSiteContext' | 'WarnSameSiteNoneInsecure' | 'WarnSameSiteUnspecifiedLaxAllowUnsafe' | 'WarnSameSiteStrictLaxDowngradeStrict' | 'WarnSameSiteStrictCrossDowngradeStrict' | 'WarnSameSiteStrictCrossDowngradeLax' | 'WarnSameSiteLaxCrossDowngradeStrict' | 'WarnSameSiteLaxCrossDowngradeLax' | 'WarnAttributeValueExceedsMaxSize' | 'WarnDomainNonASCII' | 'WarnThirdPartyPhaseout');
 
         export type CookieOperation = ('SetCookie' | 'ReadCookie');
 
