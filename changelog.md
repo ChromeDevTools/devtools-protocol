@@ -1,7 +1,24 @@
 
 
+## Roll protocol to r1177611 — _2023-08-01T04:26:34.000Z_
+######  Diff: [`e22d6aa...f93174b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e22d6aa...f93174b`)
+
+```diff
+@@ browser_protocol.pdl:5688 @@ domain Network
+       # The cookie's name/value pair size exceeded the size limit defined in
+       # RFC6265bis.
+       NameValuePairExceedsMaxSize
+-      # The cookie contained a forbidden ASCII control character, or the tab
+-      # character if it appears in the middle of the cookie name, value, an
+-      # attribute name, or an attribute value.
+-      DisallowedCharacter
+ 
+   # Types of reasons why a cookie may not be sent with a request.
+   experimental type CookieBlockedReason extends string
+```
+
 ## Roll protocol to r1173815 — _2023-07-22T04:25:56.000Z_
-######  Diff: [`57ca382...47f547e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`57ca382...47f547e`)
+######  Diff: [`57ca382...e22d6aa`](https://github.com/ChromeDevTools/devtools-protocol/compare/`57ca382...e22d6aa`)
 
 ```diff
 @@ browser_protocol.pdl:496 @@ experimental domain Audits
@@ -10580,18 +10597,4 @@ index bd277eb..09c420e 100644
        ch-viewport-width
        ch-width
        clipboard-read
-```
-
-## Roll protocol to r905680 — _2021-07-27T11:16:20.000Z_
-######  Diff: [`52195bf...fa458e7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`52195bf...fa458e7`)
-
-```diff
-@@ browser_protocol.pdl:7753 @@ domain Page
-       CacheControlNoStore
-       CacheControlNoStoreCookieModified
-       CacheControlNoStoreHTTPOnlyCookieModified
--      NoResponseHead
-       #Blocklisted features
-       WebSocket
-       WebRTC
 ```
