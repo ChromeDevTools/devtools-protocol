@@ -17446,6 +17446,13 @@
                                 "ReturnAsBase64",
                                 "ReturnAsStream"
                             ]
+                        },
+                        {
+                            "name": "generateTaggedPDF",
+                            "description": "Whether or not to generate tagged (accessible) PDF. Defaults to embedder choice.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ],
                     "returns": [
@@ -20016,7 +20023,8 @@
                         "destinationReportingLimitReached",
                         "destinationGlobalLimitReached",
                         "destinationBothLimitsReached",
-                        "reportingOriginsPerSiteLimitReached"
+                        "reportingOriginsPerSiteLimitReached",
+                        "exceedsMaxChannelCapacity"
                     ]
                 }
             ],

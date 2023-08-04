@@ -13584,6 +13584,10 @@ export namespace Protocol {
              * return as stream (PrintToPDFRequestTransferMode enum)
              */
             transferMode?: ('ReturnAsBase64' | 'ReturnAsStream');
+            /**
+             * Whether or not to generate tagged (accessible) PDF. Defaults to embedder choice.
+             */
+            generateTaggedPDF?: boolean;
         }
 
         export interface PrintToPDFResponse {
@@ -15077,7 +15081,7 @@ export namespace Protocol {
             debugKey?: UnsignedInt64AsBase10;
         }
 
-        export type AttributionReportingSourceRegistrationResult = ('success' | 'internalError' | 'insufficientSourceCapacity' | 'insufficientUniqueDestinationCapacity' | 'excessiveReportingOrigins' | 'prohibitedByBrowserPolicy' | 'successNoised' | 'destinationReportingLimitReached' | 'destinationGlobalLimitReached' | 'destinationBothLimitsReached' | 'reportingOriginsPerSiteLimitReached');
+        export type AttributionReportingSourceRegistrationResult = ('success' | 'internalError' | 'insufficientSourceCapacity' | 'insufficientUniqueDestinationCapacity' | 'excessiveReportingOrigins' | 'prohibitedByBrowserPolicy' | 'successNoised' | 'destinationReportingLimitReached' | 'destinationGlobalLimitReached' | 'destinationBothLimitsReached' | 'reportingOriginsPerSiteLimitReached' | 'exceedsMaxChannelCapacity');
 
         export interface GetStorageKeyForFrameRequest {
             frameId: Page.FrameId;

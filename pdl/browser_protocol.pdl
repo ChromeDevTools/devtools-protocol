@@ -8070,6 +8070,8 @@ domain Page
       experimental optional enum transferMode
         ReturnAsBase64
         ReturnAsStream
+      # Whether or not to generate tagged (accessible) PDF. Defaults to embedder choice.
+      experimental optional boolean generateTaggedPDF
     returns
       # Base64-encoded pdf data. Empty if |returnAsStream| is specified.
       binary data
@@ -9720,6 +9722,7 @@ experimental domain Storage
       destinationGlobalLimitReached
       destinationBothLimitsReached
       reportingOriginsPerSiteLimitReached
+      exceedsMaxChannelCapacity
 
   # TODO(crbug.com/1458532): Add other Attribution Reporting events, e.g.
   # trigger registration.
