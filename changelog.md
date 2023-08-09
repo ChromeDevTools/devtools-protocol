@@ -1,7 +1,47 @@
 
 
+## Roll protocol to r1179426 — _2023-08-04T04:26:28.000Z_
+######  Diff: [`0de2384...c262f20`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0de2384...c262f20`)
+
+```diff
+@@ browser_protocol.pdl:8070 @@ domain Page
+       experimental optional enum transferMode
+         ReturnAsBase64
+         ReturnAsStream
+-      # Whether or not to generate tagged (accessible) PDF. Defaults to embedder choice.
+-      experimental optional boolean generateTaggedPDF
+     returns
+       # Base64-encoded pdf data. Empty if |returnAsStream| is specified.
+       binary data
+@@ -9722,7 +9720,6 @@ experimental domain Storage
+       destinationGlobalLimitReached
+       destinationBothLimitsReached
+       reportingOriginsPerSiteLimitReached
+-      exceedsMaxChannelCapacity
+ 
+   # TODO(crbug.com/1458532): Add other Attribution Reporting events, e.g.
+   # trigger registration.
+```
+
+## Roll protocol to r1177611 — _2023-08-01T04:26:34.000Z_
+######  Diff: [`e22d6aa...0de2384`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e22d6aa...0de2384`)
+
+```diff
+@@ browser_protocol.pdl:5688 @@ domain Network
+       # The cookie's name/value pair size exceeded the size limit defined in
+       # RFC6265bis.
+       NameValuePairExceedsMaxSize
+-      # The cookie contained a forbidden ASCII control character, or the tab
+-      # character if it appears in the middle of the cookie name, value, an
+-      # attribute name, or an attribute value.
+-      DisallowedCharacter
+ 
+   # Types of reasons why a cookie may not be sent with a request.
+   experimental type CookieBlockedReason extends string
+```
+
 ## Roll protocol to r1173815 — _2023-07-22T04:25:56.000Z_
-######  Diff: [`57ca382...47f547e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`57ca382...47f547e`)
+######  Diff: [`57ca382...e22d6aa`](https://github.com/ChromeDevTools/devtools-protocol/compare/`57ca382...e22d6aa`)
 
 ```diff
 @@ browser_protocol.pdl:496 @@ experimental domain Audits
@@ -10566,32 +10606,4 @@ index bd277eb..09c420e 100644
    # Dispatches a mouse event to the page.
    command dispatchMouseEvent
      parameters
-```
-
-## Roll protocol to r906505 — _2021-07-29T01:16:19.000Z_
-######  Diff: [`fa458e7...1c8cd5c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fa458e7...1c8cd5c`)
-
-```diff
-@@ browser_protocol.pdl:6614 @@ domain Page
-       ch-ua-mobile
-       ch-ua-full-version
-       ch-ua-platform-version
--      ch-ua-reduced
-       ch-viewport-width
-       ch-width
-       clipboard-read
-```
-
-## Roll protocol to r905680 — _2021-07-27T11:16:20.000Z_
-######  Diff: [`52195bf...fa458e7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`52195bf...fa458e7`)
-
-```diff
-@@ browser_protocol.pdl:7753 @@ domain Page
-       CacheControlNoStore
-       CacheControlNoStoreCookieModified
-       CacheControlNoStoreHTTPOnlyCookieModified
--      NoResponseHead
-       #Blocklisted features
-       WebSocket
-       WebRTC
 ```
