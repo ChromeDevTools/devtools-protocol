@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1181874 — _2023-08-10T04:26:30.000Z_
+######  Diff: [`39e3626...7aa0b47`](https://github.com/ChromeDevTools/devtools-protocol/compare/`39e3626...7aa0b47`)
+
+```diff
+@@ browser_protocol.pdl:483 @@ experimental domain Audits
+       ExcludeSamePartyCrossPartyContext
+       ExcludeDomainNonASCII
+       ExcludeThirdPartyCookieBlockedInFirstPartySet
+-      ExcludeThirdPartyPhaseout
+ 
+   type CookieWarningReason extends string
+     enum
+```
+
 ## Roll protocol to r1179426 — _2023-08-04T04:26:28.000Z_
-######  Diff: [`0de2384...c262f20`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0de2384...c262f20`)
+######  Diff: [`0de2384...39e3626`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0de2384...39e3626`)
 
 ```diff
 @@ browser_protocol.pdl:8070 @@ domain Page
@@ -10576,34 +10590,5 @@ index bd277eb..09c420e 100644
 -
    # Fired when `Element`'s attribute is modified.
    event attributeModified
-     parameters
-```
-
-## Roll protocol to r906795 — _2021-07-29T19:17:01.000Z_
-######  Diff: [`1c8cd5c...2ae3b1d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`1c8cd5c...2ae3b1d`)
-
-```diff
-@@ browser_protocol.pdl:4020 @@ domain Input
-       # The text to insert.
-       string text
- 
--  # This method sets the current candidate text for ime.
--  # Use imeCommitComposition to commit the final text.
--  # Use imeSetComposition with empty string as text to cancel composition.
--  experimental command imeSetComposition
--    parameters
--      # The text to insert
--      string text
--      # selection start
--      integer selectionStart
--      # selection end
--      integer selectionEnd
--      # replacement start
--      optional integer replacementStart
--      # replacement end
--      optional integer replacementEnd
--
-   # Dispatches a mouse event to the page.
-   command dispatchMouseEvent
      parameters
 ```
