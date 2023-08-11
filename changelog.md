@@ -1,7 +1,61 @@
 
 
+## Roll protocol to r1182435 — _2023-08-11T04:25:48.000Z_
+######  Diff: [`71df2aa...7566f2c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`71df2aa...7566f2c`)
+
+```diff
+@@ browser_protocol.pdl:1830 @@ experimental domain CSS
+       # List of keyframes.
+       array of CSSKeyframeRule keyframes
+ 
+-  # Representation of a custom property registration through CSS.registerProperty
+-  type CSSPropertyRegistration extends object
+-    properties
+-      string propertyName
+-      optional Value initialValue
+-      boolean inherits
+-      string syntax
+-
+-
+-  # CSS property at-rule representation.
+-  type CSSPropertyRule extends object
+-    properties
+-      # The css style sheet identifier (absent for user agent stylesheet and user-specified
+-      # stylesheet rules) this rule came from.
+-      optional StyleSheetId styleSheetId
+-      # Parent stylesheet's origin.
+-      StyleSheetOrigin origin
+-      # Associated property name.
+-      Value propertyName
+-      # Associated style declaration.
+-      CSSStyle style
+-
+   # CSS keyframe rule representation.
+   type CSSKeyframeRule extends object
+     properties
+@@ -1979,10 +1957,6 @@ experimental domain CSS
+       optional array of CSSKeyframesRule cssKeyframesRules
+       # A list of CSS position fallbacks matching this node.
+       optional array of CSSPositionFallbackRule cssPositionFallbackRules
+-      # A list of CSS at-property rules matching this node.
+-      optional array of CSSPropertyRule cssPropertyRules
+-      # A list of CSS property registrations matching this node.
+-      optional array of CSSPropertyRegistration cssPropertyRegistrations
+       # Id of the first parent element that does not have display: contents.
+       experimental optional DOM.NodeId parentLayoutNodeId
+ 
+@@ -11398,7 +11372,6 @@ experimental domain FedCm
+     enum
+       AccountChooser
+       AutoReauthn
+-      ConfirmIdpSignin
+ 
+   # Corresponds to IdentityRequestAccount
+   type Account extends object
+```
+
 ## Roll protocol to r1181874 — _2023-08-10T04:26:30.000Z_
-######  Diff: [`39e3626...7aa0b47`](https://github.com/ChromeDevTools/devtools-protocol/compare/`39e3626...7aa0b47`)
+######  Diff: [`39e3626...71df2aa`](https://github.com/ChromeDevTools/devtools-protocol/compare/`39e3626...71df2aa`)
 
 ```diff
 @@ browser_protocol.pdl:483 @@ experimental domain Audits
@@ -10568,27 +10622,4 @@ index bd277eb..09c420e 100644
  
    # Continues a request supplying authChallengeResponse following authRequired event.
    command continueWithAuth
-```
-
-## Roll protocol to r907573 — _2021-08-02T16:16:14.000Z_
-######  Diff: [`2ae3b1d...39a8210`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2ae3b1d...39a8210`)
-
-```diff
-@@ browser_protocol.pdl:2635 @@ domain DOM
-       # The container node for the given node, or null if not found.
-       optional NodeId nodeId
- 
--  # Returns the descendants of a container query container that have
--  # container queries against this container.
--  experimental command getQueryingDescendantsForContainer
--    parameters
--      # Id of the container node to find querying descendants from.
--      NodeId nodeId
--    returns
--      # Descendant nodes with container queries against the given container.
--      array of NodeId nodeIds
--
-   # Fired when `Element`'s attribute is modified.
-   event attributeModified
-     parameters
 ```

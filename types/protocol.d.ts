@@ -4964,6 +4964,39 @@ export namespace Protocol {
         }
 
         /**
+         * Representation of a custom property registration through CSS.registerProperty
+         */
+        export interface CSSPropertyRegistration {
+            propertyName: string;
+            initialValue?: Value;
+            inherits: boolean;
+            syntax: string;
+        }
+
+        /**
+         * CSS property at-rule representation.
+         */
+        export interface CSSPropertyRule {
+            /**
+             * The css style sheet identifier (absent for user agent stylesheet and user-specified
+             * stylesheet rules) this rule came from.
+             */
+            styleSheetId?: StyleSheetId;
+            /**
+             * Parent stylesheet's origin.
+             */
+            origin: StyleSheetOrigin;
+            /**
+             * Associated property name.
+             */
+            propertyName: Value;
+            /**
+             * Associated style declaration.
+             */
+            style: CSSStyle;
+        }
+
+        /**
          * CSS keyframe rule representation.
          */
         export interface CSSKeyframeRule {
@@ -5152,6 +5185,14 @@ export namespace Protocol {
              * A list of CSS position fallbacks matching this node.
              */
             cssPositionFallbackRules?: CSSPositionFallbackRule[];
+            /**
+             * A list of CSS at-property rules matching this node.
+             */
+            cssPropertyRules?: CSSPropertyRule[];
+            /**
+             * A list of CSS property registrations matching this node.
+             */
+            cssPropertyRegistrations?: CSSPropertyRegistration[];
             /**
              * Id of the first parent element that does not have display: contents.
              */
@@ -17487,7 +17528,7 @@ export namespace Protocol {
         /**
          * Whether the dialog shown is an account chooser or an auto re-authentication dialog.
          */
-        export type DialogType = ('AccountChooser' | 'AutoReauthn');
+        export type DialogType = ('AccountChooser' | 'AutoReauthn' | 'ConfirmIdpSignin');
 
         /**
          * Corresponds to IdentityRequestAccount
