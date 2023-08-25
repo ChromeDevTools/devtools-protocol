@@ -810,6 +810,16 @@ export namespace ProtocolProxyApi {
          */
         setAddresses(params: Protocol.Autofill.SetAddressesRequest): Promise<void>;
 
+        /**
+         * Disables autofill domain notifications.
+         */
+        disable(): Promise<void>;
+
+        /**
+         * Enables autofill domain notifications.
+         */
+        enable(): Promise<void>;
+
     }
 
     export interface BackgroundServiceApi {
@@ -4068,6 +4078,12 @@ export namespace ProtocolProxyApi {
         disable(): Promise<void>;
 
         selectAccount(params: Protocol.FedCm.SelectAccountRequest): Promise<void>;
+
+        /**
+         * Only valid if the dialog type is ConfirmIdpSignin. Acts as if the user had
+         * clicked the continue button.
+         */
+        confirmIdpSignin(params: Protocol.FedCm.ConfirmIdpSigninRequest): Promise<void>;
 
         dismissDialog(params: Protocol.FedCm.DismissDialogRequest): Promise<void>;
 

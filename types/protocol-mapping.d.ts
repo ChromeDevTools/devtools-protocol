@@ -1493,6 +1493,20 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Disables autofill domain notifications.
+         */
+        'Autofill.disable': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
+         * Enables autofill domain notifications.
+         */
+        'Autofill.enable': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
          * Enables event updates for the service.
          */
         'BackgroundService.startObserving': {
@@ -4766,6 +4780,14 @@ export namespace ProtocolMapping {
         };
         'FedCm.selectAccount': {
             paramsType: [Protocol.FedCm.SelectAccountRequest];
+            returnType: void;
+        };
+        /**
+         * Only valid if the dialog type is ConfirmIdpSignin. Acts as if the user had
+         * clicked the continue button.
+         */
+        'FedCm.confirmIdpSignin': {
+            paramsType: [Protocol.FedCm.ConfirmIdpSigninRequest];
             returnType: void;
         };
         'FedCm.dismissDialog': {

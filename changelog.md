@@ -1,7 +1,38 @@
 
 
+## Roll protocol to r1188167 — _2023-08-25T04:26:40.000Z_
+######  Diff: [`b899c22...7a8ef57`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b899c22...7a8ef57`)
+
+```diff
+@@ browser_protocol.pdl:1027 @@ experimental domain Autofill
+     parameters
+       array of Address addresses
+ 
+-  # Disables autofill domain notifications.
+-  command disable
+-
+-  # Enables autofill domain notifications.
+-  command enable
+ 
+ # Defines events for background web platform features.
+ experimental domain BackgroundService
+@@ -11444,12 +11439,6 @@ experimental domain FedCm
+       string dialogId
+       integer accountIndex
+ 
+-  # Only valid if the dialog type is ConfirmIdpSignin. Acts as if the user had
+-  # clicked the continue button.
+-  command confirmIdpSignin
+-    parameters
+-      string dialogId
+-
+   command dismissDialog
+     parameters
+       string dialogId
+```
+
 ## Roll protocol to r1182435 — _2023-08-11T04:25:48.000Z_
-######  Diff: [`71df2aa...7566f2c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`71df2aa...7566f2c`)
+######  Diff: [`71df2aa...b899c22`](https://github.com/ChromeDevTools/devtools-protocol/compare/`71df2aa...b899c22`)
 
 ```diff
 @@ browser_protocol.pdl:1830 @@ experimental domain CSS
@@ -10578,48 +10609,4 @@ index bd277eb..09c420e 100644
    # Overrides the values of device screen dimensions (window.screen.width, window.screen.height,
    # window.innerWidth, window.innerHeight, and "device-width"/"device-height"-related CSS media
    # query results).
-```
-
-## Roll protocol to r908187 — _2021-08-03T23:16:22.000Z_
-######  Diff: [`39a8210...c707d30`](https://github.com/ChromeDevTools/devtools-protocol/compare/`39a8210...c707d30`)
-
-```diff
-@@ browser_protocol.pdl:4935 @@ domain Network
-       string statusText
-       # HTTP response headers.
-       Headers headers
--      # HTTP response headers text. This has been replaced by the headers in Network.responseReceivedExtraInfo.
--      deprecated optional string headersText
-+      # HTTP response headers text.
-+      optional string headersText
-       # Resource mimeType as determined by the browser.
-       string mimeType
-       # Refined HTTP request headers that were actually transmitted over the network.
-       optional Headers requestHeaders
--      # HTTP request headers text. This has been replaced by the headers in Network.requestWillBeSentExtraInfo.
--      deprecated optional string requestHeadersText
-+      # HTTP request headers text.
-+      optional string requestHeadersText
-       # Specifies whether physical connection was actually reused for this request.
-       boolean connectionReused
-       # Physical connection id that was actually used for this request.
-@@ -5953,8 +5953,7 @@ domain Network
-       # established the connection, so we can't send it in `requestWillBeSentExtraInfo`.
-       IPAddressSpace resourceIPAddressSpace
-       # The status code of the response. This is useful in cases the request failed and no responseReceived
--      # event is triggered, which is the case for, e.g., CORS errors. This is also the correct status code
--      # for cached requests, where the status in responseReceived is a 200 and this will be 304.
-+      # event is triggered, which is the case for, e.g., CORS errors.
-       integer statusCode
-       # Raw response header text as it was received over the wire. The raw text may not always be
-       # available, such as in the case of HTTP/2 or QUIC.
-@@ -9156,8 +9155,6 @@ domain Fetch
-       optional binary postData
-       # If set, overrides the request headers.
-       optional array of HeaderEntry headers
--      # If set, overrides response interception behavior for this request.
--      experimental optional boolean interceptResponse
- 
-   # Continues a request supplying authChallengeResponse following authRequired event.
-   command continueWithAuth
 ```

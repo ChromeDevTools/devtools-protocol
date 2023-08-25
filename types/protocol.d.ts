@@ -17563,6 +17563,10 @@ export namespace Protocol {
             accountIndex: integer;
         }
 
+        export interface ConfirmIdpSigninRequest {
+            dialogId: string;
+        }
+
         export interface DismissDialogRequest {
             dialogId: string;
             triggerCooldown?: boolean;

@@ -1027,6 +1027,11 @@ experimental domain Autofill
     parameters
       array of Address addresses
 
+  # Disables autofill domain notifications.
+  command disable
+
+  # Enables autofill domain notifications.
+  command enable
 
 # Defines events for background web platform features.
 experimental domain BackgroundService
@@ -11438,6 +11443,12 @@ experimental domain FedCm
     parameters
       string dialogId
       integer accountIndex
+
+  # Only valid if the dialog type is ConfirmIdpSignin. Acts as if the user had
+  # clicked the continue button.
+  command confirmIdpSignin
+    parameters
+      string dialogId
 
   command dismissDialog
     parameters

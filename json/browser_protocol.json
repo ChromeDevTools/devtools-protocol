@@ -2084,6 +2084,14 @@
                             }
                         }
                     ]
+                },
+                {
+                    "name": "disable",
+                    "description": "Disables autofill domain notifications."
+                },
+                {
+                    "name": "enable",
+                    "description": "Enables autofill domain notifications."
                 }
             ]
         },
@@ -24171,6 +24179,16 @@
                         {
                             "name": "accountIndex",
                             "type": "integer"
+                        }
+                    ]
+                },
+                {
+                    "name": "confirmIdpSignin",
+                    "description": "Only valid if the dialog type is ConfirmIdpSignin. Acts as if the user had\nclicked the continue button.",
+                    "parameters": [
+                        {
+                            "name": "dialogId",
+                            "type": "string"
                         }
                     ]
                 },
