@@ -3723,16 +3723,71 @@ export namespace Protocol {
              */
             name: string;
             /**
-             * address field name, for example Jon Doe.
+             * address field value, for example Jon Doe.
              */
             value: string;
         }
 
+        /**
+         * A list of address fields.
+         */
+        export interface AddressFields {
+            fields: AddressField[];
+        }
+
         export interface Address {
             /**
-             * fields and values defining a test address.
+             * fields and values defining an address.
              */
             fields: AddressField[];
+        }
+
+        /**
+         * Defines how an address can be displayed like in chrome://settings/addresses.
+         * Address UI is a two dimensional array, each inner array is an "address information line", and when rendered in a UI surface should be displayed as such.
+         * The following address UI for instance:
+         * [[{name: "GIVE_NAME", value: "Jon"}, {name: "FAMILY_NAME", value: "Doe"}], [{name: "CITY", value: "Munich"}, {name: "ZIP", value: "81456"}]]
+         * should allow the receiver to render:
+         * Jon Doe
+         * Munich 81456
+         */
+        export interface AddressUI {
+            /**
+             * A two dimension array containing the repesentation of values from an address profile.
+             */
+            addressFields: AddressFields[];
+        }
+
+        /**
+         * Specified whether a filled field was done so by using the html autocomplete attribute or autofill heuristics.
+         */
+        export type FillingStrategy = ('autocompleteAttribute' | 'autofillInferred');
+
+        export interface FilledField {
+            /**
+             * The type of the field, e.g text, password etc.
+             */
+            htmlType: string;
+            /**
+             * the html id
+             */
+            id: string;
+            /**
+             * the html name
+             */
+            name: string;
+            /**
+             * the field value
+             */
+            value: string;
+            /**
+             * The actual field type, e.g FAMILY_NAME
+             */
+            autofillType: string;
+            /**
+             * The filling strategy
+             */
+            fillingStrategy: FillingStrategy;
         }
 
         export interface TriggerRequest {
@@ -3752,6 +3807,21 @@ export namespace Protocol {
 
         export interface SetAddressesRequest {
             addresses: Address[];
+        }
+
+        /**
+         * Emitted when an address form is filled.
+         */
+        export interface AddressFormFilledEvent {
+            /**
+             * Information about the fields that were filled
+             */
+            filledFields: FilledField[];
+            /**
+             * An UI representation of the address used to fill the form.
+             * Consists of a 2D array where each child represents an address/profile line.
+             */
+            addressUi: AddressUI;
         }
     }
 

@@ -1,7 +1,77 @@
 
 
+## Roll protocol to r1188649 — _2023-08-26T04:25:29.000Z_
+######  Diff: [`4e97090...2f8ef97`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4e97090...2f8ef97`)
+
+```diff
+@@ browser_protocol.pdl:1002 @@ experimental domain Autofill
+     properties
+       # address field name, for example GIVEN_NAME.
+       string name
+-      # address field value, for example Jon Doe.
++      # address field name, for example Jon Doe.
+       string value
+ 
+-  # A list of address fields.
+-  type AddressFields extends object
+-    properties
+-      array of AddressField fields
+-
+   type Address extends object
+     properties
+-      # fields and values defining an address.
++      # fields and values defining a test address.
+       array of AddressField fields
+ 
+-  # Defines how an address can be displayed like in chrome://settings/addresses. 
+-  # Address UI is a two dimensional array, each inner array is an "address information line", and when rendered in a UI surface should be displayed as such.
+-  # The following address UI for instance:
+-  # [[{name: "GIVE_NAME", value: "Jon"}, {name: "FAMILY_NAME", value: "Doe"}], [{name: "CITY", value: "Munich"}, {name: "ZIP", value: "81456"}]]
+-  # should allow the receiver to render:
+-  # Jon Doe
+-  # Munich 81456
+-  type AddressUI extends object
+-    properties
+-      # A two dimension array containing the repesentation of values from an address profile.
+-      array of AddressFields addressFields
+-
+-  # Specified whether a filled field was done so by using the html autocomplete attribute or autofill heuristics.
+-  type FillingStrategy extends string
+-    enum
+-      autocompleteAttribute
+-      autofillInferred
+-
+-  type FilledField extends object
+-    properties
+-      # The type of the field, e.g text, password etc.
+-      string htmlType
+-      # the html id
+-      string id
+-      # the html name
+-      string name
+-      # the field value
+-      string value
+-      # The actual field type, e.g FAMILY_NAME
+-      string autofillType
+-      # The filling strategy
+-      FillingStrategy fillingStrategy
+-
+-  # Emitted when an address form is filled.
+-  event addressFormFilled
+-    parameters
+-      # Information about the fields that were filled
+-      array of FilledField filledFields
+-      # An UI representation of the address used to fill the form. 
+-      # Consists of a 2D array where each child represents an address/profile line.
+-      AddressUI addressUi
+-
+   # Trigger autofill on a form identified by the fieldId.
+   # If the field and related form cannot be autofilled, returns an error.
+   command trigger
+```
+
 ## Roll protocol to r1188167 — _2023-08-25T04:26:40.000Z_
-######  Diff: [`b899c22...7a8ef57`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b899c22...7a8ef57`)
+######  Diff: [`b899c22...4e97090`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b899c22...4e97090`)
 
 ```diff
 @@ browser_protocol.pdl:1027 @@ experimental domain Autofill
@@ -10589,24 +10659,4 @@ index bd277eb..09c420e 100644
  
    type InspectMode extends string
      enum
-```
-
-## Roll protocol to r908589 — _2021-08-04T20:16:22.000Z_
-######  Diff: [`c707d30...8e161fc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c707d30...8e161fc`)
-
-```diff
-@@ browser_protocol.pdl:7361 @@ domain Page
-     returns
-       array of PermissionsPolicyFeatureState states
- 
--  # Get Origin Trials on given frame.
--  experimental command getOriginTrials
--    parameters
--      FrameId frameId
--    returns
--      array of OriginTrial originTrials
--
-   # Overrides the values of device screen dimensions (window.screen.width, window.screen.height,
-   # window.innerWidth, window.innerHeight, and "device-width"/"device-height"-related CSS media
-   # query results).
 ```

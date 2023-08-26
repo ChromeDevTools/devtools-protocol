@@ -820,6 +820,11 @@ export namespace ProtocolProxyApi {
          */
         enable(): Promise<void>;
 
+        /**
+         * Emitted when an address form is filled.
+         */
+        on(event: 'addressFormFilled', listener: (params: Protocol.Autofill.AddressFormFilledEvent) => void): void;
+
     }
 
     export interface BackgroundServiceApi {

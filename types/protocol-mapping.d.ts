@@ -115,6 +115,10 @@ export namespace ProtocolMapping {
         'Animation.animationStarted': [Protocol.Animation.AnimationStartedEvent];
         'Audits.issueAdded': [Protocol.Audits.IssueAddedEvent];
         /**
+         * Emitted when an address form is filled.
+         */
+        'Autofill.addressFormFilled': [Protocol.Autofill.AddressFormFilledEvent];
+        /**
          * Called when the recording state for the service has been updated.
          */
         'BackgroundService.recordingStateChanged': [Protocol.BackgroundService.RecordingStateChangedEvent];
