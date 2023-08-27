@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1188743 — _2023-08-27T04:25:42.000Z_
+######  Diff: [`dad93a5...20eb9eb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`dad93a5...20eb9eb`)
+
+```diff
+@@ browser_protocol.pdl:7430 @@ domain Page
+       ch-ect
+       ch-prefers-color-scheme
+       ch-prefers-reduced-motion
+-      ch-prefers-reduced-transparency
+       ch-rtt
+       ch-save-data
+       ch-ua
+```
+
 ## Roll protocol to r1188649 — _2023-08-26T04:25:29.000Z_
-######  Diff: [`4e97090...2f8ef97`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4e97090...2f8ef97`)
+######  Diff: [`4e97090...dad93a5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4e97090...dad93a5`)
 
 ```diff
 @@ browser_protocol.pdl:1002 @@ experimental domain Autofill
@@ -10640,23 +10654,5 @@ index bd277eb..09c420e 100644
 -      ExcludeSamePartyCrossPartyContext
  
    type SameSiteCookieWarningReason extends string
-     enum
-```
-
-## Roll protocol to r909375 — _2021-08-06T18:16:33.000Z_
-######  Diff: [`8e161fc...94b504e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8e161fc...94b504e`)
-
-```diff
-@@ browser_protocol.pdl:6318 @@ experimental domain Overlay
- 
-   type ContainerQueryContainerHighlightConfig extends object
-     properties
--      # The style of the container border.
-+      # The style of the container border
-       optional LineStyle containerBorder
--      # The style of the descendants' borders.
--      optional LineStyle descendantBorder
- 
-   type InspectMode extends string
      enum
 ```
