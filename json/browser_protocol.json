@@ -20109,6 +20109,26 @@
                     ]
                 },
                 {
+                    "id": "AttributionReportingEventReportWindows",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "start",
+                            "description": "duration in seconds",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "ends",
+                            "description": "duration in seconds",
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    ]
+                },
+                {
                     "id": "AttributionReportingSourceRegistration",
                     "experimental": true,
                     "type": "object",
@@ -20125,9 +20145,14 @@
                         },
                         {
                             "name": "eventReportWindow",
-                            "description": "duration in seconds",
+                            "description": "eventReportWindow and eventReportWindows are mutually exclusive\nduration in seconds",
                             "optional": true,
                             "type": "integer"
+                        },
+                        {
+                            "name": "eventReportWindows",
+                            "optional": true,
+                            "$ref": "AttributionReportingEventReportWindows"
                         },
                         {
                             "name": "aggregatableReportWindow",

@@ -15167,6 +15167,17 @@ export namespace Protocol {
             value: UnsignedInt128AsBase16;
         }
 
+        export interface AttributionReportingEventReportWindows {
+            /**
+             * duration in seconds
+             */
+            start: integer;
+            /**
+             * duration in seconds
+             */
+            ends: integer[];
+        }
+
         export interface AttributionReportingSourceRegistration {
             time: Network.TimeSinceEpoch;
             /**
@@ -15174,9 +15185,11 @@ export namespace Protocol {
              */
             expiry?: integer;
             /**
+             * eventReportWindow and eventReportWindows are mutually exclusive
              * duration in seconds
              */
             eventReportWindow?: integer;
+            eventReportWindows?: AttributionReportingEventReportWindows;
             /**
              * duration in seconds
              */

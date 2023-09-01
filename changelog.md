@@ -1,7 +1,36 @@
 
 
+## Roll protocol to r1191157 — _2023-09-01T04:26:11.000Z_
+######  Diff: [`c9743b7...60c8e35`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c9743b7...60c8e35`)
+
+```diff
+@@ browser_protocol.pdl:9770 @@ experimental domain Storage
+       string key
+       UnsignedInt128AsBase16 value
+ 
+-  experimental type AttributionReportingEventReportWindows extends object
+-    properties
+-      # duration in seconds
+-      integer start
+-      # duration in seconds
+-      array of integer ends
+-
+   experimental type AttributionReportingSourceRegistration extends object
+     properties
+       Network.TimeSinceEpoch time
+       # duration in seconds
+       optional integer expiry
+-      # eventReportWindow and eventReportWindows are mutually exclusive
+       # duration in seconds
+       optional integer eventReportWindow
+-      optional AttributionReportingEventReportWindows eventReportWindows
+       # duration in seconds
+       optional integer aggregatableReportWindow
+       AttributionReportingSourceType type
+```
+
 ## Roll protocol to r1188743 — _2023-08-27T04:25:42.000Z_
-######  Diff: [`dad93a5...20eb9eb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`dad93a5...20eb9eb`)
+######  Diff: [`dad93a5...c9743b7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`dad93a5...c9743b7`)
 
 ```diff
 @@ browser_protocol.pdl:7430 @@ domain Page
@@ -10641,18 +10670,4 @@ index bd277eb..09c420e 100644
        # Identifier of the loader associated with this frame.
        Network.LoaderId loaderId
        # Frame's name as specified in the tag.
-```
-
-## Roll protocol to r909734 — _2021-08-09T09:16:28.000Z_
-######  Diff: [`94b504e...d1e1cbf`](https://github.com/ChromeDevTools/devtools-protocol/compare/`94b504e...d1e1cbf`)
-
-```diff
-@@ browser_protocol.pdl:510 @@ experimental domain Audits
-       ExcludeSameSiteLax
-       ExcludeSameSiteStrict
-       ExcludeInvalidSameParty
--      ExcludeSamePartyCrossPartyContext
- 
-   type SameSiteCookieWarningReason extends string
-     enum
 ```
