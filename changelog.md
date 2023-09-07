@@ -1,7 +1,23 @@
 
 
+## Roll protocol to r1193409 — _2023-09-07T04:26:24.000Z_
+######  Diff: [`7b181f3...2ca3bb2`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7b181f3...2ca3bb2`)
+
+```diff
+@@ browser_protocol.pdl:11308 @@ experimental domain Preload
+       MixedContent
+       TriggerBackgrounded
+       MemoryLimitExceeded
++      # Prerenders can be cancelled when Chrome uses excessive memory. This is
++      # recorded when it fails to get the memory usage.
++      FailToGetMemoryUsage
+       DataSaverEnabled
+       HasEffectiveUrl
+       ActivatedBeforeStarted
+```
+
 ## Roll protocol to r1191157 — _2023-09-01T04:26:11.000Z_
-######  Diff: [`c9743b7...60c8e35`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c9743b7...60c8e35`)
+######  Diff: [`c9743b7...7b181f3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c9743b7...7b181f3`)
 
 ```diff
 @@ browser_protocol.pdl:9770 @@ experimental domain Storage
@@ -10655,19 +10671,4 @@ index bd277eb..09c420e 100644
        # URL of the resource to get content for.
        string url
        # Options for the request.
-```
-
-## Roll protocol to r910184 — _2021-08-10T07:16:07.000Z_
-######  Diff: [`d1e1cbf...caec9d3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d1e1cbf...caec9d3`)
-
-```diff
-@@ browser_protocol.pdl:6761 @@ domain Page
-       # Frame unique identifier.
-       FrameId id
-       # Parent frame identifier.
--      optional FrameId parentId
-+      optional string parentId
-       # Identifier of the loader associated with this frame.
-       Network.LoaderId loaderId
-       # Frame's name as specified in the tag.
 ```
