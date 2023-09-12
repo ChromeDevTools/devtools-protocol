@@ -1,7 +1,30 @@
 
 
+## Roll protocol to r1195207 — _2023-09-12T04:25:54.000Z_
+######  Diff: [`322248d...e67cfea`](https://github.com/ChromeDevTools/devtools-protocol/compare/`322248d...e67cfea`)
+
+```diff
+@@ browser_protocol.pdl:1015 @@ experimental domain Autofill
+       # fields and values defining an address.
+       array of AddressField fields
+ 
+-  # Defines how an address can be displayed like in chrome://settings/addresses.
++  # Defines how an address can be displayed like in chrome://settings/addresses. 
+   # Address UI is a two dimensional array, each inner array is an "address information line", and when rendered in a UI surface should be displayed as such.
+   # The following address UI for instance:
+   # [[{name: "GIVE_NAME", value: "Jon"}, {name: "FAMILY_NAME", value: "Doe"}], [{name: "CITY", value: "Munich"}, {name: "ZIP", value: "81456"}]]
+@@ -1053,7 +1053,7 @@ experimental domain Autofill
+     parameters
+       # Information about the fields that were filled
+       array of FilledField filledFields
+-      # An UI representation of the address used to fill the form.
++      # An UI representation of the address used to fill the form. 
+       # Consists of a 2D array where each child represents an address/profile line.
+       AddressUI addressUi
+```
+
 ## Roll protocol to r1193409 — _2023-09-07T04:26:24.000Z_
-######  Diff: [`7b181f3...2ca3bb2`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7b181f3...2ca3bb2`)
+######  Diff: [`7b181f3...322248d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7b181f3...322248d`)
 
 ```diff
 @@ browser_protocol.pdl:11308 @@ experimental domain Preload
@@ -10653,22 +10676,4 @@ index bd277eb..09c420e 100644
  
    # Types of not restored reasons for back-forward cache.
    experimental type BackForwardCacheNotRestoredReasonType extends string
-```
-
-## Roll protocol to r910293 — _2021-08-10T14:16:40.000Z_
-######  Diff: [`caec9d3...5cff1bc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`caec9d3...5cff1bc`)
-
-```diff
-@@ browser_protocol.pdl:6098 @@ domain Network
-   # Fetches the resource and returns the content.
-   experimental command loadNetworkResource
-     parameters
--      # Frame id to get the resource for. Mandatory for frame targets, and
--      # should be omitted for worker targets.
--      optional Page.FrameId frameId
-+      # Frame id to get the resource for.
-+      Page.FrameId frameId
-       # URL of the resource to get content for.
-       string url
-       # Options for the request.
 ```
