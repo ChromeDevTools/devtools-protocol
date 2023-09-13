@@ -1541,6 +1541,7 @@ export namespace Protocol {
             Arraybuffer = 'arraybuffer',
             Node = 'node',
             Window = 'window',
+            Generator = 'generator',
         }
 
         /**
@@ -1550,7 +1551,7 @@ export namespace Protocol {
             /**
              *  (DeepSerializedValueType enum)
              */
-            type: ('undefined' | 'null' | 'string' | 'number' | 'boolean' | 'bigint' | 'regexp' | 'date' | 'symbol' | 'array' | 'object' | 'function' | 'map' | 'set' | 'weakmap' | 'weakset' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'node' | 'window');
+            type: ('undefined' | 'null' | 'string' | 'number' | 'boolean' | 'bigint' | 'regexp' | 'date' | 'symbol' | 'array' | 'object' | 'function' | 'map' | 'set' | 'weakmap' | 'weakset' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'node' | 'window' | 'generator');
             value?: any;
             objectId?: string;
             /**

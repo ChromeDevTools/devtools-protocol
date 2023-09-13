@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1195796 — _2023-09-13T04:26:23.000Z_
+######  Diff: [`c0f98d9...2ade3e8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c0f98d9...2ade3e8`)
+
+```diff
+@@ js_protocol.pdl:1066 @@ domain Runtime
+         arraybuffer
+         node
+         window
+-        generator
+       optional any value
+       optional string objectId
+       # Set if value reference met more then once during serialization. In such
+```
+
 ## Roll protocol to r1195207 — _2023-09-12T04:25:54.000Z_
-######  Diff: [`322248d...e67cfea`](https://github.com/ChromeDevTools/devtools-protocol/compare/`322248d...e67cfea`)
+######  Diff: [`322248d...c0f98d9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`322248d...c0f98d9`)
 
 ```diff
 @@ browser_protocol.pdl:1015 @@ experimental domain Autofill
@@ -10623,57 +10637,4 @@ index bd277eb..09c420e 100644
        WebRTC
        MainResourceHasCacheControlNoStore
        MainResourceHasCacheControlNoCache
-```
-
-## Roll protocol to r910715 — _2021-08-11T08:16:14.000Z_
-######  Diff: [`5cff1bc...2b18125`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5cff1bc...2b18125`)
-
-```diff
-@@ browser_protocol.pdl:209 @@ experimental domain Accessibility
-       # The maximum depth at which descendants of the root node should be retrieved.
-       # If omitted, the full tree is returned.
-       optional integer max_depth
--      # The frame for whose document the AX tree should be retrieved.
--      # If omited, the root frame is used.
--      optional Page.FrameId frameId
-     returns
-       array of AXNode nodes
- 
-@@ -220,9 +217,6 @@ experimental domain Accessibility
-   experimental command getChildAXNodes
-     parameters
-       AXNodeId id
--      # The frame in whose document the node resides.
--      # If omitted, the root frame is used.
--      optional Page.FrameId frameId
-     returns
-       array of AXNode nodes
- 
-@@ -7799,7 +7793,6 @@ domain Page
-       CacheControlNoStoreCookieModified
-       CacheControlNoStoreHTTPOnlyCookieModified
-       NoResponseHead
--      Unknown
-       #Blocklisted features
-       WebSocket
-       WebRTC
-@@ -7844,17 +7837,8 @@ domain Page
-       OutstandingNetworkRequestDirectSocket
-       IsolatedWorldScript
-       InjectedStyleSheet
--      # Disabled for render frame host reasons
-       MediaSessionImplOnServiceCreated
--      SecurityHandler
--      WebAuthenticationAPI
--      FileChooser
--      Serial
--      FileSystemAccess
--      MediaDevicesDispatcherHost
--      WebBluetooth
--      WebUSB
--      MediaSession
-+      Unknown
- 
-   # Types of not restored reasons for back-forward cache.
-   experimental type BackForwardCacheNotRestoredReasonType extends string
 ```
