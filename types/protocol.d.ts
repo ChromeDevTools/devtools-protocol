@@ -5324,6 +5324,19 @@ export namespace Protocol {
             value: string;
         }
 
+        export interface SetPropertyRulePropertyNameRequest {
+            styleSheetId: StyleSheetId;
+            range: SourceRange;
+            propertyName: string;
+        }
+
+        export interface SetPropertyRulePropertyNameResponse {
+            /**
+             * The resulting key text after modification.
+             */
+            propertyName: Value;
+        }
+
         export interface SetKeyframeKeyRequest {
             styleSheetId: StyleSheetId;
             range: SourceRange;
@@ -17506,7 +17519,7 @@ export namespace Protocol {
         /**
          * List of FinalStatus reasons for Prerender2.
          */
-        export type PrerenderFinalStatus = ('Activated' | 'Destroyed' | 'LowEndDevice' | 'InvalidSchemeRedirect' | 'InvalidSchemeNavigation' | 'InProgressNavigation' | 'NavigationRequestBlockedByCsp' | 'MainFrameNavigation' | 'MojoBinderPolicy' | 'RendererProcessCrashed' | 'RendererProcessKilled' | 'Download' | 'TriggerDestroyed' | 'NavigationNotCommitted' | 'NavigationBadHttpStatus' | 'ClientCertRequested' | 'NavigationRequestNetworkError' | 'MaxNumOfRunningPrerendersExceeded' | 'CancelAllHostsForTesting' | 'DidFailLoad' | 'Stop' | 'SslCertificateError' | 'LoginAuthRequested' | 'UaChangeRequiresReload' | 'BlockedByClient' | 'AudioOutputDeviceRequested' | 'MixedContent' | 'TriggerBackgrounded' | 'MemoryLimitExceeded' | 'DataSaverEnabled' | 'HasEffectiveUrl' | 'ActivatedBeforeStarted' | 'InactivePageRestriction' | 'StartFailed' | 'TimeoutBackgrounded' | 'CrossSiteRedirectInInitialNavigation' | 'CrossSiteNavigationInInitialNavigation' | 'SameSiteCrossOriginRedirectNotOptInInInitialNavigation' | 'SameSiteCrossOriginNavigationNotOptInInInitialNavigation' | 'ActivationNavigationParameterMismatch' | 'ActivatedInBackground' | 'EmbedderHostDisallowed' | 'ActivationNavigationDestroyedBeforeSuccess' | 'TabClosedByUserGesture' | 'TabClosedWithoutUserGesture' | 'PrimaryMainFrameRendererProcessCrashed' | 'PrimaryMainFrameRendererProcessKilled' | 'ActivationFramePolicyNotCompatible' | 'PreloadingDisabled' | 'BatterySaverEnabled' | 'ActivatedDuringMainFrameNavigation' | 'PreloadingUnsupportedByWebContents' | 'CrossSiteRedirectInMainFrameNavigation' | 'CrossSiteNavigationInMainFrameNavigation' | 'SameSiteCrossOriginRedirectNotOptInInMainFrameNavigation' | 'SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation' | 'MemoryPressureOnTrigger' | 'MemoryPressureAfterTriggered' | 'PrerenderingDisabledByDevTools' | 'ResourceLoadBlockedByClient' | 'SpeculationRuleRemoved' | 'ActivatedWithAuxiliaryBrowsingContexts');
+        export type PrerenderFinalStatus = ('Activated' | 'Destroyed' | 'LowEndDevice' | 'InvalidSchemeRedirect' | 'InvalidSchemeNavigation' | 'InProgressNavigation' | 'NavigationRequestBlockedByCsp' | 'MainFrameNavigation' | 'MojoBinderPolicy' | 'RendererProcessCrashed' | 'RendererProcessKilled' | 'Download' | 'TriggerDestroyed' | 'NavigationNotCommitted' | 'NavigationBadHttpStatus' | 'ClientCertRequested' | 'NavigationRequestNetworkError' | 'CancelAllHostsForTesting' | 'DidFailLoad' | 'Stop' | 'SslCertificateError' | 'LoginAuthRequested' | 'UaChangeRequiresReload' | 'BlockedByClient' | 'AudioOutputDeviceRequested' | 'MixedContent' | 'TriggerBackgrounded' | 'MemoryLimitExceeded' | 'DataSaverEnabled' | 'HasEffectiveUrl' | 'ActivatedBeforeStarted' | 'InactivePageRestriction' | 'StartFailed' | 'TimeoutBackgrounded' | 'CrossSiteRedirectInInitialNavigation' | 'CrossSiteNavigationInInitialNavigation' | 'SameSiteCrossOriginRedirectNotOptInInInitialNavigation' | 'SameSiteCrossOriginNavigationNotOptInInInitialNavigation' | 'ActivationNavigationParameterMismatch' | 'ActivatedInBackground' | 'EmbedderHostDisallowed' | 'ActivationNavigationDestroyedBeforeSuccess' | 'TabClosedByUserGesture' | 'TabClosedWithoutUserGesture' | 'PrimaryMainFrameRendererProcessCrashed' | 'PrimaryMainFrameRendererProcessKilled' | 'ActivationFramePolicyNotCompatible' | 'PreloadingDisabled' | 'BatterySaverEnabled' | 'ActivatedDuringMainFrameNavigation' | 'PreloadingUnsupportedByWebContents' | 'CrossSiteRedirectInMainFrameNavigation' | 'CrossSiteNavigationInMainFrameNavigation' | 'SameSiteCrossOriginRedirectNotOptInInMainFrameNavigation' | 'SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation' | 'MemoryPressureOnTrigger' | 'MemoryPressureAfterTriggered' | 'PrerenderingDisabledByDevTools' | 'ResourceLoadBlockedByClient' | 'SpeculationRuleRemoved' | 'ActivatedWithAuxiliaryBrowsingContexts' | 'MaxNumOfRunningEagerPrerendersExceeded' | 'MaxNumOfRunningNonEagerPrerendersExceeded' | 'MaxNumOfRunningEmbedderPrerendersExceeded');
 
         /**
          * Preloading status values, see also PreloadingTriggeringOutcome. This

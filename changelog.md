@@ -1,7 +1,48 @@
 
 
+## Roll protocol to r1196408 — _2023-09-14T04:25:59.000Z_
+######  Diff: [`2fffccb...9b5ee06`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2fffccb...9b5ee06`)
+
+```diff
+@@ browser_protocol.pdl:2095 @@ experimental domain CSS
+       string propertyName
+       string value
+ 
+-  # Modifies the property rule property name.
+-  command setPropertyRulePropertyName
+-    parameters
+-      StyleSheetId styleSheetId
+-      SourceRange range
+-      string propertyName
+-    returns
+-      # The resulting key text after modification.
+-      Value propertyName
+-
+   # Modifies the keyframe rule key text.
+   command setKeyframeKey
+     parameters
+@@ -11306,6 +11296,7 @@ experimental domain Preload
+       NavigationBadHttpStatus
+       ClientCertRequested
+       NavigationRequestNetworkError
++      MaxNumOfRunningPrerendersExceeded
+       CancelAllHostsForTesting
+       DidFailLoad
+       Stop
+@@ -11350,9 +11341,6 @@ experimental domain Preload
+       ResourceLoadBlockedByClient
+       SpeculationRuleRemoved
+       ActivatedWithAuxiliaryBrowsingContexts
+-      MaxNumOfRunningEagerPrerendersExceeded
+-      MaxNumOfRunningNonEagerPrerendersExceeded
+-      MaxNumOfRunningEmbedderPrerendersExceeded
+ 
+   # Fired when a prerender attempt is completed.
+   event prerenderAttemptCompleted
+```
+
 ## Roll protocol to r1195796 — _2023-09-13T04:26:23.000Z_
-######  Diff: [`c0f98d9...2ade3e8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c0f98d9...2ade3e8`)
+######  Diff: [`c0f98d9...2fffccb`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c0f98d9...2fffccb`)
 
 ```diff
 @@ js_protocol.pdl:1066 @@ domain Runtime
@@ -10620,21 +10661,4 @@ index bd277eb..09c420e 100644
    # Controls whether to discover available targets and notify via
    # `targetCreated/targetInfoChanged/targetDestroyed` events.
    command setDiscoverTargets
-```
-
-## Roll protocol to r911116 — _2021-08-12T02:16:24.000Z_
-######  Diff: [`2b18125...3c9fa3b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2b18125...3c9fa3b`)
-
-```diff
-@@ browser_protocol.pdl:7800 @@ domain Page
-       CacheControlNoStoreHTTPOnlyCookieModified
-       NoResponseHead
-       Unknown
--      ActivationNavigationsDisallowedForBug1234857
-       #Blocklisted features
-       WebSocket
--      WebTransport
-       WebRTC
-       MainResourceHasCacheControlNoStore
-       MainResourceHasCacheControlNoCache
 ```

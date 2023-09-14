@@ -1797,6 +1797,13 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Modifies the property rule property name.
+         */
+        'CSS.setPropertyRulePropertyName': {
+            paramsType: [Protocol.CSS.SetPropertyRulePropertyNameRequest];
+            returnType: Protocol.CSS.SetPropertyRulePropertyNameResponse;
+        };
+        /**
          * Modifies the keyframe rule key text.
          */
         'CSS.setKeyframeKey': {

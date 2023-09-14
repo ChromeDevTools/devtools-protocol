@@ -1064,6 +1064,11 @@ export namespace ProtocolProxyApi {
         setEffectivePropertyValueForNode(params: Protocol.CSS.SetEffectivePropertyValueForNodeRequest): Promise<void>;
 
         /**
+         * Modifies the property rule property name.
+         */
+        setPropertyRulePropertyName(params: Protocol.CSS.SetPropertyRulePropertyNameRequest): Promise<Protocol.CSS.SetPropertyRulePropertyNameResponse>;
+
+        /**
          * Modifies the keyframe rule key text.
          */
         setKeyframeKey(params: Protocol.CSS.SetKeyframeKeyRequest): Promise<Protocol.CSS.SetKeyframeKeyResponse>;
