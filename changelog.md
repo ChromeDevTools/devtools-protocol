@@ -1,7 +1,40 @@
 
 
+## Roll protocol to r1198794 — _2023-09-20T04:26:33.000Z_
+######  Diff: [`042ec44...a6555fa`](https://github.com/ChromeDevTools/devtools-protocol/compare/`042ec44...a6555fa`)
+
+```diff
+@@ browser_protocol.pdl:5736 @@ domain Network
+       SameSiteNoneInsecure
+       # The cookie was not stored due to user preferences.
+       UserPreferences
+-      # The cookie was blocked due to third-party cookie phaseout.
+-      ThirdPartyPhaseout
+       # The cookie was blocked by third-party cookie blocking between sites in
+       # the same First-Party Set.
+       ThirdPartyBlockedInFirstPartySet
+@@ -5783,8 +5781,6 @@ domain Network
+       # character if it appears in the middle of the cookie name, value, an
+       # attribute name, or an attribute value.
+       DisallowedCharacter
+-      # Cookie contains no content or only whitespace.
+-      NoCookieContent
+ 
+   # Types of reasons why a cookie may not be sent with a request.
+   experimental type CookieBlockedReason extends string
+@@ -5811,8 +5807,6 @@ domain Network
+       SameSiteNoneInsecure
+       # The cookie was not sent due to user preferences.
+       UserPreferences
+-      # The cookie was blocked due to third-party cookie phaseout.
+-      ThirdPartyPhaseout
+       # The cookie was blocked by third-party cookie blocking between sites in
+       # the same First-Party Set.
+       ThirdPartyBlockedInFirstPartySet
+```
+
 ## Roll protocol to r1196408 — _2023-09-14T04:25:59.000Z_
-######  Diff: [`2fffccb...9b5ee06`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2fffccb...9b5ee06`)
+######  Diff: [`2fffccb...042ec44`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2fffccb...042ec44`)
 
 ```diff
 @@ browser_protocol.pdl:2095 @@ experimental domain CSS
@@ -10628,37 +10661,4 @@ index bd277eb..09c420e 100644
  
    # Details for issues around "Attribution Reporting API" usage.
    # Explainer: https://github.com/WICG/conversion-measurement-api
-```
-
-## Roll protocol to r911543 — _2021-08-12T23:17:07.000Z_
-######  Diff: [`3c9fa3b...85bc00a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3c9fa3b...85bc00a`)
-
-```diff
-@@ browser_protocol.pdl:8815 @@ domain Target
-   # Controls whether to automatically attach to new targets which are considered to be related to
-   # this one. When turned on, attaches to all existing related targets as well. When turned off,
-   # automatically detaches from all currently attached targets.
--  # This also clears all targets added by `autoAttachRelated` from the list of targets to watch
--  # for creation of related targets.
-   experimental command setAutoAttach
-     parameters
-       # Whether to auto-attach to related targets.
-@@ -8829,17 +8827,6 @@ domain Target
-       # and eventually retire it. See crbug.com/991325.
-       optional boolean flatten
- 
--  # Adds the specified target to the list of targets that will be monitored for any related target
--  # creation (such as child frames, child workers and new versions of service worker) and reported
--  # through `attachedToTarget`. This cancel the effect of any previous `setAutoAttach` and is also
--  # cancelled by subsequent `setAutoAttach`. Only available at the Browser target.
--  experimental command autoAttachRelated
--    parameters
--      TargetID targetId
--      # Whether to pause new targets when attaching to them. Use `Runtime.runIfWaitingForDebugger`
--      # to run paused targets.
--      boolean waitForDebuggerOnStart
--
-   # Controls whether to discover available targets and notify via
-   # `targetCreated/targetInfoChanged/targetDestroyed` events.
-   command setDiscoverTargets
 ```

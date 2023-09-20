@@ -12397,6 +12397,7 @@
                         "SameSiteUnspecifiedTreatedAsLax",
                         "SameSiteNoneInsecure",
                         "UserPreferences",
+                        "ThirdPartyPhaseout",
                         "ThirdPartyBlockedInFirstPartySet",
                         "SyntaxError",
                         "SchemeNotSupported",
@@ -12410,7 +12411,8 @@
                         "SamePartyFromCrossPartyContext",
                         "SamePartyConflictsWithOtherAttributes",
                         "NameValuePairExceedsMaxSize",
-                        "DisallowedCharacter"
+                        "DisallowedCharacter",
+                        "NoCookieContent"
                     ]
                 },
                 {
@@ -12427,6 +12429,7 @@
                         "SameSiteUnspecifiedTreatedAsLax",
                         "SameSiteNoneInsecure",
                         "UserPreferences",
+                        "ThirdPartyPhaseout",
                         "ThirdPartyBlockedInFirstPartySet",
                         "UnknownError",
                         "SchemefulSameSiteStrict",
