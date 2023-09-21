@@ -1,7 +1,32 @@
 
 
+## Roll protocol to r1199410 — _2023-09-21T04:26:11.000Z_
+######  Diff: [`4c3c454...2b07814`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4c3c454...2b07814`)
+
+```diff
+@@ browser_protocol.pdl:11324 @@ experimental domain Preload
+       TriggerBackgrounded
+       MemoryLimitExceeded
+       DataSaverEnabled
+-      TriggerUrlHasEffectiveUrl
++      HasEffectiveUrl
+       ActivatedBeforeStarted
+       InactivePageRestriction
+       StartFailed
+@@ -11359,9 +11359,6 @@ experimental domain Preload
+       MaxNumOfRunningEagerPrerendersExceeded
+       MaxNumOfRunningNonEagerPrerendersExceeded
+       MaxNumOfRunningEmbedderPrerendersExceeded
+-      PrerenderingUrlHasEffectiveUrl
+-      RedirectedPrerenderingUrlHasEffectiveUrl
+-      ActivationUrlHasEffectiveUrl
+ 
+   # Fired when a prerender attempt is completed.
+   event prerenderAttemptCompleted
+```
+
 ## Roll protocol to r1198794 — _2023-09-20T04:26:33.000Z_
-######  Diff: [`042ec44...a6555fa`](https://github.com/ChromeDevTools/devtools-protocol/compare/`042ec44...a6555fa`)
+######  Diff: [`042ec44...4c3c454`](https://github.com/ChromeDevTools/devtools-protocol/compare/`042ec44...4c3c454`)
 
 ```diff
 @@ browser_protocol.pdl:5736 @@ domain Network
@@ -10647,18 +10672,4 @@ index bd277eb..09c420e 100644
 -      experimental ConnectTiming connectTiming
        # The client security state set for the request.
        optional ClientSecurityState clientSecurityState
-```
-
-## Roll protocol to r911675 — _2021-08-13T08:16:24.000Z_
-######  Diff: [`85bc00a...e811304`](https://github.com/ChromeDevTools/devtools-protocol/compare/`85bc00a...e811304`)
-
-```diff
-@@ browser_protocol.pdl:736 @@ experimental domain Audits
-       InvalidAttributionData
-       AttributionSourceUntrustworthyOrigin
-       AttributionUntrustworthyOrigin
--      AttributionTriggerDataTooLarge
- 
-   # Details for issues around "Attribution Reporting API" usage.
-   # Explainer: https://github.com/WICG/conversion-measurement-api
 ```

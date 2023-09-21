@@ -23951,7 +23951,7 @@
                         "TriggerBackgrounded",
                         "MemoryLimitExceeded",
                         "DataSaverEnabled",
-                        "HasEffectiveUrl",
+                        "TriggerUrlHasEffectiveUrl",
                         "ActivatedBeforeStarted",
                         "InactivePageRestriction",
                         "StartFailed",
@@ -23985,7 +23985,10 @@
                         "ActivatedWithAuxiliaryBrowsingContexts",
                         "MaxNumOfRunningEagerPrerendersExceeded",
                         "MaxNumOfRunningNonEagerPrerendersExceeded",
-                        "MaxNumOfRunningEmbedderPrerendersExceeded"
+                        "MaxNumOfRunningEmbedderPrerendersExceeded",
+                        "PrerenderingUrlHasEffectiveUrl",
+                        "RedirectedPrerenderingUrlHasEffectiveUrl",
+                        "ActivationUrlHasEffectiveUrl"
                     ]
                 },
                 {
