@@ -1,7 +1,63 @@
 
 
+## Roll protocol to r1200039 — _2023-09-22T04:26:23.000Z_
+######  Diff: [`bef1c5e...e7ef1c9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`bef1c5e...e7ef1c9`)
+
+```diff
+@@ browser_protocol.pdl:874 @@ experimental domain Audits
+       # Contains additional info when the failure was due to a request.
+       optional FailedRequestInfo failedRequestInfo
+ 
+-  type PropertyRuleIssueReason extends string
+-    enum
+-      InvalidSyntax
+-      InvalidInitialValue
+-      InvalidInherits
+-      InvalidName
+-
+-  # This issue warns about errors in property rules that lead to property
+-  # registrations being ignored.
+-  type PropertyRuleIssueDetails extends object
+-    properties
+-      # Source code position of the property rule.
+-      SourceCodeLocation sourceCodeLocation
+-      # Reason why the property rule was discarded.
+-      PropertyRuleIssueReason propertyRuleIssueReason
+-      # The value of the property rule property that failed to parse
+-      optional string propertyValue
+-
+   # A unique identifier for the type of issue. Each type may use one of the
+   # optional fields in InspectorIssueDetails to convey more specific
+   # information about the kind of issue.
+@@ -916,7 +898,6 @@ experimental domain Audits
+       BounceTrackingIssue
+       StylesheetLoadingIssue
+       FederatedAuthUserInfoRequestIssue
+-      PropertyRuleIssue
+ 
+   # This struct holds a list of optional fields with additional information
+   # specific to the kind of issue. When adding a new issue code, please also
+@@ -940,7 +921,6 @@ experimental domain Audits
+       optional FederatedAuthRequestIssueDetails federatedAuthRequestIssueDetails
+       optional BounceTrackingIssueDetails bounceTrackingIssueDetails
+       optional StylesheetLoadingIssueDetails stylesheetLoadingIssueDetails
+-      optional PropertyRuleIssueDetails propertyRuleIssueDetails
+       optional FederatedAuthUserInfoRequestIssueDetails federatedAuthUserInfoRequestIssueDetails
+ 
+   # A unique id for a DevTools inspector issue. Allows other entities (e.g.
+@@ -9357,8 +9337,6 @@ experimental domain Storage
+       loaded
+       bid
+       win
+-      additionalBid
+-      additionalBidWin
+ 
+   # Ad advertising element inside an interest group.
+   type InterestGroupAd extends object
+```
+
 ## Roll protocol to r1199410 — _2023-09-21T04:26:11.000Z_
-######  Diff: [`4c3c454...2b07814`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4c3c454...2b07814`)
+######  Diff: [`4c3c454...bef1c5e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`4c3c454...bef1c5e`)
 
 ```diff
 @@ browser_protocol.pdl:11324 @@ experimental domain Preload
@@ -10644,32 +10700,4 @@ index bd277eb..09c420e 100644
    # An object providing the result of a network resource load.
    experimental type LoadNetworkResourcePageResult extends object
      properties
-```
-
-## Roll protocol to r911867 — _2021-08-13T20:16:18.000Z_
-######  Diff: [`e811304...b3fb07a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e811304...b3fb07a`)
-
-```diff
-@@ browser_protocol.pdl:5922 @@ domain Network
-       Public
-       Unknown
- 
--  experimental type ConnectTiming extends object
--    properties
--      # Timing's requestTime is a baseline in seconds, while the other numbers are ticks in
--      # milliseconds relatively to this requestTime. Matches ResourceTiming's requestTime for
--      # the same request (but not for redirected requests).
--      number requestTime
--
-   experimental type ClientSecurityState extends object
-     properties
-       boolean initiatorIsSecureContext
-@@ -5948,8 +5941,6 @@ domain Network
-       array of BlockedCookieWithReason associatedCookies
-       # Raw request headers as they will be sent over the wire.
-       Headers headers
--      # Connection timing information for the request.
--      experimental ConnectTiming connectTiming
-       # The client security state set for the request.
-       optional ClientSecurityState clientSecurityState
 ```

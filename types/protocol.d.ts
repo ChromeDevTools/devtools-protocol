@@ -3582,12 +3582,33 @@ export namespace Protocol {
             failedRequestInfo?: FailedRequestInfo;
         }
 
+        export type PropertyRuleIssueReason = ('InvalidSyntax' | 'InvalidInitialValue' | 'InvalidInherits' | 'InvalidName');
+
+        /**
+         * This issue warns about errors in property rules that lead to property
+         * registrations being ignored.
+         */
+        export interface PropertyRuleIssueDetails {
+            /**
+             * Source code position of the property rule.
+             */
+            sourceCodeLocation: SourceCodeLocation;
+            /**
+             * Reason why the property rule was discarded.
+             */
+            propertyRuleIssueReason: PropertyRuleIssueReason;
+            /**
+             * The value of the property rule property that failed to parse
+             */
+            propertyValue?: string;
+        }
+
         /**
          * A unique identifier for the type of issue. Each type may use one of the
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue');
+        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue' | 'PropertyRuleIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3612,6 +3633,7 @@ export namespace Protocol {
             federatedAuthRequestIssueDetails?: FederatedAuthRequestIssueDetails;
             bounceTrackingIssueDetails?: BounceTrackingIssueDetails;
             stylesheetLoadingIssueDetails?: StylesheetLoadingIssueDetails;
+            propertyRuleIssueDetails?: PropertyRuleIssueDetails;
             federatedAuthUserInfoRequestIssueDetails?: FederatedAuthUserInfoRequestIssueDetails;
         }
 
@@ -15015,7 +15037,7 @@ export namespace Protocol {
         /**
          * Enum of interest group access types.
          */
-        export type InterestGroupAccessType = ('join' | 'leave' | 'update' | 'loaded' | 'bid' | 'win');
+        export type InterestGroupAccessType = ('join' | 'leave' | 'update' | 'loaded' | 'bid' | 'win' | 'additionalBid' | 'additionalBidWin');
 
         /**
          * Ad advertising element inside an interest group.
