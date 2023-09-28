@@ -1,7 +1,73 @@
 
 
+## Roll protocol to r1202299 — _2023-09-28T04:26:18.000Z_
+######  Diff: [`89ab493...dc4eea0`](https://github.com/ChromeDevTools/devtools-protocol/compare/`89ab493...dc4eea0`)
+
+```diff
+@@ js_protocol.pdl:1014 @@ domain Runtime
+   # Unique script identifier.
+   type ScriptId extends string
+ 
+-  # Represents options for serialization. Overrides `generatePreview` and `returnByValue`.
++  # Represents options for serialization. Overrides `generatePreview`, `returnByValue` and
++  # `generateWebDriverValue`.
+   type SerializationOptions extends object
+     properties
+       enum serialization
+@@ -1026,7 +1027,8 @@ domain Runtime
+         # `returnByValue: true`. Overrides `returnByValue`.
+         json
+         # Only remote object id is put in the result. Same bahaviour as if no
+-        # `serializationOptions`, `generatePreview` nor `returnByValue` are provided.
++        # `serializationOptions`, `generatePreview`, `returnByValue` nor `generateWebDriverValue`
++        # are provided.
+         idOnly
+ 
+       # Deep serialization depth. Default is full depth. Respected only in `deep` serialization mode.
+@@ -1124,6 +1126,8 @@ domain Runtime
+       optional UnserializableValue unserializableValue
+       # String representation of the object.
+       optional string description
++      # Deprecated. Use `deepSerializedValue` instead. WebDriver BiDi representation of the value.
++      deprecated optional DeepSerializedValue webDriverValue
+       # Deep serialized value.
+       experimental optional DeepSerializedValue deepSerializedValue
+       # Unique object identifier (for non-primitive values).
+@@ -1439,8 +1443,13 @@ domain Runtime
+       # boundaries).
+       # This is mutually exclusive with `executionContextId`.
+       experimental optional string uniqueContextId
++      # Deprecated. Use `serializationOptions: {serialization:"deep"}` instead.
++      # Whether the result should contain `webDriverValue`, serialized according to
++      # https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but
++      # resulting `objectId` is still provided.
++      deprecated optional boolean generateWebDriverValue
+       # Specifies the result serialization. If provided, overrides
+-      # `generatePreview` and `returnByValue`.
++      # `generatePreview`, `returnByValue` and `generateWebDriverValue`.
+       experimental optional SerializationOptions serializationOptions
+ 
+     returns
+@@ -1528,8 +1537,14 @@ domain Runtime
+       # boundaries).
+       # This is mutually exclusive with `contextId`.
+       experimental optional string uniqueContextId
++      # Deprecated. Use `serializationOptions: {serialization:"deep"}` instead.
++      # Whether the result should contain `webDriverValue`, serialized
++      # according to
++      # https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but
++      # resulting `objectId` is still provided.
++      deprecated optional boolean generateWebDriverValue
+       # Specifies the result serialization. If provided, overrides
+-      # `generatePreview` and `returnByValue`.
++      # `generatePreview`, `returnByValue` and `generateWebDriverValue`.
+       experimental optional SerializationOptions serializationOptions
+     returns
+       # Evaluation result.
+```
+
 ## Roll protocol to r1200039 — _2023-09-22T04:26:23.000Z_
-######  Diff: [`bef1c5e...e7ef1c9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`bef1c5e...e7ef1c9`)
+######  Diff: [`bef1c5e...89ab493`](https://github.com/ChromeDevTools/devtools-protocol/compare/`bef1c5e...89ab493`)
 
 ```diff
 @@ browser_protocol.pdl:874 @@ experimental domain Audits

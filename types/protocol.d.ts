@@ -1497,8 +1497,7 @@ export namespace Protocol {
         }
 
         /**
-         * Represents options for serialization. Overrides `generatePreview`, `returnByValue` and
-         * `generateWebDriverValue`.
+         * Represents options for serialization. Overrides `generatePreview` and `returnByValue`.
          */
         export interface SerializationOptions {
             /**
@@ -1637,10 +1636,6 @@ export namespace Protocol {
              * String representation of the object.
              */
             description?: string;
-            /**
-             * Deprecated. Use `deepSerializedValue` instead. WebDriver BiDi representation of the value.
-             */
-            webDriverValue?: DeepSerializedValue;
             /**
              * Deep serialized value.
              */
@@ -2152,15 +2147,8 @@ export namespace Protocol {
              */
             uniqueContextId?: string;
             /**
-             * Deprecated. Use `serializationOptions: {serialization:"deep"}` instead.
-             * Whether the result should contain `webDriverValue`, serialized according to
-             * https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but
-             * resulting `objectId` is still provided.
-             */
-            generateWebDriverValue?: boolean;
-            /**
              * Specifies the result serialization. If provided, overrides
-             * `generatePreview`, `returnByValue` and `generateWebDriverValue`.
+             * `generatePreview` and `returnByValue`.
              */
             serializationOptions?: SerializationOptions;
         }
@@ -2286,16 +2274,8 @@ export namespace Protocol {
              */
             uniqueContextId?: string;
             /**
-             * Deprecated. Use `serializationOptions: {serialization:"deep"}` instead.
-             * Whether the result should contain `webDriverValue`, serialized
-             * according to
-             * https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but
-             * resulting `objectId` is still provided.
-             */
-            generateWebDriverValue?: boolean;
-            /**
              * Specifies the result serialization. If provided, overrides
-             * `generatePreview`, `returnByValue` and `generateWebDriverValue`.
+             * `generatePreview` and `returnByValue`.
              */
             serializationOptions?: SerializationOptions;
         }
