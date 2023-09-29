@@ -15023,7 +15023,7 @@ export namespace Protocol {
          * Ad advertising element inside an interest group.
          */
         export interface InterestGroupAd {
-            renderUrl: string;
+            renderURL: string;
             metadata?: string;
         }
 
@@ -15035,10 +15035,10 @@ export namespace Protocol {
             name: string;
             expirationTime: Network.TimeSinceEpoch;
             joiningOrigin: string;
-            biddingUrl?: string;
-            biddingWasmHelperUrl?: string;
-            updateUrl?: string;
-            trustedBiddingSignalsUrl?: string;
+            biddingLogicURL?: string;
+            biddingWasmHelperURL?: string;
+            updateURL?: string;
+            trustedBiddingSignalsURL?: string;
             trustedBiddingSignalsKeys: string[];
             userBiddingSignals?: string;
             ads: InterestGroupAd[];
@@ -17544,24 +17544,6 @@ export namespace Protocol {
 
         export interface RuleSetRemovedEvent {
             id: RuleSetId;
-        }
-
-        /**
-         * Fired when a prerender attempt is completed.
-         */
-        export interface PrerenderAttemptCompletedEvent {
-            key: PreloadingAttemptKey;
-            /**
-             * The frame id of the frame initiating prerendering.
-             */
-            initiatingFrameId: Page.FrameId;
-            prerenderingUrl: string;
-            finalStatus: PrerenderFinalStatus;
-            /**
-             * This is used to give users more information about the name of the API call
-             * that is incompatible with prerender and has caused the cancellation of the attempt
-             */
-            disallowedApiMethod?: string;
         }
 
         /**

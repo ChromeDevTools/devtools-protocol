@@ -4056,11 +4056,6 @@ export namespace ProtocolProxyApi {
         on(event: 'ruleSetRemoved', listener: (params: Protocol.Preload.RuleSetRemovedEvent) => void): void;
 
         /**
-         * Fired when a prerender attempt is completed.
-         */
-        on(event: 'prerenderAttemptCompleted', listener: (params: Protocol.Preload.PrerenderAttemptCompletedEvent) => void): void;
-
-        /**
          * Fired when a preload enabled state is updated.
          */
         on(event: 'preloadEnabledStateUpdated', listener: (params: Protocol.Preload.PreloadEnabledStateUpdatedEvent) => void): void;

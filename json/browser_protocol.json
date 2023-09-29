@@ -19842,7 +19842,7 @@
                     "type": "object",
                     "properties": [
                         {
-                            "name": "renderUrl",
+                            "name": "renderURL",
                             "type": "string"
                         },
                         {
@@ -19874,22 +19874,22 @@
                             "type": "string"
                         },
                         {
-                            "name": "biddingUrl",
+                            "name": "biddingLogicURL",
                             "optional": true,
                             "type": "string"
                         },
                         {
-                            "name": "biddingWasmHelperUrl",
+                            "name": "biddingWasmHelperURL",
                             "optional": true,
                             "type": "string"
                         },
                         {
-                            "name": "updateUrl",
+                            "name": "updateURL",
                             "optional": true,
                             "type": "string"
                         },
                         {
-                            "name": "trustedBiddingSignalsUrl",
+                            "name": "trustedBiddingSignalsURL",
                             "optional": true,
                             "type": "string"
                         },
@@ -24108,35 +24108,6 @@
                         {
                             "name": "id",
                             "$ref": "RuleSetId"
-                        }
-                    ]
-                },
-                {
-                    "name": "prerenderAttemptCompleted",
-                    "description": "Fired when a prerender attempt is completed.",
-                    "parameters": [
-                        {
-                            "name": "key",
-                            "$ref": "PreloadingAttemptKey"
-                        },
-                        {
-                            "name": "initiatingFrameId",
-                            "description": "The frame id of the frame initiating prerendering.",
-                            "$ref": "Page.FrameId"
-                        },
-                        {
-                            "name": "prerenderingUrl",
-                            "type": "string"
-                        },
-                        {
-                            "name": "finalStatus",
-                            "$ref": "PrerenderFinalStatus"
-                        },
-                        {
-                            "name": "disallowedApiMethod",
-                            "description": "This is used to give users more information about the name of the API call\nthat is incompatible with prerender and has caused the cancellation of the attempt",
-                            "optional": true,
-                            "type": "string"
                         }
                     ]
                 },
