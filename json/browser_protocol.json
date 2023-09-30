@@ -23968,7 +23968,6 @@
                         "LowEndDevice",
                         "InvalidSchemeRedirect",
                         "InvalidSchemeNavigation",
-                        "InProgressNavigation",
                         "NavigationRequestBlockedByCsp",
                         "MainFrameNavigation",
                         "MojoBinderPolicy",
