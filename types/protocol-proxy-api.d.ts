@@ -4085,10 +4085,10 @@ export namespace ProtocolProxyApi {
         selectAccount(params: Protocol.FedCm.SelectAccountRequest): Promise<void>;
 
         /**
-         * Only valid if the dialog type is ConfirmIdpSignin. Acts as if the user had
+         * Only valid if the dialog type is ConfirmIdpLogin. Acts as if the user had
          * clicked the continue button.
          */
-        confirmIdpSignin(params: Protocol.FedCm.ConfirmIdpSigninRequest): Promise<void>;
+        confirmIdpLogin(params: Protocol.FedCm.ConfirmIdpLoginRequest): Promise<void>;
 
         dismissDialog(params: Protocol.FedCm.DismissDialogRequest): Promise<void>;
 

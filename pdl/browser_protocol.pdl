@@ -9359,6 +9359,7 @@ experimental domain Storage
       win
       additionalBid
       additionalBidWin
+      clear
 
   # Ad advertising element inside an interest group.
   type InterestGroupAd extends object
@@ -11487,7 +11488,7 @@ experimental domain FedCm
     enum
       AccountChooser
       AutoReauthn
-      ConfirmIdpSignin
+      ConfirmIdpLogin
 
   # Corresponds to IdentityRequestAccount
   type Account extends object
@@ -11498,7 +11499,7 @@ experimental domain FedCm
       string givenName
       string pictureUrl
       string idpConfigUrl
-      string idpSigninUrl
+      string idpLoginUrl
       LoginState loginState
       # These two are only set if the loginState is signUp
       optional string termsOfServiceUrl
@@ -11528,9 +11529,9 @@ experimental domain FedCm
       string dialogId
       integer accountIndex
 
-  # Only valid if the dialog type is ConfirmIdpSignin. Acts as if the user had
+  # Only valid if the dialog type is ConfirmIdpLogin. Acts as if the user had
   # clicked the continue button.
-  command confirmIdpSignin
+  command confirmIdpLogin
     parameters
       string dialogId
 

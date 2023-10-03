@@ -15017,7 +15017,7 @@ export namespace Protocol {
         /**
          * Enum of interest group access types.
          */
-        export type InterestGroupAccessType = ('join' | 'leave' | 'update' | 'loaded' | 'bid' | 'win' | 'additionalBid' | 'additionalBidWin');
+        export type InterestGroupAccessType = ('join' | 'leave' | 'update' | 'loaded' | 'bid' | 'win' | 'additionalBid' | 'additionalBidWin' | 'clear');
 
         /**
          * Ad advertising element inside an interest group.
@@ -17609,7 +17609,7 @@ export namespace Protocol {
         /**
          * Whether the dialog shown is an account chooser or an auto re-authentication dialog.
          */
-        export type DialogType = ('AccountChooser' | 'AutoReauthn' | 'ConfirmIdpSignin');
+        export type DialogType = ('AccountChooser' | 'AutoReauthn' | 'ConfirmIdpLogin');
 
         /**
          * Corresponds to IdentityRequestAccount
@@ -17621,7 +17621,7 @@ export namespace Protocol {
             givenName: string;
             pictureUrl: string;
             idpConfigUrl: string;
-            idpSigninUrl: string;
+            idpLoginUrl: string;
             loginState: LoginState;
             /**
              * These two are only set if the loginState is signUp
@@ -17644,7 +17644,7 @@ export namespace Protocol {
             accountIndex: integer;
         }
 
-        export interface ConfirmIdpSigninRequest {
+        export interface ConfirmIdpLoginRequest {
             dialogId: string;
         }
 

@@ -1,7 +1,50 @@
 
 
+## Roll protocol to r1204456 — _2023-10-03T04:26:51.000Z_
+######  Diff: [`464d58a...99c1ad4`](https://github.com/ChromeDevTools/devtools-protocol/compare/`464d58a...99c1ad4`)
+
+```diff
+@@ browser_protocol.pdl:9359 @@ experimental domain Storage
+       win
+       additionalBid
+       additionalBidWin
+-      clear
+ 
+   # Ad advertising element inside an interest group.
+   type InterestGroupAd extends object
+@@ -11488,7 +11487,7 @@ experimental domain FedCm
+     enum
+       AccountChooser
+       AutoReauthn
+-      ConfirmIdpLogin
++      ConfirmIdpSignin
+ 
+   # Corresponds to IdentityRequestAccount
+   type Account extends object
+@@ -11499,7 +11498,7 @@ experimental domain FedCm
+       string givenName
+       string pictureUrl
+       string idpConfigUrl
+-      string idpLoginUrl
++      string idpSigninUrl
+       LoginState loginState
+       # These two are only set if the loginState is signUp
+       optional string termsOfServiceUrl
+@@ -11529,9 +11528,9 @@ experimental domain FedCm
+       string dialogId
+       integer accountIndex
+ 
+-  # Only valid if the dialog type is ConfirmIdpLogin. Acts as if the user had
++  # Only valid if the dialog type is ConfirmIdpSignin. Acts as if the user had
+   # clicked the continue button.
+-  command confirmIdpLogin
++  command confirmIdpSignin
+     parameters
+       string dialogId
+```
+
 ## Roll protocol to r1203626 — _2023-09-30T04:26:42.000Z_
-######  Diff: [`7cd293f...fda9b0f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7cd293f...fda9b0f`)
+######  Diff: [`7cd293f...464d58a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`7cd293f...464d58a`)
 
 ```diff
 @@ browser_protocol.pdl:11322 @@ experimental domain Preload
@@ -10698,18 +10741,4 @@ index bd277eb..09c420e 100644
    # An object providing the result of a network resource load.
    experimental type LoadNetworkResourcePageResult extends object
      properties
-```
-
-## Roll protocol to r912566 — _2021-08-17T14:15:28.000Z_
-######  Diff: [`5c0761c...9b427a9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5c0761c...9b427a9`)
-
-```diff
-@@ browser_protocol.pdl:7840 @@ domain Page
-       WebShare
-       RequestedStorageAccessGrant
-       WebNfc
-+      WebFileSystem
-       OutstandingNetworkRequestFetch
-       OutstandingNetworkRequestXHR
-       AppBanner
 ```
