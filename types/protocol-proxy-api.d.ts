@@ -1650,6 +1650,11 @@ export namespace ProtocolProxyApi {
          */
         removeInstrumentationBreakpoint(params: Protocol.EventBreakpoints.RemoveInstrumentationBreakpointRequest): Promise<void>;
 
+        /**
+         * Removes all breakpoints
+         */
+        disable(): Promise<void>;
+
     }
 
     export interface DOMSnapshotApi {

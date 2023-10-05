@@ -1638,7 +1638,8 @@
                         "Canceled",
                         "RpPageNotVisible",
                         "SilentMediationFailure",
-                        "ThirdPartyCookiesBlocked"
+                        "ThirdPartyCookiesBlocked",
+                        "NotSignedInWithIdp"
                     ]
                 },
                 {
@@ -6980,7 +6981,6 @@
             "description": "DOM debugging allows setting breakpoints on particular DOM operations and events. JavaScript\nexecution will stop on these operations as if there was a regular breakpoint set.",
             "dependencies": [
                 "DOM",
-                "Debugger",
                 "Runtime"
             ],
             "types": [
@@ -7137,6 +7137,8 @@
                     "name": "removeInstrumentationBreakpoint",
                     "description": "Removes breakpoint on particular native event.",
                     "experimental": true,
+                    "deprecated": true,
+                    "redirect": "EventBreakpoints",
                     "parameters": [
                         {
                             "name": "eventName",
@@ -7209,6 +7211,8 @@
                     "name": "setInstrumentationBreakpoint",
                     "description": "Sets breakpoint on particular native event.",
                     "experimental": true,
+                    "deprecated": true,
+                    "redirect": "EventBreakpoints",
                     "parameters": [
                         {
                             "name": "eventName",
@@ -7232,7 +7236,7 @@
         },
         {
             "domain": "EventBreakpoints",
-            "description": "EventBreakpoints permits setting breakpoints on particular operations and\nevents in targets that run JavaScript but do not have a DOM.\nJavaScript execution will stop on these operations as if there was a regular\nbreakpoint set.",
+            "description": "EventBreakpoints permits setting JavaScript breakpoints on operations and events\noccurring in native code invoked from JavaScript. Once breakpoint is hit, it is\nreported through Debugger domain, similarly to regular breakpoints being hit.",
             "experimental": true,
             "commands": [
                 {
@@ -7256,6 +7260,10 @@
                             "type": "string"
                         }
                     ]
+                },
+                {
+                    "name": "disable",
+                    "description": "Removes all breakpoints"
                 }
             ]
         },

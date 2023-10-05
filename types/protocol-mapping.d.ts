@@ -2420,6 +2420,13 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Removes all breakpoints
+         */
+        'EventBreakpoints.disable': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
          * Disables DOM snapshot agent for the given page.
          */
         'DOMSnapshot.disable': {
