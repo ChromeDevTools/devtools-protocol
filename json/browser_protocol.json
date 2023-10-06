@@ -20218,24 +20218,15 @@
                         {
                             "name": "expiry",
                             "description": "duration in seconds",
-                            "optional": true,
-                            "type": "integer"
-                        },
-                        {
-                            "name": "eventReportWindow",
-                            "description": "eventReportWindow and eventReportWindows are mutually exclusive\nduration in seconds",
-                            "optional": true,
                             "type": "integer"
                         },
                         {
                             "name": "eventReportWindows",
-                            "optional": true,
                             "$ref": "AttributionReportingEventReportWindows"
                         },
                         {
                             "name": "aggregatableReportWindow",
                             "description": "duration in seconds",
-                            "optional": true,
                             "type": "integer"
                         },
                         {

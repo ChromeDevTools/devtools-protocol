@@ -1,7 +1,30 @@
 
 
+## Roll protocol to r1206220 — _2023-10-06T04:26:22.000Z_
+######  Diff: [`40ddf1a...0ec9ed6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`40ddf1a...0ec9ed6`)
+
+```diff
+@@ browser_protocol.pdl:9824 @@ experimental domain Storage
+     properties
+       Network.TimeSinceEpoch time
+       # duration in seconds
+-      integer expiry
+-      AttributionReportingEventReportWindows eventReportWindows
++      optional integer expiry
++      # eventReportWindow and eventReportWindows are mutually exclusive
+       # duration in seconds
+-      integer aggregatableReportWindow
++      optional integer eventReportWindow
++      optional AttributionReportingEventReportWindows eventReportWindows
++      # duration in seconds
++      optional integer aggregatableReportWindow
+       AttributionReportingSourceType type
+       string sourceOrigin
+       string reportingOrigin
+```
+
 ## Roll protocol to r1205644 — _2023-10-05T04:26:19.000Z_
-######  Diff: [`629de2c...bf1df25`](https://github.com/ChromeDevTools/devtools-protocol/compare/`629de2c...bf1df25`)
+######  Diff: [`629de2c...40ddf1a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`629de2c...40ddf1a`)
 
 ```diff
 @@ browser_protocol.pdl:824 @@ experimental domain Audits
@@ -10740,21 +10763,4 @@ index bd277eb..09c420e 100644
        # Timestamp when this entry was added.
        Runtime.Timestamp timestamp
        # URL of the resource if known.
-```
-
-## Roll protocol to r912925 — _2021-08-18T08:15:25.000Z_
-######  Diff: [`ba60fa4...d30492e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ba60fa4...d30492e`)
-
-```diff
-@@ browser_protocol.pdl:208 @@ experimental domain Accessibility
-     parameters
-       # The maximum depth at which descendants of the root node should be retrieved.
-       # If omitted, the full tree is returned.
--      optional integer depth
--      # Deprecated. This parameter has been renamed to `depth`. If depth is not provided, max_depth will be used.
--      deprecated optional integer max_depth
-+      optional integer max_depth
-       # The frame for whose document the AX tree should be retrieved.
-       # If omited, the root frame is used.
-       optional Page.FrameId frameId
 ```

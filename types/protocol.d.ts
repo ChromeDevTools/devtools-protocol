@@ -15198,17 +15198,12 @@ export namespace Protocol {
             /**
              * duration in seconds
              */
-            expiry?: integer;
-            /**
-             * eventReportWindow and eventReportWindows are mutually exclusive
-             * duration in seconds
-             */
-            eventReportWindow?: integer;
-            eventReportWindows?: AttributionReportingEventReportWindows;
+            expiry: integer;
+            eventReportWindows: AttributionReportingEventReportWindows;
             /**
              * duration in seconds
              */
-            aggregatableReportWindow?: integer;
+            aggregatableReportWindow: integer;
             type: AttributionReportingSourceType;
             sourceOrigin: string;
             reportingOrigin: string;
