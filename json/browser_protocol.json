@@ -17158,7 +17158,7 @@
                         {
                             "name": "clip",
                             "description": "Capture the screenshot of a given region only.",
-                            "optional": true,
+                            "optional": false,
                             "$ref": "Viewport"
                         },
                         {
