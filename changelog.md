@@ -1,7 +1,37 @@
 
 
+## Roll protocol to r1207450 — _2023-10-10T04:26:17.000Z_
+######  Diff: [`f050ff5...3e3d61d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f050ff5...3e3d61d`)
+
+```diff
+@@ browser_protocol.pdl:4499 @@ domain Input
+       # The normalized tangential pressure, which has a range of [-1,1] (default: 0).
+       experimental optional number tangentialPressure
+       # The plane angle between the Y-Z plane and the plane containing both the stylus axis and the Y axis, in degrees of the range [-90,90], a positive tiltX is to the right (default: 0)
+-      optional number tiltX
++      experimental optional integer tiltX
+       # The plane angle between the X-Z plane and the plane containing both the stylus axis and the X axis, in degrees of the range [-90,90], a positive tiltY is towards the user (default: 0).
+-      optional number tiltY
++      experimental optional integer tiltY
+       # The clockwise rotation of a pen stylus around its own major axis, in degrees in the range [0,359] (default: 0).
+       experimental optional integer twist
+       # Identifier used to track touch sources between events, must be unique within an event.
+@@ -4667,9 +4667,9 @@ domain Input
+       # The normalized tangential pressure, which has a range of [-1,1] (default: 0).
+       experimental optional number tangentialPressure
+       # The plane angle between the Y-Z plane and the plane containing both the stylus axis and the Y axis, in degrees of the range [-90,90], a positive tiltX is to the right (default: 0).
+-      optional number tiltX
++      experimental optional integer tiltX
+       # The plane angle between the X-Z plane and the plane containing both the stylus axis and the X axis, in degrees of the range [-90,90], a positive tiltY is towards the user (default: 0).
+-      optional number tiltY
++      experimental optional integer tiltY
+       # The clockwise rotation of a pen stylus around its own major axis, in degrees in the range [0,359] (default: 0).
+       experimental optional integer twist
+       # X delta in CSS pixels for mouse wheel event (default: 0).
+```
+
 ## Roll protocol to r1206220 — _2023-10-06T04:26:22.000Z_
-######  Diff: [`40ddf1a...0ec9ed6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`40ddf1a...0ec9ed6`)
+######  Diff: [`40ddf1a...f050ff5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`40ddf1a...f050ff5`)
 
 ```diff
 @@ browser_protocol.pdl:9824 @@ experimental domain Storage
@@ -10748,19 +10778,4 @@ index bd277eb..09c420e 100644
    # Causes the body of the response to be received from the server and
    # returned as a single string. May only be issued for a request that
    # is paused in the Response stage and is mutually exclusive with
-```
-
-## Roll protocol to r913327 — _2021-08-19T09:15:31.000Z_
-######  Diff: [`d30492e...a558ebd`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d30492e...a558ebd`)
-
-```diff
-@@ browser_protocol.pdl:4451 @@ domain Log
-         error
-       # Logged text.
-       string text
--      optional enum category
--        cors
-       # Timestamp when this entry was added.
-       Runtime.Timestamp timestamp
-       # URL of the resource if known.
 ```

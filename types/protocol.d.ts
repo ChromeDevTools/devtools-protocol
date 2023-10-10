@@ -8744,11 +8744,11 @@ export namespace Protocol {
             /**
              * The plane angle between the Y-Z plane and the plane containing both the stylus axis and the Y axis, in degrees of the range [-90,90], a positive tiltX is to the right (default: 0)
              */
-            tiltX?: integer;
+            tiltX?: number;
             /**
              * The plane angle between the X-Z plane and the plane containing both the stylus axis and the X axis, in degrees of the range [-90,90], a positive tiltY is towards the user (default: 0).
              */
-            tiltY?: integer;
+            tiltY?: number;
             /**
              * The clockwise rotation of a pen stylus around its own major axis, in degrees in the range [0,359] (default: 0).
              */
@@ -8996,11 +8996,11 @@ export namespace Protocol {
             /**
              * The plane angle between the Y-Z plane and the plane containing both the stylus axis and the Y axis, in degrees of the range [-90,90], a positive tiltX is to the right (default: 0).
              */
-            tiltX?: integer;
+            tiltX?: number;
             /**
              * The plane angle between the X-Z plane and the plane containing both the stylus axis and the X axis, in degrees of the range [-90,90], a positive tiltY is towards the user (default: 0).
              */
-            tiltY?: integer;
+            tiltY?: number;
             /**
              * The clockwise rotation of a pen stylus around its own major axis, in degrees in the range [0,359] (default: 0).
              */
