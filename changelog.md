@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1208070 — _2023-10-11T04:26:19.000Z_
+######  Diff: [`37c2c03...ab03a1d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`37c2c03...ab03a1d`)
+
+```diff
+@@ browser_protocol.pdl:11376 @@ experimental domain Preload
+       MemoryPressureOnTrigger
+       MemoryPressureAfterTriggered
+       PrerenderingDisabledByDevTools
++      ResourceLoadBlockedByClient
+       SpeculationRuleRemoved
+       ActivatedWithAuxiliaryBrowsingContexts
+       MaxNumOfRunningEagerPrerendersExceeded
+```
+
 ## Roll protocol to r1207450 — _2023-10-10T04:26:17.000Z_
-######  Diff: [`f050ff5...3e3d61d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f050ff5...3e3d61d`)
+######  Diff: [`f050ff5...37c2c03`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f050ff5...37c2c03`)
 
 ```diff
 @@ browser_protocol.pdl:4499 @@ domain Input
@@ -10734,48 +10748,4 @@ index bd277eb..09c420e 100644
  
    # Types of not restored reasons for back-forward cache.
    experimental type BackForwardCacheNotRestoredReasonType extends string
-```
-
-## Roll protocol to r913948 — _2021-08-20T20:15:44.000Z_
-######  Diff: [`a558ebd...e355d86`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a558ebd...e355d86`)
-
-```diff
-@@ browser_protocol.pdl:9230 @@ domain Fetch
-       # need to represent some non-UTF8 values that can't be transmitted
-       # over the protocol as text.
-       optional binary binaryResponseHeaders
--      # A response body. If absent, original response body will be used if
--      # the request is intercepted at the response stage and empty body
--      # will be used if the request is intercepted at the request stage.
-+      # A response body.
-       optional binary body
-       # A textual representation of responseCode.
-       # If absent, a standard phrase matching responseCode is used.
-@@ -9262,26 +9260,6 @@ domain Fetch
-       # Response to  with an authChallenge.
-       AuthChallengeResponse authChallengeResponse
- 
--  # Continues loading of the paused response, optionally modifying the
--  # response headers. If either responseCode or headers are modified, all of them
--  # must be present.
--  experimental command continueResponse
--    parameters
--      # An id the client received in requestPaused event.
--      RequestId requestId
--      # An HTTP response code. If absent, original response code will be used.
--      optional integer responseCode
--      # A textual representation of responseCode.
--      # If absent, a standard phrase matching responseCode is used.
--      optional string responsePhrase
--      # Response headers. If absent, original response headers will be used.
--      optional array of HeaderEntry responseHeaders
--      # Alternative way of specifying response headers as a \0-separated
--      # series of name: value pairs. Prefer the above method unless you
--      # need to represent some non-UTF8 values that can't be transmitted
--      # over the protocol as text.
--      optional binary binaryResponseHeaders
--
-   # Causes the body of the response to be received from the server and
-   # returned as a single string. May only be issued for a request that
-   # is paused in the Response stage and is mutually exclusive with
 ```

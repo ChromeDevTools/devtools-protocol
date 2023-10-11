@@ -24016,7 +24016,6 @@
                         "MemoryPressureOnTrigger",
                         "MemoryPressureAfterTriggered",
                         "PrerenderingDisabledByDevTools",
-                        "ResourceLoadBlockedByClient",
                         "SpeculationRuleRemoved",
                         "ActivatedWithAuxiliaryBrowsingContexts",
                         "MaxNumOfRunningEagerPrerendersExceeded",
