@@ -2693,6 +2693,11 @@ export namespace ProtocolProxyApi {
         setShowIsolatedElements(params: Protocol.Overlay.SetShowIsolatedElementsRequest): Promise<void>;
 
         /**
+         * Show Window Controls Overlay for PWA
+         */
+        setShowWindowControlsOverlay(params: Protocol.Overlay.SetShowWindowControlsOverlayRequest): Promise<void>;
+
+        /**
          * Fired when the node should be inspected. This happens after call to `setInspectMode` or when
          * user manually inspects an element.
          */

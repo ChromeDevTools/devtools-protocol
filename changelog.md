@@ -1,7 +1,43 @@
 
 
+## Roll protocol to r1209236 — _2023-10-13T04:26:43.000Z_
+######  Diff: [`25e67ec...aba317c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`25e67ec...aba317c`)
+
+```diff
+@@ browser_protocol.pdl:7111 @@ experimental domain Overlay
+       # The content box highlight outline color (default: transparent).
+       optional DOM.RGBA outlineColor
+ 
+-  # Configuration for Window Controls Overlay
+-  type WindowControlsOverlayConfig extends object
+-    properties
+-      # Whether the title bar CSS should be shown when emulating the Window Controls Overlay.
+-      boolean showCSS
+-      # Seleted platforms to show the overlay.
+-      string selectedPlatform
+-      # The theme color defined in app manifest.
+-      string themeColor
+-
+   type ContainerQueryHighlightConfig extends object
+     properties
+       # A descriptor for the highlight appearance of container query containers.
+@@ -7371,12 +7361,6 @@ experimental domain Overlay
+       # An array of node identifiers and descriptors for the highlight appearance.
+       array of IsolatedElementHighlightConfig isolatedElementHighlightConfigs
+ 
+-  # Show Window Controls Overlay for PWA
+-  command setShowWindowControlsOverlay
+-    parameters
+-      # Window Controls Overlay data, null means hide Window Controls Overlay
+-      optional WindowControlsOverlayConfig windowControlsOverlayConfig
+-
+   # Fired when the node should be inspected. This happens after call to `setInspectMode` or when
+   # user manually inspects an element.
+   event inspectNodeRequested
+```
+
 ## Roll protocol to r1208070 — _2023-10-11T04:26:19.000Z_
-######  Diff: [`37c2c03...ab03a1d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`37c2c03...ab03a1d`)
+######  Diff: [`37c2c03...25e67ec`](https://github.com/ChromeDevTools/devtools-protocol/compare/`37c2c03...25e67ec`)
 
 ```diff
 @@ browser_protocol.pdl:11376 @@ experimental domain Preload
@@ -10698,54 +10734,4 @@ index bd277eb..09c420e 100644
    # Returns all browser cookies. Depending on the backend support, will return detailed cookie
    # information in the `cookies` field.
    experimental deprecated command getCookies
-```
-
-## Roll protocol to r914207 — _2021-08-23T07:15:27.000Z_
-######  Diff: [`e355d86...e36e630`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e355d86...e36e630`)
-
-```diff
-@@ browser_protocol.pdl:7897 @@ domain Page
-       OutstandingNetworkRequestDirectSocket
-       IsolatedWorldScript
-       InjectedStyleSheet
--      MediaSessionImplOnServiceCreated
-       # Disabled for render frame host reasons
--      ContentMediaSessionImplOnServiceCreated
--      ContentSecurityHandler
--      ContentWebAuthenticationAPI
--      ContentFileChooser
--      ContentSerial
--      ContentFileSystemAccess
--      ContentMediaDevicesDispatcherHost
--      ContentWebBluetooth
--      ContentWebUSB
--      ContentMediaSession
--      EmbedderPopupBlockerTabHelper
--      EmbedderSafeBrowsingTriggeredPopupBlocker
--      EmbedderSafeBrowsingThreatDetails
--      EmbedderAppBannerManager
--      EmbedderDomDistillerViewerSource
--      EmbedderDomDistillerSelfDeletingRequestDelegate
--      EmbedderOomInterventionTabHelper
--      EmbedderOfflinePage
--      EmbedderChromePasswordManagerClientBindCredentialManager
--      EmbedderPermissionRequestManager
--      EmbedderModalDialog
--      EmbedderExtensions
--      EmbedderExtensionMessaging
--      EmbedderExtensionMessagingForOpenPort
--      EmbedderExtensionSentMessageToCachedFrame
-+      MediaSessionImplOnServiceCreated
-+      SecurityHandler
-+      WebAuthenticationAPI
-+      FileChooser
-+      Serial
-+      FileSystemAccess
-+      MediaDevicesDispatcherHost
-+      WebBluetooth
-+      WebUSB
-+      MediaSession
- 
-   # Types of not restored reasons for back-forward cache.
-   experimental type BackForwardCacheNotRestoredReasonType extends string
 ```

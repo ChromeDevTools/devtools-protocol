@@ -3537,6 +3537,13 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Show Window Controls Overlay for PWA
+         */
+        'Overlay.setShowWindowControlsOverlay': {
+            paramsType: [Protocol.Overlay.SetShowWindowControlsOverlayRequest?];
+            returnType: void;
+        };
+        /**
          * Deprecated, please use addScriptToEvaluateOnNewDocument instead.
          */
         'Page.addScriptToEvaluateOnLoad': {
