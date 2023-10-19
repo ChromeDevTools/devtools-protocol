@@ -1818,6 +1818,23 @@ export namespace ProtocolProxyApi {
          */
         setGeolocationOverride(params: Protocol.Emulation.SetGeolocationOverrideRequest): Promise<void>;
 
+        getOverriddenSensorInformation(params: Protocol.Emulation.GetOverriddenSensorInformationRequest): Promise<Protocol.Emulation.GetOverriddenSensorInformationResponse>;
+
+        /**
+         * Overrides a platform sensor of a given type. If |enabled| is true, calls to
+         * Sensor.start() will use a virtual sensor as backend rather than fetching
+         * data from a real hardware sensor. Otherwise, existing virtual
+         * sensor-backend Sensor objects will fire an error event and new calls to
+         * Sensor.start() will attempt to use a real sensor instead.
+         */
+        setSensorOverrideEnabled(params: Protocol.Emulation.SetSensorOverrideEnabledRequest): Promise<void>;
+
+        /**
+         * Updates the sensor readings reported by a sensor type previously overriden
+         * by setSensorOverrideEnabled.
+         */
+        setSensorOverrideReadings(params: Protocol.Emulation.SetSensorOverrideReadingsRequest): Promise<void>;
+
         /**
          * Overrides the Idle state.
          */

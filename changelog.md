@@ -1,7 +1,134 @@
 
 
+## Roll protocol to r1211954 — _2023-10-19T04:26:27.000Z_
+######  Diff: [`a60ce47...3a23d67`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a60ce47...3a23d67`)
+
+```diff
+@@ browser_protocol.pdl:498 @@ experimental domain Audits
+       WarnAttributeValueExceedsMaxSize
+       WarnDomainNonASCII
+       WarnThirdPartyPhaseout
+-      WarnCrossSiteRedirectDowngradeChangesInclusion
+ 
+   type CookieOperation extends string
+     enum
+@@ -771,15 +770,6 @@ experimental domain Audits
+     properties
+       array of string trackingSites
+ 
+-  # This issue warns about third-party sites that are accessing cookies on the
+-  # current page, and have been permitted due to having a global metadata grant.
+-  # Note that in this context 'site' means eTLD+1. For example, if the URL
+-  # `https://example.test:80/web_page` was accessing cookies, the site reported
+-  # would be `example.test`.
+-  type CookieDeprecationMetadataIssueDetails extends object
+-    properties
+-      array of string allowedSites
+-
+   type ClientHintIssueReason extends string
+     enum
+       # Items in the accept-ch meta tag allow list must be valid origins.
+@@ -925,7 +915,6 @@ experimental domain Audits
+       ClientHintIssue
+       FederatedAuthRequestIssue
+       BounceTrackingIssue
+-      CookieDeprecationMetadataIssue
+       StylesheetLoadingIssue
+       FederatedAuthUserInfoRequestIssue
+       PropertyRuleIssue
+@@ -951,7 +940,6 @@ experimental domain Audits
+       optional ClientHintIssueDetails clientHintIssueDetails
+       optional FederatedAuthRequestIssueDetails federatedAuthRequestIssueDetails
+       optional BounceTrackingIssueDetails bounceTrackingIssueDetails
+-      optional CookieDeprecationMetadataIssueDetails cookieDeprecationMetadataIssueDetails
+       optional StylesheetLoadingIssueDetails stylesheetLoadingIssueDetails
+       optional PropertyRuleIssueDetails propertyRuleIssueDetails
+       optional FederatedAuthUserInfoRequestIssueDetails federatedAuthUserInfoRequestIssueDetails
+@@ -3935,49 +3923,6 @@ domain Emulation
+       optional string bitness
+       optional boolean wow64
+ 
+-  # Used to specify sensor types to emulate.
+-  # See https://w3c.github.io/sensors/#automation for more information.
+-  experimental type SensorType extends string
+-    enum
+-      absolute-orientation
+-      accelerometer
+-      ambient-light
+-      gravity
+-      gyroscope
+-      linear-acceleration
+-      magnetometer
+-      proximity
+-      relative-orientation
+-
+-  experimental type SensorMetadata extends object
+-    properties
+-      optional boolean available
+-      optional number minimumFrequency
+-      optional number maximumFrequency
+-
+-  experimental type SensorReadingSingle extends object
+-    properties
+-      number value
+-
+-  experimental type SensorReadingXYZ extends object
+-    properties
+-      number x
+-      number y
+-      number z
+-
+-  experimental type SensorReadingQuaternion extends object
+-    properties
+-      number x
+-      number y
+-      number z
+-      number w
+-
+-  experimental type SensorReading extends object
+-    properties
+-      optional SensorReadingSingle single
+-      optional SensorReadingXYZ xyz
+-      optional SensorReadingQuaternion quaternion
+-
+   # Tells whether emulation is supported.
+   command canEmulate
+     returns
+@@ -4107,30 +4052,6 @@ domain Emulation
+       # Mock accuracy
+       optional number accuracy
+ 
+-  experimental command getOverriddenSensorInformation
+-    parameters
+-      SensorType type
+-    returns
+-      number requestedSamplingFrequency
+-
+-  # Overrides a platform sensor of a given type. If |enabled| is true, calls to
+-  # Sensor.start() will use a virtual sensor as backend rather than fetching
+-  # data from a real hardware sensor. Otherwise, existing virtual
+-  # sensor-backend Sensor objects will fire an error event and new calls to
+-  # Sensor.start() will attempt to use a real sensor instead.
+-  experimental command setSensorOverrideEnabled
+-    parameters
+-      boolean enabled
+-      SensorType type
+-      optional SensorMetadata metadata
+-
+-  # Updates the sensor readings reported by a sensor type previously overriden
+-  # by setSensorOverrideEnabled.
+-  experimental command setSensorOverrideReadings
+-    parameters
+-      SensorType type
+-      SensorReading reading
+-
+   # Overrides the Idle state.
+   experimental command setIdleOverride
+     parameters
+```
+
 ## Roll protocol to r1209236 — _2023-10-13T04:26:43.000Z_
-######  Diff: [`25e67ec...aba317c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`25e67ec...aba317c`)
+######  Diff: [`25e67ec...a60ce47`](https://github.com/ChromeDevTools/devtools-protocol/compare/`25e67ec...a60ce47`)
 
 ```diff
 @@ browser_protocol.pdl:7111 @@ experimental domain Overlay
@@ -10715,23 +10842,4 @@ index bd277eb..09c420e 100644
        ContentSecurityHandler
        ContentWebAuthenticationAPI
        ContentFileChooser
-```
-
-## Roll protocol to r914246 — _2021-08-23T10:15:24.000Z_
-######  Diff: [`e36e630...cebcf39`](https://github.com/ChromeDevTools/devtools-protocol/compare/`e36e630...cebcf39`)
-
-```diff
-@@ browser_protocol.pdl:7211 @@ domain Page
-     returns
-       optional binary primaryIcon
- 
--  # Returns the unique (PWA) app id.
--  experimental command getAppId
--    returns
--      # Only returns a value if the feature flag 'WebAppEnableManifestId' is enabled
--      optional string appId
--
-   # Returns all browser cookies. Depending on the backend support, will return detailed cookie
-   # information in the `cookies` field.
-   experimental deprecated command getCookies
 ```

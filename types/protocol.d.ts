@@ -3259,7 +3259,7 @@ export namespace Protocol {
 
         export type CookieExclusionReason = ('ExcludeSameSiteUnspecifiedTreatedAsLax' | 'ExcludeSameSiteNoneInsecure' | 'ExcludeSameSiteLax' | 'ExcludeSameSiteStrict' | 'ExcludeInvalidSameParty' | 'ExcludeSamePartyCrossPartyContext' | 'ExcludeDomainNonASCII' | 'ExcludeThirdPartyCookieBlockedInFirstPartySet' | 'ExcludeThirdPartyPhaseout');
 
-        export type CookieWarningReason = ('WarnSameSiteUnspecifiedCrossSiteContext' | 'WarnSameSiteNoneInsecure' | 'WarnSameSiteUnspecifiedLaxAllowUnsafe' | 'WarnSameSiteStrictLaxDowngradeStrict' | 'WarnSameSiteStrictCrossDowngradeStrict' | 'WarnSameSiteStrictCrossDowngradeLax' | 'WarnSameSiteLaxCrossDowngradeStrict' | 'WarnSameSiteLaxCrossDowngradeLax' | 'WarnAttributeValueExceedsMaxSize' | 'WarnDomainNonASCII' | 'WarnThirdPartyPhaseout');
+        export type CookieWarningReason = ('WarnSameSiteUnspecifiedCrossSiteContext' | 'WarnSameSiteNoneInsecure' | 'WarnSameSiteUnspecifiedLaxAllowUnsafe' | 'WarnSameSiteStrictLaxDowngradeStrict' | 'WarnSameSiteStrictCrossDowngradeStrict' | 'WarnSameSiteStrictCrossDowngradeLax' | 'WarnSameSiteLaxCrossDowngradeStrict' | 'WarnSameSiteLaxCrossDowngradeLax' | 'WarnAttributeValueExceedsMaxSize' | 'WarnDomainNonASCII' | 'WarnThirdPartyPhaseout' | 'WarnCrossSiteRedirectDowngradeChangesInclusion');
 
         export type CookieOperation = ('SetCookie' | 'ReadCookie');
 
@@ -3496,6 +3496,17 @@ export namespace Protocol {
             trackingSites: string[];
         }
 
+        /**
+         * This issue warns about third-party sites that are accessing cookies on the
+         * current page, and have been permitted due to having a global metadata grant.
+         * Note that in this context 'site' means eTLD+1. For example, if the URL
+         * `https://example.test:80/web_page` was accessing cookies, the site reported
+         * would be `example.test`.
+         */
+        export interface CookieDeprecationMetadataIssueDetails {
+            allowedSites: string[];
+        }
+
         export type ClientHintIssueReason = ('MetaTagAllowListInvalidOrigin' | 'MetaTagModifiedHTML');
 
         export interface FederatedAuthRequestIssueDetails {
@@ -3588,7 +3599,7 @@ export namespace Protocol {
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue' | 'PropertyRuleIssue');
+        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'CookieDeprecationMetadataIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue' | 'PropertyRuleIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3612,6 +3623,7 @@ export namespace Protocol {
             clientHintIssueDetails?: ClientHintIssueDetails;
             federatedAuthRequestIssueDetails?: FederatedAuthRequestIssueDetails;
             bounceTrackingIssueDetails?: BounceTrackingIssueDetails;
+            cookieDeprecationMetadataIssueDetails?: CookieDeprecationMetadataIssueDetails;
             stylesheetLoadingIssueDetails?: StylesheetLoadingIssueDetails;
             propertyRuleIssueDetails?: PropertyRuleIssueDetails;
             federatedAuthUserInfoRequestIssueDetails?: FederatedAuthUserInfoRequestIssueDetails;
@@ -7902,6 +7914,41 @@ export namespace Protocol {
         }
 
         /**
+         * Used to specify sensor types to emulate.
+         * See https://w3c.github.io/sensors/#automation for more information.
+         */
+        export type SensorType = ('absolute-orientation' | 'accelerometer' | 'ambient-light' | 'gravity' | 'gyroscope' | 'linear-acceleration' | 'magnetometer' | 'proximity' | 'relative-orientation');
+
+        export interface SensorMetadata {
+            available?: boolean;
+            minimumFrequency?: number;
+            maximumFrequency?: number;
+        }
+
+        export interface SensorReadingSingle {
+            value: number;
+        }
+
+        export interface SensorReadingXYZ {
+            x: number;
+            y: number;
+            z: number;
+        }
+
+        export interface SensorReadingQuaternion {
+            x: number;
+            y: number;
+            z: number;
+            w: number;
+        }
+
+        export interface SensorReading {
+            single?: SensorReadingSingle;
+            xyz?: SensorReadingXYZ;
+            quaternion?: SensorReadingQuaternion;
+        }
+
+        /**
          * Enum of image types that can be disabled.
          */
         export type DisabledImageType = ('avif' | 'webp');
@@ -8073,6 +8120,25 @@ export namespace Protocol {
              * Mock accuracy
              */
             accuracy?: number;
+        }
+
+        export interface GetOverriddenSensorInformationRequest {
+            type: SensorType;
+        }
+
+        export interface GetOverriddenSensorInformationResponse {
+            requestedSamplingFrequency: number;
+        }
+
+        export interface SetSensorOverrideEnabledRequest {
+            enabled: boolean;
+            type: SensorType;
+            metadata?: SensorMetadata;
+        }
+
+        export interface SetSensorOverrideReadingsRequest {
+            type: SensorType;
+            reading: SensorReading;
         }
 
         export interface SetIdleOverrideRequest {
