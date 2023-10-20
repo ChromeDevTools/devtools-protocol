@@ -1,7 +1,39 @@
 
 
+## Roll protocol to r1212569 — _2023-10-20T04:26:29.000Z_
+######  Diff: [`631cf6b...20f7108`](https://github.com/ChromeDevTools/devtools-protocol/compare/`631cf6b...20f7108`)
+
+```diff
+@@ browser_protocol.pdl:8886 @@ domain Page
+       PageSupportNeeded
+       Circumstantial
+ 
+-  experimental type BackForwardCacheBlockingDetails extends object
+-    properties
+-      # Url of the file where blockage happened. Optional because of tests.
+-      optional string url
+-      # Function name where blockage happened. Optional because of anonymous functions and tests.
+-      optional string function
+-      # Line number in the script (0-based).
+-      integer lineNumber
+-      # Column number in the script (0-based).
+-      integer columnNumber
+-
+   experimental type BackForwardCacheNotRestoredExplanation extends object
+     properties
+       # Type of the reason
+@@ -8908,7 +8897,6 @@ domain Page
+       # - EmbedderExtensionSentMessageToCachedFrame: the extension ID.
+       #
+       optional string context
+-      optional array of BackForwardCacheBlockingDetails details
+ 
+   experimental type BackForwardCacheNotRestoredExplanationTree extends object
+     properties
+```
+
 ## Roll protocol to r1211954 — _2023-10-19T04:26:27.000Z_
-######  Diff: [`a60ce47...3a23d67`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a60ce47...3a23d67`)
+######  Diff: [`a60ce47...631cf6b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a60ce47...631cf6b`)
 
 ```diff
 @@ browser_protocol.pdl:498 @@ experimental domain Audits
@@ -10826,20 +10858,4 @@ index bd277eb..09c420e 100644
    experimental command autoAttachRelated
      parameters
        TargetID targetId
-```
-
-## Roll protocol to r914689 — _2021-08-24T11:15:27.000Z_
-######  Diff: [`cebcf39...6626782`](https://github.com/ChromeDevTools/devtools-protocol/compare/`cebcf39...6626782`)
-
-```diff
-@@ browser_protocol.pdl:7903 @@ domain Page
-       OutstandingNetworkRequestDirectSocket
-       IsolatedWorldScript
-       InjectedStyleSheet
-+      MediaSessionImplOnServiceCreated
-       # Disabled for render frame host reasons
-+      ContentMediaSessionImplOnServiceCreated
-       ContentSecurityHandler
-       ContentWebAuthenticationAPI
-       ContentFileChooser
 ```

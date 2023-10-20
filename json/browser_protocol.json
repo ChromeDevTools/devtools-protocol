@@ -17237,6 +17237,35 @@
                     ]
                 },
                 {
+                    "id": "BackForwardCacheBlockingDetails",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "url",
+                            "description": "Url of the file where blockage happened. Optional because of tests.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "function",
+                            "description": "Function name where blockage happened. Optional because of anonymous functions and tests.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "lineNumber",
+                            "description": "Line number in the script (0-based).",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "columnNumber",
+                            "description": "Column number in the script (0-based).",
+                            "type": "integer"
+                        }
+                    ]
+                },
+                {
                     "id": "BackForwardCacheNotRestoredExplanation",
                     "experimental": true,
                     "type": "object",
@@ -17256,6 +17285,14 @@
                             "description": "Context associated with the reason. The meaning of this context is\ndependent on the reason:\n- EmbedderExtensionSentMessageToCachedFrame: the extension ID.",
                             "optional": true,
                             "type": "string"
+                        },
+                        {
+                            "name": "details",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "BackForwardCacheBlockingDetails"
+                            }
                         }
                     ]
                 },

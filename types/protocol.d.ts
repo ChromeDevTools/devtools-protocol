@@ -13371,6 +13371,25 @@ export namespace Protocol {
          */
         export type BackForwardCacheNotRestoredReasonType = ('SupportPending' | 'PageSupportNeeded' | 'Circumstantial');
 
+        export interface BackForwardCacheBlockingDetails {
+            /**
+             * Url of the file where blockage happened. Optional because of tests.
+             */
+            url?: string;
+            /**
+             * Function name where blockage happened. Optional because of anonymous functions and tests.
+             */
+            function?: string;
+            /**
+             * Line number in the script (0-based).
+             */
+            lineNumber: integer;
+            /**
+             * Column number in the script (0-based).
+             */
+            columnNumber: integer;
+        }
+
         export interface BackForwardCacheNotRestoredExplanation {
             /**
              * Type of the reason
@@ -13386,6 +13405,7 @@ export namespace Protocol {
              * - EmbedderExtensionSentMessageToCachedFrame: the extension ID.
              */
             context?: string;
+            details?: BackForwardCacheBlockingDetails[];
         }
 
         export interface BackForwardCacheNotRestoredExplanationTree {
