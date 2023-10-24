@@ -1,7 +1,33 @@
 
 
+## Roll protocol to r1213968 — _2023-10-24T04:26:10.000Z_
+######  Diff: [`886d013...b1fc2fd`](https://github.com/ChromeDevTools/devtools-protocol/compare/`886d013...b1fc2fd`)
+
+```diff
+@@ browser_protocol.pdl:9927 @@ experimental domain Storage
+       # duration in seconds
+       array of integer ends
+ 
+-  experimental type AttributionReportingTriggerDataMatching extends string
+-    enum
+-      exact
+-      modulus
+-
+   experimental type AttributionReportingSourceRegistration extends object
+     properties
+       Network.TimeSinceEpoch time
+@@ -9949,7 +9944,6 @@ experimental domain Storage
+       array of AttributionReportingFilterDataEntry filterData
+       array of AttributionReportingAggregationKeysEntry aggregationKeys
+       optional UnsignedInt64AsBase10 debugKey
+-      AttributionReportingTriggerDataMatching triggerDataMatching
+ 
+   experimental type AttributionReportingSourceRegistrationResult extends string
+     enum
+```
+
 ## Roll protocol to r1212569 — _2023-10-20T04:26:29.000Z_
-######  Diff: [`631cf6b...20f7108`](https://github.com/ChromeDevTools/devtools-protocol/compare/`631cf6b...20f7108`)
+######  Diff: [`631cf6b...886d013`](https://github.com/ChromeDevTools/devtools-protocol/compare/`631cf6b...886d013`)
 
 ```diff
 @@ browser_protocol.pdl:8886 @@ domain Page
@@ -10840,22 +10866,4 @@ index bd277eb..09c420e 100644
  
    # Information about the Resource on the page.
    experimental type FrameResource extends object
-```
-
-## Roll protocol to r914774 — _2021-08-24T17:15:43.000Z_
-######  Diff: [`6626782...5b380d1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6626782...5b380d1`)
-
-```diff
-@@ browser_protocol.pdl:8902 @@ domain Target
- 
-   # Adds the specified target to the list of targets that will be monitored for any related target
-   # creation (such as child frames, child workers and new versions of service worker) and reported
--  # through `attachedToTarget`. The specified target is also auto-attached.
--  # This cancels the effect of any previous `setAutoAttach` and is also cancelled by subsequent
--  # `setAutoAttach`. Only available at the Browser target.
-+  # through `attachedToTarget`. This cancel the effect of any previous `setAutoAttach` and is also
-+  # cancelled by subsequent `setAutoAttach`. Only available at the Browser target.
-   experimental command autoAttachRelated
-     parameters
-       TargetID targetId
 ```

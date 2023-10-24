@@ -15304,6 +15304,8 @@ export namespace Protocol {
             ends: integer[];
         }
 
+        export type AttributionReportingTriggerDataMatching = ('exact' | 'modulus');
+
         export interface AttributionReportingSourceRegistration {
             time: Network.TimeSinceEpoch;
             /**
@@ -15324,6 +15326,7 @@ export namespace Protocol {
             filterData: AttributionReportingFilterDataEntry[];
             aggregationKeys: AttributionReportingAggregationKeysEntry[];
             debugKey?: UnsignedInt64AsBase10;
+            triggerDataMatching: AttributionReportingTriggerDataMatching;
         }
 
         export type AttributionReportingSourceRegistrationResult = ('success' | 'internalError' | 'insufficientSourceCapacity' | 'insufficientUniqueDestinationCapacity' | 'excessiveReportingOrigins' | 'prohibitedByBrowserPolicy' | 'successNoised' | 'destinationReportingLimitReached' | 'destinationGlobalLimitReached' | 'destinationBothLimitsReached' | 'reportingOriginsPerSiteLimitReached' | 'exceedsMaxChannelCapacity');
