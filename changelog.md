@@ -1,7 +1,43 @@
 
 
+## Roll protocol to r1218079 — _2023-11-01T04:26:32.000Z_
+######  Diff: [`fbb8eea...786abe5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fbb8eea...786abe5`)
+
+```diff
+@@ browser_protocol.pdl:9344 @@ experimental domain ServiceWorker
+       optional number scriptResponseTime
+       optional array of Target.TargetID controlledClients
+       optional Target.TargetID targetId
+-      optional string routerRules
+ 
+   # ServiceWorker error message.
+   type ServiceWorkerErrorMessage extends object
+@@ -11572,13 +11571,6 @@ experimental domain Preload
+       PrefetchStatus prefetchStatus
+       Network.RequestId requestId
+ 
+-  # Information of headers to be displayed when the header mismatch occurred.
+-  type PrerenderMismatchedHeaders extends object
+-    properties
+-      string headerName
+-      optional string initialValue
+-      optional string activationValue
+-
+   # Fired when a prerender attempt is updated.
+   event prerenderStatusUpdated
+     parameters
+@@ -11588,7 +11580,6 @@ experimental domain Preload
+       # This is used to give users more information about the name of Mojo interface
+       # that is incompatible with prerender and has caused the cancellation of the attempt.
+       optional string disallowedMojoInterface
+-      optional array of PrerenderMismatchedHeaders mismatchedHeaders
+ 
+   # Send a list of sources for all preloading attempts in a document.
+   event preloadingAttemptSourcesUpdated
+```
+
 ## Roll protocol to r1213968 — _2023-10-24T04:26:10.000Z_
-######  Diff: [`886d013...b1fc2fd`](https://github.com/ChromeDevTools/devtools-protocol/compare/`886d013...b1fc2fd`)
+######  Diff: [`886d013...fbb8eea`](https://github.com/ChromeDevTools/devtools-protocol/compare/`886d013...fbb8eea`)
 
 ```diff
 @@ browser_protocol.pdl:9927 @@ experimental domain Storage
@@ -10851,19 +10887,4 @@ index bd277eb..09c420e 100644
        UnloadHandlerExistsInSubFrame
        ServiceWorkerUnregistration
        CacheControlNoStore
-```
-
-## Roll protocol to r915197 — _2021-08-25T15:15:50.000Z_
-######  Diff: [`5b380d1...3ac2966`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5b380d1...3ac2966`)
-
-```diff
-@@ browser_protocol.pdl:6848 @@ domain Page
-       experimental CrossOriginIsolatedContextType crossOriginIsolatedContextType
-       # Indicated which gated APIs / features are available.
-       experimental array of GatedAPIFeatures gatedAPIFeatures
-+      # Frame document's origin trials with at least one token present.
-+      experimental optional array of OriginTrial originTrials
- 
-   # Information about the Resource on the page.
-   experimental type FrameResource extends object
 ```

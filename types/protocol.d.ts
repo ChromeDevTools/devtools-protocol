@@ -15018,6 +15018,7 @@ export namespace Protocol {
             scriptResponseTime?: number;
             controlledClients?: Target.TargetID[];
             targetId?: Target.TargetID;
+            routerRules?: string;
         }
 
         /**
@@ -17644,6 +17645,15 @@ export namespace Protocol {
         export type PrefetchStatus = ('PrefetchAllowed' | 'PrefetchFailedIneligibleRedirect' | 'PrefetchFailedInvalidRedirect' | 'PrefetchFailedMIMENotSupported' | 'PrefetchFailedNetError' | 'PrefetchFailedNon2XX' | 'PrefetchFailedPerPageLimitExceeded' | 'PrefetchEvicted' | 'PrefetchHeldback' | 'PrefetchIneligibleRetryAfter' | 'PrefetchIsPrivacyDecoy' | 'PrefetchIsStale' | 'PrefetchNotEligibleBrowserContextOffTheRecord' | 'PrefetchNotEligibleDataSaverEnabled' | 'PrefetchNotEligibleExistingProxy' | 'PrefetchNotEligibleHostIsNonUnique' | 'PrefetchNotEligibleNonDefaultStoragePartition' | 'PrefetchNotEligibleSameSiteCrossOriginPrefetchRequiredProxy' | 'PrefetchNotEligibleSchemeIsNotHttps' | 'PrefetchNotEligibleUserHasCookies' | 'PrefetchNotEligibleUserHasServiceWorker' | 'PrefetchNotEligibleBatterySaverEnabled' | 'PrefetchNotEligiblePreloadingDisabled' | 'PrefetchNotFinishedInTime' | 'PrefetchNotStarted' | 'PrefetchNotUsedCookiesChanged' | 'PrefetchProxyNotAvailable' | 'PrefetchResponseUsed' | 'PrefetchSuccessfulButNotUsed' | 'PrefetchNotUsedProbeFailed');
 
         /**
+         * Information of headers to be displayed when the header mismatch occurred.
+         */
+        export interface PrerenderMismatchedHeaders {
+            headerName: string;
+            initialValue?: string;
+            activationValue?: string;
+        }
+
+        /**
          * Upsert. Currently, it is only emitted when a rule set added.
          */
         export interface RuleSetUpdatedEvent {
@@ -17692,6 +17702,7 @@ export namespace Protocol {
              * that is incompatible with prerender and has caused the cancellation of the attempt.
              */
             disallowedMojoInterface?: string;
+            mismatchedHeaders?: PrerenderMismatchedHeaders[];
         }
 
         /**
