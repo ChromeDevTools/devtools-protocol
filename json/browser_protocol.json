@@ -1647,6 +1647,8 @@
                         "IdTokenHttpNotFound",
                         "IdTokenNoResponse",
                         "IdTokenInvalidResponse",
+                        "IdTokenIdpErrorResponse",
+                        "IdTokenCrossSiteIdpErrorResponse",
                         "IdTokenInvalidRequest",
                         "IdTokenInvalidContentType",
                         "ErrorIdToken",
@@ -2517,7 +2519,7 @@
                 },
                 {
                     "id": "PermissionDescriptor",
-                    "description": "Definition of PermissionDescriptor defined in the Permissions API:\nhttps://w3c.github.io/permissions/#dictdef-permissiondescriptor.",
+                    "description": "Definition of PermissionDescriptor defined in the Permissions API:\nhttps://w3c.github.io/permissions/#dom-permissiondescriptor.",
                     "experimental": true,
                     "type": "object",
                     "properties": [
@@ -16263,6 +16265,7 @@
                         "unload",
                         "usb",
                         "vertical-scroll",
+                        "web-printing",
                         "web-share",
                         "window-management",
                         "window-placement",

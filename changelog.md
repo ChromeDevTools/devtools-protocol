@@ -1,7 +1,39 @@
 
 
+## Roll protocol to r1219864 — _2023-11-04T04:26:10.000Z_
+######  Diff: [`5e6cb44...78d792e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5e6cb44...78d792e`)
+
+```diff
+@@ browser_protocol.pdl:827 @@ experimental domain Audits
+       IdTokenHttpNotFound
+       IdTokenNoResponse
+       IdTokenInvalidResponse
+-      IdTokenIdpErrorResponse
+-      IdTokenCrossSiteIdpErrorResponse
+       IdTokenInvalidRequest
+       IdTokenInvalidContentType
+       ErrorIdToken
+@@ -1251,7 +1249,7 @@ domain Browser
+       prompt
+ 
+   # Definition of PermissionDescriptor defined in the Permissions API:
+-  # https://w3c.github.io/permissions/#dom-permissiondescriptor.
++  # https://w3c.github.io/permissions/#dictdef-permissiondescriptor.
+   experimental type PermissionDescriptor extends object
+     properties
+       # Name of permission.
+@@ -7629,7 +7627,6 @@ domain Page
+       unload
+       usb
+       vertical-scroll
+-      web-printing
+       web-share
+       # Alias for 'window-placement' (crbug.com/1328581).
+       window-management
+```
+
 ## Roll protocol to r1218079 — _2023-11-01T04:26:32.000Z_
-######  Diff: [`fbb8eea...786abe5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fbb8eea...786abe5`)
+######  Diff: [`fbb8eea...5e6cb44`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fbb8eea...5e6cb44`)
 
 ```diff
 @@ browser_protocol.pdl:9344 @@ experimental domain ServiceWorker
@@ -10873,18 +10905,4 @@ index bd277eb..09c420e 100644
        # The URL of the document that triggered the report.
        string initiatorUrl
        # The name of the endpoint group that should be used to deliver the report.
-```
-
-## Roll protocol to r917689 — _2021-09-02T16:15:35.000Z_
-######  Diff: [`3ac2966...e4f6e30`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3ac2966...e4f6e30`)
-
-```diff
-@@ browser_protocol.pdl:7849 @@ domain Page
-       BrowsingInstanceNotSwapped
-       BackForwardCacheDisabledForDelegate
-       OptInUnloadHeaderNotPresent
--      UnloadHandlerExistsInMainFrame
-       UnloadHandlerExistsInSubFrame
-       ServiceWorkerUnregistration
-       CacheControlNoStore
 ```
