@@ -15305,6 +15305,15 @@ export namespace Protocol {
             ends: integer[];
         }
 
+        export interface AttributionReportingTriggerSpec {
+            /**
+             * number instead of integer because not all uint32 can be represented by
+             * int
+             */
+            triggerData: number[];
+            eventReportWindows: AttributionReportingEventReportWindows;
+        }
+
         export type AttributionReportingTriggerDataMatching = ('exact' | 'modulus');
 
         export interface AttributionReportingSourceRegistration {
@@ -15313,7 +15322,7 @@ export namespace Protocol {
              * duration in seconds
              */
             expiry: integer;
-            eventReportWindows: AttributionReportingEventReportWindows;
+            triggerSpecs: AttributionReportingTriggerSpec[];
             /**
              * duration in seconds
              */
