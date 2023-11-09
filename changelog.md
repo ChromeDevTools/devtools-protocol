@@ -1,7 +1,47 @@
 
 
+## Roll protocol to r1222075 — _2023-11-09T04:26:36.000Z_
+######  Diff: [`66e9966...e420a9b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`66e9966...e420a9b`)
+
+```diff
+@@ browser_protocol.pdl:11615 @@ experimental domain FedCm
+       SignIn
+       SignUp
+ 
+-  # The types of FedCM dialogs.
++  # Whether the dialog shown is an account chooser or an auto re-authentication dialog.
+   type DialogType extends string
+     enum
+       AccountChooser
+       AutoReauthn
+       ConfirmIdpLogin
+ 
+-  # The buttons on the FedCM dialog.
+-  type DialogButton extends string
+-    enum
+-      ConfirmIdpLoginContinue
+-
+   # Corresponds to IdentityRequestAccount
+   type Account extends object
+     properties
+@@ -11666,10 +11661,11 @@ experimental domain FedCm
+       string dialogId
+       integer accountIndex
+ 
+-  command clickDialogButton
++  # Only valid if the dialog type is ConfirmIdpLogin. Acts as if the user had
++  # clicked the continue button.
++  command confirmIdpLogin
+     parameters
+       string dialogId
+-      DialogButton dialogButton
+ 
+   command dismissDialog
+     parameters
+```
+
 ## Roll protocol to r1220723 — _2023-11-07T04:26:31.000Z_
-######  Diff: [`2860a80...3981bc5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2860a80...3981bc5`)
+######  Diff: [`2860a80...66e9966`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2860a80...66e9966`)
 
 ```diff
 @@ browser_protocol.pdl:9931 @@ experimental domain Storage
@@ -10891,28 +10931,4 @@ index bd277eb..09c420e 100644
    # An object providing the result of a network resource load.
    experimental type LoadNetworkResourcePageResult extends object
      properties
-```
-
-## Roll protocol to r918695 — _2021-09-07T06:15:26.000Z_
-######  Diff: [`69ec1d8...841918b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`69ec1d8...841918b`)
-
-```diff
-@@ browser_protocol.pdl:6105 @@ domain Network
-   # The status of a Reporting API report.
-   experimental type ReportStatus extends string
-     enum
--      # Report has been queued and no attempt has been made to deliver it yet,
-+      # Report has been queued but no attempt has been made to deliver it yet,
-       # or attempted previous upload failed (impermanently).
-       Queued
-       # There is an ongoing attempt to upload this report.
-       Pending
--      # Deletion of this report was requested while it was pending, so it will
--      # be removed after possibly outstanding upload attempts complete (successful
--      # or not).
--      MarkedForRemoval
--      # Successfully uploaded and MarkedForRemoval.
--      Success
- 
-   experimental type ReportId extends string
 ```

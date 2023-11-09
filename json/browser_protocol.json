@@ -24551,12 +24551,20 @@
                 },
                 {
                     "id": "DialogType",
-                    "description": "Whether the dialog shown is an account chooser or an auto re-authentication dialog.",
+                    "description": "The types of FedCM dialogs.",
                     "type": "string",
                     "enum": [
                         "AccountChooser",
                         "AutoReauthn",
                         "ConfirmIdpLogin"
+                    ]
+                },
+                {
+                    "id": "DialogButton",
+                    "description": "The buttons on the FedCM dialog.",
+                    "type": "string",
+                    "enum": [
+                        "ConfirmIdpLoginContinue"
                     ]
                 },
                 {
@@ -24671,12 +24679,15 @@
                     ]
                 },
                 {
-                    "name": "confirmIdpLogin",
-                    "description": "Only valid if the dialog type is ConfirmIdpLogin. Acts as if the user had\nclicked the continue button.",
+                    "name": "clickDialogButton",
                     "parameters": [
                         {
                             "name": "dialogId",
                             "type": "string"
+                        },
+                        {
+                            "name": "dialogButton",
+                            "$ref": "DialogButton"
                         }
                     ]
                 },

@@ -17735,9 +17735,14 @@ export namespace Protocol {
         export type LoginState = ('SignIn' | 'SignUp');
 
         /**
-         * Whether the dialog shown is an account chooser or an auto re-authentication dialog.
+         * The types of FedCM dialogs.
          */
         export type DialogType = ('AccountChooser' | 'AutoReauthn' | 'ConfirmIdpLogin');
+
+        /**
+         * The buttons on the FedCM dialog.
+         */
+        export type DialogButton = ('ConfirmIdpLoginContinue');
 
         /**
          * Corresponds to IdentityRequestAccount
@@ -17772,8 +17777,9 @@ export namespace Protocol {
             accountIndex: integer;
         }
 
-        export interface ConfirmIdpLoginRequest {
+        export interface ClickDialogButtonRequest {
             dialogId: string;
+            dialogButton: DialogButton;
         }
 
         export interface DismissDialogRequest {
