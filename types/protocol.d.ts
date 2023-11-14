@@ -5059,6 +5059,29 @@ export namespace Protocol {
         }
 
         /**
+         * CSS font-palette-values rule representation.
+         */
+        export interface CSSFontPaletteValuesRule {
+            /**
+             * The css style sheet identifier (absent for user agent stylesheet and user-specified
+             * stylesheet rules) this rule came from.
+             */
+            styleSheetId?: StyleSheetId;
+            /**
+             * Parent stylesheet's origin.
+             */
+            origin: StyleSheetOrigin;
+            /**
+             * Associated font palette name.
+             */
+            fontPaletteName: Value;
+            /**
+             * Associated style declaration.
+             */
+            style: CSSStyle;
+        }
+
+        /**
          * CSS property at-rule representation.
          */
         export interface CSSPropertyRule {
@@ -5278,6 +5301,10 @@ export namespace Protocol {
              * A list of CSS property registrations matching this node.
              */
             cssPropertyRegistrations?: CSSPropertyRegistration[];
+            /**
+             * A font-palette-values rule matching this node.
+             */
+            cssFontPaletteValuesRule?: CSSFontPaletteValuesRule;
             /**
              * Id of the first parent element that does not have display: contents.
              */

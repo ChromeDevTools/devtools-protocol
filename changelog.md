@@ -1,7 +1,41 @@
 
 
+## Roll protocol to r1224083 — _2023-11-14T04:26:27.000Z_
+######  Diff: [`d21da35...990e46c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d21da35...990e46c`)
+
+```diff
+@@ browser_protocol.pdl:1926 @@ experimental domain CSS
+       string syntax
+ 
+ 
+-  # CSS font-palette-values rule representation.
+-  type CSSFontPaletteValuesRule extends object
+-    properties
+-      # The css style sheet identifier (absent for user agent stylesheet and user-specified
+-      # stylesheet rules) this rule came from.
+-      optional StyleSheetId styleSheetId
+-      # Parent stylesheet's origin.
+-      StyleSheetOrigin origin
+-      # Associated font palette name.
+-      Value fontPaletteName
+-      # Associated style declaration.
+-      CSSStyle style
+-
+   # CSS property at-rule representation.
+   type CSSPropertyRule extends object
+     properties
+@@ -2083,8 +2070,6 @@ experimental domain CSS
+       optional array of CSSPropertyRule cssPropertyRules
+       # A list of CSS property registrations matching this node.
+       optional array of CSSPropertyRegistration cssPropertyRegistrations
+-      # A font-palette-values rule matching this node.
+-      optional CSSFontPaletteValuesRule cssFontPaletteValuesRule
+       # Id of the first parent element that does not have display: contents.
+       experimental optional DOM.NodeId parentLayoutNodeId
+```
+
 ## Roll protocol to r1222075 — _2023-11-09T04:26:36.000Z_
-######  Diff: [`66e9966...e420a9b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`66e9966...e420a9b`)
+######  Diff: [`66e9966...d21da35`](https://github.com/ChromeDevTools/devtools-protocol/compare/`66e9966...d21da35`)
 
 ```diff
 @@ browser_protocol.pdl:11615 @@ experimental domain FedCm
@@ -10903,32 +10937,4 @@ index bd277eb..09c420e 100644
    # Enables CPU throttling to emulate slow CPUs.
    experimental command setCPUThrottlingRate
      parameters
-```
-
-## Roll protocol to r918755 — _2021-09-07T12:15:26.000Z_
-######  Diff: [`841918b...f18b042`](https://github.com/ChromeDevTools/devtools-protocol/compare/`841918b...f18b042`)
-
-```diff
-@@ browser_protocol.pdl:6133 @@ domain Network
-       Network.TimeSinceEpoch timestamp
-       # How many uploads deep the related request was.
-       integer depth
--      # The number of delivery attempts made so far, not including an active attempt.
--      integer completedAttempts
-       object body
--      ReportStatus status
- 
-   # Is sent whenever a new report is added.
-   # And after 'enableReportingApi' for all existing reports.
-@@ -6144,10 +6141,6 @@ domain Network
-     parameters
-       ReportingApiReport report
- 
--  experimental event reportingApiReportUpdated
--    parameters
--      ReportingApiReport report
--
-   # An object providing the result of a network resource load.
-   experimental type LoadNetworkResourcePageResult extends object
-     properties
 ```
