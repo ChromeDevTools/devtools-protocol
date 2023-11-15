@@ -1,7 +1,31 @@
 
 
+## Roll protocol to r1224742 — _2023-11-15T04:26:44.000Z_
+######  Diff: [`b28b672...1bd035c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b28b672...1bd035c`)
+
+```diff
+@@ browser_protocol.pdl:4250 @@ domain Emulation
+     parameters
+       # User agent to use.
+       string userAgent
+-      # Browser language to emulate.
++      # Browser langugage to emulate.
+       optional string acceptLanguage
+       # The platform navigator.platform should return.
+       optional string platform
+@@ -6427,7 +6427,7 @@ domain Network
+     parameters
+       # User agent to use.
+       string userAgent
+-      # Browser language to emulate.
++      # Browser langugage to emulate.
+       optional string acceptLanguage
+       # The platform navigator.platform should return.
+       optional string platform
+```
+
 ## Roll protocol to r1224083 — _2023-11-14T04:26:27.000Z_
-######  Diff: [`d21da35...990e46c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d21da35...990e46c`)
+######  Diff: [`d21da35...b28b672`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d21da35...b28b672`)
 
 ```diff
 @@ browser_protocol.pdl:1926 @@ experimental domain CSS
@@ -10917,24 +10941,4 @@ index bd277eb..09c420e 100644
        InjectedStyleSheet
        # Disabled for render frame host reasons
        ContentSecurityHandler
-```
-
-## Roll protocol to r918800 — _2021-09-07T15:15:38.000Z_
-######  Diff: [`f18b042...8759635`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f18b042...8759635`)
-
-```diff
-@@ browser_protocol.pdl:3412 @@ domain Emulation
-       # Whether to enable to disable focus emulation.
-       boolean enabled
- 
--  # Automatically render all web contents using a dark theme.
--  experimental command setAutoDarkModeOverride
--    parameters
--      # Whether to enable or disable automatic dark mode.
--      # If not specified, any existing override will be cleared.
--      optional boolean enabled
--
-   # Enables CPU throttling to emulate slow CPUs.
-   experimental command setCPUThrottlingRate
-     parameters
 ```

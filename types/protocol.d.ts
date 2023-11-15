@@ -8283,7 +8283,7 @@ export namespace Protocol {
              */
             userAgent: string;
             /**
-             * Browser langugage to emulate.
+             * Browser language to emulate.
              */
             acceptLanguage?: string;
             /**
@@ -11353,7 +11353,7 @@ export namespace Protocol {
              */
             userAgent: string;
             /**
-             * Browser langugage to emulate.
+             * Browser language to emulate.
              */
             acceptLanguage?: string;
             /**
