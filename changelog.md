@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1225305 — _2023-11-16T04:27:11.000Z_
+######  Diff: [`5d6dd33...bc436de`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5d6dd33...bc436de`)
+
+```diff
+@@ browser_protocol.pdl:1847 @@ experimental domain CSS
+     properties
+       # Font's family name reported by platform.
+       string familyName
+-      # Font's PostScript name reported by platform.
+-      string postScriptName
+       # Indicates if the font was downloaded or resolved locally.
+       boolean isCustomFont
+       # Amount of glyphs that were rendered with this font.
+```
+
 ## Roll protocol to r1224742 — _2023-11-15T04:26:44.000Z_
-######  Diff: [`b28b672...1bd035c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b28b672...1bd035c`)
+######  Diff: [`b28b672...5d6dd33`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b28b672...5d6dd33`)
 
 ```diff
 @@ browser_protocol.pdl:4250 @@ domain Emulation
@@ -10926,19 +10941,4 @@ index bd277eb..09c420e 100644
        EmbedderPopupBlockerTabHelper
        EmbedderSafeBrowsingTriggeredPopupBlocker
        EmbedderSafeBrowsingThreatDetails
-```
-
-## Roll protocol to r918852 — _2021-09-07T18:15:30.000Z_
-######  Diff: [`8759635...2bce709`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8759635...2bce709`)
-
-```diff
-@@ browser_protocol.pdl:7923 @@ domain Page
-       KeyboardLock
-       WebOTPService
-       OutstandingNetworkRequestDirectSocket
--      InjectedJavascript
-+      IsolatedWorldScript
-       InjectedStyleSheet
-       # Disabled for render frame host reasons
-       ContentSecurityHandler
 ```

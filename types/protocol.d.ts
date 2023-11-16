@@ -4922,6 +4922,10 @@ export namespace Protocol {
              */
             familyName: string;
             /**
+             * Font's PostScript name reported by platform.
+             */
+            postScriptName: string;
+            /**
              * Indicates if the font was downloaded or resolved locally.
              */
             isCustomFont: boolean;
