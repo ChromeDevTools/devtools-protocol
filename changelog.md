@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1226504 — _2023-11-18T04:27:17.000Z_
+######  Diff: [`a523432...61de396`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a523432...61de396`)
+
+```diff
+@@ browser_protocol.pdl:8307 @@ domain Page
+         ReturnAsStream
+       # Whether or not to generate tagged (accessible) PDF. Defaults to embedder choice.
+       experimental optional boolean generateTaggedPDF
+-      # Whether or not to embed the document outline into the PDF.
+-      experimental optional boolean generateDocumentOutline
+     returns
+       # Base64-encoded pdf data. Empty if |returnAsStream| is specified.
+       binary data
+```
+
 ## Roll protocol to r1225305 — _2023-11-16T04:27:11.000Z_
-######  Diff: [`5d6dd33...bc436de`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5d6dd33...bc436de`)
+######  Diff: [`5d6dd33...a523432`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5d6dd33...a523432`)
 
 ```diff
 @@ browser_protocol.pdl:1847 @@ experimental domain CSS
@@ -10924,20 +10939,6 @@ index bd277eb..09c420e 100644
        ContentWebUSB
        ContentMediaSession
 +      ContentMediaSessionService
-       EmbedderPopupBlockerTabHelper
-       EmbedderSafeBrowsingTriggeredPopupBlocker
-       EmbedderSafeBrowsingThreatDetails
-```
-
-## Roll protocol to r919243 — _2021-09-08T14:15:32.000Z_
-######  Diff: [`2bce709...3caee55`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2bce709...3caee55`)
-
-```diff
-@@ browser_protocol.pdl:7935 @@ domain Page
-       ContentWebBluetooth
-       ContentWebUSB
-       ContentMediaSession
--      ContentMediaSessionService
        EmbedderPopupBlockerTabHelper
        EmbedderSafeBrowsingTriggeredPopupBlocker
        EmbedderSafeBrowsingThreatDetails

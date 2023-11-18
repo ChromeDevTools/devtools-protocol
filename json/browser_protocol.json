@@ -17998,6 +17998,13 @@
                             "experimental": true,
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "generateDocumentOutline",
+                            "description": "Whether or not to embed the document outline into the PDF.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ],
                     "returns": [

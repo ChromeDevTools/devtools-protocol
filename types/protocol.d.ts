@@ -13856,6 +13856,10 @@ export namespace Protocol {
              * Whether or not to generate tagged (accessible) PDF. Defaults to embedder choice.
              */
             generateTaggedPDF?: boolean;
+            /**
+             * Whether or not to embed the document outline into the PDF.
+             */
+            generateDocumentOutline?: boolean;
         }
 
         export interface PrintToPDFResponse {
