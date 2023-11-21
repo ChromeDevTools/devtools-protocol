@@ -13631,13 +13631,6 @@ export namespace Protocol {
             adScriptId?: AdScriptId;
         }
 
-        export interface GetCookiesResponse {
-            /**
-             * Array of cookie objects.
-             */
-            cookies: Network.Cookie[];
-        }
-
         export interface GetFrameTreeResponse {
             /**
              * Present frame tree structure.

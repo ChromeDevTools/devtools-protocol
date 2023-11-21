@@ -12625,6 +12625,7 @@
                             "name": "sameParty",
                             "description": "True if cookie is SameParty.",
                             "experimental": true,
+                            "deprecated": true,
                             "type": "boolean"
                         },
                         {
@@ -17676,23 +17677,6 @@
                             "description": "Identifies the bottom-most script which caused the frame to be labelled\nas an ad. Only sent if frame is labelled as an ad and id is available.",
                             "optional": true,
                             "$ref": "AdScriptId"
-                        }
-                    ]
-                },
-                {
-                    "name": "getCookies",
-                    "description": "Returns all browser cookies for the page and all of its subframes. Depending\non the backend support, will return detailed cookie information in the\n`cookies` field.",
-                    "experimental": true,
-                    "deprecated": true,
-                    "redirect": "Network",
-                    "returns": [
-                        {
-                            "name": "cookies",
-                            "description": "Array of cookie objects.",
-                            "type": "array",
-                            "items": {
-                                "$ref": "Network.Cookie"
-                            }
                         }
                     ]
                 },

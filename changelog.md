@@ -1,7 +1,39 @@
 
 
+## Roll protocol to r1227218 — _2023-11-21T04:27:08.000Z_
+######  Diff: [`9a97892...3bc9c2e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9a97892...3bc9c2e`)
+
+```diff
+@@ browser_protocol.pdl:5827 @@ domain Network
+       # Cookie Priority
+       experimental CookiePriority priority
+       # True if cookie is SameParty.
+-      experimental deprecated boolean sameParty
++      experimental boolean sameParty
+       # Cookie source scheme type.
+       experimental CookieSourceScheme sourceScheme
+       # Cookie source port. Valid values are {-1, [1, 65535]}, -1 indicates an unspecified port.
+@@ -8155,6 +8155,16 @@ domain Page
+       # as an ad. Only sent if frame is labelled as an ad and id is available.
+       optional AdScriptId adScriptId
+ 
++  # Returns all browser cookies for the page and all of its subframes. Depending
++  # on the backend support, will return detailed cookie information in the
++  # `cookies` field.
++  experimental deprecated command getCookies
++    # Use 'Network.getCookies' instead
++    redirect Network
++    returns
++      # Array of cookie objects.
++      array of Network.Cookie cookies
++
+   # Returns present frame tree structure.
+   command getFrameTree
+     returns
+```
+
 ## Roll protocol to r1226504 — _2023-11-18T04:27:17.000Z_
-######  Diff: [`a523432...61de396`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a523432...61de396`)
+######  Diff: [`a523432...9a97892`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a523432...9a97892`)
 
 ```diff
 @@ browser_protocol.pdl:8307 @@ domain Page
@@ -10928,18 +10960,4 @@ index bd277eb..09c420e 100644
  
    # Details for issues around "Attribution Reporting API" usage.
    # Explainer: https://github.com/WICG/conversion-measurement-api
-```
-
-## Roll protocol to r919343 — _2021-09-08T18:15:31.000Z_
-######  Diff: [`3caee55...c80e5d1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3caee55...c80e5d1`)
-
-```diff
-@@ browser_protocol.pdl:7935 @@ domain Page
-       ContentWebBluetooth
-       ContentWebUSB
-       ContentMediaSession
-+      ContentMediaSessionService
-       EmbedderPopupBlockerTabHelper
-       EmbedderSafeBrowsingTriggeredPopupBlocker
-       EmbedderSafeBrowsingThreatDetails
 ```
