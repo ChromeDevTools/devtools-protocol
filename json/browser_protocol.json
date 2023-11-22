@@ -12263,6 +12263,17 @@
                     ]
                 },
                 {
+                    "id": "ServiceWorkerRouterInfo",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "ruleIdMatched",
+                            "type": "integer"
+                        }
+                    ]
+                },
+                {
                     "id": "Response",
                     "description": "HTTP response data.",
                     "type": "object",
@@ -12351,6 +12362,13 @@
                             "description": "Specifies that the request was served from the prefetch cache.",
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "serviceWorkerRouterInfo",
+                            "description": "Infomation about how Service Worker Static Router was used.",
+                            "experimental": true,
+                            "optional": true,
+                            "$ref": "ServiceWorkerRouterInfo"
                         },
                         {
                             "name": "encodedDataLength",

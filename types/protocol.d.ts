@@ -10239,6 +10239,10 @@ export namespace Protocol {
          */
         export type AlternateProtocolUsage = ('alternativeJobWonWithoutRace' | 'alternativeJobWonRace' | 'mainJobWonRace' | 'mappingMissing' | 'broken' | 'dnsAlpnH3JobWonWithoutRace' | 'dnsAlpnH3JobWonRace' | 'unspecifiedReason');
 
+        export interface ServiceWorkerRouterInfo {
+            ruleIdMatched: integer;
+        }
+
         /**
          * HTTP response data.
          */
@@ -10303,6 +10307,10 @@ export namespace Protocol {
              * Specifies that the request was served from the prefetch cache.
              */
             fromPrefetchCache?: boolean;
+            /**
+             * Infomation about how Service Worker Static Router was used.
+             */
+            serviceWorkerRouterInfo?: ServiceWorkerRouterInfo;
             /**
              * Total number of bytes received for this request so far.
              */

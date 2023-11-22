@@ -1,7 +1,33 @@
 
 
+## Roll protocol to r1227788 — _2023-11-22T04:27:05.000Z_
+######  Diff: [`60572e5...18d6726`](https://github.com/ChromeDevTools/devtools-protocol/compare/`60572e5...18d6726`)
+
+```diff
+@@ browser_protocol.pdl:5679 @@ domain Network
+       # This value is used when the reason is unknown.
+       unspecifiedReason
+ 
+-  experimental type ServiceWorkerRouterInfo extends object
+-    properties
+-      integer ruleIdMatched
+-
+   # HTTP response data.
+   type Response extends object
+     properties
+@@ -5716,8 +5712,6 @@ domain Network
+       optional boolean fromServiceWorker
+       # Specifies that the request was served from the prefetch cache.
+       optional boolean fromPrefetchCache
+-      # Infomation about how Service Worker Static Router was used.
+-      experimental optional ServiceWorkerRouterInfo serviceWorkerRouterInfo
+       # Total number of bytes received for this request so far.
+       number encodedDataLength
+       # Timing information for the given request.
+```
+
 ## Roll protocol to r1227218 — _2023-11-21T04:27:08.000Z_
-######  Diff: [`9a97892...3bc9c2e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9a97892...3bc9c2e`)
+######  Diff: [`9a97892...60572e5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`9a97892...60572e5`)
 
 ```diff
 @@ browser_protocol.pdl:5827 @@ domain Network
@@ -10946,18 +10972,4 @@ index bd277eb..09c420e 100644
        # Disabled for render frame host reasons
        ContentSecurityHandler
        ContentWebAuthenticationAPI
-```
-
-## Roll protocol to r919376 — _2021-09-08T19:15:34.000Z_
-######  Diff: [`c80e5d1...a27d92f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c80e5d1...a27d92f`)
-
-```diff
-@@ browser_protocol.pdl:739 @@ experimental domain Audits
-       AttributionSourceUntrustworthyOrigin
-       AttributionUntrustworthyOrigin
-       AttributionTriggerDataTooLarge
--      AttributionEventSourceTriggerDataTooLarge
- 
-   # Details for issues around "Attribution Reporting API" usage.
-   # Explainer: https://github.com/WICG/conversion-measurement-api
 ```
