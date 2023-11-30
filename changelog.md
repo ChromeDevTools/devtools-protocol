@@ -1,7 +1,36 @@
 
 
+## Roll protocol to r1231134 — _2023-11-30T04:27:01.000Z_
+######  Diff: [`2dcad56...a197027`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2dcad56...a197027`)
+
+```diff
+@@ browser_protocol.pdl:7651 @@ domain Page
+       sync-xhr
+       unload
+       usb
+-      usb-unrestricted
+       vertical-scroll
+       web-printing
+       web-share
+@@ -11637,14 +11636,11 @@ experimental domain FedCm
+       AccountChooser
+       AutoReauthn
+       ConfirmIdpLogin
+-      Error
+ 
+   # The buttons on the FedCM dialog.
+   type DialogButton extends string
+     enum
+       ConfirmIdpLoginContinue
+-      ErrorGotIt
+-      ErrorMoreDetails
+ 
+   # Corresponds to IdentityRequestAccount
+   type Account extends object
+```
+
 ## Roll protocol to r1227788 — _2023-11-22T04:27:05.000Z_
-######  Diff: [`60572e5...18d6726`](https://github.com/ChromeDevTools/devtools-protocol/compare/`60572e5...18d6726`)
+######  Diff: [`60572e5...2dcad56`](https://github.com/ChromeDevTools/devtools-protocol/compare/`60572e5...2dcad56`)
 
 ```diff
 @@ browser_protocol.pdl:5679 @@ domain Network
@@ -10958,18 +10987,4 @@ index bd277eb..09c420e 100644
        ch-prefers-color-scheme
        ch-rtt
        ch-ua
-```
-
-## Roll protocol to r919640 — _2021-09-09T05:15:45.000Z_
-######  Diff: [`a27d92f...2e2333f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`a27d92f...2e2333f`)
-
-```diff
-@@ browser_protocol.pdl:7926 @@ domain Page
-       OutstandingNetworkRequestDirectSocket
-       InjectedJavascript
-       InjectedStyleSheet
--      Dummy
-       # Disabled for render frame host reasons
-       ContentSecurityHandler
-       ContentWebAuthenticationAPI
 ```

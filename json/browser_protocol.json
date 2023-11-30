@@ -16322,6 +16322,7 @@
                         "sync-xhr",
                         "unload",
                         "usb",
+                        "usb-unrestricted",
                         "vertical-scroll",
                         "web-printing",
                         "web-share",
@@ -24604,7 +24605,8 @@
                     "enum": [
                         "AccountChooser",
                         "AutoReauthn",
-                        "ConfirmIdpLogin"
+                        "ConfirmIdpLogin",
+                        "Error"
                     ]
                 },
                 {
@@ -24612,7 +24614,9 @@
                     "description": "The buttons on the FedCM dialog.",
                     "type": "string",
                     "enum": [
-                        "ConfirmIdpLoginContinue"
+                        "ConfirmIdpLoginContinue",
+                        "ErrorGotIt",
+                        "ErrorMoreDetails"
                     ]
                 },
                 {
