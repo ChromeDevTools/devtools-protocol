@@ -1,7 +1,41 @@
 
 
+## Roll protocol to r1231733 — _2023-12-01T04:27:08.000Z_
+######  Diff: [`92cb696...1ce8059`](https://github.com/ChromeDevTools/devtools-protocol/compare/`92cb696...1ce8059`)
+
+```diff
+@@ browser_protocol.pdl:11103 @@ experimental domain WebAuthn
+       # Sets whether User Verification succeeds or fails for an authenticator.
+       # Defaults to false.
+       optional boolean isUserVerified
+-      # Credentials created by this authenticator will have the backup
+-      # eligibility (BE) flag set to this value. Defaults to false.
+-      # https://w3c.github.io/webauthn/#sctn-credential-backup
+-      optional boolean defaultBackupEligibility
+-      # Credentials created by this authenticator will have the backup state
+-      # (BS) flag set to this value. Defaults to false.
+-      # https://w3c.github.io/webauthn/#sctn-credential-backup
+-      optional boolean defaultBackupState
+ 
+   type Credential extends object
+     properties
+@@ -11679,12 +11671,6 @@ experimental domain FedCm
+       string title
+       optional string subtitle
+ 
+-  # Triggered when a dialog is closed, either by user action, JS abort,
+-  # or a command below.
+-  event dialogClosed
+-    parameters
+-      string dialogId
+-
+   command enable
+     parameters
+       # Allows callers to disable the promise rejection delay that would
+```
+
 ## Roll protocol to r1231134 — _2023-11-30T04:27:01.000Z_
-######  Diff: [`2dcad56...a197027`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2dcad56...a197027`)
+######  Diff: [`2dcad56...92cb696`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2dcad56...92cb696`)
 
 ```diff
 @@ browser_protocol.pdl:7651 @@ domain Page
@@ -10973,18 +11007,4 @@ index bd277eb..09c420e 100644
  
    # Status for an Origin Trial.
    experimental type OriginTrialStatus extends string
-```
-
-## Roll protocol to r921910 — _2021-09-15T23:15:28.000Z_
-######  Diff: [`2e2333f...d99de50`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2e2333f...d99de50`)
-
-```diff
-@@ browser_protocol.pdl:6715 @@ domain Page
-       ch-device-memory
-       ch-downlink
-       ch-ect
-+      ch-lang
-       ch-prefers-color-scheme
-       ch-rtt
-       ch-ua
 ```

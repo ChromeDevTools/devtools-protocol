@@ -23617,6 +23617,18 @@
                             "description": "Sets whether User Verification succeeds or fails for an authenticator.\nDefaults to false.",
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "defaultBackupEligibility",
+                            "description": "Credentials created by this authenticator will have the backup\neligibility (BE) flag set to this value. Defaults to false.\nhttps://w3c.github.io/webauthn/#sctn-credential-backup",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "defaultBackupState",
+                            "description": "Credentials created by this authenticator will have the backup state\n(BS) flag set to this value. Defaults to false.\nhttps://w3c.github.io/webauthn/#sctn-credential-backup",
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ]
                 },
@@ -24697,6 +24709,16 @@
                         {
                             "name": "subtitle",
                             "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "dialogClosed",
+                    "description": "Triggered when a dialog is closed, either by user action, JS abort,\nor a command below.",
+                    "parameters": [
+                        {
+                            "name": "dialogId",
                             "type": "string"
                         }
                     ]

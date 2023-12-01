@@ -4116,6 +4116,12 @@ export namespace ProtocolProxyApi {
 
         on(event: 'dialogShown', listener: (params: Protocol.FedCm.DialogShownEvent) => void): void;
 
+        /**
+         * Triggered when a dialog is closed, either by user action, JS abort,
+         * or a command below.
+         */
+        on(event: 'dialogClosed', listener: (params: Protocol.FedCm.DialogClosedEvent) => void): void;
+
     }
 }
 

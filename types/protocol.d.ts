@@ -17270,6 +17270,18 @@ export namespace Protocol {
              * Defaults to false.
              */
             isUserVerified?: boolean;
+            /**
+             * Credentials created by this authenticator will have the backup
+             * eligibility (BE) flag set to this value. Defaults to false.
+             * https://w3c.github.io/webauthn/#sctn-credential-backup
+             */
+            defaultBackupEligibility?: boolean;
+            /**
+             * Credentials created by this authenticator will have the backup state
+             * (BS) flag set to this value. Defaults to false.
+             * https://w3c.github.io/webauthn/#sctn-credential-backup
+             */
+            defaultBackupState?: boolean;
         }
 
         export interface Credential {
@@ -17833,6 +17845,14 @@ export namespace Protocol {
              */
             title: string;
             subtitle?: string;
+        }
+
+        /**
+         * Triggered when a dialog is closed, either by user action, JS abort,
+         * or a command below.
+         */
+        export interface DialogClosedEvent {
+            dialogId: string;
         }
     }
 }

@@ -743,6 +743,11 @@ export namespace ProtocolMapping {
          */
         'Preload.preloadingAttemptSourcesUpdated': [Protocol.Preload.PreloadingAttemptSourcesUpdatedEvent];
         'FedCm.dialogShown': [Protocol.FedCm.DialogShownEvent];
+        /**
+         * Triggered when a dialog is closed, either by user action, JS abort,
+         * or a command below.
+         */
+        'FedCm.dialogClosed': [Protocol.FedCm.DialogClosedEvent];
     }
 
     export interface Commands {
