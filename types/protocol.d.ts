@@ -7900,6 +7900,18 @@ export namespace Protocol {
             maskLength: integer;
         }
 
+        export const enum DevicePostureType {
+            Continuous = 'continuous',
+            Folded = 'folded',
+        }
+
+        export interface DevicePosture {
+            /**
+             * Current posture of the device (DevicePostureType enum)
+             */
+            type: ('continuous' | 'folded');
+        }
+
         export interface MediaFeature {
             name: string;
             value: string;
@@ -8077,6 +8089,11 @@ export namespace Protocol {
              * is turned-off.
              */
             displayFeature?: DisplayFeature;
+            /**
+             * If set, the posture of a foldable device. If not set the posture is set
+             * to continuous.
+             */
+            devicePosture?: DevicePosture;
         }
 
         export interface SetScrollbarsHiddenRequest {

@@ -1,7 +1,37 @@
 
 
+## Roll protocol to r1232444 — _2023-12-03T04:26:26.000Z_
+######  Diff: [`c137c7c...61c1062`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c137c7c...61c1062`)
+
+```diff
+@@ browser_protocol.pdl:3916 @@ domain Emulation
+       # A display feature that only splits content will have a 0 mask_length.
+       integer maskLength
+ 
+-  type DevicePosture extends object
+-    properties
+-      # Current posture of the device
+-      enum type
+-        continuous
+-        folded
+-
+   type MediaFeature extends object
+     properties
+       string name
+@@ -4080,9 +4073,6 @@ domain Emulation
+       # If set, the display feature of a multi-segment screen. If not set, multi-segment support
+       # is turned-off.
+       experimental optional DisplayFeature displayFeature
+-      # If set, the posture of a foldable device. If not set the posture is set
+-      # to continuous.
+-      experimental optional DevicePosture devicePosture
+ 
+   experimental command setScrollbarsHidden
+     parameters
+```
+
 ## Roll protocol to r1231733 — _2023-12-01T04:27:08.000Z_
-######  Diff: [`92cb696...1ce8059`](https://github.com/ChromeDevTools/devtools-protocol/compare/`92cb696...1ce8059`)
+######  Diff: [`92cb696...c137c7c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`92cb696...c137c7c`)
 
 ```diff
 @@ browser_protocol.pdl:11103 @@ experimental domain WebAuthn
@@ -10993,18 +11023,4 @@ index bd277eb..09c420e 100644
        EmbedderPopupBlockerTabHelper
        EmbedderSafeBrowsingTriggeredPopupBlocker
        EmbedderSafeBrowsingThreatDetails
-```
-
-## Roll protocol to r922637 — _2021-09-17T20:15:26.000Z_
-######  Diff: [`d99de50...b86f904`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d99de50...b86f904`)
-
-```diff
-@@ browser_protocol.pdl:6800 @@ domain Page
-       FeatureDisabled
-       TokenDisabled
-       FeatureDisabledForUser
--      UnknownTrial
- 
-   # Status for an Origin Trial.
-   experimental type OriginTrialStatus extends string
 ```
