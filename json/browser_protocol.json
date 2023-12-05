@@ -1109,6 +1109,7 @@
                         "Script",
                         "ServiceWorker",
                         "SharedWorker",
+                        "SpeculationRules",
                         "Stylesheet",
                         "Track",
                         "Video",

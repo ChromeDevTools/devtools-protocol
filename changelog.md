@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1233178 — _2023-12-05T04:26:58.000Z_
+######  Diff: [`c098eb8...e34310c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c098eb8...e34310c`)
+
+```diff
+@@ browser_protocol.pdl:554 @@ experimental domain Audits
+       Script
+       ServiceWorker
+       SharedWorker
+-      SpeculationRules
+       Stylesheet
+       Track
+       Video
+```
+
 ## Roll protocol to r1232444 — _2023-12-03T04:26:26.000Z_
-######  Diff: [`c137c7c...61c1062`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c137c7c...61c1062`)
+######  Diff: [`c137c7c...c098eb8`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c137c7c...c098eb8`)
 
 ```diff
 @@ browser_protocol.pdl:3916 @@ domain Emulation
