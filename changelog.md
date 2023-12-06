@@ -1,7 +1,23 @@
 
 
+## Roll protocol to r1233758 — _2023-12-06T04:27:12.000Z_
+######  Diff: [`accc8b6...6125f6f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`accc8b6...6125f6f`)
+
+```diff
+@@ browser_protocol.pdl:11577 @@ experimental domain Preload
+       PrefetchFailedNetError
+       PrefetchFailedNon2XX
+       PrefetchFailedPerPageLimitExceeded
+-      PrefetchEvictedAfterCandidateRemoved
+-      PrefetchEvictedForNewerPrefetch
++      PrefetchEvicted
+       PrefetchHeldback
+       # A previous prefetch to the origin got a HTTP 503 response with an
+       # Retry-After header that has no elapsed yet.
+```
+
 ## Roll protocol to r1233178 — _2023-12-05T04:26:58.000Z_
-######  Diff: [`c098eb8...e34310c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c098eb8...e34310c`)
+######  Diff: [`c098eb8...accc8b6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c098eb8...accc8b6`)
 
 ```diff
 @@ browser_protocol.pdl:554 @@ experimental domain Audits
