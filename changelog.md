@@ -1,7 +1,32 @@
 
 
+## Roll protocol to r1234845 — _2023-12-08T04:27:01.000Z_
+######  Diff: [`8db4cb9...8a25193`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8db4cb9...8a25193`)
+
+```diff
+@@ browser_protocol.pdl:6465 @@ domain Network
+       integer dataLength
+       # Actual bytes received (might be less than dataLength for compressed encodings).
+       integer encodedDataLength
+-      # Data that was received.
+-      experimental optional binary data
+-
+-  # Enables streaming of the response for the given requestId.
+-  # If enabled, the dataReceived event contains the data that was received during streaming.
+-  experimental command streamResourceContent
+-    parameters
+-      # Identifier of the request to stream.
+-      RequestId requestId
+-    returns
+-      # Data that has been buffered until streaming is enabled.
+-      binary bufferedData
+ 
+   # Fired when EventSource message is received.
+   event eventSourceMessageReceived
+```
+
 ## Roll protocol to r1233758 — _2023-12-06T04:27:12.000Z_
-######  Diff: [`accc8b6...6125f6f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`accc8b6...6125f6f`)
+######  Diff: [`accc8b6...8db4cb9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`accc8b6...8db4cb9`)
 
 ```diff
 @@ browser_protocol.pdl:11577 @@ experimental domain Preload
@@ -11039,18 +11064,4 @@ index bd277eb..09c420e 100644
  
    # A cookie which was not stored from a response with the corresponding reason.
    experimental type BlockedSetCookieWithReason extends object
-```
-
-## Roll protocol to r923255 — _2021-09-21T06:15:25.000Z_
-######  Diff: [`f62186c...384a24c`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f62186c...384a24c`)
-
-```diff
-@@ browser_protocol.pdl:7937 @@ domain Page
-       ContentWebBluetooth
-       ContentWebUSB
-       ContentMediaSession
--      ContentMediaSessionService
-       EmbedderPopupBlockerTabHelper
-       EmbedderSafeBrowsingTriggeredPopupBlocker
-       EmbedderSafeBrowsingThreatDetails
 ```

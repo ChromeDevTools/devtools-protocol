@@ -2400,6 +2400,12 @@ export namespace ProtocolProxyApi {
         setUserAgentOverride(params: Protocol.Network.SetUserAgentOverrideRequest): Promise<void>;
 
         /**
+         * Enables streaming of the response for the given requestId.
+         * If enabled, the dataReceived event contains the data that was received during streaming.
+         */
+        streamResourceContent(params: Protocol.Network.StreamResourceContentRequest): Promise<Protocol.Network.StreamResourceContentResponse>;
+
+        /**
          * Returns information about the COEP/COOP isolation status.
          */
         getSecurityIsolationStatus(params: Protocol.Network.GetSecurityIsolationStatusRequest): Promise<Protocol.Network.GetSecurityIsolationStatusResponse>;
