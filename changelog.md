@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1235375 — _2023-12-09T04:26:39.000Z_
+######  Diff: [`8f7e4a0...7c70a7a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8f7e4a0...7c70a7a`)
+
+```diff
+@@ browser_protocol.pdl:8891 @@ domain Page
+       WebRTCSticky
+       WebTransportSticky
+       WebSocketSticky
+-      SmartCard
+       # Disabled for RenderFrameHost reasons
+       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
+       ContentSecurityHandler
+```
+
 ## Roll protocol to r1234845 — _2023-12-08T04:27:01.000Z_
-######  Diff: [`8db4cb9...8a25193`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8db4cb9...8a25193`)
+######  Diff: [`8db4cb9...8f7e4a0`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8db4cb9...8f7e4a0`)
 
 ```diff
 @@ browser_protocol.pdl:6465 @@ domain Network
@@ -11038,30 +11052,4 @@ index bd277eb..09c420e 100644
        EmbedderPopupBlockerTabHelper
        EmbedderSafeBrowsingTriggeredPopupBlocker
        EmbedderSafeBrowsingThreatDetails
-```
-
-## Roll protocol to r923359 — _2021-09-21T13:15:22.000Z_
-######  Diff: [`384a24c...d6f4069`](https://github.com/ChromeDevTools/devtools-protocol/compare/`384a24c...d6f4069`)
-
-```diff
-@@ browser_protocol.pdl:5151 @@ domain Network
-       # (which is required in order to use "SameParty"); or specified the "SameSite=Strict"
-       # attribute (which is forbidden when using "SameParty").
-       SamePartyConflictsWithOtherAttributes
--      # The cookie's name/value pair size exceeded the size limit defined in
--      # RFC6265bis.
--      NameValuePairExceedsMaxSize
- 
-   # Types of reasons why a cookie may not be sent with a request.
-   experimental type CookieBlockedReason extends string
-@@ -5198,9 +5195,6 @@ domain Network
-       SchemefulSameSiteUnspecifiedTreatedAsLax
-       # The cookie had the "SameParty" attribute and the request was made from a cross-party context.
-       SamePartyFromCrossPartyContext
--      # The cookie's name/value pair size exceeded the size limit defined in
--      # RFC6265bis.
--      NameValuePairExceedsMaxSize
- 
-   # A cookie which was not stored from a response with the corresponding reason.
-   experimental type BlockedSetCookieWithReason extends object
 ```

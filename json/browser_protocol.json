@@ -17309,6 +17309,7 @@
                         "WebRTCSticky",
                         "WebTransportSticky",
                         "WebSocketSticky",
+                        "SmartCard",
                         "ContentSecurityHandler",
                         "ContentWebAuthenticationAPI",
                         "ContentFileChooser",
