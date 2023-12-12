@@ -3515,11 +3515,9 @@ export namespace ProtocolProxyApi {
 
         on(event: 'storageBucketDeleted', listener: (params: Protocol.Storage.StorageBucketDeletedEvent) => void): void;
 
-        /**
-         * TODO(crbug.com/1458532): Add other Attribution Reporting events, e.g.
-         * trigger registration.
-         */
         on(event: 'attributionReportingSourceRegistered', listener: (params: Protocol.Storage.AttributionReportingSourceRegisteredEvent) => void): void;
+
+        on(event: 'attributionReportingTriggerRegistered', listener: (params: Protocol.Storage.AttributionReportingTriggerRegisteredEvent) => void): void;
 
     }
 

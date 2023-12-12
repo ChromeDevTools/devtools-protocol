@@ -2483,6 +2483,7 @@
                         "audioCapture",
                         "backgroundSync",
                         "backgroundFetch",
+                        "capturedSurfaceControl",
                         "clipboardReadWrite",
                         "clipboardSanitizedWrite",
                         "displayCapture",
@@ -4189,6 +4190,13 @@
                             "name": "location",
                             "description": "Text position of a new rule in the target style sheet.",
                             "$ref": "SourceRange"
+                        },
+                        {
+                            "name": "nodeForPropertySyntaxValidation",
+                            "description": "NodeId for the DOM node in whose context custom property declarations for registered properties should be\nvalidated. If omitted, declarations in the new rule text can only be validated statically, which may produce\nincorrect results if the declaration contains a var() for example.",
+                            "experimental": true,
+                            "optional": true,
+                            "$ref": "DOM.NodeId"
                         }
                     ],
                     "returns": [
@@ -4775,6 +4783,13 @@
                             "items": {
                                 "$ref": "StyleDeclarationEdit"
                             }
+                        },
+                        {
+                            "name": "nodeForPropertySyntaxValidation",
+                            "description": "NodeId for the DOM node in whose context custom property declarations for registered properties should be\nvalidated. If omitted, declarations in the new rule text can only be validated statically, which may produce\nincorrect results if the declaration contains a var() for example.",
+                            "experimental": true,
+                            "optional": true,
+                            "$ref": "DOM.NodeId"
                         }
                     ],
                     "returns": [
@@ -16304,6 +16319,7 @@
                         "bluetooth",
                         "browsing-topics",
                         "camera",
+                        "captured-surface-control",
                         "ch-dpr",
                         "ch-device-memory",
                         "ch-downlink",
@@ -20532,6 +20548,47 @@
                     ]
                 },
                 {
+                    "id": "AttributionReportingFilterConfig",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "filterValues",
+                            "type": "array",
+                            "items": {
+                                "$ref": "AttributionReportingFilterDataEntry"
+                            }
+                        },
+                        {
+                            "name": "lookbackWindow",
+                            "description": "duration in seconds",
+                            "optional": true,
+                            "type": "integer"
+                        }
+                    ]
+                },
+                {
+                    "id": "AttributionReportingFilterPair",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "filters",
+                            "type": "array",
+                            "items": {
+                                "$ref": "AttributionReportingFilterConfig"
+                            }
+                        },
+                        {
+                            "name": "notFilters",
+                            "type": "array",
+                            "items": {
+                                "$ref": "AttributionReportingFilterConfig"
+                            }
+                        }
+                    ]
+                },
+                {
                     "id": "AttributionReportingAggregationKeysEntry",
                     "experimental": true,
                     "type": "object",
@@ -20689,6 +20746,202 @@
                         "destinationBothLimitsReached",
                         "reportingOriginsPerSiteLimitReached",
                         "exceedsMaxChannelCapacity"
+                    ]
+                },
+                {
+                    "id": "AttributionReportingSourceRegistrationTimeConfig",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "include",
+                        "exclude"
+                    ]
+                },
+                {
+                    "id": "AttributionReportingAggregatableValueEntry",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "key",
+                            "type": "string"
+                        },
+                        {
+                            "name": "value",
+                            "description": "number instead of integer because not all uint32 can be represented by\nint",
+                            "type": "number"
+                        }
+                    ]
+                },
+                {
+                    "id": "AttributionReportingEventTriggerData",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "data",
+                            "$ref": "UnsignedInt64AsBase10"
+                        },
+                        {
+                            "name": "priority",
+                            "$ref": "SignedInt64AsBase10"
+                        },
+                        {
+                            "name": "dedupKey",
+                            "optional": true,
+                            "$ref": "UnsignedInt64AsBase10"
+                        },
+                        {
+                            "name": "filters",
+                            "$ref": "AttributionReportingFilterPair"
+                        }
+                    ]
+                },
+                {
+                    "id": "AttributionReportingAggregatableTriggerData",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "keyPiece",
+                            "$ref": "UnsignedInt128AsBase16"
+                        },
+                        {
+                            "name": "sourceKeys",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        {
+                            "name": "filters",
+                            "$ref": "AttributionReportingFilterPair"
+                        }
+                    ]
+                },
+                {
+                    "id": "AttributionReportingAggregatableDedupKey",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "dedupKey",
+                            "optional": true,
+                            "$ref": "UnsignedInt64AsBase10"
+                        },
+                        {
+                            "name": "filters",
+                            "$ref": "AttributionReportingFilterPair"
+                        }
+                    ]
+                },
+                {
+                    "id": "AttributionReportingTriggerRegistration",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "filters",
+                            "$ref": "AttributionReportingFilterPair"
+                        },
+                        {
+                            "name": "debugKey",
+                            "optional": true,
+                            "$ref": "UnsignedInt64AsBase10"
+                        },
+                        {
+                            "name": "aggregatableDedupKeys",
+                            "type": "array",
+                            "items": {
+                                "$ref": "AttributionReportingAggregatableDedupKey"
+                            }
+                        },
+                        {
+                            "name": "eventTriggerData",
+                            "type": "array",
+                            "items": {
+                                "$ref": "AttributionReportingEventTriggerData"
+                            }
+                        },
+                        {
+                            "name": "aggregatableTriggerData",
+                            "type": "array",
+                            "items": {
+                                "$ref": "AttributionReportingAggregatableTriggerData"
+                            }
+                        },
+                        {
+                            "name": "aggregatableValues",
+                            "type": "array",
+                            "items": {
+                                "$ref": "AttributionReportingAggregatableValueEntry"
+                            }
+                        },
+                        {
+                            "name": "debugReporting",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "aggregationCoordinatorOrigin",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "sourceRegistrationTimeConfig",
+                            "$ref": "AttributionReportingSourceRegistrationTimeConfig"
+                        },
+                        {
+                            "name": "triggerContextId",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "id": "AttributionReportingEventLevelResult",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "success",
+                        "successDroppedLowerPriority",
+                        "internalError",
+                        "noCapacityForAttributionDestination",
+                        "noMatchingSources",
+                        "deduplicated",
+                        "excessiveAttributions",
+                        "priorityTooLow",
+                        "neverAttributedSource",
+                        "excessiveReportingOrigins",
+                        "noMatchingSourceFilterData",
+                        "prohibitedByBrowserPolicy",
+                        "noMatchingConfigurations",
+                        "excessiveReports",
+                        "falselyAttributedSource",
+                        "reportWindowPassed",
+                        "notRegistered",
+                        "reportWindowNotStarted",
+                        "noMatchingTriggerData"
+                    ]
+                },
+                {
+                    "id": "AttributionReportingAggregatableResult",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "success",
+                        "internalError",
+                        "noCapacityForAttributionDestination",
+                        "noMatchingSources",
+                        "excessiveAttributions",
+                        "excessiveReportingOrigins",
+                        "noHistograms",
+                        "insufficientBudget",
+                        "noMatchingSourceFilterData",
+                        "notRegistered",
+                        "prohibitedByBrowserPolicy",
+                        "deduplicated",
+                        "reportWindowPassed",
+                        "excessiveReports"
                     ]
                 }
             ],
@@ -21348,7 +21601,6 @@
                 },
                 {
                     "name": "attributionReportingSourceRegistered",
-                    "description": "TODO(crbug.com/1458532): Add other Attribution Reporting events, e.g.\ntrigger registration.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -21358,6 +21610,24 @@
                         {
                             "name": "result",
                             "$ref": "AttributionReportingSourceRegistrationResult"
+                        }
+                    ]
+                },
+                {
+                    "name": "attributionReportingTriggerRegistered",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "registration",
+                            "$ref": "AttributionReportingTriggerRegistration"
+                        },
+                        {
+                            "name": "eventLevel",
+                            "$ref": "AttributionReportingEventLevelResult"
+                        },
+                        {
+                            "name": "aggregatable",
+                            "$ref": "AttributionReportingAggregatableResult"
                         }
                     ]
                 }

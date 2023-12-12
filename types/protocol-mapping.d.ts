@@ -562,11 +562,8 @@ export namespace ProtocolMapping {
         'Storage.sharedStorageAccessed': [Protocol.Storage.SharedStorageAccessedEvent];
         'Storage.storageBucketCreatedOrUpdated': [Protocol.Storage.StorageBucketCreatedOrUpdatedEvent];
         'Storage.storageBucketDeleted': [Protocol.Storage.StorageBucketDeletedEvent];
-        /**
-         * TODO(crbug.com/1458532): Add other Attribution Reporting events, e.g.
-         * trigger registration.
-         */
         'Storage.attributionReportingSourceRegistered': [Protocol.Storage.AttributionReportingSourceRegisteredEvent];
+        'Storage.attributionReportingTriggerRegistered': [Protocol.Storage.AttributionReportingTriggerRegisteredEvent];
         /**
          * Issued when attached to target because of auto-attach or `attachToTarget` command.
          */

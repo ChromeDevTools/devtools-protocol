@@ -1,7 +1,170 @@
 
 
+## Roll protocol to r1236148 — _2023-12-12T04:26:53.000Z_
+######  Diff: [`37c8ee7...aa30973`](https://github.com/ChromeDevTools/devtools-protocol/compare/`37c8ee7...aa30973`)
+
+```diff
+@@ browser_protocol.pdl:1221 @@ domain Browser
+       audioCapture
+       backgroundSync
+       backgroundFetch
+-      capturedSurfaceControl
+       clipboardReadWrite
+       clipboardSanitizedWrite
+       displayCapture
+@@ -1989,10 +1988,6 @@ experimental domain CSS
+       string ruleText
+       # Text position of a new rule in the target style sheet.
+       SourceRange location
+-      # NodeId for the DOM node in whose context custom property declarations for registered properties should be
+-      # validated. If omitted, declarations in the new rule text can only be validated statically, which may produce
+-      # incorrect results if the declaration contains a var() for example.
+-      experimental optional DOM.NodeId nodeForPropertySyntaxValidation
+     returns
+       # The newly created rule.
+       CSSRule rule
+@@ -2236,10 +2231,6 @@ experimental domain CSS
+   command setStyleTexts
+     parameters
+       array of StyleDeclarationEdit edits
+-      # NodeId for the DOM node in whose context custom property declarations for registered properties should be
+-      # validated. If omitted, declarations in the new rule text can only be validated statically, which may produce
+-      # incorrect results if the declaration contains a var() for example.
+-      experimental optional DOM.NodeId nodeForPropertySyntaxValidation
+     returns
+       # The resulting styles after modification.
+       array of CSSStyle styles
+@@ -7616,7 +7607,6 @@ domain Page
+       bluetooth
+       browsing-topics
+       camera
+-      captured-surface-control
+       ch-dpr
+       ch-device-memory
+       ch-downlink
+@@ -9969,17 +9959,6 @@ experimental domain Storage
+       string key
+       array of string values
+ 
+-  experimental type AttributionReportingFilterConfig extends object
+-    properties
+-      array of AttributionReportingFilterDataEntry filterValues
+-      # duration in seconds
+-      optional integer lookbackWindow
+-
+-  experimental type AttributionReportingFilterPair extends object
+-    properties
+-      array of AttributionReportingFilterConfig filters
+-      array of AttributionReportingFilterConfig notFilters
+-
+   experimental type AttributionReportingAggregationKeysEntry extends object
+     properties
+       string key
+@@ -10038,99 +10017,13 @@ experimental domain Storage
+       reportingOriginsPerSiteLimitReached
+       exceedsMaxChannelCapacity
+ 
++  # TODO(crbug.com/1458532): Add other Attribution Reporting events, e.g.
++  # trigger registration.
+   experimental event attributionReportingSourceRegistered
+     parameters
+       AttributionReportingSourceRegistration registration
+       AttributionReportingSourceRegistrationResult result
+ 
+-  experimental type AttributionReportingSourceRegistrationTimeConfig extends string
+-    enum
+-      include
+-      exclude
+-
+-  experimental type AttributionReportingAggregatableValueEntry extends object
+-    properties
+-      string key
+-      # number instead of integer because not all uint32 can be represented by
+-      # int
+-      number value
+-
+-  experimental type AttributionReportingEventTriggerData extends object
+-    properties
+-      UnsignedInt64AsBase10 data
+-      SignedInt64AsBase10 priority
+-      optional UnsignedInt64AsBase10 dedupKey
+-      AttributionReportingFilterPair filters
+-
+-  experimental type AttributionReportingAggregatableTriggerData extends object
+-    properties
+-      UnsignedInt128AsBase16 keyPiece
+-      array of string sourceKeys
+-      AttributionReportingFilterPair filters
+-
+-  experimental type AttributionReportingAggregatableDedupKey extends object
+-    properties
+-      optional UnsignedInt64AsBase10 dedupKey
+-      AttributionReportingFilterPair filters
+-
+-  experimental type AttributionReportingTriggerRegistration extends object
+-    properties
+-      AttributionReportingFilterPair filters
+-      optional UnsignedInt64AsBase10 debugKey
+-      array of AttributionReportingAggregatableDedupKey aggregatableDedupKeys
+-      array of AttributionReportingEventTriggerData eventTriggerData
+-      array of AttributionReportingAggregatableTriggerData aggregatableTriggerData
+-      array of AttributionReportingAggregatableValueEntry aggregatableValues
+-      boolean debugReporting
+-      optional string aggregationCoordinatorOrigin
+-      AttributionReportingSourceRegistrationTimeConfig sourceRegistrationTimeConfig
+-      optional string triggerContextId
+-
+-  experimental type AttributionReportingEventLevelResult extends string
+-    enum
+-      success
+-      successDroppedLowerPriority
+-      internalError
+-      noCapacityForAttributionDestination
+-      noMatchingSources
+-      deduplicated
+-      excessiveAttributions
+-      priorityTooLow
+-      neverAttributedSource
+-      excessiveReportingOrigins
+-      noMatchingSourceFilterData
+-      prohibitedByBrowserPolicy
+-      noMatchingConfigurations
+-      excessiveReports
+-      falselyAttributedSource
+-      reportWindowPassed
+-      notRegistered
+-      reportWindowNotStarted
+-      noMatchingTriggerData
+-
+-  experimental type AttributionReportingAggregatableResult extends string
+-    enum
+-      success
+-      internalError
+-      noCapacityForAttributionDestination
+-      noMatchingSources
+-      excessiveAttributions
+-      excessiveReportingOrigins
+-      noHistograms
+-      insufficientBudget
+-      noMatchingSourceFilterData
+-      notRegistered
+-      prohibitedByBrowserPolicy
+-      deduplicated
+-      reportWindowPassed
+-      excessiveReports
+-
+-  experimental event attributionReportingTriggerRegistered
+-    parameters
+-      AttributionReportingTriggerRegistration registration
+-      AttributionReportingEventLevelResult eventLevel
+-      AttributionReportingAggregatableResult aggregatable
+-
+ # The SystemInfo domain defines methods and events for querying low-level system information.
+ experimental domain SystemInfo
+```
+
 ## Roll protocol to r1235375 — _2023-12-09T04:26:39.000Z_
-######  Diff: [`8f7e4a0...7c70a7a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8f7e4a0...7c70a7a`)
+######  Diff: [`8f7e4a0...37c8ee7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8f7e4a0...37c8ee7`)
 
 ```diff
 @@ browser_protocol.pdl:8891 @@ domain Page
@@ -11028,28 +11191,4 @@ index bd277eb..09c420e 100644
    depends on Page
  
    # Detailed application cache resource information.
-```
-
-## Roll protocol to r923714 — _2021-09-22T03:15:27.000Z_
-######  Diff: [`d6f4069...3c9570a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d6f4069...3c9570a`)
-
-```diff
-@@ browser_protocol.pdl:7934 @@ domain Page
-       InjectedStyleSheet
-       Dummy
-       # Disabled for render frame host reasons
--      # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
-       ContentSecurityHandler
-       ContentWebAuthenticationAPI
-       ContentFileChooser
-@@ -7945,9 +7944,6 @@ domain Page
-       ContentWebUSB
-       ContentMediaSession
-       ContentMediaSessionService
--      ContentMediaPlay
--
--      # See components/back_forward_cache/back_forward_cache_disable.h for explanations.
-       EmbedderPopupBlockerTabHelper
-       EmbedderSafeBrowsingTriggeredPopupBlocker
-       EmbedderSafeBrowsingThreatDetails
 ```

@@ -3969,7 +3969,7 @@ export namespace Protocol {
             windowState?: WindowState;
         }
 
-        export type PermissionType = ('accessibilityEvents' | 'audioCapture' | 'backgroundSync' | 'backgroundFetch' | 'clipboardReadWrite' | 'clipboardSanitizedWrite' | 'displayCapture' | 'durableStorage' | 'flash' | 'geolocation' | 'idleDetection' | 'localFonts' | 'midi' | 'midiSysex' | 'nfc' | 'notifications' | 'paymentHandler' | 'periodicBackgroundSync' | 'protectedMediaIdentifier' | 'sensors' | 'storageAccess' | 'topLevelStorageAccess' | 'videoCapture' | 'videoCapturePanTiltZoom' | 'wakeLockScreen' | 'wakeLockSystem' | 'windowManagement');
+        export type PermissionType = ('accessibilityEvents' | 'audioCapture' | 'backgroundSync' | 'backgroundFetch' | 'capturedSurfaceControl' | 'clipboardReadWrite' | 'clipboardSanitizedWrite' | 'displayCapture' | 'durableStorage' | 'flash' | 'geolocation' | 'idleDetection' | 'localFonts' | 'midi' | 'midiSysex' | 'nfc' | 'notifications' | 'paymentHandler' | 'periodicBackgroundSync' | 'protectedMediaIdentifier' | 'sensors' | 'storageAccess' | 'topLevelStorageAccess' | 'videoCapture' | 'videoCapturePanTiltZoom' | 'wakeLockScreen' | 'wakeLockSystem' | 'windowManagement');
 
         export type PermissionSetting = ('granted' | 'denied' | 'prompt');
 
@@ -5162,6 +5162,12 @@ export namespace Protocol {
              * Text position of a new rule in the target style sheet.
              */
             location: SourceRange;
+            /**
+             * NodeId for the DOM node in whose context custom property declarations for registered properties should be
+             * validated. If omitted, declarations in the new rule text can only be validated statically, which may produce
+             * incorrect results if the declaration contains a var() for example.
+             */
+            nodeForPropertySyntaxValidation?: DOM.NodeId;
         }
 
         export interface AddRuleResponse {
@@ -5474,6 +5480,12 @@ export namespace Protocol {
 
         export interface SetStyleTextsRequest {
             edits: StyleDeclarationEdit[];
+            /**
+             * NodeId for the DOM node in whose context custom property declarations for registered properties should be
+             * validated. If omitted, declarations in the new rule text can only be validated statically, which may produce
+             * incorrect results if the declaration contains a var() for example.
+             */
+            nodeForPropertySyntaxValidation?: DOM.NodeId;
         }
 
         export interface SetStyleTextsResponse {
@@ -12934,7 +12946,7 @@ export namespace Protocol {
          * All Permissions Policy features. This enum should match the one defined
          * in third_party/blink/renderer/core/permissions_policy/permissions_policy_features.json5.
          */
-        export type PermissionsPolicyFeature = ('accelerometer' | 'ambient-light-sensor' | 'attribution-reporting' | 'autoplay' | 'bluetooth' | 'browsing-topics' | 'camera' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-prefers-color-scheme' | 'ch-prefers-reduced-motion' | 'ch-prefers-reduced-transparency' | 'ch-rtt' | 'ch-save-data' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-form-factor' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'compute-pressure' | 'cross-origin-isolated' | 'direct-sockets' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'hid' | 'identity-credentials-get' | 'idle-detection' | 'interest-cohort' | 'join-ad-interest-group' | 'keyboard-map' | 'local-fonts' | 'magnetometer' | 'microphone' | 'midi' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'private-aggregation' | 'private-state-token-issuance' | 'private-state-token-redemption' | 'publickey-credentials-get' | 'run-ad-auction' | 'screen-wake-lock' | 'serial' | 'shared-autofill' | 'shared-storage' | 'shared-storage-select-url' | 'smart-card' | 'storage-access' | 'sync-xhr' | 'unload' | 'usb' | 'usb-unrestricted' | 'vertical-scroll' | 'web-printing' | 'web-share' | 'window-management' | 'window-placement' | 'xr-spatial-tracking');
+        export type PermissionsPolicyFeature = ('accelerometer' | 'ambient-light-sensor' | 'attribution-reporting' | 'autoplay' | 'bluetooth' | 'browsing-topics' | 'camera' | 'captured-surface-control' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-prefers-color-scheme' | 'ch-prefers-reduced-motion' | 'ch-prefers-reduced-transparency' | 'ch-rtt' | 'ch-save-data' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-form-factor' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'compute-pressure' | 'cross-origin-isolated' | 'direct-sockets' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'hid' | 'identity-credentials-get' | 'idle-detection' | 'interest-cohort' | 'join-ad-interest-group' | 'keyboard-map' | 'local-fonts' | 'magnetometer' | 'microphone' | 'midi' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'private-aggregation' | 'private-state-token-issuance' | 'private-state-token-redemption' | 'publickey-credentials-get' | 'run-ad-auction' | 'screen-wake-lock' | 'serial' | 'shared-autofill' | 'shared-storage' | 'shared-storage-select-url' | 'smart-card' | 'storage-access' | 'sync-xhr' | 'unload' | 'usb' | 'usb-unrestricted' | 'vertical-scroll' | 'web-printing' | 'web-share' | 'window-management' | 'window-placement' | 'xr-spatial-tracking');
 
         /**
          * Reason for a permissions policy feature to be disabled.
@@ -15360,6 +15372,19 @@ export namespace Protocol {
             values: string[];
         }
 
+        export interface AttributionReportingFilterConfig {
+            filterValues: AttributionReportingFilterDataEntry[];
+            /**
+             * duration in seconds
+             */
+            lookbackWindow?: integer;
+        }
+
+        export interface AttributionReportingFilterPair {
+            filters: AttributionReportingFilterConfig[];
+            notFilters: AttributionReportingFilterConfig[];
+        }
+
         export interface AttributionReportingAggregationKeysEntry {
             key: string;
             value: UnsignedInt128AsBase16;
@@ -15411,6 +15436,52 @@ export namespace Protocol {
         }
 
         export type AttributionReportingSourceRegistrationResult = ('success' | 'internalError' | 'insufficientSourceCapacity' | 'insufficientUniqueDestinationCapacity' | 'excessiveReportingOrigins' | 'prohibitedByBrowserPolicy' | 'successNoised' | 'destinationReportingLimitReached' | 'destinationGlobalLimitReached' | 'destinationBothLimitsReached' | 'reportingOriginsPerSiteLimitReached' | 'exceedsMaxChannelCapacity');
+
+        export type AttributionReportingSourceRegistrationTimeConfig = ('include' | 'exclude');
+
+        export interface AttributionReportingAggregatableValueEntry {
+            key: string;
+            /**
+             * number instead of integer because not all uint32 can be represented by
+             * int
+             */
+            value: number;
+        }
+
+        export interface AttributionReportingEventTriggerData {
+            data: UnsignedInt64AsBase10;
+            priority: SignedInt64AsBase10;
+            dedupKey?: UnsignedInt64AsBase10;
+            filters: AttributionReportingFilterPair;
+        }
+
+        export interface AttributionReportingAggregatableTriggerData {
+            keyPiece: UnsignedInt128AsBase16;
+            sourceKeys: string[];
+            filters: AttributionReportingFilterPair;
+        }
+
+        export interface AttributionReportingAggregatableDedupKey {
+            dedupKey?: UnsignedInt64AsBase10;
+            filters: AttributionReportingFilterPair;
+        }
+
+        export interface AttributionReportingTriggerRegistration {
+            filters: AttributionReportingFilterPair;
+            debugKey?: UnsignedInt64AsBase10;
+            aggregatableDedupKeys: AttributionReportingAggregatableDedupKey[];
+            eventTriggerData: AttributionReportingEventTriggerData[];
+            aggregatableTriggerData: AttributionReportingAggregatableTriggerData[];
+            aggregatableValues: AttributionReportingAggregatableValueEntry[];
+            debugReporting: boolean;
+            aggregationCoordinatorOrigin?: string;
+            sourceRegistrationTimeConfig: AttributionReportingSourceRegistrationTimeConfig;
+            triggerContextId?: string;
+        }
+
+        export type AttributionReportingEventLevelResult = ('success' | 'successDroppedLowerPriority' | 'internalError' | 'noCapacityForAttributionDestination' | 'noMatchingSources' | 'deduplicated' | 'excessiveAttributions' | 'priorityTooLow' | 'neverAttributedSource' | 'excessiveReportingOrigins' | 'noMatchingSourceFilterData' | 'prohibitedByBrowserPolicy' | 'noMatchingConfigurations' | 'excessiveReports' | 'falselyAttributedSource' | 'reportWindowPassed' | 'notRegistered' | 'reportWindowNotStarted' | 'noMatchingTriggerData');
+
+        export type AttributionReportingAggregatableResult = ('success' | 'internalError' | 'noCapacityForAttributionDestination' | 'noMatchingSources' | 'excessiveAttributions' | 'excessiveReportingOrigins' | 'noHistograms' | 'insufficientBudget' | 'noMatchingSourceFilterData' | 'notRegistered' | 'prohibitedByBrowserPolicy' | 'deduplicated' | 'reportWindowPassed' | 'excessiveReports');
 
         export interface GetStorageKeyForFrameRequest {
             frameId: Page.FrameId;
@@ -15799,13 +15870,15 @@ export namespace Protocol {
             bucketId: string;
         }
 
-        /**
-         * TODO(crbug.com/1458532): Add other Attribution Reporting events, e.g.
-         * trigger registration.
-         */
         export interface AttributionReportingSourceRegisteredEvent {
             registration: AttributionReportingSourceRegistration;
             result: AttributionReportingSourceRegistrationResult;
+        }
+
+        export interface AttributionReportingTriggerRegisteredEvent {
+            registration: AttributionReportingTriggerRegistration;
+            eventLevel: AttributionReportingEventLevelResult;
+            aggregatable: AttributionReportingAggregatableResult;
         }
     }
 
