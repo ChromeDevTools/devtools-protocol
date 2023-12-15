@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1237913 — _2023-12-15T04:26:59.000Z_
+######  Diff: [`eacb3c7...10979ba`](https://github.com/ChromeDevTools/devtools-protocol/compare/`eacb3c7...10979ba`)
+
+```diff
+@@ browser_protocol.pdl:7681 @@ domain Page
+       shared-storage-select-url
+       smart-card
+       storage-access
+-      sub-apps
+       sync-xhr
+       unload
+       usb
+```
+
 ## Roll protocol to r1236148 — _2023-12-12T04:26:53.000Z_
-######  Diff: [`37c8ee7...aa30973`](https://github.com/ChromeDevTools/devtools-protocol/compare/`37c8ee7...aa30973`)
+######  Diff: [`37c8ee7...eacb3c7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`37c8ee7...eacb3c7`)
 
 ```diff
 @@ browser_protocol.pdl:1221 @@ domain Browser
@@ -11175,20 +11189,4 @@ index bd277eb..09c420e 100644
  
    # Returns all browser cookies. Depending on the backend support, will return detailed cookie
    # information in the `cookies` field.
-```
-
-## Roll protocol to r924041 — _2021-09-22T21:15:29.000Z_
-######  Diff: [`3c9570a...f300e4d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3c9570a...f300e4d`)
-
-```diff
-@@ browser_protocol.pdl:408 @@ experimental domain Animation
-       # Animation that was started.
-       Animation animation
- 
--# The domain is deprecated as AppCache is being removed (see crbug.com/582750).
--experimental deprecated domain ApplicationCache
-+experimental domain ApplicationCache
-   depends on Page
- 
-   # Detailed application cache resource information.
 ```
