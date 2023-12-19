@@ -1,7 +1,29 @@
 
 
+## Roll protocol to r1238944 — _2023-12-19T04:26:54.000Z_
+######  Diff: [`fe8e9cc...59d6b7a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fe8e9cc...59d6b7a`)
+
+```diff
+@@ browser_protocol.pdl:7672 @@ domain Page
+       private-aggregation
+       private-state-token-issuance
+       private-state-token-redemption
+-      publickey-credentials-create
+       publickey-credentials-get
+       run-ad-auction
+       screen-wake-lock
+@@ -8904,7 +8903,6 @@ domain Page
+       WebTransportSticky
+       WebSocketSticky
+       SmartCard
+-      LiveMediaStreamTrack
+       # Disabled for RenderFrameHost reasons
+       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
+       ContentSecurityHandler
+```
+
 ## Roll protocol to r1237913 — _2023-12-15T04:26:59.000Z_
-######  Diff: [`eacb3c7...10979ba`](https://github.com/ChromeDevTools/devtools-protocol/compare/`eacb3c7...10979ba`)
+######  Diff: [`eacb3c7...fe8e9cc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`eacb3c7...fe8e9cc`)
 
 ```diff
 @@ browser_protocol.pdl:7681 @@ domain Page
@@ -11168,25 +11190,4 @@ index bd277eb..09c420e 100644
  
    # A unique id for a DevTools inspector issue. Allows other entities (e.g.
    # exceptions, CDP message, console messages, etc.) to reference an issue.
-```
-
-## Roll protocol to r924232 — _2021-09-23T09:15:23.000Z_
-######  Diff: [`f300e4d...b32cbf9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f300e4d...b32cbf9`)
-
-```diff
-@@ browser_protocol.pdl:7241 @@ domain Page
-       optional binary primaryIcon
- 
-   # Returns the unique (PWA) app id.
--  # Only returns values if the feature flag 'WebAppEnableManifestId' is enabled
-   experimental command getAppId
-     returns
--      # App id, either from manifest's id attribute or computed from start_url
-+      # Only returns a value if the feature flag 'WebAppEnableManifestId' is enabled
-       optional string appId
--      # Recommendation for manifest's id attribute to match current id computed from start_url
--      optional string recommendedId
- 
-   # Returns all browser cookies. Depending on the backend support, will return detailed cookie
-   # information in the `cookies` field.
 ```

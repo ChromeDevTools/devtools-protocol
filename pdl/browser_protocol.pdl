@@ -7672,6 +7672,7 @@ domain Page
       private-aggregation
       private-state-token-issuance
       private-state-token-redemption
+      publickey-credentials-create
       publickey-credentials-get
       run-ad-auction
       screen-wake-lock
@@ -8903,6 +8904,7 @@ domain Page
       WebTransportSticky
       WebSocketSticky
       SmartCard
+      LiveMediaStreamTrack
       # Disabled for RenderFrameHost reasons
       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
       ContentSecurityHandler
