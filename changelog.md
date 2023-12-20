@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1239539 — _2023-12-20T04:24:43.000Z_
+######  Diff: [`b7323b1...5c63190`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b7323b1...5c63190`)
+
+```diff
+@@ browser_protocol.pdl:1083 @@ experimental domain Autofill
+       string autofillType
+       # The filling strategy
+       FillingStrategy fillingStrategy
+-      # The form field's DOM node
+-      DOM.BackendNodeId fieldId
+ 
+   # Emitted when an address form is filled.
+   event addressFormFilled
+```
+
 ## Roll protocol to r1238944 — _2023-12-19T04:26:54.000Z_
-######  Diff: [`fe8e9cc...59d6b7a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fe8e9cc...59d6b7a`)
+######  Diff: [`fe8e9cc...b7323b1`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fe8e9cc...b7323b1`)
 
 ```diff
 @@ browser_protocol.pdl:7672 @@ domain Page
@@ -11150,44 +11165,4 @@ index bd277eb..09c420e 100644
        NoCorsRedirectModeNotFollow
  
    type CorsErrorStatus extends object
-```
-
-## Roll protocol to r924707 — _2021-09-24T10:15:21.000Z_
-######  Diff: [`b32cbf9...8157ba0`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b32cbf9...8157ba0`)
-
-```diff
-@@ browser_protocol.pdl:776 @@ experimental domain Audits
-       string targetOrigin
-       boolean isWarning
- 
--  type GenericIssueErrorType extends string
--    enum
--      CrossOriginPortalPostMessageError
--
--  # Depending on the concrete errorType, different properties are set.
--  type GenericIssueDetails extends object
--    properties
--      # Issues with the same errorType are aggregated in the frontend.
--      GenericIssueErrorType errorType
--      optional Page.FrameId frameId
--
-   # A unique identifier for the type of issue. Each type may use one of the
-   # optional fields in InspectorIssueDetails to convey more specific
-   # information about the kind of issue.
-@@ -805,7 +794,6 @@ experimental domain Audits
-       QuirksModeIssue
-       NavigatorUserAgentIssue
-       WasmCrossOriginModuleSharingIssue
--      GenericIssue
- 
-   # This struct holds a list of optional fields with additional information
-   # specific to the kind of issue. When adding a new issue code, please also
-@@ -825,7 +813,6 @@ experimental domain Audits
-       optional QuirksModeIssueDetails quirksModeIssueDetails
-       optional NavigatorUserAgentIssueDetails navigatorUserAgentIssueDetails
-       optional WasmCrossOriginModuleSharingIssueDetails wasmCrossOriginModuleSharingIssue
--      optional GenericIssueDetails genericIssueDetails
- 
-   # A unique id for a DevTools inspector issue. Allows other entities (e.g.
-   # exceptions, CDP message, console messages, etc.) to reference an issue.
 ```
