@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1245094 — _2024-01-10T04:27:17.000Z_
+######  Diff: [`91ab8a2...351ee5f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`91ab8a2...351ee5f`)
+
+```diff
+@@ browser_protocol.pdl:8907 @@ domain Page
+       WebSocketSticky
+       SmartCard
+       LiveMediaStreamTrack
+-      UnloadHandler
+       # Disabled for RenderFrameHost reasons
+       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
+       ContentSecurityHandler
+```
+
 ## Roll protocol to r1239539 — _2023-12-20T04:24:43.000Z_
-######  Diff: [`b7323b1...5c63190`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b7323b1...5c63190`)
+######  Diff: [`b7323b1...91ab8a2`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b7323b1...91ab8a2`)
 
 ```diff
 @@ browser_protocol.pdl:1083 @@ experimental domain Autofill
@@ -11151,18 +11165,4 @@ index bd277eb..09c420e 100644
    # Fired when the node should be inspected. This happens after call to `setInspectMode` or when
    # user manually inspects an element.
    event inspectNodeRequested
-```
-
-## Roll protocol to r925217 — _2021-09-27T11:15:29.000Z_
-######  Diff: [`8157ba0...929d048`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8157ba0...929d048`)
-
-```diff
-@@ browser_protocol.pdl:4917 @@ domain Network
-       HeaderDisallowedByPreflightResponse
-       RedirectContainsCredentials
-       InsecurePrivateNetwork
--      InvalidPrivateNetworkAccess
-       NoCorsRedirectModeNotFollow
- 
-   type CorsErrorStatus extends object
 ```
