@@ -10305,6 +10305,10 @@ export namespace Protocol {
              */
             mimeType: string;
             /**
+             * Resource charset as determined by the browser (if applicable).
+             */
+            charset: string;
+            /**
              * Refined HTTP request headers that were actually transmitted over the network.
              */
             requestHeaders?: Headers;

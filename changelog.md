@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1247362 — _2024-01-16T04:27:14.000Z_
+######  Diff: [`fcea28f...d8c38ee`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fcea28f...d8c38ee`)
+
+```diff
+@@ browser_protocol.pdl:5720 @@ domain Network
+       deprecated optional string headersText
+       # Resource mimeType as determined by the browser.
+       string mimeType
+-      # Resource charset as determined by the browser (if applicable).
+-      string charset
+       # Refined HTTP request headers that were actually transmitted over the network.
+       optional Headers requestHeaders
+       # HTTP request headers text. This has been replaced by the headers in Network.requestWillBeSentExtraInfo.
+```
+
 ## Roll protocol to r1245094 — _2024-01-10T04:27:17.000Z_
-######  Diff: [`91ab8a2...351ee5f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`91ab8a2...351ee5f`)
+######  Diff: [`91ab8a2...fcea28f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`91ab8a2...fcea28f`)
 
 ```diff
 @@ browser_protocol.pdl:8907 @@ domain Page
@@ -11123,46 +11138,4 @@ index bd277eb..09c420e 100644
  # Audits domain allows investigation of page violations and possible improvements.
  experimental domain Audits
    depends on Network
-```
-
-## Roll protocol to r926181 — _2021-09-29T09:15:25.000Z_
-######  Diff: [`929d048...5459753`](https://github.com/ChromeDevTools/devtools-protocol/compare/`929d048...5459753`)
-
-```diff
-@@ browser_protocol.pdl:6427 @@ experimental domain Overlay
-       # The style of the descendants' borders.
-       optional LineStyle descendantBorder
- 
--  type IsolatedElementHighlightConfig extends object
--    properties
--      # A descriptor for the highlight appearance of an element in isolation mode.
--      IsolationModeHighlightConfig isolationModeHighlightConfig
--      # Identifier of the isolated element to highlight.
--      DOM.NodeId nodeId
--
--  type IsolationModeHighlightConfig extends object
--    properties
--      # The fill color of the resizers (default: transparent).
--      optional DOM.RGBA resizerColor
--      # The fill color for resizer handles (default: transparent).
--      optional DOM.RGBA resizerHandleColor
--      # The fill color for the mask covering non-isolated elements (default: transparent).
--      optional DOM.RGBA maskColor
--
-   type InspectMode extends string
-     enum
-       searchForNode
-@@ -6657,12 +6641,6 @@ experimental domain Overlay
-       # hinge data, null means hideHinge
-       optional HingeConfig hingeConfig
- 
--  # Show elements in isolation mode with overlays.
--  command setShowIsolatedElements
--    parameters
--      # An array of node identifiers and descriptors for the highlight appearance.
--      array of IsolatedElementHighlightConfig isolatedElementHighlightConfigs
--
-   # Fired when the node should be inspected. This happens after call to `setInspectMode` or when
-   # user manually inspects an element.
-   event inspectNodeRequested
 ```

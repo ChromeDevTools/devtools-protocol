@@ -12354,6 +12354,11 @@
                             "type": "string"
                         },
                         {
+                            "name": "charset",
+                            "description": "Resource charset as determined by the browser (if applicable).",
+                            "type": "string"
+                        },
+                        {
                             "name": "requestHeaders",
                             "description": "Refined HTTP request headers that were actually transmitted over the network.",
                             "optional": true,
