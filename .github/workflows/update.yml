@@ -28,7 +28,7 @@ jobs:
           scripts/update-to-latest.sh
 
       - name: Check out debugger-protocol-viewer
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           repository: ChromeDevTools/debugger-protocol-viewer
           path: debugger-protocol-viewer
