@@ -7,6 +7,12 @@ const jsProtocol: IProtocol = require('../json/js_protocol.json')
 const browserProtocol: IProtocol = require('../json/browser_protocol.json')
 const protocolDomains: P.Domain[] = jsProtocol.domains.concat(browserProtocol.domains)
 
+enum EventStyle {
+  REGULAR = 0,
+  // See https://crsrc.org/c/third_party/blink/web_tests/http/tests/inspector-protocol/resources/inspector-protocol-test.js;l=478?q=inspector-protocol-test.js&ss=chromium.
+  INSPECTOR_PROTOCOL_TESTS = 1,
+}
+
 let numIndents = 0
 let emitStr = ''
 
@@ -324,24 +330,33 @@ const emitApiCommand = (command: P.Command, domainName: string, modulePrefix: st
     emitLine()
 }
 
-const emitApiEvent = (event: P.Event, domainName: string, modulePrefix: string) => {
+const emitApiEvent = (event: P.Event, domainName: string, modulePrefix: string, eventStyle: EventStyle) => {
     const prefix = `${modulePrefix}.${domainName}.`
     emitDescription(event.description)
     const params = event.parameters ? `params: ${prefix}${toEventPayloadName(event.name)}` : ''
-    emitLine(`on(event: '${event.name}', listener: (${params}) => void): void;`)
+    switch (eventStyle) {
+      case EventStyle.REGULAR:
+        emitLine(`on(event: '${event.name}', listener: (${params}) => void): void;`)
+        break;
+      case EventStyle.INSPECTOR_PROTOCOL_TESTS:
+        emitLine(`on${toTitleCase(event.name)}(listener: (${params}) => void): void;`)
+        emitLine(`off${toTitleCase(event.name)}(listener: (${params}) => void): void;`)
+        emitLine(`once${toTitleCase(event.name)}(eventMatcher?: (${params}) => boolean): void;`)
+        break;
+    }
     emitLine()
 }
 
-const emitDomainApi = (domain: P.Domain, modulePrefix: string) => {
+const emitDomainApi = (domain: P.Domain, modulePrefix: string, eventStyle: EventStyle) => {
     emitLine()
     const domainName = toTitleCase(domain.domain)
     emitOpenBlock(`export interface ${domainName}Api`)
     if (domain.commands) domain.commands.forEach(c => emitApiCommand(c, domainName, modulePrefix))
-    if (domain.events) domain.events.forEach(e => emitApiEvent(e, domainName, modulePrefix))
+    if (domain.events) domain.events.forEach(e => emitApiEvent(e, domainName, modulePrefix, eventStyle))
     emitCloseBlock()
 }
 
-const emitApi = (moduleName: string, protocolModuleName: string, domains: P.Domain[]) => {
+const emitApi = (moduleName: string, protocolModuleName: string, domains: P.Domain[], eventStyle = EventStyle.REGULAR) => {
     moduleName = toTitleCase(moduleName)
     emitHeaderComments()
     emitLine(`import Protocol from './${protocolModuleName}'`)
@@ -359,7 +374,7 @@ const emitApi = (moduleName: string, protocolModuleName: string, domains: P.Doma
     emitLine()
 
     const protocolModulePrefix = toTitleCase(protocolModuleName)
-    domains.forEach(d => emitDomainApi(d, protocolModulePrefix))
+    domains.forEach(d => emitDomainApi(d, protocolModulePrefix, eventStyle))
     emitCloseBlock()
 
     emitLine()
@@ -389,3 +404,9 @@ const destApiFilePath = `${__dirname}/../types/protocol-proxy-api.d.ts`
 const apiModuleName = 'ProtocolProxyApi'
 emitApi(apiModuleName, protocolModuleName, protocolDomains)
 flushEmitToFile(destApiFilePath)
+
+
+const destTestsApiFilePath = `${__dirname}/../types/protocol-tests-proxy-api.d.ts`
+const testsApiModuleName = 'ProtocolTestsProxyApi'
+emitApi(testsApiModuleName, protocolModuleName, protocolDomains, EventStyle.INSPECTOR_PROTOCOL_TESTS);
+flushEmitToFile(destTestsApiFilePath)
