@@ -1,7 +1,220 @@
 
 
+## Roll protocol to r1248698 — _2024-01-18T12:05:32.000Z_
+######  Diff: [`0693202...3056b2a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0693202...3056b2a`)
+
+```diff
+@@ browser_protocol.pdl:1299 @@ domain Browser
+       optional BrowserContextID browserContextId
+ 
+   # Reset all permission management for all origins.
+-  command resetPermissions
++  experimental command resetPermissions
+     parameters
+       # BrowserContext to reset permissions. When omitted, default browser context is used.
+       optional BrowserContextID browserContextId
+@@ -2737,7 +2737,7 @@ domain DOM
+   # Scrolls the specified rect of the given node into view if not already visible.
+   # Note: exactly one between nodeId, backendNodeId and objectId should be passed
+   # to identify the node.
+-  command scrollIntoViewIfNeeded
++  experimental command scrollIntoViewIfNeeded
+     parameters
+       # Identifier of the node.
+       optional NodeId nodeId
+@@ -4045,7 +4045,7 @@ domain Emulation
+       optional boolean enabled
+ 
+   # Enables CPU throttling to emulate slow CPUs.
+-  command setCPUThrottlingRate
++  experimental command setCPUThrottlingRate
+     parameters
+       # Throttling rate as a slowdown factor (1 is no throttle, 2 is 2x slowdown, etc).
+       number rate
+@@ -4124,7 +4124,7 @@ domain Emulation
+       optional array of MediaFeature features
+ 
+   # Emulates the given vision deficiency.
+-  command setEmulatedVisionDeficiency
++  experimental command setEmulatedVisionDeficiency
+     parameters
+       # Vision deficiency to emulate. Order: best-effort emulations come first, followed by any
+       # physiologically accurate emulations for medically recognized color vision deficiencies.
+@@ -4173,7 +4173,7 @@ domain Emulation
+       SensorReading reading
+ 
+   # Overrides the Idle state.
+-  command setIdleOverride
++  experimental command setIdleOverride
+     parameters
+       # Mock isUserActive
+       boolean isUserActive
+@@ -4181,7 +4181,7 @@ domain Emulation
+       boolean isScreenUnlocked
+ 
+   # Clears Idle state overrides.
+-  command clearIdleOverride
++  experimental command clearIdleOverride
+ 
+   # Overrides value returned by the javascript navigator object.
+   experimental deprecated command setNavigatorOverrides
+@@ -4234,7 +4234,7 @@ domain Emulation
+       optional string locale
+ 
+   # Overrides default host system timezone with the specified one.
+-  command setTimezoneOverride
++  experimental command setTimezoneOverride
+     parameters
+       # The timezone identifier. If empty, disables the override and
+       # restores default host system timezone.
+@@ -6376,7 +6376,7 @@ domain Network
+       array of string urls
+ 
+   # Toggles ignoring of service worker for each request.
+-  command setBypassServiceWorker
++  experimental command setBypassServiceWorker
+     parameters
+       # Bypass service worker and load from network.
+       boolean bypass
+@@ -8400,7 +8400,7 @@ domain Page
+       boolean enabled
+ 
+   # Enable page Content Security Policy by-passing.
+-  command setBypassCSP
++  experimental command setBypassCSP
+     parameters
+       # Whether to bypass page CSP.
+       boolean enabled
+@@ -8512,7 +8512,7 @@ domain Page
+       optional number accuracy
+ 
+   # Controls whether page will emit lifecycle events.
+-  command setLifecycleEventsEnabled
++  experimental command setLifecycleEventsEnabled
+     parameters
+       # If true, starts emitting lifecycle events.
+       boolean enabled
+@@ -8552,7 +8552,7 @@ domain Page
+   experimental command crash
+ 
+   # Tries to close page, running its beforeunload hooks, if any.
+-  command close
++  experimental command close
+ 
+   # Tries to update the web lifecycle state of the page.
+   # It will transition the page to the given state according to:
+@@ -8622,7 +8622,7 @@ domain Page
+   # Intercept file chooser requests and transfer control to protocol clients.
+   # When file chooser interception is enabled, native file chooser dialog is not shown.
+   # Instead, a protocol event `Page.fileChooserOpened` is emitted.
+-  command setInterceptFileChooserDialog
++  experimental command setInterceptFileChooserDialog
+     parameters
+       boolean enabled
+ 
+@@ -9308,7 +9308,7 @@ domain Security
+   command enable
+ 
+   # Enable/disable whether all certificate errors should be ignored.
+-  command setIgnoreCertificateErrors
++  experimental command setIgnoreCertificateErrors
+     parameters
+       # If true, all certificate errors will be ignored.
+       boolean ignore
+@@ -10374,23 +10374,23 @@ domain Target
+ 
+   # Creates a new empty BrowserContext. Similar to an incognito profile but you can have more than
+   # one.
+-  command createBrowserContext
++  experimental command createBrowserContext
+     parameters
+       # If specified, disposes this context when debugging session disconnects.
+-      experimental optional boolean disposeOnDetach
++      optional boolean disposeOnDetach
+       # Proxy server, similar to the one passed to --proxy-server
+-      experimental optional string proxyServer
++      optional string proxyServer
+       # Proxy bypass list, similar to the one passed to --proxy-bypass-list
+-      experimental optional string proxyBypassList
++      optional string proxyBypassList
+       # An optional list of origins to grant unlimited cross-origin access to.
+       # Parts of the URL other than those constituting origin are ignored.
+-      experimental optional array of string originsWithUniversalNetworkAccess
++      optional array of string originsWithUniversalNetworkAccess
+     returns
+       # The id of the context created.
+       Browser.BrowserContextID browserContextId
+ 
+   # Returns all browser contexts created with `Target.createBrowserContext` method.
+-  command getBrowserContexts
++  experimental command getBrowserContexts
+     returns
+       # An array of browser context ids.
+       array of Browser.BrowserContextID browserContextIds
+@@ -10430,7 +10430,7 @@ domain Target
+ 
+   # Deletes a BrowserContext. All the belonging pages will be closed without calling their
+   # beforeunload hooks.
+-  command disposeBrowserContext
++  experimental command disposeBrowserContext
+     parameters
+       Browser.BrowserContextID browserContextId
+ 
+@@ -10468,7 +10468,7 @@ domain Target
+   # automatically detaches from all currently attached targets.
+   # This also clears all targets added by `autoAttachRelated` from the list of targets to watch
+   # for creation of related targets.
+-  command setAutoAttach
++  experimental command setAutoAttach
+     parameters
+       # Whether to auto-attach to related targets.
+       boolean autoAttach
+@@ -10478,7 +10478,7 @@ domain Target
+       # Enables "flat" access to the session via specifying sessionId attribute in the commands.
+       # We plan to make this the default, deprecate non-flattened mode,
+       # and eventually retire it. See crbug.com/991325.
+-      experimental optional boolean flatten
++      optional boolean flatten
+       # Only targets matching filter will be attached.
+       experimental optional TargetFilter filter
+ 
+diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
+index 8dad9c9..4754f17 100644
+--- a/pdl/js_protocol.pdl
++++ b/pdl/js_protocol.pdl
+@@ -1665,7 +1665,7 @@ domain Runtime
+   # Binding function takes exactly one argument, this argument should be string,
+   # in case of any other input, function throws an exception.
+   # Each binding function call produces Runtime.bindingCalled notification.
+-  command addBinding
++  experimental command addBinding
+     parameters
+       string name
+       # If specified, the binding would only be exposed to the specified
+@@ -1675,17 +1675,17 @@ domain Runtime
+       # Deprecated in favor of `executionContextName` due to an unclear use case
+       # and bugs in implementation (crbug.com/1169639). `executionContextId` will be
+       # removed in the future.
+-      experimental deprecated optional ExecutionContextId executionContextId
++      deprecated optional ExecutionContextId executionContextId
+       # If specified, the binding is exposed to the executionContext with
+       # matching name, even for contexts created after the binding is added.
+       # See also `ExecutionContext.name` and `worldName` parameter to
+       # `Page.addScriptToEvaluateOnNewDocument`.
+       # This parameter is mutually exclusive with `executionContextId`.
+-      optional string executionContextName
++      experimental optional string executionContextName
+ 
+   # This method does not remove binding function from global object but
+   # unsubscribes current runtime agent from Runtime.bindingCalled notifications.
+-  command removeBinding
++  experimental command removeBinding
+     parameters
+       string name
+```
+
 ## Roll protocol to r1247362 — _2024-01-16T04:27:14.000Z_
-######  Diff: [`fcea28f...d8c38ee`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fcea28f...d8c38ee`)
+######  Diff: [`fcea28f...145ad3b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fcea28f...145ad3b`)
 
 ```diff
 @@ browser_protocol.pdl:5720 @@ domain Network
@@ -10491,564 +10704,6 @@ index bd277eb..09c420e 100644
 
 ## Roll protocol to r927854 — _2021-10-04T22:15:31.000Z_
 ######  Diff: [`d24ecc6...6d3ed49`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d24ecc6...6d3ed49`)
-
-```diff
-@@ browser_protocol.pdl:408 @@ experimental domain Animation
-       # Animation that was started.
-       Animation animation
- 
-+# The domain is deprecated as AppCache is being removed (see crbug.com/582750).
-+experimental deprecated domain ApplicationCache
-+  depends on Page
-+
-+  # Detailed application cache resource information.
-+  type ApplicationCacheResource extends object
-+    properties
-+      # Resource url.
-+      string url
-+      # Resource size.
-+      integer size
-+      # Resource type.
-+      string type
-+
-+  # Detailed application cache information.
-+  type ApplicationCache extends object
-+    properties
-+      # Manifest URL.
-+      string manifestURL
-+      # Application cache size.
-+      number size
-+      # Application cache creation time.
-+      number creationTime
-+      # Application cache update time.
-+      number updateTime
-+      # Application cache resources.
-+      array of ApplicationCacheResource resources
-+
-+  # Frame identifier - manifest URL pair.
-+  type FrameWithManifest extends object
-+    properties
-+      # Frame identifier.
-+      Page.FrameId frameId
-+      # Manifest URL.
-+      string manifestURL
-+      # Application cache status.
-+      integer status
-+
-+  # Enables application cache domain notifications.
-+  command enable
-+
-+  # Returns relevant application cache data for the document in given frame.
-+  command getApplicationCacheForFrame
-+    parameters
-+      # Identifier of the frame containing document whose application cache is retrieved.
-+      Page.FrameId frameId
-+    returns
-+      # Relevant application cache data for the document in given frame.
-+      ApplicationCache applicationCache
-+
-+  # Returns array of frame identifiers with manifest urls for each frame containing a document
-+  # associated with some application cache.
-+  command getFramesWithManifests
-+    returns
-+      # Array of frame identifiers with manifest urls for each frame containing a document
-+      # associated with some application cache.
-+      array of FrameWithManifest frameIds
-+
-+  # Returns manifest URL for document in the given frame.
-+  command getManifestForFrame
-+    parameters
-+      # Identifier of the frame containing document whose manifest is retrieved.
-+      Page.FrameId frameId
-+    returns
-+      # Manifest URL for document in the given frame.
-+      string manifestURL
-+
-+  event applicationCacheStatusUpdated
-+    parameters
-+      # Identifier of the frame containing document whose application cache updated status.
-+      Page.FrameId frameId
-+      # Manifest URL.
-+      string manifestURL
-+      # Updated application cache status.
-+      integer status
-+
-+  event networkStateUpdated
-+    parameters
-+      boolean isNowOnline
-+
- # Audits domain allows investigation of page violations and possible improvements.
- experimental domain Audits
-   depends on Network
-```
-
-## Roll protocol to r927104 — _2021-10-01T05:15:28.000Z_
-######  Diff: [`75edf97...d24ecc6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`75edf97...d24ecc6`)
-
-```diff
-@@ browser_protocol.pdl:408 @@ experimental domain Animation
-       # Animation that was started.
-       Animation animation
- 
--# The domain is deprecated as AppCache is being removed (see crbug.com/582750).
--experimental deprecated domain ApplicationCache
--  depends on Page
--
--  # Detailed application cache resource information.
--  type ApplicationCacheResource extends object
--    properties
--      # Resource url.
--      string url
--      # Resource size.
--      integer size
--      # Resource type.
--      string type
--
--  # Detailed application cache information.
--  type ApplicationCache extends object
--    properties
--      # Manifest URL.
--      string manifestURL
--      # Application cache size.
--      number size
--      # Application cache creation time.
--      number creationTime
--      # Application cache update time.
--      number updateTime
--      # Application cache resources.
--      array of ApplicationCacheResource resources
--
--  # Frame identifier - manifest URL pair.
--  type FrameWithManifest extends object
--    properties
--      # Frame identifier.
--      Page.FrameId frameId
--      # Manifest URL.
--      string manifestURL
--      # Application cache status.
--      integer status
--
--  # Enables application cache domain notifications.
--  command enable
--
--  # Returns relevant application cache data for the document in given frame.
--  command getApplicationCacheForFrame
--    parameters
--      # Identifier of the frame containing document whose application cache is retrieved.
--      Page.FrameId frameId
--    returns
--      # Relevant application cache data for the document in given frame.
--      ApplicationCache applicationCache
--
--  # Returns array of frame identifiers with manifest urls for each frame containing a document
--  # associated with some application cache.
--  command getFramesWithManifests
--    returns
--      # Array of frame identifiers with manifest urls for each frame containing a document
--      # associated with some application cache.
--      array of FrameWithManifest frameIds
--
--  # Returns manifest URL for document in the given frame.
--  command getManifestForFrame
--    parameters
--      # Identifier of the frame containing document whose manifest is retrieved.
--      Page.FrameId frameId
--    returns
--      # Manifest URL for document in the given frame.
--      string manifestURL
--
--  event applicationCacheStatusUpdated
--    parameters
--      # Identifier of the frame containing document whose application cache updated status.
--      Page.FrameId frameId
--      # Manifest URL.
--      string manifestURL
--      # Updated application cache status.
--      integer status
--
--  event networkStateUpdated
--    parameters
--      boolean isNowOnline
--
- # Audits domain allows investigation of page violations and possible improvements.
- experimental domain Audits
-   depends on Network
-```
-
-## Roll protocol to r927069 — _2021-10-01T02:15:27.000Z_
-######  Diff: [`6b5fb3f...75edf97`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6b5fb3f...75edf97`)
-
-```diff
-@@ browser_protocol.pdl:408 @@ experimental domain Animation
-       # Animation that was started.
-       Animation animation
- 
-+# The domain is deprecated as AppCache is being removed (see crbug.com/582750).
-+experimental deprecated domain ApplicationCache
-+  depends on Page
-+
-+  # Detailed application cache resource information.
-+  type ApplicationCacheResource extends object
-+    properties
-+      # Resource url.
-+      string url
-+      # Resource size.
-+      integer size
-+      # Resource type.
-+      string type
-+
-+  # Detailed application cache information.
-+  type ApplicationCache extends object
-+    properties
-+      # Manifest URL.
-+      string manifestURL
-+      # Application cache size.
-+      number size
-+      # Application cache creation time.
-+      number creationTime
-+      # Application cache update time.
-+      number updateTime
-+      # Application cache resources.
-+      array of ApplicationCacheResource resources
-+
-+  # Frame identifier - manifest URL pair.
-+  type FrameWithManifest extends object
-+    properties
-+      # Frame identifier.
-+      Page.FrameId frameId
-+      # Manifest URL.
-+      string manifestURL
-+      # Application cache status.
-+      integer status
-+
-+  # Enables application cache domain notifications.
-+  command enable
-+
-+  # Returns relevant application cache data for the document in given frame.
-+  command getApplicationCacheForFrame
-+    parameters
-+      # Identifier of the frame containing document whose application cache is retrieved.
-+      Page.FrameId frameId
-+    returns
-+      # Relevant application cache data for the document in given frame.
-+      ApplicationCache applicationCache
-+
-+  # Returns array of frame identifiers with manifest urls for each frame containing a document
-+  # associated with some application cache.
-+  command getFramesWithManifests
-+    returns
-+      # Array of frame identifiers with manifest urls for each frame containing a document
-+      # associated with some application cache.
-+      array of FrameWithManifest frameIds
-+
-+  # Returns manifest URL for document in the given frame.
-+  command getManifestForFrame
-+    parameters
-+      # Identifier of the frame containing document whose manifest is retrieved.
-+      Page.FrameId frameId
-+    returns
-+      # Manifest URL for document in the given frame.
-+      string manifestURL
-+
-+  event applicationCacheStatusUpdated
-+    parameters
-+      # Identifier of the frame containing document whose application cache updated status.
-+      Page.FrameId frameId
-+      # Manifest URL.
-+      string manifestURL
-+      # Updated application cache status.
-+      integer status
-+
-+  event networkStateUpdated
-+    parameters
-+      boolean isNowOnline
-+
- # Audits domain allows investigation of page violations and possible improvements.
- experimental domain Audits
-   depends on Network
-```
-
-## Roll protocol to r926768 — _2021-09-30T15:28:28.000Z_
-######  Diff: [`2f92c4d...6b5fb3f`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2f92c4d...6b5fb3f`)
-
-```diff
-@@ js_protocol.pdl:175 @@ domain Debugger
-   command enable
-     parameters
-       # The maximum size in bytes of collected scripts (not referenced by other heap objects)
--      # the debugger can hold. Puts no limit if parameter is omitted.
-+      # the debugger can hold. Puts no limit if paramter is omitted.
-       experimental optional number maxScriptsCacheSize
-     returns
-       # Unique identifier of the debugger.
-@@ -267,7 +267,7 @@ domain Debugger
-       BreakpointId breakpointId
- 
-   # Restarts particular call frame from the beginning.
--  deprecated command restartFrame
-+  command restartFrame
-     parameters
-       # Call frame identifier to evaluate on.
-       CallFrameId callFrameId
-@@ -707,17 +707,13 @@ experimental domain HeapProfiler
-       # when the tracking is stopped.
-       optional boolean reportProgress
-       optional boolean treatGlobalObjectsAsRoots
--      # If true, numerical values are included in the snapshot
--      optional boolean captureNumericValue
- 
-   command takeHeapSnapshot
-     parameters
-       # If true 'reportHeapSnapshotProgress' events will be generated while snapshot is being taken.
-       optional boolean reportProgress
--      # If true, a raw snapshot without artificial roots will be generated
-+      # If true, a raw snapshot without artifical roots will be generated
-       optional boolean treatGlobalObjectsAsRoots
--      # If true, numerical values are included in the snapshot
--      optional boolean captureNumericValue
- 
-   event addHeapSnapshotChunk
-     parameters
-@@ -845,6 +841,24 @@ domain Profiler
-       # Type profile entries for parameters and return values of the functions in the script.
-       array of TypeProfileEntry entries
- 
-+  # Collected counter information.
-+  experimental type CounterInfo extends object
-+    properties
-+      # Counter name.
-+      string name
-+      # Counter value.
-+      integer value
-+
-+  # Runtime call counter information.
-+  experimental type RuntimeCallCounterInfo extends object
-+    properties
-+      # Counter name.
-+      string name
-+      # Counter value.
-+      number value
-+      # Counter time in seconds.
-+      number time
-+
-   command disable
- 
-   command enable
-@@ -909,6 +923,30 @@ domain Profiler
-       # Type profile for all scripts since startTypeProfile() was turned on.
-       array of ScriptTypeProfile result
- 
-+  # Enable counters collection.
-+  experimental command enableCounters
-+
-+  # Disable counters collection.
-+  experimental command disableCounters
-+
-+  # Retrieve counters.
-+  experimental command getCounters
-+    returns
-+      # Collected counters information.
-+      array of CounterInfo result
-+
-+  # Enable run time call stats collection.
-+  experimental command enableRuntimeCallStats
-+
-+  # Disable run time call stats collection.
-+  experimental command disableRuntimeCallStats
-+
-+  # Retrieve run time call stats.
-+  experimental command getRuntimeCallStats
-+    returns
-+      # Collected runtime call counter information.
-+      array of RuntimeCallCounterInfo result
-+
-   event consoleProfileFinished
-     parameters
-       string id
-@@ -930,13 +968,13 @@ domain Profiler
-   # Reports coverage delta since the last poll (either from an event like this, or from
-   # `takePreciseCoverage` for the current isolate. May only be sent if precise code
-   # coverage has been started. This event can be trigged by the embedder to, for example,
--  # trigger collection of coverage data immediately at a certain point in time.
-+  # trigger collection of coverage data immediatelly at a certain point in time.
-   experimental event preciseCoverageDeltaUpdate
-     parameters
-       # Monotonically increasing time (in seconds) when the coverage update was taken in the backend.
-       number timestamp
-       # Identifier for distinguishing coverage events.
--      string occasion
-+      string occassion
-       # Coverage data for the current isolate.
-       array of ScriptCoverage result
- 
-@@ -1183,7 +1221,7 @@ domain Runtime
-       string origin
-       # Human readable name describing given context.
-       string name
--      # A system-unique execution context identifier. Unlike the id, this is unique across
-+      # A system-unique execution context identifier. Unlike the id, this is unique accross
-       # multiple processes, so can be reliably used to identify specific context while backend
-       # performs a cross-process navigation.
-       experimental string uniqueId
-@@ -1212,10 +1250,6 @@ domain Runtime
-       optional RemoteObject exception
-       # Identifier of the context where exception happened.
-       optional ExecutionContextId executionContextId
--      # Dictionary with entries of meta data that the client associated
--      # with this exception, such as information about associated network
--      # requests, etc.
--      experimental optional object exceptionMetaData
- 
-   # Number of milliseconds since epoch.
-   type Timestamp extends number
-@@ -1305,8 +1339,6 @@ domain Runtime
-       # Symbolic group name that can be used to release multiple objects. If objectGroup is not
-       # specified and objectId is, objectGroup will be inherited from object.
-       optional string objectGroup
--      # Whether to throw an exception if side effect cannot be ruled out during evaluation.
--      experimental optional boolean throwOnSideEffect
-     returns
-       # Call result.
-       RemoteObject result
-@@ -1386,9 +1418,9 @@ domain Runtime
-       # evaluation and allows unsafe-eval. Defaults to true.
-       experimental optional boolean allowUnsafeEvalBlockedByCSP
-       # An alternative way to specify the execution context to evaluate in.
--      # Compared to contextId that may be reused across processes, this is guaranteed to be
-+      # Compared to contextId that may be reused accross processes, this is guaranteed to be
-       # system-unique, so it can be used to prevent accidental evaluation of the expression
--      # in context different than intended (e.g. as a result of navigation across process
-+      # in context different than intended (e.g. as a result of navigation accross process
-       # boundaries).
-       # This is mutually exclusive with `contextId`.
-       experimental optional string uniqueContextId
-@@ -1427,8 +1459,6 @@ domain Runtime
-       experimental optional boolean accessorPropertiesOnly
-       # Whether preview should be generated for the results.
-       experimental optional boolean generatePreview
--      # If true, returns non-indexed properties only.
--      experimental optional boolean nonIndexedPropertiesOnly
-     returns
-       # Object properties.
-       array of PropertyDescriptor result
-@@ -1533,10 +1563,7 @@ domain Runtime
-       # execution context. If omitted and `executionContextName` is not set,
-       # the binding is exposed to all execution contexts of the target.
-       # This parameter is mutually exclusive with `executionContextName`.
--      # Deprecated in favor of `executionContextName` due to an unclear use case
--      # and bugs in implementation (crbug.com/1169639). `executionContextId` will be
--      # removed in the future.
--      deprecated optional ExecutionContextId executionContextId
-+      optional ExecutionContextId executionContextId
-       # If specified, the binding is exposed to the executionContext with
-       # matching name, even for contexts created after the binding is added.
-       # See also `ExecutionContext.name` and `worldName` parameter to
-@@ -1632,8 +1659,6 @@ domain Runtime
-     parameters
-       RemoteObject object
-       object hints
--      # Identifier of the context where the call was made.
--      experimental optional ExecutionContextId executionContextId
- 
- # This domain is deprecated.
- deprecated domain Schema
-```
-
-## Roll protocol to r926580 — _2021-09-30T04:15:20.000Z_
-######  Diff: [`5cc536e...2f92c4d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5cc536e...2f92c4d`)
-
-```diff
-@@ browser_protocol.pdl:408 @@ experimental domain Animation
-       # Animation that was started.
-       Animation animation
- 
--# The domain is deprecated as AppCache is being removed (see crbug.com/582750).
--experimental deprecated domain ApplicationCache
--  depends on Page
--
--  # Detailed application cache resource information.
--  type ApplicationCacheResource extends object
--    properties
--      # Resource url.
--      string url
--      # Resource size.
--      integer size
--      # Resource type.
--      string type
--
--  # Detailed application cache information.
--  type ApplicationCache extends object
--    properties
--      # Manifest URL.
--      string manifestURL
--      # Application cache size.
--      number size
--      # Application cache creation time.
--      number creationTime
--      # Application cache update time.
--      number updateTime
--      # Application cache resources.
--      array of ApplicationCacheResource resources
--
--  # Frame identifier - manifest URL pair.
--  type FrameWithManifest extends object
--    properties
--      # Frame identifier.
--      Page.FrameId frameId
--      # Manifest URL.
--      string manifestURL
--      # Application cache status.
--      integer status
--
--  # Enables application cache domain notifications.
--  command enable
--
--  # Returns relevant application cache data for the document in given frame.
--  command getApplicationCacheForFrame
--    parameters
--      # Identifier of the frame containing document whose application cache is retrieved.
--      Page.FrameId frameId
--    returns
--      # Relevant application cache data for the document in given frame.
--      ApplicationCache applicationCache
--
--  # Returns array of frame identifiers with manifest urls for each frame containing a document
--  # associated with some application cache.
--  command getFramesWithManifests
--    returns
--      # Array of frame identifiers with manifest urls for each frame containing a document
--      # associated with some application cache.
--      array of FrameWithManifest frameIds
--
--  # Returns manifest URL for document in the given frame.
--  command getManifestForFrame
--    parameters
--      # Identifier of the frame containing document whose manifest is retrieved.
--      Page.FrameId frameId
--    returns
--      # Manifest URL for document in the given frame.
--      string manifestURL
--
--  event applicationCacheStatusUpdated
--    parameters
--      # Identifier of the frame containing document whose application cache updated status.
--      Page.FrameId frameId
--      # Manifest URL.
--      string manifestURL
--      # Updated application cache status.
--      integer status
--
--  event networkStateUpdated
--    parameters
--      boolean isNowOnline
--
- # Audits domain allows investigation of page violations and possible improvements.
- experimental domain Audits
-   depends on Network
-```
-
-## Roll protocol to r926578 — _2021-09-30T01:15:25.000Z_
-######  Diff: [`5459753...5cc536e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5459753...5cc536e`)
 
 ```diff
 @@ browser_protocol.pdl:408 @@ experimental domain Animation
