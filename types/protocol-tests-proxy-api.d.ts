@@ -133,9 +133,9 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Issued when new console message is added.
          */
-        onMessageAdded(listener: (params: Protocol.Console.MessageAddedEvent) => void): void;
-        offMessageAdded(listener: (params: Protocol.Console.MessageAddedEvent) => void): void;
-        onceMessageAdded(eventMatcher?: (params: Protocol.Console.MessageAddedEvent) => boolean): void;
+        onMessageAdded(listener: (event: { params: Protocol.Console.MessageAddedEvent }) => void): void;
+        offMessageAdded(listener: (event: { params: Protocol.Console.MessageAddedEvent }) => void): void;
+        onceMessageAdded(eventMatcher?: (event: { params: Protocol.Console.MessageAddedEvent }) => boolean): Promise<{ params: Protocol.Console.MessageAddedEvent }>;
 
     }
 
@@ -332,38 +332,38 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Fired when breakpoint is resolved to an actual script and location.
          */
-        onBreakpointResolved(listener: (params: Protocol.Debugger.BreakpointResolvedEvent) => void): void;
-        offBreakpointResolved(listener: (params: Protocol.Debugger.BreakpointResolvedEvent) => void): void;
-        onceBreakpointResolved(eventMatcher?: (params: Protocol.Debugger.BreakpointResolvedEvent) => boolean): void;
+        onBreakpointResolved(listener: (event: { params: Protocol.Debugger.BreakpointResolvedEvent }) => void): void;
+        offBreakpointResolved(listener: (event: { params: Protocol.Debugger.BreakpointResolvedEvent }) => void): void;
+        onceBreakpointResolved(eventMatcher?: (event: { params: Protocol.Debugger.BreakpointResolvedEvent }) => boolean): Promise<{ params: Protocol.Debugger.BreakpointResolvedEvent }>;
 
         /**
          * Fired when the virtual machine stopped on breakpoint or exception or any other stop criteria.
          */
-        onPaused(listener: (params: Protocol.Debugger.PausedEvent) => void): void;
-        offPaused(listener: (params: Protocol.Debugger.PausedEvent) => void): void;
-        oncePaused(eventMatcher?: (params: Protocol.Debugger.PausedEvent) => boolean): void;
+        onPaused(listener: (event: { params: Protocol.Debugger.PausedEvent }) => void): void;
+        offPaused(listener: (event: { params: Protocol.Debugger.PausedEvent }) => void): void;
+        oncePaused(eventMatcher?: (event: { params: Protocol.Debugger.PausedEvent }) => boolean): Promise<{ params: Protocol.Debugger.PausedEvent }>;
 
         /**
          * Fired when the virtual machine resumed execution.
          */
-        onResumed(listener: () => void): void;
-        offResumed(listener: () => void): void;
-        onceResumed(eventMatcher?: () => boolean): void;
+        onResumed(listener: (event: ) => void): void;
+        offResumed(listener: (event: ) => void): void;
+        onceResumed(eventMatcher?: (event: ) => boolean): Promise<>;
 
         /**
          * Fired when virtual machine fails to parse the script.
          */
-        onScriptFailedToParse(listener: (params: Protocol.Debugger.ScriptFailedToParseEvent) => void): void;
-        offScriptFailedToParse(listener: (params: Protocol.Debugger.ScriptFailedToParseEvent) => void): void;
-        onceScriptFailedToParse(eventMatcher?: (params: Protocol.Debugger.ScriptFailedToParseEvent) => boolean): void;
+        onScriptFailedToParse(listener: (event: { params: Protocol.Debugger.ScriptFailedToParseEvent }) => void): void;
+        offScriptFailedToParse(listener: (event: { params: Protocol.Debugger.ScriptFailedToParseEvent }) => void): void;
+        onceScriptFailedToParse(eventMatcher?: (event: { params: Protocol.Debugger.ScriptFailedToParseEvent }) => boolean): Promise<{ params: Protocol.Debugger.ScriptFailedToParseEvent }>;
 
         /**
          * Fired when virtual machine parses script. This event is also fired for all known and uncollected
          * scripts upon enabling debugger.
          */
-        onScriptParsed(listener: (params: Protocol.Debugger.ScriptParsedEvent) => void): void;
-        offScriptParsed(listener: (params: Protocol.Debugger.ScriptParsedEvent) => void): void;
-        onceScriptParsed(eventMatcher?: (params: Protocol.Debugger.ScriptParsedEvent) => boolean): void;
+        onScriptParsed(listener: (event: { params: Protocol.Debugger.ScriptParsedEvent }) => void): void;
+        offScriptParsed(listener: (event: { params: Protocol.Debugger.ScriptParsedEvent }) => void): void;
+        onceScriptParsed(eventMatcher?: (event: { params: Protocol.Debugger.ScriptParsedEvent }) => boolean): Promise<{ params: Protocol.Debugger.ScriptParsedEvent }>;
 
     }
 
@@ -396,33 +396,33 @@ export namespace ProtocolTestsProxyApi {
 
         takeHeapSnapshot(params: Protocol.HeapProfiler.TakeHeapSnapshotRequest): Promise<void>;
 
-        onAddHeapSnapshotChunk(listener: (params: Protocol.HeapProfiler.AddHeapSnapshotChunkEvent) => void): void;
-        offAddHeapSnapshotChunk(listener: (params: Protocol.HeapProfiler.AddHeapSnapshotChunkEvent) => void): void;
-        onceAddHeapSnapshotChunk(eventMatcher?: (params: Protocol.HeapProfiler.AddHeapSnapshotChunkEvent) => boolean): void;
+        onAddHeapSnapshotChunk(listener: (event: { params: Protocol.HeapProfiler.AddHeapSnapshotChunkEvent }) => void): void;
+        offAddHeapSnapshotChunk(listener: (event: { params: Protocol.HeapProfiler.AddHeapSnapshotChunkEvent }) => void): void;
+        onceAddHeapSnapshotChunk(eventMatcher?: (event: { params: Protocol.HeapProfiler.AddHeapSnapshotChunkEvent }) => boolean): Promise<{ params: Protocol.HeapProfiler.AddHeapSnapshotChunkEvent }>;
 
         /**
          * If heap objects tracking has been started then backend may send update for one or more fragments
          */
-        onHeapStatsUpdate(listener: (params: Protocol.HeapProfiler.HeapStatsUpdateEvent) => void): void;
-        offHeapStatsUpdate(listener: (params: Protocol.HeapProfiler.HeapStatsUpdateEvent) => void): void;
-        onceHeapStatsUpdate(eventMatcher?: (params: Protocol.HeapProfiler.HeapStatsUpdateEvent) => boolean): void;
+        onHeapStatsUpdate(listener: (event: { params: Protocol.HeapProfiler.HeapStatsUpdateEvent }) => void): void;
+        offHeapStatsUpdate(listener: (event: { params: Protocol.HeapProfiler.HeapStatsUpdateEvent }) => void): void;
+        onceHeapStatsUpdate(eventMatcher?: (event: { params: Protocol.HeapProfiler.HeapStatsUpdateEvent }) => boolean): Promise<{ params: Protocol.HeapProfiler.HeapStatsUpdateEvent }>;
 
         /**
          * If heap objects tracking has been started then backend regularly sends a current value for last
          * seen object id and corresponding timestamp. If the were changes in the heap since last event
          * then one or more heapStatsUpdate events will be sent before a new lastSeenObjectId event.
          */
-        onLastSeenObjectId(listener: (params: Protocol.HeapProfiler.LastSeenObjectIdEvent) => void): void;
-        offLastSeenObjectId(listener: (params: Protocol.HeapProfiler.LastSeenObjectIdEvent) => void): void;
-        onceLastSeenObjectId(eventMatcher?: (params: Protocol.HeapProfiler.LastSeenObjectIdEvent) => boolean): void;
+        onLastSeenObjectId(listener: (event: { params: Protocol.HeapProfiler.LastSeenObjectIdEvent }) => void): void;
+        offLastSeenObjectId(listener: (event: { params: Protocol.HeapProfiler.LastSeenObjectIdEvent }) => void): void;
+        onceLastSeenObjectId(eventMatcher?: (event: { params: Protocol.HeapProfiler.LastSeenObjectIdEvent }) => boolean): Promise<{ params: Protocol.HeapProfiler.LastSeenObjectIdEvent }>;
 
-        onReportHeapSnapshotProgress(listener: (params: Protocol.HeapProfiler.ReportHeapSnapshotProgressEvent) => void): void;
-        offReportHeapSnapshotProgress(listener: (params: Protocol.HeapProfiler.ReportHeapSnapshotProgressEvent) => void): void;
-        onceReportHeapSnapshotProgress(eventMatcher?: (params: Protocol.HeapProfiler.ReportHeapSnapshotProgressEvent) => boolean): void;
+        onReportHeapSnapshotProgress(listener: (event: { params: Protocol.HeapProfiler.ReportHeapSnapshotProgressEvent }) => void): void;
+        offReportHeapSnapshotProgress(listener: (event: { params: Protocol.HeapProfiler.ReportHeapSnapshotProgressEvent }) => void): void;
+        onceReportHeapSnapshotProgress(eventMatcher?: (event: { params: Protocol.HeapProfiler.ReportHeapSnapshotProgressEvent }) => boolean): Promise<{ params: Protocol.HeapProfiler.ReportHeapSnapshotProgressEvent }>;
 
-        onResetProfiles(listener: () => void): void;
-        offResetProfiles(listener: () => void): void;
-        onceResetProfiles(eventMatcher?: () => boolean): void;
+        onResetProfiles(listener: (event: ) => void): void;
+        offResetProfiles(listener: (event: ) => void): void;
+        onceResetProfiles(eventMatcher?: (event: ) => boolean): Promise<>;
 
     }
 
@@ -465,16 +465,16 @@ export namespace ProtocolTestsProxyApi {
          */
         takePreciseCoverage(): Promise<Protocol.Profiler.TakePreciseCoverageResponse>;
 
-        onConsoleProfileFinished(listener: (params: Protocol.Profiler.ConsoleProfileFinishedEvent) => void): void;
-        offConsoleProfileFinished(listener: (params: Protocol.Profiler.ConsoleProfileFinishedEvent) => void): void;
-        onceConsoleProfileFinished(eventMatcher?: (params: Protocol.Profiler.ConsoleProfileFinishedEvent) => boolean): void;
+        onConsoleProfileFinished(listener: (event: { params: Protocol.Profiler.ConsoleProfileFinishedEvent }) => void): void;
+        offConsoleProfileFinished(listener: (event: { params: Protocol.Profiler.ConsoleProfileFinishedEvent }) => void): void;
+        onceConsoleProfileFinished(eventMatcher?: (event: { params: Protocol.Profiler.ConsoleProfileFinishedEvent }) => boolean): Promise<{ params: Protocol.Profiler.ConsoleProfileFinishedEvent }>;
 
         /**
          * Sent when new profile recording is started using console.profile() call.
          */
-        onConsoleProfileStarted(listener: (params: Protocol.Profiler.ConsoleProfileStartedEvent) => void): void;
-        offConsoleProfileStarted(listener: (params: Protocol.Profiler.ConsoleProfileStartedEvent) => void): void;
-        onceConsoleProfileStarted(eventMatcher?: (params: Protocol.Profiler.ConsoleProfileStartedEvent) => boolean): void;
+        onConsoleProfileStarted(listener: (event: { params: Protocol.Profiler.ConsoleProfileStartedEvent }) => void): void;
+        offConsoleProfileStarted(listener: (event: { params: Protocol.Profiler.ConsoleProfileStartedEvent }) => void): void;
+        onceConsoleProfileStarted(eventMatcher?: (event: { params: Protocol.Profiler.ConsoleProfileStartedEvent }) => boolean): Promise<{ params: Protocol.Profiler.ConsoleProfileStartedEvent }>;
 
         /**
          * Reports coverage delta since the last poll (either from an event like this, or from
@@ -482,9 +482,9 @@ export namespace ProtocolTestsProxyApi {
          * coverage has been started. This event can be trigged by the embedder to, for example,
          * trigger collection of coverage data immediately at a certain point in time.
          */
-        onPreciseCoverageDeltaUpdate(listener: (params: Protocol.Profiler.PreciseCoverageDeltaUpdateEvent) => void): void;
-        offPreciseCoverageDeltaUpdate(listener: (params: Protocol.Profiler.PreciseCoverageDeltaUpdateEvent) => void): void;
-        oncePreciseCoverageDeltaUpdate(eventMatcher?: (params: Protocol.Profiler.PreciseCoverageDeltaUpdateEvent) => boolean): void;
+        onPreciseCoverageDeltaUpdate(listener: (event: { params: Protocol.Profiler.PreciseCoverageDeltaUpdateEvent }) => void): void;
+        offPreciseCoverageDeltaUpdate(listener: (event: { params: Protocol.Profiler.PreciseCoverageDeltaUpdateEvent }) => void): void;
+        oncePreciseCoverageDeltaUpdate(eventMatcher?: (event: { params: Protocol.Profiler.PreciseCoverageDeltaUpdateEvent }) => boolean): Promise<{ params: Protocol.Profiler.PreciseCoverageDeltaUpdateEvent }>;
 
     }
 
@@ -614,59 +614,59 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Notification is issued every time when binding is called.
          */
-        onBindingCalled(listener: (params: Protocol.Runtime.BindingCalledEvent) => void): void;
-        offBindingCalled(listener: (params: Protocol.Runtime.BindingCalledEvent) => void): void;
-        onceBindingCalled(eventMatcher?: (params: Protocol.Runtime.BindingCalledEvent) => boolean): void;
+        onBindingCalled(listener: (event: { params: Protocol.Runtime.BindingCalledEvent }) => void): void;
+        offBindingCalled(listener: (event: { params: Protocol.Runtime.BindingCalledEvent }) => void): void;
+        onceBindingCalled(eventMatcher?: (event: { params: Protocol.Runtime.BindingCalledEvent }) => boolean): Promise<{ params: Protocol.Runtime.BindingCalledEvent }>;
 
         /**
          * Issued when console API was called.
          */
-        onConsoleAPICalled(listener: (params: Protocol.Runtime.ConsoleAPICalledEvent) => void): void;
-        offConsoleAPICalled(listener: (params: Protocol.Runtime.ConsoleAPICalledEvent) => void): void;
-        onceConsoleAPICalled(eventMatcher?: (params: Protocol.Runtime.ConsoleAPICalledEvent) => boolean): void;
+        onConsoleAPICalled(listener: (event: { params: Protocol.Runtime.ConsoleAPICalledEvent }) => void): void;
+        offConsoleAPICalled(listener: (event: { params: Protocol.Runtime.ConsoleAPICalledEvent }) => void): void;
+        onceConsoleAPICalled(eventMatcher?: (event: { params: Protocol.Runtime.ConsoleAPICalledEvent }) => boolean): Promise<{ params: Protocol.Runtime.ConsoleAPICalledEvent }>;
 
         /**
          * Issued when unhandled exception was revoked.
          */
-        onExceptionRevoked(listener: (params: Protocol.Runtime.ExceptionRevokedEvent) => void): void;
-        offExceptionRevoked(listener: (params: Protocol.Runtime.ExceptionRevokedEvent) => void): void;
-        onceExceptionRevoked(eventMatcher?: (params: Protocol.Runtime.ExceptionRevokedEvent) => boolean): void;
+        onExceptionRevoked(listener: (event: { params: Protocol.Runtime.ExceptionRevokedEvent }) => void): void;
+        offExceptionRevoked(listener: (event: { params: Protocol.Runtime.ExceptionRevokedEvent }) => void): void;
+        onceExceptionRevoked(eventMatcher?: (event: { params: Protocol.Runtime.ExceptionRevokedEvent }) => boolean): Promise<{ params: Protocol.Runtime.ExceptionRevokedEvent }>;
 
         /**
          * Issued when exception was thrown and unhandled.
          */
-        onExceptionThrown(listener: (params: Protocol.Runtime.ExceptionThrownEvent) => void): void;
-        offExceptionThrown(listener: (params: Protocol.Runtime.ExceptionThrownEvent) => void): void;
-        onceExceptionThrown(eventMatcher?: (params: Protocol.Runtime.ExceptionThrownEvent) => boolean): void;
+        onExceptionThrown(listener: (event: { params: Protocol.Runtime.ExceptionThrownEvent }) => void): void;
+        offExceptionThrown(listener: (event: { params: Protocol.Runtime.ExceptionThrownEvent }) => void): void;
+        onceExceptionThrown(eventMatcher?: (event: { params: Protocol.Runtime.ExceptionThrownEvent }) => boolean): Promise<{ params: Protocol.Runtime.ExceptionThrownEvent }>;
 
         /**
          * Issued when new execution context is created.
          */
-        onExecutionContextCreated(listener: (params: Protocol.Runtime.ExecutionContextCreatedEvent) => void): void;
-        offExecutionContextCreated(listener: (params: Protocol.Runtime.ExecutionContextCreatedEvent) => void): void;
-        onceExecutionContextCreated(eventMatcher?: (params: Protocol.Runtime.ExecutionContextCreatedEvent) => boolean): void;
+        onExecutionContextCreated(listener: (event: { params: Protocol.Runtime.ExecutionContextCreatedEvent }) => void): void;
+        offExecutionContextCreated(listener: (event: { params: Protocol.Runtime.ExecutionContextCreatedEvent }) => void): void;
+        onceExecutionContextCreated(eventMatcher?: (event: { params: Protocol.Runtime.ExecutionContextCreatedEvent }) => boolean): Promise<{ params: Protocol.Runtime.ExecutionContextCreatedEvent }>;
 
         /**
          * Issued when execution context is destroyed.
          */
-        onExecutionContextDestroyed(listener: (params: Protocol.Runtime.ExecutionContextDestroyedEvent) => void): void;
-        offExecutionContextDestroyed(listener: (params: Protocol.Runtime.ExecutionContextDestroyedEvent) => void): void;
-        onceExecutionContextDestroyed(eventMatcher?: (params: Protocol.Runtime.ExecutionContextDestroyedEvent) => boolean): void;
+        onExecutionContextDestroyed(listener: (event: { params: Protocol.Runtime.ExecutionContextDestroyedEvent }) => void): void;
+        offExecutionContextDestroyed(listener: (event: { params: Protocol.Runtime.ExecutionContextDestroyedEvent }) => void): void;
+        onceExecutionContextDestroyed(eventMatcher?: (event: { params: Protocol.Runtime.ExecutionContextDestroyedEvent }) => boolean): Promise<{ params: Protocol.Runtime.ExecutionContextDestroyedEvent }>;
 
         /**
          * Issued when all executionContexts were cleared in browser
          */
-        onExecutionContextsCleared(listener: () => void): void;
-        offExecutionContextsCleared(listener: () => void): void;
-        onceExecutionContextsCleared(eventMatcher?: () => boolean): void;
+        onExecutionContextsCleared(listener: (event: ) => void): void;
+        offExecutionContextsCleared(listener: (event: ) => void): void;
+        onceExecutionContextsCleared(eventMatcher?: (event: ) => boolean): Promise<>;
 
         /**
          * Issued when object should be inspected (for example, as a result of inspect() command line API
          * call).
          */
-        onInspectRequested(listener: (params: Protocol.Runtime.InspectRequestedEvent) => void): void;
-        offInspectRequested(listener: (params: Protocol.Runtime.InspectRequestedEvent) => void): void;
-        onceInspectRequested(eventMatcher?: (params: Protocol.Runtime.InspectRequestedEvent) => boolean): void;
+        onInspectRequested(listener: (event: { params: Protocol.Runtime.InspectRequestedEvent }) => void): void;
+        offInspectRequested(listener: (event: { params: Protocol.Runtime.InspectRequestedEvent }) => void): void;
+        onceInspectRequested(eventMatcher?: (event: { params: Protocol.Runtime.InspectRequestedEvent }) => boolean): Promise<{ params: Protocol.Runtime.InspectRequestedEvent }>;
 
     }
 
@@ -731,16 +731,16 @@ export namespace ProtocolTestsProxyApi {
          * The loadComplete event mirrors the load complete event sent by the browser to assistive
          * technology when the web page has finished loading.
          */
-        onLoadComplete(listener: (params: Protocol.Accessibility.LoadCompleteEvent) => void): void;
-        offLoadComplete(listener: (params: Protocol.Accessibility.LoadCompleteEvent) => void): void;
-        onceLoadComplete(eventMatcher?: (params: Protocol.Accessibility.LoadCompleteEvent) => boolean): void;
+        onLoadComplete(listener: (event: { params: Protocol.Accessibility.LoadCompleteEvent }) => void): void;
+        offLoadComplete(listener: (event: { params: Protocol.Accessibility.LoadCompleteEvent }) => void): void;
+        onceLoadComplete(eventMatcher?: (event: { params: Protocol.Accessibility.LoadCompleteEvent }) => boolean): Promise<{ params: Protocol.Accessibility.LoadCompleteEvent }>;
 
         /**
          * The nodesUpdated event is sent every time a previously requested node has changed the in tree.
          */
-        onNodesUpdated(listener: (params: Protocol.Accessibility.NodesUpdatedEvent) => void): void;
-        offNodesUpdated(listener: (params: Protocol.Accessibility.NodesUpdatedEvent) => void): void;
-        onceNodesUpdated(eventMatcher?: (params: Protocol.Accessibility.NodesUpdatedEvent) => boolean): void;
+        onNodesUpdated(listener: (event: { params: Protocol.Accessibility.NodesUpdatedEvent }) => void): void;
+        offNodesUpdated(listener: (event: { params: Protocol.Accessibility.NodesUpdatedEvent }) => void): void;
+        onceNodesUpdated(eventMatcher?: (event: { params: Protocol.Accessibility.NodesUpdatedEvent }) => boolean): Promise<{ params: Protocol.Accessibility.NodesUpdatedEvent }>;
 
     }
 
@@ -798,23 +798,23 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Event for when an animation has been cancelled.
          */
-        onAnimationCanceled(listener: (params: Protocol.Animation.AnimationCanceledEvent) => void): void;
-        offAnimationCanceled(listener: (params: Protocol.Animation.AnimationCanceledEvent) => void): void;
-        onceAnimationCanceled(eventMatcher?: (params: Protocol.Animation.AnimationCanceledEvent) => boolean): void;
+        onAnimationCanceled(listener: (event: { params: Protocol.Animation.AnimationCanceledEvent }) => void): void;
+        offAnimationCanceled(listener: (event: { params: Protocol.Animation.AnimationCanceledEvent }) => void): void;
+        onceAnimationCanceled(eventMatcher?: (event: { params: Protocol.Animation.AnimationCanceledEvent }) => boolean): Promise<{ params: Protocol.Animation.AnimationCanceledEvent }>;
 
         /**
          * Event for each animation that has been created.
          */
-        onAnimationCreated(listener: (params: Protocol.Animation.AnimationCreatedEvent) => void): void;
-        offAnimationCreated(listener: (params: Protocol.Animation.AnimationCreatedEvent) => void): void;
-        onceAnimationCreated(eventMatcher?: (params: Protocol.Animation.AnimationCreatedEvent) => boolean): void;
+        onAnimationCreated(listener: (event: { params: Protocol.Animation.AnimationCreatedEvent }) => void): void;
+        offAnimationCreated(listener: (event: { params: Protocol.Animation.AnimationCreatedEvent }) => void): void;
+        onceAnimationCreated(eventMatcher?: (event: { params: Protocol.Animation.AnimationCreatedEvent }) => boolean): Promise<{ params: Protocol.Animation.AnimationCreatedEvent }>;
 
         /**
          * Event for animation that has been started.
          */
-        onAnimationStarted(listener: (params: Protocol.Animation.AnimationStartedEvent) => void): void;
-        offAnimationStarted(listener: (params: Protocol.Animation.AnimationStartedEvent) => void): void;
-        onceAnimationStarted(eventMatcher?: (params: Protocol.Animation.AnimationStartedEvent) => boolean): void;
+        onAnimationStarted(listener: (event: { params: Protocol.Animation.AnimationStartedEvent }) => void): void;
+        offAnimationStarted(listener: (event: { params: Protocol.Animation.AnimationStartedEvent }) => void): void;
+        onceAnimationStarted(eventMatcher?: (event: { params: Protocol.Animation.AnimationStartedEvent }) => boolean): Promise<{ params: Protocol.Animation.AnimationStartedEvent }>;
 
     }
 
@@ -848,9 +848,9 @@ export namespace ProtocolTestsProxyApi {
          */
         checkFormsIssues(): Promise<Protocol.Audits.CheckFormsIssuesResponse>;
 
-        onIssueAdded(listener: (params: Protocol.Audits.IssueAddedEvent) => void): void;
-        offIssueAdded(listener: (params: Protocol.Audits.IssueAddedEvent) => void): void;
-        onceIssueAdded(eventMatcher?: (params: Protocol.Audits.IssueAddedEvent) => boolean): void;
+        onIssueAdded(listener: (event: { params: Protocol.Audits.IssueAddedEvent }) => void): void;
+        offIssueAdded(listener: (event: { params: Protocol.Audits.IssueAddedEvent }) => void): void;
+        onceIssueAdded(eventMatcher?: (event: { params: Protocol.Audits.IssueAddedEvent }) => boolean): Promise<{ params: Protocol.Audits.IssueAddedEvent }>;
 
     }
 
@@ -879,9 +879,9 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Emitted when an address form is filled.
          */
-        onAddressFormFilled(listener: (params: Protocol.Autofill.AddressFormFilledEvent) => void): void;
-        offAddressFormFilled(listener: (params: Protocol.Autofill.AddressFormFilledEvent) => void): void;
-        onceAddressFormFilled(eventMatcher?: (params: Protocol.Autofill.AddressFormFilledEvent) => boolean): void;
+        onAddressFormFilled(listener: (event: { params: Protocol.Autofill.AddressFormFilledEvent }) => void): void;
+        offAddressFormFilled(listener: (event: { params: Protocol.Autofill.AddressFormFilledEvent }) => void): void;
+        onceAddressFormFilled(eventMatcher?: (event: { params: Protocol.Autofill.AddressFormFilledEvent }) => boolean): Promise<{ params: Protocol.Autofill.AddressFormFilledEvent }>;
 
     }
 
@@ -909,17 +909,17 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Called when the recording state for the service has been updated.
          */
-        onRecordingStateChanged(listener: (params: Protocol.BackgroundService.RecordingStateChangedEvent) => void): void;
-        offRecordingStateChanged(listener: (params: Protocol.BackgroundService.RecordingStateChangedEvent) => void): void;
-        onceRecordingStateChanged(eventMatcher?: (params: Protocol.BackgroundService.RecordingStateChangedEvent) => boolean): void;
+        onRecordingStateChanged(listener: (event: { params: Protocol.BackgroundService.RecordingStateChangedEvent }) => void): void;
+        offRecordingStateChanged(listener: (event: { params: Protocol.BackgroundService.RecordingStateChangedEvent }) => void): void;
+        onceRecordingStateChanged(eventMatcher?: (event: { params: Protocol.BackgroundService.RecordingStateChangedEvent }) => boolean): Promise<{ params: Protocol.BackgroundService.RecordingStateChangedEvent }>;
 
         /**
          * Called with all existing backgroundServiceEvents when enabled, and all new
          * events afterwards if enabled and recording.
          */
-        onBackgroundServiceEventReceived(listener: (params: Protocol.BackgroundService.BackgroundServiceEventReceivedEvent) => void): void;
-        offBackgroundServiceEventReceived(listener: (params: Protocol.BackgroundService.BackgroundServiceEventReceivedEvent) => void): void;
-        onceBackgroundServiceEventReceived(eventMatcher?: (params: Protocol.BackgroundService.BackgroundServiceEventReceivedEvent) => boolean): void;
+        onBackgroundServiceEventReceived(listener: (event: { params: Protocol.BackgroundService.BackgroundServiceEventReceivedEvent }) => void): void;
+        offBackgroundServiceEventReceived(listener: (event: { params: Protocol.BackgroundService.BackgroundServiceEventReceivedEvent }) => void): void;
+        onceBackgroundServiceEventReceived(eventMatcher?: (event: { params: Protocol.BackgroundService.BackgroundServiceEventReceivedEvent }) => boolean): Promise<{ params: Protocol.BackgroundService.BackgroundServiceEventReceivedEvent }>;
 
     }
 
@@ -1019,16 +1019,16 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Fired when page is about to start a download.
          */
-        onDownloadWillBegin(listener: (params: Protocol.Browser.DownloadWillBeginEvent) => void): void;
-        offDownloadWillBegin(listener: (params: Protocol.Browser.DownloadWillBeginEvent) => void): void;
-        onceDownloadWillBegin(eventMatcher?: (params: Protocol.Browser.DownloadWillBeginEvent) => boolean): void;
+        onDownloadWillBegin(listener: (event: { params: Protocol.Browser.DownloadWillBeginEvent }) => void): void;
+        offDownloadWillBegin(listener: (event: { params: Protocol.Browser.DownloadWillBeginEvent }) => void): void;
+        onceDownloadWillBegin(eventMatcher?: (event: { params: Protocol.Browser.DownloadWillBeginEvent }) => boolean): Promise<{ params: Protocol.Browser.DownloadWillBeginEvent }>;
 
         /**
          * Fired when download makes progress. Last call has |done| == true.
          */
-        onDownloadProgress(listener: (params: Protocol.Browser.DownloadProgressEvent) => void): void;
-        offDownloadProgress(listener: (params: Protocol.Browser.DownloadProgressEvent) => void): void;
-        onceDownloadProgress(eventMatcher?: (params: Protocol.Browser.DownloadProgressEvent) => boolean): void;
+        onDownloadProgress(listener: (event: { params: Protocol.Browser.DownloadProgressEvent }) => void): void;
+        offDownloadProgress(listener: (event: { params: Protocol.Browser.DownloadProgressEvent }) => void): void;
+        onceDownloadProgress(eventMatcher?: (event: { params: Protocol.Browser.DownloadProgressEvent }) => boolean): Promise<{ params: Protocol.Browser.DownloadProgressEvent }>;
 
     }
 
@@ -1200,38 +1200,38 @@ export namespace ProtocolTestsProxyApi {
          * Fires whenever a web font is updated.  A non-empty font parameter indicates a successfully loaded
          * web font.
          */
-        onFontsUpdated(listener: (params: Protocol.CSS.FontsUpdatedEvent) => void): void;
-        offFontsUpdated(listener: (params: Protocol.CSS.FontsUpdatedEvent) => void): void;
-        onceFontsUpdated(eventMatcher?: (params: Protocol.CSS.FontsUpdatedEvent) => boolean): void;
+        onFontsUpdated(listener: (event: { params: Protocol.CSS.FontsUpdatedEvent }) => void): void;
+        offFontsUpdated(listener: (event: { params: Protocol.CSS.FontsUpdatedEvent }) => void): void;
+        onceFontsUpdated(eventMatcher?: (event: { params: Protocol.CSS.FontsUpdatedEvent }) => boolean): Promise<{ params: Protocol.CSS.FontsUpdatedEvent }>;
 
         /**
          * Fires whenever a MediaQuery result changes (for example, after a browser window has been
          * resized.) The current implementation considers only viewport-dependent media features.
          */
-        onMediaQueryResultChanged(listener: () => void): void;
-        offMediaQueryResultChanged(listener: () => void): void;
-        onceMediaQueryResultChanged(eventMatcher?: () => boolean): void;
+        onMediaQueryResultChanged(listener: (event: ) => void): void;
+        offMediaQueryResultChanged(listener: (event: ) => void): void;
+        onceMediaQueryResultChanged(eventMatcher?: (event: ) => boolean): Promise<>;
 
         /**
          * Fired whenever an active document stylesheet is added.
          */
-        onStyleSheetAdded(listener: (params: Protocol.CSS.StyleSheetAddedEvent) => void): void;
-        offStyleSheetAdded(listener: (params: Protocol.CSS.StyleSheetAddedEvent) => void): void;
-        onceStyleSheetAdded(eventMatcher?: (params: Protocol.CSS.StyleSheetAddedEvent) => boolean): void;
+        onStyleSheetAdded(listener: (event: { params: Protocol.CSS.StyleSheetAddedEvent }) => void): void;
+        offStyleSheetAdded(listener: (event: { params: Protocol.CSS.StyleSheetAddedEvent }) => void): void;
+        onceStyleSheetAdded(eventMatcher?: (event: { params: Protocol.CSS.StyleSheetAddedEvent }) => boolean): Promise<{ params: Protocol.CSS.StyleSheetAddedEvent }>;
 
         /**
          * Fired whenever a stylesheet is changed as a result of the client operation.
          */
-        onStyleSheetChanged(listener: (params: Protocol.CSS.StyleSheetChangedEvent) => void): void;
-        offStyleSheetChanged(listener: (params: Protocol.CSS.StyleSheetChangedEvent) => void): void;
-        onceStyleSheetChanged(eventMatcher?: (params: Protocol.CSS.StyleSheetChangedEvent) => boolean): void;
+        onStyleSheetChanged(listener: (event: { params: Protocol.CSS.StyleSheetChangedEvent }) => void): void;
+        offStyleSheetChanged(listener: (event: { params: Protocol.CSS.StyleSheetChangedEvent }) => void): void;
+        onceStyleSheetChanged(eventMatcher?: (event: { params: Protocol.CSS.StyleSheetChangedEvent }) => boolean): Promise<{ params: Protocol.CSS.StyleSheetChangedEvent }>;
 
         /**
          * Fired whenever an active document stylesheet is removed.
          */
-        onStyleSheetRemoved(listener: (params: Protocol.CSS.StyleSheetRemovedEvent) => void): void;
-        offStyleSheetRemoved(listener: (params: Protocol.CSS.StyleSheetRemovedEvent) => void): void;
-        onceStyleSheetRemoved(eventMatcher?: (params: Protocol.CSS.StyleSheetRemovedEvent) => boolean): void;
+        onStyleSheetRemoved(listener: (event: { params: Protocol.CSS.StyleSheetRemovedEvent }) => void): void;
+        offStyleSheetRemoved(listener: (event: { params: Protocol.CSS.StyleSheetRemovedEvent }) => void): void;
+        onceStyleSheetRemoved(eventMatcher?: (event: { params: Protocol.CSS.StyleSheetRemovedEvent }) => boolean): Promise<{ params: Protocol.CSS.StyleSheetRemovedEvent }>;
 
     }
 
@@ -1303,17 +1303,17 @@ export namespace ProtocolTestsProxyApi {
          * This is fired whenever the list of available sinks changes. A sink is a
          * device or a software surface that you can cast to.
          */
-        onSinksUpdated(listener: (params: Protocol.Cast.SinksUpdatedEvent) => void): void;
-        offSinksUpdated(listener: (params: Protocol.Cast.SinksUpdatedEvent) => void): void;
-        onceSinksUpdated(eventMatcher?: (params: Protocol.Cast.SinksUpdatedEvent) => boolean): void;
+        onSinksUpdated(listener: (event: { params: Protocol.Cast.SinksUpdatedEvent }) => void): void;
+        offSinksUpdated(listener: (event: { params: Protocol.Cast.SinksUpdatedEvent }) => void): void;
+        onceSinksUpdated(eventMatcher?: (event: { params: Protocol.Cast.SinksUpdatedEvent }) => boolean): Promise<{ params: Protocol.Cast.SinksUpdatedEvent }>;
 
         /**
          * This is fired whenever the outstanding issue/error message changes.
          * |issueMessage| is empty if there is no issue.
          */
-        onIssueUpdated(listener: (params: Protocol.Cast.IssueUpdatedEvent) => void): void;
-        offIssueUpdated(listener: (params: Protocol.Cast.IssueUpdatedEvent) => void): void;
-        onceIssueUpdated(eventMatcher?: (params: Protocol.Cast.IssueUpdatedEvent) => boolean): void;
+        onIssueUpdated(listener: (event: { params: Protocol.Cast.IssueUpdatedEvent }) => void): void;
+        offIssueUpdated(listener: (event: { params: Protocol.Cast.IssueUpdatedEvent }) => void): void;
+        onceIssueUpdated(eventMatcher?: (event: { params: Protocol.Cast.IssueUpdatedEvent }) => boolean): Promise<{ params: Protocol.Cast.IssueUpdatedEvent }>;
 
     }
 
@@ -1591,108 +1591,108 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Fired when `Element`'s attribute is modified.
          */
-        onAttributeModified(listener: (params: Protocol.DOM.AttributeModifiedEvent) => void): void;
-        offAttributeModified(listener: (params: Protocol.DOM.AttributeModifiedEvent) => void): void;
-        onceAttributeModified(eventMatcher?: (params: Protocol.DOM.AttributeModifiedEvent) => boolean): void;
+        onAttributeModified(listener: (event: { params: Protocol.DOM.AttributeModifiedEvent }) => void): void;
+        offAttributeModified(listener: (event: { params: Protocol.DOM.AttributeModifiedEvent }) => void): void;
+        onceAttributeModified(eventMatcher?: (event: { params: Protocol.DOM.AttributeModifiedEvent }) => boolean): Promise<{ params: Protocol.DOM.AttributeModifiedEvent }>;
 
         /**
          * Fired when `Element`'s attribute is removed.
          */
-        onAttributeRemoved(listener: (params: Protocol.DOM.AttributeRemovedEvent) => void): void;
-        offAttributeRemoved(listener: (params: Protocol.DOM.AttributeRemovedEvent) => void): void;
-        onceAttributeRemoved(eventMatcher?: (params: Protocol.DOM.AttributeRemovedEvent) => boolean): void;
+        onAttributeRemoved(listener: (event: { params: Protocol.DOM.AttributeRemovedEvent }) => void): void;
+        offAttributeRemoved(listener: (event: { params: Protocol.DOM.AttributeRemovedEvent }) => void): void;
+        onceAttributeRemoved(eventMatcher?: (event: { params: Protocol.DOM.AttributeRemovedEvent }) => boolean): Promise<{ params: Protocol.DOM.AttributeRemovedEvent }>;
 
         /**
          * Mirrors `DOMCharacterDataModified` event.
          */
-        onCharacterDataModified(listener: (params: Protocol.DOM.CharacterDataModifiedEvent) => void): void;
-        offCharacterDataModified(listener: (params: Protocol.DOM.CharacterDataModifiedEvent) => void): void;
-        onceCharacterDataModified(eventMatcher?: (params: Protocol.DOM.CharacterDataModifiedEvent) => boolean): void;
+        onCharacterDataModified(listener: (event: { params: Protocol.DOM.CharacterDataModifiedEvent }) => void): void;
+        offCharacterDataModified(listener: (event: { params: Protocol.DOM.CharacterDataModifiedEvent }) => void): void;
+        onceCharacterDataModified(eventMatcher?: (event: { params: Protocol.DOM.CharacterDataModifiedEvent }) => boolean): Promise<{ params: Protocol.DOM.CharacterDataModifiedEvent }>;
 
         /**
          * Fired when `Container`'s child node count has changed.
          */
-        onChildNodeCountUpdated(listener: (params: Protocol.DOM.ChildNodeCountUpdatedEvent) => void): void;
-        offChildNodeCountUpdated(listener: (params: Protocol.DOM.ChildNodeCountUpdatedEvent) => void): void;
-        onceChildNodeCountUpdated(eventMatcher?: (params: Protocol.DOM.ChildNodeCountUpdatedEvent) => boolean): void;
+        onChildNodeCountUpdated(listener: (event: { params: Protocol.DOM.ChildNodeCountUpdatedEvent }) => void): void;
+        offChildNodeCountUpdated(listener: (event: { params: Protocol.DOM.ChildNodeCountUpdatedEvent }) => void): void;
+        onceChildNodeCountUpdated(eventMatcher?: (event: { params: Protocol.DOM.ChildNodeCountUpdatedEvent }) => boolean): Promise<{ params: Protocol.DOM.ChildNodeCountUpdatedEvent }>;
 
         /**
          * Mirrors `DOMNodeInserted` event.
          */
-        onChildNodeInserted(listener: (params: Protocol.DOM.ChildNodeInsertedEvent) => void): void;
-        offChildNodeInserted(listener: (params: Protocol.DOM.ChildNodeInsertedEvent) => void): void;
-        onceChildNodeInserted(eventMatcher?: (params: Protocol.DOM.ChildNodeInsertedEvent) => boolean): void;
+        onChildNodeInserted(listener: (event: { params: Protocol.DOM.ChildNodeInsertedEvent }) => void): void;
+        offChildNodeInserted(listener: (event: { params: Protocol.DOM.ChildNodeInsertedEvent }) => void): void;
+        onceChildNodeInserted(eventMatcher?: (event: { params: Protocol.DOM.ChildNodeInsertedEvent }) => boolean): Promise<{ params: Protocol.DOM.ChildNodeInsertedEvent }>;
 
         /**
          * Mirrors `DOMNodeRemoved` event.
          */
-        onChildNodeRemoved(listener: (params: Protocol.DOM.ChildNodeRemovedEvent) => void): void;
-        offChildNodeRemoved(listener: (params: Protocol.DOM.ChildNodeRemovedEvent) => void): void;
-        onceChildNodeRemoved(eventMatcher?: (params: Protocol.DOM.ChildNodeRemovedEvent) => boolean): void;
+        onChildNodeRemoved(listener: (event: { params: Protocol.DOM.ChildNodeRemovedEvent }) => void): void;
+        offChildNodeRemoved(listener: (event: { params: Protocol.DOM.ChildNodeRemovedEvent }) => void): void;
+        onceChildNodeRemoved(eventMatcher?: (event: { params: Protocol.DOM.ChildNodeRemovedEvent }) => boolean): Promise<{ params: Protocol.DOM.ChildNodeRemovedEvent }>;
 
         /**
          * Called when distribution is changed.
          */
-        onDistributedNodesUpdated(listener: (params: Protocol.DOM.DistributedNodesUpdatedEvent) => void): void;
-        offDistributedNodesUpdated(listener: (params: Protocol.DOM.DistributedNodesUpdatedEvent) => void): void;
-        onceDistributedNodesUpdated(eventMatcher?: (params: Protocol.DOM.DistributedNodesUpdatedEvent) => boolean): void;
+        onDistributedNodesUpdated(listener: (event: { params: Protocol.DOM.DistributedNodesUpdatedEvent }) => void): void;
+        offDistributedNodesUpdated(listener: (event: { params: Protocol.DOM.DistributedNodesUpdatedEvent }) => void): void;
+        onceDistributedNodesUpdated(eventMatcher?: (event: { params: Protocol.DOM.DistributedNodesUpdatedEvent }) => boolean): Promise<{ params: Protocol.DOM.DistributedNodesUpdatedEvent }>;
 
         /**
          * Fired when `Document` has been totally updated. Node ids are no longer valid.
          */
-        onDocumentUpdated(listener: () => void): void;
-        offDocumentUpdated(listener: () => void): void;
-        onceDocumentUpdated(eventMatcher?: () => boolean): void;
+        onDocumentUpdated(listener: (event: ) => void): void;
+        offDocumentUpdated(listener: (event: ) => void): void;
+        onceDocumentUpdated(eventMatcher?: (event: ) => boolean): Promise<>;
 
         /**
          * Fired when `Element`'s inline style is modified via a CSS property modification.
          */
-        onInlineStyleInvalidated(listener: (params: Protocol.DOM.InlineStyleInvalidatedEvent) => void): void;
-        offInlineStyleInvalidated(listener: (params: Protocol.DOM.InlineStyleInvalidatedEvent) => void): void;
-        onceInlineStyleInvalidated(eventMatcher?: (params: Protocol.DOM.InlineStyleInvalidatedEvent) => boolean): void;
+        onInlineStyleInvalidated(listener: (event: { params: Protocol.DOM.InlineStyleInvalidatedEvent }) => void): void;
+        offInlineStyleInvalidated(listener: (event: { params: Protocol.DOM.InlineStyleInvalidatedEvent }) => void): void;
+        onceInlineStyleInvalidated(eventMatcher?: (event: { params: Protocol.DOM.InlineStyleInvalidatedEvent }) => boolean): Promise<{ params: Protocol.DOM.InlineStyleInvalidatedEvent }>;
 
         /**
          * Called when a pseudo element is added to an element.
          */
-        onPseudoElementAdded(listener: (params: Protocol.DOM.PseudoElementAddedEvent) => void): void;
-        offPseudoElementAdded(listener: (params: Protocol.DOM.PseudoElementAddedEvent) => void): void;
-        oncePseudoElementAdded(eventMatcher?: (params: Protocol.DOM.PseudoElementAddedEvent) => boolean): void;
+        onPseudoElementAdded(listener: (event: { params: Protocol.DOM.PseudoElementAddedEvent }) => void): void;
+        offPseudoElementAdded(listener: (event: { params: Protocol.DOM.PseudoElementAddedEvent }) => void): void;
+        oncePseudoElementAdded(eventMatcher?: (event: { params: Protocol.DOM.PseudoElementAddedEvent }) => boolean): Promise<{ params: Protocol.DOM.PseudoElementAddedEvent }>;
 
         /**
          * Called when top layer elements are changed.
          */
-        onTopLayerElementsUpdated(listener: () => void): void;
-        offTopLayerElementsUpdated(listener: () => void): void;
-        onceTopLayerElementsUpdated(eventMatcher?: () => boolean): void;
+        onTopLayerElementsUpdated(listener: (event: ) => void): void;
+        offTopLayerElementsUpdated(listener: (event: ) => void): void;
+        onceTopLayerElementsUpdated(eventMatcher?: (event: ) => boolean): Promise<>;
 
         /**
          * Called when a pseudo element is removed from an element.
          */
-        onPseudoElementRemoved(listener: (params: Protocol.DOM.PseudoElementRemovedEvent) => void): void;
-        offPseudoElementRemoved(listener: (params: Protocol.DOM.PseudoElementRemovedEvent) => void): void;
-        oncePseudoElementRemoved(eventMatcher?: (params: Protocol.DOM.PseudoElementRemovedEvent) => boolean): void;
+        onPseudoElementRemoved(listener: (event: { params: Protocol.DOM.PseudoElementRemovedEvent }) => void): void;
+        offPseudoElementRemoved(listener: (event: { params: Protocol.DOM.PseudoElementRemovedEvent }) => void): void;
+        oncePseudoElementRemoved(eventMatcher?: (event: { params: Protocol.DOM.PseudoElementRemovedEvent }) => boolean): Promise<{ params: Protocol.DOM.PseudoElementRemovedEvent }>;
 
         /**
          * Fired when backend wants to provide client with the missing DOM structure. This happens upon
          * most of the calls requesting node ids.
          */
-        onSetChildNodes(listener: (params: Protocol.DOM.SetChildNodesEvent) => void): void;
-        offSetChildNodes(listener: (params: Protocol.DOM.SetChildNodesEvent) => void): void;
-        onceSetChildNodes(eventMatcher?: (params: Protocol.DOM.SetChildNodesEvent) => boolean): void;
+        onSetChildNodes(listener: (event: { params: Protocol.DOM.SetChildNodesEvent }) => void): void;
+        offSetChildNodes(listener: (event: { params: Protocol.DOM.SetChildNodesEvent }) => void): void;
+        onceSetChildNodes(eventMatcher?: (event: { params: Protocol.DOM.SetChildNodesEvent }) => boolean): Promise<{ params: Protocol.DOM.SetChildNodesEvent }>;
 
         /**
          * Called when shadow root is popped from the element.
          */
-        onShadowRootPopped(listener: (params: Protocol.DOM.ShadowRootPoppedEvent) => void): void;
-        offShadowRootPopped(listener: (params: Protocol.DOM.ShadowRootPoppedEvent) => void): void;
-        onceShadowRootPopped(eventMatcher?: (params: Protocol.DOM.ShadowRootPoppedEvent) => boolean): void;
+        onShadowRootPopped(listener: (event: { params: Protocol.DOM.ShadowRootPoppedEvent }) => void): void;
+        offShadowRootPopped(listener: (event: { params: Protocol.DOM.ShadowRootPoppedEvent }) => void): void;
+        onceShadowRootPopped(eventMatcher?: (event: { params: Protocol.DOM.ShadowRootPoppedEvent }) => boolean): Promise<{ params: Protocol.DOM.ShadowRootPoppedEvent }>;
 
         /**
          * Called when shadow root is pushed into the element.
          */
-        onShadowRootPushed(listener: (params: Protocol.DOM.ShadowRootPushedEvent) => void): void;
-        offShadowRootPushed(listener: (params: Protocol.DOM.ShadowRootPushedEvent) => void): void;
-        onceShadowRootPushed(eventMatcher?: (params: Protocol.DOM.ShadowRootPushedEvent) => boolean): void;
+        onShadowRootPushed(listener: (event: { params: Protocol.DOM.ShadowRootPushedEvent }) => void): void;
+        offShadowRootPushed(listener: (event: { params: Protocol.DOM.ShadowRootPushedEvent }) => void): void;
+        onceShadowRootPushed(eventMatcher?: (event: { params: Protocol.DOM.ShadowRootPushedEvent }) => boolean): Promise<{ params: Protocol.DOM.ShadowRootPushedEvent }>;
 
     }
 
@@ -1815,21 +1815,21 @@ export namespace ProtocolTestsProxyApi {
 
         setDOMStorageItem(params: Protocol.DOMStorage.SetDOMStorageItemRequest): Promise<void>;
 
-        onDomStorageItemAdded(listener: (params: Protocol.DOMStorage.DomStorageItemAddedEvent) => void): void;
-        offDomStorageItemAdded(listener: (params: Protocol.DOMStorage.DomStorageItemAddedEvent) => void): void;
-        onceDomStorageItemAdded(eventMatcher?: (params: Protocol.DOMStorage.DomStorageItemAddedEvent) => boolean): void;
+        onDomStorageItemAdded(listener: (event: { params: Protocol.DOMStorage.DomStorageItemAddedEvent }) => void): void;
+        offDomStorageItemAdded(listener: (event: { params: Protocol.DOMStorage.DomStorageItemAddedEvent }) => void): void;
+        onceDomStorageItemAdded(eventMatcher?: (event: { params: Protocol.DOMStorage.DomStorageItemAddedEvent }) => boolean): Promise<{ params: Protocol.DOMStorage.DomStorageItemAddedEvent }>;
 
-        onDomStorageItemRemoved(listener: (params: Protocol.DOMStorage.DomStorageItemRemovedEvent) => void): void;
-        offDomStorageItemRemoved(listener: (params: Protocol.DOMStorage.DomStorageItemRemovedEvent) => void): void;
-        onceDomStorageItemRemoved(eventMatcher?: (params: Protocol.DOMStorage.DomStorageItemRemovedEvent) => boolean): void;
+        onDomStorageItemRemoved(listener: (event: { params: Protocol.DOMStorage.DomStorageItemRemovedEvent }) => void): void;
+        offDomStorageItemRemoved(listener: (event: { params: Protocol.DOMStorage.DomStorageItemRemovedEvent }) => void): void;
+        onceDomStorageItemRemoved(eventMatcher?: (event: { params: Protocol.DOMStorage.DomStorageItemRemovedEvent }) => boolean): Promise<{ params: Protocol.DOMStorage.DomStorageItemRemovedEvent }>;
 
-        onDomStorageItemUpdated(listener: (params: Protocol.DOMStorage.DomStorageItemUpdatedEvent) => void): void;
-        offDomStorageItemUpdated(listener: (params: Protocol.DOMStorage.DomStorageItemUpdatedEvent) => void): void;
-        onceDomStorageItemUpdated(eventMatcher?: (params: Protocol.DOMStorage.DomStorageItemUpdatedEvent) => boolean): void;
+        onDomStorageItemUpdated(listener: (event: { params: Protocol.DOMStorage.DomStorageItemUpdatedEvent }) => void): void;
+        offDomStorageItemUpdated(listener: (event: { params: Protocol.DOMStorage.DomStorageItemUpdatedEvent }) => void): void;
+        onceDomStorageItemUpdated(eventMatcher?: (event: { params: Protocol.DOMStorage.DomStorageItemUpdatedEvent }) => boolean): Promise<{ params: Protocol.DOMStorage.DomStorageItemUpdatedEvent }>;
 
-        onDomStorageItemsCleared(listener: (params: Protocol.DOMStorage.DomStorageItemsClearedEvent) => void): void;
-        offDomStorageItemsCleared(listener: (params: Protocol.DOMStorage.DomStorageItemsClearedEvent) => void): void;
-        onceDomStorageItemsCleared(eventMatcher?: (params: Protocol.DOMStorage.DomStorageItemsClearedEvent) => boolean): void;
+        onDomStorageItemsCleared(listener: (event: { params: Protocol.DOMStorage.DomStorageItemsClearedEvent }) => void): void;
+        offDomStorageItemsCleared(listener: (event: { params: Protocol.DOMStorage.DomStorageItemsClearedEvent }) => void): void;
+        onceDomStorageItemsCleared(eventMatcher?: (event: { params: Protocol.DOMStorage.DomStorageItemsClearedEvent }) => boolean): Promise<{ params: Protocol.DOMStorage.DomStorageItemsClearedEvent }>;
 
     }
 
@@ -1848,9 +1848,9 @@ export namespace ProtocolTestsProxyApi {
 
         getDatabaseTableNames(params: Protocol.Database.GetDatabaseTableNamesRequest): Promise<Protocol.Database.GetDatabaseTableNamesResponse>;
 
-        onAddDatabase(listener: (params: Protocol.Database.AddDatabaseEvent) => void): void;
-        offAddDatabase(listener: (params: Protocol.Database.AddDatabaseEvent) => void): void;
-        onceAddDatabase(eventMatcher?: (params: Protocol.Database.AddDatabaseEvent) => boolean): void;
+        onAddDatabase(listener: (event: { params: Protocol.Database.AddDatabaseEvent }) => void): void;
+        offAddDatabase(listener: (event: { params: Protocol.Database.AddDatabaseEvent }) => void): void;
+        onceAddDatabase(eventMatcher?: (event: { params: Protocol.Database.AddDatabaseEvent }) => boolean): Promise<{ params: Protocol.Database.AddDatabaseEvent }>;
 
     }
 
@@ -2025,9 +2025,9 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Notification sent after the virtual time budget for the current VirtualTimePolicy has run out.
          */
-        onVirtualTimeBudgetExpired(listener: () => void): void;
-        offVirtualTimeBudgetExpired(listener: () => void): void;
-        onceVirtualTimeBudgetExpired(eventMatcher?: () => boolean): void;
+        onVirtualTimeBudgetExpired(listener: (event: ) => void): void;
+        offVirtualTimeBudgetExpired(listener: (event: ) => void): void;
+        onceVirtualTimeBudgetExpired(eventMatcher?: (event: ) => boolean): Promise<>;
 
     }
 
@@ -2192,9 +2192,9 @@ export namespace ProtocolTestsProxyApi {
          * Emitted only when `Input.setInterceptDrags` is enabled. Use this data with `Input.dispatchDragEvent` to
          * restore normal drag and drop behavior.
          */
-        onDragIntercepted(listener: (params: Protocol.Input.DragInterceptedEvent) => void): void;
-        offDragIntercepted(listener: (params: Protocol.Input.DragInterceptedEvent) => void): void;
-        onceDragIntercepted(eventMatcher?: (params: Protocol.Input.DragInterceptedEvent) => boolean): void;
+        onDragIntercepted(listener: (event: { params: Protocol.Input.DragInterceptedEvent }) => void): void;
+        offDragIntercepted(listener: (event: { params: Protocol.Input.DragInterceptedEvent }) => void): void;
+        onceDragIntercepted(eventMatcher?: (event: { params: Protocol.Input.DragInterceptedEvent }) => boolean): Promise<{ params: Protocol.Input.DragInterceptedEvent }>;
 
     }
 
@@ -2212,23 +2212,23 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Fired when remote debugging connection is about to be terminated. Contains detach reason.
          */
-        onDetached(listener: (params: Protocol.Inspector.DetachedEvent) => void): void;
-        offDetached(listener: (params: Protocol.Inspector.DetachedEvent) => void): void;
-        onceDetached(eventMatcher?: (params: Protocol.Inspector.DetachedEvent) => boolean): void;
+        onDetached(listener: (event: { params: Protocol.Inspector.DetachedEvent }) => void): void;
+        offDetached(listener: (event: { params: Protocol.Inspector.DetachedEvent }) => void): void;
+        onceDetached(eventMatcher?: (event: { params: Protocol.Inspector.DetachedEvent }) => boolean): Promise<{ params: Protocol.Inspector.DetachedEvent }>;
 
         /**
          * Fired when debugging target has crashed
          */
-        onTargetCrashed(listener: () => void): void;
-        offTargetCrashed(listener: () => void): void;
-        onceTargetCrashed(eventMatcher?: () => boolean): void;
+        onTargetCrashed(listener: (event: ) => void): void;
+        offTargetCrashed(listener: (event: ) => void): void;
+        onceTargetCrashed(eventMatcher?: (event: ) => boolean): Promise<>;
 
         /**
          * Fired when debugging target has reloaded after crash
          */
-        onTargetReloadedAfterCrash(listener: () => void): void;
-        offTargetReloadedAfterCrash(listener: () => void): void;
-        onceTargetReloadedAfterCrash(eventMatcher?: () => boolean): void;
+        onTargetReloadedAfterCrash(listener: (event: ) => void): void;
+        offTargetReloadedAfterCrash(listener: (event: ) => void): void;
+        onceTargetReloadedAfterCrash(eventMatcher?: (event: ) => boolean): Promise<>;
 
     }
 
@@ -2275,13 +2275,13 @@ export namespace ProtocolTestsProxyApi {
          */
         snapshotCommandLog(params: Protocol.LayerTree.SnapshotCommandLogRequest): Promise<Protocol.LayerTree.SnapshotCommandLogResponse>;
 
-        onLayerPainted(listener: (params: Protocol.LayerTree.LayerPaintedEvent) => void): void;
-        offLayerPainted(listener: (params: Protocol.LayerTree.LayerPaintedEvent) => void): void;
-        onceLayerPainted(eventMatcher?: (params: Protocol.LayerTree.LayerPaintedEvent) => boolean): void;
+        onLayerPainted(listener: (event: { params: Protocol.LayerTree.LayerPaintedEvent }) => void): void;
+        offLayerPainted(listener: (event: { params: Protocol.LayerTree.LayerPaintedEvent }) => void): void;
+        onceLayerPainted(eventMatcher?: (event: { params: Protocol.LayerTree.LayerPaintedEvent }) => boolean): Promise<{ params: Protocol.LayerTree.LayerPaintedEvent }>;
 
-        onLayerTreeDidChange(listener: (params: Protocol.LayerTree.LayerTreeDidChangeEvent) => void): void;
-        offLayerTreeDidChange(listener: (params: Protocol.LayerTree.LayerTreeDidChangeEvent) => void): void;
-        onceLayerTreeDidChange(eventMatcher?: (params: Protocol.LayerTree.LayerTreeDidChangeEvent) => boolean): void;
+        onLayerTreeDidChange(listener: (event: { params: Protocol.LayerTree.LayerTreeDidChangeEvent }) => void): void;
+        offLayerTreeDidChange(listener: (event: { params: Protocol.LayerTree.LayerTreeDidChangeEvent }) => void): void;
+        onceLayerTreeDidChange(eventMatcher?: (event: { params: Protocol.LayerTree.LayerTreeDidChangeEvent }) => boolean): Promise<{ params: Protocol.LayerTree.LayerTreeDidChangeEvent }>;
 
     }
 
@@ -2315,9 +2315,9 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Issued when new message was logged.
          */
-        onEntryAdded(listener: (params: Protocol.Log.EntryAddedEvent) => void): void;
-        offEntryAdded(listener: (params: Protocol.Log.EntryAddedEvent) => void): void;
-        onceEntryAdded(eventMatcher?: (params: Protocol.Log.EntryAddedEvent) => boolean): void;
+        onEntryAdded(listener: (event: { params: Protocol.Log.EntryAddedEvent }) => void): void;
+        offEntryAdded(listener: (event: { params: Protocol.Log.EntryAddedEvent }) => void): void;
+        onceEntryAdded(eventMatcher?: (event: { params: Protocol.Log.EntryAddedEvent }) => boolean): Promise<{ params: Protocol.Log.EntryAddedEvent }>;
 
     }
 
@@ -2560,144 +2560,144 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Fired when data chunk was received over the network.
          */
-        onDataReceived(listener: (params: Protocol.Network.DataReceivedEvent) => void): void;
-        offDataReceived(listener: (params: Protocol.Network.DataReceivedEvent) => void): void;
-        onceDataReceived(eventMatcher?: (params: Protocol.Network.DataReceivedEvent) => boolean): void;
+        onDataReceived(listener: (event: { params: Protocol.Network.DataReceivedEvent }) => void): void;
+        offDataReceived(listener: (event: { params: Protocol.Network.DataReceivedEvent }) => void): void;
+        onceDataReceived(eventMatcher?: (event: { params: Protocol.Network.DataReceivedEvent }) => boolean): Promise<{ params: Protocol.Network.DataReceivedEvent }>;
 
         /**
          * Fired when EventSource message is received.
          */
-        onEventSourceMessageReceived(listener: (params: Protocol.Network.EventSourceMessageReceivedEvent) => void): void;
-        offEventSourceMessageReceived(listener: (params: Protocol.Network.EventSourceMessageReceivedEvent) => void): void;
-        onceEventSourceMessageReceived(eventMatcher?: (params: Protocol.Network.EventSourceMessageReceivedEvent) => boolean): void;
+        onEventSourceMessageReceived(listener: (event: { params: Protocol.Network.EventSourceMessageReceivedEvent }) => void): void;
+        offEventSourceMessageReceived(listener: (event: { params: Protocol.Network.EventSourceMessageReceivedEvent }) => void): void;
+        onceEventSourceMessageReceived(eventMatcher?: (event: { params: Protocol.Network.EventSourceMessageReceivedEvent }) => boolean): Promise<{ params: Protocol.Network.EventSourceMessageReceivedEvent }>;
 
         /**
          * Fired when HTTP request has failed to load.
          */
-        onLoadingFailed(listener: (params: Protocol.Network.LoadingFailedEvent) => void): void;
-        offLoadingFailed(listener: (params: Protocol.Network.LoadingFailedEvent) => void): void;
-        onceLoadingFailed(eventMatcher?: (params: Protocol.Network.LoadingFailedEvent) => boolean): void;
+        onLoadingFailed(listener: (event: { params: Protocol.Network.LoadingFailedEvent }) => void): void;
+        offLoadingFailed(listener: (event: { params: Protocol.Network.LoadingFailedEvent }) => void): void;
+        onceLoadingFailed(eventMatcher?: (event: { params: Protocol.Network.LoadingFailedEvent }) => boolean): Promise<{ params: Protocol.Network.LoadingFailedEvent }>;
 
         /**
          * Fired when HTTP request has finished loading.
          */
-        onLoadingFinished(listener: (params: Protocol.Network.LoadingFinishedEvent) => void): void;
-        offLoadingFinished(listener: (params: Protocol.Network.LoadingFinishedEvent) => void): void;
-        onceLoadingFinished(eventMatcher?: (params: Protocol.Network.LoadingFinishedEvent) => boolean): void;
+        onLoadingFinished(listener: (event: { params: Protocol.Network.LoadingFinishedEvent }) => void): void;
+        offLoadingFinished(listener: (event: { params: Protocol.Network.LoadingFinishedEvent }) => void): void;
+        onceLoadingFinished(eventMatcher?: (event: { params: Protocol.Network.LoadingFinishedEvent }) => boolean): Promise<{ params: Protocol.Network.LoadingFinishedEvent }>;
 
         /**
          * Details of an intercepted HTTP request, which must be either allowed, blocked, modified or
          * mocked.
          * Deprecated, use Fetch.requestPaused instead.
          */
-        onRequestIntercepted(listener: (params: Protocol.Network.RequestInterceptedEvent) => void): void;
-        offRequestIntercepted(listener: (params: Protocol.Network.RequestInterceptedEvent) => void): void;
-        onceRequestIntercepted(eventMatcher?: (params: Protocol.Network.RequestInterceptedEvent) => boolean): void;
+        onRequestIntercepted(listener: (event: { params: Protocol.Network.RequestInterceptedEvent }) => void): void;
+        offRequestIntercepted(listener: (event: { params: Protocol.Network.RequestInterceptedEvent }) => void): void;
+        onceRequestIntercepted(eventMatcher?: (event: { params: Protocol.Network.RequestInterceptedEvent }) => boolean): Promise<{ params: Protocol.Network.RequestInterceptedEvent }>;
 
         /**
          * Fired if request ended up loading from cache.
          */
-        onRequestServedFromCache(listener: (params: Protocol.Network.RequestServedFromCacheEvent) => void): void;
-        offRequestServedFromCache(listener: (params: Protocol.Network.RequestServedFromCacheEvent) => void): void;
-        onceRequestServedFromCache(eventMatcher?: (params: Protocol.Network.RequestServedFromCacheEvent) => boolean): void;
+        onRequestServedFromCache(listener: (event: { params: Protocol.Network.RequestServedFromCacheEvent }) => void): void;
+        offRequestServedFromCache(listener: (event: { params: Protocol.Network.RequestServedFromCacheEvent }) => void): void;
+        onceRequestServedFromCache(eventMatcher?: (event: { params: Protocol.Network.RequestServedFromCacheEvent }) => boolean): Promise<{ params: Protocol.Network.RequestServedFromCacheEvent }>;
 
         /**
          * Fired when page is about to send HTTP request.
          */
-        onRequestWillBeSent(listener: (params: Protocol.Network.RequestWillBeSentEvent) => void): void;
-        offRequestWillBeSent(listener: (params: Protocol.Network.RequestWillBeSentEvent) => void): void;
-        onceRequestWillBeSent(eventMatcher?: (params: Protocol.Network.RequestWillBeSentEvent) => boolean): void;
+        onRequestWillBeSent(listener: (event: { params: Protocol.Network.RequestWillBeSentEvent }) => void): void;
+        offRequestWillBeSent(listener: (event: { params: Protocol.Network.RequestWillBeSentEvent }) => void): void;
+        onceRequestWillBeSent(eventMatcher?: (event: { params: Protocol.Network.RequestWillBeSentEvent }) => boolean): Promise<{ params: Protocol.Network.RequestWillBeSentEvent }>;
 
         /**
          * Fired when resource loading priority is changed
          */
-        onResourceChangedPriority(listener: (params: Protocol.Network.ResourceChangedPriorityEvent) => void): void;
-        offResourceChangedPriority(listener: (params: Protocol.Network.ResourceChangedPriorityEvent) => void): void;
-        onceResourceChangedPriority(eventMatcher?: (params: Protocol.Network.ResourceChangedPriorityEvent) => boolean): void;
+        onResourceChangedPriority(listener: (event: { params: Protocol.Network.ResourceChangedPriorityEvent }) => void): void;
+        offResourceChangedPriority(listener: (event: { params: Protocol.Network.ResourceChangedPriorityEvent }) => void): void;
+        onceResourceChangedPriority(eventMatcher?: (event: { params: Protocol.Network.ResourceChangedPriorityEvent }) => boolean): Promise<{ params: Protocol.Network.ResourceChangedPriorityEvent }>;
 
         /**
          * Fired when a signed exchange was received over the network
          */
-        onSignedExchangeReceived(listener: (params: Protocol.Network.SignedExchangeReceivedEvent) => void): void;
-        offSignedExchangeReceived(listener: (params: Protocol.Network.SignedExchangeReceivedEvent) => void): void;
-        onceSignedExchangeReceived(eventMatcher?: (params: Protocol.Network.SignedExchangeReceivedEvent) => boolean): void;
+        onSignedExchangeReceived(listener: (event: { params: Protocol.Network.SignedExchangeReceivedEvent }) => void): void;
+        offSignedExchangeReceived(listener: (event: { params: Protocol.Network.SignedExchangeReceivedEvent }) => void): void;
+        onceSignedExchangeReceived(eventMatcher?: (event: { params: Protocol.Network.SignedExchangeReceivedEvent }) => boolean): Promise<{ params: Protocol.Network.SignedExchangeReceivedEvent }>;
 
         /**
          * Fired when HTTP response is available.
          */
-        onResponseReceived(listener: (params: Protocol.Network.ResponseReceivedEvent) => void): void;
-        offResponseReceived(listener: (params: Protocol.Network.ResponseReceivedEvent) => void): void;
-        onceResponseReceived(eventMatcher?: (params: Protocol.Network.ResponseReceivedEvent) => boolean): void;
+        onResponseReceived(listener: (event: { params: Protocol.Network.ResponseReceivedEvent }) => void): void;
+        offResponseReceived(listener: (event: { params: Protocol.Network.ResponseReceivedEvent }) => void): void;
+        onceResponseReceived(eventMatcher?: (event: { params: Protocol.Network.ResponseReceivedEvent }) => boolean): Promise<{ params: Protocol.Network.ResponseReceivedEvent }>;
 
         /**
          * Fired when WebSocket is closed.
          */
-        onWebSocketClosed(listener: (params: Protocol.Network.WebSocketClosedEvent) => void): void;
-        offWebSocketClosed(listener: (params: Protocol.Network.WebSocketClosedEvent) => void): void;
-        onceWebSocketClosed(eventMatcher?: (params: Protocol.Network.WebSocketClosedEvent) => boolean): void;
+        onWebSocketClosed(listener: (event: { params: Protocol.Network.WebSocketClosedEvent }) => void): void;
+        offWebSocketClosed(listener: (event: { params: Protocol.Network.WebSocketClosedEvent }) => void): void;
+        onceWebSocketClosed(eventMatcher?: (event: { params: Protocol.Network.WebSocketClosedEvent }) => boolean): Promise<{ params: Protocol.Network.WebSocketClosedEvent }>;
 
         /**
          * Fired upon WebSocket creation.
          */
-        onWebSocketCreated(listener: (params: Protocol.Network.WebSocketCreatedEvent) => void): void;
-        offWebSocketCreated(listener: (params: Protocol.Network.WebSocketCreatedEvent) => void): void;
-        onceWebSocketCreated(eventMatcher?: (params: Protocol.Network.WebSocketCreatedEvent) => boolean): void;
+        onWebSocketCreated(listener: (event: { params: Protocol.Network.WebSocketCreatedEvent }) => void): void;
+        offWebSocketCreated(listener: (event: { params: Protocol.Network.WebSocketCreatedEvent }) => void): void;
+        onceWebSocketCreated(eventMatcher?: (event: { params: Protocol.Network.WebSocketCreatedEvent }) => boolean): Promise<{ params: Protocol.Network.WebSocketCreatedEvent }>;
 
         /**
          * Fired when WebSocket message error occurs.
          */
-        onWebSocketFrameError(listener: (params: Protocol.Network.WebSocketFrameErrorEvent) => void): void;
-        offWebSocketFrameError(listener: (params: Protocol.Network.WebSocketFrameErrorEvent) => void): void;
-        onceWebSocketFrameError(eventMatcher?: (params: Protocol.Network.WebSocketFrameErrorEvent) => boolean): void;
+        onWebSocketFrameError(listener: (event: { params: Protocol.Network.WebSocketFrameErrorEvent }) => void): void;
+        offWebSocketFrameError(listener: (event: { params: Protocol.Network.WebSocketFrameErrorEvent }) => void): void;
+        onceWebSocketFrameError(eventMatcher?: (event: { params: Protocol.Network.WebSocketFrameErrorEvent }) => boolean): Promise<{ params: Protocol.Network.WebSocketFrameErrorEvent }>;
 
         /**
          * Fired when WebSocket message is received.
          */
-        onWebSocketFrameReceived(listener: (params: Protocol.Network.WebSocketFrameReceivedEvent) => void): void;
-        offWebSocketFrameReceived(listener: (params: Protocol.Network.WebSocketFrameReceivedEvent) => void): void;
-        onceWebSocketFrameReceived(eventMatcher?: (params: Protocol.Network.WebSocketFrameReceivedEvent) => boolean): void;
+        onWebSocketFrameReceived(listener: (event: { params: Protocol.Network.WebSocketFrameReceivedEvent }) => void): void;
+        offWebSocketFrameReceived(listener: (event: { params: Protocol.Network.WebSocketFrameReceivedEvent }) => void): void;
+        onceWebSocketFrameReceived(eventMatcher?: (event: { params: Protocol.Network.WebSocketFrameReceivedEvent }) => boolean): Promise<{ params: Protocol.Network.WebSocketFrameReceivedEvent }>;
 
         /**
          * Fired when WebSocket message is sent.
          */
-        onWebSocketFrameSent(listener: (params: Protocol.Network.WebSocketFrameSentEvent) => void): void;
-        offWebSocketFrameSent(listener: (params: Protocol.Network.WebSocketFrameSentEvent) => void): void;
-        onceWebSocketFrameSent(eventMatcher?: (params: Protocol.Network.WebSocketFrameSentEvent) => boolean): void;
+        onWebSocketFrameSent(listener: (event: { params: Protocol.Network.WebSocketFrameSentEvent }) => void): void;
+        offWebSocketFrameSent(listener: (event: { params: Protocol.Network.WebSocketFrameSentEvent }) => void): void;
+        onceWebSocketFrameSent(eventMatcher?: (event: { params: Protocol.Network.WebSocketFrameSentEvent }) => boolean): Promise<{ params: Protocol.Network.WebSocketFrameSentEvent }>;
 
         /**
          * Fired when WebSocket handshake response becomes available.
          */
-        onWebSocketHandshakeResponseReceived(listener: (params: Protocol.Network.WebSocketHandshakeResponseReceivedEvent) => void): void;
-        offWebSocketHandshakeResponseReceived(listener: (params: Protocol.Network.WebSocketHandshakeResponseReceivedEvent) => void): void;
-        onceWebSocketHandshakeResponseReceived(eventMatcher?: (params: Protocol.Network.WebSocketHandshakeResponseReceivedEvent) => boolean): void;
+        onWebSocketHandshakeResponseReceived(listener: (event: { params: Protocol.Network.WebSocketHandshakeResponseReceivedEvent }) => void): void;
+        offWebSocketHandshakeResponseReceived(listener: (event: { params: Protocol.Network.WebSocketHandshakeResponseReceivedEvent }) => void): void;
+        onceWebSocketHandshakeResponseReceived(eventMatcher?: (event: { params: Protocol.Network.WebSocketHandshakeResponseReceivedEvent }) => boolean): Promise<{ params: Protocol.Network.WebSocketHandshakeResponseReceivedEvent }>;
 
         /**
          * Fired when WebSocket is about to initiate handshake.
          */
-        onWebSocketWillSendHandshakeRequest(listener: (params: Protocol.Network.WebSocketWillSendHandshakeRequestEvent) => void): void;
-        offWebSocketWillSendHandshakeRequest(listener: (params: Protocol.Network.WebSocketWillSendHandshakeRequestEvent) => void): void;
-        onceWebSocketWillSendHandshakeRequest(eventMatcher?: (params: Protocol.Network.WebSocketWillSendHandshakeRequestEvent) => boolean): void;
+        onWebSocketWillSendHandshakeRequest(listener: (event: { params: Protocol.Network.WebSocketWillSendHandshakeRequestEvent }) => void): void;
+        offWebSocketWillSendHandshakeRequest(listener: (event: { params: Protocol.Network.WebSocketWillSendHandshakeRequestEvent }) => void): void;
+        onceWebSocketWillSendHandshakeRequest(eventMatcher?: (event: { params: Protocol.Network.WebSocketWillSendHandshakeRequestEvent }) => boolean): Promise<{ params: Protocol.Network.WebSocketWillSendHandshakeRequestEvent }>;
 
         /**
          * Fired upon WebTransport creation.
          */
-        onWebTransportCreated(listener: (params: Protocol.Network.WebTransportCreatedEvent) => void): void;
-        offWebTransportCreated(listener: (params: Protocol.Network.WebTransportCreatedEvent) => void): void;
-        onceWebTransportCreated(eventMatcher?: (params: Protocol.Network.WebTransportCreatedEvent) => boolean): void;
+        onWebTransportCreated(listener: (event: { params: Protocol.Network.WebTransportCreatedEvent }) => void): void;
+        offWebTransportCreated(listener: (event: { params: Protocol.Network.WebTransportCreatedEvent }) => void): void;
+        onceWebTransportCreated(eventMatcher?: (event: { params: Protocol.Network.WebTransportCreatedEvent }) => boolean): Promise<{ params: Protocol.Network.WebTransportCreatedEvent }>;
 
         /**
          * Fired when WebTransport handshake is finished.
          */
-        onWebTransportConnectionEstablished(listener: (params: Protocol.Network.WebTransportConnectionEstablishedEvent) => void): void;
-        offWebTransportConnectionEstablished(listener: (params: Protocol.Network.WebTransportConnectionEstablishedEvent) => void): void;
-        onceWebTransportConnectionEstablished(eventMatcher?: (params: Protocol.Network.WebTransportConnectionEstablishedEvent) => boolean): void;
+        onWebTransportConnectionEstablished(listener: (event: { params: Protocol.Network.WebTransportConnectionEstablishedEvent }) => void): void;
+        offWebTransportConnectionEstablished(listener: (event: { params: Protocol.Network.WebTransportConnectionEstablishedEvent }) => void): void;
+        onceWebTransportConnectionEstablished(eventMatcher?: (event: { params: Protocol.Network.WebTransportConnectionEstablishedEvent }) => boolean): Promise<{ params: Protocol.Network.WebTransportConnectionEstablishedEvent }>;
 
         /**
          * Fired when WebTransport is disposed.
          */
-        onWebTransportClosed(listener: (params: Protocol.Network.WebTransportClosedEvent) => void): void;
-        offWebTransportClosed(listener: (params: Protocol.Network.WebTransportClosedEvent) => void): void;
-        onceWebTransportClosed(eventMatcher?: (params: Protocol.Network.WebTransportClosedEvent) => boolean): void;
+        onWebTransportClosed(listener: (event: { params: Protocol.Network.WebTransportClosedEvent }) => void): void;
+        offWebTransportClosed(listener: (event: { params: Protocol.Network.WebTransportClosedEvent }) => void): void;
+        onceWebTransportClosed(eventMatcher?: (event: { params: Protocol.Network.WebTransportClosedEvent }) => boolean): Promise<{ params: Protocol.Network.WebTransportClosedEvent }>;
 
         /**
          * Fired when additional information about a requestWillBeSent event is available from the
@@ -2705,18 +2705,18 @@ export namespace ProtocolTestsProxyApi {
          * requestWillBeSentExtraInfo fired for it, and there is no guarantee whether requestWillBeSent
          * or requestWillBeSentExtraInfo will be fired first for the same request.
          */
-        onRequestWillBeSentExtraInfo(listener: (params: Protocol.Network.RequestWillBeSentExtraInfoEvent) => void): void;
-        offRequestWillBeSentExtraInfo(listener: (params: Protocol.Network.RequestWillBeSentExtraInfoEvent) => void): void;
-        onceRequestWillBeSentExtraInfo(eventMatcher?: (params: Protocol.Network.RequestWillBeSentExtraInfoEvent) => boolean): void;
+        onRequestWillBeSentExtraInfo(listener: (event: { params: Protocol.Network.RequestWillBeSentExtraInfoEvent }) => void): void;
+        offRequestWillBeSentExtraInfo(listener: (event: { params: Protocol.Network.RequestWillBeSentExtraInfoEvent }) => void): void;
+        onceRequestWillBeSentExtraInfo(eventMatcher?: (event: { params: Protocol.Network.RequestWillBeSentExtraInfoEvent }) => boolean): Promise<{ params: Protocol.Network.RequestWillBeSentExtraInfoEvent }>;
 
         /**
          * Fired when additional information about a responseReceived event is available from the network
          * stack. Not every responseReceived event will have an additional responseReceivedExtraInfo for
          * it, and responseReceivedExtraInfo may be fired before or after responseReceived.
          */
-        onResponseReceivedExtraInfo(listener: (params: Protocol.Network.ResponseReceivedExtraInfoEvent) => void): void;
-        offResponseReceivedExtraInfo(listener: (params: Protocol.Network.ResponseReceivedExtraInfoEvent) => void): void;
-        onceResponseReceivedExtraInfo(eventMatcher?: (params: Protocol.Network.ResponseReceivedExtraInfoEvent) => boolean): void;
+        onResponseReceivedExtraInfo(listener: (event: { params: Protocol.Network.ResponseReceivedExtraInfoEvent }) => void): void;
+        offResponseReceivedExtraInfo(listener: (event: { params: Protocol.Network.ResponseReceivedExtraInfoEvent }) => void): void;
+        onceResponseReceivedExtraInfo(eventMatcher?: (event: { params: Protocol.Network.ResponseReceivedExtraInfoEvent }) => boolean): Promise<{ params: Protocol.Network.ResponseReceivedExtraInfoEvent }>;
 
         /**
          * Fired exactly once for each Trust Token operation. Depending on
@@ -2724,55 +2724,55 @@ export namespace ProtocolTestsProxyApi {
          * failed, the event is fired before the corresponding request was sent
          * or after the response was received.
          */
-        onTrustTokenOperationDone(listener: (params: Protocol.Network.TrustTokenOperationDoneEvent) => void): void;
-        offTrustTokenOperationDone(listener: (params: Protocol.Network.TrustTokenOperationDoneEvent) => void): void;
-        onceTrustTokenOperationDone(eventMatcher?: (params: Protocol.Network.TrustTokenOperationDoneEvent) => boolean): void;
+        onTrustTokenOperationDone(listener: (event: { params: Protocol.Network.TrustTokenOperationDoneEvent }) => void): void;
+        offTrustTokenOperationDone(listener: (event: { params: Protocol.Network.TrustTokenOperationDoneEvent }) => void): void;
+        onceTrustTokenOperationDone(eventMatcher?: (event: { params: Protocol.Network.TrustTokenOperationDoneEvent }) => boolean): Promise<{ params: Protocol.Network.TrustTokenOperationDoneEvent }>;
 
         /**
          * Fired once when parsing the .wbn file has succeeded.
          * The event contains the information about the web bundle contents.
          */
-        onSubresourceWebBundleMetadataReceived(listener: (params: Protocol.Network.SubresourceWebBundleMetadataReceivedEvent) => void): void;
-        offSubresourceWebBundleMetadataReceived(listener: (params: Protocol.Network.SubresourceWebBundleMetadataReceivedEvent) => void): void;
-        onceSubresourceWebBundleMetadataReceived(eventMatcher?: (params: Protocol.Network.SubresourceWebBundleMetadataReceivedEvent) => boolean): void;
+        onSubresourceWebBundleMetadataReceived(listener: (event: { params: Protocol.Network.SubresourceWebBundleMetadataReceivedEvent }) => void): void;
+        offSubresourceWebBundleMetadataReceived(listener: (event: { params: Protocol.Network.SubresourceWebBundleMetadataReceivedEvent }) => void): void;
+        onceSubresourceWebBundleMetadataReceived(eventMatcher?: (event: { params: Protocol.Network.SubresourceWebBundleMetadataReceivedEvent }) => boolean): Promise<{ params: Protocol.Network.SubresourceWebBundleMetadataReceivedEvent }>;
 
         /**
          * Fired once when parsing the .wbn file has failed.
          */
-        onSubresourceWebBundleMetadataError(listener: (params: Protocol.Network.SubresourceWebBundleMetadataErrorEvent) => void): void;
-        offSubresourceWebBundleMetadataError(listener: (params: Protocol.Network.SubresourceWebBundleMetadataErrorEvent) => void): void;
-        onceSubresourceWebBundleMetadataError(eventMatcher?: (params: Protocol.Network.SubresourceWebBundleMetadataErrorEvent) => boolean): void;
+        onSubresourceWebBundleMetadataError(listener: (event: { params: Protocol.Network.SubresourceWebBundleMetadataErrorEvent }) => void): void;
+        offSubresourceWebBundleMetadataError(listener: (event: { params: Protocol.Network.SubresourceWebBundleMetadataErrorEvent }) => void): void;
+        onceSubresourceWebBundleMetadataError(eventMatcher?: (event: { params: Protocol.Network.SubresourceWebBundleMetadataErrorEvent }) => boolean): Promise<{ params: Protocol.Network.SubresourceWebBundleMetadataErrorEvent }>;
 
         /**
          * Fired when handling requests for resources within a .wbn file.
          * Note: this will only be fired for resources that are requested by the webpage.
          */
-        onSubresourceWebBundleInnerResponseParsed(listener: (params: Protocol.Network.SubresourceWebBundleInnerResponseParsedEvent) => void): void;
-        offSubresourceWebBundleInnerResponseParsed(listener: (params: Protocol.Network.SubresourceWebBundleInnerResponseParsedEvent) => void): void;
-        onceSubresourceWebBundleInnerResponseParsed(eventMatcher?: (params: Protocol.Network.SubresourceWebBundleInnerResponseParsedEvent) => boolean): void;
+        onSubresourceWebBundleInnerResponseParsed(listener: (event: { params: Protocol.Network.SubresourceWebBundleInnerResponseParsedEvent }) => void): void;
+        offSubresourceWebBundleInnerResponseParsed(listener: (event: { params: Protocol.Network.SubresourceWebBundleInnerResponseParsedEvent }) => void): void;
+        onceSubresourceWebBundleInnerResponseParsed(eventMatcher?: (event: { params: Protocol.Network.SubresourceWebBundleInnerResponseParsedEvent }) => boolean): Promise<{ params: Protocol.Network.SubresourceWebBundleInnerResponseParsedEvent }>;
 
         /**
          * Fired when request for resources within a .wbn file failed.
          */
-        onSubresourceWebBundleInnerResponseError(listener: (params: Protocol.Network.SubresourceWebBundleInnerResponseErrorEvent) => void): void;
-        offSubresourceWebBundleInnerResponseError(listener: (params: Protocol.Network.SubresourceWebBundleInnerResponseErrorEvent) => void): void;
-        onceSubresourceWebBundleInnerResponseError(eventMatcher?: (params: Protocol.Network.SubresourceWebBundleInnerResponseErrorEvent) => boolean): void;
+        onSubresourceWebBundleInnerResponseError(listener: (event: { params: Protocol.Network.SubresourceWebBundleInnerResponseErrorEvent }) => void): void;
+        offSubresourceWebBundleInnerResponseError(listener: (event: { params: Protocol.Network.SubresourceWebBundleInnerResponseErrorEvent }) => void): void;
+        onceSubresourceWebBundleInnerResponseError(eventMatcher?: (event: { params: Protocol.Network.SubresourceWebBundleInnerResponseErrorEvent }) => boolean): Promise<{ params: Protocol.Network.SubresourceWebBundleInnerResponseErrorEvent }>;
 
         /**
          * Is sent whenever a new report is added.
          * And after 'enableReportingApi' for all existing reports.
          */
-        onReportingApiReportAdded(listener: (params: Protocol.Network.ReportingApiReportAddedEvent) => void): void;
-        offReportingApiReportAdded(listener: (params: Protocol.Network.ReportingApiReportAddedEvent) => void): void;
-        onceReportingApiReportAdded(eventMatcher?: (params: Protocol.Network.ReportingApiReportAddedEvent) => boolean): void;
+        onReportingApiReportAdded(listener: (event: { params: Protocol.Network.ReportingApiReportAddedEvent }) => void): void;
+        offReportingApiReportAdded(listener: (event: { params: Protocol.Network.ReportingApiReportAddedEvent }) => void): void;
+        onceReportingApiReportAdded(eventMatcher?: (event: { params: Protocol.Network.ReportingApiReportAddedEvent }) => boolean): Promise<{ params: Protocol.Network.ReportingApiReportAddedEvent }>;
 
-        onReportingApiReportUpdated(listener: (params: Protocol.Network.ReportingApiReportUpdatedEvent) => void): void;
-        offReportingApiReportUpdated(listener: (params: Protocol.Network.ReportingApiReportUpdatedEvent) => void): void;
-        onceReportingApiReportUpdated(eventMatcher?: (params: Protocol.Network.ReportingApiReportUpdatedEvent) => boolean): void;
+        onReportingApiReportUpdated(listener: (event: { params: Protocol.Network.ReportingApiReportUpdatedEvent }) => void): void;
+        offReportingApiReportUpdated(listener: (event: { params: Protocol.Network.ReportingApiReportUpdatedEvent }) => void): void;
+        onceReportingApiReportUpdated(eventMatcher?: (event: { params: Protocol.Network.ReportingApiReportUpdatedEvent }) => boolean): Promise<{ params: Protocol.Network.ReportingApiReportUpdatedEvent }>;
 
-        onReportingApiEndpointsChangedForOrigin(listener: (params: Protocol.Network.ReportingApiEndpointsChangedForOriginEvent) => void): void;
-        offReportingApiEndpointsChangedForOrigin(listener: (params: Protocol.Network.ReportingApiEndpointsChangedForOriginEvent) => void): void;
-        onceReportingApiEndpointsChangedForOrigin(eventMatcher?: (params: Protocol.Network.ReportingApiEndpointsChangedForOriginEvent) => boolean): void;
+        onReportingApiEndpointsChangedForOrigin(listener: (event: { params: Protocol.Network.ReportingApiEndpointsChangedForOriginEvent }) => void): void;
+        offReportingApiEndpointsChangedForOrigin(listener: (event: { params: Protocol.Network.ReportingApiEndpointsChangedForOriginEvent }) => void): void;
+        onceReportingApiEndpointsChangedForOrigin(eventMatcher?: (event: { params: Protocol.Network.ReportingApiEndpointsChangedForOriginEvent }) => boolean): Promise<{ params: Protocol.Network.ReportingApiEndpointsChangedForOriginEvent }>;
 
     }
 
@@ -2920,30 +2920,30 @@ export namespace ProtocolTestsProxyApi {
          * Fired when the node should be inspected. This happens after call to `setInspectMode` or when
          * user manually inspects an element.
          */
-        onInspectNodeRequested(listener: (params: Protocol.Overlay.InspectNodeRequestedEvent) => void): void;
-        offInspectNodeRequested(listener: (params: Protocol.Overlay.InspectNodeRequestedEvent) => void): void;
-        onceInspectNodeRequested(eventMatcher?: (params: Protocol.Overlay.InspectNodeRequestedEvent) => boolean): void;
+        onInspectNodeRequested(listener: (event: { params: Protocol.Overlay.InspectNodeRequestedEvent }) => void): void;
+        offInspectNodeRequested(listener: (event: { params: Protocol.Overlay.InspectNodeRequestedEvent }) => void): void;
+        onceInspectNodeRequested(eventMatcher?: (event: { params: Protocol.Overlay.InspectNodeRequestedEvent }) => boolean): Promise<{ params: Protocol.Overlay.InspectNodeRequestedEvent }>;
 
         /**
          * Fired when the node should be highlighted. This happens after call to `setInspectMode`.
          */
-        onNodeHighlightRequested(listener: (params: Protocol.Overlay.NodeHighlightRequestedEvent) => void): void;
-        offNodeHighlightRequested(listener: (params: Protocol.Overlay.NodeHighlightRequestedEvent) => void): void;
-        onceNodeHighlightRequested(eventMatcher?: (params: Protocol.Overlay.NodeHighlightRequestedEvent) => boolean): void;
+        onNodeHighlightRequested(listener: (event: { params: Protocol.Overlay.NodeHighlightRequestedEvent }) => void): void;
+        offNodeHighlightRequested(listener: (event: { params: Protocol.Overlay.NodeHighlightRequestedEvent }) => void): void;
+        onceNodeHighlightRequested(eventMatcher?: (event: { params: Protocol.Overlay.NodeHighlightRequestedEvent }) => boolean): Promise<{ params: Protocol.Overlay.NodeHighlightRequestedEvent }>;
 
         /**
          * Fired when user asks to capture screenshot of some area on the page.
          */
-        onScreenshotRequested(listener: (params: Protocol.Overlay.ScreenshotRequestedEvent) => void): void;
-        offScreenshotRequested(listener: (params: Protocol.Overlay.ScreenshotRequestedEvent) => void): void;
-        onceScreenshotRequested(eventMatcher?: (params: Protocol.Overlay.ScreenshotRequestedEvent) => boolean): void;
+        onScreenshotRequested(listener: (event: { params: Protocol.Overlay.ScreenshotRequestedEvent }) => void): void;
+        offScreenshotRequested(listener: (event: { params: Protocol.Overlay.ScreenshotRequestedEvent }) => void): void;
+        onceScreenshotRequested(eventMatcher?: (event: { params: Protocol.Overlay.ScreenshotRequestedEvent }) => boolean): Promise<{ params: Protocol.Overlay.ScreenshotRequestedEvent }>;
 
         /**
          * Fired when user cancels the inspect mode.
          */
-        onInspectModeCanceled(listener: () => void): void;
-        offInspectModeCanceled(listener: () => void): void;
-        onceInspectModeCanceled(eventMatcher?: () => boolean): void;
+        onInspectModeCanceled(listener: (event: ) => void): void;
+        offInspectModeCanceled(listener: (event: ) => void): void;
+        onceInspectModeCanceled(eventMatcher?: (event: ) => boolean): Promise<>;
 
     }
 
@@ -3262,137 +3262,137 @@ export namespace ProtocolTestsProxyApi {
          */
         setPrerenderingAllowed(params: Protocol.Page.SetPrerenderingAllowedRequest): Promise<void>;
 
-        onDomContentEventFired(listener: (params: Protocol.Page.DomContentEventFiredEvent) => void): void;
-        offDomContentEventFired(listener: (params: Protocol.Page.DomContentEventFiredEvent) => void): void;
-        onceDomContentEventFired(eventMatcher?: (params: Protocol.Page.DomContentEventFiredEvent) => boolean): void;
+        onDomContentEventFired(listener: (event: { params: Protocol.Page.DomContentEventFiredEvent }) => void): void;
+        offDomContentEventFired(listener: (event: { params: Protocol.Page.DomContentEventFiredEvent }) => void): void;
+        onceDomContentEventFired(eventMatcher?: (event: { params: Protocol.Page.DomContentEventFiredEvent }) => boolean): Promise<{ params: Protocol.Page.DomContentEventFiredEvent }>;
 
         /**
          * Emitted only when `page.interceptFileChooser` is enabled.
          */
-        onFileChooserOpened(listener: (params: Protocol.Page.FileChooserOpenedEvent) => void): void;
-        offFileChooserOpened(listener: (params: Protocol.Page.FileChooserOpenedEvent) => void): void;
-        onceFileChooserOpened(eventMatcher?: (params: Protocol.Page.FileChooserOpenedEvent) => boolean): void;
+        onFileChooserOpened(listener: (event: { params: Protocol.Page.FileChooserOpenedEvent }) => void): void;
+        offFileChooserOpened(listener: (event: { params: Protocol.Page.FileChooserOpenedEvent }) => void): void;
+        onceFileChooserOpened(eventMatcher?: (event: { params: Protocol.Page.FileChooserOpenedEvent }) => boolean): Promise<{ params: Protocol.Page.FileChooserOpenedEvent }>;
 
         /**
          * Fired when frame has been attached to its parent.
          */
-        onFrameAttached(listener: (params: Protocol.Page.FrameAttachedEvent) => void): void;
-        offFrameAttached(listener: (params: Protocol.Page.FrameAttachedEvent) => void): void;
-        onceFrameAttached(eventMatcher?: (params: Protocol.Page.FrameAttachedEvent) => boolean): void;
+        onFrameAttached(listener: (event: { params: Protocol.Page.FrameAttachedEvent }) => void): void;
+        offFrameAttached(listener: (event: { params: Protocol.Page.FrameAttachedEvent }) => void): void;
+        onceFrameAttached(eventMatcher?: (event: { params: Protocol.Page.FrameAttachedEvent }) => boolean): Promise<{ params: Protocol.Page.FrameAttachedEvent }>;
 
         /**
          * Fired when frame no longer has a scheduled navigation.
          */
-        onFrameClearedScheduledNavigation(listener: (params: Protocol.Page.FrameClearedScheduledNavigationEvent) => void): void;
-        offFrameClearedScheduledNavigation(listener: (params: Protocol.Page.FrameClearedScheduledNavigationEvent) => void): void;
-        onceFrameClearedScheduledNavigation(eventMatcher?: (params: Protocol.Page.FrameClearedScheduledNavigationEvent) => boolean): void;
+        onFrameClearedScheduledNavigation(listener: (event: { params: Protocol.Page.FrameClearedScheduledNavigationEvent }) => void): void;
+        offFrameClearedScheduledNavigation(listener: (event: { params: Protocol.Page.FrameClearedScheduledNavigationEvent }) => void): void;
+        onceFrameClearedScheduledNavigation(eventMatcher?: (event: { params: Protocol.Page.FrameClearedScheduledNavigationEvent }) => boolean): Promise<{ params: Protocol.Page.FrameClearedScheduledNavigationEvent }>;
 
         /**
          * Fired when frame has been detached from its parent.
          */
-        onFrameDetached(listener: (params: Protocol.Page.FrameDetachedEvent) => void): void;
-        offFrameDetached(listener: (params: Protocol.Page.FrameDetachedEvent) => void): void;
-        onceFrameDetached(eventMatcher?: (params: Protocol.Page.FrameDetachedEvent) => boolean): void;
+        onFrameDetached(listener: (event: { params: Protocol.Page.FrameDetachedEvent }) => void): void;
+        offFrameDetached(listener: (event: { params: Protocol.Page.FrameDetachedEvent }) => void): void;
+        onceFrameDetached(eventMatcher?: (event: { params: Protocol.Page.FrameDetachedEvent }) => boolean): Promise<{ params: Protocol.Page.FrameDetachedEvent }>;
 
         /**
          * Fired once navigation of the frame has completed. Frame is now associated with the new loader.
          */
-        onFrameNavigated(listener: (params: Protocol.Page.FrameNavigatedEvent) => void): void;
-        offFrameNavigated(listener: (params: Protocol.Page.FrameNavigatedEvent) => void): void;
-        onceFrameNavigated(eventMatcher?: (params: Protocol.Page.FrameNavigatedEvent) => boolean): void;
+        onFrameNavigated(listener: (event: { params: Protocol.Page.FrameNavigatedEvent }) => void): void;
+        offFrameNavigated(listener: (event: { params: Protocol.Page.FrameNavigatedEvent }) => void): void;
+        onceFrameNavigated(eventMatcher?: (event: { params: Protocol.Page.FrameNavigatedEvent }) => boolean): Promise<{ params: Protocol.Page.FrameNavigatedEvent }>;
 
         /**
          * Fired when opening document to write to.
          */
-        onDocumentOpened(listener: (params: Protocol.Page.DocumentOpenedEvent) => void): void;
-        offDocumentOpened(listener: (params: Protocol.Page.DocumentOpenedEvent) => void): void;
-        onceDocumentOpened(eventMatcher?: (params: Protocol.Page.DocumentOpenedEvent) => boolean): void;
+        onDocumentOpened(listener: (event: { params: Protocol.Page.DocumentOpenedEvent }) => void): void;
+        offDocumentOpened(listener: (event: { params: Protocol.Page.DocumentOpenedEvent }) => void): void;
+        onceDocumentOpened(eventMatcher?: (event: { params: Protocol.Page.DocumentOpenedEvent }) => boolean): Promise<{ params: Protocol.Page.DocumentOpenedEvent }>;
 
-        onFrameResized(listener: () => void): void;
-        offFrameResized(listener: () => void): void;
-        onceFrameResized(eventMatcher?: () => boolean): void;
+        onFrameResized(listener: (event: ) => void): void;
+        offFrameResized(listener: (event: ) => void): void;
+        onceFrameResized(eventMatcher?: (event: ) => boolean): Promise<>;
 
         /**
          * Fired when a renderer-initiated navigation is requested.
          * Navigation may still be cancelled after the event is issued.
          */
-        onFrameRequestedNavigation(listener: (params: Protocol.Page.FrameRequestedNavigationEvent) => void): void;
-        offFrameRequestedNavigation(listener: (params: Protocol.Page.FrameRequestedNavigationEvent) => void): void;
-        onceFrameRequestedNavigation(eventMatcher?: (params: Protocol.Page.FrameRequestedNavigationEvent) => boolean): void;
+        onFrameRequestedNavigation(listener: (event: { params: Protocol.Page.FrameRequestedNavigationEvent }) => void): void;
+        offFrameRequestedNavigation(listener: (event: { params: Protocol.Page.FrameRequestedNavigationEvent }) => void): void;
+        onceFrameRequestedNavigation(eventMatcher?: (event: { params: Protocol.Page.FrameRequestedNavigationEvent }) => boolean): Promise<{ params: Protocol.Page.FrameRequestedNavigationEvent }>;
 
         /**
          * Fired when frame schedules a potential navigation.
          */
-        onFrameScheduledNavigation(listener: (params: Protocol.Page.FrameScheduledNavigationEvent) => void): void;
-        offFrameScheduledNavigation(listener: (params: Protocol.Page.FrameScheduledNavigationEvent) => void): void;
-        onceFrameScheduledNavigation(eventMatcher?: (params: Protocol.Page.FrameScheduledNavigationEvent) => boolean): void;
+        onFrameScheduledNavigation(listener: (event: { params: Protocol.Page.FrameScheduledNavigationEvent }) => void): void;
+        offFrameScheduledNavigation(listener: (event: { params: Protocol.Page.FrameScheduledNavigationEvent }) => void): void;
+        onceFrameScheduledNavigation(eventMatcher?: (event: { params: Protocol.Page.FrameScheduledNavigationEvent }) => boolean): Promise<{ params: Protocol.Page.FrameScheduledNavigationEvent }>;
 
         /**
          * Fired when frame has started loading.
          */
-        onFrameStartedLoading(listener: (params: Protocol.Page.FrameStartedLoadingEvent) => void): void;
-        offFrameStartedLoading(listener: (params: Protocol.Page.FrameStartedLoadingEvent) => void): void;
-        onceFrameStartedLoading(eventMatcher?: (params: Protocol.Page.FrameStartedLoadingEvent) => boolean): void;
+        onFrameStartedLoading(listener: (event: { params: Protocol.Page.FrameStartedLoadingEvent }) => void): void;
+        offFrameStartedLoading(listener: (event: { params: Protocol.Page.FrameStartedLoadingEvent }) => void): void;
+        onceFrameStartedLoading(eventMatcher?: (event: { params: Protocol.Page.FrameStartedLoadingEvent }) => boolean): Promise<{ params: Protocol.Page.FrameStartedLoadingEvent }>;
 
         /**
          * Fired when frame has stopped loading.
          */
-        onFrameStoppedLoading(listener: (params: Protocol.Page.FrameStoppedLoadingEvent) => void): void;
-        offFrameStoppedLoading(listener: (params: Protocol.Page.FrameStoppedLoadingEvent) => void): void;
-        onceFrameStoppedLoading(eventMatcher?: (params: Protocol.Page.FrameStoppedLoadingEvent) => boolean): void;
+        onFrameStoppedLoading(listener: (event: { params: Protocol.Page.FrameStoppedLoadingEvent }) => void): void;
+        offFrameStoppedLoading(listener: (event: { params: Protocol.Page.FrameStoppedLoadingEvent }) => void): void;
+        onceFrameStoppedLoading(eventMatcher?: (event: { params: Protocol.Page.FrameStoppedLoadingEvent }) => boolean): Promise<{ params: Protocol.Page.FrameStoppedLoadingEvent }>;
 
         /**
          * Fired when page is about to start a download.
          * Deprecated. Use Browser.downloadWillBegin instead.
          */
-        onDownloadWillBegin(listener: (params: Protocol.Page.DownloadWillBeginEvent) => void): void;
-        offDownloadWillBegin(listener: (params: Protocol.Page.DownloadWillBeginEvent) => void): void;
-        onceDownloadWillBegin(eventMatcher?: (params: Protocol.Page.DownloadWillBeginEvent) => boolean): void;
+        onDownloadWillBegin(listener: (event: { params: Protocol.Page.DownloadWillBeginEvent }) => void): void;
+        offDownloadWillBegin(listener: (event: { params: Protocol.Page.DownloadWillBeginEvent }) => void): void;
+        onceDownloadWillBegin(eventMatcher?: (event: { params: Protocol.Page.DownloadWillBeginEvent }) => boolean): Promise<{ params: Protocol.Page.DownloadWillBeginEvent }>;
 
         /**
          * Fired when download makes progress. Last call has |done| == true.
          * Deprecated. Use Browser.downloadProgress instead.
          */
-        onDownloadProgress(listener: (params: Protocol.Page.DownloadProgressEvent) => void): void;
-        offDownloadProgress(listener: (params: Protocol.Page.DownloadProgressEvent) => void): void;
-        onceDownloadProgress(eventMatcher?: (params: Protocol.Page.DownloadProgressEvent) => boolean): void;
+        onDownloadProgress(listener: (event: { params: Protocol.Page.DownloadProgressEvent }) => void): void;
+        offDownloadProgress(listener: (event: { params: Protocol.Page.DownloadProgressEvent }) => void): void;
+        onceDownloadProgress(eventMatcher?: (event: { params: Protocol.Page.DownloadProgressEvent }) => boolean): Promise<{ params: Protocol.Page.DownloadProgressEvent }>;
 
         /**
          * Fired when interstitial page was hidden
          */
-        onInterstitialHidden(listener: () => void): void;
-        offInterstitialHidden(listener: () => void): void;
-        onceInterstitialHidden(eventMatcher?: () => boolean): void;
+        onInterstitialHidden(listener: (event: ) => void): void;
+        offInterstitialHidden(listener: (event: ) => void): void;
+        onceInterstitialHidden(eventMatcher?: (event: ) => boolean): Promise<>;
 
         /**
          * Fired when interstitial page was shown
          */
-        onInterstitialShown(listener: () => void): void;
-        offInterstitialShown(listener: () => void): void;
-        onceInterstitialShown(eventMatcher?: () => boolean): void;
+        onInterstitialShown(listener: (event: ) => void): void;
+        offInterstitialShown(listener: (event: ) => void): void;
+        onceInterstitialShown(eventMatcher?: (event: ) => boolean): Promise<>;
 
         /**
          * Fired when a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload) has been
          * closed.
          */
-        onJavascriptDialogClosed(listener: (params: Protocol.Page.JavascriptDialogClosedEvent) => void): void;
-        offJavascriptDialogClosed(listener: (params: Protocol.Page.JavascriptDialogClosedEvent) => void): void;
-        onceJavascriptDialogClosed(eventMatcher?: (params: Protocol.Page.JavascriptDialogClosedEvent) => boolean): void;
+        onJavascriptDialogClosed(listener: (event: { params: Protocol.Page.JavascriptDialogClosedEvent }) => void): void;
+        offJavascriptDialogClosed(listener: (event: { params: Protocol.Page.JavascriptDialogClosedEvent }) => void): void;
+        onceJavascriptDialogClosed(eventMatcher?: (event: { params: Protocol.Page.JavascriptDialogClosedEvent }) => boolean): Promise<{ params: Protocol.Page.JavascriptDialogClosedEvent }>;
 
         /**
          * Fired when a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload) is about to
          * open.
          */
-        onJavascriptDialogOpening(listener: (params: Protocol.Page.JavascriptDialogOpeningEvent) => void): void;
-        offJavascriptDialogOpening(listener: (params: Protocol.Page.JavascriptDialogOpeningEvent) => void): void;
-        onceJavascriptDialogOpening(eventMatcher?: (params: Protocol.Page.JavascriptDialogOpeningEvent) => boolean): void;
+        onJavascriptDialogOpening(listener: (event: { params: Protocol.Page.JavascriptDialogOpeningEvent }) => void): void;
+        offJavascriptDialogOpening(listener: (event: { params: Protocol.Page.JavascriptDialogOpeningEvent }) => void): void;
+        onceJavascriptDialogOpening(eventMatcher?: (event: { params: Protocol.Page.JavascriptDialogOpeningEvent }) => boolean): Promise<{ params: Protocol.Page.JavascriptDialogOpeningEvent }>;
 
         /**
          * Fired for top level page lifecycle events such as navigation, load, paint, etc.
          */
-        onLifecycleEvent(listener: (params: Protocol.Page.LifecycleEventEvent) => void): void;
-        offLifecycleEvent(listener: (params: Protocol.Page.LifecycleEventEvent) => void): void;
-        onceLifecycleEvent(eventMatcher?: (params: Protocol.Page.LifecycleEventEvent) => boolean): void;
+        onLifecycleEvent(listener: (event: { params: Protocol.Page.LifecycleEventEvent }) => void): void;
+        offLifecycleEvent(listener: (event: { params: Protocol.Page.LifecycleEventEvent }) => void): void;
+        onceLifecycleEvent(eventMatcher?: (event: { params: Protocol.Page.LifecycleEventEvent }) => boolean): Promise<{ params: Protocol.Page.LifecycleEventEvent }>;
 
         /**
          * Fired for failed bfcache history navigations if BackForwardCache feature is enabled. Do
@@ -3400,50 +3400,50 @@ export namespace ProtocolTestsProxyApi {
          * main-frame history navigation where the document changes (non-same-document navigations),
          * when bfcache navigation fails.
          */
-        onBackForwardCacheNotUsed(listener: (params: Protocol.Page.BackForwardCacheNotUsedEvent) => void): void;
-        offBackForwardCacheNotUsed(listener: (params: Protocol.Page.BackForwardCacheNotUsedEvent) => void): void;
-        onceBackForwardCacheNotUsed(eventMatcher?: (params: Protocol.Page.BackForwardCacheNotUsedEvent) => boolean): void;
+        onBackForwardCacheNotUsed(listener: (event: { params: Protocol.Page.BackForwardCacheNotUsedEvent }) => void): void;
+        offBackForwardCacheNotUsed(listener: (event: { params: Protocol.Page.BackForwardCacheNotUsedEvent }) => void): void;
+        onceBackForwardCacheNotUsed(eventMatcher?: (event: { params: Protocol.Page.BackForwardCacheNotUsedEvent }) => boolean): Promise<{ params: Protocol.Page.BackForwardCacheNotUsedEvent }>;
 
-        onLoadEventFired(listener: (params: Protocol.Page.LoadEventFiredEvent) => void): void;
-        offLoadEventFired(listener: (params: Protocol.Page.LoadEventFiredEvent) => void): void;
-        onceLoadEventFired(eventMatcher?: (params: Protocol.Page.LoadEventFiredEvent) => boolean): void;
+        onLoadEventFired(listener: (event: { params: Protocol.Page.LoadEventFiredEvent }) => void): void;
+        offLoadEventFired(listener: (event: { params: Protocol.Page.LoadEventFiredEvent }) => void): void;
+        onceLoadEventFired(eventMatcher?: (event: { params: Protocol.Page.LoadEventFiredEvent }) => boolean): Promise<{ params: Protocol.Page.LoadEventFiredEvent }>;
 
         /**
          * Fired when same-document navigation happens, e.g. due to history API usage or anchor navigation.
          */
-        onNavigatedWithinDocument(listener: (params: Protocol.Page.NavigatedWithinDocumentEvent) => void): void;
-        offNavigatedWithinDocument(listener: (params: Protocol.Page.NavigatedWithinDocumentEvent) => void): void;
-        onceNavigatedWithinDocument(eventMatcher?: (params: Protocol.Page.NavigatedWithinDocumentEvent) => boolean): void;
+        onNavigatedWithinDocument(listener: (event: { params: Protocol.Page.NavigatedWithinDocumentEvent }) => void): void;
+        offNavigatedWithinDocument(listener: (event: { params: Protocol.Page.NavigatedWithinDocumentEvent }) => void): void;
+        onceNavigatedWithinDocument(eventMatcher?: (event: { params: Protocol.Page.NavigatedWithinDocumentEvent }) => boolean): Promise<{ params: Protocol.Page.NavigatedWithinDocumentEvent }>;
 
         /**
          * Compressed image data requested by the `startScreencast`.
          */
-        onScreencastFrame(listener: (params: Protocol.Page.ScreencastFrameEvent) => void): void;
-        offScreencastFrame(listener: (params: Protocol.Page.ScreencastFrameEvent) => void): void;
-        onceScreencastFrame(eventMatcher?: (params: Protocol.Page.ScreencastFrameEvent) => boolean): void;
+        onScreencastFrame(listener: (event: { params: Protocol.Page.ScreencastFrameEvent }) => void): void;
+        offScreencastFrame(listener: (event: { params: Protocol.Page.ScreencastFrameEvent }) => void): void;
+        onceScreencastFrame(eventMatcher?: (event: { params: Protocol.Page.ScreencastFrameEvent }) => boolean): Promise<{ params: Protocol.Page.ScreencastFrameEvent }>;
 
         /**
          * Fired when the page with currently enabled screencast was shown or hidden `.
          */
-        onScreencastVisibilityChanged(listener: (params: Protocol.Page.ScreencastVisibilityChangedEvent) => void): void;
-        offScreencastVisibilityChanged(listener: (params: Protocol.Page.ScreencastVisibilityChangedEvent) => void): void;
-        onceScreencastVisibilityChanged(eventMatcher?: (params: Protocol.Page.ScreencastVisibilityChangedEvent) => boolean): void;
+        onScreencastVisibilityChanged(listener: (event: { params: Protocol.Page.ScreencastVisibilityChangedEvent }) => void): void;
+        offScreencastVisibilityChanged(listener: (event: { params: Protocol.Page.ScreencastVisibilityChangedEvent }) => void): void;
+        onceScreencastVisibilityChanged(eventMatcher?: (event: { params: Protocol.Page.ScreencastVisibilityChangedEvent }) => boolean): Promise<{ params: Protocol.Page.ScreencastVisibilityChangedEvent }>;
 
         /**
          * Fired when a new window is going to be opened, via window.open(), link click, form submission,
          * etc.
          */
-        onWindowOpen(listener: (params: Protocol.Page.WindowOpenEvent) => void): void;
-        offWindowOpen(listener: (params: Protocol.Page.WindowOpenEvent) => void): void;
-        onceWindowOpen(eventMatcher?: (params: Protocol.Page.WindowOpenEvent) => boolean): void;
+        onWindowOpen(listener: (event: { params: Protocol.Page.WindowOpenEvent }) => void): void;
+        offWindowOpen(listener: (event: { params: Protocol.Page.WindowOpenEvent }) => void): void;
+        onceWindowOpen(eventMatcher?: (event: { params: Protocol.Page.WindowOpenEvent }) => boolean): Promise<{ params: Protocol.Page.WindowOpenEvent }>;
 
         /**
          * Issued for every compilation cache generated. Is only available
          * if Page.setGenerateCompilationCache is enabled.
          */
-        onCompilationCacheProduced(listener: (params: Protocol.Page.CompilationCacheProducedEvent) => void): void;
-        offCompilationCacheProduced(listener: (params: Protocol.Page.CompilationCacheProducedEvent) => void): void;
-        onceCompilationCacheProduced(eventMatcher?: (params: Protocol.Page.CompilationCacheProducedEvent) => boolean): void;
+        onCompilationCacheProduced(listener: (event: { params: Protocol.Page.CompilationCacheProducedEvent }) => void): void;
+        offCompilationCacheProduced(listener: (event: { params: Protocol.Page.CompilationCacheProducedEvent }) => void): void;
+        onceCompilationCacheProduced(eventMatcher?: (event: { params: Protocol.Page.CompilationCacheProducedEvent }) => boolean): Promise<{ params: Protocol.Page.CompilationCacheProducedEvent }>;
 
     }
 
@@ -3473,9 +3473,9 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Current values of the metrics.
          */
-        onMetrics(listener: (params: Protocol.Performance.MetricsEvent) => void): void;
-        offMetrics(listener: (params: Protocol.Performance.MetricsEvent) => void): void;
-        onceMetrics(eventMatcher?: (params: Protocol.Performance.MetricsEvent) => boolean): void;
+        onMetrics(listener: (event: { params: Protocol.Performance.MetricsEvent }) => void): void;
+        offMetrics(listener: (event: { params: Protocol.Performance.MetricsEvent }) => void): void;
+        onceMetrics(eventMatcher?: (event: { params: Protocol.Performance.MetricsEvent }) => boolean): Promise<{ params: Protocol.Performance.MetricsEvent }>;
 
     }
 
@@ -3489,9 +3489,9 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Sent when a performance timeline event is added. See reportPerformanceTimeline method.
          */
-        onTimelineEventAdded(listener: (params: Protocol.PerformanceTimeline.TimelineEventAddedEvent) => void): void;
-        offTimelineEventAdded(listener: (params: Protocol.PerformanceTimeline.TimelineEventAddedEvent) => void): void;
-        onceTimelineEventAdded(eventMatcher?: (params: Protocol.PerformanceTimeline.TimelineEventAddedEvent) => boolean): void;
+        onTimelineEventAdded(listener: (event: { params: Protocol.PerformanceTimeline.TimelineEventAddedEvent }) => void): void;
+        offTimelineEventAdded(listener: (event: { params: Protocol.PerformanceTimeline.TimelineEventAddedEvent }) => void): void;
+        onceTimelineEventAdded(eventMatcher?: (event: { params: Protocol.PerformanceTimeline.TimelineEventAddedEvent }) => boolean): Promise<{ params: Protocol.PerformanceTimeline.TimelineEventAddedEvent }>;
 
     }
 
@@ -3528,23 +3528,23 @@ export namespace ProtocolTestsProxyApi {
          * certificate error has been allowed internally. Only one client per target should override
          * certificate errors at the same time.
          */
-        onCertificateError(listener: (params: Protocol.Security.CertificateErrorEvent) => void): void;
-        offCertificateError(listener: (params: Protocol.Security.CertificateErrorEvent) => void): void;
-        onceCertificateError(eventMatcher?: (params: Protocol.Security.CertificateErrorEvent) => boolean): void;
+        onCertificateError(listener: (event: { params: Protocol.Security.CertificateErrorEvent }) => void): void;
+        offCertificateError(listener: (event: { params: Protocol.Security.CertificateErrorEvent }) => void): void;
+        onceCertificateError(eventMatcher?: (event: { params: Protocol.Security.CertificateErrorEvent }) => boolean): Promise<{ params: Protocol.Security.CertificateErrorEvent }>;
 
         /**
          * The security state of the page changed.
          */
-        onVisibleSecurityStateChanged(listener: (params: Protocol.Security.VisibleSecurityStateChangedEvent) => void): void;
-        offVisibleSecurityStateChanged(listener: (params: Protocol.Security.VisibleSecurityStateChangedEvent) => void): void;
-        onceVisibleSecurityStateChanged(eventMatcher?: (params: Protocol.Security.VisibleSecurityStateChangedEvent) => boolean): void;
+        onVisibleSecurityStateChanged(listener: (event: { params: Protocol.Security.VisibleSecurityStateChangedEvent }) => void): void;
+        offVisibleSecurityStateChanged(listener: (event: { params: Protocol.Security.VisibleSecurityStateChangedEvent }) => void): void;
+        onceVisibleSecurityStateChanged(eventMatcher?: (event: { params: Protocol.Security.VisibleSecurityStateChangedEvent }) => boolean): Promise<{ params: Protocol.Security.VisibleSecurityStateChangedEvent }>;
 
         /**
          * The security state of the page changed. No longer being sent.
          */
-        onSecurityStateChanged(listener: (params: Protocol.Security.SecurityStateChangedEvent) => void): void;
-        offSecurityStateChanged(listener: (params: Protocol.Security.SecurityStateChangedEvent) => void): void;
-        onceSecurityStateChanged(eventMatcher?: (params: Protocol.Security.SecurityStateChangedEvent) => boolean): void;
+        onSecurityStateChanged(listener: (event: { params: Protocol.Security.SecurityStateChangedEvent }) => void): void;
+        offSecurityStateChanged(listener: (event: { params: Protocol.Security.SecurityStateChangedEvent }) => void): void;
+        onceSecurityStateChanged(eventMatcher?: (event: { params: Protocol.Security.SecurityStateChangedEvent }) => boolean): Promise<{ params: Protocol.Security.SecurityStateChangedEvent }>;
 
     }
 
@@ -3575,17 +3575,17 @@ export namespace ProtocolTestsProxyApi {
 
         updateRegistration(params: Protocol.ServiceWorker.UpdateRegistrationRequest): Promise<void>;
 
-        onWorkerErrorReported(listener: (params: Protocol.ServiceWorker.WorkerErrorReportedEvent) => void): void;
-        offWorkerErrorReported(listener: (params: Protocol.ServiceWorker.WorkerErrorReportedEvent) => void): void;
-        onceWorkerErrorReported(eventMatcher?: (params: Protocol.ServiceWorker.WorkerErrorReportedEvent) => boolean): void;
+        onWorkerErrorReported(listener: (event: { params: Protocol.ServiceWorker.WorkerErrorReportedEvent }) => void): void;
+        offWorkerErrorReported(listener: (event: { params: Protocol.ServiceWorker.WorkerErrorReportedEvent }) => void): void;
+        onceWorkerErrorReported(eventMatcher?: (event: { params: Protocol.ServiceWorker.WorkerErrorReportedEvent }) => boolean): Promise<{ params: Protocol.ServiceWorker.WorkerErrorReportedEvent }>;
 
-        onWorkerRegistrationUpdated(listener: (params: Protocol.ServiceWorker.WorkerRegistrationUpdatedEvent) => void): void;
-        offWorkerRegistrationUpdated(listener: (params: Protocol.ServiceWorker.WorkerRegistrationUpdatedEvent) => void): void;
-        onceWorkerRegistrationUpdated(eventMatcher?: (params: Protocol.ServiceWorker.WorkerRegistrationUpdatedEvent) => boolean): void;
+        onWorkerRegistrationUpdated(listener: (event: { params: Protocol.ServiceWorker.WorkerRegistrationUpdatedEvent }) => void): void;
+        offWorkerRegistrationUpdated(listener: (event: { params: Protocol.ServiceWorker.WorkerRegistrationUpdatedEvent }) => void): void;
+        onceWorkerRegistrationUpdated(eventMatcher?: (event: { params: Protocol.ServiceWorker.WorkerRegistrationUpdatedEvent }) => boolean): Promise<{ params: Protocol.ServiceWorker.WorkerRegistrationUpdatedEvent }>;
 
-        onWorkerVersionUpdated(listener: (params: Protocol.ServiceWorker.WorkerVersionUpdatedEvent) => void): void;
-        offWorkerVersionUpdated(listener: (params: Protocol.ServiceWorker.WorkerVersionUpdatedEvent) => void): void;
-        onceWorkerVersionUpdated(eventMatcher?: (params: Protocol.ServiceWorker.WorkerVersionUpdatedEvent) => boolean): void;
+        onWorkerVersionUpdated(listener: (event: { params: Protocol.ServiceWorker.WorkerVersionUpdatedEvent }) => void): void;
+        offWorkerVersionUpdated(listener: (event: { params: Protocol.ServiceWorker.WorkerVersionUpdatedEvent }) => void): void;
+        onceWorkerVersionUpdated(eventMatcher?: (event: { params: Protocol.ServiceWorker.WorkerVersionUpdatedEvent }) => boolean): Promise<{ params: Protocol.ServiceWorker.WorkerVersionUpdatedEvent }>;
 
     }
 
@@ -3755,61 +3755,61 @@ export namespace ProtocolTestsProxyApi {
         /**
          * A cache's contents have been modified.
          */
-        onCacheStorageContentUpdated(listener: (params: Protocol.Storage.CacheStorageContentUpdatedEvent) => void): void;
-        offCacheStorageContentUpdated(listener: (params: Protocol.Storage.CacheStorageContentUpdatedEvent) => void): void;
-        onceCacheStorageContentUpdated(eventMatcher?: (params: Protocol.Storage.CacheStorageContentUpdatedEvent) => boolean): void;
+        onCacheStorageContentUpdated(listener: (event: { params: Protocol.Storage.CacheStorageContentUpdatedEvent }) => void): void;
+        offCacheStorageContentUpdated(listener: (event: { params: Protocol.Storage.CacheStorageContentUpdatedEvent }) => void): void;
+        onceCacheStorageContentUpdated(eventMatcher?: (event: { params: Protocol.Storage.CacheStorageContentUpdatedEvent }) => boolean): Promise<{ params: Protocol.Storage.CacheStorageContentUpdatedEvent }>;
 
         /**
          * A cache has been added/deleted.
          */
-        onCacheStorageListUpdated(listener: (params: Protocol.Storage.CacheStorageListUpdatedEvent) => void): void;
-        offCacheStorageListUpdated(listener: (params: Protocol.Storage.CacheStorageListUpdatedEvent) => void): void;
-        onceCacheStorageListUpdated(eventMatcher?: (params: Protocol.Storage.CacheStorageListUpdatedEvent) => boolean): void;
+        onCacheStorageListUpdated(listener: (event: { params: Protocol.Storage.CacheStorageListUpdatedEvent }) => void): void;
+        offCacheStorageListUpdated(listener: (event: { params: Protocol.Storage.CacheStorageListUpdatedEvent }) => void): void;
+        onceCacheStorageListUpdated(eventMatcher?: (event: { params: Protocol.Storage.CacheStorageListUpdatedEvent }) => boolean): Promise<{ params: Protocol.Storage.CacheStorageListUpdatedEvent }>;
 
         /**
          * The origin's IndexedDB object store has been modified.
          */
-        onIndexedDBContentUpdated(listener: (params: Protocol.Storage.IndexedDBContentUpdatedEvent) => void): void;
-        offIndexedDBContentUpdated(listener: (params: Protocol.Storage.IndexedDBContentUpdatedEvent) => void): void;
-        onceIndexedDBContentUpdated(eventMatcher?: (params: Protocol.Storage.IndexedDBContentUpdatedEvent) => boolean): void;
+        onIndexedDBContentUpdated(listener: (event: { params: Protocol.Storage.IndexedDBContentUpdatedEvent }) => void): void;
+        offIndexedDBContentUpdated(listener: (event: { params: Protocol.Storage.IndexedDBContentUpdatedEvent }) => void): void;
+        onceIndexedDBContentUpdated(eventMatcher?: (event: { params: Protocol.Storage.IndexedDBContentUpdatedEvent }) => boolean): Promise<{ params: Protocol.Storage.IndexedDBContentUpdatedEvent }>;
 
         /**
          * The origin's IndexedDB database list has been modified.
          */
-        onIndexedDBListUpdated(listener: (params: Protocol.Storage.IndexedDBListUpdatedEvent) => void): void;
-        offIndexedDBListUpdated(listener: (params: Protocol.Storage.IndexedDBListUpdatedEvent) => void): void;
-        onceIndexedDBListUpdated(eventMatcher?: (params: Protocol.Storage.IndexedDBListUpdatedEvent) => boolean): void;
+        onIndexedDBListUpdated(listener: (event: { params: Protocol.Storage.IndexedDBListUpdatedEvent }) => void): void;
+        offIndexedDBListUpdated(listener: (event: { params: Protocol.Storage.IndexedDBListUpdatedEvent }) => void): void;
+        onceIndexedDBListUpdated(eventMatcher?: (event: { params: Protocol.Storage.IndexedDBListUpdatedEvent }) => boolean): Promise<{ params: Protocol.Storage.IndexedDBListUpdatedEvent }>;
 
         /**
          * One of the interest groups was accessed by the associated page.
          */
-        onInterestGroupAccessed(listener: (params: Protocol.Storage.InterestGroupAccessedEvent) => void): void;
-        offInterestGroupAccessed(listener: (params: Protocol.Storage.InterestGroupAccessedEvent) => void): void;
-        onceInterestGroupAccessed(eventMatcher?: (params: Protocol.Storage.InterestGroupAccessedEvent) => boolean): void;
+        onInterestGroupAccessed(listener: (event: { params: Protocol.Storage.InterestGroupAccessedEvent }) => void): void;
+        offInterestGroupAccessed(listener: (event: { params: Protocol.Storage.InterestGroupAccessedEvent }) => void): void;
+        onceInterestGroupAccessed(eventMatcher?: (event: { params: Protocol.Storage.InterestGroupAccessedEvent }) => boolean): Promise<{ params: Protocol.Storage.InterestGroupAccessedEvent }>;
 
         /**
          * Shared storage was accessed by the associated page.
          * The following parameters are included in all events.
          */
-        onSharedStorageAccessed(listener: (params: Protocol.Storage.SharedStorageAccessedEvent) => void): void;
-        offSharedStorageAccessed(listener: (params: Protocol.Storage.SharedStorageAccessedEvent) => void): void;
-        onceSharedStorageAccessed(eventMatcher?: (params: Protocol.Storage.SharedStorageAccessedEvent) => boolean): void;
+        onSharedStorageAccessed(listener: (event: { params: Protocol.Storage.SharedStorageAccessedEvent }) => void): void;
+        offSharedStorageAccessed(listener: (event: { params: Protocol.Storage.SharedStorageAccessedEvent }) => void): void;
+        onceSharedStorageAccessed(eventMatcher?: (event: { params: Protocol.Storage.SharedStorageAccessedEvent }) => boolean): Promise<{ params: Protocol.Storage.SharedStorageAccessedEvent }>;
 
-        onStorageBucketCreatedOrUpdated(listener: (params: Protocol.Storage.StorageBucketCreatedOrUpdatedEvent) => void): void;
-        offStorageBucketCreatedOrUpdated(listener: (params: Protocol.Storage.StorageBucketCreatedOrUpdatedEvent) => void): void;
-        onceStorageBucketCreatedOrUpdated(eventMatcher?: (params: Protocol.Storage.StorageBucketCreatedOrUpdatedEvent) => boolean): void;
+        onStorageBucketCreatedOrUpdated(listener: (event: { params: Protocol.Storage.StorageBucketCreatedOrUpdatedEvent }) => void): void;
+        offStorageBucketCreatedOrUpdated(listener: (event: { params: Protocol.Storage.StorageBucketCreatedOrUpdatedEvent }) => void): void;
+        onceStorageBucketCreatedOrUpdated(eventMatcher?: (event: { params: Protocol.Storage.StorageBucketCreatedOrUpdatedEvent }) => boolean): Promise<{ params: Protocol.Storage.StorageBucketCreatedOrUpdatedEvent }>;
 
-        onStorageBucketDeleted(listener: (params: Protocol.Storage.StorageBucketDeletedEvent) => void): void;
-        offStorageBucketDeleted(listener: (params: Protocol.Storage.StorageBucketDeletedEvent) => void): void;
-        onceStorageBucketDeleted(eventMatcher?: (params: Protocol.Storage.StorageBucketDeletedEvent) => boolean): void;
+        onStorageBucketDeleted(listener: (event: { params: Protocol.Storage.StorageBucketDeletedEvent }) => void): void;
+        offStorageBucketDeleted(listener: (event: { params: Protocol.Storage.StorageBucketDeletedEvent }) => void): void;
+        onceStorageBucketDeleted(eventMatcher?: (event: { params: Protocol.Storage.StorageBucketDeletedEvent }) => boolean): Promise<{ params: Protocol.Storage.StorageBucketDeletedEvent }>;
 
-        onAttributionReportingSourceRegistered(listener: (params: Protocol.Storage.AttributionReportingSourceRegisteredEvent) => void): void;
-        offAttributionReportingSourceRegistered(listener: (params: Protocol.Storage.AttributionReportingSourceRegisteredEvent) => void): void;
-        onceAttributionReportingSourceRegistered(eventMatcher?: (params: Protocol.Storage.AttributionReportingSourceRegisteredEvent) => boolean): void;
+        onAttributionReportingSourceRegistered(listener: (event: { params: Protocol.Storage.AttributionReportingSourceRegisteredEvent }) => void): void;
+        offAttributionReportingSourceRegistered(listener: (event: { params: Protocol.Storage.AttributionReportingSourceRegisteredEvent }) => void): void;
+        onceAttributionReportingSourceRegistered(eventMatcher?: (event: { params: Protocol.Storage.AttributionReportingSourceRegisteredEvent }) => boolean): Promise<{ params: Protocol.Storage.AttributionReportingSourceRegisteredEvent }>;
 
-        onAttributionReportingTriggerRegistered(listener: (params: Protocol.Storage.AttributionReportingTriggerRegisteredEvent) => void): void;
-        offAttributionReportingTriggerRegistered(listener: (params: Protocol.Storage.AttributionReportingTriggerRegisteredEvent) => void): void;
-        onceAttributionReportingTriggerRegistered(eventMatcher?: (params: Protocol.Storage.AttributionReportingTriggerRegisteredEvent) => boolean): void;
+        onAttributionReportingTriggerRegistered(listener: (event: { params: Protocol.Storage.AttributionReportingTriggerRegisteredEvent }) => void): void;
+        offAttributionReportingTriggerRegistered(listener: (event: { params: Protocol.Storage.AttributionReportingTriggerRegisteredEvent }) => void): void;
+        onceAttributionReportingTriggerRegistered(eventMatcher?: (event: { params: Protocol.Storage.AttributionReportingTriggerRegisteredEvent }) => boolean): Promise<{ params: Protocol.Storage.AttributionReportingTriggerRegisteredEvent }>;
 
     }
 
@@ -3941,54 +3941,54 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Issued when attached to target because of auto-attach or `attachToTarget` command.
          */
-        onAttachedToTarget(listener: (params: Protocol.Target.AttachedToTargetEvent) => void): void;
-        offAttachedToTarget(listener: (params: Protocol.Target.AttachedToTargetEvent) => void): void;
-        onceAttachedToTarget(eventMatcher?: (params: Protocol.Target.AttachedToTargetEvent) => boolean): void;
+        onAttachedToTarget(listener: (event: { params: Protocol.Target.AttachedToTargetEvent }) => void): void;
+        offAttachedToTarget(listener: (event: { params: Protocol.Target.AttachedToTargetEvent }) => void): void;
+        onceAttachedToTarget(eventMatcher?: (event: { params: Protocol.Target.AttachedToTargetEvent }) => boolean): Promise<{ params: Protocol.Target.AttachedToTargetEvent }>;
 
         /**
          * Issued when detached from target for any reason (including `detachFromTarget` command). Can be
          * issued multiple times per target if multiple sessions have been attached to it.
          */
-        onDetachedFromTarget(listener: (params: Protocol.Target.DetachedFromTargetEvent) => void): void;
-        offDetachedFromTarget(listener: (params: Protocol.Target.DetachedFromTargetEvent) => void): void;
-        onceDetachedFromTarget(eventMatcher?: (params: Protocol.Target.DetachedFromTargetEvent) => boolean): void;
+        onDetachedFromTarget(listener: (event: { params: Protocol.Target.DetachedFromTargetEvent }) => void): void;
+        offDetachedFromTarget(listener: (event: { params: Protocol.Target.DetachedFromTargetEvent }) => void): void;
+        onceDetachedFromTarget(eventMatcher?: (event: { params: Protocol.Target.DetachedFromTargetEvent }) => boolean): Promise<{ params: Protocol.Target.DetachedFromTargetEvent }>;
 
         /**
          * Notifies about a new protocol message received from the session (as reported in
          * `attachedToTarget` event).
          */
-        onReceivedMessageFromTarget(listener: (params: Protocol.Target.ReceivedMessageFromTargetEvent) => void): void;
-        offReceivedMessageFromTarget(listener: (params: Protocol.Target.ReceivedMessageFromTargetEvent) => void): void;
-        onceReceivedMessageFromTarget(eventMatcher?: (params: Protocol.Target.ReceivedMessageFromTargetEvent) => boolean): void;
+        onReceivedMessageFromTarget(listener: (event: { params: Protocol.Target.ReceivedMessageFromTargetEvent }) => void): void;
+        offReceivedMessageFromTarget(listener: (event: { params: Protocol.Target.ReceivedMessageFromTargetEvent }) => void): void;
+        onceReceivedMessageFromTarget(eventMatcher?: (event: { params: Protocol.Target.ReceivedMessageFromTargetEvent }) => boolean): Promise<{ params: Protocol.Target.ReceivedMessageFromTargetEvent }>;
 
         /**
          * Issued when a possible inspection target is created.
          */
-        onTargetCreated(listener: (params: Protocol.Target.TargetCreatedEvent) => void): void;
-        offTargetCreated(listener: (params: Protocol.Target.TargetCreatedEvent) => void): void;
-        onceTargetCreated(eventMatcher?: (params: Protocol.Target.TargetCreatedEvent) => boolean): void;
+        onTargetCreated(listener: (event: { params: Protocol.Target.TargetCreatedEvent }) => void): void;
+        offTargetCreated(listener: (event: { params: Protocol.Target.TargetCreatedEvent }) => void): void;
+        onceTargetCreated(eventMatcher?: (event: { params: Protocol.Target.TargetCreatedEvent }) => boolean): Promise<{ params: Protocol.Target.TargetCreatedEvent }>;
 
         /**
          * Issued when a target is destroyed.
          */
-        onTargetDestroyed(listener: (params: Protocol.Target.TargetDestroyedEvent) => void): void;
-        offTargetDestroyed(listener: (params: Protocol.Target.TargetDestroyedEvent) => void): void;
-        onceTargetDestroyed(eventMatcher?: (params: Protocol.Target.TargetDestroyedEvent) => boolean): void;
+        onTargetDestroyed(listener: (event: { params: Protocol.Target.TargetDestroyedEvent }) => void): void;
+        offTargetDestroyed(listener: (event: { params: Protocol.Target.TargetDestroyedEvent }) => void): void;
+        onceTargetDestroyed(eventMatcher?: (event: { params: Protocol.Target.TargetDestroyedEvent }) => boolean): Promise<{ params: Protocol.Target.TargetDestroyedEvent }>;
 
         /**
          * Issued when a target has crashed.
          */
-        onTargetCrashed(listener: (params: Protocol.Target.TargetCrashedEvent) => void): void;
-        offTargetCrashed(listener: (params: Protocol.Target.TargetCrashedEvent) => void): void;
-        onceTargetCrashed(eventMatcher?: (params: Protocol.Target.TargetCrashedEvent) => boolean): void;
+        onTargetCrashed(listener: (event: { params: Protocol.Target.TargetCrashedEvent }) => void): void;
+        offTargetCrashed(listener: (event: { params: Protocol.Target.TargetCrashedEvent }) => void): void;
+        onceTargetCrashed(eventMatcher?: (event: { params: Protocol.Target.TargetCrashedEvent }) => boolean): Promise<{ params: Protocol.Target.TargetCrashedEvent }>;
 
         /**
          * Issued when some information about a target has changed. This only happens between
          * `targetCreated` and `targetDestroyed`.
          */
-        onTargetInfoChanged(listener: (params: Protocol.Target.TargetInfoChangedEvent) => void): void;
-        offTargetInfoChanged(listener: (params: Protocol.Target.TargetInfoChangedEvent) => void): void;
-        onceTargetInfoChanged(eventMatcher?: (params: Protocol.Target.TargetInfoChangedEvent) => boolean): void;
+        onTargetInfoChanged(listener: (event: { params: Protocol.Target.TargetInfoChangedEvent }) => void): void;
+        offTargetInfoChanged(listener: (event: { params: Protocol.Target.TargetInfoChangedEvent }) => void): void;
+        onceTargetInfoChanged(eventMatcher?: (event: { params: Protocol.Target.TargetInfoChangedEvent }) => boolean): Promise<{ params: Protocol.Target.TargetInfoChangedEvent }>;
 
     }
 
@@ -4006,9 +4006,9 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Informs that port was successfully bound and got a specified connection id.
          */
-        onAccepted(listener: (params: Protocol.Tethering.AcceptedEvent) => void): void;
-        offAccepted(listener: (params: Protocol.Tethering.AcceptedEvent) => void): void;
-        onceAccepted(eventMatcher?: (params: Protocol.Tethering.AcceptedEvent) => boolean): void;
+        onAccepted(listener: (event: { params: Protocol.Tethering.AcceptedEvent }) => void): void;
+        offAccepted(listener: (event: { params: Protocol.Tethering.AcceptedEvent }) => void): void;
+        onceAccepted(eventMatcher?: (event: { params: Protocol.Tethering.AcceptedEvent }) => boolean): Promise<{ params: Protocol.Tethering.AcceptedEvent }>;
 
     }
 
@@ -4038,25 +4038,25 @@ export namespace ProtocolTestsProxyApi {
          */
         start(params: Protocol.Tracing.StartRequest): Promise<void>;
 
-        onBufferUsage(listener: (params: Protocol.Tracing.BufferUsageEvent) => void): void;
-        offBufferUsage(listener: (params: Protocol.Tracing.BufferUsageEvent) => void): void;
-        onceBufferUsage(eventMatcher?: (params: Protocol.Tracing.BufferUsageEvent) => boolean): void;
+        onBufferUsage(listener: (event: { params: Protocol.Tracing.BufferUsageEvent }) => void): void;
+        offBufferUsage(listener: (event: { params: Protocol.Tracing.BufferUsageEvent }) => void): void;
+        onceBufferUsage(eventMatcher?: (event: { params: Protocol.Tracing.BufferUsageEvent }) => boolean): Promise<{ params: Protocol.Tracing.BufferUsageEvent }>;
 
         /**
          * Contains a bucket of collected trace events. When tracing is stopped collected events will be
          * sent as a sequence of dataCollected events followed by tracingComplete event.
          */
-        onDataCollected(listener: (params: Protocol.Tracing.DataCollectedEvent) => void): void;
-        offDataCollected(listener: (params: Protocol.Tracing.DataCollectedEvent) => void): void;
-        onceDataCollected(eventMatcher?: (params: Protocol.Tracing.DataCollectedEvent) => boolean): void;
+        onDataCollected(listener: (event: { params: Protocol.Tracing.DataCollectedEvent }) => void): void;
+        offDataCollected(listener: (event: { params: Protocol.Tracing.DataCollectedEvent }) => void): void;
+        onceDataCollected(eventMatcher?: (event: { params: Protocol.Tracing.DataCollectedEvent }) => boolean): Promise<{ params: Protocol.Tracing.DataCollectedEvent }>;
 
         /**
          * Signals that tracing is stopped and there is no trace buffers pending flush, all data were
          * delivered via dataCollected events.
          */
-        onTracingComplete(listener: (params: Protocol.Tracing.TracingCompleteEvent) => void): void;
-        offTracingComplete(listener: (params: Protocol.Tracing.TracingCompleteEvent) => void): void;
-        onceTracingComplete(eventMatcher?: (params: Protocol.Tracing.TracingCompleteEvent) => boolean): void;
+        onTracingComplete(listener: (event: { params: Protocol.Tracing.TracingCompleteEvent }) => void): void;
+        offTracingComplete(listener: (event: { params: Protocol.Tracing.TracingCompleteEvent }) => void): void;
+        onceTracingComplete(eventMatcher?: (event: { params: Protocol.Tracing.TracingCompleteEvent }) => boolean): Promise<{ params: Protocol.Tracing.TracingCompleteEvent }>;
 
     }
 
@@ -4140,17 +4140,17 @@ export namespace ProtocolTestsProxyApi {
          * presence of the `location` header. Requests resulting from a redirect will
          * have `redirectedRequestId` field set.
          */
-        onRequestPaused(listener: (params: Protocol.Fetch.RequestPausedEvent) => void): void;
-        offRequestPaused(listener: (params: Protocol.Fetch.RequestPausedEvent) => void): void;
-        onceRequestPaused(eventMatcher?: (params: Protocol.Fetch.RequestPausedEvent) => boolean): void;
+        onRequestPaused(listener: (event: { params: Protocol.Fetch.RequestPausedEvent }) => void): void;
+        offRequestPaused(listener: (event: { params: Protocol.Fetch.RequestPausedEvent }) => void): void;
+        onceRequestPaused(eventMatcher?: (event: { params: Protocol.Fetch.RequestPausedEvent }) => boolean): Promise<{ params: Protocol.Fetch.RequestPausedEvent }>;
 
         /**
          * Issued when the domain is enabled with handleAuthRequests set to true.
          * The request is paused until client responds with continueWithAuth.
          */
-        onAuthRequired(listener: (params: Protocol.Fetch.AuthRequiredEvent) => void): void;
-        offAuthRequired(listener: (params: Protocol.Fetch.AuthRequiredEvent) => void): void;
-        onceAuthRequired(eventMatcher?: (params: Protocol.Fetch.AuthRequiredEvent) => boolean): void;
+        onAuthRequired(listener: (event: { params: Protocol.Fetch.AuthRequiredEvent }) => void): void;
+        offAuthRequired(listener: (event: { params: Protocol.Fetch.AuthRequiredEvent }) => void): void;
+        onceAuthRequired(eventMatcher?: (event: { params: Protocol.Fetch.AuthRequiredEvent }) => boolean): Promise<{ params: Protocol.Fetch.AuthRequiredEvent }>;
 
     }
 
@@ -4173,93 +4173,93 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Notifies that a new BaseAudioContext has been created.
          */
-        onContextCreated(listener: (params: Protocol.WebAudio.ContextCreatedEvent) => void): void;
-        offContextCreated(listener: (params: Protocol.WebAudio.ContextCreatedEvent) => void): void;
-        onceContextCreated(eventMatcher?: (params: Protocol.WebAudio.ContextCreatedEvent) => boolean): void;
+        onContextCreated(listener: (event: { params: Protocol.WebAudio.ContextCreatedEvent }) => void): void;
+        offContextCreated(listener: (event: { params: Protocol.WebAudio.ContextCreatedEvent }) => void): void;
+        onceContextCreated(eventMatcher?: (event: { params: Protocol.WebAudio.ContextCreatedEvent }) => boolean): Promise<{ params: Protocol.WebAudio.ContextCreatedEvent }>;
 
         /**
          * Notifies that an existing BaseAudioContext will be destroyed.
          */
-        onContextWillBeDestroyed(listener: (params: Protocol.WebAudio.ContextWillBeDestroyedEvent) => void): void;
-        offContextWillBeDestroyed(listener: (params: Protocol.WebAudio.ContextWillBeDestroyedEvent) => void): void;
-        onceContextWillBeDestroyed(eventMatcher?: (params: Protocol.WebAudio.ContextWillBeDestroyedEvent) => boolean): void;
+        onContextWillBeDestroyed(listener: (event: { params: Protocol.WebAudio.ContextWillBeDestroyedEvent }) => void): void;
+        offContextWillBeDestroyed(listener: (event: { params: Protocol.WebAudio.ContextWillBeDestroyedEvent }) => void): void;
+        onceContextWillBeDestroyed(eventMatcher?: (event: { params: Protocol.WebAudio.ContextWillBeDestroyedEvent }) => boolean): Promise<{ params: Protocol.WebAudio.ContextWillBeDestroyedEvent }>;
 
         /**
          * Notifies that existing BaseAudioContext has changed some properties (id stays the same)..
          */
-        onContextChanged(listener: (params: Protocol.WebAudio.ContextChangedEvent) => void): void;
-        offContextChanged(listener: (params: Protocol.WebAudio.ContextChangedEvent) => void): void;
-        onceContextChanged(eventMatcher?: (params: Protocol.WebAudio.ContextChangedEvent) => boolean): void;
+        onContextChanged(listener: (event: { params: Protocol.WebAudio.ContextChangedEvent }) => void): void;
+        offContextChanged(listener: (event: { params: Protocol.WebAudio.ContextChangedEvent }) => void): void;
+        onceContextChanged(eventMatcher?: (event: { params: Protocol.WebAudio.ContextChangedEvent }) => boolean): Promise<{ params: Protocol.WebAudio.ContextChangedEvent }>;
 
         /**
          * Notifies that the construction of an AudioListener has finished.
          */
-        onAudioListenerCreated(listener: (params: Protocol.WebAudio.AudioListenerCreatedEvent) => void): void;
-        offAudioListenerCreated(listener: (params: Protocol.WebAudio.AudioListenerCreatedEvent) => void): void;
-        onceAudioListenerCreated(eventMatcher?: (params: Protocol.WebAudio.AudioListenerCreatedEvent) => boolean): void;
+        onAudioListenerCreated(listener: (event: { params: Protocol.WebAudio.AudioListenerCreatedEvent }) => void): void;
+        offAudioListenerCreated(listener: (event: { params: Protocol.WebAudio.AudioListenerCreatedEvent }) => void): void;
+        onceAudioListenerCreated(eventMatcher?: (event: { params: Protocol.WebAudio.AudioListenerCreatedEvent }) => boolean): Promise<{ params: Protocol.WebAudio.AudioListenerCreatedEvent }>;
 
         /**
          * Notifies that a new AudioListener has been created.
          */
-        onAudioListenerWillBeDestroyed(listener: (params: Protocol.WebAudio.AudioListenerWillBeDestroyedEvent) => void): void;
-        offAudioListenerWillBeDestroyed(listener: (params: Protocol.WebAudio.AudioListenerWillBeDestroyedEvent) => void): void;
-        onceAudioListenerWillBeDestroyed(eventMatcher?: (params: Protocol.WebAudio.AudioListenerWillBeDestroyedEvent) => boolean): void;
+        onAudioListenerWillBeDestroyed(listener: (event: { params: Protocol.WebAudio.AudioListenerWillBeDestroyedEvent }) => void): void;
+        offAudioListenerWillBeDestroyed(listener: (event: { params: Protocol.WebAudio.AudioListenerWillBeDestroyedEvent }) => void): void;
+        onceAudioListenerWillBeDestroyed(eventMatcher?: (event: { params: Protocol.WebAudio.AudioListenerWillBeDestroyedEvent }) => boolean): Promise<{ params: Protocol.WebAudio.AudioListenerWillBeDestroyedEvent }>;
 
         /**
          * Notifies that a new AudioNode has been created.
          */
-        onAudioNodeCreated(listener: (params: Protocol.WebAudio.AudioNodeCreatedEvent) => void): void;
-        offAudioNodeCreated(listener: (params: Protocol.WebAudio.AudioNodeCreatedEvent) => void): void;
-        onceAudioNodeCreated(eventMatcher?: (params: Protocol.WebAudio.AudioNodeCreatedEvent) => boolean): void;
+        onAudioNodeCreated(listener: (event: { params: Protocol.WebAudio.AudioNodeCreatedEvent }) => void): void;
+        offAudioNodeCreated(listener: (event: { params: Protocol.WebAudio.AudioNodeCreatedEvent }) => void): void;
+        onceAudioNodeCreated(eventMatcher?: (event: { params: Protocol.WebAudio.AudioNodeCreatedEvent }) => boolean): Promise<{ params: Protocol.WebAudio.AudioNodeCreatedEvent }>;
 
         /**
          * Notifies that an existing AudioNode has been destroyed.
          */
-        onAudioNodeWillBeDestroyed(listener: (params: Protocol.WebAudio.AudioNodeWillBeDestroyedEvent) => void): void;
-        offAudioNodeWillBeDestroyed(listener: (params: Protocol.WebAudio.AudioNodeWillBeDestroyedEvent) => void): void;
-        onceAudioNodeWillBeDestroyed(eventMatcher?: (params: Protocol.WebAudio.AudioNodeWillBeDestroyedEvent) => boolean): void;
+        onAudioNodeWillBeDestroyed(listener: (event: { params: Protocol.WebAudio.AudioNodeWillBeDestroyedEvent }) => void): void;
+        offAudioNodeWillBeDestroyed(listener: (event: { params: Protocol.WebAudio.AudioNodeWillBeDestroyedEvent }) => void): void;
+        onceAudioNodeWillBeDestroyed(eventMatcher?: (event: { params: Protocol.WebAudio.AudioNodeWillBeDestroyedEvent }) => boolean): Promise<{ params: Protocol.WebAudio.AudioNodeWillBeDestroyedEvent }>;
 
         /**
          * Notifies that a new AudioParam has been created.
          */
-        onAudioParamCreated(listener: (params: Protocol.WebAudio.AudioParamCreatedEvent) => void): void;
-        offAudioParamCreated(listener: (params: Protocol.WebAudio.AudioParamCreatedEvent) => void): void;
-        onceAudioParamCreated(eventMatcher?: (params: Protocol.WebAudio.AudioParamCreatedEvent) => boolean): void;
+        onAudioParamCreated(listener: (event: { params: Protocol.WebAudio.AudioParamCreatedEvent }) => void): void;
+        offAudioParamCreated(listener: (event: { params: Protocol.WebAudio.AudioParamCreatedEvent }) => void): void;
+        onceAudioParamCreated(eventMatcher?: (event: { params: Protocol.WebAudio.AudioParamCreatedEvent }) => boolean): Promise<{ params: Protocol.WebAudio.AudioParamCreatedEvent }>;
 
         /**
          * Notifies that an existing AudioParam has been destroyed.
          */
-        onAudioParamWillBeDestroyed(listener: (params: Protocol.WebAudio.AudioParamWillBeDestroyedEvent) => void): void;
-        offAudioParamWillBeDestroyed(listener: (params: Protocol.WebAudio.AudioParamWillBeDestroyedEvent) => void): void;
-        onceAudioParamWillBeDestroyed(eventMatcher?: (params: Protocol.WebAudio.AudioParamWillBeDestroyedEvent) => boolean): void;
+        onAudioParamWillBeDestroyed(listener: (event: { params: Protocol.WebAudio.AudioParamWillBeDestroyedEvent }) => void): void;
+        offAudioParamWillBeDestroyed(listener: (event: { params: Protocol.WebAudio.AudioParamWillBeDestroyedEvent }) => void): void;
+        onceAudioParamWillBeDestroyed(eventMatcher?: (event: { params: Protocol.WebAudio.AudioParamWillBeDestroyedEvent }) => boolean): Promise<{ params: Protocol.WebAudio.AudioParamWillBeDestroyedEvent }>;
 
         /**
          * Notifies that two AudioNodes are connected.
          */
-        onNodesConnected(listener: (params: Protocol.WebAudio.NodesConnectedEvent) => void): void;
-        offNodesConnected(listener: (params: Protocol.WebAudio.NodesConnectedEvent) => void): void;
-        onceNodesConnected(eventMatcher?: (params: Protocol.WebAudio.NodesConnectedEvent) => boolean): void;
+        onNodesConnected(listener: (event: { params: Protocol.WebAudio.NodesConnectedEvent }) => void): void;
+        offNodesConnected(listener: (event: { params: Protocol.WebAudio.NodesConnectedEvent }) => void): void;
+        onceNodesConnected(eventMatcher?: (event: { params: Protocol.WebAudio.NodesConnectedEvent }) => boolean): Promise<{ params: Protocol.WebAudio.NodesConnectedEvent }>;
 
         /**
          * Notifies that AudioNodes are disconnected. The destination can be null, and it means all the outgoing connections from the source are disconnected.
          */
-        onNodesDisconnected(listener: (params: Protocol.WebAudio.NodesDisconnectedEvent) => void): void;
-        offNodesDisconnected(listener: (params: Protocol.WebAudio.NodesDisconnectedEvent) => void): void;
-        onceNodesDisconnected(eventMatcher?: (params: Protocol.WebAudio.NodesDisconnectedEvent) => boolean): void;
+        onNodesDisconnected(listener: (event: { params: Protocol.WebAudio.NodesDisconnectedEvent }) => void): void;
+        offNodesDisconnected(listener: (event: { params: Protocol.WebAudio.NodesDisconnectedEvent }) => void): void;
+        onceNodesDisconnected(eventMatcher?: (event: { params: Protocol.WebAudio.NodesDisconnectedEvent }) => boolean): Promise<{ params: Protocol.WebAudio.NodesDisconnectedEvent }>;
 
         /**
          * Notifies that an AudioNode is connected to an AudioParam.
          */
-        onNodeParamConnected(listener: (params: Protocol.WebAudio.NodeParamConnectedEvent) => void): void;
-        offNodeParamConnected(listener: (params: Protocol.WebAudio.NodeParamConnectedEvent) => void): void;
-        onceNodeParamConnected(eventMatcher?: (params: Protocol.WebAudio.NodeParamConnectedEvent) => boolean): void;
+        onNodeParamConnected(listener: (event: { params: Protocol.WebAudio.NodeParamConnectedEvent }) => void): void;
+        offNodeParamConnected(listener: (event: { params: Protocol.WebAudio.NodeParamConnectedEvent }) => void): void;
+        onceNodeParamConnected(eventMatcher?: (event: { params: Protocol.WebAudio.NodeParamConnectedEvent }) => boolean): Promise<{ params: Protocol.WebAudio.NodeParamConnectedEvent }>;
 
         /**
          * Notifies that an AudioNode is disconnected to an AudioParam.
          */
-        onNodeParamDisconnected(listener: (params: Protocol.WebAudio.NodeParamDisconnectedEvent) => void): void;
-        offNodeParamDisconnected(listener: (params: Protocol.WebAudio.NodeParamDisconnectedEvent) => void): void;
-        onceNodeParamDisconnected(eventMatcher?: (params: Protocol.WebAudio.NodeParamDisconnectedEvent) => boolean): void;
+        onNodeParamDisconnected(listener: (event: { params: Protocol.WebAudio.NodeParamDisconnectedEvent }) => void): void;
+        offNodeParamDisconnected(listener: (event: { params: Protocol.WebAudio.NodeParamDisconnectedEvent }) => void): void;
+        onceNodeParamDisconnected(eventMatcher?: (event: { params: Protocol.WebAudio.NodeParamDisconnectedEvent }) => boolean): Promise<{ params: Protocol.WebAudio.NodeParamDisconnectedEvent }>;
 
     }
 
@@ -4331,16 +4331,16 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Triggered when a credential is added to an authenticator.
          */
-        onCredentialAdded(listener: (params: Protocol.WebAuthn.CredentialAddedEvent) => void): void;
-        offCredentialAdded(listener: (params: Protocol.WebAuthn.CredentialAddedEvent) => void): void;
-        onceCredentialAdded(eventMatcher?: (params: Protocol.WebAuthn.CredentialAddedEvent) => boolean): void;
+        onCredentialAdded(listener: (event: { params: Protocol.WebAuthn.CredentialAddedEvent }) => void): void;
+        offCredentialAdded(listener: (event: { params: Protocol.WebAuthn.CredentialAddedEvent }) => void): void;
+        onceCredentialAdded(eventMatcher?: (event: { params: Protocol.WebAuthn.CredentialAddedEvent }) => boolean): Promise<{ params: Protocol.WebAuthn.CredentialAddedEvent }>;
 
         /**
          * Triggered when a credential is used in a webauthn assertion.
          */
-        onCredentialAsserted(listener: (params: Protocol.WebAuthn.CredentialAssertedEvent) => void): void;
-        offCredentialAsserted(listener: (params: Protocol.WebAuthn.CredentialAssertedEvent) => void): void;
-        onceCredentialAsserted(eventMatcher?: (params: Protocol.WebAuthn.CredentialAssertedEvent) => boolean): void;
+        onCredentialAsserted(listener: (event: { params: Protocol.WebAuthn.CredentialAssertedEvent }) => void): void;
+        offCredentialAsserted(listener: (event: { params: Protocol.WebAuthn.CredentialAssertedEvent }) => void): void;
+        onceCredentialAsserted(eventMatcher?: (event: { params: Protocol.WebAuthn.CredentialAssertedEvent }) => boolean): Promise<{ params: Protocol.WebAuthn.CredentialAssertedEvent }>;
 
     }
 
@@ -4359,40 +4359,40 @@ export namespace ProtocolTestsProxyApi {
          * This can be called multiple times, and can be used to set / override /
          * remove player properties. A null propValue indicates removal.
          */
-        onPlayerPropertiesChanged(listener: (params: Protocol.Media.PlayerPropertiesChangedEvent) => void): void;
-        offPlayerPropertiesChanged(listener: (params: Protocol.Media.PlayerPropertiesChangedEvent) => void): void;
-        oncePlayerPropertiesChanged(eventMatcher?: (params: Protocol.Media.PlayerPropertiesChangedEvent) => boolean): void;
+        onPlayerPropertiesChanged(listener: (event: { params: Protocol.Media.PlayerPropertiesChangedEvent }) => void): void;
+        offPlayerPropertiesChanged(listener: (event: { params: Protocol.Media.PlayerPropertiesChangedEvent }) => void): void;
+        oncePlayerPropertiesChanged(eventMatcher?: (event: { params: Protocol.Media.PlayerPropertiesChangedEvent }) => boolean): Promise<{ params: Protocol.Media.PlayerPropertiesChangedEvent }>;
 
         /**
          * Send events as a list, allowing them to be batched on the browser for less
          * congestion. If batched, events must ALWAYS be in chronological order.
          */
-        onPlayerEventsAdded(listener: (params: Protocol.Media.PlayerEventsAddedEvent) => void): void;
-        offPlayerEventsAdded(listener: (params: Protocol.Media.PlayerEventsAddedEvent) => void): void;
-        oncePlayerEventsAdded(eventMatcher?: (params: Protocol.Media.PlayerEventsAddedEvent) => boolean): void;
+        onPlayerEventsAdded(listener: (event: { params: Protocol.Media.PlayerEventsAddedEvent }) => void): void;
+        offPlayerEventsAdded(listener: (event: { params: Protocol.Media.PlayerEventsAddedEvent }) => void): void;
+        oncePlayerEventsAdded(eventMatcher?: (event: { params: Protocol.Media.PlayerEventsAddedEvent }) => boolean): Promise<{ params: Protocol.Media.PlayerEventsAddedEvent }>;
 
         /**
          * Send a list of any messages that need to be delivered.
          */
-        onPlayerMessagesLogged(listener: (params: Protocol.Media.PlayerMessagesLoggedEvent) => void): void;
-        offPlayerMessagesLogged(listener: (params: Protocol.Media.PlayerMessagesLoggedEvent) => void): void;
-        oncePlayerMessagesLogged(eventMatcher?: (params: Protocol.Media.PlayerMessagesLoggedEvent) => boolean): void;
+        onPlayerMessagesLogged(listener: (event: { params: Protocol.Media.PlayerMessagesLoggedEvent }) => void): void;
+        offPlayerMessagesLogged(listener: (event: { params: Protocol.Media.PlayerMessagesLoggedEvent }) => void): void;
+        oncePlayerMessagesLogged(eventMatcher?: (event: { params: Protocol.Media.PlayerMessagesLoggedEvent }) => boolean): Promise<{ params: Protocol.Media.PlayerMessagesLoggedEvent }>;
 
         /**
          * Send a list of any errors that need to be delivered.
          */
-        onPlayerErrorsRaised(listener: (params: Protocol.Media.PlayerErrorsRaisedEvent) => void): void;
-        offPlayerErrorsRaised(listener: (params: Protocol.Media.PlayerErrorsRaisedEvent) => void): void;
-        oncePlayerErrorsRaised(eventMatcher?: (params: Protocol.Media.PlayerErrorsRaisedEvent) => boolean): void;
+        onPlayerErrorsRaised(listener: (event: { params: Protocol.Media.PlayerErrorsRaisedEvent }) => void): void;
+        offPlayerErrorsRaised(listener: (event: { params: Protocol.Media.PlayerErrorsRaisedEvent }) => void): void;
+        oncePlayerErrorsRaised(eventMatcher?: (event: { params: Protocol.Media.PlayerErrorsRaisedEvent }) => boolean): Promise<{ params: Protocol.Media.PlayerErrorsRaisedEvent }>;
 
         /**
          * Called whenever a player is created, or when a new agent joins and receives
          * a list of active players. If an agent is restored, it will receive the full
          * list of player ids and all events again.
          */
-        onPlayersCreated(listener: (params: Protocol.Media.PlayersCreatedEvent) => void): void;
-        offPlayersCreated(listener: (params: Protocol.Media.PlayersCreatedEvent) => void): void;
-        oncePlayersCreated(eventMatcher?: (params: Protocol.Media.PlayersCreatedEvent) => boolean): void;
+        onPlayersCreated(listener: (event: { params: Protocol.Media.PlayersCreatedEvent }) => void): void;
+        offPlayersCreated(listener: (event: { params: Protocol.Media.PlayersCreatedEvent }) => void): void;
+        oncePlayersCreated(eventMatcher?: (event: { params: Protocol.Media.PlayersCreatedEvent }) => boolean): Promise<{ params: Protocol.Media.PlayersCreatedEvent }>;
 
     }
 
@@ -4421,9 +4421,9 @@ export namespace ProtocolTestsProxyApi {
          * A device request opened a user prompt to select a device. Respond with the
          * selectPrompt or cancelPrompt command.
          */
-        onDeviceRequestPrompted(listener: (params: Protocol.DeviceAccess.DeviceRequestPromptedEvent) => void): void;
-        offDeviceRequestPrompted(listener: (params: Protocol.DeviceAccess.DeviceRequestPromptedEvent) => void): void;
-        onceDeviceRequestPrompted(eventMatcher?: (params: Protocol.DeviceAccess.DeviceRequestPromptedEvent) => boolean): void;
+        onDeviceRequestPrompted(listener: (event: { params: Protocol.DeviceAccess.DeviceRequestPromptedEvent }) => void): void;
+        offDeviceRequestPrompted(listener: (event: { params: Protocol.DeviceAccess.DeviceRequestPromptedEvent }) => void): void;
+        onceDeviceRequestPrompted(eventMatcher?: (event: { params: Protocol.DeviceAccess.DeviceRequestPromptedEvent }) => boolean): Promise<{ params: Protocol.DeviceAccess.DeviceRequestPromptedEvent }>;
 
     }
 
@@ -4435,41 +4435,41 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Upsert. Currently, it is only emitted when a rule set added.
          */
-        onRuleSetUpdated(listener: (params: Protocol.Preload.RuleSetUpdatedEvent) => void): void;
-        offRuleSetUpdated(listener: (params: Protocol.Preload.RuleSetUpdatedEvent) => void): void;
-        onceRuleSetUpdated(eventMatcher?: (params: Protocol.Preload.RuleSetUpdatedEvent) => boolean): void;
+        onRuleSetUpdated(listener: (event: { params: Protocol.Preload.RuleSetUpdatedEvent }) => void): void;
+        offRuleSetUpdated(listener: (event: { params: Protocol.Preload.RuleSetUpdatedEvent }) => void): void;
+        onceRuleSetUpdated(eventMatcher?: (event: { params: Protocol.Preload.RuleSetUpdatedEvent }) => boolean): Promise<{ params: Protocol.Preload.RuleSetUpdatedEvent }>;
 
-        onRuleSetRemoved(listener: (params: Protocol.Preload.RuleSetRemovedEvent) => void): void;
-        offRuleSetRemoved(listener: (params: Protocol.Preload.RuleSetRemovedEvent) => void): void;
-        onceRuleSetRemoved(eventMatcher?: (params: Protocol.Preload.RuleSetRemovedEvent) => boolean): void;
+        onRuleSetRemoved(listener: (event: { params: Protocol.Preload.RuleSetRemovedEvent }) => void): void;
+        offRuleSetRemoved(listener: (event: { params: Protocol.Preload.RuleSetRemovedEvent }) => void): void;
+        onceRuleSetRemoved(eventMatcher?: (event: { params: Protocol.Preload.RuleSetRemovedEvent }) => boolean): Promise<{ params: Protocol.Preload.RuleSetRemovedEvent }>;
 
         /**
          * Fired when a preload enabled state is updated.
          */
-        onPreloadEnabledStateUpdated(listener: (params: Protocol.Preload.PreloadEnabledStateUpdatedEvent) => void): void;
-        offPreloadEnabledStateUpdated(listener: (params: Protocol.Preload.PreloadEnabledStateUpdatedEvent) => void): void;
-        oncePreloadEnabledStateUpdated(eventMatcher?: (params: Protocol.Preload.PreloadEnabledStateUpdatedEvent) => boolean): void;
+        onPreloadEnabledStateUpdated(listener: (event: { params: Protocol.Preload.PreloadEnabledStateUpdatedEvent }) => void): void;
+        offPreloadEnabledStateUpdated(listener: (event: { params: Protocol.Preload.PreloadEnabledStateUpdatedEvent }) => void): void;
+        oncePreloadEnabledStateUpdated(eventMatcher?: (event: { params: Protocol.Preload.PreloadEnabledStateUpdatedEvent }) => boolean): Promise<{ params: Protocol.Preload.PreloadEnabledStateUpdatedEvent }>;
 
         /**
          * Fired when a prefetch attempt is updated.
          */
-        onPrefetchStatusUpdated(listener: (params: Protocol.Preload.PrefetchStatusUpdatedEvent) => void): void;
-        offPrefetchStatusUpdated(listener: (params: Protocol.Preload.PrefetchStatusUpdatedEvent) => void): void;
-        oncePrefetchStatusUpdated(eventMatcher?: (params: Protocol.Preload.PrefetchStatusUpdatedEvent) => boolean): void;
+        onPrefetchStatusUpdated(listener: (event: { params: Protocol.Preload.PrefetchStatusUpdatedEvent }) => void): void;
+        offPrefetchStatusUpdated(listener: (event: { params: Protocol.Preload.PrefetchStatusUpdatedEvent }) => void): void;
+        oncePrefetchStatusUpdated(eventMatcher?: (event: { params: Protocol.Preload.PrefetchStatusUpdatedEvent }) => boolean): Promise<{ params: Protocol.Preload.PrefetchStatusUpdatedEvent }>;
 
         /**
          * Fired when a prerender attempt is updated.
          */
-        onPrerenderStatusUpdated(listener: (params: Protocol.Preload.PrerenderStatusUpdatedEvent) => void): void;
-        offPrerenderStatusUpdated(listener: (params: Protocol.Preload.PrerenderStatusUpdatedEvent) => void): void;
-        oncePrerenderStatusUpdated(eventMatcher?: (params: Protocol.Preload.PrerenderStatusUpdatedEvent) => boolean): void;
+        onPrerenderStatusUpdated(listener: (event: { params: Protocol.Preload.PrerenderStatusUpdatedEvent }) => void): void;
+        offPrerenderStatusUpdated(listener: (event: { params: Protocol.Preload.PrerenderStatusUpdatedEvent }) => void): void;
+        oncePrerenderStatusUpdated(eventMatcher?: (event: { params: Protocol.Preload.PrerenderStatusUpdatedEvent }) => boolean): Promise<{ params: Protocol.Preload.PrerenderStatusUpdatedEvent }>;
 
         /**
          * Send a list of sources for all preloading attempts in a document.
          */
-        onPreloadingAttemptSourcesUpdated(listener: (params: Protocol.Preload.PreloadingAttemptSourcesUpdatedEvent) => void): void;
-        offPreloadingAttemptSourcesUpdated(listener: (params: Protocol.Preload.PreloadingAttemptSourcesUpdatedEvent) => void): void;
-        oncePreloadingAttemptSourcesUpdated(eventMatcher?: (params: Protocol.Preload.PreloadingAttemptSourcesUpdatedEvent) => boolean): void;
+        onPreloadingAttemptSourcesUpdated(listener: (event: { params: Protocol.Preload.PreloadingAttemptSourcesUpdatedEvent }) => void): void;
+        offPreloadingAttemptSourcesUpdated(listener: (event: { params: Protocol.Preload.PreloadingAttemptSourcesUpdatedEvent }) => void): void;
+        oncePreloadingAttemptSourcesUpdated(eventMatcher?: (event: { params: Protocol.Preload.PreloadingAttemptSourcesUpdatedEvent }) => boolean): Promise<{ params: Protocol.Preload.PreloadingAttemptSourcesUpdatedEvent }>;
 
     }
 
@@ -4490,17 +4490,17 @@ export namespace ProtocolTestsProxyApi {
          */
         resetCooldown(): Promise<void>;
 
-        onDialogShown(listener: (params: Protocol.FedCm.DialogShownEvent) => void): void;
-        offDialogShown(listener: (params: Protocol.FedCm.DialogShownEvent) => void): void;
-        onceDialogShown(eventMatcher?: (params: Protocol.FedCm.DialogShownEvent) => boolean): void;
+        onDialogShown(listener: (event: { params: Protocol.FedCm.DialogShownEvent }) => void): void;
+        offDialogShown(listener: (event: { params: Protocol.FedCm.DialogShownEvent }) => void): void;
+        onceDialogShown(eventMatcher?: (event: { params: Protocol.FedCm.DialogShownEvent }) => boolean): Promise<{ params: Protocol.FedCm.DialogShownEvent }>;
 
         /**
          * Triggered when a dialog is closed, either by user action, JS abort,
          * or a command below.
          */
-        onDialogClosed(listener: (params: Protocol.FedCm.DialogClosedEvent) => void): void;
-        offDialogClosed(listener: (params: Protocol.FedCm.DialogClosedEvent) => void): void;
-        onceDialogClosed(eventMatcher?: (params: Protocol.FedCm.DialogClosedEvent) => boolean): void;
+        onDialogClosed(listener: (event: { params: Protocol.FedCm.DialogClosedEvent }) => void): void;
+        offDialogClosed(listener: (event: { params: Protocol.FedCm.DialogClosedEvent }) => void): void;
+        onceDialogClosed(eventMatcher?: (event: { params: Protocol.FedCm.DialogClosedEvent }) => boolean): Promise<{ params: Protocol.FedCm.DialogClosedEvent }>;
 
     }
 }

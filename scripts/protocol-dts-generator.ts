@@ -333,16 +333,19 @@ const emitApiCommand = (command: P.Command, domainName: string, modulePrefix: st
 const emitApiEvent = (event: P.Event, domainName: string, modulePrefix: string, eventStyle: EventStyle) => {
     const prefix = `${modulePrefix}.${domainName}.`
     emitDescription(event.description)
-    const params = event.parameters ? `params: ${prefix}${toEventPayloadName(event.name)}` : ''
     switch (eventStyle) {
-      case EventStyle.REGULAR:
+      case EventStyle.REGULAR: {
+        const params = event.parameters ? `params: ${prefix}${toEventPayloadName(event.name)}` : ''
         emitLine(`on(event: '${event.name}', listener: (${params}) => void): void;`)
         break;
-      case EventStyle.INSPECTOR_PROTOCOL_TESTS:
-        emitLine(`on${toTitleCase(event.name)}(listener: (${params}) => void): void;`)
-        emitLine(`off${toTitleCase(event.name)}(listener: (${params}) => void): void;`)
-        emitLine(`once${toTitleCase(event.name)}(eventMatcher?: (${params}) => boolean): void;`)
+      }
+      case EventStyle.INSPECTOR_PROTOCOL_TESTS: {
+        const eventType = event.parameters ? `{ params: ${prefix}${toEventPayloadName(event.name)} }` : ''
+        emitLine(`on${toTitleCase(event.name)}(listener: (event: ${eventType}) => void): void;`)
+        emitLine(`off${toTitleCase(event.name)}(listener: (event: ${eventType}) => void): void;`)
+        emitLine(`once${toTitleCase(event.name)}(eventMatcher?: (event: ${eventType}) => boolean): Promise<${eventType}>;`)
         break;
+      }
     }
     emitLine()
 }
