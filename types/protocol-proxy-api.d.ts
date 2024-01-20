@@ -3421,6 +3421,12 @@ export namespace ProtocolProxyApi {
         setInterestGroupTracking(params: Protocol.Storage.SetInterestGroupTrackingRequest): Promise<void>;
 
         /**
+         * Enables/Disables issuing of interestGroupAuctionEventOccurred and
+         * interestGroupAuctionNetworkRequestCreated.
+         */
+        setInterestGroupAuctionTracking(params: Protocol.Storage.SetInterestGroupAuctionTrackingRequest): Promise<void>;
+
+        /**
          * Gets metadata for an origin's shared storage.
          */
         getSharedStorageMetadata(params: Protocol.Storage.GetSharedStorageMetadataRequest): Promise<Protocol.Storage.GetSharedStorageMetadataResponse>;
@@ -3501,9 +3507,24 @@ export namespace ProtocolProxyApi {
         on(event: 'indexedDBListUpdated', listener: (params: Protocol.Storage.IndexedDBListUpdatedEvent) => void): void;
 
         /**
-         * One of the interest groups was accessed by the associated page.
+         * One of the interest groups was accessed. Note that these events are global
+         * to all targets sharing an interest group store.
          */
         on(event: 'interestGroupAccessed', listener: (params: Protocol.Storage.InterestGroupAccessedEvent) => void): void;
+
+        /**
+         * An auction involving interest groups is taking place. These events are
+         * target-specific.
+         */
+        on(event: 'interestGroupAuctionEventOccurred', listener: (params: Protocol.Storage.InterestGroupAuctionEventOccurredEvent) => void): void;
+
+        /**
+         * Specifies which auctions a particular network fetch may be related to, and
+         * in what role. Note that it is not ordered with respect to
+         * Network.requestWillBeSent (but will happen before loadingFinished
+         * loadingFailed).
+         */
+        on(event: 'interestGroupAuctionNetworkRequestCreated', listener: (params: Protocol.Storage.InterestGroupAuctionNetworkRequestCreatedEvent) => void): void;
 
         /**
          * Shared storage was accessed by the associated page.

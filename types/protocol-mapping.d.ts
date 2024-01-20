@@ -552,9 +552,22 @@ export namespace ProtocolMapping {
          */
         'Storage.indexedDBListUpdated': [Protocol.Storage.IndexedDBListUpdatedEvent];
         /**
-         * One of the interest groups was accessed by the associated page.
+         * One of the interest groups was accessed. Note that these events are global
+         * to all targets sharing an interest group store.
          */
         'Storage.interestGroupAccessed': [Protocol.Storage.InterestGroupAccessedEvent];
+        /**
+         * An auction involving interest groups is taking place. These events are
+         * target-specific.
+         */
+        'Storage.interestGroupAuctionEventOccurred': [Protocol.Storage.InterestGroupAuctionEventOccurredEvent];
+        /**
+         * Specifies which auctions a particular network fetch may be related to, and
+         * in what role. Note that it is not ordered with respect to
+         * Network.requestWillBeSent (but will happen before loadingFinished
+         * loadingFailed).
+         */
+        'Storage.interestGroupAuctionNetworkRequestCreated': [Protocol.Storage.InterestGroupAuctionNetworkRequestCreatedEvent];
         /**
          * Shared storage was accessed by the associated page.
          * The following parameters are included in all events.
@@ -4276,6 +4289,14 @@ export namespace ProtocolMapping {
          */
         'Storage.setInterestGroupTracking': {
             paramsType: [Protocol.Storage.SetInterestGroupTrackingRequest];
+            returnType: void;
+        };
+        /**
+         * Enables/Disables issuing of interestGroupAuctionEventOccurred and
+         * interestGroupAuctionNetworkRequestCreated.
+         */
+        'Storage.setInterestGroupAuctionTracking': {
+            paramsType: [Protocol.Storage.SetInterestGroupAuctionTrackingRequest];
             returnType: void;
         };
         /**

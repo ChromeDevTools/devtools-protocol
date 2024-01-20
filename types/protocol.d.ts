@@ -15217,9 +15217,24 @@ export namespace Protocol {
         }
 
         /**
+         * Protected audience interest group auction identifier.
+         */
+        export type InterestGroupAuctionId = string;
+
+        /**
          * Enum of interest group access types.
          */
-        export type InterestGroupAccessType = ('join' | 'leave' | 'update' | 'loaded' | 'bid' | 'win' | 'additionalBid' | 'additionalBidWin' | 'clear');
+        export type InterestGroupAccessType = ('join' | 'leave' | 'update' | 'loaded' | 'bid' | 'win' | 'additionalBid' | 'additionalBidWin' | 'topLevelBid' | 'topLevelAdditionalBid' | 'clear');
+
+        /**
+         * Enum of auction events.
+         */
+        export type InterestGroupAuctionEventType = ('started' | 'configResolved');
+
+        /**
+         * Enum of network fetches auctions can do.
+         */
+        export type InterestGroupAuctionFetchType = ('bidderJs' | 'bidderWasm' | 'sellerJs' | 'bidderTrustedSignals' | 'sellerTrustedSignals');
 
         /**
          * Ad advertising element inside an interest group.
@@ -15680,6 +15695,10 @@ export namespace Protocol {
             enable: boolean;
         }
 
+        export interface SetInterestGroupAuctionTrackingRequest {
+            enable: boolean;
+        }
+
         export interface GetSharedStorageMetadataRequest {
             ownerOrigin: string;
         }
@@ -15833,13 +15852,63 @@ export namespace Protocol {
         }
 
         /**
-         * One of the interest groups was accessed by the associated page.
+         * One of the interest groups was accessed. Note that these events are global
+         * to all targets sharing an interest group store.
          */
         export interface InterestGroupAccessedEvent {
             accessTime: Network.TimeSinceEpoch;
             type: InterestGroupAccessType;
             ownerOrigin: string;
             name: string;
+            /**
+             * For topLevelBid/topLevelAdditionalBid, and when appropriate,
+             * win and additionalBidWin
+             */
+            componentSellerOrigin?: string;
+            /**
+             * For bid or somethingBid event, if done locally and not on a server.
+             */
+            bid?: number;
+            bidCurrency?: string;
+            /**
+             * For non-global events --- links to interestGroupAuctionEvent
+             */
+            uniqueAuctionId?: InterestGroupAuctionId;
+        }
+
+        /**
+         * An auction involving interest groups is taking place. These events are
+         * target-specific.
+         */
+        export interface InterestGroupAuctionEventOccurredEvent {
+            eventTime: Network.TimeSinceEpoch;
+            type: InterestGroupAuctionEventType;
+            uniqueAuctionId: InterestGroupAuctionId;
+            /**
+             * Set for child auctions.
+             */
+            parentAuctionId?: InterestGroupAuctionId;
+            /**
+             * Set for started and configResolved
+             */
+            auctionConfig?: any;
+        }
+
+        /**
+         * Specifies which auctions a particular network fetch may be related to, and
+         * in what role. Note that it is not ordered with respect to
+         * Network.requestWillBeSent (but will happen before loadingFinished
+         * loadingFailed).
+         */
+        export interface InterestGroupAuctionNetworkRequestCreatedEvent {
+            type: InterestGroupAuctionFetchType;
+            requestId: Network.RequestId;
+            /**
+             * This is the set of the auctions using the worklet that issued this
+             * request.  In the case of trusted signals, it's possible that only some of
+             * them actually care about the keys being queried.
+             */
+            auctions: InterestGroupAuctionId[];
         }
 
         /**

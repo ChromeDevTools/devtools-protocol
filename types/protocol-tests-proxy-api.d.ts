@@ -3693,6 +3693,12 @@ export namespace ProtocolTestsProxyApi {
         setInterestGroupTracking(params: Protocol.Storage.SetInterestGroupTrackingRequest): Promise<void>;
 
         /**
+         * Enables/Disables issuing of interestGroupAuctionEventOccurred and
+         * interestGroupAuctionNetworkRequestCreated.
+         */
+        setInterestGroupAuctionTracking(params: Protocol.Storage.SetInterestGroupAuctionTrackingRequest): Promise<void>;
+
+        /**
          * Gets metadata for an origin's shared storage.
          */
         getSharedStorageMetadata(params: Protocol.Storage.GetSharedStorageMetadataRequest): Promise<Protocol.Storage.GetSharedStorageMetadataResponse>;
@@ -3781,11 +3787,30 @@ export namespace ProtocolTestsProxyApi {
         onceIndexedDBListUpdated(eventMatcher?: (event: { params: Protocol.Storage.IndexedDBListUpdatedEvent }) => boolean): Promise<{ params: Protocol.Storage.IndexedDBListUpdatedEvent }>;
 
         /**
-         * One of the interest groups was accessed by the associated page.
+         * One of the interest groups was accessed. Note that these events are global
+         * to all targets sharing an interest group store.
          */
         onInterestGroupAccessed(listener: (event: { params: Protocol.Storage.InterestGroupAccessedEvent }) => void): void;
         offInterestGroupAccessed(listener: (event: { params: Protocol.Storage.InterestGroupAccessedEvent }) => void): void;
         onceInterestGroupAccessed(eventMatcher?: (event: { params: Protocol.Storage.InterestGroupAccessedEvent }) => boolean): Promise<{ params: Protocol.Storage.InterestGroupAccessedEvent }>;
+
+        /**
+         * An auction involving interest groups is taking place. These events are
+         * target-specific.
+         */
+        onInterestGroupAuctionEventOccurred(listener: (event: { params: Protocol.Storage.InterestGroupAuctionEventOccurredEvent }) => void): void;
+        offInterestGroupAuctionEventOccurred(listener: (event: { params: Protocol.Storage.InterestGroupAuctionEventOccurredEvent }) => void): void;
+        onceInterestGroupAuctionEventOccurred(eventMatcher?: (event: { params: Protocol.Storage.InterestGroupAuctionEventOccurredEvent }) => boolean): Promise<{ params: Protocol.Storage.InterestGroupAuctionEventOccurredEvent }>;
+
+        /**
+         * Specifies which auctions a particular network fetch may be related to, and
+         * in what role. Note that it is not ordered with respect to
+         * Network.requestWillBeSent (but will happen before loadingFinished
+         * loadingFailed).
+         */
+        onInterestGroupAuctionNetworkRequestCreated(listener: (event: { params: Protocol.Storage.InterestGroupAuctionNetworkRequestCreatedEvent }) => void): void;
+        offInterestGroupAuctionNetworkRequestCreated(listener: (event: { params: Protocol.Storage.InterestGroupAuctionNetworkRequestCreatedEvent }) => void): void;
+        onceInterestGroupAuctionNetworkRequestCreated(eventMatcher?: (event: { params: Protocol.Storage.InterestGroupAuctionNetworkRequestCreatedEvent }) => boolean): Promise<{ params: Protocol.Storage.InterestGroupAuctionNetworkRequestCreatedEvent }>;
 
         /**
          * Shared storage was accessed by the associated page.

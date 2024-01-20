@@ -1,7 +1,111 @@
 
 
+## Roll protocol to r1249784 — _2024-01-20T04:27:08.000Z_
+######  Diff: [`c65bd7c...6fe04e0`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c65bd7c...6fe04e0`)
+
+```diff
+@@ browser_protocol.pdl:9521 @@ experimental domain Storage
+       string issuerOrigin
+       number count
+ 
+-  # Protected audience interest group auction identifier.
+-  type InterestGroupAuctionId extends string
+-
+   # Enum of interest group access types.
+   type InterestGroupAccessType extends string
+     enum
+@@ -9535,25 +9532,8 @@ experimental domain Storage
+       win
+       additionalBid
+       additionalBidWin
+-      topLevelBid
+-      topLevelAdditionalBid
+       clear
+ 
+-  # Enum of auction events.
+-  type InterestGroupAuctionEventType extends string
+-    enum
+-      started
+-      configResolved
+-
+-  # Enum of network fetches auctions can do.
+-  type InterestGroupAuctionFetchType extends string
+-    enum
+-      bidderJs
+-      bidderWasm
+-      sellerJs
+-      bidderTrustedSignals
+-      sellerTrustedSignals
+-
+   # Ad advertising element inside an interest group.
+   type InterestGroupAd extends object
+     properties
+@@ -9833,12 +9813,6 @@ experimental domain Storage
+     parameters
+       boolean enable
+ 
+-  # Enables/Disables issuing of interestGroupAuctionEventOccurred and
+-  # interestGroupAuctionNetworkRequestCreated.
+-  experimental command setInterestGroupAuctionTracking
+-    parameters
+-      boolean enable
+-
+   # Gets metadata for an origin's shared storage.
+   experimental command getSharedStorageMetadata
+     parameters
+@@ -9946,47 +9920,13 @@ experimental domain Storage
+       # Storage bucket to update.
+       string bucketId
+ 
+-  # One of the interest groups was accessed. Note that these events are global
+-  # to all targets sharing an interest group store.
++  # One of the interest groups was accessed by the associated page.
+   event interestGroupAccessed
+     parameters
+       Network.TimeSinceEpoch accessTime
+       InterestGroupAccessType type
+       string ownerOrigin
+       string name
+-      # For topLevelBid/topLevelAdditionalBid, and when appropriate,
+-      # win and additionalBidWin
+-      optional string componentSellerOrigin
+-      # For bid or somethingBid event, if done locally and not on a server.
+-      optional number bid
+-      optional string bidCurrency
+-      # For non-global events --- links to interestGroupAuctionEvent
+-      optional InterestGroupAuctionId uniqueAuctionId
+-
+-  # An auction involving interest groups is taking place. These events are
+-  # target-specific.
+-  event interestGroupAuctionEventOccurred
+-    parameters
+-      Network.TimeSinceEpoch eventTime
+-      InterestGroupAuctionEventType type
+-      InterestGroupAuctionId uniqueAuctionId
+-      # Set for child auctions.
+-      optional InterestGroupAuctionId parentAuctionId
+-      # Set for started and configResolved
+-      optional object auctionConfig
+-
+-  # Specifies which auctions a particular network fetch may be related to, and
+-  # in what role. Note that it is not ordered with respect to
+-  # Network.requestWillBeSent (but will happen before loadingFinished
+-  # loadingFailed).
+-  event interestGroupAuctionNetworkRequestCreated
+-    parameters
+-      InterestGroupAuctionFetchType type
+-      Network.RequestId requestId
+-      # This is the set of the auctions using the worklet that issued this
+-      # request.  In the case of trusted signals, it's possible that only some of
+-      # them actually care about the keys being queried.
+-      array of InterestGroupAuctionId auctions
+ 
+   # Shared storage was accessed by the associated page.
+   # The following parameters are included in all events.
+```
+
 ## Roll protocol to r1248698 — _2024-01-18T12:05:32.000Z_
-######  Diff: [`0693202...3056b2a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0693202...3056b2a`)
+######  Diff: [`0693202...6d5e973`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0693202...6d5e973`)
 
 ```diff
 @@ browser_protocol.pdl:1299 @@ domain Browser
@@ -10670,127 +10774,4 @@ index bd277eb..09c420e 100644
    # When script with a matching URL is encountered, the cache is optionally
    # produced upon backend discretion, based on internal heuristics.
    # See also: `Page.compilationCacheProduced`.
-```
-
-## Roll protocol to r928170 — _2021-10-05T16:15:26.000Z_
-######  Diff: [`6d3ed49...5f55be2`](https://github.com/ChromeDevTools/devtools-protocol/compare/`6d3ed49...5f55be2`)
-
-```diff
-@@ browser_protocol.pdl:4836 @@ domain Network
-       MethodDisallowedByPreflightResponse
-       HeaderDisallowedByPreflightResponse
-       RedirectContainsCredentials
--      # Request was a private network request initiated by a non-secure context.
-       InsecurePrivateNetwork
--      # Request carried a target IP address space property that did not match
--      # the target resource's address space.
-       InvalidPrivateNetworkAccess
--      # Request was a private network request yet did not carry a target IP
--      # address space.
--      UnexpectedPrivateNetworkAccess
-       NoCorsRedirectModeNotFollow
- 
-   type CorsErrorStatus extends object
-@@ -5873,8 +5867,6 @@ domain Network
-       Allow
-       BlockFromInsecureToMorePrivate
-       WarnFromInsecureToMorePrivate
--      PreflightBlock
--      PreflightWarn
- 
-   experimental type IPAddressSpace extends string
-     enum
-```
-
-## Roll protocol to r927854 — _2021-10-04T22:15:31.000Z_
-######  Diff: [`d24ecc6...6d3ed49`](https://github.com/ChromeDevTools/devtools-protocol/compare/`d24ecc6...6d3ed49`)
-
-```diff
-@@ browser_protocol.pdl:408 @@ experimental domain Animation
-       # Animation that was started.
-       Animation animation
- 
-+# The domain is deprecated as AppCache is being removed (see crbug.com/582750).
-+experimental deprecated domain ApplicationCache
-+  depends on Page
-+
-+  # Detailed application cache resource information.
-+  type ApplicationCacheResource extends object
-+    properties
-+      # Resource url.
-+      string url
-+      # Resource size.
-+      integer size
-+      # Resource type.
-+      string type
-+
-+  # Detailed application cache information.
-+  type ApplicationCache extends object
-+    properties
-+      # Manifest URL.
-+      string manifestURL
-+      # Application cache size.
-+      number size
-+      # Application cache creation time.
-+      number creationTime
-+      # Application cache update time.
-+      number updateTime
-+      # Application cache resources.
-+      array of ApplicationCacheResource resources
-+
-+  # Frame identifier - manifest URL pair.
-+  type FrameWithManifest extends object
-+    properties
-+      # Frame identifier.
-+      Page.FrameId frameId
-+      # Manifest URL.
-+      string manifestURL
-+      # Application cache status.
-+      integer status
-+
-+  # Enables application cache domain notifications.
-+  command enable
-+
-+  # Returns relevant application cache data for the document in given frame.
-+  command getApplicationCacheForFrame
-+    parameters
-+      # Identifier of the frame containing document whose application cache is retrieved.
-+      Page.FrameId frameId
-+    returns
-+      # Relevant application cache data for the document in given frame.
-+      ApplicationCache applicationCache
-+
-+  # Returns array of frame identifiers with manifest urls for each frame containing a document
-+  # associated with some application cache.
-+  command getFramesWithManifests
-+    returns
-+      # Array of frame identifiers with manifest urls for each frame containing a document
-+      # associated with some application cache.
-+      array of FrameWithManifest frameIds
-+
-+  # Returns manifest URL for document in the given frame.
-+  command getManifestForFrame
-+    parameters
-+      # Identifier of the frame containing document whose manifest is retrieved.
-+      Page.FrameId frameId
-+    returns
-+      # Manifest URL for document in the given frame.
-+      string manifestURL
-+
-+  event applicationCacheStatusUpdated
-+    parameters
-+      # Identifier of the frame containing document whose application cache updated status.
-+      Page.FrameId frameId
-+      # Manifest URL.
-+      string manifestURL
-+      # Updated application cache status.
-+      integer status
-+
-+  event networkStateUpdated
-+    parameters
-+      boolean isNowOnline
-+
- # Audits domain allows investigation of page violations and possible improvements.
- experimental domain Audits
-   depends on Network
 ```
