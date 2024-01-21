@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1249869 — _2024-01-21T04:26:44.000Z_
+######  Diff: [`17f79a9...4ced410`](https://github.com/ChromeDevTools/devtools-protocol/compare/`17f79a9...4ced410`)
+
+```diff
+@@ browser_protocol.pdl:545 @@ experimental domain Audits
+       Frame
+       Image
+       Import
+-      JSON
+       Manifest
+       Ping
+       PluginData
+```
+
 ## Roll protocol to r1249784 — _2024-01-20T04:27:08.000Z_
-######  Diff: [`c65bd7c...6fe04e0`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c65bd7c...6fe04e0`)
+######  Diff: [`c65bd7c...17f79a9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`c65bd7c...17f79a9`)
 
 ```diff
 @@ browser_protocol.pdl:9521 @@ experimental domain Storage
@@ -10747,31 +10761,4 @@ index bd277eb..09c420e 100644
        figcaption
        label
        labelfor
-```
-
-## Roll protocol to r930289 — _2021-10-11T21:15:33.000Z_
-######  Diff: [`5f55be2...35e6406`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5f55be2...35e6406`)
-
-```diff
-@@ browser_protocol.pdl:7578 @@ domain Page
-   # Stops sending each frame in the `screencastFrame`.
-   experimental command stopScreencast
- 
-+  # Forces compilation cache to be generated for every subresource script.
-+  # See also: `Page.produceCompilationCache`.
-+  experimental command setProduceCompilationCache
-+    parameters
-+      boolean enabled
-+
-   # Requests backend to produce compilation cache for the specified scripts.
--  # `scripts` are appeneded to the list of scripts for which the cache
--  # would be produced. The list may be reset during page navigation.
-+  # Unlike setProduceCompilationCache, this allows client to only produce cache
-+  # for specific scripts. `scripts` are appeneded to the list of scripts
-+  # for which the cache for would produced. Disabling compilation cache with
-+  # `setProduceCompilationCache` would reset all pending cache requests.
-+  # The list may also be reset during page navigation.
-   # When script with a matching URL is encountered, the cache is optionally
-   # produced upon backend discretion, based on internal heuristics.
-   # See also: `Page.compilationCacheProduced`.
 ```
