@@ -3421,8 +3421,7 @@ export namespace ProtocolProxyApi {
         setInterestGroupTracking(params: Protocol.Storage.SetInterestGroupTrackingRequest): Promise<void>;
 
         /**
-         * Enables/Disables issuing of interestGroupAuctionEventOccurred and
-         * interestGroupAuctionNetworkRequestCreated.
+         * Enables/Disables issuing of interestGroupAuctionEvent events.
          */
         setInterestGroupAuctionTracking(params: Protocol.Storage.SetInterestGroupAuctionTrackingRequest): Promise<void>;
 
@@ -3517,14 +3516,6 @@ export namespace ProtocolProxyApi {
          * target-specific.
          */
         on(event: 'interestGroupAuctionEventOccurred', listener: (params: Protocol.Storage.InterestGroupAuctionEventOccurredEvent) => void): void;
-
-        /**
-         * Specifies which auctions a particular network fetch may be related to, and
-         * in what role. Note that it is not ordered with respect to
-         * Network.requestWillBeSent (but will happen before loadingFinished
-         * loadingFailed).
-         */
-        on(event: 'interestGroupAuctionNetworkRequestCreated', listener: (params: Protocol.Storage.InterestGroupAuctionNetworkRequestCreatedEvent) => void): void;
 
         /**
          * Shared storage was accessed by the associated page.
@@ -4130,6 +4121,8 @@ export namespace ProtocolProxyApi {
         selectAccount(params: Protocol.FedCm.SelectAccountRequest): Promise<void>;
 
         clickDialogButton(params: Protocol.FedCm.ClickDialogButtonRequest): Promise<void>;
+
+        openUrl(params: Protocol.FedCm.OpenUrlRequest): Promise<void>;
 
         dismissDialog(params: Protocol.FedCm.DismissDialogRequest): Promise<void>;
 

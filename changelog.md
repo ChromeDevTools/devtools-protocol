@@ -1,7 +1,85 @@
 
 
+## Roll protocol to r1250650 — _2024-01-23T04:27:23.000Z_
+######  Diff: [`fbf4551...57a59b2`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fbf4551...57a59b2`)
+
+```diff
+@@ browser_protocol.pdl:9546 @@ experimental domain Storage
+       started
+       configResolved
+ 
++  # Enum of network fetches auctions can do.
++  type InterestGroupAuctionFetchType extends string
++    enum
++      bidderJs
++      bidderWasm
++      sellerJs
++      bidderTrustedSignals
++      sellerTrustedSignals
++
+   # Ad advertising element inside an interest group.
+   type InterestGroupAd extends object
+     properties
+@@ -9825,7 +9834,8 @@ experimental domain Storage
+     parameters
+       boolean enable
+ 
+-  # Enables/Disables issuing of interestGroupAuctionEvent events.
++  # Enables/Disables issuing of interestGroupAuctionEventOccurred and
++  # interestGroupAuctionNetworkRequestCreated.
+   experimental command setInterestGroupAuctionTracking
+     parameters
+       boolean enable
+@@ -9966,6 +9976,19 @@ experimental domain Storage
+       # Set for started and configResolved
+       optional object auctionConfig
+ 
++  # Specifies which auctions a particular network fetch may be related to, and
++  # in what role. Note that it is not ordered with respect to
++  # Network.requestWillBeSent (but will happen before loadingFinished
++  # loadingFailed).
++  event interestGroupAuctionNetworkRequestCreated
++    parameters
++      InterestGroupAuctionFetchType type
++      Network.RequestId requestId
++      # This is the set of the auctions using the worklet that issued this
++      # request.  In the case of trusted signals, it's possible that only some of
++      # them actually care about the keys being queried.
++      array of InterestGroupAuctionId auctions
++
+   # Shared storage was accessed by the associated page.
+   # The following parameters are included in all events.
+   event sharedStorageAccessed
+@@ -11832,12 +11855,6 @@ experimental domain FedCm
+       ErrorGotIt
+       ErrorMoreDetails
+ 
+-  # The URLs that each account has
+-  type AccountUrlType extends string
+-    enum
+-      TermsOfService
+-      PrivacyPolicy
+-
+   # Corresponds to IdentityRequestAccount
+   type Account extends object
+     properties
+@@ -11888,12 +11905,6 @@ experimental domain FedCm
+       string dialogId
+       DialogButton dialogButton
+ 
+-  command openUrl
+-    parameters
+-      string dialogId
+-      integer accountIndex
+-      AccountUrlType accountUrlType
+-
+   command dismissDialog
+     parameters
+       string dialogId
+```
+
 ## Roll protocol to r1249869 — _2024-01-21T04:26:44.000Z_
-######  Diff: [`17f79a9...4ced410`](https://github.com/ChromeDevTools/devtools-protocol/compare/`17f79a9...4ced410`)
+######  Diff: [`17f79a9...fbf4551`](https://github.com/ChromeDevTools/devtools-protocol/compare/`17f79a9...fbf4551`)
 
 ```diff
 @@ browser_protocol.pdl:545 @@ experimental domain Audits
@@ -10747,18 +10825,4 @@ index bd277eb..09c420e 100644
  
    type SourceCodeLocation extends object
      properties
-```
-
-## Roll protocol to r931171 — _2021-10-13T19:15:29.000Z_
-######  Diff: [`35e6406...76bd05b`](https://github.com/ChromeDevTools/devtools-protocol/compare/`35e6406...76bd05b`)
-
-```diff
-@@ browser_protocol.pdl:48 @@ experimental domain Accessibility
-   # Enum of possible native property sources (as a subtype of a particular AXValueSourceType).
-   type AXValueNativeSourceType extends string
-     enum
--      description
-       figcaption
-       label
-       labelfor
 ```
