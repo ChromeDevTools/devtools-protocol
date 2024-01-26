@@ -15232,6 +15232,11 @@ export namespace Protocol {
         export type InterestGroupAuctionEventType = ('started' | 'configResolved');
 
         /**
+         * Enum of network fetches auctions can do.
+         */
+        export type InterestGroupAuctionFetchType = ('bidderJs' | 'bidderWasm' | 'sellerJs' | 'bidderTrustedSignals' | 'sellerTrustedSignals');
+
+        /**
          * Ad advertising element inside an interest group.
          */
         export interface InterestGroupAd {
@@ -15887,6 +15892,23 @@ export namespace Protocol {
              * Set for started and configResolved
              */
             auctionConfig?: any;
+        }
+
+        /**
+         * Specifies which auctions a particular network fetch may be related to, and
+         * in what role. Note that it is not ordered with respect to
+         * Network.requestWillBeSent (but will happen before loadingFinished
+         * loadingFailed).
+         */
+        export interface InterestGroupAuctionNetworkRequestCreatedEvent {
+            type: InterestGroupAuctionFetchType;
+            requestId: Network.RequestId;
+            /**
+             * This is the set of the auctions using the worklet that issued this
+             * request.  In the case of trusted signals, it's possible that only some of
+             * them actually care about the keys being queried.
+             */
+            auctions: InterestGroupAuctionId[];
         }
 
         /**

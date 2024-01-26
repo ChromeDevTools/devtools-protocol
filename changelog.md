@@ -1,7 +1,59 @@
 
 
+## Roll protocol to r1252439 — _2024-01-26T04:26:56.000Z_
+######  Diff: [`45b7b51...f8f84dc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`45b7b51...f8f84dc`)
+
+```diff
+@@ browser_protocol.pdl:9546 @@ experimental domain Storage
+       started
+       configResolved
+ 
+-  # Enum of network fetches auctions can do.
+-  type InterestGroupAuctionFetchType extends string
+-    enum
+-      bidderJs
+-      bidderWasm
+-      sellerJs
+-      bidderTrustedSignals
+-      sellerTrustedSignals
+-
+   # Ad advertising element inside an interest group.
+   type InterestGroupAd extends object
+     properties
+@@ -9834,8 +9825,7 @@ experimental domain Storage
+     parameters
+       boolean enable
+ 
+-  # Enables/Disables issuing of interestGroupAuctionEventOccurred and
+-  # interestGroupAuctionNetworkRequestCreated.
++  # Enables/Disables issuing of interestGroupAuctionEvent events.
+   experimental command setInterestGroupAuctionTracking
+     parameters
+       boolean enable
+@@ -9976,19 +9966,6 @@ experimental domain Storage
+       # Set for started and configResolved
+       optional object auctionConfig
+ 
+-  # Specifies which auctions a particular network fetch may be related to, and
+-  # in what role. Note that it is not ordered with respect to
+-  # Network.requestWillBeSent (but will happen before loadingFinished
+-  # loadingFailed).
+-  event interestGroupAuctionNetworkRequestCreated
+-    parameters
+-      InterestGroupAuctionFetchType type
+-      Network.RequestId requestId
+-      # This is the set of the auctions using the worklet that issued this
+-      # request.  In the case of trusted signals, it's possible that only some of
+-      # them actually care about the keys being queried.
+-      array of InterestGroupAuctionId auctions
+-
+   # Shared storage was accessed by the associated page.
+   # The following parameters are included in all events.
+   event sharedStorageAccessed
+```
+
 ## Roll protocol to r1250650 — _2024-01-23T04:27:23.000Z_
-######  Diff: [`fbf4551...57a59b2`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fbf4551...57a59b2`)
+######  Diff: [`fbf4551...45b7b51`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fbf4551...45b7b51`)
 
 ```diff
 @@ browser_protocol.pdl:9546 @@ experimental domain Storage
@@ -10811,18 +10863,4 @@ index bd277eb..09c420e 100644
        magnetometer
        microphone
        midi
-```
-
-## Roll protocol to r931234 — _2021-10-13T21:15:26.000Z_
-######  Diff: [`76bd05b...8bbdba3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`76bd05b...8bbdba3`)
-
-```diff
-@@ browser_protocol.pdl:579 @@ experimental domain Audits
-       kURLViolation
-       kTrustedTypesSinkViolation
-       kTrustedTypesPolicyViolation
--      kWasmEvalViolation
- 
-   type SourceCodeLocation extends object
-     properties
 ```

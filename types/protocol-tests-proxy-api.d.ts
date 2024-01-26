@@ -3693,7 +3693,8 @@ export namespace ProtocolTestsProxyApi {
         setInterestGroupTracking(params: Protocol.Storage.SetInterestGroupTrackingRequest): Promise<void>;
 
         /**
-         * Enables/Disables issuing of interestGroupAuctionEvent events.
+         * Enables/Disables issuing of interestGroupAuctionEventOccurred and
+         * interestGroupAuctionNetworkRequestCreated.
          */
         setInterestGroupAuctionTracking(params: Protocol.Storage.SetInterestGroupAuctionTrackingRequest): Promise<void>;
 
@@ -3800,6 +3801,16 @@ export namespace ProtocolTestsProxyApi {
         onInterestGroupAuctionEventOccurred(listener: (event: { params: Protocol.Storage.InterestGroupAuctionEventOccurredEvent }) => void): void;
         offInterestGroupAuctionEventOccurred(listener: (event: { params: Protocol.Storage.InterestGroupAuctionEventOccurredEvent }) => void): void;
         onceInterestGroupAuctionEventOccurred(eventMatcher?: (event: { params: Protocol.Storage.InterestGroupAuctionEventOccurredEvent }) => boolean): Promise<{ params: Protocol.Storage.InterestGroupAuctionEventOccurredEvent }>;
+
+        /**
+         * Specifies which auctions a particular network fetch may be related to, and
+         * in what role. Note that it is not ordered with respect to
+         * Network.requestWillBeSent (but will happen before loadingFinished
+         * loadingFailed).
+         */
+        onInterestGroupAuctionNetworkRequestCreated(listener: (event: { params: Protocol.Storage.InterestGroupAuctionNetworkRequestCreatedEvent }) => void): void;
+        offInterestGroupAuctionNetworkRequestCreated(listener: (event: { params: Protocol.Storage.InterestGroupAuctionNetworkRequestCreatedEvent }) => void): void;
+        onceInterestGroupAuctionNetworkRequestCreated(eventMatcher?: (event: { params: Protocol.Storage.InterestGroupAuctionNetworkRequestCreatedEvent }) => boolean): Promise<{ params: Protocol.Storage.InterestGroupAuctionNetworkRequestCreatedEvent }>;
 
         /**
          * Shared storage was accessed by the associated page.

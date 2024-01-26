@@ -20240,6 +20240,18 @@
                     ]
                 },
                 {
+                    "id": "InterestGroupAuctionFetchType",
+                    "description": "Enum of network fetches auctions can do.",
+                    "type": "string",
+                    "enum": [
+                        "bidderJs",
+                        "bidderWasm",
+                        "sellerJs",
+                        "bidderTrustedSignals",
+                        "sellerTrustedSignals"
+                    ]
+                },
+                {
                     "id": "InterestGroupAd",
                     "description": "Ad advertising element inside an interest group.",
                     "type": "object",
@@ -21274,7 +21286,7 @@
                 },
                 {
                     "name": "setInterestGroupAuctionTracking",
-                    "description": "Enables/Disables issuing of interestGroupAuctionEvent events.",
+                    "description": "Enables/Disables issuing of interestGroupAuctionEventOccurred and\ninterestGroupAuctionNetworkRequestCreated.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -21629,6 +21641,28 @@
                             "description": "Set for started and configResolved",
                             "optional": true,
                             "type": "object"
+                        }
+                    ]
+                },
+                {
+                    "name": "interestGroupAuctionNetworkRequestCreated",
+                    "description": "Specifies which auctions a particular network fetch may be related to, and\nin what role. Note that it is not ordered with respect to\nNetwork.requestWillBeSent (but will happen before loadingFinished\nloadingFailed).",
+                    "parameters": [
+                        {
+                            "name": "type",
+                            "$ref": "InterestGroupAuctionFetchType"
+                        },
+                        {
+                            "name": "requestId",
+                            "$ref": "Network.RequestId"
+                        },
+                        {
+                            "name": "auctions",
+                            "description": "This is the set of the auctions using the worklet that issued this\nrequest.  In the case of trusted signals, it's possible that only some of\nthem actually care about the keys being queried.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "InterestGroupAuctionId"
+                            }
                         }
                     ]
                 },
