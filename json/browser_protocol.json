@@ -22722,7 +22722,6 @@
         },
         {
             "domain": "Tracing",
-            "experimental": true,
             "dependencies": [
                 "IO"
             ],
@@ -22730,6 +22729,7 @@
                 {
                     "id": "MemoryDumpConfig",
                     "description": "Configuration for memory dump. Used only when \"memory-infra\" category is enabled.",
+                    "experimental": true,
                     "type": "object"
                 },
                 {
@@ -22739,6 +22739,7 @@
                         {
                             "name": "recordMode",
                             "description": "Controls how the trace buffer stores data.",
+                            "experimental": true,
                             "optional": true,
                             "type": "string",
                             "enum": [
@@ -22751,24 +22752,28 @@
                         {
                             "name": "traceBufferSizeInKb",
                             "description": "Size of the trace buffer in kilobytes. If not specified or zero is passed, a default value\nof 200 MB would be used.",
+                            "experimental": true,
                             "optional": true,
                             "type": "number"
                         },
                         {
                             "name": "enableSampling",
                             "description": "Turns on JavaScript stack sampling.",
+                            "experimental": true,
                             "optional": true,
                             "type": "boolean"
                         },
                         {
                             "name": "enableSystrace",
                             "description": "Turns on system tracing.",
+                            "experimental": true,
                             "optional": true,
                             "type": "boolean"
                         },
                         {
                             "name": "enableArgumentFilter",
                             "description": "Turns on argument filter.",
+                            "experimental": true,
                             "optional": true,
                             "type": "boolean"
                         },
@@ -22793,6 +22798,7 @@
                         {
                             "name": "syntheticDelays",
                             "description": "Configuration to synthesize the delays in tracing.",
+                            "experimental": true,
                             "optional": true,
                             "type": "array",
                             "items": {
@@ -22802,6 +22808,7 @@
                         {
                             "name": "memoryDumpConfig",
                             "description": "Configuration for memory dump triggers. Used only when \"memory-infra\" category is enabled.",
+                            "experimental": true,
                             "optional": true,
                             "$ref": "MemoryDumpConfig"
                         }
@@ -22810,6 +22817,7 @@
                 {
                     "id": "StreamFormat",
                     "description": "Data format of a trace. Can be either the legacy JSON format or the\nprotocol buffer format. Note that the JSON format will be deprecated soon.",
+                    "experimental": true,
                     "type": "string",
                     "enum": [
                         "json",
@@ -22819,6 +22827,7 @@
                 {
                     "id": "StreamCompression",
                     "description": "Compression type to use for traces returned via streams.",
+                    "experimental": true,
                     "type": "string",
                     "enum": [
                         "none",
@@ -22828,6 +22837,7 @@
                 {
                     "id": "MemoryDumpLevelOfDetail",
                     "description": "Details exposed when memory request explicitly declared.\nKeep consistent with memory_dump_request_args.h and\nmemory_instrumentation.mojom",
+                    "experimental": true,
                     "type": "string",
                     "enum": [
                         "background",
@@ -22838,6 +22848,7 @@
                 {
                     "id": "TracingBackend",
                     "description": "Backend type to use for tracing. `chrome` uses the Chrome-integrated\ntracing service and is supported on all platforms. `system` is only\nsupported on Chrome OS and uses the Perfetto system tracing service.\n`auto` chooses `system` when the perfettoConfig provided to Tracing.start\nspecifies at least one non-Chrome data source; otherwise uses `chrome`.",
+                    "experimental": true,
                     "type": "string",
                     "enum": [
                         "auto",
@@ -22854,6 +22865,7 @@
                 {
                     "name": "getCategories",
                     "description": "Gets supported tracing categories.",
+                    "experimental": true,
                     "returns": [
                         {
                             "name": "categories",
@@ -22868,6 +22880,7 @@
                 {
                     "name": "recordClockSyncMarker",
                     "description": "Record a clock sync marker in the trace.",
+                    "experimental": true,
                     "parameters": [
                         {
                             "name": "syncId",
@@ -22879,6 +22892,7 @@
                 {
                     "name": "requestMemoryDump",
                     "description": "Request a global memory dump.",
+                    "experimental": true,
                     "parameters": [
                         {
                             "name": "deterministic",
@@ -22913,6 +22927,7 @@
                         {
                             "name": "categories",
                             "description": "Category/tag filter",
+                            "experimental": true,
                             "deprecated": true,
                             "optional": true,
                             "type": "string"
@@ -22920,6 +22935,7 @@
                         {
                             "name": "options",
                             "description": "Tracing options",
+                            "experimental": true,
                             "deprecated": true,
                             "optional": true,
                             "type": "string"
@@ -22927,6 +22943,7 @@
                         {
                             "name": "bufferUsageReportingInterval",
                             "description": "If set, the agent will issue bufferUsage events at this interval, specified in milliseconds",
+                            "experimental": true,
                             "optional": true,
                             "type": "number"
                         },
@@ -22949,6 +22966,7 @@
                         {
                             "name": "streamCompression",
                             "description": "Compression format to use. This only applies when using `ReturnAsStream`\ntransfer mode (defaults to `none`)",
+                            "experimental": true,
                             "optional": true,
                             "$ref": "StreamCompression"
                         },
@@ -22960,12 +22978,14 @@
                         {
                             "name": "perfettoConfig",
                             "description": "Base64-encoded serialized perfetto.protos.TraceConfig protobuf message\nWhen specified, the parameters `categories`, `options`, `traceConfig`\nare ignored. (Encoded as a base64 string when passed over JSON)",
+                            "experimental": true,
                             "optional": true,
                             "type": "string"
                         },
                         {
                             "name": "tracingBackend",
                             "description": "Backend type (defaults to `auto`)",
+                            "experimental": true,
                             "optional": true,
                             "$ref": "TracingBackend"
                         }
@@ -22975,6 +22995,7 @@
             "events": [
                 {
                     "name": "bufferUsage",
+                    "experimental": true,
                     "parameters": [
                         {
                             "name": "percentFull",
@@ -22999,6 +23020,7 @@
                 {
                     "name": "dataCollected",
                     "description": "Contains a bucket of collected trace events. When tracing is stopped collected events will be\nsent as a sequence of dataCollected events followed by tracingComplete event.",
+                    "experimental": true,
                     "parameters": [
                         {
                             "name": "value",

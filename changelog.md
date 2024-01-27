@@ -1,7 +1,157 @@
 
 
+## Roll protocol to r1253004 — _2024-01-27T04:25:19.000Z_
+######  Diff: [`b402173...4d0afd5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b402173...4d0afd5`)
+
+```diff
+@@ browser_protocol.pdl:10649 @@ experimental domain Tethering
+       # Connection id to be used.
+       string connectionId
+ 
+-domain Tracing
++experimental domain Tracing
+   depends on IO
+ 
+   # Configuration for memory dump. Used only when "memory-infra" category is enabled.
+-  experimental type MemoryDumpConfig extends object
++  type MemoryDumpConfig extends object
+ 
+   type TraceConfig extends object
+     properties
+       # Controls how the trace buffer stores data.
+-      experimental optional enum recordMode
++      optional enum recordMode
+         recordUntilFull
+         recordContinuously
+         recordAsMuchAsPossible
+         echoToConsole
+       # Size of the trace buffer in kilobytes. If not specified or zero is passed, a default value
+       # of 200 MB would be used.
+-      experimental optional number traceBufferSizeInKb
++      optional number traceBufferSizeInKb
+       # Turns on JavaScript stack sampling.
+-      experimental optional boolean enableSampling
++      optional boolean enableSampling
+       # Turns on system tracing.
+-      experimental optional boolean enableSystrace
++      optional boolean enableSystrace
+       # Turns on argument filter.
+-      experimental optional boolean enableArgumentFilter
++      optional boolean enableArgumentFilter
+       # Included category filters.
+       optional array of string includedCategories
+       # Excluded category filters.
+       optional array of string excludedCategories
+       # Configuration to synthesize the delays in tracing.
+-      experimental optional array of string syntheticDelays
++      optional array of string syntheticDelays
+       # Configuration for memory dump triggers. Used only when "memory-infra" category is enabled.
+-      experimental optional MemoryDumpConfig memoryDumpConfig
++      optional MemoryDumpConfig memoryDumpConfig
+ 
+   # Data format of a trace. Can be either the legacy JSON format or the
+   # protocol buffer format. Note that the JSON format will be deprecated soon.
+-  experimental type StreamFormat extends string
++  type StreamFormat extends string
+     enum
+       json
+       proto
+ 
+   # Compression type to use for traces returned via streams.
+-  experimental type StreamCompression extends string
++  type StreamCompression extends string
+     enum
+       none
+       gzip
+@@ -10697,7 +10697,7 @@ domain Tracing
+   # Details exposed when memory request explicitly declared.
+   # Keep consistent with memory_dump_request_args.h and
+   # memory_instrumentation.mojom
+-  experimental type MemoryDumpLevelOfDetail extends string
++  type MemoryDumpLevelOfDetail extends string
+     enum
+       background
+       light
+@@ -10708,7 +10708,7 @@ domain Tracing
+   # supported on Chrome OS and uses the Perfetto system tracing service.
+   # `auto` chooses `system` when the perfettoConfig provided to Tracing.start
+   # specifies at least one non-Chrome data source; otherwise uses `chrome`.
+-  experimental type TracingBackend extends string
++  type TracingBackend extends string
+     enum
+       auto
+       chrome
+@@ -10718,19 +10718,19 @@ domain Tracing
+   command end
+ 
+   # Gets supported tracing categories.
+-  experimental command getCategories
++  command getCategories
+     returns
+       # A list of supported tracing categories.
+       array of string categories
+ 
+   # Record a clock sync marker in the trace.
+-  experimental command recordClockSyncMarker
++  command recordClockSyncMarker
+     parameters
+       # The ID of this clock sync marker
+       string syncId
+ 
+   # Request a global memory dump.
+-  experimental command requestMemoryDump
++  command requestMemoryDump
+     parameters
+       # Enables more deterministic results by forcing garbage collection
+       optional boolean deterministic
+@@ -10746,11 +10746,11 @@ domain Tracing
+   command start
+     parameters
+       # Category/tag filter
+-      experimental deprecated optional string categories
++      deprecated optional string categories
+       # Tracing options
+-      experimental deprecated optional string options
++      deprecated optional string options
+       # If set, the agent will issue bufferUsage events at this interval, specified in milliseconds
+-      experimental optional number bufferUsageReportingInterval
++      optional number bufferUsageReportingInterval
+       # Whether to report trace events as series of dataCollected events or to save trace to a
+       # stream (defaults to `ReportEvents`).
+       optional enum transferMode
+@@ -10761,16 +10761,16 @@ domain Tracing
+       optional StreamFormat streamFormat
+       # Compression format to use. This only applies when using `ReturnAsStream`
+       # transfer mode (defaults to `none`)
+-      experimental optional StreamCompression streamCompression
++      optional StreamCompression streamCompression
+       optional TraceConfig traceConfig
+       # Base64-encoded serialized perfetto.protos.TraceConfig protobuf message
+       # When specified, the parameters `categories`, `options`, `traceConfig`
+       # are ignored.
+-      experimental optional binary perfettoConfig
++      optional binary perfettoConfig
+       # Backend type (defaults to `auto`)
+-      experimental optional TracingBackend tracingBackend
++      optional TracingBackend tracingBackend
+ 
+-  experimental event bufferUsage
++  event bufferUsage
+     parameters
+       # A number in range [0..1] that indicates the used size of event buffer as a fraction of its
+       # total size.
+@@ -10783,7 +10783,7 @@ domain Tracing
+ 
+   # Contains a bucket of collected trace events. When tracing is stopped collected events will be
+   # sent as a sequence of dataCollected events followed by tracingComplete event.
+-  experimental event dataCollected
++  event dataCollected
+     parameters
+       array of object value
+```
+
 ## Roll protocol to r1252439 — _2024-01-26T04:26:56.000Z_
-######  Diff: [`45b7b51...f8f84dc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`45b7b51...f8f84dc`)
+######  Diff: [`45b7b51...b402173`](https://github.com/ChromeDevTools/devtools-protocol/compare/`45b7b51...b402173`)
 
 ```diff
 @@ browser_protocol.pdl:9546 @@ experimental domain Storage
@@ -10849,18 +10999,4 @@ index bd277eb..09c420e 100644
        # Whether BeginFrames for this target will be controlled via DevTools (headless chrome only,
        # not supported on MacOS yet, false by default).
        experimental optional boolean enableBeginFrameControl
-```
-
-## Roll protocol to r931360 — _2021-10-14T03:15:26.000Z_
-######  Diff: [`8bbdba3...5095a49`](https://github.com/ChromeDevTools/devtools-protocol/compare/`8bbdba3...5095a49`)
-
-```diff
-@@ browser_protocol.pdl:6720 @@ domain Page
-       hid
-       idle-detection
-       interest-cohort
--      keyboard-map
-       magnetometer
-       microphone
-       midi
 ```
