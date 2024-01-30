@@ -10593,6 +10593,11 @@ export namespace Protocol {
         export type CookieBlockedReason = ('SecureOnly' | 'NotOnPath' | 'DomainMismatch' | 'SameSiteStrict' | 'SameSiteLax' | 'SameSiteUnspecifiedTreatedAsLax' | 'SameSiteNoneInsecure' | 'UserPreferences' | 'ThirdPartyPhaseout' | 'ThirdPartyBlockedInFirstPartySet' | 'UnknownError' | 'SchemefulSameSiteStrict' | 'SchemefulSameSiteLax' | 'SchemefulSameSiteUnspecifiedTreatedAsLax' | 'SamePartyFromCrossPartyContext' | 'NameValuePairExceedsMaxSize');
 
         /**
+         * Types of reasons why a cookie should have been blocked by 3PCD but is exempted for the request.
+         */
+        export type CookieExemptionReason = ('None' | 'UserSetting' | 'TPCDMetadata' | 'TPCDDeprecationTrial' | 'TPCDHeuristics' | 'EnterprisePolicy' | 'StorageAccess' | 'TopLevelStorageAccess' | 'BrowserHeuristics');
+
+        /**
          * A cookie which was not stored from a response with the corresponding reason.
          */
         export interface BlockedSetCookieWithReason {
@@ -10614,17 +10619,38 @@ export namespace Protocol {
         }
 
         /**
-         * A cookie with was not sent with a request with the corresponding reason.
+         * A cookie should have been blocked by 3PCD but is exempted and stored from a response with the
+         * corresponding reason. A cookie could only have at most one exemption reason.
          */
-        export interface BlockedCookieWithReason {
+        export interface ExemptedSetCookieWithReason {
             /**
-             * The reason(s) the cookie was blocked.
+             * The reason the cookie was exempted.
              */
-            blockedReasons: CookieBlockedReason[];
+            exemptionReason: CookieExemptionReason;
+            /**
+             * The cookie object representing the cookie.
+             */
+            cookie: Cookie;
+        }
+
+        /**
+         * A cookie associated with the request which may or may not be sent with it.
+         * Includes the cookies itself and reasons for blocking or exemption.
+         */
+        export interface AssociatedCookie {
             /**
              * The cookie object representing the cookie which was not sent.
              */
             cookie: Cookie;
+            /**
+             * The reason(s) the cookie was blocked. If empty means the cookie is included.
+             */
+            blockedReasons: CookieBlockedReason[];
+            /**
+             * The reason the cookie should have been blocked by 3PCD but is exempted. A cookie could
+             * only have at most one exemption reason.
+             */
+            exemptionReason?: CookieExemptionReason;
         }
 
         /**
@@ -11954,9 +11980,9 @@ export namespace Protocol {
             requestId: RequestId;
             /**
              * A list of cookies potentially associated to the requested URL. This includes both cookies sent with
-             * the request and the ones not sent; the latter are distinguished by having blockedReason field set.
+             * the request and the ones not sent; the latter are distinguished by having blockedReasons field set.
              */
-            associatedCookies: BlockedCookieWithReason[];
+            associatedCookies: AssociatedCookie[];
             /**
              * Raw request headers as they will be sent over the wire.
              */
@@ -12020,6 +12046,11 @@ export namespace Protocol {
              * True if partitioned cookies are enabled, but the partition key is not serializeable to string.
              */
             cookiePartitionKeyOpaque?: boolean;
+            /**
+             * A list of cookies which should have been blocked by 3PCD but are exempted and stored from
+             * the response with the corresponding reason.
+             */
+            exemptedCookies?: ExemptedSetCookieWithReason[];
         }
 
         export const enum TrustTokenOperationDoneEventStatus {

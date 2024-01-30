@@ -12771,6 +12771,23 @@
                     ]
                 },
                 {
+                    "id": "CookieExemptionReason",
+                    "description": "Types of reasons why a cookie should have been blocked by 3PCD but is exempted for the request.",
+                    "experimental": true,
+                    "type": "string",
+                    "enum": [
+                        "None",
+                        "UserSetting",
+                        "TPCDMetadata",
+                        "TPCDDeprecationTrial",
+                        "TPCDHeuristics",
+                        "EnterprisePolicy",
+                        "StorageAccess",
+                        "TopLevelStorageAccess",
+                        "BrowserHeuristics"
+                    ]
+                },
+                {
                     "id": "BlockedSetCookieWithReason",
                     "description": "A cookie which was not stored from a response with the corresponding reason.",
                     "experimental": true,
@@ -12798,23 +12815,47 @@
                     ]
                 },
                 {
-                    "id": "BlockedCookieWithReason",
-                    "description": "A cookie with was not sent with a request with the corresponding reason.",
+                    "id": "ExemptedSetCookieWithReason",
+                    "description": "A cookie should have been blocked by 3PCD but is exempted and stored from a response with the\ncorresponding reason. A cookie could only have at most one exemption reason.",
                     "experimental": true,
                     "type": "object",
                     "properties": [
                         {
+                            "name": "exemptionReason",
+                            "description": "The reason the cookie was exempted.",
+                            "$ref": "CookieExemptionReason"
+                        },
+                        {
+                            "name": "cookie",
+                            "description": "The cookie object representing the cookie.",
+                            "$ref": "Cookie"
+                        }
+                    ]
+                },
+                {
+                    "id": "AssociatedCookie",
+                    "description": "A cookie associated with the request which may or may not be sent with it.\nIncludes the cookies itself and reasons for blocking or exemption.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "cookie",
+                            "description": "The cookie object representing the cookie which was not sent.",
+                            "$ref": "Cookie"
+                        },
+                        {
                             "name": "blockedReasons",
-                            "description": "The reason(s) the cookie was blocked.",
+                            "description": "The reason(s) the cookie was blocked. If empty means the cookie is included.",
                             "type": "array",
                             "items": {
                                 "$ref": "CookieBlockedReason"
                             }
                         },
                         {
-                            "name": "cookie",
-                            "description": "The cookie object representing the cookie which was not sent.",
-                            "$ref": "Cookie"
+                            "name": "exemptionReason",
+                            "description": "The reason the cookie should have been blocked by 3PCD but is exempted. A cookie could\nonly have at most one exemption reason.",
+                            "optional": true,
+                            "$ref": "CookieExemptionReason"
                         }
                     ]
                 },
@@ -14805,10 +14846,10 @@
                         },
                         {
                             "name": "associatedCookies",
-                            "description": "A list of cookies potentially associated to the requested URL. This includes both cookies sent with\nthe request and the ones not sent; the latter are distinguished by having blockedReason field set.",
+                            "description": "A list of cookies potentially associated to the requested URL. This includes both cookies sent with\nthe request and the ones not sent; the latter are distinguished by having blockedReasons field set.",
                             "type": "array",
                             "items": {
-                                "$ref": "BlockedCookieWithReason"
+                                "$ref": "AssociatedCookie"
                             }
                         },
                         {
@@ -14886,6 +14927,15 @@
                             "description": "True if partitioned cookies are enabled, but the partition key is not serializeable to string.",
                             "optional": true,
                             "type": "boolean"
+                        },
+                        {
+                            "name": "exemptedCookies",
+                            "description": "A list of cookies which should have been blocked by 3PCD but are exempted and stored from\nthe response with the corresponding reason.",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "ExemptedSetCookieWithReason"
+                            }
                         }
                     ]
                 },

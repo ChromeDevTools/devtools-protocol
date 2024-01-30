@@ -1,7 +1,94 @@
 
 
+## Roll protocol to r1253724 — _2024-01-30T04:25:31.000Z_
+######  Diff: [`fcda9c0...896638e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fcda9c0...896638e`)
+
+```diff
+@@ browser_protocol.pdl:5991 @@ domain Network
+       # RFC6265bis.
+       NameValuePairExceedsMaxSize
+ 
+-  # Types of reasons why a cookie should have been blocked by 3PCD but is exempted for the request.
+-  experimental type CookieExemptionReason extends string
+-    enum
+-      # The default value. Cookie with this reason could either be blocked or included.
+-      None
+-      # The cookie should have been blocked by 3PCD but is exempted by explicit user setting.
+-      UserSetting
+-      # The cookie should have been blocked by 3PCD but is exempted by metadata mitigation.
+-      TPCDMetadata
+-      # The cookie should have been blocked by 3PCD but is exempted by Deprecation Trial mitigation.
+-      TPCDDeprecationTrial
+-      # The cookie should have been blocked by 3PCD but is exempted by heuristics mitigation.
+-      TPCDHeuristics
+-      # The cookie should have been blocked by 3PCD but is exempted by Enterprise Policy.
+-      EnterprisePolicy
+-      # The cookie should have been blocked by 3PCD but is exempted by Storage Access API.
+-      StorageAccess
+-      # The cookie should have been blocked by 3PCD but is exempted by Top-level Storage Access API.
+-      TopLevelStorageAccess
+-      # The cookie should have been blocked by 3PCD but is exempted by browser heuristics.
+-      BrowserHeuristics
+-
+   # A cookie which was not stored from a response with the corresponding reason.
+   experimental type BlockedSetCookieWithReason extends object
+     properties
+@@ -6026,26 +6004,13 @@ domain Network
+       # errors.
+       optional Cookie cookie
+ 
+-  # A cookie should have been blocked by 3PCD but is exempted and stored from a response with the
+-  # corresponding reason. A cookie could only have at most one exemption reason.
+-  experimental type ExemptedSetCookieWithReason extends object
+-    properties
+-      # The reason the cookie was exempted.
+-      CookieExemptionReason exemptionReason
+-      # The cookie object representing the cookie.
+-      Cookie cookie
+-
+-  # A cookie associated with the request which may or may not be sent with it.
+-  # Includes the cookies itself and reasons for blocking or exemption.
+-  experimental type AssociatedCookie extends object
++  # A cookie with was not sent with a request with the corresponding reason.
++  experimental type BlockedCookieWithReason extends object
+     properties
++      # The reason(s) the cookie was blocked.
++      array of CookieBlockedReason blockedReasons
+       # The cookie object representing the cookie which was not sent.
+       Cookie cookie
+-      # The reason(s) the cookie was blocked. If empty means the cookie is included.
+-      array of CookieBlockedReason blockedReasons
+-      # The reason the cookie should have been blocked by 3PCD but is exempted. A cookie could
+-      # only have at most one exemption reason.
+-      optional CookieExemptionReason exemptionReason
+ 
+   # Cookie parameter object
+   type CookieParam extends object
+@@ -6814,8 +6779,8 @@ domain Network
+       # Request identifier. Used to match this information to an existing requestWillBeSent event.
+       RequestId requestId
+       # A list of cookies potentially associated to the requested URL. This includes both cookies sent with
+-      # the request and the ones not sent; the latter are distinguished by having blockedReasons field set.
+-      array of AssociatedCookie associatedCookies
++      # the request and the ones not sent; the latter are distinguished by having blockedReason field set.
++      array of BlockedCookieWithReason associatedCookies
+       # Raw request headers as they will be sent over the wire.
+       Headers headers
+       # Connection timing information for the request.
+@@ -6853,9 +6818,6 @@ domain Network
+       optional string cookiePartitionKey
+       # True if partitioned cookies are enabled, but the partition key is not serializeable to string.
+       optional boolean cookiePartitionKeyOpaque
+-      # A list of cookies which should have been blocked by 3PCD but are exempted and stored from
+-      # the response with the corresponding reason.
+-      optional array of ExemptedSetCookieWithReason exemptedCookies
+ 
+   # Fired exactly once for each Trust Token operation. Depending on
+   # the type of the operation and whether the operation succeeded or
+```
+
 ## Roll protocol to r1253004 — _2024-01-27T04:25:19.000Z_
-######  Diff: [`b402173...4d0afd5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b402173...4d0afd5`)
+######  Diff: [`b402173...fcda9c0`](https://github.com/ChromeDevTools/devtools-protocol/compare/`b402173...fcda9c0`)
 
 ```diff
 @@ browser_protocol.pdl:10649 @@ experimental domain Tethering
@@ -10984,19 +11071,4 @@ index bd277eb..09c420e 100644
  
        # See components/back_forward_cache/back_forward_cache_disable.h for explanations.
        EmbedderPopupBlockerTabHelper
-```
-
-## Roll protocol to r931720 — _2021-10-14T22:15:25.000Z_
-######  Diff: [`5095a49...204c97a`](https://github.com/ChromeDevTools/devtools-protocol/compare/`5095a49...204c97a`)
-
-```diff
-@@ browser_protocol.pdl:8829 @@ domain Target
-       # Frame height in DIP (headless chrome only).
-       optional integer height
-       # The browser context to create the page in.
--      experimental optional Browser.BrowserContextID browserContextId
-+      optional Browser.BrowserContextID browserContextId
-       # Whether BeginFrames for this target will be controlled via DevTools (headless chrome only,
-       # not supported on MacOS yet, false by default).
-       experimental optional boolean enableBeginFrameControl
 ```
