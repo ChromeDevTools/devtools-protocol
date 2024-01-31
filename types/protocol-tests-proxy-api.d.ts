@@ -2417,7 +2417,7 @@ export namespace ProtocolTestsProxyApi {
         continueInterceptedRequest(params: Protocol.Network.ContinueInterceptedRequestRequest): Promise<void>;
 
         /**
-         * Deletes browser cookies with matching name and url or domain/path pair.
+         * Deletes browser cookies with matching name and url or domain/path/partitionKey pair.
          */
         deleteCookies(params: Protocol.Network.DeleteCookiesRequest): Promise<void>;
 

@@ -1,7 +1,32 @@
 
 
+## Roll protocol to r1254350 — _2024-01-31T04:26:07.000Z_
+######  Diff: [`97a9147...ea7de74`](https://github.com/ChromeDevTools/devtools-protocol/compare/`97a9147...ea7de74`)
+
+```diff
+@@ browser_protocol.pdl:6273 @@ domain Network
+       # Response to a requestIntercepted with an authChallenge. Must not be set otherwise.
+       optional AuthChallengeResponse authChallengeResponse
+ 
+-  # Deletes browser cookies with matching name and url or domain/path/partitionKey pair.
++  # Deletes browser cookies with matching name and url or domain/path pair.
+   command deleteCookies
+     parameters
+       # Name of the cookies to remove.
+@@ -6285,9 +6285,6 @@ domain Network
+       optional string domain
+       # If specified, deletes only cookies with the exact path.
+       optional string path
+-      # If specified, deletes only cookies with the the given name and partitionKey where domain
+-      # matches provided URL.
+-      optional string partitionKey
+ 
+   # Disables network tracking, prevents network events from being sent to the client.
+   command disable
+```
+
 ## Roll protocol to r1253724 — _2024-01-30T04:25:31.000Z_
-######  Diff: [`fcda9c0...896638e`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fcda9c0...896638e`)
+######  Diff: [`fcda9c0...97a9147`](https://github.com/ChromeDevTools/devtools-protocol/compare/`fcda9c0...97a9147`)
 
 ```diff
 @@ browser_protocol.pdl:5991 @@ domain Network
@@ -11057,18 +11082,4 @@ index bd277eb..09c420e 100644
 -      experimental boolean hasExtraInfo
        # Frame identifier.
        optional Page.FrameId frameId
-```
-
-## Roll protocol to r932485 — _2021-10-18T12:15:24.000Z_
-######  Diff: [`204c97a...ed35fe7`](https://github.com/ChromeDevTools/devtools-protocol/compare/`204c97a...ed35fe7`)
-
-```diff
-@@ browser_protocol.pdl:7907 @@ domain Page
-       ContentWebUSB
-       ContentMediaSession
-       ContentMediaSessionService
-+      ContentMediaPlay
- 
-       # See components/back_forward_cache/back_forward_cache_disable.h for explanations.
-       EmbedderPopupBlockerTabHelper
 ```

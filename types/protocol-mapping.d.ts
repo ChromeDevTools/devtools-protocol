@@ -3200,7 +3200,7 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
-         * Deletes browser cookies with matching name and url or domain/path pair.
+         * Deletes browser cookies with matching name and url or domain/path/partitionKey pair.
          */
         'Network.deleteCookies': {
             paramsType: [Protocol.Network.DeleteCookiesRequest];
