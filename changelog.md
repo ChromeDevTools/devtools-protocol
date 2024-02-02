@@ -1,7 +1,24 @@
 
 
+## Roll protocol to r1255431 — _2024-02-02T04:26:50.000Z_
+######  Diff: [`0abedd4...454b8fc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0abedd4...454b8fc`)
+
+```diff
+@@ browser_protocol.pdl:6010 @@ domain Network
+       StorageAccess
+       # The cookie should have been blocked by 3PCD but is exempted by Top-level Storage Access API.
+       TopLevelStorageAccess
+-      # The cookie should have been blocked by 3PCD but is exempted by CORS opt-in.
+-      CorsOptIn
++      # The cookie should have been blocked by 3PCD but is exempted by browser heuristics.
++      BrowserHeuristics
+ 
+   # A cookie which was not stored from a response with the corresponding reason.
+   experimental type BlockedSetCookieWithReason extends object
+```
+
 ## Roll protocol to r1254350 — _2024-01-31T04:26:07.000Z_
-######  Diff: [`97a9147...ea7de74`](https://github.com/ChromeDevTools/devtools-protocol/compare/`97a9147...ea7de74`)
+######  Diff: [`97a9147...0abedd4`](https://github.com/ChromeDevTools/devtools-protocol/compare/`97a9147...0abedd4`)
 
 ```diff
 @@ browser_protocol.pdl:6273 @@ domain Network
@@ -11056,30 +11073,4 @@ index bd277eb..09c420e 100644
  
    # A unique id for a DevTools inspector issue. Allows other entities (e.g.
    # exceptions, CDP message, console messages, etc.) to reference an issue.
-```
-
-## Roll protocol to r933220 — _2021-10-19T23:15:31.000Z_
-######  Diff: [`ed35fe7...df7c5a3`](https://github.com/ChromeDevTools/devtools-protocol/compare/`ed35fe7...df7c5a3`)
-
-```diff
-@@ browser_protocol.pdl:5729 @@ domain Network
-       TimeSinceEpoch wallTime
-       # Request initiator.
-       Initiator initiator
--      # In the case that redirectResponse is populated, this flag indicates whether
--      # requestWillBeSentExtraInfo and responseReceivedExtraInfo events will be or were emitted
--      # for the request which was just redirected.
--      experimental boolean redirectHasExtraInfo
-       # Redirect response data.
-       optional Response redirectResponse
-       # Type of this resource.
-@@ -5773,9 +5769,6 @@ domain Network
-       ResourceType type
-       # Response data.
-       Response response
--      # Indicates whether requestWillBeSentExtraInfo and responseReceivedExtraInfo events will be
--      # or were emitted for this request.
--      experimental boolean hasExtraInfo
-       # Frame identifier.
-       optional Page.FrameId frameId
 ```
