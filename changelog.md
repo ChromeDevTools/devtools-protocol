@@ -1,7 +1,73 @@
 
 
+## Roll protocol to r1258865 — _2024-02-10T04:26:45.000Z_
+######  Diff: [`726f72d...a8a6986`](https://github.com/ChromeDevTools/devtools-protocol/compare/`726f72d...a8a6986`)
+
+```diff
+@@ browser_protocol.pdl:309 @@ experimental domain Animation
+       # `Animation`'s playback rate.
+       number playbackRate
+       # `Animation`'s start time.
+-      # Milliseconds for time based animations and
+-      # percentage [0 - 100] for scroll driven animations
+-      # (i.e. when viewOrScrollTimeline exists).
+       number startTime
+       # `Animation`'s current time.
+       number currentTime
+@@ -325,26 +322,6 @@ experimental domain Animation
+       # A unique ID for `Animation` representing the sources that triggered this CSS
+       # animation/transition.
+       optional string cssId
+-      # View or scroll timeline
+-      optional ViewOrScrollTimeline viewOrScrollTimeline
+-
+-  # Timeline instance
+-  type ViewOrScrollTimeline extends object
+-    properties
+-      # Scroll container node
+-      optional DOM.BackendNodeId sourceNodeId
+-      # Represents the starting scroll position of the timeline
+-      # as a length offset in pixels from scroll origin.
+-      optional number startOffset
+-      # Represents the ending scroll position of the timeline
+-      # as a length offset in pixels from scroll origin.
+-      optional number endOffset
+-      # The element whose principal box's visibility in the
+-      # scrollport defined the progress of the timeline.
+-      # Does not exist for animations with ScrollTimeline
+-      optional DOM.BackendNodeId subjectNodeId
+-      # Orientation of the scroll
+-      DOM.ScrollOrientation axis
+ 
+   # AnimationEffect instance
+   type AnimationEffect extends object
+@@ -358,9 +335,6 @@ experimental domain Animation
+       # `AnimationEffect`'s iterations.
+       number iterations
+       # `AnimationEffect`'s iteration duration.
+-      # Milliseconds for time based animations and
+-      # percentage [0 - 100] for scroll driven animations
+-      # (i.e. when viewOrScrollTimeline exists).
+       number duration
+       # `AnimationEffect`'s playback direction.
+       string direction
+@@ -2585,12 +2559,6 @@ domain DOM
+       Block
+       Both
+ 
+-  # Physical scroll orientation
+-  type ScrollOrientation extends string
+-    enum
+-      horizontal
+-      vertical
+-
+   # DOM interaction is implemented in terms of mirror objects that represent the actual DOM nodes.
+   # DOMNode is a base node mirror type.
+   type Node extends object
+```
+
 ## Roll protocol to r1255431 — _2024-02-02T04:26:50.000Z_
-######  Diff: [`0abedd4...454b8fc`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0abedd4...454b8fc`)
+######  Diff: [`0abedd4...726f72d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`0abedd4...726f72d`)
 
 ```diff
 @@ browser_protocol.pdl:6010 @@ domain Network

@@ -3010,6 +3010,9 @@ export namespace Protocol {
             playbackRate: number;
             /**
              * `Animation`'s start time.
+             * Milliseconds for time based animations and
+             * percentage [0 - 100] for scroll driven animations
+             * (i.e. when viewOrScrollTimeline exists).
              */
             startTime: number;
             /**
@@ -3029,6 +3032,40 @@ export namespace Protocol {
              * animation/transition.
              */
             cssId?: string;
+            /**
+             * View or scroll timeline
+             */
+            viewOrScrollTimeline?: ViewOrScrollTimeline;
+        }
+
+        /**
+         * Timeline instance
+         */
+        export interface ViewOrScrollTimeline {
+            /**
+             * Scroll container node
+             */
+            sourceNodeId?: DOM.BackendNodeId;
+            /**
+             * Represents the starting scroll position of the timeline
+             * as a length offset in pixels from scroll origin.
+             */
+            startOffset?: number;
+            /**
+             * Represents the ending scroll position of the timeline
+             * as a length offset in pixels from scroll origin.
+             */
+            endOffset?: number;
+            /**
+             * The element whose principal box's visibility in the
+             * scrollport defined the progress of the timeline.
+             * Does not exist for animations with ScrollTimeline
+             */
+            subjectNodeId?: DOM.BackendNodeId;
+            /**
+             * Orientation of the scroll
+             */
+            axis: DOM.ScrollOrientation;
         }
 
         /**
@@ -3053,6 +3090,9 @@ export namespace Protocol {
             iterations: number;
             /**
              * `AnimationEffect`'s iteration duration.
+             * Milliseconds for time based animations and
+             * percentage [0 - 100] for scroll driven animations
+             * (i.e. when viewOrScrollTimeline exists).
              */
             duration: number;
             /**
@@ -5857,6 +5897,11 @@ export namespace Protocol {
          * ContainerSelector logical axes
          */
         export type LogicalAxes = ('Inline' | 'Block' | 'Both');
+
+        /**
+         * Physical scroll orientation
+         */
+        export type ScrollOrientation = ('horizontal' | 'vertical');
 
         /**
          * DOM interaction is implemented in terms of mirror objects that represent the actual DOM nodes.
