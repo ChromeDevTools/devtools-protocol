@@ -20488,15 +20488,23 @@
                     "properties": [
                         {
                             "name": "creationTime",
+                            "description": "Time when the origin's shared storage was last created.",
                             "$ref": "Network.TimeSinceEpoch"
                         },
                         {
                             "name": "length",
+                            "description": "Number of key-value pairs stored in origin's shared storage.",
                             "type": "integer"
                         },
                         {
                             "name": "remainingBudget",
+                            "description": "Current amount of bits of entropy remaining in the navigation budget.",
                             "type": "number"
+                        },
+                        {
+                            "name": "bytesUsed",
+                            "description": "Total number of bytes stored as key-value pairs in origin's shared\nstorage.",
+                            "type": "integer"
                         }
                     ]
                 },

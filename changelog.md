@@ -1,7 +1,29 @@
 
 
+## Roll protocol to r1259648 — _2024-02-13T04:25:35.000Z_
+######  Diff: [`76bf820...a5ef5f6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`76bf820...a5ef5f6`)
+
+```diff
+@@ browser_protocol.pdl:9679 @@ experimental domain Storage
+   # Details for an origin's shared storage.
+   type SharedStorageMetadata extends object
+     properties
+-      # Time when the origin's shared storage was last created.
+       Network.TimeSinceEpoch creationTime
+-      # Number of key-value pairs stored in origin's shared storage.
+       integer length
+-      # Current amount of bits of entropy remaining in the navigation budget.
+       number remainingBudget
+-      # Total number of bytes stored as key-value pairs in origin's shared
+-      # storage.
+-      integer bytesUsed
+ 
+   # Pair of reporting metadata details for a candidate URL for `selectURL()`.
+   type SharedStorageReportingMetadata extends object
+```
+
 ## Roll protocol to r1258865 — _2024-02-10T04:26:45.000Z_
-######  Diff: [`726f72d...a8a6986`](https://github.com/ChromeDevTools/devtools-protocol/compare/`726f72d...a8a6986`)
+######  Diff: [`726f72d...76bf820`](https://github.com/ChromeDevTools/devtools-protocol/compare/`726f72d...76bf820`)
 
 ```diff
 @@ browser_protocol.pdl:309 @@ experimental domain Animation

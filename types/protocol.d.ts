@@ -15360,9 +15360,23 @@ export namespace Protocol {
          * Details for an origin's shared storage.
          */
         export interface SharedStorageMetadata {
+            /**
+             * Time when the origin's shared storage was last created.
+             */
             creationTime: Network.TimeSinceEpoch;
+            /**
+             * Number of key-value pairs stored in origin's shared storage.
+             */
             length: integer;
+            /**
+             * Current amount of bits of entropy remaining in the navigation budget.
+             */
             remainingBudget: number;
+            /**
+             * Total number of bytes stored as key-value pairs in origin's shared
+             * storage.
+             */
+            bytesUsed: integer;
         }
 
         /**
