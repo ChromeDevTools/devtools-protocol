@@ -1,7 +1,44 @@
 
 
+## Roll protocol to r1260275 — _2024-02-14T04:26:03.000Z_
+######  Diff: [`2b2d990...9a00100`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2b2d990...9a00100`)
+
+```diff
+@@ browser_protocol.pdl:11410 @@ experimental domain WebAuthn
+       # The large blob associated with the credential.
+       # See https://w3c.github.io/webauthn/#sctn-large-blob-extension
+       optional binary largeBlob
+-      # Assertions returned by this credential will have the backup eligibility
+-      # (BE) flag set to this value. Defaults to the authenticator's
+-      # defaultBackupEligibility value.
+-      optional boolean backupEligibility
+-      # Assertions returned by this credential will have the backup state (BS)
+-      # flag set to this value. Defaults to the authenticator's
+-      # defaultBackupState value.
+-      optional boolean backupState
+ 
+   # Enable the WebAuthn domain and start intercepting credential storage and
+   # retrieval with a virtual authenticator.
+@@ -11506,15 +11498,6 @@ experimental domain WebAuthn
+       AuthenticatorId authenticatorId
+       boolean enabled
+ 
+-  # Allows setting credential properties.
+-  # https://w3c.github.io/webauthn/#sctn-automation-set-credential-properties
+-  command setCredentialProperties
+-    parameters
+-      AuthenticatorId authenticatorId
+-      binary credentialId
+-      optional boolean backupEligibility
+-      optional boolean backupState
+-
+   # Triggered when a credential is added to an authenticator.
+   event credentialAdded
+     parameters
+```
+
 ## Roll protocol to r1259648 — _2024-02-13T04:25:35.000Z_
-######  Diff: [`76bf820...a5ef5f6`](https://github.com/ChromeDevTools/devtools-protocol/compare/`76bf820...a5ef5f6`)
+######  Diff: [`76bf820...2b2d990`](https://github.com/ChromeDevTools/devtools-protocol/compare/`76bf820...2b2d990`)
 
 ```diff
 @@ browser_protocol.pdl:9679 @@ experimental domain Storage
@@ -11116,49 +11153,4 @@ index bd277eb..09c420e 100644
  # This domain facilitates obtaining document snapshots with DOM, layout, and style information.
  experimental domain DOMSnapshot
    depends on CSS
-```
-
-## Roll protocol to r937044 — _2021-11-01T21:15:26.000Z_
-######  Diff: [`bc8fa61...3a36442`](https://github.com/ChromeDevTools/devtools-protocol/compare/`bc8fa61...3a36442`)
-
-```diff
-@@ browser_protocol.pdl:709 @@ experimental domain Audits
-       GenericIssueErrorType errorType
-       optional Page.FrameId frameId
- 
--  # This issue tracks information needed to print a deprecation message.
--  # The formatting is inherited from the old console.log version, see more at:
--  # https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/frame/deprecation.cc
--  # TODO(crbug.com/1264960): Re-work format to add i18n support per:
--  # https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/public/devtools_protocol/README.md
--  type DeprecationIssueDetails extends object
--    properties
--      optional AffectedFrame affectedFrame
--      SourceCodeLocation sourceCodeLocation
--      # The content of the deprecation issue (this won't be translated),
--      # e.g. "window.inefficientLegacyStorageMethod will be removed in M97,
--      # around January 2022. Please use Web Storage or Indexed Database
--      # instead. This standard was abandoned in January, 1970. See
--      # https://www.chromestatus.com/feature/5684870116278272 for more details."
--      optional string message
--
-   # A unique identifier for the type of issue. Each type may use one of the
-   # optional fields in InspectorIssueDetails to convey more specific
-   # information about the kind of issue.
-@@ -744,7 +728,6 @@ experimental domain Audits
-       NavigatorUserAgentIssue
-       WasmCrossOriginModuleSharingIssue
-       GenericIssue
--      DeprecationIssue
- 
-   # This struct holds a list of optional fields with additional information
-   # specific to the kind of issue. When adding a new issue code, please also
-@@ -765,7 +748,6 @@ experimental domain Audits
-       optional NavigatorUserAgentIssueDetails navigatorUserAgentIssueDetails
-       optional WasmCrossOriginModuleSharingIssueDetails wasmCrossOriginModuleSharingIssue
-       optional GenericIssueDetails genericIssueDetails
--      optional DeprecationIssueDetails deprecationIssueDetails
- 
-   # A unique id for a DevTools inspector issue. Allows other entities (e.g.
-   # exceptions, CDP message, console messages, etc.) to reference an issue.
 ```

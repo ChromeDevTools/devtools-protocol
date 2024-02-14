@@ -11410,6 +11410,14 @@ experimental domain WebAuthn
       # The large blob associated with the credential.
       # See https://w3c.github.io/webauthn/#sctn-large-blob-extension
       optional binary largeBlob
+      # Assertions returned by this credential will have the backup eligibility
+      # (BE) flag set to this value. Defaults to the authenticator's
+      # defaultBackupEligibility value.
+      optional boolean backupEligibility
+      # Assertions returned by this credential will have the backup state (BS)
+      # flag set to this value. Defaults to the authenticator's
+      # defaultBackupState value.
+      optional boolean backupState
 
   # Enable the WebAuthn domain and start intercepting credential storage and
   # retrieval with a virtual authenticator.
@@ -11497,6 +11505,15 @@ experimental domain WebAuthn
     parameters
       AuthenticatorId authenticatorId
       boolean enabled
+
+  # Allows setting credential properties.
+  # https://w3c.github.io/webauthn/#sctn-automation-set-credential-properties
+  command setCredentialProperties
+    parameters
+      AuthenticatorId authenticatorId
+      binary credentialId
+      optional boolean backupEligibility
+      optional boolean backupState
 
   # Triggered when a credential is added to an authenticator.
   event credentialAdded

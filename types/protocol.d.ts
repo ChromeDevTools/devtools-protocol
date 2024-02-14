@@ -17592,6 +17592,18 @@ export namespace Protocol {
              * See https://w3c.github.io/webauthn/#sctn-large-blob-extension (Encoded as a base64 string when passed over JSON)
              */
             largeBlob?: string;
+            /**
+             * Assertions returned by this credential will have the backup eligibility
+             * (BE) flag set to this value. Defaults to the authenticator's
+             * defaultBackupEligibility value.
+             */
+            backupEligibility?: boolean;
+            /**
+             * Assertions returned by this credential will have the backup state (BS)
+             * flag set to this value. Defaults to the authenticator's
+             * defaultBackupState value.
+             */
+            backupState?: boolean;
         }
 
         export interface EnableRequest {
@@ -17675,6 +17687,13 @@ export namespace Protocol {
         export interface SetAutomaticPresenceSimulationRequest {
             authenticatorId: AuthenticatorId;
             enabled: boolean;
+        }
+
+        export interface SetCredentialPropertiesRequest {
+            authenticatorId: AuthenticatorId;
+            credentialId: string;
+            backupEligibility?: boolean;
+            backupState?: boolean;
         }
 
         /**

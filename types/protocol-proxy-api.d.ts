@@ -4006,6 +4006,12 @@ export namespace ProtocolProxyApi {
         setAutomaticPresenceSimulation(params: Protocol.WebAuthn.SetAutomaticPresenceSimulationRequest): Promise<void>;
 
         /**
+         * Allows setting credential properties.
+         * https://w3c.github.io/webauthn/#sctn-automation-set-credential-properties
+         */
+        setCredentialProperties(params: Protocol.WebAuthn.SetCredentialPropertiesRequest): Promise<void>;
+
+        /**
          * Triggered when a credential is added to an authenticator.
          */
         on(event: 'credentialAdded', listener: (params: Protocol.WebAuthn.CredentialAddedEvent) => void): void;
