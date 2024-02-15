@@ -2228,6 +2228,11 @@
                             "$ref": "FillingStrategy"
                         },
                         {
+                            "name": "frameId",
+                            "description": "The frame the field belongs to",
+                            "$ref": "Page.FrameId"
+                        },
+                        {
                             "name": "fieldId",
                             "description": "The form field's DOM node",
                             "$ref": "DOM.BackendNodeId"

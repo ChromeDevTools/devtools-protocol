@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1260888 — _2024-02-15T04:26:01.000Z_
+######  Diff: [`26fa2ea...7e91df5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`26fa2ea...7e91df5`)
+
+```diff
+@@ browser_protocol.pdl:1110 @@ experimental domain Autofill
+       string autofillType
+       # The filling strategy
+       FillingStrategy fillingStrategy
+-      # The frame the field belongs to
+-      Page.FrameId frameId
+       # The form field's DOM node
+       DOM.BackendNodeId fieldId
+```
+
 ## Roll protocol to r1260275 — _2024-02-14T04:26:03.000Z_
-######  Diff: [`2b2d990...9a00100`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2b2d990...9a00100`)
+######  Diff: [`2b2d990...26fa2ea`](https://github.com/ChromeDevTools/devtools-protocol/compare/`2b2d990...26fa2ea`)
 
 ```diff
 @@ browser_protocol.pdl:11410 @@ experimental domain WebAuthn
@@ -11123,34 +11137,4 @@ index bd277eb..09c420e 100644
  
    # A unique identifier for the type of issue. Each type may use one of the
    # optional fields in InspectorIssueDetails to convey more specific
-```
-
-## Roll protocol to r937072 — _2021-11-01T22:15:26.000Z_
-######  Diff: [`3a36442...23061aa`](https://github.com/ChromeDevTools/devtools-protocol/compare/`3a36442...23061aa`)
-
-```diff
-@@ browser_protocol.pdl:2842 @@ domain DOMDebugger
-       # Resource URL substring. All XHRs having this substring in the URL will get stopped upon.
-       string url
- 
--# EventBreakpoints permits setting breakpoints on particular operations and
--# events in targets that run JavaScript but do not have a DOM.
--# JavaScript execution will stop on these operations as if there was a regular
--# breakpoint set.
--experimental domain EventBreakpoints
--  # Sets breakpoint on particular native event.
--  command setInstrumentationBreakpoint
--    parameters
--      # Instrumentation name to stop on.
--      string eventName
--
--  # Removes breakpoint on particular native event.
--  command removeInstrumentationBreakpoint
--    parameters
--      # Instrumentation name to stop on.
--      string eventName
--
- # This domain facilitates obtaining document snapshots with DOM, layout, and style information.
- experimental domain DOMSnapshot
-   depends on CSS
 ```

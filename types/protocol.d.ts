@@ -3844,6 +3844,10 @@ export namespace Protocol {
              */
             fillingStrategy: FillingStrategy;
             /**
+             * The frame the field belongs to
+             */
+            frameId: Page.FrameId;
+            /**
              * The form field's DOM node
              */
             fieldId: DOM.BackendNodeId;
