@@ -86,7 +86,6 @@ class CommitCrawler {
     await git.fetch();
     await wait();
     await git.checkout('origin/HEAD');
-    await git.checkout('0fe9d20');
     await wait();
     const commitlog = await git.log();
     // Remove any commits we don't want to deal with.
