@@ -20908,7 +20908,7 @@
                     ]
                 },
                 {
-                    "id": "AttributionReportingAggregatableValueEntry",
+                    "id": "AttributionReportingAggregatableValueDictEntry",
                     "experimental": true,
                     "type": "object",
                     "properties": [
@@ -20920,6 +20920,24 @@
                             "name": "value",
                             "description": "number instead of integer because not all uint32 can be represented by\nint",
                             "type": "number"
+                        }
+                    ]
+                },
+                {
+                    "id": "AttributionReportingAggregatableValueEntry",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "values",
+                            "type": "array",
+                            "items": {
+                                "$ref": "AttributionReportingAggregatableValueDictEntry"
+                            }
+                        },
+                        {
+                            "name": "filters",
+                            "$ref": "AttributionReportingFilterPair"
                         }
                     ]
                 },

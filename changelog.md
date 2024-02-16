@@ -1,7 +1,33 @@
 
 
+## Roll protocol to r1261483 — _2024-02-16T04:25:37.000Z_
+######  Diff: [`f2ae62d...30f3a97`](https://github.com/ChromeDevTools/devtools-protocol/compare/`f2ae62d...30f3a97`)
+
+```diff
+@@ browser_protocol.pdl:10198 @@ experimental domain Storage
+       include
+       exclude
+ 
+-  experimental type AttributionReportingAggregatableValueDictEntry extends object
++  experimental type AttributionReportingAggregatableValueEntry extends object
+     properties
+       string key
+       # number instead of integer because not all uint32 can be represented by
+       # int
+       number value
+ 
+-  experimental type AttributionReportingAggregatableValueEntry extends object
+-    properties
+-      array of AttributionReportingAggregatableValueDictEntry values
+-      AttributionReportingFilterPair filters
+-
+   experimental type AttributionReportingEventTriggerData extends object
+     properties
+       UnsignedInt64AsBase10 data
+```
+
 ## Roll protocol to r1260888 — _2024-02-15T04:26:01.000Z_
-######  Diff: [`26fa2ea...7e91df5`](https://github.com/ChromeDevTools/devtools-protocol/compare/`26fa2ea...7e91df5`)
+######  Diff: [`26fa2ea...f2ae62d`](https://github.com/ChromeDevTools/devtools-protocol/compare/`26fa2ea...f2ae62d`)
 
 ```diff
 @@ browser_protocol.pdl:1110 @@ experimental domain Autofill
@@ -11122,19 +11148,4 @@ index bd277eb..09c420e 100644
        # Hash algorithm.
        string hashAlgorithm
        # Signature algorithm.
-```
-
-## Roll protocol to r937139 — _2021-11-02T00:15:24.000Z_
-######  Diff: [`23061aa...e73ddb9`](https://github.com/ChromeDevTools/devtools-protocol/compare/`23061aa...e73ddb9`)
-
-```diff
-@@ browser_protocol.pdl:723 @@ experimental domain Audits
-       # around January 2022. Please use Web Storage or Indexed Database
-       # instead. This standard was abandoned in January, 1970. See
-       # https://www.chromestatus.com/feature/5684870116278272 for more details."
--      deprecated optional string message
-+      optional string message
- 
-   # A unique identifier for the type of issue. Each type may use one of the
-   # optional fields in InspectorIssueDetails to convey more specific
 ```

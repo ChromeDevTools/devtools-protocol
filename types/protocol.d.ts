@@ -15561,13 +15561,18 @@ export namespace Protocol {
 
         export type AttributionReportingSourceRegistrationTimeConfig = ('include' | 'exclude');
 
-        export interface AttributionReportingAggregatableValueEntry {
+        export interface AttributionReportingAggregatableValueDictEntry {
             key: string;
             /**
              * number instead of integer because not all uint32 can be represented by
              * int
              */
             value: number;
+        }
+
+        export interface AttributionReportingAggregatableValueEntry {
+            values: AttributionReportingAggregatableValueDictEntry[];
+            filters: AttributionReportingFilterPair;
         }
 
         export interface AttributionReportingEventTriggerData {
