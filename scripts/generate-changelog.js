@@ -41,8 +41,8 @@ class Formatter {
     const commitMessage = commit.message.replace(/\(HEAD.*/, '').replace(' (master)', '').replace(' (main)', '').trim();
     const commitDateStr = formatDateString(commit.date);
     results += `\n\n## ${commitMessage} — _${commitDateStr}_\n`;
-    const hashCompareStr = `\`${previousCommit.hash.slice(0, 7)}...${commit.hash.slice(0, 7)}\``;
-    results += `######  Diff: [${hashCompareStr}](https://github.com/ChromeDevTools/devtools-protocol/compare/${hashCompareStr})\n`;
+    const hashCompareStr = `${previousCommit.hash.slice(0, 7)}...${commit.hash.slice(0, 7)}`;
+    results += `######  Diff: [\`${hashCompareStr}\`](https://github.com/ChromeDevTools/devtools-protocol/compare/${hashCompareStr})\n`;
     results += `
 \`\`\`diff
 ${adjustedDiff.trim()}
@@ -109,7 +109,7 @@ class CommitCrawler {
       // If we've walked back to the creation of the .pdl, we done.
       if (commit.hash === '1904d4bb5367c5b24b648641f219d14eaa871c00') return;
 
-      const gitdiff = await this.git.diff([commit.hash, previousCommit.hash, './pdl']);
+      const gitdiff = await this.git.diff([previousCommit.hash, commit.hash, './pdl']);
       // log status
       console.log(i, new Array(4 - i.toString().split('').length).fill(' ').join(''), commit.hash, gitdiff.length.toLocaleString().padStart(8));
       Formatter.logCommit(previousCommit, commit, gitdiff);
