@@ -2554,6 +2554,7 @@
                         "protectedMediaIdentifier",
                         "sensors",
                         "storageAccess",
+                        "speakerSelection",
                         "topLevelStorageAccess",
                         "videoCapture",
                         "videoCapturePanTiltZoom",
@@ -12356,6 +12357,17 @@
                     ]
                 },
                 {
+                    "id": "ServiceWorkerRouterSource",
+                    "description": "Source of service worker router.",
+                    "type": "string",
+                    "enum": [
+                        "network",
+                        "cache",
+                        "fetch-event",
+                        "race-network-and-fetch-handler"
+                    ]
+                },
+                {
                     "id": "ServiceWorkerRouterInfo",
                     "experimental": true,
                     "type": "object",
@@ -12363,6 +12375,10 @@
                         {
                             "name": "ruleIdMatched",
                             "type": "integer"
+                        },
+                        {
+                            "name": "matchedSourceType",
+                            "$ref": "ServiceWorkerRouterSource"
                         }
                     ]
                 },
@@ -16499,6 +16515,7 @@
                         "shared-storage",
                         "shared-storage-select-url",
                         "smart-card",
+                        "speaker-selection",
                         "storage-access",
                         "sub-apps",
                         "sync-xhr",

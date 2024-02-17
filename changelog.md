@@ -1,5 +1,46 @@
 
 
+## Roll protocol to r1262051 — _2024-02-17T04:27:02.000Z_
+######  Diff: [`83fadfa...c9e57d3`](https://github.com/ChromeDevTools/devtools-protocol/compare/83fadfa...c9e57d3)
+
+```diff
+@@ browser_protocol.pdl:1270 @@ domain Browser
+       protectedMediaIdentifier
+       sensors
+       storageAccess
++      speakerSelection
+       topLevelStorageAccess
+       videoCapture
+       videoCapturePanTiltZoom
+@@ -5736,9 +5737,18 @@ domain Network
+       # This value is used when the reason is unknown.
+       unspecifiedReason
+ 
++  # Source of service worker router.
++  type ServiceWorkerRouterSource extends string
++    enum
++      network
++      cache
++      fetch-event
++      race-network-and-fetch-handler
++
+   experimental type ServiceWorkerRouterInfo extends object
+     properties
+       integer ruleIdMatched
++      ServiceWorkerRouterSource matchedSourceType
+ 
+   # HTTP response data.
+   type Response extends object
+@@ -7761,6 +7771,7 @@ domain Page
+       shared-storage
+       shared-storage-select-url
+       smart-card
++      speaker-selection
+       storage-access
+       sub-apps
+       sync-xhr
+```
+
 ## Roll protocol to r1261483 — _2024-02-16T04:25:37.000Z_
 ######  Diff: [`f2ae62d...2d101dc`](https://github.com/ChromeDevTools/devtools-protocol/compare/f2ae62d...2d101dc)
 
@@ -871,7 +912,7 @@
        experimental optional TargetFilter filter
  
 diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
-index 4754f17c..8dad9c98 100644
+index 4754f17..8dad9c9 100644
 --- a/pdl/js_protocol.pdl
 +++ b/pdl/js_protocol.pdl
 @@ -1665,7 +1665,7 @@ domain Runtime
@@ -3064,7 +3105,7 @@ index 4754f17c..8dad9c98 100644
        SharedWorker
        WebLocks
 diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
-index 7a3c772c..ed622630 100644
+index 7a3c772..ed62263 100644
 --- a/pdl/js_protocol.pdl
 +++ b/pdl/js_protocol.pdl
 @@ -1034,6 +1034,11 @@ domain Runtime
@@ -3456,7 +3497,7 @@ index 7a3c772c..ed622630 100644
    # Fired when a prerender attempt is completed.
    event prerenderAttemptCompleted
 diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
-index 0dbdc01d..7a3c772c 100644
+index 0dbdc01..7a3c772 100644
 --- a/pdl/js_protocol.pdl
 +++ b/pdl/js_protocol.pdl
 @@ -1443,7 +1443,7 @@ domain Runtime
@@ -5628,7 +5669,7 @@ index 0dbdc01d..7a3c772c 100644
    experimental command getInterestGroupDetails
      parameters
 diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
-index d4102f5c..6285d9b6 100644
+index d4102f5..6285d9b 100644
 --- a/pdl/js_protocol.pdl
 +++ b/pdl/js_protocol.pdl
 @@ -511,6 +511,7 @@ domain Debugger
@@ -6566,7 +6607,7 @@ index d4102f5c..6285d9b6 100644
    experimental type PermissionSetting extends string
      enum
 diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
-index b3b97fa1..6efcf787 100644
+index b3b97fa..6efcf78 100644
 --- a/pdl/js_protocol.pdl
 +++ b/pdl/js_protocol.pdl
 @@ -458,13 +458,14 @@ domain Debugger
@@ -7429,7 +7470,7 @@ index b3b97fa1..6efcf787 100644
        MemoryLimitExceeded
        # Prerenders can be cancelled when Chrome uses excessive memory. This is
 diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
-index 8d8211bf..2d560435 100644
+index 8d8211b..2d56043 100644
 --- a/pdl/js_protocol.pdl
 +++ b/pdl/js_protocol.pdl
 @@ -766,6 +766,22 @@ experimental domain HeapProfiler
@@ -8142,7 +8183,7 @@ index 8d8211bf..2d560435 100644
        GeolocationInsecureOriginDeprecatedNotRemoved
        GetUserMediaInsecureOrigin
 diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
-index 8e436953..7fd51df5 100644
+index 8e43695..7fd51df 100644
 --- a/pdl/js_protocol.pdl
 +++ b/pdl/js_protocol.pdl
 @@ -244,6 +244,40 @@ domain Debugger
@@ -8465,7 +8506,7 @@ index 8e436953..7fd51df5 100644
        optional boolean enableSampling
        # Turns on system tracing.
 diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
-index 18cf0c76..8e436953 100644
+index 18cf0c7..8e43695 100644
 --- a/pdl/js_protocol.pdl
 +++ b/pdl/js_protocol.pdl
 @@ -441,6 +441,12 @@ domain Debugger
@@ -9538,7 +9579,7 @@ index 18cf0c76..8e436953 100644
    # This can be called multiple times, and can be used to set / override /
    # remove player properties. A null propValue indicates removal.
 diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
-index 09c420e3..bd277eb0 100644
+index 09c420e..bd277eb 100644
 --- a/pdl/js_protocol.pdl
 +++ b/pdl/js_protocol.pdl
 @@ -113,6 +113,11 @@ domain Debugger
@@ -11061,91 +11102,4 @@ index 09c420e3..bd277eb0 100644
  
    # Disables the accessibility domain.
    command disable
-```
-
-## Roll protocol to r938885 — _2021-11-05T19:15:27.000Z_
-######  Diff: [`3c2ebcf...790428e`](https://github.com/ChromeDevTools/devtools-protocol/compare/3c2ebcf...790428e)
-
-```diff
-@@ browser_protocol.pdl:6763 @@ domain Page
-       hid
-       idle-detection
-       interest-cohort
-+      join-ad-interest-group
-       keyboard-map
-       magnetometer
-       microphone
-@@ -6771,6 +6772,7 @@ domain Page
-       payment
-       picture-in-picture
-       publickey-credentials-get
-+      run-ad-auction
-       screen-wake-lock
-       serial
-       shared-autofill
-```
-
-## Roll protocol to r938546 — _2021-11-04T22:15:26.000Z_
-######  Diff: [`4957f55...3c2ebcf`](https://github.com/ChromeDevTools/devtools-protocol/compare/4957f55...3c2ebcf)
-
-```diff
-@@ browser_protocol.pdl:7645 @@ domain Page
-   # Clears seeded compilation cache.
-   experimental command clearCompilationCache
- 
-+  # Sets the Secure Payment Confirmation transaction mode.
-+  # https://w3c.github.io/secure-payment-confirmation/#sctn-automation-set-spc-transaction-mode
-+  experimental command setSPCTransactionMode
-+    parameters
-+      enum mode
-+        none
-+        autoaccept
-+        autoreject
-+
-   # Generates a report for testing.
-   experimental command generateTestReport
-     parameters
-```
-
-## Roll protocol to r938504 — _2021-11-04T21:15:28.000Z_
-######  Diff: [`0fe9d20...4957f55`](https://github.com/ChromeDevTools/devtools-protocol/compare/0fe9d20...4957f55)
-
-```diff
-@@ browser_protocol.pdl:8343 @@ domain Security
-       SecurityState securityState
-       # True if the page was loaded over cryptographic transport such as HTTPS.
-       deprecated boolean schemeIsCryptographic
--      # List of explanations for the security state. If the overall security state is `insecure` or
--      # `warning`, at least one corresponding explanation should be included.
--      array of SecurityStateExplanation explanations
-+      # Previously a list of explanations for the security state. Now always
-+      # empty.
-+      deprecated array of SecurityStateExplanation explanations
-       # Information about insecure content on the page.
-       deprecated InsecureContentStatus insecureContentStatus
--      # Overrides user-visible description of the state.
--      optional string summary
-+      # Overrides user-visible description of the state. Always omitted.
-+      deprecated optional string summary
- 
- experimental domain ServiceWorker
-   depends on Target
-```
-
-## Roll protocol to r938446 — _2021-11-04T20:15:28.000Z_
-######  Diff: [`e73ddb9...0fe9d20`](https://github.com/ChromeDevTools/devtools-protocol/compare/e73ddb9...0fe9d20)
-
-```diff
-@@ browser_protocol.pdl:4784 @@ domain Network
-       string logDescription
-       # Log ID.
-       string logId
--      # Issuance date.
--      TimeSinceEpoch timestamp
-+      # Issuance date. Unlike TimeSinceEpoch, this contains the number of
-+      # milliseconds since January 1, 1970, UTC, not the number of seconds.
-+      number timestamp
-       # Hash algorithm.
-       string hashAlgorithm
-       # Signature algorithm.
 ```
