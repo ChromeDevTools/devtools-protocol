@@ -2870,7 +2870,7 @@ export namespace Protocol {
             depth?: integer;
             /**
              * The frame for whose document the AX tree should be retrieved.
-             * If omited, the root frame is used.
+             * If omitted, the root frame is used.
              */
             frameId?: Page.FrameId;
         }
@@ -3808,7 +3808,7 @@ export namespace Protocol {
          */
         export interface AddressUI {
             /**
-             * A two dimension array containing the repesentation of values from an address profile.
+             * A two dimension array containing the representation of values from an address profile.
              */
             addressFields: AddressFields[];
         }
@@ -4144,7 +4144,7 @@ export namespace Protocol {
             /**
              * Whether to allow all or deny all download requests, or use default Chrome behavior if
              * available (otherwise deny). |allowAndName| allows download and names files according to
-             * their dowmload guids. (SetDownloadBehaviorRequestBehavior enum)
+             * their download guids. (SetDownloadBehaviorRequestBehavior enum)
              */
             behavior: ('deny' | 'allow' | 'allowAndName' | 'default');
             /**
@@ -4495,7 +4495,7 @@ export namespace Protocol {
             frameId: Page.FrameId;
             /**
              * Stylesheet resource URL. Empty if this is a constructed stylesheet created using
-             * new CSSStyleSheet() (but non-empty if this is a constructed sylesheet imported
+             * new CSSStyleSheet() (but non-empty if this is a constructed stylesheet imported
              * as a CSS module script).
              */
             sourceURL: string;
@@ -6274,7 +6274,7 @@ export namespace Protocol {
 
         export interface GetAttributesRequest {
             /**
-             * Id of the node to retrieve attibutes for.
+             * Id of the node to retrieve attributes for.
              */
             nodeId: NodeId;
         }
@@ -7991,7 +7991,7 @@ export namespace Protocol {
         export type VirtualTimePolicy = ('advance' | 'pause' | 'pauseIfNetworkFetchesPending');
 
         /**
-         * Used to specify User Agent Cient Hints to emulate. See https://wicg.github.io/ua-client-hints
+         * Used to specify User Agent Client Hints to emulate. See https://wicg.github.io/ua-client-hints
          */
         export interface UserAgentBrandVersion {
             brand: string;
@@ -7999,7 +7999,7 @@ export namespace Protocol {
         }
 
         /**
-         * Used to specify User Agent Cient Hints to emulate. See https://wicg.github.io/ua-client-hints
+         * Used to specify User Agent Client Hints to emulate. See https://wicg.github.io/ua-client-hints
          * Missing optional values will be filled in by the target with what it would normally use.
          */
         export interface UserAgentMetadata {
@@ -8332,8 +8332,9 @@ export namespace Protocol {
 
         export interface SetTimezoneOverrideRequest {
             /**
-             * The timezone identifier. If empty, disables the override and
-             * restores default host system timezone.
+             * The timezone identifier. List of supported timezones:
+             * https://source.chromium.org/chromium/chromium/deps/icu.git/+/faee8bc70570192d82d2978a71e2a615788597d1:source/data/misc/metaZones.txt
+             * If empty, disables the override and restores default host system timezone.
              */
             timezoneId: string;
         }
@@ -8481,7 +8482,7 @@ export namespace Protocol {
              */
             handle: StreamHandle;
             /**
-             * Seek to the specified offset before reading (if not specificed, proceed with offset
+             * Seek to the specified offset before reading (if not specified, proceed with offset
              * following the last read). Some types of streams may only support sequential reads.
              */
             offset?: integer;
@@ -9690,7 +9691,7 @@ export namespace Protocol {
 
         export interface LayerTreeDidChangeEvent {
             /**
-             * Layer tree, absent if not in the comspositing mode.
+             * Layer tree, absent if not in the compositing mode.
              */
             layers?: Layer[];
         }
@@ -10153,7 +10154,7 @@ export namespace Protocol {
             trustTokenParams?: TrustTokenParams;
             /**
              * True if this resource request is considered to be the 'same site' as the
-             * request correspondinfg to the main frame.
+             * request corresponding to the main frame.
              */
             isSameSite?: boolean;
         }
@@ -10400,7 +10401,7 @@ export namespace Protocol {
              */
             fromPrefetchCache?: boolean;
             /**
-             * Infomation about how Service Worker Static Router was used.
+             * Information about how Service Worker Static Router was used.
              */
             serviceWorkerRouterInfo?: ServiceWorkerRouterInfo;
             /**
@@ -10965,7 +10966,7 @@ export namespace Protocol {
              */
             securityDetails?: SecurityDetails;
             /**
-             * Errors occurred while handling the signed exchagne.
+             * Errors occurred while handling the signed exchange.
              */
             errors?: SignedExchangeError[];
         }
@@ -11622,7 +11623,7 @@ export namespace Protocol {
              */
             type: ResourceType;
             /**
-             * User friendly error message.
+             * Error message. List of network errors: https://cs.chromium.org/chromium/src/net/base/net_error_list.h
              */
             errorText: string;
             /**
@@ -12103,7 +12104,7 @@ export namespace Protocol {
              */
             cookiePartitionKey?: string;
             /**
-             * True if partitioned cookies are enabled, but the partition key is not serializeable to string.
+             * True if partitioned cookies are enabled, but the partition key is not serializable to string.
              */
             cookiePartitionKeyOpaque?: boolean;
             /**
@@ -12263,7 +12264,7 @@ export namespace Protocol {
          */
         export interface SourceOrderConfig {
             /**
-             * the color to outline the givent element in.
+             * the color to outline the given element in.
              */
             parentOutlineColor: DOM.RGBA;
             /**
@@ -12615,7 +12616,7 @@ export namespace Protocol {
              */
             showCSS: boolean;
             /**
-             * Seleted platforms to show the overlay.
+             * Selected platforms to show the overlay.
              */
             selectedPlatform: string;
             /**
@@ -13316,7 +13317,7 @@ export namespace Protocol {
              */
             message: string;
             /**
-             * If criticial, this is a non-recoverable parse error.
+             * If critical, this is a non-recoverable parse error.
              */
             critical: integer;
             /**
@@ -13537,7 +13538,7 @@ export namespace Protocol {
         }
 
         /**
-         * Enum of possible auto-reponse for permisison / prompt dialogs.
+         * Enum of possible auto-response for permission / prompt dialogs.
          */
         export type AutoResponseMode = ('none' | 'autoAccept' | 'autoReject' | 'autoOptOut');
 
@@ -13549,7 +13550,7 @@ export namespace Protocol {
         /**
          * List of not restored reasons for back-forward cache.
          */
-        export type BackForwardCacheNotRestoredReason = ('NotPrimaryMainFrame' | 'BackForwardCacheDisabled' | 'RelatedActiveContentsExist' | 'HTTPStatusNotOK' | 'SchemeNotHTTPOrHTTPS' | 'Loading' | 'WasGrantedMediaAccess' | 'DisableForRenderFrameHostCalled' | 'DomainNotAllowed' | 'HTTPMethodNotGET' | 'SubframeIsNavigating' | 'Timeout' | 'CacheLimit' | 'JavaScriptExecution' | 'RendererProcessKilled' | 'RendererProcessCrashed' | 'SchedulerTrackedFeatureUsed' | 'ConflictingBrowsingInstance' | 'CacheFlushed' | 'ServiceWorkerVersionActivation' | 'SessionRestored' | 'ServiceWorkerPostMessage' | 'EnteredBackForwardCacheBeforeServiceWorkerHostAdded' | 'RenderFrameHostReused_SameSite' | 'RenderFrameHostReused_CrossSite' | 'ServiceWorkerClaim' | 'IgnoreEventAndEvict' | 'HaveInnerContents' | 'TimeoutPuttingInCache' | 'BackForwardCacheDisabledByLowMemory' | 'BackForwardCacheDisabledByCommandLine' | 'NetworkRequestDatapipeDrainedAsBytesConsumer' | 'NetworkRequestRedirected' | 'NetworkRequestTimeout' | 'NetworkExceedsBufferLimit' | 'NavigationCancelledWhileRestoring' | 'NotMostRecentNavigationEntry' | 'BackForwardCacheDisabledForPrerender' | 'UserAgentOverrideDiffers' | 'ForegroundCacheLimit' | 'BrowsingInstanceNotSwapped' | 'BackForwardCacheDisabledForDelegate' | 'UnloadHandlerExistsInMainFrame' | 'UnloadHandlerExistsInSubFrame' | 'ServiceWorkerUnregistration' | 'CacheControlNoStore' | 'CacheControlNoStoreCookieModified' | 'CacheControlNoStoreHTTPOnlyCookieModified' | 'NoResponseHead' | 'Unknown' | 'ActivationNavigationsDisallowedForBug1234857' | 'ErrorDocument' | 'FencedFramesEmbedder' | 'CookieDisabled' | 'HTTPAuthRequired' | 'CookieFlushed' | 'WebSocket' | 'WebTransport' | 'WebRTC' | 'MainResourceHasCacheControlNoStore' | 'MainResourceHasCacheControlNoCache' | 'SubresourceHasCacheControlNoStore' | 'SubresourceHasCacheControlNoCache' | 'ContainsPlugins' | 'DocumentLoaded' | 'DedicatedWorkerOrWorklet' | 'OutstandingNetworkRequestOthers' | 'RequestedMIDIPermission' | 'RequestedAudioCapturePermission' | 'RequestedVideoCapturePermission' | 'RequestedBackForwardCacheBlockedSensors' | 'RequestedBackgroundWorkPermission' | 'BroadcastChannel' | 'WebXR' | 'SharedWorker' | 'WebLocks' | 'WebHID' | 'WebShare' | 'RequestedStorageAccessGrant' | 'WebNfc' | 'OutstandingNetworkRequestFetch' | 'OutstandingNetworkRequestXHR' | 'AppBanner' | 'Printing' | 'WebDatabase' | 'PictureInPicture' | 'Portal' | 'SpeechRecognizer' | 'IdleManager' | 'PaymentManager' | 'SpeechSynthesis' | 'KeyboardLock' | 'WebOTPService' | 'OutstandingNetworkRequestDirectSocket' | 'InjectedJavascript' | 'InjectedStyleSheet' | 'KeepaliveRequest' | 'IndexedDBEvent' | 'Dummy' | 'JsNetworkRequestReceivedCacheControlNoStoreResource' | 'WebRTCSticky' | 'WebTransportSticky' | 'WebSocketSticky' | 'SmartCard' | 'LiveMediaStreamTrack' | 'UnloadHandler' | 'ContentSecurityHandler' | 'ContentWebAuthenticationAPI' | 'ContentFileChooser' | 'ContentSerial' | 'ContentFileSystemAccess' | 'ContentMediaDevicesDispatcherHost' | 'ContentWebBluetooth' | 'ContentWebUSB' | 'ContentMediaSessionService' | 'ContentScreenReader' | 'EmbedderPopupBlockerTabHelper' | 'EmbedderSafeBrowsingTriggeredPopupBlocker' | 'EmbedderSafeBrowsingThreatDetails' | 'EmbedderAppBannerManager' | 'EmbedderDomDistillerViewerSource' | 'EmbedderDomDistillerSelfDeletingRequestDelegate' | 'EmbedderOomInterventionTabHelper' | 'EmbedderOfflinePage' | 'EmbedderChromePasswordManagerClientBindCredentialManager' | 'EmbedderPermissionRequestManager' | 'EmbedderModalDialog' | 'EmbedderExtensions' | 'EmbedderExtensionMessaging' | 'EmbedderExtensionMessagingForOpenPort' | 'EmbedderExtensionSentMessageToCachedFrame');
+        export type BackForwardCacheNotRestoredReason = ('NotPrimaryMainFrame' | 'BackForwardCacheDisabled' | 'RelatedActiveContentsExist' | 'HTTPStatusNotOK' | 'SchemeNotHTTPOrHTTPS' | 'Loading' | 'WasGrantedMediaAccess' | 'DisableForRenderFrameHostCalled' | 'DomainNotAllowed' | 'HTTPMethodNotGET' | 'SubframeIsNavigating' | 'Timeout' | 'CacheLimit' | 'JavaScriptExecution' | 'RendererProcessKilled' | 'RendererProcessCrashed' | 'SchedulerTrackedFeatureUsed' | 'ConflictingBrowsingInstance' | 'CacheFlushed' | 'ServiceWorkerVersionActivation' | 'SessionRestored' | 'ServiceWorkerPostMessage' | 'EnteredBackForwardCacheBeforeServiceWorkerHostAdded' | 'RenderFrameHostReused_SameSite' | 'RenderFrameHostReused_CrossSite' | 'ServiceWorkerClaim' | 'IgnoreEventAndEvict' | 'HaveInnerContents' | 'TimeoutPuttingInCache' | 'BackForwardCacheDisabledByLowMemory' | 'BackForwardCacheDisabledByCommandLine' | 'NetworkRequestDatapipeDrainedAsBytesConsumer' | 'NetworkRequestRedirected' | 'NetworkRequestTimeout' | 'NetworkExceedsBufferLimit' | 'NavigationCancelledWhileRestoring' | 'NotMostRecentNavigationEntry' | 'BackForwardCacheDisabledForPrerender' | 'UserAgentOverrideDiffers' | 'ForegroundCacheLimit' | 'BrowsingInstanceNotSwapped' | 'BackForwardCacheDisabledForDelegate' | 'UnloadHandlerExistsInMainFrame' | 'UnloadHandlerExistsInSubFrame' | 'ServiceWorkerUnregistration' | 'CacheControlNoStore' | 'CacheControlNoStoreCookieModified' | 'CacheControlNoStoreHTTPOnlyCookieModified' | 'NoResponseHead' | 'Unknown' | 'ActivationNavigationsDisallowedForBug1234857' | 'ErrorDocument' | 'FencedFramesEmbedder' | 'CookieDisabled' | 'HTTPAuthRequired' | 'CookieFlushed' | 'WebSocket' | 'WebTransport' | 'WebRTC' | 'MainResourceHasCacheControlNoStore' | 'MainResourceHasCacheControlNoCache' | 'SubresourceHasCacheControlNoStore' | 'SubresourceHasCacheControlNoCache' | 'ContainsPlugins' | 'DocumentLoaded' | 'OutstandingNetworkRequestOthers' | 'RequestedMIDIPermission' | 'RequestedAudioCapturePermission' | 'RequestedVideoCapturePermission' | 'RequestedBackForwardCacheBlockedSensors' | 'RequestedBackgroundWorkPermission' | 'BroadcastChannel' | 'WebXR' | 'SharedWorker' | 'WebLocks' | 'WebHID' | 'WebShare' | 'RequestedStorageAccessGrant' | 'WebNfc' | 'OutstandingNetworkRequestFetch' | 'OutstandingNetworkRequestXHR' | 'AppBanner' | 'Printing' | 'WebDatabase' | 'PictureInPicture' | 'Portal' | 'SpeechRecognizer' | 'IdleManager' | 'PaymentManager' | 'SpeechSynthesis' | 'KeyboardLock' | 'WebOTPService' | 'OutstandingNetworkRequestDirectSocket' | 'InjectedJavascript' | 'InjectedStyleSheet' | 'KeepaliveRequest' | 'IndexedDBEvent' | 'Dummy' | 'JsNetworkRequestReceivedCacheControlNoStoreResource' | 'WebRTCSticky' | 'WebTransportSticky' | 'WebSocketSticky' | 'SmartCard' | 'LiveMediaStreamTrack' | 'UnloadHandler' | 'ContentSecurityHandler' | 'ContentWebAuthenticationAPI' | 'ContentFileChooser' | 'ContentSerial' | 'ContentFileSystemAccess' | 'ContentMediaDevicesDispatcherHost' | 'ContentWebBluetooth' | 'ContentWebUSB' | 'ContentMediaSessionService' | 'ContentScreenReader' | 'EmbedderPopupBlockerTabHelper' | 'EmbedderSafeBrowsingTriggeredPopupBlocker' | 'EmbedderSafeBrowsingThreatDetails' | 'EmbedderAppBannerManager' | 'EmbedderDomDistillerViewerSource' | 'EmbedderDomDistillerSelfDeletingRequestDelegate' | 'EmbedderOomInterventionTabHelper' | 'EmbedderOfflinePage' | 'EmbedderChromePasswordManagerClientBindCredentialManager' | 'EmbedderPermissionRequestManager' | 'EmbedderModalDialog' | 'EmbedderExtensions' | 'EmbedderExtensionMessaging' | 'EmbedderExtensionMessagingForOpenPort' | 'EmbedderExtensionSentMessageToCachedFrame');
 
         /**
          * Types of not restored reasons for back-forward cache.
@@ -14584,7 +14585,7 @@ export namespace Protocol {
              */
             type: DialogType;
             /**
-             * True iff browser is capable showing or acting on the given dialog. When browser has no
+             * True if browser is capable showing or acting on the given dialog. When browser has no
              * dialog handler for given target, calling alert while Page domain is engaged will stall
              * the page execution. Execution can be resumed via calling Page.handleJavaScriptDialog.
              */
@@ -14619,7 +14620,7 @@ export namespace Protocol {
          */
         export interface BackForwardCacheNotUsedEvent {
             /**
-             * The loader id for the associated navgation.
+             * The loader id for the associated navigation.
              */
             loaderId: Network.LoaderId;
             /**
@@ -14833,7 +14834,7 @@ export namespace Protocol {
             frameId: Page.FrameId;
             /**
              * The event type, as specified in https://w3c.github.io/performance-timeline/#dom-performanceentry-entrytype
-             * This determines which of the optional "details" fiedls is present.
+             * This determines which of the optional "details" fields is present.
              */
             type: string;
             /**
@@ -14941,7 +14942,7 @@ export namespace Protocol {
              */
             certificateNetworkError?: string;
             /**
-             * True if the certificate uses a weak signature aglorithm.
+             * True if the certificate uses a weak signature algorithm.
              */
             certificateHasWeakSignature: boolean;
             /**
@@ -16043,7 +16044,7 @@ export namespace Protocol {
              */
             ownerOrigin: string;
             /**
-             * The sub-parameters warapped by `params` are all optional and their
+             * The sub-parameters wrapped by `params` are all optional and their
              * presence/absence depends on `type`.
              */
             params: SharedStorageAccessParams;
@@ -16306,6 +16307,9 @@ export namespace Protocol {
         export interface TargetInfo {
             targetId: TargetID;
             type: string;
+            /**
+             * List of types: https://source.chromium.org/chromium/chromium/src/+/main:content/browser/devtools/devtools_agent_host_impl.cc?ss=chromium&q=f:devtools%20-f:out%20%22::kTypeTab%5B%5D%22
+             */
             title: string;
             url: string;
             /**
@@ -16337,7 +16341,7 @@ export namespace Protocol {
          */
         export interface FilterEntry {
             /**
-             * If set, causes exclusion of mathcing targets from the list.
+             * If set, causes exclusion of matching targets from the list.
              */
             exclude?: boolean;
             /**
@@ -17946,7 +17950,7 @@ export namespace Protocol {
             requestId?: Network.RequestId;
             /**
              * Error information
-             * `errorMessage` is null iff `errorType` is null.
+             * `errorMessage` is null if `errorType` is null.
              */
             errorType?: RuleSetErrorType;
             /**
@@ -17990,7 +17994,7 @@ export namespace Protocol {
          * that had a speculation rule that triggered the attempt, and the
          * BackendNodeIds of <a href> or <area href> elements that triggered the
          * attempt (in the case of attempts triggered by a document rule). It is
-         * possible for mulitple rule sets and links to trigger a single attempt.
+         * possible for multiple rule sets and links to trigger a single attempt.
          */
         export interface PreloadingAttemptSource {
             key: PreloadingAttemptKey;
