@@ -1,7 +1,41 @@
 
 
+## Roll protocol to r1263133 — _2024-02-21T04:25:55.000Z_
+######  Diff: [`1291a1c...64eb495`](https://github.com/ChromeDevTools/devtools-protocol/compare/1291a1c...64eb495)
+
+```diff
+@@ browser_protocol.pdl:8872 @@ domain Page
+       string message
+       # Dialog type.
+       DialogType type
+-      # True if browser is capable showing or acting on the given dialog. When browser has no
++      # True iff browser is capable showing or acting on the given dialog. When browser has no
+       # dialog handler for given target, calling alert while Page domain is engaged will stall
+       # the page execution. Execution can be resumed via calling Page.handleJavaScriptDialog.
+       boolean hasBrowserHandler
+@@ -10449,8 +10449,8 @@ domain Target
+   type TargetInfo extends object
+     properties
+       TargetID targetId
+-      string type
+       # List of types: https://source.chromium.org/chromium/chromium/src/+/main:content/browser/devtools/devtools_agent_host_impl.cc?ss=chromium&q=f:devtools%20-f:out%20%22::kTypeTab%5B%5D%22
++      string type
+       string title
+       string url
+       # Whether the target has an attached client.
+@@ -11718,7 +11718,7 @@ experimental domain Preload
+       optional string url
+       optional Network.RequestId requestId
+       # Error information
+-      # `errorMessage` is null if `errorType` is null.
++      # `errorMessage` is null iff `errorType` is null.
+       optional RuleSetErrorType errorType
+       # TODO(https://crbug.com/1425354): Replace this property with structured error.
+       deprecated optional string errorMessage
+```
+
 ## Roll protocol to r1262535 — _2024-02-20T04:27:19.000Z_
-######  Diff: [`dda659f...1a2c6bc`](https://github.com/ChromeDevTools/devtools-protocol/compare/dda659f...1a2c6bc)
+######  Diff: [`dda659f...1291a1c`](https://github.com/ChromeDevTools/devtools-protocol/compare/dda659f...1291a1c)
 
 ```diff
 @@ browser_protocol.pdl:217 @@ experimental domain Accessibility
@@ -11411,29 +11445,6 @@ index 09c420e..bd277eb 100644
 +      optional Runtime.RemoteObjectId objectId
 +    returns
 +      array of AXNode nodes
-+
-   # Fetches a particular accessibility node by AXNodeId.
-   # Requires `enable()` to have been called previously.
-   experimental command getChildAXNodes
-```
-
-## Roll protocol to r939404 — _2021-11-08T17:15:45.000Z_
-######  Diff: [`8ae67d9...ec485f2`](https://github.com/ChromeDevTools/devtools-protocol/compare/8ae67d9...ec485f2)
-
-```diff
-@@ browser_protocol.pdl:222 @@ experimental domain Accessibility
-     returns
-       array of AXNode nodes
- 
-+  # Fetches the root node.
-+  # Requires `enable()` to have been called previously.
-+  experimental command getRootAXNode
-+    parameters
-+      # The frame in whose document the node resides.
-+      # If omitted, the root frame is used.
-+      optional Page.FrameId frameId
-+    returns
-+      AXNode node
 +
    # Fetches a particular accessibility node by AXNodeId.
    # Requires `enable()` to have been called previously.

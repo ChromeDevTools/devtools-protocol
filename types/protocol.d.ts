@@ -14585,7 +14585,7 @@ export namespace Protocol {
              */
             type: DialogType;
             /**
-             * True if browser is capable showing or acting on the given dialog. When browser has no
+             * True iff browser is capable showing or acting on the given dialog. When browser has no
              * dialog handler for given target, calling alert while Page domain is engaged will stall
              * the page execution. Execution can be resumed via calling Page.handleJavaScriptDialog.
              */
@@ -16306,10 +16306,10 @@ export namespace Protocol {
 
         export interface TargetInfo {
             targetId: TargetID;
-            type: string;
             /**
              * List of types: https://source.chromium.org/chromium/chromium/src/+/main:content/browser/devtools/devtools_agent_host_impl.cc?ss=chromium&q=f:devtools%20-f:out%20%22::kTypeTab%5B%5D%22
              */
+            type: string;
             title: string;
             url: string;
             /**
@@ -17950,7 +17950,7 @@ export namespace Protocol {
             requestId?: Network.RequestId;
             /**
              * Error information
-             * `errorMessage` is null if `errorType` is null.
+             * `errorMessage` is null iff `errorType` is null.
              */
             errorType?: RuleSetErrorType;
             /**
