@@ -1,7 +1,31 @@
 
 
+## Roll protocol to r1263784 — _2024-02-22T04:25:35.000Z_
+######  Diff: [`06fb977...0c33cae`](https://github.com/ChromeDevTools/devtools-protocol/compare/06fb977...0c33cae)
+
+```diff
+@@ browser_protocol.pdl:4053 @@ domain Emulation
+       optional SensorReadingQuaternion quaternion
+ 
+   # Tells whether emulation is supported.
+-  command canEmulate
++  deprecated command canEmulate
+     returns
+       # True if emulation is supported.
+       boolean result
+@@ -4272,7 +4272,7 @@ domain Emulation
+   # Overrides default host system timezone with the specified one.
+   command setTimezoneOverride
+     parameters
+-      # The timezone identifier. List of supported timezones: 
++      # The timezone identifier. List of supported timezones:
+       # https://source.chromium.org/chromium/chromium/deps/icu.git/+/faee8bc70570192d82d2978a71e2a615788597d1:source/data/misc/metaZones.txt
+       # If empty, disables the override and restores default host system timezone.
+       string timezoneId
+```
+
 ## Roll protocol to r1263133 — _2024-02-21T04:25:55.000Z_
-######  Diff: [`1291a1c...64eb495`](https://github.com/ChromeDevTools/devtools-protocol/compare/1291a1c...64eb495)
+######  Diff: [`1291a1c...06fb977`](https://github.com/ChromeDevTools/devtools-protocol/compare/1291a1c...06fb977)
 
 ```diff
 @@ browser_protocol.pdl:8872 @@ domain Page
@@ -11423,30 +11447,4 @@ index 09c420e..bd277eb 100644
      parameters
        # Security state.
        SecurityState securityState
-```
-
-## Roll protocol to r939725 — _2021-11-09T07:16:13.000Z_
-######  Diff: [`ec485f2...e9d7ebc`](https://github.com/ChromeDevTools/devtools-protocol/compare/ec485f2...e9d7ebc)
-
-```diff
-@@ browser_protocol.pdl:232 @@ experimental domain Accessibility
-     returns
-       AXNode node
- 
-+  # Fetches a node and all ancestors up to and including the root.
-+  # Requires `enable()` to have been called previously.
-+  experimental command getAXNodeAndAncestors
-+    parameters
-+      # Identifier of the node to get.
-+      optional DOM.NodeId nodeId
-+      # Identifier of the backend node to get.
-+      optional DOM.BackendNodeId backendNodeId
-+      # JavaScript object id of the node wrapper to get.
-+      optional Runtime.RemoteObjectId objectId
-+    returns
-+      array of AXNode nodes
-+
-   # Fetches a particular accessibility node by AXNodeId.
-   # Requires `enable()` to have been called previously.
-   experimental command getChildAXNodes
 ```
