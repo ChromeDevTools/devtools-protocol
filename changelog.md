@@ -1,7 +1,25 @@
 
 
+## Roll protocol to r1266247 — _2024-02-28T04:26:37.000Z_
+######  Diff: [`85cbc8e...e7eba5e`](https://github.com/ChromeDevTools/devtools-protocol/compare/85cbc8e...e7eba5e)
+
+```diff
+@@ browser_protocol.pdl:729 @@ experimental domain Audits
+       WebAndOsHeaders
+       NoWebOrOsSupport
+       NavigationRegistrationWithoutTransientUserActivation
++      InvalidInfoHeader
++      NoRegisterSourceHeader
++      NoRegisterTriggerHeader
++      NoRegisterOsSourceHeader
++      NoRegisterOsTriggerHeader
+ 
+   # Details for issues around "Attribution Reporting API" usage.
+   # Explainer: https://github.com/WICG/attribution-reporting-api
+```
+
 ## Roll protocol to r1263784 — _2024-02-22T04:25:35.000Z_
-######  Diff: [`06fb977...0c33cae`](https://github.com/ChromeDevTools/devtools-protocol/compare/06fb977...0c33cae)
+######  Diff: [`06fb977...85cbc8e`](https://github.com/ChromeDevTools/devtools-protocol/compare/06fb977...85cbc8e)
 
 ```diff
 @@ browser_protocol.pdl:4053 @@ domain Emulation
@@ -11430,21 +11448,4 @@ index 09c420e..bd277eb 100644
        ch-ua-platform-version
        ch-ua-reduced
        ch-viewport-height
-```
-
-## Roll protocol to r939882 — _2021-11-09T17:15:27.000Z_
-######  Diff: [`e9d7ebc...ef5e053`](https://github.com/ChromeDevTools/devtools-protocol/compare/e9d7ebc...ef5e053)
-
-```diff
-@@ browser_protocol.pdl:8374 @@ domain Security
-       # Security state information about the page.
-       VisibleSecurityState visibleSecurityState
- 
--  # The security state of the page changed.
--  event securityStateChanged
-+  # The security state of the page changed. No longer being sent.
-+  deprecated event securityStateChanged
-     parameters
-       # Security state.
-       SecurityState securityState
 ```
