@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1266816 — _2024-02-29T04:26:20.000Z_
+######  Diff: [`462386a...3a3ec28`](https://github.com/ChromeDevTools/devtools-protocol/compare/462386a...3a3ec28)
+
+```diff
+@@ browser_protocol.pdl:9003 @@ domain Page
+       SmartCard
+       LiveMediaStreamTrack
+       UnloadHandler
++      ParserAborted
+       # Disabled for RenderFrameHost reasons
+       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
+       ContentSecurityHandler
+```
+
 ## Roll protocol to r1266247 — _2024-02-28T04:26:37.000Z_
-######  Diff: [`85cbc8e...e7eba5e`](https://github.com/ChromeDevTools/devtools-protocol/compare/85cbc8e...e7eba5e)
+######  Diff: [`85cbc8e...462386a`](https://github.com/ChromeDevTools/devtools-protocol/compare/85cbc8e...462386a)
 
 ```diff
 @@ browser_protocol.pdl:729 @@ experimental domain Audits
