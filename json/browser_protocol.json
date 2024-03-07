@@ -17418,6 +17418,7 @@
                         "CookieDisabled",
                         "HTTPAuthRequired",
                         "CookieFlushed",
+                        "BroadcastChannelOnMessage",
                         "WebSocket",
                         "WebTransport",
                         "WebRTC",

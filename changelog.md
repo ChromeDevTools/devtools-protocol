@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1269399 — _2024-03-07T04:25:11.000Z_
+######  Diff: [`61cfdc3...4828871`](https://github.com/ChromeDevTools/devtools-protocol/compare/61cfdc3...4828871)
+
+```diff
+@@ browser_protocol.pdl:8953 @@ domain Page
+       CookieDisabled
+       HTTPAuthRequired
+       CookieFlushed
++      BroadcastChannelOnMessage
+       #Blocklisted features
+       WebSocket
+       WebTransport
+```
+
 ## Roll protocol to r1266816 — _2024-02-29T04:26:20.000Z_
-######  Diff: [`462386a...3a3ec28`](https://github.com/ChromeDevTools/devtools-protocol/compare/462386a...3a3ec28)
+######  Diff: [`462386a...61cfdc3`](https://github.com/ChromeDevTools/devtools-protocol/compare/462386a...61cfdc3)
 
 ```diff
 @@ browser_protocol.pdl:9003 @@ domain Page
