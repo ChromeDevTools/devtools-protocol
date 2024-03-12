@@ -11220,6 +11220,18 @@ export namespace Protocol {
              * Connection type if known.
              */
             connectionType?: ConnectionType;
+            /**
+             * WebRTC packet loss (percent, 0-100). 0 disables packet loss emulation, 100 drops all the packets.
+             */
+            packetLoss?: number;
+            /**
+             * WebRTC packet queue length (packet). 0 removes any queue length limitations.
+             */
+            packetQueueLength?: integer;
+            /**
+             * WebRTC packetReordering feature.
+             */
+            packetReordering?: boolean;
         }
 
         export interface EnableRequest {

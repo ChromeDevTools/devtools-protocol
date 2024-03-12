@@ -1,7 +1,26 @@
 
 
+## Roll protocol to r1271365 — _2024-03-12T04:27:11.000Z_
+######  Diff: [`d932e1e...a93a67b`](https://github.com/ChromeDevTools/devtools-protocol/compare/d932e1e...a93a67b)
+
+```diff
+@@ browser_protocol.pdl:6356 @@ domain Network
+       number uploadThroughput
+       # Connection type if known.
+       optional ConnectionType connectionType
++      # WebRTC packet loss (percent, 0-100). 0 disables packet loss emulation, 100 drops all the packets.
++      experimental optional number packetLoss
++      # WebRTC packet queue length (packet). 0 removes any queue length limitations.
++      experimental optional integer packetQueueLength
++      # WebRTC packetReordering feature.
++      experimental optional boolean packetReordering
+ 
+   # Enables network tracking, network events will now be delivered to the client.
+   command enable
+```
+
 ## Roll protocol to r1269399 — _2024-03-07T04:25:11.000Z_
-######  Diff: [`61cfdc3...4828871`](https://github.com/ChromeDevTools/devtools-protocol/compare/61cfdc3...4828871)
+######  Diff: [`61cfdc3...d932e1e`](https://github.com/ChromeDevTools/devtools-protocol/compare/61cfdc3...d932e1e)
 
 ```diff
 @@ browser_protocol.pdl:8953 @@ domain Page
