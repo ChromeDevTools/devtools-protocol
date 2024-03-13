@@ -1,7 +1,106 @@
 
 
+## Roll protocol to r1271979 — _2024-03-13T04:25:43.000Z_
+######  Diff: [`08fa435...45b0f6d`](https://github.com/ChromeDevTools/devtools-protocol/compare/08fa435...45b0f6d)
+
+```diff
+@@ browser_protocol.pdl:7735 @@ domain Page
+       ch-ua-platform
+       ch-ua-model
+       ch-ua-mobile
+-      ch-ua-form-factor
++      ch-ua-form-factors
+       ch-ua-full-version
+       ch-ua-full-version-list
+       ch-ua-platform-version
+@@ -9655,28 +9655,6 @@ experimental domain Storage
+       bidderTrustedSignals
+       sellerTrustedSignals
+ 
+-  # Ad advertising element inside an interest group.
+-  type InterestGroupAd extends object
+-    properties
+-      string renderURL
+-      optional string metadata
+-
+-  # The full details of an interest group.
+-  type InterestGroupDetails extends object
+-    properties
+-      string ownerOrigin
+-      string name
+-      Network.TimeSinceEpoch expirationTime
+-      string joiningOrigin
+-      optional string biddingLogicURL
+-      optional string biddingWasmHelperURL
+-      optional string updateURL
+-      optional string trustedBiddingSignalsURL
+-      array of string trustedBiddingSignalsKeys
+-      optional string userBiddingSignals
+-      array of InterestGroupAd ads
+-      array of InterestGroupAd adComponents
+-
+   # Enum of shared storage access types.
+   type SharedStorageAccessType extends string
+     enum
+@@ -9696,6 +9674,10 @@ experimental domain Storage
+       workletEntries
+       workletLength
+       workletRemainingBudget
++      headerSet
++      headerAppend
++      headerDelete
++      headerClear
+ 
+   # Struct for a single key-value pair in an origin's shared storage.
+   type SharedStorageEntry extends object
+@@ -9754,18 +9736,24 @@ experimental domain Storage
+       # SharedStorageAccessType.documentDelete,
+       # SharedStorageAccessType.workletSet,
+       # SharedStorageAccessType.workletAppend,
+-      # SharedStorageAccessType.workletDelete, and
+-      # SharedStorageAccessType.workletGet.
++      # SharedStorageAccessType.workletDelete,
++      # SharedStorageAccessType.workletGet,
++      # SharedStorageAccessType.headerSet,
++      # SharedStorageAccessType.headerAppend, and
++      # SharedStorageAccessType.headerDelete.
+       optional string key
+       # Value for a specific entry in an origin's shared storage.
+       # Present only for SharedStorageAccessType.documentSet,
+       # SharedStorageAccessType.documentAppend,
+-      # SharedStorageAccessType.workletSet, and
+-      # SharedStorageAccessType.workletAppend.
++      # SharedStorageAccessType.workletSet,
++      # SharedStorageAccessType.workletAppend,
++      # SharedStorageAccessType.headerSet, and
++      # SharedStorageAccessType.headerAppend.
+       optional string value
+       # Whether or not to set an entry for a key if that key is already present.
+-      # Present only for SharedStorageAccessType.documentSet and
+-      # SharedStorageAccessType.workletSet.
++      # Present only for SharedStorageAccessType.documentSet,
++      # SharedStorageAccessType.workletSet, and
++      # SharedStorageAccessType.headerSet.
+       optional boolean ignoreIfPresent
+ 
+   type StorageBucketsDurability extends string
+@@ -9933,7 +9921,11 @@ experimental domain Storage
+       string ownerOrigin
+       string name
+     returns
+-      InterestGroupDetails details
++      # This largely corresponds to:
++      # https://wicg.github.io/turtledove/#dictdef-generatebidinterestgroup
++      # but has absolute expirationTime instead of relative lifetimeMs and
++      # also adds joiningOrigin.
++      object details
+ 
+   # Enables/Disables issuing of interestGroupAccessed events.
+   experimental command setInterestGroupTracking
+```
+
 ## Roll protocol to r1271365 — _2024-03-12T04:27:11.000Z_
-######  Diff: [`d932e1e...a93a67b`](https://github.com/ChromeDevTools/devtools-protocol/compare/d932e1e...a93a67b)
+######  Diff: [`d932e1e...08fa435`](https://github.com/ChromeDevTools/devtools-protocol/compare/d932e1e...08fa435)
 
 ```diff
 @@ browser_protocol.pdl:6356 @@ domain Network
@@ -11471,28 +11570,4 @@ index 09c420e..bd277eb 100644
  experimental domain Animation
    depends on Runtime
    depends on DOM
-```
-
-## Roll protocol to r940865 — _2021-11-11T19:15:26.000Z_
-######  Diff: [`a2c84e8...0308368`](https://github.com/ChromeDevTools/devtools-protocol/compare/a2c84e8...0308368)
-
-```diff
-@@ browser_protocol.pdl:3383 @@ domain Emulation
-   experimental type UserAgentMetadata extends object
-     properties
-       optional array of UserAgentBrandVersion brands
--      optional string fullVersion
-+      optional array of UserAgentBrandVersion fullVersionList
-+      deprecated optional string fullVersion
-       string platform
-       string platformVersion
-       string architecture
-@@ -6767,6 +6768,7 @@ domain Page
-       ch-ua-model
-       ch-ua-mobile
-       ch-ua-full-version
-+      ch-ua-full-version-list
-       ch-ua-platform-version
-       ch-ua-reduced
-       ch-viewport-height
 ```

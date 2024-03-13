@@ -13058,7 +13058,7 @@ export namespace Protocol {
          * All Permissions Policy features. This enum should match the one defined
          * in third_party/blink/renderer/core/permissions_policy/permissions_policy_features.json5.
          */
-        export type PermissionsPolicyFeature = ('accelerometer' | 'ambient-light-sensor' | 'attribution-reporting' | 'autoplay' | 'bluetooth' | 'browsing-topics' | 'camera' | 'captured-surface-control' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-prefers-color-scheme' | 'ch-prefers-reduced-motion' | 'ch-prefers-reduced-transparency' | 'ch-rtt' | 'ch-save-data' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-form-factor' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'compute-pressure' | 'cross-origin-isolated' | 'direct-sockets' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'hid' | 'identity-credentials-get' | 'idle-detection' | 'interest-cohort' | 'join-ad-interest-group' | 'keyboard-map' | 'local-fonts' | 'magnetometer' | 'microphone' | 'midi' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'private-aggregation' | 'private-state-token-issuance' | 'private-state-token-redemption' | 'publickey-credentials-create' | 'publickey-credentials-get' | 'run-ad-auction' | 'screen-wake-lock' | 'serial' | 'shared-autofill' | 'shared-storage' | 'shared-storage-select-url' | 'smart-card' | 'speaker-selection' | 'storage-access' | 'sub-apps' | 'sync-xhr' | 'unload' | 'usb' | 'usb-unrestricted' | 'vertical-scroll' | 'web-printing' | 'web-share' | 'window-management' | 'window-placement' | 'xr-spatial-tracking');
+        export type PermissionsPolicyFeature = ('accelerometer' | 'ambient-light-sensor' | 'attribution-reporting' | 'autoplay' | 'bluetooth' | 'browsing-topics' | 'camera' | 'captured-surface-control' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-prefers-color-scheme' | 'ch-prefers-reduced-motion' | 'ch-prefers-reduced-transparency' | 'ch-rtt' | 'ch-save-data' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-form-factors' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'compute-pressure' | 'cross-origin-isolated' | 'direct-sockets' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'hid' | 'identity-credentials-get' | 'idle-detection' | 'interest-cohort' | 'join-ad-interest-group' | 'keyboard-map' | 'local-fonts' | 'magnetometer' | 'microphone' | 'midi' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'private-aggregation' | 'private-state-token-issuance' | 'private-state-token-redemption' | 'publickey-credentials-create' | 'publickey-credentials-get' | 'run-ad-auction' | 'screen-wake-lock' | 'serial' | 'shared-autofill' | 'shared-storage' | 'shared-storage-select-url' | 'smart-card' | 'speaker-selection' | 'storage-access' | 'sub-apps' | 'sync-xhr' | 'unload' | 'usb' | 'usb-unrestricted' | 'vertical-scroll' | 'web-printing' | 'web-share' | 'window-management' | 'window-placement' | 'xr-spatial-tracking');
 
         /**
          * Reason for a permissions policy feature to be disabled.
@@ -15341,35 +15341,9 @@ export namespace Protocol {
         export type InterestGroupAuctionFetchType = ('bidderJs' | 'bidderWasm' | 'sellerJs' | 'bidderTrustedSignals' | 'sellerTrustedSignals');
 
         /**
-         * Ad advertising element inside an interest group.
-         */
-        export interface InterestGroupAd {
-            renderURL: string;
-            metadata?: string;
-        }
-
-        /**
-         * The full details of an interest group.
-         */
-        export interface InterestGroupDetails {
-            ownerOrigin: string;
-            name: string;
-            expirationTime: Network.TimeSinceEpoch;
-            joiningOrigin: string;
-            biddingLogicURL?: string;
-            biddingWasmHelperURL?: string;
-            updateURL?: string;
-            trustedBiddingSignalsURL?: string;
-            trustedBiddingSignalsKeys: string[];
-            userBiddingSignals?: string;
-            ads: InterestGroupAd[];
-            adComponents: InterestGroupAd[];
-        }
-
-        /**
          * Enum of shared storage access types.
          */
-        export type SharedStorageAccessType = ('documentAddModule' | 'documentSelectURL' | 'documentRun' | 'documentSet' | 'documentAppend' | 'documentDelete' | 'documentClear' | 'workletSet' | 'workletAppend' | 'workletDelete' | 'workletClear' | 'workletGet' | 'workletKeys' | 'workletEntries' | 'workletLength' | 'workletRemainingBudget');
+        export type SharedStorageAccessType = ('documentAddModule' | 'documentSelectURL' | 'documentRun' | 'documentSet' | 'documentAppend' | 'documentDelete' | 'documentClear' | 'workletSet' | 'workletAppend' | 'workletDelete' | 'workletClear' | 'workletGet' | 'workletKeys' | 'workletEntries' | 'workletLength' | 'workletRemainingBudget' | 'headerSet' | 'headerAppend' | 'headerDelete' | 'headerClear');
 
         /**
          * Struct for a single key-value pair in an origin's shared storage.
@@ -15458,22 +15432,28 @@ export namespace Protocol {
              * SharedStorageAccessType.documentDelete,
              * SharedStorageAccessType.workletSet,
              * SharedStorageAccessType.workletAppend,
-             * SharedStorageAccessType.workletDelete, and
-             * SharedStorageAccessType.workletGet.
+             * SharedStorageAccessType.workletDelete,
+             * SharedStorageAccessType.workletGet,
+             * SharedStorageAccessType.headerSet,
+             * SharedStorageAccessType.headerAppend, and
+             * SharedStorageAccessType.headerDelete.
              */
             key?: string;
             /**
              * Value for a specific entry in an origin's shared storage.
              * Present only for SharedStorageAccessType.documentSet,
              * SharedStorageAccessType.documentAppend,
-             * SharedStorageAccessType.workletSet, and
-             * SharedStorageAccessType.workletAppend.
+             * SharedStorageAccessType.workletSet,
+             * SharedStorageAccessType.workletAppend,
+             * SharedStorageAccessType.headerSet, and
+             * SharedStorageAccessType.headerAppend.
              */
             value?: string;
             /**
              * Whether or not to set an entry for a key if that key is already present.
-             * Present only for SharedStorageAccessType.documentSet and
-             * SharedStorageAccessType.workletSet.
+             * Present only for SharedStorageAccessType.documentSet,
+             * SharedStorageAccessType.workletSet, and
+             * SharedStorageAccessType.headerSet.
              */
             ignoreIfPresent?: boolean;
         }
@@ -15811,7 +15791,13 @@ export namespace Protocol {
         }
 
         export interface GetInterestGroupDetailsResponse {
-            details: InterestGroupDetails;
+            /**
+             * This largely corresponds to:
+             * https://wicg.github.io/turtledove/#dictdef-generatebidinterestgroup
+             * but has absolute expirationTime instead of relative lifetimeMs and
+             * also adds joiningOrigin.
+             */
+            details: any;
         }
 
         export interface SetInterestGroupTrackingRequest {
