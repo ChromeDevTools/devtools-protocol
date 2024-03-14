@@ -1,7 +1,51 @@
 
 
+## Roll protocol to r1272579 — _2024-03-14T04:25:42.000Z_
+######  Diff: [`1af74d1...5b153d7`](https://github.com/ChromeDevTools/devtools-protocol/compare/1af74d1...5b153d7)
+
+```diff
+@@ browser_protocol.pdl:2165 @@ experimental domain CSS
+     returns
+       CSSLayerData rootLayer
+ 
++  # Given a CSS selector text and a style sheet ID, getLocationForSelector
++  # returns an array of locations of the CSS selector in the style sheet.
++  experimental command getLocationForSelector
++    parameters
++      StyleSheetId styleSheetId
++      string selectorText
++    returns
++      array of SourceRange ranges
++
+   # Starts tracking the given computed styles for updates. The specified array of properties
+   # replaces the one previously specified. Pass empty array to disable tracking.
+   # Use takeComputedStyleUpdates to retrieve the list of nodes that had properties modified.
+@@ -10303,6 +10312,22 @@ experimental domain Storage
+       AttributionReportingEventLevelResult eventLevel
+       AttributionReportingAggregatableResult aggregatable
+ 
++  # A single Related Website Set object.
++  experimental type RelatedWebsiteSet extends object
++    properties
++      # The primary site of this set, along with the ccTLDs if there is any.
++      array of string primarySites
++      # The associated sites of this set, along with the ccTLDs if there is any.
++      array of string associatedSites
++      # The service sites of this set, along with the ccTLDs if there is any.
++      array of string serviceSites
++
++  # Returns the effective Related Website Sets in use by this profile for the browser
++  # session. The effective Related Website Sets will not change during a browser session.
++  experimental command getRelatedWebsiteSets
++    returns
++      array of RelatedWebsiteSet sets
++
+ # The SystemInfo domain defines methods and events for querying low-level system information.
+ experimental domain SystemInfo
+```
+
 ## Roll protocol to r1271979 — _2024-03-13T04:25:43.000Z_
-######  Diff: [`08fa435...45b0f6d`](https://github.com/ChromeDevTools/devtools-protocol/compare/08fa435...45b0f6d)
+######  Diff: [`08fa435...1af74d1`](https://github.com/ChromeDevTools/devtools-protocol/compare/08fa435...1af74d1)
 
 ```diff
 @@ browser_protocol.pdl:7735 @@ domain Page
@@ -11544,30 +11588,4 @@ index 09c420e..bd277eb 100644
      returns
        # Always set to true. If an error occurs, the response indicates protocol error.
        deprecated boolean success
-```
-
-## Roll protocol to r942138 — _2021-11-16T14:15:29.000Z_
-######  Diff: [`0308368...22bc316`](https://github.com/ChromeDevTools/devtools-protocol/compare/0308368...22bc316)
-
-```diff
-@@ browser_protocol.pdl:278 @@ experimental domain Accessibility
-       # including nodes that are ignored for accessibility.
-       array of AXNode nodes
- 
-+  # The loadComplete event mirrors the load complete event sent by the browser to assistive
-+  # technology when the web page has finished loading.
-+  experimental event loadComplete
-+    parameters
-+      # New document root node.
-+      AXNode root
-+
-+  # The nodesUpdated event is sent every time a previously requested node has changed the in tree.
-+  experimental event nodesUpdated
-+    parameters
-+      # Updated node data.
-+      array of AXNode nodes
-+
- experimental domain Animation
-   depends on Runtime
-   depends on DOM
 ```

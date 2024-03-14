@@ -2165,6 +2165,15 @@ experimental domain CSS
     returns
       CSSLayerData rootLayer
 
+  # Given a CSS selector text and a style sheet ID, getLocationForSelector
+  # returns an array of locations of the CSS selector in the style sheet.
+  experimental command getLocationForSelector
+    parameters
+      StyleSheetId styleSheetId
+      string selectorText
+    returns
+      array of SourceRange ranges
+
   # Starts tracking the given computed styles for updates. The specified array of properties
   # replaces the one previously specified. Pass empty array to disable tracking.
   # Use takeComputedStyleUpdates to retrieve the list of nodes that had properties modified.
@@ -10302,6 +10311,22 @@ experimental domain Storage
       AttributionReportingTriggerRegistration registration
       AttributionReportingEventLevelResult eventLevel
       AttributionReportingAggregatableResult aggregatable
+
+  # A single Related Website Set object.
+  experimental type RelatedWebsiteSet extends object
+    properties
+      # The primary site of this set, along with the ccTLDs if there is any.
+      array of string primarySites
+      # The associated sites of this set, along with the ccTLDs if there is any.
+      array of string associatedSites
+      # The service sites of this set, along with the ccTLDs if there is any.
+      array of string serviceSites
+
+  # Returns the effective Related Website Sets in use by this profile for the browser
+  # session. The effective Related Website Sets will not change during a browser session.
+  experimental command getRelatedWebsiteSets
+    returns
+      array of RelatedWebsiteSet sets
 
 # The SystemInfo domain defines methods and events for querying low-level system information.
 experimental domain SystemInfo

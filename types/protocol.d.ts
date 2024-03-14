@@ -5403,6 +5403,15 @@ export namespace Protocol {
             rootLayer: CSSLayerData;
         }
 
+        export interface GetLocationForSelectorRequest {
+            styleSheetId: StyleSheetId;
+            selectorText: string;
+        }
+
+        export interface GetLocationForSelectorResponse {
+            ranges: SourceRange[];
+        }
+
         export interface TrackComputedStyleUpdatesRequest {
             propertiesToTrack: CSSComputedStyleProperty[];
         }
@@ -15609,6 +15618,24 @@ export namespace Protocol {
 
         export type AttributionReportingAggregatableResult = ('success' | 'internalError' | 'noCapacityForAttributionDestination' | 'noMatchingSources' | 'excessiveAttributions' | 'excessiveReportingOrigins' | 'noHistograms' | 'insufficientBudget' | 'noMatchingSourceFilterData' | 'notRegistered' | 'prohibitedByBrowserPolicy' | 'deduplicated' | 'reportWindowPassed' | 'excessiveReports');
 
+        /**
+         * A single Related Website Set object.
+         */
+        export interface RelatedWebsiteSet {
+            /**
+             * The primary site of this set, along with the ccTLDs if there is any.
+             */
+            primarySites: string[];
+            /**
+             * The associated sites of this set, along with the ccTLDs if there is any.
+             */
+            associatedSites: string[];
+            /**
+             * The service sites of this set, along with the ccTLDs if there is any.
+             */
+            serviceSites: string[];
+        }
+
         export interface GetStorageKeyForFrameRequest {
             frameId: Page.FrameId;
         }
@@ -15874,6 +15901,10 @@ export namespace Protocol {
 
         export interface SetAttributionReportingTrackingRequest {
             enable: boolean;
+        }
+
+        export interface GetRelatedWebsiteSetsResponse {
+            sets: RelatedWebsiteSet[];
         }
 
         /**
