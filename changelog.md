@@ -1,7 +1,59 @@
 
 
+## Roll protocol to r1273222 — _2024-03-15T04:26:20.000Z_
+######  Diff: [`c804ef9...b067874`](https://github.com/ChromeDevTools/devtools-protocol/compare/c804ef9...b067874)
+
+```diff
+@@ browser_protocol.pdl:1944 @@ experimental domain CSS
+       CSSStyle style
+ 
+   # CSS position-fallback rule representation.
+-  type CSSPositionFallbackRule extends object
++  deprecated type CSSPositionFallbackRule extends object
+     properties
+       Value name
+       # List of keyframes.
+       array of CSSTryRule tryRules
+ 
++  # CSS @position-try rule representation.
++  type CSSPositionTryRule extends object
++    properties
++      # The prelude dashed-ident name
++      Value name
++      # The css style sheet identifier (absent for user agent stylesheet and user-specified
++      # stylesheet rules) this rule came from.
++      optional StyleSheetId styleSheetId
++      # Parent stylesheet's origin.
++      StyleSheetOrigin origin
++      # Associated style declaration.
++      CSSStyle style
++
+   # CSS keyframes rule representation.
+   type CSSKeyframesRule extends object
+     properties
+@@ -2123,7 +2136,9 @@ experimental domain CSS
+       # A list of CSS keyframed animations matching this node.
+       optional array of CSSKeyframesRule cssKeyframesRules
+       # A list of CSS position fallbacks matching this node.
+-      optional array of CSSPositionFallbackRule cssPositionFallbackRules
++      deprecated optional array of CSSPositionFallbackRule cssPositionFallbackRules
++      # A list of CSS @position-try rules matching this node, based on the position-try-options property.
++      optional array of CSSPositionTryRule cssPositionTryRules
+       # A list of CSS at-property rules matching this node.
+       optional array of CSSPropertyRule cssPropertyRules
+       # A list of CSS property registrations matching this node.
+@@ -9674,6 +9689,7 @@ experimental domain Storage
+       documentAppend
+       documentDelete
+       documentClear
++      documentGet
+       workletSet
+       workletAppend
+       workletDelete
+```
+
 ## Roll protocol to r1272579 — _2024-03-14T04:25:42.000Z_
-######  Diff: [`1af74d1...5b153d7`](https://github.com/ChromeDevTools/devtools-protocol/compare/1af74d1...5b153d7)
+######  Diff: [`1af74d1...c804ef9`](https://github.com/ChromeDevTools/devtools-protocol/compare/1af74d1...c804ef9)
 
 ```diff
 @@ browser_protocol.pdl:2165 @@ experimental domain CSS
@@ -11548,44 +11600,4 @@ index 09c420e..bd277eb 100644
    # An object providing the result of a network resource load.
    experimental type LoadNetworkResourcePageResult extends object
      properties
-```
-
-## Roll protocol to r943026 — _2021-11-18T11:15:23.000Z_
-######  Diff: [`22bc316...bee0143`](https://github.com/ChromeDevTools/devtools-protocol/compare/22bc316...bee0143)
-
-```diff
-@@ browser_protocol.pdl:5117 @@ domain Network
-       # An unspecified port value allows protocol clients to emulate legacy cookie scope for the port.
-       # This is a temporary ability and it will be removed in the future.
-       experimental integer sourcePort
-+      # Cookie partition key. The site of the top-level URL the browser was visiting at the start
-+      # of the request to the endpoint that set the cookie.
-+      experimental optional string partitionKey
-+      # True if cookie partition key is opaque.
-+      experimental optional boolean partitionKeyOpaque
- 
-   # Types of reasons why a cookie may not be stored from a response.
-   experimental type SetCookieBlockedReason extends string
-@@ -5275,6 +5280,10 @@ domain Network
-       # An unspecified port value allows protocol clients to emulate legacy cookie scope for the port.
-       # This is a temporary ability and it will be removed in the future.
-       experimental optional integer sourcePort
-+      # Cookie partition key. The site of the top-level URL the browser was visiting at the start
-+      # of the request to the endpoint that set the cookie.
-+      # If not set, the cookie will be set as not partitioned.
-+      experimental optional string partitionKey
- 
-   # Authorization challenge for HTTP status code 401 or 407.
-   experimental type AuthChallenge extends object
-@@ -5645,6 +5654,10 @@ domain Network
-       # An unspecified port value allows protocol clients to emulate legacy cookie scope for the port.
-       # This is a temporary ability and it will be removed in the future.
-       experimental optional integer sourcePort
-+      # Cookie partition key. The site of the top-level URL the browser was visiting at the start
-+      # of the request to the endpoint that set the cookie.
-+      # If not set, the cookie will be set as not partitioned.
-+      experimental optional string partitionKey
-     returns
-       # Always set to true. If an error occurs, the response indicates protocol error.
-       deprecated boolean success
 ```

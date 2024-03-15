@@ -5087,6 +5087,29 @@ export namespace Protocol {
         }
 
         /**
+         * CSS @position-try rule representation.
+         */
+        export interface CSSPositionTryRule {
+            /**
+             * The prelude dashed-ident name
+             */
+            name: Value;
+            /**
+             * The css style sheet identifier (absent for user agent stylesheet and user-specified
+             * stylesheet rules) this rule came from.
+             */
+            styleSheetId?: StyleSheetId;
+            /**
+             * Parent stylesheet's origin.
+             */
+            origin: StyleSheetOrigin;
+            /**
+             * Associated style declaration.
+             */
+            style: CSSStyle;
+        }
+
+        /**
          * CSS keyframes rule representation.
          */
         export interface CSSKeyframesRule {
@@ -5351,6 +5374,10 @@ export namespace Protocol {
              * A list of CSS position fallbacks matching this node.
              */
             cssPositionFallbackRules?: CSSPositionFallbackRule[];
+            /**
+             * A list of CSS @position-try rules matching this node, based on the position-try-options property.
+             */
+            cssPositionTryRules?: CSSPositionTryRule[];
             /**
              * A list of CSS at-property rules matching this node.
              */
@@ -15352,7 +15379,7 @@ export namespace Protocol {
         /**
          * Enum of shared storage access types.
          */
-        export type SharedStorageAccessType = ('documentAddModule' | 'documentSelectURL' | 'documentRun' | 'documentSet' | 'documentAppend' | 'documentDelete' | 'documentClear' | 'workletSet' | 'workletAppend' | 'workletDelete' | 'workletClear' | 'workletGet' | 'workletKeys' | 'workletEntries' | 'workletLength' | 'workletRemainingBudget' | 'headerSet' | 'headerAppend' | 'headerDelete' | 'headerClear');
+        export type SharedStorageAccessType = ('documentAddModule' | 'documentSelectURL' | 'documentRun' | 'documentSet' | 'documentAppend' | 'documentDelete' | 'documentClear' | 'documentGet' | 'workletSet' | 'workletAppend' | 'workletDelete' | 'workletClear' | 'workletGet' | 'workletKeys' | 'workletEntries' | 'workletLength' | 'workletRemainingBudget' | 'headerSet' | 'headerAppend' | 'headerDelete' | 'headerClear');
 
         /**
          * Struct for a single key-value pair in an origin's shared storage.
