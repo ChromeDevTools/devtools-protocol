@@ -1,7 +1,27 @@
 
 
+## Roll protocol to r1273771 — _2024-03-16T04:26:55.000Z_
+######  Diff: [`4537bcb...5071d2a`](https://github.com/ChromeDevTools/devtools-protocol/compare/4537bcb...5071d2a)
+
+```diff
+@@ browser_protocol.pdl:5539 @@ domain Network
+       # HTTP request headers.
+       Headers headers
+       # HTTP POST request data.
+-      optional string postData
++      # Use postDataEntries instead.
++      deprecated optional string postData
+       # True when the request has POST data. Note that postData might still be omitted when this flag is true when the data is too long.
+       optional boolean hasPostData
+-      # Request body elements. This will be converted from base64 to binary
++      # Request body elements (post data broken into individual entries).
+       experimental optional array of PostDataEntry postDataEntries
+       # The mixed content type of the request.
+       optional Security.MixedContentType mixedContentType
+```
+
 ## Roll protocol to r1273222 — _2024-03-15T04:26:20.000Z_
-######  Diff: [`c804ef9...b067874`](https://github.com/ChromeDevTools/devtools-protocol/compare/c804ef9...b067874)
+######  Diff: [`c804ef9...4537bcb`](https://github.com/ChromeDevTools/devtools-protocol/compare/c804ef9...4537bcb)
 
 ```diff
 @@ browser_protocol.pdl:1944 @@ experimental domain CSS
@@ -11574,30 +11594,4 @@ index 09c420e..bd277eb 100644
  
      returns
        # The id of the context created.
-```
-
-## Roll protocol to r943452 — _2021-11-19T09:15:22.000Z_
-######  Diff: [`bee0143...946136a`](https://github.com/ChromeDevTools/devtools-protocol/compare/bee0143...946136a)
-
-```diff
-@@ browser_protocol.pdl:6204 @@ domain Network
-     parameters
-       ReportingApiReport report
- 
-+  experimental type ReportingApiEndpoint extends object
-+    properties
-+      # The URL of the endpoint to which reports may be delivered.
-+      string url
-+      # Name of the endpoint group.
-+      string groupName
-+
-+  experimental event reportingApiEndpointsChangedForOrigin
-+    parameters
-+      # Origin of the document(s) which configured the endpoints.
-+      string origin
-+      array of ReportingApiEndpoint endpoints
-+
-   # An object providing the result of a network resource load.
-   experimental type LoadNetworkResourcePageResult extends object
-     properties
 ```

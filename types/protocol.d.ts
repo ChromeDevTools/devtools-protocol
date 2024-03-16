@@ -10157,6 +10157,7 @@ export namespace Protocol {
             headers: Headers;
             /**
              * HTTP POST request data.
+             * Use postDataEntries instead.
              */
             postData?: string;
             /**
@@ -10164,7 +10165,7 @@ export namespace Protocol {
              */
             hasPostData?: boolean;
             /**
-             * Request body elements. This will be converted from base64 to binary
+             * Request body elements (post data broken into individual entries).
              */
             postDataEntries?: PostDataEntry[];
             /**
