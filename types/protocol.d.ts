@@ -15931,6 +15931,13 @@ export namespace Protocol {
             enable: boolean;
         }
 
+        export interface SendPendingAttributionReportsResponse {
+            /**
+             * The number of reports that were sent.
+             */
+            numSent: integer;
+        }
+
         export interface GetRelatedWebsiteSetsResponse {
             sets: RelatedWebsiteSet[];
         }

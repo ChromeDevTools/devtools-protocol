@@ -1,7 +1,27 @@
 
 
+## Roll protocol to r1275388 — _2024-03-20T04:26:38.000Z_
+######  Diff: [`8241e6c...cf7df3d`](https://github.com/ChromeDevTools/devtools-protocol/compare/8241e6c...cf7df3d)
+
+```diff
+@@ browser_protocol.pdl:10148 @@ experimental domain Storage
+     parameters
+       boolean enable
+ 
++  # Sends all pending Attribution Reports immediately, regardless of their
++  # scheduled report time.
++  experimental command sendPendingAttributionReports
++    returns
++      # The number of reports that were sent.
++      integer numSent
++
+   experimental type AttributionReportingSourceType extends string
+     enum
+       navigation
+```
+
 ## Roll protocol to r1273771 — _2024-03-16T04:26:55.000Z_
-######  Diff: [`4537bcb...5071d2a`](https://github.com/ChromeDevTools/devtools-protocol/compare/4537bcb...5071d2a)
+######  Diff: [`4537bcb...8241e6c`](https://github.com/ChromeDevTools/devtools-protocol/compare/4537bcb...8241e6c)
 
 ```diff
 @@ browser_protocol.pdl:5539 @@ domain Network
@@ -11579,19 +11599,4 @@ index 09c420e..bd277eb 100644
        optional array of string originsWithUniversalNetworkAccess
  
      returns
-```
-
-## Roll protocol to r943687 — _2021-11-19T22:15:27.000Z_
-######  Diff: [`946136a...15f524c`](https://github.com/ChromeDevTools/devtools-protocol/compare/946136a...15f524c)
-
-```diff
-@@ browser_protocol.pdl:8929 @@ domain Target
-       optional string proxyServer
-       # Proxy bypass list, similar to the one passed to --proxy-bypass-list
-       optional string proxyBypassList
-+      # An optional list of origins to grant unlimited cross-origin access to.
-+      optional array of string originsWithUniversalNetworkAccess
- 
-     returns
-       # The id of the context created.
 ```
