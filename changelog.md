@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1279463 — _2024-03-28T04:25:51.000Z_
+######  Diff: [`6a229aa...b813677`](https://github.com/ChromeDevTools/devtools-protocol/compare/6a229aa...b813677)
+
+```diff
+@@ browser_protocol.pdl:10237 @@ experimental domain Storage
+       destinationBothLimitsReached
+       reportingOriginsPerSiteLimitReached
+       exceedsMaxChannelCapacity
++      exceedsMaxTriggerStateCardinality
+ 
+   experimental event attributionReportingSourceRegistered
+     parameters
+```
+
 ## Roll protocol to r1275388 — _2024-03-20T04:26:38.000Z_
-######  Diff: [`8241e6c...cf7df3d`](https://github.com/ChromeDevTools/devtools-protocol/compare/8241e6c...cf7df3d)
+######  Diff: [`8241e6c...6a229aa`](https://github.com/ChromeDevTools/devtools-protocol/compare/8241e6c...6a229aa)
 
 ```diff
 @@ browser_protocol.pdl:10148 @@ experimental domain Storage
@@ -11585,18 +11599,4 @@ index 09c420e..bd277eb 100644
        InvalidAllowMethodsPreflightResponse
        InvalidAllowHeadersPreflightResponse
        MethodDisallowedByPreflightResponse
-```
-
-## Roll protocol to r944179 — _2021-11-22T19:15:40.000Z_
-######  Diff: [`15f524c...47ce494`](https://github.com/ChromeDevTools/devtools-protocol/compare/15f524c...47ce494)
-
-```diff
-@@ browser_protocol.pdl:8930 @@ domain Target
-       # Proxy bypass list, similar to the one passed to --proxy-bypass-list
-       optional string proxyBypassList
-       # An optional list of origins to grant unlimited cross-origin access to.
-+      # Parts of the URL other than those constituting origin are ignored.
-       optional array of string originsWithUniversalNetworkAccess
- 
-     returns
 ```
