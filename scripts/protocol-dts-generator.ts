@@ -321,12 +321,21 @@ const emitMapping = (moduleName: string, protocolModuleName: string, domains: P.
     emitLine(`export default ${moduleName};`)
 }
 
-const emitApiCommand = (command: P.Command, domainName: string, modulePrefix: string) => {
+const emitApiCommand = (command: P.Command, domainName: string, modulePrefix: string, eventStyle: EventStyle) => {
     const prefix = `${modulePrefix}.${domainName}.`
     emitDescription(command.description)
     const params = command.parameters ? `params: ${prefix}${toCmdRequestName(command.name)}` : ''
     const response = command.returns ? `${prefix}${toCmdResponseName(command.name)}` : 'void'
-    emitLine(`${command.name}(${params}): Promise<${response}>;`)
+    switch (eventStyle) {
+      case EventStyle.REGULAR: {
+        emitLine(`${command.name}(${params}): Promise<${response}>;`)
+        break;
+      }
+      case EventStyle.INSPECTOR_PROTOCOL_TESTS: {
+        emitLine(`${command.name}(${params}): Promise<{id: number, result: ${response}, sessionId: string}>;`)
+        break;
+      }
+    }
     emitLine()
 }
 
@@ -354,7 +363,7 @@ const emitDomainApi = (domain: P.Domain, modulePrefix: string, eventStyle: Event
     emitLine()
     const domainName = toTitleCase(domain.domain)
     emitOpenBlock(`export interface ${domainName}Api`)
-    if (domain.commands) domain.commands.forEach(c => emitApiCommand(c, domainName, modulePrefix))
+    if (domain.commands) domain.commands.forEach(c => emitApiCommand(c, domainName, modulePrefix, eventStyle))
     if (domain.events) domain.events.forEach(e => emitApiEvent(e, domainName, modulePrefix, eventStyle))
     emitCloseBlock()
 }
