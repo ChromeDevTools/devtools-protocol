@@ -1802,6 +1802,20 @@ export namespace ProtocolProxyApi {
          */
         setDeviceMetricsOverride(params: Protocol.Emulation.SetDeviceMetricsOverrideRequest): Promise<void>;
 
+        /**
+         * Start reporting the given posture value to the Device Posture API.
+         * This override can also be set in setDeviceMetricsOverride().
+         */
+        setDevicePostureOverride(params: Protocol.Emulation.SetDevicePostureOverrideRequest): Promise<void>;
+
+        /**
+         * Clears a device posture override set with either setDeviceMetricsOverride()
+         * or setDevicePostureOverride() and starts using posture information from the
+         * platform again.
+         * Does nothing if no override is set.
+         */
+        clearDevicePostureOverride(): Promise<void>;
+
         setScrollbarsHidden(params: Protocol.Emulation.SetScrollbarsHiddenRequest): Promise<void>;
 
         setDocumentCookieDisabled(params: Protocol.Emulation.SetDocumentCookieDisabledRequest): Promise<void>;

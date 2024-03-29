@@ -8193,8 +8193,13 @@ export namespace Protocol {
             /**
              * If set, the posture of a foldable device. If not set the posture is set
              * to continuous.
+             * Deprecated, use Emulation.setDevicePostureOverride.
              */
             devicePosture?: DevicePosture;
+        }
+
+        export interface SetDevicePostureOverrideRequest {
+            posture: DevicePosture;
         }
 
         export interface SetScrollbarsHiddenRequest {
@@ -10437,6 +10442,10 @@ export namespace Protocol {
              * Specifies that the request was served from the prefetch cache.
              */
             fromPrefetchCache?: boolean;
+            /**
+             * Specifies that the request was served from the prefetch cache.
+             */
+            fromEarlyHints?: boolean;
             /**
              * Information about how Service Worker Static Router was used.
              */

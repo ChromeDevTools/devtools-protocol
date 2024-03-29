@@ -1,7 +1,44 @@
 
 
+## Roll protocol to r1280070 — _2024-03-29T04:26:49.000Z_
+######  Diff: [`dce7d35...4832924`](https://github.com/ChromeDevTools/devtools-protocol/compare/dce7d35...4832924)
+
+```diff
+@@ browser_protocol.pdl:4159 @@ domain Emulation
+       experimental optional DisplayFeature displayFeature
+       # If set, the posture of a foldable device. If not set the posture is set
+       # to continuous.
+-      experimental optional DevicePosture devicePosture
++      # Deprecated, use Emulation.setDevicePostureOverride.
++      experimental deprecated optional DevicePosture devicePosture
++
++  # Start reporting the given posture value to the Device Posture API.
++  # This override can also be set in setDeviceMetricsOverride().
++  experimental command setDevicePostureOverride
++    parameters
++      DevicePosture posture
++
++  # Clears a device posture override set with either setDeviceMetricsOverride()
++  # or setDevicePostureOverride() and starts using posture information from the
++  # platform again.
++  # Does nothing if no override is set.
++  experimental command clearDevicePostureOverride
+ 
+   experimental command setScrollbarsHidden
+     parameters
+@@ -5817,6 +5830,8 @@ domain Network
+       optional boolean fromServiceWorker
+       # Specifies that the request was served from the prefetch cache.
+       optional boolean fromPrefetchCache
++      # Specifies that the request was served from the prefetch cache.
++      optional boolean fromEarlyHints
+       # Information about how Service Worker Static Router was used.
+       experimental optional ServiceWorkerRouterInfo serviceWorkerRouterInfo
+       # Total number of bytes received for this request so far.
+```
+
 ## Roll protocol to r1279463 — _2024-03-28T04:25:51.000Z_
-######  Diff: [`6a229aa...b813677`](https://github.com/ChromeDevTools/devtools-protocol/compare/6a229aa...b813677)
+######  Diff: [`6a229aa...409429c`](https://github.com/ChromeDevTools/devtools-protocol/compare/6a229aa...409429c)
 
 ```diff
 @@ browser_protocol.pdl:10237 @@ experimental domain Storage
@@ -11564,39 +11601,4 @@ index 09c420e..bd277eb 100644
    # Starts mirroring the tab to the sink.
    command startTabMirroring
      parameters
-```
-
-## Roll protocol to r946318 — _2021-11-30T04:15:44.000Z_
-######  Diff: [`76839dc...baf4231`](https://github.com/ChromeDevTools/devtools-protocol/compare/76839dc...baf4231)
-
-```diff
-@@ browser_protocol.pdl:8035 @@ domain Page
-       ContentWebUSB
-       ContentMediaSession
-       ContentMediaSessionService
-+      ContentScreenReader
- 
-       # See components/back_forward_cache/back_forward_cache_disable.h for explanations.
-       EmbedderPopupBlockerTabHelper
-```
-
-## Roll protocol to r945905 — _2021-11-29T11:15:22.000Z_
-######  Diff: [`47ce494...76839dc`](https://github.com/ChromeDevTools/devtools-protocol/compare/47ce494...76839dc)
-
-```diff
-@@ browser_protocol.pdl:4908 @@ domain Network
-       PreflightInvalidAllowOriginValue
-       PreflightAllowOriginMismatch
-       PreflightInvalidAllowCredentials
-+      # TODO(https://crbug.com/1263483): Remove this once frontend code does
-+      # not reference it anymore.
-       PreflightMissingAllowExternal
-+      # TODO(https://crbug.com/1263483): Remove this once frontend code does
-+      # not reference it anymore.
-       PreflightInvalidAllowExternal
-+      PreflightMissingAllowPrivateNetwork
-+      PreflightInvalidAllowPrivateNetwork
-       InvalidAllowMethodsPreflightResponse
-       InvalidAllowHeadersPreflightResponse
-       MethodDisallowedByPreflightResponse
 ```
