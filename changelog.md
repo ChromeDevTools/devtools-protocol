@@ -1,7 +1,39 @@
 
 
+## Roll protocol to r1281655 — _2024-04-03T04:26:30.000Z_
+######  Diff: [`a0b1761...d2903b6`](https://github.com/ChromeDevTools/devtools-protocol/compare/a0b1761...d2903b6)
+
+```diff
+@@ browser_protocol.pdl:6123 @@ domain Network
+     properties
+       # The reason the cookie was exempted.
+       CookieExemptionReason exemptionReason
++      # The string representing this individual cookie as it would appear in the header.
++      string cookieLine
+       # The cookie object representing the cookie.
+       Cookie cookie
+ 
+@@ -6957,6 +6959,16 @@ domain Network
+       # the response with the corresponding reason.
+       optional array of ExemptedSetCookieWithReason exemptedCookies
+ 
++  # Fired when 103 Early Hints headers is received in addition to the common response.
++  # Not every responseReceived event will have an responseReceivedEarlyHints fired.
++  # Only one responseReceivedEarlyHints may be fired for eached responseReceived event.
++  experimental event responseReceivedEarlyHints
++    parameters
++      # Request identifier. Used to match this information to another responseReceived event.
++      RequestId requestId
++      # Raw response headers as they were received over the wire.
++      Headers headers
++
+   # Fired exactly once for each Trust Token operation. Depending on
+   # the type of the operation and whether the operation succeeded or
+   # failed, the event is fired before the corresponding request was sent
+```
+
 ## Roll protocol to r1280070 — _2024-03-29T04:26:49.000Z_
-######  Diff: [`dce7d35...4832924`](https://github.com/ChromeDevTools/devtools-protocol/compare/dce7d35...4832924)
+######  Diff: [`dce7d35...a0b1761`](https://github.com/ChromeDevTools/devtools-protocol/compare/dce7d35...a0b1761)
 
 ```diff
 @@ browser_protocol.pdl:4159 @@ domain Emulation
@@ -11583,22 +11615,4 @@ index 09c420e..bd277eb 100644
  
    # Details for issues around "Attribution Reporting API" usage.
    # Explainer: https://github.com/WICG/conversion-measurement-api
-```
-
-## Roll protocol to r946693 — _2021-11-30T22:15:35.000Z_
-######  Diff: [`baf4231...2a18d25`](https://github.com/ChromeDevTools/devtools-protocol/compare/baf4231...2a18d25)
-
-```diff
-@@ browser_protocol.pdl:1949 @@ experimental domain Cast
-     parameters
-       string sinkName
- 
-+  # Starts mirroring the desktop to the sink.
-+  command startDesktopMirroring
-+    parameters
-+      string sinkName
-+
-   # Starts mirroring the tab to the sink.
-   command startTabMirroring
-     parameters
 ```

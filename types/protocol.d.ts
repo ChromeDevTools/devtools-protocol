@@ -10730,6 +10730,10 @@ export namespace Protocol {
              */
             exemptionReason: CookieExemptionReason;
             /**
+             * The string representing this individual cookie as it would appear in the header.
+             */
+            cookieLine: string;
+            /**
              * The cookie object representing the cookie.
              */
             cookie: Cookie;
@@ -12170,6 +12174,22 @@ export namespace Protocol {
              * the response with the corresponding reason.
              */
             exemptedCookies?: ExemptedSetCookieWithReason[];
+        }
+
+        /**
+         * Fired when 103 Early Hints headers is received in addition to the common response.
+         * Not every responseReceived event will have an responseReceivedEarlyHints fired.
+         * Only one responseReceivedEarlyHints may be fired for eached responseReceived event.
+         */
+        export interface ResponseReceivedEarlyHintsEvent {
+            /**
+             * Request identifier. Used to match this information to another responseReceived event.
+             */
+            requestId: RequestId;
+            /**
+             * Raw response headers as they were received over the wire.
+             */
+            headers: Headers;
         }
 
         export const enum TrustTokenOperationDoneEventStatus {

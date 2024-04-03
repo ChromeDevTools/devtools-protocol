@@ -2560,6 +2560,13 @@ export namespace ProtocolProxyApi {
         on(event: 'responseReceivedExtraInfo', listener: (params: Protocol.Network.ResponseReceivedExtraInfoEvent) => void): void;
 
         /**
+         * Fired when 103 Early Hints headers is received in addition to the common response.
+         * Not every responseReceived event will have an responseReceivedEarlyHints fired.
+         * Only one responseReceivedEarlyHints may be fired for eached responseReceived event.
+         */
+        on(event: 'responseReceivedEarlyHints', listener: (params: Protocol.Network.ResponseReceivedEarlyHintsEvent) => void): void;
+
+        /**
          * Fired exactly once for each Trust Token operation. Depending on
          * the type of the operation and whether the operation succeeded or
          * failed, the event is fired before the corresponding request was sent
