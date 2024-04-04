@@ -4925,6 +4925,13 @@ export namespace ProtocolMapping {
             paramsType: [];
             returnType: void;
         };
+        /**
+         * Returns the following OS state for the given manifest id.
+         */
+        'PWA.getOsAppState': {
+            paramsType: [Protocol.PWA.GetOsAppStateRequest];
+            returnType: Protocol.PWA.GetOsAppStateResponse;
+        };
     }
 }
 

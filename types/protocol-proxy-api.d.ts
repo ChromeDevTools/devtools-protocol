@@ -110,6 +110,8 @@ export namespace ProtocolProxyApi {
 
         FedCm: FedCmApi;
 
+        PWA: PWAApi;
+
     }
 
 
@@ -4194,6 +4196,14 @@ export namespace ProtocolProxyApi {
          * or a command below.
          */
         on(event: 'dialogClosed', listener: (params: Protocol.FedCm.DialogClosedEvent) => void): void;
+
+    }
+
+    export interface PWAApi {
+        /**
+         * Returns the following OS state for the given manifest id.
+         */
+        getOsAppState(params: Protocol.PWA.GetOsAppStateRequest): Promise<Protocol.PWA.GetOsAppStateResponse>;
 
     }
 }

@@ -110,6 +110,8 @@ export namespace ProtocolTestsProxyApi {
 
         FedCm: FedCmApi;
 
+        PWA: PWAApi;
+
     }
 
 
@@ -4576,6 +4578,14 @@ export namespace ProtocolTestsProxyApi {
         onDialogClosed(listener: (event: { params: Protocol.FedCm.DialogClosedEvent }) => void): void;
         offDialogClosed(listener: (event: { params: Protocol.FedCm.DialogClosedEvent }) => void): void;
         onceDialogClosed(eventMatcher?: (event: { params: Protocol.FedCm.DialogClosedEvent }) => boolean): Promise<{ params: Protocol.FedCm.DialogClosedEvent }>;
+
+    }
+
+    export interface PWAApi {
+        /**
+         * Returns the following OS state for the given manifest id.
+         */
+        getOsAppState(params: Protocol.PWA.GetOsAppStateRequest): Promise<{id: number, result: Protocol.PWA.GetOsAppStateResponse, sessionId: string}>;
 
     }
 }

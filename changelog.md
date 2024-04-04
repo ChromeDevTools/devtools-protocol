@@ -1,7 +1,46 @@
 
 
+## Roll protocol to r1282316 — _2024-04-04T04:27:08.000Z_
+######  Diff: [`5f4d1e6...0d982b2`](https://github.com/ChromeDevTools/devtools-protocol/compare/5f4d1e6...0d982b2)
+
+```diff
+@@ browser_protocol.pdl:12123 @@ experimental domain FedCm
+   # Resets the cooldown time, if any, to allow the next FedCM call to show
+   # a dialog even if one was recently dismissed by the user.
+   command resetCooldown
++
++# This domain allows interacting with the browser to control PWAs.
++experimental domain PWA
++
++  # The following types are the replica of
++  # https://crsrc.org/c/chrome/browser/web_applications/proto/web_app_os_integration_state.proto;drc=9910d3be894c8f142c977ba1023f30a656bc13fc;l=67
++  type FileHandlerAccept extends object
++    properties
++      # New name of the mimetype according to
++      # https://www.iana.org/assignments/media-types/media-types.xhtml
++      string mediaType
++      array of string fileExtensions
++
++  type FileHandler extends object
++    properties
++      string action
++      array of FileHandlerAccept accepts
++      string displayName
++
++  # Returns the following OS state for the given manifest id.
++  command getOsAppState
++    parameters
++      # The id from the webapp's manifest file, commonly it's the url of the
++      # site installing the webapp. See
++      # https://web.dev/learn/pwa/web-app-manifest.
++      string manifestId
++    returns
++      integer badgeCount
++      array of FileHandler fileHandlers
+```
+
 ## Roll protocol to r1281655 — _2024-04-03T04:26:30.000Z_
-######  Diff: [`a0b1761...d2903b6`](https://github.com/ChromeDevTools/devtools-protocol/compare/a0b1761...d2903b6)
+######  Diff: [`a0b1761...5f4d1e6`](https://github.com/ChromeDevTools/devtools-protocol/compare/a0b1761...5f4d1e6)
 
 ```diff
 @@ browser_protocol.pdl:6123 @@ domain Network
@@ -11597,21 +11636,6 @@ index 09c420e..bd277eb 100644
 +      InvalidEventSourceTriggerData
 +      InvalidTriggerPriority
 +      InvalidTriggerDedupKey
- 
-   # Details for issues around "Attribution Reporting API" usage.
-   # Explainer: https://github.com/WICG/conversion-measurement-api
-```
-
-## Roll protocol to r947303 — _2021-12-02T01:15:26.000Z_
-######  Diff: [`2a18d25...11ea32a`](https://github.com/ChromeDevTools/devtools-protocol/compare/2a18d25...11ea32a)
-
-```diff
-@@ browser_protocol.pdl:703 @@ experimental domain Audits
-       AttributionUntrustworthyOrigin
-       AttributionTriggerDataTooLarge
-       AttributionEventSourceTriggerDataTooLarge
-+      InvalidAttributionSourceExpiry
-+      InvalidAttributionSourcePriority
  
    # Details for issues around "Attribution Reporting API" usage.
    # Explainer: https://github.com/WICG/conversion-measurement-api
