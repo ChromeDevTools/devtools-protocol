@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1284279 — _2024-04-09T04:26:29.000Z_
+######  Diff: [`85c9096...0ae54bf`](https://github.com/ChromeDevTools/devtools-protocol/compare/85c9096...0ae54bf)
+
+```diff
+@@ browser_protocol.pdl:2575 @@ domain DOM
+       grammar-error
+       highlight
+       first-line-inherited
++      scroll-marker
++      scroll-markers
+       scrollbar
+       scrollbar-thumb
+       scrollbar-button
+```
+
 ## Roll protocol to r1282316 — _2024-04-04T04:27:08.000Z_
-######  Diff: [`5f4d1e6...0d982b2`](https://github.com/ChromeDevTools/devtools-protocol/compare/5f4d1e6...0d982b2)
+######  Diff: [`5f4d1e6...85c9096`](https://github.com/ChromeDevTools/devtools-protocol/compare/5f4d1e6...85c9096)
 
 ```diff
 @@ browser_protocol.pdl:12123 @@ experimental domain FedCm
@@ -11623,20 +11638,4 @@ index 09c420e..bd277eb 100644
  
    # A unique id for a DevTools inspector issue. Allows other entities (e.g.
    # exceptions, CDP message, console messages, etc.) to reference an issue.
-```
-
-## Roll protocol to r948336 — _2021-12-04T17:15:26.000Z_
-######  Diff: [`11ea32a...dc1b71a`](https://github.com/ChromeDevTools/devtools-protocol/compare/11ea32a...dc1b71a)
-
-```diff
-@@ browser_protocol.pdl:705 @@ experimental domain Audits
-       AttributionEventSourceTriggerDataTooLarge
-       InvalidAttributionSourceExpiry
-       InvalidAttributionSourcePriority
-+      InvalidEventSourceTriggerData
-+      InvalidTriggerPriority
-+      InvalidTriggerDedupKey
- 
-   # Details for issues around "Attribution Reporting API" usage.
-   # Explainer: https://github.com/WICG/conversion-measurement-api
 ```

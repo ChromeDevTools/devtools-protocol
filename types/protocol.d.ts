@@ -5916,7 +5916,7 @@ export namespace Protocol {
         /**
          * Pseudo element type.
          */
-        export type PseudoType = ('first-line' | 'first-letter' | 'before' | 'after' | 'marker' | 'backdrop' | 'selection' | 'target-text' | 'spelling-error' | 'grammar-error' | 'highlight' | 'first-line-inherited' | 'scrollbar' | 'scrollbar-thumb' | 'scrollbar-button' | 'scrollbar-track' | 'scrollbar-track-piece' | 'scrollbar-corner' | 'resizer' | 'input-list-button' | 'view-transition' | 'view-transition-group' | 'view-transition-image-pair' | 'view-transition-old' | 'view-transition-new');
+        export type PseudoType = ('first-line' | 'first-letter' | 'before' | 'after' | 'marker' | 'backdrop' | 'selection' | 'target-text' | 'spelling-error' | 'grammar-error' | 'highlight' | 'first-line-inherited' | 'scroll-marker' | 'scroll-markers' | 'scrollbar' | 'scrollbar-thumb' | 'scrollbar-button' | 'scrollbar-track' | 'scrollbar-track-piece' | 'scrollbar-corner' | 'resizer' | 'input-list-button' | 'view-transition' | 'view-transition-group' | 'view-transition-image-pair' | 'view-transition-old' | 'view-transition-new');
 
         /**
          * Shadow root type.
