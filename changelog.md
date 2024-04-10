@@ -1,7 +1,7 @@
 
 
 ## Roll protocol to r1284279 — _2024-04-09T04:26:29.000Z_
-######  Diff: [`85c9096...0ae54bf`](https://github.com/ChromeDevTools/devtools-protocol/compare/85c9096...0ae54bf)
+######  Diff: [`85c9096...91c5005`](https://github.com/ChromeDevTools/devtools-protocol/compare/85c9096...91c5005)
 
 ```diff
 @@ browser_protocol.pdl:2575 @@ domain DOM
