@@ -818,6 +818,13 @@ export namespace ProtocolTestsProxyApi {
         offAnimationStarted(listener: (event: { params: Protocol.Animation.AnimationStartedEvent }) => void): void;
         onceAnimationStarted(eventMatcher?: (event: { params: Protocol.Animation.AnimationStartedEvent }) => boolean): Promise<{ params: Protocol.Animation.AnimationStartedEvent }>;
 
+        /**
+         * Event for animation that has been updated.
+         */
+        onAnimationUpdated(listener: (event: { params: Protocol.Animation.AnimationUpdatedEvent }) => void): void;
+        offAnimationUpdated(listener: (event: { params: Protocol.Animation.AnimationUpdatedEvent }) => void): void;
+        onceAnimationUpdated(eventMatcher?: (event: { params: Protocol.Animation.AnimationUpdatedEvent }) => boolean): Promise<{ params: Protocol.Animation.AnimationUpdatedEvent }>;
+
     }
 
     export interface AuditsApi {

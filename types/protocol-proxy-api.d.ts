@@ -764,6 +764,11 @@ export namespace ProtocolProxyApi {
          */
         on(event: 'animationStarted', listener: (params: Protocol.Animation.AnimationStartedEvent) => void): void;
 
+        /**
+         * Event for animation that has been updated.
+         */
+        on(event: 'animationUpdated', listener: (params: Protocol.Animation.AnimationUpdatedEvent) => void): void;
+
     }
 
     export interface AuditsApi {

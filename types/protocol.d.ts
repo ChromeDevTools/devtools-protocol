@@ -3260,6 +3260,16 @@ export namespace Protocol {
              */
             animation: Animation;
         }
+
+        /**
+         * Event for animation that has been updated.
+         */
+        export interface AnimationUpdatedEvent {
+            /**
+             * Animation that was updated.
+             */
+            animation: Animation;
+        }
     }
 
     /**

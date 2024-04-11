@@ -1,5 +1,24 @@
 
 
+## Roll protocol to r1285609 — _2024-04-11T04:26:18.000Z_
+######  Diff: [`adb454e...287d8a8`](https://github.com/ChromeDevTools/devtools-protocol/compare/adb454e...287d8a8)
+
+```diff
+@@ browser_protocol.pdl:475 @@ experimental domain Animation
+       # Animation that was started.
+       Animation animation
+ 
++  # Event for animation that has been updated.
++  event animationUpdated
++    parameters
++      # Animation that was updated.
++      Animation animation
++
+ # Audits domain allows investigation of page violations and possible improvements.
+ experimental domain Audits
+   depends on Network
+```
+
 ## Roll protocol to r1284279 — _2024-04-09T04:26:29.000Z_
 ######  Diff: [`85c9096...91c5005`](https://github.com/ChromeDevTools/devtools-protocol/compare/85c9096...91c5005)
 
@@ -11593,49 +11612,4 @@ index 09c420e..bd277eb 100644
  
    # Shadow root type.
    type ShadowRootType extends string
-```
-
-## Roll protocol to r952091 — _2021-12-15T21:15:35.000Z_
-######  Diff: [`e96cb74...12d9e69`](https://github.com/ChromeDevTools/devtools-protocol/compare/e96cb74...12d9e69)
-
-```diff
-@@ browser_protocol.pdl:770 @@ experimental domain Audits
-       # https://www.chromestatus.com/feature/5684870116278272 for more details."
-       deprecated optional string message
- 
-+  type ClientHintIssueReason extends string
-+    enum
-+      # Items in the accept-ch meta tag allow list must be valid origins.
-+      # No special values (e.g. self, none, and *) are permitted.
-+      MetaTagAllowListInvalidOrigin
-+      # Only accept-ch meta tags in the original HTML sent from the server
-+      # are respected. Any injected via javascript (or other means) are ignored.
-+      MetaTagModifiedHTML
-+
-+  # This issue tracks client hints related issues. It's used to deprecate old
-+  # features, encourage the use of new ones, and provide general guidance.
-+  type ClientHintIssueDetails extends object
-+    properties
-+      SourceCodeLocation sourceCodeLocation
-+      ClientHintIssueReason clientHintIssueReason
-+
-   # A unique identifier for the type of issue. Each type may use one of the
-   # optional fields in InspectorIssueDetails to convey more specific
-   # information about the kind of issue.
-@@ -790,6 +806,7 @@ experimental domain Audits
-       WasmCrossOriginModuleSharingIssue
-       GenericIssue
-       DeprecationIssue
-+      ClientHintIssue
- 
-   # This struct holds a list of optional fields with additional information
-   # specific to the kind of issue. When adding a new issue code, please also
-@@ -811,6 +828,7 @@ experimental domain Audits
-       optional WasmCrossOriginModuleSharingIssueDetails wasmCrossOriginModuleSharingIssue
-       optional GenericIssueDetails genericIssueDetails
-       optional DeprecationIssueDetails deprecationIssueDetails
-+      optional ClientHintIssueDetails clientHintIssueDetails
- 
-   # A unique id for a DevTools inspector issue. Allows other entities (e.g.
-   # exceptions, CDP message, console messages, etc.) to reference an issue.
 ```
