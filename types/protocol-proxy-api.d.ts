@@ -2840,7 +2840,14 @@ export namespace ProtocolProxyApi {
          */
         enable(): Promise<void>;
 
-        getAppManifest(): Promise<Protocol.Page.GetAppManifestResponse>;
+        /**
+         * Gets the processed manifest for this current document.
+         *   This API always waits for the manifest to be loaded.
+         *   If manifestId is provided, and it does not match the manifest of the
+         *     current document, this API errors out.
+         *   If there isn’t a loaded page, this API errors out immediately.
+         */
+        getAppManifest(params: Protocol.Page.GetAppManifestRequest): Promise<Protocol.Page.GetAppManifestResponse>;
 
         getInstallabilityErrors(): Promise<Protocol.Page.GetInstallabilityErrorsResponse>;
 

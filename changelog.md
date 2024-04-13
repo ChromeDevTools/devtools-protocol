@@ -1,7 +1,162 @@
 
 
+## Roll protocol to r1286932 — _2024-04-13T04:24:25.000Z_
+######  Diff: [`78bb0d0...eefa004`](https://github.com/ChromeDevTools/devtools-protocol/compare/78bb0d0...eefa004)
+
+```diff
+@@ browser_protocol.pdl:876 @@ experimental domain Audits
+       SilentMediationFailure
+       ThirdPartyCookiesBlocked
+       NotSignedInWithIdp
++      MissingTransientUserActivation
++      ReplacedByButtonMode
+ 
+   type FederatedAuthUserInfoRequestIssueDetails extends object
+     properties
+@@ -8325,15 +8327,132 @@ domain Page
+   # Enables page domain notifications.
+   command enable
+ 
++  # The manifest of a webapp, see
++  # https://www.w3.org/TR/appmanifest/#dfn-manifest.
++  # Some fields do not appear in the standard since the API is designed to
++  # expose more browser internal states.
++
++  experimental type FileFilter extends object
++    properties
++      optional string name
++      optional array of string accepts
++
++  experimental type FileHandler extends object
++    properties
++      string action
++      string name
++      optional array of ImageResource icons
++      # Mimic a map, name is the key, accepts is the value.
++      optional array of FileFilter accepts
++      # Won't repeat the enums, using string for easy comparison. Same as the
++      # other enums below.
++      string launchType
++
++  # The image definition used in both icon and screenshot.
++  experimental type ImageResource extends object
++    properties
++      # The src field in the definition, but changing to url in favor of
++      # consistency.
++      string url
++      optional string sizes
++      optional string type
++
++  experimental type LaunchHandler extends object
++    properties
++      string clientMode
++
++  experimental type ProtocolHandler extends object
++    properties
++      string protocol
++      string url
++
++  experimental type RelatedApplication extends object
++    properties
++      optional string id
++      string url
++
++  experimental type ScopeExtension extends object
++    properties
++      # Instead of using tuple, this field always returns the serialized string
++      # for easy understanding and comparison.
++      string origin
++      boolean hasOriginWildcard
++
++  experimental type Screenshot extends object
++    properties
++      ImageResource image
++      string formFactor
++      optional string label
++
++  experimental type ShareTarget extends object
++    properties
++      string action
++      string method
++      string enctype
++      # Embed the ShareTargetParams
++      optional string title
++      optional string text
++      optional string url
++      optional array of FileFilter files
++
++  experimental type Shortcut extends object
++    properties
++      string name
++      string url
++
++  experimental type WebAppManifest extends object
++    properties
++      optional string backgroundColor
++      # The extra description provided by the manifest.
++      optional string description
++      optional string dir
++      optional string display
++      # The overrided display mode controlled by the user.
++      optional array of string displayOverrides
++      # The handlers to open files.
++      optional array of FileHandler fileHandlers
++      optional array of ImageResource icons
++      optional string id
++      optional string lang
++      # TODO(crbug.com/1231886): This field is non-standard and part of a Chrome
++      # experiment. See:
++      # https://github.com/WICG/web-app-launch/blob/main/launch_handler.md
++      optional LaunchHandler launchHandler
++      optional string name
++      optional string orientation
++      optional boolean preferRelatedApplications
++      # The handlers to open protocols.
++      optional array of ProtocolHandler protocolHandlers
++      optional array of RelatedApplication relatedApplications
++      optional string scope
++      # Non-standard, see
++      # https://github.com/WICG/manifest-incubations/blob/gh-pages/scope_extensions-explainer.md
++      optional array of ScopeExtension scopeExtensions
++      # The screenshots used by chromium.
++      optional array of Screenshot screenshots
++      optional ShareTarget shareTarget
++      optional string shortName
++      optional array of Shortcut shortcuts
++      optional string startUrl
++      optional string themeColor
++
++  # Gets the processed manifest for this current document.
++  #   This API always waits for the manifest to be loaded.
++  #   If manifestId is provided, and it does not match the manifest of the
++  #     current document, this API errors out.
++  #   If there isn’t a loaded page, this API errors out immediately.
+   command getAppManifest
++    parameters
++      optional string manifestId
+     returns
+       # Manifest location.
+       string url
+       array of AppManifestError errors
+       # Manifest content.
+       optional string data
+-      # Parsed manifest properties
+-      experimental optional AppManifestParsedProperties parsed
++      # Parsed manifest properties. Deprecated, use manifest instead.
++      experimental deprecated optional AppManifestParsedProperties parsed
++      experimental WebAppManifest manifest
+ 
+   experimental command getInstallabilityErrors
+     returns
+@@ -12160,3 +12279,4 @@ experimental domain PWA
+     returns
+       integer badgeCount
+       array of FileHandler fileHandlers
++
+```
+
 ## Roll protocol to r1285609 — _2024-04-11T04:26:18.000Z_
-######  Diff: [`adb454e...287d8a8`](https://github.com/ChromeDevTools/devtools-protocol/compare/adb454e...287d8a8)
+######  Diff: [`adb454e...78bb0d0`](https://github.com/ChromeDevTools/devtools-protocol/compare/adb454e...78bb0d0)
 
 ```diff
 @@ browser_protocol.pdl:475 @@ experimental domain Animation
@@ -11595,21 +11750,4 @@ index 09c420e..bd277eb 100644
  
    event loadEventFired
      parameters
-```
-
-## Roll protocol to r952438 — _2021-12-16T18:15:30.000Z_
-######  Diff: [`12d9e69...b411e13`](https://github.com/ChromeDevTools/devtools-protocol/compare/12d9e69...b411e13)
-
-```diff
-@@ browser_protocol.pdl:2049 @@ domain DOM
-       scrollbar-corner
-       resizer
-       input-list-button
-+      transition
-+      transition-container
-+      transition-old-content
-+      transition-new-content
- 
-   # Shadow root type.
-   type ShadowRootType extends string
 ```

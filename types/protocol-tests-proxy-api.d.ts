@@ -3048,7 +3048,14 @@ export namespace ProtocolTestsProxyApi {
          */
         enable(): Promise<{id: number, result: void, sessionId: string}>;
 
-        getAppManifest(): Promise<{id: number, result: Protocol.Page.GetAppManifestResponse, sessionId: string}>;
+        /**
+         * Gets the processed manifest for this current document.
+         *   This API always waits for the manifest to be loaded.
+         *   If manifestId is provided, and it does not match the manifest of the
+         *     current document, this API errors out.
+         *   If there isn’t a loaded page, this API errors out immediately.
+         */
+        getAppManifest(params: Protocol.Page.GetAppManifestRequest): Promise<{id: number, result: Protocol.Page.GetAppManifestResponse, sessionId: string}>;
 
         getInstallabilityErrors(): Promise<{id: number, result: Protocol.Page.GetInstallabilityErrorsResponse, sessionId: string}>;
 
