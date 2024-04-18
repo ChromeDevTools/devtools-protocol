@@ -2108,6 +2108,31 @@
             ]
         },
         {
+            "domain": "Extensions",
+            "description": "Defines commands and events for browser extensions. Available if the client\nis connected using the --remote-debugging-pipe flag and\nthe --enable-unsafe-extension-debugging flag is set.",
+            "experimental": true,
+            "commands": [
+                {
+                    "name": "loadUnpacked",
+                    "description": "Installs an unpacked extension from the filesystem similar to\n--load-extension CLI flags. Returns extension ID once the extension\nhas been installed.",
+                    "parameters": [
+                        {
+                            "name": "path",
+                            "description": "Absolute file path.",
+                            "type": "string"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "id",
+                            "description": "Extension id.",
+                            "type": "string"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "domain": "Autofill",
             "description": "Defines commands and events for Autofill.",
             "experimental": true,
@@ -18331,7 +18356,7 @@
                 },
                 {
                     "name": "getAppManifest",
-                    "description": "Gets the processed manifest for this current document.\n  This API always waits for the manifest to be loaded.\n  If manifestId is provided, and it does not match the manifest of the\n    current document, this API errors out.\n  If there isn\u2019t a loaded page, this API errors out immediately.",
+                    "description": "Gets the processed manifest for this current document.\n  This API always waits for the manifest to be loaded.\n  If manifestId is provided, and it does not match the manifest of the\n    current document, this API errors out.\n  If there is not a loaded page, this API errors out immediately.",
                     "parameters": [
                         {
                             "name": "manifestId",

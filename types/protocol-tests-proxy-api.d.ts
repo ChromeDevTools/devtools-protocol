@@ -28,6 +28,8 @@ export namespace ProtocolTestsProxyApi {
 
         Audits: AuditsApi;
 
+        Extensions: ExtensionsApi;
+
         Autofill: AutofillApi;
 
         BackgroundService: BackgroundServiceApi;
@@ -860,6 +862,16 @@ export namespace ProtocolTestsProxyApi {
         onIssueAdded(listener: (event: { params: Protocol.Audits.IssueAddedEvent }) => void): void;
         offIssueAdded(listener: (event: { params: Protocol.Audits.IssueAddedEvent }) => void): void;
         onceIssueAdded(eventMatcher?: (event: { params: Protocol.Audits.IssueAddedEvent }) => boolean): Promise<{ params: Protocol.Audits.IssueAddedEvent }>;
+
+    }
+
+    export interface ExtensionsApi {
+        /**
+         * Installs an unpacked extension from the filesystem similar to
+         * --load-extension CLI flags. Returns extension ID once the extension
+         * has been installed.
+         */
+        loadUnpacked(params: Protocol.Extensions.LoadUnpackedRequest): Promise<{id: number, result: Protocol.Extensions.LoadUnpackedResponse, sessionId: string}>;
 
     }
 
@@ -3053,7 +3065,7 @@ export namespace ProtocolTestsProxyApi {
          *   This API always waits for the manifest to be loaded.
          *   If manifestId is provided, and it does not match the manifest of the
          *     current document, this API errors out.
-         *   If there isn’t a loaded page, this API errors out immediately.
+         *   If there is not a loaded page, this API errors out immediately.
          */
         getAppManifest(params: Protocol.Page.GetAppManifestRequest): Promise<{id: number, result: Protocol.Page.GetAppManifestResponse, sessionId: string}>;
 

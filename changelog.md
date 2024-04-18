@@ -1,7 +1,44 @@
 
 
+## Roll protocol to r1289136 — _2024-04-18T04:26:02.000Z_
+######  Diff: [`e52e967...da7451d`](https://github.com/ChromeDevTools/devtools-protocol/compare/e52e967...da7451d)
+
+```diff
+@@ browser_protocol.pdl:1059 @@ experimental domain Audits
+     parameters
+       InspectorIssue issue
+ 
++# Defines commands and events for browser extensions. Available if the client
++# is connected using the --remote-debugging-pipe flag and
++# the --enable-unsafe-extension-debugging flag is set.
++experimental domain Extensions
++  # Installs an unpacked extension from the filesystem similar to
++  # --load-extension CLI flags. Returns extension ID once the extension
++  # has been installed.
++  command loadUnpacked
++    parameters
++      # Absolute file path.
++      string path
++    returns
++      # Extension id.
++      string id
++
+ # Defines commands and events for Autofill.
+ experimental domain Autofill
+   type CreditCard extends object
+@@ -8440,7 +8455,7 @@ domain Page
+   #   This API always waits for the manifest to be loaded.
+   #   If manifestId is provided, and it does not match the manifest of the
+   #     current document, this API errors out.
+-  #   If there isn’t a loaded page, this API errors out immediately.
++  #   If there is not a loaded page, this API errors out immediately.
+   command getAppManifest
+     parameters
+       optional string manifestId
+```
+
 ## Roll protocol to r1286932 — _2024-04-13T04:24:25.000Z_
-######  Diff: [`78bb0d0...eefa004`](https://github.com/ChromeDevTools/devtools-protocol/compare/78bb0d0...eefa004)
+######  Diff: [`78bb0d0...e52e967`](https://github.com/ChromeDevTools/devtools-protocol/compare/78bb0d0...e52e967)
 
 ```diff
 @@ browser_protocol.pdl:876 @@ experimental domain Audits
@@ -11719,35 +11756,4 @@ index 09c420e..bd277eb 100644
        # If set to true, tests of user presence will succeed immediately.
        # Otherwise, they will not be resolved. Defaults to true.
        optional boolean automaticPresenceSimulation
-```
-
-## Roll protocol to r953752 — _2021-12-23T05:15:20.000Z_
-######  Diff: [`b411e13...17a9c3e`](https://github.com/ChromeDevTools/devtools-protocol/compare/b411e13...17a9c3e)
-
-```diff
-@@ browser_protocol.pdl:8100 @@ domain Page
-       # Not restored reason
-       BackForwardCacheNotRestoredReason reason
- 
-+  experimental type BackForwardCacheNotRestoredExplanationTree extends object
-+    properties
-+      # URL of each frame
-+      string url
-+      # Not restored reasons of each frame
-+      array of BackForwardCacheNotRestoredExplanation explanations
-+      # Array of children frame
-+      array of BackForwardCacheNotRestoredExplanationTree children
-+
-   # Fired for failed bfcache history navigations if BackForwardCache feature is enabled. Do
-   # not assume any ordering with the Page.frameNavigated event. This event is fired only for
-   # main-frame history navigation where the document changes (non-same-document navigations),
-@@ -8112,6 +8121,8 @@ domain Page
-       FrameId frameId
-       # Array of reasons why the page could not be cached. This must not be empty.
-       array of BackForwardCacheNotRestoredExplanation notRestoredExplanations
-+      # Tree structure of reasons why the page could not be cached for each frame.
-+      optional BackForwardCacheNotRestoredExplanationTree notRestoredExplanationsTree
- 
-   event loadEventFired
-     parameters
 ```

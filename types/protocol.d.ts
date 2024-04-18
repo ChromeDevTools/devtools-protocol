@@ -3755,6 +3755,28 @@ export namespace Protocol {
     }
 
     /**
+     * Defines commands and events for browser extensions. Available if the client
+     * is connected using the --remote-debugging-pipe flag and
+     * the --enable-unsafe-extension-debugging flag is set.
+     */
+    export namespace Extensions {
+
+        export interface LoadUnpackedRequest {
+            /**
+             * Absolute file path.
+             */
+            path: string;
+        }
+
+        export interface LoadUnpackedResponse {
+            /**
+             * Extension id.
+             */
+            id: string;
+        }
+    }
+
+    /**
      * Defines commands and events for Autofill.
      */
     export namespace Autofill {

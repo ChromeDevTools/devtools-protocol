@@ -1503,6 +1503,15 @@ export namespace ProtocolMapping {
             returnType: Protocol.Audits.CheckFormsIssuesResponse;
         };
         /**
+         * Installs an unpacked extension from the filesystem similar to
+         * --load-extension CLI flags. Returns extension ID once the extension
+         * has been installed.
+         */
+        'Extensions.loadUnpacked': {
+            paramsType: [Protocol.Extensions.LoadUnpackedRequest];
+            returnType: Protocol.Extensions.LoadUnpackedResponse;
+        };
+        /**
          * Trigger autofill on a form identified by the fieldId.
          * If the field and related form cannot be autofilled, returns an error.
          */
@@ -3716,7 +3725,7 @@ export namespace ProtocolMapping {
          *   This API always waits for the manifest to be loaded.
          *   If manifestId is provided, and it does not match the manifest of the
          *     current document, this API errors out.
-         *   If there isn’t a loaded page, this API errors out immediately.
+         *   If there is not a loaded page, this API errors out immediately.
          */
         'Page.getAppManifest': {
             paramsType: [Protocol.Page.GetAppManifestRequest?];
