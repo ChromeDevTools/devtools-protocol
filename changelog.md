@@ -1,7 +1,74 @@
 
 
+## Roll protocol to r1291694 — _2024-04-24T04:26:06.000Z_
+######  Diff: [`385db00...b3c01af`](https://github.com/ChromeDevTools/devtools-protocol/compare/385db00...b3c01af)
+
+```diff
+@@ browser_protocol.pdl:741 @@ experimental domain Audits
+       NoRegisterOsSourceHeader
+       NoRegisterOsTriggerHeader
+ 
++  type SharedDictionaryError extends string
++    enum
++      UseErrorCrossOriginNoCorsRequest
++      UseErrorDictionaryLoadFailure
++      UseErrorMatchingDictionaryNotUsed
++      UseErrorUnexpectedContentDictionaryHeader
++      WriteErrorCossOriginNoCorsRequest
++      WriteErrorDisallowedBySettings
++      WriteErrorExpiredResponse
++      WriteErrorFeatureDisabled
++      WriteErrorInsufficientResources
++      WriteErrorInvalidMatchField
++      WriteErrorInvalidStructuredHeader
++      WriteErrorNavigationRequest
++      WriteErrorNoMatchField
++      WriteErrorNonListMatchDestField
++      WriteErrorNonSecureContext
++      WriteErrorNonStringIdField
++      WriteErrorNonStringInMatchDestList
++      WriteErrorNonStringMatchField
++      WriteErrorNonTokenTypeField
++      WriteErrorRequestAborted
++      WriteErrorShuttingDown
++      WriteErrorTooLongIdField
++      WriteErrorUnsupportedType
++
+   # Details for issues around "Attribution Reporting API" usage.
+   # Explainer: https://github.com/WICG/attribution-reporting-api
+   type AttributionReportingIssueDetails extends object
+@@ -767,6 +793,11 @@ experimental domain Audits
+       string url
+       optional SourceCodeLocation location
+ 
++  type SharedDictionaryIssueDetails extends object
++    properties
++      SharedDictionaryError sharedDictionaryError
++      AffectedRequest request
++
+   type GenericIssueErrorType extends string
+     enum
+       CrossOriginPortalPostMessageError
+@@ -972,6 +1003,7 @@ experimental domain Audits
+       StylesheetLoadingIssue
+       FederatedAuthUserInfoRequestIssue
+       PropertyRuleIssue
++      SharedDictionaryIssue
+ 
+   # This struct holds a list of optional fields with additional information
+   # specific to the kind of issue. When adding a new issue code, please also
+@@ -998,6 +1030,7 @@ experimental domain Audits
+       optional StylesheetLoadingIssueDetails stylesheetLoadingIssueDetails
+       optional PropertyRuleIssueDetails propertyRuleIssueDetails
+       optional FederatedAuthUserInfoRequestIssueDetails federatedAuthUserInfoRequestIssueDetails
++      optional SharedDictionaryIssueDetails sharedDictionaryIssueDetails
+ 
+   # A unique id for a DevTools inspector issue. Allows other entities (e.g.
+   # exceptions, CDP message, console messages, etc.) to reference an issue.
+```
+
 ## Roll protocol to r1289136 — _2024-04-18T04:26:02.000Z_
-######  Diff: [`e52e967...da7451d`](https://github.com/ChromeDevTools/devtools-protocol/compare/e52e967...da7451d)
+######  Diff: [`e52e967...385db00`](https://github.com/ChromeDevTools/devtools-protocol/compare/e52e967...385db00)
 
 ```diff
 @@ browser_protocol.pdl:1059 @@ experimental domain Audits
@@ -11739,21 +11806,4 @@ index 09c420e..bd277eb 100644
  
    type ClientHintIssueReason extends string
      enum
-```
-
-## Roll protocol to r953906 — _2021-12-23T19:15:37.000Z_
-######  Diff: [`17a9c3e...96ead19`](https://github.com/ChromeDevTools/devtools-protocol/compare/17a9c3e...96ead19)
-
-```diff
-@@ browser_protocol.pdl:9795 @@ experimental domain WebAuthn
-       # https://fidoalliance.org/specs/fido-v2.1-rd-20201208/fido-client-to-authenticator-protocol-v2.1-rd-20201208.html#sctn-credBlob-extension
-       # Defaults to false.
-       optional boolean hasCredBlob
-+      # If set to true, the authenticator will support the minPinLength extension.
-+      # https://fidoalliance.org/specs/fido-v2.1-ps-20210615/fido-client-to-authenticator-protocol-v2.1-ps-20210615.html#sctn-minpinlength-extension
-+      # Defaults to false.
-+      optional boolean hasMinPinLength
-       # If set to true, tests of user presence will succeed immediately.
-       # Otherwise, they will not be resolved. Defaults to true.
-       optional boolean automaticPresenceSimulation
 ```
