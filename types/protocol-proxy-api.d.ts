@@ -1423,6 +1423,11 @@ export namespace ProtocolProxyApi {
         getTopLayerElements(): Promise<Protocol.DOM.GetTopLayerElementsResponse>;
 
         /**
+         * Returns the NodeId of the matched element according to certain relations.
+         */
+        getElementByRelation(params: Protocol.DOM.GetElementByRelationRequest): Promise<Protocol.DOM.GetElementByRelationResponse>;
+
+        /**
          * Re-does the last undone action.
          */
         redo(): Promise<void>;

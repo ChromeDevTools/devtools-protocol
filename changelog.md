@@ -1,7 +1,42 @@
 
 
+## Roll protocol to r1292262 — _2024-04-25T04:26:20.000Z_
+######  Diff: [`a85be37...1e0e440`](https://github.com/ChromeDevTools/devtools-protocol/compare/a85be37...1e0e440)
+
+```diff
+@@ browser_protocol.pdl:3132 @@ domain DOM
+       # NodeIds of top layer elements
+       array of NodeId nodeIds
+ 
++  # Returns the NodeId of the matched element according to certain relations.
++  experimental command getElementByRelation
++    parameters
++      # Id of the node from which to query the relation.
++      NodeId nodeId
++      # Type of relation to get.
++      enum relation
++        # Get the popover target for a given element. In this case, this given
++        # element can only be an HTMLFormControlElement (<input>, <button>).
++        PopoverTarget
++    returns
++      # NodeId of the element matching the queried relation.
++      NodeId nodeId
++
+   # Re-does the last undone action.
+   experimental command redo
+ 
+@@ -9267,6 +9281,7 @@ domain Page
+       EmbedderExtensionMessaging
+       EmbedderExtensionMessagingForOpenPort
+       EmbedderExtensionSentMessageToCachedFrame
++      RequestedByWebViewClient
+ 
+   # Types of not restored reasons for back-forward cache.
+   experimental type BackForwardCacheNotRestoredReasonType extends string
+```
+
 ## Roll protocol to r1291694 — _2024-04-24T04:26:06.000Z_
-######  Diff: [`385db00...b3c01af`](https://github.com/ChromeDevTools/devtools-protocol/compare/385db00...b3c01af)
+######  Diff: [`385db00...a85be37`](https://github.com/ChromeDevTools/devtools-protocol/compare/385db00...a85be37)
 
 ```diff
 @@ browser_protocol.pdl:741 @@ experimental domain Audits

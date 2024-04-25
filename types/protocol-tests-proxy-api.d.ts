@@ -1505,6 +1505,11 @@ export namespace ProtocolTestsProxyApi {
         getTopLayerElements(): Promise<{id: number, result: Protocol.DOM.GetTopLayerElementsResponse, sessionId: string}>;
 
         /**
+         * Returns the NodeId of the matched element according to certain relations.
+         */
+        getElementByRelation(params: Protocol.DOM.GetElementByRelationRequest): Promise<{id: number, result: Protocol.DOM.GetElementByRelationResponse, sessionId: string}>;
+
+        /**
          * Re-does the last undone action.
          */
         redo(): Promise<{id: number, result: void, sessionId: string}>;
