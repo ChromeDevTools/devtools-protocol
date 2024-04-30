@@ -1,7 +1,75 @@
 
 
+## Roll protocol to r1294156 — _2024-04-30T04:26:41.000Z_
+######  Diff: [`551dc5e...6de8c98`](https://github.com/ChromeDevTools/devtools-protocol/compare/551dc5e...6de8c98)
+
+```diff
+@@ browser_protocol.pdl:5864 @@ domain Network
+ 
+   experimental type ServiceWorkerRouterInfo extends object
+     properties
+-      integer ruleIdMatched
+-      ServiceWorkerRouterSource matchedSourceType
++      # ID of the rule matched. If there is a matched rule, this field will
++      # be set, otherwiser no value will be set.
++      optional integer ruleIdMatched
++      # The router source of the matched rule. If there is a matched rule, this
++      # field will be set, otherwise no value will be set.
++      optional ServiceWorkerRouterSource matchedSourceType
+ 
+   # HTTP response data.
+   type Response extends object
+@@ -5904,7 +5908,10 @@ domain Network
+       optional boolean fromPrefetchCache
+       # Specifies that the request was served from the prefetch cache.
+       optional boolean fromEarlyHints
+-      # Information about how Service Worker Static Router was used.
++      # Information about how ServiceWorker Static Router API was used. If this
++      # field is set with `matchedSourceType` field, a matching rule is found.
++      # If this field is set without `matchedSource`, no matching rule is found.
++      # Otherwise, the API is not used.
+       experimental optional ServiceWorkerRouterInfo serviceWorkerRouterInfo
+       # Total number of bytes received for this request so far.
+       number encodedDataLength
+@@ -7918,9 +7925,7 @@ domain Page
+       vertical-scroll
+       web-printing
+       web-share
+-      # Alias for 'window-placement' (crbug.com/1328581).
+       window-management
+-      window-placement
+       xr-spatial-tracking
+ 
+   # Reason for a permissions policy feature to be disabled.
+@@ -12343,3 +12348,24 @@ experimental domain PWA
+       integer badgeCount
+       array of FileHandler fileHandlers
+ 
++  # Installs the given manifest identity, optionally using the given install_url
++  # or IWA bundle location.
++  #
++  # TODO(crbug.com/337872319) Support IWA to meet the following specific
++  # requirement.
++  # IWA-specific install description: If the manifest_id is isolated-app://,
++  # install_url_or_bundle_url is required, and can be either an http(s) URL or
++  # file:// URL pointing to a signed web bundle (.swbn). The .swbn file’s
++  # signing key must correspond to manifest_id. If Chrome is not in IWA dev
++  # mode, the installation will fail, regardless of the state of the allowlist.
++  command install
++    parameters
++      string manifestId
++      # The location of the app or bundle overriding the one derived from the
++      # manifestId.
++      optional string installUrlOrBundleUrl
++
++  # Uninstals the given manifest_id and closes any opened app windows.
++  command uninstall
++    parameters
++      string manifestId
+```
+
 ## Roll protocol to r1292262 — _2024-04-25T04:26:20.000Z_
-######  Diff: [`a85be37...1e0e440`](https://github.com/ChromeDevTools/devtools-protocol/compare/a85be37...1e0e440)
+######  Diff: [`a85be37...551dc5e`](https://github.com/ChromeDevTools/devtools-protocol/compare/a85be37...551dc5e)
 
 ```diff
 @@ browser_protocol.pdl:3132 @@ domain DOM
@@ -11827,18 +11895,4 @@ index 09c420e..bd277eb 100644
      parameters
        # True for showing hit-test borders
        boolean show
-```
-
-## Roll protocol to r955664 — _2022-01-05T12:15:53.000Z_
-######  Diff: [`90efbcc...d0d815e`](https://github.com/ChromeDevTools/devtools-protocol/compare/90efbcc...d0d815e)
-
-```diff
-@@ browser_protocol.pdl:769 @@ experimental domain Audits
-       # instead. This standard was abandoned in January, 1970. See
-       # https://www.chromestatus.com/feature/5684870116278272 for more details."
-       deprecated optional string message
-+      string deprecationType
- 
-   type ClientHintIssueReason extends string
-     enum
 ```
