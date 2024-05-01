@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1294763 — _2024-05-01T04:26:34.000Z_
+######  Diff: [`b80715b...93d657e`](https://github.com/ChromeDevTools/devtools-protocol/compare/b80715b...93d657e)
+
+```diff
+@@ browser_protocol.pdl:12355 @@ experimental domain PWA
+   # requirement.
+   # IWA-specific install description: If the manifest_id is isolated-app://,
+   # install_url_or_bundle_url is required, and can be either an http(s) URL or
+-  # file:// URL pointing to a signed web bundle (.swbn). The .swbn file’s
++  # file:// URL pointing to a signed web bundle (.swbn). The .swbn file's
+   # signing key must correspond to manifest_id. If Chrome is not in IWA dev
+   # mode, the installation will fail, regardless of the state of the allowlist.
+   command install
+```
+
 ## Roll protocol to r1294156 — _2024-04-30T04:26:41.000Z_
-######  Diff: [`551dc5e...6de8c98`](https://github.com/ChromeDevTools/devtools-protocol/compare/551dc5e...6de8c98)
+######  Diff: [`551dc5e...b80715b`](https://github.com/ChromeDevTools/devtools-protocol/compare/551dc5e...b80715b)
 
 ```diff
 @@ browser_protocol.pdl:5864 @@ domain Network
