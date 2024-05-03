@@ -1,7 +1,7 @@
 
 
 ## Roll protocol to r1294763 — _2024-05-01T04:26:34.000Z_
-######  Diff: [`b80715b...93d657e`](https://github.com/ChromeDevTools/devtools-protocol/compare/b80715b...93d657e)
+######  Diff: [`b80715b...b717085`](https://github.com/ChromeDevTools/devtools-protocol/compare/b80715b...b717085)
 
 ```diff
 @@ browser_protocol.pdl:12355 @@ experimental domain PWA
@@ -11893,21 +11893,4 @@ index 09c420e..bd277eb 100644
  
    # Set default font sizes.
    experimental command setFontSizes
-```
-
-## Roll protocol to r957544 — _2022-01-11T14:15:23.000Z_
-######  Diff: [`4f0ee26...a1608c5`](https://github.com/ChromeDevTools/devtools-protocol/compare/4f0ee26...a1608c5)
-
-```diff
-@@ browser_protocol.pdl:6713 @@ experimental domain Overlay
-       # True for showing scroll bottleneck rects
-       boolean show
- 
--  # Requests that backend shows hit-test borders on layers
--  command setShowHitTestBorders
-+  # Deprecated, no longer has any effect.
-+  deprecated command setShowHitTestBorders
-     parameters
-       # True for showing hit-test borders
-       boolean show
 ```
