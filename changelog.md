@@ -1,5 +1,20 @@
 
 
+## Roll protocol to r1297280 — _2024-05-07T04:27:12.000Z_
+######  Diff: [`30f9082...c887f4c`](https://github.com/ChromeDevTools/devtools-protocol/compare/30f9082...c887f4c)
+
+```diff
+@@ browser_protocol.pdl:6459 @@ domain Network
+       optional string path
+       # If specified, deletes only cookies with the the given name and partitionKey where domain
+       # matches provided URL.
+-      optional string partitionKey
++      experimental optional string partitionKey
+ 
+   # Disables network tracking, prevents network events from being sent to the client.
+   command disable
+```
+
 ## Roll protocol to r1294763 — _2024-05-01T04:26:34.000Z_
 ######  Diff: [`b80715b...b717085`](https://github.com/ChromeDevTools/devtools-protocol/compare/b80715b...b717085)
 
