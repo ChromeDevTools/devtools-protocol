@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1297943 — _2024-05-08T04:25:54.000Z_
+######  Diff: [`be37be1...86fcb5a`](https://github.com/ChromeDevTools/devtools-protocol/compare/be37be1...86fcb5a)
+
+```diff
+@@ browser_protocol.pdl:12125 @@ experimental domain Preload
+       PrerenderingUrlHasEffectiveUrl
+       RedirectedPrerenderingUrlHasEffectiveUrl
+       ActivationUrlHasEffectiveUrl
++      JavaScriptInterfaceAdded
++      JavaScriptInterfaceRemoved
+ 
+   # Fired when a preload enabled state is updated.
+   event preloadEnabledStateUpdated
+```
+
 ## Roll protocol to r1297280 — _2024-05-07T04:27:12.000Z_
-######  Diff: [`30f9082...c887f4c`](https://github.com/ChromeDevTools/devtools-protocol/compare/30f9082...c887f4c)
+######  Diff: [`30f9082...be37be1`](https://github.com/ChromeDevTools/devtools-protocol/compare/30f9082...be37be1)
 
 ```diff
 @@ browser_protocol.pdl:6459 @@ domain Network
@@ -11878,34 +11893,4 @@ index 09c420e..bd277eb 100644
  
  # The SystemInfo domain defines methods and events for querying low-level system information.
  experimental domain SystemInfo
-```
-
-## Roll protocol to r959523 — _2022-01-15T04:15:23.000Z_
-######  Diff: [`f7a5f38...87addc3`](https://github.com/ChromeDevTools/devtools-protocol/compare/f7a5f38...87addc3)
-
-```diff
-@@ browser_protocol.pdl:7177 @@ domain Page
-       # The pictograph font-family.
-       optional string pictograph
- 
-+  # Font families collection for a script.
-+  experimental type ScriptFontFamilies extends object
-+    properties
-+      # Name of the script which these font families are defined for.
-+      string script
-+      # Generic font families collection for the script.
-+      FontFamilies fontFamilies
-+
-   # Default font sizes.
-   experimental type FontSizes extends object
-     properties
-@@ -7637,6 +7645,8 @@ domain Page
-     parameters
-       # Specifies font families to set. If a font family is not specified, it won't be changed.
-       FontFamilies fontFamilies
-+      # Specifies font families to set for individual scripts.
-+      optional array of ScriptFontFamilies forScripts
- 
-   # Set default font sizes.
-   experimental command setFontSizes
 ```
