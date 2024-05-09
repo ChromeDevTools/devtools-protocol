@@ -1,7 +1,29 @@
 
 
+## Roll protocol to r1298513 — _2024-05-09T04:28:16.000Z_
+######  Diff: [`2e6353a...2a7ef6a`](https://github.com/ChromeDevTools/devtools-protocol/compare/2e6353a...2a7ef6a)
+
+```diff
+@@ browser_protocol.pdl:12371 @@ experimental domain PWA
+   command uninstall
+     parameters
+       string manifestId
++
++  # Launches the installed web app, or an url in the same web app instead of the
++  # default start url if it is provided. Returns a tab / web contents based
++  # Target.TargetID which can be used to attach to via Target.attachToTarget or
++  # similar APIs.
++  command launch
++    parameters
++      string manifestId
++      optional string url
++    returns
++      # ID of the tab target created as a result.
++      Target.TargetID targetId
+```
+
 ## Roll protocol to r1297943 — _2024-05-08T04:25:54.000Z_
-######  Diff: [`be37be1...86fcb5a`](https://github.com/ChromeDevTools/devtools-protocol/compare/be37be1...86fcb5a)
+######  Diff: [`be37be1...2e6353a`](https://github.com/ChromeDevTools/devtools-protocol/compare/be37be1...2e6353a)
 
 ```diff
 @@ browser_protocol.pdl:12125 @@ experimental domain Preload
@@ -11807,90 +11829,4 @@ index 09c420e..bd277eb 100644
    # One of the interest groups was accessed by the associated page.
    event interestGroupAccessed
      parameters
-```
-
-## Roll protocol to r960453 — _2022-01-18T17:15:26.000Z_
-######  Diff: [`87addc3...7572c21`](https://github.com/ChromeDevTools/devtools-protocol/compare/87addc3...7572c21)
-
-```diff
-@@ browser_protocol.pdl:8626 @@ experimental domain Storage
-       websql
-       service_workers
-       cache_storage
-+      interest_groups
-       all
-       other
- 
-@@ -8643,6 +8644,37 @@ experimental domain Storage
-     properties
-       string issuerOrigin
-       number count
-+  
-+  # Enum of interest group access types.
-+  type InterestGroupAccessType extends string
-+    enum
-+      join
-+      leave
-+      update
-+      bid
-+      win
-+  
-+  # Ad advertising element inside an interest group.
-+  type InterestGroupAd extends object
-+    properties
-+      string renderUrl
-+      optional string metadata
-+
-+  # The full details of an interest group.
-+  type InterestGroupDetails extends object
-+    properties
-+      string ownerOrigin
-+      string name
-+      number expirationTime
-+      string joiningOrigin
-+      optional string biddingUrl
-+      optional string biddingWasmHelperUrl
-+      optional string updateUrl
-+      optional string trustedBiddingSignalsUrl
-+      array of string trustedBiddingSignalsKeys
-+      optional string userBiddingSignals
-+      array of InterestGroupAd ads
-+      array of InterestGroupAd adComponents
- 
-   # Clears storage for origin.
-   command clearDataForOrigin
-@@ -8743,6 +8775,19 @@ experimental domain Storage
-       # True if any tokens were deleted, false otherwise.
-       boolean didDeleteTokens
- 
-+  # Gets details for a named interest group.
-+  experimental command getInterestGroupDetails
-+    parameters
-+      string ownerOrigin
-+      string name
-+    returns
-+      InterestGroupDetails details
-+
-+  # Enables/Disables issuing of interestGroupAccessed events.
-+  experimental command setInterestGroupTracking
-+    parameters
-+      boolean enable
-+
-   # A cache's contents have been modified.
-   event cacheStorageContentUpdated
-     parameters
-@@ -8772,6 +8817,13 @@ experimental domain Storage
-     parameters
-       # Origin to update.
-       string origin
-+  
-+  # One of the interest groups was accessed by the associated page.
-+  event interestGroupAccessed
-+    parameters
-+      InterestGroupAccessType type
-+      string ownerOrigin
-+      string name
- 
- # The SystemInfo domain defines methods and events for querying low-level system information.
- experimental domain SystemInfo
 ```

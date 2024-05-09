@@ -18536,6 +18536,18 @@ export namespace Protocol {
         export interface UninstallRequest {
             manifestId: string;
         }
+
+        export interface LaunchRequest {
+            manifestId: string;
+            url?: string;
+        }
+
+        export interface LaunchResponse {
+            /**
+             * ID of the tab target created as a result.
+             */
+            targetId: Target.TargetID;
+        }
     }
 }
 
