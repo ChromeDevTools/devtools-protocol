@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1299070 — _2024-05-10T04:26:27.000Z_
+######  Diff: [`fd7b5be...00e1d68`](https://github.com/ChromeDevTools/devtools-protocol/compare/fd7b5be...00e1d68)
+
+```diff
+@@ browser_protocol.pdl:12127 @@ experimental domain Preload
+       ActivationUrlHasEffectiveUrl
+       JavaScriptInterfaceAdded
+       JavaScriptInterfaceRemoved
++      AllPrerenderingCanceled
+ 
+   # Fired when a preload enabled state is updated.
+   event preloadEnabledStateUpdated
+```
+
 ## Roll protocol to r1298513 — _2024-05-09T04:28:16.000Z_
-######  Diff: [`2e6353a...2a7ef6a`](https://github.com/ChromeDevTools/devtools-protocol/compare/2e6353a...2a7ef6a)
+######  Diff: [`2e6353a...fd7b5be`](https://github.com/ChromeDevTools/devtools-protocol/compare/2e6353a...fd7b5be)
 
 ```diff
 @@ browser_protocol.pdl:12371 @@ experimental domain PWA
@@ -11796,37 +11810,4 @@ index 09c420e..bd277eb 100644
  
    experimental type PermissionsPolicyBlockLocator extends object
      properties
-```
-
-## Roll protocol to r960519 — _2022-01-18T19:15:30.000Z_
-######  Diff: [`7572c21...3e458bc`](https://github.com/ChromeDevTools/devtools-protocol/compare/7572c21...3e458bc)
-
-```diff
-@@ browser_protocol.pdl:8644 @@ experimental domain Storage
-     properties
-       string issuerOrigin
-       number count
--  
-+
-   # Enum of interest group access types.
-   type InterestGroupAccessType extends string
-     enum
-@@ -8653,7 +8653,7 @@ experimental domain Storage
-       update
-       bid
-       win
--  
-+
-   # Ad advertising element inside an interest group.
-   type InterestGroupAd extends object
-     properties
-@@ -8817,7 +8817,7 @@ experimental domain Storage
-     parameters
-       # Origin to update.
-       string origin
--  
-+
-   # One of the interest groups was accessed by the associated page.
-   event interestGroupAccessed
-     parameters
 ```
