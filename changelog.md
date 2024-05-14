@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1300426 — _2024-05-14T04:26:18.000Z_
+######  Diff: [`404576f...925fff9`](https://github.com/ChromeDevTools/devtools-protocol/compare/404576f...925fff9)
+
+```diff
+@@ browser_protocol.pdl:2626 @@ domain DOM
+       marker
+       backdrop
+       selection
++      search-text
+       target-text
+       spelling-error
+       grammar-error
+```
+
 ## Roll protocol to r1299070 — _2024-05-10T04:26:27.000Z_
-######  Diff: [`fd7b5be...00e1d68`](https://github.com/ChromeDevTools/devtools-protocol/compare/fd7b5be...00e1d68)
+######  Diff: [`fd7b5be...404576f`](https://github.com/ChromeDevTools/devtools-protocol/compare/fd7b5be...404576f)
 
 ```diff
 @@ browser_protocol.pdl:12127 @@ experimental domain Preload
@@ -11795,19 +11809,4 @@ index 09c420e..bd277eb 100644
        optional GenericIssueDetails genericIssueDetails
        optional DeprecationIssueDetails deprecationIssueDetails
        optional ClientHintIssueDetails clientHintIssueDetails
-```
-
-## Roll protocol to r960912 — _2022-01-19T13:15:30.000Z_
-######  Diff: [`3e458bc...53c4a9a`](https://github.com/ChromeDevTools/devtools-protocol/compare/3e458bc...53c4a9a)
-
-```diff
-@@ browser_protocol.pdl:6899 @@ domain Page
-       Header
-       # Declaration in iframe attribute.
-       IframeAttribute
-+      # Inside fenced frame.
-+      InFencedFrameTree
- 
-   experimental type PermissionsPolicyBlockLocator extends object
-     properties
 ```
