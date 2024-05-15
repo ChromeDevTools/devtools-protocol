@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1301093 — _2024-05-15T04:27:06.000Z_
+######  Diff: [`2ac7f42...e8bd56f`](https://github.com/ChromeDevTools/devtools-protocol/compare/2ac7f42...e8bd56f)
+
+```diff
+@@ browser_protocol.pdl:2633 @@ domain DOM
+       highlight
+       first-line-inherited
+       scroll-marker
+-      scroll-markers
++      scroll-marker-group
+       scrollbar
+       scrollbar-thumb
+       scrollbar-button
+```
+
 ## Roll protocol to r1300426 — _2024-05-14T04:26:18.000Z_
-######  Diff: [`404576f...925fff9`](https://github.com/ChromeDevTools/devtools-protocol/compare/404576f...925fff9)
+######  Diff: [`404576f...2ac7f42`](https://github.com/ChromeDevTools/devtools-protocol/compare/404576f...2ac7f42)
 
 ```diff
 @@ browser_protocol.pdl:2626 @@ domain DOM
