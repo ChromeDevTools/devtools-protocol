@@ -1,7 +1,95 @@
 
 
+## Roll protocol to r1301748 — _2024-05-16T04:24:35.000Z_
+######  Diff: [`e200d9e...043416a`](https://github.com/ChromeDevTools/devtools-protocol/compare/e200d9e...043416a)
+
+```diff
+@@ browser_protocol.pdl:6183 @@ domain Network
+       TopLevelStorageAccess
+       # The cookie should have been blocked by 3PCD but is exempted by CORS opt-in.
+       CorsOptIn
++      # The cookie should have been blocked by 3PCD but is exempted by the first-party URL scheme.
++      Scheme
+ 
+   # A cookie which was not stored from a response with the corresponding reason.
+   experimental type BlockedSetCookieWithReason extends object
+diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
+index 8dad9c9..ee14676 100644
+--- a/pdl/js_protocol.pdl
++++ b/pdl/js_protocol.pdl
+@@ -1297,6 +1297,10 @@ domain Runtime
+   # Id of an execution context.
+   type ExecutionContextId extends integer
+ 
++  # Id of an execution context that is unique across processes
++  # (unlike ExecutionContextId).
++  type ExecutionContextUniqueId extends string
++
+   # Description of an isolated world.
+   type ExecutionContextDescription extends object
+     properties
+@@ -1310,7 +1314,7 @@ domain Runtime
+       # A system-unique execution context identifier. Unlike the id, this is unique across
+       # multiple processes, so can be reliably used to identify specific context while backend
+       # performs a cross-process navigation.
+-      experimental string uniqueId
++      experimental ExecutionContextUniqueId uniqueId
+       # Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}
+       optional object auxData
+ 
+@@ -1671,7 +1675,8 @@ domain Runtime
+       # If specified, the binding would only be exposed to the specified
+       # execution context. If omitted and `executionContextName` is not set,
+       # the binding is exposed to all execution contexts of the target.
+-      # This parameter is mutually exclusive with `executionContextName`.
++      # This parameter is mutually exclusive with `executionContextName`
++      # and `executionContextUniqueId`.
+       # Deprecated in favor of `executionContextName` due to an unclear use case
+       # and bugs in implementation (crbug.com/1169639). `executionContextId` will be
+       # removed in the future.
+@@ -1680,8 +1685,12 @@ domain Runtime
+       # matching name, even for contexts created after the binding is added.
+       # See also `ExecutionContext.name` and `worldName` parameter to
+       # `Page.addScriptToEvaluateOnNewDocument`.
+-      # This parameter is mutually exclusive with `executionContextId`.
++      # This parameter is mutually exclusive with `executionContextId`
++      # and `executionContextUniqueId`.
+       optional string executionContextName
++      # This parameter is mutually exclusive with `executionContextId`
++      # and `executionContextName`.
++      experimental optional ExecutionContextUniqueId executionContextUniqueId
+ 
+   # This method does not remove binding function from global object but
+   # unsubscribes current runtime agent from Runtime.bindingCalled notifications.
+@@ -1708,6 +1717,7 @@ domain Runtime
+       string payload
+       # Identifier of the context where the call was made.
+       ExecutionContextId executionContextId
++      experimental ExecutionContextUniqueId executionContextUniqueId
+ 
+   # Issued when console API was called.
+   event consoleAPICalled
+@@ -1736,6 +1746,7 @@ domain Runtime
+       array of RemoteObject args
+       # Identifier of the context where the call was made.
+       ExecutionContextId executionContextId
++      experimental ExecutionContextUniqueId executionContextUniqueId
+       # Call timestamp.
+       Timestamp timestamp
+       # Stack trace captured when the call was made. The async stack chain is automatically reported for
+@@ -1774,7 +1785,7 @@ domain Runtime
+       # Id of the destroyed context
+       deprecated ExecutionContextId executionContextId
+       # Unique Id of the destroyed context
+-      experimental string executionContextUniqueId
++      experimental ExecutionContextUniqueId executionContextUniqueId
+ 
+   # Issued when all executionContexts were cleared in browser
+   event executionContextsCleared
+```
+
 ## Roll protocol to r1301093 — _2024-05-15T04:27:06.000Z_
-######  Diff: [`2ac7f42...e8bd56f`](https://github.com/ChromeDevTools/devtools-protocol/compare/2ac7f42...e8bd56f)
+######  Diff: [`2ac7f42...e200d9e`](https://github.com/ChromeDevTools/devtools-protocol/compare/2ac7f42...e200d9e)
 
 ```diff
 @@ browser_protocol.pdl:2633 @@ domain DOM
@@ -11788,40 +11876,4 @@ index 09c420e..bd277eb 100644
        experimental optional array of string commands
  
    # This method emulates inserting text that doesn't come from a key press,
-```
-
-## Roll protocol to r961891 — _2022-01-21T14:15:27.000Z_
-######  Diff: [`dac32a8...0abe20f`](https://github.com/ChromeDevTools/devtools-protocol/compare/dac32a8...0abe20f)
-
-```diff
-@@ browser_protocol.pdl:736 @@ experimental domain Audits
-       string url
-       optional SourceCodeLocation location
- 
--  type WasmCrossOriginModuleSharingIssueDetails extends object
--    properties
--      string wasmModuleUrl
--      string sourceOrigin
--      string targetOrigin
--      boolean isWarning
--
-   type GenericIssueErrorType extends string
-     enum
-       CrossOriginPortalPostMessageError
-@@ -804,7 +797,6 @@ experimental domain Audits
-       AttributionReportingIssue
-       QuirksModeIssue
-       NavigatorUserAgentIssue
--      WasmCrossOriginModuleSharingIssue
-       GenericIssue
-       DeprecationIssue
-       ClientHintIssue
-@@ -826,7 +818,6 @@ experimental domain Audits
-       optional AttributionReportingIssueDetails attributionReportingIssueDetails
-       optional QuirksModeIssueDetails quirksModeIssueDetails
-       optional NavigatorUserAgentIssueDetails navigatorUserAgentIssueDetails
--      optional WasmCrossOriginModuleSharingIssueDetails wasmCrossOriginModuleSharingIssue
-       optional GenericIssueDetails genericIssueDetails
-       optional DeprecationIssueDetails deprecationIssueDetails
-       optional ClientHintIssueDetails clientHintIssueDetails
 ```
