@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1302401 — _2024-05-17T04:26:51.000Z_
+######  Diff: [`f8def09...c379fdb`](https://github.com/ChromeDevTools/devtools-protocol/compare/f8def09...c379fdb)
+
+```diff
+@@ browser_protocol.pdl:849 @@ experimental domain Audits
+   type CookieDeprecationMetadataIssueDetails extends object
+     properties
+       array of string allowedSites
++      number optOutPercentage
++      boolean isOptOutTopLevel
+ 
+   type ClientHintIssueReason extends string
+     enum
+```
+
 ## Roll protocol to r1301748 — _2024-05-16T04:24:35.000Z_
-######  Diff: [`e200d9e...043416a`](https://github.com/ChromeDevTools/devtools-protocol/compare/e200d9e...043416a)
+######  Diff: [`e200d9e...f8def09`](https://github.com/ChromeDevTools/devtools-protocol/compare/e200d9e...f8def09)
 
 ```diff
 @@ browser_protocol.pdl:6183 @@ domain Network
@@ -11861,19 +11876,4 @@ index 09c420e..bd277eb 100644
        InterestGroupAccessType type
        string ownerOrigin
        string name
-```
-
-## Roll protocol to r962425 — _2022-01-24T11:15:20.000Z_
-######  Diff: [`0abe20f...398dc33`](https://github.com/ChromeDevTools/devtools-protocol/compare/0abe20f...398dc33)
-
-```diff
-@@ browser_protocol.pdl:4074 @@ domain Input
-       optional integer location
-       # Editing commands to send with the key event (e.g., 'selectAll') (default: []).
-       # These are related to but not equal the command names used in `document.execCommand` and NSStandardKeyBindingResponding.
--      # See https://source.chromium.org/chromium/chromium/src/+/master:third_party/blink/renderer/core/editing/commands/editor_command_names.h for valid command names.
-+      # See https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/editing/commands/editor_command_names.h for valid command names.
-       experimental optional array of string commands
- 
-   # This method emulates inserting text that doesn't come from a key press,
 ```

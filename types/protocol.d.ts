@@ -3577,6 +3577,8 @@ export namespace Protocol {
          */
         export interface CookieDeprecationMetadataIssueDetails {
             allowedSites: string[];
+            optOutPercentage: number;
+            isOptOutTopLevel: boolean;
         }
 
         export type ClientHintIssueReason = ('MetaTagAllowListInvalidOrigin' | 'MetaTagModifiedHTML');

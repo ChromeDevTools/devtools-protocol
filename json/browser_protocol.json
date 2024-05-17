@@ -1696,6 +1696,14 @@
                             "items": {
                                 "type": "string"
                             }
+                        },
+                        {
+                            "name": "optOutPercentage",
+                            "type": "number"
+                        },
+                        {
+                            "name": "isOptOutTopLevel",
+                            "type": "boolean"
                         }
                     ]
                 },
