@@ -1909,12 +1909,6 @@ export namespace Protocol {
         export type ExecutionContextId = integer;
 
         /**
-         * Id of an execution context that is unique across processes
-         * (unlike ExecutionContextId).
-         */
-        export type ExecutionContextUniqueId = string;
-
-        /**
          * Description of an isolated world.
          */
         export interface ExecutionContextDescription {
@@ -1936,7 +1930,7 @@ export namespace Protocol {
              * multiple processes, so can be reliably used to identify specific context while backend
              * performs a cross-process navigation.
              */
-            uniqueId: ExecutionContextUniqueId;
+            uniqueId: string;
             /**
              * Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}
              */
@@ -2473,8 +2467,7 @@ export namespace Protocol {
              * If specified, the binding would only be exposed to the specified
              * execution context. If omitted and `executionContextName` is not set,
              * the binding is exposed to all execution contexts of the target.
-             * This parameter is mutually exclusive with `executionContextName`
-             * and `executionContextUniqueId`.
+             * This parameter is mutually exclusive with `executionContextName`.
              * Deprecated in favor of `executionContextName` due to an unclear use case
              * and bugs in implementation (crbug.com/1169639). `executionContextId` will be
              * removed in the future.
@@ -2485,15 +2478,9 @@ export namespace Protocol {
              * matching name, even for contexts created after the binding is added.
              * See also `ExecutionContext.name` and `worldName` parameter to
              * `Page.addScriptToEvaluateOnNewDocument`.
-             * This parameter is mutually exclusive with `executionContextId`
-             * and `executionContextUniqueId`.
+             * This parameter is mutually exclusive with `executionContextId`.
              */
             executionContextName?: string;
-            /**
-             * This parameter is mutually exclusive with `executionContextId`
-             * and `executionContextName`.
-             */
-            executionContextUniqueId?: ExecutionContextUniqueId;
         }
 
         export interface RemoveBindingRequest {
@@ -2521,7 +2508,6 @@ export namespace Protocol {
              * Identifier of the context where the call was made.
              */
             executionContextId: ExecutionContextId;
-            executionContextUniqueId: ExecutionContextUniqueId;
         }
 
         export const enum ConsoleAPICalledEventType {
@@ -2561,7 +2547,6 @@ export namespace Protocol {
              * Identifier of the context where the call was made.
              */
             executionContextId: ExecutionContextId;
-            executionContextUniqueId: ExecutionContextUniqueId;
             /**
              * Call timestamp.
              */
@@ -2626,7 +2611,7 @@ export namespace Protocol {
             /**
              * Unique Id of the destroyed context
              */
-            executionContextUniqueId: ExecutionContextUniqueId;
+            executionContextUniqueId: string;
         }
 
         /**
@@ -14334,6 +14319,12 @@ export namespace Protocol {
              * Argument will be ignored if reloading dataURL origin.
              */
             scriptToEvaluateOnLoad?: string;
+            /**
+             * If set, an error will be thrown if the target page's main frame's
+             * loader id does not match the provided id. This prevents accidentally
+             * reloading an unintended target in case there's a racing navigation.
+             */
+            loaderId?: Network.LoaderId;
         }
 
         export interface RemoveScriptToEvaluateOnLoadRequest {

@@ -1,7 +1,97 @@
 
 
+## Roll protocol to r1302984 — _2024-05-18T04:26:58.000Z_
+######  Diff: [`82ed3df...962a801`](https://github.com/ChromeDevTools/devtools-protocol/compare/82ed3df...962a801)
+
+```diff
+@@ browser_protocol.pdl:8710 @@ domain Page
+       # If set, the script will be injected into all frames of the inspected page after reload.
+       # Argument will be ignored if reloading dataURL origin.
+       optional string scriptToEvaluateOnLoad
++      # If set, an error will be thrown if the target page's main frame's
++      # loader id does not match the provided id. This prevents accidentally
++      # reloading an unintended target in case there's a racing navigation.
++      experimental optional Network.LoaderId loaderId
+ 
+   # Deprecated, please use removeScriptToEvaluateOnNewDocument instead.
+   experimental deprecated command removeScriptToEvaluateOnLoad
+diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
+index ee14676..8dad9c9 100644
+--- a/pdl/js_protocol.pdl
++++ b/pdl/js_protocol.pdl
+@@ -1297,10 +1297,6 @@ domain Runtime
+   # Id of an execution context.
+   type ExecutionContextId extends integer
+ 
+-  # Id of an execution context that is unique across processes
+-  # (unlike ExecutionContextId).
+-  type ExecutionContextUniqueId extends string
+-
+   # Description of an isolated world.
+   type ExecutionContextDescription extends object
+     properties
+@@ -1314,7 +1310,7 @@ domain Runtime
+       # A system-unique execution context identifier. Unlike the id, this is unique across
+       # multiple processes, so can be reliably used to identify specific context while backend
+       # performs a cross-process navigation.
+-      experimental ExecutionContextUniqueId uniqueId
++      experimental string uniqueId
+       # Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}
+       optional object auxData
+ 
+@@ -1675,8 +1671,7 @@ domain Runtime
+       # If specified, the binding would only be exposed to the specified
+       # execution context. If omitted and `executionContextName` is not set,
+       # the binding is exposed to all execution contexts of the target.
+-      # This parameter is mutually exclusive with `executionContextName`
+-      # and `executionContextUniqueId`.
++      # This parameter is mutually exclusive with `executionContextName`.
+       # Deprecated in favor of `executionContextName` due to an unclear use case
+       # and bugs in implementation (crbug.com/1169639). `executionContextId` will be
+       # removed in the future.
+@@ -1685,12 +1680,8 @@ domain Runtime
+       # matching name, even for contexts created after the binding is added.
+       # See also `ExecutionContext.name` and `worldName` parameter to
+       # `Page.addScriptToEvaluateOnNewDocument`.
+-      # This parameter is mutually exclusive with `executionContextId`
+-      # and `executionContextUniqueId`.
++      # This parameter is mutually exclusive with `executionContextId`.
+       optional string executionContextName
+-      # This parameter is mutually exclusive with `executionContextId`
+-      # and `executionContextName`.
+-      experimental optional ExecutionContextUniqueId executionContextUniqueId
+ 
+   # This method does not remove binding function from global object but
+   # unsubscribes current runtime agent from Runtime.bindingCalled notifications.
+@@ -1717,7 +1708,6 @@ domain Runtime
+       string payload
+       # Identifier of the context where the call was made.
+       ExecutionContextId executionContextId
+-      experimental ExecutionContextUniqueId executionContextUniqueId
+ 
+   # Issued when console API was called.
+   event consoleAPICalled
+@@ -1746,7 +1736,6 @@ domain Runtime
+       array of RemoteObject args
+       # Identifier of the context where the call was made.
+       ExecutionContextId executionContextId
+-      experimental ExecutionContextUniqueId executionContextUniqueId
+       # Call timestamp.
+       Timestamp timestamp
+       # Stack trace captured when the call was made. The async stack chain is automatically reported for
+@@ -1785,7 +1774,7 @@ domain Runtime
+       # Id of the destroyed context
+       deprecated ExecutionContextId executionContextId
+       # Unique Id of the destroyed context
+-      experimental ExecutionContextUniqueId executionContextUniqueId
++      experimental string executionContextUniqueId
+ 
+   # Issued when all executionContexts were cleared in browser
+   event executionContextsCleared
+```
+
 ## Roll protocol to r1302401 — _2024-05-17T04:26:51.000Z_
-######  Diff: [`f8def09...c379fdb`](https://github.com/ChromeDevTools/devtools-protocol/compare/f8def09...c379fdb)
+######  Diff: [`f8def09...82ed3df`](https://github.com/ChromeDevTools/devtools-protocol/compare/f8def09...82ed3df)
 
 ```diff
 @@ browser_protocol.pdl:849 @@ experimental domain Audits
@@ -11853,27 +11943,4 @@ index 09c420e..bd277eb 100644
        BackForwardCacheDisabled
        RelatedActiveContentsExist
        HTTPStatusNotOK
-```
-
-## Roll protocol to r963043 — _2022-01-25T17:15:34.000Z_
-######  Diff: [`398dc33...4d3be9f`](https://github.com/ChromeDevTools/devtools-protocol/compare/398dc33...4d3be9f)
-
-```diff
-@@ browser_protocol.pdl:8658 @@ experimental domain Storage
-     properties
-       string ownerOrigin
-       string name
--      number expirationTime
-+      Network.TimeSinceEpoch expirationTime
-       string joiningOrigin
-       optional string biddingUrl
-       optional string biddingWasmHelperUrl
-@@ -8814,6 +8814,7 @@ experimental domain Storage
-   # One of the interest groups was accessed by the associated page.
-   event interestGroupAccessed
-     parameters
-+      Network.TimeSinceEpoch accessTime
-       InterestGroupAccessType type
-       string ownerOrigin
-       string name
 ```
