@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1304228 — _2024-05-22T04:27:23.000Z_
+######  Diff: [`fa8a8ed...f0e5b11`](https://github.com/ChromeDevTools/devtools-protocol/compare/fa8a8ed...f0e5b11)
+
+```diff
+@@ browser_protocol.pdl:911 @@ experimental domain Audits
+       NotSignedInWithIdp
+       MissingTransientUserActivation
+       ReplacedByButtonMode
++      RelyingPartyOriginIsOpaque
+ 
+   type FederatedAuthUserInfoRequestIssueDetails extends object
+     properties
+```
+
 ## Roll protocol to r1302984 — _2024-05-18T04:26:58.000Z_
-######  Diff: [`82ed3df...962a801`](https://github.com/ChromeDevTools/devtools-protocol/compare/82ed3df...962a801)
+######  Diff: [`82ed3df...fa8a8ed`](https://github.com/ChromeDevTools/devtools-protocol/compare/82ed3df...fa8a8ed)
 
 ```diff
 @@ browser_protocol.pdl:8710 @@ domain Page
@@ -11914,33 +11928,4 @@ index 09c420e..bd277eb 100644
        ch-ua-full-version
        ch-ua-full-version-list
        ch-ua-platform-version
-```
-
-## Roll protocol to r963409 — _2022-01-26T06:15:29.000Z_
-######  Diff: [`4d3be9f...81838df`](https://github.com/ChromeDevTools/devtools-protocol/compare/4d3be9f...81838df)
-
-```diff
-@@ browser_protocol.pdl:2259 @@ domain DOM
- 
-   # Enables DOM agent for the given page.
-   command enable
-+    parameters
-+      # Whether to include whitespaces in the children array of returned Nodes.
-+      experimental optional enum includeWhitespace
-+        # Strip whitespaces from child arrays (default).
-+        none
-+        # Return all children including block-level whitespace nodes.
-+        all
- 
-   # Focuses the given element.
-   command focus
-@@ -7961,7 +7968,7 @@ domain Page
-   # List of not restored reasons for back-forward cache.
-   experimental type BackForwardCacheNotRestoredReason extends string
-     enum
--      NotMainFrame
-+      NotPrimaryMainFrame
-       BackForwardCacheDisabled
-       RelatedActiveContentsExist
-       HTTPStatusNotOK
 ```
