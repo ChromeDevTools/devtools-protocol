@@ -3564,6 +3564,7 @@ export namespace Protocol {
             allowedSites: string[];
             optOutPercentage: number;
             isOptOutTopLevel: boolean;
+            operation: CookieOperation;
         }
 
         export type ClientHintIssueReason = ('MetaTagAllowListInvalidOrigin' | 'MetaTagModifiedHTML');
@@ -10156,6 +10157,14 @@ export namespace Protocol {
              */
             workerRespondWithSettled: number;
             /**
+             * Started ServiceWorker static routing source evaluation.
+             */
+            workerRouterEvaluationStart?: number;
+            /**
+             * Started cache lookup when the source was evaluated to `cache`.
+             */
+            workerCacheLookupStart?: number;
+            /**
              * Started sending request.
              */
             sendStart: number;
@@ -10444,6 +10453,10 @@ export namespace Protocol {
              * field will be set, otherwise no value will be set.
              */
             matchedSourceType?: ServiceWorkerRouterSource;
+            /**
+             * The actual router source used.
+             */
+            actualSourceType?: ServiceWorkerRouterSource;
         }
 
         /**

@@ -1,7 +1,41 @@
 
 
+## Roll protocol to r1304863 — _2024-05-23T04:26:40.000Z_
+######  Diff: [`7c5d5b6...16d4b6f`](https://github.com/ChromeDevTools/devtools-protocol/compare/7c5d5b6...16d4b6f)
+
+```diff
+@@ browser_protocol.pdl:851 @@ experimental domain Audits
+       array of string allowedSites
+       number optOutPercentage
+       boolean isOptOutTopLevel
++      CookieOperation operation
+ 
+   type ClientHintIssueReason extends string
+     enum
+@@ -5589,6 +5590,10 @@ domain Network
+       experimental number workerFetchStart
+       # Settled fetch event respondWith promise.
+       experimental number workerRespondWithSettled
++      # Started ServiceWorker static routing source evaluation.
++      experimental optional number workerRouterEvaluationStart
++      # Started cache lookup when the source was evaluated to `cache`.
++      experimental optional number workerCacheLookupStart
+       # Started sending request.
+       number sendStart
+       # Finished sending request.
+@@ -5874,6 +5879,8 @@ domain Network
+       # The router source of the matched rule. If there is a matched rule, this
+       # field will be set, otherwise no value will be set.
+       optional ServiceWorkerRouterSource matchedSourceType
++      # The actual router source used.
++      optional ServiceWorkerRouterSource actualSourceType
+ 
+   # HTTP response data.
+   type Response extends object
+```
+
 ## Roll protocol to r1304228 — _2024-05-22T04:27:23.000Z_
-######  Diff: [`fa8a8ed...f0e5b11`](https://github.com/ChromeDevTools/devtools-protocol/compare/fa8a8ed...f0e5b11)
+######  Diff: [`fa8a8ed...7c5d5b6`](https://github.com/ChromeDevTools/devtools-protocol/compare/fa8a8ed...7c5d5b6)
 
 ```diff
 @@ browser_protocol.pdl:911 @@ experimental domain Audits
@@ -11914,18 +11948,4 @@ index 09c420e..bd277eb 100644
  
    experimental type CrossOriginOpenerPolicyStatus extends object
      properties
-```
-
-## Roll protocol to r963595 — _2022-01-26T18:15:28.000Z_
-######  Diff: [`81838df...f687d75`](https://github.com/ChromeDevTools/devtools-protocol/compare/81838df...f687d75)
-
-```diff
-@@ browser_protocol.pdl:6843 @@ domain Page
-       ch-ua-platform
-       ch-ua-model
-       ch-ua-mobile
-+      ch-ua-full
-       ch-ua-full-version
-       ch-ua-full-version-list
-       ch-ua-platform-version
 ```
