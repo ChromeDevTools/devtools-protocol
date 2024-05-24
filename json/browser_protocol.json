@@ -26247,6 +26247,33 @@
                             "$ref": "Target.TargetID"
                         }
                     ]
+                },
+                {
+                    "name": "launchFilesInApp",
+                    "description": "Opens one or more local files from an installed web app identified by its\nmanifestId. The web app needs to have file handlers registered to process\nthe files. The API returns one or more tabs / web contents' based\nTarget.TargetIDs which can be used to attach to via Target.attachToTarget or\nsimilar APIs.\nIf some files in the parameters cannot be handled by the web app, they will\nbe ignored. If none of the files can be handled, this API returns an error.\nIf no files provided as the parameter, this API also returns an error.\n\nAccording to the definition of the file handlers in the manifest file, one\nTarget.TargetID may represent a tab handling one or more files. The order of\nthe returned Target.TargetIDs is also not guaranteed.\n\nTODO(crbug.com/339454034): Check the existences of the input files.",
+                    "parameters": [
+                        {
+                            "name": "manifestId",
+                            "type": "string"
+                        },
+                        {
+                            "name": "files",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "targetIds",
+                            "description": "IDs of the tab targets created as the result.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "Target.TargetID"
+                            }
+                        }
+                    ]
                 }
             ]
         }

@@ -1,7 +1,39 @@
 
 
+## Roll protocol to r1305504 — _2024-05-24T04:27:22.000Z_
+######  Diff: [`799ae7e...5c38a4f`](https://github.com/ChromeDevTools/devtools-protocol/compare/799ae7e...5c38a4f)
+
+```diff
+@@ browser_protocol.pdl:12401 @@ experimental domain PWA
+     returns
+       # ID of the tab target created as a result.
+       Target.TargetID targetId
++
++  # Opens one or more local files from an installed web app identified by its
++  # manifestId. The web app needs to have file handlers registered to process
++  # the files. The API returns one or more tabs / web contents' based
++  # Target.TargetIDs which can be used to attach to via Target.attachToTarget or
++  # similar APIs.
++  # If some files in the parameters cannot be handled by the web app, they will
++  # be ignored. If none of the files can be handled, this API returns an error.
++  # If no files provided as the parameter, this API also returns an error.
++  #
++  # According to the definition of the file handlers in the manifest file, one
++  # Target.TargetID may represent a tab handling one or more files. The order of
++  # the returned Target.TargetIDs is also not guaranteed.
++  #
++  # TODO(crbug.com/339454034): Check the existences of the input files.
++  command launchFilesInApp
++    parameters
++      string manifestId
++      array of string files
++    returns
++      # IDs of the tab targets created as the result.
++      array of Target.TargetID targetIds
+```
+
 ## Roll protocol to r1304863 — _2024-05-23T04:26:40.000Z_
-######  Diff: [`7c5d5b6...16d4b6f`](https://github.com/ChromeDevTools/devtools-protocol/compare/7c5d5b6...16d4b6f)
+######  Diff: [`7c5d5b6...799ae7e`](https://github.com/ChromeDevTools/devtools-protocol/compare/7c5d5b6...799ae7e)
 
 ```diff
 @@ browser_protocol.pdl:851 @@ experimental domain Audits
@@ -11934,18 +11966,4 @@ index 09c420e..bd277eb 100644
  
    # A unique id for a DevTools inspector issue. Allows other entities (e.g.
    # exceptions, CDP message, console messages, etc.) to reference an issue.
-```
-
-## Roll protocol to r963632 — _2022-01-26T19:16:12.000Z_
-######  Diff: [`f687d75...f559f4a`](https://github.com/ChromeDevTools/devtools-protocol/compare/f687d75...f559f4a)
-
-```diff
-@@ browser_protocol.pdl:6154 @@ domain Network
-       SameOriginAllowPopups
-       UnsafeNone
-       SameOriginPlusCoep
-+      SameOriginAllowPopupsPlusCoep
- 
-   experimental type CrossOriginOpenerPolicyStatus extends object
-     properties
 ```

@@ -18569,6 +18569,18 @@ export namespace Protocol {
              */
             targetId: Target.TargetID;
         }
+
+        export interface LaunchFilesInAppRequest {
+            manifestId: string;
+            files: string[];
+        }
+
+        export interface LaunchFilesInAppResponse {
+            /**
+             * IDs of the tab targets created as the result.
+             */
+            targetIds: Target.TargetID[];
+        }
     }
 }
 
