@@ -1,7 +1,35 @@
 
 
+## Roll protocol to r1306150 — _2024-05-26T04:28:00.000Z_
+######  Diff: [`bbd2600...2a5ecc9`](https://github.com/ChromeDevTools/devtools-protocol/compare/bbd2600...2a5ecc9)
+
+```diff
+@@ browser_protocol.pdl:3337 @@ domain DOM
+       # Descendant nodes with container queries against the given container.
+       array of NodeId nodeIds
+ 
++  # Returns the target anchor element of the given anchor query according to
++  # https://www.w3.org/TR/css-anchor-position-1/#target.
++  experimental command getAnchorElement
++    parameters
++      # Id of the positioned element from which to find the anchor.
++      NodeId nodeId
++      # An optional anchor specifier, as defined in
++      # https://www.w3.org/TR/css-anchor-position-1/#anchor-specifier.
++      # If not provided, it will return the implicit anchor element for
++      # the given positioned element.
++      optional string anchorSpecifier
++    returns
++      # The anchor element of the given anchor query.
++      NodeId nodeId
++
+   # Fired when `Element`'s attribute is modified.
+   event attributeModified
+     parameters
+```
+
 ## Roll protocol to r1305504 — _2024-05-24T04:27:22.000Z_
-######  Diff: [`799ae7e...5c38a4f`](https://github.com/ChromeDevTools/devtools-protocol/compare/799ae7e...5c38a4f)
+######  Diff: [`799ae7e...bbd2600`](https://github.com/ChromeDevTools/devtools-protocol/compare/799ae7e...bbd2600)
 
 ```diff
 @@ browser_protocol.pdl:12401 @@ experimental domain PWA
@@ -11907,63 +11935,4 @@ index 09c420e..bd277eb 100644
        ch-viewport-height
        ch-viewport-width
        ch-width
-```
-
-## Roll protocol to r964215 — _2022-01-27T20:15:27.000Z_
-######  Diff: [`f559f4a...57a4bb8`](https://github.com/ChromeDevTools/devtools-protocol/compare/f559f4a...57a4bb8)
-
-```diff
-@@ browser_protocol.pdl:773 @@ experimental domain Audits
-       # are respected. Any injected via javascript (or other means) are ignored.
-       MetaTagModifiedHTML
- 
-+  type FederatedAuthRequestIssueDetails extends object
-+    properties
-+      FederatedAuthRequestIssueReason federatedAuthRequestIssueReason
-+
-+  # Represents the failure reason when a federated authentication reason fails.
-+  # Should be updated alongside RequestIdTokenStatus in
-+  # third_party/blink/public/mojom/webid/federated_auth_request.mojom to include
-+  # all cases except for success.
-+  type FederatedAuthRequestIssueReason extends string
-+    enum
-+      ApprovalDeclined
-+      TooManyRequests
-+      WellKnownHttpNotFound
-+      WellKnownNoResponse
-+      WellKnownInvalidResponse
-+      ClientIdMetadataHttpNotFound
-+      ClientIdMetadataNoResponse
-+      ClientIdMetadataInvalidResponse
-+      ErrorFetchingSignin
-+      InvalidSigninResponse
-+      AccountsHttpNotFound
-+      AccountsNoResponse
-+      AccountsInvalidResponse
-+      IdTokenHttpNotFound
-+      IdTokenNoResponse
-+      IdTokenInvalidResponse
-+      IdTokenInvalidRequest
-+      ErrorIdToken
-+      Canceled
-+
-   # This issue tracks client hints related issues. It's used to deprecate old
-   # features, encourage the use of new ones, and provide general guidance.
-   type ClientHintIssueDetails extends object
-@@ -800,6 +830,7 @@ experimental domain Audits
-       GenericIssue
-       DeprecationIssue
-       ClientHintIssue
-+      FederatedAuthRequestIssue
- 
-   # This struct holds a list of optional fields with additional information
-   # specific to the kind of issue. When adding a new issue code, please also
-@@ -821,6 +852,7 @@ experimental domain Audits
-       optional GenericIssueDetails genericIssueDetails
-       optional DeprecationIssueDetails deprecationIssueDetails
-       optional ClientHintIssueDetails clientHintIssueDetails
-+      optional FederatedAuthRequestIssueDetails federatedAuthRequestIssueDetails
- 
-   # A unique id for a DevTools inspector issue. Allows other entities (e.g.
-   # exceptions, CDP message, console messages, etc.) to reference an issue.
 ```

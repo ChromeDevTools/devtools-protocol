@@ -1621,6 +1621,12 @@ export namespace ProtocolTestsProxyApi {
         getQueryingDescendantsForContainer(params: Protocol.DOM.GetQueryingDescendantsForContainerRequest): Promise<{id: number, result: Protocol.DOM.GetQueryingDescendantsForContainerResponse, sessionId: string}>;
 
         /**
+         * Returns the target anchor element of the given anchor query according to
+         * https://www.w3.org/TR/css-anchor-position-1/#target.
+         */
+        getAnchorElement(params: Protocol.DOM.GetAnchorElementRequest): Promise<{id: number, result: Protocol.DOM.GetAnchorElementResponse, sessionId: string}>;
+
+        /**
          * Fired when `Element`'s attribute is modified.
          */
         onAttributeModified(listener: (event: { params: Protocol.DOM.AttributeModifiedEvent }) => void): void;
