@@ -12308,7 +12308,7 @@ export namespace Protocol {
             FailedPrecondition = 'FailedPrecondition',
             ResourceExhausted = 'ResourceExhausted',
             AlreadyExists = 'AlreadyExists',
-            Unavailable = 'Unavailable',
+            ResourceLimited = 'ResourceLimited',
             Unauthorized = 'Unauthorized',
             BadResponse = 'BadResponse',
             InternalError = 'InternalError',
@@ -12329,7 +12329,7 @@ export namespace Protocol {
              * of the operation already exists und thus, the operation was abort
              * preemptively (e.g. a cache hit). (TrustTokenOperationDoneEventStatus enum)
              */
-            status: ('Ok' | 'InvalidArgument' | 'MissingIssuerKeys' | 'FailedPrecondition' | 'ResourceExhausted' | 'AlreadyExists' | 'Unavailable' | 'Unauthorized' | 'BadResponse' | 'InternalError' | 'UnknownError' | 'FulfilledLocally');
+            status: ('Ok' | 'InvalidArgument' | 'MissingIssuerKeys' | 'FailedPrecondition' | 'ResourceExhausted' | 'AlreadyExists' | 'ResourceLimited' | 'Unauthorized' | 'BadResponse' | 'InternalError' | 'UnknownError' | 'FulfilledLocally');
             type: TrustTokenOperationType;
             requestId: RequestId;
             /**

@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1308459 — _2024-05-31T04:27:42.000Z_
+######  Diff: [`24b69f0...92c2e04`](https://github.com/ChromeDevTools/devtools-protocol/compare/24b69f0...92c2e04)
+
+```diff
+@@ browser_protocol.pdl:7093 @@ domain Network
+         FailedPrecondition
+         ResourceExhausted
+         AlreadyExists
+-        Unavailable
++        ResourceLimited
+         Unauthorized
+         BadResponse
+         InternalError
+```
+
 ## Roll protocol to r1306150 — _2024-05-26T04:28:00.000Z_
-######  Diff: [`bbd2600...2a5ecc9`](https://github.com/ChromeDevTools/devtools-protocol/compare/bbd2600...2a5ecc9)
+######  Diff: [`bbd2600...24b69f0`](https://github.com/ChromeDevTools/devtools-protocol/compare/bbd2600...24b69f0)
 
 ```diff
 @@ browser_protocol.pdl:3337 @@ domain DOM
