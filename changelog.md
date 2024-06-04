@@ -1,7 +1,57 @@
 
 
+## Roll protocol to r1309774 — _2024-06-04T04:27:00.000Z_
+######  Diff: [`24f369f...36abf63`](https://github.com/ChromeDevTools/devtools-protocol/compare/24f369f...36abf63)
+
+```diff
+@@ browser_protocol.pdl:12406 @@ experimental domain PWA
+       string manifestId
+ 
+   # Launches the installed web app, or an url in the same web app instead of the
+-  # default start url if it is provided. Returns a tab / web contents based
+-  # Target.TargetID which can be used to attach to via Target.attachToTarget or
+-  # similar APIs.
++  # default start url if it is provided. Returns a page Target.TargetID which
++  # can be used to attach to via Target.attachToTarget or similar APIs.
+   command launch
+     parameters
+       string manifestId
+@@ -12419,16 +12418,15 @@ experimental domain PWA
+ 
+   # Opens one or more local files from an installed web app identified by its
+   # manifestId. The web app needs to have file handlers registered to process
+-  # the files. The API returns one or more tabs / web contents' based
+-  # Target.TargetIDs which can be used to attach to via Target.attachToTarget or
+-  # similar APIs.
++  # the files. The API returns one or more page Target.TargetIDs which can be
++  # used to attach to via Target.attachToTarget or similar APIs.
+   # If some files in the parameters cannot be handled by the web app, they will
+   # be ignored. If none of the files can be handled, this API returns an error.
+   # If no files provided as the parameter, this API also returns an error.
+   #
+   # According to the definition of the file handlers in the manifest file, one
+-  # Target.TargetID may represent a tab handling one or more files. The order of
+-  # the returned Target.TargetIDs is also not guaranteed.
++  # Target.TargetID may represent a page handling one or more files. The order
++  # of the returned Target.TargetIDs is not guaranteed.
+   #
+   # TODO(crbug.com/339454034): Check the existences of the input files.
+   command launchFilesInApp
+@@ -12438,3 +12436,10 @@ experimental domain PWA
+     returns
+       # IDs of the tab targets created as the result.
+       array of Target.TargetID targetIds
++
++  # Opens the current page in its web app identified by the manifest id, needs
++  # to be called on a page target. This function returns immediately without
++  # waiting for the app finishing loading.
++  command openCurrentPageInApp
++    parameters
++      string manifestId
+```
+
 ## Roll protocol to r1308459 — _2024-05-31T04:27:42.000Z_
-######  Diff: [`24b69f0...92c2e04`](https://github.com/ChromeDevTools/devtools-protocol/compare/24b69f0...92c2e04)
+######  Diff: [`24b69f0...24f369f`](https://github.com/ChromeDevTools/devtools-protocol/compare/24b69f0...24f369f)
 
 ```diff
 @@ browser_protocol.pdl:7093 @@ domain Network
@@ -11936,18 +11986,4 @@ index 09c420e..bd277eb 100644
    # Information about amount of glyphs that were rendered with given font.
    type PlatformFontUsage extends object
      properties
-```
-
-## Roll protocol to r965299 — _2022-01-31T19:15:27.000Z_
-######  Diff: [`8c4f892...1600334`](https://github.com/ChromeDevTools/devtools-protocol/compare/8c4f892...1600334)
-
-```diff
-@@ browser_protocol.pdl:6881 @@ domain Page
-       ch-ua-full-version-list
-       ch-ua-platform-version
-       ch-ua-reduced
-+      ch-ua-wow64
-       ch-viewport-height
-       ch-viewport-width
-       ch-width
 ```

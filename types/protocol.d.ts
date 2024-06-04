@@ -18602,6 +18602,10 @@ export namespace Protocol {
              */
             targetIds: Target.TargetID[];
         }
+
+        export interface OpenCurrentPageInAppRequest {
+            manifestId: string;
+        }
     }
 }
 
