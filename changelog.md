@@ -1,7 +1,31 @@
 
 
+## Roll protocol to r1310407 — _2024-06-05T04:28:24.000Z_
+######  Diff: [`2064bda...ce5f69d`](https://github.com/ChromeDevTools/devtools-protocol/compare/2064bda...ce5f69d)
+
+```diff
+@@ browser_protocol.pdl:622 @@ experimental domain Audits
+       CoopSandboxedIFrameCannotNavigateToCoopPage
+       CorpNotSameOrigin
+       CorpNotSameOriginAfterDefaultedToSameOriginByCoep
++      CorpNotSameOriginAfterDefaultedToSameOriginByDip
++      CorpNotSameOriginAfterDefaultedToSameOriginByCoepAndDip
+       CorpNotSameSite
+ 
+   # Details for a request that has been blocked with the BLOCKED_BY_RESPONSE
+@@ -5755,6 +5757,8 @@ domain Network
+       coop-sandboxed-iframe-cannot-navigate-to-coop-page
+       corp-not-same-origin
+       corp-not-same-origin-after-defaulted-to-same-origin-by-coep
++      corp-not-same-origin-after-defaulted-to-same-origin-by-dip
++      corp-not-same-origin-after-defaulted-to-same-origin-by-coep-and-dip
+       corp-not-same-site
+ 
+   # The reason why request was blocked.
+```
+
 ## Roll protocol to r1309774 — _2024-06-04T04:27:00.000Z_
-######  Diff: [`24f369f...36abf63`](https://github.com/ChromeDevTools/devtools-protocol/compare/24f369f...36abf63)
+######  Diff: [`24f369f...2064bda`](https://github.com/ChromeDevTools/devtools-protocol/compare/24f369f...2064bda)
 
 ```diff
 @@ browser_protocol.pdl:12406 @@ experimental domain PWA
@@ -11952,38 +11976,4 @@ index 09c420e..bd277eb 100644
        clipboard-read
        clipboard-write
        cross-origin-isolated
-```
-
-## Roll protocol to r966116 — _2022-02-02T10:15:28.000Z_
-######  Diff: [`1600334...1d22b7b`](https://github.com/ChromeDevTools/devtools-protocol/compare/1600334...1d22b7b)
-
-```diff
-@@ browser_protocol.pdl:1386 @@ experimental domain CSS
-       # Container query list array (for rules involving container queries).
-       # The array enumerates container queries starting with the innermost one, going outwards.
-       experimental optional array of CSSContainerQuery containerQueries
-+      # @supports CSS at-rule array.
-+      # The array enumerates @supports at-rules starting with the innermost one, going outwards.
-+      experimental optional array of CSSSupports supports
- 
-   # CSS coverage information.
-   type RuleUsage extends object
-@@ -1522,6 +1525,17 @@ experimental domain CSS
-       # Optional name for the container.
-       optional string name
- 
-+  # CSS Supports at-rule descriptor.
-+  experimental type CSSSupports extends object
-+    properties
-+      # Supports rule text.
-+      string text
-+      # The associated rule header range in the enclosing stylesheet (if
-+      # available).
-+      optional SourceRange range
-+      # Identifier of the stylesheet containing this object (if exists).
-+      optional StyleSheetId styleSheetId
-+
-   # Information about amount of glyphs that were rendered with given font.
-   type PlatformFontUsage extends object
-     properties
 ```
