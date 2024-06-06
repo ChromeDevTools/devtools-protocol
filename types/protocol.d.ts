@@ -10721,6 +10721,22 @@ export namespace Protocol {
         }
 
         /**
+         * cookiePartitionKey object
+         * The representation of the components of the key that are created by the cookiePartitionKey class contained in net/cookies/cookie_partition_key.h.
+         */
+        export interface CookiePartitionKey {
+            /**
+             * The site of the top-level URL the browser was visiting at the start
+             * of the request to the endpoint that set the cookie.
+             */
+            topLevelSite: string;
+            /**
+             * Indicates if the cookie has any ancestors that are cross-site to the topLevelSite.
+             */
+            hasCrossSiteAncestor: boolean;
+        }
+
+        /**
          * Cookie object
          */
         export interface Cookie {
@@ -10783,10 +10799,9 @@ export namespace Protocol {
              */
             sourcePort: integer;
             /**
-             * Cookie partition key. The site of the top-level URL the browser was visiting at the start
-             * of the request to the endpoint that set the cookie.
+             * Cookie partition key.
              */
-            partitionKey?: string;
+            partitionKey?: CookiePartitionKey;
             /**
              * True if cookie partition key is opaque.
              */
@@ -10928,11 +10943,9 @@ export namespace Protocol {
              */
             sourcePort?: integer;
             /**
-             * Cookie partition key. The site of the top-level URL the browser was visiting at the start
-             * of the request to the endpoint that set the cookie.
-             * If not set, the cookie will be set as not partitioned.
+             * Cookie partition key. If not set, the cookie will be set as not partitioned.
              */
-            partitionKey?: string;
+            partitionKey?: CookiePartitionKey;
         }
 
         export const enum AuthChallengeSource {
@@ -11352,10 +11365,10 @@ export namespace Protocol {
              */
             path?: string;
             /**
-             * If specified, deletes only cookies with the the given name and partitionKey where domain
-             * matches provided URL.
+             * If specified, deletes only cookies with the the given name and partitionKey where
+             * where all partition key attributes match the cookie partition key attribute.
              */
-            partitionKey?: string;
+            partitionKey?: CookiePartitionKey;
         }
 
         export interface EmulateNetworkConditionsRequest {
@@ -11611,11 +11624,9 @@ export namespace Protocol {
              */
             sourcePort?: integer;
             /**
-             * Cookie partition key. The site of the top-level URL the browser was visiting at the start
-             * of the request to the endpoint that set the cookie.
-             * If not set, the cookie will be set as not partitioned.
+             * Cookie partition key. If not set, the cookie will be set as not partitioned.
              */
-            partitionKey?: string;
+            partitionKey?: CookiePartitionKey;
         }
 
         export interface SetCookieResponse {
@@ -12273,7 +12284,7 @@ export namespace Protocol {
              * The cookie partition key that will be used to store partitioned cookies set in this response.
              * Only sent when partitioned cookies are enabled.
              */
-            cookiePartitionKey?: string;
+            cookiePartitionKey?: CookiePartitionKey;
             /**
              * True if partitioned cookies are enabled, but the partition key is not serializable to string.
              */
@@ -13233,7 +13244,7 @@ export namespace Protocol {
          * All Permissions Policy features. This enum should match the one defined
          * in third_party/blink/renderer/core/permissions_policy/permissions_policy_features.json5.
          */
-        export type PermissionsPolicyFeature = ('accelerometer' | 'ambient-light-sensor' | 'attribution-reporting' | 'autoplay' | 'bluetooth' | 'browsing-topics' | 'camera' | 'captured-surface-control' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-prefers-color-scheme' | 'ch-prefers-reduced-motion' | 'ch-prefers-reduced-transparency' | 'ch-rtt' | 'ch-save-data' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-form-factors' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'compute-pressure' | 'cross-origin-isolated' | 'direct-sockets' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'hid' | 'identity-credentials-get' | 'idle-detection' | 'interest-cohort' | 'join-ad-interest-group' | 'keyboard-map' | 'local-fonts' | 'magnetometer' | 'microphone' | 'midi' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'private-aggregation' | 'private-state-token-issuance' | 'private-state-token-redemption' | 'publickey-credentials-create' | 'publickey-credentials-get' | 'run-ad-auction' | 'screen-wake-lock' | 'serial' | 'shared-autofill' | 'shared-storage' | 'shared-storage-select-url' | 'smart-card' | 'speaker-selection' | 'storage-access' | 'sub-apps' | 'sync-xhr' | 'unload' | 'usb' | 'usb-unrestricted' | 'vertical-scroll' | 'web-printing' | 'web-share' | 'window-management' | 'xr-spatial-tracking');
+        export type PermissionsPolicyFeature = ('accelerometer' | 'ambient-light-sensor' | 'attribution-reporting' | 'autoplay' | 'bluetooth' | 'browsing-topics' | 'camera' | 'captured-surface-control' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-prefers-color-scheme' | 'ch-prefers-reduced-motion' | 'ch-prefers-reduced-transparency' | 'ch-rtt' | 'ch-save-data' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-form-factors' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'compute-pressure' | 'cross-origin-isolated' | 'deferred-fetch' | 'direct-sockets' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'hid' | 'identity-credentials-get' | 'idle-detection' | 'interest-cohort' | 'join-ad-interest-group' | 'keyboard-map' | 'local-fonts' | 'magnetometer' | 'microphone' | 'midi' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'private-aggregation' | 'private-state-token-issuance' | 'private-state-token-redemption' | 'publickey-credentials-create' | 'publickey-credentials-get' | 'run-ad-auction' | 'screen-wake-lock' | 'serial' | 'shared-autofill' | 'shared-storage' | 'shared-storage-select-url' | 'smart-card' | 'speaker-selection' | 'storage-access' | 'sub-apps' | 'sync-xhr' | 'unload' | 'usb' | 'usb-unrestricted' | 'vertical-scroll' | 'web-printing' | 'web-share' | 'window-management' | 'xr-spatial-tracking');
 
         /**
          * Reason for a permissions policy feature to be disabled.

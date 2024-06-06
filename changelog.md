@@ -1,7 +1,98 @@
 
 
+## Roll protocol to r1311068 — _2024-06-06T04:27:10.000Z_
+######  Diff: [`689e8cb...7796745`](https://github.com/ChromeDevTools/devtools-protocol/compare/689e8cb...7796745)
+
+```diff
+@@ browser_protocol.pdl:6032 @@ domain Network
+       # Set if another request triggered this request (e.g. preflight).
+       optional RequestId requestId
+ 
++  # cookiePartitionKey object
++  # The representation of the components of the key that are created by the cookiePartitionKey class contained in net/cookies/cookie_partition_key.h.
++  experimental type CookiePartitionKey extends object
++    properties
++      # The site of the top-level URL the browser was visiting at the start
++      # of the request to the endpoint that set the cookie.
++      string topLevelSite
++      # Indicates if the cookie has any ancestors that are cross-site to the topLevelSite.
++      boolean hasCrossSiteAncestor
++
+   # Cookie object
+   type Cookie extends object
+     properties
+@@ -6065,9 +6075,8 @@ domain Network
+       # An unspecified port value allows protocol clients to emulate legacy cookie scope for the port.
+       # This is a temporary ability and it will be removed in the future.
+       experimental integer sourcePort
+-      # Cookie partition key. The site of the top-level URL the browser was visiting at the start
+-      # of the request to the endpoint that set the cookie.
+-      experimental optional string partitionKey
++      # Cookie partition key. 
++      experimental optional CookiePartitionKey partitionKey
+       # True if cookie partition key is opaque.
+       experimental optional boolean partitionKeyOpaque
+ 
+@@ -6283,10 +6292,8 @@ domain Network
+       # An unspecified port value allows protocol clients to emulate legacy cookie scope for the port.
+       # This is a temporary ability and it will be removed in the future.
+       experimental optional integer sourcePort
+-      # Cookie partition key. The site of the top-level URL the browser was visiting at the start
+-      # of the request to the endpoint that set the cookie.
+-      # If not set, the cookie will be set as not partitioned.
+-      experimental optional string partitionKey
++      # Cookie partition key. If not set, the cookie will be set as not partitioned.
++      experimental optional CookiePartitionKey partitionKey
+ 
+   # Authorization challenge for HTTP status code 401 or 407.
+   experimental type AuthChallenge extends object
+@@ -6489,9 +6496,9 @@ domain Network
+       optional string domain
+       # If specified, deletes only cookies with the exact path.
+       optional string path
+-      # If specified, deletes only cookies with the the given name and partitionKey where domain
+-      # matches provided URL.
+-      experimental optional string partitionKey
++      # If specified, deletes only cookies with the the given name and partitionKey where 
++      # where all partition key attributes match the cookie partition key attribute.
++      experimental optional CookiePartitionKey partitionKey
+ 
+   # Disables network tracking, prevents network events from being sent to the client.
+   command disable
+@@ -6668,10 +6675,8 @@ domain Network
+       # An unspecified port value allows protocol clients to emulate legacy cookie scope for the port.
+       # This is a temporary ability and it will be removed in the future.
+       experimental optional integer sourcePort
+-      # Cookie partition key. The site of the top-level URL the browser was visiting at the start
+-      # of the request to the endpoint that set the cookie.
+-      # If not set, the cookie will be set as not partitioned.
+-      experimental optional string partitionKey
++      # Cookie partition key. If not set, the cookie will be set as not partitioned.
++      experimental optional CookiePartitionKey partitionKey
+     returns
+       # Always set to true. If an error occurs, the response indicates protocol error.
+       deprecated boolean success
+@@ -7063,7 +7068,7 @@ domain Network
+       optional string headersText
+       # The cookie partition key that will be used to store partitioned cookies set in this response.
+       # Only sent when partitioned cookies are enabled.
+-      optional string cookiePartitionKey
++      experimental optional CookiePartitionKey cookiePartitionKey
+       # True if partitioned cookies are enabled, but the partition key is not serializable to string.
+       optional boolean cookiePartitionKeyOpaque
+       # A list of cookies which should have been blocked by 3PCD but are exempted and stored from
+@@ -7910,6 +7915,7 @@ domain Page
+       clipboard-write
+       compute-pressure
+       cross-origin-isolated
++      deferred-fetch
+       direct-sockets
+       display-capture
+       document-domain
+```
+
 ## Roll protocol to r1310407 — _2024-06-05T04:28:24.000Z_
-######  Diff: [`2064bda...ce5f69d`](https://github.com/ChromeDevTools/devtools-protocol/compare/2064bda...ce5f69d)
+######  Diff: [`2064bda...689e8cb`](https://github.com/ChromeDevTools/devtools-protocol/compare/2064bda...689e8cb)
 
 ```diff
 @@ browser_protocol.pdl:622 @@ experimental domain Audits
@@ -11962,18 +12053,4 @@ index 09c420e..bd277eb 100644
        # If set, base::Time::Now will be overridden to initially return this value.
        optional Network.TimeSinceEpoch initialVirtualTime
      returns
-```
-
-## Roll protocol to r966949 — _2022-02-03T22:15:32.000Z_
-######  Diff: [`1d22b7b...d15d202`](https://github.com/ChromeDevTools/devtools-protocol/compare/1d22b7b...d15d202)
-
-```diff
-@@ browser_protocol.pdl:6899 @@ domain Page
-       ch-viewport-height
-       ch-viewport-width
-       ch-width
-+      ch-partitioned-cookies
-       clipboard-read
-       clipboard-write
-       cross-origin-isolated
 ```
