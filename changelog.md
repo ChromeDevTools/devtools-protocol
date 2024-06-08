@@ -1,7 +1,53 @@
 
 
+## Roll protocol to r1312386 — _2024-06-08T04:27:15.000Z_
+######  Diff: [`1db3824...8ab9ec1`](https://github.com/ChromeDevTools/devtools-protocol/compare/1db3824...8ab9ec1)
+
+```diff
+@@ browser_protocol.pdl:915 @@ experimental domain Audits
+       MissingTransientUserActivation
+       ReplacedByButtonMode
+       RelyingPartyOriginIsOpaque
++      TypeNotMatching
+ 
+   type FederatedAuthUserInfoRequestIssueDetails extends object
+     properties
+@@ -6075,7 +6076,7 @@ domain Network
+       # An unspecified port value allows protocol clients to emulate legacy cookie scope for the port.
+       # This is a temporary ability and it will be removed in the future.
+       experimental integer sourcePort
+-      # Cookie partition key. 
++      # Cookie partition key.
+       experimental optional CookiePartitionKey partitionKey
+       # True if cookie partition key is opaque.
+       experimental optional boolean partitionKeyOpaque
+@@ -6496,8 +6497,8 @@ domain Network
+       optional string domain
+       # If specified, deletes only cookies with the exact path.
+       optional string path
+-      # If specified, deletes only cookies with the the given name and partitionKey where 
+-      # where all partition key attributes match the cookie partition key attribute.
++      # If specified, deletes only cookies with the the given name and partitionKey where
++      # all partition key attributes match the cookie partition key attribute.
+       experimental optional CookiePartitionKey partitionKey
+ 
+   # Disables network tracking, prevents network events from being sent to the client.
+@@ -9248,6 +9249,11 @@ domain Page
+       HTTPAuthRequired
+       CookieFlushed
+       BroadcastChannelOnMessage
++      WebViewSettingsChanged
++      WebViewJavaScriptObjectChanged
++      WebViewMessageListenerInjected
++      WebViewSafeBrowsingAllowlistChanged
++      WebViewDocumentStartJavascriptChanged
+       #Blocklisted features
+       WebSocket
+       WebTransport
+```
+
 ## Roll protocol to r1311068 — _2024-06-06T04:27:10.000Z_
-######  Diff: [`689e8cb...7796745`](https://github.com/ChromeDevTools/devtools-protocol/compare/689e8cb...7796745)
+######  Diff: [`689e8cb...1db3824`](https://github.com/ChromeDevTools/devtools-protocol/compare/689e8cb...1db3824)
 
 ```diff
 @@ browser_protocol.pdl:6032 @@ domain Network
@@ -12037,20 +12083,4 @@ index 09c420e..bd277eb 100644
        join-ad-interest-group
        keyboard-map
        magnetometer
-```
-
-## Roll protocol to r966979 — _2022-02-03T23:15:30.000Z_
-######  Diff: [`d15d202...72f90a8`](https://github.com/ChromeDevTools/devtools-protocol/compare/d15d202...72f90a8)
-
-```diff
-@@ browser_protocol.pdl:3656 @@ domain Emulation
-       # If set this specifies the maximum number of tasks that can be run before virtual is forced
-       # forwards to prevent deadlock.
-       optional integer maxVirtualTimeTaskStarvationCount
--      # If set the virtual time policy change should be deferred until any frame starts navigating.
--      # Note any previous deferred policy change is superseded.
--      optional boolean waitForNavigation
-       # If set, base::Time::Now will be overridden to initially return this value.
-       optional Network.TimeSinceEpoch initialVirtualTime
-     returns
 ```
