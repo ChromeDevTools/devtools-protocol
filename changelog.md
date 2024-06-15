@@ -1,7 +1,29 @@
 
 
+## Roll protocol to r1315554 — _2024-06-15T04:28:24.000Z_
+######  Diff: [`db710ff...cac2f39`](https://github.com/ChromeDevTools/devtools-protocol/compare/db710ff...cac2f39)
+
+```diff
+@@ browser_protocol.pdl:156 @@ experimental domain Accessibility
+       flowto
+       labelledby
+       owns
++      url
+ 
+   # A node in the accessibility tree.
+   type AXNode extends object
+@@ -10508,6 +10509,7 @@ experimental domain Storage
+       reportingOriginsPerSiteLimitReached
+       exceedsMaxChannelCapacity
+       exceedsMaxTriggerStateCardinality
++      destinationPerDayReportingLimitReached
+ 
+   experimental event attributionReportingSourceRegistered
+     parameters
+```
+
 ## Roll protocol to r1312386 — _2024-06-08T04:27:15.000Z_
-######  Diff: [`1db3824...8ab9ec1`](https://github.com/ChromeDevTools/devtools-protocol/compare/1db3824...8ab9ec1)
+######  Diff: [`1db3824...db710ff`](https://github.com/ChromeDevTools/devtools-protocol/compare/1db3824...db710ff)
 
 ```diff
 @@ browser_protocol.pdl:915 @@ experimental domain Audits
@@ -12069,18 +12091,4 @@ index 09c420e..bd277eb 100644
        ErrorFetchingSignin
        InvalidSigninResponse
        AccountsHttpNotFound
-```
-
-## Roll protocol to r967529 — _2022-02-05T00:15:30.000Z_
-######  Diff: [`72f90a8...5b91f46`](https://github.com/ChromeDevTools/devtools-protocol/compare/72f90a8...5b91f46)
-
-```diff
-@@ browser_protocol.pdl:6914 @@ domain Page
-       gyroscope
-       hid
-       idle-detection
--      interest-cohort
-       join-ad-interest-group
-       keyboard-map
-       magnetometer
 ```
