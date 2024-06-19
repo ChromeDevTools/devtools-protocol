@@ -2605,6 +2605,11 @@ export namespace ProtocolProxyApi {
         on(event: 'trustTokenOperationDone', listener: (params: Protocol.Network.TrustTokenOperationDoneEvent) => void): void;
 
         /**
+         * Fired once security policy has been updated.
+         */
+        on(event: 'policyUpdated', listener: () => void): void;
+
+        /**
          * Fired once when parsing the .wbn file has succeeded.
          * The event contains the information about the web bundle contents.
          */

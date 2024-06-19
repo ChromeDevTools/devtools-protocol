@@ -1,7 +1,23 @@
 
 
+## Roll protocol to r1316850 — _2024-06-19T04:27:32.000Z_
+######  Diff: [`1e50e23...c6845e2`](https://github.com/ChromeDevTools/devtools-protocol/compare/1e50e23...c6845e2)
+
+```diff
+@@ browser_protocol.pdl:7119 @@ domain Network
+       # The number of obtained Trust Tokens on a successful "Issuance" operation.
+       optional integer issuedTokenCount
+ 
++  # Fired once security policy has been updated.
++  experimental event policyUpdated
++
+   # Fired once when parsing the .wbn file has succeeded.
+   # The event contains the information about the web bundle contents.
+   experimental event subresourceWebBundleMetadataReceived
+```
+
 ## Roll protocol to r1315554 — _2024-06-15T04:28:24.000Z_
-######  Diff: [`db710ff...cac2f39`](https://github.com/ChromeDevTools/devtools-protocol/compare/db710ff...cac2f39)
+######  Diff: [`db710ff...1e50e23`](https://github.com/ChromeDevTools/devtools-protocol/compare/db710ff...1e50e23)
 
 ```diff
 @@ browser_protocol.pdl:156 @@ experimental domain Accessibility

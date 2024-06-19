@@ -2791,6 +2791,13 @@ export namespace ProtocolTestsProxyApi {
         onceTrustTokenOperationDone(eventMatcher?: (event: { params: Protocol.Network.TrustTokenOperationDoneEvent }) => boolean): Promise<{ params: Protocol.Network.TrustTokenOperationDoneEvent }>;
 
         /**
+         * Fired once security policy has been updated.
+         */
+        onPolicyUpdated(listener: (event: ) => void): void;
+        offPolicyUpdated(listener: (event: ) => void): void;
+        oncePolicyUpdated(eventMatcher?: (event: ) => boolean): Promise<>;
+
+        /**
          * Fired once when parsing the .wbn file has succeeded.
          * The event contains the information about the web bundle contents.
          */
