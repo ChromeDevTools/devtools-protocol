@@ -1,7 +1,32 @@
 
 
+## Roll protocol to r1317198 — _2024-06-20T04:26:46.000Z_
+######  Diff: [`210a6c6...01d97ea`](https://github.com/ChromeDevTools/devtools-protocol/compare/210a6c6...01d97ea)
+
+```diff
+@@ browser_protocol.pdl:1367 @@ domain Browser
+       optional boolean userVisibleOnly
+       # For "clipboard" permission, may specify allowWithoutSanitization.
+       optional boolean allowWithoutSanitization
++      # For "fullscreen" permission, must specify allowWithoutGesture:true.
++      optional boolean allowWithoutGesture
+       # For "camera" permission, may specify panTiltZoom.
+       optional boolean panTiltZoom
+ 
+@@ -7119,9 +7121,6 @@ domain Network
+       # The number of obtained Trust Tokens on a successful "Issuance" operation.
+       optional integer issuedTokenCount
+ 
+-  # Fired once security policy has been updated.
+-  experimental event policyUpdated
+-
+   # Fired once when parsing the .wbn file has succeeded.
+   # The event contains the information about the web bundle contents.
+   experimental event subresourceWebBundleMetadataReceived
+```
+
 ## Roll protocol to r1316850 — _2024-06-19T04:27:32.000Z_
-######  Diff: [`1e50e23...c6845e2`](https://github.com/ChromeDevTools/devtools-protocol/compare/1e50e23...c6845e2)
+######  Diff: [`1e50e23...210a6c6`](https://github.com/ChromeDevTools/devtools-protocol/compare/1e50e23...210a6c6)
 
 ```diff
 @@ browser_protocol.pdl:7119 @@ domain Network
@@ -12088,23 +12113,4 @@ index 09c420e..bd277eb 100644
        ClientMetadataHttpNotFound
        ClientMetadataNoResponse
        ClientMetadataInvalidResponse
-```
-
-## Roll protocol to r969947 — _2022-02-11T15:15:21.000Z_
-######  Diff: [`4562919...22b098a`](https://github.com/ChromeDevTools/devtools-protocol/compare/4562919...22b098a)
-
-```diff
-@@ browser_protocol.pdl:788 @@ experimental domain Audits
-       WellKnownHttpNotFound
-       WellKnownNoResponse
-       WellKnownInvalidResponse
--      ClientIdMetadataHttpNotFound
--      ClientIdMetadataNoResponse
--      ClientIdMetadataInvalidResponse
-+      ClientMetadataHttpNotFound
-+      ClientMetadataNoResponse
-+      ClientMetadataInvalidResponse
-       ErrorFetchingSignin
-       InvalidSigninResponse
-       AccountsHttpNotFound
 ```
