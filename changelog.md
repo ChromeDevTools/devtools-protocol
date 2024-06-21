@@ -1,7 +1,41 @@
 
 
+## Roll protocol to r1317765 — _2024-06-21T04:27:31.000Z_
+######  Diff: [`6859c96...be6c222`](https://github.com/ChromeDevTools/devtools-protocol/compare/6859c96...be6c222)
+
+```diff
+@@ browser_protocol.pdl:892 @@ experimental domain Audits
+       ClientMetadataNoResponse
+       ClientMetadataInvalidResponse
+       ClientMetadataInvalidContentType
++      IdpNotPotentiallyTrustworthy
+       DisabledInSettings
++      DisabledInFlags
+       ErrorFetchingSignin
+       InvalidSigninResponse
+       AccountsHttpNotFound
+@@ -915,6 +917,7 @@ experimental domain Audits
+       NotSignedInWithIdp
+       MissingTransientUserActivation
+       ReplacedByButtonMode
++      InvalidFieldsSpecified
+       RelyingPartyOriginIsOpaque
+       TypeNotMatching
+ 
+@@ -7121,6 +7124,9 @@ domain Network
+       # The number of obtained Trust Tokens on a successful "Issuance" operation.
+       optional integer issuedTokenCount
+ 
++  # Fired once security policy has been updated.
++  experimental event policyUpdated
++
+   # Fired once when parsing the .wbn file has succeeded.
+   # The event contains the information about the web bundle contents.
+   experimental event subresourceWebBundleMetadataReceived
+```
+
 ## Roll protocol to r1317198 — _2024-06-20T04:26:46.000Z_
-######  Diff: [`210a6c6...01d97ea`](https://github.com/ChromeDevTools/devtools-protocol/compare/210a6c6...01d97ea)
+######  Diff: [`210a6c6...6859c96`](https://github.com/ChromeDevTools/devtools-protocol/compare/210a6c6...6859c96)
 
 ```diff
 @@ browser_protocol.pdl:1367 @@ domain Browser
@@ -12094,23 +12128,4 @@ index 09c420e..bd277eb 100644
    # Modifies the rule selector.
    command setRuleSelector
      parameters
-```
-
-## Roll protocol to r969999 — _2022-02-11T17:15:13.000Z_
-######  Diff: [`22b098a...9f8c559`](https://github.com/ChromeDevTools/devtools-protocol/compare/22b098a...9f8c559)
-
-```diff
-@@ browser_protocol.pdl:785 @@ experimental domain Audits
-     enum
-       ApprovalDeclined
-       TooManyRequests
--      WellKnownHttpNotFound
--      WellKnownNoResponse
--      WellKnownInvalidResponse
-+      ManifestHttpNotFound
-+      ManifestNoResponse
-+      ManifestInvalidResponse
-       ClientMetadataHttpNotFound
-       ClientMetadataNoResponse
-       ClientMetadataInvalidResponse
 ```
