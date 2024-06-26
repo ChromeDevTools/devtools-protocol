@@ -18567,6 +18567,11 @@ export namespace Protocol {
             displayName: string;
         }
 
+        /**
+         * If user prefers opening the app in browser or an app window.
+         */
+        export type DisplayMode = ('standalone' | 'browser');
+
         export interface GetOsAppStateRequest {
             /**
              * The id from the webapp's manifest file, commonly it's the url of the
@@ -18620,6 +18625,25 @@ export namespace Protocol {
 
         export interface OpenCurrentPageInAppRequest {
             manifestId: string;
+        }
+
+        export interface ChangeAppUserSettingsRequest {
+            manifestId: string;
+            /**
+             * If user allows the links clicked on by the user in the app's scope, or
+             * extended scope if the manifest has scope extensions and the flags
+             * `DesktopPWAsLinkCapturingWithScopeExtensions` and
+             * `WebAppEnableScopeExtensions` are enabled.
+             * 
+             * Note, the API does not support resetting the linkCapturing to the
+             * initial value, uninstalling and installing the web app again will reset
+             * it.
+             * 
+             * TODO(crbug.com/339453269): Setting this value on ChromeOS is not
+             * supported yet.
+             */
+            linkCapturing?: boolean;
+            displayMode?: DisplayMode;
         }
     }
 }

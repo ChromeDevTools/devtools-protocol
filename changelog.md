@@ -1,7 +1,72 @@
 
 
+## Roll protocol to r1319565 — _2024-06-26T04:28:01.000Z_
+######  Diff: [`549a18a...7178d42`](https://github.com/ChromeDevTools/devtools-protocol/compare/549a18a...7178d42)
+
+```diff
+@@ browser_protocol.pdl:12426 @@ experimental domain PWA
+       # manifestId.
+       optional string installUrlOrBundleUrl
+ 
+-  # Uninstals the given manifest_id and closes any opened app windows.
++  # Uninstalls the given manifest_id and closes any opened app windows.
+   command uninstall
+     parameters
+       string manifestId
+@@ -12448,7 +12448,7 @@ experimental domain PWA
+   # used to attach to via Target.attachToTarget or similar APIs.
+   # If some files in the parameters cannot be handled by the web app, they will
+   # be ignored. If none of the files can be handled, this API returns an error.
+-  # If no files provided as the parameter, this API also returns an error.
++  # If no files are provided as the parameter, this API also returns an error.
+   #
+   # According to the definition of the file handlers in the manifest file, one
+   # Target.TargetID may represent a page handling one or more files. The order
+@@ -12465,7 +12465,39 @@ experimental domain PWA
+ 
+   # Opens the current page in its web app identified by the manifest id, needs
+   # to be called on a page target. This function returns immediately without
+-  # waiting for the app finishing loading.
++  # waiting for the app to finish loading.
+   command openCurrentPageInApp
+     parameters
+       string manifestId
++
++  # If user prefers opening the app in browser or an app window.
++  type DisplayMode extends string
++    enum
++      standalone
++      browser
++
++  # Changes user settings of the web app identified by its manifestId. If the
++  # app was not installed, this command returns an error. Unset parameters will
++  # be ignored; unrecognized values will cause an error.
++  #
++  # Unlike the ones defined in the manifest files of the web apps, these
++  # settings are provided by the browser and controlled by the users, they
++  # impact the way the browser handling the web apps.
++  #
++  # See the comment of each parameter.
++  command changeAppUserSettings
++    parameters
++      string manifestId
++      # If user allows the links clicked on by the user in the app's scope, or
++      # extended scope if the manifest has scope extensions and the flags
++      # `DesktopPWAsLinkCapturingWithScopeExtensions` and
++      # `WebAppEnableScopeExtensions` are enabled.
++      #
++      # Note, the API does not support resetting the linkCapturing to the
++      # initial value, uninstalling and installing the web app again will reset
++      # it.
++      #
++      # TODO(crbug.com/339453269): Setting this value on ChromeOS is not
++      # supported yet.
++      optional boolean linkCapturing
++      optional DisplayMode displayMode
+```
+
 ## Roll protocol to r1317765 — _2024-06-21T04:27:31.000Z_
-######  Diff: [`6859c96...be6c222`](https://github.com/ChromeDevTools/devtools-protocol/compare/6859c96...be6c222)
+######  Diff: [`6859c96...549a18a`](https://github.com/ChromeDevTools/devtools-protocol/compare/6859c96...549a18a)
 
 ```diff
 @@ browser_protocol.pdl:892 @@ experimental domain Audits
@@ -12102,29 +12167,6 @@ index 09c420e..bd277eb 100644
 -      # The resulting CSS Supports rule after modification.
 -      CSSSupports supports
 -
-   # Modifies the rule selector.
-   command setRuleSelector
-     parameters
-```
-
-## Roll protocol to r970581 — _2022-02-14T12:15:16.000Z_
-######  Diff: [`9f8c559...1b1e643`](https://github.com/ChromeDevTools/devtools-protocol/compare/9f8c559...1b1e643)
-
-```diff
-@@ browser_protocol.pdl:1792 @@ experimental domain CSS
-       # The resulting CSS container query rule after modification.
-       CSSContainerQuery containerQuery
- 
-+  # Modifies the expression of a supports at-rule.
-+  experimental command setSupportsText
-+    parameters
-+      StyleSheetId styleSheetId
-+      SourceRange range
-+      string text
-+    returns
-+      # The resulting CSS Supports rule after modification.
-+      CSSSupports supports
-+
    # Modifies the rule selector.
    command setRuleSelector
      parameters

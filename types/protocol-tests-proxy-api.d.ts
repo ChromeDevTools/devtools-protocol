@@ -4646,7 +4646,7 @@ export namespace ProtocolTestsProxyApi {
         install(params: Protocol.PWA.InstallRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
-         * Uninstals the given manifest_id and closes any opened app windows.
+         * Uninstalls the given manifest_id and closes any opened app windows.
          */
         uninstall(params: Protocol.PWA.UninstallRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -4664,7 +4664,7 @@ export namespace ProtocolTestsProxyApi {
          * used to attach to via Target.attachToTarget or similar APIs.
          * If some files in the parameters cannot be handled by the web app, they will
          * be ignored. If none of the files can be handled, this API returns an error.
-         * If no files provided as the parameter, this API also returns an error.
+         * If no files are provided as the parameter, this API also returns an error.
          * 
          * According to the definition of the file handlers in the manifest file, one
          * Target.TargetID may represent a page handling one or more files. The order
@@ -4677,9 +4677,22 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Opens the current page in its web app identified by the manifest id, needs
          * to be called on a page target. This function returns immediately without
-         * waiting for the app finishing loading.
+         * waiting for the app to finish loading.
          */
         openCurrentPageInApp(params: Protocol.PWA.OpenCurrentPageInAppRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
+         * Changes user settings of the web app identified by its manifestId. If the
+         * app was not installed, this command returns an error. Unset parameters will
+         * be ignored; unrecognized values will cause an error.
+         * 
+         * Unlike the ones defined in the manifest files of the web apps, these
+         * settings are provided by the browser and controlled by the users, they
+         * impact the way the browser handling the web apps.
+         * 
+         * See the comment of each parameter.
+         */
+        changeAppUserSettings(params: Protocol.PWA.ChangeAppUserSettingsRequest): Promise<{id: number, result: void, sessionId: string}>;
 
     }
 }
