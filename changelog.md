@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1323165 — _2024-07-04T04:27:18.000Z_
+######  Diff: [`98a6075...86a9d9c`](https://github.com/ChromeDevTools/devtools-protocol/compare/98a6075...86a9d9c)
+
+```diff
+@@ browser_protocol.pdl:2031 @@ experimental domain CSS
+       StyleSheetOrigin origin
+       # Associated style declaration.
+       CSSStyle style
++      boolean active
+ 
+   # CSS keyframes rule representation.
+   type CSSKeyframesRule extends object
+```
+
 ## Roll protocol to r1319565 — _2024-06-26T04:28:01.000Z_
-######  Diff: [`549a18a...7178d42`](https://github.com/ChromeDevTools/devtools-protocol/compare/549a18a...7178d42)
+######  Diff: [`549a18a...98a6075`](https://github.com/ChromeDevTools/devtools-protocol/compare/549a18a...98a6075)
 
 ```diff
 @@ browser_protocol.pdl:12426 @@ experimental domain PWA
@@ -12144,29 +12158,6 @@ index 09c420e..bd277eb 100644
 +      # The resulting CSS Supports rule after modification.
 +      CSSSupports supports
 +
-   # Modifies the rule selector.
-   command setRuleSelector
-     parameters
-```
-
-## Roll protocol to r970590 — _2022-02-14T13:15:13.000Z_
-######  Diff: [`1b1e643...9a655fe`](https://github.com/ChromeDevTools/devtools-protocol/compare/1b1e643...9a655fe)
-
-```diff
-@@ browser_protocol.pdl:1792 @@ experimental domain CSS
-       # The resulting CSS container query rule after modification.
-       CSSContainerQuery containerQuery
- 
--  # Modifies the expression of a supports at-rule.
--  experimental command setSupportsText
--    parameters
--      StyleSheetId styleSheetId
--      SourceRange range
--      string text
--    returns
--      # The resulting CSS Supports rule after modification.
--      CSSSupports supports
--
    # Modifies the rule selector.
    command setRuleSelector
      parameters

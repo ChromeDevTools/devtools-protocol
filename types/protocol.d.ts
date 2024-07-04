@@ -5154,6 +5154,7 @@ export namespace Protocol {
              * Associated style declaration.
              */
             style: CSSStyle;
+            active: boolean;
         }
 
         /**
