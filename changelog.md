@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1323532 — _2024-07-05T04:28:00.000Z_
+######  Diff: [`f9caf87...921bfb2`](https://github.com/ChromeDevTools/devtools-protocol/compare/f9caf87...921bfb2)
+
+```diff
+@@ browser_protocol.pdl:2207 @@ experimental domain CSS
+       optional array of CSSKeyframesRule cssKeyframesRules
+       # A list of CSS position fallbacks matching this node.
+       deprecated optional array of CSSPositionFallbackRule cssPositionFallbackRules
+-      # A list of CSS @position-try rules matching this node, based on the position-try-options property.
++      # A list of CSS @position-try rules matching this node, based on the position-try-fallbacks property.
+       optional array of CSSPositionTryRule cssPositionTryRules
+       # A list of CSS at-property rules matching this node.
+       optional array of CSSPropertyRule cssPropertyRules
+```
+
 ## Roll protocol to r1323165 — _2024-07-04T04:27:18.000Z_
-######  Diff: [`98a6075...86a9d9c`](https://github.com/ChromeDevTools/devtools-protocol/compare/98a6075...86a9d9c)
+######  Diff: [`98a6075...f9caf87`](https://github.com/ChromeDevTools/devtools-protocol/compare/98a6075...f9caf87)
 
 ```diff
 @@ browser_protocol.pdl:2031 @@ experimental domain CSS
