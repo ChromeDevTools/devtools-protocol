@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1323829 — _2024-07-06T04:27:22.000Z_
+######  Diff: [`e09b046...6f1dac9`](https://github.com/ChromeDevTools/devtools-protocol/compare/e09b046...6f1dac9)
+
+```diff
+@@ browser_protocol.pdl:7927 @@ domain Page
+       compute-pressure
+       cross-origin-isolated
+       deferred-fetch
++      digital-credentials-get
+       direct-sockets
+       display-capture
+       document-domain
+```
+
 ## Roll protocol to r1323532 — _2024-07-05T04:28:00.000Z_
-######  Diff: [`f9caf87...921bfb2`](https://github.com/ChromeDevTools/devtools-protocol/compare/f9caf87...921bfb2)
+######  Diff: [`f9caf87...e09b046`](https://github.com/ChromeDevTools/devtools-protocol/compare/f9caf87...e09b046)
 
 ```diff
 @@ browser_protocol.pdl:2207 @@ experimental domain CSS
@@ -12153,27 +12167,4 @@ index 09c420e..bd277eb 100644
        Audio
        Beacon
        CSPReport
-```
-
-## Roll protocol to r971103 — _2022-02-15T08:15:18.000Z_
-######  Diff: [`84f7cd0...cfe04f6`](https://github.com/ChromeDevTools/devtools-protocol/compare/84f7cd0...cfe04f6)
-
-```diff
-@@ browser_protocol.pdl:1792 @@ experimental domain CSS
-       # The resulting CSS container query rule after modification.
-       CSSContainerQuery containerQuery
- 
-+  # Modifies the expression of a supports at-rule.
-+  experimental command setSupportsText
-+    parameters
-+      StyleSheetId styleSheetId
-+      SourceRange range
-+      string text
-+    returns
-+      # The resulting CSS Supports rule after modification.
-+      CSSSupports supports
-+
-   # Modifies the rule selector.
-   command setRuleSelector
-     parameters
 ```
