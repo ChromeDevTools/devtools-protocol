@@ -8654,6 +8654,57 @@ export namespace Protocol {
         }
     }
 
+    export namespace FileSystem {
+
+        export interface File {
+            name: string;
+            /**
+             * Timestamp
+             */
+            lastModified: Network.TimeSinceEpoch;
+            /**
+             * Size in bytes
+             */
+            size: number;
+            type: string;
+        }
+
+        export interface Directory {
+            name: string;
+            nestedDirectories: string[];
+            /**
+             * Files that are directly nested under this directory.
+             */
+            nestedFiles: File[];
+        }
+
+        export interface BucketFileSystemLocator {
+            /**
+             * Storage key
+             */
+            storageKey: Storage.SerializedStorageKey;
+            /**
+             * Bucket name. Not passing a `bucketName` will retrieve the default Bucket. (https://developer.mozilla.org/en-US/docs/Web/API/Storage_API#storage_buckets)
+             */
+            bucketName?: string;
+            /**
+             * Path to the directory using each path component as an array item.
+             */
+            pathComponents: string[];
+        }
+
+        export interface GetDirectoryRequest {
+            bucketFileSystemLocator: BucketFileSystemLocator;
+        }
+
+        export interface GetDirectoryResponse {
+            /**
+             * Returns the directory object at the path.
+             */
+            directory: Directory;
+        }
+    }
+
     export namespace IndexedDB {
 
         /**
@@ -15899,6 +15950,7 @@ export namespace Protocol {
              * int
              */
             value: number;
+            filteringId: UnsignedInt64AsBase10;
         }
 
         export interface AttributionReportingAggregatableValueEntry {
@@ -15931,6 +15983,7 @@ export namespace Protocol {
             eventTriggerData: AttributionReportingEventTriggerData[];
             aggregatableTriggerData: AttributionReportingAggregatableTriggerData[];
             aggregatableValues: AttributionReportingAggregatableValueEntry[];
+            aggregatableFilteringIdMaxBytes: integer;
             debugReporting: boolean;
             aggregationCoordinatorOrigin?: string;
             sourceRegistrationTimeConfig: AttributionReportingSourceRegistrationTimeConfig;

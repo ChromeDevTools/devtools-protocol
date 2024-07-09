@@ -62,6 +62,8 @@ export namespace ProtocolProxyApi {
 
         IO: IOApi;
 
+        FileSystem: FileSystemApi;
+
         IndexedDB: IndexedDBApi;
 
         Input: InputApi;
@@ -1996,6 +1998,11 @@ export namespace ProtocolProxyApi {
          * Return UUID of Blob object specified by a remote object id.
          */
         resolveBlob(params: Protocol.IO.ResolveBlobRequest): Promise<Protocol.IO.ResolveBlobResponse>;
+
+    }
+
+    export interface FileSystemApi {
+        getDirectory(params: Protocol.FileSystem.GetDirectoryRequest): Promise<Protocol.FileSystem.GetDirectoryResponse>;
 
     }
 

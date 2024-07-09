@@ -1,7 +1,73 @@
 
 
+## Roll protocol to r1324661 — _2024-07-09T04:27:20.000Z_
+######  Diff: [`f3aca7c...23bb9de`](https://github.com/ChromeDevTools/devtools-protocol/compare/f3aca7c...23bb9de)
+
+```diff
+@@ browser_protocol.pdl:4560 @@ domain IO
+       # UUID of the specified Blob.
+       string uuid
+ 
++experimental domain FileSystem
++  depends on Network
++  depends on Storage
++
++  type File extends object
++    properties
++      string name
++      # Timestamp
++      Network.TimeSinceEpoch lastModified
++      # Size in bytes
++      number size
++      string type
++
++  type Directory extends object
++    properties
++      string name
++      array of string nestedDirectories
++      # Files that are directly nested under this directory.
++      array of File nestedFiles
++
++  type BucketFileSystemLocator extends object
++    properties
++      # Storage key
++      Storage.SerializedStorageKey storageKey
++      # Bucket name. Not passing a `bucketName` will retrieve the default Bucket. (https://developer.mozilla.org/en-US/docs/Web/API/Storage_API#storage_buckets)
++      optional string bucketName
++      # Path to the directory using each path component as an array item.
++      array of string pathComponents
++
++  command getDirectory
++    parameters
++      BucketFileSystemLocator bucketFileSystemLocator
++    returns
++      # Returns the directory object at the path.
++      Directory directory
++
+ experimental domain IndexedDB
+   depends on Runtime
+   depends on Storage
+@@ -10537,6 +10573,8 @@ experimental domain Storage
+       # number instead of integer because not all uint32 can be represented by
+       # int
+       number value
++      UnsignedInt64AsBase10 filteringId
++
+ 
+   experimental type AttributionReportingAggregatableValueEntry extends object
+     properties
+@@ -10569,6 +10607,7 @@ experimental domain Storage
+       array of AttributionReportingEventTriggerData eventTriggerData
+       array of AttributionReportingAggregatableTriggerData aggregatableTriggerData
+       array of AttributionReportingAggregatableValueEntry aggregatableValues
++      integer aggregatableFilteringIdMaxBytes
+       boolean debugReporting
+       optional string aggregationCoordinatorOrigin
+       AttributionReportingSourceRegistrationTimeConfig sourceRegistrationTimeConfig
+```
+
 ## Roll protocol to r1323829 — _2024-07-06T04:27:22.000Z_
-######  Diff: [`e09b046...6f1dac9`](https://github.com/ChromeDevTools/devtools-protocol/compare/e09b046...6f1dac9)
+######  Diff: [`e09b046...f3aca7c`](https://github.com/ChromeDevTools/devtools-protocol/compare/e09b046...f3aca7c)
 
 ```diff
 @@ browser_protocol.pdl:7927 @@ domain Page
@@ -12153,18 +12219,4 @@ index 09c420e..bd277eb 100644
    # all cases except for success.
    type FederatedAuthRequestIssueReason extends string
      enum
-```
-
-## Roll protocol to r971358 — _2022-02-15T19:15:32.000Z_
-######  Diff: [`cfe04f6...b960aa4`](https://github.com/ChromeDevTools/devtools-protocol/compare/cfe04f6...b960aa4)
-
-```diff
-@@ browser_protocol.pdl:526 @@ experimental domain Audits
- 
-   type MixedContentResourceType extends string
-     enum
-+      AttributionSrc
-       Audio
-       Beacon
-       CSPReport
 ```
