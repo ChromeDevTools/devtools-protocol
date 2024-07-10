@@ -1,7 +1,46 @@
 
 
+## Roll protocol to r1325288 — _2024-07-10T04:27:56.000Z_
+######  Diff: [`5c95bcf...e0af7f1`](https://github.com/ChromeDevTools/devtools-protocol/compare/5c95bcf...e0af7f1)
+
+```diff
+@@ browser_protocol.pdl:803 @@ experimental domain Audits
+ 
+   type GenericIssueErrorType extends string
+     enum
+-      CrossOriginPortalPostMessageError
+       FormLabelForNameError
+       FormDuplicateIdForInputError
+       FormInputWithNoLabelError
+@@ -9331,7 +9330,6 @@ domain Page
+       Printing
+       WebDatabase
+       PictureInPicture
+-      Portal
+       SpeechRecognizer
+       IdleManager
+       PaymentManager
+@@ -10839,7 +10837,7 @@ domain Target
+       experimental optional Page.FrameId openerFrameId
+       experimental optional Browser.BrowserContextID browserContextId
+       # Provides additional details for specific target types. For example, for
+-      # the type of "page", this may be set to "portal" or "prerender".
++      # the type of "page", this may be set to "prerender".
+       experimental optional string subtype
+ 
+   # A filter used by target query/discovery/auto-attach operations.
+@@ -12227,6 +12225,7 @@ experimental domain Preload
+       JavaScriptInterfaceAdded
+       JavaScriptInterfaceRemoved
+       AllPrerenderingCanceled
++      WindowClosed
+ 
+   # Fired when a preload enabled state is updated.
+   event preloadEnabledStateUpdated
+```
+
 ## Roll protocol to r1324661 — _2024-07-09T04:27:20.000Z_
-######  Diff: [`f3aca7c...23bb9de`](https://github.com/ChromeDevTools/devtools-protocol/compare/f3aca7c...23bb9de)
+######  Diff: [`f3aca7c...5c95bcf`](https://github.com/ChromeDevTools/devtools-protocol/compare/f3aca7c...5c95bcf)
 
 ```diff
 @@ browser_protocol.pdl:4560 @@ domain IO
@@ -12204,19 +12243,4 @@ index 09c420e..bd277eb 100644
        # The frame for whose document the AX tree should be retrieved.
        # If omited, the root frame is used.
        optional Page.FrameId frameId
-```
-
-## Roll protocol to r972468 — _2022-02-17T16:15:22.000Z_
-######  Diff: [`b960aa4...474a6e6`](https://github.com/ChromeDevTools/devtools-protocol/compare/b960aa4...474a6e6)
-
-```diff
-@@ browser_protocol.pdl:780 @@ experimental domain Audits
- 
-   # Represents the failure reason when a federated authentication reason fails.
-   # Should be updated alongside RequestIdTokenStatus in
--  # third_party/blink/public/mojom/webid/federated_auth_request.mojom to include
-+  # third_party/blink/public/mojom/devtools/inspector_issue.mojom to include
-   # all cases except for success.
-   type FederatedAuthRequestIssueReason extends string
-     enum
 ```

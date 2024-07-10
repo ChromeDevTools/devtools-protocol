@@ -1607,7 +1607,6 @@
                     "id": "GenericIssueErrorType",
                     "type": "string",
                     "enum": [
-                        "CrossOriginPortalPostMessageError",
                         "FormLabelForNameError",
                         "FormDuplicateIdForInputError",
                         "FormInputWithNoLabelError",
@@ -18279,7 +18278,6 @@
                         "Printing",
                         "WebDatabase",
                         "PictureInPicture",
-                        "Portal",
                         "SpeechRecognizer",
                         "IdleManager",
                         "PaymentManager",
@@ -23129,7 +23127,7 @@
                         },
                         {
                             "name": "subtype",
-                            "description": "Provides additional details for specific target types. For example, for\nthe type of \"page\", this may be set to \"portal\" or \"prerender\".",
+                            "description": "Provides additional details for specific target types. For example, for\nthe type of \"page\", this may be set to \"prerender\".",
                             "experimental": true,
                             "optional": true,
                             "type": "string"
@@ -25887,7 +25885,8 @@
                         "ActivationUrlHasEffectiveUrl",
                         "JavaScriptInterfaceAdded",
                         "JavaScriptInterfaceRemoved",
-                        "AllPrerenderingCanceled"
+                        "AllPrerenderingCanceled",
+                        "WindowClosed"
                     ]
                 },
                 {
