@@ -1,7 +1,31 @@
 
 
+## Roll protocol to r1325906 — _2024-07-11T04:28:25.000Z_
+######  Diff: [`8297006...2e82505`](https://github.com/ChromeDevTools/devtools-protocol/compare/8297006...2e82505)
+
+```diff
+@@ browser_protocol.pdl:2208 @@ experimental domain CSS
+       deprecated optional array of CSSPositionFallbackRule cssPositionFallbackRules
+       # A list of CSS @position-try rules matching this node, based on the position-try-fallbacks property.
+       optional array of CSSPositionTryRule cssPositionTryRules
++      # Index of the active fallback in the applied position-try-fallback property,
++      # will not be set if there is no active position-try fallback.
++      optional integer activePositionFallbackIndex
+       # A list of CSS at-property rules matching this node.
+       optional array of CSSPropertyRule cssPropertyRules
+       # A list of CSS property registrations matching this node.
+@@ -7215,6 +7218,7 @@ domain Network
+       UnsafeNone
+       SameOriginPlusCoep
+       RestrictPropertiesPlusCoep
++      NoopenerAllowPopups
+ 
+   experimental type CrossOriginOpenerPolicyStatus extends object
+     properties
+```
+
 ## Roll protocol to r1325288 — _2024-07-10T04:27:56.000Z_
-######  Diff: [`5c95bcf...e0af7f1`](https://github.com/ChromeDevTools/devtools-protocol/compare/5c95bcf...e0af7f1)
+######  Diff: [`5c95bcf...8297006`](https://github.com/ChromeDevTools/devtools-protocol/compare/5c95bcf...8297006)
 
 ```diff
 @@ browser_protocol.pdl:803 @@ experimental domain Audits
@@ -12228,19 +12252,4 @@ index 09c420e..bd277eb 100644
  
    # Shadow root type.
    type ShadowRootType extends string
-```
-
-## Roll protocol to r972883 — _2022-02-18T10:15:14.000Z_
-######  Diff: [`474a6e6...1c7f0c1`](https://github.com/ChromeDevTools/devtools-protocol/compare/474a6e6...1c7f0c1)
-
-```diff
-@@ browser_protocol.pdl:214 @@ experimental domain Accessibility
-       # The maximum depth at which descendants of the root node should be retrieved.
-       # If omitted, the full tree is returned.
-       optional integer depth
--      # Deprecated. This parameter has been renamed to `depth`. If depth is not provided, max_depth will be used.
--      deprecated optional integer max_depth
-       # The frame for whose document the AX tree should be retrieved.
-       # If omited, the root frame is used.
-       optional Page.FrameId frameId
 ```
