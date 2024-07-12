@@ -15942,6 +15942,7 @@ export namespace Protocol {
             aggregationKeys: AttributionReportingAggregationKeysEntry[];
             debugKey?: UnsignedInt64AsBase10;
             triggerDataMatching: AttributionReportingTriggerDataMatching;
+            destinationLimitPriority: SignedInt64AsBase10;
         }
 
         export type AttributionReportingSourceRegistrationResult = ('success' | 'internalError' | 'insufficientSourceCapacity' | 'insufficientUniqueDestinationCapacity' | 'excessiveReportingOrigins' | 'prohibitedByBrowserPolicy' | 'successNoised' | 'destinationReportingLimitReached' | 'destinationGlobalLimitReached' | 'destinationBothLimitsReached' | 'reportingOriginsPerSiteLimitReached' | 'exceedsMaxChannelCapacity' | 'exceedsMaxTriggerStateCardinality' | 'destinationPerDayReportingLimitReached');

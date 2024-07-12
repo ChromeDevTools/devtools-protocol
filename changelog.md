@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1326544 — _2024-07-12T04:27:03.000Z_
+######  Diff: [`09a23aa...711ec2f`](https://github.com/ChromeDevTools/devtools-protocol/compare/09a23aa...711ec2f)
+
+```diff
+@@ browser_protocol.pdl:10541 @@ experimental domain Storage
+       array of AttributionReportingAggregationKeysEntry aggregationKeys
+       optional UnsignedInt64AsBase10 debugKey
+       AttributionReportingTriggerDataMatching triggerDataMatching
++      SignedInt64AsBase10 destinationLimitPriority
+ 
+   experimental type AttributionReportingSourceRegistrationResult extends string
+     enum
+```
+
 ## Roll protocol to r1325906 — _2024-07-11T04:28:25.000Z_
-######  Diff: [`8297006...2e82505`](https://github.com/ChromeDevTools/devtools-protocol/compare/8297006...2e82505)
+######  Diff: [`8297006...09a23aa`](https://github.com/ChromeDevTools/devtools-protocol/compare/8297006...09a23aa)
 
 ```diff
 @@ browser_protocol.pdl:2208 @@ experimental domain CSS
@@ -12230,26 +12244,4 @@ index 09c420e..bd277eb 100644
  # This domain provides experimental commands only supported in headless mode.
  experimental domain HeadlessExperimental
    depends on Page
-```
-
-## Roll protocol to r973088 — _2022-02-18T20:15:24.000Z_
-######  Diff: [`1c7f0c1...df434f1`](https://github.com/ChromeDevTools/devtools-protocol/compare/1c7f0c1...df434f1)
-
-```diff
-@@ browser_protocol.pdl:2096 @@ domain DOM
-       scrollbar-corner
-       resizer
-       input-list-button
--      transition
--      transition-container
--      transition-old-content
--      transition-new-content
-+      page-transition
-+      page-transition-container
-+      page-transition-image-wrapper
-+      page-transition-outgoing-image
-+      page-transition-incoming-image
- 
-   # Shadow root type.
-   type ShadowRootType extends string
 ```
