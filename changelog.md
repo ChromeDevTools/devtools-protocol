@@ -1,7 +1,53 @@
 
 
+## Roll protocol to r1327118 — _2024-07-13T04:27:09.000Z_
+######  Diff: [`7c6f8b3...8f2a5dd`](https://github.com/ChromeDevTools/devtools-protocol/compare/7c6f8b3...8f2a5dd)
+
+```diff
+@@ browser_protocol.pdl:10523 @@ experimental domain Storage
+       exact
+       modulus
+ 
++  experimental type AttributionReportingAggregatableDebugReportingData extends object
++    properties
++      UnsignedInt128AsBase16 keyPiece
++      # number instead of integer because not all uint32 can be represented by
++      # int
++      number value
++      array of string types
++
++  experimental type AttributionReportingAggregatableDebugReportingConfig extends object
++    properties
++      # number instead of integer because not all uint32 can be represented by
++      # int, only present for source registrations
++      optional number budget
++      UnsignedInt128AsBase16 keyPiece
++      array of AttributionReportingAggregatableDebugReportingData debugData
++      optional string aggregationCoordinatorOrigin
++
+   experimental type AttributionReportingSourceRegistration extends object
+     properties
+       Network.TimeSinceEpoch time
+@@ -10542,6 +10559,7 @@ experimental domain Storage
+       optional UnsignedInt64AsBase10 debugKey
+       AttributionReportingTriggerDataMatching triggerDataMatching
+       SignedInt64AsBase10 destinationLimitPriority
++      AttributionReportingAggregatableDebugReportingConfig aggregatableDebugReportingConfig
+ 
+   experimental type AttributionReportingSourceRegistrationResult extends string
+     enum
+@@ -10615,6 +10633,7 @@ experimental domain Storage
+       optional string aggregationCoordinatorOrigin
+       AttributionReportingSourceRegistrationTimeConfig sourceRegistrationTimeConfig
+       optional string triggerContextId
++      AttributionReportingAggregatableDebugReportingConfig aggregatableDebugReportingConfig
+ 
+   experimental type AttributionReportingEventLevelResult extends string
+     enum
+```
+
 ## Roll protocol to r1326544 — _2024-07-12T04:27:03.000Z_
-######  Diff: [`09a23aa...711ec2f`](https://github.com/ChromeDevTools/devtools-protocol/compare/09a23aa...711ec2f)
+######  Diff: [`09a23aa...7c6f8b3`](https://github.com/ChromeDevTools/devtools-protocol/compare/09a23aa...7c6f8b3)
 
 ```diff
 @@ browser_protocol.pdl:10541 @@ experimental domain Storage
@@ -12225,23 +12271,4 @@ index 09c420e..bd277eb 100644
    # Starts tracking the given computed styles for updates. The specified array of properties
    # replaces the one previously specified. Pass empty array to disable tracking.
    # Use takeComputedStyleUpdates to retrieve the list of nodes that had properties modified.
-```
-
-## Roll protocol to r973690 — _2022-02-22T12:15:13.000Z_
-######  Diff: [`df434f1...fe82e94`](https://github.com/ChromeDevTools/devtools-protocol/compare/df434f1...fe82e94)
-
-```diff
-@@ browser_protocol.pdl:3723 @@ domain Emulation
-       # To be sent in Sec-CH-UA-* headers and returned in navigator.userAgentData
-       experimental optional UserAgentMetadata userAgentMetadata
- 
-+  # Allows overriding the automation flag.
-+  experimental command setAutomationOverride
-+    parameters
-+      # Whether the override should be enabled.
-+      boolean enabled
-+
- # This domain provides experimental commands only supported in headless mode.
- experimental domain HeadlessExperimental
-   depends on Page
 ```

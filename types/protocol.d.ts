@@ -15921,6 +15921,27 @@ export namespace Protocol {
 
         export type AttributionReportingTriggerDataMatching = ('exact' | 'modulus');
 
+        export interface AttributionReportingAggregatableDebugReportingData {
+            keyPiece: UnsignedInt128AsBase16;
+            /**
+             * number instead of integer because not all uint32 can be represented by
+             * int
+             */
+            value: number;
+            types: string[];
+        }
+
+        export interface AttributionReportingAggregatableDebugReportingConfig {
+            /**
+             * number instead of integer because not all uint32 can be represented by
+             * int, only present for source registrations
+             */
+            budget?: number;
+            keyPiece: UnsignedInt128AsBase16;
+            debugData: AttributionReportingAggregatableDebugReportingData[];
+            aggregationCoordinatorOrigin?: string;
+        }
+
         export interface AttributionReportingSourceRegistration {
             time: Network.TimeSinceEpoch;
             /**
@@ -15943,6 +15964,7 @@ export namespace Protocol {
             debugKey?: UnsignedInt64AsBase10;
             triggerDataMatching: AttributionReportingTriggerDataMatching;
             destinationLimitPriority: SignedInt64AsBase10;
+            aggregatableDebugReportingConfig: AttributionReportingAggregatableDebugReportingConfig;
         }
 
         export type AttributionReportingSourceRegistrationResult = ('success' | 'internalError' | 'insufficientSourceCapacity' | 'insufficientUniqueDestinationCapacity' | 'excessiveReportingOrigins' | 'prohibitedByBrowserPolicy' | 'successNoised' | 'destinationReportingLimitReached' | 'destinationGlobalLimitReached' | 'destinationBothLimitsReached' | 'reportingOriginsPerSiteLimitReached' | 'exceedsMaxChannelCapacity' | 'exceedsMaxTriggerStateCardinality' | 'destinationPerDayReportingLimitReached');
@@ -15994,6 +16016,7 @@ export namespace Protocol {
             aggregationCoordinatorOrigin?: string;
             sourceRegistrationTimeConfig: AttributionReportingSourceRegistrationTimeConfig;
             triggerContextId?: string;
+            aggregatableDebugReportingConfig: AttributionReportingAggregatableDebugReportingConfig;
         }
 
         export type AttributionReportingEventLevelResult = ('success' | 'successDroppedLowerPriority' | 'internalError' | 'noCapacityForAttributionDestination' | 'noMatchingSources' | 'deduplicated' | 'excessiveAttributions' | 'priorityTooLow' | 'neverAttributedSource' | 'excessiveReportingOrigins' | 'noMatchingSourceFilterData' | 'prohibitedByBrowserPolicy' | 'noMatchingConfigurations' | 'excessiveReports' | 'falselyAttributedSource' | 'reportWindowPassed' | 'notRegistered' | 'reportWindowNotStarted' | 'noMatchingTriggerData');
