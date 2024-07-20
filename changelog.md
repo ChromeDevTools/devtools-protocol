@@ -1,7 +1,60 @@
 
 
+## Roll protocol to r1330662 — _2024-07-20T04:28:07.000Z_
+######  Diff: [`2d19a4e...72e728b`](https://github.com/ChromeDevTools/devtools-protocol/compare/2d19a4e...72e728b)
+
+```diff
+@@ browser_protocol.pdl:4185 @@ domain Emulation
+       optional SensorReadingXYZ xyz
+       optional SensorReadingQuaternion quaternion
+ 
++  experimental type PressureSource extends string
++    enum
++      cpu
++
++  experimental type PressureState extends string
++    enum
++      nominal
++      fair
++      serious
++      critical
++
++  experimental type PressureMetadata extends object
++    properties
++      optional boolean available
++
+   # Tells whether emulation is supported.
+   deprecated command canEmulate
+     returns
+@@ -4354,6 +4369,24 @@ domain Emulation
+       SensorType type
+       SensorReading reading
+ 
++  # Overrides a pressure source of a given type, as used by the Compute
++  # Pressure API, so that updates to PressureObserver.observe() are provided
++  # via setPressureStateOverride instead of being retrieved from
++  # platform-provided telemetry data.
++  experimental command setPressureSourceOverrideEnabled
++    parameters
++      boolean enabled
++      PressureSource source
++      optional PressureMetadata metadata
++
++  # Provides a given pressure state that will be processed and eventually be
++  # delivered to PressureObserver users. |source| must have been previously
++  # overridden by setPressureSourceOverrideEnabled.
++  experimental command setPressureStateOverride
++    parameters
++      PressureSource source
++      PressureState state
++
+   # Overrides the Idle state.
+   command setIdleOverride
+     parameters
+```
+
 ## Roll protocol to r1327118 — _2024-07-13T04:27:09.000Z_
-######  Diff: [`7c6f8b3...8f2a5dd`](https://github.com/ChromeDevTools/devtools-protocol/compare/7c6f8b3...8f2a5dd)
+######  Diff: [`7c6f8b3...2d19a4e`](https://github.com/ChromeDevTools/devtools-protocol/compare/7c6f8b3...2d19a4e)
 
 ```diff
 @@ browser_protocol.pdl:10523 @@ experimental domain Storage
@@ -12209,66 +12262,4 @@ index 09c420e..bd277eb 100644
  
    experimental type BackForwardCacheNotRestoredExplanationTree extends object
      properties
-```
-
-## Roll protocol to r974265 — _2022-02-23T19:15:15.000Z_
-######  Diff: [`fe82e94...aebe16a`](https://github.com/ChromeDevTools/devtools-protocol/compare/fe82e94...aebe16a)
-
-```diff
-@@ browser_protocol.pdl:1388 @@ experimental domain CSS
-       # @supports CSS at-rule array.
-       # The array enumerates @supports at-rules starting with the innermost one, going outwards.
-       experimental optional array of CSSSupports supports
-+      # Cascade layer array. Contains the layer hierarchy that this rule belongs to starting
-+      # with the innermost layer and going outwards.
-+      experimental optional array of CSSLayer layers
- 
-   # CSS coverage information.
-   type RuleUsage extends object
-@@ -1535,6 +1538,28 @@ experimental domain CSS
-       # Identifier of the stylesheet containing this object (if exists).
-       optional StyleSheetId styleSheetId
- 
-+  # CSS Layer at-rule descriptor.
-+  experimental type CSSLayer extends object
-+    properties
-+      # Layer name.
-+      string text
-+      # The associated rule header range in the enclosing stylesheet (if
-+      # available).
-+      optional SourceRange range
-+      # Identifier of the stylesheet containing this object (if exists).
-+      optional StyleSheetId styleSheetId
-+
-+  # CSS Layer data.
-+  experimental type CSSLayerData extends object
-+    properties
-+      # Layer name.
-+      string name
-+      # Direct sub-layers
-+      optional array of CSSLayerData subLayers
-+      # Layer order. The order determines the order of the layer in the cascade order.
-+      # A higher number has higher priority in the cascade order.
-+      number order
-+
-   # Information about amount of glyphs that were rendered with given font.
-   type PlatformFontUsage extends object
-     properties
-@@ -1736,6 +1761,16 @@ experimental domain CSS
-       # The stylesheet text.
-       string text
- 
-+  # Returns all layers parsed by the rendering engine for the tree scope of a node.
-+  # Given a DOM element identified by nodeId, getLayersForNode returns the root
-+  # layer for the nearest ancestor document or shadow root. The layer root contains
-+  # the full layer tree for the tree scope and their ordering.
-+  experimental command getLayersForNode
-+    parameters
-+      DOM.NodeId nodeId
-+    returns
-+      CSSLayerData rootLayer
-+
-   # Starts tracking the given computed styles for updates. The specified array of properties
-   # replaces the one previously specified. Pass empty array to disable tracking.
-   # Use takeComputedStyleUpdates to retrieve the list of nodes that had properties modified.
 ```

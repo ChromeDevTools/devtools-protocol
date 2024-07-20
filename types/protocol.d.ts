@@ -8188,6 +8188,14 @@ export namespace Protocol {
             quaternion?: SensorReadingQuaternion;
         }
 
+        export type PressureSource = ('cpu');
+
+        export type PressureState = ('nominal' | 'fair' | 'serious' | 'critical');
+
+        export interface PressureMetadata {
+            available?: boolean;
+        }
+
         /**
          * Enum of image types that can be disabled.
          */
@@ -8389,6 +8397,17 @@ export namespace Protocol {
         export interface SetSensorOverrideReadingsRequest {
             type: SensorType;
             reading: SensorReading;
+        }
+
+        export interface SetPressureSourceOverrideEnabledRequest {
+            enabled: boolean;
+            source: PressureSource;
+            metadata?: PressureMetadata;
+        }
+
+        export interface SetPressureStateOverrideRequest {
+            source: PressureSource;
+            state: PressureState;
         }
 
         export interface SetIdleOverrideRequest {

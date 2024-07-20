@@ -2010,6 +2010,21 @@ export namespace ProtocolTestsProxyApi {
         setSensorOverrideReadings(params: Protocol.Emulation.SetSensorOverrideReadingsRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
+         * Overrides a pressure source of a given type, as used by the Compute
+         * Pressure API, so that updates to PressureObserver.observe() are provided
+         * via setPressureStateOverride instead of being retrieved from
+         * platform-provided telemetry data.
+         */
+        setPressureSourceOverrideEnabled(params: Protocol.Emulation.SetPressureSourceOverrideEnabledRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
+         * Provides a given pressure state that will be processed and eventually be
+         * delivered to PressureObserver users. |source| must have been previously
+         * overridden by setPressureSourceOverrideEnabled.
+         */
+        setPressureStateOverride(params: Protocol.Emulation.SetPressureStateOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
          * Overrides the Idle state.
          */
         setIdleOverride(params: Protocol.Emulation.SetIdleOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
