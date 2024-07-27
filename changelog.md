@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1333880 — _2024-07-27T04:27:46.000Z_
+######  Diff: [`5c9857d...9341758`](https://github.com/ChromeDevTools/devtools-protocol/compare/5c9857d...9341758)
+
+```diff
+@@ browser_protocol.pdl:8020 @@ domain Page
+       keyboard-map
+       local-fonts
+       magnetometer
++      media-playback-while-not-visible
+       microphone
+       midi
+       otp-credentials
+```
+
 ## Roll protocol to r1330662 — _2024-07-20T04:28:07.000Z_
-######  Diff: [`2d19a4e...72e728b`](https://github.com/ChromeDevTools/devtools-protocol/compare/2d19a4e...72e728b)
+######  Diff: [`2d19a4e...5c9857d`](https://github.com/ChromeDevTools/devtools-protocol/compare/2d19a4e...5c9857d)
 
 ```diff
 @@ browser_protocol.pdl:4185 @@ domain Emulation
@@ -12244,22 +12258,4 @@ index 09c420e..bd277eb 100644
        optional MixedContentIssueDetails mixedContentIssueDetails
        optional BlockedByResponseIssueDetails blockedByResponseIssueDetails
        optional HeavyAdIssueDetails heavyAdIssueDetails
-```
-
-## Roll protocol to r974996 — _2022-02-25T04:15:23.000Z_
-######  Diff: [`aebe16a...51bf736`](https://github.com/ChromeDevTools/devtools-protocol/compare/aebe16a...51bf736)
-
-```diff
-@@ browser_protocol.pdl:8207 @@ domain Page
-       BackForwardCacheNotRestoredReasonType type
-       # Not restored reason
-       BackForwardCacheNotRestoredReason reason
-+      # Context associated with the reason. The meaning of this context is
-+      # dependent on the reason:
-+      # - EmbedderExtensionSentMessageToCachedFrame: the extension ID.
-+      #
-+      optional string context
- 
-   experimental type BackForwardCacheNotRestoredExplanationTree extends object
-     properties
 ```
