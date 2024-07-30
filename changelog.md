@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1334619 — _2024-07-30T04:27:32.000Z_
+######  Diff: [`20344f9...3590b49`](https://github.com/ChromeDevTools/devtools-protocol/compare/20344f9...3590b49)
+
+```diff
+@@ browser_protocol.pdl:12284 @@ experimental domain Preload
+       JavaScriptInterfaceRemoved
+       AllPrerenderingCanceled
+       WindowClosed
++      SlowNetwork
+ 
+   # Fired when a preload enabled state is updated.
+   event preloadEnabledStateUpdated
+```
+
 ## Roll protocol to r1333880 — _2024-07-27T04:27:46.000Z_
-######  Diff: [`5c9857d...9341758`](https://github.com/ChromeDevTools/devtools-protocol/compare/5c9857d...9341758)
+######  Diff: [`5c9857d...20344f9`](https://github.com/ChromeDevTools/devtools-protocol/compare/5c9857d...20344f9)
 
 ```diff
 @@ browser_protocol.pdl:8020 @@ domain Page
@@ -12183,79 +12197,4 @@ index 09c420e..bd277eb 100644
        hex
  
    # Configurations for Persistent Grid Highlight
-```
-
-## Roll protocol to r975298 — _2022-02-25T22:15:19.000Z_
-######  Diff: [`51bf736...14c3fe0`](https://github.com/ChromeDevTools/devtools-protocol/compare/51bf736...14c3fe0)
-
-```diff
-@@ browser_protocol.pdl:471 @@ experimental domain Audits
-     properties
-       Page.FrameId frameId
- 
--  type SameSiteCookieExclusionReason extends string
-+  type CookieExclusionReason extends string
-     enum
-       ExcludeSameSiteUnspecifiedTreatedAsLax
-       ExcludeSameSiteNoneInsecure
-@@ -480,7 +480,7 @@ experimental domain Audits
-       ExcludeInvalidSameParty
-       ExcludeSamePartyCrossPartyContext
- 
--  type SameSiteCookieWarningReason extends string
-+  type CookieWarningReason extends string
-     enum
-       WarnSameSiteUnspecifiedCrossSiteContext
-       WarnSameSiteNoneInsecure
-@@ -491,7 +491,7 @@ experimental domain Audits
-       WarnSameSiteLaxCrossDowngradeStrict
-       WarnSameSiteLaxCrossDowngradeLax
- 
--  type SameSiteCookieOperation extends string
-+  type CookieOperation extends string
-     enum
-       SetCookie
-       ReadCookie
-@@ -499,7 +499,7 @@ experimental domain Audits
-   # This information is currently necessary, as the front-end has a difficult
-   # time finding a specific cookie. With this, we can convey specific error
-   # information without the cookie.
--  type SameSiteCookieIssueDetails extends object
-+  type CookieIssueDetails extends object
-     properties
-       # If AffectedCookie is not set then rawCookieLine contains the raw
-       # Set-Cookie header string. This hints at a problem where the
-@@ -507,11 +507,11 @@ experimental domain Audits
-       # that no valid cookie could be created.
-       optional AffectedCookie cookie
-       optional string rawCookieLine
--      array of SameSiteCookieWarningReason cookieWarningReasons
--      array of SameSiteCookieExclusionReason cookieExclusionReasons
-+      array of CookieWarningReason cookieWarningReasons
-+      array of CookieExclusionReason cookieExclusionReasons
-       # Optionally identifies the site-for-cookies and the cookie url, which
-       # may be used by the front-end as additional context.
--      SameSiteCookieOperation operation
-+      CookieOperation operation
-       optional string siteForCookies
-       optional string cookieUrl
-       optional AffectedRequest request
-@@ -814,7 +814,7 @@ experimental domain Audits
-   # information about the kind of issue.
-   type InspectorIssueCode extends string
-     enum
--      SameSiteCookieIssue
-+      CookieIssue
-       MixedContentIssue
-       BlockedByResponseIssue
-       HeavyAdIssue
-@@ -836,7 +836,7 @@ experimental domain Audits
-   # add a new optional field to this type.
-   type InspectorIssueDetails extends object
-     properties
--      optional SameSiteCookieIssueDetails sameSiteCookieIssueDetails
-+      optional CookieIssueDetails cookieIssueDetails
-       optional MixedContentIssueDetails mixedContentIssueDetails
-       optional BlockedByResponseIssueDetails blockedByResponseIssueDetails
-       optional HeavyAdIssueDetails heavyAdIssueDetails
 ```
