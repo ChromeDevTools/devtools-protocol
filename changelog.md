@@ -1,7 +1,73 @@
 
 
+## Roll protocol to r1335233 — _2024-07-31T04:25:01.000Z_
+######  Diff: [`a313e79...19a1f45`](https://github.com/ChromeDevTools/devtools-protocol/compare/a313e79...19a1f45)
+
+```diff
+@@ browser_protocol.pdl:1102 @@ experimental domain Audits
+     parameters
+       InspectorIssue issue
+ 
+-# Defines commands and events for browser extensions. Available if the client
+-# is connected using the --remote-debugging-pipe flag and
+-# the --enable-unsafe-extension-debugging flag is set.
++# Defines commands and events for browser extensions.
+ experimental domain Extensions
++  # Storage areas.
++  type StorageArea extends string
++    enum
++      session
++      local
++      sync
++      managed
+   # Installs an unpacked extension from the filesystem similar to
+   # --load-extension CLI flags. Returns extension ID once the extension
+-  # has been installed.
++  # has been installed. Available if the client is connected using the
++  # --remote-debugging-pipe flag and the --enable-unsafe-extension-debugging
++  # flag is set.
+   command loadUnpacked
+     parameters
+       # Absolute file path.
+@@ -1116,6 +1123,18 @@ experimental domain Extensions
+     returns
+       # Extension id.
+       string id
++  # Gets data from extension storage in the given `area`. If `keys` is
++  # specified, these are used to filter the result.
++  command getStorageItems
++    parameters
++      # ID of extension.
++      string id
++      # StorageArea to retrieve data from.
++      StorageArea storageArea
++      # Keys to retrieve.
++      optional array of string keys
++    returns
++      object data
+ 
+ # Defines commands and events for Autofill.
+ experimental domain Autofill
+@@ -7964,6 +7983,7 @@ domain Page
+   experimental type PermissionsPolicyFeature extends string
+     enum
+       accelerometer
++      all-screens-capture
+       ambient-light-sensor
+       attribution-reporting
+       autoplay
+@@ -12285,6 +12305,7 @@ experimental domain Preload
+       AllPrerenderingCanceled
+       WindowClosed
+       SlowNetwork
++      OtherPrerenderedPageActivated
+ 
+   # Fired when a preload enabled state is updated.
+   event preloadEnabledStateUpdated
+```
+
 ## Roll protocol to r1334619 — _2024-07-30T04:27:32.000Z_
-######  Diff: [`20344f9...3590b49`](https://github.com/ChromeDevTools/devtools-protocol/compare/20344f9...3590b49)
+######  Diff: [`20344f9...a313e79`](https://github.com/ChromeDevTools/devtools-protocol/compare/20344f9...a313e79)
 
 ```diff
 @@ browser_protocol.pdl:12284 @@ experimental domain Preload
@@ -12183,18 +12249,4 @@ index 09c420e..bd277eb 100644
  
    type CookieOperation extends string
      enum
-```
-
-## Roll protocol to r975498 — _2022-02-26T20:15:19.000Z_
-######  Diff: [`14c3fe0...a7bfbac`](https://github.com/ChromeDevTools/devtools-protocol/compare/14c3fe0...a7bfbac)
-
-```diff
-@@ browser_protocol.pdl:6540 @@ experimental domain Overlay
-     enum
-       rgb
-       hsl
-+      hwb
-       hex
- 
-   # Configurations for Persistent Grid Highlight
 ```

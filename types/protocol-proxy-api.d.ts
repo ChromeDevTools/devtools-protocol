@@ -813,9 +813,17 @@ export namespace ProtocolProxyApi {
         /**
          * Installs an unpacked extension from the filesystem similar to
          * --load-extension CLI flags. Returns extension ID once the extension
-         * has been installed.
+         * has been installed. Available if the client is connected using the
+         * --remote-debugging-pipe flag and the --enable-unsafe-extension-debugging
+         * flag is set.
          */
         loadUnpacked(params: Protocol.Extensions.LoadUnpackedRequest): Promise<Protocol.Extensions.LoadUnpackedResponse>;
+
+        /**
+         * Gets data from extension storage in the given `area`. If `keys` is
+         * specified, these are used to filter the result.
+         */
+        getStorageItems(params: Protocol.Extensions.GetStorageItemsRequest): Promise<Protocol.Extensions.GetStorageItemsResponse>;
 
     }
 
