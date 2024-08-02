@@ -5145,17 +5145,6 @@ export namespace Protocol {
         }
 
         /**
-         * CSS position-fallback rule representation.
-         */
-        export interface CSSPositionFallbackRule {
-            name: Value;
-            /**
-             * List of keyframes.
-             */
-            tryRules: CSSTryRule[];
-        }
-
-        /**
          * CSS @position-try rule representation.
          */
         export interface CSSPositionTryRule {
@@ -5440,10 +5429,6 @@ export namespace Protocol {
              * A list of CSS keyframed animations matching this node.
              */
             cssKeyframesRules?: CSSKeyframesRule[];
-            /**
-             * A list of CSS position fallbacks matching this node.
-             */
-            cssPositionFallbackRules?: CSSPositionFallbackRule[];
             /**
              * A list of CSS @position-try rules matching this node, based on the position-try-fallbacks property.
              */

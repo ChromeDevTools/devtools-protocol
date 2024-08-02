@@ -1,7 +1,36 @@
 
 
+## Roll protocol to r1336433 — _2024-08-02T04:28:52.000Z_
+######  Diff: [`62fe5c9...befd4af`](https://github.com/ChromeDevTools/devtools-protocol/compare/62fe5c9...befd4af)
+
+```diff
+@@ browser_protocol.pdl:2030 @@ experimental domain CSS
+       # Associated style declaration.
+       CSSStyle style
+ 
+-  # CSS position-fallback rule representation.
+-  deprecated type CSSPositionFallbackRule extends object
+-    properties
+-      Value name
+-      # List of keyframes.
+-      array of CSSTryRule tryRules
+-
+   # CSS @position-try rule representation.
+   type CSSPositionTryRule extends object
+     properties
+@@ -2223,8 +2216,6 @@ experimental domain CSS
+       optional array of InheritedPseudoElementMatches inheritedPseudoElements
+       # A list of CSS keyframed animations matching this node.
+       optional array of CSSKeyframesRule cssKeyframesRules
+-      # A list of CSS position fallbacks matching this node.
+-      deprecated optional array of CSSPositionFallbackRule cssPositionFallbackRules
+       # A list of CSS @position-try rules matching this node, based on the position-try-fallbacks property.
+       optional array of CSSPositionTryRule cssPositionTryRules
+       # Index of the active fallback in the applied position-try-fallback property,
+```
+
 ## Roll protocol to r1335233 — _2024-07-31T04:25:01.000Z_
-######  Diff: [`a313e79...19a1f45`](https://github.com/ChromeDevTools/devtools-protocol/compare/a313e79...19a1f45)
+######  Diff: [`a313e79...62fe5c9`](https://github.com/ChromeDevTools/devtools-protocol/compare/a313e79...62fe5c9)
 
 ```diff
 @@ browser_protocol.pdl:1102 @@ experimental domain Audits
@@ -12235,18 +12264,4 @@ index 09c420e..bd277eb 100644
        ErrorFetchingSignin
        InvalidSigninResponse
        AccountsHttpNotFound
-```
-
-## Roll protocol to r975963 — _2022-02-28T22:15:14.000Z_
-######  Diff: [`a7bfbac...d232328`](https://github.com/ChromeDevTools/devtools-protocol/compare/a7bfbac...d232328)
-
-```diff
-@@ browser_protocol.pdl:490 @@ experimental domain Audits
-       WarnSameSiteStrictCrossDowngradeLax
-       WarnSameSiteLaxCrossDowngradeStrict
-       WarnSameSiteLaxCrossDowngradeLax
-+      WarnAttributeValueExceedsMaxSize
- 
-   type CookieOperation extends string
-     enum
 ```
