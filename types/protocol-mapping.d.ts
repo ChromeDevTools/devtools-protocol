@@ -5079,6 +5079,36 @@ export namespace ProtocolMapping {
             paramsType: [Protocol.PWA.ChangeAppUserSettingsRequest];
             returnType: void;
         };
+        /**
+         * Enable the BluetoothEmulation domain.
+         */
+        'BluetoothEmulation.enable': {
+            paramsType: [Protocol.BluetoothEmulation.EnableRequest];
+            returnType: void;
+        };
+        /**
+         * Disable the BluetoothEmulation domain.
+         */
+        'BluetoothEmulation.disable': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
+         * Simulates a peripheral with |address|, |name| and |knownServiceUuids|
+         * that has already been connected to the system.
+         */
+        'BluetoothEmulation.simulatePreconnectedPeripheral': {
+            paramsType: [Protocol.BluetoothEmulation.SimulatePreconnectedPeripheralRequest];
+            returnType: void;
+        };
+        /**
+         * Simulates an advertisement packet described in |entry| being received by
+         * the central.
+         */
+        'BluetoothEmulation.simulateAdvertisement': {
+            paramsType: [Protocol.BluetoothEmulation.SimulateAdvertisementRequest];
+            returnType: void;
+        };
     }
 }
 

@@ -1,7 +1,81 @@
 
 
+## Roll protocol to r1337664 — _2024-08-06T04:28:23.000Z_
+######  Diff: [`7daeda3...b07a2a5`](https://github.com/ChromeDevTools/devtools-protocol/compare/7daeda3...b07a2a5)
+
+```diff
+@@ browser_protocol.pdl:12612 @@ experimental domain PWA
+       # supported yet.
+       optional boolean linkCapturing
+       optional DisplayMode displayMode
++
++# This domain allows configuring virtual Bluetooth devices to test
++# the web-bluetooth API.
++experimental domain BluetoothEmulation
++  # Indicates the various states of Central.
++  type CentralState extends string
++    enum
++      absent
++      powered-off
++      powered-on
++
++  # Stores the manufacturer data
++  type ManufacturerData extends object
++    properties
++      # Company identifier
++      # https://bitbucket.org/bluetooth-SIG/public/src/main/assigned_numbers/company_identifiers/company_identifiers.yaml
++      # https://usb.org/developers
++      integer key
++      # Manufacturer-specific data
++      binary data
++
++  # Stores the byte data of the advertisement packet sent by a Bluetooth device.
++  type ScanRecord extends object
++    properties
++      optional string name
++      optional array of string uuids
++      # Stores the external appearance description of the device.
++      optional integer appearance
++      # Stores the transmission power of a broadcasting device.
++      optional integer txPower
++      # Key is the company identifier and the value is an array of bytes of
++      # manufacturer specific data.
++      optional array of ManufacturerData manufacturerData
++
++  # Stores the advertisement packet information that is sent by a Bluetooth device.
++  type ScanEntry extends object
++    properties
++      string deviceAddress
++      integer rssi
++      ScanRecord scanRecord
++
++  # Enable the BluetoothEmulation domain.
++  command enable
++    parameters
++      # State of the simulated central.
++      CentralState state
++
++  # Disable the BluetoothEmulation domain.
++  command disable
++
++  # Simulates a peripheral with |address|, |name| and |knownServiceUuids|
++  # that has already been connected to the system.
++  command simulatePreconnectedPeripheral
++    parameters
++      string address
++      string name
++      array of ManufacturerData manufacturerData
++      array of string knownServiceUuids
++
++  # Simulates an advertisement packet described in |entry| being received by
++  # the central.
++  command simulateAdvertisement
++    parameters
++      ScanEntry entry
+```
+
 ## Roll protocol to r1336433 — _2024-08-02T04:28:52.000Z_
-######  Diff: [`62fe5c9...befd4af`](https://github.com/ChromeDevTools/devtools-protocol/compare/62fe5c9...befd4af)
+######  Diff: [`62fe5c9...7daeda3`](https://github.com/ChromeDevTools/devtools-protocol/compare/62fe5c9...7daeda3)
 
 ```diff
 @@ browser_protocol.pdl:2030 @@ experimental domain CSS
@@ -12250,18 +12324,4 @@ index 09c420e..bd277eb 100644
 +      optional array of InheritedPseudoElementMatches inheritedPseudoElements
        # A list of CSS keyframed animations matching this node.
        optional array of CSSKeyframesRule cssKeyframesRules
-```
-
-## Roll protocol to r977469 — _2022-03-04T03:15:12.000Z_
-######  Diff: [`d232328...2e0912d`](https://github.com/ChromeDevTools/devtools-protocol/compare/d232328...2e0912d)
-
-```diff
-@@ browser_protocol.pdl:791 @@ experimental domain Audits
-       ClientMetadataHttpNotFound
-       ClientMetadataNoResponse
-       ClientMetadataInvalidResponse
-+      ClientMetadataMissingPrivacyPolicyUrl
-       ErrorFetchingSignin
-       InvalidSigninResponse
-       AccountsHttpNotFound
 ```

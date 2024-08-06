@@ -18755,6 +18755,82 @@ export namespace Protocol {
             displayMode?: DisplayMode;
         }
     }
+
+    /**
+     * This domain allows configuring virtual Bluetooth devices to test
+     * the web-bluetooth API.
+     */
+    export namespace BluetoothEmulation {
+
+        /**
+         * Indicates the various states of Central.
+         */
+        export type CentralState = ('absent' | 'powered-off' | 'powered-on');
+
+        /**
+         * Stores the manufacturer data
+         */
+        export interface ManufacturerData {
+            /**
+             * Company identifier
+             * https://bitbucket.org/bluetooth-SIG/public/src/main/assigned_numbers/company_identifiers/company_identifiers.yaml
+             * https://usb.org/developers
+             */
+            key: integer;
+            /**
+             * Manufacturer-specific data (Encoded as a base64 string when passed over JSON)
+             */
+            data: string;
+        }
+
+        /**
+         * Stores the byte data of the advertisement packet sent by a Bluetooth device.
+         */
+        export interface ScanRecord {
+            name?: string;
+            uuids?: string[];
+            /**
+             * Stores the external appearance description of the device.
+             */
+            appearance?: integer;
+            /**
+             * Stores the transmission power of a broadcasting device.
+             */
+            txPower?: integer;
+            /**
+             * Key is the company identifier and the value is an array of bytes of
+             * manufacturer specific data.
+             */
+            manufacturerData?: ManufacturerData[];
+        }
+
+        /**
+         * Stores the advertisement packet information that is sent by a Bluetooth device.
+         */
+        export interface ScanEntry {
+            deviceAddress: string;
+            rssi: integer;
+            scanRecord: ScanRecord;
+        }
+
+        export interface EnableRequest {
+            /**
+             * State of the simulated central.
+             */
+            state: CentralState;
+        }
+
+        export interface SimulatePreconnectedPeripheralRequest {
+            address: string;
+            name: string;
+            manufacturerData: ManufacturerData[];
+            knownServiceUuids: string[];
+        }
+
+        export interface SimulateAdvertisementRequest {
+            entry: ScanEntry;
+        }
+    }
 }
 
 export default Protocol;

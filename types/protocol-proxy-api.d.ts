@@ -116,6 +116,8 @@ export namespace ProtocolProxyApi {
 
         PWA: PWAApi;
 
+        BluetoothEmulation: BluetoothEmulationApi;
+
     }
 
 
@@ -4337,6 +4339,31 @@ export namespace ProtocolProxyApi {
          * See the comment of each parameter.
          */
         changeAppUserSettings(params: Protocol.PWA.ChangeAppUserSettingsRequest): Promise<void>;
+
+    }
+
+    export interface BluetoothEmulationApi {
+        /**
+         * Enable the BluetoothEmulation domain.
+         */
+        enable(params: Protocol.BluetoothEmulation.EnableRequest): Promise<void>;
+
+        /**
+         * Disable the BluetoothEmulation domain.
+         */
+        disable(): Promise<void>;
+
+        /**
+         * Simulates a peripheral with |address|, |name| and |knownServiceUuids|
+         * that has already been connected to the system.
+         */
+        simulatePreconnectedPeripheral(params: Protocol.BluetoothEmulation.SimulatePreconnectedPeripheralRequest): Promise<void>;
+
+        /**
+         * Simulates an advertisement packet described in |entry| being received by
+         * the central.
+         */
+        simulateAdvertisement(params: Protocol.BluetoothEmulation.SimulateAdvertisementRequest): Promise<void>;
 
     }
 }
