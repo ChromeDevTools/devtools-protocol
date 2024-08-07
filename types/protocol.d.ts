@@ -13773,7 +13773,7 @@ export namespace Protocol {
             fixed?: integer;
         }
 
-        export type ClientNavigationReason = ('formSubmissionGet' | 'formSubmissionPost' | 'httpHeaderRefresh' | 'scriptInitiated' | 'metaTagRefresh' | 'pageBlockInterstitial' | 'reload' | 'anchorClick');
+        export type ClientNavigationReason = ('anchorClick' | 'formSubmissionGet' | 'formSubmissionPost' | 'httpHeaderRefresh' | 'initialFrameNavigation' | 'metaTagRefresh' | 'other' | 'pageBlockInterstitial' | 'reload' | 'scriptInitiated');
 
         export type ClientNavigationDisposition = ('currentTab' | 'newTab' | 'newWindow' | 'download');
 

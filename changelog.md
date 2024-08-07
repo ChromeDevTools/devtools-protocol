@@ -1,7 +1,32 @@
 
 
+## Roll protocol to r1338258 — _2024-08-07T04:28:16.000Z_
+######  Diff: [`5b75e95...47b11fd`](https://github.com/ChromeDevTools/devtools-protocol/compare/5b75e95...47b11fd)
+
+```diff
+@@ browser_protocol.pdl:8369 @@ domain Page
+ 
+   experimental type ClientNavigationReason extends string
+     enum
++      anchorClick
+       formSubmissionGet
+       formSubmissionPost
+       httpHeaderRefresh
+-      scriptInitiated
++      initialFrameNavigation
+       metaTagRefresh
++      other
+       pageBlockInterstitial
+       reload
+-      anchorClick
++      scriptInitiated
+ 
+   experimental type ClientNavigationDisposition extends string
+     enum
+```
+
 ## Roll protocol to r1337664 — _2024-08-06T04:28:23.000Z_
-######  Diff: [`7daeda3...b07a2a5`](https://github.com/ChromeDevTools/devtools-protocol/compare/7daeda3...b07a2a5)
+######  Diff: [`7daeda3...5b75e95`](https://github.com/ChromeDevTools/devtools-protocol/compare/7daeda3...5b75e95)
 
 ```diff
 @@ browser_protocol.pdl:12612 @@ experimental domain PWA
@@ -12297,31 +12322,4 @@ index 09c420e..bd277eb 100644
        ErrorFetchingSignin
        InvalidSigninResponse
        AccountsHttpNotFound
-```
-
-## Roll protocol to r977795 — _2022-03-04T20:15:28.000Z_
-######  Diff: [`2e0912d...a0800ab`](https://github.com/ChromeDevTools/devtools-protocol/compare/2e0912d...a0800ab)
-
-```diff
-@@ browser_protocol.pdl:1300 @@ experimental domain CSS
-       # Matches of CSS rules matching the ancestor node in the style inheritance chain.
-       array of RuleMatch matchedCSSRules
- 
-+  # Inherited pseudo element matches from pseudos of an ancestor node.
-+  type InheritedPseudoElementMatches extends object
-+    properties
-+      # Matches of pseudo styles from the pseudos of an ancestor node.
-+      array of PseudoElementMatches pseudoElements
-+
-   # Match data for a CSS rule.
-   type RuleMatch extends object
-     properties
-@@ -1738,6 +1744,8 @@ experimental domain CSS
-       optional array of PseudoElementMatches pseudoElements
-       # A chain of inherited styles (from the immediate node parent up to the DOM tree root).
-       optional array of InheritedStyleEntry inherited
-+      # A chain of inherited pseudo element styles (from the immediate node parent up to the DOM tree root).
-+      optional array of InheritedPseudoElementMatches inheritedPseudoElements
-       # A list of CSS keyframed animations matching this node.
-       optional array of CSSKeyframesRule cssKeyframesRules
 ```
