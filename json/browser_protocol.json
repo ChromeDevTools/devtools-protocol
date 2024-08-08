@@ -5603,6 +5603,8 @@
                         "first-line-inherited",
                         "scroll-marker",
                         "scroll-marker-group",
+                        "scroll-next-button",
+                        "scroll-prev-button",
                         "scrollbar",
                         "scrollbar-thumb",
                         "scrollbar-button",
