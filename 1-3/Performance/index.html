@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Chrome DevTools Protocol - version 1-3 - Performance domain" />
+  <link rel="icon" type="image/png" href="/devtools-protocol/images/logo.png" />
+    <title>Chrome DevTools Protocol - version 1-3 - Performance domain</title>
+
+  <meta name="theme-color" content="#303F9F" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@chromedevtools" />
+  <meta name="twitter:creator" content="@chromedevtools" />
+  <meta property="og:title" content="Chrome DevTools Protocol" />
+  <meta property="og:image" content="https://developers.google.com/web/tools/images/chrome-devtools-16x9_720.png" />
+    <meta property="og:description" content="Chrome DevTools Protocol - version 1-3 - Performance domain" />
+
+  <script type="module" src="/devtools-protocol/scripts/index.js"></script>
+  <link href="/devtools-protocol/styles/protocol.css" rel="stylesheet">
+</head>
+<body>
+  <aside>
+    <div id="home" class="navs">
+      <nav>
+        <a href="/devtools-protocol/">Home</a>
+        <button class="aside-close-button" aria-label="Close navigation">x</button>
+      </nav>
+    </div>
+    <div id="versions" class="navs">
+      <header>Versions</header>
+      <nav>
+        <a href="/devtools-protocol/tot" name="tot">
+          latest (tip-of-tree)
+        </a>
+        <a href="/devtools-protocol/v8" name="v8">
+          v8-inspector (node)
+        </a>
+        <a href="/devtools-protocol/1-3" name="1-3">
+          stable (1.3)
+        </a><!-- 
+        <a href="/devtools-protocol/1-2" name="1-2">
+          stable (1.2)
+        </a> -->
+      </nav>
+    </div>
+
+    <div id="domains" class="navs version-1-3">
+      <header>Domains</header>
+      <div class="scroller">
+        <nav>
+          <a href="/devtools-protocol/1-3/Accessibility" class="tot experimental">Accessibility</a>
+          <a href="/devtools-protocol/1-3/Animation" class="tot experimental">Animation</a>
+          <a href="/devtools-protocol/1-3/Audits" class="tot experimental">Audits</a>
+          <a href="/devtools-protocol/1-3/Autofill" class="tot experimental">Autofill</a>
+          <a href="/devtools-protocol/1-3/BackgroundService" class="tot experimental">BackgroundService</a>
+          <a href="/devtools-protocol/1-3/Browser" class="tot 1-3">Browser</a>
+          <a href="/devtools-protocol/1-3/CacheStorage" class="tot experimental">CacheStorage</a>
+          <a href="/devtools-protocol/1-3/Cast" class="tot experimental">Cast</a>
+          <a href="/devtools-protocol/1-3/Console" class="tot deprecated v8">Console</a>
+          <a href="/devtools-protocol/1-3/CSS" class="tot experimental">CSS</a>
+          <a href="/devtools-protocol/1-3/Database" class="tot experimental">Database</a>
+          <a href="/devtools-protocol/1-3/Debugger" class="tot 1-2 1-3 v8">Debugger</a>
+          <a href="/devtools-protocol/1-3/DeviceAccess" class="tot experimental">DeviceAccess</a>
+          <a href="/devtools-protocol/1-3/DeviceOrientation" class="tot experimental">DeviceOrientation</a>
+          <a href="/devtools-protocol/1-3/DOM" class="tot 1-2 1-3">DOM</a>
+          <a href="/devtools-protocol/1-3/DOMDebugger" class="tot 1-2 1-3">DOMDebugger</a>
+          <a href="/devtools-protocol/1-3/DOMSnapshot" class="tot experimental">DOMSnapshot</a>
+          <a href="/devtools-protocol/1-3/DOMStorage" class="tot experimental">DOMStorage</a>
+          <a href="/devtools-protocol/1-3/Emulation" class="tot 1-2 1-3">Emulation</a>
+          <a href="/devtools-protocol/1-3/EventBreakpoints" class="tot experimental">EventBreakpoints</a>
+          <a href="/devtools-protocol/1-3/Extensions" class="tot experimental">Extensions</a>
+          <a href="/devtools-protocol/1-3/FedCm" class="tot experimental">FedCm</a>
+          <a href="/devtools-protocol/1-3/Fetch" class="tot 1-3">Fetch</a>
+          <a href="/devtools-protocol/1-3/HeadlessExperimental" class="tot experimental">HeadlessExperimental</a>
+          <a href="/devtools-protocol/1-3/HeapProfiler" class="tot experimental v8">HeapProfiler</a>
+          <a href="/devtools-protocol/1-3/IndexedDB" class="tot experimental">IndexedDB</a>
+          <a href="/devtools-protocol/1-3/Input" class="tot 1-2 1-3">Input</a>
+          <a href="/devtools-protocol/1-3/Inspector" class="tot experimental">Inspector</a>
+          <a href="/devtools-protocol/1-3/IO" class="tot 1-3">IO</a>
+          <a href="/devtools-protocol/1-3/LayerTree" class="tot experimental">LayerTree</a>
+          <a href="/devtools-protocol/1-3/Log" class="tot 1-3">Log</a>
+          <a href="/devtools-protocol/1-3/Media" class="tot experimental">Media</a>
+          <a href="/devtools-protocol/1-3/Memory" class="tot experimental">Memory</a>
+          <a href="/devtools-protocol/1-3/Network" class="tot 1-2 1-3">Network</a>
+          <a href="/devtools-protocol/1-3/Overlay" class="tot experimental">Overlay</a>
+          <a href="/devtools-protocol/1-3/Page" class="tot 1-2 1-3">Page</a>
+          <a href="/devtools-protocol/1-3/Performance" class="tot 1-3">Performance</a>
+          <a href="/devtools-protocol/1-3/PerformanceTimeline" class="tot experimental">PerformanceTimeline</a>
+          <a href="/devtools-protocol/1-3/Preload" class="tot experimental">Preload</a>
+          <a href="/devtools-protocol/1-3/Profiler" class="tot 1-2 1-3 v8">Profiler</a>
+          <a href="/devtools-protocol/1-3/Runtime" class="tot 1-2 1-3 v8">Runtime</a>
+          <a href="/devtools-protocol/1-3/Schema" class="tot deprecated 1-2 v8">Schema</a>
+          <a href="/devtools-protocol/1-3/Security" class="tot 1-3">Security</a>
+          <a href="/devtools-protocol/1-3/ServiceWorker" class="tot experimental">ServiceWorker</a>
+          <a href="/devtools-protocol/1-3/Storage" class="tot experimental">Storage</a>
+          <a href="/devtools-protocol/1-3/SystemInfo" class="tot experimental">SystemInfo</a>
+          <a href="/devtools-protocol/1-3/Target" class="tot 1-3">Target</a>
+          <a href="/devtools-protocol/1-3/Tethering" class="tot experimental">Tethering</a>
+          <a href="/devtools-protocol/1-3/Tracing" class="tot experimental">Tracing</a>
+          <a href="/devtools-protocol/1-3/WebAudio" class="tot experimental">WebAudio</a>
+          <a href="/devtools-protocol/1-3/WebAuthn" class="tot experimental">WebAuthn</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <h1>Chrome DevTools Protocol</h1>
+      <button class="menu-link">Navigation</button>
+      <cr-search-control base-url="/devtools-protocol/" protocol-search-index="/search_index/1-3.json"></cr-search-control>
+    </header>
+    <section>
+      <div class="main-content-section domain">
+        
+    <div class="domain-section">
+      <div id="header">
+        <h2 class="heading">Performance Domain</h2>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        <h3>Methods</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#method-disable"><span class="domain-dot">Performance.</span>disable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-enable"><span class="domain-dot">Performance.</span>enable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getMetrics"><span class="domain-dot">Performance.</span>getMetrics</a>
+        
+      </div>
+      
+        <h3>Events</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#event-metrics"><span class="domain-dot">Performance.</span>metrics</a>
+        
+      </div>
+      
+        <h3>Types</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#type-Metric"><span class="domain-dot">Performance.</span>Metric</a>
+        
+      </div>
+      
+      </div>
+
+      
+      <h3 id="methods">Methods</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="method-disable">
+          <span class="domain-dot">Performance.</span>disable
+          
+          <a href="#method-disable"
+             class="permalink"
+             data-slug="Performance.disable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Disable collecting and reporting metrics.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-enable">
+          <span class="domain-dot">Performance.</span>enable
+          
+          <a href="#method-enable"
+             class="permalink"
+             data-slug="Performance.enable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enable collecting and reporting metrics.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          timeDomain
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Time domain to use for collecting and reporting duration metrics.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>timeTicks</code>, <code>threadTicks</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getMetrics">
+          <span class="domain-dot">Performance.</span>getMetrics
+          
+          <a href="#method-getMetrics"
+             class="permalink"
+             data-slug="Performance.getMetrics"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Retrieve current values of run-time metrics.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          metrics
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/1-3/Performance/#type-Metric class="param-type">Metric</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Current values for run-time metrics.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="events">Events</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="event-metrics">
+          <span class="domain-dot">Performance.</span>metrics
+          
+          <a href="#event-metrics"
+             class="permalink"
+             data-slug="Performance.metrics"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Current values of the metrics.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          metrics
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/1-3/Performance/#type-Metric class="param-type">Metric</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Current values of the metrics.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          title
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Timestamp title.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="types">Types</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="type-Metric">
+          <span class="domain-dot">Performance.</span>Metric
+          
+          <a href="#type-Metric"
+             class="permalink"
+             data-slug="Performance.Metric"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Run-time execution metric.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Metric name.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          value
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Metric value.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+    </div>
+    
+      </div>
+    </section>
+  </main>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60854461-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
