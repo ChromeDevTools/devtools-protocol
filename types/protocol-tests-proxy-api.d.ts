@@ -1588,6 +1588,11 @@ export namespace ProtocolTestsProxyApi {
         getFileInfo(params: Protocol.DOM.GetFileInfoRequest): Promise<{id: number, result: Protocol.DOM.GetFileInfoResponse, sessionId: string}>;
 
         /**
+         * Returns list of detached nodes
+         */
+        getDetachedDomNodes(): Promise<{id: number, result: Protocol.DOM.GetDetachedDomNodesResponse, sessionId: string}>;
+
+        /**
          * Enables console to refer to the node with given id via $x (see Command Line API for more details
          * $x functions).
          */

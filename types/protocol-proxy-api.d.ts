@@ -1506,6 +1506,11 @@ export namespace ProtocolProxyApi {
         getFileInfo(params: Protocol.DOM.GetFileInfoRequest): Promise<Protocol.DOM.GetFileInfoResponse>;
 
         /**
+         * Returns list of detached nodes
+         */
+        getDetachedDomNodes(): Promise<Protocol.DOM.GetDetachedDomNodesResponse>;
+
+        /**
          * Enables console to refer to the node with given id via $x (see Command Line API for more details
          * $x functions).
          */

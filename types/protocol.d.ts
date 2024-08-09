@@ -6134,6 +6134,14 @@ export namespace Protocol {
         }
 
         /**
+         * A structure to hold the top-level node of a detached tree and an array of its retained descendants.
+         */
+        export interface DetachedElementInfo {
+            treeNode: Node;
+            retainedNodeIds: NodeId[];
+        }
+
+        /**
          * A structure holding an RGBA color.
          */
         export interface RGBA {
@@ -6875,6 +6883,13 @@ export namespace Protocol {
 
         export interface GetFileInfoResponse {
             path: string;
+        }
+
+        export interface GetDetachedDomNodesResponse {
+            /**
+             * The list of detached nodes
+             */
+            detachedNodes: DetachedElementInfo[];
         }
 
         export interface SetInspectedNodeRequest {

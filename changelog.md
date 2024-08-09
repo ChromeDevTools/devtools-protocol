@@ -1,7 +1,39 @@
 
 
+## Roll protocol to r1339468 — _2024-08-09T04:27:55.000Z_
+######  Diff: [`083e9e9...b69329b`](https://github.com/ChromeDevTools/devtools-protocol/compare/083e9e9...b69329b)
+
+```diff
+@@ browser_protocol.pdl:2780 @@ domain DOM
+       optional CompatibilityMode compatibilityMode
+       optional BackendNode assignedSlot
+ 
++  # A structure to hold the top-level node of a detached tree and an array of its retained descendants.
++  type DetachedElementInfo extends object
++    properties
++      Node treeNode
++      array of NodeId retainedNodeIds
++
+   # A structure holding an RGBA color.
+   type RGBA extends object
+     properties
+@@ -3290,6 +3296,12 @@ domain DOM
+     returns
+       string path
+ 
++  # Returns list of detached nodes
++  experimental command getDetachedDomNodes
++    returns
++      # The list of detached nodes
++      array of DetachedElementInfo detachedNodes
++
+   # Enables console to refer to the node with given id via $x (see Command Line API for more details
+   # $x functions).
+   experimental command setInspectedNode
+```
+
 ## Roll protocol to r1338866 — _2024-08-08T04:29:00.000Z_
-######  Diff: [`d5bb66e...e13e67c`](https://github.com/ChromeDevTools/devtools-protocol/compare/d5bb66e...e13e67c)
+######  Diff: [`d5bb66e...083e9e9`](https://github.com/ChromeDevTools/devtools-protocol/compare/d5bb66e...083e9e9)
 
 ```diff
 @@ browser_protocol.pdl:2660 @@ domain DOM
@@ -12323,18 +12355,4 @@ index 09c420e..bd277eb 100644
  
    type ClientHintIssueReason extends string
      enum
-```
-
-## Roll protocol to r979353 — _2022-03-09T19:15:15.000Z_
-######  Diff: [`3084cb9...8b70878`](https://github.com/ChromeDevTools/devtools-protocol/compare/3084cb9...8b70878)
-
-```diff
-@@ browser_protocol.pdl:792 @@ experimental domain Audits
-       ClientMetadataNoResponse
-       ClientMetadataInvalidResponse
-       ClientMetadataMissingPrivacyPolicyUrl
-+      DisabledInSettings
-       ErrorFetchingSignin
-       InvalidSigninResponse
-       AccountsHttpNotFound
 ```

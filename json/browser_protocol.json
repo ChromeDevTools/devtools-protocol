@@ -5871,6 +5871,24 @@
                     ]
                 },
                 {
+                    "id": "DetachedElementInfo",
+                    "description": "A structure to hold the top-level node of a detached tree and an array of its retained descendants.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "treeNode",
+                            "$ref": "Node"
+                        },
+                        {
+                            "name": "retainedNodeIds",
+                            "type": "array",
+                            "items": {
+                                "$ref": "NodeId"
+                            }
+                        }
+                    ]
+                },
+                {
                     "id": "RGBA",
                     "description": "A structure holding an RGBA color.",
                     "type": "object",
@@ -6955,6 +6973,21 @@
                         {
                             "name": "path",
                             "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "getDetachedDomNodes",
+                    "description": "Returns list of detached nodes",
+                    "experimental": true,
+                    "returns": [
+                        {
+                            "name": "detachedNodes",
+                            "description": "The list of detached nodes",
+                            "type": "array",
+                            "items": {
+                                "$ref": "DetachedElementInfo"
+                            }
                         }
                     ]
                 },
