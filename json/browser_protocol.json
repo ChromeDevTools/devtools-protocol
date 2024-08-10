@@ -20179,6 +20179,16 @@
                             "name": "url",
                             "description": "Frame's new url.",
                             "type": "string"
+                        },
+                        {
+                            "name": "navigationType",
+                            "description": "Navigation type",
+                            "type": "string",
+                            "enum": [
+                                "fragment",
+                                "historyApi",
+                                "other"
+                            ]
                         }
                     ]
                 },

@@ -1,7 +1,29 @@
 
 
+## Roll protocol to r1340018 — _2024-08-10T04:28:25.000Z_
+######  Diff: [`2b844ff...95154ff`](https://github.com/ChromeDevTools/devtools-protocol/compare/2b844ff...95154ff)
+
+```diff
+@@ browser_protocol.pdl:9512 @@ domain Page
+       FrameId frameId
+       # Frame's new url.
+       string url
++      # Navigation type
++      enum navigationType
++        # Navigation due to fragment navigation.
++        fragment
++        # Navigation due to history API usage.
++        historyApi
++        # Navigation due to other reasons.
++        other
++
+ 
+   # Compressed image data requested by the `startScreencast`.
+   experimental event screencastFrame
+```
+
 ## Roll protocol to r1339468 — _2024-08-09T04:27:55.000Z_
-######  Diff: [`083e9e9...b69329b`](https://github.com/ChromeDevTools/devtools-protocol/compare/083e9e9...b69329b)
+######  Diff: [`083e9e9...2b844ff`](https://github.com/ChromeDevTools/devtools-protocol/compare/083e9e9...2b844ff)
 
 ```diff
 @@ browser_protocol.pdl:2780 @@ domain DOM
@@ -12332,27 +12354,4 @@ index 09c420e..bd277eb 100644
        #Blocklisted features
        WebSocket
        WebTransport
-```
-
-## Roll protocol to r979918 — _2022-03-10T20:15:19.000Z_
-######  Diff: [`8b70878...5dd0348`](https://github.com/ChromeDevTools/devtools-protocol/compare/8b70878...5dd0348)
-
-```diff
-@@ browser_protocol.pdl:756 @@ experimental domain Audits
-     properties
-       optional AffectedFrame affectedFrame
-       SourceCodeLocation sourceCodeLocation
--      # The content of the deprecation issue (this won't be translated),
-+      # The content of an untranslated deprecation issue,
-       # e.g. "window.inefficientLegacyStorageMethod will be removed in M97,
-       # around January 2022. Please use Web Storage or Indexed Database
-       # instead. This standard was abandoned in January, 1970. See
-       # https://www.chromestatus.com/feature/5684870116278272 for more details."
-       deprecated optional string message
--      string deprecationType
-+      # The id of an untranslated deprecation issue e.g. PrefixedStorageInfo.
-+      deprecated string deprecationType
- 
-   type ClientHintIssueReason extends string
-     enum
 ```

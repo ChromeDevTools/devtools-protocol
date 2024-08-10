@@ -15082,6 +15082,12 @@ export namespace Protocol {
             timestamp: Network.MonotonicTime;
         }
 
+        export const enum NavigatedWithinDocumentEventNavigationType {
+            Fragment = 'fragment',
+            HistoryAPI = 'historyApi',
+            Other = 'other',
+        }
+
         /**
          * Fired when same-document navigation happens, e.g. due to history API usage or anchor navigation.
          */
@@ -15094,6 +15100,10 @@ export namespace Protocol {
              * Frame's new url.
              */
             url: string;
+            /**
+             * Navigation type (NavigatedWithinDocumentEventNavigationType enum)
+             */
+            navigationType: ('fragment' | 'historyApi' | 'other');
         }
 
         /**
