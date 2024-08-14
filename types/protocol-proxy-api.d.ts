@@ -822,10 +822,20 @@ export namespace ProtocolProxyApi {
         loadUnpacked(params: Protocol.Extensions.LoadUnpackedRequest): Promise<Protocol.Extensions.LoadUnpackedResponse>;
 
         /**
-         * Gets data from extension storage in the given `area`. If `keys` is
+         * Gets data from extension storage in the given `storageArea`. If `keys` is
          * specified, these are used to filter the result.
          */
         getStorageItems(params: Protocol.Extensions.GetStorageItemsRequest): Promise<Protocol.Extensions.GetStorageItemsResponse>;
+
+        /**
+         * Removes `keys` from extension storage in the given `storageArea`.
+         */
+        removeStorageItems(params: Protocol.Extensions.RemoveStorageItemsRequest): Promise<void>;
+
+        /**
+         * Clears extension storage in the given `storageArea`.
+         */
+        clearStorageItems(params: Protocol.Extensions.ClearStorageItemsRequest): Promise<void>;
 
     }
 

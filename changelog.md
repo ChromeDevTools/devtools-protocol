@@ -1,7 +1,45 @@
 
 
+## Roll protocol to r1341448 — _2024-08-14T04:27:41.000Z_
+######  Diff: [`175a971...cac6586`](https://github.com/ChromeDevTools/devtools-protocol/compare/175a971...cac6586)
+
+```diff
+@@ browser_protocol.pdl:1123 @@ experimental domain Extensions
+     returns
+       # Extension id.
+       string id
+-  # Gets data from extension storage in the given `area`. If `keys` is
++  # Gets data from extension storage in the given `storageArea`. If `keys` is
+   # specified, these are used to filter the result.
+   command getStorageItems
+     parameters
+@@ -1135,6 +1135,22 @@ experimental domain Extensions
+       optional array of string keys
+     returns
+       object data
++  # Removes `keys` from extension storage in the given `storageArea`.
++  command removeStorageItems
++    parameters
++      # ID of extension.
++      string id
++      # StorageArea to remove data from.
++      StorageArea storageArea
++      # Keys to remove.
++      array of string keys
++  # Clears extension storage in the given `storageArea`.
++  command clearStorageItems
++    parameters
++      # ID of extension.
++      string id
++      # StorageArea to remove data from.
++      StorageArea storageArea
+ 
+ # Defines commands and events for Autofill.
+ experimental domain Autofill
+```
+
 ## Roll protocol to r1340018 — _2024-08-10T04:28:25.000Z_
-######  Diff: [`2b844ff...95154ff`](https://github.com/ChromeDevTools/devtools-protocol/compare/2b844ff...95154ff)
+######  Diff: [`2b844ff...175a971`](https://github.com/ChromeDevTools/devtools-protocol/compare/2b844ff...175a971)
 
 ```diff
 @@ browser_protocol.pdl:9512 @@ domain Page
@@ -12340,18 +12378,4 @@ index 09c420e..bd277eb 100644
        # The associated rule header range in the enclosing stylesheet (if
        # available).
        optional SourceRange range
-```
-
-## Roll protocol to r981034 — _2022-03-15T10:15:13.000Z_
-######  Diff: [`5dd0348...65adbf7`](https://github.com/ChromeDevTools/devtools-protocol/compare/5dd0348...65adbf7)
-
-```diff
-@@ browser_protocol.pdl:8131 @@ domain Page
-       NoResponseHead
-       Unknown
-       ActivationNavigationsDisallowedForBug1234857
-+      ErrorDocument
-       #Blocklisted features
-       WebSocket
-       WebTransport
 ```

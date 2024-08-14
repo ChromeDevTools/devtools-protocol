@@ -880,10 +880,20 @@ export namespace ProtocolTestsProxyApi {
         loadUnpacked(params: Protocol.Extensions.LoadUnpackedRequest): Promise<{id: number, result: Protocol.Extensions.LoadUnpackedResponse, sessionId: string}>;
 
         /**
-         * Gets data from extension storage in the given `area`. If `keys` is
+         * Gets data from extension storage in the given `storageArea`. If `keys` is
          * specified, these are used to filter the result.
          */
         getStorageItems(params: Protocol.Extensions.GetStorageItemsRequest): Promise<{id: number, result: Protocol.Extensions.GetStorageItemsResponse, sessionId: string}>;
+
+        /**
+         * Removes `keys` from extension storage in the given `storageArea`.
+         */
+        removeStorageItems(params: Protocol.Extensions.RemoveStorageItemsRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
+         * Clears extension storage in the given `storageArea`.
+         */
+        clearStorageItems(params: Protocol.Extensions.ClearStorageItemsRequest): Promise<{id: number, result: void, sessionId: string}>;
 
     }
 
