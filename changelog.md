@@ -1,7 +1,30 @@
 
 
+## Roll protocol to r1342118 — _2024-08-15T04:27:44.000Z_
+######  Diff: [`2a921f6...427f3bc`](https://github.com/ChromeDevTools/devtools-protocol/compare/2a921f6...427f3bc)
+
+```diff
+@@ browser_protocol.pdl:1151 @@ experimental domain Extensions
+       string id
+       # StorageArea to remove data from.
+       StorageArea storageArea
++  # Sets `values` in extension storage in the given `storageArea`. The provided `values`
++  # will be merged with existing values in the storage area.
++  command setStorageItems
++    parameters
++      # ID of extension.
++      string id
++      # StorageArea to set data in.
++      StorageArea storageArea
++      # Values to set.
++      object values
+ 
+ # Defines commands and events for Autofill.
+ experimental domain Autofill
+```
+
 ## Roll protocol to r1341448 — _2024-08-14T04:27:41.000Z_
-######  Diff: [`175a971...cac6586`](https://github.com/ChromeDevTools/devtools-protocol/compare/175a971...cac6586)
+######  Diff: [`175a971...2a921f6`](https://github.com/ChromeDevTools/devtools-protocol/compare/175a971...2a921f6)
 
 ```diff
 @@ browser_protocol.pdl:1123 @@ experimental domain Extensions

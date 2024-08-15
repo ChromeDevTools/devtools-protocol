@@ -3833,6 +3833,21 @@ export namespace Protocol {
              */
             storageArea: StorageArea;
         }
+
+        export interface SetStorageItemsRequest {
+            /**
+             * ID of extension.
+             */
+            id: string;
+            /**
+             * StorageArea to set data in.
+             */
+            storageArea: StorageArea;
+            /**
+             * Values to set.
+             */
+            values: any;
+        }
     }
 
     /**

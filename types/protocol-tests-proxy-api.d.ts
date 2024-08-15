@@ -895,6 +895,12 @@ export namespace ProtocolTestsProxyApi {
          */
         clearStorageItems(params: Protocol.Extensions.ClearStorageItemsRequest): Promise<{id: number, result: void, sessionId: string}>;
 
+        /**
+         * Sets `values` in extension storage in the given `storageArea`. The provided `values`
+         * will be merged with existing values in the storage area.
+         */
+        setStorageItems(params: Protocol.Extensions.SetStorageItemsRequest): Promise<{id: number, result: void, sessionId: string}>;
+
     }
 
     export interface AutofillApi {
