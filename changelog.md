@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1343927 — _2024-08-20T04:30:10.000Z_
+######  Diff: [`24fc3ac...a77519b`](https://github.com/ChromeDevTools/devtools-protocol/compare/24fc3ac...a77519b)
+
+```diff
+@@ browser_protocol.pdl:9453 @@ domain Page
+       ContentWebUSB
+       ContentMediaSessionService
+       ContentScreenReader
++      ContentDiscarded
+ 
+       # See components/back_forward_cache/back_forward_cache_disable.h for explanations.
+       EmbedderPopupBlockerTabHelper
+```
+
 ## Roll protocol to r1342118 — _2024-08-15T04:27:44.000Z_
-######  Diff: [`2a921f6...427f3bc`](https://github.com/ChromeDevTools/devtools-protocol/compare/2a921f6...427f3bc)
+######  Diff: [`2a921f6...24fc3ac`](https://github.com/ChromeDevTools/devtools-protocol/compare/2a921f6...24fc3ac)
 
 ```diff
 @@ browser_protocol.pdl:1151 @@ experimental domain Extensions
@@ -12386,19 +12400,4 @@ index 09c420e..bd277eb 100644
        join-ad-interest-group
        keyboard-map
        magnetometer
-```
-
-## Roll protocol to r982238 — _2022-03-17T16:15:18.000Z_
-######  Diff: [`e35b84a...052c603`](https://github.com/ChromeDevTools/devtools-protocol/compare/e35b84a...052c603)
-
-```diff
-@@ browser_protocol.pdl:1542 @@ experimental domain CSS
-     properties
-       # Supports rule text.
-       string text
-+      # Whether the supports condition is satisfied.
-+      boolean active
-       # The associated rule header range in the enclosing stylesheet (if
-       # available).
-       optional SourceRange range
 ```
