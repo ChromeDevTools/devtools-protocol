@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1344581 — _2024-08-21T04:28:14.000Z_
+######  Diff: [`be47cf8...7ec1784`](https://github.com/ChromeDevTools/devtools-protocol/compare/be47cf8...7ec1784)
+
+```diff
+@@ browser_protocol.pdl:9453 @@ domain Page
+       ContentWebUSB
+       ContentMediaSessionService
+       ContentScreenReader
+-      ContentDiscarded
+ 
+       # See components/back_forward_cache/back_forward_cache_disable.h for explanations.
+       EmbedderPopupBlockerTabHelper
+```
+
 ## Roll protocol to r1343927 — _2024-08-20T04:30:10.000Z_
-######  Diff: [`24fc3ac...a77519b`](https://github.com/ChromeDevTools/devtools-protocol/compare/24fc3ac...a77519b)
+######  Diff: [`24fc3ac...be47cf8`](https://github.com/ChromeDevTools/devtools-protocol/compare/24fc3ac...be47cf8)
 
 ```diff
 @@ browser_protocol.pdl:9453 @@ domain Page
@@ -12378,26 +12392,4 @@ index 09c420e..bd277eb 100644
    # Notification is issued every time when binding is called.
    experimental event bindingCalled
      parameters
-```
-
-## Roll protocol to r982423 — _2022-03-17T21:15:26.000Z_
-######  Diff: [`052c603...6aec757`](https://github.com/ChromeDevTools/devtools-protocol/compare/052c603...6aec757)
-
-```diff
-@@ browser_protocol.pdl:6940 @@ domain Page
-       ambient-light-sensor
-       attribution-reporting
-       autoplay
-+      browsing-topics
-       camera
-       ch-dpr
-       ch-device-memory
-@@ -6980,6 +6981,7 @@ domain Page
-       gyroscope
-       hid
-       idle-detection
-+      interest-cohort
-       join-ad-interest-group
-       keyboard-map
-       magnetometer
 ```
