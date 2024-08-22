@@ -1,7 +1,29 @@
 
 
+## Roll protocol to r1345247 — _2024-08-22T04:27:41.000Z_
+######  Diff: [`084b75c...386718b`](https://github.com/ChromeDevTools/devtools-protocol/compare/084b75c...386718b)
+
+```diff
+@@ browser_protocol.pdl:8077 @@ domain Page
+       otp-credentials
+       payment
+       picture-in-picture
++      popins
+       private-aggregation
+       private-state-token-issuance
+       private-state-token-redemption
+@@ -9453,6 +9454,7 @@ domain Page
+       ContentWebUSB
+       ContentMediaSessionService
+       ContentScreenReader
++      ContentDiscarded
+ 
+       # See components/back_forward_cache/back_forward_cache_disable.h for explanations.
+       EmbedderPopupBlockerTabHelper
+```
+
 ## Roll protocol to r1344581 — _2024-08-21T04:28:14.000Z_
-######  Diff: [`be47cf8...7ec1784`](https://github.com/ChromeDevTools/devtools-protocol/compare/be47cf8...7ec1784)
+######  Diff: [`be47cf8...084b75c`](https://github.com/ChromeDevTools/devtools-protocol/compare/be47cf8...084b75c)
 
 ```diff
 @@ browser_protocol.pdl:9453 @@ domain Page
@@ -12356,40 +12378,4 @@ index 09c420e..bd277eb 100644
      returns
        # Evaluation result.
        RemoteObject result
-```
-
-## Roll protocol to r982567 — _2022-04-22T18:52:45.000Z_
-######  Diff: [`6aec757...8ac7575`](https://github.com/ChromeDevTools/devtools-protocol/compare/6aec757...8ac7575)
-
-```diff
-@@ js_protocol.pdl:104 @@ domain Debugger
-       # Location in the source code.
-       Location location
-       # JavaScript script name or url.
--      string url
-+      # Deprecated in favor of using the `location.scriptId` to resolve the URL via a previously
-+      # sent `Debugger.scriptParsed` event.
-+      deprecated string url
-       # Scope chain for this call frame.
-       array of Scope scopeChain
-       # `this` object for this call frame.
-@@ -1550,6 +1552,18 @@ domain Runtime
-     parameters
-       string name
- 
-+  # This method tries to lookup and populate exception details for a
-+  # JavaScript Error object.
-+  # Note that the stackTrace portion of the resulting exceptionDetails will
-+  # only be populated if the Runtime domain was enabled at the time when the
-+  # Error was thrown.
-+  experimental command getExceptionDetails
-+    parameters
-+      # The error object for which to resolve the exception details.
-+      RemoteObjectId errorObjectId
-+    returns
-+      optional ExceptionDetails exceptionDetails
-+
-   # Notification is issued every time when binding is called.
-   experimental event bindingCalled
-     parameters
 ```
