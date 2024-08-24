@@ -1,7 +1,29 @@
 
 
+## Roll protocol to r1346313 — _2024-08-24T04:27:30.000Z_
+######  Diff: [`08dfe29...cc77939`](https://github.com/ChromeDevTools/devtools-protocol/compare/08dfe29...cc77939)
+
+```diff
+@@ browser_protocol.pdl:1392 @@ domain Browser
+       videoCapturePanTiltZoom
+       wakeLockScreen
+       wakeLockSystem
++      webAppInstallation
+       windowManagement
+ 
+   experimental type PermissionSetting extends string
+@@ -8098,6 +8099,7 @@ domain Page
+       usb
+       usb-unrestricted
+       vertical-scroll
++      web-app-installation
+       web-printing
+       web-share
+       window-management
+```
+
 ## Roll protocol to r1345247 — _2024-08-22T04:27:41.000Z_
-######  Diff: [`084b75c...386718b`](https://github.com/ChromeDevTools/devtools-protocol/compare/084b75c...386718b)
+######  Diff: [`084b75c...08dfe29`](https://github.com/ChromeDevTools/devtools-protocol/compare/084b75c...08dfe29)
 
 ```diff
 @@ browser_protocol.pdl:8077 @@ domain Page
@@ -12077,305 +12099,4 @@ index 18cf0c7..8e43695 100644
        # HTML template for the print header. Should be valid HTML markup with following
        # classes used to inject printing values into them:
        # - `date`: formatted print date
-```
-
-## Roll protocol to r995287 — _2022-04-22T18:54:30.000Z_
-######  Diff: [`8ac7575...7c8b6ad`](https://github.com/ChromeDevTools/devtools-protocol/compare/8ac7575...7c8b6ad)
-
-```diff
-@@ browser_protocol.pdl:698 @@ experimental domain Audits
-     enum
-       PermissionPolicyDisabled
-       InvalidAttributionSourceEventId
--      InvalidAttributionData
-       AttributionSourceUntrustworthyOrigin
-       AttributionUntrustworthyOrigin
--      AttributionTriggerDataTooLarge
--      AttributionEventSourceTriggerDataTooLarge
-       InvalidAttributionSourceExpiry
-       InvalidAttributionSourcePriority
--      InvalidEventSourceTriggerData
--      InvalidTriggerPriority
--      InvalidTriggerDedupKey
- 
-   # Details for issues around "Attribution Reporting API" usage.
-   # Explainer: https://github.com/WICG/conversion-measurement-api
-@@ -747,6 +741,40 @@ experimental domain Audits
-       GenericIssueErrorType errorType
-       optional Page.FrameId frameId
- 
-+  type DeprecationIssueType extends string
-+    enum
-+      AuthorizationCoveredByWildcard
-+      CookieWithTruncatingChar
-+      CrossOriginAccessBasedOnDocumentDomain
-+      CrossOriginWindowAlert
-+      CrossOriginWindowConfirm
-+      DeprecationExample
-+      DocumentDomainSettingWithoutOriginAgentClusterHeader
-+      GeolocationInsecureOrigin
-+      GeolocationInsecureOriginDeprecatedNotRemoved
-+      GetUserMediaInsecureOrigin
-+      LegacyConstraintGoogCpuOveruseDetection
-+      LegacyConstraintGoogIPv6
-+      LegacyConstraintGoogScreencastMinBitrate
-+      LegacyConstraintGoogSuspendBelowMinBitrate
-+      LocalCSSFileExtensionRejected
-+      NotificationInsecureOrigin
-+      ObsoleteWebRtcCipherSuite
-+      PictureSourceSrc
-+      PrefixedCancelAnimationFrame
-+      PrefixedRequestAnimationFrame
-+      RTCConstraintEnableDtlsSrtpFalse
-+      RTCConstraintEnableDtlsSrtpTrue
-+      RTCPeerConnectionComplexPlanBSdpUsingDefaultSdpSemantics
-+      RTCPeerConnectionLegacyCreateWithMediaConstraints
-+      RTPDataChannel
-+      SharedArrayBufferConstructedWithoutIsolation
-+      Untranslated
-+      V8SharedArrayBufferConstructedInExtensionWithoutIsolation
-+      WebCodecsVideoFrameDefaultTimestamp
-+      XHRJSONEncodingDetection
-+      XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload
-+
-   # This issue tracks information needed to print a deprecation message.
-   # The formatting is inherited from the old console.log version, see more at:
-   # https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/frame/deprecation.cc
-@@ -763,7 +791,8 @@ experimental domain Audits
-       # https://www.chromestatus.com/feature/5684870116278272 for more details."
-       deprecated optional string message
-       # The id of an untranslated deprecation issue e.g. PrefixedStorageInfo.
--      deprecated string deprecationType
-+      deprecated optional string deprecationType
-+      DeprecationIssueType type
- 
-   type ClientHintIssueReason extends string
-     enum
-@@ -786,6 +815,11 @@ experimental domain Audits
-     enum
-       ApprovalDeclined
-       TooManyRequests
-+      ManifestListHttpNotFound
-+      ManifestListNoResponse
-+      ManifestListInvalidResponse
-+      ManifestNotInManifestList
-+      ManifestListTooBig
-       ManifestHttpNotFound
-       ManifestNoResponse
-       ManifestInvalidResponse
-@@ -3539,6 +3573,8 @@ domain Emulation
-       string architecture
-       string model
-       boolean mobile
-+      optional string bitness
-+      optional boolean wow64
- 
-   # Tells whether emulation is supported.
-   command canEmulate
-@@ -6946,8 +6982,10 @@ domain Page
-       ch-device-memory
-       ch-downlink
-       ch-ect
-+      ch-partitioned-cookies
-       ch-prefers-color-scheme
-       ch-rtt
-+      ch-save-data
-       ch-ua
-       ch-ua-arch
-       ch-ua-bitness
-@@ -6963,7 +7001,6 @@ domain Page
-       ch-viewport-height
-       ch-viewport-width
-       ch-width
--      ch-partitioned-cookies
-       clipboard-read
-       clipboard-write
-       cross-origin-isolated
-@@ -7288,8 +7325,6 @@ domain Page
-       optional string cursive
-       # The fantasy font-family.
-       optional string fantasy
--      # The pictograph font-family.
--      optional string pictograph
- 
-   # Font families collection for a script.
-   experimental type ScriptFontFamilies extends object
-@@ -7508,11 +7543,11 @@ domain Page
-   # Returns metrics relating to the layouting of the page, such as viewport bounds/scale.
-   command getLayoutMetrics
-     returns
--      # Deprecated metrics relating to the layout viewport. Can be in DP or in CSS pixels depending on the `enable-use-zoom-for-dsf` flag. Use `cssLayoutViewport` instead.
-+      # Deprecated metrics relating to the layout viewport. Is in device pixels. Use `cssLayoutViewport` instead.
-       deprecated LayoutViewport layoutViewport
--      # Deprecated metrics relating to the visual viewport. Can be in DP or in CSS pixels depending on the `enable-use-zoom-for-dsf` flag. Use `cssVisualViewport` instead.
-+      # Deprecated metrics relating to the visual viewport. Is in device pixels. Use `cssVisualViewport` instead.
-       deprecated VisualViewport visualViewport
--      # Deprecated size of scrollable area. Can be in DP or in CSS pixels depending on the `enable-use-zoom-for-dsf` flag. Use `cssContentSize` instead.
-+      # Deprecated size of scrollable area. Is in DP. Use `cssContentSize` instead.
-       deprecated DOM.Rect contentSize
-       # Metrics relating to the layout viewport in CSS pixels.
-       LayoutViewport cssLayoutViewport
-@@ -8098,7 +8133,6 @@ domain Page
-       JavaScriptExecution
-       RendererProcessKilled
-       RendererProcessCrashed
--      GrantedMediaStreamAccess
-       SchedulerTrackedFeatureUsed
-       ConflictingBrowsingInstance
-       CacheFlushed
-@@ -8125,7 +8159,6 @@ domain Page
-       ForegroundCacheLimit
-       BrowsingInstanceNotSwapped
-       BackForwardCacheDisabledForDelegate
--      OptInUnloadHeaderNotPresent
-       UnloadHandlerExistsInMainFrame
-       UnloadHandlerExistsInSubFrame
-       ServiceWorkerUnregistration
-@@ -8136,6 +8169,7 @@ domain Page
-       Unknown
-       ActivationNavigationsDisallowedForBug1234857
-       ErrorDocument
-+      FencedFramesEmbedder
-       #Blocklisted features
-       WebSocket
-       WebTransport
-@@ -8255,6 +8289,19 @@ domain Page
-       # Tree structure of reasons why the page could not be cached for each frame.
-       optional BackForwardCacheNotRestoredExplanationTree notRestoredExplanationsTree
- 
-+  # List of FinalStatus reasons for Prerender2.
-+  type PrerenderFinalStatus extends string
-+    enum
-+      Activated
-+
-+  # Fired when a prerender attempt is completed.
-+  event prerenderAttemptCompleted
-+    parameters
-+      # The frame id of the frame initiating prerendering.
-+      FrameId initiatingFrameId
-+      string prerenderingUrl
-+      PrerenderFinalStatus finalStatus
-+
-   event loadEventFired
-     parameters
-       Network.MonotonicTime timestamp
-@@ -10116,19 +10163,27 @@ experimental domain Media
-       Timestamp timestamp
-       string value
- 
-+  # Represents logged source line numbers reported in an error.
-+  # NOTE: file and line are from chromium c++ implementation code, not js.
-+  type PlayerErrorSourceLocation extends object
-+    properties
-+      string file
-+      integer line
-+
-   # Corresponds to kMediaError
-   type PlayerError extends object
-     properties
--      enum type
--        # Compatability until we switch to media_error
--        pipeline_error
--        media_error
--      # When this switches to using media::Status instead of PipelineStatus
--      # we can remove "errorCode" and replace it with the fields from
--      # a Status instance. This also seems like a duplicate of the error
--      # level enum - there is a todo bug to have that level removed and
--      # use this instead. (crbug.com/1068454)
--      string errorCode
-+      string errorType
-+      # Code is the numeric enum entry for a specific set of error codes, such
-+      # as PipelineStatusCodes in media/base/pipeline_status.h
-+      integer code
-+      # A trace of where this error was caused / where it passed through.
-+      array of PlayerErrorSourceLocation stack
-+      # Errors potentially have a root cause error, ie, a DecoderError might be
-+      # caused by an WindowsError
-+      array of PlayerError cause
-+      # Extra data attached to an error, such as an HRESULT, Video Codec, etc.
-+      object data
- 
-   # This can be called multiple times, and can be used to set / override /
-   # remove player properties. A null propValue indicates removal.
-diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
-index 09c420e..bd277eb 100644
---- a/pdl/js_protocol.pdl
-+++ b/pdl/js_protocol.pdl
-@@ -113,6 +113,11 @@ domain Debugger
-       Runtime.RemoteObject this
-       # The value being returned, if the function is at return point.
-       optional Runtime.RemoteObject returnValue
-+      # Valid only while the VM is paused and indicates whether this frame
-+      # can be restarted or not. Note that a `true` value here does not
-+      # guarantee that Debugger#restartFrame with this CallFrameId will be
-+      # successful, but it is very likely.
-+      experimental optional boolean canBeRestarted
- 
-   # Scope description.
-   type Scope extends object
-@@ -952,6 +957,37 @@ domain Runtime
-   # Unique script identifier.
-   type ScriptId extends string
- 
-+  # Represents the value serialiazed by the WebDriver BiDi specification
-+  # https://w3c.github.io/webdriver-bidi.
-+  type WebDriverValue extends object
-+    properties
-+      enum type
-+        undefined
-+        null
-+        string
-+        number
-+        boolean
-+        bigint
-+        regexp
-+        date
-+        symbol
-+        array
-+        object
-+        function
-+        map
-+        set
-+        weakmap
-+        weakset
-+        error
-+        proxy
-+        promise
-+        typedarray
-+        arraybuffer
-+        node
-+        window
-+      optional any value
-+      optional string objectId
-+
-   # Unique object identifier.
-   type RemoteObjectId extends string
- 
-@@ -1004,6 +1040,8 @@ domain Runtime
-       optional UnserializableValue unserializableValue
-       # String representation of the object.
-       optional string description
-+      # WebDriver BiDi representation of the value.
-+      experimental optional WebDriverValue webDriverValue
-       # Unique object identifier (for non-primitive values).
-       optional RemoteObjectId objectId
-       # Preview containing abbreviated property values. Specified for `object` type values only.
-@@ -1309,6 +1347,8 @@ domain Runtime
-       optional string objectGroup
-       # Whether to throw an exception if side effect cannot be ruled out during evaluation.
-       experimental optional boolean throwOnSideEffect
-+      # Whether the result should be serialized according to https://w3c.github.io/webdriver-bidi.
-+      experimental optional boolean generateWebDriverValue
-     returns
-       # Call result.
-       RemoteObject result
-@@ -1394,6 +1434,8 @@ domain Runtime
-       # boundaries).
-       # This is mutually exclusive with `contextId`.
-       experimental optional string uniqueContextId
-+      # Whether the result should be serialized according to https://w3c.github.io/webdriver-bidi.
-+      experimental optional boolean generateWebDriverValue
-     returns
-       # Evaluation result.
-       RemoteObject result
 ```
