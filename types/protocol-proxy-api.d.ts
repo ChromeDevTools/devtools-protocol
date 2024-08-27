@@ -2290,8 +2290,20 @@ export namespace ProtocolProxyApi {
     }
 
     export interface MemoryApi {
+        /**
+         * Retruns current DOM object counters.
+         */
         getDOMCounters(): Promise<Protocol.Memory.GetDOMCountersResponse>;
 
+        /**
+         * Retruns DOM object counters after preparing renderer for leak detection.
+         */
+        getDOMCountersForLeakDetection(): Promise<Protocol.Memory.GetDOMCountersForLeakDetectionResponse>;
+
+        /**
+         * Prepares for leak detection by terminating workers, stopping spellcheckers,
+         * dropping non-essential internal caches, running garbage collections, etc.
+         */
         prepareForLeakDetection(): Promise<void>;
 
         /**

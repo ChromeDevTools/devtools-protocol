@@ -1,7 +1,68 @@
 
 
+## Roll protocol to r1347151 — _2024-08-27T04:29:22.000Z_
+######  Diff: [`09ae3f7...f7c87d0`](https://github.com/ChromeDevTools/devtools-protocol/compare/09ae3f7...f7c87d0)
+
+```diff
+@@ browser_protocol.pdl:743 @@ experimental domain Audits
+       NoRegisterTriggerHeader
+       NoRegisterOsSourceHeader
+       NoRegisterOsTriggerHeader
++      NavigationRegistrationUniqueScopeAlreadySet
+ 
+   type SharedDictionaryError extends string
+     enum
+@@ -5523,12 +5524,21 @@ experimental domain Memory
+       moderate
+       critical
+ 
++  # Retruns current DOM object counters.
+   command getDOMCounters
+     returns
+       integer documents
+       integer nodes
+       integer jsEventListeners
+ 
++  # Retruns DOM object counters after preparing renderer for leak detection.
++  command getDOMCountersForLeakDetection
++    returns
++      # DOM object counters.
++      array of DOMCounter counters
++
++  # Prepares for leak detection by terminating workers, stopping spellcheckers,
++  # dropping non-essential internal caches, running garbage collections, etc.
+   command prepareForLeakDetection
+ 
+   # Simulate OomIntervention by purging V8 memory.
+@@ -5604,6 +5614,15 @@ experimental domain Memory
+       # Size of the module in bytes.
+       number size
+ 
++  # DOM object counter data.
++  type DOMCounter extends object
++    properties
++      # Object name. Note: object names should be presumed volatile and clients should not expect
++      # the returned names to be consistent across runs.
++      string name
++      # Object count.
++      integer count
++
+ # Network domain allows tracking network activities of the page. It exposes information about http,
+ # file, data and other requests and responses, their headers, bodies, timing, etc.
+ domain Network
+@@ -6341,6 +6360,8 @@ domain Network
+       TPCDMetadata
+       # The cookie should have been blocked by 3PCD but is exempted by Deprecation Trial mitigation.
+       TPCDDeprecationTrial
++      # The cookie should have been blocked by 3PCD but is exempted by Top-level Deprecation Trial mitigation.
++      TopLevelTPCDDeprecationTrial
+       # The cookie should have been blocked by 3PCD but is exempted by heuristics mitigation.
+       TPCDHeuristics
+       # The cookie should have been blocked by 3PCD but is exempted by Enterprise Policy.
+```
+
 ## Roll protocol to r1346313 — _2024-08-24T04:27:30.000Z_
-######  Diff: [`08dfe29...cc77939`](https://github.com/ChromeDevTools/devtools-protocol/compare/08dfe29...cc77939)
+######  Diff: [`08dfe29...09ae3f7`](https://github.com/ChromeDevTools/devtools-protocol/compare/08dfe29...09ae3f7)
 
 ```diff
 @@ browser_protocol.pdl:1392 @@ domain Browser
@@ -12072,31 +12133,4 @@ index 18cf0c7..8e43695 100644
        magnetometer
        microphone
        midi
-```
-
-## Roll protocol to r995510 — _2022-04-23T16:15:16.000Z_
-######  Diff: [`7c8b6ad...5c44be1`](https://github.com/ChromeDevTools/devtools-protocol/compare/7c8b6ad...5c44be1)
-
-```diff
-@@ browser_protocol.pdl:7645 @@ domain Page
-       optional number marginLeft
-       # Right margin in inches. Defaults to 1cm (~0.4 inches).
-       optional number marginRight
--      # Paper ranges to print, e.g., '1-5, 8, 11-13'. Defaults to the empty string, which means
--      # print all pages.
-+      # Paper ranges to print, one based, e.g., '1-5, 8, 11-13'. Pages are
-+      # printed in the document order, not in the order specified, and no
-+      # more than once.
-+      # Defaults to empty string, which implies the entire document is printed.
-+      # The page numbers are quietly capped to actual page count of the
-+      # document, and ranges beyond the end of the document are ignored.
-+      # If this results in no pages to print, an error is reported.
-+      # It is an error to specify a range with start greater than end.
-       optional string pageRanges
--      # Whether to silently ignore invalid but successfully parsed page ranges, such as '3-2'.
--      # Defaults to false.
--      optional boolean ignoreInvalidPageRanges
-       # HTML template for the print header. Should be valid HTML markup with following
-       # classes used to inject printing values into them:
-       # - `date`: formatted print date
 ```

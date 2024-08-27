@@ -3199,10 +3199,24 @@ export namespace ProtocolMapping {
             paramsType: [];
             returnType: void;
         };
+        /**
+         * Retruns current DOM object counters.
+         */
         'Memory.getDOMCounters': {
             paramsType: [];
             returnType: Protocol.Memory.GetDOMCountersResponse;
         };
+        /**
+         * Retruns DOM object counters after preparing renderer for leak detection.
+         */
+        'Memory.getDOMCountersForLeakDetection': {
+            paramsType: [];
+            returnType: Protocol.Memory.GetDOMCountersForLeakDetectionResponse;
+        };
+        /**
+         * Prepares for leak detection by terminating workers, stopping spellcheckers,
+         * dropping non-essential internal caches, running garbage collections, etc.
+         */
         'Memory.prepareForLeakDetection': {
             paramsType: [];
             returnType: void;

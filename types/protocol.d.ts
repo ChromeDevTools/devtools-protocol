@@ -3472,7 +3472,7 @@ export namespace Protocol {
             clientSecurityState?: Network.ClientSecurityState;
         }
 
-        export type AttributionReportingIssueType = ('PermissionPolicyDisabled' | 'UntrustworthyReportingOrigin' | 'InsecureContext' | 'InvalidHeader' | 'InvalidRegisterTriggerHeader' | 'SourceAndTriggerHeaders' | 'SourceIgnored' | 'TriggerIgnored' | 'OsSourceIgnored' | 'OsTriggerIgnored' | 'InvalidRegisterOsSourceHeader' | 'InvalidRegisterOsTriggerHeader' | 'WebAndOsHeaders' | 'NoWebOrOsSupport' | 'NavigationRegistrationWithoutTransientUserActivation' | 'InvalidInfoHeader' | 'NoRegisterSourceHeader' | 'NoRegisterTriggerHeader' | 'NoRegisterOsSourceHeader' | 'NoRegisterOsTriggerHeader');
+        export type AttributionReportingIssueType = ('PermissionPolicyDisabled' | 'UntrustworthyReportingOrigin' | 'InsecureContext' | 'InvalidHeader' | 'InvalidRegisterTriggerHeader' | 'SourceAndTriggerHeaders' | 'SourceIgnored' | 'TriggerIgnored' | 'OsSourceIgnored' | 'OsTriggerIgnored' | 'InvalidRegisterOsSourceHeader' | 'InvalidRegisterOsTriggerHeader' | 'WebAndOsHeaders' | 'NoWebOrOsSupport' | 'NavigationRegistrationWithoutTransientUserActivation' | 'InvalidInfoHeader' | 'NoRegisterSourceHeader' | 'NoRegisterTriggerHeader' | 'NoRegisterOsSourceHeader' | 'NoRegisterOsTriggerHeader' | 'NavigationRegistrationUniqueScopeAlreadySet');
 
         export type SharedDictionaryError = ('UseErrorCrossOriginNoCorsRequest' | 'UseErrorDictionaryLoadFailure' | 'UseErrorMatchingDictionaryNotUsed' | 'UseErrorUnexpectedContentDictionaryHeader' | 'WriteErrorCossOriginNoCorsRequest' | 'WriteErrorDisallowedBySettings' | 'WriteErrorExpiredResponse' | 'WriteErrorFeatureDisabled' | 'WriteErrorInsufficientResources' | 'WriteErrorInvalidMatchField' | 'WriteErrorInvalidStructuredHeader' | 'WriteErrorNavigationRequest' | 'WriteErrorNoMatchField' | 'WriteErrorNonListMatchDestField' | 'WriteErrorNonSecureContext' | 'WriteErrorNonStringIdField' | 'WriteErrorNonStringInMatchDestList' | 'WriteErrorNonStringMatchField' | 'WriteErrorNonTokenTypeField' | 'WriteErrorRequestAborted' | 'WriteErrorShuttingDown' | 'WriteErrorTooLongIdField' | 'WriteErrorUnsupportedType');
 
@@ -10147,10 +10147,32 @@ export namespace Protocol {
             size: number;
         }
 
+        /**
+         * DOM object counter data.
+         */
+        export interface DOMCounter {
+            /**
+             * Object name. Note: object names should be presumed volatile and clients should not expect
+             * the returned names to be consistent across runs.
+             */
+            name: string;
+            /**
+             * Object count.
+             */
+            count: integer;
+        }
+
         export interface GetDOMCountersResponse {
             documents: integer;
             nodes: integer;
             jsEventListeners: integer;
+        }
+
+        export interface GetDOMCountersForLeakDetectionResponse {
+            /**
+             * DOM object counters.
+             */
+            counters: DOMCounter[];
         }
 
         export interface SetPressureNotificationsSuppressedRequest {
@@ -10964,7 +10986,7 @@ export namespace Protocol {
         /**
          * Types of reasons why a cookie should have been blocked by 3PCD but is exempted for the request.
          */
-        export type CookieExemptionReason = ('None' | 'UserSetting' | 'TPCDMetadata' | 'TPCDDeprecationTrial' | 'TPCDHeuristics' | 'EnterprisePolicy' | 'StorageAccess' | 'TopLevelStorageAccess' | 'CorsOptIn' | 'Scheme');
+        export type CookieExemptionReason = ('None' | 'UserSetting' | 'TPCDMetadata' | 'TPCDDeprecationTrial' | 'TopLevelTPCDDeprecationTrial' | 'TPCDHeuristics' | 'EnterprisePolicy' | 'StorageAccess' | 'TopLevelStorageAccess' | 'CorsOptIn' | 'Scheme');
 
         /**
          * A cookie which was not stored from a response with the corresponding reason.
