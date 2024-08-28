@@ -10696,7 +10696,9 @@ experimental domain Storage
       destinationBothLimitsReached
       reportingOriginsPerSiteLimitReached
       exceedsMaxChannelCapacity
+      exceedsMaxScopesChannelCapacity
       exceedsMaxTriggerStateCardinality
+      exceedsMaxEventStatesLimit
       destinationPerDayReportingLimitReached
 
   experimental event attributionReportingSourceRegistered

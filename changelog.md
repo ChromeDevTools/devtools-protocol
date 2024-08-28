@@ -1,7 +1,23 @@
 
 
+## Roll protocol to r1347815 — _2024-08-28T04:28:21.000Z_
+######  Diff: [`ad08fca...4c55eb9`](https://github.com/ChromeDevTools/devtools-protocol/compare/ad08fca...4c55eb9)
+
+```diff
+@@ browser_protocol.pdl:10696 @@ experimental domain Storage
+       destinationBothLimitsReached
+       reportingOriginsPerSiteLimitReached
+       exceedsMaxChannelCapacity
++      exceedsMaxScopesChannelCapacity
+       exceedsMaxTriggerStateCardinality
++      exceedsMaxEventStatesLimit
+       destinationPerDayReportingLimitReached
+ 
+   experimental event attributionReportingSourceRegistered
+```
+
 ## Roll protocol to r1347151 — _2024-08-27T04:29:22.000Z_
-######  Diff: [`09ae3f7...f7c87d0`](https://github.com/ChromeDevTools/devtools-protocol/compare/09ae3f7...f7c87d0)
+######  Diff: [`09ae3f7...ad08fca`](https://github.com/ChromeDevTools/devtools-protocol/compare/09ae3f7...ad08fca)
 
 ```diff
 @@ browser_protocol.pdl:743 @@ experimental domain Audits
@@ -12119,18 +12135,4 @@ index 18cf0c7..8e43695 100644
  
    # This issue tracks information needed to print a deprecation message.
    # The formatting is inherited from the old console.log version, see more at:
-```
-
-## Roll protocol to r995853 — _2022-04-25T23:15:20.000Z_
-######  Diff: [`5c44be1...d153258`](https://github.com/ChromeDevTools/devtools-protocol/compare/5c44be1...d153258)
-
-```diff
-@@ browser_protocol.pdl:7021 @@ domain Page
-       interest-cohort
-       join-ad-interest-group
-       keyboard-map
-+      local-fonts
-       magnetometer
-       microphone
-       midi
 ```

@@ -16081,7 +16081,7 @@ export namespace Protocol {
             aggregatableDebugReportingConfig: AttributionReportingAggregatableDebugReportingConfig;
         }
 
-        export type AttributionReportingSourceRegistrationResult = ('success' | 'internalError' | 'insufficientSourceCapacity' | 'insufficientUniqueDestinationCapacity' | 'excessiveReportingOrigins' | 'prohibitedByBrowserPolicy' | 'successNoised' | 'destinationReportingLimitReached' | 'destinationGlobalLimitReached' | 'destinationBothLimitsReached' | 'reportingOriginsPerSiteLimitReached' | 'exceedsMaxChannelCapacity' | 'exceedsMaxTriggerStateCardinality' | 'destinationPerDayReportingLimitReached');
+        export type AttributionReportingSourceRegistrationResult = ('success' | 'internalError' | 'insufficientSourceCapacity' | 'insufficientUniqueDestinationCapacity' | 'excessiveReportingOrigins' | 'prohibitedByBrowserPolicy' | 'successNoised' | 'destinationReportingLimitReached' | 'destinationGlobalLimitReached' | 'destinationBothLimitsReached' | 'reportingOriginsPerSiteLimitReached' | 'exceedsMaxChannelCapacity' | 'exceedsMaxScopesChannelCapacity' | 'exceedsMaxTriggerStateCardinality' | 'exceedsMaxEventStatesLimit' | 'destinationPerDayReportingLimitReached');
 
         export type AttributionReportingSourceRegistrationTimeConfig = ('include' | 'exclude');
 
