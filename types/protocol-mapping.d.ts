@@ -436,6 +436,11 @@ export namespace ProtocolMapping {
          */
         'Page.frameDetached': [Protocol.Page.FrameDetachedEvent];
         /**
+         * Fired before frame subtree is detached. Emitted before any frame of the
+         * subtree is actually detached.
+         */
+        'Page.frameSubtreeWillBeDetached': [Protocol.Page.FrameSubtreeWillBeDetachedEvent];
+        /**
          * Fired once navigation of the frame has completed. Frame is now associated with the new loader.
          */
         'Page.frameNavigated': [Protocol.Page.FrameNavigatedEvent];

@@ -14918,6 +14918,17 @@ export namespace Protocol {
         }
 
         /**
+         * Fired before frame subtree is detached. Emitted before any frame of the
+         * subtree is actually detached.
+         */
+        export interface FrameSubtreeWillBeDetachedEvent {
+            /**
+             * Id of the frame that is the root of the subtree that will be detached.
+             */
+            frameId: FrameId;
+        }
+
+        /**
          * Fired once navigation of the frame has completed. Frame is now associated with the new loader.
          */
         export interface FrameNavigatedEvent {

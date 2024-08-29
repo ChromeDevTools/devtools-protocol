@@ -3216,6 +3216,12 @@ export namespace ProtocolProxyApi {
         on(event: 'frameDetached', listener: (params: Protocol.Page.FrameDetachedEvent) => void): void;
 
         /**
+         * Fired before frame subtree is detached. Emitted before any frame of the
+         * subtree is actually detached.
+         */
+        on(event: 'frameSubtreeWillBeDetached', listener: (params: Protocol.Page.FrameSubtreeWillBeDetachedEvent) => void): void;
+
+        /**
          * Fired once navigation of the frame has completed. Frame is now associated with the new loader.
          */
         on(event: 'frameNavigated', listener: (params: Protocol.Page.FrameNavigatedEvent) => void): void;

@@ -1,7 +1,27 @@
 
 
+## Roll protocol to r1348440 — _2024-08-29T04:28:12.000Z_
+######  Diff: [`81f12ac...f7305be`](https://github.com/ChromeDevTools/devtools-protocol/compare/81f12ac...f7305be)
+
+```diff
+@@ browser_protocol.pdl:9220 @@ domain Page
+         # A new frame target will be created (see Target.attachedToTarget).
+         swap
+ 
++  # Fired before frame subtree is detached. Emitted before any frame of the
++  # subtree is actually detached.
++  experimental event frameSubtreeWillBeDetached
++    parameters
++      # Id of the frame that is the root of the subtree that will be detached.
++      FrameId frameId
++
+   # The type of a frameNavigated event.
+   experimental type NavigationType extends string
+     enum
+```
+
 ## Roll protocol to r1347815 — _2024-08-28T04:28:21.000Z_
-######  Diff: [`ad08fca...4c55eb9`](https://github.com/ChromeDevTools/devtools-protocol/compare/ad08fca...4c55eb9)
+######  Diff: [`ad08fca...81f12ac`](https://github.com/ChromeDevTools/devtools-protocol/compare/ad08fca...81f12ac)
 
 ```diff
 @@ browser_protocol.pdl:10696 @@ experimental domain Storage
@@ -12061,78 +12081,4 @@ index 18cf0c7..8e43695 100644
  
    # Font families collection for a script.
    experimental type ScriptFontFamilies extends object
-```
-
-## Roll protocol to r996285 — _2022-04-26T18:15:23.000Z_
-######  Diff: [`d153258...6a83a61`](https://github.com/ChromeDevTools/devtools-protocol/compare/d153258...6a83a61)
-
-```diff
-@@ browser_protocol.pdl:744 @@ experimental domain Audits
-   type DeprecationIssueType extends string
-     enum
-       AuthorizationCoveredByWildcard
-+      BatteryStatusInsecureOrigin
-+      CanRequestURLHTTPContainingNewline
-+      ChromeLoadTimesConnectionInfo
-+      ChromeLoadTimesFirstPaintAfterLoadTime
-+      ChromeLoadTimesWasAlternateProtocolAvailable
-       CookieWithTruncatingChar
-       CrossOriginAccessBasedOnDocumentDomain
-       CrossOriginWindowAlert
-       CrossOriginWindowConfirm
-+      CSSSelectorInternalMediaControlsOverlayCastButton
-+      CustomCursorIntersectsViewport
-       DeprecationExample
-       DocumentDomainSettingWithoutOriginAgentClusterHeader
-+      EventPath
-       GeolocationInsecureOrigin
-       GeolocationInsecureOriginDeprecatedNotRemoved
-       GetUserMediaInsecureOrigin
-+      HostCandidateAttributeGetter
-+      InsecurePrivateNetworkSubresourceRequest
-       LegacyConstraintGoogCpuOveruseDetection
-       LegacyConstraintGoogIPv6
-       LegacyConstraintGoogScreencastMinBitrate
-       LegacyConstraintGoogSuspendBelowMinBitrate
-       LocalCSSFileExtensionRejected
-+      MediaElementAudioSourceNode
-+      MediaSourceAbortRemove
-+      MediaSourceDurationTruncatingBuffered
-+      NoSysexWebMIDIWithoutPermission
-       NotificationInsecureOrigin
-+      NotificationPermissionRequestedIframe
-       ObsoleteWebRtcCipherSuite
-+      PaymentRequestBasicCard
-+      PaymentRequestShowWithoutGesture
-       PictureSourceSrc
-       PrefixedCancelAnimationFrame
-       PrefixedRequestAnimationFrame
-+      PrefixedStorageInfo
-+      PrefixedVideoDisplayingFullscreen
-+      PrefixedVideoEnterFullscreen
-+      PrefixedVideoEnterFullScreen
-+      PrefixedVideoExitFullscreen
-+      PrefixedVideoExitFullScreen
-+      PrefixedVideoSupportsFullscreen
-+      RangeExpand
-+      RequestedSubresourceWithEmbeddedCredentials
-       RTCConstraintEnableDtlsSrtpFalse
-       RTCConstraintEnableDtlsSrtpTrue
-       RTCPeerConnectionComplexPlanBSdpUsingDefaultSdpSemantics
-       RTCPeerConnectionLegacyCreateWithMediaConstraints
-+      RTCPeerConnectionSdpSemanticsPlanB
-+      RtcpMuxPolicyNegotiate
-       RTPDataChannel
-+      SelectionAddRangeIntersect
-       SharedArrayBufferConstructedWithoutIsolation
-+      TextToSpeech_DisallowedByAutoplay
-       Untranslated
-       V8SharedArrayBufferConstructedInExtensionWithoutIsolation
-       WebCodecsVideoFrameDefaultTimestamp
-       XHRJSONEncodingDetection
-       XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload
-+      XRSupportsSession
- 
-   # This issue tracks information needed to print a deprecation message.
-   # The formatting is inherited from the old console.log version, see more at:
 ```

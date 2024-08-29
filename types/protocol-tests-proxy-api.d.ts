@@ -3436,6 +3436,14 @@ export namespace ProtocolTestsProxyApi {
         onceFrameDetached(eventMatcher?: (event: { params: Protocol.Page.FrameDetachedEvent }) => boolean): Promise<{ params: Protocol.Page.FrameDetachedEvent }>;
 
         /**
+         * Fired before frame subtree is detached. Emitted before any frame of the
+         * subtree is actually detached.
+         */
+        onFrameSubtreeWillBeDetached(listener: (event: { params: Protocol.Page.FrameSubtreeWillBeDetachedEvent }) => void): void;
+        offFrameSubtreeWillBeDetached(listener: (event: { params: Protocol.Page.FrameSubtreeWillBeDetachedEvent }) => void): void;
+        onceFrameSubtreeWillBeDetached(eventMatcher?: (event: { params: Protocol.Page.FrameSubtreeWillBeDetachedEvent }) => boolean): Promise<{ params: Protocol.Page.FrameSubtreeWillBeDetachedEvent }>;
+
+        /**
          * Fired once navigation of the frame has completed. Frame is now associated with the new loader.
          */
         onFrameNavigated(listener: (event: { params: Protocol.Page.FrameNavigatedEvent }) => void): void;
