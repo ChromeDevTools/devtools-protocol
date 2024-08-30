@@ -21897,6 +21897,29 @@
                     ]
                 },
                 {
+                    "id": "AttributionScopesData",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "values",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        {
+                            "name": "limit",
+                            "description": "number instead of integer because not all uint32 can be represented by\nint",
+                            "type": "number"
+                        },
+                        {
+                            "name": "maxEventStates",
+                            "type": "number"
+                        }
+                    ]
+                },
+                {
                     "id": "AttributionReportingSourceRegistration",
                     "experimental": true,
                     "type": "object",
@@ -21979,6 +22002,11 @@
                         {
                             "name": "aggregatableDebugReportingConfig",
                             "$ref": "AttributionReportingAggregatableDebugReportingConfig"
+                        },
+                        {
+                            "name": "scopesData",
+                            "optional": true,
+                            "$ref": "AttributionScopesData"
                         }
                     ]
                 },
@@ -22181,6 +22209,13 @@
                         {
                             "name": "aggregatableDebugReportingConfig",
                             "$ref": "AttributionReportingAggregatableDebugReportingConfig"
+                        },
+                        {
+                            "name": "scopes",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
                         }
                     ]
                 },
@@ -26229,7 +26264,6 @@
                         "PrefetchFailedMIMENotSupported",
                         "PrefetchFailedNetError",
                         "PrefetchFailedNon2XX",
-                        "PrefetchFailedPerPageLimitExceeded",
                         "PrefetchEvictedAfterCandidateRemoved",
                         "PrefetchEvictedForNewerPrefetch",
                         "PrefetchHeldback",

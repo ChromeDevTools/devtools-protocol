@@ -16067,6 +16067,16 @@ export namespace Protocol {
             aggregationCoordinatorOrigin?: string;
         }
 
+        export interface AttributionScopesData {
+            values: string[];
+            /**
+             * number instead of integer because not all uint32 can be represented by
+             * int
+             */
+            limit: number;
+            maxEventStates: number;
+        }
+
         export interface AttributionReportingSourceRegistration {
             time: Network.TimeSinceEpoch;
             /**
@@ -16090,6 +16100,7 @@ export namespace Protocol {
             triggerDataMatching: AttributionReportingTriggerDataMatching;
             destinationLimitPriority: SignedInt64AsBase10;
             aggregatableDebugReportingConfig: AttributionReportingAggregatableDebugReportingConfig;
+            scopesData?: AttributionScopesData;
         }
 
         export type AttributionReportingSourceRegistrationResult = ('success' | 'internalError' | 'insufficientSourceCapacity' | 'insufficientUniqueDestinationCapacity' | 'excessiveReportingOrigins' | 'prohibitedByBrowserPolicy' | 'successNoised' | 'destinationReportingLimitReached' | 'destinationGlobalLimitReached' | 'destinationBothLimitsReached' | 'reportingOriginsPerSiteLimitReached' | 'exceedsMaxChannelCapacity' | 'exceedsMaxScopesChannelCapacity' | 'exceedsMaxTriggerStateCardinality' | 'exceedsMaxEventStatesLimit' | 'destinationPerDayReportingLimitReached');
@@ -16142,6 +16153,7 @@ export namespace Protocol {
             sourceRegistrationTimeConfig: AttributionReportingSourceRegistrationTimeConfig;
             triggerContextId?: string;
             aggregatableDebugReportingConfig: AttributionReportingAggregatableDebugReportingConfig;
+            scopes: string[];
         }
 
         export type AttributionReportingEventLevelResult = ('success' | 'successDroppedLowerPriority' | 'internalError' | 'noCapacityForAttributionDestination' | 'noMatchingSources' | 'deduplicated' | 'excessiveAttributions' | 'priorityTooLow' | 'neverAttributedSource' | 'excessiveReportingOrigins' | 'noMatchingSourceFilterData' | 'prohibitedByBrowserPolicy' | 'noMatchingConfigurations' | 'excessiveReports' | 'falselyAttributedSource' | 'reportWindowPassed' | 'notRegistered' | 'reportWindowNotStarted' | 'noMatchingTriggerData');
@@ -18583,7 +18595,7 @@ export namespace Protocol {
          * TODO(https://crbug.com/1384419): revisit the list of PrefetchStatus and
          * filter out the ones that aren't necessary to the developers.
          */
-        export type PrefetchStatus = ('PrefetchAllowed' | 'PrefetchFailedIneligibleRedirect' | 'PrefetchFailedInvalidRedirect' | 'PrefetchFailedMIMENotSupported' | 'PrefetchFailedNetError' | 'PrefetchFailedNon2XX' | 'PrefetchFailedPerPageLimitExceeded' | 'PrefetchEvictedAfterCandidateRemoved' | 'PrefetchEvictedForNewerPrefetch' | 'PrefetchHeldback' | 'PrefetchIneligibleRetryAfter' | 'PrefetchIsPrivacyDecoy' | 'PrefetchIsStale' | 'PrefetchNotEligibleBrowserContextOffTheRecord' | 'PrefetchNotEligibleDataSaverEnabled' | 'PrefetchNotEligibleExistingProxy' | 'PrefetchNotEligibleHostIsNonUnique' | 'PrefetchNotEligibleNonDefaultStoragePartition' | 'PrefetchNotEligibleSameSiteCrossOriginPrefetchRequiredProxy' | 'PrefetchNotEligibleSchemeIsNotHttps' | 'PrefetchNotEligibleUserHasCookies' | 'PrefetchNotEligibleUserHasServiceWorker' | 'PrefetchNotEligibleBatterySaverEnabled' | 'PrefetchNotEligiblePreloadingDisabled' | 'PrefetchNotFinishedInTime' | 'PrefetchNotStarted' | 'PrefetchNotUsedCookiesChanged' | 'PrefetchProxyNotAvailable' | 'PrefetchResponseUsed' | 'PrefetchSuccessfulButNotUsed' | 'PrefetchNotUsedProbeFailed');
+        export type PrefetchStatus = ('PrefetchAllowed' | 'PrefetchFailedIneligibleRedirect' | 'PrefetchFailedInvalidRedirect' | 'PrefetchFailedMIMENotSupported' | 'PrefetchFailedNetError' | 'PrefetchFailedNon2XX' | 'PrefetchEvictedAfterCandidateRemoved' | 'PrefetchEvictedForNewerPrefetch' | 'PrefetchHeldback' | 'PrefetchIneligibleRetryAfter' | 'PrefetchIsPrivacyDecoy' | 'PrefetchIsStale' | 'PrefetchNotEligibleBrowserContextOffTheRecord' | 'PrefetchNotEligibleDataSaverEnabled' | 'PrefetchNotEligibleExistingProxy' | 'PrefetchNotEligibleHostIsNonUnique' | 'PrefetchNotEligibleNonDefaultStoragePartition' | 'PrefetchNotEligibleSameSiteCrossOriginPrefetchRequiredProxy' | 'PrefetchNotEligibleSchemeIsNotHttps' | 'PrefetchNotEligibleUserHasCookies' | 'PrefetchNotEligibleUserHasServiceWorker' | 'PrefetchNotEligibleBatterySaverEnabled' | 'PrefetchNotEligiblePreloadingDisabled' | 'PrefetchNotFinishedInTime' | 'PrefetchNotStarted' | 'PrefetchNotUsedCookiesChanged' | 'PrefetchProxyNotAvailable' | 'PrefetchResponseUsed' | 'PrefetchSuccessfulButNotUsed' | 'PrefetchNotUsedProbeFailed');
 
         /**
          * Information of headers to be displayed when the header mismatch occurred.

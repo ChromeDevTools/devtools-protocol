@@ -1,7 +1,52 @@
 
 
+## Roll protocol to r1349043 — _2024-08-30T04:28:39.000Z_
+######  Diff: [`487d94d...5f96f75`](https://github.com/ChromeDevTools/devtools-protocol/compare/487d94d...5f96f75)
+
+```diff
+@@ browser_protocol.pdl:10668 @@ experimental domain Storage
+       array of AttributionReportingAggregatableDebugReportingData debugData
+       optional string aggregationCoordinatorOrigin
+ 
++  experimental type AttributionScopesData extends object
++    properties
++      array of string values
++      # number instead of integer because not all uint32 can be represented by
++      # int
++      number limit
++      number maxEventStates
++
+   experimental type AttributionReportingSourceRegistration extends object
+     properties
+       Network.TimeSinceEpoch time
+@@ -10688,6 +10696,7 @@ experimental domain Storage
+       AttributionReportingTriggerDataMatching triggerDataMatching
+       SignedInt64AsBase10 destinationLimitPriority
+       AttributionReportingAggregatableDebugReportingConfig aggregatableDebugReportingConfig
++      optional AttributionScopesData scopesData
+ 
+   experimental type AttributionReportingSourceRegistrationResult extends string
+     enum
+@@ -10764,6 +10773,7 @@ experimental domain Storage
+       AttributionReportingSourceRegistrationTimeConfig sourceRegistrationTimeConfig
+       optional string triggerContextId
+       AttributionReportingAggregatableDebugReportingConfig aggregatableDebugReportingConfig
++      array of string scopes
+ 
+   experimental type AttributionReportingEventLevelResult extends string
+     enum
+@@ -12415,7 +12425,6 @@ experimental domain Preload
+       PrefetchFailedMIMENotSupported
+       PrefetchFailedNetError
+       PrefetchFailedNon2XX
+-      PrefetchFailedPerPageLimitExceeded
+       PrefetchEvictedAfterCandidateRemoved
+       PrefetchEvictedForNewerPrefetch
+       PrefetchHeldback
+```
+
 ## Roll protocol to r1348440 — _2024-08-29T04:28:12.000Z_
-######  Diff: [`81f12ac...f7305be`](https://github.com/ChromeDevTools/devtools-protocol/compare/81f12ac...f7305be)
+######  Diff: [`81f12ac...487d94d`](https://github.com/ChromeDevTools/devtools-protocol/compare/81f12ac...487d94d)
 
 ```diff
 @@ browser_protocol.pdl:9220 @@ domain Page
