@@ -1633,6 +1633,11 @@ export namespace ProtocolProxyApi {
         on(event: 'topLayerElementsUpdated', listener: () => void): void;
 
         /**
+         * Fired when a node's scrollability state changes.
+         */
+        on(event: 'scrollableFlagUpdated', listener: (params: Protocol.DOM.ScrollableFlagUpdatedEvent) => void): void;
+
+        /**
          * Called when a pseudo element is removed from an element.
          */
         on(event: 'pseudoElementRemoved', listener: (params: Protocol.DOM.PseudoElementRemovedEvent) => void): void;

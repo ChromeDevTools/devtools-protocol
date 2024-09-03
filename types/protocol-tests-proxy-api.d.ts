@@ -1737,6 +1737,13 @@ export namespace ProtocolTestsProxyApi {
         onceTopLayerElementsUpdated(eventMatcher?: (event: ) => boolean): Promise<>;
 
         /**
+         * Fired when a node's scrollability state changes.
+         */
+        onScrollableFlagUpdated(listener: (event: { params: Protocol.DOM.ScrollableFlagUpdatedEvent }) => void): void;
+        offScrollableFlagUpdated(listener: (event: { params: Protocol.DOM.ScrollableFlagUpdatedEvent }) => void): void;
+        onceScrollableFlagUpdated(eventMatcher?: (event: { params: Protocol.DOM.ScrollableFlagUpdatedEvent }) => boolean): Promise<{ params: Protocol.DOM.ScrollableFlagUpdatedEvent }>;
+
+        /**
          * Called when a pseudo element is removed from an element.
          */
         onPseudoElementRemoved(listener: (event: { params: Protocol.DOM.PseudoElementRemovedEvent }) => void): void;

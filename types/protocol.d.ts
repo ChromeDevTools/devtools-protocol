@@ -6172,6 +6172,7 @@ export namespace Protocol {
             isSVG?: boolean;
             compatibilityMode?: CompatibilityMode;
             assignedSlot?: BackendNode;
+            isScrollable?: boolean;
         }
 
         /**
@@ -7172,6 +7173,20 @@ export namespace Protocol {
              * The added pseudo element.
              */
             pseudoElement: Node;
+        }
+
+        /**
+         * Fired when a node's scrollability state changes.
+         */
+        export interface ScrollableFlagUpdatedEvent {
+            /**
+             * The id of the node.
+             */
+            nodeId: DOM.NodeId;
+            /**
+             * If the node is scrollable.
+             */
+            isScrollable: boolean;
         }
 
         /**

@@ -1,7 +1,36 @@
 
 
+## Roll protocol to r1349977 — _2024-09-03T04:28:26.000Z_
+######  Diff: [`c79610f...3f8b39d`](https://github.com/ChromeDevTools/devtools-protocol/compare/c79610f...3f8b39d)
+
+```diff
+@@ browser_protocol.pdl:2807 @@ domain DOM
+       optional boolean isSVG
+       optional CompatibilityMode compatibilityMode
+       optional BackendNode assignedSlot
++      experimental optional boolean isScrollable
+ 
+   # A structure to hold the top-level node of a detached tree and an array of its retained descendants.
+   type DetachedElementInfo extends object
+@@ -3496,6 +3497,14 @@ domain DOM
+   # Called when top layer elements are changed.
+   experimental event topLayerElementsUpdated
+ 
++  # Fired when a node's scrollability state changes.
++  experimental event scrollableFlagUpdated
++    parameters
++      # The id of the node.
++      DOM.NodeId nodeId
++      # If the node is scrollable.
++      boolean isScrollable
++
+   # Called when a pseudo element is removed from an element.
+   experimental event pseudoElementRemoved
+     parameters
+```
+
 ## Roll protocol to r1349043 — _2024-08-30T04:28:39.000Z_
-######  Diff: [`487d94d...5f96f75`](https://github.com/ChromeDevTools/devtools-protocol/compare/487d94d...5f96f75)
+######  Diff: [`487d94d...c79610f`](https://github.com/ChromeDevTools/devtools-protocol/compare/487d94d...c79610f)
 
 ```diff
 @@ browser_protocol.pdl:10668 @@ experimental domain Storage
@@ -12111,19 +12140,4 @@ index 18cf0c7..8e43695 100644
        DeprecationIssueType type
  
    type ClientHintIssueReason extends string
-```
-
-## Roll protocol to r996622 — _2022-04-27T10:15:18.000Z_
-######  Diff: [`61057f3...477bbc9`](https://github.com/ChromeDevTools/devtools-protocol/compare/61057f3...477bbc9)
-
-```diff
-@@ browser_protocol.pdl:7357 @@ domain Page
-       optional string cursive
-       # The fantasy font-family.
-       optional string fantasy
-+      # The math font-family.
-+      optional string math
- 
-   # Font families collection for a script.
-   experimental type ScriptFontFamilies extends object
 ```
