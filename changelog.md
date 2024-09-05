@@ -1,7 +1,34 @@
 
 
+## Roll protocol to r1351223 — _2024-09-05T04:28:35.000Z_
+######  Diff: [`81b9407...243e423`](https://github.com/ChromeDevTools/devtools-protocol/compare/81b9407...243e423)
+
+```diff
+@@ browser_protocol.pdl:2703 @@ domain DOM
+       view-transition-image-pair
+       view-transition-old
+       view-transition-new
++      placeholder
++      file-selector-button
++      details-content
++      select-fallback-button
++      select-fallback-button-text
++      picker
+ 
+   # Shadow root type.
+   type ShadowRootType extends string
+@@ -8079,6 +8085,7 @@ domain Page
+       clipboard-read
+       clipboard-write
+       compute-pressure
++      controlled-frame
+       cross-origin-isolated
+       deferred-fetch
+       digital-credentials-get
+```
+
 ## Roll protocol to r1349977 — _2024-09-03T04:28:26.000Z_
-######  Diff: [`c79610f...3f8b39d`](https://github.com/ChromeDevTools/devtools-protocol/compare/c79610f...3f8b39d)
+######  Diff: [`c79610f...81b9407`](https://github.com/ChromeDevTools/devtools-protocol/compare/c79610f...81b9407)
 
 ```diff
 @@ browser_protocol.pdl:2807 @@ domain DOM
@@ -12102,42 +12129,4 @@ index 18cf0c7..8e43695 100644
        CanRequestURLHTTPContainingNewline
        ChromeLoadTimesConnectionInfo
        ChromeLoadTimesFirstPaintAfterLoadTime
-```
-
-## Roll protocol to r997149 — _2022-04-28T11:15:16.000Z_
-######  Diff: [`477bbc9...83726e8`](https://github.com/ChromeDevTools/devtools-protocol/compare/477bbc9...83726e8)
-
-```diff
-@@ browser_protocol.pdl:799 @@ experimental domain Audits
-       SelectionAddRangeIntersect
-       SharedArrayBufferConstructedWithoutIsolation
-       TextToSpeech_DisallowedByAutoplay
--      Untranslated
-       V8SharedArrayBufferConstructedInExtensionWithoutIsolation
-       WebCodecsVideoFrameDefaultTimestamp
-       XHRJSONEncodingDetection
-@@ -807,22 +806,11 @@ experimental domain Audits
-       XRSupportsSession
- 
-   # This issue tracks information needed to print a deprecation message.
--  # The formatting is inherited from the old console.log version, see more at:
--  # https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/frame/deprecation.cc
--  # TODO(crbug.com/1264960): Re-work format to add i18n support per:
--  # https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/public/devtools_protocol/README.md
-+  # https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/frame/third_party/blink/renderer/core/frame/deprecation/README.md
-   type DeprecationIssueDetails extends object
-     properties
-       optional AffectedFrame affectedFrame
-       SourceCodeLocation sourceCodeLocation
--      # The content of an untranslated deprecation issue,
--      # e.g. "window.inefficientLegacyStorageMethod will be removed in M97,
--      # around January 2022. Please use Web Storage or Indexed Database
--      # instead. This standard was abandoned in January, 1970. See
--      # https://www.chromestatus.com/feature/5684870116278272 for more details."
--      deprecated optional string message
--      # The id of an untranslated deprecation issue e.g. PrefixedStorageInfo.
--      deprecated optional string deprecationType
-       DeprecationIssueType type
- 
-   type ClientHintIssueReason extends string
 ```
