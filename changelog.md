@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1352404 — _2024-09-07T04:28:15.000Z_
+######  Diff: [`ea79b5d...f7485ed`](https://github.com/ChromeDevTools/devtools-protocol/compare/ea79b5d...f7485ed)
+
+```diff
+@@ browser_protocol.pdl:6385 @@ domain Network
+       StorageAccess
+       # The cookie should have been blocked by 3PCD but is exempted by Top-level Storage Access API.
+       TopLevelStorageAccess
+-      # The cookie should have been blocked by 3PCD but is exempted by CORS opt-in.
+-      CorsOptIn
+       # The cookie should have been blocked by 3PCD but is exempted by the first-party URL scheme.
+       Scheme
+```
+
 ## Roll protocol to r1351223 — _2024-09-05T04:28:35.000Z_
-######  Diff: [`81b9407...243e423`](https://github.com/ChromeDevTools/devtools-protocol/compare/81b9407...243e423)
+######  Diff: [`81b9407...ea79b5d`](https://github.com/ChromeDevTools/devtools-protocol/compare/81b9407...ea79b5d)
 
 ```diff
 @@ browser_protocol.pdl:2703 @@ domain DOM
@@ -12115,18 +12129,4 @@ index 18cf0c7..8e43695 100644
    command beginFrame
      parameters
        # Timestamp of this BeginFrame in Renderer TimeTicks (milliseconds of uptime). If not set,
-```
-
-## Roll protocol to r997803 — _2022-04-29T18:15:25.000Z_
-######  Diff: [`83726e8...10b0375`](https://github.com/ChromeDevTools/devtools-protocol/compare/83726e8...10b0375)
-
-```diff
-@@ browser_protocol.pdl:744 @@ experimental domain Audits
-   type DeprecationIssueType extends string
-     enum
-       AuthorizationCoveredByWildcard
--      BatteryStatusInsecureOrigin
-       CanRequestURLHTTPContainingNewline
-       ChromeLoadTimesConnectionInfo
-       ChromeLoadTimesFirstPaintAfterLoadTime
 ```

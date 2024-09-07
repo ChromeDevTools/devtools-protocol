@@ -11001,7 +11001,7 @@ export namespace Protocol {
         /**
          * Types of reasons why a cookie should have been blocked by 3PCD but is exempted for the request.
          */
-        export type CookieExemptionReason = ('None' | 'UserSetting' | 'TPCDMetadata' | 'TPCDDeprecationTrial' | 'TopLevelTPCDDeprecationTrial' | 'TPCDHeuristics' | 'EnterprisePolicy' | 'StorageAccess' | 'TopLevelStorageAccess' | 'CorsOptIn' | 'Scheme');
+        export type CookieExemptionReason = ('None' | 'UserSetting' | 'TPCDMetadata' | 'TPCDDeprecationTrial' | 'TopLevelTPCDDeprecationTrial' | 'TPCDHeuristics' | 'EnterprisePolicy' | 'StorageAccess' | 'TopLevelStorageAccess' | 'Scheme');
 
         /**
          * A cookie which was not stored from a response with the corresponding reason.
