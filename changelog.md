@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1354347 — _2024-09-12T04:29:25.000Z_
+######  Diff: [`5257185...0e9b515`](https://github.com/ChromeDevTools/devtools-protocol/compare/5257185...0e9b515)
+
+```diff
+@@ browser_protocol.pdl:2679 @@ domain DOM
+       after
+       marker
+       backdrop
++      column
+       selection
+       search-text
+       target-text
+```
+
 ## Roll protocol to r1352404 — _2024-09-07T04:28:15.000Z_
-######  Diff: [`ea79b5d...f7485ed`](https://github.com/ChromeDevTools/devtools-protocol/compare/ea79b5d...f7485ed)
+######  Diff: [`ea79b5d...5257185`](https://github.com/ChromeDevTools/devtools-protocol/compare/ea79b5d...5257185)
 
 ```diff
 @@ browser_protocol.pdl:6385 @@ domain Network
@@ -12105,28 +12119,4 @@ index 18cf0c7..8e43695 100644
        XHRJSONEncodingDetection
        XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload
        XRSupportsSession
-```
-
-## Roll protocol to r998277 — _2022-05-02T08:15:16.000Z_
-######  Diff: [`10b0375...a6daed6`](https://github.com/ChromeDevTools/devtools-protocol/compare/10b0375...a6daed6)
-
-```diff
-@@ browser_protocol.pdl:2 @@ @@ -2,7 +2,7 @@
- # Use of this source code is governed by a BSD-style license that can be
- # found in the LICENSE file.
- #
--# Contributing to Chrome DevTools Protocol: https://docs.google.com/document/d/1c-COD2kaK__5iMM5SEx-PzNA7HFmgttcYfOHHX0HaOM/edit?usp=sharing
-+# Contributing to Chrome DevTools Protocol: https://goo.gle/devtools-contribution-guide-cdp
- 
- version
-   major 1
-@@ -3850,7 +3850,7 @@ experimental domain HeadlessExperimental
-   # Sends a BeginFrame to the target and returns when the frame was completed. Optionally captures a
-   # screenshot from the resulting frame. Requires that the target was created with enabled
-   # BeginFrameControl. Designed for use with --run-all-compositor-stages-before-draw, see also
--  # https://goo.gl/3zHXhB for more background.
-+  # https://goo.gle/chrome-headless-rendering for more background.
-   command beginFrame
-     parameters
-       # Timestamp of this BeginFrame in Renderer TimeTicks (milliseconds of uptime). If not set,
 ```
