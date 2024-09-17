@@ -3309,7 +3309,7 @@ export namespace Protocol {
 
         export type CookieExclusionReason = ('ExcludeSameSiteUnspecifiedTreatedAsLax' | 'ExcludeSameSiteNoneInsecure' | 'ExcludeSameSiteLax' | 'ExcludeSameSiteStrict' | 'ExcludeInvalidSameParty' | 'ExcludeSamePartyCrossPartyContext' | 'ExcludeDomainNonASCII' | 'ExcludeThirdPartyCookieBlockedInFirstPartySet' | 'ExcludeThirdPartyPhaseout');
 
-        export type CookieWarningReason = ('WarnSameSiteUnspecifiedCrossSiteContext' | 'WarnSameSiteNoneInsecure' | 'WarnSameSiteUnspecifiedLaxAllowUnsafe' | 'WarnSameSiteStrictLaxDowngradeStrict' | 'WarnSameSiteStrictCrossDowngradeStrict' | 'WarnSameSiteStrictCrossDowngradeLax' | 'WarnSameSiteLaxCrossDowngradeStrict' | 'WarnSameSiteLaxCrossDowngradeLax' | 'WarnAttributeValueExceedsMaxSize' | 'WarnDomainNonASCII' | 'WarnThirdPartyPhaseout' | 'WarnCrossSiteRedirectDowngradeChangesInclusion');
+        export type CookieWarningReason = ('WarnSameSiteUnspecifiedCrossSiteContext' | 'WarnSameSiteNoneInsecure' | 'WarnSameSiteUnspecifiedLaxAllowUnsafe' | 'WarnSameSiteStrictLaxDowngradeStrict' | 'WarnSameSiteStrictCrossDowngradeStrict' | 'WarnSameSiteStrictCrossDowngradeLax' | 'WarnSameSiteLaxCrossDowngradeStrict' | 'WarnSameSiteLaxCrossDowngradeLax' | 'WarnAttributeValueExceedsMaxSize' | 'WarnDomainNonASCII' | 'WarnThirdPartyPhaseout' | 'WarnCrossSiteRedirectDowngradeChangesInclusion' | 'WarnDeprecationTrialMetadata' | 'WarnThirdPartyCookieHeuristic');
 
         export type CookieOperation = ('SetCookie' | 'ReadCookie');
 
@@ -8235,7 +8235,7 @@ export namespace Protocol {
          * Used to specify sensor types to emulate.
          * See https://w3c.github.io/sensors/#automation for more information.
          */
-        export type SensorType = ('absolute-orientation' | 'accelerometer' | 'ambient-light' | 'gravity' | 'gyroscope' | 'linear-acceleration' | 'magnetometer' | 'proximity' | 'relative-orientation');
+        export type SensorType = ('absolute-orientation' | 'accelerometer' | 'ambient-light' | 'gravity' | 'gyroscope' | 'linear-acceleration' | 'magnetometer' | 'relative-orientation');
 
         export interface SensorMetadata {
             available?: boolean;

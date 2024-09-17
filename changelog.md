@@ -1,7 +1,30 @@
 
 
+## Roll protocol to r1356270 — _2024-09-17T04:27:33.000Z_
+######  Diff: [`ecd57f9...ab879b5`](https://github.com/ChromeDevTools/devtools-protocol/compare/ecd57f9...ab879b5)
+
+```diff
+@@ browser_protocol.pdl:532 @@ experimental domain Audits
+       WarnDomainNonASCII
+       WarnThirdPartyPhaseout
+       WarnCrossSiteRedirectDowngradeChangesInclusion
++      WarnDeprecationTrialMetadata
++      WarnThirdPartyCookieHeuristic
+ 
+   type CookieOperation extends string
+     enum
+@@ -4221,7 +4223,6 @@ domain Emulation
+       gyroscope
+       linear-acceleration
+       magnetometer
+-      proximity
+       relative-orientation
+ 
+   experimental type SensorMetadata extends object
+```
+
 ## Roll protocol to r1354347 — _2024-09-12T04:29:25.000Z_
-######  Diff: [`5257185...0e9b515`](https://github.com/ChromeDevTools/devtools-protocol/compare/5257185...0e9b515)
+######  Diff: [`5257185...ecd57f9`](https://github.com/ChromeDevTools/devtools-protocol/compare/5257185...ecd57f9)
 
 ```diff
 @@ browser_protocol.pdl:2679 @@ domain DOM
@@ -12105,18 +12128,4 @@ index 18cf0c7..8e43695 100644
        experimental optional boolean generateWebDriverValue
      returns
        # Call result.
-```
-
-## Roll protocol to r998712 — _2022-05-03T03:15:18.000Z_
-######  Diff: [`a6daed6...3a7051b`](https://github.com/ChromeDevTools/devtools-protocol/compare/a6daed6...3a7051b)
-
-```diff
-@@ browser_protocol.pdl:799 @@ experimental domain Audits
-       SharedArrayBufferConstructedWithoutIsolation
-       TextToSpeech_DisallowedByAutoplay
-       V8SharedArrayBufferConstructedInExtensionWithoutIsolation
--      WebCodecsVideoFrameDefaultTimestamp
-       XHRJSONEncodingDetection
-       XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload
-       XRSupportsSession
 ```
