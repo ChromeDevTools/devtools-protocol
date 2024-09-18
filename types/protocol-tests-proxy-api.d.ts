@@ -3033,7 +3033,7 @@ export namespace ProtocolTestsProxyApi {
         setShowHitTestBorders(params: Protocol.Overlay.SetShowHitTestBordersRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
-         * Request that backend shows an overlay with web vital metrics.
+         * Deprecated, no longer has any effect.
          */
         setShowWebVitals(params: Protocol.Overlay.SetShowWebVitalsRequest): Promise<{id: number, result: void, sessionId: string}>;
 

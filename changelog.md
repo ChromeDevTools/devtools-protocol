@@ -1,7 +1,23 @@
 
 
+## Roll protocol to r1356896 — _2024-09-18T04:29:10.000Z_
+######  Diff: [`67ed36c...7261ec1`](https://github.com/ChromeDevTools/devtools-protocol/compare/67ed36c...7261ec1)
+
+```diff
+@@ browser_protocol.pdl:7925 @@ experimental domain Overlay
+       # True for showing hit-test borders
+       boolean show
+ 
+-  # Request that backend shows an overlay with web vital metrics.
+-  command setShowWebVitals
++  # Deprecated, no longer has any effect.
++  deprecated command setShowWebVitals
+     parameters
+       boolean show
+```
+
 ## Roll protocol to r1356270 — _2024-09-17T04:27:33.000Z_
-######  Diff: [`ecd57f9...ab879b5`](https://github.com/ChromeDevTools/devtools-protocol/compare/ecd57f9...ab879b5)
+######  Diff: [`ecd57f9...67ed36c`](https://github.com/ChromeDevTools/devtools-protocol/compare/ecd57f9...67ed36c)
 
 ```diff
 @@ browser_protocol.pdl:532 @@ experimental domain Audits
@@ -12093,39 +12109,4 @@ index 18cf0c7..8e43695 100644
        SharedArrayBufferConstructedWithoutIsolation
        TextToSpeech_DisallowedByAutoplay
        V8SharedArrayBufferConstructedInExtensionWithoutIsolation
-```
-
-## Roll protocol to r999451 — _2022-05-04T16:45:22.000Z_
-######  Diff: [`3a7051b...93a65bd`](https://github.com/ChromeDevTools/devtools-protocol/compare/3a7051b...93a65bd)
-
-```diff
-@@ js_protocol.pdl:559 @@ domain Debugger
-       integer endColumn
-       # Specifies script creation context.
-       Runtime.ExecutionContextId executionContextId
--      # Content hash of the script.
-+      # Content hash of the script, SHA-256.
-       string hash
-       # Embedder-specific auxiliary data.
-       optional object executionContextAuxData
-@@ -598,7 +598,7 @@ domain Debugger
-       integer endColumn
-       # Specifies script creation context.
-       Runtime.ExecutionContextId executionContextId
--      # Content hash of the script.
-+      # Content hash of the script, SHA-256.
-       string hash
-       # Embedder-specific auxiliary data.
-       optional object executionContextAuxData
-@@ -1347,7 +1347,9 @@ domain Runtime
-       optional string objectGroup
-       # Whether to throw an exception if side effect cannot be ruled out during evaluation.
-       experimental optional boolean throwOnSideEffect
--      # Whether the result should be serialized according to https://w3c.github.io/webdriver-bidi.
-+      # Whether the result should contain `webDriverValue`, serialized according to
-+      # https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but
-+      # resulting `objectId` is still provided.
-       experimental optional boolean generateWebDriverValue
-     returns
-       # Call result.
 ```

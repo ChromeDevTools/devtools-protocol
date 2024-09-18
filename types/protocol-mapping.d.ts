@@ -3705,7 +3705,7 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
-         * Request that backend shows an overlay with web vital metrics.
+         * Deprecated, no longer has any effect.
          */
         'Overlay.setShowWebVitals': {
             paramsType: [Protocol.Overlay.SetShowWebVitalsRequest];
