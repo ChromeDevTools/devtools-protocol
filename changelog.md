@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1358005 — _2024-09-20T04:28:44.000Z_
+######  Diff: [`e6861d4...e2d96ee`](https://github.com/ChromeDevTools/devtools-protocol/compare/e6861d4...e2d96ee)
+
+```diff
+@@ browser_protocol.pdl:8090 @@ domain Page
+       deferred-fetch
+       digital-credentials-get
+       direct-sockets
++      direct-sockets-private
+       display-capture
+       document-domain
+       encrypted-media
+```
+
 ## Roll protocol to r1356896 — _2024-09-18T04:29:10.000Z_
-######  Diff: [`67ed36c...7261ec1`](https://github.com/ChromeDevTools/devtools-protocol/compare/67ed36c...7261ec1)
+######  Diff: [`67ed36c...e6861d4`](https://github.com/ChromeDevTools/devtools-protocol/compare/67ed36c...e6861d4)
 
 ```diff
 @@ browser_protocol.pdl:7925 @@ experimental domain Overlay
@@ -12095,18 +12109,4 @@ index 18cf0c7..8e43695 100644
    # Enum of possible storage types.
    type StorageType extends string
      enum
-```
-
-## Roll protocol to r1000917 — _2022-05-09T08:15:16.000Z_
-######  Diff: [`93a65bd...a9ad264`](https://github.com/ChromeDevTools/devtools-protocol/compare/93a65bd...a9ad264)
-
-```diff
-@@ browser_protocol.pdl:795 @@ experimental domain Audits
-       RTCPeerConnectionSdpSemanticsPlanB
-       RtcpMuxPolicyNegotiate
-       RTPDataChannel
--      SelectionAddRangeIntersect
-       SharedArrayBufferConstructedWithoutIsolation
-       TextToSpeech_DisallowedByAutoplay
-       V8SharedArrayBufferConstructedInExtensionWithoutIsolation
 ```
