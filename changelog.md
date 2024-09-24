@@ -1,7 +1,31 @@
 
 
+## Roll protocol to r1359167 — _2024-09-24T04:29:20.000Z_
+######  Diff: [`a615266...fa89070`](https://github.com/ChromeDevTools/devtools-protocol/compare/a615266...fa89070)
+
+```diff
+@@ js_protocol.pdl:606 @@ domain Debugger
+     properties
+       # Type of the debug symbols.
+       enum type
+-        None
+         SourceMap
+         EmbeddedDWARF
+         ExternalDWARF
+@@ -689,8 +688,8 @@ domain Debugger
+       experimental optional integer codeOffset
+       # The language of the script.
+       experimental optional Debugger.ScriptLanguage scriptLanguage
+-      # If the scriptLanguage is WebASsembly, the source of debug symbols for the module.
+-      experimental optional Debugger.DebugSymbols debugSymbols
++      # If the scriptLanguage is WebAssembly, the source of debug symbols for the module.
++      experimental optional array of Debugger.DebugSymbols debugSymbols
+       # The name the embedder supplied for this script.
+       experimental optional string embedderName
+```
+
 ## Roll protocol to r1358005 — _2024-09-20T04:28:44.000Z_
-######  Diff: [`e6861d4...e2d96ee`](https://github.com/ChromeDevTools/devtools-protocol/compare/e6861d4...e2d96ee)
+######  Diff: [`e6861d4...a615266`](https://github.com/ChromeDevTools/devtools-protocol/compare/e6861d4...a615266)
 
 ```diff
 @@ browser_protocol.pdl:8090 @@ domain Page
@@ -12064,49 +12088,4 @@ index 18cf0c7..8e43695 100644
        LocalCSSFileExtensionRejected
        MediaElementAudioSourceNode
        MediaSourceAbortRemove
-```
-
-## Roll protocol to r1000974 — _2022-05-09T13:15:16.000Z_
-######  Diff: [`a9ad264...1dd3de6`](https://github.com/ChromeDevTools/devtools-protocol/compare/a9ad264...1dd3de6)
-
-```diff
-@@ browser_protocol.pdl:3399 @@ experimental domain DOMSnapshot
- # Query and modify DOM storage.
- experimental domain DOMStorage
- 
-+  type SerializedStorageKey extends string
-+
-   # DOM Storage identifier.
-   type StorageId extends object
-     properties
-       # Security origin for the storage.
--      string securityOrigin
-+      optional string securityOrigin
-+      # Represents a key by which DOM Storage keys its CachedStorageAreas
-+      optional SerializedStorageKey storageKey
-       # Whether the storage is local storage (not session storage).
-       boolean isLocalStorage
- 
-@@ -3437,6 +3441,12 @@ experimental domain DOMStorage
-       string key
-       string value
- 
-+  command getStorageKeyForFrame
-+    parameters
-+      Page.FrameId frameId
-+    returns
-+      SerializedStorageKey storageKey
-+
-   event domStorageItemAdded
-     parameters
-       StorageId storageId
-@@ -8803,6 +8813,8 @@ experimental domain Storage
-   depends on Browser
-   depends on Network
- 
-+  type SerializedStorageKey extends string
-+
-   # Enum of possible storage types.
-   type StorageType extends string
-     enum
 ```

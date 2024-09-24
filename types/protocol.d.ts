@@ -270,7 +270,6 @@ export namespace Protocol {
         export type ScriptLanguage = ('JavaScript' | 'WebAssembly');
 
         export const enum DebugSymbolsType {
-            None = 'None',
             SourceMap = 'SourceMap',
             EmbeddedDWARF = 'EmbeddedDWARF',
             ExternalDWARF = 'ExternalDWARF',
@@ -283,7 +282,7 @@ export namespace Protocol {
             /**
              * Type of the debug symbols. (DebugSymbolsType enum)
              */
-            type: ('None' | 'SourceMap' | 'EmbeddedDWARF' | 'ExternalDWARF');
+            type: ('SourceMap' | 'EmbeddedDWARF' | 'ExternalDWARF');
             /**
              * URL of the external symbol source.
              */
@@ -1023,9 +1022,9 @@ export namespace Protocol {
              */
             scriptLanguage?: Debugger.ScriptLanguage;
             /**
-             * If the scriptLanguage is WebASsembly, the source of debug symbols for the module.
+             * If the scriptLanguage is WebAssembly, the source of debug symbols for the module.
              */
-            debugSymbols?: Debugger.DebugSymbols;
+            debugSymbols?: Debugger.DebugSymbols[];
             /**
              * The name the embedder supplied for this script.
              */
