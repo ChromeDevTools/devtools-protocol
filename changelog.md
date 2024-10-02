@@ -1,7 +1,37 @@
 
 
+## Roll protocol to r1362837 — _2024-10-02T04:29:26.000Z_
+######  Diff: [`5ce3c3b...f0fb9fa`](https://github.com/ChromeDevTools/devtools-protocol/compare/5ce3c3b...f0fb9fa)
+
+```diff
+@@ js_protocol.pdl:369 @@ domain Debugger
+       # call stacks (default).
+       integer maxDepth
+ 
++  # Replace previous blackbox execution contexts with passed ones. Forces backend to skip
++  # stepping/pausing in scripts in these execution contexts. VM will try to leave blackboxed script by
++  # performing 'step in' several times, finally resorting to 'step out' if unsuccessful.
++  experimental command setBlackboxExecutionContexts
++    parameters
++      # Array of execution context unique ids for the debugger to ignore.
++      array of string uniqueIds
++
+   # Replace previous blackbox patterns with passed ones. Forces backend to skip stepping/pausing in
+   # scripts with url matching one of the patterns. VM will try to leave blackboxed script by
+   # performing 'step in' several times, finally resorting to 'step out' if unsuccessful.
+@@ -376,6 +384,8 @@ domain Debugger
+     parameters
+       # Array of regexps that will be used to check script url for blackbox state.
+       array of string patterns
++      # If true, also ignore scripts with no source url.
++      optional boolean skipAnonymous
+ 
+   # Makes backend skip steps in the script in blackboxed ranges. VM will try leave blacklisted
+   # scripts by performing 'step in' several times, finally resorting to 'step out' if unsuccessful.
+```
+
 ## Roll protocol to r1359167 — _2024-09-24T04:29:20.000Z_
-######  Diff: [`a615266...fa89070`](https://github.com/ChromeDevTools/devtools-protocol/compare/a615266...fa89070)
+######  Diff: [`a615266...5ce3c3b`](https://github.com/ChromeDevTools/devtools-protocol/compare/a615266...5ce3c3b)
 
 ```diff
 @@ js_protocol.pdl:606 @@ domain Debugger
@@ -12071,21 +12101,4 @@ index 18cf0c7..8e43695 100644
        RTCPeerConnectionSdpSemanticsPlanB
        RtcpMuxPolicyNegotiate
        RTPDataChannel
-```
-
-## Roll protocol to r1001016 — _2022-05-09T15:15:24.000Z_
-######  Diff: [`1dd3de6...4df4c30`](https://github.com/ChromeDevTools/devtools-protocol/compare/1dd3de6...4df4c30)
-
-```diff
-@@ browser_protocol.pdl:762 @@ experimental domain Audits
-       GetUserMediaInsecureOrigin
-       HostCandidateAttributeGetter
-       InsecurePrivateNetworkSubresourceRequest
--      LegacyConstraintGoogCpuOveruseDetection
-       LegacyConstraintGoogIPv6
--      LegacyConstraintGoogScreencastMinBitrate
--      LegacyConstraintGoogSuspendBelowMinBitrate
-       LocalCSSFileExtensionRejected
-       MediaElementAudioSourceNode
-       MediaSourceAbortRemove
 ```
