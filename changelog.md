@@ -1,7 +1,56 @@
 
 
+## Roll protocol to r1363470 — _2024-10-03T04:29:46.000Z_
+######  Diff: [`ce00a1b...3b0c33d`](https://github.com/ChromeDevTools/devtools-protocol/compare/ce00a1b...3b0c33d)
+
+```diff
+@@ browser_protocol.pdl:11993 @@ experimental domain WebAuthn
+       # flag set to this value. Defaults to the authenticator's
+       # defaultBackupState value.
+       optional boolean backupState
++      # The credential's user.name property. Equivalent to empty if not set.
++      # https://w3c.github.io/webauthn/#dom-publickeycredentialentity-name
++      optional string userName
++      # The credential's user.displayName property. Equivalent to empty if
++      # not set.
++      # https://w3c.github.io/webauthn/#dom-publickeycredentialuserentity-displayname
++      optional string userDisplayName
+ 
+   # Enable the WebAuthn domain and start intercepting credential storage and
+   # retrieval with a virtual authenticator.
+@@ -12096,6 +12103,20 @@ experimental domain WebAuthn
+       AuthenticatorId authenticatorId
+       Credential credential
+ 
++  # Triggered when a credential is deleted, e.g. through
++  # PublicKeyCredential.signalUnknownCredential().
++  event credentialDeleted
++    parameters
++      AuthenticatorId authenticatorId
++      binary credentialId
++
++  # Triggered when a credential is updated, e.g. through
++  # PublicKeyCredential.signalCurrentUserDetails().
++  event credentialUpdated
++    parameters
++      AuthenticatorId authenticatorId
++      Credential credential
++
+   # Triggered when a credential is used in a webauthn assertion.
+   event credentialAsserted
+     parameters
+@@ -12409,6 +12430,7 @@ experimental domain Preload
+       WindowClosed
+       SlowNetwork
+       OtherPrerenderedPageActivated
++      V8OptimizerDisabled
+ 
+   # Fired when a preload enabled state is updated.
+   event preloadEnabledStateUpdated
+```
+
 ## Roll protocol to r1362837 — _2024-10-02T04:29:26.000Z_
-######  Diff: [`5ce3c3b...f0fb9fa`](https://github.com/ChromeDevTools/devtools-protocol/compare/5ce3c3b...f0fb9fa)
+######  Diff: [`5ce3c3b...ce00a1b`](https://github.com/ChromeDevTools/devtools-protocol/compare/5ce3c3b...ce00a1b)
 
 ```diff
 @@ js_protocol.pdl:369 @@ domain Debugger
@@ -12087,18 +12136,4 @@ index 18cf0c7..8e43695 100644
  
    # Details for issues around "Attribution Reporting API" usage.
    # Explainer: https://github.com/WICG/conversion-measurement-api
-```
-
-## Roll protocol to r1001033 — _2022-05-09T16:15:18.000Z_
-######  Diff: [`4df4c30...4d9109d`](https://github.com/ChromeDevTools/devtools-protocol/compare/4df4c30...4d9109d)
-
-```diff
-@@ browser_protocol.pdl:788 @@ experimental domain Audits
-       RTCConstraintEnableDtlsSrtpFalse
-       RTCConstraintEnableDtlsSrtpTrue
-       RTCPeerConnectionComplexPlanBSdpUsingDefaultSdpSemantics
--      RTCPeerConnectionLegacyCreateWithMediaConstraints
-       RTCPeerConnectionSdpSemanticsPlanB
-       RtcpMuxPolicyNegotiate
-       RTPDataChannel
 ```

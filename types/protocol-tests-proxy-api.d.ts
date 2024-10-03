@@ -4542,6 +4542,22 @@ export namespace ProtocolTestsProxyApi {
         onceCredentialAdded(eventMatcher?: (event: { params: Protocol.WebAuthn.CredentialAddedEvent }) => boolean): Promise<{ params: Protocol.WebAuthn.CredentialAddedEvent }>;
 
         /**
+         * Triggered when a credential is deleted, e.g. through
+         * PublicKeyCredential.signalUnknownCredential().
+         */
+        onCredentialDeleted(listener: (event: { params: Protocol.WebAuthn.CredentialDeletedEvent }) => void): void;
+        offCredentialDeleted(listener: (event: { params: Protocol.WebAuthn.CredentialDeletedEvent }) => void): void;
+        onceCredentialDeleted(eventMatcher?: (event: { params: Protocol.WebAuthn.CredentialDeletedEvent }) => boolean): Promise<{ params: Protocol.WebAuthn.CredentialDeletedEvent }>;
+
+        /**
+         * Triggered when a credential is updated, e.g. through
+         * PublicKeyCredential.signalCurrentUserDetails().
+         */
+        onCredentialUpdated(listener: (event: { params: Protocol.WebAuthn.CredentialUpdatedEvent }) => void): void;
+        offCredentialUpdated(listener: (event: { params: Protocol.WebAuthn.CredentialUpdatedEvent }) => void): void;
+        onceCredentialUpdated(eventMatcher?: (event: { params: Protocol.WebAuthn.CredentialUpdatedEvent }) => boolean): Promise<{ params: Protocol.WebAuthn.CredentialUpdatedEvent }>;
+
+        /**
          * Triggered when a credential is used in a webauthn assertion.
          */
         onCredentialAsserted(listener: (event: { params: Protocol.WebAuthn.CredentialAssertedEvent }) => void): void;
