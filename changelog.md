@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1366620 — _2024-10-10T04:29:17.000Z_
+######  Diff: [`c2f5637...6a08eae`](https://github.com/ChromeDevTools/devtools-protocol/compare/c2f5637...6a08eae)
+
+```diff
+@@ browser_protocol.pdl:918 @@ experimental domain Audits
+       ThirdPartyCookiesBlocked
+       NotSignedInWithIdp
+       MissingTransientUserActivation
+-      ReplacedByButtonMode
++      ReplacedByActiveMode
+       InvalidFieldsSpecified
+       RelyingPartyOriginIsOpaque
+       TypeNotMatching
+```
+
 ## Roll protocol to r1363470 — _2024-10-03T04:29:46.000Z_
-######  Diff: [`ce00a1b...3b0c33d`](https://github.com/ChromeDevTools/devtools-protocol/compare/ce00a1b...3b0c33d)
+######  Diff: [`ce00a1b...c2f5637`](https://github.com/ChromeDevTools/devtools-protocol/compare/ce00a1b...c2f5637)
 
 ```diff
 @@ browser_protocol.pdl:11993 @@ experimental domain WebAuthn
@@ -12115,24 +12130,6 @@ index 18cf0c7..8e43695 100644
        AttributionSourceUntrustworthyOrigin
        AttributionUntrustworthyOrigin
 +      InvalidHeader
- 
-   # Details for issues around "Attribution Reporting API" usage.
-   # Explainer: https://github.com/WICG/conversion-measurement-api
-```
-
-## Roll protocol to r1001754 — _2022-05-10T22:15:23.000Z_
-######  Diff: [`4d9109d...6d1c894`](https://github.com/ChromeDevTools/devtools-protocol/compare/4d9109d...6d1c894)
-
-```diff
-@@ browser_protocol.pdl:697 @@ experimental domain Audits
-   type AttributionReportingIssueType extends string
-     enum
-       PermissionPolicyDisabled
--      InvalidAttributionSourceEventId
-       AttributionSourceUntrustworthyOrigin
-       AttributionUntrustworthyOrigin
--      InvalidAttributionSourceExpiry
--      InvalidAttributionSourcePriority
  
    # Details for issues around "Attribution Reporting API" usage.
    # Explainer: https://github.com/WICG/conversion-measurement-api
