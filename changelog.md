@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1367902 — _2024-10-12T04:29:12.000Z_
+######  Diff: [`770b664...3d277cb`](https://github.com/ChromeDevTools/devtools-protocol/compare/770b664...3d277cb)
+
+```diff
+@@ browser_protocol.pdl:12431 @@ experimental domain Preload
+       SlowNetwork
+       OtherPrerenderedPageActivated
+       V8OptimizerDisabled
++      PrerenderFailedDuringPrefetch
+ 
+   # Fired when a preload enabled state is updated.
+   event preloadEnabledStateUpdated
+```
+
 ## Roll protocol to r1366620 — _2024-10-10T04:29:17.000Z_
-######  Diff: [`c2f5637...6a08eae`](https://github.com/ChromeDevTools/devtools-protocol/compare/c2f5637...6a08eae)
+######  Diff: [`c2f5637...770b664`](https://github.com/ChromeDevTools/devtools-protocol/compare/c2f5637...770b664)
 
 ```diff
 @@ browser_protocol.pdl:918 @@ experimental domain Audits
@@ -12119,18 +12133,4 @@ index 18cf0c7..8e43695 100644
  
    # Fired when a prerender attempt is completed.
    event prerenderAttemptCompleted
-```
-
-## Roll protocol to r1001785 — _2022-05-10T23:15:25.000Z_
-######  Diff: [`6d1c894...ae07002`](https://github.com/ChromeDevTools/devtools-protocol/compare/6d1c894...ae07002)
-
-```diff
-@@ browser_protocol.pdl:699 @@ experimental domain Audits
-       PermissionPolicyDisabled
-       AttributionSourceUntrustworthyOrigin
-       AttributionUntrustworthyOrigin
-+      InvalidHeader
- 
-   # Details for issues around "Attribution Reporting API" usage.
-   # Explainer: https://github.com/WICG/conversion-measurement-api
 ```
