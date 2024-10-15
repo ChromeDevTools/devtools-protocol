@@ -1,7 +1,30 @@
 
 
+## Roll protocol to r1368592 — _2024-10-15T04:29:39.000Z_
+######  Diff: [`1526dda...a7ad50c`](https://github.com/ChromeDevTools/devtools-protocol/compare/1526dda...a7ad50c)
+
+```diff
+@@ browser_protocol.pdl:2709 @@ domain DOM
+       placeholder
+       file-selector-button
+       details-content
+-      select-fallback-button
+-      select-fallback-button-text
+       picker
+ 
+   # Shadow root type.
+@@ -9520,6 +9518,7 @@ domain Page
+       EmbedderExtensionMessagingForOpenPort
+       EmbedderExtensionSentMessageToCachedFrame
+       RequestedByWebViewClient
++      PostMessageByWebViewClient
+ 
+   # Types of not restored reasons for back-forward cache.
+   experimental type BackForwardCacheNotRestoredReasonType extends string
+```
+
 ## Roll protocol to r1367902 — _2024-10-12T04:29:12.000Z_
-######  Diff: [`770b664...3d277cb`](https://github.com/ChromeDevTools/devtools-protocol/compare/770b664...3d277cb)
+######  Diff: [`770b664...1526dda`](https://github.com/ChromeDevTools/devtools-protocol/compare/770b664...1526dda)
 
 ```diff
 @@ browser_protocol.pdl:12431 @@ experimental domain Preload
@@ -12088,49 +12111,4 @@ index 18cf0c7..8e43695 100644
  
    # Disable the WebAuthn domain.
    command disable
-```
-
-## Roll protocol to r1001819 — _2022-05-11T00:15:32.000Z_
-######  Diff: [`ae07002...02d7a84`](https://github.com/ChromeDevTools/devtools-protocol/compare/ae07002...02d7a84)
-
-```diff
-@@ browser_protocol.pdl:8319 @@ domain Page
-   type PrerenderFinalStatus extends string
-     enum
-       Activated
-+      Destroyed
-+      LowEndDevice
-+      CrossOriginRedirect
-+      CrossOriginNavigation
-+      InvalidSchemeRedirect
-+      InvalidSchemeNavigation
-+      InProgressNavigation
-+      NavigationRequestBlockedByCsp
-+      MainFrameNavigation
-+      MojoBinderPolicy
-+      RendererProcessCrashed
-+      RendererProcessKilled
-+      Download
-+      TriggerDestroyed
-+      NavigationNotCommitted
-+      NavigationBadHttpStatus
-+      ClientCertRequested
-+      NavigationRequestNetworkError
-+      MaxNumOfRunningPrerendersExceeded
-+      CancelAllHostsForTesting
-+      DidFailLoad
-+      Stop
-+      SslCertificateError
-+      LoginAuthRequested
-+      UaChangeRequiresReload
-+      BlockedByClient
-+      AudioOutputDeviceRequested
-+      MixedContent
-+      TriggerBackgrounded
-+      EmbedderTriggeredAndSameOriginRedirected
-+      EmbedderTriggeredAndCrossOriginRedirected
-+      EmbedderTriggeredAndDestroyed
- 
-   # Fired when a prerender attempt is completed.
-   event prerenderAttemptCompleted
 ```
