@@ -1,7 +1,29 @@
 
 
+## Roll protocol to r1371839 — _2024-10-22T04:29:59.000Z_
+######  Diff: [`91bd3ba...b0fe2a9`](https://github.com/ChromeDevTools/devtools-protocol/compare/91bd3ba...b0fe2a9)
+
+```diff
+@@ browser_protocol.pdl:2677 @@ domain DOM
+     enum
+       first-line
+       first-letter
++      check
+       before
+       after
+       marker
+@@ -8094,6 +8095,7 @@ domain Page
+       encrypted-media
+       execution-while-out-of-viewport
+       execution-while-not-rendered
++      fenced-frame-unpartitioned-data
+       focus-without-user-activation
+       fullscreen
+       frobulate
+```
+
 ## Roll protocol to r1368592 — _2024-10-15T04:29:39.000Z_
-######  Diff: [`1526dda...a7ad50c`](https://github.com/ChromeDevTools/devtools-protocol/compare/1526dda...a7ad50c)
+######  Diff: [`1526dda...91bd3ba`](https://github.com/ChromeDevTools/devtools-protocol/compare/1526dda...91bd3ba)
 
 ```diff
 @@ browser_protocol.pdl:2709 @@ domain DOM
@@ -12091,24 +12113,4 @@ index 18cf0c7..8e43695 100644
        optional Network.LoaderId loaderId
        # User friendly error message, present if and only if navigation has failed.
        optional string errorText
-```
-
-## Roll protocol to r1002782 — _2022-05-12T19:15:18.000Z_
-######  Diff: [`02d7a84...6db5938`](https://github.com/ChromeDevTools/devtools-protocol/compare/02d7a84...6db5938)
-
-```diff
-@@ browser_protocol.pdl:10120 @@ experimental domain WebAuthn
-   # Enable the WebAuthn domain and start intercepting credential storage and
-   # retrieval with a virtual authenticator.
-   command enable
-+    parameters
-+      # Whether to enable the WebAuthn user interface. Enabling the UI is
-+      # recommended for debugging and demo purposes, as it is closer to the real
-+      # experience. Disabling the UI is recommended for automated testing.
-+      # Supported at the embedder's discretion if UI is available.
-+      # Defaults to false.
-+      optional boolean enableUI
- 
-   # Disable the WebAuthn domain.
-   command disable
 ```
