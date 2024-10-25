@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1373723 — _2024-10-25T04:30:25.000Z_
+######  Diff: [`60273fe...4732576`](https://github.com/ChromeDevTools/devtools-protocol/compare/60273fe...4732576)
+
+```diff
+@@ browser_protocol.pdl:8095 @@ domain Page
+       encrypted-media
+       execution-while-out-of-viewport
+       execution-while-not-rendered
+-      fenced-frame-unpartitioned-data
++      fenced-unpartitioned-storage-read
+       focus-without-user-activation
+       fullscreen
+       frobulate
+```
+
 ## Roll protocol to r1371839 — _2024-10-22T04:29:59.000Z_
-######  Diff: [`91bd3ba...b0fe2a9`](https://github.com/ChromeDevTools/devtools-protocol/compare/91bd3ba...b0fe2a9)
+######  Diff: [`91bd3ba...60273fe`](https://github.com/ChromeDevTools/devtools-protocol/compare/91bd3ba...60273fe)
 
 ```diff
 @@ browser_protocol.pdl:2677 @@ domain DOM
@@ -12097,20 +12112,4 @@ index 18cf0c7..8e43695 100644
        browsing-topics
        camera
        ch-dpr
-```
-
-## Roll protocol to r1003898 — _2022-05-16T20:15:25.000Z_
-######  Diff: [`6db5938...deb61a0`](https://github.com/ChromeDevTools/devtools-protocol/compare/6db5938...deb61a0)
-
-```diff
-@@ browser_protocol.pdl:7634 @@ domain Page
-     returns
-       # Frame id that has navigated (or failed to navigate)
-       FrameId frameId
--      # Loader identifier.
-+      # Loader identifier. This is omitted in case of same-document navigation,
-+      # as the previously committed loaderId would not change.
-       optional Network.LoaderId loaderId
-       # User friendly error message, present if and only if navigation has failed.
-       optional string errorText
 ```
