@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1375038 — _2024-10-29T04:29:43.000Z_
+######  Diff: [`b213dca...51bc546`](https://github.com/ChromeDevTools/devtools-protocol/compare/b213dca...51bc546)
+
+```diff
+@@ browser_protocol.pdl:10715 @@ experimental domain Storage
+       SignedInt64AsBase10 destinationLimitPriority
+       AttributionReportingAggregatableDebugReportingConfig aggregatableDebugReportingConfig
+       optional AttributionScopesData scopesData
++      integer maxEventLevelReports
+ 
+   experimental type AttributionReportingSourceRegistrationResult extends string
+     enum
+```
+
 ## Roll protocol to r1373723 — _2024-10-25T04:30:25.000Z_
-######  Diff: [`60273fe...4732576`](https://github.com/ChromeDevTools/devtools-protocol/compare/60273fe...4732576)
+######  Diff: [`60273fe...b213dca`](https://github.com/ChromeDevTools/devtools-protocol/compare/60273fe...b213dca)
 
 ```diff
 @@ browser_protocol.pdl:8095 @@ domain Page
@@ -12098,18 +12112,4 @@ index 18cf0c7..8e43695 100644
  
    # A structure holding an RGBA color.
    type RGBA extends object
-```
-
-## Roll protocol to r1004052 — _2022-05-17T01:15:19.000Z_
-######  Diff: [`deb61a0...218b848`](https://github.com/ChromeDevTools/devtools-protocol/compare/deb61a0...218b848)
-
-```diff
-@@ browser_protocol.pdl:6996 @@ domain Page
-       ambient-light-sensor
-       attribution-reporting
-       autoplay
-+      bluetooth
-       browsing-topics
-       camera
-       ch-dpr
 ```

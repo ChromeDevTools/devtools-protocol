@@ -16126,6 +16126,7 @@ export namespace Protocol {
             destinationLimitPriority: SignedInt64AsBase10;
             aggregatableDebugReportingConfig: AttributionReportingAggregatableDebugReportingConfig;
             scopesData?: AttributionScopesData;
+            maxEventLevelReports: integer;
         }
 
         export type AttributionReportingSourceRegistrationResult = ('success' | 'internalError' | 'insufficientSourceCapacity' | 'insufficientUniqueDestinationCapacity' | 'excessiveReportingOrigins' | 'prohibitedByBrowserPolicy' | 'successNoised' | 'destinationReportingLimitReached' | 'destinationGlobalLimitReached' | 'destinationBothLimitsReached' | 'reportingOriginsPerSiteLimitReached' | 'exceedsMaxChannelCapacity' | 'exceedsMaxScopesChannelCapacity' | 'exceedsMaxTriggerStateCardinality' | 'exceedsMaxEventStatesLimit' | 'destinationPerDayReportingLimitReached');
