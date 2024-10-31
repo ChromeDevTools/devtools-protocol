@@ -17883,7 +17883,7 @@ export namespace Protocol {
         /**
          * Enum of AudioContextState from the spec
          */
-        export type ContextState = ('suspended' | 'running' | 'closed');
+        export type ContextState = ('suspended' | 'running' | 'closed' | 'interrupted');
 
         /**
          * Enum of AudioNode types

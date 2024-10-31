@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1376096 — _2024-10-31T04:30:05.000Z_
+######  Diff: [`6866f7c...96abcae`](https://github.com/ChromeDevTools/devtools-protocol/compare/6866f7c...96abcae)
+
+```diff
+@@ browser_protocol.pdl:11720 @@ experimental domain WebAudio
+       suspended
+       running
+       closed
++      interrupted
+ 
+   # Enum of AudioNode types
+   type NodeType extends string
+```
+
 ## Roll protocol to r1375038 — _2024-10-29T04:29:43.000Z_
-######  Diff: [`b213dca...51bc546`](https://github.com/ChromeDevTools/devtools-protocol/compare/b213dca...51bc546)
+######  Diff: [`b213dca...6866f7c`](https://github.com/ChromeDevTools/devtools-protocol/compare/b213dca...6866f7c)
 
 ```diff
 @@ browser_protocol.pdl:10715 @@ experimental domain Storage
@@ -12098,18 +12112,4 @@ index 18cf0c7..8e43695 100644
        MediaSourceAbortRemove
        MediaSourceDurationTruncatingBuffered
        NoSysexWebMIDIWithoutPermission
-```
-
-## Roll protocol to r1004164 — _2022-05-17T09:15:39.000Z_
-######  Diff: [`218b848...cdd508b`](https://github.com/ChromeDevTools/devtools-protocol/compare/218b848...cdd508b)
-
-```diff
-@@ browser_protocol.pdl:2274 @@ domain DOM
-       # Whether the node is SVG.
-       optional boolean isSVG
-       optional CompatibilityMode compatibilityMode
-+      optional BackendNode assignedSlot
- 
-   # A structure holding an RGBA color.
-   type RGBA extends object
 ```
