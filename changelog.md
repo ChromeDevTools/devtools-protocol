@@ -1,7 +1,77 @@
 
 
+## Roll protocol to r1376744 — _2024-11-01T04:29:19.000Z_
+######  Diff: [`2354f74...ddc0b99`](https://github.com/ChromeDevTools/devtools-protocol/compare/2354f74...ddc0b99)
+
+```diff
+@@ browser_protocol.pdl:1798 @@ experimental domain CSS
+       experimental optional array of CSSScope scopes
+       # The array keeps the types of ancestor CSSRules from the innermost going outwards.
+       experimental optional array of CSSRuleType ruleTypes
++      # @starting-style CSS at-rule array.
++      # The array enumerates @starting-style at-rules starting with the innermost one, going outwards.
++      experimental optional array of CSSStartingStyle startingStyles
+ 
+   # Enum indicating the type of a CSS rule, used to represent the order of a style rule's ancestors.
+   # This list only contains rule types that are collected during the ancestor rule collection.
+@@ -1809,6 +1812,7 @@ experimental domain CSS
+       LayerRule
+       ScopeRule
+       StyleRule
++      StartingStyleRule
+ 
+   # CSS coverage information.
+   type RuleUsage extends object
+@@ -1951,6 +1955,8 @@ experimental domain CSS
+       optional DOM.PhysicalAxes physicalAxes
+       # Optional logical axes queried for the container.
+       optional DOM.LogicalAxes logicalAxes
++      # true if the query contains scroll-state() queries.
++      optional boolean queriesScrollState
+ 
+   # CSS Supports at-rule descriptor.
+   experimental type CSSSupports extends object
+@@ -1987,6 +1993,15 @@ experimental domain CSS
+       # Identifier of the stylesheet containing this object (if exists).
+       optional StyleSheetId styleSheetId
+ 
++  # CSS Starting Style at-rule descriptor.
++  experimental type CSSStartingStyle extends object
++    properties
++      # The associated rule header range in the enclosing stylesheet (if
++      # available).
++      optional SourceRange range
++      # Identifier of the stylesheet containing this object (if exists).
++      optional StyleSheetId styleSheetId
++
+   # CSS Layer data.
+   experimental type CSSLayerData extends object
+     properties
+@@ -3387,15 +3402,17 @@ domain DOM
+       optional NodeId nodeId
+ 
+   # Returns the query container of the given node based on container query
+-  # conditions: containerName, physical, and logical axes. If no axes are
+-  # provided, the style container is returned, which is the direct parent or the
+-  # closest element with a matching container-name.
++  # conditions: containerName, physical and logical axes, and whether it queries
++  # scroll-state. If no axes are provided and queriesScrollState is false, the
++  # style container is returned, which is the direct parent or the closest
++  # element with a matching container-name.
+   experimental command getContainerForNode
+     parameters
+       NodeId nodeId
+       optional string containerName
+       optional PhysicalAxes physicalAxes
+       optional LogicalAxes logicalAxes
++      optional boolean queriesScrollState
+     returns
+       # The container node for the given node, or null if not found.
+       optional NodeId nodeId
+```
+
 ## Roll protocol to r1376096 — _2024-10-31T04:30:05.000Z_
-######  Diff: [`6866f7c...96abcae`](https://github.com/ChromeDevTools/devtools-protocol/compare/6866f7c...96abcae)
+######  Diff: [`6866f7c...2354f74`](https://github.com/ChromeDevTools/devtools-protocol/compare/6866f7c...2354f74)
 
 ```diff
 @@ browser_protocol.pdl:11720 @@ experimental domain WebAudio
@@ -12098,18 +12168,4 @@ index 18cf0c7..8e43695 100644
        PictureSourceSrc
        PrefixedCancelAnimationFrame
        PrefixedRequestAnimationFrame
-```
-
-## Roll protocol to r1004709 — _2022-05-18T12:15:18.000Z_
-######  Diff: [`cdd508b...838223b`](https://github.com/ChromeDevTools/devtools-protocol/compare/cdd508b...838223b)
-
-```diff
-@@ browser_protocol.pdl:762 @@ experimental domain Audits
-       InsecurePrivateNetworkSubresourceRequest
-       LegacyConstraintGoogIPv6
-       LocalCSSFileExtensionRejected
--      MediaElementAudioSourceNode
-       MediaSourceAbortRemove
-       MediaSourceDurationTruncatingBuffered
-       NoSysexWebMIDIWithoutPermission
 ```

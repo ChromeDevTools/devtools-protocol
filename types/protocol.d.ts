@@ -4740,13 +4740,18 @@ export namespace Protocol {
              * The array keeps the types of ancestor CSSRules from the innermost going outwards.
              */
             ruleTypes?: CSSRuleType[];
+            /**
+             * @starting-style CSS at-rule array.
+             * The array enumerates @starting-style at-rules starting with the innermost one, going outwards.
+             */
+            startingStyles?: CSSStartingStyle[];
         }
 
         /**
          * Enum indicating the type of a CSS rule, used to represent the order of a style rule's ancestors.
          * This list only contains rule types that are collected during the ancestor rule collection.
          */
-        export type CSSRuleType = ('MediaRule' | 'SupportsRule' | 'ContainerRule' | 'LayerRule' | 'ScopeRule' | 'StyleRule');
+        export type CSSRuleType = ('MediaRule' | 'SupportsRule' | 'ContainerRule' | 'LayerRule' | 'ScopeRule' | 'StyleRule' | 'StartingStyleRule');
 
         /**
          * CSS coverage information.
@@ -4999,6 +5004,10 @@ export namespace Protocol {
              * Optional logical axes queried for the container.
              */
             logicalAxes?: DOM.LogicalAxes;
+            /**
+             * true if the query contains scroll-state() queries.
+             */
+            queriesScrollState?: boolean;
         }
 
         /**
@@ -5051,6 +5060,21 @@ export namespace Protocol {
              * Layer name.
              */
             text: string;
+            /**
+             * The associated rule header range in the enclosing stylesheet (if
+             * available).
+             */
+            range?: SourceRange;
+            /**
+             * Identifier of the stylesheet containing this object (if exists).
+             */
+            styleSheetId?: StyleSheetId;
+        }
+
+        /**
+         * CSS Starting Style at-rule descriptor.
+         */
+        export interface CSSStartingStyle {
             /**
              * The associated rule header range in the enclosing stylesheet (if
              * available).
@@ -7011,6 +7035,7 @@ export namespace Protocol {
             containerName?: string;
             physicalAxes?: PhysicalAxes;
             logicalAxes?: LogicalAxes;
+            queriesScrollState?: boolean;
         }
 
         export interface GetContainerForNodeResponse {
