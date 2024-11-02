@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Chrome DevTools Protocol - version tot - Preload domain" />
+  <link rel="icon" type="image/png" href="/devtools-protocol/images/logo.png" />
+    <title>Chrome DevTools Protocol - Preload domain</title>
+
+  <meta name="theme-color" content="#303F9F" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@chromedevtools" />
+  <meta name="twitter:creator" content="@chromedevtools" />
+  <meta property="og:title" content="Chrome DevTools Protocol" />
+  <meta property="og:image" content="https://developers.google.com/web/tools/images/chrome-devtools-16x9_720.png" />
+    <meta property="og:description" content="Chrome DevTools Protocol - version tot - Preload domain" />
+
+  <script type="module" src="/devtools-protocol/scripts/index.js"></script>
+  <link href="/devtools-protocol/styles/protocol.css" rel="stylesheet">
+</head>
+<body>
+  <aside>
+    <div id="home" class="navs">
+      <nav>
+        <a href="/devtools-protocol/">Home</a>
+        <button class="aside-close-button" aria-label="Close navigation">x</button>
+      </nav>
+    </div>
+    <div id="versions" class="navs">
+      <header>Versions</header>
+      <nav>
+        <a href="/devtools-protocol/tot" name="tot">
+          latest (tip-of-tree)
+        </a>
+        <a href="/devtools-protocol/v8" name="v8">
+          v8-inspector (node)
+        </a>
+        <a href="/devtools-protocol/1-3" name="1-3">
+          stable (1.3)
+        </a><!-- 
+        <a href="/devtools-protocol/1-2" name="1-2">
+          stable (1.2)
+        </a> -->
+      </nav>
+    </div>
+
+    <div id="domains" class="navs version-tot">
+      <header>Domains</header>
+      <div class="scroller">
+        <nav>
+          <a href="/devtools-protocol/tot/Accessibility" class="tot experimental">Accessibility</a>
+          <a href="/devtools-protocol/tot/Animation" class="tot experimental">Animation</a>
+          <a href="/devtools-protocol/tot/Audits" class="tot experimental">Audits</a>
+          <a href="/devtools-protocol/tot/Autofill" class="tot experimental">Autofill</a>
+          <a href="/devtools-protocol/tot/BackgroundService" class="tot experimental">BackgroundService</a>
+          <a href="/devtools-protocol/tot/Browser" class="tot 1-3">Browser</a>
+          <a href="/devtools-protocol/tot/CacheStorage" class="tot experimental">CacheStorage</a>
+          <a href="/devtools-protocol/tot/Cast" class="tot experimental">Cast</a>
+          <a href="/devtools-protocol/tot/Console" class="tot deprecated v8">Console</a>
+          <a href="/devtools-protocol/tot/CSS" class="tot experimental">CSS</a>
+          <a href="/devtools-protocol/tot/Database" class="tot experimental">Database</a>
+          <a href="/devtools-protocol/tot/Debugger" class="tot 1-2 1-3 v8">Debugger</a>
+          <a href="/devtools-protocol/tot/DeviceAccess" class="tot experimental">DeviceAccess</a>
+          <a href="/devtools-protocol/tot/DeviceOrientation" class="tot experimental">DeviceOrientation</a>
+          <a href="/devtools-protocol/tot/DOM" class="tot 1-2 1-3">DOM</a>
+          <a href="/devtools-protocol/tot/DOMDebugger" class="tot 1-2 1-3">DOMDebugger</a>
+          <a href="/devtools-protocol/tot/DOMSnapshot" class="tot experimental">DOMSnapshot</a>
+          <a href="/devtools-protocol/tot/DOMStorage" class="tot experimental">DOMStorage</a>
+          <a href="/devtools-protocol/tot/Emulation" class="tot 1-2 1-3">Emulation</a>
+          <a href="/devtools-protocol/tot/EventBreakpoints" class="tot experimental">EventBreakpoints</a>
+          <a href="/devtools-protocol/tot/Extensions" class="tot experimental">Extensions</a>
+          <a href="/devtools-protocol/tot/FedCm" class="tot experimental">FedCm</a>
+          <a href="/devtools-protocol/tot/Fetch" class="tot 1-3">Fetch</a>
+          <a href="/devtools-protocol/tot/HeadlessExperimental" class="tot experimental">HeadlessExperimental</a>
+          <a href="/devtools-protocol/tot/HeapProfiler" class="tot experimental v8">HeapProfiler</a>
+          <a href="/devtools-protocol/tot/IndexedDB" class="tot experimental">IndexedDB</a>
+          <a href="/devtools-protocol/tot/Input" class="tot 1-2 1-3">Input</a>
+          <a href="/devtools-protocol/tot/Inspector" class="tot experimental">Inspector</a>
+          <a href="/devtools-protocol/tot/IO" class="tot 1-3">IO</a>
+          <a href="/devtools-protocol/tot/LayerTree" class="tot experimental">LayerTree</a>
+          <a href="/devtools-protocol/tot/Log" class="tot 1-3">Log</a>
+          <a href="/devtools-protocol/tot/Media" class="tot experimental">Media</a>
+          <a href="/devtools-protocol/tot/Memory" class="tot experimental">Memory</a>
+          <a href="/devtools-protocol/tot/Network" class="tot 1-2 1-3">Network</a>
+          <a href="/devtools-protocol/tot/Overlay" class="tot experimental">Overlay</a>
+          <a href="/devtools-protocol/tot/Page" class="tot 1-2 1-3">Page</a>
+          <a href="/devtools-protocol/tot/Performance" class="tot 1-3">Performance</a>
+          <a href="/devtools-protocol/tot/PerformanceTimeline" class="tot experimental">PerformanceTimeline</a>
+          <a href="/devtools-protocol/tot/Preload" class="tot experimental">Preload</a>
+          <a href="/devtools-protocol/tot/Profiler" class="tot 1-2 1-3 v8">Profiler</a>
+          <a href="/devtools-protocol/tot/Runtime" class="tot 1-2 1-3 v8">Runtime</a>
+          <a href="/devtools-protocol/tot/Schema" class="tot deprecated 1-2 v8">Schema</a>
+          <a href="/devtools-protocol/tot/Security" class="tot 1-3">Security</a>
+          <a href="/devtools-protocol/tot/ServiceWorker" class="tot experimental">ServiceWorker</a>
+          <a href="/devtools-protocol/tot/Storage" class="tot experimental">Storage</a>
+          <a href="/devtools-protocol/tot/SystemInfo" class="tot experimental">SystemInfo</a>
+          <a href="/devtools-protocol/tot/Target" class="tot 1-3">Target</a>
+          <a href="/devtools-protocol/tot/Tethering" class="tot experimental">Tethering</a>
+          <a href="/devtools-protocol/tot/Tracing" class="tot experimental">Tracing</a>
+          <a href="/devtools-protocol/tot/WebAudio" class="tot experimental">WebAudio</a>
+          <a href="/devtools-protocol/tot/WebAuthn" class="tot experimental">WebAuthn</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <h1>Chrome DevTools Protocol</h1>
+      <button class="menu-link">Navigation</button>
+      <cr-search-control base-url="/devtools-protocol/" protocol-search-index="/search_index/tot.json"></cr-search-control>
+    </header>
+    <section>
+      <div class="main-content-section domain">
+        
+    <div class="domain-section">
+      <div id="header">
+        <h2 class="heading">Preload Domain</h2>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        <h3>Methods</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#method-disable"><span class="domain-dot">Preload.</span>disable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-enable"><span class="domain-dot">Preload.</span>enable</a>
+        
+      </div>
+      
+        <h3>Events</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#event-prefetchStatusUpdated"><span class="domain-dot">Preload.</span>prefetchStatusUpdated</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-preloadEnabledStateUpdated"><span class="domain-dot">Preload.</span>preloadEnabledStateUpdated</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-preloadingAttemptSourcesUpdated"><span class="domain-dot">Preload.</span>preloadingAttemptSourcesUpdated</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-prerenderStatusUpdated"><span class="domain-dot">Preload.</span>prerenderStatusUpdated</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-ruleSetRemoved"><span class="domain-dot">Preload.</span>ruleSetRemoved</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-ruleSetUpdated"><span class="domain-dot">Preload.</span>ruleSetUpdated</a>
+        
+      </div>
+      
+        <h3>Types</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#type-PrefetchStatus"><span class="domain-dot">Preload.</span>PrefetchStatus</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-PreloadingAttemptKey"><span class="domain-dot">Preload.</span>PreloadingAttemptKey</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-PreloadingAttemptSource"><span class="domain-dot">Preload.</span>PreloadingAttemptSource</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-PreloadingStatus"><span class="domain-dot">Preload.</span>PreloadingStatus</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-PrerenderFinalStatus"><span class="domain-dot">Preload.</span>PrerenderFinalStatus</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-PrerenderMismatchedHeaders"><span class="domain-dot">Preload.</span>PrerenderMismatchedHeaders</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-RuleSet"><span class="domain-dot">Preload.</span>RuleSet</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-RuleSetErrorType"><span class="domain-dot">Preload.</span>RuleSetErrorType</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-RuleSetId"><span class="domain-dot">Preload.</span>RuleSetId</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-SpeculationAction"><span class="domain-dot">Preload.</span>SpeculationAction</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-SpeculationTargetHint"><span class="domain-dot">Preload.</span>SpeculationTargetHint</a>
+        
+      </div>
+      
+      </div>
+
+      
+      <h3 id="methods">Methods</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="method-disable">
+          <span class="domain-dot">Preload.</span>disable
+          
+          <a href="#method-disable"
+             class="permalink"
+             data-slug="Preload.disable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-enable">
+          <span class="domain-dot">Preload.</span>enable
+          
+          <a href="#method-enable"
+             class="permalink"
+             data-slug="Preload.enable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="events">Events</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="event-prefetchStatusUpdated">
+          <span class="domain-dot">Preload.</span>prefetchStatusUpdated
+          
+          <a href="#event-prefetchStatusUpdated"
+             class="permalink"
+             data-slug="Preload.prefetchStatusUpdated"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when a prefetch attempt is updated.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          key
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Preload/#type-PreloadingAttemptKey class="param-type">PreloadingAttemptKey</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          initiatingFrameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Page/#type-FrameId class="param-type">Page.FrameId</a>
+          
+      <div class="details-description">
+        <p>The frame id of the frame initiating prefetch.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          prefetchUrl
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          status
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Preload/#type-PreloadingStatus class="param-type">PreloadingStatus</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          prefetchStatus
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Preload/#type-PrefetchStatus class="param-type">PrefetchStatus</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Network/#type-RequestId class="param-type">Network.RequestId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-preloadEnabledStateUpdated">
+          <span class="domain-dot">Preload.</span>preloadEnabledStateUpdated
+          
+          <a href="#event-preloadEnabledStateUpdated"
+             class="permalink"
+             data-slug="Preload.preloadEnabledStateUpdated"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when a preload enabled state is updated.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          disabledByPreference
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          disabledByDataSaver
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          disabledByBatterySaver
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          disabledByHoldbackPrefetchSpeculationRules
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          disabledByHoldbackPrerenderSpeculationRules
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-preloadingAttemptSourcesUpdated">
+          <span class="domain-dot">Preload.</span>preloadingAttemptSourcesUpdated
+          
+          <a href="#event-preloadingAttemptSourcesUpdated"
+             class="permalink"
+             data-slug="Preload.preloadingAttemptSourcesUpdated"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Send a list of sources for all preloading attempts in a document.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          loaderId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Network/#type-LoaderId class="param-type">Network.LoaderId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          preloadingAttemptSources
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Preload/#type-PreloadingAttemptSource class="param-type">PreloadingAttemptSource</a> ]</span></span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-prerenderStatusUpdated">
+          <span class="domain-dot">Preload.</span>prerenderStatusUpdated
+          
+          <a href="#event-prerenderStatusUpdated"
+             class="permalink"
+             data-slug="Preload.prerenderStatusUpdated"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when a prerender attempt is updated.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          key
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Preload/#type-PreloadingAttemptKey class="param-type">PreloadingAttemptKey</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          status
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Preload/#type-PreloadingStatus class="param-type">PreloadingStatus</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          prerenderStatus
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Preload/#type-PrerenderFinalStatus class="param-type">PrerenderFinalStatus</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          disallowedMojoInterface
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>This is used to give users more information about the name of Mojo interface
+that is incompatible with prerender and has caused the cancellation of the attempt.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          mismatchedHeaders
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Preload/#type-PrerenderMismatchedHeaders class="param-type">PrerenderMismatchedHeaders</a> ]</span></span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-ruleSetRemoved">
+          <span class="domain-dot">Preload.</span>ruleSetRemoved
+          
+          <a href="#event-ruleSetRemoved"
+             class="permalink"
+             data-slug="Preload.ruleSetRemoved"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          id
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Preload/#type-RuleSetId class="param-type">RuleSetId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-ruleSetUpdated">
+          <span class="domain-dot">Preload.</span>ruleSetUpdated
+          
+          <a href="#event-ruleSetUpdated"
+             class="permalink"
+             data-slug="Preload.ruleSetUpdated"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Upsert. Currently, it is only emitted when a rule set added.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          ruleSet
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Preload/#type-RuleSet class="param-type">RuleSet</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="types">Types</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="type-PrefetchStatus">
+          <span class="domain-dot">Preload.</span>PrefetchStatus
+          
+          <a href="#type-PrefetchStatus"
+             class="permalink"
+             data-slug="Preload.PrefetchStatus"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>TODO(<a href="https://crbug.com/1384419">https://crbug.com/1384419</a>): revisit the list of PrefetchStatus and
+filter out the ones that aren&#39;t necessary to the developers.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>PrefetchAllowed</code>, <code>PrefetchFailedIneligibleRedirect</code>, <code>PrefetchFailedInvalidRedirect</code>, <code>PrefetchFailedMIMENotSupported</code>, <code>PrefetchFailedNetError</code>, <code>PrefetchFailedNon2XX</code>, <code>PrefetchEvictedAfterCandidateRemoved</code>, <code>PrefetchEvictedForNewerPrefetch</code>, <code>PrefetchHeldback</code>, <code>PrefetchIneligibleRetryAfter</code>, <code>PrefetchIsPrivacyDecoy</code>, <code>PrefetchIsStale</code>, <code>PrefetchNotEligibleBrowserContextOffTheRecord</code>, <code>PrefetchNotEligibleDataSaverEnabled</code>, <code>PrefetchNotEligibleExistingProxy</code>, <code>PrefetchNotEligibleHostIsNonUnique</code>, <code>PrefetchNotEligibleNonDefaultStoragePartition</code>, <code>PrefetchNotEligibleSameSiteCrossOriginPrefetchRequiredProxy</code>, <code>PrefetchNotEligibleSchemeIsNotHttps</code>, <code>PrefetchNotEligibleUserHasCookies</code>, <code>PrefetchNotEligibleUserHasServiceWorker</code>, <code>PrefetchNotEligibleBatterySaverEnabled</code>, <code>PrefetchNotEligiblePreloadingDisabled</code>, <code>PrefetchNotFinishedInTime</code>, <code>PrefetchNotStarted</code>, <code>PrefetchNotUsedCookiesChanged</code>, <code>PrefetchProxyNotAvailable</code>, <code>PrefetchResponseUsed</code>, <code>PrefetchSuccessfulButNotUsed</code>, <code>PrefetchNotUsedProbeFailed</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-PreloadingAttemptKey">
+          <span class="domain-dot">Preload.</span>PreloadingAttemptKey
+          
+          <a href="#type-PreloadingAttemptKey"
+             class="permalink"
+             data-slug="Preload.PreloadingAttemptKey"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>A key that identifies a preloading attempt.</p>
+<p>The url used is the url specified by the trigger (i.e. the initial URL), and
+not the final url that is navigated to. For example, prerendering allows
+same-origin main frame navigations during the attempt, but the attempt is
+still keyed with the initial URL.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          loaderId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Network/#type-LoaderId class="param-type">Network.LoaderId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          action
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Preload/#type-SpeculationAction class="param-type">SpeculationAction</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          targetHint
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Preload/#type-SpeculationTargetHint class="param-type">SpeculationTargetHint</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-PreloadingAttemptSource">
+          <span class="domain-dot">Preload.</span>PreloadingAttemptSource
+          
+          <a href="#type-PreloadingAttemptSource"
+             class="permalink"
+             data-slug="Preload.PreloadingAttemptSource"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Lists sources for a preloading attempt, specifically the ids of rule sets
+that had a speculation rule that triggered the attempt, and the
+BackendNodeIds of &lt;a href&gt; or &lt;area href&gt; elements that triggered the
+attempt (in the case of attempts triggered by a document rule). It is
+possible for multiple rule sets and links to trigger a single attempt.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          key
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Preload/#type-PreloadingAttemptKey class="param-type">PreloadingAttemptKey</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          ruleSetIds
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Preload/#type-RuleSetId class="param-type">RuleSetId</a> ]</span></span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          nodeIds
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/DOM/#type-BackendNodeId class="param-type">DOM.BackendNodeId</a> ]</span></span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-PreloadingStatus">
+          <span class="domain-dot">Preload.</span>PreloadingStatus
+          
+          <a href="#type-PreloadingStatus"
+             class="permalink"
+             data-slug="Preload.PreloadingStatus"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Preloading status values, see also PreloadingTriggeringOutcome. This
+status is shared by prefetchStatusUpdated and prerenderStatusUpdated.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>Pending</code>, <code>Running</code>, <code>Ready</code>, <code>Success</code>, <code>Failure</code>, <code>NotSupported</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-PrerenderFinalStatus">
+          <span class="domain-dot">Preload.</span>PrerenderFinalStatus
+          
+          <a href="#type-PrerenderFinalStatus"
+             class="permalink"
+             data-slug="Preload.PrerenderFinalStatus"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>List of FinalStatus reasons for Prerender2.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>Activated</code>, <code>Destroyed</code>, <code>LowEndDevice</code>, <code>InvalidSchemeRedirect</code>, <code>InvalidSchemeNavigation</code>, <code>NavigationRequestBlockedByCsp</code>, <code>MainFrameNavigation</code>, <code>MojoBinderPolicy</code>, <code>RendererProcessCrashed</code>, <code>RendererProcessKilled</code>, <code>Download</code>, <code>TriggerDestroyed</code>, <code>NavigationNotCommitted</code>, <code>NavigationBadHttpStatus</code>, <code>ClientCertRequested</code>, <code>NavigationRequestNetworkError</code>, <code>CancelAllHostsForTesting</code>, <code>DidFailLoad</code>, <code>Stop</code>, <code>SslCertificateError</code>, <code>LoginAuthRequested</code>, <code>UaChangeRequiresReload</code>, <code>BlockedByClient</code>, <code>AudioOutputDeviceRequested</code>, <code>MixedContent</code>, <code>TriggerBackgrounded</code>, <code>MemoryLimitExceeded</code>, <code>DataSaverEnabled</code>, <code>TriggerUrlHasEffectiveUrl</code>, <code>ActivatedBeforeStarted</code>, <code>InactivePageRestriction</code>, <code>StartFailed</code>, <code>TimeoutBackgrounded</code>, <code>CrossSiteRedirectInInitialNavigation</code>, <code>CrossSiteNavigationInInitialNavigation</code>, <code>SameSiteCrossOriginRedirectNotOptInInInitialNavigation</code>, <code>SameSiteCrossOriginNavigationNotOptInInInitialNavigation</code>, <code>ActivationNavigationParameterMismatch</code>, <code>ActivatedInBackground</code>, <code>EmbedderHostDisallowed</code>, <code>ActivationNavigationDestroyedBeforeSuccess</code>, <code>TabClosedByUserGesture</code>, <code>TabClosedWithoutUserGesture</code>, <code>PrimaryMainFrameRendererProcessCrashed</code>, <code>PrimaryMainFrameRendererProcessKilled</code>, <code>ActivationFramePolicyNotCompatible</code>, <code>PreloadingDisabled</code>, <code>BatterySaverEnabled</code>, <code>ActivatedDuringMainFrameNavigation</code>, <code>PreloadingUnsupportedByWebContents</code>, <code>CrossSiteRedirectInMainFrameNavigation</code>, <code>CrossSiteNavigationInMainFrameNavigation</code>, <code>SameSiteCrossOriginRedirectNotOptInInMainFrameNavigation</code>, <code>SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation</code>, <code>MemoryPressureOnTrigger</code>, <code>MemoryPressureAfterTriggered</code>, <code>PrerenderingDisabledByDevTools</code>, <code>SpeculationRuleRemoved</code>, <code>ActivatedWithAuxiliaryBrowsingContexts</code>, <code>MaxNumOfRunningEagerPrerendersExceeded</code>, <code>MaxNumOfRunningNonEagerPrerendersExceeded</code>, <code>MaxNumOfRunningEmbedderPrerendersExceeded</code>, <code>PrerenderingUrlHasEffectiveUrl</code>, <code>RedirectedPrerenderingUrlHasEffectiveUrl</code>, <code>ActivationUrlHasEffectiveUrl</code>, <code>JavaScriptInterfaceAdded</code>, <code>JavaScriptInterfaceRemoved</code>, <code>AllPrerenderingCanceled</code>, <code>WindowClosed</code>, <code>SlowNetwork</code>, <code>OtherPrerenderedPageActivated</code>, <code>V8OptimizerDisabled</code>, <code>PrerenderFailedDuringPrefetch</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-PrerenderMismatchedHeaders">
+          <span class="domain-dot">Preload.</span>PrerenderMismatchedHeaders
+          
+          <a href="#type-PrerenderMismatchedHeaders"
+             class="permalink"
+             data-slug="Preload.PrerenderMismatchedHeaders"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Information of headers to be displayed when the header mismatch occurred.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          headerName
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          initialValue
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          activationValue
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-RuleSet">
+          <span class="domain-dot">Preload.</span>RuleSet
+          
+          <a href="#type-RuleSet"
+             class="permalink"
+             data-slug="Preload.RuleSet"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Corresponds to SpeculationRuleSet</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          id
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Preload/#type-RuleSetId class="param-type">RuleSetId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          loaderId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Network/#type-LoaderId class="param-type">Network.LoaderId</a>
+          
+      <div class="details-description">
+        <p>Identifies a document which the rule set is associated with.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          sourceText
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Source text of JSON representing the rule set. If it comes from
+<code>&lt;script&gt;</code> tag, it is the textContent of the node. Note that it is
+a JSON for valid case.</p>
+<p>See also:</p>
+<ul>
+<li><a href="https://wicg.github.io/nav-speculation/speculation-rules.html">https://wicg.github.io/nav-speculation/speculation-rules.html</a></li>
+<li><a href="https://github.com/WICG/nav-speculation/blob/main/triggers.md">https://github.com/WICG/nav-speculation/blob/main/triggers.md</a></li>
+</ul>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          backendNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-BackendNodeId class="param-type">DOM.BackendNodeId</a>
+          
+      <div class="details-description">
+        <p>A speculation rule set is either added through an inline
+<code>&lt;script&gt;</code> tag or through an external resource via the
+&#39;Speculation-Rules&#39; HTTP header. For the first case, we include
+the BackendNodeId of the relevant <code>&lt;script&gt;</code> tag. For the second
+case, we include the external URL where the rule set was loaded
+from, and also RequestId if Network domain is enabled.</p>
+<p>See also:</p>
+<ul>
+<li><a href="https://wicg.github.io/nav-speculation/speculation-rules.html#speculation-rules-script">https://wicg.github.io/nav-speculation/speculation-rules.html#speculation-rules-script</a></li>
+<li><a href="https://wicg.github.io/nav-speculation/speculation-rules.html#speculation-rules-header">https://wicg.github.io/nav-speculation/speculation-rules.html#speculation-rules-header</a></li>
+</ul>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          requestId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Network/#type-RequestId class="param-type">Network.RequestId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          errorType
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Preload/#type-RuleSetErrorType class="param-type">RuleSetErrorType</a>
+          
+      <div class="details-description">
+        <p>Error information
+<code>errorMessage</code> is null iff <code>errorType</code> is null.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          errorMessage
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>TODO(<a href="https://crbug.com/1425354">https://crbug.com/1425354</a>): Replace this property with structured error.</p>
+
+        
+      </div>
+    
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-RuleSetErrorType">
+          <span class="domain-dot">Preload.</span>RuleSetErrorType
+          
+          <a href="#type-RuleSetErrorType"
+             class="permalink"
+             data-slug="Preload.RuleSetErrorType"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>SourceIsNotJsonObject</code>, <code>InvalidRulesSkipped</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-RuleSetId">
+          <span class="domain-dot">Preload.</span>RuleSetId
+          
+          <a href="#type-RuleSetId"
+             class="permalink"
+             data-slug="Preload.RuleSetId"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Unique id</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-SpeculationAction">
+          <span class="domain-dot">Preload.</span>SpeculationAction
+          
+          <a href="#type-SpeculationAction"
+             class="permalink"
+             data-slug="Preload.SpeculationAction"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>The type of preloading attempted. It corresponds to
+mojom::SpeculationAction (although PrefetchWithSubresources is omitted as it
+isn&#39;t being used by clients).</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>Prefetch</code>, <code>Prerender</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-SpeculationTargetHint">
+          <span class="domain-dot">Preload.</span>SpeculationTargetHint
+          
+          <a href="#type-SpeculationTargetHint"
+             class="permalink"
+             data-slug="Preload.SpeculationTargetHint"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Corresponds to mojom::SpeculationTargetHint.
+See <a href="https://github.com/WICG/nav-speculation/blob/main/triggers.md#window-name-targeting-hints">https://github.com/WICG/nav-speculation/blob/main/triggers.md#window-name-targeting-hints</a></p>
+
+        
+      <div class="enum-container">Allowed Values: <code>Blank</code>, <code>Self</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      </div>
+    
+    </div>
+    
+      </div>
+    </section>
+  </main>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60854461-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>

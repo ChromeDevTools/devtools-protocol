@@ -1,0 +1,3619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Chrome DevTools Protocol - version tot - Audits domain" />
+  <link rel="icon" type="image/png" href="/devtools-protocol/images/logo.png" />
+    <title>Chrome DevTools Protocol - Audits domain</title>
+
+  <meta name="theme-color" content="#303F9F" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@chromedevtools" />
+  <meta name="twitter:creator" content="@chromedevtools" />
+  <meta property="og:title" content="Chrome DevTools Protocol" />
+  <meta property="og:image" content="https://developers.google.com/web/tools/images/chrome-devtools-16x9_720.png" />
+    <meta property="og:description" content="Chrome DevTools Protocol - version tot - Audits domain" />
+
+  <script type="module" src="/devtools-protocol/scripts/index.js"></script>
+  <link href="/devtools-protocol/styles/protocol.css" rel="stylesheet">
+</head>
+<body>
+  <aside>
+    <div id="home" class="navs">
+      <nav>
+        <a href="/devtools-protocol/">Home</a>
+        <button class="aside-close-button" aria-label="Close navigation">x</button>
+      </nav>
+    </div>
+    <div id="versions" class="navs">
+      <header>Versions</header>
+      <nav>
+        <a href="/devtools-protocol/tot" name="tot">
+          latest (tip-of-tree)
+        </a>
+        <a href="/devtools-protocol/v8" name="v8">
+          v8-inspector (node)
+        </a>
+        <a href="/devtools-protocol/1-3" name="1-3">
+          stable (1.3)
+        </a><!-- 
+        <a href="/devtools-protocol/1-2" name="1-2">
+          stable (1.2)
+        </a> -->
+      </nav>
+    </div>
+
+    <div id="domains" class="navs version-tot">
+      <header>Domains</header>
+      <div class="scroller">
+        <nav>
+          <a href="/devtools-protocol/tot/Accessibility" class="tot experimental">Accessibility</a>
+          <a href="/devtools-protocol/tot/Animation" class="tot experimental">Animation</a>
+          <a href="/devtools-protocol/tot/Audits" class="tot experimental">Audits</a>
+          <a href="/devtools-protocol/tot/Autofill" class="tot experimental">Autofill</a>
+          <a href="/devtools-protocol/tot/BackgroundService" class="tot experimental">BackgroundService</a>
+          <a href="/devtools-protocol/tot/Browser" class="tot 1-3">Browser</a>
+          <a href="/devtools-protocol/tot/CacheStorage" class="tot experimental">CacheStorage</a>
+          <a href="/devtools-protocol/tot/Cast" class="tot experimental">Cast</a>
+          <a href="/devtools-protocol/tot/Console" class="tot deprecated v8">Console</a>
+          <a href="/devtools-protocol/tot/CSS" class="tot experimental">CSS</a>
+          <a href="/devtools-protocol/tot/Database" class="tot experimental">Database</a>
+          <a href="/devtools-protocol/tot/Debugger" class="tot 1-2 1-3 v8">Debugger</a>
+          <a href="/devtools-protocol/tot/DeviceAccess" class="tot experimental">DeviceAccess</a>
+          <a href="/devtools-protocol/tot/DeviceOrientation" class="tot experimental">DeviceOrientation</a>
+          <a href="/devtools-protocol/tot/DOM" class="tot 1-2 1-3">DOM</a>
+          <a href="/devtools-protocol/tot/DOMDebugger" class="tot 1-2 1-3">DOMDebugger</a>
+          <a href="/devtools-protocol/tot/DOMSnapshot" class="tot experimental">DOMSnapshot</a>
+          <a href="/devtools-protocol/tot/DOMStorage" class="tot experimental">DOMStorage</a>
+          <a href="/devtools-protocol/tot/Emulation" class="tot 1-2 1-3">Emulation</a>
+          <a href="/devtools-protocol/tot/EventBreakpoints" class="tot experimental">EventBreakpoints</a>
+          <a href="/devtools-protocol/tot/Extensions" class="tot experimental">Extensions</a>
+          <a href="/devtools-protocol/tot/FedCm" class="tot experimental">FedCm</a>
+          <a href="/devtools-protocol/tot/Fetch" class="tot 1-3">Fetch</a>
+          <a href="/devtools-protocol/tot/HeadlessExperimental" class="tot experimental">HeadlessExperimental</a>
+          <a href="/devtools-protocol/tot/HeapProfiler" class="tot experimental v8">HeapProfiler</a>
+          <a href="/devtools-protocol/tot/IndexedDB" class="tot experimental">IndexedDB</a>
+          <a href="/devtools-protocol/tot/Input" class="tot 1-2 1-3">Input</a>
+          <a href="/devtools-protocol/tot/Inspector" class="tot experimental">Inspector</a>
+          <a href="/devtools-protocol/tot/IO" class="tot 1-3">IO</a>
+          <a href="/devtools-protocol/tot/LayerTree" class="tot experimental">LayerTree</a>
+          <a href="/devtools-protocol/tot/Log" class="tot 1-3">Log</a>
+          <a href="/devtools-protocol/tot/Media" class="tot experimental">Media</a>
+          <a href="/devtools-protocol/tot/Memory" class="tot experimental">Memory</a>
+          <a href="/devtools-protocol/tot/Network" class="tot 1-2 1-3">Network</a>
+          <a href="/devtools-protocol/tot/Overlay" class="tot experimental">Overlay</a>
+          <a href="/devtools-protocol/tot/Page" class="tot 1-2 1-3">Page</a>
+          <a href="/devtools-protocol/tot/Performance" class="tot 1-3">Performance</a>
+          <a href="/devtools-protocol/tot/PerformanceTimeline" class="tot experimental">PerformanceTimeline</a>
+          <a href="/devtools-protocol/tot/Preload" class="tot experimental">Preload</a>
+          <a href="/devtools-protocol/tot/Profiler" class="tot 1-2 1-3 v8">Profiler</a>
+          <a href="/devtools-protocol/tot/Runtime" class="tot 1-2 1-3 v8">Runtime</a>
+          <a href="/devtools-protocol/tot/Schema" class="tot deprecated 1-2 v8">Schema</a>
+          <a href="/devtools-protocol/tot/Security" class="tot 1-3">Security</a>
+          <a href="/devtools-protocol/tot/ServiceWorker" class="tot experimental">ServiceWorker</a>
+          <a href="/devtools-protocol/tot/Storage" class="tot experimental">Storage</a>
+          <a href="/devtools-protocol/tot/SystemInfo" class="tot experimental">SystemInfo</a>
+          <a href="/devtools-protocol/tot/Target" class="tot 1-3">Target</a>
+          <a href="/devtools-protocol/tot/Tethering" class="tot experimental">Tethering</a>
+          <a href="/devtools-protocol/tot/Tracing" class="tot experimental">Tracing</a>
+          <a href="/devtools-protocol/tot/WebAudio" class="tot experimental">WebAudio</a>
+          <a href="/devtools-protocol/tot/WebAuthn" class="tot experimental">WebAuthn</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <h1>Chrome DevTools Protocol</h1>
+      <button class="menu-link">Navigation</button>
+      <cr-search-control base-url="/devtools-protocol/" protocol-search-index="/search_index/tot.json"></cr-search-control>
+    </header>
+    <section>
+      <div class="main-content-section domain">
+        
+    <div class="domain-section">
+      <div id="header">
+        <h2 class="heading">Audits Domain</h2>
+        
+      <div class="details-description">
+        <p>Audits domain allows investigation of page violations and possible improvements.</p>
+
+        
+      </div>
+    
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        <h3>Methods</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#method-checkContrast"><span class="domain-dot">Audits.</span>checkContrast</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-checkFormsIssues"><span class="domain-dot">Audits.</span>checkFormsIssues</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-disable"><span class="domain-dot">Audits.</span>disable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-enable"><span class="domain-dot">Audits.</span>enable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getEncodedResponse"><span class="domain-dot">Audits.</span>getEncodedResponse</a>
+        
+      </div>
+      
+        <h3>Events</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#event-issueAdded"><span class="domain-dot">Audits.</span>issueAdded</a>
+        
+      </div>
+      
+        <h3>Types</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#type-AffectedCookie"><span class="domain-dot">Audits.</span>AffectedCookie</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-AffectedFrame"><span class="domain-dot">Audits.</span>AffectedFrame</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-AffectedRequest"><span class="domain-dot">Audits.</span>AffectedRequest</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-AttributionReportingIssueDetails"><span class="domain-dot">Audits.</span>AttributionReportingIssueDetails</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-AttributionReportingIssueType"><span class="domain-dot">Audits.</span>AttributionReportingIssueType</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-BlockedByResponseIssueDetails"><span class="domain-dot">Audits.</span>BlockedByResponseIssueDetails</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-BlockedByResponseReason"><span class="domain-dot">Audits.</span>BlockedByResponseReason</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-BounceTrackingIssueDetails"><span class="domain-dot">Audits.</span>BounceTrackingIssueDetails</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ClientHintIssueDetails"><span class="domain-dot">Audits.</span>ClientHintIssueDetails</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ClientHintIssueReason"><span class="domain-dot">Audits.</span>ClientHintIssueReason</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ContentSecurityPolicyIssueDetails"><span class="domain-dot">Audits.</span>ContentSecurityPolicyIssueDetails</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ContentSecurityPolicyViolationType"><span class="domain-dot">Audits.</span>ContentSecurityPolicyViolationType</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-CookieDeprecationMetadataIssueDetails"><span class="domain-dot">Audits.</span>CookieDeprecationMetadataIssueDetails</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-CookieExclusionReason"><span class="domain-dot">Audits.</span>CookieExclusionReason</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-CookieIssueDetails"><span class="domain-dot">Audits.</span>CookieIssueDetails</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-CookieOperation"><span class="domain-dot">Audits.</span>CookieOperation</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-CookieWarningReason"><span class="domain-dot">Audits.</span>CookieWarningReason</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-CorsIssueDetails"><span class="domain-dot">Audits.</span>CorsIssueDetails</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-DeprecationIssueDetails"><span class="domain-dot">Audits.</span>DeprecationIssueDetails</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-FailedRequestInfo"><span class="domain-dot">Audits.</span>FailedRequestInfo</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-FederatedAuthRequestIssueDetails"><span class="domain-dot">Audits.</span>FederatedAuthRequestIssueDetails</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-FederatedAuthRequestIssueReason"><span class="domain-dot">Audits.</span>FederatedAuthRequestIssueReason</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-FederatedAuthUserInfoRequestIssueDetails"><span class="domain-dot">Audits.</span>FederatedAuthUserInfoRequestIssueDetails</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-FederatedAuthUserInfoRequestIssueReason"><span class="domain-dot">Audits.</span>FederatedAuthUserInfoRequestIssueReason</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-GenericIssueDetails"><span class="domain-dot">Audits.</span>GenericIssueDetails</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-GenericIssueErrorType"><span class="domain-dot">Audits.</span>GenericIssueErrorType</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-HeavyAdIssueDetails"><span class="domain-dot">Audits.</span>HeavyAdIssueDetails</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-HeavyAdReason"><span class="domain-dot">Audits.</span>HeavyAdReason</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-HeavyAdResolutionStatus"><span class="domain-dot">Audits.</span>HeavyAdResolutionStatus</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-InspectorIssue"><span class="domain-dot">Audits.</span>InspectorIssue</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-InspectorIssueCode"><span class="domain-dot">Audits.</span>InspectorIssueCode</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-InspectorIssueDetails"><span class="domain-dot">Audits.</span>InspectorIssueDetails</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-IssueId"><span class="domain-dot">Audits.</span>IssueId</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-LowTextContrastIssueDetails"><span class="domain-dot">Audits.</span>LowTextContrastIssueDetails</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-MixedContentIssueDetails"><span class="domain-dot">Audits.</span>MixedContentIssueDetails</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-MixedContentResolutionStatus"><span class="domain-dot">Audits.</span>MixedContentResolutionStatus</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-MixedContentResourceType"><span class="domain-dot">Audits.</span>MixedContentResourceType</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-PropertyRuleIssueDetails"><span class="domain-dot">Audits.</span>PropertyRuleIssueDetails</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-PropertyRuleIssueReason"><span class="domain-dot">Audits.</span>PropertyRuleIssueReason</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-QuirksModeIssueDetails"><span class="domain-dot">Audits.</span>QuirksModeIssueDetails</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-SharedArrayBufferIssueDetails"><span class="domain-dot">Audits.</span>SharedArrayBufferIssueDetails</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-SharedArrayBufferIssueType"><span class="domain-dot">Audits.</span>SharedArrayBufferIssueType</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-SharedDictionaryError"><span class="domain-dot">Audits.</span>SharedDictionaryError</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-SharedDictionaryIssueDetails"><span class="domain-dot">Audits.</span>SharedDictionaryIssueDetails</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-SourceCodeLocation"><span class="domain-dot">Audits.</span>SourceCodeLocation</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-StylesheetLoadingIssueDetails"><span class="domain-dot">Audits.</span>StylesheetLoadingIssueDetails</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-StyleSheetLoadingIssueReason"><span class="domain-dot">Audits.</span>StyleSheetLoadingIssueReason</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-NavigatorUserAgentIssueDetails"><span class="domain-dot">Audits.</span>NavigatorUserAgentIssueDetails</a>
+        <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+      </div>
+      
+      </div>
+
+      
+      <h3 id="methods">Methods</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="method-checkContrast">
+          <span class="domain-dot">Audits.</span>checkContrast
+          
+          <a href="#method-checkContrast"
+             class="permalink"
+             data-slug="Audits.checkContrast"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Runs the contrast check for the target page. Found issues are reported
+using Audits.issueAdded event.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          reportAAA
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether to report WCAG AAA level issues. Default is false.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-checkFormsIssues">
+          <span class="domain-dot">Audits.</span>checkFormsIssues
+          
+          <a href="#method-checkFormsIssues"
+             class="permalink"
+             data-slug="Audits.checkFormsIssues"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Runs the form issues check for the target page. Found issues are reported
+using Audits.issueAdded event.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          formIssues
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Audits/#type-GenericIssueDetails class="param-type">GenericIssueDetails</a> ]</span></span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-disable">
+          <span class="domain-dot">Audits.</span>disable
+          
+          <a href="#method-disable"
+             class="permalink"
+             data-slug="Audits.disable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Disables issues domain, prevents further issues from being reported to the client.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-enable">
+          <span class="domain-dot">Audits.</span>enable
+          
+          <a href="#method-enable"
+             class="permalink"
+             data-slug="Audits.enable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enables issues domain, sends the issues collected so far to the client by means of the
+<code>issueAdded</code> event.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getEncodedResponse">
+          <span class="domain-dot">Audits.</span>getEncodedResponse
+          
+          <a href="#method-getEncodedResponse"
+             class="permalink"
+             data-slug="Audits.getEncodedResponse"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns the response body and size if it were re-encoded with the specified settings. Only
+applies to images.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Network/#type-RequestId class="param-type">Network.RequestId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the network request to get content for.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          encoding
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The encoding to use.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>webp</code>, <code>jpeg</code>, <code>png</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          quality
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>The quality of the encoding (0-1). (defaults to 1)</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          sizeOnly
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether to only return the size information (defaults to false).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          body
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The encoded body as a base64 string. Omitted if sizeOnly is true. (Encoded as a base64 string when passed over JSON)</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          originalSize
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Size before re-encoding.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          encodedSize
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Size after re-encoding.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="events">Events</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="event-issueAdded">
+          <span class="domain-dot">Audits.</span>issueAdded
+          
+          <a href="#event-issueAdded"
+             class="permalink"
+             data-slug="Audits.issueAdded"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          issue
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-InspectorIssue class="param-type">InspectorIssue</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="types">Types</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="type-AffectedCookie">
+          <span class="domain-dot">Audits.</span>AffectedCookie
+          
+          <a href="#type-AffectedCookie"
+             class="permalink"
+             data-slug="Audits.AffectedCookie"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Information about a cookie that is affected by an inspector issue.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The following three properties uniquely identify a cookie</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          path
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          domain
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-AffectedFrame">
+          <span class="domain-dot">Audits.</span>AffectedFrame
+          
+          <a href="#type-AffectedFrame"
+             class="permalink"
+             data-slug="Audits.AffectedFrame"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Information about the frame affected by an inspector issue.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          frameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Page/#type-FrameId class="param-type">Page.FrameId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-AffectedRequest">
+          <span class="domain-dot">Audits.</span>AffectedRequest
+          
+          <a href="#type-AffectedRequest"
+             class="permalink"
+             data-slug="Audits.AffectedRequest"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Information about a request that is affected by an inspector issue.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Network/#type-RequestId class="param-type">Network.RequestId</a>
+          
+      <div class="details-description">
+        <p>The unique request id.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-AttributionReportingIssueDetails">
+          <span class="domain-dot">Audits.</span>AttributionReportingIssueDetails
+          
+          <a href="#type-AttributionReportingIssueDetails"
+             class="permalink"
+             data-slug="Audits.AttributionReportingIssueDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Details for issues around &quot;Attribution Reporting API&quot; usage.
+Explainer: <a href="https://github.com/WICG/attribution-reporting-api">https://github.com/WICG/attribution-reporting-api</a></p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          violationType
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-AttributionReportingIssueType class="param-type">AttributionReportingIssueType</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          request
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-AffectedRequest class="param-type">AffectedRequest</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          violatingNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-BackendNodeId class="param-type">DOM.BackendNodeId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          invalidParameter
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-AttributionReportingIssueType">
+          <span class="domain-dot">Audits.</span>AttributionReportingIssueType
+          
+          <a href="#type-AttributionReportingIssueType"
+             class="permalink"
+             data-slug="Audits.AttributionReportingIssueType"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>PermissionPolicyDisabled</code>, <code>UntrustworthyReportingOrigin</code>, <code>InsecureContext</code>, <code>InvalidHeader</code>, <code>InvalidRegisterTriggerHeader</code>, <code>SourceAndTriggerHeaders</code>, <code>SourceIgnored</code>, <code>TriggerIgnored</code>, <code>OsSourceIgnored</code>, <code>OsTriggerIgnored</code>, <code>InvalidRegisterOsSourceHeader</code>, <code>InvalidRegisterOsTriggerHeader</code>, <code>WebAndOsHeaders</code>, <code>NoWebOrOsSupport</code>, <code>NavigationRegistrationWithoutTransientUserActivation</code>, <code>InvalidInfoHeader</code>, <code>NoRegisterSourceHeader</code>, <code>NoRegisterTriggerHeader</code>, <code>NoRegisterOsSourceHeader</code>, <code>NoRegisterOsTriggerHeader</code>, <code>NavigationRegistrationUniqueScopeAlreadySet</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-BlockedByResponseIssueDetails">
+          <span class="domain-dot">Audits.</span>BlockedByResponseIssueDetails
+          
+          <a href="#type-BlockedByResponseIssueDetails"
+             class="permalink"
+             data-slug="Audits.BlockedByResponseIssueDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Details for a request that has been blocked with the BLOCKED_BY_RESPONSE
+code. Currently only used for COEP/COOP, but may be extended to include
+some CSP errors in the future.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          request
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-AffectedRequest class="param-type">AffectedRequest</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          parentFrame
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-AffectedFrame class="param-type">AffectedFrame</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          blockedFrame
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-AffectedFrame class="param-type">AffectedFrame</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          reason
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-BlockedByResponseReason class="param-type">BlockedByResponseReason</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-BlockedByResponseReason">
+          <span class="domain-dot">Audits.</span>BlockedByResponseReason
+          
+          <a href="#type-BlockedByResponseReason"
+             class="permalink"
+             data-slug="Audits.BlockedByResponseReason"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enum indicating the reason a response has been blocked. These reasons are
+refinements of the net error BLOCKED_BY_RESPONSE.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>CoepFrameResourceNeedsCoepHeader</code>, <code>CoopSandboxedIFrameCannotNavigateToCoopPage</code>, <code>CorpNotSameOrigin</code>, <code>CorpNotSameOriginAfterDefaultedToSameOriginByCoep</code>, <code>CorpNotSameOriginAfterDefaultedToSameOriginByDip</code>, <code>CorpNotSameOriginAfterDefaultedToSameOriginByCoepAndDip</code>, <code>CorpNotSameSite</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-BounceTrackingIssueDetails">
+          <span class="domain-dot">Audits.</span>BounceTrackingIssueDetails
+          
+          <a href="#type-BounceTrackingIssueDetails"
+             class="permalink"
+             data-slug="Audits.BounceTrackingIssueDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>This issue warns about sites in the redirect chain of a finished navigation
+that may be flagged as trackers and have their state cleared if they don&#39;t
+receive a user interaction. Note that in this context &#39;site&#39; means eTLD+1.
+For example, if the URL <code>https://example.test:80/bounce</code> was in the
+redirect chain, the site reported would be <code>example.test</code>.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          trackingSites
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">string</span> ]</span></span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ClientHintIssueDetails">
+          <span class="domain-dot">Audits.</span>ClientHintIssueDetails
+          
+          <a href="#type-ClientHintIssueDetails"
+             class="permalink"
+             data-slug="Audits.ClientHintIssueDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>This issue tracks client hints related issues. It&#39;s used to deprecate old
+features, encourage the use of new ones, and provide general guidance.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          sourceCodeLocation
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-SourceCodeLocation class="param-type">SourceCodeLocation</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          clientHintIssueReason
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-ClientHintIssueReason class="param-type">ClientHintIssueReason</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ClientHintIssueReason">
+          <span class="domain-dot">Audits.</span>ClientHintIssueReason
+          
+          <a href="#type-ClientHintIssueReason"
+             class="permalink"
+             data-slug="Audits.ClientHintIssueReason"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>MetaTagAllowListInvalidOrigin</code>, <code>MetaTagModifiedHTML</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ContentSecurityPolicyIssueDetails">
+          <span class="domain-dot">Audits.</span>ContentSecurityPolicyIssueDetails
+          
+          <a href="#type-ContentSecurityPolicyIssueDetails"
+             class="permalink"
+             data-slug="Audits.ContentSecurityPolicyIssueDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          blockedURL
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The url not included in allowed sources.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          violatedDirective
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Specific directive that is violated, causing the CSP issue.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          isReportOnly
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          contentSecurityPolicyViolationType
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-ContentSecurityPolicyViolationType class="param-type">ContentSecurityPolicyViolationType</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          frameAncestor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-AffectedFrame class="param-type">AffectedFrame</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          sourceCodeLocation
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-SourceCodeLocation class="param-type">SourceCodeLocation</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          violatingNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-BackendNodeId class="param-type">DOM.BackendNodeId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ContentSecurityPolicyViolationType">
+          <span class="domain-dot">Audits.</span>ContentSecurityPolicyViolationType
+          
+          <a href="#type-ContentSecurityPolicyViolationType"
+             class="permalink"
+             data-slug="Audits.ContentSecurityPolicyViolationType"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>kInlineViolation</code>, <code>kEvalViolation</code>, <code>kURLViolation</code>, <code>kTrustedTypesSinkViolation</code>, <code>kTrustedTypesPolicyViolation</code>, <code>kWasmEvalViolation</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-CookieDeprecationMetadataIssueDetails">
+          <span class="domain-dot">Audits.</span>CookieDeprecationMetadataIssueDetails
+          
+          <a href="#type-CookieDeprecationMetadataIssueDetails"
+             class="permalink"
+             data-slug="Audits.CookieDeprecationMetadataIssueDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>This issue warns about third-party sites that are accessing cookies on the
+current page, and have been permitted due to having a global metadata grant.
+Note that in this context &#39;site&#39; means eTLD+1. For example, if the URL
+<code>https://example.test:80/web_page</code> was accessing cookies, the site reported
+would be <code>example.test</code>.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          allowedSites
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">string</span> ]</span></span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          optOutPercentage
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          isOptOutTopLevel
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          operation
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-CookieOperation class="param-type">CookieOperation</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-CookieExclusionReason">
+          <span class="domain-dot">Audits.</span>CookieExclusionReason
+          
+          <a href="#type-CookieExclusionReason"
+             class="permalink"
+             data-slug="Audits.CookieExclusionReason"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>ExcludeSameSiteUnspecifiedTreatedAsLax</code>, <code>ExcludeSameSiteNoneInsecure</code>, <code>ExcludeSameSiteLax</code>, <code>ExcludeSameSiteStrict</code>, <code>ExcludeInvalidSameParty</code>, <code>ExcludeSamePartyCrossPartyContext</code>, <code>ExcludeDomainNonASCII</code>, <code>ExcludeThirdPartyCookieBlockedInFirstPartySet</code>, <code>ExcludeThirdPartyPhaseout</code>, <code>ExcludePortMismatch</code>, <code>ExcludeSchemeMismatch</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-CookieIssueDetails">
+          <span class="domain-dot">Audits.</span>CookieIssueDetails
+          
+          <a href="#type-CookieIssueDetails"
+             class="permalink"
+             data-slug="Audits.CookieIssueDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>This information is currently necessary, as the front-end has a difficult
+time finding a specific cookie. With this, we can convey specific error
+information without the cookie.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          cookie
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-AffectedCookie class="param-type">AffectedCookie</a>
+          
+      <div class="details-description">
+        <p>If AffectedCookie is not set then rawCookieLine contains the raw
+Set-Cookie header string. This hints at a problem where the
+cookie line is syntactically or semantically malformed in a way
+that no valid cookie could be created.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          rawCookieLine
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          cookieWarningReasons
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Audits/#type-CookieWarningReason class="param-type">CookieWarningReason</a> ]</span></span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          cookieExclusionReasons
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Audits/#type-CookieExclusionReason class="param-type">CookieExclusionReason</a> ]</span></span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          operation
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-CookieOperation class="param-type">CookieOperation</a>
+          
+      <div class="details-description">
+        <p>Optionally identifies the site-for-cookies and the cookie url, which
+may be used by the front-end as additional context.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          siteForCookies
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          cookieUrl
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          request
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-AffectedRequest class="param-type">AffectedRequest</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-CookieOperation">
+          <span class="domain-dot">Audits.</span>CookieOperation
+          
+          <a href="#type-CookieOperation"
+             class="permalink"
+             data-slug="Audits.CookieOperation"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>SetCookie</code>, <code>ReadCookie</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-CookieWarningReason">
+          <span class="domain-dot">Audits.</span>CookieWarningReason
+          
+          <a href="#type-CookieWarningReason"
+             class="permalink"
+             data-slug="Audits.CookieWarningReason"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>WarnSameSiteUnspecifiedCrossSiteContext</code>, <code>WarnSameSiteNoneInsecure</code>, <code>WarnSameSiteUnspecifiedLaxAllowUnsafe</code>, <code>WarnSameSiteStrictLaxDowngradeStrict</code>, <code>WarnSameSiteStrictCrossDowngradeStrict</code>, <code>WarnSameSiteStrictCrossDowngradeLax</code>, <code>WarnSameSiteLaxCrossDowngradeStrict</code>, <code>WarnSameSiteLaxCrossDowngradeLax</code>, <code>WarnAttributeValueExceedsMaxSize</code>, <code>WarnDomainNonASCII</code>, <code>WarnThirdPartyPhaseout</code>, <code>WarnCrossSiteRedirectDowngradeChangesInclusion</code>, <code>WarnDeprecationTrialMetadata</code>, <code>WarnThirdPartyCookieHeuristic</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-CorsIssueDetails">
+          <span class="domain-dot">Audits.</span>CorsIssueDetails
+          
+          <a href="#type-CorsIssueDetails"
+             class="permalink"
+             data-slug="Audits.CorsIssueDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Details for a CORS related issue, e.g. a warning or error related to
+CORS RFC1918 enforcement.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          corsErrorStatus
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Network/#type-CorsErrorStatus class="param-type">Network.CorsErrorStatus</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          isWarning
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          request
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-AffectedRequest class="param-type">AffectedRequest</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          location
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-SourceCodeLocation class="param-type">SourceCodeLocation</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          initiatorOrigin
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          resourceIPAddressSpace
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Network/#type-IPAddressSpace class="param-type">Network.IPAddressSpace</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          clientSecurityState
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Network/#type-ClientSecurityState class="param-type">Network.ClientSecurityState</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-DeprecationIssueDetails">
+          <span class="domain-dot">Audits.</span>DeprecationIssueDetails
+          
+          <a href="#type-DeprecationIssueDetails"
+             class="permalink"
+             data-slug="Audits.DeprecationIssueDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>This issue tracks information needed to print a deprecation message.
+<a href="https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/frame/third_party/blink/renderer/core/frame/deprecation/README.md">https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/frame/third_party/blink/renderer/core/frame/deprecation/README.md</a></p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          affectedFrame
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-AffectedFrame class="param-type">AffectedFrame</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          sourceCodeLocation
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-SourceCodeLocation class="param-type">SourceCodeLocation</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          type
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>One of the deprecation names from third_party/blink/renderer/core/frame/deprecation/deprecation.json5</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-FailedRequestInfo">
+          <span class="domain-dot">Audits.</span>FailedRequestInfo
+          
+          <a href="#type-FailedRequestInfo"
+             class="permalink"
+             data-slug="Audits.FailedRequestInfo"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The URL that failed to load.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          failureMessage
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The failure message for the failed request.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          requestId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Network/#type-RequestId class="param-type">Network.RequestId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-FederatedAuthRequestIssueDetails">
+          <span class="domain-dot">Audits.</span>FederatedAuthRequestIssueDetails
+          
+          <a href="#type-FederatedAuthRequestIssueDetails"
+             class="permalink"
+             data-slug="Audits.FederatedAuthRequestIssueDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          federatedAuthRequestIssueReason
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-FederatedAuthRequestIssueReason class="param-type">FederatedAuthRequestIssueReason</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-FederatedAuthRequestIssueReason">
+          <span class="domain-dot">Audits.</span>FederatedAuthRequestIssueReason
+          
+          <a href="#type-FederatedAuthRequestIssueReason"
+             class="permalink"
+             data-slug="Audits.FederatedAuthRequestIssueReason"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Represents the failure reason when a federated authentication reason fails.
+Should be updated alongside RequestIdTokenStatus in
+third_party/blink/public/mojom/devtools/inspector_issue.mojom to include
+all cases except for success.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>ShouldEmbargo</code>, <code>TooManyRequests</code>, <code>WellKnownHttpNotFound</code>, <code>WellKnownNoResponse</code>, <code>WellKnownInvalidResponse</code>, <code>WellKnownListEmpty</code>, <code>WellKnownInvalidContentType</code>, <code>ConfigNotInWellKnown</code>, <code>WellKnownTooBig</code>, <code>ConfigHttpNotFound</code>, <code>ConfigNoResponse</code>, <code>ConfigInvalidResponse</code>, <code>ConfigInvalidContentType</code>, <code>ClientMetadataHttpNotFound</code>, <code>ClientMetadataNoResponse</code>, <code>ClientMetadataInvalidResponse</code>, <code>ClientMetadataInvalidContentType</code>, <code>IdpNotPotentiallyTrustworthy</code>, <code>DisabledInSettings</code>, <code>DisabledInFlags</code>, <code>ErrorFetchingSignin</code>, <code>InvalidSigninResponse</code>, <code>AccountsHttpNotFound</code>, <code>AccountsNoResponse</code>, <code>AccountsInvalidResponse</code>, <code>AccountsListEmpty</code>, <code>AccountsInvalidContentType</code>, <code>IdTokenHttpNotFound</code>, <code>IdTokenNoResponse</code>, <code>IdTokenInvalidResponse</code>, <code>IdTokenIdpErrorResponse</code>, <code>IdTokenCrossSiteIdpErrorResponse</code>, <code>IdTokenInvalidRequest</code>, <code>IdTokenInvalidContentType</code>, <code>ErrorIdToken</code>, <code>Canceled</code>, <code>RpPageNotVisible</code>, <code>SilentMediationFailure</code>, <code>ThirdPartyCookiesBlocked</code>, <code>NotSignedInWithIdp</code>, <code>MissingTransientUserActivation</code>, <code>ReplacedByActiveMode</code>, <code>InvalidFieldsSpecified</code>, <code>RelyingPartyOriginIsOpaque</code>, <code>TypeNotMatching</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-FederatedAuthUserInfoRequestIssueDetails">
+          <span class="domain-dot">Audits.</span>FederatedAuthUserInfoRequestIssueDetails
+          
+          <a href="#type-FederatedAuthUserInfoRequestIssueDetails"
+             class="permalink"
+             data-slug="Audits.FederatedAuthUserInfoRequestIssueDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          federatedAuthUserInfoRequestIssueReason
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-FederatedAuthUserInfoRequestIssueReason class="param-type">FederatedAuthUserInfoRequestIssueReason</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-FederatedAuthUserInfoRequestIssueReason">
+          <span class="domain-dot">Audits.</span>FederatedAuthUserInfoRequestIssueReason
+          
+          <a href="#type-FederatedAuthUserInfoRequestIssueReason"
+             class="permalink"
+             data-slug="Audits.FederatedAuthUserInfoRequestIssueReason"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Represents the failure reason when a getUserInfo() call fails.
+Should be updated alongside FederatedAuthUserInfoRequestResult in
+third_party/blink/public/mojom/devtools/inspector_issue.mojom.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>NotSameOrigin</code>, <code>NotIframe</code>, <code>NotPotentiallyTrustworthy</code>, <code>NoApiPermission</code>, <code>NotSignedInWithIdp</code>, <code>NoAccountSharingPermission</code>, <code>InvalidConfigOrWellKnown</code>, <code>InvalidAccountsResponse</code>, <code>NoReturningUserFromFetchedAccounts</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-GenericIssueDetails">
+          <span class="domain-dot">Audits.</span>GenericIssueDetails
+          
+          <a href="#type-GenericIssueDetails"
+             class="permalink"
+             data-slug="Audits.GenericIssueDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Depending on the concrete errorType, different properties are set.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          errorType
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-GenericIssueErrorType class="param-type">GenericIssueErrorType</a>
+          
+      <div class="details-description">
+        <p>Issues with the same errorType are aggregated in the frontend.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          frameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Page/#type-FrameId class="param-type">Page.FrameId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          violatingNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-BackendNodeId class="param-type">DOM.BackendNodeId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          violatingNodeAttribute
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          request
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-AffectedRequest class="param-type">AffectedRequest</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-GenericIssueErrorType">
+          <span class="domain-dot">Audits.</span>GenericIssueErrorType
+          
+          <a href="#type-GenericIssueErrorType"
+             class="permalink"
+             data-slug="Audits.GenericIssueErrorType"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>FormLabelForNameError</code>, <code>FormDuplicateIdForInputError</code>, <code>FormInputWithNoLabelError</code>, <code>FormAutocompleteAttributeEmptyError</code>, <code>FormEmptyIdAndNameAttributesForInputError</code>, <code>FormAriaLabelledByToNonExistingId</code>, <code>FormInputAssignedAutocompleteValueToIdOrNameAttributeError</code>, <code>FormLabelHasNeitherForNorNestedInput</code>, <code>FormLabelForMatchesNonExistingIdError</code>, <code>FormInputHasWrongButWellIntendedAutocompleteValueError</code>, <code>ResponseWasBlockedByORB</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-HeavyAdIssueDetails">
+          <span class="domain-dot">Audits.</span>HeavyAdIssueDetails
+          
+          <a href="#type-HeavyAdIssueDetails"
+             class="permalink"
+             data-slug="Audits.HeavyAdIssueDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          resolution
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-HeavyAdResolutionStatus class="param-type">HeavyAdResolutionStatus</a>
+          
+      <div class="details-description">
+        <p>The resolution status, either blocking the content or warning.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          reason
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-HeavyAdReason class="param-type">HeavyAdReason</a>
+          
+      <div class="details-description">
+        <p>The reason the ad was blocked, total network or cpu or peak cpu.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          frame
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-AffectedFrame class="param-type">AffectedFrame</a>
+          
+      <div class="details-description">
+        <p>The frame that was blocked.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-HeavyAdReason">
+          <span class="domain-dot">Audits.</span>HeavyAdReason
+          
+          <a href="#type-HeavyAdReason"
+             class="permalink"
+             data-slug="Audits.HeavyAdReason"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>NetworkTotalLimit</code>, <code>CpuTotalLimit</code>, <code>CpuPeakLimit</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-HeavyAdResolutionStatus">
+          <span class="domain-dot">Audits.</span>HeavyAdResolutionStatus
+          
+          <a href="#type-HeavyAdResolutionStatus"
+             class="permalink"
+             data-slug="Audits.HeavyAdResolutionStatus"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>HeavyAdBlocked</code>, <code>HeavyAdWarning</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-InspectorIssue">
+          <span class="domain-dot">Audits.</span>InspectorIssue
+          
+          <a href="#type-InspectorIssue"
+             class="permalink"
+             data-slug="Audits.InspectorIssue"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>An inspector issue reported from the back-end.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          code
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-InspectorIssueCode class="param-type">InspectorIssueCode</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          details
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-InspectorIssueDetails class="param-type">InspectorIssueDetails</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          issueId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-IssueId class="param-type">IssueId</a>
+          
+      <div class="details-description">
+        <p>A unique id for this issue. May be omitted if no other entity (e.g.
+exception, CDP message, etc.) is referencing this issue.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-InspectorIssueCode">
+          <span class="domain-dot">Audits.</span>InspectorIssueCode
+          
+          <a href="#type-InspectorIssueCode"
+             class="permalink"
+             data-slug="Audits.InspectorIssueCode"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>A unique identifier for the type of issue. Each type may use one of the
+optional fields in InspectorIssueDetails to convey more specific
+information about the kind of issue.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>CookieIssue</code>, <code>MixedContentIssue</code>, <code>BlockedByResponseIssue</code>, <code>HeavyAdIssue</code>, <code>ContentSecurityPolicyIssue</code>, <code>SharedArrayBufferIssue</code>, <code>LowTextContrastIssue</code>, <code>CorsIssue</code>, <code>AttributionReportingIssue</code>, <code>QuirksModeIssue</code>, <code>NavigatorUserAgentIssue</code>, <code>GenericIssue</code>, <code>DeprecationIssue</code>, <code>ClientHintIssue</code>, <code>FederatedAuthRequestIssue</code>, <code>BounceTrackingIssue</code>, <code>CookieDeprecationMetadataIssue</code>, <code>StylesheetLoadingIssue</code>, <code>FederatedAuthUserInfoRequestIssue</code>, <code>PropertyRuleIssue</code>, <code>SharedDictionaryIssue</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-InspectorIssueDetails">
+          <span class="domain-dot">Audits.</span>InspectorIssueDetails
+          
+          <a href="#type-InspectorIssueDetails"
+             class="permalink"
+             data-slug="Audits.InspectorIssueDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>This struct holds a list of optional fields with additional information
+specific to the kind of issue. When adding a new issue code, please also
+add a new optional field to this type.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          cookieIssueDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-CookieIssueDetails class="param-type">CookieIssueDetails</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          mixedContentIssueDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-MixedContentIssueDetails class="param-type">MixedContentIssueDetails</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          blockedByResponseIssueDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-BlockedByResponseIssueDetails class="param-type">BlockedByResponseIssueDetails</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          heavyAdIssueDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-HeavyAdIssueDetails class="param-type">HeavyAdIssueDetails</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          contentSecurityPolicyIssueDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-ContentSecurityPolicyIssueDetails class="param-type">ContentSecurityPolicyIssueDetails</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          sharedArrayBufferIssueDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-SharedArrayBufferIssueDetails class="param-type">SharedArrayBufferIssueDetails</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          lowTextContrastIssueDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-LowTextContrastIssueDetails class="param-type">LowTextContrastIssueDetails</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          corsIssueDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-CorsIssueDetails class="param-type">CorsIssueDetails</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          attributionReportingIssueDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-AttributionReportingIssueDetails class="param-type">AttributionReportingIssueDetails</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          quirksModeIssueDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-QuirksModeIssueDetails class="param-type">QuirksModeIssueDetails</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          navigatorUserAgentIssueDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-NavigatorUserAgentIssueDetails class="param-type">NavigatorUserAgentIssueDetails</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          genericIssueDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-GenericIssueDetails class="param-type">GenericIssueDetails</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          deprecationIssueDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-DeprecationIssueDetails class="param-type">DeprecationIssueDetails</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          clientHintIssueDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-ClientHintIssueDetails class="param-type">ClientHintIssueDetails</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          federatedAuthRequestIssueDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-FederatedAuthRequestIssueDetails class="param-type">FederatedAuthRequestIssueDetails</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          bounceTrackingIssueDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-BounceTrackingIssueDetails class="param-type">BounceTrackingIssueDetails</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          cookieDeprecationMetadataIssueDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-CookieDeprecationMetadataIssueDetails class="param-type">CookieDeprecationMetadataIssueDetails</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          stylesheetLoadingIssueDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-StylesheetLoadingIssueDetails class="param-type">StylesheetLoadingIssueDetails</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          propertyRuleIssueDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-PropertyRuleIssueDetails class="param-type">PropertyRuleIssueDetails</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          federatedAuthUserInfoRequestIssueDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-FederatedAuthUserInfoRequestIssueDetails class="param-type">FederatedAuthUserInfoRequestIssueDetails</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          sharedDictionaryIssueDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-SharedDictionaryIssueDetails class="param-type">SharedDictionaryIssueDetails</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-IssueId">
+          <span class="domain-dot">Audits.</span>IssueId
+          
+          <a href="#type-IssueId"
+             class="permalink"
+             data-slug="Audits.IssueId"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>A unique id for a DevTools inspector issue. Allows other entities (e.g.
+exceptions, CDP message, console messages, etc.) to reference an issue.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-LowTextContrastIssueDetails">
+          <span class="domain-dot">Audits.</span>LowTextContrastIssueDetails
+          
+          <a href="#type-LowTextContrastIssueDetails"
+             class="permalink"
+             data-slug="Audits.LowTextContrastIssueDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          violatingNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-BackendNodeId class="param-type">DOM.BackendNodeId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          violatingNodeSelector
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          contrastRatio
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          thresholdAA
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          thresholdAAA
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          fontSize
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          fontWeight
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-MixedContentIssueDetails">
+          <span class="domain-dot">Audits.</span>MixedContentIssueDetails
+          
+          <a href="#type-MixedContentIssueDetails"
+             class="permalink"
+             data-slug="Audits.MixedContentIssueDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          resourceType
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-MixedContentResourceType class="param-type">MixedContentResourceType</a>
+          
+      <div class="details-description">
+        <p>The type of resource causing the mixed content issue (css, js, iframe,
+form,...). Marked as optional because it is mapped to from
+blink::mojom::RequestContextType, which will be replaced
+by network::mojom::RequestDestination</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          resolutionStatus
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-MixedContentResolutionStatus class="param-type">MixedContentResolutionStatus</a>
+          
+      <div class="details-description">
+        <p>The way the mixed content issue is being resolved.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          insecureURL
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The unsafe http url causing the mixed content issue.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          mainResourceURL
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The url responsible for the call to an unsafe url.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          request
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-AffectedRequest class="param-type">AffectedRequest</a>
+          
+      <div class="details-description">
+        <p>The mixed content request.
+Does not always exist (e.g. for unsafe form submission urls).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          frame
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-AffectedFrame class="param-type">AffectedFrame</a>
+          
+      <div class="details-description">
+        <p>Optional because not every mixed content issue is necessarily linked to a frame.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-MixedContentResolutionStatus">
+          <span class="domain-dot">Audits.</span>MixedContentResolutionStatus
+          
+          <a href="#type-MixedContentResolutionStatus"
+             class="permalink"
+             data-slug="Audits.MixedContentResolutionStatus"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>MixedContentBlocked</code>, <code>MixedContentAutomaticallyUpgraded</code>, <code>MixedContentWarning</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-MixedContentResourceType">
+          <span class="domain-dot">Audits.</span>MixedContentResourceType
+          
+          <a href="#type-MixedContentResourceType"
+             class="permalink"
+             data-slug="Audits.MixedContentResourceType"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>AttributionSrc</code>, <code>Audio</code>, <code>Beacon</code>, <code>CSPReport</code>, <code>Download</code>, <code>EventSource</code>, <code>Favicon</code>, <code>Font</code>, <code>Form</code>, <code>Frame</code>, <code>Image</code>, <code>Import</code>, <code>JSON</code>, <code>Manifest</code>, <code>Ping</code>, <code>PluginData</code>, <code>PluginResource</code>, <code>Prefetch</code>, <code>Resource</code>, <code>Script</code>, <code>ServiceWorker</code>, <code>SharedWorker</code>, <code>SpeculationRules</code>, <code>Stylesheet</code>, <code>Track</code>, <code>Video</code>, <code>Worker</code>, <code>XMLHttpRequest</code>, <code>XSLT</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-PropertyRuleIssueDetails">
+          <span class="domain-dot">Audits.</span>PropertyRuleIssueDetails
+          
+          <a href="#type-PropertyRuleIssueDetails"
+             class="permalink"
+             data-slug="Audits.PropertyRuleIssueDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>This issue warns about errors in property rules that lead to property
+registrations being ignored.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          sourceCodeLocation
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-SourceCodeLocation class="param-type">SourceCodeLocation</a>
+          
+      <div class="details-description">
+        <p>Source code position of the property rule.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          propertyRuleIssueReason
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-PropertyRuleIssueReason class="param-type">PropertyRuleIssueReason</a>
+          
+      <div class="details-description">
+        <p>Reason why the property rule was discarded.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          propertyValue
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The value of the property rule property that failed to parse</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-PropertyRuleIssueReason">
+          <span class="domain-dot">Audits.</span>PropertyRuleIssueReason
+          
+          <a href="#type-PropertyRuleIssueReason"
+             class="permalink"
+             data-slug="Audits.PropertyRuleIssueReason"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>InvalidSyntax</code>, <code>InvalidInitialValue</code>, <code>InvalidInherits</code>, <code>InvalidName</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-QuirksModeIssueDetails">
+          <span class="domain-dot">Audits.</span>QuirksModeIssueDetails
+          
+          <a href="#type-QuirksModeIssueDetails"
+             class="permalink"
+             data-slug="Audits.QuirksModeIssueDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Details for issues about documents in Quirks Mode
+or Limited Quirks Mode that affects page layouting.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          isLimitedQuirksMode
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>If false, it means the document&#39;s mode is &quot;quirks&quot;
+instead of &quot;limited-quirks&quot;.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          documentNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-BackendNodeId class="param-type">DOM.BackendNodeId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          frameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Page/#type-FrameId class="param-type">Page.FrameId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          loaderId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Network/#type-LoaderId class="param-type">Network.LoaderId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-SharedArrayBufferIssueDetails">
+          <span class="domain-dot">Audits.</span>SharedArrayBufferIssueDetails
+          
+          <a href="#type-SharedArrayBufferIssueDetails"
+             class="permalink"
+             data-slug="Audits.SharedArrayBufferIssueDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Details for a issue arising from an SAB being instantiated in, or
+transferred to a context that is not cross-origin isolated.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          sourceCodeLocation
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-SourceCodeLocation class="param-type">SourceCodeLocation</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          isWarning
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          type
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-SharedArrayBufferIssueType class="param-type">SharedArrayBufferIssueType</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-SharedArrayBufferIssueType">
+          <span class="domain-dot">Audits.</span>SharedArrayBufferIssueType
+          
+          <a href="#type-SharedArrayBufferIssueType"
+             class="permalink"
+             data-slug="Audits.SharedArrayBufferIssueType"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>TransferIssue</code>, <code>CreationIssue</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-SharedDictionaryError">
+          <span class="domain-dot">Audits.</span>SharedDictionaryError
+          
+          <a href="#type-SharedDictionaryError"
+             class="permalink"
+             data-slug="Audits.SharedDictionaryError"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>UseErrorCrossOriginNoCorsRequest</code>, <code>UseErrorDictionaryLoadFailure</code>, <code>UseErrorMatchingDictionaryNotUsed</code>, <code>UseErrorUnexpectedContentDictionaryHeader</code>, <code>WriteErrorCossOriginNoCorsRequest</code>, <code>WriteErrorDisallowedBySettings</code>, <code>WriteErrorExpiredResponse</code>, <code>WriteErrorFeatureDisabled</code>, <code>WriteErrorInsufficientResources</code>, <code>WriteErrorInvalidMatchField</code>, <code>WriteErrorInvalidStructuredHeader</code>, <code>WriteErrorNavigationRequest</code>, <code>WriteErrorNoMatchField</code>, <code>WriteErrorNonListMatchDestField</code>, <code>WriteErrorNonSecureContext</code>, <code>WriteErrorNonStringIdField</code>, <code>WriteErrorNonStringInMatchDestList</code>, <code>WriteErrorNonStringMatchField</code>, <code>WriteErrorNonTokenTypeField</code>, <code>WriteErrorRequestAborted</code>, <code>WriteErrorShuttingDown</code>, <code>WriteErrorTooLongIdField</code>, <code>WriteErrorUnsupportedType</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-SharedDictionaryIssueDetails">
+          <span class="domain-dot">Audits.</span>SharedDictionaryIssueDetails
+          
+          <a href="#type-SharedDictionaryIssueDetails"
+             class="permalink"
+             data-slug="Audits.SharedDictionaryIssueDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          sharedDictionaryError
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-SharedDictionaryError class="param-type">SharedDictionaryError</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          request
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-AffectedRequest class="param-type">AffectedRequest</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-SourceCodeLocation">
+          <span class="domain-dot">Audits.</span>SourceCodeLocation
+          
+          <a href="#type-SourceCodeLocation"
+             class="permalink"
+             data-slug="Audits.SourceCodeLocation"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          scriptId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ScriptId class="param-type">Runtime.ScriptId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          lineNumber
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          columnNumber
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-StylesheetLoadingIssueDetails">
+          <span class="domain-dot">Audits.</span>StylesheetLoadingIssueDetails
+          
+          <a href="#type-StylesheetLoadingIssueDetails"
+             class="permalink"
+             data-slug="Audits.StylesheetLoadingIssueDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>This issue warns when a referenced stylesheet couldn&#39;t be loaded.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          sourceCodeLocation
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-SourceCodeLocation class="param-type">SourceCodeLocation</a>
+          
+      <div class="details-description">
+        <p>Source code position that referenced the failing stylesheet.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          styleSheetLoadingIssueReason
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-StyleSheetLoadingIssueReason class="param-type">StyleSheetLoadingIssueReason</a>
+          
+      <div class="details-description">
+        <p>Reason why the stylesheet couldn&#39;t be loaded.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          failedRequestInfo
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-FailedRequestInfo class="param-type">FailedRequestInfo</a>
+          
+      <div class="details-description">
+        <p>Contains additional info when the failure was due to a request.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-StyleSheetLoadingIssueReason">
+          <span class="domain-dot">Audits.</span>StyleSheetLoadingIssueReason
+          
+          <a href="#type-StyleSheetLoadingIssueReason"
+             class="permalink"
+             data-slug="Audits.StyleSheetLoadingIssueReason"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>LateImportRule</code>, <code>RequestFailed</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-NavigatorUserAgentIssueDetails">
+          <span class="domain-dot">Audits.</span>NavigatorUserAgentIssueDetails
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+          <a href="#type-NavigatorUserAgentIssueDetails"
+             class="permalink"
+             data-slug="Audits.NavigatorUserAgentIssueDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          location
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Audits/#type-SourceCodeLocation class="param-type">SourceCodeLocation</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+    </div>
+    
+      </div>
+    </section>
+  </main>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60854461-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>

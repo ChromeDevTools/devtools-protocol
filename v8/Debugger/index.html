@@ -1,0 +1,4329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Chrome DevTools Protocol - version v8 - Debugger domain" />
+  <link rel="icon" type="image/png" href="/devtools-protocol/images/logo.png" />
+    <title>Chrome DevTools Protocol - version v8 - Debugger domain</title>
+
+  <meta name="theme-color" content="#303F9F" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@chromedevtools" />
+  <meta name="twitter:creator" content="@chromedevtools" />
+  <meta property="og:title" content="Chrome DevTools Protocol" />
+  <meta property="og:image" content="https://developers.google.com/web/tools/images/chrome-devtools-16x9_720.png" />
+    <meta property="og:description" content="Chrome DevTools Protocol - version v8 - Debugger domain" />
+
+  <script type="module" src="/devtools-protocol/scripts/index.js"></script>
+  <link href="/devtools-protocol/styles/protocol.css" rel="stylesheet">
+</head>
+<body>
+  <aside>
+    <div id="home" class="navs">
+      <nav>
+        <a href="/devtools-protocol/">Home</a>
+        <button class="aside-close-button" aria-label="Close navigation">x</button>
+      </nav>
+    </div>
+    <div id="versions" class="navs">
+      <header>Versions</header>
+      <nav>
+        <a href="/devtools-protocol/tot" name="tot">
+          latest (tip-of-tree)
+        </a>
+        <a href="/devtools-protocol/v8" name="v8">
+          v8-inspector (node)
+        </a>
+        <a href="/devtools-protocol/1-3" name="1-3">
+          stable (1.3)
+        </a><!-- 
+        <a href="/devtools-protocol/1-2" name="1-2">
+          stable (1.2)
+        </a> -->
+      </nav>
+    </div>
+
+    <div id="domains" class="navs version-v8">
+      <header>Domains</header>
+      <div class="scroller">
+        <nav>
+          <a href="/devtools-protocol/v8/Accessibility" class="tot experimental">Accessibility</a>
+          <a href="/devtools-protocol/v8/Animation" class="tot experimental">Animation</a>
+          <a href="/devtools-protocol/v8/Audits" class="tot experimental">Audits</a>
+          <a href="/devtools-protocol/v8/Autofill" class="tot experimental">Autofill</a>
+          <a href="/devtools-protocol/v8/BackgroundService" class="tot experimental">BackgroundService</a>
+          <a href="/devtools-protocol/v8/Browser" class="tot 1-3">Browser</a>
+          <a href="/devtools-protocol/v8/CacheStorage" class="tot experimental">CacheStorage</a>
+          <a href="/devtools-protocol/v8/Cast" class="tot experimental">Cast</a>
+          <a href="/devtools-protocol/v8/Console" class="tot deprecated v8">Console</a>
+          <a href="/devtools-protocol/v8/CSS" class="tot experimental">CSS</a>
+          <a href="/devtools-protocol/v8/Database" class="tot experimental">Database</a>
+          <a href="/devtools-protocol/v8/Debugger" class="tot 1-2 1-3 v8">Debugger</a>
+          <a href="/devtools-protocol/v8/DeviceAccess" class="tot experimental">DeviceAccess</a>
+          <a href="/devtools-protocol/v8/DeviceOrientation" class="tot experimental">DeviceOrientation</a>
+          <a href="/devtools-protocol/v8/DOM" class="tot 1-2 1-3">DOM</a>
+          <a href="/devtools-protocol/v8/DOMDebugger" class="tot 1-2 1-3">DOMDebugger</a>
+          <a href="/devtools-protocol/v8/DOMSnapshot" class="tot experimental">DOMSnapshot</a>
+          <a href="/devtools-protocol/v8/DOMStorage" class="tot experimental">DOMStorage</a>
+          <a href="/devtools-protocol/v8/Emulation" class="tot 1-2 1-3">Emulation</a>
+          <a href="/devtools-protocol/v8/EventBreakpoints" class="tot experimental">EventBreakpoints</a>
+          <a href="/devtools-protocol/v8/Extensions" class="tot experimental">Extensions</a>
+          <a href="/devtools-protocol/v8/FedCm" class="tot experimental">FedCm</a>
+          <a href="/devtools-protocol/v8/Fetch" class="tot 1-3">Fetch</a>
+          <a href="/devtools-protocol/v8/HeadlessExperimental" class="tot experimental">HeadlessExperimental</a>
+          <a href="/devtools-protocol/v8/HeapProfiler" class="tot experimental v8">HeapProfiler</a>
+          <a href="/devtools-protocol/v8/IndexedDB" class="tot experimental">IndexedDB</a>
+          <a href="/devtools-protocol/v8/Input" class="tot 1-2 1-3">Input</a>
+          <a href="/devtools-protocol/v8/Inspector" class="tot experimental">Inspector</a>
+          <a href="/devtools-protocol/v8/IO" class="tot 1-3">IO</a>
+          <a href="/devtools-protocol/v8/LayerTree" class="tot experimental">LayerTree</a>
+          <a href="/devtools-protocol/v8/Log" class="tot 1-3">Log</a>
+          <a href="/devtools-protocol/v8/Media" class="tot experimental">Media</a>
+          <a href="/devtools-protocol/v8/Memory" class="tot experimental">Memory</a>
+          <a href="/devtools-protocol/v8/Network" class="tot 1-2 1-3">Network</a>
+          <a href="/devtools-protocol/v8/Overlay" class="tot experimental">Overlay</a>
+          <a href="/devtools-protocol/v8/Page" class="tot 1-2 1-3">Page</a>
+          <a href="/devtools-protocol/v8/Performance" class="tot 1-3">Performance</a>
+          <a href="/devtools-protocol/v8/PerformanceTimeline" class="tot experimental">PerformanceTimeline</a>
+          <a href="/devtools-protocol/v8/Preload" class="tot experimental">Preload</a>
+          <a href="/devtools-protocol/v8/Profiler" class="tot 1-2 1-3 v8">Profiler</a>
+          <a href="/devtools-protocol/v8/Runtime" class="tot 1-2 1-3 v8">Runtime</a>
+          <a href="/devtools-protocol/v8/Schema" class="tot deprecated 1-2 v8">Schema</a>
+          <a href="/devtools-protocol/v8/Security" class="tot 1-3">Security</a>
+          <a href="/devtools-protocol/v8/ServiceWorker" class="tot experimental">ServiceWorker</a>
+          <a href="/devtools-protocol/v8/Storage" class="tot experimental">Storage</a>
+          <a href="/devtools-protocol/v8/SystemInfo" class="tot experimental">SystemInfo</a>
+          <a href="/devtools-protocol/v8/Target" class="tot 1-3">Target</a>
+          <a href="/devtools-protocol/v8/Tethering" class="tot experimental">Tethering</a>
+          <a href="/devtools-protocol/v8/Tracing" class="tot experimental">Tracing</a>
+          <a href="/devtools-protocol/v8/WebAudio" class="tot experimental">WebAudio</a>
+          <a href="/devtools-protocol/v8/WebAuthn" class="tot experimental">WebAuthn</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <h1>Chrome DevTools Protocol</h1>
+      <button class="menu-link">Navigation</button>
+      <cr-search-control base-url="/devtools-protocol/" protocol-search-index="/search_index/v8.json"></cr-search-control>
+    </header>
+    <section>
+      <div class="main-content-section domain">
+        
+    <div class="domain-section">
+      <div id="header">
+        <h2 class="heading">Debugger Domain</h2>
+        
+      <div class="details-description">
+        <p>Debugger domain exposes JavaScript debugging capabilities. It allows setting and removing
+breakpoints, stepping through execution, exploring stack traces, etc.</p>
+
+        
+      </div>
+    
+        
+        <h3>Methods</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#method-continueToLocation"><span class="domain-dot">Debugger.</span>continueToLocation</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-disable"><span class="domain-dot">Debugger.</span>disable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-enable"><span class="domain-dot">Debugger.</span>enable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-evaluateOnCallFrame"><span class="domain-dot">Debugger.</span>evaluateOnCallFrame</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getPossibleBreakpoints"><span class="domain-dot">Debugger.</span>getPossibleBreakpoints</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getScriptSource"><span class="domain-dot">Debugger.</span>getScriptSource</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-pause"><span class="domain-dot">Debugger.</span>pause</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-removeBreakpoint"><span class="domain-dot">Debugger.</span>removeBreakpoint</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-restartFrame"><span class="domain-dot">Debugger.</span>restartFrame</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-resume"><span class="domain-dot">Debugger.</span>resume</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-searchInContent"><span class="domain-dot">Debugger.</span>searchInContent</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setAsyncCallStackDepth"><span class="domain-dot">Debugger.</span>setAsyncCallStackDepth</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setBreakpoint"><span class="domain-dot">Debugger.</span>setBreakpoint</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setBreakpointByUrl"><span class="domain-dot">Debugger.</span>setBreakpointByUrl</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setBreakpointsActive"><span class="domain-dot">Debugger.</span>setBreakpointsActive</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setInstrumentationBreakpoint"><span class="domain-dot">Debugger.</span>setInstrumentationBreakpoint</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setPauseOnExceptions"><span class="domain-dot">Debugger.</span>setPauseOnExceptions</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setScriptSource"><span class="domain-dot">Debugger.</span>setScriptSource</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setSkipAllPauses"><span class="domain-dot">Debugger.</span>setSkipAllPauses</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setVariableValue"><span class="domain-dot">Debugger.</span>setVariableValue</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-stepInto"><span class="domain-dot">Debugger.</span>stepInto</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-stepOut"><span class="domain-dot">Debugger.</span>stepOut</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-stepOver"><span class="domain-dot">Debugger.</span>stepOver</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getWasmBytecode"><span class="domain-dot">Debugger.</span>getWasmBytecode</a>
+        <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-disassembleWasmModule"><span class="domain-dot">Debugger.</span>disassembleWasmModule</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getStackTrace"><span class="domain-dot">Debugger.</span>getStackTrace</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-nextWasmDisassemblyChunk"><span class="domain-dot">Debugger.</span>nextWasmDisassemblyChunk</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setBlackboxedRanges"><span class="domain-dot">Debugger.</span>setBlackboxedRanges</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setBlackboxExecutionContexts"><span class="domain-dot">Debugger.</span>setBlackboxExecutionContexts</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setBlackboxPatterns"><span class="domain-dot">Debugger.</span>setBlackboxPatterns</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setBreakpointOnFunctionCall"><span class="domain-dot">Debugger.</span>setBreakpointOnFunctionCall</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setReturnValue"><span class="domain-dot">Debugger.</span>setReturnValue</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-pauseOnAsyncCall"><span class="domain-dot">Debugger.</span>pauseOnAsyncCall</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span><span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+      </div>
+      
+        <h3>Events</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#event-breakpointResolved"><span class="domain-dot">Debugger.</span>breakpointResolved</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-paused"><span class="domain-dot">Debugger.</span>paused</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-resumed"><span class="domain-dot">Debugger.</span>resumed</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-scriptFailedToParse"><span class="domain-dot">Debugger.</span>scriptFailedToParse</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-scriptParsed"><span class="domain-dot">Debugger.</span>scriptParsed</a>
+        
+      </div>
+      
+        <h3>Types</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#type-BreakLocation"><span class="domain-dot">Debugger.</span>BreakLocation</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-BreakpointId"><span class="domain-dot">Debugger.</span>BreakpointId</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-CallFrame"><span class="domain-dot">Debugger.</span>CallFrame</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-CallFrameId"><span class="domain-dot">Debugger.</span>CallFrameId</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-DebugSymbols"><span class="domain-dot">Debugger.</span>DebugSymbols</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-Location"><span class="domain-dot">Debugger.</span>Location</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-Scope"><span class="domain-dot">Debugger.</span>Scope</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ScriptLanguage"><span class="domain-dot">Debugger.</span>ScriptLanguage</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-SearchMatch"><span class="domain-dot">Debugger.</span>SearchMatch</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-LocationRange"><span class="domain-dot">Debugger.</span>LocationRange</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ScriptPosition"><span class="domain-dot">Debugger.</span>ScriptPosition</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-WasmDisassemblyChunk"><span class="domain-dot">Debugger.</span>WasmDisassemblyChunk</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      </div>
+
+      
+      <h3 id="methods">Methods</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="method-continueToLocation">
+          <span class="domain-dot">Debugger.</span>continueToLocation
+          
+          <a href="#method-continueToLocation"
+             class="permalink"
+             data-slug="Debugger.continueToLocation"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Continues execution until specific location is reached.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          location
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-Location class="param-type">Location</a>
+          
+      <div class="details-description">
+        <p>Location to continue to.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          targetCallFrames
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>any</code>, <code>current</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-disable">
+          <span class="domain-dot">Debugger.</span>disable
+          
+          <a href="#method-disable"
+             class="permalink"
+             data-slug="Debugger.disable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Disables debugger for given page.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-enable">
+          <span class="domain-dot">Debugger.</span>enable
+          
+          <a href="#method-enable"
+             class="permalink"
+             data-slug="Debugger.enable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enables debugger for the given page. Clients should not assume that the debugging has been
+enabled until the result for this command is received.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          maxScriptsCacheSize
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>The maximum size in bytes of collected scripts (not referenced by other heap objects)
+the debugger can hold. Puts no limit if parameter is omitted.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          debuggerId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-UniqueDebuggerId class="param-type">Runtime.UniqueDebuggerId</a>
+          
+      <div class="details-description">
+        <p>Unique identifier of the debugger.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-evaluateOnCallFrame">
+          <span class="domain-dot">Debugger.</span>evaluateOnCallFrame
+          
+          <a href="#method-evaluateOnCallFrame"
+             class="permalink"
+             data-slug="Debugger.evaluateOnCallFrame"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Evaluates expression on a given call frame.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          callFrameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-CallFrameId class="param-type">CallFrameId</a>
+          
+      <div class="details-description">
+        <p>Call frame identifier to evaluate on.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          expression
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Expression to evaluate.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          objectGroup
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>String object group name to put result into (allows rapid releasing resulting object handles
+using <code>releaseObjectGroup</code>).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          includeCommandLineAPI
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Specifies whether command line API should be available to the evaluated expression, defaults
+to false.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          silent
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>In silent mode exceptions thrown during evaluation are not reported and do not pause
+execution. Overrides <code>setPauseOnException</code> state.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          returnByValue
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether the result is expected to be a JSON object that should be sent by value.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          generatePreview
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether preview should be generated for the result.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          throwOnSideEffect
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether to throw an exception if side effect cannot be ruled out during evaluation.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          timeout
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-TimeDelta class="param-type">Runtime.TimeDelta</a>
+          
+      <div class="details-description">
+        <p>Terminate execution after timing out (number of milliseconds).</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          result
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-RemoteObject class="param-type">Runtime.RemoteObject</a>
+          
+      <div class="details-description">
+        <p>Object wrapper for the evaluation result.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          exceptionDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-ExceptionDetails class="param-type">Runtime.ExceptionDetails</a>
+          
+      <div class="details-description">
+        <p>Exception details.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getPossibleBreakpoints">
+          <span class="domain-dot">Debugger.</span>getPossibleBreakpoints
+          
+          <a href="#method-getPossibleBreakpoints"
+             class="permalink"
+             data-slug="Debugger.getPossibleBreakpoints"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns possible locations for breakpoint. scriptId in start and end range locations should be
+the same.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          start
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-Location class="param-type">Location</a>
+          
+      <div class="details-description">
+        <p>Start of range to search possible breakpoint locations in.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          end
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-Location class="param-type">Location</a>
+          
+      <div class="details-description">
+        <p>End of range to search possible breakpoint locations in (excluding). When not specified, end
+of scripts is used as end of range.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          restrictToFunction
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Only consider locations which are in the same (non-nested) function as start.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          locations
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/v8/Debugger/#type-BreakLocation class="param-type">BreakLocation</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>List of the possible breakpoint locations.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getScriptSource">
+          <span class="domain-dot">Debugger.</span>getScriptSource
+          
+          <a href="#method-getScriptSource"
+             class="permalink"
+             data-slug="Debugger.getScriptSource"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns source for the script with given id.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          scriptId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-ScriptId class="param-type">Runtime.ScriptId</a>
+          
+      <div class="details-description">
+        <p>Id of the script to get source for.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          scriptSource
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Script source (empty in case of Wasm bytecode).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          bytecode
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Wasm bytecode. (Encoded as a base64 string when passed over JSON)</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-pause">
+          <span class="domain-dot">Debugger.</span>pause
+          
+          <a href="#method-pause"
+             class="permalink"
+             data-slug="Debugger.pause"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Stops on the next JavaScript statement.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-removeBreakpoint">
+          <span class="domain-dot">Debugger.</span>removeBreakpoint
+          
+          <a href="#method-removeBreakpoint"
+             class="permalink"
+             data-slug="Debugger.removeBreakpoint"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Removes JavaScript breakpoint.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          breakpointId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-BreakpointId class="param-type">BreakpointId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-restartFrame">
+          <span class="domain-dot">Debugger.</span>restartFrame
+          
+          <a href="#method-restartFrame"
+             class="permalink"
+             data-slug="Debugger.restartFrame"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Restarts particular call frame from the beginning. The old, deprecated
+behavior of <code>restartFrame</code> is to stay paused and allow further CDP commands
+after a restart was scheduled. This can cause problems with restarting, so
+we now continue execution immediatly after it has been scheduled until we
+reach the beginning of the restarted frame.</p>
+<p>To stay back-wards compatible, <code>restartFrame</code> now expects a <code>mode</code>
+parameter to be present. If the <code>mode</code> parameter is missing, <code>restartFrame</code>
+errors out.</p>
+<p>The various return values are deprecated and <code>callFrames</code> is always empty.
+Use the call frames from the <code>Debugger#paused</code> events instead, that fires
+once V8 pauses at the beginning of the restarted function.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          callFrameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-CallFrameId class="param-type">CallFrameId</a>
+          
+      <div class="details-description">
+        <p>Call frame identifier to evaluate on.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          mode
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The <code>mode</code> parameter must be present and set to &#39;StepInto&#39;, otherwise
+<code>restartFrame</code> will error out.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>StepInto</code></div>
+    
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          callFrames
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/v8/Debugger/#type-CallFrame class="param-type">CallFrame</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>New stack trace.</p>
+
+        
+      </div>
+    
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          asyncStackTrace
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-StackTrace class="param-type">Runtime.StackTrace</a>
+          
+      <div class="details-description">
+        <p>Async stack trace, if any.</p>
+
+        
+      </div>
+    
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          asyncStackTraceId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-StackTraceId class="param-type">Runtime.StackTraceId</a>
+          
+      <div class="details-description">
+        <p>Async stack trace, if any.</p>
+
+        
+      </div>
+    
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-resume">
+          <span class="domain-dot">Debugger.</span>resume
+          
+          <a href="#method-resume"
+             class="permalink"
+             data-slug="Debugger.resume"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Resumes JavaScript execution.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          terminateOnResume
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Set to true to terminate execution upon resuming execution. In contrast
+to Runtime.terminateExecution, this will allows to execute further
+JavaScript (i.e. via evaluation) until execution of the paused code
+is actually resumed, at which point termination is triggered.
+If execution is currently not paused, this parameter has no effect.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-searchInContent">
+          <span class="domain-dot">Debugger.</span>searchInContent
+          
+          <a href="#method-searchInContent"
+             class="permalink"
+             data-slug="Debugger.searchInContent"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Searches for given string in script content.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          scriptId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-ScriptId class="param-type">Runtime.ScriptId</a>
+          
+      <div class="details-description">
+        <p>Id of the script to search in.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          query
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>String to search for.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          caseSensitive
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>If true, search is case sensitive.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          isRegex
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>If true, treats string parameter as regex.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          result
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/v8/Debugger/#type-SearchMatch class="param-type">SearchMatch</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>List of search matches.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setAsyncCallStackDepth">
+          <span class="domain-dot">Debugger.</span>setAsyncCallStackDepth
+          
+          <a href="#method-setAsyncCallStackDepth"
+             class="permalink"
+             data-slug="Debugger.setAsyncCallStackDepth"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enables or disables async call stacks tracking.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          maxDepth
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Maximum depth of async call stacks. Setting to <code>0</code> will effectively disable collecting async
+call stacks (default).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setBreakpoint">
+          <span class="domain-dot">Debugger.</span>setBreakpoint
+          
+          <a href="#method-setBreakpoint"
+             class="permalink"
+             data-slug="Debugger.setBreakpoint"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Sets JavaScript breakpoint at a given location.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          location
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-Location class="param-type">Location</a>
+          
+      <div class="details-description">
+        <p>Location to set breakpoint in.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          condition
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Expression to use as a breakpoint condition. When specified, debugger will only stop on the
+breakpoint if this expression evaluates to true.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          breakpointId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-BreakpointId class="param-type">BreakpointId</a>
+          
+      <div class="details-description">
+        <p>Id of the created breakpoint for further reference.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          actualLocation
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-Location class="param-type">Location</a>
+          
+      <div class="details-description">
+        <p>Location this breakpoint resolved into.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setBreakpointByUrl">
+          <span class="domain-dot">Debugger.</span>setBreakpointByUrl
+          
+          <a href="#method-setBreakpointByUrl"
+             class="permalink"
+             data-slug="Debugger.setBreakpointByUrl"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Sets JavaScript breakpoint at given location specified either by URL or URL regex. Once this
+command is issued, all existing parsed scripts will have breakpoints resolved and returned in
+<code>locations</code> property. Further matching script parsing will result in subsequent
+<code>breakpointResolved</code> events issued. This logical breakpoint will survive page reloads.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          lineNumber
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Line number to set breakpoint at.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>URL of the resources to set breakpoint on.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          urlRegex
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Regex pattern for the URLs of the resources to set breakpoints on. Either <code>url</code> or
+<code>urlRegex</code> must be specified.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          scriptHash
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Script hash of the resources to set breakpoint on.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          columnNumber
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Offset in the line to set breakpoint at.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          condition
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Expression to use as a breakpoint condition. When specified, debugger will only stop on the
+breakpoint if this expression evaluates to true.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          breakpointId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-BreakpointId class="param-type">BreakpointId</a>
+          
+      <div class="details-description">
+        <p>Id of the created breakpoint for further reference.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          locations
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/v8/Debugger/#type-Location class="param-type">Location</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>List of the locations this breakpoint resolved into upon addition.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setBreakpointsActive">
+          <span class="domain-dot">Debugger.</span>setBreakpointsActive
+          
+          <a href="#method-setBreakpointsActive"
+             class="permalink"
+             data-slug="Debugger.setBreakpointsActive"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Activates / deactivates all breakpoints on the page.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          active
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>New value for breakpoints active state.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setInstrumentationBreakpoint">
+          <span class="domain-dot">Debugger.</span>setInstrumentationBreakpoint
+          
+          <a href="#method-setInstrumentationBreakpoint"
+             class="permalink"
+             data-slug="Debugger.setInstrumentationBreakpoint"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Sets instrumentation breakpoint.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          instrumentation
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Instrumentation name.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>beforeScriptExecution</code>, <code>beforeScriptWithSourceMapExecution</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          breakpointId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-BreakpointId class="param-type">BreakpointId</a>
+          
+      <div class="details-description">
+        <p>Id of the created breakpoint for further reference.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setPauseOnExceptions">
+          <span class="domain-dot">Debugger.</span>setPauseOnExceptions
+          
+          <a href="#method-setPauseOnExceptions"
+             class="permalink"
+             data-slug="Debugger.setPauseOnExceptions"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Defines pause on exceptions state. Can be set to stop on all exceptions, uncaught exceptions,
+or caught exceptions, no exceptions. Initial pause on exceptions state is <code>none</code>.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          state
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Pause on exceptions mode.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>none</code>, <code>caught</code>, <code>uncaught</code>, <code>all</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setScriptSource">
+          <span class="domain-dot">Debugger.</span>setScriptSource
+          
+          <a href="#method-setScriptSource"
+             class="permalink"
+             data-slug="Debugger.setScriptSource"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Edits JavaScript source live.</p>
+<p>In general, functions that are currently on the stack can not be edited with
+a single exception: If the edited function is the top-most stack frame and
+that is the only activation of that function on the stack. In this case
+the live edit will be successful and a <code>Debugger.restartFrame</code> for the
+top-most function is automatically triggered.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          scriptId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-ScriptId class="param-type">Runtime.ScriptId</a>
+          
+      <div class="details-description">
+        <p>Id of the script to edit.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          scriptSource
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>New content of the script.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          dryRun
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>If true the change will not actually be applied. Dry run may be used to get result
+description without actually modifying the code.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          allowTopFrameEditing
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>If true, then <code>scriptSource</code> is allowed to change the function on top of the stack
+as long as the top-most stack frame is the only activation of that function.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          callFrames
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/v8/Debugger/#type-CallFrame class="param-type">CallFrame</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>New stack trace in case editing has happened while VM was stopped.</p>
+
+        
+      </div>
+    
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          stackChanged
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether current call stack  was modified after applying the changes.</p>
+
+        
+      </div>
+    
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          asyncStackTrace
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-StackTrace class="param-type">Runtime.StackTrace</a>
+          
+      <div class="details-description">
+        <p>Async stack trace, if any.</p>
+
+        
+      </div>
+    
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          asyncStackTraceId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-StackTraceId class="param-type">Runtime.StackTraceId</a>
+          
+      <div class="details-description">
+        <p>Async stack trace, if any.</p>
+
+        
+      </div>
+    
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+        <dt class="param-name monospace ">
+          status
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Whether the operation was successful or not. Only <code>Ok</code> denotes a
+successful live edit while the other enum variants denote why
+the live edit failed.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>Ok</code>, <code>CompileError</code>, <code>BlockedByActiveGenerator</code>, <code>BlockedByActiveFunction</code>, <code>BlockedByTopLevelEsModuleChange</code></div>
+    
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          exceptionDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-ExceptionDetails class="param-type">Runtime.ExceptionDetails</a>
+          
+      <div class="details-description">
+        <p>Exception details if any. Only present when <code>status</code> is <code>CompileError</code>.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setSkipAllPauses">
+          <span class="domain-dot">Debugger.</span>setSkipAllPauses
+          
+          <a href="#method-setSkipAllPauses"
+             class="permalink"
+             data-slug="Debugger.setSkipAllPauses"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Makes page not interrupt on any pauses (breakpoint, exception, dom exception etc).</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          skip
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>New value for skip pauses state.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setVariableValue">
+          <span class="domain-dot">Debugger.</span>setVariableValue
+          
+          <a href="#method-setVariableValue"
+             class="permalink"
+             data-slug="Debugger.setVariableValue"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Changes value of variable in a callframe. Object-based scopes are not supported and must be
+mutated manually.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          scopeNumber
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>0-based number of scope as was listed in scope chain. Only &#39;local&#39;, &#39;closure&#39; and &#39;catch&#39;
+scope types are allowed. Other scopes could be manipulated manually.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          variableName
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Variable name.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          newValue
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-CallArgument class="param-type">Runtime.CallArgument</a>
+          
+      <div class="details-description">
+        <p>New variable value.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          callFrameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-CallFrameId class="param-type">CallFrameId</a>
+          
+      <div class="details-description">
+        <p>Id of callframe that holds variable.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-stepInto">
+          <span class="domain-dot">Debugger.</span>stepInto
+          
+          <a href="#method-stepInto"
+             class="permalink"
+             data-slug="Debugger.stepInto"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Steps into the function call.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          breakOnAsyncCall
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Debugger will pause on the execution of the first async task which was scheduled
+before next pause.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          skipList
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/v8/Debugger/#type-LocationRange class="param-type">LocationRange</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>The skipList specifies location ranges that should be skipped on step into.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-stepOut">
+          <span class="domain-dot">Debugger.</span>stepOut
+          
+          <a href="#method-stepOut"
+             class="permalink"
+             data-slug="Debugger.stepOut"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Steps out of the function call.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-stepOver">
+          <span class="domain-dot">Debugger.</span>stepOver
+          
+          <a href="#method-stepOver"
+             class="permalink"
+             data-slug="Debugger.stepOver"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Steps over the statement.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          skipList
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/v8/Debugger/#type-LocationRange class="param-type">LocationRange</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>The skipList specifies location ranges that should be skipped on step over.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getWasmBytecode">
+          <span class="domain-dot">Debugger.</span>getWasmBytecode
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+          <a href="#method-getWasmBytecode"
+             class="permalink"
+             data-slug="Debugger.getWasmBytecode"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>This command is deprecated. Use getScriptSource instead.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          scriptId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-ScriptId class="param-type">Runtime.ScriptId</a>
+          
+      <div class="details-description">
+        <p>Id of the Wasm script to get source for.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          bytecode
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Script source. (Encoded as a base64 string when passed over JSON)</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-disassembleWasmModule">
+          <span class="domain-dot">Debugger.</span>disassembleWasmModule
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-disassembleWasmModule"
+             class="permalink"
+             data-slug="Debugger.disassembleWasmModule"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          scriptId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-ScriptId class="param-type">Runtime.ScriptId</a>
+          
+      <div class="details-description">
+        <p>Id of the script to disassemble</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          streamId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>For large modules, return a stream from which additional chunks of
+disassembly can be read successively.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          totalNumberOfLines
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>The total number of lines in the disassembly text.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          functionBodyOffsets
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">integer</span> ]</span></span>
+          
+      <div class="details-description">
+        <p>The offsets of all function bodies, in the format [start1, end1,
+start2, end2, ...] where all ends are exclusive.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          chunk
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-WasmDisassemblyChunk class="param-type">WasmDisassemblyChunk</a>
+          
+      <div class="details-description">
+        <p>The first chunk of disassembly.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getStackTrace">
+          <span class="domain-dot">Debugger.</span>getStackTrace
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-getStackTrace"
+             class="permalink"
+             data-slug="Debugger.getStackTrace"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns stack trace with given <code>stackTraceId</code>.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          stackTraceId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-StackTraceId class="param-type">Runtime.StackTraceId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          stackTrace
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-StackTrace class="param-type">Runtime.StackTrace</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-nextWasmDisassemblyChunk">
+          <span class="domain-dot">Debugger.</span>nextWasmDisassemblyChunk
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-nextWasmDisassemblyChunk"
+             class="permalink"
+             data-slug="Debugger.nextWasmDisassemblyChunk"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Disassemble the next chunk of lines for the module corresponding to the
+stream. If disassembly is complete, this API will invalidate the streamId
+and return an empty chunk. Any subsequent calls for the now invalid stream
+will return errors.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          streamId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          chunk
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-WasmDisassemblyChunk class="param-type">WasmDisassemblyChunk</a>
+          
+      <div class="details-description">
+        <p>The next chunk of disassembly.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setBlackboxedRanges">
+          <span class="domain-dot">Debugger.</span>setBlackboxedRanges
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-setBlackboxedRanges"
+             class="permalink"
+             data-slug="Debugger.setBlackboxedRanges"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Makes backend skip steps in the script in blackboxed ranges. VM will try leave blacklisted
+scripts by performing &#39;step in&#39; several times, finally resorting to &#39;step out&#39; if unsuccessful.
+Positions array contains positions where blackbox state is changed. First interval isn&#39;t
+blackboxed. Array should be sorted.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          scriptId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-ScriptId class="param-type">Runtime.ScriptId</a>
+          
+      <div class="details-description">
+        <p>Id of the script.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          positions
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/v8/Debugger/#type-ScriptPosition class="param-type">ScriptPosition</a> ]</span></span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setBlackboxExecutionContexts">
+          <span class="domain-dot">Debugger.</span>setBlackboxExecutionContexts
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-setBlackboxExecutionContexts"
+             class="permalink"
+             data-slug="Debugger.setBlackboxExecutionContexts"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Replace previous blackbox execution contexts with passed ones. Forces backend to skip
+stepping/pausing in scripts in these execution contexts. VM will try to leave blackboxed script by
+performing &#39;step in&#39; several times, finally resorting to &#39;step out&#39; if unsuccessful.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          uniqueIds
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">string</span> ]</span></span>
+          
+      <div class="details-description">
+        <p>Array of execution context unique ids for the debugger to ignore.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setBlackboxPatterns">
+          <span class="domain-dot">Debugger.</span>setBlackboxPatterns
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-setBlackboxPatterns"
+             class="permalink"
+             data-slug="Debugger.setBlackboxPatterns"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Replace previous blackbox patterns with passed ones. Forces backend to skip stepping/pausing in
+scripts with url matching one of the patterns. VM will try to leave blackboxed script by
+performing &#39;step in&#39; several times, finally resorting to &#39;step out&#39; if unsuccessful.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          patterns
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">string</span> ]</span></span>
+          
+      <div class="details-description">
+        <p>Array of regexps that will be used to check script url for blackbox state.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          skipAnonymous
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>If true, also ignore scripts with no source url.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setBreakpointOnFunctionCall">
+          <span class="domain-dot">Debugger.</span>setBreakpointOnFunctionCall
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-setBreakpointOnFunctionCall"
+             class="permalink"
+             data-slug="Debugger.setBreakpointOnFunctionCall"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Sets JavaScript breakpoint before each call to the given function.
+If another function was created from the same source as a given one,
+calling it will also trigger the breakpoint.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          objectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-RemoteObjectId class="param-type">Runtime.RemoteObjectId</a>
+          
+      <div class="details-description">
+        <p>Function object id.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          condition
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Expression to use as a breakpoint condition. When specified, debugger will
+stop on the breakpoint if this expression evaluates to true.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          breakpointId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-BreakpointId class="param-type">BreakpointId</a>
+          
+      <div class="details-description">
+        <p>Id of the created breakpoint for further reference.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setReturnValue">
+          <span class="domain-dot">Debugger.</span>setReturnValue
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-setReturnValue"
+             class="permalink"
+             data-slug="Debugger.setReturnValue"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Changes return value in top frame. Available only at return break position.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          newValue
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-CallArgument class="param-type">Runtime.CallArgument</a>
+          
+      <div class="details-description">
+        <p>New return value.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-pauseOnAsyncCall">
+          <span class="domain-dot">Debugger.</span>pauseOnAsyncCall
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span><span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+          <a href="#method-pauseOnAsyncCall"
+             class="permalink"
+             data-slug="Debugger.pauseOnAsyncCall"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          parentStackTraceId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-StackTraceId class="param-type">Runtime.StackTraceId</a>
+          
+      <div class="details-description">
+        <p>Debugger will pause when async call with given stack trace is started.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="events">Events</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="event-breakpointResolved">
+          <span class="domain-dot">Debugger.</span>breakpointResolved
+          
+          <a href="#event-breakpointResolved"
+             class="permalink"
+             data-slug="Debugger.breakpointResolved"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when breakpoint is resolved to an actual script and location.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          breakpointId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-BreakpointId class="param-type">BreakpointId</a>
+          
+      <div class="details-description">
+        <p>Breakpoint unique identifier.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          location
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-Location class="param-type">Location</a>
+          
+      <div class="details-description">
+        <p>Actual breakpoint location.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-paused">
+          <span class="domain-dot">Debugger.</span>paused
+          
+          <a href="#event-paused"
+             class="permalink"
+             data-slug="Debugger.paused"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when the virtual machine stopped on breakpoint or exception or any other stop criteria.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          callFrames
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/v8/Debugger/#type-CallFrame class="param-type">CallFrame</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Call stack the virtual machine stopped on.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          reason
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Pause reason.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>ambiguous</code>, <code>assert</code>, <code>CSPViolation</code>, <code>debugCommand</code>, <code>DOM</code>, <code>EventListener</code>, <code>exception</code>, <code>instrumentation</code>, <code>OOM</code>, <code>other</code>, <code>promiseRejection</code>, <code>XHR</code>, <code>step</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          data
+        </dt>
+        <dd>
+          <span class="param-type">object</span>
+          
+      <div class="details-description">
+        <p>Object containing break-specific auxiliary properties.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          hitBreakpoints
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">string</span> ]</span></span>
+          
+      <div class="details-description">
+        <p>Hit breakpoints IDs</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          asyncStackTrace
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-StackTrace class="param-type">Runtime.StackTrace</a>
+          
+      <div class="details-description">
+        <p>Async stack trace, if any.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          asyncStackTraceId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-StackTraceId class="param-type">Runtime.StackTraceId</a>
+          
+      <div class="details-description">
+        <p>Async stack trace, if any.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          asyncCallStackTraceId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-StackTraceId class="param-type">Runtime.StackTraceId</a>
+          
+      <div class="details-description">
+        <p>Never present, will be removed.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span><span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-resumed">
+          <span class="domain-dot">Debugger.</span>resumed
+          
+          <a href="#event-resumed"
+             class="permalink"
+             data-slug="Debugger.resumed"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when the virtual machine resumed execution.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-scriptFailedToParse">
+          <span class="domain-dot">Debugger.</span>scriptFailedToParse
+          
+          <a href="#event-scriptFailedToParse"
+             class="permalink"
+             data-slug="Debugger.scriptFailedToParse"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when virtual machine fails to parse the script.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          scriptId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-ScriptId class="param-type">Runtime.ScriptId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the script parsed.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>URL or name of the script parsed (if any).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          startLine
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Line offset of the script within the resource with given URL (for script tags).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          startColumn
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Column offset of the script within the resource with given URL.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          endLine
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Last line of the script.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          endColumn
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Length of the last line of the script.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          executionContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-ExecutionContextId class="param-type">Runtime.ExecutionContextId</a>
+          
+      <div class="details-description">
+        <p>Specifies script creation context.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          hash
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Content hash of the script, SHA-256.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          executionContextAuxData
+        </dt>
+        <dd>
+          <span class="param-type">object</span>
+          
+      <div class="details-description">
+        <p>Embedder-specific auxiliary data likely matching {isDefault: boolean, type: &#39;default&#39;|&#39;isolated&#39;|&#39;worker&#39;, frameId: string}</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          sourceMapURL
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>URL of source map associated with script (if any).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          hasSourceURL
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True, if this script has sourceURL.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          isModule
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True, if this script is ES6 module.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          length
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>This script length.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          stackTrace
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-StackTrace class="param-type">Runtime.StackTrace</a>
+          
+      <div class="details-description">
+        <p>JavaScript top stack frame of where the script parsed event was triggered if available.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          codeOffset
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>If the scriptLanguage is WebAssembly, the code section offset in the module.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          scriptLanguage
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-ScriptLanguage class="param-type">Debugger.ScriptLanguage</a>
+          
+      <div class="details-description">
+        <p>The language of the script.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          embedderName
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The name the embedder supplied for this script.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-scriptParsed">
+          <span class="domain-dot">Debugger.</span>scriptParsed
+          
+          <a href="#event-scriptParsed"
+             class="permalink"
+             data-slug="Debugger.scriptParsed"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when virtual machine parses script. This event is also fired for all known and uncollected
+scripts upon enabling debugger.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          scriptId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-ScriptId class="param-type">Runtime.ScriptId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the script parsed.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>URL or name of the script parsed (if any).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          startLine
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Line offset of the script within the resource with given URL (for script tags).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          startColumn
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Column offset of the script within the resource with given URL.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          endLine
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Last line of the script.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          endColumn
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Length of the last line of the script.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          executionContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-ExecutionContextId class="param-type">Runtime.ExecutionContextId</a>
+          
+      <div class="details-description">
+        <p>Specifies script creation context.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          hash
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Content hash of the script, SHA-256.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          executionContextAuxData
+        </dt>
+        <dd>
+          <span class="param-type">object</span>
+          
+      <div class="details-description">
+        <p>Embedder-specific auxiliary data likely matching {isDefault: boolean, type: &#39;default&#39;|&#39;isolated&#39;|&#39;worker&#39;, frameId: string}</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          isLiveEdit
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True, if this script is generated as a result of the live edit operation.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          sourceMapURL
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>URL of source map associated with script (if any).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          hasSourceURL
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True, if this script has sourceURL.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          isModule
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True, if this script is ES6 module.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          length
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>This script length.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          stackTrace
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-StackTrace class="param-type">Runtime.StackTrace</a>
+          
+      <div class="details-description">
+        <p>JavaScript top stack frame of where the script parsed event was triggered if available.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          codeOffset
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>If the scriptLanguage is WebAssembly, the code section offset in the module.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          scriptLanguage
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-ScriptLanguage class="param-type">Debugger.ScriptLanguage</a>
+          
+      <div class="details-description">
+        <p>The language of the script.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          debugSymbols
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/v8/Debugger/#type-DebugSymbols class="param-type">Debugger.DebugSymbols</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>If the scriptLanguage is WebAssembly, the source of debug symbols for the module.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          embedderName
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The name the embedder supplied for this script.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="types">Types</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="type-BreakLocation">
+          <span class="domain-dot">Debugger.</span>BreakLocation
+          
+          <a href="#type-BreakLocation"
+             class="permalink"
+             data-slug="Debugger.BreakLocation"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          scriptId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-ScriptId class="param-type">Runtime.ScriptId</a>
+          
+      <div class="details-description">
+        <p>Script identifier as reported in the <code>Debugger.scriptParsed</code>.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          lineNumber
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Line number in the script (0-based).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          columnNumber
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Column number in the script (0-based).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          type
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>debuggerStatement</code>, <code>call</code>, <code>return</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-BreakpointId">
+          <span class="domain-dot">Debugger.</span>BreakpointId
+          
+          <a href="#type-BreakpointId"
+             class="permalink"
+             data-slug="Debugger.BreakpointId"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Breakpoint identifier.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-CallFrame">
+          <span class="domain-dot">Debugger.</span>CallFrame
+          
+          <a href="#type-CallFrame"
+             class="permalink"
+             data-slug="Debugger.CallFrame"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>JavaScript call frame. Array of call frames form the call stack.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          callFrameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-CallFrameId class="param-type">CallFrameId</a>
+          
+      <div class="details-description">
+        <p>Call frame identifier. This identifier is only valid while the virtual machine is paused.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          functionName
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Name of the JavaScript function called on this call frame.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          functionLocation
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-Location class="param-type">Location</a>
+          
+      <div class="details-description">
+        <p>Location in the source code.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          location
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-Location class="param-type">Location</a>
+          
+      <div class="details-description">
+        <p>Location in the source code.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>JavaScript script name or url.
+Deprecated in favor of using the <code>location.scriptId</code> to resolve the URL via a previously
+sent <code>Debugger.scriptParsed</code> event.</p>
+
+        
+      </div>
+    
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+        <dt class="param-name monospace ">
+          scopeChain
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/v8/Debugger/#type-Scope class="param-type">Scope</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Scope chain for this call frame.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          this
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-RemoteObject class="param-type">Runtime.RemoteObject</a>
+          
+      <div class="details-description">
+        <p><code>this</code> object for this call frame.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          returnValue
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-RemoteObject class="param-type">Runtime.RemoteObject</a>
+          
+      <div class="details-description">
+        <p>The value being returned, if the function is at return point.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          canBeRestarted
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Valid only while the VM is paused and indicates whether this frame
+can be restarted or not. Note that a <code>true</code> value here does not
+guarantee that Debugger#restartFrame with this CallFrameId will be
+successful, but it is very likely.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-CallFrameId">
+          <span class="domain-dot">Debugger.</span>CallFrameId
+          
+          <a href="#type-CallFrameId"
+             class="permalink"
+             data-slug="Debugger.CallFrameId"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Call frame identifier.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-DebugSymbols">
+          <span class="domain-dot">Debugger.</span>DebugSymbols
+          
+          <a href="#type-DebugSymbols"
+             class="permalink"
+             data-slug="Debugger.DebugSymbols"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Debug symbols available for a wasm script.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          type
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Type of the debug symbols.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>SourceMap</code>, <code>EmbeddedDWARF</code>, <code>ExternalDWARF</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          externalURL
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>URL of the external symbol source.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-Location">
+          <span class="domain-dot">Debugger.</span>Location
+          
+          <a href="#type-Location"
+             class="permalink"
+             data-slug="Debugger.Location"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Location in the source code.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          scriptId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-ScriptId class="param-type">Runtime.ScriptId</a>
+          
+      <div class="details-description">
+        <p>Script identifier as reported in the <code>Debugger.scriptParsed</code>.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          lineNumber
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Line number in the script (0-based).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          columnNumber
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Column number in the script (0-based).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-Scope">
+          <span class="domain-dot">Debugger.</span>Scope
+          
+          <a href="#type-Scope"
+             class="permalink"
+             data-slug="Debugger.Scope"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Scope description.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          type
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Scope type.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>global</code>, <code>local</code>, <code>with</code>, <code>closure</code>, <code>catch</code>, <code>block</code>, <code>script</code>, <code>eval</code>, <code>module</code>, <code>wasm-expression-stack</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          object
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-RemoteObject class="param-type">Runtime.RemoteObject</a>
+          
+      <div class="details-description">
+        <p>Object representing the scope. For <code>global</code> and <code>with</code> scopes it represents the actual
+object; for the rest of the scopes, it is artificial transient object enumerating scope
+variables as its properties.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          startLocation
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-Location class="param-type">Location</a>
+          
+      <div class="details-description">
+        <p>Location in the source code where scope starts</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          endLocation
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-Location class="param-type">Location</a>
+          
+      <div class="details-description">
+        <p>Location in the source code where scope ends</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ScriptLanguage">
+          <span class="domain-dot">Debugger.</span>ScriptLanguage
+          
+          <a href="#type-ScriptLanguage"
+             class="permalink"
+             data-slug="Debugger.ScriptLanguage"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enum of possible script languages.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>JavaScript</code>, <code>WebAssembly</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-SearchMatch">
+          <span class="domain-dot">Debugger.</span>SearchMatch
+          
+          <a href="#type-SearchMatch"
+             class="permalink"
+             data-slug="Debugger.SearchMatch"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Search match for resource.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          lineNumber
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Line number in resource content.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          lineContent
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Line with match content.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-LocationRange">
+          <span class="domain-dot">Debugger.</span>LocationRange
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#type-LocationRange"
+             class="permalink"
+             data-slug="Debugger.LocationRange"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Location range within one script.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          scriptId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Runtime/#type-ScriptId class="param-type">Runtime.ScriptId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          start
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-ScriptPosition class="param-type">ScriptPosition</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          end
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/v8/Debugger/#type-ScriptPosition class="param-type">ScriptPosition</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ScriptPosition">
+          <span class="domain-dot">Debugger.</span>ScriptPosition
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#type-ScriptPosition"
+             class="permalink"
+             data-slug="Debugger.ScriptPosition"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Location in the source code.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          lineNumber
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          columnNumber
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-WasmDisassemblyChunk">
+          <span class="domain-dot">Debugger.</span>WasmDisassemblyChunk
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#type-WasmDisassemblyChunk"
+             class="permalink"
+             data-slug="Debugger.WasmDisassemblyChunk"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          lines
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">string</span> ]</span></span>
+          
+      <div class="details-description">
+        <p>The next chunk of disassembled lines.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          bytecodeOffsets
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">integer</span> ]</span></span>
+          
+      <div class="details-description">
+        <p>The bytecode offsets describing the start of each line.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+    </div>
+    
+      </div>
+    </section>
+  </main>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60854461-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>

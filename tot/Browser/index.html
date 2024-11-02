@@ -1,0 +1,2032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Chrome DevTools Protocol - version tot - Browser domain" />
+  <link rel="icon" type="image/png" href="/devtools-protocol/images/logo.png" />
+    <title>Chrome DevTools Protocol - Browser domain</title>
+
+  <meta name="theme-color" content="#303F9F" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@chromedevtools" />
+  <meta name="twitter:creator" content="@chromedevtools" />
+  <meta property="og:title" content="Chrome DevTools Protocol" />
+  <meta property="og:image" content="https://developers.google.com/web/tools/images/chrome-devtools-16x9_720.png" />
+    <meta property="og:description" content="Chrome DevTools Protocol - version tot - Browser domain" />
+
+  <script type="module" src="/devtools-protocol/scripts/index.js"></script>
+  <link href="/devtools-protocol/styles/protocol.css" rel="stylesheet">
+</head>
+<body>
+  <aside>
+    <div id="home" class="navs">
+      <nav>
+        <a href="/devtools-protocol/">Home</a>
+        <button class="aside-close-button" aria-label="Close navigation">x</button>
+      </nav>
+    </div>
+    <div id="versions" class="navs">
+      <header>Versions</header>
+      <nav>
+        <a href="/devtools-protocol/tot" name="tot">
+          latest (tip-of-tree)
+        </a>
+        <a href="/devtools-protocol/v8" name="v8">
+          v8-inspector (node)
+        </a>
+        <a href="/devtools-protocol/1-3" name="1-3">
+          stable (1.3)
+        </a><!-- 
+        <a href="/devtools-protocol/1-2" name="1-2">
+          stable (1.2)
+        </a> -->
+      </nav>
+    </div>
+
+    <div id="domains" class="navs version-tot">
+      <header>Domains</header>
+      <div class="scroller">
+        <nav>
+          <a href="/devtools-protocol/tot/Accessibility" class="tot experimental">Accessibility</a>
+          <a href="/devtools-protocol/tot/Animation" class="tot experimental">Animation</a>
+          <a href="/devtools-protocol/tot/Audits" class="tot experimental">Audits</a>
+          <a href="/devtools-protocol/tot/Autofill" class="tot experimental">Autofill</a>
+          <a href="/devtools-protocol/tot/BackgroundService" class="tot experimental">BackgroundService</a>
+          <a href="/devtools-protocol/tot/Browser" class="tot 1-3">Browser</a>
+          <a href="/devtools-protocol/tot/CacheStorage" class="tot experimental">CacheStorage</a>
+          <a href="/devtools-protocol/tot/Cast" class="tot experimental">Cast</a>
+          <a href="/devtools-protocol/tot/Console" class="tot deprecated v8">Console</a>
+          <a href="/devtools-protocol/tot/CSS" class="tot experimental">CSS</a>
+          <a href="/devtools-protocol/tot/Database" class="tot experimental">Database</a>
+          <a href="/devtools-protocol/tot/Debugger" class="tot 1-2 1-3 v8">Debugger</a>
+          <a href="/devtools-protocol/tot/DeviceAccess" class="tot experimental">DeviceAccess</a>
+          <a href="/devtools-protocol/tot/DeviceOrientation" class="tot experimental">DeviceOrientation</a>
+          <a href="/devtools-protocol/tot/DOM" class="tot 1-2 1-3">DOM</a>
+          <a href="/devtools-protocol/tot/DOMDebugger" class="tot 1-2 1-3">DOMDebugger</a>
+          <a href="/devtools-protocol/tot/DOMSnapshot" class="tot experimental">DOMSnapshot</a>
+          <a href="/devtools-protocol/tot/DOMStorage" class="tot experimental">DOMStorage</a>
+          <a href="/devtools-protocol/tot/Emulation" class="tot 1-2 1-3">Emulation</a>
+          <a href="/devtools-protocol/tot/EventBreakpoints" class="tot experimental">EventBreakpoints</a>
+          <a href="/devtools-protocol/tot/Extensions" class="tot experimental">Extensions</a>
+          <a href="/devtools-protocol/tot/FedCm" class="tot experimental">FedCm</a>
+          <a href="/devtools-protocol/tot/Fetch" class="tot 1-3">Fetch</a>
+          <a href="/devtools-protocol/tot/HeadlessExperimental" class="tot experimental">HeadlessExperimental</a>
+          <a href="/devtools-protocol/tot/HeapProfiler" class="tot experimental v8">HeapProfiler</a>
+          <a href="/devtools-protocol/tot/IndexedDB" class="tot experimental">IndexedDB</a>
+          <a href="/devtools-protocol/tot/Input" class="tot 1-2 1-3">Input</a>
+          <a href="/devtools-protocol/tot/Inspector" class="tot experimental">Inspector</a>
+          <a href="/devtools-protocol/tot/IO" class="tot 1-3">IO</a>
+          <a href="/devtools-protocol/tot/LayerTree" class="tot experimental">LayerTree</a>
+          <a href="/devtools-protocol/tot/Log" class="tot 1-3">Log</a>
+          <a href="/devtools-protocol/tot/Media" class="tot experimental">Media</a>
+          <a href="/devtools-protocol/tot/Memory" class="tot experimental">Memory</a>
+          <a href="/devtools-protocol/tot/Network" class="tot 1-2 1-3">Network</a>
+          <a href="/devtools-protocol/tot/Overlay" class="tot experimental">Overlay</a>
+          <a href="/devtools-protocol/tot/Page" class="tot 1-2 1-3">Page</a>
+          <a href="/devtools-protocol/tot/Performance" class="tot 1-3">Performance</a>
+          <a href="/devtools-protocol/tot/PerformanceTimeline" class="tot experimental">PerformanceTimeline</a>
+          <a href="/devtools-protocol/tot/Preload" class="tot experimental">Preload</a>
+          <a href="/devtools-protocol/tot/Profiler" class="tot 1-2 1-3 v8">Profiler</a>
+          <a href="/devtools-protocol/tot/Runtime" class="tot 1-2 1-3 v8">Runtime</a>
+          <a href="/devtools-protocol/tot/Schema" class="tot deprecated 1-2 v8">Schema</a>
+          <a href="/devtools-protocol/tot/Security" class="tot 1-3">Security</a>
+          <a href="/devtools-protocol/tot/ServiceWorker" class="tot experimental">ServiceWorker</a>
+          <a href="/devtools-protocol/tot/Storage" class="tot experimental">Storage</a>
+          <a href="/devtools-protocol/tot/SystemInfo" class="tot experimental">SystemInfo</a>
+          <a href="/devtools-protocol/tot/Target" class="tot 1-3">Target</a>
+          <a href="/devtools-protocol/tot/Tethering" class="tot experimental">Tethering</a>
+          <a href="/devtools-protocol/tot/Tracing" class="tot experimental">Tracing</a>
+          <a href="/devtools-protocol/tot/WebAudio" class="tot experimental">WebAudio</a>
+          <a href="/devtools-protocol/tot/WebAuthn" class="tot experimental">WebAuthn</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <h1>Chrome DevTools Protocol</h1>
+      <button class="menu-link">Navigation</button>
+      <cr-search-control base-url="/devtools-protocol/" protocol-search-index="/search_index/tot.json"></cr-search-control>
+    </header>
+    <section>
+      <div class="main-content-section domain">
+        
+    <div class="domain-section">
+      <div id="header">
+        <h2 class="heading">Browser Domain</h2>
+        
+      <div class="details-description">
+        <p>The Browser domain defines methods and events for browser managing.</p>
+
+        
+      </div>
+    
+        
+        <h3>Methods</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#method-addPrivacySandboxEnrollmentOverride"><span class="domain-dot">Browser.</span>addPrivacySandboxEnrollmentOverride</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-close"><span class="domain-dot">Browser.</span>close</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getVersion"><span class="domain-dot">Browser.</span>getVersion</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-resetPermissions"><span class="domain-dot">Browser.</span>resetPermissions</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-cancelDownload"><span class="domain-dot">Browser.</span>cancelDownload</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-crash"><span class="domain-dot">Browser.</span>crash</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-crashGpuProcess"><span class="domain-dot">Browser.</span>crashGpuProcess</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-executeBrowserCommand"><span class="domain-dot">Browser.</span>executeBrowserCommand</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getBrowserCommandLine"><span class="domain-dot">Browser.</span>getBrowserCommandLine</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getHistogram"><span class="domain-dot">Browser.</span>getHistogram</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getHistograms"><span class="domain-dot">Browser.</span>getHistograms</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getWindowBounds"><span class="domain-dot">Browser.</span>getWindowBounds</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getWindowForTarget"><span class="domain-dot">Browser.</span>getWindowForTarget</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-grantPermissions"><span class="domain-dot">Browser.</span>grantPermissions</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setDockTile"><span class="domain-dot">Browser.</span>setDockTile</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setDownloadBehavior"><span class="domain-dot">Browser.</span>setDownloadBehavior</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setPermission"><span class="domain-dot">Browser.</span>setPermission</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setWindowBounds"><span class="domain-dot">Browser.</span>setWindowBounds</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+        <h3>Events</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#event-downloadProgress"><span class="domain-dot">Browser.</span>downloadProgress</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-downloadWillBegin"><span class="domain-dot">Browser.</span>downloadWillBegin</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+        <h3>Types</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#type-Bounds"><span class="domain-dot">Browser.</span>Bounds</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-BrowserCommandId"><span class="domain-dot">Browser.</span>BrowserCommandId</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-BrowserContextID"><span class="domain-dot">Browser.</span>BrowserContextID</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-Bucket"><span class="domain-dot">Browser.</span>Bucket</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-Histogram"><span class="domain-dot">Browser.</span>Histogram</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-PermissionDescriptor"><span class="domain-dot">Browser.</span>PermissionDescriptor</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-PermissionSetting"><span class="domain-dot">Browser.</span>PermissionSetting</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-PermissionType"><span class="domain-dot">Browser.</span>PermissionType</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-WindowID"><span class="domain-dot">Browser.</span>WindowID</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-WindowState"><span class="domain-dot">Browser.</span>WindowState</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      </div>
+
+      
+      <h3 id="methods">Methods</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="method-addPrivacySandboxEnrollmentOverride">
+          <span class="domain-dot">Browser.</span>addPrivacySandboxEnrollmentOverride
+          
+          <a href="#method-addPrivacySandboxEnrollmentOverride"
+             class="permalink"
+             data-slug="Browser.addPrivacySandboxEnrollmentOverride"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Allows a site to use privacy sandbox features that require enrollment
+without the site actually being enrolled. Only supported on page targets.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-close">
+          <span class="domain-dot">Browser.</span>close
+          
+          <a href="#method-close"
+             class="permalink"
+             data-slug="Browser.close"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Close browser gracefully.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getVersion">
+          <span class="domain-dot">Browser.</span>getVersion
+          
+          <a href="#method-getVersion"
+             class="permalink"
+             data-slug="Browser.getVersion"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns version information.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          protocolVersion
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Protocol version.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          product
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Product name.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          revision
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Product revision.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          userAgent
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>User-Agent.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          jsVersion
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>V8 version.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-resetPermissions">
+          <span class="domain-dot">Browser.</span>resetPermissions
+          
+          <a href="#method-resetPermissions"
+             class="permalink"
+             data-slug="Browser.resetPermissions"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Reset all permission management for all origins.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          browserContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Browser/#type-BrowserContextID class="param-type">BrowserContextID</a>
+          
+      <div class="details-description">
+        <p>BrowserContext to reset permissions. When omitted, default browser context is used.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-cancelDownload">
+          <span class="domain-dot">Browser.</span>cancelDownload
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-cancelDownload"
+             class="permalink"
+             data-slug="Browser.cancelDownload"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Cancel a download if in progress</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          guid
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Global unique identifier of the download.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          browserContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Browser/#type-BrowserContextID class="param-type">BrowserContextID</a>
+          
+      <div class="details-description">
+        <p>BrowserContext to perform the action in. When omitted, default browser context is used.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-crash">
+          <span class="domain-dot">Browser.</span>crash
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-crash"
+             class="permalink"
+             data-slug="Browser.crash"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Crashes browser on the main thread.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-crashGpuProcess">
+          <span class="domain-dot">Browser.</span>crashGpuProcess
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-crashGpuProcess"
+             class="permalink"
+             data-slug="Browser.crashGpuProcess"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Crashes GPU process.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-executeBrowserCommand">
+          <span class="domain-dot">Browser.</span>executeBrowserCommand
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-executeBrowserCommand"
+             class="permalink"
+             data-slug="Browser.executeBrowserCommand"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Invoke custom browser commands used by telemetry.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          commandId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Browser/#type-BrowserCommandId class="param-type">BrowserCommandId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getBrowserCommandLine">
+          <span class="domain-dot">Browser.</span>getBrowserCommandLine
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-getBrowserCommandLine"
+             class="permalink"
+             data-slug="Browser.getBrowserCommandLine"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns the command line switches for the browser process if, and only if
+--enable-automation is on the commandline.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          arguments
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">string</span> ]</span></span>
+          
+      <div class="details-description">
+        <p>Commandline parameters</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getHistogram">
+          <span class="domain-dot">Browser.</span>getHistogram
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-getHistogram"
+             class="permalink"
+             data-slug="Browser.getHistogram"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Get a Chrome histogram by name.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Requested histogram name.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          delta
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>If true, retrieve delta since last delta call.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          histogram
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Browser/#type-Histogram class="param-type">Histogram</a>
+          
+      <div class="details-description">
+        <p>Histogram.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getHistograms">
+          <span class="domain-dot">Browser.</span>getHistograms
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-getHistograms"
+             class="permalink"
+             data-slug="Browser.getHistograms"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Get Chrome histograms.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          query
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Requested substring in name. Only histograms which have query as a
+substring in their name are extracted. An empty or absent query returns
+all histograms.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          delta
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>If true, retrieve delta since last delta call.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          histograms
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Browser/#type-Histogram class="param-type">Histogram</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Histograms.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getWindowBounds">
+          <span class="domain-dot">Browser.</span>getWindowBounds
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-getWindowBounds"
+             class="permalink"
+             data-slug="Browser.getWindowBounds"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Get position and size of the browser window.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          windowId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Browser/#type-WindowID class="param-type">WindowID</a>
+          
+      <div class="details-description">
+        <p>Browser window id.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          bounds
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Browser/#type-Bounds class="param-type">Bounds</a>
+          
+      <div class="details-description">
+        <p>Bounds information of the window. When window state is &#39;minimized&#39;, the restored window
+position and size are returned.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getWindowForTarget">
+          <span class="domain-dot">Browser.</span>getWindowForTarget
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-getWindowForTarget"
+             class="permalink"
+             data-slug="Browser.getWindowForTarget"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Get the browser window that contains the devtools target.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          targetId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Target/#type-TargetID class="param-type">Target.TargetID</a>
+          
+      <div class="details-description">
+        <p>Devtools agent host id. If called as a part of the session, associated targetId is used.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          windowId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Browser/#type-WindowID class="param-type">WindowID</a>
+          
+      <div class="details-description">
+        <p>Browser window id.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          bounds
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Browser/#type-Bounds class="param-type">Bounds</a>
+          
+      <div class="details-description">
+        <p>Bounds information of the window. When window state is &#39;minimized&#39;, the restored window
+position and size are returned.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-grantPermissions">
+          <span class="domain-dot">Browser.</span>grantPermissions
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-grantPermissions"
+             class="permalink"
+             data-slug="Browser.grantPermissions"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Grant specific permissions to the given origin and reject all others.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          permissions
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Browser/#type-PermissionType class="param-type">PermissionType</a> ]</span></span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          origin
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Origin the permission applies to, all origins if not specified.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          browserContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Browser/#type-BrowserContextID class="param-type">BrowserContextID</a>
+          
+      <div class="details-description">
+        <p>BrowserContext to override permissions. When omitted, default browser context is used.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setDockTile">
+          <span class="domain-dot">Browser.</span>setDockTile
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-setDockTile"
+             class="permalink"
+             data-slug="Browser.setDockTile"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Set dock tile details, platform-specific.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          badgeLabel
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          image
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Png encoded image. (Encoded as a base64 string when passed over JSON)</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setDownloadBehavior">
+          <span class="domain-dot">Browser.</span>setDownloadBehavior
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-setDownloadBehavior"
+             class="permalink"
+             data-slug="Browser.setDownloadBehavior"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Set the behavior when downloading a file.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          behavior
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Whether to allow all or deny all download requests, or use default Chrome behavior if
+available (otherwise deny). |allowAndName| allows download and names files according to
+their download guids.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>deny</code>, <code>allow</code>, <code>allowAndName</code>, <code>default</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          browserContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Browser/#type-BrowserContextID class="param-type">BrowserContextID</a>
+          
+      <div class="details-description">
+        <p>BrowserContext to set download behavior. When omitted, default browser context is used.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          downloadPath
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The default path to save downloaded files to. This is required if behavior is set to &#39;allow&#39;
+or &#39;allowAndName&#39;.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          eventsEnabled
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether to emit download events (defaults to false).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setPermission">
+          <span class="domain-dot">Browser.</span>setPermission
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-setPermission"
+             class="permalink"
+             data-slug="Browser.setPermission"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Set permission settings for given origin.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          permission
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Browser/#type-PermissionDescriptor class="param-type">PermissionDescriptor</a>
+          
+      <div class="details-description">
+        <p>Descriptor of permission to override.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          setting
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Browser/#type-PermissionSetting class="param-type">PermissionSetting</a>
+          
+      <div class="details-description">
+        <p>Setting of the permission.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          origin
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Origin the permission applies to, all origins if not specified.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          browserContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Browser/#type-BrowserContextID class="param-type">BrowserContextID</a>
+          
+      <div class="details-description">
+        <p>Context to override. When omitted, default browser context is used.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setWindowBounds">
+          <span class="domain-dot">Browser.</span>setWindowBounds
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-setWindowBounds"
+             class="permalink"
+             data-slug="Browser.setWindowBounds"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Set position and/or size of the browser window.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          windowId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Browser/#type-WindowID class="param-type">WindowID</a>
+          
+      <div class="details-description">
+        <p>Browser window id.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          bounds
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Browser/#type-Bounds class="param-type">Bounds</a>
+          
+      <div class="details-description">
+        <p>New window bounds. The &#39;minimized&#39;, &#39;maximized&#39; and &#39;fullscreen&#39; states cannot be combined
+with &#39;left&#39;, &#39;top&#39;, &#39;width&#39; or &#39;height&#39;. Leaves unspecified fields unchanged.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="events">Events</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="event-downloadProgress">
+          <span class="domain-dot">Browser.</span>downloadProgress
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#event-downloadProgress"
+             class="permalink"
+             data-slug="Browser.downloadProgress"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when download makes progress. Last call has |done| == true.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          guid
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Global unique identifier of the download.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          totalBytes
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Total expected bytes to download.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          receivedBytes
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Total bytes received.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          state
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Download status.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>inProgress</code>, <code>completed</code>, <code>canceled</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-downloadWillBegin">
+          <span class="domain-dot">Browser.</span>downloadWillBegin
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#event-downloadWillBegin"
+             class="permalink"
+             data-slug="Browser.downloadWillBegin"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when page is about to start a download.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          frameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Page/#type-FrameId class="param-type">Page.FrameId</a>
+          
+      <div class="details-description">
+        <p>Id of the frame that caused the download to begin.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          guid
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Global unique identifier of the download.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>URL of the resource being downloaded.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          suggestedFilename
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Suggested file name of the resource (the actual name of the file saved on disk may differ).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="types">Types</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="type-Bounds">
+          <span class="domain-dot">Browser.</span>Bounds
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#type-Bounds"
+             class="permalink"
+             data-slug="Browser.Bounds"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Browser window bounds information</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          left
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>The offset from the left edge of the screen to the window in pixels.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          top
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>The offset from the top edge of the screen to the window in pixels.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          width
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>The window width in pixels.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          height
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>The window height in pixels.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          windowState
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Browser/#type-WindowState class="param-type">WindowState</a>
+          
+      <div class="details-description">
+        <p>The window state. Default to normal.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-BrowserCommandId">
+          <span class="domain-dot">Browser.</span>BrowserCommandId
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#type-BrowserCommandId"
+             class="permalink"
+             data-slug="Browser.BrowserCommandId"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Browser command ids used by executeBrowserCommand.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>openTabSearch</code>, <code>closeTabSearch</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-BrowserContextID">
+          <span class="domain-dot">Browser.</span>BrowserContextID
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#type-BrowserContextID"
+             class="permalink"
+             data-slug="Browser.BrowserContextID"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-Bucket">
+          <span class="domain-dot">Browser.</span>Bucket
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#type-Bucket"
+             class="permalink"
+             data-slug="Browser.Bucket"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Chrome histogram bucket.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          low
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Minimum value (inclusive).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          high
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Maximum value (exclusive).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          count
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Number of samples.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-Histogram">
+          <span class="domain-dot">Browser.</span>Histogram
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#type-Histogram"
+             class="permalink"
+             data-slug="Browser.Histogram"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Chrome histogram.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Name.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          sum
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Sum of sample values.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          count
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Total number of samples.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          buckets
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Browser/#type-Bucket class="param-type">Bucket</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Buckets.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-PermissionDescriptor">
+          <span class="domain-dot">Browser.</span>PermissionDescriptor
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#type-PermissionDescriptor"
+             class="permalink"
+             data-slug="Browser.PermissionDescriptor"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Definition of PermissionDescriptor defined in the Permissions API:
+<a href="https://w3c.github.io/permissions/#dom-permissiondescriptor">https://w3c.github.io/permissions/#dom-permissiondescriptor</a>.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Name of permission.
+See <a href="https://cs.chromium.org/chromium/src/third_party/blink/renderer/modules/permissions/permission_descriptor.idl">https://cs.chromium.org/chromium/src/third_party/blink/renderer/modules/permissions/permission_descriptor.idl</a> for valid permission names.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          sysex
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>For &quot;midi&quot; permission, may also specify sysex control.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          userVisibleOnly
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>For &quot;push&quot; permission, may specify userVisibleOnly.
+Note that userVisibleOnly = true is the only currently supported type.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          allowWithoutSanitization
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>For &quot;clipboard&quot; permission, may specify allowWithoutSanitization.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          allowWithoutGesture
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>For &quot;fullscreen&quot; permission, must specify allowWithoutGesture:true.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          panTiltZoom
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>For &quot;camera&quot; permission, may specify panTiltZoom.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-PermissionSetting">
+          <span class="domain-dot">Browser.</span>PermissionSetting
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#type-PermissionSetting"
+             class="permalink"
+             data-slug="Browser.PermissionSetting"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>granted</code>, <code>denied</code>, <code>prompt</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-PermissionType">
+          <span class="domain-dot">Browser.</span>PermissionType
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#type-PermissionType"
+             class="permalink"
+             data-slug="Browser.PermissionType"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>accessibilityEvents</code>, <code>audioCapture</code>, <code>backgroundSync</code>, <code>backgroundFetch</code>, <code>capturedSurfaceControl</code>, <code>clipboardReadWrite</code>, <code>clipboardSanitizedWrite</code>, <code>displayCapture</code>, <code>durableStorage</code>, <code>flash</code>, <code>geolocation</code>, <code>idleDetection</code>, <code>localFonts</code>, <code>midi</code>, <code>midiSysex</code>, <code>nfc</code>, <code>notifications</code>, <code>paymentHandler</code>, <code>periodicBackgroundSync</code>, <code>protectedMediaIdentifier</code>, <code>sensors</code>, <code>storageAccess</code>, <code>speakerSelection</code>, <code>topLevelStorageAccess</code>, <code>videoCapture</code>, <code>videoCapturePanTiltZoom</code>, <code>wakeLockScreen</code>, <code>wakeLockSystem</code>, <code>webAppInstallation</code>, <code>windowManagement</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-WindowID">
+          <span class="domain-dot">Browser.</span>WindowID
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#type-WindowID"
+             class="permalink"
+             data-slug="Browser.WindowID"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>integer</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-WindowState">
+          <span class="domain-dot">Browser.</span>WindowState
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#type-WindowState"
+             class="permalink"
+             data-slug="Browser.WindowState"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>The state of the browser window.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>normal</code>, <code>minimized</code>, <code>maximized</code>, <code>fullscreen</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      </div>
+    
+    </div>
+    
+      </div>
+    </section>
+  </main>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60854461-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>

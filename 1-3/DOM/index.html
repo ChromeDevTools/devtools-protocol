@@ -1,0 +1,4012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Chrome DevTools Protocol - version 1-3 - DOM domain" />
+  <link rel="icon" type="image/png" href="/devtools-protocol/images/logo.png" />
+    <title>Chrome DevTools Protocol - version 1-3 - DOM domain</title>
+
+  <meta name="theme-color" content="#303F9F" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@chromedevtools" />
+  <meta name="twitter:creator" content="@chromedevtools" />
+  <meta property="og:title" content="Chrome DevTools Protocol" />
+  <meta property="og:image" content="https://developers.google.com/web/tools/images/chrome-devtools-16x9_720.png" />
+    <meta property="og:description" content="Chrome DevTools Protocol - version 1-3 - DOM domain" />
+
+  <script type="module" src="/devtools-protocol/scripts/index.js"></script>
+  <link href="/devtools-protocol/styles/protocol.css" rel="stylesheet">
+</head>
+<body>
+  <aside>
+    <div id="home" class="navs">
+      <nav>
+        <a href="/devtools-protocol/">Home</a>
+        <button class="aside-close-button" aria-label="Close navigation">x</button>
+      </nav>
+    </div>
+    <div id="versions" class="navs">
+      <header>Versions</header>
+      <nav>
+        <a href="/devtools-protocol/tot" name="tot">
+          latest (tip-of-tree)
+        </a>
+        <a href="/devtools-protocol/v8" name="v8">
+          v8-inspector (node)
+        </a>
+        <a href="/devtools-protocol/1-3" name="1-3">
+          stable (1.3)
+        </a><!-- 
+        <a href="/devtools-protocol/1-2" name="1-2">
+          stable (1.2)
+        </a> -->
+      </nav>
+    </div>
+
+    <div id="domains" class="navs version-1-3">
+      <header>Domains</header>
+      <div class="scroller">
+        <nav>
+          <a href="/devtools-protocol/1-3/Accessibility" class="tot experimental">Accessibility</a>
+          <a href="/devtools-protocol/1-3/Animation" class="tot experimental">Animation</a>
+          <a href="/devtools-protocol/1-3/Audits" class="tot experimental">Audits</a>
+          <a href="/devtools-protocol/1-3/Autofill" class="tot experimental">Autofill</a>
+          <a href="/devtools-protocol/1-3/BackgroundService" class="tot experimental">BackgroundService</a>
+          <a href="/devtools-protocol/1-3/Browser" class="tot 1-3">Browser</a>
+          <a href="/devtools-protocol/1-3/CacheStorage" class="tot experimental">CacheStorage</a>
+          <a href="/devtools-protocol/1-3/Cast" class="tot experimental">Cast</a>
+          <a href="/devtools-protocol/1-3/Console" class="tot deprecated v8">Console</a>
+          <a href="/devtools-protocol/1-3/CSS" class="tot experimental">CSS</a>
+          <a href="/devtools-protocol/1-3/Database" class="tot experimental">Database</a>
+          <a href="/devtools-protocol/1-3/Debugger" class="tot 1-2 1-3 v8">Debugger</a>
+          <a href="/devtools-protocol/1-3/DeviceAccess" class="tot experimental">DeviceAccess</a>
+          <a href="/devtools-protocol/1-3/DeviceOrientation" class="tot experimental">DeviceOrientation</a>
+          <a href="/devtools-protocol/1-3/DOM" class="tot 1-2 1-3">DOM</a>
+          <a href="/devtools-protocol/1-3/DOMDebugger" class="tot 1-2 1-3">DOMDebugger</a>
+          <a href="/devtools-protocol/1-3/DOMSnapshot" class="tot experimental">DOMSnapshot</a>
+          <a href="/devtools-protocol/1-3/DOMStorage" class="tot experimental">DOMStorage</a>
+          <a href="/devtools-protocol/1-3/Emulation" class="tot 1-2 1-3">Emulation</a>
+          <a href="/devtools-protocol/1-3/EventBreakpoints" class="tot experimental">EventBreakpoints</a>
+          <a href="/devtools-protocol/1-3/Extensions" class="tot experimental">Extensions</a>
+          <a href="/devtools-protocol/1-3/FedCm" class="tot experimental">FedCm</a>
+          <a href="/devtools-protocol/1-3/Fetch" class="tot 1-3">Fetch</a>
+          <a href="/devtools-protocol/1-3/HeadlessExperimental" class="tot experimental">HeadlessExperimental</a>
+          <a href="/devtools-protocol/1-3/HeapProfiler" class="tot experimental v8">HeapProfiler</a>
+          <a href="/devtools-protocol/1-3/IndexedDB" class="tot experimental">IndexedDB</a>
+          <a href="/devtools-protocol/1-3/Input" class="tot 1-2 1-3">Input</a>
+          <a href="/devtools-protocol/1-3/Inspector" class="tot experimental">Inspector</a>
+          <a href="/devtools-protocol/1-3/IO" class="tot 1-3">IO</a>
+          <a href="/devtools-protocol/1-3/LayerTree" class="tot experimental">LayerTree</a>
+          <a href="/devtools-protocol/1-3/Log" class="tot 1-3">Log</a>
+          <a href="/devtools-protocol/1-3/Media" class="tot experimental">Media</a>
+          <a href="/devtools-protocol/1-3/Memory" class="tot experimental">Memory</a>
+          <a href="/devtools-protocol/1-3/Network" class="tot 1-2 1-3">Network</a>
+          <a href="/devtools-protocol/1-3/Overlay" class="tot experimental">Overlay</a>
+          <a href="/devtools-protocol/1-3/Page" class="tot 1-2 1-3">Page</a>
+          <a href="/devtools-protocol/1-3/Performance" class="tot 1-3">Performance</a>
+          <a href="/devtools-protocol/1-3/PerformanceTimeline" class="tot experimental">PerformanceTimeline</a>
+          <a href="/devtools-protocol/1-3/Preload" class="tot experimental">Preload</a>
+          <a href="/devtools-protocol/1-3/Profiler" class="tot 1-2 1-3 v8">Profiler</a>
+          <a href="/devtools-protocol/1-3/Runtime" class="tot 1-2 1-3 v8">Runtime</a>
+          <a href="/devtools-protocol/1-3/Schema" class="tot deprecated 1-2 v8">Schema</a>
+          <a href="/devtools-protocol/1-3/Security" class="tot 1-3">Security</a>
+          <a href="/devtools-protocol/1-3/ServiceWorker" class="tot experimental">ServiceWorker</a>
+          <a href="/devtools-protocol/1-3/Storage" class="tot experimental">Storage</a>
+          <a href="/devtools-protocol/1-3/SystemInfo" class="tot experimental">SystemInfo</a>
+          <a href="/devtools-protocol/1-3/Target" class="tot 1-3">Target</a>
+          <a href="/devtools-protocol/1-3/Tethering" class="tot experimental">Tethering</a>
+          <a href="/devtools-protocol/1-3/Tracing" class="tot experimental">Tracing</a>
+          <a href="/devtools-protocol/1-3/WebAudio" class="tot experimental">WebAudio</a>
+          <a href="/devtools-protocol/1-3/WebAuthn" class="tot experimental">WebAuthn</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <h1>Chrome DevTools Protocol</h1>
+      <button class="menu-link">Navigation</button>
+      <cr-search-control base-url="/devtools-protocol/" protocol-search-index="/search_index/1-3.json"></cr-search-control>
+    </header>
+    <section>
+      <div class="main-content-section domain">
+        
+    <div class="domain-section">
+      <div id="header">
+        <h2 class="heading">DOM Domain</h2>
+        
+      <div class="details-description">
+        <p>This domain exposes DOM read/write operations. Each DOM Node is represented with its mirror object
+that has an <code>id</code>. This <code>id</code> can be used to get additional information on the Node, resolve it into
+the JavaScript object wrapper, etc. It is important that client receives DOM events only for the
+nodes that are known to the client. Backend keeps track of the nodes that were sent to the client
+and never sends the same node twice. It is client&#39;s responsibility to collect information about
+the nodes that were sent to the client. Note that <code>iframe</code> owner elements will return
+corresponding document elements as their child nodes.</p>
+
+        
+      </div>
+    
+        
+        <h3>Methods</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#method-describeNode"><span class="domain-dot">DOM.</span>describeNode</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-disable"><span class="domain-dot">DOM.</span>disable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-enable"><span class="domain-dot">DOM.</span>enable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-focus"><span class="domain-dot">DOM.</span>focus</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getAttributes"><span class="domain-dot">DOM.</span>getAttributes</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getBoxModel"><span class="domain-dot">DOM.</span>getBoxModel</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getDocument"><span class="domain-dot">DOM.</span>getDocument</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getNodeForLocation"><span class="domain-dot">DOM.</span>getNodeForLocation</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getOuterHTML"><span class="domain-dot">DOM.</span>getOuterHTML</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-hideHighlight"><span class="domain-dot">DOM.</span>hideHighlight</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-highlightNode"><span class="domain-dot">DOM.</span>highlightNode</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-highlightRect"><span class="domain-dot">DOM.</span>highlightRect</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-moveTo"><span class="domain-dot">DOM.</span>moveTo</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-querySelector"><span class="domain-dot">DOM.</span>querySelector</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-querySelectorAll"><span class="domain-dot">DOM.</span>querySelectorAll</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-removeAttribute"><span class="domain-dot">DOM.</span>removeAttribute</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-removeNode"><span class="domain-dot">DOM.</span>removeNode</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-requestChildNodes"><span class="domain-dot">DOM.</span>requestChildNodes</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-requestNode"><span class="domain-dot">DOM.</span>requestNode</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-resolveNode"><span class="domain-dot">DOM.</span>resolveNode</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-scrollIntoViewIfNeeded"><span class="domain-dot">DOM.</span>scrollIntoViewIfNeeded</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setAttributesAsText"><span class="domain-dot">DOM.</span>setAttributesAsText</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setAttributeValue"><span class="domain-dot">DOM.</span>setAttributeValue</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setFileInputFiles"><span class="domain-dot">DOM.</span>setFileInputFiles</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setNodeName"><span class="domain-dot">DOM.</span>setNodeName</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setNodeValue"><span class="domain-dot">DOM.</span>setNodeValue</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setOuterHTML"><span class="domain-dot">DOM.</span>setOuterHTML</a>
+        
+      </div>
+      
+        <h3>Events</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#event-attributeModified"><span class="domain-dot">DOM.</span>attributeModified</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-attributeRemoved"><span class="domain-dot">DOM.</span>attributeRemoved</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-characterDataModified"><span class="domain-dot">DOM.</span>characterDataModified</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-childNodeCountUpdated"><span class="domain-dot">DOM.</span>childNodeCountUpdated</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-childNodeInserted"><span class="domain-dot">DOM.</span>childNodeInserted</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-childNodeRemoved"><span class="domain-dot">DOM.</span>childNodeRemoved</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-documentUpdated"><span class="domain-dot">DOM.</span>documentUpdated</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-setChildNodes"><span class="domain-dot">DOM.</span>setChildNodes</a>
+        
+      </div>
+      
+        <h3>Types</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#type-BackendNode"><span class="domain-dot">DOM.</span>BackendNode</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-BackendNodeId"><span class="domain-dot">DOM.</span>BackendNodeId</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-BoxModel"><span class="domain-dot">DOM.</span>BoxModel</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-CompatibilityMode"><span class="domain-dot">DOM.</span>CompatibilityMode</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-CSSComputedStyleProperty"><span class="domain-dot">DOM.</span>CSSComputedStyleProperty</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-DetachedElementInfo"><span class="domain-dot">DOM.</span>DetachedElementInfo</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-LogicalAxes"><span class="domain-dot">DOM.</span>LogicalAxes</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-Node"><span class="domain-dot">DOM.</span>Node</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-NodeId"><span class="domain-dot">DOM.</span>NodeId</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-PhysicalAxes"><span class="domain-dot">DOM.</span>PhysicalAxes</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-PseudoType"><span class="domain-dot">DOM.</span>PseudoType</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-Quad"><span class="domain-dot">DOM.</span>Quad</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-Rect"><span class="domain-dot">DOM.</span>Rect</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-RGBA"><span class="domain-dot">DOM.</span>RGBA</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ScrollOrientation"><span class="domain-dot">DOM.</span>ScrollOrientation</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ShadowRootType"><span class="domain-dot">DOM.</span>ShadowRootType</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ShapeOutsideInfo"><span class="domain-dot">DOM.</span>ShapeOutsideInfo</a>
+        
+      </div>
+      
+      </div>
+
+      
+      <h3 id="methods">Methods</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="method-describeNode">
+          <span class="domain-dot">DOM.</span>describeNode
+          
+          <a href="#method-describeNode"
+             class="permalink"
+             data-slug="DOM.describeNode"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Describes node given its id, does not require domain to be enabled. Does not start tracking any
+objects, can be used for automation.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          backendNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-BackendNodeId class="param-type">BackendNodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the backend node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          objectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Runtime/#type-RemoteObjectId class="param-type">Runtime.RemoteObjectId</a>
+          
+      <div class="details-description">
+        <p>JavaScript object id of the node wrapper.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          depth
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the
+entire subtree or provide an integer larger than 0.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          pierce
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether or not iframes and shadow roots should be traversed when returning the subtree
+(default is false).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          node
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-Node class="param-type">Node</a>
+          
+      <div class="details-description">
+        <p>Node description.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-disable">
+          <span class="domain-dot">DOM.</span>disable
+          
+          <a href="#method-disable"
+             class="permalink"
+             data-slug="DOM.disable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Disables DOM agent for the given page.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-enable">
+          <span class="domain-dot">DOM.</span>enable
+          
+          <a href="#method-enable"
+             class="permalink"
+             data-slug="DOM.enable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enables DOM agent for the given page.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          includeWhitespace
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Whether to include whitespaces in the children array of returned Nodes.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>none</code>, <code>all</code></div>
+    
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-focus">
+          <span class="domain-dot">DOM.</span>focus
+          
+          <a href="#method-focus"
+             class="permalink"
+             data-slug="DOM.focus"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Focuses the given element.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          backendNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-BackendNodeId class="param-type">BackendNodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the backend node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          objectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Runtime/#type-RemoteObjectId class="param-type">Runtime.RemoteObjectId</a>
+          
+      <div class="details-description">
+        <p>JavaScript object id of the node wrapper.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getAttributes">
+          <span class="domain-dot">DOM.</span>getAttributes
+          
+          <a href="#method-getAttributes"
+             class="permalink"
+             data-slug="DOM.getAttributes"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns attributes for the specified node.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the node to retrieve attributes for.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          attributes
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">string</span> ]</span></span>
+          
+      <div class="details-description">
+        <p>An interleaved array of node attribute names and values.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getBoxModel">
+          <span class="domain-dot">DOM.</span>getBoxModel
+          
+          <a href="#method-getBoxModel"
+             class="permalink"
+             data-slug="DOM.getBoxModel"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns boxes for the given node.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          backendNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-BackendNodeId class="param-type">BackendNodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the backend node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          objectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Runtime/#type-RemoteObjectId class="param-type">Runtime.RemoteObjectId</a>
+          
+      <div class="details-description">
+        <p>JavaScript object id of the node wrapper.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          model
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-BoxModel class="param-type">BoxModel</a>
+          
+      <div class="details-description">
+        <p>Box model for the node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getDocument">
+          <span class="domain-dot">DOM.</span>getDocument
+          
+          <a href="#method-getDocument"
+             class="permalink"
+             data-slug="DOM.getDocument"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns the root DOM node (and optionally the subtree) to the caller.
+Implicitly enables the DOM domain events for the current target.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          depth
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the
+entire subtree or provide an integer larger than 0.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          pierce
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether or not iframes and shadow roots should be traversed when returning the subtree
+(default is false).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          root
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-Node class="param-type">Node</a>
+          
+      <div class="details-description">
+        <p>Resulting node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getNodeForLocation">
+          <span class="domain-dot">DOM.</span>getNodeForLocation
+          
+          <a href="#method-getNodeForLocation"
+             class="permalink"
+             data-slug="DOM.getNodeForLocation"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns node id at given location. Depending on whether DOM domain is enabled, nodeId is
+either returned or not.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          x
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>X coordinate.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          y
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Y coordinate.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          includeUserAgentShadowDOM
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>False to skip to the nearest non-UA shadow root ancestor (default: false).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          ignorePointerEventsNone
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether to ignore pointer-events: none on elements and hit test them.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          backendNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-BackendNodeId class="param-type">BackendNodeId</a>
+          
+      <div class="details-description">
+        <p>Resulting node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          frameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-FrameId class="param-type">Page.FrameId</a>
+          
+      <div class="details-description">
+        <p>Frame this node belongs to.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the node at given coordinates, only when enabled and requested document.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getOuterHTML">
+          <span class="domain-dot">DOM.</span>getOuterHTML
+          
+          <a href="#method-getOuterHTML"
+             class="permalink"
+             data-slug="DOM.getOuterHTML"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns node&#39;s HTML markup.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          backendNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-BackendNodeId class="param-type">BackendNodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the backend node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          objectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Runtime/#type-RemoteObjectId class="param-type">Runtime.RemoteObjectId</a>
+          
+      <div class="details-description">
+        <p>JavaScript object id of the node wrapper.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          outerHTML
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Outer HTML markup.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-hideHighlight">
+          <span class="domain-dot">DOM.</span>hideHighlight
+          
+          <a href="#method-hideHighlight"
+             class="permalink"
+             data-slug="DOM.hideHighlight"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Hides any highlight.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-highlightNode">
+          <span class="domain-dot">DOM.</span>highlightNode
+          
+          <a href="#method-highlightNode"
+             class="permalink"
+             data-slug="DOM.highlightNode"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Highlights DOM node.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-highlightRect">
+          <span class="domain-dot">DOM.</span>highlightRect
+          
+          <a href="#method-highlightRect"
+             class="permalink"
+             data-slug="DOM.highlightRect"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Highlights given rectangle.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-moveTo">
+          <span class="domain-dot">DOM.</span>moveTo
+          
+          <a href="#method-moveTo"
+             class="permalink"
+             data-slug="DOM.moveTo"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Moves node into the new container, places it before the given anchor.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the node to move.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          targetNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the element to drop the moved node into.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          insertBeforeNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Drop node before this one (if absent, the moved node becomes the last child of
+<code>targetNodeId</code>).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>New id of the moved node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-querySelector">
+          <span class="domain-dot">DOM.</span>querySelector
+          
+          <a href="#method-querySelector"
+             class="permalink"
+             data-slug="DOM.querySelector"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Executes <code>querySelector</code> on a given node.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the node to query upon.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          selector
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Selector string.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Query selector result.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-querySelectorAll">
+          <span class="domain-dot">DOM.</span>querySelectorAll
+          
+          <a href="#method-querySelectorAll"
+             class="permalink"
+             data-slug="DOM.querySelectorAll"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Executes <code>querySelectorAll</code> on a given node.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the node to query upon.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          selector
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Selector string.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeIds
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Query selector result.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-removeAttribute">
+          <span class="domain-dot">DOM.</span>removeAttribute
+          
+          <a href="#method-removeAttribute"
+             class="permalink"
+             data-slug="DOM.removeAttribute"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Removes attribute with given name from an element with given id.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the element to remove attribute from.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Name of the attribute to remove.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-removeNode">
+          <span class="domain-dot">DOM.</span>removeNode
+          
+          <a href="#method-removeNode"
+             class="permalink"
+             data-slug="DOM.removeNode"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Removes node with given id.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the node to remove.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-requestChildNodes">
+          <span class="domain-dot">DOM.</span>requestChildNodes
+          
+          <a href="#method-requestChildNodes"
+             class="permalink"
+             data-slug="DOM.requestChildNodes"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Requests that children of the node with given id are returned to the caller in form of
+<code>setChildNodes</code> events where not only immediate children are retrieved, but all children down to
+the specified depth.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the node to get children for.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          depth
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the
+entire subtree or provide an integer larger than 0.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          pierce
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether or not iframes and shadow roots should be traversed when returning the sub-tree
+(default is false).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-requestNode">
+          <span class="domain-dot">DOM.</span>requestNode
+          
+          <a href="#method-requestNode"
+             class="permalink"
+             data-slug="DOM.requestNode"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Requests that the node is sent to the caller given the JavaScript node object reference. All
+nodes that form the path from the node to the root are also sent to the client as a series of
+<code>setChildNodes</code> notifications.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          objectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Runtime/#type-RemoteObjectId class="param-type">Runtime.RemoteObjectId</a>
+          
+      <div class="details-description">
+        <p>JavaScript object id to convert into node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Node id for given object.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-resolveNode">
+          <span class="domain-dot">DOM.</span>resolveNode
+          
+          <a href="#method-resolveNode"
+             class="permalink"
+             data-slug="DOM.resolveNode"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Resolves the JavaScript node object for a given NodeId or BackendNodeId.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the node to resolve.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          backendNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-BackendNodeId class="param-type">DOM.BackendNodeId</a>
+          
+      <div class="details-description">
+        <p>Backend identifier of the node to resolve.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          objectGroup
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Symbolic group name that can be used to release multiple objects.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          executionContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Runtime/#type-ExecutionContextId class="param-type">Runtime.ExecutionContextId</a>
+          
+      <div class="details-description">
+        <p>Execution context in which to resolve the node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          object
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Runtime/#type-RemoteObject class="param-type">Runtime.RemoteObject</a>
+          
+      <div class="details-description">
+        <p>JavaScript object wrapper for given node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-scrollIntoViewIfNeeded">
+          <span class="domain-dot">DOM.</span>scrollIntoViewIfNeeded
+          
+          <a href="#method-scrollIntoViewIfNeeded"
+             class="permalink"
+             data-slug="DOM.scrollIntoViewIfNeeded"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Scrolls the specified rect of the given node into view if not already visible.
+Note: exactly one between nodeId, backendNodeId and objectId should be passed
+to identify the node.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          backendNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-BackendNodeId class="param-type">BackendNodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the backend node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          objectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Runtime/#type-RemoteObjectId class="param-type">Runtime.RemoteObjectId</a>
+          
+      <div class="details-description">
+        <p>JavaScript object id of the node wrapper.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          rect
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-Rect class="param-type">Rect</a>
+          
+      <div class="details-description">
+        <p>The rect to be scrolled into view, relative to the node&#39;s border box, in CSS pixels.
+When omitted, center of the node will be used, similar to Element.scrollIntoView.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setAttributesAsText">
+          <span class="domain-dot">DOM.</span>setAttributesAsText
+          
+          <a href="#method-setAttributesAsText"
+             class="permalink"
+             data-slug="DOM.setAttributesAsText"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Sets attributes on element with given id. This method is useful when user edits some existing
+attribute value and types in several attribute name/value pairs.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the element to set attributes for.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          text
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Text with a number of attributes. Will parse this text using HTML parser.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Attribute name to replace with new attributes derived from text in case text parsed
+successfully.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setAttributeValue">
+          <span class="domain-dot">DOM.</span>setAttributeValue
+          
+          <a href="#method-setAttributeValue"
+             class="permalink"
+             data-slug="DOM.setAttributeValue"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Sets attribute for an element with given id.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the element to set attribute for.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Attribute name.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          value
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Attribute value.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setFileInputFiles">
+          <span class="domain-dot">DOM.</span>setFileInputFiles
+          
+          <a href="#method-setFileInputFiles"
+             class="permalink"
+             data-slug="DOM.setFileInputFiles"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Sets files for the given file input element.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          files
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">string</span> ]</span></span>
+          
+      <div class="details-description">
+        <p>Array of file paths to set.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          backendNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-BackendNodeId class="param-type">BackendNodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the backend node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          objectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Runtime/#type-RemoteObjectId class="param-type">Runtime.RemoteObjectId</a>
+          
+      <div class="details-description">
+        <p>JavaScript object id of the node wrapper.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setNodeName">
+          <span class="domain-dot">DOM.</span>setNodeName
+          
+          <a href="#method-setNodeName"
+             class="permalink"
+             data-slug="DOM.setNodeName"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Sets node name for a node with given id.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the node to set name for.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>New node&#39;s name.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>New node&#39;s id.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setNodeValue">
+          <span class="domain-dot">DOM.</span>setNodeValue
+          
+          <a href="#method-setNodeValue"
+             class="permalink"
+             data-slug="DOM.setNodeValue"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Sets node value for a node with given id.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the node to set value for.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          value
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>New node&#39;s value.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setOuterHTML">
+          <span class="domain-dot">DOM.</span>setOuterHTML
+          
+          <a href="#method-setOuterHTML"
+             class="permalink"
+             data-slug="DOM.setOuterHTML"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Sets node HTML markup, returns new node id.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the node to set markup for.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          outerHTML
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Outer HTML markup to set.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="events">Events</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="event-attributeModified">
+          <span class="domain-dot">DOM.</span>attributeModified
+          
+          <a href="#event-attributeModified"
+             class="permalink"
+             data-slug="DOM.attributeModified"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when <code>Element</code>&#39;s attribute is modified.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the node that has changed.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Attribute name.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          value
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Attribute value.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-attributeRemoved">
+          <span class="domain-dot">DOM.</span>attributeRemoved
+          
+          <a href="#event-attributeRemoved"
+             class="permalink"
+             data-slug="DOM.attributeRemoved"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when <code>Element</code>&#39;s attribute is removed.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the node that has changed.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>A ttribute name.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-characterDataModified">
+          <span class="domain-dot">DOM.</span>characterDataModified
+          
+          <a href="#event-characterDataModified"
+             class="permalink"
+             data-slug="DOM.characterDataModified"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Mirrors <code>DOMCharacterDataModified</code> event.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the node that has changed.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          characterData
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>New text value.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-childNodeCountUpdated">
+          <span class="domain-dot">DOM.</span>childNodeCountUpdated
+          
+          <a href="#event-childNodeCountUpdated"
+             class="permalink"
+             data-slug="DOM.childNodeCountUpdated"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when <code>Container</code>&#39;s child node count has changed.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the node that has changed.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          childNodeCount
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>New node count.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-childNodeInserted">
+          <span class="domain-dot">DOM.</span>childNodeInserted
+          
+          <a href="#event-childNodeInserted"
+             class="permalink"
+             data-slug="DOM.childNodeInserted"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Mirrors <code>DOMNodeInserted</code> event.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          parentNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the node that has changed.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          previousNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the previous sibling.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          node
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-Node class="param-type">Node</a>
+          
+      <div class="details-description">
+        <p>Inserted node data.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-childNodeRemoved">
+          <span class="domain-dot">DOM.</span>childNodeRemoved
+          
+          <a href="#event-childNodeRemoved"
+             class="permalink"
+             data-slug="DOM.childNodeRemoved"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Mirrors <code>DOMNodeRemoved</code> event.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          parentNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Parent id.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the node that has been removed.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-documentUpdated">
+          <span class="domain-dot">DOM.</span>documentUpdated
+          
+          <a href="#event-documentUpdated"
+             class="permalink"
+             data-slug="DOM.documentUpdated"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when <code>Document</code> has been totally updated. Node ids are no longer valid.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-setChildNodes">
+          <span class="domain-dot">DOM.</span>setChildNodes
+          
+          <a href="#event-setChildNodes"
+             class="permalink"
+             data-slug="DOM.setChildNodes"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when backend wants to provide client with the missing DOM structure. This happens upon
+most of the calls requesting node ids.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          parentId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Parent node id to populate with children.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          nodes
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/1-3/DOM/#type-Node class="param-type">Node</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Child nodes array.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="types">Types</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="type-BackendNode">
+          <span class="domain-dot">DOM.</span>BackendNode
+          
+          <a href="#type-BackendNode"
+             class="permalink"
+             data-slug="DOM.BackendNode"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Backend node with a friendly name.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeType
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p><code>Node</code>&#39;s nodeType.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          nodeName
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p><code>Node</code>&#39;s nodeName.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          backendNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-BackendNodeId class="param-type">BackendNodeId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-BackendNodeId">
+          <span class="domain-dot">DOM.</span>BackendNodeId
+          
+          <a href="#type-BackendNodeId"
+             class="permalink"
+             data-slug="DOM.BackendNodeId"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Unique DOM node identifier used to reference a node that may not have been pushed to the
+front-end.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>integer</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-BoxModel">
+          <span class="domain-dot">DOM.</span>BoxModel
+          
+          <a href="#type-BoxModel"
+             class="permalink"
+             data-slug="DOM.BoxModel"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Box model.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          content
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-Quad class="param-type">Quad</a>
+          
+      <div class="details-description">
+        <p>Content box</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          padding
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-Quad class="param-type">Quad</a>
+          
+      <div class="details-description">
+        <p>Padding box</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          border
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-Quad class="param-type">Quad</a>
+          
+      <div class="details-description">
+        <p>Border box</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          margin
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-Quad class="param-type">Quad</a>
+          
+      <div class="details-description">
+        <p>Margin box</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          width
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Node width</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          height
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Node height</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          shapeOutside
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-ShapeOutsideInfo class="param-type">ShapeOutsideInfo</a>
+          
+      <div class="details-description">
+        <p>Shape outside coordinates</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-CompatibilityMode">
+          <span class="domain-dot">DOM.</span>CompatibilityMode
+          
+          <a href="#type-CompatibilityMode"
+             class="permalink"
+             data-slug="DOM.CompatibilityMode"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Document compatibility mode.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>QuirksMode</code>, <code>LimitedQuirksMode</code>, <code>NoQuirksMode</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-CSSComputedStyleProperty">
+          <span class="domain-dot">DOM.</span>CSSComputedStyleProperty
+          
+          <a href="#type-CSSComputedStyleProperty"
+             class="permalink"
+             data-slug="DOM.CSSComputedStyleProperty"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Computed style property name.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          value
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Computed style property value.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-DetachedElementInfo">
+          <span class="domain-dot">DOM.</span>DetachedElementInfo
+          
+          <a href="#type-DetachedElementInfo"
+             class="permalink"
+             data-slug="DOM.DetachedElementInfo"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>A structure to hold the top-level node of a detached tree and an array of its retained descendants.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          treeNode
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-Node class="param-type">Node</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          retainedNodeIds
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a> ]</span></span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-LogicalAxes">
+          <span class="domain-dot">DOM.</span>LogicalAxes
+          
+          <a href="#type-LogicalAxes"
+             class="permalink"
+             data-slug="DOM.LogicalAxes"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>ContainerSelector logical axes</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>Inline</code>, <code>Block</code>, <code>Both</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-Node">
+          <span class="domain-dot">DOM.</span>Node
+          
+          <a href="#type-Node"
+             class="permalink"
+             data-slug="DOM.Node"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>DOM interaction is implemented in terms of mirror objects that represent the actual DOM nodes.
+DOMNode is a base node mirror type.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>Node identifier that is passed into the rest of the DOM messages as the <code>nodeId</code>. Backend
+will only push node with given <code>id</code> once. It is aware of all requested nodes and will only
+fire DOM events for nodes known to the client.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          parentId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-NodeId class="param-type">NodeId</a>
+          
+      <div class="details-description">
+        <p>The id of the parent node if any.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          backendNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-BackendNodeId class="param-type">BackendNodeId</a>
+          
+      <div class="details-description">
+        <p>The BackendNodeId for this node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          nodeType
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p><code>Node</code>&#39;s nodeType.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          nodeName
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p><code>Node</code>&#39;s nodeName.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          localName
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p><code>Node</code>&#39;s localName.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          nodeValue
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p><code>Node</code>&#39;s nodeValue.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          childNodeCount
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Child count for <code>Container</code> nodes.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          children
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/1-3/DOM/#type-Node class="param-type">Node</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Child nodes of this node when requested with children.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          attributes
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">string</span> ]</span></span>
+          
+      <div class="details-description">
+        <p>Attributes of the <code>Element</code> node in the form of flat array <code>[name1, value1, name2, value2]</code>.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          documentURL
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Document URL that <code>Document</code> or <code>FrameOwner</code> node points to.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          baseURL
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Base URL that <code>Document</code> or <code>FrameOwner</code> node uses for URL completion.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          publicId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p><code>DocumentType</code>&#39;s publicId.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          systemId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p><code>DocumentType</code>&#39;s systemId.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          internalSubset
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p><code>DocumentType</code>&#39;s internalSubset.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          xmlVersion
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p><code>Document</code>&#39;s XML version in case of XML documents.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p><code>Attr</code>&#39;s name.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          value
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p><code>Attr</code>&#39;s value.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          pseudoType
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-PseudoType class="param-type">PseudoType</a>
+          
+      <div class="details-description">
+        <p>Pseudo element type for this node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          pseudoIdentifier
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Pseudo element identifier for this node. Only present if there is a
+valid pseudoType.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          shadowRootType
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-ShadowRootType class="param-type">ShadowRootType</a>
+          
+      <div class="details-description">
+        <p>Shadow root type.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          frameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-FrameId class="param-type">Page.FrameId</a>
+          
+      <div class="details-description">
+        <p>Frame ID for frame owner elements.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          contentDocument
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-Node class="param-type">Node</a>
+          
+      <div class="details-description">
+        <p>Content document for frame owner elements.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          shadowRoots
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/1-3/DOM/#type-Node class="param-type">Node</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Shadow root list for given element host.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          templateContent
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-Node class="param-type">Node</a>
+          
+      <div class="details-description">
+        <p>Content document fragment for template elements.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          pseudoElements
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/1-3/DOM/#type-Node class="param-type">Node</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Pseudo elements associated with this node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          importedDocument
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-Node class="param-type">Node</a>
+          
+      <div class="details-description">
+        <p>Deprecated, as the HTML Imports API has been removed (crbug.com/937746).
+This property used to return the imported document for the HTMLImport links.
+The property is always undefined now.</p>
+
+        
+      </div>
+    
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          distributedNodes
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/1-3/DOM/#type-BackendNode class="param-type">BackendNode</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Distributed nodes for given insertion point.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          isSVG
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether the node is SVG.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          compatibilityMode
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-CompatibilityMode class="param-type">CompatibilityMode</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          assignedSlot
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-BackendNode class="param-type">BackendNode</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          isScrollable
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-NodeId">
+          <span class="domain-dot">DOM.</span>NodeId
+          
+          <a href="#type-NodeId"
+             class="permalink"
+             data-slug="DOM.NodeId"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Unique DOM node identifier.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>integer</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-PhysicalAxes">
+          <span class="domain-dot">DOM.</span>PhysicalAxes
+          
+          <a href="#type-PhysicalAxes"
+             class="permalink"
+             data-slug="DOM.PhysicalAxes"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>ContainerSelector physical axes</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>Horizontal</code>, <code>Vertical</code>, <code>Both</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-PseudoType">
+          <span class="domain-dot">DOM.</span>PseudoType
+          
+          <a href="#type-PseudoType"
+             class="permalink"
+             data-slug="DOM.PseudoType"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Pseudo element type.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>first-line</code>, <code>first-letter</code>, <code>check</code>, <code>before</code>, <code>after</code>, <code>select-arrow</code>, <code>marker</code>, <code>backdrop</code>, <code>column</code>, <code>selection</code>, <code>search-text</code>, <code>target-text</code>, <code>spelling-error</code>, <code>grammar-error</code>, <code>highlight</code>, <code>first-line-inherited</code>, <code>scroll-marker</code>, <code>scroll-marker-group</code>, <code>scroll-next-button</code>, <code>scroll-prev-button</code>, <code>scrollbar</code>, <code>scrollbar-thumb</code>, <code>scrollbar-button</code>, <code>scrollbar-track</code>, <code>scrollbar-track-piece</code>, <code>scrollbar-corner</code>, <code>resizer</code>, <code>input-list-button</code>, <code>view-transition</code>, <code>view-transition-group</code>, <code>view-transition-image-pair</code>, <code>view-transition-old</code>, <code>view-transition-new</code>, <code>placeholder</code>, <code>file-selector-button</code>, <code>details-content</code>, <code>picker</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-Quad">
+          <span class="domain-dot">DOM.</span>Quad
+          
+          <a href="#type-Quad"
+             class="permalink"
+             data-slug="DOM.Quad"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>An array of quad vertices, x immediately followed by y for each point, points clock-wise.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>array</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-Rect">
+          <span class="domain-dot">DOM.</span>Rect
+          
+          <a href="#type-Rect"
+             class="permalink"
+             data-slug="DOM.Rect"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Rectangle.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          x
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>X coordinate</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          y
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Y coordinate</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          width
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Rectangle width</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          height
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Rectangle height</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-RGBA">
+          <span class="domain-dot">DOM.</span>RGBA
+          
+          <a href="#type-RGBA"
+             class="permalink"
+             data-slug="DOM.RGBA"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>A structure holding an RGBA color.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          r
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>The red component, in the [0-255] range.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          g
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>The green component, in the [0-255] range.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          b
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>The blue component, in the [0-255] range.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          a
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>The alpha component, in the [0-1] range (default: 1).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ScrollOrientation">
+          <span class="domain-dot">DOM.</span>ScrollOrientation
+          
+          <a href="#type-ScrollOrientation"
+             class="permalink"
+             data-slug="DOM.ScrollOrientation"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Physical scroll orientation</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>horizontal</code>, <code>vertical</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ShadowRootType">
+          <span class="domain-dot">DOM.</span>ShadowRootType
+          
+          <a href="#type-ShadowRootType"
+             class="permalink"
+             data-slug="DOM.ShadowRootType"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Shadow root type.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>user-agent</code>, <code>open</code>, <code>closed</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ShapeOutsideInfo">
+          <span class="domain-dot">DOM.</span>ShapeOutsideInfo
+          
+          <a href="#type-ShapeOutsideInfo"
+             class="permalink"
+             data-slug="DOM.ShapeOutsideInfo"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>CSS Shape Outside details.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          bounds
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-Quad class="param-type">Quad</a>
+          
+      <div class="details-description">
+        <p>Shape bounds</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          shape
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">any</span> ]</span></span>
+          
+      <div class="details-description">
+        <p>Shape coordinate details</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          marginShape
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">any</span> ]</span></span>
+          
+      <div class="details-description">
+        <p>Margin shape bounds</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+    </div>
+    
+      </div>
+    </section>
+  </main>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60854461-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
