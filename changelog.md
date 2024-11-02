@@ -1,7 +1,38 @@
 
 
+## Roll protocol to r1377232 — _2024-11-02T04:29:34.000Z_
+######  Diff: [`b62e175...802bc52`](https://github.com/ChromeDevTools/devtools-protocol/compare/b62e175...802bc52)
+
+```diff
+@@ browser_protocol.pdl:117 @@ experimental domain Accessibility
+   # - from 'activedescendant' to 'owns' - relationships between elements other than parent/child/sibling.
+   type AXPropertyName extends string
+     enum
++      actions
+       busy
+       disabled
+       editable
+@@ -517,6 +518,8 @@ experimental domain Audits
+       ExcludeDomainNonASCII
+       ExcludeThirdPartyCookieBlockedInFirstPartySet
+       ExcludeThirdPartyPhaseout
++      ExcludePortMismatch
++      ExcludeSchemeMismatch
+ 
+   type CookieWarningReason extends string
+     enum
+@@ -2695,6 +2698,7 @@ domain DOM
+       check
+       before
+       after
++      select-arrow
+       marker
+       backdrop
+       column
+```
+
 ## Roll protocol to r1376744 — _2024-11-01T04:29:19.000Z_
-######  Diff: [`2354f74...ddc0b99`](https://github.com/ChromeDevTools/devtools-protocol/compare/2354f74...ddc0b99)
+######  Diff: [`2354f74...b62e175`](https://github.com/ChromeDevTools/devtools-protocol/compare/2354f74...b62e175)
 
 ```diff
 @@ browser_protocol.pdl:1798 @@ experimental domain CSS
@@ -12154,18 +12185,4 @@ index 18cf0c7..8e43695 100644
    # Clears storage for origin.
    command clearDataForOrigin
      parameters
-```
-
-## Roll protocol to r1004730 — _2022-05-18T13:15:20.000Z_
-######  Diff: [`838223b...210ddf8`](https://github.com/ChromeDevTools/devtools-protocol/compare/838223b...210ddf8)
-
-```diff
-@@ browser_protocol.pdl:769 @@ experimental domain Audits
-       NotificationPermissionRequestedIframe
-       ObsoleteWebRtcCipherSuite
-       PaymentRequestBasicCard
--      PaymentRequestShowWithoutGesture
-       PictureSourceSrc
-       PrefixedCancelAnimationFrame
-       PrefixedRequestAnimationFrame
 ```
