@@ -1,7 +1,7 @@
 
 
 ## Roll protocol to r1377232 — _2024-11-02T04:29:34.000Z_
-######  Diff: [`b62e175...802bc52`](https://github.com/ChromeDevTools/devtools-protocol/compare/b62e175...802bc52)
+######  Diff: [`b62e175...b1b0036`](https://github.com/ChromeDevTools/devtools-protocol/compare/b62e175...b1b0036)
 
 ```diff
 @@ browser_protocol.pdl:117 @@ experimental domain Accessibility
@@ -12152,37 +12152,4 @@ index 18cf0c7..8e43695 100644
        DeprecationExample
        DocumentDomainSettingWithoutOriginAgentClusterHeader
        EventPath
-```
-
-## Roll protocol to r1005172 — _2022-05-19T09:15:19.000Z_
-######  Diff: [`210ddf8...363a231`](https://github.com/ChromeDevTools/devtools-protocol/compare/210ddf8...363a231)
-
-```diff
-@@ browser_protocol.pdl:3434 @@ experimental domain DOMStorage
-       string key
-       string value
- 
--  command getStorageKeyForFrame
--    parameters
--      Page.FrameId frameId
--    returns
--      SerializedStorageKey storageKey
--
-   event domStorageItemAdded
-     parameters
-       StorageId storageId
-@@ -8904,6 +8898,13 @@ experimental domain Storage
-       array of InterestGroupAd ads
-       array of InterestGroupAd adComponents
- 
-+  # Returns a storage key given a frame id.
-+  command getStorageKeyForFrame
-+    parameters
-+      Page.FrameId frameId
-+    returns
-+      SerializedStorageKey storageKey
-+
-   # Clears storage for origin.
-   command clearDataForOrigin
-     parameters
 ```
