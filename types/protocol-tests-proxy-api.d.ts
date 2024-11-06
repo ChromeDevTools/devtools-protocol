@@ -1171,6 +1171,13 @@ export namespace ProtocolTestsProxyApi {
         getLocationForSelector(params: Protocol.CSS.GetLocationForSelectorRequest): Promise<{id: number, result: Protocol.CSS.GetLocationForSelectorResponse, sessionId: string}>;
 
         /**
+         * Starts tracking the given node for the computed style updates
+         * and whenever the computed style is updated for node, it queues
+         * a `computedStyleUpdated` event with throttling.
+         */
+        trackComputedStyleUpdatesForNode(params: Protocol.CSS.TrackComputedStyleUpdatesForNodeRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
          * Starts tracking the given computed styles for updates. The specified array of properties
          * replaces the one previously specified. Pass empty array to disable tracking.
          * Use takeComputedStyleUpdates to retrieve the list of nodes that had properties modified.
@@ -1294,6 +1301,10 @@ export namespace ProtocolTestsProxyApi {
         onStyleSheetRemoved(listener: (event: { params: Protocol.CSS.StyleSheetRemovedEvent }) => void): void;
         offStyleSheetRemoved(listener: (event: { params: Protocol.CSS.StyleSheetRemovedEvent }) => void): void;
         onceStyleSheetRemoved(eventMatcher?: (event: { params: Protocol.CSS.StyleSheetRemovedEvent }) => boolean): Promise<{ params: Protocol.CSS.StyleSheetRemovedEvent }>;
+
+        onComputedStyleUpdated(listener: (event: { params: Protocol.CSS.ComputedStyleUpdatedEvent }) => void): void;
+        offComputedStyleUpdated(listener: (event: { params: Protocol.CSS.ComputedStyleUpdatedEvent }) => void): void;
+        onceComputedStyleUpdated(eventMatcher?: (event: { params: Protocol.CSS.ComputedStyleUpdatedEvent }) => boolean): Promise<{ params: Protocol.CSS.ComputedStyleUpdatedEvent }>;
 
     }
 

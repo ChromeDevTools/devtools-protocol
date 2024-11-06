@@ -1,5 +1,36 @@
 
 
+## Roll protocol to r1378738 — _2024-11-06T04:29:39.000Z_
+######  Diff: [`7019b3c...51d701f`](https://github.com/ChromeDevTools/devtools-protocol/compare/7019b3c...51d701f)
+
+```diff
+@@ browser_protocol.pdl:2319 @@ experimental domain CSS
+     returns
+       array of SourceRange ranges
+ 
++  # Starts tracking the given node for the computed style updates
++  # and whenever the computed style is updated for node, it queues
++  # a `computedStyleUpdated` event with throttling.
++  experimental command trackComputedStyleUpdatesForNode
++    parameters
++      optional DOM.NodeId nodeId
++
+   # Starts tracking the given computed styles for updates. The specified array of properties
+   # replaces the one previously specified. Pass empty array to disable tracking.
+   # Use takeComputedStyleUpdates to retrieve the list of nodes that had properties modified.
+@@ -2486,6 +2493,11 @@ experimental domain CSS
+       # Identifier of the removed stylesheet.
+       StyleSheetId styleSheetId
+ 
++  experimental event computedStyleUpdated
++    parameters
++      # The node id that has updated computed styles.
++      DOM.NodeId nodeId
++
+ experimental domain CacheStorage
+   depends on Storage
+```
+
 ## Roll protocol to r1377232 — _2024-11-02T04:29:34.000Z_
 ######  Diff: [`b62e175...b1b0036`](https://github.com/ChromeDevTools/devtools-protocol/compare/b62e175...b1b0036)
 
@@ -12138,18 +12169,4 @@ index 18cf0c7..8e43695 100644
    # Allows overriding user agent with the given string.
    command setUserAgentOverride
      parameters
-```
-
-## Roll protocol to r1005560 — _2022-05-20T01:15:18.000Z_
-######  Diff: [`363a231...44eb39e`](https://github.com/ChromeDevTools/devtools-protocol/compare/363a231...44eb39e)
-
-```diff
-@@ browser_protocol.pdl:751 @@ experimental domain Audits
-       CrossOriginWindowAlert
-       CrossOriginWindowConfirm
-       CSSSelectorInternalMediaControlsOverlayCastButton
--      CustomCursorIntersectsViewport
-       DeprecationExample
-       DocumentDomainSettingWithoutOriginAgentClusterHeader
-       EventPath
 ```

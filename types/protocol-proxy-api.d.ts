@@ -1103,6 +1103,13 @@ export namespace ProtocolProxyApi {
         getLocationForSelector(params: Protocol.CSS.GetLocationForSelectorRequest): Promise<Protocol.CSS.GetLocationForSelectorResponse>;
 
         /**
+         * Starts tracking the given node for the computed style updates
+         * and whenever the computed style is updated for node, it queues
+         * a `computedStyleUpdated` event with throttling.
+         */
+        trackComputedStyleUpdatesForNode(params: Protocol.CSS.TrackComputedStyleUpdatesForNodeRequest): Promise<void>;
+
+        /**
          * Starts tracking the given computed styles for updates. The specified array of properties
          * replaces the one previously specified. Pass empty array to disable tracking.
          * Use takeComputedStyleUpdates to retrieve the list of nodes that had properties modified.
@@ -1216,6 +1223,8 @@ export namespace ProtocolProxyApi {
          * Fired whenever an active document stylesheet is removed.
          */
         on(event: 'styleSheetRemoved', listener: (params: Protocol.CSS.StyleSheetRemovedEvent) => void): void;
+
+        on(event: 'computedStyleUpdated', listener: (params: Protocol.CSS.ComputedStyleUpdatedEvent) => void): void;
 
     }
 
