@@ -3311,7 +3311,8 @@ export namespace ProtocolProxyApi {
         on(event: 'javascriptDialogOpening', listener: (params: Protocol.Page.JavascriptDialogOpeningEvent) => void): void;
 
         /**
-         * Fired for top level page lifecycle events such as navigation, load, paint, etc.
+         * Fired for lifecycle events (navigation, load, paint, etc) in the current
+         * target (including local frames).
          */
         on(event: 'lifecycleEvent', listener: (params: Protocol.Page.LifecycleEventEvent) => void): void;
 

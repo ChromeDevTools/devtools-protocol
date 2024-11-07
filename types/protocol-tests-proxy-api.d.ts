@@ -3563,7 +3563,8 @@ export namespace ProtocolTestsProxyApi {
         onceJavascriptDialogOpening(eventMatcher?: (event: { params: Protocol.Page.JavascriptDialogOpeningEvent }) => boolean): Promise<{ params: Protocol.Page.JavascriptDialogOpeningEvent }>;
 
         /**
-         * Fired for top level page lifecycle events such as navigation, load, paint, etc.
+         * Fired for lifecycle events (navigation, load, paint, etc) in the current
+         * target (including local frames).
          */
         onLifecycleEvent(listener: (event: { params: Protocol.Page.LifecycleEventEvent }) => void): void;
         offLifecycleEvent(listener: (event: { params: Protocol.Page.LifecycleEventEvent }) => void): void;

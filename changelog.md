@@ -1,7 +1,42 @@
 
 
+## Roll protocol to r1379457 — _2024-11-07T04:29:07.000Z_
+######  Diff: [`652c02c...40e40f9`](https://github.com/ChromeDevTools/devtools-protocol/compare/652c02c...40e40f9)
+
+```diff
+@@ browser_protocol.pdl:6397 @@ domain Network
+       # The cookie's name/value pair size exceeded the size limit defined in
+       # RFC6265bis.
+       NameValuePairExceedsMaxSize
++      # The cookie's source port value does not match the request origin's port.
++      PortMismatch
++      # The cookie's source scheme value does not match the request origin's scheme.
++      SchemeMismatch
+ 
+   # Types of reasons why a cookie should have been blocked by 3PCD but is exempted for the request.
+   experimental type CookieExemptionReason extends string
+@@ -9397,7 +9401,8 @@ domain Page
+       # Default dialog prompt.
+       optional string defaultPrompt
+ 
+-  # Fired for top level page lifecycle events such as navigation, load, paint, etc.
++  # Fired for lifecycle events (navigation, load, paint, etc) in the current
++  # target (including local frames).
+   event lifecycleEvent
+     parameters
+       # Id of the frame.
+@@ -10859,6 +10864,7 @@ experimental domain Storage
+       excessiveReportingOrigins
+       noHistograms
+       insufficientBudget
++      insufficientNamedBudget
+       noMatchingSourceFilterData
+       notRegistered
+       prohibitedByBrowserPolicy
+```
+
 ## Roll protocol to r1378738 — _2024-11-06T04:29:39.000Z_
-######  Diff: [`7019b3c...51d701f`](https://github.com/ChromeDevTools/devtools-protocol/compare/7019b3c...51d701f)
+######  Diff: [`7019b3c...652c02c`](https://github.com/ChromeDevTools/devtools-protocol/compare/7019b3c...652c02c)
 
 ```diff
 @@ browser_protocol.pdl:2319 @@ experimental domain CSS
@@ -12151,22 +12186,4 @@ index 18cf0c7..8e43695 100644
        SharedArrayBufferConstructedWithoutIsolation
        TextToSpeech_DisallowedByAutoplay
        V8SharedArrayBufferConstructedInExtensionWithoutIsolation
-```
-
-## Roll protocol to r1005767 — _2022-05-20T14:15:15.000Z_
-######  Diff: [`44eb39e...fff96f6`](https://github.com/ChromeDevTools/devtools-protocol/compare/44eb39e...fff96f6)
-
-```diff
-@@ browser_protocol.pdl:3808 @@ domain Emulation
-       # Image types to disable.
-       array of DisabledImageType imageTypes
- 
-+  experimental command setHardwareConcurrencyOverride
-+    parameters
-+      # Hardware concurrency to report
-+      integer hardwareConcurrency
-+
-   # Allows overriding user agent with the given string.
-   command setUserAgentOverride
-     parameters
 ```
