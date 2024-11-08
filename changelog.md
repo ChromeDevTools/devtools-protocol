@@ -1,7 +1,51 @@
 
 
+## Roll protocol to r1380148 — _2024-11-08T04:28:53.000Z_
+######  Diff: [`0225c22...21d819f`](https://github.com/ChromeDevTools/devtools-protocol/compare/0225c22...21d819f)
+
+```diff
+@@ browser_protocol.pdl:2322 @@ experimental domain CSS
+   # Starts tracking the given node for the computed style updates
+   # and whenever the computed style is updated for node, it queues
+   # a `computedStyleUpdated` event with throttling.
++  # There can only be 1 node tracked for computed style updates
++  # so passing a new node id removes tracking from the previous node.
++  # Pass `undefined` to disable tracking.
+   experimental command trackComputedStyleUpdatesForNode
+     parameters
+       optional DOM.NodeId nodeId
+@@ -5704,7 +5707,9 @@ domain Network
+   # Unique loader identifier.
+   type LoaderId extends string
+ 
+-  # Unique request identifier.
++  # Unique network request identifier.
++  # Note that this does not identify individual HTTP requests that are part of
++  # a network request.
+   type RequestId extends string
+ 
+   # Unique intercepted request identifier.
+@@ -6218,6 +6223,7 @@ domain Network
+         preflight
+         other
+       # Initiator JavaScript stack trace, set for Script only.
++      # Requires the Debugger domain to be enabled.
+       optional Runtime.StackTrace stack
+       # Initiator URL, set for Parser type or for Script type (when script is importing module) or for SignedExchange type.
+       optional string url
+@@ -11503,6 +11509,8 @@ domain Fetch
+   depends on Page
+ 
+   # Unique request identifier.
++  # Note that this does not identify individual HTTP requests that are part of
++  # a network request.
+   type RequestId extends string
+ 
+   # Stages of the request to handle. Request will intercept before the request is
+```
+
 ## Roll protocol to r1379457 — _2024-11-07T04:29:07.000Z_
-######  Diff: [`652c02c...40e40f9`](https://github.com/ChromeDevTools/devtools-protocol/compare/652c02c...40e40f9)
+######  Diff: [`652c02c...0225c22`](https://github.com/ChromeDevTools/devtools-protocol/compare/652c02c...0225c22)
 
 ```diff
 @@ browser_protocol.pdl:6397 @@ domain Network
@@ -12172,18 +12216,4 @@ index 18cf0c7..8e43695 100644
        ch-prefers-color-scheme
        ch-rtt
        ch-save-data
-```
-
-## Roll protocol to r1006825 — _2022-05-24T10:15:23.000Z_
-######  Diff: [`fff96f6...09fd7be`](https://github.com/ChromeDevTools/devtools-protocol/compare/fff96f6...09fd7be)
-
-```diff
-@@ browser_protocol.pdl:785 @@ experimental domain Audits
-       RTCPeerConnectionComplexPlanBSdpUsingDefaultSdpSemantics
-       RTCPeerConnectionSdpSemanticsPlanB
-       RtcpMuxPolicyNegotiate
--      RTPDataChannel
-       SharedArrayBufferConstructedWithoutIsolation
-       TextToSpeech_DisallowedByAutoplay
-       V8SharedArrayBufferConstructedInExtensionWithoutIsolation
 ```

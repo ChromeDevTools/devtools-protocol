@@ -10291,7 +10291,9 @@ export namespace Protocol {
         export type LoaderId = string;
 
         /**
-         * Unique request identifier.
+         * Unique network request identifier.
+         * Note that this does not identify individual HTTP requests that are part of
+         * a network request.
          */
         export type RequestId = string;
 
@@ -10924,6 +10926,7 @@ export namespace Protocol {
             type: ('parser' | 'script' | 'preload' | 'SignedExchange' | 'preflight' | 'other');
             /**
              * Initiator JavaScript stack trace, set for Script only.
+             * Requires the Debugger domain to be enabled.
              */
             stack?: Runtime.StackTrace;
             /**
@@ -17573,6 +17576,8 @@ export namespace Protocol {
 
         /**
          * Unique request identifier.
+         * Note that this does not identify individual HTTP requests that are part of
+         * a network request.
          */
         export type RequestId = string;
 
