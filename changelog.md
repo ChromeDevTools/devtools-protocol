@@ -1,7 +1,7 @@
 
 
 ## Roll protocol to r1380148 — _2024-11-08T04:28:53.000Z_
-######  Diff: [`0225c22...21d819f`](https://github.com/ChromeDevTools/devtools-protocol/compare/0225c22...21d819f)
+######  Diff: [`0225c22...e098480`](https://github.com/ChromeDevTools/devtools-protocol/compare/0225c22...e098480)
 
 ```diff
 @@ browser_protocol.pdl:2322 @@ experimental domain CSS
