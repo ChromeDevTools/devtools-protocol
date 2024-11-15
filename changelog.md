@@ -12203,17 +12203,3 @@ index 18cf0c7..8e43695 100644
        ch-rtt
        ch-save-data
 ```
-
-## Roll protocol to r1007179 — _2022-05-25T01:15:17.000Z_
-######  Diff: [`9b60b54...cb58d1b`](https://github.com/ChromeDevTools/devtools-protocol/compare/9b60b54...cb58d1b)
-
-```diff
-@@ browser_protocol.pdl:6999 @@ domain Page
-       ch-device-memory
-       ch-downlink
-       ch-ect
--      ch-partitioned-cookies
-       ch-prefers-color-scheme
-       ch-rtt
-       ch-save-data
-```
