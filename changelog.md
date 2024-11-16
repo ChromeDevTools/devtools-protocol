@@ -1,5 +1,19 @@
 
 
+## Roll protocol to r1383960 — _2024-11-16T04:30:17.000Z_
+######  Diff: [`0270ad8...d30a124`](https://github.com/ChromeDevTools/devtools-protocol/compare/0270ad8...d30a124)
+
+```diff
+@@ browser_protocol.pdl:8130 @@ domain Page
+       controlled-frame
+       cross-origin-isolated
+       deferred-fetch
++      deferred-fetch-minimal
+       digital-credentials-get
+       direct-sockets
+       direct-sockets-private
+```
+
 ## Roll protocol to r1380148 — _2024-11-08T04:28:53.000Z_
 ######  Diff: [`0225c22...e098480`](https://github.com/ChromeDevTools/devtools-protocol/compare/0225c22...e098480)
 
@@ -12185,20 +12199,6 @@ index 18cf0c7..8e43695 100644
        ch-downlink
        ch-ect
 -      ch-partitioned-cookies
-       ch-prefers-color-scheme
-       ch-rtt
-       ch-save-data
-```
-
-## Roll protocol to r1007249 — _2022-05-25T06:15:14.000Z_
-######  Diff: [`cb58d1b...7e4a41a`](https://github.com/ChromeDevTools/devtools-protocol/compare/cb58d1b...7e4a41a)
-
-```diff
-@@ browser_protocol.pdl:6999 @@ domain Page
-       ch-device-memory
-       ch-downlink
-       ch-ect
-+      ch-partitioned-cookies
        ch-prefers-color-scheme
        ch-rtt
        ch-save-data
