@@ -1,7 +1,50 @@
 
 
+## Roll protocol to r1386619 — _2024-11-22T04:29:55.000Z_
+######  Diff: [`78587ee...8ca1971`](https://github.com/ChromeDevTools/devtools-protocol/compare/78587ee...8ca1971)
+
+```diff
+@@ browser_protocol.pdl:543 @@ experimental domain Audits
+       SetCookie
+       ReadCookie
+ 
++  # Represents the category of insight that a cookie issue falls under.
++  type InsightType extends string
++    enum
++      # Cookie domain has an entry in third-party cookie migration readiness
++      # list:
++      # https://github.com/privacysandbox/privacy-sandbox-dev-support/blob/main/3pc-migration-readiness.md
++      GitHubResource
++      # Cookie is exempted due to a grace period:
++      # https://developers.google.com/privacy-sandbox/cookies/temporary-exceptions/grace-period
++      GracePeriod
++      # Cookie is exempted due a heuristics-based exemptiuon:
++      # https://developers.google.com/privacy-sandbox/cookies/temporary-exceptions/heuristics-based-exception
++      Heuristics
++
++  # Information about the suggested solution to a cookie issue.
++  type CookieIssueInsight extends object
++    properties
++      InsightType type
++      # Link to table entry in third-party cookie migration readiness list.
++      optional string tableEntryUrl
++
+   # This information is currently necessary, as the front-end has a difficult
+   # time finding a specific cookie. With this, we can convey specific error
+   # information without the cookie.
+@@ -562,6 +583,8 @@ experimental domain Audits
+       optional string siteForCookies
+       optional string cookieUrl
+       optional AffectedRequest request
++      # The recommended solution to the issue.
++      optional CookieIssueInsight insight
+ 
+   type MixedContentResolutionStatus extends string
+     enum
+```
+
 ## Roll protocol to r1383960 — _2024-11-16T04:30:17.000Z_
-######  Diff: [`0270ad8...d30a124`](https://github.com/ChromeDevTools/devtools-protocol/compare/0270ad8...d30a124)
+######  Diff: [`0270ad8...78587ee`](https://github.com/ChromeDevTools/devtools-protocol/compare/0270ad8...78587ee)
 
 ```diff
 @@ browser_protocol.pdl:8130 @@ domain Page
@@ -12188,18 +12231,4 @@ index 18cf0c7..8e43695 100644
 -      ContentMediaSession
        ContentMediaSessionService
        ContentScreenReader
-```
-
-## Roll protocol to r1007616 — _2022-05-25T23:15:13.000Z_
-######  Diff: [`7e4a41a...82c45d0`](https://github.com/ChromeDevTools/devtools-protocol/compare/7e4a41a...82c45d0)
-
-```diff
-@@ browser_protocol.pdl:6999 @@ domain Page
-       ch-device-memory
-       ch-downlink
-       ch-ect
--      ch-partitioned-cookies
-       ch-prefers-color-scheme
-       ch-rtt
-       ch-save-data
 ```

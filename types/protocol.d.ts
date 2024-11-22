@@ -3324,6 +3324,22 @@ export namespace Protocol {
         export type CookieOperation = ('SetCookie' | 'ReadCookie');
 
         /**
+         * Represents the category of insight that a cookie issue falls under.
+         */
+        export type InsightType = ('GitHubResource' | 'GracePeriod' | 'Heuristics');
+
+        /**
+         * Information about the suggested solution to a cookie issue.
+         */
+        export interface CookieIssueInsight {
+            type: InsightType;
+            /**
+             * Link to table entry in third-party cookie migration readiness list.
+             */
+            tableEntryUrl?: string;
+        }
+
+        /**
          * This information is currently necessary, as the front-end has a difficult
          * time finding a specific cookie. With this, we can convey specific error
          * information without the cookie.
@@ -3347,6 +3363,10 @@ export namespace Protocol {
             siteForCookies?: string;
             cookieUrl?: string;
             request?: AffectedRequest;
+            /**
+             * The recommended solution to the issue.
+             */
+            insight?: CookieIssueInsight;
         }
 
         export type MixedContentResolutionStatus = ('MixedContentBlocked' | 'MixedContentAutomaticallyUpgraded' | 'MixedContentWarning');
