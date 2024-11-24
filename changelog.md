@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1387316 — _2024-11-24T04:29:22.000Z_
+######  Diff: [`a49a587...41a3616`](https://github.com/ChromeDevTools/devtools-protocol/compare/a49a587...41a3616)
+
+```diff
+@@ browser_protocol.pdl:2733 @@ domain DOM
+     enum
+       first-line
+       first-letter
+-      check
++      checkmark
+       before
+       after
+       select-arrow
+```
+
 ## Roll protocol to r1387216 — _2024-11-23T04:29:30.000Z_
-######  Diff: [`4183867...296e3d3`](https://github.com/ChromeDevTools/devtools-protocol/compare/4183867...296e3d3)
+######  Diff: [`4183867...a49a587`](https://github.com/ChromeDevTools/devtools-protocol/compare/4183867...a49a587)
 
 ```diff
 @@ browser_protocol.pdl:2749 @@ domain DOM
@@ -12234,17 +12249,4 @@ index 18cf0c7..8e43695 100644
  
    experimental type CrossOriginOpenerPolicyStatus extends object
      properties
-```
-
-## Roll protocol to r1008748 — _2022-05-30T07:15:13.000Z_
-######  Diff: [`bc53a73...a56eb21`](https://github.com/ChromeDevTools/devtools-protocol/compare/bc53a73...a56eb21)
-
-```diff
-@@ browser_protocol.pdl:8248 @@ domain Page
-       ContentMediaDevicesDispatcherHost
-       ContentWebBluetooth
-       ContentWebUSB
--      ContentMediaSession
-       ContentMediaSessionService
-       ContentScreenReader
 ```
