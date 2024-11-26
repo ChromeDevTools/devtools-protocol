@@ -1,7 +1,60 @@
 
 
+## Roll protocol to r1388031 — _2024-11-26T04:30:08.000Z_
+######  Diff: [`1538d6c...bd889bb`](https://github.com/ChromeDevTools/devtools-protocol/compare/1538d6c...bd889bb)
+
+```diff
+@@ browser_protocol.pdl:1393 @@ domain Browser
+ 
+   experimental type PermissionType extends string
+     enum
+-      accessibilityEvents
++      ar
+       audioCapture
+-      backgroundSync
++      automaticFullscreen
+       backgroundFetch
++      backgroundSync
++      cameraPanTiltZoom
+       capturedSurfaceControl
+       clipboardReadWrite
+       clipboardSanitizedWrite
+       displayCapture
+       durableStorage
+-      flash
+       geolocation
++      handTracking
+       idleDetection
++      keyboardLock
+       localFonts
+       midi
+       midiSysex
+@@ -1412,16 +1415,19 @@ domain Browser
+       notifications
+       paymentHandler
+       periodicBackgroundSync
++      pointerLock
+       protectedMediaIdentifier
+       sensors
+-      storageAccess
++      smartCard
+       speakerSelection
++      storageAccess
+       topLevelStorageAccess
+       videoCapture
+-      videoCapturePanTiltZoom
++      vr
+       wakeLockScreen
+       wakeLockSystem
+       webAppInstallation
++      webPrinting
+       windowManagement
+ 
+   experimental type PermissionSetting extends string
+```
+
 ## Roll protocol to r1387316 — _2024-11-24T04:29:22.000Z_
-######  Diff: [`a49a587...41a3616`](https://github.com/ChromeDevTools/devtools-protocol/compare/a49a587...41a3616)
+######  Diff: [`a49a587...1538d6c`](https://github.com/ChromeDevTools/devtools-protocol/compare/a49a587...1538d6c)
 
 ```diff
 @@ browser_protocol.pdl:2733 @@ domain DOM
@@ -12231,22 +12284,4 @@ index 18cf0c7..8e43695 100644
    type AttributionReportingIssueDetails extends object
      properties
        AttributionReportingIssueType violationType
-```
-
-## Roll protocol to r1009745 — _2022-06-01T19:15:37.000Z_
-######  Diff: [`a56eb21...a3a4df3`](https://github.com/ChromeDevTools/devtools-protocol/compare/a56eb21...a3a4df3)
-
-```diff
-@@ browser_protocol.pdl:6312 @@ domain Network
-     enum
-       SameOrigin
-       SameOriginAllowPopups
-+      RestrictProperties
-       UnsafeNone
-       SameOriginPlusCoep
--      SameOriginAllowPopupsPlusCoep
-+      RestrictPropertiesPlusCoep
- 
-   experimental type CrossOriginOpenerPolicyStatus extends object
-     properties
 ```
