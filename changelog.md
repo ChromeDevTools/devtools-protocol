@@ -1,7 +1,7 @@
 
 
 ## Roll protocol to r1388031 — _2024-11-26T04:30:08.000Z_
-######  Diff: [`1538d6c...bd889bb`](https://github.com/ChromeDevTools/devtools-protocol/compare/1538d6c...bd889bb)
+######  Diff: [`1538d6c...e3771a8`](https://github.com/ChromeDevTools/devtools-protocol/compare/1538d6c...e3771a8)
 
 ```diff
 @@ browser_protocol.pdl:1393 @@ domain Browser
@@ -12269,19 +12269,4 @@ index 18cf0c7..8e43695 100644
        PictureSourceSrc
        PrefixedCancelAnimationFrame
        PrefixedRequestAnimationFrame
-```
-
-## Roll protocol to r1010123 — _2022-06-02T16:15:31.000Z_
-######  Diff: [`a3a4df3...741c799`](https://github.com/ChromeDevTools/devtools-protocol/compare/a3a4df3...741c799)
-
-```diff
-@@ browser_protocol.pdl:702 @@ experimental domain Audits
-       InvalidHeader
- 
-   # Details for issues around "Attribution Reporting API" usage.
--  # Explainer: https://github.com/WICG/conversion-measurement-api
-+  # Explainer: https://github.com/WICG/attribution-reporting-api
-   type AttributionReportingIssueDetails extends object
-     properties
-       AttributionReportingIssueType violationType
 ```
