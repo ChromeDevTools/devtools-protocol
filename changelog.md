@@ -1,5 +1,27 @@
 
 
+## Roll protocol to r1389614 — _2024-11-29T04:30:26.000Z_
+######  Diff: [`c2bdeee...1c16241`](https://github.com/ChromeDevTools/devtools-protocol/compare/c2bdeee...1c16241)
+
+```diff
+@@ browser_protocol.pdl:654 @@ experimental domain Audits
+       CorpNotSameOriginAfterDefaultedToSameOriginByDip
+       CorpNotSameOriginAfterDefaultedToSameOriginByCoepAndDip
+       CorpNotSameSite
++      SRIMessageSignatureMismatch
+ 
+   # Details for a request that has been blocked with the BLOCKED_BY_RESPONSE
+   # code. Currently only used for COEP/COOP, but may be extended to include
+@@ -5991,6 +5992,7 @@ domain Network
+       corp-not-same-origin-after-defaulted-to-same-origin-by-dip
+       corp-not-same-origin-after-defaulted-to-same-origin-by-coep-and-dip
+       corp-not-same-site
++      sri-message-signature-mismatch
+ 
+   # The reason why request was blocked.
+   type CorsError extends string
+```
+
 ## Roll protocol to r1388031 — _2024-11-26T04:30:08.000Z_
 ######  Diff: [`1538d6c...e3771a8`](https://github.com/ChromeDevTools/devtools-protocol/compare/1538d6c...e3771a8)
 
@@ -12255,18 +12277,4 @@ index 18cf0c7..8e43695 100644
  
    # Fired when frame no longer has a scheduled navigation.
    deprecated event frameClearedScheduledNavigation
-```
-
-## Roll protocol to r1010249 — _2022-06-02T20:15:24.000Z_
-######  Diff: [`741c799...4ef6135`](https://github.com/ChromeDevTools/devtools-protocol/compare/741c799...4ef6135)
-
-```diff
-@@ browser_protocol.pdl:767 @@ experimental domain Audits
-       NotificationInsecureOrigin
-       NotificationPermissionRequestedIframe
-       ObsoleteWebRtcCipherSuite
--      PaymentRequestBasicCard
-       PictureSourceSrc
-       PrefixedCancelAnimationFrame
-       PrefixedRequestAnimationFrame
 ```

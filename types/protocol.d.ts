@@ -3408,7 +3408,7 @@ export namespace Protocol {
          * Enum indicating the reason a response has been blocked. These reasons are
          * refinements of the net error BLOCKED_BY_RESPONSE.
          */
-        export type BlockedByResponseReason = ('CoepFrameResourceNeedsCoepHeader' | 'CoopSandboxedIFrameCannotNavigateToCoopPage' | 'CorpNotSameOrigin' | 'CorpNotSameOriginAfterDefaultedToSameOriginByCoep' | 'CorpNotSameOriginAfterDefaultedToSameOriginByDip' | 'CorpNotSameOriginAfterDefaultedToSameOriginByCoepAndDip' | 'CorpNotSameSite');
+        export type BlockedByResponseReason = ('CoepFrameResourceNeedsCoepHeader' | 'CoopSandboxedIFrameCannotNavigateToCoopPage' | 'CorpNotSameOrigin' | 'CorpNotSameOriginAfterDefaultedToSameOriginByCoep' | 'CorpNotSameOriginAfterDefaultedToSameOriginByDip' | 'CorpNotSameOriginAfterDefaultedToSameOriginByCoepAndDip' | 'CorpNotSameSite' | 'SRIMessageSignatureMismatch');
 
         /**
          * Details for a request that has been blocked with the BLOCKED_BY_RESPONSE
@@ -10658,7 +10658,7 @@ export namespace Protocol {
         /**
          * The reason why request was blocked.
          */
-        export type BlockedReason = ('other' | 'csp' | 'mixed-content' | 'origin' | 'inspector' | 'subresource-filter' | 'content-type' | 'coep-frame-resource-needs-coep-header' | 'coop-sandboxed-iframe-cannot-navigate-to-coop-page' | 'corp-not-same-origin' | 'corp-not-same-origin-after-defaulted-to-same-origin-by-coep' | 'corp-not-same-origin-after-defaulted-to-same-origin-by-dip' | 'corp-not-same-origin-after-defaulted-to-same-origin-by-coep-and-dip' | 'corp-not-same-site');
+        export type BlockedReason = ('other' | 'csp' | 'mixed-content' | 'origin' | 'inspector' | 'subresource-filter' | 'content-type' | 'coep-frame-resource-needs-coep-header' | 'coop-sandboxed-iframe-cannot-navigate-to-coop-page' | 'corp-not-same-origin' | 'corp-not-same-origin-after-defaulted-to-same-origin-by-coep' | 'corp-not-same-origin-after-defaulted-to-same-origin-by-dip' | 'corp-not-same-origin-after-defaulted-to-same-origin-by-coep-and-dip' | 'corp-not-same-site' | 'sri-message-signature-mismatch');
 
         /**
          * The reason why request was blocked.
