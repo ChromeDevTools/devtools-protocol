@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1391447 — _2024-12-04T04:30:22.000Z_
+######  Diff: [`33ab53c...1e0a5c0`](https://github.com/ChromeDevTools/devtools-protocol/compare/33ab53c...1e0a5c0)
+
+```diff
+@@ browser_protocol.pdl:2743 @@ domain DOM
+       checkmark
+       before
+       after
+-      select-arrow
++      picker-icon
+       marker
+       backdrop
+       column
+```
+
 ## Roll protocol to r1389614 — _2024-11-29T04:30:26.000Z_
-######  Diff: [`c2bdeee...1c16241`](https://github.com/ChromeDevTools/devtools-protocol/compare/c2bdeee...1c16241)
+######  Diff: [`c2bdeee...33ab53c`](https://github.com/ChromeDevTools/devtools-protocol/compare/c2bdeee...33ab53c)
 
 ```diff
 @@ browser_protocol.pdl:654 @@ experimental domain Audits
