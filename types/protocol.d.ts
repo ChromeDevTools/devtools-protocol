@@ -18698,6 +18698,17 @@ export namespace Protocol {
         }
 
         /**
+         * Chrome manages different types of preloads together using a
+         * concept of preloading pipeline. For example, if a site uses a
+         * SpeculationRules for prerender, Chrome first starts a prefetch and
+         * then upgrades it to prerender.
+         * 
+         * CDP events for them are emitted separately but they share
+         * `PreloadPipelineId`.
+         */
+        export type PreloadPipelineId = string;
+
+        /**
          * List of FinalStatus reasons for Prerender2.
          */
         export type PrerenderFinalStatus = ('Activated' | 'Destroyed' | 'LowEndDevice' | 'InvalidSchemeRedirect' | 'InvalidSchemeNavigation' | 'NavigationRequestBlockedByCsp' | 'MainFrameNavigation' | 'MojoBinderPolicy' | 'RendererProcessCrashed' | 'RendererProcessKilled' | 'Download' | 'TriggerDestroyed' | 'NavigationNotCommitted' | 'NavigationBadHttpStatus' | 'ClientCertRequested' | 'NavigationRequestNetworkError' | 'CancelAllHostsForTesting' | 'DidFailLoad' | 'Stop' | 'SslCertificateError' | 'LoginAuthRequested' | 'UaChangeRequiresReload' | 'BlockedByClient' | 'AudioOutputDeviceRequested' | 'MixedContent' | 'TriggerBackgrounded' | 'MemoryLimitExceeded' | 'DataSaverEnabled' | 'TriggerUrlHasEffectiveUrl' | 'ActivatedBeforeStarted' | 'InactivePageRestriction' | 'StartFailed' | 'TimeoutBackgrounded' | 'CrossSiteRedirectInInitialNavigation' | 'CrossSiteNavigationInInitialNavigation' | 'SameSiteCrossOriginRedirectNotOptInInInitialNavigation' | 'SameSiteCrossOriginNavigationNotOptInInInitialNavigation' | 'ActivationNavigationParameterMismatch' | 'ActivatedInBackground' | 'EmbedderHostDisallowed' | 'ActivationNavigationDestroyedBeforeSuccess' | 'TabClosedByUserGesture' | 'TabClosedWithoutUserGesture' | 'PrimaryMainFrameRendererProcessCrashed' | 'PrimaryMainFrameRendererProcessKilled' | 'ActivationFramePolicyNotCompatible' | 'PreloadingDisabled' | 'BatterySaverEnabled' | 'ActivatedDuringMainFrameNavigation' | 'PreloadingUnsupportedByWebContents' | 'CrossSiteRedirectInMainFrameNavigation' | 'CrossSiteNavigationInMainFrameNavigation' | 'SameSiteCrossOriginRedirectNotOptInInMainFrameNavigation' | 'SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation' | 'MemoryPressureOnTrigger' | 'MemoryPressureAfterTriggered' | 'PrerenderingDisabledByDevTools' | 'SpeculationRuleRemoved' | 'ActivatedWithAuxiliaryBrowsingContexts' | 'MaxNumOfRunningEagerPrerendersExceeded' | 'MaxNumOfRunningNonEagerPrerendersExceeded' | 'MaxNumOfRunningEmbedderPrerendersExceeded' | 'PrerenderingUrlHasEffectiveUrl' | 'RedirectedPrerenderingUrlHasEffectiveUrl' | 'ActivationUrlHasEffectiveUrl' | 'JavaScriptInterfaceAdded' | 'JavaScriptInterfaceRemoved' | 'AllPrerenderingCanceled' | 'WindowClosed' | 'SlowNetwork' | 'OtherPrerenderedPageActivated' | 'V8OptimizerDisabled' | 'PrerenderFailedDuringPrefetch');
@@ -18750,6 +18761,7 @@ export namespace Protocol {
          */
         export interface PrefetchStatusUpdatedEvent {
             key: PreloadingAttemptKey;
+            pipelineId: PreloadPipelineId;
             /**
              * The frame id of the frame initiating prefetch.
              */
@@ -18765,6 +18777,7 @@ export namespace Protocol {
          */
         export interface PrerenderStatusUpdatedEvent {
             key: PreloadingAttemptKey;
+            pipelineId: PreloadPipelineId;
             status: PreloadingStatus;
             prerenderStatus?: PrerenderFinalStatus;
             /**

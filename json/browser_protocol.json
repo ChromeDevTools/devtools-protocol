@@ -26355,6 +26355,11 @@
                     ]
                 },
                 {
+                    "id": "PreloadPipelineId",
+                    "description": "Chrome manages different types of preloads together using a\nconcept of preloading pipeline. For example, if a site uses a\nSpeculationRules for prerender, Chrome first starts a prefetch and\nthen upgrades it to prerender.\n\nCDP events for them are emitted separately but they share\n`PreloadPipelineId`.",
+                    "type": "string"
+                },
+                {
                     "id": "PrerenderFinalStatus",
                     "description": "List of FinalStatus reasons for Prerender2.",
                     "type": "string",
@@ -26569,6 +26574,10 @@
                             "$ref": "PreloadingAttemptKey"
                         },
                         {
+                            "name": "pipelineId",
+                            "$ref": "PreloadPipelineId"
+                        },
+                        {
                             "name": "initiatingFrameId",
                             "description": "The frame id of the frame initiating prefetch.",
                             "$ref": "Page.FrameId"
@@ -26598,6 +26607,10 @@
                         {
                             "name": "key",
                             "$ref": "PreloadingAttemptKey"
+                        },
+                        {
+                            "name": "pipelineId",
+                            "$ref": "PreloadPipelineId"
                         },
                         {
                             "name": "status",

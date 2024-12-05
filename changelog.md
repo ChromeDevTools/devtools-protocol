@@ -1,7 +1,45 @@
 
 
+## Roll protocol to r1392070 — _2024-12-05T04:30:37.000Z_
+######  Diff: [`49fd69e...c3149f3`](https://github.com/ChromeDevTools/devtools-protocol/compare/49fd69e...c3149f3)
+
+```diff
+@@ browser_protocol.pdl:12424 @@ experimental domain Preload
+       array of RuleSetId ruleSetIds
+       array of DOM.BackendNodeId nodeIds
+ 
++  # Chrome manages different types of preloads together using a
++  # concept of preloading pipeline. For example, if a site uses a
++  # SpeculationRules for prerender, Chrome first starts a prefetch and
++  # then upgrades it to prerender.
++  #
++  # CDP events for them are emitted separately but they share
++  # `PreloadPipelineId`.
++  type PreloadPipelineId extends string
++
+   command enable
+ 
+   command disable
+@@ -12580,6 +12589,7 @@ experimental domain Preload
+   event prefetchStatusUpdated
+     parameters
+       PreloadingAttemptKey key
++      PreloadPipelineId pipelineId
+       # The frame id of the frame initiating prefetch.
+       Page.FrameId initiatingFrameId
+       string prefetchUrl
+@@ -12598,6 +12608,7 @@ experimental domain Preload
+   event prerenderStatusUpdated
+     parameters
+       PreloadingAttemptKey key
++      PreloadPipelineId pipelineId
+       PreloadingStatus status
+       optional PrerenderFinalStatus prerenderStatus
+       # This is used to give users more information about the name of Mojo interface
+```
+
 ## Roll protocol to r1391447 — _2024-12-04T04:30:22.000Z_
-######  Diff: [`33ab53c...1e0a5c0`](https://github.com/ChromeDevTools/devtools-protocol/compare/33ab53c...1e0a5c0)
+######  Diff: [`33ab53c...49fd69e`](https://github.com/ChromeDevTools/devtools-protocol/compare/33ab53c...49fd69e)
 
 ```diff
 @@ browser_protocol.pdl:2743 @@ domain DOM
@@ -12259,37 +12297,4 @@ index 18cf0c7..8e43695 100644
  
    event addHeapSnapshotChunk
      parameters
-```
-
-## Roll protocol to r1010518 — _2022-06-03T11:15:25.000Z_
-######  Diff: [`b877f90...1ed415a`](https://github.com/ChromeDevTools/devtools-protocol/compare/b877f90...1ed415a)
-
-```diff
-@@ browser_protocol.pdl:6955 @@ domain Page
-       AdFrameType adFrameType
-       optional array of AdFrameExplanation explanations
- 
-+  # Identifies the bottom-most script which caused the frame to be labelled
-+  # as an ad.
-+  experimental type AdScriptId extends object
-+    properties
-+      # Script Id of the bottom-most script which caused the frame to be labelled
-+      # as an ad.
-+      Runtime.ScriptId scriptId
-+      # Id of adScriptId's debugger.
-+      Runtime.UniqueDebuggerId debuggerId
-+
-   # Indicates whether the frame is a secure context and why it is the case.
-   experimental type SecureContextType extends string
-     enum
-@@ -7988,6 +7998,9 @@ domain Page
-       FrameId parentFrameId
-       # JavaScript stack trace of when frame was attached, only set if frame initiated from script.
-       optional Runtime.StackTrace stack
-+      # Identifies the bottom-most script which caused the frame to be labelled
-+      # as an ad. Only sent if frame is labelled as an ad and id is available.
-+      experimental optional AdScriptId adScriptId
- 
-   # Fired when frame no longer has a scheduled navigation.
-   deprecated event frameClearedScheduledNavigation
 ```
