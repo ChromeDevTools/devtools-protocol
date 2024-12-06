@@ -5476,6 +5476,35 @@ export namespace Protocol {
             computedStyle: CSSComputedStyleProperty[];
         }
 
+        export interface ResolveValuesRequest {
+            /**
+             * Substitution functions (var()/env()/attr()) and cascade-dependent
+             * keywords (revert/revert-layer) do not work.
+             */
+            values: string[];
+            /**
+             * Id of the node in whose context the expression is evaluated
+             */
+            nodeId: DOM.NodeId;
+            /**
+             * Only longhands and custom property names are accepted.
+             */
+            propertyName?: string;
+            /**
+             * Pseudo element type, only works for pseudo elements that generate
+             * elements in the tree, such as ::before and ::after.
+             */
+            pseudoType?: DOM.PseudoType;
+            /**
+             * Pseudo element custom ident.
+             */
+            pseudoIdentifier?: string;
+        }
+
+        export interface ResolveValuesResponse {
+            results: string[];
+        }
+
         export interface GetInlineStylesForNodeRequest {
             nodeId: DOM.NodeId;
         }
@@ -12511,6 +12540,9 @@ export namespace Protocol {
             blockedCookies: BlockedSetCookieWithReason[];
             /**
              * Raw response headers as they were received over the wire.
+             * Duplicate headers in the response are represented as a single key with their values
+             * concatentated using `\n` as the separator.
+             * See also `headersText` that contains verbatim text for HTTP/1.*.
              */
             headers: Headers;
             /**
@@ -12557,6 +12589,9 @@ export namespace Protocol {
             requestId: RequestId;
             /**
              * Raw response headers as they were received over the wire.
+             * Duplicate headers in the response are represented as a single key with their values
+             * concatentated using `\n` as the separator.
+             * See also `headersText` that contains verbatim text for HTTP/1.*.
              */
             headers: Headers;
         }

@@ -1130,6 +1130,14 @@ export namespace ProtocolTestsProxyApi {
         getComputedStyleForNode(params: Protocol.CSS.GetComputedStyleForNodeRequest): Promise<{id: number, result: Protocol.CSS.GetComputedStyleForNodeResponse, sessionId: string}>;
 
         /**
+         * Resolve the specified values in the context of the provided element.
+         * For example, a value of '1em' is evaluated according to the computed
+         * 'font-size' of the element and a value 'calc(1px + 2px)' will be
+         * resolved to '3px'.
+         */
+        resolveValues(params: Protocol.CSS.ResolveValuesRequest): Promise<{id: number, result: Protocol.CSS.ResolveValuesResponse, sessionId: string}>;
+
+        /**
          * Returns the styles defined inline (explicitly in the "style" attribute and implicitly, using DOM
          * attributes) for a DOM node identified by `nodeId`.
          */

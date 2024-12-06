@@ -1,7 +1,61 @@
 
 
+## Roll protocol to r1392711 — _2024-12-06T04:30:32.000Z_
+######  Diff: [`4f13107...c9782bf`](https://github.com/ChromeDevTools/devtools-protocol/compare/4f13107...c9782bf)
+
+```diff
+@@ browser_protocol.pdl:2264 @@ experimental domain CSS
+       # Computed style for the specified DOM node.
+       array of CSSComputedStyleProperty computedStyle
+ 
++  # Resolve the specified values in the context of the provided element.
++  # For example, a value of '1em' is evaluated according to the computed
++  # 'font-size' of the element and a value 'calc(1px + 2px)' will be
++  # resolved to '3px'.
++  command resolveValues
++    parameters
++      # Substitution functions (var()/env()/attr()) and cascade-dependent
++      # keywords (revert/revert-layer) do not work.
++      array of string values
++      # Id of the node in whose context the expression is evaluated
++      DOM.NodeId nodeId
++      # Only longhands and custom property names are accepted.
++      optional string propertyName
++      # Pseudo element type, only works for pseudo elements that generate
++      # elements in the tree, such as ::before and ::after.
++      experimental optional DOM.PseudoType pseudoType
++      # Pseudo element custom ident.
++      experimental optional string pseudoIdentifier
++    returns
++      array of string results
++
+   # Returns the styles defined inline (explicitly in the "style" attribute and implicitly, using DOM
+   # attributes) for a DOM node identified by `nodeId`.
+   command getInlineStylesForNode
+@@ -7293,6 +7314,9 @@ domain Network
+       # are represented by the invalid cookie line string instead of a proper cookie.
+       array of BlockedSetCookieWithReason blockedCookies
+       # Raw response headers as they were received over the wire.
++      # Duplicate headers in the response are represented as a single key with their values
++      # concatentated using `\n` as the separator.
++      # See also `headersText` that contains verbatim text for HTTP/1.*.
+       Headers headers
+       # The IP address space of the resource. The address space can only be determined once the transport
+       # established the connection, so we can't send it in `requestWillBeSentExtraInfo`.
+@@ -7321,6 +7345,9 @@ domain Network
+       # Request identifier. Used to match this information to another responseReceived event.
+       RequestId requestId
+       # Raw response headers as they were received over the wire.
++      # Duplicate headers in the response are represented as a single key with their values
++      # concatentated using `\n` as the separator.
++      # See also `headersText` that contains verbatim text for HTTP/1.*.
+       Headers headers
+ 
+   # Fired exactly once for each Trust Token operation. Depending on
+```
+
 ## Roll protocol to r1392070 — _2024-12-05T04:30:37.000Z_
-######  Diff: [`49fd69e...c3149f3`](https://github.com/ChromeDevTools/devtools-protocol/compare/49fd69e...c3149f3)
+######  Diff: [`49fd69e...4f13107`](https://github.com/ChromeDevTools/devtools-protocol/compare/49fd69e...4f13107)
 
 ```diff
 @@ browser_protocol.pdl:12424 @@ experimental domain Preload
@@ -12222,79 +12276,4 @@ index 18cf0c7..8e43695 100644
        optional Runtime.ExceptionDetails exceptionDetails
  
    # Makes page not interrupt on any pauses (breakpoint, exception, dom exception etc).
-```
-
-## Roll protocol to r1011700 — _2022-06-07T22:15:32.000Z_
-######  Diff: [`1ed415a...44cc592`](https://github.com/ChromeDevTools/devtools-protocol/compare/1ed415a...44cc592)
-
-```diff
-@@ js_protocol.pdl:273 @@ domain Debugger
-     parameters
-       BreakpointId breakpointId
- 
--  # Restarts particular call frame from the beginning.
--  deprecated command restartFrame
-+  # Restarts particular call frame from the beginning. The old, deprecated
-+  # behavior of `restartFrame` is to stay paused and allow further CDP commands
-+  # after a restart was scheduled. This can cause problems with restarting, so
-+  # we now continue execution immediatly after it has been scheduled until we
-+  # reach the beginning of the restarted frame.
-+  #
-+  # To stay back-wards compatible, `restartFrame` now expects a `mode`
-+  # parameter to be present. If the `mode` parameter is missing, `restartFrame`
-+  # errors out.
-+  #
-+  # The various return values are deprecated and `callFrames` is always empty.
-+  # Use the call frames from the `Debugger#paused` events instead, that fires
-+  # once V8 pauses at the beginning of the restarted function.
-+  command restartFrame
-     parameters
-       # Call frame identifier to evaluate on.
-       CallFrameId callFrameId
-+      # The `mode` parameter must be present and set to 'StepInto', otherwise
-+      # `restartFrame` will error out.
-+      experimental optional enum mode
-+        # Pause at the beginning of the restarted function
-+        StepInto
-     returns
-       # New stack trace.
--      array of CallFrame callFrames
-+      deprecated array of CallFrame callFrames
-       # Async stack trace, if any.
--      optional Runtime.StackTrace asyncStackTrace
-+      deprecated optional Runtime.StackTrace asyncStackTrace
-       # Async stack trace, if any.
--      experimental optional Runtime.StackTraceId asyncStackTraceId
-+      deprecated optional Runtime.StackTraceId asyncStackTraceId
- 
-   # Resumes JavaScript execution.
-   command resume
-@@ -713,18 +730,24 @@ experimental domain HeapProfiler
-       # If true 'reportHeapSnapshotProgress' events will be generated while snapshot is being taken
-       # when the tracking is stopped.
-       optional boolean reportProgress
--      optional boolean treatGlobalObjectsAsRoots
-+      # Deprecated in favor of `exposeInternals`.
-+      deprecated optional boolean treatGlobalObjectsAsRoots
-       # If true, numerical values are included in the snapshot
-       optional boolean captureNumericValue
-+      # If true, exposes internals of the snapshot.
-+      experimental optional boolean exposeInternals
- 
-   command takeHeapSnapshot
-     parameters
-       # If true 'reportHeapSnapshotProgress' events will be generated while snapshot is being taken.
-       optional boolean reportProgress
--      # If true, a raw snapshot without artificial roots will be generated
--      optional boolean treatGlobalObjectsAsRoots
-+      # If true, a raw snapshot without artificial roots will be generated.
-+      # Deprecated in favor of `exposeInternals`.
-+      deprecated optional boolean treatGlobalObjectsAsRoots
-       # If true, numerical values are included in the snapshot
-       optional boolean captureNumericValue
-+      # If true, exposes internals of the snapshot.
-+      experimental optional boolean exposeInternals
- 
-   event addHeapSnapshotChunk
-     parameters
 ```
