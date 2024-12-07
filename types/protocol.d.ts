@@ -922,6 +922,10 @@ export namespace Protocol {
              */
             hash: string;
             /**
+             * For Wasm modules, the content of the `build_id` custom section.
+             */
+            buildId: string;
+            /**
              * Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}
              */
             executionContextAuxData?: any;
@@ -996,6 +1000,10 @@ export namespace Protocol {
              * Content hash of the script, SHA-256.
              */
             hash: string;
+            /**
+             * For Wasm modules, the content of the `build_id` custom section.
+             */
+            buildId: string;
             /**
              * Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}
              */

@@ -1,7 +1,31 @@
 
 
+## Roll protocol to r1393284 — _2024-12-07T04:30:05.000Z_
+######  Diff: [`d2f3487...4de2d35`](https://github.com/ChromeDevTools/devtools-protocol/compare/d2f3487...4de2d35)
+
+```diff
+@@ js_protocol.pdl:641 @@ domain Debugger
+       Runtime.ExecutionContextId executionContextId
+       # Content hash of the script, SHA-256.
+       string hash
++      # For Wasm modules, the content of the `build_id` custom section.
++      string buildId
+       # Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}
+       optional object executionContextAuxData
+       # URL of source map associated with script (if any).
+@@ -680,6 +682,8 @@ domain Debugger
+       Runtime.ExecutionContextId executionContextId
+       # Content hash of the script, SHA-256.
+       string hash
++      # For Wasm modules, the content of the `build_id` custom section.
++      string buildId
+       # Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}
+       optional object executionContextAuxData
+       # True, if this script is generated as a result of the live edit operation.
+```
+
 ## Roll protocol to r1392711 — _2024-12-06T04:30:32.000Z_
-######  Diff: [`4f13107...c9782bf`](https://github.com/ChromeDevTools/devtools-protocol/compare/4f13107...c9782bf)
+######  Diff: [`4f13107...d2f3487`](https://github.com/ChromeDevTools/devtools-protocol/compare/4f13107...d2f3487)
 
 ```diff
 @@ browser_protocol.pdl:2264 @@ experimental domain CSS

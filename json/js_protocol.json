@@ -1313,6 +1313,11 @@
                             "type": "string"
                         },
                         {
+                            "name": "buildId",
+                            "description": "For Wasm modules, the content of the `build_id` custom section.",
+                            "type": "string"
+                        },
+                        {
                             "name": "executionContextAuxData",
                             "description": "Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}",
                             "optional": true,
@@ -1414,6 +1419,11 @@
                         {
                             "name": "hash",
                             "description": "Content hash of the script, SHA-256.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "buildId",
+                            "description": "For Wasm modules, the content of the `build_id` custom section.",
                             "type": "string"
                         },
                         {
