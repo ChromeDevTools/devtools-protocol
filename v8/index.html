@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Chrome DevTools Protocol - version v8" />
+  <link rel="icon" type="image/png" href="/devtools-protocol/images/logo.png" />
+    <title>Chrome DevTools Protocol - v8-inspector (node)</title>
+
+  <meta name="theme-color" content="#303F9F" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@chromedevtools" />
+  <meta name="twitter:creator" content="@chromedevtools" />
+  <meta property="og:title" content="Chrome DevTools Protocol" />
+  <meta property="og:image" content="https://developers.google.com/web/tools/images/chrome-devtools-16x9_720.png" />
+    <meta property="og:description" content="Chrome DevTools Protocol - version v8" />
+
+  <script type="module" src="/devtools-protocol/scripts/index.js"></script>
+  <link href="/devtools-protocol/styles/protocol.css" rel="stylesheet">
+</head>
+<body>
+  <aside>
+    <div id="home" class="navs">
+      <nav>
+        <a href="/devtools-protocol/">Home</a>
+        <button class="aside-close-button" aria-label="Close navigation">x</button>
+      </nav>
+    </div>
+    <div id="versions" class="navs">
+      <header>Versions</header>
+      <nav>
+        <a href="/devtools-protocol/tot" name="tot">
+          latest (tip-of-tree)
+        </a>
+        <a href="/devtools-protocol/v8" name="v8">
+          v8-inspector (node)
+        </a>
+        <a href="/devtools-protocol/1-3" name="1-3">
+          stable (1.3)
+        </a><!-- 
+        <a href="/devtools-protocol/1-2" name="1-2">
+          stable (1.2)
+        </a> -->
+      </nav>
+    </div>
+
+    <div id="domains" class="navs version-v8">
+      <header>Domains</header>
+      <div class="scroller">
+        <nav>
+          <a href="/devtools-protocol/v8/Accessibility" class="tot experimental">Accessibility</a>
+          <a href="/devtools-protocol/v8/Animation" class="tot experimental">Animation</a>
+          <a href="/devtools-protocol/v8/Audits" class="tot experimental">Audits</a>
+          <a href="/devtools-protocol/v8/Autofill" class="tot experimental">Autofill</a>
+          <a href="/devtools-protocol/v8/BackgroundService" class="tot experimental">BackgroundService</a>
+          <a href="/devtools-protocol/v8/Browser" class="tot 1-3">Browser</a>
+          <a href="/devtools-protocol/v8/CacheStorage" class="tot experimental">CacheStorage</a>
+          <a href="/devtools-protocol/v8/Cast" class="tot experimental">Cast</a>
+          <a href="/devtools-protocol/v8/Console" class="tot deprecated v8">Console</a>
+          <a href="/devtools-protocol/v8/CSS" class="tot experimental">CSS</a>
+          <a href="/devtools-protocol/v8/Database" class="tot experimental">Database</a>
+          <a href="/devtools-protocol/v8/Debugger" class="tot 1-2 1-3 v8">Debugger</a>
+          <a href="/devtools-protocol/v8/DeviceAccess" class="tot experimental">DeviceAccess</a>
+          <a href="/devtools-protocol/v8/DeviceOrientation" class="tot experimental">DeviceOrientation</a>
+          <a href="/devtools-protocol/v8/DOM" class="tot 1-2 1-3">DOM</a>
+          <a href="/devtools-protocol/v8/DOMDebugger" class="tot 1-2 1-3">DOMDebugger</a>
+          <a href="/devtools-protocol/v8/DOMSnapshot" class="tot experimental">DOMSnapshot</a>
+          <a href="/devtools-protocol/v8/DOMStorage" class="tot experimental">DOMStorage</a>
+          <a href="/devtools-protocol/v8/Emulation" class="tot 1-2 1-3">Emulation</a>
+          <a href="/devtools-protocol/v8/EventBreakpoints" class="tot experimental">EventBreakpoints</a>
+          <a href="/devtools-protocol/v8/Extensions" class="tot experimental">Extensions</a>
+          <a href="/devtools-protocol/v8/FedCm" class="tot experimental">FedCm</a>
+          <a href="/devtools-protocol/v8/Fetch" class="tot 1-3">Fetch</a>
+          <a href="/devtools-protocol/v8/HeadlessExperimental" class="tot experimental">HeadlessExperimental</a>
+          <a href="/devtools-protocol/v8/HeapProfiler" class="tot experimental v8">HeapProfiler</a>
+          <a href="/devtools-protocol/v8/IndexedDB" class="tot experimental">IndexedDB</a>
+          <a href="/devtools-protocol/v8/Input" class="tot 1-2 1-3">Input</a>
+          <a href="/devtools-protocol/v8/Inspector" class="tot experimental">Inspector</a>
+          <a href="/devtools-protocol/v8/IO" class="tot 1-3">IO</a>
+          <a href="/devtools-protocol/v8/LayerTree" class="tot experimental">LayerTree</a>
+          <a href="/devtools-protocol/v8/Log" class="tot 1-3">Log</a>
+          <a href="/devtools-protocol/v8/Media" class="tot experimental">Media</a>
+          <a href="/devtools-protocol/v8/Memory" class="tot experimental">Memory</a>
+          <a href="/devtools-protocol/v8/Network" class="tot 1-2 1-3">Network</a>
+          <a href="/devtools-protocol/v8/Overlay" class="tot experimental">Overlay</a>
+          <a href="/devtools-protocol/v8/Page" class="tot 1-2 1-3">Page</a>
+          <a href="/devtools-protocol/v8/Performance" class="tot 1-3">Performance</a>
+          <a href="/devtools-protocol/v8/PerformanceTimeline" class="tot experimental">PerformanceTimeline</a>
+          <a href="/devtools-protocol/v8/Preload" class="tot experimental">Preload</a>
+          <a href="/devtools-protocol/v8/Profiler" class="tot 1-2 1-3 v8">Profiler</a>
+          <a href="/devtools-protocol/v8/Runtime" class="tot 1-2 1-3 v8">Runtime</a>
+          <a href="/devtools-protocol/v8/Schema" class="tot deprecated 1-2 v8">Schema</a>
+          <a href="/devtools-protocol/v8/Security" class="tot 1-3">Security</a>
+          <a href="/devtools-protocol/v8/ServiceWorker" class="tot experimental">ServiceWorker</a>
+          <a href="/devtools-protocol/v8/Storage" class="tot experimental">Storage</a>
+          <a href="/devtools-protocol/v8/SystemInfo" class="tot experimental">SystemInfo</a>
+          <a href="/devtools-protocol/v8/Target" class="tot 1-3">Target</a>
+          <a href="/devtools-protocol/v8/Tethering" class="tot experimental">Tethering</a>
+          <a href="/devtools-protocol/v8/Tracing" class="tot experimental">Tracing</a>
+          <a href="/devtools-protocol/v8/WebAudio" class="tot experimental">WebAudio</a>
+          <a href="/devtools-protocol/v8/WebAuthn" class="tot experimental">WebAuthn</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <h1>Chrome DevTools Protocol</h1>
+      <button class="menu-link">Navigation</button>
+      <cr-search-control base-url="/devtools-protocol/" protocol-search-index="/search_index/v8.json"></cr-search-control>
+    </header>
+    <section>
+      <div class="main-content-section ">
+        <p>This is the protocol available with <code>--inspect</code> in <a href="https://nodejs.org/en/blog/release/v6.3.0/"><b>node 6.3+</b></a>.
+See <a href="https://medium.com/@paul_irish/debugging-node-js-nightlies-with-chrome-devtools-7c4a1b95ae27">Debugging Node.js with Chrome DevTools</a>
+to understand the basics of using the DevTools with Node. This protocol allows any tool to connect to node to debug it.</p>
+<p>The protocol domains available expose all underlying methods that deliver the JavaScript functionality found in Chrome DevTools.
+More on the <a href="https://developer.chrome.com/devtools/docs/debugger-protocol">debugging protocol</a>.</p>
+
+      </div>
+    </section>
+  </main>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60854461-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
