@@ -1076,6 +1076,12 @@ export namespace ProtocolProxyApi {
         getInlineStylesForNode(params: Protocol.CSS.GetInlineStylesForNodeRequest): Promise<Protocol.CSS.GetInlineStylesForNodeResponse>;
 
         /**
+         * Returns the styles coming from animations & transitions
+         * including the animation & transition styles coming from inheritance chain.
+         */
+        getAnimatedStylesForNode(params: Protocol.CSS.GetAnimatedStylesForNodeRequest): Promise<Protocol.CSS.GetAnimatedStylesForNodeResponse>;
+
+        /**
          * Returns requested styles for a DOM node identified by `nodeId`.
          */
         getMatchedStylesForNode(params: Protocol.CSS.GetMatchedStylesForNodeRequest): Promise<Protocol.CSS.GetMatchedStylesForNodeResponse>;

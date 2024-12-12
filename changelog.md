@@ -1,7 +1,64 @@
 
 
+## Roll protocol to r1395251 — _2024-12-12T04:30:26.000Z_
+######  Diff: [`dff3f42...0f31152`](https://github.com/ChromeDevTools/devtools-protocol/compare/dff3f42...0f31152)
+
+```diff
+@@ browser_protocol.pdl:1701 @@ experimental domain CSS
+       # Matches of CSS rules applicable to the pseudo style.
+       array of RuleMatch matches
+ 
++  # CSS style coming from animations with the name of the animation.
++  type CSSAnimationStyle extends object
++    properties
++      # The name of the animation.
++      optional string name
++      # The style coming from the animation.
++      CSSStyle style
++
+   # Inherited CSS rule collection from ancestor node.
+   type InheritedStyleEntry extends object
+     properties
+@@ -1709,6 +1717,14 @@ experimental domain CSS
+       # Matches of CSS rules matching the ancestor node in the style inheritance chain.
+       array of RuleMatch matchedCSSRules
+ 
++  # Inherited CSS style collection for animated styles from ancestor node.
++  type InheritedAnimatedStyleEntry extends object
++    properties
++      # Styles coming from the animations of the ancestor, if any, in the style inheritance chain.
++      optional array of CSSAnimationStyle animationStyles
++      # The style coming from the transitions of the ancestor, if any, in the style inheritance chain.
++      optional CSSStyle transitionsStyle
++
+   # Inherited pseudo element matches from pseudos of an ancestor node.
+   type InheritedPseudoElementMatches extends object
+     properties
+@@ -2296,6 +2312,20 @@ experimental domain CSS
+       # Attribute-defined element style (e.g. resulting from "width=20 height=100%").
+       optional CSSStyle attributesStyle
+ 
++  # Returns the styles coming from animations & transitions
++  # including the animation & transition styles coming from inheritance chain.
++  experimental command getAnimatedStylesForNode
++    parameters
++      DOM.NodeId nodeId
++    returns
++      # Styles coming from animations.
++      optional array of CSSAnimationStyle animationStyles
++      # Style coming from transitions.
++      optional CSSStyle transitionsStyle
++      # Inherited style entries for animationsStyle and transitionsStyle from
++      # the inheritance chain of the element.
++      optional array of InheritedAnimatedStyleEntry inherited
++
+   # Returns requested styles for a DOM node identified by `nodeId`.
+   command getMatchedStylesForNode
+     parameters
+```
+
 ## Roll protocol to r1393284 — _2024-12-07T04:30:05.000Z_
-######  Diff: [`d2f3487...4de2d35`](https://github.com/ChromeDevTools/devtools-protocol/compare/d2f3487...4de2d35)
+######  Diff: [`d2f3487...dff3f42`](https://github.com/ChromeDevTools/devtools-protocol/compare/d2f3487...dff3f42)
 
 ```diff
 @@ js_protocol.pdl:641 @@ domain Debugger
