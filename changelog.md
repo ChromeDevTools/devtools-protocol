@@ -1,7 +1,28 @@
 
 
+## Roll protocol to r1396320 — _2024-12-14T04:29:52.000Z_
+######  Diff: [`e61f211...8337043`](https://github.com/ChromeDevTools/devtools-protocol/compare/e61f211...8337043)
+
+```diff
+@@ browser_protocol.pdl:2255 @@ experimental domain CSS
+       # Element pseudo classes to force when computing the element's style.
+       array of string forcedPseudoClasses
+ 
++  # Ensures that the given node is in its starting-style state.
++  command forceStartingStyle
++    parameters
++      # The element id for which to force the starting-style state.
++      DOM.NodeId nodeId
++      # Boolean indicating if this is on or off.
++      boolean forced
++
+   command getBackgroundColors
+     parameters
+       # Id of the node to get background colors for.
+```
+
 ## Roll protocol to r1395251 — _2024-12-12T04:30:26.000Z_
-######  Diff: [`dff3f42...0f31152`](https://github.com/ChromeDevTools/devtools-protocol/compare/dff3f42...0f31152)
+######  Diff: [`dff3f42...e61f211`](https://github.com/ChromeDevTools/devtools-protocol/compare/dff3f42...e61f211)
 
 ```diff
 @@ browser_protocol.pdl:1701 @@ experimental domain CSS
@@ -12135,226 +12156,4 @@ index 8e43695..7fd51df 100644
  
    # Returns all media queries parsed by the rendering engine.
    command getMediaQueries
-```
-
-## Roll protocol to r1019158 — _2022-06-29T15:28:08.000Z_
-######  Diff: [`a0e4067...f41d3ce`](https://github.com/ChromeDevTools/devtools-protocol/compare/a0e4067...f41d3ce)
-
-```diff
-@@ browser_protocol.pdl:758 @@ experimental domain Audits
-       GeolocationInsecureOriginDeprecatedNotRemoved
-       GetUserMediaInsecureOrigin
-       HostCandidateAttributeGetter
-+      IdentityInCanMakePaymentEvent
-       InsecurePrivateNetworkSubresourceRequest
-       LegacyConstraintGoogIPv6
-       LocalCSSFileExtensionRejected
-@@ -767,6 +768,7 @@ experimental domain Audits
-       NotificationInsecureOrigin
-       NotificationPermissionRequestedIframe
-       ObsoleteWebRtcCipherSuite
-+      OpenWebDatabaseInsecureContext
-       PictureSourceSrc
-       PrefixedCancelAnimationFrame
-       PrefixedRequestAnimationFrame
-@@ -1330,6 +1332,8 @@ experimental domain CSS
-     properties
-       # Pseudo element type.
-       DOM.PseudoType pseudoType
-+      # Pseudo element custom ident.
-+      optional string pseudoIdentifier
-       # Matches of CSS rules applicable to the pseudo style.
-       array of RuleMatch matches
- 
-@@ -1440,6 +1444,9 @@ experimental domain CSS
-       # Cascade layer array. Contains the layer hierarchy that this rule belongs to starting
-       # with the innermost layer and going outwards.
-       experimental optional array of CSSLayer layers
-+      # @scope CSS at-rule array.
-+      # The array enumerates @scope at-rules starting with the innermost one, going outwards.
-+      experimental optional array of CSSScope scopes
- 
-   # CSS coverage information.
-   type RuleUsage extends object
-@@ -1589,6 +1596,17 @@ experimental domain CSS
-       # Identifier of the stylesheet containing this object (if exists).
-       optional StyleSheetId styleSheetId
- 
-+  # CSS Scope at-rule descriptor.
-+  experimental type CSSScope extends object
-+    properties
-+      # Scope rule text.
-+      string text
-+      # The associated rule header range in the enclosing stylesheet (if
-+      # available).
-+      optional SourceRange range
-+      # Identifier of the stylesheet containing this object (if exists).
-+      optional StyleSheetId styleSheetId
-+
-   # CSS Layer at-rule descriptor.
-   experimental type CSSLayer extends object
-     properties
-@@ -1649,6 +1667,8 @@ experimental domain CSS
-       string fontWeight
-       # The font-stretch.
-       string fontStretch
-+      # The font-display.
-+      string fontDisplay
-       # The unicode-range.
-       string unicodeRange
-       # The src.
-@@ -1889,6 +1909,16 @@ experimental domain CSS
-       # The resulting CSS Supports rule after modification.
-       CSSSupports supports
- 
-+  # Modifies the expression of a scope at-rule.
-+  experimental command setScopeText
-+    parameters
-+      StyleSheetId styleSheetId
-+      SourceRange range
-+      string text
-+    returns
-+      # The resulting CSS Scope rule after modification.
-+      CSSScope scope
-+
-   # Modifies the rule selector.
-   command setRuleSelector
-     parameters
-@@ -2248,6 +2278,9 @@ domain DOM
-       optional string value
-       # Pseudo element type for this node.
-       optional PseudoType pseudoType
-+      # Pseudo element identifier for this node. Only present if there is a
-+      # valid pseudoType.
-+      optional string pseudoIdentifier
-       # Shadow root type.
-       optional ShadowRootType shadowRootType
-       # Frame ID for frame owner elements.
-@@ -2643,6 +2676,14 @@ domain DOM
-       # Query selector result.
-       array of NodeId nodeIds
- 
-+  # Returns NodeIds of current top layer elements.
-+  # Top layer is rendered closest to the user within a viewport, therefore its elements always 
-+  # appear on top of all other content.
-+  experimental command getTopLayerElements
-+    returns
-+      # NodeIds of top layer elements
-+      array of NodeId nodeIds
-+
-   # Re-does the last undone action.
-   experimental command redo
- 
-@@ -2903,6 +2944,9 @@ domain DOM
-       # The added pseudo element.
-       Node pseudoElement
- 
-+  # Called when top layer elements are changed.
-+  experimental event topLayerElementsUpdated
-+
-   # Called when a pseudo element is removed from an element.
-   experimental event pseudoElementRemoved
-     parameters
-@@ -3280,6 +3324,9 @@ experimental domain DOMSnapshot
-       optional RareIntegerData contentDocumentIndex
-       # Type of a pseudo element node.
-       optional RareStringData pseudoType
-+      # Pseudo element identifier for this node. Only present if there is a
-+      # valid pseudoType.
-+      optional RareStringData pseudoIdentifier
-       # Whether this DOM node responds to mouse clicks. This includes nodes that have had click
-       # event listeners attached via JavaScript as well as anchor tags that naturally navigate when
-       # clicked.
-@@ -7036,6 +7083,7 @@ domain Page
-       encrypted-media
-       execution-while-out-of-viewport
-       execution-while-not-rendered
-+      federated-credentials
-       focus-without-user-activation
-       fullscreen
-       frobulate
-@@ -7077,6 +7125,8 @@ domain Page
-       IframeAttribute
-       # Inside fenced frame.
-       InFencedFrameTree
-+      # Inside an Isolated Application.
-+      InIsolatedApp
- 
-   experimental type PermissionsPolicyBlockLocator extends object
-     properties
-@@ -7982,12 +8032,12 @@ domain Page
-     parameters
-       # Id of the frame containing input node.
-       experimental FrameId frameId
--      # Input node id.
--      experimental DOM.BackendNodeId backendNodeId
-       # Input mode.
-       enum mode
-         selectSingle
-         selectMultiple
-+      # Input node id. Only present for file choosers opened via an <input type="file"> element.
-+      experimental optional DOM.BackendNodeId backendNodeId
- 
-   # Fired when frame has been attached to its parent.
-   event frameAttached
-@@ -9493,6 +9543,9 @@ experimental domain Tracing
-         recordContinuously
-         recordAsMuchAsPossible
-         echoToConsole
-+      # Size of the trace buffer in kilobytes. If not specified or zero is passed, a default value
-+      # of 200 MB would be used.
-+      optional number traceBufferSizeInKb
-       # Turns on JavaScript stack sampling.
-       optional boolean enableSampling
-       # Turns on system tracing.
-diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
-index 18cf0c7..8e43695 100644
---- a/pdl/js_protocol.pdl
-+++ b/pdl/js_protocol.pdl
-@@ -441,6 +441,12 @@ domain Debugger
-       Runtime.CallArgument newValue
- 
-   # Edits JavaScript source live.
-+  #
-+  # In general, functions that are currently on the stack can not be edited with
-+  # a single exception: If the edited function is the top-most stack frame and
-+  # that is the only activation of that function on the stack. In this case
-+  # the live edit will be successful and a `Debugger.restartFrame` for the
-+  # top-most function is automatically triggered.
-   command setScriptSource
-     parameters
-       # Id of the script to edit.
-@@ -450,16 +456,27 @@ domain Debugger
-       #  If true the change will not actually be applied. Dry run may be used to get result
-       # description without actually modifying the code.
-       optional boolean dryRun
-+      # If true, then `scriptSource` is allowed to change the function on top of the stack
-+      # as long as the top-most stack frame is the only activation of that function.
-+      experimental optional boolean allowTopFrameEditing
-     returns
-       # New stack trace in case editing has happened while VM was stopped.
--      optional array of CallFrame callFrames
-+      deprecated optional array of CallFrame callFrames
-       # Whether current call stack  was modified after applying the changes.
--      optional boolean stackChanged
-+      deprecated optional boolean stackChanged
-       # Async stack trace, if any.
--      optional Runtime.StackTrace asyncStackTrace
-+      deprecated optional Runtime.StackTrace asyncStackTrace
-       # Async stack trace, if any.
--      experimental optional Runtime.StackTraceId asyncStackTraceId
--      # Exception details if any.
-+      deprecated optional Runtime.StackTraceId asyncStackTraceId
-+      # Whether the operation was successful or not. Only `Ok` denotes a
-+      # successful live edit while the other enum variants denote why
-+      # the live edit failed.
-+      experimental enum status
-+        Ok
-+        CompileError
-+        BlockedByActiveGenerator
-+        BlockedByActiveFunction
-+      # Exception details if any. Only present when `status` is `CompileError`.
-       optional Runtime.ExceptionDetails exceptionDetails
- 
-   # Makes page not interrupt on any pauses (breakpoint, exception, dom exception etc).
 ```

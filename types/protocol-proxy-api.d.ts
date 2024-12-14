@@ -1054,6 +1054,11 @@ export namespace ProtocolProxyApi {
          */
         forcePseudoState(params: Protocol.CSS.ForcePseudoStateRequest): Promise<void>;
 
+        /**
+         * Ensures that the given node is in its starting-style state.
+         */
+        forceStartingStyle(params: Protocol.CSS.ForceStartingStyleRequest): Promise<void>;
+
         getBackgroundColors(params: Protocol.CSS.GetBackgroundColorsRequest): Promise<Protocol.CSS.GetBackgroundColorsResponse>;
 
         /**
