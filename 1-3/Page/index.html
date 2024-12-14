@@ -1,0 +1,3686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Chrome DevTools Protocol - version 1-3 - Page domain" />
+  <link rel="icon" type="image/png" href="/devtools-protocol/images/logo.png" />
+    <title>Chrome DevTools Protocol - version 1-3 - Page domain</title>
+
+  <meta name="theme-color" content="#303F9F" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@chromedevtools" />
+  <meta name="twitter:creator" content="@chromedevtools" />
+  <meta property="og:title" content="Chrome DevTools Protocol" />
+  <meta property="og:image" content="https://developers.google.com/web/tools/images/chrome-devtools-16x9_720.png" />
+    <meta property="og:description" content="Chrome DevTools Protocol - version 1-3 - Page domain" />
+
+  <script type="module" src="/devtools-protocol/scripts/index.js"></script>
+  <link href="/devtools-protocol/styles/protocol.css" rel="stylesheet">
+</head>
+<body>
+  <aside>
+    <div id="home" class="navs">
+      <nav>
+        <a href="/devtools-protocol/">Home</a>
+        <button class="aside-close-button" aria-label="Close navigation">x</button>
+      </nav>
+    </div>
+    <div id="versions" class="navs">
+      <header>Versions</header>
+      <nav>
+        <a href="/devtools-protocol/tot" name="tot">
+          latest (tip-of-tree)
+        </a>
+        <a href="/devtools-protocol/v8" name="v8">
+          v8-inspector (node)
+        </a>
+        <a href="/devtools-protocol/1-3" name="1-3">
+          stable (1.3)
+        </a><!-- 
+        <a href="/devtools-protocol/1-2" name="1-2">
+          stable (1.2)
+        </a> -->
+      </nav>
+    </div>
+
+    <div id="domains" class="navs version-1-3">
+      <header>Domains</header>
+      <div class="scroller">
+        <nav>
+          <a href="/devtools-protocol/1-3/Accessibility" class="tot experimental">Accessibility</a>
+          <a href="/devtools-protocol/1-3/Animation" class="tot experimental">Animation</a>
+          <a href="/devtools-protocol/1-3/Audits" class="tot experimental">Audits</a>
+          <a href="/devtools-protocol/1-3/Autofill" class="tot experimental">Autofill</a>
+          <a href="/devtools-protocol/1-3/BackgroundService" class="tot experimental">BackgroundService</a>
+          <a href="/devtools-protocol/1-3/Browser" class="tot 1-3">Browser</a>
+          <a href="/devtools-protocol/1-3/CacheStorage" class="tot experimental">CacheStorage</a>
+          <a href="/devtools-protocol/1-3/Cast" class="tot experimental">Cast</a>
+          <a href="/devtools-protocol/1-3/Console" class="tot deprecated v8">Console</a>
+          <a href="/devtools-protocol/1-3/CSS" class="tot experimental">CSS</a>
+          <a href="/devtools-protocol/1-3/Database" class="tot experimental">Database</a>
+          <a href="/devtools-protocol/1-3/Debugger" class="tot 1-2 1-3 v8">Debugger</a>
+          <a href="/devtools-protocol/1-3/DeviceAccess" class="tot experimental">DeviceAccess</a>
+          <a href="/devtools-protocol/1-3/DeviceOrientation" class="tot experimental">DeviceOrientation</a>
+          <a href="/devtools-protocol/1-3/DOM" class="tot 1-2 1-3">DOM</a>
+          <a href="/devtools-protocol/1-3/DOMDebugger" class="tot 1-2 1-3">DOMDebugger</a>
+          <a href="/devtools-protocol/1-3/DOMSnapshot" class="tot experimental">DOMSnapshot</a>
+          <a href="/devtools-protocol/1-3/DOMStorage" class="tot experimental">DOMStorage</a>
+          <a href="/devtools-protocol/1-3/Emulation" class="tot 1-2 1-3">Emulation</a>
+          <a href="/devtools-protocol/1-3/EventBreakpoints" class="tot experimental">EventBreakpoints</a>
+          <a href="/devtools-protocol/1-3/Extensions" class="tot experimental">Extensions</a>
+          <a href="/devtools-protocol/1-3/FedCm" class="tot experimental">FedCm</a>
+          <a href="/devtools-protocol/1-3/Fetch" class="tot 1-3">Fetch</a>
+          <a href="/devtools-protocol/1-3/HeadlessExperimental" class="tot experimental">HeadlessExperimental</a>
+          <a href="/devtools-protocol/1-3/HeapProfiler" class="tot experimental v8">HeapProfiler</a>
+          <a href="/devtools-protocol/1-3/IndexedDB" class="tot experimental">IndexedDB</a>
+          <a href="/devtools-protocol/1-3/Input" class="tot 1-2 1-3">Input</a>
+          <a href="/devtools-protocol/1-3/Inspector" class="tot experimental">Inspector</a>
+          <a href="/devtools-protocol/1-3/IO" class="tot 1-3">IO</a>
+          <a href="/devtools-protocol/1-3/LayerTree" class="tot experimental">LayerTree</a>
+          <a href="/devtools-protocol/1-3/Log" class="tot 1-3">Log</a>
+          <a href="/devtools-protocol/1-3/Media" class="tot experimental">Media</a>
+          <a href="/devtools-protocol/1-3/Memory" class="tot experimental">Memory</a>
+          <a href="/devtools-protocol/1-3/Network" class="tot 1-2 1-3">Network</a>
+          <a href="/devtools-protocol/1-3/Overlay" class="tot experimental">Overlay</a>
+          <a href="/devtools-protocol/1-3/Page" class="tot 1-2 1-3">Page</a>
+          <a href="/devtools-protocol/1-3/Performance" class="tot 1-3">Performance</a>
+          <a href="/devtools-protocol/1-3/PerformanceTimeline" class="tot experimental">PerformanceTimeline</a>
+          <a href="/devtools-protocol/1-3/Preload" class="tot experimental">Preload</a>
+          <a href="/devtools-protocol/1-3/Profiler" class="tot 1-2 1-3 v8">Profiler</a>
+          <a href="/devtools-protocol/1-3/Runtime" class="tot 1-2 1-3 v8">Runtime</a>
+          <a href="/devtools-protocol/1-3/Schema" class="tot deprecated 1-2 v8">Schema</a>
+          <a href="/devtools-protocol/1-3/Security" class="tot 1-3">Security</a>
+          <a href="/devtools-protocol/1-3/ServiceWorker" class="tot experimental">ServiceWorker</a>
+          <a href="/devtools-protocol/1-3/Storage" class="tot experimental">Storage</a>
+          <a href="/devtools-protocol/1-3/SystemInfo" class="tot experimental">SystemInfo</a>
+          <a href="/devtools-protocol/1-3/Target" class="tot 1-3">Target</a>
+          <a href="/devtools-protocol/1-3/Tethering" class="tot experimental">Tethering</a>
+          <a href="/devtools-protocol/1-3/Tracing" class="tot experimental">Tracing</a>
+          <a href="/devtools-protocol/1-3/WebAudio" class="tot experimental">WebAudio</a>
+          <a href="/devtools-protocol/1-3/WebAuthn" class="tot experimental">WebAuthn</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <h1>Chrome DevTools Protocol</h1>
+      <button class="menu-link">Navigation</button>
+      <cr-search-control base-url="/devtools-protocol/" protocol-search-index="/search_index/1-3.json"></cr-search-control>
+    </header>
+    <section>
+      <div class="main-content-section domain">
+        
+    <div class="domain-section">
+      <div id="header">
+        <h2 class="heading">Page Domain</h2>
+        
+      <div class="details-description">
+        <p>Actions and events related to the inspected page belong to the page domain.</p>
+
+        
+      </div>
+    
+        
+        <h3>Methods</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#method-addScriptToEvaluateOnNewDocument"><span class="domain-dot">Page.</span>addScriptToEvaluateOnNewDocument</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-bringToFront"><span class="domain-dot">Page.</span>bringToFront</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-captureScreenshot"><span class="domain-dot">Page.</span>captureScreenshot</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-close"><span class="domain-dot">Page.</span>close</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-createIsolatedWorld"><span class="domain-dot">Page.</span>createIsolatedWorld</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-disable"><span class="domain-dot">Page.</span>disable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-enable"><span class="domain-dot">Page.</span>enable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getAppManifest"><span class="domain-dot">Page.</span>getAppManifest</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getFrameTree"><span class="domain-dot">Page.</span>getFrameTree</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getLayoutMetrics"><span class="domain-dot">Page.</span>getLayoutMetrics</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getNavigationHistory"><span class="domain-dot">Page.</span>getNavigationHistory</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-handleJavaScriptDialog"><span class="domain-dot">Page.</span>handleJavaScriptDialog</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-navigate"><span class="domain-dot">Page.</span>navigate</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-navigateToHistoryEntry"><span class="domain-dot">Page.</span>navigateToHistoryEntry</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-printToPDF"><span class="domain-dot">Page.</span>printToPDF</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-reload"><span class="domain-dot">Page.</span>reload</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-removeScriptToEvaluateOnNewDocument"><span class="domain-dot">Page.</span>removeScriptToEvaluateOnNewDocument</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-resetNavigationHistory"><span class="domain-dot">Page.</span>resetNavigationHistory</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setBypassCSP"><span class="domain-dot">Page.</span>setBypassCSP</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setDocumentContent"><span class="domain-dot">Page.</span>setDocumentContent</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setInterceptFileChooserDialog"><span class="domain-dot">Page.</span>setInterceptFileChooserDialog</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setLifecycleEventsEnabled"><span class="domain-dot">Page.</span>setLifecycleEventsEnabled</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-stopLoading"><span class="domain-dot">Page.</span>stopLoading</a>
+        
+      </div>
+      
+        <h3>Events</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#event-domContentEventFired"><span class="domain-dot">Page.</span>domContentEventFired</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-fileChooserOpened"><span class="domain-dot">Page.</span>fileChooserOpened</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-frameAttached"><span class="domain-dot">Page.</span>frameAttached</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-frameDetached"><span class="domain-dot">Page.</span>frameDetached</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-frameNavigated"><span class="domain-dot">Page.</span>frameNavigated</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-interstitialHidden"><span class="domain-dot">Page.</span>interstitialHidden</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-interstitialShown"><span class="domain-dot">Page.</span>interstitialShown</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-javascriptDialogClosed"><span class="domain-dot">Page.</span>javascriptDialogClosed</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-javascriptDialogOpening"><span class="domain-dot">Page.</span>javascriptDialogOpening</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-lifecycleEvent"><span class="domain-dot">Page.</span>lifecycleEvent</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-loadEventFired"><span class="domain-dot">Page.</span>loadEventFired</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-windowOpen"><span class="domain-dot">Page.</span>windowOpen</a>
+        
+      </div>
+      
+        <h3>Types</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#type-AppManifestError"><span class="domain-dot">Page.</span>AppManifestError</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-DialogType"><span class="domain-dot">Page.</span>DialogType</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-Frame"><span class="domain-dot">Page.</span>Frame</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-FrameId"><span class="domain-dot">Page.</span>FrameId</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-FrameTree"><span class="domain-dot">Page.</span>FrameTree</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-LayoutViewport"><span class="domain-dot">Page.</span>LayoutViewport</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-NavigationEntry"><span class="domain-dot">Page.</span>NavigationEntry</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ScriptIdentifier"><span class="domain-dot">Page.</span>ScriptIdentifier</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-TransitionType"><span class="domain-dot">Page.</span>TransitionType</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-Viewport"><span class="domain-dot">Page.</span>Viewport</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-VisualViewport"><span class="domain-dot">Page.</span>VisualViewport</a>
+        
+      </div>
+      
+      </div>
+
+      
+      <h3 id="methods">Methods</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="method-addScriptToEvaluateOnNewDocument">
+          <span class="domain-dot">Page.</span>addScriptToEvaluateOnNewDocument
+          
+          <a href="#method-addScriptToEvaluateOnNewDocument"
+             class="permalink"
+             data-slug="Page.addScriptToEvaluateOnNewDocument"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Evaluates given script in every frame upon creation (before loading frame&#39;s scripts).</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          source
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          worldName
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>If specified, creates an isolated world with the given name and evaluates given script in it.
+This world name will be used as the ExecutionContextDescription::name when the corresponding
+event is emitted.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          includeCommandLineAPI
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Specifies whether command line API should be available to the script, defaults
+to false.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          runImmediately
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>If true, runs the script immediately on existing execution contexts or worlds.
+Default: false.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          identifier
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-ScriptIdentifier class="param-type">ScriptIdentifier</a>
+          
+      <div class="details-description">
+        <p>Identifier of the added script.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-bringToFront">
+          <span class="domain-dot">Page.</span>bringToFront
+          
+          <a href="#method-bringToFront"
+             class="permalink"
+             data-slug="Page.bringToFront"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Brings page to front (activates tab).</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-captureScreenshot">
+          <span class="domain-dot">Page.</span>captureScreenshot
+          
+          <a href="#method-captureScreenshot"
+             class="permalink"
+             data-slug="Page.captureScreenshot"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Capture page screenshot.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          format
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Image compression format (defaults to png).</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>jpeg</code>, <code>png</code>, <code>webp</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          quality
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Compression quality from range [0..100] (jpeg only).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          clip
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-Viewport class="param-type">Viewport</a>
+          
+      <div class="details-description">
+        <p>Capture the screenshot of a given region only.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          fromSurface
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Capture the screenshot from the surface, rather than the view. Defaults to true.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          captureBeyondViewport
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Capture the screenshot beyond the viewport. Defaults to false.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          optimizeForSpeed
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Optimize image encoding for speed, not for resulting size (defaults to false)</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          data
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Base64-encoded image data. (Encoded as a base64 string when passed over JSON)</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-close">
+          <span class="domain-dot">Page.</span>close
+          
+          <a href="#method-close"
+             class="permalink"
+             data-slug="Page.close"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Tries to close page, running its beforeunload hooks, if any.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-createIsolatedWorld">
+          <span class="domain-dot">Page.</span>createIsolatedWorld
+          
+          <a href="#method-createIsolatedWorld"
+             class="permalink"
+             data-slug="Page.createIsolatedWorld"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Creates an isolated world for the given frame.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          frameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-FrameId class="param-type">FrameId</a>
+          
+      <div class="details-description">
+        <p>Id of the frame in which the isolated world should be created.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          worldName
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>An optional name which is reported in the Execution Context.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          grantUniveralAccess
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether or not universal access should be granted to the isolated world. This is a powerful
+option, use with caution.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          executionContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Runtime/#type-ExecutionContextId class="param-type">Runtime.ExecutionContextId</a>
+          
+      <div class="details-description">
+        <p>Execution context of the isolated world.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-disable">
+          <span class="domain-dot">Page.</span>disable
+          
+          <a href="#method-disable"
+             class="permalink"
+             data-slug="Page.disable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Disables page domain notifications.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-enable">
+          <span class="domain-dot">Page.</span>enable
+          
+          <a href="#method-enable"
+             class="permalink"
+             data-slug="Page.enable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enables page domain notifications.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getAppManifest">
+          <span class="domain-dot">Page.</span>getAppManifest
+          
+          <a href="#method-getAppManifest"
+             class="permalink"
+             data-slug="Page.getAppManifest"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Gets the processed manifest for this current document.
+  This API always waits for the manifest to be loaded.
+  If manifestId is provided, and it does not match the manifest of the
+    current document, this API errors out.
+  If there is not a loaded page, this API errors out immediately.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          manifestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Manifest location.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          errors
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/1-3/Page/#type-AppManifestError class="param-type">AppManifestError</a> ]</span></span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          data
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Manifest content.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          parsed
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-AppManifestParsedProperties class="param-type">AppManifestParsedProperties</a>
+          
+      <div class="details-description">
+        <p>Parsed manifest properties. Deprecated, use manifest instead.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span><span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+        <dt class="param-name monospace ">
+          manifest
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-WebAppManifest class="param-type">WebAppManifest</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getFrameTree">
+          <span class="domain-dot">Page.</span>getFrameTree
+          
+          <a href="#method-getFrameTree"
+             class="permalink"
+             data-slug="Page.getFrameTree"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns present frame tree structure.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          frameTree
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-FrameTree class="param-type">FrameTree</a>
+          
+      <div class="details-description">
+        <p>Present frame tree structure.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getLayoutMetrics">
+          <span class="domain-dot">Page.</span>getLayoutMetrics
+          
+          <a href="#method-getLayoutMetrics"
+             class="permalink"
+             data-slug="Page.getLayoutMetrics"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns metrics relating to the layouting of the page, such as viewport bounds/scale.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          layoutViewport
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-LayoutViewport class="param-type">LayoutViewport</a>
+          
+      <div class="details-description">
+        <p>Deprecated metrics relating to the layout viewport. Is in device pixels. Use <code>cssLayoutViewport</code> instead.</p>
+
+        
+      </div>
+    
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+        <dt class="param-name monospace ">
+          visualViewport
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-VisualViewport class="param-type">VisualViewport</a>
+          
+      <div class="details-description">
+        <p>Deprecated metrics relating to the visual viewport. Is in device pixels. Use <code>cssVisualViewport</code> instead.</p>
+
+        
+      </div>
+    
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+        <dt class="param-name monospace ">
+          contentSize
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-Rect class="param-type">DOM.Rect</a>
+          
+      <div class="details-description">
+        <p>Deprecated size of scrollable area. Is in DP. Use <code>cssContentSize</code> instead.</p>
+
+        
+      </div>
+    
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+        <dt class="param-name monospace ">
+          cssLayoutViewport
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-LayoutViewport class="param-type">LayoutViewport</a>
+          
+      <div class="details-description">
+        <p>Metrics relating to the layout viewport in CSS pixels.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          cssVisualViewport
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-VisualViewport class="param-type">VisualViewport</a>
+          
+      <div class="details-description">
+        <p>Metrics relating to the visual viewport in CSS pixels.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          cssContentSize
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-Rect class="param-type">DOM.Rect</a>
+          
+      <div class="details-description">
+        <p>Size of scrollable area in CSS pixels.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getNavigationHistory">
+          <span class="domain-dot">Page.</span>getNavigationHistory
+          
+          <a href="#method-getNavigationHistory"
+             class="permalink"
+             data-slug="Page.getNavigationHistory"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns navigation history for the current page.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          currentIndex
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Index of the current navigation history entry.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          entries
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/1-3/Page/#type-NavigationEntry class="param-type">NavigationEntry</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Array of navigation history entries.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-handleJavaScriptDialog">
+          <span class="domain-dot">Page.</span>handleJavaScriptDialog
+          
+          <a href="#method-handleJavaScriptDialog"
+             class="permalink"
+             data-slug="Page.handleJavaScriptDialog"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Accepts or dismisses a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload).</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          accept
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether to accept or dismiss the dialog.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          promptText
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The text to enter into the dialog prompt before accepting. Used only if this is a prompt
+dialog.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-navigate">
+          <span class="domain-dot">Page.</span>navigate
+          
+          <a href="#method-navigate"
+             class="permalink"
+             data-slug="Page.navigate"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Navigates current page to the given URL.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>URL to navigate the page to.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          referrer
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Referrer URL.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          transitionType
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-TransitionType class="param-type">TransitionType</a>
+          
+      <div class="details-description">
+        <p>Intended transition type.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          frameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-FrameId class="param-type">FrameId</a>
+          
+      <div class="details-description">
+        <p>Frame id to navigate, if not specified navigates the top frame.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          referrerPolicy
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-ReferrerPolicy class="param-type">ReferrerPolicy</a>
+          
+      <div class="details-description">
+        <p>Referrer-policy used for the navigation.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          frameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-FrameId class="param-type">FrameId</a>
+          
+      <div class="details-description">
+        <p>Frame id that has navigated (or failed to navigate)</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          loaderId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Network/#type-LoaderId class="param-type">Network.LoaderId</a>
+          
+      <div class="details-description">
+        <p>Loader identifier. This is omitted in case of same-document navigation,
+as the previously committed loaderId would not change.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          errorText
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>User friendly error message, present if and only if navigation has failed.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-navigateToHistoryEntry">
+          <span class="domain-dot">Page.</span>navigateToHistoryEntry
+          
+          <a href="#method-navigateToHistoryEntry"
+             class="permalink"
+             data-slug="Page.navigateToHistoryEntry"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Navigates current page to the given history entry.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          entryId
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Unique id of the entry to navigate to.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-printToPDF">
+          <span class="domain-dot">Page.</span>printToPDF
+          
+          <a href="#method-printToPDF"
+             class="permalink"
+             data-slug="Page.printToPDF"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Print page as PDF.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          landscape
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Paper orientation. Defaults to false.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          displayHeaderFooter
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Display header and footer. Defaults to false.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          printBackground
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Print background graphics. Defaults to false.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          scale
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Scale of the webpage rendering. Defaults to 1.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          paperWidth
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Paper width in inches. Defaults to 8.5 inches.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          paperHeight
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Paper height in inches. Defaults to 11 inches.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          marginTop
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Top margin in inches. Defaults to 1cm (~0.4 inches).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          marginBottom
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Bottom margin in inches. Defaults to 1cm (~0.4 inches).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          marginLeft
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Left margin in inches. Defaults to 1cm (~0.4 inches).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          marginRight
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Right margin in inches. Defaults to 1cm (~0.4 inches).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          pageRanges
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Paper ranges to print, one based, e.g., &#39;1-5, 8, 11-13&#39;. Pages are
+printed in the document order, not in the order specified, and no
+more than once.
+Defaults to empty string, which implies the entire document is printed.
+The page numbers are quietly capped to actual page count of the
+document, and ranges beyond the end of the document are ignored.
+If this results in no pages to print, an error is reported.
+It is an error to specify a range with start greater than end.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          headerTemplate
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>HTML template for the print header. Should be valid HTML markup with following
+classes used to inject printing values into them:</p>
+<ul>
+<li><code>date</code>: formatted print date</li>
+<li><code>title</code>: document title</li>
+<li><code>url</code>: document location</li>
+<li><code>pageNumber</code>: current page number</li>
+<li><code>totalPages</code>: total pages in the document</li>
+</ul>
+<p>For example, <code>&lt;span class=title&gt;&lt;/span&gt;</code> would generate span containing the title.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          footerTemplate
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>HTML template for the print footer. Should use the same format as the <code>headerTemplate</code>.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          preferCSSPageSize
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether or not to prefer page size as defined by css. Defaults to false,
+in which case the content will be scaled to fit the paper size.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          transferMode
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>return as stream</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>ReturnAsBase64</code>, <code>ReturnAsStream</code></div>
+    
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          generateTaggedPDF
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether or not to generate tagged (accessible) PDF. Defaults to embedder choice.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          generateDocumentOutline
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether or not to embed the document outline into the PDF.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          data
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Base64-encoded pdf data. Empty if |returnAsStream| is specified. (Encoded as a base64 string when passed over JSON)</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          stream
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/IO/#type-StreamHandle class="param-type">IO.StreamHandle</a>
+          
+      <div class="details-description">
+        <p>A handle of the stream that holds resulting PDF data.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-reload">
+          <span class="domain-dot">Page.</span>reload
+          
+          <a href="#method-reload"
+             class="permalink"
+             data-slug="Page.reload"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Reloads given page optionally ignoring the cache.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          ignoreCache
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>If true, browser cache is ignored (as if the user pressed Shift+refresh).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          scriptToEvaluateOnLoad
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>If set, the script will be injected into all frames of the inspected page after reload.
+Argument will be ignored if reloading dataURL origin.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          loaderId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Network/#type-LoaderId class="param-type">Network.LoaderId</a>
+          
+      <div class="details-description">
+        <p>If set, an error will be thrown if the target page&#39;s main frame&#39;s
+loader id does not match the provided id. This prevents accidentally
+reloading an unintended target in case there&#39;s a racing navigation.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-removeScriptToEvaluateOnNewDocument">
+          <span class="domain-dot">Page.</span>removeScriptToEvaluateOnNewDocument
+          
+          <a href="#method-removeScriptToEvaluateOnNewDocument"
+             class="permalink"
+             data-slug="Page.removeScriptToEvaluateOnNewDocument"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Removes given script from the list.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          identifier
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-ScriptIdentifier class="param-type">ScriptIdentifier</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-resetNavigationHistory">
+          <span class="domain-dot">Page.</span>resetNavigationHistory
+          
+          <a href="#method-resetNavigationHistory"
+             class="permalink"
+             data-slug="Page.resetNavigationHistory"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Resets navigation history for the current page.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setBypassCSP">
+          <span class="domain-dot">Page.</span>setBypassCSP
+          
+          <a href="#method-setBypassCSP"
+             class="permalink"
+             data-slug="Page.setBypassCSP"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enable page Content Security Policy by-passing.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          enabled
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether to bypass page CSP.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setDocumentContent">
+          <span class="domain-dot">Page.</span>setDocumentContent
+          
+          <a href="#method-setDocumentContent"
+             class="permalink"
+             data-slug="Page.setDocumentContent"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Sets given markup as the document&#39;s HTML.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          frameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-FrameId class="param-type">FrameId</a>
+          
+      <div class="details-description">
+        <p>Frame id to set HTML for.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          html
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>HTML content to set.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setInterceptFileChooserDialog">
+          <span class="domain-dot">Page.</span>setInterceptFileChooserDialog
+          
+          <a href="#method-setInterceptFileChooserDialog"
+             class="permalink"
+             data-slug="Page.setInterceptFileChooserDialog"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Intercept file chooser requests and transfer control to protocol clients.
+When file chooser interception is enabled, native file chooser dialog is not shown.
+Instead, a protocol event <code>Page.fileChooserOpened</code> is emitted.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          enabled
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setLifecycleEventsEnabled">
+          <span class="domain-dot">Page.</span>setLifecycleEventsEnabled
+          
+          <a href="#method-setLifecycleEventsEnabled"
+             class="permalink"
+             data-slug="Page.setLifecycleEventsEnabled"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Controls whether page will emit lifecycle events.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          enabled
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>If true, starts emitting lifecycle events.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-stopLoading">
+          <span class="domain-dot">Page.</span>stopLoading
+          
+          <a href="#method-stopLoading"
+             class="permalink"
+             data-slug="Page.stopLoading"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Force the page stop all navigations and pending resource fetches.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="events">Events</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="event-domContentEventFired">
+          <span class="domain-dot">Page.</span>domContentEventFired
+          
+          <a href="#event-domContentEventFired"
+             class="permalink"
+             data-slug="Page.domContentEventFired"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          timestamp
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Network/#type-MonotonicTime class="param-type">Network.MonotonicTime</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-fileChooserOpened">
+          <span class="domain-dot">Page.</span>fileChooserOpened
+          
+          <a href="#event-fileChooserOpened"
+             class="permalink"
+             data-slug="Page.fileChooserOpened"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Emitted only when <code>page.interceptFileChooser</code> is enabled.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          frameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-FrameId class="param-type">FrameId</a>
+          
+      <div class="details-description">
+        <p>Id of the frame containing input node.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace ">
+          mode
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Input mode.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>selectSingle</code>, <code>selectMultiple</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          backendNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/DOM/#type-BackendNodeId class="param-type">DOM.BackendNodeId</a>
+          
+      <div class="details-description">
+        <p>Input node id. Only present for file choosers opened via an <code>&lt;input type=&quot;file&quot;&gt;</code> element.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-frameAttached">
+          <span class="domain-dot">Page.</span>frameAttached
+          
+          <a href="#event-frameAttached"
+             class="permalink"
+             data-slug="Page.frameAttached"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when frame has been attached to its parent.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          frameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-FrameId class="param-type">FrameId</a>
+          
+      <div class="details-description">
+        <p>Id of the frame that has been attached.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          parentFrameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-FrameId class="param-type">FrameId</a>
+          
+      <div class="details-description">
+        <p>Parent frame identifier.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          stack
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Runtime/#type-StackTrace class="param-type">Runtime.StackTrace</a>
+          
+      <div class="details-description">
+        <p>JavaScript stack trace of when frame was attached, only set if frame initiated from script.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-frameDetached">
+          <span class="domain-dot">Page.</span>frameDetached
+          
+          <a href="#event-frameDetached"
+             class="permalink"
+             data-slug="Page.frameDetached"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when frame has been detached from its parent.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          frameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-FrameId class="param-type">FrameId</a>
+          
+      <div class="details-description">
+        <p>Id of the frame that has been detached.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          reason
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>remove</code>, <code>swap</code></div>
+    
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-frameNavigated">
+          <span class="domain-dot">Page.</span>frameNavigated
+          
+          <a href="#event-frameNavigated"
+             class="permalink"
+             data-slug="Page.frameNavigated"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired once navigation of the frame has completed. Frame is now associated with the new loader.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          frame
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-Frame class="param-type">Frame</a>
+          
+      <div class="details-description">
+        <p>Frame object.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          type
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-NavigationType class="param-type">NavigationType</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-interstitialHidden">
+          <span class="domain-dot">Page.</span>interstitialHidden
+          
+          <a href="#event-interstitialHidden"
+             class="permalink"
+             data-slug="Page.interstitialHidden"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when interstitial page was hidden</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-interstitialShown">
+          <span class="domain-dot">Page.</span>interstitialShown
+          
+          <a href="#event-interstitialShown"
+             class="permalink"
+             data-slug="Page.interstitialShown"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when interstitial page was shown</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-javascriptDialogClosed">
+          <span class="domain-dot">Page.</span>javascriptDialogClosed
+          
+          <a href="#event-javascriptDialogClosed"
+             class="permalink"
+             data-slug="Page.javascriptDialogClosed"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload) has been
+closed.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          result
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether dialog was confirmed.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          userInput
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>User input in case of prompt.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-javascriptDialogOpening">
+          <span class="domain-dot">Page.</span>javascriptDialogOpening
+          
+          <a href="#event-javascriptDialogOpening"
+             class="permalink"
+             data-slug="Page.javascriptDialogOpening"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload) is about to
+open.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Frame url.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          message
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Message that will be displayed by the dialog.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          type
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-DialogType class="param-type">DialogType</a>
+          
+      <div class="details-description">
+        <p>Dialog type.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          hasBrowserHandler
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True iff browser is capable showing or acting on the given dialog. When browser has no
+dialog handler for given target, calling alert while Page domain is engaged will stall
+the page execution. Execution can be resumed via calling Page.handleJavaScriptDialog.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          defaultPrompt
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Default dialog prompt.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-lifecycleEvent">
+          <span class="domain-dot">Page.</span>lifecycleEvent
+          
+          <a href="#event-lifecycleEvent"
+             class="permalink"
+             data-slug="Page.lifecycleEvent"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired for lifecycle events (navigation, load, paint, etc) in the current
+target (including local frames).</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          frameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-FrameId class="param-type">FrameId</a>
+          
+      <div class="details-description">
+        <p>Id of the frame.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          loaderId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Network/#type-LoaderId class="param-type">Network.LoaderId</a>
+          
+      <div class="details-description">
+        <p>Loader identifier. Empty string if the request is fetched from worker.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          timestamp
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Network/#type-MonotonicTime class="param-type">Network.MonotonicTime</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-loadEventFired">
+          <span class="domain-dot">Page.</span>loadEventFired
+          
+          <a href="#event-loadEventFired"
+             class="permalink"
+             data-slug="Page.loadEventFired"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          timestamp
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Network/#type-MonotonicTime class="param-type">Network.MonotonicTime</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-windowOpen">
+          <span class="domain-dot">Page.</span>windowOpen
+          
+          <a href="#event-windowOpen"
+             class="permalink"
+             data-slug="Page.windowOpen"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when a new window is going to be opened, via window.open(), link click, form submission,
+etc.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The URL for the new window.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          windowName
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Window name.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          windowFeatures
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">string</span> ]</span></span>
+          
+      <div class="details-description">
+        <p>An array of enabled window features.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          userGesture
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether or not it was triggered by user gesture.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="types">Types</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="type-AppManifestError">
+          <span class="domain-dot">Page.</span>AppManifestError
+          
+          <a href="#type-AppManifestError"
+             class="permalink"
+             data-slug="Page.AppManifestError"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Error while paring app manifest.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          message
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Error message.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          critical
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>If critical, this is a non-recoverable parse error.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          line
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Error line.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          column
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Error column.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-DialogType">
+          <span class="domain-dot">Page.</span>DialogType
+          
+          <a href="#type-DialogType"
+             class="permalink"
+             data-slug="Page.DialogType"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Javascript dialog type.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>alert</code>, <code>confirm</code>, <code>prompt</code>, <code>beforeunload</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-Frame">
+          <span class="domain-dot">Page.</span>Frame
+          
+          <a href="#type-Frame"
+             class="permalink"
+             data-slug="Page.Frame"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Information about the Frame on the page.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          id
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-FrameId class="param-type">FrameId</a>
+          
+      <div class="details-description">
+        <p>Frame unique identifier.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          parentId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-FrameId class="param-type">FrameId</a>
+          
+      <div class="details-description">
+        <p>Parent frame identifier.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          loaderId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Network/#type-LoaderId class="param-type">Network.LoaderId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the loader associated with this frame.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Frame&#39;s name as specified in the tag.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Frame document&#39;s URL without fragment.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          urlFragment
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Frame document&#39;s URL fragment including the &#39;#&#39;.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace ">
+          domainAndRegistry
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Frame document&#39;s registered domain, taking the public suffixes list into account.
+Extracted from the Frame&#39;s url.
+Example URLs: <a href="http://www.google.com/file.html">http://www.google.com/file.html</a> -&gt; &quot;google.com&quot;
+              <a href="http://a.b.co.uk/file.html">http://a.b.co.uk/file.html</a>      -&gt; &quot;b.co.uk&quot;</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace ">
+          securityOrigin
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Frame document&#39;s security origin.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          mimeType
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Frame document&#39;s mimeType as determined by the browser.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          unreachableUrl
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>If the frame failed to load, this contains the URL that could not be loaded. Note that unlike url above, this URL may contain a fragment.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          adFrameStatus
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-AdFrameStatus class="param-type">AdFrameStatus</a>
+          
+      <div class="details-description">
+        <p>Indicates whether this frame was tagged as an ad and why.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace ">
+          secureContextType
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-SecureContextType class="param-type">SecureContextType</a>
+          
+      <div class="details-description">
+        <p>Indicates whether the main document is a secure context and explains why that is the case.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace ">
+          crossOriginIsolatedContextType
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-CrossOriginIsolatedContextType class="param-type">CrossOriginIsolatedContextType</a>
+          
+      <div class="details-description">
+        <p>Indicates whether this is a cross origin isolated context.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace ">
+          gatedAPIFeatures
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/1-3/Page/#type-GatedAPIFeatures class="param-type">GatedAPIFeatures</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Indicated which gated APIs / features are available.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-FrameId">
+          <span class="domain-dot">Page.</span>FrameId
+          
+          <a href="#type-FrameId"
+             class="permalink"
+             data-slug="Page.FrameId"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Unique frame identifier.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-FrameTree">
+          <span class="domain-dot">Page.</span>FrameTree
+          
+          <a href="#type-FrameTree"
+             class="permalink"
+             data-slug="Page.FrameTree"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Information about the Frame hierarchy.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          frame
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-Frame class="param-type">Frame</a>
+          
+      <div class="details-description">
+        <p>Frame information for this tree item.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          childFrames
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/1-3/Page/#type-FrameTree class="param-type">FrameTree</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Child frames.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-LayoutViewport">
+          <span class="domain-dot">Page.</span>LayoutViewport
+          
+          <a href="#type-LayoutViewport"
+             class="permalink"
+             data-slug="Page.LayoutViewport"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Layout viewport position and dimensions.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          pageX
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Horizontal offset relative to the document (CSS pixels).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          pageY
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Vertical offset relative to the document (CSS pixels).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          clientWidth
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Width (CSS pixels), excludes scrollbar if present.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          clientHeight
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Height (CSS pixels), excludes scrollbar if present.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-NavigationEntry">
+          <span class="domain-dot">Page.</span>NavigationEntry
+          
+          <a href="#type-NavigationEntry"
+             class="permalink"
+             data-slug="Page.NavigationEntry"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Navigation history entry.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          id
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Unique id of the navigation history entry.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>URL of the navigation history entry.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          userTypedURL
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>URL that the user typed in the url bar.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          title
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Title of the navigation history entry.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          transitionType
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-TransitionType class="param-type">TransitionType</a>
+          
+      <div class="details-description">
+        <p>Transition type.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ScriptIdentifier">
+          <span class="domain-dot">Page.</span>ScriptIdentifier
+          
+          <a href="#type-ScriptIdentifier"
+             class="permalink"
+             data-slug="Page.ScriptIdentifier"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Unique script identifier.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-TransitionType">
+          <span class="domain-dot">Page.</span>TransitionType
+          
+          <a href="#type-TransitionType"
+             class="permalink"
+             data-slug="Page.TransitionType"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Transition type.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>link</code>, <code>typed</code>, <code>address_bar</code>, <code>auto_bookmark</code>, <code>auto_subframe</code>, <code>manual_subframe</code>, <code>generated</code>, <code>auto_toplevel</code>, <code>form_submit</code>, <code>reload</code>, <code>keyword</code>, <code>keyword_generated</code>, <code>other</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-Viewport">
+          <span class="domain-dot">Page.</span>Viewport
+          
+          <a href="#type-Viewport"
+             class="permalink"
+             data-slug="Page.Viewport"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Viewport for capturing screenshot.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          x
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>X offset in device independent pixels (dip).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          y
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Y offset in device independent pixels (dip).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          width
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Rectangle width in device independent pixels (dip).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          height
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Rectangle height in device independent pixels (dip).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          scale
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Page scale factor.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-VisualViewport">
+          <span class="domain-dot">Page.</span>VisualViewport
+          
+          <a href="#type-VisualViewport"
+             class="permalink"
+             data-slug="Page.VisualViewport"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Visual viewport position, dimensions, and scale.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          offsetX
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Horizontal offset relative to the layout viewport (CSS pixels).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          offsetY
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Vertical offset relative to the layout viewport (CSS pixels).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          pageX
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Horizontal offset relative to the document (CSS pixels).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          pageY
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Vertical offset relative to the document (CSS pixels).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          clientWidth
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Width (CSS pixels), excludes scrollbar if present.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          clientHeight
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Height (CSS pixels), excludes scrollbar if present.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          scale
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Scale relative to the ideal viewport (size at width=device-width).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          zoom
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Page zoom factor (CSS to device independent pixels ratio).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+    </div>
+    
+      </div>
+    </section>
+  </main>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60854461-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
