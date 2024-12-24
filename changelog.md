@@ -1,7 +1,24 @@
 
 
+## Roll protocol to r1399977 — _2024-12-24T04:29:08.000Z_
+######  Diff: [`17f0c33...23441e6`](https://github.com/ChromeDevTools/devtools-protocol/compare/17f0c33...23441e6)
+
+```diff
+@@ browser_protocol.pdl:499 @@ experimental domain Audits
+   type AffectedRequest extends object
+     properties
+       # The unique request id.
+-      Network.RequestId requestId
+-      optional string url
++      optional Network.RequestId requestId
++      string url
+ 
+   # Information about the frame affected by an inspector issue.
+   type AffectedFrame extends object
+```
+
 ## Roll protocol to r1396320 — _2024-12-14T04:29:52.000Z_
-######  Diff: [`e61f211...8337043`](https://github.com/ChromeDevTools/devtools-protocol/compare/e61f211...8337043)
+######  Diff: [`e61f211...17f0c33`](https://github.com/ChromeDevTools/devtools-protocol/compare/e61f211...17f0c33)
 
 ```diff
 @@ browser_protocol.pdl:2255 @@ experimental domain CSS

@@ -3314,8 +3314,8 @@ export namespace Protocol {
             /**
              * The unique request id.
              */
-            requestId: Network.RequestId;
-            url?: string;
+            requestId?: Network.RequestId;
+            url: string;
         }
 
         /**
