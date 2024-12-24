@@ -1,0 +1,4582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Chrome DevTools Protocol - version tot - Runtime domain" />
+  <link rel="icon" type="image/png" href="/devtools-protocol/images/logo.png" />
+    <title>Chrome DevTools Protocol - Runtime domain</title>
+
+  <meta name="theme-color" content="#303F9F" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@chromedevtools" />
+  <meta name="twitter:creator" content="@chromedevtools" />
+  <meta property="og:title" content="Chrome DevTools Protocol" />
+  <meta property="og:image" content="https://developers.google.com/web/tools/images/chrome-devtools-16x9_720.png" />
+    <meta property="og:description" content="Chrome DevTools Protocol - version tot - Runtime domain" />
+
+  <script type="module" src="/devtools-protocol/scripts/index.js"></script>
+  <link href="/devtools-protocol/styles/protocol.css" rel="stylesheet">
+</head>
+<body>
+  <aside>
+    <div id="home" class="navs">
+      <nav>
+        <a href="/devtools-protocol/">Home</a>
+        <button class="aside-close-button" aria-label="Close navigation">x</button>
+      </nav>
+    </div>
+    <div id="versions" class="navs">
+      <header>Versions</header>
+      <nav>
+        <a href="/devtools-protocol/tot" name="tot">
+          latest (tip-of-tree)
+        </a>
+        <a href="/devtools-protocol/v8" name="v8">
+          v8-inspector (node)
+        </a>
+        <a href="/devtools-protocol/1-3" name="1-3">
+          stable (1.3)
+        </a><!-- 
+        <a href="/devtools-protocol/1-2" name="1-2">
+          stable (1.2)
+        </a> -->
+      </nav>
+    </div>
+
+    <div id="domains" class="navs version-tot">
+      <header>Domains</header>
+      <div class="scroller">
+        <nav>
+          <a href="/devtools-protocol/tot/Accessibility" class="tot experimental">Accessibility</a>
+          <a href="/devtools-protocol/tot/Animation" class="tot experimental">Animation</a>
+          <a href="/devtools-protocol/tot/Audits" class="tot experimental">Audits</a>
+          <a href="/devtools-protocol/tot/Autofill" class="tot experimental">Autofill</a>
+          <a href="/devtools-protocol/tot/BackgroundService" class="tot experimental">BackgroundService</a>
+          <a href="/devtools-protocol/tot/Browser" class="tot 1-3">Browser</a>
+          <a href="/devtools-protocol/tot/CacheStorage" class="tot experimental">CacheStorage</a>
+          <a href="/devtools-protocol/tot/Cast" class="tot experimental">Cast</a>
+          <a href="/devtools-protocol/tot/Console" class="tot deprecated v8">Console</a>
+          <a href="/devtools-protocol/tot/CSS" class="tot experimental">CSS</a>
+          <a href="/devtools-protocol/tot/Database" class="tot experimental">Database</a>
+          <a href="/devtools-protocol/tot/Debugger" class="tot 1-2 1-3 v8">Debugger</a>
+          <a href="/devtools-protocol/tot/DeviceAccess" class="tot experimental">DeviceAccess</a>
+          <a href="/devtools-protocol/tot/DeviceOrientation" class="tot experimental">DeviceOrientation</a>
+          <a href="/devtools-protocol/tot/DOM" class="tot 1-2 1-3">DOM</a>
+          <a href="/devtools-protocol/tot/DOMDebugger" class="tot 1-2 1-3">DOMDebugger</a>
+          <a href="/devtools-protocol/tot/DOMSnapshot" class="tot experimental">DOMSnapshot</a>
+          <a href="/devtools-protocol/tot/DOMStorage" class="tot experimental">DOMStorage</a>
+          <a href="/devtools-protocol/tot/Emulation" class="tot 1-2 1-3">Emulation</a>
+          <a href="/devtools-protocol/tot/EventBreakpoints" class="tot experimental">EventBreakpoints</a>
+          <a href="/devtools-protocol/tot/Extensions" class="tot experimental">Extensions</a>
+          <a href="/devtools-protocol/tot/FedCm" class="tot experimental">FedCm</a>
+          <a href="/devtools-protocol/tot/Fetch" class="tot 1-3">Fetch</a>
+          <a href="/devtools-protocol/tot/HeadlessExperimental" class="tot experimental">HeadlessExperimental</a>
+          <a href="/devtools-protocol/tot/HeapProfiler" class="tot experimental v8">HeapProfiler</a>
+          <a href="/devtools-protocol/tot/IndexedDB" class="tot experimental">IndexedDB</a>
+          <a href="/devtools-protocol/tot/Input" class="tot 1-2 1-3">Input</a>
+          <a href="/devtools-protocol/tot/Inspector" class="tot experimental">Inspector</a>
+          <a href="/devtools-protocol/tot/IO" class="tot 1-3">IO</a>
+          <a href="/devtools-protocol/tot/LayerTree" class="tot experimental">LayerTree</a>
+          <a href="/devtools-protocol/tot/Log" class="tot 1-3">Log</a>
+          <a href="/devtools-protocol/tot/Media" class="tot experimental">Media</a>
+          <a href="/devtools-protocol/tot/Memory" class="tot experimental">Memory</a>
+          <a href="/devtools-protocol/tot/Network" class="tot 1-2 1-3">Network</a>
+          <a href="/devtools-protocol/tot/Overlay" class="tot experimental">Overlay</a>
+          <a href="/devtools-protocol/tot/Page" class="tot 1-2 1-3">Page</a>
+          <a href="/devtools-protocol/tot/Performance" class="tot 1-3">Performance</a>
+          <a href="/devtools-protocol/tot/PerformanceTimeline" class="tot experimental">PerformanceTimeline</a>
+          <a href="/devtools-protocol/tot/Preload" class="tot experimental">Preload</a>
+          <a href="/devtools-protocol/tot/Profiler" class="tot 1-2 1-3 v8">Profiler</a>
+          <a href="/devtools-protocol/tot/Runtime" class="tot 1-2 1-3 v8">Runtime</a>
+          <a href="/devtools-protocol/tot/Schema" class="tot deprecated 1-2 v8">Schema</a>
+          <a href="/devtools-protocol/tot/Security" class="tot 1-3">Security</a>
+          <a href="/devtools-protocol/tot/ServiceWorker" class="tot experimental">ServiceWorker</a>
+          <a href="/devtools-protocol/tot/Storage" class="tot experimental">Storage</a>
+          <a href="/devtools-protocol/tot/SystemInfo" class="tot experimental">SystemInfo</a>
+          <a href="/devtools-protocol/tot/Target" class="tot 1-3">Target</a>
+          <a href="/devtools-protocol/tot/Tethering" class="tot experimental">Tethering</a>
+          <a href="/devtools-protocol/tot/Tracing" class="tot experimental">Tracing</a>
+          <a href="/devtools-protocol/tot/WebAudio" class="tot experimental">WebAudio</a>
+          <a href="/devtools-protocol/tot/WebAuthn" class="tot experimental">WebAuthn</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <h1>Chrome DevTools Protocol</h1>
+      <button class="menu-link">Navigation</button>
+      <cr-search-control base-url="/devtools-protocol/" protocol-search-index="/search_index/tot.json"></cr-search-control>
+    </header>
+    <section>
+      <div class="main-content-section domain">
+        
+    <div class="domain-section">
+      <div id="header">
+        <h2 class="heading">Runtime Domain</h2>
+        
+      <div class="details-description">
+        <p>Runtime domain exposes JavaScript runtime by means of remote evaluation and mirror objects.
+Evaluation results are returned as mirror object that expose object type, string representation
+and unique identifier that can be used for further object reference. Original objects are
+maintained in memory unless they are either explicitly released or are released along with the
+other objects in their object group.</p>
+
+        
+      </div>
+    
+        
+        <h3>Methods</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#method-addBinding"><span class="domain-dot">Runtime.</span>addBinding</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-awaitPromise"><span class="domain-dot">Runtime.</span>awaitPromise</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-callFunctionOn"><span class="domain-dot">Runtime.</span>callFunctionOn</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-compileScript"><span class="domain-dot">Runtime.</span>compileScript</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-disable"><span class="domain-dot">Runtime.</span>disable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-discardConsoleEntries"><span class="domain-dot">Runtime.</span>discardConsoleEntries</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-enable"><span class="domain-dot">Runtime.</span>enable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-evaluate"><span class="domain-dot">Runtime.</span>evaluate</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getProperties"><span class="domain-dot">Runtime.</span>getProperties</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-globalLexicalScopeNames"><span class="domain-dot">Runtime.</span>globalLexicalScopeNames</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-queryObjects"><span class="domain-dot">Runtime.</span>queryObjects</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-releaseObject"><span class="domain-dot">Runtime.</span>releaseObject</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-releaseObjectGroup"><span class="domain-dot">Runtime.</span>releaseObjectGroup</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-removeBinding"><span class="domain-dot">Runtime.</span>removeBinding</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-runIfWaitingForDebugger"><span class="domain-dot">Runtime.</span>runIfWaitingForDebugger</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-runScript"><span class="domain-dot">Runtime.</span>runScript</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setAsyncCallStackDepth"><span class="domain-dot">Runtime.</span>setAsyncCallStackDepth</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getExceptionDetails"><span class="domain-dot">Runtime.</span>getExceptionDetails</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getHeapUsage"><span class="domain-dot">Runtime.</span>getHeapUsage</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getIsolateId"><span class="domain-dot">Runtime.</span>getIsolateId</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setCustomObjectFormatterEnabled"><span class="domain-dot">Runtime.</span>setCustomObjectFormatterEnabled</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setMaxCallStackSizeToCapture"><span class="domain-dot">Runtime.</span>setMaxCallStackSizeToCapture</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-terminateExecution"><span class="domain-dot">Runtime.</span>terminateExecution</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+        <h3>Events</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#event-consoleAPICalled"><span class="domain-dot">Runtime.</span>consoleAPICalled</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-exceptionRevoked"><span class="domain-dot">Runtime.</span>exceptionRevoked</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-exceptionThrown"><span class="domain-dot">Runtime.</span>exceptionThrown</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-executionContextCreated"><span class="domain-dot">Runtime.</span>executionContextCreated</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-executionContextDestroyed"><span class="domain-dot">Runtime.</span>executionContextDestroyed</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-executionContextsCleared"><span class="domain-dot">Runtime.</span>executionContextsCleared</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-inspectRequested"><span class="domain-dot">Runtime.</span>inspectRequested</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-bindingCalled"><span class="domain-dot">Runtime.</span>bindingCalled</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+        <h3>Types</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#type-CallArgument"><span class="domain-dot">Runtime.</span>CallArgument</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-CallFrame"><span class="domain-dot">Runtime.</span>CallFrame</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-DeepSerializedValue"><span class="domain-dot">Runtime.</span>DeepSerializedValue</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ExceptionDetails"><span class="domain-dot">Runtime.</span>ExceptionDetails</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ExecutionContextDescription"><span class="domain-dot">Runtime.</span>ExecutionContextDescription</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ExecutionContextId"><span class="domain-dot">Runtime.</span>ExecutionContextId</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-InternalPropertyDescriptor"><span class="domain-dot">Runtime.</span>InternalPropertyDescriptor</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-PropertyDescriptor"><span class="domain-dot">Runtime.</span>PropertyDescriptor</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-RemoteObject"><span class="domain-dot">Runtime.</span>RemoteObject</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-RemoteObjectId"><span class="domain-dot">Runtime.</span>RemoteObjectId</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ScriptId"><span class="domain-dot">Runtime.</span>ScriptId</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-SerializationOptions"><span class="domain-dot">Runtime.</span>SerializationOptions</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-StackTrace"><span class="domain-dot">Runtime.</span>StackTrace</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-TimeDelta"><span class="domain-dot">Runtime.</span>TimeDelta</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-Timestamp"><span class="domain-dot">Runtime.</span>Timestamp</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-UnserializableValue"><span class="domain-dot">Runtime.</span>UnserializableValue</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-CustomPreview"><span class="domain-dot">Runtime.</span>CustomPreview</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-EntryPreview"><span class="domain-dot">Runtime.</span>EntryPreview</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ObjectPreview"><span class="domain-dot">Runtime.</span>ObjectPreview</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-PrivatePropertyDescriptor"><span class="domain-dot">Runtime.</span>PrivatePropertyDescriptor</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-PropertyPreview"><span class="domain-dot">Runtime.</span>PropertyPreview</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-StackTraceId"><span class="domain-dot">Runtime.</span>StackTraceId</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-UniqueDebuggerId"><span class="domain-dot">Runtime.</span>UniqueDebuggerId</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      </div>
+
+      
+      <h3 id="methods">Methods</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="method-addBinding">
+          <span class="domain-dot">Runtime.</span>addBinding
+          
+          <a href="#method-addBinding"
+             class="permalink"
+             data-slug="Runtime.addBinding"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>If executionContextId is empty, adds binding with the given name on the
+global objects of all inspected contexts, including those created later,
+bindings survive reloads.
+Binding function takes exactly one argument, this argument should be string,
+in case of any other input, function throws an exception.
+Each binding function call produces Runtime.bindingCalled notification.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          executionContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ExecutionContextId class="param-type">ExecutionContextId</a>
+          
+      <div class="details-description">
+        <p>If specified, the binding would only be exposed to the specified
+execution context. If omitted and <code>executionContextName</code> is not set,
+the binding is exposed to all execution contexts of the target.
+This parameter is mutually exclusive with <code>executionContextName</code>.
+Deprecated in favor of <code>executionContextName</code> due to an unclear use case
+and bugs in implementation (crbug.com/1169639). <code>executionContextId</code> will be
+removed in the future.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span><span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          executionContextName
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>If specified, the binding is exposed to the executionContext with
+matching name, even for contexts created after the binding is added.
+See also <code>ExecutionContext.name</code> and <code>worldName</code> parameter to
+<code>Page.addScriptToEvaluateOnNewDocument</code>.
+This parameter is mutually exclusive with <code>executionContextId</code>.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-awaitPromise">
+          <span class="domain-dot">Runtime.</span>awaitPromise
+          
+          <a href="#method-awaitPromise"
+             class="permalink"
+             data-slug="Runtime.awaitPromise"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Add handler to promise with given promise object id.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          promiseObjectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObjectId class="param-type">RemoteObjectId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the promise.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          returnByValue
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether the result is expected to be a JSON object that should be sent by value.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          generatePreview
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether preview should be generated for the result.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          result
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObject class="param-type">RemoteObject</a>
+          
+      <div class="details-description">
+        <p>Promise result. Will contain rejected value if promise was rejected.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          exceptionDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ExceptionDetails class="param-type">ExceptionDetails</a>
+          
+      <div class="details-description">
+        <p>Exception details if stack strace is available.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-callFunctionOn">
+          <span class="domain-dot">Runtime.</span>callFunctionOn
+          
+          <a href="#method-callFunctionOn"
+             class="permalink"
+             data-slug="Runtime.callFunctionOn"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Calls function with given declaration on the given object. Object group of the result is
+inherited from the target object.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          functionDeclaration
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Declaration of the function to call.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          objectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObjectId class="param-type">RemoteObjectId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the object to call function on. Either objectId or executionContextId should
+be specified.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          arguments
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Runtime/#type-CallArgument class="param-type">CallArgument</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Call arguments. All call arguments must belong to the same JavaScript world as the target
+object.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          silent
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>In silent mode exceptions thrown during evaluation are not reported and do not pause
+execution. Overrides <code>setPauseOnException</code> state.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          returnByValue
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether the result is expected to be a JSON object which should be sent by value.
+Can be overriden by <code>serializationOptions</code>.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          generatePreview
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether preview should be generated for the result.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          userGesture
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether execution should be treated as initiated by user in the UI.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          awaitPromise
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether execution should <code>await</code> for resulting value and return once awaited promise is
+resolved.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          executionContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ExecutionContextId class="param-type">ExecutionContextId</a>
+          
+      <div class="details-description">
+        <p>Specifies execution context which global object will be used to call function on. Either
+executionContextId or objectId should be specified.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          objectGroup
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Symbolic group name that can be used to release multiple objects. If objectGroup is not
+specified and objectId is, objectGroup will be inherited from object.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          throwOnSideEffect
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether to throw an exception if side effect cannot be ruled out during evaluation.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          uniqueContextId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>An alternative way to specify the execution context to call function on.
+Compared to contextId that may be reused across processes, this is guaranteed to be
+system-unique, so it can be used to prevent accidental function call
+in context different than intended (e.g. as a result of navigation across process
+boundaries).
+This is mutually exclusive with <code>executionContextId</code>.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          serializationOptions
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-SerializationOptions class="param-type">SerializationOptions</a>
+          
+      <div class="details-description">
+        <p>Specifies the result serialization. If provided, overrides
+<code>generatePreview</code> and <code>returnByValue</code>.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          result
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObject class="param-type">RemoteObject</a>
+          
+      <div class="details-description">
+        <p>Call result.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          exceptionDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ExceptionDetails class="param-type">ExceptionDetails</a>
+          
+      <div class="details-description">
+        <p>Exception details.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-compileScript">
+          <span class="domain-dot">Runtime.</span>compileScript
+          
+          <a href="#method-compileScript"
+             class="permalink"
+             data-slug="Runtime.compileScript"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Compiles expression.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          expression
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Expression to compile.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          sourceURL
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Source url to be set for the script.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          persistScript
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Specifies whether the compiled script should be persisted.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          executionContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ExecutionContextId class="param-type">ExecutionContextId</a>
+          
+      <div class="details-description">
+        <p>Specifies in which execution context to perform script run. If the parameter is omitted the
+evaluation will be performed in the context of the inspected page.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          scriptId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ScriptId class="param-type">ScriptId</a>
+          
+      <div class="details-description">
+        <p>Id of the script.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          exceptionDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ExceptionDetails class="param-type">ExceptionDetails</a>
+          
+      <div class="details-description">
+        <p>Exception details.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-disable">
+          <span class="domain-dot">Runtime.</span>disable
+          
+          <a href="#method-disable"
+             class="permalink"
+             data-slug="Runtime.disable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Disables reporting of execution contexts creation.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-discardConsoleEntries">
+          <span class="domain-dot">Runtime.</span>discardConsoleEntries
+          
+          <a href="#method-discardConsoleEntries"
+             class="permalink"
+             data-slug="Runtime.discardConsoleEntries"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Discards collected exceptions and console API calls.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-enable">
+          <span class="domain-dot">Runtime.</span>enable
+          
+          <a href="#method-enable"
+             class="permalink"
+             data-slug="Runtime.enable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enables reporting of execution contexts creation by means of <code>executionContextCreated</code> event.
+When the reporting gets enabled the event will be sent immediately for each existing execution
+context.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-evaluate">
+          <span class="domain-dot">Runtime.</span>evaluate
+          
+          <a href="#method-evaluate"
+             class="permalink"
+             data-slug="Runtime.evaluate"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Evaluates expression on global object.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          expression
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Expression to evaluate.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          objectGroup
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Symbolic group name that can be used to release multiple objects.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          includeCommandLineAPI
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Determines whether Command Line API should be available during the evaluation.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          silent
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>In silent mode exceptions thrown during evaluation are not reported and do not pause
+execution. Overrides <code>setPauseOnException</code> state.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          contextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ExecutionContextId class="param-type">ExecutionContextId</a>
+          
+      <div class="details-description">
+        <p>Specifies in which execution context to perform evaluation. If the parameter is omitted the
+evaluation will be performed in the context of the inspected page.
+This is mutually exclusive with <code>uniqueContextId</code>, which offers an
+alternative way to identify the execution context that is more reliable
+in a multi-process environment.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          returnByValue
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether the result is expected to be a JSON object that should be sent by value.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          generatePreview
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether preview should be generated for the result.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          userGesture
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether execution should be treated as initiated by user in the UI.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          awaitPromise
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether execution should <code>await</code> for resulting value and return once awaited promise is
+resolved.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          throwOnSideEffect
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether to throw an exception if side effect cannot be ruled out during evaluation.
+This implies <code>disableBreaks</code> below.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          timeout
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-TimeDelta class="param-type">TimeDelta</a>
+          
+      <div class="details-description">
+        <p>Terminate execution after timing out (number of milliseconds).</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          disableBreaks
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Disable breakpoints during execution.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          replMode
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Setting this flag to true enables <code>let</code> re-declaration and top-level <code>await</code>.
+Note that <code>let</code> variables can only be re-declared if they originate from
+<code>replMode</code> themselves.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          allowUnsafeEvalBlockedByCSP
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>The Content Security Policy (CSP) for the target might block &#39;unsafe-eval&#39;
+which includes eval(), Function(), setTimeout() and setInterval()
+when called with non-callable arguments. This flag bypasses CSP for this
+evaluation and allows unsafe-eval. Defaults to true.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          uniqueContextId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>An alternative way to specify the execution context to evaluate in.
+Compared to contextId that may be reused across processes, this is guaranteed to be
+system-unique, so it can be used to prevent accidental evaluation of the expression
+in context different than intended (e.g. as a result of navigation across process
+boundaries).
+This is mutually exclusive with <code>contextId</code>.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          serializationOptions
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-SerializationOptions class="param-type">SerializationOptions</a>
+          
+      <div class="details-description">
+        <p>Specifies the result serialization. If provided, overrides
+<code>generatePreview</code> and <code>returnByValue</code>.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          result
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObject class="param-type">RemoteObject</a>
+          
+      <div class="details-description">
+        <p>Evaluation result.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          exceptionDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ExceptionDetails class="param-type">ExceptionDetails</a>
+          
+      <div class="details-description">
+        <p>Exception details.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getProperties">
+          <span class="domain-dot">Runtime.</span>getProperties
+          
+          <a href="#method-getProperties"
+             class="permalink"
+             data-slug="Runtime.getProperties"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns properties of a given object. Object group of the result is inherited from the target
+object.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          objectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObjectId class="param-type">RemoteObjectId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the object to return properties for.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          ownProperties
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>If true, returns properties belonging only to the element itself, not to its prototype
+chain.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          accessorPropertiesOnly
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>If true, returns accessor properties (with getter/setter) only; internal properties are not
+returned either.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          generatePreview
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether preview should be generated for the results.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          nonIndexedPropertiesOnly
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>If true, returns non-indexed properties only.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          result
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Runtime/#type-PropertyDescriptor class="param-type">PropertyDescriptor</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Object properties.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          internalProperties
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Runtime/#type-InternalPropertyDescriptor class="param-type">InternalPropertyDescriptor</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Internal object properties (only of the element itself).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          privateProperties
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Runtime/#type-PrivatePropertyDescriptor class="param-type">PrivatePropertyDescriptor</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Object private properties.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          exceptionDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ExceptionDetails class="param-type">ExceptionDetails</a>
+          
+      <div class="details-description">
+        <p>Exception details.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-globalLexicalScopeNames">
+          <span class="domain-dot">Runtime.</span>globalLexicalScopeNames
+          
+          <a href="#method-globalLexicalScopeNames"
+             class="permalink"
+             data-slug="Runtime.globalLexicalScopeNames"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns all let, const and class variables from global scope.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          executionContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ExecutionContextId class="param-type">ExecutionContextId</a>
+          
+      <div class="details-description">
+        <p>Specifies in which execution context to lookup global scope variables.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          names
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">string</span> ]</span></span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-queryObjects">
+          <span class="domain-dot">Runtime.</span>queryObjects
+          
+          <a href="#method-queryObjects"
+             class="permalink"
+             data-slug="Runtime.queryObjects"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          prototypeObjectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObjectId class="param-type">RemoteObjectId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the prototype to return objects for.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          objectGroup
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Symbolic group name that can be used to release the results.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          objects
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObject class="param-type">RemoteObject</a>
+          
+      <div class="details-description">
+        <p>Array with objects.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-releaseObject">
+          <span class="domain-dot">Runtime.</span>releaseObject
+          
+          <a href="#method-releaseObject"
+             class="permalink"
+             data-slug="Runtime.releaseObject"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Releases remote object with given id.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          objectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObjectId class="param-type">RemoteObjectId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the object to release.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-releaseObjectGroup">
+          <span class="domain-dot">Runtime.</span>releaseObjectGroup
+          
+          <a href="#method-releaseObjectGroup"
+             class="permalink"
+             data-slug="Runtime.releaseObjectGroup"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Releases all remote objects that belong to a given group.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          objectGroup
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Symbolic object group name.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-removeBinding">
+          <span class="domain-dot">Runtime.</span>removeBinding
+          
+          <a href="#method-removeBinding"
+             class="permalink"
+             data-slug="Runtime.removeBinding"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>This method does not remove binding function from global object but
+unsubscribes current runtime agent from Runtime.bindingCalled notifications.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-runIfWaitingForDebugger">
+          <span class="domain-dot">Runtime.</span>runIfWaitingForDebugger
+          
+          <a href="#method-runIfWaitingForDebugger"
+             class="permalink"
+             data-slug="Runtime.runIfWaitingForDebugger"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Tells inspected instance to run if it was waiting for debugger to attach.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-runScript">
+          <span class="domain-dot">Runtime.</span>runScript
+          
+          <a href="#method-runScript"
+             class="permalink"
+             data-slug="Runtime.runScript"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Runs script with given id in a given context.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          scriptId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ScriptId class="param-type">ScriptId</a>
+          
+      <div class="details-description">
+        <p>Id of the script to run.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          executionContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ExecutionContextId class="param-type">ExecutionContextId</a>
+          
+      <div class="details-description">
+        <p>Specifies in which execution context to perform script run. If the parameter is omitted the
+evaluation will be performed in the context of the inspected page.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          objectGroup
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Symbolic group name that can be used to release multiple objects.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          silent
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>In silent mode exceptions thrown during evaluation are not reported and do not pause
+execution. Overrides <code>setPauseOnException</code> state.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          includeCommandLineAPI
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Determines whether Command Line API should be available during the evaluation.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          returnByValue
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether the result is expected to be a JSON object which should be sent by value.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          generatePreview
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether preview should be generated for the result.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          awaitPromise
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether execution should <code>await</code> for resulting value and return once awaited promise is
+resolved.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          result
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObject class="param-type">RemoteObject</a>
+          
+      <div class="details-description">
+        <p>Run result.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          exceptionDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ExceptionDetails class="param-type">ExceptionDetails</a>
+          
+      <div class="details-description">
+        <p>Exception details.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setAsyncCallStackDepth">
+          <span class="domain-dot">Runtime.</span>setAsyncCallStackDepth
+          
+          <a href="#method-setAsyncCallStackDepth"
+             class="permalink"
+             data-slug="Runtime.setAsyncCallStackDepth"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enables or disables async call stacks tracking.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          maxDepth
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Maximum depth of async call stacks. Setting to <code>0</code> will effectively disable collecting async
+call stacks (default).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getExceptionDetails">
+          <span class="domain-dot">Runtime.</span>getExceptionDetails
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-getExceptionDetails"
+             class="permalink"
+             data-slug="Runtime.getExceptionDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>This method tries to lookup and populate exception details for a
+JavaScript Error object.
+Note that the stackTrace portion of the resulting exceptionDetails will
+only be populated if the Runtime domain was enabled at the time when the
+Error was thrown.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          errorObjectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObjectId class="param-type">RemoteObjectId</a>
+          
+      <div class="details-description">
+        <p>The error object for which to resolve the exception details.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          exceptionDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ExceptionDetails class="param-type">ExceptionDetails</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getHeapUsage">
+          <span class="domain-dot">Runtime.</span>getHeapUsage
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-getHeapUsage"
+             class="permalink"
+             data-slug="Runtime.getHeapUsage"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns the JavaScript heap usage.
+It is the total usage of the corresponding isolate not scoped to a particular Runtime.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          usedSize
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Used heap size in bytes.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          totalSize
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Allocated heap size in bytes.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getIsolateId">
+          <span class="domain-dot">Runtime.</span>getIsolateId
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-getIsolateId"
+             class="permalink"
+             data-slug="Runtime.getIsolateId"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns the isolate id.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          id
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The isolate id.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setCustomObjectFormatterEnabled">
+          <span class="domain-dot">Runtime.</span>setCustomObjectFormatterEnabled
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-setCustomObjectFormatterEnabled"
+             class="permalink"
+             data-slug="Runtime.setCustomObjectFormatterEnabled"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          enabled
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setMaxCallStackSizeToCapture">
+          <span class="domain-dot">Runtime.</span>setMaxCallStackSizeToCapture
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-setMaxCallStackSizeToCapture"
+             class="permalink"
+             data-slug="Runtime.setMaxCallStackSizeToCapture"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          size
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-terminateExecution">
+          <span class="domain-dot">Runtime.</span>terminateExecution
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-terminateExecution"
+             class="permalink"
+             data-slug="Runtime.terminateExecution"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Terminate current or next JavaScript execution.
+Will cancel the termination when the outer-most script execution ends.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="events">Events</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="event-consoleAPICalled">
+          <span class="domain-dot">Runtime.</span>consoleAPICalled
+          
+          <a href="#event-consoleAPICalled"
+             class="permalink"
+             data-slug="Runtime.consoleAPICalled"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Issued when console API was called.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          type
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Type of the call.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>log</code>, <code>debug</code>, <code>info</code>, <code>error</code>, <code>warning</code>, <code>dir</code>, <code>dirxml</code>, <code>table</code>, <code>trace</code>, <code>clear</code>, <code>startGroup</code>, <code>startGroupCollapsed</code>, <code>endGroup</code>, <code>assert</code>, <code>profile</code>, <code>profileEnd</code>, <code>count</code>, <code>timeEnd</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          args
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Runtime/#type-RemoteObject class="param-type">RemoteObject</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Call arguments.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          executionContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ExecutionContextId class="param-type">ExecutionContextId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the context where the call was made.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          timestamp
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-Timestamp class="param-type">Timestamp</a>
+          
+      <div class="details-description">
+        <p>Call timestamp.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          stackTrace
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-StackTrace class="param-type">StackTrace</a>
+          
+      <div class="details-description">
+        <p>Stack trace captured when the call was made. The async stack chain is automatically reported for
+the following call types: <code>assert</code>, <code>error</code>, <code>trace</code>, <code>warning</code>. For other types the async call
+chain can be retrieved using <code>Debugger.getStackTrace</code> and <code>stackTrace.parentId</code> field.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          context
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Console context descriptor for calls on non-default console context (not console.*):
+&#39;anonymous#unique-logger-id&#39; for call on unnamed context, &#39;name#unique-logger-id&#39; for call
+on named context.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-exceptionRevoked">
+          <span class="domain-dot">Runtime.</span>exceptionRevoked
+          
+          <a href="#event-exceptionRevoked"
+             class="permalink"
+             data-slug="Runtime.exceptionRevoked"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Issued when unhandled exception was revoked.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          reason
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Reason describing why exception was revoked.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          exceptionId
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>The id of revoked exception, as reported in <code>exceptionThrown</code>.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-exceptionThrown">
+          <span class="domain-dot">Runtime.</span>exceptionThrown
+          
+          <a href="#event-exceptionThrown"
+             class="permalink"
+             data-slug="Runtime.exceptionThrown"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Issued when exception was thrown and unhandled.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          timestamp
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-Timestamp class="param-type">Timestamp</a>
+          
+      <div class="details-description">
+        <p>Timestamp of the exception.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          exceptionDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ExceptionDetails class="param-type">ExceptionDetails</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-executionContextCreated">
+          <span class="domain-dot">Runtime.</span>executionContextCreated
+          
+          <a href="#event-executionContextCreated"
+             class="permalink"
+             data-slug="Runtime.executionContextCreated"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Issued when new execution context is created.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          context
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ExecutionContextDescription class="param-type">ExecutionContextDescription</a>
+          
+      <div class="details-description">
+        <p>A newly created execution context.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-executionContextDestroyed">
+          <span class="domain-dot">Runtime.</span>executionContextDestroyed
+          
+          <a href="#event-executionContextDestroyed"
+             class="permalink"
+             data-slug="Runtime.executionContextDestroyed"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Issued when execution context is destroyed.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          executionContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ExecutionContextId class="param-type">ExecutionContextId</a>
+          
+      <div class="details-description">
+        <p>Id of the destroyed context</p>
+
+        
+      </div>
+    
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+        <dt class="param-name monospace ">
+          executionContextUniqueId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Unique Id of the destroyed context</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-executionContextsCleared">
+          <span class="domain-dot">Runtime.</span>executionContextsCleared
+          
+          <a href="#event-executionContextsCleared"
+             class="permalink"
+             data-slug="Runtime.executionContextsCleared"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Issued when all executionContexts were cleared in browser</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-inspectRequested">
+          <span class="domain-dot">Runtime.</span>inspectRequested
+          
+          <a href="#event-inspectRequested"
+             class="permalink"
+             data-slug="Runtime.inspectRequested"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Issued when object should be inspected (for example, as a result of inspect() command line API
+call).</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          object
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObject class="param-type">RemoteObject</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          hints
+        </dt>
+        <dd>
+          <span class="param-type">object</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          executionContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ExecutionContextId class="param-type">ExecutionContextId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the context where the call was made.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-bindingCalled">
+          <span class="domain-dot">Runtime.</span>bindingCalled
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#event-bindingCalled"
+             class="permalink"
+             data-slug="Runtime.bindingCalled"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Notification is issued every time when binding is called.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          payload
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          executionContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ExecutionContextId class="param-type">ExecutionContextId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the context where the call was made.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="types">Types</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="type-CallArgument">
+          <span class="domain-dot">Runtime.</span>CallArgument
+          
+          <a href="#type-CallArgument"
+             class="permalink"
+             data-slug="Runtime.CallArgument"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Represents function call argument. Either remote object id <code>objectId</code>, primitive <code>value</code>,
+unserializable primitive value or neither of (for undefined) them should be specified.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          value
+        </dt>
+        <dd>
+          <span class="param-type">any</span>
+          
+      <div class="details-description">
+        <p>Primitive value or serializable javascript object.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          unserializableValue
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-UnserializableValue class="param-type">UnserializableValue</a>
+          
+      <div class="details-description">
+        <p>Primitive value which can not be JSON-stringified.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          objectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObjectId class="param-type">RemoteObjectId</a>
+          
+      <div class="details-description">
+        <p>Remote object handle.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-CallFrame">
+          <span class="domain-dot">Runtime.</span>CallFrame
+          
+          <a href="#type-CallFrame"
+             class="permalink"
+             data-slug="Runtime.CallFrame"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Stack entry for runtime errors and assertions.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          functionName
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>JavaScript function name.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          scriptId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ScriptId class="param-type">ScriptId</a>
+          
+      <div class="details-description">
+        <p>JavaScript script id.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>JavaScript script name or url.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          lineNumber
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>JavaScript script line number (0-based).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          columnNumber
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>JavaScript script column number (0-based).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-DeepSerializedValue">
+          <span class="domain-dot">Runtime.</span>DeepSerializedValue
+          
+          <a href="#type-DeepSerializedValue"
+             class="permalink"
+             data-slug="Runtime.DeepSerializedValue"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Represents deep serialized value.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          type
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>undefined</code>, <code>null</code>, <code>string</code>, <code>number</code>, <code>boolean</code>, <code>bigint</code>, <code>regexp</code>, <code>date</code>, <code>symbol</code>, <code>array</code>, <code>object</code>, <code>function</code>, <code>map</code>, <code>set</code>, <code>weakmap</code>, <code>weakset</code>, <code>error</code>, <code>proxy</code>, <code>promise</code>, <code>typedarray</code>, <code>arraybuffer</code>, <code>node</code>, <code>window</code>, <code>generator</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          value
+        </dt>
+        <dd>
+          <span class="param-type">any</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          objectId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          weakLocalObjectReference
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Set if value reference met more then once during serialization. In such
+case, value is provided only to one of the serialized values. Unique
+per value in the scope of one CDP call.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ExceptionDetails">
+          <span class="domain-dot">Runtime.</span>ExceptionDetails
+          
+          <a href="#type-ExceptionDetails"
+             class="permalink"
+             data-slug="Runtime.ExceptionDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Detailed information about exception (or error) that was thrown during script compilation or
+execution.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          exceptionId
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Exception id.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          text
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Exception text, which should be used together with exception object when available.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          lineNumber
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Line number of the exception location (0-based).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          columnNumber
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Column number of the exception location (0-based).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          scriptId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ScriptId class="param-type">ScriptId</a>
+          
+      <div class="details-description">
+        <p>Script ID of the exception location.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>URL of the exception location, to be used when the script was not reported.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          stackTrace
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-StackTrace class="param-type">StackTrace</a>
+          
+      <div class="details-description">
+        <p>JavaScript stack trace if available.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          exception
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObject class="param-type">RemoteObject</a>
+          
+      <div class="details-description">
+        <p>Exception object if available.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          executionContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ExecutionContextId class="param-type">ExecutionContextId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the context where exception happened.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          exceptionMetaData
+        </dt>
+        <dd>
+          <span class="param-type">object</span>
+          
+      <div class="details-description">
+        <p>Dictionary with entries of meta data that the client associated
+with this exception, such as information about associated network
+requests, etc.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ExecutionContextDescription">
+          <span class="domain-dot">Runtime.</span>ExecutionContextDescription
+          
+          <a href="#type-ExecutionContextDescription"
+             class="permalink"
+             data-slug="Runtime.ExecutionContextDescription"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Description of an isolated world.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          id
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ExecutionContextId class="param-type">ExecutionContextId</a>
+          
+      <div class="details-description">
+        <p>Unique id of the execution context. It can be used to specify in which execution context
+script evaluation should be performed.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          origin
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Execution context origin.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Human readable name describing given context.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          uniqueId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>A system-unique execution context identifier. Unlike the id, this is unique across
+multiple processes, so can be reliably used to identify specific context while backend
+performs a cross-process navigation.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          auxData
+        </dt>
+        <dd>
+          <span class="param-type">object</span>
+          
+      <div class="details-description">
+        <p>Embedder-specific auxiliary data likely matching {isDefault: boolean, type: &#39;default&#39;|&#39;isolated&#39;|&#39;worker&#39;, frameId: string}</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ExecutionContextId">
+          <span class="domain-dot">Runtime.</span>ExecutionContextId
+          
+          <a href="#type-ExecutionContextId"
+             class="permalink"
+             data-slug="Runtime.ExecutionContextId"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Id of an execution context.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>integer</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-InternalPropertyDescriptor">
+          <span class="domain-dot">Runtime.</span>InternalPropertyDescriptor
+          
+          <a href="#type-InternalPropertyDescriptor"
+             class="permalink"
+             data-slug="Runtime.InternalPropertyDescriptor"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Object internal property descriptor. This property isn&#39;t normally visible in JavaScript code.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Conventional property name.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          value
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObject class="param-type">RemoteObject</a>
+          
+      <div class="details-description">
+        <p>The value associated with the property.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-PropertyDescriptor">
+          <span class="domain-dot">Runtime.</span>PropertyDescriptor
+          
+          <a href="#type-PropertyDescriptor"
+             class="permalink"
+             data-slug="Runtime.PropertyDescriptor"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Object property descriptor.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Property name or symbol description.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          value
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObject class="param-type">RemoteObject</a>
+          
+      <div class="details-description">
+        <p>The value associated with the property.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          writable
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True if the value associated with the property may be changed (data descriptors only).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          get
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObject class="param-type">RemoteObject</a>
+          
+      <div class="details-description">
+        <p>A function which serves as a getter for the property, or <code>undefined</code> if there is no getter
+(accessor descriptors only).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          set
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObject class="param-type">RemoteObject</a>
+          
+      <div class="details-description">
+        <p>A function which serves as a setter for the property, or <code>undefined</code> if there is no setter
+(accessor descriptors only).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          configurable
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True if the type of this property descriptor may be changed and if the property may be
+deleted from the corresponding object.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          enumerable
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True if this property shows up during enumeration of the properties on the corresponding
+object.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          wasThrown
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True if the result was thrown during the evaluation.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          isOwn
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True if the property is owned for the object.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          symbol
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObject class="param-type">RemoteObject</a>
+          
+      <div class="details-description">
+        <p>Property symbol object, if the property is of the <code>symbol</code> type.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-RemoteObject">
+          <span class="domain-dot">Runtime.</span>RemoteObject
+          
+          <a href="#type-RemoteObject"
+             class="permalink"
+             data-slug="Runtime.RemoteObject"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Mirror object referencing original JavaScript object.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          type
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Object type.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>object</code>, <code>function</code>, <code>undefined</code>, <code>string</code>, <code>number</code>, <code>boolean</code>, <code>symbol</code>, <code>bigint</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          subtype
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Object subtype hint. Specified for <code>object</code> type values only.
+NOTE: If you change anything here, make sure to also update
+<code>subtype</code> in <code>ObjectPreview</code> and <code>PropertyPreview</code> below.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>array</code>, <code>null</code>, <code>node</code>, <code>regexp</code>, <code>date</code>, <code>map</code>, <code>set</code>, <code>weakmap</code>, <code>weakset</code>, <code>iterator</code>, <code>generator</code>, <code>error</code>, <code>proxy</code>, <code>promise</code>, <code>typedarray</code>, <code>arraybuffer</code>, <code>dataview</code>, <code>webassemblymemory</code>, <code>wasmvalue</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          className
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Object class (constructor) name. Specified for <code>object</code> type values only.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          value
+        </dt>
+        <dd>
+          <span class="param-type">any</span>
+          
+      <div class="details-description">
+        <p>Remote object value in case of primitive values or JSON values (if it was requested).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          unserializableValue
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-UnserializableValue class="param-type">UnserializableValue</a>
+          
+      <div class="details-description">
+        <p>Primitive value which can not be JSON-stringified does not have <code>value</code>, but gets this
+property.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          description
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>String representation of the object.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          deepSerializedValue
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-DeepSerializedValue class="param-type">DeepSerializedValue</a>
+          
+      <div class="details-description">
+        <p>Deep serialized value.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          objectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObjectId class="param-type">RemoteObjectId</a>
+          
+      <div class="details-description">
+        <p>Unique object identifier (for non-primitive values).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          preview
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ObjectPreview class="param-type">ObjectPreview</a>
+          
+      <div class="details-description">
+        <p>Preview containing abbreviated property values. Specified for <code>object</code> type values only.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          customPreview
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-CustomPreview class="param-type">CustomPreview</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-RemoteObjectId">
+          <span class="domain-dot">Runtime.</span>RemoteObjectId
+          
+          <a href="#type-RemoteObjectId"
+             class="permalink"
+             data-slug="Runtime.RemoteObjectId"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Unique object identifier.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ScriptId">
+          <span class="domain-dot">Runtime.</span>ScriptId
+          
+          <a href="#type-ScriptId"
+             class="permalink"
+             data-slug="Runtime.ScriptId"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Unique script identifier.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-SerializationOptions">
+          <span class="domain-dot">Runtime.</span>SerializationOptions
+          
+          <a href="#type-SerializationOptions"
+             class="permalink"
+             data-slug="Runtime.SerializationOptions"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Represents options for serialization. Overrides <code>generatePreview</code> and <code>returnByValue</code>.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          serialization
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>deep</code>, <code>json</code>, <code>idOnly</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          maxDepth
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Deep serialization depth. Default is full depth. Respected only in <code>deep</code> serialization mode.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          additionalParameters
+        </dt>
+        <dd>
+          <span class="param-type">object</span>
+          
+      <div class="details-description">
+        <p>Embedder-specific parameters. For example if connected to V8 in Chrome these control DOM
+serialization via <code>maxNodeDepth: integer</code> and <code>includeShadowTree: &quot;none&quot; | &quot;open&quot; | &quot;all&quot;</code>.
+Values can be only of type string or integer.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-StackTrace">
+          <span class="domain-dot">Runtime.</span>StackTrace
+          
+          <a href="#type-StackTrace"
+             class="permalink"
+             data-slug="Runtime.StackTrace"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Call frames for assertions or error messages.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          description
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>String label of this stack trace. For async traces this may be a name of the function that
+initiated the async call.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          callFrames
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Runtime/#type-CallFrame class="param-type">CallFrame</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>JavaScript function name.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          parent
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-StackTrace class="param-type">StackTrace</a>
+          
+      <div class="details-description">
+        <p>Asynchronous JavaScript stack trace that preceded this stack, if available.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          parentId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-StackTraceId class="param-type">StackTraceId</a>
+          
+      <div class="details-description">
+        <p>Asynchronous JavaScript stack trace that preceded this stack, if available.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-TimeDelta">
+          <span class="domain-dot">Runtime.</span>TimeDelta
+          
+          <a href="#type-TimeDelta"
+             class="permalink"
+             data-slug="Runtime.TimeDelta"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Number of milliseconds.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>number</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-Timestamp">
+          <span class="domain-dot">Runtime.</span>Timestamp
+          
+          <a href="#type-Timestamp"
+             class="permalink"
+             data-slug="Runtime.Timestamp"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Number of milliseconds since epoch.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>number</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-UnserializableValue">
+          <span class="domain-dot">Runtime.</span>UnserializableValue
+          
+          <a href="#type-UnserializableValue"
+             class="permalink"
+             data-slug="Runtime.UnserializableValue"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Primitive value which cannot be JSON-stringified. Includes values <code>-0</code>, <code>NaN</code>, <code>Infinity</code>,
+<code>-Infinity</code>, and bigint literals.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-CustomPreview">
+          <span class="domain-dot">Runtime.</span>CustomPreview
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#type-CustomPreview"
+             class="permalink"
+             data-slug="Runtime.CustomPreview"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          header
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The JSON-stringified result of formatter.header(object, config) call.
+It contains json ML array that represents RemoteObject.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          bodyGetterId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObjectId class="param-type">RemoteObjectId</a>
+          
+      <div class="details-description">
+        <p>If formatter returns true as a result of formatter.hasBody call then bodyGetterId will
+contain RemoteObjectId for the function that returns result of formatter.body(object, config) call.
+The result value is json ML array.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-EntryPreview">
+          <span class="domain-dot">Runtime.</span>EntryPreview
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#type-EntryPreview"
+             class="permalink"
+             data-slug="Runtime.EntryPreview"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          key
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ObjectPreview class="param-type">ObjectPreview</a>
+          
+      <div class="details-description">
+        <p>Preview of the key. Specified for map-like collection entries.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          value
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ObjectPreview class="param-type">ObjectPreview</a>
+          
+      <div class="details-description">
+        <p>Preview of the value.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ObjectPreview">
+          <span class="domain-dot">Runtime.</span>ObjectPreview
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#type-ObjectPreview"
+             class="permalink"
+             data-slug="Runtime.ObjectPreview"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Object containing abbreviated remote object value.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          type
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Object type.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>object</code>, <code>function</code>, <code>undefined</code>, <code>string</code>, <code>number</code>, <code>boolean</code>, <code>symbol</code>, <code>bigint</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          subtype
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Object subtype hint. Specified for <code>object</code> type values only.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>array</code>, <code>null</code>, <code>node</code>, <code>regexp</code>, <code>date</code>, <code>map</code>, <code>set</code>, <code>weakmap</code>, <code>weakset</code>, <code>iterator</code>, <code>generator</code>, <code>error</code>, <code>proxy</code>, <code>promise</code>, <code>typedarray</code>, <code>arraybuffer</code>, <code>dataview</code>, <code>webassemblymemory</code>, <code>wasmvalue</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          description
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>String representation of the object.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          overflow
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True iff some of the properties or entries of the original object did not fit.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          properties
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Runtime/#type-PropertyPreview class="param-type">PropertyPreview</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>List of the properties.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          entries
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Runtime/#type-EntryPreview class="param-type">EntryPreview</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>List of the entries. Specified for <code>map</code> and <code>set</code> subtype values only.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-PrivatePropertyDescriptor">
+          <span class="domain-dot">Runtime.</span>PrivatePropertyDescriptor
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#type-PrivatePropertyDescriptor"
+             class="permalink"
+             data-slug="Runtime.PrivatePropertyDescriptor"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Object private field descriptor.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Private property name.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          value
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObject class="param-type">RemoteObject</a>
+          
+      <div class="details-description">
+        <p>The value associated with the private property.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          get
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObject class="param-type">RemoteObject</a>
+          
+      <div class="details-description">
+        <p>A function which serves as a getter for the private property,
+or <code>undefined</code> if there is no getter (accessor descriptors only).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          set
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObject class="param-type">RemoteObject</a>
+          
+      <div class="details-description">
+        <p>A function which serves as a setter for the private property,
+or <code>undefined</code> if there is no setter (accessor descriptors only).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-PropertyPreview">
+          <span class="domain-dot">Runtime.</span>PropertyPreview
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#type-PropertyPreview"
+             class="permalink"
+             data-slug="Runtime.PropertyPreview"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Property name.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          type
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Object type. Accessor means that the property itself is an accessor property.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>object</code>, <code>function</code>, <code>undefined</code>, <code>string</code>, <code>number</code>, <code>boolean</code>, <code>symbol</code>, <code>accessor</code>, <code>bigint</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          value
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>User-friendly property value string.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          valuePreview
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-ObjectPreview class="param-type">ObjectPreview</a>
+          
+      <div class="details-description">
+        <p>Nested value preview.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          subtype
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Object subtype hint. Specified for <code>object</code> type values only.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>array</code>, <code>null</code>, <code>node</code>, <code>regexp</code>, <code>date</code>, <code>map</code>, <code>set</code>, <code>weakmap</code>, <code>weakset</code>, <code>iterator</code>, <code>generator</code>, <code>error</code>, <code>proxy</code>, <code>promise</code>, <code>typedarray</code>, <code>arraybuffer</code>, <code>dataview</code>, <code>webassemblymemory</code>, <code>wasmvalue</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-StackTraceId">
+          <span class="domain-dot">Runtime.</span>StackTraceId
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#type-StackTraceId"
+             class="permalink"
+             data-slug="Runtime.StackTraceId"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>If <code>debuggerId</code> is set stack trace comes from another debugger and can be resolved there. This
+allows to track cross-debugger calls. See <code>Runtime.StackTrace</code> and <code>Debugger.paused</code> for usages.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          id
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          debuggerId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-UniqueDebuggerId class="param-type">UniqueDebuggerId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-UniqueDebuggerId">
+          <span class="domain-dot">Runtime.</span>UniqueDebuggerId
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#type-UniqueDebuggerId"
+             class="permalink"
+             data-slug="Runtime.UniqueDebuggerId"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Unique identifier of current debugger.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      </div>
+    
+    </div>
+    
+      </div>
+    </section>
+  </main>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60854461-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>

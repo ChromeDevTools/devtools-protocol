@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Chrome DevTools Protocol - version 1-3 - Target domain" />
+  <link rel="icon" type="image/png" href="/devtools-protocol/images/logo.png" />
+    <title>Chrome DevTools Protocol - version 1-3 - Target domain</title>
+
+  <meta name="theme-color" content="#303F9F" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@chromedevtools" />
+  <meta name="twitter:creator" content="@chromedevtools" />
+  <meta property="og:title" content="Chrome DevTools Protocol" />
+  <meta property="og:image" content="https://developers.google.com/web/tools/images/chrome-devtools-16x9_720.png" />
+    <meta property="og:description" content="Chrome DevTools Protocol - version 1-3 - Target domain" />
+
+  <script type="module" src="/devtools-protocol/scripts/index.js"></script>
+  <link href="/devtools-protocol/styles/protocol.css" rel="stylesheet">
+</head>
+<body>
+  <aside>
+    <div id="home" class="navs">
+      <nav>
+        <a href="/devtools-protocol/">Home</a>
+        <button class="aside-close-button" aria-label="Close navigation">x</button>
+      </nav>
+    </div>
+    <div id="versions" class="navs">
+      <header>Versions</header>
+      <nav>
+        <a href="/devtools-protocol/tot" name="tot">
+          latest (tip-of-tree)
+        </a>
+        <a href="/devtools-protocol/v8" name="v8">
+          v8-inspector (node)
+        </a>
+        <a href="/devtools-protocol/1-3" name="1-3">
+          stable (1.3)
+        </a><!-- 
+        <a href="/devtools-protocol/1-2" name="1-2">
+          stable (1.2)
+        </a> -->
+      </nav>
+    </div>
+
+    <div id="domains" class="navs version-1-3">
+      <header>Domains</header>
+      <div class="scroller">
+        <nav>
+          <a href="/devtools-protocol/1-3/Accessibility" class="tot experimental">Accessibility</a>
+          <a href="/devtools-protocol/1-3/Animation" class="tot experimental">Animation</a>
+          <a href="/devtools-protocol/1-3/Audits" class="tot experimental">Audits</a>
+          <a href="/devtools-protocol/1-3/Autofill" class="tot experimental">Autofill</a>
+          <a href="/devtools-protocol/1-3/BackgroundService" class="tot experimental">BackgroundService</a>
+          <a href="/devtools-protocol/1-3/Browser" class="tot 1-3">Browser</a>
+          <a href="/devtools-protocol/1-3/CacheStorage" class="tot experimental">CacheStorage</a>
+          <a href="/devtools-protocol/1-3/Cast" class="tot experimental">Cast</a>
+          <a href="/devtools-protocol/1-3/Console" class="tot deprecated v8">Console</a>
+          <a href="/devtools-protocol/1-3/CSS" class="tot experimental">CSS</a>
+          <a href="/devtools-protocol/1-3/Database" class="tot experimental">Database</a>
+          <a href="/devtools-protocol/1-3/Debugger" class="tot 1-2 1-3 v8">Debugger</a>
+          <a href="/devtools-protocol/1-3/DeviceAccess" class="tot experimental">DeviceAccess</a>
+          <a href="/devtools-protocol/1-3/DeviceOrientation" class="tot experimental">DeviceOrientation</a>
+          <a href="/devtools-protocol/1-3/DOM" class="tot 1-2 1-3">DOM</a>
+          <a href="/devtools-protocol/1-3/DOMDebugger" class="tot 1-2 1-3">DOMDebugger</a>
+          <a href="/devtools-protocol/1-3/DOMSnapshot" class="tot experimental">DOMSnapshot</a>
+          <a href="/devtools-protocol/1-3/DOMStorage" class="tot experimental">DOMStorage</a>
+          <a href="/devtools-protocol/1-3/Emulation" class="tot 1-2 1-3">Emulation</a>
+          <a href="/devtools-protocol/1-3/EventBreakpoints" class="tot experimental">EventBreakpoints</a>
+          <a href="/devtools-protocol/1-3/Extensions" class="tot experimental">Extensions</a>
+          <a href="/devtools-protocol/1-3/FedCm" class="tot experimental">FedCm</a>
+          <a href="/devtools-protocol/1-3/Fetch" class="tot 1-3">Fetch</a>
+          <a href="/devtools-protocol/1-3/HeadlessExperimental" class="tot experimental">HeadlessExperimental</a>
+          <a href="/devtools-protocol/1-3/HeapProfiler" class="tot experimental v8">HeapProfiler</a>
+          <a href="/devtools-protocol/1-3/IndexedDB" class="tot experimental">IndexedDB</a>
+          <a href="/devtools-protocol/1-3/Input" class="tot 1-2 1-3">Input</a>
+          <a href="/devtools-protocol/1-3/Inspector" class="tot experimental">Inspector</a>
+          <a href="/devtools-protocol/1-3/IO" class="tot 1-3">IO</a>
+          <a href="/devtools-protocol/1-3/LayerTree" class="tot experimental">LayerTree</a>
+          <a href="/devtools-protocol/1-3/Log" class="tot 1-3">Log</a>
+          <a href="/devtools-protocol/1-3/Media" class="tot experimental">Media</a>
+          <a href="/devtools-protocol/1-3/Memory" class="tot experimental">Memory</a>
+          <a href="/devtools-protocol/1-3/Network" class="tot 1-2 1-3">Network</a>
+          <a href="/devtools-protocol/1-3/Overlay" class="tot experimental">Overlay</a>
+          <a href="/devtools-protocol/1-3/Page" class="tot 1-2 1-3">Page</a>
+          <a href="/devtools-protocol/1-3/Performance" class="tot 1-3">Performance</a>
+          <a href="/devtools-protocol/1-3/PerformanceTimeline" class="tot experimental">PerformanceTimeline</a>
+          <a href="/devtools-protocol/1-3/Preload" class="tot experimental">Preload</a>
+          <a href="/devtools-protocol/1-3/Profiler" class="tot 1-2 1-3 v8">Profiler</a>
+          <a href="/devtools-protocol/1-3/Runtime" class="tot 1-2 1-3 v8">Runtime</a>
+          <a href="/devtools-protocol/1-3/Schema" class="tot deprecated 1-2 v8">Schema</a>
+          <a href="/devtools-protocol/1-3/Security" class="tot 1-3">Security</a>
+          <a href="/devtools-protocol/1-3/ServiceWorker" class="tot experimental">ServiceWorker</a>
+          <a href="/devtools-protocol/1-3/Storage" class="tot experimental">Storage</a>
+          <a href="/devtools-protocol/1-3/SystemInfo" class="tot experimental">SystemInfo</a>
+          <a href="/devtools-protocol/1-3/Target" class="tot 1-3">Target</a>
+          <a href="/devtools-protocol/1-3/Tethering" class="tot experimental">Tethering</a>
+          <a href="/devtools-protocol/1-3/Tracing" class="tot experimental">Tracing</a>
+          <a href="/devtools-protocol/1-3/WebAudio" class="tot experimental">WebAudio</a>
+          <a href="/devtools-protocol/1-3/WebAuthn" class="tot experimental">WebAuthn</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <h1>Chrome DevTools Protocol</h1>
+      <button class="menu-link">Navigation</button>
+      <cr-search-control base-url="/devtools-protocol/" protocol-search-index="/search_index/1-3.json"></cr-search-control>
+    </header>
+    <section>
+      <div class="main-content-section domain">
+        
+    <div class="domain-section">
+      <div id="header">
+        <h2 class="heading">Target Domain</h2>
+        
+      <div class="details-description">
+        <p>Supports additional targets discovery and allows to attach to them.</p>
+
+        
+      </div>
+    
+        
+        <h3>Methods</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#method-activateTarget"><span class="domain-dot">Target.</span>activateTarget</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-attachToTarget"><span class="domain-dot">Target.</span>attachToTarget</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-closeTarget"><span class="domain-dot">Target.</span>closeTarget</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-createBrowserContext"><span class="domain-dot">Target.</span>createBrowserContext</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-createTarget"><span class="domain-dot">Target.</span>createTarget</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-detachFromTarget"><span class="domain-dot">Target.</span>detachFromTarget</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-disposeBrowserContext"><span class="domain-dot">Target.</span>disposeBrowserContext</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getBrowserContexts"><span class="domain-dot">Target.</span>getBrowserContexts</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getTargets"><span class="domain-dot">Target.</span>getTargets</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setAutoAttach"><span class="domain-dot">Target.</span>setAutoAttach</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setDiscoverTargets"><span class="domain-dot">Target.</span>setDiscoverTargets</a>
+        
+      </div>
+      
+        <h3>Events</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#event-receivedMessageFromTarget"><span class="domain-dot">Target.</span>receivedMessageFromTarget</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-targetCrashed"><span class="domain-dot">Target.</span>targetCrashed</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-targetCreated"><span class="domain-dot">Target.</span>targetCreated</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-targetDestroyed"><span class="domain-dot">Target.</span>targetDestroyed</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-targetInfoChanged"><span class="domain-dot">Target.</span>targetInfoChanged</a>
+        
+      </div>
+      
+        <h3>Types</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#type-SessionID"><span class="domain-dot">Target.</span>SessionID</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-TargetID"><span class="domain-dot">Target.</span>TargetID</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-TargetInfo"><span class="domain-dot">Target.</span>TargetInfo</a>
+        
+      </div>
+      
+      </div>
+
+      
+      <h3 id="methods">Methods</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="method-activateTarget">
+          <span class="domain-dot">Target.</span>activateTarget
+          
+          <a href="#method-activateTarget"
+             class="permalink"
+             data-slug="Target.activateTarget"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Activates (focuses) the target.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          targetId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Target/#type-TargetID class="param-type">TargetID</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-attachToTarget">
+          <span class="domain-dot">Target.</span>attachToTarget
+          
+          <a href="#method-attachToTarget"
+             class="permalink"
+             data-slug="Target.attachToTarget"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Attaches to the target with given id.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          targetId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Target/#type-TargetID class="param-type">TargetID</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          flatten
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Enables &quot;flat&quot; access to the session via specifying sessionId attribute in the commands.
+We plan to make this the default, deprecate non-flattened mode,
+and eventually retire it. See crbug.com/991325.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          sessionId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Target/#type-SessionID class="param-type">SessionID</a>
+          
+      <div class="details-description">
+        <p>Id assigned to the session.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-closeTarget">
+          <span class="domain-dot">Target.</span>closeTarget
+          
+          <a href="#method-closeTarget"
+             class="permalink"
+             data-slug="Target.closeTarget"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Closes the target. If the target is a page that gets closed too.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          targetId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Target/#type-TargetID class="param-type">TargetID</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          success
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Always set to true. If an error occurs, the response indicates protocol error.</p>
+
+        
+      </div>
+    
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-createBrowserContext">
+          <span class="domain-dot">Target.</span>createBrowserContext
+          
+          <a href="#method-createBrowserContext"
+             class="permalink"
+             data-slug="Target.createBrowserContext"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Creates a new empty BrowserContext. Similar to an incognito profile but you can have more than
+one.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          disposeOnDetach
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>If specified, disposes this context when debugging session disconnects.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          proxyServer
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Proxy server, similar to the one passed to --proxy-server</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          proxyBypassList
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Proxy bypass list, similar to the one passed to --proxy-bypass-list</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          originsWithUniversalNetworkAccess
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">string</span> ]</span></span>
+          
+      <div class="details-description">
+        <p>An optional list of origins to grant unlimited cross-origin access to.
+Parts of the URL other than those constituting origin are ignored.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          browserContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Browser/#type-BrowserContextID class="param-type">Browser.BrowserContextID</a>
+          
+      <div class="details-description">
+        <p>The id of the context created.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-createTarget">
+          <span class="domain-dot">Target.</span>createTarget
+          
+          <a href="#method-createTarget"
+             class="permalink"
+             data-slug="Target.createTarget"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Creates a new page.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The initial URL the page will be navigated to. An empty string indicates about:blank.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          width
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Frame width in DIP (headless chrome only).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          height
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Frame height in DIP (headless chrome only).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          browserContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Browser/#type-BrowserContextID class="param-type">Browser.BrowserContextID</a>
+          
+      <div class="details-description">
+        <p>The browser context to create the page in.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          enableBeginFrameControl
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether BeginFrames for this target will be controlled via DevTools (headless chrome only,
+not supported on MacOS yet, false by default).</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          newWindow
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether to create a new Window or Tab (chrome-only, false by default).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          background
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether to create the target in background or foreground (chrome-only,
+false by default).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          forTab
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether to create the target of type &quot;tab&quot;.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          targetId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Target/#type-TargetID class="param-type">TargetID</a>
+          
+      <div class="details-description">
+        <p>The id of the page opened.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-detachFromTarget">
+          <span class="domain-dot">Target.</span>detachFromTarget
+          
+          <a href="#method-detachFromTarget"
+             class="permalink"
+             data-slug="Target.detachFromTarget"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Detaches session with given id.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          sessionId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Target/#type-SessionID class="param-type">SessionID</a>
+          
+      <div class="details-description">
+        <p>Session to detach.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          targetId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Target/#type-TargetID class="param-type">TargetID</a>
+          
+      <div class="details-description">
+        <p>Deprecated.</p>
+
+        
+      </div>
+    
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-disposeBrowserContext">
+          <span class="domain-dot">Target.</span>disposeBrowserContext
+          
+          <a href="#method-disposeBrowserContext"
+             class="permalink"
+             data-slug="Target.disposeBrowserContext"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Deletes a BrowserContext. All the belonging pages will be closed without calling their
+beforeunload hooks.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          browserContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Browser/#type-BrowserContextID class="param-type">Browser.BrowserContextID</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getBrowserContexts">
+          <span class="domain-dot">Target.</span>getBrowserContexts
+          
+          <a href="#method-getBrowserContexts"
+             class="permalink"
+             data-slug="Target.getBrowserContexts"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns all browser contexts created with <code>Target.createBrowserContext</code> method.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          browserContextIds
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/1-3/Browser/#type-BrowserContextID class="param-type">Browser.BrowserContextID</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>An array of browser context ids.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getTargets">
+          <span class="domain-dot">Target.</span>getTargets
+          
+          <a href="#method-getTargets"
+             class="permalink"
+             data-slug="Target.getTargets"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Retrieves a list of available targets.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          filter
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Target/#type-TargetFilter class="param-type">TargetFilter</a>
+          
+      <div class="details-description">
+        <p>Only targets matching filter will be reported. If filter is not specified
+and target discovery is currently enabled, a filter used for target discovery
+is used for consistency.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          targetInfos
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/1-3/Target/#type-TargetInfo class="param-type">TargetInfo</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>The list of targets.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setAutoAttach">
+          <span class="domain-dot">Target.</span>setAutoAttach
+          
+          <a href="#method-setAutoAttach"
+             class="permalink"
+             data-slug="Target.setAutoAttach"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Controls whether to automatically attach to new targets which are considered to be related to
+this one. When turned on, attaches to all existing related targets as well. When turned off,
+automatically detaches from all currently attached targets.
+This also clears all targets added by <code>autoAttachRelated</code> from the list of targets to watch
+for creation of related targets.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          autoAttach
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether to auto-attach to related targets.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          waitForDebuggerOnStart
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether to pause new targets when attaching to them. Use <code>Runtime.runIfWaitingForDebugger</code>
+to run paused targets.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          flatten
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Enables &quot;flat&quot; access to the session via specifying sessionId attribute in the commands.
+We plan to make this the default, deprecate non-flattened mode,
+and eventually retire it. See crbug.com/991325.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          filter
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Target/#type-TargetFilter class="param-type">TargetFilter</a>
+          
+      <div class="details-description">
+        <p>Only targets matching filter will be attached.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setDiscoverTargets">
+          <span class="domain-dot">Target.</span>setDiscoverTargets
+          
+          <a href="#method-setDiscoverTargets"
+             class="permalink"
+             data-slug="Target.setDiscoverTargets"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Controls whether to discover available targets and notify via
+<code>targetCreated/targetInfoChanged/targetDestroyed</code> events.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          discover
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether to discover available targets.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          filter
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Target/#type-TargetFilter class="param-type">TargetFilter</a>
+          
+      <div class="details-description">
+        <p>Only targets matching filter will be attached. If <code>discover</code> is false,
+<code>filter</code> must be omitted or empty.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="events">Events</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="event-receivedMessageFromTarget">
+          <span class="domain-dot">Target.</span>receivedMessageFromTarget
+          
+          <a href="#event-receivedMessageFromTarget"
+             class="permalink"
+             data-slug="Target.receivedMessageFromTarget"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Notifies about a new protocol message received from the session (as reported in
+<code>attachedToTarget</code> event).</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          sessionId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Target/#type-SessionID class="param-type">SessionID</a>
+          
+      <div class="details-description">
+        <p>Identifier of a session which sends a message.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          message
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          targetId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Target/#type-TargetID class="param-type">TargetID</a>
+          
+      <div class="details-description">
+        <p>Deprecated.</p>
+
+        
+      </div>
+    
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-targetCrashed">
+          <span class="domain-dot">Target.</span>targetCrashed
+          
+          <a href="#event-targetCrashed"
+             class="permalink"
+             data-slug="Target.targetCrashed"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Issued when a target has crashed.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          targetId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Target/#type-TargetID class="param-type">TargetID</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          status
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Termination status type.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          errorCode
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Termination error code.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-targetCreated">
+          <span class="domain-dot">Target.</span>targetCreated
+          
+          <a href="#event-targetCreated"
+             class="permalink"
+             data-slug="Target.targetCreated"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Issued when a possible inspection target is created.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          targetInfo
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Target/#type-TargetInfo class="param-type">TargetInfo</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-targetDestroyed">
+          <span class="domain-dot">Target.</span>targetDestroyed
+          
+          <a href="#event-targetDestroyed"
+             class="permalink"
+             data-slug="Target.targetDestroyed"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Issued when a target is destroyed.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          targetId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Target/#type-TargetID class="param-type">TargetID</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-targetInfoChanged">
+          <span class="domain-dot">Target.</span>targetInfoChanged
+          
+          <a href="#event-targetInfoChanged"
+             class="permalink"
+             data-slug="Target.targetInfoChanged"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Issued when some information about a target has changed. This only happens between
+<code>targetCreated</code> and <code>targetDestroyed</code>.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          targetInfo
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Target/#type-TargetInfo class="param-type">TargetInfo</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="types">Types</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="type-SessionID">
+          <span class="domain-dot">Target.</span>SessionID
+          
+          <a href="#type-SessionID"
+             class="permalink"
+             data-slug="Target.SessionID"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Unique identifier of attached debugging session.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-TargetID">
+          <span class="domain-dot">Target.</span>TargetID
+          
+          <a href="#type-TargetID"
+             class="permalink"
+             data-slug="Target.TargetID"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-TargetInfo">
+          <span class="domain-dot">Target.</span>TargetInfo
+          
+          <a href="#type-TargetInfo"
+             class="permalink"
+             data-slug="Target.TargetInfo"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          targetId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Target/#type-TargetID class="param-type">TargetID</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          type
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>List of types: <a href="https://source.chromium.org/chromium/chromium/src/+/main:content/browser/devtools/devtools_agent_host_impl.cc?ss=chromium&amp;q=f:devtools%20-f:out%20%22::kTypeTab%5B%5D%22">https://source.chromium.org/chromium/chromium/src/+/main:content/browser/devtools/devtools_agent_host_impl.cc?ss=chromium&amp;q=f:devtools%20-f:out%20%22::kTypeTab%5B%5D%22</a></p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          title
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          attached
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether the target has an attached client.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          openerId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Target/#type-TargetID class="param-type">TargetID</a>
+          
+      <div class="details-description">
+        <p>Opener target Id</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          canAccessOpener
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether the target has access to the originating window.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          openerFrameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Page/#type-FrameId class="param-type">Page.FrameId</a>
+          
+      <div class="details-description">
+        <p>Frame id of originating window (is only set if target has an opener).</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          browserContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-3/Browser/#type-BrowserContextID class="param-type">Browser.BrowserContextID</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          subtype
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Provides additional details for specific target types. For example, for
+the type of &quot;page&quot;, this may be set to &quot;prerender&quot;.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+    </div>
+    
+      </div>
+    </section>
+  </main>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60854461-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
