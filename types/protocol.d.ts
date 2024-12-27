@@ -3651,6 +3651,17 @@ export namespace Protocol {
             requestId?: Network.RequestId;
         }
 
+        export type SelectElementAccessibilityIssueReason = ('DisallowedSelectChild' | 'DisallowedOptGroupChild' | 'NonPhrasingContentOptionChild' | 'InteractiveContentOptionChild' | 'InteractiveContentLegendChild');
+
+        /**
+         * This isue warns about errors in the select element content model.
+         */
+        export interface SelectElementAccessibilityIssueDetails {
+            nodeId: DOM.BackendNodeId;
+            selectElementAccessibilityIssueReason: SelectElementAccessibilityIssueReason;
+            hasDisallowedAttributes: boolean;
+        }
+
         export type StyleSheetLoadingIssueReason = ('LateImportRule' | 'RequestFailed');
 
         /**
@@ -3697,7 +3708,7 @@ export namespace Protocol {
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'CookieDeprecationMetadataIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue' | 'PropertyRuleIssue' | 'SharedDictionaryIssue');
+        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'CookieDeprecationMetadataIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue' | 'PropertyRuleIssue' | 'SharedDictionaryIssue' | 'SelectElementAccessibilityIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3726,6 +3737,7 @@ export namespace Protocol {
             propertyRuleIssueDetails?: PropertyRuleIssueDetails;
             federatedAuthUserInfoRequestIssueDetails?: FederatedAuthUserInfoRequestIssueDetails;
             sharedDictionaryIssueDetails?: SharedDictionaryIssueDetails;
+            selectElementAccessibilityIssueDetails?: SelectElementAccessibilityIssueDetails;
         }
 
         /**
@@ -17217,6 +17229,14 @@ export namespace Protocol {
              * The initial URL the page will be navigated to. An empty string indicates about:blank.
              */
             url: string;
+            /**
+             * Frame left origin in DIP (headless chrome only).
+             */
+            left?: integer;
+            /**
+             * Frame top origin in DIP (headless chrome only).
+             */
+            top?: integer;
             /**
              * Frame width in DIP (headless chrome only).
              */
