@@ -1,7 +1,33 @@
 
 
+## Roll protocol to r1402036 — _2025-01-04T04:28:29.000Z_
+######  Diff: [`1f97d3a...a10871b`](https://github.com/ChromeDevTools/devtools-protocol/compare/1f97d3a...a10871b)
+
+```diff
+@@ browser_protocol.pdl:7639 @@ domain Network
+     returns
+       LoadNetworkResourcePageResult resource
+ 
++  # Sets Controls for third-party cookie access
++  # Page reload is required before the new cookie bahavior will be observed
++  experimental command setCookieControls
++    parameters
++      # Whether 3pc restriction is enabled.
++      boolean enableThirdPartyCookieRestriction
++
++      # Whether 3pc grace period exception should be enabled; false by default.
++      boolean disableThirdPartyCookieMetadata
++
++      # Whether 3pc heuristics exceptions should be enabled; false by default.
++      boolean disableThirdPartyCookieHeuristics
++
+ # This domain provides various functionality related to drawing atop the inspected page.
+ experimental domain Overlay
+   depends on DOM
+```
+
 ## Roll protocol to r1400418 — _2024-12-27T04:28:57.000Z_
-######  Diff: [`6abdabb...3c1e769`](https://github.com/ChromeDevTools/devtools-protocol/compare/6abdabb...3c1e769)
+######  Diff: [`6abdabb...1f97d3a`](https://github.com/ChromeDevTools/devtools-protocol/compare/6abdabb...1f97d3a)
 
 ```diff
 @@ browser_protocol.pdl:984 @@ experimental domain Audits

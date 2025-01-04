@@ -2582,6 +2582,12 @@ export namespace ProtocolProxyApi {
         loadNetworkResource(params: Protocol.Network.LoadNetworkResourceRequest): Promise<Protocol.Network.LoadNetworkResourceResponse>;
 
         /**
+         * Sets Controls for third-party cookie access
+         * Page reload is required before the new cookie bahavior will be observed
+         */
+        setCookieControls(params: Protocol.Network.SetCookieControlsRequest): Promise<void>;
+
+        /**
          * Fired when data chunk was received over the network.
          */
         on(event: 'dataReceived', listener: (params: Protocol.Network.DataReceivedEvent) => void): void;

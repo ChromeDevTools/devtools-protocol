@@ -3602,6 +3602,14 @@ export namespace ProtocolMapping {
             returnType: Protocol.Network.LoadNetworkResourceResponse;
         };
         /**
+         * Sets Controls for third-party cookie access
+         * Page reload is required before the new cookie bahavior will be observed
+         */
+        'Network.setCookieControls': {
+            paramsType: [Protocol.Network.SetCookieControlsRequest];
+            returnType: void;
+        };
+        /**
          * Disables domain notifications.
          */
         'Overlay.disable': {

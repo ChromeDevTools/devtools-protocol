@@ -2724,6 +2724,12 @@ export namespace ProtocolTestsProxyApi {
         loadNetworkResource(params: Protocol.Network.LoadNetworkResourceRequest): Promise<{id: number, result: Protocol.Network.LoadNetworkResourceResponse, sessionId: string}>;
 
         /**
+         * Sets Controls for third-party cookie access
+         * Page reload is required before the new cookie bahavior will be observed
+         */
+        setCookieControls(params: Protocol.Network.SetCookieControlsRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
          * Fired when data chunk was received over the network.
          */
         onDataReceived(listener: (event: { params: Protocol.Network.DataReceivedEvent }) => void): void;
