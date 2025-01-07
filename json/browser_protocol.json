@@ -4838,6 +4838,29 @@
                     ]
                 },
                 {
+                    "name": "getLonghandProperties",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "shorthandName",
+                            "type": "string"
+                        },
+                        {
+                            "name": "value",
+                            "type": "string"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "longhandProperties",
+                            "type": "array",
+                            "items": {
+                                "$ref": "CSSProperty"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "getInlineStylesForNode",
                     "description": "Returns the styles defined inline (explicitly in the \"style\" attribute and implicitly, using DOM\nattributes) for a DOM node identified by `nodeId`.",
                     "parameters": [
@@ -16052,7 +16075,8 @@
                                 "BadResponse",
                                 "InternalError",
                                 "UnknownError",
-                                "FulfilledLocally"
+                                "FulfilledLocally",
+                                "SiteIssuerLimit"
                             ]
                         },
                         {

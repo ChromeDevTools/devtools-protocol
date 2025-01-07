@@ -5564,6 +5564,15 @@ export namespace Protocol {
             results: string[];
         }
 
+        export interface GetLonghandPropertiesRequest {
+            shorthandName: string;
+            value: string;
+        }
+
+        export interface GetLonghandPropertiesResponse {
+            longhandProperties: CSSProperty[];
+        }
+
         export interface GetInlineStylesForNodeRequest {
             nodeId: DOM.NodeId;
         }
@@ -12703,6 +12712,7 @@ export namespace Protocol {
             InternalError = 'InternalError',
             UnknownError = 'UnknownError',
             FulfilledLocally = 'FulfilledLocally',
+            SiteIssuerLimit = 'SiteIssuerLimit',
         }
 
         /**
@@ -12718,7 +12728,7 @@ export namespace Protocol {
              * of the operation already exists und thus, the operation was abort
              * preemptively (e.g. a cache hit). (TrustTokenOperationDoneEventStatus enum)
              */
-            status: ('Ok' | 'InvalidArgument' | 'MissingIssuerKeys' | 'FailedPrecondition' | 'ResourceExhausted' | 'AlreadyExists' | 'ResourceLimited' | 'Unauthorized' | 'BadResponse' | 'InternalError' | 'UnknownError' | 'FulfilledLocally');
+            status: ('Ok' | 'InvalidArgument' | 'MissingIssuerKeys' | 'FailedPrecondition' | 'ResourceExhausted' | 'AlreadyExists' | 'ResourceLimited' | 'Unauthorized' | 'BadResponse' | 'InternalError' | 'UnknownError' | 'FulfilledLocally' | 'SiteIssuerLimit');
             type: TrustTokenOperationType;
             requestId: RequestId;
             /**

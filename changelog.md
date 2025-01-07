@@ -1,7 +1,35 @@
 
 
+## Roll protocol to r1402790 — _2025-01-07T04:28:42.000Z_
+######  Diff: [`9d48b99...efa121f`](https://github.com/ChromeDevTools/devtools-protocol/compare/9d48b99...efa121f)
+
+```diff
+@@ browser_protocol.pdl:2327 @@ experimental domain CSS
+     returns
+       array of string results
+ 
++  experimental command getLonghandProperties
++    parameters
++      string shorthandName
++      string value
++    returns
++      array of CSSProperty longhandProperties
++
+   # Returns the styles defined inline (explicitly in the "style" attribute and implicitly, using DOM
+   # attributes) for a DOM node identified by `nodeId`.
+   command getInlineStylesForNode
+@@ -7429,6 +7436,7 @@ domain Network
+         InternalError
+         UnknownError
+         FulfilledLocally
++        SiteIssuerLimit
+       TrustTokenOperationType type
+       RequestId requestId
+       # Top level origin. The context in which the operation was attempted.
+```
+
 ## Roll protocol to r1402036 — _2025-01-04T04:28:29.000Z_
-######  Diff: [`1f97d3a...a10871b`](https://github.com/ChromeDevTools/devtools-protocol/compare/1f97d3a...a10871b)
+######  Diff: [`1f97d3a...9d48b99`](https://github.com/ChromeDevTools/devtools-protocol/compare/1f97d3a...9d48b99)
 
 ```diff
 @@ browser_protocol.pdl:7639 @@ domain Network

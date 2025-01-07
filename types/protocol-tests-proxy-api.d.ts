@@ -1142,6 +1142,8 @@ export namespace ProtocolTestsProxyApi {
          */
         resolveValues(params: Protocol.CSS.ResolveValuesRequest): Promise<{id: number, result: Protocol.CSS.ResolveValuesResponse, sessionId: string}>;
 
+        getLonghandProperties(params: Protocol.CSS.GetLonghandPropertiesRequest): Promise<{id: number, result: Protocol.CSS.GetLonghandPropertiesResponse, sessionId: string}>;
+
         /**
          * Returns the styles defined inline (explicitly in the "style" attribute and implicitly, using DOM
          * attributes) for a DOM node identified by `nodeId`.

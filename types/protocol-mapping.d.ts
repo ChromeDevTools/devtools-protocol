@@ -1835,6 +1835,10 @@ export namespace ProtocolMapping {
             paramsType: [Protocol.CSS.ResolveValuesRequest];
             returnType: Protocol.CSS.ResolveValuesResponse;
         };
+        'CSS.getLonghandProperties': {
+            paramsType: [Protocol.CSS.GetLonghandPropertiesRequest];
+            returnType: Protocol.CSS.GetLonghandPropertiesResponse;
+        };
         /**
          * Returns the styles defined inline (explicitly in the "style" attribute and implicitly, using DOM
          * attributes) for a DOM node identified by `nodeId`.
