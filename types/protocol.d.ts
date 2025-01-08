@@ -3654,7 +3654,7 @@ export namespace Protocol {
         export type SelectElementAccessibilityIssueReason = ('DisallowedSelectChild' | 'DisallowedOptGroupChild' | 'NonPhrasingContentOptionChild' | 'InteractiveContentOptionChild' | 'InteractiveContentLegendChild');
 
         /**
-         * This isue warns about errors in the select element content model.
+         * This issue warns about errors in the select element content model.
          */
         export interface SelectElementAccessibilityIssueDetails {
             nodeId: DOM.BackendNodeId;
@@ -16032,7 +16032,7 @@ export namespace Protocol {
         /**
          * Enum of possible storage types.
          */
-        export type StorageType = ('appcache' | 'cookies' | 'file_systems' | 'indexeddb' | 'local_storage' | 'shader_cache' | 'websql' | 'service_workers' | 'cache_storage' | 'interest_groups' | 'shared_storage' | 'storage_buckets' | 'all' | 'other');
+        export type StorageType = ('cookies' | 'file_systems' | 'indexeddb' | 'local_storage' | 'shader_cache' | 'websql' | 'service_workers' | 'cache_storage' | 'interest_groups' | 'shared_storage' | 'storage_buckets' | 'all' | 'other');
 
         /**
          * Usage for a storage type.

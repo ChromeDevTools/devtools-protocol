@@ -1,7 +1,37 @@
 
 
+## Roll protocol to r1403386 — _2025-01-08T04:29:00.000Z_
+######  Diff: [`7757e29...7a91c3b`](https://github.com/ChromeDevTools/devtools-protocol/compare/7757e29...7a91c3b)
+
+```diff
+@@ browser_protocol.pdl:992 @@ experimental domain Audits
+       InteractiveContentOptionChild
+       InteractiveContentLegendChild
+ 
+-  # This isue warns about errors in the select element content model.
++  # This issue warns about errors in the select element content model.
+   type SelectElementAccessibilityIssueDetails extends object
+     properties
+       DOM.BackendNodeId nodeId
+       SelectElementAccessibilityIssueReason selectElementAccessibilityIssueReason
+       boolean hasDisallowedAttributes
+ 
+-
+   type StyleSheetLoadingIssueReason extends string
+     enum
+       LateImportRule
+@@ -10261,7 +10260,6 @@ experimental domain Storage
+   # Enum of possible storage types.
+   type StorageType extends string
+     enum
+-      appcache
+       cookies
+       file_systems
+       indexeddb
+```
+
 ## Roll protocol to r1402790 — _2025-01-07T04:28:42.000Z_
-######  Diff: [`9d48b99...efa121f`](https://github.com/ChromeDevTools/devtools-protocol/compare/9d48b99...efa121f)
+######  Diff: [`9d48b99...7757e29`](https://github.com/ChromeDevTools/devtools-protocol/compare/9d48b99...7757e29)
 
 ```diff
 @@ browser_protocol.pdl:2327 @@ experimental domain CSS
