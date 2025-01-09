@@ -24051,27 +24051,27 @@
                         },
                         {
                             "name": "left",
-                            "description": "Frame left origin in DIP (headless chrome only).",
+                            "description": "Frame left origin in DIP (requires newWindow to be true or headless shell).",
                             "experimental": true,
                             "optional": true,
                             "type": "integer"
                         },
                         {
                             "name": "top",
-                            "description": "Frame top origin in DIP (headless chrome only).",
+                            "description": "Frame top origin in DIP (requires newWindow to be true or headless shell).",
                             "experimental": true,
                             "optional": true,
                             "type": "integer"
                         },
                         {
                             "name": "width",
-                            "description": "Frame width in DIP (headless chrome only).",
+                            "description": "Frame width in DIP (requires newWindow to be true or headless shell).",
                             "optional": true,
                             "type": "integer"
                         },
                         {
                             "name": "height",
-                            "description": "Frame height in DIP (headless chrome only).",
+                            "description": "Frame height in DIP (requires newWindow to be true or headless shell).",
                             "optional": true,
                             "type": "integer"
                         },
@@ -24084,20 +24084,20 @@
                         },
                         {
                             "name": "enableBeginFrameControl",
-                            "description": "Whether BeginFrames for this target will be controlled via DevTools (headless chrome only,\nnot supported on MacOS yet, false by default).",
+                            "description": "Whether BeginFrames for this target will be controlled via DevTools (headless shell only,\nnot supported on MacOS yet, false by default).",
                             "experimental": true,
                             "optional": true,
                             "type": "boolean"
                         },
                         {
                             "name": "newWindow",
-                            "description": "Whether to create a new Window or Tab (chrome-only, false by default).",
+                            "description": "Whether to create a new Window or Tab (false by default, not supported by headless shell).",
                             "optional": true,
                             "type": "boolean"
                         },
                         {
                             "name": "background",
-                            "description": "Whether to create the target in background or foreground (chrome-only,\nfalse by default).",
+                            "description": "Whether to create the target in background or foreground (false by default, not supported\nby headless shell).",
                             "optional": true,
                             "type": "boolean"
                         },

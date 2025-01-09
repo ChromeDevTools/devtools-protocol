@@ -1,7 +1,45 @@
 
 
+## Roll protocol to r1403989 — _2025-01-09T04:29:04.000Z_
+######  Diff: [`d212a6d...0709f89`](https://github.com/ChromeDevTools/devtools-protocol/compare/d212a6d...0709f89)
+
+```diff
+@@ browser_protocol.pdl:11295 @@ domain Target
+     parameters
+       # The initial URL the page will be navigated to. An empty string indicates about:blank.
+       string url
+-      # Frame left origin in DIP (headless chrome only).
++      # Frame left origin in DIP (requires newWindow to be true or headless shell).
+       experimental optional integer left
+-      # Frame top origin in DIP (headless chrome only).
++      # Frame top origin in DIP (requires newWindow to be true or headless shell).
+       experimental optional integer top
+-      # Frame width in DIP (headless chrome only).
++      # Frame width in DIP (requires newWindow to be true or headless shell).
+       optional integer width
+-      # Frame height in DIP (headless chrome only).
++      # Frame height in DIP (requires newWindow to be true or headless shell).
+       optional integer height
+       # The browser context to create the page in.
+       experimental optional Browser.BrowserContextID browserContextId
+-      # Whether BeginFrames for this target will be controlled via DevTools (headless chrome only,
++      # Whether BeginFrames for this target will be controlled via DevTools (headless shell only,
+       # not supported on MacOS yet, false by default).
+       experimental optional boolean enableBeginFrameControl
+-      # Whether to create a new Window or Tab (chrome-only, false by default).
++      # Whether to create a new Window or Tab (false by default, not supported by headless shell).
+       optional boolean newWindow
+-      # Whether to create the target in background or foreground (chrome-only,
+-      # false by default).
++      # Whether to create the target in background or foreground (false by default, not supported
++      # by headless shell).
+       optional boolean background
+       # Whether to create the target of type "tab".
+       experimental optional boolean forTab
+```
+
 ## Roll protocol to r1403386 — _2025-01-08T04:29:00.000Z_
-######  Diff: [`7757e29...7a91c3b`](https://github.com/ChromeDevTools/devtools-protocol/compare/7757e29...7a91c3b)
+######  Diff: [`7757e29...d212a6d`](https://github.com/ChromeDevTools/devtools-protocol/compare/7757e29...d212a6d)
 
 ```diff
 @@ browser_protocol.pdl:992 @@ experimental domain Audits

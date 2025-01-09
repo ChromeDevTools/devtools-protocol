@@ -17255,19 +17255,19 @@ export namespace Protocol {
              */
             url: string;
             /**
-             * Frame left origin in DIP (headless chrome only).
+             * Frame left origin in DIP (requires newWindow to be true or headless shell).
              */
             left?: integer;
             /**
-             * Frame top origin in DIP (headless chrome only).
+             * Frame top origin in DIP (requires newWindow to be true or headless shell).
              */
             top?: integer;
             /**
-             * Frame width in DIP (headless chrome only).
+             * Frame width in DIP (requires newWindow to be true or headless shell).
              */
             width?: integer;
             /**
-             * Frame height in DIP (headless chrome only).
+             * Frame height in DIP (requires newWindow to be true or headless shell).
              */
             height?: integer;
             /**
@@ -17275,17 +17275,17 @@ export namespace Protocol {
              */
             browserContextId?: Browser.BrowserContextID;
             /**
-             * Whether BeginFrames for this target will be controlled via DevTools (headless chrome only,
+             * Whether BeginFrames for this target will be controlled via DevTools (headless shell only,
              * not supported on MacOS yet, false by default).
              */
             enableBeginFrameControl?: boolean;
             /**
-             * Whether to create a new Window or Tab (chrome-only, false by default).
+             * Whether to create a new Window or Tab (false by default, not supported by headless shell).
              */
             newWindow?: boolean;
             /**
-             * Whether to create the target in background or foreground (chrome-only,
-             * false by default).
+             * Whether to create the target in background or foreground (false by default, not supported
+             * by headless shell).
              */
             background?: boolean;
             /**
