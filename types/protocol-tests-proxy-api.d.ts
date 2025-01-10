@@ -52,8 +52,6 @@ export namespace ProtocolTestsProxyApi {
 
         DOMStorage: DOMStorageApi;
 
-        Database: DatabaseApi;
-
         DeviceOrientation: DeviceOrientationApi;
 
         Emulation: EmulationApi;
@@ -1951,27 +1949,6 @@ export namespace ProtocolTestsProxyApi {
         onDomStorageItemsCleared(listener: (event: { params: Protocol.DOMStorage.DomStorageItemsClearedEvent }) => void): void;
         offDomStorageItemsCleared(listener: (event: { params: Protocol.DOMStorage.DomStorageItemsClearedEvent }) => void): void;
         onceDomStorageItemsCleared(eventMatcher?: (event: { params: Protocol.DOMStorage.DomStorageItemsClearedEvent }) => boolean): Promise<{ params: Protocol.DOMStorage.DomStorageItemsClearedEvent }>;
-
-    }
-
-    export interface DatabaseApi {
-        /**
-         * Disables database tracking, prevents database events from being sent to the client.
-         */
-        disable(): Promise<{id: number, result: void, sessionId: string}>;
-
-        /**
-         * Enables database tracking, database events will now be delivered to the client.
-         */
-        enable(): Promise<{id: number, result: void, sessionId: string}>;
-
-        executeSQL(params: Protocol.Database.ExecuteSQLRequest): Promise<{id: number, result: Protocol.Database.ExecuteSQLResponse, sessionId: string}>;
-
-        getDatabaseTableNames(params: Protocol.Database.GetDatabaseTableNamesRequest): Promise<{id: number, result: Protocol.Database.GetDatabaseTableNamesResponse, sessionId: string}>;
-
-        onAddDatabase(listener: (event: { params: Protocol.Database.AddDatabaseEvent }) => void): void;
-        offAddDatabase(listener: (event: { params: Protocol.Database.AddDatabaseEvent }) => void): void;
-        onceAddDatabase(eventMatcher?: (event: { params: Protocol.Database.AddDatabaseEvent }) => boolean): Promise<{ params: Protocol.Database.AddDatabaseEvent }>;
 
     }
 

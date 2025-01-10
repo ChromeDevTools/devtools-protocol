@@ -1820,7 +1820,8 @@
                         "ReplacedByActiveMode",
                         "InvalidFieldsSpecified",
                         "RelyingPartyOriginIsOpaque",
-                        "TypeNotMatching"
+                        "TypeNotMatching",
+                        "UiDismissedNoEmbargo"
                     ]
                 },
                 {
@@ -9121,136 +9122,6 @@
                         {
                             "name": "storageId",
                             "$ref": "StorageId"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "domain": "Database",
-            "experimental": true,
-            "types": [
-                {
-                    "id": "DatabaseId",
-                    "description": "Unique identifier of Database object.",
-                    "type": "string"
-                },
-                {
-                    "id": "Database",
-                    "description": "Database object.",
-                    "type": "object",
-                    "properties": [
-                        {
-                            "name": "id",
-                            "description": "Database ID.",
-                            "$ref": "DatabaseId"
-                        },
-                        {
-                            "name": "domain",
-                            "description": "Database domain.",
-                            "type": "string"
-                        },
-                        {
-                            "name": "name",
-                            "description": "Database name.",
-                            "type": "string"
-                        },
-                        {
-                            "name": "version",
-                            "description": "Database version.",
-                            "type": "string"
-                        }
-                    ]
-                },
-                {
-                    "id": "Error",
-                    "description": "Database error.",
-                    "type": "object",
-                    "properties": [
-                        {
-                            "name": "message",
-                            "description": "Error message.",
-                            "type": "string"
-                        },
-                        {
-                            "name": "code",
-                            "description": "Error code.",
-                            "type": "integer"
-                        }
-                    ]
-                }
-            ],
-            "commands": [
-                {
-                    "name": "disable",
-                    "description": "Disables database tracking, prevents database events from being sent to the client."
-                },
-                {
-                    "name": "enable",
-                    "description": "Enables database tracking, database events will now be delivered to the client."
-                },
-                {
-                    "name": "executeSQL",
-                    "parameters": [
-                        {
-                            "name": "databaseId",
-                            "$ref": "DatabaseId"
-                        },
-                        {
-                            "name": "query",
-                            "type": "string"
-                        }
-                    ],
-                    "returns": [
-                        {
-                            "name": "columnNames",
-                            "optional": true,
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        },
-                        {
-                            "name": "values",
-                            "optional": true,
-                            "type": "array",
-                            "items": {
-                                "type": "any"
-                            }
-                        },
-                        {
-                            "name": "sqlError",
-                            "optional": true,
-                            "$ref": "Error"
-                        }
-                    ]
-                },
-                {
-                    "name": "getDatabaseTableNames",
-                    "parameters": [
-                        {
-                            "name": "databaseId",
-                            "$ref": "DatabaseId"
-                        }
-                    ],
-                    "returns": [
-                        {
-                            "name": "tableNames",
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
-                }
-            ],
-            "events": [
-                {
-                    "name": "addDatabase",
-                    "parameters": [
-                        {
-                            "name": "database",
-                            "$ref": "Database"
                         }
                     ]
                 }
@@ -17508,6 +17379,7 @@
                         "ch-ua",
                         "ch-ua-arch",
                         "ch-ua-bitness",
+                        "ch-ua-high-entropy-values",
                         "ch-ua-platform",
                         "ch-ua-model",
                         "ch-ua-mobile",

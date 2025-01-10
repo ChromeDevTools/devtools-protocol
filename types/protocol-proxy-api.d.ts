@@ -52,8 +52,6 @@ export namespace ProtocolProxyApi {
 
         DOMStorage: DOMStorageApi;
 
-        Database: DatabaseApi;
-
         DeviceOrientation: DeviceOrientationApi;
 
         Emulation: EmulationApi;
@@ -1827,25 +1825,6 @@ export namespace ProtocolProxyApi {
         on(event: 'domStorageItemUpdated', listener: (params: Protocol.DOMStorage.DomStorageItemUpdatedEvent) => void): void;
 
         on(event: 'domStorageItemsCleared', listener: (params: Protocol.DOMStorage.DomStorageItemsClearedEvent) => void): void;
-
-    }
-
-    export interface DatabaseApi {
-        /**
-         * Disables database tracking, prevents database events from being sent to the client.
-         */
-        disable(): Promise<void>;
-
-        /**
-         * Enables database tracking, database events will now be delivered to the client.
-         */
-        enable(): Promise<void>;
-
-        executeSQL(params: Protocol.Database.ExecuteSQLRequest): Promise<Protocol.Database.ExecuteSQLResponse>;
-
-        getDatabaseTableNames(params: Protocol.Database.GetDatabaseTableNamesRequest): Promise<Protocol.Database.GetDatabaseTableNamesResponse>;
-
-        on(event: 'addDatabase', listener: (params: Protocol.Database.AddDatabaseEvent) => void): void;
 
     }
 

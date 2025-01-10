@@ -1,7 +1,86 @@
 
 
+## Roll protocol to r1404580 — _2025-01-10T04:29:07.000Z_
+######  Diff: [`e2b4f4f...7e9acf8`](https://github.com/ChromeDevTools/devtools-protocol/compare/e2b4f4f...7e9acf8)
+
+```diff
+@@ browser_protocol.pdl:949 @@ experimental domain Audits
+       InvalidFieldsSpecified
+       RelyingPartyOriginIsOpaque
+       TypeNotMatching
++      UiDismissedNoEmbargo
+ 
+   type FederatedAuthUserInfoRequestIssueDetails extends object
+     properties
+@@ -4217,56 +4218,6 @@ experimental domain DOMStorage
+     parameters
+       StorageId storageId
+ 
+-experimental domain Database
+-
+-  # Unique identifier of Database object.
+-  type DatabaseId extends string
+-
+-  # Database object.
+-  type Database extends object
+-    properties
+-      # Database ID.
+-      DatabaseId id
+-      # Database domain.
+-      string domain
+-      # Database name.
+-      string name
+-      # Database version.
+-      string version
+-
+-  # Database error.
+-  type Error extends object
+-    properties
+-      # Error message.
+-      string message
+-      # Error code.
+-      integer code
+-
+-  # Disables database tracking, prevents database events from being sent to the client.
+-  command disable
+-
+-  # Enables database tracking, database events will now be delivered to the client.
+-  command enable
+-
+-  command executeSQL
+-    parameters
+-      DatabaseId databaseId
+-      string query
+-    returns
+-      optional array of string columnNames
+-      optional array of any values
+-      optional Error sqlError
+-
+-  command getDatabaseTableNames
+-    parameters
+-      DatabaseId databaseId
+-    returns
+-      array of string tableNames
+-
+-  event addDatabase
+-    parameters
+-      Database database
+-
+ experimental domain DeviceOrientation
+ 
+   # Clears the overridden Device Orientation.
+@@ -8246,6 +8197,7 @@ domain Page
+       ch-ua
+       ch-ua-arch
+       ch-ua-bitness
++      ch-ua-high-entropy-values
+       ch-ua-platform
+       ch-ua-model
+       ch-ua-mobile
+```
+
 ## Roll protocol to r1403989 — _2025-01-09T04:29:04.000Z_
-######  Diff: [`d212a6d...0709f89`](https://github.com/ChromeDevTools/devtools-protocol/compare/d212a6d...0709f89)
+######  Diff: [`d212a6d...e2b4f4f`](https://github.com/ChromeDevTools/devtools-protocol/compare/d212a6d...e2b4f4f)
 
 ```diff
 @@ browser_protocol.pdl:11295 @@ domain Target

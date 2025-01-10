@@ -3617,7 +3617,7 @@ export namespace Protocol {
          * third_party/blink/public/mojom/devtools/inspector_issue.mojom to include
          * all cases except for success.
          */
-        export type FederatedAuthRequestIssueReason = ('ShouldEmbargo' | 'TooManyRequests' | 'WellKnownHttpNotFound' | 'WellKnownNoResponse' | 'WellKnownInvalidResponse' | 'WellKnownListEmpty' | 'WellKnownInvalidContentType' | 'ConfigNotInWellKnown' | 'WellKnownTooBig' | 'ConfigHttpNotFound' | 'ConfigNoResponse' | 'ConfigInvalidResponse' | 'ConfigInvalidContentType' | 'ClientMetadataHttpNotFound' | 'ClientMetadataNoResponse' | 'ClientMetadataInvalidResponse' | 'ClientMetadataInvalidContentType' | 'IdpNotPotentiallyTrustworthy' | 'DisabledInSettings' | 'DisabledInFlags' | 'ErrorFetchingSignin' | 'InvalidSigninResponse' | 'AccountsHttpNotFound' | 'AccountsNoResponse' | 'AccountsInvalidResponse' | 'AccountsListEmpty' | 'AccountsInvalidContentType' | 'IdTokenHttpNotFound' | 'IdTokenNoResponse' | 'IdTokenInvalidResponse' | 'IdTokenIdpErrorResponse' | 'IdTokenCrossSiteIdpErrorResponse' | 'IdTokenInvalidRequest' | 'IdTokenInvalidContentType' | 'ErrorIdToken' | 'Canceled' | 'RpPageNotVisible' | 'SilentMediationFailure' | 'ThirdPartyCookiesBlocked' | 'NotSignedInWithIdp' | 'MissingTransientUserActivation' | 'ReplacedByActiveMode' | 'InvalidFieldsSpecified' | 'RelyingPartyOriginIsOpaque' | 'TypeNotMatching');
+        export type FederatedAuthRequestIssueReason = ('ShouldEmbargo' | 'TooManyRequests' | 'WellKnownHttpNotFound' | 'WellKnownNoResponse' | 'WellKnownInvalidResponse' | 'WellKnownListEmpty' | 'WellKnownInvalidContentType' | 'ConfigNotInWellKnown' | 'WellKnownTooBig' | 'ConfigHttpNotFound' | 'ConfigNoResponse' | 'ConfigInvalidResponse' | 'ConfigInvalidContentType' | 'ClientMetadataHttpNotFound' | 'ClientMetadataNoResponse' | 'ClientMetadataInvalidResponse' | 'ClientMetadataInvalidContentType' | 'IdpNotPotentiallyTrustworthy' | 'DisabledInSettings' | 'DisabledInFlags' | 'ErrorFetchingSignin' | 'InvalidSigninResponse' | 'AccountsHttpNotFound' | 'AccountsNoResponse' | 'AccountsInvalidResponse' | 'AccountsListEmpty' | 'AccountsInvalidContentType' | 'IdTokenHttpNotFound' | 'IdTokenNoResponse' | 'IdTokenInvalidResponse' | 'IdTokenIdpErrorResponse' | 'IdTokenCrossSiteIdpErrorResponse' | 'IdTokenInvalidRequest' | 'IdTokenInvalidContentType' | 'ErrorIdToken' | 'Canceled' | 'RpPageNotVisible' | 'SilentMediationFailure' | 'ThirdPartyCookiesBlocked' | 'NotSignedInWithIdp' | 'MissingTransientUserActivation' | 'ReplacedByActiveMode' | 'InvalidFieldsSpecified' | 'RelyingPartyOriginIsOpaque' | 'TypeNotMatching' | 'UiDismissedNoEmbargo');
 
         export interface FederatedAuthUserInfoRequestIssueDetails {
             federatedAuthUserInfoRequestIssueReason: FederatedAuthUserInfoRequestIssueReason;
@@ -8221,73 +8221,6 @@ export namespace Protocol {
 
         export interface DomStorageItemsClearedEvent {
             storageId: StorageId;
-        }
-    }
-
-    export namespace Database {
-
-        /**
-         * Unique identifier of Database object.
-         */
-        export type DatabaseId = string;
-
-        /**
-         * Database object.
-         */
-        export interface Database {
-            /**
-             * Database ID.
-             */
-            id: DatabaseId;
-            /**
-             * Database domain.
-             */
-            domain: string;
-            /**
-             * Database name.
-             */
-            name: string;
-            /**
-             * Database version.
-             */
-            version: string;
-        }
-
-        /**
-         * Database error.
-         */
-        export interface Error {
-            /**
-             * Error message.
-             */
-            message: string;
-            /**
-             * Error code.
-             */
-            code: integer;
-        }
-
-        export interface ExecuteSQLRequest {
-            databaseId: DatabaseId;
-            query: string;
-        }
-
-        export interface ExecuteSQLResponse {
-            columnNames?: string[];
-            values?: any[];
-            sqlError?: Error;
-        }
-
-        export interface GetDatabaseTableNamesRequest {
-            databaseId: DatabaseId;
-        }
-
-        export interface GetDatabaseTableNamesResponse {
-            tableNames: string[];
-        }
-
-        export interface AddDatabaseEvent {
-            database: Database;
         }
     }
 
@@ -13632,7 +13565,7 @@ export namespace Protocol {
          * All Permissions Policy features. This enum should match the one defined
          * in third_party/blink/renderer/core/permissions_policy/permissions_policy_features.json5.
          */
-        export type PermissionsPolicyFeature = ('accelerometer' | 'all-screens-capture' | 'ambient-light-sensor' | 'attribution-reporting' | 'autoplay' | 'bluetooth' | 'browsing-topics' | 'camera' | 'captured-surface-control' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-prefers-color-scheme' | 'ch-prefers-reduced-motion' | 'ch-prefers-reduced-transparency' | 'ch-rtt' | 'ch-save-data' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-form-factors' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'compute-pressure' | 'controlled-frame' | 'cross-origin-isolated' | 'deferred-fetch' | 'deferred-fetch-minimal' | 'digital-credentials-get' | 'direct-sockets' | 'direct-sockets-private' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'fenced-unpartitioned-storage-read' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'hid' | 'identity-credentials-get' | 'idle-detection' | 'interest-cohort' | 'join-ad-interest-group' | 'keyboard-map' | 'local-fonts' | 'magnetometer' | 'media-playback-while-not-visible' | 'microphone' | 'midi' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'popins' | 'private-aggregation' | 'private-state-token-issuance' | 'private-state-token-redemption' | 'publickey-credentials-create' | 'publickey-credentials-get' | 'run-ad-auction' | 'screen-wake-lock' | 'serial' | 'shared-autofill' | 'shared-storage' | 'shared-storage-select-url' | 'smart-card' | 'speaker-selection' | 'storage-access' | 'sub-apps' | 'sync-xhr' | 'unload' | 'usb' | 'usb-unrestricted' | 'vertical-scroll' | 'web-app-installation' | 'web-printing' | 'web-share' | 'window-management' | 'xr-spatial-tracking');
+        export type PermissionsPolicyFeature = ('accelerometer' | 'all-screens-capture' | 'ambient-light-sensor' | 'attribution-reporting' | 'autoplay' | 'bluetooth' | 'browsing-topics' | 'camera' | 'captured-surface-control' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-prefers-color-scheme' | 'ch-prefers-reduced-motion' | 'ch-prefers-reduced-transparency' | 'ch-rtt' | 'ch-save-data' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-high-entropy-values' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-form-factors' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'compute-pressure' | 'controlled-frame' | 'cross-origin-isolated' | 'deferred-fetch' | 'deferred-fetch-minimal' | 'digital-credentials-get' | 'direct-sockets' | 'direct-sockets-private' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'fenced-unpartitioned-storage-read' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'hid' | 'identity-credentials-get' | 'idle-detection' | 'interest-cohort' | 'join-ad-interest-group' | 'keyboard-map' | 'local-fonts' | 'magnetometer' | 'media-playback-while-not-visible' | 'microphone' | 'midi' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'popins' | 'private-aggregation' | 'private-state-token-issuance' | 'private-state-token-redemption' | 'publickey-credentials-create' | 'publickey-credentials-get' | 'run-ad-auction' | 'screen-wake-lock' | 'serial' | 'shared-autofill' | 'shared-storage' | 'shared-storage-select-url' | 'smart-card' | 'speaker-selection' | 'storage-access' | 'sub-apps' | 'sync-xhr' | 'unload' | 'usb' | 'usb-unrestricted' | 'vertical-scroll' | 'web-app-installation' | 'web-printing' | 'web-share' | 'window-management' | 'xr-spatial-tracking');
 
         /**
          * Reason for a permissions policy feature to be disabled.
