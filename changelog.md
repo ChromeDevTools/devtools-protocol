@@ -1,7 +1,38 @@
 
 
+## Roll protocol to r1406504 — _2025-01-15T04:28:35.000Z_
+######  Diff: [`713993e...e45a917`](https://github.com/ChromeDevTools/devtools-protocol/compare/713993e...e45a917)
+
+```diff
+@@ browser_protocol.pdl:11174 @@ domain Target
+       string host
+       integer port
+ 
++  # The state of the target window.
++  experimental type WindowState extends string
++    enum
++      normal
++      minimized
++      maximized
++      fullscreen
++
+   # Activates (focuses) the target.
+   command activateTarget
+     parameters
+@@ -11255,6 +11263,9 @@ domain Target
+       optional integer width
+       # Frame height in DIP (requires newWindow to be true or headless shell).
+       optional integer height
++      # Frame window state (requires newWindow to be true or headless shell).
++      # Default is normal.
++      optional WindowState windowState
+       # The browser context to create the page in.
+       experimental optional Browser.BrowserContextID browserContextId
+       # Whether BeginFrames for this target will be controlled via DevTools (headless shell only,
+```
+
 ## Roll protocol to r1404580 — _2025-01-10T04:29:07.000Z_
-######  Diff: [`e2b4f4f...7e9acf8`](https://github.com/ChromeDevTools/devtools-protocol/compare/e2b4f4f...7e9acf8)
+######  Diff: [`e2b4f4f...713993e`](https://github.com/ChromeDevTools/devtools-protocol/compare/e2b4f4f...713993e)
 
 ```diff
 @@ browser_protocol.pdl:949 @@ experimental domain Audits

@@ -17101,6 +17101,11 @@ export namespace Protocol {
             port: integer;
         }
 
+        /**
+         * The state of the target window.
+         */
+        export type WindowState = ('normal' | 'minimized' | 'maximized' | 'fullscreen');
+
         export interface ActivateTargetRequest {
             targetId: TargetID;
         }
@@ -17203,6 +17208,11 @@ export namespace Protocol {
              * Frame height in DIP (requires newWindow to be true or headless shell).
              */
             height?: integer;
+            /**
+             * Frame window state (requires newWindow to be true or headless shell).
+             * Default is normal.
+             */
+            windowState?: WindowState;
             /**
              * The browser context to create the page in.
              */
