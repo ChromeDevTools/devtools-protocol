@@ -3954,6 +3954,13 @@ export namespace ProtocolTestsProxyApi {
         getRelatedWebsiteSets(): Promise<{id: number, result: Protocol.Storage.GetRelatedWebsiteSetsResponse, sessionId: string}>;
 
         /**
+         * Returns the list of URLs from a page and its embedded resources that match
+         * existing grace period URL pattern rules.
+         * https://developers.google.com/privacy-sandbox/cookies/temporary-exceptions/grace-period
+         */
+        getAffectedUrlsForThirdPartyCookieMetadata(params: Protocol.Storage.GetAffectedUrlsForThirdPartyCookieMetadataRequest): Promise<{id: number, result: Protocol.Storage.GetAffectedUrlsForThirdPartyCookieMetadataResponse, sessionId: string}>;
+
+        /**
          * A cache's contents have been modified.
          */
         onCacheStorageContentUpdated(listener: (event: { params: Protocol.Storage.CacheStorageContentUpdatedEvent }) => void): void;

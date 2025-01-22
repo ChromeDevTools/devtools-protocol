@@ -1,7 +1,34 @@
 
 
+## Roll protocol to r1409451 — _2025-01-22T04:28:58.000Z_
+######  Diff: [`2ecbfaf...813414b`](https://github.com/ChromeDevTools/devtools-protocol/compare/2ecbfaf...813414b)
+
+```diff
+@@ browser_protocol.pdl:10985 @@ experimental domain Storage
+     returns
+       array of RelatedWebsiteSet sets
+ 
++  # Returns the list of URLs from a page and its embedded resources that match
++  # existing grace period URL pattern rules.
++  # https://developers.google.com/privacy-sandbox/cookies/temporary-exceptions/grace-period
++  experimental command getAffectedUrlsForThirdPartyCookieMetadata
++    parameters
++      # The URL of the page currently being visited.
++      string firstPartyUrl
++      # The list of embedded resource URLs from the page.
++      array of string thirdPartyUrls
++
++    returns
++      # Array of matching URLs. If there is a primary pattern match for the first-
++      # party URL, only the first-party URL is returned in the array.
++      array of string matchedUrls
++
+ # The SystemInfo domain defines methods and events for querying low-level system information.
+ experimental domain SystemInfo
+```
+
 ## Roll protocol to r1406504 — _2025-01-15T04:28:35.000Z_
-######  Diff: [`713993e...e45a917`](https://github.com/ChromeDevTools/devtools-protocol/compare/713993e...e45a917)
+######  Diff: [`713993e...2ecbfaf`](https://github.com/ChromeDevTools/devtools-protocol/compare/713993e...2ecbfaf)
 
 ```diff
 @@ browser_protocol.pdl:11174 @@ domain Target
