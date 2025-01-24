@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1410712 — _2025-01-24T04:28:44.000Z_
+######  Diff: [`0e9f04b...a6e673d`](https://github.com/ChromeDevTools/devtools-protocol/compare/0e9f04b...a6e673d)
+
+```diff
+@@ browser_protocol.pdl:6495 @@ domain Network
+       TopLevelStorageAccess
+       # The cookie should have been blocked by 3PCD but is exempted by the first-party URL scheme.
+       Scheme
++      # The cookie was included due to the 'allow-same-site-none-cookies' value being set in the sandboxing policy.
++      SameSiteNoneCookiesInSandbox
+ 
+   # A cookie which was not stored from a response with the corresponding reason.
+   experimental type BlockedSetCookieWithReason extends object
+```
+
 ## Roll protocol to r1409451 — _2025-01-22T04:28:58.000Z_
-######  Diff: [`2ecbfaf...813414b`](https://github.com/ChromeDevTools/devtools-protocol/compare/2ecbfaf...813414b)
+######  Diff: [`2ecbfaf...0e9f04b`](https://github.com/ChromeDevTools/devtools-protocol/compare/2ecbfaf...0e9f04b)
 
 ```diff
 @@ browser_protocol.pdl:10985 @@ experimental domain Storage
