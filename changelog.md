@@ -1,7 +1,65 @@
 
 
+## Roll protocol to r1412693 — _2025-01-29T04:28:28.000Z_
+######  Diff: [`2fe675d...19a2330`](https://github.com/ChromeDevTools/devtools-protocol/compare/2fe675d...19a2330)
+
+```diff
+@@ js_protocol.pdl:564 @@ domain Debugger
+       experimental optional array of LocationRange skipList
+ 
+   # Fired when breakpoint is resolved to an actual script and location.
+-  event breakpointResolved
++  # Deprecated in favor of `resolvedBreakpoints` in the `scriptParsed` event.
++  deprecated event breakpointResolved
+     parameters
+       # Breakpoint unique identifier.
+       BreakpointId breakpointId
+@@ -622,6 +623,13 @@ domain Debugger
+       # URL of the external symbol source.
+       optional string externalURL
+ 
++  type ResolvedBreakpoint extends object
++    properties
++      # Breakpoint unique identifier.
++      BreakpointId breakpointId
++      # Actual breakpoint location.
++      Location location
++
+   # Fired when virtual machine fails to parse the script.
+   event scriptFailedToParse
+     parameters
+@@ -706,6 +714,10 @@ domain Debugger
+       experimental optional array of Debugger.DebugSymbols debugSymbols
+       # The name the embedder supplied for this script.
+       experimental optional string embedderName
++      # The list of set breakpoints in this script if calls to `setBreakpointByUrl`
++      # matches this script's URL or hash. Clients that use this list can ignore the
++      # `breakpointResolved` event. They are equivalent.
++      experimental optional array of ResolvedBreakpoint resolvedBreakpoints
+ 
+ experimental domain HeapProfiler
+   depends on Runtime
+@@ -1560,10 +1572,14 @@ domain Runtime
+   # It is the total usage of the corresponding isolate not scoped to a particular Runtime.
+   experimental command getHeapUsage
+     returns
+-      # Used heap size in bytes.
++      # Used JavaScript heap size in bytes.
+       number usedSize
+-      # Allocated heap size in bytes.
++      # Allocated JavaScript heap size in bytes.
+       number totalSize
++      # Used size in bytes in the embedder's garbage-collected heap.
++      number embedderHeapUsedSize
++      # Size in bytes of backing storage for array buffers and external strings.
++      number backingStorageSize
+ 
+   # Returns properties of a given object. Object group of the result is inherited from the target
+   # object.
+```
+
 ## Roll protocol to r1410712 — _2025-01-24T04:28:44.000Z_
-######  Diff: [`0e9f04b...a6e673d`](https://github.com/ChromeDevTools/devtools-protocol/compare/0e9f04b...a6e673d)
+######  Diff: [`0e9f04b...2fe675d`](https://github.com/ChromeDevTools/devtools-protocol/compare/0e9f04b...2fe675d)
 
 ```diff
 @@ browser_protocol.pdl:6495 @@ domain Network

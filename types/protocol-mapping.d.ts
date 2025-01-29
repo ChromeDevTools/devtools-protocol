@@ -15,6 +15,7 @@ export namespace ProtocolMapping {
         'Console.messageAdded': [Protocol.Console.MessageAddedEvent];
         /**
          * Fired when breakpoint is resolved to an actual script and location.
+         * Deprecated in favor of `resolvedBreakpoints` in the `scriptParsed` event.
          */
         'Debugger.breakpointResolved': [Protocol.Debugger.BreakpointResolvedEvent];
         /**

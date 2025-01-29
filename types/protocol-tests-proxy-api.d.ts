@@ -344,6 +344,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when breakpoint is resolved to an actual script and location.
+         * Deprecated in favor of `resolvedBreakpoints` in the `scriptParsed` event.
          */
         onBreakpointResolved(listener: (event: { params: Protocol.Debugger.BreakpointResolvedEvent }) => void): void;
         offBreakpointResolved(listener: (event: { params: Protocol.Debugger.BreakpointResolvedEvent }) => void): void;

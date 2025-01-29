@@ -342,6 +342,7 @@ export namespace ProtocolProxyApi {
 
         /**
          * Fired when breakpoint is resolved to an actual script and location.
+         * Deprecated in favor of `resolvedBreakpoints` in the `scriptParsed` event.
          */
         on(event: 'breakpointResolved', listener: (params: Protocol.Debugger.BreakpointResolvedEvent) => void): void;
 

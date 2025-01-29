@@ -289,6 +289,17 @@ export namespace Protocol {
             externalURL?: string;
         }
 
+        export interface ResolvedBreakpoint {
+            /**
+             * Breakpoint unique identifier.
+             */
+            breakpointId: BreakpointId;
+            /**
+             * Actual breakpoint location.
+             */
+            location: Location;
+        }
+
         export const enum ContinueToLocationRequestTargetCallFrames {
             Any = 'any',
             Current = 'current',
@@ -823,6 +834,7 @@ export namespace Protocol {
 
         /**
          * Fired when breakpoint is resolved to an actual script and location.
+         * Deprecated in favor of `resolvedBreakpoints` in the `scriptParsed` event.
          */
         export interface BreakpointResolvedEvent {
             /**
@@ -1048,6 +1060,12 @@ export namespace Protocol {
              * The name the embedder supplied for this script.
              */
             embedderName?: string;
+            /**
+             * The list of set breakpoints in this script if calls to `setBreakpointByUrl`
+             * matches this script's URL or hash. Clients that use this list can ignore the
+             * `breakpointResolved` event. They are equivalent.
+             */
+            resolvedBreakpoints?: ResolvedBreakpoint[];
         }
     }
 
@@ -2318,13 +2336,21 @@ export namespace Protocol {
 
         export interface GetHeapUsageResponse {
             /**
-             * Used heap size in bytes.
+             * Used JavaScript heap size in bytes.
              */
             usedSize: number;
             /**
-             * Allocated heap size in bytes.
+             * Allocated JavaScript heap size in bytes.
              */
             totalSize: number;
+            /**
+             * Used size in bytes in the embedder's garbage-collected heap.
+             */
+            embedderHeapUsedSize: number;
+            /**
+             * Size in bytes of backing storage for array buffers and external strings.
+             */
+            backingStorageSize: number;
         }
 
         export interface GetPropertiesRequest {
