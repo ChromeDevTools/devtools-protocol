@@ -15131,6 +15131,48 @@ export namespace Protocol {
             frame: Frame;
         }
 
+        export const enum FrameStartedNavigatingEventNavigationType {
+            Reload = 'reload',
+            ReloadBypassingCache = 'reloadBypassingCache',
+            Restore = 'restore',
+            RestoreWithPost = 'restoreWithPost',
+            HistorySameDocument = 'historySameDocument',
+            HistoryDifferentDocument = 'historyDifferentDocument',
+            SameDocument = 'sameDocument',
+            DifferentDocument = 'differentDocument',
+        }
+
+        /**
+         * Fired when a navigation starts. This event is fired for both
+         * renderer-initiated and browser-initiated navigations. For renderer-initiated
+         * navigations, the event is fired after `frameRequestedNavigation`.
+         * Navigation may still be cancelled after the event is issued. Multiple events
+         * can be fired for a single navigation, for example, when a same-document
+         * navigation becomes a cross-document navigation (such as in the case of a
+         * frameset).
+         */
+        export interface FrameStartedNavigatingEvent {
+            /**
+             * ID of the frame that is being navigated.
+             */
+            frameId: FrameId;
+            /**
+             * The URL the navigation started with. The final URL can be different.
+             */
+            url: string;
+            /**
+             * Loader identifier. Even though it is present in case of same-document
+             * navigation, the previously committed loaderId would not change unless
+             * the navigation changes from a same-document to a cross-document
+             * navigation.
+             */
+            loaderId: Network.LoaderId;
+            /**
+             *  (FrameStartedNavigatingEventNavigationType enum)
+             */
+            navigationType: ('reload' | 'reloadBypassingCache' | 'restore' | 'restoreWithPost' | 'historySameDocument' | 'historyDifferentDocument' | 'sameDocument' | 'differentDocument');
+        }
+
         /**
          * Fired when a renderer-initiated navigation is requested.
          * Navigation may still be cancelled after the event is issued.

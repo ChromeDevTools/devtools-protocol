@@ -1,7 +1,48 @@
 
 
+## Roll protocol to r1413303 — _2025-01-30T04:28:44.000Z_
+######  Diff: [`c026fa6...2f92589`](https://github.com/ChromeDevTools/devtools-protocol/compare/c026fa6...2f92589)
+
+```diff
+@@ browser_protocol.pdl:9396 @@ domain Page
+ 
+   experimental event frameResized
+ 
++  # Fired when a navigation starts. This event is fired for both
++  # renderer-initiated and browser-initiated navigations. For renderer-initiated
++  # navigations, the event is fired after `frameRequestedNavigation`.
++  # Navigation may still be cancelled after the event is issued. Multiple events
++  # can be fired for a single navigation, for example, when a same-document
++  # navigation becomes a cross-document navigation (such as in the case of a
++  # frameset).
++  experimental event frameStartedNavigating
++    parameters
++      # ID of the frame that is being navigated.
++      FrameId frameId
++      # The URL the navigation started with. The final URL can be different.
++      string url
++      # Loader identifier. Even though it is present in case of same-document
++      # navigation, the previously committed loaderId would not change unless
++      # the navigation changes from a same-document to a cross-document
++      # navigation.
++      Network.LoaderId loaderId
++      enum navigationType
++        reload
++        reloadBypassingCache
++        restore
++        restoreWithPost
++        historySameDocument
++        historyDifferentDocument
++        sameDocument
++        differentDocument
++
+   # Fired when a renderer-initiated navigation is requested.
+   # Navigation may still be cancelled after the event is issued.
+   experimental event frameRequestedNavigation
+```
+
 ## Roll protocol to r1412693 — _2025-01-29T04:28:28.000Z_
-######  Diff: [`2fe675d...19a2330`](https://github.com/ChromeDevTools/devtools-protocol/compare/2fe675d...19a2330)
+######  Diff: [`2fe675d...c026fa6`](https://github.com/ChromeDevTools/devtools-protocol/compare/2fe675d...c026fa6)
 
 ```diff
 @@ js_protocol.pdl:564 @@ domain Debugger
