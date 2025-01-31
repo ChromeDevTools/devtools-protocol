@@ -5492,6 +5492,13 @@ export namespace Protocol {
              * Identifier of the frame where "via-inspector" stylesheet should be created.
              */
             frameId: Page.FrameId;
+            /**
+             * If true, creates a new stylesheet for every call. If false,
+             * returns a stylesheet previously created by a call with force=false
+             * for the frame's document if it exists or creates a new stylesheet
+             * (default: false).
+             */
+            force?: boolean;
         }
 
         export interface CreateStyleSheetResponse {

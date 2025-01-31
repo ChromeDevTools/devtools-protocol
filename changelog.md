@@ -1,7 +1,25 @@
 
 
+## Roll protocol to r1413902 — _2025-01-31T04:28:29.000Z_
+######  Diff: [`2fef0e4...f409d5c`](https://github.com/ChromeDevTools/devtools-protocol/compare/2fef0e4...f409d5c)
+
+```diff
+@@ browser_protocol.pdl:2253 @@ experimental domain CSS
+     parameters
+       # Identifier of the frame where "via-inspector" stylesheet should be created.
+       Page.FrameId frameId
++      # If true, creates a new stylesheet for every call. If false,
++      # returns a stylesheet previously created by a call with force=false
++      # for the frame's document if it exists or creates a new stylesheet
++      # (default: false).
++      optional boolean force
+     returns
+       # Identifier of the created "via-inspector" stylesheet.
+       StyleSheetId styleSheetId
+```
+
 ## Roll protocol to r1413303 — _2025-01-30T04:28:44.000Z_
-######  Diff: [`c026fa6...2f92589`](https://github.com/ChromeDevTools/devtools-protocol/compare/c026fa6...2f92589)
+######  Diff: [`c026fa6...2fef0e4`](https://github.com/ChromeDevTools/devtools-protocol/compare/c026fa6...2fef0e4)
 
 ```diff
 @@ browser_protocol.pdl:9396 @@ domain Page
