@@ -7114,7 +7114,7 @@ domain Network
     parameters
       # Request identifier.
       RequestId requestId
-      # Loader identifier. Empty string if the request is fetched from worker.
+      # Loader identifier. Empty string for a preflight request or if the request is fetched from a worker.
       LoaderId loaderId
       # URL of the document this request is loaded for.
       string documentURL
@@ -7162,7 +7162,7 @@ domain Network
     parameters
       # Request identifier.
       RequestId requestId
-      # Loader identifier. Empty string if the request is fetched from worker.
+      # Loader identifier. Empty string for a preflight request or if the request is fetched from a worker.
       LoaderId loaderId
       # Timestamp.
       MonotonicTime timestamp
