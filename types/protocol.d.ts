@@ -3865,6 +3865,13 @@ export namespace Protocol {
             id: string;
         }
 
+        export interface UninstallRequest {
+            /**
+             * Extension id.
+             */
+            id: string;
+        }
+
         export interface GetStorageItemsRequest {
             /**
              * ID of extension.

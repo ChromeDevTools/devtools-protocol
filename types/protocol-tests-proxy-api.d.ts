@@ -886,6 +886,13 @@ export namespace ProtocolTestsProxyApi {
         loadUnpacked(params: Protocol.Extensions.LoadUnpackedRequest): Promise<{id: number, result: Protocol.Extensions.LoadUnpackedResponse, sessionId: string}>;
 
         /**
+         * Uninstalls an unpacked extension (others not supported) from the profile.
+         * Available if the client is connected using the --remote-debugging-pipe flag
+         * and the --enable-unsafe-extension-debugging.
+         */
+        uninstall(params: Protocol.Extensions.UninstallRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
          * Gets data from extension storage in the given `storageArea`. If `keys` is
          * specified, these are used to filter the result.
          */

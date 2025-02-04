@@ -1,7 +1,27 @@
 
 
+## Roll protocol to r1415363 — _2025-02-04T04:28:31.000Z_
+######  Diff: [`e55a19d...212a391`](https://github.com/ChromeDevTools/devtools-protocol/compare/e55a19d...212a391)
+
+```diff
+@@ browser_protocol.pdl:1171 @@ experimental domain Extensions
+     returns
+       # Extension id.
+       string id
++  # Uninstalls an unpacked extension (others not supported) from the profile.
++  # Available if the client is connected using the --remote-debugging-pipe flag
++  # and the --enable-unsafe-extension-debugging.
++  command uninstall
++    parameters
++      # Extension id.
++      string id
+   # Gets data from extension storage in the given `storageArea`. If `keys` is
+   # specified, these are used to filter the result.
+   command getStorageItems
+```
+
 ## Roll protocol to r1413902 — _2025-01-31T04:28:29.000Z_
-######  Diff: [`2fef0e4...f409d5c`](https://github.com/ChromeDevTools/devtools-protocol/compare/2fef0e4...f409d5c)
+######  Diff: [`2fef0e4...e55a19d`](https://github.com/ChromeDevTools/devtools-protocol/compare/2fef0e4...e55a19d)
 
 ```diff
 @@ browser_protocol.pdl:2253 @@ experimental domain CSS
