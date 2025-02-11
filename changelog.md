@@ -1,7 +1,54 @@
 
 
+## Roll protocol to r1418467 — _2025-02-11T04:28:54.000Z_
+######  Diff: [`b2b5c2c...90d70ae`](https://github.com/ChromeDevTools/devtools-protocol/compare/b2b5c2c...90d70ae)
+
+```diff
+@@ browser_protocol.pdl:950 @@ experimental domain Audits
+       RelyingPartyOriginIsOpaque
+       TypeNotMatching
+       UiDismissedNoEmbargo
++      CorsError
+ 
+   type FederatedAuthUserInfoRequestIssueDetails extends object
+     properties
+@@ -8362,6 +8363,14 @@ domain Page
+       OriginTrialStatus status
+       array of OriginTrialTokenWithStatus tokensWithStatus
+ 
++  # Additional information about the frame document's security origin.
++  experimental type SecurityOriginDetails extends object
++    properties
++      # Indicates whether the frame document's security origin is one
++      # of the local hostnames (e.g. "localhost") or IP addresses (IPv4
++      # 127.0.0.0/8 or IPv6 ::1).
++      boolean isLocalhost
++
+   # Information about the Frame on the page.
+   type Frame extends object
+     properties
+@@ -8384,6 +8393,8 @@ domain Page
+       experimental string domainAndRegistry
+       # Frame document's security origin.
+       string securityOrigin
++      # Additional details about the frame document's security origin.
++      experimental optional SecurityOriginDetails securityOriginDetails
+       # Frame document's mimeType as determined by the browser.
+       string mimeType
+       # If the frame failed to load, this contains the URL that could not be loaded. Note that unlike url above, this URL may contain a fragment.
+@@ -11283,6 +11294,8 @@ domain Target
+       TargetID targetId
+       # Binding name, 'cdp' if not specified.
+       optional string bindingName
++      # If true, inherits the current root session's permissions (default: false).
++      optional boolean inheritPermissions
+ 
+   # Creates a new empty BrowserContext. Similar to an incognito profile but you can have more than
+   # one.
+```
+
 ## Roll protocol to r1415363 — _2025-02-04T04:28:31.000Z_
-######  Diff: [`e55a19d...212a391`](https://github.com/ChromeDevTools/devtools-protocol/compare/e55a19d...212a391)
+######  Diff: [`e55a19d...b2b5c2c`](https://github.com/ChromeDevTools/devtools-protocol/compare/e55a19d...b2b5c2c)
 
 ```diff
 @@ browser_protocol.pdl:1171 @@ experimental domain Extensions

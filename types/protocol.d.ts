@@ -3643,7 +3643,7 @@ export namespace Protocol {
          * third_party/blink/public/mojom/devtools/inspector_issue.mojom to include
          * all cases except for success.
          */
-        export type FederatedAuthRequestIssueReason = ('ShouldEmbargo' | 'TooManyRequests' | 'WellKnownHttpNotFound' | 'WellKnownNoResponse' | 'WellKnownInvalidResponse' | 'WellKnownListEmpty' | 'WellKnownInvalidContentType' | 'ConfigNotInWellKnown' | 'WellKnownTooBig' | 'ConfigHttpNotFound' | 'ConfigNoResponse' | 'ConfigInvalidResponse' | 'ConfigInvalidContentType' | 'ClientMetadataHttpNotFound' | 'ClientMetadataNoResponse' | 'ClientMetadataInvalidResponse' | 'ClientMetadataInvalidContentType' | 'IdpNotPotentiallyTrustworthy' | 'DisabledInSettings' | 'DisabledInFlags' | 'ErrorFetchingSignin' | 'InvalidSigninResponse' | 'AccountsHttpNotFound' | 'AccountsNoResponse' | 'AccountsInvalidResponse' | 'AccountsListEmpty' | 'AccountsInvalidContentType' | 'IdTokenHttpNotFound' | 'IdTokenNoResponse' | 'IdTokenInvalidResponse' | 'IdTokenIdpErrorResponse' | 'IdTokenCrossSiteIdpErrorResponse' | 'IdTokenInvalidRequest' | 'IdTokenInvalidContentType' | 'ErrorIdToken' | 'Canceled' | 'RpPageNotVisible' | 'SilentMediationFailure' | 'ThirdPartyCookiesBlocked' | 'NotSignedInWithIdp' | 'MissingTransientUserActivation' | 'ReplacedByActiveMode' | 'InvalidFieldsSpecified' | 'RelyingPartyOriginIsOpaque' | 'TypeNotMatching' | 'UiDismissedNoEmbargo');
+        export type FederatedAuthRequestIssueReason = ('ShouldEmbargo' | 'TooManyRequests' | 'WellKnownHttpNotFound' | 'WellKnownNoResponse' | 'WellKnownInvalidResponse' | 'WellKnownListEmpty' | 'WellKnownInvalidContentType' | 'ConfigNotInWellKnown' | 'WellKnownTooBig' | 'ConfigHttpNotFound' | 'ConfigNoResponse' | 'ConfigInvalidResponse' | 'ConfigInvalidContentType' | 'ClientMetadataHttpNotFound' | 'ClientMetadataNoResponse' | 'ClientMetadataInvalidResponse' | 'ClientMetadataInvalidContentType' | 'IdpNotPotentiallyTrustworthy' | 'DisabledInSettings' | 'DisabledInFlags' | 'ErrorFetchingSignin' | 'InvalidSigninResponse' | 'AccountsHttpNotFound' | 'AccountsNoResponse' | 'AccountsInvalidResponse' | 'AccountsListEmpty' | 'AccountsInvalidContentType' | 'IdTokenHttpNotFound' | 'IdTokenNoResponse' | 'IdTokenInvalidResponse' | 'IdTokenIdpErrorResponse' | 'IdTokenCrossSiteIdpErrorResponse' | 'IdTokenInvalidRequest' | 'IdTokenInvalidContentType' | 'ErrorIdToken' | 'Canceled' | 'RpPageNotVisible' | 'SilentMediationFailure' | 'ThirdPartyCookiesBlocked' | 'NotSignedInWithIdp' | 'MissingTransientUserActivation' | 'ReplacedByActiveMode' | 'InvalidFieldsSpecified' | 'RelyingPartyOriginIsOpaque' | 'TypeNotMatching' | 'UiDismissedNoEmbargo' | 'CorsError');
 
         export interface FederatedAuthUserInfoRequestIssueDetails {
             federatedAuthUserInfoRequestIssueReason: FederatedAuthUserInfoRequestIssueReason;
@@ -13662,6 +13662,18 @@ export namespace Protocol {
         }
 
         /**
+         * Additional information about the frame document's security origin.
+         */
+        export interface SecurityOriginDetails {
+            /**
+             * Indicates whether the frame document's security origin is one
+             * of the local hostnames (e.g. "localhost") or IP addresses (IPv4
+             * 127.0.0.0/8 or IPv6 ::1).
+             */
+            isLocalhost: boolean;
+        }
+
+        /**
          * Information about the Frame on the page.
          */
         export interface Frame {
@@ -13700,6 +13712,10 @@ export namespace Protocol {
              * Frame document's security origin.
              */
             securityOrigin: string;
+            /**
+             * Additional details about the frame document's security origin.
+             */
+            securityOriginDetails?: SecurityOriginDetails;
             /**
              * Frame document's mimeType as determined by the browser.
              */
@@ -17252,6 +17268,10 @@ export namespace Protocol {
              * Binding name, 'cdp' if not specified.
              */
             bindingName?: string;
+            /**
+             * If true, inherits the current root session's permissions (default: false).
+             */
+            inheritPermissions?: boolean;
         }
 
         export interface CreateBrowserContextRequest {
