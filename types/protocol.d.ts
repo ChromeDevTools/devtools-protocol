@@ -3677,6 +3677,19 @@ export namespace Protocol {
             requestId?: Network.RequestId;
         }
 
+        export type PartitioningBlobURLInfo = ('BlockedCrossPartitionFetching' | 'EnforceNoopenerForNavigation');
+
+        export interface PartitioningBlobURLIssueDetails {
+            /**
+             * The BlobURL that failed to load.
+             */
+            url: string;
+            /**
+             * Additional information about the Partitioning Blob URL issue.
+             */
+            partitioningBlobURLInfo: PartitioningBlobURLInfo;
+        }
+
         export type SelectElementAccessibilityIssueReason = ('DisallowedSelectChild' | 'DisallowedOptGroupChild' | 'NonPhrasingContentOptionChild' | 'InteractiveContentOptionChild' | 'InteractiveContentLegendChild');
 
         /**
@@ -3734,7 +3747,7 @@ export namespace Protocol {
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'CookieDeprecationMetadataIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue' | 'PropertyRuleIssue' | 'SharedDictionaryIssue' | 'SelectElementAccessibilityIssue');
+        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'PartitioningBlobURLIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'CookieDeprecationMetadataIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue' | 'PropertyRuleIssue' | 'SharedDictionaryIssue' | 'SelectElementAccessibilityIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3752,6 +3765,7 @@ export namespace Protocol {
             corsIssueDetails?: CorsIssueDetails;
             attributionReportingIssueDetails?: AttributionReportingIssueDetails;
             quirksModeIssueDetails?: QuirksModeIssueDetails;
+            partitioningBlobURLIssueDetails?: PartitioningBlobURLIssueDetails;
             navigatorUserAgentIssueDetails?: NavigatorUserAgentIssueDetails;
             genericIssueDetails?: GenericIssueDetails;
             deprecationIssueDetails?: DeprecationIssueDetails;

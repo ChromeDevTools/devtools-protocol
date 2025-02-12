@@ -1,7 +1,48 @@
 
 
+## Roll protocol to r1419081 — _2025-02-12T04:29:01.000Z_
+######  Diff: [`549f720...649ee91`](https://github.com/ChromeDevTools/devtools-protocol/compare/549f720...649ee91)
+
+```diff
+@@ browser_protocol.pdl:986 @@ experimental domain Audits
+       string failureMessage
+       optional Network.RequestId requestId
+ 
++  type PartitioningBlobURLInfo extends string
++    enum
++      BlockedCrossPartitionFetching
++      EnforceNoopenerForNavigation
++
++  type PartitioningBlobURLIssueDetails extends object
++    properties
++      # The BlobURL that failed to load.
++      string url
++      # Additional information about the Partitioning Blob URL issue.
++      PartitioningBlobURLInfo partitioningBlobURLInfo
++
+   type SelectElementAccessibilityIssueReason extends string
+     enum
+       DisallowedSelectChild
+@@ -1049,6 +1061,7 @@ experimental domain Audits
+       CorsIssue
+       AttributionReportingIssue
+       QuirksModeIssue
++      PartitioningBlobURLIssue
+       # Deprecated
+       NavigatorUserAgentIssue
+       GenericIssue
+@@ -1078,6 +1091,7 @@ experimental domain Audits
+       optional CorsIssueDetails corsIssueDetails
+       optional AttributionReportingIssueDetails attributionReportingIssueDetails
+       optional QuirksModeIssueDetails quirksModeIssueDetails
++      optional PartitioningBlobURLIssueDetails partitioningBlobURLIssueDetails
+       deprecated optional NavigatorUserAgentIssueDetails navigatorUserAgentIssueDetails
+       optional GenericIssueDetails genericIssueDetails
+       optional DeprecationIssueDetails deprecationIssueDetails
+```
+
 ## Roll protocol to r1418467 — _2025-02-11T04:28:54.000Z_
-######  Diff: [`b2b5c2c...90d70ae`](https://github.com/ChromeDevTools/devtools-protocol/compare/b2b5c2c...90d70ae)
+######  Diff: [`b2b5c2c...549f720`](https://github.com/ChromeDevTools/devtools-protocol/compare/b2b5c2c...549f720)
 
 ```diff
 @@ browser_protocol.pdl:950 @@ experimental domain Audits
