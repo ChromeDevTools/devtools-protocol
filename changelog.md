@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1419694 — _2025-02-13T04:29:06.000Z_
+######  Diff: [`781a465...3563808`](https://github.com/ChromeDevTools/devtools-protocol/compare/781a465...3563808)
+
+```diff
+@@ browser_protocol.pdl:12675 @@ experimental domain Preload
+       OtherPrerenderedPageActivated
+       V8OptimizerDisabled
+       PrerenderFailedDuringPrefetch
++      BrowsingDataRemoved
+ 
+   # Fired when a preload enabled state is updated.
+   event preloadEnabledStateUpdated
+```
+
 ## Roll protocol to r1419081 — _2025-02-12T04:29:01.000Z_
-######  Diff: [`549f720...649ee91`](https://github.com/ChromeDevTools/devtools-protocol/compare/549f720...649ee91)
+######  Diff: [`549f720...781a465`](https://github.com/ChromeDevTools/devtools-protocol/compare/549f720...781a465)
 
 ```diff
 @@ browser_protocol.pdl:986 @@ experimental domain Audits
