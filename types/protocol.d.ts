@@ -3475,7 +3475,7 @@ export namespace Protocol {
             frame: AffectedFrame;
         }
 
-        export type ContentSecurityPolicyViolationType = ('kInlineViolation' | 'kEvalViolation' | 'kURLViolation' | 'kTrustedTypesSinkViolation' | 'kTrustedTypesPolicyViolation' | 'kWasmEvalViolation');
+        export type ContentSecurityPolicyViolationType = ('kInlineViolation' | 'kEvalViolation' | 'kURLViolation' | 'kSRIViolation' | 'kTrustedTypesSinkViolation' | 'kTrustedTypesPolicyViolation' | 'kWasmEvalViolation');
 
         export interface SourceCodeLocation {
             scriptId?: Runtime.ScriptId;
@@ -6986,6 +6986,7 @@ export namespace Protocol {
 
         export const enum GetElementByRelationRequestRelation {
             PopoverTarget = 'PopoverTarget',
+            InterestTarget = 'InterestTarget',
         }
 
         export interface GetElementByRelationRequest {
@@ -6996,7 +6997,7 @@ export namespace Protocol {
             /**
              * Type of relation to get. (GetElementByRelationRequestRelation enum)
              */
-            relation: ('PopoverTarget');
+            relation: ('PopoverTarget' | 'InterestTarget');
         }
 
         export interface GetElementByRelationResponse {

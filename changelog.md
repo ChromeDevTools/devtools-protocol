@@ -1,7 +1,30 @@
 
 
+## Roll protocol to r1420292 — _2025-02-14T04:29:03.000Z_
+######  Diff: [`487cc35...9ee76e4`](https://github.com/ChromeDevTools/devtools-protocol/compare/487cc35...9ee76e4)
+
+```diff
+@@ browser_protocol.pdl:691 @@ experimental domain Audits
+       kInlineViolation
+       kEvalViolation
+       kURLViolation
++      kSRIViolation
+       kTrustedTypesSinkViolation
+       kTrustedTypesPolicyViolation
+       kWasmEvalViolation
+@@ -3388,6 +3389,8 @@ domain DOM
+         # Get the popover target for a given element. In this case, this given
+         # element can only be an HTMLFormControlElement (<input>, <button>).
+         PopoverTarget
++        # Get the interest target for a given element.
++        InterestTarget
+     returns
+       # NodeId of the element matching the queried relation.
+       NodeId nodeId
+```
+
 ## Roll protocol to r1419694 — _2025-02-13T04:29:06.000Z_
-######  Diff: [`781a465...3563808`](https://github.com/ChromeDevTools/devtools-protocol/compare/781a465...3563808)
+######  Diff: [`781a465...487cc35`](https://github.com/ChromeDevTools/devtools-protocol/compare/781a465...487cc35)
 
 ```diff
 @@ browser_protocol.pdl:12675 @@ experimental domain Preload
