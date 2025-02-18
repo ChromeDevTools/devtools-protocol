@@ -1,7 +1,71 @@
 
 
+## Roll protocol to r1421213 — _2025-02-18T04:29:00.000Z_
+######  Diff: [`75e6043...efe0ead`](https://github.com/ChromeDevTools/devtools-protocol/compare/75e6043...efe0ead)
+
+```diff
+@@ browser_protocol.pdl:801 @@ experimental domain Audits
+       WriteErrorTooLongIdField
+       WriteErrorUnsupportedType
+ 
++  type SRIMessageSignatureError extends string
++    enum
++      MissingSignatureHeader
++      MissingSignatureInputHeader
++      InvalidSignatureHeader
++      InvalidSignatureInputHeader
++      SignatureHeaderValueIsNotByteSequence
++      SignatureHeaderValueIsParameterized
++      SignatureHeaderValueIsIncorrectLength
++      SignatureInputHeaderMissingLabel
++      SignatureInputHeaderValueNotInnerList
++      SignatureInputHeaderValueMissingComponents
++      SignatureInputHeaderInvalidComponentType
++      SignatureInputHeaderInvalidComponentName
++      SignatureInputHeaderInvalidHeaderComponentParameter
++      SignatureInputHeaderInvalidDerivedComponentParameter
++      SignatureInputHeaderKeyIdLength
++      SignatureInputHeaderInvalidParameter
++      SignatureInputHeaderMissingRequiredParameters
++      ValidationFailedSignatureExpired
++      ValidationFailedInvalidLength
++      ValidationFailedSignatureMismatch
++
+   # Details for issues around "Attribution Reporting API" usage.
+   # Explainer: https://github.com/WICG/attribution-reporting-api
+   type AttributionReportingIssueDetails extends object
+@@ -832,6 +855,11 @@ experimental domain Audits
+       SharedDictionaryError sharedDictionaryError
+       AffectedRequest request
+ 
++  type SRIMessageSignatureIssueDetails extends object
++    properties
++      SRIMessageSignatureError error
++      AffectedRequest request
++
+   type GenericIssueErrorType extends string
+     enum
+       FormLabelForNameError
+@@ -1076,6 +1104,7 @@ experimental domain Audits
+       PropertyRuleIssue
+       SharedDictionaryIssue
+       SelectElementAccessibilityIssue
++      SRIMessageSignatureIssue
+ 
+   # This struct holds a list of optional fields with additional information
+   # specific to the kind of issue. When adding a new issue code, please also
+@@ -1105,6 +1134,7 @@ experimental domain Audits
+       optional FederatedAuthUserInfoRequestIssueDetails federatedAuthUserInfoRequestIssueDetails
+       optional SharedDictionaryIssueDetails sharedDictionaryIssueDetails
+       optional SelectElementAccessibilityIssueDetails selectElementAccessibilityIssueDetails
++      optional SRIMessageSignatureIssueDetails sriMessageSignatureIssueDetails
+ 
+   # A unique id for a DevTools inspector issue. Allows other entities (e.g.
+   # exceptions, CDP message, console messages, etc.) to reference an issue.
+```
+
 ## Roll protocol to r1420292 — _2025-02-14T04:29:03.000Z_
-######  Diff: [`487cc35...9ee76e4`](https://github.com/ChromeDevTools/devtools-protocol/compare/487cc35...9ee76e4)
+######  Diff: [`487cc35...75e6043`](https://github.com/ChromeDevTools/devtools-protocol/compare/487cc35...75e6043)
 
 ```diff
 @@ browser_protocol.pdl:691 @@ experimental domain Audits

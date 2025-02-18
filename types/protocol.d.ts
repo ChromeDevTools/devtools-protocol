@@ -3540,6 +3540,8 @@ export namespace Protocol {
 
         export type SharedDictionaryError = ('UseErrorCrossOriginNoCorsRequest' | 'UseErrorDictionaryLoadFailure' | 'UseErrorMatchingDictionaryNotUsed' | 'UseErrorUnexpectedContentDictionaryHeader' | 'WriteErrorCossOriginNoCorsRequest' | 'WriteErrorDisallowedBySettings' | 'WriteErrorExpiredResponse' | 'WriteErrorFeatureDisabled' | 'WriteErrorInsufficientResources' | 'WriteErrorInvalidMatchField' | 'WriteErrorInvalidStructuredHeader' | 'WriteErrorNavigationRequest' | 'WriteErrorNoMatchField' | 'WriteErrorNonListMatchDestField' | 'WriteErrorNonSecureContext' | 'WriteErrorNonStringIdField' | 'WriteErrorNonStringInMatchDestList' | 'WriteErrorNonStringMatchField' | 'WriteErrorNonTokenTypeField' | 'WriteErrorRequestAborted' | 'WriteErrorShuttingDown' | 'WriteErrorTooLongIdField' | 'WriteErrorUnsupportedType');
 
+        export type SRIMessageSignatureError = ('MissingSignatureHeader' | 'MissingSignatureInputHeader' | 'InvalidSignatureHeader' | 'InvalidSignatureInputHeader' | 'SignatureHeaderValueIsNotByteSequence' | 'SignatureHeaderValueIsParameterized' | 'SignatureHeaderValueIsIncorrectLength' | 'SignatureInputHeaderMissingLabel' | 'SignatureInputHeaderValueNotInnerList' | 'SignatureInputHeaderValueMissingComponents' | 'SignatureInputHeaderInvalidComponentType' | 'SignatureInputHeaderInvalidComponentName' | 'SignatureInputHeaderInvalidHeaderComponentParameter' | 'SignatureInputHeaderInvalidDerivedComponentParameter' | 'SignatureInputHeaderKeyIdLength' | 'SignatureInputHeaderInvalidParameter' | 'SignatureInputHeaderMissingRequiredParameters' | 'ValidationFailedSignatureExpired' | 'ValidationFailedInvalidLength' | 'ValidationFailedSignatureMismatch');
+
         /**
          * Details for issues around "Attribution Reporting API" usage.
          * Explainer: https://github.com/WICG/attribution-reporting-api
@@ -3574,6 +3576,11 @@ export namespace Protocol {
 
         export interface SharedDictionaryIssueDetails {
             sharedDictionaryError: SharedDictionaryError;
+            request: AffectedRequest;
+        }
+
+        export interface SRIMessageSignatureIssueDetails {
+            error: SRIMessageSignatureError;
             request: AffectedRequest;
         }
 
@@ -3747,7 +3754,7 @@ export namespace Protocol {
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'PartitioningBlobURLIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'CookieDeprecationMetadataIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue' | 'PropertyRuleIssue' | 'SharedDictionaryIssue' | 'SelectElementAccessibilityIssue');
+        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'PartitioningBlobURLIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'CookieDeprecationMetadataIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue' | 'PropertyRuleIssue' | 'SharedDictionaryIssue' | 'SelectElementAccessibilityIssue' | 'SRIMessageSignatureIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3778,6 +3785,7 @@ export namespace Protocol {
             federatedAuthUserInfoRequestIssueDetails?: FederatedAuthUserInfoRequestIssueDetails;
             sharedDictionaryIssueDetails?: SharedDictionaryIssueDetails;
             selectElementAccessibilityIssueDetails?: SelectElementAccessibilityIssueDetails;
+            sriMessageSignatureIssueDetails?: SRIMessageSignatureIssueDetails;
         }
 
         /**
