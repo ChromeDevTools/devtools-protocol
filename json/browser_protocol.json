@@ -18907,7 +18907,8 @@
                         "EmbedderExtensionMessagingForOpenPort",
                         "EmbedderExtensionSentMessageToCachedFrame",
                         "RequestedByWebViewClient",
-                        "PostMessageByWebViewClient"
+                        "PostMessageByWebViewClient",
+                        "CacheControlNoStoreDeviceBoundSessionTerminated"
                     ]
                 },
                 {

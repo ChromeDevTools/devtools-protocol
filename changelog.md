@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1422344 — _2025-02-20T04:28:59.000Z_
+######  Diff: [`90fcdd6...8e4453f`](https://github.com/ChromeDevTools/devtools-protocol/compare/90fcdd6...8e4453f)
+
+```diff
+@@ browser_protocol.pdl:9751 @@ domain Page
+       EmbedderExtensionSentMessageToCachedFrame
+       RequestedByWebViewClient
+       PostMessageByWebViewClient
++      CacheControlNoStoreDeviceBoundSessionTerminated
+ 
+   # Types of not restored reasons for back-forward cache.
+   experimental type BackForwardCacheNotRestoredReasonType extends string
+```
+
 ## Roll protocol to r1421213 — _2025-02-18T04:29:00.000Z_
-######  Diff: [`75e6043...efe0ead`](https://github.com/ChromeDevTools/devtools-protocol/compare/75e6043...efe0ead)
+######  Diff: [`75e6043...90fcdd6`](https://github.com/ChromeDevTools/devtools-protocol/compare/75e6043...90fcdd6)
 
 ```diff
 @@ browser_protocol.pdl:801 @@ experimental domain Audits
