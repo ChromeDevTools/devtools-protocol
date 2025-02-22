@@ -14467,6 +14467,14 @@ export namespace Protocol {
             url: string;
         }
 
+        export interface EnableRequest {
+            /**
+             * If true, the `Page.fileChooserOpened` event will be emitted regardless of the state set by
+             * `Page.setInterceptFileChooserDialog` command (default: false).
+             */
+            enableFileChooserOpenedEvent?: boolean;
+        }
+
         export interface GetAppManifestRequest {
             manifestId?: string;
         }

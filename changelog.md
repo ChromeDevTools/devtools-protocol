@@ -1,7 +1,24 @@
 
 
+## Roll protocol to r1423531 — _2025-02-22T04:29:31.000Z_
+######  Diff: [`43b22be...aee9a5d`](https://github.com/ChromeDevTools/devtools-protocol/compare/43b22be...aee9a5d)
+
+```diff
+@@ browser_protocol.pdl:8811 @@ domain Page
+ 
+   # Enables page domain notifications.
+   command enable
++    parameters
++      # If true, the `Page.fileChooserOpened` event will be emitted regardless of the state set by
++      # `Page.setInterceptFileChooserDialog` command (default: false).
++      experimental optional boolean enableFileChooserOpenedEvent
+ 
+   # The manifest of a webapp, see
+   # https://www.w3.org/TR/appmanifest/#dfn-manifest.
+```
+
 ## Roll protocol to r1422344 — _2025-02-20T04:28:59.000Z_
-######  Diff: [`90fcdd6...8e4453f`](https://github.com/ChromeDevTools/devtools-protocol/compare/90fcdd6...8e4453f)
+######  Diff: [`90fcdd6...43b22be`](https://github.com/ChromeDevTools/devtools-protocol/compare/90fcdd6...43b22be)
 
 ```diff
 @@ browser_protocol.pdl:9751 @@ domain Page

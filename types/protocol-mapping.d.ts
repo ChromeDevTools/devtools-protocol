@@ -3889,7 +3889,7 @@ export namespace ProtocolMapping {
          * Enables page domain notifications.
          */
         'Page.enable': {
-            paramsType: [];
+            paramsType: [Protocol.Page.EnableRequest?];
             returnType: void;
         };
         /**

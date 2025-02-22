@@ -2970,7 +2970,7 @@ export namespace ProtocolProxyApi {
         /**
          * Enables page domain notifications.
          */
-        enable(): Promise<void>;
+        enable(params: Protocol.Page.EnableRequest): Promise<void>;
 
         /**
          * Gets the processed manifest for this current document.

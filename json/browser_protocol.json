@@ -19228,7 +19228,16 @@
                 },
                 {
                     "name": "enable",
-                    "description": "Enables page domain notifications."
+                    "description": "Enables page domain notifications.",
+                    "parameters": [
+                        {
+                            "name": "enableFileChooserOpenedEvent",
+                            "description": "If true, the `Page.fileChooserOpened` event will be emitted regardless of the state set by\n`Page.setInterceptFileChooserDialog` command (default: false).",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "boolean"
+                        }
+                    ]
                 },
                 {
                     "name": "getAppManifest",

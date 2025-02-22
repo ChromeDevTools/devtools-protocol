@@ -3182,7 +3182,7 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Enables page domain notifications.
          */
-        enable(): Promise<{id: number, result: void, sessionId: string}>;
+        enable(params: Protocol.Page.EnableRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Gets the processed manifest for this current document.
