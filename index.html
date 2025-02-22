@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Chrome DevTools Protocol - version tot" />
+  <link rel="icon" type="image/png" href="/devtools-protocol/images/logo.png" />
+    <title>Chrome DevTools Protocol</title>
+
+  <meta name="theme-color" content="#303F9F" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@chromedevtools" />
+  <meta name="twitter:creator" content="@chromedevtools" />
+  <meta property="og:title" content="Chrome DevTools Protocol" />
+  <meta property="og:image" content="https://developers.google.com/web/tools/images/chrome-devtools-16x9_720.png" />
+    <meta property="og:description" content="Chrome DevTools Protocol - version tot" />
+
+  <script type="module" src="/devtools-protocol/scripts/index.js"></script>
+  <link href="/devtools-protocol/styles/protocol.css" rel="stylesheet">
+</head>
+<body>
+  <aside>
+    <div id="home" class="navs">
+      <nav>
+        <a href="/devtools-protocol/">Home</a>
+        <button class="aside-close-button" aria-label="Close navigation">x</button>
+      </nav>
+    </div>
+    <div id="versions" class="navs">
+      <header>Versions</header>
+      <nav>
+        <a href="/devtools-protocol/tot" name="tot">
+          latest (tip-of-tree)
+        </a>
+        <a href="/devtools-protocol/v8" name="v8">
+          v8-inspector (node)
+        </a>
+        <a href="/devtools-protocol/1-3" name="1-3">
+          stable (1.3)
+        </a><!-- 
+        <a href="/devtools-protocol/1-2" name="1-2">
+          stable (1.2)
+        </a> -->
+      </nav>
+    </div>
+
+    <div id="domains" class="navs version-tot">
+      <header>Domains</header>
+      <div class="scroller">
+        <nav>
+          <a href="/devtools-protocol/tot/Accessibility" class="tot experimental">Accessibility</a>
+          <a href="/devtools-protocol/tot/Animation" class="tot experimental">Animation</a>
+          <a href="/devtools-protocol/tot/Audits" class="tot experimental">Audits</a>
+          <a href="/devtools-protocol/tot/Autofill" class="tot experimental">Autofill</a>
+          <a href="/devtools-protocol/tot/BackgroundService" class="tot experimental">BackgroundService</a>
+          <a href="/devtools-protocol/tot/Browser" class="tot 1-3">Browser</a>
+          <a href="/devtools-protocol/tot/CacheStorage" class="tot experimental">CacheStorage</a>
+          <a href="/devtools-protocol/tot/Cast" class="tot experimental">Cast</a>
+          <a href="/devtools-protocol/tot/Console" class="tot deprecated v8">Console</a>
+          <a href="/devtools-protocol/tot/CSS" class="tot experimental">CSS</a>
+          <a href="/devtools-protocol/tot/Database" class="tot experimental">Database</a>
+          <a href="/devtools-protocol/tot/Debugger" class="tot 1-2 1-3 v8">Debugger</a>
+          <a href="/devtools-protocol/tot/DeviceAccess" class="tot experimental">DeviceAccess</a>
+          <a href="/devtools-protocol/tot/DeviceOrientation" class="tot experimental">DeviceOrientation</a>
+          <a href="/devtools-protocol/tot/DOM" class="tot 1-2 1-3">DOM</a>
+          <a href="/devtools-protocol/tot/DOMDebugger" class="tot 1-2 1-3">DOMDebugger</a>
+          <a href="/devtools-protocol/tot/DOMSnapshot" class="tot experimental">DOMSnapshot</a>
+          <a href="/devtools-protocol/tot/DOMStorage" class="tot experimental">DOMStorage</a>
+          <a href="/devtools-protocol/tot/Emulation" class="tot 1-2 1-3">Emulation</a>
+          <a href="/devtools-protocol/tot/EventBreakpoints" class="tot experimental">EventBreakpoints</a>
+          <a href="/devtools-protocol/tot/Extensions" class="tot experimental">Extensions</a>
+          <a href="/devtools-protocol/tot/FedCm" class="tot experimental">FedCm</a>
+          <a href="/devtools-protocol/tot/Fetch" class="tot 1-3">Fetch</a>
+          <a href="/devtools-protocol/tot/HeadlessExperimental" class="tot experimental">HeadlessExperimental</a>
+          <a href="/devtools-protocol/tot/HeapProfiler" class="tot experimental v8">HeapProfiler</a>
+          <a href="/devtools-protocol/tot/IndexedDB" class="tot experimental">IndexedDB</a>
+          <a href="/devtools-protocol/tot/Input" class="tot 1-2 1-3">Input</a>
+          <a href="/devtools-protocol/tot/Inspector" class="tot experimental">Inspector</a>
+          <a href="/devtools-protocol/tot/IO" class="tot 1-3">IO</a>
+          <a href="/devtools-protocol/tot/LayerTree" class="tot experimental">LayerTree</a>
+          <a href="/devtools-protocol/tot/Log" class="tot 1-3">Log</a>
+          <a href="/devtools-protocol/tot/Media" class="tot experimental">Media</a>
+          <a href="/devtools-protocol/tot/Memory" class="tot experimental">Memory</a>
+          <a href="/devtools-protocol/tot/Network" class="tot 1-2 1-3">Network</a>
+          <a href="/devtools-protocol/tot/Overlay" class="tot experimental">Overlay</a>
+          <a href="/devtools-protocol/tot/Page" class="tot 1-2 1-3">Page</a>
+          <a href="/devtools-protocol/tot/Performance" class="tot 1-3">Performance</a>
+          <a href="/devtools-protocol/tot/PerformanceTimeline" class="tot experimental">PerformanceTimeline</a>
+          <a href="/devtools-protocol/tot/Preload" class="tot experimental">Preload</a>
+          <a href="/devtools-protocol/tot/Profiler" class="tot 1-2 1-3 v8">Profiler</a>
+          <a href="/devtools-protocol/tot/Runtime" class="tot 1-2 1-3 v8">Runtime</a>
+          <a href="/devtools-protocol/tot/Schema" class="tot deprecated 1-2 v8">Schema</a>
+          <a href="/devtools-protocol/tot/Security" class="tot 1-3">Security</a>
+          <a href="/devtools-protocol/tot/ServiceWorker" class="tot experimental">ServiceWorker</a>
+          <a href="/devtools-protocol/tot/Storage" class="tot experimental">Storage</a>
+          <a href="/devtools-protocol/tot/SystemInfo" class="tot experimental">SystemInfo</a>
+          <a href="/devtools-protocol/tot/Target" class="tot 1-3">Target</a>
+          <a href="/devtools-protocol/tot/Tethering" class="tot experimental">Tethering</a>
+          <a href="/devtools-protocol/tot/Tracing" class="tot experimental">Tracing</a>
+          <a href="/devtools-protocol/tot/WebAudio" class="tot experimental">WebAudio</a>
+          <a href="/devtools-protocol/tot/WebAuthn" class="tot experimental">WebAuthn</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <h1>Chrome DevTools Protocol</h1>
+      <button class="menu-link">Navigation</button>
+      <cr-search-control base-url="/devtools-protocol/" protocol-search-index="/search_index/tot.json"></cr-search-control>
+    </header>
+    <section>
+      <div class="main-content-section ">
+        <p>The <b>Chrome DevTools Protocol</b> allows for tools to instrument, inspect, debug and profile Chromium, Chrome and other Blink-based browsers.
+Many existing projects <a href="https://github.com/ChromeDevTools/awesome-chrome-devtools">currently use</a> the protocol.
+The <a href="https://developers.google.com/web/tools/chrome-devtools/">Chrome DevTools</a> uses this protocol and the team maintains its API.
+<p>Instrumentation is divided into a number of domains (DOM, Debugger, Network
+etc.). Each domain defines a number of commands it supports and events it
+generates. Both commands and events are serialized JSON objects of a fixed
+structure.
+<h3>Protocol API Docs</h3>
+<p><b><a href="tot/">The latest (tip-of-tree) protocol (tot)</a></b> —
+It <a href="https://chromium.googlesource.com/chromium/src/+log/HEAD/third_party/blink/renderer/core/inspector/browser_protocol.pdl">changes frequently</a>
+and can break at any time. However it captures the full capabilities of the Protocol, whereas the stable release is a subset.
+There is no backwards compatibility support guaranteed.
+<p><b><a href="v8/">v8-inspector protocol (v8)</a></b> —
+Enables
+<a href="https://medium.com/@paul_irish/debugging-node-js-nightlies-with-chrome-devtools-7c4a1b95ae27">debugging & profiling</a>
+of Node.js apps.
+<p><b><a href="1-3/">stable 1.3 protocol (1-3)</a></b> —
+The stable release of the protocol, tagged at Chrome 64. It includes a smaller subset of the complete protocol compatibilities.
+<h3>Resources</h3>
+<p>See <a href="https://github.com/aslushnikov/getting-started-with-cdp/blob/master/README.md">Getting Started with CDP</a>. The <a href="https://github.com/ChromeDevTools/awesome-chrome-devtools#chrome-devtools-protocol">awesome-chrome-devtools</a> page links to many of the tools in the protocol ecosystem, including protocol API libraries in JavaScript, TypeScript, Python, Java, and Go.
+<p>Consider subscribing to the <a href="https://groups.google.com/d/forum/chrome-debugging-protocol">chrome-debugging-protocol</a> mailing list.
+<h3 id="monitor">Monitoring the protocol</h3>
+<p>This is especially handy to understand how the DevTools frontend makes use of the protocol.
+You can view all requests/responses and methods as they happen.
+<figure class="screenshot">
+  <a href="images/protocol-monitor.png" target="_blank" style="text-align: center; display:block;">
+    <img src="images/protocol-monitor.png" height="300" alt="Screenshot of the Protocol Monitor" loading="lazy">
+  </a>
+</figure>
+<p>Click the gear icon in the top-right of the DevTools to open the <i>Settings</i> panel.
+Select <i>Experiments</i> on the left of settings. Turn on &quot;Protocol Monitor&quot;, then close and reopen DevTools.
+Now click the ⋮ menu icon, choose <i>More Tools</i> and then select <i>Protocol monitor</i>.</p>
+<p>You can also issue your own commands using Protocol Monitor. If the command does not require any parameters,
+type the command into the prompt at the bottom of the Protocol Monitor panel and press Enter, for example, 
+<code>Page.captureScreenshot</code>. If the command requires parameters, provide them as JSON, for example,
+<code>{"cmd":"Page.captureScreenshot","args":{"format": "jpeg"}}</code>.
+<p> By clicking on the icon next to the command input (in Chrome 117+), you can open the command editor. After you select a CDP command, the editor creates a structured form based on the protocol definitions that allows you to edit parameters, and view their documentation and types. Send the commands by clicking on the send button or using <code>Ctrl + Enter</code>.  Use the context menu in the list of previously sent commands to open one of them in the editor.
+<figure class="screenshot">
+  <a href="images/cdp-editor.png" target="_blank" style="text-align: center; display:block;">
+    <img src="images/cdp-editor.png" height="300" alt="Screenshot of CDP Editor" loading="lazy">
+  </a>
+</figure>
+<p>Alternatively, you can execute commands from the DevTools console. First, <a href="https://stackoverflow.com/a/12291163/89484">open devtools-on-devtools</a>,
+then within the inner DevTools window, use <code>Main.MainImpl.sendOverProtocol()</code> in the console:
+<pre>let Main = await import('./devtools-frontend/front_end/entrypoints/main/main.js'); // or './entrypoints/main/main.js' or './main/main.js' depending on the browser version
+await Main.MainImpl.sendOverProtocol('Emulation.setDeviceMetricsOverride', {
+  mobile: true,
+  width: 412,
+  height: 732,
+  deviceScaleFactor: 2.625,
+});
+
+const data = await Main.MainImpl.sendOverProtocol("Page.captureScreenshot");</pre>
+<h3 id="extension">DevTools protocol via Chrome extension</h3>
+<p>To allow chrome extensions to interact with the protocol, we introduced
+<a href="https://developer.chrome.com/extensions/debugger/">chrome.debugger</a>
+extension API that exposes this JSON message
+transport interface. As a result, you can not only attach to the remotely
+running Chrome instance, but also instrument it from its own extension.
+<p>Chrome Debugger Extension API provides a higher level API where command
+domain, name and body are provided explicitly in the <code>sendCommand</code>
+call. This API hides request ids and handles binding of the request with its
+response, hence allowing <code>sendCommand</code> to report result in the
+callback function call. One can also use this API in combination with the other
+Extension APIs.
+<p>If you are developing a Web-based IDE, you should implement an extension that
+exposes debugging capabilities to your page and your IDE will be able to open
+pages with the target application, set breakpoints there, evaluate expressions
+in console, live edit JavaScript and CSS, display live DOM, network interaction
+and any other aspect that Developer Tools is instrumenting today.
+<p>Opening embedded Developer Tools will <a href="#simultaneous">terminate</a> the
+remote connection and thus detach the extension.
+<h3 id="faq">Frequently Asked Questions</h3>
+<h4 id="how-is-the-protocol-defined">How is the protocol defined?</h4>
+<p>The canonical protocol definitions live in the Chromium source tree:
+(<a href="https://cs.chromium.org/chromium/src/third_party/blink/public/devtools_protocol/browser_protocol.pdl">browser_protocol.pdl</a>
+and <a href="https://cs.chromium.org/chromium/src/v8/include/js_protocol.pdl">js_protocol.pdl</a>).
+They are maintained manually by the DevTools engineering team. The declarative protocol definitions are used across tools;
+for instance, a binding layer is created within Chromium for the Chrome DevTools to interact with,
+and separately bindings generated for
+<a href="https://chromium.googlesource.com/chromium/src/+/lkgr/headless/README.md#client_devtools-api">Chrome Headless’s C++ interface</a>.
+<h4 id="json">Can I get the protocol as JSON?</h4>
+<p>These canonical .pdl files are mirrored on GitHub <a href="https://github.com/ChromeDevTools/devtools-protocol/">in the devtools-protocol repo</a>
+where JSON versions, TypeScript definitions and closure typedefs are generated. It's published <a href="https://www.npmjs.com/package/devtools-protocol">regularly to NPM</a>.
+<p>Also, if you've set <code>--remote-debugging-port=9222</code> with Chrome, the complete protocol version it speaks
+is available at <code>localhost:9222/json/protocol</code>.
+<h4 id="how-do-i-access-the-browser-target">How do I access the browser target?</h4>
+<p>The endpoint is exposed as <code>webSocketDebuggerUrl</code> in <code>/json/version</code>.
+Note the <code>browser</code> in the URL, rather than <code>page</code>.
+If Chrome was launched with <code>--remote-debugging-port=0</code> and chose an open port,
+the browser endpoint is written to both stderr and the <code>DevToolsActivePort</code> file in browser profile folder.
+<h4 id="simultaneous">Does the protocol support multiple simultaneous clients?</h4>
+<p>Chrome 63 introduced support for multiple clients. See
+<a href="https://developers.google.com/web/updates/2017/10/devtools-release-notes#multi-client">this article</a> for details.
+<p>Upon disconnection, the outgoing client will receive a <code>detached</code> event.
+For example: <code>{"method":"Inspector.detached","params":{"reason":"replaced_with_devtools"&#125;}</code>.
+View the <a href="https://code.google.com/p/chromium/codesearch#chromium/src/out/Debug/gen/chrome/common/extensions/api/debugger.cc&q=file:debugger.cc%20Reason%20ParseReason&sq=package:chromium&type=cs&">enum of
+possible reasons.</a>
+(For reference: the <a href="https://chromiumcodereview.appspot.com/11361034/">original patch</a>).
+After disconnection, some apps have chosen to pause their state and offer a reconnect button.
+<h3 id="endpoints">HTTP Endpoints</h3>
+<p>If started with a remote-debugging-port, these HTTP endpoints are available on the same port.
+(<a href="https://cs.chromium.org/search/?q=f:devtools_http_handler.cc+%22command+%3D%3D+%22&amp;sq=package:chromium&amp;type=cs">Chromium implementation</a>)
+<h4 id="get-jsonversion">GET <code>/json/version</code></h4>
+<p>Browser version metadata</p>
+<pre class="sourceCode js">
+{
+    "Browser": "Chrome/72.0.3601.0",
+    "Protocol-Version": "1.3",
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3601.0 Safari/537.36",
+    "V8-Version": "7.2.233",
+    "WebKit-Version": "537.36 (@cfede9db1d154de0468cb0538479f34c0755a0f4)",
+    "webSocketDebuggerUrl": "ws://localhost:9222/devtools/browser/b0b8a4fb-bb17-4359-9533-a8d9f3908bd8"
+}</pre>
+<h4 id="get-json-or-jsonlist">GET <code>/json</code> or <code>/json/list</code></h4>
+<p>A list of all available websocket targets.
+<pre class="sourceCode js">
+[ {
+  "description": "",
+  "devtoolsFrontendUrl": "/devtools/inspector.html?ws=localhost:9222/devtools/page/DAB7FB6187B554E10B0BD18821265734",
+  "id": "DAB7FB6187B554E10B0BD18821265734",
+  "title": "Yahoo",
+  "type": "page",
+  "url": "https://www.yahoo.com/",
+  "webSocketDebuggerUrl": "ws://localhost:9222/devtools/page/DAB7FB6187B554E10B0BD18821265734"
+} ]</pre>
+<h4 id="get-jsonprotocol">GET <code>/json/protocol/</code></h4>
+<p>The current devtools protocol, as JSON:
+<pre class="sourceCode js">
+{
+  "domains": [
+      {
+          "domain": "Accessibility",
+          "experimental": true,
+          "dependencies": [
+              "DOM"
+          ],
+          "types": [
+              {
+                  "id": "AXValueType",
+                  "description": "Enum of possible property types.",
+                  "type": "string",
+                  "enum": [
+                      "boolean",
+                      "tristate",
+// ...</pre>
+<h4 id="get-jsonnewurl">PUT <code>/json/new?{url}</code></h4>
+<p>Opens a new tab. Responds with the websocket target data for the new tab.
+<h4 id="get-jsonactivatetargetid">GET <code>/json/activate/{targetId}</code></h4>
+<p>Brings a page into the foreground (activate a tab).
+<p>For valid targets, the response is 200: <code>&quot;Target activated&quot;</code>.
+If the target is invalid, the response is 404: <code>&quot;No such target id: {targetId}&quot;</code>
+<h4 id="get-jsonclosetargetid">GET <code>/json/close/{targetId}</code></h4>
+<p>Closes the target page identified by <code>targetId</code>.
+<p>For valid targets, the response is 200: <code>&quot;Target is closing&quot;</code>.
+If the target is invalid, the response is 404: <code>&quot;No such target id: {targetId}&quot;</code>
+<h4 id="websocket-devtoolspagetargetid">WebSocket <code>/devtools/page/{targetId}</code></h4>
+<p>The WebSocket endpoint for the protocol.
+<h4 id="get-devtoolsinspector.html">GET <code>/devtools/inspector.html</code></h4>
+<p>A copy of the DevTools frontend that ship with Chrome.
+
+      </div>
+    </section>
+  </main>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60854461-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
