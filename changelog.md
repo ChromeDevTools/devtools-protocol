@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1425554 — _2025-02-27T04:29:43.000Z_
+######  Diff: [`d45566d...0363cde`](https://github.com/ChromeDevTools/devtools-protocol/compare/d45566d...0363cde)
+
+```diff
+@@ browser_protocol.pdl:8235 @@ domain Page
+       PerformanceProfile
+ 
+   # All Permissions Policy features. This enum should match the one defined
+-  # in third_party/blink/renderer/core/permissions_policy/permissions_policy_features.json5.
++  # in services/network/public/cpp/permissions_policy/permissions_policy_features.json5.
+   experimental type PermissionsPolicyFeature extends string
+     enum
+       accelerometer
+```
+
 ## Roll protocol to r1423531 — _2025-02-22T04:29:31.000Z_
-######  Diff: [`43b22be...aee9a5d`](https://github.com/ChromeDevTools/devtools-protocol/compare/43b22be...aee9a5d)
+######  Diff: [`43b22be...d45566d`](https://github.com/ChromeDevTools/devtools-protocol/compare/43b22be...d45566d)
 
 ```diff
 @@ browser_protocol.pdl:8811 @@ domain Page
