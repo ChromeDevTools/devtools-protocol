@@ -5437,6 +5437,87 @@ export namespace Protocol {
         }
 
         /**
+         * CSS function argument representation.
+         */
+        export interface CSSFunctionParameter {
+            /**
+             * The parameter name.
+             */
+            name: string;
+            /**
+             * The parameter type.
+             */
+            type: string;
+        }
+
+        /**
+         * CSS function conditional block representation.
+         */
+        export interface CSSFunctionConditionNode {
+            /**
+             * Media query for this conditional block. Only one type of condition should be set.
+             */
+            media?: CSSMedia;
+            /**
+             * Container query for this conditional block. Only one type of condition should be set.
+             */
+            containerQueries?: CSSContainerQuery;
+            /**
+             * @supports CSS at-rule condition. Only one type of condition should be set.
+             */
+            supports?: CSSSupports;
+            /**
+             * Block body.
+             */
+            children: CSSFunctionNode[];
+            /**
+             * The condition text.
+             */
+            conditionText: string;
+        }
+
+        /**
+         * Section of the body of a CSS function rule.
+         */
+        export interface CSSFunctionNode {
+            /**
+             * A conditional block. If set, style should not be set.
+             */
+            condition?: CSSFunctionConditionNode;
+            /**
+             * Values set by this node. If set, condition should not be set.
+             */
+            style?: CSSStyle;
+        }
+
+        /**
+         * CSS function at-rule representation.
+         */
+        export interface CSSFunctionRule {
+            /**
+             * Name of the function.
+             */
+            name: Value;
+            /**
+             * The css style sheet identifier (absent for user agent stylesheet and user-specified
+             * stylesheet rules) this rule came from.
+             */
+            styleSheetId?: StyleSheetId;
+            /**
+             * Parent stylesheet's origin.
+             */
+            origin: StyleSheetOrigin;
+            /**
+             * List of parameters.
+             */
+            parameters: CSSFunctionParameter[];
+            /**
+             * Function body.
+             */
+            children: CSSFunctionNode[];
+        }
+
+        /**
          * CSS keyframe rule representation.
          */
         export interface CSSKeyframeRule {
@@ -5728,6 +5809,10 @@ export namespace Protocol {
              * Id of the first parent element that does not have display: contents.
              */
             parentLayoutNodeId?: DOM.NodeId;
+            /**
+             * A list of CSS at-function rules referenced by styles of this node.
+             */
+            cssFunctionRules?: CSSFunctionRule[];
         }
 
         export interface GetMediaQueriesResponse {
@@ -10776,7 +10861,7 @@ export namespace Protocol {
         /**
          * The reason why request was blocked.
          */
-        export type CorsError = ('DisallowedByMode' | 'InvalidResponse' | 'WildcardOriginNotAllowed' | 'MissingAllowOriginHeader' | 'MultipleAllowOriginValues' | 'InvalidAllowOriginValue' | 'AllowOriginMismatch' | 'InvalidAllowCredentials' | 'CorsDisabledScheme' | 'PreflightInvalidStatus' | 'PreflightDisallowedRedirect' | 'PreflightWildcardOriginNotAllowed' | 'PreflightMissingAllowOriginHeader' | 'PreflightMultipleAllowOriginValues' | 'PreflightInvalidAllowOriginValue' | 'PreflightAllowOriginMismatch' | 'PreflightInvalidAllowCredentials' | 'PreflightMissingAllowExternal' | 'PreflightInvalidAllowExternal' | 'PreflightMissingAllowPrivateNetwork' | 'PreflightInvalidAllowPrivateNetwork' | 'InvalidAllowMethodsPreflightResponse' | 'InvalidAllowHeadersPreflightResponse' | 'MethodDisallowedByPreflightResponse' | 'HeaderDisallowedByPreflightResponse' | 'RedirectContainsCredentials' | 'InsecurePrivateNetwork' | 'InvalidPrivateNetworkAccess' | 'UnexpectedPrivateNetworkAccess' | 'NoCorsRedirectModeNotFollow' | 'PreflightMissingPrivateNetworkAccessId' | 'PreflightMissingPrivateNetworkAccessName' | 'PrivateNetworkAccessPermissionUnavailable' | 'PrivateNetworkAccessPermissionDenied');
+        export type CorsError = ('DisallowedByMode' | 'InvalidResponse' | 'WildcardOriginNotAllowed' | 'MissingAllowOriginHeader' | 'MultipleAllowOriginValues' | 'InvalidAllowOriginValue' | 'AllowOriginMismatch' | 'InvalidAllowCredentials' | 'CorsDisabledScheme' | 'PreflightInvalidStatus' | 'PreflightDisallowedRedirect' | 'PreflightWildcardOriginNotAllowed' | 'PreflightMissingAllowOriginHeader' | 'PreflightMultipleAllowOriginValues' | 'PreflightInvalidAllowOriginValue' | 'PreflightAllowOriginMismatch' | 'PreflightInvalidAllowCredentials' | 'PreflightMissingAllowExternal' | 'PreflightInvalidAllowExternal' | 'PreflightMissingAllowPrivateNetwork' | 'PreflightInvalidAllowPrivateNetwork' | 'InvalidAllowMethodsPreflightResponse' | 'InvalidAllowHeadersPreflightResponse' | 'MethodDisallowedByPreflightResponse' | 'HeaderDisallowedByPreflightResponse' | 'RedirectContainsCredentials' | 'InsecurePrivateNetwork' | 'InvalidPrivateNetworkAccess' | 'UnexpectedPrivateNetworkAccess' | 'NoCorsRedirectModeNotFollow' | 'PreflightMissingPrivateNetworkAccessId' | 'PreflightMissingPrivateNetworkAccessName' | 'PrivateNetworkAccessPermissionUnavailable' | 'PrivateNetworkAccessPermissionDenied' | 'LocalNetworkAccessPermissionDenied');
 
         export interface CorsErrorStatus {
             corsError: CorsError;
@@ -11510,7 +11595,7 @@ export namespace Protocol {
          */
         export type ContentEncoding = ('deflate' | 'gzip' | 'br' | 'zstd');
 
-        export type PrivateNetworkRequestPolicy = ('Allow' | 'BlockFromInsecureToMorePrivate' | 'WarnFromInsecureToMorePrivate' | 'PreflightBlock' | 'PreflightWarn');
+        export type PrivateNetworkRequestPolicy = ('Allow' | 'BlockFromInsecureToMorePrivate' | 'WarnFromInsecureToMorePrivate' | 'PreflightBlock' | 'PreflightWarn' | 'PermissionBlock');
 
         export type IPAddressSpace = ('Local' | 'Private' | 'Public' | 'Unknown');
 

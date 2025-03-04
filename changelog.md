@@ -1,7 +1,92 @@
 
 
+## Roll protocol to r1427544 — _2025-03-04T04:29:27.000Z_
+######  Diff: [`044de40...104f188`](https://github.com/ChromeDevTools/devtools-protocol/compare/044de40...104f188)
+
+```diff
+@@ browser_protocol.pdl:2252 @@ experimental domain CSS
+       # Associated style declaration.
+       CSSStyle style
+ 
++  # CSS function argument representation.
++  type CSSFunctionParameter extends object
++    properties
++      # The parameter name.
++      string name
++      # The parameter type.
++      string type
++
++  # CSS function conditional block representation.
++  type CSSFunctionConditionNode extends object
++    properties
++      # Media query for this conditional block. Only one type of condition should be set.
++      optional CSSMedia media
++      # Container query for this conditional block. Only one type of condition should be set.
++      optional CSSContainerQuery containerQueries
++      # @supports CSS at-rule condition. Only one type of condition should be set.
++      optional CSSSupports supports
++      # Block body.
++      array of CSSFunctionNode children
++      # The condition text.
++      string conditionText
++
++  # Section of the body of a CSS function rule.
++  type CSSFunctionNode extends object
++    properties
++      # A conditional block. If set, style should not be set.
++      optional CSSFunctionConditionNode condition
++      # Values set by this node. If set, condition should not be set.
++      optional CSSStyle style
++
++  # CSS function at-rule representation.
++  type CSSFunctionRule extends object
++    properties
++      # Name of the function.
++      Value name
++      # The css style sheet identifier (absent for user agent stylesheet and user-specified
++      # stylesheet rules) this rule came from.
++      optional StyleSheetId styleSheetId
++      # Parent stylesheet's origin.
++      StyleSheetOrigin origin
++      # List of parameters.
++      array of CSSFunctionParameter parameters
++      # Function body.
++      array of CSSFunctionNode children
++
+   # CSS keyframe rule representation.
+   type CSSKeyframeRule extends object
+     properties
+@@ -2449,6 +2494,8 @@ experimental domain CSS
+       optional CSSFontPaletteValuesRule cssFontPaletteValuesRule
+       # Id of the first parent element that does not have display: contents.
+       experimental optional DOM.NodeId parentLayoutNodeId
++      # A list of CSS at-function rules referenced by styles of this node.
++      experimental optional array of CSSFunctionRule cssFunctionRules
+ 
+   # Returns all media queries parsed by the rendering engine.
+   command getMediaQueries
+@@ -6145,6 +6192,9 @@ domain Network
+       # Request was a private network request and is denied by user permission.
+       # https://github.com/WICG/private-network-access/blob/main/permission_prompt/explainer.md
+       PrivateNetworkAccessPermissionDenied
++      # Request was a local network request and is denied by user permission.
++      # https://github.com/explainers-by-googlers/local-network-access
++      LocalNetworkAccessPermissionDenied
+ 
+   type CorsErrorStatus extends object
+     properties
+@@ -7336,6 +7386,7 @@ domain Network
+       WarnFromInsecureToMorePrivate
+       PreflightBlock
+       PreflightWarn
++      PermissionBlock
+ 
+   experimental type IPAddressSpace extends string
+     enum
+```
+
 ## Roll protocol to r1425554 — _2025-02-27T04:29:43.000Z_
-######  Diff: [`d45566d...0363cde`](https://github.com/ChromeDevTools/devtools-protocol/compare/d45566d...0363cde)
+######  Diff: [`d45566d...044de40`](https://github.com/ChromeDevTools/devtools-protocol/compare/d45566d...044de40)
 
 ```diff
 @@ browser_protocol.pdl:8235 @@ domain Page
