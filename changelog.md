@@ -1,7 +1,52 @@
 
 
+## Roll protocol to r1428127 — _2025-03-05T04:29:34.000Z_
+######  Diff: [`c2846c9...9e9c433`](https://github.com/ChromeDevTools/devtools-protocol/compare/c2846c9...9e9c433)
+
+```diff
+@@ browser_protocol.pdl:4346 @@ domain Emulation
+   depends on Page
+   depends on Runtime
+ 
++  experimental type SafeAreaInsets extends object
++    properties
++      # Overrides safe-area-inset-top.
++      optional integer top
++      # Overrides safe-area-max-inset-top.
++      optional integer topMax
++      # Overrides safe-area-inset-left.
++      optional integer left
++      # Overrides safe-area-max-inset-left.
++      optional integer leftMax
++      # Overrides safe-area-inset-bottom.
++      optional integer bottom
++      # Overrides safe-area-max-inset-bottom.
++      optional integer bottomMax
++      # Overrides safe-area-inset-right.
++      optional integer right
++      # Overrides safe-area-max-inset-right.
++      optional integer rightMax
++
+   # Screen orientation.
+   type ScreenOrientation extends object
+     properties
+@@ -4516,6 +4535,12 @@ domain Emulation
+       # cleared.
+       optional DOM.RGBA color
+ 
++  # Overrides the values for env(safe-area-inset-*) and env(safe-area-max-inset-*). Unset values will cause the
++  # respective variables to be undefined, even if previously overridden.
++  experimental command setSafeAreaInsetsOverride
++    parameters
++      SafeAreaInsets insets
++
+   # Overrides the values of device screen dimensions (window.screen.width, window.screen.height,
+   # window.innerWidth, window.innerHeight, and "device-width"/"device-height"-related CSS media
+   # query results).
+```
+
 ## Roll protocol to r1427544 — _2025-03-04T04:29:27.000Z_
-######  Diff: [`044de40...104f188`](https://github.com/ChromeDevTools/devtools-protocol/compare/044de40...104f188)
+######  Diff: [`044de40...c2846c9`](https://github.com/ChromeDevTools/devtools-protocol/compare/044de40...c2846c9)
 
 ```diff
 @@ browser_protocol.pdl:2252 @@ experimental domain CSS
