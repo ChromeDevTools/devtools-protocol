@@ -2685,6 +2685,26 @@ export namespace ProtocolProxyApi {
         on(event: 'webTransportClosed', listener: (params: Protocol.Network.WebTransportClosedEvent) => void): void;
 
         /**
+         * Fired upon direct_socket.TCPSocket creation.
+         */
+        on(event: 'directTCPSocketCreated', listener: (params: Protocol.Network.DirectTCPSocketCreatedEvent) => void): void;
+
+        /**
+         * Fired when direct_socket.TCPSocket connection is opened.
+         */
+        on(event: 'directTCPSocketOpened', listener: (params: Protocol.Network.DirectTCPSocketOpenedEvent) => void): void;
+
+        /**
+         * Fired when direct_socket.TCPSocket is aborted.
+         */
+        on(event: 'directTCPSocketAborted', listener: (params: Protocol.Network.DirectTCPSocketAbortedEvent) => void): void;
+
+        /**
+         * Fired when direct_socket.TCPSocket is closed.
+         */
+        on(event: 'directTCPSocketClosed', listener: (params: Protocol.Network.DirectTCPSocketClosedEvent) => void): void;
+
+        /**
          * Fired when additional information about a requestWillBeSent event is available from the
          * network stack. Not every requestWillBeSent event will have an additional
          * requestWillBeSentExtraInfo fired for it, and there is no guarantee whether requestWillBeSent
@@ -4462,6 +4482,11 @@ export namespace ProtocolProxyApi {
          * Enable the BluetoothEmulation domain.
          */
         enable(params: Protocol.BluetoothEmulation.EnableRequest): Promise<void>;
+
+        /**
+         * Set the state of the simulated central.
+         */
+        setSimulatedCentralState(params: Protocol.BluetoothEmulation.SetSimulatedCentralStateRequest): Promise<void>;
 
         /**
          * Disable the BluetoothEmulation domain.

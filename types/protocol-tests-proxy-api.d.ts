@@ -2865,6 +2865,34 @@ export namespace ProtocolTestsProxyApi {
         onceWebTransportClosed(eventMatcher?: (event: { params: Protocol.Network.WebTransportClosedEvent }) => boolean): Promise<{ params: Protocol.Network.WebTransportClosedEvent }>;
 
         /**
+         * Fired upon direct_socket.TCPSocket creation.
+         */
+        onDirectTCPSocketCreated(listener: (event: { params: Protocol.Network.DirectTCPSocketCreatedEvent }) => void): void;
+        offDirectTCPSocketCreated(listener: (event: { params: Protocol.Network.DirectTCPSocketCreatedEvent }) => void): void;
+        onceDirectTCPSocketCreated(eventMatcher?: (event: { params: Protocol.Network.DirectTCPSocketCreatedEvent }) => boolean): Promise<{ params: Protocol.Network.DirectTCPSocketCreatedEvent }>;
+
+        /**
+         * Fired when direct_socket.TCPSocket connection is opened.
+         */
+        onDirectTCPSocketOpened(listener: (event: { params: Protocol.Network.DirectTCPSocketOpenedEvent }) => void): void;
+        offDirectTCPSocketOpened(listener: (event: { params: Protocol.Network.DirectTCPSocketOpenedEvent }) => void): void;
+        onceDirectTCPSocketOpened(eventMatcher?: (event: { params: Protocol.Network.DirectTCPSocketOpenedEvent }) => boolean): Promise<{ params: Protocol.Network.DirectTCPSocketOpenedEvent }>;
+
+        /**
+         * Fired when direct_socket.TCPSocket is aborted.
+         */
+        onDirectTCPSocketAborted(listener: (event: { params: Protocol.Network.DirectTCPSocketAbortedEvent }) => void): void;
+        offDirectTCPSocketAborted(listener: (event: { params: Protocol.Network.DirectTCPSocketAbortedEvent }) => void): void;
+        onceDirectTCPSocketAborted(eventMatcher?: (event: { params: Protocol.Network.DirectTCPSocketAbortedEvent }) => boolean): Promise<{ params: Protocol.Network.DirectTCPSocketAbortedEvent }>;
+
+        /**
+         * Fired when direct_socket.TCPSocket is closed.
+         */
+        onDirectTCPSocketClosed(listener: (event: { params: Protocol.Network.DirectTCPSocketClosedEvent }) => void): void;
+        offDirectTCPSocketClosed(listener: (event: { params: Protocol.Network.DirectTCPSocketClosedEvent }) => void): void;
+        onceDirectTCPSocketClosed(eventMatcher?: (event: { params: Protocol.Network.DirectTCPSocketClosedEvent }) => boolean): Promise<{ params: Protocol.Network.DirectTCPSocketClosedEvent }>;
+
+        /**
          * Fired when additional information about a requestWillBeSent event is available from the
          * network stack. Not every requestWillBeSent event will have an additional
          * requestWillBeSentExtraInfo fired for it, and there is no guarantee whether requestWillBeSent
@@ -4858,6 +4886,11 @@ export namespace ProtocolTestsProxyApi {
          * Enable the BluetoothEmulation domain.
          */
         enable(params: Protocol.BluetoothEmulation.EnableRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
+         * Set the state of the simulated central.
+         */
+        setSimulatedCentralState(params: Protocol.BluetoothEmulation.SetSimulatedCentralStateRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Disable the BluetoothEmulation domain.

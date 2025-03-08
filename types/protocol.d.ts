@@ -11634,6 +11634,28 @@ export namespace Protocol {
          */
         export type ContentEncoding = ('deflate' | 'gzip' | 'br' | 'zstd');
 
+        export type DirectSocketDnsQueryType = ('ipv4' | 'ipv6');
+
+        export interface DirectTCPSocketOptions {
+            /**
+             * TCP_NODELAY option
+             */
+            noDelay: boolean;
+            /**
+             * Expected to be unsigned integer.
+             */
+            keepAliveDelay?: number;
+            /**
+             * Expected to be unsigned integer.
+             */
+            sendBufferSize?: number;
+            /**
+             * Expected to be unsigned integer.
+             */
+            receiveBufferSize?: number;
+            dnsQueryType?: DirectSocketDnsQueryType;
+        }
+
         export type PrivateNetworkRequestPolicy = ('Allow' | 'BlockFromInsecureToMorePrivate' | 'WarnFromInsecureToMorePrivate' | 'PreflightBlock' | 'PreflightWarn' | 'PermissionBlock');
 
         export type IPAddressSpace = ('Local' | 'Private' | 'Public' | 'Unknown');
@@ -12708,6 +12730,56 @@ export namespace Protocol {
             /**
              * Timestamp.
              */
+            timestamp: MonotonicTime;
+        }
+
+        /**
+         * Fired upon direct_socket.TCPSocket creation.
+         */
+        export interface DirectTCPSocketCreatedEvent {
+            identifier: RequestId;
+            remoteAddr: string;
+            /**
+             * Unsigned int 16.
+             */
+            remotePort: integer;
+            options: DirectTCPSocketOptions;
+            timestamp: MonotonicTime;
+            initiator?: Initiator;
+        }
+
+        /**
+         * Fired when direct_socket.TCPSocket connection is opened.
+         */
+        export interface DirectTCPSocketOpenedEvent {
+            identifier: RequestId;
+            remoteAddr: string;
+            /**
+             * Expected to be unsigned integer.
+             */
+            remotePort: integer;
+            timestamp: MonotonicTime;
+            localAddr?: string;
+            /**
+             * Expected to be unsigned integer.
+             */
+            localPort?: integer;
+        }
+
+        /**
+         * Fired when direct_socket.TCPSocket is aborted.
+         */
+        export interface DirectTCPSocketAbortedEvent {
+            identifier: RequestId;
+            errorMessage: string;
+            timestamp: MonotonicTime;
+        }
+
+        /**
+         * Fired when direct_socket.TCPSocket is closed.
+         */
+        export interface DirectTCPSocketClosedEvent {
+            identifier: RequestId;
             timestamp: MonotonicTime;
         }
 
@@ -19089,7 +19161,7 @@ export namespace Protocol {
          * TODO(https://crbug.com/1384419): revisit the list of PrefetchStatus and
          * filter out the ones that aren't necessary to the developers.
          */
-        export type PrefetchStatus = ('PrefetchAllowed' | 'PrefetchFailedIneligibleRedirect' | 'PrefetchFailedInvalidRedirect' | 'PrefetchFailedMIMENotSupported' | 'PrefetchFailedNetError' | 'PrefetchFailedNon2XX' | 'PrefetchEvictedAfterCandidateRemoved' | 'PrefetchEvictedForNewerPrefetch' | 'PrefetchHeldback' | 'PrefetchIneligibleRetryAfter' | 'PrefetchIsPrivacyDecoy' | 'PrefetchIsStale' | 'PrefetchNotEligibleBrowserContextOffTheRecord' | 'PrefetchNotEligibleDataSaverEnabled' | 'PrefetchNotEligibleExistingProxy' | 'PrefetchNotEligibleHostIsNonUnique' | 'PrefetchNotEligibleNonDefaultStoragePartition' | 'PrefetchNotEligibleSameSiteCrossOriginPrefetchRequiredProxy' | 'PrefetchNotEligibleSchemeIsNotHttps' | 'PrefetchNotEligibleUserHasCookies' | 'PrefetchNotEligibleUserHasServiceWorker' | 'PrefetchNotEligibleBatterySaverEnabled' | 'PrefetchNotEligiblePreloadingDisabled' | 'PrefetchNotFinishedInTime' | 'PrefetchNotStarted' | 'PrefetchNotUsedCookiesChanged' | 'PrefetchProxyNotAvailable' | 'PrefetchResponseUsed' | 'PrefetchSuccessfulButNotUsed' | 'PrefetchNotUsedProbeFailed');
+        export type PrefetchStatus = ('PrefetchAllowed' | 'PrefetchFailedIneligibleRedirect' | 'PrefetchFailedInvalidRedirect' | 'PrefetchFailedMIMENotSupported' | 'PrefetchFailedNetError' | 'PrefetchFailedNon2XX' | 'PrefetchEvictedAfterCandidateRemoved' | 'PrefetchEvictedForNewerPrefetch' | 'PrefetchHeldback' | 'PrefetchIneligibleRetryAfter' | 'PrefetchIsPrivacyDecoy' | 'PrefetchIsStale' | 'PrefetchNotEligibleBrowserContextOffTheRecord' | 'PrefetchNotEligibleDataSaverEnabled' | 'PrefetchNotEligibleExistingProxy' | 'PrefetchNotEligibleHostIsNonUnique' | 'PrefetchNotEligibleNonDefaultStoragePartition' | 'PrefetchNotEligibleSameSiteCrossOriginPrefetchRequiredProxy' | 'PrefetchNotEligibleSchemeIsNotHttps' | 'PrefetchNotEligibleUserHasCookies' | 'PrefetchNotEligibleUserHasServiceWorker' | 'PrefetchNotEligibleUserHasServiceWorkerNoFetchHandler' | 'PrefetchNotEligibleRedirectFromServiceWorker' | 'PrefetchNotEligibleRedirectToServiceWorker' | 'PrefetchNotEligibleBatterySaverEnabled' | 'PrefetchNotEligiblePreloadingDisabled' | 'PrefetchNotFinishedInTime' | 'PrefetchNotStarted' | 'PrefetchNotUsedCookiesChanged' | 'PrefetchProxyNotAvailable' | 'PrefetchResponseUsed' | 'PrefetchSuccessfulButNotUsed' | 'PrefetchNotUsedProbeFailed');
 
         /**
          * Information of headers to be displayed when the header mismatch occurred.
@@ -19421,6 +19493,17 @@ export namespace Protocol {
         }
 
         export interface EnableRequest {
+            /**
+             * State of the simulated central.
+             */
+            state: CentralState;
+            /**
+             * If the simulated central supports low-energy.
+             */
+            leSupported: boolean;
+        }
+
+        export interface SetSimulatedCentralStateRequest {
             /**
              * State of the simulated central.
              */

@@ -1,7 +1,108 @@
 
 
+## Roll protocol to r1429850 — _2025-03-08T04:26:13.000Z_
+######  Diff: [`5810b85...9432174`](https://github.com/ChromeDevTools/devtools-protocol/compare/5810b85...9432174)
+
+```diff
+@@ browser_protocol.pdl:7404 @@ domain Network
+       # Timestamp.
+       MonotonicTime timestamp
+ 
++  experimental type DirectSocketDnsQueryType extends string
++    enum
++      ipv4
++      ipv6
++
++  experimental type DirectTCPSocketOptions extends object
++    properties
++      # TCP_NODELAY option
++      boolean noDelay
++      # Expected to be unsigned integer.
++      optional number keepAliveDelay
++      # Expected to be unsigned integer.
++      optional number sendBufferSize
++      # Expected to be unsigned integer.
++      optional number receiveBufferSize
++      optional DirectSocketDnsQueryType dnsQueryType
++
++
++  # Fired upon direct_socket.TCPSocket creation.
++  experimental event directTCPSocketCreated
++    parameters
++      RequestId identifier
++      string remoteAddr
++      # Unsigned int 16.
++      integer remotePort
++      DirectTCPSocketOptions options
++      MonotonicTime timestamp
++      optional Initiator initiator
++
++  # Fired when direct_socket.TCPSocket connection is opened.
++  experimental event directTCPSocketOpened
++    parameters
++      RequestId identifier
++      string remoteAddr
++      # Expected to be unsigned integer.
++      integer remotePort
++      MonotonicTime timestamp
++      optional string localAddr
++      # Expected to be unsigned integer.
++      optional integer localPort
++
++  # Fired when direct_socket.TCPSocket is aborted.
++  experimental event directTCPSocketAborted
++    parameters
++      RequestId identifier
++      string errorMessage
++      MonotonicTime timestamp
++
++  # Fired when direct_socket.TCPSocket is closed.
++  experimental event directTCPSocketClosed
++    parameters
++      RequestId identifier
++      MonotonicTime timestamp
++
+   experimental type PrivateNetworkRequestPolicy extends string
+     enum
+       Allow
+@@ -9444,7 +9498,7 @@ domain Page
+       autoReject
+       autoOptOut
+ 
+-# Sets the Secure Payment Confirmation transaction mode.
++  # Sets the Secure Payment Confirmation transaction mode.
+   # https://w3c.github.io/secure-payment-confirmation/#sctn-automation-set-spc-transaction-mode
+   experimental command setSPCTransactionMode
+     parameters
+@@ -12840,6 +12894,9 @@ experimental domain Preload
+       PrefetchNotEligibleSchemeIsNotHttps
+       PrefetchNotEligibleUserHasCookies
+       PrefetchNotEligibleUserHasServiceWorker
++      PrefetchNotEligibleUserHasServiceWorkerNoFetchHandler
++      PrefetchNotEligibleRedirectFromServiceWorker
++      PrefetchNotEligibleRedirectToServiceWorker
+       PrefetchNotEligibleBatterySaverEnabled
+       PrefetchNotEligiblePreloadingDisabled
+       PrefetchNotFinishedInTime
+@@ -13149,6 +13206,14 @@ experimental domain BluetoothEmulation
+ 
+   # Enable the BluetoothEmulation domain.
+   command enable
++    parameters
++      # State of the simulated central.
++      CentralState state
++      # If the simulated central supports low-energy.
++      boolean leSupported
++
++  # Set the state of the simulated central.
++  command setSimulatedCentralState
+     parameters
+       # State of the simulated central.
+       CentralState state
+```
+
 ## Roll protocol to r1428127 — _2025-03-05T04:29:34.000Z_
-######  Diff: [`c2846c9...9e9c433`](https://github.com/ChromeDevTools/devtools-protocol/compare/c2846c9...9e9c433)
+######  Diff: [`c2846c9...5810b85`](https://github.com/ChromeDevTools/devtools-protocol/compare/c2846c9...5810b85)
 
 ```diff
 @@ browser_protocol.pdl:4346 @@ domain Emulation
@@ -12990,19 +13091,4 @@ index 8e43695..7fd51df 100644
  
    # Fired when a prerender attempt is completed.
    event prerenderAttemptCompleted
-```
-
-## Roll protocol to r1022601 — _2022-07-11T07:28:20.000Z_
-######  Diff: [`5cde748...82bd267`](https://github.com/ChromeDevTools/devtools-protocol/compare/5cde748...82bd267)
-
-```diff
-@@ browser_protocol.pdl:1811 @@ experimental domain CSS
-       optional array of InheritedPseudoElementMatches inheritedPseudoElements
-       # A list of CSS keyframed animations matching this node.
-       optional array of CSSKeyframesRule cssKeyframesRules
-+      # Id of the first parent element that does not have display: contents.
-+      experimental optional DOM.NodeId parentLayoutNodeId
- 
-   # Returns all media queries parsed by the rendering engine.
-   command getMediaQueries
 ```
