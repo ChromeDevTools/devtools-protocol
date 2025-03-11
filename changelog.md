@@ -1,7 +1,24 @@
 
 
+## Roll protocol to r1430640 — _2025-03-11T04:29:58.000Z_
+######  Diff: [`e1bdcc8...39a3d29`](https://github.com/ChromeDevTools/devtools-protocol/compare/e1bdcc8...39a3d29)
+
+```diff
+@@ browser_protocol.pdl:9527 @@ domain Page
+   command setInterceptFileChooserDialog
+     parameters
+       boolean enabled
++      # If true, cancels the dialog by emitting relevant events (if any)
++      # in addition to not showing it if the interception is enabled
++      # (default: false).
++      experimental optional boolean cancel
+ 
+   event domContentEventFired
+     parameters
+```
+
 ## Roll protocol to r1429850 — _2025-03-08T04:26:13.000Z_
-######  Diff: [`5810b85...9432174`](https://github.com/ChromeDevTools/devtools-protocol/compare/5810b85...9432174)
+######  Diff: [`5810b85...e1bdcc8`](https://github.com/ChromeDevTools/devtools-protocol/compare/5810b85...e1bdcc8)
 
 ```diff
 @@ browser_protocol.pdl:7404 @@ domain Network
