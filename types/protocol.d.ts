@@ -4228,7 +4228,7 @@ export namespace Protocol {
             windowState?: WindowState;
         }
 
-        export type PermissionType = ('ar' | 'audioCapture' | 'automaticFullscreen' | 'backgroundFetch' | 'backgroundSync' | 'cameraPanTiltZoom' | 'capturedSurfaceControl' | 'clipboardReadWrite' | 'clipboardSanitizedWrite' | 'displayCapture' | 'durableStorage' | 'geolocation' | 'handTracking' | 'idleDetection' | 'keyboardLock' | 'localFonts' | 'midi' | 'midiSysex' | 'nfc' | 'notifications' | 'paymentHandler' | 'periodicBackgroundSync' | 'pointerLock' | 'protectedMediaIdentifier' | 'sensors' | 'smartCard' | 'speakerSelection' | 'storageAccess' | 'topLevelStorageAccess' | 'videoCapture' | 'vr' | 'wakeLockScreen' | 'wakeLockSystem' | 'webAppInstallation' | 'webPrinting' | 'windowManagement');
+        export type PermissionType = ('ar' | 'audioCapture' | 'automaticFullscreen' | 'backgroundFetch' | 'backgroundSync' | 'cameraPanTiltZoom' | 'capturedSurfaceControl' | 'clipboardReadWrite' | 'clipboardSanitizedWrite' | 'displayCapture' | 'durableStorage' | 'geolocation' | 'handTracking' | 'idleDetection' | 'keyboardLock' | 'localFonts' | 'localNetworkAccess' | 'midi' | 'midiSysex' | 'nfc' | 'notifications' | 'paymentHandler' | 'periodicBackgroundSync' | 'pointerLock' | 'protectedMediaIdentifier' | 'sensors' | 'smartCard' | 'speakerSelection' | 'storageAccess' | 'topLevelStorageAccess' | 'videoCapture' | 'vr' | 'wakeLockScreen' | 'wakeLockSystem' | 'webAppInstallation' | 'webPrinting' | 'windowManagement');
 
         export type PermissionSetting = ('granted' | 'denied' | 'prompt');
 
@@ -4309,6 +4309,8 @@ export namespace Protocol {
              */
             buckets: Bucket[];
         }
+
+        export type PrivacySandboxAPI = ('BiddingAndAuctionServices' | 'TrustedKeyValue');
 
         export interface SetPermissionRequest {
             /**
@@ -4516,6 +4518,17 @@ export namespace Protocol {
 
         export interface AddPrivacySandboxEnrollmentOverrideRequest {
             url: string;
+        }
+
+        export interface AddPrivacySandboxCoordinatorKeyConfigRequest {
+            api: PrivacySandboxAPI;
+            coordinatorOrigin: string;
+            keyConfig: string;
+            /**
+             * BrowserContext to perform the action in. When omitted, default browser
+             * context is used.
+             */
+            browserContextId?: BrowserContextID;
         }
 
         /**
@@ -11656,7 +11669,7 @@ export namespace Protocol {
             dnsQueryType?: DirectSocketDnsQueryType;
         }
 
-        export type PrivateNetworkRequestPolicy = ('Allow' | 'BlockFromInsecureToMorePrivate' | 'WarnFromInsecureToMorePrivate' | 'PreflightBlock' | 'PreflightWarn' | 'PermissionBlock');
+        export type PrivateNetworkRequestPolicy = ('Allow' | 'BlockFromInsecureToMorePrivate' | 'WarnFromInsecureToMorePrivate' | 'PreflightBlock' | 'PreflightWarn' | 'PermissionBlock' | 'PermissionWarn');
 
         export type IPAddressSpace = ('Local' | 'Private' | 'Public' | 'Unknown');
 

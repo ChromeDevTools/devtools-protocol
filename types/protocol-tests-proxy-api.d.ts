@@ -1079,6 +1079,14 @@ export namespace ProtocolTestsProxyApi {
         addPrivacySandboxEnrollmentOverride(params: Protocol.Browser.AddPrivacySandboxEnrollmentOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
+         * Configures encryption keys used with a given privacy sandbox API to talk
+         * to a trusted coordinator.  Since this is intended for test automation only,
+         * coordinatorOrigin must be a .test domain. No existing coordinator
+         * configuration for the origin may exist.
+         */
+        addPrivacySandboxCoordinatorKeyConfig(params: Protocol.Browser.AddPrivacySandboxCoordinatorKeyConfigRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
          * Fired when page is about to start a download.
          */
         onDownloadWillBegin(listener: (event: { params: Protocol.Browser.DownloadWillBeginEvent }) => void): void;

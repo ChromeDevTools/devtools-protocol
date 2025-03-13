@@ -1,7 +1,55 @@
 
 
+## Roll protocol to r1431913 — _2025-03-13T04:30:01.000Z_
+######  Diff: [`e968b49...41a2b17`](https://github.com/ChromeDevTools/devtools-protocol/compare/e968b49...41a2b17)
+
+```diff
+@@ browser_protocol.pdl:1481 @@ domain Browser
+       idleDetection
+       keyboardLock
+       localFonts
++      localNetworkAccess
+       midi
+       midiSysex
+       nfc
+@@ -1740,6 +1741,25 @@ domain Browser
+     parameters
+       string url
+ 
++  experimental type PrivacySandboxAPI extends string
++    enum
++      BiddingAndAuctionServices
++      TrustedKeyValue
++
++  # Configures encryption keys used with a given privacy sandbox API to talk
++  # to a trusted coordinator.  Since this is intended for test automation only,
++  # coordinatorOrigin must be a .test domain. No existing coordinator
++  # configuration for the origin may exist.
++  command addPrivacySandboxCoordinatorKeyConfig
++    parameters
++      PrivacySandboxAPI api
++      string coordinatorOrigin
++      string keyConfig
++      # BrowserContext to perform the action in. When omitted, default browser
++      # context is used.
++      optional BrowserContextID browserContextId
++
++
+ # This domain exposes CSS read/write operations. All CSS objects (stylesheets, rules, and styles)
+ # have an associated `id` used in subsequent operations on the related object. Each object type has
+ # a specific `id` structure, and those are not interchangeable between objects of different kinds.
+@@ -7466,6 +7486,7 @@ domain Network
+       PreflightBlock
+       PreflightWarn
+       PermissionBlock
++      PermissionWarn
+ 
+   experimental type IPAddressSpace extends string
+     enum
+```
+
 ## Roll protocol to r1430640 — _2025-03-11T04:29:58.000Z_
-######  Diff: [`e1bdcc8...39a3d29`](https://github.com/ChromeDevTools/devtools-protocol/compare/e1bdcc8...39a3d29)
+######  Diff: [`e1bdcc8...e968b49`](https://github.com/ChromeDevTools/devtools-protocol/compare/e1bdcc8...e968b49)
 
 ```diff
 @@ browser_protocol.pdl:9527 @@ domain Page
