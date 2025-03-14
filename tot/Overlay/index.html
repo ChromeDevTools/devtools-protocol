@@ -1,0 +1,3798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Chrome DevTools Protocol - version tot - Overlay domain" />
+  <link rel="icon" type="image/png" href="/devtools-protocol/images/logo.png" />
+    <title>Chrome DevTools Protocol - Overlay domain</title>
+
+  <meta name="theme-color" content="#303F9F" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@chromedevtools" />
+  <meta name="twitter:creator" content="@chromedevtools" />
+  <meta property="og:title" content="Chrome DevTools Protocol" />
+  <meta property="og:image" content="https://developers.google.com/web/tools/images/chrome-devtools-16x9_720.png" />
+    <meta property="og:description" content="Chrome DevTools Protocol - version tot - Overlay domain" />
+
+  <script type="module" src="/devtools-protocol/scripts/index.js"></script>
+  <link href="/devtools-protocol/styles/protocol.css" rel="stylesheet">
+</head>
+<body>
+  <aside>
+    <div id="home" class="navs">
+      <nav>
+        <a href="/devtools-protocol/">Home</a>
+        <button class="aside-close-button" aria-label="Close navigation">x</button>
+      </nav>
+    </div>
+    <div id="versions" class="navs">
+      <header>Versions</header>
+      <nav>
+        <a href="/devtools-protocol/tot" name="tot">
+          latest (tip-of-tree)
+        </a>
+        <a href="/devtools-protocol/v8" name="v8">
+          v8-inspector (node)
+        </a>
+        <a href="/devtools-protocol/1-3" name="1-3">
+          stable (1.3)
+        </a><!-- 
+        <a href="/devtools-protocol/1-2" name="1-2">
+          stable (1.2)
+        </a> -->
+      </nav>
+    </div>
+
+    <div id="domains" class="navs version-tot">
+      <header>Domains</header>
+      <div class="scroller">
+        <nav>
+          <a href="/devtools-protocol/tot/Accessibility" class="tot experimental">Accessibility</a>
+          <a href="/devtools-protocol/tot/Animation" class="tot experimental">Animation</a>
+          <a href="/devtools-protocol/tot/Audits" class="tot experimental">Audits</a>
+          <a href="/devtools-protocol/tot/Autofill" class="tot experimental">Autofill</a>
+          <a href="/devtools-protocol/tot/BackgroundService" class="tot experimental">BackgroundService</a>
+          <a href="/devtools-protocol/tot/Browser" class="tot 1-3">Browser</a>
+          <a href="/devtools-protocol/tot/CacheStorage" class="tot experimental">CacheStorage</a>
+          <a href="/devtools-protocol/tot/Cast" class="tot experimental">Cast</a>
+          <a href="/devtools-protocol/tot/Console" class="tot deprecated v8">Console</a>
+          <a href="/devtools-protocol/tot/CSS" class="tot experimental">CSS</a>
+          <a href="/devtools-protocol/tot/Database" class="tot experimental">Database</a>
+          <a href="/devtools-protocol/tot/Debugger" class="tot 1-2 1-3 v8">Debugger</a>
+          <a href="/devtools-protocol/tot/DeviceAccess" class="tot experimental">DeviceAccess</a>
+          <a href="/devtools-protocol/tot/DeviceOrientation" class="tot experimental">DeviceOrientation</a>
+          <a href="/devtools-protocol/tot/DOM" class="tot 1-2 1-3">DOM</a>
+          <a href="/devtools-protocol/tot/DOMDebugger" class="tot 1-2 1-3">DOMDebugger</a>
+          <a href="/devtools-protocol/tot/DOMSnapshot" class="tot experimental">DOMSnapshot</a>
+          <a href="/devtools-protocol/tot/DOMStorage" class="tot experimental">DOMStorage</a>
+          <a href="/devtools-protocol/tot/Emulation" class="tot 1-2 1-3">Emulation</a>
+          <a href="/devtools-protocol/tot/EventBreakpoints" class="tot experimental">EventBreakpoints</a>
+          <a href="/devtools-protocol/tot/Extensions" class="tot experimental">Extensions</a>
+          <a href="/devtools-protocol/tot/FedCm" class="tot experimental">FedCm</a>
+          <a href="/devtools-protocol/tot/Fetch" class="tot 1-3">Fetch</a>
+          <a href="/devtools-protocol/tot/HeadlessExperimental" class="tot experimental">HeadlessExperimental</a>
+          <a href="/devtools-protocol/tot/HeapProfiler" class="tot experimental v8">HeapProfiler</a>
+          <a href="/devtools-protocol/tot/IndexedDB" class="tot experimental">IndexedDB</a>
+          <a href="/devtools-protocol/tot/Input" class="tot 1-2 1-3">Input</a>
+          <a href="/devtools-protocol/tot/Inspector" class="tot experimental">Inspector</a>
+          <a href="/devtools-protocol/tot/IO" class="tot 1-3">IO</a>
+          <a href="/devtools-protocol/tot/LayerTree" class="tot experimental">LayerTree</a>
+          <a href="/devtools-protocol/tot/Log" class="tot 1-3">Log</a>
+          <a href="/devtools-protocol/tot/Media" class="tot experimental">Media</a>
+          <a href="/devtools-protocol/tot/Memory" class="tot experimental">Memory</a>
+          <a href="/devtools-protocol/tot/Network" class="tot 1-2 1-3">Network</a>
+          <a href="/devtools-protocol/tot/Overlay" class="tot experimental">Overlay</a>
+          <a href="/devtools-protocol/tot/Page" class="tot 1-2 1-3">Page</a>
+          <a href="/devtools-protocol/tot/Performance" class="tot 1-3">Performance</a>
+          <a href="/devtools-protocol/tot/PerformanceTimeline" class="tot experimental">PerformanceTimeline</a>
+          <a href="/devtools-protocol/tot/Preload" class="tot experimental">Preload</a>
+          <a href="/devtools-protocol/tot/Profiler" class="tot 1-2 1-3 v8">Profiler</a>
+          <a href="/devtools-protocol/tot/Runtime" class="tot 1-2 1-3 v8">Runtime</a>
+          <a href="/devtools-protocol/tot/Schema" class="tot deprecated 1-2 v8">Schema</a>
+          <a href="/devtools-protocol/tot/Security" class="tot 1-3">Security</a>
+          <a href="/devtools-protocol/tot/ServiceWorker" class="tot experimental">ServiceWorker</a>
+          <a href="/devtools-protocol/tot/Storage" class="tot experimental">Storage</a>
+          <a href="/devtools-protocol/tot/SystemInfo" class="tot experimental">SystemInfo</a>
+          <a href="/devtools-protocol/tot/Target" class="tot 1-3">Target</a>
+          <a href="/devtools-protocol/tot/Tethering" class="tot experimental">Tethering</a>
+          <a href="/devtools-protocol/tot/Tracing" class="tot experimental">Tracing</a>
+          <a href="/devtools-protocol/tot/WebAudio" class="tot experimental">WebAudio</a>
+          <a href="/devtools-protocol/tot/WebAuthn" class="tot experimental">WebAuthn</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <h1>Chrome DevTools Protocol</h1>
+      <button class="menu-link">Navigation</button>
+      <cr-search-control base-url="/devtools-protocol/" protocol-search-index="/search_index/tot.json"></cr-search-control>
+    </header>
+    <section>
+      <div class="main-content-section domain">
+        
+    <div class="domain-section">
+      <div id="header">
+        <h2 class="heading">Overlay Domain</h2>
+        
+      <div class="details-description">
+        <p>This domain provides various functionality related to drawing atop the inspected page.</p>
+
+        
+      </div>
+    
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        <h3>Methods</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#method-disable"><span class="domain-dot">Overlay.</span>disable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-enable"><span class="domain-dot">Overlay.</span>enable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getGridHighlightObjectsForTest"><span class="domain-dot">Overlay.</span>getGridHighlightObjectsForTest</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getHighlightObjectForTest"><span class="domain-dot">Overlay.</span>getHighlightObjectForTest</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getSourceOrderHighlightObjectForTest"><span class="domain-dot">Overlay.</span>getSourceOrderHighlightObjectForTest</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-hideHighlight"><span class="domain-dot">Overlay.</span>hideHighlight</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-highlightNode"><span class="domain-dot">Overlay.</span>highlightNode</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-highlightQuad"><span class="domain-dot">Overlay.</span>highlightQuad</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-highlightRect"><span class="domain-dot">Overlay.</span>highlightRect</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-highlightSourceOrder"><span class="domain-dot">Overlay.</span>highlightSourceOrder</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setInspectMode"><span class="domain-dot">Overlay.</span>setInspectMode</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setPausedInDebuggerMessage"><span class="domain-dot">Overlay.</span>setPausedInDebuggerMessage</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setShowAdHighlights"><span class="domain-dot">Overlay.</span>setShowAdHighlights</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setShowContainerQueryOverlays"><span class="domain-dot">Overlay.</span>setShowContainerQueryOverlays</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setShowDebugBorders"><span class="domain-dot">Overlay.</span>setShowDebugBorders</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setShowFlexOverlays"><span class="domain-dot">Overlay.</span>setShowFlexOverlays</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setShowFPSCounter"><span class="domain-dot">Overlay.</span>setShowFPSCounter</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setShowGridOverlays"><span class="domain-dot">Overlay.</span>setShowGridOverlays</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setShowHinge"><span class="domain-dot">Overlay.</span>setShowHinge</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setShowIsolatedElements"><span class="domain-dot">Overlay.</span>setShowIsolatedElements</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setShowLayoutShiftRegions"><span class="domain-dot">Overlay.</span>setShowLayoutShiftRegions</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setShowPaintRects"><span class="domain-dot">Overlay.</span>setShowPaintRects</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setShowScrollBottleneckRects"><span class="domain-dot">Overlay.</span>setShowScrollBottleneckRects</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setShowScrollSnapOverlays"><span class="domain-dot">Overlay.</span>setShowScrollSnapOverlays</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setShowViewportSizeOnResize"><span class="domain-dot">Overlay.</span>setShowViewportSizeOnResize</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setShowWindowControlsOverlay"><span class="domain-dot">Overlay.</span>setShowWindowControlsOverlay</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-highlightFrame"><span class="domain-dot">Overlay.</span>highlightFrame</a>
+        <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setShowHitTestBorders"><span class="domain-dot">Overlay.</span>setShowHitTestBorders</a>
+        <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setShowWebVitals"><span class="domain-dot">Overlay.</span>setShowWebVitals</a>
+        <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+      </div>
+      
+        <h3>Events</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#event-inspectModeCanceled"><span class="domain-dot">Overlay.</span>inspectModeCanceled</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-inspectNodeRequested"><span class="domain-dot">Overlay.</span>inspectNodeRequested</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-nodeHighlightRequested"><span class="domain-dot">Overlay.</span>nodeHighlightRequested</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-screenshotRequested"><span class="domain-dot">Overlay.</span>screenshotRequested</a>
+        
+      </div>
+      
+        <h3>Types</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#type-BoxStyle"><span class="domain-dot">Overlay.</span>BoxStyle</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ColorFormat"><span class="domain-dot">Overlay.</span>ColorFormat</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ContainerQueryContainerHighlightConfig"><span class="domain-dot">Overlay.</span>ContainerQueryContainerHighlightConfig</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ContainerQueryHighlightConfig"><span class="domain-dot">Overlay.</span>ContainerQueryHighlightConfig</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ContrastAlgorithm"><span class="domain-dot">Overlay.</span>ContrastAlgorithm</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-FlexContainerHighlightConfig"><span class="domain-dot">Overlay.</span>FlexContainerHighlightConfig</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-FlexItemHighlightConfig"><span class="domain-dot">Overlay.</span>FlexItemHighlightConfig</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-FlexNodeHighlightConfig"><span class="domain-dot">Overlay.</span>FlexNodeHighlightConfig</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-GridHighlightConfig"><span class="domain-dot">Overlay.</span>GridHighlightConfig</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-GridNodeHighlightConfig"><span class="domain-dot">Overlay.</span>GridNodeHighlightConfig</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-HighlightConfig"><span class="domain-dot">Overlay.</span>HighlightConfig</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-HingeConfig"><span class="domain-dot">Overlay.</span>HingeConfig</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-InspectMode"><span class="domain-dot">Overlay.</span>InspectMode</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-IsolatedElementHighlightConfig"><span class="domain-dot">Overlay.</span>IsolatedElementHighlightConfig</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-IsolationModeHighlightConfig"><span class="domain-dot">Overlay.</span>IsolationModeHighlightConfig</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-LineStyle"><span class="domain-dot">Overlay.</span>LineStyle</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ScrollSnapContainerHighlightConfig"><span class="domain-dot">Overlay.</span>ScrollSnapContainerHighlightConfig</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ScrollSnapHighlightConfig"><span class="domain-dot">Overlay.</span>ScrollSnapHighlightConfig</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-SourceOrderConfig"><span class="domain-dot">Overlay.</span>SourceOrderConfig</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-WindowControlsOverlayConfig"><span class="domain-dot">Overlay.</span>WindowControlsOverlayConfig</a>
+        
+      </div>
+      
+      </div>
+
+      
+      <h3 id="methods">Methods</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="method-disable">
+          <span class="domain-dot">Overlay.</span>disable
+          
+          <a href="#method-disable"
+             class="permalink"
+             data-slug="Overlay.disable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Disables domain notifications.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-enable">
+          <span class="domain-dot">Overlay.</span>enable
+          
+          <a href="#method-enable"
+             class="permalink"
+             data-slug="Overlay.enable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enables domain notifications.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getGridHighlightObjectsForTest">
+          <span class="domain-dot">Overlay.</span>getGridHighlightObjectsForTest
+          
+          <a href="#method-getGridHighlightObjectsForTest"
+             class="permalink"
+             data-slug="Overlay.getGridHighlightObjectsForTest"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>For Persistent Grid testing.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeIds
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/DOM/#type-NodeId class="param-type">DOM.NodeId</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Ids of the node to get highlight object for.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          highlights
+        </dt>
+        <dd>
+          <span class="param-type">object</span>
+          
+      <div class="details-description">
+        <p>Grid Highlight data for the node ids provided.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getHighlightObjectForTest">
+          <span class="domain-dot">Overlay.</span>getHighlightObjectForTest
+          
+          <a href="#method-getHighlightObjectForTest"
+             class="permalink"
+             data-slug="Overlay.getHighlightObjectForTest"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>For testing.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-NodeId class="param-type">DOM.NodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the node to get highlight object for.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          includeDistance
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether to include distance info.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          includeStyle
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether to include style info.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          colorFormat
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-ColorFormat class="param-type">ColorFormat</a>
+          
+      <div class="details-description">
+        <p>The color format to get config with (default: hex).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          showAccessibilityInfo
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether to show accessibility info (default: true).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          highlight
+        </dt>
+        <dd>
+          <span class="param-type">object</span>
+          
+      <div class="details-description">
+        <p>Highlight data for the node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getSourceOrderHighlightObjectForTest">
+          <span class="domain-dot">Overlay.</span>getSourceOrderHighlightObjectForTest
+          
+          <a href="#method-getSourceOrderHighlightObjectForTest"
+             class="permalink"
+             data-slug="Overlay.getSourceOrderHighlightObjectForTest"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>For Source Order Viewer testing.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-NodeId class="param-type">DOM.NodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the node to highlight.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          highlight
+        </dt>
+        <dd>
+          <span class="param-type">object</span>
+          
+      <div class="details-description">
+        <p>Source order highlight data for the node id provided.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-hideHighlight">
+          <span class="domain-dot">Overlay.</span>hideHighlight
+          
+          <a href="#method-hideHighlight"
+             class="permalink"
+             data-slug="Overlay.hideHighlight"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Hides any highlight.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-highlightNode">
+          <span class="domain-dot">Overlay.</span>highlightNode
+          
+          <a href="#method-highlightNode"
+             class="permalink"
+             data-slug="Overlay.highlightNode"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Highlights DOM node with given id or with the given JavaScript object wrapper. Either nodeId or
+objectId must be specified.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          highlightConfig
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-HighlightConfig class="param-type">HighlightConfig</a>
+          
+      <div class="details-description">
+        <p>A descriptor for the highlight appearance.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-NodeId class="param-type">DOM.NodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the node to highlight.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          backendNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-BackendNodeId class="param-type">DOM.BackendNodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the backend node to highlight.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          objectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObjectId class="param-type">Runtime.RemoteObjectId</a>
+          
+      <div class="details-description">
+        <p>JavaScript object id of the node to be highlighted.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          selector
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Selectors to highlight relevant nodes.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-highlightQuad">
+          <span class="domain-dot">Overlay.</span>highlightQuad
+          
+          <a href="#method-highlightQuad"
+             class="permalink"
+             data-slug="Overlay.highlightQuad"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Highlights given quad. Coordinates are absolute with respect to the main frame viewport.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          quad
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-Quad class="param-type">DOM.Quad</a>
+          
+      <div class="details-description">
+        <p>Quad to highlight</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          color
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The highlight fill color (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          outlineColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The highlight outline color (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-highlightRect">
+          <span class="domain-dot">Overlay.</span>highlightRect
+          
+          <a href="#method-highlightRect"
+             class="permalink"
+             data-slug="Overlay.highlightRect"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Highlights given rectangle. Coordinates are absolute with respect to the main frame viewport.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          x
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>X coordinate</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          y
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Y coordinate</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          width
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Rectangle width</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          height
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Rectangle height</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          color
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The highlight fill color (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          outlineColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The highlight outline color (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-highlightSourceOrder">
+          <span class="domain-dot">Overlay.</span>highlightSourceOrder
+          
+          <a href="#method-highlightSourceOrder"
+             class="permalink"
+             data-slug="Overlay.highlightSourceOrder"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Highlights the source order of the children of the DOM node with given id or with the given
+JavaScript object wrapper. Either nodeId or objectId must be specified.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          sourceOrderConfig
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-SourceOrderConfig class="param-type">SourceOrderConfig</a>
+          
+      <div class="details-description">
+        <p>A descriptor for the appearance of the overlay drawing.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-NodeId class="param-type">DOM.NodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the node to highlight.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          backendNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-BackendNodeId class="param-type">DOM.BackendNodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the backend node to highlight.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          objectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObjectId class="param-type">Runtime.RemoteObjectId</a>
+          
+      <div class="details-description">
+        <p>JavaScript object id of the node to be highlighted.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setInspectMode">
+          <span class="domain-dot">Overlay.</span>setInspectMode
+          
+          <a href="#method-setInspectMode"
+             class="permalink"
+             data-slug="Overlay.setInspectMode"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enters the &#39;inspect&#39; mode. In this mode, elements that user is hovering over are highlighted.
+Backend then generates &#39;inspectNodeRequested&#39; event upon element selection.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          mode
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-InspectMode class="param-type">InspectMode</a>
+          
+      <div class="details-description">
+        <p>Set an inspection mode.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          highlightConfig
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-HighlightConfig class="param-type">HighlightConfig</a>
+          
+      <div class="details-description">
+        <p>A descriptor for the highlight appearance of hovered-over nodes. May be omitted if <code>enabled
+== false</code>.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setPausedInDebuggerMessage">
+          <span class="domain-dot">Overlay.</span>setPausedInDebuggerMessage
+          
+          <a href="#method-setPausedInDebuggerMessage"
+             class="permalink"
+             data-slug="Overlay.setPausedInDebuggerMessage"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          message
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The message to display, also triggers resume and step over controls.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setShowAdHighlights">
+          <span class="domain-dot">Overlay.</span>setShowAdHighlights
+          
+          <a href="#method-setShowAdHighlights"
+             class="permalink"
+             data-slug="Overlay.setShowAdHighlights"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Highlights owner element of all frames detected to be ads.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          show
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True for showing ad highlights</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setShowContainerQueryOverlays">
+          <span class="domain-dot">Overlay.</span>setShowContainerQueryOverlays
+          
+          <a href="#method-setShowContainerQueryOverlays"
+             class="permalink"
+             data-slug="Overlay.setShowContainerQueryOverlays"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          containerQueryHighlightConfigs
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Overlay/#type-ContainerQueryHighlightConfig class="param-type">ContainerQueryHighlightConfig</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>An array of node identifiers and descriptors for the highlight appearance.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setShowDebugBorders">
+          <span class="domain-dot">Overlay.</span>setShowDebugBorders
+          
+          <a href="#method-setShowDebugBorders"
+             class="permalink"
+             data-slug="Overlay.setShowDebugBorders"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Requests that backend shows debug borders on layers</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          show
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True for showing debug borders</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setShowFlexOverlays">
+          <span class="domain-dot">Overlay.</span>setShowFlexOverlays
+          
+          <a href="#method-setShowFlexOverlays"
+             class="permalink"
+             data-slug="Overlay.setShowFlexOverlays"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          flexNodeHighlightConfigs
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Overlay/#type-FlexNodeHighlightConfig class="param-type">FlexNodeHighlightConfig</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>An array of node identifiers and descriptors for the highlight appearance.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setShowFPSCounter">
+          <span class="domain-dot">Overlay.</span>setShowFPSCounter
+          
+          <a href="#method-setShowFPSCounter"
+             class="permalink"
+             data-slug="Overlay.setShowFPSCounter"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Requests that backend shows the FPS counter</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          show
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True for showing the FPS counter</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setShowGridOverlays">
+          <span class="domain-dot">Overlay.</span>setShowGridOverlays
+          
+          <a href="#method-setShowGridOverlays"
+             class="permalink"
+             data-slug="Overlay.setShowGridOverlays"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Highlight multiple elements with the CSS Grid overlay.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          gridNodeHighlightConfigs
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Overlay/#type-GridNodeHighlightConfig class="param-type">GridNodeHighlightConfig</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>An array of node identifiers and descriptors for the highlight appearance.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setShowHinge">
+          <span class="domain-dot">Overlay.</span>setShowHinge
+          
+          <a href="#method-setShowHinge"
+             class="permalink"
+             data-slug="Overlay.setShowHinge"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Add a dual screen device hinge</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          hingeConfig
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-HingeConfig class="param-type">HingeConfig</a>
+          
+      <div class="details-description">
+        <p>hinge data, null means hideHinge</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setShowIsolatedElements">
+          <span class="domain-dot">Overlay.</span>setShowIsolatedElements
+          
+          <a href="#method-setShowIsolatedElements"
+             class="permalink"
+             data-slug="Overlay.setShowIsolatedElements"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Show elements in isolation mode with overlays.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          isolatedElementHighlightConfigs
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Overlay/#type-IsolatedElementHighlightConfig class="param-type">IsolatedElementHighlightConfig</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>An array of node identifiers and descriptors for the highlight appearance.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setShowLayoutShiftRegions">
+          <span class="domain-dot">Overlay.</span>setShowLayoutShiftRegions
+          
+          <a href="#method-setShowLayoutShiftRegions"
+             class="permalink"
+             data-slug="Overlay.setShowLayoutShiftRegions"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Requests that backend shows layout shift regions</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          result
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True for showing layout shift regions</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setShowPaintRects">
+          <span class="domain-dot">Overlay.</span>setShowPaintRects
+          
+          <a href="#method-setShowPaintRects"
+             class="permalink"
+             data-slug="Overlay.setShowPaintRects"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Requests that backend shows paint rectangles</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          result
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True for showing paint rectangles</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setShowScrollBottleneckRects">
+          <span class="domain-dot">Overlay.</span>setShowScrollBottleneckRects
+          
+          <a href="#method-setShowScrollBottleneckRects"
+             class="permalink"
+             data-slug="Overlay.setShowScrollBottleneckRects"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Requests that backend shows scroll bottleneck rects</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          show
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True for showing scroll bottleneck rects</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setShowScrollSnapOverlays">
+          <span class="domain-dot">Overlay.</span>setShowScrollSnapOverlays
+          
+          <a href="#method-setShowScrollSnapOverlays"
+             class="permalink"
+             data-slug="Overlay.setShowScrollSnapOverlays"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          scrollSnapHighlightConfigs
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Overlay/#type-ScrollSnapHighlightConfig class="param-type">ScrollSnapHighlightConfig</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>An array of node identifiers and descriptors for the highlight appearance.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setShowViewportSizeOnResize">
+          <span class="domain-dot">Overlay.</span>setShowViewportSizeOnResize
+          
+          <a href="#method-setShowViewportSizeOnResize"
+             class="permalink"
+             data-slug="Overlay.setShowViewportSizeOnResize"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Paints viewport size upon main frame resize.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          show
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether to paint size or not.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setShowWindowControlsOverlay">
+          <span class="domain-dot">Overlay.</span>setShowWindowControlsOverlay
+          
+          <a href="#method-setShowWindowControlsOverlay"
+             class="permalink"
+             data-slug="Overlay.setShowWindowControlsOverlay"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Show Window Controls Overlay for PWA</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          windowControlsOverlayConfig
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-WindowControlsOverlayConfig class="param-type">WindowControlsOverlayConfig</a>
+          
+      <div class="details-description">
+        <p>Window Controls Overlay data, null means hide Window Controls Overlay</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-highlightFrame">
+          <span class="domain-dot">Overlay.</span>highlightFrame
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+          <a href="#method-highlightFrame"
+             class="permalink"
+             data-slug="Overlay.highlightFrame"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Highlights owner element of the frame with given id.
+Deprecated: Doesn&#39;t work reliably and cannot be fixed due to process
+separation (the owner node might be in a different process). Determine
+the owner node in the client and use highlightNode.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          frameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Page/#type-FrameId class="param-type">Page.FrameId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the frame to highlight.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          contentColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The content box highlight fill color (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          contentOutlineColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The content box highlight outline color (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setShowHitTestBorders">
+          <span class="domain-dot">Overlay.</span>setShowHitTestBorders
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+          <a href="#method-setShowHitTestBorders"
+             class="permalink"
+             data-slug="Overlay.setShowHitTestBorders"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Deprecated, no longer has any effect.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          show
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True for showing hit-test borders</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setShowWebVitals">
+          <span class="domain-dot">Overlay.</span>setShowWebVitals
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+          <a href="#method-setShowWebVitals"
+             class="permalink"
+             data-slug="Overlay.setShowWebVitals"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Deprecated, no longer has any effect.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          show
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="events">Events</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="event-inspectModeCanceled">
+          <span class="domain-dot">Overlay.</span>inspectModeCanceled
+          
+          <a href="#event-inspectModeCanceled"
+             class="permalink"
+             data-slug="Overlay.inspectModeCanceled"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when user cancels the inspect mode.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-inspectNodeRequested">
+          <span class="domain-dot">Overlay.</span>inspectNodeRequested
+          
+          <a href="#event-inspectNodeRequested"
+             class="permalink"
+             data-slug="Overlay.inspectNodeRequested"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when the node should be inspected. This happens after call to <code>setInspectMode</code> or when
+user manually inspects an element.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          backendNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-BackendNodeId class="param-type">DOM.BackendNodeId</a>
+          
+      <div class="details-description">
+        <p>Id of the node to inspect.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-nodeHighlightRequested">
+          <span class="domain-dot">Overlay.</span>nodeHighlightRequested
+          
+          <a href="#event-nodeHighlightRequested"
+             class="permalink"
+             data-slug="Overlay.nodeHighlightRequested"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when the node should be highlighted. This happens after call to <code>setInspectMode</code>.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-NodeId class="param-type">DOM.NodeId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-screenshotRequested">
+          <span class="domain-dot">Overlay.</span>screenshotRequested
+          
+          <a href="#event-screenshotRequested"
+             class="permalink"
+             data-slug="Overlay.screenshotRequested"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when user asks to capture screenshot of some area on the page.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          viewport
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Page/#type-Viewport class="param-type">Page.Viewport</a>
+          
+      <div class="details-description">
+        <p>Viewport to capture, in device independent pixels (dip).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="types">Types</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="type-BoxStyle">
+          <span class="domain-dot">Overlay.</span>BoxStyle
+          
+          <a href="#type-BoxStyle"
+             class="permalink"
+             data-slug="Overlay.BoxStyle"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Style information for drawing a box.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          fillColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The background color for the box (default: transparent)</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          hatchColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The hatching color for the box (default: transparent)</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ColorFormat">
+          <span class="domain-dot">Overlay.</span>ColorFormat
+          
+          <a href="#type-ColorFormat"
+             class="permalink"
+             data-slug="Overlay.ColorFormat"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>rgb</code>, <code>hsl</code>, <code>hwb</code>, <code>hex</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ContainerQueryContainerHighlightConfig">
+          <span class="domain-dot">Overlay.</span>ContainerQueryContainerHighlightConfig
+          
+          <a href="#type-ContainerQueryContainerHighlightConfig"
+             class="permalink"
+             data-slug="Overlay.ContainerQueryContainerHighlightConfig"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          containerBorder
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-LineStyle class="param-type">LineStyle</a>
+          
+      <div class="details-description">
+        <p>The style of the container border.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          descendantBorder
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-LineStyle class="param-type">LineStyle</a>
+          
+      <div class="details-description">
+        <p>The style of the descendants&#39; borders.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ContainerQueryHighlightConfig">
+          <span class="domain-dot">Overlay.</span>ContainerQueryHighlightConfig
+          
+          <a href="#type-ContainerQueryHighlightConfig"
+             class="permalink"
+             data-slug="Overlay.ContainerQueryHighlightConfig"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          containerQueryContainerHighlightConfig
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-ContainerQueryContainerHighlightConfig class="param-type">ContainerQueryContainerHighlightConfig</a>
+          
+      <div class="details-description">
+        <p>A descriptor for the highlight appearance of container query containers.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-NodeId class="param-type">DOM.NodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the container node to highlight.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ContrastAlgorithm">
+          <span class="domain-dot">Overlay.</span>ContrastAlgorithm
+          
+          <a href="#type-ContrastAlgorithm"
+             class="permalink"
+             data-slug="Overlay.ContrastAlgorithm"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>aa</code>, <code>aaa</code>, <code>apca</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-FlexContainerHighlightConfig">
+          <span class="domain-dot">Overlay.</span>FlexContainerHighlightConfig
+          
+          <a href="#type-FlexContainerHighlightConfig"
+             class="permalink"
+             data-slug="Overlay.FlexContainerHighlightConfig"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Configuration data for the highlighting of Flex container elements.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          containerBorder
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-LineStyle class="param-type">LineStyle</a>
+          
+      <div class="details-description">
+        <p>The style of the container border</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          lineSeparator
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-LineStyle class="param-type">LineStyle</a>
+          
+      <div class="details-description">
+        <p>The style of the separator between lines</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          itemSeparator
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-LineStyle class="param-type">LineStyle</a>
+          
+      <div class="details-description">
+        <p>The style of the separator between items</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          mainDistributedSpace
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-BoxStyle class="param-type">BoxStyle</a>
+          
+      <div class="details-description">
+        <p>Style of content-distribution space on the main axis (justify-content).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          crossDistributedSpace
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-BoxStyle class="param-type">BoxStyle</a>
+          
+      <div class="details-description">
+        <p>Style of content-distribution space on the cross axis (align-content).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          rowGapSpace
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-BoxStyle class="param-type">BoxStyle</a>
+          
+      <div class="details-description">
+        <p>Style of empty space caused by row gaps (gap/row-gap).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          columnGapSpace
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-BoxStyle class="param-type">BoxStyle</a>
+          
+      <div class="details-description">
+        <p>Style of empty space caused by columns gaps (gap/column-gap).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          crossAlignment
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-LineStyle class="param-type">LineStyle</a>
+          
+      <div class="details-description">
+        <p>Style of the self-alignment line (align-items).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-FlexItemHighlightConfig">
+          <span class="domain-dot">Overlay.</span>FlexItemHighlightConfig
+          
+          <a href="#type-FlexItemHighlightConfig"
+             class="permalink"
+             data-slug="Overlay.FlexItemHighlightConfig"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Configuration data for the highlighting of Flex item elements.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          baseSizeBox
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-BoxStyle class="param-type">BoxStyle</a>
+          
+      <div class="details-description">
+        <p>Style of the box representing the item&#39;s base size</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          baseSizeBorder
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-LineStyle class="param-type">LineStyle</a>
+          
+      <div class="details-description">
+        <p>Style of the border around the box representing the item&#39;s base size</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          flexibilityArrow
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-LineStyle class="param-type">LineStyle</a>
+          
+      <div class="details-description">
+        <p>Style of the arrow representing if the item grew or shrank</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-FlexNodeHighlightConfig">
+          <span class="domain-dot">Overlay.</span>FlexNodeHighlightConfig
+          
+          <a href="#type-FlexNodeHighlightConfig"
+             class="permalink"
+             data-slug="Overlay.FlexNodeHighlightConfig"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          flexContainerHighlightConfig
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-FlexContainerHighlightConfig class="param-type">FlexContainerHighlightConfig</a>
+          
+      <div class="details-description">
+        <p>A descriptor for the highlight appearance of flex containers.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-NodeId class="param-type">DOM.NodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the node to highlight.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-GridHighlightConfig">
+          <span class="domain-dot">Overlay.</span>GridHighlightConfig
+          
+          <a href="#type-GridHighlightConfig"
+             class="permalink"
+             data-slug="Overlay.GridHighlightConfig"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Configuration data for the highlighting of Grid elements.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          showGridExtensionLines
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether the extension lines from grid cells to the rulers should be shown (default: false).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          showPositiveLineNumbers
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Show Positive line number labels (default: false).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          showNegativeLineNumbers
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Show Negative line number labels (default: false).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          showAreaNames
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Show area name labels (default: false).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          showLineNames
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Show line name labels (default: false).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          showTrackSizes
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Show track size labels (default: false).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          gridBorderColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The grid container border highlight color (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          cellBorderColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The cell border color (default: transparent). Deprecated, please use rowLineColor and columnLineColor instead.</p>
+
+        
+      </div>
+    
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          rowLineColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The row line color (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          columnLineColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The column line color (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          gridBorderDash
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether the grid border is dashed (default: false).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          cellBorderDash
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether the cell border is dashed (default: false). Deprecated, please us rowLineDash and columnLineDash instead.</p>
+
+        
+      </div>
+    
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          rowLineDash
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether row lines are dashed (default: false).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          columnLineDash
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether column lines are dashed (default: false).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          rowGapColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The row gap highlight fill color (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          rowHatchColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The row gap hatching fill color (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          columnGapColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The column gap highlight fill color (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          columnHatchColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The column gap hatching fill color (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          areaBorderColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The named grid areas border color (Default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          gridBackgroundColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The grid container background color (Default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-GridNodeHighlightConfig">
+          <span class="domain-dot">Overlay.</span>GridNodeHighlightConfig
+          
+          <a href="#type-GridNodeHighlightConfig"
+             class="permalink"
+             data-slug="Overlay.GridNodeHighlightConfig"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Configurations for Persistent Grid Highlight</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          gridHighlightConfig
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-GridHighlightConfig class="param-type">GridHighlightConfig</a>
+          
+      <div class="details-description">
+        <p>A descriptor for the highlight appearance.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-NodeId class="param-type">DOM.NodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the node to highlight.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-HighlightConfig">
+          <span class="domain-dot">Overlay.</span>HighlightConfig
+          
+          <a href="#type-HighlightConfig"
+             class="permalink"
+             data-slug="Overlay.HighlightConfig"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Configuration data for the highlighting of page elements.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          showInfo
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether the node info tooltip should be shown (default: false).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          showStyles
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether the node styles in the tooltip (default: false).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          showRulers
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether the rulers should be shown (default: false).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          showAccessibilityInfo
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether the a11y info should be shown (default: true).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          showExtensionLines
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether the extension lines from node to the rulers should be shown (default: false).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          contentColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The content box highlight fill color (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          paddingColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The padding highlight fill color (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          borderColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The border highlight fill color (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          marginColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The margin highlight fill color (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          eventTargetColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The event target element highlight fill color (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          shapeColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The shape outside fill color (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          shapeMarginColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The shape margin fill color (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          cssGridColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The grid layout color (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          colorFormat
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-ColorFormat class="param-type">ColorFormat</a>
+          
+      <div class="details-description">
+        <p>The color format used to format color styles (default: hex).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          gridHighlightConfig
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-GridHighlightConfig class="param-type">GridHighlightConfig</a>
+          
+      <div class="details-description">
+        <p>The grid layout highlight configuration (default: all transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          flexContainerHighlightConfig
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-FlexContainerHighlightConfig class="param-type">FlexContainerHighlightConfig</a>
+          
+      <div class="details-description">
+        <p>The flex container highlight configuration (default: all transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          flexItemHighlightConfig
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-FlexItemHighlightConfig class="param-type">FlexItemHighlightConfig</a>
+          
+      <div class="details-description">
+        <p>The flex item highlight configuration (default: all transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          contrastAlgorithm
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-ContrastAlgorithm class="param-type">ContrastAlgorithm</a>
+          
+      <div class="details-description">
+        <p>The contrast algorithm to use for the contrast ratio (default: aa).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          containerQueryContainerHighlightConfig
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-ContainerQueryContainerHighlightConfig class="param-type">ContainerQueryContainerHighlightConfig</a>
+          
+      <div class="details-description">
+        <p>The container query container highlight configuration (default: all transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-HingeConfig">
+          <span class="domain-dot">Overlay.</span>HingeConfig
+          
+          <a href="#type-HingeConfig"
+             class="permalink"
+             data-slug="Overlay.HingeConfig"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Configuration for dual screen hinge</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          rect
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-Rect class="param-type">DOM.Rect</a>
+          
+      <div class="details-description">
+        <p>A rectangle represent hinge</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          contentColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The content box highlight fill color (default: a dark color).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          outlineColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The content box highlight outline color (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-InspectMode">
+          <span class="domain-dot">Overlay.</span>InspectMode
+          
+          <a href="#type-InspectMode"
+             class="permalink"
+             data-slug="Overlay.InspectMode"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>searchForNode</code>, <code>searchForUAShadowDOM</code>, <code>captureAreaScreenshot</code>, <code>showDistances</code>, <code>none</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-IsolatedElementHighlightConfig">
+          <span class="domain-dot">Overlay.</span>IsolatedElementHighlightConfig
+          
+          <a href="#type-IsolatedElementHighlightConfig"
+             class="permalink"
+             data-slug="Overlay.IsolatedElementHighlightConfig"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          isolationModeHighlightConfig
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-IsolationModeHighlightConfig class="param-type">IsolationModeHighlightConfig</a>
+          
+      <div class="details-description">
+        <p>A descriptor for the highlight appearance of an element in isolation mode.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-NodeId class="param-type">DOM.NodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the isolated element to highlight.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-IsolationModeHighlightConfig">
+          <span class="domain-dot">Overlay.</span>IsolationModeHighlightConfig
+          
+          <a href="#type-IsolationModeHighlightConfig"
+             class="permalink"
+             data-slug="Overlay.IsolationModeHighlightConfig"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          resizerColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The fill color of the resizers (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          resizerHandleColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The fill color for resizer handles (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          maskColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The fill color for the mask covering non-isolated elements (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-LineStyle">
+          <span class="domain-dot">Overlay.</span>LineStyle
+          
+          <a href="#type-LineStyle"
+             class="permalink"
+             data-slug="Overlay.LineStyle"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Style information for drawing a line.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          color
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The color of the line (default: transparent)</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          pattern
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The line pattern (default: solid)</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>dashed</code>, <code>dotted</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ScrollSnapContainerHighlightConfig">
+          <span class="domain-dot">Overlay.</span>ScrollSnapContainerHighlightConfig
+          
+          <a href="#type-ScrollSnapContainerHighlightConfig"
+             class="permalink"
+             data-slug="Overlay.ScrollSnapContainerHighlightConfig"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          snapportBorder
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-LineStyle class="param-type">LineStyle</a>
+          
+      <div class="details-description">
+        <p>The style of the snapport border (default: transparent)</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          snapAreaBorder
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-LineStyle class="param-type">LineStyle</a>
+          
+      <div class="details-description">
+        <p>The style of the snap area border (default: transparent)</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          scrollMarginColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The margin highlight fill color (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          scrollPaddingColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>The padding highlight fill color (default: transparent).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ScrollSnapHighlightConfig">
+          <span class="domain-dot">Overlay.</span>ScrollSnapHighlightConfig
+          
+          <a href="#type-ScrollSnapHighlightConfig"
+             class="permalink"
+             data-slug="Overlay.ScrollSnapHighlightConfig"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          scrollSnapContainerHighlightConfig
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Overlay/#type-ScrollSnapContainerHighlightConfig class="param-type">ScrollSnapContainerHighlightConfig</a>
+          
+      <div class="details-description">
+        <p>A descriptor for the highlight appearance of scroll snap containers.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-NodeId class="param-type">DOM.NodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the node to highlight.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-SourceOrderConfig">
+          <span class="domain-dot">Overlay.</span>SourceOrderConfig
+          
+          <a href="#type-SourceOrderConfig"
+             class="permalink"
+             data-slug="Overlay.SourceOrderConfig"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Configuration data for drawing the source order of an elements children.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          parentOutlineColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>the color to outline the given element in.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          childOutlineColor
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-RGBA class="param-type">DOM.RGBA</a>
+          
+      <div class="details-description">
+        <p>the color to outline the child elements in.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-WindowControlsOverlayConfig">
+          <span class="domain-dot">Overlay.</span>WindowControlsOverlayConfig
+          
+          <a href="#type-WindowControlsOverlayConfig"
+             class="permalink"
+             data-slug="Overlay.WindowControlsOverlayConfig"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Configuration for Window Controls Overlay</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          showCSS
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether the title bar CSS should be shown when emulating the Window Controls Overlay.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          selectedPlatform
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Selected platforms to show the overlay.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          themeColor
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The theme color defined in app manifest.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+    </div>
+    
+      </div>
+    </section>
+  </main>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60854461-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
