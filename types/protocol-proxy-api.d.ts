@@ -1926,6 +1926,20 @@ export namespace ProtocolProxyApi {
          */
         clearDevicePostureOverride(): Promise<void>;
 
+        /**
+         * Start using the given display features to pupulate the Viewport Segments API.
+         * This override can also be set in setDeviceMetricsOverride().
+         */
+        setDisplayFeaturesOverride(params: Protocol.Emulation.SetDisplayFeaturesOverrideRequest): Promise<void>;
+
+        /**
+         * Clears the display features override set with either setDeviceMetricsOverride()
+         * or setDisplayFeaturesOverride() and starts using display features from the
+         * platform again.
+         * Does nothing if no override is set.
+         */
+        clearDisplayFeaturesOverride(): Promise<void>;
+
         setScrollbarsHidden(params: Protocol.Emulation.SetScrollbarsHiddenRequest): Promise<void>;
 
         setDocumentCookieDisabled(params: Protocol.Emulation.SetDocumentCookieDisabledRequest): Promise<void>;

@@ -1,7 +1,58 @@
 
 
+## Roll protocol to r1433962 — _2025-03-18T04:29:59.000Z_
+######  Diff: [`b9e45c3...6cf64d4`](https://github.com/ChromeDevTools/devtools-protocol/compare/b9e45c3...6cf64d4)
+
+```diff
+@@ browser_protocol.pdl:858 @@ experimental domain Audits
+   type SRIMessageSignatureIssueDetails extends object
+     properties
+       SRIMessageSignatureError error
++      string signatureBase
+       AffectedRequest request
+ 
+   type GenericIssueErrorType extends string
+@@ -4594,7 +4595,8 @@ domain Emulation
+       experimental optional Page.Viewport viewport
+       # If set, the display feature of a multi-segment screen. If not set, multi-segment support
+       # is turned-off.
+-      experimental optional DisplayFeature displayFeature
++      # Deprecated, use Emulation.setDisplayFeaturesOverride.
++      experimental deprecated optional DisplayFeature displayFeature
+       # If set, the posture of a foldable device. If not set the posture is set
+       # to continuous.
+       # Deprecated, use Emulation.setDevicePostureOverride.
+@@ -4612,6 +4614,18 @@ domain Emulation
+   # Does nothing if no override is set.
+   experimental command clearDevicePostureOverride
+ 
++  # Start using the given display features to pupulate the Viewport Segments API.
++  # This override can also be set in setDeviceMetricsOverride().
++  experimental command setDisplayFeaturesOverride
++    parameters
++      array of DisplayFeature features
++
++  # Clears the display features override set with either setDeviceMetricsOverride()
++  # or setDisplayFeaturesOverride() and starts using display features from the
++  # platform again.
++  # Does nothing if no override is set.
++  experimental command clearDisplayFeaturesOverride
++
+   experimental command setScrollbarsHidden
+     parameters
+       # Whether scrollbars should be always hidden.
+@@ -12903,6 +12917,7 @@ experimental domain Preload
+       PrefetchFailedMIMENotSupported
+       PrefetchFailedNetError
+       PrefetchFailedNon2XX
++      PrefetchEvictedAfterBrowsingDataRemoved
+       PrefetchEvictedAfterCandidateRemoved
+       PrefetchEvictedForNewerPrefetch
+       PrefetchHeldback
+```
+
 ## Roll protocol to r1432532 — _2025-03-14T04:29:36.000Z_
-######  Diff: [`8d0eb7b...143cc5d`](https://github.com/ChromeDevTools/devtools-protocol/compare/8d0eb7b...143cc5d)
+######  Diff: [`8d0eb7b...b9e45c3`](https://github.com/ChromeDevTools/devtools-protocol/compare/8d0eb7b...b9e45c3)
 
 ```diff
 @@ browser_protocol.pdl:9911 @@ domain Page
