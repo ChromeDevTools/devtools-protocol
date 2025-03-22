@@ -4931,6 +4931,21 @@ export namespace ProtocolTestsProxyApi {
          */
         simulateAdvertisement(params: Protocol.BluetoothEmulation.SimulateAdvertisementRequest): Promise<{id: number, result: void, sessionId: string}>;
 
+        /**
+         * Simulates the response code from the peripheral with |address| for a
+         * GATT operation of |type|. The |code| value follows the HCI Error Codes from
+         * Bluetooth Core Specification Vol 2 Part D 1.3 List Of Error Codes.
+         */
+        simulateGATTOperationResponse(params: Protocol.BluetoothEmulation.SimulateGATTOperationResponseRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
+         * Event for when a GATT operation of |type| to the peripheral with |address|
+         * happened.
+         */
+        onGattOperationReceived(listener: (event: { params: Protocol.BluetoothEmulation.GattOperationReceivedEvent }) => void): void;
+        offGattOperationReceived(listener: (event: { params: Protocol.BluetoothEmulation.GattOperationReceivedEvent }) => void): void;
+        onceGattOperationReceived(eventMatcher?: (event: { params: Protocol.BluetoothEmulation.GattOperationReceivedEvent }) => boolean): Promise<{ params: Protocol.BluetoothEmulation.GattOperationReceivedEvent }>;
+
     }
 }
 

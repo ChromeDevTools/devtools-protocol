@@ -1,7 +1,80 @@
 
 
+## Roll protocol to r1436416 — _2025-03-22T04:29:26.000Z_
+######  Diff: [`cf78806...fdfa272`](https://github.com/ChromeDevTools/devtools-protocol/compare/cf78806...fdfa272)
+
+```diff
+@@ browser_protocol.pdl:8464 @@ domain Page
+       interest-cohort
+       join-ad-interest-group
+       keyboard-map
++      language-detector
+       local-fonts
+       magnetometer
+       media-playback-while-not-visible
+@@ -8478,6 +8479,7 @@ domain Page
+       private-state-token-redemption
+       publickey-credentials-create
+       publickey-credentials-get
++      rewriter
+       run-ad-auction
+       screen-wake-lock
+       serial
+@@ -8488,7 +8490,9 @@ domain Page
+       speaker-selection
+       storage-access
+       sub-apps
++      summarizer
+       sync-xhr
++      translator
+       unload
+       usb
+       usb-unrestricted
+@@ -8497,6 +8501,7 @@ domain Page
+       web-printing
+       web-share
+       window-management
++      writer
+       xr-spatial-tracking
+ 
+   # Reason for a permissions policy feature to be disabled.
+@@ -13215,6 +13220,12 @@ experimental domain BluetoothEmulation
+       powered-off
+       powered-on
+ 
++  # Indicates the various types of GATT event.
++  type GATTOperationType extends string
++    enum
++      connection
++      discovery
++
+   # Stores the manufacturer data
+   type ManufacturerData extends object
+     properties
+@@ -13276,3 +13287,19 @@ experimental domain BluetoothEmulation
+   command simulateAdvertisement
+     parameters
+       ScanEntry entry
++
++  # Simulates the response code from the peripheral with |address| for a
++  # GATT operation of |type|. The |code| value follows the HCI Error Codes from
++  # Bluetooth Core Specification Vol 2 Part D 1.3 List Of Error Codes.
++  command simulateGATTOperationResponse
++    parameters
++      string address
++      GATTOperationType type
++      integer code
++
++  # Event for when a GATT operation of |type| to the peripheral with |address|
++  # happened.
++  event gattOperationReceived
++    parameters
++      string address
++      GATTOperationType type
+```
+
 ## Roll protocol to r1433962 — _2025-03-18T04:29:59.000Z_
-######  Diff: [`b9e45c3...6cf64d4`](https://github.com/ChromeDevTools/devtools-protocol/compare/b9e45c3...6cf64d4)
+######  Diff: [`b9e45c3...cf78806`](https://github.com/ChromeDevTools/devtools-protocol/compare/b9e45c3...cf78806)
 
 ```diff
 @@ browser_protocol.pdl:858 @@ experimental domain Audits
