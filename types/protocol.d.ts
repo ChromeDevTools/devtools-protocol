@@ -16361,9 +16361,14 @@ export namespace Protocol {
         export type InterestGroupAuctionFetchType = ('bidderJs' | 'bidderWasm' | 'sellerJs' | 'bidderTrustedSignals' | 'sellerTrustedSignals');
 
         /**
-         * Enum of shared storage access types.
+         * Enum of shared storage access scopes.
          */
-        export type SharedStorageAccessType = ('documentAddModule' | 'documentSelectURL' | 'documentRun' | 'documentSet' | 'documentAppend' | 'documentDelete' | 'documentClear' | 'documentGet' | 'workletSet' | 'workletAppend' | 'workletDelete' | 'workletClear' | 'workletGet' | 'workletKeys' | 'workletEntries' | 'workletLength' | 'workletRemainingBudget' | 'headerSet' | 'headerAppend' | 'headerDelete' | 'headerClear');
+        export type SharedStorageAccessScope = ('window' | 'sharedStorageWorklet' | 'protectedAudienceWorklet' | 'header');
+
+        /**
+         * Enum of shared storage access methods.
+         */
+        export type SharedStorageAccessMethod = ('addModule' | 'createWorklet' | 'selectURL' | 'run' | 'batchUpdate' | 'set' | 'append' | 'delete' | 'clear' | 'get' | 'keys' | 'values' | 'entries' | 'length' | 'remainingBudget');
 
         /**
          * Struct for a single key-value pair in an origin's shared storage.
@@ -17137,17 +17142,25 @@ export namespace Protocol {
              */
             accessTime: Network.TimeSinceEpoch;
             /**
+             * Enum value indicating the access scope.
+             */
+            scope: SharedStorageAccessScope;
+            /**
              * Enum value indicating the Shared Storage API method invoked.
              */
-            type: SharedStorageAccessType;
+            method: SharedStorageAccessMethod;
             /**
              * DevTools Frame Token for the primary frame tree's root.
              */
             mainFrameId: Page.FrameId;
             /**
-             * Serialized origin for the context that invoked the Shared Storage API.
+             * Serialization of the origin owning the Shared Storage data.
              */
             ownerOrigin: string;
+            /**
+             * Serialization of the site owning the Shared Storage data.
+             */
+            ownerSite: string;
             /**
              * The sub-parameters wrapped by `params` are all optional and their
              * presence/absence depends on `type`.

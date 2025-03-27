@@ -1,7 +1,89 @@
 
 
+## Roll protocol to r1438564 — _2025-03-27T04:30:05.000Z_
+######  Diff: [`432dff0...27b50e6`](https://github.com/ChromeDevTools/devtools-protocol/compare/432dff0...27b50e6)
+
+```diff
+@@ browser_protocol.pdl:10554 @@ experimental domain Storage
+       bidderTrustedSignals
+       sellerTrustedSignals
+ 
+-  # Enum of shared storage access types.
+-  type SharedStorageAccessType extends string
+-    enum
+-      documentAddModule
+-      documentSelectURL
+-      documentRun
+-      documentSet
+-      documentAppend
+-      documentDelete
+-      documentClear
+-      documentGet
+-      workletSet
+-      workletAppend
+-      workletDelete
+-      workletClear
+-      workletGet
+-      workletKeys
+-      workletEntries
+-      workletLength
+-      workletRemainingBudget
+-      headerSet
+-      headerAppend
+-      headerDelete
+-      headerClear
++  # Enum of shared storage access scopes.
++  type SharedStorageAccessScope extends string
++    enum
++      window
++      sharedStorageWorklet
++      protectedAudienceWorklet
++      header
++
++  # Enum of shared storage access methods.
++  type SharedStorageAccessMethod extends string
++    enum
++      addModule
++      createWorklet
++      selectURL
++      run
++      batchUpdate
++      set
++      append
++      delete
++      clear
++      get
++      keys
++      values
++      entries
++      length
++      remainingBudget
+ 
+   # Struct for a single key-value pair in an origin's shared storage.
+   type SharedStorageEntry extends object
+@@ -10993,12 +10995,16 @@ experimental domain Storage
+     parameters
+       # Time of the access.
+       Network.TimeSinceEpoch accessTime
++      # Enum value indicating the access scope.
++      SharedStorageAccessScope scope
+       # Enum value indicating the Shared Storage API method invoked.
+-      SharedStorageAccessType type
++      SharedStorageAccessMethod method
+       # DevTools Frame Token for the primary frame tree's root.
+       Page.FrameId mainFrameId
+-      # Serialized origin for the context that invoked the Shared Storage API.
++      # Serialization of the origin owning the Shared Storage data.
+       string ownerOrigin
++      # Serialization of the site owning the Shared Storage data.
++      string ownerSite
+       # The sub-parameters wrapped by `params` are all optional and their
+       # presence/absence depends on `type`.
+       SharedStorageAccessParams params
+```
+
 ## Roll protocol to r1436416 — _2025-03-22T04:29:26.000Z_
-######  Diff: [`cf78806...fdfa272`](https://github.com/ChromeDevTools/devtools-protocol/compare/cf78806...fdfa272)
+######  Diff: [`cf78806...432dff0`](https://github.com/ChromeDevTools/devtools-protocol/compare/cf78806...432dff0)
 
 ```diff
 @@ browser_protocol.pdl:8464 @@ domain Page
@@ -13274,23 +13356,6 @@ index 8e43695..7fd51df 100644
 -      # Prerenders can be cancelled when Chrome uses excessive memory. This is
 -      # recorded when it fails to get the memory usage.
 -      FailToGetMemoryUsage
- 
-   # Fired when a prerender attempt is completed.
-   event prerenderAttemptCompleted
-```
-
-## Roll protocol to r1023572 — _2022-07-13T04:33:15.000Z_
-######  Diff: [`e4b5ddd...3f04136`](https://github.com/ChromeDevTools/devtools-protocol/compare/e4b5ddd...3f04136)
-
-```diff
-@@ browser_protocol.pdl:8412 @@ domain Page
-       EmbedderTriggeredAndSameOriginRedirected
-       EmbedderTriggeredAndCrossOriginRedirected
-       EmbedderTriggeredAndDestroyed
-+      MemoryLimitExceeded
-+      # Prerenders can be cancelled when Chrome uses excessive memory. This is
-+      # recorded when it fails to get the memory usage.
-+      FailToGetMemoryUsage
  
    # Fired when a prerender attempt is completed.
    event prerenderAttemptCompleted
