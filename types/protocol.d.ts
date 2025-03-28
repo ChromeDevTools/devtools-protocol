@@ -3540,7 +3540,7 @@ export namespace Protocol {
 
         export type SharedDictionaryError = ('UseErrorCrossOriginNoCorsRequest' | 'UseErrorDictionaryLoadFailure' | 'UseErrorMatchingDictionaryNotUsed' | 'UseErrorUnexpectedContentDictionaryHeader' | 'WriteErrorCossOriginNoCorsRequest' | 'WriteErrorDisallowedBySettings' | 'WriteErrorExpiredResponse' | 'WriteErrorFeatureDisabled' | 'WriteErrorInsufficientResources' | 'WriteErrorInvalidMatchField' | 'WriteErrorInvalidStructuredHeader' | 'WriteErrorNavigationRequest' | 'WriteErrorNoMatchField' | 'WriteErrorNonListMatchDestField' | 'WriteErrorNonSecureContext' | 'WriteErrorNonStringIdField' | 'WriteErrorNonStringInMatchDestList' | 'WriteErrorNonStringMatchField' | 'WriteErrorNonTokenTypeField' | 'WriteErrorRequestAborted' | 'WriteErrorShuttingDown' | 'WriteErrorTooLongIdField' | 'WriteErrorUnsupportedType');
 
-        export type SRIMessageSignatureError = ('MissingSignatureHeader' | 'MissingSignatureInputHeader' | 'InvalidSignatureHeader' | 'InvalidSignatureInputHeader' | 'SignatureHeaderValueIsNotByteSequence' | 'SignatureHeaderValueIsParameterized' | 'SignatureHeaderValueIsIncorrectLength' | 'SignatureInputHeaderMissingLabel' | 'SignatureInputHeaderValueNotInnerList' | 'SignatureInputHeaderValueMissingComponents' | 'SignatureInputHeaderInvalidComponentType' | 'SignatureInputHeaderInvalidComponentName' | 'SignatureInputHeaderInvalidHeaderComponentParameter' | 'SignatureInputHeaderInvalidDerivedComponentParameter' | 'SignatureInputHeaderKeyIdLength' | 'SignatureInputHeaderInvalidParameter' | 'SignatureInputHeaderMissingRequiredParameters' | 'ValidationFailedSignatureExpired' | 'ValidationFailedInvalidLength' | 'ValidationFailedSignatureMismatch');
+        export type SRIMessageSignatureError = ('MissingSignatureHeader' | 'MissingSignatureInputHeader' | 'InvalidSignatureHeader' | 'InvalidSignatureInputHeader' | 'SignatureHeaderValueIsNotByteSequence' | 'SignatureHeaderValueIsParameterized' | 'SignatureHeaderValueIsIncorrectLength' | 'SignatureInputHeaderMissingLabel' | 'SignatureInputHeaderValueNotInnerList' | 'SignatureInputHeaderValueMissingComponents' | 'SignatureInputHeaderInvalidComponentType' | 'SignatureInputHeaderInvalidComponentName' | 'SignatureInputHeaderInvalidHeaderComponentParameter' | 'SignatureInputHeaderInvalidDerivedComponentParameter' | 'SignatureInputHeaderKeyIdLength' | 'SignatureInputHeaderInvalidParameter' | 'SignatureInputHeaderMissingRequiredParameters' | 'ValidationFailedSignatureExpired' | 'ValidationFailedInvalidLength' | 'ValidationFailedSignatureMismatch' | 'ValidationFailedIntegrityMismatch');
 
         /**
          * Details for issues around "Attribution Reporting API" usage.
@@ -3582,6 +3582,7 @@ export namespace Protocol {
         export interface SRIMessageSignatureIssueDetails {
             error: SRIMessageSignatureError;
             signatureBase: string;
+            integrityAssertions: string[];
             request: AffectedRequest;
         }
 
@@ -11321,7 +11322,7 @@ export namespace Protocol {
         /**
          * Types of reasons why a cookie may not be sent with a request.
          */
-        export type CookieBlockedReason = ('SecureOnly' | 'NotOnPath' | 'DomainMismatch' | 'SameSiteStrict' | 'SameSiteLax' | 'SameSiteUnspecifiedTreatedAsLax' | 'SameSiteNoneInsecure' | 'UserPreferences' | 'ThirdPartyPhaseout' | 'ThirdPartyBlockedInFirstPartySet' | 'UnknownError' | 'SchemefulSameSiteStrict' | 'SchemefulSameSiteLax' | 'SchemefulSameSiteUnspecifiedTreatedAsLax' | 'SamePartyFromCrossPartyContext' | 'NameValuePairExceedsMaxSize' | 'PortMismatch' | 'SchemeMismatch');
+        export type CookieBlockedReason = ('SecureOnly' | 'NotOnPath' | 'DomainMismatch' | 'SameSiteStrict' | 'SameSiteLax' | 'SameSiteUnspecifiedTreatedAsLax' | 'SameSiteNoneInsecure' | 'UserPreferences' | 'ThirdPartyPhaseout' | 'ThirdPartyBlockedInFirstPartySet' | 'UnknownError' | 'SchemefulSameSiteStrict' | 'SchemefulSameSiteLax' | 'SchemefulSameSiteUnspecifiedTreatedAsLax' | 'SamePartyFromCrossPartyContext' | 'NameValuePairExceedsMaxSize' | 'PortMismatch' | 'SchemeMismatch' | 'AnonymousContext');
 
         /**
          * Types of reasons why a cookie should have been blocked by 3PCD but is exempted for the request.
@@ -19568,6 +19569,23 @@ export namespace Protocol {
             address: string;
             type: GATTOperationType;
             code: integer;
+        }
+
+        export interface AddServiceRequest {
+            address: string;
+            serviceUuid: string;
+        }
+
+        export interface AddServiceResponse {
+            /**
+             * An identifier that uniquely represents this service.
+             */
+            id: string;
+        }
+
+        export interface RemoveServiceRequest {
+            address: string;
+            id: string;
         }
 
         /**

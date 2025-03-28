@@ -1,7 +1,60 @@
 
 
+## Roll protocol to r1439209 — _2025-03-28T04:30:28.000Z_
+######  Diff: [`028dc50...2d4e9bc`](https://github.com/ChromeDevTools/devtools-protocol/compare/028dc50...2d4e9bc)
+
+```diff
+@@ browser_protocol.pdl:823 @@ experimental domain Audits
+       ValidationFailedSignatureExpired
+       ValidationFailedInvalidLength
+       ValidationFailedSignatureMismatch
++      ValidationFailedIntegrityMismatch
+ 
+   # Details for issues around "Attribution Reporting API" usage.
+   # Explainer: https://github.com/WICG/attribution-reporting-api
+@@ -859,6 +860,7 @@ experimental domain Audits
+     properties
+       SRIMessageSignatureError error
+       string signatureBase
++      array of string integrityAssertions
+       AffectedRequest request
+ 
+   type GenericIssueErrorType extends string
+@@ -6640,6 +6642,8 @@ domain Network
+       PortMismatch
+       # The cookie's source scheme value does not match the request origin's scheme.
+       SchemeMismatch
++      # Unpartitioned cookie access from an anonymous context was blocked.
++      AnonymousContext
+ 
+   # Types of reasons why a cookie should have been blocked by 3PCD but is exempted for the request.
+   experimental type CookieExemptionReason extends string
+@@ -13303,6 +13307,21 @@ experimental domain BluetoothEmulation
+       GATTOperationType type
+       integer code
+ 
++  # Adds a service with |uuid| to the peripheral with |address|.
++  command addService
++    parameters
++      string address
++      string serviceUuid
++    returns
++      # An identifier that uniquely represents this service.
++      string id
++
++  # Removes the service respresented by |id| from the peripheral with |address|.
++  command removeService
++    parameters
++      string address
++      string id
++
+   # Event for when a GATT operation of |type| to the peripheral with |address|
+   # happened.
+   event gattOperationReceived
+```
+
 ## Roll protocol to r1438564 — _2025-03-27T04:30:05.000Z_
-######  Diff: [`432dff0...27b50e6`](https://github.com/ChromeDevTools/devtools-protocol/compare/432dff0...27b50e6)
+######  Diff: [`432dff0...028dc50`](https://github.com/ChromeDevTools/devtools-protocol/compare/432dff0...028dc50)
 
 ```diff
 @@ browser_protocol.pdl:10554 @@ experimental domain Storage

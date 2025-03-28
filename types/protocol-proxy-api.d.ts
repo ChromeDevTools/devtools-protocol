@@ -4535,6 +4535,16 @@ export namespace ProtocolProxyApi {
         simulateGATTOperationResponse(params: Protocol.BluetoothEmulation.SimulateGATTOperationResponseRequest): Promise<void>;
 
         /**
+         * Adds a service with |uuid| to the peripheral with |address|.
+         */
+        addService(params: Protocol.BluetoothEmulation.AddServiceRequest): Promise<Protocol.BluetoothEmulation.AddServiceResponse>;
+
+        /**
+         * Removes the service respresented by |id| from the peripheral with |address|.
+         */
+        removeService(params: Protocol.BluetoothEmulation.RemoveServiceRequest): Promise<void>;
+
+        /**
          * Event for when a GATT operation of |type| to the peripheral with |address|
          * happened.
          */
