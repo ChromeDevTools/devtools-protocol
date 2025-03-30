@@ -19536,6 +19536,21 @@ export namespace Protocol {
             scanRecord: ScanRecord;
         }
 
+        /**
+         * Describes the properties of a characteristic. This follows Bluetooth Core
+         * Specification BT 4.2 Vol 3 Part G 3.3.1. Characteristic Properties.
+         */
+        export interface CharacteristicProperties {
+            broadcast?: boolean;
+            read?: boolean;
+            writeWithoutResponse?: boolean;
+            write?: boolean;
+            notify?: boolean;
+            indicate?: boolean;
+            authenticatedSignedWrites?: boolean;
+            extendedProperties?: boolean;
+        }
+
         export interface EnableRequest {
             /**
              * State of the simulated central.
@@ -19580,12 +19595,32 @@ export namespace Protocol {
             /**
              * An identifier that uniquely represents this service.
              */
-            id: string;
+            serviceId: string;
         }
 
         export interface RemoveServiceRequest {
             address: string;
-            id: string;
+            serviceId: string;
+        }
+
+        export interface AddCharacteristicRequest {
+            address: string;
+            serviceId: string;
+            characteristicUuid: string;
+            properties: CharacteristicProperties;
+        }
+
+        export interface AddCharacteristicResponse {
+            /**
+             * An identifier that uniquely represents this characteristic.
+             */
+            characteristicId: string;
+        }
+
+        export interface RemoveCharacteristicRequest {
+            address: string;
+            serviceId: string;
+            characteristicId: string;
         }
 
         /**

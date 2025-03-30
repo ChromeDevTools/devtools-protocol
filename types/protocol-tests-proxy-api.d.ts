@@ -4939,14 +4939,27 @@ export namespace ProtocolTestsProxyApi {
         simulateGATTOperationResponse(params: Protocol.BluetoothEmulation.SimulateGATTOperationResponseRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
-         * Adds a service with |uuid| to the peripheral with |address|.
+         * Adds a service with |serviceUuid| to the peripheral with |address|.
          */
         addService(params: Protocol.BluetoothEmulation.AddServiceRequest): Promise<{id: number, result: Protocol.BluetoothEmulation.AddServiceResponse, sessionId: string}>;
 
         /**
-         * Removes the service respresented by |id| from the peripheral with |address|.
+         * Removes the service respresented by |serviceId| from the peripheral with
+         * |address|.
          */
         removeService(params: Protocol.BluetoothEmulation.RemoveServiceRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
+         * Adds a characteristic with |characteristicUuid| and |properties| to the
+         * service represented by |serviceId| in the peripheral with |address|.
+         */
+        addCharacteristic(params: Protocol.BluetoothEmulation.AddCharacteristicRequest): Promise<{id: number, result: Protocol.BluetoothEmulation.AddCharacteristicResponse, sessionId: string}>;
+
+        /**
+         * Removes the characteristic respresented by |characteristicId| from the
+         * service respresented by |serviceId| in the peripheral with |address|.
+         */
+        removeCharacteristic(params: Protocol.BluetoothEmulation.RemoveCharacteristicRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Event for when a GATT operation of |type| to the peripheral with |address|

@@ -4535,14 +4535,27 @@ export namespace ProtocolProxyApi {
         simulateGATTOperationResponse(params: Protocol.BluetoothEmulation.SimulateGATTOperationResponseRequest): Promise<void>;
 
         /**
-         * Adds a service with |uuid| to the peripheral with |address|.
+         * Adds a service with |serviceUuid| to the peripheral with |address|.
          */
         addService(params: Protocol.BluetoothEmulation.AddServiceRequest): Promise<Protocol.BluetoothEmulation.AddServiceResponse>;
 
         /**
-         * Removes the service respresented by |id| from the peripheral with |address|.
+         * Removes the service respresented by |serviceId| from the peripheral with
+         * |address|.
          */
         removeService(params: Protocol.BluetoothEmulation.RemoveServiceRequest): Promise<void>;
+
+        /**
+         * Adds a characteristic with |characteristicUuid| and |properties| to the
+         * service represented by |serviceId| in the peripheral with |address|.
+         */
+        addCharacteristic(params: Protocol.BluetoothEmulation.AddCharacteristicRequest): Promise<Protocol.BluetoothEmulation.AddCharacteristicResponse>;
+
+        /**
+         * Removes the characteristic respresented by |characteristicId| from the
+         * service respresented by |serviceId| in the peripheral with |address|.
+         */
+        removeCharacteristic(params: Protocol.BluetoothEmulation.RemoveCharacteristicRequest): Promise<void>;
 
         /**
          * Event for when a GATT operation of |type| to the peripheral with |address|
