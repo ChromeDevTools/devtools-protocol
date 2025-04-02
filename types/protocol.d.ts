@@ -3652,7 +3652,7 @@ export namespace Protocol {
          * third_party/blink/public/mojom/devtools/inspector_issue.mojom to include
          * all cases except for success.
          */
-        export type FederatedAuthRequestIssueReason = ('ShouldEmbargo' | 'TooManyRequests' | 'WellKnownHttpNotFound' | 'WellKnownNoResponse' | 'WellKnownInvalidResponse' | 'WellKnownListEmpty' | 'WellKnownInvalidContentType' | 'ConfigNotInWellKnown' | 'WellKnownTooBig' | 'ConfigHttpNotFound' | 'ConfigNoResponse' | 'ConfigInvalidResponse' | 'ConfigInvalidContentType' | 'ClientMetadataHttpNotFound' | 'ClientMetadataNoResponse' | 'ClientMetadataInvalidResponse' | 'ClientMetadataInvalidContentType' | 'IdpNotPotentiallyTrustworthy' | 'DisabledInSettings' | 'DisabledInFlags' | 'ErrorFetchingSignin' | 'InvalidSigninResponse' | 'AccountsHttpNotFound' | 'AccountsNoResponse' | 'AccountsInvalidResponse' | 'AccountsListEmpty' | 'AccountsInvalidContentType' | 'IdTokenHttpNotFound' | 'IdTokenNoResponse' | 'IdTokenInvalidResponse' | 'IdTokenIdpErrorResponse' | 'IdTokenCrossSiteIdpErrorResponse' | 'IdTokenInvalidRequest' | 'IdTokenInvalidContentType' | 'ErrorIdToken' | 'Canceled' | 'RpPageNotVisible' | 'SilentMediationFailure' | 'ThirdPartyCookiesBlocked' | 'NotSignedInWithIdp' | 'MissingTransientUserActivation' | 'ReplacedByActiveMode' | 'InvalidFieldsSpecified' | 'RelyingPartyOriginIsOpaque' | 'TypeNotMatching' | 'UiDismissedNoEmbargo' | 'CorsError');
+        export type FederatedAuthRequestIssueReason = ('ShouldEmbargo' | 'TooManyRequests' | 'WellKnownHttpNotFound' | 'WellKnownNoResponse' | 'WellKnownInvalidResponse' | 'WellKnownListEmpty' | 'WellKnownInvalidContentType' | 'ConfigNotInWellKnown' | 'WellKnownTooBig' | 'ConfigHttpNotFound' | 'ConfigNoResponse' | 'ConfigInvalidResponse' | 'ConfigInvalidContentType' | 'ClientMetadataHttpNotFound' | 'ClientMetadataNoResponse' | 'ClientMetadataInvalidResponse' | 'ClientMetadataInvalidContentType' | 'IdpNotPotentiallyTrustworthy' | 'DisabledInSettings' | 'DisabledInFlags' | 'ErrorFetchingSignin' | 'InvalidSigninResponse' | 'AccountsHttpNotFound' | 'AccountsNoResponse' | 'AccountsInvalidResponse' | 'AccountsListEmpty' | 'AccountsInvalidContentType' | 'IdTokenHttpNotFound' | 'IdTokenNoResponse' | 'IdTokenInvalidResponse' | 'IdTokenIdpErrorResponse' | 'IdTokenCrossSiteIdpErrorResponse' | 'IdTokenInvalidRequest' | 'IdTokenInvalidContentType' | 'ErrorIdToken' | 'Canceled' | 'RpPageNotVisible' | 'SilentMediationFailure' | 'ThirdPartyCookiesBlocked' | 'NotSignedInWithIdp' | 'MissingTransientUserActivation' | 'ReplacedByActiveMode' | 'InvalidFieldsSpecified' | 'RelyingPartyOriginIsOpaque' | 'TypeNotMatching' | 'UiDismissedNoEmbargo' | 'CorsError' | 'SuppressedBySegmentationPlatform');
 
         export interface FederatedAuthUserInfoRequestIssueDetails {
             federatedAuthUserInfoRequestIssueReason: FederatedAuthUserInfoRequestIssueReason;
@@ -19621,6 +19621,27 @@ export namespace Protocol {
             address: string;
             serviceId: string;
             characteristicId: string;
+        }
+
+        export interface AddDescriptorRequest {
+            address: string;
+            serviceId: string;
+            characteristicId: string;
+            descriptorUuid: string;
+        }
+
+        export interface AddDescriptorResponse {
+            /**
+             * An identifier that uniquely represents this descriptor.
+             */
+            descriptorId: string;
+        }
+
+        export interface RemoveDescriptorRequest {
+            address: string;
+            serviceId: string;
+            characteristicId: string;
+            descriptorId: string;
         }
 
         /**

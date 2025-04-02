@@ -1153,6 +1153,11 @@ export namespace ProtocolTestsProxyApi {
          * For example, a value of '1em' is evaluated according to the computed
          * 'font-size' of the element and a value 'calc(1px + 2px)' will be
          * resolved to '3px'.
+         * If the `propertyName` was specified the `values` are resolved as if
+         * they were property's declaration. If a value cannot be parsed according
+         * to the provided property syntax, the value is parsed using combined
+         * syntax as if null `propertyName` was provided. If the value cannot be
+         * resolved even then, return the provided value without any changes.
          */
         resolveValues(params: Protocol.CSS.ResolveValuesRequest): Promise<{id: number, result: Protocol.CSS.ResolveValuesResponse, sessionId: string}>;
 
@@ -4960,6 +4965,20 @@ export namespace ProtocolTestsProxyApi {
          * service respresented by |serviceId| in the peripheral with |address|.
          */
         removeCharacteristic(params: Protocol.BluetoothEmulation.RemoveCharacteristicRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
+         * Adds a descriptor with |descriptorUuid| to the characteristic respresented
+         * by |characteristicId| in the service represented by |serviceId| of the
+         * peripheral with |address|.
+         */
+        addDescriptor(params: Protocol.BluetoothEmulation.AddDescriptorRequest): Promise<{id: number, result: Protocol.BluetoothEmulation.AddDescriptorResponse, sessionId: string}>;
+
+        /**
+         * Removes the descriptor with |descriptorId| from the characteristic
+         * respresented by |characteristicId| in the service represented by |serviceId|
+         * of the peripheral with |address|.
+         */
+        removeDescriptor(params: Protocol.BluetoothEmulation.RemoveDescriptorRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Event for when a GATT operation of |type| to the peripheral with |address|
