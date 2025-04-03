@@ -1,7 +1,24 @@
 
 
+## Roll protocol to r1441961 — _2025-04-03T04:31:08.000Z_
+######  Diff: [`52a677b...0f46fbc`](https://github.com/ChromeDevTools/devtools-protocol/compare/52a677b...0f46fbc)
+
+```diff
+@@ browser_protocol.pdl:11591 @@ domain Target
+       optional boolean background
+       # Whether to create the target of type "tab".
+       experimental optional boolean forTab
++      # Whether to create a hidden target. The hidden target is observable via protocol, but not
++      # present in the tab UI strip. Cannot be created with `forTab: true`, `newWindow: true` or
++      # `background: false`. The life-time of the tab is limited to the life-time of the session.
++      experimental optional boolean hidden
+     returns
+       # The id of the page opened.
+       TargetID targetId
+```
+
 ## Roll protocol to r1441344 — _2025-04-02T04:30:43.000Z_
-######  Diff: [`fc91db8...3b898db`](https://github.com/ChromeDevTools/devtools-protocol/compare/fc91db8...3b898db)
+######  Diff: [`fc91db8...52a677b`](https://github.com/ChromeDevTools/devtools-protocol/compare/fc91db8...52a677b)
 
 ```diff
 @@ browser_protocol.pdl:983 @@ experimental domain Audits
@@ -13529,29 +13546,4 @@ index 8e43695..7fd51df 100644
        EventSource
        WebSocket
        Manifest
-```
-
-## Roll protocol to r1024111 — _2022-07-14T04:35:31.000Z_
-######  Diff: [`ec96605...28ec0d8`](https://github.com/ChromeDevTools/devtools-protocol/compare/ec96605...28ec0d8)
-
-```diff
-@@ browser_protocol.pdl:7109 @@ domain Page
-       screen-wake-lock
-       serial
-       shared-autofill
-+      shared-storage
-       storage-access-api
-       sync-xhr
-       trust-token-redemption
-@@ -8412,10 +8413,6 @@ domain Page
-       EmbedderTriggeredAndSameOriginRedirected
-       EmbedderTriggeredAndCrossOriginRedirected
-       EmbedderTriggeredAndDestroyed
--      MemoryLimitExceeded
--      # Prerenders can be cancelled when Chrome uses excessive memory. This is
--      # recorded when it fails to get the memory usage.
--      FailToGetMemoryUsage
- 
-   # Fired when a prerender attempt is completed.
-   event prerenderAttemptCompleted
 ```

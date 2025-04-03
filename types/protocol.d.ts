@@ -17622,6 +17622,12 @@ export namespace Protocol {
              * Whether to create the target of type "tab".
              */
             forTab?: boolean;
+            /**
+             * Whether to create a hidden target. The hidden target is observable via protocol, but not
+             * present in the tab UI strip. Cannot be created with `forTab: true`, `newWindow: true` or
+             * `background: false`. The life-time of the tab is limited to the life-time of the session.
+             */
+            hidden?: boolean;
         }
 
         export interface CreateTargetResponse {
