@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Chrome DevTools Protocol - version tot - LayerTree domain" />
+  <link rel="icon" type="image/png" href="/devtools-protocol/images/logo.png" />
+    <title>Chrome DevTools Protocol - LayerTree domain</title>
+
+  <meta name="theme-color" content="#303F9F" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@chromedevtools" />
+  <meta name="twitter:creator" content="@chromedevtools" />
+  <meta property="og:title" content="Chrome DevTools Protocol" />
+  <meta property="og:image" content="https://developers.google.com/web/tools/images/chrome-devtools-16x9_720.png" />
+    <meta property="og:description" content="Chrome DevTools Protocol - version tot - LayerTree domain" />
+
+  <script type="module" src="/devtools-protocol/scripts/index.js"></script>
+  <link href="/devtools-protocol/styles/protocol.css" rel="stylesheet">
+</head>
+<body>
+  <aside>
+    <div id="home" class="navs">
+      <nav>
+        <a href="/devtools-protocol/">Home</a>
+        <button class="aside-close-button" aria-label="Close navigation">x</button>
+      </nav>
+    </div>
+    <div id="versions" class="navs">
+      <header>Versions</header>
+      <nav>
+        <a href="/devtools-protocol/tot" name="tot">
+          latest (tip-of-tree)
+        </a>
+        <a href="/devtools-protocol/v8" name="v8">
+          v8-inspector (node)
+        </a>
+        <a href="/devtools-protocol/1-3" name="1-3">
+          stable (1.3)
+        </a><!-- 
+        <a href="/devtools-protocol/1-2" name="1-2">
+          stable (1.2)
+        </a> -->
+      </nav>
+    </div>
+
+    <div id="domains" class="navs version-tot">
+      <header>Domains</header>
+      <div class="scroller">
+        <nav>
+          <a href="/devtools-protocol/tot/Accessibility" class="tot experimental">Accessibility</a>
+          <a href="/devtools-protocol/tot/Animation" class="tot experimental">Animation</a>
+          <a href="/devtools-protocol/tot/Audits" class="tot experimental">Audits</a>
+          <a href="/devtools-protocol/tot/Autofill" class="tot experimental">Autofill</a>
+          <a href="/devtools-protocol/tot/BackgroundService" class="tot experimental">BackgroundService</a>
+          <a href="/devtools-protocol/tot/Browser" class="tot 1-3">Browser</a>
+          <a href="/devtools-protocol/tot/CacheStorage" class="tot experimental">CacheStorage</a>
+          <a href="/devtools-protocol/tot/Cast" class="tot experimental">Cast</a>
+          <a href="/devtools-protocol/tot/Console" class="tot deprecated v8">Console</a>
+          <a href="/devtools-protocol/tot/CSS" class="tot experimental">CSS</a>
+          <a href="/devtools-protocol/tot/Database" class="tot experimental">Database</a>
+          <a href="/devtools-protocol/tot/Debugger" class="tot 1-2 1-3 v8">Debugger</a>
+          <a href="/devtools-protocol/tot/DeviceAccess" class="tot experimental">DeviceAccess</a>
+          <a href="/devtools-protocol/tot/DeviceOrientation" class="tot experimental">DeviceOrientation</a>
+          <a href="/devtools-protocol/tot/DOM" class="tot 1-2 1-3">DOM</a>
+          <a href="/devtools-protocol/tot/DOMDebugger" class="tot 1-2 1-3">DOMDebugger</a>
+          <a href="/devtools-protocol/tot/DOMSnapshot" class="tot experimental">DOMSnapshot</a>
+          <a href="/devtools-protocol/tot/DOMStorage" class="tot experimental">DOMStorage</a>
+          <a href="/devtools-protocol/tot/Emulation" class="tot 1-2 1-3">Emulation</a>
+          <a href="/devtools-protocol/tot/EventBreakpoints" class="tot experimental">EventBreakpoints</a>
+          <a href="/devtools-protocol/tot/Extensions" class="tot experimental">Extensions</a>
+          <a href="/devtools-protocol/tot/FedCm" class="tot experimental">FedCm</a>
+          <a href="/devtools-protocol/tot/Fetch" class="tot 1-3">Fetch</a>
+          <a href="/devtools-protocol/tot/HeadlessExperimental" class="tot experimental">HeadlessExperimental</a>
+          <a href="/devtools-protocol/tot/HeapProfiler" class="tot experimental v8">HeapProfiler</a>
+          <a href="/devtools-protocol/tot/IndexedDB" class="tot experimental">IndexedDB</a>
+          <a href="/devtools-protocol/tot/Input" class="tot 1-2 1-3">Input</a>
+          <a href="/devtools-protocol/tot/Inspector" class="tot experimental">Inspector</a>
+          <a href="/devtools-protocol/tot/IO" class="tot 1-3">IO</a>
+          <a href="/devtools-protocol/tot/LayerTree" class="tot experimental">LayerTree</a>
+          <a href="/devtools-protocol/tot/Log" class="tot 1-3">Log</a>
+          <a href="/devtools-protocol/tot/Media" class="tot experimental">Media</a>
+          <a href="/devtools-protocol/tot/Memory" class="tot experimental">Memory</a>
+          <a href="/devtools-protocol/tot/Network" class="tot 1-2 1-3">Network</a>
+          <a href="/devtools-protocol/tot/Overlay" class="tot experimental">Overlay</a>
+          <a href="/devtools-protocol/tot/Page" class="tot 1-2 1-3">Page</a>
+          <a href="/devtools-protocol/tot/Performance" class="tot 1-3">Performance</a>
+          <a href="/devtools-protocol/tot/PerformanceTimeline" class="tot experimental">PerformanceTimeline</a>
+          <a href="/devtools-protocol/tot/Preload" class="tot experimental">Preload</a>
+          <a href="/devtools-protocol/tot/Profiler" class="tot 1-2 1-3 v8">Profiler</a>
+          <a href="/devtools-protocol/tot/Runtime" class="tot 1-2 1-3 v8">Runtime</a>
+          <a href="/devtools-protocol/tot/Schema" class="tot deprecated 1-2 v8">Schema</a>
+          <a href="/devtools-protocol/tot/Security" class="tot 1-3">Security</a>
+          <a href="/devtools-protocol/tot/ServiceWorker" class="tot experimental">ServiceWorker</a>
+          <a href="/devtools-protocol/tot/Storage" class="tot experimental">Storage</a>
+          <a href="/devtools-protocol/tot/SystemInfo" class="tot experimental">SystemInfo</a>
+          <a href="/devtools-protocol/tot/Target" class="tot 1-3">Target</a>
+          <a href="/devtools-protocol/tot/Tethering" class="tot experimental">Tethering</a>
+          <a href="/devtools-protocol/tot/Tracing" class="tot experimental">Tracing</a>
+          <a href="/devtools-protocol/tot/WebAudio" class="tot experimental">WebAudio</a>
+          <a href="/devtools-protocol/tot/WebAuthn" class="tot experimental">WebAuthn</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <h1>Chrome DevTools Protocol</h1>
+      <button class="menu-link">Navigation</button>
+      <cr-search-control base-url="/devtools-protocol/" protocol-search-index="/search_index/tot.json"></cr-search-control>
+    </header>
+    <section>
+      <div class="main-content-section domain">
+        
+    <div class="domain-section">
+      <div id="header">
+        <h2 class="heading">LayerTree Domain</h2>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        <h3>Methods</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#method-compositingReasons"><span class="domain-dot">LayerTree.</span>compositingReasons</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-disable"><span class="domain-dot">LayerTree.</span>disable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-enable"><span class="domain-dot">LayerTree.</span>enable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-loadSnapshot"><span class="domain-dot">LayerTree.</span>loadSnapshot</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-makeSnapshot"><span class="domain-dot">LayerTree.</span>makeSnapshot</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-profileSnapshot"><span class="domain-dot">LayerTree.</span>profileSnapshot</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-releaseSnapshot"><span class="domain-dot">LayerTree.</span>releaseSnapshot</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-replaySnapshot"><span class="domain-dot">LayerTree.</span>replaySnapshot</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-snapshotCommandLog"><span class="domain-dot">LayerTree.</span>snapshotCommandLog</a>
+        
+      </div>
+      
+        <h3>Events</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#event-layerPainted"><span class="domain-dot">LayerTree.</span>layerPainted</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-layerTreeDidChange"><span class="domain-dot">LayerTree.</span>layerTreeDidChange</a>
+        
+      </div>
+      
+        <h3>Types</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#type-Layer"><span class="domain-dot">LayerTree.</span>Layer</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-LayerId"><span class="domain-dot">LayerTree.</span>LayerId</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-PaintProfile"><span class="domain-dot">LayerTree.</span>PaintProfile</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-PictureTile"><span class="domain-dot">LayerTree.</span>PictureTile</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ScrollRect"><span class="domain-dot">LayerTree.</span>ScrollRect</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-SnapshotId"><span class="domain-dot">LayerTree.</span>SnapshotId</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-StickyPositionConstraint"><span class="domain-dot">LayerTree.</span>StickyPositionConstraint</a>
+        
+      </div>
+      
+      </div>
+
+      
+      <h3 id="methods">Methods</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="method-compositingReasons">
+          <span class="domain-dot">LayerTree.</span>compositingReasons
+          
+          <a href="#method-compositingReasons"
+             class="permalink"
+             data-slug="LayerTree.compositingReasons"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Provides the reasons why the given layer was composited.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          layerId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/LayerTree/#type-LayerId class="param-type">LayerId</a>
+          
+      <div class="details-description">
+        <p>The id of the layer for which we want to get the reasons it was composited.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          compositingReasons
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">string</span> ]</span></span>
+          
+      <div class="details-description">
+        <p>A list of strings specifying reasons for the given layer to become composited.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          compositingReasonIds
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">string</span> ]</span></span>
+          
+      <div class="details-description">
+        <p>A list of strings specifying reason IDs for the given layer to become composited.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-disable">
+          <span class="domain-dot">LayerTree.</span>disable
+          
+          <a href="#method-disable"
+             class="permalink"
+             data-slug="LayerTree.disable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Disables compositing tree inspection.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-enable">
+          <span class="domain-dot">LayerTree.</span>enable
+          
+          <a href="#method-enable"
+             class="permalink"
+             data-slug="LayerTree.enable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enables compositing tree inspection.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-loadSnapshot">
+          <span class="domain-dot">LayerTree.</span>loadSnapshot
+          
+          <a href="#method-loadSnapshot"
+             class="permalink"
+             data-slug="LayerTree.loadSnapshot"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns the snapshot identifier.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          tiles
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/LayerTree/#type-PictureTile class="param-type">PictureTile</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>An array of tiles composing the snapshot.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          snapshotId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/LayerTree/#type-SnapshotId class="param-type">SnapshotId</a>
+          
+      <div class="details-description">
+        <p>The id of the snapshot.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-makeSnapshot">
+          <span class="domain-dot">LayerTree.</span>makeSnapshot
+          
+          <a href="#method-makeSnapshot"
+             class="permalink"
+             data-slug="LayerTree.makeSnapshot"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns the layer snapshot identifier.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          layerId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/LayerTree/#type-LayerId class="param-type">LayerId</a>
+          
+      <div class="details-description">
+        <p>The id of the layer.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          snapshotId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/LayerTree/#type-SnapshotId class="param-type">SnapshotId</a>
+          
+      <div class="details-description">
+        <p>The id of the layer snapshot.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-profileSnapshot">
+          <span class="domain-dot">LayerTree.</span>profileSnapshot
+          
+          <a href="#method-profileSnapshot"
+             class="permalink"
+             data-slug="LayerTree.profileSnapshot"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          snapshotId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/LayerTree/#type-SnapshotId class="param-type">SnapshotId</a>
+          
+      <div class="details-description">
+        <p>The id of the layer snapshot.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          minRepeatCount
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>The maximum number of times to replay the snapshot (1, if not specified).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          minDuration
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>The minimum duration (in seconds) to replay the snapshot.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          clipRect
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-Rect class="param-type">DOM.Rect</a>
+          
+      <div class="details-description">
+        <p>The clip rectangle to apply when replaying the snapshot.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          timings
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/LayerTree/#type-PaintProfile class="param-type">PaintProfile</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>The array of paint profiles, one per run.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-releaseSnapshot">
+          <span class="domain-dot">LayerTree.</span>releaseSnapshot
+          
+          <a href="#method-releaseSnapshot"
+             class="permalink"
+             data-slug="LayerTree.releaseSnapshot"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Releases layer snapshot captured by the back-end.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          snapshotId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/LayerTree/#type-SnapshotId class="param-type">SnapshotId</a>
+          
+      <div class="details-description">
+        <p>The id of the layer snapshot.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-replaySnapshot">
+          <span class="domain-dot">LayerTree.</span>replaySnapshot
+          
+          <a href="#method-replaySnapshot"
+             class="permalink"
+             data-slug="LayerTree.replaySnapshot"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Replays the layer snapshot and returns the resulting bitmap.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          snapshotId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/LayerTree/#type-SnapshotId class="param-type">SnapshotId</a>
+          
+      <div class="details-description">
+        <p>The id of the layer snapshot.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          fromStep
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>The first step to replay from (replay from the very start if not specified).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          toStep
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>The last step to replay to (replay till the end if not specified).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          scale
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>The scale to apply while replaying (defaults to 1).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          dataURL
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>A data: URL for resulting image.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-snapshotCommandLog">
+          <span class="domain-dot">LayerTree.</span>snapshotCommandLog
+          
+          <a href="#method-snapshotCommandLog"
+             class="permalink"
+             data-slug="LayerTree.snapshotCommandLog"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Replays the layer snapshot and returns canvas log.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          snapshotId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/LayerTree/#type-SnapshotId class="param-type">SnapshotId</a>
+          
+      <div class="details-description">
+        <p>The id of the layer snapshot.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          commandLog
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">object</span> ]</span></span>
+          
+      <div class="details-description">
+        <p>The array of canvas function calls.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="events">Events</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="event-layerPainted">
+          <span class="domain-dot">LayerTree.</span>layerPainted
+          
+          <a href="#event-layerPainted"
+             class="permalink"
+             data-slug="LayerTree.layerPainted"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          layerId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/LayerTree/#type-LayerId class="param-type">LayerId</a>
+          
+      <div class="details-description">
+        <p>The id of the painted layer.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          clip
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-Rect class="param-type">DOM.Rect</a>
+          
+      <div class="details-description">
+        <p>Clip rectangle.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-layerTreeDidChange">
+          <span class="domain-dot">LayerTree.</span>layerTreeDidChange
+          
+          <a href="#event-layerTreeDidChange"
+             class="permalink"
+             data-slug="LayerTree.layerTreeDidChange"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          layers
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/LayerTree/#type-Layer class="param-type">Layer</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Layer tree, absent if not in the compositing mode.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="types">Types</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="type-Layer">
+          <span class="domain-dot">LayerTree.</span>Layer
+          
+          <a href="#type-Layer"
+             class="permalink"
+             data-slug="LayerTree.Layer"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Information about a compositing layer.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          layerId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/LayerTree/#type-LayerId class="param-type">LayerId</a>
+          
+      <div class="details-description">
+        <p>The unique id for this layer.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          parentLayerId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/LayerTree/#type-LayerId class="param-type">LayerId</a>
+          
+      <div class="details-description">
+        <p>The id of parent (not present for root).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          backendNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-BackendNodeId class="param-type">DOM.BackendNodeId</a>
+          
+      <div class="details-description">
+        <p>The backend id for the node associated with this layer.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          offsetX
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Offset from parent layer, X coordinate.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          offsetY
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Offset from parent layer, Y coordinate.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          width
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Layer width.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          height
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Layer height.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          transform
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">number</span> ]</span></span>
+          
+      <div class="details-description">
+        <p>Transformation matrix for layer, default is identity matrix</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          anchorX
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Transform anchor point X, absent if no transform specified</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          anchorY
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Transform anchor point Y, absent if no transform specified</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          anchorZ
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Transform anchor point Z, absent if no transform specified</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          paintCount
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Indicates how many time this layer has painted.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          drawsContent
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Indicates whether this layer hosts any content, rather than being used for
+transform/scrolling purposes only.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          invisible
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Set if layer is not visible.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          scrollRects
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/LayerTree/#type-ScrollRect class="param-type">ScrollRect</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Rectangles scrolling on main thread only.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          stickyPositionConstraint
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/LayerTree/#type-StickyPositionConstraint class="param-type">StickyPositionConstraint</a>
+          
+      <div class="details-description">
+        <p>Sticky position constraint information</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-LayerId">
+          <span class="domain-dot">LayerTree.</span>LayerId
+          
+          <a href="#type-LayerId"
+             class="permalink"
+             data-slug="LayerTree.LayerId"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Unique Layer identifier.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-PaintProfile">
+          <span class="domain-dot">LayerTree.</span>PaintProfile
+          
+          <a href="#type-PaintProfile"
+             class="permalink"
+             data-slug="LayerTree.PaintProfile"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Array of timings, one per paint step.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>array</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-PictureTile">
+          <span class="domain-dot">LayerTree.</span>PictureTile
+          
+          <a href="#type-PictureTile"
+             class="permalink"
+             data-slug="LayerTree.PictureTile"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Serialized fragment of layer picture along with its offset within the layer.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          x
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Offset from owning layer left boundary</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          y
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Offset from owning layer top boundary</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          picture
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Base64-encoded snapshot data. (Encoded as a base64 string when passed over JSON)</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ScrollRect">
+          <span class="domain-dot">LayerTree.</span>ScrollRect
+          
+          <a href="#type-ScrollRect"
+             class="permalink"
+             data-slug="LayerTree.ScrollRect"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Rectangle where scrolling happens on the main thread.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          rect
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-Rect class="param-type">DOM.Rect</a>
+          
+      <div class="details-description">
+        <p>Rectangle itself.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          type
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Reason for rectangle to force scrolling on the main thread</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>RepaintsOnScroll</code>, <code>TouchEventHandler</code>, <code>WheelEventHandler</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-SnapshotId">
+          <span class="domain-dot">LayerTree.</span>SnapshotId
+          
+          <a href="#type-SnapshotId"
+             class="permalink"
+             data-slug="LayerTree.SnapshotId"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Unique snapshot identifier.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-StickyPositionConstraint">
+          <span class="domain-dot">LayerTree.</span>StickyPositionConstraint
+          
+          <a href="#type-StickyPositionConstraint"
+             class="permalink"
+             data-slug="LayerTree.StickyPositionConstraint"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Sticky position constraints.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          stickyBoxRect
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-Rect class="param-type">DOM.Rect</a>
+          
+      <div class="details-description">
+        <p>Layout rectangle of the sticky element before being shifted</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          containingBlockRect
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-Rect class="param-type">DOM.Rect</a>
+          
+      <div class="details-description">
+        <p>Layout rectangle of the containing block of the sticky element</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          nearestLayerShiftingStickyBox
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/LayerTree/#type-LayerId class="param-type">LayerId</a>
+          
+      <div class="details-description">
+        <p>The nearest sticky layer that shifts the sticky box</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          nearestLayerShiftingContainingBlock
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/LayerTree/#type-LayerId class="param-type">LayerId</a>
+          
+      <div class="details-description">
+        <p>The nearest sticky layer that shifts the containing block</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+    </div>
+    
+      </div>
+    </section>
+  </main>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60854461-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
