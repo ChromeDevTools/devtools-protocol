@@ -4949,34 +4949,30 @@ export namespace ProtocolTestsProxyApi {
         addService(params: Protocol.BluetoothEmulation.AddServiceRequest): Promise<{id: number, result: Protocol.BluetoothEmulation.AddServiceResponse, sessionId: string}>;
 
         /**
-         * Removes the service respresented by |serviceId| from the peripheral with
-         * |address|.
+         * Removes the service respresented by |serviceId| from the simulated central.
          */
         removeService(params: Protocol.BluetoothEmulation.RemoveServiceRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Adds a characteristic with |characteristicUuid| and |properties| to the
-         * service represented by |serviceId| in the peripheral with |address|.
+         * service represented by |serviceId|.
          */
         addCharacteristic(params: Protocol.BluetoothEmulation.AddCharacteristicRequest): Promise<{id: number, result: Protocol.BluetoothEmulation.AddCharacteristicResponse, sessionId: string}>;
 
         /**
          * Removes the characteristic respresented by |characteristicId| from the
-         * service respresented by |serviceId| in the peripheral with |address|.
+         * simulated central.
          */
         removeCharacteristic(params: Protocol.BluetoothEmulation.RemoveCharacteristicRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Adds a descriptor with |descriptorUuid| to the characteristic respresented
-         * by |characteristicId| in the service represented by |serviceId| of the
-         * peripheral with |address|.
+         * by |characteristicId|.
          */
         addDescriptor(params: Protocol.BluetoothEmulation.AddDescriptorRequest): Promise<{id: number, result: Protocol.BluetoothEmulation.AddDescriptorResponse, sessionId: string}>;
 
         /**
-         * Removes the descriptor with |descriptorId| from the characteristic
-         * respresented by |characteristicId| in the service represented by |serviceId|
-         * of the peripheral with |address|.
+         * Removes the descriptor with |descriptorId| from the simulated central.
          */
         removeDescriptor(params: Protocol.BluetoothEmulation.RemoveDescriptorRequest): Promise<{id: number, result: void, sessionId: string}>;
 

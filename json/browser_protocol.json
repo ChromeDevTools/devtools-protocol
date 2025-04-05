@@ -28089,12 +28089,8 @@
                 },
                 {
                     "name": "removeService",
-                    "description": "Removes the service respresented by |serviceId| from the peripheral with\n|address|.",
+                    "description": "Removes the service respresented by |serviceId| from the simulated central.",
                     "parameters": [
-                        {
-                            "name": "address",
-                            "type": "string"
-                        },
                         {
                             "name": "serviceId",
                             "type": "string"
@@ -28103,12 +28099,8 @@
                 },
                 {
                     "name": "addCharacteristic",
-                    "description": "Adds a characteristic with |characteristicUuid| and |properties| to the\nservice represented by |serviceId| in the peripheral with |address|.",
+                    "description": "Adds a characteristic with |characteristicUuid| and |properties| to the\nservice represented by |serviceId|.",
                     "parameters": [
-                        {
-                            "name": "address",
-                            "type": "string"
-                        },
                         {
                             "name": "serviceId",
                             "type": "string"
@@ -28132,16 +28124,8 @@
                 },
                 {
                     "name": "removeCharacteristic",
-                    "description": "Removes the characteristic respresented by |characteristicId| from the\nservice respresented by |serviceId| in the peripheral with |address|.",
+                    "description": "Removes the characteristic respresented by |characteristicId| from the\nsimulated central.",
                     "parameters": [
-                        {
-                            "name": "address",
-                            "type": "string"
-                        },
-                        {
-                            "name": "serviceId",
-                            "type": "string"
-                        },
                         {
                             "name": "characteristicId",
                             "type": "string"
@@ -28150,16 +28134,8 @@
                 },
                 {
                     "name": "addDescriptor",
-                    "description": "Adds a descriptor with |descriptorUuid| to the characteristic respresented\nby |characteristicId| in the service represented by |serviceId| of the\nperipheral with |address|.",
+                    "description": "Adds a descriptor with |descriptorUuid| to the characteristic respresented\nby |characteristicId|.",
                     "parameters": [
-                        {
-                            "name": "address",
-                            "type": "string"
-                        },
-                        {
-                            "name": "serviceId",
-                            "type": "string"
-                        },
                         {
                             "name": "characteristicId",
                             "type": "string"
@@ -28179,20 +28155,8 @@
                 },
                 {
                     "name": "removeDescriptor",
-                    "description": "Removes the descriptor with |descriptorId| from the characteristic\nrespresented by |characteristicId| in the service represented by |serviceId|\nof the peripheral with |address|.",
+                    "description": "Removes the descriptor with |descriptorId| from the simulated central.",
                     "parameters": [
-                        {
-                            "name": "address",
-                            "type": "string"
-                        },
-                        {
-                            "name": "serviceId",
-                            "type": "string"
-                        },
-                        {
-                            "name": "characteristicId",
-                            "type": "string"
-                        },
                         {
                             "name": "descriptorId",
                             "type": "string"

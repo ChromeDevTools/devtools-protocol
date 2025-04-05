@@ -19605,12 +19605,10 @@ export namespace Protocol {
         }
 
         export interface RemoveServiceRequest {
-            address: string;
             serviceId: string;
         }
 
         export interface AddCharacteristicRequest {
-            address: string;
             serviceId: string;
             characteristicUuid: string;
             properties: CharacteristicProperties;
@@ -19624,14 +19622,10 @@ export namespace Protocol {
         }
 
         export interface RemoveCharacteristicRequest {
-            address: string;
-            serviceId: string;
             characteristicId: string;
         }
 
         export interface AddDescriptorRequest {
-            address: string;
-            serviceId: string;
             characteristicId: string;
             descriptorUuid: string;
         }
@@ -19644,9 +19638,6 @@ export namespace Protocol {
         }
 
         export interface RemoveDescriptorRequest {
-            address: string;
-            serviceId: string;
-            characteristicId: string;
             descriptorId: string;
         }
 
