@@ -3902,11 +3902,14 @@ export namespace ProtocolProxyApi {
         sendMessageToTarget(params: Protocol.Target.SendMessageToTargetRequest): Promise<void>;
 
         /**
-         * Controls whether to automatically attach to new targets which are considered to be related to
-         * this one. When turned on, attaches to all existing related targets as well. When turned off,
+         * Controls whether to automatically attach to new targets which are considered
+         * to be directly related to this one (for example, iframes or workers).
+         * When turned on, attaches to all existing related targets as well. When turned off,
          * automatically detaches from all currently attached targets.
          * This also clears all targets added by `autoAttachRelated` from the list of targets to watch
          * for creation of related targets.
+         * You might want to call this recursively for auto-attached targets to attach
+         * to all available targets.
          */
         setAutoAttach(params: Protocol.Target.SetAutoAttachRequest): Promise<void>;
 

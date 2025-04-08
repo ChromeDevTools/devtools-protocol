@@ -1,7 +1,38 @@
 
 
+## Roll protocol to r1443917 — _2025-04-08T04:30:16.000Z_
+######  Diff: [`cbcb4a1...b097869`](https://github.com/ChromeDevTools/devtools-protocol/compare/cbcb4a1...b097869)
+
+```diff
+@@ browser_protocol.pdl:8453 @@ domain Page
+       cross-origin-isolated
+       deferred-fetch
+       deferred-fetch-minimal
++      device-attributes
+       digital-credentials-get
+       direct-sockets
+       direct-sockets-private
+@@ -11642,11 +11643,14 @@ domain Target
+       # Deprecated.
+       deprecated optional TargetID targetId
+ 
+-  # Controls whether to automatically attach to new targets which are considered to be related to
+-  # this one. When turned on, attaches to all existing related targets as well. When turned off,
++  # Controls whether to automatically attach to new targets which are considered
++  # to be directly related to this one (for example, iframes or workers).
++  # When turned on, attaches to all existing related targets as well. When turned off,
+   # automatically detaches from all currently attached targets.
+   # This also clears all targets added by `autoAttachRelated` from the list of targets to watch
+   # for creation of related targets.
++  # You might want to call this recursively for auto-attached targets to attach
++  # to all available targets.
+   command setAutoAttach
+     parameters
+       # Whether to auto-attach to related targets.
+```
+
 ## Roll protocol to r1443047 — _2025-04-05T04:29:44.000Z_
-######  Diff: [`280d28f...d06be5f`](https://github.com/ChromeDevTools/devtools-protocol/compare/280d28f...d06be5f)
+######  Diff: [`280d28f...cbcb4a1`](https://github.com/ChromeDevTools/devtools-protocol/compare/280d28f...cbcb4a1)
 
 ```diff
 @@ browser_protocol.pdl:13339 @@ experimental domain BluetoothEmulation
@@ -13589,26 +13620,4 @@ index 8e43695..7fd51df 100644
  
    # Whether the request complied with Certificate Transparency policy.
    type CertificateTransparencyCompliance extends string
-```
-
-## Roll protocol to r1025007 — _2022-07-16T04:32:11.000Z_
-######  Diff: [`a7636c9...7263e11`](https://github.com/ChromeDevTools/devtools-protocol/compare/a7636c9...7263e11)
-
-```diff
-@@ browser_protocol.pdl:754 @@ experimental domain Audits
-       DeprecationExample
-       DocumentDomainSettingWithoutOriginAgentClusterHeader
-       EventPath
-+      ExpectCTHeader
-       GeolocationInsecureOrigin
-       GeolocationInsecureOriginDeprecatedNotRemoved
-       GetUserMediaInsecureOrigin
-@@ -4875,6 +4876,7 @@ domain Network
-       TextTrack
-       XHR
-       Fetch
-+      Prefetch
-       EventSource
-       WebSocket
-       Manifest
 ```

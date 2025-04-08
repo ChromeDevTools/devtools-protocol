@@ -17900,6 +17900,7 @@
                         "cross-origin-isolated",
                         "deferred-fetch",
                         "deferred-fetch-minimal",
+                        "device-attributes",
                         "digital-credentials-get",
                         "direct-sockets",
                         "direct-sockets-private",
@@ -24742,7 +24743,7 @@
                 },
                 {
                     "name": "setAutoAttach",
-                    "description": "Controls whether to automatically attach to new targets which are considered to be related to\nthis one. When turned on, attaches to all existing related targets as well. When turned off,\nautomatically detaches from all currently attached targets.\nThis also clears all targets added by `autoAttachRelated` from the list of targets to watch\nfor creation of related targets.",
+                    "description": "Controls whether to automatically attach to new targets which are considered\nto be directly related to this one (for example, iframes or workers).\nWhen turned on, attaches to all existing related targets as well. When turned off,\nautomatically detaches from all currently attached targets.\nThis also clears all targets added by `autoAttachRelated` from the list of targets to watch\nfor creation of related targets.\nYou might want to call this recursively for auto-attached targets to attach\nto all available targets.",
                     "parameters": [
                         {
                             "name": "autoAttach",
