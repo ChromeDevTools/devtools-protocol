@@ -4270,7 +4270,7 @@ export namespace Protocol {
         /**
          * Browser command ids used by executeBrowserCommand.
          */
-        export type BrowserCommandId = ('openTabSearch' | 'closeTabSearch');
+        export type BrowserCommandId = ('openTabSearch' | 'closeTabSearch' | 'openGlic');
 
         /**
          * Chrome histogram bucket.
@@ -10966,7 +10966,7 @@ export namespace Protocol {
         /**
          * Source of service worker router.
          */
-        export type ServiceWorkerRouterSource = ('network' | 'cache' | 'fetch-event' | 'race-network-and-fetch-handler');
+        export type ServiceWorkerRouterSource = ('network' | 'cache' | 'fetch-event' | 'race-network-and-fetch-handler' | 'race-network-and-cache');
 
         export interface ServiceWorkerRouterInfo {
             /**

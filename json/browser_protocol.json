@@ -3026,7 +3026,8 @@
                     "type": "string",
                     "enum": [
                         "openTabSearch",
-                        "closeTabSearch"
+                        "closeTabSearch",
+                        "openGlic"
                     ]
                 },
                 {
@@ -13519,7 +13520,8 @@
                         "network",
                         "cache",
                         "fetch-event",
-                        "race-network-and-fetch-handler"
+                        "race-network-and-fetch-handler",
+                        "race-network-and-cache"
                     ]
                 },
                 {

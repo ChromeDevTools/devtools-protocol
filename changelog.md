@@ -1,7 +1,29 @@
 
 
+## Roll protocol to r1445099 — _2025-04-10T04:30:17.000Z_
+######  Diff: [`a4ea2da...40d0e13`](https://github.com/ChromeDevTools/devtools-protocol/compare/a4ea2da...40d0e13)
+
+```diff
+@@ browser_protocol.pdl:1537 @@ domain Browser
+     enum
+       openTabSearch
+       closeTabSearch
++      openGlic
+ 
+   # Set permission settings for given origin.
+   experimental command setPermission
+@@ -6333,6 +6334,7 @@ domain Network
+       cache
+       fetch-event
+       race-network-and-fetch-handler
++      race-network-and-cache
+ 
+   experimental type ServiceWorkerRouterInfo extends object
+     properties
+```
+
 ## Roll protocol to r1443917 — _2025-04-08T04:30:16.000Z_
-######  Diff: [`cbcb4a1...b097869`](https://github.com/ChromeDevTools/devtools-protocol/compare/cbcb4a1...b097869)
+######  Diff: [`cbcb4a1...a4ea2da`](https://github.com/ChromeDevTools/devtools-protocol/compare/cbcb4a1...a4ea2da)
 
 ```diff
 @@ browser_protocol.pdl:8453 @@ domain Page

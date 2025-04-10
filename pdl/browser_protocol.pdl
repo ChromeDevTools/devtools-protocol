@@ -1537,6 +1537,7 @@ domain Browser
     enum
       openTabSearch
       closeTabSearch
+      openGlic
 
   # Set permission settings for given origin.
   experimental command setPermission
@@ -6333,6 +6334,7 @@ domain Network
       cache
       fetch-event
       race-network-and-fetch-handler
+      race-network-and-cache
 
   experimental type ServiceWorkerRouterInfo extends object
     properties
