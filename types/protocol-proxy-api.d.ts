@@ -1962,8 +1962,8 @@ export namespace ProtocolProxyApi {
         setEmulatedVisionDeficiency(params: Protocol.Emulation.SetEmulatedVisionDeficiencyRequest): Promise<void>;
 
         /**
-         * Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position
-         * unavailable.
+         * Overrides the Geolocation Position or Error. Omitting latitude, longitude or
+         * accuracy emulates position unavailable.
          */
         setGeolocationOverride(params: Protocol.Emulation.SetGeolocationOverrideRequest): Promise<void>;
 

@@ -1,7 +1,39 @@
 
 
+## Roll protocol to r1446921 — _2025-04-15T04:30:37.000Z_
+######  Diff: [`dae4579...b8b8579`](https://github.com/ChromeDevTools/devtools-protocol/compare/dae4579...b8b8579)
+
+```diff
+@@ browser_protocol.pdl:4676 @@ domain Emulation
+         protanopia
+         tritanopia
+ 
+-  # Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position
+-  # unavailable.
++  # Overrides the Geolocation Position or Error. Omitting latitude, longitude or
++  # accuracy emulates position unavailable.
+   command setGeolocationOverride
+     parameters
+       # Mock latitude
+@@ -4686,6 +4686,14 @@ domain Emulation
+       optional number longitude
+       # Mock accuracy
+       optional number accuracy
++      # Mock altitude
++      optional number altitude
++      # Mock altitudeAccuracy
++      optional number altitudeAccuracy
++      # Mock heading
++      optional number heading
++      # Mock speed
++      optional number speed
+ 
+   experimental command getOverriddenSensorInformation
+     parameters
+```
+
 ## Roll protocol to r1445099 — _2025-04-10T04:30:17.000Z_
-######  Diff: [`a4ea2da...40d0e13`](https://github.com/ChromeDevTools/devtools-protocol/compare/a4ea2da...40d0e13)
+######  Diff: [`a4ea2da...dae4579`](https://github.com/ChromeDevTools/devtools-protocol/compare/a4ea2da...dae4579)
 
 ```diff
 @@ browser_protocol.pdl:1537 @@ domain Browser
@@ -13615,31 +13647,4 @@ index 8e43695..7fd51df 100644
    # This command is deprecated. Use getScriptSource instead.
    deprecated command getWasmBytecode
      parameters
-```
-
-## Roll protocol to r1025565 — _2022-07-19T04:49:30.000Z_
-######  Diff: [`4946b04...d27d2d7`](https://github.com/ChromeDevTools/devtools-protocol/compare/4946b04...d27d2d7)
-
-```diff
-@@ browser_protocol.pdl:754 @@ experimental domain Audits
-       DeprecationExample
-       DocumentDomainSettingWithoutOriginAgentClusterHeader
-       EventPath
--      ExpectCTHeader
-       GeolocationInsecureOrigin
-       GeolocationInsecureOriginDeprecatedNotRemoved
-       GetUserMediaInsecureOrigin
-@@ -5105,6 +5104,12 @@ domain Network
-       array of SignedCertificateTimestamp signedCertificateTimestampList
-       # Whether the request complied with Certificate Transparency policy
-       CertificateTransparencyCompliance certificateTransparencyCompliance
-+      # The signature algorithm used by the server in the TLS server signature,
-+      # represented as a TLS SignatureScheme code point. Omitted if not
-+      # applicable or not known.
-+      optional integer serverSignatureAlgorithm
-+      # Whether the connection used Encrypted ClientHello
-+      boolean encryptedClientHello
- 
-   # Whether the request complied with Certificate Transparency policy.
-   type CertificateTransparencyCompliance extends string
 ```

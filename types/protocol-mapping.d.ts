@@ -2868,8 +2868,8 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
-         * Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position
-         * unavailable.
+         * Overrides the Geolocation Position or Error. Omitting latitude, longitude or
+         * accuracy emulates position unavailable.
          */
         'Emulation.setGeolocationOverride': {
             paramsType: [Protocol.Emulation.SetGeolocationOverrideRequest?];

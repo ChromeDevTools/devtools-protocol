@@ -8779,6 +8779,22 @@ export namespace Protocol {
              * Mock accuracy
              */
             accuracy?: number;
+            /**
+             * Mock altitude
+             */
+            altitude?: number;
+            /**
+             * Mock altitudeAccuracy
+             */
+            altitudeAccuracy?: number;
+            /**
+             * Mock heading
+             */
+            heading?: number;
+            /**
+             * Mock speed
+             */
+            speed?: number;
         }
 
         export interface GetOverriddenSensorInformationRequest {
