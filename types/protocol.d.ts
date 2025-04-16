@@ -12820,6 +12820,38 @@ export namespace Protocol {
         }
 
         /**
+         * Fired when data is sent to tcp direct socket stream.
+         */
+        export interface DirectTCPSocketChunkSentEvent {
+            identifier: RequestId;
+            data: string;
+            timestamp: MonotonicTime;
+        }
+
+        /**
+         * Fired when data is received from tcp direct socket stream.
+         */
+        export interface DirectTCPSocketChunkReceivedEvent {
+            identifier: RequestId;
+            data: string;
+            timestamp: MonotonicTime;
+        }
+
+        /**
+         * Fired when there is an error
+         * when writing to tcp direct socket stream.
+         * For example, if user writes illegal type like string
+         * instead of ArrayBuffer or ArrayBufferView.
+         * There's no reporting for reading, because
+         * we cannot know errors on the other side.
+         */
+        export interface DirectTCPSocketChunkErrorEvent {
+            identifier: RequestId;
+            errorMessage: string;
+            timestamp: MonotonicTime;
+        }
+
+        /**
          * Fired when additional information about a requestWillBeSent event is available from the
          * network stack. Not every requestWillBeSent event will have an additional
          * requestWillBeSentExtraInfo fired for it, and there is no guarantee whether requestWillBeSent

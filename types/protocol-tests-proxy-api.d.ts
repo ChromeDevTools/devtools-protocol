@@ -2920,6 +2920,32 @@ export namespace ProtocolTestsProxyApi {
         onceDirectTCPSocketClosed(eventMatcher?: (event: { params: Protocol.Network.DirectTCPSocketClosedEvent }) => boolean): Promise<{ params: Protocol.Network.DirectTCPSocketClosedEvent }>;
 
         /**
+         * Fired when data is sent to tcp direct socket stream.
+         */
+        onDirectTCPSocketChunkSent(listener: (event: { params: Protocol.Network.DirectTCPSocketChunkSentEvent }) => void): void;
+        offDirectTCPSocketChunkSent(listener: (event: { params: Protocol.Network.DirectTCPSocketChunkSentEvent }) => void): void;
+        onceDirectTCPSocketChunkSent(eventMatcher?: (event: { params: Protocol.Network.DirectTCPSocketChunkSentEvent }) => boolean): Promise<{ params: Protocol.Network.DirectTCPSocketChunkSentEvent }>;
+
+        /**
+         * Fired when data is received from tcp direct socket stream.
+         */
+        onDirectTCPSocketChunkReceived(listener: (event: { params: Protocol.Network.DirectTCPSocketChunkReceivedEvent }) => void): void;
+        offDirectTCPSocketChunkReceived(listener: (event: { params: Protocol.Network.DirectTCPSocketChunkReceivedEvent }) => void): void;
+        onceDirectTCPSocketChunkReceived(eventMatcher?: (event: { params: Protocol.Network.DirectTCPSocketChunkReceivedEvent }) => boolean): Promise<{ params: Protocol.Network.DirectTCPSocketChunkReceivedEvent }>;
+
+        /**
+         * Fired when there is an error
+         * when writing to tcp direct socket stream.
+         * For example, if user writes illegal type like string
+         * instead of ArrayBuffer or ArrayBufferView.
+         * There's no reporting for reading, because
+         * we cannot know errors on the other side.
+         */
+        onDirectTCPSocketChunkError(listener: (event: { params: Protocol.Network.DirectTCPSocketChunkErrorEvent }) => void): void;
+        offDirectTCPSocketChunkError(listener: (event: { params: Protocol.Network.DirectTCPSocketChunkErrorEvent }) => void): void;
+        onceDirectTCPSocketChunkError(eventMatcher?: (event: { params: Protocol.Network.DirectTCPSocketChunkErrorEvent }) => boolean): Promise<{ params: Protocol.Network.DirectTCPSocketChunkErrorEvent }>;
+
+        /**
          * Fired when additional information about a requestWillBeSent event is available from the
          * network stack. Not every requestWillBeSent event will have an additional
          * requestWillBeSentExtraInfo fired for it, and there is no guarantee whether requestWillBeSent

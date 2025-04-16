@@ -1,7 +1,46 @@
 
 
+## Roll protocol to r1447524 — _2025-04-16T04:30:24.000Z_
+######  Diff: [`4526a56...12a6aa9`](https://github.com/ChromeDevTools/devtools-protocol/compare/4526a56...12a6aa9)
+
+```diff
+@@ browser_protocol.pdl:7512 @@ domain Network
+       RequestId identifier
+       MonotonicTime timestamp
+ 
++  # Fired when data is sent to tcp direct socket stream.
++  experimental event directTCPSocketChunkSent
++    parameters
++      RequestId identifier
++      binary data
++      MonotonicTime timestamp
++
++  # Fired when data is received from tcp direct socket stream.
++  experimental event directTCPSocketChunkReceived
++    parameters
++      RequestId identifier
++      binary data
++      MonotonicTime timestamp
++
++  # Fired when there is an error
++  # when writing to tcp direct socket stream.
++  # For example, if user writes illegal type like string
++  # instead of ArrayBuffer or ArrayBufferView.
++  # There's no reporting for reading, because
++  # we cannot know errors on the other side.
++  experimental event directTCPSocketChunkError
++    parameters
++      RequestId identifier
++      string errorMessage
++      MonotonicTime timestamp
++
+   experimental type PrivateNetworkRequestPolicy extends string
+     enum
+       Allow
+```
+
 ## Roll protocol to r1446921 — _2025-04-15T04:30:37.000Z_
-######  Diff: [`dae4579...b8b8579`](https://github.com/ChromeDevTools/devtools-protocol/compare/dae4579...b8b8579)
+######  Diff: [`dae4579...4526a56`](https://github.com/ChromeDevTools/devtools-protocol/compare/dae4579...4526a56)
 
 ```diff
 @@ browser_protocol.pdl:4676 @@ domain Emulation

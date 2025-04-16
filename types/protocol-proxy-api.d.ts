@@ -2732,6 +2732,26 @@ export namespace ProtocolProxyApi {
         on(event: 'directTCPSocketClosed', listener: (params: Protocol.Network.DirectTCPSocketClosedEvent) => void): void;
 
         /**
+         * Fired when data is sent to tcp direct socket stream.
+         */
+        on(event: 'directTCPSocketChunkSent', listener: (params: Protocol.Network.DirectTCPSocketChunkSentEvent) => void): void;
+
+        /**
+         * Fired when data is received from tcp direct socket stream.
+         */
+        on(event: 'directTCPSocketChunkReceived', listener: (params: Protocol.Network.DirectTCPSocketChunkReceivedEvent) => void): void;
+
+        /**
+         * Fired when there is an error
+         * when writing to tcp direct socket stream.
+         * For example, if user writes illegal type like string
+         * instead of ArrayBuffer or ArrayBufferView.
+         * There's no reporting for reading, because
+         * we cannot know errors on the other side.
+         */
+        on(event: 'directTCPSocketChunkError', listener: (params: Protocol.Network.DirectTCPSocketChunkErrorEvent) => void): void;
+
+        /**
          * Fired when additional information about a requestWillBeSent event is available from the
          * network stack. Not every requestWillBeSent event will have an additional
          * requestWillBeSentExtraInfo fired for it, and there is no guarantee whether requestWillBeSent
