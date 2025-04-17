@@ -23763,6 +23763,26 @@
                             }
                         }
                     ]
+                },
+                {
+                    "name": "setProtectedAudienceKAnonymity",
+                    "parameters": [
+                        {
+                            "name": "owner",
+                            "type": "string"
+                        },
+                        {
+                            "name": "name",
+                            "type": "string"
+                        },
+                        {
+                            "name": "hashes",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
                 }
             ],
             "events": [

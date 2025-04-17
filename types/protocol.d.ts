@@ -17037,6 +17037,12 @@ export namespace Protocol {
             matchedUrls: string[];
         }
 
+        export interface SetProtectedAudienceKAnonymityRequest {
+            owner: string;
+            name: string;
+            hashes: string[];
+        }
+
         /**
          * A cache's contents have been modified.
          */

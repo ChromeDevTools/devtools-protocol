@@ -4068,6 +4068,8 @@ export namespace ProtocolTestsProxyApi {
          */
         getAffectedUrlsForThirdPartyCookieMetadata(params: Protocol.Storage.GetAffectedUrlsForThirdPartyCookieMetadataRequest): Promise<{id: number, result: Protocol.Storage.GetAffectedUrlsForThirdPartyCookieMetadataResponse, sessionId: string}>;
 
+        setProtectedAudienceKAnonymity(params: Protocol.Storage.SetProtectedAudienceKAnonymityRequest): Promise<{id: number, result: void, sessionId: string}>;
+
         /**
          * A cache's contents have been modified.
          */

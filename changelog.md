@@ -1,7 +1,25 @@
 
 
+## Roll protocol to r1448144 — _2025-04-17T04:30:33.000Z_
+######  Diff: [`82e761e...0a4c91f`](https://github.com/ChromeDevTools/devtools-protocol/compare/82e761e...0a4c91f)
+
+```diff
+@@ browser_protocol.pdl:11333 @@ experimental domain Storage
+       # party URL, only the first-party URL is returned in the array.
+       array of string matchedUrls
+ 
++  command setProtectedAudienceKAnonymity
++    parameters
++      string owner
++      string name
++      array of binary hashes
++
+ # The SystemInfo domain defines methods and events for querying low-level system information.
+ experimental domain SystemInfo
+```
+
 ## Roll protocol to r1447524 — _2025-04-16T04:30:24.000Z_
-######  Diff: [`4526a56...12a6aa9`](https://github.com/ChromeDevTools/devtools-protocol/compare/4526a56...12a6aa9)
+######  Diff: [`4526a56...82e761e`](https://github.com/ChromeDevTools/devtools-protocol/compare/4526a56...82e761e)
 
 ```diff
 @@ browser_protocol.pdl:7512 @@ domain Network

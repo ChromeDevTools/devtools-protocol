@@ -3770,6 +3770,8 @@ export namespace ProtocolProxyApi {
          */
         getAffectedUrlsForThirdPartyCookieMetadata(params: Protocol.Storage.GetAffectedUrlsForThirdPartyCookieMetadataRequest): Promise<Protocol.Storage.GetAffectedUrlsForThirdPartyCookieMetadataResponse>;
 
+        setProtectedAudienceKAnonymity(params: Protocol.Storage.SetProtectedAudienceKAnonymityRequest): Promise<void>;
+
         /**
          * A cache's contents have been modified.
          */

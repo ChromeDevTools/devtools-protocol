@@ -4712,6 +4712,10 @@ export namespace ProtocolMapping {
             paramsType: [Protocol.Storage.GetAffectedUrlsForThirdPartyCookieMetadataRequest];
             returnType: Protocol.Storage.GetAffectedUrlsForThirdPartyCookieMetadataResponse;
         };
+        'Storage.setProtectedAudienceKAnonymity': {
+            paramsType: [Protocol.Storage.SetProtectedAudienceKAnonymityRequest];
+            returnType: void;
+        };
         /**
          * Returns information about the system.
          */
