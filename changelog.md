@@ -1,7 +1,38 @@
 
 
+## Roll protocol to r1449119 — _2025-04-19T04:29:57.000Z_
+######  Diff: [`a38625f...fcc2bbf`](https://github.com/ChromeDevTools/devtools-protocol/compare/a38625f...fcc2bbf)
+
+```diff
+@@ browser_protocol.pdl:4854 @@ domain Emulation
+       # Whether the override should be enabled.
+       boolean enabled
+ 
++  # Allows overriding the difference between the small and large viewport sizes, which determine the
++  # value of the `svh` and `lvh` unit, respectively. Only supported for top-level frames.
++  experimental command setSmallViewportHeightDifferenceOverride
++    parameters
++      # This will cause an element of size 100svh to be `difference` pixels smaller than an element
++      # of size 100lvh.
++      integer difference
++
+ # This domain provides experimental commands only supported in headless mode.
+ experimental domain HeadlessExperimental
+   depends on Page
+@@ -9977,7 +9985,8 @@ domain Page
+       RequestedByWebViewClient
+       PostMessageByWebViewClient
+       CacheControlNoStoreDeviceBoundSessionTerminated
+-      CacheLimitPruned
++      CacheLimitPrunedOnModerateMemoryPressure
++      CacheLimitPrunedOnCriticalMemoryPressure
+ 
+   # Types of not restored reasons for back-forward cache.
+   experimental type BackForwardCacheNotRestoredReasonType extends string
+```
+
 ## Roll protocol to r1448144 — _2025-04-17T04:30:33.000Z_
-######  Diff: [`82e761e...0a4c91f`](https://github.com/ChromeDevTools/devtools-protocol/compare/82e761e...0a4c91f)
+######  Diff: [`82e761e...a38625f`](https://github.com/ChromeDevTools/devtools-protocol/compare/82e761e...a38625f)
 
 ```diff
 @@ browser_protocol.pdl:11333 @@ experimental domain Storage

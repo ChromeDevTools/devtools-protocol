@@ -2192,6 +2192,12 @@ export namespace ProtocolTestsProxyApi {
         setAutomationOverride(params: Protocol.Emulation.SetAutomationOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
+         * Allows overriding the difference between the small and large viewport sizes, which determine the
+         * value of the `svh` and `lvh` unit, respectively. Only supported for top-level frames.
+         */
+        setSmallViewportHeightDifferenceOverride(params: Protocol.Emulation.SetSmallViewportHeightDifferenceOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
          * Notification sent after the virtual time budget for the current VirtualTimePolicy has run out.
          */
         onVirtualTimeBudgetExpired(listener: (event: ) => void): void;

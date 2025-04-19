@@ -10461,6 +10461,18 @@
                             "type": "boolean"
                         }
                     ]
+                },
+                {
+                    "name": "setSmallViewportHeightDifferenceOverride",
+                    "description": "Allows overriding the difference between the small and large viewport sizes, which determine the\nvalue of the `svh` and `lvh` unit, respectively. Only supported for top-level frames.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "difference",
+                            "description": "This will cause an element of size 100svh to be `difference` pixels smaller than an element\nof size 100lvh.",
+                            "type": "integer"
+                        }
+                    ]
                 }
             ],
             "events": [
@@ -19403,7 +19415,8 @@
                         "RequestedByWebViewClient",
                         "PostMessageByWebViewClient",
                         "CacheControlNoStoreDeviceBoundSessionTerminated",
-                        "CacheLimitPruned"
+                        "CacheLimitPrunedOnModerateMemoryPressure",
+                        "CacheLimitPrunedOnCriticalMemoryPressure"
                     ]
                 },
                 {
