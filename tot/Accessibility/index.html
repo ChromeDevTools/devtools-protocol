@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Chrome DevTools Protocol - version tot - Accessibility domain" />
+  <link rel="icon" type="image/png" href="/devtools-protocol/images/logo.png" />
+    <title>Chrome DevTools Protocol - Accessibility domain</title>
+
+  <meta name="theme-color" content="#303F9F" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@chromedevtools" />
+  <meta name="twitter:creator" content="@chromedevtools" />
+  <meta property="og:title" content="Chrome DevTools Protocol" />
+  <meta property="og:image" content="https://developers.google.com/web/tools/images/chrome-devtools-16x9_720.png" />
+    <meta property="og:description" content="Chrome DevTools Protocol - version tot - Accessibility domain" />
+
+  <script type="module" src="/devtools-protocol/scripts/index.js"></script>
+  <link href="/devtools-protocol/styles/protocol.css" rel="stylesheet">
+</head>
+<body>
+  <aside>
+    <div id="home" class="navs">
+      <nav>
+        <a href="/devtools-protocol/">Home</a>
+        <button class="aside-close-button" aria-label="Close navigation">x</button>
+      </nav>
+    </div>
+    <div id="versions" class="navs">
+      <header>Versions</header>
+      <nav>
+        <a href="/devtools-protocol/tot" name="tot">
+          latest (tip-of-tree)
+        </a>
+        <a href="/devtools-protocol/v8" name="v8">
+          v8-inspector (node)
+        </a>
+        <a href="/devtools-protocol/1-3" name="1-3">
+          stable (1.3)
+        </a><!-- 
+        <a href="/devtools-protocol/1-2" name="1-2">
+          stable (1.2)
+        </a> -->
+      </nav>
+    </div>
+
+    <div id="domains" class="navs version-tot">
+      <header>Domains</header>
+      <div class="scroller">
+        <nav>
+          <a href="/devtools-protocol/tot/Accessibility" class="tot experimental">Accessibility</a>
+          <a href="/devtools-protocol/tot/Animation" class="tot experimental">Animation</a>
+          <a href="/devtools-protocol/tot/Audits" class="tot experimental">Audits</a>
+          <a href="/devtools-protocol/tot/Autofill" class="tot experimental">Autofill</a>
+          <a href="/devtools-protocol/tot/BackgroundService" class="tot experimental">BackgroundService</a>
+          <a href="/devtools-protocol/tot/Browser" class="tot 1-3">Browser</a>
+          <a href="/devtools-protocol/tot/CacheStorage" class="tot experimental">CacheStorage</a>
+          <a href="/devtools-protocol/tot/Cast" class="tot experimental">Cast</a>
+          <a href="/devtools-protocol/tot/Console" class="tot deprecated v8">Console</a>
+          <a href="/devtools-protocol/tot/CSS" class="tot experimental">CSS</a>
+          <a href="/devtools-protocol/tot/Database" class="tot experimental">Database</a>
+          <a href="/devtools-protocol/tot/Debugger" class="tot 1-2 1-3 v8">Debugger</a>
+          <a href="/devtools-protocol/tot/DeviceAccess" class="tot experimental">DeviceAccess</a>
+          <a href="/devtools-protocol/tot/DeviceOrientation" class="tot experimental">DeviceOrientation</a>
+          <a href="/devtools-protocol/tot/DOM" class="tot 1-2 1-3">DOM</a>
+          <a href="/devtools-protocol/tot/DOMDebugger" class="tot 1-2 1-3">DOMDebugger</a>
+          <a href="/devtools-protocol/tot/DOMSnapshot" class="tot experimental">DOMSnapshot</a>
+          <a href="/devtools-protocol/tot/DOMStorage" class="tot experimental">DOMStorage</a>
+          <a href="/devtools-protocol/tot/Emulation" class="tot 1-2 1-3">Emulation</a>
+          <a href="/devtools-protocol/tot/EventBreakpoints" class="tot experimental">EventBreakpoints</a>
+          <a href="/devtools-protocol/tot/Extensions" class="tot experimental">Extensions</a>
+          <a href="/devtools-protocol/tot/FedCm" class="tot experimental">FedCm</a>
+          <a href="/devtools-protocol/tot/Fetch" class="tot 1-3">Fetch</a>
+          <a href="/devtools-protocol/tot/HeadlessExperimental" class="tot experimental">HeadlessExperimental</a>
+          <a href="/devtools-protocol/tot/HeapProfiler" class="tot experimental v8">HeapProfiler</a>
+          <a href="/devtools-protocol/tot/IndexedDB" class="tot experimental">IndexedDB</a>
+          <a href="/devtools-protocol/tot/Input" class="tot 1-2 1-3">Input</a>
+          <a href="/devtools-protocol/tot/Inspector" class="tot experimental">Inspector</a>
+          <a href="/devtools-protocol/tot/IO" class="tot 1-3">IO</a>
+          <a href="/devtools-protocol/tot/LayerTree" class="tot experimental">LayerTree</a>
+          <a href="/devtools-protocol/tot/Log" class="tot 1-3">Log</a>
+          <a href="/devtools-protocol/tot/Media" class="tot experimental">Media</a>
+          <a href="/devtools-protocol/tot/Memory" class="tot experimental">Memory</a>
+          <a href="/devtools-protocol/tot/Network" class="tot 1-2 1-3">Network</a>
+          <a href="/devtools-protocol/tot/Overlay" class="tot experimental">Overlay</a>
+          <a href="/devtools-protocol/tot/Page" class="tot 1-2 1-3">Page</a>
+          <a href="/devtools-protocol/tot/Performance" class="tot 1-3">Performance</a>
+          <a href="/devtools-protocol/tot/PerformanceTimeline" class="tot experimental">PerformanceTimeline</a>
+          <a href="/devtools-protocol/tot/Preload" class="tot experimental">Preload</a>
+          <a href="/devtools-protocol/tot/Profiler" class="tot 1-2 1-3 v8">Profiler</a>
+          <a href="/devtools-protocol/tot/Runtime" class="tot 1-2 1-3 v8">Runtime</a>
+          <a href="/devtools-protocol/tot/Schema" class="tot deprecated 1-2 v8">Schema</a>
+          <a href="/devtools-protocol/tot/Security" class="tot 1-3">Security</a>
+          <a href="/devtools-protocol/tot/ServiceWorker" class="tot experimental">ServiceWorker</a>
+          <a href="/devtools-protocol/tot/Storage" class="tot experimental">Storage</a>
+          <a href="/devtools-protocol/tot/SystemInfo" class="tot experimental">SystemInfo</a>
+          <a href="/devtools-protocol/tot/Target" class="tot 1-3">Target</a>
+          <a href="/devtools-protocol/tot/Tethering" class="tot experimental">Tethering</a>
+          <a href="/devtools-protocol/tot/Tracing" class="tot experimental">Tracing</a>
+          <a href="/devtools-protocol/tot/WebAudio" class="tot experimental">WebAudio</a>
+          <a href="/devtools-protocol/tot/WebAuthn" class="tot experimental">WebAuthn</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <h1>Chrome DevTools Protocol</h1>
+      <button class="menu-link">Navigation</button>
+      <cr-search-control base-url="/devtools-protocol/" protocol-search-index="/search_index/tot.json"></cr-search-control>
+    </header>
+    <section>
+      <div class="main-content-section domain">
+        
+    <div class="domain-section">
+      <div id="header">
+        <h2 class="heading">Accessibility Domain</h2>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        <h3>Methods</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#method-disable"><span class="domain-dot">Accessibility.</span>disable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-enable"><span class="domain-dot">Accessibility.</span>enable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getAXNodeAndAncestors"><span class="domain-dot">Accessibility.</span>getAXNodeAndAncestors</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getChildAXNodes"><span class="domain-dot">Accessibility.</span>getChildAXNodes</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getFullAXTree"><span class="domain-dot">Accessibility.</span>getFullAXTree</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getPartialAXTree"><span class="domain-dot">Accessibility.</span>getPartialAXTree</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getRootAXNode"><span class="domain-dot">Accessibility.</span>getRootAXNode</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-queryAXTree"><span class="domain-dot">Accessibility.</span>queryAXTree</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+        <h3>Events</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#event-loadComplete"><span class="domain-dot">Accessibility.</span>loadComplete</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-nodesUpdated"><span class="domain-dot">Accessibility.</span>nodesUpdated</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+        <h3>Types</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#type-AXNode"><span class="domain-dot">Accessibility.</span>AXNode</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-AXNodeId"><span class="domain-dot">Accessibility.</span>AXNodeId</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-AXProperty"><span class="domain-dot">Accessibility.</span>AXProperty</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-AXPropertyName"><span class="domain-dot">Accessibility.</span>AXPropertyName</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-AXRelatedNode"><span class="domain-dot">Accessibility.</span>AXRelatedNode</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-AXValue"><span class="domain-dot">Accessibility.</span>AXValue</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-AXValueNativeSourceType"><span class="domain-dot">Accessibility.</span>AXValueNativeSourceType</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-AXValueSource"><span class="domain-dot">Accessibility.</span>AXValueSource</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-AXValueSourceType"><span class="domain-dot">Accessibility.</span>AXValueSourceType</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-AXValueType"><span class="domain-dot">Accessibility.</span>AXValueType</a>
+        
+      </div>
+      
+      </div>
+
+      
+      <h3 id="methods">Methods</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="method-disable">
+          <span class="domain-dot">Accessibility.</span>disable
+          
+          <a href="#method-disable"
+             class="permalink"
+             data-slug="Accessibility.disable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Disables the accessibility domain.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-enable">
+          <span class="domain-dot">Accessibility.</span>enable
+          
+          <a href="#method-enable"
+             class="permalink"
+             data-slug="Accessibility.enable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enables the accessibility domain which causes <code>AXNodeId</code>s to remain consistent between method calls.
+This turns on accessibility for the page, which can impact performance until accessibility is disabled.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getAXNodeAndAncestors">
+          <span class="domain-dot">Accessibility.</span>getAXNodeAndAncestors
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-getAXNodeAndAncestors"
+             class="permalink"
+             data-slug="Accessibility.getAXNodeAndAncestors"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fetches a node and all ancestors up to and including the root.
+Requires <code>enable()</code> to have been called previously.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-NodeId class="param-type">DOM.NodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the node to get.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          backendNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-BackendNodeId class="param-type">DOM.BackendNodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the backend node to get.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          objectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObjectId class="param-type">Runtime.RemoteObjectId</a>
+          
+      <div class="details-description">
+        <p>JavaScript object id of the node wrapper to get.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodes
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Accessibility/#type-AXNode class="param-type">AXNode</a> ]</span></span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getChildAXNodes">
+          <span class="domain-dot">Accessibility.</span>getChildAXNodes
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-getChildAXNodes"
+             class="permalink"
+             data-slug="Accessibility.getChildAXNodes"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fetches a particular accessibility node by AXNodeId.
+Requires <code>enable()</code> to have been called previously.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          id
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Accessibility/#type-AXNodeId class="param-type">AXNodeId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          frameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Page/#type-FrameId class="param-type">Page.FrameId</a>
+          
+      <div class="details-description">
+        <p>The frame in whose document the node resides.
+If omitted, the root frame is used.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodes
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Accessibility/#type-AXNode class="param-type">AXNode</a> ]</span></span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getFullAXTree">
+          <span class="domain-dot">Accessibility.</span>getFullAXTree
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-getFullAXTree"
+             class="permalink"
+             data-slug="Accessibility.getFullAXTree"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fetches the entire accessibility tree for the root Document</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          depth
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>The maximum depth at which descendants of the root node should be retrieved.
+If omitted, the full tree is returned.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          frameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Page/#type-FrameId class="param-type">Page.FrameId</a>
+          
+      <div class="details-description">
+        <p>The frame for whose document the AX tree should be retrieved.
+If omitted, the root frame is used.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodes
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Accessibility/#type-AXNode class="param-type">AXNode</a> ]</span></span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getPartialAXTree">
+          <span class="domain-dot">Accessibility.</span>getPartialAXTree
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-getPartialAXTree"
+             class="permalink"
+             data-slug="Accessibility.getPartialAXTree"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fetches the accessibility node and partial accessibility tree for this DOM node, if it exists.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-NodeId class="param-type">DOM.NodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the node to get the partial accessibility tree for.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          backendNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-BackendNodeId class="param-type">DOM.BackendNodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the backend node to get the partial accessibility tree for.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          objectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObjectId class="param-type">Runtime.RemoteObjectId</a>
+          
+      <div class="details-description">
+        <p>JavaScript object id of the node wrapper to get the partial accessibility tree for.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          fetchRelatives
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether to fetch this node&#39;s ancestors, siblings and children. Defaults to true.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodes
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Accessibility/#type-AXNode class="param-type">AXNode</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>The <code>Accessibility.AXNode</code> for this DOM node, if it exists, plus its ancestors, siblings and
+children, if requested.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getRootAXNode">
+          <span class="domain-dot">Accessibility.</span>getRootAXNode
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-getRootAXNode"
+             class="permalink"
+             data-slug="Accessibility.getRootAXNode"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fetches the root node.
+Requires <code>enable()</code> to have been called previously.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          frameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Page/#type-FrameId class="param-type">Page.FrameId</a>
+          
+      <div class="details-description">
+        <p>The frame in whose document the node resides.
+If omitted, the root frame is used.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          node
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Accessibility/#type-AXNode class="param-type">AXNode</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-queryAXTree">
+          <span class="domain-dot">Accessibility.</span>queryAXTree
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-queryAXTree"
+             class="permalink"
+             data-slug="Accessibility.queryAXTree"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Query a DOM node&#39;s accessibility subtree for accessible name and role.
+This command computes the name and role for all nodes in the subtree, including those that are
+ignored for accessibility, and returns those that match the specified name and role. If no DOM
+node is specified, or the DOM node does not exist, the command returns an error. If neither
+<code>accessibleName</code> or <code>role</code> is specified, it returns all the accessibility nodes in the subtree.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-NodeId class="param-type">DOM.NodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the node for the root to query.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          backendNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-BackendNodeId class="param-type">DOM.BackendNodeId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the backend node for the root to query.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          objectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObjectId class="param-type">Runtime.RemoteObjectId</a>
+          
+      <div class="details-description">
+        <p>JavaScript object id of the node wrapper for the root to query.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          accessibleName
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Find nodes with this computed name.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          role
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Find nodes with this computed role.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodes
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Accessibility/#type-AXNode class="param-type">AXNode</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>A list of <code>Accessibility.AXNode</code> matching the specified attributes,
+including nodes that are ignored for accessibility.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="events">Events</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="event-loadComplete">
+          <span class="domain-dot">Accessibility.</span>loadComplete
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#event-loadComplete"
+             class="permalink"
+             data-slug="Accessibility.loadComplete"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>The loadComplete event mirrors the load complete event sent by the browser to assistive
+technology when the web page has finished loading.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          root
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Accessibility/#type-AXNode class="param-type">AXNode</a>
+          
+      <div class="details-description">
+        <p>New document root node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-nodesUpdated">
+          <span class="domain-dot">Accessibility.</span>nodesUpdated
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#event-nodesUpdated"
+             class="permalink"
+             data-slug="Accessibility.nodesUpdated"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>The nodesUpdated event is sent every time a previously requested node has changed the in tree.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodes
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Accessibility/#type-AXNode class="param-type">AXNode</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Updated node data.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="types">Types</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="type-AXNode">
+          <span class="domain-dot">Accessibility.</span>AXNode
+          
+          <a href="#type-AXNode"
+             class="permalink"
+             data-slug="Accessibility.AXNode"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>A node in the accessibility tree.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Accessibility/#type-AXNodeId class="param-type">AXNodeId</a>
+          
+      <div class="details-description">
+        <p>Unique identifier for this node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          ignored
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether this node is ignored for accessibility</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          ignoredReasons
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Accessibility/#type-AXProperty class="param-type">AXProperty</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Collection of reasons why this node is hidden.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          role
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Accessibility/#type-AXValue class="param-type">AXValue</a>
+          
+      <div class="details-description">
+        <p>This <code>Node</code>&#39;s role, whether explicit or implicit.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          chromeRole
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Accessibility/#type-AXValue class="param-type">AXValue</a>
+          
+      <div class="details-description">
+        <p>This <code>Node</code>&#39;s Chrome raw role.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          name
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Accessibility/#type-AXValue class="param-type">AXValue</a>
+          
+      <div class="details-description">
+        <p>The accessible name for this <code>Node</code>.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          description
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Accessibility/#type-AXValue class="param-type">AXValue</a>
+          
+      <div class="details-description">
+        <p>The accessible description for this <code>Node</code>.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          value
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Accessibility/#type-AXValue class="param-type">AXValue</a>
+          
+      <div class="details-description">
+        <p>The value for this <code>Node</code>.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          properties
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Accessibility/#type-AXProperty class="param-type">AXProperty</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>All other properties</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          parentId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Accessibility/#type-AXNodeId class="param-type">AXNodeId</a>
+          
+      <div class="details-description">
+        <p>ID for this node&#39;s parent.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          childIds
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Accessibility/#type-AXNodeId class="param-type">AXNodeId</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>IDs for each of this node&#39;s child nodes.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          backendDOMNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-BackendNodeId class="param-type">DOM.BackendNodeId</a>
+          
+      <div class="details-description">
+        <p>The backend ID for the associated DOM node, if any.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          frameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Page/#type-FrameId class="param-type">Page.FrameId</a>
+          
+      <div class="details-description">
+        <p>The frame ID for the frame associated with this nodes document.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-AXNodeId">
+          <span class="domain-dot">Accessibility.</span>AXNodeId
+          
+          <a href="#type-AXNodeId"
+             class="permalink"
+             data-slug="Accessibility.AXNodeId"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Unique accessibility node identifier.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-AXProperty">
+          <span class="domain-dot">Accessibility.</span>AXProperty
+          
+          <a href="#type-AXProperty"
+             class="permalink"
+             data-slug="Accessibility.AXProperty"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          name
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Accessibility/#type-AXPropertyName class="param-type">AXPropertyName</a>
+          
+      <div class="details-description">
+        <p>The name of this property.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          value
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Accessibility/#type-AXValue class="param-type">AXValue</a>
+          
+      <div class="details-description">
+        <p>The value of this property.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-AXPropertyName">
+          <span class="domain-dot">Accessibility.</span>AXPropertyName
+          
+          <a href="#type-AXPropertyName"
+             class="permalink"
+             data-slug="Accessibility.AXPropertyName"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Values of AXProperty name:</p>
+<ul>
+<li>from &#39;busy&#39; to &#39;roledescription&#39;: states which apply to every AX node</li>
+<li>from &#39;live&#39; to &#39;root&#39;: attributes which apply to nodes in live regions</li>
+<li>from &#39;autocomplete&#39; to &#39;valuetext&#39;: attributes which apply to widgets</li>
+<li>from &#39;checked&#39; to &#39;selected&#39;: states which apply to widgets</li>
+<li>from &#39;activedescendant&#39; to &#39;owns&#39; - relationships between elements other than parent/child/sibling.</li>
+</ul>
+
+        
+      <div class="enum-container">Allowed Values: <code>actions</code>, <code>busy</code>, <code>disabled</code>, <code>editable</code>, <code>focusable</code>, <code>focused</code>, <code>hidden</code>, <code>hiddenRoot</code>, <code>invalid</code>, <code>keyshortcuts</code>, <code>settable</code>, <code>roledescription</code>, <code>live</code>, <code>atomic</code>, <code>relevant</code>, <code>root</code>, <code>autocomplete</code>, <code>hasPopup</code>, <code>level</code>, <code>multiselectable</code>, <code>orientation</code>, <code>multiline</code>, <code>readonly</code>, <code>required</code>, <code>valuemin</code>, <code>valuemax</code>, <code>valuetext</code>, <code>checked</code>, <code>expanded</code>, <code>modal</code>, <code>pressed</code>, <code>selected</code>, <code>activedescendant</code>, <code>controls</code>, <code>describedby</code>, <code>details</code>, <code>errormessage</code>, <code>flowto</code>, <code>labelledby</code>, <code>owns</code>, <code>url</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-AXRelatedNode">
+          <span class="domain-dot">Accessibility.</span>AXRelatedNode
+          
+          <a href="#type-AXRelatedNode"
+             class="permalink"
+             data-slug="Accessibility.AXRelatedNode"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          backendDOMNodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/DOM/#type-BackendNodeId class="param-type">DOM.BackendNodeId</a>
+          
+      <div class="details-description">
+        <p>The BackendNodeId of the related DOM node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          idref
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The IDRef value provided, if any.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          text
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The text alternative of this node in the current context.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-AXValue">
+          <span class="domain-dot">Accessibility.</span>AXValue
+          
+          <a href="#type-AXValue"
+             class="permalink"
+             data-slug="Accessibility.AXValue"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>A single computed AX property.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          type
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Accessibility/#type-AXValueType class="param-type">AXValueType</a>
+          
+      <div class="details-description">
+        <p>The type of this value.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          value
+        </dt>
+        <dd>
+          <span class="param-type">any</span>
+          
+      <div class="details-description">
+        <p>The computed value of this property.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          relatedNodes
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Accessibility/#type-AXRelatedNode class="param-type">AXRelatedNode</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>One or more related nodes, if applicable.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          sources
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Accessibility/#type-AXValueSource class="param-type">AXValueSource</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>The sources which contributed to the computation of this property.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-AXValueNativeSourceType">
+          <span class="domain-dot">Accessibility.</span>AXValueNativeSourceType
+          
+          <a href="#type-AXValueNativeSourceType"
+             class="permalink"
+             data-slug="Accessibility.AXValueNativeSourceType"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enum of possible native property sources (as a subtype of a particular AXValueSourceType).</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>description</code>, <code>figcaption</code>, <code>label</code>, <code>labelfor</code>, <code>labelwrapped</code>, <code>legend</code>, <code>rubyannotation</code>, <code>tablecaption</code>, <code>title</code>, <code>other</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-AXValueSource">
+          <span class="domain-dot">Accessibility.</span>AXValueSource
+          
+          <a href="#type-AXValueSource"
+             class="permalink"
+             data-slug="Accessibility.AXValueSource"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>A single source for a computed AX property.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          type
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Accessibility/#type-AXValueSourceType class="param-type">AXValueSourceType</a>
+          
+      <div class="details-description">
+        <p>What type of source this is.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          value
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Accessibility/#type-AXValue class="param-type">AXValue</a>
+          
+      <div class="details-description">
+        <p>The value of this property source.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          attribute
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The name of the relevant attribute, if any.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          attributeValue
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Accessibility/#type-AXValue class="param-type">AXValue</a>
+          
+      <div class="details-description">
+        <p>The value of the relevant attribute, if any.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          superseded
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether this source is superseded by a higher priority source.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          nativeSource
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Accessibility/#type-AXValueNativeSourceType class="param-type">AXValueNativeSourceType</a>
+          
+      <div class="details-description">
+        <p>The native markup source for this value, e.g. a <code>&lt;label&gt;</code> element.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          nativeSourceValue
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Accessibility/#type-AXValue class="param-type">AXValue</a>
+          
+      <div class="details-description">
+        <p>The value, such as a node or node list, of the native source.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          invalid
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether the value for this property is invalid.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          invalidReason
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Reason for the value being invalid, if it is.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-AXValueSourceType">
+          <span class="domain-dot">Accessibility.</span>AXValueSourceType
+          
+          <a href="#type-AXValueSourceType"
+             class="permalink"
+             data-slug="Accessibility.AXValueSourceType"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enum of possible property sources.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>attribute</code>, <code>implicit</code>, <code>style</code>, <code>contents</code>, <code>placeholder</code>, <code>relatedElement</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-AXValueType">
+          <span class="domain-dot">Accessibility.</span>AXValueType
+          
+          <a href="#type-AXValueType"
+             class="permalink"
+             data-slug="Accessibility.AXValueType"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enum of possible property types.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>boolean</code>, <code>tristate</code>, <code>booleanOrUndefined</code>, <code>idref</code>, <code>idrefList</code>, <code>integer</code>, <code>node</code>, <code>nodeList</code>, <code>number</code>, <code>string</code>, <code>computedString</code>, <code>token</code>, <code>tokenList</code>, <code>domRelation</code>, <code>role</code>, <code>internalRole</code>, <code>valueUndefined</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      </div>
+    
+    </div>
+    
+      </div>
+    </section>
+  </main>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60854461-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
