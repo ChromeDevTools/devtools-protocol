@@ -16646,6 +16646,11 @@ export namespace Protocol {
             maxEventStates: number;
         }
 
+        export interface AttributionReportingNamedBudgetDef {
+            name: string;
+            budget: integer;
+        }
+
         export interface AttributionReportingSourceRegistration {
             time: Network.TimeSinceEpoch;
             /**
@@ -16671,6 +16676,7 @@ export namespace Protocol {
             aggregatableDebugReportingConfig: AttributionReportingAggregatableDebugReportingConfig;
             scopesData?: AttributionScopesData;
             maxEventLevelReports: integer;
+            namedBudgets: AttributionReportingNamedBudgetDef[];
         }
 
         export type AttributionReportingSourceRegistrationResult = ('success' | 'internalError' | 'insufficientSourceCapacity' | 'insufficientUniqueDestinationCapacity' | 'excessiveReportingOrigins' | 'prohibitedByBrowserPolicy' | 'successNoised' | 'destinationReportingLimitReached' | 'destinationGlobalLimitReached' | 'destinationBothLimitsReached' | 'reportingOriginsPerSiteLimitReached' | 'exceedsMaxChannelCapacity' | 'exceedsMaxScopesChannelCapacity' | 'exceedsMaxTriggerStateCardinality' | 'exceedsMaxEventStatesLimit' | 'destinationPerDayReportingLimitReached');
@@ -16710,6 +16716,11 @@ export namespace Protocol {
             filters: AttributionReportingFilterPair;
         }
 
+        export interface AttributionReportingNamedBudgetCandidate {
+            name?: string;
+            filters: AttributionReportingFilterPair;
+        }
+
         export interface AttributionReportingTriggerRegistration {
             filters: AttributionReportingFilterPair;
             debugKey?: UnsignedInt64AsBase10;
@@ -16724,6 +16735,7 @@ export namespace Protocol {
             triggerContextId?: string;
             aggregatableDebugReportingConfig: AttributionReportingAggregatableDebugReportingConfig;
             scopes: string[];
+            namedBudgets: AttributionReportingNamedBudgetCandidate[];
         }
 
         export type AttributionReportingEventLevelResult = ('success' | 'successDroppedLowerPriority' | 'internalError' | 'noCapacityForAttributionDestination' | 'noMatchingSources' | 'deduplicated' | 'excessiveAttributions' | 'priorityTooLow' | 'neverAttributedSource' | 'excessiveReportingOrigins' | 'noMatchingSourceFilterData' | 'prohibitedByBrowserPolicy' | 'noMatchingConfigurations' | 'excessiveReports' | 'falselyAttributedSource' | 'reportWindowPassed' | 'notRegistered' | 'reportWindowNotStarted' | 'noMatchingTriggerData');

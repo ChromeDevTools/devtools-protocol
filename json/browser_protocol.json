@@ -22843,6 +22843,21 @@
                     ]
                 },
                 {
+                    "id": "AttributionReportingNamedBudgetDef",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "name",
+                            "type": "string"
+                        },
+                        {
+                            "name": "budget",
+                            "type": "integer"
+                        }
+                    ]
+                },
+                {
                     "id": "AttributionReportingSourceRegistration",
                     "experimental": true,
                     "type": "object",
@@ -22934,6 +22949,13 @@
                         {
                             "name": "maxEventLevelReports",
                             "type": "integer"
+                        },
+                        {
+                            "name": "namedBudgets",
+                            "type": "array",
+                            "items": {
+                                "$ref": "AttributionReportingNamedBudgetDef"
+                            }
                         }
                     ]
                 },
@@ -23070,6 +23092,22 @@
                     ]
                 },
                 {
+                    "id": "AttributionReportingNamedBudgetCandidate",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "name",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "filters",
+                            "$ref": "AttributionReportingFilterPair"
+                        }
+                    ]
+                },
+                {
                     "id": "AttributionReportingTriggerRegistration",
                     "experimental": true,
                     "type": "object",
@@ -23142,6 +23180,13 @@
                             "type": "array",
                             "items": {
                                 "type": "string"
+                            }
+                        },
+                        {
+                            "name": "namedBudgets",
+                            "type": "array",
+                            "items": {
+                                "$ref": "AttributionReportingNamedBudgetCandidate"
                             }
                         }
                     ]

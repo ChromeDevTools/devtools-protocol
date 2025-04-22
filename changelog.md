@@ -1,7 +1,53 @@
 
 
+## Roll protocol to r1449749 — _2025-04-22T04:30:50.000Z_
+######  Diff: [`d4fc663...e9a508d`](https://github.com/ChromeDevTools/devtools-protocol/compare/d4fc663...e9a508d)
+
+```diff
+@@ browser_protocol.pdl:11165 @@ experimental domain Storage
+       number limit
+       number maxEventStates
+ 
++  experimental type AttributionReportingNamedBudgetDef extends object
++    properties
++      string name
++      integer budget
++
+   experimental type AttributionReportingSourceRegistration extends object
+     properties
+       Network.TimeSinceEpoch time
+@@ -11187,6 +11192,7 @@ experimental domain Storage
+       AttributionReportingAggregatableDebugReportingConfig aggregatableDebugReportingConfig
+       optional AttributionScopesData scopesData
+       integer maxEventLevelReports
++      array of AttributionReportingNamedBudgetDef namedBudgets
+ 
+   experimental type AttributionReportingSourceRegistrationResult extends string
+     enum
+@@ -11249,6 +11255,11 @@ experimental domain Storage
+       optional UnsignedInt64AsBase10 dedupKey
+       AttributionReportingFilterPair filters
+ 
++  experimental type AttributionReportingNamedBudgetCandidate extends object
++    properties
++      optional string name
++      AttributionReportingFilterPair filters
++
+   experimental type AttributionReportingTriggerRegistration extends object
+     properties
+       AttributionReportingFilterPair filters
+@@ -11264,6 +11275,7 @@ experimental domain Storage
+       optional string triggerContextId
+       AttributionReportingAggregatableDebugReportingConfig aggregatableDebugReportingConfig
+       array of string scopes
++      array of AttributionReportingNamedBudgetCandidate namedBudgets
+ 
+   experimental type AttributionReportingEventLevelResult extends string
+     enum
+```
+
 ## Roll protocol to r1449119 — _2025-04-19T04:29:57.000Z_
-######  Diff: [`a38625f...fcc2bbf`](https://github.com/ChromeDevTools/devtools-protocol/compare/a38625f...fcc2bbf)
+######  Diff: [`a38625f...d4fc663`](https://github.com/ChromeDevTools/devtools-protocol/compare/a38625f...d4fc663)
 
 ```diff
 @@ browser_protocol.pdl:4854 @@ domain Emulation
@@ -13676,63 +13722,4 @@ index 8d8211b..2d56043 100644
        NoSysexWebMIDIWithoutPermission
        NotificationInsecureOrigin
        NotificationPermissionRequestedIframe
-```
-
-## Roll protocol to r1026105 — _2022-07-20T04:34:23.000Z_
-######  Diff: [`c9c207e...523543a`](https://github.com/ChromeDevTools/devtools-protocol/compare/c9c207e...523543a)
-
-```diff
-@@ browser_protocol.pdl:754 @@ experimental domain Audits
-       DeprecationExample
-       DocumentDomainSettingWithoutOriginAgentClusterHeader
-       EventPath
-+      ExpectCTHeader
-       GeolocationInsecureOrigin
-       GeolocationInsecureOriginDeprecatedNotRemoved
-       GetUserMediaInsecureOrigin
-diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
-index 8e43695..7fd51df 100644
---- a/pdl/js_protocol.pdl
-+++ b/pdl/js_protocol.pdl
-@@ -244,6 +244,40 @@ domain Debugger
-       # Wasm bytecode.
-       optional binary bytecode
- 
-+  experimental type WasmDisassemblyChunk extends object
-+    properties
-+      # The next chunk of disassembled lines.
-+      array of string lines
-+      # The bytecode offsets describing the start of each line.
-+      array of integer bytecodeOffsets
-+
-+  experimental command disassembleWasmModule
-+    parameters
-+      # Id of the script to disassemble
-+      Runtime.ScriptId scriptId
-+    returns
-+      # For large modules, return a stream from which additional chunks of
-+      # disassembly can be read successively.
-+      optional string streamId
-+      # The total number of lines in the disassembly text.
-+      integer totalNumberOfLines
-+      # The offsets of all function bodies plus one additional entry pointing
-+      # one by past the end of the last function.
-+      array of integer functionBodyOffsets
-+      # The first chunk of disassembly.
-+      WasmDisassemblyChunk chunk
-+
-+  # Disassemble the next chunk of lines for the module corresponding to the
-+  # stream. If disassembly is complete, this API will invalidate the streamId
-+  # and return an empty chunk. Any subsequent calls for the now invalid stream
-+  # will return errors.
-+  experimental command nextWasmDisassemblyChunk
-+    parameters
-+      string streamId
-+    returns
-+      # The next chunk of disassembly.
-+      WasmDisassemblyChunk chunk
-+
-   # This command is deprecated. Use getScriptSource instead.
-   deprecated command getWasmBytecode
-     parameters
 ```
