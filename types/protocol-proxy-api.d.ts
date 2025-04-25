@@ -3073,7 +3073,7 @@ export namespace ProtocolProxyApi {
          */
         getAppId(): Promise<Protocol.Page.GetAppIdResponse>;
 
-        getAdScriptId(params: Protocol.Page.GetAdScriptIdRequest): Promise<Protocol.Page.GetAdScriptIdResponse>;
+        getAdScriptAncestryIds(params: Protocol.Page.GetAdScriptAncestryIdsRequest): Promise<Protocol.Page.GetAdScriptAncestryIdsResponse>;
 
         /**
          * Returns present frame tree structure.

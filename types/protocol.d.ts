@@ -14787,16 +14787,18 @@ export namespace Protocol {
             recommendedId?: string;
         }
 
-        export interface GetAdScriptIdRequest {
+        export interface GetAdScriptAncestryIdsRequest {
             frameId: FrameId;
         }
 
-        export interface GetAdScriptIdResponse {
+        export interface GetAdScriptAncestryIdsResponse {
             /**
-             * Identifies the bottom-most script which caused the frame to be labelled
-             * as an ad. Only sent if frame is labelled as an ad and id is available.
+             * The ancestry chain of ad script identifiers leading to this frame's
+             * creation, ordered from the most immediate script (in the frame creation
+             * stack) to more distant ancestors (that created the immediately preceding
+             * script). Only sent if frame is labelled as an ad and ids are available.
              */
-            adScriptId?: AdScriptId;
+            adScriptAncestryIds: AdScriptId[];
         }
 
         export interface GetFrameTreeResponse {
@@ -15636,6 +15638,10 @@ export namespace Protocol {
          */
         export interface JavascriptDialogClosedEvent {
             /**
+             * Frame id.
+             */
+            frameId: FrameId;
+            /**
              * Whether dialog was confirmed.
              */
             result: boolean;
@@ -15654,6 +15660,10 @@ export namespace Protocol {
              * Frame url.
              */
             url: string;
+            /**
+             * Frame id.
+             */
+            frameId: FrameId;
             /**
              * Message that will be displayed by the dialog.
              */

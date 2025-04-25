@@ -1,7 +1,51 @@
 
 
+## Roll protocol to r1451615 — _2025-04-25T04:30:43.000Z_
+######  Diff: [`376b7a3...c92fcc3`](https://github.com/ChromeDevTools/devtools-protocol/compare/376b7a3...c92fcc3)
+
+```diff
+@@ browser_protocol.pdl:9186 @@ domain Page
+       # Recommendation for manifest's id attribute to match current id computed from start_url
+       optional string recommendedId
+ 
+-  experimental command getAdScriptId
++  experimental command getAdScriptAncestryIds
+     parameters
+       FrameId frameId
+     returns
+-      # Identifies the bottom-most script which caused the frame to be labelled
+-      # as an ad. Only sent if frame is labelled as an ad and id is available.
+-      optional AdScriptId adScriptId
++      # The ancestry chain of ad script identifiers leading to this frame's
++      # creation, ordered from the most immediate script (in the frame creation
++      # stack) to more distant ancestors (that created the immediately preceding
++      # script). Only sent if frame is labelled as an ad and ids are available.
++      array of AdScriptId adScriptAncestryIds
+ 
+   # Returns present frame tree structure.
+   command getFrameTree
+@@ -9804,6 +9806,8 @@ domain Page
+   # closed.
+   event javascriptDialogClosed
+     parameters
++      # Frame id.
++      experimental FrameId frameId
+       # Whether dialog was confirmed.
+       boolean result
+       # User input in case of prompt.
+@@ -9815,6 +9819,8 @@ domain Page
+     parameters
+       # Frame url.
+       string url
++      # Frame id.
++      experimental FrameId frameId
+       # Message that will be displayed by the dialog.
+       string message
+       # Dialog type.
+```
+
 ## Roll protocol to r1450379 — _2025-04-23T04:30:35.000Z_
-######  Diff: [`ecbd284...616d4a9`](https://github.com/ChromeDevTools/devtools-protocol/compare/ecbd284...616d4a9)
+######  Diff: [`ecbd284...376b7a3`](https://github.com/ChromeDevTools/devtools-protocol/compare/ecbd284...376b7a3)
 
 ```diff
 @@ browser_protocol.pdl:10656 @@ experimental domain Storage
@@ -13782,51 +13826,4 @@ index 8d8211b..2d56043 100644
        array of integer functionBodyOffsets
        # The first chunk of disassembly.
        WasmDisassemblyChunk chunk
-```
-
-## Roll protocol to r1027117 — _2022-07-22T04:34:56.000Z_
-######  Diff: [`d99c911...84a4545`](https://github.com/ChromeDevTools/devtools-protocol/compare/d99c911...84a4545)
-
-```diff
-@@ browser_protocol.pdl:168 @@ experimental domain Accessibility
-       optional array of AXProperty ignoredReasons
-       # This `Node`'s role, whether explicit or implicit.
-       optional AXValue role
-+      # This `Node`'s Chrome raw role.
-+      optional AXValue chromeRole
-       # The accessible name for this `Node`.
-       optional AXValue name
-       # The accessible description for this `Node`.
-@@ -772,6 +774,7 @@ experimental domain Audits
-       NotificationPermissionRequestedIframe
-       ObsoleteWebRtcCipherSuite
-       OpenWebDatabaseInsecureContext
-+      OverflowVisibleOnReplacedElement
-       PictureSourceSrc
-       PrefixedCancelAnimationFrame
-       PrefixedRequestAnimationFrame
-@@ -2682,7 +2685,7 @@ domain DOM
-       array of NodeId nodeIds
- 
-   # Returns NodeIds of current top layer elements.
--  # Top layer is rendered closest to the user within a viewport, therefore its elements always 
-+  # Top layer is rendered closest to the user within a viewport, therefore its elements always
-   # appear on top of all other content.
-   experimental command getTopLayerElements
-     returns
-@@ -8990,6 +8993,14 @@ experimental domain Storage
-       # Comma separated list of StorageType to clear.
-       string storageTypes
- 
-+  # Clears storage for storage key.
-+  command clearDataForStorageKey
-+    parameters
-+      # Storage key.
-+      string storageKey
-+      # Comma separated list of StorageType to clear.
-+      string storageTypes
-+
-   # Returns all browser cookies.
-   command getCookies
-     parameters
 ```

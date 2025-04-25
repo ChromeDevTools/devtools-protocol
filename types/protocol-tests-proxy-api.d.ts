@@ -3299,7 +3299,7 @@ export namespace ProtocolTestsProxyApi {
          */
         getAppId(): Promise<{id: number, result: Protocol.Page.GetAppIdResponse, sessionId: string}>;
 
-        getAdScriptId(params: Protocol.Page.GetAdScriptIdRequest): Promise<{id: number, result: Protocol.Page.GetAdScriptIdResponse, sessionId: string}>;
+        getAdScriptAncestryIds(params: Protocol.Page.GetAdScriptAncestryIdsRequest): Promise<{id: number, result: Protocol.Page.GetAdScriptAncestryIdsResponse, sessionId: string}>;
 
         /**
          * Returns present frame tree structure.
