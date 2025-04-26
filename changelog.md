@@ -1,7 +1,31 @@
 
 
+## Roll protocol to r1452169 — _2025-04-26T04:29:56.000Z_
+######  Diff: [`22067e8...c2c8409`](https://github.com/ChromeDevTools/devtools-protocol/compare/22067e8...c2c8409)
+
+```diff
+@@ js_protocol.pdl:649 @@ domain Debugger
+       Runtime.ExecutionContextId executionContextId
+       # Content hash of the script, SHA-256.
+       string hash
+-      # For Wasm modules, the content of the `build_id` custom section.
++      # For Wasm modules, the content of the `build_id` custom section. For JavaScript the `debugId` magic comment.
+       string buildId
+       # Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}
+       optional object executionContextAuxData
+@@ -690,7 +690,7 @@ domain Debugger
+       Runtime.ExecutionContextId executionContextId
+       # Content hash of the script, SHA-256.
+       string hash
+-      # For Wasm modules, the content of the `build_id` custom section.
++      # For Wasm modules, the content of the `build_id` custom section. For JavaScript the `debugId` magic comment.
+       string buildId
+       # Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}
+       optional object executionContextAuxData
+```
+
 ## Roll protocol to r1451615 — _2025-04-25T04:30:43.000Z_
-######  Diff: [`376b7a3...c92fcc3`](https://github.com/ChromeDevTools/devtools-protocol/compare/376b7a3...c92fcc3)
+######  Diff: [`376b7a3...22067e8`](https://github.com/ChromeDevTools/devtools-protocol/compare/376b7a3...22067e8)
 
 ```diff
 @@ browser_protocol.pdl:9186 @@ domain Page
@@ -13809,21 +13833,4 @@ index 8d8211b..2d56043 100644
  
    # Fired when a prerender attempt is completed.
    event prerenderAttemptCompleted
-```
-
-## Roll protocol to r1027518 — _2022-07-23T04:32:37.000Z_
-######  Diff: [`84a4545...5036b2e`](https://github.com/ChromeDevTools/devtools-protocol/compare/84a4545...5036b2e)
-
-```diff
-@@ js_protocol.pdl:261 @@ domain Debugger
-       optional string streamId
-       # The total number of lines in the disassembly text.
-       integer totalNumberOfLines
--      # The offsets of all function bodies plus one additional entry pointing
--      # one by past the end of the last function.
-+      # The offsets of all function bodies, in the format [start1, end1,
-+      # start2, end2, ...] where all ends are exclusive.
-       array of integer functionBodyOffsets
-       # The first chunk of disassembly.
-       WasmDisassemblyChunk chunk
 ```
