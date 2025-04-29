@@ -4981,6 +4981,15 @@ export namespace ProtocolTestsProxyApi {
         simulateGATTOperationResponse(params: Protocol.BluetoothEmulation.SimulateGATTOperationResponseRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
+         * Simulates the response from the characteristic with |characteristicId| for a
+         * characteristic operation of |type|. The |code| value follows the Error
+         * Codes from Bluetooth Core Specification Vol 3 Part F 3.4.1.1 Error Response.
+         * The |data| is expected to exist when simulating a successful read operation
+         * response.
+         */
+        simulateCharacteristicOperationResponse(params: Protocol.BluetoothEmulation.SimulateCharacteristicOperationResponseRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
          * Adds a service with |serviceUuid| to the peripheral with |address|.
          */
         addService(params: Protocol.BluetoothEmulation.AddServiceRequest): Promise<{id: number, result: Protocol.BluetoothEmulation.AddServiceResponse, sessionId: string}>;
@@ -5020,6 +5029,15 @@ export namespace ProtocolTestsProxyApi {
         onGattOperationReceived(listener: (event: { params: Protocol.BluetoothEmulation.GattOperationReceivedEvent }) => void): void;
         offGattOperationReceived(listener: (event: { params: Protocol.BluetoothEmulation.GattOperationReceivedEvent }) => void): void;
         onceGattOperationReceived(eventMatcher?: (event: { params: Protocol.BluetoothEmulation.GattOperationReceivedEvent }) => boolean): Promise<{ params: Protocol.BluetoothEmulation.GattOperationReceivedEvent }>;
+
+        /**
+         * Event for when a characteristic operation of |type| to the characteristic
+         * respresented by |characteristicId| happened. |data| and |writeType| is
+         * expected to exist when |type| is write.
+         */
+        onCharacteristicOperationReceived(listener: (event: { params: Protocol.BluetoothEmulation.CharacteristicOperationReceivedEvent }) => void): void;
+        offCharacteristicOperationReceived(listener: (event: { params: Protocol.BluetoothEmulation.CharacteristicOperationReceivedEvent }) => void): void;
+        onceCharacteristicOperationReceived(eventMatcher?: (event: { params: Protocol.BluetoothEmulation.CharacteristicOperationReceivedEvent }) => boolean): Promise<{ params: Protocol.BluetoothEmulation.CharacteristicOperationReceivedEvent }>;
 
     }
 }

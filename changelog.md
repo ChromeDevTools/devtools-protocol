@@ -1,7 +1,100 @@
 
 
+## Roll protocol to r1453071 — _2025-04-29T04:30:14.000Z_
+######  Diff: [`63aa321...bb97f52`](https://github.com/ChromeDevTools/devtools-protocol/compare/63aa321...bb97f52)
+
+```diff
+@@ browser_protocol.pdl:8455 @@ domain Page
+ 
+   # All Permissions Policy features. This enum should match the one defined
+   # in services/network/public/cpp/permissions_policy/permissions_policy_features.json5.
++  # LINT.IfChange(PermissionsPolicyFeature)
+   experimental type PermissionsPolicyFeature extends string
+     enum
+       accelerometer
+@@ -8521,6 +8522,7 @@ domain Page
+       keyboard-map
+       language-detector
+       local-fonts
++      local-network-access
+       magnetometer
+       media-playback-while-not-visible
+       microphone
+@@ -8534,6 +8536,7 @@ domain Page
+       private-state-token-redemption
+       publickey-credentials-create
+       publickey-credentials-get
++      record-ad-auction-events
+       rewriter
+       run-ad-auction
+       screen-wake-lock
+@@ -8558,6 +8561,7 @@ domain Page
+       window-management
+       writer
+       xr-spatial-tracking
++  # LINT.ThenChange(//services/network/public/cpp/permissions_policy/permissions_policy_features.json5:PermissionsPolicy)
+ 
+   # Reason for a permissions policy feature to be disabled.
+   experimental type PermissionsPolicyBlockReason extends string
+@@ -13351,6 +13355,21 @@ experimental domain BluetoothEmulation
+       connection
+       discovery
+ 
++  # Indicates the various types of characteristic write.
++  type CharacteristicWriteType extends string
++    enum
++      write-default-deprecated
++      write-with-response
++      write-without-response
++
++  # Indicates the various types of characteristic operation.
++  type CharacteristicOperationType extends string
++    enum
++      read
++      write
++      subscribe-to-notifications
++      unsubscribe-from-notifications
++
+   # Stores the manufacturer data
+   type ManufacturerData extends object
+     properties
+@@ -13435,6 +13454,18 @@ experimental domain BluetoothEmulation
+       GATTOperationType type
+       integer code
+ 
++  # Simulates the response from the characteristic with |characteristicId| for a
++  # characteristic operation of |type|. The |code| value follows the Error
++  # Codes from Bluetooth Core Specification Vol 3 Part F 3.4.1.1 Error Response.
++  # The |data| is expected to exist when simulating a successful read operation
++  # response.
++  command simulateCharacteristicOperationResponse
++    parameters
++      string characteristicId
++      CharacteristicOperationType type
++      integer code
++      optional binary data
++
+   # Adds a service with |serviceUuid| to the peripheral with |address|.
+   command addService
+     parameters
+@@ -13487,3 +13518,13 @@ experimental domain BluetoothEmulation
+     parameters
+       string address
+       GATTOperationType type
++
++  # Event for when a characteristic operation of |type| to the characteristic
++  # respresented by |characteristicId| happened. |data| and |writeType| is
++  # expected to exist when |type| is write.
++  event characteristicOperationReceived
++    parameters
++      string characteristicId
++      CharacteristicOperationType type
++      optional binary data
++      optional CharacteristicWriteType writeType
+```
+
 ## Roll protocol to r1452169 — _2025-04-26T04:29:56.000Z_
-######  Diff: [`22067e8...c2c8409`](https://github.com/ChromeDevTools/devtools-protocol/compare/22067e8...c2c8409)
+######  Diff: [`22067e8...63aa321`](https://github.com/ChromeDevTools/devtools-protocol/compare/22067e8...63aa321)
 
 ```diff
 @@ js_protocol.pdl:649 @@ domain Debugger
@@ -13767,70 +13860,4 @@ index 8d8211b..2d56043 100644
        # Database name.
        string databaseName
        # Object store name.
-```
-
-## Roll protocol to r1028116 — _2022-07-26T04:49:26.000Z_
-######  Diff: [`5036b2e...2a10dd2`](https://github.com/ChromeDevTools/devtools-protocol/compare/5036b2e...2a10dd2)
-
-```diff
-@@ browser_protocol.pdl:699 @@ experimental domain Audits
-   type AttributionReportingIssueType extends string
-     enum
-       PermissionPolicyDisabled
-+      # TODO(apaseltiner): Remove this once it is no longer referenced by the frontend.
-       AttributionSourceUntrustworthyOrigin
-+      # TODO(apaseltiner): Remove this once it is no longer referenced by the frontend.
-       AttributionUntrustworthyOrigin
-+      UntrustworthyReportingOrigin
-+      InsecureContext
-+      # TODO(apaseltiner): Rename this to InvalidRegisterSourceHeader
-       InvalidHeader
-+      InvalidRegisterTriggerHeader
- 
-   # Details for issues around "Attribution Reporting API" usage.
-   # Explainer: https://github.com/WICG/attribution-reporting-api
-   type AttributionReportingIssueDetails extends object
-     properties
-       AttributionReportingIssueType violationType
-+      # TODO(apaseltiner): Remove this once it is no longer referenced by the frontend.
-       optional AffectedFrame frame
-       optional AffectedRequest request
-       optional DOM.BackendNodeId violatingNodeId
-@@ -4074,8 +4081,11 @@ experimental domain IndexedDB
-   # Clears all entries from an object store.
-   command clearObjectStore
-     parameters
-+      # At least and at most one of securityOrigin, storageKey must be specified.
-       # Security origin.
--      string securityOrigin
-+      optional string securityOrigin
-+      # Storage key.
-+      optional string storageKey
-       # Database name.
-       string databaseName
-       # Object store name.
-@@ -4084,8 +4094,11 @@ experimental domain IndexedDB
-   # Deletes a database.
-   command deleteDatabase
-     parameters
-+      # At least and at most one of securityOrigin, storageKey must be specified.
-       # Security origin.
--      string securityOrigin
-+      optional string securityOrigin
-+      # Storage key.
-+      optional string storageKey
-       # Database name.
-       string databaseName
- 
-@@ -8426,6 +8439,10 @@ domain Page
-       EmbedderTriggeredAndSameOriginRedirected
-       EmbedderTriggeredAndCrossOriginRedirected
-       EmbedderTriggeredAndDestroyed
-+      MemoryLimitExceeded
-+      # Prerenders can be cancelled when Chrome uses excessive memory. This is
-+      # recorded when it fails to get the memory usage.
-+      FailToGetMemoryUsage
- 
-   # Fired when a prerender attempt is completed.
-   event prerenderAttemptCompleted
 ```

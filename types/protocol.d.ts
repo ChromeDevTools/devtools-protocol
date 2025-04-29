@@ -13899,8 +13899,9 @@ export namespace Protocol {
         /**
          * All Permissions Policy features. This enum should match the one defined
          * in services/network/public/cpp/permissions_policy/permissions_policy_features.json5.
+         * LINT.IfChange(PermissionsPolicyFeature)
          */
-        export type PermissionsPolicyFeature = ('accelerometer' | 'all-screens-capture' | 'ambient-light-sensor' | 'attribution-reporting' | 'autoplay' | 'bluetooth' | 'browsing-topics' | 'camera' | 'captured-surface-control' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-prefers-color-scheme' | 'ch-prefers-reduced-motion' | 'ch-prefers-reduced-transparency' | 'ch-rtt' | 'ch-save-data' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-high-entropy-values' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-form-factors' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'compute-pressure' | 'controlled-frame' | 'cross-origin-isolated' | 'deferred-fetch' | 'deferred-fetch-minimal' | 'device-attributes' | 'digital-credentials-get' | 'direct-sockets' | 'direct-sockets-private' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'fenced-unpartitioned-storage-read' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'hid' | 'identity-credentials-get' | 'idle-detection' | 'interest-cohort' | 'join-ad-interest-group' | 'keyboard-map' | 'language-detector' | 'local-fonts' | 'magnetometer' | 'media-playback-while-not-visible' | 'microphone' | 'midi' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'popins' | 'private-aggregation' | 'private-state-token-issuance' | 'private-state-token-redemption' | 'publickey-credentials-create' | 'publickey-credentials-get' | 'rewriter' | 'run-ad-auction' | 'screen-wake-lock' | 'serial' | 'shared-autofill' | 'shared-storage' | 'shared-storage-select-url' | 'smart-card' | 'speaker-selection' | 'storage-access' | 'sub-apps' | 'summarizer' | 'sync-xhr' | 'translator' | 'unload' | 'usb' | 'usb-unrestricted' | 'vertical-scroll' | 'web-app-installation' | 'web-printing' | 'web-share' | 'window-management' | 'writer' | 'xr-spatial-tracking');
+        export type PermissionsPolicyFeature = ('accelerometer' | 'all-screens-capture' | 'ambient-light-sensor' | 'attribution-reporting' | 'autoplay' | 'bluetooth' | 'browsing-topics' | 'camera' | 'captured-surface-control' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-prefers-color-scheme' | 'ch-prefers-reduced-motion' | 'ch-prefers-reduced-transparency' | 'ch-rtt' | 'ch-save-data' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-high-entropy-values' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-form-factors' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'compute-pressure' | 'controlled-frame' | 'cross-origin-isolated' | 'deferred-fetch' | 'deferred-fetch-minimal' | 'device-attributes' | 'digital-credentials-get' | 'direct-sockets' | 'direct-sockets-private' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'fenced-unpartitioned-storage-read' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'hid' | 'identity-credentials-get' | 'idle-detection' | 'interest-cohort' | 'join-ad-interest-group' | 'keyboard-map' | 'language-detector' | 'local-fonts' | 'local-network-access' | 'magnetometer' | 'media-playback-while-not-visible' | 'microphone' | 'midi' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'popins' | 'private-aggregation' | 'private-state-token-issuance' | 'private-state-token-redemption' | 'publickey-credentials-create' | 'publickey-credentials-get' | 'record-ad-auction-events' | 'rewriter' | 'run-ad-auction' | 'screen-wake-lock' | 'serial' | 'shared-autofill' | 'shared-storage' | 'shared-storage-select-url' | 'smart-card' | 'speaker-selection' | 'storage-access' | 'sub-apps' | 'summarizer' | 'sync-xhr' | 'translator' | 'unload' | 'usb' | 'usb-unrestricted' | 'vertical-scroll' | 'web-app-installation' | 'web-printing' | 'web-share' | 'window-management' | 'writer' | 'xr-spatial-tracking');
 
         /**
          * Reason for a permissions policy feature to be disabled.
@@ -19639,6 +19640,16 @@ export namespace Protocol {
         export type GATTOperationType = ('connection' | 'discovery');
 
         /**
+         * Indicates the various types of characteristic write.
+         */
+        export type CharacteristicWriteType = ('write-default-deprecated' | 'write-with-response' | 'write-without-response');
+
+        /**
+         * Indicates the various types of characteristic operation.
+         */
+        export type CharacteristicOperationType = ('read' | 'write' | 'subscribe-to-notifications' | 'unsubscribe-from-notifications');
+
+        /**
          * Stores the manufacturer data
          */
         export interface ManufacturerData {
@@ -19734,6 +19745,13 @@ export namespace Protocol {
             code: integer;
         }
 
+        export interface SimulateCharacteristicOperationResponseRequest {
+            characteristicId: string;
+            type: CharacteristicOperationType;
+            code: integer;
+            data?: string;
+        }
+
         export interface AddServiceRequest {
             address: string;
             serviceUuid: string;
@@ -19790,6 +19808,18 @@ export namespace Protocol {
         export interface GattOperationReceivedEvent {
             address: string;
             type: GATTOperationType;
+        }
+
+        /**
+         * Event for when a characteristic operation of |type| to the characteristic
+         * respresented by |characteristicId| happened. |data| and |writeType| is
+         * expected to exist when |type| is write.
+         */
+        export interface CharacteristicOperationReceivedEvent {
+            characteristicId: string;
+            type: CharacteristicOperationType;
+            data?: string;
+            writeType?: CharacteristicWriteType;
         }
     }
 }
