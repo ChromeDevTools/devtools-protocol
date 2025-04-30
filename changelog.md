@@ -1,7 +1,49 @@
 
 
+## Roll protocol to r1453708 — _2025-04-30T04:30:29.000Z_
+######  Diff: [`3d50984...3a58b26`](https://github.com/ChromeDevTools/devtools-protocol/compare/3d50984...3a58b26)
+
+```diff
+@@ browser_protocol.pdl:1079 @@ experimental domain Audits
+       # The value of the property rule property that failed to parse
+       optional string propertyValue
+ 
++  type UserReidentificationIssueType extends string
++    enum
++      BlockedFrameNavigation
++      BlockedSubresource
++
++  # This issue warns about uses of APIs that may be considered misuse to
++  # re-identify users.
++  type UserReidentificationIssueDetails extends object
++    properties
++      UserReidentificationIssueType type
++      # Applies to BlockedFrameNavigation and BlockedSubresource issue types.
++      optional AffectedRequest request
++
+   # A unique identifier for the type of issue. Each type may use one of the
+   # optional fields in InspectorIssueDetails to convey more specific
+   # information about the kind of issue.
+@@ -1109,6 +1122,7 @@ experimental domain Audits
+       SharedDictionaryIssue
+       SelectElementAccessibilityIssue
+       SRIMessageSignatureIssue
++      UserReidentificationIssue
+ 
+   # This struct holds a list of optional fields with additional information
+   # specific to the kind of issue. When adding a new issue code, please also
+@@ -1139,6 +1153,7 @@ experimental domain Audits
+       optional SharedDictionaryIssueDetails sharedDictionaryIssueDetails
+       optional SelectElementAccessibilityIssueDetails selectElementAccessibilityIssueDetails
+       optional SRIMessageSignatureIssueDetails sriMessageSignatureIssueDetails
++      optional UserReidentificationIssueDetails userReidentificationIssueDetails
+ 
+   # A unique id for a DevTools inspector issue. Allows other entities (e.g.
+   # exceptions, CDP message, console messages, etc.) to reference an issue.
+```
+
 ## Roll protocol to r1453071 — _2025-04-29T04:30:14.000Z_
-######  Diff: [`63aa321...bb97f52`](https://github.com/ChromeDevTools/devtools-protocol/compare/63aa321...bb97f52)
+######  Diff: [`63aa321...3d50984`](https://github.com/ChromeDevTools/devtools-protocol/compare/63aa321...3d50984)
 
 ```diff
 @@ browser_protocol.pdl:8455 @@ domain Page
