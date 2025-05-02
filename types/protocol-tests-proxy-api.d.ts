@@ -4154,6 +4154,10 @@ export namespace ProtocolTestsProxyApi {
         offAttributionReportingTriggerRegistered(listener: (event: { params: Protocol.Storage.AttributionReportingTriggerRegisteredEvent }) => void): void;
         onceAttributionReportingTriggerRegistered(eventMatcher?: (event: { params: Protocol.Storage.AttributionReportingTriggerRegisteredEvent }) => boolean): Promise<{ params: Protocol.Storage.AttributionReportingTriggerRegisteredEvent }>;
 
+        onAttributionReportingReportSent(listener: (event: { params: Protocol.Storage.AttributionReportingReportSentEvent }) => void): void;
+        offAttributionReportingReportSent(listener: (event: { params: Protocol.Storage.AttributionReportingReportSentEvent }) => void): void;
+        onceAttributionReportingReportSent(eventMatcher?: (event: { params: Protocol.Storage.AttributionReportingReportSentEvent }) => boolean): Promise<{ params: Protocol.Storage.AttributionReportingReportSentEvent }>;
+
     }
 
     export interface SystemInfoApi {
@@ -4990,6 +4994,15 @@ export namespace ProtocolTestsProxyApi {
         simulateCharacteristicOperationResponse(params: Protocol.BluetoothEmulation.SimulateCharacteristicOperationResponseRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
+         * Simulates the response from the descriptor with |descriptorId| for a
+         * descriptor operation of |type|. The |code| value follows the Error
+         * Codes from Bluetooth Core Specification Vol 3 Part F 3.4.1.1 Error Response.
+         * The |data| is expected to exist when simulating a successful read operation
+         * response.
+         */
+        simulateDescriptorOperationResponse(params: Protocol.BluetoothEmulation.SimulateDescriptorOperationResponseRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
          * Adds a service with |serviceUuid| to the peripheral with |address|.
          */
         addService(params: Protocol.BluetoothEmulation.AddServiceRequest): Promise<{id: number, result: Protocol.BluetoothEmulation.AddServiceResponse, sessionId: string}>;
@@ -5023,6 +5036,11 @@ export namespace ProtocolTestsProxyApi {
         removeDescriptor(params: Protocol.BluetoothEmulation.RemoveDescriptorRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
+         * Simulates a GATT disconnection from the peripheral with |address|.
+         */
+        simulateGATTDisconnection(params: Protocol.BluetoothEmulation.SimulateGATTDisconnectionRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
          * Event for when a GATT operation of |type| to the peripheral with |address|
          * happened.
          */
@@ -5038,6 +5056,15 @@ export namespace ProtocolTestsProxyApi {
         onCharacteristicOperationReceived(listener: (event: { params: Protocol.BluetoothEmulation.CharacteristicOperationReceivedEvent }) => void): void;
         offCharacteristicOperationReceived(listener: (event: { params: Protocol.BluetoothEmulation.CharacteristicOperationReceivedEvent }) => void): void;
         onceCharacteristicOperationReceived(eventMatcher?: (event: { params: Protocol.BluetoothEmulation.CharacteristicOperationReceivedEvent }) => boolean): Promise<{ params: Protocol.BluetoothEmulation.CharacteristicOperationReceivedEvent }>;
+
+        /**
+         * Event for when a descriptor operation of |type| to the descriptor
+         * respresented by |descriptorId| happened. |data| is expected to exist when
+         * |type| is write.
+         */
+        onDescriptorOperationReceived(listener: (event: { params: Protocol.BluetoothEmulation.DescriptorOperationReceivedEvent }) => void): void;
+        offDescriptorOperationReceived(listener: (event: { params: Protocol.BluetoothEmulation.DescriptorOperationReceivedEvent }) => void): void;
+        onceDescriptorOperationReceived(eventMatcher?: (event: { params: Protocol.BluetoothEmulation.DescriptorOperationReceivedEvent }) => boolean): Promise<{ params: Protocol.BluetoothEmulation.DescriptorOperationReceivedEvent }>;
 
     }
 }

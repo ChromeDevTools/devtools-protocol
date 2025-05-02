@@ -3832,6 +3832,8 @@ export namespace ProtocolProxyApi {
 
         on(event: 'attributionReportingTriggerRegistered', listener: (params: Protocol.Storage.AttributionReportingTriggerRegisteredEvent) => void): void;
 
+        on(event: 'attributionReportingReportSent', listener: (params: Protocol.Storage.AttributionReportingReportSentEvent) => void): void;
+
     }
 
     export interface SystemInfoApi {
@@ -4580,6 +4582,15 @@ export namespace ProtocolProxyApi {
         simulateCharacteristicOperationResponse(params: Protocol.BluetoothEmulation.SimulateCharacteristicOperationResponseRequest): Promise<void>;
 
         /**
+         * Simulates the response from the descriptor with |descriptorId| for a
+         * descriptor operation of |type|. The |code| value follows the Error
+         * Codes from Bluetooth Core Specification Vol 3 Part F 3.4.1.1 Error Response.
+         * The |data| is expected to exist when simulating a successful read operation
+         * response.
+         */
+        simulateDescriptorOperationResponse(params: Protocol.BluetoothEmulation.SimulateDescriptorOperationResponseRequest): Promise<void>;
+
+        /**
          * Adds a service with |serviceUuid| to the peripheral with |address|.
          */
         addService(params: Protocol.BluetoothEmulation.AddServiceRequest): Promise<Protocol.BluetoothEmulation.AddServiceResponse>;
@@ -4613,6 +4624,11 @@ export namespace ProtocolProxyApi {
         removeDescriptor(params: Protocol.BluetoothEmulation.RemoveDescriptorRequest): Promise<void>;
 
         /**
+         * Simulates a GATT disconnection from the peripheral with |address|.
+         */
+        simulateGATTDisconnection(params: Protocol.BluetoothEmulation.SimulateGATTDisconnectionRequest): Promise<void>;
+
+        /**
          * Event for when a GATT operation of |type| to the peripheral with |address|
          * happened.
          */
@@ -4624,6 +4640,13 @@ export namespace ProtocolProxyApi {
          * expected to exist when |type| is write.
          */
         on(event: 'characteristicOperationReceived', listener: (params: Protocol.BluetoothEmulation.CharacteristicOperationReceivedEvent) => void): void;
+
+        /**
+         * Event for when a descriptor operation of |type| to the descriptor
+         * respresented by |descriptorId| happened. |data| is expected to exist when
+         * |type| is write.
+         */
+        on(event: 'descriptorOperationReceived', listener: (params: Protocol.BluetoothEmulation.DescriptorOperationReceivedEvent) => void): void;
 
     }
 }

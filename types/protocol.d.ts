@@ -16826,6 +16826,8 @@ export namespace Protocol {
 
         export type AttributionReportingAggregatableResult = ('success' | 'internalError' | 'noCapacityForAttributionDestination' | 'noMatchingSources' | 'excessiveAttributions' | 'excessiveReportingOrigins' | 'noHistograms' | 'insufficientBudget' | 'insufficientNamedBudget' | 'noMatchingSourceFilterData' | 'notRegistered' | 'prohibitedByBrowserPolicy' | 'deduplicated' | 'reportWindowPassed' | 'excessiveReports');
 
+        export type AttributionReportingReportResult = ('sent' | 'prohibited' | 'failedToAssemble' | 'expired');
+
         /**
          * A single Related Website Set object.
          */
@@ -17344,6 +17346,18 @@ export namespace Protocol {
             registration: AttributionReportingTriggerRegistration;
             eventLevel: AttributionReportingEventLevelResult;
             aggregatable: AttributionReportingAggregatableResult;
+        }
+
+        export interface AttributionReportingReportSentEvent {
+            url: string;
+            body: any;
+            result: AttributionReportingReportResult;
+            /**
+             * If result is `sent`, populated with net/HTTP status.
+             */
+            netError?: integer;
+            netErrorName?: string;
+            httpStatusCode?: integer;
         }
     }
 
@@ -19665,6 +19679,11 @@ export namespace Protocol {
         export type CharacteristicOperationType = ('read' | 'write' | 'subscribe-to-notifications' | 'unsubscribe-from-notifications');
 
         /**
+         * Indicates the various types of descriptor operation.
+         */
+        export type DescriptorOperationType = ('read' | 'write');
+
+        /**
          * Stores the manufacturer data
          */
         export interface ManufacturerData {
@@ -19767,6 +19786,13 @@ export namespace Protocol {
             data?: string;
         }
 
+        export interface SimulateDescriptorOperationResponseRequest {
+            descriptorId: string;
+            type: DescriptorOperationType;
+            code: integer;
+            data?: string;
+        }
+
         export interface AddServiceRequest {
             address: string;
             serviceUuid: string;
@@ -19816,6 +19842,10 @@ export namespace Protocol {
             descriptorId: string;
         }
 
+        export interface SimulateGATTDisconnectionRequest {
+            address: string;
+        }
+
         /**
          * Event for when a GATT operation of |type| to the peripheral with |address|
          * happened.
@@ -19835,6 +19865,17 @@ export namespace Protocol {
             type: CharacteristicOperationType;
             data?: string;
             writeType?: CharacteristicWriteType;
+        }
+
+        /**
+         * Event for when a descriptor operation of |type| to the descriptor
+         * respresented by |descriptorId| happened. |data| is expected to exist when
+         * |type| is write.
+         */
+        export interface DescriptorOperationReceivedEvent {
+            descriptorId: string;
+            type: CharacteristicOperationType;
+            data?: string;
         }
     }
 }

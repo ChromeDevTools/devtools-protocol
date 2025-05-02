@@ -1,7 +1,99 @@
 
 
+## Roll protocol to r1454823 — _2025-05-02T04:30:38.000Z_
+######  Diff: [`4fe3878...0399b23`](https://github.com/ChromeDevTools/devtools-protocol/compare/4fe3878...0399b23)
+
+```diff
+@@ browser_protocol.pdl:11380 @@ experimental domain Storage
+       AttributionReportingEventLevelResult eventLevel
+       AttributionReportingAggregatableResult aggregatable
+ 
++  experimental type AttributionReportingReportResult extends string
++    enum
++      # A network request was attempted for the report.
++      sent
++      # No request was attempted because of browser policy.
++      prohibited
++      # No request was attempted because of an error in report assembly,
++      # e.g. the aggregation service was unavailable.
++      failedToAssemble
++      # No request was attempted because the report's expiry passed.
++      expired
++
++  experimental event attributionReportingReportSent
++    parameters
++      string url
++      object body
++      AttributionReportingReportResult result
++      # If result is `sent`, populated with net/HTTP status.
++      optional integer netError
++      optional string netErrorName
++      optional integer httpStatusCode
++
+   # A single Related Website Set object.
+   experimental type RelatedWebsiteSet extends object
+     properties
+@@ -13385,6 +13407,12 @@ experimental domain BluetoothEmulation
+       subscribe-to-notifications
+       unsubscribe-from-notifications
+ 
++  # Indicates the various types of descriptor operation.
++  type DescriptorOperationType extends string
++    enum
++      read
++      write
++
+   # Stores the manufacturer data
+   type ManufacturerData extends object
+     properties
+@@ -13481,6 +13509,18 @@ experimental domain BluetoothEmulation
+       integer code
+       optional binary data
+ 
++  # Simulates the response from the descriptor with |descriptorId| for a
++  # descriptor operation of |type|. The |code| value follows the Error
++  # Codes from Bluetooth Core Specification Vol 3 Part F 3.4.1.1 Error Response.
++  # The |data| is expected to exist when simulating a successful read operation
++  # response.
++  command simulateDescriptorOperationResponse
++    parameters
++      string descriptorId
++      DescriptorOperationType type
++      integer code
++      optional binary data
++
+   # Adds a service with |serviceUuid| to the peripheral with |address|.
+   command addService
+     parameters
+@@ -13527,6 +13567,11 @@ experimental domain BluetoothEmulation
+     parameters
+       string descriptorId
+ 
++  # Simulates a GATT disconnection from the peripheral with |address|.
++  command simulateGATTDisconnection
++    parameters
++      string address
++
+   # Event for when a GATT operation of |type| to the peripheral with |address|
+   # happened.
+   event gattOperationReceived
+@@ -13543,3 +13588,12 @@ experimental domain BluetoothEmulation
+       CharacteristicOperationType type
+       optional binary data
+       optional CharacteristicWriteType writeType
++
++  # Event for when a descriptor operation of |type| to the descriptor
++  # respresented by |descriptorId| happened. |data| is expected to exist when
++  # |type| is write.
++  event descriptorOperationReceived
++    parameters
++      string descriptorId
++      CharacteristicOperationType type
++      optional binary data
+```
+
 ## Roll protocol to r1453708 — _2025-04-30T04:30:29.000Z_
-######  Diff: [`3d50984...3a58b26`](https://github.com/ChromeDevTools/devtools-protocol/compare/3d50984...3a58b26)
+######  Diff: [`3d50984...4fe3878`](https://github.com/ChromeDevTools/devtools-protocol/compare/3d50984...4fe3878)
 
 ```diff
 @@ browser_protocol.pdl:1079 @@ experimental domain Audits
@@ -13862,44 +13954,4 @@ index 8d8211b..2d56043 100644
        # Database name.
        string databaseName
      returns
-```
-
-## Roll protocol to r1028580 — _2022-07-27T04:39:00.000Z_
-######  Diff: [`51ea7c8...47224e5`](https://github.com/ChromeDevTools/devtools-protocol/compare/51ea7c8...47224e5)
-
-```diff
-@@ browser_protocol.pdl:782 @@ experimental domain Audits
-       ObsoleteWebRtcCipherSuite
-       OpenWebDatabaseInsecureContext
-       OverflowVisibleOnReplacedElement
-+      PersistentQuotaType
-       PictureSourceSrc
-       PrefixedCancelAnimationFrame
-       PrefixedRequestAnimationFrame
-@@ -4105,7 +4106,11 @@ experimental domain IndexedDB
-   # Delete a range of entries from an object store
-   command deleteObjectStoreEntries
-     parameters
--      string securityOrigin
-+      # At least and at most one of securityOrigin, storageKey must be specified.
-+      # Security origin.
-+      optional string securityOrigin
-+      # Storage key.
-+      optional string storageKey
-       string databaseName
-       string objectStoreName
-       # Range of entry keys to delete
-@@ -4143,8 +4148,11 @@ experimental domain IndexedDB
-   # Gets metadata of an object store
-   command getMetadata
-     parameters
-+      # At least and at most one of securityOrigin, storageKey must be specified.
-       # Security origin.
--      string securityOrigin
-+      optional string securityOrigin
-+      # Storage key.
-+      optional string storageKey
-       # Database name.
-       string databaseName
-       # Object store name.
 ```
