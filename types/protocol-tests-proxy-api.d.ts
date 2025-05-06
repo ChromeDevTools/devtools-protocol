@@ -2940,16 +2940,46 @@ export namespace ProtocolTestsProxyApi {
         onceDirectTCPSocketChunkReceived(eventMatcher?: (event: { params: Protocol.Network.DirectTCPSocketChunkReceivedEvent }) => boolean): Promise<{ params: Protocol.Network.DirectTCPSocketChunkReceivedEvent }>;
 
         /**
-         * Fired when there is an error
-         * when writing to tcp direct socket stream.
-         * For example, if user writes illegal type like string
-         * instead of ArrayBuffer or ArrayBufferView.
-         * There's no reporting for reading, because
-         * we cannot know errors on the other side.
+         * Fired upon direct_socket.UDPSocket creation.
          */
-        onDirectTCPSocketChunkError(listener: (event: { params: Protocol.Network.DirectTCPSocketChunkErrorEvent }) => void): void;
-        offDirectTCPSocketChunkError(listener: (event: { params: Protocol.Network.DirectTCPSocketChunkErrorEvent }) => void): void;
-        onceDirectTCPSocketChunkError(eventMatcher?: (event: { params: Protocol.Network.DirectTCPSocketChunkErrorEvent }) => boolean): Promise<{ params: Protocol.Network.DirectTCPSocketChunkErrorEvent }>;
+        onDirectUDPSocketCreated(listener: (event: { params: Protocol.Network.DirectUDPSocketCreatedEvent }) => void): void;
+        offDirectUDPSocketCreated(listener: (event: { params: Protocol.Network.DirectUDPSocketCreatedEvent }) => void): void;
+        onceDirectUDPSocketCreated(eventMatcher?: (event: { params: Protocol.Network.DirectUDPSocketCreatedEvent }) => boolean): Promise<{ params: Protocol.Network.DirectUDPSocketCreatedEvent }>;
+
+        /**
+         * Fired when direct_socket.UDPSocket connection is opened.
+         */
+        onDirectUDPSocketOpened(listener: (event: { params: Protocol.Network.DirectUDPSocketOpenedEvent }) => void): void;
+        offDirectUDPSocketOpened(listener: (event: { params: Protocol.Network.DirectUDPSocketOpenedEvent }) => void): void;
+        onceDirectUDPSocketOpened(eventMatcher?: (event: { params: Protocol.Network.DirectUDPSocketOpenedEvent }) => boolean): Promise<{ params: Protocol.Network.DirectUDPSocketOpenedEvent }>;
+
+        /**
+         * Fired when direct_socket.UDPSocket is aborted.
+         */
+        onDirectUDPSocketAborted(listener: (event: { params: Protocol.Network.DirectUDPSocketAbortedEvent }) => void): void;
+        offDirectUDPSocketAborted(listener: (event: { params: Protocol.Network.DirectUDPSocketAbortedEvent }) => void): void;
+        onceDirectUDPSocketAborted(eventMatcher?: (event: { params: Protocol.Network.DirectUDPSocketAbortedEvent }) => boolean): Promise<{ params: Protocol.Network.DirectUDPSocketAbortedEvent }>;
+
+        /**
+         * Fired when direct_socket.UDPSocket is closed.
+         */
+        onDirectUDPSocketClosed(listener: (event: { params: Protocol.Network.DirectUDPSocketClosedEvent }) => void): void;
+        offDirectUDPSocketClosed(listener: (event: { params: Protocol.Network.DirectUDPSocketClosedEvent }) => void): void;
+        onceDirectUDPSocketClosed(eventMatcher?: (event: { params: Protocol.Network.DirectUDPSocketClosedEvent }) => boolean): Promise<{ params: Protocol.Network.DirectUDPSocketClosedEvent }>;
+
+        /**
+         * Fired when message is sent to udp direct socket stream.
+         */
+        onDirectUDPSocketChunkSent(listener: (event: { params: Protocol.Network.DirectUDPSocketChunkSentEvent }) => void): void;
+        offDirectUDPSocketChunkSent(listener: (event: { params: Protocol.Network.DirectUDPSocketChunkSentEvent }) => void): void;
+        onceDirectUDPSocketChunkSent(eventMatcher?: (event: { params: Protocol.Network.DirectUDPSocketChunkSentEvent }) => boolean): Promise<{ params: Protocol.Network.DirectUDPSocketChunkSentEvent }>;
+
+        /**
+         * Fired when message is received from udp direct socket stream.
+         */
+        onDirectUDPSocketChunkReceived(listener: (event: { params: Protocol.Network.DirectUDPSocketChunkReceivedEvent }) => void): void;
+        offDirectUDPSocketChunkReceived(listener: (event: { params: Protocol.Network.DirectUDPSocketChunkReceivedEvent }) => void): void;
+        onceDirectUDPSocketChunkReceived(eventMatcher?: (event: { params: Protocol.Network.DirectUDPSocketChunkReceivedEvent }) => boolean): Promise<{ params: Protocol.Network.DirectUDPSocketChunkReceivedEvent }>;
 
         /**
          * Fired when additional information about a requestWillBeSent event is available from the

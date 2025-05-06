@@ -1,7 +1,110 @@
 
 
+## Roll protocol to r1456087 — _2025-05-06T04:30:50.000Z_
+######  Diff: [`4925775...b560678`](https://github.com/ChromeDevTools/devtools-protocol/compare/4925775...b560678)
+
+```diff
+@@ browser_protocol.pdl:7018 @@ domain Network
+       experimental optional integer maxResourceBufferSize
+       # Longest post body size (in bytes) that would be included in requestWillBeSent notification
+       optional integer maxPostDataSize
++      # Whether DirectSocket chunk send/receive events should be reported.
++      experimental optional boolean reportDirectSocketTraffic
+ 
+   # Returns all browser cookies. Depending on the backend support, will return detailed cookie
+   # information in the `cookies` field.
+@@ -7549,18 +7551,80 @@ domain Network
+       binary data
+       MonotonicTime timestamp
+ 
+-  # Fired when there is an error
+-  # when writing to tcp direct socket stream.
+-  # For example, if user writes illegal type like string
+-  # instead of ArrayBuffer or ArrayBufferView.
+-  # There's no reporting for reading, because
+-  # we cannot know errors on the other side.
+-  experimental event directTCPSocketChunkError
++  experimental type DirectUDPSocketOptions extends object
++    properties
++      optional string remoteAddr
++      # Unsigned int 16.
++      optional integer remotePort
++
++      optional string localAddr
++      # Unsigned int 16.
++      optional integer localPort
++
++      optional DirectSocketDnsQueryType dnsQueryType
++
++      # Expected to be unsigned integer.
++      optional number sendBufferSize
++      # Expected to be unsigned integer.
++      optional number receiveBufferSize
++
++
++  # Fired upon direct_socket.UDPSocket creation.
++  experimental event directUDPSocketCreated
++    parameters
++      RequestId identifier
++      DirectUDPSocketOptions options
++      MonotonicTime timestamp
++      optional Initiator initiator
++
++  # Fired when direct_socket.UDPSocket connection is opened.
++  experimental event directUDPSocketOpened
++    parameters
++      RequestId identifier
++      string localAddr
++      # Expected to be unsigned integer.
++      integer localPort
++      MonotonicTime timestamp
++      optional string remoteAddr
++      # Expected to be unsigned integer.
++      optional integer remotePort
++
++  # Fired when direct_socket.UDPSocket is aborted.
++  experimental event directUDPSocketAborted
+     parameters
+       RequestId identifier
+       string errorMessage
+       MonotonicTime timestamp
+ 
++  # Fired when direct_socket.UDPSocket is closed.
++  experimental event directUDPSocketClosed
++    parameters
++      RequestId identifier
++      MonotonicTime timestamp
++
++  experimental type DirectUDPMessage extends object
++    properties
++      binary data
++      # Null for connected mode.
++      optional string remoteAddr
++      # Null for connected mode.
++      # Expected to be unsigned integer.
++      optional integer remotePort
++
++  # Fired when message is sent to udp direct socket stream.
++  experimental event directUDPSocketChunkSent
++    parameters
++      RequestId identifier
++      DirectUDPMessage message
++      MonotonicTime timestamp
++
++  # Fired when message is received from udp direct socket stream.
++  experimental event directUDPSocketChunkReceived
++    parameters
++      RequestId identifier
++      DirectUDPMessage message
++      MonotonicTime timestamp
++
+   experimental type PrivateNetworkRequestPolicy extends string
+     enum
+       Allow
+```
+
 ## Roll protocol to r1454823 — _2025-05-02T04:30:38.000Z_
-######  Diff: [`4fe3878...0399b23`](https://github.com/ChromeDevTools/devtools-protocol/compare/4fe3878...0399b23)
+######  Diff: [`4fe3878...4925775`](https://github.com/ChromeDevTools/devtools-protocol/compare/4fe3878...4925775)
 
 ```diff
 @@ browser_protocol.pdl:11380 @@ experimental domain Storage
@@ -13897,61 +14000,4 @@ index 8d8211b..2d56043 100644
  
    # Enables target discovery for the specified locations, when `setDiscoverTargets` was set to
    # `true`.
-```
-
-## Roll protocol to r1029085 — _2022-07-28T04:34:38.000Z_
-######  Diff: [`47224e5...d36a521`](https://github.com/ChromeDevTools/devtools-protocol/compare/47224e5...d36a521)
-
-```diff
-@@ browser_protocol.pdl:699 @@ experimental domain Audits
-   type AttributionReportingIssueType extends string
-     enum
-       PermissionPolicyDisabled
--      # TODO(apaseltiner): Remove this once it is no longer referenced by the frontend.
--      AttributionSourceUntrustworthyOrigin
--      # TODO(apaseltiner): Remove this once it is no longer referenced by the frontend.
--      AttributionUntrustworthyOrigin
-       UntrustworthyReportingOrigin
-       InsecureContext
-       # TODO(apaseltiner): Rename this to InvalidRegisterSourceHeader
-       InvalidHeader
-       InvalidRegisterTriggerHeader
-+      InvalidEligibleHeader
- 
-   # Details for issues around "Attribution Reporting API" usage.
-   # Explainer: https://github.com/WICG/attribution-reporting-api
-   type AttributionReportingIssueDetails extends object
-     properties
-       AttributionReportingIssueType violationType
--      # TODO(apaseltiner): Remove this once it is no longer referenced by the frontend.
--      optional AffectedFrame frame
-       optional AffectedRequest request
-       optional DOM.BackendNodeId violatingNodeId
-       optional string invalidParameter
-@@ -4125,8 +4120,11 @@ experimental domain IndexedDB
-   # Requests data from object store or index.
-   command requestData
-     parameters
-+      # At least and at most one of securityOrigin, storageKey must be specified.
-       # Security origin.
--      string securityOrigin
-+      optional string securityOrigin
-+      # Storage key.
-+      optional string storageKey
-       # Database name.
-       string databaseName
-       # Object store name.
-@@ -4168,8 +4166,11 @@ experimental domain IndexedDB
-   # Requests database with given name in given frame.
-   command requestDatabase
-     parameters
-+      # At least and at most one of securityOrigin, storageKey must be specified.
-       # Security origin.
--      string securityOrigin
-+      optional string securityOrigin
-+      # Storage key.
-+      optional string storageKey
-       # Database name.
-       string databaseName
-     returns
 ```

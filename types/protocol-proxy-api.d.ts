@@ -2748,14 +2748,34 @@ export namespace ProtocolProxyApi {
         on(event: 'directTCPSocketChunkReceived', listener: (params: Protocol.Network.DirectTCPSocketChunkReceivedEvent) => void): void;
 
         /**
-         * Fired when there is an error
-         * when writing to tcp direct socket stream.
-         * For example, if user writes illegal type like string
-         * instead of ArrayBuffer or ArrayBufferView.
-         * There's no reporting for reading, because
-         * we cannot know errors on the other side.
+         * Fired upon direct_socket.UDPSocket creation.
          */
-        on(event: 'directTCPSocketChunkError', listener: (params: Protocol.Network.DirectTCPSocketChunkErrorEvent) => void): void;
+        on(event: 'directUDPSocketCreated', listener: (params: Protocol.Network.DirectUDPSocketCreatedEvent) => void): void;
+
+        /**
+         * Fired when direct_socket.UDPSocket connection is opened.
+         */
+        on(event: 'directUDPSocketOpened', listener: (params: Protocol.Network.DirectUDPSocketOpenedEvent) => void): void;
+
+        /**
+         * Fired when direct_socket.UDPSocket is aborted.
+         */
+        on(event: 'directUDPSocketAborted', listener: (params: Protocol.Network.DirectUDPSocketAbortedEvent) => void): void;
+
+        /**
+         * Fired when direct_socket.UDPSocket is closed.
+         */
+        on(event: 'directUDPSocketClosed', listener: (params: Protocol.Network.DirectUDPSocketClosedEvent) => void): void;
+
+        /**
+         * Fired when message is sent to udp direct socket stream.
+         */
+        on(event: 'directUDPSocketChunkSent', listener: (params: Protocol.Network.DirectUDPSocketChunkSentEvent) => void): void;
+
+        /**
+         * Fired when message is received from udp direct socket stream.
+         */
+        on(event: 'directUDPSocketChunkReceived', listener: (params: Protocol.Network.DirectUDPSocketChunkReceivedEvent) => void): void;
 
         /**
          * Fired when additional information about a requestWillBeSent event is available from the
