@@ -41,10 +41,13 @@ jobs:
           npm run prep
           npm run build
 
-      - name: Deploy to gh-pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: debugger-protocol-viewer/devtools-protocol
-          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          single-commit: true
+      - 
+        name: Commit and push
+        run: |
+          git config --global user.email "
+          git config --global user.name "GitHub Actions"
+          git add .
+          git commit -m "Update"
+          git push
+        env:
+        
