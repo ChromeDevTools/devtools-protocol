@@ -3719,7 +3719,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Sets Controls for third-party cookie access
-         * Page reload is required before the new cookie bahavior will be observed
+         * Page reload is required before the new cookie behavior will be observed
          */
         'Network.setCookieControls': {
             paramsType: [Protocol.Network.SetCookieControlsRequest];

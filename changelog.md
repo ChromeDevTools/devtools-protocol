@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1457408 — _2025-05-08T04:31:17.000Z_
+######  Diff: [`2edae2a...09122f3`](https://github.com/ChromeDevTools/devtools-protocol/compare/2edae2a...09122f3)
+
+```diff
+@@ browser_protocol.pdl:7959 @@ domain Network
+       LoadNetworkResourcePageResult resource
+ 
+   # Sets Controls for third-party cookie access
+-  # Page reload is required before the new cookie bahavior will be observed
++  # Page reload is required before the new cookie behavior will be observed
+   experimental command setCookieControls
+     parameters
+       # Whether 3pc restriction is enabled.
+```
+
 ## Roll protocol to r1456738 — _2025-05-07T04:30:59.000Z_
-######  Diff: [`3d03f3d...e2793b5`](https://github.com/ChromeDevTools/devtools-protocol/compare/3d03f3d...e2793b5)
+######  Diff: [`3d03f3d...2edae2a`](https://github.com/ChromeDevTools/devtools-protocol/compare/3d03f3d...2edae2a)
 
 ```diff
 @@ browser_protocol.pdl:6223 @@ domain Network
@@ -13870,74 +13885,4 @@ index 8d8211b..2d56043 100644
  
    # Details for issues around "Attribution Reporting API" usage.
    # Explainer: https://github.com/WICG/attribution-reporting-api
-```
-
-## Roll protocol to r1030018 — _2022-07-30T04:33:35.000Z_
-######  Diff: [`1ad73ad...18fb7c3`](https://github.com/ChromeDevTools/devtools-protocol/compare/1ad73ad...18fb7c3)
-
-```diff
-@@ browser_protocol.pdl:9091 @@ experimental domain Storage
-       # Security origin.
-       string origin
- 
-+  # Registers storage key to be notified when an update occurs to its IndexedDB.
-+  command trackIndexedDBForStorageKey
-+    parameters
-+      # Storage key.
-+      string storageKey
-+
-   # Unregisters origin from receiving notifications for cache storage.
-   command untrackCacheStorageForOrigin
-     parameters
-@@ -9103,6 +9109,12 @@ experimental domain Storage
-       # Security origin.
-       string origin
- 
-+  # Unregisters storage key from receiving notifications for IndexedDB.
-+  command untrackIndexedDBForStorageKey
-+    parameters
-+      # Storage key.
-+      string storageKey
-+
-   # Returns the number of stored Trust Tokens per issuer for the
-   # current browsing context.
-   experimental command getTrustTokens
-@@ -9150,6 +9162,8 @@ experimental domain Storage
-     parameters
-       # Origin to update.
-       string origin
-+      # Storage key to update.
-+      string storageKey
-       # Database to update.
-       string databaseName
-       # ObjectStore to update.
-@@ -9160,6 +9174,8 @@ experimental domain Storage
-     parameters
-       # Origin to update.
-       string origin
-+      # Storage key to update.
-+      string storageKey
- 
-   # One of the interest groups was accessed by the associated page.
-   event interestGroupAccessed
-@@ -9330,13 +9346,16 @@ domain Target
-   experimental type FilterEntry extends object
-     properties
-       # If set, causes exclusion of mathcing targets from the list.
--      # The remainder of filter entries in the filter arrat are ignored.
-       optional boolean exclude
-       # If not present, matches any type.
-       optional string type
- 
--  # If filter is not specified, the one assumed is [{type: "browser", exclude: true}, {}]
--  # (i.e. include everything but browser).
-+  # The entries in TargetFilter are matched sequentially against targets and
-+  # the first entry that matches determines if the target is included or not,
-+  # depending on the value of `exclude` field in the entry.
-+  # If filter is not specified, the one assumed is
-+  # [{type: "browser", exclude: true}, {type: "tab", exclude: true}, {}]
-+  # (i.e. include everything but `browser` and `tab`).
-   experimental type TargetFilter extends array of FilterEntry
- 
-   experimental type RemoteLocation extends object
 ```

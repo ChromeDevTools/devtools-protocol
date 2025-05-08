@@ -15752,7 +15752,7 @@
                 },
                 {
                     "name": "setCookieControls",
-                    "description": "Sets Controls for third-party cookie access\nPage reload is required before the new cookie bahavior will be observed",
+                    "description": "Sets Controls for third-party cookie access\nPage reload is required before the new cookie behavior will be observed",
                     "experimental": true,
                     "parameters": [
                         {
