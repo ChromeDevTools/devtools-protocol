@@ -1,7 +1,29 @@
 
 
+## Roll protocol to r1459876 — _2025-05-14T04:31:17.000Z_
+######  Diff: [`3a3ebb4...20933d9`](https://github.com/ChromeDevTools/devtools-protocol/compare/3a3ebb4...20933d9)
+
+```diff
+@@ browser_protocol.pdl:5971 @@ domain Network
+       Ping
+       CSPViolationReport
+       Preflight
++      FedCM
+       Other
+ 
+   # Unique loader identifier.
+@@ -8607,6 +8608,7 @@ domain Page
+       media-playback-while-not-visible
+       microphone
+       midi
++      on-device-speech-recognition
+       otp-credentials
+       payment
+       picture-in-picture
+```
+
 ## Roll protocol to r1457408 — _2025-05-08T04:31:17.000Z_
-######  Diff: [`2edae2a...09122f3`](https://github.com/ChromeDevTools/devtools-protocol/compare/2edae2a...09122f3)
+######  Diff: [`2edae2a...3a3ebb4`](https://github.com/ChromeDevTools/devtools-protocol/compare/2edae2a...3a3ebb4)
 
 ```diff
 @@ browser_protocol.pdl:7959 @@ domain Network
@@ -13871,18 +13893,4 @@ index 8d8211b..2d56043 100644
      returns
        # Database names for origin.
        array of string databaseNames
-```
-
-## Roll protocol to r1030398 — _2022-08-02T04:50:11.000Z_
-######  Diff: [`18fb7c3...750f434`](https://github.com/ChromeDevTools/devtools-protocol/compare/18fb7c3...750f434)
-
-```diff
-@@ browser_protocol.pdl:705 @@ experimental domain Audits
-       InvalidHeader
-       InvalidRegisterTriggerHeader
-       InvalidEligibleHeader
-+      TooManyConcurrentRequests
- 
-   # Details for issues around "Attribution Reporting API" usage.
-   # Explainer: https://github.com/WICG/attribution-reporting-api
 ```
