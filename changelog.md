@@ -1,7 +1,39 @@
 
 
+## Roll protocol to r1460501 — _2025-05-15T04:31:15.000Z_
+######  Diff: [`18bb399...816a0b3`](https://github.com/ChromeDevTools/devtools-protocol/compare/18bb399...816a0b3)
+
+```diff
+@@ browser_protocol.pdl:11250 @@ experimental domain Storage
+       # duration in seconds
+       array of integer ends
+ 
+-  experimental type AttributionReportingTriggerSpec extends object
+-    properties
+-      # number instead of integer because not all uint32 can be represented by
+-      # int
+-      array of number triggerData
+-      AttributionReportingEventReportWindows eventReportWindows
+-
+   experimental type AttributionReportingTriggerDataMatching extends string
+     enum
+       exact
+@@ -11297,7 +11290,10 @@ experimental domain Storage
+       Network.TimeSinceEpoch time
+       # duration in seconds
+       integer expiry
+-      array of AttributionReportingTriggerSpec triggerSpecs
++      # number instead of integer because not all uint32 can be represented by
++      # int
++      array of number triggerData
++      AttributionReportingEventReportWindows eventReportWindows
+       # duration in seconds
+       integer aggregatableReportWindow
+       AttributionReportingSourceType type
+```
+
 ## Roll protocol to r1459876 — _2025-05-14T04:31:17.000Z_
-######  Diff: [`3a3ebb4...20933d9`](https://github.com/ChromeDevTools/devtools-protocol/compare/3a3ebb4...20933d9)
+######  Diff: [`3a3ebb4...18bb399`](https://github.com/ChromeDevTools/devtools-protocol/compare/3a3ebb4...18bb399)
 
 ```diff
 @@ browser_protocol.pdl:5971 @@ domain Network
@@ -13858,39 +13890,4 @@ index 8d8211b..2d56043 100644
        DisabledInSettings
        ErrorFetchingSignin
        InvalidSigninResponse
-```
-
-## Roll protocol to r1030896 — _2022-08-03T04:47:29.000Z_
-######  Diff: [`750f434...ced9091`](https://github.com/ChromeDevTools/devtools-protocol/compare/750f434...ced9091)
-
-```diff
-@@ browser_protocol.pdl:481 @@ experimental domain Audits
-       ExcludeSameSiteStrict
-       ExcludeInvalidSameParty
-       ExcludeSamePartyCrossPartyContext
-+      ExcludeDomainNonASCII
- 
-   type CookieWarningReason extends string
-     enum
-@@ -493,6 +494,7 @@ experimental domain Audits
-       WarnSameSiteLaxCrossDowngradeStrict
-       WarnSameSiteLaxCrossDowngradeLax
-       WarnAttributeValueExceedsMaxSize
-+      WarnDomainNonASCII
- 
-   type CookieOperation extends string
-     enum
-@@ -4181,8 +4183,11 @@ experimental domain IndexedDB
-   # Requests database names for given security origin.
-   command requestDatabaseNames
-     parameters
-+      # At least and at most one of securityOrigin, storageKey must be specified.
-       # Security origin.
--      string securityOrigin
-+      optional string securityOrigin
-+      # Storage key.
-+      optional string storageKey
-     returns
-       # Database names for origin.
-       array of string databaseNames
 ```
