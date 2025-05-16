@@ -1,0 +1,2801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Chrome DevTools Protocol - version 1-2 - Network domain" />
+  <link rel="icon" type="image/png" href="/devtools-protocol/images/logo.png" />
+    <title>Chrome DevTools Protocol - version 1-2 - Network domain</title>
+
+  <meta name="theme-color" content="#303F9F" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@chromedevtools" />
+  <meta name="twitter:creator" content="@chromedevtools" />
+  <meta property="og:title" content="Chrome DevTools Protocol" />
+  <meta property="og:image" content="https://developers.google.com/web/tools/images/chrome-devtools-16x9_720.png" />
+    <meta property="og:description" content="Chrome DevTools Protocol - version 1-2 - Network domain" />
+
+  <script type="module" src="/devtools-protocol/scripts/index.js"></script>
+  <link href="/devtools-protocol/styles/protocol.css" rel="stylesheet">
+</head>
+<body>
+  <aside>
+    <div id="home" class="navs">
+      <nav>
+        <a href="/devtools-protocol/">Home</a>
+        <button class="aside-close-button" aria-label="Close navigation">x</button>
+      </nav>
+    </div>
+    <div id="versions" class="navs">
+      <header>Versions</header>
+      <nav>
+        <a href="/devtools-protocol/tot" name="tot">
+          latest (tip-of-tree)
+        </a>
+        <a href="/devtools-protocol/v8" name="v8">
+          v8-inspector (node)
+        </a>
+        <a href="/devtools-protocol/1-3" name="1-3">
+          stable (1.3)
+        </a><!-- 
+        <a href="/devtools-protocol/1-2" name="1-2">
+          stable (1.2)
+        </a> -->
+      </nav>
+    </div>
+
+    <div id="domains" class="navs version-1-2">
+      <header>Domains</header>
+      <div class="scroller">
+        <nav>
+          <a href="/devtools-protocol/1-2/Accessibility" class="tot experimental">Accessibility</a>
+          <a href="/devtools-protocol/1-2/Animation" class="tot experimental">Animation</a>
+          <a href="/devtools-protocol/1-2/Audits" class="tot experimental">Audits</a>
+          <a href="/devtools-protocol/1-2/Autofill" class="tot experimental">Autofill</a>
+          <a href="/devtools-protocol/1-2/BackgroundService" class="tot experimental">BackgroundService</a>
+          <a href="/devtools-protocol/1-2/Browser" class="tot 1-3">Browser</a>
+          <a href="/devtools-protocol/1-2/CacheStorage" class="tot experimental">CacheStorage</a>
+          <a href="/devtools-protocol/1-2/Cast" class="tot experimental">Cast</a>
+          <a href="/devtools-protocol/1-2/Console" class="tot deprecated v8">Console</a>
+          <a href="/devtools-protocol/1-2/CSS" class="tot experimental">CSS</a>
+          <a href="/devtools-protocol/1-2/Database" class="tot experimental">Database</a>
+          <a href="/devtools-protocol/1-2/Debugger" class="tot 1-2 1-3 v8">Debugger</a>
+          <a href="/devtools-protocol/1-2/DeviceAccess" class="tot experimental">DeviceAccess</a>
+          <a href="/devtools-protocol/1-2/DeviceOrientation" class="tot experimental">DeviceOrientation</a>
+          <a href="/devtools-protocol/1-2/DOM" class="tot 1-2 1-3">DOM</a>
+          <a href="/devtools-protocol/1-2/DOMDebugger" class="tot 1-2 1-3">DOMDebugger</a>
+          <a href="/devtools-protocol/1-2/DOMSnapshot" class="tot experimental">DOMSnapshot</a>
+          <a href="/devtools-protocol/1-2/DOMStorage" class="tot experimental">DOMStorage</a>
+          <a href="/devtools-protocol/1-2/Emulation" class="tot 1-2 1-3">Emulation</a>
+          <a href="/devtools-protocol/1-2/EventBreakpoints" class="tot experimental">EventBreakpoints</a>
+          <a href="/devtools-protocol/1-2/Extensions" class="tot experimental">Extensions</a>
+          <a href="/devtools-protocol/1-2/FedCm" class="tot experimental">FedCm</a>
+          <a href="/devtools-protocol/1-2/Fetch" class="tot 1-3">Fetch</a>
+          <a href="/devtools-protocol/1-2/HeadlessExperimental" class="tot experimental">HeadlessExperimental</a>
+          <a href="/devtools-protocol/1-2/HeapProfiler" class="tot experimental v8">HeapProfiler</a>
+          <a href="/devtools-protocol/1-2/IndexedDB" class="tot experimental">IndexedDB</a>
+          <a href="/devtools-protocol/1-2/Input" class="tot 1-2 1-3">Input</a>
+          <a href="/devtools-protocol/1-2/Inspector" class="tot experimental">Inspector</a>
+          <a href="/devtools-protocol/1-2/IO" class="tot 1-3">IO</a>
+          <a href="/devtools-protocol/1-2/LayerTree" class="tot experimental">LayerTree</a>
+          <a href="/devtools-protocol/1-2/Log" class="tot 1-3">Log</a>
+          <a href="/devtools-protocol/1-2/Media" class="tot experimental">Media</a>
+          <a href="/devtools-protocol/1-2/Memory" class="tot experimental">Memory</a>
+          <a href="/devtools-protocol/1-2/Network" class="tot 1-2 1-3">Network</a>
+          <a href="/devtools-protocol/1-2/Overlay" class="tot experimental">Overlay</a>
+          <a href="/devtools-protocol/1-2/Page" class="tot 1-2 1-3">Page</a>
+          <a href="/devtools-protocol/1-2/Performance" class="tot 1-3">Performance</a>
+          <a href="/devtools-protocol/1-2/PerformanceTimeline" class="tot experimental">PerformanceTimeline</a>
+          <a href="/devtools-protocol/1-2/Preload" class="tot experimental">Preload</a>
+          <a href="/devtools-protocol/1-2/Profiler" class="tot 1-2 1-3 v8">Profiler</a>
+          <a href="/devtools-protocol/1-2/Runtime" class="tot 1-2 1-3 v8">Runtime</a>
+          <a href="/devtools-protocol/1-2/Schema" class="tot deprecated 1-2 v8">Schema</a>
+          <a href="/devtools-protocol/1-2/Security" class="tot 1-3">Security</a>
+          <a href="/devtools-protocol/1-2/ServiceWorker" class="tot experimental">ServiceWorker</a>
+          <a href="/devtools-protocol/1-2/Storage" class="tot experimental">Storage</a>
+          <a href="/devtools-protocol/1-2/SystemInfo" class="tot experimental">SystemInfo</a>
+          <a href="/devtools-protocol/1-2/Target" class="tot 1-3">Target</a>
+          <a href="/devtools-protocol/1-2/Tethering" class="tot experimental">Tethering</a>
+          <a href="/devtools-protocol/1-2/Tracing" class="tot experimental">Tracing</a>
+          <a href="/devtools-protocol/1-2/WebAudio" class="tot experimental">WebAudio</a>
+          <a href="/devtools-protocol/1-2/WebAuthn" class="tot experimental">WebAuthn</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <h1>Chrome DevTools Protocol</h1>
+      <button class="menu-link">Navigation</button>
+      <cr-search-control base-url="/devtools-protocol/" protocol-search-index="/search_index/1-2.json"></cr-search-control>
+    </header>
+    <section>
+      <div class="main-content-section domain">
+        
+    <div class="domain-section">
+      <div id="header">
+        <h2 class="heading">Network Domain</h2>
+        
+      <div class="details-description">
+        <p>Network domain allows tracking network activities of the page. It exposes information about http, file, data and other requests and responses, their headers, bodies, timing, etc.</p>
+
+        
+      </div>
+    
+        
+        <h3>Methods</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#method-canClearBrowserCache"><span class="domain-dot">Network.</span>canClearBrowserCache</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-canClearBrowserCookies"><span class="domain-dot">Network.</span>canClearBrowserCookies</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-clearBrowserCache"><span class="domain-dot">Network.</span>clearBrowserCache</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-clearBrowserCookies"><span class="domain-dot">Network.</span>clearBrowserCookies</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-disable"><span class="domain-dot">Network.</span>disable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-emulateNetworkConditions"><span class="domain-dot">Network.</span>emulateNetworkConditions</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-enable"><span class="domain-dot">Network.</span>enable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getResponseBody"><span class="domain-dot">Network.</span>getResponseBody</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setCacheDisabled"><span class="domain-dot">Network.</span>setCacheDisabled</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setExtraHTTPHeaders"><span class="domain-dot">Network.</span>setExtraHTTPHeaders</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setUserAgentOverride"><span class="domain-dot">Network.</span>setUserAgentOverride</a>
+        
+      </div>
+      
+        <h3>Events</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#event-dataReceived"><span class="domain-dot">Network.</span>dataReceived</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-loadingFailed"><span class="domain-dot">Network.</span>loadingFailed</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-loadingFinished"><span class="domain-dot">Network.</span>loadingFinished</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-requestServedFromCache"><span class="domain-dot">Network.</span>requestServedFromCache</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-requestWillBeSent"><span class="domain-dot">Network.</span>requestWillBeSent</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-responseReceived"><span class="domain-dot">Network.</span>responseReceived</a>
+        
+      </div>
+      
+        <h3>Types</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#type-CachedResource"><span class="domain-dot">Network.</span>CachedResource</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ConnectionType"><span class="domain-dot">Network.</span>ConnectionType</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-CookieSameSite"><span class="domain-dot">Network.</span>CookieSameSite</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-Headers"><span class="domain-dot">Network.</span>Headers</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-Initiator"><span class="domain-dot">Network.</span>Initiator</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-LoaderId"><span class="domain-dot">Network.</span>LoaderId</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-Request"><span class="domain-dot">Network.</span>Request</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-RequestId"><span class="domain-dot">Network.</span>RequestId</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ResourcePriority"><span class="domain-dot">Network.</span>ResourcePriority</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ResourceTiming"><span class="domain-dot">Network.</span>ResourceTiming</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-Response"><span class="domain-dot">Network.</span>Response</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-SecurityDetails"><span class="domain-dot">Network.</span>SecurityDetails</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-SignedCertificateTimestamp"><span class="domain-dot">Network.</span>SignedCertificateTimestamp</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-Timestamp"><span class="domain-dot">Network.</span>Timestamp</a>
+        
+      </div>
+      
+      </div>
+
+      
+      <h3 id="methods">Methods</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="method-canClearBrowserCache">
+          <span class="domain-dot">Network.</span>canClearBrowserCache
+          
+          <a href="#method-canClearBrowserCache"
+             class="permalink"
+             data-slug="Network.canClearBrowserCache"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Tells whether clearing browser cache is supported.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          result
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True if browser cache can be cleared.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-canClearBrowserCookies">
+          <span class="domain-dot">Network.</span>canClearBrowserCookies
+          
+          <a href="#method-canClearBrowserCookies"
+             class="permalink"
+             data-slug="Network.canClearBrowserCookies"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Tells whether clearing browser cookies is supported.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          result
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True if browser cookies can be cleared.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-clearBrowserCache">
+          <span class="domain-dot">Network.</span>clearBrowserCache
+          
+          <a href="#method-clearBrowserCache"
+             class="permalink"
+             data-slug="Network.clearBrowserCache"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Clears browser cache.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-clearBrowserCookies">
+          <span class="domain-dot">Network.</span>clearBrowserCookies
+          
+          <a href="#method-clearBrowserCookies"
+             class="permalink"
+             data-slug="Network.clearBrowserCookies"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Clears browser cookies.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-disable">
+          <span class="domain-dot">Network.</span>disable
+          
+          <a href="#method-disable"
+             class="permalink"
+             data-slug="Network.disable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Disables network tracking, prevents network events from being sent to the client.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-emulateNetworkConditions">
+          <span class="domain-dot">Network.</span>emulateNetworkConditions
+          
+          <a href="#method-emulateNetworkConditions"
+             class="permalink"
+             data-slug="Network.emulateNetworkConditions"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Activates emulation of network conditions.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          offline
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True to emulate internet disconnection.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          latency
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Additional latency (ms).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          downloadThroughput
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Maximal aggregated download throughput.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          uploadThroughput
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Maximal aggregated upload throughput.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          connectionType
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-ConnectionType class="param-type">ConnectionType</a>
+          
+      <div class="details-description">
+        <p>Connection type if known.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-enable">
+          <span class="domain-dot">Network.</span>enable
+          
+          <a href="#method-enable"
+             class="permalink"
+             data-slug="Network.enable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enables network tracking, network events will now be delivered to the client.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          maxTotalBufferSize
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Buffer size in bytes to use when preserving network payloads (XHRs, etc).</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          maxResourceBufferSize
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Per-resource buffer size in bytes to use when preserving network payloads (XHRs, etc).</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getResponseBody">
+          <span class="domain-dot">Network.</span>getResponseBody
+          
+          <a href="#method-getResponseBody"
+             class="permalink"
+             data-slug="Network.getResponseBody"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns content served for the given request.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-RequestId class="param-type">RequestId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the network request to get content for.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          body
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Response body.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          base64Encoded
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True, if content was sent as base64.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setCacheDisabled">
+          <span class="domain-dot">Network.</span>setCacheDisabled
+          
+          <a href="#method-setCacheDisabled"
+             class="permalink"
+             data-slug="Network.setCacheDisabled"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Toggles ignoring cache for each request. If &lt;code&gt;true&lt;/code&gt;, cache will not be used.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          cacheDisabled
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Cache disabled state.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setExtraHTTPHeaders">
+          <span class="domain-dot">Network.</span>setExtraHTTPHeaders
+          
+          <a href="#method-setExtraHTTPHeaders"
+             class="permalink"
+             data-slug="Network.setExtraHTTPHeaders"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Specifies whether to always send extra HTTP headers with the requests from this page.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          headers
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-Headers class="param-type">Headers</a>
+          
+      <div class="details-description">
+        <p>Map with extra HTTP headers.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setUserAgentOverride">
+          <span class="domain-dot">Network.</span>setUserAgentOverride
+          
+          <a href="#method-setUserAgentOverride"
+             class="permalink"
+             data-slug="Network.setUserAgentOverride"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Allows overriding user agent with the given string.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          userAgent
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>User agent to use.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="events">Events</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="event-dataReceived">
+          <span class="domain-dot">Network.</span>dataReceived
+          
+          <a href="#event-dataReceived"
+             class="permalink"
+             data-slug="Network.dataReceived"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when data chunk was received over the network.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-RequestId class="param-type">RequestId</a>
+          
+      <div class="details-description">
+        <p>Request identifier.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          timestamp
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-Timestamp class="param-type">Timestamp</a>
+          
+      <div class="details-description">
+        <p>Timestamp.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          dataLength
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Data chunk length.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          encodedDataLength
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Actual bytes received (might be less than dataLength for compressed encodings).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-loadingFailed">
+          <span class="domain-dot">Network.</span>loadingFailed
+          
+          <a href="#event-loadingFailed"
+             class="permalink"
+             data-slug="Network.loadingFailed"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when HTTP request has failed to load.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-RequestId class="param-type">RequestId</a>
+          
+      <div class="details-description">
+        <p>Request identifier.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          timestamp
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-Timestamp class="param-type">Timestamp</a>
+          
+      <div class="details-description">
+        <p>Timestamp.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          type
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Page/#type-ResourceType class="param-type">Page.ResourceType</a>
+          
+      <div class="details-description">
+        <p>Resource type.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          errorText
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>User friendly error message.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          canceled
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True if loading was canceled.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          blockedReason
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-BlockedReason class="param-type">BlockedReason</a>
+          
+      <div class="details-description">
+        <p>The reason why loading was blocked, if any.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-loadingFinished">
+          <span class="domain-dot">Network.</span>loadingFinished
+          
+          <a href="#event-loadingFinished"
+             class="permalink"
+             data-slug="Network.loadingFinished"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when HTTP request has finished loading.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-RequestId class="param-type">RequestId</a>
+          
+      <div class="details-description">
+        <p>Request identifier.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          timestamp
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-Timestamp class="param-type">Timestamp</a>
+          
+      <div class="details-description">
+        <p>Timestamp.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          encodedDataLength
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Total number of bytes received for this request.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-requestServedFromCache">
+          <span class="domain-dot">Network.</span>requestServedFromCache
+          
+          <a href="#event-requestServedFromCache"
+             class="permalink"
+             data-slug="Network.requestServedFromCache"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired if request ended up loading from cache.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-RequestId class="param-type">RequestId</a>
+          
+      <div class="details-description">
+        <p>Request identifier.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-requestWillBeSent">
+          <span class="domain-dot">Network.</span>requestWillBeSent
+          
+          <a href="#event-requestWillBeSent"
+             class="permalink"
+             data-slug="Network.requestWillBeSent"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when page is about to send HTTP request.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-RequestId class="param-type">RequestId</a>
+          
+      <div class="details-description">
+        <p>Request identifier.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          frameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Page/#type-FrameId class="param-type">Page.FrameId</a>
+          
+      <div class="details-description">
+        <p>Frame identifier.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace ">
+          loaderId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-LoaderId class="param-type">LoaderId</a>
+          
+      <div class="details-description">
+        <p>Loader identifier.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          documentURL
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>URL of the document this request is loaded for.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          request
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-Request class="param-type">Request</a>
+          
+      <div class="details-description">
+        <p>Request data.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          timestamp
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-Timestamp class="param-type">Timestamp</a>
+          
+      <div class="details-description">
+        <p>Timestamp.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          wallTime
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-Timestamp class="param-type">Timestamp</a>
+          
+      <div class="details-description">
+        <p>UTC Timestamp.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace ">
+          initiator
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-Initiator class="param-type">Initiator</a>
+          
+      <div class="details-description">
+        <p>Request initiator.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          redirectResponse
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-Response class="param-type">Response</a>
+          
+      <div class="details-description">
+        <p>Redirect response data.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          type
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Page/#type-ResourceType class="param-type">Page.ResourceType</a>
+          
+      <div class="details-description">
+        <p>Type of this resource.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-responseReceived">
+          <span class="domain-dot">Network.</span>responseReceived
+          
+          <a href="#event-responseReceived"
+             class="permalink"
+             data-slug="Network.responseReceived"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when HTTP response is available.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-RequestId class="param-type">RequestId</a>
+          
+      <div class="details-description">
+        <p>Request identifier.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          frameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Page/#type-FrameId class="param-type">Page.FrameId</a>
+          
+      <div class="details-description">
+        <p>Frame identifier.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace ">
+          loaderId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-LoaderId class="param-type">LoaderId</a>
+          
+      <div class="details-description">
+        <p>Loader identifier.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          timestamp
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-Timestamp class="param-type">Timestamp</a>
+          
+      <div class="details-description">
+        <p>Timestamp.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          type
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Page/#type-ResourceType class="param-type">Page.ResourceType</a>
+          
+      <div class="details-description">
+        <p>Resource type.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          response
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-Response class="param-type">Response</a>
+          
+      <div class="details-description">
+        <p>Response data.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="types">Types</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="type-CachedResource">
+          <span class="domain-dot">Network.</span>CachedResource
+          
+          <a href="#type-CachedResource"
+             class="permalink"
+             data-slug="Network.CachedResource"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Information about the cached resource.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Resource URL. This is the url of the original network request.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          type
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Page/#type-ResourceType class="param-type">Page.ResourceType</a>
+          
+      <div class="details-description">
+        <p>Type of this resource.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          response
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-Response class="param-type">Response</a>
+          
+      <div class="details-description">
+        <p>Cached response data.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          bodySize
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Cached response body size.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ConnectionType">
+          <span class="domain-dot">Network.</span>ConnectionType
+          
+          <a href="#type-ConnectionType"
+             class="permalink"
+             data-slug="Network.ConnectionType"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Loading priority of a resource request.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>none</code>, <code>cellular2g</code>, <code>cellular3g</code>, <code>cellular4g</code>, <code>bluetooth</code>, <code>ethernet</code>, <code>wifi</code>, <code>wimax</code>, <code>other</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-CookieSameSite">
+          <span class="domain-dot">Network.</span>CookieSameSite
+          
+          <a href="#type-CookieSameSite"
+             class="permalink"
+             data-slug="Network.CookieSameSite"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Represents the cookie&#39;s &#39;SameSite&#39; status: <a href="https://tools.ietf.org/html/draft-west-first-party-cookies">https://tools.ietf.org/html/draft-west-first-party-cookies</a></p>
+
+        
+      <div class="enum-container">Allowed Values: <code>Strict</code>, <code>Lax</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-Headers">
+          <span class="domain-dot">Network.</span>Headers
+          
+          <a href="#type-Headers"
+             class="permalink"
+             data-slug="Network.Headers"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Request / response headers as keys / values of JSON object.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-Initiator">
+          <span class="domain-dot">Network.</span>Initiator
+          
+          <a href="#type-Initiator"
+             class="permalink"
+             data-slug="Network.Initiator"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Information about the request initiator.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          type
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Type of this initiator.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>parser</code>, <code>script</code>, <code>other</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          stack
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Runtime/#type-StackTrace class="param-type">Runtime.StackTrace</a>
+          
+      <div class="details-description">
+        <p>Initiator JavaScript stack trace, set for Script only.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Initiator URL, set for Parser type only.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          lineNumber
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Initiator line number, set for Parser type only (0-based).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-LoaderId">
+          <span class="domain-dot">Network.</span>LoaderId
+          
+          <a href="#type-LoaderId"
+             class="permalink"
+             data-slug="Network.LoaderId"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Unique loader identifier.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-Request">
+          <span class="domain-dot">Network.</span>Request
+          
+          <a href="#type-Request"
+             class="permalink"
+             data-slug="Network.Request"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>HTTP request data.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Request URL.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          method
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>HTTP request method.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          headers
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-Headers class="param-type">Headers</a>
+          
+      <div class="details-description">
+        <p>HTTP request headers.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          postData
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>HTTP POST request data.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          mixedContentType
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>The mixed content status of the request, as defined in <a href="http://www.w3.org/TR/mixed-content/">http://www.w3.org/TR/mixed-content/</a></p>
+
+        
+      <div class="enum-container">Allowed Values: <code>blockable</code>, <code>optionally-blockable</code>, <code>none</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          initialPriority
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-ResourcePriority class="param-type">ResourcePriority</a>
+          
+      <div class="details-description">
+        <p>Priority of the resource request at the time request is sent.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-RequestId">
+          <span class="domain-dot">Network.</span>RequestId
+          
+          <a href="#type-RequestId"
+             class="permalink"
+             data-slug="Network.RequestId"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Unique request identifier.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ResourcePriority">
+          <span class="domain-dot">Network.</span>ResourcePriority
+          
+          <a href="#type-ResourcePriority"
+             class="permalink"
+             data-slug="Network.ResourcePriority"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Loading priority of a resource request.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>VeryLow</code>, <code>Low</code>, <code>Medium</code>, <code>High</code>, <code>VeryHigh</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ResourceTiming">
+          <span class="domain-dot">Network.</span>ResourceTiming
+          
+          <a href="#type-ResourceTiming"
+             class="permalink"
+             data-slug="Network.ResourceTiming"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Timing information for the request.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestTime
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Timing&#39;s requestTime is a baseline in seconds, while the other numbers are ticks in milliseconds relatively to this requestTime.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          proxyStart
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Started resolving proxy.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          proxyEnd
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Finished resolving proxy.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          dnsStart
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Started DNS address resolve.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          dnsEnd
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Finished DNS address resolve.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          connectStart
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Started connecting to the remote host.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          connectEnd
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Connected to the remote host.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          sslStart
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Started SSL handshake.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          sslEnd
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Finished SSL handshake.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          workerStart
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Started running ServiceWorker.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace ">
+          workerReady
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Finished Starting ServiceWorker.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace ">
+          sendStart
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Started sending request.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          sendEnd
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Finished sending request.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          pushStart
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Time the server started pushing request.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace ">
+          pushEnd
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Time the server finished pushing request.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace ">
+          receiveHeadersEnd
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Finished receiving response headers.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-Response">
+          <span class="domain-dot">Network.</span>Response
+          
+          <a href="#type-Response"
+             class="permalink"
+             data-slug="Network.Response"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>HTTP response data.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          url
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Response URL. This URL can be different from CachedResource.url in case of redirect.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          status
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>HTTP response status code.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          statusText
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>HTTP response status text.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          headers
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-Headers class="param-type">Headers</a>
+          
+      <div class="details-description">
+        <p>HTTP response headers.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          headersText
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>HTTP response headers text.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          mimeType
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Resource mimeType as determined by the browser.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          requestHeaders
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-Headers class="param-type">Headers</a>
+          
+      <div class="details-description">
+        <p>Refined HTTP request headers that were actually transmitted over the network.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          requestHeadersText
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>HTTP request headers text.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          connectionReused
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Specifies whether physical connection was actually reused for this request.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          connectionId
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Physical connection id that was actually used for this request.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          remoteIPAddress
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Remote IP address.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          remotePort
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Remote port.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          fromDiskCache
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Specifies that the request was served from the disk cache.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          fromServiceWorker
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Specifies that the request was served from the ServiceWorker.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          encodedDataLength
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Total number of bytes received for this request so far.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          timing
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-ResourceTiming class="param-type">ResourceTiming</a>
+          
+      <div class="details-description">
+        <p>Timing information for the given request.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          protocol
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Protocol used to fetch this request.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          securityState
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Security/#type-SecurityState class="param-type">Security.SecurityState</a>
+          
+      <div class="details-description">
+        <p>Security state of the request resource.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          securityDetails
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-SecurityDetails class="param-type">SecurityDetails</a>
+          
+      <div class="details-description">
+        <p>Security details for the request.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-SecurityDetails">
+          <span class="domain-dot">Network.</span>SecurityDetails
+          
+          <a href="#type-SecurityDetails"
+             class="permalink"
+             data-slug="Network.SecurityDetails"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Security details about a request.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          protocol
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Protocol name (e.g. &quot;TLS 1.2&quot; or &quot;QUIC&quot;).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          keyExchange
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Key Exchange used by the connection.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          keyExchangeGroup
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>(EC)DH group used by the connection, if applicable.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          cipher
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Cipher name.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          mac
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>TLS MAC. Note that AEAD ciphers do not have separate MACs.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          certificateId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Security/#type-CertificateId class="param-type">Security.CertificateId</a>
+          
+      <div class="details-description">
+        <p>Certificate ID value.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          subjectName
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Certificate subject name.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          sanList
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">string</span> ]</span></span>
+          
+      <div class="details-description">
+        <p>Subject Alternative Name (SAN) DNS names and IP addresses.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          issuer
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Name of the issuing CA.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          validFrom
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-Timestamp class="param-type">Timestamp</a>
+          
+      <div class="details-description">
+        <p>Certificate valid from date.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          validTo
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-Timestamp class="param-type">Timestamp</a>
+          
+      <div class="details-description">
+        <p>Certificate valid to (expiration) date</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          signedCertificateTimestampList
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/1-2/Network/#type-SignedCertificateTimestamp class="param-type">SignedCertificateTimestamp</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>List of signed certificate timestamps (SCTs).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-SignedCertificateTimestamp">
+          <span class="domain-dot">Network.</span>SignedCertificateTimestamp
+          
+          <a href="#type-SignedCertificateTimestamp"
+             class="permalink"
+             data-slug="Network.SignedCertificateTimestamp"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Details of a signed certificate timestamp (SCT).</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          status
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Validation status.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          origin
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Origin.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          logDescription
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Log name / description.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          logId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Log ID.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          timestamp
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Network/#type-Timestamp class="param-type">Timestamp</a>
+          
+      <div class="details-description">
+        <p>Issuance date.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          hashAlgorithm
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Hash algorithm.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          signatureAlgorithm
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Signature algorithm.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          signatureData
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Signature data.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-Timestamp">
+          <span class="domain-dot">Network.</span>Timestamp
+          
+          <a href="#type-Timestamp"
+             class="permalink"
+             data-slug="Network.Timestamp"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Number of seconds since epoch.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>number</strong></p>
+        
+        
+      </div>
+    
+      </div>
+    
+    </div>
+    
+      </div>
+    </section>
+  </main>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60854461-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
