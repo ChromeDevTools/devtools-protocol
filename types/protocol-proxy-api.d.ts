@@ -1993,11 +1993,19 @@ export namespace ProtocolProxyApi {
         setPressureSourceOverrideEnabled(params: Protocol.Emulation.SetPressureSourceOverrideEnabledRequest): Promise<void>;
 
         /**
+         * TODO: OBSOLETE: To remove when setPressureDataOverride is merged.
          * Provides a given pressure state that will be processed and eventually be
          * delivered to PressureObserver users. |source| must have been previously
          * overridden by setPressureSourceOverrideEnabled.
          */
         setPressureStateOverride(params: Protocol.Emulation.SetPressureStateOverrideRequest): Promise<void>;
+
+        /**
+         * Provides a given pressure data set that will be processed and eventually be
+         * delivered to PressureObserver users. |source| must have been previously
+         * overridden by setPressureSourceOverrideEnabled.
+         */
+        setPressureDataOverride(params: Protocol.Emulation.SetPressureDataOverrideRequest): Promise<void>;
 
         /**
          * Overrides the Idle state.

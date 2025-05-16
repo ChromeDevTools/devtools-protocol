@@ -1,7 +1,45 @@
 
 
+## Roll protocol to r1461159 — _2025-05-16T04:31:23.000Z_
+######  Diff: [`3716d55...374cfbc`](https://github.com/ChromeDevTools/devtools-protocol/compare/3716d55...374cfbc)
+
+```diff
+@@ browser_protocol.pdl:4744 @@ domain Emulation
+       PressureSource source
+       optional PressureMetadata metadata
+ 
++  # TODO: OBSOLETE: To remove when setPressureDataOverride is merged.
+   # Provides a given pressure state that will be processed and eventually be
+   # delivered to PressureObserver users. |source| must have been previously
+   # overridden by setPressureSourceOverrideEnabled.
+@@ -4752,6 +4753,15 @@ domain Emulation
+       PressureSource source
+       PressureState state
+ 
++  # Provides a given pressure data set that will be processed and eventually be
++  # delivered to PressureObserver users. |source| must have been previously
++  # overridden by setPressureSourceOverrideEnabled.
++  experimental command setPressureDataOverride
++    parameters
++      PressureSource source
++      PressureState state
++      optional number ownContributionEstimate
++
+   # Overrides the Idle state.
+   command setIdleOverride
+     parameters
+@@ -13050,7 +13060,6 @@ experimental domain Preload
+       InvalidSchemeRedirect
+       InvalidSchemeNavigation
+       NavigationRequestBlockedByCsp
+-      MainFrameNavigation
+       MojoBinderPolicy
+       RendererProcessCrashed
+       RendererProcessKilled
+```
+
 ## Roll protocol to r1460501 — _2025-05-15T04:31:15.000Z_
-######  Diff: [`18bb399...816a0b3`](https://github.com/ChromeDevTools/devtools-protocol/compare/18bb399...816a0b3)
+######  Diff: [`18bb399...3716d55`](https://github.com/ChromeDevTools/devtools-protocol/compare/18bb399...3716d55)
 
 ```diff
 @@ browser_protocol.pdl:11250 @@ experimental domain Storage
@@ -13876,18 +13914,4 @@ index 8d8211b..2d56043 100644
  
    event loadEventFired
      parameters
-```
-
-## Roll protocol to r1031356 — _2022-08-04T04:34:29.000Z_
-######  Diff: [`ced9091...4b0d166`](https://github.com/ChromeDevTools/devtools-protocol/compare/ced9091...4b0d166)
-
-```diff
-@@ browser_protocol.pdl:845 @@ experimental domain Audits
-       ClientMetadataHttpNotFound
-       ClientMetadataNoResponse
-       ClientMetadataInvalidResponse
--      ClientMetadataMissingPrivacyPolicyUrl
-       DisabledInSettings
-       ErrorFetchingSignin
-       InvalidSigninResponse
 ```
