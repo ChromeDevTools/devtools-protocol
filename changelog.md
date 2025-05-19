@@ -1,7 +1,7 @@
 
 
 ## Roll protocol to r1461159 — _2025-05-16T04:31:23.000Z_
-######  Diff: [`3716d55...374cfbc`](https://github.com/ChromeDevTools/devtools-protocol/compare/3716d55...374cfbc)
+######  Diff: [`3716d55...6474ac4`](https://github.com/ChromeDevTools/devtools-protocol/compare/3716d55...6474ac4)
 
 ```diff
 @@ browser_protocol.pdl:4744 @@ domain Emulation
@@ -13883,35 +13883,4 @@ index 8d8211b..2d56043 100644
  
    # Details for issues around "Attribution Reporting API" usage.
    # Explainer: https://github.com/WICG/attribution-reporting-api
-```
-
-## Roll protocol to r1032240 — _2022-08-06T04:31:26.000Z_
-######  Diff: [`4b0d166...4f1ab67`](https://github.com/ChromeDevTools/devtools-protocol/compare/4b0d166...4f1ab67)
-
-```diff
-@@ browser_protocol.pdl:708 @@ experimental domain Audits
-       InvalidRegisterTriggerHeader
-       InvalidEligibleHeader
-       TooManyConcurrentRequests
-+      SourceAndTriggerHeaders
- 
-   # Details for issues around "Attribution Reporting API" usage.
-   # Explainer: https://github.com/WICG/attribution-reporting-api
-@@ -8459,12 +8460,15 @@ domain Page
-       FailToGetMemoryUsage
- 
-   # Fired when a prerender attempt is completed.
--  event prerenderAttemptCompleted
-+  experimental event prerenderAttemptCompleted
-     parameters
-       # The frame id of the frame initiating prerendering.
-       FrameId initiatingFrameId
-       string prerenderingUrl
-       PrerenderFinalStatus finalStatus
-+      # This is used to give users more information about the cancellation details,
-+      # and this will be formatted for display.
-+      optional string reasonDetails
- 
-   event loadEventFired
-     parameters
 ```

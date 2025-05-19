@@ -110,6 +110,7 @@ const emitDomain = (domain: P.Domain) => {
 const getCommentLines = (description: string) => {
     const lines = description
         .split(/\r?\n/g)
+        .filter(line => !line.startsWith('LINT.IfChange'))
         .map(line => ` * ${line}`)
     return [`/**`, ...lines, ` */`]
 }
