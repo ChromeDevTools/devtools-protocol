@@ -4176,6 +4176,14 @@ export namespace ProtocolTestsProxyApi {
         offSharedStorageAccessed(listener: (event: { params: Protocol.Storage.SharedStorageAccessedEvent }) => void): void;
         onceSharedStorageAccessed(eventMatcher?: (event: { params: Protocol.Storage.SharedStorageAccessedEvent }) => boolean): Promise<{ params: Protocol.Storage.SharedStorageAccessedEvent }>;
 
+        /**
+         * A shared storage run or selectURL operation finished its execution.
+         * The following parameters are included in all events.
+         */
+        onSharedStorageWorkletOperationExecutionFinished(listener: (event: { params: Protocol.Storage.SharedStorageWorkletOperationExecutionFinishedEvent }) => void): void;
+        offSharedStorageWorkletOperationExecutionFinished(listener: (event: { params: Protocol.Storage.SharedStorageWorkletOperationExecutionFinishedEvent }) => void): void;
+        onceSharedStorageWorkletOperationExecutionFinished(eventMatcher?: (event: { params: Protocol.Storage.SharedStorageWorkletOperationExecutionFinishedEvent }) => boolean): Promise<{ params: Protocol.Storage.SharedStorageWorkletOperationExecutionFinishedEvent }>;
+
         onStorageBucketCreatedOrUpdated(listener: (event: { params: Protocol.Storage.StorageBucketCreatedOrUpdatedEvent }) => void): void;
         offStorageBucketCreatedOrUpdated(listener: (event: { params: Protocol.Storage.StorageBucketCreatedOrUpdatedEvent }) => void): void;
         onceStorageBucketCreatedOrUpdated(eventMatcher?: (event: { params: Protocol.Storage.StorageBucketCreatedOrUpdatedEvent }) => boolean): Promise<{ params: Protocol.Storage.StorageBucketCreatedOrUpdatedEvent }>;

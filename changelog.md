@@ -1,7 +1,78 @@
 
 
+## Roll protocol to r1463868 — _2025-05-22T04:31:25.000Z_
+######  Diff: [`13ce94b...edae34d`](https://github.com/ChromeDevTools/devtools-protocol/compare/13ce94b...edae34d)
+
+```diff
+@@ browser_protocol.pdl:10800 @@ experimental domain Storage
+       # Name of the registered operation to be run.
+       # Present only for SharedStorageAccessMethods: run and selectURL.
+       optional string operationName
++      # ID of the operation call.
++      # Present only for SharedStorageAccessMethods: run and selectURL.
++      optional string operationId
+       # Whether or not to keep the worket alive for future run or selectURL
+       # calls.
+       # Present only for SharedStorageAccessMethods: run and selectURL.
+@@ -10827,12 +10830,22 @@ experimental domain Storage
+       # Whether or not to set an entry for a key if that key is already present.
+       # Present only for SharedStorageAccessMethod: set.
+       optional boolean ignoreIfPresent
+-      # If the method is called on a worklet, or as part of
+-      # a worklet script, it will have an ID for the associated worklet.
++      # If the method is called on a shared storage worklet, or as part of
++      # a shared storage worklet script, it will have a number for the
++      # associated worklet, denoting the (0-indexed) order of the worklet's
++      # creation relative to all other shared storage worklets created by
++      # documents using the current storage partition.
++      # Present only for SharedStorageAccessMethods: addModule, createWorklet,
++      # run, selectURL, and any other SharedStorageAccessMethod when the
++      # SharedStorageAccessScope is sharedStorageWorklet.
++      # TODO(crbug.com/401011862): Pass this only for addModule & createWorklet.
++      optional integer workletOrdinal
++      # Hex representation of the DevTools token used as the TargetID for the
++      # associated shared storage worklet.
+       # Present only for SharedStorageAccessMethods: addModule, createWorklet,
+       # run, selectURL, and any other SharedStorageAccessMethod when the
+-      # SharedStorageAccessScope is worklet.
+-      optional string workletId
++      # SharedStorageAccessScope is sharedStorageWorklet.
++      optional Target.TargetID workletTargetId
+       # Name of the lock to be acquired, if present.
+       # Optionally present only for SharedStorageAccessMethods: batchUpdate,
+       # set, append, delete, and clear.
+@@ -11197,6 +11210,27 @@ experimental domain Storage
+       # presence/absence depends on `type`.
+       SharedStorageAccessParams params
+ 
++  # A shared storage run or selectURL operation finished its execution.
++  # The following parameters are included in all events.
++  event sharedStorageWorkletOperationExecutionFinished
++    parameters
++      # Time that the operation finished.
++      Network.TimeSinceEpoch finishedTime
++      # Time, in microseconds, from start of shared storage JS API call until
++      # end of operation execution in the worklet.
++      integer executionTime
++      # Enum value indicating the Shared Storage API method invoked.
++      SharedStorageAccessMethod method
++      # ID of the operation call.
++      string operationId
++      # Hex representation of the DevTools token used as the TargetID for the
++      # associated shared storage worklet.
++      Target.TargetID workletTargetId
++      # DevTools Frame Token for the primary frame tree's root.
++      Page.FrameId mainFrameId
++      # Serialization of the origin owning the Shared Storage data.
++      string ownerOrigin
++
+   event storageBucketCreatedOrUpdated
+     parameters
+       StorageBucketInfo bucketInfo
+```
+
 ## Roll protocol to r1462568 — _2025-05-20T04:31:10.000Z_
-######  Diff: [`7193d4d...b1c1119`](https://github.com/ChromeDevTools/devtools-protocol/compare/7193d4d...b1c1119)
+######  Diff: [`7193d4d...13ce94b`](https://github.com/ChromeDevTools/devtools-protocol/compare/7193d4d...13ce94b)
 
 ```diff
 @@ browser_protocol.pdl:13667 @@ experimental domain BluetoothEmulation
@@ -13867,18 +13938,4 @@ index 8d8211b..2d56043 100644
  
    # CSS media rule descriptor.
    type CSSMedia extends object
-```
-
-## Roll protocol to r1033355 — _2022-08-10T04:31:04.000Z_
-######  Diff: [`958f979...181b0dd`](https://github.com/ChromeDevTools/devtools-protocol/compare/958f979...181b0dd)
-
-```diff
-@@ browser_protocol.pdl:7156 @@ domain Page
-       storage-access-api
-       sync-xhr
-       trust-token-redemption
-+      unload
-       usb
-       vertical-scroll
-       web-share
 ```

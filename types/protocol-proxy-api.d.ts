@@ -3852,6 +3852,12 @@ export namespace ProtocolProxyApi {
          */
         on(event: 'sharedStorageAccessed', listener: (params: Protocol.Storage.SharedStorageAccessedEvent) => void): void;
 
+        /**
+         * A shared storage run or selectURL operation finished its execution.
+         * The following parameters are included in all events.
+         */
+        on(event: 'sharedStorageWorkletOperationExecutionFinished', listener: (params: Protocol.Storage.SharedStorageWorkletOperationExecutionFinishedEvent) => void): void;
+
         on(event: 'storageBucketCreatedOrUpdated', listener: (params: Protocol.Storage.StorageBucketCreatedOrUpdatedEvent) => void): void;
 
         on(event: 'storageBucketDeleted', listener: (params: Protocol.Storage.StorageBucketDeletedEvent) => void): void;
