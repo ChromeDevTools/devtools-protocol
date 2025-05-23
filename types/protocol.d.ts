@@ -7110,6 +7110,7 @@ export namespace Protocol {
         export const enum GetElementByRelationRequestRelation {
             PopoverTarget = 'PopoverTarget',
             InterestTarget = 'InterestTarget',
+            CommandFor = 'CommandFor',
         }
 
         export interface GetElementByRelationRequest {
@@ -7120,7 +7121,7 @@ export namespace Protocol {
             /**
              * Type of relation to get. (GetElementByRelationRequestRelation enum)
              */
-            relation: ('PopoverTarget' | 'InterestTarget');
+            relation: ('PopoverTarget' | 'InterestTarget' | 'CommandFor');
         }
 
         export interface GetElementByRelationResponse {

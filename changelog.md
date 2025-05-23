@@ -1,7 +1,23 @@
 
 
+## Roll protocol to r1464554 — _2025-05-23T04:31:06.000Z_
+######  Diff: [`e267f46...999dfb5`](https://github.com/ChromeDevTools/devtools-protocol/compare/e267f46...999dfb5)
+
+```diff
+@@ browser_protocol.pdl:3513 @@ domain DOM
+         PopoverTarget
+         # Get the interest target for a given element.
+         InterestTarget
++        # Get the commandfor target for a given element. In this case, this given
++        # element can only be an HTMLButtonElement.
++        CommandFor
+     returns
+       # NodeId of the element matching the queried relation.
+       NodeId nodeId
+```
+
 ## Roll protocol to r1463868 — _2025-05-22T04:31:25.000Z_
-######  Diff: [`13ce94b...edae34d`](https://github.com/ChromeDevTools/devtools-protocol/compare/13ce94b...edae34d)
+######  Diff: [`13ce94b...e267f46`](https://github.com/ChromeDevTools/devtools-protocol/compare/13ce94b...e267f46)
 
 ```diff
 @@ browser_protocol.pdl:10800 @@ experimental domain Storage
@@ -13922,20 +13938,4 @@ index 8d8211b..2d56043 100644
  
    # Fired when a prerender attempt is completed.
    experimental event prerenderAttemptCompleted
-```
-
-## Roll protocol to r1034791 — _2022-08-13T04:31:31.000Z_
-######  Diff: [`181b0dd...c5cb34c`](https://github.com/ChromeDevTools/devtools-protocol/compare/181b0dd...c5cb34c)
-
-```diff
-@@ browser_protocol.pdl:1537 @@ experimental domain CSS
-       optional boolean disabled
-       # The entire property range in the enclosing style declaration (if available).
-       optional SourceRange range
-+      # Parsed longhand components of this property if it is a shorthand.
-+      # This field will be empty if the given property is not a shorthand.
-+      experimental optional array of CSSProperty longhandProperties
- 
-   # CSS media rule descriptor.
-   type CSSMedia extends object
 ```
