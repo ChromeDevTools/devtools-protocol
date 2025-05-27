@@ -1,7 +1,32 @@
 
 
+## Roll protocol to r1465725 — _2025-05-27T04:31:56.000Z_
+######  Diff: [`44a7afb...4ff1838`](https://github.com/ChromeDevTools/devtools-protocol/compare/44a7afb...4ff1838)
+
+```diff
+@@ browser_protocol.pdl:1634 @@ domain Browser
+         inProgress
+         completed
+         canceled
++      # If download is "completed", provides the path of the downloaded file.
++      # Depending on the platform, it is not guaranteed to be set, nor the file
++      # is guaranteed to exist.
++      experimental optional string filePath
+ 
+   # Close browser gracefully.
+   command close
+@@ -3008,6 +3012,7 @@ domain DOM
+       file-selector-button
+       details-content
+       picker
++      permission-icon
+ 
+   # Shadow root type.
+   type ShadowRootType extends string
+```
+
 ## Roll protocol to r1464554 — _2025-05-23T04:31:06.000Z_
-######  Diff: [`e267f46...999dfb5`](https://github.com/ChromeDevTools/devtools-protocol/compare/e267f46...999dfb5)
+######  Diff: [`e267f46...44a7afb`](https://github.com/ChromeDevTools/devtools-protocol/compare/e267f46...44a7afb)
 
 ```diff
 @@ browser_protocol.pdl:3513 @@ domain DOM
@@ -13919,23 +13944,4 @@ index 8d8211b..2d56043 100644
        sync-xhr
        trust-token-redemption
        unload
-```
-
-## Roll protocol to r1034970 — _2022-08-15T04:47:01.000Z_
-######  Diff: [`c5cb34c...5bd2c6a`](https://github.com/ChromeDevTools/devtools-protocol/compare/c5cb34c...5bd2c6a)
-
-```diff
-@@ browser_protocol.pdl:8459 @@ domain Page
-       TriggerBackgrounded
-       EmbedderTriggeredAndSameOriginRedirected
-       EmbedderTriggeredAndCrossOriginRedirected
--      EmbedderTriggeredAndDestroyed
-       MemoryLimitExceeded
-       # Prerenders can be cancelled when Chrome uses excessive memory. This is
-       # recorded when it fails to get the memory usage.
-       FailToGetMemoryUsage
-+      DataSaverEnabled
- 
-   # Fired when a prerender attempt is completed.
-   experimental event prerenderAttemptCompleted
 ```
