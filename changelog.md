@@ -1,7 +1,40 @@
 
 
+## Roll protocol to r1466870 — _2025-05-29T04:34:46.000Z_
+######  Diff: [`dc7b911...381574b`](https://github.com/ChromeDevTools/devtools-protocol/compare/dc7b911...381574b)
+
+```diff
+@@ browser_protocol.pdl:10838 @@ experimental domain Storage
+       # Whether or not to set an entry for a key if that key is already present.
+       # Present only for SharedStorageAccessMethod: set.
+       optional boolean ignoreIfPresent
+-      # If the method is called on a shared storage worklet, or as part of
+-      # a shared storage worklet script, it will have a number for the
+-      # associated worklet, denoting the (0-indexed) order of the worklet's
++      # A number denoting the (0-based) order of the worklet's
+       # creation relative to all other shared storage worklets created by
+       # documents using the current storage partition.
+-      # Present only for SharedStorageAccessMethods: addModule, createWorklet,
+-      # run, selectURL, and any other SharedStorageAccessMethod when the
+-      # SharedStorageAccessScope is sharedStorageWorklet.
+-      # TODO(crbug.com/401011862): Pass this only for addModule & createWorklet.
++      # Present only for SharedStorageAccessMethods: addModule, createWorklet.
+       optional integer workletOrdinal
+       # Hex representation of the DevTools token used as the TargetID for the
+       # associated shared storage worklet.
+@@ -12036,7 +12031,7 @@ domain Tracing
+ 
+   type TraceConfig extends object
+     properties
+-      # Controls how the trace buffer stores data.
++      # Controls how the trace buffer stores data. The default is `recordUntilFull`.
+       experimental optional enum recordMode
+         recordUntilFull
+         recordContinuously
+```
+
 ## Roll protocol to r1465725 — _2025-05-27T04:31:56.000Z_
-######  Diff: [`44a7afb...4ff1838`](https://github.com/ChromeDevTools/devtools-protocol/compare/44a7afb...4ff1838)
+######  Diff: [`44a7afb...dc7b911`](https://github.com/ChromeDevTools/devtools-protocol/compare/44a7afb...dc7b911)
 
 ```diff
 @@ browser_protocol.pdl:1634 @@ domain Browser
@@ -13929,19 +13962,4 @@ index 8d8211b..2d56043 100644
  
    # Fired when a prerender attempt is completed.
    experimental event prerenderAttemptCompleted
-```
-
-## Roll protocol to r1036444 — _2022-08-18T04:47:13.000Z_
-######  Diff: [`5bd2c6a...c6dfb99`](https://github.com/ChromeDevTools/devtools-protocol/compare/5bd2c6a...c6dfb99)
-
-```diff
-@@ browser_protocol.pdl:7156 @@ domain Page
-       serial
-       shared-autofill
-       shared-storage
--      storage-access-api
-+      storage-access
-       sync-xhr
-       trust-token-redemption
-       unload
 ```
