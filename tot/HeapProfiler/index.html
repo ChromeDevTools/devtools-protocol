@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Chrome DevTools Protocol - version tot - HeapProfiler domain" />
+  <link rel="icon" type="image/png" href="/devtools-protocol/images/logo.png" />
+    <title>Chrome DevTools Protocol - HeapProfiler domain</title>
+
+  <meta name="theme-color" content="#303F9F" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@chromedevtools" />
+  <meta name="twitter:creator" content="@chromedevtools" />
+  <meta property="og:title" content="Chrome DevTools Protocol" />
+  <meta property="og:image" content="https://developers.google.com/web/tools/images/chrome-devtools-16x9_720.png" />
+    <meta property="og:description" content="Chrome DevTools Protocol - version tot - HeapProfiler domain" />
+
+  <script type="module" src="/devtools-protocol/scripts/index.js"></script>
+  <link href="/devtools-protocol/styles/protocol.css" rel="stylesheet">
+</head>
+<body>
+  <aside>
+    <div id="home" class="navs">
+      <nav>
+        <a href="/devtools-protocol/">Home</a>
+        <button class="aside-close-button" aria-label="Close navigation">x</button>
+      </nav>
+    </div>
+    <div id="versions" class="navs">
+      <header>Versions</header>
+      <nav>
+        <a href="/devtools-protocol/tot" name="tot">
+          latest (tip-of-tree)
+        </a>
+        <a href="/devtools-protocol/v8" name="v8">
+          v8-inspector (node)
+        </a>
+        <a href="/devtools-protocol/1-3" name="1-3">
+          stable (1.3)
+        </a><!-- 
+        <a href="/devtools-protocol/1-2" name="1-2">
+          stable (1.2)
+        </a> -->
+      </nav>
+    </div>
+
+    <div id="domains" class="navs version-tot">
+      <header>Domains</header>
+      <div class="scroller">
+        <nav>
+          <a href="/devtools-protocol/tot/Accessibility" class="tot experimental">Accessibility</a>
+          <a href="/devtools-protocol/tot/Animation" class="tot experimental">Animation</a>
+          <a href="/devtools-protocol/tot/Audits" class="tot experimental">Audits</a>
+          <a href="/devtools-protocol/tot/Autofill" class="tot experimental">Autofill</a>
+          <a href="/devtools-protocol/tot/BackgroundService" class="tot experimental">BackgroundService</a>
+          <a href="/devtools-protocol/tot/Browser" class="tot 1-3">Browser</a>
+          <a href="/devtools-protocol/tot/CacheStorage" class="tot experimental">CacheStorage</a>
+          <a href="/devtools-protocol/tot/Cast" class="tot experimental">Cast</a>
+          <a href="/devtools-protocol/tot/Console" class="tot deprecated v8">Console</a>
+          <a href="/devtools-protocol/tot/CSS" class="tot experimental">CSS</a>
+          <a href="/devtools-protocol/tot/Database" class="tot experimental">Database</a>
+          <a href="/devtools-protocol/tot/Debugger" class="tot 1-2 1-3 v8">Debugger</a>
+          <a href="/devtools-protocol/tot/DeviceAccess" class="tot experimental">DeviceAccess</a>
+          <a href="/devtools-protocol/tot/DeviceOrientation" class="tot experimental">DeviceOrientation</a>
+          <a href="/devtools-protocol/tot/DOM" class="tot 1-2 1-3">DOM</a>
+          <a href="/devtools-protocol/tot/DOMDebugger" class="tot 1-2 1-3">DOMDebugger</a>
+          <a href="/devtools-protocol/tot/DOMSnapshot" class="tot experimental">DOMSnapshot</a>
+          <a href="/devtools-protocol/tot/DOMStorage" class="tot experimental">DOMStorage</a>
+          <a href="/devtools-protocol/tot/Emulation" class="tot 1-2 1-3">Emulation</a>
+          <a href="/devtools-protocol/tot/EventBreakpoints" class="tot experimental">EventBreakpoints</a>
+          <a href="/devtools-protocol/tot/Extensions" class="tot experimental">Extensions</a>
+          <a href="/devtools-protocol/tot/FedCm" class="tot experimental">FedCm</a>
+          <a href="/devtools-protocol/tot/Fetch" class="tot 1-3">Fetch</a>
+          <a href="/devtools-protocol/tot/HeadlessExperimental" class="tot experimental">HeadlessExperimental</a>
+          <a href="/devtools-protocol/tot/HeapProfiler" class="tot experimental v8">HeapProfiler</a>
+          <a href="/devtools-protocol/tot/IndexedDB" class="tot experimental">IndexedDB</a>
+          <a href="/devtools-protocol/tot/Input" class="tot 1-2 1-3">Input</a>
+          <a href="/devtools-protocol/tot/Inspector" class="tot experimental">Inspector</a>
+          <a href="/devtools-protocol/tot/IO" class="tot 1-3">IO</a>
+          <a href="/devtools-protocol/tot/LayerTree" class="tot experimental">LayerTree</a>
+          <a href="/devtools-protocol/tot/Log" class="tot 1-3">Log</a>
+          <a href="/devtools-protocol/tot/Media" class="tot experimental">Media</a>
+          <a href="/devtools-protocol/tot/Memory" class="tot experimental">Memory</a>
+          <a href="/devtools-protocol/tot/Network" class="tot 1-2 1-3">Network</a>
+          <a href="/devtools-protocol/tot/Overlay" class="tot experimental">Overlay</a>
+          <a href="/devtools-protocol/tot/Page" class="tot 1-2 1-3">Page</a>
+          <a href="/devtools-protocol/tot/Performance" class="tot 1-3">Performance</a>
+          <a href="/devtools-protocol/tot/PerformanceTimeline" class="tot experimental">PerformanceTimeline</a>
+          <a href="/devtools-protocol/tot/Preload" class="tot experimental">Preload</a>
+          <a href="/devtools-protocol/tot/Profiler" class="tot 1-2 1-3 v8">Profiler</a>
+          <a href="/devtools-protocol/tot/Runtime" class="tot 1-2 1-3 v8">Runtime</a>
+          <a href="/devtools-protocol/tot/Schema" class="tot deprecated 1-2 v8">Schema</a>
+          <a href="/devtools-protocol/tot/Security" class="tot 1-3">Security</a>
+          <a href="/devtools-protocol/tot/ServiceWorker" class="tot experimental">ServiceWorker</a>
+          <a href="/devtools-protocol/tot/Storage" class="tot experimental">Storage</a>
+          <a href="/devtools-protocol/tot/SystemInfo" class="tot experimental">SystemInfo</a>
+          <a href="/devtools-protocol/tot/Target" class="tot 1-3">Target</a>
+          <a href="/devtools-protocol/tot/Tethering" class="tot experimental">Tethering</a>
+          <a href="/devtools-protocol/tot/Tracing" class="tot experimental">Tracing</a>
+          <a href="/devtools-protocol/tot/WebAudio" class="tot experimental">WebAudio</a>
+          <a href="/devtools-protocol/tot/WebAuthn" class="tot experimental">WebAuthn</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <h1>Chrome DevTools Protocol</h1>
+      <button class="menu-link">Navigation</button>
+      <cr-search-control base-url="/devtools-protocol/" protocol-search-index="/search_index/tot.json"></cr-search-control>
+    </header>
+    <section>
+      <div class="main-content-section domain">
+        
+    <div class="domain-section">
+      <div id="header">
+        <h2 class="heading">HeapProfiler Domain</h2>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        <h3>Methods</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#method-addInspectedHeapObject"><span class="domain-dot">HeapProfiler.</span>addInspectedHeapObject</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-collectGarbage"><span class="domain-dot">HeapProfiler.</span>collectGarbage</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-disable"><span class="domain-dot">HeapProfiler.</span>disable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-enable"><span class="domain-dot">HeapProfiler.</span>enable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getHeapObjectId"><span class="domain-dot">HeapProfiler.</span>getHeapObjectId</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getObjectByHeapObjectId"><span class="domain-dot">HeapProfiler.</span>getObjectByHeapObjectId</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getSamplingProfile"><span class="domain-dot">HeapProfiler.</span>getSamplingProfile</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-startSampling"><span class="domain-dot">HeapProfiler.</span>startSampling</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-startTrackingHeapObjects"><span class="domain-dot">HeapProfiler.</span>startTrackingHeapObjects</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-stopSampling"><span class="domain-dot">HeapProfiler.</span>stopSampling</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-stopTrackingHeapObjects"><span class="domain-dot">HeapProfiler.</span>stopTrackingHeapObjects</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-takeHeapSnapshot"><span class="domain-dot">HeapProfiler.</span>takeHeapSnapshot</a>
+        
+      </div>
+      
+        <h3>Events</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#event-addHeapSnapshotChunk"><span class="domain-dot">HeapProfiler.</span>addHeapSnapshotChunk</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-heapStatsUpdate"><span class="domain-dot">HeapProfiler.</span>heapStatsUpdate</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-lastSeenObjectId"><span class="domain-dot">HeapProfiler.</span>lastSeenObjectId</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-reportHeapSnapshotProgress"><span class="domain-dot">HeapProfiler.</span>reportHeapSnapshotProgress</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-resetProfiles"><span class="domain-dot">HeapProfiler.</span>resetProfiles</a>
+        
+      </div>
+      
+        <h3>Types</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#type-HeapSnapshotObjectId"><span class="domain-dot">HeapProfiler.</span>HeapSnapshotObjectId</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-SamplingHeapProfile"><span class="domain-dot">HeapProfiler.</span>SamplingHeapProfile</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-SamplingHeapProfileNode"><span class="domain-dot">HeapProfiler.</span>SamplingHeapProfileNode</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-SamplingHeapProfileSample"><span class="domain-dot">HeapProfiler.</span>SamplingHeapProfileSample</a>
+        
+      </div>
+      
+      </div>
+
+      
+      <h3 id="methods">Methods</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="method-addInspectedHeapObject">
+          <span class="domain-dot">HeapProfiler.</span>addInspectedHeapObject
+          
+          <a href="#method-addInspectedHeapObject"
+             class="permalink"
+             data-slug="HeapProfiler.addInspectedHeapObject"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enables console to refer to the node with given id via $x (see Command Line API for more details
+$x functions).</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          heapObjectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/HeapProfiler/#type-HeapSnapshotObjectId class="param-type">HeapSnapshotObjectId</a>
+          
+      <div class="details-description">
+        <p>Heap snapshot object id to be accessible by means of $x command line API.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-collectGarbage">
+          <span class="domain-dot">HeapProfiler.</span>collectGarbage
+          
+          <a href="#method-collectGarbage"
+             class="permalink"
+             data-slug="HeapProfiler.collectGarbage"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-disable">
+          <span class="domain-dot">HeapProfiler.</span>disable
+          
+          <a href="#method-disable"
+             class="permalink"
+             data-slug="HeapProfiler.disable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-enable">
+          <span class="domain-dot">HeapProfiler.</span>enable
+          
+          <a href="#method-enable"
+             class="permalink"
+             data-slug="HeapProfiler.enable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getHeapObjectId">
+          <span class="domain-dot">HeapProfiler.</span>getHeapObjectId
+          
+          <a href="#method-getHeapObjectId"
+             class="permalink"
+             data-slug="HeapProfiler.getHeapObjectId"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          objectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObjectId class="param-type">Runtime.RemoteObjectId</a>
+          
+      <div class="details-description">
+        <p>Identifier of the object to get heap object id for.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          heapSnapshotObjectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/HeapProfiler/#type-HeapSnapshotObjectId class="param-type">HeapSnapshotObjectId</a>
+          
+      <div class="details-description">
+        <p>Id of the heap snapshot object corresponding to the passed remote object id.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getObjectByHeapObjectId">
+          <span class="domain-dot">HeapProfiler.</span>getObjectByHeapObjectId
+          
+          <a href="#method-getObjectByHeapObjectId"
+             class="permalink"
+             data-slug="HeapProfiler.getObjectByHeapObjectId"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          objectId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/HeapProfiler/#type-HeapSnapshotObjectId class="param-type">HeapSnapshotObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          objectGroup
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Symbolic group name that can be used to release multiple objects.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          result
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-RemoteObject class="param-type">Runtime.RemoteObject</a>
+          
+      <div class="details-description">
+        <p>Evaluation result.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getSamplingProfile">
+          <span class="domain-dot">HeapProfiler.</span>getSamplingProfile
+          
+          <a href="#method-getSamplingProfile"
+             class="permalink"
+             data-slug="HeapProfiler.getSamplingProfile"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          profile
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/HeapProfiler/#type-SamplingHeapProfile class="param-type">SamplingHeapProfile</a>
+          
+      <div class="details-description">
+        <p>Return the sampling profile being collected.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-startSampling">
+          <span class="domain-dot">HeapProfiler.</span>startSampling
+          
+          <a href="#method-startSampling"
+             class="permalink"
+             data-slug="HeapProfiler.startSampling"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          samplingInterval
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Average sample interval in bytes. Poisson distribution is used for the intervals. The
+default value is 32768 bytes.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          includeObjectsCollectedByMajorGC
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>By default, the sampling heap profiler reports only objects which are
+still alive when the profile is returned via getSamplingProfile or
+stopSampling, which is useful for determining what functions contribute
+the most to steady-state memory usage. This flag instructs the sampling
+heap profiler to also include information about objects discarded by
+major GC, which will show which functions cause large temporary memory
+usage or long GC pauses.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          includeObjectsCollectedByMinorGC
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>By default, the sampling heap profiler reports only objects which are
+still alive when the profile is returned via getSamplingProfile or
+stopSampling, which is useful for determining what functions contribute
+the most to steady-state memory usage. This flag instructs the sampling
+heap profiler to also include information about objects discarded by
+minor GC, which is useful when tuning a latency-sensitive application
+for minimal GC activity.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-startTrackingHeapObjects">
+          <span class="domain-dot">HeapProfiler.</span>startTrackingHeapObjects
+          
+          <a href="#method-startTrackingHeapObjects"
+             class="permalink"
+             data-slug="HeapProfiler.startTrackingHeapObjects"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          trackAllocations
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-stopSampling">
+          <span class="domain-dot">HeapProfiler.</span>stopSampling
+          
+          <a href="#method-stopSampling"
+             class="permalink"
+             data-slug="HeapProfiler.stopSampling"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          profile
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/HeapProfiler/#type-SamplingHeapProfile class="param-type">SamplingHeapProfile</a>
+          
+      <div class="details-description">
+        <p>Recorded sampling heap profile.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-stopTrackingHeapObjects">
+          <span class="domain-dot">HeapProfiler.</span>stopTrackingHeapObjects
+          
+          <a href="#method-stopTrackingHeapObjects"
+             class="permalink"
+             data-slug="HeapProfiler.stopTrackingHeapObjects"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          reportProgress
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>If true &#39;reportHeapSnapshotProgress&#39; events will be generated while snapshot is being taken
+when the tracking is stopped.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          treatGlobalObjectsAsRoots
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Deprecated in favor of <code>exposeInternals</code>.</p>
+
+        
+      </div>
+    
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          captureNumericValue
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>If true, numerical values are included in the snapshot</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          exposeInternals
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>If true, exposes internals of the snapshot.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-takeHeapSnapshot">
+          <span class="domain-dot">HeapProfiler.</span>takeHeapSnapshot
+          
+          <a href="#method-takeHeapSnapshot"
+             class="permalink"
+             data-slug="HeapProfiler.takeHeapSnapshot"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          reportProgress
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>If true &#39;reportHeapSnapshotProgress&#39; events will be generated while snapshot is being taken.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          treatGlobalObjectsAsRoots
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>If true, a raw snapshot without artificial roots will be generated.
+Deprecated in favor of <code>exposeInternals</code>.</p>
+
+        
+      </div>
+    
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          captureNumericValue
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>If true, numerical values are included in the snapshot</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          exposeInternals
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>If true, exposes internals of the snapshot.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="events">Events</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="event-addHeapSnapshotChunk">
+          <span class="domain-dot">HeapProfiler.</span>addHeapSnapshotChunk
+          
+          <a href="#event-addHeapSnapshotChunk"
+             class="permalink"
+             data-slug="HeapProfiler.addHeapSnapshotChunk"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          chunk
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-heapStatsUpdate">
+          <span class="domain-dot">HeapProfiler.</span>heapStatsUpdate
+          
+          <a href="#event-heapStatsUpdate"
+             class="permalink"
+             data-slug="HeapProfiler.heapStatsUpdate"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>If heap objects tracking has been started then backend may send update for one or more fragments</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          statsUpdate
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">integer</span> ]</span></span>
+          
+      <div class="details-description">
+        <p>An array of triplets. Each triplet describes a fragment. The first integer is the fragment
+index, the second integer is a total count of objects for the fragment, the third integer is
+a total size of the objects for the fragment.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-lastSeenObjectId">
+          <span class="domain-dot">HeapProfiler.</span>lastSeenObjectId
+          
+          <a href="#event-lastSeenObjectId"
+             class="permalink"
+             data-slug="HeapProfiler.lastSeenObjectId"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>If heap objects tracking has been started then backend regularly sends a current value for last
+seen object id and corresponding timestamp. If the were changes in the heap since last event
+then one or more heapStatsUpdate events will be sent before a new lastSeenObjectId event.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          lastSeenObjectId
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          timestamp
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-reportHeapSnapshotProgress">
+          <span class="domain-dot">HeapProfiler.</span>reportHeapSnapshotProgress
+          
+          <a href="#event-reportHeapSnapshotProgress"
+             class="permalink"
+             data-slug="HeapProfiler.reportHeapSnapshotProgress"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          done
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          total
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          finished
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-resetProfiles">
+          <span class="domain-dot">HeapProfiler.</span>resetProfiles
+          
+          <a href="#event-resetProfiles"
+             class="permalink"
+             data-slug="HeapProfiler.resetProfiles"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="types">Types</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="type-HeapSnapshotObjectId">
+          <span class="domain-dot">HeapProfiler.</span>HeapSnapshotObjectId
+          
+          <a href="#type-HeapSnapshotObjectId"
+             class="permalink"
+             data-slug="HeapProfiler.HeapSnapshotObjectId"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Heap snapshot object id.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-SamplingHeapProfile">
+          <span class="domain-dot">HeapProfiler.</span>SamplingHeapProfile
+          
+          <a href="#type-SamplingHeapProfile"
+             class="permalink"
+             data-slug="HeapProfiler.SamplingHeapProfile"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Sampling profile.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          head
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/HeapProfiler/#type-SamplingHeapProfileNode class="param-type">SamplingHeapProfileNode</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          samples
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/HeapProfiler/#type-SamplingHeapProfileSample class="param-type">SamplingHeapProfileSample</a> ]</span></span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-SamplingHeapProfileNode">
+          <span class="domain-dot">HeapProfiler.</span>SamplingHeapProfileNode
+          
+          <a href="#type-SamplingHeapProfileNode"
+             class="permalink"
+             data-slug="HeapProfiler.SamplingHeapProfileNode"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Sampling Heap Profile node. Holds callsite information, allocation statistics and child nodes.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          callFrame
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Runtime/#type-CallFrame class="param-type">Runtime.CallFrame</a>
+          
+      <div class="details-description">
+        <p>Function location.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          selfSize
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Allocations size in bytes for the node excluding children.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          id
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Node id. Ids are unique across all profiles collected between startSampling and stopSampling.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          children
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/HeapProfiler/#type-SamplingHeapProfileNode class="param-type">SamplingHeapProfileNode</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Child nodes.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-SamplingHeapProfileSample">
+          <span class="domain-dot">HeapProfiler.</span>SamplingHeapProfileSample
+          
+          <a href="#type-SamplingHeapProfileSample"
+             class="permalink"
+             data-slug="HeapProfiler.SamplingHeapProfileSample"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>A single sample from a sampling profile.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          size
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Allocation size in bytes attributed to the sample.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Id of the corresponding profile tree node.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          ordinal
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Time-ordered sample ordinal number. It is unique across all profiles retrieved
+between startSampling and stopSampling.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+    </div>
+    
+      </div>
+    </section>
+  </main>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60854461-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
