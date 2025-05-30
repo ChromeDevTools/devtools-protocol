@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1467305 — _2025-05-30T04:31:28.000Z_
+######  Diff: [`8aaa683...47ad7ee`](https://github.com/ChromeDevTools/devtools-protocol/compare/8aaa683...47ad7ee)
+
+```diff
+@@ browser_protocol.pdl:3006 @@ domain DOM
+       view-transition
+       view-transition-group
+       view-transition-image-pair
++      view-transition-group-children
+       view-transition-old
+       view-transition-new
+       placeholder
+```
+
 ## Roll protocol to r1466870 — _2025-05-29T04:34:46.000Z_
-######  Diff: [`dc7b911...381574b`](https://github.com/ChromeDevTools/devtools-protocol/compare/dc7b911...381574b)
+######  Diff: [`dc7b911...8aaa683`](https://github.com/ChromeDevTools/devtools-protocol/compare/dc7b911...8aaa683)
 
 ```diff
 @@ browser_protocol.pdl:10838 @@ experimental domain Storage
@@ -13948,18 +13962,4 @@ index 8d8211b..2d56043 100644
  
    # This issue tracks client hints related issues. It's used to deprecate old
    # features, encourage the use of new ones, and provide general guidance.
-```
-
-## Roll protocol to r1039585 — _2022-08-26T04:57:38.000Z_
-######  Diff: [`c6dfb99...4561609`](https://github.com/ChromeDevTools/devtools-protocol/compare/c6dfb99...4561609)
-
-```diff
-@@ browser_protocol.pdl:8464 @@ domain Page
-       # recorded when it fails to get the memory usage.
-       FailToGetMemoryUsage
-       DataSaverEnabled
-+      HasEffectiveUrl
- 
-   # Fired when a prerender attempt is completed.
-   experimental event prerenderAttemptCompleted
 ```
