@@ -3337,7 +3337,7 @@ export namespace ProtocolTestsProxyApi {
          */
         getAppId(): Promise<{id: number, result: Protocol.Page.GetAppIdResponse, sessionId: string}>;
 
-        getAdScriptAncestryIds(params: Protocol.Page.GetAdScriptAncestryIdsRequest): Promise<{id: number, result: Protocol.Page.GetAdScriptAncestryIdsResponse, sessionId: string}>;
+        getAdScriptAncestry(params: Protocol.Page.GetAdScriptAncestryRequest): Promise<{id: number, result: Protocol.Page.GetAdScriptAncestryResponse, sessionId: string}>;
 
         /**
          * Returns present frame tree structure.

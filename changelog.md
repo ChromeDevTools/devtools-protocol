@@ -1,7 +1,70 @@
 
 
+## Roll protocol to r1468520 — _2025-06-03T04:31:40.000Z_
+######  Diff: [`c9a1a5d...d8fdb5f`](https://github.com/ChromeDevTools/devtools-protocol/compare/c9a1a5d...d8fdb5f)
+
+```diff
+@@ browser_protocol.pdl:8514 @@ domain Page
+       AdFrameType adFrameType
+       optional array of AdFrameExplanation explanations
+ 
+-  # Identifies the bottom-most script which caused the frame to be labelled
+-  # as an ad.
++  # Identifies the script which caused a script or frame to be labelled as an
++  # ad.
+   experimental type AdScriptId extends object
+     properties
+-      # Script Id of the bottom-most script which caused the frame to be labelled
+-      # as an ad.
++      # Script Id of the script which caused a script or frame to be labelled as
++      # an ad.
+       Runtime.ScriptId scriptId
+-      # Id of adScriptId's debugger.
++      # Id of scriptId's debugger.
+       Runtime.UniqueDebuggerId debuggerId
+ 
++  # Encapsulates the script ancestry and the root script filterlist rule that
++  # caused the frame to be labelled as an ad. Only created when `ancestryChain`
++  # is not empty.
++  experimental type AdScriptAncestry extends object
++    properties
++      # A chain of `AdScriptId`s representing the ancestry of an ad script that
++      # led to the creation of a frame. The chain is ordered from the script
++      # itself (lower level) up to its root ancestor that was flagged by
++      # filterlist.
++      array of AdScriptId ancestryChain
++      # The filterlist rule that caused the root (last) script in
++      # `ancestryChain` to be ad-tagged. Only populated if the rule is
++      # available.
++      optional string rootScriptFilterlistRule
++
+   # Indicates whether the frame is a secure context and why it is the case.
+   experimental type SecureContextType extends string
+     enum
+@@ -9291,15 +9306,16 @@ domain Page
+       # Recommendation for manifest's id attribute to match current id computed from start_url
+       optional string recommendedId
+ 
+-  experimental command getAdScriptAncestryIds
++  experimental command getAdScriptAncestry
+     parameters
+       FrameId frameId
+     returns
+       # The ancestry chain of ad script identifiers leading to this frame's
+-      # creation, ordered from the most immediate script (in the frame creation
++      # creation, along with the root script's filterlist rule. The ancestry
++      # chain is ordered from the most immediate script (in the frame creation
+       # stack) to more distant ancestors (that created the immediately preceding
+       # script). Only sent if frame is labelled as an ad and ids are available.
+-      array of AdScriptId adScriptAncestryIds
++      optional AdScriptAncestry adScriptAncestry
+ 
+   # Returns present frame tree structure.
+   command getFrameTree
+```
+
 ## Roll protocol to r1467305 — _2025-05-30T04:31:28.000Z_
-######  Diff: [`8aaa683...47ad7ee`](https://github.com/ChromeDevTools/devtools-protocol/compare/8aaa683...47ad7ee)
+######  Diff: [`8aaa683...c9a1a5d`](https://github.com/ChromeDevTools/devtools-protocol/compare/8aaa683...c9a1a5d)
 
 ```diff
 @@ browser_protocol.pdl:3006 @@ domain DOM
@@ -13939,27 +14002,4 @@ index 8d8211b..2d56043 100644
        NodeId previousNodeId
        # Inserted node data.
        Node node
-```
-
-## Roll protocol to r1040073 — _2022-08-27T04:44:13.000Z_
-######  Diff: [`4561609...6ea69cb`](https://github.com/ChromeDevTools/devtools-protocol/compare/4561609...6ea69cb)
-
-```diff
-@@ browser_protocol.pdl:835 @@ experimental domain Audits
-   # all cases except for success.
-   type FederatedAuthRequestIssueReason extends string
-     enum
--      ApprovalDeclined
-+      ShouldEmbargo
-       TooManyRequests
-       ManifestListHttpNotFound
-       ManifestListNoResponse
-@@ -860,6 +860,7 @@ experimental domain Audits
-       IdTokenInvalidRequest
-       ErrorIdToken
-       Canceled
-+      RpPageNotVisible
- 
-   # This issue tracks client hints related issues. It's used to deprecate old
-   # features, encourage the use of new ones, and provide general guidance.
 ```
