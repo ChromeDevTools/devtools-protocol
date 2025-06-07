@@ -1,0 +1,1907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Chrome DevTools Protocol - version tot - WebAudio domain" />
+  <link rel="icon" type="image/png" href="/devtools-protocol/images/logo.png" />
+    <title>Chrome DevTools Protocol - WebAudio domain</title>
+
+  <meta name="theme-color" content="#303F9F" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@chromedevtools" />
+  <meta name="twitter:creator" content="@chromedevtools" />
+  <meta property="og:title" content="Chrome DevTools Protocol" />
+  <meta property="og:image" content="https://developers.google.com/web/tools/images/chrome-devtools-16x9_720.png" />
+    <meta property="og:description" content="Chrome DevTools Protocol - version tot - WebAudio domain" />
+
+  <script type="module" src="/devtools-protocol/scripts/index.js"></script>
+  <link href="/devtools-protocol/styles/protocol.css" rel="stylesheet">
+</head>
+<body>
+  <aside>
+    <div id="home" class="navs">
+      <nav>
+        <a href="/devtools-protocol/">Home</a>
+        <button class="aside-close-button" aria-label="Close navigation">x</button>
+      </nav>
+    </div>
+    <div id="versions" class="navs">
+      <header>Versions</header>
+      <nav>
+        <a href="/devtools-protocol/tot" name="tot">
+          latest (tip-of-tree)
+        </a>
+        <a href="/devtools-protocol/v8" name="v8">
+          v8-inspector (node)
+        </a>
+        <a href="/devtools-protocol/1-3" name="1-3">
+          stable (1.3)
+        </a><!-- 
+        <a href="/devtools-protocol/1-2" name="1-2">
+          stable (1.2)
+        </a> -->
+      </nav>
+    </div>
+
+    <div id="domains" class="navs version-tot">
+      <header>Domains</header>
+      <div class="scroller">
+        <nav>
+          <a href="/devtools-protocol/tot/Accessibility" class="tot experimental">Accessibility</a>
+          <a href="/devtools-protocol/tot/Animation" class="tot experimental">Animation</a>
+          <a href="/devtools-protocol/tot/Audits" class="tot experimental">Audits</a>
+          <a href="/devtools-protocol/tot/Autofill" class="tot experimental">Autofill</a>
+          <a href="/devtools-protocol/tot/BackgroundService" class="tot experimental">BackgroundService</a>
+          <a href="/devtools-protocol/tot/Browser" class="tot 1-3">Browser</a>
+          <a href="/devtools-protocol/tot/CacheStorage" class="tot experimental">CacheStorage</a>
+          <a href="/devtools-protocol/tot/Cast" class="tot experimental">Cast</a>
+          <a href="/devtools-protocol/tot/Console" class="tot deprecated v8">Console</a>
+          <a href="/devtools-protocol/tot/CSS" class="tot experimental">CSS</a>
+          <a href="/devtools-protocol/tot/Database" class="tot experimental">Database</a>
+          <a href="/devtools-protocol/tot/Debugger" class="tot 1-2 1-3 v8">Debugger</a>
+          <a href="/devtools-protocol/tot/DeviceAccess" class="tot experimental">DeviceAccess</a>
+          <a href="/devtools-protocol/tot/DeviceOrientation" class="tot experimental">DeviceOrientation</a>
+          <a href="/devtools-protocol/tot/DOM" class="tot 1-2 1-3">DOM</a>
+          <a href="/devtools-protocol/tot/DOMDebugger" class="tot 1-2 1-3">DOMDebugger</a>
+          <a href="/devtools-protocol/tot/DOMSnapshot" class="tot experimental">DOMSnapshot</a>
+          <a href="/devtools-protocol/tot/DOMStorage" class="tot experimental">DOMStorage</a>
+          <a href="/devtools-protocol/tot/Emulation" class="tot 1-2 1-3">Emulation</a>
+          <a href="/devtools-protocol/tot/EventBreakpoints" class="tot experimental">EventBreakpoints</a>
+          <a href="/devtools-protocol/tot/Extensions" class="tot experimental">Extensions</a>
+          <a href="/devtools-protocol/tot/FedCm" class="tot experimental">FedCm</a>
+          <a href="/devtools-protocol/tot/Fetch" class="tot 1-3">Fetch</a>
+          <a href="/devtools-protocol/tot/HeadlessExperimental" class="tot experimental">HeadlessExperimental</a>
+          <a href="/devtools-protocol/tot/HeapProfiler" class="tot experimental v8">HeapProfiler</a>
+          <a href="/devtools-protocol/tot/IndexedDB" class="tot experimental">IndexedDB</a>
+          <a href="/devtools-protocol/tot/Input" class="tot 1-2 1-3">Input</a>
+          <a href="/devtools-protocol/tot/Inspector" class="tot experimental">Inspector</a>
+          <a href="/devtools-protocol/tot/IO" class="tot 1-3">IO</a>
+          <a href="/devtools-protocol/tot/LayerTree" class="tot experimental">LayerTree</a>
+          <a href="/devtools-protocol/tot/Log" class="tot 1-3">Log</a>
+          <a href="/devtools-protocol/tot/Media" class="tot experimental">Media</a>
+          <a href="/devtools-protocol/tot/Memory" class="tot experimental">Memory</a>
+          <a href="/devtools-protocol/tot/Network" class="tot 1-2 1-3">Network</a>
+          <a href="/devtools-protocol/tot/Overlay" class="tot experimental">Overlay</a>
+          <a href="/devtools-protocol/tot/Page" class="tot 1-2 1-3">Page</a>
+          <a href="/devtools-protocol/tot/Performance" class="tot 1-3">Performance</a>
+          <a href="/devtools-protocol/tot/PerformanceTimeline" class="tot experimental">PerformanceTimeline</a>
+          <a href="/devtools-protocol/tot/Preload" class="tot experimental">Preload</a>
+          <a href="/devtools-protocol/tot/Profiler" class="tot 1-2 1-3 v8">Profiler</a>
+          <a href="/devtools-protocol/tot/Runtime" class="tot 1-2 1-3 v8">Runtime</a>
+          <a href="/devtools-protocol/tot/Schema" class="tot deprecated 1-2 v8">Schema</a>
+          <a href="/devtools-protocol/tot/Security" class="tot 1-3">Security</a>
+          <a href="/devtools-protocol/tot/ServiceWorker" class="tot experimental">ServiceWorker</a>
+          <a href="/devtools-protocol/tot/Storage" class="tot experimental">Storage</a>
+          <a href="/devtools-protocol/tot/SystemInfo" class="tot experimental">SystemInfo</a>
+          <a href="/devtools-protocol/tot/Target" class="tot 1-3">Target</a>
+          <a href="/devtools-protocol/tot/Tethering" class="tot experimental">Tethering</a>
+          <a href="/devtools-protocol/tot/Tracing" class="tot experimental">Tracing</a>
+          <a href="/devtools-protocol/tot/WebAudio" class="tot experimental">WebAudio</a>
+          <a href="/devtools-protocol/tot/WebAuthn" class="tot experimental">WebAuthn</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <h1>Chrome DevTools Protocol</h1>
+      <button class="menu-link">Navigation</button>
+      <cr-search-control base-url="/devtools-protocol/" protocol-search-index="/search_index/tot.json"></cr-search-control>
+    </header>
+    <section>
+      <div class="main-content-section domain">
+        
+    <div class="domain-section">
+      <div id="header">
+        <h2 class="heading">WebAudio Domain</h2>
+        
+      <div class="details-description">
+        <p>This domain allows inspection of Web Audio API.
+<a href="https://webaudio.github.io/web-audio-api/">https://webaudio.github.io/web-audio-api/</a></p>
+
+        
+      </div>
+    
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        <h3>Methods</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#method-disable"><span class="domain-dot">WebAudio.</span>disable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-enable"><span class="domain-dot">WebAudio.</span>enable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getRealtimeData"><span class="domain-dot">WebAudio.</span>getRealtimeData</a>
+        
+      </div>
+      
+        <h3>Events</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#event-audioListenerCreated"><span class="domain-dot">WebAudio.</span>audioListenerCreated</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-audioListenerWillBeDestroyed"><span class="domain-dot">WebAudio.</span>audioListenerWillBeDestroyed</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-audioNodeCreated"><span class="domain-dot">WebAudio.</span>audioNodeCreated</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-audioNodeWillBeDestroyed"><span class="domain-dot">WebAudio.</span>audioNodeWillBeDestroyed</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-audioParamCreated"><span class="domain-dot">WebAudio.</span>audioParamCreated</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-audioParamWillBeDestroyed"><span class="domain-dot">WebAudio.</span>audioParamWillBeDestroyed</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-contextChanged"><span class="domain-dot">WebAudio.</span>contextChanged</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-contextCreated"><span class="domain-dot">WebAudio.</span>contextCreated</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-contextWillBeDestroyed"><span class="domain-dot">WebAudio.</span>contextWillBeDestroyed</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-nodeParamConnected"><span class="domain-dot">WebAudio.</span>nodeParamConnected</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-nodeParamDisconnected"><span class="domain-dot">WebAudio.</span>nodeParamDisconnected</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-nodesConnected"><span class="domain-dot">WebAudio.</span>nodesConnected</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-nodesDisconnected"><span class="domain-dot">WebAudio.</span>nodesDisconnected</a>
+        
+      </div>
+      
+        <h3>Types</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#type-AudioListener"><span class="domain-dot">WebAudio.</span>AudioListener</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-AudioNode"><span class="domain-dot">WebAudio.</span>AudioNode</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-AudioParam"><span class="domain-dot">WebAudio.</span>AudioParam</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-AutomationRate"><span class="domain-dot">WebAudio.</span>AutomationRate</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-BaseAudioContext"><span class="domain-dot">WebAudio.</span>BaseAudioContext</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ChannelCountMode"><span class="domain-dot">WebAudio.</span>ChannelCountMode</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ChannelInterpretation"><span class="domain-dot">WebAudio.</span>ChannelInterpretation</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ContextRealtimeData"><span class="domain-dot">WebAudio.</span>ContextRealtimeData</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ContextState"><span class="domain-dot">WebAudio.</span>ContextState</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ContextType"><span class="domain-dot">WebAudio.</span>ContextType</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-GraphObjectId"><span class="domain-dot">WebAudio.</span>GraphObjectId</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-NodeType"><span class="domain-dot">WebAudio.</span>NodeType</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ParamType"><span class="domain-dot">WebAudio.</span>ParamType</a>
+        
+      </div>
+      
+      </div>
+
+      
+      <h3 id="methods">Methods</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="method-disable">
+          <span class="domain-dot">WebAudio.</span>disable
+          
+          <a href="#method-disable"
+             class="permalink"
+             data-slug="WebAudio.disable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Disables the WebAudio domain.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-enable">
+          <span class="domain-dot">WebAudio.</span>enable
+          
+          <a href="#method-enable"
+             class="permalink"
+             data-slug="WebAudio.enable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enables the WebAudio domain and starts sending context lifetime events.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getRealtimeData">
+          <span class="domain-dot">WebAudio.</span>getRealtimeData
+          
+          <a href="#method-getRealtimeData"
+             class="permalink"
+             data-slug="WebAudio.getRealtimeData"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fetch the realtime data from the registered contexts.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          contextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          realtimeData
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-ContextRealtimeData class="param-type">ContextRealtimeData</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="events">Events</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="event-audioListenerCreated">
+          <span class="domain-dot">WebAudio.</span>audioListenerCreated
+          
+          <a href="#event-audioListenerCreated"
+             class="permalink"
+             data-slug="WebAudio.audioListenerCreated"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Notifies that the construction of an AudioListener has finished.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          listener
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-AudioListener class="param-type">AudioListener</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-audioListenerWillBeDestroyed">
+          <span class="domain-dot">WebAudio.</span>audioListenerWillBeDestroyed
+          
+          <a href="#event-audioListenerWillBeDestroyed"
+             class="permalink"
+             data-slug="WebAudio.audioListenerWillBeDestroyed"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Notifies that a new AudioListener has been created.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          contextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          listenerId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-audioNodeCreated">
+          <span class="domain-dot">WebAudio.</span>audioNodeCreated
+          
+          <a href="#event-audioNodeCreated"
+             class="permalink"
+             data-slug="WebAudio.audioNodeCreated"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Notifies that a new AudioNode has been created.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          node
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-AudioNode class="param-type">AudioNode</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-audioNodeWillBeDestroyed">
+          <span class="domain-dot">WebAudio.</span>audioNodeWillBeDestroyed
+          
+          <a href="#event-audioNodeWillBeDestroyed"
+             class="permalink"
+             data-slug="WebAudio.audioNodeWillBeDestroyed"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Notifies that an existing AudioNode has been destroyed.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          contextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-audioParamCreated">
+          <span class="domain-dot">WebAudio.</span>audioParamCreated
+          
+          <a href="#event-audioParamCreated"
+             class="permalink"
+             data-slug="WebAudio.audioParamCreated"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Notifies that a new AudioParam has been created.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          param
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-AudioParam class="param-type">AudioParam</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-audioParamWillBeDestroyed">
+          <span class="domain-dot">WebAudio.</span>audioParamWillBeDestroyed
+          
+          <a href="#event-audioParamWillBeDestroyed"
+             class="permalink"
+             data-slug="WebAudio.audioParamWillBeDestroyed"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Notifies that an existing AudioParam has been destroyed.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          contextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          paramId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-contextChanged">
+          <span class="domain-dot">WebAudio.</span>contextChanged
+          
+          <a href="#event-contextChanged"
+             class="permalink"
+             data-slug="WebAudio.contextChanged"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Notifies that existing BaseAudioContext has changed some properties (id stays the same)..</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          context
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-BaseAudioContext class="param-type">BaseAudioContext</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-contextCreated">
+          <span class="domain-dot">WebAudio.</span>contextCreated
+          
+          <a href="#event-contextCreated"
+             class="permalink"
+             data-slug="WebAudio.contextCreated"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Notifies that a new BaseAudioContext has been created.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          context
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-BaseAudioContext class="param-type">BaseAudioContext</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-contextWillBeDestroyed">
+          <span class="domain-dot">WebAudio.</span>contextWillBeDestroyed
+          
+          <a href="#event-contextWillBeDestroyed"
+             class="permalink"
+             data-slug="WebAudio.contextWillBeDestroyed"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Notifies that an existing BaseAudioContext will be destroyed.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          contextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-nodeParamConnected">
+          <span class="domain-dot">WebAudio.</span>nodeParamConnected
+          
+          <a href="#event-nodeParamConnected"
+             class="permalink"
+             data-slug="WebAudio.nodeParamConnected"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Notifies that an AudioNode is connected to an AudioParam.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          contextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          sourceId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          destinationId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          sourceOutputIndex
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-nodeParamDisconnected">
+          <span class="domain-dot">WebAudio.</span>nodeParamDisconnected
+          
+          <a href="#event-nodeParamDisconnected"
+             class="permalink"
+             data-slug="WebAudio.nodeParamDisconnected"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Notifies that an AudioNode is disconnected to an AudioParam.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          contextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          sourceId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          destinationId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          sourceOutputIndex
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-nodesConnected">
+          <span class="domain-dot">WebAudio.</span>nodesConnected
+          
+          <a href="#event-nodesConnected"
+             class="permalink"
+             data-slug="WebAudio.nodesConnected"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Notifies that two AudioNodes are connected.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          contextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          sourceId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          destinationId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          sourceOutputIndex
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          destinationInputIndex
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-nodesDisconnected">
+          <span class="domain-dot">WebAudio.</span>nodesDisconnected
+          
+          <a href="#event-nodesDisconnected"
+             class="permalink"
+             data-slug="WebAudio.nodesDisconnected"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Notifies that AudioNodes are disconnected. The destination can be null, and it means all the outgoing connections from the source are disconnected.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          contextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          sourceId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          destinationId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          sourceOutputIndex
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          destinationInputIndex
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="types">Types</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="type-AudioListener">
+          <span class="domain-dot">WebAudio.</span>AudioListener
+          
+          <a href="#type-AudioListener"
+             class="permalink"
+             data-slug="WebAudio.AudioListener"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Protocol object for AudioListener</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          listenerId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          contextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-AudioNode">
+          <span class="domain-dot">WebAudio.</span>AudioNode
+          
+          <a href="#type-AudioNode"
+             class="permalink"
+             data-slug="WebAudio.AudioNode"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Protocol object for AudioNode</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          contextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          nodeType
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-NodeType class="param-type">NodeType</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          numberOfInputs
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          numberOfOutputs
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          channelCount
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          channelCountMode
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-ChannelCountMode class="param-type">ChannelCountMode</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          channelInterpretation
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-ChannelInterpretation class="param-type">ChannelInterpretation</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-AudioParam">
+          <span class="domain-dot">WebAudio.</span>AudioParam
+          
+          <a href="#type-AudioParam"
+             class="permalink"
+             data-slug="WebAudio.AudioParam"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Protocol object for AudioParam</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          paramId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          nodeId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          contextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          paramType
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-ParamType class="param-type">ParamType</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          rate
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-AutomationRate class="param-type">AutomationRate</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          defaultValue
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          minValue
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          maxValue
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-AutomationRate">
+          <span class="domain-dot">WebAudio.</span>AutomationRate
+          
+          <a href="#type-AutomationRate"
+             class="permalink"
+             data-slug="WebAudio.AutomationRate"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enum of AudioParam::AutomationRate from the spec</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>a-rate</code>, <code>k-rate</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-BaseAudioContext">
+          <span class="domain-dot">WebAudio.</span>BaseAudioContext
+          
+          <a href="#type-BaseAudioContext"
+             class="permalink"
+             data-slug="WebAudio.BaseAudioContext"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Protocol object for BaseAudioContext</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          contextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-GraphObjectId class="param-type">GraphObjectId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          contextType
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-ContextType class="param-type">ContextType</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          contextState
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-ContextState class="param-type">ContextState</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          realtimeData
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/WebAudio/#type-ContextRealtimeData class="param-type">ContextRealtimeData</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          callbackBufferSize
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Platform-dependent callback buffer size.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          maxOutputChannelCount
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Number of output channels supported by audio hardware in use.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          sampleRate
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Context sample rate.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ChannelCountMode">
+          <span class="domain-dot">WebAudio.</span>ChannelCountMode
+          
+          <a href="#type-ChannelCountMode"
+             class="permalink"
+             data-slug="WebAudio.ChannelCountMode"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enum of AudioNode::ChannelCountMode from the spec</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>clamped-max</code>, <code>explicit</code>, <code>max</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ChannelInterpretation">
+          <span class="domain-dot">WebAudio.</span>ChannelInterpretation
+          
+          <a href="#type-ChannelInterpretation"
+             class="permalink"
+             data-slug="WebAudio.ChannelInterpretation"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enum of AudioNode::ChannelInterpretation from the spec</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>discrete</code>, <code>speakers</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ContextRealtimeData">
+          <span class="domain-dot">WebAudio.</span>ContextRealtimeData
+          
+          <a href="#type-ContextRealtimeData"
+             class="permalink"
+             data-slug="WebAudio.ContextRealtimeData"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fields in AudioContext that change in real-time.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          currentTime
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>The current context time in second in BaseAudioContext.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          renderCapacity
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>The time spent on rendering graph divided by render quantum duration,
+and multiplied by 100. 100 means the audio renderer reached the full
+capacity and glitch may occur.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          callbackIntervalMean
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>A running mean of callback interval.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          callbackIntervalVariance
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>A running variance of callback interval.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ContextState">
+          <span class="domain-dot">WebAudio.</span>ContextState
+          
+          <a href="#type-ContextState"
+             class="permalink"
+             data-slug="WebAudio.ContextState"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enum of AudioContextState from the spec</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>suspended</code>, <code>running</code>, <code>closed</code>, <code>interrupted</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ContextType">
+          <span class="domain-dot">WebAudio.</span>ContextType
+          
+          <a href="#type-ContextType"
+             class="permalink"
+             data-slug="WebAudio.ContextType"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enum of BaseAudioContext types</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>realtime</code>, <code>offline</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-GraphObjectId">
+          <span class="domain-dot">WebAudio.</span>GraphObjectId
+          
+          <a href="#type-GraphObjectId"
+             class="permalink"
+             data-slug="WebAudio.GraphObjectId"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>An unique ID for a graph object (AudioContext, AudioNode, AudioParam) in Web Audio API</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-NodeType">
+          <span class="domain-dot">WebAudio.</span>NodeType
+          
+          <a href="#type-NodeType"
+             class="permalink"
+             data-slug="WebAudio.NodeType"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enum of AudioNode types</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ParamType">
+          <span class="domain-dot">WebAudio.</span>ParamType
+          
+          <a href="#type-ParamType"
+             class="permalink"
+             data-slug="WebAudio.ParamType"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enum of AudioParam types</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      </div>
+    
+    </div>
+    
+      </div>
+    </section>
+  </main>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60854461-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
