@@ -8788,6 +8788,10 @@ export namespace Protocol {
             type: ('none' | 'blurredVision' | 'reducedContrast' | 'achromatopsia' | 'deuteranopia' | 'protanopia' | 'tritanopia');
         }
 
+        export interface SetEmulatedOSTextScaleRequest {
+            scale?: number;
+        }
+
         export interface SetGeolocationOverrideRequest {
             /**
              * Mock latitude

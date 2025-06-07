@@ -1,7 +1,25 @@
 
 
+## Roll protocol to r1470888 — _2025-06-07T04:31:13.000Z_
+######  Diff: [`2823d32...a0e22c9`](https://github.com/ChromeDevTools/devtools-protocol/compare/2823d32...a0e22c9)
+
+```diff
+@@ browser_protocol.pdl:4700 @@ domain Emulation
+         protanopia
+         tritanopia
+ 
++  # Emulates the given OS text scale.
++  command setEmulatedOSTextScale
++    parameters
++      optional number scale
++
+   # Overrides the Geolocation Position or Error. Omitting latitude, longitude or
+   # accuracy emulates position unavailable.
+   command setGeolocationOverride
+```
+
 ## Roll protocol to r1468520 — _2025-06-03T04:31:40.000Z_
-######  Diff: [`c9a1a5d...d8fdb5f`](https://github.com/ChromeDevTools/devtools-protocol/compare/c9a1a5d...d8fdb5f)
+######  Diff: [`c9a1a5d...2823d32`](https://github.com/ChromeDevTools/devtools-protocol/compare/c9a1a5d...2823d32)
 
 ```diff
 @@ browser_protocol.pdl:8514 @@ domain Page
@@ -13987,19 +14005,4 @@ index 8d8211b..2d56043 100644
        UntrustworthyReportingOrigin
        InsecureContext
        # TODO(apaseltiner): Rename this to InvalidRegisterSourceHeader
-```
-
-## Roll protocol to r1044932 — _2022-09-09T04:49:16.000Z_
-######  Diff: [`6ea69cb...08793fb`](https://github.com/ChromeDevTools/devtools-protocol/compare/6ea69cb...08793fb)
-
-```diff
-@@ browser_protocol.pdl:2926 @@ domain DOM
-     parameters
-       # Id of the node that has changed.
-       NodeId parentNodeId
--      # If of the previous siblint.
-+      # Id of the previous sibling.
-       NodeId previousNodeId
-       # Inserted node data.
-       Node node
 ```

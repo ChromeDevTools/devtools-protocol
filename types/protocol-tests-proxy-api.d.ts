@@ -2086,6 +2086,11 @@ export namespace ProtocolTestsProxyApi {
         setEmulatedVisionDeficiency(params: Protocol.Emulation.SetEmulatedVisionDeficiencyRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
+         * Emulates the given OS text scale.
+         */
+        setEmulatedOSTextScale(params: Protocol.Emulation.SetEmulatedOSTextScaleRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
          * Overrides the Geolocation Position or Error. Omitting latitude, longitude or
          * accuracy emulates position unavailable.
          */
