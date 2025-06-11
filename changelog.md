@@ -1,7 +1,39 @@
 
 
+## Roll protocol to r1472211 — _2025-06-11T04:31:52.000Z_
+######  Diff: [`00f18fe...1701250`](https://github.com/ChromeDevTools/devtools-protocol/compare/00f18fe...1701250)
+
+```diff
+@@ browser_protocol.pdl:4467 @@ domain Emulation
+       pause
+       pauseIfNetworkFetchesPending
+ 
++  # Used to specify User Agent form-factor values. See https://wicg.github.io/ua-client-hints/#sec-ch-ua-form-factors
++  experimental type UserAgentFormFactor extends string
++    enum
++      Desktop
++      Automotive
++      Mobile
++      Tablet
++      XR
++      EInk
++      Watch
++
+   # Used to specify User Agent Client Hints to emulate. See https://wicg.github.io/ua-client-hints
+   experimental type UserAgentBrandVersion extends object
+     properties
+@@ -4489,6 +4500,7 @@ domain Emulation
+       boolean mobile
+       optional string bitness
+       optional boolean wow64
++      optional array of UserAgentFormFactor formFactors
+ 
+   # Used to specify sensor types to emulate.
+   # See https://w3c.github.io/sensors/#automation for more information.
+```
+
 ## Roll protocol to r1470888 — _2025-06-07T04:31:13.000Z_
-######  Diff: [`2823d32...a0e22c9`](https://github.com/ChromeDevTools/devtools-protocol/compare/2823d32...a0e22c9)
+######  Diff: [`2823d32...00f18fe`](https://github.com/ChromeDevTools/devtools-protocol/compare/2823d32...00f18fe)
 
 ```diff
 @@ browser_protocol.pdl:4700 @@ domain Emulation
@@ -13991,18 +14023,4 @@ index 8d8211b..2d56043 100644
  
    event loadEventFired
      parameters
-```
-
-## Roll protocol to r1045489 — _2022-09-10T04:51:55.000Z_
-######  Diff: [`08793fb...379658e`](https://github.com/ChromeDevTools/devtools-protocol/compare/08793fb...379658e)
-
-```diff
-@@ browser_protocol.pdl:701 @@ experimental domain Audits
-   type AttributionReportingIssueType extends string
-     enum
-       PermissionPolicyDisabled
-+      PermissionPolicyNotDelegated
-       UntrustworthyReportingOrigin
-       InsecureContext
-       # TODO(apaseltiner): Rename this to InvalidRegisterSourceHeader
 ```
