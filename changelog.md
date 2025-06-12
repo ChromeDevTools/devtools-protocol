@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1472835 — _2025-06-12T04:31:40.000Z_
+######  Diff: [`0d84894...3be4b55`](https://github.com/ChromeDevTools/devtools-protocol/compare/0d84894...3be4b55)
+
+```diff
+@@ browser_protocol.pdl:8653 @@ domain Page
+       join-ad-interest-group
+       keyboard-map
+       language-detector
++      language-model
+       local-fonts
+       local-network-access
+       magnetometer
+```
+
 ## Roll protocol to r1472211 — _2025-06-11T04:31:52.000Z_
-######  Diff: [`00f18fe...1701250`](https://github.com/ChromeDevTools/devtools-protocol/compare/00f18fe...1701250)
+######  Diff: [`00f18fe...0d84894`](https://github.com/ChromeDevTools/devtools-protocol/compare/00f18fe...0d84894)
 
 ```diff
 @@ browser_protocol.pdl:4467 @@ domain Emulation
@@ -14004,23 +14018,4 @@ index 8d8211b..2d56043 100644
  
    # Fired when a prerender attempt is completed.
    experimental event prerenderAttemptCompleted
-```
-
-## Roll protocol to r1046751 — _2022-09-14T04:56:53.000Z_
-######  Diff: [`379658e...3c081bc`](https://github.com/ChromeDevTools/devtools-protocol/compare/379658e...3c081bc)
-
-```diff
-@@ browser_protocol.pdl:8475 @@ domain Page
-       FrameId initiatingFrameId
-       string prerenderingUrl
-       PrerenderFinalStatus finalStatus
--      # This is used to give users more information about the cancellation details,
--      # and this will be formatted for display.
--      optional string reasonDetails
-+      # This is used to give users more information about the name of the API call
-+      # that is incompatible with prerender and has caused the cancellation of the attempt
-+      optional string disallowedApiMethod
- 
-   event loadEventFired
-     parameters
 ```
