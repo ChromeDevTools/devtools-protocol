@@ -1,7 +1,23 @@
 
 
+## Roll protocol to r1473367 — _2025-06-13T04:31:57.000Z_
+######  Diff: [`8991629...e076b98`](https://github.com/ChromeDevTools/devtools-protocol/compare/8991629...e076b98)
+
+```diff
+@@ browser_protocol.pdl:6931 @@ domain Network
+     properties
+       # The outer response of signed HTTP exchange which was received from network.
+       Response outerResponse
++      # Whether network response for the signed exchange was accompanied by
++      # extra headers.
++      boolean hasExtraInfo
+       # Information about the signed exchange header.
+       optional SignedExchangeHeader header
+       # Security details for the signed exchange header.
+```
+
 ## Roll protocol to r1472835 — _2025-06-12T04:31:40.000Z_
-######  Diff: [`0d84894...3be4b55`](https://github.com/ChromeDevTools/devtools-protocol/compare/0d84894...3be4b55)
+######  Diff: [`0d84894...8991629`](https://github.com/ChromeDevTools/devtools-protocol/compare/0d84894...8991629)
 
 ```diff
 @@ browser_protocol.pdl:8653 @@ domain Page
@@ -14004,18 +14020,4 @@ index 8d8211b..2d56043 100644
        LocalCSSFileExtensionRejected
        MediaSourceAbortRemove
        MediaSourceDurationTruncatingBuffered
-```
-
-## Roll protocol to r1047822 — _2022-09-16T04:59:17.000Z_
-######  Diff: [`3c081bc...f628653`](https://github.com/ChromeDevTools/devtools-protocol/compare/3c081bc...f628653)
-
-```diff
-@@ browser_protocol.pdl:8467 @@ domain Page
-       FailToGetMemoryUsage
-       DataSaverEnabled
-       HasEffectiveUrl
-+      ActivatedBeforeStarted
- 
-   # Fired when a prerender attempt is completed.
-   experimental event prerenderAttemptCompleted
 ```
