@@ -1,7 +1,42 @@
 
 
+## Roll protocol to r1473885 — _2025-06-14T04:31:36.000Z_
+######  Diff: [`048403a...3b68dfa`](https://github.com/ChromeDevTools/devtools-protocol/compare/048403a...3b68dfa)
+
+```diff
+@@ browser_protocol.pdl:4467 @@ domain Emulation
+       pause
+       pauseIfNetworkFetchesPending
+ 
+-  # Used to specify User Agent form-factor values. See https://wicg.github.io/ua-client-hints/#sec-ch-ua-form-factors
+-  experimental type UserAgentFormFactor extends string
+-    enum
+-      Desktop
+-      Automotive
+-      Mobile
+-      Tablet
+-      XR
+-      EInk
+-      Watch
+-
+   # Used to specify User Agent Client Hints to emulate. See https://wicg.github.io/ua-client-hints
+   experimental type UserAgentBrandVersion extends object
+     properties
+@@ -4500,7 +4489,9 @@ domain Emulation
+       boolean mobile
+       optional string bitness
+       optional boolean wow64
+-      optional array of UserAgentFormFactor formFactors
++      # Used to specify User Agent form-factor values.
++      # See https://wicg.github.io/ua-client-hints/#sec-ch-ua-form-factors
++      optional array of string formFactors
+ 
+   # Used to specify sensor types to emulate.
+   # See https://w3c.github.io/sensors/#automation for more information.
+```
+
 ## Roll protocol to r1473367 — _2025-06-13T04:31:57.000Z_
-######  Diff: [`8991629...e076b98`](https://github.com/ChromeDevTools/devtools-protocol/compare/8991629...e076b98)
+######  Diff: [`8991629...048403a`](https://github.com/ChromeDevTools/devtools-protocol/compare/8991629...048403a)
 
 ```diff
 @@ browser_protocol.pdl:6931 @@ domain Network
@@ -14006,18 +14041,4 @@ index 8d8211b..2d56043 100644
  
    command startTrackingHeapObjects
      parameters
-```
-
-## Roll protocol to r1048352 — _2022-09-17T04:46:41.000Z_
-######  Diff: [`f628653...8fd85c8`](https://github.com/ChromeDevTools/devtools-protocol/compare/f628653...8fd85c8)
-
-```diff
-@@ browser_protocol.pdl:772 @@ experimental domain Audits
-       HostCandidateAttributeGetter
-       IdentityInCanMakePaymentEvent
-       InsecurePrivateNetworkSubresourceRequest
--      LegacyConstraintGoogIPv6
-       LocalCSSFileExtensionRejected
-       MediaSourceAbortRemove
-       MediaSourceDurationTruncatingBuffered
 ```

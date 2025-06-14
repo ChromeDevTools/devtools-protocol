@@ -8537,11 +8537,6 @@ export namespace Protocol {
         export type VirtualTimePolicy = ('advance' | 'pause' | 'pauseIfNetworkFetchesPending');
 
         /**
-         * Used to specify User Agent form-factor values. See https://wicg.github.io/ua-client-hints/#sec-ch-ua-form-factors
-         */
-        export type UserAgentFormFactor = ('Desktop' | 'Automotive' | 'Mobile' | 'Tablet' | 'XR' | 'EInk' | 'Watch');
-
-        /**
          * Used to specify User Agent Client Hints to emulate. See https://wicg.github.io/ua-client-hints
          */
         export interface UserAgentBrandVersion {
@@ -8570,7 +8565,11 @@ export namespace Protocol {
             mobile: boolean;
             bitness?: string;
             wow64?: boolean;
-            formFactors?: UserAgentFormFactor[];
+            /**
+             * Used to specify User Agent form-factor values.
+             * See https://wicg.github.io/ua-client-hints/#sec-ch-ua-form-factors
+             */
+            formFactors?: string[];
         }
 
         /**
