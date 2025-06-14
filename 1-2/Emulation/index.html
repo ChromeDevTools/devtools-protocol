@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Chrome DevTools Protocol - version 1-2 - Emulation domain" />
+  <link rel="icon" type="image/png" href="/devtools-protocol/images/logo.png" />
+    <title>Chrome DevTools Protocol - version 1-2 - Emulation domain</title>
+
+  <meta name="theme-color" content="#303F9F" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@chromedevtools" />
+  <meta name="twitter:creator" content="@chromedevtools" />
+  <meta property="og:title" content="Chrome DevTools Protocol" />
+  <meta property="og:image" content="https://developers.google.com/web/tools/images/chrome-devtools-16x9_720.png" />
+    <meta property="og:description" content="Chrome DevTools Protocol - version 1-2 - Emulation domain" />
+
+  <script type="module" src="/devtools-protocol/scripts/index.js"></script>
+  <link href="/devtools-protocol/styles/protocol.css" rel="stylesheet">
+</head>
+<body>
+  <aside>
+    <div id="home" class="navs">
+      <nav>
+        <a href="/devtools-protocol/">Home</a>
+        <button class="aside-close-button" aria-label="Close navigation">x</button>
+      </nav>
+    </div>
+    <div id="versions" class="navs">
+      <header>Versions</header>
+      <nav>
+        <a href="/devtools-protocol/tot" name="tot">
+          latest (tip-of-tree)
+        </a>
+        <a href="/devtools-protocol/v8" name="v8">
+          v8-inspector (node)
+        </a>
+        <a href="/devtools-protocol/1-3" name="1-3">
+          stable (1.3)
+        </a><!-- 
+        <a href="/devtools-protocol/1-2" name="1-2">
+          stable (1.2)
+        </a> -->
+      </nav>
+    </div>
+
+    <div id="domains" class="navs version-1-2">
+      <header>Domains</header>
+      <div class="scroller">
+        <nav>
+          <a href="/devtools-protocol/1-2/Accessibility" class="tot experimental">Accessibility</a>
+          <a href="/devtools-protocol/1-2/Animation" class="tot experimental">Animation</a>
+          <a href="/devtools-protocol/1-2/Audits" class="tot experimental">Audits</a>
+          <a href="/devtools-protocol/1-2/Autofill" class="tot experimental">Autofill</a>
+          <a href="/devtools-protocol/1-2/BackgroundService" class="tot experimental">BackgroundService</a>
+          <a href="/devtools-protocol/1-2/Browser" class="tot 1-3">Browser</a>
+          <a href="/devtools-protocol/1-2/CacheStorage" class="tot experimental">CacheStorage</a>
+          <a href="/devtools-protocol/1-2/Cast" class="tot experimental">Cast</a>
+          <a href="/devtools-protocol/1-2/Console" class="tot deprecated v8">Console</a>
+          <a href="/devtools-protocol/1-2/CSS" class="tot experimental">CSS</a>
+          <a href="/devtools-protocol/1-2/Database" class="tot experimental">Database</a>
+          <a href="/devtools-protocol/1-2/Debugger" class="tot 1-2 1-3 v8">Debugger</a>
+          <a href="/devtools-protocol/1-2/DeviceAccess" class="tot experimental">DeviceAccess</a>
+          <a href="/devtools-protocol/1-2/DeviceOrientation" class="tot experimental">DeviceOrientation</a>
+          <a href="/devtools-protocol/1-2/DOM" class="tot 1-2 1-3">DOM</a>
+          <a href="/devtools-protocol/1-2/DOMDebugger" class="tot 1-2 1-3">DOMDebugger</a>
+          <a href="/devtools-protocol/1-2/DOMSnapshot" class="tot experimental">DOMSnapshot</a>
+          <a href="/devtools-protocol/1-2/DOMStorage" class="tot experimental">DOMStorage</a>
+          <a href="/devtools-protocol/1-2/Emulation" class="tot 1-2 1-3">Emulation</a>
+          <a href="/devtools-protocol/1-2/EventBreakpoints" class="tot experimental">EventBreakpoints</a>
+          <a href="/devtools-protocol/1-2/Extensions" class="tot experimental">Extensions</a>
+          <a href="/devtools-protocol/1-2/FedCm" class="tot experimental">FedCm</a>
+          <a href="/devtools-protocol/1-2/Fetch" class="tot 1-3">Fetch</a>
+          <a href="/devtools-protocol/1-2/HeadlessExperimental" class="tot experimental">HeadlessExperimental</a>
+          <a href="/devtools-protocol/1-2/HeapProfiler" class="tot experimental v8">HeapProfiler</a>
+          <a href="/devtools-protocol/1-2/IndexedDB" class="tot experimental">IndexedDB</a>
+          <a href="/devtools-protocol/1-2/Input" class="tot 1-2 1-3">Input</a>
+          <a href="/devtools-protocol/1-2/Inspector" class="tot experimental">Inspector</a>
+          <a href="/devtools-protocol/1-2/IO" class="tot 1-3">IO</a>
+          <a href="/devtools-protocol/1-2/LayerTree" class="tot experimental">LayerTree</a>
+          <a href="/devtools-protocol/1-2/Log" class="tot 1-3">Log</a>
+          <a href="/devtools-protocol/1-2/Media" class="tot experimental">Media</a>
+          <a href="/devtools-protocol/1-2/Memory" class="tot experimental">Memory</a>
+          <a href="/devtools-protocol/1-2/Network" class="tot 1-2 1-3">Network</a>
+          <a href="/devtools-protocol/1-2/Overlay" class="tot experimental">Overlay</a>
+          <a href="/devtools-protocol/1-2/Page" class="tot 1-2 1-3">Page</a>
+          <a href="/devtools-protocol/1-2/Performance" class="tot 1-3">Performance</a>
+          <a href="/devtools-protocol/1-2/PerformanceTimeline" class="tot experimental">PerformanceTimeline</a>
+          <a href="/devtools-protocol/1-2/Preload" class="tot experimental">Preload</a>
+          <a href="/devtools-protocol/1-2/Profiler" class="tot 1-2 1-3 v8">Profiler</a>
+          <a href="/devtools-protocol/1-2/Runtime" class="tot 1-2 1-3 v8">Runtime</a>
+          <a href="/devtools-protocol/1-2/Schema" class="tot deprecated 1-2 v8">Schema</a>
+          <a href="/devtools-protocol/1-2/Security" class="tot 1-3">Security</a>
+          <a href="/devtools-protocol/1-2/ServiceWorker" class="tot experimental">ServiceWorker</a>
+          <a href="/devtools-protocol/1-2/Storage" class="tot experimental">Storage</a>
+          <a href="/devtools-protocol/1-2/SystemInfo" class="tot experimental">SystemInfo</a>
+          <a href="/devtools-protocol/1-2/Target" class="tot 1-3">Target</a>
+          <a href="/devtools-protocol/1-2/Tethering" class="tot experimental">Tethering</a>
+          <a href="/devtools-protocol/1-2/Tracing" class="tot experimental">Tracing</a>
+          <a href="/devtools-protocol/1-2/WebAudio" class="tot experimental">WebAudio</a>
+          <a href="/devtools-protocol/1-2/WebAuthn" class="tot experimental">WebAuthn</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <h1>Chrome DevTools Protocol</h1>
+      <button class="menu-link">Navigation</button>
+      <cr-search-control base-url="/devtools-protocol/" protocol-search-index="/search_index/1-2.json"></cr-search-control>
+    </header>
+    <section>
+      <div class="main-content-section domain">
+        
+    <div class="domain-section">
+      <div id="header">
+        <h2 class="heading">Emulation Domain</h2>
+        
+      <div class="details-description">
+        <p>This domain emulates different environments for the page.</p>
+
+        
+      </div>
+    
+        
+        <h3>Methods</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#method-clearDeviceMetricsOverride"><span class="domain-dot">Emulation.</span>clearDeviceMetricsOverride</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setDeviceMetricsOverride"><span class="domain-dot">Emulation.</span>setDeviceMetricsOverride</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setEmulatedMedia"><span class="domain-dot">Emulation.</span>setEmulatedMedia</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setTouchEmulationEnabled"><span class="domain-dot">Emulation.</span>setTouchEmulationEnabled</a>
+        
+      </div>
+      
+        <h3>Events</h3>
+        <h3>Types</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#type-ScreenOrientation"><span class="domain-dot">Emulation.</span>ScreenOrientation</a>
+        
+      </div>
+      
+      </div>
+
+      
+      <h3 id="methods">Methods</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="method-clearDeviceMetricsOverride">
+          <span class="domain-dot">Emulation.</span>clearDeviceMetricsOverride
+          
+          <a href="#method-clearDeviceMetricsOverride"
+             class="permalink"
+             data-slug="Emulation.clearDeviceMetricsOverride"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Clears the overriden device metrics.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setDeviceMetricsOverride">
+          <span class="domain-dot">Emulation.</span>setDeviceMetricsOverride
+          
+          <a href="#method-setDeviceMetricsOverride"
+             class="permalink"
+             data-slug="Emulation.setDeviceMetricsOverride"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Overrides the values of device screen dimensions (window.screen.width, window.screen.height, window.innerWidth, window.innerHeight, and &quot;device-width&quot;/&quot;device-height&quot;-related CSS media query results).</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          width
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Overriding width value in pixels (minimum 0, maximum 10000000). 0 disables the override.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          height
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Overriding height value in pixels (minimum 0, maximum 10000000). 0 disables the override.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          deviceScaleFactor
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Overriding device scale factor value. 0 disables the override.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          mobile
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether to emulate mobile device. This includes viewport meta tag, overlay scrollbars, text autosizing and more.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          fitWindow
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether a view that exceeds the available browser window area should be scaled down to fit.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          scale
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Scale to apply to resulting view image. Ignored in |fitWindow| mode.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          offsetX
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Not used.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span><span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          offsetY
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Not used.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span><span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          screenWidth
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Overriding screen width value in pixels (minimum 0, maximum 10000000). Only used for |mobile==true|.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          screenHeight
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Overriding screen height value in pixels (minimum 0, maximum 10000000). Only used for |mobile==true|.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          positionX
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Overriding view X position on screen in pixels (minimum 0, maximum 10000000). Only used for |mobile==true|.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          positionY
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Overriding view Y position on screen in pixels (minimum 0, maximum 10000000). Only used for |mobile==true|.</p>
+
+        
+      </div>
+    
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          screenOrientation
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/1-2/Emulation/#type-ScreenOrientation class="param-type">ScreenOrientation</a>
+          
+      <div class="details-description">
+        <p>Screen orientation override.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setEmulatedMedia">
+          <span class="domain-dot">Emulation.</span>setEmulatedMedia
+          
+          <a href="#method-setEmulatedMedia"
+             class="permalink"
+             data-slug="Emulation.setEmulatedMedia"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Emulates the given media for CSS media queries.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          media
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Media type to emulate. Empty string disables the override.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setTouchEmulationEnabled">
+          <span class="domain-dot">Emulation.</span>setTouchEmulationEnabled
+          
+          <a href="#method-setTouchEmulationEnabled"
+             class="permalink"
+             data-slug="Emulation.setTouchEmulationEnabled"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Toggles mouse event-based touch event emulation.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          enabled
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether the touch event emulation should be enabled.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          configuration
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Touch/gesture events configuration. Default: current platform.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>mobile</code>, <code>desktop</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      
+      <h3 id="types">Types</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ScreenOrientation">
+          <span class="domain-dot">Emulation.</span>ScreenOrientation
+          
+          <a href="#type-ScreenOrientation"
+             class="permalink"
+             data-slug="Emulation.ScreenOrientation"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Screen orientation.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          type
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Orientation type.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>portraitPrimary</code>, <code>portraitSecondary</code>, <code>landscapePrimary</code>, <code>landscapeSecondary</code></div>
+    
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          angle
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>Orientation angle.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+    </div>
+    
+      </div>
+    </section>
+  </main>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60854461-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
