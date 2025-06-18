@@ -1,7 +1,67 @@
 
 
+## Roll protocol to r1475386 — _2025-06-18T04:31:55.000Z_
+######  Diff: [`f9ae1d4...30c62f4`](https://github.com/ChromeDevTools/devtools-protocol/compare/f9ae1d4...30c62f4)
+
+```diff
+@@ browser_protocol.pdl:11541 @@ experimental domain Storage
+       optional string netErrorName
+       optional integer httpStatusCode
+ 
++  experimental event attributionReportingVerboseDebugReportSent
++    parameters
++      string url
++      optional array of object body
++      optional integer netError
++      optional string netErrorName
++      optional integer httpStatusCode
++
+   # A single Related Website Set object.
+   experimental type RelatedWebsiteSet extends object
+     properties
+@@ -13421,15 +13429,30 @@ experimental domain PWA
+       integer badgeCount
+       array of FileHandler fileHandlers
+ 
+-  # Installs the given manifest identity, optionally using the given install_url
+-  # or IWA bundle location.
++  # Installs the given manifest identity, optionally using the given installUrlOrBundleUrl
++  #
++  # IWA-specific install description:
++  # manifestId corresponds to isolated-app:// + web_package::SignedWebBundleId
++  #
++  # File installation mode:
++  # The installUrlOrBundleUrl can be either file:// or http(s):// pointing
++  # to a signed web bundle (.swbn). In this case SignedWebBundleId must correspond to
++  # The .swbn file's signing key.
++  #
++  # Dev proxy installation mode:
++  # installUrlOrBundleUrl must be http(s):// that serves dev mode IWA.
++  # web_package::SignedWebBundleId must be of type dev proxy.
++  #
++  # The advantage of dev proxy mode is that all changes to IWA
++  # automatically will be reflected in the running app without
++  # reinstallation.
++  #
++  # To generate bundle id for proxy mode:
++  # 1. Generate 32 random bytes.
++  # 2. Add a specific suffix 0x00 at the end.
++  # 3. Encode the entire sequence using Base32 without padding.
+   #
+-  # TODO(crbug.com/337872319) Support IWA to meet the following specific
+-  # requirement.
+-  # IWA-specific install description: If the manifest_id is isolated-app://,
+-  # install_url_or_bundle_url is required, and can be either an http(s) URL or
+-  # file:// URL pointing to a signed web bundle (.swbn). The .swbn file's
+-  # signing key must correspond to manifest_id. If Chrome is not in IWA dev
++  # If Chrome is not in IWA dev
+   # mode, the installation will fail, regardless of the state of the allowlist.
+   command install
+     parameters
+```
+
 ## Roll protocol to r1473885 — _2025-06-14T04:31:36.000Z_
-######  Diff: [`048403a...3b68dfa`](https://github.com/ChromeDevTools/devtools-protocol/compare/048403a...3b68dfa)
+######  Diff: [`048403a...f9ae1d4`](https://github.com/ChromeDevTools/devtools-protocol/compare/048403a...f9ae1d4)
 
 ```diff
 @@ browser_protocol.pdl:4467 @@ domain Emulation
@@ -14000,45 +14060,4 @@ index b3b97fa..6efcf78 100644
  
    # Fired when a prerender attempt is completed.
    experimental event prerenderAttemptCompleted
-```
-
-## Roll protocol to r1048947 — _2022-09-20T04:57:57.000Z_
-######  Diff: [`8fd85c8...8f2c950`](https://github.com/ChromeDevTools/devtools-protocol/compare/8fd85c8...8f2c950)
-
-```diff
-@@ browser_protocol.pdl:8458 @@ domain Page
-       AudioOutputDeviceRequested
-       MixedContent
-       TriggerBackgrounded
--      EmbedderTriggeredAndSameOriginRedirected
-       EmbedderTriggeredAndCrossOriginRedirected
-       MemoryLimitExceeded
-       # Prerenders can be cancelled when Chrome uses excessive memory. This is
-diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
-index 8d8211b..2d56043 100644
---- a/pdl/js_protocol.pdl
-+++ b/pdl/js_protocol.pdl
-@@ -766,6 +766,22 @@ experimental domain HeapProfiler
-       # Average sample interval in bytes. Poisson distribution is used for the intervals. The
-       # default value is 32768 bytes.
-       optional number samplingInterval
-+      # By default, the sampling heap profiler reports only objects which are
-+      # still alive when the profile is returned via getSamplingProfile or
-+      # stopSampling, which is useful for determining what functions contribute
-+      # the most to steady-state memory usage. This flag instructs the sampling
-+      # heap profiler to also include information about objects discarded by
-+      # major GC, which will show which functions cause large temporary memory
-+      # usage or long GC pauses.
-+      optional boolean includeObjectsCollectedByMajorGC
-+      # By default, the sampling heap profiler reports only objects which are
-+      # still alive when the profile is returned via getSamplingProfile or
-+      # stopSampling, which is useful for determining what functions contribute
-+      # the most to steady-state memory usage. This flag instructs the sampling
-+      # heap profiler to also include information about objects discarded by
-+      # minor GC, which is useful when tuning a latency-sensitive application
-+      # for minimal GC activity.
-+      optional boolean includeObjectsCollectedByMinorGC
- 
-   command startTrackingHeapObjects
-     parameters
 ```

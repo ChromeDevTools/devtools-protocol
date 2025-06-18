@@ -17540,6 +17540,14 @@ export namespace Protocol {
             netErrorName?: string;
             httpStatusCode?: integer;
         }
+
+        export interface AttributionReportingVerboseDebugReportSentEvent {
+            url: string;
+            body?: any[];
+            netError?: integer;
+            netErrorName?: string;
+            httpStatusCode?: integer;
+        }
     }
 
     /**
