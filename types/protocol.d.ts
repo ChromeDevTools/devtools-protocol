@@ -14689,11 +14689,6 @@ export namespace Protocol {
         }
 
         /**
-         * Enum of possible auto-response for permission / prompt dialogs.
-         */
-        export type AutoResponseMode = ('none' | 'autoAccept' | 'autoReject' | 'autoOptOut');
-
-        /**
          * The type of a frameNavigated event.
          */
         export type NavigationType = ('Navigation' | 'BackForwardCacheRestore');
@@ -15485,12 +15480,32 @@ export namespace Protocol {
             data: string;
         }
 
+        export const enum SetSPCTransactionModeRequestMode {
+            None = 'none',
+            AutoAccept = 'autoAccept',
+            AutoChooseToAuthAnotherWay = 'autoChooseToAuthAnotherWay',
+            AutoReject = 'autoReject',
+            AutoOptOut = 'autoOptOut',
+        }
+
         export interface SetSPCTransactionModeRequest {
-            mode: AutoResponseMode;
+            /**
+             *  (SetSPCTransactionModeRequestMode enum)
+             */
+            mode: ('none' | 'autoAccept' | 'autoChooseToAuthAnotherWay' | 'autoReject' | 'autoOptOut');
+        }
+
+        export const enum SetRPHRegistrationModeRequestMode {
+            None = 'none',
+            AutoAccept = 'autoAccept',
+            AutoReject = 'autoReject',
         }
 
         export interface SetRPHRegistrationModeRequest {
-            mode: AutoResponseMode;
+            /**
+             *  (SetRPHRegistrationModeRequestMode enum)
+             */
+            mode: ('none' | 'autoAccept' | 'autoReject');
         }
 
         export interface GenerateTestReportRequest {

@@ -1,7 +1,49 @@
 
 
+## Roll protocol to r1477697 — _2025-06-24T04:32:08.000Z_
+######  Diff: [`b6236d7...acdbe1e`](https://github.com/ChromeDevTools/devtools-protocol/compare/b6236d7...acdbe1e)
+
+```diff
+@@ browser_protocol.pdl:9720 @@ domain Page
+   # Clears seeded compilation cache.
+   experimental command clearCompilationCache
+ 
+-  # Enum of possible auto-response for permission / prompt dialogs.
+-  experimental type AutoResponseMode extends string
+-    enum
+-      none
+-      autoAccept
+-      autoReject
+-      autoOptOut
+-
+   # Sets the Secure Payment Confirmation transaction mode.
+   # https://w3c.github.io/secure-payment-confirmation/#sctn-automation-set-spc-transaction-mode
+   experimental command setSPCTransactionMode
+     parameters
+-      AutoResponseMode mode
++      enum mode
++        none
++        autoAccept
++        autoChooseToAuthAnotherWay
++        autoReject
++        autoOptOut
+ 
+   # Extensions for Custom Handlers API:
+   # https://html.spec.whatwg.org/multipage/system-state.html#rph-automation
+   experimental command setRPHRegistrationMode
+     parameters
+-      AutoResponseMode mode
++      enum mode
++        none
++        autoAccept
++        autoReject
+ 
+   # Generates a report for testing.
+   experimental command generateTestReport
+```
+
 ## Roll protocol to r1475386 — _2025-06-18T04:31:55.000Z_
-######  Diff: [`f9ae1d4...30c62f4`](https://github.com/ChromeDevTools/devtools-protocol/compare/f9ae1d4...30c62f4)
+######  Diff: [`f9ae1d4...b6236d7`](https://github.com/ChromeDevTools/devtools-protocol/compare/f9ae1d4...b6236d7)
 
 ```diff
 @@ browser_protocol.pdl:11541 @@ experimental domain Storage
@@ -14045,19 +14087,4 @@ index b3b97fa..6efcf78 100644
        PersistentQuotaType
        PictureSourceSrc
        PrefixedCancelAnimationFrame
-```
-
-## Roll protocol to r1049481 — _2022-09-21T04:59:07.000Z_
-######  Diff: [`8f2c950...32a0581`](https://github.com/ChromeDevTools/devtools-protocol/compare/8f2c950...32a0581)
-
-```diff
-@@ browser_protocol.pdl:8466 @@ domain Page
-       DataSaverEnabled
-       HasEffectiveUrl
-       ActivatedBeforeStarted
-+      InactivePageRestriction
-+      StartFailed
- 
-   # Fired when a prerender attempt is completed.
-   experimental event prerenderAttemptCompleted
 ```
