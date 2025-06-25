@@ -1966,19 +1966,20 @@
                     ]
                 },
                 {
-                    "id": "SelectElementAccessibilityIssueReason",
+                    "id": "ElementAccessibilityIssueReason",
                     "type": "string",
                     "enum": [
                         "DisallowedSelectChild",
                         "DisallowedOptGroupChild",
                         "NonPhrasingContentOptionChild",
                         "InteractiveContentOptionChild",
-                        "InteractiveContentLegendChild"
+                        "InteractiveContentLegendChild",
+                        "InteractiveContentSummaryDescendant"
                     ]
                 },
                 {
-                    "id": "SelectElementAccessibilityIssueDetails",
-                    "description": "This issue warns about errors in the select element content model.",
+                    "id": "ElementAccessibilityIssueDetails",
+                    "description": "This issue warns about errors in the select or summary element content model.",
                     "type": "object",
                     "properties": [
                         {
@@ -1986,8 +1987,8 @@
                             "$ref": "DOM.BackendNodeId"
                         },
                         {
-                            "name": "selectElementAccessibilityIssueReason",
-                            "$ref": "SelectElementAccessibilityIssueReason"
+                            "name": "elementAccessibilityIssueReason",
+                            "$ref": "ElementAccessibilityIssueReason"
                         },
                         {
                             "name": "hasDisallowedAttributes",
@@ -2111,7 +2112,7 @@
                         "FederatedAuthUserInfoRequestIssue",
                         "PropertyRuleIssue",
                         "SharedDictionaryIssue",
-                        "SelectElementAccessibilityIssue",
+                        "ElementAccessibilityIssue",
                         "SRIMessageSignatureIssue",
                         "UserReidentificationIssue"
                     ]
@@ -2233,9 +2234,9 @@
                             "$ref": "SharedDictionaryIssueDetails"
                         },
                         {
-                            "name": "selectElementAccessibilityIssueDetails",
+                            "name": "elementAccessibilityIssueDetails",
                             "optional": true,
-                            "$ref": "SelectElementAccessibilityIssueDetails"
+                            "$ref": "ElementAccessibilityIssueDetails"
                         },
                         {
                             "name": "sriMessageSignatureIssueDetails",
@@ -19645,6 +19646,7 @@
                         "BroadcastChannel",
                         "WebXR",
                         "SharedWorker",
+                        "SharedWorkerMessage",
                         "WebLocks",
                         "WebHID",
                         "WebShare",

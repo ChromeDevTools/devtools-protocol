@@ -1,7 +1,74 @@
 
 
+## Roll protocol to r1478340 — _2025-06-25T04:32:05.000Z_
+######  Diff: [`3d7bae0...2dc1ce3`](https://github.com/ChromeDevTools/devtools-protocol/compare/3d7bae0...2dc1ce3)
+
+```diff
+@@ browser_protocol.pdl:1031 @@ experimental domain Audits
+       # Additional information about the Partitioning Blob URL issue.
+       PartitioningBlobURLInfo partitioningBlobURLInfo
+ 
+-  type SelectElementAccessibilityIssueReason extends string
++  type ElementAccessibilityIssueReason extends string
+     enum
+       DisallowedSelectChild
+       DisallowedOptGroupChild
+       NonPhrasingContentOptionChild
+       InteractiveContentOptionChild
+       InteractiveContentLegendChild
++      InteractiveContentSummaryDescendant
+ 
+-  # This issue warns about errors in the select element content model.
+-  type SelectElementAccessibilityIssueDetails extends object
++  # This issue warns about errors in the select or summary element content model.
++  type ElementAccessibilityIssueDetails extends object
+     properties
+       DOM.BackendNodeId nodeId
+-      SelectElementAccessibilityIssueReason selectElementAccessibilityIssueReason
++      ElementAccessibilityIssueReason elementAccessibilityIssueReason
+       boolean hasDisallowedAttributes
+ 
+   type StyleSheetLoadingIssueReason extends string
+@@ -1120,7 +1121,7 @@ experimental domain Audits
+       FederatedAuthUserInfoRequestIssue
+       PropertyRuleIssue
+       SharedDictionaryIssue
+-      SelectElementAccessibilityIssue
++      ElementAccessibilityIssue
+       SRIMessageSignatureIssue
+       UserReidentificationIssue
+ 
+@@ -1151,7 +1152,7 @@ experimental domain Audits
+       optional PropertyRuleIssueDetails propertyRuleIssueDetails
+       optional FederatedAuthUserInfoRequestIssueDetails federatedAuthUserInfoRequestIssueDetails
+       optional SharedDictionaryIssueDetails sharedDictionaryIssueDetails
+-      optional SelectElementAccessibilityIssueDetails selectElementAccessibilityIssueDetails
++      optional ElementAccessibilityIssueDetails elementAccessibilityIssueDetails
+       optional SRIMessageSignatureIssueDetails sriMessageSignatureIssueDetails
+       optional UserReidentificationIssueDetails userReidentificationIssueDetails
+ 
+@@ -3517,7 +3518,8 @@ domain DOM
+         # Get the popover target for a given element. In this case, this given
+         # element can only be an HTMLFormControlElement (<input>, <button>).
+         PopoverTarget
+-        # Get the interest target for a given element.
++        # Get the interestfor target (the attribute used to be named
++        # `interesttarget`) for for a given element.
+         InterestTarget
+         # Get the commandfor target for a given element. In this case, this given
+         # element can only be an HTMLButtonElement.
+@@ -10060,6 +10062,7 @@ domain Page
+       BroadcastChannel
+       WebXR
+       SharedWorker
++      SharedWorkerMessage
+       WebLocks
+       WebHID
+       WebShare
+```
+
 ## Roll protocol to r1477697 — _2025-06-24T04:32:08.000Z_
-######  Diff: [`b6236d7...acdbe1e`](https://github.com/ChromeDevTools/devtools-protocol/compare/b6236d7...acdbe1e)
+######  Diff: [`b6236d7...3d7bae0`](https://github.com/ChromeDevTools/devtools-protocol/compare/b6236d7...3d7bae0)
 
 ```diff
 @@ browser_protocol.pdl:9720 @@ domain Page
@@ -14073,18 +14140,4 @@ index b3b97fa..6efcf78 100644
  
    # A filter used by target query/discovery/auto-attach operations.
    experimental type FilterEntry extends object
-```
-
-## Roll protocol to r1051614 — _2022-09-27T04:54:05.000Z_
-######  Diff: [`32a0581...7688064`](https://github.com/ChromeDevTools/devtools-protocol/compare/32a0581...7688064)
-
-```diff
-@@ browser_protocol.pdl:783 @@ experimental domain Audits
-       ObsoleteWebRtcCipherSuite
-       OpenWebDatabaseInsecureContext
-       OverflowVisibleOnReplacedElement
-+      PaymentInstruments
-       PersistentQuotaType
-       PictureSourceSrc
-       PrefixedCancelAnimationFrame
 ```
