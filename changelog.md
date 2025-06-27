@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1479623 — _2025-06-27T04:31:59.000Z_
+######  Diff: [`bdd3e90...ae7f7aa`](https://github.com/ChromeDevTools/devtools-protocol/compare/bdd3e90...ae7f7aa)
+
+```diff
+@@ browser_protocol.pdl:7671 @@ domain Network
+ 
+   experimental type IPAddressSpace extends string
+     enum
+-      Local
++      Loopback
+       Private
+       Public
+       Unknown
+```
+
 ## Roll protocol to r1478340 — _2025-06-25T04:32:05.000Z_
-######  Diff: [`3d7bae0...2dc1ce3`](https://github.com/ChromeDevTools/devtools-protocol/compare/3d7bae0...2dc1ce3)
+######  Diff: [`3d7bae0...bdd3e90`](https://github.com/ChromeDevTools/devtools-protocol/compare/3d7bae0...bdd3e90)
 
 ```diff
 @@ browser_protocol.pdl:1031 @@ experimental domain Audits
@@ -14101,43 +14116,4 @@ index b3b97fa..6efcf78 100644
        idle-detection
        interest-cohort
        join-ad-interest-group
-```
-
-## Roll protocol to r1052219 — _2022-09-28T04:58:58.000Z_
-######  Diff: [`7688064...0ce6bcb`](https://github.com/ChromeDevTools/devtools-protocol/compare/7688064...0ce6bcb)
-
-```diff
-@@ browser_protocol.pdl:1 @@ @@ -1,4 +1,4 @@
--# Copyright 2017 The Chromium Authors. All rights reserved.
-+# Copyright 2017 The Chromium Authors
- # Use of this source code is governed by a BSD-style license that can be
- # found in the LICENSE file.
- #
-@@ -775,8 +775,6 @@ experimental domain Audits
-       LocalCSSFileExtensionRejected
-       MediaSourceAbortRemove
-       MediaSourceDurationTruncatingBuffered
--      NavigateEventRestoreScroll
--      NavigateEventTransitionWhile
-       NoSysexWebMIDIWithoutPermission
-       NotificationInsecureOrigin
-       NotificationPermissionRequestedIframe
-@@ -784,6 +782,7 @@ experimental domain Audits
-       OpenWebDatabaseInsecureContext
-       OverflowVisibleOnReplacedElement
-       PaymentInstruments
-+      PaymentRequestCSPViolation
-       PersistentQuotaType
-       PictureSourceSrc
-       PrefixedCancelAnimationFrame
-@@ -9361,6 +9360,9 @@ domain Target
-       # Frame id of originating window (is only set if target has an opener).
-       experimental optional Page.FrameId openerFrameId
-       experimental optional Browser.BrowserContextID browserContextId
-+      # Provides additional details for specific target types. For example, for
-+      # the type of "page", this may be set to "portal" or "prerender".
-+      experimental optional string subtype
- 
-   # A filter used by target query/discovery/auto-attach operations.
-   experimental type FilterEntry extends object
 ```

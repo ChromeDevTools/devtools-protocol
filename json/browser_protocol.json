@@ -14762,7 +14762,7 @@
                     "experimental": true,
                     "type": "string",
                     "enum": [
-                        "Local",
+                        "Loopback",
                         "Private",
                         "Public",
                         "Unknown"

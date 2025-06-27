@@ -11779,7 +11779,7 @@ export namespace Protocol {
 
         export type PrivateNetworkRequestPolicy = ('Allow' | 'BlockFromInsecureToMorePrivate' | 'WarnFromInsecureToMorePrivate' | 'PreflightBlock' | 'PreflightWarn' | 'PermissionBlock' | 'PermissionWarn');
 
-        export type IPAddressSpace = ('Local' | 'Private' | 'Public' | 'Unknown');
+        export type IPAddressSpace = ('Loopback' | 'Private' | 'Public' | 'Unknown');
 
         export interface ConnectTiming {
             /**
