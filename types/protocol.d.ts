@@ -12568,7 +12568,7 @@ export namespace Protocol {
              */
             requestId: RequestId;
             /**
-             * Loader identifier. Empty string if the request is fetched from worker.
+             * Loader identifier. Empty string for a preflight request or if the request is fetched from a worker.
              */
             loaderId: LoaderId;
             /**
@@ -12656,7 +12656,7 @@ export namespace Protocol {
              */
             requestId: RequestId;
             /**
-             * Loader identifier. Empty string if the request is fetched from worker.
+             * Loader identifier. Empty string for a preflight request or if the request is fetched from a worker.
              */
             loaderId: LoaderId;
             /**

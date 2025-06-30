@@ -16056,7 +16056,7 @@
                         },
                         {
                             "name": "loaderId",
-                            "description": "Loader identifier. Empty string if the request is fetched from worker.",
+                            "description": "Loader identifier. Empty string for a preflight request or if the request is fetched from a worker.",
                             "$ref": "LoaderId"
                         },
                         {
@@ -16166,7 +16166,7 @@
                         },
                         {
                             "name": "loaderId",
-                            "description": "Loader identifier. Empty string if the request is fetched from worker.",
+                            "description": "Loader identifier. Empty string for a preflight request or if the request is fetched from a worker.",
                             "$ref": "LoaderId"
                         },
                         {
