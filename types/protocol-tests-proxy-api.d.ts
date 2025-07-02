@@ -3899,8 +3899,6 @@ export namespace ProtocolTestsProxyApi {
 
         enable(): Promise<{id: number, result: void, sessionId: string}>;
 
-        inspectWorker(params: Protocol.ServiceWorker.InspectWorkerRequest): Promise<{id: number, result: void, sessionId: string}>;
-
         setForceUpdateOnPageLoad(params: Protocol.ServiceWorker.SetForceUpdateOnPageLoadRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         skipWaiting(params: Protocol.ServiceWorker.SkipWaitingRequest): Promise<{id: number, result: void, sessionId: string}>;

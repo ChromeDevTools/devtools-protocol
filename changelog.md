@@ -1,7 +1,32 @@
 
 
+## Roll protocol to r1481382 — _2025-07-02T04:32:10.000Z_
+######  Diff: [`097b400...0aaa3c5`](https://github.com/ChromeDevTools/devtools-protocol/compare/097b400...0aaa3c5)
+
+```diff
+@@ browser_protocol.pdl:8253 @@ experimental domain Overlay
+       searchForNode
+       searchForUAShadowDOM
+       captureAreaScreenshot
+-      showDistances
+       none
+ 
+   # Disables domain notifications.
+@@ -10639,10 +10638,6 @@ experimental domain ServiceWorker
+ 
+   command enable
+ 
+-  command inspectWorker
+-    parameters
+-      string versionId
+-
+   command setForceUpdateOnPageLoad
+     parameters
+       boolean forceUpdateOnPageLoad
+```
+
 ## Roll protocol to r1479623 — _2025-06-27T04:31:59.000Z_
-######  Diff: [`bdd3e90...ae7f7aa`](https://github.com/ChromeDevTools/devtools-protocol/compare/bdd3e90...ae7f7aa)
+######  Diff: [`bdd3e90...097b400`](https://github.com/ChromeDevTools/devtools-protocol/compare/bdd3e90...097b400)
 
 ```diff
 @@ browser_protocol.pdl:7671 @@ domain Network
@@ -14046,74 +14071,4 @@ index b3b97fa..6efcf78 100644
  
    # Fired when a prerender attempt is completed.
    experimental event prerenderAttemptCompleted
-```
-
-## Roll protocol to r1052822 — _2022-09-29T04:58:25.000Z_
-######  Diff: [`0ce6bcb...6e37e04`](https://github.com/ChromeDevTools/devtools-protocol/compare/0ce6bcb...6e37e04)
-
-```diff
-@@ browser_protocol.pdl:5256 @@ domain Network
-       # Type "send-redemption-record" in the Trust Token API.
-       Signing
- 
-+  # The reason why Chrome uses a specific transport protocol for HTTP semantics.
-+  experimental type AlternateProtocolUsage extends string
-+    enum
-+      # Alternate Protocol was used without racing a normal connection.
-+      alternativeJobWonWithoutRace
-+      # Alternate Protocol was used by winning a race with a normal connection.
-+      alternativeJobWonRace
-+      # Alternate Protocol was not used by losing a race with a normal connection.
-+      mainJobWonRace
-+      # Alternate Protocol was not used because no Alternate-Protocol information
-+      # was available when the request was issued, but an Alternate-Protocol header
-+      # was present in the response.
-+      mappingMissing
-+      # Alternate Protocol was not used because it was marked broken.
-+      broken
-+      # HTTPS DNS protocol upgrade job was used without racing with a normal
-+      # connection and an Alternate Protocol job.
-+      dnsAlpnH3JobWonWithoutRace
-+      # HTTPS DNS protocol upgrade job won a race with a normal connection and
-+      # an Alternate Protocol job.
-+      dnsAlpnH3JobWonRace
-+      # When the reason is unspecified.
-+      unspecifiedReason
-+
-   # HTTP response data.
-   type Response extends object
-     properties
-@@ -5301,6 +5325,8 @@ domain Network
-       optional string cacheStorageCacheName
-       # Protocol used to fetch this request.
-       optional string protocol
-+      # The reason why Chrome uses a specific transport protocol for HTTP semantics.
-+      experimental optional AlternateProtocolUsage alternateProtocolUsage
-       # Security state of the request resource.
-       Security.SecurityState securityState
-       # Security details for the request.
-@@ -7106,6 +7132,7 @@ domain Page
-       ch-downlink
-       ch-ect
-       ch-prefers-color-scheme
-+      ch-prefers-reduced-motion
-       ch-rtt
-       ch-save-data
-       ch-ua
-@@ -7132,7 +7159,6 @@ domain Page
-       encrypted-media
-       execution-while-out-of-viewport
-       execution-while-not-rendered
--      federated-credentials
-       focus-without-user-activation
-       fullscreen
-       frobulate
-@@ -7140,6 +7166,7 @@ domain Page
-       geolocation
-       gyroscope
-       hid
-+      identity-credential-get
-       idle-detection
-       interest-cohort
-       join-ad-interest-group
 ```

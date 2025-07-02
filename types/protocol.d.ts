@@ -13657,7 +13657,7 @@ export namespace Protocol {
             maskColor?: DOM.RGBA;
         }
 
-        export type InspectMode = ('searchForNode' | 'searchForUAShadowDOM' | 'captureAreaScreenshot' | 'showDistances' | 'none');
+        export type InspectMode = ('searchForNode' | 'searchForUAShadowDOM' | 'captureAreaScreenshot' | 'none');
 
         export interface GetHighlightObjectForTestRequest {
             /**
@@ -16499,10 +16499,6 @@ export namespace Protocol {
             origin: string;
             registrationId: RegistrationID;
             tag: string;
-        }
-
-        export interface InspectWorkerRequest {
-            versionId: string;
         }
 
         export interface SetForceUpdateOnPageLoadRequest {

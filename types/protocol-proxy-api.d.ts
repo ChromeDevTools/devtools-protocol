@@ -3597,8 +3597,6 @@ export namespace ProtocolProxyApi {
 
         enable(): Promise<void>;
 
-        inspectWorker(params: Protocol.ServiceWorker.InspectWorkerRequest): Promise<void>;
-
         setForceUpdateOnPageLoad(params: Protocol.ServiceWorker.SetForceUpdateOnPageLoadRequest): Promise<void>;
 
         skipWaiting(params: Protocol.ServiceWorker.SkipWaitingRequest): Promise<void>;
