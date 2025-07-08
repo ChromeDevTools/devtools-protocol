@@ -2067,6 +2067,11 @@ export namespace ProtocolProxyApi {
 
         setDisabledImageTypes(params: Protocol.Emulation.SetDisabledImageTypesRequest): Promise<void>;
 
+        /**
+         * Override the value of navigator.connection.saveData
+         */
+        setDataSaverOverride(params: Protocol.Emulation.SetDataSaverOverrideRequest): Promise<void>;
+
         setHardwareConcurrencyOverride(params: Protocol.Emulation.SetHardwareConcurrencyOverrideRequest): Promise<void>;
 
         /**

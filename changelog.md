@@ -1,7 +1,36 @@
 
 
+## Roll protocol to r1483532 — _2025-07-08T04:32:14.000Z_
+######  Diff: [`71d5e25...74ee0a2`](https://github.com/ChromeDevTools/devtools-protocol/compare/71d5e25...74ee0a2)
+
+```diff
+@@ browser_protocol.pdl:3386 @@ domain DOM
+       optional BackendNodeId backendNodeId
+       # JavaScript object id of the node wrapper.
+       optional Runtime.RemoteObjectId objectId
++      # Include all shadow roots. Equals to false if not specified.
++      experimental optional boolean includeShadowDOM
+     returns
+       # Outer HTML markup.
+       string outerHTML
+@@ -4874,6 +4876,13 @@ domain Emulation
+       # Image types to disable.
+       array of DisabledImageType imageTypes
+ 
++
++  # Override the value of navigator.connection.saveData
++  experimental command setDataSaverOverride
++    parameters
++      # Override value. Omitting the parameter disables the override.
++      optional boolean dataSaverEnabled
++
+   experimental command setHardwareConcurrencyOverride
+     parameters
+       # Hardware concurrency to report
+```
+
 ## Roll protocol to r1481382 — _2025-07-02T04:32:10.000Z_
-######  Diff: [`097b400...0aaa3c5`](https://github.com/ChromeDevTools/devtools-protocol/compare/097b400...0aaa3c5)
+######  Diff: [`097b400...71d5e25`](https://github.com/ChromeDevTools/devtools-protocol/compare/097b400...71d5e25)
 
 ```diff
 @@ browser_protocol.pdl:8253 @@ experimental domain Overlay
@@ -14057,18 +14086,4 @@ index b3b97fa..6efcf78 100644
    experimental deprecated command getCookies
      # Use 'Network.getCookies' instead
      redirect Network
-```
-
-## Roll protocol to r1055124 — _2022-10-05T04:35:05.000Z_
-######  Diff: [`6e37e04...221d16f`](https://github.com/ChromeDevTools/devtools-protocol/compare/6e37e04...221d16f)
-
-```diff
-@@ browser_protocol.pdl:8495 @@ domain Page
-       ActivatedBeforeStarted
-       InactivePageRestriction
-       StartFailed
-+      TimeoutBackgrounded
- 
-   # Fired when a prerender attempt is completed.
-   experimental event prerenderAttemptCompleted
 ```

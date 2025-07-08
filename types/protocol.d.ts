@@ -6951,6 +6951,10 @@ export namespace Protocol {
              * JavaScript object id of the node wrapper.
              */
             objectId?: Runtime.RemoteObjectId;
+            /**
+             * Include all shadow roots. Equals to false if not specified.
+             */
+            includeShadowDOM?: boolean;
         }
 
         export interface GetOuterHTMLResponse {
@@ -8965,6 +8969,13 @@ export namespace Protocol {
              * Image types to disable.
              */
             imageTypes: DisabledImageType[];
+        }
+
+        export interface SetDataSaverOverrideRequest {
+            /**
+             * Override value. Omitting the parameter disables the override.
+             */
+            dataSaverEnabled?: boolean;
         }
 
         export interface SetHardwareConcurrencyOverrideRequest {

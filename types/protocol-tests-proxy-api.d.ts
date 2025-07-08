@@ -2191,6 +2191,11 @@ export namespace ProtocolTestsProxyApi {
 
         setDisabledImageTypes(params: Protocol.Emulation.SetDisabledImageTypesRequest): Promise<{id: number, result: void, sessionId: string}>;
 
+        /**
+         * Override the value of navigator.connection.saveData
+         */
+        setDataSaverOverride(params: Protocol.Emulation.SetDataSaverOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
+
         setHardwareConcurrencyOverride(params: Protocol.Emulation.SetHardwareConcurrencyOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
