@@ -1063,6 +1063,11 @@ export namespace ProtocolTestsProxyApi {
         setWindowBounds(params: Protocol.Browser.SetWindowBoundsRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
+         * Set size of the browser contents resizing browser window as necessary.
+         */
+        setContentsSize(params: Protocol.Browser.SetContentsSizeRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
          * Set dock tile details, platform-specific.
          */
         setDockTile(params: Protocol.Browser.SetDockTileRequest): Promise<{id: number, result: void, sessionId: string}>;

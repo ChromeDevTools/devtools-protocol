@@ -999,6 +999,11 @@ export namespace ProtocolProxyApi {
         setWindowBounds(params: Protocol.Browser.SetWindowBoundsRequest): Promise<void>;
 
         /**
+         * Set size of the browser contents resizing browser window as necessary.
+         */
+        setContentsSize(params: Protocol.Browser.SetContentsSizeRequest): Promise<void>;
+
+        /**
          * Set dock tile details, platform-specific.
          */
         setDockTile(params: Protocol.Browser.SetDockTileRequest): Promise<void>;

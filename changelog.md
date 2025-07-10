@@ -1,7 +1,32 @@
 
 
+## Roll protocol to r1484773 — _2025-07-10T04:32:32.000Z_
+######  Diff: [`3952063...0bf3c43`](https://github.com/ChromeDevTools/devtools-protocol/compare/3952063...0bf3c43)
+
+```diff
+@@ browser_protocol.pdl:1748 @@ domain Browser
+       # with 'left', 'top', 'width' or 'height'. Leaves unspecified fields unchanged.
+       Bounds bounds
+ 
++  # Set size of the browser contents resizing browser window as necessary.
++  experimental command setContentsSize
++    parameters
++      # Browser window id.
++      WindowID windowId
++      # The window contents width in DIP. Assumes current width if omitted.
++      # Must be specified if 'height' is omitted.
++      optional integer width
++      # The window contents height in DIP. Assumes current height if omitted.
++      # Must be specified if 'width' is omitted.
++      optional integer height
++
+   # Set dock tile details, platform-specific.
+   experimental command setDockTile
+     parameters
+```
+
 ## Roll protocol to r1483532 — _2025-07-08T04:32:14.000Z_
-######  Diff: [`71d5e25...74ee0a2`](https://github.com/ChromeDevTools/devtools-protocol/compare/71d5e25...74ee0a2)
+######  Diff: [`71d5e25...3952063`](https://github.com/ChromeDevTools/devtools-protocol/compare/71d5e25...3952063)
 
 ```diff
 @@ browser_protocol.pdl:3386 @@ domain DOM
@@ -14059,31 +14084,4 @@ index b3b97fa..6efcf78 100644
  
    # Issued when the domain is enabled with handleAuthRequests set to true.
    # The request is paused until client responds with continueWithAuth.
-```
-
-## Roll protocol to r1055599 — _2022-10-06T04:34:37.000Z_
-######  Diff: [`221d16f...871805f`](https://github.com/ChromeDevTools/devtools-protocol/compare/221d16f...871805f)
-
-```diff
-@@ browser_protocol.pdl:7166 @@ domain Page
-       geolocation
-       gyroscope
-       hid
--      identity-credential-get
-+      identity-credentials-get
-       idle-detection
-       interest-cohort
-       join-ad-interest-group
-@@ -7682,8 +7682,9 @@ domain Page
-       # Recommendation for manifest's id attribute to match current id computed from start_url
-       optional string recommendedId
- 
--  # Returns all browser cookies. Depending on the backend support, will return detailed cookie
--  # information in the `cookies` field.
-+  # Returns all browser cookies for the page and all of its subframes. Depending
-+  # on the backend support, will return detailed cookie information in the
-+  # `cookies` field.
-   experimental deprecated command getCookies
-     # Use 'Network.getCookies' instead
-     redirect Network
 ```
