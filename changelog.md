@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1485358 — _2025-07-11T04:33:31.000Z_
+######  Diff: [`f9dda30...984fdfd`](https://github.com/ChromeDevTools/devtools-protocol/compare/f9dda30...984fdfd)
+
+```diff
+@@ browser_protocol.pdl:8609 @@ domain Page
+       accelerometer
+       all-screens-capture
+       ambient-light-sensor
++      aria-notify
+       attribution-reporting
+       autoplay
+       bluetooth
+```
+
 ## Roll protocol to r1484773 — _2025-07-10T04:32:32.000Z_
-######  Diff: [`3952063...0bf3c43`](https://github.com/ChromeDevTools/devtools-protocol/compare/3952063...0bf3c43)
+######  Diff: [`3952063...f9dda30`](https://github.com/ChromeDevTools/devtools-protocol/compare/3952063...f9dda30)
 
 ```diff
 @@ browser_protocol.pdl:1748 @@ domain Browser
@@ -14066,22 +14080,4 @@ index b3b97fa..6efcf78 100644
        unspecifiedReason
  
    # HTTP response data.
-```
-
-## Roll protocol to r1056622 — _2022-10-08T04:34:15.000Z_
-######  Diff: [`871805f...1e2a599`](https://github.com/ChromeDevTools/devtools-protocol/compare/871805f...1e2a599)
-
-```diff
-@@ browser_protocol.pdl:10036 @@ domain Fetch
-       optional array of HeaderEntry responseHeaders
-       # If the intercepted request had a corresponding Network.requestWillBeSent event fired for it,
-       # then this networkId will be the same as the requestId present in the requestWillBeSent event.
--      optional RequestId networkId
-+      optional Network.RequestId networkId
-+      # If the request is due to a redirect response from the server, the id of the request that
-+      # has caused the redirect.
-+      experimental optional RequestId redirectedRequestId
- 
-   # Issued when the domain is enabled with handleAuthRequests set to true.
-   # The request is paused until client responds with continueWithAuth.
 ```
