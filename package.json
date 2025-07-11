@@ -13,5 +13,7 @@
     "pdl",
     "types"
   ],
-  "types": "types/protocol.d.ts"
+  "types": "types/protocol.d.ts",
+  "main": "./types/protocol.d.ts",
+  "module": "./types/protocol.d.ts"
 }
