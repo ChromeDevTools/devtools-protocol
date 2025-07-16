@@ -2621,6 +2621,14 @@ export namespace ProtocolMapping {
             returnType: Protocol.DOM.GetAnchorElementResponse;
         };
         /**
+         * When enabling, this API force-opens the popover identified by nodeId
+         * and keeps it open until disabled.
+         */
+        'DOM.forceShowPopover': {
+            paramsType: [Protocol.DOM.ForceShowPopoverRequest];
+            returnType: Protocol.DOM.ForceShowPopoverResponse;
+        };
+        /**
          * Returns event listeners of the given object.
          */
         'DOMDebugger.getEventListeners': {

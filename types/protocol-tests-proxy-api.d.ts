@@ -1727,6 +1727,12 @@ export namespace ProtocolTestsProxyApi {
         getAnchorElement(params: Protocol.DOM.GetAnchorElementRequest): Promise<{id: number, result: Protocol.DOM.GetAnchorElementResponse, sessionId: string}>;
 
         /**
+         * When enabling, this API force-opens the popover identified by nodeId
+         * and keeps it open until disabled.
+         */
+        forceShowPopover(params: Protocol.DOM.ForceShowPopoverRequest): Promise<{id: number, result: Protocol.DOM.ForceShowPopoverResponse, sessionId: string}>;
+
+        /**
          * Fired when `Element`'s attribute is modified.
          */
         onAttributeModified(listener: (event: { params: Protocol.DOM.AttributeModifiedEvent }) => void): void;

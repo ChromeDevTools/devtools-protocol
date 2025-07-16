@@ -1,7 +1,33 @@
 
 
+## Roll protocol to r1487398 — _2025-07-16T04:33:49.000Z_
+######  Diff: [`9d397ca...af429b0`](https://github.com/ChromeDevTools/devtools-protocol/compare/9d397ca...af429b0)
+
+```diff
+@@ browser_protocol.pdl:3751 @@ domain DOM
+       # The anchor element of the given anchor query.
+       NodeId nodeId
+ 
++  # When enabling, this API force-opens the popover identified by nodeId
++  # and keeps it open until disabled.
++  experimental command forceShowPopover
++    parameters
++      # Id of the popover HTMLElement
++      NodeId nodeId
++      # If true, opens the popover and keeps it open. If false, closes the
++      # popover if it was previously force-opened.
++      boolean enable
++    returns
++      # List of popovers that were closed in order to respect popover stacking order.
++      array of NodeId nodeIds
++
+   # Fired when `Element`'s attribute is modified.
+   event attributeModified
+     parameters
+```
+
 ## Roll protocol to r1485358 — _2025-07-11T04:33:31.000Z_
-######  Diff: [`f9dda30...984fdfd`](https://github.com/ChromeDevTools/devtools-protocol/compare/f9dda30...984fdfd)
+######  Diff: [`f9dda30...9d397ca`](https://github.com/ChromeDevTools/devtools-protocol/compare/f9dda30...9d397ca)
 
 ```diff
 @@ browser_protocol.pdl:8609 @@ domain Page
@@ -14065,19 +14091,4 @@ index b3b97fa..6efcf78 100644
    event consoleProfileFinished
      parameters
        string id
-```
-
-## Roll protocol to r1056733 — _2022-10-09T04:46:56.000Z_
-######  Diff: [`1e2a599...02af7d8`](https://github.com/ChromeDevTools/devtools-protocol/compare/1e2a599...02af7d8)
-
-```diff
-@@ browser_protocol.pdl:5277 @@ domain Network
-       # HTTPS DNS protocol upgrade job won a race with a normal connection and
-       # an Alternate Protocol job.
-       dnsAlpnH3JobWonRace
--      # When the reason is unspecified.
-+      # This value is used when the reason is unknown.
-       unspecifiedReason
- 
-   # HTTP response data.
 ```
