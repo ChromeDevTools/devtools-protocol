@@ -1,7 +1,34 @@
 
 
+## Roll protocol to r1488040 — _2025-07-17T04:33:47.000Z_
+######  Diff: [`15a4967...5c01b39`](https://github.com/ChromeDevTools/devtools-protocol/compare/15a4967...5c01b39)
+
+```diff
+@@ browser_protocol.pdl:2559 @@ experimental domain CSS
+       # A list of CSS at-function rules referenced by styles of this node.
+       experimental optional array of CSSFunctionRule cssFunctionRules
+ 
++  # Returns the values of the default UA-defined environment variables used in env()
++  experimental command getEnvironmentVariables
++    returns
++      object environmentVariables
++
+   # Returns all media queries parsed by the rendering engine.
+   command getMediaQueries
+     returns
+@@ -9447,6 +9452,8 @@ domain Page
+       optional Network.LoaderId loaderId
+       # User friendly error message, present if and only if navigation has failed.
+       optional string errorText
++      # Whether the navigation resulted in a download.
++      experimental optional boolean isDownload
+ 
+   # Navigates current page to the given history entry.
+   command navigateToHistoryEntry
+```
+
 ## Roll protocol to r1487398 — _2025-07-16T04:33:49.000Z_
-######  Diff: [`9d397ca...af429b0`](https://github.com/ChromeDevTools/devtools-protocol/compare/9d397ca...af429b0)
+######  Diff: [`9d397ca...15a4967`](https://github.com/ChromeDevTools/devtools-protocol/compare/9d397ca...15a4967)
 
 ```diff
 @@ browser_protocol.pdl:3751 @@ domain DOM
@@ -14021,74 +14048,4 @@ index b3b97fa..6efcf78 100644
        optional array of HeaderEntry headers
        # If set, overrides response interception behavior for this request.
        experimental optional boolean interceptResponse
-```
-
-## Roll protocol to r1057312 — _2022-10-11T04:55:46.000Z_
-######  Diff: [`02af7d8...366164c`](https://github.com/ChromeDevTools/devtools-protocol/compare/02af7d8...366164c)
-
-```diff
-@@ js_protocol.pdl:918 @@ domain Profiler
-       # Functions contained in the script that has coverage data.
-       array of FunctionCoverage functions
- 
--  # Describes a type collected during runtime.
--  experimental type TypeObject extends object
--    properties
--      # Name of a type collected with type profiling.
--      string name
--
--  # Source offset and types for a parameter or return value.
--  experimental type TypeProfileEntry extends object
--    properties
--      # Source offset of the parameter or end of function for return values.
--      integer offset
--      # The types for this parameter or return value.
--      array of TypeObject types
--
--  # Type profile data collected during runtime for a JavaScript script.
--  experimental type ScriptTypeProfile extends object
--    properties
--      # JavaScript script id.
--      Runtime.ScriptId scriptId
--      # JavaScript script name or url.
--      string url
--      # Type profile entries for parameters and return values of the functions in the script.
--      array of TypeProfileEntry entries
--
-   command disable
- 
-   command enable
-@@ -976,9 +952,6 @@ domain Profiler
-       # Monotonically increasing time (in seconds) when the coverage update was taken in the backend.
-       number timestamp
- 
--  # Enable type profile.
--  experimental command startTypeProfile
--
-   command stop
-     returns
-       # Recorded profile.
-@@ -988,9 +961,6 @@ domain Profiler
-   # executing optimized code.
-   command stopPreciseCoverage
- 
--  # Disable type profile. Disabling releases type profile data collected so far.
--  experimental command stopTypeProfile
--
-   # Collect coverage data for the current isolate, and resets execution counters. Precise code
-   # coverage needs to have started.
-   command takePreciseCoverage
-@@ -1000,12 +970,6 @@ domain Profiler
-       # Monotonically increasing time (in seconds) when the coverage update was taken in the backend.
-       number timestamp
- 
--  # Collect type profile.
--  experimental command takeTypeProfile
--    returns
--      # Type profile for all scripts since startTypeProfile() was turned on.
--      array of ScriptTypeProfile result
--
-   event consoleProfileFinished
-     parameters
-       string id
 ```

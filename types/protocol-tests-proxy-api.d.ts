@@ -1186,6 +1186,11 @@ export namespace ProtocolTestsProxyApi {
         getMatchedStylesForNode(params: Protocol.CSS.GetMatchedStylesForNodeRequest): Promise<{id: number, result: Protocol.CSS.GetMatchedStylesForNodeResponse, sessionId: string}>;
 
         /**
+         * Returns the values of the default UA-defined environment variables used in env()
+         */
+        getEnvironmentVariables(): Promise<{id: number, result: Protocol.CSS.GetEnvironmentVariablesResponse, sessionId: string}>;
+
+        /**
          * Returns all media queries parsed by the rendering engine.
          */
         getMediaQueries(): Promise<{id: number, result: Protocol.CSS.GetMediaQueriesResponse, sessionId: string}>;

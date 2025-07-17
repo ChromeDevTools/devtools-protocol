@@ -5868,6 +5868,10 @@ export namespace Protocol {
             cssFunctionRules?: CSSFunctionRule[];
         }
 
+        export interface GetEnvironmentVariablesResponse {
+            environmentVariables: any;
+        }
+
         export interface GetMediaQueriesResponse {
             medias: CSSMedia[];
         }
@@ -15118,6 +15122,10 @@ export namespace Protocol {
              * User friendly error message, present if and only if navigation has failed.
              */
             errorText?: string;
+            /**
+             * Whether the navigation resulted in a download.
+             */
+            isDownload?: boolean;
         }
 
         export interface NavigateToHistoryEntryRequest {
