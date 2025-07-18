@@ -7711,7 +7711,7 @@ domain Network
   experimental type IPAddressSpace extends string
     enum
       Loopback
-      Private
+      Local
       Public
       Unknown
 
@@ -13103,6 +13103,7 @@ experimental domain Preload
     enum
       SourceIsNotJsonObject
       InvalidRulesSkipped
+      InvalidRulesetLevelTag
 
   # The type of preloading attempted. It corresponds to
   # mojom::SpeculationAction (although PrefetchWithSubresources is omitted as it

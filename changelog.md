@@ -1,7 +1,30 @@
 
 
+## Roll protocol to r1488636 — _2025-07-18T04:33:56.000Z_
+######  Diff: [`1103fe1...8a8d5bd`](https://github.com/ChromeDevTools/devtools-protocol/compare/1103fe1...8a8d5bd)
+
+```diff
+@@ browser_protocol.pdl:7711 @@ domain Network
+   experimental type IPAddressSpace extends string
+     enum
+       Loopback
+-      Private
++      Local
+       Public
+       Unknown
+ 
+@@ -13103,6 +13103,7 @@ experimental domain Preload
+     enum
+       SourceIsNotJsonObject
+       InvalidRulesSkipped
++      InvalidRulesetLevelTag
+ 
+   # The type of preloading attempted. It corresponds to
+   # mojom::SpeculationAction (although PrefetchWithSubresources is omitted as it
+```
+
 ## Roll protocol to r1488040 — _2025-07-17T04:33:47.000Z_
-######  Diff: [`15a4967...5c01b39`](https://github.com/ChromeDevTools/devtools-protocol/compare/15a4967...5c01b39)
+######  Diff: [`15a4967...1103fe1`](https://github.com/ChromeDevTools/devtools-protocol/compare/15a4967...1103fe1)
 
 ```diff
 @@ browser_protocol.pdl:2559 @@ experimental domain CSS
@@ -14031,21 +14054,4 @@ index b3b97fa..6efcf78 100644
  
    # Fired when frame no longer has a scheduled navigation.
    deprecated event frameClearedScheduledNavigation
-```
-
-## Roll protocol to r1059094 — _2022-10-14T04:59:20.000Z_
-######  Diff: [`366164c...ddedcee`](https://github.com/ChromeDevTools/devtools-protocol/compare/366164c...ddedcee)
-
-```diff
-@@ browser_protocol.pdl:9945 @@ domain Fetch
-       optional string method
-       # If set, overrides the post data in the request.
-       optional binary postData
--      # If set, overrides the request headers.
-+      # If set, overrides the request headers. Note that the overrides do not
-+      # extend to subsequent redirect hops, if a redirect happens. Another override
-+      # may be applied to a different request produced by a redirect.
-       optional array of HeaderEntry headers
-       # If set, overrides response interception behavior for this request.
-       experimental optional boolean interceptResponse
 ```

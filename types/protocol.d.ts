@@ -11830,7 +11830,7 @@ export namespace Protocol {
 
         export type PrivateNetworkRequestPolicy = ('Allow' | 'BlockFromInsecureToMorePrivate' | 'WarnFromInsecureToMorePrivate' | 'PreflightBlock' | 'PreflightWarn' | 'PermissionBlock' | 'PermissionWarn');
 
-        export type IPAddressSpace = ('Loopback' | 'Private' | 'Public' | 'Unknown');
+        export type IPAddressSpace = ('Loopback' | 'Local' | 'Public' | 'Unknown');
 
         export interface ConnectTiming {
             /**
@@ -19564,7 +19564,7 @@ export namespace Protocol {
             errorMessage?: string;
         }
 
-        export type RuleSetErrorType = ('SourceIsNotJsonObject' | 'InvalidRulesSkipped');
+        export type RuleSetErrorType = ('SourceIsNotJsonObject' | 'InvalidRulesSkipped' | 'InvalidRulesetLevelTag');
 
         /**
          * The type of preloading attempted. It corresponds to
