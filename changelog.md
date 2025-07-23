@@ -1,7 +1,23 @@
 
 
+## Roll protocol to r1490591 — _2025-07-23T04:34:18.000Z_
+######  Diff: [`4819069...b94871d`](https://github.com/ChromeDevTools/devtools-protocol/compare/4819069...b94871d)
+
+```diff
+@@ browser_protocol.pdl:6508 @@ domain Network
+       Security.SecurityState securityState
+       # Security details for the request.
+       optional SecurityDetails securityDetails
++      # Indicates whether the request was sent through IP Protection proxies. If
++      # set to true, the request used the IP Protection privacy feature.
++      experimental optional boolean isIpProtectionUsed
+ 
+   # WebSocket request data.
+   type WebSocketRequest extends object
+```
+
 ## Roll protocol to r1488636 — _2025-07-18T04:33:56.000Z_
-######  Diff: [`1103fe1...8a8d5bd`](https://github.com/ChromeDevTools/devtools-protocol/compare/1103fe1...8a8d5bd)
+######  Diff: [`1103fe1...4819069`](https://github.com/ChromeDevTools/devtools-protocol/compare/1103fe1...4819069)
 
 ```diff
 @@ browser_protocol.pdl:7711 @@ domain Network
@@ -14020,37 +14036,6 @@ index b3b97fa..6efcf78 100644
 -      # as an ad. Only sent if frame is labelled as an ad and id is available.
 -      # Deprecated: use Page.getAdScriptId instead.
 -      experimental deprecated optional AdScriptId adScriptId
- 
-   # Fired when frame no longer has a scheduled navigation.
-   deprecated event frameClearedScheduledNavigation
-```
-
-## Roll protocol to r1059612 — _2022-10-15T04:53:37.000Z_
-######  Diff: [`ddedcee...aca7212`](https://github.com/ChromeDevTools/devtools-protocol/compare/ddedcee...aca7212)
-
-```diff
-@@ browser_protocol.pdl:7682 @@ domain Page
-       # Recommendation for manifest's id attribute to match current id computed from start_url
-       optional string recommendedId
- 
-+  experimental command getAdScriptId
-+    parameters
-+      FrameId frameId
-+    returns
-+      # Identifies the bottom-most script which caused the frame to be labelled
-+      # as an ad. Only sent if frame is labelled as an ad and id is available.
-+      optional AdScriptId adScriptId
-+
-   # Returns all browser cookies for the page and all of its subframes. Depending
-   # on the backend support, will return detailed cookie information in the
-   # `cookies` field.
-@@ -8129,7 +8137,8 @@ domain Page
-       optional Runtime.StackTrace stack
-       # Identifies the bottom-most script which caused the frame to be labelled
-       # as an ad. Only sent if frame is labelled as an ad and id is available.
--      experimental optional AdScriptId adScriptId
-+      # Deprecated: use Page.getAdScriptId instead.
-+      experimental deprecated optional AdScriptId adScriptId
  
    # Fired when frame no longer has a scheduled navigation.
    deprecated event frameClearedScheduledNavigation
