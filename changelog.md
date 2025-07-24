@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1491235 — _2025-07-24T04:34:08.000Z_
+######  Diff: [`87144ce...272247f`](https://github.com/ChromeDevTools/devtools-protocol/compare/87144ce...272247f)
+
+```diff
+@@ browser_protocol.pdl:6362 @@ domain Network
+       # https://github.com/WICG/private-network-access/blob/main/permission_prompt/explainer.md
+       PrivateNetworkAccessPermissionDenied
+       # Request was a local network request and is denied by user permission.
+-      # https://github.com/explainers-by-googlers/local-network-access
++      # https://wicg.github.io/local-network-access/
+       LocalNetworkAccessPermissionDenied
+ 
+   type CorsErrorStatus extends object
+```
+
 ## Roll protocol to r1490591 — _2025-07-23T04:34:18.000Z_
-######  Diff: [`4819069...b94871d`](https://github.com/ChromeDevTools/devtools-protocol/compare/4819069...b94871d)
+######  Diff: [`4819069...87144ce`](https://github.com/ChromeDevTools/devtools-protocol/compare/4819069...87144ce)
 
 ```diff
 @@ browser_protocol.pdl:6508 @@ domain Network
@@ -14022,21 +14037,4 @@ index b3b97fa..6efcf78 100644
        Dummy
        # Disabled for render frame host reasons
        # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
-```
-
-## Roll protocol to r1060866 — _2022-10-19T05:00:30.000Z_
-######  Diff: [`aca7212...d42b588`](https://github.com/ChromeDevTools/devtools-protocol/compare/aca7212...d42b588)
-
-```diff
-@@ browser_protocol.pdl:8135 @@ domain Page
-       FrameId parentFrameId
-       # JavaScript stack trace of when frame was attached, only set if frame initiated from script.
-       optional Runtime.StackTrace stack
--      # Identifies the bottom-most script which caused the frame to be labelled
--      # as an ad. Only sent if frame is labelled as an ad and id is available.
--      # Deprecated: use Page.getAdScriptId instead.
--      experimental deprecated optional AdScriptId adScriptId
- 
-   # Fired when frame no longer has a scheduled navigation.
-   deprecated event frameClearedScheduledNavigation
 ```
