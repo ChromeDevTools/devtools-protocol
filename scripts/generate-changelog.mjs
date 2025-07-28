@@ -1,9 +1,7 @@
-'use script';
+import fs from 'node:fs';
+import path from 'node:path';
 
-const fs = require('fs');
-const path = require('path');
-
-const simpleGit = require('simple-git');
+import simpleGit from 'simple-git';
 
 const maxCommitsInChangelog = 400;
 
@@ -23,7 +21,6 @@ const formatDateString = (dateString) => {
  */
 class Formatter {
   static logCommit(previousCommit, commit, gitdiff) {
-
     // Don't log commits that don't change the protocol.
     if (!gitdiff || !gitdiff.length) return;
 
@@ -34,11 +31,15 @@ class Formatter {
 
     const adjustedDiff = [
       `@@ ${filename}:${lineNo.groups.lineno} @@ ${hunkHeaderContext}`,
-      ...gitdiffLines.slice(5)
+      ...gitdiffLines.slice(5),
     ].join('\n');
 
     // simple-git adds this "(HEAD, origin/master)" string to the first commit's message...
-    const commitMessage = commit.message.replace(/\(HEAD.*/, '').replace(' (master)', '').replace(' (main)', '').trim();
+    const commitMessage = commit.message
+      .replace(/\(HEAD.*/, '')
+      .replace(' (master)', '')
+      .replace(' (main)', '')
+      .trim();
     const commitDateStr = formatDateString(commit.date);
     results += `\n\n## ${commitMessage} — _${commitDateStr}_\n`;
     const hashCompareStr = `${previousCommit.hash.slice(0, 7)}...${commit.hash.slice(0, 7)}`;
@@ -49,7 +50,6 @@ ${adjustedDiff.trim()}
 \`\`\``;
   }
 }
-
 
 const blacklistedCommits = [
   'b97e97f476c04b6b91e17dbd83ccd4543c3229fd', // use private bot email
@@ -68,7 +68,7 @@ const blacklistedCommits = [
  */
 class CommitCrawler {
   constructor() {
-    this.remote =  path.join(__dirname, '../'); // local clone
+    this.remote = path.join(__dirname, '../'); // local clone
     this.path = path.join(__dirname, './stubprotocolrepo');
 
     if (!fs.existsSync(this.path)) {
@@ -89,7 +89,9 @@ class CommitCrawler {
     await wait();
     const commitlog = await git.log();
     // Remove any commits we don't want to deal with.
-    this.commitlogs = commitlog.all.filter(commit => !blacklistedCommits.includes(commit.hash));
+    this.commitlogs = commitlog.all.filter(
+      (commit) => !blacklistedCommits.includes(commit.hash),
+    );
 
     const max = Math.min(this.commitlogs.length, maxCommitsInChangelog);
 
@@ -111,19 +113,22 @@ class CommitCrawler {
 
       const gitdiff = await this.git.diff([previousCommit.hash, commit.hash, './pdl']);
       // log status
-      console.log(i, new Array(4 - i.toString().split('').length).fill(' ').join(''), commit.hash, gitdiff.length.toLocaleString().padStart(8));
+      console.log(
+        i,
+        new Array(4 - i.toString().split('').length).fill(' ').join(''),
+        commit.hash,
+        gitdiff.length.toLocaleString().padStart(8),
+      );
       Formatter.logCommit(previousCommit, commit, gitdiff);
     }
   }
 }
 
-(async function() {
-  try{
-    const crawler = new CommitCrawler();
-    await crawler.crawl();
-    fs.writeFileSync(path.join(__dirname, '../changelog.md'), results);
-    console.log('changelog.md updated');
-  } catch (e) {
-    console.error('changelog.md update FAILED', e);
-  }
-})();
+try {
+  const crawler = new CommitCrawler();
+  await crawler.crawl();
+  fs.writeFileSync(path.join(__dirname, '../changelog.md'), results);
+  console.log('changelog.md updated');
+} catch (e) {
+  console.error('changelog.md update FAILED', e);
+}

@@ -1,17 +1,27 @@
-import * as fs from 'fs'
-import * as path from 'path'
-import {IProtocol, Protocol as P} from './protocol-schema'
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+import type { IProtocol, Protocol as P } from './protocol-schema.d.ts';
+
 
 // TODO: @noj validate this via https://github.com/andischerer/typescript-json-typesafe against protocol-schema.d.ts
-const jsProtocol: IProtocol = require('../json/js_protocol.json')
-const browserProtocol: IProtocol = require('../json/browser_protocol.json')
-const protocolDomains: P.Domain[] = jsProtocol.domains.concat(browserProtocol.domains)
+import jsProtocolJson from '../json/js_protocol.json' with { type: 'json' }; 
+import browserProtocolJson from '../json/browser_protocol.json' with { type: 'json' }; 
 
-enum EventStyle {
-  REGULAR = 0,
+
+const jsProtocol = jsProtocolJson as IProtocol;
+const browserProtocol = browserProtocolJson as IProtocol;
+const protocolDomains: P.Domain[] = jsProtocol.domains.concat(
+    browserProtocol.domains,
+);
+
+
+const EventStyle = {
+  REGULAR: 0,
   // See https://crsrc.org/c/third_party/blink/web_tests/http/tests/inspector-protocol/resources/inspector-protocol-test.js;l=478?q=inspector-protocol-test.js&ss=chromium.
-  INSPECTOR_PROTOCOL_TESTS = 1,
-}
+  INSPECTOR_PROTOCOL_TESTS: 1,
+} as const;
+
+type EventStyleEnum = (typeof EventStyle)[keyof typeof EventStyle];
 
 let numIndents = 0
 let emitStr = ''
@@ -322,7 +332,7 @@ const emitMapping = (moduleName: string, protocolModuleName: string, domains: P.
     emitLine(`export default ${moduleName};`)
 }
 
-const emitApiCommand = (command: P.Command, domainName: string, modulePrefix: string, eventStyle: EventStyle) => {
+const emitApiCommand = (command: P.Command, domainName: string, modulePrefix: string, eventStyle: EventStyleEnum) => {
     const prefix = `${modulePrefix}.${domainName}.`
     emitDescription(command.description)
     const params = command.parameters ? `params: ${prefix}${toCmdRequestName(command.name)}` : ''
@@ -340,7 +350,7 @@ const emitApiCommand = (command: P.Command, domainName: string, modulePrefix: st
     emitLine()
 }
 
-const emitApiEvent = (event: P.Event, domainName: string, modulePrefix: string, eventStyle: EventStyle) => {
+const emitApiEvent = (event: P.Event, domainName: string, modulePrefix: string, eventStyle: EventStyleEnum) => {
     const prefix = `${modulePrefix}.${domainName}.`
     emitDescription(event.description)
     switch (eventStyle) {
@@ -360,7 +370,7 @@ const emitApiEvent = (event: P.Event, domainName: string, modulePrefix: string, 
     emitLine()
 }
 
-const emitDomainApi = (domain: P.Domain, modulePrefix: string, eventStyle: EventStyle) => {
+const emitDomainApi = (domain: P.Domain, modulePrefix: string, eventStyle: EventStyleEnum) => {
     emitLine()
     const domainName = toTitleCase(domain.domain)
     emitOpenBlock(`export interface ${domainName}Api`)
@@ -369,7 +379,7 @@ const emitDomainApi = (domain: P.Domain, modulePrefix: string, eventStyle: Event
     emitCloseBlock()
 }
 
-const emitApi = (moduleName: string, protocolModuleName: string, domains: P.Domain[], eventStyle = EventStyle.REGULAR) => {
+const emitApi = (moduleName: string, protocolModuleName: string, domains: P.Domain[], eventStyle: EventStyleEnum = EventStyle.REGULAR) => {
     moduleName = toTitleCase(moduleName)
     emitHeaderComments()
     emitLine(`import Protocol from './${protocolModuleName}'`)
@@ -403,23 +413,23 @@ const flushEmitToFile = (path: string) => {
 }
 
 // Main
-const destProtocolFilePath = `${__dirname}/../types/protocol.d.ts`
+const destProtocolFilePath = `${import.meta.dirname}/../types/protocol.d.ts`
 const protocolModuleName = path.basename(destProtocolFilePath, '.d.ts')
 emitModule(protocolModuleName, protocolDomains)
 flushEmitToFile(destProtocolFilePath)
 
-const destMappingFilePath = `${__dirname}/../types/protocol-mapping.d.ts`
+const destMappingFilePath = `${import.meta.dirname}/../types/protocol-mapping.d.ts`
 const mappingModuleName = 'ProtocolMapping'
 emitMapping(mappingModuleName, protocolModuleName, protocolDomains)
 flushEmitToFile(destMappingFilePath)
 
-const destApiFilePath = `${__dirname}/../types/protocol-proxy-api.d.ts`
+const destApiFilePath = `${import.meta.dirname}/../types/protocol-proxy-api.d.ts`
 const apiModuleName = 'ProtocolProxyApi'
 emitApi(apiModuleName, protocolModuleName, protocolDomains)
 flushEmitToFile(destApiFilePath)
 
 
-const destTestsApiFilePath = `${__dirname}/../types/protocol-tests-proxy-api.d.ts`
+const destTestsApiFilePath = `${import.meta.dirname}/../types/protocol-tests-proxy-api.d.ts`
 const testsApiModuleName = 'ProtocolTestsProxyApi'
 emitApi(testsApiModuleName, protocolModuleName, protocolDomains, EventStyle.INSPECTOR_PROTOCOL_TESTS);
 flushEmitToFile(destTestsApiFilePath)

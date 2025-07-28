@@ -2,14 +2,13 @@
   "private": true,
   "license": "SEE LICENSE IN https://chromium.googlesource.com/chromium/src/+/main/LICENSE",
   "scripts": {
-    "build-protocol-dts": "ts-node protocol-dts-generator.ts",
+    "build-protocol-dts": "node --experimental-strip-types --no-warnings=ExperimentalWarning protocol-dts-generator.ts",
     "type-check": "tsc -p tsconfig.json",
-    "changelog": "node generate-changelog.js"
+    "changelog": "node generate-changelog.mjs"
   },
   "devDependencies": {
-    "@types/node": "^9.6.0",
-    "simple-git": "^3.10.0",
-    "ts-node": "^7.0.0",
-    "typescript": "3.0.1"
+    "@types/node": "22.10.7",
+    "simple-git": "^3.28.0",
+    "typescript": "5.8.3"
   }
 }
