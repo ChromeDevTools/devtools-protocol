@@ -178,6 +178,9 @@ export namespace ProtocolTestsProxyApi {
          */
         getScriptSource(params: Protocol.Debugger.GetScriptSourceRequest): Promise<{id: number, result: Protocol.Debugger.GetScriptSourceResponse, sessionId: string}>;
 
+        /**
+         * @experimental
+         */
         disassembleWasmModule(params: Protocol.Debugger.DisassembleWasmModuleRequest): Promise<{id: number, result: Protocol.Debugger.DisassembleWasmModuleResponse, sessionId: string}>;
 
         /**
@@ -185,16 +188,19 @@ export namespace ProtocolTestsProxyApi {
          * stream. If disassembly is complete, this API will invalidate the streamId
          * and return an empty chunk. Any subsequent calls for the now invalid stream
          * will return errors.
+         * @experimental
          */
         nextWasmDisassemblyChunk(params: Protocol.Debugger.NextWasmDisassemblyChunkRequest): Promise<{id: number, result: Protocol.Debugger.NextWasmDisassemblyChunkResponse, sessionId: string}>;
 
         /**
          * This command is deprecated. Use getScriptSource instead.
+         * @deprecated
          */
         getWasmBytecode(params: Protocol.Debugger.GetWasmBytecodeRequest): Promise<{id: number, result: Protocol.Debugger.GetWasmBytecodeResponse, sessionId: string}>;
 
         /**
          * Returns stack trace with given `stackTraceId`.
+         * @experimental
          */
         getStackTrace(params: Protocol.Debugger.GetStackTraceRequest): Promise<{id: number, result: Protocol.Debugger.GetStackTraceResponse, sessionId: string}>;
 
@@ -203,6 +209,10 @@ export namespace ProtocolTestsProxyApi {
          */
         pause(): Promise<{id: number, result: void, sessionId: string}>;
 
+        /**
+         * @deprecated
+         * @experimental
+         */
         pauseOnAsyncCall(params: Protocol.Debugger.PauseOnAsyncCallRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
@@ -246,6 +256,7 @@ export namespace ProtocolTestsProxyApi {
          * Replace previous blackbox execution contexts with passed ones. Forces backend to skip
          * stepping/pausing in scripts in these execution contexts. VM will try to leave blackboxed script by
          * performing 'step in' several times, finally resorting to 'step out' if unsuccessful.
+         * @experimental
          */
         setBlackboxExecutionContexts(params: Protocol.Debugger.SetBlackboxExecutionContextsRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -253,6 +264,7 @@ export namespace ProtocolTestsProxyApi {
          * Replace previous blackbox patterns with passed ones. Forces backend to skip stepping/pausing in
          * scripts with url matching one of the patterns. VM will try to leave blackboxed script by
          * performing 'step in' several times, finally resorting to 'step out' if unsuccessful.
+         * @experimental
          */
         setBlackboxPatterns(params: Protocol.Debugger.SetBlackboxPatternsRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -261,6 +273,7 @@ export namespace ProtocolTestsProxyApi {
          * scripts by performing 'step in' several times, finally resorting to 'step out' if unsuccessful.
          * Positions array contains positions where blackbox state is changed. First interval isn't
          * blackboxed. Array should be sorted.
+         * @experimental
          */
         setBlackboxedRanges(params: Protocol.Debugger.SetBlackboxedRangesRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -286,6 +299,7 @@ export namespace ProtocolTestsProxyApi {
          * Sets JavaScript breakpoint before each call to the given function.
          * If another function was created from the same source as a given one,
          * calling it will also trigger the breakpoint.
+         * @experimental
          */
         setBreakpointOnFunctionCall(params: Protocol.Debugger.SetBreakpointOnFunctionCallRequest): Promise<{id: number, result: Protocol.Debugger.SetBreakpointOnFunctionCallResponse, sessionId: string}>;
 
@@ -302,6 +316,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Changes return value in top frame. Available only at return break position.
+         * @experimental
          */
         setReturnValue(params: Protocol.Debugger.SetReturnValueRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -345,6 +360,7 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Fired when breakpoint is resolved to an actual script and location.
          * Deprecated in favor of `resolvedBreakpoints` in the `scriptParsed` event.
+         * @deprecated
          */
         onBreakpointResolved(listener: (event: { params: Protocol.Debugger.BreakpointResolvedEvent }) => void): void;
         offBreakpointResolved(listener: (event: { params: Protocol.Debugger.BreakpointResolvedEvent }) => void): void;
@@ -495,6 +511,7 @@ export namespace ProtocolTestsProxyApi {
          * `takePreciseCoverage` for the current isolate. May only be sent if precise code
          * coverage has been started. This event can be trigged by the embedder to, for example,
          * trigger collection of coverage data immediately at a certain point in time.
+         * @experimental
          */
         onPreciseCoverageDeltaUpdate(listener: (event: { params: Protocol.Profiler.PreciseCoverageDeltaUpdateEvent }) => void): void;
         offPreciseCoverageDeltaUpdate(listener: (event: { params: Protocol.Profiler.PreciseCoverageDeltaUpdateEvent }) => void): void;
@@ -543,12 +560,14 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Returns the isolate id.
+         * @experimental
          */
         getIsolateId(): Promise<{id: number, result: Protocol.Runtime.GetIsolateIdResponse, sessionId: string}>;
 
         /**
          * Returns the JavaScript heap usage.
          * It is the total usage of the corresponding isolate not scoped to a particular Runtime.
+         * @experimental
          */
         getHeapUsage(): Promise<{id: number, result: Protocol.Runtime.GetHeapUsageResponse, sessionId: string}>;
 
@@ -590,13 +609,20 @@ export namespace ProtocolTestsProxyApi {
          */
         setAsyncCallStackDepth(params: Protocol.Runtime.SetAsyncCallStackDepthRequest): Promise<{id: number, result: void, sessionId: string}>;
 
+        /**
+         * @experimental
+         */
         setCustomObjectFormatterEnabled(params: Protocol.Runtime.SetCustomObjectFormatterEnabledRequest): Promise<{id: number, result: void, sessionId: string}>;
 
+        /**
+         * @experimental
+         */
         setMaxCallStackSizeToCapture(params: Protocol.Runtime.SetMaxCallStackSizeToCaptureRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Terminate current or next JavaScript execution.
          * Will cancel the termination when the outer-most script execution ends.
+         * @experimental
          */
         terminateExecution(): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -622,11 +648,13 @@ export namespace ProtocolTestsProxyApi {
          * Note that the stackTrace portion of the resulting exceptionDetails will
          * only be populated if the Runtime domain was enabled at the time when the
          * Error was thrown.
+         * @experimental
          */
         getExceptionDetails(params: Protocol.Runtime.GetExceptionDetailsRequest): Promise<{id: number, result: Protocol.Runtime.GetExceptionDetailsResponse, sessionId: string}>;
 
         /**
          * Notification is issued every time when binding is called.
+         * @experimental
          */
         onBindingCalled(listener: (event: { params: Protocol.Runtime.BindingCalledEvent }) => void): void;
         offBindingCalled(listener: (event: { params: Protocol.Runtime.BindingCalledEvent }) => void): void;
@@ -706,29 +734,34 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fetches the accessibility node and partial accessibility tree for this DOM node, if it exists.
+         * @experimental
          */
         getPartialAXTree(params: Protocol.Accessibility.GetPartialAXTreeRequest): Promise<{id: number, result: Protocol.Accessibility.GetPartialAXTreeResponse, sessionId: string}>;
 
         /**
          * Fetches the entire accessibility tree for the root Document
+         * @experimental
          */
         getFullAXTree(params: Protocol.Accessibility.GetFullAXTreeRequest): Promise<{id: number, result: Protocol.Accessibility.GetFullAXTreeResponse, sessionId: string}>;
 
         /**
          * Fetches the root node.
          * Requires `enable()` to have been called previously.
+         * @experimental
          */
         getRootAXNode(params: Protocol.Accessibility.GetRootAXNodeRequest): Promise<{id: number, result: Protocol.Accessibility.GetRootAXNodeResponse, sessionId: string}>;
 
         /**
          * Fetches a node and all ancestors up to and including the root.
          * Requires `enable()` to have been called previously.
+         * @experimental
          */
         getAXNodeAndAncestors(params: Protocol.Accessibility.GetAXNodeAndAncestorsRequest): Promise<{id: number, result: Protocol.Accessibility.GetAXNodeAndAncestorsResponse, sessionId: string}>;
 
         /**
          * Fetches a particular accessibility node by AXNodeId.
          * Requires `enable()` to have been called previously.
+         * @experimental
          */
         getChildAXNodes(params: Protocol.Accessibility.GetChildAXNodesRequest): Promise<{id: number, result: Protocol.Accessibility.GetChildAXNodesResponse, sessionId: string}>;
 
@@ -738,12 +771,14 @@ export namespace ProtocolTestsProxyApi {
          * ignored for accessibility, and returns those that match the specified name and role. If no DOM
          * node is specified, or the DOM node does not exist, the command returns an error. If neither
          * `accessibleName` or `role` is specified, it returns all the accessibility nodes in the subtree.
+         * @experimental
          */
         queryAXTree(params: Protocol.Accessibility.QueryAXTreeRequest): Promise<{id: number, result: Protocol.Accessibility.QueryAXTreeResponse, sessionId: string}>;
 
         /**
          * The loadComplete event mirrors the load complete event sent by the browser to assistive
          * technology when the web page has finished loading.
+         * @experimental
          */
         onLoadComplete(listener: (event: { params: Protocol.Accessibility.LoadCompleteEvent }) => void): void;
         offLoadComplete(listener: (event: { params: Protocol.Accessibility.LoadCompleteEvent }) => void): void;
@@ -751,6 +786,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * The nodesUpdated event is sent every time a previously requested node has changed the in tree.
+         * @experimental
          */
         onNodesUpdated(listener: (event: { params: Protocol.Accessibility.NodesUpdatedEvent }) => void): void;
         offNodesUpdated(listener: (event: { params: Protocol.Accessibility.NodesUpdatedEvent }) => void): void;
@@ -988,11 +1024,13 @@ export namespace ProtocolTestsProxyApi {
     export interface BrowserApi {
         /**
          * Set permission settings for given origin.
+         * @experimental
          */
         setPermission(params: Protocol.Browser.SetPermissionRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Grant specific permissions to the given origin and reject all others.
+         * @experimental
          */
         grantPermissions(params: Protocol.Browser.GrantPermissionsRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -1003,11 +1041,13 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Set the behavior when downloading a file.
+         * @experimental
          */
         setDownloadBehavior(params: Protocol.Browser.SetDownloadBehaviorRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Cancel a download if in progress
+         * @experimental
          */
         cancelDownload(params: Protocol.Browser.CancelDownloadRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -1018,11 +1058,13 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Crashes browser on the main thread.
+         * @experimental
          */
         crash(): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Crashes GPU process.
+         * @experimental
          */
         crashGpuProcess(): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -1034,46 +1076,55 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Returns the command line switches for the browser process if, and only if
          * --enable-automation is on the commandline.
+         * @experimental
          */
         getBrowserCommandLine(): Promise<{id: number, result: Protocol.Browser.GetBrowserCommandLineResponse, sessionId: string}>;
 
         /**
          * Get Chrome histograms.
+         * @experimental
          */
         getHistograms(params: Protocol.Browser.GetHistogramsRequest): Promise<{id: number, result: Protocol.Browser.GetHistogramsResponse, sessionId: string}>;
 
         /**
          * Get a Chrome histogram by name.
+         * @experimental
          */
         getHistogram(params: Protocol.Browser.GetHistogramRequest): Promise<{id: number, result: Protocol.Browser.GetHistogramResponse, sessionId: string}>;
 
         /**
          * Get position and size of the browser window.
+         * @experimental
          */
         getWindowBounds(params: Protocol.Browser.GetWindowBoundsRequest): Promise<{id: number, result: Protocol.Browser.GetWindowBoundsResponse, sessionId: string}>;
 
         /**
          * Get the browser window that contains the devtools target.
+         * @experimental
          */
         getWindowForTarget(params: Protocol.Browser.GetWindowForTargetRequest): Promise<{id: number, result: Protocol.Browser.GetWindowForTargetResponse, sessionId: string}>;
 
         /**
          * Set position and/or size of the browser window.
+         * @experimental
          */
         setWindowBounds(params: Protocol.Browser.SetWindowBoundsRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Set size of the browser contents resizing browser window as necessary.
+         * @experimental
          */
         setContentsSize(params: Protocol.Browser.SetContentsSizeRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Set dock tile details, platform-specific.
+         * @experimental
          */
         setDockTile(params: Protocol.Browser.SetDockTileRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Invoke custom browser commands used by telemetry.
+         * @experimental
          */
         executeBrowserCommand(params: Protocol.Browser.ExecuteBrowserCommandRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -1093,6 +1144,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when page is about to start a download.
+         * @experimental
          */
         onDownloadWillBegin(listener: (event: { params: Protocol.Browser.DownloadWillBeginEvent }) => void): void;
         offDownloadWillBegin(listener: (event: { params: Protocol.Browser.DownloadWillBeginEvent }) => void): void;
@@ -1100,6 +1152,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when download makes progress. Last call has |done| == true.
+         * @experimental
          */
         onDownloadProgress(listener: (event: { params: Protocol.Browser.DownloadProgressEvent }) => void): void;
         offDownloadProgress(listener: (event: { params: Protocol.Browser.DownloadProgressEvent }) => void): void;
@@ -1163,9 +1216,13 @@ export namespace ProtocolTestsProxyApi {
          * to the provided property syntax, the value is parsed using combined
          * syntax as if null `propertyName` was provided. If the value cannot be
          * resolved even then, return the provided value without any changes.
+         * @experimental
          */
         resolveValues(params: Protocol.CSS.ResolveValuesRequest): Promise<{id: number, result: Protocol.CSS.ResolveValuesResponse, sessionId: string}>;
 
+        /**
+         * @experimental
+         */
         getLonghandProperties(params: Protocol.CSS.GetLonghandPropertiesRequest): Promise<{id: number, result: Protocol.CSS.GetLonghandPropertiesResponse, sessionId: string}>;
 
         /**
@@ -1177,6 +1234,7 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Returns the styles coming from animations & transitions
          * including the animation & transition styles coming from inheritance chain.
+         * @experimental
          */
         getAnimatedStylesForNode(params: Protocol.CSS.GetAnimatedStylesForNodeRequest): Promise<{id: number, result: Protocol.CSS.GetAnimatedStylesForNodeResponse, sessionId: string}>;
 
@@ -1187,6 +1245,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Returns the values of the default UA-defined environment variables used in env()
+         * @experimental
          */
         getEnvironmentVariables(): Promise<{id: number, result: Protocol.CSS.GetEnvironmentVariablesResponse, sessionId: string}>;
 
@@ -1211,12 +1270,14 @@ export namespace ProtocolTestsProxyApi {
          * Given a DOM element identified by nodeId, getLayersForNode returns the root
          * layer for the nearest ancestor document or shadow root. The layer root contains
          * the full layer tree for the tree scope and their ordering.
+         * @experimental
          */
         getLayersForNode(params: Protocol.CSS.GetLayersForNodeRequest): Promise<{id: number, result: Protocol.CSS.GetLayersForNodeResponse, sessionId: string}>;
 
         /**
          * Given a CSS selector text and a style sheet ID, getLocationForSelector
          * returns an array of locations of the CSS selector in the style sheet.
+         * @experimental
          */
         getLocationForSelector(params: Protocol.CSS.GetLocationForSelectorRequest): Promise<{id: number, result: Protocol.CSS.GetLocationForSelectorResponse, sessionId: string}>;
 
@@ -1227,6 +1288,7 @@ export namespace ProtocolTestsProxyApi {
          * There can only be 1 node tracked for computed style updates
          * so passing a new node id removes tracking from the previous node.
          * Pass `undefined` to disable tracking.
+         * @experimental
          */
         trackComputedStyleUpdatesForNode(params: Protocol.CSS.TrackComputedStyleUpdatesForNodeRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -1237,11 +1299,13 @@ export namespace ProtocolTestsProxyApi {
          * The changes to computed style properties are only tracked for nodes pushed to the front-end
          * by the DOM agent. If no changes to the tracked properties occur after the node has been pushed
          * to the front-end, no updates will be issued for the node.
+         * @experimental
          */
         trackComputedStyleUpdates(params: Protocol.CSS.TrackComputedStyleUpdatesRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Polls the next batch of computed style updates.
+         * @experimental
          */
         takeComputedStyleUpdates(): Promise<{id: number, result: Protocol.CSS.TakeComputedStyleUpdatesResponse, sessionId: string}>;
 
@@ -1268,16 +1332,19 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Modifies the expression of a container query.
+         * @experimental
          */
         setContainerQueryText(params: Protocol.CSS.SetContainerQueryTextRequest): Promise<{id: number, result: Protocol.CSS.SetContainerQueryTextResponse, sessionId: string}>;
 
         /**
          * Modifies the expression of a supports at-rule.
+         * @experimental
          */
         setSupportsText(params: Protocol.CSS.SetSupportsTextRequest): Promise<{id: number, result: Protocol.CSS.SetSupportsTextResponse, sessionId: string}>;
 
         /**
          * Modifies the expression of a scope at-rule.
+         * @experimental
          */
         setScopeText(params: Protocol.CSS.SetScopeTextRequest): Promise<{id: number, result: Protocol.CSS.SetScopeTextResponse, sessionId: string}>;
 
@@ -1315,6 +1382,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Enables/disables rendering of local CSS fonts (enabled by default).
+         * @experimental
          */
         setLocalFontsEnabled(params: Protocol.CSS.SetLocalFontsEnabledRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -1355,6 +1423,9 @@ export namespace ProtocolTestsProxyApi {
         offStyleSheetRemoved(listener: (event: { params: Protocol.CSS.StyleSheetRemovedEvent }) => void): void;
         onceStyleSheetRemoved(eventMatcher?: (event: { params: Protocol.CSS.StyleSheetRemovedEvent }) => boolean): Promise<{ params: Protocol.CSS.StyleSheetRemovedEvent }>;
 
+        /**
+         * @experimental
+         */
         onComputedStyleUpdated(listener: (event: { params: Protocol.CSS.ComputedStyleUpdatedEvent }) => void): void;
         offComputedStyleUpdated(listener: (event: { params: Protocol.CSS.ComputedStyleUpdatedEvent }) => void): void;
         onceComputedStyleUpdated(eventMatcher?: (event: { params: Protocol.CSS.ComputedStyleUpdatedEvent }) => boolean): Promise<{ params: Protocol.CSS.ComputedStyleUpdatedEvent }>;
@@ -1446,12 +1517,14 @@ export namespace ProtocolTestsProxyApi {
     export interface DOMApi {
         /**
          * Collects class names for the node with given id and all of it's child nodes.
+         * @experimental
          */
         collectClassNamesFromSubtree(params: Protocol.DOM.CollectClassNamesFromSubtreeRequest): Promise<{id: number, result: Protocol.DOM.CollectClassNamesFromSubtreeResponse, sessionId: string}>;
 
         /**
          * Creates a deep copy of the specified node and places it into the target container before the
          * given anchor.
+         * @experimental
          */
         copyTo(params: Protocol.DOM.CopyToRequest): Promise<{id: number, result: Protocol.DOM.CopyToResponse, sessionId: string}>;
 
@@ -1476,6 +1549,7 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Discards search results from the session with the given id. `getSearchResults` should no longer
          * be called for that search.
+         * @experimental
          */
         discardSearchResults(params: Protocol.DOM.DiscardSearchResultsRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -1502,6 +1576,7 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Returns quads that describe node position on the page. This method
          * might return multiple quads for inline nodes.
+         * @experimental
          */
         getContentQuads(params: Protocol.DOM.GetContentQuadsRequest): Promise<{id: number, result: Protocol.DOM.GetContentQuadsResponse, sessionId: string}>;
 
@@ -1515,11 +1590,13 @@ export namespace ProtocolTestsProxyApi {
          * Returns the root DOM node (and optionally the subtree) to the caller.
          * Deprecated, as it is not designed to work well with the rest of the DOM agent.
          * Use DOMSnapshot.captureSnapshot instead.
+         * @deprecated
          */
         getFlattenedDocument(params: Protocol.DOM.GetFlattenedDocumentRequest): Promise<{id: number, result: Protocol.DOM.GetFlattenedDocumentResponse, sessionId: string}>;
 
         /**
          * Finds nodes with a given computed style in a subtree.
+         * @experimental
          */
         getNodesForSubtreeByStyle(params: Protocol.DOM.GetNodesForSubtreeByStyleRequest): Promise<{id: number, result: Protocol.DOM.GetNodesForSubtreeByStyleResponse, sessionId: string}>;
 
@@ -1536,12 +1613,14 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Returns the id of the nearest ancestor that is a relayout boundary.
+         * @experimental
          */
         getRelayoutBoundary(params: Protocol.DOM.GetRelayoutBoundaryRequest): Promise<{id: number, result: Protocol.DOM.GetRelayoutBoundaryResponse, sessionId: string}>;
 
         /**
          * Returns search results from given `fromIndex` to given `toIndex` from the search with the given
          * identifier.
+         * @experimental
          */
         getSearchResults(params: Protocol.DOM.GetSearchResultsRequest): Promise<{id: number, result: Protocol.DOM.GetSearchResultsResponse, sessionId: string}>;
 
@@ -1562,6 +1641,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Marks last undoable state.
+         * @experimental
          */
         markUndoableState(): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -1573,16 +1653,19 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Searches for a given string in the DOM tree. Use `getSearchResults` to access search results or
          * `cancelSearch` to end this search session.
+         * @experimental
          */
         performSearch(params: Protocol.DOM.PerformSearchRequest): Promise<{id: number, result: Protocol.DOM.PerformSearchResponse, sessionId: string}>;
 
         /**
          * Requests that the node is sent to the caller given its path. // FIXME, use XPath
+         * @experimental
          */
         pushNodeByPathToFrontend(params: Protocol.DOM.PushNodeByPathToFrontendRequest): Promise<{id: number, result: Protocol.DOM.PushNodeByPathToFrontendResponse, sessionId: string}>;
 
         /**
          * Requests that a batch of nodes is sent to the caller given their backend node ids.
+         * @experimental
          */
         pushNodesByBackendIdsToFrontend(params: Protocol.DOM.PushNodesByBackendIdsToFrontendRequest): Promise<{id: number, result: Protocol.DOM.PushNodesByBackendIdsToFrontendResponse, sessionId: string}>;
 
@@ -1600,16 +1683,19 @@ export namespace ProtocolTestsProxyApi {
          * Returns NodeIds of current top layer elements.
          * Top layer is rendered closest to the user within a viewport, therefore its elements always
          * appear on top of all other content.
+         * @experimental
          */
         getTopLayerElements(): Promise<{id: number, result: Protocol.DOM.GetTopLayerElementsResponse, sessionId: string}>;
 
         /**
          * Returns the NodeId of the matched element according to certain relations.
+         * @experimental
          */
         getElementByRelation(params: Protocol.DOM.GetElementByRelationRequest): Promise<{id: number, result: Protocol.DOM.GetElementByRelationResponse, sessionId: string}>;
 
         /**
          * Re-does the last undone action.
+         * @experimental
          */
         redo(): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -1660,28 +1746,33 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Sets if stack traces should be captured for Nodes. See `Node.getNodeStackTraces`. Default is disabled.
+         * @experimental
          */
         setNodeStackTracesEnabled(params: Protocol.DOM.SetNodeStackTracesEnabledRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Gets stack traces associated with a Node. As of now, only provides stack trace for Node creation.
+         * @experimental
          */
         getNodeStackTraces(params: Protocol.DOM.GetNodeStackTracesRequest): Promise<{id: number, result: Protocol.DOM.GetNodeStackTracesResponse, sessionId: string}>;
 
         /**
          * Returns file information for the given
          * File wrapper.
+         * @experimental
          */
         getFileInfo(params: Protocol.DOM.GetFileInfoRequest): Promise<{id: number, result: Protocol.DOM.GetFileInfoResponse, sessionId: string}>;
 
         /**
          * Returns list of detached nodes
+         * @experimental
          */
         getDetachedDomNodes(): Promise<{id: number, result: Protocol.DOM.GetDetachedDomNodesResponse, sessionId: string}>;
 
         /**
          * Enables console to refer to the node with given id via $x (see Command Line API for more details
          * $x functions).
+         * @experimental
          */
         setInspectedNode(params: Protocol.DOM.SetInspectedNodeRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -1702,11 +1793,13 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Undoes the last performed action.
+         * @experimental
          */
         undo(): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Returns iframe node that owns iframe with the given domain.
+         * @experimental
          */
         getFrameOwner(params: Protocol.DOM.GetFrameOwnerRequest): Promise<{id: number, result: Protocol.DOM.GetFrameOwnerResponse, sessionId: string}>;
 
@@ -1716,24 +1809,28 @@ export namespace ProtocolTestsProxyApi {
          * scroll-state or anchored elements. If no axes are provided and
          * queriesScrollState is false, the style container is returned, which is the
          * direct parent or the closest element with a matching container-name.
+         * @experimental
          */
         getContainerForNode(params: Protocol.DOM.GetContainerForNodeRequest): Promise<{id: number, result: Protocol.DOM.GetContainerForNodeResponse, sessionId: string}>;
 
         /**
          * Returns the descendants of a container query container that have
          * container queries against this container.
+         * @experimental
          */
         getQueryingDescendantsForContainer(params: Protocol.DOM.GetQueryingDescendantsForContainerRequest): Promise<{id: number, result: Protocol.DOM.GetQueryingDescendantsForContainerResponse, sessionId: string}>;
 
         /**
          * Returns the target anchor element of the given anchor query according to
          * https://www.w3.org/TR/css-anchor-position-1/#target.
+         * @experimental
          */
         getAnchorElement(params: Protocol.DOM.GetAnchorElementRequest): Promise<{id: number, result: Protocol.DOM.GetAnchorElementResponse, sessionId: string}>;
 
         /**
          * When enabling, this API force-opens the popover identified by nodeId
          * and keeps it open until disabled.
+         * @experimental
          */
         forceShowPopover(params: Protocol.DOM.ForceShowPopoverRequest): Promise<{id: number, result: Protocol.DOM.ForceShowPopoverResponse, sessionId: string}>;
 
@@ -1781,6 +1878,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Called when distribution is changed.
+         * @experimental
          */
         onDistributedNodesUpdated(listener: (event: { params: Protocol.DOM.DistributedNodesUpdatedEvent }) => void): void;
         offDistributedNodesUpdated(listener: (event: { params: Protocol.DOM.DistributedNodesUpdatedEvent }) => void): void;
@@ -1795,6 +1893,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when `Element`'s inline style is modified via a CSS property modification.
+         * @experimental
          */
         onInlineStyleInvalidated(listener: (event: { params: Protocol.DOM.InlineStyleInvalidatedEvent }) => void): void;
         offInlineStyleInvalidated(listener: (event: { params: Protocol.DOM.InlineStyleInvalidatedEvent }) => void): void;
@@ -1802,6 +1901,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Called when a pseudo element is added to an element.
+         * @experimental
          */
         onPseudoElementAdded(listener: (event: { params: Protocol.DOM.PseudoElementAddedEvent }) => void): void;
         offPseudoElementAdded(listener: (event: { params: Protocol.DOM.PseudoElementAddedEvent }) => void): void;
@@ -1809,6 +1909,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Called when top layer elements are changed.
+         * @experimental
          */
         onTopLayerElementsUpdated(listener: () => void): void;
         offTopLayerElementsUpdated(listener: () => void): void;
@@ -1816,6 +1917,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when a node's scrollability state changes.
+         * @experimental
          */
         onScrollableFlagUpdated(listener: (event: { params: Protocol.DOM.ScrollableFlagUpdatedEvent }) => void): void;
         offScrollableFlagUpdated(listener: (event: { params: Protocol.DOM.ScrollableFlagUpdatedEvent }) => void): void;
@@ -1823,6 +1925,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Called when a pseudo element is removed from an element.
+         * @experimental
          */
         onPseudoElementRemoved(listener: (event: { params: Protocol.DOM.PseudoElementRemovedEvent }) => void): void;
         offPseudoElementRemoved(listener: (event: { params: Protocol.DOM.PseudoElementRemovedEvent }) => void): void;
@@ -1838,6 +1941,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Called when shadow root is popped from the element.
+         * @experimental
          */
         onShadowRootPopped(listener: (event: { params: Protocol.DOM.ShadowRootPoppedEvent }) => void): void;
         offShadowRootPopped(listener: (event: { params: Protocol.DOM.ShadowRootPoppedEvent }) => void): void;
@@ -1845,6 +1949,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Called when shadow root is pushed into the element.
+         * @experimental
          */
         onShadowRootPushed(listener: (event: { params: Protocol.DOM.ShadowRootPushedEvent }) => void): void;
         offShadowRootPushed(listener: (event: { params: Protocol.DOM.ShadowRootPushedEvent }) => void): void;
@@ -1870,6 +1975,8 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Removes breakpoint on particular native event.
+         * @deprecated
+         * @experimental
          */
         removeInstrumentationBreakpoint(params: Protocol.DOMDebugger.RemoveInstrumentationBreakpointRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -1880,6 +1987,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Sets breakpoint on particular CSP violations.
+         * @experimental
          */
         setBreakOnCSPViolation(params: Protocol.DOMDebugger.SetBreakOnCSPViolationRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -1895,6 +2003,8 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Sets breakpoint on particular native event.
+         * @deprecated
+         * @experimental
          */
         setInstrumentationBreakpoint(params: Protocol.DOMDebugger.SetInstrumentationBreakpointRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -1939,6 +2049,7 @@ export namespace ProtocolTestsProxyApi {
          * template contents, and imported documents) in a flattened array, as well as layout and
          * white-listed computed style information for the nodes. Shadow DOM in the returned DOM tree is
          * flattened.
+         * @deprecated
          */
         getSnapshot(params: Protocol.DOMSnapshot.GetSnapshotRequest): Promise<{id: number, result: Protocol.DOMSnapshot.GetSnapshotResponse, sessionId: string}>;
 
@@ -2005,6 +2116,7 @@ export namespace ProtocolTestsProxyApi {
     export interface EmulationApi {
         /**
          * Tells whether emulation is supported.
+         * @deprecated
          */
         canEmulate(): Promise<{id: number, result: Protocol.Emulation.CanEmulateResponse, sessionId: string}>;
 
@@ -2020,16 +2132,19 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Requests that page scale factor is reset to initial values.
+         * @experimental
          */
         resetPageScaleFactor(): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Enables or disables simulating a focused and active page.
+         * @experimental
          */
         setFocusEmulationEnabled(params: Protocol.Emulation.SetFocusEmulationEnabledRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Automatically render all web contents using a dark theme.
+         * @experimental
          */
         setAutoDarkModeOverride(params: Protocol.Emulation.SetAutoDarkModeOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -2047,6 +2162,7 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Overrides the values for env(safe-area-inset-*) and env(safe-area-max-inset-*). Unset values will cause the
          * respective variables to be undefined, even if previously overridden.
+         * @experimental
          */
         setSafeAreaInsetsOverride(params: Protocol.Emulation.SetSafeAreaInsetsOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -2060,6 +2176,7 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Start reporting the given posture value to the Device Posture API.
          * This override can also be set in setDeviceMetricsOverride().
+         * @experimental
          */
         setDevicePostureOverride(params: Protocol.Emulation.SetDevicePostureOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -2068,12 +2185,14 @@ export namespace ProtocolTestsProxyApi {
          * or setDevicePostureOverride() and starts using posture information from the
          * platform again.
          * Does nothing if no override is set.
+         * @experimental
          */
         clearDevicePostureOverride(): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Start using the given display features to pupulate the Viewport Segments API.
          * This override can also be set in setDeviceMetricsOverride().
+         * @experimental
          */
         setDisplayFeaturesOverride(params: Protocol.Emulation.SetDisplayFeaturesOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -2082,13 +2201,23 @@ export namespace ProtocolTestsProxyApi {
          * or setDisplayFeaturesOverride() and starts using display features from the
          * platform again.
          * Does nothing if no override is set.
+         * @experimental
          */
         clearDisplayFeaturesOverride(): Promise<{id: number, result: void, sessionId: string}>;
 
+        /**
+         * @experimental
+         */
         setScrollbarsHidden(params: Protocol.Emulation.SetScrollbarsHiddenRequest): Promise<{id: number, result: void, sessionId: string}>;
 
+        /**
+         * @experimental
+         */
         setDocumentCookieDisabled(params: Protocol.Emulation.SetDocumentCookieDisabledRequest): Promise<{id: number, result: void, sessionId: string}>;
 
+        /**
+         * @experimental
+         */
         setEmitTouchEventsForMouse(params: Protocol.Emulation.SetEmitTouchEventsForMouseRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
@@ -2112,6 +2241,9 @@ export namespace ProtocolTestsProxyApi {
          */
         setGeolocationOverride(params: Protocol.Emulation.SetGeolocationOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
 
+        /**
+         * @experimental
+         */
         getOverriddenSensorInformation(params: Protocol.Emulation.GetOverriddenSensorInformationRequest): Promise<{id: number, result: Protocol.Emulation.GetOverriddenSensorInformationResponse, sessionId: string}>;
 
         /**
@@ -2120,12 +2252,14 @@ export namespace ProtocolTestsProxyApi {
          * data from a real hardware sensor. Otherwise, existing virtual
          * sensor-backend Sensor objects will fire an error event and new calls to
          * Sensor.start() will attempt to use a real sensor instead.
+         * @experimental
          */
         setSensorOverrideEnabled(params: Protocol.Emulation.SetSensorOverrideEnabledRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Updates the sensor readings reported by a sensor type previously overridden
          * by setSensorOverrideEnabled.
+         * @experimental
          */
         setSensorOverrideReadings(params: Protocol.Emulation.SetSensorOverrideReadingsRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -2134,6 +2268,7 @@ export namespace ProtocolTestsProxyApi {
          * Pressure API, so that updates to PressureObserver.observe() are provided
          * via setPressureStateOverride instead of being retrieved from
          * platform-provided telemetry data.
+         * @experimental
          */
         setPressureSourceOverrideEnabled(params: Protocol.Emulation.SetPressureSourceOverrideEnabledRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -2142,6 +2277,7 @@ export namespace ProtocolTestsProxyApi {
          * Provides a given pressure state that will be processed and eventually be
          * delivered to PressureObserver users. |source| must have been previously
          * overridden by setPressureSourceOverrideEnabled.
+         * @experimental
          */
         setPressureStateOverride(params: Protocol.Emulation.SetPressureStateOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -2149,6 +2285,7 @@ export namespace ProtocolTestsProxyApi {
          * Provides a given pressure data set that will be processed and eventually be
          * delivered to PressureObserver users. |source| must have been previously
          * overridden by setPressureSourceOverrideEnabled.
+         * @experimental
          */
         setPressureDataOverride(params: Protocol.Emulation.SetPressureDataOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -2164,11 +2301,14 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Overrides value returned by the javascript navigator object.
+         * @deprecated
+         * @experimental
          */
         setNavigatorOverrides(params: Protocol.Emulation.SetNavigatorOverridesRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Sets a specified page scale factor.
+         * @experimental
          */
         setPageScaleFactor(params: Protocol.Emulation.SetPageScaleFactorRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -2185,11 +2325,13 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Turns on virtual time for all frames (replacing real-time with a synthetic time source) and sets
          * the current virtual time policy.  Note this supersedes any previous time budget.
+         * @experimental
          */
         setVirtualTimePolicy(params: Protocol.Emulation.SetVirtualTimePolicyRequest): Promise<{id: number, result: Protocol.Emulation.SetVirtualTimePolicyResponse, sessionId: string}>;
 
         /**
          * Overrides default host system locale with the specified one.
+         * @experimental
          */
         setLocaleOverride(params: Protocol.Emulation.SetLocaleOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -2202,16 +2344,25 @@ export namespace ProtocolTestsProxyApi {
          * Resizes the frame/viewport of the page. Note that this does not affect the frame's container
          * (e.g. browser window). Can be used to produce screenshots of the specified size. Not supported
          * on Android.
+         * @deprecated
+         * @experimental
          */
         setVisibleSize(params: Protocol.Emulation.SetVisibleSizeRequest): Promise<{id: number, result: void, sessionId: string}>;
 
+        /**
+         * @experimental
+         */
         setDisabledImageTypes(params: Protocol.Emulation.SetDisabledImageTypesRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Override the value of navigator.connection.saveData
+         * @experimental
          */
         setDataSaverOverride(params: Protocol.Emulation.SetDataSaverOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
 
+        /**
+         * @experimental
+         */
         setHardwareConcurrencyOverride(params: Protocol.Emulation.SetHardwareConcurrencyOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
@@ -2222,17 +2373,20 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Allows overriding the automation flag.
+         * @experimental
          */
         setAutomationOverride(params: Protocol.Emulation.SetAutomationOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Allows overriding the difference between the small and large viewport sizes, which determine the
          * value of the `svh` and `lvh` unit, respectively. Only supported for top-level frames.
+         * @experimental
          */
         setSmallViewportHeightDifferenceOverride(params: Protocol.Emulation.SetSmallViewportHeightDifferenceOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Notification sent after the virtual time budget for the current VirtualTimePolicy has run out.
+         * @experimental
          */
         onVirtualTimeBudgetExpired(listener: () => void): void;
         offVirtualTimeBudgetExpired(listener: () => void): void;
@@ -2251,11 +2405,13 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Disables headless events for the target.
+         * @deprecated
          */
         disable(): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Enables headless events for the target.
+         * @deprecated
          */
         enable(): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -2335,6 +2491,7 @@ export namespace ProtocolTestsProxyApi {
     export interface InputApi {
         /**
          * Dispatches a drag event into the page.
+         * @experimental
          */
         dispatchDragEvent(params: Protocol.Input.DispatchDragEventRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -2346,6 +2503,7 @@ export namespace ProtocolTestsProxyApi {
         /**
          * This method emulates inserting text that doesn't come from a key press,
          * for example an emoji keyboard or an IME.
+         * @experimental
          */
         insertText(params: Protocol.Input.InsertTextRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -2353,6 +2511,7 @@ export namespace ProtocolTestsProxyApi {
          * This method sets the current candidate text for IME.
          * Use imeCommitComposition to commit the final text.
          * Use imeSetComposition with empty string as text to cancel composition.
+         * @experimental
          */
         imeSetComposition(params: Protocol.Input.ImeSetCompositionRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -2373,6 +2532,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Emulates touch event from the mouse event parameters.
+         * @experimental
          */
         emulateTouchFromMouseEvent(params: Protocol.Input.EmulateTouchFromMouseEventRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -2384,27 +2544,32 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Prevents default drag and drop behavior and instead emits `Input.dragIntercepted` events.
          * Drag and drop behavior can be directly controlled via `Input.dispatchDragEvent`.
+         * @experimental
          */
         setInterceptDrags(params: Protocol.Input.SetInterceptDragsRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Synthesizes a pinch gesture over a time period by issuing appropriate touch events.
+         * @experimental
          */
         synthesizePinchGesture(params: Protocol.Input.SynthesizePinchGestureRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Synthesizes a scroll gesture over a time period by issuing appropriate touch events.
+         * @experimental
          */
         synthesizeScrollGesture(params: Protocol.Input.SynthesizeScrollGestureRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Synthesizes a tap gesture over a time period by issuing appropriate touch events.
+         * @experimental
          */
         synthesizeTapGesture(params: Protocol.Input.SynthesizeTapGestureRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Emitted only when `Input.setInterceptDrags` is enabled. Use this data with `Input.dispatchDragEvent` to
          * restore normal drag and drop behavior.
+         * @experimental
          */
         onDragIntercepted(listener: (event: { params: Protocol.Input.DragInterceptedEvent }) => void): void;
         offDragIntercepted(listener: (event: { params: Protocol.Input.DragInterceptedEvent }) => void): void;
@@ -2600,26 +2765,31 @@ export namespace ProtocolTestsProxyApi {
     export interface NetworkApi {
         /**
          * Sets a list of content encodings that will be accepted. Empty list means no encoding is accepted.
+         * @experimental
          */
         setAcceptedEncodings(params: Protocol.Network.SetAcceptedEncodingsRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Clears accepted encodings set by setAcceptedEncodings
+         * @experimental
          */
         clearAcceptedEncodingsOverride(): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Tells whether clearing browser cache is supported.
+         * @deprecated
          */
         canClearBrowserCache(): Promise<{id: number, result: Protocol.Network.CanClearBrowserCacheResponse, sessionId: string}>;
 
         /**
          * Tells whether clearing browser cookies is supported.
+         * @deprecated
          */
         canClearBrowserCookies(): Promise<{id: number, result: Protocol.Network.CanClearBrowserCookiesResponse, sessionId: string}>;
 
         /**
          * Tells whether emulation of network conditions is supported.
+         * @deprecated
          */
         canEmulateNetworkConditions(): Promise<{id: number, result: Protocol.Network.CanEmulateNetworkConditionsResponse, sessionId: string}>;
 
@@ -2639,6 +2809,8 @@ export namespace ProtocolTestsProxyApi {
          * fetch occurs as a result which encounters a redirect an additional Network.requestIntercepted
          * event will be sent with the same InterceptionId.
          * Deprecated, use Fetch.continueRequest, Fetch.fulfillRequest and Fetch.failRequest instead.
+         * @deprecated
+         * @experimental
          */
         continueInterceptedRequest(params: Protocol.Network.ContinueInterceptedRequestRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -2666,11 +2838,13 @@ export namespace ProtocolTestsProxyApi {
          * Returns all browser cookies. Depending on the backend support, will return detailed cookie
          * information in the `cookies` field.
          * Deprecated. Use Storage.getCookies instead.
+         * @deprecated
          */
         getAllCookies(): Promise<{id: number, result: Protocol.Network.GetAllCookiesResponse, sessionId: string}>;
 
         /**
          * Returns the DER-encoded certificate.
+         * @experimental
          */
         getCertificate(params: Protocol.Network.GetCertificateRequest): Promise<{id: number, result: Protocol.Network.GetCertificateResponse, sessionId: string}>;
 
@@ -2692,6 +2866,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Returns content served for the given currently intercepted request.
+         * @experimental
          */
         getResponseBodyForInterception(params: Protocol.Network.GetResponseBodyForInterceptionRequest): Promise<{id: number, result: Protocol.Network.GetResponseBodyForInterceptionResponse, sessionId: string}>;
 
@@ -2700,6 +2875,7 @@ export namespace ProtocolTestsProxyApi {
          * the intercepted request can't be continued as is -- you either need to cancel it or to provide
          * the response body. The stream only supports sequential read, IO.read will fail if the position
          * is specified.
+         * @experimental
          */
         takeResponseBodyForInterceptionAsStream(params: Protocol.Network.TakeResponseBodyForInterceptionAsStreamRequest): Promise<{id: number, result: Protocol.Network.TakeResponseBodyForInterceptionAsStreamResponse, sessionId: string}>;
 
@@ -2707,16 +2883,19 @@ export namespace ProtocolTestsProxyApi {
          * This method sends a new XMLHttpRequest which is identical to the original one. The following
          * parameters should be identical: method, url, async, request body, extra headers, withCredentials
          * attribute, user, password.
+         * @experimental
          */
         replayXHR(params: Protocol.Network.ReplayXHRRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Searches for given string in response content.
+         * @experimental
          */
         searchInResponseBody(params: Protocol.Network.SearchInResponseBodyRequest): Promise<{id: number, result: Protocol.Network.SearchInResponseBodyResponse, sessionId: string}>;
 
         /**
          * Blocks URLs from loading.
+         * @experimental
          */
         setBlockedURLs(params: Protocol.Network.SetBlockedURLsRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -2747,12 +2926,15 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Specifies whether to attach a page script stack id in requests
+         * @experimental
          */
         setAttachDebugStack(params: Protocol.Network.SetAttachDebugStackRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Sets the requests to intercept that match the provided patterns and optionally resource types.
          * Deprecated, please use Fetch.enable instead.
+         * @deprecated
+         * @experimental
          */
         setRequestInterception(params: Protocol.Network.SetRequestInterceptionRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -2764,28 +2946,33 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Enables streaming of the response for the given requestId.
          * If enabled, the dataReceived event contains the data that was received during streaming.
+         * @experimental
          */
         streamResourceContent(params: Protocol.Network.StreamResourceContentRequest): Promise<{id: number, result: Protocol.Network.StreamResourceContentResponse, sessionId: string}>;
 
         /**
          * Returns information about the COEP/COOP isolation status.
+         * @experimental
          */
         getSecurityIsolationStatus(params: Protocol.Network.GetSecurityIsolationStatusRequest): Promise<{id: number, result: Protocol.Network.GetSecurityIsolationStatusResponse, sessionId: string}>;
 
         /**
          * Enables tracking for the Reporting API, events generated by the Reporting API will now be delivered to the client.
          * Enabling triggers 'reportingApiReportAdded' for all existing reports.
+         * @experimental
          */
         enableReportingApi(params: Protocol.Network.EnableReportingApiRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Fetches the resource and returns the content.
+         * @experimental
          */
         loadNetworkResource(params: Protocol.Network.LoadNetworkResourceRequest): Promise<{id: number, result: Protocol.Network.LoadNetworkResourceResponse, sessionId: string}>;
 
         /**
          * Sets Controls for third-party cookie access
          * Page reload is required before the new cookie behavior will be observed
+         * @experimental
          */
         setCookieControls(params: Protocol.Network.SetCookieControlsRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -2821,6 +3008,8 @@ export namespace ProtocolTestsProxyApi {
          * Details of an intercepted HTTP request, which must be either allowed, blocked, modified or
          * mocked.
          * Deprecated, use Fetch.requestPaused instead.
+         * @deprecated
+         * @experimental
          */
         onRequestIntercepted(listener: (event: { params: Protocol.Network.RequestInterceptedEvent }) => void): void;
         offRequestIntercepted(listener: (event: { params: Protocol.Network.RequestInterceptedEvent }) => void): void;
@@ -2842,6 +3031,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when resource loading priority is changed
+         * @experimental
          */
         onResourceChangedPriority(listener: (event: { params: Protocol.Network.ResourceChangedPriorityEvent }) => void): void;
         offResourceChangedPriority(listener: (event: { params: Protocol.Network.ResourceChangedPriorityEvent }) => void): void;
@@ -2849,6 +3039,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when a signed exchange was received over the network
+         * @experimental
          */
         onSignedExchangeReceived(listener: (event: { params: Protocol.Network.SignedExchangeReceivedEvent }) => void): void;
         offSignedExchangeReceived(listener: (event: { params: Protocol.Network.SignedExchangeReceivedEvent }) => void): void;
@@ -2933,6 +3124,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired upon direct_socket.TCPSocket creation.
+         * @experimental
          */
         onDirectTCPSocketCreated(listener: (event: { params: Protocol.Network.DirectTCPSocketCreatedEvent }) => void): void;
         offDirectTCPSocketCreated(listener: (event: { params: Protocol.Network.DirectTCPSocketCreatedEvent }) => void): void;
@@ -2940,6 +3132,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when direct_socket.TCPSocket connection is opened.
+         * @experimental
          */
         onDirectTCPSocketOpened(listener: (event: { params: Protocol.Network.DirectTCPSocketOpenedEvent }) => void): void;
         offDirectTCPSocketOpened(listener: (event: { params: Protocol.Network.DirectTCPSocketOpenedEvent }) => void): void;
@@ -2947,6 +3140,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when direct_socket.TCPSocket is aborted.
+         * @experimental
          */
         onDirectTCPSocketAborted(listener: (event: { params: Protocol.Network.DirectTCPSocketAbortedEvent }) => void): void;
         offDirectTCPSocketAborted(listener: (event: { params: Protocol.Network.DirectTCPSocketAbortedEvent }) => void): void;
@@ -2954,6 +3148,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when direct_socket.TCPSocket is closed.
+         * @experimental
          */
         onDirectTCPSocketClosed(listener: (event: { params: Protocol.Network.DirectTCPSocketClosedEvent }) => void): void;
         offDirectTCPSocketClosed(listener: (event: { params: Protocol.Network.DirectTCPSocketClosedEvent }) => void): void;
@@ -2961,6 +3156,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when data is sent to tcp direct socket stream.
+         * @experimental
          */
         onDirectTCPSocketChunkSent(listener: (event: { params: Protocol.Network.DirectTCPSocketChunkSentEvent }) => void): void;
         offDirectTCPSocketChunkSent(listener: (event: { params: Protocol.Network.DirectTCPSocketChunkSentEvent }) => void): void;
@@ -2968,6 +3164,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when data is received from tcp direct socket stream.
+         * @experimental
          */
         onDirectTCPSocketChunkReceived(listener: (event: { params: Protocol.Network.DirectTCPSocketChunkReceivedEvent }) => void): void;
         offDirectTCPSocketChunkReceived(listener: (event: { params: Protocol.Network.DirectTCPSocketChunkReceivedEvent }) => void): void;
@@ -2975,6 +3172,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired upon direct_socket.UDPSocket creation.
+         * @experimental
          */
         onDirectUDPSocketCreated(listener: (event: { params: Protocol.Network.DirectUDPSocketCreatedEvent }) => void): void;
         offDirectUDPSocketCreated(listener: (event: { params: Protocol.Network.DirectUDPSocketCreatedEvent }) => void): void;
@@ -2982,6 +3180,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when direct_socket.UDPSocket connection is opened.
+         * @experimental
          */
         onDirectUDPSocketOpened(listener: (event: { params: Protocol.Network.DirectUDPSocketOpenedEvent }) => void): void;
         offDirectUDPSocketOpened(listener: (event: { params: Protocol.Network.DirectUDPSocketOpenedEvent }) => void): void;
@@ -2989,6 +3188,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when direct_socket.UDPSocket is aborted.
+         * @experimental
          */
         onDirectUDPSocketAborted(listener: (event: { params: Protocol.Network.DirectUDPSocketAbortedEvent }) => void): void;
         offDirectUDPSocketAborted(listener: (event: { params: Protocol.Network.DirectUDPSocketAbortedEvent }) => void): void;
@@ -2996,6 +3196,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when direct_socket.UDPSocket is closed.
+         * @experimental
          */
         onDirectUDPSocketClosed(listener: (event: { params: Protocol.Network.DirectUDPSocketClosedEvent }) => void): void;
         offDirectUDPSocketClosed(listener: (event: { params: Protocol.Network.DirectUDPSocketClosedEvent }) => void): void;
@@ -3003,6 +3204,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when message is sent to udp direct socket stream.
+         * @experimental
          */
         onDirectUDPSocketChunkSent(listener: (event: { params: Protocol.Network.DirectUDPSocketChunkSentEvent }) => void): void;
         offDirectUDPSocketChunkSent(listener: (event: { params: Protocol.Network.DirectUDPSocketChunkSentEvent }) => void): void;
@@ -3010,6 +3212,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when message is received from udp direct socket stream.
+         * @experimental
          */
         onDirectUDPSocketChunkReceived(listener: (event: { params: Protocol.Network.DirectUDPSocketChunkReceivedEvent }) => void): void;
         offDirectUDPSocketChunkReceived(listener: (event: { params: Protocol.Network.DirectUDPSocketChunkReceivedEvent }) => void): void;
@@ -3020,6 +3223,7 @@ export namespace ProtocolTestsProxyApi {
          * network stack. Not every requestWillBeSent event will have an additional
          * requestWillBeSentExtraInfo fired for it, and there is no guarantee whether requestWillBeSent
          * or requestWillBeSentExtraInfo will be fired first for the same request.
+         * @experimental
          */
         onRequestWillBeSentExtraInfo(listener: (event: { params: Protocol.Network.RequestWillBeSentExtraInfoEvent }) => void): void;
         offRequestWillBeSentExtraInfo(listener: (event: { params: Protocol.Network.RequestWillBeSentExtraInfoEvent }) => void): void;
@@ -3029,6 +3233,7 @@ export namespace ProtocolTestsProxyApi {
          * Fired when additional information about a responseReceived event is available from the network
          * stack. Not every responseReceived event will have an additional responseReceivedExtraInfo for
          * it, and responseReceivedExtraInfo may be fired before or after responseReceived.
+         * @experimental
          */
         onResponseReceivedExtraInfo(listener: (event: { params: Protocol.Network.ResponseReceivedExtraInfoEvent }) => void): void;
         offResponseReceivedExtraInfo(listener: (event: { params: Protocol.Network.ResponseReceivedExtraInfoEvent }) => void): void;
@@ -3038,6 +3243,7 @@ export namespace ProtocolTestsProxyApi {
          * Fired when 103 Early Hints headers is received in addition to the common response.
          * Not every responseReceived event will have an responseReceivedEarlyHints fired.
          * Only one responseReceivedEarlyHints may be fired for eached responseReceived event.
+         * @experimental
          */
         onResponseReceivedEarlyHints(listener: (event: { params: Protocol.Network.ResponseReceivedEarlyHintsEvent }) => void): void;
         offResponseReceivedEarlyHints(listener: (event: { params: Protocol.Network.ResponseReceivedEarlyHintsEvent }) => void): void;
@@ -3048,6 +3254,7 @@ export namespace ProtocolTestsProxyApi {
          * the type of the operation and whether the operation succeeded or
          * failed, the event is fired before the corresponding request was sent
          * or after the response was received.
+         * @experimental
          */
         onTrustTokenOperationDone(listener: (event: { params: Protocol.Network.TrustTokenOperationDoneEvent }) => void): void;
         offTrustTokenOperationDone(listener: (event: { params: Protocol.Network.TrustTokenOperationDoneEvent }) => void): void;
@@ -3055,6 +3262,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired once security policy has been updated.
+         * @experimental
          */
         onPolicyUpdated(listener: () => void): void;
         offPolicyUpdated(listener: () => void): void;
@@ -3063,6 +3271,7 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Fired once when parsing the .wbn file has succeeded.
          * The event contains the information about the web bundle contents.
+         * @experimental
          */
         onSubresourceWebBundleMetadataReceived(listener: (event: { params: Protocol.Network.SubresourceWebBundleMetadataReceivedEvent }) => void): void;
         offSubresourceWebBundleMetadataReceived(listener: (event: { params: Protocol.Network.SubresourceWebBundleMetadataReceivedEvent }) => void): void;
@@ -3070,6 +3279,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired once when parsing the .wbn file has failed.
+         * @experimental
          */
         onSubresourceWebBundleMetadataError(listener: (event: { params: Protocol.Network.SubresourceWebBundleMetadataErrorEvent }) => void): void;
         offSubresourceWebBundleMetadataError(listener: (event: { params: Protocol.Network.SubresourceWebBundleMetadataErrorEvent }) => void): void;
@@ -3078,6 +3288,7 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Fired when handling requests for resources within a .wbn file.
          * Note: this will only be fired for resources that are requested by the webpage.
+         * @experimental
          */
         onSubresourceWebBundleInnerResponseParsed(listener: (event: { params: Protocol.Network.SubresourceWebBundleInnerResponseParsedEvent }) => void): void;
         offSubresourceWebBundleInnerResponseParsed(listener: (event: { params: Protocol.Network.SubresourceWebBundleInnerResponseParsedEvent }) => void): void;
@@ -3085,6 +3296,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when request for resources within a .wbn file failed.
+         * @experimental
          */
         onSubresourceWebBundleInnerResponseError(listener: (event: { params: Protocol.Network.SubresourceWebBundleInnerResponseErrorEvent }) => void): void;
         offSubresourceWebBundleInnerResponseError(listener: (event: { params: Protocol.Network.SubresourceWebBundleInnerResponseErrorEvent }) => void): void;
@@ -3093,15 +3305,22 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Is sent whenever a new report is added.
          * And after 'enableReportingApi' for all existing reports.
+         * @experimental
          */
         onReportingApiReportAdded(listener: (event: { params: Protocol.Network.ReportingApiReportAddedEvent }) => void): void;
         offReportingApiReportAdded(listener: (event: { params: Protocol.Network.ReportingApiReportAddedEvent }) => void): void;
         onceReportingApiReportAdded(eventMatcher?: (event: { params: Protocol.Network.ReportingApiReportAddedEvent }) => boolean): Promise<{ params: Protocol.Network.ReportingApiReportAddedEvent }>;
 
+        /**
+         * @experimental
+         */
         onReportingApiReportUpdated(listener: (event: { params: Protocol.Network.ReportingApiReportUpdatedEvent }) => void): void;
         offReportingApiReportUpdated(listener: (event: { params: Protocol.Network.ReportingApiReportUpdatedEvent }) => void): void;
         onceReportingApiReportUpdated(eventMatcher?: (event: { params: Protocol.Network.ReportingApiReportUpdatedEvent }) => boolean): Promise<{ params: Protocol.Network.ReportingApiReportUpdatedEvent }>;
 
+        /**
+         * @experimental
+         */
         onReportingApiEndpointsChangedForOrigin(listener: (event: { params: Protocol.Network.ReportingApiEndpointsChangedForOriginEvent }) => void): void;
         offReportingApiEndpointsChangedForOrigin(listener: (event: { params: Protocol.Network.ReportingApiEndpointsChangedForOriginEvent }) => void): void;
         onceReportingApiEndpointsChangedForOrigin(eventMatcher?: (event: { params: Protocol.Network.ReportingApiEndpointsChangedForOriginEvent }) => boolean): Promise<{ params: Protocol.Network.ReportingApiEndpointsChangedForOriginEvent }>;
@@ -3144,6 +3363,7 @@ export namespace ProtocolTestsProxyApi {
          * Deprecated: Doesn't work reliably and cannot be fixed due to process
          * separation (the owner node might be in a different process). Determine
          * the owner node in the client and use highlightNode.
+         * @deprecated
          */
         highlightFrame(params: Protocol.Overlay.HighlightFrameRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -3220,11 +3440,13 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Deprecated, no longer has any effect.
+         * @deprecated
          */
         setShowHitTestBorders(params: Protocol.Overlay.SetShowHitTestBordersRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Deprecated, no longer has any effect.
+         * @deprecated
          */
         setShowWebVitals(params: Protocol.Overlay.SetShowWebVitalsRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -3282,6 +3504,8 @@ export namespace ProtocolTestsProxyApi {
     export interface PageApi {
         /**
          * Deprecated, please use addScriptToEvaluateOnNewDocument instead.
+         * @deprecated
+         * @experimental
          */
         addScriptToEvaluateOnLoad(params: Protocol.Page.AddScriptToEvaluateOnLoadRequest): Promise<{id: number, result: Protocol.Page.AddScriptToEvaluateOnLoadResponse, sessionId: string}>;
 
@@ -3303,21 +3527,27 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Returns a snapshot of the page as a string. For MHTML format, the serialization includes
          * iframes, shadow DOM, external resources, and element-inline styles.
+         * @experimental
          */
         captureSnapshot(params: Protocol.Page.CaptureSnapshotRequest): Promise<{id: number, result: Protocol.Page.CaptureSnapshotResponse, sessionId: string}>;
 
         /**
          * Clears the overridden device metrics.
+         * @deprecated
+         * @experimental
          */
         clearDeviceMetricsOverride(): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Clears the overridden Device Orientation.
+         * @deprecated
+         * @experimental
          */
         clearDeviceOrientationOverride(): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Clears the overridden Geolocation Position and Error.
+         * @deprecated
          */
         clearGeolocationOverride(): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -3328,6 +3558,8 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Deletes browser cookie with given name, domain and path.
+         * @deprecated
+         * @experimental
          */
         deleteCookie(params: Protocol.Page.DeleteCookieRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -3350,19 +3582,28 @@ export namespace ProtocolTestsProxyApi {
          */
         getAppManifest(params: Protocol.Page.GetAppManifestRequest): Promise<{id: number, result: Protocol.Page.GetAppManifestResponse, sessionId: string}>;
 
+        /**
+         * @experimental
+         */
         getInstallabilityErrors(): Promise<{id: number, result: Protocol.Page.GetInstallabilityErrorsResponse, sessionId: string}>;
 
         /**
          * Deprecated because it's not guaranteed that the returned icon is in fact the one used for PWA installation.
+         * @deprecated
+         * @experimental
          */
         getManifestIcons(): Promise<{id: number, result: Protocol.Page.GetManifestIconsResponse, sessionId: string}>;
 
         /**
          * Returns the unique (PWA) app id.
          * Only returns values if the feature flag 'WebAppEnableManifestId' is enabled
+         * @experimental
          */
         getAppId(): Promise<{id: number, result: Protocol.Page.GetAppIdResponse, sessionId: string}>;
 
+        /**
+         * @experimental
+         */
         getAdScriptAncestry(params: Protocol.Page.GetAdScriptAncestryRequest): Promise<{id: number, result: Protocol.Page.GetAdScriptAncestryResponse, sessionId: string}>;
 
         /**
@@ -3387,11 +3628,13 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Returns content of the given resource.
+         * @experimental
          */
         getResourceContent(params: Protocol.Page.GetResourceContentRequest): Promise<{id: number, result: Protocol.Page.GetResourceContentResponse, sessionId: string}>;
 
         /**
          * Returns present frame / resource tree structure.
+         * @experimental
          */
         getResourceTree(): Promise<{id: number, result: Protocol.Page.GetResourceTreeResponse, sessionId: string}>;
 
@@ -3422,6 +3665,8 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Deprecated, please use removeScriptToEvaluateOnNewDocument instead.
+         * @deprecated
+         * @experimental
          */
         removeScriptToEvaluateOnLoad(params: Protocol.Page.RemoveScriptToEvaluateOnLoadRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -3432,16 +3677,19 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Acknowledges that a screencast frame has been received by the frontend.
+         * @experimental
          */
         screencastFrameAck(params: Protocol.Page.ScreencastFrameAckRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Searches for given string in resource content.
+         * @experimental
          */
         searchInResource(params: Protocol.Page.SearchInResourceRequest): Promise<{id: number, result: Protocol.Page.SearchInResourceResponse, sessionId: string}>;
 
         /**
          * Enable Chrome's experimental ad filter on all sites.
+         * @experimental
          */
         setAdBlockingEnabled(params: Protocol.Page.SetAdBlockingEnabledRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -3452,11 +3700,13 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Get Permissions Policy state on given frame.
+         * @experimental
          */
         getPermissionsPolicyState(params: Protocol.Page.GetPermissionsPolicyStateRequest): Promise<{id: number, result: Protocol.Page.GetPermissionsPolicyStateResponse, sessionId: string}>;
 
         /**
          * Get Origin Trials on given frame.
+         * @experimental
          */
         getOriginTrials(params: Protocol.Page.GetOriginTrialsRequest): Promise<{id: number, result: Protocol.Page.GetOriginTrialsResponse, sessionId: string}>;
 
@@ -3464,21 +3714,27 @@ export namespace ProtocolTestsProxyApi {
          * Overrides the values of device screen dimensions (window.screen.width, window.screen.height,
          * window.innerWidth, window.innerHeight, and "device-width"/"device-height"-related CSS media
          * query results).
+         * @deprecated
+         * @experimental
          */
         setDeviceMetricsOverride(params: Protocol.Page.SetDeviceMetricsOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Overrides the Device Orientation.
+         * @deprecated
+         * @experimental
          */
         setDeviceOrientationOverride(params: Protocol.Page.SetDeviceOrientationOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Set generic font families.
+         * @experimental
          */
         setFontFamilies(params: Protocol.Page.SetFontFamiliesRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Set default font sizes.
+         * @experimental
          */
         setFontSizes(params: Protocol.Page.SetFontSizesRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -3489,12 +3745,15 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Set the behavior when downloading a file.
+         * @deprecated
+         * @experimental
          */
         setDownloadBehavior(params: Protocol.Page.SetDownloadBehaviorRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position
          * unavailable.
+         * @deprecated
          */
         setGeolocationOverride(params: Protocol.Page.SetGeolocationOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -3505,11 +3764,14 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Toggles mouse event-based touch event emulation.
+         * @deprecated
+         * @experimental
          */
         setTouchEmulationEnabled(params: Protocol.Page.SetTouchEmulationEnabledRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Starts sending each frame using the `screencastFrame` event.
+         * @experimental
          */
         startScreencast(params: Protocol.Page.StartScreencastRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -3520,6 +3782,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Crashes renderer on the IO thread, generates minidumps.
+         * @experimental
          */
         crash(): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -3532,11 +3795,13 @@ export namespace ProtocolTestsProxyApi {
          * Tries to update the web lifecycle state of the page.
          * It will transition the page to the given state according to:
          * https://github.com/WICG/web-lifecycle/
+         * @experimental
          */
         setWebLifecycleState(params: Protocol.Page.SetWebLifecycleStateRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Stops sending each frame in the `screencastFrame`.
+         * @experimental
          */
         stopScreencast(): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -3547,39 +3812,46 @@ export namespace ProtocolTestsProxyApi {
          * When script with a matching URL is encountered, the cache is optionally
          * produced upon backend discretion, based on internal heuristics.
          * See also: `Page.compilationCacheProduced`.
+         * @experimental
          */
         produceCompilationCache(params: Protocol.Page.ProduceCompilationCacheRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Seeds compilation cache for given url. Compilation cache does not survive
          * cross-process navigation.
+         * @experimental
          */
         addCompilationCache(params: Protocol.Page.AddCompilationCacheRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Clears seeded compilation cache.
+         * @experimental
          */
         clearCompilationCache(): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Sets the Secure Payment Confirmation transaction mode.
          * https://w3c.github.io/secure-payment-confirmation/#sctn-automation-set-spc-transaction-mode
+         * @experimental
          */
         setSPCTransactionMode(params: Protocol.Page.SetSPCTransactionModeRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Extensions for Custom Handlers API:
          * https://html.spec.whatwg.org/multipage/system-state.html#rph-automation
+         * @experimental
          */
         setRPHRegistrationMode(params: Protocol.Page.SetRPHRegistrationModeRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Generates a report for testing.
+         * @experimental
          */
         generateTestReport(params: Protocol.Page.GenerateTestReportRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Pauses page execution. Can be resumed using generic Runtime.runIfWaitingForDebugger.
+         * @experimental
          */
         waitForDebugger(): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -3598,6 +3870,7 @@ export namespace ProtocolTestsProxyApi {
          * for more details.
          * 
          * TODO(https://crbug.com/1440085): Remove this once Puppeteer supports tab targets.
+         * @experimental
          */
         setPrerenderingAllowed(params: Protocol.Page.SetPrerenderingAllowedRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -3621,6 +3894,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when frame no longer has a scheduled navigation.
+         * @deprecated
          */
         onFrameClearedScheduledNavigation(listener: (event: { params: Protocol.Page.FrameClearedScheduledNavigationEvent }) => void): void;
         offFrameClearedScheduledNavigation(listener: (event: { params: Protocol.Page.FrameClearedScheduledNavigationEvent }) => void): void;
@@ -3636,6 +3910,7 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Fired before frame subtree is detached. Emitted before any frame of the
          * subtree is actually detached.
+         * @experimental
          */
         onFrameSubtreeWillBeDetached(listener: (event: { params: Protocol.Page.FrameSubtreeWillBeDetachedEvent }) => void): void;
         offFrameSubtreeWillBeDetached(listener: (event: { params: Protocol.Page.FrameSubtreeWillBeDetachedEvent }) => void): void;
@@ -3650,11 +3925,15 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when opening document to write to.
+         * @experimental
          */
         onDocumentOpened(listener: (event: { params: Protocol.Page.DocumentOpenedEvent }) => void): void;
         offDocumentOpened(listener: (event: { params: Protocol.Page.DocumentOpenedEvent }) => void): void;
         onceDocumentOpened(eventMatcher?: (event: { params: Protocol.Page.DocumentOpenedEvent }) => boolean): Promise<{ params: Protocol.Page.DocumentOpenedEvent }>;
 
+        /**
+         * @experimental
+         */
         onFrameResized(listener: () => void): void;
         offFrameResized(listener: () => void): void;
         onceFrameResized(eventMatcher?: () => boolean): Promise<void>;
@@ -3667,6 +3946,7 @@ export namespace ProtocolTestsProxyApi {
          * can be fired for a single navigation, for example, when a same-document
          * navigation becomes a cross-document navigation (such as in the case of a
          * frameset).
+         * @experimental
          */
         onFrameStartedNavigating(listener: (event: { params: Protocol.Page.FrameStartedNavigatingEvent }) => void): void;
         offFrameStartedNavigating(listener: (event: { params: Protocol.Page.FrameStartedNavigatingEvent }) => void): void;
@@ -3675,6 +3955,7 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Fired when a renderer-initiated navigation is requested.
          * Navigation may still be cancelled after the event is issued.
+         * @experimental
          */
         onFrameRequestedNavigation(listener: (event: { params: Protocol.Page.FrameRequestedNavigationEvent }) => void): void;
         offFrameRequestedNavigation(listener: (event: { params: Protocol.Page.FrameRequestedNavigationEvent }) => void): void;
@@ -3682,6 +3963,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when frame schedules a potential navigation.
+         * @deprecated
          */
         onFrameScheduledNavigation(listener: (event: { params: Protocol.Page.FrameScheduledNavigationEvent }) => void): void;
         offFrameScheduledNavigation(listener: (event: { params: Protocol.Page.FrameScheduledNavigationEvent }) => void): void;
@@ -3689,6 +3971,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when frame has started loading.
+         * @experimental
          */
         onFrameStartedLoading(listener: (event: { params: Protocol.Page.FrameStartedLoadingEvent }) => void): void;
         offFrameStartedLoading(listener: (event: { params: Protocol.Page.FrameStartedLoadingEvent }) => void): void;
@@ -3696,6 +3979,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when frame has stopped loading.
+         * @experimental
          */
         onFrameStoppedLoading(listener: (event: { params: Protocol.Page.FrameStoppedLoadingEvent }) => void): void;
         offFrameStoppedLoading(listener: (event: { params: Protocol.Page.FrameStoppedLoadingEvent }) => void): void;
@@ -3704,6 +3988,8 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Fired when page is about to start a download.
          * Deprecated. Use Browser.downloadWillBegin instead.
+         * @deprecated
+         * @experimental
          */
         onDownloadWillBegin(listener: (event: { params: Protocol.Page.DownloadWillBeginEvent }) => void): void;
         offDownloadWillBegin(listener: (event: { params: Protocol.Page.DownloadWillBeginEvent }) => void): void;
@@ -3712,6 +3998,8 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Fired when download makes progress. Last call has |done| == true.
          * Deprecated. Use Browser.downloadProgress instead.
+         * @deprecated
+         * @experimental
          */
         onDownloadProgress(listener: (event: { params: Protocol.Page.DownloadProgressEvent }) => void): void;
         offDownloadProgress(listener: (event: { params: Protocol.Page.DownloadProgressEvent }) => void): void;
@@ -3760,6 +4048,7 @@ export namespace ProtocolTestsProxyApi {
          * not assume any ordering with the Page.frameNavigated event. This event is fired only for
          * main-frame history navigation where the document changes (non-same-document navigations),
          * when bfcache navigation fails.
+         * @experimental
          */
         onBackForwardCacheNotUsed(listener: (event: { params: Protocol.Page.BackForwardCacheNotUsedEvent }) => void): void;
         offBackForwardCacheNotUsed(listener: (event: { params: Protocol.Page.BackForwardCacheNotUsedEvent }) => void): void;
@@ -3771,6 +4060,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when same-document navigation happens, e.g. due to history API usage or anchor navigation.
+         * @experimental
          */
         onNavigatedWithinDocument(listener: (event: { params: Protocol.Page.NavigatedWithinDocumentEvent }) => void): void;
         offNavigatedWithinDocument(listener: (event: { params: Protocol.Page.NavigatedWithinDocumentEvent }) => void): void;
@@ -3778,6 +4068,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Compressed image data requested by the `startScreencast`.
+         * @experimental
          */
         onScreencastFrame(listener: (event: { params: Protocol.Page.ScreencastFrameEvent }) => void): void;
         offScreencastFrame(listener: (event: { params: Protocol.Page.ScreencastFrameEvent }) => void): void;
@@ -3785,6 +4076,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Fired when the page with currently enabled screencast was shown or hidden `.
+         * @experimental
          */
         onScreencastVisibilityChanged(listener: (event: { params: Protocol.Page.ScreencastVisibilityChangedEvent }) => void): void;
         offScreencastVisibilityChanged(listener: (event: { params: Protocol.Page.ScreencastVisibilityChangedEvent }) => void): void;
@@ -3801,6 +4093,7 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Issued for every compilation cache generated. Is only available
          * if Page.setGenerateCompilationCache is enabled.
+         * @experimental
          */
         onCompilationCacheProduced(listener: (event: { params: Protocol.Page.CompilationCacheProducedEvent }) => void): void;
         offCompilationCacheProduced(listener: (event: { params: Protocol.Page.CompilationCacheProducedEvent }) => void): void;
@@ -3823,6 +4116,8 @@ export namespace ProtocolTestsProxyApi {
          * Sets time domain to use for collecting and reporting duration metrics.
          * Note that this must be called before enabling metrics collection. Calling
          * this method while metrics collection is enabled returns an error.
+         * @deprecated
+         * @experimental
          */
         setTimeDomain(params: Protocol.Performance.SetTimeDomainRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -3874,12 +4169,14 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Handles a certificate error that fired a certificateError event.
+         * @deprecated
          */
         handleCertificateError(params: Protocol.Security.HandleCertificateErrorRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Enable/disable overriding certificate errors. If enabled, all certificate error events need to
          * be handled by the DevTools client and should be answered with `handleCertificateError` commands.
+         * @deprecated
          */
         setOverrideCertificateErrors(params: Protocol.Security.SetOverrideCertificateErrorsRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -3888,6 +4185,7 @@ export namespace ProtocolTestsProxyApi {
          * handled with the `handleCertificateError` command. Note: this event does not fire if the
          * certificate error has been allowed internally. Only one client per target should override
          * certificate errors at the same time.
+         * @deprecated
          */
         onCertificateError(listener: (event: { params: Protocol.Security.CertificateErrorEvent }) => void): void;
         offCertificateError(listener: (event: { params: Protocol.Security.CertificateErrorEvent }) => void): void;
@@ -3895,6 +4193,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * The security state of the page changed.
+         * @experimental
          */
         onVisibleSecurityStateChanged(listener: (event: { params: Protocol.Security.VisibleSecurityStateChangedEvent }) => void): void;
         offVisibleSecurityStateChanged(listener: (event: { params: Protocol.Security.VisibleSecurityStateChangedEvent }) => void): void;
@@ -3902,6 +4201,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * The security state of the page changed. No longer being sent.
+         * @deprecated
          */
         onSecurityStateChanged(listener: (event: { params: Protocol.Security.SecurityStateChangedEvent }) => void): void;
         offSecurityStateChanged(listener: (event: { params: Protocol.Security.SecurityStateChangedEvent }) => void): void;
@@ -3986,6 +4286,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Override quota for the specified origin
+         * @experimental
          */
         overrideQuotaForOrigin(params: Protocol.Storage.OverrideQuotaForOriginRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -4032,100 +4333,119 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Returns the number of stored Trust Tokens per issuer for the
          * current browsing context.
+         * @experimental
          */
         getTrustTokens(): Promise<{id: number, result: Protocol.Storage.GetTrustTokensResponse, sessionId: string}>;
 
         /**
          * Removes all Trust Tokens issued by the provided issuerOrigin.
          * Leaves other stored data, including the issuer's Redemption Records, intact.
+         * @experimental
          */
         clearTrustTokens(params: Protocol.Storage.ClearTrustTokensRequest): Promise<{id: number, result: Protocol.Storage.ClearTrustTokensResponse, sessionId: string}>;
 
         /**
          * Gets details for a named interest group.
+         * @experimental
          */
         getInterestGroupDetails(params: Protocol.Storage.GetInterestGroupDetailsRequest): Promise<{id: number, result: Protocol.Storage.GetInterestGroupDetailsResponse, sessionId: string}>;
 
         /**
          * Enables/Disables issuing of interestGroupAccessed events.
+         * @experimental
          */
         setInterestGroupTracking(params: Protocol.Storage.SetInterestGroupTrackingRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Enables/Disables issuing of interestGroupAuctionEventOccurred and
          * interestGroupAuctionNetworkRequestCreated.
+         * @experimental
          */
         setInterestGroupAuctionTracking(params: Protocol.Storage.SetInterestGroupAuctionTrackingRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Gets metadata for an origin's shared storage.
+         * @experimental
          */
         getSharedStorageMetadata(params: Protocol.Storage.GetSharedStorageMetadataRequest): Promise<{id: number, result: Protocol.Storage.GetSharedStorageMetadataResponse, sessionId: string}>;
 
         /**
          * Gets the entries in an given origin's shared storage.
+         * @experimental
          */
         getSharedStorageEntries(params: Protocol.Storage.GetSharedStorageEntriesRequest): Promise<{id: number, result: Protocol.Storage.GetSharedStorageEntriesResponse, sessionId: string}>;
 
         /**
          * Sets entry with `key` and `value` for a given origin's shared storage.
+         * @experimental
          */
         setSharedStorageEntry(params: Protocol.Storage.SetSharedStorageEntryRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Deletes entry for `key` (if it exists) for a given origin's shared storage.
+         * @experimental
          */
         deleteSharedStorageEntry(params: Protocol.Storage.DeleteSharedStorageEntryRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Clears all entries for a given origin's shared storage.
+         * @experimental
          */
         clearSharedStorageEntries(params: Protocol.Storage.ClearSharedStorageEntriesRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Resets the budget for `ownerOrigin` by clearing all budget withdrawals.
+         * @experimental
          */
         resetSharedStorageBudget(params: Protocol.Storage.ResetSharedStorageBudgetRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Enables/disables issuing of sharedStorageAccessed events.
+         * @experimental
          */
         setSharedStorageTracking(params: Protocol.Storage.SetSharedStorageTrackingRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Set tracking for a storage key's buckets.
+         * @experimental
          */
         setStorageBucketTracking(params: Protocol.Storage.SetStorageBucketTrackingRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Deletes the Storage Bucket with the given storage key and bucket name.
+         * @experimental
          */
         deleteStorageBucket(params: Protocol.Storage.DeleteStorageBucketRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Deletes state for sites identified as potential bounce trackers, immediately.
+         * @experimental
          */
         runBounceTrackingMitigations(): Promise<{id: number, result: Protocol.Storage.RunBounceTrackingMitigationsResponse, sessionId: string}>;
 
         /**
          * https://wicg.github.io/attribution-reporting-api/
+         * @experimental
          */
         setAttributionReportingLocalTestingMode(params: Protocol.Storage.SetAttributionReportingLocalTestingModeRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Enables/disables issuing of Attribution Reporting events.
+         * @experimental
          */
         setAttributionReportingTracking(params: Protocol.Storage.SetAttributionReportingTrackingRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Sends all pending Attribution Reports immediately, regardless of their
          * scheduled report time.
+         * @experimental
          */
         sendPendingAttributionReports(): Promise<{id: number, result: Protocol.Storage.SendPendingAttributionReportsResponse, sessionId: string}>;
 
         /**
          * Returns the effective Related Website Sets in use by this profile for the browser
          * session. The effective Related Website Sets will not change during a browser session.
+         * @experimental
          */
         getRelatedWebsiteSets(): Promise<{id: number, result: Protocol.Storage.GetRelatedWebsiteSetsResponse, sessionId: string}>;
 
@@ -4133,6 +4453,7 @@ export namespace ProtocolTestsProxyApi {
          * Returns the list of URLs from a page and its embedded resources that match
          * existing grace period URL pattern rules.
          * https://developers.google.com/privacy-sandbox/cookies/temporary-exceptions/grace-period
+         * @experimental
          */
         getAffectedUrlsForThirdPartyCookieMetadata(params: Protocol.Storage.GetAffectedUrlsForThirdPartyCookieMetadataRequest): Promise<{id: number, result: Protocol.Storage.GetAffectedUrlsForThirdPartyCookieMetadataResponse, sessionId: string}>;
 
@@ -4216,18 +4537,30 @@ export namespace ProtocolTestsProxyApi {
         offStorageBucketDeleted(listener: (event: { params: Protocol.Storage.StorageBucketDeletedEvent }) => void): void;
         onceStorageBucketDeleted(eventMatcher?: (event: { params: Protocol.Storage.StorageBucketDeletedEvent }) => boolean): Promise<{ params: Protocol.Storage.StorageBucketDeletedEvent }>;
 
+        /**
+         * @experimental
+         */
         onAttributionReportingSourceRegistered(listener: (event: { params: Protocol.Storage.AttributionReportingSourceRegisteredEvent }) => void): void;
         offAttributionReportingSourceRegistered(listener: (event: { params: Protocol.Storage.AttributionReportingSourceRegisteredEvent }) => void): void;
         onceAttributionReportingSourceRegistered(eventMatcher?: (event: { params: Protocol.Storage.AttributionReportingSourceRegisteredEvent }) => boolean): Promise<{ params: Protocol.Storage.AttributionReportingSourceRegisteredEvent }>;
 
+        /**
+         * @experimental
+         */
         onAttributionReportingTriggerRegistered(listener: (event: { params: Protocol.Storage.AttributionReportingTriggerRegisteredEvent }) => void): void;
         offAttributionReportingTriggerRegistered(listener: (event: { params: Protocol.Storage.AttributionReportingTriggerRegisteredEvent }) => void): void;
         onceAttributionReportingTriggerRegistered(eventMatcher?: (event: { params: Protocol.Storage.AttributionReportingTriggerRegisteredEvent }) => boolean): Promise<{ params: Protocol.Storage.AttributionReportingTriggerRegisteredEvent }>;
 
+        /**
+         * @experimental
+         */
         onAttributionReportingReportSent(listener: (event: { params: Protocol.Storage.AttributionReportingReportSentEvent }) => void): void;
         offAttributionReportingReportSent(listener: (event: { params: Protocol.Storage.AttributionReportingReportSentEvent }) => void): void;
         onceAttributionReportingReportSent(eventMatcher?: (event: { params: Protocol.Storage.AttributionReportingReportSentEvent }) => boolean): Promise<{ params: Protocol.Storage.AttributionReportingReportSentEvent }>;
 
+        /**
+         * @experimental
+         */
         onAttributionReportingVerboseDebugReportSent(listener: (event: { params: Protocol.Storage.AttributionReportingVerboseDebugReportSentEvent }) => void): void;
         offAttributionReportingVerboseDebugReportSent(listener: (event: { params: Protocol.Storage.AttributionReportingVerboseDebugReportSentEvent }) => void): void;
         onceAttributionReportingVerboseDebugReportSent(eventMatcher?: (event: { params: Protocol.Storage.AttributionReportingVerboseDebugReportSentEvent }) => boolean): Promise<{ params: Protocol.Storage.AttributionReportingVerboseDebugReportSentEvent }>;
@@ -4265,6 +4598,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Attaches to the browser target, only uses flat sessionId mode.
+         * @experimental
          */
         attachToBrowserTarget(): Promise<{id: number, result: Protocol.Target.AttachToBrowserTargetResponse, sessionId: string}>;
 
@@ -4282,6 +4616,7 @@ export namespace ProtocolTestsProxyApi {
          * The object has the following API:
          * - `binding.send(json)` - a method to send messages over the remote debugging protocol
          * - `binding.onmessage = json => handleMessage(json)` - a callback that will be called for the protocol notifications and command responses.
+         * @experimental
          */
         exposeDevToolsProtocol(params: Protocol.Target.ExposeDevToolsProtocolRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -4314,6 +4649,7 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Returns information about a target.
+         * @experimental
          */
         getTargetInfo(params: Protocol.Target.GetTargetInfoRequest): Promise<{id: number, result: Protocol.Target.GetTargetInfoResponse, sessionId: string}>;
 
@@ -4326,6 +4662,7 @@ export namespace ProtocolTestsProxyApi {
          * Sends protocol message over session with given id.
          * Consider using flat mode instead; see commands attachToTarget, setAutoAttach,
          * and crbug.com/991325.
+         * @deprecated
          */
         sendMessageToTarget(params: Protocol.Target.SendMessageToTargetRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -4347,6 +4684,7 @@ export namespace ProtocolTestsProxyApi {
          * through `attachedToTarget`. The specified target is also auto-attached.
          * This cancels the effect of any previous `setAutoAttach` and is also cancelled by subsequent
          * `setAutoAttach`. Only available at the Browser target.
+         * @experimental
          */
         autoAttachRelated(params: Protocol.Target.AutoAttachRelatedRequest): Promise<{id: number, result: void, sessionId: string}>;
 
@@ -4359,11 +4697,13 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Enables target discovery for the specified locations, when `setDiscoverTargets` was set to
          * `true`.
+         * @experimental
          */
         setRemoteLocations(params: Protocol.Target.SetRemoteLocationsRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Issued when attached to target because of auto-attach or `attachToTarget` command.
+         * @experimental
          */
         onAttachedToTarget(listener: (event: { params: Protocol.Target.AttachedToTargetEvent }) => void): void;
         offAttachedToTarget(listener: (event: { params: Protocol.Target.AttachedToTargetEvent }) => void): void;
@@ -4372,6 +4712,7 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Issued when detached from target for any reason (including `detachFromTarget` command). Can be
          * issued multiple times per target if multiple sessions have been attached to it.
+         * @experimental
          */
         onDetachedFromTarget(listener: (event: { params: Protocol.Target.DetachedFromTargetEvent }) => void): void;
         offDetachedFromTarget(listener: (event: { params: Protocol.Target.DetachedFromTargetEvent }) => void): void;
@@ -4444,16 +4785,19 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Gets supported tracing categories.
+         * @experimental
          */
         getCategories(): Promise<{id: number, result: Protocol.Tracing.GetCategoriesResponse, sessionId: string}>;
 
         /**
          * Record a clock sync marker in the trace.
+         * @experimental
          */
         recordClockSyncMarker(params: Protocol.Tracing.RecordClockSyncMarkerRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Request a global memory dump.
+         * @experimental
          */
         requestMemoryDump(params: Protocol.Tracing.RequestMemoryDumpRequest): Promise<{id: number, result: Protocol.Tracing.RequestMemoryDumpResponse, sessionId: string}>;
 
@@ -4462,6 +4806,9 @@ export namespace ProtocolTestsProxyApi {
          */
         start(params: Protocol.Tracing.StartRequest): Promise<{id: number, result: void, sessionId: string}>;
 
+        /**
+         * @experimental
+         */
         onBufferUsage(listener: (event: { params: Protocol.Tracing.BufferUsageEvent }) => void): void;
         offBufferUsage(listener: (event: { params: Protocol.Tracing.BufferUsageEvent }) => void): void;
         onceBufferUsage(eventMatcher?: (event: { params: Protocol.Tracing.BufferUsageEvent }) => boolean): Promise<{ params: Protocol.Tracing.BufferUsageEvent }>;
@@ -4469,6 +4816,7 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Contains a bucket of collected trace events. When tracing is stopped collected events will be
          * sent as a sequence of dataCollected events followed by tracingComplete event.
+         * @experimental
          */
         onDataCollected(listener: (event: { params: Protocol.Tracing.DataCollectedEvent }) => void): void;
         offDataCollected(listener: (event: { params: Protocol.Tracing.DataCollectedEvent }) => void): void;
@@ -4520,6 +4868,7 @@ export namespace ProtocolTestsProxyApi {
          * Continues loading of the paused response, optionally modifying the
          * response headers. If either responseCode or headers are modified, all of them
          * must be present.
+         * @experimental
          */
         continueResponse(params: Protocol.Fetch.ContinueResponseRequest): Promise<{id: number, result: void, sessionId: string}>;
 
