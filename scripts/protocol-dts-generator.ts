@@ -360,10 +360,11 @@ const emitApiEvent = (event: P.Event, domainName: string, modulePrefix: string, 
         break;
       }
       case EventStyle.INSPECTOR_PROTOCOL_TESTS: {
-        const eventType = event.parameters ? `{ params: ${prefix}${toEventPayloadName(event.name)} }` : ''
-        emitLine(`on${toTitleCase(event.name)}(listener: (event: ${eventType}) => void): void;`)
-        emitLine(`off${toTitleCase(event.name)}(listener: (event: ${eventType}) => void): void;`)
-        emitLine(`once${toTitleCase(event.name)}(eventMatcher?: (event: ${eventType}) => boolean): Promise<${eventType}>;`)
+        const returnType = event.parameters ? `{ params: ${prefix}${toEventPayloadName(event.name)} }`: 'void'
+        const eventType = event.parameters ? `event: ${returnType}` : '';
+        emitLine(`on${toTitleCase(event.name)}(listener: (${eventType}) => void): void;`)
+        emitLine(`off${toTitleCase(event.name)}(listener: (${eventType}) => void): void;`)
+        emitLine(`once${toTitleCase(event.name)}(eventMatcher?: (${eventType}) => boolean): Promise<${returnType}>;`)
         break;
       }
     }

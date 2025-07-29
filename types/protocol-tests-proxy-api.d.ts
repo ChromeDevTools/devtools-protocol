@@ -360,9 +360,9 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Fired when the virtual machine resumed execution.
          */
-        onResumed(listener: (event: ) => void): void;
-        offResumed(listener: (event: ) => void): void;
-        onceResumed(eventMatcher?: (event: ) => boolean): Promise<>;
+        onResumed(listener: () => void): void;
+        offResumed(listener: () => void): void;
+        onceResumed(eventMatcher?: () => boolean): Promise<void>;
 
         /**
          * Fired when virtual machine fails to parse the script.
@@ -434,9 +434,9 @@ export namespace ProtocolTestsProxyApi {
         offReportHeapSnapshotProgress(listener: (event: { params: Protocol.HeapProfiler.ReportHeapSnapshotProgressEvent }) => void): void;
         onceReportHeapSnapshotProgress(eventMatcher?: (event: { params: Protocol.HeapProfiler.ReportHeapSnapshotProgressEvent }) => boolean): Promise<{ params: Protocol.HeapProfiler.ReportHeapSnapshotProgressEvent }>;
 
-        onResetProfiles(listener: (event: ) => void): void;
-        offResetProfiles(listener: (event: ) => void): void;
-        onceResetProfiles(eventMatcher?: (event: ) => boolean): Promise<>;
+        onResetProfiles(listener: () => void): void;
+        offResetProfiles(listener: () => void): void;
+        onceResetProfiles(eventMatcher?: () => boolean): Promise<void>;
 
     }
 
@@ -670,9 +670,9 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Issued when all executionContexts were cleared in browser
          */
-        onExecutionContextsCleared(listener: (event: ) => void): void;
-        offExecutionContextsCleared(listener: (event: ) => void): void;
-        onceExecutionContextsCleared(eventMatcher?: (event: ) => boolean): Promise<>;
+        onExecutionContextsCleared(listener: () => void): void;
+        offExecutionContextsCleared(listener: () => void): void;
+        onceExecutionContextsCleared(eventMatcher?: () => boolean): Promise<void>;
 
         /**
          * Issued when object should be inspected (for example, as a result of inspect() command line API
@@ -1330,9 +1330,9 @@ export namespace ProtocolTestsProxyApi {
          * Fires whenever a MediaQuery result changes (for example, after a browser window has been
          * resized.) The current implementation considers only viewport-dependent media features.
          */
-        onMediaQueryResultChanged(listener: (event: ) => void): void;
-        offMediaQueryResultChanged(listener: (event: ) => void): void;
-        onceMediaQueryResultChanged(eventMatcher?: (event: ) => boolean): Promise<>;
+        onMediaQueryResultChanged(listener: () => void): void;
+        offMediaQueryResultChanged(listener: () => void): void;
+        onceMediaQueryResultChanged(eventMatcher?: () => boolean): Promise<void>;
 
         /**
          * Fired whenever an active document stylesheet is added.
@@ -1789,9 +1789,9 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Fired when `Document` has been totally updated. Node ids are no longer valid.
          */
-        onDocumentUpdated(listener: (event: ) => void): void;
-        offDocumentUpdated(listener: (event: ) => void): void;
-        onceDocumentUpdated(eventMatcher?: (event: ) => boolean): Promise<>;
+        onDocumentUpdated(listener: () => void): void;
+        offDocumentUpdated(listener: () => void): void;
+        onceDocumentUpdated(eventMatcher?: () => boolean): Promise<void>;
 
         /**
          * Fired when `Element`'s inline style is modified via a CSS property modification.
@@ -1810,9 +1810,9 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Called when top layer elements are changed.
          */
-        onTopLayerElementsUpdated(listener: (event: ) => void): void;
-        offTopLayerElementsUpdated(listener: (event: ) => void): void;
-        onceTopLayerElementsUpdated(eventMatcher?: (event: ) => boolean): Promise<>;
+        onTopLayerElementsUpdated(listener: () => void): void;
+        offTopLayerElementsUpdated(listener: () => void): void;
+        onceTopLayerElementsUpdated(eventMatcher?: () => boolean): Promise<void>;
 
         /**
          * Fired when a node's scrollability state changes.
@@ -2234,9 +2234,9 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Notification sent after the virtual time budget for the current VirtualTimePolicy has run out.
          */
-        onVirtualTimeBudgetExpired(listener: (event: ) => void): void;
-        offVirtualTimeBudgetExpired(listener: (event: ) => void): void;
-        onceVirtualTimeBudgetExpired(eventMatcher?: (event: ) => boolean): Promise<>;
+        onVirtualTimeBudgetExpired(listener: () => void): void;
+        offVirtualTimeBudgetExpired(listener: () => void): void;
+        onceVirtualTimeBudgetExpired(eventMatcher?: () => boolean): Promise<void>;
 
     }
 
@@ -2433,16 +2433,16 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Fired when debugging target has crashed
          */
-        onTargetCrashed(listener: (event: ) => void): void;
-        offTargetCrashed(listener: (event: ) => void): void;
-        onceTargetCrashed(eventMatcher?: (event: ) => boolean): Promise<>;
+        onTargetCrashed(listener: () => void): void;
+        offTargetCrashed(listener: () => void): void;
+        onceTargetCrashed(eventMatcher?: () => boolean): Promise<void>;
 
         /**
          * Fired when debugging target has reloaded after crash
          */
-        onTargetReloadedAfterCrash(listener: (event: ) => void): void;
-        offTargetReloadedAfterCrash(listener: (event: ) => void): void;
-        onceTargetReloadedAfterCrash(eventMatcher?: (event: ) => boolean): Promise<>;
+        onTargetReloadedAfterCrash(listener: () => void): void;
+        offTargetReloadedAfterCrash(listener: () => void): void;
+        onceTargetReloadedAfterCrash(eventMatcher?: () => boolean): Promise<void>;
 
     }
 
@@ -3056,9 +3056,9 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Fired once security policy has been updated.
          */
-        onPolicyUpdated(listener: (event: ) => void): void;
-        offPolicyUpdated(listener: (event: ) => void): void;
-        oncePolicyUpdated(eventMatcher?: (event: ) => boolean): Promise<>;
+        onPolicyUpdated(listener: () => void): void;
+        offPolicyUpdated(listener: () => void): void;
+        oncePolicyUpdated(eventMatcher?: () => boolean): Promise<void>;
 
         /**
          * Fired once when parsing the .wbn file has succeeded.
@@ -3273,9 +3273,9 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Fired when user cancels the inspect mode.
          */
-        onInspectModeCanceled(listener: (event: ) => void): void;
-        offInspectModeCanceled(listener: (event: ) => void): void;
-        onceInspectModeCanceled(eventMatcher?: (event: ) => boolean): Promise<>;
+        onInspectModeCanceled(listener: () => void): void;
+        offInspectModeCanceled(listener: () => void): void;
+        onceInspectModeCanceled(eventMatcher?: () => boolean): Promise<void>;
 
     }
 
@@ -3655,9 +3655,9 @@ export namespace ProtocolTestsProxyApi {
         offDocumentOpened(listener: (event: { params: Protocol.Page.DocumentOpenedEvent }) => void): void;
         onceDocumentOpened(eventMatcher?: (event: { params: Protocol.Page.DocumentOpenedEvent }) => boolean): Promise<{ params: Protocol.Page.DocumentOpenedEvent }>;
 
-        onFrameResized(listener: (event: ) => void): void;
-        offFrameResized(listener: (event: ) => void): void;
-        onceFrameResized(eventMatcher?: (event: ) => boolean): Promise<>;
+        onFrameResized(listener: () => void): void;
+        offFrameResized(listener: () => void): void;
+        onceFrameResized(eventMatcher?: () => boolean): Promise<void>;
 
         /**
          * Fired when a navigation starts. This event is fired for both
@@ -3720,16 +3720,16 @@ export namespace ProtocolTestsProxyApi {
         /**
          * Fired when interstitial page was hidden
          */
-        onInterstitialHidden(listener: (event: ) => void): void;
-        offInterstitialHidden(listener: (event: ) => void): void;
-        onceInterstitialHidden(eventMatcher?: (event: ) => boolean): Promise<>;
+        onInterstitialHidden(listener: () => void): void;
+        offInterstitialHidden(listener: () => void): void;
+        onceInterstitialHidden(eventMatcher?: () => boolean): Promise<void>;
 
         /**
          * Fired when interstitial page was shown
          */
-        onInterstitialShown(listener: (event: ) => void): void;
-        offInterstitialShown(listener: (event: ) => void): void;
-        onceInterstitialShown(eventMatcher?: (event: ) => boolean): Promise<>;
+        onInterstitialShown(listener: () => void): void;
+        offInterstitialShown(listener: () => void): void;
+        onceInterstitialShown(eventMatcher?: () => boolean): Promise<void>;
 
         /**
          * Fired when a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload) has been
