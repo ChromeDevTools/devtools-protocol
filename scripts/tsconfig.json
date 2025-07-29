@@ -1,13 +1,14 @@
 {
-    "compilerOptions": {
-        "noEmit": true,
-        "module": "commonjs",
-        "strict": true,
-        "target": "ES2017",
-        "typeRoots": ["node_modules/@types"],
-        "resolveJsonModule": true,
-    },
-    "include": [
-        "protocol-dts-generator.ts",
-    ]
+  "compilerOptions": {
+    "noEmit": true,
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "target": "es2024",
+    "typeRoots": ["node_modules/@types"],
+    "allowImportingTsExtensions": true,
+    "erasableSyntaxOnly": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["protocol-dts-generator.ts"]
 }
