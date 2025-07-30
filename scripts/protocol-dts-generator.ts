@@ -109,7 +109,7 @@ const emitGlobalTypeDefs = () => {
 const emitDomain = (domain: P.Domain) => {
     const domainName = toTitleCase(domain.domain)
     emitLine()
-    emitDescription(domain.description)
+    emitTsComment(domain)
     emitOpenBlock(`export namespace ${domainName}`)
     if (domain.types) domain.types.forEach(emitDomainType)
     if (domain.commands) domain.commands.forEach(emitCommand)
@@ -118,15 +118,30 @@ const emitDomain = (domain: P.Domain) => {
 }
 
 const getCommentLines = (description: string) => {
-    const lines = description
+    return description
         .split(/\r?\n/g)
         .filter(line => !line.startsWith('LINT.'))
-        .map(line => ` * ${line}`)
-    return [`/**`, ...lines, ` */`]
 }
 
-const emitDescription = (description?: string) => {
-    if (description) getCommentLines(description).map(l => emitLine(l))
+const emitDescription = (lines: string[]) => {
+    emitLine(`/**`)
+    lines.map(l => emitLine(` * ${l}`))
+    emitLine(` */`)
+}
+
+const emitTsComment = (object: P.Event|P.PropertyType|P.DomainType|P.Command|P.Domain) => {
+    const commentLines = object.description ? getCommentLines(object.description) : [];
+    if('deprecated' in object){
+        commentLines.push('@deprecated');
+    }
+
+    if('experimental' in object){
+        commentLines.push('@experimental');
+    }
+
+    if (commentLines.length) {
+        emitDescription(commentLines)
+    }
 }
 
 const isPropertyInlineEnum = (prop: P.ProtocolType): boolean => {
@@ -175,7 +190,7 @@ const emitProperty = (interfaceName: string, prop: P.PropertyType) => {
     description = `${description || ''} (${enumName} enum)`;
   }
 
-  emitDescription(description)
+  emitTsComment(prop)
   emitLine(`${getPropertyDef(interfaceName, prop)};`)
 }
 
@@ -218,7 +233,7 @@ const emitInterface = (interfaceName: string, props?: P.PropertyType[]) => {
 const emitDomainType = (type: P.DomainType) => {
     emitInlineEnumForDomainType(type);
     emitLine()
-    emitDescription(type.description)
+    emitTsComment(type)
 
     if (type.type === 'object') {
         emitInterface(type.id, type.properties)
@@ -256,7 +271,7 @@ const emitEvent = (event: P.Event) => {
     
     emitInlineEnumsForEvents(event);
     emitLine()
-    emitDescription(event.description)
+    emitTsComment(event)
     emitInterface(toEventPayloadName(event.name), event.parameters)
 }
 
@@ -309,7 +324,7 @@ const emitMapping = (moduleName: string, protocolModuleName: string, domains: P.
     emitHeaderComments()
     emitLine(`import Protocol from './${protocolModuleName}'`)
     emitLine()
-    emitDescription('Mappings from protocol event and command names to the types required for them.')
+    emitDescription(['Mappings from protocol event and command names to the types required for them.'])
     emitOpenBlock(`export namespace ${moduleName}`)
 
     const protocolModulePrefix = toTitleCase(protocolModuleName)
@@ -334,7 +349,7 @@ const emitMapping = (moduleName: string, protocolModuleName: string, domains: P.
 
 const emitApiCommand = (command: P.Command, domainName: string, modulePrefix: string, eventStyle: EventStyleEnum) => {
     const prefix = `${modulePrefix}.${domainName}.`
-    emitDescription(command.description)
+    emitTsComment(command)
     const params = command.parameters ? `params: ${prefix}${toCmdRequestName(command.name)}` : ''
     const response = command.returns ? `${prefix}${toCmdResponseName(command.name)}` : 'void'
     switch (eventStyle) {
@@ -352,7 +367,7 @@ const emitApiCommand = (command: P.Command, domainName: string, modulePrefix: st
 
 const emitApiEvent = (event: P.Event, domainName: string, modulePrefix: string, eventStyle: EventStyleEnum) => {
     const prefix = `${modulePrefix}.${domainName}.`
-    emitDescription(event.description)
+    emitTsComment(event)
     switch (eventStyle) {
       case EventStyle.REGULAR: {
         const params = event.parameters ? `params: ${prefix}${toEventPayloadName(event.name)}` : ''
@@ -385,7 +400,7 @@ const emitApi = (moduleName: string, protocolModuleName: string, domains: P.Doma
     emitHeaderComments()
     emitLine(`import Protocol from './${protocolModuleName}'`)
     emitLine()
-    emitDescription('API generated from Protocol commands and events.')
+    emitDescription(['API generated from Protocol commands and events.'])
     emitOpenBlock(`export namespace ${moduleName}`)
 
     emitLine()

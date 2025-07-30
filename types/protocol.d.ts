@@ -12,6 +12,7 @@ export namespace Protocol {
 
     /**
      * This domain is deprecated - use Runtime or Log instead.
+     * @deprecated
      */
     export namespace Console {
 
@@ -42,11 +43,11 @@ export namespace Protocol {
          */
         export interface ConsoleMessage {
             /**
-             * Message source. (ConsoleMessageSource enum)
+             * Message source.
              */
             source: ('xml' | 'javascript' | 'network' | 'console-api' | 'storage' | 'appcache' | 'rendering' | 'security' | 'other' | 'deprecation' | 'worker');
             /**
-             * Message severity. (ConsoleMessageLevel enum)
+             * Message severity.
              */
             level: ('log' | 'warning' | 'error' | 'debug' | 'info');
             /**
@@ -114,6 +115,7 @@ export namespace Protocol {
 
         /**
          * Location in the source code.
+         * @experimental
          */
         export interface ScriptPosition {
             lineNumber: integer;
@@ -122,6 +124,7 @@ export namespace Protocol {
 
         /**
          * Location range within one script.
+         * @experimental
          */
         export interface LocationRange {
             scriptId: Runtime.ScriptId;
@@ -153,6 +156,7 @@ export namespace Protocol {
              * JavaScript script name or url.
              * Deprecated in favor of using the `location.scriptId` to resolve the URL via a previously
              * sent `Debugger.scriptParsed` event.
+             * @deprecated
              */
             url: string;
             /**
@@ -172,6 +176,7 @@ export namespace Protocol {
              * can be restarted or not. Note that a `true` value here does not
              * guarantee that Debugger#restartFrame with this CallFrameId will be
              * successful, but it is very likely.
+             * @experimental
              */
             canBeRestarted?: boolean;
         }
@@ -194,7 +199,7 @@ export namespace Protocol {
          */
         export interface Scope {
             /**
-             * Scope type. (ScopeType enum)
+             * Scope type.
              */
             type: ('global' | 'local' | 'with' | 'closure' | 'catch' | 'block' | 'script' | 'eval' | 'module' | 'wasm-expression-stack');
             /**
@@ -247,12 +252,12 @@ export namespace Protocol {
              * Column number in the script (0-based).
              */
             columnNumber?: integer;
-            /**
-             *  (BreakLocationType enum)
-             */
             type?: ('debuggerStatement' | 'call' | 'return');
         }
 
+        /**
+         * @experimental
+         */
         export interface WasmDisassemblyChunk {
             /**
              * The next chunk of disassembled lines.
@@ -280,7 +285,7 @@ export namespace Protocol {
          */
         export interface DebugSymbols {
             /**
-             * Type of the debug symbols. (DebugSymbolsType enum)
+             * Type of the debug symbols.
              */
             type: ('SourceMap' | 'EmbeddedDWARF' | 'ExternalDWARF');
             /**
@@ -310,9 +315,6 @@ export namespace Protocol {
              * Location to continue to.
              */
             location: Location;
-            /**
-             *  (ContinueToLocationRequestTargetCallFrames enum)
-             */
             targetCallFrames?: ('any' | 'current');
         }
 
@@ -320,6 +322,7 @@ export namespace Protocol {
             /**
              * The maximum size in bytes of collected scripts (not referenced by other heap objects)
              * the debugger can hold. Puts no limit if parameter is omitted.
+             * @experimental
              */
             maxScriptsCacheSize?: number;
         }
@@ -327,6 +330,7 @@ export namespace Protocol {
         export interface EnableResponse {
             /**
              * Unique identifier of the debugger.
+             * @experimental
              */
             debuggerId: Runtime.UniqueDebuggerId;
         }
@@ -361,6 +365,7 @@ export namespace Protocol {
             returnByValue?: boolean;
             /**
              * Whether preview should be generated for the result.
+             * @experimental
              */
             generatePreview?: boolean;
             /**
@@ -369,6 +374,7 @@ export namespace Protocol {
             throwOnSideEffect?: boolean;
             /**
              * Terminate execution after timing out (number of milliseconds).
+             * @experimental
              */
             timeout?: Runtime.TimeDelta;
         }
@@ -508,7 +514,8 @@ export namespace Protocol {
             callFrameId: CallFrameId;
             /**
              * The `mode` parameter must be present and set to 'StepInto', otherwise
-             * `restartFrame` will error out. (RestartFrameRequestMode enum)
+             * `restartFrame` will error out.
+             * @experimental
              */
             mode?: ('StepInto');
         }
@@ -516,14 +523,17 @@ export namespace Protocol {
         export interface RestartFrameResponse {
             /**
              * New stack trace.
+             * @deprecated
              */
             callFrames: CallFrame[];
             /**
              * Async stack trace, if any.
+             * @deprecated
              */
             asyncStackTrace?: Runtime.StackTrace;
             /**
              * Async stack trace, if any.
+             * @deprecated
              */
             asyncStackTraceId?: Runtime.StackTraceId;
         }
@@ -629,7 +639,7 @@ export namespace Protocol {
 
         export interface SetInstrumentationBreakpointRequest {
             /**
-             * Instrumentation name. (SetInstrumentationBreakpointRequestInstrumentation enum)
+             * Instrumentation name.
              */
             instrumentation: ('beforeScriptExecution' | 'beforeScriptWithSourceMapExecution');
         }
@@ -716,7 +726,7 @@ export namespace Protocol {
 
         export interface SetPauseOnExceptionsRequest {
             /**
-             * Pause on exceptions mode. (SetPauseOnExceptionsRequestState enum)
+             * Pause on exceptions mode.
              */
             state: ('none' | 'caught' | 'uncaught' | 'all');
         }
@@ -753,6 +763,7 @@ export namespace Protocol {
             /**
              * If true, then `scriptSource` is allowed to change the function on top of the stack
              * as long as the top-most stack frame is the only activation of that function.
+             * @experimental
              */
             allowTopFrameEditing?: boolean;
         }
@@ -760,24 +771,29 @@ export namespace Protocol {
         export interface SetScriptSourceResponse {
             /**
              * New stack trace in case editing has happened while VM was stopped.
+             * @deprecated
              */
             callFrames?: CallFrame[];
             /**
              * Whether current call stack  was modified after applying the changes.
+             * @deprecated
              */
             stackChanged?: boolean;
             /**
              * Async stack trace, if any.
+             * @deprecated
              */
             asyncStackTrace?: Runtime.StackTrace;
             /**
              * Async stack trace, if any.
+             * @deprecated
              */
             asyncStackTraceId?: Runtime.StackTraceId;
             /**
              * Whether the operation was successful or not. Only `Ok` denotes a
              * successful live edit while the other enum variants denote why
-             * the live edit failed. (SetScriptSourceResponseStatus enum)
+             * the live edit failed.
+             * @experimental
              */
             status: ('Ok' | 'CompileError' | 'BlockedByActiveGenerator' | 'BlockedByActiveFunction' | 'BlockedByTopLevelEsModuleChange');
             /**
@@ -817,10 +833,12 @@ export namespace Protocol {
             /**
              * Debugger will pause on the execution of the first async task which was scheduled
              * before next pause.
+             * @experimental
              */
             breakOnAsyncCall?: boolean;
             /**
              * The skipList specifies location ranges that should be skipped on step into.
+             * @experimental
              */
             skipList?: LocationRange[];
         }
@@ -828,6 +846,7 @@ export namespace Protocol {
         export interface StepOverRequest {
             /**
              * The skipList specifies location ranges that should be skipped on step over.
+             * @experimental
              */
             skipList?: LocationRange[];
         }
@@ -835,6 +854,7 @@ export namespace Protocol {
         /**
          * Fired when breakpoint is resolved to an actual script and location.
          * Deprecated in favor of `resolvedBreakpoints` in the `scriptParsed` event.
+         * @deprecated
          */
         export interface BreakpointResolvedEvent {
             /**
@@ -872,7 +892,7 @@ export namespace Protocol {
              */
             callFrames: CallFrame[];
             /**
-             * Pause reason. (PausedEventReason enum)
+             * Pause reason.
              */
             reason: ('ambiguous' | 'assert' | 'CSPViolation' | 'debugCommand' | 'DOM' | 'EventListener' | 'exception' | 'instrumentation' | 'OOM' | 'other' | 'promiseRejection' | 'XHR' | 'step');
             /**
@@ -889,10 +909,13 @@ export namespace Protocol {
             asyncStackTrace?: Runtime.StackTrace;
             /**
              * Async stack trace, if any.
+             * @experimental
              */
             asyncStackTraceId?: Runtime.StackTraceId;
             /**
              * Never present, will be removed.
+             * @deprecated
+             * @experimental
              */
             asyncCallStackTraceId?: Runtime.StackTraceId;
         }
@@ -959,18 +982,22 @@ export namespace Protocol {
             length?: integer;
             /**
              * JavaScript top stack frame of where the script parsed event was triggered if available.
+             * @experimental
              */
             stackTrace?: Runtime.StackTrace;
             /**
              * If the scriptLanguage is WebAssembly, the code section offset in the module.
+             * @experimental
              */
             codeOffset?: integer;
             /**
              * The language of the script.
+             * @experimental
              */
             scriptLanguage?: Debugger.ScriptLanguage;
             /**
              * The name the embedder supplied for this script.
+             * @experimental
              */
             embedderName?: string;
         }
@@ -1022,6 +1049,7 @@ export namespace Protocol {
             executionContextAuxData?: any;
             /**
              * True, if this script is generated as a result of the live edit operation.
+             * @experimental
              */
             isLiveEdit?: boolean;
             /**
@@ -1042,33 +1070,42 @@ export namespace Protocol {
             length?: integer;
             /**
              * JavaScript top stack frame of where the script parsed event was triggered if available.
+             * @experimental
              */
             stackTrace?: Runtime.StackTrace;
             /**
              * If the scriptLanguage is WebAssembly, the code section offset in the module.
+             * @experimental
              */
             codeOffset?: integer;
             /**
              * The language of the script.
+             * @experimental
              */
             scriptLanguage?: Debugger.ScriptLanguage;
             /**
              * If the scriptLanguage is WebAssembly, the source of debug symbols for the module.
+             * @experimental
              */
             debugSymbols?: Debugger.DebugSymbols[];
             /**
              * The name the embedder supplied for this script.
+             * @experimental
              */
             embedderName?: string;
             /**
              * The list of set breakpoints in this script if calls to `setBreakpointByUrl`
              * matches this script's URL or hash. Clients that use this list can ignore the
              * `breakpointResolved` event. They are equivalent.
+             * @experimental
              */
             resolvedBreakpoints?: ResolvedBreakpoint[];
         }
     }
 
+    /**
+     * @experimental
+     */
     export namespace HeapProfiler {
 
         /**
@@ -1215,6 +1252,7 @@ export namespace Protocol {
             reportProgress?: boolean;
             /**
              * Deprecated in favor of `exposeInternals`.
+             * @deprecated
              */
             treatGlobalObjectsAsRoots?: boolean;
             /**
@@ -1223,6 +1261,7 @@ export namespace Protocol {
             captureNumericValue?: boolean;
             /**
              * If true, exposes internals of the snapshot.
+             * @experimental
              */
             exposeInternals?: boolean;
         }
@@ -1235,6 +1274,7 @@ export namespace Protocol {
             /**
              * If true, a raw snapshot without artificial roots will be generated.
              * Deprecated in favor of `exposeInternals`.
+             * @deprecated
              */
             treatGlobalObjectsAsRoots?: boolean;
             /**
@@ -1243,6 +1283,7 @@ export namespace Protocol {
             captureNumericValue?: boolean;
             /**
              * If true, exposes internals of the snapshot.
+             * @experimental
              */
             exposeInternals?: boolean;
         }
@@ -1495,6 +1536,7 @@ export namespace Protocol {
          * `takePreciseCoverage` for the current isolate. May only be sent if precise code
          * coverage has been started. This event can be trigged by the embedder to, for example,
          * trigger collection of coverage data immediately at a certain point in time.
+         * @experimental
          */
         export interface PreciseCoverageDeltaUpdateEvent {
             /**
@@ -1536,9 +1578,6 @@ export namespace Protocol {
          * Represents options for serialization. Overrides `generatePreview` and `returnByValue`.
          */
         export interface SerializationOptions {
-            /**
-             *  (SerializationOptionsSerialization enum)
-             */
             serialization: ('deep' | 'json' | 'idOnly');
             /**
              * Deep serialization depth. Default is full depth. Respected only in `deep` serialization mode.
@@ -1583,9 +1622,6 @@ export namespace Protocol {
          * Represents deep serialized value.
          */
         export interface DeepSerializedValue {
-            /**
-             *  (DeepSerializedValueType enum)
-             */
             type: ('undefined' | 'null' | 'string' | 'number' | 'boolean' | 'bigint' | 'regexp' | 'date' | 'symbol' | 'array' | 'object' | 'function' | 'map' | 'set' | 'weakmap' | 'weakset' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'node' | 'window' | 'generator');
             value?: any;
             objectId?: string;
@@ -1646,13 +1682,13 @@ export namespace Protocol {
          */
         export interface RemoteObject {
             /**
-             * Object type. (RemoteObjectType enum)
+             * Object type.
              */
             type: ('object' | 'function' | 'undefined' | 'string' | 'number' | 'boolean' | 'symbol' | 'bigint');
             /**
              * Object subtype hint. Specified for `object` type values only.
              * NOTE: If you change anything here, make sure to also update
-             * `subtype` in `ObjectPreview` and `PropertyPreview` below. (RemoteObjectSubtype enum)
+             * `subtype` in `ObjectPreview` and `PropertyPreview` below.
              */
             subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'dataview' | 'webassemblymemory' | 'wasmvalue');
             /**
@@ -1674,6 +1710,7 @@ export namespace Protocol {
             description?: string;
             /**
              * Deep serialized value.
+             * @experimental
              */
             deepSerializedValue?: DeepSerializedValue;
             /**
@@ -1682,11 +1719,18 @@ export namespace Protocol {
             objectId?: RemoteObjectId;
             /**
              * Preview containing abbreviated property values. Specified for `object` type values only.
+             * @experimental
              */
             preview?: ObjectPreview;
+            /**
+             * @experimental
+             */
             customPreview?: CustomPreview;
         }
 
+        /**
+         * @experimental
+         */
         export interface CustomPreview {
             /**
              * The JSON-stringified result of formatter.header(object, config) call.
@@ -1736,14 +1780,15 @@ export namespace Protocol {
 
         /**
          * Object containing abbreviated remote object value.
+         * @experimental
          */
         export interface ObjectPreview {
             /**
-             * Object type. (ObjectPreviewType enum)
+             * Object type.
              */
             type: ('object' | 'function' | 'undefined' | 'string' | 'number' | 'boolean' | 'symbol' | 'bigint');
             /**
-             * Object subtype hint. Specified for `object` type values only. (ObjectPreviewSubtype enum)
+             * Object subtype hint. Specified for `object` type values only.
              */
             subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'dataview' | 'webassemblymemory' | 'wasmvalue');
             /**
@@ -1798,13 +1843,16 @@ export namespace Protocol {
             Wasmvalue = 'wasmvalue',
         }
 
+        /**
+         * @experimental
+         */
         export interface PropertyPreview {
             /**
              * Property name.
              */
             name: string;
             /**
-             * Object type. Accessor means that the property itself is an accessor property. (PropertyPreviewType enum)
+             * Object type. Accessor means that the property itself is an accessor property.
              */
             type: ('object' | 'function' | 'undefined' | 'string' | 'number' | 'boolean' | 'symbol' | 'accessor' | 'bigint');
             /**
@@ -1816,11 +1864,14 @@ export namespace Protocol {
              */
             valuePreview?: ObjectPreview;
             /**
-             * Object subtype hint. Specified for `object` type values only. (PropertyPreviewSubtype enum)
+             * Object subtype hint. Specified for `object` type values only.
              */
             subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'dataview' | 'webassemblymemory' | 'wasmvalue');
         }
 
+        /**
+         * @experimental
+         */
         export interface EntryPreview {
             /**
              * Preview of the key. Specified for map-like collection entries.
@@ -1898,6 +1949,7 @@ export namespace Protocol {
 
         /**
          * Object private field descriptor.
+         * @experimental
          */
         export interface PrivatePropertyDescriptor {
             /**
@@ -1965,6 +2017,7 @@ export namespace Protocol {
              * A system-unique execution context identifier. Unlike the id, this is unique across
              * multiple processes, so can be reliably used to identify specific context while backend
              * performs a cross-process navigation.
+             * @experimental
              */
             uniqueId: string;
             /**
@@ -2018,6 +2071,7 @@ export namespace Protocol {
              * Dictionary with entries of meta data that the client associated
              * with this exception, such as information about associated network
              * requests, etc.
+             * @experimental
              */
             exceptionMetaData?: any;
         }
@@ -2077,18 +2131,21 @@ export namespace Protocol {
             parent?: StackTrace;
             /**
              * Asynchronous JavaScript stack trace that preceded this stack, if available.
+             * @experimental
              */
             parentId?: StackTraceId;
         }
 
         /**
          * Unique identifier of current debugger.
+         * @experimental
          */
         export type UniqueDebuggerId = string;
 
         /**
          * If `debuggerId` is set stack trace comes from another debugger and can be resolved there. This
          * allows to track cross-debugger calls. See `Runtime.StackTrace` and `Debugger.paused` for usages.
+         * @experimental
          */
         export interface StackTraceId {
             id: string;
@@ -2148,6 +2205,7 @@ export namespace Protocol {
             returnByValue?: boolean;
             /**
              * Whether preview should be generated for the result.
+             * @experimental
              */
             generatePreview?: boolean;
             /**
@@ -2171,6 +2229,7 @@ export namespace Protocol {
             objectGroup?: string;
             /**
              * Whether to throw an exception if side effect cannot be ruled out during evaluation.
+             * @experimental
              */
             throwOnSideEffect?: boolean;
             /**
@@ -2180,11 +2239,13 @@ export namespace Protocol {
              * in context different than intended (e.g. as a result of navigation across process
              * boundaries).
              * This is mutually exclusive with `executionContextId`.
+             * @experimental
              */
             uniqueContextId?: string;
             /**
              * Specifies the result serialization. If provided, overrides
              * `generatePreview` and `returnByValue`.
+             * @experimental
              */
             serializationOptions?: SerializationOptions;
         }
@@ -2263,6 +2324,7 @@ export namespace Protocol {
             returnByValue?: boolean;
             /**
              * Whether preview should be generated for the result.
+             * @experimental
              */
             generatePreview?: boolean;
             /**
@@ -2277,20 +2339,24 @@ export namespace Protocol {
             /**
              * Whether to throw an exception if side effect cannot be ruled out during evaluation.
              * This implies `disableBreaks` below.
+             * @experimental
              */
             throwOnSideEffect?: boolean;
             /**
              * Terminate execution after timing out (number of milliseconds).
+             * @experimental
              */
             timeout?: TimeDelta;
             /**
              * Disable breakpoints during execution.
+             * @experimental
              */
             disableBreaks?: boolean;
             /**
              * Setting this flag to true enables `let` re-declaration and top-level `await`.
              * Note that `let` variables can only be re-declared if they originate from
              * `replMode` themselves.
+             * @experimental
              */
             replMode?: boolean;
             /**
@@ -2298,6 +2364,7 @@ export namespace Protocol {
              * which includes eval(), Function(), setTimeout() and setInterval()
              * when called with non-callable arguments. This flag bypasses CSP for this
              * evaluation and allows unsafe-eval. Defaults to true.
+             * @experimental
              */
             allowUnsafeEvalBlockedByCSP?: boolean;
             /**
@@ -2307,11 +2374,13 @@ export namespace Protocol {
              * in context different than intended (e.g. as a result of navigation across process
              * boundaries).
              * This is mutually exclusive with `contextId`.
+             * @experimental
              */
             uniqueContextId?: string;
             /**
              * Specifies the result serialization. If provided, overrides
              * `generatePreview` and `returnByValue`.
+             * @experimental
              */
             serializationOptions?: SerializationOptions;
         }
@@ -2366,14 +2435,17 @@ export namespace Protocol {
             /**
              * If true, returns accessor properties (with getter/setter) only; internal properties are not
              * returned either.
+             * @experimental
              */
             accessorPropertiesOnly?: boolean;
             /**
              * Whether preview should be generated for the results.
+             * @experimental
              */
             generatePreview?: boolean;
             /**
              * If true, returns non-indexed properties only.
+             * @experimental
              */
             nonIndexedPropertiesOnly?: boolean;
         }
@@ -2389,6 +2461,7 @@ export namespace Protocol {
             internalProperties?: InternalPropertyDescriptor[];
             /**
              * Object private properties.
+             * @experimental
              */
             privateProperties?: PrivatePropertyDescriptor[];
             /**
@@ -2515,6 +2588,8 @@ export namespace Protocol {
              * Deprecated in favor of `executionContextName` due to an unclear use case
              * and bugs in implementation (crbug.com/1169639). `executionContextId` will be
              * removed in the future.
+             * @deprecated
+             * @experimental
              */
             executionContextId?: ExecutionContextId;
             /**
@@ -2544,6 +2619,7 @@ export namespace Protocol {
 
         /**
          * Notification is issued every time when binding is called.
+         * @experimental
          */
         export interface BindingCalledEvent {
             name: string;
@@ -2580,7 +2656,7 @@ export namespace Protocol {
          */
         export interface ConsoleAPICalledEvent {
             /**
-             * Type of the call. (ConsoleAPICalledEventType enum)
+             * Type of the call.
              */
             type: ('log' | 'debug' | 'info' | 'error' | 'warning' | 'dir' | 'dirxml' | 'table' | 'trace' | 'clear' | 'startGroup' | 'startGroupCollapsed' | 'endGroup' | 'assert' | 'profile' | 'profileEnd' | 'count' | 'timeEnd');
             /**
@@ -2605,6 +2681,7 @@ export namespace Protocol {
              * Console context descriptor for calls on non-default console context (not console.*):
              * 'anonymous#unique-logger-id' for call on unnamed context, 'name#unique-logger-id' for call
              * on named context.
+             * @experimental
              */
             context?: string;
         }
@@ -2650,10 +2727,12 @@ export namespace Protocol {
         export interface ExecutionContextDestroyedEvent {
             /**
              * Id of the destroyed context
+             * @deprecated
              */
             executionContextId: ExecutionContextId;
             /**
              * Unique Id of the destroyed context
+             * @experimental
              */
             executionContextUniqueId: string;
         }
@@ -2667,6 +2746,7 @@ export namespace Protocol {
             hints: any;
             /**
              * Identifier of the context where the call was made.
+             * @experimental
              */
             executionContextId?: ExecutionContextId;
         }
@@ -2674,6 +2754,7 @@ export namespace Protocol {
 
     /**
      * This domain is deprecated.
+     * @deprecated
      */
     export namespace Schema {
 
@@ -2699,6 +2780,9 @@ export namespace Protocol {
         }
     }
 
+    /**
+     * @experimental
+     */
     export namespace Accessibility {
 
         /**
@@ -3001,6 +3085,7 @@ export namespace Protocol {
         /**
          * The loadComplete event mirrors the load complete event sent by the browser to assistive
          * technology when the web page has finished loading.
+         * @experimental
          */
         export interface LoadCompleteEvent {
             /**
@@ -3011,6 +3096,7 @@ export namespace Protocol {
 
         /**
          * The nodesUpdated event is sent every time a previously requested node has changed the in tree.
+         * @experimental
          */
         export interface NodesUpdatedEvent {
             /**
@@ -3020,6 +3106,9 @@ export namespace Protocol {
         }
     }
 
+    /**
+     * @experimental
+     */
     export namespace Animation {
 
         export const enum AnimationType {
@@ -3064,7 +3153,7 @@ export namespace Protocol {
              */
             currentTime: number;
             /**
-             * Animation type of `Animation`. (AnimationType enum)
+             * Animation type of `Animation`.
              */
             type: ('CSSTransition' | 'CSSAnimation' | 'WebAnimation');
             /**
@@ -3318,6 +3407,7 @@ export namespace Protocol {
 
     /**
      * Audits domain allows investigation of page violations and possible improvements.
+     * @experimental
      */
     export namespace Audits {
 
@@ -3569,6 +3659,9 @@ export namespace Protocol {
             loaderId: Network.LoaderId;
         }
 
+        /**
+         * @deprecated
+         */
         export interface NavigatorUserAgentIssueDetails {
             url: string;
             location?: SourceCodeLocation;
@@ -3789,6 +3882,9 @@ export namespace Protocol {
             attributionReportingIssueDetails?: AttributionReportingIssueDetails;
             quirksModeIssueDetails?: QuirksModeIssueDetails;
             partitioningBlobURLIssueDetails?: PartitioningBlobURLIssueDetails;
+            /**
+             * @deprecated
+             */
             navigatorUserAgentIssueDetails?: NavigatorUserAgentIssueDetails;
             genericIssueDetails?: GenericIssueDetails;
             deprecationIssueDetails?: DeprecationIssueDetails;
@@ -3836,7 +3932,7 @@ export namespace Protocol {
              */
             requestId: Network.RequestId;
             /**
-             * The encoding to use. (GetEncodedResponseRequestEncoding enum)
+             * The encoding to use.
              */
             encoding: ('webp' | 'jpeg' | 'png');
             /**
@@ -3882,6 +3978,7 @@ export namespace Protocol {
 
     /**
      * Defines commands and events for browser extensions.
+     * @experimental
      */
     export namespace Extensions {
 
@@ -3974,6 +4071,7 @@ export namespace Protocol {
 
     /**
      * Defines commands and events for Autofill.
+     * @experimental
      */
     export namespace Autofill {
 
@@ -4118,6 +4216,7 @@ export namespace Protocol {
 
     /**
      * Defines events for background web platform features.
+     * @experimental
      */
     export namespace BackgroundService {
 
@@ -4210,17 +4309,25 @@ export namespace Protocol {
      */
     export namespace Browser {
 
+        /**
+         * @experimental
+         */
         export type BrowserContextID = string;
 
+        /**
+         * @experimental
+         */
         export type WindowID = integer;
 
         /**
          * The state of the browser window.
+         * @experimental
          */
         export type WindowState = ('normal' | 'minimized' | 'maximized' | 'fullscreen');
 
         /**
          * Browser window bounds information
+         * @experimental
          */
         export interface Bounds {
             /**
@@ -4245,13 +4352,20 @@ export namespace Protocol {
             windowState?: WindowState;
         }
 
+        /**
+         * @experimental
+         */
         export type PermissionType = ('ar' | 'audioCapture' | 'automaticFullscreen' | 'backgroundFetch' | 'backgroundSync' | 'cameraPanTiltZoom' | 'capturedSurfaceControl' | 'clipboardReadWrite' | 'clipboardSanitizedWrite' | 'displayCapture' | 'durableStorage' | 'geolocation' | 'handTracking' | 'idleDetection' | 'keyboardLock' | 'localFonts' | 'localNetworkAccess' | 'midi' | 'midiSysex' | 'nfc' | 'notifications' | 'paymentHandler' | 'periodicBackgroundSync' | 'pointerLock' | 'protectedMediaIdentifier' | 'sensors' | 'smartCard' | 'speakerSelection' | 'storageAccess' | 'topLevelStorageAccess' | 'videoCapture' | 'vr' | 'wakeLockScreen' | 'wakeLockSystem' | 'webAppInstallation' | 'webPrinting' | 'windowManagement');
 
+        /**
+         * @experimental
+         */
         export type PermissionSetting = ('granted' | 'denied' | 'prompt');
 
         /**
          * Definition of PermissionDescriptor defined in the Permissions API:
          * https://w3c.github.io/permissions/#dom-permissiondescriptor.
+         * @experimental
          */
         export interface PermissionDescriptor {
             /**
@@ -4284,11 +4398,13 @@ export namespace Protocol {
 
         /**
          * Browser command ids used by executeBrowserCommand.
+         * @experimental
          */
         export type BrowserCommandId = ('openTabSearch' | 'closeTabSearch' | 'openGlic');
 
         /**
          * Chrome histogram bucket.
+         * @experimental
          */
         export interface Bucket {
             /**
@@ -4307,6 +4423,7 @@ export namespace Protocol {
 
         /**
          * Chrome histogram.
+         * @experimental
          */
         export interface Histogram {
             /**
@@ -4327,6 +4444,9 @@ export namespace Protocol {
             buckets: Bucket[];
         }
 
+        /**
+         * @experimental
+         */
         export type PrivacySandboxAPI = ('BiddingAndAuctionServices' | 'TrustedKeyValue');
 
         export interface SetPermissionRequest {
@@ -4378,7 +4498,7 @@ export namespace Protocol {
             /**
              * Whether to allow all or deny all download requests, or use default Chrome behavior if
              * available (otherwise deny). |allowAndName| allows download and names files according to
-             * their download guids. (SetDownloadBehaviorRequestBehavior enum)
+             * their download guids.
              */
             behavior: ('deny' | 'allow' | 'allowAndName' | 'default');
             /**
@@ -4567,6 +4687,7 @@ export namespace Protocol {
 
         /**
          * Fired when page is about to start a download.
+         * @experimental
          */
         export interface DownloadWillBeginEvent {
             /**
@@ -4595,6 +4716,7 @@ export namespace Protocol {
 
         /**
          * Fired when download makes progress. Last call has |done| == true.
+         * @experimental
          */
         export interface DownloadProgressEvent {
             /**
@@ -4610,13 +4732,14 @@ export namespace Protocol {
              */
             receivedBytes: number;
             /**
-             * Download status. (DownloadProgressEventState enum)
+             * Download status.
              */
             state: ('inProgress' | 'completed' | 'canceled');
             /**
              * If download is "completed", provides the path of the downloaded file.
              * Depending on the platform, it is not guaranteed to be set, nor the file
              * is guaranteed to exist.
+             * @experimental
              */
             filePath?: string;
         }
@@ -4629,6 +4752,7 @@ export namespace Protocol {
      * CSS objects can be loaded using the `get*ForNode()` calls (which accept a DOM node id). A client
      * can also keep track of stylesheets via the `styleSheetAdded`/`styleSheetRemoved` events and
      * subsequently load the required stylesheet contents using the `getStyleSheet[Text]()` methods.
+     * @experimental
      */
     export namespace CSS {
 
@@ -4739,6 +4863,7 @@ export namespace Protocol {
             range?: SourceRange;
             /**
              * Specificity of the selector.
+             * @experimental
              */
             specificity?: Specificity;
         }
@@ -4746,6 +4871,7 @@ export namespace Protocol {
         /**
          * Specificity:
          * https://drafts.csswg.org/selectors/#specificity-rules
+         * @experimental
          */
         export interface Specificity {
             /**
@@ -4858,6 +4984,7 @@ export namespace Protocol {
             endColumn: number;
             /**
              * If the style sheet was loaded from a network resource, this indicates when the resource failed to load
+             * @experimental
              */
             loadingFailed?: boolean;
         }
@@ -4877,6 +5004,7 @@ export namespace Protocol {
             selectorList: SelectorList;
             /**
              * Array of selectors from ancestor style rules, sorted by distance from the current rule.
+             * @experimental
              */
             nestingSelectors?: string[];
             /**
@@ -4895,30 +5023,36 @@ export namespace Protocol {
             /**
              * Container query list array (for rules involving container queries).
              * The array enumerates container queries starting with the innermost one, going outwards.
+             * @experimental
              */
             containerQueries?: CSSContainerQuery[];
             /**
              * @supports CSS at-rule array.
              * The array enumerates @supports at-rules starting with the innermost one, going outwards.
+             * @experimental
              */
             supports?: CSSSupports[];
             /**
              * Cascade layer array. Contains the layer hierarchy that this rule belongs to starting
              * with the innermost layer and going outwards.
+             * @experimental
              */
             layers?: CSSLayer[];
             /**
              * @scope CSS at-rule array.
              * The array enumerates @scope at-rules starting with the innermost one, going outwards.
+             * @experimental
              */
             scopes?: CSSScope[];
             /**
              * The array keeps the types of ancestor CSSRules from the innermost going outwards.
+             * @experimental
              */
             ruleTypes?: CSSRuleType[];
             /**
              * @starting-style CSS at-rule array.
              * The array enumerates @starting-style at-rules starting with the innermost one, going outwards.
+             * @experimental
              */
             startingStyles?: CSSStartingStyle[];
         }
@@ -4926,6 +5060,7 @@ export namespace Protocol {
         /**
          * Enum indicating the type of a CSS rule, used to represent the order of a style rule's ancestors.
          * This list only contains rule types that are collected during the ancestor rule collection.
+         * @experimental
          */
         export type CSSRuleType = ('MediaRule' | 'SupportsRule' | 'ContainerRule' | 'LayerRule' | 'ScopeRule' | 'StyleRule' | 'StartingStyleRule');
 
@@ -5066,6 +5201,7 @@ export namespace Protocol {
             /**
              * Parsed longhand components of this property if it is a shorthand.
              * This field will be empty if the given property is not a shorthand.
+             * @experimental
              */
             longhandProperties?: CSSProperty[];
         }
@@ -5089,7 +5225,7 @@ export namespace Protocol {
              * Source of the media query: "mediaRule" if specified by a @media rule, "importRule" if
              * specified by an @import rule, "linkedSheet" if specified by a "media" attribute in a linked
              * stylesheet's LINK tag, "inlineSheet" if specified by a "media" attribute in an inline
-             * stylesheet's STYLE tag. (CSSMediaSource enum)
+             * stylesheet's STYLE tag.
              */
             source: ('mediaRule' | 'importRule' | 'linkedSheet' | 'inlineSheet');
             /**
@@ -5153,6 +5289,7 @@ export namespace Protocol {
 
         /**
          * CSS container query rule descriptor.
+         * @experimental
          */
         export interface CSSContainerQuery {
             /**
@@ -5192,6 +5329,7 @@ export namespace Protocol {
 
         /**
          * CSS Supports at-rule descriptor.
+         * @experimental
          */
         export interface CSSSupports {
             /**
@@ -5215,6 +5353,7 @@ export namespace Protocol {
 
         /**
          * CSS Scope at-rule descriptor.
+         * @experimental
          */
         export interface CSSScope {
             /**
@@ -5234,6 +5373,7 @@ export namespace Protocol {
 
         /**
          * CSS Layer at-rule descriptor.
+         * @experimental
          */
         export interface CSSLayer {
             /**
@@ -5253,6 +5393,7 @@ export namespace Protocol {
 
         /**
          * CSS Starting Style at-rule descriptor.
+         * @experimental
          */
         export interface CSSStartingStyle {
             /**
@@ -5268,6 +5409,7 @@ export namespace Protocol {
 
         /**
          * CSS Layer data.
+         * @experimental
          */
         export interface CSSLayerData {
             /**
@@ -5632,6 +5774,7 @@ export namespace Protocol {
              * NodeId for the DOM node in whose context custom property declarations for registered properties should be
              * validated. If omitted, declarations in the new rule text can only be validated statically, which may produce
              * incorrect results if the declaration contains a var() for example.
+             * @experimental
              */
             nodeForPropertySyntaxValidation?: DOM.NodeId;
         }
@@ -5864,10 +6007,12 @@ export namespace Protocol {
             cssFontPaletteValuesRule?: CSSFontPaletteValuesRule;
             /**
              * Id of the first parent element that does not have display: contents.
+             * @experimental
              */
             parentLayoutNodeId?: DOM.NodeId;
             /**
              * A list of CSS at-function rules referenced by styles of this node.
+             * @experimental
              */
             cssFunctionRules?: CSSFunctionRule[];
         }
@@ -6052,6 +6197,7 @@ export namespace Protocol {
              * NodeId for the DOM node in whose context custom property declarations for registered properties should be
              * validated. If omitted, declarations in the new rule text can only be validated statically, which may produce
              * incorrect results if the declaration contains a var() for example.
+             * @experimental
              */
             nodeForPropertySyntaxValidation?: DOM.NodeId;
         }
@@ -6120,6 +6266,9 @@ export namespace Protocol {
             styleSheetId: StyleSheetId;
         }
 
+        /**
+         * @experimental
+         */
         export interface ComputedStyleUpdatedEvent {
             /**
              * The node id that has updated computed styles.
@@ -6128,6 +6277,9 @@ export namespace Protocol {
         }
     }
 
+    /**
+     * @experimental
+     */
     export namespace CacheStorage {
 
         /**
@@ -6317,6 +6469,7 @@ export namespace Protocol {
     /**
      * A domain for interacting with Cast, Presentation API, and Remote Playback API
      * functionalities.
+     * @experimental
      */
     export namespace Cast {
 
@@ -6550,6 +6703,7 @@ export namespace Protocol {
              * Deprecated, as the HTML Imports API has been removed (crbug.com/937746).
              * This property used to return the imported document for the HTMLImport links.
              * The property is always undefined now.
+             * @deprecated
              */
             importedDocument?: Node;
             /**
@@ -6562,6 +6716,9 @@ export namespace Protocol {
             isSVG?: boolean;
             compatibilityMode?: CompatibilityMode;
             assignedSlot?: BackendNode;
+            /**
+             * @experimental
+             */
             isScrollable?: boolean;
         }
 
@@ -6788,7 +6945,8 @@ export namespace Protocol {
 
         export interface EnableRequest {
             /**
-             * Whether to include whitespaces in the children array of returned Nodes. (EnableRequestIncludeWhitespace enum)
+             * Whether to include whitespaces in the children array of returned Nodes.
+             * @experimental
              */
             includeWhitespace?: ('none' | 'all');
         }
@@ -6978,6 +7136,7 @@ export namespace Protocol {
             objectId?: Runtime.RemoteObjectId;
             /**
              * Include all shadow roots. Equals to false if not specified.
+             * @experimental
              */
             includeShadowDOM?: boolean;
         }
@@ -7154,7 +7313,7 @@ export namespace Protocol {
              */
             nodeId: NodeId;
             /**
-             * Type of relation to get. (GetElementByRelationRequestRelation enum)
+             * Type of relation to get.
              */
             relation: ('PopoverTarget' | 'InterestTarget' | 'CommandFor');
         }
@@ -7556,6 +7715,7 @@ export namespace Protocol {
 
         /**
          * Called when distribution is changed.
+         * @experimental
          */
         export interface DistributedNodesUpdatedEvent {
             /**
@@ -7570,6 +7730,7 @@ export namespace Protocol {
 
         /**
          * Fired when `Element`'s inline style is modified via a CSS property modification.
+         * @experimental
          */
         export interface InlineStyleInvalidatedEvent {
             /**
@@ -7580,6 +7741,7 @@ export namespace Protocol {
 
         /**
          * Called when a pseudo element is added to an element.
+         * @experimental
          */
         export interface PseudoElementAddedEvent {
             /**
@@ -7594,6 +7756,7 @@ export namespace Protocol {
 
         /**
          * Fired when a node's scrollability state changes.
+         * @experimental
          */
         export interface ScrollableFlagUpdatedEvent {
             /**
@@ -7608,6 +7771,7 @@ export namespace Protocol {
 
         /**
          * Called when a pseudo element is removed from an element.
+         * @experimental
          */
         export interface PseudoElementRemovedEvent {
             /**
@@ -7637,6 +7801,7 @@ export namespace Protocol {
 
         /**
          * Called when shadow root is popped from the element.
+         * @experimental
          */
         export interface ShadowRootPoppedEvent {
             /**
@@ -7651,6 +7816,7 @@ export namespace Protocol {
 
         /**
          * Called when shadow root is pushed into the element.
+         * @experimental
          */
         export interface ShadowRootPushedEvent {
             /**
@@ -7677,6 +7843,7 @@ export namespace Protocol {
 
         /**
          * CSP Violation type.
+         * @experimental
          */
         export type CSPViolationType = ('trustedtype-sink-violation' | 'trustedtype-policy-violation');
 
@@ -7768,6 +7935,7 @@ export namespace Protocol {
             eventName: string;
             /**
              * EventTarget interface name.
+             * @experimental
              */
             targetName?: string;
         }
@@ -7812,6 +7980,7 @@ export namespace Protocol {
             /**
              * EventTarget interface name to stop on. If equal to `"*"` or not provided, will stop on any
              * EventTarget.
+             * @experimental
              */
             targetName?: string;
         }
@@ -7835,6 +8004,7 @@ export namespace Protocol {
      * EventBreakpoints permits setting JavaScript breakpoints on operations and events
      * occurring in native code invoked from JavaScript. Once breakpoint is hit, it is
      * reported through Debugger domain, similarly to regular breakpoints being hit.
+     * @experimental
      */
     export namespace EventBreakpoints {
 
@@ -7855,6 +8025,7 @@ export namespace Protocol {
 
     /**
      * This domain facilitates obtaining document snapshots with DOM, layout, and style information.
+     * @experimental
      */
     export namespace DOMSnapshot {
 
@@ -8276,10 +8447,12 @@ export namespace Protocol {
             clientRects?: Rectangle[];
             /**
              * The list of background colors that are blended with colors of overlapping elements.
+             * @experimental
              */
             blendedBackgroundColors?: StringIndex[];
             /**
              * The list of computed text opacities.
+             * @experimental
              */
             textColorOpacities?: number[];
         }
@@ -8360,12 +8533,14 @@ export namespace Protocol {
              * Whether to include blended background colors in the snapshot (default: false).
              * Blended background color is achieved by blending background colors of all elements
              * that overlap with the current element.
+             * @experimental
              */
             includeBlendedBackgroundColors?: boolean;
             /**
              * Whether to include text color opacity in the snapshot (default: false).
              * An element might have the opacity property set that affects the text color of the element.
              * The final text color opacity is computed based on the opacity of all overlapping elements.
+             * @experimental
              */
             includeTextColorOpacities?: boolean;
         }
@@ -8384,6 +8559,7 @@ export namespace Protocol {
 
     /**
      * Query and modify DOM storage.
+     * @experimental
      */
     export namespace DOMStorage {
 
@@ -8458,6 +8634,9 @@ export namespace Protocol {
         }
     }
 
+    /**
+     * @experimental
+     */
     export namespace DeviceOrientation {
 
         export interface SetDeviceOrientationOverrideRequest {
@@ -8481,6 +8660,9 @@ export namespace Protocol {
      */
     export namespace Emulation {
 
+        /**
+         * @experimental
+         */
         export interface SafeAreaInsets {
             /**
              * Overrides safe-area-inset-top.
@@ -8528,7 +8710,7 @@ export namespace Protocol {
          */
         export interface ScreenOrientation {
             /**
-             * Orientation type. (ScreenOrientationType enum)
+             * Orientation type.
              */
             type: ('portraitPrimary' | 'portraitSecondary' | 'landscapePrimary' | 'landscapeSecondary');
             /**
@@ -8544,7 +8726,7 @@ export namespace Protocol {
 
         export interface DisplayFeature {
             /**
-             * Orientation of a display feature in relation to screen (DisplayFeatureOrientation enum)
+             * Orientation of a display feature in relation to screen
              */
             orientation: ('vertical' | 'horizontal');
             /**
@@ -8567,7 +8749,7 @@ export namespace Protocol {
 
         export interface DevicePosture {
             /**
-             * Current posture of the device (DevicePostureType enum)
+             * Current posture of the device
              */
             type: ('continuous' | 'folded');
         }
@@ -8582,11 +8764,13 @@ export namespace Protocol {
          * allow the next delayed task (if any) to run; pause: The virtual time base may not advance;
          * pauseIfNetworkFetchesPending: The virtual time base may not advance if there are any pending
          * resource fetches.
+         * @experimental
          */
         export type VirtualTimePolicy = ('advance' | 'pause' | 'pauseIfNetworkFetchesPending');
 
         /**
          * Used to specify User Agent Client Hints to emulate. See https://wicg.github.io/ua-client-hints
+         * @experimental
          */
         export interface UserAgentBrandVersion {
             brand: string;
@@ -8596,6 +8780,7 @@ export namespace Protocol {
         /**
          * Used to specify User Agent Client Hints to emulate. See https://wicg.github.io/ua-client-hints
          * Missing optional values will be filled in by the target with what it would normally use.
+         * @experimental
          */
         export interface UserAgentMetadata {
             /**
@@ -8606,6 +8791,9 @@ export namespace Protocol {
              * Brands appearing in Sec-CH-UA-Full-Version-List.
              */
             fullVersionList?: UserAgentBrandVersion[];
+            /**
+             * @deprecated
+             */
             fullVersion?: string;
             platform: string;
             platformVersion: string;
@@ -8624,25 +8812,38 @@ export namespace Protocol {
         /**
          * Used to specify sensor types to emulate.
          * See https://w3c.github.io/sensors/#automation for more information.
+         * @experimental
          */
         export type SensorType = ('absolute-orientation' | 'accelerometer' | 'ambient-light' | 'gravity' | 'gyroscope' | 'linear-acceleration' | 'magnetometer' | 'relative-orientation');
 
+        /**
+         * @experimental
+         */
         export interface SensorMetadata {
             available?: boolean;
             minimumFrequency?: number;
             maximumFrequency?: number;
         }
 
+        /**
+         * @experimental
+         */
         export interface SensorReadingSingle {
             value: number;
         }
 
+        /**
+         * @experimental
+         */
         export interface SensorReadingXYZ {
             x: number;
             y: number;
             z: number;
         }
 
+        /**
+         * @experimental
+         */
         export interface SensorReadingQuaternion {
             x: number;
             y: number;
@@ -8650,22 +8851,35 @@ export namespace Protocol {
             w: number;
         }
 
+        /**
+         * @experimental
+         */
         export interface SensorReading {
             single?: SensorReadingSingle;
             xyz?: SensorReadingXYZ;
             quaternion?: SensorReadingQuaternion;
         }
 
+        /**
+         * @experimental
+         */
         export type PressureSource = ('cpu');
 
+        /**
+         * @experimental
+         */
         export type PressureState = ('nominal' | 'fair' | 'serious' | 'critical');
 
+        /**
+         * @experimental
+         */
         export interface PressureMetadata {
             available?: boolean;
         }
 
         /**
          * Enum of image types that can be disabled.
+         * @experimental
          */
         export type DisabledImageType = ('avif' | 'webp');
 
@@ -8730,26 +8944,32 @@ export namespace Protocol {
             mobile: boolean;
             /**
              * Scale to apply to resulting view image.
+             * @experimental
              */
             scale?: number;
             /**
              * Overriding screen width value in pixels (minimum 0, maximum 10000000).
+             * @experimental
              */
             screenWidth?: integer;
             /**
              * Overriding screen height value in pixels (minimum 0, maximum 10000000).
+             * @experimental
              */
             screenHeight?: integer;
             /**
              * Overriding view X position on screen in pixels (minimum 0, maximum 10000000).
+             * @experimental
              */
             positionX?: integer;
             /**
              * Overriding view Y position on screen in pixels (minimum 0, maximum 10000000).
+             * @experimental
              */
             positionY?: integer;
             /**
              * Do not set visible view size, rely upon explicit setVisibleSize call.
+             * @experimental
              */
             dontSetVisibleSize?: boolean;
             /**
@@ -8759,18 +8979,23 @@ export namespace Protocol {
             /**
              * If set, the visible area of the page will be overridden to this viewport. This viewport
              * change is not observed by the page, e.g. viewport-relative elements do not change positions.
+             * @experimental
              */
             viewport?: Page.Viewport;
             /**
              * If set, the display feature of a multi-segment screen. If not set, multi-segment support
              * is turned-off.
              * Deprecated, use Emulation.setDisplayFeaturesOverride.
+             * @deprecated
+             * @experimental
              */
             displayFeature?: DisplayFeature;
             /**
              * If set, the posture of a foldable device. If not set the posture is set
              * to continuous.
              * Deprecated, use Emulation.setDevicePostureOverride.
+             * @deprecated
+             * @experimental
              */
             devicePosture?: DevicePosture;
         }
@@ -8808,7 +9033,7 @@ export namespace Protocol {
              */
             enabled: boolean;
             /**
-             * Touch/gesture events configuration. Default: current platform. (SetEmitTouchEventsForMouseRequestConfiguration enum)
+             * Touch/gesture events configuration. Default: current platform.
              */
             configuration?: ('mobile' | 'desktop');
         }
@@ -8837,7 +9062,7 @@ export namespace Protocol {
         export interface SetEmulatedVisionDeficiencyRequest {
             /**
              * Vision deficiency to emulate. Order: best-effort emulations come first, followed by any
-             * physiologically accurate emulations for medically recognized color vision deficiencies. (SetEmulatedVisionDeficiencyRequestType enum)
+             * physiologically accurate emulations for medically recognized color vision deficiencies.
              */
             type: ('none' | 'blurredVision' | 'reducedContrast' | 'achromatopsia' | 'deuteranopia' | 'protanopia' | 'tritanopia');
         }
@@ -9045,6 +9270,7 @@ export namespace Protocol {
             platform?: string;
             /**
              * To be sent in Sec-CH-UA-* headers and returned in navigator.userAgentData
+             * @experimental
              */
             userAgentMetadata?: UserAgentMetadata;
         }
@@ -9067,6 +9293,7 @@ export namespace Protocol {
 
     /**
      * This domain provides experimental commands only supported in headless mode.
+     * @experimental
      */
     export namespace HeadlessExperimental {
 
@@ -9081,7 +9308,7 @@ export namespace Protocol {
          */
         export interface ScreenshotParams {
             /**
-             * Image compression format (defaults to png). (ScreenshotParamsFormat enum)
+             * Image compression format (defaults to png).
              */
             format?: ('jpeg' | 'png' | 'webp');
             /**
@@ -9196,6 +9423,9 @@ export namespace Protocol {
         }
     }
 
+    /**
+     * @experimental
+     */
     export namespace FileSystem {
 
         export interface File {
@@ -9247,6 +9477,9 @@ export namespace Protocol {
         }
     }
 
+    /**
+     * @experimental
+     */
     export namespace IndexedDB {
 
         /**
@@ -9324,7 +9557,7 @@ export namespace Protocol {
          */
         export interface Key {
             /**
-             * Key type. (KeyType enum)
+             * Key type.
              */
             type: ('number' | 'string' | 'date' | 'array');
             /**
@@ -9396,7 +9629,7 @@ export namespace Protocol {
          */
         export interface KeyPath {
             /**
-             * Key path type. (KeyPathType enum)
+             * Key path type.
              */
             type: ('null' | 'string' | 'array');
             /**
@@ -9644,6 +9877,7 @@ export namespace Protocol {
             force?: number;
             /**
              * The normalized tangential pressure, which has a range of [-1,1] (default: 0).
+             * @experimental
              */
             tangentialPressure?: number;
             /**
@@ -9656,6 +9890,7 @@ export namespace Protocol {
             tiltY?: number;
             /**
              * The clockwise rotation of a pen stylus around its own major axis, in degrees in the range [0,359] (default: 0).
+             * @experimental
              */
             twist?: integer;
             /**
@@ -9664,6 +9899,9 @@ export namespace Protocol {
             id?: number;
         }
 
+        /**
+         * @experimental
+         */
         export type GestureSourceType = ('default' | 'touch' | 'mouse');
 
         export type MouseButton = ('none' | 'left' | 'middle' | 'right' | 'back' | 'forward');
@@ -9673,6 +9911,9 @@ export namespace Protocol {
          */
         export type TimeSinceEpoch = number;
 
+        /**
+         * @experimental
+         */
         export interface DragDataItem {
             /**
              * Mime type of the dragged data.
@@ -9694,6 +9935,9 @@ export namespace Protocol {
             baseURL?: string;
         }
 
+        /**
+         * @experimental
+         */
         export interface DragData {
             items: DragDataItem[];
             /**
@@ -9715,7 +9959,7 @@ export namespace Protocol {
 
         export interface DispatchDragEventRequest {
             /**
-             * Type of the drag event. (DispatchDragEventRequestType enum)
+             * Type of the drag event.
              */
             type: ('dragEnter' | 'dragOver' | 'drop' | 'dragCancel');
             /**
@@ -9744,7 +9988,7 @@ export namespace Protocol {
 
         export interface DispatchKeyEventRequest {
             /**
-             * Type of the key event. (DispatchKeyEventRequestType enum)
+             * Type of the key event.
              */
             type: ('keyDown' | 'keyUp' | 'rawKeyDown' | 'char');
             /**
@@ -9808,6 +10052,7 @@ export namespace Protocol {
              * Editing commands to send with the key event (e.g., 'selectAll') (default: []).
              * These are related to but not equal the command names used in `document.execCommand` and NSStandardKeyBindingResponding.
              * See https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/editing/commands/editor_command_names.h for valid command names.
+             * @experimental
              */
             commands?: string[];
         }
@@ -9856,7 +10101,7 @@ export namespace Protocol {
 
         export interface DispatchMouseEventRequest {
             /**
-             * Type of the mouse event. (DispatchMouseEventRequestType enum)
+             * Type of the mouse event.
              */
             type: ('mousePressed' | 'mouseReleased' | 'mouseMoved' | 'mouseWheel');
             /**
@@ -9892,10 +10137,12 @@ export namespace Protocol {
             clickCount?: integer;
             /**
              * The normalized pressure, which has a range of [0,1] (default: 0).
+             * @experimental
              */
             force?: number;
             /**
              * The normalized tangential pressure, which has a range of [-1,1] (default: 0).
+             * @experimental
              */
             tangentialPressure?: number;
             /**
@@ -9908,6 +10155,7 @@ export namespace Protocol {
             tiltY?: number;
             /**
              * The clockwise rotation of a pen stylus around its own major axis, in degrees in the range [0,359] (default: 0).
+             * @experimental
              */
             twist?: integer;
             /**
@@ -9919,7 +10167,7 @@ export namespace Protocol {
              */
             deltaY?: number;
             /**
-             * Pointer type (default: "mouse"). (DispatchMouseEventRequestPointerType enum)
+             * Pointer type (default: "mouse").
              */
             pointerType?: ('mouse' | 'pen');
         }
@@ -9934,7 +10182,7 @@ export namespace Protocol {
         export interface DispatchTouchEventRequest {
             /**
              * Type of the touch event. TouchEnd and TouchCancel must not contain any touch points, while
-             * TouchStart and TouchMove must contains at least one. (DispatchTouchEventRequestType enum)
+             * TouchStart and TouchMove must contains at least one.
              */
             type: ('touchStart' | 'touchEnd' | 'touchMove' | 'touchCancel');
             /**
@@ -9963,7 +10211,7 @@ export namespace Protocol {
 
         export interface EmulateTouchFromMouseEventRequest {
             /**
-             * Type of the mouse event. (EmulateTouchFromMouseEventRequestType enum)
+             * Type of the mouse event.
              */
             type: ('mousePressed' | 'mouseReleased' | 'mouseMoved' | 'mouseWheel');
             /**
@@ -10117,12 +10365,16 @@ export namespace Protocol {
         /**
          * Emitted only when `Input.setInterceptDrags` is enabled. Use this data with `Input.dispatchDragEvent` to
          * restore normal drag and drop behavior.
+         * @experimental
          */
         export interface DragInterceptedEvent {
             data: DragData;
         }
     }
 
+    /**
+     * @experimental
+     */
     export namespace Inspector {
 
         /**
@@ -10136,6 +10388,9 @@ export namespace Protocol {
         }
     }
 
+    /**
+     * @experimental
+     */
     export namespace LayerTree {
 
         /**
@@ -10163,7 +10418,7 @@ export namespace Protocol {
              */
             rect: DOM.Rect;
             /**
-             * Reason for rectangle to force scrolling on the main thread (ScrollRectType enum)
+             * Reason for rectangle to force scrolling on the main thread
              */
             type: ('RepaintsOnScroll' | 'TouchEventHandler' | 'WheelEventHandler');
         }
@@ -10459,20 +10714,17 @@ export namespace Protocol {
          */
         export interface LogEntry {
             /**
-             * Log entry source. (LogEntrySource enum)
+             * Log entry source.
              */
             source: ('xml' | 'javascript' | 'network' | 'storage' | 'appcache' | 'rendering' | 'security' | 'deprecation' | 'worker' | 'violation' | 'intervention' | 'recommendation' | 'other');
             /**
-             * Log entry severity. (LogEntryLevel enum)
+             * Log entry severity.
              */
             level: ('verbose' | 'info' | 'warning' | 'error');
             /**
              * Logged text.
              */
             text: string;
-            /**
-             *  (LogEntryCategory enum)
-             */
             category?: ('cors');
             /**
              * Timestamp when this entry was added.
@@ -10519,7 +10771,7 @@ export namespace Protocol {
          */
         export interface ViolationSetting {
             /**
-             * Violation type. (ViolationSettingName enum)
+             * Violation type.
              */
             name: ('longTask' | 'longLayout' | 'blockedEvent' | 'blockedParser' | 'discouragedAPIUse' | 'handler' | 'recurringHandler');
             /**
@@ -10546,6 +10798,9 @@ export namespace Protocol {
         }
     }
 
+    /**
+     * @experimental
+     */
     export namespace Memory {
 
         /**
@@ -10732,6 +10987,7 @@ export namespace Protocol {
         /**
          * Represents the cookie's 'Priority' status:
          * https://tools.ietf.org/html/draft-west-cookie-priority-00
+         * @experimental
          */
         export type CookiePriority = ('Low' | 'Medium' | 'High');
 
@@ -10739,6 +10995,7 @@ export namespace Protocol {
          * Represents the source scheme of the origin that originally set the cookie.
          * A value of "Unset" allows protocol clients to emulate legacy cookie scope for the scheme.
          * This is a temporary ability and it will be removed in the future.
+         * @experimental
          */
         export type CookieSourceScheme = ('Unset' | 'NonSecure' | 'Secure');
 
@@ -10785,26 +11042,32 @@ export namespace Protocol {
             sslEnd: number;
             /**
              * Started running ServiceWorker.
+             * @experimental
              */
             workerStart: number;
             /**
              * Finished Starting ServiceWorker.
+             * @experimental
              */
             workerReady: number;
             /**
              * Started fetch event.
+             * @experimental
              */
             workerFetchStart: number;
             /**
              * Settled fetch event respondWith promise.
+             * @experimental
              */
             workerRespondWithSettled: number;
             /**
              * Started ServiceWorker static routing source evaluation.
+             * @experimental
              */
             workerRouterEvaluationStart?: number;
             /**
              * Started cache lookup when the source was evaluated to `cache`.
+             * @experimental
              */
             workerCacheLookupStart?: number;
             /**
@@ -10817,14 +11080,17 @@ export namespace Protocol {
             sendEnd: number;
             /**
              * Time the server started pushing request.
+             * @experimental
              */
             pushStart: number;
             /**
              * Time the server finished pushing request.
+             * @experimental
              */
             pushEnd: number;
             /**
              * Started receiving response headers.
+             * @experimental
              */
             receiveHeadersStart: number;
             /**
@@ -10879,6 +11145,7 @@ export namespace Protocol {
             /**
              * HTTP POST request data.
              * Use postDataEntries instead.
+             * @deprecated
              */
             postData?: string;
             /**
@@ -10887,6 +11154,7 @@ export namespace Protocol {
             hasPostData?: boolean;
             /**
              * Request body elements (post data broken into individual entries).
+             * @experimental
              */
             postDataEntries?: PostDataEntry[];
             /**
@@ -10898,7 +11166,7 @@ export namespace Protocol {
              */
             initialPriority: ResourcePriority;
             /**
-             * The referrer policy of the request, as defined in https://www.w3.org/TR/referrer-policy/ (RequestReferrerPolicy enum)
+             * The referrer policy of the request, as defined in https://www.w3.org/TR/referrer-policy/
              */
             referrerPolicy: ('unsafe-url' | 'no-referrer-when-downgrade' | 'no-referrer' | 'origin' | 'origin-when-cross-origin' | 'same-origin' | 'strict-origin' | 'strict-origin-when-cross-origin');
             /**
@@ -10908,11 +11176,13 @@ export namespace Protocol {
             /**
              * Set for requests when the TrustToken API is used. Contains the parameters
              * passed by the developer (e.g. via "fetch") as understood by the backend.
+             * @experimental
              */
             trustTokenParams?: TrustTokenParams;
             /**
              * True if this resource request is considered to be the 'same site' as the
              * request corresponding to the main frame.
+             * @experimental
              */
             isSameSite?: boolean;
         }
@@ -11058,12 +11328,13 @@ export namespace Protocol {
          * Determines what type of Trust Token operation is executed and
          * depending on the type, some additional parameters. The values
          * are specified in third_party/blink/renderer/core/fetch/trust_token.idl.
+         * @experimental
          */
         export interface TrustTokenParams {
             operation: TrustTokenOperationType;
             /**
              * Only set for "token-redemption" operation and determine whether
-             * to request a fresh SRR or use a still valid cached SRR. (TrustTokenParamsRefreshPolicy enum)
+             * to request a fresh SRR or use a still valid cached SRR.
              */
             refreshPolicy: ('UseCached' | 'Refresh');
             /**
@@ -11073,10 +11344,14 @@ export namespace Protocol {
             issuers?: string[];
         }
 
+        /**
+         * @experimental
+         */
         export type TrustTokenOperationType = ('Issuance' | 'Redemption' | 'Signing');
 
         /**
          * The reason why Chrome uses a specific transport protocol for HTTP semantics.
+         * @experimental
          */
         export type AlternateProtocolUsage = ('alternativeJobWonWithoutRace' | 'alternativeJobWonRace' | 'mainJobWonRace' | 'mappingMissing' | 'broken' | 'dnsAlpnH3JobWonWithoutRace' | 'dnsAlpnH3JobWonRace' | 'unspecifiedReason');
 
@@ -11085,6 +11360,9 @@ export namespace Protocol {
          */
         export type ServiceWorkerRouterSource = ('network' | 'cache' | 'fetch-event' | 'race-network-and-fetch-handler' | 'race-network-and-cache');
 
+        /**
+         * @experimental
+         */
         export interface ServiceWorkerRouterInfo {
             /**
              * ID of the rule matched. If there is a matched rule, this field will
@@ -11124,6 +11402,7 @@ export namespace Protocol {
             headers: Headers;
             /**
              * HTTP response headers text. This has been replaced by the headers in Network.responseReceivedExtraInfo.
+             * @deprecated
              */
             headersText?: string;
             /**
@@ -11140,6 +11419,7 @@ export namespace Protocol {
             requestHeaders?: Headers;
             /**
              * HTTP request headers text. This has been replaced by the headers in Network.requestWillBeSentExtraInfo.
+             * @deprecated
              */
             requestHeadersText?: string;
             /**
@@ -11179,6 +11459,7 @@ export namespace Protocol {
              * field is set with `matchedSourceType` field, a matching rule is found.
              * If this field is set without `matchedSource`, no matching rule is found.
              * Otherwise, the API is not used.
+             * @experimental
              */
             serviceWorkerRouterInfo?: ServiceWorkerRouterInfo;
             /**
@@ -11207,6 +11488,7 @@ export namespace Protocol {
             protocol?: string;
             /**
              * The reason why Chrome uses a specific transport protocol for HTTP semantics.
+             * @experimental
              */
             alternateProtocolUsage?: AlternateProtocolUsage;
             /**
@@ -11220,6 +11502,7 @@ export namespace Protocol {
             /**
              * Indicates whether the request was sent through IP Protection proxies. If
              * set to true, the request used the IP Protection privacy feature.
+             * @experimental
              */
             isIpProtectionUsed?: boolean;
         }
@@ -11320,7 +11603,7 @@ export namespace Protocol {
          */
         export interface Initiator {
             /**
-             * Type of this initiator. (InitiatorType enum)
+             * Type of this initiator.
              */
             type: ('parser' | 'script' | 'preload' | 'SignedExchange' | 'preflight' | 'other');
             /**
@@ -11351,6 +11634,7 @@ export namespace Protocol {
         /**
          * cookiePartitionKey object
          * The representation of the components of the key that are created by the cookiePartitionKey class contained in net/cookies/cookie_partition_key.h.
+         * @experimental
          */
         export interface CookiePartitionKey {
             /**
@@ -11410,49 +11694,60 @@ export namespace Protocol {
             sameSite?: CookieSameSite;
             /**
              * Cookie Priority
+             * @experimental
              */
             priority: CookiePriority;
             /**
              * True if cookie is SameParty.
+             * @deprecated
+             * @experimental
              */
             sameParty: boolean;
             /**
              * Cookie source scheme type.
+             * @experimental
              */
             sourceScheme: CookieSourceScheme;
             /**
              * Cookie source port. Valid values are {-1, [1, 65535]}, -1 indicates an unspecified port.
              * An unspecified port value allows protocol clients to emulate legacy cookie scope for the port.
              * This is a temporary ability and it will be removed in the future.
+             * @experimental
              */
             sourcePort: integer;
             /**
              * Cookie partition key.
+             * @experimental
              */
             partitionKey?: CookiePartitionKey;
             /**
              * True if cookie partition key is opaque.
+             * @experimental
              */
             partitionKeyOpaque?: boolean;
         }
 
         /**
          * Types of reasons why a cookie may not be stored from a response.
+         * @experimental
          */
         export type SetCookieBlockedReason = ('SecureOnly' | 'SameSiteStrict' | 'SameSiteLax' | 'SameSiteUnspecifiedTreatedAsLax' | 'SameSiteNoneInsecure' | 'UserPreferences' | 'ThirdPartyPhaseout' | 'ThirdPartyBlockedInFirstPartySet' | 'SyntaxError' | 'SchemeNotSupported' | 'OverwriteSecure' | 'InvalidDomain' | 'InvalidPrefix' | 'UnknownError' | 'SchemefulSameSiteStrict' | 'SchemefulSameSiteLax' | 'SchemefulSameSiteUnspecifiedTreatedAsLax' | 'SamePartyFromCrossPartyContext' | 'SamePartyConflictsWithOtherAttributes' | 'NameValuePairExceedsMaxSize' | 'DisallowedCharacter' | 'NoCookieContent');
 
         /**
          * Types of reasons why a cookie may not be sent with a request.
+         * @experimental
          */
         export type CookieBlockedReason = ('SecureOnly' | 'NotOnPath' | 'DomainMismatch' | 'SameSiteStrict' | 'SameSiteLax' | 'SameSiteUnspecifiedTreatedAsLax' | 'SameSiteNoneInsecure' | 'UserPreferences' | 'ThirdPartyPhaseout' | 'ThirdPartyBlockedInFirstPartySet' | 'UnknownError' | 'SchemefulSameSiteStrict' | 'SchemefulSameSiteLax' | 'SchemefulSameSiteUnspecifiedTreatedAsLax' | 'SamePartyFromCrossPartyContext' | 'NameValuePairExceedsMaxSize' | 'PortMismatch' | 'SchemeMismatch' | 'AnonymousContext');
 
         /**
          * Types of reasons why a cookie should have been blocked by 3PCD but is exempted for the request.
+         * @experimental
          */
         export type CookieExemptionReason = ('None' | 'UserSetting' | 'TPCDMetadata' | 'TPCDDeprecationTrial' | 'TopLevelTPCDDeprecationTrial' | 'TPCDHeuristics' | 'EnterprisePolicy' | 'StorageAccess' | 'TopLevelStorageAccess' | 'Scheme' | 'SameSiteNoneCookiesInSandbox');
 
         /**
          * A cookie which was not stored from a response with the corresponding reason.
+         * @experimental
          */
         export interface BlockedSetCookieWithReason {
             /**
@@ -11475,6 +11770,7 @@ export namespace Protocol {
         /**
          * A cookie should have been blocked by 3PCD but is exempted and stored from a response with the
          * corresponding reason. A cookie could only have at most one exemption reason.
+         * @experimental
          */
         export interface ExemptedSetCookieWithReason {
             /**
@@ -11494,6 +11790,7 @@ export namespace Protocol {
         /**
          * A cookie associated with the request which may or may not be sent with it.
          * Includes the cookies itself and reasons for blocking or exemption.
+         * @experimental
          */
         export interface AssociatedCookie {
             /**
@@ -11554,24 +11851,29 @@ export namespace Protocol {
             expires?: TimeSinceEpoch;
             /**
              * Cookie Priority.
+             * @experimental
              */
             priority?: CookiePriority;
             /**
              * True if cookie is SameParty.
+             * @experimental
              */
             sameParty?: boolean;
             /**
              * Cookie source scheme type.
+             * @experimental
              */
             sourceScheme?: CookieSourceScheme;
             /**
              * Cookie source port. Valid values are {-1, [1, 65535]}, -1 indicates an unspecified port.
              * An unspecified port value allows protocol clients to emulate legacy cookie scope for the port.
              * This is a temporary ability and it will be removed in the future.
+             * @experimental
              */
             sourcePort?: integer;
             /**
              * Cookie partition key. If not set, the cookie will be set as not partitioned.
+             * @experimental
              */
             partitionKey?: CookiePartitionKey;
         }
@@ -11583,10 +11885,11 @@ export namespace Protocol {
 
         /**
          * Authorization challenge for HTTP status code 401 or 407.
+         * @experimental
          */
         export interface AuthChallenge {
             /**
-             * Source of the authentication challenge. (AuthChallengeSource enum)
+             * Source of the authentication challenge.
              */
             source?: ('Server' | 'Proxy');
             /**
@@ -11611,12 +11914,13 @@ export namespace Protocol {
 
         /**
          * Response to an AuthChallenge.
+         * @experimental
          */
         export interface AuthChallengeResponse {
             /**
              * The decision on what to do in response to the authorization challenge.  Default means
              * deferring to the default behavior of the net stack, which will likely either the Cancel
-             * authentication or display a popup dialog box. (AuthChallengeResponseResponse enum)
+             * authentication or display a popup dialog box.
              */
             response: ('Default' | 'CancelAuth' | 'ProvideCredentials');
             /**
@@ -11634,11 +11938,13 @@ export namespace Protocol {
         /**
          * Stages of the interception to begin intercepting. Request will intercept before the request is
          * sent. Response will intercept after the response is received.
+         * @experimental
          */
         export type InterceptionStage = ('Request' | 'HeadersReceived');
 
         /**
          * Request pattern for interception.
+         * @experimental
          */
         export interface RequestPattern {
             /**
@@ -11659,6 +11965,7 @@ export namespace Protocol {
         /**
          * Information about a signed exchange signature.
          * https://wicg.github.io/webpackage/draft-yasskin-httpbis-origin-signed-exchanges-impl.html#rfc.section.3.1
+         * @experimental
          */
         export interface SignedExchangeSignature {
             /**
@@ -11702,6 +12009,7 @@ export namespace Protocol {
         /**
          * Information about a signed exchange header.
          * https://wicg.github.io/webpackage/draft-yasskin-httpbis-origin-signed-exchanges-impl.html#cbor-representation
+         * @experimental
          */
         export interface SignedExchangeHeader {
             /**
@@ -11728,11 +12036,13 @@ export namespace Protocol {
 
         /**
          * Field type for a signed exchange related error.
+         * @experimental
          */
         export type SignedExchangeErrorField = ('signatureSig' | 'signatureIntegrity' | 'signatureCertUrl' | 'signatureCertSha256' | 'signatureValidityUrl' | 'signatureTimestamps');
 
         /**
          * Information about a signed exchange response.
+         * @experimental
          */
         export interface SignedExchangeError {
             /**
@@ -11751,6 +12061,7 @@ export namespace Protocol {
 
         /**
          * Information about a signed exchange response.
+         * @experimental
          */
         export interface SignedExchangeInfo {
             /**
@@ -11778,11 +12089,18 @@ export namespace Protocol {
 
         /**
          * List of content encodings supported by the backend.
+         * @experimental
          */
         export type ContentEncoding = ('deflate' | 'gzip' | 'br' | 'zstd');
 
+        /**
+         * @experimental
+         */
         export type DirectSocketDnsQueryType = ('ipv4' | 'ipv6');
 
+        /**
+         * @experimental
+         */
         export interface DirectTCPSocketOptions {
             /**
              * TCP_NODELAY option
@@ -11803,6 +12121,9 @@ export namespace Protocol {
             dnsQueryType?: DirectSocketDnsQueryType;
         }
 
+        /**
+         * @experimental
+         */
         export interface DirectUDPSocketOptions {
             remoteAddr?: string;
             /**
@@ -11825,6 +12146,9 @@ export namespace Protocol {
             receiveBufferSize?: number;
         }
 
+        /**
+         * @experimental
+         */
         export interface DirectUDPMessage {
             data: string;
             /**
@@ -11838,10 +12162,19 @@ export namespace Protocol {
             remotePort?: integer;
         }
 
+        /**
+         * @experimental
+         */
         export type PrivateNetworkRequestPolicy = ('Allow' | 'BlockFromInsecureToMorePrivate' | 'WarnFromInsecureToMorePrivate' | 'PreflightBlock' | 'PreflightWarn' | 'PermissionBlock' | 'PermissionWarn');
 
+        /**
+         * @experimental
+         */
         export type IPAddressSpace = ('Loopback' | 'Local' | 'Public' | 'Unknown');
 
+        /**
+         * @experimental
+         */
         export interface ConnectTiming {
             /**
              * Timing's requestTime is a baseline in seconds, while the other numbers are ticks in
@@ -11851,14 +12184,23 @@ export namespace Protocol {
             requestTime: number;
         }
 
+        /**
+         * @experimental
+         */
         export interface ClientSecurityState {
             initiatorIsSecureContext: boolean;
             initiatorIPAddressSpace: IPAddressSpace;
             privateNetworkRequestPolicy: PrivateNetworkRequestPolicy;
         }
 
+        /**
+         * @experimental
+         */
         export type CrossOriginOpenerPolicyValue = ('SameOrigin' | 'SameOriginAllowPopups' | 'RestrictProperties' | 'UnsafeNone' | 'SameOriginPlusCoep' | 'RestrictPropertiesPlusCoep' | 'NoopenerAllowPopups');
 
+        /**
+         * @experimental
+         */
         export interface CrossOriginOpenerPolicyStatus {
             value: CrossOriginOpenerPolicyValue;
             reportOnlyValue: CrossOriginOpenerPolicyValue;
@@ -11866,8 +12208,14 @@ export namespace Protocol {
             reportOnlyReportingEndpoint?: string;
         }
 
+        /**
+         * @experimental
+         */
         export type CrossOriginEmbedderPolicyValue = ('None' | 'Credentialless' | 'RequireCorp');
 
+        /**
+         * @experimental
+         */
         export interface CrossOriginEmbedderPolicyStatus {
             value: CrossOriginEmbedderPolicyValue;
             reportOnlyValue: CrossOriginEmbedderPolicyValue;
@@ -11875,14 +12223,23 @@ export namespace Protocol {
             reportOnlyReportingEndpoint?: string;
         }
 
+        /**
+         * @experimental
+         */
         export type ContentSecurityPolicySource = ('HTTP' | 'Meta');
 
+        /**
+         * @experimental
+         */
         export interface ContentSecurityPolicyStatus {
             effectiveDirectives: string;
             isEnforced: boolean;
             source: ContentSecurityPolicySource;
         }
 
+        /**
+         * @experimental
+         */
         export interface SecurityIsolationStatus {
             coop?: CrossOriginOpenerPolicyStatus;
             coep?: CrossOriginEmbedderPolicyStatus;
@@ -11891,13 +12248,18 @@ export namespace Protocol {
 
         /**
          * The status of a Reporting API report.
+         * @experimental
          */
         export type ReportStatus = ('Queued' | 'Pending' | 'MarkedForRemoval' | 'Success');
 
+        /**
+         * @experimental
+         */
         export type ReportId = string;
 
         /**
          * An object representing a report generated by the Reporting API.
+         * @experimental
          */
         export interface ReportingApiReport {
             id: ReportId;
@@ -11929,6 +12291,9 @@ export namespace Protocol {
             status: ReportStatus;
         }
 
+        /**
+         * @experimental
+         */
         export interface ReportingApiEndpoint {
             /**
              * The URL of the endpoint to which reports may be delivered.
@@ -11942,6 +12307,7 @@ export namespace Protocol {
 
         /**
          * An object providing the result of a network resource load.
+         * @experimental
          */
         export interface LoadNetworkResourcePageResult {
             success: boolean;
@@ -11964,6 +12330,7 @@ export namespace Protocol {
         /**
          * An options object that may be extended later to better support CORS,
          * CORB and streaming.
+         * @experimental
          */
         export interface LoadNetworkResourceOptions {
             disableCache: boolean;
@@ -12057,6 +12424,7 @@ export namespace Protocol {
             /**
              * If specified, deletes only cookies with the the given name and partitionKey where
              * all partition key attributes match the cookie partition key attribute.
+             * @experimental
              */
             partitionKey?: CookiePartitionKey;
         }
@@ -12084,14 +12452,17 @@ export namespace Protocol {
             connectionType?: ConnectionType;
             /**
              * WebRTC packet loss (percent, 0-100). 0 disables packet loss emulation, 100 drops all the packets.
+             * @experimental
              */
             packetLoss?: number;
             /**
              * WebRTC packet queue length (packet). 0 removes any queue length limitations.
+             * @experimental
              */
             packetQueueLength?: integer;
             /**
              * WebRTC packetReordering feature.
+             * @experimental
              */
             packetReordering?: boolean;
         }
@@ -12099,10 +12470,12 @@ export namespace Protocol {
         export interface EnableRequest {
             /**
              * Buffer size in bytes to use when preserving network payloads (XHRs, etc).
+             * @experimental
              */
             maxTotalBufferSize?: integer;
             /**
              * Per-resource buffer size in bytes to use when preserving network payloads (XHRs, etc).
+             * @experimental
              */
             maxResourceBufferSize?: integer;
             /**
@@ -12111,6 +12484,7 @@ export namespace Protocol {
             maxPostDataSize?: integer;
             /**
              * Whether DirectSocket chunk send/receive events should be reported.
+             * @experimental
              */
             reportDirectSocketTraffic?: boolean;
         }
@@ -12301,24 +12675,29 @@ export namespace Protocol {
             expires?: TimeSinceEpoch;
             /**
              * Cookie Priority type.
+             * @experimental
              */
             priority?: CookiePriority;
             /**
              * True if cookie is SameParty.
+             * @experimental
              */
             sameParty?: boolean;
             /**
              * Cookie source scheme type.
+             * @experimental
              */
             sourceScheme?: CookieSourceScheme;
             /**
              * Cookie source port. Valid values are {-1, [1, 65535]}, -1 indicates an unspecified port.
              * An unspecified port value allows protocol clients to emulate legacy cookie scope for the port.
              * This is a temporary ability and it will be removed in the future.
+             * @experimental
              */
             sourcePort?: integer;
             /**
              * Cookie partition key. If not set, the cookie will be set as not partitioned.
+             * @experimental
              */
             partitionKey?: CookiePartitionKey;
         }
@@ -12326,6 +12705,7 @@ export namespace Protocol {
         export interface SetCookieResponse {
             /**
              * Always set to true. If an error occurs, the response indicates protocol error.
+             * @deprecated
              */
             success: boolean;
         }
@@ -12374,6 +12754,7 @@ export namespace Protocol {
             platform?: string;
             /**
              * To be sent in Sec-CH-UA-* headers and returned in navigator.userAgentData
+             * @experimental
              */
             userAgentMetadata?: Emulation.UserAgentMetadata;
         }
@@ -12467,6 +12848,7 @@ export namespace Protocol {
             encodedDataLength: integer;
             /**
              * Data that was received. (Encoded as a base64 string when passed over JSON)
+             * @experimental
              */
             data?: string;
         }
@@ -12553,6 +12935,8 @@ export namespace Protocol {
          * Details of an intercepted HTTP request, which must be either allowed, blocked, modified or
          * mocked.
          * Deprecated, use Fetch.requestPaused instead.
+         * @deprecated
+         * @experimental
          */
         export interface RequestInterceptedEvent {
             /**
@@ -12656,6 +13040,7 @@ export namespace Protocol {
              * In the case that redirectResponse is populated, this flag indicates whether
              * requestWillBeSentExtraInfo and responseReceivedExtraInfo events will be or were emitted
              * for the request which was just redirected.
+             * @experimental
              */
             redirectHasExtraInfo: boolean;
             /**
@@ -12678,6 +13063,7 @@ export namespace Protocol {
 
         /**
          * Fired when resource loading priority is changed
+         * @experimental
          */
         export interface ResourceChangedPriorityEvent {
             /**
@@ -12696,6 +13082,7 @@ export namespace Protocol {
 
         /**
          * Fired when a signed exchange was received over the network
+         * @experimental
          */
         export interface SignedExchangeReceivedEvent {
             /**
@@ -12735,6 +13122,7 @@ export namespace Protocol {
             /**
              * Indicates whether requestWillBeSentExtraInfo and responseReceivedExtraInfo events will be
              * or were emitted for this request.
+             * @experimental
              */
             hasExtraInfo: boolean;
             /**
@@ -12921,6 +13309,7 @@ export namespace Protocol {
 
         /**
          * Fired upon direct_socket.TCPSocket creation.
+         * @experimental
          */
         export interface DirectTCPSocketCreatedEvent {
             identifier: RequestId;
@@ -12936,6 +13325,7 @@ export namespace Protocol {
 
         /**
          * Fired when direct_socket.TCPSocket connection is opened.
+         * @experimental
          */
         export interface DirectTCPSocketOpenedEvent {
             identifier: RequestId;
@@ -12954,6 +13344,7 @@ export namespace Protocol {
 
         /**
          * Fired when direct_socket.TCPSocket is aborted.
+         * @experimental
          */
         export interface DirectTCPSocketAbortedEvent {
             identifier: RequestId;
@@ -12963,6 +13354,7 @@ export namespace Protocol {
 
         /**
          * Fired when direct_socket.TCPSocket is closed.
+         * @experimental
          */
         export interface DirectTCPSocketClosedEvent {
             identifier: RequestId;
@@ -12971,6 +13363,7 @@ export namespace Protocol {
 
         /**
          * Fired when data is sent to tcp direct socket stream.
+         * @experimental
          */
         export interface DirectTCPSocketChunkSentEvent {
             identifier: RequestId;
@@ -12980,6 +13373,7 @@ export namespace Protocol {
 
         /**
          * Fired when data is received from tcp direct socket stream.
+         * @experimental
          */
         export interface DirectTCPSocketChunkReceivedEvent {
             identifier: RequestId;
@@ -12989,6 +13383,7 @@ export namespace Protocol {
 
         /**
          * Fired upon direct_socket.UDPSocket creation.
+         * @experimental
          */
         export interface DirectUDPSocketCreatedEvent {
             identifier: RequestId;
@@ -12999,6 +13394,7 @@ export namespace Protocol {
 
         /**
          * Fired when direct_socket.UDPSocket connection is opened.
+         * @experimental
          */
         export interface DirectUDPSocketOpenedEvent {
             identifier: RequestId;
@@ -13017,6 +13413,7 @@ export namespace Protocol {
 
         /**
          * Fired when direct_socket.UDPSocket is aborted.
+         * @experimental
          */
         export interface DirectUDPSocketAbortedEvent {
             identifier: RequestId;
@@ -13026,6 +13423,7 @@ export namespace Protocol {
 
         /**
          * Fired when direct_socket.UDPSocket is closed.
+         * @experimental
          */
         export interface DirectUDPSocketClosedEvent {
             identifier: RequestId;
@@ -13034,6 +13432,7 @@ export namespace Protocol {
 
         /**
          * Fired when message is sent to udp direct socket stream.
+         * @experimental
          */
         export interface DirectUDPSocketChunkSentEvent {
             identifier: RequestId;
@@ -13043,6 +13442,7 @@ export namespace Protocol {
 
         /**
          * Fired when message is received from udp direct socket stream.
+         * @experimental
          */
         export interface DirectUDPSocketChunkReceivedEvent {
             identifier: RequestId;
@@ -13055,6 +13455,7 @@ export namespace Protocol {
          * network stack. Not every requestWillBeSent event will have an additional
          * requestWillBeSentExtraInfo fired for it, and there is no guarantee whether requestWillBeSent
          * or requestWillBeSentExtraInfo will be fired first for the same request.
+         * @experimental
          */
         export interface RequestWillBeSentExtraInfoEvent {
             /**
@@ -13072,6 +13473,7 @@ export namespace Protocol {
             headers: Headers;
             /**
              * Connection timing information for the request.
+             * @experimental
              */
             connectTiming: ConnectTiming;
             /**
@@ -13088,6 +13490,7 @@ export namespace Protocol {
          * Fired when additional information about a responseReceived event is available from the network
          * stack. Not every responseReceived event will have an additional responseReceivedExtraInfo for
          * it, and responseReceivedExtraInfo may be fired before or after responseReceived.
+         * @experimental
          */
         export interface ResponseReceivedExtraInfoEvent {
             /**
@@ -13126,6 +13529,7 @@ export namespace Protocol {
             /**
              * The cookie partition key that will be used to store partitioned cookies set in this response.
              * Only sent when partitioned cookies are enabled.
+             * @experimental
              */
             cookiePartitionKey?: CookiePartitionKey;
             /**
@@ -13143,6 +13547,7 @@ export namespace Protocol {
          * Fired when 103 Early Hints headers is received in addition to the common response.
          * Not every responseReceived event will have an responseReceivedEarlyHints fired.
          * Only one responseReceivedEarlyHints may be fired for eached responseReceived event.
+         * @experimental
          */
         export interface ResponseReceivedEarlyHintsEvent {
             /**
@@ -13179,13 +13584,14 @@ export namespace Protocol {
          * the type of the operation and whether the operation succeeded or
          * failed, the event is fired before the corresponding request was sent
          * or after the response was received.
+         * @experimental
          */
         export interface TrustTokenOperationDoneEvent {
             /**
              * Detailed success or error status of the operation.
              * 'AlreadyExists' also signifies a successful operation, as the result
              * of the operation already exists und thus, the operation was abort
-             * preemptively (e.g. a cache hit). (TrustTokenOperationDoneEventStatus enum)
+             * preemptively (e.g. a cache hit).
              */
             status: ('Ok' | 'InvalidArgument' | 'MissingIssuerKeys' | 'FailedPrecondition' | 'ResourceExhausted' | 'AlreadyExists' | 'ResourceLimited' | 'Unauthorized' | 'BadResponse' | 'InternalError' | 'UnknownError' | 'FulfilledLocally' | 'SiteIssuerLimit');
             type: TrustTokenOperationType;
@@ -13207,6 +13613,7 @@ export namespace Protocol {
         /**
          * Fired once when parsing the .wbn file has succeeded.
          * The event contains the information about the web bundle contents.
+         * @experimental
          */
         export interface SubresourceWebBundleMetadataReceivedEvent {
             /**
@@ -13221,6 +13628,7 @@ export namespace Protocol {
 
         /**
          * Fired once when parsing the .wbn file has failed.
+         * @experimental
          */
         export interface SubresourceWebBundleMetadataErrorEvent {
             /**
@@ -13236,6 +13644,7 @@ export namespace Protocol {
         /**
          * Fired when handling requests for resources within a .wbn file.
          * Note: this will only be fired for resources that are requested by the webpage.
+         * @experimental
          */
         export interface SubresourceWebBundleInnerResponseParsedEvent {
             /**
@@ -13256,6 +13665,7 @@ export namespace Protocol {
 
         /**
          * Fired when request for resources within a .wbn file failed.
+         * @experimental
          */
         export interface SubresourceWebBundleInnerResponseErrorEvent {
             /**
@@ -13281,15 +13691,22 @@ export namespace Protocol {
         /**
          * Is sent whenever a new report is added.
          * And after 'enableReportingApi' for all existing reports.
+         * @experimental
          */
         export interface ReportingApiReportAddedEvent {
             report: ReportingApiReport;
         }
 
+        /**
+         * @experimental
+         */
         export interface ReportingApiReportUpdatedEvent {
             report: ReportingApiReport;
         }
 
+        /**
+         * @experimental
+         */
         export interface ReportingApiEndpointsChangedForOriginEvent {
             /**
              * Origin of the document(s) which configured the endpoints.
@@ -13301,6 +13718,7 @@ export namespace Protocol {
 
     /**
      * This domain provides various functionality related to drawing atop the inspected page.
+     * @experimental
      */
     export namespace Overlay {
 
@@ -13352,6 +13770,7 @@ export namespace Protocol {
             gridBorderColor?: DOM.RGBA;
             /**
              * The cell border color (default: transparent). Deprecated, please use rowLineColor and columnLineColor instead.
+             * @deprecated
              */
             cellBorderColor?: DOM.RGBA;
             /**
@@ -13368,6 +13787,7 @@ export namespace Protocol {
             gridBorderDash?: boolean;
             /**
              * Whether the cell border is dashed (default: false). Deprecated, please us rowLineDash and columnLineDash instead.
+             * @deprecated
              */
             cellBorderDash?: boolean;
             /**
@@ -13474,7 +13894,7 @@ export namespace Protocol {
              */
             color?: DOM.RGBA;
             /**
-             * The line pattern (default: solid) (LineStylePattern enum)
+             * The line pattern (default: solid)
              */
             pattern?: ('dashed' | 'dotted');
         }
@@ -14046,13 +14466,18 @@ export namespace Protocol {
 
         /**
          * Indicates whether a frame has been identified as an ad.
+         * @experimental
          */
         export type AdFrameType = ('none' | 'child' | 'root');
 
+        /**
+         * @experimental
+         */
         export type AdFrameExplanation = ('ParentIsAd' | 'CreatedByAdScript' | 'MatchedBlockingRule');
 
         /**
          * Indicates whether a frame has been identified as an ad and why.
+         * @experimental
          */
         export interface AdFrameStatus {
             adFrameType: AdFrameType;
@@ -14062,6 +14487,7 @@ export namespace Protocol {
         /**
          * Identifies the script which caused a script or frame to be labelled as an
          * ad.
+         * @experimental
          */
         export interface AdScriptId {
             /**
@@ -14079,6 +14505,7 @@ export namespace Protocol {
          * Encapsulates the script ancestry and the root script filterlist rule that
          * caused the frame to be labelled as an ad. Only created when `ancestryChain`
          * is not empty.
+         * @experimental
          */
         export interface AdScriptAncestry {
             /**
@@ -14098,32 +14525,45 @@ export namespace Protocol {
 
         /**
          * Indicates whether the frame is a secure context and why it is the case.
+         * @experimental
          */
         export type SecureContextType = ('Secure' | 'SecureLocalhost' | 'InsecureScheme' | 'InsecureAncestor');
 
         /**
          * Indicates whether the frame is cross-origin isolated and why it is the case.
+         * @experimental
          */
         export type CrossOriginIsolatedContextType = ('Isolated' | 'NotIsolated' | 'NotIsolatedFeatureDisabled');
 
+        /**
+         * @experimental
+         */
         export type GatedAPIFeatures = ('SharedArrayBuffers' | 'SharedArrayBuffersTransferAllowed' | 'PerformanceMeasureMemory' | 'PerformanceProfile');
 
         /**
          * All Permissions Policy features. This enum should match the one defined
          * in services/network/public/cpp/permissions_policy/permissions_policy_features.json5.
+         * @experimental
          */
         export type PermissionsPolicyFeature = ('accelerometer' | 'all-screens-capture' | 'ambient-light-sensor' | 'aria-notify' | 'attribution-reporting' | 'autoplay' | 'bluetooth' | 'browsing-topics' | 'camera' | 'captured-surface-control' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-prefers-color-scheme' | 'ch-prefers-reduced-motion' | 'ch-prefers-reduced-transparency' | 'ch-rtt' | 'ch-save-data' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-high-entropy-values' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-form-factors' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'compute-pressure' | 'controlled-frame' | 'cross-origin-isolated' | 'deferred-fetch' | 'deferred-fetch-minimal' | 'device-attributes' | 'digital-credentials-get' | 'direct-sockets' | 'direct-sockets-private' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'fenced-unpartitioned-storage-read' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'hid' | 'identity-credentials-get' | 'idle-detection' | 'interest-cohort' | 'join-ad-interest-group' | 'keyboard-map' | 'language-detector' | 'language-model' | 'local-fonts' | 'local-network-access' | 'magnetometer' | 'media-playback-while-not-visible' | 'microphone' | 'midi' | 'on-device-speech-recognition' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'popins' | 'private-aggregation' | 'private-state-token-issuance' | 'private-state-token-redemption' | 'publickey-credentials-create' | 'publickey-credentials-get' | 'record-ad-auction-events' | 'rewriter' | 'run-ad-auction' | 'screen-wake-lock' | 'serial' | 'shared-autofill' | 'shared-storage' | 'shared-storage-select-url' | 'smart-card' | 'speaker-selection' | 'storage-access' | 'sub-apps' | 'summarizer' | 'sync-xhr' | 'translator' | 'unload' | 'usb' | 'usb-unrestricted' | 'vertical-scroll' | 'web-app-installation' | 'web-printing' | 'web-share' | 'window-management' | 'writer' | 'xr-spatial-tracking');
 
         /**
          * Reason for a permissions policy feature to be disabled.
+         * @experimental
          */
         export type PermissionsPolicyBlockReason = ('Header' | 'IframeAttribute' | 'InFencedFrameTree' | 'InIsolatedApp');
 
+        /**
+         * @experimental
+         */
         export interface PermissionsPolicyBlockLocator {
             frameId: FrameId;
             blockReason: PermissionsPolicyBlockReason;
         }
 
+        /**
+         * @experimental
+         */
         export interface PermissionsPolicyFeatureState {
             feature: PermissionsPolicyFeature;
             allowed: boolean;
@@ -14133,16 +14573,24 @@ export namespace Protocol {
         /**
          * Origin Trial(https://www.chromium.org/blink/origin-trials) support.
          * Status for an Origin Trial token.
+         * @experimental
          */
         export type OriginTrialTokenStatus = ('Success' | 'NotSupported' | 'Insecure' | 'Expired' | 'WrongOrigin' | 'InvalidSignature' | 'Malformed' | 'WrongVersion' | 'FeatureDisabled' | 'TokenDisabled' | 'FeatureDisabledForUser' | 'UnknownTrial');
 
         /**
          * Status for an Origin Trial.
+         * @experimental
          */
         export type OriginTrialStatus = ('Enabled' | 'ValidTokenNotProvided' | 'OSNotSupported' | 'TrialNotAllowed');
 
+        /**
+         * @experimental
+         */
         export type OriginTrialUsageRestriction = ('None' | 'Subset');
 
+        /**
+         * @experimental
+         */
         export interface OriginTrialToken {
             origin: string;
             matchSubDomains: boolean;
@@ -14152,6 +14600,9 @@ export namespace Protocol {
             usageRestriction: OriginTrialUsageRestriction;
         }
 
+        /**
+         * @experimental
+         */
         export interface OriginTrialTokenWithStatus {
             rawTokenText: string;
             /**
@@ -14162,6 +14613,9 @@ export namespace Protocol {
             status: OriginTrialTokenStatus;
         }
 
+        /**
+         * @experimental
+         */
         export interface OriginTrial {
             trialName: string;
             status: OriginTrialStatus;
@@ -14170,6 +14624,7 @@ export namespace Protocol {
 
         /**
          * Additional information about the frame document's security origin.
+         * @experimental
          */
         export interface SecurityOriginDetails {
             /**
@@ -14206,6 +14661,7 @@ export namespace Protocol {
             url: string;
             /**
              * Frame document's URL fragment including the '#'.
+             * @experimental
              */
             urlFragment?: string;
             /**
@@ -14213,6 +14669,7 @@ export namespace Protocol {
              * Extracted from the Frame's url.
              * Example URLs: http://www.google.com/file.html -> "google.com"
              *               http://a.b.co.uk/file.html      -> "b.co.uk"
+             * @experimental
              */
             domainAndRegistry: string;
             /**
@@ -14221,6 +14678,7 @@ export namespace Protocol {
             securityOrigin: string;
             /**
              * Additional details about the frame document's security origin.
+             * @experimental
              */
             securityOriginDetails?: SecurityOriginDetails;
             /**
@@ -14229,28 +14687,34 @@ export namespace Protocol {
             mimeType: string;
             /**
              * If the frame failed to load, this contains the URL that could not be loaded. Note that unlike url above, this URL may contain a fragment.
+             * @experimental
              */
             unreachableUrl?: string;
             /**
              * Indicates whether this frame was tagged as an ad and why.
+             * @experimental
              */
             adFrameStatus?: AdFrameStatus;
             /**
              * Indicates whether the main document is a secure context and explains why that is the case.
+             * @experimental
              */
             secureContextType: SecureContextType;
             /**
              * Indicates whether this is a cross origin isolated context.
+             * @experimental
              */
             crossOriginIsolatedContextType: CrossOriginIsolatedContextType;
             /**
              * Indicated which gated APIs / features are available.
+             * @experimental
              */
             gatedAPIFeatures: GatedAPIFeatures[];
         }
 
         /**
          * Information about the Resource on the page.
+         * @experimental
          */
         export interface FrameResource {
             /**
@@ -14285,6 +14749,7 @@ export namespace Protocol {
 
         /**
          * Information about the Frame hierarchy along with their cached resources.
+         * @experimental
          */
         export interface FrameResourceTree {
             /**
@@ -14353,6 +14818,7 @@ export namespace Protocol {
 
         /**
          * Screencast frame metadata.
+         * @experimental
          */
         export interface ScreencastFrameMetadata {
             /**
@@ -14414,6 +14880,7 @@ export namespace Protocol {
 
         /**
          * Parsed app manifest properties.
+         * @experimental
          */
         export interface AppManifestParsedProperties {
             /**
@@ -14510,6 +14977,7 @@ export namespace Protocol {
 
         /**
          * Generic font families collection.
+         * @experimental
          */
         export interface FontFamilies {
             /**
@@ -14544,6 +15012,7 @@ export namespace Protocol {
 
         /**
          * Font families collection for a script.
+         * @experimental
          */
         export interface ScriptFontFamilies {
             /**
@@ -14558,6 +15027,7 @@ export namespace Protocol {
 
         /**
          * Default font sizes.
+         * @experimental
          */
         export interface FontSizes {
             /**
@@ -14570,10 +15040,19 @@ export namespace Protocol {
             fixed?: integer;
         }
 
+        /**
+         * @experimental
+         */
         export type ClientNavigationReason = ('anchorClick' | 'formSubmissionGet' | 'formSubmissionPost' | 'httpHeaderRefresh' | 'initialFrameNavigation' | 'metaTagRefresh' | 'other' | 'pageBlockInterstitial' | 'reload' | 'scriptInitiated');
 
+        /**
+         * @experimental
+         */
         export type ClientNavigationDisposition = ('currentTab' | 'newTab' | 'newWindow' | 'download');
 
+        /**
+         * @experimental
+         */
         export interface InstallabilityErrorArgument {
             /**
              * Argument name (e.g. name:'minimum-icon-size-in-pixels').
@@ -14587,6 +15066,7 @@ export namespace Protocol {
 
         /**
          * The installability error
+         * @experimental
          */
         export interface InstallabilityError {
             /**
@@ -14601,11 +15081,13 @@ export namespace Protocol {
 
         /**
          * The referring-policy used for the navigation.
+         * @experimental
          */
         export type ReferrerPolicy = ('noReferrer' | 'noReferrerWhenDowngrade' | 'origin' | 'originWhenCrossOrigin' | 'sameOrigin' | 'strictOrigin' | 'strictOriginWhenCrossOrigin' | 'unsafeUrl');
 
         /**
          * Per-script compilation cache parameters for `Page.produceCompilationCache`
+         * @experimental
          */
         export interface CompilationCacheParams {
             /**
@@ -14619,11 +15101,17 @@ export namespace Protocol {
             eager?: boolean;
         }
 
+        /**
+         * @experimental
+         */
         export interface FileFilter {
             name?: string;
             accepts?: string[];
         }
 
+        /**
+         * @experimental
+         */
         export interface FileHandler {
             action: string;
             name: string;
@@ -14641,6 +15129,7 @@ export namespace Protocol {
 
         /**
          * The image definition used in both icon and screenshot.
+         * @experimental
          */
         export interface ImageResource {
             /**
@@ -14652,20 +15141,32 @@ export namespace Protocol {
             type?: string;
         }
 
+        /**
+         * @experimental
+         */
         export interface LaunchHandler {
             clientMode: string;
         }
 
+        /**
+         * @experimental
+         */
         export interface ProtocolHandler {
             protocol: string;
             url: string;
         }
 
+        /**
+         * @experimental
+         */
         export interface RelatedApplication {
             id?: string;
             url: string;
         }
 
+        /**
+         * @experimental
+         */
         export interface ScopeExtension {
             /**
              * Instead of using tuple, this field always returns the serialized string
@@ -14675,12 +15176,18 @@ export namespace Protocol {
             hasOriginWildcard: boolean;
         }
 
+        /**
+         * @experimental
+         */
         export interface Screenshot {
             image: ImageResource;
             formFactor: string;
             label?: string;
         }
 
+        /**
+         * @experimental
+         */
         export interface ShareTarget {
             action: string;
             method: string;
@@ -14694,11 +15201,17 @@ export namespace Protocol {
             files?: FileFilter[];
         }
 
+        /**
+         * @experimental
+         */
         export interface Shortcut {
             name: string;
             url: string;
         }
 
+        /**
+         * @experimental
+         */
         export interface WebAppManifest {
             backgroundColor?: string;
             /**
@@ -14751,19 +15264,25 @@ export namespace Protocol {
 
         /**
          * The type of a frameNavigated event.
+         * @experimental
          */
         export type NavigationType = ('Navigation' | 'BackForwardCacheRestore');
 
         /**
          * List of not restored reasons for back-forward cache.
+         * @experimental
          */
         export type BackForwardCacheNotRestoredReason = ('NotPrimaryMainFrame' | 'BackForwardCacheDisabled' | 'RelatedActiveContentsExist' | 'HTTPStatusNotOK' | 'SchemeNotHTTPOrHTTPS' | 'Loading' | 'WasGrantedMediaAccess' | 'DisableForRenderFrameHostCalled' | 'DomainNotAllowed' | 'HTTPMethodNotGET' | 'SubframeIsNavigating' | 'Timeout' | 'CacheLimit' | 'JavaScriptExecution' | 'RendererProcessKilled' | 'RendererProcessCrashed' | 'SchedulerTrackedFeatureUsed' | 'ConflictingBrowsingInstance' | 'CacheFlushed' | 'ServiceWorkerVersionActivation' | 'SessionRestored' | 'ServiceWorkerPostMessage' | 'EnteredBackForwardCacheBeforeServiceWorkerHostAdded' | 'RenderFrameHostReused_SameSite' | 'RenderFrameHostReused_CrossSite' | 'ServiceWorkerClaim' | 'IgnoreEventAndEvict' | 'HaveInnerContents' | 'TimeoutPuttingInCache' | 'BackForwardCacheDisabledByLowMemory' | 'BackForwardCacheDisabledByCommandLine' | 'NetworkRequestDatapipeDrainedAsBytesConsumer' | 'NetworkRequestRedirected' | 'NetworkRequestTimeout' | 'NetworkExceedsBufferLimit' | 'NavigationCancelledWhileRestoring' | 'NotMostRecentNavigationEntry' | 'BackForwardCacheDisabledForPrerender' | 'UserAgentOverrideDiffers' | 'ForegroundCacheLimit' | 'BrowsingInstanceNotSwapped' | 'BackForwardCacheDisabledForDelegate' | 'UnloadHandlerExistsInMainFrame' | 'UnloadHandlerExistsInSubFrame' | 'ServiceWorkerUnregistration' | 'CacheControlNoStore' | 'CacheControlNoStoreCookieModified' | 'CacheControlNoStoreHTTPOnlyCookieModified' | 'NoResponseHead' | 'Unknown' | 'ActivationNavigationsDisallowedForBug1234857' | 'ErrorDocument' | 'FencedFramesEmbedder' | 'CookieDisabled' | 'HTTPAuthRequired' | 'CookieFlushed' | 'BroadcastChannelOnMessage' | 'WebViewSettingsChanged' | 'WebViewJavaScriptObjectChanged' | 'WebViewMessageListenerInjected' | 'WebViewSafeBrowsingAllowlistChanged' | 'WebViewDocumentStartJavascriptChanged' | 'WebSocket' | 'WebTransport' | 'WebRTC' | 'MainResourceHasCacheControlNoStore' | 'MainResourceHasCacheControlNoCache' | 'SubresourceHasCacheControlNoStore' | 'SubresourceHasCacheControlNoCache' | 'ContainsPlugins' | 'DocumentLoaded' | 'OutstandingNetworkRequestOthers' | 'RequestedMIDIPermission' | 'RequestedAudioCapturePermission' | 'RequestedVideoCapturePermission' | 'RequestedBackForwardCacheBlockedSensors' | 'RequestedBackgroundWorkPermission' | 'BroadcastChannel' | 'WebXR' | 'SharedWorker' | 'SharedWorkerMessage' | 'WebLocks' | 'WebHID' | 'WebShare' | 'RequestedStorageAccessGrant' | 'WebNfc' | 'OutstandingNetworkRequestFetch' | 'OutstandingNetworkRequestXHR' | 'AppBanner' | 'Printing' | 'WebDatabase' | 'PictureInPicture' | 'SpeechRecognizer' | 'IdleManager' | 'PaymentManager' | 'SpeechSynthesis' | 'KeyboardLock' | 'WebOTPService' | 'OutstandingNetworkRequestDirectSocket' | 'InjectedJavascript' | 'InjectedStyleSheet' | 'KeepaliveRequest' | 'IndexedDBEvent' | 'Dummy' | 'JsNetworkRequestReceivedCacheControlNoStoreResource' | 'WebRTCSticky' | 'WebTransportSticky' | 'WebSocketSticky' | 'SmartCard' | 'LiveMediaStreamTrack' | 'UnloadHandler' | 'ParserAborted' | 'ContentSecurityHandler' | 'ContentWebAuthenticationAPI' | 'ContentFileChooser' | 'ContentSerial' | 'ContentFileSystemAccess' | 'ContentMediaDevicesDispatcherHost' | 'ContentWebBluetooth' | 'ContentWebUSB' | 'ContentMediaSessionService' | 'ContentScreenReader' | 'ContentDiscarded' | 'EmbedderPopupBlockerTabHelper' | 'EmbedderSafeBrowsingTriggeredPopupBlocker' | 'EmbedderSafeBrowsingThreatDetails' | 'EmbedderAppBannerManager' | 'EmbedderDomDistillerViewerSource' | 'EmbedderDomDistillerSelfDeletingRequestDelegate' | 'EmbedderOomInterventionTabHelper' | 'EmbedderOfflinePage' | 'EmbedderChromePasswordManagerClientBindCredentialManager' | 'EmbedderPermissionRequestManager' | 'EmbedderModalDialog' | 'EmbedderExtensions' | 'EmbedderExtensionMessaging' | 'EmbedderExtensionMessagingForOpenPort' | 'EmbedderExtensionSentMessageToCachedFrame' | 'RequestedByWebViewClient' | 'PostMessageByWebViewClient' | 'CacheControlNoStoreDeviceBoundSessionTerminated' | 'CacheLimitPrunedOnModerateMemoryPressure' | 'CacheLimitPrunedOnCriticalMemoryPressure');
 
         /**
          * Types of not restored reasons for back-forward cache.
+         * @experimental
          */
         export type BackForwardCacheNotRestoredReasonType = ('SupportPending' | 'PageSupportNeeded' | 'Circumstantial');
 
+        /**
+         * @experimental
+         */
         export interface BackForwardCacheBlockingDetails {
             /**
              * Url of the file where blockage happened. Optional because of tests.
@@ -14783,6 +15302,9 @@ export namespace Protocol {
             columnNumber: integer;
         }
 
+        /**
+         * @experimental
+         */
         export interface BackForwardCacheNotRestoredExplanation {
             /**
              * Type of the reason
@@ -14801,6 +15323,9 @@ export namespace Protocol {
             details?: BackForwardCacheBlockingDetails[];
         }
 
+        /**
+         * @experimental
+         */
         export interface BackForwardCacheNotRestoredExplanationTree {
             /**
              * URL of each frame
@@ -14833,16 +15358,19 @@ export namespace Protocol {
              * If specified, creates an isolated world with the given name and evaluates given script in it.
              * This world name will be used as the ExecutionContextDescription::name when the corresponding
              * event is emitted.
+             * @experimental
              */
             worldName?: string;
             /**
              * Specifies whether command line API should be available to the script, defaults
              * to false.
+             * @experimental
              */
             includeCommandLineAPI?: boolean;
             /**
              * If true, runs the script immediately on existing execution contexts or worlds.
              * Default: false.
+             * @experimental
              */
             runImmediately?: boolean;
         }
@@ -14862,7 +15390,7 @@ export namespace Protocol {
 
         export interface CaptureScreenshotRequest {
             /**
-             * Image compression format (defaults to png). (CaptureScreenshotRequestFormat enum)
+             * Image compression format (defaults to png).
              */
             format?: ('jpeg' | 'png' | 'webp');
             /**
@@ -14875,14 +15403,17 @@ export namespace Protocol {
             clip?: Viewport;
             /**
              * Capture the screenshot from the surface, rather than the view. Defaults to true.
+             * @experimental
              */
             fromSurface?: boolean;
             /**
              * Capture the screenshot beyond the viewport. Defaults to false.
+             * @experimental
              */
             captureBeyondViewport?: boolean;
             /**
              * Optimize image encoding for speed, not for resulting size (defaults to false)
+             * @experimental
              */
             optimizeForSpeed?: boolean;
         }
@@ -14900,7 +15431,7 @@ export namespace Protocol {
 
         export interface CaptureSnapshotRequest {
             /**
-             * Format (defaults to mhtml). (CaptureSnapshotRequestFormat enum)
+             * Format (defaults to mhtml).
              */
             format?: ('mhtml');
         }
@@ -14950,6 +15481,7 @@ export namespace Protocol {
             /**
              * If true, the `Page.fileChooserOpened` event will be emitted regardless of the state set by
              * `Page.setInterceptFileChooserDialog` command (default: false).
+             * @experimental
              */
             enableFileChooserOpenedEvent?: boolean;
         }
@@ -14970,8 +15502,13 @@ export namespace Protocol {
             data?: string;
             /**
              * Parsed manifest properties. Deprecated, use manifest instead.
+             * @deprecated
+             * @experimental
              */
             parsed?: AppManifestParsedProperties;
+            /**
+             * @experimental
+             */
             manifest: WebAppManifest;
         }
 
@@ -15019,14 +15556,17 @@ export namespace Protocol {
         export interface GetLayoutMetricsResponse {
             /**
              * Deprecated metrics relating to the layout viewport. Is in device pixels. Use `cssLayoutViewport` instead.
+             * @deprecated
              */
             layoutViewport: LayoutViewport;
             /**
              * Deprecated metrics relating to the visual viewport. Is in device pixels. Use `cssVisualViewport` instead.
+             * @deprecated
              */
             visualViewport: VisualViewport;
             /**
              * Deprecated size of scrollable area. Is in DP. Use `cssContentSize` instead.
+             * @deprecated
              */
             contentSize: DOM.Rect;
             /**
@@ -15114,6 +15654,7 @@ export namespace Protocol {
             frameId?: FrameId;
             /**
              * Referrer-policy used for the navigation.
+             * @experimental
              */
             referrerPolicy?: ReferrerPolicy;
         }
@@ -15134,6 +15675,7 @@ export namespace Protocol {
             errorText?: string;
             /**
              * Whether the navigation resulted in a download.
+             * @experimental
              */
             isDownload?: boolean;
         }
@@ -15224,15 +15766,18 @@ export namespace Protocol {
              */
             preferCSSPageSize?: boolean;
             /**
-             * return as stream (PrintToPDFRequestTransferMode enum)
+             * return as stream
+             * @experimental
              */
             transferMode?: ('ReturnAsBase64' | 'ReturnAsStream');
             /**
              * Whether or not to generate tagged (accessible) PDF. Defaults to embedder choice.
+             * @experimental
              */
             generateTaggedPDF?: boolean;
             /**
              * Whether or not to embed the document outline into the PDF.
+             * @experimental
              */
             generateDocumentOutline?: boolean;
         }
@@ -15244,6 +15789,7 @@ export namespace Protocol {
             data: string;
             /**
              * A handle of the stream that holds resulting PDF data.
+             * @experimental
              */
             stream?: IO.StreamHandle;
         }
@@ -15262,6 +15808,7 @@ export namespace Protocol {
              * If set, an error will be thrown if the target page's main frame's
              * loader id does not match the provided id. This prevents accidentally
              * reloading an unintended target in case there's a racing navigation.
+             * @experimental
              */
             loaderId?: Network.LoaderId;
         }
@@ -15446,7 +15993,7 @@ export namespace Protocol {
         export interface SetDownloadBehaviorRequest {
             /**
              * Whether to allow all or deny all download requests, or use default Chrome behavior if
-             * available (otherwise deny). (SetDownloadBehaviorRequestBehavior enum)
+             * available (otherwise deny).
              */
             behavior: ('deny' | 'allow' | 'default');
             /**
@@ -15488,7 +16035,7 @@ export namespace Protocol {
              */
             enabled: boolean;
             /**
-             * Touch/gesture events configuration. Default: current platform. (SetTouchEmulationEnabledRequestConfiguration enum)
+             * Touch/gesture events configuration. Default: current platform.
              */
             configuration?: ('mobile' | 'desktop');
         }
@@ -15500,7 +16047,7 @@ export namespace Protocol {
 
         export interface StartScreencastRequest {
             /**
-             * Image compression format. (StartScreencastRequestFormat enum)
+             * Image compression format.
              */
             format?: ('jpeg' | 'png');
             /**
@@ -15528,7 +16075,7 @@ export namespace Protocol {
 
         export interface SetWebLifecycleStateRequest {
             /**
-             * Target lifecycle state (SetWebLifecycleStateRequestState enum)
+             * Target lifecycle state
              */
             state: ('frozen' | 'active');
         }
@@ -15554,9 +16101,6 @@ export namespace Protocol {
         }
 
         export interface SetSPCTransactionModeRequest {
-            /**
-             *  (SetSPCTransactionModeRequestMode enum)
-             */
             mode: ('none' | 'autoAccept' | 'autoChooseToAuthAnotherWay' | 'autoReject' | 'autoOptOut');
         }
 
@@ -15567,9 +16111,6 @@ export namespace Protocol {
         }
 
         export interface SetRPHRegistrationModeRequest {
-            /**
-             *  (SetRPHRegistrationModeRequestMode enum)
-             */
             mode: ('none' | 'autoAccept' | 'autoReject');
         }
 
@@ -15590,6 +16131,7 @@ export namespace Protocol {
              * If true, cancels the dialog by emitting relevant events (if any)
              * in addition to not showing it if the interception is enabled
              * (default: false).
+             * @experimental
              */
             cancel?: boolean;
         }
@@ -15613,14 +16155,16 @@ export namespace Protocol {
         export interface FileChooserOpenedEvent {
             /**
              * Id of the frame containing input node.
+             * @experimental
              */
             frameId: FrameId;
             /**
-             * Input mode. (FileChooserOpenedEventMode enum)
+             * Input mode.
              */
             mode: ('selectSingle' | 'selectMultiple');
             /**
              * Input node id. Only present for file choosers opened via an `<input type="file">` element.
+             * @experimental
              */
             backendNodeId?: DOM.BackendNodeId;
         }
@@ -15645,6 +16189,7 @@ export namespace Protocol {
 
         /**
          * Fired when frame no longer has a scheduled navigation.
+         * @deprecated
          */
         export interface FrameClearedScheduledNavigationEvent {
             /**
@@ -15667,7 +16212,7 @@ export namespace Protocol {
              */
             frameId: FrameId;
             /**
-             *  (FrameDetachedEventReason enum)
+             * @experimental
              */
             reason: ('remove' | 'swap');
         }
@@ -15675,6 +16220,7 @@ export namespace Protocol {
         /**
          * Fired before frame subtree is detached. Emitted before any frame of the
          * subtree is actually detached.
+         * @experimental
          */
         export interface FrameSubtreeWillBeDetachedEvent {
             /**
@@ -15691,11 +16237,15 @@ export namespace Protocol {
              * Frame object.
              */
             frame: Frame;
+            /**
+             * @experimental
+             */
             type: NavigationType;
         }
 
         /**
          * Fired when opening document to write to.
+         * @experimental
          */
         export interface DocumentOpenedEvent {
             /**
@@ -15723,6 +16273,7 @@ export namespace Protocol {
          * can be fired for a single navigation, for example, when a same-document
          * navigation becomes a cross-document navigation (such as in the case of a
          * frameset).
+         * @experimental
          */
         export interface FrameStartedNavigatingEvent {
             /**
@@ -15740,15 +16291,13 @@ export namespace Protocol {
              * navigation.
              */
             loaderId: Network.LoaderId;
-            /**
-             *  (FrameStartedNavigatingEventNavigationType enum)
-             */
             navigationType: ('reload' | 'reloadBypassingCache' | 'restore' | 'restoreWithPost' | 'historySameDocument' | 'historyDifferentDocument' | 'sameDocument' | 'differentDocument');
         }
 
         /**
          * Fired when a renderer-initiated navigation is requested.
          * Navigation may still be cancelled after the event is issued.
+         * @experimental
          */
         export interface FrameRequestedNavigationEvent {
             /**
@@ -15771,6 +16320,7 @@ export namespace Protocol {
 
         /**
          * Fired when frame schedules a potential navigation.
+         * @deprecated
          */
         export interface FrameScheduledNavigationEvent {
             /**
@@ -15794,6 +16344,7 @@ export namespace Protocol {
 
         /**
          * Fired when frame has started loading.
+         * @experimental
          */
         export interface FrameStartedLoadingEvent {
             /**
@@ -15804,6 +16355,7 @@ export namespace Protocol {
 
         /**
          * Fired when frame has stopped loading.
+         * @experimental
          */
         export interface FrameStoppedLoadingEvent {
             /**
@@ -15815,6 +16367,8 @@ export namespace Protocol {
         /**
          * Fired when page is about to start a download.
          * Deprecated. Use Browser.downloadWillBegin instead.
+         * @deprecated
+         * @experimental
          */
         export interface DownloadWillBeginEvent {
             /**
@@ -15844,6 +16398,8 @@ export namespace Protocol {
         /**
          * Fired when download makes progress. Last call has |done| == true.
          * Deprecated. Use Browser.downloadProgress instead.
+         * @deprecated
+         * @experimental
          */
         export interface DownloadProgressEvent {
             /**
@@ -15859,7 +16415,7 @@ export namespace Protocol {
              */
             receivedBytes: number;
             /**
-             * Download status. (DownloadProgressEventState enum)
+             * Download status.
              */
             state: ('inProgress' | 'completed' | 'canceled');
         }
@@ -15871,6 +16427,7 @@ export namespace Protocol {
         export interface JavascriptDialogClosedEvent {
             /**
              * Frame id.
+             * @experimental
              */
             frameId: FrameId;
             /**
@@ -15894,6 +16451,7 @@ export namespace Protocol {
             url: string;
             /**
              * Frame id.
+             * @experimental
              */
             frameId: FrameId;
             /**
@@ -15938,6 +16496,7 @@ export namespace Protocol {
          * not assume any ordering with the Page.frameNavigated event. This event is fired only for
          * main-frame history navigation where the document changes (non-same-document navigations),
          * when bfcache navigation fails.
+         * @experimental
          */
         export interface BackForwardCacheNotUsedEvent {
             /**
@@ -15970,6 +16529,7 @@ export namespace Protocol {
 
         /**
          * Fired when same-document navigation happens, e.g. due to history API usage or anchor navigation.
+         * @experimental
          */
         export interface NavigatedWithinDocumentEvent {
             /**
@@ -15981,13 +16541,14 @@ export namespace Protocol {
              */
             url: string;
             /**
-             * Navigation type (NavigatedWithinDocumentEventNavigationType enum)
+             * Navigation type
              */
             navigationType: ('fragment' | 'historyApi' | 'other');
         }
 
         /**
          * Compressed image data requested by the `startScreencast`.
+         * @experimental
          */
         export interface ScreencastFrameEvent {
             /**
@@ -16006,6 +16567,7 @@ export namespace Protocol {
 
         /**
          * Fired when the page with currently enabled screencast was shown or hidden `.
+         * @experimental
          */
         export interface ScreencastVisibilityChangedEvent {
             /**
@@ -16040,6 +16602,7 @@ export namespace Protocol {
         /**
          * Issued for every compilation cache generated. Is only available
          * if Page.setGenerateCompilationCache is enabled.
+         * @experimental
          */
         export interface CompilationCacheProducedEvent {
             url: string;
@@ -16073,7 +16636,7 @@ export namespace Protocol {
 
         export interface EnableRequest {
             /**
-             * Time domain to use for collecting and reporting duration metrics. (EnableRequestTimeDomain enum)
+             * Time domain to use for collecting and reporting duration metrics.
              */
             timeDomain?: ('timeTicks' | 'threadTicks');
         }
@@ -16085,7 +16648,7 @@ export namespace Protocol {
 
         export interface SetTimeDomainRequest {
             /**
-             * Time domain (SetTimeDomainRequestTimeDomain enum)
+             * Time domain
              */
             timeDomain: ('timeTicks' | 'threadTicks');
         }
@@ -16115,6 +16678,7 @@ export namespace Protocol {
     /**
      * Reporting of performance timeline events, as specified in
      * https://w3c.github.io/performance-timeline/#dom-performanceobserver.
+     * @experimental
      */
     export namespace PerformanceTimeline {
 
@@ -16226,6 +16790,7 @@ export namespace Protocol {
 
         /**
          * Details about the security state of the page certificate.
+         * @experimental
          */
         export interface CertificateSecurityState {
             /**
@@ -16302,8 +16867,14 @@ export namespace Protocol {
             obsoleteSslSignature: boolean;
         }
 
+        /**
+         * @experimental
+         */
         export type SafetyTipStatus = ('badReputation' | 'lookalike');
 
+        /**
+         * @experimental
+         */
         export interface SafetyTipInfo {
             /**
              * Describes whether the page triggers any safety tips or reputation warnings. Default is unknown.
@@ -16317,6 +16888,7 @@ export namespace Protocol {
 
         /**
          * Security state information about the page.
+         * @experimental
          */
         export interface VisibleSecurityState {
             /**
@@ -16373,6 +16945,7 @@ export namespace Protocol {
 
         /**
          * Information about insecure content on the page.
+         * @deprecated
          */
         export interface InsecureContentStatus {
             /**
@@ -16441,6 +17014,7 @@ export namespace Protocol {
          * handled with the `handleCertificateError` command. Note: this event does not fire if the
          * certificate error has been allowed internally. Only one client per target should override
          * certificate errors at the same time.
+         * @deprecated
          */
         export interface CertificateErrorEvent {
             /**
@@ -16459,6 +17033,7 @@ export namespace Protocol {
 
         /**
          * The security state of the page changed.
+         * @experimental
          */
         export interface VisibleSecurityStateChangedEvent {
             /**
@@ -16469,6 +17044,7 @@ export namespace Protocol {
 
         /**
          * The security state of the page changed. No longer being sent.
+         * @deprecated
          */
         export interface SecurityStateChangedEvent {
             /**
@@ -16477,24 +17053,31 @@ export namespace Protocol {
             securityState: SecurityState;
             /**
              * True if the page was loaded over cryptographic transport such as HTTPS.
+             * @deprecated
              */
             schemeIsCryptographic: boolean;
             /**
              * Previously a list of explanations for the security state. Now always
              * empty.
+             * @deprecated
              */
             explanations: SecurityStateExplanation[];
             /**
              * Information about insecure content on the page.
+             * @deprecated
              */
             insecureContentStatus: InsecureContentStatus;
             /**
              * Overrides user-visible description of the state. Always omitted.
+             * @deprecated
              */
             summary?: string;
         }
     }
 
+    /**
+     * @experimental
+     */
     export namespace ServiceWorker {
 
         export type RegistrationID = string;
@@ -16603,6 +17186,9 @@ export namespace Protocol {
         }
     }
 
+    /**
+     * @experimental
+     */
     export namespace Storage {
 
         export type SerializedStorageKey = string;
@@ -16629,6 +17215,7 @@ export namespace Protocol {
         /**
          * Pair of issuer origin and number of available (signed, but not used) Trust
          * Tokens from that issuer.
+         * @experimental
          */
         export interface TrustTokens {
             issuerOrigin: string;
@@ -16868,19 +17455,37 @@ export namespace Protocol {
             durability: StorageBucketsDurability;
         }
 
+        /**
+         * @experimental
+         */
         export type AttributionReportingSourceType = ('navigation' | 'event');
 
+        /**
+         * @experimental
+         */
         export type UnsignedInt64AsBase10 = string;
 
+        /**
+         * @experimental
+         */
         export type UnsignedInt128AsBase16 = string;
 
+        /**
+         * @experimental
+         */
         export type SignedInt64AsBase10 = string;
 
+        /**
+         * @experimental
+         */
         export interface AttributionReportingFilterDataEntry {
             key: string;
             values: string[];
         }
 
+        /**
+         * @experimental
+         */
         export interface AttributionReportingFilterConfig {
             filterValues: AttributionReportingFilterDataEntry[];
             /**
@@ -16889,16 +17494,25 @@ export namespace Protocol {
             lookbackWindow?: integer;
         }
 
+        /**
+         * @experimental
+         */
         export interface AttributionReportingFilterPair {
             filters: AttributionReportingFilterConfig[];
             notFilters: AttributionReportingFilterConfig[];
         }
 
+        /**
+         * @experimental
+         */
         export interface AttributionReportingAggregationKeysEntry {
             key: string;
             value: UnsignedInt128AsBase16;
         }
 
+        /**
+         * @experimental
+         */
         export interface AttributionReportingEventReportWindows {
             /**
              * duration in seconds
@@ -16910,8 +17524,14 @@ export namespace Protocol {
             ends: integer[];
         }
 
+        /**
+         * @experimental
+         */
         export type AttributionReportingTriggerDataMatching = ('exact' | 'modulus');
 
+        /**
+         * @experimental
+         */
         export interface AttributionReportingAggregatableDebugReportingData {
             keyPiece: UnsignedInt128AsBase16;
             /**
@@ -16922,6 +17542,9 @@ export namespace Protocol {
             types: string[];
         }
 
+        /**
+         * @experimental
+         */
         export interface AttributionReportingAggregatableDebugReportingConfig {
             /**
              * number instead of integer because not all uint32 can be represented by
@@ -16933,6 +17556,9 @@ export namespace Protocol {
             aggregationCoordinatorOrigin?: string;
         }
 
+        /**
+         * @experimental
+         */
         export interface AttributionScopesData {
             values: string[];
             /**
@@ -16943,11 +17569,17 @@ export namespace Protocol {
             maxEventStates: number;
         }
 
+        /**
+         * @experimental
+         */
         export interface AttributionReportingNamedBudgetDef {
             name: string;
             budget: integer;
         }
 
+        /**
+         * @experimental
+         */
         export interface AttributionReportingSourceRegistration {
             time: Network.TimeSinceEpoch;
             /**
@@ -16983,10 +17615,19 @@ export namespace Protocol {
             eventLevelEpsilon: number;
         }
 
+        /**
+         * @experimental
+         */
         export type AttributionReportingSourceRegistrationResult = ('success' | 'internalError' | 'insufficientSourceCapacity' | 'insufficientUniqueDestinationCapacity' | 'excessiveReportingOrigins' | 'prohibitedByBrowserPolicy' | 'successNoised' | 'destinationReportingLimitReached' | 'destinationGlobalLimitReached' | 'destinationBothLimitsReached' | 'reportingOriginsPerSiteLimitReached' | 'exceedsMaxChannelCapacity' | 'exceedsMaxScopesChannelCapacity' | 'exceedsMaxTriggerStateCardinality' | 'exceedsMaxEventStatesLimit' | 'destinationPerDayReportingLimitReached');
 
+        /**
+         * @experimental
+         */
         export type AttributionReportingSourceRegistrationTimeConfig = ('include' | 'exclude');
 
+        /**
+         * @experimental
+         */
         export interface AttributionReportingAggregatableValueDictEntry {
             key: string;
             /**
@@ -16997,11 +17638,17 @@ export namespace Protocol {
             filteringId: UnsignedInt64AsBase10;
         }
 
+        /**
+         * @experimental
+         */
         export interface AttributionReportingAggregatableValueEntry {
             values: AttributionReportingAggregatableValueDictEntry[];
             filters: AttributionReportingFilterPair;
         }
 
+        /**
+         * @experimental
+         */
         export interface AttributionReportingEventTriggerData {
             data: UnsignedInt64AsBase10;
             priority: SignedInt64AsBase10;
@@ -17009,22 +17656,34 @@ export namespace Protocol {
             filters: AttributionReportingFilterPair;
         }
 
+        /**
+         * @experimental
+         */
         export interface AttributionReportingAggregatableTriggerData {
             keyPiece: UnsignedInt128AsBase16;
             sourceKeys: string[];
             filters: AttributionReportingFilterPair;
         }
 
+        /**
+         * @experimental
+         */
         export interface AttributionReportingAggregatableDedupKey {
             dedupKey?: UnsignedInt64AsBase10;
             filters: AttributionReportingFilterPair;
         }
 
+        /**
+         * @experimental
+         */
         export interface AttributionReportingNamedBudgetCandidate {
             name?: string;
             filters: AttributionReportingFilterPair;
         }
 
+        /**
+         * @experimental
+         */
         export interface AttributionReportingTriggerRegistration {
             filters: AttributionReportingFilterPair;
             debugKey?: UnsignedInt64AsBase10;
@@ -17042,14 +17701,24 @@ export namespace Protocol {
             namedBudgets: AttributionReportingNamedBudgetCandidate[];
         }
 
+        /**
+         * @experimental
+         */
         export type AttributionReportingEventLevelResult = ('success' | 'successDroppedLowerPriority' | 'internalError' | 'noCapacityForAttributionDestination' | 'noMatchingSources' | 'deduplicated' | 'excessiveAttributions' | 'priorityTooLow' | 'neverAttributedSource' | 'excessiveReportingOrigins' | 'noMatchingSourceFilterData' | 'prohibitedByBrowserPolicy' | 'noMatchingConfigurations' | 'excessiveReports' | 'falselyAttributedSource' | 'reportWindowPassed' | 'notRegistered' | 'reportWindowNotStarted' | 'noMatchingTriggerData');
 
+        /**
+         * @experimental
+         */
         export type AttributionReportingAggregatableResult = ('success' | 'internalError' | 'noCapacityForAttributionDestination' | 'noMatchingSources' | 'excessiveAttributions' | 'excessiveReportingOrigins' | 'noHistograms' | 'insufficientBudget' | 'insufficientNamedBudget' | 'noMatchingSourceFilterData' | 'notRegistered' | 'prohibitedByBrowserPolicy' | 'deduplicated' | 'reportWindowPassed' | 'excessiveReports');
 
+        /**
+         * @experimental
+         */
         export type AttributionReportingReportResult = ('sent' | 'prohibited' | 'failedToAssemble' | 'expired');
 
         /**
          * A single Related Website Set object.
+         * @experimental
          */
         export interface RelatedWebsiteSet {
             /**
@@ -17594,17 +18263,26 @@ export namespace Protocol {
             bucketId: string;
         }
 
+        /**
+         * @experimental
+         */
         export interface AttributionReportingSourceRegisteredEvent {
             registration: AttributionReportingSourceRegistration;
             result: AttributionReportingSourceRegistrationResult;
         }
 
+        /**
+         * @experimental
+         */
         export interface AttributionReportingTriggerRegisteredEvent {
             registration: AttributionReportingTriggerRegistration;
             eventLevel: AttributionReportingEventLevelResult;
             aggregatable: AttributionReportingAggregatableResult;
         }
 
+        /**
+         * @experimental
+         */
         export interface AttributionReportingReportSentEvent {
             url: string;
             body: any;
@@ -17617,6 +18295,9 @@ export namespace Protocol {
             httpStatusCode?: integer;
         }
 
+        /**
+         * @experimental
+         */
         export interface AttributionReportingVerboseDebugReportSentEvent {
             url: string;
             body?: any[];
@@ -17628,6 +18309,7 @@ export namespace Protocol {
 
     /**
      * The SystemInfo domain defines methods and events for querying low-level system information.
+     * @experimental
      */
     export namespace SystemInfo {
 
@@ -17878,22 +18560,29 @@ export namespace Protocol {
             openerId?: TargetID;
             /**
              * Whether the target has access to the originating window.
+             * @experimental
              */
             canAccessOpener: boolean;
             /**
              * Frame id of originating window (is only set if target has an opener).
+             * @experimental
              */
             openerFrameId?: Page.FrameId;
+            /**
+             * @experimental
+             */
             browserContextId?: Browser.BrowserContextID;
             /**
              * Provides additional details for specific target types. For example, for
              * the type of "page", this may be set to "prerender".
+             * @experimental
              */
             subtype?: string;
         }
 
         /**
          * A filter used by target query/discovery/auto-attach operations.
+         * @experimental
          */
         export interface FilterEntry {
             /**
@@ -17913,9 +18602,13 @@ export namespace Protocol {
          * If filter is not specified, the one assumed is
          * [{type: "browser", exclude: true}, {type: "tab", exclude: true}, {}]
          * (i.e. include everything but `browser` and `tab`).
+         * @experimental
          */
         export type TargetFilter = FilterEntry[];
 
+        /**
+         * @experimental
+         */
         export interface RemoteLocation {
             host: string;
             port: integer;
@@ -17923,6 +18616,7 @@ export namespace Protocol {
 
         /**
          * The state of the target window.
+         * @experimental
          */
         export type WindowState = ('normal' | 'minimized' | 'maximized' | 'fullscreen');
 
@@ -17961,6 +18655,7 @@ export namespace Protocol {
         export interface CloseTargetResponse {
             /**
              * Always set to true. If an error occurs, the response indicates protocol error.
+             * @deprecated
              */
             success: boolean;
         }
@@ -17980,19 +18675,23 @@ export namespace Protocol {
         export interface CreateBrowserContextRequest {
             /**
              * If specified, disposes this context when debugging session disconnects.
+             * @experimental
              */
             disposeOnDetach?: boolean;
             /**
              * Proxy server, similar to the one passed to --proxy-server
+             * @experimental
              */
             proxyServer?: string;
             /**
              * Proxy bypass list, similar to the one passed to --proxy-bypass-list
+             * @experimental
              */
             proxyBypassList?: string;
             /**
              * An optional list of origins to grant unlimited cross-origin access to.
              * Parts of the URL other than those constituting origin are ignored.
+             * @experimental
              */
             originsWithUniversalNetworkAccess?: string[];
         }
@@ -18018,10 +18717,12 @@ export namespace Protocol {
             url: string;
             /**
              * Frame left origin in DIP (requires newWindow to be true or headless shell).
+             * @experimental
              */
             left?: integer;
             /**
              * Frame top origin in DIP (requires newWindow to be true or headless shell).
+             * @experimental
              */
             top?: integer;
             /**
@@ -18039,11 +18740,13 @@ export namespace Protocol {
             windowState?: WindowState;
             /**
              * The browser context to create the page in.
+             * @experimental
              */
             browserContextId?: Browser.BrowserContextID;
             /**
              * Whether BeginFrames for this target will be controlled via DevTools (headless shell only,
              * not supported on MacOS yet, false by default).
+             * @experimental
              */
             enableBeginFrameControl?: boolean;
             /**
@@ -18057,12 +18760,14 @@ export namespace Protocol {
             background?: boolean;
             /**
              * Whether to create the target of type "tab".
+             * @experimental
              */
             forTab?: boolean;
             /**
              * Whether to create a hidden target. The hidden target is observable via protocol, but not
              * present in the tab UI strip. Cannot be created with `forTab: true`, `newWindow: true` or
              * `background: false`. The life-time of the tab is limited to the life-time of the session.
+             * @experimental
              */
             hidden?: boolean;
         }
@@ -18081,6 +18786,7 @@ export namespace Protocol {
             sessionId?: SessionID;
             /**
              * Deprecated.
+             * @deprecated
              */
             targetId?: TargetID;
         }
@@ -18102,6 +18808,7 @@ export namespace Protocol {
              * Only targets matching filter will be reported. If filter is not specified
              * and target discovery is currently enabled, a filter used for target discovery
              * is used for consistency.
+             * @experimental
              */
             filter?: TargetFilter;
         }
@@ -18121,6 +18828,7 @@ export namespace Protocol {
             sessionId?: SessionID;
             /**
              * Deprecated.
+             * @deprecated
              */
             targetId?: TargetID;
         }
@@ -18139,10 +18847,12 @@ export namespace Protocol {
              * Enables "flat" access to the session via specifying sessionId attribute in the commands.
              * We plan to make this the default, deprecate non-flattened mode,
              * and eventually retire it. See crbug.com/991325.
+             * @experimental
              */
             flatten?: boolean;
             /**
              * Only targets matching filter will be attached.
+             * @experimental
              */
             filter?: TargetFilter;
         }
@@ -18156,6 +18866,7 @@ export namespace Protocol {
             waitForDebuggerOnStart: boolean;
             /**
              * Only targets matching filter will be attached.
+             * @experimental
              */
             filter?: TargetFilter;
         }
@@ -18168,6 +18879,7 @@ export namespace Protocol {
             /**
              * Only targets matching filter will be attached. If `discover` is false,
              * `filter` must be omitted or empty.
+             * @experimental
              */
             filter?: TargetFilter;
         }
@@ -18181,6 +18893,7 @@ export namespace Protocol {
 
         /**
          * Issued when attached to target because of auto-attach or `attachToTarget` command.
+         * @experimental
          */
         export interface AttachedToTargetEvent {
             /**
@@ -18194,6 +18907,7 @@ export namespace Protocol {
         /**
          * Issued when detached from target for any reason (including `detachFromTarget` command). Can be
          * issued multiple times per target if multiple sessions have been attached to it.
+         * @experimental
          */
         export interface DetachedFromTargetEvent {
             /**
@@ -18202,6 +18916,7 @@ export namespace Protocol {
             sessionId: SessionID;
             /**
              * Deprecated.
+             * @deprecated
              */
             targetId?: TargetID;
         }
@@ -18218,6 +18933,7 @@ export namespace Protocol {
             message: string;
             /**
              * Deprecated.
+             * @deprecated
              */
             targetId?: TargetID;
         }
@@ -18262,6 +18978,7 @@ export namespace Protocol {
 
     /**
      * The Tethering domain defines methods and events for browser port binding.
+     * @experimental
      */
     export namespace Tethering {
 
@@ -18298,6 +19015,7 @@ export namespace Protocol {
 
         /**
          * Configuration for memory dump. Used only when "memory-infra" category is enabled.
+         * @experimental
          */
         export interface MemoryDumpConfig {
             [key: string]: string;
@@ -18312,24 +19030,29 @@ export namespace Protocol {
 
         export interface TraceConfig {
             /**
-             * Controls how the trace buffer stores data. The default is `recordUntilFull`. (TraceConfigRecordMode enum)
+             * Controls how the trace buffer stores data. The default is `recordUntilFull`.
+             * @experimental
              */
             recordMode?: ('recordUntilFull' | 'recordContinuously' | 'recordAsMuchAsPossible' | 'echoToConsole');
             /**
              * Size of the trace buffer in kilobytes. If not specified or zero is passed, a default value
              * of 200 MB would be used.
+             * @experimental
              */
             traceBufferSizeInKb?: number;
             /**
              * Turns on JavaScript stack sampling.
+             * @experimental
              */
             enableSampling?: boolean;
             /**
              * Turns on system tracing.
+             * @experimental
              */
             enableSystrace?: boolean;
             /**
              * Turns on argument filter.
+             * @experimental
              */
             enableArgumentFilter?: boolean;
             /**
@@ -18342,10 +19065,12 @@ export namespace Protocol {
             excludedCategories?: string[];
             /**
              * Configuration to synthesize the delays in tracing.
+             * @experimental
              */
             syntheticDelays?: string[];
             /**
              * Configuration for memory dump triggers. Used only when "memory-infra" category is enabled.
+             * @experimental
              */
             memoryDumpConfig?: MemoryDumpConfig;
         }
@@ -18353,11 +19078,13 @@ export namespace Protocol {
         /**
          * Data format of a trace. Can be either the legacy JSON format or the
          * protocol buffer format. Note that the JSON format will be deprecated soon.
+         * @experimental
          */
         export type StreamFormat = ('json' | 'proto');
 
         /**
          * Compression type to use for traces returned via streams.
+         * @experimental
          */
         export type StreamCompression = ('none' | 'gzip');
 
@@ -18365,6 +19092,7 @@ export namespace Protocol {
          * Details exposed when memory request explicitly declared.
          * Keep consistent with memory_dump_request_args.h and
          * memory_instrumentation.mojom
+         * @experimental
          */
         export type MemoryDumpLevelOfDetail = ('background' | 'light' | 'detailed');
 
@@ -18374,6 +19102,7 @@ export namespace Protocol {
          * supported on Chrome OS and uses the Perfetto system tracing service.
          * `auto` chooses `system` when the perfettoConfig provided to Tracing.start
          * specifies at least one non-Chrome data source; otherwise uses `chrome`.
+         * @experimental
          */
         export type TracingBackend = ('auto' | 'chrome' | 'system');
 
@@ -18421,19 +19150,24 @@ export namespace Protocol {
         export interface StartRequest {
             /**
              * Category/tag filter
+             * @deprecated
+             * @experimental
              */
             categories?: string;
             /**
              * Tracing options
+             * @deprecated
+             * @experimental
              */
             options?: string;
             /**
              * If set, the agent will issue bufferUsage events at this interval, specified in milliseconds
+             * @experimental
              */
             bufferUsageReportingInterval?: number;
             /**
              * Whether to report trace events as series of dataCollected events or to save trace to a
-             * stream (defaults to `ReportEvents`). (StartRequestTransferMode enum)
+             * stream (defaults to `ReportEvents`).
              */
             transferMode?: ('ReportEvents' | 'ReturnAsStream');
             /**
@@ -18444,6 +19178,7 @@ export namespace Protocol {
             /**
              * Compression format to use. This only applies when using `ReturnAsStream`
              * transfer mode (defaults to `none`)
+             * @experimental
              */
             streamCompression?: StreamCompression;
             traceConfig?: TraceConfig;
@@ -18451,14 +19186,19 @@ export namespace Protocol {
              * Base64-encoded serialized perfetto.protos.TraceConfig protobuf message
              * When specified, the parameters `categories`, `options`, `traceConfig`
              * are ignored. (Encoded as a base64 string when passed over JSON)
+             * @experimental
              */
             perfettoConfig?: string;
             /**
              * Backend type (defaults to `auto`)
+             * @experimental
              */
             tracingBackend?: TracingBackend;
         }
 
+        /**
+         * @experimental
+         */
         export interface BufferUsageEvent {
             /**
              * A number in range [0..1] that indicates the used size of event buffer as a fraction of its
@@ -18479,6 +19219,7 @@ export namespace Protocol {
         /**
          * Contains a bucket of collected trace events. When tracing is stopped collected events will be
          * sent as a sequence of dataCollected events followed by tracingComplete event.
+         * @experimental
          */
         export interface DataCollectedEvent {
             value: any[];
@@ -18562,7 +19303,7 @@ export namespace Protocol {
          */
         export interface AuthChallenge {
             /**
-             * Source of the authentication challenge. (AuthChallengeSource enum)
+             * Source of the authentication challenge.
              */
             source?: ('Server' | 'Proxy');
             /**
@@ -18592,7 +19333,7 @@ export namespace Protocol {
             /**
              * The decision on what to do in response to the authorization challenge.  Default means
              * deferring to the default behavior of the net stack, which will likely either the Cancel
-             * authentication or display a popup dialog box. (AuthChallengeResponseResponse enum)
+             * authentication or display a popup dialog box.
              */
             response: ('Default' | 'CancelAuth' | 'ProvideCredentials');
             /**
@@ -18690,6 +19431,7 @@ export namespace Protocol {
             headers?: HeaderEntry[];
             /**
              * If set, overrides response interception behavior for this request.
+             * @experimental
              */
             interceptResponse?: boolean;
         }
@@ -18812,6 +19554,7 @@ export namespace Protocol {
             /**
              * If the request is due to a redirect response from the server, the id of the request that
              * has caused the redirect.
+             * @experimental
              */
             redirectedRequestId?: RequestId;
         }
@@ -18849,6 +19592,7 @@ export namespace Protocol {
     /**
      * This domain allows inspection of Web Audio API.
      * https://webaudio.github.io/web-audio-api/
+     * @experimental
      */
     export namespace WebAudio {
 
@@ -19095,6 +19839,7 @@ export namespace Protocol {
     /**
      * This domain allows configuring virtual authenticators to test the WebAuthn
      * API.
+     * @experimental
      */
     export namespace WebAuthn {
 
@@ -19349,6 +20094,7 @@ export namespace Protocol {
 
     /**
      * This domain allows detailed inspection of media elements
+     * @experimental
      */
     export namespace Media {
 
@@ -19380,7 +20126,7 @@ export namespace Protocol {
              * representation of a media::PipelineStatus object. Soon however we're
              * going to be moving away from using PipelineStatus for errors and
              * introducing a new error type which should hopefully let us integrate
-             * the error log level into the PlayerError type. (PlayerMessageLevel enum)
+             * the error log level into the PlayerError type.
              */
             level: ('error' | 'warning' | 'info' | 'debug');
             message: string;
@@ -19480,6 +20226,9 @@ export namespace Protocol {
         }
     }
 
+    /**
+     * @experimental
+     */
     export namespace DeviceAccess {
 
         /**
@@ -19522,6 +20271,9 @@ export namespace Protocol {
         }
     }
 
+    /**
+     * @experimental
+     */
     export namespace Preload {
 
         /**
@@ -19570,6 +20322,7 @@ export namespace Protocol {
             errorType?: RuleSetErrorType;
             /**
              * TODO(https://crbug.com/1425354): Replace this property with structured error.
+             * @deprecated
              */
             errorMessage?: string;
         }
@@ -19719,6 +20472,7 @@ export namespace Protocol {
 
     /**
      * This domain allows interacting with the FedCM dialog.
+     * @experimental
      */
     export namespace FedCm {
 
@@ -19815,6 +20569,7 @@ export namespace Protocol {
 
     /**
      * This domain allows interacting with the browser to control PWAs.
+     * @experimental
      */
     export namespace PWA {
 
@@ -19920,6 +20675,7 @@ export namespace Protocol {
     /**
      * This domain allows configuring virtual Bluetooth devices to test
      * the web-bluetooth API.
+     * @experimental
      */
     export namespace BluetoothEmulation {
 
