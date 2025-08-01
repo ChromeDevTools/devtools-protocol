@@ -3632,6 +3632,8 @@ export namespace Protocol {
 
         export type SRIMessageSignatureError = ('MissingSignatureHeader' | 'MissingSignatureInputHeader' | 'InvalidSignatureHeader' | 'InvalidSignatureInputHeader' | 'SignatureHeaderValueIsNotByteSequence' | 'SignatureHeaderValueIsParameterized' | 'SignatureHeaderValueIsIncorrectLength' | 'SignatureInputHeaderMissingLabel' | 'SignatureInputHeaderValueNotInnerList' | 'SignatureInputHeaderValueMissingComponents' | 'SignatureInputHeaderInvalidComponentType' | 'SignatureInputHeaderInvalidComponentName' | 'SignatureInputHeaderInvalidHeaderComponentParameter' | 'SignatureInputHeaderInvalidDerivedComponentParameter' | 'SignatureInputHeaderKeyIdLength' | 'SignatureInputHeaderInvalidParameter' | 'SignatureInputHeaderMissingRequiredParameters' | 'ValidationFailedSignatureExpired' | 'ValidationFailedInvalidLength' | 'ValidationFailedSignatureMismatch' | 'ValidationFailedIntegrityMismatch');
 
+        export type UnencodedDigestError = ('MalformedDictionary' | 'UnknownAlgorithm' | 'IncorrectDigestType' | 'IncorrectDigestLength');
+
         /**
          * Details for issues around "Attribution Reporting API" usage.
          * Explainer: https://github.com/WICG/attribution-reporting-api
@@ -3676,6 +3678,11 @@ export namespace Protocol {
             error: SRIMessageSignatureError;
             signatureBase: string;
             integrityAssertions: string[];
+            request: AffectedRequest;
+        }
+
+        export interface UnencodedDigestIssueDetails {
+            error: UnencodedDigestError;
             request: AffectedRequest;
         }
 
@@ -3863,7 +3870,7 @@ export namespace Protocol {
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'PartitioningBlobURLIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'CookieDeprecationMetadataIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue' | 'PropertyRuleIssue' | 'SharedDictionaryIssue' | 'ElementAccessibilityIssue' | 'SRIMessageSignatureIssue' | 'UserReidentificationIssue');
+        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'PartitioningBlobURLIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'CookieDeprecationMetadataIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue' | 'PropertyRuleIssue' | 'SharedDictionaryIssue' | 'ElementAccessibilityIssue' | 'SRIMessageSignatureIssue' | 'UnencodedDigestIssue' | 'UserReidentificationIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3898,6 +3905,7 @@ export namespace Protocol {
             sharedDictionaryIssueDetails?: SharedDictionaryIssueDetails;
             elementAccessibilityIssueDetails?: ElementAccessibilityIssueDetails;
             sriMessageSignatureIssueDetails?: SRIMessageSignatureIssueDetails;
+            unencodedDigestIssueDetails?: UnencodedDigestIssueDetails;
             userReidentificationIssueDetails?: UserReidentificationIssueDetails;
         }
 
