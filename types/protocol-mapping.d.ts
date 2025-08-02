@@ -588,8 +588,7 @@ export namespace ProtocolMapping {
          */
         'Page.windowOpen': [Protocol.Page.WindowOpenEvent];
         /**
-         * Issued for every compilation cache generated. Is only available
-         * if Page.setGenerateCompilationCache is enabled.
+         * Issued for every compilation cache generated.
          */
         'Page.compilationCacheProduced': [Protocol.Page.CompilationCacheProducedEvent];
         /**
@@ -4963,6 +4962,13 @@ export namespace ProtocolMapping {
         'Target.setRemoteLocations': {
             paramsType: [Protocol.Target.SetRemoteLocationsRequest];
             returnType: void;
+        };
+        /**
+         * Opens a DevTools window for the target.
+         */
+        'Target.openDevTools': {
+            paramsType: [Protocol.Target.OpenDevToolsRequest];
+            returnType: Protocol.Target.OpenDevToolsResponse;
         };
         /**
          * Request browser port binding.

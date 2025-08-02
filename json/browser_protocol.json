@@ -21741,7 +21741,7 @@
                 },
                 {
                     "name": "compilationCacheProduced",
-                    "description": "Issued for every compilation cache generated. Is only available\nif Page.setGenerateCompilationCache is enabled.",
+                    "description": "Issued for every compilation cache generated.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -25632,6 +25632,25 @@
                             "items": {
                                 "$ref": "RemoteLocation"
                             }
+                        }
+                    ]
+                },
+                {
+                    "name": "openDevTools",
+                    "description": "Opens a DevTools window for the target.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "targetId",
+                            "description": "This can be the page or tab target ID.",
+                            "$ref": "TargetID"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "targetId",
+                            "description": "The targetId of DevTools page target.",
+                            "$ref": "TargetID"
                         }
                     ]
                 }

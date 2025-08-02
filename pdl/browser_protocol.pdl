@@ -10296,8 +10296,7 @@ domain Page
       # Whether or not it was triggered by user gesture.
       boolean userGesture
 
-  # Issued for every compilation cache generated. Is only available
-  # if Page.setGenerateCompilationCache is enabled.
+  # Issued for every compilation cache generated.
   experimental event compilationCacheProduced
     parameters
       string url
@@ -12096,6 +12095,15 @@ domain Target
   event targetInfoChanged
     parameters
       TargetInfo targetInfo
+
+  # Opens a DevTools window for the target.
+  experimental command openDevTools
+    parameters
+      # This can be the page or tab target ID.
+      TargetID targetId
+    returns
+      # The targetId of DevTools page target.
+      TargetID targetId
 
 # The Tethering domain defines methods and events for browser port binding.
 experimental domain Tethering

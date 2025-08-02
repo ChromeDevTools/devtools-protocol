@@ -16608,8 +16608,7 @@ export namespace Protocol {
         }
 
         /**
-         * Issued for every compilation cache generated. Is only available
-         * if Page.setGenerateCompilationCache is enabled.
+         * Issued for every compilation cache generated.
          * @experimental
          */
         export interface CompilationCacheProducedEvent {
@@ -18897,6 +18896,20 @@ export namespace Protocol {
              * List of remote locations.
              */
             locations: RemoteLocation[];
+        }
+
+        export interface OpenDevToolsRequest {
+            /**
+             * This can be the page or tab target ID.
+             */
+            targetId: TargetID;
+        }
+
+        export interface OpenDevToolsResponse {
+            /**
+             * The targetId of DevTools page target.
+             */
+            targetId: TargetID;
         }
 
         /**

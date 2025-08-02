@@ -3801,8 +3801,7 @@ export namespace ProtocolProxyApi {
         on(event: 'windowOpen', listener: (params: Protocol.Page.WindowOpenEvent) => void): void;
 
         /**
-         * Issued for every compilation cache generated. Is only available
-         * if Page.setGenerateCompilationCache is enabled.
+         * Issued for every compilation cache generated.
          * @experimental
          */
         on(event: 'compilationCacheProduced', listener: (params: Protocol.Page.CompilationCacheProducedEvent) => void): void;
@@ -4362,6 +4361,12 @@ export namespace ProtocolProxyApi {
          * @experimental
          */
         setRemoteLocations(params: Protocol.Target.SetRemoteLocationsRequest): Promise<void>;
+
+        /**
+         * Opens a DevTools window for the target.
+         * @experimental
+         */
+        openDevTools(params: Protocol.Target.OpenDevToolsRequest): Promise<Protocol.Target.OpenDevToolsResponse>;
 
         /**
          * Issued when attached to target because of auto-attach or `attachToTarget` command.
