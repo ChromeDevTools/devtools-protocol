@@ -14160,6 +14160,7 @@
                         {
                             "name": "expires",
                             "description": "Cookie expiration date as the number of seconds since the UNIX epoch.",
+                            "optional": true,
                             "type": "number"
                         },
                         {
