@@ -25,9 +25,18 @@ rm tmp.json
 
 chromium_deps_url="https://chromium.googlesource.com/chromium/src.git/+/${commit_sha}/DEPS?format=TEXT"
 v8_revision=$(curl --silent "${chromium_deps_url}" | base64 --decode | grep "'v8_revision':" | cut -d "'" -f4)
+browser_protocol_domains_url="https://chromium.googlesource.com/chromium/src.git/+/${commit_sha}/third_party/blink/public/devtools_protocol/domains?format=TEXT"
 browser_protocol_url="https://chromium.googlesource.com/chromium/src.git/+/${commit_sha}/third_party/blink/public/devtools_protocol/browser_protocol.pdl?format=TEXT"
 js_protocol_url="https://chromium.googlesource.com/v8/v8.git/+/${v8_revision}/include/js_protocol.pdl?format=TEXT"
 
+if curl --output /dev/null --silent --head --fail "$browser_protocol_domains_url"; then
+	# the 4th column is the file name in the folder (e.g., DOM.pdl).
+	domains=$(curl --silent "${browser_protocol_domains_url}" | base64 --decode | grep .pdl | awk "{print $4}")
+	for domain in $domains; do 
+		browser_protocol_domain_url="https://chromium.googlesource.com/chromium/src.git/+/${commit_sha}/third_party/blink/public/devtools_protocol/domains/$domain?format=TEXT"
+		curl --silent "${browser_protocol_domain_url}" | base64 --decode > pdl/domains/$domain
+	done
+fi
 curl --silent "${browser_protocol_url}" | base64 --decode > pdl/browser_protocol.pdl
 curl --silent "${js_protocol_url}" | base64 --decode > pdl/js_protocol.pdl
 
