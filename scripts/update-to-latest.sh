@@ -36,6 +36,7 @@ if curl --output /dev/null --silent --head --fail "$browser_protocol_domains_url
 	for domain in $domains; do 
 		browser_protocol_domain_url="https://chromium.googlesource.com/chromium/src.git/+/${commit_sha}/third_party/blink/public/devtools_protocol/domains/$domain?format=TEXT"
 		curl --silent "${browser_protocol_domain_url}" | base64 --decode > pdl/domains/$domain
+		sleep 1
 	done
 fi
 curl --silent "${browser_protocol_url}" | base64 --decode > pdl/browser_protocol.pdl
