@@ -3,6 +3,7 @@ import path from 'node:path';
 
 import simpleGit from 'simple-git';
 
+const __dirname = import.meta.dirname;
 const maxCommitsInChangelog = 400;
 
 let results = '';

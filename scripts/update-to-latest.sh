@@ -31,7 +31,8 @@ js_protocol_url="https://chromium.googlesource.com/v8/v8.git/+/${v8_revision}/in
 
 if curl --output /dev/null --silent --head --fail "$browser_protocol_domains_url"; then
 	# the 4th column is the file name in the folder (e.g., DOM.pdl).
-	domains=$(curl --silent "${browser_protocol_domains_url}" | base64 --decode | grep .pdl | awk "{print $4}")
+	domains=$(curl --silent "${browser_protocol_domains_url}" | base64 --decode | grep .pdl | awk "{print \$4}")
+	mkdir -p pdl/domains
 	for domain in $domains; do 
 		browser_protocol_domain_url="https://chromium.googlesource.com/chromium/src.git/+/${commit_sha}/third_party/blink/public/devtools_protocol/domains/$domain?format=TEXT"
 		curl --silent "${browser_protocol_domain_url}" | base64 --decode > pdl/domains/$domain
@@ -56,11 +57,8 @@ git --no-pager diff
 if ! git diff --no-ext-diff --quiet --exit-code; then
 	# dirty repo, ready to commit.
 
-	git config user.name 'DevTools Bot'
-	git config user.email '24444246+devtools-bot@users.noreply.github.com'
-
 	# commit so we can use the new commit in the changelog
-	git commit --all -m "Roll protocol to r$commit_rev"
+	git commit --all -m "Roll protocol to r$commit_rev" --author "DevTools Bot <24444246+devtools-bot@users.noreply.github.com>"
 
 	# generate changelog
 	cd "$protocol_repo_path/scripts" || exit 1
