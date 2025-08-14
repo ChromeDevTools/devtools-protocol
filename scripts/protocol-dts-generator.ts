@@ -131,11 +131,11 @@ const emitDescription = (lines: string[]) => {
 
 const emitTsComment = (object: P.Event|P.PropertyType|P.DomainType|P.Command|P.Domain) => {
     const commentLines = object.description ? getCommentLines(object.description) : [];
-    if('deprecated' in object){
+    if('deprecated' in object && object.deprecated){
         commentLines.push('@deprecated');
     }
 
-    if('experimental' in object){
+    if('experimental' in object && object.experimental){
         commentLines.push('@experimental');
     }
 
@@ -275,7 +275,7 @@ const emitEvent = (event: P.Event) => {
     emitInterface(toEventPayloadName(event.name), event.parameters)
 }
 
-const getEventMapping = (event: P.Event, domainName: string, modulePrefix: string): P.RefType & P.PropertyBaseType => {
+const getEventMapping = (event: P.Event, domainName: string, modulePrefix: string): P.RefType & P.PropertyBaseType & P.ExtraInformation => {
     // Use TS3.0+ tuples
     const payloadType = event.parameters ?
         `[${modulePrefix}.${domainName}.${toEventPayloadName(event.name)}]` :
@@ -285,6 +285,8 @@ const getEventMapping = (event: P.Event, domainName: string, modulePrefix: strin
         // domain-prefixed name since it will be used outside of the module.
         name: `${domainName}.${event.name}`,
         description: event.description,
+        deprecated: event.deprecated,
+        experimental: event.experimental,
         $ref: payloadType
     }
 }
@@ -293,7 +295,7 @@ const isWeakInterface = (params: P.PropertyType[]): boolean => {
     return params.every(p => !!p.optional)
 }
 
-const getCommandMapping = (command: P.Command, domainName: string, modulePrefix: string): P.ObjectType & P.PropertyBaseType => {
+const getCommandMapping = (command: P.Command, domainName: string, modulePrefix: string): P.ObjectType & P.PropertyBaseType & P.ExtraInformation => {
     const prefix = `${modulePrefix}.${domainName}.`
     // Use TS3.0+ tuples for paramsType
     let requestType = '[]'
@@ -307,6 +309,8 @@ const getCommandMapping = (command: P.Command, domainName: string, modulePrefix:
         type: 'object',
         name: `${domainName}.${command.name}`,
         description: command.description,
+        deprecated: command.deprecated,
+        experimental: command.experimental,
         properties: [{
             name: 'paramsType',
             $ref: requestType,

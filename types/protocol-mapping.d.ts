@@ -16,6 +16,7 @@ export namespace ProtocolMapping {
         /**
          * Fired when breakpoint is resolved to an actual script and location.
          * Deprecated in favor of `resolvedBreakpoints` in the `scriptParsed` event.
+         * @deprecated
          */
         'Debugger.breakpointResolved': [Protocol.Debugger.BreakpointResolvedEvent];
         /**
@@ -58,10 +59,12 @@ export namespace ProtocolMapping {
          * `takePreciseCoverage` for the current isolate. May only be sent if precise code
          * coverage has been started. This event can be trigged by the embedder to, for example,
          * trigger collection of coverage data immediately at a certain point in time.
+         * @experimental
          */
         'Profiler.preciseCoverageDeltaUpdate': [Protocol.Profiler.PreciseCoverageDeltaUpdateEvent];
         /**
          * Notification is issued every time when binding is called.
+         * @experimental
          */
         'Runtime.bindingCalled': [Protocol.Runtime.BindingCalledEvent];
         /**
@@ -96,10 +99,12 @@ export namespace ProtocolMapping {
         /**
          * The loadComplete event mirrors the load complete event sent by the browser to assistive
          * technology when the web page has finished loading.
+         * @experimental
          */
         'Accessibility.loadComplete': [Protocol.Accessibility.LoadCompleteEvent];
         /**
          * The nodesUpdated event is sent every time a previously requested node has changed the in tree.
+         * @experimental
          */
         'Accessibility.nodesUpdated': [Protocol.Accessibility.NodesUpdatedEvent];
         /**
@@ -151,10 +156,12 @@ export namespace ProtocolMapping {
         'BluetoothEmulation.descriptorOperationReceived': [Protocol.BluetoothEmulation.DescriptorOperationReceivedEvent];
         /**
          * Fired when page is about to start a download.
+         * @experimental
          */
         'Browser.downloadWillBegin': [Protocol.Browser.DownloadWillBeginEvent];
         /**
          * Fired when download makes progress. Last call has |done| == true.
+         * @experimental
          */
         'Browser.downloadProgress': [Protocol.Browser.DownloadProgressEvent];
         /**
@@ -179,6 +186,9 @@ export namespace ProtocolMapping {
          * Fired whenever an active document stylesheet is removed.
          */
         'CSS.styleSheetRemoved': [Protocol.CSS.StyleSheetRemovedEvent];
+        /**
+         * @experimental
+         */
         'CSS.computedStyleUpdated': [Protocol.CSS.ComputedStyleUpdatedEvent];
         /**
          * This is fired whenever the list of available sinks changes. A sink is a
@@ -216,6 +226,7 @@ export namespace ProtocolMapping {
         'DOM.childNodeRemoved': [Protocol.DOM.ChildNodeRemovedEvent];
         /**
          * Called when distribution is changed.
+         * @experimental
          */
         'DOM.distributedNodesUpdated': [Protocol.DOM.DistributedNodesUpdatedEvent];
         /**
@@ -224,22 +235,27 @@ export namespace ProtocolMapping {
         'DOM.documentUpdated': [];
         /**
          * Fired when `Element`'s inline style is modified via a CSS property modification.
+         * @experimental
          */
         'DOM.inlineStyleInvalidated': [Protocol.DOM.InlineStyleInvalidatedEvent];
         /**
          * Called when a pseudo element is added to an element.
+         * @experimental
          */
         'DOM.pseudoElementAdded': [Protocol.DOM.PseudoElementAddedEvent];
         /**
          * Called when top layer elements are changed.
+         * @experimental
          */
         'DOM.topLayerElementsUpdated': [];
         /**
          * Fired when a node's scrollability state changes.
+         * @experimental
          */
         'DOM.scrollableFlagUpdated': [Protocol.DOM.ScrollableFlagUpdatedEvent];
         /**
          * Called when a pseudo element is removed from an element.
+         * @experimental
          */
         'DOM.pseudoElementRemoved': [Protocol.DOM.PseudoElementRemovedEvent];
         /**
@@ -249,10 +265,12 @@ export namespace ProtocolMapping {
         'DOM.setChildNodes': [Protocol.DOM.SetChildNodesEvent];
         /**
          * Called when shadow root is popped from the element.
+         * @experimental
          */
         'DOM.shadowRootPopped': [Protocol.DOM.ShadowRootPoppedEvent];
         /**
          * Called when shadow root is pushed into the element.
+         * @experimental
          */
         'DOM.shadowRootPushed': [Protocol.DOM.ShadowRootPushedEvent];
         'DOMStorage.domStorageItemAdded': [Protocol.DOMStorage.DomStorageItemAddedEvent];
@@ -266,6 +284,7 @@ export namespace ProtocolMapping {
         'DeviceAccess.deviceRequestPrompted': [Protocol.DeviceAccess.DeviceRequestPromptedEvent];
         /**
          * Notification sent after the virtual time budget for the current VirtualTimePolicy has run out.
+         * @experimental
          */
         'Emulation.virtualTimeBudgetExpired': [];
         'FedCm.dialogShown': [Protocol.FedCm.DialogShownEvent];
@@ -296,6 +315,7 @@ export namespace ProtocolMapping {
         /**
          * Emitted only when `Input.setInterceptDrags` is enabled. Use this data with `Input.dispatchDragEvent` to
          * restore normal drag and drop behavior.
+         * @experimental
          */
         'Input.dragIntercepted': [Protocol.Input.DragInterceptedEvent];
         /**
@@ -360,6 +380,8 @@ export namespace ProtocolMapping {
          * Details of an intercepted HTTP request, which must be either allowed, blocked, modified or
          * mocked.
          * Deprecated, use Fetch.requestPaused instead.
+         * @deprecated
+         * @experimental
          */
         'Network.requestIntercepted': [Protocol.Network.RequestInterceptedEvent];
         /**
@@ -372,10 +394,12 @@ export namespace ProtocolMapping {
         'Network.requestWillBeSent': [Protocol.Network.RequestWillBeSentEvent];
         /**
          * Fired when resource loading priority is changed
+         * @experimental
          */
         'Network.resourceChangedPriority': [Protocol.Network.ResourceChangedPriorityEvent];
         /**
          * Fired when a signed exchange was received over the network
+         * @experimental
          */
         'Network.signedExchangeReceived': [Protocol.Network.SignedExchangeReceivedEvent];
         /**
@@ -424,50 +448,62 @@ export namespace ProtocolMapping {
         'Network.webTransportClosed': [Protocol.Network.WebTransportClosedEvent];
         /**
          * Fired upon direct_socket.TCPSocket creation.
+         * @experimental
          */
         'Network.directTCPSocketCreated': [Protocol.Network.DirectTCPSocketCreatedEvent];
         /**
          * Fired when direct_socket.TCPSocket connection is opened.
+         * @experimental
          */
         'Network.directTCPSocketOpened': [Protocol.Network.DirectTCPSocketOpenedEvent];
         /**
          * Fired when direct_socket.TCPSocket is aborted.
+         * @experimental
          */
         'Network.directTCPSocketAborted': [Protocol.Network.DirectTCPSocketAbortedEvent];
         /**
          * Fired when direct_socket.TCPSocket is closed.
+         * @experimental
          */
         'Network.directTCPSocketClosed': [Protocol.Network.DirectTCPSocketClosedEvent];
         /**
          * Fired when data is sent to tcp direct socket stream.
+         * @experimental
          */
         'Network.directTCPSocketChunkSent': [Protocol.Network.DirectTCPSocketChunkSentEvent];
         /**
          * Fired when data is received from tcp direct socket stream.
+         * @experimental
          */
         'Network.directTCPSocketChunkReceived': [Protocol.Network.DirectTCPSocketChunkReceivedEvent];
         /**
          * Fired upon direct_socket.UDPSocket creation.
+         * @experimental
          */
         'Network.directUDPSocketCreated': [Protocol.Network.DirectUDPSocketCreatedEvent];
         /**
          * Fired when direct_socket.UDPSocket connection is opened.
+         * @experimental
          */
         'Network.directUDPSocketOpened': [Protocol.Network.DirectUDPSocketOpenedEvent];
         /**
          * Fired when direct_socket.UDPSocket is aborted.
+         * @experimental
          */
         'Network.directUDPSocketAborted': [Protocol.Network.DirectUDPSocketAbortedEvent];
         /**
          * Fired when direct_socket.UDPSocket is closed.
+         * @experimental
          */
         'Network.directUDPSocketClosed': [Protocol.Network.DirectUDPSocketClosedEvent];
         /**
          * Fired when message is sent to udp direct socket stream.
+         * @experimental
          */
         'Network.directUDPSocketChunkSent': [Protocol.Network.DirectUDPSocketChunkSentEvent];
         /**
          * Fired when message is received from udp direct socket stream.
+         * @experimental
          */
         'Network.directUDPSocketChunkReceived': [Protocol.Network.DirectUDPSocketChunkReceivedEvent];
         /**
@@ -475,18 +511,21 @@ export namespace ProtocolMapping {
          * network stack. Not every requestWillBeSent event will have an additional
          * requestWillBeSentExtraInfo fired for it, and there is no guarantee whether requestWillBeSent
          * or requestWillBeSentExtraInfo will be fired first for the same request.
+         * @experimental
          */
         'Network.requestWillBeSentExtraInfo': [Protocol.Network.RequestWillBeSentExtraInfoEvent];
         /**
          * Fired when additional information about a responseReceived event is available from the network
          * stack. Not every responseReceived event will have an additional responseReceivedExtraInfo for
          * it, and responseReceivedExtraInfo may be fired before or after responseReceived.
+         * @experimental
          */
         'Network.responseReceivedExtraInfo': [Protocol.Network.ResponseReceivedExtraInfoEvent];
         /**
          * Fired when 103 Early Hints headers is received in addition to the common response.
          * Not every responseReceived event will have an responseReceivedEarlyHints fired.
          * Only one responseReceivedEarlyHints may be fired for eached responseReceived event.
+         * @experimental
          */
         'Network.responseReceivedEarlyHints': [Protocol.Network.ResponseReceivedEarlyHintsEvent];
         /**
@@ -494,36 +533,49 @@ export namespace ProtocolMapping {
          * the type of the operation and whether the operation succeeded or
          * failed, the event is fired before the corresponding request was sent
          * or after the response was received.
+         * @experimental
          */
         'Network.trustTokenOperationDone': [Protocol.Network.TrustTokenOperationDoneEvent];
         /**
          * Fired once security policy has been updated.
+         * @experimental
          */
         'Network.policyUpdated': [];
         /**
          * Fired once when parsing the .wbn file has succeeded.
          * The event contains the information about the web bundle contents.
+         * @experimental
          */
         'Network.subresourceWebBundleMetadataReceived': [Protocol.Network.SubresourceWebBundleMetadataReceivedEvent];
         /**
          * Fired once when parsing the .wbn file has failed.
+         * @experimental
          */
         'Network.subresourceWebBundleMetadataError': [Protocol.Network.SubresourceWebBundleMetadataErrorEvent];
         /**
          * Fired when handling requests for resources within a .wbn file.
          * Note: this will only be fired for resources that are requested by the webpage.
+         * @experimental
          */
         'Network.subresourceWebBundleInnerResponseParsed': [Protocol.Network.SubresourceWebBundleInnerResponseParsedEvent];
         /**
          * Fired when request for resources within a .wbn file failed.
+         * @experimental
          */
         'Network.subresourceWebBundleInnerResponseError': [Protocol.Network.SubresourceWebBundleInnerResponseErrorEvent];
         /**
          * Is sent whenever a new report is added.
          * And after 'enableReportingApi' for all existing reports.
+         * @experimental
          */
         'Network.reportingApiReportAdded': [Protocol.Network.ReportingApiReportAddedEvent];
+        /**
+         * @experimental
+         */
         'Network.reportingApiReportUpdated': [Protocol.Network.ReportingApiReportUpdatedEvent];
+        /**
+         * @experimental
+         */
         'Network.reportingApiEndpointsChangedForOrigin': [Protocol.Network.ReportingApiEndpointsChangedForOriginEvent];
         /**
          * Fired when the node should be inspected. This happens after call to `setInspectMode` or when
@@ -553,6 +605,7 @@ export namespace ProtocolMapping {
         'Page.frameAttached': [Protocol.Page.FrameAttachedEvent];
         /**
          * Fired when frame no longer has a scheduled navigation.
+         * @deprecated
          */
         'Page.frameClearedScheduledNavigation': [Protocol.Page.FrameClearedScheduledNavigationEvent];
         /**
@@ -562,6 +615,7 @@ export namespace ProtocolMapping {
         /**
          * Fired before frame subtree is detached. Emitted before any frame of the
          * subtree is actually detached.
+         * @experimental
          */
         'Page.frameSubtreeWillBeDetached': [Protocol.Page.FrameSubtreeWillBeDetachedEvent];
         /**
@@ -570,8 +624,12 @@ export namespace ProtocolMapping {
         'Page.frameNavigated': [Protocol.Page.FrameNavigatedEvent];
         /**
          * Fired when opening document to write to.
+         * @experimental
          */
         'Page.documentOpened': [Protocol.Page.DocumentOpenedEvent];
+        /**
+         * @experimental
+         */
         'Page.frameResized': [];
         /**
          * Fired when a navigation starts. This event is fired for both
@@ -581,33 +639,42 @@ export namespace ProtocolMapping {
          * can be fired for a single navigation, for example, when a same-document
          * navigation becomes a cross-document navigation (such as in the case of a
          * frameset).
+         * @experimental
          */
         'Page.frameStartedNavigating': [Protocol.Page.FrameStartedNavigatingEvent];
         /**
          * Fired when a renderer-initiated navigation is requested.
          * Navigation may still be cancelled after the event is issued.
+         * @experimental
          */
         'Page.frameRequestedNavigation': [Protocol.Page.FrameRequestedNavigationEvent];
         /**
          * Fired when frame schedules a potential navigation.
+         * @deprecated
          */
         'Page.frameScheduledNavigation': [Protocol.Page.FrameScheduledNavigationEvent];
         /**
          * Fired when frame has started loading.
+         * @experimental
          */
         'Page.frameStartedLoading': [Protocol.Page.FrameStartedLoadingEvent];
         /**
          * Fired when frame has stopped loading.
+         * @experimental
          */
         'Page.frameStoppedLoading': [Protocol.Page.FrameStoppedLoadingEvent];
         /**
          * Fired when page is about to start a download.
          * Deprecated. Use Browser.downloadWillBegin instead.
+         * @deprecated
+         * @experimental
          */
         'Page.downloadWillBegin': [Protocol.Page.DownloadWillBeginEvent];
         /**
          * Fired when download makes progress. Last call has |done| == true.
          * Deprecated. Use Browser.downloadProgress instead.
+         * @deprecated
+         * @experimental
          */
         'Page.downloadProgress': [Protocol.Page.DownloadProgressEvent];
         /**
@@ -638,19 +705,23 @@ export namespace ProtocolMapping {
          * not assume any ordering with the Page.frameNavigated event. This event is fired only for
          * main-frame history navigation where the document changes (non-same-document navigations),
          * when bfcache navigation fails.
+         * @experimental
          */
         'Page.backForwardCacheNotUsed': [Protocol.Page.BackForwardCacheNotUsedEvent];
         'Page.loadEventFired': [Protocol.Page.LoadEventFiredEvent];
         /**
          * Fired when same-document navigation happens, e.g. due to history API usage or anchor navigation.
+         * @experimental
          */
         'Page.navigatedWithinDocument': [Protocol.Page.NavigatedWithinDocumentEvent];
         /**
          * Compressed image data requested by the `startScreencast`.
+         * @experimental
          */
         'Page.screencastFrame': [Protocol.Page.ScreencastFrameEvent];
         /**
          * Fired when the page with currently enabled screencast was shown or hidden `.
+         * @experimental
          */
         'Page.screencastVisibilityChanged': [Protocol.Page.ScreencastVisibilityChangedEvent];
         /**
@@ -660,6 +731,7 @@ export namespace ProtocolMapping {
         'Page.windowOpen': [Protocol.Page.WindowOpenEvent];
         /**
          * Issued for every compilation cache generated.
+         * @experimental
          */
         'Page.compilationCacheProduced': [Protocol.Page.CompilationCacheProducedEvent];
         /**
@@ -696,14 +768,17 @@ export namespace ProtocolMapping {
          * handled with the `handleCertificateError` command. Note: this event does not fire if the
          * certificate error has been allowed internally. Only one client per target should override
          * certificate errors at the same time.
+         * @deprecated
          */
         'Security.certificateError': [Protocol.Security.CertificateErrorEvent];
         /**
          * The security state of the page changed.
+         * @experimental
          */
         'Security.visibleSecurityStateChanged': [Protocol.Security.VisibleSecurityStateChangedEvent];
         /**
          * The security state of the page changed. No longer being sent.
+         * @deprecated
          */
         'Security.securityStateChanged': [Protocol.Security.SecurityStateChangedEvent];
         'ServiceWorker.workerErrorReported': [Protocol.ServiceWorker.WorkerErrorReportedEvent];
@@ -754,17 +829,31 @@ export namespace ProtocolMapping {
         'Storage.sharedStorageWorkletOperationExecutionFinished': [Protocol.Storage.SharedStorageWorkletOperationExecutionFinishedEvent];
         'Storage.storageBucketCreatedOrUpdated': [Protocol.Storage.StorageBucketCreatedOrUpdatedEvent];
         'Storage.storageBucketDeleted': [Protocol.Storage.StorageBucketDeletedEvent];
+        /**
+         * @experimental
+         */
         'Storage.attributionReportingSourceRegistered': [Protocol.Storage.AttributionReportingSourceRegisteredEvent];
+        /**
+         * @experimental
+         */
         'Storage.attributionReportingTriggerRegistered': [Protocol.Storage.AttributionReportingTriggerRegisteredEvent];
+        /**
+         * @experimental
+         */
         'Storage.attributionReportingReportSent': [Protocol.Storage.AttributionReportingReportSentEvent];
+        /**
+         * @experimental
+         */
         'Storage.attributionReportingVerboseDebugReportSent': [Protocol.Storage.AttributionReportingVerboseDebugReportSentEvent];
         /**
          * Issued when attached to target because of auto-attach or `attachToTarget` command.
+         * @experimental
          */
         'Target.attachedToTarget': [Protocol.Target.AttachedToTargetEvent];
         /**
          * Issued when detached from target for any reason (including `detachFromTarget` command). Can be
          * issued multiple times per target if multiple sessions have been attached to it.
+         * @experimental
          */
         'Target.detachedFromTarget': [Protocol.Target.DetachedFromTargetEvent];
         /**
@@ -793,10 +882,14 @@ export namespace ProtocolMapping {
          * Informs that port was successfully bound and got a specified connection id.
          */
         'Tethering.accepted': [Protocol.Tethering.AcceptedEvent];
+        /**
+         * @experimental
+         */
         'Tracing.bufferUsage': [Protocol.Tracing.BufferUsageEvent];
         /**
          * Contains a bucket of collected trace events. When tracing is stopped collected events will be
          * sent as a sequence of dataCollected events followed by tracingComplete event.
+         * @experimental
          */
         'Tracing.dataCollected': [Protocol.Tracing.DataCollectedEvent];
         /**
@@ -943,6 +1036,9 @@ export namespace ProtocolMapping {
             paramsType: [Protocol.Debugger.GetScriptSourceRequest];
             returnType: Protocol.Debugger.GetScriptSourceResponse;
         };
+        /**
+         * @experimental
+         */
         'Debugger.disassembleWasmModule': {
             paramsType: [Protocol.Debugger.DisassembleWasmModuleRequest];
             returnType: Protocol.Debugger.DisassembleWasmModuleResponse;
@@ -952,6 +1048,7 @@ export namespace ProtocolMapping {
          * stream. If disassembly is complete, this API will invalidate the streamId
          * and return an empty chunk. Any subsequent calls for the now invalid stream
          * will return errors.
+         * @experimental
          */
         'Debugger.nextWasmDisassemblyChunk': {
             paramsType: [Protocol.Debugger.NextWasmDisassemblyChunkRequest];
@@ -959,6 +1056,7 @@ export namespace ProtocolMapping {
         };
         /**
          * This command is deprecated. Use getScriptSource instead.
+         * @deprecated
          */
         'Debugger.getWasmBytecode': {
             paramsType: [Protocol.Debugger.GetWasmBytecodeRequest];
@@ -966,6 +1064,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Returns stack trace with given `stackTraceId`.
+         * @experimental
          */
         'Debugger.getStackTrace': {
             paramsType: [Protocol.Debugger.GetStackTraceRequest];
@@ -978,6 +1077,10 @@ export namespace ProtocolMapping {
             paramsType: [];
             returnType: void;
         };
+        /**
+         * @deprecated
+         * @experimental
+         */
         'Debugger.pauseOnAsyncCall': {
             paramsType: [Protocol.Debugger.PauseOnAsyncCallRequest];
             returnType: void;
@@ -1033,6 +1136,7 @@ export namespace ProtocolMapping {
          * Replace previous blackbox execution contexts with passed ones. Forces backend to skip
          * stepping/pausing in scripts in these execution contexts. VM will try to leave blackboxed script by
          * performing 'step in' several times, finally resorting to 'step out' if unsuccessful.
+         * @experimental
          */
         'Debugger.setBlackboxExecutionContexts': {
             paramsType: [Protocol.Debugger.SetBlackboxExecutionContextsRequest];
@@ -1042,6 +1146,7 @@ export namespace ProtocolMapping {
          * Replace previous blackbox patterns with passed ones. Forces backend to skip stepping/pausing in
          * scripts with url matching one of the patterns. VM will try to leave blackboxed script by
          * performing 'step in' several times, finally resorting to 'step out' if unsuccessful.
+         * @experimental
          */
         'Debugger.setBlackboxPatterns': {
             paramsType: [Protocol.Debugger.SetBlackboxPatternsRequest];
@@ -1052,6 +1157,7 @@ export namespace ProtocolMapping {
          * scripts by performing 'step in' several times, finally resorting to 'step out' if unsuccessful.
          * Positions array contains positions where blackbox state is changed. First interval isn't
          * blackboxed. Array should be sorted.
+         * @experimental
          */
         'Debugger.setBlackboxedRanges': {
             paramsType: [Protocol.Debugger.SetBlackboxedRangesRequest];
@@ -1085,6 +1191,7 @@ export namespace ProtocolMapping {
          * Sets JavaScript breakpoint before each call to the given function.
          * If another function was created from the same source as a given one,
          * calling it will also trigger the breakpoint.
+         * @experimental
          */
         'Debugger.setBreakpointOnFunctionCall': {
             paramsType: [Protocol.Debugger.SetBreakpointOnFunctionCallRequest];
@@ -1107,6 +1214,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Changes return value in top frame. Available only at return break position.
+         * @experimental
          */
         'Debugger.setReturnValue': {
             paramsType: [Protocol.Debugger.SetReturnValueRequest];
@@ -1323,6 +1431,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Returns the isolate id.
+         * @experimental
          */
         'Runtime.getIsolateId': {
             paramsType: [];
@@ -1331,6 +1440,7 @@ export namespace ProtocolMapping {
         /**
          * Returns the JavaScript heap usage.
          * It is the total usage of the corresponding isolate not scoped to a particular Runtime.
+         * @experimental
          */
         'Runtime.getHeapUsage': {
             paramsType: [];
@@ -1390,10 +1500,16 @@ export namespace ProtocolMapping {
             paramsType: [Protocol.Runtime.SetAsyncCallStackDepthRequest];
             returnType: void;
         };
+        /**
+         * @experimental
+         */
         'Runtime.setCustomObjectFormatterEnabled': {
             paramsType: [Protocol.Runtime.SetCustomObjectFormatterEnabledRequest];
             returnType: void;
         };
+        /**
+         * @experimental
+         */
         'Runtime.setMaxCallStackSizeToCapture': {
             paramsType: [Protocol.Runtime.SetMaxCallStackSizeToCaptureRequest];
             returnType: void;
@@ -1401,6 +1517,7 @@ export namespace ProtocolMapping {
         /**
          * Terminate current or next JavaScript execution.
          * Will cancel the termination when the outer-most script execution ends.
+         * @experimental
          */
         'Runtime.terminateExecution': {
             paramsType: [];
@@ -1432,6 +1549,7 @@ export namespace ProtocolMapping {
          * Note that the stackTrace portion of the resulting exceptionDetails will
          * only be populated if the Runtime domain was enabled at the time when the
          * Error was thrown.
+         * @experimental
          */
         'Runtime.getExceptionDetails': {
             paramsType: [Protocol.Runtime.GetExceptionDetailsRequest];
@@ -1461,6 +1579,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Fetches the accessibility node and partial accessibility tree for this DOM node, if it exists.
+         * @experimental
          */
         'Accessibility.getPartialAXTree': {
             paramsType: [Protocol.Accessibility.GetPartialAXTreeRequest?];
@@ -1468,6 +1587,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Fetches the entire accessibility tree for the root Document
+         * @experimental
          */
         'Accessibility.getFullAXTree': {
             paramsType: [Protocol.Accessibility.GetFullAXTreeRequest?];
@@ -1476,6 +1596,7 @@ export namespace ProtocolMapping {
         /**
          * Fetches the root node.
          * Requires `enable()` to have been called previously.
+         * @experimental
          */
         'Accessibility.getRootAXNode': {
             paramsType: [Protocol.Accessibility.GetRootAXNodeRequest?];
@@ -1484,6 +1605,7 @@ export namespace ProtocolMapping {
         /**
          * Fetches a node and all ancestors up to and including the root.
          * Requires `enable()` to have been called previously.
+         * @experimental
          */
         'Accessibility.getAXNodeAndAncestors': {
             paramsType: [Protocol.Accessibility.GetAXNodeAndAncestorsRequest?];
@@ -1492,6 +1614,7 @@ export namespace ProtocolMapping {
         /**
          * Fetches a particular accessibility node by AXNodeId.
          * Requires `enable()` to have been called previously.
+         * @experimental
          */
         'Accessibility.getChildAXNodes': {
             paramsType: [Protocol.Accessibility.GetChildAXNodesRequest];
@@ -1503,6 +1626,7 @@ export namespace ProtocolMapping {
          * ignored for accessibility, and returns those that match the specified name and role. If no DOM
          * node is specified, or the DOM node does not exist, the command returns an error. If neither
          * `accessibleName` or `role` is specified, it returns all the accessibility nodes in the subtree.
+         * @experimental
          */
         'Accessibility.queryAXTree': {
             paramsType: [Protocol.Accessibility.QueryAXTreeRequest?];
@@ -1796,6 +1920,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Set permission settings for given origin.
+         * @experimental
          */
         'Browser.setPermission': {
             paramsType: [Protocol.Browser.SetPermissionRequest];
@@ -1803,6 +1928,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Grant specific permissions to the given origin and reject all others.
+         * @experimental
          */
         'Browser.grantPermissions': {
             paramsType: [Protocol.Browser.GrantPermissionsRequest];
@@ -1817,6 +1943,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Set the behavior when downloading a file.
+         * @experimental
          */
         'Browser.setDownloadBehavior': {
             paramsType: [Protocol.Browser.SetDownloadBehaviorRequest];
@@ -1824,6 +1951,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Cancel a download if in progress
+         * @experimental
          */
         'Browser.cancelDownload': {
             paramsType: [Protocol.Browser.CancelDownloadRequest];
@@ -1838,6 +1966,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Crashes browser on the main thread.
+         * @experimental
          */
         'Browser.crash': {
             paramsType: [];
@@ -1845,6 +1974,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Crashes GPU process.
+         * @experimental
          */
         'Browser.crashGpuProcess': {
             paramsType: [];
@@ -1860,6 +1990,7 @@ export namespace ProtocolMapping {
         /**
          * Returns the command line switches for the browser process if, and only if
          * --enable-automation is on the commandline.
+         * @experimental
          */
         'Browser.getBrowserCommandLine': {
             paramsType: [];
@@ -1867,6 +1998,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Get Chrome histograms.
+         * @experimental
          */
         'Browser.getHistograms': {
             paramsType: [Protocol.Browser.GetHistogramsRequest?];
@@ -1874,6 +2006,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Get a Chrome histogram by name.
+         * @experimental
          */
         'Browser.getHistogram': {
             paramsType: [Protocol.Browser.GetHistogramRequest];
@@ -1881,6 +2014,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Get position and size of the browser window.
+         * @experimental
          */
         'Browser.getWindowBounds': {
             paramsType: [Protocol.Browser.GetWindowBoundsRequest];
@@ -1888,6 +2022,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Get the browser window that contains the devtools target.
+         * @experimental
          */
         'Browser.getWindowForTarget': {
             paramsType: [Protocol.Browser.GetWindowForTargetRequest?];
@@ -1895,6 +2030,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Set position and/or size of the browser window.
+         * @experimental
          */
         'Browser.setWindowBounds': {
             paramsType: [Protocol.Browser.SetWindowBoundsRequest];
@@ -1902,6 +2038,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Set size of the browser contents resizing browser window as necessary.
+         * @experimental
          */
         'Browser.setContentsSize': {
             paramsType: [Protocol.Browser.SetContentsSizeRequest];
@@ -1909,6 +2046,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Set dock tile details, platform-specific.
+         * @experimental
          */
         'Browser.setDockTile': {
             paramsType: [Protocol.Browser.SetDockTileRequest?];
@@ -1916,6 +2054,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Invoke custom browser commands used by telemetry.
+         * @experimental
          */
         'Browser.executeBrowserCommand': {
             paramsType: [Protocol.Browser.ExecuteBrowserCommandRequest];
@@ -2012,11 +2151,15 @@ export namespace ProtocolMapping {
          * to the provided property syntax, the value is parsed using combined
          * syntax as if null `propertyName` was provided. If the value cannot be
          * resolved even then, return the provided value without any changes.
+         * @experimental
          */
         'CSS.resolveValues': {
             paramsType: [Protocol.CSS.ResolveValuesRequest];
             returnType: Protocol.CSS.ResolveValuesResponse;
         };
+        /**
+         * @experimental
+         */
         'CSS.getLonghandProperties': {
             paramsType: [Protocol.CSS.GetLonghandPropertiesRequest];
             returnType: Protocol.CSS.GetLonghandPropertiesResponse;
@@ -2032,6 +2175,7 @@ export namespace ProtocolMapping {
         /**
          * Returns the styles coming from animations & transitions
          * including the animation & transition styles coming from inheritance chain.
+         * @experimental
          */
         'CSS.getAnimatedStylesForNode': {
             paramsType: [Protocol.CSS.GetAnimatedStylesForNodeRequest];
@@ -2046,6 +2190,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Returns the values of the default UA-defined environment variables used in env()
+         * @experimental
          */
         'CSS.getEnvironmentVariables': {
             paramsType: [];
@@ -2078,6 +2223,7 @@ export namespace ProtocolMapping {
          * Given a DOM element identified by nodeId, getLayersForNode returns the root
          * layer for the nearest ancestor document or shadow root. The layer root contains
          * the full layer tree for the tree scope and their ordering.
+         * @experimental
          */
         'CSS.getLayersForNode': {
             paramsType: [Protocol.CSS.GetLayersForNodeRequest];
@@ -2086,6 +2232,7 @@ export namespace ProtocolMapping {
         /**
          * Given a CSS selector text and a style sheet ID, getLocationForSelector
          * returns an array of locations of the CSS selector in the style sheet.
+         * @experimental
          */
         'CSS.getLocationForSelector': {
             paramsType: [Protocol.CSS.GetLocationForSelectorRequest];
@@ -2098,6 +2245,7 @@ export namespace ProtocolMapping {
          * There can only be 1 node tracked for computed style updates
          * so passing a new node id removes tracking from the previous node.
          * Pass `undefined` to disable tracking.
+         * @experimental
          */
         'CSS.trackComputedStyleUpdatesForNode': {
             paramsType: [Protocol.CSS.TrackComputedStyleUpdatesForNodeRequest?];
@@ -2110,6 +2258,7 @@ export namespace ProtocolMapping {
          * The changes to computed style properties are only tracked for nodes pushed to the front-end
          * by the DOM agent. If no changes to the tracked properties occur after the node has been pushed
          * to the front-end, no updates will be issued for the node.
+         * @experimental
          */
         'CSS.trackComputedStyleUpdates': {
             paramsType: [Protocol.CSS.TrackComputedStyleUpdatesRequest];
@@ -2117,6 +2266,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Polls the next batch of computed style updates.
+         * @experimental
          */
         'CSS.takeComputedStyleUpdates': {
             paramsType: [];
@@ -2153,6 +2303,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Modifies the expression of a container query.
+         * @experimental
          */
         'CSS.setContainerQueryText': {
             paramsType: [Protocol.CSS.SetContainerQueryTextRequest];
@@ -2160,6 +2311,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Modifies the expression of a supports at-rule.
+         * @experimental
          */
         'CSS.setSupportsText': {
             paramsType: [Protocol.CSS.SetSupportsTextRequest];
@@ -2167,6 +2319,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Modifies the expression of a scope at-rule.
+         * @experimental
          */
         'CSS.setScopeText': {
             paramsType: [Protocol.CSS.SetScopeTextRequest];
@@ -2218,6 +2371,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Enables/disables rendering of local CSS fonts (enabled by default).
+         * @experimental
          */
         'CSS.setLocalFontsEnabled': {
             paramsType: [Protocol.CSS.SetLocalFontsEnabledRequest];
@@ -2307,6 +2461,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Collects class names for the node with given id and all of it's child nodes.
+         * @experimental
          */
         'DOM.collectClassNamesFromSubtree': {
             paramsType: [Protocol.DOM.CollectClassNamesFromSubtreeRequest];
@@ -2315,6 +2470,7 @@ export namespace ProtocolMapping {
         /**
          * Creates a deep copy of the specified node and places it into the target container before the
          * given anchor.
+         * @experimental
          */
         'DOM.copyTo': {
             paramsType: [Protocol.DOM.CopyToRequest];
@@ -2347,6 +2503,7 @@ export namespace ProtocolMapping {
         /**
          * Discards search results from the session with the given id. `getSearchResults` should no longer
          * be called for that search.
+         * @experimental
          */
         'DOM.discardSearchResults': {
             paramsType: [Protocol.DOM.DiscardSearchResultsRequest];
@@ -2383,6 +2540,7 @@ export namespace ProtocolMapping {
         /**
          * Returns quads that describe node position on the page. This method
          * might return multiple quads for inline nodes.
+         * @experimental
          */
         'DOM.getContentQuads': {
             paramsType: [Protocol.DOM.GetContentQuadsRequest?];
@@ -2400,6 +2558,7 @@ export namespace ProtocolMapping {
          * Returns the root DOM node (and optionally the subtree) to the caller.
          * Deprecated, as it is not designed to work well with the rest of the DOM agent.
          * Use DOMSnapshot.captureSnapshot instead.
+         * @deprecated
          */
         'DOM.getFlattenedDocument': {
             paramsType: [Protocol.DOM.GetFlattenedDocumentRequest?];
@@ -2407,6 +2566,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Finds nodes with a given computed style in a subtree.
+         * @experimental
          */
         'DOM.getNodesForSubtreeByStyle': {
             paramsType: [Protocol.DOM.GetNodesForSubtreeByStyleRequest];
@@ -2429,6 +2589,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Returns the id of the nearest ancestor that is a relayout boundary.
+         * @experimental
          */
         'DOM.getRelayoutBoundary': {
             paramsType: [Protocol.DOM.GetRelayoutBoundaryRequest];
@@ -2437,6 +2598,7 @@ export namespace ProtocolMapping {
         /**
          * Returns search results from given `fromIndex` to given `toIndex` from the search with the given
          * identifier.
+         * @experimental
          */
         'DOM.getSearchResults': {
             paramsType: [Protocol.DOM.GetSearchResultsRequest];
@@ -2465,6 +2627,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Marks last undoable state.
+         * @experimental
          */
         'DOM.markUndoableState': {
             paramsType: [];
@@ -2480,6 +2643,7 @@ export namespace ProtocolMapping {
         /**
          * Searches for a given string in the DOM tree. Use `getSearchResults` to access search results or
          * `cancelSearch` to end this search session.
+         * @experimental
          */
         'DOM.performSearch': {
             paramsType: [Protocol.DOM.PerformSearchRequest];
@@ -2487,6 +2651,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Requests that the node is sent to the caller given its path. // FIXME, use XPath
+         * @experimental
          */
         'DOM.pushNodeByPathToFrontend': {
             paramsType: [Protocol.DOM.PushNodeByPathToFrontendRequest];
@@ -2494,6 +2659,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Requests that a batch of nodes is sent to the caller given their backend node ids.
+         * @experimental
          */
         'DOM.pushNodesByBackendIdsToFrontend': {
             paramsType: [Protocol.DOM.PushNodesByBackendIdsToFrontendRequest];
@@ -2517,6 +2683,7 @@ export namespace ProtocolMapping {
          * Returns NodeIds of current top layer elements.
          * Top layer is rendered closest to the user within a viewport, therefore its elements always
          * appear on top of all other content.
+         * @experimental
          */
         'DOM.getTopLayerElements': {
             paramsType: [];
@@ -2524,6 +2691,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Returns the NodeId of the matched element according to certain relations.
+         * @experimental
          */
         'DOM.getElementByRelation': {
             paramsType: [Protocol.DOM.GetElementByRelationRequest];
@@ -2531,6 +2699,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Re-does the last undone action.
+         * @experimental
          */
         'DOM.redo': {
             paramsType: [];
@@ -2599,6 +2768,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Sets if stack traces should be captured for Nodes. See `Node.getNodeStackTraces`. Default is disabled.
+         * @experimental
          */
         'DOM.setNodeStackTracesEnabled': {
             paramsType: [Protocol.DOM.SetNodeStackTracesEnabledRequest];
@@ -2606,6 +2776,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Gets stack traces associated with a Node. As of now, only provides stack trace for Node creation.
+         * @experimental
          */
         'DOM.getNodeStackTraces': {
             paramsType: [Protocol.DOM.GetNodeStackTracesRequest];
@@ -2614,6 +2785,7 @@ export namespace ProtocolMapping {
         /**
          * Returns file information for the given
          * File wrapper.
+         * @experimental
          */
         'DOM.getFileInfo': {
             paramsType: [Protocol.DOM.GetFileInfoRequest];
@@ -2621,6 +2793,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Returns list of detached nodes
+         * @experimental
          */
         'DOM.getDetachedDomNodes': {
             paramsType: [];
@@ -2629,6 +2802,7 @@ export namespace ProtocolMapping {
         /**
          * Enables console to refer to the node with given id via $x (see Command Line API for more details
          * $x functions).
+         * @experimental
          */
         'DOM.setInspectedNode': {
             paramsType: [Protocol.DOM.SetInspectedNodeRequest];
@@ -2657,6 +2831,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Undoes the last performed action.
+         * @experimental
          */
         'DOM.undo': {
             paramsType: [];
@@ -2664,6 +2839,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Returns iframe node that owns iframe with the given domain.
+         * @experimental
          */
         'DOM.getFrameOwner': {
             paramsType: [Protocol.DOM.GetFrameOwnerRequest];
@@ -2675,6 +2851,7 @@ export namespace ProtocolMapping {
          * scroll-state or anchored elements. If no axes are provided and
          * queriesScrollState is false, the style container is returned, which is the
          * direct parent or the closest element with a matching container-name.
+         * @experimental
          */
         'DOM.getContainerForNode': {
             paramsType: [Protocol.DOM.GetContainerForNodeRequest];
@@ -2683,6 +2860,7 @@ export namespace ProtocolMapping {
         /**
          * Returns the descendants of a container query container that have
          * container queries against this container.
+         * @experimental
          */
         'DOM.getQueryingDescendantsForContainer': {
             paramsType: [Protocol.DOM.GetQueryingDescendantsForContainerRequest];
@@ -2691,6 +2869,7 @@ export namespace ProtocolMapping {
         /**
          * Returns the target anchor element of the given anchor query according to
          * https://www.w3.org/TR/css-anchor-position-1/#target.
+         * @experimental
          */
         'DOM.getAnchorElement': {
             paramsType: [Protocol.DOM.GetAnchorElementRequest];
@@ -2699,6 +2878,7 @@ export namespace ProtocolMapping {
         /**
          * When enabling, this API force-opens the popover identified by nodeId
          * and keeps it open until disabled.
+         * @experimental
          */
         'DOM.forceShowPopover': {
             paramsType: [Protocol.DOM.ForceShowPopoverRequest];
@@ -2727,6 +2907,8 @@ export namespace ProtocolMapping {
         };
         /**
          * Removes breakpoint on particular native event.
+         * @deprecated
+         * @experimental
          */
         'DOMDebugger.removeInstrumentationBreakpoint': {
             paramsType: [Protocol.DOMDebugger.RemoveInstrumentationBreakpointRequest];
@@ -2741,6 +2923,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Sets breakpoint on particular CSP violations.
+         * @experimental
          */
         'DOMDebugger.setBreakOnCSPViolation': {
             paramsType: [Protocol.DOMDebugger.SetBreakOnCSPViolationRequest];
@@ -2762,6 +2945,8 @@ export namespace ProtocolMapping {
         };
         /**
          * Sets breakpoint on particular native event.
+         * @deprecated
+         * @experimental
          */
         'DOMDebugger.setInstrumentationBreakpoint': {
             paramsType: [Protocol.DOMDebugger.SetInstrumentationBreakpointRequest];
@@ -2793,6 +2978,7 @@ export namespace ProtocolMapping {
          * template contents, and imported documents) in a flattened array, as well as layout and
          * white-listed computed style information for the nodes. Shadow DOM in the returned DOM tree is
          * flattened.
+         * @deprecated
          */
         'DOMSnapshot.getSnapshot': {
             paramsType: [Protocol.DOMSnapshot.GetSnapshotRequest];
@@ -2882,6 +3068,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Tells whether emulation is supported.
+         * @deprecated
          */
         'Emulation.canEmulate': {
             paramsType: [];
@@ -2903,6 +3090,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Requests that page scale factor is reset to initial values.
+         * @experimental
          */
         'Emulation.resetPageScaleFactor': {
             paramsType: [];
@@ -2910,6 +3098,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Enables or disables simulating a focused and active page.
+         * @experimental
          */
         'Emulation.setFocusEmulationEnabled': {
             paramsType: [Protocol.Emulation.SetFocusEmulationEnabledRequest];
@@ -2917,6 +3106,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Automatically render all web contents using a dark theme.
+         * @experimental
          */
         'Emulation.setAutoDarkModeOverride': {
             paramsType: [Protocol.Emulation.SetAutoDarkModeOverrideRequest?];
@@ -2940,6 +3130,7 @@ export namespace ProtocolMapping {
         /**
          * Overrides the values for env(safe-area-inset-*) and env(safe-area-max-inset-*). Unset values will cause the
          * respective variables to be undefined, even if previously overridden.
+         * @experimental
          */
         'Emulation.setSafeAreaInsetsOverride': {
             paramsType: [Protocol.Emulation.SetSafeAreaInsetsOverrideRequest];
@@ -2957,6 +3148,7 @@ export namespace ProtocolMapping {
         /**
          * Start reporting the given posture value to the Device Posture API.
          * This override can also be set in setDeviceMetricsOverride().
+         * @experimental
          */
         'Emulation.setDevicePostureOverride': {
             paramsType: [Protocol.Emulation.SetDevicePostureOverrideRequest];
@@ -2967,6 +3159,7 @@ export namespace ProtocolMapping {
          * or setDevicePostureOverride() and starts using posture information from the
          * platform again.
          * Does nothing if no override is set.
+         * @experimental
          */
         'Emulation.clearDevicePostureOverride': {
             paramsType: [];
@@ -2975,6 +3168,7 @@ export namespace ProtocolMapping {
         /**
          * Start using the given display features to pupulate the Viewport Segments API.
          * This override can also be set in setDeviceMetricsOverride().
+         * @experimental
          */
         'Emulation.setDisplayFeaturesOverride': {
             paramsType: [Protocol.Emulation.SetDisplayFeaturesOverrideRequest];
@@ -2985,19 +3179,29 @@ export namespace ProtocolMapping {
          * or setDisplayFeaturesOverride() and starts using display features from the
          * platform again.
          * Does nothing if no override is set.
+         * @experimental
          */
         'Emulation.clearDisplayFeaturesOverride': {
             paramsType: [];
             returnType: void;
         };
+        /**
+         * @experimental
+         */
         'Emulation.setScrollbarsHidden': {
             paramsType: [Protocol.Emulation.SetScrollbarsHiddenRequest];
             returnType: void;
         };
+        /**
+         * @experimental
+         */
         'Emulation.setDocumentCookieDisabled': {
             paramsType: [Protocol.Emulation.SetDocumentCookieDisabledRequest];
             returnType: void;
         };
+        /**
+         * @experimental
+         */
         'Emulation.setEmitTouchEventsForMouse': {
             paramsType: [Protocol.Emulation.SetEmitTouchEventsForMouseRequest];
             returnType: void;
@@ -3031,6 +3235,9 @@ export namespace ProtocolMapping {
             paramsType: [Protocol.Emulation.SetGeolocationOverrideRequest?];
             returnType: void;
         };
+        /**
+         * @experimental
+         */
         'Emulation.getOverriddenSensorInformation': {
             paramsType: [Protocol.Emulation.GetOverriddenSensorInformationRequest];
             returnType: Protocol.Emulation.GetOverriddenSensorInformationResponse;
@@ -3041,6 +3248,7 @@ export namespace ProtocolMapping {
          * data from a real hardware sensor. Otherwise, existing virtual
          * sensor-backend Sensor objects will fire an error event and new calls to
          * Sensor.start() will attempt to use a real sensor instead.
+         * @experimental
          */
         'Emulation.setSensorOverrideEnabled': {
             paramsType: [Protocol.Emulation.SetSensorOverrideEnabledRequest];
@@ -3049,6 +3257,7 @@ export namespace ProtocolMapping {
         /**
          * Updates the sensor readings reported by a sensor type previously overridden
          * by setSensorOverrideEnabled.
+         * @experimental
          */
         'Emulation.setSensorOverrideReadings': {
             paramsType: [Protocol.Emulation.SetSensorOverrideReadingsRequest];
@@ -3059,6 +3268,7 @@ export namespace ProtocolMapping {
          * Pressure API, so that updates to PressureObserver.observe() are provided
          * via setPressureStateOverride instead of being retrieved from
          * platform-provided telemetry data.
+         * @experimental
          */
         'Emulation.setPressureSourceOverrideEnabled': {
             paramsType: [Protocol.Emulation.SetPressureSourceOverrideEnabledRequest];
@@ -3069,6 +3279,7 @@ export namespace ProtocolMapping {
          * Provides a given pressure state that will be processed and eventually be
          * delivered to PressureObserver users. |source| must have been previously
          * overridden by setPressureSourceOverrideEnabled.
+         * @experimental
          */
         'Emulation.setPressureStateOverride': {
             paramsType: [Protocol.Emulation.SetPressureStateOverrideRequest];
@@ -3078,6 +3289,7 @@ export namespace ProtocolMapping {
          * Provides a given pressure data set that will be processed and eventually be
          * delivered to PressureObserver users. |source| must have been previously
          * overridden by setPressureSourceOverrideEnabled.
+         * @experimental
          */
         'Emulation.setPressureDataOverride': {
             paramsType: [Protocol.Emulation.SetPressureDataOverrideRequest];
@@ -3099,6 +3311,8 @@ export namespace ProtocolMapping {
         };
         /**
          * Overrides value returned by the javascript navigator object.
+         * @deprecated
+         * @experimental
          */
         'Emulation.setNavigatorOverrides': {
             paramsType: [Protocol.Emulation.SetNavigatorOverridesRequest];
@@ -3106,6 +3320,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Sets a specified page scale factor.
+         * @experimental
          */
         'Emulation.setPageScaleFactor': {
             paramsType: [Protocol.Emulation.SetPageScaleFactorRequest];
@@ -3128,6 +3343,7 @@ export namespace ProtocolMapping {
         /**
          * Turns on virtual time for all frames (replacing real-time with a synthetic time source) and sets
          * the current virtual time policy.  Note this supersedes any previous time budget.
+         * @experimental
          */
         'Emulation.setVirtualTimePolicy': {
             paramsType: [Protocol.Emulation.SetVirtualTimePolicyRequest];
@@ -3135,6 +3351,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Overrides default host system locale with the specified one.
+         * @experimental
          */
         'Emulation.setLocaleOverride': {
             paramsType: [Protocol.Emulation.SetLocaleOverrideRequest?];
@@ -3151,22 +3368,31 @@ export namespace ProtocolMapping {
          * Resizes the frame/viewport of the page. Note that this does not affect the frame's container
          * (e.g. browser window). Can be used to produce screenshots of the specified size. Not supported
          * on Android.
+         * @deprecated
+         * @experimental
          */
         'Emulation.setVisibleSize': {
             paramsType: [Protocol.Emulation.SetVisibleSizeRequest];
             returnType: void;
         };
+        /**
+         * @experimental
+         */
         'Emulation.setDisabledImageTypes': {
             paramsType: [Protocol.Emulation.SetDisabledImageTypesRequest];
             returnType: void;
         };
         /**
          * Override the value of navigator.connection.saveData
+         * @experimental
          */
         'Emulation.setDataSaverOverride': {
             paramsType: [Protocol.Emulation.SetDataSaverOverrideRequest?];
             returnType: void;
         };
+        /**
+         * @experimental
+         */
         'Emulation.setHardwareConcurrencyOverride': {
             paramsType: [Protocol.Emulation.SetHardwareConcurrencyOverrideRequest];
             returnType: void;
@@ -3181,6 +3407,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Allows overriding the automation flag.
+         * @experimental
          */
         'Emulation.setAutomationOverride': {
             paramsType: [Protocol.Emulation.SetAutomationOverrideRequest];
@@ -3189,6 +3416,7 @@ export namespace ProtocolMapping {
         /**
          * Allows overriding the difference between the small and large viewport sizes, which determine the
          * value of the `svh` and `lvh` unit, respectively. Only supported for top-level frames.
+         * @experimental
          */
         'Emulation.setSmallViewportHeightDifferenceOverride': {
             paramsType: [Protocol.Emulation.SetSmallViewportHeightDifferenceOverrideRequest];
@@ -3196,6 +3424,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Returns device's screen configuration.
+         * @experimental
          */
         'Emulation.getScreenInfos': {
             paramsType: [];
@@ -3203,6 +3432,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Add a new screen to the device. Only supported in headless mode.
+         * @experimental
          */
         'Emulation.addScreen': {
             paramsType: [Protocol.Emulation.AddScreenRequest];
@@ -3210,6 +3440,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Remove screen from the device. Only supported in headless mode.
+         * @experimental
          */
         'Emulation.removeScreen': {
             paramsType: [Protocol.Emulation.RemoveScreenRequest];
@@ -3365,6 +3596,7 @@ export namespace ProtocolMapping {
          * Continues loading of the paused response, optionally modifying the
          * response headers. If either responseCode or headers are modified, all of them
          * must be present.
+         * @experimental
          */
         'Fetch.continueResponse': {
             paramsType: [Protocol.Fetch.ContinueResponseRequest];
@@ -3418,6 +3650,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Disables headless events for the target.
+         * @deprecated
          */
         'HeadlessExperimental.disable': {
             paramsType: [];
@@ -3425,6 +3658,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Enables headless events for the target.
+         * @deprecated
          */
         'HeadlessExperimental.enable': {
             paramsType: [];
@@ -3516,6 +3750,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Dispatches a drag event into the page.
+         * @experimental
          */
         'Input.dispatchDragEvent': {
             paramsType: [Protocol.Input.DispatchDragEventRequest];
@@ -3531,6 +3766,7 @@ export namespace ProtocolMapping {
         /**
          * This method emulates inserting text that doesn't come from a key press,
          * for example an emoji keyboard or an IME.
+         * @experimental
          */
         'Input.insertText': {
             paramsType: [Protocol.Input.InsertTextRequest];
@@ -3540,6 +3776,7 @@ export namespace ProtocolMapping {
          * This method sets the current candidate text for IME.
          * Use imeCommitComposition to commit the final text.
          * Use imeSetComposition with empty string as text to cancel composition.
+         * @experimental
          */
         'Input.imeSetComposition': {
             paramsType: [Protocol.Input.ImeSetCompositionRequest];
@@ -3568,6 +3805,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Emulates touch event from the mouse event parameters.
+         * @experimental
          */
         'Input.emulateTouchFromMouseEvent': {
             paramsType: [Protocol.Input.EmulateTouchFromMouseEventRequest];
@@ -3583,6 +3821,7 @@ export namespace ProtocolMapping {
         /**
          * Prevents default drag and drop behavior and instead emits `Input.dragIntercepted` events.
          * Drag and drop behavior can be directly controlled via `Input.dispatchDragEvent`.
+         * @experimental
          */
         'Input.setInterceptDrags': {
             paramsType: [Protocol.Input.SetInterceptDragsRequest];
@@ -3590,6 +3829,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Synthesizes a pinch gesture over a time period by issuing appropriate touch events.
+         * @experimental
          */
         'Input.synthesizePinchGesture': {
             paramsType: [Protocol.Input.SynthesizePinchGestureRequest];
@@ -3597,6 +3837,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Synthesizes a scroll gesture over a time period by issuing appropriate touch events.
+         * @experimental
          */
         'Input.synthesizeScrollGesture': {
             paramsType: [Protocol.Input.SynthesizeScrollGestureRequest];
@@ -3604,6 +3845,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Synthesizes a tap gesture over a time period by issuing appropriate touch events.
+         * @experimental
          */
         'Input.synthesizeTapGesture': {
             paramsType: [Protocol.Input.SynthesizeTapGestureRequest];
@@ -3816,6 +4058,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Sets a list of content encodings that will be accepted. Empty list means no encoding is accepted.
+         * @experimental
          */
         'Network.setAcceptedEncodings': {
             paramsType: [Protocol.Network.SetAcceptedEncodingsRequest];
@@ -3823,6 +4066,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Clears accepted encodings set by setAcceptedEncodings
+         * @experimental
          */
         'Network.clearAcceptedEncodingsOverride': {
             paramsType: [];
@@ -3830,6 +4074,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Tells whether clearing browser cache is supported.
+         * @deprecated
          */
         'Network.canClearBrowserCache': {
             paramsType: [];
@@ -3837,6 +4082,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Tells whether clearing browser cookies is supported.
+         * @deprecated
          */
         'Network.canClearBrowserCookies': {
             paramsType: [];
@@ -3844,6 +4090,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Tells whether emulation of network conditions is supported.
+         * @deprecated
          */
         'Network.canEmulateNetworkConditions': {
             paramsType: [];
@@ -3869,6 +4116,8 @@ export namespace ProtocolMapping {
          * fetch occurs as a result which encounters a redirect an additional Network.requestIntercepted
          * event will be sent with the same InterceptionId.
          * Deprecated, use Fetch.continueRequest, Fetch.fulfillRequest and Fetch.failRequest instead.
+         * @deprecated
+         * @experimental
          */
         'Network.continueInterceptedRequest': {
             paramsType: [Protocol.Network.ContinueInterceptedRequestRequest];
@@ -3906,6 +4155,7 @@ export namespace ProtocolMapping {
          * Returns all browser cookies. Depending on the backend support, will return detailed cookie
          * information in the `cookies` field.
          * Deprecated. Use Storage.getCookies instead.
+         * @deprecated
          */
         'Network.getAllCookies': {
             paramsType: [];
@@ -3913,6 +4163,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Returns the DER-encoded certificate.
+         * @experimental
          */
         'Network.getCertificate': {
             paramsType: [Protocol.Network.GetCertificateRequest];
@@ -3942,6 +4193,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Returns content served for the given currently intercepted request.
+         * @experimental
          */
         'Network.getResponseBodyForInterception': {
             paramsType: [Protocol.Network.GetResponseBodyForInterceptionRequest];
@@ -3952,6 +4204,7 @@ export namespace ProtocolMapping {
          * the intercepted request can't be continued as is -- you either need to cancel it or to provide
          * the response body. The stream only supports sequential read, IO.read will fail if the position
          * is specified.
+         * @experimental
          */
         'Network.takeResponseBodyForInterceptionAsStream': {
             paramsType: [Protocol.Network.TakeResponseBodyForInterceptionAsStreamRequest];
@@ -3961,6 +4214,7 @@ export namespace ProtocolMapping {
          * This method sends a new XMLHttpRequest which is identical to the original one. The following
          * parameters should be identical: method, url, async, request body, extra headers, withCredentials
          * attribute, user, password.
+         * @experimental
          */
         'Network.replayXHR': {
             paramsType: [Protocol.Network.ReplayXHRRequest];
@@ -3968,6 +4222,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Searches for given string in response content.
+         * @experimental
          */
         'Network.searchInResponseBody': {
             paramsType: [Protocol.Network.SearchInResponseBodyRequest];
@@ -3975,6 +4230,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Blocks URLs from loading.
+         * @experimental
          */
         'Network.setBlockedURLs': {
             paramsType: [Protocol.Network.SetBlockedURLsRequest];
@@ -4017,6 +4273,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Specifies whether to attach a page script stack id in requests
+         * @experimental
          */
         'Network.setAttachDebugStack': {
             paramsType: [Protocol.Network.SetAttachDebugStackRequest];
@@ -4025,6 +4282,8 @@ export namespace ProtocolMapping {
         /**
          * Sets the requests to intercept that match the provided patterns and optionally resource types.
          * Deprecated, please use Fetch.enable instead.
+         * @deprecated
+         * @experimental
          */
         'Network.setRequestInterception': {
             paramsType: [Protocol.Network.SetRequestInterceptionRequest];
@@ -4040,6 +4299,7 @@ export namespace ProtocolMapping {
         /**
          * Enables streaming of the response for the given requestId.
          * If enabled, the dataReceived event contains the data that was received during streaming.
+         * @experimental
          */
         'Network.streamResourceContent': {
             paramsType: [Protocol.Network.StreamResourceContentRequest];
@@ -4047,6 +4307,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Returns information about the COEP/COOP isolation status.
+         * @experimental
          */
         'Network.getSecurityIsolationStatus': {
             paramsType: [Protocol.Network.GetSecurityIsolationStatusRequest?];
@@ -4055,6 +4316,7 @@ export namespace ProtocolMapping {
         /**
          * Enables tracking for the Reporting API, events generated by the Reporting API will now be delivered to the client.
          * Enabling triggers 'reportingApiReportAdded' for all existing reports.
+         * @experimental
          */
         'Network.enableReportingApi': {
             paramsType: [Protocol.Network.EnableReportingApiRequest];
@@ -4062,6 +4324,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Fetches the resource and returns the content.
+         * @experimental
          */
         'Network.loadNetworkResource': {
             paramsType: [Protocol.Network.LoadNetworkResourceRequest];
@@ -4070,6 +4333,7 @@ export namespace ProtocolMapping {
         /**
          * Sets Controls for third-party cookie access
          * Page reload is required before the new cookie behavior will be observed
+         * @experimental
          */
         'Network.setCookieControls': {
             paramsType: [Protocol.Network.SetCookieControlsRequest];
@@ -4122,6 +4386,7 @@ export namespace ProtocolMapping {
          * Deprecated: Doesn't work reliably and cannot be fixed due to process
          * separation (the owner node might be in a different process). Determine
          * the owner node in the client and use highlightNode.
+         * @deprecated
          */
         'Overlay.highlightFrame': {
             paramsType: [Protocol.Overlay.HighlightFrameRequest];
@@ -4235,6 +4500,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Deprecated, no longer has any effect.
+         * @deprecated
          */
         'Overlay.setShowHitTestBorders': {
             paramsType: [Protocol.Overlay.SetShowHitTestBordersRequest];
@@ -4242,6 +4508,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Deprecated, no longer has any effect.
+         * @deprecated
          */
         'Overlay.setShowWebVitals': {
             paramsType: [Protocol.Overlay.SetShowWebVitalsRequest];
@@ -4374,6 +4641,8 @@ export namespace ProtocolMapping {
         };
         /**
          * Deprecated, please use addScriptToEvaluateOnNewDocument instead.
+         * @deprecated
+         * @experimental
          */
         'Page.addScriptToEvaluateOnLoad': {
             paramsType: [Protocol.Page.AddScriptToEvaluateOnLoadRequest];
@@ -4403,6 +4672,7 @@ export namespace ProtocolMapping {
         /**
          * Returns a snapshot of the page as a string. For MHTML format, the serialization includes
          * iframes, shadow DOM, external resources, and element-inline styles.
+         * @experimental
          */
         'Page.captureSnapshot': {
             paramsType: [Protocol.Page.CaptureSnapshotRequest?];
@@ -4410,6 +4680,8 @@ export namespace ProtocolMapping {
         };
         /**
          * Clears the overridden device metrics.
+         * @deprecated
+         * @experimental
          */
         'Page.clearDeviceMetricsOverride': {
             paramsType: [];
@@ -4417,6 +4689,8 @@ export namespace ProtocolMapping {
         };
         /**
          * Clears the overridden Device Orientation.
+         * @deprecated
+         * @experimental
          */
         'Page.clearDeviceOrientationOverride': {
             paramsType: [];
@@ -4424,6 +4698,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Clears the overridden Geolocation Position and Error.
+         * @deprecated
          */
         'Page.clearGeolocationOverride': {
             paramsType: [];
@@ -4438,6 +4713,8 @@ export namespace ProtocolMapping {
         };
         /**
          * Deletes browser cookie with given name, domain and path.
+         * @deprecated
+         * @experimental
          */
         'Page.deleteCookie': {
             paramsType: [Protocol.Page.DeleteCookieRequest];
@@ -4468,12 +4745,17 @@ export namespace ProtocolMapping {
             paramsType: [Protocol.Page.GetAppManifestRequest?];
             returnType: Protocol.Page.GetAppManifestResponse;
         };
+        /**
+         * @experimental
+         */
         'Page.getInstallabilityErrors': {
             paramsType: [];
             returnType: Protocol.Page.GetInstallabilityErrorsResponse;
         };
         /**
          * Deprecated because it's not guaranteed that the returned icon is in fact the one used for PWA installation.
+         * @deprecated
+         * @experimental
          */
         'Page.getManifestIcons': {
             paramsType: [];
@@ -4482,11 +4764,15 @@ export namespace ProtocolMapping {
         /**
          * Returns the unique (PWA) app id.
          * Only returns values if the feature flag 'WebAppEnableManifestId' is enabled
+         * @experimental
          */
         'Page.getAppId': {
             paramsType: [];
             returnType: Protocol.Page.GetAppIdResponse;
         };
+        /**
+         * @experimental
+         */
         'Page.getAdScriptAncestry': {
             paramsType: [Protocol.Page.GetAdScriptAncestryRequest];
             returnType: Protocol.Page.GetAdScriptAncestryResponse;
@@ -4521,6 +4807,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Returns content of the given resource.
+         * @experimental
          */
         'Page.getResourceContent': {
             paramsType: [Protocol.Page.GetResourceContentRequest];
@@ -4528,6 +4815,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Returns present frame / resource tree structure.
+         * @experimental
          */
         'Page.getResourceTree': {
             paramsType: [];
@@ -4570,6 +4858,8 @@ export namespace ProtocolMapping {
         };
         /**
          * Deprecated, please use removeScriptToEvaluateOnNewDocument instead.
+         * @deprecated
+         * @experimental
          */
         'Page.removeScriptToEvaluateOnLoad': {
             paramsType: [Protocol.Page.RemoveScriptToEvaluateOnLoadRequest];
@@ -4584,6 +4874,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Acknowledges that a screencast frame has been received by the frontend.
+         * @experimental
          */
         'Page.screencastFrameAck': {
             paramsType: [Protocol.Page.ScreencastFrameAckRequest];
@@ -4591,6 +4882,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Searches for given string in resource content.
+         * @experimental
          */
         'Page.searchInResource': {
             paramsType: [Protocol.Page.SearchInResourceRequest];
@@ -4598,6 +4890,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Enable Chrome's experimental ad filter on all sites.
+         * @experimental
          */
         'Page.setAdBlockingEnabled': {
             paramsType: [Protocol.Page.SetAdBlockingEnabledRequest];
@@ -4612,6 +4905,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Get Permissions Policy state on given frame.
+         * @experimental
          */
         'Page.getPermissionsPolicyState': {
             paramsType: [Protocol.Page.GetPermissionsPolicyStateRequest];
@@ -4619,6 +4913,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Get Origin Trials on given frame.
+         * @experimental
          */
         'Page.getOriginTrials': {
             paramsType: [Protocol.Page.GetOriginTrialsRequest];
@@ -4628,6 +4923,8 @@ export namespace ProtocolMapping {
          * Overrides the values of device screen dimensions (window.screen.width, window.screen.height,
          * window.innerWidth, window.innerHeight, and "device-width"/"device-height"-related CSS media
          * query results).
+         * @deprecated
+         * @experimental
          */
         'Page.setDeviceMetricsOverride': {
             paramsType: [Protocol.Page.SetDeviceMetricsOverrideRequest];
@@ -4635,6 +4932,8 @@ export namespace ProtocolMapping {
         };
         /**
          * Overrides the Device Orientation.
+         * @deprecated
+         * @experimental
          */
         'Page.setDeviceOrientationOverride': {
             paramsType: [Protocol.Page.SetDeviceOrientationOverrideRequest];
@@ -4642,6 +4941,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Set generic font families.
+         * @experimental
          */
         'Page.setFontFamilies': {
             paramsType: [Protocol.Page.SetFontFamiliesRequest];
@@ -4649,6 +4949,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Set default font sizes.
+         * @experimental
          */
         'Page.setFontSizes': {
             paramsType: [Protocol.Page.SetFontSizesRequest];
@@ -4663,6 +4964,8 @@ export namespace ProtocolMapping {
         };
         /**
          * Set the behavior when downloading a file.
+         * @deprecated
+         * @experimental
          */
         'Page.setDownloadBehavior': {
             paramsType: [Protocol.Page.SetDownloadBehaviorRequest];
@@ -4671,6 +4974,7 @@ export namespace ProtocolMapping {
         /**
          * Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position
          * unavailable.
+         * @deprecated
          */
         'Page.setGeolocationOverride': {
             paramsType: [Protocol.Page.SetGeolocationOverrideRequest?];
@@ -4685,6 +4989,8 @@ export namespace ProtocolMapping {
         };
         /**
          * Toggles mouse event-based touch event emulation.
+         * @deprecated
+         * @experimental
          */
         'Page.setTouchEmulationEnabled': {
             paramsType: [Protocol.Page.SetTouchEmulationEnabledRequest];
@@ -4692,6 +4998,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Starts sending each frame using the `screencastFrame` event.
+         * @experimental
          */
         'Page.startScreencast': {
             paramsType: [Protocol.Page.StartScreencastRequest?];
@@ -4706,6 +5013,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Crashes renderer on the IO thread, generates minidumps.
+         * @experimental
          */
         'Page.crash': {
             paramsType: [];
@@ -4722,6 +5030,7 @@ export namespace ProtocolMapping {
          * Tries to update the web lifecycle state of the page.
          * It will transition the page to the given state according to:
          * https://github.com/WICG/web-lifecycle/
+         * @experimental
          */
         'Page.setWebLifecycleState': {
             paramsType: [Protocol.Page.SetWebLifecycleStateRequest];
@@ -4729,6 +5038,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Stops sending each frame in the `screencastFrame`.
+         * @experimental
          */
         'Page.stopScreencast': {
             paramsType: [];
@@ -4741,6 +5051,7 @@ export namespace ProtocolMapping {
          * When script with a matching URL is encountered, the cache is optionally
          * produced upon backend discretion, based on internal heuristics.
          * See also: `Page.compilationCacheProduced`.
+         * @experimental
          */
         'Page.produceCompilationCache': {
             paramsType: [Protocol.Page.ProduceCompilationCacheRequest];
@@ -4749,6 +5060,7 @@ export namespace ProtocolMapping {
         /**
          * Seeds compilation cache for given url. Compilation cache does not survive
          * cross-process navigation.
+         * @experimental
          */
         'Page.addCompilationCache': {
             paramsType: [Protocol.Page.AddCompilationCacheRequest];
@@ -4756,6 +5068,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Clears seeded compilation cache.
+         * @experimental
          */
         'Page.clearCompilationCache': {
             paramsType: [];
@@ -4764,6 +5077,7 @@ export namespace ProtocolMapping {
         /**
          * Sets the Secure Payment Confirmation transaction mode.
          * https://w3c.github.io/secure-payment-confirmation/#sctn-automation-set-spc-transaction-mode
+         * @experimental
          */
         'Page.setSPCTransactionMode': {
             paramsType: [Protocol.Page.SetSPCTransactionModeRequest];
@@ -4772,6 +5086,7 @@ export namespace ProtocolMapping {
         /**
          * Extensions for Custom Handlers API:
          * https://html.spec.whatwg.org/multipage/system-state.html#rph-automation
+         * @experimental
          */
         'Page.setRPHRegistrationMode': {
             paramsType: [Protocol.Page.SetRPHRegistrationModeRequest];
@@ -4779,6 +5094,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Generates a report for testing.
+         * @experimental
          */
         'Page.generateTestReport': {
             paramsType: [Protocol.Page.GenerateTestReportRequest];
@@ -4786,6 +5102,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Pauses page execution. Can be resumed using generic Runtime.runIfWaitingForDebugger.
+         * @experimental
          */
         'Page.waitForDebugger': {
             paramsType: [];
@@ -4808,6 +5125,7 @@ export namespace ProtocolMapping {
          * for more details.
          * 
          * TODO(https://crbug.com/1440085): Remove this once Puppeteer supports tab targets.
+         * @experimental
          */
         'Page.setPrerenderingAllowed': {
             paramsType: [Protocol.Page.SetPrerenderingAllowedRequest];
@@ -4831,6 +5149,8 @@ export namespace ProtocolMapping {
          * Sets time domain to use for collecting and reporting duration metrics.
          * Note that this must be called before enabling metrics collection. Calling
          * this method while metrics collection is enabled returns an error.
+         * @deprecated
+         * @experimental
          */
         'Performance.setTimeDomain': {
             paramsType: [Protocol.Performance.SetTimeDomainRequest];
@@ -4882,6 +5202,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Handles a certificate error that fired a certificateError event.
+         * @deprecated
          */
         'Security.handleCertificateError': {
             paramsType: [Protocol.Security.HandleCertificateErrorRequest];
@@ -4890,6 +5211,7 @@ export namespace ProtocolMapping {
         /**
          * Enable/disable overriding certificate errors. If enabled, all certificate error events need to
          * be handled by the DevTools client and should be answered with `handleCertificateError` commands.
+         * @deprecated
          */
         'Security.setOverrideCertificateErrors': {
             paramsType: [Protocol.Security.SetOverrideCertificateErrorsRequest];
@@ -4994,6 +5316,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Override quota for the specified origin
+         * @experimental
          */
         'Storage.overrideQuotaForOrigin': {
             paramsType: [Protocol.Storage.OverrideQuotaForOriginRequest];
@@ -5058,6 +5381,7 @@ export namespace ProtocolMapping {
         /**
          * Returns the number of stored Trust Tokens per issuer for the
          * current browsing context.
+         * @experimental
          */
         'Storage.getTrustTokens': {
             paramsType: [];
@@ -5066,6 +5390,7 @@ export namespace ProtocolMapping {
         /**
          * Removes all Trust Tokens issued by the provided issuerOrigin.
          * Leaves other stored data, including the issuer's Redemption Records, intact.
+         * @experimental
          */
         'Storage.clearTrustTokens': {
             paramsType: [Protocol.Storage.ClearTrustTokensRequest];
@@ -5073,6 +5398,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Gets details for a named interest group.
+         * @experimental
          */
         'Storage.getInterestGroupDetails': {
             paramsType: [Protocol.Storage.GetInterestGroupDetailsRequest];
@@ -5080,6 +5406,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Enables/Disables issuing of interestGroupAccessed events.
+         * @experimental
          */
         'Storage.setInterestGroupTracking': {
             paramsType: [Protocol.Storage.SetInterestGroupTrackingRequest];
@@ -5088,6 +5415,7 @@ export namespace ProtocolMapping {
         /**
          * Enables/Disables issuing of interestGroupAuctionEventOccurred and
          * interestGroupAuctionNetworkRequestCreated.
+         * @experimental
          */
         'Storage.setInterestGroupAuctionTracking': {
             paramsType: [Protocol.Storage.SetInterestGroupAuctionTrackingRequest];
@@ -5095,6 +5423,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Gets metadata for an origin's shared storage.
+         * @experimental
          */
         'Storage.getSharedStorageMetadata': {
             paramsType: [Protocol.Storage.GetSharedStorageMetadataRequest];
@@ -5102,6 +5431,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Gets the entries in an given origin's shared storage.
+         * @experimental
          */
         'Storage.getSharedStorageEntries': {
             paramsType: [Protocol.Storage.GetSharedStorageEntriesRequest];
@@ -5109,6 +5439,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Sets entry with `key` and `value` for a given origin's shared storage.
+         * @experimental
          */
         'Storage.setSharedStorageEntry': {
             paramsType: [Protocol.Storage.SetSharedStorageEntryRequest];
@@ -5116,6 +5447,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Deletes entry for `key` (if it exists) for a given origin's shared storage.
+         * @experimental
          */
         'Storage.deleteSharedStorageEntry': {
             paramsType: [Protocol.Storage.DeleteSharedStorageEntryRequest];
@@ -5123,6 +5455,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Clears all entries for a given origin's shared storage.
+         * @experimental
          */
         'Storage.clearSharedStorageEntries': {
             paramsType: [Protocol.Storage.ClearSharedStorageEntriesRequest];
@@ -5130,6 +5463,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Resets the budget for `ownerOrigin` by clearing all budget withdrawals.
+         * @experimental
          */
         'Storage.resetSharedStorageBudget': {
             paramsType: [Protocol.Storage.ResetSharedStorageBudgetRequest];
@@ -5137,6 +5471,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Enables/disables issuing of sharedStorageAccessed events.
+         * @experimental
          */
         'Storage.setSharedStorageTracking': {
             paramsType: [Protocol.Storage.SetSharedStorageTrackingRequest];
@@ -5144,6 +5479,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Set tracking for a storage key's buckets.
+         * @experimental
          */
         'Storage.setStorageBucketTracking': {
             paramsType: [Protocol.Storage.SetStorageBucketTrackingRequest];
@@ -5151,6 +5487,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Deletes the Storage Bucket with the given storage key and bucket name.
+         * @experimental
          */
         'Storage.deleteStorageBucket': {
             paramsType: [Protocol.Storage.DeleteStorageBucketRequest];
@@ -5158,6 +5495,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Deletes state for sites identified as potential bounce trackers, immediately.
+         * @experimental
          */
         'Storage.runBounceTrackingMitigations': {
             paramsType: [];
@@ -5165,6 +5503,7 @@ export namespace ProtocolMapping {
         };
         /**
          * https://wicg.github.io/attribution-reporting-api/
+         * @experimental
          */
         'Storage.setAttributionReportingLocalTestingMode': {
             paramsType: [Protocol.Storage.SetAttributionReportingLocalTestingModeRequest];
@@ -5172,6 +5511,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Enables/disables issuing of Attribution Reporting events.
+         * @experimental
          */
         'Storage.setAttributionReportingTracking': {
             paramsType: [Protocol.Storage.SetAttributionReportingTrackingRequest];
@@ -5180,6 +5520,7 @@ export namespace ProtocolMapping {
         /**
          * Sends all pending Attribution Reports immediately, regardless of their
          * scheduled report time.
+         * @experimental
          */
         'Storage.sendPendingAttributionReports': {
             paramsType: [];
@@ -5188,6 +5529,7 @@ export namespace ProtocolMapping {
         /**
          * Returns the effective Related Website Sets in use by this profile for the browser
          * session. The effective Related Website Sets will not change during a browser session.
+         * @experimental
          */
         'Storage.getRelatedWebsiteSets': {
             paramsType: [];
@@ -5197,6 +5539,7 @@ export namespace ProtocolMapping {
          * Returns the list of URLs from a page and its embedded resources that match
          * existing grace period URL pattern rules.
          * https://developers.google.com/privacy-sandbox/cookies/temporary-exceptions/grace-period
+         * @experimental
          */
         'Storage.getAffectedUrlsForThirdPartyCookieMetadata': {
             paramsType: [Protocol.Storage.GetAffectedUrlsForThirdPartyCookieMetadataRequest];
@@ -5243,6 +5586,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Attaches to the browser target, only uses flat sessionId mode.
+         * @experimental
          */
         'Target.attachToBrowserTarget': {
             paramsType: [];
@@ -5264,6 +5608,7 @@ export namespace ProtocolMapping {
          * The object has the following API:
          * - `binding.send(json)` - a method to send messages over the remote debugging protocol
          * - `binding.onmessage = json => handleMessage(json)` - a callback that will be called for the protocol notifications and command responses.
+         * @experimental
          */
         'Target.exposeDevToolsProtocol': {
             paramsType: [Protocol.Target.ExposeDevToolsProtocolRequest];
@@ -5308,6 +5653,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Returns information about a target.
+         * @experimental
          */
         'Target.getTargetInfo': {
             paramsType: [Protocol.Target.GetTargetInfoRequest?];
@@ -5324,6 +5670,7 @@ export namespace ProtocolMapping {
          * Sends protocol message over session with given id.
          * Consider using flat mode instead; see commands attachToTarget, setAutoAttach,
          * and crbug.com/991325.
+         * @deprecated
          */
         'Target.sendMessageToTarget': {
             paramsType: [Protocol.Target.SendMessageToTargetRequest];
@@ -5349,6 +5696,7 @@ export namespace ProtocolMapping {
          * through `attachedToTarget`. The specified target is also auto-attached.
          * This cancels the effect of any previous `setAutoAttach` and is also cancelled by subsequent
          * `setAutoAttach`. Only available at the Browser target.
+         * @experimental
          */
         'Target.autoAttachRelated': {
             paramsType: [Protocol.Target.AutoAttachRelatedRequest];
@@ -5365,6 +5713,7 @@ export namespace ProtocolMapping {
         /**
          * Enables target discovery for the specified locations, when `setDiscoverTargets` was set to
          * `true`.
+         * @experimental
          */
         'Target.setRemoteLocations': {
             paramsType: [Protocol.Target.SetRemoteLocationsRequest];
@@ -5372,6 +5721,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Opens a DevTools window for the target.
+         * @experimental
          */
         'Target.openDevTools': {
             paramsType: [Protocol.Target.OpenDevToolsRequest];
@@ -5400,6 +5750,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Gets supported tracing categories.
+         * @experimental
          */
         'Tracing.getCategories': {
             paramsType: [];
@@ -5407,6 +5758,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Record a clock sync marker in the trace.
+         * @experimental
          */
         'Tracing.recordClockSyncMarker': {
             paramsType: [Protocol.Tracing.RecordClockSyncMarkerRequest];
@@ -5414,6 +5766,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Request a global memory dump.
+         * @experimental
          */
         'Tracing.requestMemoryDump': {
             paramsType: [Protocol.Tracing.RequestMemoryDumpRequest?];
