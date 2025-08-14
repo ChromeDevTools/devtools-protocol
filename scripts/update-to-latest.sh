@@ -58,8 +58,11 @@ git --no-pager diff
 if ! git diff --no-ext-diff --quiet --exit-code; then
 	# dirty repo, ready to commit.
 
+	git config user.name 'DevTools Bot'
+	git config user.email '24444246+devtools-bot@users.noreply.github.com'
+
 	# commit so we can use the new commit in the changelog
-	git commit --all -m "Roll protocol to r$commit_rev" --author "DevTools Bot <24444246+devtools-bot@users.noreply.github.com>"
+	git commit --all -m "Roll protocol to r$commit_rev"
 
 	# generate changelog
 	cd "$protocol_repo_path/scripts" || exit 1
