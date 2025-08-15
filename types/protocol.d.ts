@@ -19877,6 +19877,11 @@ export namespace Protocol {
              */
             openerFrameId?: Page.FrameId;
             /**
+             * Id of the parent frame, only present for the "iframe" targets.
+             * @experimental
+             */
+            parentFrameId?: Page.FrameId;
+            /**
              * @experimental
              */
             browserContextId?: Browser.BrowserContextID;

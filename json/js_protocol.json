@@ -8,6 +8,7 @@
             "domain": "Console",
             "description": "This domain is deprecated - use Runtime or Log instead.",
             "deprecated": true,
+            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/js_protocol.pdl",
             "dependencies": [
                 "Runtime"
             ],
@@ -104,6 +105,7 @@
         {
             "domain": "Debugger",
             "description": "Debugger domain exposes JavaScript debugging capabilities. It allows setting and removing\nbreakpoints, stepping through execution, exploring stack traces, etc.",
+            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/js_protocol.pdl",
             "dependencies": [
                 "Runtime"
             ],
@@ -1535,6 +1537,7 @@
         {
             "domain": "HeapProfiler",
             "experimental": true,
+            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/js_protocol.pdl",
             "dependencies": [
                 "Runtime"
             ],
@@ -1854,6 +1857,7 @@
         },
         {
             "domain": "Profiler",
+            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/js_protocol.pdl",
             "dependencies": [
                 "Runtime",
                 "Debugger"
@@ -2215,6 +2219,7 @@
         {
             "domain": "Runtime",
             "description": "Runtime domain exposes JavaScript runtime by means of remote evaluation and mirror objects.\nEvaluation results are returned as mirror object that expose object type, string representation\nand unique identifier that can be used for further object reference. Original objects are\nmaintained in memory unless they are either explicitly released or are released along with the\nother objects in their object group.",
+            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/js_protocol.pdl",
             "types": [
                 {
                     "id": "ScriptId",
@@ -3761,6 +3766,7 @@
             "domain": "Schema",
             "description": "This domain is deprecated.",
             "deprecated": true,
+            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/js_protocol.pdl",
             "types": [
                 {
                     "id": "Domain",
