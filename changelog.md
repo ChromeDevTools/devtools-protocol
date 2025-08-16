@@ -1,7 +1,7 @@
 
 
 ## Roll protocol to r1501779 — _2025-08-15T04:33:26.000Z_
-######  Diff: [`ae77133...8173098`](https://github.com/ChromeDevTools/devtools-protocol/compare/ae77133...8173098)
+######  Diff: [`ae77133...ce40d37`](https://github.com/ChromeDevTools/devtools-protocol/compare/ae77133...ce40d37)
 
 ```diff
 @@ domains/Target.pdl:27 @@ domain Target
@@ -41887,19 +41887,4 @@ index d4102f5c..6285d9b6 100644
    event dataCollected
      parameters
        array of object value
-```
-
-## Roll protocol to r1075693 — _2022-11-25T04:29:29.000Z_
-######  Diff: [`3a71cd0...151a19b`](https://github.com/ChromeDevTools/devtools-protocol/compare/3a71cd0...151a19b)
-
-```diff
-@@ browser_protocol.pdl:1031 @@ experimental domain BackgroundService
-       string instanceId
-       # A list of event-specific information.
-       array of EventMetadata eventMetadata
-+      # Storage key this event belongs to.
-+      string storageKey
- 
-   # Called with all existing backgroundServiceEvents when enabled, and all new
-   # events afterwards if enabled and recording.
 ```

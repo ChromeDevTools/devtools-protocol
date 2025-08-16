@@ -7,7 +7,6 @@
         {
             "domain": "Accessibility",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/Accessibility.pdl",
             "dependencies": [
                 "DOM"
             ],
@@ -585,7 +584,6 @@
         {
             "domain": "Animation",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/Animation.pdl",
             "dependencies": [
                 "Runtime",
                 "DOM"
@@ -987,7 +985,6 @@
             "domain": "Audits",
             "description": "Audits domain allows investigation of page violations and possible improvements.",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/Audits.pdl",
             "dependencies": [
                 "Network"
             ],
@@ -2419,7 +2416,6 @@
             "domain": "Autofill",
             "description": "Defines commands and events for Autofill.",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/Autofill.pdl",
             "types": [
                 {
                     "id": "CreditCard",
@@ -2638,7 +2634,6 @@
             "domain": "BackgroundService",
             "description": "Defines events for background web platform features.",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/BackgroundService.pdl",
             "types": [
                 {
                     "id": "ServiceName",
@@ -2795,7 +2790,6 @@
             "domain": "BluetoothEmulation",
             "description": "This domain allows configuring virtual Bluetooth devices to test\nthe web-bluetooth API.",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/BluetoothEmulation.pdl",
             "types": [
                 {
                     "id": "CentralState",
@@ -3276,7 +3270,6 @@
         {
             "domain": "Browser",
             "description": "The Browser domain defines methods and events for browser managing.",
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/Browser.pdl",
             "types": [
                 {
                     "id": "BrowserContextID",
@@ -3968,7 +3961,6 @@
             "domain": "CSS",
             "description": "This domain exposes CSS read/write operations. All CSS objects (stylesheets, rules, and styles)\nhave an associated `id` used in subsequent operations on the related object. Each object type has\na specific `id` structure, and those are not interchangeable between objects of different kinds.\nCSS objects can be loaded using the `get*ForNode()` calls (which accept a DOM node id). A client\ncan also keep track of stylesheets via the `styleSheetAdded`/`styleSheetRemoved` events and\nsubsequently load the required stylesheet contents using the `getStyleSheet[Text]()` methods.",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/CSS.pdl",
             "dependencies": [
                 "DOM",
                 "Page"
@@ -6261,7 +6253,6 @@
         {
             "domain": "CacheStorage",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/CacheStorage.pdl",
             "dependencies": [
                 "Storage"
             ],
@@ -6540,7 +6531,6 @@
             "domain": "Cast",
             "description": "A domain for interacting with Cast, Presentation API, and Remote Playback API\nfunctionalities.",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/Cast.pdl",
             "types": [
                 {
                     "id": "Sink",
@@ -6649,7 +6639,6 @@
         {
             "domain": "DOM",
             "description": "This domain exposes DOM read/write operations. Each DOM Node is represented with its mirror object\nthat has an `id`. This `id` can be used to get additional information on the Node, resolve it into\nthe JavaScript object wrapper, etc. It is important that client receives DOM events only for the\nnodes that are known to the client. Backend keeps track of the nodes that were sent to the client\nand never sends the same node twice. It is client's responsibility to collect information about\nthe nodes that were sent to the client. Note that `iframe` owner elements will return\ncorresponding document elements as their child nodes.",
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/DOM.pdl",
             "dependencies": [
                 "Runtime"
             ],
@@ -8592,7 +8581,6 @@
         {
             "domain": "DOMDebugger",
             "description": "DOM debugging allows setting breakpoints on particular DOM operations and events. JavaScript\nexecution will stop on these operations as if there was a regular breakpoint set.",
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/DOMDebugger.pdl",
             "dependencies": [
                 "DOM",
                 "Runtime"
@@ -8852,7 +8840,6 @@
             "domain": "DOMSnapshot",
             "description": "This domain facilitates obtaining document snapshots with DOM, layout, and style information.",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/DOMSnapshot.pdl",
             "dependencies": [
                 "CSS",
                 "DOM",
@@ -9705,7 +9692,6 @@
             "domain": "DOMStorage",
             "description": "Query and modify DOM storage.",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/DOMStorage.pdl",
             "types": [
                 {
                     "id": "SerializedStorageKey",
@@ -9877,7 +9863,6 @@
         {
             "domain": "DeviceAccess",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/DeviceAccess.pdl",
             "types": [
                 {
                     "id": "RequestId",
@@ -9963,7 +9948,6 @@
         {
             "domain": "DeviceOrientation",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/DeviceOrientation.pdl",
             "commands": [
                 {
                     "name": "clearDeviceOrientationOverride",
@@ -9995,7 +9979,6 @@
         {
             "domain": "Emulation",
             "description": "This domain emulates different environments for the page.",
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/Emulation.pdl",
             "dependencies": [
                 "DOM",
                 "Page",
@@ -11327,7 +11310,6 @@
             "domain": "EventBreakpoints",
             "description": "EventBreakpoints permits setting JavaScript breakpoints on operations and events\noccurring in native code invoked from JavaScript. Once breakpoint is hit, it is\nreported through Debugger domain, similarly to regular breakpoints being hit.",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/EventBreakpoints.pdl",
             "commands": [
                 {
                     "name": "setInstrumentationBreakpoint",
@@ -11361,7 +11343,6 @@
             "domain": "Extensions",
             "description": "Defines commands and events for browser extensions.",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/Extensions.pdl",
             "types": [
                 {
                     "id": "StorageArea",
@@ -11503,7 +11484,6 @@
             "domain": "FedCm",
             "description": "This domain allows interacting with the FedCM dialog.",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/FedCm.pdl",
             "types": [
                 {
                     "id": "LoginState",
@@ -11718,7 +11698,6 @@
         {
             "domain": "Fetch",
             "description": "A domain for letting clients substitute browser's network layer with client code.",
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/Fetch.pdl",
             "dependencies": [
                 "Network",
                 "IO",
@@ -12168,7 +12147,6 @@
         {
             "domain": "FileSystem",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/FileSystem.pdl",
             "dependencies": [
                 "Network",
                 "Storage"
@@ -12272,7 +12250,6 @@
             "domain": "HeadlessExperimental",
             "description": "This domain provides experimental commands only supported in headless mode.",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/HeadlessExperimental.pdl",
             "dependencies": [
                 "Page",
                 "Runtime"
@@ -12368,7 +12345,6 @@
         {
             "domain": "IO",
             "description": "Input/Output operations for streams produced by DevTools.",
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/IO.pdl",
             "types": [
                 {
                     "id": "StreamHandle",
@@ -12452,7 +12428,6 @@
         {
             "domain": "IndexedDB",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/IndexedDB.pdl",
             "dependencies": [
                 "Runtime",
                 "Storage"
@@ -12968,7 +12943,6 @@
         },
         {
             "domain": "Input",
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/Input.pdl",
             "types": [
                 {
                     "id": "TouchPoint",
@@ -13719,7 +13693,6 @@
         {
             "domain": "Inspector",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/Inspector.pdl",
             "commands": [
                 {
                     "name": "disable",
@@ -13755,7 +13728,6 @@
         {
             "domain": "LayerTree",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/LayerTree.pdl",
             "dependencies": [
                 "DOM"
             ],
@@ -14173,7 +14145,6 @@
         {
             "domain": "Log",
             "description": "Provides access to log entries.",
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/Log.pdl",
             "dependencies": [
                 "Runtime",
                 "Network"
@@ -14351,7 +14322,6 @@
             "domain": "Media",
             "description": "This domain allows detailed inspection of media elements.",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/Media.pdl",
             "types": [
                 {
                     "id": "PlayerId",
@@ -14564,7 +14534,6 @@
         {
             "domain": "Memory",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/Memory.pdl",
             "types": [
                 {
                     "id": "PressureLevel",
@@ -14786,7 +14755,6 @@
         {
             "domain": "Network",
             "description": "Network domain allows tracking network activities of the page. It exposes information about http,\nfile, data and other requests and responses, their headers, bodies, timing, etc.",
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/Network.pdl",
             "dependencies": [
                 "Debugger",
                 "Runtime",
@@ -18821,7 +18789,6 @@
             "domain": "Overlay",
             "description": "This domain provides various functionality related to drawing atop the inspected page.",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/Overlay.pdl",
             "dependencies": [
                 "DOM",
                 "Page",
@@ -19952,7 +19919,6 @@
             "domain": "PWA",
             "description": "This domain allows interacting with the browser to control PWAs.",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/PWA.pdl",
             "types": [
                 {
                     "id": "FileHandlerAccept",
@@ -20140,7 +20106,6 @@
         {
             "domain": "Page",
             "description": "Actions and events related to the inspected page belong to the page domain.",
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/Page.pdl",
             "dependencies": [
                 "Debugger",
                 "DOM",
@@ -23652,7 +23617,6 @@
         },
         {
             "domain": "Performance",
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/Performance.pdl",
             "types": [
                 {
                     "id": "Metric",
@@ -23751,7 +23715,6 @@
             "domain": "PerformanceTimeline",
             "description": "Reporting of performance timeline events, as specified in\nhttps://w3c.github.io/performance-timeline/#dom-performanceobserver.",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/PerformanceTimeline.pdl",
             "dependencies": [
                 "DOM",
                 "Network"
@@ -23915,7 +23878,6 @@
         {
             "domain": "Preload",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/Preload.pdl",
             "types": [
                 {
                     "id": "RuleSetId",
@@ -24357,7 +24319,6 @@
         },
         {
             "domain": "Security",
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/Security.pdl",
             "types": [
                 {
                     "id": "CertificateId",
@@ -24783,7 +24744,6 @@
         {
             "domain": "ServiceWorker",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/ServiceWorker.pdl",
             "dependencies": [
                 "Target"
             ],
@@ -25081,7 +25041,6 @@
         {
             "domain": "Storage",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/Storage.pdl",
             "dependencies": [
                 "Browser",
                 "Network"
@@ -27124,7 +27083,6 @@
             "domain": "SystemInfo",
             "description": "The SystemInfo domain defines methods and events for querying low-level system information.",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/SystemInfo.pdl",
             "types": [
                 {
                     "id": "GPUDevice",
@@ -27434,7 +27392,6 @@
         {
             "domain": "Target",
             "description": "Supports additional targets discovery and allows to attach to them.",
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/Target.pdl",
             "types": [
                 {
                     "id": "TargetID",
@@ -28122,7 +28079,6 @@
             "domain": "Tethering",
             "description": "The Tethering domain defines methods and events for browser port binding.",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/Tethering.pdl",
             "commands": [
                 {
                     "name": "bind",
@@ -28168,7 +28124,6 @@
         },
         {
             "domain": "Tracing",
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/Tracing.pdl",
             "dependencies": [
                 "IO"
             ],
@@ -28513,7 +28468,6 @@
             "domain": "WebAudio",
             "description": "This domain allows inspection of Web Audio API.\nhttps://webaudio.github.io/web-audio-api/",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/WebAudio.pdl",
             "types": [
                 {
                     "id": "GraphObjectId",
@@ -28979,7 +28933,6 @@
             "domain": "WebAuthn",
             "description": "This domain allows configuring virtual authenticators to test the WebAuthn\nAPI.",
             "experimental": true,
-            "source": "/home/runner/work/devtools-protocol/devtools-protocol/pdl/domains/WebAuthn.pdl",
             "types": [
                 {
                     "id": "AuthenticatorId",
