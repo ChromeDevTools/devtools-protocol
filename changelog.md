@@ -1,5 +1,22 @@
 
 
+## Roll protocol to r1503134 — _2025-08-19T04:31:54.000Z_
+######  Diff: [`7bf9db8...d787df4`](https://github.com/ChromeDevTools/devtools-protocol/compare/7bf9db8...d787df4)
+
+```diff
+@@ domains/Network.pdl:1088 @@ domain Network
+       optional integer maxPostDataSize
+       # Whether DirectSocket chunk send/receive events should be reported.
+       experimental optional boolean reportDirectSocketTraffic
++      # Enable storing response bodies outside of renderer, so that these survive
++      # a cross-process navigation. Requires maxTotalBufferSize to be set.
++      # Currently defaults to false.
++      experimental optional boolean enableDurableMessages
+ 
+   # Returns all browser cookies. Depending on the backend support, will return detailed cookie
+   # information in the `cookies` field.
+```
+
 ## Roll protocol to r1501779 — _2025-08-15T04:33:26.000Z_
 ######  Diff: [`ae77133...ce40d37`](https://github.com/ChromeDevTools/devtools-protocol/compare/ae77133...ce40d37)
 
@@ -41854,37 +41871,4 @@ index d4102f5c..6285d9b6 100644
 +
  # This domain allows detailed inspection of media elements
  experimental domain Media
-```
-
-## Roll protocol to r1077862 — _2022-12-01T04:30:06.000Z_
-######  Diff: [`151a19b...23c561a`](https://github.com/ChromeDevTools/devtools-protocol/compare/151a19b...23c561a)
-
-```diff
-@@ browser_protocol.pdl:8423 @@ domain Page
-       InjectedStyleSheet
-       KeepaliveRequest
-       Dummy
-+      AuthorizationHeader
-       # Disabled for RenderFrameHost reasons
-       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
-       ContentSecurityHandler
-@@ -9076,6 +9077,7 @@ experimental domain Storage
-       join
-       leave
-       update
-+      loaded
-       bid
-       win
- 
-@@ -10011,8 +10013,8 @@ experimental domain Tracing
-       # total size.
-       optional number value
- 
--  # Contains an bucket of collected trace events. When tracing is stopped collected events will be
--  # send as a sequence of dataCollected events followed by tracingComplete event.
-+  # Contains a bucket of collected trace events. When tracing is stopped collected events will be
-+  # sent as a sequence of dataCollected events followed by tracingComplete event.
-   event dataCollected
-     parameters
-       array of object value
 ```
