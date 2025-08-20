@@ -1,7 +1,24 @@
 
 
+## Roll protocol to r1503754 — _2025-08-20T04:32:27.000Z_
+######  Diff: [`d3d8ab5...bc5c75a`](https://github.com/ChromeDevTools/devtools-protocol/compare/d3d8ab5...bc5c75a)
+
+```diff
+@@ domains/Network.pdl:1088 @@ domain Network
+       optional integer maxPostDataSize
+       # Whether DirectSocket chunk send/receive events should be reported.
+       experimental optional boolean reportDirectSocketTraffic
+-      # Enable storing response bodies outside of renderer, so that these survive
+-      # a cross-process navigation. Requires maxTotalBufferSize to be set.
+-      # Currently defaults to false.
+-      experimental optional boolean enableDurableMessages
+ 
+   # Returns all browser cookies. Depending on the backend support, will return detailed cookie
+   # information in the `cookies` field.
+```
+
 ## Roll protocol to r1503134 — _2025-08-19T04:31:54.000Z_
-######  Diff: [`7bf9db8...d787df4`](https://github.com/ChromeDevTools/devtools-protocol/compare/7bf9db8...d787df4)
+######  Diff: [`7bf9db8...d3d8ab5`](https://github.com/ChromeDevTools/devtools-protocol/compare/7bf9db8...d3d8ab5)
 
 ```diff
 @@ domains/Network.pdl:1088 @@ domain Network
@@ -41847,28 +41864,4 @@ index d4102f5c..6285d9b6 100644
  
    # Definition of PermissionDescriptor defined in the Permissions API:
    # https://w3c.github.io/permissions/#dictdef-permissiondescriptor.
-```
-
-## Roll protocol to r1078443 — _2022-12-02T04:28:44.000Z_
-######  Diff: [`23c561a...8af7bb2`](https://github.com/ChromeDevTools/devtools-protocol/compare/23c561a...8af7bb2)
-
-```diff
-@@ browser_protocol.pdl:10630 @@ experimental domain WebAuthn
-       AuthenticatorId authenticatorId
-       boolean enabled
- 
-+  # Triggered when a credential is added to an authenticator.
-+  event credentialAdded
-+    parameters
-+      AuthenticatorId authenticatorId
-+      Credential credential
-+
-+  # Triggered when a credential is used in a webauthn assertion.
-+  event credentialAsserted
-+    parameters
-+      AuthenticatorId authenticatorId
-+      Credential credential
-+
- # This domain allows detailed inspection of media elements
- experimental domain Media
 ```
