@@ -1,7 +1,82 @@
 
 
+## Roll protocol to r1504847 — _2025-08-22T04:32:04.000Z_
+######  Diff: [`65c042d...03b5ae0`](https://github.com/ChromeDevTools/devtools-protocol/compare/65c042d...03b5ae0)
+
+```diff
+@@ domains/Media.pdl:66 @@ experimental domain Media
+       # Extra data attached to an error, such as an HRESULT, Video Codec, etc.
+       object data
+ 
++  type Player extends object
++    properties
++      PlayerId playerId
++      optional DOM.BackendNodeId domNodeId
++
+   # This can be called multiple times, and can be used to set / override /
+   # remove player properties. A null propValue indicates removal.
+   event playerPropertiesChanged
+@@ -93,11 +98,11 @@ experimental domain Media
+       array of PlayerError errors
+ 
+   # Called whenever a player is created, or when a new agent joins and receives
+-  # a list of active players. If an agent is restored, it will receive the full
+-  # list of player ids and all events again.
+-  event playersCreated
++  # a list of active players. If an agent is restored, it will receive one
++  # event for each active player.
++  event playerCreated
+     parameters
+-      array of PlayerId players
++      Player player
+ 
+   # Enables the Media domain
+   command enable
+diff --git a/pdl/domains/Network.pdl b/pdl/domains/Network.pdl
+index fca59cc7..8958da96 100644
+--- a/pdl/domains/Network.pdl
++++ b/pdl/domains/Network.pdl
+@@ -296,6 +296,25 @@ domain Network
+       corp-not-same-site
+       sri-message-signature-mismatch
+ 
++  # Sets Controls for IP Proxy of requests.
++  # Page reload is required before the new behavior will be observed.
++  experimental type IpProxyStatus extends string
++    enum
++      Available
++      FeatureNotEnabled
++      MaskedDomainListNotEnabled
++      MaskedDomainListNotPopulated
++      AuthTokensUnavailable
++      Unavailable
++      BypassedByDevTools
++
++  # Returns enum representing if IP Proxy of requests is available
++  # or reason it is not active.
++  experimental command getIPProtectionProxyStatus
++    returns
++      # Whether IP proxy is available
++      IpProxyStatus status
++
+   # The reason why request was blocked.
+   type CorsError extends string
+     enum
+@@ -1088,6 +1107,10 @@ domain Network
+       optional integer maxPostDataSize
+       # Whether DirectSocket chunk send/receive events should be reported.
+       experimental optional boolean reportDirectSocketTraffic
++      # Enable storing response bodies outside of renderer, so that these survive
++      # a cross-process navigation. Requires maxTotalBufferSize to be set.
++      # Currently defaults to false.
++      experimental optional boolean enableDurableMessages
+ 
+   # Returns all browser cookies. Depending on the backend support, will return detailed cookie
+   # information in the `cookies` field.
+```
+
 ## Roll protocol to r1503754 — _2025-08-20T04:32:27.000Z_
-######  Diff: [`d3d8ab5...bc5c75a`](https://github.com/ChromeDevTools/devtools-protocol/compare/d3d8ab5...bc5c75a)
+######  Diff: [`d3d8ab5...65c042d`](https://github.com/ChromeDevTools/devtools-protocol/compare/d3d8ab5...65c042d)
 
 ```diff
 @@ domains/Network.pdl:1088 @@ domain Network
@@ -41850,18 +41925,4 @@ index d4102f5c..6285d9b6 100644
    # Returns information about all running processes.
    command getProcessInfo
      returns
-```
-
-## Roll protocol to r1079624 — _2022-12-06T04:28:29.000Z_
-######  Diff: [`8af7bb2...c1e172c`](https://github.com/ChromeDevTools/devtools-protocol/compare/8af7bb2...c1e172c)
-
-```diff
-@@ browser_protocol.pdl:1100 @@ domain Browser
-     enum
-       granted
-       denied
-+      prompt
- 
-   # Definition of PermissionDescriptor defined in the Permissions API:
-   # https://w3c.github.io/permissions/#dictdef-permissiondescriptor.
 ```

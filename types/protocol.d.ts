@@ -11762,6 +11762,11 @@ export namespace Protocol {
             data: any;
         }
 
+        export interface Player {
+            playerId: PlayerId;
+            domNodeId?: DOM.BackendNodeId;
+        }
+
         /**
          * This can be called multiple times, and can be used to set / override /
          * remove player properties. A null propValue indicates removal.
@@ -11798,11 +11803,11 @@ export namespace Protocol {
 
         /**
          * Called whenever a player is created, or when a new agent joins and receives
-         * a list of active players. If an agent is restored, it will receive the full
-         * list of player ids and all events again.
+         * a list of active players. If an agent is restored, it will receive one
+         * event for each active player.
          */
-        export interface PlayersCreatedEvent {
-            players: PlayerId[];
+        export interface PlayerCreatedEvent {
+            player: Player;
         }
     }
 
@@ -12311,6 +12316,13 @@ export namespace Protocol {
          * The reason why request was blocked.
          */
         export type BlockedReason = ('other' | 'csp' | 'mixed-content' | 'origin' | 'inspector' | 'integrity' | 'subresource-filter' | 'content-type' | 'coep-frame-resource-needs-coep-header' | 'coop-sandboxed-iframe-cannot-navigate-to-coop-page' | 'corp-not-same-origin' | 'corp-not-same-origin-after-defaulted-to-same-origin-by-coep' | 'corp-not-same-origin-after-defaulted-to-same-origin-by-dip' | 'corp-not-same-origin-after-defaulted-to-same-origin-by-coep-and-dip' | 'corp-not-same-site' | 'sri-message-signature-mismatch');
+
+        /**
+         * Sets Controls for IP Proxy of requests.
+         * Page reload is required before the new behavior will be observed.
+         * @experimental
+         */
+        export type IpProxyStatus = ('Available' | 'FeatureNotEnabled' | 'MaskedDomainListNotEnabled' | 'MaskedDomainListNotPopulated' | 'AuthTokensUnavailable' | 'Unavailable' | 'BypassedByDevTools');
 
         /**
          * The reason why request was blocked.
@@ -13345,6 +13357,13 @@ export namespace Protocol {
             includeCredentials: boolean;
         }
 
+        export interface GetIPProtectionProxyStatusResponse {
+            /**
+             * Whether IP proxy is available
+             */
+            status: IpProxyStatus;
+        }
+
         export interface SetAcceptedEncodingsRequest {
             /**
              * List of accepted content encodings.
@@ -13495,6 +13514,13 @@ export namespace Protocol {
              * @experimental
              */
             reportDirectSocketTraffic?: boolean;
+            /**
+             * Enable storing response bodies outside of renderer, so that these survive
+             * a cross-process navigation. Requires maxTotalBufferSize to be set.
+             * Currently defaults to false.
+             * @experimental
+             */
+            enableDurableMessages?: boolean;
         }
 
         export interface GetAllCookiesResponse {

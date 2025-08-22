@@ -3039,12 +3039,12 @@ export namespace ProtocolTestsProxyApi {
 
         /**
          * Called whenever a player is created, or when a new agent joins and receives
-         * a list of active players. If an agent is restored, it will receive the full
-         * list of player ids and all events again.
+         * a list of active players. If an agent is restored, it will receive one
+         * event for each active player.
          */
-        onPlayersCreated(listener: (event: { params: Protocol.Media.PlayersCreatedEvent }) => void): void;
-        offPlayersCreated(listener: (event: { params: Protocol.Media.PlayersCreatedEvent }) => void): void;
-        oncePlayersCreated(eventMatcher?: (event: { params: Protocol.Media.PlayersCreatedEvent }) => boolean): Promise<{ params: Protocol.Media.PlayersCreatedEvent }>;
+        onPlayerCreated(listener: (event: { params: Protocol.Media.PlayerCreatedEvent }) => void): void;
+        offPlayerCreated(listener: (event: { params: Protocol.Media.PlayerCreatedEvent }) => void): void;
+        oncePlayerCreated(eventMatcher?: (event: { params: Protocol.Media.PlayerCreatedEvent }) => boolean): Promise<{ params: Protocol.Media.PlayerCreatedEvent }>;
 
     }
 
@@ -3111,6 +3111,13 @@ export namespace ProtocolTestsProxyApi {
     }
 
     export interface NetworkApi {
+        /**
+         * Returns enum representing if IP Proxy of requests is available
+         * or reason it is not active.
+         * @experimental
+         */
+        getIPProtectionProxyStatus(): Promise<{id: number, result: Protocol.Network.GetIPProtectionProxyStatusResponse, sessionId: string}>;
+
         /**
          * Sets a list of content encodings that will be accepted. Empty list means no encoding is accepted.
          * @experimental
