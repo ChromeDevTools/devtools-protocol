@@ -1,7 +1,52 @@
 
 
+## Roll protocol to r1505444 — _2025-08-23T04:31:11.000Z_
+######  Diff: [`11bcaf8...1551fe2`](https://github.com/ChromeDevTools/devtools-protocol/compare/11bcaf8...1551fe2)
+
+```diff
+@@ domains/CSS.pdl:239 @@ experimental domain CSS
+       # Computed style property value.
+       string value
+ 
++  experimental type ComputedStyleExtraFields extends object
++    properties
++      # Returns whether or not this node is being rendered with base appearance,
++      # which happens when it has its appearance property set to base/base-select
++      # or it is in the subtree of an element being rendered with base appearance.
++      boolean isAppearanceBase
++
+   # CSS style representation.
+   type CSSStyle extends object
+     properties
+@@ -674,6 +681,9 @@ experimental domain CSS
+     returns
+       # Computed style for the specified DOM node.
+       array of CSSComputedStyleProperty computedStyle
++      # A list of non-standard "extra fields" which blink stores alongside each
++      # computed style.
++      experimental ComputedStyleExtraFields extraFields
+ 
+   # Resolve the specified values in the context of the provided element.
+   # For example, a value of '1em' is evaluated according to the computed
+diff --git a/pdl/domains/Network.pdl b/pdl/domains/Network.pdl
+index 8958da96..a8fd0f2c 100644
+--- a/pdl/domains/Network.pdl
++++ b/pdl/domains/Network.pdl
+@@ -1107,10 +1107,6 @@ domain Network
+       optional integer maxPostDataSize
+       # Whether DirectSocket chunk send/receive events should be reported.
+       experimental optional boolean reportDirectSocketTraffic
+-      # Enable storing response bodies outside of renderer, so that these survive
+-      # a cross-process navigation. Requires maxTotalBufferSize to be set.
+-      # Currently defaults to false.
+-      experimental optional boolean enableDurableMessages
+ 
+   # Returns all browser cookies. Depending on the backend support, will return detailed cookie
+   # information in the `cookies` field.
+```
+
 ## Roll protocol to r1504847 — _2025-08-22T04:32:04.000Z_
-######  Diff: [`65c042d...03b5ae0`](https://github.com/ChromeDevTools/devtools-protocol/compare/65c042d...03b5ae0)
+######  Diff: [`65c042d...11bcaf8`](https://github.com/ChromeDevTools/devtools-protocol/compare/65c042d...11bcaf8)
 
 ```diff
 @@ domains/Media.pdl:66 @@ experimental domain Media
@@ -41905,24 +41950,4 @@ index d4102f5c..6285d9b6 100644
        storage-access
        sync-xhr
        trust-token-redemption
-```
-
-## Roll protocol to r1081314 — _2022-12-09T04:28:47.000Z_
-######  Diff: [`c1e172c...d4cef45`](https://github.com/ChromeDevTools/devtools-protocol/compare/c1e172c...d4cef45)
-
-```diff
-@@ browser_protocol.pdl:9569 @@ experimental domain SystemInfo
-       # supported.
-       string commandLine
- 
-+  # Returns information about the feature state.
-+  command getFeatureState
-+    parameters
-+      string featureState
-+    returns
-+      boolean featureEnabled
-+
-   # Returns information about all running processes.
-   command getProcessInfo
-     returns
 ```

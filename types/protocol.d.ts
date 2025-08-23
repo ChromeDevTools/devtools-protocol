@@ -5283,6 +5283,18 @@ export namespace Protocol {
         }
 
         /**
+         * @experimental
+         */
+        export interface ComputedStyleExtraFields {
+            /**
+             * Returns whether or not this node is being rendered with base appearance,
+             * which happens when it has its appearance property set to base/base-select
+             * or it is in the subtree of an element being rendered with base appearance.
+             */
+            isAppearanceBase: boolean;
+        }
+
+        /**
          * CSS style representation.
          */
         export interface CSSStyle {
@@ -6023,6 +6035,12 @@ export namespace Protocol {
              * Computed style for the specified DOM node.
              */
             computedStyle: CSSComputedStyleProperty[];
+            /**
+             * A list of non-standard "extra fields" which blink stores alongside each
+             * computed style.
+             * @experimental
+             */
+            extraFields: ComputedStyleExtraFields;
         }
 
         export interface ResolveValuesRequest {
@@ -13514,13 +13532,6 @@ export namespace Protocol {
              * @experimental
              */
             reportDirectSocketTraffic?: boolean;
-            /**
-             * Enable storing response bodies outside of renderer, so that these survive
-             * a cross-process navigation. Requires maxTotalBufferSize to be set.
-             * Currently defaults to false.
-             * @experimental
-             */
-            enableDurableMessages?: boolean;
         }
 
         export interface GetAllCookiesResponse {
