@@ -13532,6 +13532,13 @@ export namespace Protocol {
              * @experimental
              */
             reportDirectSocketTraffic?: boolean;
+            /**
+             * Enable storing response bodies outside of renderer, so that these survive
+             * a cross-process navigation. Requires maxTotalBufferSize to be set.
+             * Currently defaults to false.
+             * @experimental
+             */
+            enableDurableMessages?: boolean;
         }
 
         export interface GetAllCookiesResponse {

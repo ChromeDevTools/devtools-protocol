@@ -1,7 +1,24 @@
 
 
+## Roll protocol to r1507524 — _2025-08-28T04:31:32.000Z_
+######  Diff: [`8952758...039acc0`](https://github.com/ChromeDevTools/devtools-protocol/compare/8952758...039acc0)
+
+```diff
+@@ domains/Network.pdl:1107 @@ domain Network
+       optional integer maxPostDataSize
+       # Whether DirectSocket chunk send/receive events should be reported.
+       experimental optional boolean reportDirectSocketTraffic
++      # Enable storing response bodies outside of renderer, so that these survive
++      # a cross-process navigation. Requires maxTotalBufferSize to be set.
++      # Currently defaults to false.
++      experimental optional boolean enableDurableMessages
+ 
+   # Returns all browser cookies. Depending on the backend support, will return detailed cookie
+   # information in the `cookies` field.
+```
+
 ## Roll protocol to r1505444 — _2025-08-23T04:31:11.000Z_
-######  Diff: [`11bcaf8...1551fe2`](https://github.com/ChromeDevTools/devtools-protocol/compare/11bcaf8...1551fe2)
+######  Diff: [`11bcaf8...8952758`](https://github.com/ChromeDevTools/devtools-protocol/compare/11bcaf8...8952758)
 
 ```diff
 @@ domains/CSS.pdl:239 @@ experimental domain CSS
@@ -41905,49 +41922,4 @@ index d4102f5c..6285d9b6 100644
  
    # Fired when a prerender attempt is completed.
    experimental event prerenderAttemptCompleted
-```
-
-## Roll protocol to r1081726 — _2022-12-10T04:28:45.000Z_
-######  Diff: [`d4cef45...178dea5`](https://github.com/ChromeDevTools/devtools-protocol/compare/d4cef45...178dea5)
-
-```diff
-@@ browser_protocol.pdl:838 @@ experimental domain Audits
-     enum
-       ShouldEmbargo
-       TooManyRequests
--      ManifestListHttpNotFound
--      ManifestListNoResponse
--      ManifestListInvalidResponse
--      ManifestNotInManifestList
--      ManifestListTooBig
--      ManifestHttpNotFound
--      ManifestNoResponse
--      ManifestInvalidResponse
-+      WellKnownHttpNotFound
-+      WellKnownNoResponse
-+      WellKnownInvalidResponse
-+      ConfigNotInWellKnown
-+      WellKnownTooBig
-+      ConfigHttpNotFound
-+      ConfigNoResponse
-+      ConfigInvalidResponse
-       ClientMetadataHttpNotFound
-       ClientMetadataNoResponse
-       ClientMetadataInvalidResponse
-@@ -3897,7 +3897,6 @@ domain Emulation
-   experimental type DisabledImageType extends string
-     enum
-       avif
--      jxl
-       webp
- 
-   experimental command setDisabledImageTypes
-@@ -7220,6 +7219,7 @@ domain Page
-       serial
-       shared-autofill
-       shared-storage
-+      smart-card
-       storage-access
-       sync-xhr
-       trust-token-redemption
 ```
