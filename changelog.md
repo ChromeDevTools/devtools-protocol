@@ -1,7 +1,34 @@
 
 
+## Roll protocol to r1508733 — _2025-08-30T04:30:36.000Z_
+######  Diff: [`f87879c...7ceed45`](https://github.com/ChromeDevTools/devtools-protocol/compare/f87879c...7ceed45)
+
+```diff
+@@ domains/Browser.pdl:103 @@ domain Browser
+       closeTabSearch
+       openGlic
+ 
+-  # Set permission settings for given origin.
++  # Set permission settings for given requesting and embedding origins.
+   experimental command setPermission
+     parameters
+       # Descriptor of permission to override.
+       PermissionDescriptor permission
+       # Setting of the permission.
+       PermissionSetting setting
+-      # Origin the permission applies to, all origins if not specified.
++      # Requesting origin the permission applies to, all origins if not specified.
+       optional string origin
++      # Embedding origin the permission applies to. It is ignored unless the requesting origin is
++      # present and valid. If the requesting origin is provided but the embedding origin isn't, the
++      # requesting origin is used as the embedding origin.
++      optional string embeddingOrigin
+       # Context to override. When omitted, default browser context is used.
+       optional BrowserContextID browserContextId
+```
+
 ## Roll protocol to r1507524 — _2025-08-28T04:31:32.000Z_
-######  Diff: [`8952758...039acc0`](https://github.com/ChromeDevTools/devtools-protocol/compare/8952758...039acc0)
+######  Diff: [`8952758...f87879c`](https://github.com/ChromeDevTools/devtools-protocol/compare/8952758...f87879c)
 
 ```diff
 @@ domains/Network.pdl:1107 @@ domain Network
@@ -41905,20 +41932,6 @@ index d4102f5c..6285d9b6 100644
        ActivationNavigationParameterMismatch
        ActivatedInBackground
 +      EmbedderHostDisallowed
- 
-   # Fired when a prerender attempt is completed.
-   experimental event prerenderAttemptCompleted
-```
-
-## Roll protocol to r1082281 — _2022-12-13T04:28:57.000Z_
-######  Diff: [`178dea5...5428889`](https://github.com/ChromeDevTools/devtools-protocol/compare/178dea5...5428889)
-
-```diff
-@@ browser_protocol.pdl:8547 @@ domain Page
-       SameSiteCrossOriginRedirectNotOptIn
-       SameSiteCrossOriginNavigationNotOptIn
-       ActivationNavigationParameterMismatch
-+      ActivatedInBackground
  
    # Fired when a prerender attempt is completed.
    experimental event prerenderAttemptCompleted
