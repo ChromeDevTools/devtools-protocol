@@ -1,7 +1,26 @@
 
 
+## Roll protocol to r1509355 — _2025-09-02T04:31:52.000Z_
+######  Diff: [`ede3fcf...ddd2a05`](https://github.com/ChromeDevTools/devtools-protocol/compare/ede3fcf...ddd2a05)
+
+```diff
+@@ domains/Page.pdl:1600 @@ domain Page
+       IndexedDBEvent
+       Dummy
+       JsNetworkRequestReceivedCacheControlNoStoreResource
+-      WebRTCSticky
+-      WebTransportSticky
+-      WebSocketSticky
++      WebRTCUsedWithCCNS
++      WebTransportUsedWithCCNS
++      WebSocketUsedWithCCNS
+       SmartCard
+       LiveMediaStreamTrack
+       UnloadHandler
+```
+
 ## Roll protocol to r1508733 — _2025-08-30T04:30:36.000Z_
-######  Diff: [`f87879c...7ceed45`](https://github.com/ChromeDevTools/devtools-protocol/compare/f87879c...7ceed45)
+######  Diff: [`f87879c...ede3fcf`](https://github.com/ChromeDevTools/devtools-protocol/compare/f87879c...ede3fcf)
 
 ```diff
 @@ domains/Browser.pdl:103 @@ domain Browser
@@ -41921,18 +41940,4 @@ index d4102f5c..6285d9b6 100644
        Dummy
        AuthorizationHeader
        # Disabled for RenderFrameHost reasons
-```
-
-## Roll protocol to r1082910 — _2022-12-14T04:29:01.000Z_
-######  Diff: [`5428889...1e921af`](https://github.com/ChromeDevTools/devtools-protocol/compare/5428889...1e921af)
-
-```diff
-@@ browser_protocol.pdl:8548 @@ domain Page
-       SameSiteCrossOriginNavigationNotOptIn
-       ActivationNavigationParameterMismatch
-       ActivatedInBackground
-+      EmbedderHostDisallowed
- 
-   # Fired when a prerender attempt is completed.
-   experimental event prerenderAttemptCompleted
 ```
