@@ -1,7 +1,35 @@
 
 
+## Roll protocol to r1510116 — _2025-09-03T09:48:36.000Z_
+######  Diff: [`1ad29d6...37adbb3`](https://github.com/ChromeDevTools/devtools-protocol/compare/1ad29d6...37adbb3)
+
+```diff
+@@ domains/Autofill.pdl:22 @@ experimental domain Autofill
+   type AddressField extends object
+     properties
+       # address field name, for example GIVEN_NAME.
++      # The full list of supported field names:
++      # https://source.chromium.org/chromium/chromium/src/+/main:components/autofill/core/browser/field_types.cc;l=38
+       string name
+       # address field value, for example Jon Doe.
+       string value
+@@ -90,8 +92,10 @@ experimental domain Autofill
+       DOM.BackendNodeId fieldId
+       # Identifies the frame that field belongs to.
+       optional Page.FrameId frameId
+-      # Credit card information to fill out the form. Credit card data is not saved.
+-      CreditCard card
++      # Credit card information to fill out the form. Credit card data is not saved.  Mutually exclusive with `address`.
++      optional CreditCard card
++      # Address to fill out the form. Address data is not saved. Mutually exclusive with `card`.
++      optional Address address
+ 
+   # Set addresses so that developers can verify their forms implementation.
+   command setAddresses
+```
+
 ## Roll protocol to r1510016 — _2025-09-03T04:31:02.000Z_
-######  Diff: [`32c4fdb...cb9a32a`](https://github.com/ChromeDevTools/devtools-protocol/compare/32c4fdb...cb9a32a)
+######  Diff: [`32c4fdb...1ad29d6`](https://github.com/ChromeDevTools/devtools-protocol/compare/32c4fdb...1ad29d6)
 
 ```diff
 @@ domains/Network.pdl:315 @@ domain Network
@@ -41906,19 +41934,4 @@ index d4102f5c..6285d9b6 100644
    # Enables/disables issuing of sharedStorageAccessed events.
    experimental command setSharedStorageTracking
      parameters
-```
-
-## Roll protocol to r1084670 — _2022-12-17T04:27:45.000Z_
-######  Diff: [`8b04aee...1ff2246`](https://github.com/ChromeDevTools/devtools-protocol/compare/8b04aee...1ff2246)
-
-```diff
-@@ browser_protocol.pdl:9723 @@ domain Target
-       # Whether to create the target in background or foreground (chrome-only,
-       # false by default).
-       optional boolean background
-+      # Whether to create the target of type "tab".
-+      experimental optional boolean forTab
-     returns
-       # The id of the page opened.
-       TargetID targetId
 ```

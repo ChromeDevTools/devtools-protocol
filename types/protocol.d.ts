@@ -4020,6 +4020,8 @@ export namespace Protocol {
         export interface AddressField {
             /**
              * address field name, for example GIVEN_NAME.
+             * The full list of supported field names:
+             * https://source.chromium.org/chromium/chromium/src/+/main:components/autofill/core/browser/field_types.cc;l=38
              */
             name: string;
             /**
@@ -4108,9 +4110,13 @@ export namespace Protocol {
              */
             frameId?: Page.FrameId;
             /**
-             * Credit card information to fill out the form. Credit card data is not saved.
+             * Credit card information to fill out the form. Credit card data is not saved.  Mutually exclusive with `address`.
              */
-            card: CreditCard;
+            card?: CreditCard;
+            /**
+             * Address to fill out the form. Address data is not saved. Mutually exclusive with `card`.
+             */
+            address?: Address;
         }
 
         export interface SetAddressesRequest {
