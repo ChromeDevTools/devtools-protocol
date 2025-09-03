@@ -3119,6 +3119,12 @@ export namespace ProtocolTestsProxyApi {
         getIPProtectionProxyStatus(): Promise<{id: number, result: Protocol.Network.GetIPProtectionProxyStatusResponse, sessionId: string}>;
 
         /**
+         * Sets bypass IP Protection Proxy boolean.
+         * @experimental
+         */
+        setIPProtectionProxyBypassEnabled(params: Protocol.Network.SetIPProtectionProxyBypassEnabledRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
          * Sets a list of content encodings that will be accepted. Empty list means no encoding is accepted.
          * @experimental
          */

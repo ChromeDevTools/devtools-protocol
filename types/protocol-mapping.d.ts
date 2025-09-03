@@ -4066,6 +4066,14 @@ export namespace ProtocolMapping {
             returnType: Protocol.Network.GetIPProtectionProxyStatusResponse;
         };
         /**
+         * Sets bypass IP Protection Proxy boolean.
+         * @experimental
+         */
+        'Network.setIPProtectionProxyBypassEnabled': {
+            paramsType: [Protocol.Network.SetIPProtectionProxyBypassEnabledRequest];
+            returnType: void;
+        };
+        /**
          * Sets a list of content encodings that will be accepted. Empty list means no encoding is accepted.
          * @experimental
          */

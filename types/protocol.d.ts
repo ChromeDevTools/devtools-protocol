@@ -13388,6 +13388,13 @@ export namespace Protocol {
             status: IpProxyStatus;
         }
 
+        export interface SetIPProtectionProxyBypassEnabledRequest {
+            /**
+             * Whether IP Proxy is being bypassed by devtools; false by default.
+             */
+            enabled: boolean;
+        }
+
         export interface SetAcceptedEncodingsRequest {
             /**
              * List of accepted content encodings.

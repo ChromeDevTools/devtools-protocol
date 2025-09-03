@@ -1,7 +1,26 @@
 
 
+## Roll protocol to r1510016 — _2025-09-03T04:31:02.000Z_
+######  Diff: [`32c4fdb...cb9a32a`](https://github.com/ChromeDevTools/devtools-protocol/compare/32c4fdb...cb9a32a)
+
+```diff
+@@ domains/Network.pdl:315 @@ domain Network
+       # Whether IP proxy is available
+       IpProxyStatus status
+ 
++  # Sets bypass IP Protection Proxy boolean.
++  experimental command setIPProtectionProxyBypassEnabled
++    parameters
++      # Whether IP Proxy is being bypassed by devtools; false by default.
++      boolean enabled
++
+   # The reason why request was blocked.
+   type CorsError extends string
+     enum
+```
+
 ## Roll protocol to r1509355 — _2025-09-02T04:31:52.000Z_
-######  Diff: [`ede3fcf...ddd2a05`](https://github.com/ChromeDevTools/devtools-protocol/compare/ede3fcf...ddd2a05)
+######  Diff: [`ede3fcf...32c4fdb`](https://github.com/ChromeDevTools/devtools-protocol/compare/ede3fcf...32c4fdb)
 
 ```diff
 @@ domains/Page.pdl:1600 @@ domain Page
@@ -41902,42 +41921,4 @@ index d4102f5c..6285d9b6 100644
      returns
        # The id of the page opened.
        TargetID targetId
-```
-
-## Roll protocol to r1084174 — _2022-12-16T04:27:47.000Z_
-######  Diff: [`1e921af...8b04aee`](https://github.com/ChromeDevTools/devtools-protocol/compare/1e921af...8b04aee)
-
-```diff
-@@ browser_protocol.pdl:743 @@ experimental domain Audits
-   type GenericIssueErrorType extends string
-     enum
-       CrossOriginPortalPostMessageError
-+      FormLabelForNameError
- 
-   # Depending on the concrete errorType, different properties are set.
-   type GenericIssueDetails extends object
-@@ -750,6 +751,7 @@ experimental domain Audits
-       # Issues with the same errorType are aggregated in the frontend.
-       GenericIssueErrorType errorType
-       optional Page.FrameId frameId
-+      optional DOM.BackendNodeId violatingNodeId
- 
-   type DeprecationIssueType extends string
-     enum
-@@ -6406,6 +6408,7 @@ domain Network
-         ResourceExhausted
-         AlreadyExists
-         Unavailable
-+        Unauthorized
-         BadResponse
-         InternalError
-         UnknownError
-@@ -8423,6 +8426,7 @@ domain Page
-       InjectedJavascript
-       InjectedStyleSheet
-       KeepaliveRequest
-+      IndexedDBEvent
-       Dummy
-       AuthorizationHeader
-       # Disabled for RenderFrameHost reasons
 ```

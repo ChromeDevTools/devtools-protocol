@@ -2953,6 +2953,12 @@ export namespace ProtocolProxyApi {
         getIPProtectionProxyStatus(): Promise<Protocol.Network.GetIPProtectionProxyStatusResponse>;
 
         /**
+         * Sets bypass IP Protection Proxy boolean.
+         * @experimental
+         */
+        setIPProtectionProxyBypassEnabled(params: Protocol.Network.SetIPProtectionProxyBypassEnabledRequest): Promise<void>;
+
+        /**
          * Sets a list of content encodings that will be accepted. Empty list means no encoding is accepted.
          * @experimental
          */
