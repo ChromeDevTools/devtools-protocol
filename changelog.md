@@ -1,7 +1,35 @@
 
 
+## Roll protocol to r1511308 — _2025-09-05T04:31:05.000Z_
+######  Diff: [`bb9208f...0373139`](https://github.com/ChromeDevTools/devtools-protocol/compare/bb9208f...0373139)
+
+```diff
+@@ domains/PWA.pdl:53 @@ experimental domain PWA
+   #
+   # To generate bundle id for proxy mode:
+   # 1. Generate 32 random bytes.
+-  # 2. Add a specific suffix 0x00 at the end.
++  # 2. Add a specific suffix at the end following the documentation
++  #    https://github.com/WICG/isolated-web-apps/blob/main/Scheme.md#suffix
+   # 3. Encode the entire sequence using Base32 without padding.
+   #
+   # If Chrome is not in IWA dev
+diff --git a/pdl/domains/Page.pdl b/pdl/domains/Page.pdl
+index c713e453..c9c966b6 100644
+--- a/pdl/domains/Page.pdl
++++ b/pdl/domains/Page.pdl
+@@ -140,6 +140,7 @@ domain Page
+       digital-credentials-create
+       digital-credentials-get
+       direct-sockets
++      direct-sockets-multicast
+       direct-sockets-private
+       display-capture
+       document-domain
+```
+
 ## Roll protocol to r1510116 — _2025-09-03T09:48:36.000Z_
-######  Diff: [`1ad29d6...37adbb3`](https://github.com/ChromeDevTools/devtools-protocol/compare/1ad29d6...37adbb3)
+######  Diff: [`1ad29d6...bb9208f`](https://github.com/ChromeDevTools/devtools-protocol/compare/1ad29d6...bb9208f)
 
 ```diff
 @@ domains/Autofill.pdl:22 @@ experimental domain Autofill
@@ -41916,22 +41944,4 @@ index d4102f5c..6285d9b6 100644
  
    # Fired when a prerender attempt is completed.
    experimental event prerenderAttemptCompleted
-```
-
-## Roll protocol to r1085283 — _2022-12-20T04:28:00.000Z_
-######  Diff: [`1ff2246...9e8e363`](https://github.com/ChromeDevTools/devtools-protocol/compare/1ff2246...9e8e363)
-
-```diff
-@@ browser_protocol.pdl:9381 @@ experimental domain Storage
-     parameters
-       string ownerOrigin
- 
-+  # Resets the budget for `ownerOrigin` by clearing all budget withdrawals.
-+  experimental command resetSharedStorageBudget
-+    parameters
-+      string ownerOrigin
-+
-   # Enables/disables issuing of sharedStorageAccessed events.
-   experimental command setSharedStorageTracking
-     parameters
 ```
