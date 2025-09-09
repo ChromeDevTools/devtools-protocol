@@ -1,7 +1,23 @@
 
 
+## Roll protocol to r1512837 — _2025-09-09T04:31:23.000Z_
+######  Diff: [`f2eea64...7729820`](https://github.com/ChromeDevTools/devtools-protocol/compare/f2eea64...7729820)
+
+```diff
+@@ domains/Preload.pdl:40 @@ experimental domain Preload
+       optional RuleSetErrorType errorType
+       # TODO(https://crbug.com/1425354): Replace this property with structured error.
+       deprecated optional string errorMessage
++      # For more details, see:
++      # https://github.com/WICG/nav-speculation/blob/main/speculation-rules-tags.md
++      optional string tag
+ 
+   type RuleSetErrorType extends string
+     enum
+```
+
 ## Roll protocol to r1511308 — _2025-09-05T04:31:05.000Z_
-######  Diff: [`bb9208f...0373139`](https://github.com/ChromeDevTools/devtools-protocol/compare/bb9208f...0373139)
+######  Diff: [`bb9208f...f2eea64`](https://github.com/ChromeDevTools/devtools-protocol/compare/bb9208f...f2eea64)
 
 ```diff
 @@ domains/PWA.pdl:53 @@ experimental domain PWA
@@ -41930,18 +41946,4 @@ index d4102f5c..6285d9b6 100644
        # Whether the result should contain `webDriverValue`, serialized according to
        # https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but
        # resulting `objectId` is still provided.
-```
-
-## Roll protocol to r1085790 — _2022-12-21T04:28:10.000Z_
-######  Diff: [`9e8e363...56c97c0`](https://github.com/ChromeDevTools/devtools-protocol/compare/9e8e363...56c97c0)
-
-```diff
-@@ browser_protocol.pdl:8553 @@ domain Page
-       ActivationNavigationParameterMismatch
-       ActivatedInBackground
-       EmbedderHostDisallowed
-+      ActivationNavigationDestroyedBeforeSuccess
- 
-   # Fired when a prerender attempt is completed.
-   experimental event prerenderAttemptCompleted
 ```

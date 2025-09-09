@@ -17996,6 +17996,11 @@ export namespace Protocol {
              * @deprecated
              */
             errorMessage?: string;
+            /**
+             * For more details, see:
+             * https://github.com/WICG/nav-speculation/blob/main/speculation-rules-tags.md
+             */
+            tag?: string;
         }
 
         export type RuleSetErrorType = ('SourceIsNotJsonObject' | 'InvalidRulesSkipped' | 'InvalidRulesetLevelTag');
