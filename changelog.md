@@ -1,7 +1,76 @@
 
 
+## Roll protocol to r1514079 — _2025-09-11T04:31:06.000Z_
+######  Diff: [`60a842d...fbf125f`](https://github.com/ChromeDevTools/devtools-protocol/compare/60a842d...fbf125f)
+
+```diff
+@@ domains/Accessibility.pdl:110 @@ experimental domain Accessibility
+   # - from 'live' to 'root': attributes which apply to nodes in live regions
+   # - from 'autocomplete' to 'valuetext': attributes which apply to widgets
+   # - from 'checked' to 'selected': states which apply to widgets
+-  # - from 'activedescendant' to 'owns' - relationships between elements other than parent/child/sibling.
++  # - from 'activedescendant' to 'owns': relationships between elements other than parent/child/sibling
++  # - from 'activeFullscreenElement' to 'uninteresting': reasons why this noode is hidden
+   type AXPropertyName extends string
+     enum
+       actions
+@@ -154,6 +155,25 @@ experimental domain Accessibility
+       labelledby
+       owns
+       url
++      # LINT.IfChange(AXIgnoredReason)
++      activeFullscreenElement
++      activeModalDialog
++      activeAriaModalDialog
++      ariaHiddenElement
++      ariaHiddenSubtree
++      emptyAlt
++      emptyText
++      inertElement
++      inertSubtree
++      labelContainer
++      labelFor
++      notRendered
++      notVisible
++      presentationalRole
++      probablyPresentational
++      inactiveCarouselTabContent
++      uninteresting
++      # LINT.ThenChange(//third_party/blink/renderer/modules/accessibility/ax_enums.cc:AXIgnoredReason)
+ 
+   # A node in the accessibility tree.
+   type AXNode extends object
+diff --git a/pdl/domains/DOM.pdl b/pdl/domains/DOM.pdl
+index 5a16c329..71a50b6f 100644
+--- a/pdl/domains/DOM.pdl
++++ b/pdl/domains/DOM.pdl
+@@ -177,6 +177,7 @@ domain DOM
+       optional CompatibilityMode compatibilityMode
+       optional BackendNode assignedSlot
+       experimental optional boolean isScrollable
++      experimental optional boolean affectedByStartingStyles
+ 
+   # A structure to hold the top-level node of a detached tree and an array of its retained descendants.
+   type DetachedElementInfo extends object
+@@ -898,6 +899,14 @@ domain DOM
+       # If the node is scrollable.
+       boolean isScrollable
+ 
++  # Fired when a node's starting styles changes.
++  experimental event affectedByStartingStylesFlagUpdated
++    parameters
++      # The id of the node.
++      DOM.NodeId nodeId
++      # If the node has starting styles.
++      boolean affectedByStartingStyles
++
+   # Called when a pseudo element is removed from an element.
+   experimental event pseudoElementRemoved
+     parameters
+```
+
 ## Roll protocol to r1512837 — _2025-09-09T04:31:23.000Z_
-######  Diff: [`f2eea64...7729820`](https://github.com/ChromeDevTools/devtools-protocol/compare/f2eea64...7729820)
+######  Diff: [`f2eea64...60a842d`](https://github.com/ChromeDevTools/devtools-protocol/compare/f2eea64...60a842d)
 
 ```diff
 @@ domains/Preload.pdl:40 @@ experimental domain Preload
@@ -41926,24 +41995,4 @@ index d4102f5c..6285d9b6 100644
      returns
        # Array of cookie objects.
        array of Cookie cookies
-```
-
-## Roll protocol to r1087487 — _2022-12-29T04:28:09.000Z_
-######  Diff: [`56c97c0...1e60c0d`](https://github.com/ChromeDevTools/devtools-protocol/compare/56c97c0...1e60c0d)
-
-```diff
-@@ js_protocol.pdl:1402 @@ domain Runtime
-       optional string objectGroup
-       # Whether to throw an exception if side effect cannot be ruled out during evaluation.
-       experimental optional boolean throwOnSideEffect
-+      # An alternative way to specify the execution context to call function on.
-+      # Compared to contextId that may be reused across processes, this is guaranteed to be
-+      # system-unique, so it can be used to prevent accidental function call
-+      # in context different than intended (e.g. as a result of navigation across process
-+      # boundaries).
-+      # This is mutually exclusive with `executionContextId`.
-+      experimental optional string uniqueContextId
-       # Whether the result should contain `webDriverValue`, serialized according to
-       # https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but
-       # resulting `objectId` is still provided.
 ```

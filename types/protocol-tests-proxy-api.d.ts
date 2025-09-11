@@ -2002,6 +2002,14 @@ export namespace ProtocolTestsProxyApi {
         onceScrollableFlagUpdated(eventMatcher?: (event: { params: Protocol.DOM.ScrollableFlagUpdatedEvent }) => boolean): Promise<{ params: Protocol.DOM.ScrollableFlagUpdatedEvent }>;
 
         /**
+         * Fired when a node's starting styles changes.
+         * @experimental
+         */
+        onAffectedByStartingStylesFlagUpdated(listener: (event: { params: Protocol.DOM.AffectedByStartingStylesFlagUpdatedEvent }) => void): void;
+        offAffectedByStartingStylesFlagUpdated(listener: (event: { params: Protocol.DOM.AffectedByStartingStylesFlagUpdatedEvent }) => void): void;
+        onceAffectedByStartingStylesFlagUpdated(eventMatcher?: (event: { params: Protocol.DOM.AffectedByStartingStylesFlagUpdatedEvent }) => boolean): Promise<{ params: Protocol.DOM.AffectedByStartingStylesFlagUpdatedEvent }>;
+
+        /**
          * Called when a pseudo element is removed from an element.
          * @experimental
          */

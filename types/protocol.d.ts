@@ -2901,9 +2901,10 @@ export namespace Protocol {
          * - from 'live' to 'root': attributes which apply to nodes in live regions
          * - from 'autocomplete' to 'valuetext': attributes which apply to widgets
          * - from 'checked' to 'selected': states which apply to widgets
-         * - from 'activedescendant' to 'owns' - relationships between elements other than parent/child/sibling.
+         * - from 'activedescendant' to 'owns': relationships between elements other than parent/child/sibling
+         * - from 'activeFullscreenElement' to 'uninteresting': reasons why this noode is hidden
          */
-        export type AXPropertyName = ('actions' | 'busy' | 'disabled' | 'editable' | 'focusable' | 'focused' | 'hidden' | 'hiddenRoot' | 'invalid' | 'keyshortcuts' | 'settable' | 'roledescription' | 'live' | 'atomic' | 'relevant' | 'root' | 'autocomplete' | 'hasPopup' | 'level' | 'multiselectable' | 'orientation' | 'multiline' | 'readonly' | 'required' | 'valuemin' | 'valuemax' | 'valuetext' | 'checked' | 'expanded' | 'modal' | 'pressed' | 'selected' | 'activedescendant' | 'controls' | 'describedby' | 'details' | 'errormessage' | 'flowto' | 'labelledby' | 'owns' | 'url');
+        export type AXPropertyName = ('actions' | 'busy' | 'disabled' | 'editable' | 'focusable' | 'focused' | 'hidden' | 'hiddenRoot' | 'invalid' | 'keyshortcuts' | 'settable' | 'roledescription' | 'live' | 'atomic' | 'relevant' | 'root' | 'autocomplete' | 'hasPopup' | 'level' | 'multiselectable' | 'orientation' | 'multiline' | 'readonly' | 'required' | 'valuemin' | 'valuemax' | 'valuetext' | 'checked' | 'expanded' | 'modal' | 'pressed' | 'selected' | 'activedescendant' | 'controls' | 'describedby' | 'details' | 'errormessage' | 'flowto' | 'labelledby' | 'owns' | 'url' | 'activeFullscreenElement' | 'activeModalDialog' | 'activeAriaModalDialog' | 'ariaHiddenElement' | 'ariaHiddenSubtree' | 'emptyAlt' | 'emptyText' | 'inertElement' | 'inertSubtree' | 'labelContainer' | 'labelFor' | 'notRendered' | 'notVisible' | 'presentationalRole' | 'probablyPresentational' | 'inactiveCarouselTabContent' | 'uninteresting');
 
         /**
          * A node in the accessibility tree.
@@ -6896,6 +6897,10 @@ export namespace Protocol {
              * @experimental
              */
             isScrollable?: boolean;
+            /**
+             * @experimental
+             */
+            affectedByStartingStyles?: boolean;
         }
 
         /**
@@ -7943,6 +7948,21 @@ export namespace Protocol {
              * If the node is scrollable.
              */
             isScrollable: boolean;
+        }
+
+        /**
+         * Fired when a node's starting styles changes.
+         * @experimental
+         */
+        export interface AffectedByStartingStylesFlagUpdatedEvent {
+            /**
+             * The id of the node.
+             */
+            nodeId: DOM.NodeId;
+            /**
+             * If the node has starting styles.
+             */
+            affectedByStartingStyles: boolean;
         }
 
         /**

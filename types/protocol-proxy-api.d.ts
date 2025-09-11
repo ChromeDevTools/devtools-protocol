@@ -1888,6 +1888,12 @@ export namespace ProtocolProxyApi {
         on(event: 'scrollableFlagUpdated', listener: (params: Protocol.DOM.ScrollableFlagUpdatedEvent) => void): void;
 
         /**
+         * Fired when a node's starting styles changes.
+         * @experimental
+         */
+        on(event: 'affectedByStartingStylesFlagUpdated', listener: (params: Protocol.DOM.AffectedByStartingStylesFlagUpdatedEvent) => void): void;
+
+        /**
          * Called when a pseudo element is removed from an element.
          * @experimental
          */
