@@ -1,7 +1,52 @@
 
 
+## Roll protocol to r1515189 — _2025-09-13T04:29:50.000Z_
+######  Diff: [`0dba65c...622cf99`](https://github.com/ChromeDevTools/devtools-protocol/compare/0dba65c...622cf99)
+
+```diff
+@@ domains/IndexedDB.pdl:159 @@ experimental domain IndexedDB
+       string databaseName
+       # Object store name.
+       string objectStoreName
+-      # Index name, empty string for object store data requests.
+-      string indexName
++      # Index name. If not specified, it performs an object store data request.
++      optional string indexName
+       # Number of records to skip.
+       integer skipCount
+       # Number of records to fetch.
+diff --git a/pdl/domains/Page.pdl b/pdl/domains/Page.pdl
+index c9c966b6..c1708696 100644
+--- a/pdl/domains/Page.pdl
++++ b/pdl/domains/Page.pdl
+@@ -1577,8 +1577,10 @@ domain Page
+       WebXR
+       SharedWorker
+       SharedWorkerMessage
++      SharedWorkerWithNoActiveClient
+       WebLocks
+       WebHID
++      WebBluetooth
+       WebShare
+       RequestedStorageAccessGrant
+       WebNfc
+diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
+index 73da9149..4a386334 100644
+--- a/pdl/js_protocol.pdl
++++ b/pdl/js_protocol.pdl
+@@ -794,6 +794,8 @@ experimental domain HeapProfiler
+       # Average sample interval in bytes. Poisson distribution is used for the intervals. The
+       # default value is 32768 bytes.
+       optional number samplingInterval
++      # Maximum stack depth. The default value is 128.
++      optional number stackDepth
+       # By default, the sampling heap profiler reports only objects which are
+       # still alive when the profile is returned via getSamplingProfile or
+       # stopSampling, which is useful for determining what functions contribute
+```
+
 ## Roll protocol to r1514079 — _2025-09-11T04:31:06.000Z_
-######  Diff: [`60a842d...fbf125f`](https://github.com/ChromeDevTools/devtools-protocol/compare/60a842d...fbf125f)
+######  Diff: [`60a842d...0dba65c`](https://github.com/ChromeDevTools/devtools-protocol/compare/60a842d...0dba65c)
 
 ```diff
 @@ domains/Accessibility.pdl:110 @@ experimental domain Accessibility
@@ -41979,20 +42024,4 @@ index d4102f5c..6285d9b6 100644
  
    # Fired when a prerender attempt is completed.
    experimental event prerenderAttemptCompleted
-```
-
-## Roll protocol to r1087713 — _2022-12-30T04:27:43.000Z_
-######  Diff: [`1e60c0d...47facb7`](https://github.com/ChromeDevTools/devtools-protocol/compare/1e60c0d...47facb7)
-
-```diff
-@@ browser_protocol.pdl:5867 @@ domain Network
- 
-   # Returns all browser cookies. Depending on the backend support, will return detailed cookie
-   # information in the `cookies` field.
--  command getAllCookies
-+  # Deprecated. Use Storage.getCookies instead.
-+  deprecated command getAllCookies
-     returns
-       # Array of cookie objects.
-       array of Cookie cookies
 ```

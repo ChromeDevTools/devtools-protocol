@@ -12858,7 +12858,8 @@
                         },
                         {
                             "name": "indexName",
-                            "description": "Index name, empty string for object store data requests.",
+                            "description": "Index name. If not specified, it performs an object store data request.",
+                            "optional": true,
                             "type": "string"
                         },
                         {
@@ -21765,8 +21766,10 @@
                         "WebXR",
                         "SharedWorker",
                         "SharedWorkerMessage",
+                        "SharedWorkerWithNoActiveClient",
                         "WebLocks",
                         "WebHID",
+                        "WebBluetooth",
                         "WebShare",
                         "RequestedStorageAccessGrant",
                         "WebNfc",
