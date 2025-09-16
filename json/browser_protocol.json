@@ -15927,7 +15927,7 @@
                         },
                         {
                             "name": "expires",
-                            "description": "Cookie expiration date as the number of seconds since the UNIX epoch.",
+                            "description": "Cookie expiration date as the number of seconds since the UNIX epoch.\nThe value is set to -1 if the expiry date is not set.\nThe value can be null for values that cannot be represented in\nJSON (\u00b1Inf).",
                             "type": "number"
                         },
                         {

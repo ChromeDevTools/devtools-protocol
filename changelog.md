@@ -1,7 +1,23 @@
 
 
+## Roll protocol to r1515996 — _2025-09-16T13:32:58.000Z_
+######  Diff: [`54189ca...49b0ae5`](https://github.com/ChromeDevTools/devtools-protocol/compare/54189ca...49b0ae5)
+
+```diff
+@@ domains/Network.pdl:622 @@ domain Network
+       # Cookie path.
+       string path
+       # Cookie expiration date as the number of seconds since the UNIX epoch.
++      # The value is set to -1 if the expiry date is not set.
++      # The value can be null for values that cannot be represented in
++      # JSON (±Inf).
+       number expires
+       # Cookie size.
+       integer size
+```
+
 ## Roll protocol to r1515189 — _2025-09-13T04:29:50.000Z_
-######  Diff: [`0dba65c...622cf99`](https://github.com/ChromeDevTools/devtools-protocol/compare/0dba65c...622cf99)
+######  Diff: [`0dba65c...262032f`](https://github.com/ChromeDevTools/devtools-protocol/compare/0dba65c...262032f)
 
 ```diff
 @@ domains/IndexedDB.pdl:159 @@ experimental domain IndexedDB
@@ -41995,33 +42011,4 @@ index d4102f5c..6285d9b6 100644
        smart-card
        storage-access
        sync-xhr
-```
-
-## Roll protocol to r1088570 — _2023-01-04T04:27:47.000Z_
-######  Diff: [`0400c45...253af7d`](https://github.com/ChromeDevTools/devtools-protocol/compare/0400c45...253af7d)
-
-```diff
-@@ browser_protocol.pdl:1092 @@ domain Browser
-       protectedMediaIdentifier
-       sensors
-       storageAccess
-+      topLevelStorageAccess
-       videoCapture
-       videoCapturePanTiltZoom
-       wakeLockScreen
-```
-
-## Roll protocol to r1087818 — _2022-12-31T04:27:46.000Z_
-######  Diff: [`47facb7...0400c45`](https://github.com/ChromeDevTools/devtools-protocol/compare/47facb7...0400c45)
-
-```diff
-@@ browser_protocol.pdl:8555 @@ domain Page
-       ActivatedInBackground
-       EmbedderHostDisallowed
-       ActivationNavigationDestroyedBeforeSuccess
-+      TabClosedByUserGesture
-+      TabClosedWithoutUserGesture
- 
-   # Fired when a prerender attempt is completed.
-   experimental event prerenderAttemptCompleted
 ```
