@@ -2362,7 +2362,8 @@
                                 "arraybuffer",
                                 "dataview",
                                 "webassemblymemory",
-                                "wasmvalue"
+                                "wasmvalue",
+                                "trustedtype"
                             ]
                         },
                         {
@@ -2480,7 +2481,8 @@
                                 "arraybuffer",
                                 "dataview",
                                 "webassemblymemory",
-                                "wasmvalue"
+                                "wasmvalue",
+                                "trustedtype"
                             ]
                         },
                         {
@@ -2575,7 +2577,8 @@
                                 "arraybuffer",
                                 "dataview",
                                 "webassemblymemory",
-                                "wasmvalue"
+                                "wasmvalue",
+                                "trustedtype"
                             ]
                         }
                     ]

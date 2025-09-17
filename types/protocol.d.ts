@@ -1683,6 +1683,7 @@ export namespace Protocol {
             Dataview = 'dataview',
             Webassemblymemory = 'webassemblymemory',
             Wasmvalue = 'wasmvalue',
+            Trustedtype = 'trustedtype',
         }
 
         /**
@@ -1698,7 +1699,7 @@ export namespace Protocol {
              * NOTE: If you change anything here, make sure to also update
              * `subtype` in `ObjectPreview` and `PropertyPreview` below.
              */
-            subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'dataview' | 'webassemblymemory' | 'wasmvalue');
+            subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'dataview' | 'webassemblymemory' | 'wasmvalue' | 'trustedtype');
             /**
              * Object class (constructor) name. Specified for `object` type values only.
              */
@@ -1784,6 +1785,7 @@ export namespace Protocol {
             Dataview = 'dataview',
             Webassemblymemory = 'webassemblymemory',
             Wasmvalue = 'wasmvalue',
+            Trustedtype = 'trustedtype',
         }
 
         /**
@@ -1798,7 +1800,7 @@ export namespace Protocol {
             /**
              * Object subtype hint. Specified for `object` type values only.
              */
-            subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'dataview' | 'webassemblymemory' | 'wasmvalue');
+            subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'dataview' | 'webassemblymemory' | 'wasmvalue' | 'trustedtype');
             /**
              * String representation of the object.
              */
@@ -1849,6 +1851,7 @@ export namespace Protocol {
             Dataview = 'dataview',
             Webassemblymemory = 'webassemblymemory',
             Wasmvalue = 'wasmvalue',
+            Trustedtype = 'trustedtype',
         }
 
         /**
@@ -1874,7 +1877,7 @@ export namespace Protocol {
             /**
              * Object subtype hint. Specified for `object` type values only.
              */
-            subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'dataview' | 'webassemblymemory' | 'wasmvalue');
+            subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'dataview' | 'webassemblymemory' | 'wasmvalue' | 'trustedtype');
         }
 
         /**
@@ -12256,6 +12259,11 @@ export namespace Protocol {
              * @experimental
              */
             isSameSite?: boolean;
+            /**
+             * True when the resource request is ad-related.
+             * @experimental
+             */
+            isAdRelated?: boolean;
         }
 
         /**

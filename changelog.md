@@ -1,7 +1,53 @@
 
 
+## Roll protocol to r1516431 — _2025-09-17T04:30:57.000Z_
+######  Diff: [`0cac6fd...86d499e`](https://github.com/ChromeDevTools/devtools-protocol/compare/0cac6fd...86d499e)
+
+```diff
+@@ domains/Network.pdl:211 @@ domain Network
+       # True if this resource request is considered to be the 'same site' as the
+       # request corresponding to the main frame.
+       experimental optional boolean isSameSite
++      # True when the resource request is ad-related.
++      experimental optional boolean isAdRelated
+ 
+   # Details of a signed certificate timestamp (SCT).
+   type SignedCertificateTimestamp extends object
+diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
+index 4a386334..bc86332d 100644
+--- a/pdl/js_protocol.pdl
++++ b/pdl/js_protocol.pdl
+@@ -1142,6 +1142,8 @@ domain Runtime
+         dataview
+         webassemblymemory
+         wasmvalue
++        # blink's subtypes.
++        trustedtype
+       # Object class (constructor) name. Specified for `object` type values only.
+       optional string className
+       # Remote object value in case of primitive values or JSON values (if it was requested).
+@@ -1203,6 +1205,8 @@ domain Runtime
+         dataview
+         webassemblymemory
+         wasmvalue
++        # blink's subtypes.
++        trustedtype
+       # String representation of the object.
+       optional string description
+       # True iff some of the properties or entries of the original object did not fit.
+@@ -1252,6 +1256,8 @@ domain Runtime
+         dataview
+         webassemblymemory
+         wasmvalue
++        # blink's subtypes.
++        trustedtype
+ 
+   experimental type EntryPreview extends object
+     properties
+```
+
 ## Roll protocol to r1515996 — _2025-09-16T13:32:58.000Z_
-######  Diff: [`54189ca...49b0ae5`](https://github.com/ChromeDevTools/devtools-protocol/compare/54189ca...49b0ae5)
+######  Diff: [`54189ca...0cac6fd`](https://github.com/ChromeDevTools/devtools-protocol/compare/54189ca...0cac6fd)
 
 ```diff
 @@ domains/Network.pdl:622 @@ domain Network
@@ -41990,25 +42036,4 @@ index d4102f5c..6285d9b6 100644
  
    # Issued when all executionContexts were cleared in browser
    event executionContextsCleared
-```
-
-## Roll protocol to r1089107 — _2023-01-05T04:28:22.000Z_
-######  Diff: [`253af7d...6eb86f8`](https://github.com/ChromeDevTools/devtools-protocol/compare/253af7d...6eb86f8)
-
-```diff
-@@ browser_protocol.pdl:7218 @@ domain Page
-       otp-credentials
-       payment
-       picture-in-picture
-+      private-aggregation
-       publickey-credentials-get
-       run-ad-auction
-       screen-wake-lock
-       serial
-       shared-autofill
-       shared-storage
-+      shared-storage-select-url
-       smart-card
-       storage-access
-       sync-xhr
 ```
