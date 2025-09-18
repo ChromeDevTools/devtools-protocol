@@ -1,7 +1,43 @@
 
 
+## Roll protocol to r1517051 — _2025-09-18T04:31:09.000Z_
+######  Diff: [`86cf20a...a0d1f79`](https://github.com/ChromeDevTools/devtools-protocol/compare/86cf20a...a0d1f79)
+
+```diff
+@@ domains/Audits.pdl:309 @@ experimental domain Audits
+       WriteErrorInsufficientResources
+       WriteErrorInvalidMatchField
+       WriteErrorInvalidStructuredHeader
++      WriteErrorInvalidTTLField
+       WriteErrorNavigationRequest
+       WriteErrorNoMatchField
++      WriteErrorNonIntegerTTLField
+       WriteErrorNonListMatchDestField
+       WriteErrorNonSecureContext
+       WriteErrorNonStringIdField
+diff --git a/pdl/domains/Page.pdl b/pdl/domains/Page.pdl
+index c1708696..bc07b8a2 100644
+--- a/pdl/domains/Page.pdl
++++ b/pdl/domains/Page.pdl
+@@ -1768,3 +1768,14 @@ domain Page
+   experimental command setPrerenderingAllowed
+     parameters
+       boolean isAllowed
++
++  # Enable/disable prewarming triggers manually.
++  #
++  # This command manages DSE Prewarming triggers. While a client is connected,
++  # prewarming triggers are disabled by default. This command can change this
++  # default behavior to allow the triggers, or to disallow them again.
++  # See https://chromestatus.com/feature/6266608741908480 for more details on
++  # the DSE Prewarming feature.
++  experimental command setPrewarmingAllowed
++    parameters
++      boolean isAllowed
+```
+
 ## Roll protocol to r1516431 — _2025-09-17T04:30:57.000Z_
-######  Diff: [`0cac6fd...86d499e`](https://github.com/ChromeDevTools/devtools-protocol/compare/0cac6fd...86d499e)
+######  Diff: [`0cac6fd...86cf20a`](https://github.com/ChromeDevTools/devtools-protocol/compare/0cac6fd...86cf20a)
 
 ```diff
 @@ domains/Network.pdl:211 @@ domain Network
@@ -42019,21 +42055,4 @@ index d4102f5c..6285d9b6 100644
        IdTokenHttpNotFound
        IdTokenNoResponse
        IdTokenInvalidResponse
-```
-
-## Roll protocol to r1089613 — _2023-01-06T04:28:04.000Z_
-######  Diff: [`6eb86f8...e97a9e4`](https://github.com/ChromeDevTools/devtools-protocol/compare/6eb86f8...e97a9e4)
-
-```diff
-@@ js_protocol.pdl:1741 @@ domain Runtime
-   event executionContextDestroyed
-     parameters
-       # Id of the destroyed context
--      ExecutionContextId executionContextId
-+      deprecated ExecutionContextId executionContextId
-+      # Unique Id of the destroyed context
-+      experimental string executionContextUniqueId
- 
-   # Issued when all executionContexts were cleared in browser
-   event executionContextsCleared
 ```
