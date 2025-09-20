@@ -1,7 +1,91 @@
 
 
+## Roll protocol to r1518305 — _2025-09-20T04:30:57.000Z_
+######  Diff: [`418ab00...4373a07`](https://github.com/ChromeDevTools/devtools-protocol/compare/418ab00...4373a07)
+
+```diff
+@@ domains/Network.pdl:1087 @@ domain Network
+   # Disables network tracking, prevents network events from being sent to the client.
+   command disable
+ 
+-  # Activates emulation of network conditions.
+-  command emulateNetworkConditions
++  experimental type NetworkConditions extends object
++    properties
++      # Only matching requests will be affected by these conditions. Patterns use the URLPattern constructor string
++      # syntax (https://urlpattern.spec.whatwg.org/). If the pattern is empty, all requests are matched (including p2p
++      # connections).
++      string urlPattern
++      # Minimum latency from request sent to response headers received (ms).
++      number latency
++      # Maximal aggregated download throughput (bytes/sec). -1 disables download throttling.
++      number downloadThroughput
++      # Maximal aggregated upload throughput (bytes/sec).  -1 disables upload throttling.
++      number uploadThroughput
++      # Connection type if known.
++      optional ConnectionType connectionType
++      # WebRTC packet loss (percent, 0-100). 0 disables packet loss emulation, 100 drops all the packets.
++      optional number packetLoss
++      # WebRTC packet queue length (packet). 0 removes any queue length limitations.
++      optional integer packetQueueLength
++      # WebRTC packetReordering feature.
++      optional boolean packetReordering
++
++  # Activates emulation of network conditions. This command is deprecated in favor of the emulateNetworkConditionsByRule
++  # and overrideNetworkState commands, which can be used together to the same effect.
++  deprecated command emulateNetworkConditions
+     parameters
+       # True to emulate internet disconnection.
+       boolean offline
+@@ -1107,6 +1129,34 @@ domain Network
+       # WebRTC packetReordering feature.
+       experimental optional boolean packetReordering
+ 
++  # Activates emulation of network conditions for individual requests using URL match patterns.
++  experimental command emulateNetworkConditionsByRule
++    parameters
++      # True to emulate internet disconnection.
++      boolean offline
++      # Configure conditions for matching requests. If multiple entries match a request, the first entry wins.  Global
++      # conditions can be configured by leaving the urlPattern for the conditions empty. These global conditions are
++      # also applied for throttling of p2p connections.
++      array of NetworkConditions matchedNetworkConditions
++    returns
++      # An id for each entry in matchedNetworkConditions. The id will be included in the requestWillBeSentExtraInfo for
++      # requests affected by a rule.
++      array of string ruleIds
++
++  # Override the state of navigator.onLine and navigator.connection.
++  experimental command overrideNetworkState
++    parameters
++      # True to emulate internet disconnection.
++      boolean offline
++      # Minimum latency from request sent to response headers received (ms).
++      number latency
++      # Maximal aggregated download throughput (bytes/sec). -1 disables download throttling.
++      number downloadThroughput
++      # Maximal aggregated upload throughput (bytes/sec).  -1 disables upload throttling.
++      number uploadThroughput
++      # Connection type if known.
++      optional ConnectionType connectionType
++
+   # Enables network tracking, network events will now be delivered to the client.
+   command enable
+     parameters
+@@ -1776,6 +1826,9 @@ domain Network
+       optional ClientSecurityState clientSecurityState
+       # Whether the site has partitioned cookies stored in a partition different than the current one.
+       optional boolean siteHasCookieInOtherPartition
++      # The network conditions id if this request was affected by network conditions configured via
++      # emulateNetworkConditionsByRule.
++      optional string appliedNetworkConditionsId
+ 
+   # Fired when additional information about a responseReceived event is available from the network
+   # stack. Not every responseReceived event will have an additional responseReceivedExtraInfo for
+```
+
 ## Roll protocol to r1517051 — _2025-09-18T04:31:09.000Z_
-######  Diff: [`86cf20a...a0d1f79`](https://github.com/ChromeDevTools/devtools-protocol/compare/86cf20a...a0d1f79)
+######  Diff: [`86cf20a...418ab00`](https://github.com/ChromeDevTools/devtools-protocol/compare/86cf20a...418ab00)
 
 ```diff
 @@ domains/Audits.pdl:309 @@ experimental domain Audits
@@ -42033,26 +42117,4 @@ index d4102f5c..6285d9b6 100644
 +      window-management
        window-placement
        xr-spatial-tracking
-```
-
-## Roll protocol to r1090008 — _2023-01-07T04:27:59.000Z_
-######  Diff: [`e97a9e4...aef3081`](https://github.com/ChromeDevTools/devtools-protocol/compare/e97a9e4...aef3081)
-
-```diff
-@@ browser_protocol.pdl:843 @@ experimental domain Audits
-       WellKnownHttpNotFound
-       WellKnownNoResponse
-       WellKnownInvalidResponse
-+      WellKnownListEmpty
-       ConfigNotInWellKnown
-       WellKnownTooBig
-       ConfigHttpNotFound
-@@ -857,6 +858,7 @@ experimental domain Audits
-       AccountsHttpNotFound
-       AccountsNoResponse
-       AccountsInvalidResponse
-+      AccountsListEmpty
-       IdTokenHttpNotFound
-       IdTokenNoResponse
-       IdTokenInvalidResponse
 ```

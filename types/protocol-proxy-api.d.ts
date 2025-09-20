@@ -3030,9 +3030,23 @@ export namespace ProtocolProxyApi {
         disable(): Promise<void>;
 
         /**
-         * Activates emulation of network conditions.
+         * Activates emulation of network conditions. This command is deprecated in favor of the emulateNetworkConditionsByRule
+         * and overrideNetworkState commands, which can be used together to the same effect.
+         * @deprecated
          */
         emulateNetworkConditions(params: Protocol.Network.EmulateNetworkConditionsRequest): Promise<void>;
+
+        /**
+         * Activates emulation of network conditions for individual requests using URL match patterns.
+         * @experimental
+         */
+        emulateNetworkConditionsByRule(params: Protocol.Network.EmulateNetworkConditionsByRuleRequest): Promise<Protocol.Network.EmulateNetworkConditionsByRuleResponse>;
+
+        /**
+         * Override the state of navigator.onLine and navigator.connection.
+         * @experimental
+         */
+        overrideNetworkState(params: Protocol.Network.OverrideNetworkStateRequest): Promise<void>;
 
         /**
          * Enables network tracking, network events will now be delivered to the client.

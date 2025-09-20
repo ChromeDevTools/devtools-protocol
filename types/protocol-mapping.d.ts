@@ -4164,10 +4164,28 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
-         * Activates emulation of network conditions.
+         * Activates emulation of network conditions. This command is deprecated in favor of the emulateNetworkConditionsByRule
+         * and overrideNetworkState commands, which can be used together to the same effect.
+         * @deprecated
          */
         'Network.emulateNetworkConditions': {
             paramsType: [Protocol.Network.EmulateNetworkConditionsRequest];
+            returnType: void;
+        };
+        /**
+         * Activates emulation of network conditions for individual requests using URL match patterns.
+         * @experimental
+         */
+        'Network.emulateNetworkConditionsByRule': {
+            paramsType: [Protocol.Network.EmulateNetworkConditionsByRuleRequest];
+            returnType: Protocol.Network.EmulateNetworkConditionsByRuleResponse;
+        };
+        /**
+         * Override the state of navigator.onLine and navigator.connection.
+         * @experimental
+         */
+        'Network.overrideNetworkState': {
+            paramsType: [Protocol.Network.OverrideNetworkStateRequest];
             returnType: void;
         };
         /**
