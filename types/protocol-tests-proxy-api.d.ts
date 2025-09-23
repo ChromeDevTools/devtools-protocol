@@ -4351,18 +4351,6 @@ export namespace ProtocolTestsProxyApi {
          */
         setPrerenderingAllowed(params: Protocol.Page.SetPrerenderingAllowedRequest): Promise<{id: number, result: void, sessionId: string}>;
 
-        /**
-         * Enable/disable prewarming triggers manually.
-         * 
-         * This command manages DSE Prewarming triggers. While a client is connected,
-         * prewarming triggers are disabled by default. This command can change this
-         * default behavior to allow the triggers, or to disallow them again.
-         * See https://chromestatus.com/feature/6266608741908480 for more details on
-         * the DSE Prewarming feature.
-         * @experimental
-         */
-        setPrewarmingAllowed(params: Protocol.Page.SetPrewarmingAllowedRequest): Promise<{id: number, result: void, sessionId: string}>;
-
         onDomContentEventFired(listener: (event: { params: Protocol.Page.DomContentEventFiredEvent }) => void): void;
         offDomContentEventFired(listener: (event: { params: Protocol.Page.DomContentEventFiredEvent }) => void): void;
         onceDomContentEventFired(eventMatcher?: (event: { params: Protocol.Page.DomContentEventFiredEvent }) => boolean): Promise<{ params: Protocol.Page.DomContentEventFiredEvent }>;

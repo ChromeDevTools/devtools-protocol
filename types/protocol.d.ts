@@ -17444,10 +17444,6 @@ export namespace Protocol {
             isAllowed: boolean;
         }
 
-        export interface SetPrewarmingAllowedRequest {
-            isAllowed: boolean;
-        }
-
         export interface DomContentEventFiredEvent {
             timestamp: Network.MonotonicTime;
         }

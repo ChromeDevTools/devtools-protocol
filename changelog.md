@@ -1,7 +1,28 @@
 
 
+## Roll protocol to r1519099 — _2025-09-23T04:31:20.000Z_
+######  Diff: [`78aae66...ddea858`](https://github.com/ChromeDevTools/devtools-protocol/compare/78aae66...ddea858)
+
+```diff
+@@ domains/Page.pdl:1768 @@ domain Page
+   experimental command setPrerenderingAllowed
+     parameters
+       boolean isAllowed
+-
+-  # Enable/disable prewarming triggers manually.
+-  #
+-  # This command manages DSE Prewarming triggers. While a client is connected,
+-  # prewarming triggers are disabled by default. This command can change this
+-  # default behavior to allow the triggers, or to disallow them again.
+-  # See https://chromestatus.com/feature/6266608741908480 for more details on
+-  # the DSE Prewarming feature.
+-  experimental command setPrewarmingAllowed
+-    parameters
+-      boolean isAllowed
+```
+
 ## Roll protocol to r1518305 — _2025-09-20T04:30:57.000Z_
-######  Diff: [`418ab00...4373a07`](https://github.com/ChromeDevTools/devtools-protocol/compare/418ab00...4373a07)
+######  Diff: [`418ab00...78aae66`](https://github.com/ChromeDevTools/devtools-protocol/compare/418ab00...78aae66)
 
 ```diff
 @@ domains/Network.pdl:1087 @@ domain Network
@@ -42095,26 +42116,4 @@ index d4102f5c..6285d9b6 100644
  
    # Depending on the concrete errorType, different properties are set.
    type GenericIssueDetails extends object
-```
-
-## Roll protocol to r1092232 — _2023-01-13T04:28:35.000Z_
-######  Diff: [`aef3081...a9c500f`](https://github.com/ChromeDevTools/devtools-protocol/compare/aef3081...a9c500f)
-
-```diff
-@@ browser_protocol.pdl:744 @@ experimental domain Audits
-     enum
-       CrossOriginPortalPostMessageError
-       FormLabelForNameError
-+      FormDuplicateIdForInputError
- 
-   # Depending on the concrete errorType, different properties are set.
-   type GenericIssueDetails extends object
-@@ -7236,6 +7237,8 @@ domain Page
-       usb
-       vertical-scroll
-       web-share
-+      # Alias for 'window-placement' (crbug.com/1328581).
-+      window-management
-       window-placement
-       xr-spatial-tracking
 ```
