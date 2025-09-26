@@ -1,7 +1,49 @@
 
 
+## Roll protocol to r1521046 — _2025-09-26T04:31:48.000Z_
+######  Diff: [`e3b838c...5864544`](https://github.com/ChromeDevTools/devtools-protocol/compare/e3b838c...5864544)
+
+```diff
+@@ domains/CSS.pdl:165 @@ experimental domain CSS
+       StyleSheetOrigin origin
+       # Associated style declaration.
+       CSSStyle style
++      # The BackendNodeId of the DOM node that constitutes the origin tree scope of this rule.
++      experimental optional DOM.BackendNodeId originTreeScopeNodeId
+       # Media list array (for rules involving media queries). The array enumerates media queries
+       # starting with the innermost one, going outwards.
+       optional array of CSSMedia media
+diff --git a/pdl/domains/Storage.pdl b/pdl/domains/Storage.pdl
+index 5c4e1302..973259c0 100644
+--- a/pdl/domains/Storage.pdl
++++ b/pdl/domains/Storage.pdl
+@@ -239,12 +239,21 @@ experimental domain Storage
+       StorageBucketsDurability durability
+ 
+   # Returns a storage key given a frame id.
+-  command getStorageKeyForFrame
++  # Deprecated. Please use Storage.getStorageKey instead.
++  deprecated command getStorageKeyForFrame
+     parameters
+       Page.FrameId frameId
+     returns
+       SerializedStorageKey storageKey
+ 
++  # Returns storage key for the given frame. If no frame ID is provided,
++  # the storage key of the target executing this command is returned.
++  experimental command getStorageKey
++    parameters
++      optional Page.FrameId frameId
++    returns
++      SerializedStorageKey storageKey
++
+   # Clears storage for origin.
+   command clearDataForOrigin
+     parameters
+```
+
 ## Roll protocol to r1519099 — _2025-09-23T04:31:20.000Z_
-######  Diff: [`78aae66...ddea858`](https://github.com/ChromeDevTools/devtools-protocol/compare/78aae66...ddea858)
+######  Diff: [`78aae66...e3b838c`](https://github.com/ChromeDevTools/devtools-protocol/compare/78aae66...e3b838c)
 
 ```diff
 @@ domains/Page.pdl:1768 @@ domain Page
@@ -42102,18 +42144,4 @@ index d4102f5c..6285d9b6 100644
        # If set to true, tests of user presence will succeed immediately.
        # Otherwise, they will not be resolved. Defaults to true.
        optional boolean automaticPresenceSimulation
-```
-
-## Roll protocol to r1092731 — _2023-01-14T04:27:49.000Z_
-######  Diff: [`a9c500f...c03647c`](https://github.com/ChromeDevTools/devtools-protocol/compare/a9c500f...c03647c)
-
-```diff
-@@ browser_protocol.pdl:745 @@ experimental domain Audits
-       CrossOriginPortalPostMessageError
-       FormLabelForNameError
-       FormDuplicateIdForInputError
-+      FormInputWithNoLabelError
- 
-   # Depending on the concrete errorType, different properties are set.
-   type GenericIssueDetails extends object
 ```

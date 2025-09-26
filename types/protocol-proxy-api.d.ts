@@ -4425,8 +4425,17 @@ export namespace ProtocolProxyApi {
     export interface StorageApi {
         /**
          * Returns a storage key given a frame id.
+         * Deprecated. Please use Storage.getStorageKey instead.
+         * @deprecated
          */
         getStorageKeyForFrame(params: Protocol.Storage.GetStorageKeyForFrameRequest): Promise<Protocol.Storage.GetStorageKeyForFrameResponse>;
+
+        /**
+         * Returns storage key for the given frame. If no frame ID is provided,
+         * the storage key of the target executing this command is returned.
+         * @experimental
+         */
+        getStorageKey(params: Protocol.Storage.GetStorageKeyRequest): Promise<Protocol.Storage.GetStorageKeyResponse>;
 
         /**
          * Clears storage for origin.
