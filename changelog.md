@@ -1,7 +1,7 @@
 
 
 ## Roll protocol to r1521046 — _2025-09-26T04:31:48.000Z_
-######  Diff: [`e3b838c...5864544`](https://github.com/ChromeDevTools/devtools-protocol/compare/e3b838c...5864544)
+######  Diff: [`e3b838c...f6820b4`](https://github.com/ChromeDevTools/devtools-protocol/compare/e3b838c...f6820b4)
 
 ```diff
 @@ domains/CSS.pdl:165 @@ experimental domain CSS
@@ -42109,39 +42109,4 @@ index d4102f5c..6285d9b6 100644
  
    # Fired when a prerender attempt is completed.
    experimental event prerenderAttemptCompleted
-```
-
-## Roll protocol to r1093722 — _2023-01-18T04:28:24.000Z_
-######  Diff: [`c03647c...370c224`](https://github.com/ChromeDevTools/devtools-protocol/compare/c03647c...370c224)
-
-```diff
-@@ browser_protocol.pdl:783 @@ experimental domain Audits
-       NoSysexWebMIDIWithoutPermission
-       NotificationInsecureOrigin
-       NotificationPermissionRequestedIframe
-+      ObsoleteCreateImageBitmapImageOrientationNone
-       ObsoleteWebRtcCipherSuite
-       OpenWebDatabaseInsecureContext
-       OverflowVisibleOnReplacedElement
-@@ -3681,7 +3682,9 @@ domain Emulation
-   # Missing optional values will be filled in by the target with what it would normally use.
-   experimental type UserAgentMetadata extends object
-     properties
-+      # Brands appearing in Sec-CH-UA.
-       optional array of UserAgentBrandVersion brands
-+      # Brands appearing in Sec-CH-UA-Full-Version-List.
-       optional array of UserAgentBrandVersion fullVersionList
-       deprecated optional string fullVersion
-       string platform
-@@ -10550,6 +10553,10 @@ experimental domain WebAuthn
-       # https://fidoalliance.org/specs/fido-v2.1-ps-20210615/fido-client-to-authenticator-protocol-v2.1-ps-20210615.html#sctn-minpinlength-extension
-       # Defaults to false.
-       optional boolean hasMinPinLength
-+      # If set to true, the authenticator will support the prf extension.
-+      # https://w3c.github.io/webauthn/#prf-extension
-+      # Defaults to false.
-+      optional boolean hasPrf
-       # If set to true, tests of user presence will succeed immediately.
-       # Otherwise, they will not be resolved. Defaults to true.
-       optional boolean automaticPresenceSimulation
 ```
