@@ -129,7 +129,7 @@ const getCommentLines = (description: string) => {
 
 const emitDescription = (lines: string[]) => {
     emitLine(`/**`)
-    lines.map(l => emitLine(` * ${l}`))
+    lines.map(l => emitLine(` * ${l.replaceAll('*/', '*\\/')}`))
     emitLine(` */`)
 }
 

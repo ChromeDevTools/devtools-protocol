@@ -13816,7 +13816,7 @@ export namespace Protocol {
         export interface SetBlockedURLsRequest {
             /**
              * URL patterns to block. Patterns use the URLPattern constructor string syntax
-             * (https://urlpattern.spec.whatwg.org/). Example: `*://*:*/*.css`.
+             * (https://urlpattern.spec.whatwg.org/). Example: `*://*:*\/*.css`.
              */
             urlPatterns?: string[];
             /**
