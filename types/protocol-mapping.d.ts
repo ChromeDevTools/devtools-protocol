@@ -4277,7 +4277,7 @@ export namespace ProtocolMapping {
          * @experimental
          */
         'Network.setBlockedURLs': {
-            paramsType: [Protocol.Network.SetBlockedURLsRequest];
+            paramsType: [Protocol.Network.SetBlockedURLsRequest?];
             returnType: void;
         };
         /**

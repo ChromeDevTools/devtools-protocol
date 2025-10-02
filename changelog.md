@@ -1,5 +1,24 @@
 
 
+## Roll protocol to r1523998 — _2025-10-02T04:30:37.000Z_
+######  Diff: [`8570f86...a6cdde4`](https://github.com/ChromeDevTools/devtools-protocol/compare/8570f86...a6cdde4)
+
+```diff
+@@ domains/Network.pdl:1268 @@ domain Network
+   # Blocks URLs from loading.
+   experimental command setBlockedURLs
+     parameters
++      # URL patterns to block. Patterns use the URLPattern constructor string syntax
++      # (https://urlpattern.spec.whatwg.org/). Example: `*://*:*/*.css`.
++      optional array of string urlPatterns
+       # URL patterns to block. Wildcards ('*') are allowed.
+-      array of string urls
++      deprecated optional array of string urls
+ 
+   # Toggles ignoring of service worker for each request.
+   command setBypassServiceWorker
+```
+
 ## Roll protocol to r1521046 — _2025-09-26T04:31:48.000Z_
 ######  Diff: [`e3b838c...f6820b4`](https://github.com/ChromeDevTools/devtools-protocol/compare/e3b838c...f6820b4)
 
@@ -42093,20 +42112,4 @@ index d4102f5c..6285d9b6 100644
        # to request a fresh SRR or use a still valid cached SRR.
        enum refreshPolicy
          UseCached
-```
-
-## Roll protocol to r1094278 — _2023-01-19T04:28:56.000Z_
-######  Diff: [`370c224...6b557d0`](https://github.com/ChromeDevTools/devtools-protocol/compare/370c224...6b557d0)
-
-```diff
-@@ browser_protocol.pdl:8569 @@ domain Page
-       ActivationNavigationDestroyedBeforeSuccess
-       TabClosedByUserGesture
-       TabClosedWithoutUserGesture
-+      PrimaryMainFrameRendererProcessCrashed
-+      PrimaryMainFrameRendererProcessKilled
-+      ActivationFramePolicyNotCompatible
- 
-   # Fired when a prerender attempt is completed.
-   experimental event prerenderAttemptCompleted
 ```

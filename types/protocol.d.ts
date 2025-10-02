@@ -13815,9 +13815,15 @@ export namespace Protocol {
 
         export interface SetBlockedURLsRequest {
             /**
-             * URL patterns to block. Wildcards ('*') are allowed.
+             * URL patterns to block. Patterns use the URLPattern constructor string syntax
+             * (https://urlpattern.spec.whatwg.org/). Example: `*://*:*/*.css`.
              */
-            urls: string[];
+            urlPatterns?: string[];
+            /**
+             * URL patterns to block. Wildcards ('*') are allowed.
+             * @deprecated
+             */
+            urls?: string[];
         }
 
         export interface SetBypassServiceWorkerRequest {
