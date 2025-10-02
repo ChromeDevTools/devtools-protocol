@@ -1,0 +1,25 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /scripts
+    schedule:
+      interval: weekly
+      day: 'sunday'
+      time: '02:00'
+      timezone: Europe/Berlin
+    groups:
+      all:
+        patterns:
+          - '*'
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: 'sunday'
+      time: '04:00'
+      timezone: Europe/Berlin
+    groups:
+      all:
+        patterns:
+          - '*'
