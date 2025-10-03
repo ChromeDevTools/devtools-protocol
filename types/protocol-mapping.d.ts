@@ -1936,7 +1936,9 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
-         * Grant specific permissions to the given origin and reject all others.
+         * Grant specific permissions to the given origin and reject all others. Deprecated. Use
+         * setPermission instead.
+         * @deprecated
          * @experimental
          */
         'Browser.grantPermissions': {

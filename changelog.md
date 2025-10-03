@@ -1,7 +1,25 @@
 
 
+## Roll protocol to r1525085 — _2025-10-03T23:52:47.000Z_
+######  Diff: [`34e1e23...8ac8428`](https://github.com/ChromeDevTools/devtools-protocol/compare/34e1e23...8ac8428)
+
+```diff
+@@ domains/Browser.pdl:119 @@ domain Browser
+       # Context to override. When omitted, default browser context is used.
+       optional BrowserContextID browserContextId
+ 
+-  # Grant specific permissions to the given origin and reject all others.
+-  experimental command grantPermissions
++  # Grant specific permissions to the given origin and reject all others. Deprecated. Use
++  # setPermission instead.
++  experimental deprecated command grantPermissions
+     parameters
+       array of PermissionType permissions
+       # Origin the permission applies to, all origins if not specified.
+```
+
 ## Roll protocol to r1523998 — _2025-10-02T04:30:37.000Z_
-######  Diff: [`8570f86...a6cdde4`](https://github.com/ChromeDevTools/devtools-protocol/compare/8570f86...a6cdde4)
+######  Diff: [`8570f86...edeffc1`](https://github.com/ChromeDevTools/devtools-protocol/compare/8570f86...edeffc1)
 
 ```diff
 @@ domains/Network.pdl:1268 @@ domain Network
@@ -42042,74 +42060,4 @@ index d4102f5c..6285d9b6 100644
  
    # Fired when a prerender attempt is completed.
    experimental event prerenderAttemptCompleted
-```
-
-## Roll protocol to r1097235 — _2023-01-26T04:28:05.000Z_
-######  Diff: [`5caaeb9...c72fa9e`](https://github.com/ChromeDevTools/devtools-protocol/compare/5caaeb9...c72fa9e)
-
-```diff
-@@ browser_protocol.pdl:747 @@ experimental domain Audits
-       FormDuplicateIdForInputError
-       FormInputWithNoLabelError
-       FormAutocompleteAttributeEmptyError
-+      FormEmptyIdAndNameAttributesForInputError
- 
-   # Depending on the concrete errorType, different properties are set.
-   type GenericIssueDetails extends object
-```
-
-## Roll protocol to r1096618 — _2023-01-25T04:27:58.000Z_
-######  Diff: [`23801b1...5caaeb9`](https://github.com/ChromeDevTools/devtools-protocol/compare/23801b1...5caaeb9)
-
-```diff
-@@ browser_protocol.pdl:746 @@ experimental domain Audits
-       FormLabelForNameError
-       FormDuplicateIdForInputError
-       FormInputWithNoLabelError
-+      FormAutocompleteAttributeEmptyError
- 
-   # Depending on the concrete errorType, different properties are set.
-   type GenericIssueDetails extends object
-```
-
-## Roll protocol to r1096014 — _2023-01-24T04:28:10.000Z_
-######  Diff: [`9b03384...23801b1`](https://github.com/ChromeDevTools/devtools-protocol/compare/9b03384...23801b1)
-
-```diff
-@@ browser_protocol.pdl:1273 @@ domain Browser
-       # substring in their name are extracted. An empty or absent query returns
-       # all histograms.
-       optional string query
--      # If true, retrieve delta since last call.
-+      # If true, retrieve delta since last delta call.
-       optional boolean delta
- 
-     returns
-@@ -1285,7 +1285,7 @@ domain Browser
-     parameters
-       # Requested histogram name.
-       string name
--      # If true, retrieve delta since last call.
-+      # If true, retrieve delta since last delta call.
-       optional boolean delta
-     returns
-       # Histogram.
-```
-
-## Roll protocol to r1094867 — _2023-01-20T04:28:35.000Z_
-######  Diff: [`6b557d0...9b03384`](https://github.com/ChromeDevTools/devtools-protocol/compare/6b557d0...9b03384)
-
-```diff
-@@ browser_protocol.pdl:5271 @@ domain Network
-   # are specified in third_party/blink/renderer/core/fetch/trust_token.idl.
-   experimental type TrustTokenParams extends object
-     properties
--      TrustTokenOperationType type
-+      TrustTokenOperationType operation
- 
--      # Only set for "token-redemption" type and determine whether
-+      # Only set for "token-redemption" operation and determine whether
-       # to request a fresh SRR or use a still valid cached SRR.
-       enum refreshPolicy
-         UseCached
 ```

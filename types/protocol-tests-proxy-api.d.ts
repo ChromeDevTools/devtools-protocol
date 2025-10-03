@@ -1111,7 +1111,9 @@ export namespace ProtocolTestsProxyApi {
         setPermission(params: Protocol.Browser.SetPermissionRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
-         * Grant specific permissions to the given origin and reject all others.
+         * Grant specific permissions to the given origin and reject all others. Deprecated. Use
+         * setPermission instead.
+         * @deprecated
          * @experimental
          */
         grantPermissions(params: Protocol.Browser.GrantPermissionsRequest): Promise<{id: number, result: void, sessionId: string}>;
