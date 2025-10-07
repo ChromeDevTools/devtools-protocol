@@ -1928,7 +1928,7 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
-         * Set permission settings for given requesting and embedding origins.
+         * Set permission settings for given embedding and embedded origins.
          * @experimental
          */
         'Browser.setPermission': {

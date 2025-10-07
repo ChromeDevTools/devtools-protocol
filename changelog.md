@@ -1,7 +1,75 @@
 
 
+## Roll protocol to r1526016 — _2025-10-07T04:31:13.000Z_
+######  Diff: [`a73a111...cce2fe7`](https://github.com/ChromeDevTools/devtools-protocol/compare/a73a111...cce2fe7)
+
+```diff
+@@ domains/Browser.pdl:103 @@ domain Browser
+       closeTabSearch
+       openGlic
+ 
+-  # Set permission settings for given requesting and embedding origins.
++  # Set permission settings for given embedding and embedded origins.
+   experimental command setPermission
+     parameters
+       # Descriptor of permission to override.
+       PermissionDescriptor permission
+       # Setting of the permission.
+       PermissionSetting setting
+-      # Requesting origin the permission applies to, all origins if not specified.
++      # Embedding origin the permission applies to, all origins if not specified.
+       optional string origin
+-      # Embedding origin the permission applies to. It is ignored unless the requesting origin is
+-      # present and valid. If the requesting origin is provided but the embedding origin isn't, the
+-      # requesting origin is used as the embedding origin.
+-      optional string embeddingOrigin
++      # Embedded origin the permission applies to. It is ignored unless the embedding origin is
++      # present and valid. If the embedding origin is provided but the embedded origin isn't, the
++      # embedding origin is used as the embedded origin.
++      optional string embeddedOrigin
+       # Context to override. When omitted, default browser context is used.
+       optional BrowserContextID browserContextId
+ 
+diff --git a/pdl/domains/Network.pdl b/pdl/domains/Network.pdl
+index 03538feb..c2cdeb1b 100644
+--- a/pdl/domains/Network.pdl
++++ b/pdl/domains/Network.pdl
+@@ -1090,8 +1090,8 @@ domain Network
+   experimental type NetworkConditions extends object
+     properties
+       # Only matching requests will be affected by these conditions. Patterns use the URLPattern constructor string
+-      # syntax (https://urlpattern.spec.whatwg.org/). If the pattern is empty, all requests are matched (including p2p
+-      # connections).
++      # syntax (https://urlpattern.spec.whatwg.org/) and must be absolute. If the pattern is empty, all requests are
++      # matched (including p2p connections).
+       string urlPattern
+       # Minimum latency from request sent to response headers received (ms).
+       number latency
+@@ -1269,7 +1269,7 @@ domain Network
+   experimental command setBlockedURLs
+     parameters
+       # URL patterns to block. Patterns use the URLPattern constructor string syntax
+-      # (https://urlpattern.spec.whatwg.org/). Example: `*://*:*/*.css`.
++      # (https://urlpattern.spec.whatwg.org/) and must be absolute. Example: `*://*:*/*.css`.
+       optional array of string urlPatterns
+       # URL patterns to block. Wildcards ('*') are allowed.
+       deprecated optional array of string urls
+diff --git a/pdl/domains/Preload.pdl b/pdl/domains/Preload.pdl
+index fd3222ab..8e9c8a2e 100644
+--- a/pdl/domains/Preload.pdl
++++ b/pdl/domains/Preload.pdl
+@@ -57,6 +57,7 @@ experimental domain Preload
+     enum
+       Prefetch
+       Prerender
++      PrerenderUntilScript
+ 
+   # Corresponds to mojom::SpeculationTargetHint.
+   # See https://github.com/WICG/nav-speculation/blob/main/triggers.md#window-name-targeting-hints
+```
+
 ## Roll protocol to r1525085 — _2025-10-03T23:52:47.000Z_
-######  Diff: [`34e1e23...8ac8428`](https://github.com/ChromeDevTools/devtools-protocol/compare/34e1e23...8ac8428)
+######  Diff: [`34e1e23...a73a111`](https://github.com/ChromeDevTools/devtools-protocol/compare/34e1e23...a73a111)
 
 ```diff
 @@ domains/Browser.pdl:119 @@ domain Browser
@@ -42025,39 +42093,4 @@ index d4102f5c..6285d9b6 100644
  
    # Depending on the concrete errorType, different properties are set.
    type GenericIssueDetails extends object
-```
-
-## Roll protocol to r1097787 — _2023-01-27T04:28:00.000Z_
-######  Diff: [`c72fa9e...a73bac7`](https://github.com/ChromeDevTools/devtools-protocol/compare/c72fa9e...a73bac7)
-
-```diff
-@@ browser_protocol.pdl:802 @@ experimental domain Audits
-       PrefixedVideoExitFullscreen
-       PrefixedVideoExitFullScreen
-       PrefixedVideoSupportsFullscreen
-+      PrivacySandboxExtensionsAPI
-       RangeExpand
-       RequestedSubresourceWithEmbeddedCredentials
-       RTCConstraintEnableDtlsSrtpFalse
-@@ -6401,6 +6402,11 @@ domain Network
-       # Raw response header text as it was received over the wire. The raw text may not always be
-       # available, such as in the case of HTTP/2 or QUIC.
-       optional string headersText
-+      # The cookie partition key that will be used to store partitioned cookies set in this response.
-+      # Only sent when partitioned cookies are enabled.
-+      optional string cookiePartitionKey
-+      # True if partitioned cookies are enabled, but the partition key is not serializeable to string.
-+      optional boolean cookiePartitionKeyOpaque
- 
-   # Fired exactly once for each Trust Token operation. Depending on
-   # the type of the operation and whether the operation succeeded or
-@@ -8574,6 +8580,8 @@ domain Page
-       PrimaryMainFrameRendererProcessCrashed
-       PrimaryMainFrameRendererProcessKilled
-       ActivationFramePolicyNotCompatible
-+      PreloadingDisabled
-+      BatterySaverEnabled
- 
-   # Fired when a prerender attempt is completed.
-   experimental event prerenderAttemptCompleted
 ```

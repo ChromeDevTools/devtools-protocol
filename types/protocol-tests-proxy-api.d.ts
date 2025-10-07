@@ -1105,7 +1105,7 @@ export namespace ProtocolTestsProxyApi {
 
     export interface BrowserApi {
         /**
-         * Set permission settings for given requesting and embedding origins.
+         * Set permission settings for given embedding and embedded origins.
          * @experimental
          */
         setPermission(params: Protocol.Browser.SetPermissionRequest): Promise<{id: number, result: void, sessionId: string}>;
