@@ -3207,7 +3207,9 @@ export namespace ProtocolTestsProxyApi {
         emulateNetworkConditions(params: Protocol.Network.EmulateNetworkConditionsRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
-         * Activates emulation of network conditions for individual requests using URL match patterns.
+         * Activates emulation of network conditions for individual requests using URL match patterns. Unlike the deprecated
+         * Network.emulateNetworkConditions this method does not affect `navigator` state. Use Network.overrideNetworkState to
+         * explicitly modify `navigator` behavior.
          * @experimental
          */
         emulateNetworkConditionsByRule(params: Protocol.Network.EmulateNetworkConditionsByRuleRequest): Promise<{id: number, result: Protocol.Network.EmulateNetworkConditionsByRuleResponse, sessionId: string}>;

@@ -1,7 +1,24 @@
 
 
+## Roll protocol to r1526665 — _2025-10-08T04:31:07.000Z_
+######  Diff: [`0d43ecd...4c1c3f3`](https://github.com/ChromeDevTools/devtools-protocol/compare/0d43ecd...4c1c3f3)
+
+```diff
+@@ domains/Network.pdl:1129 @@ domain Network
+       # WebRTC packetReordering feature.
+       experimental optional boolean packetReordering
+ 
+-  # Activates emulation of network conditions for individual requests using URL match patterns.
++  # Activates emulation of network conditions for individual requests using URL match patterns. Unlike the deprecated
++  # Network.emulateNetworkConditions this method does not affect `navigator` state. Use Network.overrideNetworkState to
++  # explicitly modify `navigator` behavior.
+   experimental command emulateNetworkConditionsByRule
+     parameters
+       # True to emulate internet disconnection.
+```
+
 ## Roll protocol to r1526016 — _2025-10-07T04:31:13.000Z_
-######  Diff: [`a73a111...cce2fe7`](https://github.com/ChromeDevTools/devtools-protocol/compare/a73a111...cce2fe7)
+######  Diff: [`a73a111...0d43ecd`](https://github.com/ChromeDevTools/devtools-protocol/compare/a73a111...0d43ecd)
 
 ```diff
 @@ domains/Browser.pdl:103 @@ domain Browser
@@ -42076,20 +42093,6 @@ index d4102f5c..6285d9b6 100644
        FormEmptyIdAndNameAttributesForInputError
        FormAriaLabelledByToNonExistingId
 +      FormInputAssignedAutocompleteValueToIdOrNameAttributeError
- 
-   # Depending on the concrete errorType, different properties are set.
-   type GenericIssueDetails extends object
-```
-
-## Roll protocol to r1098258 — _2023-01-28T04:27:44.000Z_
-######  Diff: [`a73bac7...58bc3b6`](https://github.com/ChromeDevTools/devtools-protocol/compare/a73bac7...58bc3b6)
-
-```diff
-@@ browser_protocol.pdl:748 @@ experimental domain Audits
-       FormInputWithNoLabelError
-       FormAutocompleteAttributeEmptyError
-       FormEmptyIdAndNameAttributesForInputError
-+      FormAriaLabelledByToNonExistingId
  
    # Depending on the concrete errorType, different properties are set.
    type GenericIssueDetails extends object
