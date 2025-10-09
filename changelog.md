@@ -1,7 +1,37 @@
 
 
+## Roll protocol to r1527314 — _2025-10-09T04:31:34.000Z_
+######  Diff: [`9f2ed89...f3fdb42`](https://github.com/ChromeDevTools/devtools-protocol/compare/9f2ed89...f3fdb42)
+
+```diff
+@@ domains/Network.pdl:1267 @@ domain Network
+       # List of search matches.
+       array of Debugger.SearchMatch result
+ 
++  experimental type BlockPattern extends object
++    properties
++      # URL pattern to match. Patterns use the URLPattern constructor string syntax
++      # (https://urlpattern.spec.whatwg.org/) and must be absolute. Example: `*://*:*/*.css`.
++      string urlPattern
++      # Whether or not to block the pattern. If false, a matching request will not be blocked even if it matches a later
++      # `BlockPattern`.
++      boolean block
++
+   # Blocks URLs from loading.
+   experimental command setBlockedURLs
+     parameters
+-      # URL patterns to block. Patterns use the URLPattern constructor string syntax
+-      # (https://urlpattern.spec.whatwg.org/) and must be absolute. Example: `*://*:*/*.css`.
+-      optional array of string urlPatterns
++      # Patterns to match in the order in which they are given. These patterns
++      # also take precedence over any wildcard patterns defined in `urls`.
++      optional array of BlockPattern urlPatterns
+       # URL patterns to block. Wildcards ('*') are allowed.
+       deprecated optional array of string urls
+```
+
 ## Roll protocol to r1526665 — _2025-10-08T04:31:07.000Z_
-######  Diff: [`0d43ecd...4c1c3f3`](https://github.com/ChromeDevTools/devtools-protocol/compare/0d43ecd...4c1c3f3)
+######  Diff: [`0d43ecd...9f2ed89`](https://github.com/ChromeDevTools/devtools-protocol/compare/0d43ecd...9f2ed89)
 
 ```diff
 @@ domains/Network.pdl:1129 @@ domain Network
@@ -42082,18 +42112,4 @@ index d4102f5c..6285d9b6 100644
  
    # Fired when a prerender attempt is completed.
    experimental event prerenderAttemptCompleted
-```
-
-## Roll protocol to r1099089 — _2023-01-31T04:27:53.000Z_
-######  Diff: [`58bc3b6...2a08589`](https://github.com/ChromeDevTools/devtools-protocol/compare/58bc3b6...2a08589)
-
-```diff
-@@ browser_protocol.pdl:749 @@ experimental domain Audits
-       FormAutocompleteAttributeEmptyError
-       FormEmptyIdAndNameAttributesForInputError
-       FormAriaLabelledByToNonExistingId
-+      FormInputAssignedAutocompleteValueToIdOrNameAttributeError
- 
-   # Depending on the concrete errorType, different properties are set.
-   type GenericIssueDetails extends object
 ```

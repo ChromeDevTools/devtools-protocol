@@ -13230,6 +13230,22 @@ export namespace Protocol {
         /**
          * @experimental
          */
+        export interface BlockPattern {
+            /**
+             * URL pattern to match. Patterns use the URLPattern constructor string syntax
+             * (https://urlpattern.spec.whatwg.org/) and must be absolute. Example: `*://*:*\/*.css`.
+             */
+            urlPattern: string;
+            /**
+             * Whether or not to block the pattern. If false, a matching request will not be blocked even if it matches a later
+             * `BlockPattern`.
+             */
+            block: boolean;
+        }
+
+        /**
+         * @experimental
+         */
         export type DirectSocketDnsQueryType = ('ipv4' | 'ipv6');
 
         /**
@@ -13815,10 +13831,10 @@ export namespace Protocol {
 
         export interface SetBlockedURLsRequest {
             /**
-             * URL patterns to block. Patterns use the URLPattern constructor string syntax
-             * (https://urlpattern.spec.whatwg.org/) and must be absolute. Example: `*://*:*\/*.css`.
+             * Patterns to match in the order in which they are given. These patterns
+             * also take precedence over any wildcard patterns defined in `urls`.
              */
-            urlPatterns?: string[];
+            urlPatterns?: BlockPattern[];
             /**
              * URL patterns to block. Wildcards ('*') are allowed.
              * @deprecated
