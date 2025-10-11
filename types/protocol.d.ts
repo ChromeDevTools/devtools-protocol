@@ -12686,6 +12686,7 @@ export namespace Protocol {
             Preload = 'preload',
             SignedExchange = 'SignedExchange',
             Preflight = 'preflight',
+            FedCM = 'FedCM',
             Other = 'other',
         }
 
@@ -12696,7 +12697,7 @@ export namespace Protocol {
             /**
              * Type of this initiator.
              */
-            type: ('parser' | 'script' | 'preload' | 'SignedExchange' | 'preflight' | 'other');
+            type: ('parser' | 'script' | 'preload' | 'SignedExchange' | 'preflight' | 'FedCM' | 'other');
             /**
              * Initiator JavaScript stack trace, set for Script only.
              * Requires the Debugger domain to be enabled.

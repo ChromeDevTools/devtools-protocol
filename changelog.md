@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1528500 — _2025-10-11T04:30:26.000Z_
+######  Diff: [`7c74e7d...10a2cdf`](https://github.com/ChromeDevTools/devtools-protocol/compare/7c74e7d...10a2cdf)
+
+```diff
+@@ domains/Network.pdl:587 @@ domain Network
+         preload
+         SignedExchange
+         preflight
++        FedCM
+         other
+       # Initiator JavaScript stack trace, set for Script only.
+       # Requires the Debugger domain to be enabled.
+```
+
 ## Roll protocol to r1527314 — _2025-10-09T04:31:34.000Z_
-######  Diff: [`9f2ed89...f3fdb42`](https://github.com/ChromeDevTools/devtools-protocol/compare/9f2ed89...f3fdb42)
+######  Diff: [`9f2ed89...7c74e7d`](https://github.com/ChromeDevTools/devtools-protocol/compare/9f2ed89...7c74e7d)
 
 ```diff
 @@ domains/Network.pdl:1267 @@ domain Network
@@ -42098,18 +42112,4 @@ index d4102f5c..6285d9b6 100644
    # Gets details for a named interest group.
    experimental command getInterestGroupDetails
      parameters
-```
-
-## Roll protocol to r1099658 — _2023-02-01T04:28:12.000Z_
-######  Diff: [`2a08589...01899e6`](https://github.com/ChromeDevTools/devtools-protocol/compare/2a08589...01899e6)
-
-```diff
-@@ browser_protocol.pdl:8584 @@ domain Page
-       ActivationFramePolicyNotCompatible
-       PreloadingDisabled
-       BatterySaverEnabled
-+      ActivatedDuringMainFrameNavigation
- 
-   # Fired when a prerender attempt is completed.
-   experimental event prerenderAttemptCompleted
 ```
