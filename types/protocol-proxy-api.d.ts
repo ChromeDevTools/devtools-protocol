@@ -2767,6 +2767,12 @@ export namespace ProtocolProxyApi {
          */
         on(event: 'targetReloadedAfterCrash', listener: () => void): void;
 
+        /**
+         * Fired on worker targets when main worker script and any imported scripts have been evaluated.
+         * @experimental
+         */
+        on(event: 'workerScriptLoaded', listener: () => void): void;
+
     }
 
     export interface LayerTreeApi {

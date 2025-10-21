@@ -1,7 +1,20 @@
 
 
+## Roll protocol to r1532728 — _2025-10-21T04:31:48.000Z_
+######  Diff: [`b7cda17...0ba3302`](https://github.com/ChromeDevTools/devtools-protocol/compare/b7cda17...0ba3302)
+
+```diff
+@@ domains/Inspector.pdl:23 @@ experimental domain Inspector
+ 
+   # Fired when debugging target has reloaded after crash
+   event targetReloadedAfterCrash
++
++  # Fired on worker targets when main worker script and any imported scripts have been evaluated.
++  experimental event workerScriptLoaded
+```
+
 ## Roll protocol to r1528500 — _2025-10-11T04:30:26.000Z_
-######  Diff: [`7c74e7d...10a2cdf`](https://github.com/ChromeDevTools/devtools-protocol/compare/7c74e7d...10a2cdf)
+######  Diff: [`7c74e7d...b4246f2`](https://github.com/ChromeDevTools/devtools-protocol/compare/7c74e7d...b4246f2)
 
 ```diff
 @@ domains/Network.pdl:587 @@ domain Network
@@ -42068,48 +42081,4 @@ index d4102f5c..6285d9b6 100644
  
    # Fired when a prerender attempt is completed.
    experimental event prerenderAttemptCompleted
-```
-
-## Roll protocol to r1100832 — _2023-02-03T04:28:21.000Z_
-######  Diff: [`41637d7...5d7fa4e`](https://github.com/ChromeDevTools/devtools-protocol/compare/41637d7...5d7fa4e)
-
-```diff
-@@ browser_protocol.pdl:751 @@ experimental domain Audits
-       FormAriaLabelledByToNonExistingId
-       FormInputAssignedAutocompleteValueToIdOrNameAttributeError
-       FormLabelHasNeitherForNorNestedInput
-+      FormLabelForMatchesNonExistingIdError
- 
-   # Depending on the concrete errorType, different properties are set.
-   type GenericIssueDetails extends object
-```
-
-## Roll protocol to r1100268 — _2023-02-02T04:28:14.000Z_
-######  Diff: [`01899e6...41637d7`](https://github.com/ChromeDevTools/devtools-protocol/compare/01899e6...41637d7)
-
-```diff
-@@ browser_protocol.pdl:750 @@ experimental domain Audits
-       FormEmptyIdAndNameAttributesForInputError
-       FormAriaLabelledByToNonExistingId
-       FormInputAssignedAutocompleteValueToIdOrNameAttributeError
-+      FormLabelHasNeitherForNorNestedInput
- 
-   # Depending on the concrete errorType, different properties are set.
-   type GenericIssueDetails extends object
-@@ -9356,15 +9357,6 @@ experimental domain Storage
-     returns
-       array of TrustTokens tokens
- 
--  # Removes all Trust Tokens issued by the provided issuerOrigin.
--  # Leaves other stored data, including the issuer's Redemption Records, intact.
--  experimental command clearTrustTokens
--    parameters
--      string issuerOrigin
--    returns
--      # True if any tokens were deleted, false otherwise.
--      boolean didDeleteTokens
--
-   # Gets details for a named interest group.
-   experimental command getInterestGroupDetails
-     parameters
 ```

@@ -2919,6 +2919,14 @@ export namespace ProtocolTestsProxyApi {
         offTargetReloadedAfterCrash(listener: () => void): void;
         onceTargetReloadedAfterCrash(eventMatcher?: () => boolean): Promise<void>;
 
+        /**
+         * Fired on worker targets when main worker script and any imported scripts have been evaluated.
+         * @experimental
+         */
+        onWorkerScriptLoaded(listener: () => void): void;
+        offWorkerScriptLoaded(listener: () => void): void;
+        onceWorkerScriptLoaded(eventMatcher?: () => boolean): Promise<void>;
+
     }
 
     export interface LayerTreeApi {
