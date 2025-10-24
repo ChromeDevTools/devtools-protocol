@@ -556,28 +556,6 @@ export namespace ProtocolMapping {
          */
         'Network.policyUpdated': [];
         /**
-         * Fired once when parsing the .wbn file has succeeded.
-         * The event contains the information about the web bundle contents.
-         * @experimental
-         */
-        'Network.subresourceWebBundleMetadataReceived': [Protocol.Network.SubresourceWebBundleMetadataReceivedEvent];
-        /**
-         * Fired once when parsing the .wbn file has failed.
-         * @experimental
-         */
-        'Network.subresourceWebBundleMetadataError': [Protocol.Network.SubresourceWebBundleMetadataErrorEvent];
-        /**
-         * Fired when handling requests for resources within a .wbn file.
-         * Note: this will only be fired for resources that are requested by the webpage.
-         * @experimental
-         */
-        'Network.subresourceWebBundleInnerResponseParsed': [Protocol.Network.SubresourceWebBundleInnerResponseParsedEvent];
-        /**
-         * Fired when request for resources within a .wbn file failed.
-         * @experimental
-         */
-        'Network.subresourceWebBundleInnerResponseError': [Protocol.Network.SubresourceWebBundleInnerResponseErrorEvent];
-        /**
          * Is sent whenever a new report is added.
          * And after 'enableReportingApi' for all existing reports.
          * @experimental

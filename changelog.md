@@ -1,7 +1,64 @@
 
 
+## Roll protocol to r1534754 — _2025-10-24T04:31:25.000Z_
+######  Diff: [`d2b130f...a5ba850`](https://github.com/ChromeDevTools/devtools-protocol/compare/d2b130f...a5ba850)
+
+```diff
+@@ domains/Network.pdl:1929 @@ domain Network
+   # Fired once security policy has been updated.
+   experimental event policyUpdated
+ 
+-  # Fired once when parsing the .wbn file has succeeded.
+-  # The event contains the information about the web bundle contents.
+-  experimental event subresourceWebBundleMetadataReceived
+-    parameters
+-      # Request identifier. Used to match this information to another event.
+-      RequestId requestId
+-      # A list of URLs of resources in the subresource Web Bundle.
+-      array of string urls
+-
+-  # Fired once when parsing the .wbn file has failed.
+-  experimental event subresourceWebBundleMetadataError
+-    parameters
+-      # Request identifier. Used to match this information to another event.
+-      RequestId requestId
+-      # Error message
+-      string errorMessage
+-
+-  # Fired when handling requests for resources within a .wbn file.
+-  # Note: this will only be fired for resources that are requested by the webpage.
+-  experimental event subresourceWebBundleInnerResponseParsed
+-    parameters
+-      # Request identifier of the subresource request
+-      RequestId innerRequestId
+-      # URL of the subresource resource.
+-      string innerRequestURL
+-      # Bundle request identifier. Used to match this information to another event.
+-      # This made be absent in case when the instrumentation was enabled only
+-      # after webbundle was parsed.
+-      optional RequestId bundleRequestId
+-
+-  # Fired when request for resources within a .wbn file failed.
+-  experimental event subresourceWebBundleInnerResponseError
+-    parameters
+-      # Request identifier of the subresource request
+-      RequestId innerRequestId
+-      # URL of the subresource resource.
+-      string innerRequestURL
+-      # Error message
+-      string errorMessage
+-      # Bundle request identifier. Used to match this information to another event.
+-      # This made be absent in case when the instrumentation was enabled only
+-      # after webbundle was parsed.
+-      optional RequestId bundleRequestId
+-
+   experimental type CrossOriginOpenerPolicyValue extends string
+     enum
+       SameOrigin
+```
+
 ## Roll protocol to r1532728 — _2025-10-21T04:31:48.000Z_
-######  Diff: [`b7cda17...0ba3302`](https://github.com/ChromeDevTools/devtools-protocol/compare/b7cda17...0ba3302)
+######  Diff: [`b7cda17...d2b130f`](https://github.com/ChromeDevTools/devtools-protocol/compare/b7cda17...d2b130f)
 
 ```diff
 @@ domains/Inspector.pdl:23 @@ experimental domain Inspector
@@ -42051,34 +42108,4 @@ index d4102f5c..6285d9b6 100644
  
    # Generates a report for testing.
    experimental command generateTestReport
-```
-
-## Roll protocol to r1101329 — _2023-02-04T04:27:44.000Z_
-######  Diff: [`5d7fa4e...81bd251`](https://github.com/ChromeDevTools/devtools-protocol/compare/5d7fa4e...81bd251)
-
-```diff
-@@ browser_protocol.pdl:8159 @@ domain Page
-         autoReject
-         autoOptOut
- 
-+  # Extensions for Custom Handlers API:
-+  # https://html.spec.whatwg.org/multipage/system-state.html#rph-automation
-+  experimental command setRPHRegistrationMode
-+    parameters
-+      enum mode
-+        none
-+        autoaccept
-+        autoreject
-+
-   # Generates a report for testing.
-   experimental command generateTestReport
-     parameters
-@@ -8587,6 +8596,7 @@ domain Page
-       PreloadingDisabled
-       BatterySaverEnabled
-       ActivatedDuringMainFrameNavigation
-+      PreloadingUnsupportedByWebContents
- 
-   # Fired when a prerender attempt is completed.
-   experimental event prerenderAttemptCompleted
 ```

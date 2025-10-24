@@ -3668,40 +3668,6 @@ export namespace ProtocolTestsProxyApi {
         oncePolicyUpdated(eventMatcher?: () => boolean): Promise<void>;
 
         /**
-         * Fired once when parsing the .wbn file has succeeded.
-         * The event contains the information about the web bundle contents.
-         * @experimental
-         */
-        onSubresourceWebBundleMetadataReceived(listener: (event: { params: Protocol.Network.SubresourceWebBundleMetadataReceivedEvent }) => void): void;
-        offSubresourceWebBundleMetadataReceived(listener: (event: { params: Protocol.Network.SubresourceWebBundleMetadataReceivedEvent }) => void): void;
-        onceSubresourceWebBundleMetadataReceived(eventMatcher?: (event: { params: Protocol.Network.SubresourceWebBundleMetadataReceivedEvent }) => boolean): Promise<{ params: Protocol.Network.SubresourceWebBundleMetadataReceivedEvent }>;
-
-        /**
-         * Fired once when parsing the .wbn file has failed.
-         * @experimental
-         */
-        onSubresourceWebBundleMetadataError(listener: (event: { params: Protocol.Network.SubresourceWebBundleMetadataErrorEvent }) => void): void;
-        offSubresourceWebBundleMetadataError(listener: (event: { params: Protocol.Network.SubresourceWebBundleMetadataErrorEvent }) => void): void;
-        onceSubresourceWebBundleMetadataError(eventMatcher?: (event: { params: Protocol.Network.SubresourceWebBundleMetadataErrorEvent }) => boolean): Promise<{ params: Protocol.Network.SubresourceWebBundleMetadataErrorEvent }>;
-
-        /**
-         * Fired when handling requests for resources within a .wbn file.
-         * Note: this will only be fired for resources that are requested by the webpage.
-         * @experimental
-         */
-        onSubresourceWebBundleInnerResponseParsed(listener: (event: { params: Protocol.Network.SubresourceWebBundleInnerResponseParsedEvent }) => void): void;
-        offSubresourceWebBundleInnerResponseParsed(listener: (event: { params: Protocol.Network.SubresourceWebBundleInnerResponseParsedEvent }) => void): void;
-        onceSubresourceWebBundleInnerResponseParsed(eventMatcher?: (event: { params: Protocol.Network.SubresourceWebBundleInnerResponseParsedEvent }) => boolean): Promise<{ params: Protocol.Network.SubresourceWebBundleInnerResponseParsedEvent }>;
-
-        /**
-         * Fired when request for resources within a .wbn file failed.
-         * @experimental
-         */
-        onSubresourceWebBundleInnerResponseError(listener: (event: { params: Protocol.Network.SubresourceWebBundleInnerResponseErrorEvent }) => void): void;
-        offSubresourceWebBundleInnerResponseError(listener: (event: { params: Protocol.Network.SubresourceWebBundleInnerResponseErrorEvent }) => void): void;
-        onceSubresourceWebBundleInnerResponseError(eventMatcher?: (event: { params: Protocol.Network.SubresourceWebBundleInnerResponseErrorEvent }) => boolean): Promise<{ params: Protocol.Network.SubresourceWebBundleInnerResponseErrorEvent }>;
-
-        /**
          * Is sent whenever a new report is added.
          * And after 'enableReportingApi' for all existing reports.
          * @experimental
