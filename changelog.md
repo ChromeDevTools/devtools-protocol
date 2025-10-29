@@ -1,7 +1,42 @@
 
 
+## Roll protocol to r1537100 — _2025-10-29T04:32:32.000Z_
+######  Diff: [`604a9f6...d3e13c1`](https://github.com/ChromeDevTools/devtools-protocol/compare/604a9f6...d3e13c1)
+
+```diff
+@@ domains/SystemInfo.pdl:74 @@ experimental domain SystemInfo
+       webp
+       unknown
+ 
+-  # Describes a supported image decoding profile with its associated minimum and
+-  # maximum resolutions and subsampling.
+-  type ImageDecodeAcceleratorCapability extends object
+-    properties
+-      # Image coded, e.g. Jpeg.
+-      ImageType imageType
+-      # Maximum supported dimensions of the image in pixels.
+-      Size maxDimensions
+-      # Minimum supported dimensions of the image in pixels.
+-      Size minDimensions
+-      # Optional array of supported subsampling formats, e.g. 4:2:0, if known.
+-      array of SubsamplingFormat subsamplings
+-
+   # Provides information about the GPU(s) on the system.
+   type GPUInfo extends object
+     properties
+@@ -102,8 +89,6 @@ experimental domain SystemInfo
+       array of VideoDecodeAcceleratorCapability videoDecoding
+       # Supported accelerated video encoding capabilities.
+       array of VideoEncodeAcceleratorCapability videoEncoding
+-      # Supported accelerated image decoding capabilities.
+-      array of ImageDecodeAcceleratorCapability imageDecoding
+ 
+   # Represents process info.
+   type ProcessInfo extends object
+```
+
 ## Roll protocol to r1534754 — _2025-10-24T04:31:25.000Z_
-######  Diff: [`d2b130f...a5ba850`](https://github.com/ChromeDevTools/devtools-protocol/compare/d2b130f...a5ba850)
+######  Diff: [`d2b130f...604a9f6`](https://github.com/ChromeDevTools/devtools-protocol/compare/d2b130f...604a9f6)
 
 ```diff
 @@ domains/Network.pdl:1929 @@ domain Network
@@ -42056,56 +42091,4 @@ index d4102f5c..6285d9b6 100644
    command getDocument
      parameters
        # The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the
-```
-
-## Roll protocol to r1101985 — _2023-02-07T04:28:15.000Z_
-######  Diff: [`81bd251...e088ea1`](https://github.com/ChromeDevTools/devtools-protocol/compare/81bd251...e088ea1)
-
-```diff
-@@ browser_protocol.pdl:7735 @@ domain Page
-     returns
-       array of InstallabilityError installabilityErrors
- 
--  experimental command getManifestIcons
-+  # Deprecated because it's not guaranteed that the returned icon is in fact the one used for PWA installation.
-+  experimental deprecated command getManifestIcons
-     returns
-       optional binary primaryIcon
- 
-@@ -8149,24 +8150,25 @@ domain Page
-   # Clears seeded compilation cache.
-   experimental command clearCompilationCache
- 
--  # Sets the Secure Payment Confirmation transaction mode.
-+  # Enum of possible auto-reponse for permisison / prompt dialogs.
-+  experimental type AutoResponseMode extends string
-+    enum
-+      none
-+      autoAccept
-+      autoReject
-+      autoOptOut
-+
-+# Sets the Secure Payment Confirmation transaction mode.
-   # https://w3c.github.io/secure-payment-confirmation/#sctn-automation-set-spc-transaction-mode
-   experimental command setSPCTransactionMode
-     parameters
--      enum mode
--        none
--        autoAccept
--        autoReject
--        autoOptOut
-+      AutoResponseMode mode
- 
-   # Extensions for Custom Handlers API:
-   # https://html.spec.whatwg.org/multipage/system-state.html#rph-automation
-   experimental command setRPHRegistrationMode
-     parameters
--      enum mode
--        none
--        autoaccept
--        autoreject
-+      AutoResponseMode mode
- 
-   # Generates a report for testing.
-   experimental command generateTestReport
 ```
