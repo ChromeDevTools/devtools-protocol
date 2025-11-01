@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1538951 — _2025-11-01T04:30:31.000Z_
+######  Diff: [`b8a7fa7...f0f57b7`](https://github.com/ChromeDevTools/devtools-protocol/compare/b8a7fa7...f0f57b7)
+
+```diff
+@@ domains/Network.pdl:1797 @@ domain Network
+       Allow
+       BlockFromInsecureToMorePrivate
+       WarnFromInsecureToMorePrivate
+-      PreflightBlock
+-      PreflightWarn
+       PermissionBlock
+       PermissionWarn
+```
+
 ## Roll protocol to r1537100 — _2025-10-29T04:32:32.000Z_
-######  Diff: [`604a9f6...d3e13c1`](https://github.com/ChromeDevTools/devtools-protocol/compare/604a9f6...d3e13c1)
+######  Diff: [`604a9f6...b8a7fa7`](https://github.com/ChromeDevTools/devtools-protocol/compare/604a9f6...b8a7fa7)
 
 ```diff
 @@ domains/SystemInfo.pdl:74 @@ experimental domain SystemInfo
@@ -42077,18 +42091,4 @@ index d4102f5c..6285d9b6 100644
 +        BlockedByTopLevelEsModuleChange
        # Exception details if any. Only present when `status` is `CompileError`.
        optional Runtime.ExceptionDetails exceptionDetails
-```
-
-## Roll protocol to r1102555 — _2023-02-08T04:29:03.000Z_
-######  Diff: [`e088ea1...db5327b`](https://github.com/ChromeDevTools/devtools-protocol/compare/e088ea1...db5327b)
-
-```diff
-@@ browser_protocol.pdl:2556 @@ domain DOM
-       array of Quad quads
- 
-   # Returns the root DOM node (and optionally the subtree) to the caller.
-+  # Implicitly enables the DOM domain events for the current target.
-   command getDocument
-     parameters
-       # The maximum depth at which children should be retrieved, defaults to 1. Use -1 for the
 ```

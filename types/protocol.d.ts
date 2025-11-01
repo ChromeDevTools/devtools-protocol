@@ -13316,7 +13316,7 @@ export namespace Protocol {
         /**
          * @experimental
          */
-        export type PrivateNetworkRequestPolicy = ('Allow' | 'BlockFromInsecureToMorePrivate' | 'WarnFromInsecureToMorePrivate' | 'PreflightBlock' | 'PreflightWarn' | 'PermissionBlock' | 'PermissionWarn');
+        export type PrivateNetworkRequestPolicy = ('Allow' | 'BlockFromInsecureToMorePrivate' | 'WarnFromInsecureToMorePrivate' | 'PermissionBlock' | 'PermissionWarn');
 
         /**
          * @experimental

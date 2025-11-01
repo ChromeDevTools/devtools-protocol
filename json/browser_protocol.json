@@ -16740,8 +16740,6 @@
                         "Allow",
                         "BlockFromInsecureToMorePrivate",
                         "WarnFromInsecureToMorePrivate",
-                        "PreflightBlock",
-                        "PreflightWarn",
                         "PermissionBlock",
                         "PermissionWarn"
                     ]
