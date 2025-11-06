@@ -1,7 +1,37 @@
 
 
+## Roll protocol to r1541017 — _2025-11-06T04:32:31.000Z_
+######  Diff: [`0e79e39...166a35c`](https://github.com/ChromeDevTools/devtools-protocol/compare/0e79e39...166a35c)
+
+```diff
+@@ domains/Animation.pdl:68 @@ experimental domain Animation
+       number endDelay
+       # `AnimationEffect`'s iteration start.
+       number iterationStart
+-      # `AnimationEffect`'s iterations.
+-      number iterations
++      # `AnimationEffect`'s iterations. Omitted if the value is infinite.
++      optional number iterations
+       # `AnimationEffect`'s iteration duration.
+       # Milliseconds for time based animations and
+       # percentage [0 - 100] for scroll driven animations
+diff --git a/pdl/domains/DOM.pdl b/pdl/domains/DOM.pdl
+index 71a50b6f..8ac853fa 100644
+--- a/pdl/domains/DOM.pdl
++++ b/pdl/domains/DOM.pdl
+@@ -72,6 +72,8 @@ domain DOM
+       details-content
+       picker
+       permission-icon
++      overscroll-area-parent
++      overscroll-client-area
+ 
+   # Shadow root type.
+   type ShadowRootType extends string
+```
+
 ## Roll protocol to r1538951 — _2025-11-01T04:30:31.000Z_
-######  Diff: [`b8a7fa7...f0f57b7`](https://github.com/ChromeDevTools/devtools-protocol/compare/b8a7fa7...f0f57b7)
+######  Diff: [`b8a7fa7...0e79e39`](https://github.com/ChromeDevTools/devtools-protocol/compare/b8a7fa7...0e79e39)
 
 ```diff
 @@ domains/Network.pdl:1797 @@ domain Network
@@ -41914,181 +41944,4 @@ index 0dbdc01d..7a3c772c 100644
 +    parameters
 +      RequestId id
 +      array of PromptDevice devices
-```
-
-## Roll protocol to r1103117 — _2023-02-09T04:28:18.000Z_
-######  Diff: [`db5327b...8cf7384`](https://github.com/ChromeDevTools/devtools-protocol/compare/db5327b...8cf7384)
-
-```diff
-@@ browser_protocol.pdl:203 @@ experimental domain Accessibility
-       optional DOM.BackendNodeId backendNodeId
-       # JavaScript object id of the node wrapper to get the partial accessibility tree for.
-       optional Runtime.RemoteObjectId objectId
--      # Whether to fetch this nodes ancestors, siblings and children. Defaults to true.
-+      # Whether to fetch this node's ancestors, siblings and children. Defaults to true.
-       optional boolean fetchRelatives
-     returns
-       # The `Accessibility.AXNode` for this DOM node, if it exists, plus its ancestors, siblings and
-@@ -761,73 +761,14 @@ experimental domain Audits
-       optional Page.FrameId frameId
-       optional DOM.BackendNodeId violatingNodeId
- 
--  type DeprecationIssueType extends string
--    enum
--      AuthorizationCoveredByWildcard
--      CanRequestURLHTTPContainingNewline
--      ChromeLoadTimesConnectionInfo
--      ChromeLoadTimesFirstPaintAfterLoadTime
--      ChromeLoadTimesWasAlternateProtocolAvailable
--      CookieWithTruncatingChar
--      CrossOriginAccessBasedOnDocumentDomain
--      CrossOriginWindowAlert
--      CrossOriginWindowConfirm
--      CSSSelectorInternalMediaControlsOverlayCastButton
--      DeprecationExample
--      DocumentDomainSettingWithoutOriginAgentClusterHeader
--      EventPath
--      ExpectCTHeader
--      GeolocationInsecureOrigin
--      GeolocationInsecureOriginDeprecatedNotRemoved
--      GetUserMediaInsecureOrigin
--      HostCandidateAttributeGetter
--      IdentityInCanMakePaymentEvent
--      InsecurePrivateNetworkSubresourceRequest
--      LocalCSSFileExtensionRejected
--      MediaSourceAbortRemove
--      MediaSourceDurationTruncatingBuffered
--      NoSysexWebMIDIWithoutPermission
--      NotificationInsecureOrigin
--      NotificationPermissionRequestedIframe
--      ObsoleteCreateImageBitmapImageOrientationNone
--      ObsoleteWebRtcCipherSuite
--      OpenWebDatabaseInsecureContext
--      OverflowVisibleOnReplacedElement
--      PaymentInstruments
--      PaymentRequestCSPViolation
--      PersistentQuotaType
--      PictureSourceSrc
--      PrefixedCancelAnimationFrame
--      PrefixedRequestAnimationFrame
--      PrefixedStorageInfo
--      PrefixedVideoDisplayingFullscreen
--      PrefixedVideoEnterFullscreen
--      PrefixedVideoEnterFullScreen
--      PrefixedVideoExitFullscreen
--      PrefixedVideoExitFullScreen
--      PrefixedVideoSupportsFullscreen
--      PrivacySandboxExtensionsAPI
--      RangeExpand
--      RequestedSubresourceWithEmbeddedCredentials
--      RTCConstraintEnableDtlsSrtpFalse
--      RTCConstraintEnableDtlsSrtpTrue
--      RTCPeerConnectionComplexPlanBSdpUsingDefaultSdpSemantics
--      RTCPeerConnectionSdpSemanticsPlanB
--      RtcpMuxPolicyNegotiate
--      SharedArrayBufferConstructedWithoutIsolation
--      TextToSpeech_DisallowedByAutoplay
--      V8SharedArrayBufferConstructedInExtensionWithoutIsolation
--      XHRJSONEncodingDetection
--      XMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload
--      XRSupportsSession
--
-   # This issue tracks information needed to print a deprecation message.
-   # https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/frame/third_party/blink/renderer/core/frame/deprecation/README.md
-   type DeprecationIssueDetails extends object
-     properties
-       optional AffectedFrame affectedFrame
-       SourceCodeLocation sourceCodeLocation
--      DeprecationIssueType type
-+      # One of the deprecation names from third_party/blink/renderer/core/frame/deprecation/deprecation.json5
-+      string type
- 
-   type ClientHintIssueReason extends string
-     enum
-@@ -1902,7 +1843,7 @@ experimental domain CSS
-   # Polls the next batch of computed style updates.
-   experimental command takeComputedStyleUpdates
-     returns
--      # The list of node Ids that have their tracked computed styles updated
-+      # The list of node Ids that have their tracked computed styles updated.
-       array of DOM.NodeId nodeIds
- 
-   # Find a rule with the given active property for the given node and set the new value for this
-@@ -1995,13 +1936,13 @@ experimental domain CSS
-   command startRuleUsageTracking
- 
-   # Stop tracking rule usage and return the list of rules that were used since last call to
--  # `takeCoverageDelta` (or since start of coverage instrumentation)
-+  # `takeCoverageDelta` (or since start of coverage instrumentation).
-   command stopRuleUsageTracking
-     returns
-       array of RuleUsage ruleUsage
- 
-   # Obtain list of rules that became used since last call to this method (or since start of coverage
--  # instrumentation)
-+  # instrumentation).
-   command takeCoverageDelta
-     returns
-       array of RuleUsage coverage
-@@ -2015,7 +1956,7 @@ experimental domain CSS
-       boolean enabled
- 
-   # Fires whenever a web font is updated.  A non-empty font parameter indicates a successfully loaded
--  # web font
-+  # web font.
-   event fontsUpdated
-     parameters
-       # The web font that has loaded.
-@@ -3810,11 +3751,13 @@ domain Emulation
-   # Emulates the given vision deficiency.
-   experimental command setEmulatedVisionDeficiency
-     parameters
--      # Vision deficiency to emulate.
-+      # Vision deficiency to emulate. Order: best-effort emulations come first, followed by any
-+      # physiologically accurate emulations for medically recognized color vision deficiencies.
-       enum type
-         none
--        achromatopsia
-         blurredVision
-+        reducedContrast
-+        achromatopsia
-         deuteranopia
-         protanopia
-         tritanopia
-@@ -4196,7 +4139,7 @@ experimental domain IndexedDB
-       # If true, there are more entries to fetch in the given range.
-       boolean hasMore
- 
--  # Gets metadata of an object store
-+  # Gets metadata of an object store.
-   command getMetadata
-     parameters
-       # At least and at most one of securityOrigin, storageKey must be specified.
-@@ -9371,6 +9314,15 @@ experimental domain Storage
-     returns
-       array of TrustTokens tokens
- 
-+  # Removes all Trust Tokens issued by the provided issuerOrigin.
-+  # Leaves other stored data, including the issuer's Redemption Records, intact.
-+  experimental command clearTrustTokens
-+    parameters
-+      string issuerOrigin
-+    returns
-+      # True if any tokens were deleted, false otherwise.
-+      boolean didDeleteTokens
-+
-   # Gets details for a named interest group.
-   experimental command getInterestGroupDetails
-     parameters
-diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
-index d4102f5c..6285d9b6 100644
---- a/pdl/js_protocol.pdl
-+++ b/pdl/js_protocol.pdl
-@@ -511,6 +511,7 @@ domain Debugger
-         CompileError
-         BlockedByActiveGenerator
-         BlockedByActiveFunction
-+        BlockedByTopLevelEsModuleChange
-       # Exception details if any. Only present when `status` is `CompileError`.
-       optional Runtime.ExceptionDetails exceptionDetails
 ```

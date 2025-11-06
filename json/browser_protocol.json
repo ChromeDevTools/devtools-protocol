@@ -734,7 +734,8 @@
                         },
                         {
                             "name": "iterations",
-                            "description": "`AnimationEffect`'s iterations.",
+                            "description": "`AnimationEffect`'s iterations. Omitted if the value is infinite.",
+                            "optional": true,
                             "type": "number"
                         },
                         {
@@ -6775,7 +6776,9 @@
                         "file-selector-button",
                         "details-content",
                         "picker",
-                        "permission-icon"
+                        "permission-icon",
+                        "overscroll-area-parent",
+                        "overscroll-client-area"
                     ]
                 },
                 {
