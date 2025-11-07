@@ -1,7 +1,71 @@
 
 
+## Roll protocol to r1541592 — _2025-11-07T04:32:19.000Z_
+######  Diff: [`b8b14fd...20c706c`](https://github.com/ChromeDevTools/devtools-protocol/compare/b8b14fd...20c706c)
+
+```diff
+@@ domains/CSS.pdl:514 @@ experimental domain CSS
+       # Associated style declaration.
+       CSSStyle style
+ 
++  # CSS generic @rule representation.
++  type CSSAtRule extends object
++    properties
++      # Type of at-rule.
++      enum type
++        font-face
++        font-feature-values
++        font-palette-values
++      # Subsection of font-feature-values, if this is a subsection.
++      optional enum subsection
++        # LINT.IfChange(FontVariantAlternatesFeatureType)
++        swash
++        annotation
++        ornaments
++        stylistic
++        styleset
++        character-variant
++        # LINT.ThenChange(//third_party/blink/renderer/core/inspector/inspector_style_sheet.cc:FontVariantAlternatesFeatureType,//third_party/blink/renderer/core/inspector/inspector_css_agent.cc:FontVariantAlternatesFeatureType)
++      # Associated name, if applicable.
++      optional Value name
++      # The css style sheet identifier (absent for user agent stylesheet and user-specified
++      # stylesheet rules) this rule came from.
++      optional StyleSheetId styleSheetId
++      # Parent stylesheet's origin.
++      StyleSheetOrigin origin
++      # Associated style declaration.
++      CSSStyle style
++
+   # CSS property at-rule representation.
+   type CSSPropertyRule extends object
+     properties
+@@ -774,6 +802,8 @@ experimental domain CSS
+       optional array of CSSPropertyRegistration cssPropertyRegistrations
+       # A font-palette-values rule matching this node.
+       optional CSSFontPaletteValuesRule cssFontPaletteValuesRule
++      # A list of simple @rules matching this node or its pseudo-elements.
++      optional array of CSSAtRule cssAtRules
+       # Id of the first parent element that does not have display: contents.
+       experimental optional DOM.NodeId parentLayoutNodeId
+       # A list of CSS at-function rules referenced by styles of this node.
+diff --git a/pdl/domains/Target.pdl b/pdl/domains/Target.pdl
+index 8c7f510d..abe66920 100644
+--- a/pdl/domains/Target.pdl
++++ b/pdl/domains/Target.pdl
+@@ -322,6 +322,9 @@ domain Target
+     parameters
+       # This can be the page or tab target ID.
+       TargetID targetId
++      # The id of the panel we want DevTools to open initially. Currently
++      # supported panels are elements, console, network, sources and resources.
++      optional string panelId
+     returns
+       # The targetId of DevTools page target.
+       TargetID targetId
+```
+
 ## Roll protocol to r1541017 — _2025-11-06T04:32:31.000Z_
-######  Diff: [`0e79e39...166a35c`](https://github.com/ChromeDevTools/devtools-protocol/compare/0e79e39...166a35c)
+######  Diff: [`0e79e39...b8b14fd`](https://github.com/ChromeDevTools/devtools-protocol/compare/0e79e39...b8b14fd)
 
 ```diff
 @@ domains/Animation.pdl:68 @@ experimental domain Animation
@@ -41870,78 +41934,4 @@ index 0dbdc01d..7a3c772c 100644
 +  event ruleSetRemoved
 +    parameters
 +      RuleSetId id
-```
-
-## Roll protocol to r1103684 — _2023-02-10T04:28:55.000Z_
-######  Diff: [`8cf7384...97f8fcb`](https://github.com/ChromeDevTools/devtools-protocol/compare/8cf7384...97f8fcb)
-
-```diff
-@@ browser_protocol.pdl:8555 @@ domain Page
-       # that is incompatible with prerender and has caused the cancellation of the attempt
-       optional string disallowedApiMethod
- 
-+  # List of Prefetch status, which refers to PreloadingTriggeringOutcome.
-+  type PrefetchStatus extends string
-+    enum
-+      Running
-+      Ready
-+      Success
-+      Failure
-+      # PreloadingTriggeringOutcome which not used by prefetch.
-+      NotSupported
-+
-+  # TODO(crbug/1384419): Create a dedicated domain for preloading.
-+  # Fired when a prefetch attempt is updated.
-+  experimental event prefetchStatusUpdated
-+    parameters
-+      # The frame id of the frame initiating prefetch.
-+      FrameId initiatingFrameId
-+      string prefetchUrl
-+      PrefetchStatus status
-+
-   event loadEventFired
-     parameters
-       Network.MonotonicTime timestamp
-@@ -10757,3 +10776,41 @@ experimental domain Media
- 
-   # Disables the Media domain.
-   command disable
-+
-+experimental domain DeviceAccess
-+  # Device request id.
-+  type RequestId extends string
-+
-+  # A device id.
-+  type DeviceId extends string
-+
-+  # Device information displayed in a user prompt to select a device.
-+  type PromptDevice extends object
-+    properties
-+      DeviceId id
-+      # Display name as it appears in a device request user prompt.
-+      string name
-+
-+  # Enable events in this domain.
-+  command enable
-+
-+  # Disable events in this domain.
-+  command disable
-+
-+  # Select a device in response to a DeviceAccess.deviceRequestPrompted event.
-+  command selectPrompt
-+    parameters
-+      RequestId id
-+      DeviceId deviceId
-+
-+  # Cancel a prompt in response to a DeviceAccess.deviceRequestPrompted event.
-+  command cancelPrompt
-+    parameters
-+      RequestId id
-+
-+  # A device request opened a user prompt to select a device. Respond with the
-+  # selectPrompt or cancelPrompt command.
-+  event deviceRequestPrompted
-+    parameters
-+      RequestId id
-+      array of PromptDevice devices
 ```

@@ -5800,6 +5800,52 @@ export namespace Protocol {
             style: CSSStyle;
         }
 
+        export const enum CSSAtRuleType {
+            FontFace = 'font-face',
+            FontFeatureValues = 'font-feature-values',
+            FontPaletteValues = 'font-palette-values',
+        }
+
+        export const enum CSSAtRuleSubsection {
+            Swash = 'swash',
+            Annotation = 'annotation',
+            Ornaments = 'ornaments',
+            Stylistic = 'stylistic',
+            Styleset = 'styleset',
+            CharacterVariant = 'character-variant',
+        }
+
+        /**
+         * CSS generic @rule representation.
+         */
+        export interface CSSAtRule {
+            /**
+             * Type of at-rule.
+             */
+            type: ('font-face' | 'font-feature-values' | 'font-palette-values');
+            /**
+             * Subsection of font-feature-values, if this is a subsection.
+             */
+            subsection?: ('swash' | 'annotation' | 'ornaments' | 'stylistic' | 'styleset' | 'character-variant');
+            /**
+             * Associated name, if applicable.
+             */
+            name?: Value;
+            /**
+             * The css style sheet identifier (absent for user agent stylesheet and user-specified
+             * stylesheet rules) this rule came from.
+             */
+            styleSheetId?: StyleSheetId;
+            /**
+             * Parent stylesheet's origin.
+             */
+            origin: StyleSheetOrigin;
+            /**
+             * Associated style declaration.
+             */
+            style: CSSStyle;
+        }
+
         /**
          * CSS property at-rule representation.
          */
@@ -6198,6 +6244,10 @@ export namespace Protocol {
              * A font-palette-values rule matching this node.
              */
             cssFontPaletteValuesRule?: CSSFontPaletteValuesRule;
+            /**
+             * A list of simple @rules matching this node or its pseudo-elements.
+             */
+            cssAtRules?: CSSAtRule[];
             /**
              * Id of the first parent element that does not have display: contents.
              * @experimental
@@ -20336,6 +20386,11 @@ export namespace Protocol {
              * This can be the page or tab target ID.
              */
             targetId: TargetID;
+            /**
+             * The id of the panel we want DevTools to open initially. Currently
+             * supported panels are elements, console, network, sources and resources.
+             */
+            panelId?: string;
         }
 
         export interface OpenDevToolsResponse {
