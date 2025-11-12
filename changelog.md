@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1543509 — _2025-11-12T04:32:18.000Z_
+######  Diff: [`c40015d...418844c`](https://github.com/ChromeDevTools/devtools-protocol/compare/c40015d...418844c)
+
+```diff
+@@ domains/Page.pdl:172 @@ domain Page
+       otp-credentials
+       payment
+       picture-in-picture
+-      popins
+       private-aggregation
+       private-state-token-issuance
+       private-state-token-redemption
+```
+
 ## Roll protocol to r1541592 — _2025-11-07T04:32:19.000Z_
-######  Diff: [`b8b14fd...20c706c`](https://github.com/ChromeDevTools/devtools-protocol/compare/b8b14fd...20c706c)
+######  Diff: [`b8b14fd...c40015d`](https://github.com/ChromeDevTools/devtools-protocol/compare/b8b14fd...c40015d)
 
 ```diff
 @@ domains/CSS.pdl:514 @@ experimental domain CSS
@@ -41892,46 +41906,4 @@ index 0dbdc01d..7a3c772c 100644
  
    event loadEventFired
      parameters
-```
-
-## Roll protocol to r1105486 — _2023-02-15T04:28:51.000Z_
-######  Diff: [`97f8fcb...30ceb43`](https://github.com/ChromeDevTools/devtools-protocol/compare/97f8fcb...30ceb43)
-
-```diff
-@@ browser_protocol.pdl:10814 @@ experimental domain DeviceAccess
-     parameters
-       RequestId id
-       array of PromptDevice devices
-+
-+experimental domain Preload
-+  # Unique id
-+  type RuleSetId extends string
-+
-+  # Corresponds to SpeculationRuleSet
-+  type RuleSet extends object
-+    properties
-+      RuleSetId id
-+      # Identifies a document which the rule set is associated with.
-+      Network.LoaderId loaderId
-+      # Source text of JSON representing the rule set. If it comes from
-+      # <script> tag, it is the textContent of the node. Note that it is
-+      # a JSON for valid case.
-+      #
-+      # See also:
-+      # - https://wicg.github.io/nav-speculation/speculation-rules.html
-+      # - https://github.com/WICG/nav-speculation/blob/main/triggers.md
-+      string sourceText
-+
-+  command enable
-+
-+  command disable
-+
-+  # Upsert. Currently, it is only emitted when a rule set added.
-+  event ruleSetUpdated
-+    parameters
-+      RuleSet ruleSet
-+
-+  event ruleSetRemoved
-+    parameters
-+      RuleSetId id
 ```
