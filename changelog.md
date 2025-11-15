@@ -1,7 +1,69 @@
 
 
+## Roll protocol to r1545402 — _2025-11-15T04:31:18.000Z_
+######  Diff: [`a134eaa...a77be31`](https://github.com/ChromeDevTools/devtools-protocol/compare/a134eaa...a77be31)
+
+```diff
+@@ domains/Network.pdl:298 @@ domain Network
+       corp-not-same-site
+       sri-message-signature-mismatch
+ 
+-  # Sets Controls for IP Proxy of requests.
+-  # Page reload is required before the new behavior will be observed.
+-  experimental type IpProxyStatus extends string
+-    enum
+-      Available
+-      FeatureNotEnabled
+-      MaskedDomainListNotEnabled
+-      MaskedDomainListNotPopulated
+-      AuthTokensUnavailable
+-      Unavailable
+-      BypassedByDevTools
+-
+-  # Returns enum representing if IP Proxy of requests is available
+-  # or reason it is not active.
+-  experimental command getIPProtectionProxyStatus
+-    returns
+-      # Whether IP proxy is available
+-      IpProxyStatus status
+-
+-  # Sets bypass IP Protection Proxy boolean.
+-  experimental command setIPProtectionProxyBypassEnabled
+-    parameters
+-      # Whether IP Proxy is being bypassed by devtools; false by default.
+-      boolean enabled
+-
+   # The reason why request was blocked.
+   type CorsError extends string
+     enum
+@@ -527,9 +502,6 @@ domain Network
+       Security.SecurityState securityState
+       # Security details for the request.
+       optional SecurityDetails securityDetails
+-      # Indicates whether the request was sent through IP Protection proxies. If
+-      # set to true, the request used the IP Protection privacy feature.
+-      experimental optional boolean isIpProtectionUsed
+ 
+   # WebSocket request data.
+   type WebSocketRequest extends object
+diff --git a/pdl/domains/Target.pdl b/pdl/domains/Target.pdl
+index abe66920..21c4e959 100644
+--- a/pdl/domains/Target.pdl
++++ b/pdl/domains/Target.pdl
+@@ -323,7 +323,8 @@ domain Target
+       # This can be the page or tab target ID.
+       TargetID targetId
+       # The id of the panel we want DevTools to open initially. Currently
+-      # supported panels are elements, console, network, sources and resources.
++      # supported panels are elements, console, network, sources, resources
++      # and performance.
+       optional string panelId
+     returns
+       # The targetId of DevTools page target.
+```
+
 ## Roll protocol to r1543509 — _2025-11-12T04:32:18.000Z_
-######  Diff: [`c40015d...418844c`](https://github.com/ChromeDevTools/devtools-protocol/compare/c40015d...418844c)
+######  Diff: [`c40015d...a134eaa`](https://github.com/ChromeDevTools/devtools-protocol/compare/c40015d...a134eaa)
 
 ```diff
 @@ domains/Page.pdl:172 @@ domain Page
@@ -41862,48 +41924,4 @@ index 0dbdc01d..7a3c772c 100644
  
    # Depending on the concrete errorType, different properties are set.
    type GenericIssueDetails extends object
-```
-
-## Roll protocol to r1107588 — _2023-02-21T04:28:49.000Z_
-######  Diff: [`30ceb43...8e5df71`](https://github.com/ChromeDevTools/devtools-protocol/compare/30ceb43...8e5df71)
-
-```diff
-@@ browser_protocol.pdl:8555 @@ domain Page
-       # that is incompatible with prerender and has caused the cancellation of the attempt
-       optional string disallowedApiMethod
- 
--  # List of Prefetch status, which refers to PreloadingTriggeringOutcome.
--  type PrefetchStatus extends string
-+  # Preloading status values, see also PreloadingTriggeringOutcome. This
-+  # status is shared by prefetchStatusUpdated and prerenderStatusUpdated.
-+  type PreloadingStatus extends string
-     enum
-+      Pending
-       Running
-       Ready
-       Success
-       Failure
--      # PreloadingTriggeringOutcome which not used by prefetch.
-+      # PreloadingTriggeringOutcome which not used by prefetch nor prerender.
-       NotSupported
- 
-   # TODO(crbug/1384419): Create a dedicated domain for preloading.
-@@ -8572,7 +8574,16 @@ domain Page
-       # The frame id of the frame initiating prefetch.
-       FrameId initiatingFrameId
-       string prefetchUrl
--      PrefetchStatus status
-+      PreloadingStatus status
-+
-+  # TODO(crbug/1384419): Create a dedicated domain for preloading.
-+  # Fired when a prerender attempt is updated.
-+  experimental event prerenderStatusUpdated
-+    parameters
-+      # The frame id of the frame initiating prerender.
-+      FrameId initiatingFrameId
-+      string prerenderingUrl
-+      PreloadingStatus status
- 
-   event loadEventFired
-     parameters
 ```

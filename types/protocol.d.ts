@@ -12439,13 +12439,6 @@ export namespace Protocol {
         export type BlockedReason = ('other' | 'csp' | 'mixed-content' | 'origin' | 'inspector' | 'integrity' | 'subresource-filter' | 'content-type' | 'coep-frame-resource-needs-coep-header' | 'coop-sandboxed-iframe-cannot-navigate-to-coop-page' | 'corp-not-same-origin' | 'corp-not-same-origin-after-defaulted-to-same-origin-by-coep' | 'corp-not-same-origin-after-defaulted-to-same-origin-by-dip' | 'corp-not-same-origin-after-defaulted-to-same-origin-by-coep-and-dip' | 'corp-not-same-site' | 'sri-message-signature-mismatch');
 
         /**
-         * Sets Controls for IP Proxy of requests.
-         * Page reload is required before the new behavior will be observed.
-         * @experimental
-         */
-        export type IpProxyStatus = ('Available' | 'FeatureNotEnabled' | 'MaskedDomainListNotEnabled' | 'MaskedDomainListNotPopulated' | 'AuthTokensUnavailable' | 'Unavailable' | 'BypassedByDevTools');
-
-        /**
          * The reason why request was blocked.
          */
         export type CorsError = ('DisallowedByMode' | 'InvalidResponse' | 'WildcardOriginNotAllowed' | 'MissingAllowOriginHeader' | 'MultipleAllowOriginValues' | 'InvalidAllowOriginValue' | 'AllowOriginMismatch' | 'InvalidAllowCredentials' | 'CorsDisabledScheme' | 'PreflightInvalidStatus' | 'PreflightDisallowedRedirect' | 'PreflightWildcardOriginNotAllowed' | 'PreflightMissingAllowOriginHeader' | 'PreflightMultipleAllowOriginValues' | 'PreflightInvalidAllowOriginValue' | 'PreflightAllowOriginMismatch' | 'PreflightInvalidAllowCredentials' | 'PreflightMissingAllowExternal' | 'PreflightInvalidAllowExternal' | 'PreflightMissingAllowPrivateNetwork' | 'PreflightInvalidAllowPrivateNetwork' | 'InvalidAllowMethodsPreflightResponse' | 'InvalidAllowHeadersPreflightResponse' | 'MethodDisallowedByPreflightResponse' | 'HeaderDisallowedByPreflightResponse' | 'RedirectContainsCredentials' | 'InsecurePrivateNetwork' | 'InvalidPrivateNetworkAccess' | 'UnexpectedPrivateNetworkAccess' | 'NoCorsRedirectModeNotFollow' | 'PreflightMissingPrivateNetworkAccessId' | 'PreflightMissingPrivateNetworkAccessName' | 'PrivateNetworkAccessPermissionUnavailable' | 'PrivateNetworkAccessPermissionDenied' | 'LocalNetworkAccessPermissionDenied');
@@ -12640,12 +12633,6 @@ export namespace Protocol {
              * Security details for the request.
              */
             securityDetails?: SecurityDetails;
-            /**
-             * Indicates whether the request was sent through IP Protection proxies. If
-             * set to true, the request used the IP Protection privacy feature.
-             * @experimental
-             */
-            isIpProtectionUsed?: boolean;
         }
 
         /**
@@ -13536,20 +13523,6 @@ export namespace Protocol {
         export interface LoadNetworkResourceOptions {
             disableCache: boolean;
             includeCredentials: boolean;
-        }
-
-        export interface GetIPProtectionProxyStatusResponse {
-            /**
-             * Whether IP proxy is available
-             */
-            status: IpProxyStatus;
-        }
-
-        export interface SetIPProtectionProxyBypassEnabledRequest {
-            /**
-             * Whether IP Proxy is being bypassed by devtools; false by default.
-             */
-            enabled: boolean;
         }
 
         export interface SetAcceptedEncodingsRequest {
@@ -20388,7 +20361,8 @@ export namespace Protocol {
             targetId: TargetID;
             /**
              * The id of the panel we want DevTools to open initially. Currently
-             * supported panels are elements, console, network, sources and resources.
+             * supported panels are elements, console, network, sources, resources
+             * and performance.
              */
             panelId?: string;
         }
