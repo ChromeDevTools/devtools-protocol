@@ -1,7 +1,29 @@
 
 
+## Roll protocol to r1546284 — _2025-11-18T04:32:28.000Z_
+######  Diff: [`1f03df6...d995e7c`](https://github.com/ChromeDevTools/devtools-protocol/compare/1f03df6...d995e7c)
+
+```diff
+@@ domains/Audits.pdl:405 @@ experimental domain Audits
+       FormInputWithNoLabelError
+       FormAutocompleteAttributeEmptyError
+       FormEmptyIdAndNameAttributesForInputError
+-      FormAriaLabelledByToNonExistingId
++      FormAriaLabelledByToNonExistingIdError
+       FormInputAssignedAutocompleteValueToIdOrNameAttributeError
+-      FormLabelHasNeitherForNorNestedInput
++      FormLabelHasNeitherForNorNestedInputError
+       FormLabelForMatchesNonExistingIdError
+       FormInputHasWrongButWellIntendedAutocompleteValueError
+       ResponseWasBlockedByORB
++      NavigationEntryMarkedSkippable
+ 
+   # Depending on the concrete errorType, different properties are set.
+   type GenericIssueDetails extends object
+```
+
 ## Roll protocol to r1545402 — _2025-11-15T04:31:18.000Z_
-######  Diff: [`a134eaa...a77be31`](https://github.com/ChromeDevTools/devtools-protocol/compare/a134eaa...a77be31)
+######  Diff: [`a134eaa...1f03df6`](https://github.com/ChromeDevTools/devtools-protocol/compare/a134eaa...1f03df6)
 
 ```diff
 @@ domains/Network.pdl:298 @@ domain Network
@@ -41907,20 +41929,6 @@ index 0dbdc01d..7a3c772c 100644
        FormLabelHasNeitherForNorNestedInput
        FormLabelForMatchesNonExistingIdError
 -      FormHasPasswordFieldWithoutUsernameFieldError
- 
-   # Depending on the concrete errorType, different properties are set.
-   type GenericIssueDetails extends object
-```
-
-## Roll protocol to r1109433 — _2023-02-24T04:29:05.000Z_
-######  Diff: [`8e5df71...41a0227`](https://github.com/ChromeDevTools/devtools-protocol/compare/8e5df71...41a0227)
-
-```diff
-@@ browser_protocol.pdl:752 @@ experimental domain Audits
-       FormInputAssignedAutocompleteValueToIdOrNameAttributeError
-       FormLabelHasNeitherForNorNestedInput
-       FormLabelForMatchesNonExistingIdError
-+      FormHasPasswordFieldWithoutUsernameFieldError
  
    # Depending on the concrete errorType, different properties are set.
    type GenericIssueDetails extends object
