@@ -13332,6 +13332,12 @@ export namespace Protocol {
              * Expected to be unsigned integer.
              */
             receiveBufferSize?: number;
+            multicastLoopback?: boolean;
+            /**
+             * Unsigned int 8.
+             */
+            multicastTimeToLive?: integer;
+            multicastAllowAddressSharing?: boolean;
         }
 
         /**
@@ -14624,6 +14630,22 @@ export namespace Protocol {
             identifier: RequestId;
             data: string;
             timestamp: MonotonicTime;
+        }
+
+        /**
+         * @experimental
+         */
+        export interface DirectUDPSocketJoinedMulticastGroupEvent {
+            identifier: RequestId;
+            IPAddress: string;
+        }
+
+        /**
+         * @experimental
+         */
+        export interface DirectUDPSocketLeftMulticastGroupEvent {
+            identifier: RequestId;
+            IPAddress: string;
         }
 
         /**

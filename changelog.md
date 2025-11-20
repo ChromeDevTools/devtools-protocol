@@ -1,7 +1,34 @@
 
 
+## Roll protocol to r1547617 — _2025-11-20T04:31:52.000Z_
+######  Diff: [`672dae3...3e324cc`](https://github.com/ChromeDevTools/devtools-protocol/compare/672dae3...3e324cc)
+
+```diff
+@@ domains/Network.pdl:1706 @@ domain Network
+       optional number sendBufferSize
+       # Expected to be unsigned integer.
+       optional number receiveBufferSize
++      optional boolean multicastLoopback
++      # Unsigned int 8.
++      optional integer multicastTimeToLive
++      optional boolean multicastAllowAddressSharing
++
++  experimental event directUDPSocketJoinedMulticastGroup
++    parameters
++      RequestId identifier
++      string IPAddress
++
++  experimental event directUDPSocketLeftMulticastGroup
++    parameters
++      RequestId identifier
++      string IPAddress
+ 
+ 
+   # Fired upon direct_socket.UDPSocket creation.
+```
+
 ## Roll protocol to r1546284 — _2025-11-18T04:32:28.000Z_
-######  Diff: [`1f03df6...d995e7c`](https://github.com/ChromeDevTools/devtools-protocol/compare/1f03df6...d995e7c)
+######  Diff: [`1f03df6...672dae3`](https://github.com/ChromeDevTools/devtools-protocol/compare/1f03df6...672dae3)
 
 ```diff
 @@ domains/Audits.pdl:405 @@ experimental domain Audits
@@ -41918,18 +41945,4 @@ index 0dbdc01d..7a3c772c 100644
 +
 +  command enable
 +  command disable
-```
-
-## Roll protocol to r1111422 — _2023-03-01T04:29:07.000Z_
-######  Diff: [`41a0227...b7cc171`](https://github.com/ChromeDevTools/devtools-protocol/compare/41a0227...b7cc171)
-
-```diff
-@@ browser_protocol.pdl:752 @@ experimental domain Audits
-       FormInputAssignedAutocompleteValueToIdOrNameAttributeError
-       FormLabelHasNeitherForNorNestedInput
-       FormLabelForMatchesNonExistingIdError
--      FormHasPasswordFieldWithoutUsernameFieldError
- 
-   # Depending on the concrete errorType, different properties are set.
-   type GenericIssueDetails extends object
 ```

@@ -3335,6 +3335,16 @@ export namespace ProtocolProxyApi {
         on(event: 'directTCPSocketChunkReceived', listener: (params: Protocol.Network.DirectTCPSocketChunkReceivedEvent) => void): void;
 
         /**
+         * @experimental
+         */
+        on(event: 'directUDPSocketJoinedMulticastGroup', listener: (params: Protocol.Network.DirectUDPSocketJoinedMulticastGroupEvent) => void): void;
+
+        /**
+         * @experimental
+         */
+        on(event: 'directUDPSocketLeftMulticastGroup', listener: (params: Protocol.Network.DirectUDPSocketLeftMulticastGroupEvent) => void): void;
+
+        /**
          * Fired upon direct_socket.UDPSocket creation.
          * @experimental
          */

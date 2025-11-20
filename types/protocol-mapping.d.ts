@@ -491,6 +491,14 @@ export namespace ProtocolMapping {
          */
         'Network.directTCPSocketChunkReceived': [Protocol.Network.DirectTCPSocketChunkReceivedEvent];
         /**
+         * @experimental
+         */
+        'Network.directUDPSocketJoinedMulticastGroup': [Protocol.Network.DirectUDPSocketJoinedMulticastGroupEvent];
+        /**
+         * @experimental
+         */
+        'Network.directUDPSocketLeftMulticastGroup': [Protocol.Network.DirectUDPSocketLeftMulticastGroupEvent];
+        /**
          * Fired upon direct_socket.UDPSocket creation.
          * @experimental
          */

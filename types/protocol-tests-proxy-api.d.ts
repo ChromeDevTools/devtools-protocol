@@ -3557,6 +3557,20 @@ export namespace ProtocolTestsProxyApi {
         onceDirectTCPSocketChunkReceived(eventMatcher?: (event: { params: Protocol.Network.DirectTCPSocketChunkReceivedEvent }) => boolean): Promise<{ params: Protocol.Network.DirectTCPSocketChunkReceivedEvent }>;
 
         /**
+         * @experimental
+         */
+        onDirectUDPSocketJoinedMulticastGroup(listener: (event: { params: Protocol.Network.DirectUDPSocketJoinedMulticastGroupEvent }) => void): void;
+        offDirectUDPSocketJoinedMulticastGroup(listener: (event: { params: Protocol.Network.DirectUDPSocketJoinedMulticastGroupEvent }) => void): void;
+        onceDirectUDPSocketJoinedMulticastGroup(eventMatcher?: (event: { params: Protocol.Network.DirectUDPSocketJoinedMulticastGroupEvent }) => boolean): Promise<{ params: Protocol.Network.DirectUDPSocketJoinedMulticastGroupEvent }>;
+
+        /**
+         * @experimental
+         */
+        onDirectUDPSocketLeftMulticastGroup(listener: (event: { params: Protocol.Network.DirectUDPSocketLeftMulticastGroupEvent }) => void): void;
+        offDirectUDPSocketLeftMulticastGroup(listener: (event: { params: Protocol.Network.DirectUDPSocketLeftMulticastGroupEvent }) => void): void;
+        onceDirectUDPSocketLeftMulticastGroup(eventMatcher?: (event: { params: Protocol.Network.DirectUDPSocketLeftMulticastGroupEvent }) => boolean): Promise<{ params: Protocol.Network.DirectUDPSocketLeftMulticastGroupEvent }>;
+
+        /**
          * Fired upon direct_socket.UDPSocket creation.
          * @experimental
          */
