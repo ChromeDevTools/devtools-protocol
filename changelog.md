@@ -1,7 +1,43 @@
 
 
+## Roll protocol to r1548244 — _2025-11-21T04:32:14.000Z_
+######  Diff: [`a07bc87...f72c051`](https://github.com/ChromeDevTools/devtools-protocol/compare/a07bc87...f72c051)
+
+```diff
+@@ domains/CSS.pdl:500 @@ experimental domain CSS
+       boolean inherits
+       string syntax
+ 
+-
+-  # CSS font-palette-values rule representation.
+-  type CSSFontPaletteValuesRule extends object
+-    properties
+-      # The css style sheet identifier (absent for user agent stylesheet and user-specified
+-      # stylesheet rules) this rule came from.
+-      optional StyleSheetId styleSheetId
+-      # Parent stylesheet's origin.
+-      StyleSheetOrigin origin
+-      # Associated font palette name.
+-      Value fontPaletteName
+-      # Associated style declaration.
+-      CSSStyle style
+-
+   # CSS generic @rule representation.
+   type CSSAtRule extends object
+     properties
+@@ -800,8 +786,6 @@ experimental domain CSS
+       optional array of CSSPropertyRule cssPropertyRules
+       # A list of CSS property registrations matching this node.
+       optional array of CSSPropertyRegistration cssPropertyRegistrations
+-      # A font-palette-values rule matching this node.
+-      optional CSSFontPaletteValuesRule cssFontPaletteValuesRule
+       # A list of simple @rules matching this node or its pseudo-elements.
+       optional array of CSSAtRule cssAtRules
+       # Id of the first parent element that does not have display: contents.
+```
+
 ## Roll protocol to r1547617 — _2025-11-20T04:31:52.000Z_
-######  Diff: [`672dae3...3e324cc`](https://github.com/ChromeDevTools/devtools-protocol/compare/672dae3...3e324cc)
+######  Diff: [`672dae3...a07bc87`](https://github.com/ChromeDevTools/devtools-protocol/compare/672dae3...a07bc87)
 
 ```diff
 @@ domains/Network.pdl:1706 @@ domain Network
@@ -41928,21 +41964,4 @@ index 0dbdc01d..7a3c772c 100644
  # This domain allows interacting with the FedCM dialog.
  experimental domain FedCm
    event dialogShown
-```
-
-## Roll protocol to r1112051 — _2023-03-02T04:29:08.000Z_
-######  Diff: [`b7cc171...6aab256`](https://github.com/ChromeDevTools/devtools-protocol/compare/b7cc171...6aab256)
-
-```diff
-@@ browser_protocol.pdl:10857 @@ experimental domain Preload
-   event ruleSetRemoved
-     parameters
-       RuleSetId id
-+
-+# This domain allows interacting with the FedCM dialog.
-+experimental domain FedCm
-+  event dialogShown
-+
-+  command enable
-+  command disable
 ```

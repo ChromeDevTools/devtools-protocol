@@ -5777,29 +5777,6 @@ export namespace Protocol {
             syntax: string;
         }
 
-        /**
-         * CSS font-palette-values rule representation.
-         */
-        export interface CSSFontPaletteValuesRule {
-            /**
-             * The css style sheet identifier (absent for user agent stylesheet and user-specified
-             * stylesheet rules) this rule came from.
-             */
-            styleSheetId?: StyleSheetId;
-            /**
-             * Parent stylesheet's origin.
-             */
-            origin: StyleSheetOrigin;
-            /**
-             * Associated font palette name.
-             */
-            fontPaletteName: Value;
-            /**
-             * Associated style declaration.
-             */
-            style: CSSStyle;
-        }
-
         export const enum CSSAtRuleType {
             FontFace = 'font-face',
             FontFeatureValues = 'font-feature-values',
@@ -6240,10 +6217,6 @@ export namespace Protocol {
              * A list of CSS property registrations matching this node.
              */
             cssPropertyRegistrations?: CSSPropertyRegistration[];
-            /**
-             * A font-palette-values rule matching this node.
-             */
-            cssFontPaletteValuesRule?: CSSFontPaletteValuesRule;
             /**
              * A list of simple @rules matching this node or its pseudo-elements.
              */
