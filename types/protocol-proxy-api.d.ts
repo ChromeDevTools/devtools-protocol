@@ -4068,6 +4068,13 @@ export namespace ProtocolProxyApi {
          */
         setPrerenderingAllowed(params: Protocol.Page.SetPrerenderingAllowedRequest): Promise<void>;
 
+        /**
+         * Get the annotated page content for the main frame.
+         * This is an experimental command that is subject to change.
+         * @experimental
+         */
+        getAnnotatedPageContent(params: Protocol.Page.GetAnnotatedPageContentRequest): Promise<Protocol.Page.GetAnnotatedPageContentResponse>;
+
         on(event: 'domContentEventFired', listener: (params: Protocol.Page.DomContentEventFiredEvent) => void): void;
 
         /**

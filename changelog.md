@@ -1,7 +1,29 @@
 
 
+## Roll protocol to r1548823 — _2025-11-22T04:31:34.000Z_
+######  Diff: [`d9682c8...7783aa9`](https://github.com/ChromeDevTools/devtools-protocol/compare/d9682c8...7783aa9)
+
+```diff
+@@ domains/Page.pdl:1767 @@ domain Page
+   experimental command setPrerenderingAllowed
+     parameters
+       boolean isAllowed
++
++  # Get the annotated page content for the main frame.
++  # This is an experimental command that is subject to change.
++  experimental command getAnnotatedPageContent
++    parameters
++      # Whether to include actionable information. Defaults to true.
++      optional boolean includeActionableInformation
++    returns
++      # The annotated page content as a base64 encoded protobuf.
++      # The format is defined by the `AnnotatedPageContent` message in
++      # components/optimization_guide/proto/features/common_quality_data.proto
++      binary content
+```
+
 ## Roll protocol to r1548244 — _2025-11-21T04:32:14.000Z_
-######  Diff: [`a07bc87...f72c051`](https://github.com/ChromeDevTools/devtools-protocol/compare/a07bc87...f72c051)
+######  Diff: [`a07bc87...d9682c8`](https://github.com/ChromeDevTools/devtools-protocol/compare/a07bc87...d9682c8)
 
 ```diff
 @@ domains/CSS.pdl:500 @@ experimental domain CSS
@@ -41736,230 +41758,6 @@ index 0dbdc01d..7a3c772c 100644
 +  event preloadingAttemptSourcesUpdated
 +    parameters
 +      array of PreloadingAttemptSource preloadingAttemptSources
-+
- # This domain allows interacting with the FedCM dialog.
- experimental domain FedCm
-   event dialogShown
-```
-
-## Roll protocol to r1113120 — _2023-03-04T04:28:32.000Z_
-######  Diff: [`6aab256...3ca05ae`](https://github.com/ChromeDevTools/devtools-protocol/compare/6aab256...3ca05ae)
-
-```diff
-@@ browser_protocol.pdl:8482 @@ domain Page
-       # Tree structure of reasons why the page could not be cached for each frame.
-       optional BackForwardCacheNotRestoredExplanationTree notRestoredExplanationsTree
- 
--  # List of FinalStatus reasons for Prerender2.
--  type PrerenderFinalStatus extends string
--    enum
--      Activated
--      Destroyed
--      LowEndDevice
--      InvalidSchemeRedirect
--      InvalidSchemeNavigation
--      InProgressNavigation
--      NavigationRequestBlockedByCsp
--      MainFrameNavigation
--      MojoBinderPolicy
--      RendererProcessCrashed
--      RendererProcessKilled
--      Download
--      TriggerDestroyed
--      NavigationNotCommitted
--      NavigationBadHttpStatus
--      ClientCertRequested
--      NavigationRequestNetworkError
--      MaxNumOfRunningPrerendersExceeded
--      CancelAllHostsForTesting
--      DidFailLoad
--      Stop
--      SslCertificateError
--      LoginAuthRequested
--      UaChangeRequiresReload
--      BlockedByClient
--      AudioOutputDeviceRequested
--      MixedContent
--      TriggerBackgrounded
--      EmbedderTriggeredAndCrossOriginRedirected
--      MemoryLimitExceeded
--      # Prerenders can be cancelled when Chrome uses excessive memory. This is
--      # recorded when it fails to get the memory usage.
--      FailToGetMemoryUsage
--      DataSaverEnabled
--      HasEffectiveUrl
--      ActivatedBeforeStarted
--      InactivePageRestriction
--      StartFailed
--      TimeoutBackgrounded
--      CrossSiteRedirect
--      CrossSiteNavigation
--      SameSiteCrossOriginRedirect
--      SameSiteCrossOriginNavigation
--      SameSiteCrossOriginRedirectNotOptIn
--      SameSiteCrossOriginNavigationNotOptIn
--      ActivationNavigationParameterMismatch
--      ActivatedInBackground
--      EmbedderHostDisallowed
--      ActivationNavigationDestroyedBeforeSuccess
--      TabClosedByUserGesture
--      TabClosedWithoutUserGesture
--      PrimaryMainFrameRendererProcessCrashed
--      PrimaryMainFrameRendererProcessKilled
--      ActivationFramePolicyNotCompatible
--      PreloadingDisabled
--      BatterySaverEnabled
--      ActivatedDuringMainFrameNavigation
--      PreloadingUnsupportedByWebContents
--
--  # Fired when a prerender attempt is completed.
--  experimental event prerenderAttemptCompleted
--    parameters
--      # The frame id of the frame initiating prerendering.
--      FrameId initiatingFrameId
--      string prerenderingUrl
--      PrerenderFinalStatus finalStatus
--      # This is used to give users more information about the name of the API call
--      # that is incompatible with prerender and has caused the cancellation of the attempt
--      optional string disallowedApiMethod
--
--  # Preloading status values, see also PreloadingTriggeringOutcome. This
--  # status is shared by prefetchStatusUpdated and prerenderStatusUpdated.
--  type PreloadingStatus extends string
--    enum
--      Pending
--      Running
--      Ready
--      Success
--      Failure
--      # PreloadingTriggeringOutcome which not used by prefetch nor prerender.
--      NotSupported
--
--  # TODO(crbug/1384419): Create a dedicated domain for preloading.
--  # Fired when a prefetch attempt is updated.
--  experimental event prefetchStatusUpdated
--    parameters
--      # The frame id of the frame initiating prefetch.
--      FrameId initiatingFrameId
--      string prefetchUrl
--      PreloadingStatus status
--
--  # TODO(crbug/1384419): Create a dedicated domain for preloading.
--  # Fired when a prerender attempt is updated.
--  experimental event prerenderStatusUpdated
--    parameters
--      # The frame id of the frame initiating prerender.
--      FrameId initiatingFrameId
--      string prerenderingUrl
--      PreloadingStatus status
--
-   event loadEventFired
-     parameters
-       Network.MonotonicTime timestamp
-@@ -10858,6 +10755,107 @@ experimental domain Preload
-     parameters
-       RuleSetId id
- 
-+  # List of FinalStatus reasons for Prerender2.
-+  type PrerenderFinalStatus extends string
-+    enum
-+      Activated
-+      Destroyed
-+      LowEndDevice
-+      InvalidSchemeRedirect
-+      InvalidSchemeNavigation
-+      InProgressNavigation
-+      NavigationRequestBlockedByCsp
-+      MainFrameNavigation
-+      MojoBinderPolicy
-+      RendererProcessCrashed
-+      RendererProcessKilled
-+      Download
-+      TriggerDestroyed
-+      NavigationNotCommitted
-+      NavigationBadHttpStatus
-+      ClientCertRequested
-+      NavigationRequestNetworkError
-+      MaxNumOfRunningPrerendersExceeded
-+      CancelAllHostsForTesting
-+      DidFailLoad
-+      Stop
-+      SslCertificateError
-+      LoginAuthRequested
-+      UaChangeRequiresReload
-+      BlockedByClient
-+      AudioOutputDeviceRequested
-+      MixedContent
-+      TriggerBackgrounded
-+      EmbedderTriggeredAndCrossOriginRedirected
-+      MemoryLimitExceeded
-+      # Prerenders can be cancelled when Chrome uses excessive memory. This is
-+      # recorded when it fails to get the memory usage.
-+      FailToGetMemoryUsage
-+      DataSaverEnabled
-+      HasEffectiveUrl
-+      ActivatedBeforeStarted
-+      InactivePageRestriction
-+      StartFailed
-+      TimeoutBackgrounded
-+      CrossSiteRedirect
-+      CrossSiteNavigation
-+      SameSiteCrossOriginRedirect
-+      SameSiteCrossOriginNavigation
-+      SameSiteCrossOriginRedirectNotOptIn
-+      SameSiteCrossOriginNavigationNotOptIn
-+      ActivationNavigationParameterMismatch
-+      ActivatedInBackground
-+      EmbedderHostDisallowed
-+      ActivationNavigationDestroyedBeforeSuccess
-+      TabClosedByUserGesture
-+      TabClosedWithoutUserGesture
-+      PrimaryMainFrameRendererProcessCrashed
-+      PrimaryMainFrameRendererProcessKilled
-+      ActivationFramePolicyNotCompatible
-+      PreloadingDisabled
-+      BatterySaverEnabled
-+      ActivatedDuringMainFrameNavigation
-+      PreloadingUnsupportedByWebContents
-+
-+  # Fired when a prerender attempt is completed.
-+  event prerenderAttemptCompleted
-+    parameters
-+      # The frame id of the frame initiating prerendering.
-+      Page.FrameId initiatingFrameId
-+      string prerenderingUrl
-+      PrerenderFinalStatus finalStatus
-+      # This is used to give users more information about the name of the API call
-+      # that is incompatible with prerender and has caused the cancellation of the attempt
-+      optional string disallowedApiMethod
-+
-+  # Preloading status values, see also PreloadingTriggeringOutcome. This
-+  # status is shared by prefetchStatusUpdated and prerenderStatusUpdated.
-+  type PreloadingStatus extends string
-+    enum
-+      Pending
-+      Running
-+      Ready
-+      Success
-+      Failure
-+      # PreloadingTriggeringOutcome which not used by prefetch nor prerender.
-+      NotSupported
-+
-+  # Fired when a prefetch attempt is updated.
-+  event prefetchStatusUpdated
-+    parameters
-+      # The frame id of the frame initiating prefetch.
-+      Page.FrameId initiatingFrameId
-+      string prefetchUrl
-+      PreloadingStatus status
-+
-+  # Fired when a prerender attempt is updated.
-+  event prerenderStatusUpdated
-+    parameters
-+      # The frame id of the frame initiating prerender.
-+      Page.FrameId initiatingFrameId
-+      string prerenderingUrl
-+      PreloadingStatus status
 +
  # This domain allows interacting with the FedCM dialog.
  experimental domain FedCm

@@ -17412,6 +17412,22 @@ export namespace Protocol {
             isAllowed: boolean;
         }
 
+        export interface GetAnnotatedPageContentRequest {
+            /**
+             * Whether to include actionable information. Defaults to true.
+             */
+            includeActionableInformation?: boolean;
+        }
+
+        export interface GetAnnotatedPageContentResponse {
+            /**
+             * The annotated page content as a base64 encoded protobuf.
+             * The format is defined by the `AnnotatedPageContent` message in
+             * components/optimization_guide/proto/features/common_quality_data.proto (Encoded as a base64 string when passed over JSON)
+             */
+            content: string;
+        }
+
         export interface DomContentEventFiredEvent {
             timestamp: Network.MonotonicTime;
         }

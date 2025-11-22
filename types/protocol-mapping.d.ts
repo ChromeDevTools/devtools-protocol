@@ -5155,6 +5155,15 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Get the annotated page content for the main frame.
+         * This is an experimental command that is subject to change.
+         * @experimental
+         */
+        'Page.getAnnotatedPageContent': {
+            paramsType: [Protocol.Page.GetAnnotatedPageContentRequest?];
+            returnType: Protocol.Page.GetAnnotatedPageContentResponse;
+        };
+        /**
          * Disable collecting and reporting metrics.
          */
         'Performance.disable': {
