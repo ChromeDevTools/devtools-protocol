@@ -1,7 +1,37 @@
 
 
+## Roll protocol to r1550230 — _2025-11-26T04:32:55.000Z_
+######  Diff: [`3507fa9...3cd67e0`](https://github.com/ChromeDevTools/devtools-protocol/compare/3507fa9...3cd67e0)
+
+```diff
+@@ domains/Page.pdl:100 @@ domain Page
+       ambient-light-sensor
+       aria-notify
+       attribution-reporting
++      autofill
+       autoplay
+       bluetooth
+       browsing-topics
+@@ -165,6 +166,7 @@ domain Page
+       local-fonts
+       local-network-access
+       magnetometer
++      manual-text
+       media-playback-while-not-visible
+       microphone
+       midi
+@@ -182,7 +184,6 @@ domain Page
+       run-ad-auction
+       screen-wake-lock
+       serial
+-      shared-autofill
+       shared-storage
+       shared-storage-select-url
+       smart-card
+```
+
 ## Roll protocol to r1548823 — _2025-11-22T04:31:34.000Z_
-######  Diff: [`d9682c8...7783aa9`](https://github.com/ChromeDevTools/devtools-protocol/compare/d9682c8...7783aa9)
+######  Diff: [`d9682c8...3507fa9`](https://github.com/ChromeDevTools/devtools-protocol/compare/d9682c8...3507fa9)
 
 ```diff
 @@ domains/Page.pdl:1767 @@ domain Page
@@ -41698,68 +41728,4 @@ index 0dbdc01d..7a3c772c 100644
        UntrustworthyReportingOrigin
        InsecureContext
        # TODO(apaseltiner): Rename this to InvalidRegisterSourceHeader
-```
-
-## Roll protocol to r1113774 — _2023-03-07T04:29:03.000Z_
-######  Diff: [`3ca05ae...e4e18e5`](https://github.com/ChromeDevTools/devtools-protocol/compare/3ca05ae...e4e18e5)
-
-```diff
-@@ browser_protocol.pdl:10742 @@ experimental domain Preload
-       # - https://github.com/WICG/nav-speculation/blob/main/triggers.md
-       string sourceText
- 
-+  # The type of preloading attempted. It corresponds to
-+  # mojom::SpeculationAction (although PrefetchWithSubresources is omitted as it
-+  # isn't being used by clients).
-+  type SpeculationAction extends string
-+    enum
-+      Prefetch
-+      Prerender
-+
-+  # Corresponds to mojom::SpeculationTargetHint.
-+  # See https://github.com/WICG/nav-speculation/blob/main/triggers.md#window-name-targeting-hints
-+  type SpeculationTargetHint extends string
-+    enum
-+      Blank
-+      Self
-+
-+  # A key that identifies a preloading attempt.
-+  #
-+  # The url used is the url specified by the trigger (i.e. the initial URL), and
-+  # not the final url that is navigated to. For example, prerendering allows
-+  # same-origin main frame navigations during the attempt, but the attempt is
-+  # still keyed with the initial URL.
-+  type PreloadingAttemptKey extends object
-+    properties
-+      Network.LoaderId loaderId
-+      SpeculationAction action
-+      string url
-+      optional SpeculationTargetHint targetHint
-+
-+  # Lists sources for a preloading attempt, specifically the ids of rule sets
-+  # that had a speculation rule that triggered the attempt, and the
-+  # BackendNodeIds of <a href> or <area href> elements that triggered the
-+  # attempt (in the case of attempts triggered by a document rule). It is
-+  # possible for mulitple rule sets and links to trigger a single attempt.
-+  type PreloadingAttemptSource extends object
-+    properties
-+      PreloadingAttemptKey key
-+      array of RuleSetId ruleSetIds
-+      array of DOM.BackendNodeId nodeIds
-+
-   command enable
- 
-   command disable
-@@ -10856,6 +10895,11 @@ experimental domain Preload
-       string prerenderingUrl
-       PreloadingStatus status
- 
-+  # Send a list of sources for all preloading attempts.
-+  event preloadingAttemptSourcesUpdated
-+    parameters
-+      array of PreloadingAttemptSource preloadingAttemptSources
-+
- # This domain allows interacting with the FedCM dialog.
- experimental domain FedCm
-   event dialogShown
 ```
