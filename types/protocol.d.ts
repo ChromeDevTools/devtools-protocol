@@ -3881,12 +3881,50 @@ export namespace Protocol {
             sourceCodeLocation?: SourceCodeLocation;
         }
 
+        export type PermissionElementIssueType = ('InvalidType' | 'FencedFrameDisallowed' | 'CspFrameAncestorsMissing' | 'PermissionsPolicyBlocked' | 'PaddingRightUnsupported' | 'PaddingBottomUnsupported' | 'InsetBoxShadowUnsupported' | 'RequestInProgress' | 'UntrustedEvent' | 'RegistrationFailed' | 'TypeNotSupported' | 'InvalidTypeActivation' | 'SecurityChecksFailed' | 'ActivationDisabled' | 'GeolocationDeprecated' | 'InvalidDisplayStyle' | 'NonOpaqueColor' | 'LowContrast' | 'FontSizeTooSmall' | 'FontSizeTooLarge' | 'InvalidSizeValue');
+
+        /**
+         * This issue warns about improper usage of the <permission> element.
+         */
+        export interface PermissionElementIssueDetails {
+            issueType: PermissionElementIssueType;
+            /**
+             * The value of the type attribute.
+             */
+            type?: string;
+            /**
+             * The node ID of the <permission> element.
+             */
+            nodeId?: DOM.BackendNodeId;
+            /**
+             * True if the issue is a warning, false if it is an error.
+             */
+            isWarning?: boolean;
+            /**
+             * Fields for message construction:
+             * Used for messages that reference a specific permission name
+             */
+            permissionName?: string;
+            /**
+             * Used for messages about occlusion
+             */
+            occluderNodeInfo?: string;
+            /**
+             * Used for messages about occluder's parent
+             */
+            occluderParentNodeInfo?: string;
+            /**
+             * Used for messages about activation disabled reason
+             */
+            disableReason?: string;
+        }
+
         /**
          * A unique identifier for the type of issue. Each type may use one of the
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'PartitioningBlobURLIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'CookieDeprecationMetadataIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue' | 'PropertyRuleIssue' | 'SharedDictionaryIssue' | 'ElementAccessibilityIssue' | 'SRIMessageSignatureIssue' | 'UnencodedDigestIssue' | 'UserReidentificationIssue');
+        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'PartitioningBlobURLIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'CookieDeprecationMetadataIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue' | 'PropertyRuleIssue' | 'SharedDictionaryIssue' | 'ElementAccessibilityIssue' | 'SRIMessageSignatureIssue' | 'UnencodedDigestIssue' | 'UserReidentificationIssue' | 'PermissionElementIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3923,6 +3961,7 @@ export namespace Protocol {
             sriMessageSignatureIssueDetails?: SRIMessageSignatureIssueDetails;
             unencodedDigestIssueDetails?: UnencodedDigestIssueDetails;
             userReidentificationIssueDetails?: UserReidentificationIssueDetails;
+            permissionElementIssueDetails?: PermissionElementIssueDetails;
         }
 
         /**
@@ -4927,8 +4966,6 @@ export namespace Protocol {
      */
     export namespace CSS {
 
-        export type StyleSheetId = string;
-
         /**
          * Stylesheet type: "injected" for stylesheets injected via extension, "user-agent" for user-agent
          * stylesheets, "inspector" for stylesheets created by the inspector (i.e. those holding the "via
@@ -5081,7 +5118,7 @@ export namespace Protocol {
             /**
              * The stylesheet identifier.
              */
-            styleSheetId: StyleSheetId;
+            styleSheetId: DOM.StyleSheetId;
             /**
              * Owner frame identifier.
              */
@@ -5168,7 +5205,7 @@ export namespace Protocol {
              * The css style sheet identifier (absent for user agent stylesheet and user-specified
              * stylesheet rules) this rule came from.
              */
-            styleSheetId?: StyleSheetId;
+            styleSheetId?: DOM.StyleSheetId;
             /**
              * Rule selector data.
              */
@@ -5248,7 +5285,7 @@ export namespace Protocol {
              * The css style sheet identifier (absent for user agent stylesheet and user-specified
              * stylesheet rules) this rule came from.
              */
-            styleSheetId: StyleSheetId;
+            styleSheetId: DOM.StyleSheetId;
             /**
              * Offset of the start of the rule (including selector) from the beginning of the stylesheet.
              */
@@ -5331,7 +5368,7 @@ export namespace Protocol {
              * The css style sheet identifier (absent for user agent stylesheet and user-specified
              * stylesheet rules) this rule came from.
              */
-            styleSheetId?: StyleSheetId;
+            styleSheetId?: DOM.StyleSheetId;
             /**
              * CSS properties in the style.
              */
@@ -5428,7 +5465,7 @@ export namespace Protocol {
             /**
              * Identifier of the stylesheet containing this object (if exists).
              */
-            styleSheetId?: StyleSheetId;
+            styleSheetId?: DOM.StyleSheetId;
             /**
              * Array of media queries.
              */
@@ -5492,7 +5529,7 @@ export namespace Protocol {
             /**
              * Identifier of the stylesheet containing this object (if exists).
              */
-            styleSheetId?: StyleSheetId;
+            styleSheetId?: DOM.StyleSheetId;
             /**
              * Optional name for the container.
              */
@@ -5536,7 +5573,7 @@ export namespace Protocol {
             /**
              * Identifier of the stylesheet containing this object (if exists).
              */
-            styleSheetId?: StyleSheetId;
+            styleSheetId?: DOM.StyleSheetId;
         }
 
         /**
@@ -5556,7 +5593,7 @@ export namespace Protocol {
             /**
              * Identifier of the stylesheet containing this object (if exists).
              */
-            styleSheetId?: StyleSheetId;
+            styleSheetId?: DOM.StyleSheetId;
         }
 
         /**
@@ -5576,7 +5613,7 @@ export namespace Protocol {
             /**
              * Identifier of the stylesheet containing this object (if exists).
              */
-            styleSheetId?: StyleSheetId;
+            styleSheetId?: DOM.StyleSheetId;
         }
 
         /**
@@ -5592,7 +5629,7 @@ export namespace Protocol {
             /**
              * Identifier of the stylesheet containing this object (if exists).
              */
-            styleSheetId?: StyleSheetId;
+            styleSheetId?: DOM.StyleSheetId;
         }
 
         /**
@@ -5718,7 +5755,7 @@ export namespace Protocol {
              * The css style sheet identifier (absent for user agent stylesheet and user-specified
              * stylesheet rules) this rule came from.
              */
-            styleSheetId?: StyleSheetId;
+            styleSheetId?: DOM.StyleSheetId;
             /**
              * Parent stylesheet's origin.
              */
@@ -5741,7 +5778,7 @@ export namespace Protocol {
              * The css style sheet identifier (absent for user agent stylesheet and user-specified
              * stylesheet rules) this rule came from.
              */
-            styleSheetId?: StyleSheetId;
+            styleSheetId?: DOM.StyleSheetId;
             /**
              * Parent stylesheet's origin.
              */
@@ -5812,7 +5849,7 @@ export namespace Protocol {
              * The css style sheet identifier (absent for user agent stylesheet and user-specified
              * stylesheet rules) this rule came from.
              */
-            styleSheetId?: StyleSheetId;
+            styleSheetId?: DOM.StyleSheetId;
             /**
              * Parent stylesheet's origin.
              */
@@ -5831,7 +5868,7 @@ export namespace Protocol {
              * The css style sheet identifier (absent for user agent stylesheet and user-specified
              * stylesheet rules) this rule came from.
              */
-            styleSheetId?: StyleSheetId;
+            styleSheetId?: DOM.StyleSheetId;
             /**
              * Parent stylesheet's origin.
              */
@@ -5912,7 +5949,7 @@ export namespace Protocol {
              * The css style sheet identifier (absent for user agent stylesheet and user-specified
              * stylesheet rules) this rule came from.
              */
-            styleSheetId?: StyleSheetId;
+            styleSheetId?: DOM.StyleSheetId;
             /**
              * Parent stylesheet's origin.
              */
@@ -5935,7 +5972,7 @@ export namespace Protocol {
              * The css style sheet identifier (absent for user agent stylesheet and user-specified
              * stylesheet rules) this rule came from.
              */
-            styleSheetId?: StyleSheetId;
+            styleSheetId?: DOM.StyleSheetId;
             /**
              * Parent stylesheet's origin.
              */
@@ -5957,7 +5994,7 @@ export namespace Protocol {
             /**
              * The css style sheet identifier.
              */
-            styleSheetId: StyleSheetId;
+            styleSheetId: DOM.StyleSheetId;
             /**
              * The range of the style text in the enclosing stylesheet.
              */
@@ -5972,7 +6009,7 @@ export namespace Protocol {
             /**
              * The css style sheet identifier where a new rule should be inserted.
              */
-            styleSheetId: StyleSheetId;
+            styleSheetId: DOM.StyleSheetId;
             /**
              * The text of a new rule.
              */
@@ -5998,7 +6035,7 @@ export namespace Protocol {
         }
 
         export interface CollectClassNamesRequest {
-            styleSheetId: StyleSheetId;
+            styleSheetId: DOM.StyleSheetId;
         }
 
         export interface CollectClassNamesResponse {
@@ -6026,7 +6063,7 @@ export namespace Protocol {
             /**
              * Identifier of the created "via-inspector" stylesheet.
              */
-            styleSheetId: StyleSheetId;
+            styleSheetId: DOM.StyleSheetId;
         }
 
         export interface ForcePseudoStateRequest {
@@ -6253,7 +6290,7 @@ export namespace Protocol {
         }
 
         export interface GetStyleSheetTextRequest {
-            styleSheetId: StyleSheetId;
+            styleSheetId: DOM.StyleSheetId;
         }
 
         export interface GetStyleSheetTextResponse {
@@ -6272,7 +6309,7 @@ export namespace Protocol {
         }
 
         export interface GetLocationForSelectorRequest {
-            styleSheetId: StyleSheetId;
+            styleSheetId: DOM.StyleSheetId;
             selectorText: string;
         }
 
@@ -6305,7 +6342,7 @@ export namespace Protocol {
         }
 
         export interface SetPropertyRulePropertyNameRequest {
-            styleSheetId: StyleSheetId;
+            styleSheetId: DOM.StyleSheetId;
             range: SourceRange;
             propertyName: string;
         }
@@ -6318,7 +6355,7 @@ export namespace Protocol {
         }
 
         export interface SetKeyframeKeyRequest {
-            styleSheetId: StyleSheetId;
+            styleSheetId: DOM.StyleSheetId;
             range: SourceRange;
             keyText: string;
         }
@@ -6331,7 +6368,7 @@ export namespace Protocol {
         }
 
         export interface SetMediaTextRequest {
-            styleSheetId: StyleSheetId;
+            styleSheetId: DOM.StyleSheetId;
             range: SourceRange;
             text: string;
         }
@@ -6344,7 +6381,7 @@ export namespace Protocol {
         }
 
         export interface SetContainerQueryTextRequest {
-            styleSheetId: StyleSheetId;
+            styleSheetId: DOM.StyleSheetId;
             range: SourceRange;
             text: string;
         }
@@ -6357,7 +6394,7 @@ export namespace Protocol {
         }
 
         export interface SetSupportsTextRequest {
-            styleSheetId: StyleSheetId;
+            styleSheetId: DOM.StyleSheetId;
             range: SourceRange;
             text: string;
         }
@@ -6370,7 +6407,7 @@ export namespace Protocol {
         }
 
         export interface SetScopeTextRequest {
-            styleSheetId: StyleSheetId;
+            styleSheetId: DOM.StyleSheetId;
             range: SourceRange;
             text: string;
         }
@@ -6383,7 +6420,7 @@ export namespace Protocol {
         }
 
         export interface SetRuleSelectorRequest {
-            styleSheetId: StyleSheetId;
+            styleSheetId: DOM.StyleSheetId;
             range: SourceRange;
             selector: string;
         }
@@ -6396,7 +6433,7 @@ export namespace Protocol {
         }
 
         export interface SetStyleSheetTextRequest {
-            styleSheetId: StyleSheetId;
+            styleSheetId: DOM.StyleSheetId;
             text: string;
         }
 
@@ -6469,7 +6506,7 @@ export namespace Protocol {
          * Fired whenever a stylesheet is changed as a result of the client operation.
          */
         export interface StyleSheetChangedEvent {
-            styleSheetId: StyleSheetId;
+            styleSheetId: DOM.StyleSheetId;
         }
 
         /**
@@ -6479,7 +6516,7 @@ export namespace Protocol {
             /**
              * Identifier of the removed stylesheet.
              */
-            styleSheetId: StyleSheetId;
+            styleSheetId: DOM.StyleSheetId;
         }
 
         /**
@@ -6759,6 +6796,11 @@ export namespace Protocol {
         export type BackendNodeId = integer;
 
         /**
+         * Unique identifier for a CSS stylesheet.
+         */
+        export type StyleSheetId = string;
+
+        /**
          * Backend node with a friendly name.
          */
         export interface BackendNode {
@@ -6940,6 +6982,10 @@ export namespace Protocol {
              * @experimental
              */
             affectedByStartingStyles?: boolean;
+            /**
+             * @experimental
+             */
+            adoptedStyleSheets?: StyleSheetId[];
         }
 
         /**
@@ -7857,6 +7903,22 @@ export namespace Protocol {
              * Attribute value.
              */
             value: string;
+        }
+
+        /**
+         * Fired when `Element`'s adoptedStyleSheets are modified.
+         * @experimental
+         */
+        export interface AdoptedStyleSheetsModifiedEvent {
+            /**
+             * Id of the node that has changed.
+             */
+            nodeId: NodeId;
+            /**
+             * New adoptedStyleSheets array.
+             * @experimental
+             */
+            adoptedStyleSheets: StyleSheetId[];
         }
 
         /**
@@ -20363,6 +20425,20 @@ export namespace Protocol {
              * List of remote locations.
              */
             locations: RemoteLocation[];
+        }
+
+        export interface GetDevToolsTargetRequest {
+            /**
+             * Page or tab target ID.
+             */
+            targetId: TargetID;
+        }
+
+        export interface GetDevToolsTargetResponse {
+            /**
+             * The targetId of DevTools page target if exists.
+             */
+            targetId?: TargetID;
         }
 
         export interface OpenDevToolsRequest {

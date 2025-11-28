@@ -1834,6 +1834,12 @@ export namespace ProtocolProxyApi {
         on(event: 'attributeModified', listener: (params: Protocol.DOM.AttributeModifiedEvent) => void): void;
 
         /**
+         * Fired when `Element`'s adoptedStyleSheets are modified.
+         * @experimental
+         */
+        on(event: 'adoptedStyleSheetsModified', listener: (params: Protocol.DOM.AdoptedStyleSheetsModifiedEvent) => void): void;
+
+        /**
          * Fired when `Element`'s attribute is removed.
          */
         on(event: 'attributeRemoved', listener: (params: Protocol.DOM.AttributeRemovedEvent) => void): void;
@@ -4841,6 +4847,13 @@ export namespace ProtocolProxyApi {
          * @experimental
          */
         setRemoteLocations(params: Protocol.Target.SetRemoteLocationsRequest): Promise<void>;
+
+        /**
+         * Gets the targetId of the DevTools page target opened for the given target
+         * (if any).
+         * @experimental
+         */
+        getDevToolsTarget(params: Protocol.Target.GetDevToolsTargetRequest): Promise<Protocol.Target.GetDevToolsTargetResponse>;
 
         /**
          * Opens a DevTools window for the target.

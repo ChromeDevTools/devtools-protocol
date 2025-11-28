@@ -1,7 +1,438 @@
 
 
+## Roll protocol to r1551306 — _2025-11-28T04:32:25.000Z_
+######  Diff: [`f64a130...8ec7315`](https://github.com/ChromeDevTools/devtools-protocol/compare/f64a130...8ec7315)
+
+```diff
+@@ domains/Audits.pdl:632 @@ experimental domain Audits
+       # Applies to NoisedCanvasReadback issue type.
+       optional SourceCodeLocation sourceCodeLocation
+ 
++  type PermissionElementIssueType extends string
++    enum
++      InvalidType
++      FencedFrameDisallowed
++      CspFrameAncestorsMissing
++      PermissionsPolicyBlocked
++      PaddingRightUnsupported
++      PaddingBottomUnsupported
++      InsetBoxShadowUnsupported
++      RequestInProgress
++      UntrustedEvent
++      RegistrationFailed
++      TypeNotSupported
++      InvalidTypeActivation
++      SecurityChecksFailed
++      ActivationDisabled
++      GeolocationDeprecated
++      InvalidDisplayStyle
++      NonOpaqueColor
++      LowContrast
++      FontSizeTooSmall
++      FontSizeTooLarge
++      InvalidSizeValue
++
++  # This issue warns about improper usage of the <permission> element.
++  type PermissionElementIssueDetails extends object
++    properties
++      PermissionElementIssueType issueType
++      # The value of the type attribute.
++      optional string type
++      # The node ID of the <permission> element.
++      optional DOM.BackendNodeId nodeId
++      # True if the issue is a warning, false if it is an error.
++      optional boolean isWarning
++
++      # Fields for message construction:
++      # Used for messages that reference a specific permission name
++      optional string permissionName
++      # Used for messages about occlusion
++      optional string occluderNodeInfo
++      # Used for messages about occluder's parent
++      optional string occluderParentNodeInfo
++      # Used for messages about activation disabled reason
++      optional string disableReason
++
+   # A unique identifier for the type of issue. Each type may use one of the
+   # optional fields in InspectorIssueDetails to convey more specific
+   # information about the kind of issue.
+@@ -664,6 +709,7 @@ experimental domain Audits
+       SRIMessageSignatureIssue
+       UnencodedDigestIssue
+       UserReidentificationIssue
++      PermissionElementIssue
+ 
+   # This struct holds a list of optional fields with additional information
+   # specific to the kind of issue. When adding a new issue code, please also
+@@ -696,6 +742,7 @@ experimental domain Audits
+       optional SRIMessageSignatureIssueDetails sriMessageSignatureIssueDetails
+       optional UnencodedDigestIssueDetails unencodedDigestIssueDetails
+       optional UserReidentificationIssueDetails userReidentificationIssueDetails
++      optional PermissionElementIssueDetails permissionElementIssueDetails
+ 
+   # A unique id for a DevTools inspector issue. Allows other entities (e.g.
+   # exceptions, CDP message, console messages, etc.) to reference an issue.
+diff --git a/pdl/domains/CSS.pdl b/pdl/domains/CSS.pdl
+index 1b67c49f..567e30f5 100644
+--- a/pdl/domains/CSS.pdl
++++ b/pdl/domains/CSS.pdl
+@@ -14,8 +14,6 @@ experimental domain CSS
+   depends on DOM
+   depends on Page
+ 
+-  type StyleSheetId extends string
+-
+   # Stylesheet type: "injected" for stylesheets injected via extension, "user-agent" for user-agent
+   # stylesheets, "inspector" for stylesheets created by the inspector (i.e. those holding the "via
+   # inspector" rules), "regular" for regular stylesheets.
+@@ -108,7 +106,7 @@ experimental domain CSS
+   type CSSStyleSheetHeader extends object
+     properties
+       # The stylesheet identifier.
+-      StyleSheetId styleSheetId
++      DOM.StyleSheetId styleSheetId
+       # Owner frame identifier.
+       Page.FrameId frameId
+       # Stylesheet resource URL. Empty if this is a constructed stylesheet created using
+@@ -156,7 +154,7 @@ experimental domain CSS
+     properties
+       # The css style sheet identifier (absent for user agent stylesheet and user-specified
+       # stylesheet rules) this rule came from.
+-      optional StyleSheetId styleSheetId
++      optional DOM.StyleSheetId styleSheetId
+       # Rule selector data.
+       SelectorList selectorList
+       # Array of selectors from ancestor style rules, sorted by distance from the current rule.
+@@ -205,7 +203,7 @@ experimental domain CSS
+     properties
+       # The css style sheet identifier (absent for user agent stylesheet and user-specified
+       # stylesheet rules) this rule came from.
+-      StyleSheetId styleSheetId
++      DOM.StyleSheetId styleSheetId
+       # Offset of the start of the rule (including selector) from the beginning of the stylesheet.
+       number startOffset
+       # Offset of the end of the rule body from the beginning of the stylesheet.
+@@ -253,7 +251,7 @@ experimental domain CSS
+     properties
+       # The css style sheet identifier (absent for user agent stylesheet and user-specified
+       # stylesheet rules) this rule came from.
+-      optional StyleSheetId styleSheetId
++      optional DOM.StyleSheetId styleSheetId
+       # CSS properties in the style.
+       array of CSSProperty cssProperties
+       # Computed values for all shorthands found in the style.
+@@ -306,7 +304,7 @@ experimental domain CSS
+       # available).
+       optional SourceRange range
+       # Identifier of the stylesheet containing this object (if exists).
+-      optional StyleSheetId styleSheetId
++      optional DOM.StyleSheetId styleSheetId
+       # Array of media queries.
+       optional array of MediaQuery mediaList
+ 
+@@ -341,7 +339,7 @@ experimental domain CSS
+       # available).
+       optional SourceRange range
+       # Identifier of the stylesheet containing this object (if exists).
+-      optional StyleSheetId styleSheetId
++      optional DOM.StyleSheetId styleSheetId
+       # Optional name for the container.
+       optional string name
+       # Optional physical axes queried for the container.
+@@ -364,7 +362,7 @@ experimental domain CSS
+       # available).
+       optional SourceRange range
+       # Identifier of the stylesheet containing this object (if exists).
+-      optional StyleSheetId styleSheetId
++      optional DOM.StyleSheetId styleSheetId
+ 
+   # CSS Scope at-rule descriptor.
+   experimental type CSSScope extends object
+@@ -375,7 +373,7 @@ experimental domain CSS
+       # available).
+       optional SourceRange range
+       # Identifier of the stylesheet containing this object (if exists).
+-      optional StyleSheetId styleSheetId
++      optional DOM.StyleSheetId styleSheetId
+ 
+   # CSS Layer at-rule descriptor.
+   experimental type CSSLayer extends object
+@@ -386,7 +384,7 @@ experimental domain CSS
+       # available).
+       optional SourceRange range
+       # Identifier of the stylesheet containing this object (if exists).
+-      optional StyleSheetId styleSheetId
++      optional DOM.StyleSheetId styleSheetId
+ 
+   # CSS Starting Style at-rule descriptor.
+   experimental type CSSStartingStyle extends object
+@@ -395,7 +393,7 @@ experimental domain CSS
+       # available).
+       optional SourceRange range
+       # Identifier of the stylesheet containing this object (if exists).
+-      optional StyleSheetId styleSheetId
++      optional DOM.StyleSheetId styleSheetId
+ 
+   # CSS Layer data.
+   experimental type CSSLayerData extends object
+@@ -464,7 +462,7 @@ experimental domain CSS
+     properties
+       # The css style sheet identifier (absent for user agent stylesheet and user-specified
+       # stylesheet rules) this rule came from.
+-      optional StyleSheetId styleSheetId
++      optional DOM.StyleSheetId styleSheetId
+       # Parent stylesheet's origin.
+       StyleSheetOrigin origin
+       # Associated style declaration.
+@@ -477,7 +475,7 @@ experimental domain CSS
+       Value name
+       # The css style sheet identifier (absent for user agent stylesheet and user-specified
+       # stylesheet rules) this rule came from.
+-      optional StyleSheetId styleSheetId
++      optional DOM.StyleSheetId styleSheetId
+       # Parent stylesheet's origin.
+       StyleSheetOrigin origin
+       # Associated style declaration.
+@@ -522,7 +520,7 @@ experimental domain CSS
+       optional Value name
+       # The css style sheet identifier (absent for user agent stylesheet and user-specified
+       # stylesheet rules) this rule came from.
+-      optional StyleSheetId styleSheetId
++      optional DOM.StyleSheetId styleSheetId
+       # Parent stylesheet's origin.
+       StyleSheetOrigin origin
+       # Associated style declaration.
+@@ -533,7 +531,7 @@ experimental domain CSS
+     properties
+       # The css style sheet identifier (absent for user agent stylesheet and user-specified
+       # stylesheet rules) this rule came from.
+-      optional StyleSheetId styleSheetId
++      optional DOM.StyleSheetId styleSheetId
+       # Parent stylesheet's origin.
+       StyleSheetOrigin origin
+       # Associated property name.
+@@ -578,7 +576,7 @@ experimental domain CSS
+       Value name
+       # The css style sheet identifier (absent for user agent stylesheet and user-specified
+       # stylesheet rules) this rule came from.
+-      optional StyleSheetId styleSheetId
++      optional DOM.StyleSheetId styleSheetId
+       # Parent stylesheet's origin.
+       StyleSheetOrigin origin
+       # List of parameters.
+@@ -591,7 +589,7 @@ experimental domain CSS
+     properties
+       # The css style sheet identifier (absent for user agent stylesheet and user-specified
+       # stylesheet rules) this rule came from.
+-      optional StyleSheetId styleSheetId
++      optional DOM.StyleSheetId styleSheetId
+       # Parent stylesheet's origin.
+       StyleSheetOrigin origin
+       # Associated key text.
+@@ -603,7 +601,7 @@ experimental domain CSS
+   type StyleDeclarationEdit extends object
+     properties
+       # The css style sheet identifier.
+-      StyleSheetId styleSheetId
++      DOM.StyleSheetId styleSheetId
+       # The range of the style text in the enclosing stylesheet.
+       SourceRange range
+       # New style text.
+@@ -614,7 +612,7 @@ experimental domain CSS
+   command addRule
+     parameters
+       # The css style sheet identifier where a new rule should be inserted.
+-      StyleSheetId styleSheetId
++      DOM.StyleSheetId styleSheetId
+       # The text of a new rule.
+       string ruleText
+       # Text position of a new rule in the target style sheet.
+@@ -630,7 +628,7 @@ experimental domain CSS
+   # Returns all class names from specified stylesheet.
+   command collectClassNames
+     parameters
+-      StyleSheetId styleSheetId
++      DOM.StyleSheetId styleSheetId
+     returns
+       # Class name list.
+       array of string classNames
+@@ -647,7 +645,7 @@ experimental domain CSS
+       optional boolean force
+     returns
+       # Identifier of the created "via-inspector" stylesheet.
+-      StyleSheetId styleSheetId
++      DOM.StyleSheetId styleSheetId
+ 
+   # Disables the CSS agent for the given page.
+   command disable
+@@ -815,7 +813,7 @@ experimental domain CSS
+   # Returns the current textual content for a stylesheet.
+   command getStyleSheetText
+     parameters
+-      StyleSheetId styleSheetId
++      DOM.StyleSheetId styleSheetId
+     returns
+       # The stylesheet text.
+       string text
+@@ -834,7 +832,7 @@ experimental domain CSS
+   # returns an array of locations of the CSS selector in the style sheet.
+   experimental command getLocationForSelector
+     parameters
+-      StyleSheetId styleSheetId
++      DOM.StyleSheetId styleSheetId
+       string selectorText
+     returns
+       array of SourceRange ranges
+@@ -877,7 +875,7 @@ experimental domain CSS
+   # Modifies the property rule property name.
+   command setPropertyRulePropertyName
+     parameters
+-      StyleSheetId styleSheetId
++      DOM.StyleSheetId styleSheetId
+       SourceRange range
+       string propertyName
+     returns
+@@ -887,7 +885,7 @@ experimental domain CSS
+   # Modifies the keyframe rule key text.
+   command setKeyframeKey
+     parameters
+-      StyleSheetId styleSheetId
++      DOM.StyleSheetId styleSheetId
+       SourceRange range
+       string keyText
+     returns
+@@ -897,7 +895,7 @@ experimental domain CSS
+   # Modifies the rule selector.
+   command setMediaText
+     parameters
+-      StyleSheetId styleSheetId
++      DOM.StyleSheetId styleSheetId
+       SourceRange range
+       string text
+     returns
+@@ -907,7 +905,7 @@ experimental domain CSS
+   # Modifies the expression of a container query.
+   experimental command setContainerQueryText
+     parameters
+-      StyleSheetId styleSheetId
++      DOM.StyleSheetId styleSheetId
+       SourceRange range
+       string text
+     returns
+@@ -917,7 +915,7 @@ experimental domain CSS
+   # Modifies the expression of a supports at-rule.
+   experimental command setSupportsText
+     parameters
+-      StyleSheetId styleSheetId
++      DOM.StyleSheetId styleSheetId
+       SourceRange range
+       string text
+     returns
+@@ -927,7 +925,7 @@ experimental domain CSS
+   # Modifies the expression of a scope at-rule.
+   experimental command setScopeText
+     parameters
+-      StyleSheetId styleSheetId
++      DOM.StyleSheetId styleSheetId
+       SourceRange range
+       string text
+     returns
+@@ -937,7 +935,7 @@ experimental domain CSS
+   # Modifies the rule selector.
+   command setRuleSelector
+     parameters
+-      StyleSheetId styleSheetId
++      DOM.StyleSheetId styleSheetId
+       SourceRange range
+       string selector
+     returns
+@@ -947,7 +945,7 @@ experimental domain CSS
+   # Sets the new stylesheet text.
+   command setStyleSheetText
+     parameters
+-      StyleSheetId styleSheetId
++      DOM.StyleSheetId styleSheetId
+       string text
+     returns
+       # URL of source map associated with script (if any).
+@@ -1008,13 +1006,13 @@ experimental domain CSS
+   # Fired whenever a stylesheet is changed as a result of the client operation.
+   event styleSheetChanged
+     parameters
+-      StyleSheetId styleSheetId
++      DOM.StyleSheetId styleSheetId
+ 
+   # Fired whenever an active document stylesheet is removed.
+   event styleSheetRemoved
+     parameters
+       # Identifier of the removed stylesheet.
+-      StyleSheetId styleSheetId
++      DOM.StyleSheetId styleSheetId
+ 
+   experimental event computedStyleUpdated
+     parameters
+diff --git a/pdl/domains/DOM.pdl b/pdl/domains/DOM.pdl
+index 8ac853fa..06830b09 100644
+--- a/pdl/domains/DOM.pdl
++++ b/pdl/domains/DOM.pdl
+@@ -21,6 +21,9 @@ domain DOM
+   # front-end.
+   type BackendNodeId extends integer
+ 
++  # Unique identifier for a CSS stylesheet.
++  type StyleSheetId extends string
++
+   # Backend node with a friendly name.
+   type BackendNode extends object
+     properties
+@@ -180,6 +183,7 @@ domain DOM
+       optional BackendNode assignedSlot
+       experimental optional boolean isScrollable
+       experimental optional boolean affectedByStartingStyles
++      experimental optional array of StyleSheetId adoptedStyleSheets
+ 
+   # A structure to hold the top-level node of a detached tree and an array of its retained descendants.
+   type DetachedElementInfo extends object
+@@ -823,6 +827,14 @@ domain DOM
+       # Attribute value.
+       string value
+ 
++  # Fired when `Element`'s adoptedStyleSheets are modified.
++  experimental event adoptedStyleSheetsModified
++    parameters
++      # Id of the node that has changed.
++      NodeId nodeId
++      # New adoptedStyleSheets array.
++      experimental array of StyleSheetId adoptedStyleSheets
++
+   # Fired when `Element`'s attribute is removed.
+   event attributeRemoved
+     parameters
+diff --git a/pdl/domains/Target.pdl b/pdl/domains/Target.pdl
+index 21c4e959..d61ab3ca 100644
+--- a/pdl/domains/Target.pdl
++++ b/pdl/domains/Target.pdl
+@@ -265,6 +265,16 @@ domain Target
+       # List of remote locations.
+       array of RemoteLocation locations
+ 
++  # Gets the targetId of the DevTools page target opened for the given target
++  # (if any).
++  experimental command getDevToolsTarget
++    parameters
++      # Page or tab target ID.
++      TargetID targetId
++    returns
++      # The targetId of DevTools page target if exists.
++      optional TargetID targetId
++
+   # Issued when attached to target because of auto-attach or `attachToTarget` command.
+   experimental event attachedToTarget
+     parameters
+```
+
 ## Roll protocol to r1550230 — _2025-11-26T04:32:55.000Z_
-######  Diff: [`3507fa9...3cd67e0`](https://github.com/ChromeDevTools/devtools-protocol/compare/3507fa9...3cd67e0)
+######  Diff: [`3507fa9...f64a130`](https://github.com/ChromeDevTools/devtools-protocol/compare/3507fa9...f64a130)
 
 ```diff
 @@ domains/Page.pdl:100 @@ domain Page
@@ -41714,18 +42145,4 @@ index 0dbdc01d..7a3c772c 100644
        SameSiteCrossOriginRedirectNotOptIn
        SameSiteCrossOriginNavigationNotOptIn
        ActivationNavigationParameterMismatch
-```
-
-## Roll protocol to r1114386 — _2023-03-08T04:28:54.000Z_
-######  Diff: [`e4e18e5...1cd77ce`](https://github.com/ChromeDevTools/devtools-protocol/compare/e4e18e5...1cd77ce)
-
-```diff
-@@ browser_protocol.pdl:702 @@ experimental domain Audits
-   type AttributionReportingIssueType extends string
-     enum
-       PermissionPolicyDisabled
--      PermissionPolicyNotDelegated
-       UntrustworthyReportingOrigin
-       InsecureContext
-       # TODO(apaseltiner): Rename this to InvalidRegisterSourceHeader
 ```

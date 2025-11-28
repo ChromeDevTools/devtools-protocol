@@ -1926,6 +1926,14 @@ export namespace ProtocolTestsProxyApi {
         onceAttributeModified(eventMatcher?: (event: { params: Protocol.DOM.AttributeModifiedEvent }) => boolean): Promise<{ params: Protocol.DOM.AttributeModifiedEvent }>;
 
         /**
+         * Fired when `Element`'s adoptedStyleSheets are modified.
+         * @experimental
+         */
+        onAdoptedStyleSheetsModified(listener: (event: { params: Protocol.DOM.AdoptedStyleSheetsModifiedEvent }) => void): void;
+        offAdoptedStyleSheetsModified(listener: (event: { params: Protocol.DOM.AdoptedStyleSheetsModifiedEvent }) => void): void;
+        onceAdoptedStyleSheetsModified(eventMatcher?: (event: { params: Protocol.DOM.AdoptedStyleSheetsModifiedEvent }) => boolean): Promise<{ params: Protocol.DOM.AdoptedStyleSheetsModifiedEvent }>;
+
+        /**
          * Fired when `Element`'s attribute is removed.
          */
         onAttributeRemoved(listener: (event: { params: Protocol.DOM.AttributeRemovedEvent }) => void): void;
@@ -5217,6 +5225,13 @@ export namespace ProtocolTestsProxyApi {
          * @experimental
          */
         setRemoteLocations(params: Protocol.Target.SetRemoteLocationsRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
+         * Gets the targetId of the DevTools page target opened for the given target
+         * (if any).
+         * @experimental
+         */
+        getDevToolsTarget(params: Protocol.Target.GetDevToolsTargetRequest): Promise<{id: number, result: Protocol.Target.GetDevToolsTargetResponse, sessionId: string}>;
 
         /**
          * Opens a DevTools window for the target.
