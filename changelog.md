@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1555890 — _2025-12-09T04:33:09.000Z_
+######  Diff: [`47b9187...09508c4`](https://github.com/ChromeDevTools/devtools-protocol/compare/47b9187...09508c4)
+
+```diff
+@@ domains/DOM.pdl:76 @@ domain DOM
+       picker
+       permission-icon
+       overscroll-area-parent
+-      overscroll-client-area
+ 
+   # Shadow root type.
+   type ShadowRootType extends string
+```
+
 ## Roll protocol to r1551306 — _2025-11-28T04:32:25.000Z_
-######  Diff: [`f64a130...8ec7315`](https://github.com/ChromeDevTools/devtools-protocol/compare/f64a130...8ec7315)
+######  Diff: [`f64a130...47b9187`](https://github.com/ChromeDevTools/devtools-protocol/compare/f64a130...47b9187)
 
 ```diff
 @@ domains/Audits.pdl:632 @@ experimental domain Audits
@@ -42131,18 +42145,4 @@ index 0dbdc01d..7a3c772c 100644
  
    command enable
    command disable
-```
-
-## Roll protocol to r1114954 — _2023-03-09T04:29:10.000Z_
-######  Diff: [`1cd77ce...3b5916a`](https://github.com/ChromeDevTools/devtools-protocol/compare/1cd77ce...3b5916a)
-
-```diff
-@@ browser_protocol.pdl:10838 @@ experimental domain Preload
-       CrossSiteRedirect
-       CrossSiteNavigation
-       SameSiteCrossOriginRedirect
--      SameSiteCrossOriginNavigation
-       SameSiteCrossOriginRedirectNotOptIn
-       SameSiteCrossOriginNavigationNotOptIn
-       ActivationNavigationParameterMismatch
 ```
