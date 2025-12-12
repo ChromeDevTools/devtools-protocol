@@ -1,7 +1,23 @@
 
 
+## Roll protocol to r1557841 — _2025-12-12T04:33:57.000Z_
+######  Diff: [`6a7ac7d...dc3f099`](https://github.com/ChromeDevTools/devtools-protocol/compare/6a7ac7d...dc3f099)
+
+```diff
+@@ domains/Audits.pdl:412 @@ experimental domain Audits
+       FormInputHasWrongButWellIntendedAutocompleteValueError
+       ResponseWasBlockedByORB
+       NavigationEntryMarkedSkippable
++      AutofillAndManualTextPolicyControlledFeaturesInfo
++      AutofillPolicyControlledFeatureInfo
++      ManualTextPolicyControlledFeatureInfo
+ 
+   # Depending on the concrete errorType, different properties are set.
+   type GenericIssueDetails extends object
+```
+
 ## Roll protocol to r1555890 — _2025-12-09T04:33:09.000Z_
-######  Diff: [`47b9187...09508c4`](https://github.com/ChromeDevTools/devtools-protocol/compare/47b9187...09508c4)
+######  Diff: [`47b9187...6a7ac7d`](https://github.com/ChromeDevTools/devtools-protocol/compare/47b9187...6a7ac7d)
 
 ```diff
 @@ domains/DOM.pdl:76 @@ domain DOM
@@ -42119,30 +42135,4 @@ index 0dbdc01d..7a3c772c 100644
 +  command dismissDialog
 +    parameters
 +      string dialogId
-```
-
-## Roll protocol to r1115542 — _2023-03-10T04:29:00.000Z_
-######  Diff: [`3b5916a...bc17667`](https://github.com/ChromeDevTools/devtools-protocol/compare/3b5916a...bc17667)
-
-```diff
-@@ browser_protocol.pdl:10900 @@ experimental domain Preload
- 
- # This domain allows interacting with the FedCM dialog.
- experimental domain FedCm
-+  # Corresponds to IdentityRequestAccount
-+  type Account extends object
-+    properties
-+      string accountId
-+      string email
-+      string name
-+      string givenName
-+      string pictureUrl
-+      string idpConfigUrl
-+
-   event dialogShown
-+    parameters
-+      array of Account accounts
- 
-   command enable
-   command disable
 ```
