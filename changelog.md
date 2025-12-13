@@ -1,7 +1,36 @@
 
 
+## Roll protocol to r1558402 — _2025-12-13T04:32:36.000Z_
+######  Diff: [`ab59de7...0d8f2df`](https://github.com/ChromeDevTools/devtools-protocol/compare/ab59de7...0d8f2df)
+
+```diff
+@@ domains/Browser.pdl:49 @@ domain Browser
+       idleDetection
+       keyboardLock
+       localFonts
++      localNetwork
+       localNetworkAccess
++      loopbackNetwork
+       midi
+       midiSysex
+       nfc
+diff --git a/pdl/domains/Target.pdl b/pdl/domains/Target.pdl
+index d61ab3ca..8d8ead63 100644
+--- a/pdl/domains/Target.pdl
++++ b/pdl/domains/Target.pdl
+@@ -132,6 +132,8 @@ domain Target
+     returns
+       # An array of browser context ids.
+       array of Browser.BrowserContextID browserContextIds
++      # The id of the default browser context if available.
++      experimental optional Browser.BrowserContextID defaultBrowserContextId
+ 
+   # Creates a new page.
+   command createTarget
+```
+
 ## Roll protocol to r1557841 — _2025-12-12T04:33:57.000Z_
-######  Diff: [`6a7ac7d...dc3f099`](https://github.com/ChromeDevTools/devtools-protocol/compare/6a7ac7d...dc3f099)
+######  Diff: [`6a7ac7d...ab59de7`](https://github.com/ChromeDevTools/devtools-protocol/compare/6a7ac7d...ab59de7)
 
 ```diff
 @@ domains/Audits.pdl:412 @@ experimental domain Audits
@@ -42077,62 +42106,4 @@ index 0dbdc01d..7a3c772c 100644
        # Parent stylesheet's origin.
        StyleSheetOrigin origin
        # Associated style declaration.
-```
-
-## Roll protocol to r1116775 — _2023-03-14T04:28:31.000Z_
-######  Diff: [`bc17667...4e13b66`](https://github.com/ChromeDevTools/devtools-protocol/compare/bc17667...4e13b66)
-
-```diff
-@@ browser_protocol.pdl:712 @@ experimental domain Audits
-       SourceAndTriggerHeaders
-       SourceIgnored
-       TriggerIgnored
-+      OsSourceIgnored
-+      OsTriggerIgnored
-+      InvalidRegisterOsSourceHeader
-+      InvalidRegisterOsTriggerHeader
-+      WebAndOsHeaders
- 
-   # Details for issues around "Attribution Reporting API" usage.
-   # Explainer: https://github.com/WICG/attribution-reporting-api
-@@ -10900,6 +10905,13 @@ experimental domain Preload
- 
- # This domain allows interacting with the FedCM dialog.
- experimental domain FedCm
-+  # Whether this is a sign-up or sign-in action for this account, i.e.
-+  # whether this account has ever been used to sign in to this RP before.
-+  type LoginState extends string
-+    enum
-+      SignIn
-+      SignUp
-+
-   # Corresponds to IdentityRequestAccount
-   type Account extends object
-     properties
-@@ -10909,10 +10921,25 @@ experimental domain FedCm
-       string givenName
-       string pictureUrl
-       string idpConfigUrl
-+      string idpSigninUrl
-+      LoginState loginState
-+      # These two are only set if the loginState is signUp
-+      optional string termsOfServiceUrl
-+      optional string privacyPolicyUrl
- 
-   event dialogShown
-     parameters
-+      string dialogId
-       array of Account accounts
- 
-   command enable
-   command disable
-+
-+  command selectAccount
-+    parameters
-+      string dialogId
-+      integer accountIndex
-+
-+  command dismissDialog
-+    parameters
-+      string dialogId
 ```

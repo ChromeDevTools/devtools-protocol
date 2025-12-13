@@ -4559,7 +4559,7 @@ export namespace Protocol {
         /**
          * @experimental
          */
-        export type PermissionType = ('ar' | 'audioCapture' | 'automaticFullscreen' | 'backgroundFetch' | 'backgroundSync' | 'cameraPanTiltZoom' | 'capturedSurfaceControl' | 'clipboardReadWrite' | 'clipboardSanitizedWrite' | 'displayCapture' | 'durableStorage' | 'geolocation' | 'handTracking' | 'idleDetection' | 'keyboardLock' | 'localFonts' | 'localNetworkAccess' | 'midi' | 'midiSysex' | 'nfc' | 'notifications' | 'paymentHandler' | 'periodicBackgroundSync' | 'pointerLock' | 'protectedMediaIdentifier' | 'sensors' | 'smartCard' | 'speakerSelection' | 'storageAccess' | 'topLevelStorageAccess' | 'videoCapture' | 'vr' | 'wakeLockScreen' | 'wakeLockSystem' | 'webAppInstallation' | 'webPrinting' | 'windowManagement');
+        export type PermissionType = ('ar' | 'audioCapture' | 'automaticFullscreen' | 'backgroundFetch' | 'backgroundSync' | 'cameraPanTiltZoom' | 'capturedSurfaceControl' | 'clipboardReadWrite' | 'clipboardSanitizedWrite' | 'displayCapture' | 'durableStorage' | 'geolocation' | 'handTracking' | 'idleDetection' | 'keyboardLock' | 'localFonts' | 'localNetwork' | 'localNetworkAccess' | 'loopbackNetwork' | 'midi' | 'midiSysex' | 'nfc' | 'notifications' | 'paymentHandler' | 'periodicBackgroundSync' | 'pointerLock' | 'protectedMediaIdentifier' | 'sensors' | 'smartCard' | 'speakerSelection' | 'storageAccess' | 'topLevelStorageAccess' | 'videoCapture' | 'vr' | 'wakeLockScreen' | 'wakeLockSystem' | 'webAppInstallation' | 'webPrinting' | 'windowManagement');
 
         /**
          * @experimental
@@ -20244,6 +20244,11 @@ export namespace Protocol {
              * An array of browser context ids.
              */
             browserContextIds: Browser.BrowserContextID[];
+            /**
+             * The id of the default browser context if available.
+             * @experimental
+             */
+            defaultBrowserContextId?: Browser.BrowserContextID;
         }
 
         export interface CreateTargetRequest {
