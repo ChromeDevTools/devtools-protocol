@@ -1,7 +1,36 @@
 
 
+## Roll protocol to r1559729 — _2025-12-17T04:33:54.000Z_
+######  Diff: [`d90a8a2...d8e4778`](https://github.com/ChromeDevTools/devtools-protocol/compare/d90a8a2...d8e4778)
+
+```diff
+@@ domains/Network.pdl:1145 @@ domain Network
+       experimental optional boolean reportDirectSocketTraffic
+       # Enable storing response bodies outside of renderer, so that these survive
+       # a cross-process navigation. Requires maxTotalBufferSize to be set.
+-      # Currently defaults to false.
++      # Currently defaults to false. This field is being deprecated in favor of the dedicated
++      # configureDurableMessages command, due to the possibility of deadlocks when awaiting
++      # Network.enable before issuing Runtime.runIfWaitingForDebugger.
+       experimental optional boolean enableDurableMessages
+ 
++  # Configures storing response bodies outside of renderer, so that these survive
++  # a cross-process navigation.
++  # If maxTotalBufferSize is not set, durable messages are disabled.
++  experimental command configureDurableMessages
++    parameters
++      # Buffer size in bytes to use when preserving network payloads (XHRs, etc).
++      optional integer maxTotalBufferSize
++      # Per-resource buffer size in bytes to use when preserving network payloads (XHRs, etc).
++      optional integer maxResourceBufferSize
++
+   # Returns all browser cookies. Depending on the backend support, will return detailed cookie
+   # information in the `cookies` field.
+   # Deprecated. Use Storage.getCookies instead.
+```
+
 ## Roll protocol to r1558402 — _2025-12-13T04:32:36.000Z_
-######  Diff: [`ab59de7...0d8f2df`](https://github.com/ChromeDevTools/devtools-protocol/compare/ab59de7...0d8f2df)
+######  Diff: [`ab59de7...d90a8a2`](https://github.com/ChromeDevTools/devtools-protocol/compare/ab59de7...d90a8a2)
 
 ```diff
 @@ domains/Browser.pdl:49 @@ domain Browser
@@ -42091,19 +42120,4 @@ index 0dbdc01d..7a3c772c 100644
    command disable
  
    command selectAccount
-```
-
-## Roll protocol to r1119014 — _2023-03-18T04:27:47.000Z_
-######  Diff: [`4e13b66...40d0eff`](https://github.com/ChromeDevTools/devtools-protocol/compare/4e13b66...40d0eff)
-
-```diff
-@@ browser_protocol.pdl:1409 @@ experimental domain CSS
-       optional StyleSheetId styleSheetId
-       # Rule selector data.
-       SelectorList selectorList
-+      # Array of selectors from ancestor style rules, sorted by distance from the current rule.
-+      experimental optional array of string nestingSelectors
-       # Parent stylesheet's origin.
-       StyleSheetOrigin origin
-       # Associated style declaration.
 ```

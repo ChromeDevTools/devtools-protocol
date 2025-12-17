@@ -3229,6 +3229,14 @@ export namespace ProtocolTestsProxyApi {
         enable(params: Protocol.Network.EnableRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
+         * Configures storing response bodies outside of renderer, so that these survive
+         * a cross-process navigation.
+         * If maxTotalBufferSize is not set, durable messages are disabled.
+         * @experimental
+         */
+        configureDurableMessages(params: Protocol.Network.ConfigureDurableMessagesRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
          * Returns all browser cookies. Depending on the backend support, will return detailed cookie
          * information in the `cookies` field.
          * Deprecated. Use Storage.getCookies instead.
