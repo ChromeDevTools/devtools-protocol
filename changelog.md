@@ -1,7 +1,69 @@
 
 
+## Roll protocol to r1560991 — _2025-12-19T04:33:52.000Z_
+######  Diff: [`ead0e84...48f305d`](https://github.com/ChromeDevTools/devtools-protocol/compare/ead0e84...48f305d)
+
+```diff
+@@ domains/Network.pdl:166 @@ domain Network
+       High
+       VeryHigh
+ 
++  # The render blocking behavior of a resource request.
++  experimental type RenderBlockingBehavior extends string
++    enum
++      Blocking
++      InBodyParserBlocking
++      NonBlocking
++      NonBlockingDynamic
++      PotentiallyBlocking
++
+   # Post data entry for HTTP request
+   type PostDataEntry extends object
+     properties
+@@ -1498,6 +1507,8 @@ domain Network
+       optional Page.FrameId frameId
+       # Whether the request is initiated by a user gesture. Defaults to false.
+       optional boolean hasUserGesture
++      # The render blocking behavior of the request.
++      experimental optional RenderBlockingBehavior renderBlockingBehavior
+ 
+   # Fired when resource loading priority is changed
+   experimental event resourceChangedPriority
+diff --git a/pdl/domains/Page.pdl b/pdl/domains/Page.pdl
+index bd96c7cc..987851bc 100644
+--- a/pdl/domains/Page.pdl
++++ b/pdl/domains/Page.pdl
+@@ -164,7 +164,9 @@ domain Page
+       language-detector
+       language-model
+       local-fonts
++      local-network
+       local-network-access
++      loopback-network
+       magnetometer
+       manual-text
+       media-playback-while-not-visible
+diff --git a/pdl/domains/Tracing.pdl b/pdl/domains/Tracing.pdl
+index 44fc3f39..5103577e 100644
+--- a/pdl/domains/Tracing.pdl
++++ b/pdl/domains/Tracing.pdl
+@@ -78,6 +78,12 @@ domain Tracing
+       # A list of supported tracing categories.
+       array of string categories
+ 
++  # Return a descriptor for all available tracing categories.
++  experimental command getTrackEventDescriptor
++    returns
++      # Base64-encoded serialized perfetto.protos.TrackEventDescriptor protobuf message.
++      binary descriptor
++
+   # Record a clock sync marker in the trace.
+   experimental command recordClockSyncMarker
+     parameters
+```
+
 ## Roll protocol to r1559729 — _2025-12-17T04:33:54.000Z_
-######  Diff: [`d90a8a2...d8e4778`](https://github.com/ChromeDevTools/devtools-protocol/compare/d90a8a2...d8e4778)
+######  Diff: [`d90a8a2...ead0e84`](https://github.com/ChromeDevTools/devtools-protocol/compare/d90a8a2...ead0e84)
 
 ```diff
 @@ domains/Network.pdl:1145 @@ domain Network
@@ -42074,50 +42136,4 @@ index 0dbdc01d..7a3c772c 100644
        array of PreloadingAttemptSource preloadingAttemptSources
  
  # This domain allows interacting with the FedCM dialog.
-```
-
-## Roll protocol to r1119769 — _2023-03-21T04:27:17.000Z_
-######  Diff: [`40d0eff...d451302`](https://github.com/ChromeDevTools/devtools-protocol/compare/40d0eff...d451302)
-
-```diff
-@@ browser_protocol.pdl:10842 @@ experimental domain Preload
-       InactivePageRestriction
-       StartFailed
-       TimeoutBackgrounded
--      CrossSiteRedirect
--      CrossSiteNavigation
--      SameSiteCrossOriginRedirect
--      SameSiteCrossOriginRedirectNotOptIn
--      SameSiteCrossOriginNavigationNotOptIn
-+      CrossSiteRedirectInInitialNavigation
-+      CrossSiteNavigationInInitialNavigation
-+      SameSiteCrossOriginRedirectNotOptInInInitialNavigation
-+      SameSiteCrossOriginNavigationNotOptInInInitialNavigation
-       ActivationNavigationParameterMismatch
-       ActivatedInBackground
-       EmbedderHostDisallowed
-@@ -10860,6 +10859,10 @@ experimental domain Preload
-       BatterySaverEnabled
-       ActivatedDuringMainFrameNavigation
-       PreloadingUnsupportedByWebContents
-+      CrossSiteRedirectInMainFrameNavigation
-+      CrossSiteNavigationInMainFrameNavigation
-+      SameSiteCrossOriginRedirectNotOptInInMainFrameNavigation
-+      SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation
- 
-   # Fired when a prerender attempt is completed.
-   event prerenderAttemptCompleted
-@@ -10935,6 +10938,12 @@ experimental domain FedCm
-       array of Account accounts
- 
-   command enable
-+    parameters
-+      # Allows callers to disable the promise rejection delay that would
-+      # normally happen, if this is unimportant to what's being tested.
-+      # (step 4 of https://fedidcg.github.io/FedCM/#browser-api-rp-sign-in)
-+      optional boolean disableRejectionDelay
-+
-   command disable
- 
-   command selectAccount
 ```

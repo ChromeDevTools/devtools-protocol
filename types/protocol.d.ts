@@ -12269,6 +12269,12 @@ export namespace Protocol {
         export type ResourcePriority = ('VeryLow' | 'Low' | 'Medium' | 'High' | 'VeryHigh');
 
         /**
+         * The render blocking behavior of a resource request.
+         * @experimental
+         */
+        export type RenderBlockingBehavior = ('Blocking' | 'InBodyParserBlocking' | 'NonBlocking' | 'NonBlockingDynamic' | 'PotentiallyBlocking');
+
+        /**
          * Post data entry for HTTP request
          */
         export interface PostDataEntry {
@@ -14358,6 +14364,11 @@ export namespace Protocol {
              * Whether the request is initiated by a user gesture. Defaults to false.
              */
             hasUserGesture?: boolean;
+            /**
+             * The render blocking behavior of the request.
+             * @experimental
+             */
+            renderBlockingBehavior?: RenderBlockingBehavior;
         }
 
         /**
@@ -15892,7 +15903,7 @@ export namespace Protocol {
          * in services/network/public/cpp/permissions_policy/permissions_policy_features.json5.
          * @experimental
          */
-        export type PermissionsPolicyFeature = ('accelerometer' | 'all-screens-capture' | 'ambient-light-sensor' | 'aria-notify' | 'attribution-reporting' | 'autofill' | 'autoplay' | 'bluetooth' | 'browsing-topics' | 'camera' | 'captured-surface-control' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-prefers-color-scheme' | 'ch-prefers-reduced-motion' | 'ch-prefers-reduced-transparency' | 'ch-rtt' | 'ch-save-data' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-high-entropy-values' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-form-factors' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'compute-pressure' | 'controlled-frame' | 'cross-origin-isolated' | 'deferred-fetch' | 'deferred-fetch-minimal' | 'device-attributes' | 'digital-credentials-create' | 'digital-credentials-get' | 'direct-sockets' | 'direct-sockets-multicast' | 'direct-sockets-private' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'fenced-unpartitioned-storage-read' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'hid' | 'identity-credentials-get' | 'idle-detection' | 'interest-cohort' | 'join-ad-interest-group' | 'keyboard-map' | 'language-detector' | 'language-model' | 'local-fonts' | 'local-network-access' | 'magnetometer' | 'manual-text' | 'media-playback-while-not-visible' | 'microphone' | 'midi' | 'on-device-speech-recognition' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'private-aggregation' | 'private-state-token-issuance' | 'private-state-token-redemption' | 'publickey-credentials-create' | 'publickey-credentials-get' | 'record-ad-auction-events' | 'rewriter' | 'run-ad-auction' | 'screen-wake-lock' | 'serial' | 'shared-storage' | 'shared-storage-select-url' | 'smart-card' | 'speaker-selection' | 'storage-access' | 'sub-apps' | 'summarizer' | 'sync-xhr' | 'translator' | 'unload' | 'usb' | 'usb-unrestricted' | 'vertical-scroll' | 'web-app-installation' | 'web-printing' | 'web-share' | 'window-management' | 'writer' | 'xr-spatial-tracking');
+        export type PermissionsPolicyFeature = ('accelerometer' | 'all-screens-capture' | 'ambient-light-sensor' | 'aria-notify' | 'attribution-reporting' | 'autofill' | 'autoplay' | 'bluetooth' | 'browsing-topics' | 'camera' | 'captured-surface-control' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-prefers-color-scheme' | 'ch-prefers-reduced-motion' | 'ch-prefers-reduced-transparency' | 'ch-rtt' | 'ch-save-data' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-high-entropy-values' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-form-factors' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'compute-pressure' | 'controlled-frame' | 'cross-origin-isolated' | 'deferred-fetch' | 'deferred-fetch-minimal' | 'device-attributes' | 'digital-credentials-create' | 'digital-credentials-get' | 'direct-sockets' | 'direct-sockets-multicast' | 'direct-sockets-private' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'fenced-unpartitioned-storage-read' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'hid' | 'identity-credentials-get' | 'idle-detection' | 'interest-cohort' | 'join-ad-interest-group' | 'keyboard-map' | 'language-detector' | 'language-model' | 'local-fonts' | 'local-network' | 'local-network-access' | 'loopback-network' | 'magnetometer' | 'manual-text' | 'media-playback-while-not-visible' | 'microphone' | 'midi' | 'on-device-speech-recognition' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'private-aggregation' | 'private-state-token-issuance' | 'private-state-token-redemption' | 'publickey-credentials-create' | 'publickey-credentials-get' | 'record-ad-auction-events' | 'rewriter' | 'run-ad-auction' | 'screen-wake-lock' | 'serial' | 'shared-storage' | 'shared-storage-select-url' | 'smart-card' | 'speaker-selection' | 'storage-access' | 'sub-apps' | 'summarizer' | 'sync-xhr' | 'translator' | 'unload' | 'usb' | 'usb-unrestricted' | 'vertical-scroll' | 'web-app-installation' | 'web-printing' | 'web-share' | 'window-management' | 'writer' | 'xr-spatial-tracking');
 
         /**
          * Reason for a permissions policy feature to be disabled.
@@ -20699,6 +20710,13 @@ export namespace Protocol {
              * A list of supported tracing categories.
              */
             categories: string[];
+        }
+
+        export interface GetTrackEventDescriptorResponse {
+            /**
+             * Base64-encoded serialized perfetto.protos.TrackEventDescriptor protobuf message. (Encoded as a base64 string when passed over JSON)
+             */
+            descriptor: string;
         }
 
         export interface RecordClockSyncMarkerRequest {

@@ -5336,6 +5336,12 @@ export namespace ProtocolTestsProxyApi {
         getCategories(): Promise<{id: number, result: Protocol.Tracing.GetCategoriesResponse, sessionId: string}>;
 
         /**
+         * Return a descriptor for all available tracing categories.
+         * @experimental
+         */
+        getTrackEventDescriptor(): Promise<{id: number, result: Protocol.Tracing.GetTrackEventDescriptorResponse, sessionId: string}>;
+
+        /**
          * Record a clock sync marker in the trace.
          * @experimental
          */

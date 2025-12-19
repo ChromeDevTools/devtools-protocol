@@ -4942,6 +4942,12 @@ export namespace ProtocolProxyApi {
         getCategories(): Promise<Protocol.Tracing.GetCategoriesResponse>;
 
         /**
+         * Return a descriptor for all available tracing categories.
+         * @experimental
+         */
+        getTrackEventDescriptor(): Promise<Protocol.Tracing.GetTrackEventDescriptorResponse>;
+
+        /**
          * Record a clock sync marker in the trace.
          * @experimental
          */
