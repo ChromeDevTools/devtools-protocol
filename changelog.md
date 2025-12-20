@@ -1,7 +1,7 @@
 
 
 ## Roll protocol to r1560991 — _2025-12-19T04:33:52.000Z_
-######  Diff: [`ead0e84...48f305d`](https://github.com/ChromeDevTools/devtools-protocol/compare/ead0e84...48f305d)
+######  Diff: [`ead0e84...2b34c65`](https://github.com/ChromeDevTools/devtools-protocol/compare/ead0e84...2b34c65)
 
 ```diff
 @@ domains/Network.pdl:166 @@ domain Network
@@ -42110,30 +42110,4 @@ index 0dbdc01d..7a3c772c 100644
        # The frame id of the frame initiating prerender.
        Page.FrameId initiatingFrameId
        string prerenderingUrl
-```
-
-## Roll protocol to r1120367 — _2023-03-22T04:27:34.000Z_
-######  Diff: [`d451302...7bd9b6c`](https://github.com/ChromeDevTools/devtools-protocol/compare/d451302...7bd9b6c)
-
-```diff
-@@ browser_protocol.pdl:756 @@ experimental domain Audits
-       FormInputAssignedAutocompleteValueToIdOrNameAttributeError
-       FormLabelHasNeitherForNorNestedInput
-       FormLabelForMatchesNonExistingIdError
-+      FormInputHasWrongButWellIntendedAutocompleteValueError
- 
-   # Depending on the concrete errorType, different properties are set.
-   type GenericIssueDetails extends object
-@@ -10903,9 +10904,10 @@ experimental domain Preload
-       string prerenderingUrl
-       PreloadingStatus status
- 
--  # Send a list of sources for all preloading attempts.
-+  # Send a list of sources for all preloading attempts in a document.
-   event preloadingAttemptSourcesUpdated
-     parameters
-+      Network.LoaderId loaderId
-       array of PreloadingAttemptSource preloadingAttemptSources
- 
- # This domain allows interacting with the FedCM dialog.
 ```
