@@ -1,4 +1,4 @@
-// Copyright (c) 2025 The Chromium Authors. All rights reserved.
+// Copyright (c) 2026 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -3366,6 +3366,18 @@ export namespace ProtocolTestsProxyApi {
         enableReportingApi(params: Protocol.Network.EnableReportingApiRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
+         * Sets up tracking device bound sessions and fetching of initial set of sessions.
+         * @experimental
+         */
+        enableDeviceBoundSessions(params: Protocol.Network.EnableDeviceBoundSessionsRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
+         * Fetches the schemeful site for a specific origin.
+         * @experimental
+         */
+        fetchSchemefulSite(params: Protocol.Network.FetchSchemefulSiteRequest): Promise<{id: number, result: Protocol.Network.FetchSchemefulSiteResponse, sessionId: string}>;
+
+        /**
          * Fetches the resource and returns the content.
          * @experimental
          */
@@ -3706,6 +3718,14 @@ export namespace ProtocolTestsProxyApi {
         onReportingApiEndpointsChangedForOrigin(listener: (event: { params: Protocol.Network.ReportingApiEndpointsChangedForOriginEvent }) => void): void;
         offReportingApiEndpointsChangedForOrigin(listener: (event: { params: Protocol.Network.ReportingApiEndpointsChangedForOriginEvent }) => void): void;
         onceReportingApiEndpointsChangedForOrigin(eventMatcher?: (event: { params: Protocol.Network.ReportingApiEndpointsChangedForOriginEvent }) => boolean): Promise<{ params: Protocol.Network.ReportingApiEndpointsChangedForOriginEvent }>;
+
+        /**
+         * Triggered when the initial set of device bound sessions is added.
+         * @experimental
+         */
+        onDeviceBoundSessionsAdded(listener: (event: { params: Protocol.Network.DeviceBoundSessionsAddedEvent }) => void): void;
+        offDeviceBoundSessionsAdded(listener: (event: { params: Protocol.Network.DeviceBoundSessionsAddedEvent }) => void): void;
+        onceDeviceBoundSessionsAdded(eventMatcher?: (event: { params: Protocol.Network.DeviceBoundSessionsAddedEvent }) => boolean): Promise<{ params: Protocol.Network.DeviceBoundSessionsAddedEvent }>;
 
     }
 

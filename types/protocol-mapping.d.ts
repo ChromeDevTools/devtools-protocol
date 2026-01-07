@@ -1,4 +1,4 @@
-// Copyright (c) 2025 The Chromium Authors. All rights reserved.
+// Copyright (c) 2026 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -582,6 +582,11 @@ export namespace ProtocolMapping {
          * @experimental
          */
         'Network.reportingApiEndpointsChangedForOrigin': [Protocol.Network.ReportingApiEndpointsChangedForOriginEvent];
+        /**
+         * Triggered when the initial set of device bound sessions is added.
+         * @experimental
+         */
+        'Network.deviceBoundSessionsAdded': [Protocol.Network.DeviceBoundSessionsAddedEvent];
         /**
          * Fired when the node should be inspected. This happens after call to `setInspectMode` or when
          * user manually inspects an element.
@@ -4358,6 +4363,22 @@ export namespace ProtocolMapping {
         'Network.enableReportingApi': {
             paramsType: [Protocol.Network.EnableReportingApiRequest];
             returnType: void;
+        };
+        /**
+         * Sets up tracking device bound sessions and fetching of initial set of sessions.
+         * @experimental
+         */
+        'Network.enableDeviceBoundSessions': {
+            paramsType: [Protocol.Network.EnableDeviceBoundSessionsRequest];
+            returnType: void;
+        };
+        /**
+         * Fetches the schemeful site for a specific origin.
+         * @experimental
+         */
+        'Network.fetchSchemefulSite': {
+            paramsType: [Protocol.Network.FetchSchemefulSiteRequest];
+            returnType: Protocol.Network.FetchSchemefulSiteResponse;
         };
         /**
          * Fetches the resource and returns the content.

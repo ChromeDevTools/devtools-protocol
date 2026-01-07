@@ -1,4 +1,4 @@
-// Copyright (c) 2025 The Chromium Authors. All rights reserved.
+// Copyright (c) 2026 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -3194,6 +3194,18 @@ export namespace ProtocolProxyApi {
         enableReportingApi(params: Protocol.Network.EnableReportingApiRequest): Promise<void>;
 
         /**
+         * Sets up tracking device bound sessions and fetching of initial set of sessions.
+         * @experimental
+         */
+        enableDeviceBoundSessions(params: Protocol.Network.EnableDeviceBoundSessionsRequest): Promise<void>;
+
+        /**
+         * Fetches the schemeful site for a specific origin.
+         * @experimental
+         */
+        fetchSchemefulSite(params: Protocol.Network.FetchSchemefulSiteRequest): Promise<Protocol.Network.FetchSchemefulSiteResponse>;
+
+        /**
          * Fetches the resource and returns the content.
          * @experimental
          */
@@ -3450,6 +3462,12 @@ export namespace ProtocolProxyApi {
          * @experimental
          */
         on(event: 'reportingApiEndpointsChangedForOrigin', listener: (params: Protocol.Network.ReportingApiEndpointsChangedForOriginEvent) => void): void;
+
+        /**
+         * Triggered when the initial set of device bound sessions is added.
+         * @experimental
+         */
+        on(event: 'deviceBoundSessionsAdded', listener: (params: Protocol.Network.DeviceBoundSessionsAddedEvent) => void): void;
 
     }
 

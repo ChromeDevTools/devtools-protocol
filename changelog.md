@@ -1,5 +1,105 @@
 
 
+## Roll protocol to r1565416 — _2026-01-07T04:35:12.000Z_
+######  Diff: [`c67e6af...cf12af0`](https://github.com/ChromeDevTools/devtools-protocol/compare/c67e6af...cf12af0)
+
+```diff
+@@ domains/Network.pdl:2057 @@ domain Network
+       string origin
+       array of ReportingApiEndpoint endpoints
+ 
++  # Unique identifier for a device bound session.
++  experimental type DeviceBoundSessionKey extends object
++    properties
++      # The site the session is set up for.
++      string site
++      # The id of the session.
++      string id
++
++  # A device bound session's cookie craving.
++  experimental type DeviceBoundSessionCookieCraving extends object
++    properties
++      # The name of the craving.
++      string name
++      # The domain of the craving.
++      string domain
++      # The path of the craving.
++      string path
++      # The `Secure` attribute of the craving attributes.
++      boolean secure
++      # The `HttpOnly` attribute of the craving attributes.
++      boolean httpOnly
++      # The `SameSite` attribute of the craving attributes.
++      optional CookieSameSite sameSite
++
++  # A device bound session's inclusion URL rule.
++  experimental type DeviceBoundSessionUrlRule extends object
++    properties
++      # See comments on `net::device_bound_sessions::SessionInclusionRules::UrlRule::rule_type`.
++      enum ruleType
++        Exclude
++        Include
++      # See comments on `net::device_bound_sessions::SessionInclusionRules::UrlRule::host_pattern`.
++      string hostPattern
++      # See comments on `net::device_bound_sessions::SessionInclusionRules::UrlRule::path_prefix`.
++      string pathPrefix
++
++  # A device bound session's inclusion rules.
++  experimental type DeviceBoundSessionInclusionRules extends object
++    properties
++      # See comments on `net::device_bound_sessions::SessionInclusionRules::origin_`.
++      string origin
++      # Whether the whole site is included. See comments on
++      # `net::device_bound_sessions::SessionInclusionRules::include_site_` for more
++      # details; this boolean is true if that value is populated.
++      boolean includeSite
++      # See comments on `net::device_bound_sessions::SessionInclusionRules::url_rules_`.
++      array of DeviceBoundSessionUrlRule urlRules
++
++  # A device bound session.
++  experimental type DeviceBoundSession extends object
++    properties
++      # The site and session ID of the session.
++      DeviceBoundSessionKey key
++      # See comments on `net::device_bound_sessions::Session::refresh_url_`.
++      string refreshUrl
++      # See comments on `net::device_bound_sessions::Session::inclusion_rules_`.
++      DeviceBoundSessionInclusionRules inclusionRules
++      # See comments on `net::device_bound_sessions::Session::cookie_cravings_`.
++      array of DeviceBoundSessionCookieCraving cookieCravings
++      # See comments on `net::device_bound_sessions::Session::expiry_date_`.
++      Network.TimeSinceEpoch expiryDate
++      # See comments on `net::device_bound_sessions::Session::cached_challenge__`.
++      optional string cachedChallenge
++      # See comments on `net::device_bound_sessions::Session::allowed_refresh_initiators_`.
++      array of string allowedRefreshInitiators
++
++  # Triggered when the initial set of device bound sessions is added.
++  experimental event deviceBoundSessionsAdded
++    parameters
++      # The device bound sessions.
++      array of DeviceBoundSession sessions
++
++  # Sets up tracking device bound sessions and fetching of initial set of sessions.
++  experimental command enableDeviceBoundSessions
++    parameters
++      # Whether to enable or disable events.
++      boolean enable
++
++  # Fetches the schemeful site for a specific origin.
++  experimental command fetchSchemefulSite
++    parameters
++      # The URL origin.
++      string origin
++    returns
++      # The corresponding schemeful site.
++      string schemefulSite
++
+   # An object providing the result of a network resource load.
+   experimental type LoadNetworkResourcePageResult extends object
+     properties
+```
+
 ## Roll protocol to r1560991 — _2025-12-19T04:33:52.000Z_
 ######  Diff: [`ead0e84...2b34c65`](https://github.com/ChromeDevTools/devtools-protocol/compare/ead0e84...2b34c65)
 
@@ -42080,34 +42180,4 @@ index 0dbdc01d..7a3c772c 100644
 +  # a dialog even if one was recently dismissed by the user.
 +  command resetCooldown
 +
-```
-
-## Roll protocol to r1120988 — _2023-03-23T04:27:35.000Z_
-######  Diff: [`7bd9b6c...6a030f2`](https://github.com/ChromeDevTools/devtools-protocol/compare/7bd9b6c...6a030f2)
-
-```diff
-@@ browser_protocol.pdl:10868 @@ experimental domain Preload
-   # Fired when a prerender attempt is completed.
-   event prerenderAttemptCompleted
-     parameters
-+      PreloadingAttemptKey key
-       # The frame id of the frame initiating prerendering.
-       Page.FrameId initiatingFrameId
-       string prerenderingUrl
-@@ -10891,6 +10892,7 @@ experimental domain Preload
-   # Fired when a prefetch attempt is updated.
-   event prefetchStatusUpdated
-     parameters
-+      PreloadingAttemptKey key
-       # The frame id of the frame initiating prefetch.
-       Page.FrameId initiatingFrameId
-       string prefetchUrl
-@@ -10899,6 +10901,7 @@ experimental domain Preload
-   # Fired when a prerender attempt is updated.
-   event prerenderStatusUpdated
-     parameters
-+      PreloadingAttemptKey key
-       # The frame id of the frame initiating prerender.
-       Page.FrameId initiatingFrameId
-       string prerenderingUrl
 ```
