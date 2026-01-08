@@ -13667,6 +13667,112 @@ export namespace Protocol {
         }
 
         /**
+         * A unique identifier for a device bound session event.
+         * @experimental
+         */
+        export type DeviceBoundSessionEventId = string;
+
+        /**
+         * A fetch result for a device bound session creation or refresh.
+         * @experimental
+         */
+        export type DeviceBoundSessionFetchResult = ('Success' | 'KeyError' | 'SigningError' | 'ServerRequestedTermination' | 'InvalidSessionId' | 'InvalidChallenge' | 'TooManyChallenges' | 'InvalidFetcherUrl' | 'InvalidRefreshUrl' | 'TransientHttpError' | 'ScopeOriginSameSiteMismatch' | 'RefreshUrlSameSiteMismatch' | 'MismatchedSessionId' | 'MissingScope' | 'NoCredentials' | 'SubdomainRegistrationWellKnownUnavailable' | 'SubdomainRegistrationUnauthorized' | 'SubdomainRegistrationWellKnownMalformed' | 'SessionProviderWellKnownUnavailable' | 'RelyingPartyWellKnownUnavailable' | 'FederatedKeyThumbprintMismatch' | 'InvalidFederatedSessionUrl' | 'InvalidFederatedKey' | 'TooManyRelyingOriginLabels' | 'BoundCookieSetForbidden' | 'NetError' | 'ProxyError' | 'EmptySessionConfig' | 'InvalidCredentialsConfig' | 'InvalidCredentialsType' | 'InvalidCredentialsEmptyName' | 'InvalidCredentialsCookie' | 'PersistentHttpError' | 'RegistrationAttemptedChallenge' | 'InvalidScopeOrigin' | 'ScopeOriginContainsPath' | 'RefreshInitiatorNotString' | 'RefreshInitiatorInvalidHostPattern' | 'InvalidScopeSpecification' | 'MissingScopeSpecificationType' | 'EmptyScopeSpecificationDomain' | 'EmptyScopeSpecificationPath' | 'InvalidScopeSpecificationType' | 'InvalidScopeIncludeSite' | 'MissingScopeIncludeSite' | 'FederatedNotAuthorizedByProvider' | 'FederatedNotAuthorizedByRelyingParty' | 'SessionProviderWellKnownMalformed' | 'SessionProviderWellKnownHasProviderOrigin' | 'RelyingPartyWellKnownMalformed' | 'RelyingPartyWellKnownHasRelyingOrigins' | 'InvalidFederatedSessionProviderSessionMissing' | 'InvalidFederatedSessionWrongProviderOrigin' | 'InvalidCredentialsCookieCreationTime' | 'InvalidCredentialsCookieName' | 'InvalidCredentialsCookieParsing' | 'InvalidCredentialsCookieUnpermittedAttribute' | 'InvalidCredentialsCookieInvalidDomain' | 'InvalidCredentialsCookiePrefix' | 'InvalidScopeRulePath' | 'InvalidScopeRuleHostPattern' | 'ScopeRuleOriginScopedHostPatternMismatch' | 'ScopeRuleSiteScopedHostPatternMismatch' | 'SigningQuotaExceeded' | 'InvalidConfigJson' | 'InvalidFederatedSessionProviderFailedToRestoreKey' | 'FailedToUnwrapKey' | 'SessionDeletedDuringRefresh');
+
+        /**
+         * Session event details specific to creation.
+         * @experimental
+         */
+        export interface CreationEventDetails {
+            /**
+             * The result of the fetch attempt.
+             */
+            fetchResult: DeviceBoundSessionFetchResult;
+            /**
+             * The session if there was a newly created session. This is populated for
+             * all successful creation events.
+             */
+            newSession?: DeviceBoundSession;
+        }
+
+        export const enum RefreshEventDetailsRefreshResult {
+            Refreshed = 'Refreshed',
+            InitializedService = 'InitializedService',
+            Unreachable = 'Unreachable',
+            ServerError = 'ServerError',
+            RefreshQuotaExceeded = 'RefreshQuotaExceeded',
+            FatalError = 'FatalError',
+            SigningQuotaExceeded = 'SigningQuotaExceeded',
+        }
+
+        /**
+         * Session event details specific to refresh.
+         * @experimental
+         */
+        export interface RefreshEventDetails {
+            /**
+             * The result of a refresh.
+             */
+            refreshResult: ('Refreshed' | 'InitializedService' | 'Unreachable' | 'ServerError' | 'RefreshQuotaExceeded' | 'FatalError' | 'SigningQuotaExceeded');
+            /**
+             * If there was a fetch attempt, the result of that.
+             */
+            fetchResult?: DeviceBoundSessionFetchResult;
+            /**
+             * The session display if there was a newly created session. This is populated
+             * for any refresh event that modifies the session config.
+             */
+            newSession?: DeviceBoundSession;
+            /**
+             * See comments on `net::device_bound_sessions::RefreshEventResult::was_fully_proactive_refresh`.
+             */
+            wasFullyProactiveRefresh: boolean;
+        }
+
+        export const enum TerminationEventDetailsDeletionReason {
+            Expired = 'Expired',
+            FailedToRestoreKey = 'FailedToRestoreKey',
+            FailedToUnwrapKey = 'FailedToUnwrapKey',
+            StoragePartitionCleared = 'StoragePartitionCleared',
+            ClearBrowsingData = 'ClearBrowsingData',
+            ServerRequested = 'ServerRequested',
+            InvalidSessionParams = 'InvalidSessionParams',
+            RefreshFatalError = 'RefreshFatalError',
+        }
+
+        /**
+         * Session event details specific to termination.
+         * @experimental
+         */
+        export interface TerminationEventDetails {
+            /**
+             * The reason for a session being deleted.
+             */
+            deletionReason: ('Expired' | 'FailedToRestoreKey' | 'FailedToUnwrapKey' | 'StoragePartitionCleared' | 'ClearBrowsingData' | 'ServerRequested' | 'InvalidSessionParams' | 'RefreshFatalError');
+        }
+
+        export const enum ChallengeEventDetailsChallengeResult {
+            Success = 'Success',
+            NoSessionId = 'NoSessionId',
+            NoSessionMatch = 'NoSessionMatch',
+            CantSetBoundCookie = 'CantSetBoundCookie',
+        }
+
+        /**
+         * Session event details specific to challenges.
+         * @experimental
+         */
+        export interface ChallengeEventDetails {
+            /**
+             * The result of a challenge.
+             */
+            challengeResult: ('Success' | 'NoSessionId' | 'NoSessionMatch' | 'CantSetBoundCookie');
+            /**
+             * The challenge set.
+             */
+            challenge: string;
+        }
+
+        /**
          * An object providing the result of a network resource load.
          * @experimental
          */
@@ -15124,6 +15230,37 @@ export namespace Protocol {
              * The device bound sessions.
              */
             sessions: DeviceBoundSession[];
+        }
+
+        /**
+         * Triggered when a device bound session event occurs.
+         * @experimental
+         */
+        export interface DeviceBoundSessionEventOccurredEvent {
+            /**
+             * A unique identifier for this session event.
+             */
+            eventId: DeviceBoundSessionEventId;
+            /**
+             * The site this session event is associated with.
+             */
+            site: string;
+            /**
+             * Whether this event was considered successful.
+             */
+            succeeded: boolean;
+            /**
+             * The session ID this event is associated with. May not be populated for
+             * failed events.
+             */
+            sessionId?: string;
+            /**
+             * The below are the different session event type details. Exactly one is populated.
+             */
+            creationEventDetails?: CreationEventDetails;
+            refreshEventDetails?: RefreshEventDetails;
+            terminationEventDetails?: TerminationEventDetails;
+            challengeEventDetails?: ChallengeEventDetails;
         }
     }
 

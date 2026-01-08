@@ -3727,6 +3727,14 @@ export namespace ProtocolTestsProxyApi {
         offDeviceBoundSessionsAdded(listener: (event: { params: Protocol.Network.DeviceBoundSessionsAddedEvent }) => void): void;
         onceDeviceBoundSessionsAdded(eventMatcher?: (event: { params: Protocol.Network.DeviceBoundSessionsAddedEvent }) => boolean): Promise<{ params: Protocol.Network.DeviceBoundSessionsAddedEvent }>;
 
+        /**
+         * Triggered when a device bound session event occurs.
+         * @experimental
+         */
+        onDeviceBoundSessionEventOccurred(listener: (event: { params: Protocol.Network.DeviceBoundSessionEventOccurredEvent }) => void): void;
+        offDeviceBoundSessionEventOccurred(listener: (event: { params: Protocol.Network.DeviceBoundSessionEventOccurredEvent }) => void): void;
+        onceDeviceBoundSessionEventOccurred(eventMatcher?: (event: { params: Protocol.Network.DeviceBoundSessionEventOccurredEvent }) => boolean): Promise<{ params: Protocol.Network.DeviceBoundSessionEventOccurredEvent }>;
+
     }
 
     export interface OverlayApi {

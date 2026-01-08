@@ -1,7 +1,175 @@
 
 
+## Roll protocol to r1566079 — _2026-01-08T04:35:00.000Z_
+######  Diff: [`2ab0ee0...27d60bc`](https://github.com/ChromeDevTools/devtools-protocol/compare/2ab0ee0...27d60bc)
+
+```diff
+@@ domains/Network.pdl:2123 @@ domain Network
+       # See comments on `net::device_bound_sessions::Session::allowed_refresh_initiators_`.
+       array of string allowedRefreshInitiators
+ 
++  # A unique identifier for a device bound session event.
++  experimental type DeviceBoundSessionEventId extends string
++
++  # A fetch result for a device bound session creation or refresh.
++  experimental type DeviceBoundSessionFetchResult extends string
++    enum
++      Success
++      KeyError
++      SigningError
++      ServerRequestedTermination
++      InvalidSessionId
++      InvalidChallenge
++      TooManyChallenges
++      InvalidFetcherUrl
++      InvalidRefreshUrl
++      TransientHttpError
++      ScopeOriginSameSiteMismatch
++      RefreshUrlSameSiteMismatch
++      MismatchedSessionId
++      MissingScope
++      NoCredentials
++      SubdomainRegistrationWellKnownUnavailable
++      SubdomainRegistrationUnauthorized
++      SubdomainRegistrationWellKnownMalformed
++      SessionProviderWellKnownUnavailable
++      RelyingPartyWellKnownUnavailable
++      FederatedKeyThumbprintMismatch
++      InvalidFederatedSessionUrl
++      InvalidFederatedKey
++      TooManyRelyingOriginLabels
++      BoundCookieSetForbidden
++      NetError
++      ProxyError
++      EmptySessionConfig
++      InvalidCredentialsConfig
++      InvalidCredentialsType
++      InvalidCredentialsEmptyName
++      InvalidCredentialsCookie
++      PersistentHttpError
++      RegistrationAttemptedChallenge
++      InvalidScopeOrigin
++      ScopeOriginContainsPath
++      RefreshInitiatorNotString
++      RefreshInitiatorInvalidHostPattern
++      InvalidScopeSpecification
++      MissingScopeSpecificationType
++      EmptyScopeSpecificationDomain
++      EmptyScopeSpecificationPath
++      InvalidScopeSpecificationType
++      InvalidScopeIncludeSite
++      MissingScopeIncludeSite
++      FederatedNotAuthorizedByProvider
++      FederatedNotAuthorizedByRelyingParty
++      SessionProviderWellKnownMalformed
++      SessionProviderWellKnownHasProviderOrigin
++      RelyingPartyWellKnownMalformed
++      RelyingPartyWellKnownHasRelyingOrigins
++      InvalidFederatedSessionProviderSessionMissing
++      InvalidFederatedSessionWrongProviderOrigin
++      InvalidCredentialsCookieCreationTime
++      InvalidCredentialsCookieName
++      InvalidCredentialsCookieParsing
++      InvalidCredentialsCookieUnpermittedAttribute
++      InvalidCredentialsCookieInvalidDomain
++      InvalidCredentialsCookiePrefix
++      InvalidScopeRulePath
++      InvalidScopeRuleHostPattern
++      ScopeRuleOriginScopedHostPatternMismatch
++      ScopeRuleSiteScopedHostPatternMismatch
++      SigningQuotaExceeded
++      InvalidConfigJson
++      InvalidFederatedSessionProviderFailedToRestoreKey
++      FailedToUnwrapKey
++      SessionDeletedDuringRefresh
++
++  # Session event details specific to creation.
++  experimental type CreationEventDetails extends object
++    properties
++      # The result of the fetch attempt.
++      DeviceBoundSessionFetchResult fetchResult
++      # The session if there was a newly created session. This is populated for
++      # all successful creation events.
++      optional DeviceBoundSession newSession
++
++  # Session event details specific to refresh.
++  experimental type RefreshEventDetails extends object
++    properties
++      # The result of a refresh.
++      enum refreshResult
++        Refreshed
++        InitializedService
++        Unreachable
++        ServerError
++        RefreshQuotaExceeded
++        FatalError
++        SigningQuotaExceeded
++      # If there was a fetch attempt, the result of that.
++      optional DeviceBoundSessionFetchResult fetchResult
++      # The session display if there was a newly created session. This is populated
++      # for any refresh event that modifies the session config.
++      optional DeviceBoundSession newSession
++      # See comments on `net::device_bound_sessions::RefreshEventResult::was_fully_proactive_refresh`.
++      boolean wasFullyProactiveRefresh
++
++  # Session event details specific to termination.
++  experimental type TerminationEventDetails extends object
++    properties
++      # The reason for a session being deleted.
++      enum deletionReason
++        Expired
++        FailedToRestoreKey
++        FailedToUnwrapKey
++        StoragePartitionCleared
++        ClearBrowsingData
++        ServerRequested
++        InvalidSessionParams
++        RefreshFatalError
++
++  # Session event details specific to challenges.
++  experimental type ChallengeEventDetails extends object
++    properties
++      # The result of a challenge.
++      enum challengeResult
++        Success
++        NoSessionId
++        NoSessionMatch
++        CantSetBoundCookie
++      # The challenge set.
++      string challenge
++
+   # Triggered when the initial set of device bound sessions is added.
+   experimental event deviceBoundSessionsAdded
+     parameters
+       # The device bound sessions.
+       array of DeviceBoundSession sessions
+ 
++  # Triggered when a device bound session event occurs.
++  experimental event deviceBoundSessionEventOccurred
++    parameters
++      # A unique identifier for this session event.
++      DeviceBoundSessionEventId eventId
++      # The site this session event is associated with.
++      string site
++      # Whether this event was considered successful.
++      boolean succeeded
++      # The session ID this event is associated with. May not be populated for
++      # failed events.
++      optional string sessionId
++
++      # The below are the different session event type details. Exactly one is populated.
++      optional CreationEventDetails creationEventDetails
++      optional RefreshEventDetails refreshEventDetails
++      optional TerminationEventDetails terminationEventDetails
++      optional ChallengeEventDetails challengeEventDetails
++
+   # Sets up tracking device bound sessions and fetching of initial set of sessions.
+   experimental command enableDeviceBoundSessions
+     parameters
+```
+
 ## Roll protocol to r1565416 — _2026-01-07T04:35:12.000Z_
-######  Diff: [`c67e6af...cf12af0`](https://github.com/ChromeDevTools/devtools-protocol/compare/c67e6af...cf12af0)
+######  Diff: [`c67e6af...2ab0ee0`](https://github.com/ChromeDevTools/devtools-protocol/compare/c67e6af...2ab0ee0)
 
 ```diff
 @@ domains/Network.pdl:2057 @@ domain Network
@@ -42070,114 +42238,4 @@ index 0dbdc01d..7a3c772c 100644
        # Object containing break-specific auxiliary properties.
        optional object data
        # Hit breakpoints IDs
-```
-
-## Roll protocol to r1121538 — _2023-03-24T04:27:33.000Z_
-######  Diff: [`6a030f2...4295d0a`](https://github.com/ChromeDevTools/devtools-protocol/compare/6a030f2...4295d0a)
-
-```diff
-@@ browser_protocol.pdl:8984 @@ experimental domain Storage
-       cache_storage
-       interest_groups
-       shared_storage
-+      storage_buckets
-       all
-       other
- 
-@@ -9119,6 +9120,23 @@ experimental domain Storage
-       # SharedStorageAccessType.workletSet.
-       optional boolean ignoreIfPresent
- 
-+  type StorageBucketsDurability extends string
-+    enum
-+      relaxed
-+      strict
-+
-+  type StorageBucketInfo extends object
-+    properties
-+      SerializedStorageKey storageKey
-+      string id
-+      string name
-+      boolean isDefault
-+      Network.TimeSinceEpoch expiration
-+      # Storage quota (bytes).
-+      number quota
-+      boolean persistent
-+      StorageBucketsDurability durability
-+
-   # Returns a storage key given a frame id.
-   command getStorageKeyForFrame
-     parameters
-@@ -9315,6 +9333,18 @@ experimental domain Storage
-     parameters
-       boolean enable
- 
-+  # Set tracking for a storage key's buckets.
-+  experimental command setStorageBucketTracking
-+    parameters
-+      string storageKey
-+      boolean enable
-+
-+  # Deletes the Storage Bucket with the given storage key and bucket name.
-+  experimental command deleteStorageBucket
-+    parameters
-+      string storageKey
-+      string bucketName
-+
-   # A cache's contents have been modified.
-   event cacheStorageContentUpdated
-     parameters
-@@ -9377,6 +9407,14 @@ experimental domain Storage
-       # presence/absence depends on `type`.
-       SharedStorageAccessParams params
- 
-+  event storageBucketCreatedOrUpdated
-+    parameters
-+      StorageBucketInfo bucket
-+
-+  event storageBucketDeleted
-+    parameters
-+      string bucketId
-+
- # The SystemInfo domain defines methods and events for querying low-level system information.
- experimental domain SystemInfo
- 
-@@ -10748,6 +10786,16 @@ experimental domain Preload
-       # - https://wicg.github.io/nav-speculation/speculation-rules.html
-       # - https://github.com/WICG/nav-speculation/blob/main/triggers.md
-       string sourceText
-+      # Error information
-+      # `errorMessage` is null iff `errorType` is null.
-+      optional RuleSetErrorType errorType
-+      # TODO(https://crbug.com/1425354): Replace this property with structured error.
-+      deprecated optional string errorMessage
-+
-+  type RuleSetErrorType extends string
-+    enum
-+      SourceIsNotJsonObject
-+      InvalidRulesSkipped
- 
-   # The type of preloading attempted. It corresponds to
-   # mojom::SpeculationAction (although PrefetchWithSubresources is omitted as it
-@@ -10941,6 +10989,10 @@ experimental domain FedCm
-     parameters
-       string dialogId
-       array of Account accounts
-+      # These exist primarily so that the caller can verify the
-+      # RP context was used appropriately.
-+      string title
-+      optional string subtitle
- 
-   command enable
-     parameters
-@@ -10959,3 +11011,9 @@ experimental domain FedCm
-   command dismissDialog
-     parameters
-       string dialogId
-+      optional boolean triggerCooldown
-+
-+  # Resets the cooldown time, if any, to allow the next FedCM call to show
-+  # a dialog even if one was recently dismissed by the user.
-+  command resetCooldown
-+
 ```

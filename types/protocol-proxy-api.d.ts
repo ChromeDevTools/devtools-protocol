@@ -3469,6 +3469,12 @@ export namespace ProtocolProxyApi {
          */
         on(event: 'deviceBoundSessionsAdded', listener: (params: Protocol.Network.DeviceBoundSessionsAddedEvent) => void): void;
 
+        /**
+         * Triggered when a device bound session event occurs.
+         * @experimental
+         */
+        on(event: 'deviceBoundSessionEventOccurred', listener: (params: Protocol.Network.DeviceBoundSessionEventOccurredEvent) => void): void;
+
     }
 
     export interface OverlayApi {
