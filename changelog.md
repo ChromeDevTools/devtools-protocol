@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1568225 — _2026-01-13T04:34:57.000Z_
+######  Diff: [`411079d...c166df1`](https://github.com/ChromeDevTools/devtools-protocol/compare/411079d...c166df1)
+
+```diff
+@@ domains/Network.pdl:1216 @@ domain Network
+     returns
+       # Request body string, omitting files from multipart requests
+       string postData
++      # True, if content was sent as base64.
++      boolean base64Encoded
+ 
+   # Returns content served for the given currently intercepted request.
+   experimental command getResponseBodyForInterception
+```
+
 ## Roll protocol to r1566079 — _2026-01-08T04:35:00.000Z_
-######  Diff: [`2ab0ee0...27d60bc`](https://github.com/ChromeDevTools/devtools-protocol/compare/2ab0ee0...27d60bc)
+######  Diff: [`2ab0ee0...411079d`](https://github.com/ChromeDevTools/devtools-protocol/compare/2ab0ee0...411079d)
 
 ```diff
 @@ domains/Network.pdl:2123 @@ domain Network
@@ -42224,18 +42239,4 @@ index 0dbdc01d..7a3c772c 100644
 +      optional array of CSSPositionFallbackRule cssPositionFallbackRules
        # Id of the first parent element that does not have display: contents.
        experimental optional DOM.NodeId parentLayoutNodeId
-```
-
-## Roll protocol to r1122063 — _2023-03-25T04:27:16.000Z_
-######  Diff: [`4295d0a...0b187a3`](https://github.com/ChromeDevTools/devtools-protocol/compare/4295d0a...0b187a3)
-
-```diff
-@@ js_protocol.pdl:580 @@ domain Debugger
-         other
-         promiseRejection
-         XHR
-+        step
-       # Object containing break-specific auxiliary properties.
-       optional object data
-       # Hit breakpoints IDs
 ```
