@@ -1,7 +1,75 @@
 
 
+## Roll protocol to r1568893 — _2026-01-14T04:37:57.000Z_
+######  Diff: [`d0d2cf0...20bc5b5`](https://github.com/ChromeDevTools/devtools-protocol/compare/d0d2cf0...20bc5b5)
+
+```diff
+@@ domains/Audits.pdl:34 @@ experimental domain Audits
+       ExcludeSameSiteNoneInsecure
+       ExcludeSameSiteLax
+       ExcludeSameSiteStrict
+-      ExcludeInvalidSameParty
+-      ExcludeSamePartyCrossPartyContext
+       ExcludeDomainNonASCII
+       ExcludeThirdPartyCookieBlockedInFirstPartySet
+       ExcludeThirdPartyPhaseout
+diff --git a/pdl/domains/Network.pdl b/pdl/domains/Network.pdl
+index 030fc076..c2cd6c1f 100644
+--- a/pdl/domains/Network.pdl
++++ b/pdl/domains/Network.pdl
+@@ -622,8 +622,6 @@ domain Network
+       optional CookieSameSite sameSite
+       # Cookie Priority
+       experimental CookiePriority priority
+-      # True if cookie is SameParty.
+-      experimental deprecated boolean sameParty
+       # Cookie source scheme type.
+       experimental CookieSourceScheme sourceScheme
+       # Cookie source port. Valid values are {-1, [1, 65535]}, -1 indicates an unspecified port.
+@@ -687,12 +685,6 @@ domain Network
+       # value.
+       # This is the "Schemeful Same-Site" version of the blocked reason.
+       SchemefulSameSiteUnspecifiedTreatedAsLax
+-      # The cookie had the "SameParty" attribute but came from a cross-party response.
+-      SamePartyFromCrossPartyContext
+-      # The cookie had the "SameParty" attribute but did not specify the "Secure" attribute
+-      # (which is required in order to use "SameParty"); or specified the "SameSite=Strict"
+-      # attribute (which is forbidden when using "SameParty").
+-      SamePartyConflictsWithOtherAttributes
+       # The cookie's name/value pair size exceeded the size limit defined in
+       # RFC6265bis.
+       NameValuePairExceedsMaxSize
+@@ -749,8 +741,6 @@ domain Network
+       # value.
+       # This is the "Schemeful Same-Site" version of the blocked reason.
+       SchemefulSameSiteUnspecifiedTreatedAsLax
+-      # The cookie had the "SameParty" attribute and the request was made from a cross-party context.
+-      SamePartyFromCrossPartyContext
+       # The cookie's name/value pair size exceeded the size limit defined in
+       # RFC6265bis.
+       NameValuePairExceedsMaxSize
+@@ -847,8 +837,6 @@ domain Network
+       optional TimeSinceEpoch expires
+       # Cookie Priority.
+       experimental optional CookiePriority priority
+-      # True if cookie is SameParty.
+-      experimental optional boolean sameParty
+       # Cookie source scheme type.
+       experimental optional CookieSourceScheme sourceScheme
+       # Cookie source port. Valid values are {-1, [1, 65535]}, -1 indicates an unspecified port.
+@@ -1317,8 +1305,6 @@ domain Network
+       optional TimeSinceEpoch expires
+       # Cookie Priority type.
+       experimental optional CookiePriority priority
+-      # True if cookie is SameParty.
+-      experimental optional boolean sameParty
+       # Cookie source scheme type.
+       experimental optional CookieSourceScheme sourceScheme
+       # Cookie source port. Valid values are {-1, [1, 65535]}, -1 indicates an unspecified port.
+```
+
 ## Roll protocol to r1568225 — _2026-01-13T04:34:57.000Z_
-######  Diff: [`411079d...c166df1`](https://github.com/ChromeDevTools/devtools-protocol/compare/411079d...c166df1)
+######  Diff: [`411079d...d0d2cf0`](https://github.com/ChromeDevTools/devtools-protocol/compare/411079d...d0d2cf0)
 
 ```diff
 @@ domains/Network.pdl:1216 @@ domain Network
@@ -42200,43 +42268,4 @@ index 0dbdc01d..7a3c772c 100644
  
    # This issue tracks information needed to print a deprecation message.
    # https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/frame/third_party/blink/renderer/core/frame/deprecation/README.md
-```
-
-## Roll protocol to r1122837 — _2023-03-28T04:27:31.000Z_
-######  Diff: [`0b187a3...bab8b36`](https://github.com/ChromeDevTools/devtools-protocol/compare/0b187a3...bab8b36)
-
-```diff
-@@ browser_protocol.pdl:1669 @@ experimental domain CSS
-       # Available variation settings (a.k.a. "axes").
-       optional array of FontVariationAxis fontVariationAxes
- 
-+  # CSS try rule representation.
-+  type CSSTryRule extends object
-+    properties
-+      # The css style sheet identifier (absent for user agent stylesheet and user-specified
-+      # stylesheet rules) this rule came from.
-+      optional StyleSheetId styleSheetId
-+      # Parent stylesheet's origin.
-+      StyleSheetOrigin origin
-+      # Associated style declaration.
-+      optional CSSStyle style
-+
-+  # CSS position-fallback rule representation.
-+  type CSSPositionFallbackRule extends object
-+    properties
-+      Value name
-+      # List of keyframes.
-+      array of CSSTryRule tryRules
-+
-   # CSS keyframes rule representation.
-   type CSSKeyframesRule extends object
-     properties
-@@ -1802,6 +1820,8 @@ experimental domain CSS
-       optional array of InheritedPseudoElementMatches inheritedPseudoElements
-       # A list of CSS keyframed animations matching this node.
-       optional array of CSSKeyframesRule cssKeyframesRules
-+      # A list of CSS position fallbacks matching this node.
-+      optional array of CSSPositionFallbackRule cssPositionFallbackRules
-       # Id of the first parent element that does not have display: contents.
-       experimental optional DOM.NodeId parentLayoutNodeId
 ```
