@@ -1,7 +1,48 @@
 
 
+## Roll protocol to r1572739 — _2026-01-22T04:38:20.000Z_
+######  Diff: [`f44c6e0...d046af9`](https://github.com/ChromeDevTools/devtools-protocol/compare/f44c6e0...d046af9)
+
+```diff
+@@ domains/Network.pdl:333 @@ domain Network
+       # TODO(https://crbug.com/1263483): Remove this once frontend code does
+       # not reference it anymore.
+       PreflightInvalidAllowExternal
+-      PreflightMissingAllowPrivateNetwork
+-      PreflightInvalidAllowPrivateNetwork
+       InvalidAllowMethodsPreflightResponse
+       InvalidAllowHeadersPreflightResponse
+       MethodDisallowedByPreflightResponse
+@@ -345,25 +343,7 @@ domain Network
+       # Request carried a target IP address space property that did not match
+       # the target resource's address space.
+       InvalidPrivateNetworkAccess
+-      # Request was a private network request yet did not carry a target IP
+-      # address space.
+-      UnexpectedPrivateNetworkAccess
+       NoCorsRedirectModeNotFollow
+-      # Request was a private network request and needed user permission yet did
+-      # not carry `Private-Network-Access-Id` in the preflight response.
+-      # https://github.com/WICG/private-network-access/blob/main/permission_prompt/explainer.md
+-      PreflightMissingPrivateNetworkAccessId
+-      # Request was a private network request and needed user permission yet did
+-      # not carry `Private-Network-Access-Name` in the preflight response.
+-      # https://github.com/WICG/private-network-access/blob/main/permission_prompt/explainer.md
+-      PreflightMissingPrivateNetworkAccessName
+-      # Request was a private network request and needed user permission yet not
+-      # able to request for permission.
+-      # https://github.com/WICG/private-network-access/blob/main/permission_prompt/explainer.md
+-      PrivateNetworkAccessPermissionUnavailable
+-      # Request was a private network request and is denied by user permission.
+-      # https://github.com/WICG/private-network-access/blob/main/permission_prompt/explainer.md
+-      PrivateNetworkAccessPermissionDenied
+       # Request was a local network request and is denied by user permission.
+       # https://wicg.github.io/local-network-access/
+       LocalNetworkAccessPermissionDenied
+```
+
 ## Roll protocol to r1568893 — _2026-01-14T04:37:57.000Z_
-######  Diff: [`d0d2cf0...20bc5b5`](https://github.com/ChromeDevTools/devtools-protocol/compare/d0d2cf0...20bc5b5)
+######  Diff: [`d0d2cf0...f44c6e0`](https://github.com/ChromeDevTools/devtools-protocol/compare/d0d2cf0...f44c6e0)
 
 ```diff
 @@ domains/Audits.pdl:34 @@ experimental domain Audits
@@ -42254,18 +42295,4 @@ index 0dbdc01d..7a3c772c 100644
  
    # CSS position-fallback rule representation.
    type CSSPositionFallbackRule extends object
-```
-
-## Roll protocol to r1124027 — _2023-03-30T04:27:29.000Z_
-######  Diff: [`bab8b36...4cb5368`](https://github.com/ChromeDevTools/devtools-protocol/compare/bab8b36...4cb5368)
-
-```diff
-@@ browser_protocol.pdl:765 @@ experimental domain Audits
-       GenericIssueErrorType errorType
-       optional Page.FrameId frameId
-       optional DOM.BackendNodeId violatingNodeId
-+      optional string violatingNodeAttribute
- 
-   # This issue tracks information needed to print a deprecation message.
-   # https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/frame/third_party/blink/renderer/core/frame/deprecation/README.md
 ```
