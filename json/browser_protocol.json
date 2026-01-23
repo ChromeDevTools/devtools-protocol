@@ -17150,6 +17150,32 @@
                     ]
                 },
                 {
+                    "id": "DeviceBoundSessionWithUsage",
+                    "description": "How a device bound session was used during a request.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "sessionKey",
+                            "description": "The key for the session.",
+                            "$ref": "DeviceBoundSessionKey"
+                        },
+                        {
+                            "name": "usage",
+                            "description": "How the session was used (or not used).",
+                            "type": "string",
+                            "enum": [
+                                "NotInScope",
+                                "InScopeRefreshNotYetNeeded",
+                                "InScopeRefreshNotAllowed",
+                                "ProactiveRefreshNotPossible",
+                                "ProactiveRefreshAttempted",
+                                "Deferred"
+                            ]
+                        }
+                    ]
+                },
+                {
                     "id": "DeviceBoundSessionCookieCraving",
                     "description": "A device bound session's cookie craving.",
                     "experimental": true,
@@ -19337,6 +19363,15 @@
                             "description": "Connection timing information for the request.",
                             "experimental": true,
                             "$ref": "ConnectTiming"
+                        },
+                        {
+                            "name": "deviceBoundSessionUsages",
+                            "description": "How the request site's device bound sessions were used during this request.",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "DeviceBoundSessionWithUsage"
+                            }
                         },
                         {
                             "name": "clientSecurityState",

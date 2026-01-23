@@ -13544,6 +13544,30 @@ export namespace Protocol {
             id: string;
         }
 
+        export const enum DeviceBoundSessionWithUsageUsage {
+            NotInScope = 'NotInScope',
+            InScopeRefreshNotYetNeeded = 'InScopeRefreshNotYetNeeded',
+            InScopeRefreshNotAllowed = 'InScopeRefreshNotAllowed',
+            ProactiveRefreshNotPossible = 'ProactiveRefreshNotPossible',
+            ProactiveRefreshAttempted = 'ProactiveRefreshAttempted',
+            Deferred = 'Deferred',
+        }
+
+        /**
+         * How a device bound session was used during a request.
+         * @experimental
+         */
+        export interface DeviceBoundSessionWithUsage {
+            /**
+             * The key for the session.
+             */
+            sessionKey: DeviceBoundSessionKey;
+            /**
+             * How the session was used (or not used).
+             */
+            usage: ('NotInScope' | 'InScopeRefreshNotYetNeeded' | 'InScopeRefreshNotAllowed' | 'ProactiveRefreshNotPossible' | 'ProactiveRefreshAttempted' | 'Deferred');
+        }
+
         /**
          * A device bound session's cookie craving.
          * @experimental
@@ -15043,6 +15067,10 @@ export namespace Protocol {
              * @experimental
              */
             connectTiming: ConnectTiming;
+            /**
+             * How the request site's device bound sessions were used during this request.
+             */
+            deviceBoundSessionUsages?: DeviceBoundSessionWithUsage[];
             /**
              * The client security state set for the request.
              */

@@ -1,7 +1,43 @@
 
 
+## Roll protocol to r1573491 — _2026-01-23T04:35:32.000Z_
+######  Diff: [`9e24285...f9c7e21`](https://github.com/ChromeDevTools/devtools-protocol/compare/9e24285...f9c7e21)
+
+```diff
+@@ domains/Network.pdl:1812 @@ domain Network
+       Headers headers
+       # Connection timing information for the request.
+       experimental ConnectTiming connectTiming
++      # How the request site's device bound sessions were used during this request.
++      optional array of DeviceBoundSessionWithUsage deviceBoundSessionUsages
+       # The client security state set for the request.
+       optional ClientSecurityState clientSecurityState
+       # Whether the site has partitioned cookies stored in a partition different than the current one.
+@@ -2033,6 +2035,20 @@ domain Network
+       # The id of the session.
+       string id
+ 
++  # How a device bound session was used during a request.
++  experimental type DeviceBoundSessionWithUsage extends object
++    properties
++      # The key for the session.
++      DeviceBoundSessionKey sessionKey
++      # How the session was used (or not used).
++      enum usage
++        NotInScope
++        InScopeRefreshNotYetNeeded
++        InScopeRefreshNotAllowed
++        ProactiveRefreshNotPossible
++        ProactiveRefreshAttempted
++        Deferred
++
+   # A device bound session's cookie craving.
+   experimental type DeviceBoundSessionCookieCraving extends object
+     properties
+```
+
 ## Roll protocol to r1572739 — _2026-01-22T04:38:20.000Z_
-######  Diff: [`f44c6e0...d046af9`](https://github.com/ChromeDevTools/devtools-protocol/compare/f44c6e0...d046af9)
+######  Diff: [`f44c6e0...9e24285`](https://github.com/ChromeDevTools/devtools-protocol/compare/f44c6e0...9e24285)
 
 ```diff
 @@ domains/Network.pdl:333 @@ domain Network
@@ -42280,19 +42316,4 @@ index 0dbdc01d..7a3c772c 100644
        TooManyConcurrentRequests
        SourceAndTriggerHeaders
        SourceIgnored
-```
-
-## Roll protocol to r1126404 — _2023-04-05T04:27:02.000Z_
-######  Diff: [`4cb5368...22ae458`](https://github.com/ChromeDevTools/devtools-protocol/compare/4cb5368...22ae458)
-
-```diff
-@@ browser_protocol.pdl:1679 @@ experimental domain CSS
-       # Parent stylesheet's origin.
-       StyleSheetOrigin origin
-       # Associated style declaration.
--      optional CSSStyle style
-+      CSSStyle style
- 
-   # CSS position-fallback rule representation.
-   type CSSPositionFallbackRule extends object
 ```
