@@ -1,7 +1,41 @@
 
 
+## Roll protocol to r1574117 — _2026-01-24T04:34:09.000Z_
+######  Diff: [`878c563...9848d8a`](https://github.com/ChromeDevTools/devtools-protocol/compare/878c563...9848d8a)
+
+```diff
+@@ domains/CSS.pdl:708 @@ experimental domain CSS
+   # to the provided property syntax, the value is parsed using combined
+   # syntax as if null `propertyName` was provided. If the value cannot be
+   # resolved even then, return the provided value without any changes.
++  # Note: this function currently does not resolve CSS random() function,
++  # it returns unmodified random() function parts.`
+   experimental command resolveValues
+     parameters
+       # Cascade-dependent keywords (revert/revert-layer) do not work.
+diff --git a/pdl/domains/Target.pdl b/pdl/domains/Target.pdl
+index 8d8ead63..e8380799 100644
+--- a/pdl/domains/Target.pdl
++++ b/pdl/domains/Target.pdl
+@@ -167,6 +167,14 @@ domain Target
+       # present in the tab UI strip. Cannot be created with `forTab: true`, `newWindow: true` or
+       # `background: false`. The life-time of the tab is limited to the life-time of the session.
+       experimental optional boolean hidden
++      # If specified, the option is used to determine if the new target should
++      # be focused or not. By default, the focus behavior depends on the
++      # value of the background field. For example, background=false and focus=false
++      # will result in the target tab being opened but the browser window remain
++      # unchanged (if it was in the background, it will remain in the background)
++      # and background=false with focus=undefined will result in the window being focused.
++      # Using background: true and focus: true is not supported and will result in an error.
++      experimental optional boolean focus
+     returns
+       # The id of the page opened.
+       TargetID targetId
+```
+
 ## Roll protocol to r1573491 — _2026-01-23T04:35:32.000Z_
-######  Diff: [`9e24285...f9c7e21`](https://github.com/ChromeDevTools/devtools-protocol/compare/9e24285...f9c7e21)
+######  Diff: [`9e24285...878c563`](https://github.com/ChromeDevTools/devtools-protocol/compare/9e24285...878c563)
 
 ```diff
 @@ domains/Network.pdl:1812 @@ domain Network
@@ -42301,19 +42335,4 @@ index 0dbdc01d..7a3c772c 100644
        SourceAndTriggerHeaders
        SourceIgnored
        TriggerIgnored
-```
-
-## Roll protocol to r1129085 — _2023-04-12T04:26:50.000Z_
-######  Diff: [`22ae458...d7c1808`](https://github.com/ChromeDevTools/devtools-protocol/compare/22ae458...d7c1808)
-
-```diff
-@@ browser_protocol.pdl:708 @@ experimental domain Audits
-       InvalidHeader
-       InvalidRegisterTriggerHeader
-       InvalidEligibleHeader
-+      # TODO(crbug.com/1431942): Remove this issue once DevTools stops
-+      # referencing it
-       TooManyConcurrentRequests
-       SourceAndTriggerHeaders
-       SourceIgnored
 ```

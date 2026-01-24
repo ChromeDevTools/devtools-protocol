@@ -20646,6 +20646,17 @@ export namespace Protocol {
              * @experimental
              */
             hidden?: boolean;
+            /**
+             * If specified, the option is used to determine if the new target should
+             * be focused or not. By default, the focus behavior depends on the
+             * value of the background field. For example, background=false and focus=false
+             * will result in the target tab being opened but the browser window remain
+             * unchanged (if it was in the background, it will remain in the background)
+             * and background=false with focus=undefined will result in the window being focused.
+             * Using background: true and focus: true is not supported and will result in an error.
+             * @experimental
+             */
+            focus?: boolean;
         }
 
         export interface CreateTargetResponse {
