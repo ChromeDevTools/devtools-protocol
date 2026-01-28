@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1575685 — _2026-01-28T04:36:08.000Z_
+######  Diff: [`19078ce...b721951`](https://github.com/ChromeDevTools/devtools-protocol/compare/19078ce...b721951)
+
+```diff
+@@ browser_protocol.pdl:48 @@ include domains/PerformanceTimeline.pdl
+ include domains/Preload.pdl
+ include domains/Security.pdl
+ include domains/ServiceWorker.pdl
++include domains/SmartCardEmulation.pdl
+ include domains/Storage.pdl
+ include domains/SystemInfo.pdl
+ include domains/Target.pdl
+```
+
 ## Roll protocol to r1574117 — _2026-01-24T04:34:09.000Z_
-######  Diff: [`878c563...9848d8a`](https://github.com/ChromeDevTools/devtools-protocol/compare/878c563...9848d8a)
+######  Diff: [`878c563...19078ce`](https://github.com/ChromeDevTools/devtools-protocol/compare/878c563...19078ce)
 
 ```diff
 @@ domains/CSS.pdl:708 @@ experimental domain CSS
@@ -42319,20 +42333,4 @@ index 0dbdc01d..7a3c772c 100644
  
    # A unique id for a DevTools inspector issue. Allows other entities (e.g.
    # exceptions, CDP message, console messages, etc.) to reference an issue.
-```
-
-## Roll protocol to r1129676 — _2023-04-13T04:27:09.000Z_
-######  Diff: [`d7c1808...adde591`](https://github.com/ChromeDevTools/devtools-protocol/compare/d7c1808...adde591)
-
-```diff
-@@ browser_protocol.pdl:708 @@ experimental domain Audits
-       InvalidHeader
-       InvalidRegisterTriggerHeader
-       InvalidEligibleHeader
--      # TODO(crbug.com/1431942): Remove this issue once DevTools stops
--      # referencing it
--      TooManyConcurrentRequests
-       SourceAndTriggerHeaders
-       SourceIgnored
-       TriggerIgnored
 ```

@@ -106,6 +106,8 @@ export namespace ProtocolProxyApi {
 
         ServiceWorker: ServiceWorkerApi;
 
+        SmartCardEmulation: SmartCardEmulationApi;
+
         Storage: StorageApi;
 
         SystemInfo: SystemInfoApi;
@@ -4447,6 +4449,256 @@ export namespace ProtocolProxyApi {
         on(event: 'workerRegistrationUpdated', listener: (params: Protocol.ServiceWorker.WorkerRegistrationUpdatedEvent) => void): void;
 
         on(event: 'workerVersionUpdated', listener: (params: Protocol.ServiceWorker.WorkerVersionUpdatedEvent) => void): void;
+
+    }
+
+    export interface SmartCardEmulationApi {
+        /**
+         * Enables the |SmartCardEmulation| domain.
+         */
+        enable(): Promise<void>;
+
+        /**
+         * Disables the |SmartCardEmulation| domain.
+         */
+        disable(): Promise<void>;
+
+        /**
+         * Reports the successful result of a |SCardEstablishContext| call.
+         * 
+         * This maps to:
+         * PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gaa1b8970169fd4883a6dc4a8f43f19b67
+         * Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardestablishcontext
+         */
+        reportEstablishContextResult(params: Protocol.SmartCardEmulation.ReportEstablishContextResultRequest): Promise<void>;
+
+        /**
+         * Reports the successful result of a |SCardReleaseContext| call.
+         * 
+         * This maps to:
+         * PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga6aabcba7744c5c9419fdd6404f73a934
+         * Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardreleasecontext
+         */
+        reportReleaseContextResult(params: Protocol.SmartCardEmulation.ReportReleaseContextResultRequest): Promise<void>;
+
+        /**
+         * Reports the successful result of a |SCardListReaders| call.
+         * 
+         * This maps to:
+         * PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga93b07815789b3cf2629d439ecf20f0d9
+         * Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardlistreadersa
+         */
+        reportListReadersResult(params: Protocol.SmartCardEmulation.ReportListReadersResultRequest): Promise<void>;
+
+        /**
+         * Reports the successful result of a |SCardGetStatusChange| call.
+         * 
+         * This maps to:
+         * PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga33247d5d1257d59e55647c3bb717db24
+         * Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardgetstatuschangea
+         */
+        reportGetStatusChangeResult(params: Protocol.SmartCardEmulation.ReportGetStatusChangeResultRequest): Promise<void>;
+
+        /**
+         * Reports the result of a |SCardBeginTransaction| call.
+         * On success, this creates a new transaction object.
+         * 
+         * This maps to:
+         * PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gaddb835dce01a0da1d6ca02d33ee7d861
+         * Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardbegintransaction
+         */
+        reportBeginTransactionResult(params: Protocol.SmartCardEmulation.ReportBeginTransactionResultRequest): Promise<void>;
+
+        /**
+         * Reports the successful result of a call that returns only a result code.
+         * Used for: |SCardCancel|, |SCardDisconnect|, |SCardSetAttrib|, |SCardEndTransaction|.
+         * 
+         * This maps to:
+         * 1. SCardCancel
+         *    PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gaacbbc0c6d6c0cbbeb4f4debf6fbeeee6
+         *    Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardcancel
+         * 
+         * 2. SCardDisconnect
+         *    PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga4be198045c73ec0deb79e66c0ca1738a
+         *    Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scarddisconnect
+         * 
+         * 3. SCardSetAttrib
+         *    PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga060f0038a4ddfd5dd2b8fadf3c3a2e4f
+         *    Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardsetattrib
+         * 
+         * 4. SCardEndTransaction
+         *    PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gae8742473b404363e5c587f570d7e2f3b
+         *    Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardendtransaction
+         */
+        reportPlainResult(params: Protocol.SmartCardEmulation.ReportPlainResultRequest): Promise<void>;
+
+        /**
+         * Reports the successful result of a |SCardConnect| call.
+         * 
+         * This maps to:
+         * PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga4e515829752e0a8dbc4d630696a8d6a5
+         * Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardconnecta
+         */
+        reportConnectResult(params: Protocol.SmartCardEmulation.ReportConnectResultRequest): Promise<void>;
+
+        /**
+         * Reports the successful result of a call that sends back data on success.
+         * Used for |SCardTransmit|, |SCardControl|, and |SCardGetAttrib|.
+         * 
+         * This maps to:
+         * 1. SCardTransmit
+         *    PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga9a2d77242a271310269065e64633ab99
+         *    Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardtransmit
+         * 
+         * 2. SCardControl
+         *    PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gac3454d4657110fd7f753b2d3d8f4e32f
+         *    Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardcontrol
+         * 
+         * 3. SCardGetAttrib
+         *    PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gaacfec51917255b7a25b94c5104961602
+         *    Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardgetattrib
+         */
+        reportDataResult(params: Protocol.SmartCardEmulation.ReportDataResultRequest): Promise<void>;
+
+        /**
+         * Reports the successful result of a |SCardStatus| call.
+         * 
+         * This maps to:
+         * PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gae49c3c894ad7ac12a5b896bde70d0382
+         * Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardstatusa
+         */
+        reportStatusResult(params: Protocol.SmartCardEmulation.ReportStatusResultRequest): Promise<void>;
+
+        /**
+         * Reports an error result for the given request.
+         */
+        reportError(params: Protocol.SmartCardEmulation.ReportErrorRequest): Promise<void>;
+
+        /**
+         * Fired when |SCardEstablishContext| is called.
+         * 
+         * This maps to:
+         * PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gaa1b8970169fd4883a6dc4a8f43f19b67
+         * Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardestablishcontext
+         */
+        on(event: 'establishContextRequested', listener: (params: Protocol.SmartCardEmulation.EstablishContextRequestedEvent) => void): void;
+
+        /**
+         * Fired when |SCardReleaseContext| is called.
+         * 
+         * This maps to:
+         * PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga6aabcba7744c5c9419fdd6404f73a934
+         * Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardreleasecontext
+         */
+        on(event: 'releaseContextRequested', listener: (params: Protocol.SmartCardEmulation.ReleaseContextRequestedEvent) => void): void;
+
+        /**
+         * Fired when |SCardListReaders| is called.
+         * 
+         * This maps to:
+         * PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga93b07815789b3cf2629d439ecf20f0d9
+         * Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardlistreadersa
+         */
+        on(event: 'listReadersRequested', listener: (params: Protocol.SmartCardEmulation.ListReadersRequestedEvent) => void): void;
+
+        /**
+         * Fired when |SCardGetStatusChange| is called. Timeout is specified in milliseconds.
+         * 
+         * This maps to:
+         * PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga33247d5d1257d59e55647c3bb717db24
+         * Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardgetstatuschangea
+         */
+        on(event: 'getStatusChangeRequested', listener: (params: Protocol.SmartCardEmulation.GetStatusChangeRequestedEvent) => void): void;
+
+        /**
+         * Fired when |SCardCancel| is called.
+         * 
+         * This maps to:
+         * PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gaacbbc0c6d6c0cbbeb4f4debf6fbeeee6
+         * Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardcancel
+         */
+        on(event: 'cancelRequested', listener: (params: Protocol.SmartCardEmulation.CancelRequestedEvent) => void): void;
+
+        /**
+         * Fired when |SCardConnect| is called.
+         * 
+         * This maps to:
+         * PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga4e515829752e0a8dbc4d630696a8d6a5
+         * Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardconnecta
+         */
+        on(event: 'connectRequested', listener: (params: Protocol.SmartCardEmulation.ConnectRequestedEvent) => void): void;
+
+        /**
+         * Fired when |SCardDisconnect| is called.
+         * 
+         * This maps to:
+         * PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga4be198045c73ec0deb79e66c0ca1738a
+         * Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scarddisconnect
+         */
+        on(event: 'disconnectRequested', listener: (params: Protocol.SmartCardEmulation.DisconnectRequestedEvent) => void): void;
+
+        /**
+         * Fired when |SCardTransmit| is called.
+         * 
+         * This maps to:
+         * PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga9a2d77242a271310269065e64633ab99
+         * Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardtransmit
+         */
+        on(event: 'transmitRequested', listener: (params: Protocol.SmartCardEmulation.TransmitRequestedEvent) => void): void;
+
+        /**
+         * Fired when |SCardControl| is called.
+         * 
+         * This maps to:
+         * PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gac3454d4657110fd7f753b2d3d8f4e32f
+         * Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardcontrol
+         */
+        on(event: 'controlRequested', listener: (params: Protocol.SmartCardEmulation.ControlRequestedEvent) => void): void;
+
+        /**
+         * Fired when |SCardGetAttrib| is called.
+         * 
+         * This maps to:
+         * PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gaacfec51917255b7a25b94c5104961602
+         * Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardgetattrib
+         */
+        on(event: 'getAttribRequested', listener: (params: Protocol.SmartCardEmulation.GetAttribRequestedEvent) => void): void;
+
+        /**
+         * Fired when |SCardSetAttrib| is called.
+         * 
+         * This maps to:
+         * PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga060f0038a4ddfd5dd2b8fadf3c3a2e4f
+         * Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardsetattrib
+         */
+        on(event: 'setAttribRequested', listener: (params: Protocol.SmartCardEmulation.SetAttribRequestedEvent) => void): void;
+
+        /**
+         * Fired when |SCardStatus| is called.
+         * 
+         * This maps to:
+         * PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gae49c3c894ad7ac12a5b896bde70d0382
+         * Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardstatusa
+         */
+        on(event: 'statusRequested', listener: (params: Protocol.SmartCardEmulation.StatusRequestedEvent) => void): void;
+
+        /**
+         * Fired when |SCardBeginTransaction| is called.
+         * 
+         * This maps to:
+         * PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gaddb835dce01a0da1d6ca02d33ee7d861
+         * Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardbegintransaction
+         */
+        on(event: 'beginTransactionRequested', listener: (params: Protocol.SmartCardEmulation.BeginTransactionRequestedEvent) => void): void;
+
+        /**
+         * Fired when |SCardEndTransaction| is called.
+         * 
+         * This maps to:
+         * PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gae8742473b404363e5c587f570d7e2f3b
+         * Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardendtransaction
+         */
+        on(event: 'endTransactionRequested', listener: (params: Protocol.SmartCardEmulation.EndTransactionRequestedEvent) => void): void;
 
     }
 
