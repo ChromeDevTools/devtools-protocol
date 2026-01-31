@@ -1,7 +1,40 @@
 
 
+## Roll protocol to r1577676 — _2026-01-31T04:48:29.000Z_
+######  Diff: [`ab28501...02b69da`](https://github.com/ChromeDevTools/devtools-protocol/compare/ab28501...02b69da)
+
+```diff
+@@ domains/Extensions.pdl:13 @@ experimental domain Extensions
+       local
+       sync
+       managed
++
++  # Runs an extension default action.
++  # Available if the client is connected using the --remote-debugging-pipe
++  # flag and the --enable-unsafe-extension-debugging flag is set.
++  command triggerAction
++    parameters
++      # Extension id.
++      string id
++      # A tab target ID to trigger the default extension action on.
++      string targetId
++
+   # Installs an unpacked extension from the filesystem similar to
+   # --load-extension CLI flags. Returns extension ID once the extension
+   # has been installed. Available if the client is connected using the
+@@ -22,6 +33,8 @@ experimental domain Extensions
+     parameters
+       # Absolute file path.
+       string path
++      # Enable the extension in incognito
++      optional boolean enableInIncognito
+     returns
+       # Extension id.
+       string id
+```
+
 ## Roll protocol to r1575685 — _2026-01-28T04:36:08.000Z_
-######  Diff: [`19078ce...b721951`](https://github.com/ChromeDevTools/devtools-protocol/compare/19078ce...b721951)
+######  Diff: [`19078ce...ab28501`](https://github.com/ChromeDevTools/devtools-protocol/compare/19078ce...ab28501)
 
 ```diff
 @@ browser_protocol.pdl:48 @@ include domains/PerformanceTimeline.pdl
@@ -42295,42 +42328,4 @@ index 0dbdc01d..7a3c772c 100644
  
    # CSS rule representation.
    type CSSRule extends object
-```
-
-## Roll protocol to r1130274 — _2023-04-14T04:26:53.000Z_
-######  Diff: [`adde591...ad86c64`](https://github.com/ChromeDevTools/devtools-protocol/compare/adde591...ad86c64)
-
-```diff
-@@ browser_protocol.pdl:775 @@ experimental domain Audits
-       # One of the deprecation names from third_party/blink/renderer/core/frame/deprecation/deprecation.json5
-       string type
- 
-+  # This issue warns about sites in the redirect chain of a finished navigation
-+  # that may be flagged as trackers and have their state cleared if they don't
-+  # receive a user interaction. Note that in this context 'site' means eTLD+1. 
-+  # For example, if the URL `https://example.test:80/bounce` was in the 
-+  # redirect chain, the site reported would be `example.test`.
-+  type BounceTrackingIssueDetails extends object
-+    properties
-+      array of string trackingSites
-+
-   type ClientHintIssueReason extends string
-     enum
-       # Items in the accept-ch meta tag allow list must be valid origins.
-@@ -851,6 +860,7 @@ experimental domain Audits
-       DeprecationIssue
-       ClientHintIssue
-       FederatedAuthRequestIssue
-+      BounceTrackingIssue
- 
-   # This struct holds a list of optional fields with additional information
-   # specific to the kind of issue. When adding a new issue code, please also
-@@ -873,6 +883,7 @@ experimental domain Audits
-       optional DeprecationIssueDetails deprecationIssueDetails
-       optional ClientHintIssueDetails clientHintIssueDetails
-       optional FederatedAuthRequestIssueDetails federatedAuthRequestIssueDetails
-+      optional BounceTrackingIssueDetails bounceTrackingIssueDetails
- 
-   # A unique id for a DevTools inspector issue. Allows other entities (e.g.
-   # exceptions, CDP message, console messages, etc.) to reference an issue.
 ```

@@ -9798,11 +9798,26 @@ export namespace Protocol {
          */
         export type StorageArea = ('session' | 'local' | 'sync' | 'managed');
 
+        export interface TriggerActionRequest {
+            /**
+             * Extension id.
+             */
+            id: string;
+            /**
+             * A tab target ID to trigger the default extension action on.
+             */
+            targetId: string;
+        }
+
         export interface LoadUnpackedRequest {
             /**
              * Absolute file path.
              */
             path: string;
+            /**
+             * Enable the extension in incognito
+             */
+            enableInIncognito?: boolean;
         }
 
         export interface LoadUnpackedResponse {
@@ -19165,6 +19180,7 @@ export namespace Protocol {
 
         export interface ReportBeginTransactionResultRequest {
             requestId: string;
+            handle: integer;
         }
 
         export interface ReportPlainResultRequest {

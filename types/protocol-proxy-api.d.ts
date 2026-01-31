@@ -2411,6 +2411,13 @@ export namespace ProtocolProxyApi {
 
     export interface ExtensionsApi {
         /**
+         * Runs an extension default action.
+         * Available if the client is connected using the --remote-debugging-pipe
+         * flag and the --enable-unsafe-extension-debugging flag is set.
+         */
+        triggerAction(params: Protocol.Extensions.TriggerActionRequest): Promise<void>;
+
+        /**
          * Installs an unpacked extension from the filesystem similar to
          * --load-extension CLI flags. Returns extension ID once the extension
          * has been installed. Available if the client is connected using the
