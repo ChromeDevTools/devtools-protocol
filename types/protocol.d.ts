@@ -13404,7 +13404,7 @@ export namespace Protocol {
         /**
          * @experimental
          */
-        export type PrivateNetworkRequestPolicy = ('Allow' | 'BlockFromInsecureToMorePrivate' | 'WarnFromInsecureToMorePrivate' | 'PermissionBlock' | 'PermissionWarn');
+        export type LocalNetworkAccessRequestPolicy = ('Allow' | 'BlockFromInsecureToMorePrivate' | 'WarnFromInsecureToMorePrivate' | 'PermissionBlock' | 'PermissionWarn');
 
         /**
          * @experimental
@@ -13429,7 +13429,7 @@ export namespace Protocol {
         export interface ClientSecurityState {
             initiatorIsSecureContext: boolean;
             initiatorIPAddressSpace: IPAddressSpace;
-            privateNetworkRequestPolicy: PrivateNetworkRequestPolicy;
+            localNetworkAccessRequestPolicy: LocalNetworkAccessRequestPolicy;
         }
 
         /**

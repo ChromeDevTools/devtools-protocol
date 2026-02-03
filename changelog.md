@@ -1,7 +1,31 @@
 
 
+## Roll protocol to r1578551 — _2026-02-03T04:57:40.000Z_
+######  Diff: [`cd6a169...04445bc`](https://github.com/ChromeDevTools/devtools-protocol/compare/cd6a169...04445bc)
+
+```diff
+@@ domains/Network.pdl:1769 @@ domain Network
+       DirectUDPMessage message
+       MonotonicTime timestamp
+ 
+-  experimental type PrivateNetworkRequestPolicy extends string
++  experimental type LocalNetworkAccessRequestPolicy extends string
+     enum
+       Allow
+       BlockFromInsecureToMorePrivate
+@@ -1795,7 +1795,7 @@ domain Network
+     properties
+       boolean initiatorIsSecureContext
+       IPAddressSpace initiatorIPAddressSpace
+-      PrivateNetworkRequestPolicy privateNetworkRequestPolicy
++      LocalNetworkAccessRequestPolicy localNetworkAccessRequestPolicy
+ 
+   # Fired when additional information about a requestWillBeSent event is available from the
+   # network stack. Not every requestWillBeSent event will have an additional
+```
+
 ## Roll protocol to r1577676 — _2026-01-31T04:48:29.000Z_
-######  Diff: [`ab28501...02b69da`](https://github.com/ChromeDevTools/devtools-protocol/compare/ab28501...02b69da)
+######  Diff: [`ab28501...cd6a169`](https://github.com/ChromeDevTools/devtools-protocol/compare/ab28501...cd6a169)
 
 ```diff
 @@ domains/Extensions.pdl:13 @@ experimental domain Extensions
@@ -42313,19 +42337,4 @@ index 0dbdc01d..7a3c772c 100644
        ErrorIdToken
        Canceled
        RpPageNotVisible
-```
-
-## Roll protocol to r1131670 — _2023-04-18T04:26:48.000Z_
-######  Diff: [`ad86c64...e60aecf`](https://github.com/ChromeDevTools/devtools-protocol/compare/ad86c64...e60aecf)
-
-```diff
-@@ browser_protocol.pdl:1412 @@ experimental domain CSS
-       number endLine
-       # Column offset of the end of the stylesheet within the resource (zero based).
-       number endColumn
-+      # If the style sheet was loaded from a network resource, this indicates when the resource failed to load
-+      experimental optional boolean loadingFailed
- 
-   # CSS rule representation.
-   type CSSRule extends object
 ```
