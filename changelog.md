@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1579878 — _2026-02-05T04:58:47.000Z_
+######  Diff: [`f8bae52...4c0b37f`](https://github.com/ChromeDevTools/devtools-protocol/compare/f8bae52...4c0b37f)
+
+```diff
+@@ domains/Page.pdl:1581 @@ domain Page
+       SharedWorkerMessage
+       SharedWorkerWithNoActiveClient
+       WebLocks
++      WebLocksContention
+       WebHID
+       WebBluetooth
+       WebShare
+```
+
 ## Roll protocol to r1578551 — _2026-02-03T04:57:40.000Z_
-######  Diff: [`cd6a169...04445bc`](https://github.com/ChromeDevTools/devtools-protocol/compare/cd6a169...04445bc)
+######  Diff: [`cd6a169...f8bae52`](https://github.com/ChromeDevTools/devtools-protocol/compare/cd6a169...f8bae52)
 
 ```diff
 @@ domains/Network.pdl:1769 @@ domain Network
@@ -42300,41 +42314,4 @@ index 0dbdc01d..7a3c772c 100644
    # Preloading status values, see also PreloadingTriggeringOutcome. This
    # status is shared by prefetchStatusUpdated and prerenderStatusUpdated.
    type PreloadingStatus extends string
-```
-
-## Roll protocol to r1132318 — _2023-04-19T04:27:21.000Z_
-######  Diff: [`e60aecf...84eeee8`](https://github.com/ChromeDevTools/devtools-protocol/compare/e60aecf...84eeee8)
-
-```diff
-@@ browser_protocol.pdl:809 @@ experimental domain Audits
-       WellKnownNoResponse
-       WellKnownInvalidResponse
-       WellKnownListEmpty
-+      WellKnownInvalidContentType
-       ConfigNotInWellKnown
-       WellKnownTooBig
-       ConfigHttpNotFound
-       ConfigNoResponse
-       ConfigInvalidResponse
-+      ConfigInvalidContentType
-       ClientMetadataHttpNotFound
-       ClientMetadataNoResponse
-       ClientMetadataInvalidResponse
-+      ClientMetadataInvalidContentType
-       DisabledInSettings
-       ErrorFetchingSignin
-       InvalidSigninResponse
-@@ -824,10 +827,12 @@ experimental domain Audits
-       AccountsNoResponse
-       AccountsInvalidResponse
-       AccountsListEmpty
-+      AccountsInvalidContentType
-       IdTokenHttpNotFound
-       IdTokenNoResponse
-       IdTokenInvalidResponse
-       IdTokenInvalidRequest
-+      IdTokenInvalidContentType
-       ErrorIdToken
-       Canceled
-       RpPageNotVisible
 ```
