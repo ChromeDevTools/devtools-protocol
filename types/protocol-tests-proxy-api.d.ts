@@ -3847,6 +3847,8 @@ export namespace ProtocolTestsProxyApi {
 
         setShowContainerQueryOverlays(params: Protocol.Overlay.SetShowContainerQueryOverlaysRequest): Promise<{id: number, result: void, sessionId: string}>;
 
+        setShowInspectedElementAnchor(params: Protocol.Overlay.SetShowInspectedElementAnchorRequest): Promise<{id: number, result: void, sessionId: string}>;
+
         /**
          * Requests that backend shows paint rectangles
          */
@@ -3915,6 +3917,20 @@ export namespace ProtocolTestsProxyApi {
         onScreenshotRequested(listener: (event: { params: Protocol.Overlay.ScreenshotRequestedEvent }) => void): void;
         offScreenshotRequested(listener: (event: { params: Protocol.Overlay.ScreenshotRequestedEvent }) => void): void;
         onceScreenshotRequested(eventMatcher?: (event: { params: Protocol.Overlay.ScreenshotRequestedEvent }) => boolean): Promise<{ params: Protocol.Overlay.ScreenshotRequestedEvent }>;
+
+        /**
+         * Fired when user asks to show the Inspect panel.
+         */
+        onInspectPanelShowRequested(listener: (event: { params: Protocol.Overlay.InspectPanelShowRequestedEvent }) => void): void;
+        offInspectPanelShowRequested(listener: (event: { params: Protocol.Overlay.InspectPanelShowRequestedEvent }) => void): void;
+        onceInspectPanelShowRequested(eventMatcher?: (event: { params: Protocol.Overlay.InspectPanelShowRequestedEvent }) => boolean): Promise<{ params: Protocol.Overlay.InspectPanelShowRequestedEvent }>;
+
+        /**
+         * Fired when user asks to restore the Inspected Element floating window.
+         */
+        onInspectedElementWindowRestored(listener: (event: { params: Protocol.Overlay.InspectedElementWindowRestoredEvent }) => void): void;
+        offInspectedElementWindowRestored(listener: (event: { params: Protocol.Overlay.InspectedElementWindowRestoredEvent }) => void): void;
+        onceInspectedElementWindowRestored(eventMatcher?: (event: { params: Protocol.Overlay.InspectedElementWindowRestoredEvent }) => boolean): Promise<{ params: Protocol.Overlay.InspectedElementWindowRestoredEvent }>;
 
         /**
          * Fired when user cancels the inspect mode.

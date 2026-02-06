@@ -1,7 +1,105 @@
 
 
+## Roll protocol to r1580600 — _2026-02-06T04:57:42.000Z_
+######  Diff: [`92e7a2f...06965c3`](https://github.com/ChromeDevTools/devtools-protocol/compare/92e7a2f...06965c3)
+
+```diff
+@@ domains/Audits.pdl:353 @@ experimental domain Audits
+       IncorrectDigestType
+       IncorrectDigestLength
+ 
++  type ConnectionAllowlistError extends string
++    enum
++      InvalidHeader
++      MoreThanOneList
++      ItemNotInnerList
++      InvalidAllowlistItemType
++      ReportingEndpointNotToken
++      InvalidUrlPattern
++
+   # Details for issues around "Attribution Reporting API" usage.
+   # Explainer: https://github.com/WICG/attribution-reporting-api
+   type AttributionReportingIssueDetails extends object
+@@ -396,6 +405,11 @@ experimental domain Audits
+       UnencodedDigestError error
+       AffectedRequest request
+ 
++  type ConnectionAllowlistIssueDetails extends object
++    properties
++      ConnectionAllowlistError error
++      AffectedRequest request
++
+   type GenericIssueErrorType extends string
+     enum
+       FormLabelForNameError
+@@ -709,6 +723,7 @@ experimental domain Audits
+       ElementAccessibilityIssue
+       SRIMessageSignatureIssue
+       UnencodedDigestIssue
++      ConnectionAllowlistIssue
+       UserReidentificationIssue
+       PermissionElementIssue
+ 
+@@ -742,6 +757,7 @@ experimental domain Audits
+       optional ElementAccessibilityIssueDetails elementAccessibilityIssueDetails
+       optional SRIMessageSignatureIssueDetails sriMessageSignatureIssueDetails
+       optional UnencodedDigestIssueDetails unencodedDigestIssueDetails
++      optional ConnectionAllowlistIssueDetails connectionAllowlistIssueDetails
+       optional UserReidentificationIssueDetails userReidentificationIssueDetails
+       optional PermissionElementIssueDetails permissionElementIssueDetails
+ 
+diff --git a/pdl/domains/Overlay.pdl b/pdl/domains/Overlay.pdl
+index 689e42d8..8ef51bbb 100644
+--- a/pdl/domains/Overlay.pdl
++++ b/pdl/domains/Overlay.pdl
+@@ -255,6 +255,13 @@ experimental domain Overlay
+       captureAreaScreenshot
+       none
+ 
++  type InspectedElementAnchorConfig extends object
++    properties
++      # Identifier of the node to highlight.
++      optional DOM.NodeId nodeId
++      # Identifier of the backend node to highlight.
++      optional DOM.BackendNodeId backendNodeId
++
+   # Disables domain notifications.
+   command disable
+ 
+@@ -423,6 +430,11 @@ experimental domain Overlay
+       # An array of node identifiers and descriptors for the highlight appearance.
+       array of ContainerQueryHighlightConfig containerQueryHighlightConfigs
+ 
++  command setShowInspectedElementAnchor
++    parameters
++      # Node identifier for which to show an anchor for.
++      InspectedElementAnchorConfig inspectedElementAnchorConfig
++
+   # Requests that backend shows paint rectangles
+   command setShowPaintRects
+     parameters
+@@ -494,5 +506,17 @@ experimental domain Overlay
+       # Viewport to capture, in device independent pixels (dip).
+       Page.Viewport viewport
+ 
++  # Fired when user asks to show the Inspect panel.
++  event inspectPanelShowRequested
++    parameters
++      # Id of the node to show in the panel.
++      DOM.BackendNodeId backendNodeId
++
++  # Fired when user asks to restore the Inspected Element floating window.
++  event inspectedElementWindowRestored
++    parameters
++      # Id of the node to restore the floating window for.
++      DOM.BackendNodeId backendNodeId
++
+   # Fired when user cancels the inspect mode.
+   event inspectModeCanceled
+```
+
 ## Roll protocol to r1579878 — _2026-02-05T04:58:47.000Z_
-######  Diff: [`f8bae52...4c0b37f`](https://github.com/ChromeDevTools/devtools-protocol/compare/f8bae52...4c0b37f)
+######  Diff: [`f8bae52...92e7a2f`](https://github.com/ChromeDevTools/devtools-protocol/compare/f8bae52...92e7a2f)
 
 ```diff
 @@ domains/Page.pdl:1581 @@ domain Page
@@ -42276,42 +42374,4 @@ index 0dbdc01d..7a3c772c 100644
  
    # Fired when a prerender attempt is completed.
    event prerenderAttemptCompleted
-```
-
-## Roll protocol to r1133601 — _2023-04-21T04:27:13.000Z_
-######  Diff: [`84eeee8...052cf2f`](https://github.com/ChromeDevTools/devtools-protocol/compare/84eeee8...052cf2f)
-
-```diff
-@@ browser_protocol.pdl:777 @@ experimental domain Audits
- 
-   # This issue warns about sites in the redirect chain of a finished navigation
-   # that may be flagged as trackers and have their state cleared if they don't
--  # receive a user interaction. Note that in this context 'site' means eTLD+1. 
--  # For example, if the URL `https://example.test:80/bounce` was in the 
-+  # receive a user interaction. Note that in this context 'site' means eTLD+1.
-+  # For example, if the URL `https://example.test:80/bounce` was in the
-   # redirect chain, the site reported would be `example.test`.
-   type BounceTrackingIssueDetails extends object
-     properties
-@@ -10963,6 +10963,20 @@ experimental domain Preload
-       # that is incompatible with prerender and has caused the cancellation of the attempt
-       optional string disallowedApiMethod
- 
-+  type PreloadEnabledState extends string
-+    enum
-+      Enabled
-+      DisabledByDataSaver
-+      DisabledByBatterySaver
-+      DisabledByPreference
-+      # Service not available.
-+      NotSupported
-+
-+  # Fired when a preload enabled state is updated.
-+  event preloadEnabledStateUpdated
-+    parameters
-+      PreloadEnabledState state
-+
-   # Preloading status values, see also PreloadingTriggeringOutcome. This
-   # status is shared by prefetchStatusUpdated and prerenderStatusUpdated.
-   type PreloadingStatus extends string
 ```

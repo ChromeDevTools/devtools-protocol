@@ -3646,6 +3646,8 @@ export namespace Protocol {
 
         export type UnencodedDigestError = ('MalformedDictionary' | 'UnknownAlgorithm' | 'IncorrectDigestType' | 'IncorrectDigestLength');
 
+        export type ConnectionAllowlistError = ('InvalidHeader' | 'MoreThanOneList' | 'ItemNotInnerList' | 'InvalidAllowlistItemType' | 'ReportingEndpointNotToken' | 'InvalidUrlPattern');
+
         /**
          * Details for issues around "Attribution Reporting API" usage.
          * Explainer: https://github.com/WICG/attribution-reporting-api
@@ -3695,6 +3697,11 @@ export namespace Protocol {
 
         export interface UnencodedDigestIssueDetails {
             error: UnencodedDigestError;
+            request: AffectedRequest;
+        }
+
+        export interface ConnectionAllowlistIssueDetails {
+            error: ConnectionAllowlistError;
             request: AffectedRequest;
         }
 
@@ -3924,7 +3931,7 @@ export namespace Protocol {
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'PartitioningBlobURLIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'CookieDeprecationMetadataIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue' | 'PropertyRuleIssue' | 'SharedDictionaryIssue' | 'ElementAccessibilityIssue' | 'SRIMessageSignatureIssue' | 'UnencodedDigestIssue' | 'UserReidentificationIssue' | 'PermissionElementIssue');
+        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'PartitioningBlobURLIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'CookieDeprecationMetadataIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue' | 'PropertyRuleIssue' | 'SharedDictionaryIssue' | 'ElementAccessibilityIssue' | 'SRIMessageSignatureIssue' | 'UnencodedDigestIssue' | 'ConnectionAllowlistIssue' | 'UserReidentificationIssue' | 'PermissionElementIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3960,6 +3967,7 @@ export namespace Protocol {
             elementAccessibilityIssueDetails?: ElementAccessibilityIssueDetails;
             sriMessageSignatureIssueDetails?: SRIMessageSignatureIssueDetails;
             unencodedDigestIssueDetails?: UnencodedDigestIssueDetails;
+            connectionAllowlistIssueDetails?: ConnectionAllowlistIssueDetails;
             userReidentificationIssueDetails?: UserReidentificationIssueDetails;
             permissionElementIssueDetails?: PermissionElementIssueDetails;
         }
@@ -15719,6 +15727,17 @@ export namespace Protocol {
 
         export type InspectMode = ('searchForNode' | 'searchForUAShadowDOM' | 'captureAreaScreenshot' | 'none');
 
+        export interface InspectedElementAnchorConfig {
+            /**
+             * Identifier of the node to highlight.
+             */
+            nodeId?: DOM.NodeId;
+            /**
+             * Identifier of the backend node to highlight.
+             */
+            backendNodeId?: DOM.BackendNodeId;
+        }
+
         export interface GetHighlightObjectForTestRequest {
             /**
              * Id of the node to get highlight object for.
@@ -15944,6 +15963,13 @@ export namespace Protocol {
             containerQueryHighlightConfigs: ContainerQueryHighlightConfig[];
         }
 
+        export interface SetShowInspectedElementAnchorRequest {
+            /**
+             * Node identifier for which to show an anchor for.
+             */
+            inspectedElementAnchorConfig: InspectedElementAnchorConfig;
+        }
+
         export interface SetShowPaintRectsRequest {
             /**
              * True for showing paint rectangles
@@ -16030,6 +16056,26 @@ export namespace Protocol {
              * Viewport to capture, in device independent pixels (dip).
              */
             viewport: Page.Viewport;
+        }
+
+        /**
+         * Fired when user asks to show the Inspect panel.
+         */
+        export interface InspectPanelShowRequestedEvent {
+            /**
+             * Id of the node to show in the panel.
+             */
+            backendNodeId: DOM.BackendNodeId;
+        }
+
+        /**
+         * Fired when user asks to restore the Inspected Element floating window.
+         */
+        export interface InspectedElementWindowRestoredEvent {
+            /**
+             * Id of the node to restore the floating window for.
+             */
+            backendNodeId: DOM.BackendNodeId;
         }
     }
 

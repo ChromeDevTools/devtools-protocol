@@ -1616,6 +1616,18 @@
                     ]
                 },
                 {
+                    "id": "ConnectionAllowlistError",
+                    "type": "string",
+                    "enum": [
+                        "InvalidHeader",
+                        "MoreThanOneList",
+                        "ItemNotInnerList",
+                        "InvalidAllowlistItemType",
+                        "ReportingEndpointNotToken",
+                        "InvalidUrlPattern"
+                    ]
+                },
+                {
                     "id": "AttributionReportingIssueDetails",
                     "description": "Details for issues around \"Attribution Reporting API\" usage.\nExplainer: https://github.com/WICG/attribution-reporting-api",
                     "type": "object",
@@ -1731,6 +1743,20 @@
                         {
                             "name": "error",
                             "$ref": "UnencodedDigestError"
+                        },
+                        {
+                            "name": "request",
+                            "$ref": "AffectedRequest"
+                        }
+                    ]
+                },
+                {
+                    "id": "ConnectionAllowlistIssueDetails",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "error",
+                            "$ref": "ConnectionAllowlistError"
                         },
                         {
                             "name": "request",
@@ -2248,6 +2274,7 @@
                         "ElementAccessibilityIssue",
                         "SRIMessageSignatureIssue",
                         "UnencodedDigestIssue",
+                        "ConnectionAllowlistIssue",
                         "UserReidentificationIssue",
                         "PermissionElementIssue"
                     ]
@@ -2382,6 +2409,11 @@
                             "name": "unencodedDigestIssueDetails",
                             "optional": true,
                             "$ref": "UnencodedDigestIssueDetails"
+                        },
+                        {
+                            "name": "connectionAllowlistIssueDetails",
+                            "optional": true,
+                            "$ref": "ConnectionAllowlistIssueDetails"
                         },
                         {
                             "name": "userReidentificationIssueDetails",
@@ -20284,6 +20316,24 @@
                         "captureAreaScreenshot",
                         "none"
                     ]
+                },
+                {
+                    "id": "InspectedElementAnchorConfig",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "nodeId",
+                            "description": "Identifier of the node to highlight.",
+                            "optional": true,
+                            "$ref": "DOM.NodeId"
+                        },
+                        {
+                            "name": "backendNodeId",
+                            "description": "Identifier of the backend node to highlight.",
+                            "optional": true,
+                            "$ref": "DOM.BackendNodeId"
+                        }
+                    ]
                 }
             ],
             "commands": [
@@ -20644,6 +20694,16 @@
                     ]
                 },
                 {
+                    "name": "setShowInspectedElementAnchor",
+                    "parameters": [
+                        {
+                            "name": "inspectedElementAnchorConfig",
+                            "description": "Node identifier for which to show an anchor for.",
+                            "$ref": "InspectedElementAnchorConfig"
+                        }
+                    ]
+                },
+                {
                     "name": "setShowPaintRects",
                     "description": "Requests that backend shows paint rectangles",
                     "parameters": [
@@ -20779,6 +20839,28 @@
                             "name": "viewport",
                             "description": "Viewport to capture, in device independent pixels (dip).",
                             "$ref": "Page.Viewport"
+                        }
+                    ]
+                },
+                {
+                    "name": "inspectPanelShowRequested",
+                    "description": "Fired when user asks to show the Inspect panel.",
+                    "parameters": [
+                        {
+                            "name": "backendNodeId",
+                            "description": "Id of the node to show in the panel.",
+                            "$ref": "DOM.BackendNodeId"
+                        }
+                    ]
+                },
+                {
+                    "name": "inspectedElementWindowRestored",
+                    "description": "Fired when user asks to restore the Inspected Element floating window.",
+                    "parameters": [
+                        {
+                            "name": "backendNodeId",
+                            "description": "Id of the node to restore the floating window for.",
+                            "$ref": "DOM.BackendNodeId"
                         }
                     ]
                 },

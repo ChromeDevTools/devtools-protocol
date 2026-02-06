@@ -606,6 +606,14 @@ export namespace ProtocolMapping {
          */
         'Overlay.screenshotRequested': [Protocol.Overlay.ScreenshotRequestedEvent];
         /**
+         * Fired when user asks to show the Inspect panel.
+         */
+        'Overlay.inspectPanelShowRequested': [Protocol.Overlay.InspectPanelShowRequestedEvent];
+        /**
+         * Fired when user asks to restore the Inspected Element floating window.
+         */
+        'Overlay.inspectedElementWindowRestored': [Protocol.Overlay.InspectedElementWindowRestoredEvent];
+        /**
          * Fired when user cancels the inspect mode.
          */
         'Overlay.inspectModeCanceled': [];
@@ -4661,6 +4669,10 @@ export namespace ProtocolMapping {
         };
         'Overlay.setShowContainerQueryOverlays': {
             paramsType: [Protocol.Overlay.SetShowContainerQueryOverlaysRequest];
+            returnType: void;
+        };
+        'Overlay.setShowInspectedElementAnchor': {
+            paramsType: [Protocol.Overlay.SetShowInspectedElementAnchorRequest];
             returnType: void;
         };
         /**
