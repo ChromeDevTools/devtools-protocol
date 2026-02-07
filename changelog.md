@@ -1,7 +1,26 @@
 
 
+## Roll protocol to r1581282 — _2026-02-07T04:51:01.000Z_
+######  Diff: [`e8ee850...6ca3a68`](https://github.com/ChromeDevTools/devtools-protocol/compare/e8ee850...6ca3a68)
+
+```diff
+@@ domains/Network.pdl:339 @@ domain Network
+       HeaderDisallowedByPreflightResponse
+       RedirectContainsCredentials
+       # Request was a private network request initiated by a non-secure context.
+-      InsecurePrivateNetwork
++      InsecureLocalNetwork
+       # Request carried a target IP address space property that did not match
+       # the target resource's address space.
+-      InvalidPrivateNetworkAccess
++      InvalidLocalNetworkAccess
+       NoCorsRedirectModeNotFollow
+       # Request was a local network request and is denied by user permission.
+       # https://wicg.github.io/local-network-access/
+```
+
 ## Roll protocol to r1580600 — _2026-02-06T04:57:42.000Z_
-######  Diff: [`92e7a2f...06965c3`](https://github.com/ChromeDevTools/devtools-protocol/compare/92e7a2f...06965c3)
+######  Diff: [`92e7a2f...e8ee850`](https://github.com/ChromeDevTools/devtools-protocol/compare/92e7a2f...e8ee850)
 
 ```diff
 @@ domains/Audits.pdl:353 @@ experimental domain Audits
@@ -42359,19 +42378,4 @@ index 0dbdc01d..7a3c772c 100644
        optional object auxData
  
    # Detailed information about exception (or error) that was thrown during script compilation or
-```
-
-## Roll protocol to r1134181 — _2023-04-22T04:26:52.000Z_
-######  Diff: [`052cf2f...4dd6c67`](https://github.com/ChromeDevTools/devtools-protocol/compare/052cf2f...4dd6c67)
-
-```diff
-@@ browser_protocol.pdl:10950 @@ experimental domain Preload
-       CrossSiteNavigationInMainFrameNavigation
-       SameSiteCrossOriginRedirectNotOptInInMainFrameNavigation
-       SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation
-+      MemoryPressureOnTrigger
-+      MemoryPressureAfterTriggered
- 
-   # Fired when a prerender attempt is completed.
-   event prerenderAttemptCompleted
 ```

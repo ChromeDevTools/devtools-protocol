@@ -15654,8 +15654,8 @@
                         "MethodDisallowedByPreflightResponse",
                         "HeaderDisallowedByPreflightResponse",
                         "RedirectContainsCredentials",
-                        "InsecurePrivateNetwork",
-                        "InvalidPrivateNetworkAccess",
+                        "InsecureLocalNetwork",
+                        "InvalidLocalNetworkAccess",
                         "NoCorsRedirectModeNotFollow",
                         "LocalNetworkAccessPermissionDenied"
                     ]
