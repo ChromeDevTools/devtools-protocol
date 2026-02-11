@@ -1,7 +1,36 @@
 
 
+## Roll protocol to r1583009 — _2026-02-11T05:03:45.000Z_
+######  Diff: [`17024e1...a5acb9a`](https://github.com/ChromeDevTools/devtools-protocol/compare/17024e1...a5acb9a)
+
+```diff
+@@ domains/Audits.pdl:500 @@ experimental domain Audits
+       ConfigNoResponse
+       ConfigInvalidResponse
+       ConfigInvalidContentType
+-      ClientMetadataHttpNotFound
+-      ClientMetadataNoResponse
+-      ClientMetadataInvalidResponse
+-      ClientMetadataInvalidContentType
+       IdpNotPotentiallyTrustworthy
+       DisabledInSettings
+       DisabledInFlags
+@@ -525,11 +521,9 @@ experimental domain Audits
+       Canceled
+       RpPageNotVisible
+       SilentMediationFailure
+-      ThirdPartyCookiesBlocked
+       NotSignedInWithIdp
+       MissingTransientUserActivation
+       ReplacedByActiveMode
+-      InvalidFieldsSpecified
+       RelyingPartyOriginIsOpaque
+       TypeNotMatching
+       UiDismissedNoEmbargo
+```
+
 ## Roll protocol to r1581282 — _2026-02-07T04:51:01.000Z_
-######  Diff: [`e8ee850...6ca3a68`](https://github.com/ChromeDevTools/devtools-protocol/compare/e8ee850...6ca3a68)
+######  Diff: [`e8ee850...17024e1`](https://github.com/ChromeDevTools/devtools-protocol/compare/e8ee850...17024e1)
 
 ```diff
 @@ domains/Network.pdl:339 @@ domain Network
@@ -42345,37 +42374,4 @@ index 0dbdc01d..7a3c772c 100644
        unload
        usb
        vertical-scroll
-```
-
-## Roll protocol to r1134390 — _2023-04-24T04:27:12.000Z_
-######  Diff: [`4dd6c67...4e41c0d`](https://github.com/ChromeDevTools/devtools-protocol/compare/4dd6c67...4e41c0d)
-
-```diff
-@@ js_protocol.pdl:632 @@ domain Debugger
-       Runtime.ExecutionContextId executionContextId
-       # Content hash of the script, SHA-256.
-       string hash
--      # Embedder-specific auxiliary data.
-+      # Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}
-       optional object executionContextAuxData
-       # URL of source map associated with script (if any).
-       optional string sourceMapURL
-@@ -671,7 +671,7 @@ domain Debugger
-       Runtime.ExecutionContextId executionContextId
-       # Content hash of the script, SHA-256.
-       string hash
--      # Embedder-specific auxiliary data.
-+      # Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}
-       optional object executionContextAuxData
-       # True, if this script is generated as a result of the live edit operation.
-       experimental optional boolean isLiveEdit
-@@ -1284,7 +1284,7 @@ domain Runtime
-       # multiple processes, so can be reliably used to identify specific context while backend
-       # performs a cross-process navigation.
-       experimental string uniqueId
--      # Embedder-specific auxiliary data.
-+      # Embedder-specific auxiliary data likely matching {isDefault: boolean, type: 'default'|'isolated'|'worker', frameId: string}
-       optional object auxData
- 
-   # Detailed information about exception (or error) that was thrown during script compilation or
 ```
