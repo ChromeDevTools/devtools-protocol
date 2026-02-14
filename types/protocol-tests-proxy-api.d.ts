@@ -2502,7 +2502,8 @@ export namespace ProtocolTestsProxyApi {
         setSmallViewportHeightDifferenceOverride(params: Protocol.Emulation.SetSmallViewportHeightDifferenceOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
-         * Returns device's screen configuration.
+         * Returns device's screen configuration. In headful mode, the physical screens configuration is returned,
+         * whereas in headless mode, a virtual headless screen configuration is provided instead.
          * @experimental
          */
         getScreenInfos(): Promise<{id: number, result: Protocol.Emulation.GetScreenInfosResponse, sessionId: string}>;

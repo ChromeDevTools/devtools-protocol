@@ -1184,6 +1184,29 @@
                     ]
                 },
                 {
+                    "id": "PerformanceIssueType",
+                    "type": "string",
+                    "enum": [
+                        "DocumentCookie"
+                    ]
+                },
+                {
+                    "id": "PerformanceIssueDetails",
+                    "description": "Details for a performance issue.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "performanceIssueType",
+                            "$ref": "PerformanceIssueType"
+                        },
+                        {
+                            "name": "sourceCodeLocation",
+                            "optional": true,
+                            "$ref": "SourceCodeLocation"
+                        }
+                    ]
+                },
+                {
                     "id": "MixedContentResolutionStatus",
                     "type": "string",
                     "enum": [
@@ -2270,7 +2293,8 @@
                         "UnencodedDigestIssue",
                         "ConnectionAllowlistIssue",
                         "UserReidentificationIssue",
-                        "PermissionElementIssue"
+                        "PermissionElementIssue",
+                        "PerformanceIssue"
                     ]
                 },
                 {
@@ -2418,6 +2442,11 @@
                             "name": "permissionElementIssueDetails",
                             "optional": true,
                             "$ref": "PermissionElementIssueDetails"
+                        },
+                        {
+                            "name": "performanceIssueDetails",
+                            "optional": true,
+                            "$ref": "PerformanceIssueDetails"
                         }
                     ]
                 },
@@ -11463,7 +11492,7 @@
                 },
                 {
                     "name": "getScreenInfos",
-                    "description": "Returns device's screen configuration.",
+                    "description": "Returns device's screen configuration. In headful mode, the physical screens configuration is returned,\nwhereas in headless mode, a virtual headless screen configuration is provided instead.",
                     "experimental": true,
                     "returns": [
                         {

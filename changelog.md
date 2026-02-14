@@ -1,7 +1,60 @@
 
 
+## Roll protocol to r1585077 — _2026-02-14T04:53:53.000Z_
+######  Diff: [`b328fc2...a4836b4`](https://github.com/ChromeDevTools/devtools-protocol/compare/b328fc2...a4836b4)
+
+```diff
+@@ domains/Audits.pdl:105 @@ experimental domain Audits
+       # The recommended solution to the issue.
+       optional CookieIssueInsight insight
+ 
++  type PerformanceIssueType extends string
++    enum
++      DocumentCookie
++
++  # Details for a performance issue.
++  type PerformanceIssueDetails extends object
++    properties
++      PerformanceIssueType performanceIssueType
++      optional SourceCodeLocation sourceCodeLocation
++
+   type MixedContentResolutionStatus extends string
+     enum
+       MixedContentBlocked
+@@ -720,6 +730,7 @@ experimental domain Audits
+       ConnectionAllowlistIssue
+       UserReidentificationIssue
+       PermissionElementIssue
++      PerformanceIssue
+ 
+   # This struct holds a list of optional fields with additional information
+   # specific to the kind of issue. When adding a new issue code, please also
+@@ -754,6 +765,7 @@ experimental domain Audits
+       optional ConnectionAllowlistIssueDetails connectionAllowlistIssueDetails
+       optional UserReidentificationIssueDetails userReidentificationIssueDetails
+       optional PermissionElementIssueDetails permissionElementIssueDetails
++      optional PerformanceIssueDetails performanceIssueDetails
+ 
+   # A unique id for a DevTools inspector issue. Allows other entities (e.g.
+   # exceptions, CDP message, console messages, etc.) to reference an issue.
+diff --git a/pdl/domains/Emulation.pdl b/pdl/domains/Emulation.pdl
+index 13daa510..d4cff0d7 100644
+--- a/pdl/domains/Emulation.pdl
++++ b/pdl/domains/Emulation.pdl
+@@ -571,7 +571,8 @@ domain Emulation
+       # of size 100lvh.
+       integer difference
+ 
+-  # Returns device's screen configuration.
++  # Returns device's screen configuration. In headful mode, the physical screens configuration is returned,
++  # whereas in headless mode, a virtual headless screen configuration is provided instead.
+   experimental command getScreenInfos
+     returns
+       array of ScreenInfo screenInfos
+```
+
 ## Roll protocol to r1583009 — _2026-02-11T05:03:45.000Z_
-######  Diff: [`17024e1...a5acb9a`](https://github.com/ChromeDevTools/devtools-protocol/compare/17024e1...a5acb9a)
+######  Diff: [`17024e1...b328fc2`](https://github.com/ChromeDevTools/devtools-protocol/compare/17024e1...b328fc2)
 
 ```diff
 @@ domains/Audits.pdl:500 @@ experimental domain Audits
@@ -42344,34 +42397,4 @@ index 0dbdc01d..7a3c772c 100644
    # A cache's contents have been modified.
    event cacheStorageContentUpdated
      parameters
-```
-
-## Roll protocol to r1135028 — _2023-04-25T04:27:09.000Z_
-######  Diff: [`4e41c0d...72f4d4e`](https://github.com/ChromeDevTools/devtools-protocol/compare/4e41c0d...72f4d4e)
-
-```diff
-@@ browser_protocol.pdl:716 @@ experimental domain Audits
-       InvalidRegisterOsSourceHeader
-       InvalidRegisterOsTriggerHeader
-       WebAndOsHeaders
-+      NoWebOrOsSupport
- 
-   # Details for issues around "Attribution Reporting API" usage.
-   # Explainer: https://github.com/WICG/attribution-reporting-api
-@@ -7227,6 +7228,7 @@ domain Page
-       payment
-       picture-in-picture
-       private-aggregation
-+      private-state-token-redemption
-       publickey-credentials-get
-       run-ad-auction
-       screen-wake-lock
-@@ -7237,7 +7239,6 @@ domain Page
-       smart-card
-       storage-access
-       sync-xhr
--      trust-token-redemption
-       unload
-       usb
-       vertical-scroll
 ```

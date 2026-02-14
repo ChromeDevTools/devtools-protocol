@@ -3562,7 +3562,8 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
-         * Returns device's screen configuration.
+         * Returns device's screen configuration. In headful mode, the physical screens configuration is returned,
+         * whereas in headless mode, a virtual headless screen configuration is provided instead.
          * @experimental
          */
         'Emulation.getScreenInfos': {
