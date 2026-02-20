@@ -17920,7 +17920,7 @@
                     "parameters": [
                         {
                             "name": "maxTotalBufferSize",
-                            "description": "Buffer size in bytes to use when preserving network payloads (XHRs, etc).",
+                            "description": "Buffer size in bytes to use when preserving network payloads (XHRs, etc).\nThis is the maximum number of bytes that will be collected by this\nDevTools session.",
                             "experimental": true,
                             "optional": true,
                             "type": "integer"

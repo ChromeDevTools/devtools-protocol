@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1587613 — _2026-02-20T04:57:52.000Z_
+######  Diff: [`6c86810...6f1c2ce`](https://github.com/ChromeDevTools/devtools-protocol/compare/6c86810...6f1c2ce)
+
+```diff
+@@ domains/Network.pdl:1113 @@ domain Network
+   command enable
+     parameters
+       # Buffer size in bytes to use when preserving network payloads (XHRs, etc).
++      # This is the maximum number of bytes that will be collected by this
++      # DevTools session.
+       experimental optional integer maxTotalBufferSize
+       # Per-resource buffer size in bytes to use when preserving network payloads (XHRs, etc).
+       experimental optional integer maxResourceBufferSize
+```
+
 ## Roll protocol to r1585077 — _2026-02-14T04:53:53.000Z_
-######  Diff: [`b328fc2...a4836b4`](https://github.com/ChromeDevTools/devtools-protocol/compare/b328fc2...a4836b4)
+######  Diff: [`b328fc2...6c86810`](https://github.com/ChromeDevTools/devtools-protocol/compare/b328fc2...6c86810)
 
 ```diff
 @@ domains/Audits.pdl:105 @@ experimental domain Audits
@@ -42362,39 +42377,4 @@ index 0dbdc01d..7a3c772c 100644
        InvalidEligibleHeader
        SourceAndTriggerHeaders
        SourceIgnored
-```
-
-## Roll protocol to r1135726 — _2023-04-26T04:27:01.000Z_
-######  Diff: [`72f4d4e...7a08255`](https://github.com/ChromeDevTools/devtools-protocol/compare/72f4d4e...7a08255)
-
-```diff
-@@ browser_protocol.pdl:4668 @@ experimental domain LayerTree
-       LayerId layerId
-     returns
-       # A list of strings specifying reasons for the given layer to become composited.
--      deprecated array of string compositingReasons
-+      array of string compositingReasons
-       # A list of strings specifying reason IDs for the given layer to become composited.
-       array of string compositingReasonIds
- 
-@@ -7228,6 +7228,7 @@ domain Page
-       payment
-       picture-in-picture
-       private-aggregation
-+      private-state-token-issuance
-       private-state-token-redemption
-       publickey-credentials-get
-       run-ad-auction
-@@ -9384,6 +9385,11 @@ experimental domain Storage
-       string storageKey
-       string bucketName
- 
-+  # Deletes state for sites identified as potential bounce trackers, immediately.
-+  experimental command runBounceTrackingMitigations
-+    returns
-+      array of string deletedSites
-+
-   # A cache's contents have been modified.
-   event cacheStorageContentUpdated
-     parameters
 ```
