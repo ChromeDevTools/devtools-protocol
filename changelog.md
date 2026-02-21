@@ -1,7 +1,54 @@
 
 
+## Roll protocol to r1588251 — _2026-02-21T04:50:25.000Z_
+######  Diff: [`d03fc9b...d04d881`](https://github.com/ChromeDevTools/devtools-protocol/compare/d03fc9b...d04d881)
+
+```diff
+@@ domains/Network.pdl:2184 @@ domain Network
+       FailedToUnwrapKey
+       SessionDeletedDuringRefresh
+ 
++  # Details about a failed device bound session network request.
++  experimental type DeviceBoundSessionFailedRequest extends object
++    properties
++      # The failed request URL.
++      string requestUrl
++      # The net error of the response if it was not OK.
++      optional string netError
++      # The response code if the net error was OK and the response code was not
++      # 200.
++      optional integer responseError
++      # The body of the response if the net error was OK, the response code was
++      # not 200, and the response body was not empty.
++      optional string responseErrorBody
++
+   # Session event details specific to creation.
+   experimental type CreationEventDetails extends object
+     properties
+@@ -2192,6 +2206,9 @@ domain Network
+       # The session if there was a newly created session. This is populated for
+       # all successful creation events.
+       optional DeviceBoundSession newSession
++      # Details about a failed device bound session network request if there was
++      # one.
++      optional DeviceBoundSessionFailedRequest failedRequest
+ 
+   # Session event details specific to refresh.
+   experimental type RefreshEventDetails extends object
+@@ -2212,6 +2229,9 @@ domain Network
+       optional DeviceBoundSession newSession
+       # See comments on `net::device_bound_sessions::RefreshEventResult::was_fully_proactive_refresh`.
+       boolean wasFullyProactiveRefresh
++      # Details about a failed device bound session network request if there was
++      # one.
++      optional DeviceBoundSessionFailedRequest failedRequest
+ 
+   # Session event details specific to termination.
+   experimental type TerminationEventDetails extends object
+```
+
 ## Roll protocol to r1587613 — _2026-02-20T04:57:52.000Z_
-######  Diff: [`6c86810...6f1c2ce`](https://github.com/ChromeDevTools/devtools-protocol/compare/6c86810...6f1c2ce)
+######  Diff: [`6c86810...d03fc9b`](https://github.com/ChromeDevTools/devtools-protocol/compare/6c86810...d03fc9b)
 
 ```diff
 @@ domains/Network.pdl:1113 @@ domain Network
@@ -42363,18 +42410,4 @@ index 0dbdc01d..7a3c772c 100644
        # Error information
        # `errorMessage` is null iff `errorType` is null.
        optional RuleSetErrorType errorType
-```
-
-## Roll protocol to r1136950 — _2023-04-28T04:26:58.000Z_
-######  Diff: [`7a08255...7530c23`](https://github.com/ChromeDevTools/devtools-protocol/compare/7a08255...7530c23)
-
-```diff
-@@ browser_protocol.pdl:707 @@ experimental domain Audits
-       # TODO(apaseltiner): Rename this to InvalidRegisterSourceHeader
-       InvalidHeader
-       InvalidRegisterTriggerHeader
-+      # TODO(apaseltiner): Remove this issue once DevTools stops referencing it.
-       InvalidEligibleHeader
-       SourceAndTriggerHeaders
-       SourceIgnored
 ```

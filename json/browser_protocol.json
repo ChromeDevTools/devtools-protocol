@@ -17477,6 +17477,37 @@
                     ]
                 },
                 {
+                    "id": "DeviceBoundSessionFailedRequest",
+                    "description": "Details about a failed device bound session network request.",
+                    "experimental": true,
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "requestUrl",
+                            "description": "The failed request URL.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "netError",
+                            "description": "The net error of the response if it was not OK.",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "responseError",
+                            "description": "The response code if the net error was OK and the response code was not\n200.",
+                            "optional": true,
+                            "type": "integer"
+                        },
+                        {
+                            "name": "responseErrorBody",
+                            "description": "The body of the response if the net error was OK, the response code was\nnot 200, and the response body was not empty.",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
                     "id": "CreationEventDetails",
                     "description": "Session event details specific to creation.",
                     "experimental": true,
@@ -17492,6 +17523,12 @@
                             "description": "The session if there was a newly created session. This is populated for\nall successful creation events.",
                             "optional": true,
                             "$ref": "DeviceBoundSession"
+                        },
+                        {
+                            "name": "failedRequest",
+                            "description": "Details about a failed device bound session network request if there was\none.",
+                            "optional": true,
+                            "$ref": "DeviceBoundSessionFailedRequest"
                         }
                     ]
                 },
@@ -17531,6 +17568,12 @@
                             "name": "wasFullyProactiveRefresh",
                             "description": "See comments on `net::device_bound_sessions::RefreshEventResult::was_fully_proactive_refresh`.",
                             "type": "boolean"
+                        },
+                        {
+                            "name": "failedRequest",
+                            "description": "Details about a failed device bound session network request if there was\none.",
+                            "optional": true,
+                            "$ref": "DeviceBoundSessionFailedRequest"
                         }
                     ]
                 },

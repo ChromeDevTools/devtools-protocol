@@ -13726,6 +13726,31 @@ export namespace Protocol {
         export type DeviceBoundSessionFetchResult = ('Success' | 'KeyError' | 'SigningError' | 'ServerRequestedTermination' | 'InvalidSessionId' | 'InvalidChallenge' | 'TooManyChallenges' | 'InvalidFetcherUrl' | 'InvalidRefreshUrl' | 'TransientHttpError' | 'ScopeOriginSameSiteMismatch' | 'RefreshUrlSameSiteMismatch' | 'MismatchedSessionId' | 'MissingScope' | 'NoCredentials' | 'SubdomainRegistrationWellKnownUnavailable' | 'SubdomainRegistrationUnauthorized' | 'SubdomainRegistrationWellKnownMalformed' | 'SessionProviderWellKnownUnavailable' | 'RelyingPartyWellKnownUnavailable' | 'FederatedKeyThumbprintMismatch' | 'InvalidFederatedSessionUrl' | 'InvalidFederatedKey' | 'TooManyRelyingOriginLabels' | 'BoundCookieSetForbidden' | 'NetError' | 'ProxyError' | 'EmptySessionConfig' | 'InvalidCredentialsConfig' | 'InvalidCredentialsType' | 'InvalidCredentialsEmptyName' | 'InvalidCredentialsCookie' | 'PersistentHttpError' | 'RegistrationAttemptedChallenge' | 'InvalidScopeOrigin' | 'ScopeOriginContainsPath' | 'RefreshInitiatorNotString' | 'RefreshInitiatorInvalidHostPattern' | 'InvalidScopeSpecification' | 'MissingScopeSpecificationType' | 'EmptyScopeSpecificationDomain' | 'EmptyScopeSpecificationPath' | 'InvalidScopeSpecificationType' | 'InvalidScopeIncludeSite' | 'MissingScopeIncludeSite' | 'FederatedNotAuthorizedByProvider' | 'FederatedNotAuthorizedByRelyingParty' | 'SessionProviderWellKnownMalformed' | 'SessionProviderWellKnownHasProviderOrigin' | 'RelyingPartyWellKnownMalformed' | 'RelyingPartyWellKnownHasRelyingOrigins' | 'InvalidFederatedSessionProviderSessionMissing' | 'InvalidFederatedSessionWrongProviderOrigin' | 'InvalidCredentialsCookieCreationTime' | 'InvalidCredentialsCookieName' | 'InvalidCredentialsCookieParsing' | 'InvalidCredentialsCookieUnpermittedAttribute' | 'InvalidCredentialsCookieInvalidDomain' | 'InvalidCredentialsCookiePrefix' | 'InvalidScopeRulePath' | 'InvalidScopeRuleHostPattern' | 'ScopeRuleOriginScopedHostPatternMismatch' | 'ScopeRuleSiteScopedHostPatternMismatch' | 'SigningQuotaExceeded' | 'InvalidConfigJson' | 'InvalidFederatedSessionProviderFailedToRestoreKey' | 'FailedToUnwrapKey' | 'SessionDeletedDuringRefresh');
 
         /**
+         * Details about a failed device bound session network request.
+         * @experimental
+         */
+        export interface DeviceBoundSessionFailedRequest {
+            /**
+             * The failed request URL.
+             */
+            requestUrl: string;
+            /**
+             * The net error of the response if it was not OK.
+             */
+            netError?: string;
+            /**
+             * The response code if the net error was OK and the response code was not
+             * 200.
+             */
+            responseError?: integer;
+            /**
+             * The body of the response if the net error was OK, the response code was
+             * not 200, and the response body was not empty.
+             */
+            responseErrorBody?: string;
+        }
+
+        /**
          * Session event details specific to creation.
          * @experimental
          */
@@ -13739,6 +13764,11 @@ export namespace Protocol {
              * all successful creation events.
              */
             newSession?: DeviceBoundSession;
+            /**
+             * Details about a failed device bound session network request if there was
+             * one.
+             */
+            failedRequest?: DeviceBoundSessionFailedRequest;
         }
 
         export const enum RefreshEventDetailsRefreshResult {
@@ -13773,6 +13803,11 @@ export namespace Protocol {
              * See comments on `net::device_bound_sessions::RefreshEventResult::was_fully_proactive_refresh`.
              */
             wasFullyProactiveRefresh: boolean;
+            /**
+             * Details about a failed device bound session network request if there was
+             * one.
+             */
+            failedRequest?: DeviceBoundSessionFailedRequest;
         }
 
         export const enum TerminationEventDetailsDeletionReason {
