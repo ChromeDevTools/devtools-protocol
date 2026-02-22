@@ -1904,6 +1904,12 @@ export namespace ProtocolProxyApi {
         on(event: 'scrollableFlagUpdated', listener: (params: Protocol.DOM.ScrollableFlagUpdatedEvent) => void): void;
 
         /**
+         * Fired when a node's ad related state changes.
+         * @experimental
+         */
+        on(event: 'adRelatedStateUpdated', listener: (params: Protocol.DOM.AdRelatedStateUpdatedEvent) => void): void;
+
+        /**
          * Fired when a node's starting styles changes.
          * @experimental
          */

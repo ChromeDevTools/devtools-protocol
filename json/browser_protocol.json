@@ -7222,6 +7222,12 @@
                             "items": {
                                 "$ref": "StyleSheetId"
                             }
+                        },
+                        {
+                            "name": "isAdRelated",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "boolean"
                         }
                     ]
                 },
@@ -8772,6 +8778,23 @@
                         {
                             "name": "isScrollable",
                             "description": "If the node is scrollable.",
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                {
+                    "name": "adRelatedStateUpdated",
+                    "description": "Fired when a node's ad related state changes.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "nodeId",
+                            "description": "The id of the node.",
+                            "$ref": "DOM.NodeId"
+                        },
+                        {
+                            "name": "isAdRelated",
+                            "description": "If the node is ad related.",
                             "type": "boolean"
                         }
                     ]

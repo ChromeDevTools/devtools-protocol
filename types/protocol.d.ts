@@ -7005,6 +7005,10 @@ export namespace Protocol {
              * @experimental
              */
             adoptedStyleSheets?: StyleSheetId[];
+            /**
+             * @experimental
+             */
+            isAdRelated?: boolean;
         }
 
         /**
@@ -8068,6 +8072,21 @@ export namespace Protocol {
              * If the node is scrollable.
              */
             isScrollable: boolean;
+        }
+
+        /**
+         * Fired when a node's ad related state changes.
+         * @experimental
+         */
+        export interface AdRelatedStateUpdatedEvent {
+            /**
+             * The id of the node.
+             */
+            nodeId: DOM.NodeId;
+            /**
+             * If the node is ad related.
+             */
+            isAdRelated: boolean;
         }
 
         /**

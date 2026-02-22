@@ -2020,6 +2020,14 @@ export namespace ProtocolTestsProxyApi {
         onceScrollableFlagUpdated(eventMatcher?: (event: { params: Protocol.DOM.ScrollableFlagUpdatedEvent }) => boolean): Promise<{ params: Protocol.DOM.ScrollableFlagUpdatedEvent }>;
 
         /**
+         * Fired when a node's ad related state changes.
+         * @experimental
+         */
+        onAdRelatedStateUpdated(listener: (event: { params: Protocol.DOM.AdRelatedStateUpdatedEvent }) => void): void;
+        offAdRelatedStateUpdated(listener: (event: { params: Protocol.DOM.AdRelatedStateUpdatedEvent }) => void): void;
+        onceAdRelatedStateUpdated(eventMatcher?: (event: { params: Protocol.DOM.AdRelatedStateUpdatedEvent }) => boolean): Promise<{ params: Protocol.DOM.AdRelatedStateUpdatedEvent }>;
+
+        /**
          * Fired when a node's starting styles changes.
          * @experimental
          */

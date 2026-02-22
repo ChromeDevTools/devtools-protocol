@@ -1,7 +1,36 @@
 
 
+## Roll protocol to r1588380 — _2026-02-22T04:58:30.000Z_
+######  Diff: [`e3b75f4...0affcf5`](https://github.com/ChromeDevTools/devtools-protocol/compare/e3b75f4...0affcf5)
+
+```diff
+@@ domains/DOM.pdl:183 @@ domain DOM
+       experimental optional boolean isScrollable
+       experimental optional boolean affectedByStartingStyles
+       experimental optional array of StyleSheetId adoptedStyleSheets
++      experimental optional boolean isAdRelated
+ 
+   # A structure to hold the top-level node of a detached tree and an array of its retained descendants.
+   type DetachedElementInfo extends object
+@@ -912,6 +913,14 @@ domain DOM
+       # If the node is scrollable.
+       boolean isScrollable
+ 
++  # Fired when a node's ad related state changes.
++  experimental event adRelatedStateUpdated
++    parameters
++      # The id of the node.
++      DOM.NodeId nodeId
++      # If the node is ad related.
++      boolean isAdRelated
++
+   # Fired when a node's starting styles changes.
+   experimental event affectedByStartingStylesFlagUpdated
+     parameters
+```
+
 ## Roll protocol to r1588251 — _2026-02-21T04:50:25.000Z_
-######  Diff: [`d03fc9b...d04d881`](https://github.com/ChromeDevTools/devtools-protocol/compare/d03fc9b...d04d881)
+######  Diff: [`d03fc9b...e3b75f4`](https://github.com/ChromeDevTools/devtools-protocol/compare/d03fc9b...e3b75f4)
 
 ```diff
 @@ domains/Network.pdl:2184 @@ domain Network
@@ -42215,199 +42244,4 @@ index 0dbdc01d..7a3c772c 100644
  
    # Unique object identifier.
    type RemoteObjectId extends string
-```
-
-## Roll protocol to r1137505 — _2023-04-29T04:26:38.000Z_
-######  Diff: [`7530c23...a74f8b5`](https://github.com/ChromeDevTools/devtools-protocol/compare/7530c23...a74f8b5)
-
-```diff
-@@ browser_protocol.pdl:4028 @@ domain IO
- 
- experimental domain IndexedDB
-   depends on Runtime
-+  depends on Storage
- 
-   # Database with an array of object stores.
-   type DatabaseWithObjectStores extends object
-@@ -4120,11 +4121,13 @@ experimental domain IndexedDB
-   # Clears all entries from an object store.
-   command clearObjectStore
-     parameters
--      # At least and at most one of securityOrigin, storageKey must be specified.
-+      # At least and at most one of securityOrigin, storageKey, or storageBucket must be specified.
-       # Security origin.
-       optional string securityOrigin
-       # Storage key.
-       optional string storageKey
-+      # Storage bucket. If not specified, it uses the default bucket.
-+      optional Storage.StorageBucket storageBucket
-       # Database name.
-       string databaseName
-       # Object store name.
-@@ -4133,22 +4136,26 @@ experimental domain IndexedDB
-   # Deletes a database.
-   command deleteDatabase
-     parameters
--      # At least and at most one of securityOrigin, storageKey must be specified.
-+      # At least and at most one of securityOrigin, storageKey, or storageBucket must be specified.
-       # Security origin.
-       optional string securityOrigin
-       # Storage key.
-       optional string storageKey
-+      # Storage bucket. If not specified, it uses the default bucket.
-+      optional Storage.StorageBucket storageBucket
-       # Database name.
-       string databaseName
- 
-   # Delete a range of entries from an object store
-   command deleteObjectStoreEntries
-     parameters
--      # At least and at most one of securityOrigin, storageKey must be specified.
-+      # At least and at most one of securityOrigin, storageKey, or storageBucket must be specified.
-       # Security origin.
-       optional string securityOrigin
-       # Storage key.
-       optional string storageKey
-+      # Storage bucket. If not specified, it uses the default bucket.
-+      optional Storage.StorageBucket storageBucket
-       string databaseName
-       string objectStoreName
-       # Range of entry keys to delete
-@@ -4163,11 +4170,13 @@ experimental domain IndexedDB
-   # Requests data from object store or index.
-   command requestData
-     parameters
--      # At least and at most one of securityOrigin, storageKey must be specified.
-+      # At least and at most one of securityOrigin, storageKey, or storageBucket must be specified.
-       # Security origin.
-       optional string securityOrigin
-       # Storage key.
-       optional string storageKey
-+      # Storage bucket. If not specified, it uses the default bucket.
-+      optional Storage.StorageBucket storageBucket
-       # Database name.
-       string databaseName
-       # Object store name.
-@@ -4189,11 +4198,13 @@ experimental domain IndexedDB
-   # Gets metadata of an object store.
-   command getMetadata
-     parameters
--      # At least and at most one of securityOrigin, storageKey must be specified.
-+      # At least and at most one of securityOrigin, storageKey, or storageBucket must be specified.
-       # Security origin.
-       optional string securityOrigin
-       # Storage key.
-       optional string storageKey
-+      # Storage bucket. If not specified, it uses the default bucket.
-+      optional Storage.StorageBucket storageBucket
-       # Database name.
-       string databaseName
-       # Object store name.
-@@ -4209,11 +4220,13 @@ experimental domain IndexedDB
-   # Requests database with given name in given frame.
-   command requestDatabase
-     parameters
--      # At least and at most one of securityOrigin, storageKey must be specified.
-+      # At least and at most one of securityOrigin, storageKey, or storageBucket must be specified.
-       # Security origin.
-       optional string securityOrigin
-       # Storage key.
-       optional string storageKey
-+      # Storage bucket. If not specified, it uses the default bucket.
-+      optional Storage.StorageBucket storageBucket
-       # Database name.
-       string databaseName
-     returns
-@@ -4223,11 +4236,13 @@ experimental domain IndexedDB
-   # Requests database names for given security origin.
-   command requestDatabaseNames
-     parameters
--      # At least and at most one of securityOrigin, storageKey must be specified.
-+      # At least and at most one of securityOrigin, storageKey, or storageBucket must be specified.
-       # Security origin.
-       optional string securityOrigin
-       # Storage key.
-       optional string storageKey
-+      # Storage bucket. If not specified, it uses the default bucket.
-+      optional Storage.StorageBucket storageBucket
-     returns
-       # Database names for origin.
-       array of string databaseNames
-@@ -9166,12 +9181,16 @@ experimental domain Storage
-       relaxed
-       strict
- 
--  type StorageBucketInfo extends object
-+  type StorageBucket extends object
-     properties
-       SerializedStorageKey storageKey
-+      # If not specified, it is the default bucket of the storageKey.
-+      optional string name
-+
-+  type StorageBucketInfo extends object
-+    properties
-+      StorageBucket bucket
-       string id
--      string name
--      boolean isDefault
-       Network.TimeSinceEpoch expiration
-       # Storage quota (bytes).
-       number quota
-@@ -9383,8 +9402,7 @@ experimental domain Storage
-   # Deletes the Storage Bucket with the given storage key and bucket name.
-   experimental command deleteStorageBucket
-     parameters
--      string storageKey
--      string bucketName
-+      StorageBucket bucket
- 
-   # Deletes state for sites identified as potential bounce trackers, immediately.
-   experimental command runBounceTrackingMitigations
-@@ -9416,6 +9434,8 @@ experimental domain Storage
-       string origin
-       # Storage key to update.
-       string storageKey
-+      # Storage bucket to update.
-+      string bucketId
-       # Database to update.
-       string databaseName
-       # ObjectStore to update.
-@@ -9428,6 +9448,8 @@ experimental domain Storage
-       string origin
-       # Storage key to update.
-       string storageKey
-+      # Storage bucket to update.
-+      string bucketId
- 
-   # One of the interest groups was accessed by the associated page.
-   event interestGroupAccessed
-@@ -9455,7 +9477,7 @@ experimental domain Storage
- 
-   event storageBucketCreatedOrUpdated
-     parameters
--      StorageBucketInfo bucket
-+      StorageBucketInfo bucketInfo
- 
-   event storageBucketDeleted
-     parameters
-@@ -10832,6 +10854,19 @@ experimental domain Preload
-       # - https://wicg.github.io/nav-speculation/speculation-rules.html
-       # - https://github.com/WICG/nav-speculation/blob/main/triggers.md
-       string sourceText
-+      # A speculation rule set is either added through an inline
-+      # <script> tag or through an external resource via the
-+      # 'Speculation-Rules' HTTP header. For the first case, we include
-+      # the BackendNodeId of the relevant <script> tag. For the second
-+      # case, we include the external URL where the rule set was loaded
-+      # from, and also RequestId if Network domain is enabled.
-+      #
-+      # See also:
-+      # - https://wicg.github.io/nav-speculation/speculation-rules.html#speculation-rules-script
-+      # - https://wicg.github.io/nav-speculation/speculation-rules.html#speculation-rules-header
-+      optional DOM.BackendNodeId backendNodeId
-+      optional string url
-+      optional Network.RequestId requestId
-       # Error information
-       # `errorMessage` is null iff `errorType` is null.
-       optional RuleSetErrorType errorType
 ```

@@ -263,6 +263,11 @@ export namespace ProtocolMapping {
          */
         'DOM.scrollableFlagUpdated': [Protocol.DOM.ScrollableFlagUpdatedEvent];
         /**
+         * Fired when a node's ad related state changes.
+         * @experimental
+         */
+        'DOM.adRelatedStateUpdated': [Protocol.DOM.AdRelatedStateUpdatedEvent];
+        /**
          * Fired when a node's starting styles changes.
          * @experimental
          */
