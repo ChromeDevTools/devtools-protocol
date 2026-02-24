@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1589152 — _2026-02-24T05:03:10.000Z_
+######  Diff: [`6b927c9...a62c3cc`](https://github.com/ChromeDevTools/devtools-protocol/compare/6b927c9...a62c3cc)
+
+```diff
+@@ domains/Emulation.pdl:525 @@ domain Emulation
+   experimental type DisabledImageType extends string
+     enum
+       avif
++      jxl
+       webp
+ 
+   experimental command setDisabledImageTypes
+```
+
 ## Roll protocol to r1588380 — _2026-02-22T04:58:30.000Z_
-######  Diff: [`e3b75f4...0affcf5`](https://github.com/ChromeDevTools/devtools-protocol/compare/e3b75f4...0affcf5)
+######  Diff: [`e3b75f4...6b927c9`](https://github.com/ChromeDevTools/devtools-protocol/compare/e3b75f4...6b927c9)
 
 ```diff
 @@ domains/DOM.pdl:183 @@ domain DOM
@@ -42227,21 +42241,4 @@ index 0dbdc01d..7a3c772c 100644
        SourceAndTriggerHeaders
        SourceIgnored
        TriggerIgnored
-```
-
-## Roll protocol to r1137730 — _2023-05-01T04:26:59.000Z_
-######  Diff: [`a74f8b5...fb39cd1`](https://github.com/ChromeDevTools/devtools-protocol/compare/a74f8b5...fb39cd1)
-
-```diff
-@@ js_protocol.pdl:1044 @@ domain Runtime
-         window
-       optional any value
-       optional string objectId
-+      # Set if value reference met more then once during serialization. In such
-+      # case, value is provided only to one of the serialized values. Unique
-+      # per value in the scope of one CDP call.
-+      optional integer weakLocalObjectReference
- 
-   # Unique object identifier.
-   type RemoteObjectId extends string
 ```
