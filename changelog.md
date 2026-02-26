@@ -1,7 +1,132 @@
 
 
+## Roll protocol to r1590631 — _2026-02-26T05:00:08.000Z_
+######  Diff: [`708011c...5e29205`](https://github.com/ChromeDevTools/devtools-protocol/compare/708011c...5e29205)
+
+```diff
+@@ domains/Audits.pdl:7 @@ @@ -7,6 +7,7 @@
+ # Audits domain allows investigation of page violations and possible improvements.
+ experimental domain Audits
+   depends on Network
++  depends on Runtime
+ 
+   # Information about a cookie that is affected by an inspector issue.
+   type AffectedCookie extends object
+@@ -696,6 +697,41 @@ experimental domain Audits
+       # Used for messages about activation disabled reason
+       optional string disableReason
+ 
++  # Metadata about the ad script that was on the stack that caused the current
++  # script in the `AdAncestry` to be considered ad related.
++  type AdScriptIdentifier extends object
++    properties
++      # The script's v8 identifier.
++      Runtime.ScriptId scriptId
++      # v8's debugging id for the v8::Context.
++      Runtime.UniqueDebuggerId debuggerId
++      # The script's url (or generated name based on id if inline script).
++      string name
++
++  # Providence about how an ad script was determined to be such. It is an ad
++  # because its url matched a filterlist rule, or because some other ad script
++  # was on the stack when this script was loaded.
++  type AdAncestry extends object
++    properties
++      # The ad-script in the stack when the offending script was loaded. This is
++      # recursive down to the root script that was tagged due to the filterlist
++      # rule.
++      array of AdScriptIdentifier adAncestryChain
++      # The filterlist rule that caused the root (last) script in
++      # `adAncestry` to be ad-tagged.
++      optional string rootScriptFilterlistRule
++
++  # The issue warns about blocked calls to privacy sensitive APIs via the
++  # Selective Permissions Intervention.
++  type SelectivePermissionsInterventionIssueDetails extends object
++    properties
++      # Which API was intervened on.
++      string apiName
++      # Why the ad script using the API is considered an ad.
++      AdAncestry adAncestry
++      # The stack trace at the time of the intervention.
++      optional Runtime.StackTrace stackTrace
++
+   # A unique identifier for the type of issue. Each type may use one of the
+   # optional fields in InspectorIssueDetails to convey more specific
+   # information about the kind of issue.
+@@ -731,6 +767,7 @@ experimental domain Audits
+       UserReidentificationIssue
+       PermissionElementIssue
+       PerformanceIssue
++      SelectivePermissionsInterventionIssue
+ 
+   # This struct holds a list of optional fields with additional information
+   # specific to the kind of issue. When adding a new issue code, please also
+@@ -766,6 +803,7 @@ experimental domain Audits
+       optional UserReidentificationIssueDetails userReidentificationIssueDetails
+       optional PermissionElementIssueDetails permissionElementIssueDetails
+       optional PerformanceIssueDetails performanceIssueDetails
++      optional SelectivePermissionsInterventionIssueDetails selectivePermissionsInterventionIssueDetails
+ 
+   # A unique id for a DevTools inspector issue. Allows other entities (e.g.
+   # exceptions, CDP message, console messages, etc.) to reference an issue.
+diff --git a/pdl/domains/Emulation.pdl b/pdl/domains/Emulation.pdl
+index 5491f4cf..8488dffc 100644
+--- a/pdl/domains/Emulation.pdl
++++ b/pdl/domains/Emulation.pdl
+@@ -297,6 +297,15 @@ domain Emulation
+       # to continuous.
+       # Deprecated, use Emulation.setDevicePostureOverride.
+       experimental deprecated optional DevicePosture devicePosture
++      # Scrollbar type. Default: `default`.
++      experimental optional enum scrollbarType
++        # Emulates scrollbars that float over the content, typically appearing
++        # only when scrolling.
++        overlay
++        # Restores the platform's default scrollbar behavior, which might be
++        # classic (occupying space within the layout) or overlay, depending
++        # on the platform. Note: if `mobile` is `true`, the default scrollbar type is `overlay`.
++        default
+ 
+   # Start reporting the given posture value to the Device Posture API.
+   # This override can also be set in setDeviceMetricsOverride().
+diff --git a/pdl/domains/Extensions.pdl b/pdl/domains/Extensions.pdl
+index d50da280..8b3da102 100644
+--- a/pdl/domains/Extensions.pdl
++++ b/pdl/domains/Extensions.pdl
+@@ -38,6 +38,28 @@ experimental domain Extensions
+     returns
+       # Extension id.
+       string id
++
++  # Detailed information about an extension.
++  type ExtensionInfo extends object
++    properties
++      # Extension id.
++      string id
++      # Extension name.
++      string name
++      # Extension version.
++      string version
++      # The path from which the extension was loaded.
++      string path
++      # Extension enabled status.
++      boolean enabled
++
++  # Gets a list of all unpacked extensions.
++  # Available if the client is connected using the --remote-debugging-pipe flag
++  # and the --enable-unsafe-extension-debugging flag is set.
++  command getExtensions
++    returns
++      array of ExtensionInfo extensions
++
+   # Uninstalls an unpacked extension (others not supported) from the profile.
+   # Available if the client is connected using the --remote-debugging-pipe flag
+   # and the --enable-unsafe-extension-debugging.
+```
+
 ## Roll protocol to r1589152 — _2026-02-24T05:03:10.000Z_
-######  Diff: [`6b927c9...a62c3cc`](https://github.com/ChromeDevTools/devtools-protocol/compare/6b927c9...a62c3cc)
+######  Diff: [`6b927c9...708011c`](https://github.com/ChromeDevTools/devtools-protocol/compare/6b927c9...708011c)
 
 ```diff
 @@ domains/Emulation.pdl:525 @@ domain Emulation
@@ -42226,19 +42351,4 @@ index 0dbdc01d..7a3c772c 100644
        experimental optional boolean generateWebDriverValue
      returns
        # Evaluation result.
-```
-
-## Roll protocol to r1138159 — _2023-05-02T04:26:48.000Z_
-######  Diff: [`fb39cd1...fd2e02b`](https://github.com/ChromeDevTools/devtools-protocol/compare/fb39cd1...fd2e02b)
-
-```diff
-@@ browser_protocol.pdl:707 @@ experimental domain Audits
-       # TODO(apaseltiner): Rename this to InvalidRegisterSourceHeader
-       InvalidHeader
-       InvalidRegisterTriggerHeader
--      # TODO(apaseltiner): Remove this issue once DevTools stops referencing it.
--      InvalidEligibleHeader
-       SourceAndTriggerHeaders
-       SourceIgnored
-       TriggerIgnored
 ```

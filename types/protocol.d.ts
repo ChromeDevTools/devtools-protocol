@@ -3937,11 +3937,68 @@ export namespace Protocol {
         }
 
         /**
+         * Metadata about the ad script that was on the stack that caused the current
+         * script in the `AdAncestry` to be considered ad related.
+         */
+        export interface AdScriptIdentifier {
+            /**
+             * The script's v8 identifier.
+             */
+            scriptId: Runtime.ScriptId;
+            /**
+             * v8's debugging id for the v8::Context.
+             */
+            debuggerId: Runtime.UniqueDebuggerId;
+            /**
+             * The script's url (or generated name based on id if inline script).
+             */
+            name: string;
+        }
+
+        /**
+         * Providence about how an ad script was determined to be such. It is an ad
+         * because its url matched a filterlist rule, or because some other ad script
+         * was on the stack when this script was loaded.
+         */
+        export interface AdAncestry {
+            /**
+             * The ad-script in the stack when the offending script was loaded. This is
+             * recursive down to the root script that was tagged due to the filterlist
+             * rule.
+             */
+            adAncestryChain: AdScriptIdentifier[];
+            /**
+             * The filterlist rule that caused the root (last) script in
+             * `adAncestry` to be ad-tagged.
+             */
+            rootScriptFilterlistRule?: string;
+        }
+
+        /**
+         * The issue warns about blocked calls to privacy sensitive APIs via the
+         * Selective Permissions Intervention.
+         */
+        export interface SelectivePermissionsInterventionIssueDetails {
+            /**
+             * Which API was intervened on.
+             */
+            apiName: string;
+            /**
+             * Why the ad script using the API is considered an ad.
+             */
+            adAncestry: AdAncestry;
+            /**
+             * The stack trace at the time of the intervention.
+             */
+            stackTrace?: Runtime.StackTrace;
+        }
+
+        /**
          * A unique identifier for the type of issue. Each type may use one of the
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'PartitioningBlobURLIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'CookieDeprecationMetadataIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue' | 'PropertyRuleIssue' | 'SharedDictionaryIssue' | 'ElementAccessibilityIssue' | 'SRIMessageSignatureIssue' | 'UnencodedDigestIssue' | 'ConnectionAllowlistIssue' | 'UserReidentificationIssue' | 'PermissionElementIssue' | 'PerformanceIssue');
+        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'LowTextContrastIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'PartitioningBlobURLIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'CookieDeprecationMetadataIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue' | 'PropertyRuleIssue' | 'SharedDictionaryIssue' | 'ElementAccessibilityIssue' | 'SRIMessageSignatureIssue' | 'UnencodedDigestIssue' | 'ConnectionAllowlistIssue' | 'UserReidentificationIssue' | 'PermissionElementIssue' | 'PerformanceIssue' | 'SelectivePermissionsInterventionIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3981,6 +4038,7 @@ export namespace Protocol {
             userReidentificationIssueDetails?: UserReidentificationIssueDetails;
             permissionElementIssueDetails?: PermissionElementIssueDetails;
             performanceIssueDetails?: PerformanceIssueDetails;
+            selectivePermissionsInterventionIssueDetails?: SelectivePermissionsInterventionIssueDetails;
         }
 
         /**
@@ -9380,6 +9438,11 @@ export namespace Protocol {
             insets: SafeAreaInsets;
         }
 
+        export const enum SetDeviceMetricsOverrideRequestScrollbarType {
+            Overlay = 'overlay',
+            Default = 'default',
+        }
+
         export interface SetDeviceMetricsOverrideRequest {
             /**
              * Overriding width value in pixels (minimum 0, maximum 10000000). 0 disables the override.
@@ -9454,6 +9517,11 @@ export namespace Protocol {
              * @experimental
              */
             devicePosture?: DevicePosture;
+            /**
+             * Scrollbar type. Default: `default`.
+             * @experimental
+             */
+            scrollbarType?: ('overlay' | 'default');
         }
 
         export interface SetDevicePostureOverrideRequest {
@@ -9836,6 +9904,32 @@ export namespace Protocol {
          */
         export type StorageArea = ('session' | 'local' | 'sync' | 'managed');
 
+        /**
+         * Detailed information about an extension.
+         */
+        export interface ExtensionInfo {
+            /**
+             * Extension id.
+             */
+            id: string;
+            /**
+             * Extension name.
+             */
+            name: string;
+            /**
+             * Extension version.
+             */
+            version: string;
+            /**
+             * The path from which the extension was loaded.
+             */
+            path: string;
+            /**
+             * Extension enabled status.
+             */
+            enabled: boolean;
+        }
+
         export interface TriggerActionRequest {
             /**
              * Extension id.
@@ -9863,6 +9957,10 @@ export namespace Protocol {
              * Extension id.
              */
             id: string;
+        }
+
+        export interface GetExtensionsResponse {
+            extensions: ExtensionInfo[];
         }
 
         export interface UninstallRequest {

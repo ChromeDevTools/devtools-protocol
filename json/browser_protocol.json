@@ -1004,7 +1004,8 @@
             "description": "Audits domain allows investigation of page violations and possible improvements.",
             "experimental": true,
             "dependencies": [
-                "Network"
+                "Network",
+                "Runtime"
             ],
             "types": [
                 {
@@ -2262,6 +2263,72 @@
                     ]
                 },
                 {
+                    "id": "AdScriptIdentifier",
+                    "description": "Metadata about the ad script that was on the stack that caused the current\nscript in the `AdAncestry` to be considered ad related.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "scriptId",
+                            "description": "The script's v8 identifier.",
+                            "$ref": "Runtime.ScriptId"
+                        },
+                        {
+                            "name": "debuggerId",
+                            "description": "v8's debugging id for the v8::Context.",
+                            "$ref": "Runtime.UniqueDebuggerId"
+                        },
+                        {
+                            "name": "name",
+                            "description": "The script's url (or generated name based on id if inline script).",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "id": "AdAncestry",
+                    "description": "Providence about how an ad script was determined to be such. It is an ad\nbecause its url matched a filterlist rule, or because some other ad script\nwas on the stack when this script was loaded.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "adAncestryChain",
+                            "description": "The ad-script in the stack when the offending script was loaded. This is\nrecursive down to the root script that was tagged due to the filterlist\nrule.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "AdScriptIdentifier"
+                            }
+                        },
+                        {
+                            "name": "rootScriptFilterlistRule",
+                            "description": "The filterlist rule that caused the root (last) script in\n`adAncestry` to be ad-tagged.",
+                            "optional": true,
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "id": "SelectivePermissionsInterventionIssueDetails",
+                    "description": "The issue warns about blocked calls to privacy sensitive APIs via the\nSelective Permissions Intervention.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "apiName",
+                            "description": "Which API was intervened on.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "adAncestry",
+                            "description": "Why the ad script using the API is considered an ad.",
+                            "$ref": "AdAncestry"
+                        },
+                        {
+                            "name": "stackTrace",
+                            "description": "The stack trace at the time of the intervention.",
+                            "optional": true,
+                            "$ref": "Runtime.StackTrace"
+                        }
+                    ]
+                },
+                {
                     "id": "InspectorIssueCode",
                     "description": "A unique identifier for the type of issue. Each type may use one of the\noptional fields in InspectorIssueDetails to convey more specific\ninformation about the kind of issue.",
                     "type": "string",
@@ -2294,7 +2361,8 @@
                         "ConnectionAllowlistIssue",
                         "UserReidentificationIssue",
                         "PermissionElementIssue",
-                        "PerformanceIssue"
+                        "PerformanceIssue",
+                        "SelectivePermissionsInterventionIssue"
                     ]
                 },
                 {
@@ -2447,6 +2515,11 @@
                             "name": "performanceIssueDetails",
                             "optional": true,
                             "$ref": "PerformanceIssueDetails"
+                        },
+                        {
+                            "name": "selectivePermissionsInterventionIssueDetails",
+                            "optional": true,
+                            "$ref": "SelectivePermissionsInterventionIssueDetails"
                         }
                     ]
                 },
@@ -10984,6 +11057,17 @@
                             "deprecated": true,
                             "optional": true,
                             "$ref": "DevicePosture"
+                        },
+                        {
+                            "name": "scrollbarType",
+                            "description": "Scrollbar type. Default: `default`.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "string",
+                            "enum": [
+                                "overlay",
+                                "default"
+                            ]
                         }
                     ]
                 },
@@ -11665,6 +11749,38 @@
                         "sync",
                         "managed"
                     ]
+                },
+                {
+                    "id": "ExtensionInfo",
+                    "description": "Detailed information about an extension.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "id",
+                            "description": "Extension id.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "name",
+                            "description": "Extension name.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "version",
+                            "description": "Extension version.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "path",
+                            "description": "The path from which the extension was loaded.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "enabled",
+                            "description": "Extension enabled status.",
+                            "type": "boolean"
+                        }
+                    ]
                 }
             ],
             "commands": [
@@ -11705,6 +11821,19 @@
                             "name": "id",
                             "description": "Extension id.",
                             "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "getExtensions",
+                    "description": "Gets a list of all unpacked extensions.\nAvailable if the client is connected using the --remote-debugging-pipe flag\nand the --enable-unsafe-extension-debugging flag is set.",
+                    "returns": [
+                        {
+                            "name": "extensions",
+                            "type": "array",
+                            "items": {
+                                "$ref": "ExtensionInfo"
+                            }
                         }
                     ]
                 },
