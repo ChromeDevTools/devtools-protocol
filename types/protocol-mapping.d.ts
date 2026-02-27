@@ -3592,6 +3592,17 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Set primary screen. Only supported in headless mode.
+         * Note that this changes the coordinate system origin to the top-left
+         * of the new primary screen, updating the bounds and work areas
+         * of all existing screens accordingly.
+         * @experimental
+         */
+        'Emulation.setPrimaryScreen': {
+            paramsType: [Protocol.Emulation.SetPrimaryScreenRequest];
+            returnType: void;
+        };
+        /**
          * Sets breakpoint on particular native event.
          */
         'EventBreakpoints.setInstrumentationBreakpoint': {

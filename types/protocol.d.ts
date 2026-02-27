@@ -9868,6 +9868,10 @@ export namespace Protocol {
         export interface RemoveScreenRequest {
             screenId: ScreenId;
         }
+
+        export interface SetPrimaryScreenRequest {
+            screenId: ScreenId;
+        }
     }
 
     /**

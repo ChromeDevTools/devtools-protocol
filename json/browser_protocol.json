@@ -11691,6 +11691,17 @@
                             "$ref": "ScreenId"
                         }
                     ]
+                },
+                {
+                    "name": "setPrimaryScreen",
+                    "description": "Set primary screen. Only supported in headless mode.\nNote that this changes the coordinate system origin to the top-left\nof the new primary screen, updating the bounds and work areas\nof all existing screens accordingly.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "screenId",
+                            "$ref": "ScreenId"
+                        }
+                    ]
                 }
             ],
             "events": [

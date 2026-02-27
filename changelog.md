@@ -1,7 +1,25 @@
 
 
+## Roll protocol to r1591319 — _2026-02-27T04:56:42.000Z_
+######  Diff: [`d5ffdaf...029bb84`](https://github.com/ChromeDevTools/devtools-protocol/compare/d5ffdaf...029bb84)
+
+```diff
+@@ domains/Emulation.pdl:617 @@ domain Emulation
+   experimental command removeScreen
+     parameters
+       ScreenId screenId
++
++  # Set primary screen. Only supported in headless mode.
++  # Note that this changes the coordinate system origin to the top-left
++  # of the new primary screen, updating the bounds and work areas
++  # of all existing screens accordingly.
++  experimental command setPrimaryScreen
++    parameters
++      ScreenId screenId
+```
+
 ## Roll protocol to r1590631 — _2026-02-26T05:00:08.000Z_
-######  Diff: [`708011c...5e29205`](https://github.com/ChromeDevTools/devtools-protocol/compare/708011c...5e29205)
+######  Diff: [`708011c...d5ffdaf`](https://github.com/ChromeDevTools/devtools-protocol/compare/708011c...d5ffdaf)
 
 ```diff
 @@ domains/Audits.pdl:7 @@ @@ -7,6 +7,7 @@
@@ -42305,50 +42323,4 @@ index 0dbdc01d..7a3c772c 100644
  # Defines events for background web platform features.
  experimental domain BackgroundService
    # The Background Service that will be associated with the commands/events.
-```
-
-## Roll protocol to r1138800 — _2023-05-03T04:26:34.000Z_
-######  Diff: [`fd2e02b...5b4da4d`](https://github.com/ChromeDevTools/devtools-protocol/compare/fd2e02b...5b4da4d)
-
-```diff
-@@ js_protocol.pdl:1015 @@ domain Runtime
-   type ScriptId extends string
- 
-   # Represents the value serialiazed by the WebDriver BiDi specification
--  # https://w3c.github.io/webdriver-bidi.
--  type WebDriverValue extends object
-+  # https://goo.gle/browser-automation-deepserialization.
-+  type DeepSerializedValue extends object
-     properties
-       enum type
-         undefined
-@@ -1102,7 +1102,7 @@ domain Runtime
-       # String representation of the object.
-       optional string description
-       # WebDriver BiDi representation of the value.
--      experimental optional WebDriverValue webDriverValue
-+      experimental optional DeepSerializedValue webDriverValue
-       # Unique object identifier (for non-primitive values).
-       optional RemoteObjectId objectId
-       # Preview containing abbreviated property values. Specified for `object` type values only.
-@@ -1416,8 +1416,8 @@ domain Runtime
-       # This is mutually exclusive with `executionContextId`.
-       experimental optional string uniqueContextId
-       # Whether the result should contain `webDriverValue`, serialized according to
--      # https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but
--      # resulting `objectId` is still provided.
-+      # https://goo.gle/browser-automation-deepserialization. This is mutually
-+      # exclusive with `returnByValue`, but resulting `objectId` is still provided.
-       experimental optional boolean generateWebDriverValue
-     returns
-       # Call result.
-@@ -1504,7 +1504,7 @@ domain Runtime
-       # boundaries).
-       # This is mutually exclusive with `contextId`.
-       experimental optional string uniqueContextId
--      # Whether the result should be serialized according to https://w3c.github.io/webdriver-bidi.
-+      # Whether the result should be serialized according to https://goo.gle/browser-automation-deepserialization.
-       experimental optional boolean generateWebDriverValue
-     returns
-       # Evaluation result.
 ```

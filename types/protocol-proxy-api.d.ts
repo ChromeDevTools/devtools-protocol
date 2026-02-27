@@ -2391,6 +2391,15 @@ export namespace ProtocolProxyApi {
         removeScreen(params: Protocol.Emulation.RemoveScreenRequest): Promise<void>;
 
         /**
+         * Set primary screen. Only supported in headless mode.
+         * Note that this changes the coordinate system origin to the top-left
+         * of the new primary screen, updating the bounds and work areas
+         * of all existing screens accordingly.
+         * @experimental
+         */
+        setPrimaryScreen(params: Protocol.Emulation.SetPrimaryScreenRequest): Promise<void>;
+
+        /**
          * Notification sent after the virtual time budget for the current VirtualTimePolicy has run out.
          * @experimental
          */
