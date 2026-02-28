@@ -1,0 +1,2504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Chrome DevTools Protocol - version tot - SmartCardEmulation domain" />
+  <link rel="icon" type="image/png" href="/devtools-protocol/images/logo.png" />
+    <title>Chrome DevTools Protocol - SmartCardEmulation domain</title>
+
+  <meta name="theme-color" content="#303F9F" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@chromedevtools" />
+  <meta name="twitter:creator" content="@chromedevtools" />
+  <meta property="og:title" content="Chrome DevTools Protocol" />
+  <meta property="og:image" content="https://developers.google.com/web/tools/images/chrome-devtools-16x9_720.png" />
+    <meta property="og:description" content="Chrome DevTools Protocol - version tot - SmartCardEmulation domain" />
+
+  <script type="module" src="/devtools-protocol/scripts/index.js"></script>
+  <link href="/devtools-protocol/styles/protocol.css" rel="stylesheet">
+</head>
+<body>
+  <aside>
+    <div id="home" class="navs">
+      <nav>
+        <a href="/devtools-protocol/">Home</a>
+        <button class="aside-close-button" aria-label="Close navigation">x</button>
+      </nav>
+    </div>
+    <div id="versions" class="navs">
+      <header>Versions</header>
+      <nav>
+        <a href="/devtools-protocol/tot" name="tot">
+          latest (tip-of-tree)
+        </a>
+        <a href="/devtools-protocol/v8" name="v8">
+          v8-inspector (node)
+        </a>
+        <a href="/devtools-protocol/1-3" name="1-3">
+          stable (1.3)
+        </a><!-- 
+        <a href="/devtools-protocol/1-2" name="1-2">
+          stable (1.2)
+        </a> -->
+      </nav>
+    </div>
+
+    <div id="domains" class="navs version-tot">
+      <header>Domains</header>
+      <div class="scroller">
+        <nav>
+          <a href="/devtools-protocol/tot/Accessibility" class="tot experimental">Accessibility</a>
+          <a href="/devtools-protocol/tot/Animation" class="tot experimental">Animation</a>
+          <a href="/devtools-protocol/tot/Audits" class="tot experimental">Audits</a>
+          <a href="/devtools-protocol/tot/Autofill" class="tot experimental">Autofill</a>
+          <a href="/devtools-protocol/tot/BackgroundService" class="tot experimental">BackgroundService</a>
+          <a href="/devtools-protocol/tot/BluetoothEmulation" class="tot experimental">BluetoothEmulation</a>
+          <a href="/devtools-protocol/tot/Browser" class="tot 1-3">Browser</a>
+          <a href="/devtools-protocol/tot/CacheStorage" class="tot experimental">CacheStorage</a>
+          <a href="/devtools-protocol/tot/Cast" class="tot experimental">Cast</a>
+          <a href="/devtools-protocol/tot/Console" class="tot deprecated v8">Console</a>
+          <a href="/devtools-protocol/tot/CSS" class="tot experimental">CSS</a>
+          <a href="/devtools-protocol/tot/Debugger" class="tot 1-2 1-3 v8">Debugger</a>
+          <a href="/devtools-protocol/tot/DeviceAccess" class="tot experimental">DeviceAccess</a>
+          <a href="/devtools-protocol/tot/DeviceOrientation" class="tot experimental">DeviceOrientation</a>
+          <a href="/devtools-protocol/tot/DOM" class="tot 1-2 1-3">DOM</a>
+          <a href="/devtools-protocol/tot/DOMDebugger" class="tot 1-2 1-3">DOMDebugger</a>
+          <a href="/devtools-protocol/tot/DOMSnapshot" class="tot experimental">DOMSnapshot</a>
+          <a href="/devtools-protocol/tot/DOMStorage" class="tot experimental">DOMStorage</a>
+          <a href="/devtools-protocol/tot/Emulation" class="tot 1-2 1-3">Emulation</a>
+          <a href="/devtools-protocol/tot/EventBreakpoints" class="tot experimental">EventBreakpoints</a>
+          <a href="/devtools-protocol/tot/Extensions" class="tot experimental">Extensions</a>
+          <a href="/devtools-protocol/tot/FedCm" class="tot experimental">FedCm</a>
+          <a href="/devtools-protocol/tot/Fetch" class="tot 1-3">Fetch</a>
+          <a href="/devtools-protocol/tot/FileSystem" class="tot experimental">FileSystem</a>
+          <a href="/devtools-protocol/tot/HeadlessExperimental" class="tot experimental">HeadlessExperimental</a>
+          <a href="/devtools-protocol/tot/HeapProfiler" class="tot experimental v8">HeapProfiler</a>
+          <a href="/devtools-protocol/tot/IndexedDB" class="tot experimental">IndexedDB</a>
+          <a href="/devtools-protocol/tot/Input" class="tot 1-2 1-3">Input</a>
+          <a href="/devtools-protocol/tot/Inspector" class="tot experimental">Inspector</a>
+          <a href="/devtools-protocol/tot/IO" class="tot 1-3">IO</a>
+          <a href="/devtools-protocol/tot/LayerTree" class="tot experimental">LayerTree</a>
+          <a href="/devtools-protocol/tot/Log" class="tot 1-3">Log</a>
+          <a href="/devtools-protocol/tot/Media" class="tot experimental">Media</a>
+          <a href="/devtools-protocol/tot/Memory" class="tot experimental">Memory</a>
+          <a href="/devtools-protocol/tot/Network" class="tot 1-2 1-3">Network</a>
+          <a href="/devtools-protocol/tot/Overlay" class="tot experimental">Overlay</a>
+          <a href="/devtools-protocol/tot/Page" class="tot 1-2 1-3">Page</a>
+          <a href="/devtools-protocol/tot/Performance" class="tot 1-3">Performance</a>
+          <a href="/devtools-protocol/tot/PerformanceTimeline" class="tot experimental">PerformanceTimeline</a>
+          <a href="/devtools-protocol/tot/Preload" class="tot experimental">Preload</a>
+          <a href="/devtools-protocol/tot/Profiler" class="tot 1-2 1-3 v8">Profiler</a>
+          <a href="/devtools-protocol/tot/PWA" class="tot experimental">PWA</a>
+          <a href="/devtools-protocol/tot/Runtime" class="tot 1-2 1-3 v8">Runtime</a>
+          <a href="/devtools-protocol/tot/Schema" class="tot deprecated 1-2 v8">Schema</a>
+          <a href="/devtools-protocol/tot/Security" class="tot 1-3">Security</a>
+          <a href="/devtools-protocol/tot/ServiceWorker" class="tot experimental">ServiceWorker</a>
+          <a href="/devtools-protocol/tot/Storage" class="tot experimental">Storage</a>
+          <a href="/devtools-protocol/tot/SystemInfo" class="tot experimental">SystemInfo</a>
+          <a href="/devtools-protocol/tot/Target" class="tot 1-3">Target</a>
+          <a href="/devtools-protocol/tot/Tethering" class="tot experimental">Tethering</a>
+          <a href="/devtools-protocol/tot/Tracing" class="tot 1-3">Tracing</a>
+          <a href="/devtools-protocol/tot/WebAudio" class="tot experimental">WebAudio</a>
+          <a href="/devtools-protocol/tot/WebAuthn" class="tot experimental">WebAuthn</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <h1>Chrome DevTools Protocol</h1>
+      <button class="menu-link">Navigation</button>
+      <cr-search-control base-url="/devtools-protocol/" protocol-search-index="/search_index/tot.json"></cr-search-control>
+    </header>
+    <section>
+      <div class="main-content-section domain">
+        
+    <div class="domain-section">
+      <div id="header">
+        <h2 class="heading">SmartCardEmulation Domain</h2>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        <h3>Methods</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#method-disable"><span class="domain-dot">SmartCardEmulation.</span>disable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-enable"><span class="domain-dot">SmartCardEmulation.</span>enable</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-reportBeginTransactionResult"><span class="domain-dot">SmartCardEmulation.</span>reportBeginTransactionResult</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-reportConnectResult"><span class="domain-dot">SmartCardEmulation.</span>reportConnectResult</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-reportDataResult"><span class="domain-dot">SmartCardEmulation.</span>reportDataResult</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-reportError"><span class="domain-dot">SmartCardEmulation.</span>reportError</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-reportEstablishContextResult"><span class="domain-dot">SmartCardEmulation.</span>reportEstablishContextResult</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-reportGetStatusChangeResult"><span class="domain-dot">SmartCardEmulation.</span>reportGetStatusChangeResult</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-reportListReadersResult"><span class="domain-dot">SmartCardEmulation.</span>reportListReadersResult</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-reportPlainResult"><span class="domain-dot">SmartCardEmulation.</span>reportPlainResult</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-reportReleaseContextResult"><span class="domain-dot">SmartCardEmulation.</span>reportReleaseContextResult</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-reportStatusResult"><span class="domain-dot">SmartCardEmulation.</span>reportStatusResult</a>
+        
+      </div>
+      
+        <h3>Events</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#event-beginTransactionRequested"><span class="domain-dot">SmartCardEmulation.</span>beginTransactionRequested</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-cancelRequested"><span class="domain-dot">SmartCardEmulation.</span>cancelRequested</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-connectRequested"><span class="domain-dot">SmartCardEmulation.</span>connectRequested</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-controlRequested"><span class="domain-dot">SmartCardEmulation.</span>controlRequested</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-disconnectRequested"><span class="domain-dot">SmartCardEmulation.</span>disconnectRequested</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-endTransactionRequested"><span class="domain-dot">SmartCardEmulation.</span>endTransactionRequested</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-establishContextRequested"><span class="domain-dot">SmartCardEmulation.</span>establishContextRequested</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-getAttribRequested"><span class="domain-dot">SmartCardEmulation.</span>getAttribRequested</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-getStatusChangeRequested"><span class="domain-dot">SmartCardEmulation.</span>getStatusChangeRequested</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-listReadersRequested"><span class="domain-dot">SmartCardEmulation.</span>listReadersRequested</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-releaseContextRequested"><span class="domain-dot">SmartCardEmulation.</span>releaseContextRequested</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-setAttribRequested"><span class="domain-dot">SmartCardEmulation.</span>setAttribRequested</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-statusRequested"><span class="domain-dot">SmartCardEmulation.</span>statusRequested</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-transmitRequested"><span class="domain-dot">SmartCardEmulation.</span>transmitRequested</a>
+        
+      </div>
+      
+        <h3>Types</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#type-ConnectionState"><span class="domain-dot">SmartCardEmulation.</span>ConnectionState</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-Disposition"><span class="domain-dot">SmartCardEmulation.</span>Disposition</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-Protocol"><span class="domain-dot">SmartCardEmulation.</span>Protocol</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ProtocolSet"><span class="domain-dot">SmartCardEmulation.</span>ProtocolSet</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ReaderStateFlags"><span class="domain-dot">SmartCardEmulation.</span>ReaderStateFlags</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ReaderStateIn"><span class="domain-dot">SmartCardEmulation.</span>ReaderStateIn</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ReaderStateOut"><span class="domain-dot">SmartCardEmulation.</span>ReaderStateOut</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ResultCode"><span class="domain-dot">SmartCardEmulation.</span>ResultCode</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-ShareMode"><span class="domain-dot">SmartCardEmulation.</span>ShareMode</a>
+        
+      </div>
+      
+      </div>
+
+      
+      <h3 id="methods">Methods</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="method-disable">
+          <span class="domain-dot">SmartCardEmulation.</span>disable
+          
+          <a href="#method-disable"
+             class="permalink"
+             data-slug="SmartCardEmulation.disable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Disables the |SmartCardEmulation| domain.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-enable">
+          <span class="domain-dot">SmartCardEmulation.</span>enable
+          
+          <a href="#method-enable"
+             class="permalink"
+             data-slug="SmartCardEmulation.enable"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enables the |SmartCardEmulation| domain.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-reportBeginTransactionResult">
+          <span class="domain-dot">SmartCardEmulation.</span>reportBeginTransactionResult
+          
+          <a href="#method-reportBeginTransactionResult"
+             class="permalink"
+             data-slug="SmartCardEmulation.reportBeginTransactionResult"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Reports the result of a |SCardBeginTransaction| call.
+On success, this creates a new transaction object.</p>
+<p>This maps to:
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#gaddb835dce01a0da1d6ca02d33ee7d861">https://pcsclite.apdu.fr/api/group__API.html#gaddb835dce01a0da1d6ca02d33ee7d861</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardbegintransaction">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardbegintransaction</a></p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          handle
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-reportConnectResult">
+          <span class="domain-dot">SmartCardEmulation.</span>reportConnectResult
+          
+          <a href="#method-reportConnectResult"
+             class="permalink"
+             data-slug="SmartCardEmulation.reportConnectResult"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Reports the successful result of a |SCardConnect| call.</p>
+<p>This maps to:
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#ga4e515829752e0a8dbc4d630696a8d6a5">https://pcsclite.apdu.fr/api/group__API.html#ga4e515829752e0a8dbc4d630696a8d6a5</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardconnecta">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardconnecta</a></p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          handle
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          activeProtocol
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/SmartCardEmulation/#type-Protocol class="param-type">Protocol</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-reportDataResult">
+          <span class="domain-dot">SmartCardEmulation.</span>reportDataResult
+          
+          <a href="#method-reportDataResult"
+             class="permalink"
+             data-slug="SmartCardEmulation.reportDataResult"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Reports the successful result of a call that sends back data on success.
+Used for |SCardTransmit|, |SCardControl|, and |SCardGetAttrib|.</p>
+<p>This maps to:</p>
+<ol>
+<li><p>SCardTransmit
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#ga9a2d77242a271310269065e64633ab99">https://pcsclite.apdu.fr/api/group__API.html#ga9a2d77242a271310269065e64633ab99</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardtransmit">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardtransmit</a></p>
+</li>
+<li><p>SCardControl
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#gac3454d4657110fd7f753b2d3d8f4e32f">https://pcsclite.apdu.fr/api/group__API.html#gac3454d4657110fd7f753b2d3d8f4e32f</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardcontrol">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardcontrol</a></p>
+</li>
+<li><p>SCardGetAttrib
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#gaacfec51917255b7a25b94c5104961602">https://pcsclite.apdu.fr/api/group__API.html#gaacfec51917255b7a25b94c5104961602</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardgetattrib">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardgetattrib</a></p>
+</li>
+</ol>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          data
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-reportError">
+          <span class="domain-dot">SmartCardEmulation.</span>reportError
+          
+          <a href="#method-reportError"
+             class="permalink"
+             data-slug="SmartCardEmulation.reportError"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Reports an error result for the given request.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          resultCode
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/SmartCardEmulation/#type-ResultCode class="param-type">ResultCode</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-reportEstablishContextResult">
+          <span class="domain-dot">SmartCardEmulation.</span>reportEstablishContextResult
+          
+          <a href="#method-reportEstablishContextResult"
+             class="permalink"
+             data-slug="SmartCardEmulation.reportEstablishContextResult"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Reports the successful result of a |SCardEstablishContext| call.</p>
+<p>This maps to:
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#gaa1b8970169fd4883a6dc4a8f43f19b67">https://pcsclite.apdu.fr/api/group__API.html#gaa1b8970169fd4883a6dc4a8f43f19b67</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardestablishcontext">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardestablishcontext</a></p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          contextId
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-reportGetStatusChangeResult">
+          <span class="domain-dot">SmartCardEmulation.</span>reportGetStatusChangeResult
+          
+          <a href="#method-reportGetStatusChangeResult"
+             class="permalink"
+             data-slug="SmartCardEmulation.reportGetStatusChangeResult"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Reports the successful result of a |SCardGetStatusChange| call.</p>
+<p>This maps to:
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#ga33247d5d1257d59e55647c3bb717db24">https://pcsclite.apdu.fr/api/group__API.html#ga33247d5d1257d59e55647c3bb717db24</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardgetstatuschangea">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardgetstatuschangea</a></p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          readerStates
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/SmartCardEmulation/#type-ReaderStateOut class="param-type">ReaderStateOut</a> ]</span></span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-reportListReadersResult">
+          <span class="domain-dot">SmartCardEmulation.</span>reportListReadersResult
+          
+          <a href="#method-reportListReadersResult"
+             class="permalink"
+             data-slug="SmartCardEmulation.reportListReadersResult"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Reports the successful result of a |SCardListReaders| call.</p>
+<p>This maps to:
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#ga93b07815789b3cf2629d439ecf20f0d9">https://pcsclite.apdu.fr/api/group__API.html#ga93b07815789b3cf2629d439ecf20f0d9</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardlistreadersa">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardlistreadersa</a></p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          readers
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">string</span> ]</span></span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-reportPlainResult">
+          <span class="domain-dot">SmartCardEmulation.</span>reportPlainResult
+          
+          <a href="#method-reportPlainResult"
+             class="permalink"
+             data-slug="SmartCardEmulation.reportPlainResult"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Reports the successful result of a call that returns only a result code.
+Used for: |SCardCancel|, |SCardDisconnect|, |SCardSetAttrib|, |SCardEndTransaction|.</p>
+<p>This maps to:</p>
+<ol>
+<li><p>SCardCancel
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#gaacbbc0c6d6c0cbbeb4f4debf6fbeeee6">https://pcsclite.apdu.fr/api/group__API.html#gaacbbc0c6d6c0cbbeb4f4debf6fbeeee6</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardcancel">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardcancel</a></p>
+</li>
+<li><p>SCardDisconnect
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#ga4be198045c73ec0deb79e66c0ca1738a">https://pcsclite.apdu.fr/api/group__API.html#ga4be198045c73ec0deb79e66c0ca1738a</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scarddisconnect">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scarddisconnect</a></p>
+</li>
+<li><p>SCardSetAttrib
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#ga060f0038a4ddfd5dd2b8fadf3c3a2e4f">https://pcsclite.apdu.fr/api/group__API.html#ga060f0038a4ddfd5dd2b8fadf3c3a2e4f</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardsetattrib">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardsetattrib</a></p>
+</li>
+<li><p>SCardEndTransaction
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#gae8742473b404363e5c587f570d7e2f3b">https://pcsclite.apdu.fr/api/group__API.html#gae8742473b404363e5c587f570d7e2f3b</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardendtransaction">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardendtransaction</a></p>
+</li>
+</ol>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-reportReleaseContextResult">
+          <span class="domain-dot">SmartCardEmulation.</span>reportReleaseContextResult
+          
+          <a href="#method-reportReleaseContextResult"
+             class="permalink"
+             data-slug="SmartCardEmulation.reportReleaseContextResult"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Reports the successful result of a |SCardReleaseContext| call.</p>
+<p>This maps to:
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#ga6aabcba7744c5c9419fdd6404f73a934">https://pcsclite.apdu.fr/api/group__API.html#ga6aabcba7744c5c9419fdd6404f73a934</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardreleasecontext">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardreleasecontext</a></p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-reportStatusResult">
+          <span class="domain-dot">SmartCardEmulation.</span>reportStatusResult
+          
+          <a href="#method-reportStatusResult"
+             class="permalink"
+             data-slug="SmartCardEmulation.reportStatusResult"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Reports the successful result of a |SCardStatus| call.</p>
+<p>This maps to:
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#gae49c3c894ad7ac12a5b896bde70d0382">https://pcsclite.apdu.fr/api/group__API.html#gae49c3c894ad7ac12a5b896bde70d0382</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardstatusa">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardstatusa</a></p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          readerName
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          state
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/SmartCardEmulation/#type-ConnectionState class="param-type">ConnectionState</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          atr
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          protocol
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/SmartCardEmulation/#type-Protocol class="param-type">Protocol</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="events">Events</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="event-beginTransactionRequested">
+          <span class="domain-dot">SmartCardEmulation.</span>beginTransactionRequested
+          
+          <a href="#event-beginTransactionRequested"
+             class="permalink"
+             data-slug="SmartCardEmulation.beginTransactionRequested"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when |SCardBeginTransaction| is called.</p>
+<p>This maps to:
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#gaddb835dce01a0da1d6ca02d33ee7d861">https://pcsclite.apdu.fr/api/group__API.html#gaddb835dce01a0da1d6ca02d33ee7d861</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardbegintransaction">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardbegintransaction</a></p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          handle
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-cancelRequested">
+          <span class="domain-dot">SmartCardEmulation.</span>cancelRequested
+          
+          <a href="#event-cancelRequested"
+             class="permalink"
+             data-slug="SmartCardEmulation.cancelRequested"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when |SCardCancel| is called.</p>
+<p>This maps to:
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#gaacbbc0c6d6c0cbbeb4f4debf6fbeeee6">https://pcsclite.apdu.fr/api/group__API.html#gaacbbc0c6d6c0cbbeb4f4debf6fbeeee6</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardcancel">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardcancel</a></p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          contextId
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-connectRequested">
+          <span class="domain-dot">SmartCardEmulation.</span>connectRequested
+          
+          <a href="#event-connectRequested"
+             class="permalink"
+             data-slug="SmartCardEmulation.connectRequested"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when |SCardConnect| is called.</p>
+<p>This maps to:
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#ga4e515829752e0a8dbc4d630696a8d6a5">https://pcsclite.apdu.fr/api/group__API.html#ga4e515829752e0a8dbc4d630696a8d6a5</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardconnecta">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardconnecta</a></p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          contextId
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          reader
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          shareMode
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/SmartCardEmulation/#type-ShareMode class="param-type">ShareMode</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          preferredProtocols
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/SmartCardEmulation/#type-ProtocolSet class="param-type">ProtocolSet</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-controlRequested">
+          <span class="domain-dot">SmartCardEmulation.</span>controlRequested
+          
+          <a href="#event-controlRequested"
+             class="permalink"
+             data-slug="SmartCardEmulation.controlRequested"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when |SCardControl| is called.</p>
+<p>This maps to:
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#gac3454d4657110fd7f753b2d3d8f4e32f">https://pcsclite.apdu.fr/api/group__API.html#gac3454d4657110fd7f753b2d3d8f4e32f</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardcontrol">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardcontrol</a></p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          handle
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          controlCode
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          data
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-disconnectRequested">
+          <span class="domain-dot">SmartCardEmulation.</span>disconnectRequested
+          
+          <a href="#event-disconnectRequested"
+             class="permalink"
+             data-slug="SmartCardEmulation.disconnectRequested"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when |SCardDisconnect| is called.</p>
+<p>This maps to:
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#ga4be198045c73ec0deb79e66c0ca1738a">https://pcsclite.apdu.fr/api/group__API.html#ga4be198045c73ec0deb79e66c0ca1738a</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scarddisconnect">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scarddisconnect</a></p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          handle
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          disposition
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/SmartCardEmulation/#type-Disposition class="param-type">Disposition</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-endTransactionRequested">
+          <span class="domain-dot">SmartCardEmulation.</span>endTransactionRequested
+          
+          <a href="#event-endTransactionRequested"
+             class="permalink"
+             data-slug="SmartCardEmulation.endTransactionRequested"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when |SCardEndTransaction| is called.</p>
+<p>This maps to:
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#gae8742473b404363e5c587f570d7e2f3b">https://pcsclite.apdu.fr/api/group__API.html#gae8742473b404363e5c587f570d7e2f3b</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardendtransaction">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardendtransaction</a></p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          handle
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          disposition
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/SmartCardEmulation/#type-Disposition class="param-type">Disposition</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-establishContextRequested">
+          <span class="domain-dot">SmartCardEmulation.</span>establishContextRequested
+          
+          <a href="#event-establishContextRequested"
+             class="permalink"
+             data-slug="SmartCardEmulation.establishContextRequested"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when |SCardEstablishContext| is called.</p>
+<p>This maps to:
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#gaa1b8970169fd4883a6dc4a8f43f19b67">https://pcsclite.apdu.fr/api/group__API.html#gaa1b8970169fd4883a6dc4a8f43f19b67</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardestablishcontext">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardestablishcontext</a></p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-getAttribRequested">
+          <span class="domain-dot">SmartCardEmulation.</span>getAttribRequested
+          
+          <a href="#event-getAttribRequested"
+             class="permalink"
+             data-slug="SmartCardEmulation.getAttribRequested"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when |SCardGetAttrib| is called.</p>
+<p>This maps to:
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#gaacfec51917255b7a25b94c5104961602">https://pcsclite.apdu.fr/api/group__API.html#gaacfec51917255b7a25b94c5104961602</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardgetattrib">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardgetattrib</a></p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          handle
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          attribId
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-getStatusChangeRequested">
+          <span class="domain-dot">SmartCardEmulation.</span>getStatusChangeRequested
+          
+          <a href="#event-getStatusChangeRequested"
+             class="permalink"
+             data-slug="SmartCardEmulation.getStatusChangeRequested"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when |SCardGetStatusChange| is called. Timeout is specified in milliseconds.</p>
+<p>This maps to:
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#ga33247d5d1257d59e55647c3bb717db24">https://pcsclite.apdu.fr/api/group__API.html#ga33247d5d1257d59e55647c3bb717db24</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardgetstatuschangea">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardgetstatuschangea</a></p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          contextId
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          readerStates
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/SmartCardEmulation/#type-ReaderStateIn class="param-type">ReaderStateIn</a> ]</span></span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          timeout
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        <p>in milliseconds, if absent, it means &quot;infinite&quot;</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-listReadersRequested">
+          <span class="domain-dot">SmartCardEmulation.</span>listReadersRequested
+          
+          <a href="#event-listReadersRequested"
+             class="permalink"
+             data-slug="SmartCardEmulation.listReadersRequested"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when |SCardListReaders| is called.</p>
+<p>This maps to:
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#ga93b07815789b3cf2629d439ecf20f0d9">https://pcsclite.apdu.fr/api/group__API.html#ga93b07815789b3cf2629d439ecf20f0d9</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardlistreadersa">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardlistreadersa</a></p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          contextId
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-releaseContextRequested">
+          <span class="domain-dot">SmartCardEmulation.</span>releaseContextRequested
+          
+          <a href="#event-releaseContextRequested"
+             class="permalink"
+             data-slug="SmartCardEmulation.releaseContextRequested"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when |SCardReleaseContext| is called.</p>
+<p>This maps to:
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#ga6aabcba7744c5c9419fdd6404f73a934">https://pcsclite.apdu.fr/api/group__API.html#ga6aabcba7744c5c9419fdd6404f73a934</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardreleasecontext">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardreleasecontext</a></p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          contextId
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-setAttribRequested">
+          <span class="domain-dot">SmartCardEmulation.</span>setAttribRequested
+          
+          <a href="#event-setAttribRequested"
+             class="permalink"
+             data-slug="SmartCardEmulation.setAttribRequested"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when |SCardSetAttrib| is called.</p>
+<p>This maps to:
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#ga060f0038a4ddfd5dd2b8fadf3c3a2e4f">https://pcsclite.apdu.fr/api/group__API.html#ga060f0038a4ddfd5dd2b8fadf3c3a2e4f</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardsetattrib">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardsetattrib</a></p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          handle
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          attribId
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          data
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-statusRequested">
+          <span class="domain-dot">SmartCardEmulation.</span>statusRequested
+          
+          <a href="#event-statusRequested"
+             class="permalink"
+             data-slug="SmartCardEmulation.statusRequested"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when |SCardStatus| is called.</p>
+<p>This maps to:
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#gae49c3c894ad7ac12a5b896bde70d0382">https://pcsclite.apdu.fr/api/group__API.html#gae49c3c894ad7ac12a5b896bde70d0382</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardstatusa">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardstatusa</a></p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          handle
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-transmitRequested">
+          <span class="domain-dot">SmartCardEmulation.</span>transmitRequested
+          
+          <a href="#event-transmitRequested"
+             class="permalink"
+             data-slug="SmartCardEmulation.transmitRequested"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Fired when |SCardTransmit| is called.</p>
+<p>This maps to:
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__API.html#ga9a2d77242a271310269065e64633ab99">https://pcsclite.apdu.fr/api/group__API.html#ga9a2d77242a271310269065e64633ab99</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardtransmit">https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardtransmit</a></p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          requestId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          handle
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          data
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          protocol
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/SmartCardEmulation/#type-Protocol class="param-type">Protocol</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="types">Types</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ConnectionState">
+          <span class="domain-dot">SmartCardEmulation.</span>ConnectionState
+          
+          <a href="#type-ConnectionState"
+             class="permalink"
+             data-slug="SmartCardEmulation.ConnectionState"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Maps to |SCARD_*| connection state values.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>absent</code>, <code>present</code>, <code>swallowed</code>, <code>powered</code>, <code>negotiable</code>, <code>specific</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-Disposition">
+          <span class="domain-dot">SmartCardEmulation.</span>Disposition
+          
+          <a href="#type-Disposition"
+             class="permalink"
+             data-slug="SmartCardEmulation.Disposition"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Indicates what the reader should do with the card.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>leave-card</code>, <code>reset-card</code>, <code>unpower-card</code>, <code>eject-card</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-Protocol">
+          <span class="domain-dot">SmartCardEmulation.</span>Protocol
+          
+          <a href="#type-Protocol"
+             class="permalink"
+             data-slug="SmartCardEmulation.Protocol"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Maps to the |SCARD_PROTOCOL_*| values.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>t0</code>, <code>t1</code>, <code>raw</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ProtocolSet">
+          <span class="domain-dot">SmartCardEmulation.</span>ProtocolSet
+          
+          <a href="#type-ProtocolSet"
+             class="permalink"
+             data-slug="SmartCardEmulation.ProtocolSet"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Maps to the |SCARD_PROTOCOL_*| flags.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          t0
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          t1
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          raw
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ReaderStateFlags">
+          <span class="domain-dot">SmartCardEmulation.</span>ReaderStateFlags
+          
+          <a href="#type-ReaderStateFlags"
+             class="permalink"
+             data-slug="SmartCardEmulation.ReaderStateFlags"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Maps to the |SCARD_STATE_*| flags.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          unaware
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          ignore
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          changed
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          unknown
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          unavailable
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          empty
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          present
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          exclusive
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          inuse
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          mute
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          unpowered
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ReaderStateIn">
+          <span class="domain-dot">SmartCardEmulation.</span>ReaderStateIn
+          
+          <a href="#type-ReaderStateIn"
+             class="permalink"
+             data-slug="SmartCardEmulation.ReaderStateIn"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          reader
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          currentState
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/SmartCardEmulation/#type-ReaderStateFlags class="param-type">ReaderStateFlags</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          currentInsertionCount
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ReaderStateOut">
+          <span class="domain-dot">SmartCardEmulation.</span>ReaderStateOut
+          
+          <a href="#type-ReaderStateOut"
+             class="permalink"
+             data-slug="SmartCardEmulation.ReaderStateOut"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          reader
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          eventState
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/SmartCardEmulation/#type-ReaderStateFlags class="param-type">ReaderStateFlags</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          eventCount
+        </dt>
+        <dd>
+          <span class="param-type">integer</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          atr
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ResultCode">
+          <span class="domain-dot">SmartCardEmulation.</span>ResultCode
+          
+          <a href="#type-ResultCode"
+             class="permalink"
+             data-slug="SmartCardEmulation.ResultCode"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Indicates the PC/SC error code.</p>
+<p>This maps to:
+PC/SC Lite: <a href="https://pcsclite.apdu.fr/api/group__ErrorCodes.html">https://pcsclite.apdu.fr/api/group__ErrorCodes.html</a>
+Microsoft: <a href="https://learn.microsoft.com/en-us/windows/win32/secauthn/authentication-return-values">https://learn.microsoft.com/en-us/windows/win32/secauthn/authentication-return-values</a></p>
+
+        
+      <div class="enum-container">Allowed Values: <code>success</code>, <code>removed-card</code>, <code>reset-card</code>, <code>unpowered-card</code>, <code>unresponsive-card</code>, <code>unsupported-card</code>, <code>reader-unavailable</code>, <code>sharing-violation</code>, <code>not-transacted</code>, <code>no-smartcard</code>, <code>proto-mismatch</code>, <code>system-cancelled</code>, <code>not-ready</code>, <code>cancelled</code>, <code>insufficient-buffer</code>, <code>invalid-handle</code>, <code>invalid-parameter</code>, <code>invalid-value</code>, <code>no-memory</code>, <code>timeout</code>, <code>unknown-reader</code>, <code>unsupported-feature</code>, <code>no-readers-available</code>, <code>service-stopped</code>, <code>no-service</code>, <code>comm-error</code>, <code>internal-error</code>, <code>server-too-busy</code>, <code>unexpected</code>, <code>shutdown</code>, <code>unknown-card</code>, <code>unknown</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-ShareMode">
+          <span class="domain-dot">SmartCardEmulation.</span>ShareMode
+          
+          <a href="#type-ShareMode"
+             class="permalink"
+             data-slug="SmartCardEmulation.ShareMode"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Maps to the |SCARD_SHARE_*| values.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>shared</code>, <code>exclusive</code>, <code>direct</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      </div>
+    
+    </div>
+    
+      </div>
+    </section>
+  </main>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60854461-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
