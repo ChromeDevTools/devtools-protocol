@@ -1,7 +1,31 @@
 
 
+## Roll protocol to r1591961 — _2026-02-28T04:43:52.000Z_
+######  Diff: [`c217062...de27541`](https://github.com/ChromeDevTools/devtools-protocol/compare/c217062...de27541)
+
+```diff
+@@ domains/Network.pdl:166 @@ domain Network
+       High
+       VeryHigh
+ 
+-  # The render blocking behavior of a resource request.
++  # The render-blocking behavior of a resource request.
+   experimental type RenderBlockingBehavior extends string
+     enum
+       Blocking
+@@ -1477,7 +1477,7 @@ domain Network
+       optional Page.FrameId frameId
+       # Whether the request is initiated by a user gesture. Defaults to false.
+       optional boolean hasUserGesture
+-      # The render blocking behavior of the request.
++      # The render-blocking behavior of the request.
+       experimental optional RenderBlockingBehavior renderBlockingBehavior
+ 
+   # Fired when resource loading priority is changed
+```
+
 ## Roll protocol to r1591319 — _2026-02-27T04:56:42.000Z_
-######  Diff: [`d5ffdaf...029bb84`](https://github.com/ChromeDevTools/devtools-protocol/compare/d5ffdaf...029bb84)
+######  Diff: [`d5ffdaf...c217062`](https://github.com/ChromeDevTools/devtools-protocol/compare/d5ffdaf...c217062)
 
 ```diff
 @@ domains/Emulation.pdl:617 @@ domain Emulation
@@ -42286,41 +42310,4 @@ index 0dbdc01d..7a3c772c 100644
        optional LowTextContrastIssueDetails lowTextContrastIssueDetails
        optional CorsIssueDetails corsIssueDetails
        optional AttributionReportingIssueDetails attributionReportingIssueDetails
-```
-
-## Roll protocol to r1139346 — _2023-05-04T04:26:49.000Z_
-######  Diff: [`5b4da4d...3a37ac7`](https://github.com/ChromeDevTools/devtools-protocol/compare/5b4da4d...3a37ac7)
-
-```diff
-@@ browser_protocol.pdl:944 @@ experimental domain Audits
-     parameters
-       InspectorIssue issue
- 
-+# Defines commands and events for Autofill.
-+experimental domain Autofill
-+  type CreditCard extends object
-+    properties
-+      # 16-digit credit card number.
-+      string number
-+      # Name of the credit card owner.
-+      string name
-+      # 2-digit expiry month.
-+      string expiryMonth
-+      # 4-digit expiry year.
-+      string expiryYear
-+      # 3-digit card verification code.
-+      string cvc
-+
-+  # Trigger autofill on a form identified by the fieldId.
-+  # If the field and related form cannot be autofilled, returns an error.
-+  command trigger
-+    parameters
-+      # Identifies a field that serves as an anchor for autofill.
-+      DOM.BackendNodeId fieldId
-+      # Credit card information to fill out the form. Credit card data is not saved.
-+      CreditCard card
-+
- # Defines events for background web platform features.
- experimental domain BackgroundService
-   # The Background Service that will be associated with the commands/events.
 ```

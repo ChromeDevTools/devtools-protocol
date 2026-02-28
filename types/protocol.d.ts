@@ -12424,7 +12424,7 @@ export namespace Protocol {
         export type ResourcePriority = ('VeryLow' | 'Low' | 'Medium' | 'High' | 'VeryHigh');
 
         /**
-         * The render blocking behavior of a resource request.
+         * The render-blocking behavior of a resource request.
          * @experimental
          */
         export type RenderBlockingBehavior = ('Blocking' | 'InBodyParserBlocking' | 'NonBlocking' | 'NonBlockingDynamic' | 'PotentiallyBlocking');
@@ -14822,7 +14822,7 @@ export namespace Protocol {
              */
             hasUserGesture?: boolean;
             /**
-             * The render blocking behavior of the request.
+             * The render-blocking behavior of the request.
              * @experimental
              */
             renderBlockingBehavior?: RenderBlockingBehavior;
