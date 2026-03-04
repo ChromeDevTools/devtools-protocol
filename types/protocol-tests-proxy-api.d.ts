@@ -2523,6 +2523,12 @@ export namespace ProtocolTestsProxyApi {
         addScreen(params: Protocol.Emulation.AddScreenRequest): Promise<{id: number, result: Protocol.Emulation.AddScreenResponse, sessionId: string}>;
 
         /**
+         * Updates specified screen parameters. Only supported in headless mode.
+         * @experimental
+         */
+        updateScreen(params: Protocol.Emulation.UpdateScreenRequest): Promise<{id: number, result: Protocol.Emulation.UpdateScreenResponse, sessionId: string}>;
+
+        /**
          * Remove screen from the device. Only supported in headless mode.
          * @experimental
          */
@@ -2544,6 +2550,16 @@ export namespace ProtocolTestsProxyApi {
         onVirtualTimeBudgetExpired(listener: () => void): void;
         offVirtualTimeBudgetExpired(listener: () => void): void;
         onceVirtualTimeBudgetExpired(eventMatcher?: () => boolean): Promise<void>;
+
+        /**
+         * Fired when a page calls screen.orientation.lock() or screen.orientation.unlock()
+         * while device emulation is enabled. This allows the DevTools frontend to update the
+         * emulated device orientation accordingly.
+         * @experimental
+         */
+        onScreenOrientationLockChanged(listener: (event: { params: Protocol.Emulation.ScreenOrientationLockChangedEvent }) => void): void;
+        offScreenOrientationLockChanged(listener: (event: { params: Protocol.Emulation.ScreenOrientationLockChangedEvent }) => void): void;
+        onceScreenOrientationLockChanged(eventMatcher?: (event: { params: Protocol.Emulation.ScreenOrientationLockChangedEvent }) => boolean): Promise<{ params: Protocol.Emulation.ScreenOrientationLockChangedEvent }>;
 
     }
 

@@ -1,7 +1,78 @@
 
 
+## Roll protocol to r1593706 — _2026-03-04T04:52:43.000Z_
+######  Diff: [`58bb362...07204e4`](https://github.com/ChromeDevTools/devtools-protocol/compare/58bb362...07204e4)
+
+```diff
+@@ domains/Emulation.pdl:306 @@ domain Emulation
+         # classic (occupying space within the layout) or overlay, depending
+         # on the platform. Note: if `mobile` is `true`, the default scrollbar type is `overlay`.
+         default
++      # If set to true, enables screen orientation lock emulation, which
++      # intercepts screen.orientation.lock() calls from the page and reports
++      # orientation changes via screenOrientationLockChanged events. This is
++      # useful for emulating mobile device orientation lock behavior in
++      # responsive design mode.
++      experimental optional boolean screenOrientationLockEmulation
+ 
+   # Start reporting the given posture value to the Device Posture API.
+   # This override can also be set in setDeviceMetricsOverride().
+@@ -530,6 +536,16 @@ domain Emulation
+   # Notification sent after the virtual time budget for the current VirtualTimePolicy has run out.
+   experimental event virtualTimeBudgetExpired
+ 
++  # Fired when a page calls screen.orientation.lock() or screen.orientation.unlock()
++  # while device emulation is enabled. This allows the DevTools frontend to update the
++  # emulated device orientation accordingly.
++  experimental event screenOrientationLockChanged
++    parameters
++      # Whether the screen orientation is currently locked.
++      boolean locked
++      # The orientation lock type requested by the page. Only set when locked is true.
++      optional ScreenOrientation orientation
++
+   # Enum of image types that can be disabled.
+   experimental type DisabledImageType extends string
+     enum
+@@ -613,6 +629,34 @@ domain Emulation
+     returns
+       ScreenInfo screenInfo
+ 
++  # Updates specified screen parameters. Only supported in headless mode.
++  experimental command updateScreen
++    parameters
++      # Target screen identifier.
++      ScreenId screenId
++      # Offset of the left edge of the screen in pixels.
++      optional integer left
++      # Offset of the top edge of the screen in pixels.
++      optional integer top
++      # The width of the screen in pixels.
++      optional integer width
++      # The height of the screen in pixels.
++      optional integer height
++      # Specifies the screen's work area.
++      optional WorkAreaInsets workAreaInsets
++      # Specifies the screen's device pixel ratio.
++      optional number devicePixelRatio
++      # Specifies the screen's rotation angle. Available values are 0, 90, 180 and 270.
++      optional integer rotation
++      # Specifies the screen's color depth in bits.
++      optional integer colorDepth
++      # Specifies the descriptive label for the screen.
++      optional string label
++      # Indicates whether the screen is internal to the device or external, attached to the device. Default is false.
++      optional boolean isInternal
++    returns
++      ScreenInfo screenInfo
++
+   # Remove screen from the device. Only supported in headless mode.
+   experimental command removeScreen
+     parameters
+```
+
 ## Roll protocol to r1591961 — _2026-02-28T04:43:52.000Z_
-######  Diff: [`c217062...de27541`](https://github.com/ChromeDevTools/devtools-protocol/compare/c217062...de27541)
+######  Diff: [`c217062...58bb362`](https://github.com/ChromeDevTools/devtools-protocol/compare/c217062...58bb362)
 
 ```diff
 @@ domains/Network.pdl:166 @@ domain Network
@@ -42262,52 +42333,4 @@ index 0dbdc01d..7a3c772c 100644
      returns
        # Evaluation result.
        RemoteObject result
-```
-
-## Roll protocol to r1139932 — _2023-05-05T04:26:32.000Z_
-######  Diff: [`3a37ac7...8469893`](https://github.com/ChromeDevTools/devtools-protocol/compare/3a37ac7...8469893)
-
-```diff
-@@ browser_protocol.pdl:658 @@ experimental domain Audits
-       boolean isWarning
-       SharedArrayBufferIssueType type
- 
--  type TwaQualityEnforcementViolationType extends string
--    enum
--      kHttpError
--      kUnavailableOffline
--      kDigitalAssetLinks
--
--  type TrustedWebActivityIssueDetails extends object
--    properties
--      # The url that triggers the violation.
--      string url
--      TwaQualityEnforcementViolationType violationType
--      optional integer httpStatusCode
--      # The package name of the Trusted Web Activity client app. This field is
--      # only used when violation type is kDigitalAssetLinks.
--      optional string packageName
--      # The signature of the Trusted Web Activity client app. This field is only
--      # used when violation type is kDigitalAssetLinks.
--      optional string signature
--
-   type LowTextContrastIssueDetails extends object
-     properties
-       DOM.BackendNodeId violatingNodeId
-@@ -855,7 +836,6 @@ experimental domain Audits
-       HeavyAdIssue
-       ContentSecurityPolicyIssue
-       SharedArrayBufferIssue
--      TrustedWebActivityIssue
-       LowTextContrastIssue
-       CorsIssue
-       AttributionReportingIssue
-@@ -878,7 +858,6 @@ experimental domain Audits
-       optional HeavyAdIssueDetails heavyAdIssueDetails
-       optional ContentSecurityPolicyIssueDetails contentSecurityPolicyIssueDetails
-       optional SharedArrayBufferIssueDetails sharedArrayBufferIssueDetails
--      optional TrustedWebActivityIssueDetails twaQualityEnforcementDetails
-       optional LowTextContrastIssueDetails lowTextContrastIssueDetails
-       optional CorsIssueDetails corsIssueDetails
-       optional AttributionReportingIssueDetails attributionReportingIssueDetails
 ```
