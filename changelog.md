@@ -1,7 +1,89 @@
 
 
+## Roll protocol to r1594462 — _2026-03-05T04:56:16.000Z_
+######  Diff: [`b888df9...832b3b1`](https://github.com/ChromeDevTools/devtools-protocol/compare/b888df9...832b3b1)
+
+```diff
+@@ domains/Audits.pdl:438 @@ experimental domain Audits
+       AutofillAndManualTextPolicyControlledFeaturesInfo
+       AutofillPolicyControlledFeatureInfo
+       ManualTextPolicyControlledFeatureInfo
++      FormModelContextParameterMissingTitleAndDescription
+ 
+   # Depending on the concrete errorType, different properties are set.
+   type GenericIssueDetails extends object
+diff --git a/pdl/domains/CSS.pdl b/pdl/domains/CSS.pdl
+index 91437769..1fc28282 100644
+--- a/pdl/domains/CSS.pdl
++++ b/pdl/domains/CSS.pdl
+@@ -185,6 +185,9 @@ experimental domain CSS
+       # @starting-style CSS at-rule array.
+       # The array enumerates @starting-style at-rules starting with the innermost one, going outwards.
+       experimental optional array of CSSStartingStyle startingStyles
++      # @navigation CSS at-rule array.
++      # The array enumerates @navigation at-rules starting with the innermost one, going outwards.
++      experimental optional array of CSSNavigation navigations
+ 
+   # Enum indicating the type of a CSS rule, used to represent the order of a style rule's ancestors.
+   # This list only contains rule types that are collected during the ancestor rule collection.
+@@ -197,6 +200,7 @@ experimental domain CSS
+       ScopeRule
+       StyleRule
+       StartingStyleRule
++      NavigationRule
+ 
+   # CSS coverage information.
+   type RuleUsage extends object
+@@ -364,6 +368,19 @@ experimental domain CSS
+       # Identifier of the stylesheet containing this object (if exists).
+       optional DOM.StyleSheetId styleSheetId
+ 
++  # CSS Navigation at-rule descriptor.
++  experimental type CSSNavigation extends object
++    properties
++      # Navigation rule text.
++      string text
++      # Whether the navigation condition is satisfied.
++      optional boolean active
++      # The associated rule header range in the enclosing stylesheet (if
++      # available).
++      optional SourceRange range
++      # Identifier of the stylesheet containing this object (if exists).
++      optional DOM.StyleSheetId styleSheetId
++
+   # CSS Scope at-rule descriptor.
+   experimental type CSSScope extends object
+     properties
+@@ -556,6 +573,8 @@ experimental domain CSS
+       optional CSSContainerQuery containerQueries
+       # @supports CSS at-rule condition. Only one type of condition should be set.
+       optional CSSSupports supports
++      # @navigation condition. Only one type of condition should be set.
++      optional CSSNavigation navigation
+       # Block body.
+       array of CSSFunctionNode children
+       # The condition text.
+@@ -924,6 +943,16 @@ experimental domain CSS
+       # The resulting CSS Supports rule after modification.
+       CSSSupports supports
+ 
++  # Modifies the expression of a navigation at-rule.
++  experimental command setNavigationText
++    parameters
++      DOM.StyleSheetId styleSheetId
++      SourceRange range
++      string text
++    returns
++      # The resulting CSS Navigation rule after modification.
++      CSSNavigation navigation
++
+   # Modifies the expression of a scope at-rule.
+   experimental command setScopeText
+     parameters
+```
+
 ## Roll protocol to r1593706 — _2026-03-04T04:52:43.000Z_
-######  Diff: [`58bb362...07204e4`](https://github.com/ChromeDevTools/devtools-protocol/compare/58bb362...07204e4)
+######  Diff: [`58bb362...b888df9`](https://github.com/ChromeDevTools/devtools-protocol/compare/58bb362...b888df9)
 
 ```diff
 @@ domains/Emulation.pdl:306 @@ domain Emulation
@@ -42239,98 +42321,4 @@ index 0dbdc01d..7a3c772c 100644
        array of Account accounts
        # These exist primarily so that the caller can verify the
        # RP context was used appropriately.
-```
-
-## Roll protocol to r1140464 — _2023-05-06T04:26:18.000Z_
-######  Diff: [`8469893...1e3d3e0`](https://github.com/ChromeDevTools/devtools-protocol/compare/8469893...1e3d3e0)
-
-```diff
-@@ js_protocol.pdl:1014 @@ domain Runtime
-   # Unique script identifier.
-   type ScriptId extends string
- 
--  # Represents the value serialiazed by the WebDriver BiDi specification
--  # https://goo.gle/browser-automation-deepserialization.
-+  # Represents options for serialization. Overrides `generatePreview`, `returnByValue` and
-+  # `generateWebDriverValue`.
-+  type SerializationOptions extends object
-+    properties
-+      enum serialization
-+        # Whether the result should be deep-serialized. The result is put into
-+        # `deepSerializedValue` and `ObjectId` is provided.
-+        deep
-+        # Whether the result is expected to be a JSON object which should be sent by value.
-+        # The result is put either into `value` or into `unserializableValue`. Synonym of
-+        # `returnByValue: true`. Overrides `returnByValue`.
-+        json
-+        # Only remote object id is put in the result. Same bahaviour as if no
-+        # `serializationOptions`, `generatePreview`, `returnByValue` nor `generateWebDriverValue`
-+        # are provided.
-+        idOnly
-+
-+      # Deep serialization depth. Default is full depth. Respected only in `deep` serialization mode.
-+      optional integer maxDepth
-+
-+  # Represents deep serialized value.
-   type DeepSerializedValue extends object
-     properties
-       enum type
-@@ -1101,8 +1120,10 @@ domain Runtime
-       optional UnserializableValue unserializableValue
-       # String representation of the object.
-       optional string description
--      # WebDriver BiDi representation of the value.
--      experimental optional DeepSerializedValue webDriverValue
-+      # Deprecated. Use `deepSerializedValue` instead. WebDriver BiDi representation of the value.
-+      deprecated optional DeepSerializedValue webDriverValue
-+      # Deep serialized value.
-+      experimental optional DeepSerializedValue deepSerializedValue
-       # Unique object identifier (for non-primitive values).
-       optional RemoteObjectId objectId
-       # Preview containing abbreviated property values. Specified for `object` type values only.
-@@ -1392,6 +1413,7 @@ domain Runtime
-       # execution. Overrides `setPauseOnException` state.
-       optional boolean silent
-       # Whether the result is expected to be a JSON object which should be sent by value.
-+      # Can be overriden by `serializationOptions`.
-       optional boolean returnByValue
-       # Whether preview should be generated for the result.
-       experimental optional boolean generatePreview
-@@ -1415,10 +1437,15 @@ domain Runtime
-       # boundaries).
-       # This is mutually exclusive with `executionContextId`.
-       experimental optional string uniqueContextId
-+      # Deprecated. Use `serializationOptions: {serialization:"deep"}` instead.
-       # Whether the result should contain `webDriverValue`, serialized according to
--      # https://goo.gle/browser-automation-deepserialization. This is mutually
--      # exclusive with `returnByValue`, but resulting `objectId` is still provided.
--      experimental optional boolean generateWebDriverValue
-+      # https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but
-+      # resulting `objectId` is still provided.
-+      deprecated optional boolean generateWebDriverValue
-+      # Specifies the result serialization. If provided, overrides
-+      # `returnByValue` and `generateWebDriverValue`.
-+      experimental optional SerializationOptions serializationOptions
-+
-     returns
-       # Call result.
-       RemoteObject result
-@@ -1504,8 +1531,15 @@ domain Runtime
-       # boundaries).
-       # This is mutually exclusive with `contextId`.
-       experimental optional string uniqueContextId
--      # Whether the result should be serialized according to https://goo.gle/browser-automation-deepserialization.
--      experimental optional boolean generateWebDriverValue
-+      # Deprecated. Use `serializationOptions: {serialization:"deep"}` instead.
-+      # Whether the result should contain `webDriverValue`, serialized
-+      # according to
-+      # https://w3c.github.io/webdriver-bidi. This is mutually exclusive with `returnByValue`, but
-+      # resulting `objectId` is still provided.
-+      deprecated optional boolean generateWebDriverValue
-+      # Specifies the result serialization. If provided, overrides
-+      # `returnByValue` and `generateWebDriverValue`.
-+      experimental optional SerializationOptions serializationOptions
-     returns
-       # Evaluation result.
-       RemoteObject result
 ```

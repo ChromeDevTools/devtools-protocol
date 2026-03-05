@@ -1357,6 +1357,12 @@ export namespace ProtocolProxyApi {
         setSupportsText(params: Protocol.CSS.SetSupportsTextRequest): Promise<Protocol.CSS.SetSupportsTextResponse>;
 
         /**
+         * Modifies the expression of a navigation at-rule.
+         * @experimental
+         */
+        setNavigationText(params: Protocol.CSS.SetNavigationTextRequest): Promise<Protocol.CSS.SetNavigationTextResponse>;
+
+        /**
          * Modifies the expression of a scope at-rule.
          * @experimental
          */

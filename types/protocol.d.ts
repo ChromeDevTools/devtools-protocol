@@ -3715,7 +3715,7 @@ export namespace Protocol {
             request: AffectedRequest;
         }
 
-        export type GenericIssueErrorType = ('FormLabelForNameError' | 'FormDuplicateIdForInputError' | 'FormInputWithNoLabelError' | 'FormAutocompleteAttributeEmptyError' | 'FormEmptyIdAndNameAttributesForInputError' | 'FormAriaLabelledByToNonExistingIdError' | 'FormInputAssignedAutocompleteValueToIdOrNameAttributeError' | 'FormLabelHasNeitherForNorNestedInputError' | 'FormLabelForMatchesNonExistingIdError' | 'FormInputHasWrongButWellIntendedAutocompleteValueError' | 'ResponseWasBlockedByORB' | 'NavigationEntryMarkedSkippable' | 'AutofillAndManualTextPolicyControlledFeaturesInfo' | 'AutofillPolicyControlledFeatureInfo' | 'ManualTextPolicyControlledFeatureInfo');
+        export type GenericIssueErrorType = ('FormLabelForNameError' | 'FormDuplicateIdForInputError' | 'FormInputWithNoLabelError' | 'FormAutocompleteAttributeEmptyError' | 'FormEmptyIdAndNameAttributesForInputError' | 'FormAriaLabelledByToNonExistingIdError' | 'FormInputAssignedAutocompleteValueToIdOrNameAttributeError' | 'FormLabelHasNeitherForNorNestedInputError' | 'FormLabelForMatchesNonExistingIdError' | 'FormInputHasWrongButWellIntendedAutocompleteValueError' | 'ResponseWasBlockedByORB' | 'NavigationEntryMarkedSkippable' | 'AutofillAndManualTextPolicyControlledFeaturesInfo' | 'AutofillPolicyControlledFeatureInfo' | 'ManualTextPolicyControlledFeatureInfo' | 'FormModelContextParameterMissingTitleAndDescription');
 
         /**
          * Depending on the concrete errorType, different properties are set.
@@ -5345,6 +5345,12 @@ export namespace Protocol {
              * @experimental
              */
             startingStyles?: CSSStartingStyle[];
+            /**
+             * @navigation CSS at-rule array.
+             * The array enumerates @navigation at-rules starting with the innermost one, going outwards.
+             * @experimental
+             */
+            navigations?: CSSNavigation[];
         }
 
         /**
@@ -5352,7 +5358,7 @@ export namespace Protocol {
          * This list only contains rule types that are collected during the ancestor rule collection.
          * @experimental
          */
-        export type CSSRuleType = ('MediaRule' | 'SupportsRule' | 'ContainerRule' | 'LayerRule' | 'ScopeRule' | 'StyleRule' | 'StartingStyleRule');
+        export type CSSRuleType = ('MediaRule' | 'SupportsRule' | 'ContainerRule' | 'LayerRule' | 'ScopeRule' | 'StyleRule' | 'StartingStyleRule' | 'NavigationRule');
 
         /**
          * CSS coverage information.
@@ -5642,6 +5648,30 @@ export namespace Protocol {
              * Whether the supports condition is satisfied.
              */
             active: boolean;
+            /**
+             * The associated rule header range in the enclosing stylesheet (if
+             * available).
+             */
+            range?: SourceRange;
+            /**
+             * Identifier of the stylesheet containing this object (if exists).
+             */
+            styleSheetId?: DOM.StyleSheetId;
+        }
+
+        /**
+         * CSS Navigation at-rule descriptor.
+         * @experimental
+         */
+        export interface CSSNavigation {
+            /**
+             * Navigation rule text.
+             */
+            text: string;
+            /**
+             * Whether the navigation condition is satisfied.
+             */
+            active?: boolean;
             /**
              * The associated rule header range in the enclosing stylesheet (if
              * available).
@@ -5990,6 +6020,10 @@ export namespace Protocol {
              * @supports CSS at-rule condition. Only one type of condition should be set.
              */
             supports?: CSSSupports;
+            /**
+             * @navigation condition. Only one type of condition should be set.
+             */
+            navigation?: CSSNavigation;
             /**
              * Block body.
              */
@@ -6481,6 +6515,19 @@ export namespace Protocol {
              * The resulting CSS Supports rule after modification.
              */
             supports: CSSSupports;
+        }
+
+        export interface SetNavigationTextRequest {
+            styleSheetId: DOM.StyleSheetId;
+            range: SourceRange;
+            text: string;
+        }
+
+        export interface SetNavigationTextResponse {
+            /**
+             * The resulting CSS Navigation rule after modification.
+             */
+            navigation: CSSNavigation;
         }
 
         export interface SetScopeTextRequest {
