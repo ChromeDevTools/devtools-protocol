@@ -844,12 +844,6 @@ export namespace ProtocolProxyApi {
         enable(): Promise<void>;
 
         /**
-         * Runs the contrast check for the target page. Found issues are reported
-         * using Audits.issueAdded event.
-         */
-        checkContrast(params: Protocol.Audits.CheckContrastRequest): Promise<void>;
-
-        /**
          * Runs the form issues check for the target page. Found issues are reported
          * using Audits.issueAdded event.
          */

@@ -1,7 +1,72 @@
 
 
+## Roll protocol to r1595872 — _2026-03-07T04:48:07.000Z_
+######  Diff: [`374f160...05d7571`](https://github.com/ChromeDevTools/devtools-protocol/compare/374f160...05d7571)
+
+```diff
+@@ domains/Audits.pdl:258 @@ experimental domain Audits
+       boolean isWarning
+       SharedArrayBufferIssueType type
+ 
+-  type LowTextContrastIssueDetails extends object
+-    properties
+-      DOM.BackendNodeId violatingNodeId
+-      string violatingNodeSelector
+-      number contrastRatio
+-      number thresholdAA
+-      number thresholdAAA
+-      string fontSize
+-      string fontWeight
+-
+   # Details for a CORS related issue, e.g. a warning or error related to
+   # CORS RFC1918 enforcement.
+   type CorsIssueDetails extends object
+@@ -744,7 +734,6 @@ experimental domain Audits
+       HeavyAdIssue
+       ContentSecurityPolicyIssue
+       SharedArrayBufferIssue
+-      LowTextContrastIssue
+       CorsIssue
+       AttributionReportingIssue
+       QuirksModeIssue
+@@ -781,7 +770,6 @@ experimental domain Audits
+       optional HeavyAdIssueDetails heavyAdIssueDetails
+       optional ContentSecurityPolicyIssueDetails contentSecurityPolicyIssueDetails
+       optional SharedArrayBufferIssueDetails sharedArrayBufferIssueDetails
+-      optional LowTextContrastIssueDetails lowTextContrastIssueDetails
+       optional CorsIssueDetails corsIssueDetails
+       optional AttributionReportingIssueDetails attributionReportingIssueDetails
+       optional QuirksModeIssueDetails quirksModeIssueDetails
+@@ -849,13 +837,6 @@ experimental domain Audits
+   # `issueAdded` event.
+   command enable
+ 
+-  # Runs the contrast check for the target page. Found issues are reported
+-  # using Audits.issueAdded event.
+-  command checkContrast
+-    parameters
+-      # Whether to report WCAG AAA level issues. Default is false.
+-      optional boolean reportAAA
+-
+   # Runs the form issues check for the target page. Found issues are reported
+   # using Audits.issueAdded event.
+   command checkFormsIssues
+diff --git a/pdl/domains/Page.pdl b/pdl/domains/Page.pdl
+index 59b5e038..76d6ed49 100644
+--- a/pdl/domains/Page.pdl
++++ b/pdl/domains/Page.pdl
+@@ -1537,6 +1537,7 @@ domain Page
+       BackForwardCacheDisabledForPrerender
+       UserAgentOverrideDiffers
+       ForegroundCacheLimit
++      ForwardCacheDisabled
+       BrowsingInstanceNotSwapped
+       BackForwardCacheDisabledForDelegate
+       UnloadHandlerExistsInMainFrame
+```
+
 ## Roll protocol to r1594462 — _2026-03-05T04:56:16.000Z_
-######  Diff: [`b888df9...832b3b1`](https://github.com/ChromeDevTools/devtools-protocol/compare/b888df9...832b3b1)
+######  Diff: [`b888df9...374f160`](https://github.com/ChromeDevTools/devtools-protocol/compare/b888df9...374f160)
 
 ```diff
 @@ domains/Audits.pdl:438 @@ experimental domain Audits
@@ -42294,31 +42359,4 @@ index 0dbdc01d..7a3c772c 100644
  
    # Fired when a prerender attempt is updated.
    event prerenderStatusUpdated
-```
-
-## Roll protocol to r1141857 — _2023-05-10T04:26:34.000Z_
-######  Diff: [`1e3d3e0...53a0f38`](https://github.com/ChromeDevTools/devtools-protocol/compare/1e3d3e0...53a0f38)
-
-```diff
-@@ browser_protocol.pdl:11068 @@ experimental domain FedCm
-       SignIn
-       SignUp
- 
-+  # Whether the dialog shown is an account chooser or an auto re-authentication dialog.
-+  type DialogType extends string
-+    enum
-+      AccountChooser
-+      AutoReauthn
-+
-   # Corresponds to IdentityRequestAccount
-   type Account extends object
-     properties
-@@ -11086,6 +11092,7 @@ experimental domain FedCm
-   event dialogShown
-     parameters
-       string dialogId
-+      DialogType dialogType
-       array of Account accounts
-       # These exist primarily so that the caller can verify the
-       # RP context was used appropriately.
 ```
