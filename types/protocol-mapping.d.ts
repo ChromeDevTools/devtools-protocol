@@ -1114,6 +1114,14 @@ export namespace ProtocolMapping {
          * Triggered when a credential is used in a webauthn assertion.
          */
         'WebAuthn.credentialAsserted': [Protocol.WebAuthn.CredentialAssertedEvent];
+        /**
+         * Event fired when new tools are added.
+         */
+        'WebMCP.toolsAdded': [Protocol.WebMCP.ToolsAddedEvent];
+        /**
+         * Event fired when tools are removed.
+         */
+        'WebMCP.toolsRemoved': [Protocol.WebMCP.ToolsRemovedEvent];
     }
 
     export interface Commands {
@@ -6316,6 +6324,14 @@ export namespace ProtocolMapping {
          */
         'WebAuthn.setCredentialProperties': {
             paramsType: [Protocol.WebAuthn.SetCredentialPropertiesRequest];
+            returnType: void;
+        };
+        /**
+         * Enables the WebMCP domain, allowing events to be sent. Enabling the domain will trigger a toolsAdded event for
+         * all currently registered tools.
+         */
+        'WebMCP.enable': {
+            paramsType: [];
             returnType: void;
         };
     }

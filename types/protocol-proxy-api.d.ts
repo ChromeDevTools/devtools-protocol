@@ -122,6 +122,8 @@ export namespace ProtocolProxyApi {
 
         WebAuthn: WebAuthnApi;
 
+        WebMCP: WebMCPApi;
+
     }
 
 
@@ -5493,6 +5495,25 @@ export namespace ProtocolProxyApi {
          * Triggered when a credential is used in a webauthn assertion.
          */
         on(event: 'credentialAsserted', listener: (params: Protocol.WebAuthn.CredentialAssertedEvent) => void): void;
+
+    }
+
+    export interface WebMCPApi {
+        /**
+         * Enables the WebMCP domain, allowing events to be sent. Enabling the domain will trigger a toolsAdded event for
+         * all currently registered tools.
+         */
+        enable(): Promise<void>;
+
+        /**
+         * Event fired when new tools are added.
+         */
+        on(event: 'toolsAdded', listener: (params: Protocol.WebMCP.ToolsAddedEvent) => void): void;
+
+        /**
+         * Event fired when tools are removed.
+         */
+        on(event: 'toolsRemoved', listener: (params: Protocol.WebMCP.ToolsRemovedEvent) => void): void;
 
     }
 }

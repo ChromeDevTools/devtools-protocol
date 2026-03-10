@@ -22326,6 +22326,80 @@ export namespace Protocol {
             credential: Credential;
         }
     }
+
+    /**
+     * @experimental
+     */
+    export namespace WebMCP {
+
+        /**
+         * Tool annotations
+         */
+        export interface Annotation {
+            /**
+             * A hint indicating that the tool does not modify any state.
+             */
+            readOnly?: boolean;
+            /**
+             * If the declarative tool was declared with the autosubmit attribute.
+             */
+            autosubmit?: boolean;
+        }
+
+        /**
+         * Definition of a tool that can be invoked.
+         */
+        export interface Tool {
+            /**
+             * Tool name.
+             */
+            name: string;
+            /**
+             * Tool description.
+             */
+            description: string;
+            /**
+             * Schema for the tool's input parameters.
+             */
+            inputSchema?: any;
+            /**
+             * Optional annotations for the tool.
+             */
+            annotations?: Annotation;
+            /**
+             * Frame identifier associated with the tool registration.
+             */
+            frameId: Page.FrameId;
+            /**
+             * Optional node ID for declarative tools.
+             */
+            backendNodeId?: DOM.BackendNodeId;
+            /**
+             * The stack trace at the time of the registration.
+             */
+            stackTrace?: Runtime.StackTrace;
+        }
+
+        /**
+         * Event fired when new tools are added.
+         */
+        export interface ToolsAddedEvent {
+            /**
+             * Array of tools that were added.
+             */
+            tools: Tool[];
+        }
+
+        /**
+         * Event fired when tools are removed.
+         */
+        export interface ToolsRemovedEvent {
+            /**
+             * Array of tools that were removed.
+             */
+            tools: Tool[];
+        }
+    }
 }
 
 export default Protocol;

@@ -122,6 +122,8 @@ export namespace ProtocolTestsProxyApi {
 
         WebAuthn: WebAuthnApi;
 
+        WebMCP: WebMCPApi;
+
     }
 
 
@@ -5967,6 +5969,29 @@ export namespace ProtocolTestsProxyApi {
         onCredentialAsserted(listener: (event: { params: Protocol.WebAuthn.CredentialAssertedEvent }) => void): void;
         offCredentialAsserted(listener: (event: { params: Protocol.WebAuthn.CredentialAssertedEvent }) => void): void;
         onceCredentialAsserted(eventMatcher?: (event: { params: Protocol.WebAuthn.CredentialAssertedEvent }) => boolean): Promise<{ params: Protocol.WebAuthn.CredentialAssertedEvent }>;
+
+    }
+
+    export interface WebMCPApi {
+        /**
+         * Enables the WebMCP domain, allowing events to be sent. Enabling the domain will trigger a toolsAdded event for
+         * all currently registered tools.
+         */
+        enable(): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
+         * Event fired when new tools are added.
+         */
+        onToolsAdded(listener: (event: { params: Protocol.WebMCP.ToolsAddedEvent }) => void): void;
+        offToolsAdded(listener: (event: { params: Protocol.WebMCP.ToolsAddedEvent }) => void): void;
+        onceToolsAdded(eventMatcher?: (event: { params: Protocol.WebMCP.ToolsAddedEvent }) => boolean): Promise<{ params: Protocol.WebMCP.ToolsAddedEvent }>;
+
+        /**
+         * Event fired when tools are removed.
+         */
+        onToolsRemoved(listener: (event: { params: Protocol.WebMCP.ToolsRemovedEvent }) => void): void;
+        offToolsRemoved(listener: (event: { params: Protocol.WebMCP.ToolsRemovedEvent }) => void): void;
+        onceToolsRemoved(eventMatcher?: (event: { params: Protocol.WebMCP.ToolsRemovedEvent }) => boolean): Promise<{ params: Protocol.WebMCP.ToolsRemovedEvent }>;
 
     }
 }

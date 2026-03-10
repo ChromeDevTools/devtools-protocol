@@ -1,7 +1,18 @@
 
 
+## Roll protocol to r1596832 — _2026-03-10T04:53:52.000Z_
+######  Diff: [`50eddc4...734ff67`](https://github.com/ChromeDevTools/devtools-protocol/compare/50eddc4...734ff67)
+
+```diff
+@@ browser_protocol.pdl:56 @@ include domains/Tethering.pdl
+ include domains/Tracing.pdl
+ include domains/WebAudio.pdl
+ include domains/WebAuthn.pdl
++include domains/WebMCP.pdl
+```
+
 ## Roll protocol to r1595872 — _2026-03-07T04:48:07.000Z_
-######  Diff: [`374f160...05d7571`](https://github.com/ChromeDevTools/devtools-protocol/compare/374f160...05d7571)
+######  Diff: [`374f160...50eddc4`](https://github.com/ChromeDevTools/devtools-protocol/compare/374f160...50eddc4)
 
 ```diff
 @@ domains/Audits.pdl:258 @@ experimental domain Audits
@@ -42290,73 +42301,4 @@ index 0dbdc01d..7a3c772c 100644
 +      optional Page.FrameId frameId
        # Credit card information to fill out the form. Credit card data is not saved.
        CreditCard card
-```
-
-## Roll protocol to r1143632 — _2023-05-13T04:26:23.000Z_
-######  Diff: [`53a0f38...3c6f201`](https://github.com/ChromeDevTools/devtools-protocol/compare/53a0f38...3c6f201)
-
-```diff
-@@ browser_protocol.pdl:10996 @@ experimental domain Preload
-       SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation
-       MemoryPressureOnTrigger
-       MemoryPressureAfterTriggered
-+      SpeculationRuleRemoved
-+      TriggerPageNavigated
-+      OtherPrerenderedPageActivated
- 
-   # Fired when a prerender attempt is completed.
-   event prerenderAttemptCompleted
-@@ -11035,6 +11038,44 @@ experimental domain Preload
-       # PreloadingTriggeringOutcome which not used by prefetch nor prerender.
-       NotSupported
- 
-+  # TODO(https://crbug.com/1384419): revisit the list of PrefetchStatus and
-+  # filter out the ones that aren't necessary to the developers.
-+  type PrefetchStatus extends string
-+    enum
-+      # Prefetch is not disabled by PrefetchHeldback.
-+      PrefetchAllowed
-+      PrefetchFailedIneligibleRedirect
-+      PrefetchFailedInvalidRedirect
-+      PrefetchFailedMIMENotSupported
-+      PrefetchFailedNetError
-+      PrefetchFailedNon2XX
-+      PrefetchFailedPerPageLimitExceeded
-+      PrefetchHeldback
-+      # A previous prefetch to the origin got a HTTP 503 response with an
-+      # Retry-After header that has no elapsed yet.
-+      PrefetchIneligibleRetryAfter
-+      PrefetchIsPrivacyDecoy
-+      PrefetchIsStale
-+      PrefetchNotEligibleBrowserContextOffTheRecord
-+      PrefetchNotEligibleDataSaverEnabled
-+      PrefetchNotEligibleExistingProxy
-+      PrefetchNotEligibleHostIsNonUnique
-+      PrefetchNotEligibleNonDefaultStoragePartition
-+      PrefetchNotEligibleSameSiteCrossOriginPrefetchRequiredProxy
-+      PrefetchNotEligibleSchemeIsNotHttps
-+      PrefetchNotEligibleUserHasCookies
-+      PrefetchNotEligibleUserHasServiceWorker
-+      PrefetchNotFinishedInTime
-+      PrefetchNotStarted
-+      PrefetchNotUsedCookiesChanged
-+      PrefetchProxyNotAvailable
-+      # The response of the prefetch is used for the next navigation. This is
-+      # the final successful state.
-+      PrefetchResponseUsed
-+      # The prefetch finished successfully but was never used.
-+      PrefetchSuccessfulButNotUsed
-+      PrefetchNotUsedProbeFailed
-+
-   # Fired when a prefetch attempt is updated.
-   event prefetchStatusUpdated
-     parameters
-@@ -11043,6 +11084,7 @@ experimental domain Preload
-       Page.FrameId initiatingFrameId
-       string prefetchUrl
-       PreloadingStatus status
-+      PrefetchStatus prefetchStatus
- 
-   # Fired when a prerender attempt is updated.
-   event prerenderStatusUpdated
 ```
