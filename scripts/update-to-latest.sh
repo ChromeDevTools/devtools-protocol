@@ -61,7 +61,7 @@ if ! git diff --no-ext-diff --quiet --exit-code; then
 	git config user.name 'DevTools Bot'
 	git config user.email '24444246+devtools-bot@users.noreply.github.com'
 
-  # if new Domain is added include it in the tracked files
+	# if new Domain is added include it in the tracked files
 	git add *.pdl
 	# commit so we can use the new commit in the changelog
 	git commit --all -m "Roll protocol to r$commit_rev"
