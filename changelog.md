@@ -1,7 +1,605 @@
 
 
+## Roll protocol to r1601035 — _2026-03-18T05:02:54.000Z_
+######  Diff: [`0c3ac05...4a35984`](https://github.com/ChromeDevTools/devtools-protocol/compare/0c3ac05...4a35984)
+
+```diff
+@@ domains/Audits.pdl:688 @@ experimental domain Audits
+       # Used for messages about activation disabled reason
+       optional string disableReason
+ 
+-  # Metadata about the ad script that was on the stack that caused the current
+-  # script in the `AdAncestry` to be considered ad related.
+-  type AdScriptIdentifier extends object
+-    properties
+-      # The script's v8 identifier.
+-      Runtime.ScriptId scriptId
+-      # v8's debugging id for the v8::Context.
+-      Runtime.UniqueDebuggerId debuggerId
+-      # The script's url (or generated name based on id if inline script).
+-      string name
+-
+-  # Providence about how an ad script was determined to be such. It is an ad
+-  # because its url matched a filterlist rule, or because some other ad script
+-  # was on the stack when this script was loaded.
+-  type AdAncestry extends object
+-    properties
+-      # The ad-script in the stack when the offending script was loaded. This is
+-      # recursive down to the root script that was tagged due to the filterlist
+-      # rule.
+-      array of AdScriptIdentifier adAncestryChain
+-      # The filterlist rule that caused the root (last) script in
+-      # `adAncestry` to be ad-tagged.
+-      optional string rootScriptFilterlistRule
+-
+   # The issue warns about blocked calls to privacy sensitive APIs via the
+   # Selective Permissions Intervention.
+   type SelectivePermissionsInterventionIssueDetails extends object
+@@ -719,7 +695,7 @@ experimental domain Audits
+       # Which API was intervened on.
+       string apiName
+       # Why the ad script using the API is considered an ad.
+-      AdAncestry adAncestry
++      Network.AdAncestry adAncestry
+       # The stack trace at the time of the intervention.
+       optional Runtime.StackTrace stackTrace
+ 
+diff --git a/pdl/domains/Network.pdl b/pdl/domains/Network.pdl
+index de36ac7c..504edfe8 100644
+--- a/pdl/domains/Network.pdl
++++ b/pdl/domains/Network.pdl
+@@ -1799,6 +1799,32 @@ domain Network
+       IPAddressSpace initiatorIPAddressSpace
+       LocalNetworkAccessRequestPolicy localNetworkAccessRequestPolicy
+ 
++  # Identifies the script on the stack that caused a resource or element to be
++  # labeled as an ad. For resources, this indicates the context that triggered
++  # the fetch. For elements, this indicates the context that caused the element
++  # to be appended to the DOM.
++  experimental type AdScriptIdentifier extends object
++    properties
++      # The script's V8 identifier.
++      Runtime.ScriptId scriptId
++      # V8's debugging ID for the v8::Context.
++      Runtime.UniqueDebuggerId debuggerId
++      # The script's url (or generated name based on id if inline script).
++      string name
++
++  # Encapsulates the script ancestry and the root script filter list rule that
++  # caused the resource or element to be labeled as an ad.
++  experimental type AdAncestry extends object
++    properties
++      # A chain of `AdScriptIdentifier`s representing the ancestry of an ad
++      # script that led to the creation of a resource or element. The chain is
++      # ordered from the script itself (lowest level) up to its root ancestor
++      # that was flagged by a filter list.
++      array of AdScriptIdentifier ancestryChain
++      # The filter list rule that caused the root (last) script in
++      # `ancestryChain` to be tagged as an ad.
++      optional string rootScriptFilterlistRule
++
+   # Fired when additional information about a requestWillBeSent event is available from the
+   # network stack. Not every requestWillBeSent event will have an additional
+   # requestWillBeSentExtraInfo fired for it, and there is no guarantee whether requestWillBeSent
+diff --git a/pdl/domains/Page.pdl b/pdl/domains/Page.pdl
+index 76d6ed49..12734a90 100644
+--- a/pdl/domains/Page.pdl
++++ b/pdl/domains/Page.pdl
+@@ -36,31 +36,6 @@ domain Page
+       AdFrameType adFrameType
+       optional array of AdFrameExplanation explanations
+ 
+-  # Identifies the script which caused a script or frame to be labelled as an
+-  # ad.
+-  experimental type AdScriptId extends object
+-    properties
+-      # Script Id of the script which caused a script or frame to be labelled as
+-      # an ad.
+-      Runtime.ScriptId scriptId
+-      # Id of scriptId's debugger.
+-      Runtime.UniqueDebuggerId debuggerId
+-
+-  # Encapsulates the script ancestry and the root script filterlist rule that
+-  # caused the frame to be labelled as an ad. Only created when `ancestryChain`
+-  # is not empty.
+-  experimental type AdScriptAncestry extends object
+-    properties
+-      # A chain of `AdScriptId`s representing the ancestry of an ad script that
+-      # led to the creation of a frame. The chain is ordered from the script
+-      # itself (lower level) up to its root ancestor that was flagged by
+-      # filterlist.
+-      array of AdScriptId ancestryChain
+-      # The filterlist rule that caused the root (last) script in
+-      # `ancestryChain` to be ad-tagged. Only populated if the rule is
+-      # available.
+-      optional string rootScriptFilterlistRule
+-
+   # Indicates whether the frame is a secure context and why it is the case.
+   experimental type SecureContextType extends string
+     enum
+@@ -843,7 +818,7 @@ domain Page
+       # chain is ordered from the most immediate script (in the frame creation
+       # stack) to more distant ancestors (that created the immediately preceding
+       # script). Only sent if frame is labelled as an ad and ids are available.
+-      optional AdScriptAncestry adScriptAncestry
++      optional Network.AdAncestry adScriptAncestry
+ 
+   # Returns present frame tree structure.
+   command getFrameTree
+diff --git a/pdl/domains/SmartCardEmulation.pdl b/pdl/domains/SmartCardEmulation.pdl
+new file mode 100644
+index 00000000..3daf2503
+--- /dev/null
++++ b/pdl/domains/SmartCardEmulation.pdl
+@@ -0,0 +1,405 @@
++# Copyright 2025 The Chromium Authors
++# Use of this source code is governed by a BSD-style license that can be
++# found in the LICENSE file.
++#
++# Contributing to Chrome DevTools Protocol: https://goo.gle/devtools-contribution-guide-cdp
++# This domain allows to emulate smart card readers and cards,
++# bypassing the need for physical hardware.
++
++experimental domain SmartCardEmulation
++
++  # Indicates the PC/SC error code.
++  #
++  # This maps to:
++  # PC/SC Lite: https://pcsclite.apdu.fr/api/group__ErrorCodes.html
++  # Microsoft: https://learn.microsoft.com/en-us/windows/win32/secauthn/authentication-return-values
++  type ResultCode extends string
++    enum
++      success
++      removed-card
++      reset-card
++      unpowered-card
++      unresponsive-card
++      unsupported-card
++      reader-unavailable
++      sharing-violation
++      not-transacted
++      no-smartcard
++      proto-mismatch
++      system-cancelled
++      not-ready
++      cancelled
++      insufficient-buffer
++      invalid-handle
++      invalid-parameter
++      invalid-value
++      no-memory
++      timeout
++      unknown-reader
++      unsupported-feature
++      no-readers-available
++      service-stopped
++      no-service
++      comm-error
++      internal-error
++      server-too-busy
++      unexpected
++      shutdown
++
++      # Maps to SCARD_E_UNKNOWN_CARD.
++      # TODO(crbug.com/472114998): Rename Mojo's kUnknownError to kUnknownCard to match.
++      unknown-card
++
++      # Error code that is not mapped in this enum.
++      unknown
++
++  # Maps to the |SCARD_SHARE_*| values.
++  type ShareMode extends string
++    enum
++      shared
++      exclusive
++      direct
++
++  # Indicates what the reader should do with the card.
++  type Disposition extends string
++    enum
++      leave-card
++      reset-card
++      unpower-card
++      eject-card
++
++  # Maps to |SCARD_*| connection state values.
++  type ConnectionState extends string
++    enum
++      absent
++      present
++      swallowed
++      powered
++      negotiable
++      specific
++
++  # Maps to the |SCARD_STATE_*| flags.
++  type ReaderStateFlags extends object
++    properties
++      optional boolean unaware
++      optional boolean ignore
++      optional boolean changed
++      optional boolean unknown
++      optional boolean unavailable
++      optional boolean empty
++      optional boolean present
++      optional boolean exclusive
++      optional boolean inuse
++      optional boolean mute
++      optional boolean unpowered
++
++  # Maps to the |SCARD_PROTOCOL_*| flags.
++  type ProtocolSet extends object
++    properties
++      optional boolean t0
++      optional boolean t1
++      optional boolean raw
++
++  # Maps to the |SCARD_PROTOCOL_*| values.
++  type Protocol extends string
++    enum
++      t0
++      t1
++      raw
++
++  type ReaderStateIn extends object
++    properties
++      string reader
++      ReaderStateFlags currentState
++      integer currentInsertionCount
++
++  type ReaderStateOut extends object
++    properties
++      string reader
++      ReaderStateFlags eventState
++      integer eventCount
++      binary atr
++
++  # Enables the |SmartCardEmulation| domain.
++  command enable
++
++  # Disables the |SmartCardEmulation| domain.
++  command disable
++
++  # Reports the successful result of a |SCardEstablishContext| call.
++  #
++  # This maps to:
++  # PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gaa1b8970169fd4883a6dc4a8f43f19b67
++  # Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardestablishcontext
++  command reportEstablishContextResult
++    parameters
++      string requestId
++      integer contextId
++
++  # Reports the successful result of a |SCardReleaseContext| call.
++  #
++  # This maps to:
++  # PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga6aabcba7744c5c9419fdd6404f73a934
++  # Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardreleasecontext
++  command reportReleaseContextResult
++    parameters
++      string requestId
++
++  # Reports the successful result of a |SCardListReaders| call.
++  #
++  # This maps to:
++  # PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga93b07815789b3cf2629d439ecf20f0d9
++  # Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardlistreadersa
++  command reportListReadersResult
++    parameters
++      string requestId
++      array of string readers
++
++  # Reports the successful result of a |SCardGetStatusChange| call.
++  #
++  # This maps to:
++  # PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga33247d5d1257d59e55647c3bb717db24
++  # Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardgetstatuschangea
++  command reportGetStatusChangeResult
++    parameters
++      string requestId
++      array of ReaderStateOut readerStates
++
++  # Reports the result of a |SCardBeginTransaction| call.
++  # On success, this creates a new transaction object.
++  #
++  # This maps to:
++  # PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gaddb835dce01a0da1d6ca02d33ee7d861
++  # Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardbegintransaction
++  command reportBeginTransactionResult
++    parameters
++      string requestId
++      integer handle
++
++  # Reports the successful result of a call that returns only a result code.
++  # Used for: |SCardCancel|, |SCardDisconnect|, |SCardSetAttrib|, |SCardEndTransaction|.
++  #
++  # This maps to:
++  # 1. SCardCancel
++  #    PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gaacbbc0c6d6c0cbbeb4f4debf6fbeeee6
++  #    Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardcancel
++  #
++  # 2. SCardDisconnect
++  #    PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga4be198045c73ec0deb79e66c0ca1738a
++  #    Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scarddisconnect
++  #
++  # 3. SCardSetAttrib
++  #    PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga060f0038a4ddfd5dd2b8fadf3c3a2e4f
++  #    Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardsetattrib
++  #
++  # 4. SCardEndTransaction
++  #    PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gae8742473b404363e5c587f570d7e2f3b
++  #    Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardendtransaction
++  command reportPlainResult
++    parameters
++      string requestId
++
++  # Reports the successful result of a |SCardConnect| call.
++  #
++  # This maps to:
++  # PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga4e515829752e0a8dbc4d630696a8d6a5
++  # Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardconnecta
++  command reportConnectResult
++    parameters
++      string requestId
++      integer handle
++      optional Protocol activeProtocol
++
++  # Reports the successful result of a call that sends back data on success.
++  # Used for |SCardTransmit|, |SCardControl|, and |SCardGetAttrib|.
++  #
++  # This maps to:
++  # 1. SCardTransmit
++  #    PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga9a2d77242a271310269065e64633ab99
++  #    Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardtransmit
++  #
++  # 2. SCardControl
++  #    PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gac3454d4657110fd7f753b2d3d8f4e32f
++  #    Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardcontrol
++  #
++  # 3. SCardGetAttrib
++  #    PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gaacfec51917255b7a25b94c5104961602
++  #    Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardgetattrib
++  command reportDataResult
++    parameters
++      string requestId
++      binary data
++
++  # Reports the successful result of a |SCardStatus| call.
++  #
++  # This maps to:
++  # PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gae49c3c894ad7ac12a5b896bde70d0382
++  # Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardstatusa
++  command reportStatusResult
++    parameters
++      string requestId
++      string readerName
++      ConnectionState state
++      binary atr
++      optional Protocol protocol
++
++  # Reports an error result for the given request.
++  command reportError
++    parameters
++      string requestId
++      ResultCode resultCode
++
++  # Fired when |SCardEstablishContext| is called.
++  #
++  # This maps to:
++  # PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gaa1b8970169fd4883a6dc4a8f43f19b67
++  # Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardestablishcontext
++  event establishContextRequested
++    parameters
++      string requestId
++
++  # Fired when |SCardReleaseContext| is called.
++  #
++  # This maps to:
++  # PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga6aabcba7744c5c9419fdd6404f73a934
++  # Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardreleasecontext
++  event releaseContextRequested
++    parameters
++      string requestId
++      integer contextId
++
++  # Fired when |SCardListReaders| is called.
++  #
++  # This maps to:
++  # PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga93b07815789b3cf2629d439ecf20f0d9
++  # Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardlistreadersa
++  event listReadersRequested
++    parameters
++      string requestId
++      integer contextId
++
++  # Fired when |SCardGetStatusChange| is called. Timeout is specified in milliseconds.
++  #
++  # This maps to:
++  # PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga33247d5d1257d59e55647c3bb717db24
++  # Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardgetstatuschangea
++  event getStatusChangeRequested
++    parameters
++      string requestId
++      integer contextId
++      array of ReaderStateIn readerStates
++
++      # in milliseconds, if absent, it means "infinite"
++      optional integer timeout
++
++  # Fired when |SCardCancel| is called.
++  #
++  # This maps to:
++  # PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gaacbbc0c6d6c0cbbeb4f4debf6fbeeee6
++  # Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardcancel
++  event cancelRequested
++    parameters
++      string requestId
++      integer contextId
++
++  # Fired when |SCardConnect| is called.
++  #
++  # This maps to:
++  # PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga4e515829752e0a8dbc4d630696a8d6a5
++  # Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardconnecta
++  event connectRequested
++    parameters
++      string requestId
++      integer contextId
++      string reader
++      ShareMode shareMode
++      ProtocolSet preferredProtocols
++
++  # Fired when |SCardDisconnect| is called.
++  #
++  # This maps to:
++  # PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga4be198045c73ec0deb79e66c0ca1738a
++  # Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scarddisconnect
++  event disconnectRequested
++    parameters
++      string requestId
++      integer handle
++      Disposition disposition
++
++  # Fired when |SCardTransmit| is called.
++  #
++  # This maps to:
++  # PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga9a2d77242a271310269065e64633ab99
++  # Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardtransmit
++  event transmitRequested
++    parameters
++      string requestId
++      integer handle
++      binary data
++      optional Protocol protocol
++
++  # Fired when |SCardControl| is called.
++  #
++  # This maps to:
++  # PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gac3454d4657110fd7f753b2d3d8f4e32f
++  # Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardcontrol
++  event controlRequested
++    parameters
++      string requestId
++      integer handle
++      integer controlCode
++      binary data
++
++  # Fired when |SCardGetAttrib| is called.
++  #
++  # This maps to:
++  # PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gaacfec51917255b7a25b94c5104961602
++  # Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardgetattrib
++  event getAttribRequested
++    parameters
++      string requestId
++      integer handle
++      integer attribId
++
++  # Fired when |SCardSetAttrib| is called.
++  #
++  # This maps to:
++  # PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#ga060f0038a4ddfd5dd2b8fadf3c3a2e4f
++  # Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardsetattrib
++  event setAttribRequested
++    parameters
++      string requestId
++      integer handle
++      integer attribId
++      binary data
++
++  # Fired when |SCardStatus| is called.
++  #
++  # This maps to:
++  # PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gae49c3c894ad7ac12a5b896bde70d0382
++  # Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardstatusa
++  event statusRequested
++    parameters
++      string requestId
++      integer handle
++
++  # Fired when |SCardBeginTransaction| is called.
++  #
++  # This maps to:
++  # PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gaddb835dce01a0da1d6ca02d33ee7d861
++  # Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardbegintransaction
++  event beginTransactionRequested
++    parameters
++      string requestId
++      integer handle
++
++  # Fired when |SCardEndTransaction| is called.
++  #
++  # This maps to:
++  # PC/SC Lite: https://pcsclite.apdu.fr/api/group__API.html#gae8742473b404363e5c587f570d7e2f3b
++  # Microsoft: https://learn.microsoft.com/en-us/windows/win32/api/winscard/nf-winscard-scardendtransaction
++  event endTransactionRequested
++    parameters
++      string requestId
++      integer handle
++      Disposition disposition
+diff --git a/pdl/domains/WebMCP.pdl b/pdl/domains/WebMCP.pdl
+new file mode 100644
+index 00000000..2ddf07ff
+--- /dev/null
++++ b/pdl/domains/WebMCP.pdl
+@@ -0,0 +1,53 @@
++# Copyright 2026 The Chromium Authors
++# Use of this source code is governed by a BSD-style license that can be
++# found in the LICENSE file.
++#
++# Contributing to Chrome DevTools Protocol: https://goo.gle/devtools-contribution-guide-cdp
++
++experimental domain WebMCP
++  depends on Runtime
++  depends on Page
++  depends on DOM
++
++  # Tool annotations
++  type Annotation extends object
++    properties
++      # A hint indicating that the tool does not modify any state.
++      optional boolean readOnly
++      # If the declarative tool was declared with the autosubmit attribute.
++      optional boolean autosubmit
++
++  # Definition of a tool that can be invoked.
++  type Tool extends object
++    properties
++      # Tool name.
++      string name
++      # Tool description.
++      string description
++      # Schema for the tool's input parameters.
++      optional object inputSchema
++      # Optional annotations for the tool.
++      optional Annotation annotations
++      # Frame identifier associated with the tool registration.
++      Page.FrameId frameId
++      # Optional node ID for declarative tools.
++      optional DOM.BackendNodeId backendNodeId
++      # The stack trace at the time of the registration.
++      optional Runtime.StackTrace stackTrace
++
++
++  # Enables the WebMCP domain, allowing events to be sent. Enabling the domain will trigger a toolsAdded event for
++  # all currently registered tools.
++  command enable
++
++  # Event fired when new tools are added.
++  event toolsAdded
++    parameters
++      # Array of tools that were added.
++      array of Tool tools
++
++  # Event fired when tools are removed.
++  event toolsRemoved
++    parameters
++      # Array of tools that were removed.
++      array of Tool tools
+```
+
 ## Roll protocol to r1596832 — _2026-03-10T04:53:52.000Z_
-######  Diff: [`50eddc4...734ff67`](https://github.com/ChromeDevTools/devtools-protocol/compare/50eddc4...734ff67)
+######  Diff: [`50eddc4...07f7b82`](https://github.com/ChromeDevTools/devtools-protocol/compare/50eddc4...07f7b82)
 
 ```diff
 @@ browser_protocol.pdl:56 @@ include domains/Tethering.pdl
@@ -42106,199 +42704,4 @@ index 0dbdc01d..7a3c772c 100644
  
    # Selector list data.
    type SelectorList extends object
-```
-
-## Roll protocol to r1146845 — _2023-05-20T04:26:10.000Z_
-######  Diff: [`8445d84...60a039d`](https://github.com/ChromeDevTools/devtools-protocol/compare/8445d84...60a039d)
-
-```diff
-@@ browser_protocol.pdl:2047 @@ experimental domain CSS
-       StyleSheetId styleSheetId
- 
- experimental domain CacheStorage
-+  depends on Storage
- 
-   # Unique identifier of the Cache object.
-   type CacheId extends string
-@@ -2090,6 +2091,8 @@ experimental domain CacheStorage
-       string securityOrigin
-       # Storage key of the cache.
-       string storageKey
-+      # Storage bucket of the cache.
-+      optional Storage.StorageBucket storageBucket
-       # The name of the cache.
-       string cacheName
- 
-@@ -2121,11 +2124,13 @@ experimental domain CacheStorage
-   # Requests cache names.
-   command requestCacheNames
-     parameters
--      # At least and at most one of securityOrigin, storageKey must be specified.
-+      # At least and at most one of securityOrigin, storageKey, storageBucket must be specified.
-       # Security origin.
-       optional string securityOrigin
-       # Storage key.
-       optional string storageKey
-+      # Storage bucket. If not specified, it uses the default bucket.
-+      optional Storage.StorageBucket storageBucket
-     returns
-       # Caches for the security origin.
-       array of Cache caches
-@@ -9432,6 +9437,8 @@ experimental domain Storage
-       string origin
-       # Storage key to update.
-       string storageKey
-+      # Storage bucket to update.
-+      string bucketId
-       # Name of cache in origin.
-       string cacheName
- 
-@@ -9442,6 +9449,8 @@ experimental domain Storage
-       string origin
-       # Storage key to update.
-       string storageKey
-+      # Storage bucket to update.
-+      string bucketId
- 
-   # The origin's IndexedDB object store has been modified.
-   event indexedDBContentUpdated
-@@ -11024,19 +11033,12 @@ experimental domain Preload
-       # that is incompatible with prerender and has caused the cancellation of the attempt
-       optional string disallowedApiMethod
- 
--  type PreloadEnabledState extends string
--    enum
--      Enabled
--      DisabledByDataSaver
--      DisabledByBatterySaver
--      DisabledByPreference
--      # Service not available.
--      NotSupported
--
-   # Fired when a preload enabled state is updated.
-   event preloadEnabledStateUpdated
-     parameters
--      PreloadEnabledState state
-+      boolean disabledByPreference
-+      boolean disabledByDataSaver
-+      boolean disabledByBatterySaver
- 
-   # Preloading status values, see also PreloadingTriggeringOutcome. This
-   # status is shared by prefetchStatusUpdated and prerenderStatusUpdated.
-```
-
-## Roll protocol to r1146363 — _2023-05-19T04:26:26.000Z_
-######  Diff: [`d1a5b89...8445d84`](https://github.com/ChromeDevTools/devtools-protocol/compare/d1a5b89...8445d84)
-
-```diff
-@@ browser_protocol.pdl:817 @@ experimental domain Audits
-       ErrorIdToken
-       Canceled
-       RpPageNotVisible
-+      SilentMediationFailure
- 
-   # This issue tracks client hints related issues. It's used to deprecate old
-   # features, encourage the use of new ones, and provide general guidance.
-@@ -1314,6 +1315,12 @@ domain Browser
-     parameters
-       BrowserCommandId commandId
- 
-+  # Allows a site to use privacy sandbox features that require enrollment
-+  # without the site actually being enrolled. Only supported on page targets.
-+  command addPrivacySandboxEnrollmentOverride
-+    parameters
-+      string url
-+
- # This domain exposes CSS read/write operations. All CSS objects (stylesheets, rules, and styles)
- # have an associated `id` used in subsequent operations on the related object. Each object type has
- # a specific `id` structure, and those are not interchangeable between objects of different kinds.
-@@ -11055,6 +11062,7 @@ experimental domain Preload
-       PrefetchFailedNetError
-       PrefetchFailedNon2XX
-       PrefetchFailedPerPageLimitExceeded
-+      PrefetchEvicted
-       PrefetchHeldback
-       # A previous prefetch to the origin got a HTTP 503 response with an
-       # Retry-After header that has no elapsed yet.
-```
-
-## Roll protocol to r1145810 — _2023-05-18T04:26:32.000Z_
-######  Diff: [`467c277...d1a5b89`](https://github.com/ChromeDevTools/devtools-protocol/compare/467c277...d1a5b89)
-
-```diff
-@@ browser_protocol.pdl:11070 @@ experimental domain Preload
-       PrefetchNotEligibleSchemeIsNotHttps
-       PrefetchNotEligibleUserHasCookies
-       PrefetchNotEligibleUserHasServiceWorker
-+      PrefetchNotEligibleBatterySaverEnabled
-+      PrefetchNotEligiblePreloadingDisabled
-       PrefetchNotFinishedInTime
-       PrefetchNotStarted
-       PrefetchNotUsedCookiesChanged
-@@ -11095,9 +11097,6 @@ experimental domain Preload
-   event prerenderStatusUpdated
-     parameters
-       PreloadingAttemptKey key
--      # The frame id of the frame initiating prerender.
--      Page.FrameId initiatingFrameId
--      string prerenderingUrl
-       PreloadingStatus status
-       optional PrerenderFinalStatus prerenderStatus
- 
-@@ -11169,4 +11168,3 @@ experimental domain FedCm
-   # Resets the cooldown time, if any, to allow the next FedCM call to show
-   # a dialog even if one was recently dismissed by the user.
-   command resetCooldown
--
-```
-
-## Roll protocol to r1145140 — _2023-05-17T04:26:30.000Z_
-######  Diff: [`81e97fb...467c277`](https://github.com/ChromeDevTools/devtools-protocol/compare/81e97fb...467c277)
-
-```diff
-@@ browser_protocol.pdl:11004 @@ experimental domain Preload
-       SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation
-       MemoryPressureOnTrigger
-       MemoryPressureAfterTriggered
--      SpeculationRuleRemoved
--      TriggerPageNavigated
--      OtherPrerenderedPageActivated
- 
-   # Fired when a prerender attempt is completed.
-   event prerenderAttemptCompleted
-@@ -11102,6 +11099,7 @@ experimental domain Preload
-       Page.FrameId initiatingFrameId
-       string prerenderingUrl
-       PreloadingStatus status
-+      optional PrerenderFinalStatus prerenderStatus
- 
-   # Send a list of sources for all preloading attempts in a document.
-   event preloadingAttemptSourcesUpdated
-```
-
-## Roll protocol to r1144541 — _2023-05-16T04:27:03.000Z_
-######  Diff: [`3c6f201...81e97fb`](https://github.com/ChromeDevTools/devtools-protocol/compare/3c6f201...81e97fb)
-
-```diff
-@@ browser_protocol.pdl:919 @@ experimental domain Audits
-       # Whether to report WCAG AAA level issues. Default is false.
-       optional boolean reportAAA
- 
-+  # Runs the form issues check for the target page. Found issues are reported
-+  # using Audits.issueAdded event.
-+  command checkFormsIssues
-+    returns
-+      array of GenericIssueDetails formIssues
-+
-   event issueAdded
-     parameters
-       InspectorIssue issue
-@@ -944,6 +950,8 @@ experimental domain Autofill
-     parameters
-       # Identifies a field that serves as an anchor for autofill.
-       DOM.BackendNodeId fieldId
-+      # Identifies the frame that field belongs to.
-+      optional Page.FrameId frameId
-       # Credit card information to fill out the form. Credit card data is not saved.
-       CreditCard card
 ```
