@@ -6017,6 +6017,11 @@ export namespace Protocol {
              * Function body.
              */
             children: CSSFunctionNode[];
+            /**
+             * The BackendNodeId of the DOM node that constitutes the origin tree scope of this rule.
+             * @experimental
+             */
+            originTreeScopeNodeId?: DOM.BackendNodeId;
         }
 
         /**
@@ -6886,7 +6891,7 @@ export namespace Protocol {
         /**
          * Pseudo element type.
          */
-        export type PseudoType = ('first-line' | 'first-letter' | 'checkmark' | 'before' | 'after' | 'picker-icon' | 'interest-hint' | 'marker' | 'backdrop' | 'column' | 'selection' | 'search-text' | 'target-text' | 'spelling-error' | 'grammar-error' | 'highlight' | 'first-line-inherited' | 'scroll-marker' | 'scroll-marker-group' | 'scroll-button' | 'scrollbar' | 'scrollbar-thumb' | 'scrollbar-button' | 'scrollbar-track' | 'scrollbar-track-piece' | 'scrollbar-corner' | 'resizer' | 'input-list-button' | 'view-transition' | 'view-transition-group' | 'view-transition-image-pair' | 'view-transition-group-children' | 'view-transition-old' | 'view-transition-new' | 'placeholder' | 'file-selector-button' | 'details-content' | 'picker' | 'permission-icon' | 'overscroll-area-parent');
+        export type PseudoType = ('first-line' | 'first-letter' | 'checkmark' | 'before' | 'after' | 'expand-icon' | 'picker-icon' | 'interest-hint' | 'marker' | 'backdrop' | 'column' | 'selection' | 'search-text' | 'target-text' | 'spelling-error' | 'grammar-error' | 'highlight' | 'first-line-inherited' | 'scroll-marker' | 'scroll-marker-group' | 'scroll-button' | 'scrollbar' | 'scrollbar-thumb' | 'scrollbar-button' | 'scrollbar-track' | 'scrollbar-track-piece' | 'scrollbar-corner' | 'resizer' | 'input-list-button' | 'view-transition' | 'view-transition-group' | 'view-transition-image-pair' | 'view-transition-group-children' | 'view-transition-old' | 'view-transition-new' | 'placeholder' | 'file-selector-button' | 'details-content' | 'picker' | 'permission-icon' | 'overscroll-area-parent');
 
         /**
          * Shadow root type.
@@ -22047,7 +22052,7 @@ export namespace Protocol {
 
         export type AuthenticatorProtocol = ('u2f' | 'ctap2');
 
-        export type Ctap2Version = ('ctap2_0' | 'ctap2_1');
+        export type Ctap2Version = ('ctap2_0' | 'ctap2_1' | 'ctap2_2');
 
         export type AuthenticatorTransport = ('usb' | 'nfc' | 'ble' | 'cable' | 'internal');
 
@@ -22090,6 +22095,18 @@ export namespace Protocol {
              * Defaults to false.
              */
             hasPrf?: boolean;
+            /**
+             * If set to true, the authenticator will support the hmac-secret extension.
+             * https://fidoalliance.org/specs/fido-v2.1-ps-20210615/fido-client-to-authenticator-protocol-v2.1-ps-20210615.html#sctn-hmac-secret-extension
+             * Defaults to false.
+             */
+            hasHmacSecret?: boolean;
+            /**
+             * If set to true, the authenticator will support the hmac-secret-mc extension.
+             * https://fidoalliance.org/specs/fido-v2.2-rd-20241003/fido-client-to-authenticator-protocol-v2.2-rd-20241003.html#sctn-hmac-secret-make-cred-extension
+             * Defaults to false.
+             */
+            hasHmacSecretMc?: boolean;
             /**
              * If set to true, tests of user presence will succeed immediately.
              * Otherwise, they will not be resolved. Defaults to true.

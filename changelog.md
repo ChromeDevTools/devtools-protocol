@@ -1,7 +1,61 @@
 
 
+## Roll protocol to r1601756 — _2026-03-19T05:02:00.000Z_
+######  Diff: [`e653604...a0bd184`](https://github.com/ChromeDevTools/devtools-protocol/compare/e653604...a0bd184)
+
+```diff
+@@ domains/CSS.pdl:602 @@ experimental domain CSS
+       array of CSSFunctionParameter parameters
+       # Function body.
+       array of CSSFunctionNode children
++      # The BackendNodeId of the DOM node that constitutes the origin tree scope of this rule.
++      experimental optional DOM.BackendNodeId originTreeScopeNodeId
+ 
+   # CSS keyframe rule representation.
+   type CSSKeyframeRule extends object
+diff --git a/pdl/domains/DOM.pdl b/pdl/domains/DOM.pdl
+index e42956a9..79b8cfce 100644
+--- a/pdl/domains/DOM.pdl
++++ b/pdl/domains/DOM.pdl
+@@ -41,6 +41,7 @@ domain DOM
+       checkmark
+       before
+       after
++      expand-icon
+       picker-icon
+       interest-hint
+       marker
+diff --git a/pdl/domains/WebAuthn.pdl b/pdl/domains/WebAuthn.pdl
+index 0ef007ce..0b3700ef 100644
+--- a/pdl/domains/WebAuthn.pdl
++++ b/pdl/domains/WebAuthn.pdl
+@@ -20,6 +20,7 @@ experimental domain WebAuthn
+     enum
+       ctap2_0
+       ctap2_1
++      ctap2_2
+ 
+   type AuthenticatorTransport extends string
+     enum
+@@ -57,6 +58,14 @@ experimental domain WebAuthn
+       # https://w3c.github.io/webauthn/#prf-extension
+       # Defaults to false.
+       optional boolean hasPrf
++      # If set to true, the authenticator will support the hmac-secret extension.
++      # https://fidoalliance.org/specs/fido-v2.1-ps-20210615/fido-client-to-authenticator-protocol-v2.1-ps-20210615.html#sctn-hmac-secret-extension
++      # Defaults to false.
++      optional boolean hasHmacSecret
++      # If set to true, the authenticator will support the hmac-secret-mc extension.
++      # https://fidoalliance.org/specs/fido-v2.2-rd-20241003/fido-client-to-authenticator-protocol-v2.2-rd-20241003.html#sctn-hmac-secret-make-cred-extension
++      # Defaults to false.
++      optional boolean hasHmacSecretMc
+       # If set to true, tests of user presence will succeed immediately.
+       # Otherwise, they will not be resolved. Defaults to true.
+       optional boolean automaticPresenceSimulation
+```
+
 ## Roll protocol to r1601035 — _2026-03-18T05:02:54.000Z_
-######  Diff: [`0c3ac05...4a35984`](https://github.com/ChromeDevTools/devtools-protocol/compare/0c3ac05...4a35984)
+######  Diff: [`0c3ac05...e653604`](https://github.com/ChromeDevTools/devtools-protocol/compare/0c3ac05...e653604)
 
 ```diff
 @@ domains/Audits.pdl:688 @@ experimental domain Audits
@@ -42677,31 +42731,4 @@ index 0dbdc01d..7a3c772c 100644
 +      experimental number receiveHeadersStart
        # Finished receiving response headers.
        number receiveHeadersEnd
-```
-
-## Roll protocol to r1147663 — _2023-05-23T04:26:36.000Z_
-######  Diff: [`60a039d...fb80158`](https://github.com/ChromeDevTools/devtools-protocol/compare/60a039d...fb80158)
-
-```diff
-@@ browser_protocol.pdl:1382 @@ experimental domain CSS
-       string text
-       # Value range in the underlying resource (if available).
-       optional SourceRange range
-+      # Specificity of the selector.
-+      experimental optional Specificity specificity
-+
-+  # Specificity:
-+  # https://drafts.csswg.org/selectors/#specificity-rules
-+  experimental type Specificity extends object
-+    properties
-+      # The a component, which represents the number of ID selectors.
-+      integer a
-+      # The b component, which represents the number of class selectors, attributes selectors, and
-+      # pseudo-classes.
-+      integer b
-+      # The c component, which represents the number of type selectors and pseudo-elements.
-+      integer c
- 
-   # Selector list data.
-   type SelectorList extends object
 ```
