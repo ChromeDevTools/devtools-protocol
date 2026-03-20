@@ -1,7 +1,65 @@
 
 
+## Roll protocol to r1602427 — _2026-03-20T04:57:27.000Z_
+######  Diff: [`7a16bec...c588f6e`](https://github.com/ChromeDevTools/devtools-protocol/compare/7a16bec...c588f6e)
+
+```diff
+@@ domains/DOM.pdl:13 @@ @@ -13,6 +13,7 @@
+ # corresponding document elements as their child nodes.
+ domain DOM
+   depends on Runtime
++  depends on Network
+ 
+   # Unique DOM node identifier.
+   type NodeId extends integer
+@@ -184,7 +185,7 @@ domain DOM
+       experimental optional boolean isScrollable
+       experimental optional boolean affectedByStartingStyles
+       experimental optional array of StyleSheetId adoptedStyleSheets
+-      experimental optional boolean isAdRelated
++      experimental optional Network.AdProvenance adProvenance
+ 
+   # A structure to hold the top-level node of a detached tree and an array of its retained descendants.
+   type DetachedElementInfo extends object
+@@ -919,8 +920,8 @@ domain DOM
+     parameters
+       # The id of the node.
+       DOM.NodeId nodeId
+-      # If the node is ad related.
+-      boolean isAdRelated
++      # The provenance of the ad related node, if it is ad related.
++      optional Network.AdProvenance adProvenance
+ 
+   # Fired when a node's starting styles changes.
+   experimental event affectedByStartingStylesFlagUpdated
+diff --git a/pdl/domains/Network.pdl b/pdl/domains/Network.pdl
+index 504edfe8..a03d977b 100644
+--- a/pdl/domains/Network.pdl
++++ b/pdl/domains/Network.pdl
+@@ -1825,6 +1825,19 @@ domain Network
+       # `ancestryChain` to be tagged as an ad.
+       optional string rootScriptFilterlistRule
+ 
++  # Represents the provenance of an ad resource or element. Only one of
++  # `filterlistRule` or `adScriptAncestry` can be set. If `filterlistRule`
++  # is provided, the resource URL directly matches a filter list rule. If
++  # `adScriptAncestry` is provided, an ad script initiated the resource fetch or
++  # appended the element to the DOM. If neither is provided, the entity is
++  # known to be an ad, but provenance tracking information is unavailable.
++  experimental type AdProvenance extends object
++    properties
++      # The filterlist rule that matched, if any.
++      optional string filterlistRule
++      # The script ancestry that created the ad, if any.
++      optional AdAncestry adScriptAncestry
++
+   # Fired when additional information about a requestWillBeSent event is available from the
+   # network stack. Not every requestWillBeSent event will have an additional
+   # requestWillBeSentExtraInfo fired for it, and there is no guarantee whether requestWillBeSent
+```
+
 ## Roll protocol to r1601756 — _2026-03-19T05:02:00.000Z_
-######  Diff: [`e653604...a0bd184`](https://github.com/ChromeDevTools/devtools-protocol/compare/e653604...a0bd184)
+######  Diff: [`e653604...7a16bec`](https://github.com/ChromeDevTools/devtools-protocol/compare/e653604...7a16bec)
 
 ```diff
 @@ domains/CSS.pdl:602 @@ experimental domain CSS
@@ -42717,18 +42775,4 @@ index 0dbdc01d..7a3c772c 100644
        experimental optional SerializationOptions serializationOptions
      returns
        # Evaluation result.
-```
-
-## Roll protocol to r1148337 — _2023-05-24T04:27:07.000Z_
-######  Diff: [`fb80158...4f898ab`](https://github.com/ChromeDevTools/devtools-protocol/compare/fb80158...4f898ab)
-
-```diff
-@@ browser_protocol.pdl:5121 @@ domain Network
-       experimental number pushStart
-       # Time the server finished pushing request.
-       experimental number pushEnd
-+      # Started receiving response headers.
-+      experimental number receiveHeadersStart
-       # Finished receiving response headers.
-       number receiveHeadersEnd
 ```
