@@ -5993,6 +5993,20 @@ export namespace ProtocolTestsProxyApi {
         offToolsRemoved(listener: (event: { params: Protocol.WebMCP.ToolsRemovedEvent }) => void): void;
         onceToolsRemoved(eventMatcher?: (event: { params: Protocol.WebMCP.ToolsRemovedEvent }) => boolean): Promise<{ params: Protocol.WebMCP.ToolsRemovedEvent }>;
 
+        /**
+         * Event fired when a tool invocation starts.
+         */
+        onToolInvoked(listener: (event: { params: Protocol.WebMCP.ToolInvokedEvent }) => void): void;
+        offToolInvoked(listener: (event: { params: Protocol.WebMCP.ToolInvokedEvent }) => void): void;
+        onceToolInvoked(eventMatcher?: (event: { params: Protocol.WebMCP.ToolInvokedEvent }) => boolean): Promise<{ params: Protocol.WebMCP.ToolInvokedEvent }>;
+
+        /**
+         * Event fired when a tool invocation completes or fails.
+         */
+        onToolResponded(listener: (event: { params: Protocol.WebMCP.ToolRespondedEvent }) => void): void;
+        offToolResponded(listener: (event: { params: Protocol.WebMCP.ToolRespondedEvent }) => void): void;
+        onceToolResponded(eventMatcher?: (event: { params: Protocol.WebMCP.ToolRespondedEvent }) => boolean): Promise<{ params: Protocol.WebMCP.ToolRespondedEvent }>;
+
     }
 }
 

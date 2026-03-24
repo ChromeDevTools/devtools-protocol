@@ -22349,6 +22349,11 @@ export namespace Protocol {
         }
 
         /**
+         * Represents the status of a tool invocation.
+         */
+        export type InvocationStatus = ('Success' | 'Canceled' | 'Error');
+
+        /**
          * Definition of a tool that can be invoked.
          */
         export interface Tool {
@@ -22400,6 +22405,54 @@ export namespace Protocol {
              * Array of tools that were removed.
              */
             tools: Tool[];
+        }
+
+        /**
+         * Event fired when a tool invocation starts.
+         */
+        export interface ToolInvokedEvent {
+            /**
+             * Name of the tool to invoke.
+             */
+            toolName: string;
+            /**
+             * Frame id
+             */
+            frameId: Page.FrameId;
+            /**
+             * Invocation identifier.
+             */
+            invocationId: string;
+            /**
+             * The input parameters used for the invocation.
+             */
+            input: string;
+        }
+
+        /**
+         * Event fired when a tool invocation completes or fails.
+         */
+        export interface ToolRespondedEvent {
+            /**
+             * Invocation identifier.
+             */
+            invocationId: string;
+            /**
+             * Status of the invocation.
+             */
+            status: InvocationStatus;
+            /**
+             * Output or error delivered as delivered to the agent. Missing if `status` is anything other than Success.
+             */
+            output?: any;
+            /**
+             * Error text for protocol users.
+             */
+            errorText?: string;
+            /**
+             * The exception object, if the javascript tool threw an error>
+             */
+            exception?: Runtime.RemoteObject;
         }
     }
 }

@@ -1,7 +1,65 @@
 
 
+## Roll protocol to r1603894 — _2026-03-24T05:02:01.000Z_
+######  Diff: [`169ca38...b44d11f`](https://github.com/ChromeDevTools/devtools-protocol/compare/169ca38...b44d11f)
+
+```diff
+@@ domains/WebMCP.pdl:11 @@ experimental domain WebMCP
+ 
+   # Tool annotations
+   type Annotation extends object
++
+     properties
+       # A hint indicating that the tool does not modify any state.
+       optional boolean readOnly
+       # If the declarative tool was declared with the autosubmit attribute.
+       optional boolean autosubmit
+ 
++  # Represents the status of a tool invocation.
++  type InvocationStatus extends string
++    enum
++      Success
++      Canceled
++      Error
++
+   # Definition of a tool that can be invoked.
+   type Tool extends object
+     properties
+@@ -51,3 +59,30 @@ experimental domain WebMCP
+     parameters
+       # Array of tools that were removed.
+       array of Tool tools
++
++  # Event fired when a tool invocation starts.
++  event toolInvoked
++    parameters
++      # Name of the tool to invoke.
++      string toolName
++      # Frame id
++      Page.FrameId frameId
++      # Invocation identifier.
++      string invocationId
++      # The input parameters used for the invocation.
++      string input
++
++  # Event fired when a tool invocation completes or fails.
++  event toolResponded
++    parameters
++      # Invocation identifier.
++      string invocationId
++      # Status of the invocation.
++      InvocationStatus status
++      # Output or error delivered as delivered to the agent. Missing if `status` is anything other than Success.
++      optional object output
++      # Error text for protocol users.
++      optional string errorText
++      # The exception object, if the javascript tool threw an error>
++      optional Runtime.RemoteObject exception
++
+```
+
 ## Roll protocol to r1602427 — _2026-03-20T04:57:27.000Z_
-######  Diff: [`7a16bec...c588f6e`](https://github.com/ChromeDevTools/devtools-protocol/compare/7a16bec...c588f6e)
+######  Diff: [`7a16bec...169ca38`](https://github.com/ChromeDevTools/devtools-protocol/compare/7a16bec...169ca38)
 
 ```diff
 @@ domains/DOM.pdl:13 @@ @@ -13,6 +13,7 @@
@@ -42721,58 +42779,4 @@ index 7a3c772c..ed622630 100644
        #Blocklisted features
        WebSocket
        WebTransport
-```
-
-## Roll protocol to r1149535 — _2023-05-26T04:26:25.000Z_
-######  Diff: [`4f898ab...44ad3c8`](https://github.com/ChromeDevTools/devtools-protocol/compare/4f898ab...44ad3c8)
-
-```diff
-@@ browser_protocol.pdl:8631 @@ domain Page
-       # Base64-encoded data
-       binary data
- 
-+  # Enable/disable prerendering manually.
-+  #
-+  # This command is a short-term solution for https://crbug.com/1440085.
-+  # See https://docs.google.com/document/d/12HVmFxYj5Jc-eJr5OmWsa2bqTJsbgGLKI6ZIyx0_wpA
-+  # for more details.
-+  #
-+  # TODO(https://crbug.com/1440085): Remove this once Puppeteer supports tab targets.
-+  experimental command setPrerenderingAllowed
-+    parameters
-+      boolean isAllowed
-+
- domain Performance
- 
-   # Run-time execution metric.
-@@ -11036,6 +11047,7 @@ experimental domain Preload
-       SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation
-       MemoryPressureOnTrigger
-       MemoryPressureAfterTriggered
-+      PrerenderingDisabledByDevTools
- 
-   # Fired when a prerender attempt is completed.
-   event prerenderAttemptCompleted
-diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
-index 0dbdc01d..7a3c772c 100644
---- a/pdl/js_protocol.pdl
-+++ b/pdl/js_protocol.pdl
-@@ -1443,7 +1443,7 @@ domain Runtime
-       # resulting `objectId` is still provided.
-       deprecated optional boolean generateWebDriverValue
-       # Specifies the result serialization. If provided, overrides
--      # `returnByValue` and `generateWebDriverValue`.
-+      # `generatePreview`, `returnByValue` and `generateWebDriverValue`.
-       experimental optional SerializationOptions serializationOptions
- 
-     returns
-@@ -1538,7 +1538,7 @@ domain Runtime
-       # resulting `objectId` is still provided.
-       deprecated optional boolean generateWebDriverValue
-       # Specifies the result serialization. If provided, overrides
--      # `returnByValue` and `generateWebDriverValue`.
-+      # `generatePreview`, `returnByValue` and `generateWebDriverValue`.
-       experimental optional SerializationOptions serializationOptions
-     returns
-       # Evaluation result.
 ```

@@ -5515,6 +5515,16 @@ export namespace ProtocolProxyApi {
          */
         on(event: 'toolsRemoved', listener: (params: Protocol.WebMCP.ToolsRemovedEvent) => void): void;
 
+        /**
+         * Event fired when a tool invocation starts.
+         */
+        on(event: 'toolInvoked', listener: (params: Protocol.WebMCP.ToolInvokedEvent) => void): void;
+
+        /**
+         * Event fired when a tool invocation completes or fails.
+         */
+        on(event: 'toolResponded', listener: (params: Protocol.WebMCP.ToolRespondedEvent) => void): void;
+
     }
 }
 

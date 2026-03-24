@@ -1122,6 +1122,14 @@ export namespace ProtocolMapping {
          * Event fired when tools are removed.
          */
         'WebMCP.toolsRemoved': [Protocol.WebMCP.ToolsRemovedEvent];
+        /**
+         * Event fired when a tool invocation starts.
+         */
+        'WebMCP.toolInvoked': [Protocol.WebMCP.ToolInvokedEvent];
+        /**
+         * Event fired when a tool invocation completes or fails.
+         */
+        'WebMCP.toolResponded': [Protocol.WebMCP.ToolRespondedEvent];
     }
 
     export interface Commands {
