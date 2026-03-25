@@ -6847,6 +6847,29 @@ export namespace Protocol {
     }
 
     /**
+     * This domain exposes the current state of the CrashReportContext API.
+     * @experimental
+     */
+    export namespace CrashReportContext {
+
+        /**
+         * Key-value pair in CrashReportContext.
+         */
+        export interface CrashReportContextEntry {
+            key: string;
+            value: string;
+            /**
+             * The ID of the frame where the key-value pair was set.
+             */
+            frameId: Page.FrameId;
+        }
+
+        export interface GetEntriesResponse {
+            entries: CrashReportContextEntry[];
+        }
+    }
+
+    /**
      * This domain exposes DOM read/write operations. Each DOM Node is represented with its mirror object
      * that has an `id`. This `id` can be used to get additional information on the Node, resolve it into
      * the JavaScript object wrapper, etc. It is important that client receives DOM events only for the

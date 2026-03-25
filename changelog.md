@@ -1,7 +1,47 @@
 
 
+## Roll protocol to r1604597 — _2026-03-25T05:02:28.000Z_
+######  Diff: [`94a770f...405b454`](https://github.com/ChromeDevTools/devtools-protocol/compare/94a770f...405b454)
+
+```diff
+@@ browser_protocol.pdl:18 @@ include domains/Browser.pdl
+ include domains/CSS.pdl
+ include domains/CacheStorage.pdl
+ include domains/Cast.pdl
++include domains/CrashReportContext.pdl
+ include domains/DOM.pdl
+ include domains/DOMDebugger.pdl
+ include domains/DOMSnapshot.pdl
+diff --git a/pdl/domains/CrashReportContext.pdl b/pdl/domains/CrashReportContext.pdl
+new file mode 100644
+index 00000000..27b3702f
+--- /dev/null
++++ b/pdl/domains/CrashReportContext.pdl
+@@ -0,0 +1,20 @@
++# Copyright 2026 The Chromium Authors
++# Use of this source code is governed by a BSD-style license that can be
++# found in the LICENSE file.
++
++# This domain exposes the current state of the CrashReportContext API.
++experimental domain CrashReportContext
++  depends on Page
++
++  # Key-value pair in CrashReportContext.
++  type CrashReportContextEntry extends object
++    properties
++      string key
++      string value
++      # The ID of the frame where the key-value pair was set.
++      Page.FrameId frameId
++
++  # Returns all entries in the CrashReportContext across all frames in the page.
++  command getEntries
++    returns
++      array of CrashReportContextEntry entries
+```
+
 ## Roll protocol to r1603894 — _2026-03-24T05:02:01.000Z_
-######  Diff: [`169ca38...b44d11f`](https://github.com/ChromeDevTools/devtools-protocol/compare/169ca38...b44d11f)
+######  Diff: [`169ca38...94a770f`](https://github.com/ChromeDevTools/devtools-protocol/compare/169ca38...94a770f)
 
 ```diff
 @@ domains/WebMCP.pdl:11 @@ experimental domain WebMCP
@@ -42757,26 +42797,4 @@ index 7a3c772c..ed622630 100644
        optional integer quality
        # Optimize image encoding for speed, not for resulting size (defaults to false)
        optional boolean optimizeForSpeed
-```
-
-## Roll protocol to r1151065 — _2023-05-31T04:26:30.000Z_
-######  Diff: [`44ad3c8...11fd654`](https://github.com/ChromeDevTools/devtools-protocol/compare/44ad3c8...11fd654)
-
-```diff
-@@ browser_protocol.pdl:818 @@ experimental domain Audits
-       Canceled
-       RpPageNotVisible
-       SilentMediationFailure
-+      ThirdPartyCookiesBlocked
- 
-   # This issue tracks client hints related issues. It's used to deprecate old
-   # features, encourage the use of new ones, and provide general guidance.
-@@ -8462,6 +8463,7 @@ domain Page
-       ActivationNavigationsDisallowedForBug1234857
-       ErrorDocument
-       FencedFramesEmbedder
-+      CookieDisabled
-       #Blocklisted features
-       WebSocket
-       WebTransport
 ```

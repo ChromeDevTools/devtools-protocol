@@ -46,6 +46,8 @@ export namespace ProtocolTestsProxyApi {
 
         Cast: CastApi;
 
+        CrashReportContext: CrashReportContextApi;
+
         DOM: DOMApi;
 
         DOMDebugger: DOMDebuggerApi;
@@ -1601,6 +1603,14 @@ export namespace ProtocolTestsProxyApi {
         onIssueUpdated(listener: (event: { params: Protocol.Cast.IssueUpdatedEvent }) => void): void;
         offIssueUpdated(listener: (event: { params: Protocol.Cast.IssueUpdatedEvent }) => void): void;
         onceIssueUpdated(eventMatcher?: (event: { params: Protocol.Cast.IssueUpdatedEvent }) => boolean): Promise<{ params: Protocol.Cast.IssueUpdatedEvent }>;
+
+    }
+
+    export interface CrashReportContextApi {
+        /**
+         * Returns all entries in the CrashReportContext across all frames in the page.
+         */
+        getEntries(): Promise<{id: number, result: Protocol.CrashReportContext.GetEntriesResponse, sessionId: string}>;
 
     }
 

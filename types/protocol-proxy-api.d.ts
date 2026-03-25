@@ -46,6 +46,8 @@ export namespace ProtocolProxyApi {
 
         Cast: CastApi;
 
+        CrashReportContext: CrashReportContextApi;
+
         DOM: DOMApi;
 
         DOMDebugger: DOMDebuggerApi;
@@ -1511,6 +1513,14 @@ export namespace ProtocolProxyApi {
          * |issueMessage| is empty if there is no issue.
          */
         on(event: 'issueUpdated', listener: (params: Protocol.Cast.IssueUpdatedEvent) => void): void;
+
+    }
+
+    export interface CrashReportContextApi {
+        /**
+         * Returns all entries in the CrashReportContext across all frames in the page.
+         */
+        getEntries(): Promise<Protocol.CrashReportContext.GetEntriesResponse>;
 
     }
 
