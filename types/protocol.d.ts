@@ -18888,6 +18888,7 @@ export namespace Protocol {
             loaderId: Network.LoaderId;
             action: SpeculationAction;
             url: string;
+            formSubmission?: boolean;
             targetHint?: SpeculationTargetHint;
         }
 
@@ -18918,7 +18919,7 @@ export namespace Protocol {
         /**
          * List of FinalStatus reasons for Prerender2.
          */
-        export type PrerenderFinalStatus = ('Activated' | 'Destroyed' | 'LowEndDevice' | 'InvalidSchemeRedirect' | 'InvalidSchemeNavigation' | 'NavigationRequestBlockedByCsp' | 'MojoBinderPolicy' | 'RendererProcessCrashed' | 'RendererProcessKilled' | 'Download' | 'TriggerDestroyed' | 'NavigationNotCommitted' | 'NavigationBadHttpStatus' | 'ClientCertRequested' | 'NavigationRequestNetworkError' | 'CancelAllHostsForTesting' | 'DidFailLoad' | 'Stop' | 'SslCertificateError' | 'LoginAuthRequested' | 'UaChangeRequiresReload' | 'BlockedByClient' | 'AudioOutputDeviceRequested' | 'MixedContent' | 'TriggerBackgrounded' | 'MemoryLimitExceeded' | 'DataSaverEnabled' | 'TriggerUrlHasEffectiveUrl' | 'ActivatedBeforeStarted' | 'InactivePageRestriction' | 'StartFailed' | 'TimeoutBackgrounded' | 'CrossSiteRedirectInInitialNavigation' | 'CrossSiteNavigationInInitialNavigation' | 'SameSiteCrossOriginRedirectNotOptInInInitialNavigation' | 'SameSiteCrossOriginNavigationNotOptInInInitialNavigation' | 'ActivationNavigationParameterMismatch' | 'ActivatedInBackground' | 'EmbedderHostDisallowed' | 'ActivationNavigationDestroyedBeforeSuccess' | 'TabClosedByUserGesture' | 'TabClosedWithoutUserGesture' | 'PrimaryMainFrameRendererProcessCrashed' | 'PrimaryMainFrameRendererProcessKilled' | 'ActivationFramePolicyNotCompatible' | 'PreloadingDisabled' | 'BatterySaverEnabled' | 'ActivatedDuringMainFrameNavigation' | 'PreloadingUnsupportedByWebContents' | 'CrossSiteRedirectInMainFrameNavigation' | 'CrossSiteNavigationInMainFrameNavigation' | 'SameSiteCrossOriginRedirectNotOptInInMainFrameNavigation' | 'SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation' | 'MemoryPressureOnTrigger' | 'MemoryPressureAfterTriggered' | 'PrerenderingDisabledByDevTools' | 'SpeculationRuleRemoved' | 'ActivatedWithAuxiliaryBrowsingContexts' | 'MaxNumOfRunningEagerPrerendersExceeded' | 'MaxNumOfRunningNonEagerPrerendersExceeded' | 'MaxNumOfRunningEmbedderPrerendersExceeded' | 'PrerenderingUrlHasEffectiveUrl' | 'RedirectedPrerenderingUrlHasEffectiveUrl' | 'ActivationUrlHasEffectiveUrl' | 'JavaScriptInterfaceAdded' | 'JavaScriptInterfaceRemoved' | 'AllPrerenderingCanceled' | 'WindowClosed' | 'SlowNetwork' | 'OtherPrerenderedPageActivated' | 'V8OptimizerDisabled' | 'PrerenderFailedDuringPrefetch' | 'BrowsingDataRemoved' | 'PrerenderHostReused');
+        export type PrerenderFinalStatus = ('Activated' | 'Destroyed' | 'LowEndDevice' | 'InvalidSchemeRedirect' | 'InvalidSchemeNavigation' | 'NavigationRequestBlockedByCsp' | 'MojoBinderPolicy' | 'RendererProcessCrashed' | 'RendererProcessKilled' | 'Download' | 'TriggerDestroyed' | 'NavigationNotCommitted' | 'NavigationBadHttpStatus' | 'ClientCertRequested' | 'NavigationRequestNetworkError' | 'CancelAllHostsForTesting' | 'DidFailLoad' | 'Stop' | 'SslCertificateError' | 'LoginAuthRequested' | 'UaChangeRequiresReload' | 'BlockedByClient' | 'AudioOutputDeviceRequested' | 'MixedContent' | 'TriggerBackgrounded' | 'MemoryLimitExceeded' | 'DataSaverEnabled' | 'TriggerUrlHasEffectiveUrl' | 'ActivatedBeforeStarted' | 'InactivePageRestriction' | 'StartFailed' | 'TimeoutBackgrounded' | 'CrossSiteRedirectInInitialNavigation' | 'CrossSiteNavigationInInitialNavigation' | 'SameSiteCrossOriginRedirectNotOptInInInitialNavigation' | 'SameSiteCrossOriginNavigationNotOptInInInitialNavigation' | 'ActivationNavigationParameterMismatch' | 'ActivatedInBackground' | 'EmbedderHostDisallowed' | 'ActivationNavigationDestroyedBeforeSuccess' | 'TabClosedByUserGesture' | 'TabClosedWithoutUserGesture' | 'PrimaryMainFrameRendererProcessCrashed' | 'PrimaryMainFrameRendererProcessKilled' | 'ActivationFramePolicyNotCompatible' | 'PreloadingDisabled' | 'BatterySaverEnabled' | 'ActivatedDuringMainFrameNavigation' | 'PreloadingUnsupportedByWebContents' | 'CrossSiteRedirectInMainFrameNavigation' | 'CrossSiteNavigationInMainFrameNavigation' | 'SameSiteCrossOriginRedirectNotOptInInMainFrameNavigation' | 'SameSiteCrossOriginNavigationNotOptInInMainFrameNavigation' | 'MemoryPressureOnTrigger' | 'MemoryPressureAfterTriggered' | 'PrerenderingDisabledByDevTools' | 'SpeculationRuleRemoved' | 'ActivatedWithAuxiliaryBrowsingContexts' | 'MaxNumOfRunningEagerPrerendersExceeded' | 'MaxNumOfRunningNonEagerPrerendersExceeded' | 'MaxNumOfRunningEmbedderPrerendersExceeded' | 'PrerenderingUrlHasEffectiveUrl' | 'RedirectedPrerenderingUrlHasEffectiveUrl' | 'ActivationUrlHasEffectiveUrl' | 'JavaScriptInterfaceAdded' | 'JavaScriptInterfaceRemoved' | 'AllPrerenderingCanceled' | 'WindowClosed' | 'SlowNetwork' | 'OtherPrerenderedPageActivated' | 'V8OptimizerDisabled' | 'PrerenderFailedDuringPrefetch' | 'BrowsingDataRemoved' | 'PrerenderHostReused' | 'FormSubmitWhenPrerendering');
 
         /**
          * Preloading status values, see also PreloadingTriggeringOutcome. This
@@ -20000,267 +20001,6 @@ export namespace Protocol {
         }
 
         /**
-         * @experimental
-         */
-        export type AttributionReportingSourceType = ('navigation' | 'event');
-
-        /**
-         * @experimental
-         */
-        export type UnsignedInt64AsBase10 = string;
-
-        /**
-         * @experimental
-         */
-        export type UnsignedInt128AsBase16 = string;
-
-        /**
-         * @experimental
-         */
-        export type SignedInt64AsBase10 = string;
-
-        /**
-         * @experimental
-         */
-        export interface AttributionReportingFilterDataEntry {
-            key: string;
-            values: string[];
-        }
-
-        /**
-         * @experimental
-         */
-        export interface AttributionReportingFilterConfig {
-            filterValues: AttributionReportingFilterDataEntry[];
-            /**
-             * duration in seconds
-             */
-            lookbackWindow?: integer;
-        }
-
-        /**
-         * @experimental
-         */
-        export interface AttributionReportingFilterPair {
-            filters: AttributionReportingFilterConfig[];
-            notFilters: AttributionReportingFilterConfig[];
-        }
-
-        /**
-         * @experimental
-         */
-        export interface AttributionReportingAggregationKeysEntry {
-            key: string;
-            value: UnsignedInt128AsBase16;
-        }
-
-        /**
-         * @experimental
-         */
-        export interface AttributionReportingEventReportWindows {
-            /**
-             * duration in seconds
-             */
-            start: integer;
-            /**
-             * duration in seconds
-             */
-            ends: integer[];
-        }
-
-        /**
-         * @experimental
-         */
-        export type AttributionReportingTriggerDataMatching = ('exact' | 'modulus');
-
-        /**
-         * @experimental
-         */
-        export interface AttributionReportingAggregatableDebugReportingData {
-            keyPiece: UnsignedInt128AsBase16;
-            /**
-             * number instead of integer because not all uint32 can be represented by
-             * int
-             */
-            value: number;
-            types: string[];
-        }
-
-        /**
-         * @experimental
-         */
-        export interface AttributionReportingAggregatableDebugReportingConfig {
-            /**
-             * number instead of integer because not all uint32 can be represented by
-             * int, only present for source registrations
-             */
-            budget?: number;
-            keyPiece: UnsignedInt128AsBase16;
-            debugData: AttributionReportingAggregatableDebugReportingData[];
-            aggregationCoordinatorOrigin?: string;
-        }
-
-        /**
-         * @experimental
-         */
-        export interface AttributionScopesData {
-            values: string[];
-            /**
-             * number instead of integer because not all uint32 can be represented by
-             * int
-             */
-            limit: number;
-            maxEventStates: number;
-        }
-
-        /**
-         * @experimental
-         */
-        export interface AttributionReportingNamedBudgetDef {
-            name: string;
-            budget: integer;
-        }
-
-        /**
-         * @experimental
-         */
-        export interface AttributionReportingSourceRegistration {
-            time: Network.TimeSinceEpoch;
-            /**
-             * duration in seconds
-             */
-            expiry: integer;
-            /**
-             * number instead of integer because not all uint32 can be represented by
-             * int
-             */
-            triggerData: number[];
-            eventReportWindows: AttributionReportingEventReportWindows;
-            /**
-             * duration in seconds
-             */
-            aggregatableReportWindow: integer;
-            type: AttributionReportingSourceType;
-            sourceOrigin: string;
-            reportingOrigin: string;
-            destinationSites: string[];
-            eventId: UnsignedInt64AsBase10;
-            priority: SignedInt64AsBase10;
-            filterData: AttributionReportingFilterDataEntry[];
-            aggregationKeys: AttributionReportingAggregationKeysEntry[];
-            debugKey?: UnsignedInt64AsBase10;
-            triggerDataMatching: AttributionReportingTriggerDataMatching;
-            destinationLimitPriority: SignedInt64AsBase10;
-            aggregatableDebugReportingConfig: AttributionReportingAggregatableDebugReportingConfig;
-            scopesData?: AttributionScopesData;
-            maxEventLevelReports: integer;
-            namedBudgets: AttributionReportingNamedBudgetDef[];
-            debugReporting: boolean;
-            eventLevelEpsilon: number;
-        }
-
-        /**
-         * @experimental
-         */
-        export type AttributionReportingSourceRegistrationResult = ('success' | 'internalError' | 'insufficientSourceCapacity' | 'insufficientUniqueDestinationCapacity' | 'excessiveReportingOrigins' | 'prohibitedByBrowserPolicy' | 'successNoised' | 'destinationReportingLimitReached' | 'destinationGlobalLimitReached' | 'destinationBothLimitsReached' | 'reportingOriginsPerSiteLimitReached' | 'exceedsMaxChannelCapacity' | 'exceedsMaxScopesChannelCapacity' | 'exceedsMaxTriggerStateCardinality' | 'exceedsMaxEventStatesLimit' | 'destinationPerDayReportingLimitReached');
-
-        /**
-         * @experimental
-         */
-        export type AttributionReportingSourceRegistrationTimeConfig = ('include' | 'exclude');
-
-        /**
-         * @experimental
-         */
-        export interface AttributionReportingAggregatableValueDictEntry {
-            key: string;
-            /**
-             * number instead of integer because not all uint32 can be represented by
-             * int
-             */
-            value: number;
-            filteringId: UnsignedInt64AsBase10;
-        }
-
-        /**
-         * @experimental
-         */
-        export interface AttributionReportingAggregatableValueEntry {
-            values: AttributionReportingAggregatableValueDictEntry[];
-            filters: AttributionReportingFilterPair;
-        }
-
-        /**
-         * @experimental
-         */
-        export interface AttributionReportingEventTriggerData {
-            data: UnsignedInt64AsBase10;
-            priority: SignedInt64AsBase10;
-            dedupKey?: UnsignedInt64AsBase10;
-            filters: AttributionReportingFilterPair;
-        }
-
-        /**
-         * @experimental
-         */
-        export interface AttributionReportingAggregatableTriggerData {
-            keyPiece: UnsignedInt128AsBase16;
-            sourceKeys: string[];
-            filters: AttributionReportingFilterPair;
-        }
-
-        /**
-         * @experimental
-         */
-        export interface AttributionReportingAggregatableDedupKey {
-            dedupKey?: UnsignedInt64AsBase10;
-            filters: AttributionReportingFilterPair;
-        }
-
-        /**
-         * @experimental
-         */
-        export interface AttributionReportingNamedBudgetCandidate {
-            name?: string;
-            filters: AttributionReportingFilterPair;
-        }
-
-        /**
-         * @experimental
-         */
-        export interface AttributionReportingTriggerRegistration {
-            filters: AttributionReportingFilterPair;
-            debugKey?: UnsignedInt64AsBase10;
-            aggregatableDedupKeys: AttributionReportingAggregatableDedupKey[];
-            eventTriggerData: AttributionReportingEventTriggerData[];
-            aggregatableTriggerData: AttributionReportingAggregatableTriggerData[];
-            aggregatableValues: AttributionReportingAggregatableValueEntry[];
-            aggregatableFilteringIdMaxBytes: integer;
-            debugReporting: boolean;
-            aggregationCoordinatorOrigin?: string;
-            sourceRegistrationTimeConfig: AttributionReportingSourceRegistrationTimeConfig;
-            triggerContextId?: string;
-            aggregatableDebugReportingConfig: AttributionReportingAggregatableDebugReportingConfig;
-            scopes: string[];
-            namedBudgets: AttributionReportingNamedBudgetCandidate[];
-        }
-
-        /**
-         * @experimental
-         */
-        export type AttributionReportingEventLevelResult = ('success' | 'successDroppedLowerPriority' | 'internalError' | 'noCapacityForAttributionDestination' | 'noMatchingSources' | 'deduplicated' | 'excessiveAttributions' | 'priorityTooLow' | 'neverAttributedSource' | 'excessiveReportingOrigins' | 'noMatchingSourceFilterData' | 'prohibitedByBrowserPolicy' | 'noMatchingConfigurations' | 'excessiveReports' | 'falselyAttributedSource' | 'reportWindowPassed' | 'notRegistered' | 'reportWindowNotStarted' | 'noMatchingTriggerData');
-
-        /**
-         * @experimental
-         */
-        export type AttributionReportingAggregatableResult = ('success' | 'internalError' | 'noCapacityForAttributionDestination' | 'noMatchingSources' | 'excessiveAttributions' | 'excessiveReportingOrigins' | 'noHistograms' | 'insufficientBudget' | 'insufficientNamedBudget' | 'noMatchingSourceFilterData' | 'notRegistered' | 'prohibitedByBrowserPolicy' | 'deduplicated' | 'reportWindowPassed' | 'excessiveReports');
-
-        /**
-         * @experimental
-         */
-        export type AttributionReportingReportResult = ('sent' | 'prohibited' | 'failedToAssemble' | 'expired');
-
-        /**
          * A single Related Website Set object.
          * @experimental
          */
@@ -20543,24 +20283,6 @@ export namespace Protocol {
             deletedSites: string[];
         }
 
-        export interface SetAttributionReportingLocalTestingModeRequest {
-            /**
-             * If enabled, noise is suppressed and reports are sent immediately.
-             */
-            enabled: boolean;
-        }
-
-        export interface SetAttributionReportingTrackingRequest {
-            enable: boolean;
-        }
-
-        export interface SendPendingAttributionReportsResponse {
-            /**
-             * The number of reports that were sent.
-             */
-            numSent: integer;
-        }
-
         export interface GetRelatedWebsiteSetsResponse {
             sets: RelatedWebsiteSet[];
         }
@@ -20813,49 +20535,6 @@ export namespace Protocol {
 
         export interface StorageBucketDeletedEvent {
             bucketId: string;
-        }
-
-        /**
-         * @experimental
-         */
-        export interface AttributionReportingSourceRegisteredEvent {
-            registration: AttributionReportingSourceRegistration;
-            result: AttributionReportingSourceRegistrationResult;
-        }
-
-        /**
-         * @experimental
-         */
-        export interface AttributionReportingTriggerRegisteredEvent {
-            registration: AttributionReportingTriggerRegistration;
-            eventLevel: AttributionReportingEventLevelResult;
-            aggregatable: AttributionReportingAggregatableResult;
-        }
-
-        /**
-         * @experimental
-         */
-        export interface AttributionReportingReportSentEvent {
-            url: string;
-            body: any;
-            result: AttributionReportingReportResult;
-            /**
-             * If result is `sent`, populated with net/HTTP status.
-             */
-            netError?: integer;
-            netErrorName?: string;
-            httpStatusCode?: integer;
-        }
-
-        /**
-         * @experimental
-         */
-        export interface AttributionReportingVerboseDebugReportSentEvent {
-            url: string;
-            body?: any[];
-            netError?: integer;
-            netErrorName?: string;
-            httpStatusCode?: integer;
         }
     }
 

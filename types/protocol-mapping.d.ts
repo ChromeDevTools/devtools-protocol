@@ -977,22 +977,6 @@ export namespace ProtocolMapping {
         'Storage.storageBucketCreatedOrUpdated': [Protocol.Storage.StorageBucketCreatedOrUpdatedEvent];
         'Storage.storageBucketDeleted': [Protocol.Storage.StorageBucketDeletedEvent];
         /**
-         * @experimental
-         */
-        'Storage.attributionReportingSourceRegistered': [Protocol.Storage.AttributionReportingSourceRegisteredEvent];
-        /**
-         * @experimental
-         */
-        'Storage.attributionReportingTriggerRegistered': [Protocol.Storage.AttributionReportingTriggerRegisteredEvent];
-        /**
-         * @experimental
-         */
-        'Storage.attributionReportingReportSent': [Protocol.Storage.AttributionReportingReportSentEvent];
-        /**
-         * @experimental
-         */
-        'Storage.attributionReportingVerboseDebugReportSent': [Protocol.Storage.AttributionReportingVerboseDebugReportSentEvent];
-        /**
          * Issued when attached to target because of auto-attach or `attachToTarget` command.
          * @experimental
          */
@@ -5930,31 +5914,6 @@ export namespace ProtocolMapping {
             returnType: Protocol.Storage.RunBounceTrackingMitigationsResponse;
         };
         /**
-         * https://wicg.github.io/attribution-reporting-api/
-         * @experimental
-         */
-        'Storage.setAttributionReportingLocalTestingMode': {
-            paramsType: [Protocol.Storage.SetAttributionReportingLocalTestingModeRequest];
-            returnType: void;
-        };
-        /**
-         * Enables/disables issuing of Attribution Reporting events.
-         * @experimental
-         */
-        'Storage.setAttributionReportingTracking': {
-            paramsType: [Protocol.Storage.SetAttributionReportingTrackingRequest];
-            returnType: void;
-        };
-        /**
-         * Sends all pending Attribution Reports immediately, regardless of their
-         * scheduled report time.
-         * @experimental
-         */
-        'Storage.sendPendingAttributionReports': {
-            paramsType: [];
-            returnType: Protocol.Storage.SendPendingAttributionReportsResponse;
-        };
-        /**
          * Returns the effective Related Website Sets in use by this profile for the browser
          * session. The effective Related Website Sets will not change during a browser session.
          * @experimental
@@ -6346,6 +6305,13 @@ export namespace ProtocolMapping {
          * all currently registered tools.
          */
         'WebMCP.enable': {
+            paramsType: [];
+            returnType: void;
+        };
+        /**
+         * Disables the WebMCP domain.
+         */
+        'WebMCP.disable': {
             paramsType: [];
             returnType: void;
         };

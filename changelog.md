@@ -1,7 +1,341 @@
 
 
+## Roll protocol to r1608973 — _2026-04-02T05:06:03.000Z_
+######  Diff: [`1abe750...f8a54d4`](https://github.com/ChromeDevTools/devtools-protocol/compare/1abe750...f8a54d4)
+
+```diff
+@@ domains/Preload.pdl:77 @@ experimental domain Preload
+       Network.LoaderId loaderId
+       SpeculationAction action
+       string url
++      optional boolean formSubmission
+       optional SpeculationTargetHint targetHint
+ 
+   # Lists sources for a preloading attempt, specifically the ids of rule sets
+@@ -189,6 +190,7 @@ experimental domain Preload
+       PrerenderFailedDuringPrefetch
+       BrowsingDataRemoved
+       PrerenderHostReused
++      FormSubmitWhenPrerendering
+ 
+   # Fired when a preload enabled state is updated.
+   event preloadEnabledStateUpdated
+diff --git a/pdl/domains/Storage.pdl b/pdl/domains/Storage.pdl
+index 973259c0..f2550f78 100644
+--- a/pdl/domains/Storage.pdl
++++ b/pdl/domains/Storage.pdl
+@@ -606,284 +606,6 @@ experimental domain Storage
+     parameters
+       string bucketId
+ 
+-  # https://wicg.github.io/attribution-reporting-api/
+-  experimental command setAttributionReportingLocalTestingMode
+-    parameters
+-      # If enabled, noise is suppressed and reports are sent immediately.
+-      boolean enabled
+-
+-  # Enables/disables issuing of Attribution Reporting events.
+-  experimental command setAttributionReportingTracking
+-    parameters
+-      boolean enable
+-
+-  # Sends all pending Attribution Reports immediately, regardless of their
+-  # scheduled report time.
+-  experimental command sendPendingAttributionReports
+-    returns
+-      # The number of reports that were sent.
+-      integer numSent
+-
+-  experimental type AttributionReportingSourceType extends string
+-    enum
+-      navigation
+-      event
+-
+-  experimental type UnsignedInt64AsBase10 extends string
+-  experimental type UnsignedInt128AsBase16 extends string
+-  experimental type SignedInt64AsBase10 extends string
+-
+-  experimental type AttributionReportingFilterDataEntry extends object
+-    properties
+-      string key
+-      array of string values
+-
+-  experimental type AttributionReportingFilterConfig extends object
+-    properties
+-      array of AttributionReportingFilterDataEntry filterValues
+-      # duration in seconds
+-      optional integer lookbackWindow
+-
+-  experimental type AttributionReportingFilterPair extends object
+-    properties
+-      array of AttributionReportingFilterConfig filters
+-      array of AttributionReportingFilterConfig notFilters
+-
+-  experimental type AttributionReportingAggregationKeysEntry extends object
+-    properties
+-      string key
+-      UnsignedInt128AsBase16 value
+-
+-  experimental type AttributionReportingEventReportWindows extends object
+-    properties
+-      # duration in seconds
+-      integer start
+-      # duration in seconds
+-      array of integer ends
+-
+-  experimental type AttributionReportingTriggerDataMatching extends string
+-    enum
+-      exact
+-      modulus
+-
+-  experimental type AttributionReportingAggregatableDebugReportingData extends object
+-    properties
+-      UnsignedInt128AsBase16 keyPiece
+-      # number instead of integer because not all uint32 can be represented by
+-      # int
+-      number value
+-      array of string types
+-
+-  experimental type AttributionReportingAggregatableDebugReportingConfig extends object
+-    properties
+-      # number instead of integer because not all uint32 can be represented by
+-      # int, only present for source registrations
+-      optional number budget
+-      UnsignedInt128AsBase16 keyPiece
+-      array of AttributionReportingAggregatableDebugReportingData debugData
+-      optional string aggregationCoordinatorOrigin
+-
+-  experimental type AttributionScopesData extends object
+-    properties
+-      array of string values
+-      # number instead of integer because not all uint32 can be represented by
+-      # int
+-      number limit
+-      number maxEventStates
+-
+-  experimental type AttributionReportingNamedBudgetDef extends object
+-    properties
+-      string name
+-      integer budget
+-
+-  experimental type AttributionReportingSourceRegistration extends object
+-    properties
+-      Network.TimeSinceEpoch time
+-      # duration in seconds
+-      integer expiry
+-      # number instead of integer because not all uint32 can be represented by
+-      # int
+-      array of number triggerData
+-      AttributionReportingEventReportWindows eventReportWindows
+-      # duration in seconds
+-      integer aggregatableReportWindow
+-      AttributionReportingSourceType type
+-      string sourceOrigin
+-      string reportingOrigin
+-      array of string destinationSites
+-      UnsignedInt64AsBase10 eventId
+-      SignedInt64AsBase10 priority
+-      array of AttributionReportingFilterDataEntry filterData
+-      array of AttributionReportingAggregationKeysEntry aggregationKeys
+-      optional UnsignedInt64AsBase10 debugKey
+-      AttributionReportingTriggerDataMatching triggerDataMatching
+-      SignedInt64AsBase10 destinationLimitPriority
+-      AttributionReportingAggregatableDebugReportingConfig aggregatableDebugReportingConfig
+-      optional AttributionScopesData scopesData
+-      integer maxEventLevelReports
+-      array of AttributionReportingNamedBudgetDef namedBudgets
+-      boolean debugReporting
+-      number eventLevelEpsilon
+-
+-  experimental type AttributionReportingSourceRegistrationResult extends string
+-    enum
+-      success
+-      internalError
+-      insufficientSourceCapacity
+-      insufficientUniqueDestinationCapacity
+-      excessiveReportingOrigins
+-      prohibitedByBrowserPolicy
+-      successNoised
+-      destinationReportingLimitReached
+-      destinationGlobalLimitReached
+-      destinationBothLimitsReached
+-      reportingOriginsPerSiteLimitReached
+-      exceedsMaxChannelCapacity
+-      exceedsMaxScopesChannelCapacity
+-      exceedsMaxTriggerStateCardinality
+-      exceedsMaxEventStatesLimit
+-      destinationPerDayReportingLimitReached
+-
+-  experimental event attributionReportingSourceRegistered
+-    parameters
+-      AttributionReportingSourceRegistration registration
+-      AttributionReportingSourceRegistrationResult result
+-
+-  experimental type AttributionReportingSourceRegistrationTimeConfig extends string
+-    enum
+-      include
+-      exclude
+-
+-  experimental type AttributionReportingAggregatableValueDictEntry extends object
+-    properties
+-      string key
+-      # number instead of integer because not all uint32 can be represented by
+-      # int
+-      number value
+-      UnsignedInt64AsBase10 filteringId
+-
+-
+-  experimental type AttributionReportingAggregatableValueEntry extends object
+-    properties
+-      array of AttributionReportingAggregatableValueDictEntry values
+-      AttributionReportingFilterPair filters
+-
+-  experimental type AttributionReportingEventTriggerData extends object
+-    properties
+-      UnsignedInt64AsBase10 data
+-      SignedInt64AsBase10 priority
+-      optional UnsignedInt64AsBase10 dedupKey
+-      AttributionReportingFilterPair filters
+-
+-  experimental type AttributionReportingAggregatableTriggerData extends object
+-    properties
+-      UnsignedInt128AsBase16 keyPiece
+-      array of string sourceKeys
+-      AttributionReportingFilterPair filters
+-
+-  experimental type AttributionReportingAggregatableDedupKey extends object
+-    properties
+-      optional UnsignedInt64AsBase10 dedupKey
+-      AttributionReportingFilterPair filters
+-
+-  experimental type AttributionReportingNamedBudgetCandidate extends object
+-    properties
+-      optional string name
+-      AttributionReportingFilterPair filters
+-
+-  experimental type AttributionReportingTriggerRegistration extends object
+-    properties
+-      AttributionReportingFilterPair filters
+-      optional UnsignedInt64AsBase10 debugKey
+-      array of AttributionReportingAggregatableDedupKey aggregatableDedupKeys
+-      array of AttributionReportingEventTriggerData eventTriggerData
+-      array of AttributionReportingAggregatableTriggerData aggregatableTriggerData
+-      array of AttributionReportingAggregatableValueEntry aggregatableValues
+-      integer aggregatableFilteringIdMaxBytes
+-      boolean debugReporting
+-      optional string aggregationCoordinatorOrigin
+-      AttributionReportingSourceRegistrationTimeConfig sourceRegistrationTimeConfig
+-      optional string triggerContextId
+-      AttributionReportingAggregatableDebugReportingConfig aggregatableDebugReportingConfig
+-      array of string scopes
+-      array of AttributionReportingNamedBudgetCandidate namedBudgets
+-
+-  experimental type AttributionReportingEventLevelResult extends string
+-    enum
+-      success
+-      successDroppedLowerPriority
+-      internalError
+-      noCapacityForAttributionDestination
+-      noMatchingSources
+-      deduplicated
+-      excessiveAttributions
+-      priorityTooLow
+-      neverAttributedSource
+-      excessiveReportingOrigins
+-      noMatchingSourceFilterData
+-      prohibitedByBrowserPolicy
+-      noMatchingConfigurations
+-      excessiveReports
+-      falselyAttributedSource
+-      reportWindowPassed
+-      notRegistered
+-      reportWindowNotStarted
+-      noMatchingTriggerData
+-
+-  experimental type AttributionReportingAggregatableResult extends string
+-    enum
+-      success
+-      internalError
+-      noCapacityForAttributionDestination
+-      noMatchingSources
+-      excessiveAttributions
+-      excessiveReportingOrigins
+-      noHistograms
+-      insufficientBudget
+-      insufficientNamedBudget
+-      noMatchingSourceFilterData
+-      notRegistered
+-      prohibitedByBrowserPolicy
+-      deduplicated
+-      reportWindowPassed
+-      excessiveReports
+-
+-  experimental event attributionReportingTriggerRegistered
+-    parameters
+-      AttributionReportingTriggerRegistration registration
+-      AttributionReportingEventLevelResult eventLevel
+-      AttributionReportingAggregatableResult aggregatable
+-
+-  experimental type AttributionReportingReportResult extends string
+-    enum
+-      # A network request was attempted for the report.
+-      sent
+-      # No request was attempted because of browser policy.
+-      prohibited
+-      # No request was attempted because of an error in report assembly,
+-      # e.g. the aggregation service was unavailable.
+-      failedToAssemble
+-      # No request was attempted because the report's expiry passed.
+-      expired
+-
+-  experimental event attributionReportingReportSent
+-    parameters
+-      string url
+-      object body
+-      AttributionReportingReportResult result
+-      # If result is `sent`, populated with net/HTTP status.
+-      optional integer netError
+-      optional string netErrorName
+-      optional integer httpStatusCode
+-
+-  experimental event attributionReportingVerboseDebugReportSent
+-    parameters
+-      string url
+-      optional array of object body
+-      optional integer netError
+-      optional string netErrorName
+-      optional integer httpStatusCode
+-
+   # A single Related Website Set object.
+   experimental type RelatedWebsiteSet extends object
+     properties
+diff --git a/pdl/domains/WebMCP.pdl b/pdl/domains/WebMCP.pdl
+index a1696cd2..e959260d 100644
+--- a/pdl/domains/WebMCP.pdl
++++ b/pdl/domains/WebMCP.pdl
+@@ -48,6 +48,9 @@ experimental domain WebMCP
+   # all currently registered tools.
+   command enable
+ 
++  # Disables the WebMCP domain.
++  command disable
++
+   # Event fired when new tools are added.
+   event toolsAdded
+     parameters
+@@ -80,7 +83,7 @@ experimental domain WebMCP
+       # Status of the invocation.
+       InvocationStatus status
+       # Output or error delivered as delivered to the agent. Missing if `status` is anything other than Success.
+-      optional object output
++      optional any output
+       # Error text for protocol users.
+       optional string errorText
+       # The exception object, if the javascript tool threw an error>
+```
+
 ## Roll protocol to r1604597 — _2026-03-25T05:02:28.000Z_
-######  Diff: [`94a770f...405b454`](https://github.com/ChromeDevTools/devtools-protocol/compare/94a770f...405b454)
+######  Diff: [`94a770f...1abe750`](https://github.com/ChromeDevTools/devtools-protocol/compare/94a770f...1abe750)
 
 ```diff
 @@ browser_protocol.pdl:18 @@ include domains/Browser.pdl
@@ -42782,19 +43116,4 @@ index 7a3c772c..ed622630 100644
        # Disabled for RenderFrameHost reasons
        # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
        ContentSecurityHandler
-```
-
-## Roll protocol to r1152352 — _2023-06-02T04:26:31.000Z_
-######  Diff: [`11fd654...7eaf459`](https://github.com/ChromeDevTools/devtools-protocol/compare/11fd654...7eaf459)
-
-```diff
-@@ browser_protocol.pdl:3984 @@ experimental domain HeadlessExperimental
-         jpeg
-         png
-         webp
--      # Compression quality from range [0..100] (jpeg only).
-+      # Compression quality from range [0..100] (jpeg and webp only).
-       optional integer quality
-       # Optimize image encoding for speed, not for resulting size (defaults to false)
-       optional boolean optimizeForSpeed
 ```

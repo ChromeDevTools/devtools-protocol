@@ -4955,25 +4955,6 @@ export namespace ProtocolProxyApi {
         runBounceTrackingMitigations(): Promise<Protocol.Storage.RunBounceTrackingMitigationsResponse>;
 
         /**
-         * https://wicg.github.io/attribution-reporting-api/
-         * @experimental
-         */
-        setAttributionReportingLocalTestingMode(params: Protocol.Storage.SetAttributionReportingLocalTestingModeRequest): Promise<void>;
-
-        /**
-         * Enables/disables issuing of Attribution Reporting events.
-         * @experimental
-         */
-        setAttributionReportingTracking(params: Protocol.Storage.SetAttributionReportingTrackingRequest): Promise<void>;
-
-        /**
-         * Sends all pending Attribution Reports immediately, regardless of their
-         * scheduled report time.
-         * @experimental
-         */
-        sendPendingAttributionReports(): Promise<Protocol.Storage.SendPendingAttributionReportsResponse>;
-
-        /**
          * Returns the effective Related Website Sets in use by this profile for the browser
          * session. The effective Related Website Sets will not change during a browser session.
          * @experimental
@@ -5045,26 +5026,6 @@ export namespace ProtocolProxyApi {
         on(event: 'storageBucketCreatedOrUpdated', listener: (params: Protocol.Storage.StorageBucketCreatedOrUpdatedEvent) => void): void;
 
         on(event: 'storageBucketDeleted', listener: (params: Protocol.Storage.StorageBucketDeletedEvent) => void): void;
-
-        /**
-         * @experimental
-         */
-        on(event: 'attributionReportingSourceRegistered', listener: (params: Protocol.Storage.AttributionReportingSourceRegisteredEvent) => void): void;
-
-        /**
-         * @experimental
-         */
-        on(event: 'attributionReportingTriggerRegistered', listener: (params: Protocol.Storage.AttributionReportingTriggerRegisteredEvent) => void): void;
-
-        /**
-         * @experimental
-         */
-        on(event: 'attributionReportingReportSent', listener: (params: Protocol.Storage.AttributionReportingReportSentEvent) => void): void;
-
-        /**
-         * @experimental
-         */
-        on(event: 'attributionReportingVerboseDebugReportSent', listener: (params: Protocol.Storage.AttributionReportingVerboseDebugReportSentEvent) => void): void;
 
     }
 
@@ -5514,6 +5475,11 @@ export namespace ProtocolProxyApi {
          * all currently registered tools.
          */
         enable(): Promise<void>;
+
+        /**
+         * Disables the WebMCP domain.
+         */
+        disable(): Promise<void>;
 
         /**
          * Event fired when new tools are added.

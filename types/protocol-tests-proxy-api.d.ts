@@ -5343,25 +5343,6 @@ export namespace ProtocolTestsProxyApi {
         runBounceTrackingMitigations(): Promise<{id: number, result: Protocol.Storage.RunBounceTrackingMitigationsResponse, sessionId: string}>;
 
         /**
-         * https://wicg.github.io/attribution-reporting-api/
-         * @experimental
-         */
-        setAttributionReportingLocalTestingMode(params: Protocol.Storage.SetAttributionReportingLocalTestingModeRequest): Promise<{id: number, result: void, sessionId: string}>;
-
-        /**
-         * Enables/disables issuing of Attribution Reporting events.
-         * @experimental
-         */
-        setAttributionReportingTracking(params: Protocol.Storage.SetAttributionReportingTrackingRequest): Promise<{id: number, result: void, sessionId: string}>;
-
-        /**
-         * Sends all pending Attribution Reports immediately, regardless of their
-         * scheduled report time.
-         * @experimental
-         */
-        sendPendingAttributionReports(): Promise<{id: number, result: Protocol.Storage.SendPendingAttributionReportsResponse, sessionId: string}>;
-
-        /**
          * Returns the effective Related Website Sets in use by this profile for the browser
          * session. The effective Related Website Sets will not change during a browser session.
          * @experimental
@@ -5455,34 +5436,6 @@ export namespace ProtocolTestsProxyApi {
         onStorageBucketDeleted(listener: (event: { params: Protocol.Storage.StorageBucketDeletedEvent }) => void): void;
         offStorageBucketDeleted(listener: (event: { params: Protocol.Storage.StorageBucketDeletedEvent }) => void): void;
         onceStorageBucketDeleted(eventMatcher?: (event: { params: Protocol.Storage.StorageBucketDeletedEvent }) => boolean): Promise<{ params: Protocol.Storage.StorageBucketDeletedEvent }>;
-
-        /**
-         * @experimental
-         */
-        onAttributionReportingSourceRegistered(listener: (event: { params: Protocol.Storage.AttributionReportingSourceRegisteredEvent }) => void): void;
-        offAttributionReportingSourceRegistered(listener: (event: { params: Protocol.Storage.AttributionReportingSourceRegisteredEvent }) => void): void;
-        onceAttributionReportingSourceRegistered(eventMatcher?: (event: { params: Protocol.Storage.AttributionReportingSourceRegisteredEvent }) => boolean): Promise<{ params: Protocol.Storage.AttributionReportingSourceRegisteredEvent }>;
-
-        /**
-         * @experimental
-         */
-        onAttributionReportingTriggerRegistered(listener: (event: { params: Protocol.Storage.AttributionReportingTriggerRegisteredEvent }) => void): void;
-        offAttributionReportingTriggerRegistered(listener: (event: { params: Protocol.Storage.AttributionReportingTriggerRegisteredEvent }) => void): void;
-        onceAttributionReportingTriggerRegistered(eventMatcher?: (event: { params: Protocol.Storage.AttributionReportingTriggerRegisteredEvent }) => boolean): Promise<{ params: Protocol.Storage.AttributionReportingTriggerRegisteredEvent }>;
-
-        /**
-         * @experimental
-         */
-        onAttributionReportingReportSent(listener: (event: { params: Protocol.Storage.AttributionReportingReportSentEvent }) => void): void;
-        offAttributionReportingReportSent(listener: (event: { params: Protocol.Storage.AttributionReportingReportSentEvent }) => void): void;
-        onceAttributionReportingReportSent(eventMatcher?: (event: { params: Protocol.Storage.AttributionReportingReportSentEvent }) => boolean): Promise<{ params: Protocol.Storage.AttributionReportingReportSentEvent }>;
-
-        /**
-         * @experimental
-         */
-        onAttributionReportingVerboseDebugReportSent(listener: (event: { params: Protocol.Storage.AttributionReportingVerboseDebugReportSentEvent }) => void): void;
-        offAttributionReportingVerboseDebugReportSent(listener: (event: { params: Protocol.Storage.AttributionReportingVerboseDebugReportSentEvent }) => void): void;
-        onceAttributionReportingVerboseDebugReportSent(eventMatcher?: (event: { params: Protocol.Storage.AttributionReportingVerboseDebugReportSentEvent }) => boolean): Promise<{ params: Protocol.Storage.AttributionReportingVerboseDebugReportSentEvent }>;
 
     }
 
@@ -5988,6 +5941,11 @@ export namespace ProtocolTestsProxyApi {
          * all currently registered tools.
          */
         enable(): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
+         * Disables the WebMCP domain.
+         */
+        disable(): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Event fired when new tools are added.
