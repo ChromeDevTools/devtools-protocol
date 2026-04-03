@@ -4961,14 +4961,6 @@ export namespace ProtocolProxyApi {
          */
         getRelatedWebsiteSets(): Promise<Protocol.Storage.GetRelatedWebsiteSetsResponse>;
 
-        /**
-         * Returns the list of URLs from a page and its embedded resources that match
-         * existing grace period URL pattern rules.
-         * https://developers.google.com/privacy-sandbox/cookies/temporary-exceptions/grace-period
-         * @experimental
-         */
-        getAffectedUrlsForThirdPartyCookieMetadata(params: Protocol.Storage.GetAffectedUrlsForThirdPartyCookieMetadataRequest): Promise<Protocol.Storage.GetAffectedUrlsForThirdPartyCookieMetadataResponse>;
-
         setProtectedAudienceKAnonymity(params: Protocol.Storage.SetProtectedAudienceKAnonymityRequest): Promise<void>;
 
         /**

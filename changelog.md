@@ -1,7 +1,47 @@
 
 
+## Roll protocol to r1609665 — _2026-04-03T05:04:04.000Z_
+######  Diff: [`96e0325...b7fdfa9`](https://github.com/ChromeDevTools/devtools-protocol/compare/96e0325...b7fdfa9)
+
+```diff
+@@ domains/Page.pdl:123 @@ domain Page
+       encrypted-media
+       execution-while-out-of-viewport
+       execution-while-not-rendered
+-      fenced-unpartitioned-storage-read
+       focus-without-user-activation
+       fullscreen
+       frobulate
+diff --git a/pdl/domains/Storage.pdl b/pdl/domains/Storage.pdl
+index f2550f78..100e94d7 100644
+--- a/pdl/domains/Storage.pdl
++++ b/pdl/domains/Storage.pdl
+@@ -622,21 +622,6 @@ experimental domain Storage
+     returns
+       array of RelatedWebsiteSet sets
+ 
+-  # Returns the list of URLs from a page and its embedded resources that match
+-  # existing grace period URL pattern rules.
+-  # https://developers.google.com/privacy-sandbox/cookies/temporary-exceptions/grace-period
+-  experimental command getAffectedUrlsForThirdPartyCookieMetadata
+-    parameters
+-      # The URL of the page currently being visited.
+-      string firstPartyUrl
+-      # The list of embedded resource URLs from the page.
+-      array of string thirdPartyUrls
+-
+-    returns
+-      # Array of matching URLs. If there is a primary pattern match for the first-
+-      # party URL, only the first-party URL is returned in the array.
+-      array of string matchedUrls
+-
+   command setProtectedAudienceKAnonymity
+     parameters
+       string owner
+```
+
 ## Roll protocol to r1608973 — _2026-04-02T05:06:03.000Z_
-######  Diff: [`1abe750...f8a54d4`](https://github.com/ChromeDevTools/devtools-protocol/compare/1abe750...f8a54d4)
+######  Diff: [`1abe750...96e0325`](https://github.com/ChromeDevTools/devtools-protocol/compare/1abe750...96e0325)
 
 ```diff
 @@ domains/Preload.pdl:77 @@ experimental domain Preload
@@ -43079,41 +43119,4 @@ index 7a3c772c..ed622630 100644
  
    # A unique id for a DevTools inspector issue. Allows other entities (e.g.
    # exceptions, CDP message, console messages, etc.) to reference an issue.
-```
-
-## Roll protocol to r1152884 — _2023-06-03T04:26:19.000Z_
-######  Diff: [`7eaf459...d9d9e42`](https://github.com/ChromeDevTools/devtools-protocol/compare/7eaf459...d9d9e42)
-
-```diff
-@@ browser_protocol.pdl:6560 @@ domain Network
-       optional string reportingEndpoint
-       optional string reportOnlyReportingEndpoint
- 
-+  experimental type ContentSecurityPolicySource extends string
-+    enum
-+      HTTP
-+      Meta
-+
-+  experimental type ContentSecurityPolicyStatus extends object
-+    properties
-+      string effectiveDirectives
-+      boolean isEnforced
-+      ContentSecurityPolicySource source
-+
-   experimental type SecurityIsolationStatus extends object
-     properties
-       optional CrossOriginOpenerPolicyStatus coop
-       optional CrossOriginEmbedderPolicyStatus coep
-+      optional array of ContentSecurityPolicyStatus csp
- 
-   # Returns information about the COEP/COOP isolation status.
-   experimental command getSecurityIsolationStatus
-@@ -8511,6 +8523,7 @@ domain Page
-       IndexedDBEvent
-       Dummy
-       AuthorizationHeader
-+      WebSerial
-       # Disabled for RenderFrameHost reasons
-       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
-       ContentSecurityHandler
 ```
