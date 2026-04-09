@@ -14736,14 +14736,6 @@ export namespace Protocol {
              * Whether 3pc restriction is enabled.
              */
             enableThirdPartyCookieRestriction: boolean;
-            /**
-             * Whether 3pc grace period exception should be enabled; false by default.
-             */
-            disableThirdPartyCookieMetadata: boolean;
-            /**
-             * Whether 3pc heuristics exceptions should be enabled; false by default.
-             */
-            disableThirdPartyCookieHeuristics: boolean;
         }
 
         /**

@@ -1,7 +1,23 @@
 
 
+## Roll protocol to r1611976 — _2026-04-09T05:05:15.000Z_
+######  Diff: [`cde0f4e...81e43e2`](https://github.com/ChromeDevTools/devtools-protocol/compare/cde0f4e...81e43e2)
+
+```diff
+@@ domains/Network.pdl:2377 @@ domain Network
+     parameters
+       # Whether 3pc restriction is enabled.
+       boolean enableThirdPartyCookieRestriction
+-
+-      # Whether 3pc grace period exception should be enabled; false by default.
+-      boolean disableThirdPartyCookieMetadata
+-
+-      # Whether 3pc heuristics exceptions should be enabled; false by default.
+-      boolean disableThirdPartyCookieHeuristics
+```
+
 ## Roll protocol to r1609665 — _2026-04-03T05:04:04.000Z_
-######  Diff: [`96e0325...b7fdfa9`](https://github.com/ChromeDevTools/devtools-protocol/compare/96e0325...b7fdfa9)
+######  Diff: [`96e0325...cde0f4e`](https://github.com/ChromeDevTools/devtools-protocol/compare/96e0325...cde0f4e)
 
 ```diff
 @@ domains/Page.pdl:123 @@ domain Page
@@ -43068,55 +43084,4 @@ index 7a3c772c..ed622630 100644
  
    # Fired when a prerender attempt is completed.
    event prerenderAttemptCompleted
-```
-
-## Roll protocol to r1154250 — _2023-06-07T04:26:56.000Z_
-######  Diff: [`d9d9e42...0c65644`](https://github.com/ChromeDevTools/devtools-protocol/compare/d9d9e42...0c65644)
-
-```diff
-@@ browser_protocol.pdl:827 @@ experimental domain Audits
-       SourceCodeLocation sourceCodeLocation
-       ClientHintIssueReason clientHintIssueReason
- 
-+  type FailedRequestInfo extends object
-+    properties
-+      # The URL that failed to load.
-+      string url
-+      # The failure message for the failed request.
-+      string failureMessage
-+
-+  type StyleSheetLoadingIssueReason extends string
-+    enum
-+      LateImportRule
-+      RequestFailed
-+
-+  # This issue warns when a referenced stylesheet couldn't be loaded.
-+  type StylesheetLoadingIssueDetails extends object
-+    properties
-+      # Source code position that referenced the failing stylesheet.
-+      SourceCodeLocation sourceCodeLocation
-+      # Reason why the stylesheet couldn't be loaded.
-+      StyleSheetLoadingIssueReason styleSheetLoadingIssueReason
-+      # Contains additional info when the failure was due to a request.
-+      optional FailedRequestInfo failedRequestInfo
-+
-   # A unique identifier for the type of issue. Each type may use one of the
-   # optional fields in InspectorIssueDetails to convey more specific
-   # information about the kind of issue.
-@@ -848,6 +870,7 @@ experimental domain Audits
-       ClientHintIssue
-       FederatedAuthRequestIssue
-       BounceTrackingIssue
-+      StylesheetLoadingIssue
- 
-   # This struct holds a list of optional fields with additional information
-   # specific to the kind of issue. When adding a new issue code, please also
-@@ -870,6 +893,7 @@ experimental domain Audits
-       optional ClientHintIssueDetails clientHintIssueDetails
-       optional FederatedAuthRequestIssueDetails federatedAuthRequestIssueDetails
-       optional BounceTrackingIssueDetails bounceTrackingIssueDetails
-+      optional StylesheetLoadingIssueDetails stylesheetLoadingIssueDetails
- 
-   # A unique id for a DevTools inspector issue. Allows other entities (e.g.
-   # exceptions, CDP message, console messages, etc.) to reference an issue.
 ```
