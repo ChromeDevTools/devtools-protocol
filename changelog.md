@@ -1,7 +1,36 @@
 
 
+## Roll protocol to r1612613 — _2026-04-10T05:13:47.000Z_
+######  Diff: [`e24bc04...2fea7b9`](https://github.com/ChromeDevTools/devtools-protocol/compare/e24bc04...2fea7b9)
+
+```diff
+@@ domains/Network.pdl:1057 @@ domain Network
+       optional integer packetQueueLength
+       # WebRTC packetReordering feature.
+       optional boolean packetReordering
++      # True to emulate internet disconnection.
++      optional boolean offline
+ 
+   # Activates emulation of network conditions. This command is deprecated in favor of the emulateNetworkConditionsByRule
+   # and overrideNetworkState commands, which can be used together to the same effect.
+@@ -1084,8 +1086,11 @@ domain Network
+   # explicitly modify `navigator` behavior.
+   experimental command emulateNetworkConditionsByRule
+     parameters
+-      # True to emulate internet disconnection.
+-      boolean offline
++      # True to emulate internet disconnection. Deprecated, use the offline property in matchedNetworkConditions
++      # or emulateOfflineServiceWorker instead.
++      deprecated optional boolean offline
++      # True to emulate offline service worker.
++      optional boolean emulateOfflineServiceWorker
+       # Configure conditions for matching requests. If multiple entries match a request, the first entry wins.  Global
+       # conditions can be configured by leaving the urlPattern for the conditions empty. These global conditions are
+       # also applied for throttling of p2p connections.
+```
+
 ## Roll protocol to r1611976 — _2026-04-09T05:05:15.000Z_
-######  Diff: [`cde0f4e...81e43e2`](https://github.com/ChromeDevTools/devtools-protocol/compare/cde0f4e...81e43e2)
+######  Diff: [`cde0f4e...e24bc04`](https://github.com/ChromeDevTools/devtools-protocol/compare/cde0f4e...e24bc04)
 
 ```diff
 @@ domains/Network.pdl:2377 @@ domain Network
@@ -43008,80 +43037,4 @@ index 7a3c772c..ed622630 100644
        # Disabled for RenderFrameHost reasons
        # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
        ContentSecurityHandler
-```
-
-## Roll protocol to r1155343 — _2023-06-09T04:26:30.000Z_
-######  Diff: [`0c65644...7ca37f8`](https://github.com/ChromeDevTools/devtools-protocol/compare/0c65644...7ca37f8)
-
-```diff
-@@ browser_protocol.pdl:820 @@ experimental domain Audits
-       SilentMediationFailure
-       ThirdPartyCookiesBlocked
- 
-+  type FederatedAuthUserInfoRequestIssueDetails extends object
-+    properties
-+      FederatedAuthUserInfoRequestIssueReason federatedAuthUserInfoRequestIssueReason
-+
-+  # Represents the failure reason when a getUserInfo() call fails.
-+  # Should be updated alongside FederatedAuthUserInfoRequestResult in
-+  # third_party/blink/public/mojom/devtools/inspector_issue.mojom.
-+  type FederatedAuthUserInfoRequestIssueReason extends string
-+    enum
-+      NotSameOrigin
-+      NotIframe
-+      NotPotentiallyTrustworthy
-+      NoApiPermission
-+      NotSignedInWithIdp
-+      NoAccountSharingPermission
-+      InvalidConfigOrWellKnown
-+      InvalidAccountsResponse
-+      NoReturningUserFromFetchedAccounts
-+
-   # This issue tracks client hints related issues. It's used to deprecate old
-   # features, encourage the use of new ones, and provide general guidance.
-   type ClientHintIssueDetails extends object
-@@ -871,6 +890,7 @@ experimental domain Audits
-       FederatedAuthRequestIssue
-       BounceTrackingIssue
-       StylesheetLoadingIssue
-+      FederatedAuthUserInfoRequestIssue
- 
-   # This struct holds a list of optional fields with additional information
-   # specific to the kind of issue. When adding a new issue code, please also
-@@ -894,6 +914,7 @@ experimental domain Audits
-       optional FederatedAuthRequestIssueDetails federatedAuthRequestIssueDetails
-       optional BounceTrackingIssueDetails bounceTrackingIssueDetails
-       optional StylesheetLoadingIssueDetails stylesheetLoadingIssueDetails
-+      optional FederatedAuthUserInfoRequestIssueDetails federatedAuthUserInfoRequestIssueDetails
- 
-   # A unique id for a DevTools inspector issue. Allows other entities (e.g.
-   # exceptions, CDP message, console messages, etc.) to reference an issue.
-@@ -6493,6 +6514,7 @@ domain Network
-       enum status
-         Ok
-         InvalidArgument
-+        MissingIssuerKeys
-         FailedPrecondition
-         ResourceExhausted
-         AlreadyExists
-@@ -7279,11 +7301,9 @@ domain Page
-       ch-ua-platform
-       ch-ua-model
-       ch-ua-mobile
--      ch-ua-full
-       ch-ua-full-version
-       ch-ua-full-version-list
-       ch-ua-platform-version
--      ch-ua-reduced
-       ch-ua-wow64
-       ch-viewport-height
-       ch-viewport-width
-@@ -11087,6 +11107,7 @@ experimental domain Preload
-       MemoryPressureOnTrigger
-       MemoryPressureAfterTriggered
-       PrerenderingDisabledByDevTools
-+      ResourceLoadBlockedByClient
- 
-   # Fired when a prerender attempt is completed.
-   event prerenderAttemptCompleted
 ```
