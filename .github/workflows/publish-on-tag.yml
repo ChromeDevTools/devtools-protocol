@@ -20,7 +20,9 @@ jobs:
           node-version-file: '.nvmrc'
           registry-url: 'https://registry.npmjs.org'
       - name: Update npm
-        run: npm install -g npm@latest
+        run: |
+          npm install -g npm@~11.10.0 # Workaround for https://github.com/npm/cli/issues/9151.
+          npm install -g npm@latest
       - name: Publish
         run: |
           npm publish --provenance --access public
