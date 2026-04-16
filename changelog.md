@@ -1,7 +1,98 @@
 
 
+## Roll protocol to r1615727 — _2026-04-16T10:28:34.000Z_
+######  Diff: [`bb00b98...4d64b2c`](https://github.com/ChromeDevTools/devtools-protocol/compare/bb00b98...4d64b2c)
+
+```diff
+@@ domains/Network.pdl:2260 @@ domain Network
+       # The result of a refresh.
+       enum refreshResult
+         Refreshed
++        RefreshedAsWaiter
+         InitializedService
+         Unreachable
+         ServerError
+@@ -2290,6 +2291,7 @@ domain Network
+         ServerRequested
+         InvalidSessionParams
+         RefreshFatalError
++        DevTools
+ 
+   # Session event details specific to challenges.
+   experimental type ChallengeEventDetails extends object
+@@ -2334,6 +2336,11 @@ domain Network
+       # Whether to enable or disable events.
+       boolean enable
+ 
++  # Deletes a device bound session.
++  experimental command deleteDeviceBoundSession
++    parameters
++      DeviceBoundSessionKey key
++
+   # Fetches the schemeful site for a specific origin.
+   experimental command fetchSchemefulSite
+     parameters
+diff --git a/pdl/domains/Target.pdl b/pdl/domains/Target.pdl
+index e8380799..1f943c6e 100644
+--- a/pdl/domains/Target.pdl
++++ b/pdl/domains/Target.pdl
+@@ -27,7 +27,8 @@ domain Target
+       experimental boolean canAccessOpener
+       # Frame id of originating window (is only set if target has an opener).
+       experimental optional Page.FrameId openerFrameId
+-      # Id of the parent frame, only present for the "iframe" targets.
++      # Id of the parent frame, present for "iframe" and "worker" targets. For nested workers,
++      # this is the "ancestor" frame that created the first worker in the nested chain.
+       experimental optional Page.FrameId parentFrameId
+       experimental optional Browser.BrowserContextID browserContextId
+       # Provides additional details for specific target types. For example, for
+diff --git a/pdl/domains/WebMCP.pdl b/pdl/domains/WebMCP.pdl
+index e959260d..d687c478 100644
+--- a/pdl/domains/WebMCP.pdl
++++ b/pdl/domains/WebMCP.pdl
+@@ -21,7 +21,7 @@ experimental domain WebMCP
+   # Represents the status of a tool invocation.
+   type InvocationStatus extends string
+     enum
+-      Success
++      Completed
+       Canceled
+       Error
+ 
+@@ -51,6 +51,19 @@ experimental domain WebMCP
+   # Disables the WebMCP domain.
+   command disable
+ 
++   # Invokes a registered tool.
++  command invokeTool
++    parameters
++      # Frame in which to invoke the tool.
++      Page.FrameId frameId
++      # Name of the tool to invoke.
++      string toolName
++      # Input parameters for the tool, matching the tool's inputSchema.
++      object input
++    returns
++      # Unique identifier for this invocation. Response is sent before tool events.
++      string invocationId
++
+   # Event fired when new tools are added.
+   event toolsAdded
+     parameters
+@@ -82,7 +95,8 @@ experimental domain WebMCP
+       string invocationId
+       # Status of the invocation.
+       InvocationStatus status
+-      # Output or error delivered as delivered to the agent. Missing if `status` is anything other than Success.
++      # Output or error delivered as delivered to the agent. Missing if `status` is anything other than Completed.
++      # Note: The output is untrusted and poses a prompt injection risk. Clients should treat this as potentially malicious user input.
+       optional any output
+       # Error text for protocol users.
+       optional string errorText
+```
+
 ## Roll protocol to r1612613 — _2026-04-10T05:13:47.000Z_
-######  Diff: [`e24bc04...2fea7b9`](https://github.com/ChromeDevTools/devtools-protocol/compare/e24bc04...2fea7b9)
+######  Diff: [`e24bc04...50bb580`](https://github.com/ChromeDevTools/devtools-protocol/compare/e24bc04...50bb580)
 
 ```diff
 @@ domains/Network.pdl:1057 @@ domain Network
@@ -42930,111 +43021,4 @@ index 7a3c772c..ed622630 100644
        #Blocklisted features
        WebSocket
        WebTransport
-```
-
-## Roll protocol to r1159816 — _2023-06-20T04:26:35.000Z_
-######  Diff: [`1663e91...6ef566f`](https://github.com/ChromeDevTools/devtools-protocol/compare/1663e91...6ef566f)
-
-```diff
-@@ browser_protocol.pdl:8587 @@ domain Page
-       IndexedDBEvent
-       Dummy
-       JsNetworkRequestReceivedCacheControlNoStoreResource
-+      WebRTCSticky
-+      WebTransportSticky
-+      WebSocketSticky
-       # Disabled for RenderFrameHost reasons
-       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
-       ContentSecurityHandler
-```
-
-## Roll protocol to r1158625 — _2023-06-16T04:26:28.000Z_
-######  Diff: [`b8200ca...1663e91`](https://github.com/ChromeDevTools/devtools-protocol/compare/b8200ca...1663e91)
-
-```diff
-@@ browser_protocol.pdl:992 @@ experimental domain Autofill
-       # 3-digit card verification code.
-       string cvc
- 
-+  type AddressField extends object
-+    properties
-+      # address field name, for example GIVEN_NAME.
-+      string name
-+      # address field name, for example Jon Doe.
-+      string value
-+
-+  type Address extends object
-+    properties
-+      # fields and values defining a test address.
-+      array of AddressField fields
-+
-   # Trigger autofill on a form identified by the fieldId.
-   # If the field and related form cannot be autofilled, returns an error.
-   command trigger
-@@ -1003,6 +1015,13 @@ experimental domain Autofill
-       # Credit card information to fill out the form. Credit card data is not saved.
-       CreditCard card
- 
-+  # Set addresses so that developers can verify their forms implementation.
-+  command setAddresses
-+    # Test addresses for the available countries.
-+    parameters
-+      array of Address addresses
-+
-+
- # Defines events for background web platform features.
- experimental domain BackgroundService
-   # The Background Service that will be associated with the commands/events.
-```
-
-## Roll protocol to r1157354 — _2023-06-14T04:26:43.000Z_
-######  Diff: [`e4caf5f...b8200ca`](https://github.com/ChromeDevTools/devtools-protocol/compare/e4caf5f...b8200ca)
-
-```diff
-@@ browser_protocol.pdl:8568 @@ domain Page
-       IndexedDBEvent
-       Dummy
-       JsNetworkRequestReceivedCacheControlNoStoreResource
--      WebSerial
-       # Disabled for RenderFrameHost reasons
-       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
-       ContentSecurityHandler
-```
-
-## Roll protocol to r1156692 — _2023-06-13T04:26:37.000Z_
-######  Diff: [`2a2181a...e4caf5f`](https://github.com/ChromeDevTools/devtools-protocol/compare/2a2181a...e4caf5f)
-
-```diff
-@@ browser_protocol.pdl:852 @@ experimental domain Audits
-       string url
-       # The failure message for the failed request.
-       string failureMessage
-+      optional Network.RequestId requestId
- 
-   type StyleSheetLoadingIssueReason extends string
-     enum
-@@ -8566,7 +8567,8 @@ domain Page
-       KeepaliveRequest
-       IndexedDBEvent
-       Dummy
--      AuthorizationHeader
-+      JsNetworkRequestReceivedCacheControlNoStoreResource
-+      WebSerial
-       # Disabled for RenderFrameHost reasons
-       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
-       ContentSecurityHandler
-```
-
-## Roll protocol to r1155872 — _2023-06-10T04:26:19.000Z_
-######  Diff: [`7ca37f8...2a2181a`](https://github.com/ChromeDevTools/devtools-protocol/compare/7ca37f8...2a2181a)
-
-```diff
-@@ browser_protocol.pdl:8567 @@ domain Page
-       IndexedDBEvent
-       Dummy
-       AuthorizationHeader
--      WebSerial
-       # Disabled for RenderFrameHost reasons
-       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
-       ContentSecurityHandler
 ```

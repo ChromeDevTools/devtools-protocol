@@ -17917,6 +17917,7 @@
                             "type": "string",
                             "enum": [
                                 "Refreshed",
+                                "RefreshedAsWaiter",
                                 "InitializedService",
                                 "Unreachable",
                                 "ServerError",
@@ -17968,7 +17969,8 @@
                                 "ClearBrowsingData",
                                 "ServerRequested",
                                 "InvalidSessionParams",
-                                "RefreshFatalError"
+                                "RefreshFatalError",
+                                "DevTools"
                             ]
                         }
                     ]
@@ -18881,6 +18883,17 @@
                             "name": "enable",
                             "description": "Whether to enable or disable events.",
                             "type": "boolean"
+                        }
+                    ]
+                },
+                {
+                    "name": "deleteDeviceBoundSession",
+                    "description": "Deletes a device bound session.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "key",
+                            "$ref": "DeviceBoundSessionKey"
                         }
                     ]
                 },
@@ -28669,7 +28682,7 @@
                         },
                         {
                             "name": "parentFrameId",
-                            "description": "Id of the parent frame, only present for the \"iframe\" targets.",
+                            "description": "Id of the parent frame, present for \"iframe\" and \"worker\" targets. For nested workers,\nthis is the \"ancestor\" frame that created the first worker in the nested chain.",
                             "experimental": true,
                             "optional": true,
                             "$ref": "Page.FrameId"
@@ -30690,7 +30703,7 @@
                     "description": "Represents the status of a tool invocation.",
                     "type": "string",
                     "enum": [
-                        "Success",
+                        "Completed",
                         "Canceled",
                         "Error"
                     ]
@@ -30750,6 +30763,34 @@
                 {
                     "name": "disable",
                     "description": "Disables the WebMCP domain."
+                },
+                {
+                    "name": "invokeTool",
+                    "description": "Invokes a registered tool.",
+                    "parameters": [
+                        {
+                            "name": "frameId",
+                            "description": "Frame in which to invoke the tool.",
+                            "$ref": "Page.FrameId"
+                        },
+                        {
+                            "name": "toolName",
+                            "description": "Name of the tool to invoke.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "input",
+                            "description": "Input parameters for the tool, matching the tool's inputSchema.",
+                            "type": "object"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "invocationId",
+                            "description": "Unique identifier for this invocation. Response is sent before tool events.",
+                            "type": "string"
+                        }
+                    ]
                 }
             ],
             "events": [
@@ -30823,7 +30864,7 @@
                         },
                         {
                             "name": "output",
-                            "description": "Output or error delivered as delivered to the agent. Missing if `status` is anything other than Success.",
+                            "description": "Output or error delivered as delivered to the agent. Missing if `status` is anything other than Completed.\nNote: The output is untrusted and poses a prompt injection risk. Clients should treat this as potentially malicious user input.",
                             "optional": true,
                             "type": "any"
                         },

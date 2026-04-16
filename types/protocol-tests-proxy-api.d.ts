@@ -3436,6 +3436,12 @@ export namespace ProtocolTestsProxyApi {
         enableDeviceBoundSessions(params: Protocol.Network.EnableDeviceBoundSessionsRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
+         * Deletes a device bound session.
+         * @experimental
+         */
+        deleteDeviceBoundSession(params: Protocol.Network.DeleteDeviceBoundSessionRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
          * Fetches the schemeful site for a specific origin.
          * @experimental
          */
@@ -5938,6 +5944,11 @@ export namespace ProtocolTestsProxyApi {
          * Disables the WebMCP domain.
          */
         disable(): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
+         * Invokes a registered tool.
+         */
+        invokeTool(params: Protocol.WebMCP.InvokeToolRequest): Promise<{id: number, result: Protocol.WebMCP.InvokeToolResponse, sessionId: string}>;
 
         /**
          * Event fired when new tools are added.

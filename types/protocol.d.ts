@@ -14056,6 +14056,7 @@ export namespace Protocol {
 
         export const enum RefreshEventDetailsRefreshResult {
             Refreshed = 'Refreshed',
+            RefreshedAsWaiter = 'RefreshedAsWaiter',
             InitializedService = 'InitializedService',
             Unreachable = 'Unreachable',
             ServerError = 'ServerError',
@@ -14072,7 +14073,7 @@ export namespace Protocol {
             /**
              * The result of a refresh.
              */
-            refreshResult: ('Refreshed' | 'InitializedService' | 'Unreachable' | 'ServerError' | 'RefreshQuotaExceeded' | 'FatalError' | 'SigningQuotaExceeded');
+            refreshResult: ('Refreshed' | 'RefreshedAsWaiter' | 'InitializedService' | 'Unreachable' | 'ServerError' | 'RefreshQuotaExceeded' | 'FatalError' | 'SigningQuotaExceeded');
             /**
              * If there was a fetch attempt, the result of that.
              */
@@ -14102,6 +14103,7 @@ export namespace Protocol {
             ServerRequested = 'ServerRequested',
             InvalidSessionParams = 'InvalidSessionParams',
             RefreshFatalError = 'RefreshFatalError',
+            DevTools = 'DevTools',
         }
 
         /**
@@ -14112,7 +14114,7 @@ export namespace Protocol {
             /**
              * The reason for a session being deleted.
              */
-            deletionReason: ('Expired' | 'FailedToRestoreKey' | 'FailedToUnwrapKey' | 'StoragePartitionCleared' | 'ClearBrowsingData' | 'ServerRequested' | 'InvalidSessionParams' | 'RefreshFatalError');
+            deletionReason: ('Expired' | 'FailedToRestoreKey' | 'FailedToUnwrapKey' | 'StoragePartitionCleared' | 'ClearBrowsingData' | 'ServerRequested' | 'InvalidSessionParams' | 'RefreshFatalError' | 'DevTools');
         }
 
         export const enum ChallengeEventDetailsChallengeResult {
@@ -14705,6 +14707,10 @@ export namespace Protocol {
              * Whether to enable or disable events.
              */
             enable: boolean;
+        }
+
+        export interface DeleteDeviceBoundSessionRequest {
+            key: DeviceBoundSessionKey;
         }
 
         export interface FetchSchemefulSiteRequest {
@@ -20756,7 +20762,8 @@ export namespace Protocol {
              */
             openerFrameId?: Page.FrameId;
             /**
-             * Id of the parent frame, only present for the "iframe" targets.
+             * Id of the parent frame, present for "iframe" and "worker" targets. For nested workers,
+             * this is the "ancestor" frame that created the first worker in the nested chain.
              * @experimental
              */
             parentFrameId?: Page.FrameId;
@@ -22036,7 +22043,7 @@ export namespace Protocol {
         /**
          * Represents the status of a tool invocation.
          */
-        export type InvocationStatus = ('Success' | 'Canceled' | 'Error');
+        export type InvocationStatus = ('Completed' | 'Canceled' | 'Error');
 
         /**
          * Definition of a tool that can be invoked.
@@ -22070,6 +22077,28 @@ export namespace Protocol {
              * The stack trace at the time of the registration.
              */
             stackTrace?: Runtime.StackTrace;
+        }
+
+        export interface InvokeToolRequest {
+            /**
+             * Frame in which to invoke the tool.
+             */
+            frameId: Page.FrameId;
+            /**
+             * Name of the tool to invoke.
+             */
+            toolName: string;
+            /**
+             * Input parameters for the tool, matching the tool's inputSchema.
+             */
+            input: any;
+        }
+
+        export interface InvokeToolResponse {
+            /**
+             * Unique identifier for this invocation. Response is sent before tool events.
+             */
+            invocationId: string;
         }
 
         /**
@@ -22127,7 +22156,8 @@ export namespace Protocol {
              */
             status: InvocationStatus;
             /**
-             * Output or error delivered as delivered to the agent. Missing if `status` is anything other than Success.
+             * Output or error delivered as delivered to the agent. Missing if `status` is anything other than Completed.
+             * Note: The output is untrusted and poses a prompt injection risk. Clients should treat this as potentially malicious user input.
              */
             output?: any;
             /**
