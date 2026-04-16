@@ -23,24 +23,48 @@ commit_rev=$(python3 -c 'import json;print(json.load(open("tmp.json"))["log"][0]
   grep -E -o "^Cr-Commit-Position.*" | grep -E -o "[0-9]+")
 rm tmp.json
 
-chromium_deps_url="https://chromium.googlesource.com/chromium/src.git/+/${commit_sha}/DEPS?format=TEXT"
-v8_revision=$(curl --silent "${chromium_deps_url}" | base64 --decode | grep "'v8_revision':" | cut -d "'" -f4)
-browser_protocol_domains_url="https://chromium.googlesource.com/chromium/src.git/+/${commit_sha}/third_party/blink/public/devtools_protocol/domains?format=TEXT"
-browser_protocol_url="https://chromium.googlesource.com/chromium/src.git/+/${commit_sha}/third_party/blink/public/devtools_protocol/browser_protocol.pdl?format=TEXT"
-js_protocol_url="https://chromium.googlesource.com/v8/v8.git/+/${v8_revision}/include/js_protocol.pdl?format=TEXT"
+# Fetch PDL files via sparse checkout
+mkdir -p tmp
+cd tmp
 
-if curl --output /dev/null --silent --head --fail "$browser_protocol_domains_url"; then
-	# the 4th column is the file name in the folder (e.g., DOM.pdl).
-	domains=$(curl --silent "${browser_protocol_domains_url}" | base64 --decode | grep .pdl | awk "{print \$4}")
-	mkdir -p pdl/domains
-	for domain in $domains; do 
-		browser_protocol_domain_url="https://chromium.googlesource.com/chromium/src.git/+/${commit_sha}/third_party/blink/public/devtools_protocol/domains/$domain?format=TEXT"
-		curl --silent "${browser_protocol_domain_url}" | base64 --decode > pdl/domains/$domain
-		sleep 3
-	done
+# Chromium PDLs
+if [ ! -d chromium ]; then
+  git init chromium
+  cd chromium
+  git remote add origin https://chromium.googlesource.com/chromium/src.git
+  git config core.sparseCheckout true
+  echo "/third_party/blink/public/devtools_protocol/" >> .git/info/sparse-checkout
+  echo "/DEPS" >> .git/info/sparse-checkout
+else
+  cd chromium
 fi
-curl --silent "${browser_protocol_url}" | base64 --decode > pdl/browser_protocol.pdl
-curl --silent "${js_protocol_url}" | base64 --decode > pdl/js_protocol.pdl
+git fetch --depth 1 origin "$commit_sha"
+git checkout FETCH_HEAD
+cd ..
+
+v8_revision=$(grep "'v8_revision':" chromium/DEPS | cut -d "'" -f4)
+
+# V8 PDL
+if [ ! -d v8 ]; then
+  git init v8
+  cd v8
+  git remote add origin https://chromium.googlesource.com/v8/v8.git
+  git config core.sparseCheckout true
+  echo "include/js_protocol.pdl" >> .git/info/sparse-checkout
+else
+  cd v8
+fi
+git fetch --depth 1 origin "$v8_revision"
+git checkout FETCH_HEAD
+cd ../..
+
+# Copy files
+cp tmp/chromium/third_party/blink/public/devtools_protocol/browser_protocol.pdl pdl/
+if [ -d tmp/chromium/third_party/blink/public/devtools_protocol/domains ]; then
+  mkdir -p pdl/domains
+  cp tmp/chromium/third_party/blink/public/devtools_protocol/domains/*.pdl pdl/domains/
+fi
+cp tmp/v8/include/js_protocol.pdl pdl/
 
 # generate json from pdl
 convert_script="$protocol_repo_path/scripts/inspector_protocol/convert_protocol_to_json.py"
