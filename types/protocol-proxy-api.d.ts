@@ -5485,6 +5485,11 @@ export namespace ProtocolProxyApi {
         invokeTool(params: Protocol.WebMCP.InvokeToolRequest): Promise<Protocol.WebMCP.InvokeToolResponse>;
 
         /**
+         * Cancels a pending tool invocation.
+         */
+        cancelInvocation(params: Protocol.WebMCP.CancelInvocationRequest): Promise<void>;
+
+        /**
          * Event fired when new tools are added.
          */
         on(event: 'toolsAdded', listener: (params: Protocol.WebMCP.ToolsAddedEvent) => void): void;

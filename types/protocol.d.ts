@@ -3705,7 +3705,7 @@ export namespace Protocol {
             request: AffectedRequest;
         }
 
-        export type GenericIssueErrorType = ('FormLabelForNameError' | 'FormDuplicateIdForInputError' | 'FormInputWithNoLabelError' | 'FormAutocompleteAttributeEmptyError' | 'FormEmptyIdAndNameAttributesForInputError' | 'FormAriaLabelledByToNonExistingIdError' | 'FormInputAssignedAutocompleteValueToIdOrNameAttributeError' | 'FormLabelHasNeitherForNorNestedInputError' | 'FormLabelForMatchesNonExistingIdError' | 'FormInputHasWrongButWellIntendedAutocompleteValueError' | 'ResponseWasBlockedByORB' | 'NavigationEntryMarkedSkippable' | 'AutofillAndManualTextPolicyControlledFeaturesInfo' | 'AutofillPolicyControlledFeatureInfo' | 'ManualTextPolicyControlledFeatureInfo' | 'FormModelContextParameterMissingTitleAndDescription');
+        export type GenericIssueErrorType = ('FormLabelForNameError' | 'FormDuplicateIdForInputError' | 'FormInputWithNoLabelError' | 'FormAutocompleteAttributeEmptyError' | 'FormEmptyIdAndNameAttributesForInputError' | 'FormAriaLabelledByToNonExistingIdError' | 'FormInputAssignedAutocompleteValueToIdOrNameAttributeError' | 'FormLabelHasNeitherForNorNestedInputError' | 'FormLabelForMatchesNonExistingIdError' | 'FormInputHasWrongButWellIntendedAutocompleteValueError' | 'ResponseWasBlockedByORB' | 'NavigationEntryMarkedSkippable' | 'AutofillAndManualTextPolicyControlledFeaturesInfo' | 'AutofillPolicyControlledFeatureInfo' | 'ManualTextPolicyControlledFeatureInfo' | 'FormModelContextParameterMissingTitleAndDescription' | 'FormModelContextMissingToolName' | 'FormModelContextMissingToolDescription' | 'FormModelContextRequiredParameterMissingName' | 'FormModelContextParameterMissingName');
 
         /**
          * Depending on the concrete errorType, different properties are set.
@@ -22097,6 +22097,13 @@ export namespace Protocol {
         export interface InvokeToolResponse {
             /**
              * Unique identifier for this invocation. Response is sent before tool events.
+             */
+            invocationId: string;
+        }
+
+        export interface CancelInvocationRequest {
+            /**
+             * Invocation identifier to cancel.
              */
             invocationId: string;
         }

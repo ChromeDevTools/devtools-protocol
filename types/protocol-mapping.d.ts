@@ -6320,6 +6320,13 @@ export namespace ProtocolMapping {
             paramsType: [Protocol.WebMCP.InvokeToolRequest];
             returnType: Protocol.WebMCP.InvokeToolResponse;
         };
+        /**
+         * Cancels a pending tool invocation.
+         */
+        'WebMCP.cancelInvocation': {
+            paramsType: [Protocol.WebMCP.CancelInvocationRequest];
+            returnType: void;
+        };
     }
 }
 

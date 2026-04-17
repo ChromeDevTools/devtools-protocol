@@ -1,7 +1,41 @@
 
 
+## Roll protocol to r1616338 — _2026-04-17T05:17:05.000Z_
+######  Diff: [`d852d0c...c877cdd`](https://github.com/ChromeDevTools/devtools-protocol/compare/d852d0c...c877cdd)
+
+```diff
+@@ domains/Audits.pdl:429 @@ experimental domain Audits
+       AutofillPolicyControlledFeatureInfo
+       ManualTextPolicyControlledFeatureInfo
+       FormModelContextParameterMissingTitleAndDescription
++      FormModelContextMissingToolName
++      FormModelContextMissingToolDescription
++      FormModelContextRequiredParameterMissingName
++      FormModelContextParameterMissingName
+ 
+   # Depending on the concrete errorType, different properties are set.
+   type GenericIssueDetails extends object
+diff --git a/pdl/domains/WebMCP.pdl b/pdl/domains/WebMCP.pdl
+index d687c478..f7ecb3a5 100644
+--- a/pdl/domains/WebMCP.pdl
++++ b/pdl/domains/WebMCP.pdl
+@@ -64,6 +64,12 @@ experimental domain WebMCP
+       # Unique identifier for this invocation. Response is sent before tool events.
+       string invocationId
+ 
++  # Cancels a pending tool invocation.
++  command cancelInvocation
++    parameters
++      # Invocation identifier to cancel.
++      string invocationId
++
+   # Event fired when new tools are added.
+   event toolsAdded
+     parameters
+```
+
 ## Roll protocol to r1615727 — _2026-04-16T10:28:34.000Z_
-######  Diff: [`bb00b98...4d64b2c`](https://github.com/ChromeDevTools/devtools-protocol/compare/bb00b98...4d64b2c)
+######  Diff: [`bb00b98...d852d0c`](https://github.com/ChromeDevTools/devtools-protocol/compare/bb00b98...d852d0c)
 
 ```diff
 @@ domains/Network.pdl:2260 @@ domain Network
@@ -42985,40 +43019,4 @@ index 7a3c772c..ed622630 100644
    # Represents deep serialized value.
    type DeepSerializedValue extends object
      properties
-```
-
-## Roll protocol to r1161029 — _2023-06-22T04:26:26.000Z_
-######  Diff: [`6ef566f...7b1ec35`](https://github.com/ChromeDevTools/devtools-protocol/compare/6ef566f...7b1ec35)
-
-```diff
-@@ browser_protocol.pdl:5368 @@ domain Network
-       # address space.
-       UnexpectedPrivateNetworkAccess
-       NoCorsRedirectModeNotFollow
-+      # Request was a private network request and needed user permission yet did
-+      # not carry `Private-Network-Access-Id` in the preflight response.
-+      # https://github.com/WICG/private-network-access/blob/main/permission_prompt/explainer.md
-+      PreflightMissingPrivateNetworkAccessId
-+      # Request was a private network request and needed user permission yet did
-+      # not carry `Private-Network-Access-Name` in the preflight response.
-+      # https://github.com/WICG/private-network-access/blob/main/permission_prompt/explainer.md
-+      PreflightMissingPrivateNetworkAccessName
-+      # Request was a private network request and needed user permission yet not
-+      # able to request for permission.
-+      # https://github.com/WICG/private-network-access/blob/main/permission_prompt/explainer.md
-+      PrivateNetworkAccessPermissionUnavailable
-+      # Request was a private network request and is denied by user permission.
-+      # https://github.com/WICG/private-network-access/blob/main/permission_prompt/explainer.md
-+      PrivateNetworkAccessPermissionDenied
- 
-   type CorsErrorStatus extends object
-     properties
-@@ -8540,6 +8555,7 @@ domain Page
-       ErrorDocument
-       FencedFramesEmbedder
-       CookieDisabled
-+      HTTPAuthRequired
-       #Blocklisted features
-       WebSocket
-       WebTransport
 ```
