@@ -20748,6 +20748,10 @@ export namespace Protocol {
              */
             attached: boolean;
             /**
+             * Id of the parent target, if any. For example, "iframe" target may have a "page" parent.
+             */
+            parentId?: TargetID;
+            /**
              * Opener target Id
              */
             openerId?: TargetID;

@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1617013 — _2026-04-18T05:05:32.000Z_
+######  Diff: [`ae00315...4656a86`](https://github.com/ChromeDevTools/devtools-protocol/compare/ae00315...4656a86)
+
+```diff
+@@ domains/Target.pdl:21 @@ domain Target
+       string url
+       # Whether the target has an attached client.
+       boolean attached
++      # Id of the parent target, if any. For example, "iframe" target may have a "page" parent.
++      optional TargetID parentId
+       # Opener target Id
+       optional TargetID openerId
+       # Whether the target has access to the originating window.
+```
+
 ## Roll protocol to r1616338 — _2026-04-17T05:17:05.000Z_
-######  Diff: [`d852d0c...c877cdd`](https://github.com/ChromeDevTools/devtools-protocol/compare/d852d0c...c877cdd)
+######  Diff: [`d852d0c...ae00315`](https://github.com/ChromeDevTools/devtools-protocol/compare/d852d0c...ae00315)
 
 ```diff
 @@ domains/Audits.pdl:429 @@ experimental domain Audits
@@ -42974,49 +42989,4 @@ index 4754f17c..8dad9c98 100644
  
    # Send a list of sources for all preloading attempts in a document.
    event preloadingAttemptSourcesUpdated
-```
-
-## Roll protocol to r1161598 — _2023-06-23T04:28:28.000Z_
-######  Diff: [`7b1ec35...3494f54`](https://github.com/ChromeDevTools/devtools-protocol/compare/7b1ec35...3494f54)
-
-```diff
-@@ browser_protocol.pdl:7336 @@ domain Page
-       ch-ua-platform
-       ch-ua-model
-       ch-ua-mobile
-+      ch-ua-form-factor
-       ch-ua-full-version
-       ch-ua-full-version-list
-       ch-ua-platform-version
-@@ -8568,14 +8569,12 @@ domain Page
-       DocumentLoaded
-       DedicatedWorkerOrWorklet
-       OutstandingNetworkRequestOthers
--      OutstandingIndexedDBTransaction
-       RequestedMIDIPermission
-       RequestedAudioCapturePermission
-       RequestedVideoCapturePermission
-       RequestedBackForwardCacheBlockedSensors
-       RequestedBackgroundWorkPermission
-       BroadcastChannel
--      IndexedDBConnection
-       WebXR
-       SharedWorker
-       WebLocks
-diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
-index 7a3c772c..ed622630 100644
---- a/pdl/js_protocol.pdl
-+++ b/pdl/js_protocol.pdl
-@@ -1034,6 +1034,11 @@ domain Runtime
-       # Deep serialization depth. Default is full depth. Respected only in `deep` serialization mode.
-       optional integer maxDepth
- 
-+      # Embedder-specific parameters. For example if connected to V8 in Chrome these control DOM
-+      # serialization via `maxNodeDepth: integer` and `includeShadowTree: "none" | "open" | "all"`.
-+      # Values can be only of type string or integer.
-+      optional object additionalParameters
-+
-   # Represents deep serialized value.
-   type DeepSerializedValue extends object
-     properties
 ```
