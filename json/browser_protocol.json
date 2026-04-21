@@ -30763,6 +30763,23 @@
                             "$ref": "Runtime.StackTrace"
                         }
                     ]
+                },
+                {
+                    "id": "RemovedTool",
+                    "description": "Definition of a tool that was removed.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "name",
+                            "description": "Tool name.",
+                            "type": "string"
+                        },
+                        {
+                            "name": "frameId",
+                            "description": "Frame identifier associated with the tool registration.",
+                            "$ref": "Page.FrameId"
+                        }
+                    ]
                 }
             ],
             "commands": [
@@ -30838,7 +30855,7 @@
                             "description": "Array of tools that were removed.",
                             "type": "array",
                             "items": {
-                                "$ref": "Tool"
+                                "$ref": "RemovedTool"
                             }
                         }
                     ]

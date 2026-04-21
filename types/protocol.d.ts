@@ -22083,6 +22083,20 @@ export namespace Protocol {
             stackTrace?: Runtime.StackTrace;
         }
 
+        /**
+         * Definition of a tool that was removed.
+         */
+        export interface RemovedTool {
+            /**
+             * Tool name.
+             */
+            name: string;
+            /**
+             * Frame identifier associated with the tool registration.
+             */
+            frameId: Page.FrameId;
+        }
+
         export interface InvokeToolRequest {
             /**
              * Frame in which to invoke the tool.
@@ -22129,7 +22143,7 @@ export namespace Protocol {
             /**
              * Array of tools that were removed.
              */
-            tools: Tool[];
+            tools: RemovedTool[];
         }
 
         /**

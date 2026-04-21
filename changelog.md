@@ -1,7 +1,34 @@
 
 
+## Roll protocol to r1617982 — _2026-04-21T05:16:43.000Z_
+######  Diff: [`4d08372...0d2019b`](https://github.com/ChromeDevTools/devtools-protocol/compare/4d08372...0d2019b)
+
+```diff
+@@ domains/WebMCP.pdl:76 @@ experimental domain WebMCP
+       # Array of tools that were added.
+       array of Tool tools
+ 
++  # Definition of a tool that was removed.
++  type RemovedTool extends object
++    properties
++      # Tool name.
++      string name
++      # Frame identifier associated with the tool registration.
++      Page.FrameId frameId
++
+   # Event fired when tools are removed.
+   event toolsRemoved
+     parameters
+       # Array of tools that were removed.
+-      array of Tool tools
++      array of RemovedTool tools
+ 
+   # Event fired when a tool invocation starts.
+   event toolInvoked
+```
+
 ## Roll protocol to r1617013 — _2026-04-18T05:05:32.000Z_
-######  Diff: [`ae00315...4656a86`](https://github.com/ChromeDevTools/devtools-protocol/compare/ae00315...4656a86)
+######  Diff: [`ae00315...4d08372`](https://github.com/ChromeDevTools/devtools-protocol/compare/ae00315...4d08372)
 
 ```diff
 @@ domains/Target.pdl:21 @@ domain Target
@@ -42946,47 +42973,4 @@ index 4754f17c..8dad9c98 100644
 +
  # The SystemInfo domain defines methods and events for querying low-level system information.
  experimental domain SystemInfo
-```
-
-## Roll protocol to r1162774 — _2023-06-27T04:28:23.000Z_
-######  Diff: [`3494f54...67ae7fb`](https://github.com/ChromeDevTools/devtools-protocol/compare/3494f54...67ae7fb)
-
-```diff
-@@ browser_protocol.pdl:7773 @@ domain Page
-       # Specifies whether command line API should be available to the script, defaults
-       # to false.
-       experimental optional boolean includeCommandLineAPI
-+      # If true, runs the script immediately on existing execution contexts or worlds.
-+      # Default: false.
-+      experimental optional boolean runImmediately
-     returns
-       # Identifier of the added script.
-       ScriptIdentifier identifier
-@@ -11164,6 +11167,8 @@ experimental domain Preload
-       boolean disabledByPreference
-       boolean disabledByDataSaver
-       boolean disabledByBatterySaver
-+      boolean disabledByHoldbackPrefetchSpeculationRules
-+      boolean disabledByHoldbackPrerenderSpeculationRules
- 
-   # Preloading status values, see also PreloadingTriggeringOutcome. This
-   # status is shared by prefetchStatusUpdated and prerenderStatusUpdated.
-@@ -11227,6 +11232,7 @@ experimental domain Preload
-       string prefetchUrl
-       PreloadingStatus status
-       PrefetchStatus prefetchStatus
-+      Network.RequestId requestId
- 
-   # Fired when a prerender attempt is updated.
-   event prerenderStatusUpdated
-@@ -11234,6 +11240,9 @@ experimental domain Preload
-       PreloadingAttemptKey key
-       PreloadingStatus status
-       optional PrerenderFinalStatus prerenderStatus
-+      # This is used to give users more information about the name of Mojo interface
-+      # that is incompatible with prerender and has caused the cancellation of the attempt.
-+      optional string disallowedMojoInterface
- 
-   # Send a list of sources for all preloading attempts in a document.
-   event preloadingAttemptSourcesUpdated
 ```
