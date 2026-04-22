@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1618660 — _2026-04-22T05:15:00.000Z_
+######  Diff: [`eed2b1b...a70071f`](https://github.com/ChromeDevTools/devtools-protocol/compare/eed2b1b...a70071f)
+
+```diff
+@@ domains/Page.pdl:1618 @@ domain Page
+       EmbedderExtensionMessaging
+       EmbedderExtensionMessagingForOpenPort
+       EmbedderExtensionSentMessageToCachedFrame
++      EmbedderExtensionFrame
+       RequestedByWebViewClient
+       PostMessageByWebViewClient
+       CacheControlNoStoreDeviceBoundSessionTerminated
+```
+
 ## Roll protocol to r1617982 — _2026-04-21T05:16:43.000Z_
-######  Diff: [`4d08372...0d2019b`](https://github.com/ChromeDevTools/devtools-protocol/compare/4d08372...0d2019b)
+######  Diff: [`4d08372...eed2b1b`](https://github.com/ChromeDevTools/devtools-protocol/compare/4d08372...eed2b1b)
 
 ```diff
 @@ domains/WebMCP.pdl:76 @@ experimental domain WebMCP
@@ -42955,22 +42969,4 @@ index 4754f17c..8dad9c98 100644
        optional GenericIssueDetails genericIssueDetails
        optional DeprecationIssueDetails deprecationIssueDetails
        optional ClientHintIssueDetails clientHintIssueDetails
-```
-
-## Roll protocol to r1163380 — _2023-06-28T04:28:21.000Z_
-######  Diff: [`67ae7fb...f92e635`](https://github.com/ChromeDevTools/devtools-protocol/compare/67ae7fb...f92e635)
-
-```diff
-@@ browser_protocol.pdl:9634 @@ experimental domain Storage
-     parameters
-       string bucketId
- 
-+  # https://wicg.github.io/attribution-reporting-api/
-+  experimental command setAttributionReportingLocalTestingMode
-+    parameters
-+      # If enabled, noise is suppressed and reports are sent immediately.
-+      boolean enabled
-+
- # The SystemInfo domain defines methods and events for querying low-level system information.
- experimental domain SystemInfo
 ```
