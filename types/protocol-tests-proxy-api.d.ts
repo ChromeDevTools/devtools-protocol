@@ -2596,31 +2596,23 @@ export namespace ProtocolTestsProxyApi {
     export interface ExtensionsApi {
         /**
          * Runs an extension default action.
-         * Available if the client is connected using the --remote-debugging-pipe
-         * flag and the --enable-unsafe-extension-debugging flag is set.
          */
         triggerAction(params: Protocol.Extensions.TriggerActionRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
          * Installs an unpacked extension from the filesystem similar to
          * --load-extension CLI flags. Returns extension ID once the extension
-         * has been installed. Available if the client is connected using the
-         * --remote-debugging-pipe flag and the --enable-unsafe-extension-debugging
-         * flag is set.
+         * has been installed.
          */
         loadUnpacked(params: Protocol.Extensions.LoadUnpackedRequest): Promise<{id: number, result: Protocol.Extensions.LoadUnpackedResponse, sessionId: string}>;
 
         /**
          * Gets a list of all unpacked extensions.
-         * Available if the client is connected using the --remote-debugging-pipe flag
-         * and the --enable-unsafe-extension-debugging flag is set.
          */
         getExtensions(): Promise<{id: number, result: Protocol.Extensions.GetExtensionsResponse, sessionId: string}>;
 
         /**
          * Uninstalls an unpacked extension (others not supported) from the profile.
-         * Available if the client is connected using the --remote-debugging-pipe flag
-         * and the --enable-unsafe-extension-debugging.
          */
         uninstall(params: Protocol.Extensions.UninstallRequest): Promise<{id: number, result: void, sessionId: string}>;
 

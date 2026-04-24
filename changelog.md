@@ -1,7 +1,61 @@
 
 
+## Roll protocol to r1619965 — _2026-04-24T05:20:53.000Z_
+######  Diff: [`5d8fd1a...68fa403`](https://github.com/ChromeDevTools/devtools-protocol/compare/5d8fd1a...68fa403)
+
+```diff
+@@ domains/Extensions.pdl:15 @@ experimental domain Extensions
+       managed
+ 
+   # Runs an extension default action.
+-  # Available if the client is connected using the --remote-debugging-pipe
+-  # flag and the --enable-unsafe-extension-debugging flag is set.
+   command triggerAction
+     parameters
+       # Extension id.
+@@ -26,9 +24,7 @@ experimental domain Extensions
+ 
+   # Installs an unpacked extension from the filesystem similar to
+   # --load-extension CLI flags. Returns extension ID once the extension
+-  # has been installed. Available if the client is connected using the
+-  # --remote-debugging-pipe flag and the --enable-unsafe-extension-debugging
+-  # flag is set.
++  # has been installed.
+   command loadUnpacked
+     parameters
+       # Absolute file path.
+@@ -54,15 +50,11 @@ experimental domain Extensions
+       boolean enabled
+ 
+   # Gets a list of all unpacked extensions.
+-  # Available if the client is connected using the --remote-debugging-pipe flag
+-  # and the --enable-unsafe-extension-debugging flag is set.
+   command getExtensions
+     returns
+       array of ExtensionInfo extensions
+ 
+   # Uninstalls an unpacked extension (others not supported) from the profile.
+-  # Available if the client is connected using the --remote-debugging-pipe flag
+-  # and the --enable-unsafe-extension-debugging.
+   command uninstall
+     parameters
+       # Extension id.
+diff --git a/pdl/domains/WebMCP.pdl b/pdl/domains/WebMCP.pdl
+index 4b3836a4..463107ab 100644
+--- a/pdl/domains/WebMCP.pdl
++++ b/pdl/domains/WebMCP.pdl
+@@ -15,6 +15,8 @@ experimental domain WebMCP
+     properties
+       # A hint indicating that the tool does not modify any state.
+       optional boolean readOnly
++      # A hint indicating that the tool output may contain untrusted content, ex: UGC, 3rd party data.
++      optional boolean untrustedContent
+       # If the declarative tool was declared with the autosubmit attribute.
+       optional boolean autosubmit
+```
+
 ## Roll protocol to r1618660 — _2026-04-22T05:15:00.000Z_
-######  Diff: [`eed2b1b...a70071f`](https://github.com/ChromeDevTools/devtools-protocol/compare/eed2b1b...a70071f)
+######  Diff: [`eed2b1b...5d8fd1a`](https://github.com/ChromeDevTools/devtools-protocol/compare/eed2b1b...5d8fd1a)
 
 ```diff
 @@ domains/Page.pdl:1618 @@ domain Page
@@ -42921,52 +42975,4 @@ index 4754f17c..8dad9c98 100644
  
    # CSS coverage information.
    type RuleUsage extends object
-```
-
-## Roll protocol to r1165014 — _2023-07-01T04:27:51.000Z_
-######  Diff: [`f92e635...a96ac10`](https://github.com/ChromeDevTools/devtools-protocol/compare/f92e635...a96ac10)
-
-```diff
-@@ browser_protocol.pdl:719 @@ experimental domain Audits
-       Page.FrameId frameId
-       Network.LoaderId loaderId
- 
--  type NavigatorUserAgentIssueDetails extends object
-+  deprecated type NavigatorUserAgentIssueDetails extends object
-     properties
-       string url
-       optional SourceCodeLocation location
-@@ -737,6 +737,7 @@ experimental domain Audits
-       FormLabelHasNeitherForNorNestedInput
-       FormLabelForMatchesNonExistingIdError
-       FormInputHasWrongButWellIntendedAutocompleteValueError
-+      ResponseWasBlockedByORB
- 
-   # Depending on the concrete errorType, different properties are set.
-   type GenericIssueDetails extends object
-@@ -746,6 +747,7 @@ experimental domain Audits
-       optional Page.FrameId frameId
-       optional DOM.BackendNodeId violatingNodeId
-       optional string violatingNodeAttribute
-+      optional AffectedRequest request
- 
-   # This issue tracks information needed to print a deprecation message.
-   # https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/frame/third_party/blink/renderer/core/frame/deprecation/README.md
-@@ -884,6 +886,7 @@ experimental domain Audits
-       CorsIssue
-       AttributionReportingIssue
-       QuirksModeIssue
-+      # Deprecated
-       NavigatorUserAgentIssue
-       GenericIssue
-       DeprecationIssue
-@@ -908,7 +911,7 @@ experimental domain Audits
-       optional CorsIssueDetails corsIssueDetails
-       optional AttributionReportingIssueDetails attributionReportingIssueDetails
-       optional QuirksModeIssueDetails quirksModeIssueDetails
--      optional NavigatorUserAgentIssueDetails navigatorUserAgentIssueDetails
-+      deprecated optional NavigatorUserAgentIssueDetails navigatorUserAgentIssueDetails
-       optional GenericIssueDetails genericIssueDetails
-       optional DeprecationIssueDetails deprecationIssueDetails
-       optional ClientHintIssueDetails clientHintIssueDetails
 ```
