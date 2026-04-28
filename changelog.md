@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1621552 — _2026-04-28T05:34:17.000Z_
+######  Diff: [`e0946be...0a44e87`](https://github.com/ChromeDevTools/devtools-protocol/compare/e0946be...0a44e87)
+
+```diff
+@@ domains/DOM.pdl:44 @@ domain DOM
+       after
+       expand-icon
+       picker-icon
+-      interest-hint
++      interest-button
+       marker
+       backdrop
+       column
+```
+
 ## Roll protocol to r1619965 — _2026-04-24T05:20:53.000Z_
-######  Diff: [`5d8fd1a...68fa403`](https://github.com/ChromeDevTools/devtools-protocol/compare/5d8fd1a...68fa403)
+######  Diff: [`5d8fd1a...e0946be`](https://github.com/ChromeDevTools/devtools-protocol/compare/5d8fd1a...e0946be)
 
 ```diff
 @@ domains/Extensions.pdl:15 @@ experimental domain Extensions
@@ -42950,29 +42965,4 @@ index 4754f17c..8dad9c98 100644
 +
  # The SystemInfo domain defines methods and events for querying low-level system information.
  experimental domain SystemInfo
-```
-
-## Roll protocol to r1165779 — _2023-07-05T04:28:56.000Z_
-######  Diff: [`a96ac10...02fc905`](https://github.com/ChromeDevTools/devtools-protocol/compare/a96ac10...02fc905)
-
-```diff
-@@ browser_protocol.pdl:1550 @@ experimental domain CSS
-       # @scope CSS at-rule array.
-       # The array enumerates @scope at-rules starting with the innermost one, going outwards.
-       experimental optional array of CSSScope scopes
-+      # The array keeps the types of ancestor CSSRules from the innermost going outwards.
-+      experimental optional array of CSSRuleType ruleTypes
-+
-+  # Enum indicating the type of a CSS rule, used to represent the order of a style rule's ancestors.
-+  # This list only contains rule types that are collected during the ancestor rule collection.
-+  experimental type CSSRuleType extends string
-+    enum
-+      MediaRule
-+      SupportsRule
-+      ContainerRule
-+      LayerRule
-+      ScopeRule
- 
-   # CSS coverage information.
-   type RuleUsage extends object
 ```
