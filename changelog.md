@@ -1,7 +1,53 @@
 
 
+## Roll protocol to r1627472 — _2026-05-08T05:18:19.000Z_
+######  Diff: [`6e7b094...d1c3afc`](https://github.com/ChromeDevTools/devtools-protocol/compare/6e7b094...d1c3afc)
+
+```diff
+@@ domains/CSS.pdl:338 @@ experimental domain CSS
+   experimental type CSSContainerQuery extends object
+     properties
+       # Container query text.
+-      string text
++      # Contains the query part without the container name for a single query.
++      # Deprecated in favor of conditionText which contains the full prelude
++      # after @container.
++      deprecated string text
+       # The associated rule header range in the enclosing stylesheet (if
+       # available).
+       optional SourceRange range
+@@ -354,6 +357,8 @@ experimental domain CSS
+       optional boolean queriesScrollState
+       # true if the query contains anchored() queries.
+       optional boolean queriesAnchored
++      # CSSContainerRule.conditionText
++      string conditionText
+ 
+   # CSS Supports at-rule descriptor.
+   experimental type CSSSupports extends object
+@@ -927,7 +932,17 @@ experimental domain CSS
+       CSSMedia media
+ 
+   # Modifies the expression of a container query.
+-  experimental command setContainerQueryText
++  # Deprecated. Use setContainerQueryConditionText instead.
++  experimental deprecated command setContainerQueryText
++    parameters
++      DOM.StyleSheetId styleSheetId
++      SourceRange range
++      string text
++    returns
++      # The resulting CSS container query rule after modification.
++      CSSContainerQuery containerQuery
++
++  experimental command setContainerQueryConditionText
+     parameters
+       DOM.StyleSheetId styleSheetId
+       SourceRange range
+```
+
 ## Roll protocol to r1625959 — _2026-05-06T05:34:33.000Z_
-######  Diff: [`8feb4e1...1f60c69`](https://github.com/ChromeDevTools/devtools-protocol/compare/8feb4e1...1f60c69)
+######  Diff: [`8feb4e1...6e7b094`](https://github.com/ChromeDevTools/devtools-protocol/compare/8feb4e1...6e7b094)
 
 ```diff
 @@ domains/CSS.pdl:523 @@ experimental domain CSS
@@ -42900,28 +42946,4 @@ index 4754f17c..8dad9c98 100644
  
    # Sets a list of content encodings that will be accepted. Empty list means no encoding is accepted.
    experimental command setAcceptedEncodings
-```
-
-## Roll protocol to r1168520 — _2023-07-11T04:28:09.000Z_
-######  Diff: [`8b56da5...863ba3f`](https://github.com/ChromeDevTools/devtools-protocol/compare/8b56da5...863ba3f)
-
-```diff
-@@ browser_protocol.pdl:697 @@ experimental domain Audits
-       InvalidRegisterOsTriggerHeader
-       WebAndOsHeaders
-       NoWebOrOsSupport
-+      NavigationRegistrationWithoutTransientUserActivation
- 
-   # Details for issues around "Attribution Reporting API" usage.
-   # Explainer: https://github.com/WICG/attribution-reporting-api
-@@ -4586,6 +4587,9 @@ domain Input
-       # Time at which the event occurred.
-       optional TimeSinceEpoch timestamp
- 
-+  # Cancels any active dragging in the page.
-+  command cancelDragging
-+
-   # Emulates touch event from the mouse event parameters.
-   experimental command emulateTouchFromMouseEvent
-     parameters
 ```

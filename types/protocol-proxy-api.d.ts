@@ -1344,9 +1344,16 @@ export namespace ProtocolProxyApi {
 
         /**
          * Modifies the expression of a container query.
+         * Deprecated. Use setContainerQueryConditionText instead.
+         * @deprecated
          * @experimental
          */
         setContainerQueryText(params: Protocol.CSS.SetContainerQueryTextRequest): Promise<Protocol.CSS.SetContainerQueryTextResponse>;
+
+        /**
+         * @experimental
+         */
+        setContainerQueryConditionText(params: Protocol.CSS.SetContainerQueryConditionTextRequest): Promise<Protocol.CSS.SetContainerQueryConditionTextResponse>;
 
         /**
          * Modifies the expression of a supports at-rule.

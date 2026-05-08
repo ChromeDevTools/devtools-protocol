@@ -5546,6 +5546,10 @@ export namespace Protocol {
         export interface CSSContainerQuery {
             /**
              * Container query text.
+             * Contains the query part without the container name for a single query.
+             * Deprecated in favor of conditionText which contains the full prelude
+             * after @container.
+             * @deprecated
              */
             text: string;
             /**
@@ -5577,6 +5581,10 @@ export namespace Protocol {
              * true if the query contains anchored() queries.
              */
             queriesAnchored?: boolean;
+            /**
+             * CSSContainerRule.conditionText
+             */
+            conditionText: string;
         }
 
         /**
@@ -6448,6 +6456,19 @@ export namespace Protocol {
         }
 
         export interface SetContainerQueryTextResponse {
+            /**
+             * The resulting CSS container query rule after modification.
+             */
+            containerQuery: CSSContainerQuery;
+        }
+
+        export interface SetContainerQueryConditionTextRequest {
+            styleSheetId: DOM.StyleSheetId;
+            range: SourceRange;
+            text: string;
+        }
+
+        export interface SetContainerQueryConditionTextResponse {
             /**
              * The resulting CSS container query rule after modification.
              */
