@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1628107 — _2026-05-09T05:30:25.000Z_
+######  Diff: [`b3d7e08...20b0a4e`](https://github.com/ChromeDevTools/devtools-protocol/compare/b3d7e08...20b0a4e)
+
+```diff
+@@ domains/Audits.pdl:425 @@ experimental domain Audits
+       FormInputHasWrongButWellIntendedAutocompleteValueError
+       ResponseWasBlockedByORB
+       NavigationEntryMarkedSkippable
++      BackUINavigationWouldSkipAd
+       AutofillAndManualTextPolicyControlledFeaturesInfo
+       AutofillPolicyControlledFeatureInfo
+       ManualTextPolicyControlledFeatureInfo
+```
+
 ## Roll protocol to r1627472 — _2026-05-08T05:18:19.000Z_
-######  Diff: [`6e7b094...d1c3afc`](https://github.com/ChromeDevTools/devtools-protocol/compare/6e7b094...d1c3afc)
+######  Diff: [`6e7b094...b3d7e08`](https://github.com/ChromeDevTools/devtools-protocol/compare/6e7b094...b3d7e08)
 
 ```diff
 @@ domains/CSS.pdl:338 @@ experimental domain CSS
@@ -42932,18 +42946,4 @@ index 4754f17c..8dad9c98 100644
  
    # Fired when a prerender attempt is completed.
    event prerenderAttemptCompleted
-```
-
-## Roll protocol to r1169132 — _2023-07-12T04:28:03.000Z_
-######  Diff: [`863ba3f...697a922`](https://github.com/ChromeDevTools/devtools-protocol/compare/863ba3f...697a922)
-
-```diff
-@@ browser_protocol.pdl:5921 @@ domain Network
-       deflate
-       gzip
-       br
-+      zstd
- 
-   # Sets a list of content encodings that will be accepted. Empty list means no encoding is accepted.
-   experimental command setAcceptedEncodings
 ```
