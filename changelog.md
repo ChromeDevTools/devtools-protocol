@@ -1,7 +1,48 @@
 
 
+## Roll protocol to r1629771 — _2026-05-13T05:38:01.000Z_
+######  Diff: [`f223775...9cd4e93`](https://github.com/ChromeDevTools/devtools-protocol/compare/f223775...9cd4e93)
+
+```diff
+@@ domains/Audits.pdl:346 @@ experimental domain Audits
+       ValidationFailedInvalidLength
+       ValidationFailedSignatureMismatch
+       ValidationFailedIntegrityMismatch
++      SignatureBaseUnknownDerivedComponent
++      SignatureBaseMissingHeader
++      SignatureBaseInvalidUnencodedDigest
++      SignatureBaseUnsupportedComponent
+ 
+   type UnencodedDigestError extends string
+     enum
+diff --git a/pdl/domains/Preload.pdl b/pdl/domains/Preload.pdl
+index 411401ea..5efa7d88 100644
+--- a/pdl/domains/Preload.pdl
++++ b/pdl/domains/Preload.pdl
+@@ -191,6 +191,7 @@ experimental domain Preload
+       BrowsingDataRemoved
+       PrerenderHostReused
+       FormSubmitWhenPrerendering
++      CrossDocumentRestart
+ 
+   # Fired when a preload enabled state is updated.
+   event preloadEnabledStateUpdated
+diff --git a/pdl/domains/SmartCardEmulation.pdl b/pdl/domains/SmartCardEmulation.pdl
+index 3daf2503..9d3d96d9 100644
+--- a/pdl/domains/SmartCardEmulation.pdl
++++ b/pdl/domains/SmartCardEmulation.pdl
+@@ -47,7 +47,6 @@ experimental domain SmartCardEmulation
+       shutdown
+ 
+       # Maps to SCARD_E_UNKNOWN_CARD.
+-      # TODO(crbug.com/472114998): Rename Mojo's kUnknownError to kUnknownCard to match.
+       unknown-card
+ 
+       # Error code that is not mapped in this enum.
+```
+
 ## Roll protocol to r1628107 — _2026-05-09T05:30:25.000Z_
-######  Diff: [`b3d7e08...20b0a4e`](https://github.com/ChromeDevTools/devtools-protocol/compare/b3d7e08...20b0a4e)
+######  Diff: [`b3d7e08...145f3d6`](https://github.com/ChromeDevTools/devtools-protocol/compare/b3d7e08...145f3d6)
 
 ```diff
 @@ domains/Audits.pdl:425 @@ experimental domain Audits
@@ -42908,42 +42949,4 @@ index 4754f17c..8dad9c98 100644
    event requestPaused
      parameters
        # Each request the page makes will have a unique id.
-```
-
-## Roll protocol to r1170333 — _2023-07-14T04:28:05.000Z_
-######  Diff: [`dd37d9b...b1cb882`](https://github.com/ChromeDevTools/devtools-protocol/compare/dd37d9b...b1cb882)
-
-```diff
-@@ browser_protocol.pdl:6268 @@ domain Network
-       MonotonicTime timestamp
-       # Total number of bytes received for this request.
-       number encodedDataLength
--      # Set when 1) response was blocked by Cross-Origin Read Blocking and also
--      # 2) this needs to be reported to the DevTools console.
--      optional boolean shouldReportCorbBlocking
- 
-   # Details of an intercepted HTTP request, which must be either allowed, blocked, modified or
-   # mocked.
-```
-
-## Roll protocol to r1169739 — _2023-07-13T04:27:48.000Z_
-######  Diff: [`697a922...dd37d9b`](https://github.com/ChromeDevTools/devtools-protocol/compare/697a922...dd37d9b)
-
-```diff
-@@ browser_protocol.pdl:8581 @@ domain Page
-       FencedFramesEmbedder
-       CookieDisabled
-       HTTPAuthRequired
-+      CookieFlushed
-       #Blocklisted features
-       WebSocket
-       WebTransport
-@@ -11239,6 +11240,7 @@ experimental domain Preload
-       MemoryPressureAfterTriggered
-       PrerenderingDisabledByDevTools
-       ResourceLoadBlockedByClient
-+      SpeculationRuleRemoved
- 
-   # Fired when a prerender attempt is completed.
-   event prerenderAttemptCompleted
 ```
