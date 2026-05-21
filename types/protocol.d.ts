@@ -20804,6 +20804,12 @@ export namespace Protocol {
              * @experimental
              */
             subtype?: string;
+            /**
+             * Embedder-specific target metadata. This is only set for targets of
+             * type "tab".
+             * @experimental
+             */
+            embedderData?: any;
         }
 
         /**

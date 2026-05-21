@@ -28752,6 +28752,13 @@
                             "experimental": true,
                             "optional": true,
                             "type": "string"
+                        },
+                        {
+                            "name": "embedderData",
+                            "description": "Embedder-specific target metadata. This is only set for targets of\ntype \"tab\".",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "object"
                         }
                     ]
                 },

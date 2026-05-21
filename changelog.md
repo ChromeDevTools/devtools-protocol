@@ -1,5 +1,21 @@
 
 
+## Roll protocol to r1634055 — _2026-05-21T05:48:46.000Z_
+######  Diff: [`357026f...c2ea733`](https://github.com/ChromeDevTools/devtools-protocol/compare/357026f...c2ea733)
+
+```diff
+@@ domains/Target.pdl:36 @@ domain Target
+       # Provides additional details for specific target types. For example, for
+       # the type of "page", this may be set to "prerender".
+       experimental optional string subtype
++      # Embedder-specific target metadata. This is only set for targets of
++      # type "tab".
++      experimental optional object embedderData
+ 
+   # A filter used by target query/discovery/auto-attach operations.
+   experimental type FilterEntry extends object
+```
+
 ## Roll protocol to r1629771 — _2026-05-13T05:38:01.000Z_
 ######  Diff: [`f223775...bbfe84d`](https://github.com/ChromeDevTools/devtools-protocol/compare/f223775...bbfe84d)
 
@@ -42906,18 +42922,4 @@ index 4754f17c..8dad9c98 100644
        MemoryLimitExceeded
        # Prerenders can be cancelled when Chrome uses excessive memory. This is
        # recorded when it fails to get the memory usage.
-```
-
-## Roll protocol to r1172767 — _2023-07-20T04:26:30.000Z_
-######  Diff: [`5ed816f...68de33a`](https://github.com/ChromeDevTools/devtools-protocol/compare/5ed816f...68de33a)
-
-```diff
-@@ browser_protocol.pdl:11247 @@ experimental domain Preload
-       PrerenderingDisabledByDevTools
-       ResourceLoadBlockedByClient
-       SpeculationRuleRemoved
-+      ActivatedWithAuxiliaryBrowsingContexts
- 
-   # Fired when a prerender attempt is completed.
-   event prerenderAttemptCompleted
 ```
