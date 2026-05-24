@@ -9706,12 +9706,6 @@ export namespace Protocol {
             state: PressureState;
         }
 
-        export interface SetPressureDataOverrideRequest {
-            source: PressureSource;
-            state: PressureState;
-            ownContributionEstimate?: number;
-        }
-
         export interface SetIdleOverrideRequest {
             /**
              * Mock isUserActive

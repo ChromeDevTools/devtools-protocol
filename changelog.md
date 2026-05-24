@@ -1,7 +1,37 @@
 
 
+## Roll protocol to r1635485 — _2026-05-24T05:45:30.000Z_
+######  Diff: [`e47d08c...22bd900`](https://github.com/ChromeDevTools/devtools-protocol/compare/e47d08c...22bd900)
+
+```diff
+@@ domains/Emulation.pdl:436 @@ domain Emulation
+       PressureSource source
+       optional PressureMetadata metadata
+ 
+-  # TODO: OBSOLETE: To remove when setPressureDataOverride is merged.
+   # Provides a given pressure state that will be processed and eventually be
+   # delivered to PressureObserver users. |source| must have been previously
+   # overridden by setPressureSourceOverrideEnabled.
+@@ -445,15 +444,6 @@ domain Emulation
+       PressureSource source
+       PressureState state
+ 
+-  # Provides a given pressure data set that will be processed and eventually be
+-  # delivered to PressureObserver users. |source| must have been previously
+-  # overridden by setPressureSourceOverrideEnabled.
+-  experimental command setPressureDataOverride
+-    parameters
+-      PressureSource source
+-      PressureState state
+-      optional number ownContributionEstimate
+-
+   # Overrides the Idle state.
+   command setIdleOverride
+     parameters
+```
+
 ## Roll protocol to r1634055 — _2026-05-21T05:48:46.000Z_
-######  Diff: [`357026f...c2ea733`](https://github.com/ChromeDevTools/devtools-protocol/compare/357026f...c2ea733)
+######  Diff: [`357026f...e47d08c`](https://github.com/ChromeDevTools/devtools-protocol/compare/357026f...e47d08c)
 
 ```diff
 @@ domains/Target.pdl:36 @@ domain Target
@@ -42829,97 +42859,4 @@ index 4754f17c..8dad9c98 100644
  
    type CookieOperation extends string
      enum
-```
-
-## Roll protocol to r1173320 — _2023-07-21T04:26:31.000Z_
-######  Diff: [`68de33a...57ca382`](https://github.com/ChromeDevTools/devtools-protocol/compare/68de33a...57ca382)
-
-```diff
-@@ browser_protocol.pdl:72 @@ experimental domain Accessibility
-       optional AXValue attributeValue
-       # Whether this source is superseded by a higher priority source.
-       optional boolean superseded
--      # The native markup source for this value, e.g. a <label> element.
-+      # The native markup source for this value, e.g. a `<label>` element.
-       optional AXValueNativeSourceType nativeSource
-       # The value, such as a node or node list, of the native source.
-       optional AXValue nativeSourceValue
-@@ -1503,7 +1503,7 @@ experimental domain CSS
-       boolean isInline
-       # Whether this stylesheet is mutable. Inline stylesheets become mutable
-       # after they have been modified via CSSOM API.
--      # <link> element's stylesheets become mutable only if DevTools modifies them.
-+      # `<link>` element's stylesheets become mutable only if DevTools modifies them.
-       # Constructed stylesheets (new CSSStyleSheet()) are mutable immediately after creation.
-       boolean isMutable
-       # True if this stylesheet is created through new CSSStyleSheet() or imported as a
-@@ -2326,8 +2326,8 @@ experimental domain Cast
- # the JavaScript object wrapper, etc. It is important that client receives DOM events only for the
- # nodes that are known to the client. Backend keeps track of the nodes that were sent to the client
- # and never sends the same node twice. It is client's responsibility to collect information about
--# the nodes that were sent to the client.<p>Note that `iframe` owner elements will return
--# corresponding document elements as their child nodes.</p>
-+# the nodes that were sent to the client. Note that `iframe` owner elements will return
-+# corresponding document elements as their child nodes.
- domain DOM
-   depends on Runtime
- 
-@@ -4107,8 +4107,8 @@ experimental domain HeadlessExperimental
- # Input/Output operations for streams produced by DevTools.
- domain IO
- 
--  # This is either obtained from another method or specified as `blob:&lt;uuid&gt;` where
--  # `&lt;uuid&gt` is an UUID of a Blob.
-+  # This is either obtained from another method or specified as `blob:<uuid>` where
-+  # `<uuid>` is an UUID of a Blob.
-   type StreamHandle extends string
- 
-   # Close the stream, discard any temporary backing storage.
-@@ -5880,7 +5880,7 @@ domain Network
-       Headers responseHeaders
-       # Signed exchange response signature.
-       array of SignedExchangeSignature signatures
--      # Signed exchange header integrity hash in the form of "sha256-<base64-hash-value>".
-+      # Signed exchange header integrity hash in the form of `sha256-<base64-hash-value>`.
-       string headerIntegrity
- 
-   # Field type for a signed exchange related error.
-@@ -8359,7 +8359,7 @@ domain Page
-       enum mode
-         selectSingle
-         selectMultiple
--      # Input node id. Only present for file choosers opened via an <input type="file"> element.
-+      # Input node id. Only present for file choosers opened via an `<input type="file">` element.
-       experimental optional DOM.BackendNodeId backendNodeId
- 
-   # Fired when frame has been attached to its parent.
-@@ -11096,7 +11096,7 @@ experimental domain Preload
-       # Identifies a document which the rule set is associated with.
-       Network.LoaderId loaderId
-       # Source text of JSON representing the rule set. If it comes from
--      # <script> tag, it is the textContent of the node. Note that it is
-+      # `<script>` tag, it is the textContent of the node. Note that it is
-       # a JSON for valid case.
-       #
-       # See also:
-@@ -11104,9 +11104,9 @@ experimental domain Preload
-       # - https://github.com/WICG/nav-speculation/blob/main/triggers.md
-       string sourceText
-       # A speculation rule set is either added through an inline
--      # <script> tag or through an external resource via the
-+      # `<script>` tag or through an external resource via the
-       # 'Speculation-Rules' HTTP header. For the first case, we include
--      # the BackendNodeId of the relevant <script> tag. For the second
-+      # the BackendNodeId of the relevant `<script>` tag. For the second
-       # case, we include the external URL where the rule set was loaded
-       # from, and also RequestId if Network domain is enabled.
-       #
-@@ -11210,7 +11210,6 @@ experimental domain Preload
-       AudioOutputDeviceRequested
-       MixedContent
-       TriggerBackgrounded
--      EmbedderTriggeredAndCrossOriginRedirected
-       MemoryLimitExceeded
-       # Prerenders can be cancelled when Chrome uses excessive memory. This is
-       # recorded when it fails to get the memory usage.
 ```

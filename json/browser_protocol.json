@@ -11406,7 +11406,7 @@
                 },
                 {
                     "name": "setPressureStateOverride",
-                    "description": "TODO: OBSOLETE: To remove when setPressureDataOverride is merged.\nProvides a given pressure state that will be processed and eventually be\ndelivered to PressureObserver users. |source| must have been previously\noverridden by setPressureSourceOverrideEnabled.",
+                    "description": "Provides a given pressure state that will be processed and eventually be\ndelivered to PressureObserver users. |source| must have been previously\noverridden by setPressureSourceOverrideEnabled.",
                     "experimental": true,
                     "parameters": [
                         {
@@ -11416,26 +11416,6 @@
                         {
                             "name": "state",
                             "$ref": "PressureState"
-                        }
-                    ]
-                },
-                {
-                    "name": "setPressureDataOverride",
-                    "description": "Provides a given pressure data set that will be processed and eventually be\ndelivered to PressureObserver users. |source| must have been previously\noverridden by setPressureSourceOverrideEnabled.",
-                    "experimental": true,
-                    "parameters": [
-                        {
-                            "name": "source",
-                            "$ref": "PressureSource"
-                        },
-                        {
-                            "name": "state",
-                            "$ref": "PressureState"
-                        },
-                        {
-                            "name": "ownContributionEstimate",
-                            "optional": true,
-                            "type": "number"
                         }
                     ]
                 },
