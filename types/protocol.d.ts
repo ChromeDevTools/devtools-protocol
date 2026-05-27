@@ -3640,7 +3640,7 @@ export namespace Protocol {
 
         export type AttributionReportingIssueType = ('PermissionPolicyDisabled' | 'UntrustworthyReportingOrigin' | 'InsecureContext' | 'InvalidHeader' | 'InvalidRegisterTriggerHeader' | 'SourceAndTriggerHeaders' | 'SourceIgnored' | 'TriggerIgnored' | 'OsSourceIgnored' | 'OsTriggerIgnored' | 'InvalidRegisterOsSourceHeader' | 'InvalidRegisterOsTriggerHeader' | 'WebAndOsHeaders' | 'NoWebOrOsSupport' | 'NavigationRegistrationWithoutTransientUserActivation' | 'InvalidInfoHeader' | 'NoRegisterSourceHeader' | 'NoRegisterTriggerHeader' | 'NoRegisterOsSourceHeader' | 'NoRegisterOsTriggerHeader' | 'NavigationRegistrationUniqueScopeAlreadySet');
 
-        export type SharedDictionaryError = ('UseErrorCrossOriginNoCorsRequest' | 'UseErrorDictionaryLoadFailure' | 'UseErrorMatchingDictionaryNotUsed' | 'UseErrorUnexpectedContentDictionaryHeader' | 'WriteErrorCossOriginNoCorsRequest' | 'WriteErrorDisallowedBySettings' | 'WriteErrorExpiredResponse' | 'WriteErrorFeatureDisabled' | 'WriteErrorInsufficientResources' | 'WriteErrorInvalidMatchField' | 'WriteErrorInvalidStructuredHeader' | 'WriteErrorInvalidTTLField' | 'WriteErrorNavigationRequest' | 'WriteErrorNoMatchField' | 'WriteErrorNonIntegerTTLField' | 'WriteErrorNonListMatchDestField' | 'WriteErrorNonSecureContext' | 'WriteErrorNonStringIdField' | 'WriteErrorNonStringInMatchDestList' | 'WriteErrorNonStringMatchField' | 'WriteErrorNonTokenTypeField' | 'WriteErrorRequestAborted' | 'WriteErrorShuttingDown' | 'WriteErrorTooLongIdField' | 'WriteErrorUnsupportedType');
+        export type SharedDictionaryError = ('UseErrorCrossOriginNoCorsRequest' | 'UseErrorDictionaryLoadFailure' | 'UseErrorMatchingDictionaryNotUsed' | 'UseErrorUnexpectedContentDictionaryHeader' | 'WriteErrorCossOriginNoCorsRequest' | 'WriteErrorDisallowedBySettings' | 'WriteErrorExpiredResponse' | 'WriteErrorFeatureDisabled' | 'WriteErrorInsufficientResources' | 'WriteErrorInvalidMatchField' | 'WriteErrorInvalidStructuredHeader' | 'WriteErrorInvalidTTLField' | 'WriteErrorNavigationRequest' | 'WriteErrorNoMatchField' | 'WriteErrorNonIntegerTTLField' | 'WriteErrorNonListMatchDestField' | 'WriteErrorNonSecureContext' | 'WriteErrorNonStringIdField' | 'WriteErrorNonStringInMatchDestList' | 'WriteErrorInvalidMatchDestList' | 'WriteErrorNonStringMatchField' | 'WriteErrorNonTokenTypeField' | 'WriteErrorRequestAborted' | 'WriteErrorShuttingDown' | 'WriteErrorTooLongIdField' | 'WriteErrorUnsupportedType');
 
         export type SRIMessageSignatureError = ('MissingSignatureHeader' | 'MissingSignatureInputHeader' | 'InvalidSignatureHeader' | 'InvalidSignatureInputHeader' | 'SignatureHeaderValueIsNotByteSequence' | 'SignatureHeaderValueIsParameterized' | 'SignatureHeaderValueIsIncorrectLength' | 'SignatureInputHeaderMissingLabel' | 'SignatureInputHeaderValueNotInnerList' | 'SignatureInputHeaderValueMissingComponents' | 'SignatureInputHeaderInvalidComponentType' | 'SignatureInputHeaderInvalidComponentName' | 'SignatureInputHeaderInvalidHeaderComponentParameter' | 'SignatureInputHeaderInvalidDerivedComponentParameter' | 'SignatureInputHeaderKeyIdLength' | 'SignatureInputHeaderInvalidParameter' | 'SignatureInputHeaderMissingRequiredParameters' | 'ValidationFailedSignatureExpired' | 'ValidationFailedInvalidLength' | 'ValidationFailedSignatureMismatch' | 'ValidationFailedIntegrityMismatch' | 'SignatureBaseUnknownDerivedComponent' | 'SignatureBaseMissingHeader' | 'SignatureBaseInvalidUnencodedDigest' | 'SignatureBaseUnsupportedComponent');
 
@@ -3783,6 +3783,17 @@ export namespace Protocol {
          * third_party/blink/public/mojom/devtools/inspector_issue.mojom.
          */
         export type FederatedAuthUserInfoRequestIssueReason = ('NotSameOrigin' | 'NotIframe' | 'NotPotentiallyTrustworthy' | 'NoApiPermission' | 'NotSignedInWithIdp' | 'NoAccountSharingPermission' | 'InvalidConfigOrWellKnown' | 'InvalidAccountsResponse' | 'NoReturningUserFromFetchedAccounts');
+
+        export interface EmailVerificationRequestIssueDetails {
+            emailVerificationRequestIssueReason: EmailVerificationRequestIssueReason;
+        }
+
+        /**
+         * Represents the failure reason when an email verification request fails.
+         * Should be updated alongside EmailVerificationRequestResult in
+         * third_party/blink/public/mojom/devtools/inspector_issue.mojom.
+         */
+        export type EmailVerificationRequestIssueReason = ('InvalidEmail' | 'DnsFetchFailed' | 'DnsInvalidRecord' | 'WellKnownHttpNotFound' | 'WellKnownNoResponse' | 'WellKnownInvalidResponse' | 'WellKnownListEmpty' | 'WellKnownInvalidContentType' | 'WellKnownMissingIssuanceEndpoint' | 'WellKnownIssuanceEndpointCrossOrigin' | 'WellKnownUnsupportedSigningAlgorithm' | 'TokenHttpNotFound' | 'TokenNoResponse' | 'TokenInvalidResponse' | 'TokenInvalidContentType' | 'TokenMalformedSdJwt' | 'TokenInvalidSdJwt' | 'KeyBindingSigningFailed' | 'RpOriginIsOpaque' | 'WellKnownMissingAccountsEndpoint' | 'UserLoggedOut' | 'WellKnownAccountsEndpointCrossOrigin');
 
         /**
          * This issue tracks client hints related issues. It's used to deprecate old
@@ -3950,7 +3961,7 @@ export namespace Protocol {
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'PartitioningBlobURLIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'CookieDeprecationMetadataIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue' | 'PropertyRuleIssue' | 'SharedDictionaryIssue' | 'ElementAccessibilityIssue' | 'SRIMessageSignatureIssue' | 'UnencodedDigestIssue' | 'ConnectionAllowlistIssue' | 'UserReidentificationIssue' | 'PermissionElementIssue' | 'PerformanceIssue' | 'SelectivePermissionsInterventionIssue');
+        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'CorsIssue' | 'AttributionReportingIssue' | 'QuirksModeIssue' | 'PartitioningBlobURLIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'CookieDeprecationMetadataIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue' | 'PropertyRuleIssue' | 'SharedDictionaryIssue' | 'ElementAccessibilityIssue' | 'SRIMessageSignatureIssue' | 'UnencodedDigestIssue' | 'ConnectionAllowlistIssue' | 'UserReidentificationIssue' | 'PermissionElementIssue' | 'PerformanceIssue' | 'SelectivePermissionsInterventionIssue' | 'EmailVerificationRequestIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -3990,6 +4001,7 @@ export namespace Protocol {
             permissionElementIssueDetails?: PermissionElementIssueDetails;
             performanceIssueDetails?: PerformanceIssueDetails;
             selectivePermissionsInterventionIssueDetails?: SelectivePermissionsInterventionIssueDetails;
+            emailVerificationRequestIssueDetails?: EmailVerificationRequestIssueDetails;
         }
 
         /**

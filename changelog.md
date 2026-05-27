@@ -1,7 +1,76 @@
 
 
+## Roll protocol to r1636713 — _2026-05-27T05:50:56.000Z_
+######  Diff: [`b6b27f6...763f43a`](https://github.com/ChromeDevTools/devtools-protocol/compare/b6b27f6...763f43a)
+
+```diff
+@@ domains/Audits.pdl:316 @@ experimental domain Audits
+       WriteErrorNonSecureContext
+       WriteErrorNonStringIdField
+       WriteErrorNonStringInMatchDestList
++      WriteErrorInvalidMatchDestList
+       WriteErrorNonStringMatchField
+       WriteErrorNonTokenTypeField
+       WriteErrorRequestAborted
+@@ -560,6 +561,38 @@ experimental domain Audits
+       InvalidAccountsResponse
+       NoReturningUserFromFetchedAccounts
+ 
++  type EmailVerificationRequestIssueDetails extends object
++    properties
++      EmailVerificationRequestIssueReason emailVerificationRequestIssueReason
++
++  # Represents the failure reason when an email verification request fails.
++  # Should be updated alongside EmailVerificationRequestResult in
++  # third_party/blink/public/mojom/devtools/inspector_issue.mojom.
++  type EmailVerificationRequestIssueReason extends string
++    enum
++      InvalidEmail
++      DnsFetchFailed
++      DnsInvalidRecord
++      WellKnownHttpNotFound
++      WellKnownNoResponse
++      WellKnownInvalidResponse
++      WellKnownListEmpty
++      WellKnownInvalidContentType
++      WellKnownMissingIssuanceEndpoint
++      WellKnownIssuanceEndpointCrossOrigin
++      WellKnownUnsupportedSigningAlgorithm
++      TokenHttpNotFound
++      TokenNoResponse
++      TokenInvalidResponse
++      TokenInvalidContentType
++      TokenMalformedSdJwt
++      TokenInvalidSdJwt
++      KeyBindingSigningFailed
++      RpOriginIsOpaque
++      WellKnownMissingAccountsEndpoint
++      UserLoggedOut
++      WellKnownAccountsEndpointCrossOrigin
++
+   # This issue tracks client hints related issues. It's used to deprecate old
+   # features, encourage the use of new ones, and provide general guidance.
+   type ClientHintIssueDetails extends object
+@@ -743,6 +776,7 @@ experimental domain Audits
+       PermissionElementIssue
+       PerformanceIssue
+       SelectivePermissionsInterventionIssue
++      EmailVerificationRequestIssue
+ 
+   # This struct holds a list of optional fields with additional information
+   # specific to the kind of issue. When adding a new issue code, please also
+@@ -778,6 +812,7 @@ experimental domain Audits
+       optional PermissionElementIssueDetails permissionElementIssueDetails
+       optional PerformanceIssueDetails performanceIssueDetails
+       optional SelectivePermissionsInterventionIssueDetails selectivePermissionsInterventionIssueDetails
++      optional EmailVerificationRequestIssueDetails emailVerificationRequestIssueDetails
+ 
+   # A unique id for a DevTools inspector issue. Allows other entities (e.g.
+   # exceptions, CDP message, console messages, etc.) to reference an issue.
+```
+
 ## Roll protocol to r1635485 — _2026-05-24T05:45:30.000Z_
-######  Diff: [`e47d08c...22bd900`](https://github.com/ChromeDevTools/devtools-protocol/compare/e47d08c...22bd900)
+######  Diff: [`e47d08c...b6b27f6`](https://github.com/ChromeDevTools/devtools-protocol/compare/e47d08c...b6b27f6)
 
 ```diff
 @@ domains/Emulation.pdl:436 @@ domain Emulation
@@ -42845,18 +42914,4 @@ index 4754f17c..8dad9c98 100644
  
    # Types of reasons why a cookie may not be sent with a request.
    experimental type CookieBlockedReason extends string
-```
-
-## Roll protocol to r1173815 — _2023-07-22T04:25:56.000Z_
-######  Diff: [`57ca382...e22d6aa`](https://github.com/ChromeDevTools/devtools-protocol/compare/57ca382...e22d6aa)
-
-```diff
-@@ browser_protocol.pdl:496 @@ experimental domain Audits
-       WarnSameSiteLaxCrossDowngradeLax
-       WarnAttributeValueExceedsMaxSize
-       WarnDomainNonASCII
-+      WarnThirdPartyPhaseout
- 
-   type CookieOperation extends string
-     enum
 ```
