@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1637485 — _2026-05-28T05:49:23.000Z_
+######  Diff: [`7919a58...3b29011`](https://github.com/ChromeDevTools/devtools-protocol/compare/7919a58...3b29011)
+
+```diff
+@@ domains/Network.pdl:2228 @@ domain Network
+       InvalidFederatedSessionProviderFailedToRestoreKey
+       FailedToUnwrapKey
+       SessionDeletedDuringRefresh
++      CrossOriginRegistrationSiteNotIncluded
+ 
+   # Details about a failed device bound session network request.
+   experimental type DeviceBoundSessionFailedRequest extends object
+```
+
 ## Roll protocol to r1636713 — _2026-05-27T05:50:56.000Z_
-######  Diff: [`b6b27f6...763f43a`](https://github.com/ChromeDevTools/devtools-protocol/compare/b6b27f6...763f43a)
+######  Diff: [`b6b27f6...7919a58`](https://github.com/ChromeDevTools/devtools-protocol/compare/b6b27f6...7919a58)
 
 ```diff
 @@ domains/Audits.pdl:316 @@ experimental domain Audits
@@ -42897,21 +42911,4 @@ index 4754f17c..8dad9c98 100644
  
    # TODO(crbug.com/1458532): Add other Attribution Reporting events, e.g.
    # trigger registration.
-```
-
-## Roll protocol to r1177611 — _2023-08-01T04:26:34.000Z_
-######  Diff: [`e22d6aa...0de2384`](https://github.com/ChromeDevTools/devtools-protocol/compare/e22d6aa...0de2384)
-
-```diff
-@@ browser_protocol.pdl:5688 @@ domain Network
-       # The cookie's name/value pair size exceeded the size limit defined in
-       # RFC6265bis.
-       NameValuePairExceedsMaxSize
-+      # The cookie contained a forbidden ASCII control character, or the tab
-+      # character if it appears in the middle of the cookie name, value, an
-+      # attribute name, or an attribute value.
-+      DisallowedCharacter
- 
-   # Types of reasons why a cookie may not be sent with a request.
-   experimental type CookieBlockedReason extends string
 ```
