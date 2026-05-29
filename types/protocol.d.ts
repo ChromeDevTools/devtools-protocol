@@ -21166,8 +21166,8 @@ export namespace Protocol {
             targetId: TargetID;
             /**
              * The id of the panel we want DevTools to open initially. Currently
-             * supported panels are elements, console, network, sources, resources
-             * and performance.
+             * supported panels are elements, console, network, sources, resources,
+             * timeline, chrome-recorder, heap-profiler, lighthouse, and security.
              */
             panelId?: string;
         }

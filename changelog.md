@@ -1,7 +1,24 @@
 
 
+## Roll protocol to r1638241 — _2026-05-29T05:50:04.000Z_
+######  Diff: [`c2ef27f...aae3dcd`](https://github.com/ChromeDevTools/devtools-protocol/compare/c2ef27f...aae3dcd)
+
+```diff
+@@ domains/Target.pdl:349 @@ domain Target
+       # This can be the page or tab target ID.
+       TargetID targetId
+       # The id of the panel we want DevTools to open initially. Currently
+-      # supported panels are elements, console, network, sources, resources
+-      # and performance.
++      # supported panels are elements, console, network, sources, resources,
++      # timeline, chrome-recorder, heap-profiler, lighthouse, and security.
+       optional string panelId
+     returns
+       # The targetId of DevTools page target.
+```
+
 ## Roll protocol to r1637485 — _2026-05-28T05:49:23.000Z_
-######  Diff: [`7919a58...3b29011`](https://github.com/ChromeDevTools/devtools-protocol/compare/7919a58...3b29011)
+######  Diff: [`7919a58...c2ef27f`](https://github.com/ChromeDevTools/devtools-protocol/compare/7919a58...c2ef27f)
 
 ```diff
 @@ domains/Network.pdl:2228 @@ domain Network
@@ -42888,27 +42905,4 @@ index 4754f17c..8dad9c98 100644
  
    type CookieWarningReason extends string
      enum
-```
-
-## Roll protocol to r1179426 — _2023-08-04T04:26:28.000Z_
-######  Diff: [`0de2384...39e3626`](https://github.com/ChromeDevTools/devtools-protocol/compare/0de2384...39e3626)
-
-```diff
-@@ browser_protocol.pdl:8070 @@ domain Page
-       experimental optional enum transferMode
-         ReturnAsBase64
-         ReturnAsStream
-+      # Whether or not to generate tagged (accessible) PDF. Defaults to embedder choice.
-+      experimental optional boolean generateTaggedPDF
-     returns
-       # Base64-encoded pdf data. Empty if |returnAsStream| is specified.
-       binary data
-@@ -9720,6 +9722,7 @@ experimental domain Storage
-       destinationGlobalLimitReached
-       destinationBothLimitsReached
-       reportingOriginsPerSiteLimitReached
-+      exceedsMaxChannelCapacity
- 
-   # TODO(crbug.com/1458532): Add other Attribution Reporting events, e.g.
-   # trigger registration.
 ```
