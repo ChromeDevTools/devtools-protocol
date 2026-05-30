@@ -1,7 +1,94 @@
 
 
+## Roll protocol to r1638949 — _2026-05-30T05:38:26.000Z_
+######  Diff: [`2f5c261...48e0d62`](https://github.com/ChromeDevTools/devtools-protocol/compare/2f5c261...48e0d62)
+
+```diff
+@@ browser_protocol.pdl:9 @@ version
+   minor 3
+ 
+ include domains/Accessibility.pdl
++include domains/Ads.pdl
+ include domains/Animation.pdl
+ include domains/Audits.pdl
+ include domains/Autofill.pdl
+diff --git a/pdl/domains/Ads.pdl b/pdl/domains/Ads.pdl
+new file mode 100644
+index 00000000..d15b209d
+--- /dev/null
++++ b/pdl/domains/Ads.pdl
+@@ -0,0 +1,33 @@
++# Copyright 2026 The Chromium Authors
++# Use of this source code is governed by a BSD-style license that can be
++# found in the LICENSE file.
++
++# A domain for ad-related metrics and data.
++experimental domain Ads
++  depends on Network
++  depends on Page
++  depends on Runtime
++
++  # Ad metrics for a page.
++  type AdMetrics extends object
++    properties
++      # The viewport ad density by area, represented as a percentage (an integer
++      # between 0 and 100).
++      integer viewportAdDensityByArea
++      # The time-weighted average of the viewport ad density by area, measured
++      # across the duration of the page.
++      number averageViewportAdDensityByArea
++      # The number of ads currently visible within the viewport.
++      integer viewportAdCount
++      # The time-weighted average of the viewport ad count, measured across the
++      # duration of the page.
++      number averageViewportAdCount
++      # The total ad CPU usage, in milliseconds.
++      number totalAdCpuTime
++      # The total ad network bytes.
++      number totalAdNetworkBytes
++
++  # Retrieves ad metrics for the current page.
++  command getAdMetrics
++    returns
++      AdMetrics metrics
+diff --git a/pdl/domains/Audits.pdl b/pdl/domains/Audits.pdl
+index 14148cd8..548281f0 100644
+--- a/pdl/domains/Audits.pdl
++++ b/pdl/domains/Audits.pdl
+@@ -592,6 +592,17 @@ experimental domain Audits
+       WellKnownMissingAccountsEndpoint
+       UserLoggedOut
+       WellKnownAccountsEndpointCrossOrigin
++      AccountsHttpNotFound
++      AccountsNoResponse
++      AccountsInvalidResponse
++      AccountsInvalidContentType
++      AccountsEmptyList
++      EmailVerificationWellKnownHttpNotFound
++      EmailVerificationWellKnownNoResponse
++      EmailVerificationWellKnownInvalidResponse
++      EmailVerificationWellKnownInvalidContentType
++      JwksHttpNotFound
++      JwksInvalidResponse
+ 
+   # This issue tracks client hints related issues. It's used to deprecate old
+   # features, encourage the use of new ones, and provide general guidance.
+diff --git a/pdl/domains/Preload.pdl b/pdl/domains/Preload.pdl
+index 5efa7d88..40ba279d 100644
+--- a/pdl/domains/Preload.pdl
++++ b/pdl/domains/Preload.pdl
+@@ -258,6 +258,7 @@ experimental domain Preload
+       # The prefetch finished successfully but was never used.
+       PrefetchSuccessfulButNotUsed
+       PrefetchNotUsedProbeFailed
++      PrefetchCancelledOnUserNavigation
+ 
+   # Fired when a prefetch attempt is updated.
+   event prefetchStatusUpdated
+```
+
 ## Roll protocol to r1638241 — _2026-05-29T05:50:04.000Z_
-######  Diff: [`c2ef27f...aae3dcd`](https://github.com/ChromeDevTools/devtools-protocol/compare/c2ef27f...aae3dcd)
+######  Diff: [`c2ef27f...2f5c261`](https://github.com/ChromeDevTools/devtools-protocol/compare/c2ef27f...2f5c261)
 
 ```diff
 @@ domains/Target.pdl:349 @@ domain Target
@@ -42891,18 +42978,4 @@ index 4754f17c..8dad9c98 100644
  
    # Corresponds to IdentityRequestAccount
    type Account extends object
-```
-
-## Roll protocol to r1181874 — _2023-08-10T04:26:30.000Z_
-######  Diff: [`39e3626...71df2aa`](https://github.com/ChromeDevTools/devtools-protocol/compare/39e3626...71df2aa)
-
-```diff
-@@ browser_protocol.pdl:483 @@ experimental domain Audits
-       ExcludeSamePartyCrossPartyContext
-       ExcludeDomainNonASCII
-       ExcludeThirdPartyCookieBlockedInFirstPartySet
-+      ExcludeThirdPartyPhaseout
- 
-   type CookieWarningReason extends string
-     enum
 ```

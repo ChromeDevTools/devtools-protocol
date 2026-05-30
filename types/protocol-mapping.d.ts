@@ -1780,6 +1780,13 @@ export namespace ProtocolMapping {
             returnType: Protocol.Accessibility.QueryAXTreeResponse;
         };
         /**
+         * Retrieves ad metrics for the current page.
+         */
+        'Ads.getAdMetrics': {
+            paramsType: [];
+            returnType: Protocol.Ads.GetAdMetricsResponse;
+        };
+        /**
          * Disables animation domain notifications.
          */
         'Animation.disable': {

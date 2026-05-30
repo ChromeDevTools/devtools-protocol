@@ -28,6 +28,8 @@ export namespace ProtocolProxyApi {
 
         Accessibility: AccessibilityApi;
 
+        Ads: AdsApi;
+
         Animation: AnimationApi;
 
         Audits: AuditsApi;
@@ -753,6 +755,14 @@ export namespace ProtocolProxyApi {
          * @experimental
          */
         on(event: 'nodesUpdated', listener: (params: Protocol.Accessibility.NodesUpdatedEvent) => void): void;
+
+    }
+
+    export interface AdsApi {
+        /**
+         * Retrieves ad metrics for the current page.
+         */
+        getAdMetrics(): Promise<Protocol.Ads.GetAdMetricsResponse>;
 
     }
 

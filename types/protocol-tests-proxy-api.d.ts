@@ -28,6 +28,8 @@ export namespace ProtocolTestsProxyApi {
 
         Accessibility: AccessibilityApi;
 
+        Ads: AdsApi;
+
         Animation: AnimationApi;
 
         Audits: AuditsApi;
@@ -801,6 +803,14 @@ export namespace ProtocolTestsProxyApi {
         onNodesUpdated(listener: (event: { params: Protocol.Accessibility.NodesUpdatedEvent }) => void): void;
         offNodesUpdated(listener: (event: { params: Protocol.Accessibility.NodesUpdatedEvent }) => void): void;
         onceNodesUpdated(eventMatcher?: (event: { params: Protocol.Accessibility.NodesUpdatedEvent }) => boolean): Promise<{ params: Protocol.Accessibility.NodesUpdatedEvent }>;
+
+    }
+
+    export interface AdsApi {
+        /**
+         * Retrieves ad metrics for the current page.
+         */
+        getAdMetrics(): Promise<{id: number, result: Protocol.Ads.GetAdMetricsResponse, sessionId: string}>;
 
     }
 

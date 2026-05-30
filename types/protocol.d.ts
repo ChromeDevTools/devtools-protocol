@@ -3119,6 +3119,50 @@ export namespace Protocol {
     }
 
     /**
+     * A domain for ad-related metrics and data.
+     * @experimental
+     */
+    export namespace Ads {
+
+        /**
+         * Ad metrics for a page.
+         */
+        export interface AdMetrics {
+            /**
+             * The viewport ad density by area, represented as a percentage (an integer
+             * between 0 and 100).
+             */
+            viewportAdDensityByArea: integer;
+            /**
+             * The time-weighted average of the viewport ad density by area, measured
+             * across the duration of the page.
+             */
+            averageViewportAdDensityByArea: number;
+            /**
+             * The number of ads currently visible within the viewport.
+             */
+            viewportAdCount: integer;
+            /**
+             * The time-weighted average of the viewport ad count, measured across the
+             * duration of the page.
+             */
+            averageViewportAdCount: number;
+            /**
+             * The total ad CPU usage, in milliseconds.
+             */
+            totalAdCpuTime: number;
+            /**
+             * The total ad network bytes.
+             */
+            totalAdNetworkBytes: number;
+        }
+
+        export interface GetAdMetricsResponse {
+            metrics: AdMetrics;
+        }
+    }
+
+    /**
      * @experimental
      */
     export namespace Animation {
@@ -3793,7 +3837,7 @@ export namespace Protocol {
          * Should be updated alongside EmailVerificationRequestResult in
          * third_party/blink/public/mojom/devtools/inspector_issue.mojom.
          */
-        export type EmailVerificationRequestIssueReason = ('InvalidEmail' | 'DnsFetchFailed' | 'DnsInvalidRecord' | 'WellKnownHttpNotFound' | 'WellKnownNoResponse' | 'WellKnownInvalidResponse' | 'WellKnownListEmpty' | 'WellKnownInvalidContentType' | 'WellKnownMissingIssuanceEndpoint' | 'WellKnownIssuanceEndpointCrossOrigin' | 'WellKnownUnsupportedSigningAlgorithm' | 'TokenHttpNotFound' | 'TokenNoResponse' | 'TokenInvalidResponse' | 'TokenInvalidContentType' | 'TokenMalformedSdJwt' | 'TokenInvalidSdJwt' | 'KeyBindingSigningFailed' | 'RpOriginIsOpaque' | 'WellKnownMissingAccountsEndpoint' | 'UserLoggedOut' | 'WellKnownAccountsEndpointCrossOrigin');
+        export type EmailVerificationRequestIssueReason = ('InvalidEmail' | 'DnsFetchFailed' | 'DnsInvalidRecord' | 'WellKnownHttpNotFound' | 'WellKnownNoResponse' | 'WellKnownInvalidResponse' | 'WellKnownListEmpty' | 'WellKnownInvalidContentType' | 'WellKnownMissingIssuanceEndpoint' | 'WellKnownIssuanceEndpointCrossOrigin' | 'WellKnownUnsupportedSigningAlgorithm' | 'TokenHttpNotFound' | 'TokenNoResponse' | 'TokenInvalidResponse' | 'TokenInvalidContentType' | 'TokenMalformedSdJwt' | 'TokenInvalidSdJwt' | 'KeyBindingSigningFailed' | 'RpOriginIsOpaque' | 'WellKnownMissingAccountsEndpoint' | 'UserLoggedOut' | 'WellKnownAccountsEndpointCrossOrigin' | 'AccountsHttpNotFound' | 'AccountsNoResponse' | 'AccountsInvalidResponse' | 'AccountsInvalidContentType' | 'AccountsEmptyList' | 'EmailVerificationWellKnownHttpNotFound' | 'EmailVerificationWellKnownNoResponse' | 'EmailVerificationWellKnownInvalidResponse' | 'EmailVerificationWellKnownInvalidContentType' | 'JwksHttpNotFound' | 'JwksInvalidResponse');
 
         /**
          * This issue tracks client hints related issues. It's used to deprecate old
@@ -18968,7 +19012,7 @@ export namespace Protocol {
          * TODO(https://crbug.com/1384419): revisit the list of PrefetchStatus and
          * filter out the ones that aren't necessary to the developers.
          */
-        export type PrefetchStatus = ('PrefetchAllowed' | 'PrefetchFailedIneligibleRedirect' | 'PrefetchFailedInvalidRedirect' | 'PrefetchFailedMIMENotSupported' | 'PrefetchFailedNetError' | 'PrefetchFailedNon2XX' | 'PrefetchEvictedAfterBrowsingDataRemoved' | 'PrefetchEvictedAfterCandidateRemoved' | 'PrefetchEvictedForNewerPrefetch' | 'PrefetchHeldback' | 'PrefetchIneligibleRetryAfter' | 'PrefetchIsPrivacyDecoy' | 'PrefetchIsStale' | 'PrefetchNotEligibleBrowserContextOffTheRecord' | 'PrefetchNotEligibleDataSaverEnabled' | 'PrefetchNotEligibleExistingProxy' | 'PrefetchNotEligibleHostIsNonUnique' | 'PrefetchNotEligibleNonDefaultStoragePartition' | 'PrefetchNotEligibleSameSiteCrossOriginPrefetchRequiredProxy' | 'PrefetchNotEligibleSchemeIsNotHttps' | 'PrefetchNotEligibleUserHasCookies' | 'PrefetchNotEligibleUserHasServiceWorker' | 'PrefetchNotEligibleUserHasServiceWorkerNoFetchHandler' | 'PrefetchNotEligibleRedirectFromServiceWorker' | 'PrefetchNotEligibleRedirectToServiceWorker' | 'PrefetchNotEligibleBatterySaverEnabled' | 'PrefetchNotEligiblePreloadingDisabled' | 'PrefetchNotFinishedInTime' | 'PrefetchNotStarted' | 'PrefetchNotUsedCookiesChanged' | 'PrefetchProxyNotAvailable' | 'PrefetchResponseUsed' | 'PrefetchSuccessfulButNotUsed' | 'PrefetchNotUsedProbeFailed');
+        export type PrefetchStatus = ('PrefetchAllowed' | 'PrefetchFailedIneligibleRedirect' | 'PrefetchFailedInvalidRedirect' | 'PrefetchFailedMIMENotSupported' | 'PrefetchFailedNetError' | 'PrefetchFailedNon2XX' | 'PrefetchEvictedAfterBrowsingDataRemoved' | 'PrefetchEvictedAfterCandidateRemoved' | 'PrefetchEvictedForNewerPrefetch' | 'PrefetchHeldback' | 'PrefetchIneligibleRetryAfter' | 'PrefetchIsPrivacyDecoy' | 'PrefetchIsStale' | 'PrefetchNotEligibleBrowserContextOffTheRecord' | 'PrefetchNotEligibleDataSaverEnabled' | 'PrefetchNotEligibleExistingProxy' | 'PrefetchNotEligibleHostIsNonUnique' | 'PrefetchNotEligibleNonDefaultStoragePartition' | 'PrefetchNotEligibleSameSiteCrossOriginPrefetchRequiredProxy' | 'PrefetchNotEligibleSchemeIsNotHttps' | 'PrefetchNotEligibleUserHasCookies' | 'PrefetchNotEligibleUserHasServiceWorker' | 'PrefetchNotEligibleUserHasServiceWorkerNoFetchHandler' | 'PrefetchNotEligibleRedirectFromServiceWorker' | 'PrefetchNotEligibleRedirectToServiceWorker' | 'PrefetchNotEligibleBatterySaverEnabled' | 'PrefetchNotEligiblePreloadingDisabled' | 'PrefetchNotFinishedInTime' | 'PrefetchNotStarted' | 'PrefetchNotUsedCookiesChanged' | 'PrefetchProxyNotAvailable' | 'PrefetchResponseUsed' | 'PrefetchSuccessfulButNotUsed' | 'PrefetchNotUsedProbeFailed' | 'PrefetchCancelledOnUserNavigation');
 
         /**
          * Information of headers to be displayed when the header mismatch occurred.
