@@ -1,7 +1,43 @@
 
 
+## Roll protocol to r1639953 — _2026-06-02T06:00:45.000Z_
+######  Diff: [`0efa44f...cc0b1dd`](https://github.com/ChromeDevTools/devtools-protocol/compare/0efa44f...cc0b1dd)
+
+```diff
+@@ domains/Audits.pdl:603 @@ experimental domain Audits
+       EmailVerificationWellKnownInvalidContentType
+       JwksHttpNotFound
+       JwksInvalidResponse
++      TokenVerificationSdJwtUnsupportedHeaderAlg
++      TokenVerificationSdJwtMissingIss
++      TokenVerificationSdJwtMissingIat
++      TokenVerificationSdJwtMissingCnf
++      TokenVerificationSdJwtMissingEmail
++      TokenVerificationSdJwtInvalidIssuedAt
++      TokenVerificationSdJwtInvalidIssuer
++      TokenVerificationSdJwtJwksMissingKeys
++      TokenVerificationSdJwtSignatureFailed
++      TokenVerificationSdJwtInvalidEmailVerified
++      TokenVerificationSdJwtInvalidEmail
++      TokenVerificationSdJwtInvalidHolderKey
++      TokenVerificationKbInvalidTyp
++      TokenVerificationKbMissingAud
++      TokenVerificationKbMissingNonce
++      TokenVerificationKbMissingIat
++      TokenVerificationKbMissingSdHash
++      TokenVerificationKbInvalidIssuedAt
++      TokenVerificationKbInvalidAudience
++      TokenVerificationKbInvalidNonce
++      TokenVerificationKbInvalidSdHash
++      TokenVerificationKbMissingCnf
++      TokenVerificationKbSignatureFailed
+ 
+   # This issue tracks client hints related issues. It's used to deprecate old
+   # features, encourage the use of new ones, and provide general guidance.
+```
+
 ## Roll protocol to r1638949 — _2026-05-30T05:38:26.000Z_
-######  Diff: [`2f5c261...48e0d62`](https://github.com/ChromeDevTools/devtools-protocol/compare/2f5c261...48e0d62)
+######  Diff: [`2f5c261...0efa44f`](https://github.com/ChromeDevTools/devtools-protocol/compare/2f5c261...0efa44f)
 
 ```diff
 @@ browser_protocol.pdl:9 @@ version
@@ -42924,58 +42960,4 @@ index 4754f17c..8dad9c98 100644
    command dismissDialog
      parameters
        string dialogId
-```
-
-## Roll protocol to r1182435 — _2023-08-11T04:25:48.000Z_
-######  Diff: [`71df2aa...b899c22`](https://github.com/ChromeDevTools/devtools-protocol/compare/71df2aa...b899c22)
-
-```diff
-@@ browser_protocol.pdl:1830 @@ experimental domain CSS
-       # List of keyframes.
-       array of CSSKeyframeRule keyframes
- 
-+  # Representation of a custom property registration through CSS.registerProperty
-+  type CSSPropertyRegistration extends object
-+    properties
-+      string propertyName
-+      optional Value initialValue
-+      boolean inherits
-+      string syntax
-+
-+
-+  # CSS property at-rule representation.
-+  type CSSPropertyRule extends object
-+    properties
-+      # The css style sheet identifier (absent for user agent stylesheet and user-specified
-+      # stylesheet rules) this rule came from.
-+      optional StyleSheetId styleSheetId
-+      # Parent stylesheet's origin.
-+      StyleSheetOrigin origin
-+      # Associated property name.
-+      Value propertyName
-+      # Associated style declaration.
-+      CSSStyle style
-+
-   # CSS keyframe rule representation.
-   type CSSKeyframeRule extends object
-     properties
-@@ -1957,6 +1979,10 @@ experimental domain CSS
-       optional array of CSSKeyframesRule cssKeyframesRules
-       # A list of CSS position fallbacks matching this node.
-       optional array of CSSPositionFallbackRule cssPositionFallbackRules
-+      # A list of CSS at-property rules matching this node.
-+      optional array of CSSPropertyRule cssPropertyRules
-+      # A list of CSS property registrations matching this node.
-+      optional array of CSSPropertyRegistration cssPropertyRegistrations
-       # Id of the first parent element that does not have display: contents.
-       experimental optional DOM.NodeId parentLayoutNodeId
- 
-@@ -11372,6 +11398,7 @@ experimental domain FedCm
-     enum
-       AccountChooser
-       AutoReauthn
-+      ConfirmIdpSignin
- 
-   # Corresponds to IdentityRequestAccount
-   type Account extends object
 ```
