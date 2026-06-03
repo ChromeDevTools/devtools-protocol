@@ -1,7 +1,33 @@
 
 
+## Roll protocol to r1640722 — _2026-06-03T06:04:43.000Z_
+######  Diff: [`ef4da13...8c324ba`](https://github.com/ChromeDevTools/devtools-protocol/compare/ef4da13...8c324ba)
+
+```diff
+@@ domains/DOM.pdl:78 @@ domain DOM
+       picker
+       permission-icon
+       overscroll-area-parent
++      skeleton
+ 
+   # Shadow root type.
+   type ShadowRootType extends string
+diff --git a/pdl/domains/Preload.pdl b/pdl/domains/Preload.pdl
+index 40ba279d..b26790f8 100644
+--- a/pdl/domains/Preload.pdl
++++ b/pdl/domains/Preload.pdl
+@@ -234,6 +234,7 @@ experimental domain Preload
+       PrefetchIneligibleRetryAfter
+       PrefetchIsPrivacyDecoy
+       PrefetchIsStale
++      PrefetchNotEligibleBlockedByConnectionAllowlist
+       PrefetchNotEligibleBrowserContextOffTheRecord
+       PrefetchNotEligibleDataSaverEnabled
+       PrefetchNotEligibleExistingProxy
+```
+
 ## Roll protocol to r1639953 — _2026-06-02T06:00:45.000Z_
-######  Diff: [`0efa44f...cc0b1dd`](https://github.com/ChromeDevTools/devtools-protocol/compare/0efa44f...cc0b1dd)
+######  Diff: [`0efa44f...ef4da13`](https://github.com/ChromeDevTools/devtools-protocol/compare/0efa44f...ef4da13)
 
 ```diff
 @@ domains/Audits.pdl:603 @@ experimental domain Audits
@@ -42929,35 +42955,4 @@ index 4754f17c..8dad9c98 100644
    # Trigger autofill on a form identified by the fieldId.
    # If the field and related form cannot be autofilled, returns an error.
    command trigger
-```
-
-## Roll protocol to r1188167 — _2023-08-25T04:26:40.000Z_
-######  Diff: [`b899c22...4e97090`](https://github.com/ChromeDevTools/devtools-protocol/compare/b899c22...4e97090)
-
-```diff
-@@ browser_protocol.pdl:1027 @@ experimental domain Autofill
-     parameters
-       array of Address addresses
- 
-+  # Disables autofill domain notifications.
-+  command disable
-+
-+  # Enables autofill domain notifications.
-+  command enable
- 
- # Defines events for background web platform features.
- experimental domain BackgroundService
-@@ -11439,6 +11444,12 @@ experimental domain FedCm
-       string dialogId
-       integer accountIndex
- 
-+  # Only valid if the dialog type is ConfirmIdpSignin. Acts as if the user had
-+  # clicked the continue button.
-+  command confirmIdpSignin
-+    parameters
-+      string dialogId
-+
-   command dismissDialog
-     parameters
-       string dialogId
 ```
