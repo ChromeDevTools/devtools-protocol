@@ -1,7 +1,25 @@
 
 
+## Roll protocol to r1643702 — _2026-06-09T05:48:31.000Z_
+######  Diff: [`8aa0e0f...e6ee411`](https://github.com/ChromeDevTools/devtools-protocol/compare/8aa0e0f...e6ee411)
+
+```diff
+@@ domains/DOM.pdl:816 @@ domain DOM
+       # If true, opens the popover and keeps it open. If false, closes the
+       # popover if it was previously force-opened.
+       boolean enable
++      # Optional ID of the element invoking this popover, used to establish the implicit anchor.
++      # If not provided, it will fall back to the first invoker in the document, preferring
++      # elements with a popovertarget attribute over those with a commandfor attribute. Note that
++      # if there are multiple invokers, this is just an estimate.
++      optional BackendNodeId invokerNodeId
+     returns
+       # List of popovers that were closed in order to respect popover stacking order.
+       array of NodeId nodeIds
+```
+
 ## Roll protocol to r1642743 — _2026-06-06T05:42:10.000Z_
-######  Diff: [`5ad5530...ac5db52`](https://github.com/ChromeDevTools/devtools-protocol/compare/5ad5530...ac5db52)
+######  Diff: [`5ad5530...8aa0e0f`](https://github.com/ChromeDevTools/devtools-protocol/compare/5ad5530...8aa0e0f)
 
 ```diff
 @@ domains/Page.pdl:175 @@ domain Page
@@ -42885,18 +42903,4 @@ index 4754f17c..8dad9c98 100644
        # duration in seconds
        optional integer aggregatableReportWindow
        AttributionReportingSourceType type
-```
-
-## Roll protocol to r1188743 — _2023-08-27T04:25:42.000Z_
-######  Diff: [`dad93a5...c9743b7`](https://github.com/ChromeDevTools/devtools-protocol/compare/dad93a5...c9743b7)
-
-```diff
-@@ browser_protocol.pdl:7430 @@ domain Page
-       ch-ect
-       ch-prefers-color-scheme
-       ch-prefers-reduced-motion
-+      ch-prefers-reduced-transparency
-       ch-rtt
-       ch-save-data
-       ch-ua
 ```
