@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1646372 — _2026-06-13T05:51:22.000Z_
+######  Diff: [`838337e...61bc44d`](https://github.com/ChromeDevTools/devtools-protocol/compare/838337e...61bc44d)
+
+```diff
+@@ domains/Page.pdl:117 @@ domain Page
+       digital-credentials-get
+       direct-sockets
+       direct-sockets-multicast
+-      direct-sockets-private
+       display-capture
+       document-domain
+       encrypted-media
+```
+
 ## Roll protocol to r1643702 — _2026-06-09T05:48:31.000Z_
-######  Diff: [`8aa0e0f...e6ee411`](https://github.com/ChromeDevTools/devtools-protocol/compare/8aa0e0f...e6ee411)
+######  Diff: [`8aa0e0f...838337e`](https://github.com/ChromeDevTools/devtools-protocol/compare/8aa0e0f...838337e)
 
 ```diff
 @@ domains/DOM.pdl:816 @@ domain DOM
@@ -42874,33 +42888,4 @@ index 4754f17c..8dad9c98 100644
        DataSaverEnabled
        HasEffectiveUrl
        ActivatedBeforeStarted
-```
-
-## Roll protocol to r1191157 — _2023-09-01T04:26:11.000Z_
-######  Diff: [`c9743b7...7b181f3`](https://github.com/ChromeDevTools/devtools-protocol/compare/c9743b7...7b181f3)
-
-```diff
-@@ browser_protocol.pdl:9770 @@ experimental domain Storage
-       string key
-       UnsignedInt128AsBase16 value
- 
-+  experimental type AttributionReportingEventReportWindows extends object
-+    properties
-+      # duration in seconds
-+      integer start
-+      # duration in seconds
-+      array of integer ends
-+
-   experimental type AttributionReportingSourceRegistration extends object
-     properties
-       Network.TimeSinceEpoch time
-       # duration in seconds
-       optional integer expiry
-+      # eventReportWindow and eventReportWindows are mutually exclusive
-       # duration in seconds
-       optional integer eventReportWindow
-+      optional AttributionReportingEventReportWindows eventReportWindows
-       # duration in seconds
-       optional integer aggregatableReportWindow
-       AttributionReportingSourceType type
 ```
