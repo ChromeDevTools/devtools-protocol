@@ -8,8 +8,8 @@
     "changelog": "node generate-changelog.mjs"
   },
   "devDependencies": {
-    "@types/node": "24.9.2",
+    "@types/node": "25.9.3",
     "simple-git": "^3.36.0",
-    "typescript": "5.9.3"
+    "typescript": "6.0.3"
   }
 }
