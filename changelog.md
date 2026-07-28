@@ -1,7 +1,40 @@
 
 
+## Roll protocol to r1669207 — _2026-07-28T05:33:24.000Z_
+######  Diff: [`a9544e3...9b0661c`](https://github.com/ChromeDevTools/devtools-protocol/compare/a9544e3...9b0661c)
+
+```diff
+@@ domains/WebAuthn.pdl:98 @@ experimental domain WebAuthn
+       # An opaque byte sequence with a maximum size of 64 bytes mapping the
+       # credential to a specific user.
+       optional binary userHandle
+-      # Signature counter. This is incremented by one for each successful
+-      # assertion.
++      # Signature counter. Must be equal to or greater than -1.
++      # If -1, the credential won't have an associated signature counter, and
++      # every assertion operation will report a value of 0.
+       # See https://w3c.github.io/webauthn/#signature-counter
+-      integer signCount
++      optional integer signCount
+       # The large blob associated with the credential.
+       # See https://w3c.github.io/webauthn/#sctn-large-blob-extension
+       optional binary largeBlob
+@@ -224,6 +225,11 @@ experimental domain WebAuthn
+       optional boolean backupState
+       optional integer activeCmtgKeyIndex
+       optional boolean generateCmtgKeyOnNextOperation
++      # Must be equal to or greater than -1.
++      # If -1, the signature counter is removed from the credential, and every
++      # assertion operation will report a value of 0.
++      # See https://w3c.github.io/webauthn/#signature-counter
++      optional integer signCount
+ 
+   # Triggered when a credential is added to an authenticator.
+   event credentialAdded
+```
+
 ## Roll protocol to r1666840 — _2026-07-23T05:37:45.000Z_
-######  Diff: [`8ff84ba...874b52c`](https://github.com/ChromeDevTools/devtools-protocol/compare/8ff84ba...874b52c)
+######  Diff: [`8ff84ba...a9544e3`](https://github.com/ChromeDevTools/devtools-protocol/compare/8ff84ba...a9544e3)
 
 ```diff
 @@ domains/WebAuthn.pdl:222 @@ experimental domain WebAuthn
@@ -42964,131 +42997,4 @@ index 4754f17c..8dad9c98 100644
  
    experimental type BackForwardCacheNotRestoredExplanationTree extends object
      properties
-```
-
-## Roll protocol to r1211954 — _2023-10-19T04:26:27.000Z_
-######  Diff: [`a60ce47...631cf6b`](https://github.com/ChromeDevTools/devtools-protocol/compare/a60ce47...631cf6b)
-
-```diff
-@@ browser_protocol.pdl:498 @@ experimental domain Audits
-       WarnAttributeValueExceedsMaxSize
-       WarnDomainNonASCII
-       WarnThirdPartyPhaseout
-+      WarnCrossSiteRedirectDowngradeChangesInclusion
- 
-   type CookieOperation extends string
-     enum
-@@ -770,6 +771,15 @@ experimental domain Audits
-     properties
-       array of string trackingSites
- 
-+  # This issue warns about third-party sites that are accessing cookies on the
-+  # current page, and have been permitted due to having a global metadata grant.
-+  # Note that in this context 'site' means eTLD+1. For example, if the URL
-+  # `https://example.test:80/web_page` was accessing cookies, the site reported
-+  # would be `example.test`.
-+  type CookieDeprecationMetadataIssueDetails extends object
-+    properties
-+      array of string allowedSites
-+
-   type ClientHintIssueReason extends string
-     enum
-       # Items in the accept-ch meta tag allow list must be valid origins.
-@@ -915,6 +925,7 @@ experimental domain Audits
-       ClientHintIssue
-       FederatedAuthRequestIssue
-       BounceTrackingIssue
-+      CookieDeprecationMetadataIssue
-       StylesheetLoadingIssue
-       FederatedAuthUserInfoRequestIssue
-       PropertyRuleIssue
-@@ -940,6 +951,7 @@ experimental domain Audits
-       optional ClientHintIssueDetails clientHintIssueDetails
-       optional FederatedAuthRequestIssueDetails federatedAuthRequestIssueDetails
-       optional BounceTrackingIssueDetails bounceTrackingIssueDetails
-+      optional CookieDeprecationMetadataIssueDetails cookieDeprecationMetadataIssueDetails
-       optional StylesheetLoadingIssueDetails stylesheetLoadingIssueDetails
-       optional PropertyRuleIssueDetails propertyRuleIssueDetails
-       optional FederatedAuthUserInfoRequestIssueDetails federatedAuthUserInfoRequestIssueDetails
-@@ -3923,6 +3935,49 @@ domain Emulation
-       optional string bitness
-       optional boolean wow64
- 
-+  # Used to specify sensor types to emulate.
-+  # See https://w3c.github.io/sensors/#automation for more information.
-+  experimental type SensorType extends string
-+    enum
-+      absolute-orientation
-+      accelerometer
-+      ambient-light
-+      gravity
-+      gyroscope
-+      linear-acceleration
-+      magnetometer
-+      proximity
-+      relative-orientation
-+
-+  experimental type SensorMetadata extends object
-+    properties
-+      optional boolean available
-+      optional number minimumFrequency
-+      optional number maximumFrequency
-+
-+  experimental type SensorReadingSingle extends object
-+    properties
-+      number value
-+
-+  experimental type SensorReadingXYZ extends object
-+    properties
-+      number x
-+      number y
-+      number z
-+
-+  experimental type SensorReadingQuaternion extends object
-+    properties
-+      number x
-+      number y
-+      number z
-+      number w
-+
-+  experimental type SensorReading extends object
-+    properties
-+      optional SensorReadingSingle single
-+      optional SensorReadingXYZ xyz
-+      optional SensorReadingQuaternion quaternion
-+
-   # Tells whether emulation is supported.
-   command canEmulate
-     returns
-@@ -4052,6 +4107,30 @@ domain Emulation
-       # Mock accuracy
-       optional number accuracy
- 
-+  experimental command getOverriddenSensorInformation
-+    parameters
-+      SensorType type
-+    returns
-+      number requestedSamplingFrequency
-+
-+  # Overrides a platform sensor of a given type. If |enabled| is true, calls to
-+  # Sensor.start() will use a virtual sensor as backend rather than fetching
-+  # data from a real hardware sensor. Otherwise, existing virtual
-+  # sensor-backend Sensor objects will fire an error event and new calls to
-+  # Sensor.start() will attempt to use a real sensor instead.
-+  experimental command setSensorOverrideEnabled
-+    parameters
-+      boolean enabled
-+      SensorType type
-+      optional SensorMetadata metadata
-+
-+  # Updates the sensor readings reported by a sensor type previously overriden
-+  # by setSensorOverrideEnabled.
-+  experimental command setSensorOverrideReadings
-+    parameters
-+      SensorType type
-+      SensorReading reading
-+
-   # Overrides the Idle state.
-   experimental command setIdleOverride
-     parameters
 ```

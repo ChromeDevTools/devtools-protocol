@@ -22007,11 +22007,12 @@ export namespace Protocol {
              */
             userHandle?: string;
             /**
-             * Signature counter. This is incremented by one for each successful
-             * assertion.
+             * Signature counter. Must be equal to or greater than -1.
+             * If -1, the credential won't have an associated signature counter, and
+             * every assertion operation will report a value of 0.
              * See https://w3c.github.io/webauthn/#signature-counter
              */
-            signCount: integer;
+            signCount?: integer;
             /**
              * The large blob associated with the credential.
              * See https://w3c.github.io/webauthn/#sctn-large-blob-extension (Encoded as a base64 string when passed over JSON)
@@ -22144,6 +22145,13 @@ export namespace Protocol {
             backupState?: boolean;
             activeCmtgKeyIndex?: integer;
             generateCmtgKeyOnNextOperation?: boolean;
+            /**
+             * Must be equal to or greater than -1.
+             * If -1, the signature counter is removed from the credential, and every
+             * assertion operation will report a value of 0.
+             * See https://w3c.github.io/webauthn/#signature-counter
+             */
+            signCount?: integer;
         }
 
         /**
