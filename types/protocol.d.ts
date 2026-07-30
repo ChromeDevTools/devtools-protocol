@@ -14223,6 +14223,7 @@ export namespace Protocol {
             SigningQuotaExceeded = 'SigningQuotaExceeded',
             RefreshedAsWaiter = 'RefreshedAsWaiter',
             TransientSigningError = 'TransientSigningError',
+            InScopeRefreshNotYetNeeded = 'InScopeRefreshNotYetNeeded',
         }
 
         /**
@@ -14233,7 +14234,7 @@ export namespace Protocol {
             /**
              * The result of a refresh.
              */
-            refreshResult: ('Refreshed' | 'InitializedService' | 'Unreachable' | 'ServerError' | 'FatalError' | 'SigningQuotaExceeded' | 'RefreshedAsWaiter' | 'TransientSigningError');
+            refreshResult: ('Refreshed' | 'InitializedService' | 'Unreachable' | 'ServerError' | 'FatalError' | 'SigningQuotaExceeded' | 'RefreshedAsWaiter' | 'TransientSigningError' | 'InScopeRefreshNotYetNeeded');
             /**
              * If there was a fetch attempt, the result of that.
              */

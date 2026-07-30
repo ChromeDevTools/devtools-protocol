@@ -1,7 +1,30 @@
 
 
+## Roll protocol to r1670834 — _2026-07-30T05:25:53.000Z_
+######  Diff: [`6fe72ec...9b38c9f`](https://github.com/ChromeDevTools/devtools-protocol/compare/6fe72ec...9b38c9f)
+
+```diff
+@@ domains/Network.pdl:2258 @@ domain Network
+   experimental type RefreshEventDetails extends object
+     properties
+       # The result of a refresh.
++      # LINT.IfChange(DeviceBoundSessionRefreshResult)
+       enum refreshResult
+         Refreshed
+         InitializedService
+@@ -2267,6 +2268,8 @@ domain Network
+         SigningQuotaExceeded
+         RefreshedAsWaiter
+         TransientSigningError
++        InScopeRefreshNotYetNeeded
++      # LINT.ThenChange(//net/device_bound_sessions/refresh_result.h:DeviceBoundSessionRefreshResult,//content/browser/devtools/protocol/network_handler.cc:DeviceBoundSessionRefreshResult)
+       # If there was a fetch attempt, the result of that.
+       optional DeviceBoundSessionFetchResult fetchResult
+       # The session display if there was a newly created session. This is populated
+```
+
 ## Roll protocol to r1669207 — _2026-07-28T05:33:24.000Z_
-######  Diff: [`a9544e3...9b0661c`](https://github.com/ChromeDevTools/devtools-protocol/compare/a9544e3...9b0661c)
+######  Diff: [`a9544e3...6fe72ec`](https://github.com/ChromeDevTools/devtools-protocol/compare/a9544e3...6fe72ec)
 
 ```diff
 @@ domains/WebAuthn.pdl:98 @@ experimental domain WebAuthn
@@ -42965,36 +42988,4 @@ index 4754f17c..8dad9c98 100644
  
    experimental type AttributionReportingSourceRegistrationResult extends string
      enum
-```
-
-## Roll protocol to r1212569 — _2023-10-20T04:26:29.000Z_
-######  Diff: [`631cf6b...886d013`](https://github.com/ChromeDevTools/devtools-protocol/compare/631cf6b...886d013)
-
-```diff
-@@ browser_protocol.pdl:8886 @@ domain Page
-       PageSupportNeeded
-       Circumstantial
- 
-+  experimental type BackForwardCacheBlockingDetails extends object
-+    properties
-+      # Url of the file where blockage happened. Optional because of tests.
-+      optional string url
-+      # Function name where blockage happened. Optional because of anonymous functions and tests.
-+      optional string function
-+      # Line number in the script (0-based).
-+      integer lineNumber
-+      # Column number in the script (0-based).
-+      integer columnNumber
-+
-   experimental type BackForwardCacheNotRestoredExplanation extends object
-     properties
-       # Type of the reason
-@@ -8897,6 +8908,7 @@ domain Page
-       # - EmbedderExtensionSentMessageToCachedFrame: the extension ID.
-       #
-       optional string context
-+      optional array of BackForwardCacheBlockingDetails details
- 
-   experimental type BackForwardCacheNotRestoredExplanationTree extends object
-     properties
 ```
