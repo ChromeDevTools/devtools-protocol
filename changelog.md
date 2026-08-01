@@ -1,7 +1,223 @@
 
 
+## Roll protocol to r1672245 — _2026-08-01T05:34:55.000Z_
+######  Diff: [`6f1723f...cc9ec39`](https://github.com/ChromeDevTools/devtools-protocol/compare/6f1723f...cc9ec39)
+
+```diff
+@@ domains/Audits.pdl:468 @@ experimental domain Audits
+       TooManyRequests
+       WellKnownHttpNotFound
+       WellKnownNoResponse
++      WellKnownBlockedByConnectionAllowlist
+       WellKnownInvalidResponse
+       WellKnownListEmpty
+       WellKnownInvalidContentType
+@@ -475,6 +476,7 @@ experimental domain Audits
+       WellKnownTooBig
+       ConfigHttpNotFound
+       ConfigNoResponse
++      ConfigBlockedByConnectionAllowlist
+       ConfigInvalidResponse
+       ConfigInvalidContentType
+       IdpNotPotentiallyTrustworthy
+@@ -484,11 +486,13 @@ experimental domain Audits
+       InvalidSigninResponse
+       AccountsHttpNotFound
+       AccountsNoResponse
++      AccountsBlockedByConnectionAllowlist
+       AccountsInvalidResponse
+       AccountsListEmpty
+       AccountsInvalidContentType
+       IdTokenHttpNotFound
+       IdTokenNoResponse
++      IdTokenBlockedByConnectionAllowlist
+       IdTokenInvalidResponse
+       IdTokenIdpErrorResponse
+       IdTokenCrossSiteIdpErrorResponse
+diff --git a/pdl/domains/Network.pdl b/pdl/domains/Network.pdl
+index 81ab5df7..d3609630 100644
+--- a/pdl/domains/Network.pdl
++++ b/pdl/domains/Network.pdl
+@@ -42,9 +42,6 @@ domain Network
+   # a network request.
+   type RequestId extends string
+ 
+-  # Unique intercepted request identifier.
+-  type InterceptionId extends string
+-
+   # Network level fetch failure reason.
+   type ErrorReason extends string
+     enum
+@@ -849,24 +846,6 @@ domain Network
+       # ProvideCredentials.
+       optional string password
+ 
+-  # Stages of the interception to begin intercepting. Request will intercept before the request is
+-  # sent. Response will intercept after the response is received.
+-  experimental type InterceptionStage extends string
+-    enum
+-      Request
+-      HeadersReceived
+-
+-  # Request pattern for interception.
+-  experimental type RequestPattern extends object
+-    properties
+-      # Wildcards (`'*'` -> zero or more, `'?'` -> exactly one) are allowed. Escape character is
+-      # backslash. Omitting is equivalent to `"*"`.
+-      optional string urlPattern
+-      # If set, only requests for matching resource types will be intercepted.
+-      optional ResourceType resourceType
+-      # Stage at which to begin intercepting requests. Default is Request.
+-      optional InterceptionStage interceptionStage
+-
+   # Information about a signed exchange signature.
+   # https://wicg.github.io/webpackage/draft-yasskin-httpbis-origin-signed-exchanges-impl.html#rfc.section.3.1
+   experimental type SignedExchangeSignature extends object
+@@ -981,35 +960,6 @@ domain Network
+   # Clears browser cookies.
+   command clearBrowserCookies
+ 
+-  # Response to Network.requestIntercepted which either modifies the request to continue with any
+-  # modifications, or blocks it, or completes it with the provided response bytes. If a network
+-  # fetch occurs as a result which encounters a redirect an additional Network.requestIntercepted
+-  # event will be sent with the same InterceptionId.
+-  # Deprecated, use Fetch.continueRequest, Fetch.fulfillRequest and Fetch.failRequest instead.
+-  experimental deprecated command continueInterceptedRequest
+-    parameters
+-      InterceptionId interceptionId
+-      # If set this causes the request to fail with the given reason. Passing `Aborted` for requests
+-      # marked with `isNavigationRequest` also cancels the navigation. Must not be set in response
+-      # to an authChallenge.
+-      optional ErrorReason errorReason
+-      # If set the requests completes using with the provided base64 encoded raw response, including
+-      # HTTP status line and headers etc... Must not be set in response to an authChallenge.
+-      optional binary rawResponse
+-      # If set the request url will be modified in a way that's not observable by page. Must not be
+-      # set in response to an authChallenge.
+-      optional string url
+-      # If set this allows the request method to be overridden. Must not be set in response to an
+-      # authChallenge.
+-      optional string method
+-      # If set this allows postData to be set. Must not be set in response to an authChallenge.
+-      optional string postData
+-      # If set this allows the request headers to be changed. Must not be set in response to an
+-      # authChallenge.
+-      optional Headers headers
+-      # Response to a requestIntercepted with an authChallenge. Must not be set otherwise.
+-      optional AuthChallengeResponse authChallengeResponse
+-
+   # Deletes browser cookies with matching name and url or domain/path/partitionKey pair.
+   command deleteCookies
+     parameters
+@@ -1186,27 +1136,6 @@ domain Network
+       # True, if content was sent as base64.
+       boolean base64Encoded
+ 
+-  # Returns content served for the given currently intercepted request.
+-  experimental command getResponseBodyForInterception
+-    parameters
+-      # Identifier for the intercepted request to get body for.
+-      InterceptionId interceptionId
+-    returns
+-      # Response body.
+-      string body
+-      # True, if content was sent as base64.
+-      boolean base64Encoded
+-
+-  # Returns a handle to the stream representing the response body. Note that after this command,
+-  # the intercepted request can't be continued as is -- you either need to cancel it or to provide
+-  # the response body. The stream only supports sequential read, IO.read will fail if the position
+-  # is specified.
+-  experimental command takeResponseBodyForInterceptionAsStream
+-    parameters
+-      InterceptionId interceptionId
+-    returns
+-      IO.StreamHandle stream
+-
+   # This method sends a new XMLHttpRequest which is identical to the original one. The following
+   # parameters should be identical: method, url, async, request body, extra headers, withCredentials
+   # attribute, user, password.
+@@ -1314,14 +1243,6 @@ domain Network
+       # Whether to attach a page script stack for debugging purpose.
+       boolean enabled
+ 
+-  # Sets the requests to intercept that match the provided patterns and optionally resource types.
+-  # Deprecated, please use Fetch.enable instead.
+-  experimental deprecated command setRequestInterception
+-    parameters
+-      # Requests matching any of these patterns will be forwarded and wait for the corresponding
+-      # continueInterceptedRequest call.
+-      array of RequestPattern patterns
+-
+   # Allows overriding user agent with the given string.
+   command setUserAgentOverride
+     redirect Emulation
+@@ -1402,43 +1323,6 @@ domain Network
+       # Total number of bytes received for this request.
+       number encodedDataLength
+ 
+-  # Details of an intercepted HTTP request, which must be either allowed, blocked, modified or
+-  # mocked.
+-  # Deprecated, use Fetch.requestPaused instead.
+-  experimental deprecated event requestIntercepted
+-    parameters
+-      # Each request the page makes will have a unique id, however if any redirects are encountered
+-      # while processing that fetch, they will be reported with the same id as the original fetch.
+-      # Likewise if HTTP authentication is needed then the same fetch id will be used.
+-      InterceptionId interceptionId
+-      Request request
+-      # The id of the frame that initiated the request.
+-      Page.FrameId frameId
+-      # How the requested resource will be used.
+-      ResourceType resourceType
+-      # Whether this is a navigation request, which can abort the navigation completely.
+-      boolean isNavigationRequest
+-      # Set if the request is a navigation that will result in a download.
+-      # Only present after response is received from the server (i.e. HeadersReceived stage).
+-      optional boolean isDownload
+-      # Redirect location, only sent if a redirect was intercepted.
+-      optional string redirectUrl
+-      # Details of the Authorization Challenge encountered. If this is set then
+-      # continueInterceptedRequest must contain an authChallengeResponse.
+-      optional AuthChallenge authChallenge
+-      # Response error if intercepted at response stage or if redirect occurred while intercepting
+-      # request.
+-      optional ErrorReason responseErrorReason
+-      # Response code if intercepted at response stage or if redirect occurred while intercepting
+-      # request or auth retry occurred.
+-      optional integer responseStatusCode
+-      # Response headers if intercepted at the response stage or if redirect occurred while
+-      # intercepting request or auth retry occurred.
+-      optional Headers responseHeaders
+-      # If the intercepted request had a corresponding requestWillBeSent event fired for it, then
+-      # this requestId will be the same as the requestId present in the requestWillBeSent event.
+-      optional RequestId requestId
+-
+   # Fired if request ended up loading from cache.
+   event requestServedFromCache
+     parameters
+@@ -1657,7 +1541,7 @@ domain Network
+   experimental event directTCPSocketAborted
+     parameters
+       RequestId identifier
+-      string errorMessage
++      ErrorReason errorMessage
+       MonotonicTime timestamp
+ 
+   # Fired when direct_socket.TCPSocket is closed.
+@@ -1736,7 +1620,7 @@ domain Network
+   experimental event directUDPSocketAborted
+     parameters
+       RequestId identifier
+-      string errorMessage
++      ErrorReason errorMessage
+       MonotonicTime timestamp
+ 
+   # Fired when direct_socket.UDPSocket is closed.
+```
+
 ## Roll protocol to r1670834 — _2026-07-30T05:25:53.000Z_
-######  Diff: [`6fe72ec...9b38c9f`](https://github.com/ChromeDevTools/devtools-protocol/compare/6fe72ec...9b38c9f)
+######  Diff: [`6fe72ec...6f1723f`](https://github.com/ChromeDevTools/devtools-protocol/compare/6fe72ec...6f1723f)
 
 ```diff
 @@ domains/Network.pdl:2258 @@ domain Network
@@ -42962,30 +43178,4 @@ index 4754f17c..8dad9c98 100644
  
    # Send a list of sources for all preloading attempts in a document.
    event preloadingAttemptSourcesUpdated
-```
-
-## Roll protocol to r1213968 — _2023-10-24T04:26:10.000Z_
-######  Diff: [`886d013...fbb8eea`](https://github.com/ChromeDevTools/devtools-protocol/compare/886d013...fbb8eea)
-
-```diff
-@@ browser_protocol.pdl:9927 @@ experimental domain Storage
-       # duration in seconds
-       array of integer ends
- 
-+  experimental type AttributionReportingTriggerDataMatching extends string
-+    enum
-+      exact
-+      modulus
-+
-   experimental type AttributionReportingSourceRegistration extends object
-     properties
-       Network.TimeSinceEpoch time
-@@ -9944,6 +9949,7 @@ experimental domain Storage
-       array of AttributionReportingFilterDataEntry filterData
-       array of AttributionReportingAggregationKeysEntry aggregationKeys
-       optional UnsignedInt64AsBase10 debugKey
-+      AttributionReportingTriggerDataMatching triggerDataMatching
- 
-   experimental type AttributionReportingSourceRegistrationResult extends string
-     enum
 ```

@@ -3833,7 +3833,7 @@ export namespace Protocol {
          * third_party/blink/public/mojom/devtools/inspector_issue.mojom to include
          * all cases except for success.
          */
-        export type FederatedAuthRequestIssueReason = ('ShouldEmbargo' | 'TooManyRequests' | 'WellKnownHttpNotFound' | 'WellKnownNoResponse' | 'WellKnownInvalidResponse' | 'WellKnownListEmpty' | 'WellKnownInvalidContentType' | 'ConfigNotInWellKnown' | 'WellKnownTooBig' | 'ConfigHttpNotFound' | 'ConfigNoResponse' | 'ConfigInvalidResponse' | 'ConfigInvalidContentType' | 'IdpNotPotentiallyTrustworthy' | 'DisabledInSettings' | 'DisabledInFlags' | 'ErrorFetchingSignin' | 'InvalidSigninResponse' | 'AccountsHttpNotFound' | 'AccountsNoResponse' | 'AccountsInvalidResponse' | 'AccountsListEmpty' | 'AccountsInvalidContentType' | 'IdTokenHttpNotFound' | 'IdTokenNoResponse' | 'IdTokenInvalidResponse' | 'IdTokenIdpErrorResponse' | 'IdTokenCrossSiteIdpErrorResponse' | 'IdTokenInvalidRequest' | 'IdTokenInvalidContentType' | 'ErrorIdToken' | 'Canceled' | 'RpPageNotVisible' | 'SilentMediationFailure' | 'NotSignedInWithIdp' | 'MissingTransientUserActivation' | 'ReplacedByActiveMode' | 'RelyingPartyOriginIsOpaque' | 'TypeNotMatching' | 'UiDismissedNoEmbargo' | 'CorsError' | 'SuppressedBySegmentationPlatform');
+        export type FederatedAuthRequestIssueReason = ('ShouldEmbargo' | 'TooManyRequests' | 'WellKnownHttpNotFound' | 'WellKnownNoResponse' | 'WellKnownBlockedByConnectionAllowlist' | 'WellKnownInvalidResponse' | 'WellKnownListEmpty' | 'WellKnownInvalidContentType' | 'ConfigNotInWellKnown' | 'WellKnownTooBig' | 'ConfigHttpNotFound' | 'ConfigNoResponse' | 'ConfigBlockedByConnectionAllowlist' | 'ConfigInvalidResponse' | 'ConfigInvalidContentType' | 'IdpNotPotentiallyTrustworthy' | 'DisabledInSettings' | 'DisabledInFlags' | 'ErrorFetchingSignin' | 'InvalidSigninResponse' | 'AccountsHttpNotFound' | 'AccountsNoResponse' | 'AccountsBlockedByConnectionAllowlist' | 'AccountsInvalidResponse' | 'AccountsListEmpty' | 'AccountsInvalidContentType' | 'IdTokenHttpNotFound' | 'IdTokenNoResponse' | 'IdTokenBlockedByConnectionAllowlist' | 'IdTokenInvalidResponse' | 'IdTokenIdpErrorResponse' | 'IdTokenCrossSiteIdpErrorResponse' | 'IdTokenInvalidRequest' | 'IdTokenInvalidContentType' | 'ErrorIdToken' | 'Canceled' | 'RpPageNotVisible' | 'SilentMediationFailure' | 'NotSignedInWithIdp' | 'MissingTransientUserActivation' | 'ReplacedByActiveMode' | 'RelyingPartyOriginIsOpaque' | 'TypeNotMatching' | 'UiDismissedNoEmbargo' | 'CorsError' | 'SuppressedBySegmentationPlatform');
 
         export interface FederatedAuthUserInfoRequestIssueDetails {
             federatedAuthUserInfoRequestIssueReason: FederatedAuthUserInfoRequestIssueReason;
@@ -12522,11 +12522,6 @@ export namespace Protocol {
         export type RequestId = string;
 
         /**
-         * Unique intercepted request identifier.
-         */
-        export type InterceptionId = string;
-
-        /**
          * Network level fetch failure reason.
          */
         export type ErrorReason = ('Failed' | 'Aborted' | 'TimedOut' | 'AccessDenied' | 'ConnectionClosed' | 'ConnectionReset' | 'ConnectionRefused' | 'ConnectionAborted' | 'ConnectionFailed' | 'NameNotResolved' | 'InternetDisconnected' | 'AddressUnreachable' | 'BlockedByClient' | 'BlockedByResponse');
@@ -13509,33 +13504,6 @@ export namespace Protocol {
         }
 
         /**
-         * Stages of the interception to begin intercepting. Request will intercept before the request is
-         * sent. Response will intercept after the response is received.
-         * @experimental
-         */
-        export type InterceptionStage = ('Request' | 'HeadersReceived');
-
-        /**
-         * Request pattern for interception.
-         * @experimental
-         */
-        export interface RequestPattern {
-            /**
-             * Wildcards (`'*'` -> zero or more, `'?'` -> exactly one) are allowed. Escape character is
-             * backslash. Omitting is equivalent to `"*"`.
-             */
-            urlPattern?: string;
-            /**
-             * If set, only requests for matching resource types will be intercepted.
-             */
-            resourceType?: ResourceType;
-            /**
-             * Stage at which to begin intercepting requests. Default is Request.
-             */
-            interceptionStage?: InterceptionStage;
-        }
-
-        /**
          * Information about a signed exchange signature.
          * https://wicg.github.io/webpackage/draft-yasskin-httpbis-origin-signed-exchanges-impl.html#rfc.section.3.1
          * @experimental
@@ -14360,44 +14328,6 @@ export namespace Protocol {
             result: boolean;
         }
 
-        export interface ContinueInterceptedRequestRequest {
-            interceptionId: InterceptionId;
-            /**
-             * If set this causes the request to fail with the given reason. Passing `Aborted` for requests
-             * marked with `isNavigationRequest` also cancels the navigation. Must not be set in response
-             * to an authChallenge.
-             */
-            errorReason?: ErrorReason;
-            /**
-             * If set the requests completes using with the provided base64 encoded raw response, including
-             * HTTP status line and headers etc... Must not be set in response to an authChallenge. (Encoded as a base64 string when passed over JSON)
-             */
-            rawResponse?: string;
-            /**
-             * If set the request url will be modified in a way that's not observable by page. Must not be
-             * set in response to an authChallenge.
-             */
-            url?: string;
-            /**
-             * If set this allows the request method to be overridden. Must not be set in response to an
-             * authChallenge.
-             */
-            method?: string;
-            /**
-             * If set this allows postData to be set. Must not be set in response to an authChallenge.
-             */
-            postData?: string;
-            /**
-             * If set this allows the request headers to be changed. Must not be set in response to an
-             * authChallenge.
-             */
-            headers?: Headers;
-            /**
-             * Response to a requestIntercepted with an authChallenge. Must not be set otherwise.
-             */
-            authChallengeResponse?: AuthChallengeResponse;
-        }
-
         export interface DeleteCookiesRequest {
             /**
              * Name of the cookies to remove.
@@ -14626,32 +14556,6 @@ export namespace Protocol {
             base64Encoded: boolean;
         }
 
-        export interface GetResponseBodyForInterceptionRequest {
-            /**
-             * Identifier for the intercepted request to get body for.
-             */
-            interceptionId: InterceptionId;
-        }
-
-        export interface GetResponseBodyForInterceptionResponse {
-            /**
-             * Response body.
-             */
-            body: string;
-            /**
-             * True, if content was sent as base64.
-             */
-            base64Encoded: boolean;
-        }
-
-        export interface TakeResponseBodyForInterceptionAsStreamRequest {
-            interceptionId: InterceptionId;
-        }
-
-        export interface TakeResponseBodyForInterceptionAsStreamResponse {
-            stream: IO.StreamHandle;
-        }
-
         export interface ReplayXHRRequest {
             /**
              * Identifier of XHR to replay.
@@ -14801,14 +14705,6 @@ export namespace Protocol {
              * Whether to attach a page script stack for debugging purpose.
              */
             enabled: boolean;
-        }
-
-        export interface SetRequestInterceptionRequest {
-            /**
-             * Requests matching any of these patterns will be forwarded and wait for the corresponding
-             * continueInterceptedRequest call.
-             */
-            patterns: RequestPattern[];
         }
 
         export interface SetUserAgentOverrideRequest {
@@ -15018,69 +14914,6 @@ export namespace Protocol {
              * Total number of bytes received for this request.
              */
             encodedDataLength: number;
-        }
-
-        /**
-         * Details of an intercepted HTTP request, which must be either allowed, blocked, modified or
-         * mocked.
-         * Deprecated, use Fetch.requestPaused instead.
-         * @deprecated
-         * @experimental
-         */
-        export interface RequestInterceptedEvent {
-            /**
-             * Each request the page makes will have a unique id, however if any redirects are encountered
-             * while processing that fetch, they will be reported with the same id as the original fetch.
-             * Likewise if HTTP authentication is needed then the same fetch id will be used.
-             */
-            interceptionId: InterceptionId;
-            request: Request;
-            /**
-             * The id of the frame that initiated the request.
-             */
-            frameId: Page.FrameId;
-            /**
-             * How the requested resource will be used.
-             */
-            resourceType: ResourceType;
-            /**
-             * Whether this is a navigation request, which can abort the navigation completely.
-             */
-            isNavigationRequest: boolean;
-            /**
-             * Set if the request is a navigation that will result in a download.
-             * Only present after response is received from the server (i.e. HeadersReceived stage).
-             */
-            isDownload?: boolean;
-            /**
-             * Redirect location, only sent if a redirect was intercepted.
-             */
-            redirectUrl?: string;
-            /**
-             * Details of the Authorization Challenge encountered. If this is set then
-             * continueInterceptedRequest must contain an authChallengeResponse.
-             */
-            authChallenge?: AuthChallenge;
-            /**
-             * Response error if intercepted at response stage or if redirect occurred while intercepting
-             * request.
-             */
-            responseErrorReason?: ErrorReason;
-            /**
-             * Response code if intercepted at response stage or if redirect occurred while intercepting
-             * request or auth retry occurred.
-             */
-            responseStatusCode?: integer;
-            /**
-             * Response headers if intercepted at the response stage or if redirect occurred while
-             * intercepting request or auth retry occurred.
-             */
-            responseHeaders?: Headers;
-            /**
-             * If the intercepted request had a corresponding requestWillBeSent event fired for it, then
-             * this requestId will be the same as the requestId present in the requestWillBeSent event.
-             */
-            requestId?: RequestId;
         }
 
         /**
@@ -15442,7 +15275,7 @@ export namespace Protocol {
          */
         export interface DirectTCPSocketAbortedEvent {
             identifier: RequestId;
-            errorMessage: string;
+            errorMessage: ErrorReason;
             timestamp: MonotonicTime;
         }
 
@@ -15527,7 +15360,7 @@ export namespace Protocol {
          */
         export interface DirectUDPSocketAbortedEvent {
             identifier: RequestId;
-            errorMessage: string;
+            errorMessage: ErrorReason;
             timestamp: MonotonicTime;
         }
 

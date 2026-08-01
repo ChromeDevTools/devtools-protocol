@@ -3073,17 +3073,6 @@ export namespace ProtocolProxyApi {
         clearBrowserCookies(): Promise<void>;
 
         /**
-         * Response to Network.requestIntercepted which either modifies the request to continue with any
-         * modifications, or blocks it, or completes it with the provided response bytes. If a network
-         * fetch occurs as a result which encounters a redirect an additional Network.requestIntercepted
-         * event will be sent with the same InterceptionId.
-         * Deprecated, use Fetch.continueRequest, Fetch.fulfillRequest and Fetch.failRequest instead.
-         * @deprecated
-         * @experimental
-         */
-        continueInterceptedRequest(params: Protocol.Network.ContinueInterceptedRequestRequest): Promise<void>;
-
-        /**
          * Deletes browser cookies with matching name and url or domain/path/partitionKey pair.
          */
         deleteCookies(params: Protocol.Network.DeleteCookiesRequest): Promise<void>;
@@ -3158,21 +3147,6 @@ export namespace ProtocolProxyApi {
         getRequestPostData(params: Protocol.Network.GetRequestPostDataRequest): Promise<Protocol.Network.GetRequestPostDataResponse>;
 
         /**
-         * Returns content served for the given currently intercepted request.
-         * @experimental
-         */
-        getResponseBodyForInterception(params: Protocol.Network.GetResponseBodyForInterceptionRequest): Promise<Protocol.Network.GetResponseBodyForInterceptionResponse>;
-
-        /**
-         * Returns a handle to the stream representing the response body. Note that after this command,
-         * the intercepted request can't be continued as is -- you either need to cancel it or to provide
-         * the response body. The stream only supports sequential read, IO.read will fail if the position
-         * is specified.
-         * @experimental
-         */
-        takeResponseBodyForInterceptionAsStream(params: Protocol.Network.TakeResponseBodyForInterceptionAsStreamRequest): Promise<Protocol.Network.TakeResponseBodyForInterceptionAsStreamResponse>;
-
-        /**
          * This method sends a new XMLHttpRequest which is identical to the original one. The following
          * parameters should be identical: method, url, async, request body, extra headers, withCredentials
          * attribute, user, password.
@@ -3222,14 +3196,6 @@ export namespace ProtocolProxyApi {
          * @experimental
          */
         setAttachDebugStack(params: Protocol.Network.SetAttachDebugStackRequest): Promise<void>;
-
-        /**
-         * Sets the requests to intercept that match the provided patterns and optionally resource types.
-         * Deprecated, please use Fetch.enable instead.
-         * @deprecated
-         * @experimental
-         */
-        setRequestInterception(params: Protocol.Network.SetRequestInterceptionRequest): Promise<void>;
 
         /**
          * Allows overriding user agent with the given string.
@@ -3306,15 +3272,6 @@ export namespace ProtocolProxyApi {
          * Fired when HTTP request has finished loading.
          */
         on(event: 'loadingFinished', listener: (params: Protocol.Network.LoadingFinishedEvent) => void): void;
-
-        /**
-         * Details of an intercepted HTTP request, which must be either allowed, blocked, modified or
-         * mocked.
-         * Deprecated, use Fetch.requestPaused instead.
-         * @deprecated
-         * @experimental
-         */
-        on(event: 'requestIntercepted', listener: (params: Protocol.Network.RequestInterceptedEvent) => void): void;
 
         /**
          * Fired if request ended up loading from cache.

@@ -408,14 +408,6 @@ export namespace ProtocolMapping {
          */
         'Network.loadingFinished': [Protocol.Network.LoadingFinishedEvent];
         /**
-         * Details of an intercepted HTTP request, which must be either allowed, blocked, modified or
-         * mocked.
-         * Deprecated, use Fetch.requestPaused instead.
-         * @deprecated
-         * @experimental
-         */
-        'Network.requestIntercepted': [Protocol.Network.RequestInterceptedEvent];
-        /**
          * Fired if request ended up loading from cache.
          */
         'Network.requestServedFromCache': [Protocol.Network.RequestServedFromCacheEvent];
@@ -4285,19 +4277,6 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
-         * Response to Network.requestIntercepted which either modifies the request to continue with any
-         * modifications, or blocks it, or completes it with the provided response bytes. If a network
-         * fetch occurs as a result which encounters a redirect an additional Network.requestIntercepted
-         * event will be sent with the same InterceptionId.
-         * Deprecated, use Fetch.continueRequest, Fetch.fulfillRequest and Fetch.failRequest instead.
-         * @deprecated
-         * @experimental
-         */
-        'Network.continueInterceptedRequest': {
-            paramsType: [Protocol.Network.ContinueInterceptedRequestRequest];
-            returnType: void;
-        };
-        /**
          * Deletes browser cookies with matching name and url or domain/path/partitionKey pair.
          */
         'Network.deleteCookies': {
@@ -4396,25 +4375,6 @@ export namespace ProtocolMapping {
             returnType: Protocol.Network.GetRequestPostDataResponse;
         };
         /**
-         * Returns content served for the given currently intercepted request.
-         * @experimental
-         */
-        'Network.getResponseBodyForInterception': {
-            paramsType: [Protocol.Network.GetResponseBodyForInterceptionRequest];
-            returnType: Protocol.Network.GetResponseBodyForInterceptionResponse;
-        };
-        /**
-         * Returns a handle to the stream representing the response body. Note that after this command,
-         * the intercepted request can't be continued as is -- you either need to cancel it or to provide
-         * the response body. The stream only supports sequential read, IO.read will fail if the position
-         * is specified.
-         * @experimental
-         */
-        'Network.takeResponseBodyForInterceptionAsStream': {
-            paramsType: [Protocol.Network.TakeResponseBodyForInterceptionAsStreamRequest];
-            returnType: Protocol.Network.TakeResponseBodyForInterceptionAsStreamResponse;
-        };
-        /**
          * This method sends a new XMLHttpRequest which is identical to the original one. The following
          * parameters should be identical: method, url, async, request body, extra headers, withCredentials
          * attribute, user, password.
@@ -4481,16 +4441,6 @@ export namespace ProtocolMapping {
          */
         'Network.setAttachDebugStack': {
             paramsType: [Protocol.Network.SetAttachDebugStackRequest];
-            returnType: void;
-        };
-        /**
-         * Sets the requests to intercept that match the provided patterns and optionally resource types.
-         * Deprecated, please use Fetch.enable instead.
-         * @deprecated
-         * @experimental
-         */
-        'Network.setRequestInterception': {
-            paramsType: [Protocol.Network.SetRequestInterceptionRequest];
             returnType: void;
         };
         /**
