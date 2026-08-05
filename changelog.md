@@ -1,7 +1,54 @@
 
 
+## Roll protocol to r1673900 — _2026-08-05T05:28:38.000Z_
+######  Diff: [`7283814...9c91189`](https://github.com/ChromeDevTools/devtools-protocol/compare/7283814...9c91189)
+
+```diff
+@@ domains/DOM.pdl:827 @@ domain DOM
+       # List of popovers that were closed in order to respect popover stacking order.
+       array of NodeId nodeIds
+ 
++  # When enabling, this API forces an element to gain interest in its target,
++  # keeping interest active until disabled.
++  experimental command forceShowInterest
++    parameters
++      # Id of the interest invoker HTMLElement.
++      NodeId nodeId
++      # If true, opens and holds interest. If false, releases forced interest.
++      boolean enable
++
+   # Fired when `Element`'s attribute is modified.
+   event attributeModified
+     parameters
+diff --git a/pdl/domains/Page.pdl b/pdl/domains/Page.pdl
+index 26941081..feb1a1a7 100644
+--- a/pdl/domains/Page.pdl
++++ b/pdl/domains/Page.pdl
+@@ -684,7 +684,6 @@ domain Page
+     properties
+       string action
+       string name
+-      optional array of ImageResource icons
+       # Mimic a map, name is the key, accepts is the value.
+       optional array of FileFilter accepts
+       # Won't repeat the enums, using string for easy comparison. Same as the
+diff --git a/pdl/domains/WebAuthn.pdl b/pdl/domains/WebAuthn.pdl
+index c0b199c7..9f83b032 100644
+--- a/pdl/domains/WebAuthn.pdl
++++ b/pdl/domains/WebAuthn.pdl
+@@ -102,7 +102,7 @@ experimental domain WebAuthn
+       # If -1, the credential won't have an associated signature counter, and
+       # every assertion operation will report a value of 0.
+       # See https://w3c.github.io/webauthn/#signature-counter
+-      optional integer signCount
++      integer signCount
+       # The large blob associated with the credential.
+       # See https://w3c.github.io/webauthn/#sctn-large-blob-extension
+       optional binary largeBlob
+```
+
 ## Roll protocol to r1672245 — _2026-08-01T05:34:55.000Z_
-######  Diff: [`6f1723f...cc9ec39`](https://github.com/ChromeDevTools/devtools-protocol/compare/6f1723f...cc9ec39)
+######  Diff: [`6f1723f...7283814`](https://github.com/ChromeDevTools/devtools-protocol/compare/6f1723f...7283814)
 
 ```diff
 @@ domains/Audits.pdl:468 @@ experimental domain Audits
@@ -43142,40 +43189,4 @@ index 4754f17c..8dad9c98 100644
        web-share
        # Alias for 'window-placement' (crbug.com/1328581).
        window-management
-```
-
-## Roll protocol to r1218079 — _2023-11-01T04:26:32.000Z_
-######  Diff: [`fbb8eea...5e6cb44`](https://github.com/ChromeDevTools/devtools-protocol/compare/fbb8eea...5e6cb44)
-
-```diff
-@@ browser_protocol.pdl:9344 @@ experimental domain ServiceWorker
-       optional number scriptResponseTime
-       optional array of Target.TargetID controlledClients
-       optional Target.TargetID targetId
-+      optional string routerRules
- 
-   # ServiceWorker error message.
-   type ServiceWorkerErrorMessage extends object
-@@ -11571,6 +11572,13 @@ experimental domain Preload
-       PrefetchStatus prefetchStatus
-       Network.RequestId requestId
- 
-+  # Information of headers to be displayed when the header mismatch occurred.
-+  type PrerenderMismatchedHeaders extends object
-+    properties
-+      string headerName
-+      optional string initialValue
-+      optional string activationValue
-+
-   # Fired when a prerender attempt is updated.
-   event prerenderStatusUpdated
-     parameters
-@@ -11580,6 +11588,7 @@ experimental domain Preload
-       # This is used to give users more information about the name of Mojo interface
-       # that is incompatible with prerender and has caused the cancellation of the attempt.
-       optional string disallowedMojoInterface
-+      optional array of PrerenderMismatchedHeaders mismatchedHeaders
- 
-   # Send a list of sources for all preloading attempts in a document.
-   event preloadingAttemptSourcesUpdated
 ```

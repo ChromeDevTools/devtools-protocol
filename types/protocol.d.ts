@@ -8120,6 +8120,17 @@ export namespace Protocol {
             nodeIds: NodeId[];
         }
 
+        export interface ForceShowInterestRequest {
+            /**
+             * Id of the interest invoker HTMLElement.
+             */
+            nodeId: NodeId;
+            /**
+             * If true, opens and holds interest. If false, releases forced interest.
+             */
+            enable: boolean;
+        }
+
         /**
          * Fired when `Element`'s attribute is modified.
          */
@@ -17189,7 +17200,6 @@ export namespace Protocol {
         export interface FileHandler {
             action: string;
             name: string;
-            icons?: ImageResource[];
             /**
              * Mimic a map, name is the key, accepts is the value.
              */
@@ -21846,7 +21856,7 @@ export namespace Protocol {
              * every assertion operation will report a value of 0.
              * See https://w3c.github.io/webauthn/#signature-counter
              */
-            signCount?: integer;
+            signCount: integer;
             /**
              * The large blob associated with the credential.
              * See https://w3c.github.io/webauthn/#sctn-large-blob-extension (Encoded as a base64 string when passed over JSON)

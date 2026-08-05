@@ -1946,6 +1946,13 @@ export namespace ProtocolTestsProxyApi {
         forceShowPopover(params: Protocol.DOM.ForceShowPopoverRequest): Promise<{id: number, result: Protocol.DOM.ForceShowPopoverResponse, sessionId: string}>;
 
         /**
+         * When enabling, this API forces an element to gain interest in its target,
+         * keeping interest active until disabled.
+         * @experimental
+         */
+        forceShowInterest(params: Protocol.DOM.ForceShowInterestRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
          * Fired when `Element`'s attribute is modified.
          */
         onAttributeModified(listener: (event: { params: Protocol.DOM.AttributeModifiedEvent }) => void): void;
