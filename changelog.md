@@ -1,7 +1,22 @@
 
 
+## Roll protocol to r1674729 — _2026-08-06T05:29:04.000Z_
+######  Diff: [`41535d3...aeb64bf`](https://github.com/ChromeDevTools/devtools-protocol/compare/41535d3...aeb64bf)
+
+```diff
+@@ js_protocol.pdl:212 @@ domain Debugger
+       optional boolean throwOnSideEffect
+       # Terminate execution after timing out (number of milliseconds).
+       experimental optional Runtime.TimeDelta timeout
++      # Specifies the scope number to evaluate the expression in (default: 0, innermost scope).
++      experimental optional integer scopeNumber
+     returns
+       # Object wrapper for the evaluation result.
+       Runtime.RemoteObject result
+```
+
 ## Roll protocol to r1673900 — _2026-08-05T05:28:38.000Z_
-######  Diff: [`7283814...9c91189`](https://github.com/ChromeDevTools/devtools-protocol/compare/7283814...9c91189)
+######  Diff: [`7283814...41535d3`](https://github.com/ChromeDevTools/devtools-protocol/compare/7283814...41535d3)
 
 ```diff
 @@ domains/DOM.pdl:827 @@ domain DOM
@@ -43157,36 +43172,4 @@ index 4754f17c..8dad9c98 100644
        # duration in seconds
        integer aggregatableReportWindow
        AttributionReportingSourceType type
-```
-
-## Roll protocol to r1219864 — _2023-11-04T04:26:10.000Z_
-######  Diff: [`5e6cb44...2860a80`](https://github.com/ChromeDevTools/devtools-protocol/compare/5e6cb44...2860a80)
-
-```diff
-@@ browser_protocol.pdl:827 @@ experimental domain Audits
-       IdTokenHttpNotFound
-       IdTokenNoResponse
-       IdTokenInvalidResponse
-+      IdTokenIdpErrorResponse
-+      IdTokenCrossSiteIdpErrorResponse
-       IdTokenInvalidRequest
-       IdTokenInvalidContentType
-       ErrorIdToken
-@@ -1249,7 +1251,7 @@ domain Browser
-       prompt
- 
-   # Definition of PermissionDescriptor defined in the Permissions API:
--  # https://w3c.github.io/permissions/#dictdef-permissiondescriptor.
-+  # https://w3c.github.io/permissions/#dom-permissiondescriptor.
-   experimental type PermissionDescriptor extends object
-     properties
-       # Name of permission.
-@@ -7627,6 +7629,7 @@ domain Page
-       unload
-       usb
-       vertical-scroll
-+      web-printing
-       web-share
-       # Alias for 'window-placement' (crbug.com/1328581).
-       window-management
 ```

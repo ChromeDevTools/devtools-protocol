@@ -381,6 +381,11 @@ export namespace Protocol {
              * @experimental
              */
             timeout?: Runtime.TimeDelta;
+            /**
+             * Specifies the scope number to evaluate the expression in (default: 0, innermost scope).
+             * @experimental
+             */
+            scopeNumber?: integer;
         }
 
         export interface EvaluateOnCallFrameResponse {

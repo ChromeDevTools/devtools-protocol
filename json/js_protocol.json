@@ -507,6 +507,13 @@
                             "experimental": true,
                             "optional": true,
                             "$ref": "Runtime.TimeDelta"
+                        },
+                        {
+                            "name": "scopeNumber",
+                            "description": "Specifies the scope number to evaluate the expression in (default: 0, innermost scope).",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "integer"
                         }
                     ],
                     "returns": [
