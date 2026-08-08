@@ -1,7 +1,39 @@
 
 
+## Roll protocol to r1676105 — _2026-08-08T04:42:45.000Z_
+######  Diff: [`2d019e7...a0b60c1`](https://github.com/ChromeDevTools/devtools-protocol/compare/2d019e7...a0b60c1)
+
+```diff
+@@ domains/Page.pdl:1175 @@ domain Page
+       # Send every n-th frame.
+       optional integer everyNthFrame
+ 
++  # Starts screencast video recording.
++  experimental command startScreenRecording
++    parameters
++      optional boolean audio
++      # Maximum frame width in pixels.
++      optional integer maxWidth
++      # Maximum frame height in pixels.
++      optional integer maxHeight
++      # Maximum frame rate in frames per second.
++      optional integer frameRate
++    returns
++      # A handle of the stream that holds resulting screencast data.
++      experimental IO.StreamHandle stream
++
++  # Stops screencast video recording.
++  experimental command stopScreenRecording
++    returns
++      # A handle of the stream that holds resulting screencast data.
++      experimental IO.StreamHandle stream
++
+   # Force the page stop all navigations and pending resource fetches.
+   command stopLoading
+```
+
 ## Roll protocol to r1674729 — _2026-08-06T05:29:04.000Z_
-######  Diff: [`41535d3...aeb64bf`](https://github.com/ChromeDevTools/devtools-protocol/compare/41535d3...aeb64bf)
+######  Diff: [`41535d3...2d019e7`](https://github.com/ChromeDevTools/devtools-protocol/compare/41535d3...2d019e7)
 
 ```diff
 @@ js_protocol.pdl:212 @@ domain Debugger
@@ -43143,33 +43175,4 @@ index 4754f17c..8dad9c98 100644
  
    command dismissDialog
      parameters
-```
-
-## Roll protocol to r1220723 — _2023-11-07T04:26:31.000Z_
-######  Diff: [`2860a80...66e9966`](https://github.com/ChromeDevTools/devtools-protocol/compare/2860a80...66e9966)
-
-```diff
-@@ browser_protocol.pdl:9931 @@ experimental domain Storage
-       # duration in seconds
-       array of integer ends
- 
-+  experimental type AttributionReportingTriggerSpec extends object
-+    properties
-+      # number instead of integer because not all uint32 can be represented by
-+      # int
-+      array of number triggerData
-+      AttributionReportingEventReportWindows eventReportWindows
-+
-   experimental type AttributionReportingTriggerDataMatching extends string
-     enum
-       exact
-@@ -9941,7 +9948,7 @@ experimental domain Storage
-       Network.TimeSinceEpoch time
-       # duration in seconds
-       integer expiry
--      AttributionReportingEventReportWindows eventReportWindows
-+      array of AttributionReportingTriggerSpec triggerSpecs
-       # duration in seconds
-       integer aggregatableReportWindow
-       AttributionReportingSourceType type
 ```

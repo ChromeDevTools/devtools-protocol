@@ -4058,6 +4058,18 @@ export namespace ProtocolProxyApi {
         startScreencast(params: Protocol.Page.StartScreencastRequest): Promise<void>;
 
         /**
+         * Starts screencast video recording.
+         * @experimental
+         */
+        startScreenRecording(params: Protocol.Page.StartScreenRecordingRequest): Promise<Protocol.Page.StartScreenRecordingResponse>;
+
+        /**
+         * Stops screencast video recording.
+         * @experimental
+         */
+        stopScreenRecording(): Promise<Protocol.Page.StopScreenRecordingResponse>;
+
+        /**
          * Force the page stop all navigations and pending resource fetches.
          */
         stopLoading(): Promise<void>;

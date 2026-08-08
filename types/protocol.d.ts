@@ -18166,6 +18166,38 @@ export namespace Protocol {
             everyNthFrame?: integer;
         }
 
+        export interface StartScreenRecordingRequest {
+            audio?: boolean;
+            /**
+             * Maximum frame width in pixels.
+             */
+            maxWidth?: integer;
+            /**
+             * Maximum frame height in pixels.
+             */
+            maxHeight?: integer;
+            /**
+             * Maximum frame rate in frames per second.
+             */
+            frameRate?: integer;
+        }
+
+        export interface StartScreenRecordingResponse {
+            /**
+             * A handle of the stream that holds resulting screencast data.
+             * @experimental
+             */
+            stream: IO.StreamHandle;
+        }
+
+        export interface StopScreenRecordingResponse {
+            /**
+             * A handle of the stream that holds resulting screencast data.
+             * @experimental
+             */
+            stream: IO.StreamHandle;
+        }
+
         export const enum SetWebLifecycleStateRequestState {
             Frozen = 'frozen',
             Active = 'active',

@@ -4332,6 +4332,18 @@ export namespace ProtocolTestsProxyApi {
         startScreencast(params: Protocol.Page.StartScreencastRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
+         * Starts screencast video recording.
+         * @experimental
+         */
+        startScreenRecording(params: Protocol.Page.StartScreenRecordingRequest): Promise<{id: number, result: Protocol.Page.StartScreenRecordingResponse, sessionId: string}>;
+
+        /**
+         * Stops screencast video recording.
+         * @experimental
+         */
+        stopScreenRecording(): Promise<{id: number, result: Protocol.Page.StopScreenRecordingResponse, sessionId: string}>;
+
+        /**
          * Force the page stop all navigations and pending resource fetches.
          */
         stopLoading(): Promise<{id: number, result: void, sessionId: string}>;

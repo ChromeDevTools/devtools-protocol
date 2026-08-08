@@ -5204,6 +5204,22 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
+         * Starts screencast video recording.
+         * @experimental
+         */
+        'Page.startScreenRecording': {
+            paramsType: [Protocol.Page.StartScreenRecordingRequest?];
+            returnType: Protocol.Page.StartScreenRecordingResponse;
+        };
+        /**
+         * Stops screencast video recording.
+         * @experimental
+         */
+        'Page.stopScreenRecording': {
+            paramsType: [];
+            returnType: Protocol.Page.StopScreenRecordingResponse;
+        };
+        /**
          * Force the page stop all navigations and pending resource fetches.
          */
         'Page.stopLoading': {
