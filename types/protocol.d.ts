@@ -21786,7 +21786,7 @@ export namespace Protocol {
 
         export type Ctap2Version = ('ctap2_0' | 'ctap2_1' | 'ctap2_2');
 
-        export type AuthenticatorTransport = ('usb' | 'nfc' | 'ble' | 'cable' | 'internal');
+        export type AuthenticatorTransport = ('usb' | 'nfc' | 'ble' | 'cable' | 'hybrid' | 'smart-card' | 'internal');
 
         export interface VirtualAuthenticatorOptions {
             protocol: AuthenticatorProtocol;

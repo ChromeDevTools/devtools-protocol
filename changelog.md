@@ -1,7 +1,47 @@
 
 
+## Roll protocol to r1676914 — _2026-08-11T04:53:33.000Z_
+######  Diff: [`495a557...30b5360`](https://github.com/ChromeDevTools/devtools-protocol/compare/495a557...30b5360)
+
+```diff
+@@ domains/Page.pdl:158 @@ domain Page
+       run-ad-auction
+       screen-wake-lock
+       serial
++      # Deprecated.
+       shared-storage
++      # Deprecated.
+       shared-storage-select-url
+       smart-card
+       speaker-selection
+diff --git a/pdl/domains/WebAuthn.pdl b/pdl/domains/WebAuthn.pdl
+index 9f83b032..5e3e5d3f 100644
+--- a/pdl/domains/WebAuthn.pdl
++++ b/pdl/domains/WebAuthn.pdl
+@@ -22,6 +22,7 @@ experimental domain WebAuthn
+       ctap2_1
+       ctap2_2
+ 
++  # LINT.IfChange(AuthenticatorTransport)
+   type AuthenticatorTransport extends string
+     enum
+       # Cross-Platform authenticator attachments:
+@@ -29,8 +30,11 @@ experimental domain WebAuthn
+       nfc
+       ble
+       cable
++      hybrid
++      smart-card
+       # Platform authenticator attachment:
+       internal
++  # LINT.ThenChange(//content/browser/devtools/protocol/webauthn_handler.cc:ConvertToFidoTransportProtocol)
+ 
+   type VirtualAuthenticatorOptions extends object
+     properties
+```
+
 ## Roll protocol to r1676105 — _2026-08-08T04:42:45.000Z_
-######  Diff: [`2d019e7...a0b60c1`](https://github.com/ChromeDevTools/devtools-protocol/compare/2d019e7...a0b60c1)
+######  Diff: [`2d019e7...495a557`](https://github.com/ChromeDevTools/devtools-protocol/compare/2d019e7...495a557)
 
 ```diff
 @@ domains/Page.pdl:1175 @@ domain Page
@@ -43135,44 +43175,4 @@ index 4754f17c..8dad9c98 100644
 +      optional CSSFontPaletteValuesRule cssFontPaletteValuesRule
        # Id of the first parent element that does not have display: contents.
        experimental optional DOM.NodeId parentLayoutNodeId
-```
-
-## Roll protocol to r1222075 — _2023-11-09T04:26:36.000Z_
-######  Diff: [`66e9966...d21da35`](https://github.com/ChromeDevTools/devtools-protocol/compare/66e9966...d21da35)
-
-```diff
-@@ browser_protocol.pdl:11615 @@ experimental domain FedCm
-       SignIn
-       SignUp
- 
--  # Whether the dialog shown is an account chooser or an auto re-authentication dialog.
-+  # The types of FedCM dialogs.
-   type DialogType extends string
-     enum
-       AccountChooser
-       AutoReauthn
-       ConfirmIdpLogin
- 
-+  # The buttons on the FedCM dialog.
-+  type DialogButton extends string
-+    enum
-+      ConfirmIdpLoginContinue
-+
-   # Corresponds to IdentityRequestAccount
-   type Account extends object
-     properties
-@@ -11661,11 +11666,10 @@ experimental domain FedCm
-       string dialogId
-       integer accountIndex
- 
--  # Only valid if the dialog type is ConfirmIdpLogin. Acts as if the user had
--  # clicked the continue button.
--  command confirmIdpLogin
-+  command clickDialogButton
-     parameters
-       string dialogId
-+      DialogButton dialogButton
- 
-   command dismissDialog
-     parameters
 ```
