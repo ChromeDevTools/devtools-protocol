@@ -333,13 +333,8 @@ export namespace ProtocolProxyApi {
         setReturnValue(params: Protocol.Debugger.SetReturnValueRequest): Promise<void>;
 
         /**
-         * Edits JavaScript source live.
-         * 
-         * In general, functions that are currently on the stack can not be edited with
-         * a single exception: If the edited function is the top-most stack frame and
-         * that is the only activation of that function on the stack. In this case
-         * the live edit will be successful and a `Debugger.restartFrame` for the
-         * top-most function is automatically triggered.
+         * Live edit is no longer supported and this command always fails with a "no longer available" error.
+         * @deprecated
          */
         setScriptSource(params: Protocol.Debugger.SetScriptSourceRequest): Promise<Protocol.Debugger.SetScriptSourceResponse>;
 
@@ -2193,6 +2188,17 @@ export namespace ProtocolProxyApi {
         setSafeAreaInsetsOverride(params: Protocol.Emulation.SetSafeAreaInsetsOverrideRequest): Promise<void>;
 
         /**
+         * Overrides virtual keyboard geometry in CSS pixels, relative to the top-level viewport. The
+         * provided rect is used for navigator.virtualKeyboard.boundingRect, geometrychange events, and
+         * env(keyboard-inset-*) values on the inspected frame. The override applies independently of
+         * navigator.virtualKeyboard.overlaysContent so clients can preview overlay geometry without
+         * mutating page state. Values are rounded to the nearest CSS pixel. Omitting the rect clears the
+         * override.
+         * @experimental
+         */
+        setVirtualKeyboardGeometryOverride(params: Protocol.Emulation.SetVirtualKeyboardGeometryOverrideRequest): Promise<void>;
+
+        /**
          * Overrides the values of device screen dimensions (window.screen.width, window.screen.height,
          * window.innerWidth, window.innerHeight, and "device-width"/"device-height"-related CSS media
          * query results).
@@ -3039,18 +3045,6 @@ export namespace ProtocolProxyApi {
     }
 
     export interface NetworkApi {
-        /**
-         * Sets a list of content encodings that will be accepted. Empty list means no encoding is accepted.
-         * @experimental
-         */
-        setAcceptedEncodings(params: Protocol.Network.SetAcceptedEncodingsRequest): Promise<void>;
-
-        /**
-         * Clears accepted encodings set by setAcceptedEncodings
-         * @experimental
-         */
-        clearAcceptedEncodingsOverride(): Promise<void>;
-
         /**
          * Tells whether clearing browser cache is supported.
          * @deprecated

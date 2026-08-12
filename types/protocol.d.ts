@@ -3724,7 +3724,7 @@ export namespace Protocol {
 
         export type UnencodedDigestError = ('MalformedDictionary' | 'UnknownAlgorithm' | 'IncorrectDigestType' | 'IncorrectDigestLength');
 
-        export type ConnectionAllowlistError = ('InvalidHeader' | 'MoreThanOneList' | 'ItemNotInnerList' | 'InvalidAllowlistItemType' | 'ReportingEndpointNotToken' | 'InvalidUrlPattern');
+        export type ConnectionAllowlistError = ('InvalidHeader' | 'MoreThanOneList' | 'ItemNotInnerList' | 'InvalidAllowlistItemType' | 'ReportingEndpointNotToken' | 'InvalidUrlPattern' | 'IFrameAttributeLoosensEmbeddingRequirement' | 'InvalidAllowConnectionAllowlistFrom' | 'EmbeddingRequirementNotSatisfied');
 
         /**
          * Details for issues about documents in Quirks Mode
@@ -9639,6 +9639,10 @@ export namespace Protocol {
             insets: SafeAreaInsets;
         }
 
+        export interface SetVirtualKeyboardGeometryOverrideRequest {
+            keyboardRect?: DOM.Rect;
+        }
+
         export const enum SetDeviceMetricsOverrideRequestScrollbarType {
             Overlay = 'overlay',
             Default = 'default',
@@ -13645,12 +13649,6 @@ export namespace Protocol {
         }
 
         /**
-         * List of content encodings supported by the backend.
-         * @experimental
-         */
-        export type ContentEncoding = ('deflate' | 'gzip' | 'br' | 'zstd');
-
-        /**
          * @experimental
          */
         export interface NetworkConditions {
@@ -14314,13 +14312,6 @@ export namespace Protocol {
         export interface LoadNetworkResourceOptions {
             disableCache: boolean;
             includeCredentials: boolean;
-        }
-
-        export interface SetAcceptedEncodingsRequest {
-            /**
-             * List of accepted content encodings.
-             */
-            encodings: ContentEncoding[];
         }
 
         export interface CanClearBrowserCacheResponse {
@@ -17361,7 +17352,7 @@ export namespace Protocol {
          * List of not restored reasons for back-forward cache.
          * @experimental
          */
-        export type BackForwardCacheNotRestoredReason = ('NotPrimaryMainFrame' | 'BackForwardCacheDisabled' | 'RelatedActiveContentsExist' | 'HTTPStatusNotOK' | 'SchemeNotHTTPOrHTTPS' | 'Loading' | 'WasGrantedMediaAccess' | 'DisableForRenderFrameHostCalled' | 'DomainNotAllowed' | 'HTTPMethodNotGET' | 'SubframeIsNavigating' | 'Timeout' | 'CacheLimit' | 'JavaScriptExecution' | 'RendererProcessKilled' | 'RendererProcessCrashed' | 'SchedulerTrackedFeatureUsed' | 'ConflictingBrowsingInstance' | 'CacheFlushed' | 'ServiceWorkerVersionActivation' | 'SessionRestored' | 'ServiceWorkerPostMessage' | 'EnteredBackForwardCacheBeforeServiceWorkerHostAdded' | 'RenderFrameHostReused_SameSite' | 'RenderFrameHostReused_CrossSite' | 'ServiceWorkerClaim' | 'IgnoreEventAndEvict' | 'HaveInnerContents' | 'TimeoutPuttingInCache' | 'BackForwardCacheDisabledByLowMemory' | 'BackForwardCacheDisabledByCommandLine' | 'NetworkRequestDatapipeDrainedAsBytesConsumer' | 'NetworkRequestRedirected' | 'NetworkRequestTimeout' | 'NetworkExceedsBufferLimit' | 'NavigationCancelledWhileRestoring' | 'NotMostRecentNavigationEntry' | 'BackForwardCacheDisabledForPrerender' | 'UserAgentOverrideDiffers' | 'ForegroundCacheLimit' | 'ForwardCacheDisabled' | 'BrowsingInstanceNotSwapped' | 'BackForwardCacheDisabledForDelegate' | 'UnloadHandlerExistsInMainFrame' | 'UnloadHandlerExistsInSubFrame' | 'ServiceWorkerUnregistration' | 'CacheControlNoStore' | 'CacheControlNoStoreCookieModified' | 'CacheControlNoStoreHTTPOnlyCookieModified' | 'NoResponseHead' | 'Unknown' | 'ActivationNavigationsDisallowedForBug1234857' | 'ErrorDocument' | 'FencedFramesEmbedder' | 'CookieDisabled' | 'HTTPAuthRequired' | 'CookieFlushed' | 'BroadcastChannelOnMessage' | 'WebViewSettingsChanged' | 'WebViewJavaScriptObjectChanged' | 'WebViewMessageListenerInjected' | 'WebViewSafeBrowsingAllowlistChanged' | 'WebViewDocumentStartJavascriptChanged' | 'WebSocket' | 'WebTransport' | 'WebRTC' | 'MainResourceHasCacheControlNoStore' | 'MainResourceHasCacheControlNoCache' | 'SubresourceHasCacheControlNoStore' | 'SubresourceHasCacheControlNoCache' | 'ContainsPlugins' | 'DocumentLoaded' | 'OutstandingNetworkRequestOthers' | 'RequestedMIDIPermission' | 'RequestedAudioCapturePermission' | 'RequestedVideoCapturePermission' | 'RequestedBackForwardCacheBlockedSensors' | 'RequestedBackgroundWorkPermission' | 'BroadcastChannel' | 'WebXR' | 'SharedWorker' | 'SharedWorkerMessage' | 'SharedWorkerWithNoActiveClient' | 'WebLocks' | 'WebLocksContention' | 'WebHID' | 'WebBluetooth' | 'WebShare' | 'RequestedStorageAccessGrant' | 'WebNfc' | 'OutstandingNetworkRequestFetch' | 'OutstandingNetworkRequestXHR' | 'AppBanner' | 'Printing' | 'WebDatabase' | 'PictureInPicture' | 'SpeechRecognizer' | 'IdleManager' | 'PaymentManager' | 'SpeechSynthesis' | 'KeyboardLock' | 'WebOTPService' | 'OutstandingNetworkRequestDirectSocket' | 'InjectedJavascript' | 'InjectedStyleSheet' | 'KeepaliveRequest' | 'IndexedDBEvent' | 'Dummy' | 'JsNetworkRequestReceivedCacheControlNoStoreResource' | 'WebRTCUsedWithCCNS' | 'WebTransportUsedWithCCNS' | 'WebSocketUsedWithCCNS' | 'SmartCard' | 'LiveMediaStreamTrack' | 'UnloadHandler' | 'ParserAborted' | 'ContentSecurityHandler' | 'ContentWebAuthenticationAPI' | 'ContentFileChooser' | 'ContentSerial' | 'ContentFileSystemAccess' | 'ContentMediaDevicesDispatcherHost' | 'ContentWebBluetooth' | 'ContentWebUSB' | 'ContentMediaSessionService' | 'ContentScreenReader' | 'ContentDiscarded' | 'EmbedderPopupBlockerTabHelper' | 'EmbedderSafeBrowsingTriggeredPopupBlocker' | 'EmbedderSafeBrowsingThreatDetails' | 'EmbedderAppBannerManager' | 'EmbedderDomDistillerViewerSource' | 'EmbedderDomDistillerSelfDeletingRequestDelegate' | 'EmbedderOomInterventionTabHelper' | 'EmbedderOfflinePage' | 'EmbedderChromePasswordManagerClientBindCredentialManager' | 'EmbedderPermissionRequestManager' | 'EmbedderModalDialog' | 'EmbedderExtensions' | 'EmbedderExtensionMessaging' | 'EmbedderExtensionMessagingForOpenPort' | 'EmbedderExtensionSentMessageToCachedFrame' | 'EmbedderExtensionFrame' | 'RequestedByWebViewClient' | 'PostMessageByWebViewClient' | 'CacheControlNoStoreDeviceBoundSessionTerminated' | 'CacheLimitPrunedOnModerateMemoryPressure' | 'CacheLimitPrunedOnCriticalMemoryPressure');
+        export type BackForwardCacheNotRestoredReason = ('NotPrimaryMainFrame' | 'BackForwardCacheDisabled' | 'RelatedActiveContentsExist' | 'HTTPStatusNotOK' | 'SchemeNotHTTPOrHTTPS' | 'Loading' | 'WasGrantedMediaAccess' | 'DisableForRenderFrameHostCalled' | 'DomainNotAllowed' | 'HTTPMethodNotGET' | 'SubframeIsNavigating' | 'Timeout' | 'CacheLimit' | 'JavaScriptExecution' | 'RendererProcessKilled' | 'RendererProcessCrashed' | 'SchedulerTrackedFeatureUsed' | 'ConflictingBrowsingInstance' | 'CacheFlushed' | 'ServiceWorkerVersionActivation' | 'SessionRestored' | 'ServiceWorkerPostMessage' | 'EnteredBackForwardCacheBeforeServiceWorkerHostAdded' | 'RenderFrameHostReused_SameSite' | 'RenderFrameHostReused_CrossSite' | 'ServiceWorkerClaim' | 'IgnoreEventAndEvict' | 'HaveInnerContents' | 'TimeoutPuttingInCache' | 'BackForwardCacheDisabledByLowMemory' | 'BackForwardCacheDisabledByCommandLine' | 'NetworkRequestDatapipeDrainedAsBytesConsumer' | 'NetworkRequestRedirected' | 'NetworkRequestTimeout' | 'NetworkExceedsBufferLimit' | 'NavigationCancelledWhileRestoring' | 'NotMostRecentNavigationEntry' | 'BackForwardCacheDisabledForPrerender' | 'UserAgentOverrideDiffers' | 'ForegroundCacheLimit' | 'ForwardCacheDisabled' | 'BrowsingInstanceNotSwapped' | 'BackForwardCacheDisabledForDelegate' | 'UnloadHandlerExistsInMainFrame' | 'UnloadHandlerExistsInSubFrame' | 'ServiceWorkerUnregistration' | 'CacheControlNoStore' | 'CacheControlNoStoreCookieModified' | 'CacheControlNoStoreHTTPOnlyCookieModified' | 'NoResponseHead' | 'Unknown' | 'ActivationNavigationsDisallowedForBug1234857' | 'ErrorDocument' | 'FencedFramesEmbedder' | 'CookieDisabled' | 'HTTPAuthRequired' | 'CookieFlushed' | 'BroadcastChannelOnMessage' | 'WebViewSettingsChanged' | 'WebViewJavaScriptObjectChanged' | 'WebViewMessageListenerInjected' | 'WebViewSafeBrowsingAllowlistChanged' | 'WebViewDocumentStartJavascriptChanged' | 'WebSocket' | 'WebTransport' | 'WebRTC' | 'MainResourceHasCacheControlNoStore' | 'MainResourceHasCacheControlNoCache' | 'SubresourceHasCacheControlNoStore' | 'SubresourceHasCacheControlNoCache' | 'ContainsPlugins' | 'DocumentLoaded' | 'OutstandingNetworkRequestOthers' | 'RequestedMIDIPermission' | 'RequestedAudioCapturePermission' | 'RequestedVideoCapturePermission' | 'RequestedBackForwardCacheBlockedSensors' | 'RequestedBackgroundWorkPermission' | 'BroadcastChannel' | 'WebXR' | 'SharedWorker' | 'SharedWorkerMessage' | 'SharedWorkerWithNoActiveClient' | 'WebLocks' | 'WebLocksContention' | 'WebHID' | 'WebBluetooth' | 'WebShare' | 'RequestedStorageAccessGrant' | 'WebNfc' | 'OutstandingNetworkRequestFetch' | 'OutstandingNetworkRequestXHR' | 'AppBanner' | 'Printing' | 'WebDatabase' | 'PictureInPicture' | 'SpeechRecognizer' | 'IdleManager' | 'PaymentManager' | 'SpeechSynthesis' | 'KeyboardLock' | 'WebOTPService' | 'OutstandingNetworkRequestDirectSocket' | 'InjectedJavascript' | 'InjectedStyleSheet' | 'KeepaliveRequest' | 'IndexedDBEvent' | 'Dummy' | 'JsNetworkRequestReceivedCacheControlNoStoreResource' | 'WebRTCUsedWithCCNS' | 'WebTransportUsedWithCCNS' | 'WebSocketUsedWithCCNS' | 'SmartCard' | 'LiveMediaStreamTrack' | 'UnloadHandler' | 'ParserAborted' | 'ContentSecurityHandler' | 'ContentWebAuthenticationAPI' | 'ContentFileChooser' | 'ContentSerial' | 'ContentFileSystemAccess' | 'ContentMediaDevicesDispatcherHost' | 'ContentWebBluetooth' | 'ContentWebUSB' | 'ContentMediaSessionService' | 'ContentScreenReader' | 'ContentDiscarded' | 'EmbedderPopupBlockerTabHelper' | 'EmbedderSafeBrowsingTriggeredPopupBlocker' | 'EmbedderSafeBrowsingThreatDetails' | 'EmbedderAppBannerManager' | 'EmbedderDomDistillerViewerSource' | 'EmbedderDomDistillerSelfDeletingRequestDelegate' | 'EmbedderOomInterventionTabHelper' | 'EmbedderOfflinePage' | 'EmbedderChromePasswordManagerClientBindCredentialManager' | 'EmbedderPermissionRequestManager' | 'EmbedderModalDialog' | 'EmbedderExtensions' | 'EmbedderExtensionMessaging' | 'EmbedderExtensionMessagingForOpenPort' | 'EmbedderExtensionSentMessageToCachedFrame' | 'EmbedderExtensionFrame' | 'EmbedderPrivilegedWebContents' | 'RequestedByWebViewClient' | 'PostMessageByWebViewClient' | 'CacheControlNoStoreDeviceBoundSessionTerminated' | 'CacheLimitPrunedOnModerateMemoryPressure' | 'CacheLimitPrunedOnCriticalMemoryPressure');
 
         /**
          * Types of not restored reasons for back-forward cache.

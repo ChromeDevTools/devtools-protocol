@@ -1,7 +1,104 @@
 
 
+## Roll protocol to r1677763 — _2026-08-12T05:00:19.000Z_
+######  Diff: [`75d6311...109a55a`](https://github.com/ChromeDevTools/devtools-protocol/compare/75d6311...109a55a)
+
+```diff
+@@ domains/Audits.pdl:341 @@ experimental domain Audits
+       InvalidAllowlistItemType
+       ReportingEndpointNotToken
+       InvalidUrlPattern
++      IFrameAttributeLoosensEmbeddingRequirement
++      InvalidAllowConnectionAllowlistFrom
++      EmbeddingRequirementNotSatisfied
+ 
+ # Details for issues about documents in Quirks Mode
+ # or Limited Quirks Mode that affects page layouting.
+diff --git a/pdl/domains/Emulation.pdl b/pdl/domains/Emulation.pdl
+index dfbf0558..bee4a46c 100644
+--- a/pdl/domains/Emulation.pdl
++++ b/pdl/domains/Emulation.pdl
+@@ -258,6 +258,16 @@ domain Emulation
+     parameters
+       SafeAreaInsets insets
+ 
++  # Overrides virtual keyboard geometry in CSS pixels, relative to the top-level viewport. The
++  # provided rect is used for navigator.virtualKeyboard.boundingRect, geometrychange events, and
++  # env(keyboard-inset-*) values on the inspected frame. The override applies independently of
++  # navigator.virtualKeyboard.overlaysContent so clients can preview overlay geometry without
++  # mutating page state. Values are rounded to the nearest CSS pixel. Omitting the rect clears the
++  # override.
++  experimental command setVirtualKeyboardGeometryOverride
++    parameters
++      optional DOM.Rect keyboardRect
++
+   # Overrides the values of device screen dimensions (window.screen.width, window.screen.height,
+   # window.innerWidth, window.innerHeight, and "device-width"/"device-height"-related CSS media
+   # query results).
+diff --git a/pdl/domains/Network.pdl b/pdl/domains/Network.pdl
+index d3609630..1a4c07ad 100644
+--- a/pdl/domains/Network.pdl
++++ b/pdl/domains/Network.pdl
+@@ -919,22 +919,6 @@ domain Network
+       # Errors occurred while handling the signed exchange.
+       optional array of SignedExchangeError errors
+ 
+-  # List of content encodings supported by the backend.
+-  experimental type ContentEncoding extends string
+-    enum
+-      deflate
+-      gzip
+-      br
+-      zstd
+-
+-  # Sets a list of content encodings that will be accepted. Empty list means no encoding is accepted.
+-  experimental command setAcceptedEncodings
+-    parameters
+-      # List of accepted content encodings.
+-      array of ContentEncoding encodings
+-
+-  # Clears accepted encodings set by setAcceptedEncodings
+-  experimental command clearAcceptedEncodingsOverride
+ 
+   # Tells whether clearing browser cache is supported.
+   deprecated command canClearBrowserCache
+diff --git a/pdl/domains/Page.pdl b/pdl/domains/Page.pdl
+index dcf1ddfb..df727762 100644
+--- a/pdl/domains/Page.pdl
++++ b/pdl/domains/Page.pdl
+@@ -1647,6 +1647,7 @@ domain Page
+       EmbedderExtensionMessagingForOpenPort
+       EmbedderExtensionSentMessageToCachedFrame
+       EmbedderExtensionFrame
++      EmbedderPrivilegedWebContents
+       RequestedByWebViewClient
+       PostMessageByWebViewClient
+       CacheControlNoStoreDeviceBoundSessionTerminated
+diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
+index 7978923d..498ba7d6 100644
+--- a/pdl/js_protocol.pdl
++++ b/pdl/js_protocol.pdl
+@@ -487,14 +487,8 @@ domain Debugger
+       # New return value.
+       Runtime.CallArgument newValue
+ 
+-  # Edits JavaScript source live.
+-  #
+-  # In general, functions that are currently on the stack can not be edited with
+-  # a single exception: If the edited function is the top-most stack frame and
+-  # that is the only activation of that function on the stack. In this case
+-  # the live edit will be successful and a `Debugger.restartFrame` for the
+-  # top-most function is automatically triggered.
+-  command setScriptSource
++  # Live edit is no longer supported and this command always fails with a "no longer available" error.
++  deprecated command setScriptSource
+     parameters
+       # Id of the script to edit.
+       Runtime.ScriptId scriptId
+```
+
 ## Roll protocol to r1676914 — _2026-08-11T04:53:33.000Z_
-######  Diff: [`495a557...30b5360`](https://github.com/ChromeDevTools/devtools-protocol/compare/495a557...30b5360)
+######  Diff: [`495a557...75d6311`](https://github.com/ChromeDevTools/devtools-protocol/compare/495a557...75d6311)
 
 ```diff
 @@ domains/Page.pdl:158 @@ domain Page
@@ -43141,38 +43238,4 @@ index 4754f17c..8dad9c98 100644
        optional string acceptLanguage
        # The platform navigator.platform should return.
        optional string platform
-```
-
-## Roll protocol to r1224083 — _2023-11-14T04:26:27.000Z_
-######  Diff: [`d21da35...b28b672`](https://github.com/ChromeDevTools/devtools-protocol/compare/d21da35...b28b672)
-
-```diff
-@@ browser_protocol.pdl:1926 @@ experimental domain CSS
-       string syntax
- 
- 
-+  # CSS font-palette-values rule representation.
-+  type CSSFontPaletteValuesRule extends object
-+    properties
-+      # The css style sheet identifier (absent for user agent stylesheet and user-specified
-+      # stylesheet rules) this rule came from.
-+      optional StyleSheetId styleSheetId
-+      # Parent stylesheet's origin.
-+      StyleSheetOrigin origin
-+      # Associated font palette name.
-+      Value fontPaletteName
-+      # Associated style declaration.
-+      CSSStyle style
-+
-   # CSS property at-rule representation.
-   type CSSPropertyRule extends object
-     properties
-@@ -2070,6 +2083,8 @@ experimental domain CSS
-       optional array of CSSPropertyRule cssPropertyRules
-       # A list of CSS property registrations matching this node.
-       optional array of CSSPropertyRegistration cssPropertyRegistrations
-+      # A font-palette-values rule matching this node.
-+      optional CSSFontPaletteValuesRule cssFontPaletteValuesRule
-       # Id of the first parent element that does not have display: contents.
-       experimental optional DOM.NodeId parentLayoutNodeId
 ```
