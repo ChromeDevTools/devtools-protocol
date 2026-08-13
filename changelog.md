@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1678596 — _2026-08-13T05:03:31.000Z_
+######  Diff: [`963b290...1426c53`](https://github.com/ChromeDevTools/devtools-protocol/compare/963b290...1426c53)
+
+```diff
+@@ domains/Page.pdl:148 @@ domain Page
+       otp-credentials
+       payment
+       picture-in-picture
+-      private-aggregation
+       private-state-token-issuance
+       private-state-token-redemption
+       publickey-credentials-create
+```
+
 ## Roll protocol to r1677763 — _2026-08-12T05:00:19.000Z_
-######  Diff: [`75d6311...109a55a`](https://github.com/ChromeDevTools/devtools-protocol/compare/75d6311...109a55a)
+######  Diff: [`75d6311...963b290`](https://github.com/ChromeDevTools/devtools-protocol/compare/75d6311...963b290)
 
 ```diff
 @@ domains/Audits.pdl:341 @@ experimental domain Audits
@@ -43214,28 +43228,4 @@ index 4754f17c..8dad9c98 100644
        # Indicates if the font was downloaded or resolved locally.
        boolean isCustomFont
        # Amount of glyphs that were rendered with this font.
-```
-
-## Roll protocol to r1224742 — _2023-11-15T04:26:44.000Z_
-######  Diff: [`b28b672...5d6dd33`](https://github.com/ChromeDevTools/devtools-protocol/compare/b28b672...5d6dd33)
-
-```diff
-@@ browser_protocol.pdl:4250 @@ domain Emulation
-     parameters
-       # User agent to use.
-       string userAgent
--      # Browser langugage to emulate.
-+      # Browser language to emulate.
-       optional string acceptLanguage
-       # The platform navigator.platform should return.
-       optional string platform
-@@ -6427,7 +6427,7 @@ domain Network
-     parameters
-       # User agent to use.
-       string userAgent
--      # Browser langugage to emulate.
-+      # Browser language to emulate.
-       optional string acceptLanguage
-       # The platform navigator.platform should return.
-       optional string platform
 ```
