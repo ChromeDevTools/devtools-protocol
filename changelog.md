@@ -1,7 +1,46 @@
 
 
+## Roll protocol to r1679354 — _2026-08-14T05:00:28.000Z_
+######  Diff: [`716ccac...95f1b94`](https://github.com/ChromeDevTools/devtools-protocol/compare/716ccac...95f1b94)
+
+```diff
+@@ domains/Network.pdl:2094 @@ domain Network
+       InvalidPreProvisionedKeyInitiatorMissing
+       PreProvisionedKeyAccessNotGranted
+       PreProvisionedKeyNotFound
++      AttestationCertificationError
++      AttestationSigningError
+   # LINT.ThenChange(//content/browser/devtools/protocol/network_handler.cc:DeviceBoundSessionFetchResult)
+ 
+   # Details about a failed device bound session network request.
+diff --git a/pdl/domains/Preload.pdl b/pdl/domains/Preload.pdl
+index b26790f8..761a6f9f 100644
+--- a/pdl/domains/Preload.pdl
++++ b/pdl/domains/Preload.pdl
+@@ -236,6 +236,7 @@ experimental domain Preload
+       PrefetchIsStale
+       PrefetchNotEligibleBlockedByConnectionAllowlist
+       PrefetchNotEligibleBrowserContextOffTheRecord
++      PrefetchNotEligibleCrossOrigin
+       PrefetchNotEligibleDataSaverEnabled
+       PrefetchNotEligibleExistingProxy
+       PrefetchNotEligibleHostIsNonUnique
+diff --git a/pdl/domains/WebAudio.pdl b/pdl/domains/WebAudio.pdl
+index 5df199dd..17d125ee 100644
+--- a/pdl/domains/WebAudio.pdl
++++ b/pdl/domains/WebAudio.pdl
+@@ -77,6 +77,7 @@ experimental domain WebAudio
+       number maxOutputChannelCount
+       # Context sample rate.
+       number sampleRate
++      number renderQuantumSize
+ 
+ # Protocol object for AudioListener
+   type AudioListener extends object
+```
+
 ## Roll protocol to r1678596 — _2026-08-13T05:03:31.000Z_
-######  Diff: [`963b290...1426c53`](https://github.com/ChromeDevTools/devtools-protocol/compare/963b290...1426c53)
+######  Diff: [`963b290...716ccac`](https://github.com/ChromeDevTools/devtools-protocol/compare/963b290...716ccac)
 
 ```diff
 @@ domains/Page.pdl:148 @@ domain Page
@@ -43213,19 +43252,4 @@ index 4754f17c..8dad9c98 100644
      returns
        # Base64-encoded pdf data. Empty if |returnAsStream| is specified.
        binary data
-```
-
-## Roll protocol to r1225305 — _2023-11-16T04:27:11.000Z_
-######  Diff: [`5d6dd33...a523432`](https://github.com/ChromeDevTools/devtools-protocol/compare/5d6dd33...a523432)
-
-```diff
-@@ browser_protocol.pdl:1847 @@ experimental domain CSS
-     properties
-       # Font's family name reported by platform.
-       string familyName
-+      # Font's PostScript name reported by platform.
-+      string postScriptName
-       # Indicates if the font was downloaded or resolved locally.
-       boolean isCustomFont
-       # Amount of glyphs that were rendered with this font.
 ```
