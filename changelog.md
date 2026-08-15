@@ -1,7 +1,31 @@
 
 
+## Roll protocol to r1680125 — _2026-08-15T04:37:29.000Z_
+######  Diff: [`9af7dce...d256929`](https://github.com/ChromeDevTools/devtools-protocol/compare/9af7dce...d256929)
+
+```diff
+@@ domains/Page.pdl:131 @@ domain Page
+       identity-credentials-get
+       idle-detection
+       interest-cohort
+-      join-ad-interest-group
+       keyboard-map
+       language-detector
+       language-model
+@@ -152,9 +151,7 @@ domain Page
+       private-state-token-redemption
+       publickey-credentials-create
+       publickey-credentials-get
+-      record-ad-auction-events
+       rewriter
+-      run-ad-auction
+       screen-wake-lock
+       serial
+       # Deprecated.
+```
+
 ## Roll protocol to r1679354 — _2026-08-14T05:00:28.000Z_
-######  Diff: [`716ccac...95f1b94`](https://github.com/ChromeDevTools/devtools-protocol/compare/716ccac...95f1b94)
+######  Diff: [`716ccac...9af7dce`](https://github.com/ChromeDevTools/devtools-protocol/compare/716ccac...9af7dce)
 
 ```diff
 @@ domains/Network.pdl:2094 @@ domain Network
@@ -43237,19 +43261,4 @@ index 4754f17c..8dad9c98 100644
    # Returns present frame tree structure.
    command getFrameTree
      returns
-```
-
-## Roll protocol to r1226504 — _2023-11-18T04:27:17.000Z_
-######  Diff: [`a523432...9a97892`](https://github.com/ChromeDevTools/devtools-protocol/compare/a523432...9a97892)
-
-```diff
-@@ browser_protocol.pdl:8307 @@ domain Page
-         ReturnAsStream
-       # Whether or not to generate tagged (accessible) PDF. Defaults to embedder choice.
-       experimental optional boolean generateTaggedPDF
-+      # Whether or not to embed the document outline into the PDF.
-+      experimental optional boolean generateDocumentOutline
-     returns
-       # Base64-encoded pdf data. Empty if |returnAsStream| is specified.
-       binary data
 ```
