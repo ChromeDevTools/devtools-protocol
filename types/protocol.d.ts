@@ -9987,6 +9987,21 @@ export namespace Protocol {
             hardwareConcurrency: integer;
         }
 
+        export const enum SetCPUPerformanceOverrideRequestPerformanceTier {
+            Unknown = 'unknown',
+            Low = 'low',
+            Mid = 'mid',
+            High = 'high',
+            Ultra = 'ultra',
+        }
+
+        export interface SetCPUPerformanceOverrideRequest {
+            /**
+             * Override value. Omitting the parameter disables the override.
+             */
+            performanceTier?: ('unknown' | 'low' | 'mid' | 'high' | 'ultra');
+        }
+
         export interface SetUserAgentOverrideRequest {
             /**
              * User agent to use.

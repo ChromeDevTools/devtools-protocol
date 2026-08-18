@@ -1,7 +1,36 @@
 
 
+## Roll protocol to r1681094 — _2026-08-18T04:35:11.000Z_
+######  Diff: [`66fa447...db1debe`](https://github.com/ChromeDevTools/devtools-protocol/compare/66fa447...db1debe)
+
+```diff
+@@ domains/Emulation.pdl:570 @@ domain Emulation
+       # Hardware concurrency to report
+       integer hardwareConcurrency
+ 
++  # Overrides the value of navigator.cpuPerformance
++  experimental command setCPUPerformanceOverride
++    parameters
++      # Override value. Omitting the parameter disables the override.
++      optional enum performanceTier
++        # Tier 0: Unknown
++        unknown
++        # Tier 1: Low
++        low
++        # Tier 2: Mid
++        mid
++        # Tier 3: High
++        high
++        # Tier 4: Ultra
++        ultra
++
+   # Allows overriding user agent with the given string.
+   # `userAgentMetadata` must be set for Client Hint headers to be sent.
+   command setUserAgentOverride
+```
+
 ## Roll protocol to r1680125 — _2026-08-15T04:37:29.000Z_
-######  Diff: [`9af7dce...d256929`](https://github.com/ChromeDevTools/devtools-protocol/compare/9af7dce...d256929)
+######  Diff: [`9af7dce...66fa447`](https://github.com/ChromeDevTools/devtools-protocol/compare/9af7dce...66fa447)
 
 ```diff
 @@ domains/Page.pdl:131 @@ domain Page
@@ -43229,36 +43258,4 @@ index 4754f17c..8dad9c98 100644
        # Total number of bytes received for this request so far.
        number encodedDataLength
        # Timing information for the given request.
-```
-
-## Roll protocol to r1227218 — _2023-11-21T04:27:08.000Z_
-######  Diff: [`9a97892...60572e5`](https://github.com/ChromeDevTools/devtools-protocol/compare/9a97892...60572e5)
-
-```diff
-@@ browser_protocol.pdl:5827 @@ domain Network
-       # Cookie Priority
-       experimental CookiePriority priority
-       # True if cookie is SameParty.
--      experimental boolean sameParty
-+      experimental deprecated boolean sameParty
-       # Cookie source scheme type.
-       experimental CookieSourceScheme sourceScheme
-       # Cookie source port. Valid values are {-1, [1, 65535]}, -1 indicates an unspecified port.
-@@ -8155,16 +8155,6 @@ domain Page
-       # as an ad. Only sent if frame is labelled as an ad and id is available.
-       optional AdScriptId adScriptId
- 
--  # Returns all browser cookies for the page and all of its subframes. Depending
--  # on the backend support, will return detailed cookie information in the
--  # `cookies` field.
--  experimental deprecated command getCookies
--    # Use 'Network.getCookies' instead
--    redirect Network
--    returns
--      # Array of cookie objects.
--      array of Network.Cookie cookies
--
-   # Returns present frame tree structure.
-   command getFrameTree
-     returns
 ```

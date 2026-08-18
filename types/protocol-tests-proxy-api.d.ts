@@ -2527,6 +2527,12 @@ export namespace ProtocolTestsProxyApi {
         setHardwareConcurrencyOverride(params: Protocol.Emulation.SetHardwareConcurrencyOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
+         * Overrides the value of navigator.cpuPerformance
+         * @experimental
+         */
+        setCPUPerformanceOverride(params: Protocol.Emulation.SetCPUPerformanceOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
          * Allows overriding user agent with the given string.
          * `userAgentMetadata` must be set for Client Hint headers to be sent.
          */
