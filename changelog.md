@@ -1,7 +1,31 @@
 
 
+## Roll protocol to r1682007 — _2026-08-19T04:37:26.000Z_
+######  Diff: [`0539a3c...7efb382`](https://github.com/ChromeDevTools/devtools-protocol/compare/0539a3c...7efb382)
+
+```diff
+@@ domains/Browser.pdl:332 @@ domain Browser
+   command addPrivacySandboxEnrollmentOverride
+     parameters
+       string url
++
++  # Gets the current globally-applied privacy control status
++  # See https://www.w3.org/TR/gpc/#get-global-privacy-control
++  experimental command getGlobalPrivacyControl
++    returns
++      boolean gpc
++
++  # Sets and then gets the current globally-applied privacy control status
++  # See https://www.w3.org/TR/gpc/#set-global-privacy-control
++  experimental command setGlobalPrivacyControl
++    parameters
++      boolean gpc
++    returns
++      boolean gpc
+```
+
 ## Roll protocol to r1681094 — _2026-08-18T04:35:11.000Z_
-######  Diff: [`66fa447...db1debe`](https://github.com/ChromeDevTools/devtools-protocol/compare/66fa447...db1debe)
+######  Diff: [`66fa447...0539a3c`](https://github.com/ChromeDevTools/devtools-protocol/compare/66fa447...0539a3c)
 
 ```diff
 @@ domains/Emulation.pdl:570 @@ domain Emulation
@@ -43232,30 +43256,4 @@ index 4754f17c..8dad9c98 100644
  
    # Corresponds to IdentityRequestAccount
    type Account extends object
-```
-
-## Roll protocol to r1227788 — _2023-11-22T04:27:05.000Z_
-######  Diff: [`60572e5...2dcad56`](https://github.com/ChromeDevTools/devtools-protocol/compare/60572e5...2dcad56)
-
-```diff
-@@ browser_protocol.pdl:5679 @@ domain Network
-       # This value is used when the reason is unknown.
-       unspecifiedReason
- 
-+  experimental type ServiceWorkerRouterInfo extends object
-+    properties
-+      integer ruleIdMatched
-+
-   # HTTP response data.
-   type Response extends object
-     properties
-@@ -5712,6 +5716,8 @@ domain Network
-       optional boolean fromServiceWorker
-       # Specifies that the request was served from the prefetch cache.
-       optional boolean fromPrefetchCache
-+      # Infomation about how Service Worker Static Router was used.
-+      experimental optional ServiceWorkerRouterInfo serviceWorkerRouterInfo
-       # Total number of bytes received for this request so far.
-       number encodedDataLength
-       # Timing information for the given request.
 ```

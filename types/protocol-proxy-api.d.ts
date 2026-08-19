@@ -1156,6 +1156,20 @@ export namespace ProtocolProxyApi {
         addPrivacySandboxEnrollmentOverride(params: Protocol.Browser.AddPrivacySandboxEnrollmentOverrideRequest): Promise<void>;
 
         /**
+         * Gets the current globally-applied privacy control status
+         * See https://www.w3.org/TR/gpc/#get-global-privacy-control
+         * @experimental
+         */
+        getGlobalPrivacyControl(): Promise<Protocol.Browser.GetGlobalPrivacyControlResponse>;
+
+        /**
+         * Sets and then gets the current globally-applied privacy control status
+         * See https://www.w3.org/TR/gpc/#set-global-privacy-control
+         * @experimental
+         */
+        setGlobalPrivacyControl(params: Protocol.Browser.SetGlobalPrivacyControlRequest): Promise<Protocol.Browser.SetGlobalPrivacyControlResponse>;
+
+        /**
          * Fired when page is about to start a download.
          * @experimental
          */

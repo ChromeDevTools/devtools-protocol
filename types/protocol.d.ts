@@ -4997,6 +4997,18 @@ export namespace Protocol {
             url: string;
         }
 
+        export interface GetGlobalPrivacyControlResponse {
+            gpc: boolean;
+        }
+
+        export interface SetGlobalPrivacyControlRequest {
+            gpc: boolean;
+        }
+
+        export interface SetGlobalPrivacyControlResponse {
+            gpc: boolean;
+        }
+
         /**
          * Fired when page is about to start a download.
          * @experimental
