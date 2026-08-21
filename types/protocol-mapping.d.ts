@@ -1757,6 +1757,15 @@ export namespace ProtocolMapping {
             returnType: Protocol.Ads.GetAdMetricsResponse;
         };
         /**
+         * Retrieves ad scripts for the current page. To minimize payload size, this
+         * only returns the newly tracked ad scripts since the last call to
+         * getAdScripts (i.e., the delta).
+         */
+        'Ads.getAdScripts': {
+            paramsType: [];
+            returnType: Protocol.Ads.GetAdScriptsResponse;
+        };
+        /**
          * Disables animation domain notifications.
          */
         'Animation.disable': {

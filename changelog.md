@@ -1,7 +1,73 @@
 
 
+## Roll protocol to r1683682 — _2026-08-21T04:41:18.000Z_
+######  Diff: [`022aac9...dc3d21f`](https://github.com/ChromeDevTools/devtools-protocol/compare/022aac9...dc3d21f)
+
+```diff
+@@ domains/Ads.pdl:48 @@ experimental domain Ads
+   command getAdMetrics
+     returns
+       AdMetrics metrics
++
++  # An ad script.
++  # Note: when the script is a transitive ad script, we only fill in the
++  # immediate ancestor script in the provenance's adScriptAncestry field (as its
++  # first entry), rather than filling in the full ancestry. This saves work for
++  # the backend, and the frontend can reconstruct the full ancestry if
++  # necessary.
++  type AdScript extends object
++    properties
++      # The script ID.
++      Runtime.ScriptId scriptId
++      # The ad provenance.
++      Network.AdProvenance provenance
++
++  # Retrieves ad scripts for the current page. To minimize payload size, this
++  # only returns the newly tracked ad scripts since the last call to
++  # getAdScripts (i.e., the delta).
++  command getAdScripts
++    returns
++      array of AdScript newScripts
+diff --git a/pdl/domains/Network.pdl b/pdl/domains/Network.pdl
+index c00edefc..228ed6c8 100644
+--- a/pdl/domains/Network.pdl
++++ b/pdl/domains/Network.pdl
+@@ -1701,6 +1701,9 @@ domain Network
+       # The filterlist rule that matched, if any.
+       optional string filterlistRule
+       # The script ancestry that created the ad, if any.
++      # Note: depending on the context, this may represent the full ancestry up
++      # to the root script, or it may contain only one script representing the
++      # immediate ancestor.
+       optional AdAncestry adScriptAncestry
+ 
+   # Fired when additional information about a requestWillBeSent event is available from the
+diff --git a/pdl/domains/Page.pdl b/pdl/domains/Page.pdl
+index 80cd13ea..0961300c 100644
+--- a/pdl/domains/Page.pdl
++++ b/pdl/domains/Page.pdl
+@@ -1170,8 +1170,16 @@ domain Page
+       optional integer maxWidth
+       # Maximum screenshot height.
+       optional integer maxHeight
+-      # Send every n-th frame.
++      # Send every n-th frame. Must be a positive integer.
+       optional integer everyNthFrame
++      # Maximum number of frames sent until screencastFrameAck is required.
++      # Defaults to 3. Must be a positive integer.
++      optional integer maxFramesInFlight
++      # By default, after screencastFrameAck arrives, the next produced frame is sent.
++      # Passing this flag enables storing the last produced frame in memory, which is
++      # immediately sent upon screencastFrameAck. This way, overall performance is
++      # traded for a better latency.
++      optional boolean sendLastFrame
+ 
+   # Starts screencast video recording.
+   experimental command startScreenRecording
+```
+
 ## Roll protocol to r1682007 — _2026-08-19T04:37:26.000Z_
-######  Diff: [`0539a3c...7efb382`](https://github.com/ChromeDevTools/devtools-protocol/compare/0539a3c...7efb382)
+######  Diff: [`0539a3c...022aac9`](https://github.com/ChromeDevTools/devtools-protocol/compare/0539a3c...022aac9)
 
 ```diff
 @@ domains/Browser.pdl:332 @@ domain Browser
@@ -43227,33 +43293,4 @@ index 4754f17c..8dad9c98 100644
    command enable
      parameters
        # Allows callers to disable the promise rejection delay that would
-```
-
-## Roll protocol to r1231134 — _2023-11-30T04:27:01.000Z_
-######  Diff: [`2dcad56...92cb696`](https://github.com/ChromeDevTools/devtools-protocol/compare/2dcad56...92cb696)
-
-```diff
-@@ browser_protocol.pdl:7651 @@ domain Page
-       sync-xhr
-       unload
-       usb
-+      usb-unrestricted
-       vertical-scroll
-       web-printing
-       web-share
-@@ -11636,11 +11637,14 @@ experimental domain FedCm
-       AccountChooser
-       AutoReauthn
-       ConfirmIdpLogin
-+      Error
- 
-   # The buttons on the FedCM dialog.
-   type DialogButton extends string
-     enum
-       ConfirmIdpLoginContinue
-+      ErrorGotIt
-+      ErrorMoreDetails
- 
-   # Corresponds to IdentityRequestAccount
-   type Account extends object
 ```

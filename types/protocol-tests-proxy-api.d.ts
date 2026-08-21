@@ -809,6 +809,13 @@ export namespace ProtocolTestsProxyApi {
          */
         getAdMetrics(): Promise<{id: number, result: Protocol.Ads.GetAdMetricsResponse, sessionId: string}>;
 
+        /**
+         * Retrieves ad scripts for the current page. To minimize payload size, this
+         * only returns the newly tracked ad scripts since the last call to
+         * getAdScripts (i.e., the delta).
+         */
+        getAdScripts(): Promise<{id: number, result: Protocol.Ads.GetAdScriptsResponse, sessionId: string}>;
+
     }
 
     export interface AnimationApi {

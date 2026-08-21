@@ -3193,8 +3193,31 @@ export namespace Protocol {
             removeAdFrames: Page.FrameId[];
         }
 
+        /**
+         * An ad script.
+         * Note: when the script is a transitive ad script, we only fill in the
+         * immediate ancestor script in the provenance's adScriptAncestry field (as its
+         * first entry), rather than filling in the full ancestry. This saves work for
+         * the backend, and the frontend can reconstruct the full ancestry if
+         * necessary.
+         */
+        export interface AdScript {
+            /**
+             * The script ID.
+             */
+            scriptId: Runtime.ScriptId;
+            /**
+             * The ad provenance.
+             */
+            provenance: Network.AdProvenance;
+        }
+
         export interface GetAdMetricsResponse {
             metrics: AdMetrics;
+        }
+
+        export interface GetAdScriptsResponse {
+            newScripts: AdScript[];
         }
     }
 
@@ -13899,6 +13922,9 @@ export namespace Protocol {
             filterlistRule?: string;
             /**
              * The script ancestry that created the ad, if any.
+             * Note: depending on the context, this may represent the full ancestry up
+             * to the root script, or it may contain only one script representing the
+             * immediate ancestor.
              */
             adScriptAncestry?: AdAncestry;
         }
@@ -18179,9 +18205,21 @@ export namespace Protocol {
              */
             maxHeight?: integer;
             /**
-             * Send every n-th frame.
+             * Send every n-th frame. Must be a positive integer.
              */
             everyNthFrame?: integer;
+            /**
+             * Maximum number of frames sent until screencastFrameAck is required.
+             * Defaults to 3. Must be a positive integer.
+             */
+            maxFramesInFlight?: integer;
+            /**
+             * By default, after screencastFrameAck arrives, the next produced frame is sent.
+             * Passing this flag enables storing the last produced frame in memory, which is
+             * immediately sent upon screencastFrameAck. This way, overall performance is
+             * traded for a better latency.
+             */
+            sendLastFrame?: boolean;
         }
 
         export interface StartScreenRecordingRequest {
