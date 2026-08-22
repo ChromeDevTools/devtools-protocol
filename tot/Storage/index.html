@@ -1,0 +1,2335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Chrome DevTools Protocol - version tot - Storage domain" />
+  <link rel="icon" type="image/png" href="/devtools-protocol/images/logo.png" />
+    <title>Chrome DevTools Protocol - Storage domain</title>
+
+  <meta name="theme-color" content="#303F9F" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@chromedevtools" />
+  <meta name="twitter:creator" content="@chromedevtools" />
+  <meta property="og:title" content="Chrome DevTools Protocol" />
+  <meta property="og:image" content="https://developers.google.com/web/tools/images/chrome-devtools-16x9_720.png" />
+    <meta property="og:description" content="Chrome DevTools Protocol - version tot - Storage domain" />
+
+  <script type="module" src="/devtools-protocol/scripts/index.js"></script>
+  <link href="/devtools-protocol/styles/protocol.css" rel="stylesheet">
+</head>
+<body>
+  <aside>
+    <div id="home" class="navs">
+      <nav>
+        <a href="/devtools-protocol/">Home</a>
+        <button class="aside-close-button" aria-label="Close navigation">x</button>
+      </nav>
+    </div>
+    <div id="versions" class="navs">
+      <header>Versions</header>
+      <nav>
+        <a href="/devtools-protocol/tot" name="tot">
+          latest (tip-of-tree)
+        </a>
+        <a href="/devtools-protocol/v8" name="v8">
+          v8-inspector (node)
+        </a>
+        <a href="/devtools-protocol/1-3" name="1-3">
+          stable (1.3)
+        </a><!-- 
+        <a href="/devtools-protocol/1-2" name="1-2">
+          stable (1.2)
+        </a> -->
+      </nav>
+    </div>
+
+    <div id="domains" class="navs version-tot">
+      <header>Domains</header>
+      <div class="scroller">
+        <nav>
+          <a href="/devtools-protocol/tot/Accessibility" class="tot experimental">Accessibility</a>
+          <a href="/devtools-protocol/tot/Animation" class="tot experimental">Animation</a>
+          <a href="/devtools-protocol/tot/Audits" class="tot experimental">Audits</a>
+          <a href="/devtools-protocol/tot/Autofill" class="tot experimental">Autofill</a>
+          <a href="/devtools-protocol/tot/BackgroundService" class="tot experimental">BackgroundService</a>
+          <a href="/devtools-protocol/tot/BluetoothEmulation" class="tot experimental">BluetoothEmulation</a>
+          <a href="/devtools-protocol/tot/Browser" class="tot 1-3">Browser</a>
+          <a href="/devtools-protocol/tot/CacheStorage" class="tot experimental">CacheStorage</a>
+          <a href="/devtools-protocol/tot/Cast" class="tot experimental">Cast</a>
+          <a href="/devtools-protocol/tot/Console" class="tot deprecated v8">Console</a>
+          <a href="/devtools-protocol/tot/CrashReportContext" class="tot experimental">CrashReportContext</a>
+          <a href="/devtools-protocol/tot/CSS" class="tot experimental">CSS</a>
+          <a href="/devtools-protocol/tot/Debugger" class="tot 1-2 1-3 v8">Debugger</a>
+          <a href="/devtools-protocol/tot/DeviceAccess" class="tot experimental">DeviceAccess</a>
+          <a href="/devtools-protocol/tot/DeviceOrientation" class="tot experimental">DeviceOrientation</a>
+          <a href="/devtools-protocol/tot/DOM" class="tot 1-2 1-3">DOM</a>
+          <a href="/devtools-protocol/tot/DOMDebugger" class="tot 1-2 1-3">DOMDebugger</a>
+          <a href="/devtools-protocol/tot/DOMSnapshot" class="tot experimental">DOMSnapshot</a>
+          <a href="/devtools-protocol/tot/DOMStorage" class="tot experimental">DOMStorage</a>
+          <a href="/devtools-protocol/tot/Emulation" class="tot 1-2 1-3">Emulation</a>
+          <a href="/devtools-protocol/tot/EventBreakpoints" class="tot experimental">EventBreakpoints</a>
+          <a href="/devtools-protocol/tot/Extensions" class="tot experimental">Extensions</a>
+          <a href="/devtools-protocol/tot/FedCm" class="tot experimental">FedCm</a>
+          <a href="/devtools-protocol/tot/Fetch" class="tot 1-3">Fetch</a>
+          <a href="/devtools-protocol/tot/FileSystem" class="tot experimental">FileSystem</a>
+          <a href="/devtools-protocol/tot/HeadlessExperimental" class="tot experimental">HeadlessExperimental</a>
+          <a href="/devtools-protocol/tot/HeapProfiler" class="tot experimental v8">HeapProfiler</a>
+          <a href="/devtools-protocol/tot/IndexedDB" class="tot experimental">IndexedDB</a>
+          <a href="/devtools-protocol/tot/Input" class="tot 1-2 1-3">Input</a>
+          <a href="/devtools-protocol/tot/Inspector" class="tot experimental">Inspector</a>
+          <a href="/devtools-protocol/tot/IO" class="tot 1-3">IO</a>
+          <a href="/devtools-protocol/tot/LayerTree" class="tot experimental">LayerTree</a>
+          <a href="/devtools-protocol/tot/Log" class="tot 1-3">Log</a>
+          <a href="/devtools-protocol/tot/Media" class="tot experimental">Media</a>
+          <a href="/devtools-protocol/tot/Memory" class="tot experimental">Memory</a>
+          <a href="/devtools-protocol/tot/Network" class="tot 1-2 1-3">Network</a>
+          <a href="/devtools-protocol/tot/Overlay" class="tot experimental">Overlay</a>
+          <a href="/devtools-protocol/tot/Page" class="tot 1-2 1-3">Page</a>
+          <a href="/devtools-protocol/tot/Performance" class="tot 1-3">Performance</a>
+          <a href="/devtools-protocol/tot/PerformanceTimeline" class="tot experimental">PerformanceTimeline</a>
+          <a href="/devtools-protocol/tot/Preload" class="tot experimental">Preload</a>
+          <a href="/devtools-protocol/tot/Profiler" class="tot 1-2 1-3 v8">Profiler</a>
+          <a href="/devtools-protocol/tot/PWA" class="tot experimental">PWA</a>
+          <a href="/devtools-protocol/tot/Runtime" class="tot 1-2 1-3 v8">Runtime</a>
+          <a href="/devtools-protocol/tot/Schema" class="tot deprecated 1-2 v8">Schema</a>
+          <a href="/devtools-protocol/tot/Security" class="tot 1-3">Security</a>
+          <a href="/devtools-protocol/tot/ServiceWorker" class="tot experimental">ServiceWorker</a>
+          <a href="/devtools-protocol/tot/SmartCardEmulation" class="tot experimental">SmartCardEmulation</a>
+          <a href="/devtools-protocol/tot/Storage" class="tot experimental">Storage</a>
+          <a href="/devtools-protocol/tot/SystemInfo" class="tot experimental">SystemInfo</a>
+          <a href="/devtools-protocol/tot/Target" class="tot 1-3">Target</a>
+          <a href="/devtools-protocol/tot/Tethering" class="tot experimental">Tethering</a>
+          <a href="/devtools-protocol/tot/Tracing" class="tot 1-3">Tracing</a>
+          <a href="/devtools-protocol/tot/WebAudio" class="tot experimental">WebAudio</a>
+          <a href="/devtools-protocol/tot/WebAuthn" class="tot experimental">WebAuthn</a>
+          <a href="/devtools-protocol/tot/WebMCP" class="tot experimental">WebMCP</a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <h1>Chrome DevTools Protocol</h1>
+      <button class="menu-link">Navigation</button>
+      <cr-search-control base-url="/devtools-protocol/" protocol-search-index="/search_index/tot.json"></cr-search-control>
+    </header>
+    <section>
+      <div class="main-content-section domain">
+        
+    <div class="domain-section">
+      <div id="header">
+        <h2 class="heading">Storage Domain</h2>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+        <h3>Methods</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#method-clearCookies"><span class="domain-dot">Storage.</span>clearCookies</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-clearDataForOrigin"><span class="domain-dot">Storage.</span>clearDataForOrigin</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-clearDataForStorageKey"><span class="domain-dot">Storage.</span>clearDataForStorageKey</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getCookies"><span class="domain-dot">Storage.</span>getCookies</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getUsageAndQuota"><span class="domain-dot">Storage.</span>getUsageAndQuota</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setCookies"><span class="domain-dot">Storage.</span>setCookies</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-trackCacheStorageForOrigin"><span class="domain-dot">Storage.</span>trackCacheStorageForOrigin</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-trackCacheStorageForStorageKey"><span class="domain-dot">Storage.</span>trackCacheStorageForStorageKey</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-trackIndexedDBForOrigin"><span class="domain-dot">Storage.</span>trackIndexedDBForOrigin</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-trackIndexedDBForStorageKey"><span class="domain-dot">Storage.</span>trackIndexedDBForStorageKey</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-untrackCacheStorageForOrigin"><span class="domain-dot">Storage.</span>untrackCacheStorageForOrigin</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-untrackCacheStorageForStorageKey"><span class="domain-dot">Storage.</span>untrackCacheStorageForStorageKey</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-untrackIndexedDBForOrigin"><span class="domain-dot">Storage.</span>untrackIndexedDBForOrigin</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-untrackIndexedDBForStorageKey"><span class="domain-dot">Storage.</span>untrackIndexedDBForStorageKey</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getStorageKeyForFrame"><span class="domain-dot">Storage.</span>getStorageKeyForFrame</a>
+        <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-clearTrustTokens"><span class="domain-dot">Storage.</span>clearTrustTokens</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-deleteStorageBucket"><span class="domain-dot">Storage.</span>deleteStorageBucket</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getRelatedWebsiteSets"><span class="domain-dot">Storage.</span>getRelatedWebsiteSets</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getStorageKey"><span class="domain-dot">Storage.</span>getStorageKey</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-getTrustTokens"><span class="domain-dot">Storage.</span>getTrustTokens</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-overrideQuotaForOrigin"><span class="domain-dot">Storage.</span>overrideQuotaForOrigin</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-runBounceTrackingMitigations"><span class="domain-dot">Storage.</span>runBounceTrackingMitigations</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#method-setStorageBucketTracking"><span class="domain-dot">Storage.</span>setStorageBucketTracking</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+        <h3>Events</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#event-cacheStorageContentUpdated"><span class="domain-dot">Storage.</span>cacheStorageContentUpdated</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-cacheStorageListUpdated"><span class="domain-dot">Storage.</span>cacheStorageListUpdated</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-indexedDBContentUpdated"><span class="domain-dot">Storage.</span>indexedDBContentUpdated</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-indexedDBListUpdated"><span class="domain-dot">Storage.</span>indexedDBListUpdated</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-storageBucketCreatedOrUpdated"><span class="domain-dot">Storage.</span>storageBucketCreatedOrUpdated</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#event-storageBucketDeleted"><span class="domain-dot">Storage.</span>storageBucketDeleted</a>
+        
+      </div>
+      
+        <h3>Types</h3>
+      <div class="toc-link">
+        <a class="monospace" href="#type-SerializedStorageKey"><span class="domain-dot">Storage.</span>SerializedStorageKey</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-StorageBucket"><span class="domain-dot">Storage.</span>StorageBucket</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-StorageBucketInfo"><span class="domain-dot">Storage.</span>StorageBucketInfo</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-StorageBucketsDurability"><span class="domain-dot">Storage.</span>StorageBucketsDurability</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-StorageType"><span class="domain-dot">Storage.</span>StorageType</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-UsageForType"><span class="domain-dot">Storage.</span>UsageForType</a>
+        
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-RelatedWebsiteSet"><span class="domain-dot">Storage.</span>RelatedWebsiteSet</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      <div class="toc-link">
+        <a class="monospace" href="#type-TrustTokens"><span class="domain-dot">Storage.</span>TrustTokens</a>
+        <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+      </div>
+      
+      </div>
+
+      
+      <h3 id="methods">Methods</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="method-clearCookies">
+          <span class="domain-dot">Storage.</span>clearCookies
+          
+          <a href="#method-clearCookies"
+             class="permalink"
+             data-slug="Storage.clearCookies"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Clears cookies.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          browserContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Browser/#type-BrowserContextID class="param-type">Browser.BrowserContextID</a>
+          
+      <div class="details-description">
+        <p>Browser context to use when called on the browser endpoint.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-clearDataForOrigin">
+          <span class="domain-dot">Storage.</span>clearDataForOrigin
+          
+          <a href="#method-clearDataForOrigin"
+             class="permalink"
+             data-slug="Storage.clearDataForOrigin"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Clears storage for origin.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          origin
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Security origin.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          storageTypes
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Comma separated list of StorageType to clear.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-clearDataForStorageKey">
+          <span class="domain-dot">Storage.</span>clearDataForStorageKey
+          
+          <a href="#method-clearDataForStorageKey"
+             class="permalink"
+             data-slug="Storage.clearDataForStorageKey"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Clears storage for storage key.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          storageKey
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Storage key.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          storageTypes
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Comma separated list of StorageType to clear.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getCookies">
+          <span class="domain-dot">Storage.</span>getCookies
+          
+          <a href="#method-getCookies"
+             class="permalink"
+             data-slug="Storage.getCookies"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns all browser cookies.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          browserContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Browser/#type-BrowserContextID class="param-type">Browser.BrowserContextID</a>
+          
+      <div class="details-description">
+        <p>Browser context to use when called on the browser endpoint.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          cookies
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Network/#type-Cookie class="param-type">Network.Cookie</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Array of cookie objects.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getUsageAndQuota">
+          <span class="domain-dot">Storage.</span>getUsageAndQuota
+          
+          <a href="#method-getUsageAndQuota"
+             class="permalink"
+             data-slug="Storage.getUsageAndQuota"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns usage and quota in bytes.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          origin
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Security origin.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          usage
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Storage usage (bytes).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          quota
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Storage quota (bytes).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          overrideActive
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>Whether or not the origin has an active storage quota override</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          usageBreakdown
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Storage/#type-UsageForType class="param-type">UsageForType</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Storage usage per type (bytes).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setCookies">
+          <span class="domain-dot">Storage.</span>setCookies
+          
+          <a href="#method-setCookies"
+             class="permalink"
+             data-slug="Storage.setCookies"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Sets given cookies.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          cookies
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Network/#type-CookieParam class="param-type">Network.CookieParam</a> ]</span></span>
+          
+      <div class="details-description">
+        <p>Cookies to be set.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          browserContextId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Browser/#type-BrowserContextID class="param-type">Browser.BrowserContextID</a>
+          
+      <div class="details-description">
+        <p>Browser context to use when called on the browser endpoint.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-trackCacheStorageForOrigin">
+          <span class="domain-dot">Storage.</span>trackCacheStorageForOrigin
+          
+          <a href="#method-trackCacheStorageForOrigin"
+             class="permalink"
+             data-slug="Storage.trackCacheStorageForOrigin"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Registers origin to be notified when an update occurs to its cache storage list.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          origin
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Security origin.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-trackCacheStorageForStorageKey">
+          <span class="domain-dot">Storage.</span>trackCacheStorageForStorageKey
+          
+          <a href="#method-trackCacheStorageForStorageKey"
+             class="permalink"
+             data-slug="Storage.trackCacheStorageForStorageKey"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Registers storage key to be notified when an update occurs to its cache storage list.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          storageKey
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Storage key.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-trackIndexedDBForOrigin">
+          <span class="domain-dot">Storage.</span>trackIndexedDBForOrigin
+          
+          <a href="#method-trackIndexedDBForOrigin"
+             class="permalink"
+             data-slug="Storage.trackIndexedDBForOrigin"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Registers origin to be notified when an update occurs to its IndexedDB.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          origin
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Security origin.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-trackIndexedDBForStorageKey">
+          <span class="domain-dot">Storage.</span>trackIndexedDBForStorageKey
+          
+          <a href="#method-trackIndexedDBForStorageKey"
+             class="permalink"
+             data-slug="Storage.trackIndexedDBForStorageKey"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Registers storage key to be notified when an update occurs to its IndexedDB.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          storageKey
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Storage key.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-untrackCacheStorageForOrigin">
+          <span class="domain-dot">Storage.</span>untrackCacheStorageForOrigin
+          
+          <a href="#method-untrackCacheStorageForOrigin"
+             class="permalink"
+             data-slug="Storage.untrackCacheStorageForOrigin"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Unregisters origin from receiving notifications for cache storage.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          origin
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Security origin.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-untrackCacheStorageForStorageKey">
+          <span class="domain-dot">Storage.</span>untrackCacheStorageForStorageKey
+          
+          <a href="#method-untrackCacheStorageForStorageKey"
+             class="permalink"
+             data-slug="Storage.untrackCacheStorageForStorageKey"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Unregisters storage key from receiving notifications for cache storage.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          storageKey
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Storage key.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-untrackIndexedDBForOrigin">
+          <span class="domain-dot">Storage.</span>untrackIndexedDBForOrigin
+          
+          <a href="#method-untrackIndexedDBForOrigin"
+             class="permalink"
+             data-slug="Storage.untrackIndexedDBForOrigin"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Unregisters origin from receiving notifications for IndexedDB.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          origin
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Security origin.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-untrackIndexedDBForStorageKey">
+          <span class="domain-dot">Storage.</span>untrackIndexedDBForStorageKey
+          
+          <a href="#method-untrackIndexedDBForStorageKey"
+             class="permalink"
+             data-slug="Storage.untrackIndexedDBForStorageKey"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Unregisters storage key from receiving notifications for IndexedDB.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          storageKey
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Storage key.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getStorageKeyForFrame">
+          <span class="domain-dot">Storage.</span>getStorageKeyForFrame
+          <span class="deprecated" title="Deprecated, please adopt alternative">Deprecated</span>
+          <a href="#method-getStorageKeyForFrame"
+             class="permalink"
+             data-slug="Storage.getStorageKeyForFrame"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns a storage key given a frame id.
+Deprecated. Please use Storage.getStorageKey instead.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          frameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Page/#type-FrameId class="param-type">Page.FrameId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          storageKey
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Storage/#type-SerializedStorageKey class="param-type">SerializedStorageKey</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-clearTrustTokens">
+          <span class="domain-dot">Storage.</span>clearTrustTokens
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-clearTrustTokens"
+             class="permalink"
+             data-slug="Storage.clearTrustTokens"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Removes all Trust Tokens issued by the provided issuerOrigin.
+Leaves other stored data, including the issuer&#39;s Redemption Records, intact.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          issuerOrigin
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          didDeleteTokens
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        <p>True if any tokens were deleted, false otherwise.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-deleteStorageBucket">
+          <span class="domain-dot">Storage.</span>deleteStorageBucket
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-deleteStorageBucket"
+             class="permalink"
+             data-slug="Storage.deleteStorageBucket"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Deletes the Storage Bucket with the given storage key and bucket name.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          bucket
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Storage/#type-StorageBucket class="param-type">StorageBucket</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getRelatedWebsiteSets">
+          <span class="domain-dot">Storage.</span>getRelatedWebsiteSets
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-getRelatedWebsiteSets"
+             class="permalink"
+             data-slug="Storage.getRelatedWebsiteSets"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns the effective Related Website Sets in use by this profile for the browser
+session. The effective Related Website Sets will not change during a browser session.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          sets
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Storage/#type-RelatedWebsiteSet class="param-type">RelatedWebsiteSet</a> ]</span></span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getStorageKey">
+          <span class="domain-dot">Storage.</span>getStorageKey
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-getStorageKey"
+             class="permalink"
+             data-slug="Storage.getStorageKey"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns storage key for the given frame. If no frame ID is provided,
+the storage key of the target executing this command is returned.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace optional">
+          frameId
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Page/#type-FrameId class="param-type">Page.FrameId</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          storageKey
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Storage/#type-SerializedStorageKey class="param-type">SerializedStorageKey</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-getTrustTokens">
+          <span class="domain-dot">Storage.</span>getTrustTokens
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-getTrustTokens"
+             class="permalink"
+             data-slug="Storage.getTrustTokens"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Returns the number of stored Trust Tokens per issuer for the
+current browsing context.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          tokens
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <a href=/devtools-protocol/tot/Storage/#type-TrustTokens class="param-type">TrustTokens</a> ]</span></span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-overrideQuotaForOrigin">
+          <span class="domain-dot">Storage.</span>overrideQuotaForOrigin
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-overrideQuotaForOrigin"
+             class="permalink"
+             data-slug="Storage.overrideQuotaForOrigin"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Override quota for the specified origin</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          origin
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Security origin.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          quotaSize
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>The quota size (in bytes) to override the original quota with.
+If this is called multiple times, the overridden quota will be equal to
+the quotaSize provided in the final call. If this is called without
+specifying a quotaSize, the quota will be reset to the default value for
+the specified origin. If this is called multiple times with different
+origins, the override will be maintained for each origin until it is
+disabled (called without a quotaSize).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-runBounceTrackingMitigations">
+          <span class="domain-dot">Storage.</span>runBounceTrackingMitigations
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-runBounceTrackingMitigations"
+             class="permalink"
+             data-slug="Storage.runBounceTrackingMitigations"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Deletes state for sites identified as potential bounce trackers, immediately.</p>
+
+        
+      </div>
+    
+        
+        
+        
+      <h5 class="properties-name">Return Object</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          deletedSites
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">string</span> ]</span></span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="method-setStorageBucketTracking">
+          <span class="domain-dot">Storage.</span>setStorageBucketTracking
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#method-setStorageBucketTracking"
+             class="permalink"
+             data-slug="Storage.setStorageBucketTracking"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Set tracking for a storage key&#39;s buckets.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          storageKey
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          enable
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="events">Events</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="event-cacheStorageContentUpdated">
+          <span class="domain-dot">Storage.</span>cacheStorageContentUpdated
+          
+          <a href="#event-cacheStorageContentUpdated"
+             class="permalink"
+             data-slug="Storage.cacheStorageContentUpdated"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>A cache&#39;s contents have been modified.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          origin
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Origin to update.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          storageKey
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Storage key to update.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          bucketId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Storage bucket to update.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          cacheName
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Name of cache in origin.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-cacheStorageListUpdated">
+          <span class="domain-dot">Storage.</span>cacheStorageListUpdated
+          
+          <a href="#event-cacheStorageListUpdated"
+             class="permalink"
+             data-slug="Storage.cacheStorageListUpdated"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>A cache has been added/deleted.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          origin
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Origin to update.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          storageKey
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Storage key to update.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          bucketId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Storage bucket to update.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-indexedDBContentUpdated">
+          <span class="domain-dot">Storage.</span>indexedDBContentUpdated
+          
+          <a href="#event-indexedDBContentUpdated"
+             class="permalink"
+             data-slug="Storage.indexedDBContentUpdated"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>The origin&#39;s IndexedDB object store has been modified.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          origin
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Origin to update.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          storageKey
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Storage key to update.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          bucketId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Storage bucket to update.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          databaseName
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Database to update.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          objectStoreName
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>ObjectStore to update.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-indexedDBListUpdated">
+          <span class="domain-dot">Storage.</span>indexedDBListUpdated
+          
+          <a href="#event-indexedDBListUpdated"
+             class="permalink"
+             data-slug="Storage.indexedDBListUpdated"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>The origin&#39;s IndexedDB database list has been modified.</p>
+
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          origin
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Origin to update.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          storageKey
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Storage key to update.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          bucketId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>Storage bucket to update.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-storageBucketCreatedOrUpdated">
+          <span class="domain-dot">Storage.</span>storageBucketCreatedOrUpdated
+          
+          <a href="#event-storageBucketCreatedOrUpdated"
+             class="permalink"
+             data-slug="Storage.storageBucketCreatedOrUpdated"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          bucketInfo
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Storage/#type-StorageBucketInfo class="param-type">StorageBucketInfo</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="event-storageBucketDeleted">
+          <span class="domain-dot">Storage.</span>storageBucketDeleted
+          
+          <a href="#event-storageBucketDeleted"
+             class="permalink"
+             data-slug="Storage.storageBucketDeleted"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        
+        
+      <h5 class="properties-name">parameters</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          bucketId
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+      
+      <h3 id="types">Types</h3>
+      <div>
+        
+      <div class="details">
+        <h4 class="details-name monospace" id="type-SerializedStorageKey">
+          <span class="domain-dot">Storage.</span>SerializedStorageKey
+          
+          <a href="#type-SerializedStorageKey"
+             class="permalink"
+             data-slug="Storage.SerializedStorageKey"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-StorageBucket">
+          <span class="domain-dot">Storage.</span>StorageBucket
+          
+          <a href="#type-StorageBucket"
+             class="permalink"
+             data-slug="Storage.StorageBucket"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          storageKey
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Storage/#type-SerializedStorageKey class="param-type">SerializedStorageKey</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace optional">
+          name
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        <p>If not specified, it is the default bucket of the storageKey.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-StorageBucketInfo">
+          <span class="domain-dot">Storage.</span>StorageBucketInfo
+          
+          <a href="#type-StorageBucketInfo"
+             class="permalink"
+             data-slug="Storage.StorageBucketInfo"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          bucket
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Storage/#type-StorageBucket class="param-type">StorageBucket</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          id
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          expiration
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Network/#type-TimeSinceEpoch class="param-type">Network.TimeSinceEpoch</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          quota
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Storage quota (bytes).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          persistent
+        </dt>
+        <dd>
+          <span class="param-type">boolean</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          durability
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Storage/#type-StorageBucketsDurability class="param-type">StorageBucketsDurability</a>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-StorageBucketsDurability">
+          <span class="domain-dot">Storage.</span>StorageBucketsDurability
+          
+          <a href="#type-StorageBucketsDurability"
+             class="permalink"
+             data-slug="Storage.StorageBucketsDurability"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        
+        
+      <div class="enum-container">Allowed Values: <code>relaxed</code>, <code>strict</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-StorageType">
+          <span class="domain-dot">Storage.</span>StorageType
+          
+          <a href="#type-StorageType"
+             class="permalink"
+             data-slug="Storage.StorageType"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Enum of possible storage types.</p>
+
+        
+      <div class="enum-container">Allowed Values: <code>cookies</code>, <code>file_systems</code>, <code>indexeddb</code>, <code>local_storage</code>, <code>shader_cache</code>, <code>websql</code>, <code>service_workers</code>, <code>cache_storage</code>, <code>storage_buckets</code>, <code>all</code>, <code>other</code></div>
+    
+      </div>
+    
+        <p class="type-type">Type: <strong>string</strong></p>
+        
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-UsageForType">
+          <span class="domain-dot">Storage.</span>UsageForType
+          
+          <a href="#type-UsageForType"
+             class="permalink"
+             data-slug="Storage.UsageForType"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Usage for a storage type.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          storageType
+        </dt>
+        <dd>
+          <a href=/devtools-protocol/tot/Storage/#type-StorageType class="param-type">StorageType</a>
+          
+      <div class="details-description">
+        <p>Name of storage type.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          usage
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        <p>Storage usage (bytes).</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-RelatedWebsiteSet">
+          <span class="domain-dot">Storage.</span>RelatedWebsiteSet
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#type-RelatedWebsiteSet"
+             class="permalink"
+             data-slug="Storage.RelatedWebsiteSet"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>A single Related Website Set object.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          primarySites
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">string</span> ]</span></span>
+          
+      <div class="details-description">
+        <p>The primary site of this set, along with the ccTLDs if there is any.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          associatedSites
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">string</span> ]</span></span>
+          
+      <div class="details-description">
+        <p>The associated sites of this set, along with the ccTLDs if there is any.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          serviceSites
+        </dt>
+        <dd>
+          <span class="param-type">array<span class="param-type__array">[ <span class="param-type">string</span> ]</span></span>
+          
+      <div class="details-description">
+        <p>The service sites of this set, along with the ccTLDs if there is any.</p>
+
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      <div class="details">
+        <h4 class="details-name monospace" id="type-TrustTokens">
+          <span class="domain-dot">Storage.</span>TrustTokens
+          <span class="experimental" title="This may be changed, moved or removed">Experimental</span>
+          <a href="#type-TrustTokens"
+             class="permalink"
+             data-slug="Storage.TrustTokens"
+             title="Double click to copy markdown-formatted URL">#</a>
+        </h4>
+        
+      <div class="details-description">
+        <p>Pair of issuer origin and number of available (signed, but not used) Trust
+Tokens from that issuer.</p>
+
+        
+      </div>
+    
+        <p class="type-type">Type: <strong>object</strong></p>
+        
+      <h5 class="properties-name">properties</h5>
+      <dl class="properties-container">
+        
+        <dt class="param-name monospace ">
+          issuerOrigin
+        </dt>
+        <dd>
+          <span class="param-type">string</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+        <dt class="param-name monospace ">
+          count
+        </dt>
+        <dd>
+          <span class="param-type">number</span>
+          
+      <div class="details-description">
+        
+        
+      </div>
+    
+          
+        </dd>
+      
+      </dl>
+    
+        
+      </div>
+    
+      </div>
+    
+    </div>
+    
+      </div>
+    </section>
+  </main>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60854461-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
