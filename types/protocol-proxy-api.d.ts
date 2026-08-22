@@ -4887,48 +4887,6 @@ export namespace ProtocolProxyApi {
         clearTrustTokens(params: Protocol.Storage.ClearTrustTokensRequest): Promise<Protocol.Storage.ClearTrustTokensResponse>;
 
         /**
-         * Gets metadata for an origin's shared storage.
-         * @experimental
-         */
-        getSharedStorageMetadata(params: Protocol.Storage.GetSharedStorageMetadataRequest): Promise<Protocol.Storage.GetSharedStorageMetadataResponse>;
-
-        /**
-         * Gets the entries in an given origin's shared storage.
-         * @experimental
-         */
-        getSharedStorageEntries(params: Protocol.Storage.GetSharedStorageEntriesRequest): Promise<Protocol.Storage.GetSharedStorageEntriesResponse>;
-
-        /**
-         * Sets entry with `key` and `value` for a given origin's shared storage.
-         * @experimental
-         */
-        setSharedStorageEntry(params: Protocol.Storage.SetSharedStorageEntryRequest): Promise<void>;
-
-        /**
-         * Deletes entry for `key` (if it exists) for a given origin's shared storage.
-         * @experimental
-         */
-        deleteSharedStorageEntry(params: Protocol.Storage.DeleteSharedStorageEntryRequest): Promise<void>;
-
-        /**
-         * Clears all entries for a given origin's shared storage.
-         * @experimental
-         */
-        clearSharedStorageEntries(params: Protocol.Storage.ClearSharedStorageEntriesRequest): Promise<void>;
-
-        /**
-         * Resets the budget for `ownerOrigin` by clearing all budget withdrawals.
-         * @experimental
-         */
-        resetSharedStorageBudget(params: Protocol.Storage.ResetSharedStorageBudgetRequest): Promise<void>;
-
-        /**
-         * Enables/disables issuing of sharedStorageAccessed events.
-         * @experimental
-         */
-        setSharedStorageTracking(params: Protocol.Storage.SetSharedStorageTrackingRequest): Promise<void>;
-
-        /**
          * Set tracking for a storage key's buckets.
          * @experimental
          */
@@ -4972,18 +4930,6 @@ export namespace ProtocolProxyApi {
          * The origin's IndexedDB database list has been modified.
          */
         on(event: 'indexedDBListUpdated', listener: (params: Protocol.Storage.IndexedDBListUpdatedEvent) => void): void;
-
-        /**
-         * Shared storage was accessed by the associated page.
-         * The following parameters are included in all events.
-         */
-        on(event: 'sharedStorageAccessed', listener: (params: Protocol.Storage.SharedStorageAccessedEvent) => void): void;
-
-        /**
-         * A shared storage run or selectURL operation finished its execution.
-         * The following parameters are included in all events.
-         */
-        on(event: 'sharedStorageWorkletOperationExecutionFinished', listener: (params: Protocol.Storage.SharedStorageWorkletOperationExecutionFinishedEvent) => void): void;
 
         on(event: 'storageBucketCreatedOrUpdated', listener: (params: Protocol.Storage.StorageBucketCreatedOrUpdatedEvent) => void): void;
 

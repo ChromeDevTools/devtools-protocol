@@ -1,7 +1,350 @@
 
 
+## Roll protocol to r1684464 — _2026-08-22T04:37:33.000Z_
+######  Diff: [`a12defa...ee6fd2a`](https://github.com/ChromeDevTools/devtools-protocol/compare/a12defa...ee6fd2a)
+
+```diff
+@@ domains/ServiceWorker.pdl:32 @@ experimental domain ServiceWorker
+       activated
+       redundant
+ 
++  # Mostly corresponds to `RouterCondition` in ServiceWorker spec
++  # (https://www.w3.org/TR/service-workers/#dictdef-routercondition) while this
++  # currently lacks support for the nested conditions ("or" and "not").
++  # TODO(crbug.com/540469610): Support recursive conditions.
++  type ServiceWorkerRouterCondition extends object
++    properties
++      # Plain text, or JSON serialization of URLPatternInit or URLPattern
++      optional string urlPattern
++      optional string requestMethod
++      optional string requestMode
++      optional string requestDestination
++      optional ServiceWorkerVersionRunningStatus runningStatus
++
++  type ServiceWorkerRouterSourceType extends string
++    enum
++      # https://www.w3.org/TR/service-workers/#enumdef-routersourceenum
++      cache
++      fetchEvent
++      network
++      raceNetworkAndFetchHandler
++      raceNetworkAndCache
++      # Tag for https://www.w3.org/TR/service-workers/#dictdef-routersourcedict
++      sourceDict
++
++  # https://www.w3.org/TR/service-workers/#dictdef-routersourcedict
++  type ServiceWorkerRouterSourceDict extends object
++    properties
++      string cacheName
++
++  # Corresponds to `RouterSource` in the spec while the representation is different as follows.
++  # (https://www.w3.org/TR/service-workers/#typedefdef-routersource)
++  # - `RouterSourceEnum`: `type` equals `cache`, `sourceDict` is null.
++  # - `RouterSourceDict`: `type` equals `sourceDict`, `sourceDict` has valid value.
++  type ServiceWorkerRouterSource extends object
++    properties
++      ServiceWorkerRouterSourceType type
++      # Non-empty iff `type` equals "sourceDict".
++      optional ServiceWorkerRouterSourceDict sourceDict
++
++  type ServiceWorkerRouterRule extends object
++    properties
++      ServiceWorkerRouterCondition condition
++      ServiceWorkerRouterSource source
++      # Rule ID assigned by the browser. Unique within each ServiceWorkerVersion.
++      integer id
++
+   # ServiceWorker version.
+   type ServiceWorkerVersion extends object
+     properties
+@@ -47,7 +93,11 @@ experimental domain ServiceWorker
+       optional number scriptResponseTime
+       optional array of Target.TargetID controlledClients
+       optional Target.TargetID targetId
++      # Migration to `typedRouterRules` is in progress. The browser sends either
++      # `routerRules` or `typedRouterRules`.
++      # TODO(crbug.com/540469610): Remove `routerRules` after the migration.
+       optional string routerRules
++      optional array of ServiceWorkerRouterRule typedRouterRules
+ 
+   # ServiceWorker error message.
+   type ServiceWorkerErrorMessage extends object
+diff --git a/pdl/domains/Storage.pdl b/pdl/domains/Storage.pdl
+index addcbb35..c741899e 100644
+--- a/pdl/domains/Storage.pdl
++++ b/pdl/domains/Storage.pdl
+@@ -21,7 +21,6 @@ experimental domain Storage
+       websql
+       service_workers
+       cache_storage
+-      shared_storage
+       storage_buckets
+       all
+       other
+@@ -42,147 +41,6 @@ experimental domain Storage
+       number count
+ 
+ 
+-  # Enum of shared storage access scopes.
+-  type SharedStorageAccessScope extends string
+-    enum
+-      window
+-      sharedStorageWorklet
+-      header
+-
+-  # Enum of shared storage access methods.
+-  type SharedStorageAccessMethod extends string
+-    enum
+-      addModule
+-      createWorklet
+-      selectURL
+-      run
+-      batchUpdate
+-      set
+-      append
+-      delete
+-      clear
+-      get
+-      keys
+-      values
+-      entries
+-      length
+-      remainingBudget
+-
+-  # Struct for a single key-value pair in an origin's shared storage.
+-  type SharedStorageEntry extends object
+-    properties
+-      string key
+-      string value
+-
+-  # Details for an origin's shared storage.
+-  type SharedStorageMetadata extends object
+-    properties
+-      # Time when the origin's shared storage was last created.
+-      Network.TimeSinceEpoch creationTime
+-      # Number of key-value pairs stored in origin's shared storage.
+-      integer length
+-      # Current amount of bits of entropy remaining in the navigation budget.
+-      number remainingBudget
+-      # Total number of bytes stored as key-value pairs in origin's shared
+-      # storage.
+-      integer bytesUsed
+-
+-  # Represents a dictionary object passed in as privateAggregationConfig to
+-  # run or selectURL.
+-  type SharedStoragePrivateAggregationConfig extends object
+-    properties
+-      # The chosen aggregation service deployment.
+-      optional string aggregationCoordinatorOrigin
+-      # The context ID provided.
+-      optional string contextId
+-      # Configures the maximum size allowed for filtering IDs.
+-      integer filteringIdMaxBytes
+-      # The limit on the number of contributions in the final report.
+-      optional integer maxContributions
+-
+-  # Pair of reporting metadata details for a candidate URL for `selectURL()`.
+-  type SharedStorageReportingMetadata extends object
+-    properties
+-      string eventType
+-      string reportingUrl
+-
+-  # Bundles a candidate URL with its reporting metadata.
+-  type SharedStorageUrlWithMetadata extends object
+-    properties
+-      # Spec of candidate URL.
+-      string url
+-      # Any associated reporting metadata.
+-      array of SharedStorageReportingMetadata reportingMetadata
+-
+-  # Bundles the parameters for shared storage access events whose
+-  # presence/absence can vary according to SharedStorageAccessType.
+-  type SharedStorageAccessParams extends object
+-    properties
+-      # Spec of the module script URL.
+-      # Present only for SharedStorageAccessMethods: addModule and
+-      # createWorklet.
+-      optional string scriptSourceUrl
+-      # String denoting "context-origin", "script-origin", or a custom
+-      # origin to be used as the worklet's data origin.
+-      # Present only for SharedStorageAccessMethod: createWorklet.
+-      optional string dataOrigin
+-      # Name of the registered operation to be run.
+-      # Present only for SharedStorageAccessMethods: run and selectURL.
+-      optional string operationName
+-      # ID of the operation call.
+-      # Present only for SharedStorageAccessMethods: run and selectURL.
+-      optional string operationId
+-      # Whether or not to keep the worket alive for future run or selectURL
+-      # calls.
+-      # Present only for SharedStorageAccessMethods: run and selectURL.
+-      optional boolean keepAlive
+-      # Configures the private aggregation options.
+-      # Present only for SharedStorageAccessMethods: run and selectURL.
+-      optional SharedStoragePrivateAggregationConfig privateAggregationConfig
+-      # The operation's serialized data in bytes (converted to a string).
+-      # Present only for SharedStorageAccessMethods: run and selectURL.
+-      # TODO(crbug.com/401011862): Consider updating this parameter to binary.
+-      optional string serializedData
+-      # Array of candidate URLs' specs, along with any associated metadata.
+-      # Present only for SharedStorageAccessMethod: selectURL.
+-      optional array of SharedStorageUrlWithMetadata urlsWithMetadata
+-      # Spec of the URN:UUID generated for a selectURL call.
+-      # Present only for SharedStorageAccessMethod: selectURL.
+-      optional string urnUuid
+-      # Key for a specific entry in an origin's shared storage.
+-      # Present only for SharedStorageAccessMethods: set, append, delete, and
+-      # get.
+-      optional string key
+-      # Value for a specific entry in an origin's shared storage.
+-      # Present only for SharedStorageAccessMethods: set and append.
+-      optional string value
+-      # Whether or not to set an entry for a key if that key is already present.
+-      # Present only for SharedStorageAccessMethod: set.
+-      optional boolean ignoreIfPresent
+-      # A number denoting the (0-based) order of the worklet's
+-      # creation relative to all other shared storage worklets created by
+-      # documents using the current storage partition.
+-      # Present only for SharedStorageAccessMethods: addModule, createWorklet.
+-      optional integer workletOrdinal
+-      # Hex representation of the DevTools token used as the TargetID for the
+-      # associated shared storage worklet.
+-      # Present only for SharedStorageAccessMethods: addModule, createWorklet,
+-      # run, selectURL, and any other SharedStorageAccessMethod when the
+-      # SharedStorageAccessScope is sharedStorageWorklet.
+-      optional Target.TargetID workletTargetId
+-      # Name of the lock to be acquired, if present.
+-      # Optionally present only for SharedStorageAccessMethods: batchUpdate,
+-      # set, append, delete, and clear.
+-      optional string withLock
+-      # If the method has been called as part of a batchUpdate, then this
+-      # number identifies the batch to which it belongs.
+-      # Optionally present only for SharedStorageAccessMethods:
+-      # batchUpdate (required), set, append, delete, and clear.
+-      optional string batchUpdateId
+-      # Number of modifier methods sent in batch.
+-      # Present only for SharedStorageAccessMethod: batchUpdate.
+-      optional integer batchSize
+-
+   type StorageBucketsDurability extends string
+     enum
+       relaxed
+@@ -351,51 +209,6 @@ experimental domain Storage
+       # True if any tokens were deleted, false otherwise.
+       boolean didDeleteTokens
+ 
+-  # Gets metadata for an origin's shared storage.
+-  experimental command getSharedStorageMetadata
+-    parameters
+-      string ownerOrigin
+-    returns
+-      SharedStorageMetadata metadata
+-
+-  # Gets the entries in an given origin's shared storage.
+-  experimental command getSharedStorageEntries
+-    parameters
+-      string ownerOrigin
+-    returns
+-      array of SharedStorageEntry entries
+-
+-  # Sets entry with `key` and `value` for a given origin's shared storage.
+-  experimental command setSharedStorageEntry
+-    parameters
+-      string ownerOrigin
+-      string key
+-      string value
+-      # If `ignoreIfPresent` is included and true, then only sets the entry if
+-      # `key` doesn't already exist.
+-      optional boolean ignoreIfPresent
+-
+-  # Deletes entry for `key` (if it exists) for a given origin's shared storage.
+-  experimental command deleteSharedStorageEntry
+-    parameters
+-      string ownerOrigin
+-      string key
+-
+-  # Clears all entries for a given origin's shared storage.
+-  experimental command clearSharedStorageEntries
+-    parameters
+-      string ownerOrigin
+-
+-  # Resets the budget for `ownerOrigin` by clearing all budget withdrawals.
+-  experimental command resetSharedStorageBudget
+-    parameters
+-      string ownerOrigin
+-
+-  # Enables/disables issuing of sharedStorageAccessed events.
+-  experimental command setSharedStorageTracking
+-    parameters
+-      boolean enable
+-
+   # Set tracking for a storage key's buckets.
+   experimental command setStorageBucketTracking
+     parameters
+@@ -458,47 +271,6 @@ experimental domain Storage
+       # Storage bucket to update.
+       string bucketId
+ 
+-  # Shared storage was accessed by the associated page.
+-  # The following parameters are included in all events.
+-  event sharedStorageAccessed
+-    parameters
+-      # Time of the access.
+-      Network.TimeSinceEpoch accessTime
+-      # Enum value indicating the access scope.
+-      SharedStorageAccessScope scope
+-      # Enum value indicating the Shared Storage API method invoked.
+-      SharedStorageAccessMethod method
+-      # DevTools Frame Token for the primary frame tree's root.
+-      Page.FrameId mainFrameId
+-      # Serialization of the origin owning the Shared Storage data.
+-      string ownerOrigin
+-      # Serialization of the site owning the Shared Storage data.
+-      string ownerSite
+-      # The sub-parameters wrapped by `params` are all optional and their
+-      # presence/absence depends on `type`.
+-      SharedStorageAccessParams params
+-
+-  # A shared storage run or selectURL operation finished its execution.
+-  # The following parameters are included in all events.
+-  event sharedStorageWorkletOperationExecutionFinished
+-    parameters
+-      # Time that the operation finished.
+-      Network.TimeSinceEpoch finishedTime
+-      # Time, in microseconds, from start of shared storage JS API call until
+-      # end of operation execution in the worklet.
+-      integer executionTime
+-      # Enum value indicating the Shared Storage API method invoked.
+-      SharedStorageAccessMethod method
+-      # ID of the operation call.
+-      string operationId
+-      # Hex representation of the DevTools token used as the TargetID for the
+-      # associated shared storage worklet.
+-      Target.TargetID workletTargetId
+-      # DevTools Frame Token for the primary frame tree's root.
+-      Page.FrameId mainFrameId
+-      # Serialization of the origin owning the Shared Storage data.
+-      string ownerOrigin
+-
+   event storageBucketCreatedOrUpdated
+     parameters
+       StorageBucketInfo bucketInfo
+diff --git a/pdl/domains/WebMCP.pdl b/pdl/domains/WebMCP.pdl
+index 463107ab..13490686 100644
+--- a/pdl/domains/WebMCP.pdl
++++ b/pdl/domains/WebMCP.pdl
+@@ -17,6 +17,8 @@ experimental domain WebMCP
+       optional boolean readOnly
+       # A hint indicating that the tool output may contain untrusted content, ex: UGC, 3rd party data.
+       optional boolean untrustedContent
++      # A hint indicating that executing the tool will result in consequential actions, ex: booking a flight, transferring money.
++      optional boolean consequential
+       # If the declarative tool was declared with the autosubmit attribute.
+       optional boolean autosubmit
+```
+
 ## Roll protocol to r1683682 — _2026-08-21T04:41:18.000Z_
-######  Diff: [`022aac9...dc3d21f`](https://github.com/ChromeDevTools/devtools-protocol/compare/022aac9...dc3d21f)
+######  Diff: [`022aac9...a12defa`](https://github.com/ChromeDevTools/devtools-protocol/compare/022aac9...a12defa)
 
 ```diff
 @@ domains/Ads.pdl:48 @@ experimental domain Ads
@@ -43259,38 +43602,4 @@ index 4754f17c..8dad9c98 100644
  
    experimental command setScrollbarsHidden
      parameters
-```
-
-## Roll protocol to r1231733 — _2023-12-01T04:27:08.000Z_
-######  Diff: [`92cb696...c137c7c`](https://github.com/ChromeDevTools/devtools-protocol/compare/92cb696...c137c7c)
-
-```diff
-@@ browser_protocol.pdl:11103 @@ experimental domain WebAuthn
-       # Sets whether User Verification succeeds or fails for an authenticator.
-       # Defaults to false.
-       optional boolean isUserVerified
-+      # Credentials created by this authenticator will have the backup
-+      # eligibility (BE) flag set to this value. Defaults to false.
-+      # https://w3c.github.io/webauthn/#sctn-credential-backup
-+      optional boolean defaultBackupEligibility
-+      # Credentials created by this authenticator will have the backup state
-+      # (BS) flag set to this value. Defaults to false.
-+      # https://w3c.github.io/webauthn/#sctn-credential-backup
-+      optional boolean defaultBackupState
- 
-   type Credential extends object
-     properties
-@@ -11671,6 +11679,12 @@ experimental domain FedCm
-       string title
-       optional string subtitle
- 
-+  # Triggered when a dialog is closed, either by user action, JS abort,
-+  # or a command below.
-+  event dialogClosed
-+    parameters
-+      string dialogId
-+
-   command enable
-     parameters
-       # Allows callers to disable the promise rejection delay that would
 ```

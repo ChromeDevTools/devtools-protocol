@@ -5273,48 +5273,6 @@ export namespace ProtocolTestsProxyApi {
         clearTrustTokens(params: Protocol.Storage.ClearTrustTokensRequest): Promise<{id: number, result: Protocol.Storage.ClearTrustTokensResponse, sessionId: string}>;
 
         /**
-         * Gets metadata for an origin's shared storage.
-         * @experimental
-         */
-        getSharedStorageMetadata(params: Protocol.Storage.GetSharedStorageMetadataRequest): Promise<{id: number, result: Protocol.Storage.GetSharedStorageMetadataResponse, sessionId: string}>;
-
-        /**
-         * Gets the entries in an given origin's shared storage.
-         * @experimental
-         */
-        getSharedStorageEntries(params: Protocol.Storage.GetSharedStorageEntriesRequest): Promise<{id: number, result: Protocol.Storage.GetSharedStorageEntriesResponse, sessionId: string}>;
-
-        /**
-         * Sets entry with `key` and `value` for a given origin's shared storage.
-         * @experimental
-         */
-        setSharedStorageEntry(params: Protocol.Storage.SetSharedStorageEntryRequest): Promise<{id: number, result: void, sessionId: string}>;
-
-        /**
-         * Deletes entry for `key` (if it exists) for a given origin's shared storage.
-         * @experimental
-         */
-        deleteSharedStorageEntry(params: Protocol.Storage.DeleteSharedStorageEntryRequest): Promise<{id: number, result: void, sessionId: string}>;
-
-        /**
-         * Clears all entries for a given origin's shared storage.
-         * @experimental
-         */
-        clearSharedStorageEntries(params: Protocol.Storage.ClearSharedStorageEntriesRequest): Promise<{id: number, result: void, sessionId: string}>;
-
-        /**
-         * Resets the budget for `ownerOrigin` by clearing all budget withdrawals.
-         * @experimental
-         */
-        resetSharedStorageBudget(params: Protocol.Storage.ResetSharedStorageBudgetRequest): Promise<{id: number, result: void, sessionId: string}>;
-
-        /**
-         * Enables/disables issuing of sharedStorageAccessed events.
-         * @experimental
-         */
-        setSharedStorageTracking(params: Protocol.Storage.SetSharedStorageTrackingRequest): Promise<{id: number, result: void, sessionId: string}>;
-
-        /**
          * Set tracking for a storage key's buckets.
          * @experimental
          */
@@ -5366,22 +5324,6 @@ export namespace ProtocolTestsProxyApi {
         onIndexedDBListUpdated(listener: (event: { params: Protocol.Storage.IndexedDBListUpdatedEvent }) => void): void;
         offIndexedDBListUpdated(listener: (event: { params: Protocol.Storage.IndexedDBListUpdatedEvent }) => void): void;
         onceIndexedDBListUpdated(eventMatcher?: (event: { params: Protocol.Storage.IndexedDBListUpdatedEvent }) => boolean): Promise<{ params: Protocol.Storage.IndexedDBListUpdatedEvent }>;
-
-        /**
-         * Shared storage was accessed by the associated page.
-         * The following parameters are included in all events.
-         */
-        onSharedStorageAccessed(listener: (event: { params: Protocol.Storage.SharedStorageAccessedEvent }) => void): void;
-        offSharedStorageAccessed(listener: (event: { params: Protocol.Storage.SharedStorageAccessedEvent }) => void): void;
-        onceSharedStorageAccessed(eventMatcher?: (event: { params: Protocol.Storage.SharedStorageAccessedEvent }) => boolean): Promise<{ params: Protocol.Storage.SharedStorageAccessedEvent }>;
-
-        /**
-         * A shared storage run or selectURL operation finished its execution.
-         * The following parameters are included in all events.
-         */
-        onSharedStorageWorkletOperationExecutionFinished(listener: (event: { params: Protocol.Storage.SharedStorageWorkletOperationExecutionFinishedEvent }) => void): void;
-        offSharedStorageWorkletOperationExecutionFinished(listener: (event: { params: Protocol.Storage.SharedStorageWorkletOperationExecutionFinishedEvent }) => void): void;
-        onceSharedStorageWorkletOperationExecutionFinished(eventMatcher?: (event: { params: Protocol.Storage.SharedStorageWorkletOperationExecutionFinishedEvent }) => boolean): Promise<{ params: Protocol.Storage.SharedStorageWorkletOperationExecutionFinishedEvent }>;
 
         onStorageBucketCreatedOrUpdated(listener: (event: { params: Protocol.Storage.StorageBucketCreatedOrUpdatedEvent }) => void): void;
         offStorageBucketCreatedOrUpdated(listener: (event: { params: Protocol.Storage.StorageBucketCreatedOrUpdatedEvent }) => void): void;
