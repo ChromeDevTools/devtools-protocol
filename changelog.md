@@ -1,7 +1,42 @@
 
 
+## Roll protocol to r1686980 — _2026-08-27T06:39:03.000Z_
+######  Diff: [`5ee78b3...4903d2f`](https://github.com/ChromeDevTools/devtools-protocol/compare/5ee78b3...4903d2f)
+
+```diff
+@@ domains/Browser.pdl:225 @@ domain Browser
+       # Commandline parameters
+       array of string arguments
+ 
++  # Adds or updates a mock camera in the shared video capture device list for
++  # test automation. The mock camera is not scoped to a particular page or
++  # frame and is removed when the DevTools session that created it disconnects.
++  experimental command addMockCamera
++    parameters
++      # Required non-empty identifier for the mock camera. This is mapped to an
++      # internal virtual-device identifier and is not the MediaDeviceInfo.deviceId
++      # exposed to the page.
++      string deviceId
++
+   # Chrome histogram bucket.
+   experimental type Bucket extends object
+     properties
+diff --git a/pdl/domains/Page.pdl b/pdl/domains/Page.pdl
+index 0961300c..a2d197c5 100644
+--- a/pdl/domains/Page.pdl
++++ b/pdl/domains/Page.pdl
+@@ -127,6 +127,7 @@ domain Page
+       gamepad
+       geolocation
+       gyroscope
++      haptics
+       hid
+       identity-credentials-get
+       idle-detection
+```
+
 ## Roll protocol to r1684464 — _2026-08-22T04:37:33.000Z_
-######  Diff: [`a12defa...ee6fd2a`](https://github.com/ChromeDevTools/devtools-protocol/compare/a12defa...ee6fd2a)
+######  Diff: [`a12defa...5ee78b3`](https://github.com/ChromeDevTools/devtools-protocol/compare/a12defa...5ee78b3)
 
 ```diff
 @@ domains/ServiceWorker.pdl:32 @@ experimental domain ServiceWorker
@@ -43572,34 +43607,4 @@ index 4754f17c..8dad9c98 100644
        Stylesheet
        Track
        Video
-```
-
-## Roll protocol to r1232444 — _2023-12-03T04:26:26.000Z_
-######  Diff: [`c137c7c...c098eb8`](https://github.com/ChromeDevTools/devtools-protocol/compare/c137c7c...c098eb8)
-
-```diff
-@@ browser_protocol.pdl:3916 @@ domain Emulation
-       # A display feature that only splits content will have a 0 mask_length.
-       integer maskLength
- 
-+  type DevicePosture extends object
-+    properties
-+      # Current posture of the device
-+      enum type
-+        continuous
-+        folded
-+
-   type MediaFeature extends object
-     properties
-       string name
-@@ -4073,6 +4080,9 @@ domain Emulation
-       # If set, the display feature of a multi-segment screen. If not set, multi-segment support
-       # is turned-off.
-       experimental optional DisplayFeature displayFeature
-+      # If set, the posture of a foldable device. If not set the posture is set
-+      # to continuous.
-+      experimental optional DevicePosture devicePosture
- 
-   experimental command setScrollbarsHidden
-     parameters
 ```

@@ -1179,6 +1179,14 @@ export namespace ProtocolTestsProxyApi {
         getBrowserCommandLine(): Promise<{id: number, result: Protocol.Browser.GetBrowserCommandLineResponse, sessionId: string}>;
 
         /**
+         * Adds or updates a mock camera in the shared video capture device list for
+         * test automation. The mock camera is not scoped to a particular page or
+         * frame and is removed when the DevTools session that created it disconnects.
+         * @experimental
+         */
+        addMockCamera(params: Protocol.Browser.AddMockCameraRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
          * Get Chrome histograms.
          * @experimental
          */
