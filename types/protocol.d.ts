@@ -21706,7 +21706,7 @@ export namespace Protocol {
              * every assertion operation will report a value of 0.
              * See https://w3c.github.io/webauthn/#signature-counter
              */
-            signCount: integer;
+            signCount: number;
             /**
              * The large blob associated with the credential.
              * See https://w3c.github.io/webauthn/#sctn-large-blob-extension (Encoded as a base64 string when passed over JSON)
@@ -21845,7 +21845,7 @@ export namespace Protocol {
              * assertion operation will report a value of 0.
              * See https://w3c.github.io/webauthn/#signature-counter
              */
-            signCount?: integer;
+            signCount?: number;
         }
 
         /**

@@ -1,7 +1,31 @@
 
 
+## Roll protocol to r1687809 — _2026-08-28T07:01:23.000Z_
+######  Diff: [`0fb57f9...319f032`](https://github.com/ChromeDevTools/devtools-protocol/compare/0fb57f9...319f032)
+
+```diff
+@@ domains/WebAuthn.pdl:106 @@ experimental domain WebAuthn
+       # If -1, the credential won't have an associated signature counter, and
+       # every assertion operation will report a value of 0.
+       # See https://w3c.github.io/webauthn/#signature-counter
+-      integer signCount
++      number signCount
+       # The large blob associated with the credential.
+       # See https://w3c.github.io/webauthn/#sctn-large-blob-extension
+       optional binary largeBlob
+@@ -233,7 +233,7 @@ experimental domain WebAuthn
+       # If -1, the signature counter is removed from the credential, and every
+       # assertion operation will report a value of 0.
+       # See https://w3c.github.io/webauthn/#signature-counter
+-      optional integer signCount
++      optional number signCount
+ 
+   # Triggered when a credential is added to an authenticator.
+   event credentialAdded
+```
+
 ## Roll protocol to r1686980 — _2026-08-27T06:39:03.000Z_
-######  Diff: [`5ee78b3...4903d2f`](https://github.com/ChromeDevTools/devtools-protocol/compare/5ee78b3...4903d2f)
+######  Diff: [`5ee78b3...0fb57f9`](https://github.com/ChromeDevTools/devtools-protocol/compare/5ee78b3...0fb57f9)
 
 ```diff
 @@ domains/Browser.pdl:225 @@ domain Browser
@@ -43593,18 +43617,4 @@ index 4754f17c..8dad9c98 100644
        PrefetchHeldback
        # A previous prefetch to the origin got a HTTP 503 response with an
        # Retry-After header that has no elapsed yet.
-```
-
-## Roll protocol to r1233178 — _2023-12-05T04:26:58.000Z_
-######  Diff: [`c098eb8...accc8b6`](https://github.com/ChromeDevTools/devtools-protocol/compare/c098eb8...accc8b6)
-
-```diff
-@@ browser_protocol.pdl:554 @@ experimental domain Audits
-       Script
-       ServiceWorker
-       SharedWorker
-+      SpeculationRules
-       Stylesheet
-       Track
-       Video
 ```
