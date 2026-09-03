@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1691330 — _2026-09-03T05:31:05.000Z_
+######  Diff: [`ea39a11...d1ede57`](https://github.com/ChromeDevTools/devtools-protocol/compare/ea39a11...d1ede57)
+
+```diff
+@@ domains/Audits.pdl:599 @@ experimental domain Audits
+       TokenVerificationKbInvalidSdHash
+       TokenVerificationKbMissingCnf
+       TokenVerificationKbSignatureFailed
++      CrossOriginIframeNotSupported
+ 
+   # This issue tracks client hints related issues. It's used to deprecate old
+   # features, encourage the use of new ones, and provide general guidance.
+```
+
 ## Roll protocol to r1687809 — _2026-08-28T07:01:23.000Z_
-######  Diff: [`0fb57f9...319f032`](https://github.com/ChromeDevTools/devtools-protocol/compare/0fb57f9...319f032)
+######  Diff: [`0fb57f9...ea39a11`](https://github.com/ChromeDevTools/devtools-protocol/compare/0fb57f9...ea39a11)
 
 ```diff
 @@ domains/WebAuthn.pdl:106 @@ experimental domain WebAuthn
@@ -43601,20 +43615,4 @@ index 4754f17c..8dad9c98 100644
  
    # Fired when EventSource message is received.
    event eventSourceMessageReceived
-```
-
-## Roll protocol to r1233758 — _2023-12-06T04:27:12.000Z_
-######  Diff: [`accc8b6...8db4cb9`](https://github.com/ChromeDevTools/devtools-protocol/compare/accc8b6...8db4cb9)
-
-```diff
-@@ browser_protocol.pdl:11577 @@ experimental domain Preload
-       PrefetchFailedNetError
-       PrefetchFailedNon2XX
-       PrefetchFailedPerPageLimitExceeded
--      PrefetchEvicted
-+      PrefetchEvictedAfterCandidateRemoved
-+      PrefetchEvictedForNewerPrefetch
-       PrefetchHeldback
-       # A previous prefetch to the origin got a HTTP 503 response with an
-       # Retry-After header that has no elapsed yet.
 ```

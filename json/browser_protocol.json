@@ -2131,7 +2131,8 @@
                         "TokenVerificationKbInvalidNonce",
                         "TokenVerificationKbInvalidSdHash",
                         "TokenVerificationKbMissingCnf",
-                        "TokenVerificationKbSignatureFailed"
+                        "TokenVerificationKbSignatureFailed",
+                        "CrossOriginIframeNotSupported"
                     ]
                 },
                 {
