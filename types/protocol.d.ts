@@ -9692,6 +9692,11 @@ export namespace Protocol {
             Default = 'default',
         }
 
+        export const enum SetDeviceMetricsOverrideRequestViewportMeta {
+            Enable = 'enable',
+            Default = 'default',
+        }
+
         export interface SetDeviceMetricsOverrideRequest {
             /**
              * Overriding width value in pixels (minimum 0, maximum 10000000). 0 disables the override.
@@ -9780,6 +9785,12 @@ export namespace Protocol {
              * @experimental
              */
             screenOrientationLockEmulation?: boolean;
+            /**
+             * Viewport meta tag behavior. Default: `default`. Note: if `mobile` is `true`,
+             * the viewport meta tag is always enabled.
+             * @experimental
+             */
+            viewportMeta?: ('enable' | 'default');
         }
 
         export interface SetDevicePostureOverrideRequest {

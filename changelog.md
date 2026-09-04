@@ -1,7 +1,28 @@
 
 
+## Roll protocol to r1692173 — _2026-09-04T04:40:14.000Z_
+######  Diff: [`f4f1f32...5509187`](https://github.com/ChromeDevTools/devtools-protocol/compare/f4f1f32...5509187)
+
+```diff
+@@ domains/Emulation.pdl:322 @@ domain Emulation
+       # useful for emulating mobile device orientation lock behavior in
+       # responsive design mode.
+       experimental optional boolean screenOrientationLockEmulation
++      # Viewport meta tag behavior. Default: `default`. Note: if `mobile` is `true`,
++      # the viewport meta tag is always enabled.
++      experimental optional enum viewportMeta
++        # Enables viewport meta tag processing.
++        enable
++        # Restores the default viewport meta behavior (disabled on desktop,
++        # enabled on mobile).
++        default
+ 
+   # Start reporting the given posture value to the Device Posture API.
+   # This override can also be set in setDeviceMetricsOverride().
+```
+
 ## Roll protocol to r1691330 — _2026-09-03T05:31:05.000Z_
-######  Diff: [`ea39a11...d1ede57`](https://github.com/ChromeDevTools/devtools-protocol/compare/ea39a11...d1ede57)
+######  Diff: [`ea39a11...f4f1f32`](https://github.com/ChromeDevTools/devtools-protocol/compare/ea39a11...f4f1f32)
 
 ```diff
 @@ domains/Audits.pdl:599 @@ experimental domain Audits
@@ -43590,29 +43611,4 @@ index 4754f17c..8dad9c98 100644
        # Disabled for RenderFrameHost reasons
        # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
        ContentSecurityHandler
-```
-
-## Roll protocol to r1234845 — _2023-12-08T04:27:01.000Z_
-######  Diff: [`8db4cb9...8f7e4a0`](https://github.com/ChromeDevTools/devtools-protocol/compare/8db4cb9...8f7e4a0)
-
-```diff
-@@ browser_protocol.pdl:6465 @@ domain Network
-       integer dataLength
-       # Actual bytes received (might be less than dataLength for compressed encodings).
-       integer encodedDataLength
-+      # Data that was received.
-+      experimental optional binary data
-+
-+  # Enables streaming of the response for the given requestId.
-+  # If enabled, the dataReceived event contains the data that was received during streaming.
-+  experimental command streamResourceContent
-+    parameters
-+      # Identifier of the request to stream.
-+      RequestId requestId
-+    returns
-+      # Data that has been buffered until streaming is enabled.
-+      binary bufferedData
- 
-   # Fired when EventSource message is received.
-   event eventSourceMessageReceived
 ```
