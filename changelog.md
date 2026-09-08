@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1693794 — _2026-09-08T15:15:54.000Z_
+######  Diff: [`9077895...59b968a`](https://github.com/ChromeDevTools/devtools-protocol/compare/9077895...59b968a)
+
+```diff
+@@ domains/Audits.pdl:513 @@ experimental domain Audits
+       UiDismissedNoEmbargo
+       CorsError
+       SuppressedBySegmentationPlatform
++      PopupBlockedByConnectionAllowlist
+ 
+   type FederatedAuthUserInfoRequestIssueDetails extends object
+     properties
+```
+
 ## Roll protocol to r1692173 — _2026-09-04T04:40:14.000Z_
-######  Diff: [`f4f1f32...5509187`](https://github.com/ChromeDevTools/devtools-protocol/compare/f4f1f32...5509187)
+######  Diff: [`f4f1f32...9077895`](https://github.com/ChromeDevTools/devtools-protocol/compare/f4f1f32...9077895)
 
 ```diff
 @@ domains/Emulation.pdl:322 @@ domain Emulation
@@ -43597,18 +43611,4 @@ index 4754f17c..8dad9c98 100644
 +
  # The SystemInfo domain defines methods and events for querying low-level system information.
  experimental domain SystemInfo
-```
-
-## Roll protocol to r1235375 — _2023-12-09T04:26:39.000Z_
-######  Diff: [`8f7e4a0...37c8ee7`](https://github.com/ChromeDevTools/devtools-protocol/compare/8f7e4a0...37c8ee7)
-
-```diff
-@@ browser_protocol.pdl:8891 @@ domain Page
-       WebRTCSticky
-       WebTransportSticky
-       WebSocketSticky
-+      SmartCard
-       # Disabled for RenderFrameHost reasons
-       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
-       ContentSecurityHandler
 ```

@@ -2031,7 +2031,8 @@
                         "TypeNotMatching",
                         "UiDismissedNoEmbargo",
                         "CorsError",
-                        "SuppressedBySegmentationPlatform"
+                        "SuppressedBySegmentationPlatform",
+                        "PopupBlockedByConnectionAllowlist"
                     ]
                 },
                 {
