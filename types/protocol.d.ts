@@ -221,6 +221,15 @@ export namespace Protocol {
              * Location in the source code where scope ends
              */
             endLocation?: Location;
+            /**
+             * True if the scope does not declare any variables or have a runtime context.
+             * Only present if true.
+             * Empty scopes are retained in the scope chain because
+             * they can be targeted via `evaluateOnCallFrame` (using `scopeNumber`) or
+             * matched against scopes in source maps.
+             * @experimental
+             */
+            empty?: boolean;
         }
 
         /**

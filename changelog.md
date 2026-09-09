@@ -1,7 +1,26 @@
 
 
+## Roll protocol to r1694333 — _2026-09-09T04:39:12.000Z_
+######  Diff: [`751d6d7...7e7b15e`](https://github.com/ChromeDevTools/devtools-protocol/compare/751d6d7...7e7b15e)
+
+```diff
+@@ js_protocol.pdl:143 @@ domain Debugger
+       optional Location startLocation
+       # Location in the source code where scope ends
+       optional Location endLocation
++      # True if the scope does not declare any variables or have a runtime context.
++      # Only present if true.
++      # Empty scopes are retained in the scope chain because
++      # they can be targeted via `evaluateOnCallFrame` (using `scopeNumber`) or
++      # matched against scopes in source maps.
++      experimental optional boolean empty
+ 
+   # Search match for resource.
+   type SearchMatch extends object
+```
+
 ## Roll protocol to r1693794 — _2026-09-08T15:15:54.000Z_
-######  Diff: [`9077895...59b968a`](https://github.com/ChromeDevTools/devtools-protocol/compare/9077895...59b968a)
+######  Diff: [`9077895...751d6d7`](https://github.com/ChromeDevTools/devtools-protocol/compare/9077895...751d6d7)
 
 ```diff
 @@ domains/Audits.pdl:513 @@ experimental domain Audits
@@ -43448,167 +43467,4 @@ index 4754f17c..8dad9c98 100644
        sync-xhr
        unload
        usb
-```
-
-## Roll protocol to r1236148 — _2023-12-12T04:26:53.000Z_
-######  Diff: [`37c8ee7...eacb3c7`](https://github.com/ChromeDevTools/devtools-protocol/compare/37c8ee7...eacb3c7)
-
-```diff
-@@ browser_protocol.pdl:1221 @@ domain Browser
-       audioCapture
-       backgroundSync
-       backgroundFetch
-+      capturedSurfaceControl
-       clipboardReadWrite
-       clipboardSanitizedWrite
-       displayCapture
-@@ -1988,6 +1989,10 @@ experimental domain CSS
-       string ruleText
-       # Text position of a new rule in the target style sheet.
-       SourceRange location
-+      # NodeId for the DOM node in whose context custom property declarations for registered properties should be
-+      # validated. If omitted, declarations in the new rule text can only be validated statically, which may produce
-+      # incorrect results if the declaration contains a var() for example.
-+      experimental optional DOM.NodeId nodeForPropertySyntaxValidation
-     returns
-       # The newly created rule.
-       CSSRule rule
-@@ -2231,6 +2236,10 @@ experimental domain CSS
-   command setStyleTexts
-     parameters
-       array of StyleDeclarationEdit edits
-+      # NodeId for the DOM node in whose context custom property declarations for registered properties should be
-+      # validated. If omitted, declarations in the new rule text can only be validated statically, which may produce
-+      # incorrect results if the declaration contains a var() for example.
-+      experimental optional DOM.NodeId nodeForPropertySyntaxValidation
-     returns
-       # The resulting styles after modification.
-       array of CSSStyle styles
-@@ -7607,6 +7616,7 @@ domain Page
-       bluetooth
-       browsing-topics
-       camera
-+      captured-surface-control
-       ch-dpr
-       ch-device-memory
-       ch-downlink
-@@ -9959,6 +9969,17 @@ experimental domain Storage
-       string key
-       array of string values
- 
-+  experimental type AttributionReportingFilterConfig extends object
-+    properties
-+      array of AttributionReportingFilterDataEntry filterValues
-+      # duration in seconds
-+      optional integer lookbackWindow
-+
-+  experimental type AttributionReportingFilterPair extends object
-+    properties
-+      array of AttributionReportingFilterConfig filters
-+      array of AttributionReportingFilterConfig notFilters
-+
-   experimental type AttributionReportingAggregationKeysEntry extends object
-     properties
-       string key
-@@ -10017,13 +10038,99 @@ experimental domain Storage
-       reportingOriginsPerSiteLimitReached
-       exceedsMaxChannelCapacity
- 
--  # TODO(crbug.com/1458532): Add other Attribution Reporting events, e.g.
--  # trigger registration.
-   experimental event attributionReportingSourceRegistered
-     parameters
-       AttributionReportingSourceRegistration registration
-       AttributionReportingSourceRegistrationResult result
- 
-+  experimental type AttributionReportingSourceRegistrationTimeConfig extends string
-+    enum
-+      include
-+      exclude
-+
-+  experimental type AttributionReportingAggregatableValueEntry extends object
-+    properties
-+      string key
-+      # number instead of integer because not all uint32 can be represented by
-+      # int
-+      number value
-+
-+  experimental type AttributionReportingEventTriggerData extends object
-+    properties
-+      UnsignedInt64AsBase10 data
-+      SignedInt64AsBase10 priority
-+      optional UnsignedInt64AsBase10 dedupKey
-+      AttributionReportingFilterPair filters
-+
-+  experimental type AttributionReportingAggregatableTriggerData extends object
-+    properties
-+      UnsignedInt128AsBase16 keyPiece
-+      array of string sourceKeys
-+      AttributionReportingFilterPair filters
-+
-+  experimental type AttributionReportingAggregatableDedupKey extends object
-+    properties
-+      optional UnsignedInt64AsBase10 dedupKey
-+      AttributionReportingFilterPair filters
-+
-+  experimental type AttributionReportingTriggerRegistration extends object
-+    properties
-+      AttributionReportingFilterPair filters
-+      optional UnsignedInt64AsBase10 debugKey
-+      array of AttributionReportingAggregatableDedupKey aggregatableDedupKeys
-+      array of AttributionReportingEventTriggerData eventTriggerData
-+      array of AttributionReportingAggregatableTriggerData aggregatableTriggerData
-+      array of AttributionReportingAggregatableValueEntry aggregatableValues
-+      boolean debugReporting
-+      optional string aggregationCoordinatorOrigin
-+      AttributionReportingSourceRegistrationTimeConfig sourceRegistrationTimeConfig
-+      optional string triggerContextId
-+
-+  experimental type AttributionReportingEventLevelResult extends string
-+    enum
-+      success
-+      successDroppedLowerPriority
-+      internalError
-+      noCapacityForAttributionDestination
-+      noMatchingSources
-+      deduplicated
-+      excessiveAttributions
-+      priorityTooLow
-+      neverAttributedSource
-+      excessiveReportingOrigins
-+      noMatchingSourceFilterData
-+      prohibitedByBrowserPolicy
-+      noMatchingConfigurations
-+      excessiveReports
-+      falselyAttributedSource
-+      reportWindowPassed
-+      notRegistered
-+      reportWindowNotStarted
-+      noMatchingTriggerData
-+
-+  experimental type AttributionReportingAggregatableResult extends string
-+    enum
-+      success
-+      internalError
-+      noCapacityForAttributionDestination
-+      noMatchingSources
-+      excessiveAttributions
-+      excessiveReportingOrigins
-+      noHistograms
-+      insufficientBudget
-+      noMatchingSourceFilterData
-+      notRegistered
-+      prohibitedByBrowserPolicy
-+      deduplicated
-+      reportWindowPassed
-+      excessiveReports
-+
-+  experimental event attributionReportingTriggerRegistered
-+    parameters
-+      AttributionReportingTriggerRegistration registration
-+      AttributionReportingEventLevelResult eventLevel
-+      AttributionReportingAggregatableResult aggregatable
-+
- # The SystemInfo domain defines methods and events for querying low-level system information.
- experimental domain SystemInfo
 ```
