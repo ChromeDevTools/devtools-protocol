@@ -1697,6 +1697,7 @@ export namespace Protocol {
             Dataview = 'dataview',
             Webassemblymemory = 'webassemblymemory',
             Wasmvalue = 'wasmvalue',
+            Deferredmodule = 'deferredmodule',
             Trustedtype = 'trustedtype',
         }
 
@@ -1713,7 +1714,7 @@ export namespace Protocol {
              * NOTE: If you change anything here, make sure to also update
              * `subtype` in `ObjectPreview` and `PropertyPreview` below.
              */
-            subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'dataview' | 'webassemblymemory' | 'wasmvalue' | 'trustedtype');
+            subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'dataview' | 'webassemblymemory' | 'wasmvalue' | 'deferredmodule' | 'trustedtype');
             /**
              * Object class (constructor) name. Specified for `object` type values only.
              */
@@ -1799,6 +1800,7 @@ export namespace Protocol {
             Dataview = 'dataview',
             Webassemblymemory = 'webassemblymemory',
             Wasmvalue = 'wasmvalue',
+            Deferredmodule = 'deferredmodule',
             Trustedtype = 'trustedtype',
         }
 
@@ -1814,7 +1816,7 @@ export namespace Protocol {
             /**
              * Object subtype hint. Specified for `object` type values only.
              */
-            subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'dataview' | 'webassemblymemory' | 'wasmvalue' | 'trustedtype');
+            subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'dataview' | 'webassemblymemory' | 'wasmvalue' | 'deferredmodule' | 'trustedtype');
             /**
              * String representation of the object.
              */
@@ -1865,6 +1867,7 @@ export namespace Protocol {
             Dataview = 'dataview',
             Webassemblymemory = 'webassemblymemory',
             Wasmvalue = 'wasmvalue',
+            Deferredmodule = 'deferredmodule',
             Trustedtype = 'trustedtype',
         }
 
@@ -1891,7 +1894,7 @@ export namespace Protocol {
             /**
              * Object subtype hint. Specified for `object` type values only.
              */
-            subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'dataview' | 'webassemblymemory' | 'wasmvalue' | 'trustedtype');
+            subtype?: ('array' | 'null' | 'node' | 'regexp' | 'date' | 'map' | 'set' | 'weakmap' | 'weakset' | 'iterator' | 'generator' | 'error' | 'proxy' | 'promise' | 'typedarray' | 'arraybuffer' | 'dataview' | 'webassemblymemory' | 'wasmvalue' | 'deferredmodule' | 'trustedtype');
         }
 
         /**
@@ -14329,6 +14332,7 @@ export namespace Protocol {
             InvalidSessionParams = 'InvalidSessionParams',
             RefreshFatalError = 'RefreshFatalError',
             DevTools = 'DevTools',
+            Replaced = 'Replaced',
         }
 
         /**
@@ -14339,7 +14343,7 @@ export namespace Protocol {
             /**
              * The reason for a session being deleted.
              */
-            deletionReason: ('Expired' | 'FailedToRestoreKey' | 'FailedToUnwrapKey' | 'StoragePartitionCleared' | 'ClearBrowsingData' | 'ServerRequested' | 'InvalidSessionParams' | 'RefreshFatalError' | 'DevTools');
+            deletionReason: ('Expired' | 'FailedToRestoreKey' | 'FailedToUnwrapKey' | 'StoragePartitionCleared' | 'ClearBrowsingData' | 'ServerRequested' | 'InvalidSessionParams' | 'RefreshFatalError' | 'DevTools' | 'Replaced');
         }
 
         export const enum ChallengeEventDetailsChallengeResult {

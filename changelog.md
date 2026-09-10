@@ -1,7 +1,48 @@
 
 
+## Roll protocol to r1695166 — _2026-09-10T04:37:44.000Z_
+######  Diff: [`7ad4320...cae7849`](https://github.com/ChromeDevTools/devtools-protocol/compare/7ad4320...cae7849)
+
+```diff
+@@ domains/Network.pdl:2168 @@ domain Network
+         InvalidSessionParams
+         RefreshFatalError
+         DevTools
++        Replaced
+ 
+   # Session event details specific to challenges.
+   experimental type ChallengeEventDetails extends object
+diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
+index 62c15239..99905a48 100644
+--- a/pdl/js_protocol.pdl
++++ b/pdl/js_protocol.pdl
+@@ -1144,6 +1144,7 @@ domain Runtime
+         dataview
+         webassemblymemory
+         wasmvalue
++        deferredmodule
+         # blink's subtypes.
+         trustedtype
+       # Object class (constructor) name. Specified for `object` type values only.
+@@ -1207,6 +1208,7 @@ domain Runtime
+         dataview
+         webassemblymemory
+         wasmvalue
++        deferredmodule
+         # blink's subtypes.
+         trustedtype
+       # String representation of the object.
+@@ -1258,6 +1260,7 @@ domain Runtime
+         dataview
+         webassemblymemory
+         wasmvalue
++        deferredmodule
+         # blink's subtypes.
+         trustedtype
+```
+
 ## Roll protocol to r1694333 — _2026-09-09T04:39:12.000Z_
-######  Diff: [`751d6d7...7e7b15e`](https://github.com/ChromeDevTools/devtools-protocol/compare/751d6d7...7e7b15e)
+######  Diff: [`751d6d7...7ad4320`](https://github.com/ChromeDevTools/devtools-protocol/compare/751d6d7...7ad4320)
 
 ```diff
 @@ js_protocol.pdl:143 @@ domain Debugger
@@ -43453,18 +43494,4 @@ index 4754f17c..8dad9c98 100644
        # Disabled for RenderFrameHost reasons
        # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
        ContentSecurityHandler
-```
-
-## Roll protocol to r1237913 — _2023-12-15T04:26:59.000Z_
-######  Diff: [`eacb3c7...fe8e9cc`](https://github.com/ChromeDevTools/devtools-protocol/compare/eacb3c7...fe8e9cc)
-
-```diff
-@@ browser_protocol.pdl:7681 @@ domain Page
-       shared-storage-select-url
-       smart-card
-       storage-access
-+      sub-apps
-       sync-xhr
-       unload
-       usb
 ```
