@@ -19533,9 +19533,7 @@ export namespace Protocol {
 
         /**
          * Mostly corresponds to `RouterCondition` in ServiceWorker spec
-         * (https://www.w3.org/TR/service-workers/#dictdef-routercondition) while this
-         * currently lacks support for the nested conditions ("or" and "not").
-         * TODO(crbug.com/540469610): Support recursive conditions.
+         * (https://www.w3.org/TR/service-workers/#dictdef-routercondition)
          */
         export interface ServiceWorkerRouterCondition {
             /**
@@ -19546,6 +19544,8 @@ export namespace Protocol {
             requestMode?: string;
             requestDestination?: string;
             runningStatus?: ServiceWorkerVersionRunningStatus;
+            or?: ServiceWorkerRouterCondition[];
+            not?: ServiceWorkerRouterCondition;
         }
 
         export type ServiceWorkerRouterSourceType = ('cache' | 'fetchEvent' | 'network' | 'raceNetworkAndFetchHandler' | 'raceNetworkAndCache' | 'sourceDict');

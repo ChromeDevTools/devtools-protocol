@@ -1,7 +1,33 @@
 
 
+## Roll protocol to r1695952 — _2026-09-11T04:39:58.000Z_
+######  Diff: [`bfb674c...78e23a1`](https://github.com/ChromeDevTools/devtools-protocol/compare/bfb674c...78e23a1)
+
+```diff
+@@ domains/ServiceWorker.pdl:33 @@ experimental domain ServiceWorker
+       redundant
+ 
+   # Mostly corresponds to `RouterCondition` in ServiceWorker spec
+-  # (https://www.w3.org/TR/service-workers/#dictdef-routercondition) while this
+-  # currently lacks support for the nested conditions ("or" and "not").
+-  # TODO(crbug.com/540469610): Support recursive conditions.
++  # (https://www.w3.org/TR/service-workers/#dictdef-routercondition)
+   type ServiceWorkerRouterCondition extends object
+     properties
+       # Plain text, or JSON serialization of URLPatternInit or URLPattern
+@@ -44,6 +42,8 @@ experimental domain ServiceWorker
+       optional string requestMode
+       optional string requestDestination
+       optional ServiceWorkerVersionRunningStatus runningStatus
++      optional array of ServiceWorkerRouterCondition or
++      optional ServiceWorkerRouterCondition not
+ 
+   type ServiceWorkerRouterSourceType extends string
+     enum
+```
+
 ## Roll protocol to r1695166 — _2026-09-10T04:37:44.000Z_
-######  Diff: [`7ad4320...cae7849`](https://github.com/ChromeDevTools/devtools-protocol/compare/7ad4320...cae7849)
+######  Diff: [`7ad4320...bfb674c`](https://github.com/ChromeDevTools/devtools-protocol/compare/7ad4320...bfb674c)
 
 ```diff
 @@ domains/Network.pdl:2168 @@ domain Network
@@ -43472,26 +43498,4 @@ index 4754f17c..8dad9c98 100644
  
    # Emitted when an address form is filled.
    event addressFormFilled
-```
-
-## Roll protocol to r1238944 — _2023-12-19T04:26:54.000Z_
-######  Diff: [`fe8e9cc...b7323b1`](https://github.com/ChromeDevTools/devtools-protocol/compare/fe8e9cc...b7323b1)
-
-```diff
-@@ browser_protocol.pdl:7672 @@ domain Page
-       private-aggregation
-       private-state-token-issuance
-       private-state-token-redemption
-+      publickey-credentials-create
-       publickey-credentials-get
-       run-ad-auction
-       screen-wake-lock
-@@ -8903,6 +8904,7 @@ domain Page
-       WebTransportSticky
-       WebSocketSticky
-       SmartCard
-+      LiveMediaStreamTrack
-       # Disabled for RenderFrameHost reasons
-       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
-       ContentSecurityHandler
 ```

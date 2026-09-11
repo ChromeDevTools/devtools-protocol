@@ -26473,7 +26473,7 @@
                 },
                 {
                     "id": "ServiceWorkerRouterCondition",
-                    "description": "Mostly corresponds to `RouterCondition` in ServiceWorker spec\n(https://www.w3.org/TR/service-workers/#dictdef-routercondition) while this\ncurrently lacks support for the nested conditions (\"or\" and \"not\").\nTODO(crbug.com/540469610): Support recursive conditions.",
+                    "description": "Mostly corresponds to `RouterCondition` in ServiceWorker spec\n(https://www.w3.org/TR/service-workers/#dictdef-routercondition)",
                     "type": "object",
                     "properties": [
                         {
@@ -26501,6 +26501,19 @@
                             "name": "runningStatus",
                             "optional": true,
                             "$ref": "ServiceWorkerVersionRunningStatus"
+                        },
+                        {
+                            "name": "or",
+                            "optional": true,
+                            "type": "array",
+                            "items": {
+                                "$ref": "ServiceWorkerRouterCondition"
+                            }
+                        },
+                        {
+                            "name": "not",
+                            "optional": true,
+                            "$ref": "ServiceWorkerRouterCondition"
                         }
                     ]
                 },
