@@ -1,10 +1,17 @@
 /**  Definition for protocol.json types */
 export interface IProtocol {
-    version: Protocol.Version
-    domains: Protocol.Domain[]
+    version: ProtocolSchema.Version
+    domains: ProtocolSchema.Domain[]
 }
 
-export namespace Protocol {
+export type ProtocolSchema = ProtocolSchema.Schema;
+
+export namespace ProtocolSchema {
+    export interface Schema {
+        version: Version
+        domains: Domain[]
+    }
+
     export interface Version {
         major: string
         minor: string
@@ -77,7 +84,7 @@ export namespace Protocol {
         $ref: string
     }
 
-    export interface PropertyBaseType {
+    export interface PropertyBaseType extends ExtraInformation {
         /** Name of param */
         name: string
         /** Is the property optional ? */
@@ -86,14 +93,18 @@ export namespace Protocol {
         description?: string
     }
 
-    type DomainType = {
+    export type DomainType = {
         /** Name of property */
         id: string
         /** Description of the type */
         description?: string
     } & (StringType | ObjectType | ArrayType | PrimitiveType) & ExtraInformation;
 
-    type ProtocolType = StringType | ObjectType | ArrayType | PrimitiveType | RefType  | AnyType;
+    export type ProtocolType = StringType | ObjectType | ArrayType | PrimitiveType | RefType  | AnyType;
 
-    type PropertyType = PropertyBaseType & ProtocolType;
+    export type PropertyType = PropertyBaseType & ProtocolType;
 }
+
+export import Protocol = ProtocolSchema;
+
+

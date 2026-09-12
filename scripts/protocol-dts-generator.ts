@@ -1,6 +1,6 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import type { IProtocol, Protocol as P } from './protocol-schema.d.ts';
+import type { IProtocol, ProtocolSchema as P } from '../types/protocol-schema.d.ts';
 
 
 // TODO: @noj validate this via https://github.com/andischerer/typescript-json-typesafe against protocol-schema.d.ts
