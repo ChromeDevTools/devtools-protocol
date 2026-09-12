@@ -4039,6 +4039,17 @@ export namespace Protocol {
             disableReason?: string;
         }
 
+        export type WebInstallIssueReason = ('ManifestParsingOrNetworkError' | 'StartUrlInvalid' | 'ManifestMissingNameOrShortName' | 'ManifestMissingId' | 'NoManifest');
+
+        /**
+         * This issue reports a failure involving a web app manifest used by a Web
+         * Install operation.
+         */
+        export interface WebInstallIssueDetails {
+            manifestUrl?: string;
+            reason: WebInstallIssueReason;
+        }
+
         /**
          * The issue warns about blocked calls to privacy sensitive APIs via the
          * Selective Permissions Intervention.
@@ -4081,7 +4092,7 @@ export namespace Protocol {
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'CorsIssue' | 'QuirksModeIssue' | 'PartitioningBlobURLIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'CookieDeprecationMetadataIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue' | 'PropertyRuleIssue' | 'SharedDictionaryIssue' | 'ElementAccessibilityIssue' | 'SRIMessageSignatureIssue' | 'UnencodedDigestIssue' | 'ConnectionAllowlistIssue' | 'UserReidentificationIssue' | 'PermissionElementIssue' | 'PerformanceIssue' | 'SelectivePermissionsInterventionIssue' | 'EmailVerificationRequestIssue' | 'LazyLoadImageIssue');
+        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'CorsIssue' | 'QuirksModeIssue' | 'PartitioningBlobURLIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'CookieDeprecationMetadataIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue' | 'PropertyRuleIssue' | 'SharedDictionaryIssue' | 'ElementAccessibilityIssue' | 'SRIMessageSignatureIssue' | 'UnencodedDigestIssue' | 'ConnectionAllowlistIssue' | 'UserReidentificationIssue' | 'PermissionElementIssue' | 'PerformanceIssue' | 'SelectivePermissionsInterventionIssue' | 'EmailVerificationRequestIssue' | 'LazyLoadImageIssue' | 'WebInstallIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -4122,6 +4133,7 @@ export namespace Protocol {
             selectivePermissionsInterventionIssueDetails?: SelectivePermissionsInterventionIssueDetails;
             emailVerificationRequestIssueDetails?: EmailVerificationRequestIssueDetails;
             lazyLoadImageIssueDetails?: LazyLoadImageIssueDetails;
+            webInstallIssueDetails?: WebInstallIssueDetails;
         }
 
         /**
@@ -8179,6 +8191,20 @@ export namespace Protocol {
              * List of popovers that were closed in order to respect popover stacking order.
              */
             nodeIds: NodeId[];
+        }
+
+        export interface GetImplicitAnchorCandidatesRequest {
+            /**
+             * Id of the popover HTMLElement.
+             */
+            nodeId: NodeId;
+        }
+
+        export interface GetImplicitAnchorCandidatesResponse {
+            /**
+             * Candidate elements that can invoke this popover.
+             */
+            backendNodeIds: BackendNodeId[];
         }
 
         export interface ForceShowInterestRequest {

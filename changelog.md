@@ -1,7 +1,71 @@
 
 
+## Roll protocol to r1696802 — _2026-09-12T04:34:27.000Z_
+######  Diff: [`9b417d8...4c6a7e5`](https://github.com/ChromeDevTools/devtools-protocol/compare/9b417d8...4c6a7e5)
+
+```diff
+@@ domains/Audits.pdl:741 @@ experimental domain Audits
+       # Used for messages about activation disabled reason
+       optional string disableReason
+ 
++  type WebInstallIssueReason extends string
++    enum
++      ManifestParsingOrNetworkError
++      StartUrlInvalid
++      ManifestMissingNameOrShortName
++      ManifestMissingId
++      NoManifest
++
++  # This issue reports a failure involving a web app manifest used by a Web
++  # Install operation.
++  type WebInstallIssueDetails extends object
++    properties
++      optional string manifestUrl
++      WebInstallIssueReason reason
++
+   # The issue warns about blocked calls to privacy sensitive APIs via the
+   # Selective Permissions Intervention.
+   type SelectivePermissionsInterventionIssueDetails extends object
+@@ -798,6 +813,7 @@ experimental domain Audits
+       SelectivePermissionsInterventionIssue
+       EmailVerificationRequestIssue
+       LazyLoadImageIssue
++      WebInstallIssue
+ 
+   # This struct holds a list of optional fields with additional information
+   # specific to the kind of issue. When adding a new issue code, please also
+@@ -834,6 +850,7 @@ experimental domain Audits
+       optional SelectivePermissionsInterventionIssueDetails selectivePermissionsInterventionIssueDetails
+       optional EmailVerificationRequestIssueDetails emailVerificationRequestIssueDetails
+       optional LazyLoadImageIssueDetails lazyLoadImageIssueDetails
++      optional WebInstallIssueDetails webInstallIssueDetails
+ 
+   # A unique id for a DevTools inspector issue. Allows other entities (e.g.
+   # exceptions, CDP message, console messages, etc.) to reference an issue.
+diff --git a/pdl/domains/DOM.pdl b/pdl/domains/DOM.pdl
+index 3509822c..39866855 100644
+--- a/pdl/domains/DOM.pdl
++++ b/pdl/domains/DOM.pdl
+@@ -827,6 +827,15 @@ domain DOM
+       # List of popovers that were closed in order to respect popover stacking order.
+       array of NodeId nodeIds
+ 
++  # Returns candidate nodes that are configured as triggers for the given popover.
++  experimental command getImplicitAnchorCandidates
++    parameters
++      # Id of the popover HTMLElement.
++      NodeId nodeId
++    returns
++      # Candidate elements that can invoke this popover.
++      array of BackendNodeId backendNodeIds
++
+   # When enabling, this API forces an element to gain interest in its target,
+   # keeping interest active until disabled.
+   experimental command forceShowInterest
+```
+
 ## Roll protocol to r1695952 — _2026-09-11T04:39:58.000Z_
-######  Diff: [`bfb674c...78e23a1`](https://github.com/ChromeDevTools/devtools-protocol/compare/bfb674c...78e23a1)
+######  Diff: [`bfb674c...9b417d8`](https://github.com/ChromeDevTools/devtools-protocol/compare/bfb674c...9b417d8)
 
 ```diff
 @@ domains/ServiceWorker.pdl:33 @@ experimental domain ServiceWorker
@@ -43483,19 +43547,4 @@ index 4754f17c..8dad9c98 100644
        # Disabled for RenderFrameHost reasons
        # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
        ContentSecurityHandler
-```
-
-## Roll protocol to r1239539 — _2023-12-20T04:24:43.000Z_
-######  Diff: [`b7323b1...91ab8a2`](https://github.com/ChromeDevTools/devtools-protocol/compare/b7323b1...91ab8a2)
-
-```diff
-@@ browser_protocol.pdl:1083 @@ experimental domain Autofill
-       string autofillType
-       # The filling strategy
-       FillingStrategy fillingStrategy
-+      # The form field's DOM node
-+      DOM.BackendNodeId fieldId
- 
-   # Emitted when an address form is filled.
-   event addressFormFilled
 ```

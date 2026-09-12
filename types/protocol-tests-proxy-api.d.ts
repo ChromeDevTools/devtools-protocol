@@ -1970,6 +1970,12 @@ export namespace ProtocolTestsProxyApi {
         forceShowPopover(params: Protocol.DOM.ForceShowPopoverRequest): Promise<{id: number, result: Protocol.DOM.ForceShowPopoverResponse, sessionId: string}>;
 
         /**
+         * Returns candidate nodes that are configured as triggers for the given popover.
+         * @experimental
+         */
+        getImplicitAnchorCandidates(params: Protocol.DOM.GetImplicitAnchorCandidatesRequest): Promise<{id: number, result: Protocol.DOM.GetImplicitAnchorCandidatesResponse, sessionId: string}>;
+
+        /**
          * When enabling, this API forces an element to gain interest in its target,
          * keeping interest active until disabled.
          * @experimental

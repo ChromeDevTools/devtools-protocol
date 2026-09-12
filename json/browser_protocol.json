@@ -2406,6 +2406,33 @@
                     ]
                 },
                 {
+                    "id": "WebInstallIssueReason",
+                    "type": "string",
+                    "enum": [
+                        "ManifestParsingOrNetworkError",
+                        "StartUrlInvalid",
+                        "ManifestMissingNameOrShortName",
+                        "ManifestMissingId",
+                        "NoManifest"
+                    ]
+                },
+                {
+                    "id": "WebInstallIssueDetails",
+                    "description": "This issue reports a failure involving a web app manifest used by a Web\nInstall operation.",
+                    "type": "object",
+                    "properties": [
+                        {
+                            "name": "manifestUrl",
+                            "optional": true,
+                            "type": "string"
+                        },
+                        {
+                            "name": "reason",
+                            "$ref": "WebInstallIssueReason"
+                        }
+                    ]
+                },
+                {
                     "id": "SelectivePermissionsInterventionIssueDetails",
                     "description": "The issue warns about blocked calls to privacy sensitive APIs via the\nSelective Permissions Intervention.",
                     "type": "object",
@@ -2484,7 +2511,8 @@
                         "PerformanceIssue",
                         "SelectivePermissionsInterventionIssue",
                         "EmailVerificationRequestIssue",
-                        "LazyLoadImageIssue"
+                        "LazyLoadImageIssue",
+                        "WebInstallIssue"
                     ]
                 },
                 {
@@ -2642,6 +2670,11 @@
                             "name": "lazyLoadImageIssueDetails",
                             "optional": true,
                             "$ref": "LazyLoadImageIssueDetails"
+                        },
+                        {
+                            "name": "webInstallIssueDetails",
+                            "optional": true,
+                            "$ref": "WebInstallIssueDetails"
                         }
                     ]
                 },
@@ -8969,6 +9002,28 @@
                             "type": "array",
                             "items": {
                                 "$ref": "NodeId"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getImplicitAnchorCandidates",
+                    "description": "Returns candidate nodes that are configured as triggers for the given popover.",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "nodeId",
+                            "description": "Id of the popover HTMLElement.",
+                            "$ref": "NodeId"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "backendNodeIds",
+                            "description": "Candidate elements that can invoke this popover.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "BackendNodeId"
                             }
                         }
                     ]
