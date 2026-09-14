@@ -1893,6 +1893,23 @@ export namespace ProtocolProxyApi {
         forceShowInterest(params: Protocol.DOM.ForceShowInterestRequest): Promise<void>;
 
         /**
+         * Sets a spelling or grammar error marker on the given range of text.
+         * See https://github.com/Igalia/explainers/blob/main/force-spelling-grammar-markers/README.md
+         * Note: exactly one between nodeId, backendNodeId and objectId should be passed
+         * to identify the node.
+         * @experimental
+         */
+        setTextMarker(params: Protocol.DOM.SetTextMarkerRequest): Promise<void>;
+
+        /**
+         * Clears the spelling and grammar error text markers overlapping the ranges
+         * set by setTextMarker in this session. These markers are also removed when
+         * the DOM domain is disabled or the session ends.
+         * @experimental
+         */
+        clearTextMarkers(): Promise<void>;
+
+        /**
          * Fired when `Element`'s attribute is modified.
          */
         on(event: 'attributeModified', listener: (params: Protocol.DOM.AttributeModifiedEvent) => void): void;

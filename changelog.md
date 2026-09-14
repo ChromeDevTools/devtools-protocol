@@ -1,7 +1,51 @@
 
 
+## Roll protocol to r1697629 — _2026-09-14T23:38:30.000Z_
+######  Diff: [`f395a59...4a83b76`](https://github.com/ChromeDevTools/devtools-protocol/compare/f395a59...4a83b76)
+
+```diff
+@@ domains/DOM.pdl:845 @@ domain DOM
+       # If true, opens and holds interest. If false, releases forced interest.
+       boolean enable
+ 
++  # Sets a spelling or grammar error marker on the given range of text.
++  # See https://github.com/Igalia/explainers/blob/main/force-spelling-grammar-markers/README.md
++  # Note: exactly one between nodeId, backendNodeId and objectId should be passed
++  # to identify the node.
++  experimental command setTextMarker
++    parameters
++      # Identifier of the node.
++      optional NodeId nodeId
++      # Identifier of the backend node.
++      optional BackendNodeId backendNodeId
++      # JavaScript object id of the node wrapper.
++      optional Runtime.RemoteObjectId objectId
++      # The type of marker to set on the given range of text.
++      enum type
++        # A spelling error marker, rendered as ::spelling-error
++        spelling
++        # A grammar error marker, rendered as ::grammar-error
++        grammar
++      # Start offset into the element's rendered text in UTF-16 code units.
++      # For a text control, an offset into the control's value.
++      # Offsets count text in DOM order and do not enter shadow trees.
++      # To mark text inside a shadow tree, pass the element inside the shadow tree.
++      integer start
++      # End offset (exclusive) in the same units and space as start.
++      integer end
++
++  # Clears the spelling and grammar error text markers overlapping the ranges
++  # set by setTextMarker in this session. These markers are also removed when
++  # the DOM domain is disabled or the session ends.
++  experimental command clearTextMarkers
++
+   # Fired when `Element`'s attribute is modified.
+   event attributeModified
+     parameters
+```
+
 ## Roll protocol to r1696802 — _2026-09-12T04:34:27.000Z_
-######  Diff: [`9b417d8...4c6a7e5`](https://github.com/ChromeDevTools/devtools-protocol/compare/9b417d8...4c6a7e5)
+######  Diff: [`9b417d8...f395a59`](https://github.com/ChromeDevTools/devtools-protocol/compare/9b417d8...f395a59)
 
 ```diff
 @@ domains/Audits.pdl:741 @@ experimental domain Audits
@@ -43533,18 +43577,4 @@ index 4754f17c..8dad9c98 100644
        # Refined HTTP request headers that were actually transmitted over the network.
        optional Headers requestHeaders
        # HTTP request headers text. This has been replaced by the headers in Network.requestWillBeSentExtraInfo.
-```
-
-## Roll protocol to r1245094 — _2024-01-10T04:27:17.000Z_
-######  Diff: [`91ab8a2...fcea28f`](https://github.com/ChromeDevTools/devtools-protocol/compare/91ab8a2...fcea28f)
-
-```diff
-@@ browser_protocol.pdl:8907 @@ domain Page
-       WebSocketSticky
-       SmartCard
-       LiveMediaStreamTrack
-+      UnloadHandler
-       # Disabled for RenderFrameHost reasons
-       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
-       ContentSecurityHandler
 ```
