@@ -1,7 +1,28 @@
 
 
+## Roll protocol to r1698617 — _2026-09-16T04:38:22.000Z_
+######  Diff: [`acf4480...15e2a15`](https://github.com/ChromeDevTools/devtools-protocol/compare/acf4480...15e2a15)
+
+```diff
+@@ domains/Animation.pdl:143 @@ experimental domain Animation
+     parameters
+       # List of animation ids to seek.
+       array of string animations
+-      # Set the current time of each animation.
+-      number currentTime
++      # Set each animation to the same time.
++      optional number currentTime
++      # Set each animation to a different time. If set, should have the same
++      # length as animations. Exactly one of currentTime or currentTimes should
++      # be set.
++      optional array of number currentTimes
+ 
+   # Sets the paused state of a set of animations.
+   command setPaused
+```
+
 ## Roll protocol to r1697629 — _2026-09-14T23:38:30.000Z_
-######  Diff: [`f395a59...4a83b76`](https://github.com/ChromeDevTools/devtools-protocol/compare/f395a59...4a83b76)
+######  Diff: [`f395a59...acf4480`](https://github.com/ChromeDevTools/devtools-protocol/compare/f395a59...acf4480)
 
 ```diff
 @@ domains/DOM.pdl:845 @@ domain DOM
@@ -43562,19 +43583,4 @@ index 4754f17c..8dad9c98 100644
 +  command removeBinding
      parameters
        string name
-```
-
-## Roll protocol to r1247362 — _2024-01-16T04:27:14.000Z_
-######  Diff: [`fcea28f...145ad3b`](https://github.com/ChromeDevTools/devtools-protocol/compare/fcea28f...145ad3b)
-
-```diff
-@@ browser_protocol.pdl:5720 @@ domain Network
-       deprecated optional string headersText
-       # Resource mimeType as determined by the browser.
-       string mimeType
-+      # Resource charset as determined by the browser (if applicable).
-+      string charset
-       # Refined HTTP request headers that were actually transmitted over the network.
-       optional Headers requestHeaders
-       # HTTP request headers text. This has been replaced by the headers in Network.requestWillBeSentExtraInfo.
 ```
