@@ -942,6 +942,11 @@ export namespace ProtocolMapping {
         'Storage.storageBucketCreatedOrUpdated': [Protocol.Storage.StorageBucketCreatedOrUpdatedEvent];
         'Storage.storageBucketDeleted': [Protocol.Storage.StorageBucketDeletedEvent];
         /**
+         * Private Verification Tokens have been stored or deleted.
+         * @experimental
+         */
+        'Storage.privateVerificationTokensUpdated': [];
+        /**
          * Issued when attached to target because of auto-attach or `attachToTarget` command.
          * @experimental
          */
@@ -5017,13 +5022,29 @@ export namespace ProtocolMapping {
             returnType: Protocol.Page.GetManifestIconsResponse;
         };
         /**
-         * Returns the unique (PWA) app id.
+         * Returns the unique (PWA) app id, along with IWA bundle ID and parent app info.
          * Only returns values if the feature flag 'WebAppEnableManifestId' is enabled
          * @experimental
          */
         'Page.getAppId': {
             paramsType: [];
             returnType: Protocol.Page.GetAppIdResponse;
+        };
+        /**
+         * Returns the list of installed child Sub-Apps for the inspected parent app.
+         * @experimental
+         */
+        'Page.getSubApps': {
+            paramsType: [];
+            returnType: Protocol.Page.GetSubAppsResponse;
+        };
+        /**
+         * Returns the list of sibling Sub-Apps sharing the same parent app if the inspected context is a Sub-App.
+         * @experimental
+         */
+        'Page.getSiblingSubApps': {
+            paramsType: [];
+            returnType: Protocol.Page.GetSiblingSubAppsResponse;
         };
         /**
          * @experimental
@@ -5831,6 +5852,39 @@ export namespace ProtocolMapping {
         'Storage.clearTrustTokens': {
             paramsType: [Protocol.Storage.ClearTrustTokensRequest];
             returnType: Protocol.Storage.ClearTrustTokensResponse;
+        };
+        /**
+         * Returns all stored Private Verification Tokens for the current browsing
+         * context.
+         * @experimental
+         */
+        'Storage.getPrivateVerificationTokens': {
+            paramsType: [];
+            returnType: Protocol.Storage.GetPrivateVerificationTokensResponse;
+        };
+        /**
+         * Removes all Private Verification Tokens issued by the provided issuerOrigin.
+         * @experimental
+         */
+        'Storage.clearPrivateVerificationTokens': {
+            paramsType: [Protocol.Storage.ClearPrivateVerificationTokensRequest];
+            returnType: void;
+        };
+        /**
+         * Removes a specific Private Verification Token by its ID.
+         * @experimental
+         */
+        'Storage.deletePrivateVerificationToken': {
+            paramsType: [Protocol.Storage.DeletePrivateVerificationTokenRequest];
+            returnType: void;
+        };
+        /**
+         * Set tracking for Private Verification Tokens.
+         * @experimental
+         */
+        'Storage.setPrivateVerificationTokensTracking': {
+            paramsType: [Protocol.Storage.SetPrivateVerificationTokensTrackingRequest];
+            returnType: void;
         };
         /**
          * Set tracking for a storage key's buckets.

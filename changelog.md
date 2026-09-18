@@ -1,7 +1,164 @@
 
 
+## Roll protocol to r1700460 — _2026-09-18T04:38:05.000Z_
+######  Diff: [`bab8418...106bb1a`](https://github.com/ChromeDevTools/devtools-protocol/compare/bab8418...106bb1a)
+
+```diff
+@@ domains/Overlay.pdl:116 @@ experimental domain Overlay
+       aaa
+       apca
+ 
++  # Configuration for Inset-Modified Containing Block (IMCB) and CSS Anchor Positioning highlight.
++  type ImcbHighlightConfig extends object
++    properties
++      # Border color for the Inset-Modified Containing Block (default: transparent).
++      optional DOM.RGBA imcbBorderColor
++      # Background fill color for the Inset-Modified Containing Block (default: transparent).
++      optional DOM.RGBA imcbBackgroundColor
++      # Fill color for the inset modifiers area (difference between CB and IMCB).
++      optional DOM.RGBA insetsBackgroundColor
++      # Hatch color for the inset modifiers area.
++      optional DOM.RGBA insetsHatchColor
++      # Border color for the referenced target anchor element(s) (when element is anchor-positioned).
++      optional DOM.RGBA anchorBorderColor
++      # Background fill color for the referenced target anchor element(s) (when element is anchor-positioned).
++      optional DOM.RGBA anchorBackgroundColor
++      # Whether to render the 3x3 position-area grid lines when position-area is used.
++      optional boolean showPositionAreaGrid
++      # Line color for the 3x3 position-area grid lines.
++      optional DOM.RGBA positionAreaGridLineColor
++      # Fill color for the active region within the position-area grid.
++      optional DOM.RGBA positionAreaActiveRegionColor
++
+   # Configuration data for the highlighting of page elements.
+   type HighlightConfig extends object
+     properties
+@@ -157,6 +179,8 @@ experimental domain Overlay
+       optional ContrastAlgorithm contrastAlgorithm
+       # The container query container highlight configuration (default: all transparent).
+       optional ContainerQueryContainerHighlightConfig containerQueryContainerHighlightConfig
++      # The IMCB highlight configuration (default: all transparent).
++      optional ImcbHighlightConfig imcbHighlightConfig
+ 
+   type ColorFormat extends string
+     enum
+diff --git a/pdl/domains/Page.pdl b/pdl/domains/Page.pdl
+index a2d197c5..c8c374af 100644
+--- a/pdl/domains/Page.pdl
++++ b/pdl/domains/Page.pdl
+@@ -804,7 +804,18 @@ domain Page
+     returns
+       optional binary primaryIcon
+ 
+-  # Returns the unique (PWA) app id.
++  type SubApp extends object
++    properties
++      # Display name of the sub-app.
++      string name
++      # Scope of the sub-app.
++      string scope
++      # Manifest id of the sub-app.
++      string manifestId
++      # Start URL of the sub-app.
++      string startUrl
++
++  # Returns the unique (PWA) app id, along with IWA bundle ID and parent app info.
+   # Only returns values if the feature flag 'WebAppEnableManifestId' is enabled
+   experimental command getAppId
+     returns
+@@ -812,6 +823,20 @@ domain Page
+       optional string appId
+       # Recommendation for manifest's id attribute to match current id computed from start_url
+       optional string recommendedId
++      # The bundle ID for an Isolated Web App (IWA)
++      optional string bundleId
++      # The name of the parent app if this app is a Sub-App
++      optional string parentAppName
++
++  # Returns the list of installed child Sub-Apps for the inspected parent app.
++  experimental command getSubApps
++    returns
++      array of SubApp subApps
++
++  # Returns the list of sibling Sub-Apps sharing the same parent app if the inspected context is a Sub-App.
++  experimental command getSiblingSubApps
++    returns
++      array of SubApp subApps
+ 
+   experimental command getAdScriptAncestry
+     parameters
+diff --git a/pdl/domains/Storage.pdl b/pdl/domains/Storage.pdl
+index c741899e..7702942c 100644
+--- a/pdl/domains/Storage.pdl
++++ b/pdl/domains/Storage.pdl
+@@ -40,6 +40,25 @@ experimental domain Storage
+       string issuerOrigin
+       number count
+ 
++  # Details of a stored Private Verification Token.
++  experimental type PrivateVerificationToken extends object
++    properties
++      # Unique identifier of the token in the database.
++      string id
++      # Origin of the token issuer.
++      string issuerOrigin
++      # Public key ID used to issue the token.
++      integer keyId
++      # Expiration timestamp in seconds since the epoch.
++      Network.TimeSinceEpoch expiration
++      # Token creation timestamp in seconds since the epoch.
++      Network.TimeSinceEpoch creationTime
++      # Token protocol version.
++      integer version
++      # Base64-encoded serialized token.
++      string token
++
++
+ 
+   type StorageBucketsDurability extends string
+     enum
+@@ -209,6 +228,27 @@ experimental domain Storage
+       # True if any tokens were deleted, false otherwise.
+       boolean didDeleteTokens
+ 
++  # Returns all stored Private Verification Tokens for the current browsing
++  # context.
++  experimental command getPrivateVerificationTokens
++    returns
++      array of PrivateVerificationToken tokens
++
++  # Removes all Private Verification Tokens issued by the provided issuerOrigin.
++  experimental command clearPrivateVerificationTokens
++    parameters
++      string issuerOrigin
++
++  # Removes a specific Private Verification Token by its ID.
++  experimental command deletePrivateVerificationToken
++    parameters
++      string tokenId
++
++  # Set tracking for Private Verification Tokens.
++  experimental command setPrivateVerificationTokensTracking
++    parameters
++      boolean enable
++
+   # Set tracking for a storage key's buckets.
+   experimental command setStorageBucketTracking
+     parameters
+@@ -279,6 +319,9 @@ experimental domain Storage
+     parameters
+       string bucketId
+ 
++  # Private Verification Tokens have been stored or deleted.
++  experimental event privateVerificationTokensUpdated
++
+   # A single Related Website Set object.
+   experimental type RelatedWebsiteSet extends object
+     properties
+```
+
 ## Roll protocol to r1698617 — _2026-09-16T04:38:22.000Z_
-######  Diff: [`acf4480...15e2a15`](https://github.com/ChromeDevTools/devtools-protocol/compare/acf4480...15e2a15)
+######  Diff: [`acf4480...bab8418`](https://github.com/ChromeDevTools/devtools-protocol/compare/acf4480...bab8418)
 
 ```diff
 @@ domains/Animation.pdl:143 @@ experimental domain Animation

@@ -3929,11 +3929,23 @@ export namespace ProtocolProxyApi {
         getManifestIcons(): Promise<Protocol.Page.GetManifestIconsResponse>;
 
         /**
-         * Returns the unique (PWA) app id.
+         * Returns the unique (PWA) app id, along with IWA bundle ID and parent app info.
          * Only returns values if the feature flag 'WebAppEnableManifestId' is enabled
          * @experimental
          */
         getAppId(): Promise<Protocol.Page.GetAppIdResponse>;
+
+        /**
+         * Returns the list of installed child Sub-Apps for the inspected parent app.
+         * @experimental
+         */
+        getSubApps(): Promise<Protocol.Page.GetSubAppsResponse>;
+
+        /**
+         * Returns the list of sibling Sub-Apps sharing the same parent app if the inspected context is a Sub-App.
+         * @experimental
+         */
+        getSiblingSubApps(): Promise<Protocol.Page.GetSiblingSubAppsResponse>;
 
         /**
          * @experimental
@@ -4918,6 +4930,31 @@ export namespace ProtocolProxyApi {
         clearTrustTokens(params: Protocol.Storage.ClearTrustTokensRequest): Promise<Protocol.Storage.ClearTrustTokensResponse>;
 
         /**
+         * Returns all stored Private Verification Tokens for the current browsing
+         * context.
+         * @experimental
+         */
+        getPrivateVerificationTokens(): Promise<Protocol.Storage.GetPrivateVerificationTokensResponse>;
+
+        /**
+         * Removes all Private Verification Tokens issued by the provided issuerOrigin.
+         * @experimental
+         */
+        clearPrivateVerificationTokens(params: Protocol.Storage.ClearPrivateVerificationTokensRequest): Promise<void>;
+
+        /**
+         * Removes a specific Private Verification Token by its ID.
+         * @experimental
+         */
+        deletePrivateVerificationToken(params: Protocol.Storage.DeletePrivateVerificationTokenRequest): Promise<void>;
+
+        /**
+         * Set tracking for Private Verification Tokens.
+         * @experimental
+         */
+        setPrivateVerificationTokensTracking(params: Protocol.Storage.SetPrivateVerificationTokensTrackingRequest): Promise<void>;
+
+        /**
          * Set tracking for a storage key's buckets.
          * @experimental
          */
@@ -4965,6 +5002,12 @@ export namespace ProtocolProxyApi {
         on(event: 'storageBucketCreatedOrUpdated', listener: (params: Protocol.Storage.StorageBucketCreatedOrUpdatedEvent) => void): void;
 
         on(event: 'storageBucketDeleted', listener: (params: Protocol.Storage.StorageBucketDeletedEvent) => void): void;
+
+        /**
+         * Private Verification Tokens have been stored or deleted.
+         * @experimental
+         */
+        on(event: 'privateVerificationTokensUpdated', listener: () => void): void;
 
     }
 
