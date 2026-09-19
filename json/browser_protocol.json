@@ -30859,6 +30859,12 @@
                             "type": "boolean"
                         },
                         {
+                            "name": "debugging",
+                            "description": "If true, indicates that the tool is intended for debugging and developer tooling rather than end-user interactions.",
+                            "optional": true,
+                            "type": "boolean"
+                        },
+                        {
                             "name": "autosubmit",
                             "description": "If the declarative tool was declared with the autosubmit attribute.",
                             "optional": true,

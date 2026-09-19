@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1701330 — _2026-09-19T04:33:58.000Z_
+######  Diff: [`a3ab2d1...f20a7d4`](https://github.com/ChromeDevTools/devtools-protocol/compare/a3ab2d1...f20a7d4)
+
+```diff
+@@ domains/WebMCP.pdl:19 @@ experimental domain WebMCP
+       optional boolean untrustedContent
+       # A hint indicating that executing the tool will result in consequential actions, ex: booking a flight, transferring money.
+       optional boolean consequential
++      # If true, indicates that the tool is intended for debugging and developer tooling rather than end-user interactions.
++      optional boolean debugging
+       # If the declarative tool was declared with the autosubmit attribute.
+       optional boolean autosubmit
+```
+
 ## Roll protocol to r1700460 — _2026-09-18T04:38:05.000Z_
-######  Diff: [`bab8418...106bb1a`](https://github.com/ChromeDevTools/devtools-protocol/compare/bab8418...106bb1a)
+######  Diff: [`bab8418...a3ab2d1`](https://github.com/ChromeDevTools/devtools-protocol/compare/bab8418...a3ab2d1)
 
 ```diff
 @@ domains/Overlay.pdl:116 @@ experimental domain Overlay

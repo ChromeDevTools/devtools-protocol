@@ -22128,6 +22128,10 @@ export namespace Protocol {
              */
             consequential?: boolean;
             /**
+             * If true, indicates that the tool is intended for debugging and developer tooling rather than end-user interactions.
+             */
+            debugging?: boolean;
+            /**
              * If the declarative tool was declared with the autosubmit attribute.
              */
             autosubmit?: boolean;
