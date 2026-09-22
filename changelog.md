@@ -1,7 +1,69 @@
 
 
+## Roll protocol to r1702366 — _2026-09-22T04:36:06.000Z_
+######  Diff: [`1cab90f...246de0b`](https://github.com/ChromeDevTools/devtools-protocol/compare/1cab90f...246de0b)
+
+```diff
+@@ domains/Audits.pdl:36 @@ experimental domain Audits
+       ExcludeSameSiteLax
+       ExcludeSameSiteStrict
+       ExcludeDomainNonASCII
+-      ExcludeThirdPartyCookieBlockedInFirstPartySet
+       ExcludeThirdPartyPhaseout
+       ExcludePortMismatch
+       ExcludeSchemeMismatch
+diff --git a/pdl/domains/Network.pdl b/pdl/domains/Network.pdl
+index 571bd165..0161e058 100644
+--- a/pdl/domains/Network.pdl
++++ b/pdl/domains/Network.pdl
+@@ -630,9 +630,6 @@ domain Network
+       UserPreferences
+       # The cookie was blocked due to third-party cookie phaseout.
+       ThirdPartyPhaseout
+-      # The cookie was blocked by third-party cookie blocking between sites in
+-      # the same First-Party Set.
+-      ThirdPartyBlockedInFirstPartySet
+       # The syntax of the Set-Cookie header of the response was invalid.
+       SyntaxError
+       # The scheme of the connection is not allowed to store cookies.
+@@ -699,9 +696,6 @@ domain Network
+       UserPreferences
+       # The cookie was blocked due to third-party cookie phaseout.
+       ThirdPartyPhaseout
+-      # The cookie was blocked by third-party cookie blocking between sites in
+-      # the same First-Party Set.
+-      ThirdPartyBlockedInFirstPartySet
+       # An unknown error was encountered when trying to send this cookie.
+       UnknownError
+       # The cookie had the "SameSite=Strict" attribute but came from a response
+diff --git a/pdl/domains/Storage.pdl b/pdl/domains/Storage.pdl
+index 7702942c..444d06eb 100644
+--- a/pdl/domains/Storage.pdl
++++ b/pdl/domains/Storage.pdl
+@@ -321,19 +321,3 @@ experimental domain Storage
+ 
+   # Private Verification Tokens have been stored or deleted.
+   experimental event privateVerificationTokensUpdated
+-
+-  # A single Related Website Set object.
+-  experimental type RelatedWebsiteSet extends object
+-    properties
+-      # The primary site of this set, along with the ccTLDs if there is any.
+-      array of string primarySites
+-      # The associated sites of this set, along with the ccTLDs if there is any.
+-      array of string associatedSites
+-      # The service sites of this set, along with the ccTLDs if there is any.
+-      array of string serviceSites
+-
+-  # Returns the effective Related Website Sets in use by this profile for the browser
+-  # session. The effective Related Website Sets will not change during a browser session.
+-  experimental command getRelatedWebsiteSets
+-    returns
+-      array of RelatedWebsiteSet sets
+```
+
 ## Roll protocol to r1701330 — _2026-09-19T04:33:58.000Z_
-######  Diff: [`a3ab2d1...f20a7d4`](https://github.com/ChromeDevTools/devtools-protocol/compare/a3ab2d1...f20a7d4)
+######  Diff: [`a3ab2d1...1cab90f`](https://github.com/ChromeDevTools/devtools-protocol/compare/a3ab2d1...1cab90f)
 
 ```diff
 @@ domains/WebMCP.pdl:19 @@ experimental domain WebMCP

@@ -1210,7 +1210,6 @@
                         "ExcludeSameSiteLax",
                         "ExcludeSameSiteStrict",
                         "ExcludeDomainNonASCII",
-                        "ExcludeThirdPartyCookieBlockedInFirstPartySet",
                         "ExcludeThirdPartyPhaseout",
                         "ExcludePortMismatch",
                         "ExcludeSchemeMismatch"
@@ -17029,7 +17028,6 @@
                         "SameSiteNoneInsecure",
                         "UserPreferences",
                         "ThirdPartyPhaseout",
-                        "ThirdPartyBlockedInFirstPartySet",
                         "SyntaxError",
                         "SchemeNotSupported",
                         "OverwriteSecure",
@@ -17059,7 +17057,6 @@
                         "SameSiteNoneInsecure",
                         "UserPreferences",
                         "ThirdPartyPhaseout",
-                        "ThirdPartyBlockedInFirstPartySet",
                         "UnknownError",
                         "SchemefulSameSiteStrict",
                         "SchemefulSameSiteLax",
@@ -27872,38 +27869,6 @@
                             "$ref": "StorageBucketsDurability"
                         }
                     ]
-                },
-                {
-                    "id": "RelatedWebsiteSet",
-                    "description": "A single Related Website Set object.",
-                    "experimental": true,
-                    "type": "object",
-                    "properties": [
-                        {
-                            "name": "primarySites",
-                            "description": "The primary site of this set, along with the ccTLDs if there is any.",
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        },
-                        {
-                            "name": "associatedSites",
-                            "description": "The associated sites of this set, along with the ccTLDs if there is any.",
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        },
-                        {
-                            "name": "serviceSites",
-                            "description": "The service sites of this set, along with the ccTLDs if there is any.",
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
                 }
             ],
             "commands": [
@@ -28285,20 +28250,6 @@
                             "type": "array",
                             "items": {
                                 "type": "string"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "getRelatedWebsiteSets",
-                    "description": "Returns the effective Related Website Sets in use by this profile for the browser\nsession. The effective Related Website Sets will not change during a browser session.",
-                    "experimental": true,
-                    "returns": [
-                        {
-                            "name": "sets",
-                            "type": "array",
-                            "items": {
-                                "$ref": "RelatedWebsiteSet"
                             }
                         }
                     ]

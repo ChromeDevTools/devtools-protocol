@@ -3574,7 +3574,7 @@ export namespace Protocol {
             frameId: Page.FrameId;
         }
 
-        export type CookieExclusionReason = ('ExcludeSameSiteUnspecifiedTreatedAsLax' | 'ExcludeSameSiteNoneInsecure' | 'ExcludeSameSiteLax' | 'ExcludeSameSiteStrict' | 'ExcludeDomainNonASCII' | 'ExcludeThirdPartyCookieBlockedInFirstPartySet' | 'ExcludeThirdPartyPhaseout' | 'ExcludePortMismatch' | 'ExcludeSchemeMismatch');
+        export type CookieExclusionReason = ('ExcludeSameSiteUnspecifiedTreatedAsLax' | 'ExcludeSameSiteNoneInsecure' | 'ExcludeSameSiteLax' | 'ExcludeSameSiteStrict' | 'ExcludeDomainNonASCII' | 'ExcludeThirdPartyPhaseout' | 'ExcludePortMismatch' | 'ExcludeSchemeMismatch');
 
         export type CookieWarningReason = ('WarnSameSiteUnspecifiedCrossSiteContext' | 'WarnSameSiteNoneInsecure' | 'WarnSameSiteUnspecifiedLaxAllowUnsafe' | 'WarnSameSiteStrictLaxDowngradeStrict' | 'WarnSameSiteStrictCrossDowngradeStrict' | 'WarnSameSiteStrictCrossDowngradeLax' | 'WarnSameSiteLaxCrossDowngradeStrict' | 'WarnSameSiteLaxCrossDowngradeLax' | 'WarnAttributeValueExceedsMaxSize' | 'WarnDomainNonASCII' | 'WarnThirdPartyPhaseout' | 'WarnCrossSiteRedirectDowngradeChangesInclusion' | 'WarnDeprecationTrialMetadata' | 'WarnThirdPartyCookieHeuristic');
 
@@ -13473,13 +13473,13 @@ export namespace Protocol {
          * Types of reasons why a cookie may not be stored from a response.
          * @experimental
          */
-        export type SetCookieBlockedReason = ('SecureOnly' | 'SameSiteStrict' | 'SameSiteLax' | 'SameSiteUnspecifiedTreatedAsLax' | 'SameSiteNoneInsecure' | 'UserPreferences' | 'ThirdPartyPhaseout' | 'ThirdPartyBlockedInFirstPartySet' | 'SyntaxError' | 'SchemeNotSupported' | 'OverwriteSecure' | 'InvalidDomain' | 'InvalidPrefix' | 'UnknownError' | 'SchemefulSameSiteStrict' | 'SchemefulSameSiteLax' | 'SchemefulSameSiteUnspecifiedTreatedAsLax' | 'NameValuePairExceedsMaxSize' | 'DisallowedCharacter' | 'NoCookieContent');
+        export type SetCookieBlockedReason = ('SecureOnly' | 'SameSiteStrict' | 'SameSiteLax' | 'SameSiteUnspecifiedTreatedAsLax' | 'SameSiteNoneInsecure' | 'UserPreferences' | 'ThirdPartyPhaseout' | 'SyntaxError' | 'SchemeNotSupported' | 'OverwriteSecure' | 'InvalidDomain' | 'InvalidPrefix' | 'UnknownError' | 'SchemefulSameSiteStrict' | 'SchemefulSameSiteLax' | 'SchemefulSameSiteUnspecifiedTreatedAsLax' | 'NameValuePairExceedsMaxSize' | 'DisallowedCharacter' | 'NoCookieContent');
 
         /**
          * Types of reasons why a cookie may not be sent with a request.
          * @experimental
          */
-        export type CookieBlockedReason = ('SecureOnly' | 'NotOnPath' | 'DomainMismatch' | 'SameSiteStrict' | 'SameSiteLax' | 'SameSiteUnspecifiedTreatedAsLax' | 'SameSiteNoneInsecure' | 'UserPreferences' | 'ThirdPartyPhaseout' | 'ThirdPartyBlockedInFirstPartySet' | 'UnknownError' | 'SchemefulSameSiteStrict' | 'SchemefulSameSiteLax' | 'SchemefulSameSiteUnspecifiedTreatedAsLax' | 'NameValuePairExceedsMaxSize' | 'PortMismatch' | 'SchemeMismatch' | 'AnonymousContext');
+        export type CookieBlockedReason = ('SecureOnly' | 'NotOnPath' | 'DomainMismatch' | 'SameSiteStrict' | 'SameSiteLax' | 'SameSiteUnspecifiedTreatedAsLax' | 'SameSiteNoneInsecure' | 'UserPreferences' | 'ThirdPartyPhaseout' | 'UnknownError' | 'SchemefulSameSiteStrict' | 'SchemefulSameSiteLax' | 'SchemefulSameSiteUnspecifiedTreatedAsLax' | 'NameValuePairExceedsMaxSize' | 'PortMismatch' | 'SchemeMismatch' | 'AnonymousContext');
 
         /**
          * Types of reasons why a cookie should have been blocked by 3PCD but is exempted for the request.
@@ -20228,25 +20228,6 @@ export namespace Protocol {
             durability: StorageBucketsDurability;
         }
 
-        /**
-         * A single Related Website Set object.
-         * @experimental
-         */
-        export interface RelatedWebsiteSet {
-            /**
-             * The primary site of this set, along with the ccTLDs if there is any.
-             */
-            primarySites: string[];
-            /**
-             * The associated sites of this set, along with the ccTLDs if there is any.
-             */
-            associatedSites: string[];
-            /**
-             * The service sites of this set, along with the ccTLDs if there is any.
-             */
-            serviceSites: string[];
-        }
-
         export interface GetStorageKeyForFrameRequest {
             frameId: Page.FrameId;
         }
@@ -20458,10 +20439,6 @@ export namespace Protocol {
 
         export interface RunBounceTrackingMitigationsResponse {
             deletedSites: string[];
-        }
-
-        export interface GetRelatedWebsiteSetsResponse {
-            sets: RelatedWebsiteSet[];
         }
 
         /**

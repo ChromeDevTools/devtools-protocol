@@ -5911,15 +5911,6 @@ export namespace ProtocolMapping {
             returnType: Protocol.Storage.RunBounceTrackingMitigationsResponse;
         };
         /**
-         * Returns the effective Related Website Sets in use by this profile for the browser
-         * session. The effective Related Website Sets will not change during a browser session.
-         * @experimental
-         */
-        'Storage.getRelatedWebsiteSets': {
-            paramsType: [];
-            returnType: Protocol.Storage.GetRelatedWebsiteSetsResponse;
-        };
-        /**
          * Returns information about the system.
          */
         'SystemInfo.getInfo': {

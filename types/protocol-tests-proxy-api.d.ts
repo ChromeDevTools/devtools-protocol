@@ -5359,13 +5359,6 @@ export namespace ProtocolTestsProxyApi {
         runBounceTrackingMitigations(): Promise<{id: number, result: Protocol.Storage.RunBounceTrackingMitigationsResponse, sessionId: string}>;
 
         /**
-         * Returns the effective Related Website Sets in use by this profile for the browser
-         * session. The effective Related Website Sets will not change during a browser session.
-         * @experimental
-         */
-        getRelatedWebsiteSets(): Promise<{id: number, result: Protocol.Storage.GetRelatedWebsiteSetsResponse, sessionId: string}>;
-
-        /**
          * A cache's contents have been modified.
          */
         onCacheStorageContentUpdated(listener: (event: { params: Protocol.Storage.CacheStorageContentUpdatedEvent }) => void): void;
