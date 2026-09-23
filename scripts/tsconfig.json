@@ -10,5 +10,5 @@
     "erasableSyntaxOnly": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["protocol-dts-generator.ts"]
+  "include": ["../types/*.d.ts"]
 }

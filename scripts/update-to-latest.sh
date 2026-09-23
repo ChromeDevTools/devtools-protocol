@@ -73,6 +73,9 @@ python3 "$convert_script" --map_binary_to_string=true "$protocol_repo_path/pdl/j
 # The conversion script leaves json files next to the PDLs. Because reasons.
 rm -f -- "$protocol_repo_path"/pdl/*.json
 
+# generate typescript definitions
+npm --prefix "$protocol_repo_path/scripts" run build-protocol-dts
+
 # => cd into protocol repo
 cd "$protocol_repo_path" || exit 1
 
@@ -93,7 +96,6 @@ if ! git diff --no-ext-diff --quiet --exit-code; then
 	# generate changelog
 	cd "$protocol_repo_path/scripts" || exit 1
 	npm install
-	npm run build-protocol-dts
 	npm run changelog
 
 	# bump npm version
