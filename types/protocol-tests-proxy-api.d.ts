@@ -5323,6 +5323,13 @@ export namespace ProtocolTestsProxyApi {
         getPrivateVerificationTokens(): Promise<{id: number, result: Protocol.Storage.GetPrivateVerificationTokensResponse, sessionId: string}>;
 
         /**
+         * Returns the configured Private Verification Tokens issuers and their redeemer
+         * origins.
+         * @experimental
+         */
+        getPrivateVerificationTokensIssuerConfigs(): Promise<{id: number, result: Protocol.Storage.GetPrivateVerificationTokensIssuerConfigsResponse, sessionId: string}>;
+
+        /**
          * Removes all Private Verification Tokens issued by the provided issuerOrigin.
          * @experimental
          */

@@ -17129,6 +17129,10 @@ export namespace Protocol {
              * Frame swap timestamp.
              */
             timestamp?: Network.TimeSinceEpoch;
+            /**
+             * Frame swap timestamp as monotonic time.
+             */
+            monotonicTimestamp?: Network.MonotonicTime;
         }
 
         /**
@@ -20206,6 +20210,21 @@ export namespace Protocol {
             token: string;
         }
 
+        /**
+         * Configuration for a Private Verification Tokens issuer.
+         * @experimental
+         */
+        export interface PrivateVerificationTokensIssuerConfig {
+            /**
+             * Origin of the token issuer.
+             */
+            issuerOrigin: string;
+            /**
+             * Origins authorized to redeem tokens from this issuer.
+             */
+            redeemerOrigins: string[];
+        }
+
         export type StorageBucketsDurability = ('relaxed' | 'strict');
 
         export interface StorageBucket {
@@ -20414,6 +20433,10 @@ export namespace Protocol {
 
         export interface GetPrivateVerificationTokensResponse {
             tokens: PrivateVerificationToken[];
+        }
+
+        export interface GetPrivateVerificationTokensIssuerConfigsResponse {
+            configs: PrivateVerificationTokensIssuerConfig[];
         }
 
         export interface ClearPrivateVerificationTokensRequest {

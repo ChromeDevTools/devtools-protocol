@@ -1,7 +1,54 @@
 
 
+## Roll protocol to r1704034 — _2026-09-24T04:37:35.000Z_
+######  Diff: [`95987cc...93b55a0`](https://github.com/ChromeDevTools/devtools-protocol/compare/95987cc...93b55a0)
+
+```diff
+@@ domains/Page.pdl:388 @@ domain Page
+       number scrollOffsetY
+       # Frame swap timestamp.
+       optional Network.TimeSinceEpoch timestamp
++      # Frame swap timestamp as monotonic time.
++      optional Network.MonotonicTime monotonicTimestamp
+ 
+   # Javascript dialog type.
+   type DialogType extends string
+diff --git a/pdl/domains/Storage.pdl b/pdl/domains/Storage.pdl
+index 444d06eb..91f2641e 100644
+--- a/pdl/domains/Storage.pdl
++++ b/pdl/domains/Storage.pdl
+@@ -58,6 +58,14 @@ experimental domain Storage
+       # Base64-encoded serialized token.
+       string token
+ 
++  # Configuration for a Private Verification Tokens issuer.
++  experimental type PrivateVerificationTokensIssuerConfig extends object
++    properties
++      # Origin of the token issuer.
++      string issuerOrigin
++      # Origins authorized to redeem tokens from this issuer.
++      array of string redeemerOrigins
++
+ 
+ 
+   type StorageBucketsDurability extends string
+@@ -234,6 +242,12 @@ experimental domain Storage
+     returns
+       array of PrivateVerificationToken tokens
+ 
++  # Returns the configured Private Verification Tokens issuers and their redeemer
++  # origins.
++  experimental command getPrivateVerificationTokensIssuerConfigs
++    returns
++      array of PrivateVerificationTokensIssuerConfig configs
++
+   # Removes all Private Verification Tokens issued by the provided issuerOrigin.
+   experimental command clearPrivateVerificationTokens
+     parameters
+```
+
 ## Roll protocol to r1702366 — _2026-09-22T04:36:06.000Z_
-######  Diff: [`1cab90f...246de0b`](https://github.com/ChromeDevTools/devtools-protocol/compare/1cab90f...246de0b)
+######  Diff: [`1cab90f...95987cc`](https://github.com/ChromeDevTools/devtools-protocol/compare/1cab90f...95987cc)
 
 ```diff
 @@ domains/Audits.pdl:36 @@ experimental domain Audits
