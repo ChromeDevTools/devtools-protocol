@@ -1,7 +1,24 @@
 
 
+## Roll protocol to r1704684 — _2026-09-25T10:37:33.000Z_
+######  Diff: [`41fafef...0796427`](https://github.com/ChromeDevTools/devtools-protocol/compare/41fafef...0796427)
+
+```diff
+@@ domains/Preload.pdl:287 @@ experimental domain Preload
+       PreloadingAttemptKey key
+       PreloadPipelineId pipelineId
+       PreloadingStatus status
++      # The action currently performed by this attempt. This differs from
++      # `key.action` after a prerender-until-script attempt is upgraded in place
++      # to a full prerender.
++      optional SpeculationAction effectiveAction
+       optional PrerenderFinalStatus prerenderStatus
+       # This is used to give users more information about the name of Mojo interface
+       # that is incompatible with prerender and has caused the cancellation of the attempt.
+```
+
 ## Roll protocol to r1704034 — _2026-09-24T04:37:35.000Z_
-######  Diff: [`95987cc...93b55a0`](https://github.com/ChromeDevTools/devtools-protocol/compare/95987cc...93b55a0)
+######  Diff: [`95987cc...692abe8`](https://github.com/ChromeDevTools/devtools-protocol/compare/95987cc...692abe8)
 
 ```diff
 @@ domains/Page.pdl:388 @@ domain Page
@@ -43650,217 +43667,4 @@ index 8dad9c98..ee14676c 100644
  
    # Shared storage was accessed by the associated page.
    # The following parameters are included in all events.
-```
-
-## Roll protocol to r1248698 — _2024-01-18T12:05:32.000Z_
-######  Diff: [`0693202...6d5e973`](https://github.com/ChromeDevTools/devtools-protocol/compare/0693202...6d5e973)
-
-```diff
-@@ browser_protocol.pdl:1299 @@ domain Browser
-       optional BrowserContextID browserContextId
- 
-   # Reset all permission management for all origins.
--  experimental command resetPermissions
-+  command resetPermissions
-     parameters
-       # BrowserContext to reset permissions. When omitted, default browser context is used.
-       optional BrowserContextID browserContextId
-@@ -2737,7 +2737,7 @@ domain DOM
-   # Scrolls the specified rect of the given node into view if not already visible.
-   # Note: exactly one between nodeId, backendNodeId and objectId should be passed
-   # to identify the node.
--  experimental command scrollIntoViewIfNeeded
-+  command scrollIntoViewIfNeeded
-     parameters
-       # Identifier of the node.
-       optional NodeId nodeId
-@@ -4045,7 +4045,7 @@ domain Emulation
-       optional boolean enabled
- 
-   # Enables CPU throttling to emulate slow CPUs.
--  experimental command setCPUThrottlingRate
-+  command setCPUThrottlingRate
-     parameters
-       # Throttling rate as a slowdown factor (1 is no throttle, 2 is 2x slowdown, etc).
-       number rate
-@@ -4124,7 +4124,7 @@ domain Emulation
-       optional array of MediaFeature features
- 
-   # Emulates the given vision deficiency.
--  experimental command setEmulatedVisionDeficiency
-+  command setEmulatedVisionDeficiency
-     parameters
-       # Vision deficiency to emulate. Order: best-effort emulations come first, followed by any
-       # physiologically accurate emulations for medically recognized color vision deficiencies.
-@@ -4173,7 +4173,7 @@ domain Emulation
-       SensorReading reading
- 
-   # Overrides the Idle state.
--  experimental command setIdleOverride
-+  command setIdleOverride
-     parameters
-       # Mock isUserActive
-       boolean isUserActive
-@@ -4181,7 +4181,7 @@ domain Emulation
-       boolean isScreenUnlocked
- 
-   # Clears Idle state overrides.
--  experimental command clearIdleOverride
-+  command clearIdleOverride
- 
-   # Overrides value returned by the javascript navigator object.
-   experimental deprecated command setNavigatorOverrides
-@@ -4234,7 +4234,7 @@ domain Emulation
-       optional string locale
- 
-   # Overrides default host system timezone with the specified one.
--  experimental command setTimezoneOverride
-+  command setTimezoneOverride
-     parameters
-       # The timezone identifier. If empty, disables the override and
-       # restores default host system timezone.
-@@ -6376,7 +6376,7 @@ domain Network
-       array of string urls
- 
-   # Toggles ignoring of service worker for each request.
--  experimental command setBypassServiceWorker
-+  command setBypassServiceWorker
-     parameters
-       # Bypass service worker and load from network.
-       boolean bypass
-@@ -8400,7 +8400,7 @@ domain Page
-       boolean enabled
- 
-   # Enable page Content Security Policy by-passing.
--  experimental command setBypassCSP
-+  command setBypassCSP
-     parameters
-       # Whether to bypass page CSP.
-       boolean enabled
-@@ -8512,7 +8512,7 @@ domain Page
-       optional number accuracy
- 
-   # Controls whether page will emit lifecycle events.
--  experimental command setLifecycleEventsEnabled
-+  command setLifecycleEventsEnabled
-     parameters
-       # If true, starts emitting lifecycle events.
-       boolean enabled
-@@ -8552,7 +8552,7 @@ domain Page
-   experimental command crash
- 
-   # Tries to close page, running its beforeunload hooks, if any.
--  experimental command close
-+  command close
- 
-   # Tries to update the web lifecycle state of the page.
-   # It will transition the page to the given state according to:
-@@ -8622,7 +8622,7 @@ domain Page
-   # Intercept file chooser requests and transfer control to protocol clients.
-   # When file chooser interception is enabled, native file chooser dialog is not shown.
-   # Instead, a protocol event `Page.fileChooserOpened` is emitted.
--  experimental command setInterceptFileChooserDialog
-+  command setInterceptFileChooserDialog
-     parameters
-       boolean enabled
- 
-@@ -9308,7 +9308,7 @@ domain Security
-   command enable
- 
-   # Enable/disable whether all certificate errors should be ignored.
--  experimental command setIgnoreCertificateErrors
-+  command setIgnoreCertificateErrors
-     parameters
-       # If true, all certificate errors will be ignored.
-       boolean ignore
-@@ -10374,23 +10374,23 @@ domain Target
- 
-   # Creates a new empty BrowserContext. Similar to an incognito profile but you can have more than
-   # one.
--  experimental command createBrowserContext
-+  command createBrowserContext
-     parameters
-       # If specified, disposes this context when debugging session disconnects.
--      optional boolean disposeOnDetach
-+      experimental optional boolean disposeOnDetach
-       # Proxy server, similar to the one passed to --proxy-server
--      optional string proxyServer
-+      experimental optional string proxyServer
-       # Proxy bypass list, similar to the one passed to --proxy-bypass-list
--      optional string proxyBypassList
-+      experimental optional string proxyBypassList
-       # An optional list of origins to grant unlimited cross-origin access to.
-       # Parts of the URL other than those constituting origin are ignored.
--      optional array of string originsWithUniversalNetworkAccess
-+      experimental optional array of string originsWithUniversalNetworkAccess
-     returns
-       # The id of the context created.
-       Browser.BrowserContextID browserContextId
- 
-   # Returns all browser contexts created with `Target.createBrowserContext` method.
--  experimental command getBrowserContexts
-+  command getBrowserContexts
-     returns
-       # An array of browser context ids.
-       array of Browser.BrowserContextID browserContextIds
-@@ -10430,7 +10430,7 @@ domain Target
- 
-   # Deletes a BrowserContext. All the belonging pages will be closed without calling their
-   # beforeunload hooks.
--  experimental command disposeBrowserContext
-+  command disposeBrowserContext
-     parameters
-       Browser.BrowserContextID browserContextId
- 
-@@ -10468,7 +10468,7 @@ domain Target
-   # automatically detaches from all currently attached targets.
-   # This also clears all targets added by `autoAttachRelated` from the list of targets to watch
-   # for creation of related targets.
--  experimental command setAutoAttach
-+  command setAutoAttach
-     parameters
-       # Whether to auto-attach to related targets.
-       boolean autoAttach
-@@ -10478,7 +10478,7 @@ domain Target
-       # Enables "flat" access to the session via specifying sessionId attribute in the commands.
-       # We plan to make this the default, deprecate non-flattened mode,
-       # and eventually retire it. See crbug.com/991325.
--      optional boolean flatten
-+      experimental optional boolean flatten
-       # Only targets matching filter will be attached.
-       experimental optional TargetFilter filter
- 
-diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
-index 4754f17c..8dad9c98 100644
---- a/pdl/js_protocol.pdl
-+++ b/pdl/js_protocol.pdl
-@@ -1665,7 +1665,7 @@ domain Runtime
-   # Binding function takes exactly one argument, this argument should be string,
-   # in case of any other input, function throws an exception.
-   # Each binding function call produces Runtime.bindingCalled notification.
--  experimental command addBinding
-+  command addBinding
-     parameters
-       string name
-       # If specified, the binding would only be exposed to the specified
-@@ -1675,17 +1675,17 @@ domain Runtime
-       # Deprecated in favor of `executionContextName` due to an unclear use case
-       # and bugs in implementation (crbug.com/1169639). `executionContextId` will be
-       # removed in the future.
--      deprecated optional ExecutionContextId executionContextId
-+      experimental deprecated optional ExecutionContextId executionContextId
-       # If specified, the binding is exposed to the executionContext with
-       # matching name, even for contexts created after the binding is added.
-       # See also `ExecutionContext.name` and `worldName` parameter to
-       # `Page.addScriptToEvaluateOnNewDocument`.
-       # This parameter is mutually exclusive with `executionContextId`.
--      experimental optional string executionContextName
-+      optional string executionContextName
- 
-   # This method does not remove binding function from global object but
-   # unsubscribes current runtime agent from Runtime.bindingCalled notifications.
--  experimental command removeBinding
-+  command removeBinding
-     parameters
-       string name
 ```

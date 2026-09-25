@@ -19341,6 +19341,12 @@ export namespace Protocol {
             key: PreloadingAttemptKey;
             pipelineId: PreloadPipelineId;
             status: PreloadingStatus;
+            /**
+             * The action currently performed by this attempt. This differs from
+             * `key.action` after a prerender-until-script attempt is upgraded in place
+             * to a full prerender.
+             */
+            effectiveAction?: SpeculationAction;
             prerenderStatus?: PrerenderFinalStatus;
             /**
              * This is used to give users more information about the name of Mojo interface
