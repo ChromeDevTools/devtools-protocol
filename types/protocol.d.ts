@@ -9777,6 +9777,11 @@ export namespace Protocol {
             Default = 'default',
         }
 
+        export const enum SetDeviceMetricsOverrideRequestTextLayoutMode {
+            Mobile = 'mobile',
+            Default = 'default',
+        }
+
         export interface SetDeviceMetricsOverrideRequest {
             /**
              * Overriding width value in pixels (minimum 0, maximum 10000000). 0 disables the override.
@@ -9871,6 +9876,12 @@ export namespace Protocol {
              * @experimental
              */
             viewportMeta?: ('enable' | 'default');
+            /**
+             * Text layout mode. Default: `default`. Note: if `mobile` is `true`,
+             * mobile text layout mode (text autosizing) is always enabled.
+             * @experimental
+             */
+            textLayoutMode?: ('mobile' | 'default');
         }
 
         export interface SetDevicePostureOverrideRequest {

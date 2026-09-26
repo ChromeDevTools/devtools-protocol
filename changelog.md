@@ -1,7 +1,28 @@
 
 
+## Roll protocol to r1704951 — _2026-09-26T04:34:54.000Z_
+######  Diff: [`1474833...999e14b`](https://github.com/ChromeDevTools/devtools-protocol/compare/1474833...999e14b)
+
+```diff
+@@ domains/Emulation.pdl:330 @@ domain Emulation
+         # Restores the default viewport meta behavior (disabled on desktop,
+         # enabled on mobile).
+         default
++      # Text layout mode. Default: `default`. Note: if `mobile` is `true`,
++      # mobile text layout mode (text autosizing) is always enabled.
++      experimental optional enum textLayoutMode
++        # Enables mobile text layout mode (text autosizing / CSS text-size-adjust).
++        mobile
++        # Restores the default text layout mode behavior (disabled on desktop,
++        # enabled on mobile).
++        default
+ 
+   # Start reporting the given posture value to the Device Posture API.
+   # This override can also be set in setDeviceMetricsOverride().
+```
+
 ## Roll protocol to r1704684 — _2026-09-25T10:37:33.000Z_
-######  Diff: [`41fafef...0796427`](https://github.com/ChromeDevTools/devtools-protocol/compare/41fafef...0796427)
+######  Diff: [`41fafef...1474833`](https://github.com/ChromeDevTools/devtools-protocol/compare/41fafef...1474833)
 
 ```diff
 @@ domains/Preload.pdl:287 @@ experimental domain Preload
@@ -43563,108 +43584,4 @@ index 8dad9c98..ee14676c 100644
        Manifest
        Ping
        PluginData
-```
-
-## Roll protocol to r1249784 — _2024-01-20T04:27:08.000Z_
-######  Diff: [`c65bd7c...17f79a9`](https://github.com/ChromeDevTools/devtools-protocol/compare/c65bd7c...17f79a9)
-
-```diff
-@@ browser_protocol.pdl:9521 @@ experimental domain Storage
-       string issuerOrigin
-       number count
- 
-+  # Protected audience interest group auction identifier.
-+  type InterestGroupAuctionId extends string
-+
-   # Enum of interest group access types.
-   type InterestGroupAccessType extends string
-     enum
-@@ -9532,8 +9535,25 @@ experimental domain Storage
-       win
-       additionalBid
-       additionalBidWin
-+      topLevelBid
-+      topLevelAdditionalBid
-       clear
- 
-+  # Enum of auction events.
-+  type InterestGroupAuctionEventType extends string
-+    enum
-+      started
-+      configResolved
-+
-+  # Enum of network fetches auctions can do.
-+  type InterestGroupAuctionFetchType extends string
-+    enum
-+      bidderJs
-+      bidderWasm
-+      sellerJs
-+      bidderTrustedSignals
-+      sellerTrustedSignals
-+
-   # Ad advertising element inside an interest group.
-   type InterestGroupAd extends object
-     properties
-@@ -9813,6 +9833,12 @@ experimental domain Storage
-     parameters
-       boolean enable
- 
-+  # Enables/Disables issuing of interestGroupAuctionEventOccurred and
-+  # interestGroupAuctionNetworkRequestCreated.
-+  experimental command setInterestGroupAuctionTracking
-+    parameters
-+      boolean enable
-+
-   # Gets metadata for an origin's shared storage.
-   experimental command getSharedStorageMetadata
-     parameters
-@@ -9920,13 +9946,47 @@ experimental domain Storage
-       # Storage bucket to update.
-       string bucketId
- 
--  # One of the interest groups was accessed by the associated page.
-+  # One of the interest groups was accessed. Note that these events are global
-+  # to all targets sharing an interest group store.
-   event interestGroupAccessed
-     parameters
-       Network.TimeSinceEpoch accessTime
-       InterestGroupAccessType type
-       string ownerOrigin
-       string name
-+      # For topLevelBid/topLevelAdditionalBid, and when appropriate,
-+      # win and additionalBidWin
-+      optional string componentSellerOrigin
-+      # For bid or somethingBid event, if done locally and not on a server.
-+      optional number bid
-+      optional string bidCurrency
-+      # For non-global events --- links to interestGroupAuctionEvent
-+      optional InterestGroupAuctionId uniqueAuctionId
-+
-+  # An auction involving interest groups is taking place. These events are
-+  # target-specific.
-+  event interestGroupAuctionEventOccurred
-+    parameters
-+      Network.TimeSinceEpoch eventTime
-+      InterestGroupAuctionEventType type
-+      InterestGroupAuctionId uniqueAuctionId
-+      # Set for child auctions.
-+      optional InterestGroupAuctionId parentAuctionId
-+      # Set for started and configResolved
-+      optional object auctionConfig
-+
-+  # Specifies which auctions a particular network fetch may be related to, and
-+  # in what role. Note that it is not ordered with respect to
-+  # Network.requestWillBeSent (but will happen before loadingFinished
-+  # loadingFailed).
-+  event interestGroupAuctionNetworkRequestCreated
-+    parameters
-+      InterestGroupAuctionFetchType type
-+      Network.RequestId requestId
-+      # This is the set of the auctions using the worklet that issued this
-+      # request.  In the case of trusted signals, it's possible that only some of
-+      # them actually care about the keys being queried.
-+      array of InterestGroupAuctionId auctions
- 
-   # Shared storage was accessed by the associated page.
-   # The following parameters are included in all events.
 ```

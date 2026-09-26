@@ -11603,6 +11603,17 @@
                                 "enable",
                                 "default"
                             ]
+                        },
+                        {
+                            "name": "textLayoutMode",
+                            "description": "Text layout mode. Default: `default`. Note: if `mobile` is `true`,\nmobile text layout mode (text autosizing) is always enabled.",
+                            "experimental": true,
+                            "optional": true,
+                            "type": "string",
+                            "enum": [
+                                "mobile",
+                                "default"
+                            ]
                         }
                     ]
                 },
