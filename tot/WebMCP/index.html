@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: WebMCP...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/WebMCP' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/WebMCP">WebMCP</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/WebMCP.enable">WebMCP.enable</a></li>
+        <li><a href="../../#/WebMCP.disable">WebMCP.disable</a></li>
+        <li><a href="../../#/WebMCP.invokeTool">WebMCP.invokeTool</a></li>
+        <li><a href="../../#/WebMCP.cancelInvocation">WebMCP.cancelInvocation</a></li>
+        <li><a href="../../#/WebMCP.toolsAdded">WebMCP.toolsAdded</a></li>
+        <li><a href="../../#/WebMCP.toolsRemoved">WebMCP.toolsRemoved</a></li>
+        <li><a href="../../#/WebMCP.toolInvoked">WebMCP.toolInvoked</a></li>
+        <li><a href="../../#/WebMCP.toolResponded">WebMCP.toolResponded</a></li>
+        <li><a href="../../#/WebMCP.Annotation">WebMCP.Annotation</a></li>
+        <li><a href="../../#/WebMCP.InvocationStatus">WebMCP.InvocationStatus</a></li>
+        <li><a href="../../#/WebMCP.Tool">WebMCP.Tool</a></li>
+        <li><a href="../../#/WebMCP.RemovedTool">WebMCP.RemovedTool</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

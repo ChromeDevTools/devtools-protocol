@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: HeadlessExperimental...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/HeadlessExperimental' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/HeadlessExperimental">HeadlessExperimental</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/HeadlessExperimental.beginFrame">HeadlessExperimental.beginFrame</a></li>
+        <li><a href="../../#/HeadlessExperimental.disable">HeadlessExperimental.disable</a></li>
+        <li><a href="../../#/HeadlessExperimental.enable">HeadlessExperimental.enable</a></li>
+        <li><a href="../../#/HeadlessExperimental.ScreenshotParams">HeadlessExperimental.ScreenshotParams</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

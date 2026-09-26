@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: Ads...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/Ads' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/Ads">Ads</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/Ads.getAdMetrics">Ads.getAdMetrics</a></li>
+        <li><a href="../../#/Ads.getAdScripts">Ads.getAdScripts</a></li>
+        <li><a href="../../#/Ads.AdFrameData">Ads.AdFrameData</a></li>
+        <li><a href="../../#/Ads.AdMetrics">Ads.AdMetrics</a></li>
+        <li><a href="../../#/Ads.AdScript">Ads.AdScript</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

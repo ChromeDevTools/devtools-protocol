@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: Input...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/Input' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/Input">Input</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/Input.dispatchDragEvent">Input.dispatchDragEvent</a></li>
+        <li><a href="../../#/Input.dispatchKeyEvent">Input.dispatchKeyEvent</a></li>
+        <li><a href="../../#/Input.insertText">Input.insertText</a></li>
+        <li><a href="../../#/Input.imeSetComposition">Input.imeSetComposition</a></li>
+        <li><a href="../../#/Input.dispatchMouseEvent">Input.dispatchMouseEvent</a></li>
+        <li><a href="../../#/Input.dispatchTouchEvent">Input.dispatchTouchEvent</a></li>
+        <li><a href="../../#/Input.cancelDragging">Input.cancelDragging</a></li>
+        <li><a href="../../#/Input.emulateTouchFromMouseEvent">Input.emulateTouchFromMouseEvent</a></li>
+        <li><a href="../../#/Input.setIgnoreInputEvents">Input.setIgnoreInputEvents</a></li>
+        <li><a href="../../#/Input.setInterceptDrags">Input.setInterceptDrags</a></li>
+        <li><a href="../../#/Input.synthesizePinchGesture">Input.synthesizePinchGesture</a></li>
+        <li><a href="../../#/Input.synthesizeScrollGesture">Input.synthesizeScrollGesture</a></li>
+        <li><a href="../../#/Input.synthesizeTapGesture">Input.synthesizeTapGesture</a></li>
+        <li><a href="../../#/Input.dragIntercepted">Input.dragIntercepted</a></li>
+        <li><a href="../../#/Input.TouchPoint">Input.TouchPoint</a></li>
+        <li><a href="../../#/Input.GestureSourceType">Input.GestureSourceType</a></li>
+        <li><a href="../../#/Input.MouseButton">Input.MouseButton</a></li>
+        <li><a href="../../#/Input.TimeSinceEpoch">Input.TimeSinceEpoch</a></li>
+        <li><a href="../../#/Input.DragDataItem">Input.DragDataItem</a></li>
+        <li><a href="../../#/Input.DragData">Input.DragData</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

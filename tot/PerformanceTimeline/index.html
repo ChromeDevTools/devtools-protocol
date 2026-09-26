@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: PerformanceTimeline...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/PerformanceTimeline' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/PerformanceTimeline">PerformanceTimeline</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/PerformanceTimeline.enable">PerformanceTimeline.enable</a></li>
+        <li><a href="../../#/PerformanceTimeline.timelineEventAdded">PerformanceTimeline.timelineEventAdded</a></li>
+        <li><a href="../../#/PerformanceTimeline.LargestContentfulPaint">PerformanceTimeline.LargestContentfulPaint</a></li>
+        <li><a href="../../#/PerformanceTimeline.LayoutShiftAttribution">PerformanceTimeline.LayoutShiftAttribution</a></li>
+        <li><a href="../../#/PerformanceTimeline.LayoutShift">PerformanceTimeline.LayoutShift</a></li>
+        <li><a href="../../#/PerformanceTimeline.TimelineEvent">PerformanceTimeline.TimelineEvent</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

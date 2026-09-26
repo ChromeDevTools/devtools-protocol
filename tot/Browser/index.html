@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: Browser...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/Browser' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/Browser">Browser</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/Browser.setPermission">Browser.setPermission</a></li>
+        <li><a href="../../#/Browser.grantPermissions">Browser.grantPermissions</a></li>
+        <li><a href="../../#/Browser.resetPermissions">Browser.resetPermissions</a></li>
+        <li><a href="../../#/Browser.setDownloadBehavior">Browser.setDownloadBehavior</a></li>
+        <li><a href="../../#/Browser.cancelDownload">Browser.cancelDownload</a></li>
+        <li><a href="../../#/Browser.close">Browser.close</a></li>
+        <li><a href="../../#/Browser.crash">Browser.crash</a></li>
+        <li><a href="../../#/Browser.crashGpuProcess">Browser.crashGpuProcess</a></li>
+        <li><a href="../../#/Browser.getVersion">Browser.getVersion</a></li>
+        <li><a href="../../#/Browser.getBrowserCommandLine">Browser.getBrowserCommandLine</a></li>
+        <li><a href="../../#/Browser.addMockCamera">Browser.addMockCamera</a></li>
+        <li><a href="../../#/Browser.getHistograms">Browser.getHistograms</a></li>
+        <li><a href="../../#/Browser.getHistogram">Browser.getHistogram</a></li>
+        <li><a href="../../#/Browser.getWindowBounds">Browser.getWindowBounds</a></li>
+        <li><a href="../../#/Browser.getWindowForTarget">Browser.getWindowForTarget</a></li>
+        <li><a href="../../#/Browser.setWindowBounds">Browser.setWindowBounds</a></li>
+        <li><a href="../../#/Browser.setContentsSize">Browser.setContentsSize</a></li>
+        <li><a href="../../#/Browser.setDockTile">Browser.setDockTile</a></li>
+        <li><a href="../../#/Browser.executeBrowserCommand">Browser.executeBrowserCommand</a></li>
+        <li><a href="../../#/Browser.addPrivacySandboxEnrollmentOverride">Browser.addPrivacySandboxEnrollmentOverride</a></li>
+        <li><a href="../../#/Browser.getGlobalPrivacyControl">Browser.getGlobalPrivacyControl</a></li>
+        <li><a href="../../#/Browser.setGlobalPrivacyControl">Browser.setGlobalPrivacyControl</a></li>
+        <li><a href="../../#/Browser.downloadWillBegin">Browser.downloadWillBegin</a></li>
+        <li><a href="../../#/Browser.downloadProgress">Browser.downloadProgress</a></li>
+        <li><a href="../../#/Browser.BrowserContextID">Browser.BrowserContextID</a></li>
+        <li><a href="../../#/Browser.WindowID">Browser.WindowID</a></li>
+        <li><a href="../../#/Browser.WindowState">Browser.WindowState</a></li>
+        <li><a href="../../#/Browser.Bounds">Browser.Bounds</a></li>
+        <li><a href="../../#/Browser.PermissionType">Browser.PermissionType</a></li>
+        <li><a href="../../#/Browser.PermissionSetting">Browser.PermissionSetting</a></li>
+        <li><a href="../../#/Browser.PermissionDescriptor">Browser.PermissionDescriptor</a></li>
+        <li><a href="../../#/Browser.BrowserCommandId">Browser.BrowserCommandId</a></li>
+        <li><a href="../../#/Browser.Bucket">Browser.Bucket</a></li>
+        <li><a href="../../#/Browser.Histogram">Browser.Histogram</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: Profiler...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/Profiler' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/Profiler">Profiler</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/Profiler.disable">Profiler.disable</a></li>
+        <li><a href="../../#/Profiler.enable">Profiler.enable</a></li>
+        <li><a href="../../#/Profiler.getBestEffortCoverage">Profiler.getBestEffortCoverage</a></li>
+        <li><a href="../../#/Profiler.setSamplingInterval">Profiler.setSamplingInterval</a></li>
+        <li><a href="../../#/Profiler.start">Profiler.start</a></li>
+        <li><a href="../../#/Profiler.startPreciseCoverage">Profiler.startPreciseCoverage</a></li>
+        <li><a href="../../#/Profiler.stop">Profiler.stop</a></li>
+        <li><a href="../../#/Profiler.stopPreciseCoverage">Profiler.stopPreciseCoverage</a></li>
+        <li><a href="../../#/Profiler.takePreciseCoverage">Profiler.takePreciseCoverage</a></li>
+        <li><a href="../../#/Profiler.consoleProfileFinished">Profiler.consoleProfileFinished</a></li>
+        <li><a href="../../#/Profiler.consoleProfileStarted">Profiler.consoleProfileStarted</a></li>
+        <li><a href="../../#/Profiler.preciseCoverageDeltaUpdate">Profiler.preciseCoverageDeltaUpdate</a></li>
+        <li><a href="../../#/Profiler.ProfileNode">Profiler.ProfileNode</a></li>
+        <li><a href="../../#/Profiler.Profile">Profiler.Profile</a></li>
+        <li><a href="../../#/Profiler.PositionTickInfo">Profiler.PositionTickInfo</a></li>
+        <li><a href="../../#/Profiler.CoverageRange">Profiler.CoverageRange</a></li>
+        <li><a href="../../#/Profiler.FunctionCoverage">Profiler.FunctionCoverage</a></li>
+        <li><a href="../../#/Profiler.ScriptCoverage">Profiler.ScriptCoverage</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

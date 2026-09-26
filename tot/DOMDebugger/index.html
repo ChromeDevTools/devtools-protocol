@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: DOMDebugger...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/DOMDebugger' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/DOMDebugger">DOMDebugger</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/DOMDebugger.getEventListeners">DOMDebugger.getEventListeners</a></li>
+        <li><a href="../../#/DOMDebugger.removeDOMBreakpoint">DOMDebugger.removeDOMBreakpoint</a></li>
+        <li><a href="../../#/DOMDebugger.removeEventListenerBreakpoint">DOMDebugger.removeEventListenerBreakpoint</a></li>
+        <li><a href="../../#/DOMDebugger.removeInstrumentationBreakpoint">DOMDebugger.removeInstrumentationBreakpoint</a></li>
+        <li><a href="../../#/DOMDebugger.removeXHRBreakpoint">DOMDebugger.removeXHRBreakpoint</a></li>
+        <li><a href="../../#/DOMDebugger.setBreakOnCSPViolation">DOMDebugger.setBreakOnCSPViolation</a></li>
+        <li><a href="../../#/DOMDebugger.setDOMBreakpoint">DOMDebugger.setDOMBreakpoint</a></li>
+        <li><a href="../../#/DOMDebugger.setEventListenerBreakpoint">DOMDebugger.setEventListenerBreakpoint</a></li>
+        <li><a href="../../#/DOMDebugger.setInstrumentationBreakpoint">DOMDebugger.setInstrumentationBreakpoint</a></li>
+        <li><a href="../../#/DOMDebugger.setXHRBreakpoint">DOMDebugger.setXHRBreakpoint</a></li>
+        <li><a href="../../#/DOMDebugger.DOMBreakpointType">DOMDebugger.DOMBreakpointType</a></li>
+        <li><a href="../../#/DOMDebugger.CSPViolationType">DOMDebugger.CSPViolationType</a></li>
+        <li><a href="../../#/DOMDebugger.EventListener">DOMDebugger.EventListener</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

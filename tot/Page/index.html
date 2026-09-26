@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: Page...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/Page' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/Page">Page</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/Page.addScriptToEvaluateOnLoad">Page.addScriptToEvaluateOnLoad</a></li>
+        <li><a href="../../#/Page.addScriptToEvaluateOnNewDocument">Page.addScriptToEvaluateOnNewDocument</a></li>
+        <li><a href="../../#/Page.bringToFront">Page.bringToFront</a></li>
+        <li><a href="../../#/Page.captureScreenshot">Page.captureScreenshot</a></li>
+        <li><a href="../../#/Page.captureSnapshot">Page.captureSnapshot</a></li>
+        <li><a href="../../#/Page.clearDeviceMetricsOverride">Page.clearDeviceMetricsOverride</a></li>
+        <li><a href="../../#/Page.clearDeviceOrientationOverride">Page.clearDeviceOrientationOverride</a></li>
+        <li><a href="../../#/Page.clearGeolocationOverride">Page.clearGeolocationOverride</a></li>
+        <li><a href="../../#/Page.createIsolatedWorld">Page.createIsolatedWorld</a></li>
+        <li><a href="../../#/Page.deleteCookie">Page.deleteCookie</a></li>
+        <li><a href="../../#/Page.disable">Page.disable</a></li>
+        <li><a href="../../#/Page.enable">Page.enable</a></li>
+        <li><a href="../../#/Page.getAppManifest">Page.getAppManifest</a></li>
+        <li><a href="../../#/Page.getInstallabilityErrors">Page.getInstallabilityErrors</a></li>
+        <li><a href="../../#/Page.getManifestIcons">Page.getManifestIcons</a></li>
+        <li><a href="../../#/Page.getAppId">Page.getAppId</a></li>
+        <li><a href="../../#/Page.getSubApps">Page.getSubApps</a></li>
+        <li><a href="../../#/Page.getSiblingSubApps">Page.getSiblingSubApps</a></li>
+        <li><a href="../../#/Page.getAdScriptAncestry">Page.getAdScriptAncestry</a></li>
+        <li><a href="../../#/Page.getFrameTree">Page.getFrameTree</a></li>
+        <li><a href="../../#/Page.getLayoutMetrics">Page.getLayoutMetrics</a></li>
+        <li><a href="../../#/Page.getNavigationHistory">Page.getNavigationHistory</a></li>
+        <li><a href="../../#/Page.resetNavigationHistory">Page.resetNavigationHistory</a></li>
+        <li><a href="../../#/Page.getResourceContent">Page.getResourceContent</a></li>
+        <li><a href="../../#/Page.getResourceTree">Page.getResourceTree</a></li>
+        <li><a href="../../#/Page.handleJavaScriptDialog">Page.handleJavaScriptDialog</a></li>
+        <li><a href="../../#/Page.navigate">Page.navigate</a></li>
+        <li><a href="../../#/Page.navigateToHistoryEntry">Page.navigateToHistoryEntry</a></li>
+        <li><a href="../../#/Page.printToPDF">Page.printToPDF</a></li>
+        <li><a href="../../#/Page.reload">Page.reload</a></li>
+        <li><a href="../../#/Page.removeScriptToEvaluateOnLoad">Page.removeScriptToEvaluateOnLoad</a></li>
+        <li><a href="../../#/Page.removeScriptToEvaluateOnNewDocument">Page.removeScriptToEvaluateOnNewDocument</a></li>
+        <li><a href="../../#/Page.screencastFrameAck">Page.screencastFrameAck</a></li>
+        <li><a href="../../#/Page.searchInResource">Page.searchInResource</a></li>
+        <li><a href="../../#/Page.setAdBlockingEnabled">Page.setAdBlockingEnabled</a></li>
+        <li><a href="../../#/Page.setBypassCSP">Page.setBypassCSP</a></li>
+        <li><a href="../../#/Page.getPermissionsPolicyState">Page.getPermissionsPolicyState</a></li>
+        <li><a href="../../#/Page.getOriginTrials">Page.getOriginTrials</a></li>
+        <li><a href="../../#/Page.setDeviceMetricsOverride">Page.setDeviceMetricsOverride</a></li>
+        <li><a href="../../#/Page.setDeviceOrientationOverride">Page.setDeviceOrientationOverride</a></li>
+        <li><a href="../../#/Page.setFontFamilies">Page.setFontFamilies</a></li>
+        <li><a href="../../#/Page.setFontSizes">Page.setFontSizes</a></li>
+        <li><a href="../../#/Page.setDocumentContent">Page.setDocumentContent</a></li>
+        <li><a href="../../#/Page.setDownloadBehavior">Page.setDownloadBehavior</a></li>
+        <li><a href="../../#/Page.setGeolocationOverride">Page.setGeolocationOverride</a></li>
+        <li><a href="../../#/Page.setLifecycleEventsEnabled">Page.setLifecycleEventsEnabled</a></li>
+        <li><a href="../../#/Page.setTouchEmulationEnabled">Page.setTouchEmulationEnabled</a></li>
+        <li><a href="../../#/Page.startScreencast">Page.startScreencast</a></li>
+        <li><a href="../../#/Page.startScreenRecording">Page.startScreenRecording</a></li>
+        <li><a href="../../#/Page.stopScreenRecording">Page.stopScreenRecording</a></li>
+        <li><a href="../../#/Page.stopLoading">Page.stopLoading</a></li>
+        <li><a href="../../#/Page.crash">Page.crash</a></li>
+        <li><a href="../../#/Page.close">Page.close</a></li>
+        <li><a href="../../#/Page.setWebLifecycleState">Page.setWebLifecycleState</a></li>
+        <li><a href="../../#/Page.stopScreencast">Page.stopScreencast</a></li>
+        <li><a href="../../#/Page.produceCompilationCache">Page.produceCompilationCache</a></li>
+        <li><a href="../../#/Page.addCompilationCache">Page.addCompilationCache</a></li>
+        <li><a href="../../#/Page.clearCompilationCache">Page.clearCompilationCache</a></li>
+        <li><a href="../../#/Page.setSPCTransactionMode">Page.setSPCTransactionMode</a></li>
+        <li><a href="../../#/Page.setRPHRegistrationMode">Page.setRPHRegistrationMode</a></li>
+        <li><a href="../../#/Page.generateTestReport">Page.generateTestReport</a></li>
+        <li><a href="../../#/Page.waitForDebugger">Page.waitForDebugger</a></li>
+        <li><a href="../../#/Page.setInterceptFileChooserDialog">Page.setInterceptFileChooserDialog</a></li>
+        <li><a href="../../#/Page.setPrerenderingAllowed">Page.setPrerenderingAllowed</a></li>
+        <li><a href="../../#/Page.getAnnotatedPageContent">Page.getAnnotatedPageContent</a></li>
+        <li><a href="../../#/Page.domContentEventFired">Page.domContentEventFired</a></li>
+        <li><a href="../../#/Page.fileChooserOpened">Page.fileChooserOpened</a></li>
+        <li><a href="../../#/Page.frameAttached">Page.frameAttached</a></li>
+        <li><a href="../../#/Page.frameClearedScheduledNavigation">Page.frameClearedScheduledNavigation</a></li>
+        <li><a href="../../#/Page.frameDetached">Page.frameDetached</a></li>
+        <li><a href="../../#/Page.frameSubtreeWillBeDetached">Page.frameSubtreeWillBeDetached</a></li>
+        <li><a href="../../#/Page.frameNavigated">Page.frameNavigated</a></li>
+        <li><a href="../../#/Page.documentOpened">Page.documentOpened</a></li>
+        <li><a href="../../#/Page.frameResized">Page.frameResized</a></li>
+        <li><a href="../../#/Page.frameStartedNavigating">Page.frameStartedNavigating</a></li>
+        <li><a href="../../#/Page.frameRequestedNavigation">Page.frameRequestedNavigation</a></li>
+        <li><a href="../../#/Page.frameScheduledNavigation">Page.frameScheduledNavigation</a></li>
+        <li><a href="../../#/Page.frameStartedLoading">Page.frameStartedLoading</a></li>
+        <li><a href="../../#/Page.frameStoppedLoading">Page.frameStoppedLoading</a></li>
+        <li><a href="../../#/Page.downloadWillBegin">Page.downloadWillBegin</a></li>
+        <li><a href="../../#/Page.downloadProgress">Page.downloadProgress</a></li>
+        <li><a href="../../#/Page.interstitialHidden">Page.interstitialHidden</a></li>
+        <li><a href="../../#/Page.interstitialShown">Page.interstitialShown</a></li>
+        <li><a href="../../#/Page.javascriptDialogClosed">Page.javascriptDialogClosed</a></li>
+        <li><a href="../../#/Page.javascriptDialogOpening">Page.javascriptDialogOpening</a></li>
+        <li><a href="../../#/Page.lifecycleEvent">Page.lifecycleEvent</a></li>
+        <li><a href="../../#/Page.backForwardCacheNotUsed">Page.backForwardCacheNotUsed</a></li>
+        <li><a href="../../#/Page.loadEventFired">Page.loadEventFired</a></li>
+        <li><a href="../../#/Page.navigatedWithinDocument">Page.navigatedWithinDocument</a></li>
+        <li><a href="../../#/Page.screencastFrame">Page.screencastFrame</a></li>
+        <li><a href="../../#/Page.screencastVisibilityChanged">Page.screencastVisibilityChanged</a></li>
+        <li><a href="../../#/Page.windowOpen">Page.windowOpen</a></li>
+        <li><a href="../../#/Page.compilationCacheProduced">Page.compilationCacheProduced</a></li>
+        <li><a href="../../#/Page.FrameId">Page.FrameId</a></li>
+        <li><a href="../../#/Page.AdFrameType">Page.AdFrameType</a></li>
+        <li><a href="../../#/Page.AdFrameExplanation">Page.AdFrameExplanation</a></li>
+        <li><a href="../../#/Page.AdFrameStatus">Page.AdFrameStatus</a></li>
+        <li><a href="../../#/Page.SecureContextType">Page.SecureContextType</a></li>
+        <li><a href="../../#/Page.CrossOriginIsolatedContextType">Page.CrossOriginIsolatedContextType</a></li>
+        <li><a href="../../#/Page.GatedAPIFeatures">Page.GatedAPIFeatures</a></li>
+        <li><a href="../../#/Page.PermissionsPolicyFeature">Page.PermissionsPolicyFeature</a></li>
+        <li><a href="../../#/Page.PermissionsPolicyBlockReason">Page.PermissionsPolicyBlockReason</a></li>
+        <li><a href="../../#/Page.PermissionsPolicyBlockLocator">Page.PermissionsPolicyBlockLocator</a></li>
+        <li><a href="../../#/Page.PermissionsPolicyFeatureState">Page.PermissionsPolicyFeatureState</a></li>
+        <li><a href="../../#/Page.OriginTrialTokenStatus">Page.OriginTrialTokenStatus</a></li>
+        <li><a href="../../#/Page.OriginTrialStatus">Page.OriginTrialStatus</a></li>
+        <li><a href="../../#/Page.OriginTrialUsageRestriction">Page.OriginTrialUsageRestriction</a></li>
+        <li><a href="../../#/Page.OriginTrialToken">Page.OriginTrialToken</a></li>
+        <li><a href="../../#/Page.OriginTrialTokenWithStatus">Page.OriginTrialTokenWithStatus</a></li>
+        <li><a href="../../#/Page.OriginTrial">Page.OriginTrial</a></li>
+        <li><a href="../../#/Page.SecurityOriginDetails">Page.SecurityOriginDetails</a></li>
+        <li><a href="../../#/Page.Frame">Page.Frame</a></li>
+        <li><a href="../../#/Page.FrameResource">Page.FrameResource</a></li>
+        <li><a href="../../#/Page.FrameResourceTree">Page.FrameResourceTree</a></li>
+        <li><a href="../../#/Page.FrameTree">Page.FrameTree</a></li>
+        <li><a href="../../#/Page.ScriptIdentifier">Page.ScriptIdentifier</a></li>
+        <li><a href="../../#/Page.TransitionType">Page.TransitionType</a></li>
+        <li><a href="../../#/Page.NavigationEntry">Page.NavigationEntry</a></li>
+        <li><a href="../../#/Page.ScreencastFrameMetadata">Page.ScreencastFrameMetadata</a></li>
+        <li><a href="../../#/Page.DialogType">Page.DialogType</a></li>
+        <li><a href="../../#/Page.AppManifestError">Page.AppManifestError</a></li>
+        <li><a href="../../#/Page.AppManifestParsedProperties">Page.AppManifestParsedProperties</a></li>
+        <li><a href="../../#/Page.LayoutViewport">Page.LayoutViewport</a></li>
+        <li><a href="../../#/Page.VisualViewport">Page.VisualViewport</a></li>
+        <li><a href="../../#/Page.Viewport">Page.Viewport</a></li>
+        <li><a href="../../#/Page.FontFamilies">Page.FontFamilies</a></li>
+        <li><a href="../../#/Page.ScriptFontFamilies">Page.ScriptFontFamilies</a></li>
+        <li><a href="../../#/Page.FontSizes">Page.FontSizes</a></li>
+        <li><a href="../../#/Page.ClientNavigationReason">Page.ClientNavigationReason</a></li>
+        <li><a href="../../#/Page.ClientNavigationDisposition">Page.ClientNavigationDisposition</a></li>
+        <li><a href="../../#/Page.InstallabilityErrorArgument">Page.InstallabilityErrorArgument</a></li>
+        <li><a href="../../#/Page.InstallabilityError">Page.InstallabilityError</a></li>
+        <li><a href="../../#/Page.ReferrerPolicy">Page.ReferrerPolicy</a></li>
+        <li><a href="../../#/Page.CompilationCacheParams">Page.CompilationCacheParams</a></li>
+        <li><a href="../../#/Page.FileFilter">Page.FileFilter</a></li>
+        <li><a href="../../#/Page.FileHandler">Page.FileHandler</a></li>
+        <li><a href="../../#/Page.ImageResource">Page.ImageResource</a></li>
+        <li><a href="../../#/Page.LaunchHandler">Page.LaunchHandler</a></li>
+        <li><a href="../../#/Page.ProtocolHandler">Page.ProtocolHandler</a></li>
+        <li><a href="../../#/Page.RelatedApplication">Page.RelatedApplication</a></li>
+        <li><a href="../../#/Page.ScopeExtension">Page.ScopeExtension</a></li>
+        <li><a href="../../#/Page.Screenshot">Page.Screenshot</a></li>
+        <li><a href="../../#/Page.ShareTarget">Page.ShareTarget</a></li>
+        <li><a href="../../#/Page.Shortcut">Page.Shortcut</a></li>
+        <li><a href="../../#/Page.WebAppManifest">Page.WebAppManifest</a></li>
+        <li><a href="../../#/Page.SubApp">Page.SubApp</a></li>
+        <li><a href="../../#/Page.NavigationType">Page.NavigationType</a></li>
+        <li><a href="../../#/Page.BackForwardCacheNotRestoredReason">Page.BackForwardCacheNotRestoredReason</a></li>
+        <li><a href="../../#/Page.BackForwardCacheNotRestoredReasonType">Page.BackForwardCacheNotRestoredReasonType</a></li>
+        <li><a href="../../#/Page.BackForwardCacheBlockingDetails">Page.BackForwardCacheBlockingDetails</a></li>
+        <li><a href="../../#/Page.BackForwardCacheNotRestoredExplanation">Page.BackForwardCacheNotRestoredExplanation</a></li>
+        <li><a href="../../#/Page.BackForwardCacheNotRestoredExplanationTree">Page.BackForwardCacheNotRestoredExplanationTree</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>
