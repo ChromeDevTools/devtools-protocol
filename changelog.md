@@ -1,7 +1,74 @@
 
 
+## Roll protocol to r1707781 — _2026-09-30T04:45:23.000Z_
+######  Diff: [`dc2ddf3...f127bbe`](https://github.com/ChromeDevTools/devtools-protocol/compare/dc2ddf3...f127bbe)
+
+```diff
+@@ browser_protocol.pdl:33 @@ include domains/Extensions.pdl
+ include domains/FedCm.pdl
+ include domains/Fetch.pdl
+ include domains/FileSystem.pdl
++include domains/FindInPage.pdl
+ include domains/HeadlessExperimental.pdl
+ include domains/IO.pdl
+ include domains/IndexedDB.pdl
+diff --git a/pdl/domains/FindInPage.pdl b/pdl/domains/FindInPage.pdl
+new file mode 100644
+index 00000000..ca4aed7e
+--- /dev/null
++++ b/pdl/domains/FindInPage.pdl
+@@ -0,0 +1,22 @@
++# Copyright 2026 The Chromium Authors
++# Use of this source code is governed by a BSD-style license that can be
++# found in the LICENSE file.
++
++# This domain provides commands to trigger the "Find in page" feature.
++experimental domain FindInPage
++  # Forwards `query` to the find-in-page facility, starting a new find session.
++  # Where exactly the search starts from is implementation-specific.
++  command findFirst
++    parameters
++      string query
++
++  # Moves to the next match for the query passed to the most recent
++  # findFirst() call.
++  command findNext
++
++  # Moves to the previous match for the query passed to the most recent
++  # findFirst() call.
++  command findPrev
++
++  # Ends the current find session, if any, and clears its highlighting.
++  command stop
+diff --git a/pdl/domains/Page.pdl b/pdl/domains/Page.pdl
+index 591234dd..20b5db99 100644
+--- a/pdl/domains/Page.pdl
++++ b/pdl/domains/Page.pdl
+@@ -152,6 +152,7 @@ domain Page
+       private-state-token-redemption
+       publickey-credentials-create
+       publickey-credentials-get
++      publickey-credentials-remote-client-data-json
+       rewriter
+       screen-wake-lock
+       serial
+diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
+index 99905a48..ad0d42bf 100644
+--- a/pdl/js_protocol.pdl
++++ b/pdl/js_protocol.pdl
+@@ -143,7 +143,7 @@ domain Debugger
+       optional Location startLocation
+       # Location in the source code where scope ends
+       optional Location endLocation
+-      # True if the scope does not declare any variables or have a runtime context.
++      # True if the scope does not declare any variables.
+       # Only present if true.
+       # Empty scopes are retained in the scope chain because
+       # they can be targeted via `evaluateOnCallFrame` (using `scopeNumber`) or
+```
+
 ## Roll protocol to r1704951 — _2026-09-26T04:34:54.000Z_
-######  Diff: [`1474833...999e14b`](https://github.com/ChromeDevTools/devtools-protocol/compare/1474833...999e14b)
+######  Diff: [`1474833...dc2ddf3`](https://github.com/ChromeDevTools/devtools-protocol/compare/1474833...dc2ddf3)
 
 ```diff
 @@ domains/Emulation.pdl:330 @@ domain Emulation
@@ -43570,18 +43637,4 @@ index 8dad9c98..ee14676c 100644
    command dismissDialog
      parameters
        string dialogId
-```
-
-## Roll protocol to r1249869 — _2024-01-21T04:26:44.000Z_
-######  Diff: [`17f79a9...fbf4551`](https://github.com/ChromeDevTools/devtools-protocol/compare/17f79a9...fbf4551)
-
-```diff
-@@ browser_protocol.pdl:545 @@ experimental domain Audits
-       Frame
-       Image
-       Import
-+      JSON
-       Manifest
-       Ping
-       PluginData
 ```

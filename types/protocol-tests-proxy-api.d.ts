@@ -76,6 +76,8 @@ export namespace ProtocolTestsProxyApi {
 
         FileSystem: FileSystemApi;
 
+        FindInPage: FindInPageApi;
+
         HeadlessExperimental: HeadlessExperimentalApi;
 
         IO: IOApi;
@@ -2852,6 +2854,32 @@ export namespace ProtocolTestsProxyApi {
 
     export interface FileSystemApi {
         getDirectory(params: Protocol.FileSystem.GetDirectoryRequest): Promise<{id: number, result: Protocol.FileSystem.GetDirectoryResponse, sessionId: string}>;
+
+    }
+
+    export interface FindInPageApi {
+        /**
+         * Forwards `query` to the find-in-page facility, starting a new find session.
+         * Where exactly the search starts from is implementation-specific.
+         */
+        findFirst(params: Protocol.FindInPage.FindFirstRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
+         * Moves to the next match for the query passed to the most recent
+         * findFirst() call.
+         */
+        findNext(): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
+         * Moves to the previous match for the query passed to the most recent
+         * findFirst() call.
+         */
+        findPrev(): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
+         * Ends the current find session, if any, and clears its highlighting.
+         */
+        stop(): Promise<{id: number, result: void, sessionId: string}>;
 
     }
 

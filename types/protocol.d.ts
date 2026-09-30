@@ -223,7 +223,7 @@ export namespace Protocol {
              */
             endLocation?: Location;
             /**
-             * True if the scope does not declare any variables or have a runtime context.
+             * True if the scope does not declare any variables.
              * Only present if true.
              * Empty scopes are retained in the scope chain because
              * they can be targeted via `evaluateOnCallFrame` (using `scopeNumber`) or
@@ -10963,6 +10963,17 @@ export namespace Protocol {
     }
 
     /**
+     * This domain provides commands to trigger the "Find in page" feature.
+     * @experimental
+     */
+    export namespace FindInPage {
+
+        export interface FindFirstRequest {
+            query: string;
+        }
+    }
+
+    /**
      * This domain provides experimental commands only supported in headless mode.
      * @experimental
      */
@@ -16837,7 +16848,7 @@ export namespace Protocol {
          * in services/network/public/cpp/permissions_policy/permissions_policy_features.json5.
          * @experimental
          */
-        export type PermissionsPolicyFeature = ('accelerometer' | 'all-screens-capture' | 'ambient-light-sensor' | 'aria-notify' | 'autofill' | 'autoplay' | 'bluetooth' | 'browsing-topics' | 'camera' | 'captured-surface-control' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-prefers-color-scheme' | 'ch-prefers-reduced-motion' | 'ch-prefers-reduced-transparency' | 'ch-rtt' | 'ch-save-data' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-high-entropy-values' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-form-factors' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'compute-pressure' | 'controlled-frame' | 'cross-origin-isolated' | 'deferred-fetch' | 'deferred-fetch-minimal' | 'device-attributes' | 'digital-credentials-create' | 'digital-credentials-get' | 'direct-sockets' | 'direct-sockets-multicast' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'haptics' | 'hid' | 'identity-credentials-get' | 'idle-detection' | 'interest-cohort' | 'keyboard-map' | 'language-detector' | 'language-model' | 'local-fonts' | 'local-network' | 'local-network-access' | 'loopback-network' | 'magnetometer' | 'manual-text' | 'media-playback-while-not-visible' | 'microphone' | 'midi' | 'on-device-speech-recognition' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'private-state-token-issuance' | 'private-state-token-redemption' | 'publickey-credentials-create' | 'publickey-credentials-get' | 'rewriter' | 'screen-wake-lock' | 'serial' | 'shared-storage' | 'shared-storage-select-url' | 'smart-card' | 'speaker-selection' | 'storage-access' | 'sub-apps' | 'summarizer' | 'sync-xhr' | 'tools' | 'translator' | 'unload' | 'usb' | 'usb-unrestricted' | 'vertical-scroll' | 'web-app-installation' | 'webnn' | 'web-printing' | 'web-share' | 'window-management' | 'writer' | 'xr-spatial-tracking');
+        export type PermissionsPolicyFeature = ('accelerometer' | 'all-screens-capture' | 'ambient-light-sensor' | 'aria-notify' | 'autofill' | 'autoplay' | 'bluetooth' | 'browsing-topics' | 'camera' | 'captured-surface-control' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-prefers-color-scheme' | 'ch-prefers-reduced-motion' | 'ch-prefers-reduced-transparency' | 'ch-rtt' | 'ch-save-data' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-high-entropy-values' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-form-factors' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'compute-pressure' | 'controlled-frame' | 'cross-origin-isolated' | 'deferred-fetch' | 'deferred-fetch-minimal' | 'device-attributes' | 'digital-credentials-create' | 'digital-credentials-get' | 'direct-sockets' | 'direct-sockets-multicast' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'haptics' | 'hid' | 'identity-credentials-get' | 'idle-detection' | 'interest-cohort' | 'keyboard-map' | 'language-detector' | 'language-model' | 'local-fonts' | 'local-network' | 'local-network-access' | 'loopback-network' | 'magnetometer' | 'manual-text' | 'media-playback-while-not-visible' | 'microphone' | 'midi' | 'on-device-speech-recognition' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'private-state-token-issuance' | 'private-state-token-redemption' | 'publickey-credentials-create' | 'publickey-credentials-get' | 'publickey-credentials-remote-client-data-json' | 'rewriter' | 'screen-wake-lock' | 'serial' | 'shared-storage' | 'shared-storage-select-url' | 'smart-card' | 'speaker-selection' | 'storage-access' | 'sub-apps' | 'summarizer' | 'sync-xhr' | 'tools' | 'translator' | 'unload' | 'usb' | 'usb-unrestricted' | 'vertical-scroll' | 'web-app-installation' | 'webnn' | 'web-printing' | 'web-share' | 'window-management' | 'writer' | 'xr-spatial-tracking');
 
         /**
          * Reason for a permissions policy feature to be disabled.
