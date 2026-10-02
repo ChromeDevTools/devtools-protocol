@@ -1,7 +1,34 @@
 
 
+## Roll protocol to r1709723 — _2026-10-02T04:43:00.000Z_
+######  Diff: [`8b7f1d9...fe19ad7`](https://github.com/ChromeDevTools/devtools-protocol/compare/8b7f1d9...fe19ad7)
+
+```diff
+@@ js_protocol.pdl:143 @@ domain Debugger
+       optional Location startLocation
+       # Location in the source code where scope ends
+       optional Location endLocation
+-      # True if the scope does not declare any variables.
+-      # Only present if true.
++      # Present if the scope has no variable values to show. Absent means that
++      # the scope declares at least one variable with an available value.
+       # Empty scopes are retained in the scope chain because
+       # they can be targeted via `evaluateOnCallFrame` (using `scopeNumber`) or
+       # matched against scopes in source maps.
+-      experimental optional boolean empty
++      experimental optional enum emptyReason
++        # The scope does not declare any variables.
++        no-variables
++        # The scope declares variables, but none of their values are available
++        # (e.g. because they were optimized out or are in their TDZ).
++        all-unavailable
+ 
+   # Search match for resource.
+   type SearchMatch extends object
+```
+
 ## Roll protocol to r1707781 — _2026-09-30T04:45:23.000Z_
-######  Diff: [`dc2ddf3...f127bbe`](https://github.com/ChromeDevTools/devtools-protocol/compare/dc2ddf3...f127bbe)
+######  Diff: [`dc2ddf3...8b7f1d9`](https://github.com/ChromeDevTools/devtools-protocol/compare/dc2ddf3...8b7f1d9)
 
 ```diff
 @@ browser_protocol.pdl:33 @@ include domains/Extensions.pdl
@@ -43559,82 +43586,4 @@ index 8dad9c98..ee14676c 100644
    # Shared storage was accessed by the associated page.
    # The following parameters are included in all events.
    event sharedStorageAccessed
-```
-
-## Roll protocol to r1250650 — _2024-01-23T04:27:23.000Z_
-######  Diff: [`fbf4551...45b7b51`](https://github.com/ChromeDevTools/devtools-protocol/compare/fbf4551...45b7b51)
-
-```diff
-@@ browser_protocol.pdl:9546 @@ experimental domain Storage
-       started
-       configResolved
- 
--  # Enum of network fetches auctions can do.
--  type InterestGroupAuctionFetchType extends string
--    enum
--      bidderJs
--      bidderWasm
--      sellerJs
--      bidderTrustedSignals
--      sellerTrustedSignals
--
-   # Ad advertising element inside an interest group.
-   type InterestGroupAd extends object
-     properties
-@@ -9834,8 +9825,7 @@ experimental domain Storage
-     parameters
-       boolean enable
- 
--  # Enables/Disables issuing of interestGroupAuctionEventOccurred and
--  # interestGroupAuctionNetworkRequestCreated.
-+  # Enables/Disables issuing of interestGroupAuctionEvent events.
-   experimental command setInterestGroupAuctionTracking
-     parameters
-       boolean enable
-@@ -9976,19 +9966,6 @@ experimental domain Storage
-       # Set for started and configResolved
-       optional object auctionConfig
- 
--  # Specifies which auctions a particular network fetch may be related to, and
--  # in what role. Note that it is not ordered with respect to
--  # Network.requestWillBeSent (but will happen before loadingFinished
--  # loadingFailed).
--  event interestGroupAuctionNetworkRequestCreated
--    parameters
--      InterestGroupAuctionFetchType type
--      Network.RequestId requestId
--      # This is the set of the auctions using the worklet that issued this
--      # request.  In the case of trusted signals, it's possible that only some of
--      # them actually care about the keys being queried.
--      array of InterestGroupAuctionId auctions
--
-   # Shared storage was accessed by the associated page.
-   # The following parameters are included in all events.
-   event sharedStorageAccessed
-@@ -11855,6 +11832,12 @@ experimental domain FedCm
-       ErrorGotIt
-       ErrorMoreDetails
- 
-+  # The URLs that each account has
-+  type AccountUrlType extends string
-+    enum
-+      TermsOfService
-+      PrivacyPolicy
-+
-   # Corresponds to IdentityRequestAccount
-   type Account extends object
-     properties
-@@ -11905,6 +11888,12 @@ experimental domain FedCm
-       string dialogId
-       DialogButton dialogButton
- 
-+  command openUrl
-+    parameters
-+      string dialogId
-+      integer accountIndex
-+      AccountUrlType accountUrlType
-+
-   command dismissDialog
-     parameters
-       string dialogId
 ```

@@ -199,6 +199,11 @@ export namespace Protocol {
             WasmExpressionStack = 'wasm-expression-stack',
         }
 
+        export const enum ScopeEmptyReason {
+            NoVariables = 'no-variables',
+            AllUnavailable = 'all-unavailable',
+        }
+
         /**
          * Scope description.
          */
@@ -223,14 +228,14 @@ export namespace Protocol {
              */
             endLocation?: Location;
             /**
-             * True if the scope does not declare any variables.
-             * Only present if true.
+             * Present if the scope has no variable values to show. Absent means that
+             * the scope declares at least one variable with an available value.
              * Empty scopes are retained in the scope chain because
              * they can be targeted via `evaluateOnCallFrame` (using `scopeNumber`) or
              * matched against scopes in source maps.
              * @experimental
              */
-            empty?: boolean;
+            emptyReason?: ('no-variables' | 'all-unavailable');
         }
 
         /**
