@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: Autofill...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/Autofill' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/Autofill">Autofill</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/Autofill.trigger">Autofill.trigger</a></li>
+        <li><a href="../../#/Autofill.setAddresses">Autofill.setAddresses</a></li>
+        <li><a href="../../#/Autofill.disable">Autofill.disable</a></li>
+        <li><a href="../../#/Autofill.enable">Autofill.enable</a></li>
+        <li><a href="../../#/Autofill.addressFormFilled">Autofill.addressFormFilled</a></li>
+        <li><a href="../../#/Autofill.CreditCard">Autofill.CreditCard</a></li>
+        <li><a href="../../#/Autofill.AddressField">Autofill.AddressField</a></li>
+        <li><a href="../../#/Autofill.AddressFields">Autofill.AddressFields</a></li>
+        <li><a href="../../#/Autofill.Address">Autofill.Address</a></li>
+        <li><a href="../../#/Autofill.AddressUI">Autofill.AddressUI</a></li>
+        <li><a href="../../#/Autofill.FillingStrategy">Autofill.FillingStrategy</a></li>
+        <li><a href="../../#/Autofill.FilledField">Autofill.FilledField</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

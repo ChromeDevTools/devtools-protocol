@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: PWA...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/PWA' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/PWA">PWA</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/PWA.getOsAppState">PWA.getOsAppState</a></li>
+        <li><a href="../../#/PWA.install">PWA.install</a></li>
+        <li><a href="../../#/PWA.uninstall">PWA.uninstall</a></li>
+        <li><a href="../../#/PWA.launch">PWA.launch</a></li>
+        <li><a href="../../#/PWA.launchFilesInApp">PWA.launchFilesInApp</a></li>
+        <li><a href="../../#/PWA.openCurrentPageInApp">PWA.openCurrentPageInApp</a></li>
+        <li><a href="../../#/PWA.changeAppUserSettings">PWA.changeAppUserSettings</a></li>
+        <li><a href="../../#/PWA.FileHandlerAccept">PWA.FileHandlerAccept</a></li>
+        <li><a href="../../#/PWA.FileHandler">PWA.FileHandler</a></li>
+        <li><a href="../../#/PWA.DisplayMode">PWA.DisplayMode</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

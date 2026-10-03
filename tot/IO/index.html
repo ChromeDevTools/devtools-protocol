@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: IO...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/IO' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/IO">IO</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/IO.close">IO.close</a></li>
+        <li><a href="../../#/IO.read">IO.read</a></li>
+        <li><a href="../../#/IO.resolveBlob">IO.resolveBlob</a></li>
+        <li><a href="../../#/IO.StreamHandle">IO.StreamHandle</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

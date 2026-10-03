@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: Preload...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/Preload' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/Preload">Preload</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/Preload.enable">Preload.enable</a></li>
+        <li><a href="../../#/Preload.disable">Preload.disable</a></li>
+        <li><a href="../../#/Preload.ruleSetUpdated">Preload.ruleSetUpdated</a></li>
+        <li><a href="../../#/Preload.ruleSetRemoved">Preload.ruleSetRemoved</a></li>
+        <li><a href="../../#/Preload.preloadEnabledStateUpdated">Preload.preloadEnabledStateUpdated</a></li>
+        <li><a href="../../#/Preload.prefetchStatusUpdated">Preload.prefetchStatusUpdated</a></li>
+        <li><a href="../../#/Preload.prerenderStatusUpdated">Preload.prerenderStatusUpdated</a></li>
+        <li><a href="../../#/Preload.preloadingAttemptSourcesUpdated">Preload.preloadingAttemptSourcesUpdated</a></li>
+        <li><a href="../../#/Preload.RuleSetId">Preload.RuleSetId</a></li>
+        <li><a href="../../#/Preload.RuleSet">Preload.RuleSet</a></li>
+        <li><a href="../../#/Preload.RuleSetErrorType">Preload.RuleSetErrorType</a></li>
+        <li><a href="../../#/Preload.SpeculationAction">Preload.SpeculationAction</a></li>
+        <li><a href="../../#/Preload.SpeculationTargetHint">Preload.SpeculationTargetHint</a></li>
+        <li><a href="../../#/Preload.PreloadingAttemptKey">Preload.PreloadingAttemptKey</a></li>
+        <li><a href="../../#/Preload.PreloadingAttemptSource">Preload.PreloadingAttemptSource</a></li>
+        <li><a href="../../#/Preload.PreloadPipelineId">Preload.PreloadPipelineId</a></li>
+        <li><a href="../../#/Preload.PrerenderFinalStatus">Preload.PrerenderFinalStatus</a></li>
+        <li><a href="../../#/Preload.PreloadingStatus">Preload.PreloadingStatus</a></li>
+        <li><a href="../../#/Preload.PrefetchStatus">Preload.PrefetchStatus</a></li>
+        <li><a href="../../#/Preload.PrerenderMismatchedHeaders">Preload.PrerenderMismatchedHeaders</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

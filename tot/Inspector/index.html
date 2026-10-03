@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: Inspector...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/Inspector' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/Inspector">Inspector</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/Inspector.disable">Inspector.disable</a></li>
+        <li><a href="../../#/Inspector.enable">Inspector.enable</a></li>
+        <li><a href="../../#/Inspector.detached">Inspector.detached</a></li>
+        <li><a href="../../#/Inspector.targetCrashed">Inspector.targetCrashed</a></li>
+        <li><a href="../../#/Inspector.targetReloadedAfterCrash">Inspector.targetReloadedAfterCrash</a></li>
+        <li><a href="../../#/Inspector.workerScriptLoaded">Inspector.workerScriptLoaded</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

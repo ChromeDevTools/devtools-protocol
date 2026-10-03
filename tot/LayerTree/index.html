@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: LayerTree...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/LayerTree' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/LayerTree">LayerTree</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/LayerTree.compositingReasons">LayerTree.compositingReasons</a></li>
+        <li><a href="../../#/LayerTree.disable">LayerTree.disable</a></li>
+        <li><a href="../../#/LayerTree.enable">LayerTree.enable</a></li>
+        <li><a href="../../#/LayerTree.loadSnapshot">LayerTree.loadSnapshot</a></li>
+        <li><a href="../../#/LayerTree.makeSnapshot">LayerTree.makeSnapshot</a></li>
+        <li><a href="../../#/LayerTree.profileSnapshot">LayerTree.profileSnapshot</a></li>
+        <li><a href="../../#/LayerTree.releaseSnapshot">LayerTree.releaseSnapshot</a></li>
+        <li><a href="../../#/LayerTree.replaySnapshot">LayerTree.replaySnapshot</a></li>
+        <li><a href="../../#/LayerTree.snapshotCommandLog">LayerTree.snapshotCommandLog</a></li>
+        <li><a href="../../#/LayerTree.layerPainted">LayerTree.layerPainted</a></li>
+        <li><a href="../../#/LayerTree.layerTreeDidChange">LayerTree.layerTreeDidChange</a></li>
+        <li><a href="../../#/LayerTree.LayerId">LayerTree.LayerId</a></li>
+        <li><a href="../../#/LayerTree.SnapshotId">LayerTree.SnapshotId</a></li>
+        <li><a href="../../#/LayerTree.ScrollRect">LayerTree.ScrollRect</a></li>
+        <li><a href="../../#/LayerTree.StickyPositionConstraint">LayerTree.StickyPositionConstraint</a></li>
+        <li><a href="../../#/LayerTree.PictureTile">LayerTree.PictureTile</a></li>
+        <li><a href="../../#/LayerTree.Layer">LayerTree.Layer</a></li>
+        <li><a href="../../#/LayerTree.PaintProfile">LayerTree.PaintProfile</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>
