@@ -1,7 +1,29 @@
 
 
+## Roll protocol to r1710668 — _2026-10-03T04:42:40.000Z_
+######  Diff: [`3e46e43...28d1c5f`](https://github.com/ChromeDevTools/devtools-protocol/compare/3e46e43...28d1c5f)
+
+```diff
+@@ domains/CSS.pdl:712 @@ experimental domain CSS
+       # Boolean indicating if this is on or off.
+       boolean forced
+ 
++  # Forces a position-try option for the given node.
++  command forcePositionTryOption
++    parameters
++      # The element id for which to force the position-try option.
++      DOM.NodeId nodeId
++      # The 1-based index of the position-try fallback option, 0 for base position (no fallback),
++      # or omitted to clear the forced state.
++      optional integer index
++
+   command getBackgroundColors
+     parameters
+       # Id of the node to get background colors for.
+```
+
 ## Roll protocol to r1709723 — _2026-10-02T04:43:00.000Z_
-######  Diff: [`8b7f1d9...fe19ad7`](https://github.com/ChromeDevTools/devtools-protocol/compare/8b7f1d9...fe19ad7)
+######  Diff: [`8b7f1d9...3e46e43`](https://github.com/ChromeDevTools/devtools-protocol/compare/8b7f1d9...3e46e43)
 
 ```diff
 @@ js_protocol.pdl:143 @@ domain Debugger
@@ -43534,56 +43556,4 @@ index 8dad9c98..ee14676c 100644
 +  experimental event dataCollected
      parameters
        array of object value
-```
-
-## Roll protocol to r1252439 — _2024-01-26T04:26:56.000Z_
-######  Diff: [`45b7b51...b402173`](https://github.com/ChromeDevTools/devtools-protocol/compare/45b7b51...b402173)
-
-```diff
-@@ browser_protocol.pdl:9546 @@ experimental domain Storage
-       started
-       configResolved
- 
-+  # Enum of network fetches auctions can do.
-+  type InterestGroupAuctionFetchType extends string
-+    enum
-+      bidderJs
-+      bidderWasm
-+      sellerJs
-+      bidderTrustedSignals
-+      sellerTrustedSignals
-+
-   # Ad advertising element inside an interest group.
-   type InterestGroupAd extends object
-     properties
-@@ -9825,7 +9834,8 @@ experimental domain Storage
-     parameters
-       boolean enable
- 
--  # Enables/Disables issuing of interestGroupAuctionEvent events.
-+  # Enables/Disables issuing of interestGroupAuctionEventOccurred and
-+  # interestGroupAuctionNetworkRequestCreated.
-   experimental command setInterestGroupAuctionTracking
-     parameters
-       boolean enable
-@@ -9966,6 +9976,19 @@ experimental domain Storage
-       # Set for started and configResolved
-       optional object auctionConfig
- 
-+  # Specifies which auctions a particular network fetch may be related to, and
-+  # in what role. Note that it is not ordered with respect to
-+  # Network.requestWillBeSent (but will happen before loadingFinished
-+  # loadingFailed).
-+  event interestGroupAuctionNetworkRequestCreated
-+    parameters
-+      InterestGroupAuctionFetchType type
-+      Network.RequestId requestId
-+      # This is the set of the auctions using the worklet that issued this
-+      # request.  In the case of trusted signals, it's possible that only some of
-+      # them actually care about the keys being queried.
-+      array of InterestGroupAuctionId auctions
-+
-   # Shared storage was accessed by the associated page.
-   # The following parameters are included in all events.
-   event sharedStorageAccessed
 ```

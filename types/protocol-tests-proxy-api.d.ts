@@ -1313,6 +1313,11 @@ export namespace ProtocolTestsProxyApi {
          */
         forceStartingStyle(params: Protocol.CSS.ForceStartingStyleRequest): Promise<{id: number, result: void, sessionId: string}>;
 
+        /**
+         * Forces a position-try option for the given node.
+         */
+        forcePositionTryOption(params: Protocol.CSS.ForcePositionTryOptionRequest): Promise<{id: number, result: void, sessionId: string}>;
+
         getBackgroundColors(params: Protocol.CSS.GetBackgroundColorsRequest): Promise<{id: number, result: Protocol.CSS.GetBackgroundColorsResponse, sessionId: string}>;
 
         /**

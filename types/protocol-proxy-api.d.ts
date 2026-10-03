@@ -1239,6 +1239,11 @@ export namespace ProtocolProxyApi {
          */
         forceStartingStyle(params: Protocol.CSS.ForceStartingStyleRequest): Promise<void>;
 
+        /**
+         * Forces a position-try option for the given node.
+         */
+        forcePositionTryOption(params: Protocol.CSS.ForcePositionTryOptionRequest): Promise<void>;
+
         getBackgroundColors(params: Protocol.CSS.GetBackgroundColorsRequest): Promise<Protocol.CSS.GetBackgroundColorsResponse>;
 
         /**
