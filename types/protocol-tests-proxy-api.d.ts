@@ -4260,6 +4260,15 @@ export namespace ProtocolTestsProxyApi {
         getAdScriptAncestry(params: Protocol.Page.GetAdScriptAncestryRequest): Promise<{id: number, result: Protocol.Page.GetAdScriptAncestryResponse, sessionId: string}>;
 
         /**
+         * Returns the words that the frame's document added to its spell check custom
+         * dictionary with `document.spellCheckCustomDictionary.addWords()`, sorted.
+         * Page script cannot read the dictionary back; this lets developers inspect
+         * it.
+         * @experimental
+         */
+        getSpellCheckCustomDictionary(params: Protocol.Page.GetSpellCheckCustomDictionaryRequest): Promise<{id: number, result: Protocol.Page.GetSpellCheckCustomDictionaryResponse, sessionId: string}>;
+
+        /**
          * Returns present frame tree structure.
          */
         getFrameTree(): Promise<{id: number, result: Protocol.Page.GetFrameTreeResponse, sessionId: string}>;

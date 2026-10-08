@@ -5092,6 +5092,17 @@ export namespace ProtocolMapping {
             returnType: Protocol.Page.GetAdScriptAncestryResponse;
         };
         /**
+         * Returns the words that the frame's document added to its spell check custom
+         * dictionary with `document.spellCheckCustomDictionary.addWords()`, sorted.
+         * Page script cannot read the dictionary back; this lets developers inspect
+         * it.
+         * @experimental
+         */
+        'Page.getSpellCheckCustomDictionary': {
+            paramsType: [Protocol.Page.GetSpellCheckCustomDictionaryRequest];
+            returnType: Protocol.Page.GetSpellCheckCustomDictionaryResponse;
+        };
+        /**
          * Returns present frame tree structure.
          */
         'Page.getFrameTree': {

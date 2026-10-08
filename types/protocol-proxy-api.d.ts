@@ -3986,6 +3986,15 @@ export namespace ProtocolProxyApi {
         getAdScriptAncestry(params: Protocol.Page.GetAdScriptAncestryRequest): Promise<Protocol.Page.GetAdScriptAncestryResponse>;
 
         /**
+         * Returns the words that the frame's document added to its spell check custom
+         * dictionary with `document.spellCheckCustomDictionary.addWords()`, sorted.
+         * Page script cannot read the dictionary back; this lets developers inspect
+         * it.
+         * @experimental
+         */
+        getSpellCheckCustomDictionary(params: Protocol.Page.GetSpellCheckCustomDictionaryRequest): Promise<Protocol.Page.GetSpellCheckCustomDictionaryResponse>;
+
+        /**
          * Returns present frame tree structure.
          */
         getFrameTree(): Promise<Protocol.Page.GetFrameTreeResponse>;

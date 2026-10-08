@@ -873,6 +873,13 @@ export namespace Protocol {
              * @experimental
              */
             skipList?: LocationRange[];
+            /**
+             * Functions whose source range lies within one of the enterRanges are
+             * entered as if by stepInto, even when they are called (directly or
+             * indirectly) from a call that is stepped over.
+             * @experimental
+             */
+            enterRanges?: LocationRange[];
         }
 
         /**
@@ -3819,7 +3826,7 @@ export namespace Protocol {
             request: AffectedRequest;
         }
 
-        export type GenericIssueErrorType = ('FormLabelForNameError' | 'FormDuplicateIdForInputError' | 'FormInputWithNoLabelError' | 'FormAutocompleteAttributeEmptyError' | 'FormEmptyIdAndNameAttributesForInputError' | 'FormAriaLabelledByToNonExistingIdError' | 'FormInputAssignedAutocompleteValueToIdOrNameAttributeError' | 'FormLabelHasNeitherForNorNestedInputError' | 'FormLabelForMatchesNonExistingIdError' | 'FormInputHasWrongButWellIntendedAutocompleteValueError' | 'ResponseWasBlockedByORB' | 'NavigationEntryMarkedSkippable' | 'BackUINavigationWouldSkipAd' | 'AutofillAndManualTextPolicyControlledFeaturesInfo' | 'AutofillPolicyControlledFeatureInfo' | 'ManualTextPolicyControlledFeatureInfo' | 'FormModelContextParameterMissingTitleAndDescription' | 'FormModelContextMissingToolName' | 'FormModelContextMissingToolDescription' | 'FormModelContextRequiredParameterMissingName' | 'FormModelContextParameterMissingName');
+        export type GenericIssueErrorType = ('FormLabelForNameError' | 'FormDuplicateIdForInputError' | 'FormInputWithNoLabelError' | 'FormAutocompleteAttributeEmptyError' | 'FormEmptyIdAndNameAttributesForInputError' | 'FormAriaLabelledByToNonExistingIdError' | 'FormInputAssignedAutocompleteValueToIdOrNameAttributeError' | 'FormLabelHasNeitherForNorNestedInputError' | 'FormLabelForMatchesNonExistingIdError' | 'FormInputHasWrongButWellIntendedAutocompleteValueError' | 'ResponseWasBlockedByORB' | 'NavigationEntryMarkedSkippable' | 'BackUINavigationWouldSkipAd' | 'AutofillAndManualTextPolicyControlledFeaturesInfo' | 'AutofillPolicyControlledFeatureInfo' | 'ManualTextPolicyControlledFeatureInfo' | 'FormModelContextParameterMissingTitleAndDescription' | 'FormModelContextMissingToolName' | 'FormModelContextMissingToolDescription' | 'FormModelContextRequiredParameterMissingName' | 'FormModelContextParameterMissingName' | 'GeolocationPromptWithoutUserGesture');
 
         /**
          * Depending on the concrete errorType, different properties are set.
@@ -17911,6 +17918,14 @@ export namespace Protocol {
              * script). Only sent if frame is labelled as an ad and ids are available.
              */
             adScriptAncestry?: Network.AdAncestry;
+        }
+
+        export interface GetSpellCheckCustomDictionaryRequest {
+            frameId: FrameId;
+        }
+
+        export interface GetSpellCheckCustomDictionaryResponse {
+            words: string[];
         }
 
         export interface GetFrameTreeResponse {

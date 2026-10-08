@@ -1,7 +1,57 @@
 
 
+## Roll protocol to r1714151 — _2026-10-08T04:46:24.000Z_
+######  Diff: [`d209a9a...aa986fa`](https://github.com/ChromeDevTools/devtools-protocol/compare/d209a9a...aa986fa)
+
+```diff
+@@ domains/Audits.pdl:406 @@ experimental domain Audits
+       FormModelContextMissingToolDescription
+       FormModelContextRequiredParameterMissingName
+       FormModelContextParameterMissingName
++      GeolocationPromptWithoutUserGesture
+ 
+   # Depending on the concrete errorType, different properties are set.
+   type GenericIssueDetails extends object
+diff --git a/pdl/domains/Page.pdl b/pdl/domains/Page.pdl
+index 20b5db99..9c77ce72 100644
+--- a/pdl/domains/Page.pdl
++++ b/pdl/domains/Page.pdl
+@@ -852,6 +852,16 @@ domain Page
+       # script). Only sent if frame is labelled as an ad and ids are available.
+       optional Network.AdAncestry adScriptAncestry
+ 
++  # Returns the words that the frame's document added to its spell check custom
++  # dictionary with `document.spellCheckCustomDictionary.addWords()`, sorted.
++  # Page script cannot read the dictionary back; this lets developers inspect
++  # it.
++  experimental command getSpellCheckCustomDictionary
++    parameters
++      FrameId frameId
++    returns
++      array of string words
++
+   # Returns present frame tree structure.
+   command getFrameTree
+     returns
+diff --git a/pdl/js_protocol.pdl b/pdl/js_protocol.pdl
+index 53096d45..7f1e0829 100644
+--- a/pdl/js_protocol.pdl
++++ b/pdl/js_protocol.pdl
+@@ -569,6 +569,10 @@ domain Debugger
+     parameters
+       # The skipList specifies location ranges that should be skipped on step over.
+       experimental optional array of LocationRange skipList
++      # Functions whose source range lies within one of the enterRanges are
++      # entered as if by stepInto, even when they are called (directly or
++      # indirectly) from a call that is stepped over.
++      experimental optional array of LocationRange enterRanges
+ 
+   # Fired when breakpoint is resolved to an actual script and location.
+   # Deprecated in favor of `resolvedBreakpoints` in the `scriptParsed` event.
+```
+
 ## Roll protocol to r1710668 — _2026-10-03T04:42:40.000Z_
-######  Diff: [`3e46e43...28d1c5f`](https://github.com/ChromeDevTools/devtools-protocol/compare/3e46e43...28d1c5f)
+######  Diff: [`3e46e43...d209a9a`](https://github.com/ChromeDevTools/devtools-protocol/compare/3e46e43...d209a9a)
 
 ```diff
 @@ domains/CSS.pdl:712 @@ experimental domain CSS
@@ -43406,154 +43456,4 @@ index 8dad9c98..ee14676c 100644
  
    # Fired exactly once for each Trust Token operation. Depending on
    # the type of the operation and whether the operation succeeded or
-```
-
-## Roll protocol to r1253004 — _2024-01-27T04:25:19.000Z_
-######  Diff: [`b402173...fcda9c0`](https://github.com/ChromeDevTools/devtools-protocol/compare/b402173...fcda9c0)
-
-```diff
-@@ browser_protocol.pdl:10649 @@ experimental domain Tethering
-       # Connection id to be used.
-       string connectionId
- 
--experimental domain Tracing
-+domain Tracing
-   depends on IO
- 
-   # Configuration for memory dump. Used only when "memory-infra" category is enabled.
--  type MemoryDumpConfig extends object
-+  experimental type MemoryDumpConfig extends object
- 
-   type TraceConfig extends object
-     properties
-       # Controls how the trace buffer stores data.
--      optional enum recordMode
-+      experimental optional enum recordMode
-         recordUntilFull
-         recordContinuously
-         recordAsMuchAsPossible
-         echoToConsole
-       # Size of the trace buffer in kilobytes. If not specified or zero is passed, a default value
-       # of 200 MB would be used.
--      optional number traceBufferSizeInKb
-+      experimental optional number traceBufferSizeInKb
-       # Turns on JavaScript stack sampling.
--      optional boolean enableSampling
-+      experimental optional boolean enableSampling
-       # Turns on system tracing.
--      optional boolean enableSystrace
-+      experimental optional boolean enableSystrace
-       # Turns on argument filter.
--      optional boolean enableArgumentFilter
-+      experimental optional boolean enableArgumentFilter
-       # Included category filters.
-       optional array of string includedCategories
-       # Excluded category filters.
-       optional array of string excludedCategories
-       # Configuration to synthesize the delays in tracing.
--      optional array of string syntheticDelays
-+      experimental optional array of string syntheticDelays
-       # Configuration for memory dump triggers. Used only when "memory-infra" category is enabled.
--      optional MemoryDumpConfig memoryDumpConfig
-+      experimental optional MemoryDumpConfig memoryDumpConfig
- 
-   # Data format of a trace. Can be either the legacy JSON format or the
-   # protocol buffer format. Note that the JSON format will be deprecated soon.
--  type StreamFormat extends string
-+  experimental type StreamFormat extends string
-     enum
-       json
-       proto
- 
-   # Compression type to use for traces returned via streams.
--  type StreamCompression extends string
-+  experimental type StreamCompression extends string
-     enum
-       none
-       gzip
-@@ -10697,7 +10697,7 @@ experimental domain Tracing
-   # Details exposed when memory request explicitly declared.
-   # Keep consistent with memory_dump_request_args.h and
-   # memory_instrumentation.mojom
--  type MemoryDumpLevelOfDetail extends string
-+  experimental type MemoryDumpLevelOfDetail extends string
-     enum
-       background
-       light
-@@ -10708,7 +10708,7 @@ experimental domain Tracing
-   # supported on Chrome OS and uses the Perfetto system tracing service.
-   # `auto` chooses `system` when the perfettoConfig provided to Tracing.start
-   # specifies at least one non-Chrome data source; otherwise uses `chrome`.
--  type TracingBackend extends string
-+  experimental type TracingBackend extends string
-     enum
-       auto
-       chrome
-@@ -10718,19 +10718,19 @@ experimental domain Tracing
-   command end
- 
-   # Gets supported tracing categories.
--  command getCategories
-+  experimental command getCategories
-     returns
-       # A list of supported tracing categories.
-       array of string categories
- 
-   # Record a clock sync marker in the trace.
--  command recordClockSyncMarker
-+  experimental command recordClockSyncMarker
-     parameters
-       # The ID of this clock sync marker
-       string syncId
- 
-   # Request a global memory dump.
--  command requestMemoryDump
-+  experimental command requestMemoryDump
-     parameters
-       # Enables more deterministic results by forcing garbage collection
-       optional boolean deterministic
-@@ -10746,11 +10746,11 @@ experimental domain Tracing
-   command start
-     parameters
-       # Category/tag filter
--      deprecated optional string categories
-+      experimental deprecated optional string categories
-       # Tracing options
--      deprecated optional string options
-+      experimental deprecated optional string options
-       # If set, the agent will issue bufferUsage events at this interval, specified in milliseconds
--      optional number bufferUsageReportingInterval
-+      experimental optional number bufferUsageReportingInterval
-       # Whether to report trace events as series of dataCollected events or to save trace to a
-       # stream (defaults to `ReportEvents`).
-       optional enum transferMode
-@@ -10761,16 +10761,16 @@ experimental domain Tracing
-       optional StreamFormat streamFormat
-       # Compression format to use. This only applies when using `ReturnAsStream`
-       # transfer mode (defaults to `none`)
--      optional StreamCompression streamCompression
-+      experimental optional StreamCompression streamCompression
-       optional TraceConfig traceConfig
-       # Base64-encoded serialized perfetto.protos.TraceConfig protobuf message
-       # When specified, the parameters `categories`, `options`, `traceConfig`
-       # are ignored.
--      optional binary perfettoConfig
-+      experimental optional binary perfettoConfig
-       # Backend type (defaults to `auto`)
--      optional TracingBackend tracingBackend
-+      experimental optional TracingBackend tracingBackend
- 
--  event bufferUsage
-+  experimental event bufferUsage
-     parameters
-       # A number in range [0..1] that indicates the used size of event buffer as a fraction of its
-       # total size.
-@@ -10783,7 +10783,7 @@ experimental domain Tracing
- 
-   # Contains a bucket of collected trace events. When tracing is stopped collected events will be
-   # sent as a sequence of dataCollected events followed by tracingComplete event.
--  event dataCollected
-+  experimental event dataCollected
-     parameters
-       array of object value
 ```
