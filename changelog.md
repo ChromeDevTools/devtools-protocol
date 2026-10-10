@@ -1,7 +1,38 @@
 
 
+## Roll protocol to r1716261 — _2026-10-10T04:40:11.000Z_
+######  Diff: [`8033bef...06bfe2f`](https://github.com/ChromeDevTools/devtools-protocol/compare/8033bef...06bfe2f)
+
+```diff
+@@ domains/Network.pdl:1300 @@ domain Network
+       MonotonicTime timestamp
+       # Total number of bytes received for this request.
+       number encodedDataLength
++      # Size of the response body before removing content encodings.
++      # Includes cached bodies, but excludes headers and transfer framing.
++      experimental optional number encodedBodyLength
+ 
+   # Fired if request ended up loading from cache.
+   event requestServedFromCache
+diff --git a/pdl/domains/Page.pdl b/pdl/domains/Page.pdl
+index 9c77ce72..c708fa82 100644
+--- a/pdl/domains/Page.pdl
++++ b/pdl/domains/Page.pdl
+@@ -156,10 +156,6 @@ domain Page
+       rewriter
+       screen-wake-lock
+       serial
+-      # Deprecated.
+-      shared-storage
+-      # Deprecated.
+-      shared-storage-select-url
+       smart-card
+       speaker-selection
+       storage-access
+```
+
 ## Roll protocol to r1714151 — _2026-10-08T04:46:24.000Z_
-######  Diff: [`d209a9a...aa986fa`](https://github.com/ChromeDevTools/devtools-protocol/compare/d209a9a...aa986fa)
+######  Diff: [`d209a9a...8033bef`](https://github.com/ChromeDevTools/devtools-protocol/compare/d209a9a...8033bef)
 
 ```diff
 @@ domains/Audits.pdl:406 @@ experimental domain Audits
@@ -43369,91 +43400,4 @@ index 8dad9c98..ee14676c 100644
  
    # Disables network tracking, prevents network events from being sent to the client.
    command disable
-```
-
-## Roll protocol to r1253724 — _2024-01-30T04:25:31.000Z_
-######  Diff: [`fcda9c0...97a9147`](https://github.com/ChromeDevTools/devtools-protocol/compare/fcda9c0...97a9147)
-
-```diff
-@@ browser_protocol.pdl:5991 @@ domain Network
-       # RFC6265bis.
-       NameValuePairExceedsMaxSize
- 
-+  # Types of reasons why a cookie should have been blocked by 3PCD but is exempted for the request.
-+  experimental type CookieExemptionReason extends string
-+    enum
-+      # The default value. Cookie with this reason could either be blocked or included.
-+      None
-+      # The cookie should have been blocked by 3PCD but is exempted by explicit user setting.
-+      UserSetting
-+      # The cookie should have been blocked by 3PCD but is exempted by metadata mitigation.
-+      TPCDMetadata
-+      # The cookie should have been blocked by 3PCD but is exempted by Deprecation Trial mitigation.
-+      TPCDDeprecationTrial
-+      # The cookie should have been blocked by 3PCD but is exempted by heuristics mitigation.
-+      TPCDHeuristics
-+      # The cookie should have been blocked by 3PCD but is exempted by Enterprise Policy.
-+      EnterprisePolicy
-+      # The cookie should have been blocked by 3PCD but is exempted by Storage Access API.
-+      StorageAccess
-+      # The cookie should have been blocked by 3PCD but is exempted by Top-level Storage Access API.
-+      TopLevelStorageAccess
-+      # The cookie should have been blocked by 3PCD but is exempted by browser heuristics.
-+      BrowserHeuristics
-+
-   # A cookie which was not stored from a response with the corresponding reason.
-   experimental type BlockedSetCookieWithReason extends object
-     properties
-@@ -6004,13 +6026,26 @@ domain Network
-       # errors.
-       optional Cookie cookie
- 
--  # A cookie with was not sent with a request with the corresponding reason.
--  experimental type BlockedCookieWithReason extends object
-+  # A cookie should have been blocked by 3PCD but is exempted and stored from a response with the
-+  # corresponding reason. A cookie could only have at most one exemption reason.
-+  experimental type ExemptedSetCookieWithReason extends object
-+    properties
-+      # The reason the cookie was exempted.
-+      CookieExemptionReason exemptionReason
-+      # The cookie object representing the cookie.
-+      Cookie cookie
-+
-+  # A cookie associated with the request which may or may not be sent with it.
-+  # Includes the cookies itself and reasons for blocking or exemption.
-+  experimental type AssociatedCookie extends object
-     properties
--      # The reason(s) the cookie was blocked.
--      array of CookieBlockedReason blockedReasons
-       # The cookie object representing the cookie which was not sent.
-       Cookie cookie
-+      # The reason(s) the cookie was blocked. If empty means the cookie is included.
-+      array of CookieBlockedReason blockedReasons
-+      # The reason the cookie should have been blocked by 3PCD but is exempted. A cookie could
-+      # only have at most one exemption reason.
-+      optional CookieExemptionReason exemptionReason
- 
-   # Cookie parameter object
-   type CookieParam extends object
-@@ -6779,8 +6814,8 @@ domain Network
-       # Request identifier. Used to match this information to an existing requestWillBeSent event.
-       RequestId requestId
-       # A list of cookies potentially associated to the requested URL. This includes both cookies sent with
--      # the request and the ones not sent; the latter are distinguished by having blockedReason field set.
--      array of BlockedCookieWithReason associatedCookies
-+      # the request and the ones not sent; the latter are distinguished by having blockedReasons field set.
-+      array of AssociatedCookie associatedCookies
-       # Raw request headers as they will be sent over the wire.
-       Headers headers
-       # Connection timing information for the request.
-@@ -6818,6 +6853,9 @@ domain Network
-       optional string cookiePartitionKey
-       # True if partitioned cookies are enabled, but the partition key is not serializeable to string.
-       optional boolean cookiePartitionKeyOpaque
-+      # A list of cookies which should have been blocked by 3PCD but are exempted and stored from
-+      # the response with the corresponding reason.
-+      optional array of ExemptedSetCookieWithReason exemptedCookies
- 
-   # Fired exactly once for each Trust Token operation. Depending on
-   # the type of the operation and whether the operation succeeded or
 ```
