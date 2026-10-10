@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: DOMSnapshot...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/DOMSnapshot' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/DOMSnapshot">DOMSnapshot</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/DOMSnapshot.disable">DOMSnapshot.disable</a></li>
+        <li><a href="../../#/DOMSnapshot.enable">DOMSnapshot.enable</a></li>
+        <li><a href="../../#/DOMSnapshot.getSnapshot">DOMSnapshot.getSnapshot</a></li>
+        <li><a href="../../#/DOMSnapshot.captureSnapshot">DOMSnapshot.captureSnapshot</a></li>
+        <li><a href="../../#/DOMSnapshot.DOMNode">DOMSnapshot.DOMNode</a></li>
+        <li><a href="../../#/DOMSnapshot.InlineTextBox">DOMSnapshot.InlineTextBox</a></li>
+        <li><a href="../../#/DOMSnapshot.LayoutTreeNode">DOMSnapshot.LayoutTreeNode</a></li>
+        <li><a href="../../#/DOMSnapshot.ComputedStyle">DOMSnapshot.ComputedStyle</a></li>
+        <li><a href="../../#/DOMSnapshot.NameValue">DOMSnapshot.NameValue</a></li>
+        <li><a href="../../#/DOMSnapshot.StringIndex">DOMSnapshot.StringIndex</a></li>
+        <li><a href="../../#/DOMSnapshot.ArrayOfStrings">DOMSnapshot.ArrayOfStrings</a></li>
+        <li><a href="../../#/DOMSnapshot.RareStringData">DOMSnapshot.RareStringData</a></li>
+        <li><a href="../../#/DOMSnapshot.RareBooleanData">DOMSnapshot.RareBooleanData</a></li>
+        <li><a href="../../#/DOMSnapshot.RareIntegerData">DOMSnapshot.RareIntegerData</a></li>
+        <li><a href="../../#/DOMSnapshot.Rectangle">DOMSnapshot.Rectangle</a></li>
+        <li><a href="../../#/DOMSnapshot.DocumentSnapshot">DOMSnapshot.DocumentSnapshot</a></li>
+        <li><a href="../../#/DOMSnapshot.NodeTreeSnapshot">DOMSnapshot.NodeTreeSnapshot</a></li>
+        <li><a href="../../#/DOMSnapshot.LayoutTreeSnapshot">DOMSnapshot.LayoutTreeSnapshot</a></li>
+        <li><a href="../../#/DOMSnapshot.TextBoxSnapshot">DOMSnapshot.TextBoxSnapshot</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

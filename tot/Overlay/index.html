@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: Overlay...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/Overlay' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/Overlay">Overlay</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/Overlay.disable">Overlay.disable</a></li>
+        <li><a href="../../#/Overlay.enable">Overlay.enable</a></li>
+        <li><a href="../../#/Overlay.getHighlightObjectForTest">Overlay.getHighlightObjectForTest</a></li>
+        <li><a href="../../#/Overlay.getGridHighlightObjectsForTest">Overlay.getGridHighlightObjectsForTest</a></li>
+        <li><a href="../../#/Overlay.getSourceOrderHighlightObjectForTest">Overlay.getSourceOrderHighlightObjectForTest</a></li>
+        <li><a href="../../#/Overlay.hideHighlight">Overlay.hideHighlight</a></li>
+        <li><a href="../../#/Overlay.highlightFrame">Overlay.highlightFrame</a></li>
+        <li><a href="../../#/Overlay.highlightNode">Overlay.highlightNode</a></li>
+        <li><a href="../../#/Overlay.highlightQuad">Overlay.highlightQuad</a></li>
+        <li><a href="../../#/Overlay.highlightRect">Overlay.highlightRect</a></li>
+        <li><a href="../../#/Overlay.highlightSourceOrder">Overlay.highlightSourceOrder</a></li>
+        <li><a href="../../#/Overlay.setInspectMode">Overlay.setInspectMode</a></li>
+        <li><a href="../../#/Overlay.setShowAdHighlights">Overlay.setShowAdHighlights</a></li>
+        <li><a href="../../#/Overlay.setPausedInDebuggerMessage">Overlay.setPausedInDebuggerMessage</a></li>
+        <li><a href="../../#/Overlay.setShowDebugBorders">Overlay.setShowDebugBorders</a></li>
+        <li><a href="../../#/Overlay.setShowFPSCounter">Overlay.setShowFPSCounter</a></li>
+        <li><a href="../../#/Overlay.setShowGridOverlays">Overlay.setShowGridOverlays</a></li>
+        <li><a href="../../#/Overlay.setShowFlexOverlays">Overlay.setShowFlexOverlays</a></li>
+        <li><a href="../../#/Overlay.setShowScrollSnapOverlays">Overlay.setShowScrollSnapOverlays</a></li>
+        <li><a href="../../#/Overlay.setShowContainerQueryOverlays">Overlay.setShowContainerQueryOverlays</a></li>
+        <li><a href="../../#/Overlay.setShowInspectedElementAnchor">Overlay.setShowInspectedElementAnchor</a></li>
+        <li><a href="../../#/Overlay.setShowPaintRects">Overlay.setShowPaintRects</a></li>
+        <li><a href="../../#/Overlay.setShowLayoutShiftRegions">Overlay.setShowLayoutShiftRegions</a></li>
+        <li><a href="../../#/Overlay.setShowScrollBottleneckRects">Overlay.setShowScrollBottleneckRects</a></li>
+        <li><a href="../../#/Overlay.setShowHitTestBorders">Overlay.setShowHitTestBorders</a></li>
+        <li><a href="../../#/Overlay.setShowWebVitals">Overlay.setShowWebVitals</a></li>
+        <li><a href="../../#/Overlay.setShowViewportSizeOnResize">Overlay.setShowViewportSizeOnResize</a></li>
+        <li><a href="../../#/Overlay.setShowHinge">Overlay.setShowHinge</a></li>
+        <li><a href="../../#/Overlay.setShowDisplayCutout">Overlay.setShowDisplayCutout</a></li>
+        <li><a href="../../#/Overlay.setShowIsolatedElements">Overlay.setShowIsolatedElements</a></li>
+        <li><a href="../../#/Overlay.setShowWindowControlsOverlay">Overlay.setShowWindowControlsOverlay</a></li>
+        <li><a href="../../#/Overlay.inspectNodeRequested">Overlay.inspectNodeRequested</a></li>
+        <li><a href="../../#/Overlay.nodeHighlightRequested">Overlay.nodeHighlightRequested</a></li>
+        <li><a href="../../#/Overlay.screenshotRequested">Overlay.screenshotRequested</a></li>
+        <li><a href="../../#/Overlay.inspectPanelShowRequested">Overlay.inspectPanelShowRequested</a></li>
+        <li><a href="../../#/Overlay.inspectedElementWindowRestored">Overlay.inspectedElementWindowRestored</a></li>
+        <li><a href="../../#/Overlay.inspectModeCanceled">Overlay.inspectModeCanceled</a></li>
+        <li><a href="../../#/Overlay.SourceOrderConfig">Overlay.SourceOrderConfig</a></li>
+        <li><a href="../../#/Overlay.GridHighlightConfig">Overlay.GridHighlightConfig</a></li>
+        <li><a href="../../#/Overlay.FlexContainerHighlightConfig">Overlay.FlexContainerHighlightConfig</a></li>
+        <li><a href="../../#/Overlay.FlexItemHighlightConfig">Overlay.FlexItemHighlightConfig</a></li>
+        <li><a href="../../#/Overlay.LineStyle">Overlay.LineStyle</a></li>
+        <li><a href="../../#/Overlay.BoxStyle">Overlay.BoxStyle</a></li>
+        <li><a href="../../#/Overlay.ContrastAlgorithm">Overlay.ContrastAlgorithm</a></li>
+        <li><a href="../../#/Overlay.ImcbHighlightConfig">Overlay.ImcbHighlightConfig</a></li>
+        <li><a href="../../#/Overlay.HighlightConfig">Overlay.HighlightConfig</a></li>
+        <li><a href="../../#/Overlay.ColorFormat">Overlay.ColorFormat</a></li>
+        <li><a href="../../#/Overlay.GridNodeHighlightConfig">Overlay.GridNodeHighlightConfig</a></li>
+        <li><a href="../../#/Overlay.FlexNodeHighlightConfig">Overlay.FlexNodeHighlightConfig</a></li>
+        <li><a href="../../#/Overlay.ScrollSnapContainerHighlightConfig">Overlay.ScrollSnapContainerHighlightConfig</a></li>
+        <li><a href="../../#/Overlay.ScrollSnapHighlightConfig">Overlay.ScrollSnapHighlightConfig</a></li>
+        <li><a href="../../#/Overlay.HingeConfig">Overlay.HingeConfig</a></li>
+        <li><a href="../../#/Overlay.DisplayCutoutShape">Overlay.DisplayCutoutShape</a></li>
+        <li><a href="../../#/Overlay.DisplayCutoutConfig">Overlay.DisplayCutoutConfig</a></li>
+        <li><a href="../../#/Overlay.WindowControlsOverlayConfig">Overlay.WindowControlsOverlayConfig</a></li>
+        <li><a href="../../#/Overlay.ContainerQueryHighlightConfig">Overlay.ContainerQueryHighlightConfig</a></li>
+        <li><a href="../../#/Overlay.ContainerQueryContainerHighlightConfig">Overlay.ContainerQueryContainerHighlightConfig</a></li>
+        <li><a href="../../#/Overlay.IsolatedElementHighlightConfig">Overlay.IsolatedElementHighlightConfig</a></li>
+        <li><a href="../../#/Overlay.IsolationModeHighlightConfig">Overlay.IsolationModeHighlightConfig</a></li>
+        <li><a href="../../#/Overlay.InspectMode">Overlay.InspectMode</a></li>
+        <li><a href="../../#/Overlay.InspectedElementAnchorConfig">Overlay.InspectedElementAnchorConfig</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

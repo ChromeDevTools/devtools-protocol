@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: DOMStorage...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/DOMStorage' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/DOMStorage">DOMStorage</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/DOMStorage.clear">DOMStorage.clear</a></li>
+        <li><a href="../../#/DOMStorage.disable">DOMStorage.disable</a></li>
+        <li><a href="../../#/DOMStorage.enable">DOMStorage.enable</a></li>
+        <li><a href="../../#/DOMStorage.getDOMStorageItems">DOMStorage.getDOMStorageItems</a></li>
+        <li><a href="../../#/DOMStorage.removeDOMStorageItem">DOMStorage.removeDOMStorageItem</a></li>
+        <li><a href="../../#/DOMStorage.setDOMStorageItem">DOMStorage.setDOMStorageItem</a></li>
+        <li><a href="../../#/DOMStorage.domStorageItemAdded">DOMStorage.domStorageItemAdded</a></li>
+        <li><a href="../../#/DOMStorage.domStorageItemRemoved">DOMStorage.domStorageItemRemoved</a></li>
+        <li><a href="../../#/DOMStorage.domStorageItemUpdated">DOMStorage.domStorageItemUpdated</a></li>
+        <li><a href="../../#/DOMStorage.domStorageItemsCleared">DOMStorage.domStorageItemsCleared</a></li>
+        <li><a href="../../#/DOMStorage.SerializedStorageKey">DOMStorage.SerializedStorageKey</a></li>
+        <li><a href="../../#/DOMStorage.StorageId">DOMStorage.StorageId</a></li>
+        <li><a href="../../#/DOMStorage.Item">DOMStorage.Item</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

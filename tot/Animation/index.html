@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: Animation...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/Animation' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/Animation">Animation</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/Animation.disable">Animation.disable</a></li>
+        <li><a href="../../#/Animation.enable">Animation.enable</a></li>
+        <li><a href="../../#/Animation.getCurrentTime">Animation.getCurrentTime</a></li>
+        <li><a href="../../#/Animation.getPlaybackRate">Animation.getPlaybackRate</a></li>
+        <li><a href="../../#/Animation.releaseAnimations">Animation.releaseAnimations</a></li>
+        <li><a href="../../#/Animation.resolveAnimation">Animation.resolveAnimation</a></li>
+        <li><a href="../../#/Animation.seekAnimations">Animation.seekAnimations</a></li>
+        <li><a href="../../#/Animation.setPaused">Animation.setPaused</a></li>
+        <li><a href="../../#/Animation.setPlaybackRate">Animation.setPlaybackRate</a></li>
+        <li><a href="../../#/Animation.setTiming">Animation.setTiming</a></li>
+        <li><a href="../../#/Animation.animationCanceled">Animation.animationCanceled</a></li>
+        <li><a href="../../#/Animation.animationCreated">Animation.animationCreated</a></li>
+        <li><a href="../../#/Animation.animationStarted">Animation.animationStarted</a></li>
+        <li><a href="../../#/Animation.animationUpdated">Animation.animationUpdated</a></li>
+        <li><a href="../../#/Animation.Animation">Animation.Animation</a></li>
+        <li><a href="../../#/Animation.ViewOrScrollTimeline">Animation.ViewOrScrollTimeline</a></li>
+        <li><a href="../../#/Animation.AnimationEffect">Animation.AnimationEffect</a></li>
+        <li><a href="../../#/Animation.KeyframesRule">Animation.KeyframesRule</a></li>
+        <li><a href="../../#/Animation.KeyframeStyle">Animation.KeyframeStyle</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

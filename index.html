@@ -1,0 +1,864 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>DevTools Protocol Viewer</title>
+
+    <!-- FAVICONS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png" />
+    <link rel="manifest" href="./favicons/site.webmanifest" />
+    <link rel="shortcut icon" href="./favicons/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="msapplication-config" content="./favicons/browserconfig.xml" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="./style.css" />
+
+    <script type="module" src="main.js"></script>
+  </head>
+  <body>
+    <header id="toolbar" class="toolbar-header">
+      <div class="header-left">
+        <button
+          id="drawer-toggle"
+          class="drawer-toggle"
+          type="button"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+          aria-controls="sidebar"
+        >
+          ☰
+        </button>
+        <a href="#/" class="brand-link" title="DevTools Protocol Home">
+          <span class="brand-title">DevTools Protocol</span>
+        </a>
+      </div>
+
+      <div class="header-center">
+        <div class="search-box">
+          <input
+            type="search"
+            id="search"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            placeholder="Search protocol..."
+            aria-label="Search protocol"
+          />
+          <kbd class="search-kbd">/</kbd>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <a
+          href="https://github.com/ChromeDevTools/devtools-protocol"
+          class="toolbar-link"
+          title="GitHub Repository"
+          target="_blank"
+          rel="noopener"
+        >
+          <img
+            class="toolbar-icon github"
+            src="images/github.png"
+            alt="GitHub"
+            width="20"
+            height="20"
+          />
+        </a>
+      </div>
+    </header>
+
+    <div id="drawer-backdrop" class="drawer-backdrop" aria-hidden="true"></div>
+
+    <nav id="sidebar" aria-label="Protocol Domains">
+      <div id="domain-list" class="domain-list"></div>
+      <div class="sidebar-footer">
+        <select id="target-selector" class="target-selector" aria-label="Select protocol version">
+          <option value="tot">Tip-of-Tree (latest)</option>
+          <option value="stable">Stable (1.3)</option>
+          <option value="v8">V8 Inspector (Node.js)</option>
+        </select>
+      </div>
+    </nav>
+
+    <main id="content" tabindex="-1"></main>
+    <section id="sresults"></section>
+
+    <template id="landing">
+      <div class="box box-content landing-hero">
+        <h1>Chrome DevTools Protocol</h1>
+        <p>
+          The <b>Chrome DevTools Protocol (CDP)</b> is a JSON-based protocol that connects debug and
+          automation targets (such as browsing contexts and workers) with trusted debug and
+          automation clients. It allows tools to instrument, inspect, debug, and profile Chromium,
+          Chrome, and other Blink-based browsers.
+        </p>
+
+        <p>
+          Instrumentation is divided into domains (<code>DOM</code>, <code>Debugger</code>,
+          <code>Network</code>, etc.). Each domain defines supported commands and generated events.
+          Both commands and events are serialized JSON objects of a fixed structure.
+        </p>
+
+        <h3 id="scope-and-support">
+          Scope and support <a class="title-link" href="#scope-and-support">#</a>
+        </h3>
+
+        <p>
+          CDP exposes a wide range of high-privilege capabilities, so protocol clients are assumed
+          to be trusted. CDP is not a public or supported API for Chrome, and it does not guarantee
+          backwards compatibility. Syntax and semantics may change without notice based on
+          Chromium's requirements and Chrome's product needs.
+        </p>
+
+        <p>
+          Direct use of CDP by third-party applications is unsupported. We only support official
+          Chrome products built on CDP:
+        </p>
+
+        <ul>
+          <li>Chrome</li>
+          <li>
+            <a href="https://developer.chrome.com/docs/devtools/">Chrome DevTools frontend</a>
+          </li>
+          <li>
+            <a href="https://developer.chrome.com/docs/devtools/agents"
+              >Chrome DevTools for agents</a
+            >
+          </li>
+          <li><a href="https://developer.chrome.com/docs/lighthouse/">Lighthouse</a></li>
+          <li><a href="https://pptr.dev/">Puppeteer</a></li>
+          <li><a href="https://developer.chrome.com/docs/chromedriver/">ChromeDriver</a></li>
+        </ul>
+
+        <p>
+          Third-party tools that automate Chrome should use supported products such as Chrome
+          DevTools for agents, Puppeteer, or ChromeDriver rather than connecting to CDP directly.
+        </p>
+
+        <h3 id="api-docs">Protocol API docs <a class="title-link" href="#api-docs">#</a></h3>
+
+        <p>
+          <b><a href="#/Page">The latest (tip-of-tree) protocol</a></b> — Tracks the
+          <a
+            href="https://chromium.googlesource.com/chromium/src/+log/HEAD/third_party/blink/public/devtools_protocol/browser_protocol.pdl"
+            >latest protocol definitions</a
+          >
+          in Chromium. It captures the full capabilities of the protocol, changes frequently, and
+          can break at any time. Backwards compatibility is not guaranteed.
+        </p>
+
+        <p>
+          <b><a href="#/v8/Runtime">v8-inspector protocol</a></b> — Enables
+          <a
+            href="https://medium.com/@paul_irish/debugging-node-js-nightlies-with-chrome-devtools-7c4a1b95ae27"
+            >debugging and profiling</a
+          >
+          of Node.js applications.
+        </p>
+
+        <p>
+          <b><a href="#/stable/Page">stable protocol</a></b> — A historical snapshot tagged at
+          Chrome 64 that includes a smaller subset of protocol capabilities.
+        </p>
+
+        <h3 id="resources">Resources <a class="title-link" href="#resources">#</a></h3>
+
+        <p>
+          See the
+          <a
+            href="https://chromium.googlesource.com/chromium/src/+/HEAD/third_party/blink/public/devtools_protocol/README.md"
+            >CDP contribution guidelines and backend overview</a
+          >
+          and
+          <a href="https://github.com/aslushnikov/getting-started-with-cdp/blob/master/README.md"
+            >Getting Started with CDP</a
+          >. For supported browser automation, use
+          <a href="https://developer.chrome.com/docs/devtools/agents">Chrome DevTools for agents</a
+          >, <a href="https://pptr.dev/">Puppeteer</a>, or
+          <a href="https://developer.chrome.com/docs/chromedriver/">ChromeDriver</a>.
+        </p>
+
+        <p>
+          For questions and discussions, subscribe to the
+          <a href="https://groups.google.com/d/forum/chrome-debugging-protocol"
+            >chrome-debugging-protocol</a
+          >
+          mailing list.
+        </p>
+
+        <h3 id="monitor">
+          Using Protocol Monitor in Chrome DevTools <a class="title-link" href="#monitor">#</a>
+        </h3>
+        <p>
+          Protocol Monitor helps you understand how the DevTools frontend uses the protocol. You can
+          view all requests, responses, and events as they happen in the Protocol Monitor panel.
+        </p>
+
+        <figure class="screenshot">
+          <a href="images/protocol-monitor.png" target="_blank" rel="noopener">
+            <img
+              src="images/protocol-monitor.png"
+              height="300"
+              alt="Screenshot of the Protocol Monitor"
+              loading="lazy"
+            />
+          </a>
+        </figure>
+
+        <p>
+          Click the gear icon in the top-right of DevTools to open <i>Settings</i>. Select
+          <i>Experiments</i> on the left, turn on "Protocol Monitor", then close and reopen
+          DevTools. Click the ⋮ menu icon, choose <i>More tools</i>, and select
+          <i>Protocol monitor</i>.
+        </p>
+
+        <p>
+          You can also send commands from Protocol Monitor. If a command requires no parameters,
+          type it into the prompt at the bottom of the panel and press Enter (for example,
+          <code>Page.captureScreenshot</code>). If a command requires parameters, provide them as
+          JSON (for example, <code>{"cmd":"Page.captureScreenshot","args":{"format": "jpeg"}}</code>
+          ).
+        </p>
+
+        <p>
+          Click the icon next to the command input to open the command editor. After you select a
+          CDP command, the editor generates a structured form from the protocol definitions so you
+          can edit parameters and inspect their documentation and types. Send the command by
+          clicking the send button or pressing <code>Ctrl + Enter</code>.
+        </p>
+
+        <figure class="screenshot">
+          <a href="images/cdp-editor.png" target="_blank" rel="noopener">
+            <img
+              src="images/cdp-editor.png"
+              height="300"
+              alt="Screenshot of CDP Editor"
+              loading="lazy"
+            />
+          </a>
+        </figure>
+
+        <p>
+          Alternatively, you can execute commands from the DevTools console. First,
+          <a href="https://stackoverflow.com/a/12291163/89484">open DevTools on DevTools</a>, then
+          call <code>Main.MainImpl.sendOverProtocol()</code> in the inner console:
+        </p>
+
+        <pre>
+let Main = await import('./devtools-frontend/front_end/entrypoints/main/main.js'); // or './entrypoints/main/main.js' or './main/main.js' depending on the browser version
+await Main.MainImpl.sendOverProtocol('Emulation.setDeviceMetricsOverride', {
+  mobile: true,
+  width: 412,
+  height: 732,
+  deviceScaleFactor: 2.625,
+});
+
+const data = await Main.MainImpl.sendOverProtocol("Page.captureScreenshot");</pre>
+
+        <h3 id="extension">
+          DevTools protocol via Chrome extension <a class="title-link" href="#extension">#</a>
+        </h3>
+        <p>
+          The
+          <a href="https://developer.chrome.com/docs/extensions/reference/api/debugger"
+            ><code>chrome.debugger</code></a
+          >
+          extension API exposes the CDP JSON message transport to Chrome extensions. Extensions must
+          request the
+          <a href="https://developer.chrome.com/docs/extensions/reference/api/debugger#permissions"
+            ><code>"debugger"</code></a
+          >
+          permission in their manifest.
+        </p>
+
+        <p>
+          Chrome supports <code>chrome.debugger</code> only on a best-effort basis for
+          developer-facing debugging extensions. This includes extensions that add a DevTools panel
+          with developer functionality. Non-debugger use cases and extensions aimed at end users
+          rather than developers are unsupported.
+        </p>
+
+        <p>
+          Because CDP exposes high-privilege capabilities, the backend enforces additional access
+          controls on <code>chrome.debugger</code> calls to prevent extensions from accessing the
+          file system or escaping the browser sandbox. As with direct CDP connections, protocol
+          commands and events may change without notice.
+        </p>
+
+        <h3 id="faq">
+          Frequently asked questions <a class="title-link" href="#faq">#</a>
+        </h3>
+
+        <h4 id="is-cdp-supported">
+          Is CDP a public or supported API for third-party products?
+          <a class="title-link" href="#is-cdp-supported">#</a>
+        </h4>
+        <p>
+          TL;DR: No. CDP is not a public or supported API, and we do not guarantee backwards
+          compatibility.
+        </p>
+        <p>
+          While direct use by third parties has been tolerated, it is unsupported and may break
+          without notice when protocol syntax or semantics change. Third-party tools that automate
+          Chrome should connect indirectly through supported products such as Chrome DevTools for
+          agents, Puppeteer, or ChromeDriver.
+        </p>
+
+        <h4 id="contributions">
+          How are feature requests and open-source contributions handled?
+          <a class="title-link" href="#contributions">#</a>
+        </h4>
+        <p>
+          TL;DR: We only accept changes motivated by our supported products, security improvements,
+          removal of outdated functionality, or Chrome architectural changes.
+        </p>
+        <p>
+          Changes to CDP must be approved by CDP owners, meet high technical design standards, and
+          serve web developer debugging or testing use cases. Only in exceptional cases do we accept
+          additions to automate Chrome's UI. See the
+          <a
+            href="https://chromium.googlesource.com/chromium/src/+/HEAD/third_party/blink/public/devtools_protocol/README.md"
+            >contribution guidelines</a
+          >
+          for details.
+        </p>
+
+        <h4 id="how-is-the-protocol-defined">
+          How is the protocol defined?
+          <a class="title-link" href="#how-is-the-protocol-defined">#</a>
+        </h4>
+        <p>
+          The canonical protocol definitions live in the Chromium and V8 source trees (<a
+            href="https://chromium.googlesource.com/chromium/src/+/HEAD/third_party/blink/public/devtools_protocol/browser_protocol.pdl"
+            >browser_protocol.pdl</a
+          >
+          and
+          <a href="https://chromium.googlesource.com/v8/v8/+/HEAD/include/js_protocol.pdl"
+            >js_protocol.pdl</a
+          >) and are maintained by the DevTools team. These declarative definitions generate C++
+          bindings in Chromium for Chrome DevTools and
+          <a href="https://chromium.googlesource.com/chromium/src/+/HEAD/headless/README.md"
+            >Chrome Headless</a
+          >.
+        </p>
+
+        <h4 id="json">
+          Can I get the protocol as JSON? <a class="title-link" href="#json">#</a>
+        </h4>
+
+        <p>
+          The canonical <code>.pdl</code> files are mirrored in the
+          <a href="https://github.com/ChromeDevTools/devtools-protocol/">devtools-protocol</a>
+          GitHub repository, which generates JSON schemas, TypeScript definitions, and Closure
+          typedefs and publishes them
+          <a href="https://www.npmjs.com/package/devtools-protocol">to npm</a>.
+        </p>
+
+        <p>
+          When Chrome runs with <code>--remote-debugging-port=9222</code>, the protocol schema for
+          that browser build is also served at <code>localhost:9222/json/protocol</code>.
+        </p>
+
+        <h4 id="how-do-i-access-the-browser-target">
+          How do I access the browser target?
+          <a class="title-link" href="#how-do-i-access-the-browser-target">#</a>
+        </h4>
+        <p>
+          The endpoint is exposed as <code>webSocketDebuggerUrl</code> in
+          <code>/json/version</code>. Note the <code>browser</code> path segment in the URL rather
+          than <code>page</code>. When Chrome launches with <code>--remote-debugging-port=0</code>,
+          it writes the selected port and browser target path to stderr and to the
+          <code>DevToolsActivePort</code> file in the profile directory.
+        </p>
+
+        <h4 id="simultaneous">
+          Does the protocol support multiple simultaneous clients?
+          <a class="title-link" href="#simultaneous">#</a>
+        </h4>
+        <p>
+          TL;DR: Yes. Chrome 63 introduced support for
+          <a href="https://developer.chrome.com/blog/new-in-devtools-63#multi-client"
+            >multiple simultaneous clients</a
+          >.
+        </p>
+
+        <p>
+          When a session is disconnected, the client receives an
+          <code>Inspector.detached</code> event with the disconnection reason, for example:
+          <code>{"method":"Inspector.detached","params":{"reason":"target_closed"}}</code>.
+        </p>
+
+        <h3 id="endpoints">
+          HTTP endpoints <a class="title-link" href="#endpoints">#</a>
+        </h3>
+        <p>
+          When Chromium or Chrome launches with
+          <code>--remote-debugging-port=&lt;port&gt;</code> (for example,
+          <code>--remote-debugging-port=9222</code>), it starts a local HTTP server that exposes
+          REST endpoints and WebSocket connections for target discovery, lifecycle management, and
+          CDP communication.
+        </p>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Endpoint</th>
+                <th>Method</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>/json/version</code></td>
+                <td><span class="http-method http-method-get">GET</span></td>
+                <td>Browser version metadata and browser-level WebSocket URL</td>
+              </tr>
+              <tr>
+                <td><code>/json</code> or <code>/json/list</code></td>
+                <td><span class="http-method http-method-get">GET</span></td>
+                <td>List of inspectable targets (pages, workers, tabs)</td>
+              </tr>
+              <tr>
+                <td><code>/json/new?{url}</code></td>
+                <td><span class="http-method http-method-put">PUT</span></td>
+                <td>Create a new page or tab target (strictly requires PUT)</td>
+              </tr>
+              <tr>
+                <td><code>/json/activate/{targetId}</code></td>
+                <td><span class="http-method http-method-get">GET</span></td>
+                <td>Bring a target page or tab to the foreground</td>
+              </tr>
+              <tr>
+                <td><code>/json/close/{targetId}</code></td>
+                <td><span class="http-method http-method-get">GET</span></td>
+                <td>Close the specified target</td>
+              </tr>
+              <tr>
+                <td><code>/json/protocol</code></td>
+                <td><span class="http-method http-method-get">GET</span></td>
+                <td>Full DevTools Protocol JSON schema</td>
+              </tr>
+              <tr>
+                <td><code>/devtools/browser/{guid}</code></td>
+                <td><span class="http-method http-method-ws">WS</span></td>
+                <td>Root browser-level WebSocket connection</td>
+              </tr>
+              <tr>
+                <td><code>/devtools/page/{targetId}</code></td>
+                <td><span class="http-method http-method-ws">WS</span></td>
+                <td>Target-specific WebSocket connection</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 id="get-jsonversion">
+          <span class="http-method http-method-get">GET</span> <code>/json/version</code>
+          <a class="title-link" href="#get-jsonversion">#</a>
+        </h4>
+        <p>
+          Returns browser version metadata, engine versions, and the browser-level WebSocket
+          debugging URL.
+        </p>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Field</th>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>Browser</code></td>
+                <td>string</td>
+                <td>
+                  Product name and version (e.g. <code>Chrome/135.0.7012.0</code> or
+                  <code>HeadlessChrome/...</code>)
+                </td>
+              </tr>
+              <tr>
+                <td><code>Protocol-Version</code></td>
+                <td>string</td>
+                <td>Current supported protocol version (e.g. <code>1.3</code>)</td>
+              </tr>
+              <tr>
+                <td><code>User-Agent</code></td>
+                <td>string</td>
+                <td>Default browser User-Agent header string</td>
+              </tr>
+              <tr>
+                <td><code>V8-Version</code></td>
+                <td>string</td>
+                <td>V8 JavaScript engine version</td>
+              </tr>
+              <tr>
+                <td><code>WebKit-Version</code></td>
+                <td>string</td>
+                <td>WebKit / Blink version and Git revision hash</td>
+              </tr>
+              <tr>
+                <td><code>webSocketDebuggerUrl</code></td>
+                <td>string</td>
+                <td>
+                  WebSocket URL to attach to the root browser target (contains an unguessable UUID
+                  on desktop)
+                </td>
+              </tr>
+              <tr>
+                <td><code>Android-Package</code></td>
+                <td>string</td>
+                <td>Host Android package ID (present on Android only)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <pre>
+{
+  "Browser": "Chrome/135.0.7012.0",
+  "Protocol-Version": "1.3",
+  "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+  "V8-Version": "13.5.100",
+  "WebKit-Version": "537.36 (@a1b2c3d4e5f60718293a4b5c6d7e8f9012345678)",
+  "webSocketDebuggerUrl": "ws://localhost:9222/devtools/browser/6b539824-7489-4a9c-9c02-4ec4dc1373ea"
+}</pre>
+
+        <h4 id="get-json-or-jsonlist">
+          <span class="http-method http-method-get">GET</span> <code>/json</code> or
+          <code>/json/list</code>
+          <a class="title-link" href="#get-json-or-jsonlist">#</a>
+        </h4>
+        <p>
+          Returns an array of target descriptors for all inspectable contexts (pages, background
+          pages, service workers, shared workers). Targets are sorted in descending order by last
+          activity time.
+        </p>
+
+        <p><strong>Query parameters:</strong></p>
+        <ul>
+          <li>
+            <code>for_tab</code> (optional flag): When present (e.g.
+            <code>/json/list?for_tab</code>), targets of type <code>tab</code> are included in the
+            results. When omitted, only frame targets are returned, and <code>tab</code> targets are
+            filtered out.
+          </li>
+        </ul>
+
+        <pre>
+[
+  {
+    "description": "",
+    "devtoolsFrontendUrl": "https://chrome-devtools-frontend.appspot.com/serve_rev/@a1b2c3d4/inspector.html?ws=localhost:9222/devtools/page/D598C123456789ABCDEF0123456789AB",
+    "faviconUrl": "https://example.com/favicon.ico",
+    "id": "D598C123456789ABCDEF0123456789AB",
+    "title": "Example Domain",
+    "type": "page",
+    "url": "https://example.com/",
+    "webSocketDebuggerUrl": "ws://localhost:9222/devtools/page/D598C123456789ABCDEF0123456789AB"
+  }
+]</pre>
+
+        <h4 id="get-jsonnewurl">
+          <span class="http-method http-method-put">PUT</span> <code>/json/new</code> or
+          <code>PUT /json/new?{url}</code>
+          <a class="title-link" href="#get-jsonnewurl">#</a>
+        </h4>
+        <p>
+          Creates a new browsing context (page or tab) navigated to the specified URL and returns
+          its target descriptor.
+        </p>
+        <p>
+          <strong>Method requirement:</strong> This endpoint
+          <strong>strictly requires the <code>PUT</code> method</strong>. Calling it with
+          <code>GET</code>, <code>POST</code>, or any other verb fails with
+          <code>405 Method Not Allowed</code> (<code
+            >"Using unsafe HTTP verb GET to invoke /json/new. This action supports only PUT
+            verb."</code
+          >).
+        </p>
+        <p><strong>Query parameters:</strong></p>
+        <ul>
+          <li>
+            The query component before any <code>&amp;</code> is parsed and URL-unescaped as the
+            initial navigation URL (e.g. <code>PUT /json/new?https%3A%2F%2Fexample.com</code>). If
+            omitted or invalid, it defaults to <code>about:blank</code>.
+          </li>
+          <li>
+            Supports the <code>&amp;for_tab</code> flag to create a tab target instead of an
+            isolated frame.
+          </li>
+        </ul>
+
+        <h4 id="get-jsonactivatetargetid">
+          <span class="http-method http-method-get">GET</span>
+          <code>/json/activate/{targetId}</code>
+          <a class="title-link" href="#get-jsonactivatetargetid">#</a>
+        </h4>
+        <p>Brings the specified target tab or window to the foreground.</p>
+        <ul>
+          <li><code>200 OK</code>: <code>"Target activated"</code></li>
+          <li><code>404 Not Found</code>: <code>"No such target id: {targetId}"</code></li>
+          <li>
+            <code>500 Internal Server Error</code>:
+            <code>"Could not activate target id: {targetId}"</code>
+          </li>
+        </ul>
+
+        <h4 id="get-jsonclosetargetid">
+          <span class="http-method http-method-get">GET</span> <code>/json/close/{targetId}</code>
+          <a class="title-link" href="#get-jsonclosetargetid">#</a>
+        </h4>
+        <p>Closes the specified target page.</p>
+        <ul>
+          <li><code>200 OK</code>: <code>"Target is closing"</code></li>
+          <li><code>404 Not Found</code>: <code>"No such target id: {targetId}"</code></li>
+          <li>
+            <code>500 Internal Server Error</code>:
+            <code>"Could not close target id: {targetId}"</code>
+          </li>
+        </ul>
+
+        <h4 id="get-jsonprotocol">
+          <span class="http-method http-method-get">GET</span> <code>/json/protocol</code>
+          <a class="title-link" href="#get-jsonprotocol">#</a>
+        </h4>
+        <p>
+          Returns the complete Chrome DevTools Protocol JSON schema containing all domains, methods,
+          events, and type definitions.
+        </p>
+
+        <h4 id="target-descriptor-schema">
+          Target descriptor object
+          <a class="title-link" href="#target-descriptor-schema">#</a>
+        </h4>
+        <p>
+          The JSON object structure returned in target lists (<code>/json/list</code>) and new
+          target creation (<code>/json/new</code>):
+        </p>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Field</th>
+                <th>Type</th>
+                <th>Presence</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>id</code></td>
+                <td>string</td>
+                <td>Required</td>
+                <td>Unique target identifier (UUIDv4)</td>
+              </tr>
+              <tr>
+                <td><code>parentId</code></td>
+                <td>string</td>
+                <td>Optional</td>
+                <td>Target ID of the parent context (omitted for top-level pages)</td>
+              </tr>
+              <tr>
+                <td><code>type</code></td>
+                <td>string</td>
+                <td>Required</td>
+                <td>Target classification string (see table below)</td>
+              </tr>
+              <tr>
+                <td><code>title</code></td>
+                <td>string</td>
+                <td>Required</td>
+                <td>Document title or worker label (HTML-escaped)</td>
+              </tr>
+              <tr>
+                <td><code>description</code></td>
+                <td>string</td>
+                <td>Required</td>
+                <td>Human-readable target description (may be empty string)</td>
+              </tr>
+              <tr>
+                <td><code>url</code></td>
+                <td>string</td>
+                <td>Required</td>
+                <td>Current URL loaded in the target</td>
+              </tr>
+              <tr>
+                <td><code>faviconUrl</code></td>
+                <td>string</td>
+                <td>Optional</td>
+                <td>Favicon URL (omitted if not present or invalid)</td>
+              </tr>
+              <tr>
+                <td><code>webSocketDebuggerUrl</code></td>
+                <td>string</td>
+                <td>Required</td>
+                <td>WebSocket URL for CDP clients to attach to this target</td>
+              </tr>
+              <tr>
+                <td><code>devtoolsFrontendUrl</code></td>
+                <td>string</td>
+                <td>Required</td>
+                <td>Complete URL to launch the hosted DevTools web inspector for this target</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 id="target-types">
+          Target types
+          <a class="title-link" href="#target-types">#</a>
+        </h4>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th><code>type</code> Value</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>"page"</code></td>
+                <td>Primary top-level web page or tab frame</td>
+              </tr>
+              <tr>
+                <td><code>"tab"</code></td>
+                <td>
+                  Tab target container (parent of all subframes and prerendered pages in a
+                  WebContents)
+                </td>
+              </tr>
+              <tr>
+                <td><code>"iframe"</code></td>
+                <td>Out-of-process subframe or iframe</td>
+              </tr>
+              <tr>
+                <td><code>"worker"</code></td>
+                <td>Dedicated Web Worker (<code>new Worker()</code>)</td>
+              </tr>
+              <tr>
+                <td><code>"shared_worker"</code></td>
+                <td>Shared Web Worker (<code>new SharedWorker()</code>)</td>
+              </tr>
+              <tr>
+                <td><code>"service_worker"</code></td>
+                <td>Service Worker registration execution context</td>
+              </tr>
+              <tr>
+                <td><code>"worklet"</code></td>
+                <td>Generic Worklet (Paint, Audio, Layout)</td>
+              </tr>
+              <tr>
+                <td><code>"auction_worklet"</code></td>
+                <td>Protected Audience (FLEDGE) Auction Worklet</td>
+              </tr>
+              <tr>
+                <td><code>"browser"</code></td>
+                <td>Browser-wide process target</td>
+              </tr>
+              <tr>
+                <td><code>"webview"</code></td>
+                <td>Guest view or <code>&lt;webview&gt;</code> content</td>
+              </tr>
+              <tr>
+                <td><code>"background_page"</code></td>
+                <td>Chrome Extension background page or offscreen document</td>
+              </tr>
+              <tr>
+                <td><code>"app"</code></td>
+                <td>Packaged app, platform app, or Isolated Web App (IWA)</td>
+              </tr>
+              <tr>
+                <td><code>"browser_ui"</code></td>
+                <td>Internal Chrome WebUI window or contents</td>
+              </tr>
+              <tr>
+                <td><code>"other"</code></td>
+                <td>Fallback classification for other inspectable targets</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 id="websocket-devtoolspagetargetid">
+          <span class="http-method http-method-ws">WebSocket</span>
+          <code>/devtools/page/{targetId}</code> &amp; <code>/devtools/browser/{guid}</code>
+          <a class="title-link" href="#websocket-devtoolspagetargetid">#</a>
+        </h4>
+        <p>
+          Clients communicate with the DevTools Protocol over full-duplex WebSocket connections.
+        </p>
+        <ul>
+          <li>
+            <strong>Page WebSocket (<code>/devtools/page/{targetId}</code>):</strong> Attaches
+            directly to a single target session. If the target crashes or is closed, the server
+            emits an unprompted CDP notification before closing the socket:
+            <code>{"method":"Inspector.detached","params":{"reason":"target_closed"}}</code>
+          </li>
+          <li>
+            <strong>Browser WebSocket (<code>/devtools/browser/{guid}</code>):</strong> Attaches to
+            the root browser session, enabling target auto-discovery, multi-target attachment via
+            <code>Target.attachToTarget</code>, and browser-wide management. On desktop Chrome, the
+            path contains an unguessable UUIDv4 written to the <code>DevToolsActivePort</code> file
+            in the user data profile directory.
+          </li>
+        </ul>
+
+        <h4 id="get-devtoolsinspector.html">
+          <span class="http-method http-method-get">GET</span> <code>/devtools/inspector.html</code>
+          <a class="title-link" href="#get-devtoolsinspector.html">#</a>
+        </h4>
+        <p>
+          Legacy endpoint serving the bundled DevTools frontend. In modern Chrome, inspect targets
+          using the remote frontend URL provided in target descriptors (<code>devtoolsFrontendUrl</code>).
+        </p>
+
+        <h4 id="security-restrictions">
+          Security and origin restrictions
+          <a class="title-link" href="#security-restrictions">#</a>
+        </h4>
+        <ul>
+          <li>
+            <strong>Host header validation:</strong> To mitigate DNS rebinding attacks, the server
+            validates the incoming HTTP <code>Host</code> header. It must either be an IP address
+            (e.g. <code>127.0.0.1</code>, <code>[::1]</code>) or <code>localhost</code>. Other
+            hostnames trigger an immediate <code>500 Internal Server Error</code> (<code
+            >"Host header is specified and is not an IP address or localhost."</code
+            >).
+          </li>
+          <li>
+            <strong>WebSocket origin verification (<code>--remote-allow-origins</code>):</strong>
+            When a WebSocket handshake includes an <code>Origin</code> header (such as from a web
+            page), the origin must match the origins specified via
+            <code>--remote-allow-origins=&lt;origin&gt;</code> (or
+            <code>--remote-allow-origins=*</code>). Non-matching origins receive
+            <code>403 Forbidden</code>. Requests without an <code>Origin</code> header (such as CLI
+            tools, Puppeteer, Node.js) are allowed by default.
+          </li>
+          <li>
+            <strong>No CORS:</strong> The server never emits
+            <code>Access-Control-Allow-Origin</code> response headers, ensuring the browser
+            Same-Origin Policy prevents arbitrary websites from reading target lists or metadata via
+            <code>fetch()</code> or <code>XMLHttpRequest</code>.
+          </li>
+          <li>
+            <strong>Clickjacking and framing protection:</strong> All
+            <code>/json/*</code> endpoints emit
+            <code>Content-Security-Policy: frame-ancestors 'none'</code>, and the discovery page
+            (<code>/</code>) emits <code>X-Frame-Options: DENY</code>.
+          </li>
+        </ul>
+      </div>
+    </template>
+  </body>
+</html>

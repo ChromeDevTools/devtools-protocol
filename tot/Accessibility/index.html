@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: Accessibility...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/Accessibility' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/Accessibility">Accessibility</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/Accessibility.disable">Accessibility.disable</a></li>
+        <li><a href="../../#/Accessibility.enable">Accessibility.enable</a></li>
+        <li><a href="../../#/Accessibility.getPartialAXTree">Accessibility.getPartialAXTree</a></li>
+        <li><a href="../../#/Accessibility.getFullAXTree">Accessibility.getFullAXTree</a></li>
+        <li><a href="../../#/Accessibility.getRootAXNode">Accessibility.getRootAXNode</a></li>
+        <li><a href="../../#/Accessibility.getAXNodeAndAncestors">Accessibility.getAXNodeAndAncestors</a></li>
+        <li><a href="../../#/Accessibility.getChildAXNodes">Accessibility.getChildAXNodes</a></li>
+        <li><a href="../../#/Accessibility.queryAXTree">Accessibility.queryAXTree</a></li>
+        <li><a href="../../#/Accessibility.loadComplete">Accessibility.loadComplete</a></li>
+        <li><a href="../../#/Accessibility.nodesUpdated">Accessibility.nodesUpdated</a></li>
+        <li><a href="../../#/Accessibility.AXNodeId">Accessibility.AXNodeId</a></li>
+        <li><a href="../../#/Accessibility.AXValueType">Accessibility.AXValueType</a></li>
+        <li><a href="../../#/Accessibility.AXValueSourceType">Accessibility.AXValueSourceType</a></li>
+        <li><a href="../../#/Accessibility.AXValueNativeSourceType">Accessibility.AXValueNativeSourceType</a></li>
+        <li><a href="../../#/Accessibility.AXValueSource">Accessibility.AXValueSource</a></li>
+        <li><a href="../../#/Accessibility.AXRelatedNode">Accessibility.AXRelatedNode</a></li>
+        <li><a href="../../#/Accessibility.AXProperty">Accessibility.AXProperty</a></li>
+        <li><a href="../../#/Accessibility.AXValue">Accessibility.AXValue</a></li>
+        <li><a href="../../#/Accessibility.AXPropertyName">Accessibility.AXPropertyName</a></li>
+        <li><a href="../../#/Accessibility.AXNode">Accessibility.AXNode</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>
