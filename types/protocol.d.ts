@@ -18588,6 +18588,13 @@ export namespace Protocol {
             content: string;
         }
 
+        export interface SetInputVisualizationRequest {
+            /**
+             * Whether to enable click visualization.
+             */
+            clicks?: boolean;
+        }
+
         export interface DomContentEventFiredEvent {
             timestamp: Network.MonotonicTime;
         }

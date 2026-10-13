@@ -2774,6 +2774,7 @@ export namespace ProtocolProxyApi {
 
         /**
          * Return UUID of Blob object specified by a remote object id.
+         * @deprecated
          */
         resolveBlob(params: Protocol.IO.ResolveBlobRequest): Promise<Protocol.IO.ResolveBlobResponse>;
 
@@ -4280,6 +4281,12 @@ export namespace ProtocolProxyApi {
          * @experimental
          */
         getAnnotatedPageContent(params: Protocol.Page.GetAnnotatedPageContentRequest): Promise<Protocol.Page.GetAnnotatedPageContentResponse>;
+
+        /**
+         * Configures input visualization on the page.
+         * @experimental
+         */
+        setInputVisualization(params: Protocol.Page.SetInputVisualizationRequest): Promise<void>;
 
         on(event: 'domContentEventFired', listener: (params: Protocol.Page.DomContentEventFiredEvent) => void): void;
 

@@ -3970,6 +3970,7 @@ export namespace ProtocolMapping {
         };
         /**
          * Return UUID of Blob object specified by a remote object id.
+         * @deprecated
          */
         'IO.resolveBlob': {
             paramsType: [Protocol.IO.ResolveBlobRequest];
@@ -5480,6 +5481,14 @@ export namespace ProtocolMapping {
         'Page.getAnnotatedPageContent': {
             paramsType: [Protocol.Page.GetAnnotatedPageContentRequest?];
             returnType: Protocol.Page.GetAnnotatedPageContentResponse;
+        };
+        /**
+         * Configures input visualization on the page.
+         * @experimental
+         */
+        'Page.setInputVisualization': {
+            paramsType: [Protocol.Page.SetInputVisualizationRequest?];
+            returnType: void;
         };
         /**
          * Disable collecting and reporting metrics.

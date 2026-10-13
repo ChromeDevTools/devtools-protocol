@@ -1,7 +1,37 @@
 
 
+## Roll protocol to r1717327 — _2026-10-13T04:49:47.000Z_
+######  Diff: [`c3ed21b...69abc83`](https://github.com/ChromeDevTools/devtools-protocol/compare/c3ed21b...69abc83)
+
+```diff
+@@ domains/IO.pdl:36 @@ domain IO
+       boolean eof
+ 
+   # Return UUID of Blob object specified by a remote object id.
+-  command resolveBlob
++  deprecated command resolveBlob
+     parameters
+       # Object id of a Blob object wrapper.
+       Runtime.RemoteObjectId objectId
+diff --git a/pdl/domains/Page.pdl b/pdl/domains/Page.pdl
+index c708fa82..9a00bbe6 100644
+--- a/pdl/domains/Page.pdl
++++ b/pdl/domains/Page.pdl
+@@ -1827,3 +1827,10 @@ domain Page
+       # The format is defined by the `AnnotatedPageContent` message in
+       # components/optimization_guide/proto/features/common_quality_data.proto
+       binary content
++
++  # Configures input visualization on the page.
++  experimental command setInputVisualization
++    parameters
++      # Whether to enable click visualization.
++      optional boolean clicks
++
+```
+
 ## Roll protocol to r1716261 — _2026-10-10T04:40:11.000Z_
-######  Diff: [`8033bef...06bfe2f`](https://github.com/ChromeDevTools/devtools-protocol/compare/8033bef...06bfe2f)
+######  Diff: [`8033bef...c3ed21b`](https://github.com/ChromeDevTools/devtools-protocol/compare/8033bef...c3ed21b)
 
 ```diff
 @@ domains/Network.pdl:1300 @@ domain Network
@@ -43375,29 +43405,4 @@ index 8dad9c98..ee14676c 100644
  
    # A cookie which was not stored from a response with the corresponding reason.
    experimental type BlockedSetCookieWithReason extends object
-```
-
-## Roll protocol to r1254350 — _2024-01-31T04:26:07.000Z_
-######  Diff: [`97a9147...0abedd4`](https://github.com/ChromeDevTools/devtools-protocol/compare/97a9147...0abedd4)
-
-```diff
-@@ browser_protocol.pdl:6273 @@ domain Network
-       # Response to a requestIntercepted with an authChallenge. Must not be set otherwise.
-       optional AuthChallengeResponse authChallengeResponse
- 
--  # Deletes browser cookies with matching name and url or domain/path pair.
-+  # Deletes browser cookies with matching name and url or domain/path/partitionKey pair.
-   command deleteCookies
-     parameters
-       # Name of the cookies to remove.
-@@ -6285,6 +6285,9 @@ domain Network
-       optional string domain
-       # If specified, deletes only cookies with the exact path.
-       optional string path
-+      # If specified, deletes only cookies with the the given name and partitionKey where domain
-+      # matches provided URL.
-+      optional string partitionKey
- 
-   # Disables network tracking, prevents network events from being sent to the client.
-   command disable
 ```
