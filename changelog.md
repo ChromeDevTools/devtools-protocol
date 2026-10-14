@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1718299 — _2026-10-14T04:41:00.000Z_
+######  Diff: [`52f4748...e5c0db4`](https://github.com/ChromeDevTools/devtools-protocol/compare/52f4748...e5c0db4)
+
+```diff
+@@ domains/Page.pdl:164 @@ domain Page
+       sync-xhr
+       tools
+       translator
++      unbounded-element
+       unload
+       usb
+       usb-unrestricted
+```
+
 ## Roll protocol to r1717327 — _2026-10-13T04:49:47.000Z_
-######  Diff: [`c3ed21b...69abc83`](https://github.com/ChromeDevTools/devtools-protocol/compare/c3ed21b...69abc83)
+######  Diff: [`c3ed21b...52f4748`](https://github.com/ChromeDevTools/devtools-protocol/compare/c3ed21b...52f4748)
 
 ```diff
 @@ domains/IO.pdl:36 @@ domain IO
@@ -43388,21 +43402,4 @@ index 8dad9c98..ee14676c 100644
    # DOM interaction is implemented in terms of mirror objects that represent the actual DOM nodes.
    # DOMNode is a base node mirror type.
    type Node extends object
-```
-
-## Roll protocol to r1255431 — _2024-02-02T04:26:50.000Z_
-######  Diff: [`0abedd4...726f72d`](https://github.com/ChromeDevTools/devtools-protocol/compare/0abedd4...726f72d)
-
-```diff
-@@ browser_protocol.pdl:6010 @@ domain Network
-       StorageAccess
-       # The cookie should have been blocked by 3PCD but is exempted by Top-level Storage Access API.
-       TopLevelStorageAccess
--      # The cookie should have been blocked by 3PCD but is exempted by browser heuristics.
--      BrowserHeuristics
-+      # The cookie should have been blocked by 3PCD but is exempted by CORS opt-in.
-+      CorsOptIn
- 
-   # A cookie which was not stored from a response with the corresponding reason.
-   experimental type BlockedSetCookieWithReason extends object
 ```
