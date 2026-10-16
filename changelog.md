@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1720385 — _2026-10-16T04:43:16.000Z_
+######  Diff: [`dfad770...510a3d1`](https://github.com/ChromeDevTools/devtools-protocol/compare/dfad770...510a3d1)
+
+```diff
+@@ domains/Network.pdl:2139 @@ domain Network
+         RefreshedAsWaiter
+         TransientSigningError
+         InScopeRefreshNotYetNeeded
++        Canceled
+       # LINT.ThenChange(//net/device_bound_sessions/refresh_result.h:DeviceBoundSessionRefreshResult,//content/browser/devtools/protocol/network_handler.cc:DeviceBoundSessionRefreshResult)
+       # If there was a fetch attempt, the result of that.
+       optional DeviceBoundSessionFetchResult fetchResult
+```
+
 ## Roll protocol to r1718299 — _2026-10-14T04:41:00.000Z_
-######  Diff: [`52f4748...e5c0db4`](https://github.com/ChromeDevTools/devtools-protocol/compare/52f4748...e5c0db4)
+######  Diff: [`52f4748...dfad770`](https://github.com/ChromeDevTools/devtools-protocol/compare/52f4748...dfad770)
 
 ```diff
 @@ domains/Page.pdl:164 @@ domain Page
@@ -43336,70 +43350,4 @@ index 8dad9c98..ee14676c 100644
  
    # Pair of reporting metadata details for a candidate URL for `selectURL()`.
    type SharedStorageReportingMetadata extends object
-```
-
-## Roll protocol to r1258865 — _2024-02-10T04:26:45.000Z_
-######  Diff: [`726f72d...76bf820`](https://github.com/ChromeDevTools/devtools-protocol/compare/726f72d...76bf820)
-
-```diff
-@@ browser_protocol.pdl:309 @@ experimental domain Animation
-       # `Animation`'s playback rate.
-       number playbackRate
-       # `Animation`'s start time.
-+      # Milliseconds for time based animations and
-+      # percentage [0 - 100] for scroll driven animations
-+      # (i.e. when viewOrScrollTimeline exists).
-       number startTime
-       # `Animation`'s current time.
-       number currentTime
-@@ -322,6 +325,26 @@ experimental domain Animation
-       # A unique ID for `Animation` representing the sources that triggered this CSS
-       # animation/transition.
-       optional string cssId
-+      # View or scroll timeline
-+      optional ViewOrScrollTimeline viewOrScrollTimeline
-+
-+  # Timeline instance
-+  type ViewOrScrollTimeline extends object
-+    properties
-+      # Scroll container node
-+      optional DOM.BackendNodeId sourceNodeId
-+      # Represents the starting scroll position of the timeline
-+      # as a length offset in pixels from scroll origin.
-+      optional number startOffset
-+      # Represents the ending scroll position of the timeline
-+      # as a length offset in pixels from scroll origin.
-+      optional number endOffset
-+      # The element whose principal box's visibility in the
-+      # scrollport defined the progress of the timeline.
-+      # Does not exist for animations with ScrollTimeline
-+      optional DOM.BackendNodeId subjectNodeId
-+      # Orientation of the scroll
-+      DOM.ScrollOrientation axis
- 
-   # AnimationEffect instance
-   type AnimationEffect extends object
-@@ -335,6 +358,9 @@ experimental domain Animation
-       # `AnimationEffect`'s iterations.
-       number iterations
-       # `AnimationEffect`'s iteration duration.
-+      # Milliseconds for time based animations and
-+      # percentage [0 - 100] for scroll driven animations
-+      # (i.e. when viewOrScrollTimeline exists).
-       number duration
-       # `AnimationEffect`'s playback direction.
-       string direction
-@@ -2559,6 +2585,12 @@ domain DOM
-       Block
-       Both
- 
-+  # Physical scroll orientation
-+  type ScrollOrientation extends string
-+    enum
-+      horizontal
-+      vertical
-+
-   # DOM interaction is implemented in terms of mirror objects that represent the actual DOM nodes.
-   # DOMNode is a base node mirror type.
-   type Node extends object
 ```

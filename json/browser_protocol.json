@@ -18425,7 +18425,8 @@
                                 "SigningQuotaExceeded",
                                 "RefreshedAsWaiter",
                                 "TransientSigningError",
-                                "InScopeRefreshNotYetNeeded"
+                                "InScopeRefreshNotYetNeeded",
+                                "Canceled"
                             ]
                         },
                         {
