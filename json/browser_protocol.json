@@ -4088,7 +4088,7 @@
                     "parameters": [
                         {
                             "name": "deviceId",
-                            "description": "Required non-empty identifier for the mock camera. This is mapped to an\ninternal virtual-device identifier and is not the MediaDeviceInfo.deviceId\nexposed to the page.",
+                            "description": "Required non-empty identifier for the mock camera within the current\nDevTools session. Different sessions can use the same identifier\nwithout replacing each other's cameras. This is not the\nMediaDeviceInfo.deviceId exposed to the page.",
                             "type": "string"
                         }
                     ]

@@ -1,7 +1,27 @@
 
 
+## Roll protocol to r1721318 — _2026-10-17T04:40:04.000Z_
+######  Diff: [`e908551...cabbfc4`](https://github.com/ChromeDevTools/devtools-protocol/compare/e908551...cabbfc4)
+
+```diff
+@@ domains/Browser.pdl:230 @@ domain Browser
+   # frame and is removed when the DevTools session that created it disconnects.
+   experimental command addMockCamera
+     parameters
+-      # Required non-empty identifier for the mock camera. This is mapped to an
+-      # internal virtual-device identifier and is not the MediaDeviceInfo.deviceId
+-      # exposed to the page.
++      # Required non-empty identifier for the mock camera within the current
++      # DevTools session. Different sessions can use the same identifier
++      # without replacing each other's cameras. This is not the
++      # MediaDeviceInfo.deviceId exposed to the page.
+       string deviceId
+ 
+   # Chrome histogram bucket.
+```
+
 ## Roll protocol to r1720385 — _2026-10-16T04:43:16.000Z_
-######  Diff: [`dfad770...510a3d1`](https://github.com/ChromeDevTools/devtools-protocol/compare/dfad770...510a3d1)
+######  Diff: [`dfad770...e908551`](https://github.com/ChromeDevTools/devtools-protocol/compare/dfad770...e908551)
 
 ```diff
 @@ domains/Network.pdl:2139 @@ domain Network
@@ -43328,26 +43348,4 @@ index 8dad9c98..ee14676c 100644
    # Triggered when a credential is added to an authenticator.
    event credentialAdded
      parameters
-```
-
-## Roll protocol to r1259648 — _2024-02-13T04:25:35.000Z_
-######  Diff: [`76bf820...2b2d990`](https://github.com/ChromeDevTools/devtools-protocol/compare/76bf820...2b2d990)
-
-```diff
-@@ browser_protocol.pdl:9679 @@ experimental domain Storage
-   # Details for an origin's shared storage.
-   type SharedStorageMetadata extends object
-     properties
-+      # Time when the origin's shared storage was last created.
-       Network.TimeSinceEpoch creationTime
-+      # Number of key-value pairs stored in origin's shared storage.
-       integer length
-+      # Current amount of bits of entropy remaining in the navigation budget.
-       number remainingBudget
-+      # Total number of bytes stored as key-value pairs in origin's shared
-+      # storage.
-+      integer bytesUsed
- 
-   # Pair of reporting metadata details for a candidate URL for `selectURL()`.
-   type SharedStorageReportingMetadata extends object
 ```
