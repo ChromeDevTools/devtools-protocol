@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: FindInPage...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/FindInPage' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/FindInPage">FindInPage</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/FindInPage.findFirst">FindInPage.findFirst</a></li>
+        <li><a href="../../#/FindInPage.findNext">FindInPage.findNext</a></li>
+        <li><a href="../../#/FindInPage.findPrev">FindInPage.findPrev</a></li>
+        <li><a href="../../#/FindInPage.stop">FindInPage.stop</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

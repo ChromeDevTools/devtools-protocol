@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: Memory...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/Memory' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/Memory">Memory</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/Memory.getDOMCounters">Memory.getDOMCounters</a></li>
+        <li><a href="../../#/Memory.getDOMCountersForLeakDetection">Memory.getDOMCountersForLeakDetection</a></li>
+        <li><a href="../../#/Memory.prepareForLeakDetection">Memory.prepareForLeakDetection</a></li>
+        <li><a href="../../#/Memory.forciblyPurgeJavaScriptMemory">Memory.forciblyPurgeJavaScriptMemory</a></li>
+        <li><a href="../../#/Memory.setPressureNotificationsSuppressed">Memory.setPressureNotificationsSuppressed</a></li>
+        <li><a href="../../#/Memory.simulatePressureNotification">Memory.simulatePressureNotification</a></li>
+        <li><a href="../../#/Memory.startSampling">Memory.startSampling</a></li>
+        <li><a href="../../#/Memory.stopSampling">Memory.stopSampling</a></li>
+        <li><a href="../../#/Memory.getAllTimeSamplingProfile">Memory.getAllTimeSamplingProfile</a></li>
+        <li><a href="../../#/Memory.getBrowserSamplingProfile">Memory.getBrowserSamplingProfile</a></li>
+        <li><a href="../../#/Memory.getSamplingProfile">Memory.getSamplingProfile</a></li>
+        <li><a href="../../#/Memory.PressureLevel">Memory.PressureLevel</a></li>
+        <li><a href="../../#/Memory.SamplingProfileNode">Memory.SamplingProfileNode</a></li>
+        <li><a href="../../#/Memory.SamplingProfile">Memory.SamplingProfile</a></li>
+        <li><a href="../../#/Memory.Module">Memory.Module</a></li>
+        <li><a href="../../#/Memory.DOMCounter">Memory.DOMCounter</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>
