@@ -877,6 +877,7 @@ export namespace ProtocolProxyApi {
         /**
          * Trigger autofill on a form identified by the fieldId.
          * If the field and related form cannot be autofilled, returns an error.
+         * Returns once the values have been applied to the form fields.
          */
         trigger(params: Protocol.Autofill.TriggerRequest): Promise<void>;
 

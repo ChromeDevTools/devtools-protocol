@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1721602 — _2026-10-19T04:39:23.000Z_
+######  Diff: [`a07da3c...8728253`](https://github.com/ChromeDevTools/devtools-protocol/compare/a07da3c...8728253)
+
+```diff
+@@ domains/Autofill.pdl:86 @@ experimental domain Autofill
+ 
+   # Trigger autofill on a form identified by the fieldId.
+   # If the field and related form cannot be autofilled, returns an error.
++  # Returns once the values have been applied to the form fields.
+   command trigger
+     parameters
+       # Identifies a field that serves as an anchor for autofill.
+```
+
 ## Roll protocol to r1721318 — _2026-10-17T04:40:04.000Z_
-######  Diff: [`e908551...cabbfc4`](https://github.com/ChromeDevTools/devtools-protocol/compare/e908551...cabbfc4)
+######  Diff: [`e908551...a07da3c`](https://github.com/ChromeDevTools/devtools-protocol/compare/e908551...a07da3c)
 
 ```diff
 @@ domains/Browser.pdl:230 @@ domain Browser
@@ -43311,41 +43325,4 @@ index 8dad9c98..ee14676c 100644
 +      Page.FrameId frameId
        # The form field's DOM node
        DOM.BackendNodeId fieldId
-```
-
-## Roll protocol to r1260275 — _2024-02-14T04:26:03.000Z_
-######  Diff: [`2b2d990...26fa2ea`](https://github.com/ChromeDevTools/devtools-protocol/compare/2b2d990...26fa2ea)
-
-```diff
-@@ browser_protocol.pdl:11410 @@ experimental domain WebAuthn
-       # The large blob associated with the credential.
-       # See https://w3c.github.io/webauthn/#sctn-large-blob-extension
-       optional binary largeBlob
-+      # Assertions returned by this credential will have the backup eligibility
-+      # (BE) flag set to this value. Defaults to the authenticator's
-+      # defaultBackupEligibility value.
-+      optional boolean backupEligibility
-+      # Assertions returned by this credential will have the backup state (BS)
-+      # flag set to this value. Defaults to the authenticator's
-+      # defaultBackupState value.
-+      optional boolean backupState
- 
-   # Enable the WebAuthn domain and start intercepting credential storage and
-   # retrieval with a virtual authenticator.
-@@ -11498,6 +11506,15 @@ experimental domain WebAuthn
-       AuthenticatorId authenticatorId
-       boolean enabled
- 
-+  # Allows setting credential properties.
-+  # https://w3c.github.io/webauthn/#sctn-automation-set-credential-properties
-+  command setCredentialProperties
-+    parameters
-+      AuthenticatorId authenticatorId
-+      binary credentialId
-+      optional boolean backupEligibility
-+      optional boolean backupState
-+
-   # Triggered when a credential is added to an authenticator.
-   event credentialAdded
-     parameters
 ```
