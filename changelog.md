@@ -1,7 +1,34 @@
 
 
+## Roll protocol to r1723477 — _2026-10-21T04:41:19.000Z_
+######  Diff: [`95b1af6...21d4347`](https://github.com/ChromeDevTools/devtools-protocol/compare/95b1af6...21d4347)
+
+```diff
+@@ domains/Network.pdl:1569 @@ domain Network
+   experimental event directUDPSocketJoinedMulticastGroup
+     parameters
+       RequestId identifier
++      # Multicast group address.
+       string IPAddress
++      # Source address of a source-specific multicast (SSM) membership. Absent
++      # for any-source multicast (ASM) memberships.
++      optional string sourceAddress
+ 
+   experimental event directUDPSocketLeftMulticastGroup
+     parameters
+       RequestId identifier
++      # Multicast group address.
+       string IPAddress
++      # Source address of a source-specific multicast (SSM) membership. Absent
++      # for any-source multicast (ASM) memberships.
++      optional string sourceAddress
+ 
+ 
+   # Fired upon direct_socket.UDPSocket creation.
+```
+
 ## Roll protocol to r1721602 — _2026-10-19T04:39:23.000Z_
-######  Diff: [`a07da3c...8728253`](https://github.com/ChromeDevTools/devtools-protocol/compare/a07da3c...8728253)
+######  Diff: [`a07da3c...95b1af6`](https://github.com/ChromeDevTools/devtools-protocol/compare/a07da3c...95b1af6)
 
 ```diff
 @@ domains/Autofill.pdl:86 @@ experimental domain Autofill
@@ -43311,18 +43338,4 @@ index 8dad9c98..ee14676c 100644
    experimental type AttributionReportingEventTriggerData extends object
      properties
        UnsignedInt64AsBase10 data
-```
-
-## Roll protocol to r1260888 — _2024-02-15T04:26:01.000Z_
-######  Diff: [`26fa2ea...f2ae62d`](https://github.com/ChromeDevTools/devtools-protocol/compare/26fa2ea...f2ae62d)
-
-```diff
-@@ browser_protocol.pdl:1110 @@ experimental domain Autofill
-       string autofillType
-       # The filling strategy
-       FillingStrategy fillingStrategy
-+      # The frame the field belongs to
-+      Page.FrameId frameId
-       # The form field's DOM node
-       DOM.BackendNodeId fieldId
 ```

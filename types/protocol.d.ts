@@ -15528,7 +15528,15 @@ export namespace Protocol {
          */
         export interface DirectUDPSocketJoinedMulticastGroupEvent {
             identifier: RequestId;
+            /**
+             * Multicast group address.
+             */
             IPAddress: string;
+            /**
+             * Source address of a source-specific multicast (SSM) membership. Absent
+             * for any-source multicast (ASM) memberships.
+             */
+            sourceAddress?: string;
         }
 
         /**
@@ -15536,7 +15544,15 @@ export namespace Protocol {
          */
         export interface DirectUDPSocketLeftMulticastGroupEvent {
             identifier: RequestId;
+            /**
+             * Multicast group address.
+             */
             IPAddress: string;
+            /**
+             * Source address of a source-specific multicast (SSM) membership. Absent
+             * for any-source multicast (ASM) memberships.
+             */
+            sourceAddress?: string;
         }
 
         /**
