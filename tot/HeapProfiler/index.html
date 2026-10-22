@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: HeapProfiler...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/HeapProfiler' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/HeapProfiler">HeapProfiler</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/HeapProfiler.addInspectedHeapObject">HeapProfiler.addInspectedHeapObject</a></li>
+        <li><a href="../../#/HeapProfiler.collectGarbage">HeapProfiler.collectGarbage</a></li>
+        <li><a href="../../#/HeapProfiler.disable">HeapProfiler.disable</a></li>
+        <li><a href="../../#/HeapProfiler.enable">HeapProfiler.enable</a></li>
+        <li><a href="../../#/HeapProfiler.getHeapObjectId">HeapProfiler.getHeapObjectId</a></li>
+        <li><a href="../../#/HeapProfiler.getObjectByHeapObjectId">HeapProfiler.getObjectByHeapObjectId</a></li>
+        <li><a href="../../#/HeapProfiler.getSamplingProfile">HeapProfiler.getSamplingProfile</a></li>
+        <li><a href="../../#/HeapProfiler.startSampling">HeapProfiler.startSampling</a></li>
+        <li><a href="../../#/HeapProfiler.startTrackingHeapObjects">HeapProfiler.startTrackingHeapObjects</a></li>
+        <li><a href="../../#/HeapProfiler.stopSampling">HeapProfiler.stopSampling</a></li>
+        <li><a href="../../#/HeapProfiler.stopTrackingHeapObjects">HeapProfiler.stopTrackingHeapObjects</a></li>
+        <li><a href="../../#/HeapProfiler.takeHeapSnapshot">HeapProfiler.takeHeapSnapshot</a></li>
+        <li><a href="../../#/HeapProfiler.addHeapSnapshotChunk">HeapProfiler.addHeapSnapshotChunk</a></li>
+        <li><a href="../../#/HeapProfiler.heapStatsUpdate">HeapProfiler.heapStatsUpdate</a></li>
+        <li><a href="../../#/HeapProfiler.lastSeenObjectId">HeapProfiler.lastSeenObjectId</a></li>
+        <li><a href="../../#/HeapProfiler.reportHeapSnapshotProgress">HeapProfiler.reportHeapSnapshotProgress</a></li>
+        <li><a href="../../#/HeapProfiler.resetProfiles">HeapProfiler.resetProfiles</a></li>
+        <li><a href="../../#/HeapProfiler.HeapSnapshotObjectId">HeapProfiler.HeapSnapshotObjectId</a></li>
+        <li><a href="../../#/HeapProfiler.SamplingHeapProfileNode">HeapProfiler.SamplingHeapProfileNode</a></li>
+        <li><a href="../../#/HeapProfiler.SamplingHeapProfileSample">HeapProfiler.SamplingHeapProfileSample</a></li>
+        <li><a href="../../#/HeapProfiler.SamplingHeapProfile">HeapProfiler.SamplingHeapProfile</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>
