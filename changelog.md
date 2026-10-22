@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1724436 — _2026-10-22T04:44:00.000Z_
+######  Diff: [`71ba93d...6b96b39`](https://github.com/ChromeDevTools/devtools-protocol/compare/71ba93d...6b96b39)
+
+```diff
+@@ domains/Network.pdl:2104 @@ domain Network
+       PreProvisionedKeyNotFound
+       AttestationCertificationError
+       AttestationSigningError
++      FederatedRegistrationRedirected
+   # LINT.ThenChange(//content/browser/devtools/protocol/network_handler.cc:DeviceBoundSessionFetchResult)
+ 
+   # Details about a failed device bound session network request.
+```
+
 ## Roll protocol to r1723477 — _2026-10-21T04:41:19.000Z_
-######  Diff: [`95b1af6...21d4347`](https://github.com/ChromeDevTools/devtools-protocol/compare/95b1af6...21d4347)
+######  Diff: [`95b1af6...71ba93d`](https://github.com/ChromeDevTools/devtools-protocol/compare/95b1af6...71ba93d)
 
 ```diff
 @@ domains/Network.pdl:1569 @@ domain Network
@@ -43312,30 +43326,4 @@ index 8dad9c98..ee14676c 100644
        storage-access
        sub-apps
        sync-xhr
-```
-
-## Roll protocol to r1261483 — _2024-02-16T04:25:37.000Z_
-######  Diff: [`f2ae62d...2d101dc`](https://github.com/ChromeDevTools/devtools-protocol/compare/f2ae62d...2d101dc)
-
-```diff
-@@ browser_protocol.pdl:10198 @@ experimental domain Storage
-       include
-       exclude
- 
--  experimental type AttributionReportingAggregatableValueEntry extends object
-+  experimental type AttributionReportingAggregatableValueDictEntry extends object
-     properties
-       string key
-       # number instead of integer because not all uint32 can be represented by
-       # int
-       number value
- 
-+  experimental type AttributionReportingAggregatableValueEntry extends object
-+    properties
-+      array of AttributionReportingAggregatableValueDictEntry values
-+      AttributionReportingFilterPair filters
-+
-   experimental type AttributionReportingEventTriggerData extends object
-     properties
-       UnsignedInt64AsBase10 data
 ```
