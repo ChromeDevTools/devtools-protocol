@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1727723 — _2026-10-27T04:43:32.000Z_
+######  Diff: [`7245ec5...903ac30`](https://github.com/ChromeDevTools/devtools-protocol/compare/7245ec5...903ac30)
+
+```diff
+@@ domains/Preload.pdl:192 @@ experimental domain Preload
+       PrerenderHostReused
+       FormSubmitWhenPrerendering
+       CrossDocumentRestart
++      PrefetchFailedCrossOriginSubframe
+ 
+   # Fired when a preload enabled state is updated.
+   event preloadEnabledStateUpdated
+```
+
 ## Roll protocol to r1724436 — _2026-10-22T04:44:00.000Z_
-######  Diff: [`71ba93d...6b96b39`](https://github.com/ChromeDevTools/devtools-protocol/compare/71ba93d...6b96b39)
+######  Diff: [`71ba93d...7245ec5`](https://github.com/ChromeDevTools/devtools-protocol/compare/71ba93d...7245ec5)
 
 ```diff
 @@ domains/Network.pdl:2104 @@ domain Network
