@@ -1,7 +1,7 @@
 
 
 ## Roll protocol to r1727723 — _2026-10-27T04:43:32.000Z_
-######  Diff: [`7245ec5...903ac30`](https://github.com/ChromeDevTools/devtools-protocol/compare/7245ec5...903ac30)
+######  Diff: [`7245ec5...ebca906`](https://github.com/ChromeDevTools/devtools-protocol/compare/7245ec5...ebca906)
 
 ```diff
 @@ domains/Preload.pdl:192 @@ experimental domain Preload
