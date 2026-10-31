@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: SystemInfo...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/SystemInfo' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/SystemInfo">SystemInfo</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/SystemInfo.getInfo">SystemInfo.getInfo</a></li>
+        <li><a href="../../#/SystemInfo.getFeatureState">SystemInfo.getFeatureState</a></li>
+        <li><a href="../../#/SystemInfo.getProcessInfo">SystemInfo.getProcessInfo</a></li>
+        <li><a href="../../#/SystemInfo.GPUDevice">SystemInfo.GPUDevice</a></li>
+        <li><a href="../../#/SystemInfo.Size">SystemInfo.Size</a></li>
+        <li><a href="../../#/SystemInfo.VideoDecodeAcceleratorCapability">SystemInfo.VideoDecodeAcceleratorCapability</a></li>
+        <li><a href="../../#/SystemInfo.VideoEncodeAcceleratorCapability">SystemInfo.VideoEncodeAcceleratorCapability</a></li>
+        <li><a href="../../#/SystemInfo.SubsamplingFormat">SystemInfo.SubsamplingFormat</a></li>
+        <li><a href="../../#/SystemInfo.ImageType">SystemInfo.ImageType</a></li>
+        <li><a href="../../#/SystemInfo.GPUInfo">SystemInfo.GPUInfo</a></li>
+        <li><a href="../../#/SystemInfo.ProcessInfo">SystemInfo.ProcessInfo</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

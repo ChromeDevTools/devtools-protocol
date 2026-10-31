@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: FileSystem...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/FileSystem' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/FileSystem">FileSystem</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/FileSystem.getDirectory">FileSystem.getDirectory</a></li>
+        <li><a href="../../#/FileSystem.File">FileSystem.File</a></li>
+        <li><a href="../../#/FileSystem.Directory">FileSystem.Directory</a></li>
+        <li><a href="../../#/FileSystem.BucketFileSystemLocator">FileSystem.BucketFileSystemLocator</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>
