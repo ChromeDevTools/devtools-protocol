@@ -1,5 +1,27 @@
 
 
+## Roll protocol to r1732152 — _2026-10-31T04:39:53.000Z_
+######  Diff: [`a45ae55...f7da061`](https://github.com/ChromeDevTools/devtools-protocol/compare/a45ae55...f7da061)
+
+```diff
+@@ domains/Page.pdl:1227 @@ domain Page
+       optional integer maxHeight
+       # Maximum frame rate in frames per second.
+       optional integer frameRate
++      # The area to record. Defaults to `target`.
++      experimental optional enum captureArea
++        # Records only the target page.
++        target
++        # Records the browser window that shows the target, like window
++        # capture with getDisplayMedia(). If the target is a docked DevTools
++        # window, the window shows DevTools and the inspected page. Only
++        # available to trusted clients and to embedders that support it.
++        browserWindow
+     returns
+       # A handle of the stream that holds resulting screencast data.
+       experimental IO.StreamHandle stream
+```
+
 ## Roll protocol to r1727723 — _2026-10-27T04:43:32.000Z_
 ######  Diff: [`7245ec5...ebca906`](https://github.com/ChromeDevTools/devtools-protocol/compare/7245ec5...ebca906)
 
