@@ -1,7 +1,100 @@
 
 
+## Roll protocol to r1733639 — _2026-11-03T05:03:18.000Z_
+######  Diff: [`92be9c2...a163116`](https://github.com/ChromeDevTools/devtools-protocol/compare/92be9c2...a163116)
+
+```diff
+@@ domains/Browser.pdl:64 @@ domain Browser
+       smartCard
+       speakerSelection
+       storageAccess
+-      topLevelStorageAccess
+       videoCapture
+       vr
+       wakeLockScreen
+diff --git a/pdl/domains/Page.pdl b/pdl/domains/Page.pdl
+index 2a36c411..b418f0c3 100644
+--- a/pdl/domains/Page.pdl
++++ b/pdl/domains/Page.pdl
+@@ -77,7 +77,6 @@ domain Page
+       autofill
+       autoplay
+       bluetooth
+-      browsing-topics
+       camera
+       captured-surface-control
+       ch-dpr
+@@ -131,7 +130,6 @@ domain Page
+       hid
+       identity-credentials-get
+       idle-detection
+-      interest-cohort
+       keyboard-map
+       language-detector
+       language-model
+diff --git a/pdl/domains/WebMCP.pdl b/pdl/domains/WebMCP.pdl
+index 48bd8be7..9e163427 100644
+--- a/pdl/domains/WebMCP.pdl
++++ b/pdl/domains/WebMCP.pdl
+@@ -31,15 +31,24 @@ experimental domain WebMCP
+       Canceled
+       Error
+ 
++  # Unique identifier of a registered tool. A new identifier is created every time a tool is registered, so a tool that
++  # is unregistered and then registered again under the same name gets a different identifier. Clients should treat it
++  # as an opaque string.
++  type ToolId extends string
++
+   # Definition of a tool that can be invoked.
+   type Tool extends object
+     properties
++      # Tool identifier.
++      ToolId toolId
+       # Tool name.
+       string name
+       # Tool description.
+       string description
+       # Schema for the tool's input parameters.
+       optional object inputSchema
++      # Schema for the tool's output structure.
++      optional object outputSchema
+       # Optional annotations for the tool.
+       optional Annotation annotations
+       # Frame identifier associated with the tool registration.
+@@ -85,6 +94,8 @@ experimental domain WebMCP
+   # Definition of a tool that was removed.
+   type RemovedTool extends object
+     properties
++      # Identifier of the removed tool.
++      ToolId toolId
+       # Tool name.
+       string name
+       # Frame identifier associated with the tool registration.
+@@ -99,14 +110,18 @@ experimental domain WebMCP
+   # Event fired when a tool invocation starts.
+   event toolInvoked
+     parameters
+-      # Name of the tool to invoke.
+-      string toolName
+       # Frame id
+       Page.FrameId frameId
+       # Invocation identifier.
+       string invocationId
+       # The input parameters used for the invocation.
+       string input
++      # Name of the tool to invoke. Missing if the tool was invoked by its identifier, but could not be found (e.g.,
++      # it was already unregistered), so its name could not be recovered.
++      optional string toolName
++      # Identifier of the tool to invoke. Missing if the tool was invoked by name, but could not be found, so its
++      # identifier could not be recovered.
++      optional ToolId toolId
+ 
+   # Event fired when a tool invocation completes or fails.
+   event toolResponded
+```
+
 ## Roll protocol to r1732152 — _2026-10-31T04:39:53.000Z_
-######  Diff: [`a45ae55...f7da061`](https://github.com/ChromeDevTools/devtools-protocol/compare/a45ae55...f7da061)
+######  Diff: [`a45ae55...92be9c2`](https://github.com/ChromeDevTools/devtools-protocol/compare/a45ae55...92be9c2)
 
 ```diff
 @@ domains/Page.pdl:1227 @@ domain Page

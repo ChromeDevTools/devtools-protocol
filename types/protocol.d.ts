@@ -4743,7 +4743,7 @@ export namespace Protocol {
         /**
          * @experimental
          */
-        export type PermissionType = ('ar' | 'audioCapture' | 'automaticFullscreen' | 'backgroundFetch' | 'backgroundSync' | 'cameraPanTiltZoom' | 'capturedSurfaceControl' | 'clipboardReadWrite' | 'clipboardSanitizedWrite' | 'displayCapture' | 'durableStorage' | 'geolocation' | 'handTracking' | 'idleDetection' | 'keyboardLock' | 'localFonts' | 'localNetwork' | 'localNetworkAccess' | 'loopbackNetwork' | 'midi' | 'midiSysex' | 'nfc' | 'notifications' | 'paymentHandler' | 'periodicBackgroundSync' | 'pointerLock' | 'protectedMediaIdentifier' | 'sensors' | 'smartCard' | 'speakerSelection' | 'storageAccess' | 'topLevelStorageAccess' | 'videoCapture' | 'vr' | 'wakeLockScreen' | 'wakeLockSystem' | 'webAppInstallation' | 'webPrinting' | 'windowManagement');
+        export type PermissionType = ('ar' | 'audioCapture' | 'automaticFullscreen' | 'backgroundFetch' | 'backgroundSync' | 'cameraPanTiltZoom' | 'capturedSurfaceControl' | 'clipboardReadWrite' | 'clipboardSanitizedWrite' | 'displayCapture' | 'durableStorage' | 'geolocation' | 'handTracking' | 'idleDetection' | 'keyboardLock' | 'localFonts' | 'localNetwork' | 'localNetworkAccess' | 'loopbackNetwork' | 'midi' | 'midiSysex' | 'nfc' | 'notifications' | 'paymentHandler' | 'periodicBackgroundSync' | 'pointerLock' | 'protectedMediaIdentifier' | 'sensors' | 'smartCard' | 'speakerSelection' | 'storageAccess' | 'videoCapture' | 'vr' | 'wakeLockScreen' | 'wakeLockSystem' | 'webAppInstallation' | 'webPrinting' | 'windowManagement');
 
         /**
          * @experimental
@@ -16896,7 +16896,7 @@ export namespace Protocol {
          * in services/network/public/cpp/permissions_policy/permissions_policy_features.json5.
          * @experimental
          */
-        export type PermissionsPolicyFeature = ('accelerometer' | 'all-screens-capture' | 'ambient-light-sensor' | 'aria-notify' | 'autofill' | 'autoplay' | 'bluetooth' | 'browsing-topics' | 'camera' | 'captured-surface-control' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-prefers-color-scheme' | 'ch-prefers-reduced-motion' | 'ch-prefers-reduced-transparency' | 'ch-rtt' | 'ch-save-data' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-high-entropy-values' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-form-factors' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'compute-pressure' | 'controlled-frame' | 'cross-origin-isolated' | 'deferred-fetch' | 'deferred-fetch-minimal' | 'device-attributes' | 'digital-credentials-create' | 'digital-credentials-get' | 'direct-sockets' | 'direct-sockets-multicast' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'haptics' | 'hid' | 'identity-credentials-get' | 'idle-detection' | 'interest-cohort' | 'keyboard-map' | 'language-detector' | 'language-model' | 'local-fonts' | 'local-network' | 'local-network-access' | 'loopback-network' | 'magnetometer' | 'manual-text' | 'media-playback-while-not-visible' | 'microphone' | 'midi' | 'on-device-speech-recognition' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'private-state-token-issuance' | 'private-state-token-redemption' | 'publickey-credentials-create' | 'publickey-credentials-get' | 'publickey-credentials-remote-client-data-json' | 'rewriter' | 'screen-wake-lock' | 'serial' | 'smart-card' | 'speaker-selection' | 'storage-access' | 'sub-apps' | 'summarizer' | 'sync-xhr' | 'tools' | 'translator' | 'unbounded-element' | 'unload' | 'usb' | 'usb-unrestricted' | 'vertical-scroll' | 'web-app-installation' | 'webnn' | 'web-printing' | 'web-share' | 'window-management' | 'writer' | 'xr-spatial-tracking');
+        export type PermissionsPolicyFeature = ('accelerometer' | 'all-screens-capture' | 'ambient-light-sensor' | 'aria-notify' | 'autofill' | 'autoplay' | 'bluetooth' | 'camera' | 'captured-surface-control' | 'ch-dpr' | 'ch-device-memory' | 'ch-downlink' | 'ch-ect' | 'ch-prefers-color-scheme' | 'ch-prefers-reduced-motion' | 'ch-prefers-reduced-transparency' | 'ch-rtt' | 'ch-save-data' | 'ch-ua' | 'ch-ua-arch' | 'ch-ua-bitness' | 'ch-ua-high-entropy-values' | 'ch-ua-platform' | 'ch-ua-model' | 'ch-ua-mobile' | 'ch-ua-form-factors' | 'ch-ua-full-version' | 'ch-ua-full-version-list' | 'ch-ua-platform-version' | 'ch-ua-wow64' | 'ch-viewport-height' | 'ch-viewport-width' | 'ch-width' | 'clipboard-read' | 'clipboard-write' | 'compute-pressure' | 'controlled-frame' | 'cross-origin-isolated' | 'deferred-fetch' | 'deferred-fetch-minimal' | 'device-attributes' | 'digital-credentials-create' | 'digital-credentials-get' | 'direct-sockets' | 'direct-sockets-multicast' | 'display-capture' | 'document-domain' | 'encrypted-media' | 'execution-while-out-of-viewport' | 'execution-while-not-rendered' | 'focus-without-user-activation' | 'fullscreen' | 'frobulate' | 'gamepad' | 'geolocation' | 'gyroscope' | 'haptics' | 'hid' | 'identity-credentials-get' | 'idle-detection' | 'keyboard-map' | 'language-detector' | 'language-model' | 'local-fonts' | 'local-network' | 'local-network-access' | 'loopback-network' | 'magnetometer' | 'manual-text' | 'media-playback-while-not-visible' | 'microphone' | 'midi' | 'on-device-speech-recognition' | 'otp-credentials' | 'payment' | 'picture-in-picture' | 'private-state-token-issuance' | 'private-state-token-redemption' | 'publickey-credentials-create' | 'publickey-credentials-get' | 'publickey-credentials-remote-client-data-json' | 'rewriter' | 'screen-wake-lock' | 'serial' | 'smart-card' | 'speaker-selection' | 'storage-access' | 'sub-apps' | 'summarizer' | 'sync-xhr' | 'tools' | 'translator' | 'unbounded-element' | 'unload' | 'usb' | 'usb-unrestricted' | 'vertical-scroll' | 'web-app-installation' | 'webnn' | 'web-printing' | 'web-share' | 'window-management' | 'writer' | 'xr-spatial-tracking');
 
         /**
          * Reason for a permissions policy feature to be disabled.
@@ -22245,9 +22245,20 @@ export namespace Protocol {
         export type InvocationStatus = ('Completed' | 'Canceled' | 'Error');
 
         /**
+         * Unique identifier of a registered tool. A new identifier is created every time a tool is registered, so a tool that
+         * is unregistered and then registered again under the same name gets a different identifier. Clients should treat it
+         * as an opaque string.
+         */
+        export type ToolId = string;
+
+        /**
          * Definition of a tool that can be invoked.
          */
         export interface Tool {
+            /**
+             * Tool identifier.
+             */
+            toolId: ToolId;
             /**
              * Tool name.
              */
@@ -22260,6 +22271,10 @@ export namespace Protocol {
              * Schema for the tool's input parameters.
              */
             inputSchema?: any;
+            /**
+             * Schema for the tool's output structure.
+             */
+            outputSchema?: any;
             /**
              * Optional annotations for the tool.
              */
@@ -22282,6 +22297,10 @@ export namespace Protocol {
          * Definition of a tool that was removed.
          */
         export interface RemovedTool {
+            /**
+             * Identifier of the removed tool.
+             */
+            toolId: ToolId;
             /**
              * Tool name.
              */
@@ -22346,10 +22365,6 @@ export namespace Protocol {
          */
         export interface ToolInvokedEvent {
             /**
-             * Name of the tool to invoke.
-             */
-            toolName: string;
-            /**
              * Frame id
              */
             frameId: Page.FrameId;
@@ -22361,6 +22376,16 @@ export namespace Protocol {
              * The input parameters used for the invocation.
              */
             input: string;
+            /**
+             * Name of the tool to invoke. Missing if the tool was invoked by its identifier, but could not be found (e.g.,
+             * it was already unregistered), so its name could not be recovered.
+             */
+            toolName?: string;
+            /**
+             * Identifier of the tool to invoke. Missing if the tool was invoked by name, but could not be found, so its
+             * identifier could not be recovered.
+             */
+            toolId?: ToolId;
         }
 
         /**
