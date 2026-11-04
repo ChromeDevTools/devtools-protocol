@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: EventBreakpoints...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/EventBreakpoints' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/EventBreakpoints">EventBreakpoints</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/EventBreakpoints.setInstrumentationBreakpoint">EventBreakpoints.setInstrumentationBreakpoint</a></li>
+        <li><a href="../../#/EventBreakpoints.removeInstrumentationBreakpoint">EventBreakpoints.removeInstrumentationBreakpoint</a></li>
+        <li><a href="../../#/EventBreakpoints.disable">EventBreakpoints.disable</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

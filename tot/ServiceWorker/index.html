@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: ServiceWorker...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/ServiceWorker' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/ServiceWorker">ServiceWorker</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/ServiceWorker.deliverPushMessage">ServiceWorker.deliverPushMessage</a></li>
+        <li><a href="../../#/ServiceWorker.disable">ServiceWorker.disable</a></li>
+        <li><a href="../../#/ServiceWorker.dispatchSyncEvent">ServiceWorker.dispatchSyncEvent</a></li>
+        <li><a href="../../#/ServiceWorker.dispatchPeriodicSyncEvent">ServiceWorker.dispatchPeriodicSyncEvent</a></li>
+        <li><a href="../../#/ServiceWorker.enable">ServiceWorker.enable</a></li>
+        <li><a href="../../#/ServiceWorker.setForceUpdateOnPageLoad">ServiceWorker.setForceUpdateOnPageLoad</a></li>
+        <li><a href="../../#/ServiceWorker.skipWaiting">ServiceWorker.skipWaiting</a></li>
+        <li><a href="../../#/ServiceWorker.startWorker">ServiceWorker.startWorker</a></li>
+        <li><a href="../../#/ServiceWorker.stopAllWorkers">ServiceWorker.stopAllWorkers</a></li>
+        <li><a href="../../#/ServiceWorker.stopWorker">ServiceWorker.stopWorker</a></li>
+        <li><a href="../../#/ServiceWorker.unregister">ServiceWorker.unregister</a></li>
+        <li><a href="../../#/ServiceWorker.updateRegistration">ServiceWorker.updateRegistration</a></li>
+        <li><a href="../../#/ServiceWorker.workerErrorReported">ServiceWorker.workerErrorReported</a></li>
+        <li><a href="../../#/ServiceWorker.workerRegistrationUpdated">ServiceWorker.workerRegistrationUpdated</a></li>
+        <li><a href="../../#/ServiceWorker.workerVersionUpdated">ServiceWorker.workerVersionUpdated</a></li>
+        <li><a href="../../#/ServiceWorker.RegistrationID">ServiceWorker.RegistrationID</a></li>
+        <li><a href="../../#/ServiceWorker.ServiceWorkerRegistration">ServiceWorker.ServiceWorkerRegistration</a></li>
+        <li><a href="../../#/ServiceWorker.ServiceWorkerVersionRunningStatus">ServiceWorker.ServiceWorkerVersionRunningStatus</a></li>
+        <li><a href="../../#/ServiceWorker.ServiceWorkerVersionStatus">ServiceWorker.ServiceWorkerVersionStatus</a></li>
+        <li><a href="../../#/ServiceWorker.ServiceWorkerRouterCondition">ServiceWorker.ServiceWorkerRouterCondition</a></li>
+        <li><a href="../../#/ServiceWorker.ServiceWorkerRouterSourceType">ServiceWorker.ServiceWorkerRouterSourceType</a></li>
+        <li><a href="../../#/ServiceWorker.ServiceWorkerRouterSourceDict">ServiceWorker.ServiceWorkerRouterSourceDict</a></li>
+        <li><a href="../../#/ServiceWorker.ServiceWorkerRouterSource">ServiceWorker.ServiceWorkerRouterSource</a></li>
+        <li><a href="../../#/ServiceWorker.ServiceWorkerRouterRule">ServiceWorker.ServiceWorkerRouterRule</a></li>
+        <li><a href="../../#/ServiceWorker.ServiceWorkerVersion">ServiceWorker.ServiceWorkerVersion</a></li>
+        <li><a href="../../#/ServiceWorker.ServiceWorkerErrorMessage">ServiceWorker.ServiceWorkerErrorMessage</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

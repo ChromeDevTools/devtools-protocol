@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: BackgroundService...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/BackgroundService' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/BackgroundService">BackgroundService</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/BackgroundService.startObserving">BackgroundService.startObserving</a></li>
+        <li><a href="../../#/BackgroundService.stopObserving">BackgroundService.stopObserving</a></li>
+        <li><a href="../../#/BackgroundService.setRecording">BackgroundService.setRecording</a></li>
+        <li><a href="../../#/BackgroundService.clearEvents">BackgroundService.clearEvents</a></li>
+        <li><a href="../../#/BackgroundService.recordingStateChanged">BackgroundService.recordingStateChanged</a></li>
+        <li><a href="../../#/BackgroundService.backgroundServiceEventReceived">BackgroundService.backgroundServiceEventReceived</a></li>
+        <li><a href="../../#/BackgroundService.ServiceName">BackgroundService.ServiceName</a></li>
+        <li><a href="../../#/BackgroundService.EventMetadata">BackgroundService.EventMetadata</a></li>
+        <li><a href="../../#/BackgroundService.BackgroundServiceEvent">BackgroundService.BackgroundServiceEvent</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: Log...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/Log' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/Log">Log</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/Log.clear">Log.clear</a></li>
+        <li><a href="../../#/Log.disable">Log.disable</a></li>
+        <li><a href="../../#/Log.enable">Log.enable</a></li>
+        <li><a href="../../#/Log.startViolationsReport">Log.startViolationsReport</a></li>
+        <li><a href="../../#/Log.stopViolationsReport">Log.stopViolationsReport</a></li>
+        <li><a href="../../#/Log.entryAdded">Log.entryAdded</a></li>
+        <li><a href="../../#/Log.LogEntry">Log.LogEntry</a></li>
+        <li><a href="../../#/Log.ViolationSetting">Log.ViolationSetting</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

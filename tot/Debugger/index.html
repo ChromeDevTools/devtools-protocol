@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: Debugger...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/Debugger' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/Debugger">Debugger</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/Debugger.continueToLocation">Debugger.continueToLocation</a></li>
+        <li><a href="../../#/Debugger.disable">Debugger.disable</a></li>
+        <li><a href="../../#/Debugger.enable">Debugger.enable</a></li>
+        <li><a href="../../#/Debugger.evaluateOnCallFrame">Debugger.evaluateOnCallFrame</a></li>
+        <li><a href="../../#/Debugger.getPossibleBreakpoints">Debugger.getPossibleBreakpoints</a></li>
+        <li><a href="../../#/Debugger.getScriptSource">Debugger.getScriptSource</a></li>
+        <li><a href="../../#/Debugger.disassembleWasmModule">Debugger.disassembleWasmModule</a></li>
+        <li><a href="../../#/Debugger.nextWasmDisassemblyChunk">Debugger.nextWasmDisassemblyChunk</a></li>
+        <li><a href="../../#/Debugger.getWasmBytecode">Debugger.getWasmBytecode</a></li>
+        <li><a href="../../#/Debugger.getStackTrace">Debugger.getStackTrace</a></li>
+        <li><a href="../../#/Debugger.pause">Debugger.pause</a></li>
+        <li><a href="../../#/Debugger.pauseOnAsyncCall">Debugger.pauseOnAsyncCall</a></li>
+        <li><a href="../../#/Debugger.removeBreakpoint">Debugger.removeBreakpoint</a></li>
+        <li><a href="../../#/Debugger.restartFrame">Debugger.restartFrame</a></li>
+        <li><a href="../../#/Debugger.resume">Debugger.resume</a></li>
+        <li><a href="../../#/Debugger.searchInContent">Debugger.searchInContent</a></li>
+        <li><a href="../../#/Debugger.setAsyncCallStackDepth">Debugger.setAsyncCallStackDepth</a></li>
+        <li><a href="../../#/Debugger.setBlackboxExecutionContexts">Debugger.setBlackboxExecutionContexts</a></li>
+        <li><a href="../../#/Debugger.setBlackboxPatterns">Debugger.setBlackboxPatterns</a></li>
+        <li><a href="../../#/Debugger.setBlackboxedRanges">Debugger.setBlackboxedRanges</a></li>
+        <li><a href="../../#/Debugger.setBreakpoint">Debugger.setBreakpoint</a></li>
+        <li><a href="../../#/Debugger.setInstrumentationBreakpoint">Debugger.setInstrumentationBreakpoint</a></li>
+        <li><a href="../../#/Debugger.setBreakpointByUrl">Debugger.setBreakpointByUrl</a></li>
+        <li><a href="../../#/Debugger.setBreakpointOnFunctionCall">Debugger.setBreakpointOnFunctionCall</a></li>
+        <li><a href="../../#/Debugger.setBreakpointsActive">Debugger.setBreakpointsActive</a></li>
+        <li><a href="../../#/Debugger.setPauseOnExceptions">Debugger.setPauseOnExceptions</a></li>
+        <li><a href="../../#/Debugger.setReturnValue">Debugger.setReturnValue</a></li>
+        <li><a href="../../#/Debugger.setScriptSource">Debugger.setScriptSource</a></li>
+        <li><a href="../../#/Debugger.setSkipAllPauses">Debugger.setSkipAllPauses</a></li>
+        <li><a href="../../#/Debugger.setVariableValue">Debugger.setVariableValue</a></li>
+        <li><a href="../../#/Debugger.stepInto">Debugger.stepInto</a></li>
+        <li><a href="../../#/Debugger.stepOut">Debugger.stepOut</a></li>
+        <li><a href="../../#/Debugger.stepOver">Debugger.stepOver</a></li>
+        <li><a href="../../#/Debugger.breakpointResolved">Debugger.breakpointResolved</a></li>
+        <li><a href="../../#/Debugger.paused">Debugger.paused</a></li>
+        <li><a href="../../#/Debugger.resumed">Debugger.resumed</a></li>
+        <li><a href="../../#/Debugger.scriptFailedToParse">Debugger.scriptFailedToParse</a></li>
+        <li><a href="../../#/Debugger.scriptParsed">Debugger.scriptParsed</a></li>
+        <li><a href="../../#/Debugger.BreakpointId">Debugger.BreakpointId</a></li>
+        <li><a href="../../#/Debugger.CallFrameId">Debugger.CallFrameId</a></li>
+        <li><a href="../../#/Debugger.Location">Debugger.Location</a></li>
+        <li><a href="../../#/Debugger.ScriptPosition">Debugger.ScriptPosition</a></li>
+        <li><a href="../../#/Debugger.LocationRange">Debugger.LocationRange</a></li>
+        <li><a href="../../#/Debugger.CallFrame">Debugger.CallFrame</a></li>
+        <li><a href="../../#/Debugger.Scope">Debugger.Scope</a></li>
+        <li><a href="../../#/Debugger.SearchMatch">Debugger.SearchMatch</a></li>
+        <li><a href="../../#/Debugger.BreakLocation">Debugger.BreakLocation</a></li>
+        <li><a href="../../#/Debugger.WasmDisassemblyChunk">Debugger.WasmDisassemblyChunk</a></li>
+        <li><a href="../../#/Debugger.ScriptLanguage">Debugger.ScriptLanguage</a></li>
+        <li><a href="../../#/Debugger.DebugSymbols">Debugger.DebugSymbols</a></li>
+        <li><a href="../../#/Debugger.ResolvedBreakpoint">Debugger.ResolvedBreakpoint</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>
