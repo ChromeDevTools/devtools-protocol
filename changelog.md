@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1734725 — _2026-11-04T04:37:37.000Z_
+######  Diff: [`2e90ef3...684a590`](https://github.com/ChromeDevTools/devtools-protocol/compare/2e90ef3...684a590)
+
+```diff
+@@ domains/Page.pdl:153 @@ domain Page
+       publickey-credentials-remote-client-data-json
+       rewriter
+       screen-wake-lock
++      semantic-embedder
+       serial
+       smart-card
+       speaker-selection
+```
+
 ## Roll protocol to r1733639 — _2026-11-03T05:03:18.000Z_
-######  Diff: [`92be9c2...a163116`](https://github.com/ChromeDevTools/devtools-protocol/compare/92be9c2...a163116)
+######  Diff: [`92be9c2...2e90ef3`](https://github.com/ChromeDevTools/devtools-protocol/compare/92be9c2...2e90ef3)
 
 ```diff
 @@ domains/Browser.pdl:64 @@ domain Browser
@@ -43414,45 +43428,4 @@ index 8dad9c98..ee14676c 100644
    type PreloadingAttemptSource extends object
      properties
        PreloadingAttemptKey key
-```
-
-## Roll protocol to r1262051 — _2024-02-17T04:27:02.000Z_
-######  Diff: [`83fadfa...dda659f`](https://github.com/ChromeDevTools/devtools-protocol/compare/83fadfa...dda659f)
-
-```diff
-@@ browser_protocol.pdl:1270 @@ domain Browser
-       protectedMediaIdentifier
-       sensors
-       storageAccess
-+      speakerSelection
-       topLevelStorageAccess
-       videoCapture
-       videoCapturePanTiltZoom
-@@ -5736,9 +5737,18 @@ domain Network
-       # This value is used when the reason is unknown.
-       unspecifiedReason
- 
-+  # Source of service worker router.
-+  type ServiceWorkerRouterSource extends string
-+    enum
-+      network
-+      cache
-+      fetch-event
-+      race-network-and-fetch-handler
-+
-   experimental type ServiceWorkerRouterInfo extends object
-     properties
-       integer ruleIdMatched
-+      ServiceWorkerRouterSource matchedSourceType
- 
-   # HTTP response data.
-   type Response extends object
-@@ -7761,6 +7771,7 @@ domain Page
-       shared-storage
-       shared-storage-select-url
-       smart-card
-+      speaker-selection
-       storage-access
-       sub-apps
-       sync-xhr
 ```
