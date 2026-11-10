@@ -6358,7 +6358,8 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
-         * Invokes a registered tool.
+         * Invokes a registered tool. Exactly one of `toolId` and `toolName` must be specified; the command fails if both or
+         * neither are.
          */
         'WebMCP.invokeTool': {
             paramsType: [Protocol.WebMCP.InvokeToolRequest];

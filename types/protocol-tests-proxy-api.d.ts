@@ -5970,7 +5970,8 @@ export namespace ProtocolTestsProxyApi {
         disable(): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
-         * Invokes a registered tool.
+         * Invokes a registered tool. Exactly one of `toolId` and `toolName` must be specified; the command fails if both or
+         * neither are.
          */
         invokeTool(params: Protocol.WebMCP.InvokeToolRequest): Promise<{id: number, result: Protocol.WebMCP.InvokeToolResponse, sessionId: string}>;
 
