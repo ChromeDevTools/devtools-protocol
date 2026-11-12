@@ -1,7 +1,26 @@
 
 
+## Roll protocol to r1742540 — _2026-11-12T04:30:22.000Z_
+######  Diff: [`f574964...e2d4c5e`](https://github.com/ChromeDevTools/devtools-protocol/compare/f574964...e2d4c5e)
+
+```diff
+@@ domains/Browser.pdl:337 @@ domain Browser
+     parameters
+       BrowserCommandId commandId
+ 
+-  # Allows a site to use privacy sandbox features that require enrollment
+-  # without the site actually being enrolled. Only supported on page targets.
+-  command addPrivacySandboxEnrollmentOverride
+-    parameters
+-      string url
+-
+   # Gets the current globally-applied privacy control status
+   # See https://www.w3.org/TR/gpc/#get-global-privacy-control
+   experimental command getGlobalPrivacyControl
+```
+
 ## Roll protocol to r1740066 — _2026-11-10T04:34:49.000Z_
-######  Diff: [`b0d96c6...6f48f3c`](https://github.com/ChromeDevTools/devtools-protocol/compare/b0d96c6...6f48f3c)
+######  Diff: [`b0d96c6...f574964`](https://github.com/ChromeDevTools/devtools-protocol/compare/b0d96c6...f574964)
 
 ```diff
 @@ domains/WebMCP.pdl:66 @@ experimental domain WebMCP
@@ -43066,38 +43085,4 @@ index 8dad9c98..ee14676c 100644
        # https://source.chromium.org/chromium/chromium/deps/icu.git/+/faee8bc70570192d82d2978a71e2a615788597d1:source/data/misc/metaZones.txt
        # If empty, disables the override and restores default host system timezone.
        string timezoneId
-```
-
-## Roll protocol to r1263133 — _2024-02-21T04:25:55.000Z_
-######  Diff: [`1291a1c...06fb977`](https://github.com/ChromeDevTools/devtools-protocol/compare/1291a1c...06fb977)
-
-```diff
-@@ browser_protocol.pdl:8872 @@ domain Page
-       string message
-       # Dialog type.
-       DialogType type
--      # True if browser is capable showing or acting on the given dialog. When browser has no
-+      # True iff browser is capable showing or acting on the given dialog. When browser has no
-       # dialog handler for given target, calling alert while Page domain is engaged will stall
-       # the page execution. Execution can be resumed via calling Page.handleJavaScriptDialog.
-       boolean hasBrowserHandler
-@@ -10449,8 +10449,8 @@ domain Target
-   type TargetInfo extends object
-     properties
-       TargetID targetId
--      string type
-       # List of types: https://source.chromium.org/chromium/chromium/src/+/main:content/browser/devtools/devtools_agent_host_impl.cc?ss=chromium&q=f:devtools%20-f:out%20%22::kTypeTab%5B%5D%22
-+      string type
-       string title
-       string url
-       # Whether the target has an attached client.
-@@ -11718,7 +11718,7 @@ experimental domain Preload
-       optional string url
-       optional Network.RequestId requestId
-       # Error information
--      # `errorMessage` is null if `errorType` is null.
-+      # `errorMessage` is null iff `errorType` is null.
-       optional RuleSetErrorType errorType
-       # TODO(https://crbug.com/1425354): Replace this property with structured error.
-       deprecated optional string errorMessage
 ```

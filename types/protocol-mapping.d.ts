@@ -2194,14 +2194,6 @@ export namespace ProtocolMapping {
             returnType: void;
         };
         /**
-         * Allows a site to use privacy sandbox features that require enrollment
-         * without the site actually being enrolled. Only supported on page targets.
-         */
-        'Browser.addPrivacySandboxEnrollmentOverride': {
-            paramsType: [Protocol.Browser.AddPrivacySandboxEnrollmentOverrideRequest];
-            returnType: void;
-        };
-        /**
          * Gets the current globally-applied privacy control status
          * See https://www.w3.org/TR/gpc/#get-global-privacy-control
          * @experimental

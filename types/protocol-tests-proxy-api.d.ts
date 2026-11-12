@@ -1238,12 +1238,6 @@ export namespace ProtocolTestsProxyApi {
         executeBrowserCommand(params: Protocol.Browser.ExecuteBrowserCommandRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
-         * Allows a site to use privacy sandbox features that require enrollment
-         * without the site actually being enrolled. Only supported on page targets.
-         */
-        addPrivacySandboxEnrollmentOverride(params: Protocol.Browser.AddPrivacySandboxEnrollmentOverrideRequest): Promise<{id: number, result: void, sessionId: string}>;
-
-        /**
          * Gets the current globally-applied privacy control status
          * See https://www.w3.org/TR/gpc/#get-global-privacy-control
          * @experimental

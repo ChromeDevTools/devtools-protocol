@@ -5069,10 +5069,6 @@ export namespace Protocol {
             commandId: BrowserCommandId;
         }
 
-        export interface AddPrivacySandboxEnrollmentOverrideRequest {
-            url: string;
-        }
-
         export interface GetGlobalPrivacyControlResponse {
             gpc: boolean;
         }
