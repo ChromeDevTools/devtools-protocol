@@ -1,7 +1,31 @@
 
 
+## Roll protocol to r1743766 — _2026-11-13T04:33:08.000Z_
+######  Diff: [`d961d96...8cdd9e6`](https://github.com/ChromeDevTools/devtools-protocol/compare/d961d96...8cdd9e6)
+
+```diff
+@@ js_protocol.pdl:246 @@ domain Debugger
+       # List of the possible breakpoint locations.
+       array of BreakLocation locations
+ 
++  # Returns the current scope chain of the given call frame. Unlike the scope chain reported
++  # with the `paused` event, it reflects changes made to variables since then (e.g. via
++  # `evaluateOnCallFrame` or `setVariableValue`).
++  experimental command getScopeChain
++    parameters
++      # Call frame identifier to get the scope chain for.
++      CallFrameId callFrameId
++    returns
++      # Scope chain for the call frame.
++      array of Scope scopeChain
++
+   # Returns source for the script with given id.
+   command getScriptSource
+     parameters
+```
+
 ## Roll protocol to r1742540 — _2026-11-12T04:30:22.000Z_
-######  Diff: [`f574964...e2d4c5e`](https://github.com/ChromeDevTools/devtools-protocol/compare/f574964...e2d4c5e)
+######  Diff: [`f574964...d961d96`](https://github.com/ChromeDevTools/devtools-protocol/compare/f574964...d961d96)
 
 ```diff
 @@ domains/Browser.pdl:337 @@ domain Browser
@@ -43061,28 +43085,4 @@ index 8dad9c98..ee14676c 100644
  
    # Details for issues around "Attribution Reporting API" usage.
    # Explainer: https://github.com/WICG/attribution-reporting-api
-```
-
-## Roll protocol to r1263784 — _2024-02-22T04:25:35.000Z_
-######  Diff: [`06fb977...85cbc8e`](https://github.com/ChromeDevTools/devtools-protocol/compare/06fb977...85cbc8e)
-
-```diff
-@@ browser_protocol.pdl:4053 @@ domain Emulation
-       optional SensorReadingQuaternion quaternion
- 
-   # Tells whether emulation is supported.
--  command canEmulate
-+  deprecated command canEmulate
-     returns
-       # True if emulation is supported.
-       boolean result
-@@ -4272,7 +4272,7 @@ domain Emulation
-   # Overrides default host system timezone with the specified one.
-   command setTimezoneOverride
-     parameters
--      # The timezone identifier. List of supported timezones: 
-+      # The timezone identifier. List of supported timezones:
-       # https://source.chromium.org/chromium/chromium/deps/icu.git/+/faee8bc70570192d82d2978a71e2a615788597d1:source/data/misc/metaZones.txt
-       # If empty, disables the override and restores default host system timezone.
-       string timezoneId
 ```

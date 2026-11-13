@@ -437,6 +437,20 @@ export namespace Protocol {
             locations: BreakLocation[];
         }
 
+        export interface GetScopeChainRequest {
+            /**
+             * Call frame identifier to get the scope chain for.
+             */
+            callFrameId: CallFrameId;
+        }
+
+        export interface GetScopeChainResponse {
+            /**
+             * Scope chain for the call frame.
+             */
+            scopeChain: Scope[];
+        }
+
         export interface GetScriptSourceRequest {
             /**
              * Id of the script to get source for.

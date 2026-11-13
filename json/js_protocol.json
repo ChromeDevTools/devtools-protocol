@@ -575,6 +575,28 @@
                     ]
                 },
                 {
+                    "name": "getScopeChain",
+                    "description": "Returns the current scope chain of the given call frame. Unlike the scope chain reported\nwith the `paused` event, it reflects changes made to variables since then (e.g. via\n`evaluateOnCallFrame` or `setVariableValue`).",
+                    "experimental": true,
+                    "parameters": [
+                        {
+                            "name": "callFrameId",
+                            "description": "Call frame identifier to get the scope chain for.",
+                            "$ref": "CallFrameId"
+                        }
+                    ],
+                    "returns": [
+                        {
+                            "name": "scopeChain",
+                            "description": "Scope chain for the call frame.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "Scope"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "getScriptSource",
                     "description": "Returns source for the script with given id.",
                     "parameters": [

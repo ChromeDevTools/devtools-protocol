@@ -190,6 +190,14 @@ export namespace ProtocolTestsProxyApi {
         getPossibleBreakpoints(params: Protocol.Debugger.GetPossibleBreakpointsRequest): Promise<{id: number, result: Protocol.Debugger.GetPossibleBreakpointsResponse, sessionId: string}>;
 
         /**
+         * Returns the current scope chain of the given call frame. Unlike the scope chain reported
+         * with the `paused` event, it reflects changes made to variables since then (e.g. via
+         * `evaluateOnCallFrame` or `setVariableValue`).
+         * @experimental
+         */
+        getScopeChain(params: Protocol.Debugger.GetScopeChainRequest): Promise<{id: number, result: Protocol.Debugger.GetScopeChainResponse, sessionId: string}>;
+
+        /**
          * Returns source for the script with given id.
          */
         getScriptSource(params: Protocol.Debugger.GetScriptSourceRequest): Promise<{id: number, result: Protocol.Debugger.GetScriptSourceResponse, sessionId: string}>;
