@@ -1,7 +1,40 @@
 
 
+## Roll protocol to r1744848 — _2026-11-14T04:32:42.000Z_
+######  Diff: [`c092aa9...9bec7a1`](https://github.com/ChromeDevTools/devtools-protocol/compare/c092aa9...9bec7a1)
+
+```diff
+@@ domains/BluetoothEmulation.pdl:200 @@ experimental domain BluetoothEmulation
+     parameters
+       string address
+ 
++  # Simulates the ATT MTU exchange procedure from Bluetooth Core Specification
++  # Vol 3 Part F 3.4.2 establishing |mtu| for the connection to the peripheral
++  # with |address|.
++  command simulateGATTMtuChange
++    parameters
++      string address
++      integer mtu
++
+   # Event for when a GATT operation of |type| to the peripheral with |address|
+   # happened.
+   event gattOperationReceived
+diff --git a/pdl/domains/DOM.pdl b/pdl/domains/DOM.pdl
+index 5862a6bb..90e37017 100644
+--- a/pdl/domains/DOM.pdl
++++ b/pdl/domains/DOM.pdl
+@@ -79,7 +79,6 @@ domain DOM
+       select-listbox
+       permission-icon
+       overscroll-area-parent
+-      overscroll-backdrop
+       skeleton
+ 
+   # Shadow root type.
+```
+
 ## Roll protocol to r1743766 — _2026-11-13T04:33:08.000Z_
-######  Diff: [`d961d96...8cdd9e6`](https://github.com/ChromeDevTools/devtools-protocol/compare/d961d96...8cdd9e6)
+######  Diff: [`d961d96...c092aa9`](https://github.com/ChromeDevTools/devtools-protocol/compare/d961d96...c092aa9)
 
 ```diff
 @@ js_protocol.pdl:246 @@ domain Debugger
@@ -43067,22 +43100,4 @@ index 8dad9c98..ee14676c 100644
        # Disabled for RenderFrameHost reasons
        # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
        ContentSecurityHandler
-```
-
-## Roll protocol to r1266247 — _2024-02-28T04:26:37.000Z_
-######  Diff: [`85cbc8e...462386a`](https://github.com/ChromeDevTools/devtools-protocol/compare/85cbc8e...462386a)
-
-```diff
-@@ browser_protocol.pdl:729 @@ experimental domain Audits
-       WebAndOsHeaders
-       NoWebOrOsSupport
-       NavigationRegistrationWithoutTransientUserActivation
-+      InvalidInfoHeader
-+      NoRegisterSourceHeader
-+      NoRegisterTriggerHeader
-+      NoRegisterOsSourceHeader
-+      NoRegisterOsTriggerHeader
- 
-   # Details for issues around "Attribution Reporting API" usage.
-   # Explainer: https://github.com/WICG/attribution-reporting-api
 ```

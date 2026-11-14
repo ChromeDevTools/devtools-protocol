@@ -1101,6 +1101,13 @@ export namespace ProtocolTestsProxyApi {
         simulateGATTDisconnection(params: Protocol.BluetoothEmulation.SimulateGATTDisconnectionRequest): Promise<{id: number, result: void, sessionId: string}>;
 
         /**
+         * Simulates the ATT MTU exchange procedure from Bluetooth Core Specification
+         * Vol 3 Part F 3.4.2 establishing |mtu| for the connection to the peripheral
+         * with |address|.
+         */
+        simulateGATTMtuChange(params: Protocol.BluetoothEmulation.SimulateGATTMtuChangeRequest): Promise<{id: number, result: void, sessionId: string}>;
+
+        /**
          * Event for when a GATT operation of |type| to the peripheral with |address|
          * happened.
          */
