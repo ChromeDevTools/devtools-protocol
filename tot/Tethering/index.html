@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: Tethering...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/Tethering' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/Tethering">Tethering</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/Tethering.bind">Tethering.bind</a></li>
+        <li><a href="../../#/Tethering.unbind">Tethering.unbind</a></li>
+        <li><a href="../../#/Tethering.accepted">Tethering.accepted</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: WebAuthn...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/WebAuthn' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/WebAuthn">WebAuthn</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/WebAuthn.enable">WebAuthn.enable</a></li>
+        <li><a href="../../#/WebAuthn.disable">WebAuthn.disable</a></li>
+        <li><a href="../../#/WebAuthn.addVirtualAuthenticator">WebAuthn.addVirtualAuthenticator</a></li>
+        <li><a href="../../#/WebAuthn.setResponseOverrideBits">WebAuthn.setResponseOverrideBits</a></li>
+        <li><a href="../../#/WebAuthn.removeVirtualAuthenticator">WebAuthn.removeVirtualAuthenticator</a></li>
+        <li><a href="../../#/WebAuthn.addCredential">WebAuthn.addCredential</a></li>
+        <li><a href="../../#/WebAuthn.getCredential">WebAuthn.getCredential</a></li>
+        <li><a href="../../#/WebAuthn.getCredentials">WebAuthn.getCredentials</a></li>
+        <li><a href="../../#/WebAuthn.removeCredential">WebAuthn.removeCredential</a></li>
+        <li><a href="../../#/WebAuthn.clearCredentials">WebAuthn.clearCredentials</a></li>
+        <li><a href="../../#/WebAuthn.setUserVerified">WebAuthn.setUserVerified</a></li>
+        <li><a href="../../#/WebAuthn.setAutomaticPresenceSimulation">WebAuthn.setAutomaticPresenceSimulation</a></li>
+        <li><a href="../../#/WebAuthn.setCredentialProperties">WebAuthn.setCredentialProperties</a></li>
+        <li><a href="../../#/WebAuthn.credentialAdded">WebAuthn.credentialAdded</a></li>
+        <li><a href="../../#/WebAuthn.credentialDeleted">WebAuthn.credentialDeleted</a></li>
+        <li><a href="../../#/WebAuthn.credentialUpdated">WebAuthn.credentialUpdated</a></li>
+        <li><a href="../../#/WebAuthn.credentialAsserted">WebAuthn.credentialAsserted</a></li>
+        <li><a href="../../#/WebAuthn.AuthenticatorId">WebAuthn.AuthenticatorId</a></li>
+        <li><a href="../../#/WebAuthn.AuthenticatorProtocol">WebAuthn.AuthenticatorProtocol</a></li>
+        <li><a href="../../#/WebAuthn.Ctap2Version">WebAuthn.Ctap2Version</a></li>
+        <li><a href="../../#/WebAuthn.AuthenticatorTransport">WebAuthn.AuthenticatorTransport</a></li>
+        <li><a href="../../#/WebAuthn.VirtualAuthenticatorOptions">WebAuthn.VirtualAuthenticatorOptions</a></li>
+        <li><a href="../../#/WebAuthn.Credential">WebAuthn.Credential</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

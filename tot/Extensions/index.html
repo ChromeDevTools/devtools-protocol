@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: Extensions...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/Extensions' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/Extensions">Extensions</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/Extensions.triggerAction">Extensions.triggerAction</a></li>
+        <li><a href="../../#/Extensions.loadUnpacked">Extensions.loadUnpacked</a></li>
+        <li><a href="../../#/Extensions.getExtensions">Extensions.getExtensions</a></li>
+        <li><a href="../../#/Extensions.uninstall">Extensions.uninstall</a></li>
+        <li><a href="../../#/Extensions.getStorageItems">Extensions.getStorageItems</a></li>
+        <li><a href="../../#/Extensions.removeStorageItems">Extensions.removeStorageItems</a></li>
+        <li><a href="../../#/Extensions.clearStorageItems">Extensions.clearStorageItems</a></li>
+        <li><a href="../../#/Extensions.setStorageItems">Extensions.setStorageItems</a></li>
+        <li><a href="../../#/Extensions.StorageArea">Extensions.StorageArea</a></li>
+        <li><a href="../../#/Extensions.ExtensionInfo">Extensions.ExtensionInfo</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>
