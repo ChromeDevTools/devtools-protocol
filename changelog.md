@@ -1,7 +1,21 @@
 
 
+## Roll protocol to r1746437 — _2026-11-17T04:34:05.000Z_
+######  Diff: [`dd55cb6...a4c918b`](https://github.com/ChromeDevTools/devtools-protocol/compare/dd55cb6...a4c918b)
+
+```diff
+@@ domains/Preload.pdl:193 @@ experimental domain Preload
+       FormSubmitWhenPrerendering
+       CrossDocumentRestart
+       PrefetchFailedCrossOriginSubframe
++      UnexpectedMainFrameNavigation
+ 
+   # Fired when a preload enabled state is updated.
+   event preloadEnabledStateUpdated
+```
+
 ## Roll protocol to r1744848 — _2026-11-14T04:32:42.000Z_
-######  Diff: [`c092aa9...9bec7a1`](https://github.com/ChromeDevTools/devtools-protocol/compare/c092aa9...9bec7a1)
+######  Diff: [`c092aa9...dd55cb6`](https://github.com/ChromeDevTools/devtools-protocol/compare/c092aa9...dd55cb6)
 
 ```diff
 @@ domains/BluetoothEmulation.pdl:200 @@ experimental domain BluetoothEmulation
@@ -43086,18 +43100,4 @@ index 8dad9c98..ee14676c 100644
        #Blocklisted features
        WebSocket
        WebTransport
-```
-
-## Roll protocol to r1266816 — _2024-02-29T04:26:20.000Z_
-######  Diff: [`462386a...61cfdc3`](https://github.com/ChromeDevTools/devtools-protocol/compare/462386a...61cfdc3)
-
-```diff
-@@ browser_protocol.pdl:9003 @@ domain Page
-       SmartCard
-       LiveMediaStreamTrack
-       UnloadHandler
-+      ParserAborted
-       # Disabled for RenderFrameHost reasons
-       # See content/browser/renderer_host/back_forward_cache_disable.h for explanations.
-       ContentSecurityHandler
 ```
