@@ -1,7 +1,35 @@
 
 
+## Roll protocol to r1747637 — _2026-11-18T04:30:15.000Z_
+######  Diff: [`65346a3...dd1c517`](https://github.com/ChromeDevTools/devtools-protocol/compare/65346a3...dd1c517)
+
+```diff
+@@ js_protocol.pdl:1068 @@ domain Runtime
+     properties
+       enum serialization
+         # Whether the result should be deep-serialized. The result is put into
+-        # `deepSerializedValue` and `ObjectId` is provided.
++        # `deepSerializedValue`; `objectId` is provided for objects and symbols.
++        # `value` and `unserializableValue` are not set.
+         deep
+         # Whether the result is expected to be a JSON object which should be sent by value.
+         # The result is put either into `value` or into `unserializableValue`. Synonym of
+@@ -1170,9 +1171,10 @@ domain Runtime
+       # Object class (constructor) name. Specified for `object` type values only.
+       optional string className
+       # Remote object value in case of primitive values or JSON values (if it was requested).
++      # Not set in `deep` serialization mode, see `deepSerializedValue`.
+       optional any value
+       # Primitive value which can not be JSON-stringified does not have `value`, but gets this
+-      # property.
++      # property. Not set in `deep` serialization mode, see `deepSerializedValue`.
+       optional UnserializableValue unserializableValue
+       # String representation of the object.
+       optional string description
+```
+
 ## Roll protocol to r1746437 — _2026-11-17T04:34:05.000Z_
-######  Diff: [`dd55cb6...a4c918b`](https://github.com/ChromeDevTools/devtools-protocol/compare/dd55cb6...a4c918b)
+######  Diff: [`dd55cb6...65346a3`](https://github.com/ChromeDevTools/devtools-protocol/compare/dd55cb6...65346a3)
 
 ```diff
 @@ domains/Preload.pdl:193 @@ experimental domain Preload
@@ -43086,18 +43114,4 @@ index 8dad9c98..ee14676c 100644
  
    # Enables network tracking, network events will now be delivered to the client.
    command enable
-```
-
-## Roll protocol to r1269399 — _2024-03-07T04:25:11.000Z_
-######  Diff: [`61cfdc3...d932e1e`](https://github.com/ChromeDevTools/devtools-protocol/compare/61cfdc3...d932e1e)
-
-```diff
-@@ browser_protocol.pdl:8953 @@ domain Page
-       CookieDisabled
-       HTTPAuthRequired
-       CookieFlushed
-+      BroadcastChannelOnMessage
-       #Blocklisted features
-       WebSocket
-       WebTransport
 ```
