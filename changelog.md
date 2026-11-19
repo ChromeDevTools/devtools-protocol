@@ -1,7 +1,28 @@
 
 
+## Roll protocol to r1748923 — _2026-11-19T04:31:18.000Z_
+######  Diff: [`95a78c6...3ce5fb3`](https://github.com/ChromeDevTools/devtools-protocol/compare/95a78c6...3ce5fb3)
+
+```diff
+@@ domains/Target.pdl:34 @@ domain Target
+       experimental optional Page.FrameId parentFrameId
+       experimental optional Browser.BrowserContextID browserContextId
+       # Provides additional details for specific target types. For example, for
+-      # the type of "page", this may be set to "prerender".
++      # the type of "page", this may be set to "prerender", and for "tab", this
++      # may be set to "unloaded". An unloaded tab has a history entry, but no
++      # document for it: for example, after the tab was discarded, after
++      # session restore without load, or after the renderer crashed. The tab
++      # stays unloaded until a new document commits. A new tab that has not
++      # navigated is not unloaded. Target.targetInfoChanged reports changes of
++      # this value for tabs.
+       experimental optional string subtype
+       # Embedder-specific target metadata. This is only set for targets of
+       # type "tab".
+```
+
 ## Roll protocol to r1747637 — _2026-11-18T04:30:15.000Z_
-######  Diff: [`65346a3...dd1c517`](https://github.com/ChromeDevTools/devtools-protocol/compare/65346a3...dd1c517)
+######  Diff: [`65346a3...95a78c6`](https://github.com/ChromeDevTools/devtools-protocol/compare/65346a3...95a78c6)
 
 ```diff
 @@ js_protocol.pdl:1068 @@ domain Runtime
@@ -43095,23 +43116,4 @@ index 8dad9c98..ee14676c 100644
  
    # Enables/Disables issuing of interestGroupAccessed events.
    experimental command setInterestGroupTracking
-```
-
-## Roll protocol to r1271365 — _2024-03-12T04:27:11.000Z_
-######  Diff: [`d932e1e...08fa435`](https://github.com/ChromeDevTools/devtools-protocol/compare/d932e1e...08fa435)
-
-```diff
-@@ browser_protocol.pdl:6356 @@ domain Network
-       number uploadThroughput
-       # Connection type if known.
-       optional ConnectionType connectionType
-+      # WebRTC packet loss (percent, 0-100). 0 disables packet loss emulation, 100 drops all the packets.
-+      experimental optional number packetLoss
-+      # WebRTC packet queue length (packet). 0 removes any queue length limitations.
-+      experimental optional integer packetQueueLength
-+      # WebRTC packetReordering feature.
-+      experimental optional boolean packetReordering
- 
-   # Enables network tracking, network events will now be delivered to the client.
-   command enable
 ```
