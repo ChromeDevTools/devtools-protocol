@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: Target...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/Target' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/Target">Target</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/Target.activateTarget">Target.activateTarget</a></li>
+        <li><a href="../../#/Target.attachToTarget">Target.attachToTarget</a></li>
+        <li><a href="../../#/Target.attachToBrowserTarget">Target.attachToBrowserTarget</a></li>
+        <li><a href="../../#/Target.closeTarget">Target.closeTarget</a></li>
+        <li><a href="../../#/Target.exposeDevToolsProtocol">Target.exposeDevToolsProtocol</a></li>
+        <li><a href="../../#/Target.createBrowserContext">Target.createBrowserContext</a></li>
+        <li><a href="../../#/Target.getBrowserContexts">Target.getBrowserContexts</a></li>
+        <li><a href="../../#/Target.createTarget">Target.createTarget</a></li>
+        <li><a href="../../#/Target.detachFromTarget">Target.detachFromTarget</a></li>
+        <li><a href="../../#/Target.disposeBrowserContext">Target.disposeBrowserContext</a></li>
+        <li><a href="../../#/Target.getTargetInfo">Target.getTargetInfo</a></li>
+        <li><a href="../../#/Target.getTargets">Target.getTargets</a></li>
+        <li><a href="../../#/Target.sendMessageToTarget">Target.sendMessageToTarget</a></li>
+        <li><a href="../../#/Target.setAutoAttach">Target.setAutoAttach</a></li>
+        <li><a href="../../#/Target.autoAttachRelated">Target.autoAttachRelated</a></li>
+        <li><a href="../../#/Target.setDiscoverTargets">Target.setDiscoverTargets</a></li>
+        <li><a href="../../#/Target.setRemoteLocations">Target.setRemoteLocations</a></li>
+        <li><a href="../../#/Target.getDevToolsTarget">Target.getDevToolsTarget</a></li>
+        <li><a href="../../#/Target.openDevTools">Target.openDevTools</a></li>
+        <li><a href="../../#/Target.attachedToTarget">Target.attachedToTarget</a></li>
+        <li><a href="../../#/Target.detachedFromTarget">Target.detachedFromTarget</a></li>
+        <li><a href="../../#/Target.receivedMessageFromTarget">Target.receivedMessageFromTarget</a></li>
+        <li><a href="../../#/Target.targetCreated">Target.targetCreated</a></li>
+        <li><a href="../../#/Target.targetDestroyed">Target.targetDestroyed</a></li>
+        <li><a href="../../#/Target.targetCrashed">Target.targetCrashed</a></li>
+        <li><a href="../../#/Target.targetInfoChanged">Target.targetInfoChanged</a></li>
+        <li><a href="../../#/Target.TargetID">Target.TargetID</a></li>
+        <li><a href="../../#/Target.SessionID">Target.SessionID</a></li>
+        <li><a href="../../#/Target.TargetInfo">Target.TargetInfo</a></li>
+        <li><a href="../../#/Target.FilterEntry">Target.FilterEntry</a></li>
+        <li><a href="../../#/Target.TargetFilter">Target.TargetFilter</a></li>
+        <li><a href="../../#/Target.RemoteLocation">Target.RemoteLocation</a></li>
+        <li><a href="../../#/Target.WindowState">Target.WindowState</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

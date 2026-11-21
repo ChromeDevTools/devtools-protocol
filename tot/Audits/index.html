@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: Audits...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/Audits' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/Audits">Audits</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/Audits.getEncodedResponse">Audits.getEncodedResponse</a></li>
+        <li><a href="../../#/Audits.disable">Audits.disable</a></li>
+        <li><a href="../../#/Audits.enable">Audits.enable</a></li>
+        <li><a href="../../#/Audits.checkFormsIssues">Audits.checkFormsIssues</a></li>
+        <li><a href="../../#/Audits.issueAdded">Audits.issueAdded</a></li>
+        <li><a href="../../#/Audits.AffectedCookie">Audits.AffectedCookie</a></li>
+        <li><a href="../../#/Audits.AffectedRequest">Audits.AffectedRequest</a></li>
+        <li><a href="../../#/Audits.AffectedFrame">Audits.AffectedFrame</a></li>
+        <li><a href="../../#/Audits.CookieExclusionReason">Audits.CookieExclusionReason</a></li>
+        <li><a href="../../#/Audits.CookieWarningReason">Audits.CookieWarningReason</a></li>
+        <li><a href="../../#/Audits.CookieOperation">Audits.CookieOperation</a></li>
+        <li><a href="../../#/Audits.InsightType">Audits.InsightType</a></li>
+        <li><a href="../../#/Audits.CookieIssueInsight">Audits.CookieIssueInsight</a></li>
+        <li><a href="../../#/Audits.CookieIssueDetails">Audits.CookieIssueDetails</a></li>
+        <li><a href="../../#/Audits.PerformanceIssueType">Audits.PerformanceIssueType</a></li>
+        <li><a href="../../#/Audits.PerformanceIssueDetails">Audits.PerformanceIssueDetails</a></li>
+        <li><a href="../../#/Audits.MixedContentResolutionStatus">Audits.MixedContentResolutionStatus</a></li>
+        <li><a href="../../#/Audits.MixedContentResourceType">Audits.MixedContentResourceType</a></li>
+        <li><a href="../../#/Audits.MixedContentIssueDetails">Audits.MixedContentIssueDetails</a></li>
+        <li><a href="../../#/Audits.BlockedByResponseReason">Audits.BlockedByResponseReason</a></li>
+        <li><a href="../../#/Audits.BlockedByResponseIssueDetails">Audits.BlockedByResponseIssueDetails</a></li>
+        <li><a href="../../#/Audits.HeavyAdResolutionStatus">Audits.HeavyAdResolutionStatus</a></li>
+        <li><a href="../../#/Audits.HeavyAdReason">Audits.HeavyAdReason</a></li>
+        <li><a href="../../#/Audits.HeavyAdIssueDetails">Audits.HeavyAdIssueDetails</a></li>
+        <li><a href="../../#/Audits.ContentSecurityPolicyViolationType">Audits.ContentSecurityPolicyViolationType</a></li>
+        <li><a href="../../#/Audits.SourceCodeLocation">Audits.SourceCodeLocation</a></li>
+        <li><a href="../../#/Audits.ContentSecurityPolicyIssueDetails">Audits.ContentSecurityPolicyIssueDetails</a></li>
+        <li><a href="../../#/Audits.SharedArrayBufferIssueType">Audits.SharedArrayBufferIssueType</a></li>
+        <li><a href="../../#/Audits.SharedArrayBufferIssueDetails">Audits.SharedArrayBufferIssueDetails</a></li>
+        <li><a href="../../#/Audits.CorsIssueDetails">Audits.CorsIssueDetails</a></li>
+        <li><a href="../../#/Audits.SharedDictionaryError">Audits.SharedDictionaryError</a></li>
+        <li><a href="../../#/Audits.SRIMessageSignatureError">Audits.SRIMessageSignatureError</a></li>
+        <li><a href="../../#/Audits.UnencodedDigestError">Audits.UnencodedDigestError</a></li>
+        <li><a href="../../#/Audits.ConnectionAllowlistError">Audits.ConnectionAllowlistError</a></li>
+        <li><a href="../../#/Audits.QuirksModeIssueDetails">Audits.QuirksModeIssueDetails</a></li>
+        <li><a href="../../#/Audits.NavigatorUserAgentIssueDetails">Audits.NavigatorUserAgentIssueDetails</a></li>
+        <li><a href="../../#/Audits.SharedDictionaryIssueDetails">Audits.SharedDictionaryIssueDetails</a></li>
+        <li><a href="../../#/Audits.SRIMessageSignatureIssueDetails">Audits.SRIMessageSignatureIssueDetails</a></li>
+        <li><a href="../../#/Audits.UnencodedDigestIssueDetails">Audits.UnencodedDigestIssueDetails</a></li>
+        <li><a href="../../#/Audits.ConnectionAllowlistIssueDetails">Audits.ConnectionAllowlistIssueDetails</a></li>
+        <li><a href="../../#/Audits.GenericIssueErrorType">Audits.GenericIssueErrorType</a></li>
+        <li><a href="../../#/Audits.GenericIssueDetails">Audits.GenericIssueDetails</a></li>
+        <li><a href="../../#/Audits.DeprecationIssueDetails">Audits.DeprecationIssueDetails</a></li>
+        <li><a href="../../#/Audits.BounceTrackingIssueDetails">Audits.BounceTrackingIssueDetails</a></li>
+        <li><a href="../../#/Audits.CookieDeprecationMetadataIssueDetails">Audits.CookieDeprecationMetadataIssueDetails</a></li>
+        <li><a href="../../#/Audits.ClientHintIssueReason">Audits.ClientHintIssueReason</a></li>
+        <li><a href="../../#/Audits.FederatedAuthRequestIssueDetails">Audits.FederatedAuthRequestIssueDetails</a></li>
+        <li><a href="../../#/Audits.FederatedAuthRequestIssueReason">Audits.FederatedAuthRequestIssueReason</a></li>
+        <li><a href="../../#/Audits.FederatedAuthUserInfoRequestIssueDetails">Audits.FederatedAuthUserInfoRequestIssueDetails</a></li>
+        <li><a href="../../#/Audits.FederatedAuthUserInfoRequestIssueReason">Audits.FederatedAuthUserInfoRequestIssueReason</a></li>
+        <li><a href="../../#/Audits.EmailVerificationRequestIssueDetails">Audits.EmailVerificationRequestIssueDetails</a></li>
+        <li><a href="../../#/Audits.EmailVerificationRequestIssueReason">Audits.EmailVerificationRequestIssueReason</a></li>
+        <li><a href="../../#/Audits.ClientHintIssueDetails">Audits.ClientHintIssueDetails</a></li>
+        <li><a href="../../#/Audits.FailedRequestInfo">Audits.FailedRequestInfo</a></li>
+        <li><a href="../../#/Audits.PartitioningBlobURLInfo">Audits.PartitioningBlobURLInfo</a></li>
+        <li><a href="../../#/Audits.PartitioningBlobURLIssueDetails">Audits.PartitioningBlobURLIssueDetails</a></li>
+        <li><a href="../../#/Audits.ElementAccessibilityIssueReason">Audits.ElementAccessibilityIssueReason</a></li>
+        <li><a href="../../#/Audits.ElementAccessibilityIssueDetails">Audits.ElementAccessibilityIssueDetails</a></li>
+        <li><a href="../../#/Audits.StyleSheetLoadingIssueReason">Audits.StyleSheetLoadingIssueReason</a></li>
+        <li><a href="../../#/Audits.StylesheetLoadingIssueDetails">Audits.StylesheetLoadingIssueDetails</a></li>
+        <li><a href="../../#/Audits.PropertyRuleIssueReason">Audits.PropertyRuleIssueReason</a></li>
+        <li><a href="../../#/Audits.PropertyRuleIssueDetails">Audits.PropertyRuleIssueDetails</a></li>
+        <li><a href="../../#/Audits.UserReidentificationIssueType">Audits.UserReidentificationIssueType</a></li>
+        <li><a href="../../#/Audits.UserReidentificationIssueDetails">Audits.UserReidentificationIssueDetails</a></li>
+        <li><a href="../../#/Audits.PermissionElementIssueType">Audits.PermissionElementIssueType</a></li>
+        <li><a href="../../#/Audits.PermissionElementIssueDetails">Audits.PermissionElementIssueDetails</a></li>
+        <li><a href="../../#/Audits.WebInstallIssueReason">Audits.WebInstallIssueReason</a></li>
+        <li><a href="../../#/Audits.WebInstallIssueDetails">Audits.WebInstallIssueDetails</a></li>
+        <li><a href="../../#/Audits.SelectivePermissionsInterventionIssueDetails">Audits.SelectivePermissionsInterventionIssueDetails</a></li>
+        <li><a href="../../#/Audits.LazyLoadImageIssueDetails">Audits.LazyLoadImageIssueDetails</a></li>
+        <li><a href="../../#/Audits.InspectorIssueCode">Audits.InspectorIssueCode</a></li>
+        <li><a href="../../#/Audits.InspectorIssueDetails">Audits.InspectorIssueDetails</a></li>
+        <li><a href="../../#/Audits.IssueId">Audits.IssueId</a></li>
+        <li><a href="../../#/Audits.InspectorIssue">Audits.InspectorIssue</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

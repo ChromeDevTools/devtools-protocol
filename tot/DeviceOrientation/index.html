@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: DeviceOrientation...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/DeviceOrientation' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/DeviceOrientation">DeviceOrientation</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/DeviceOrientation.clearDeviceOrientationOverride">DeviceOrientation.clearDeviceOrientationOverride</a></li>
+        <li><a href="../../#/DeviceOrientation.setDeviceOrientationOverride">DeviceOrientation.setDeviceOrientationOverride</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>
