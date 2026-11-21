@@ -1,7 +1,45 @@
 
 
+## Roll protocol to r1751165 — _2026-11-21T04:32:13.000Z_
+######  Diff: [`cc9d57b...c977a25`](https://github.com/ChromeDevTools/devtools-protocol/compare/cc9d57b...c977a25)
+
+```diff
+@@ domains/Network.pdl:32 @@ domain Network
+       CSPViolationReport
+       Preflight
+       FedCM
++      EmailVerification
+       Other
+ 
+   # Unique loader identifier.
+@@ -546,6 +547,7 @@ domain Network
+         SignedExchange
+         preflight
+         FedCM
++        EmailVerification
+         other
+       # Initiator JavaScript stack trace, set for Script only.
+       # Requires the Debugger domain to be enabled.
+diff --git a/pdl/domains/Page.pdl b/pdl/domains/Page.pdl
+index 3da7a899..0a25270e 100644
+--- a/pdl/domains/Page.pdl
++++ b/pdl/domains/Page.pdl
+@@ -1022,6 +1022,11 @@ domain Page
+       # loader id does not match the provided id. This prevents accidentally
+       # reloading an unintended target in case there's a racing navigation.
+       experimental optional Network.LoaderId loaderId
++      # If true and the page has POST data, the browser shows the form
++      # resubmission dialog before the reload. The command returns after the
++      # user responds to the dialog. If the user cancels the dialog, the
++      # command returns an error. The default value is false.
++      experimental optional boolean checkForRepost
+ 
+   # Deprecated, please use removeScriptToEvaluateOnNewDocument instead.
+   experimental deprecated command removeScriptToEvaluateOnLoad
+```
+
 ## Roll protocol to r1750115 — _2026-11-20T04:34:12.000Z_
-######  Diff: [`d21ec9f...99cdc7a`](https://github.com/ChromeDevTools/devtools-protocol/compare/d21ec9f...99cdc7a)
+######  Diff: [`d21ec9f...cc9d57b`](https://github.com/ChromeDevTools/devtools-protocol/compare/d21ec9f...cc9d57b)
 
 ```diff
 @@ domains/Audits.pdl:637 @@ experimental domain Audits
@@ -43004,48 +43042,4 @@ index 8dad9c98..ee14676c 100644
        workletSet
        workletAppend
        workletDelete
-```
-
-## Roll protocol to r1272579 — _2024-03-14T04:25:42.000Z_
-######  Diff: [`1af74d1...c804ef9`](https://github.com/ChromeDevTools/devtools-protocol/compare/1af74d1...c804ef9)
-
-```diff
-@@ browser_protocol.pdl:2165 @@ experimental domain CSS
-     returns
-       CSSLayerData rootLayer
- 
-+  # Given a CSS selector text and a style sheet ID, getLocationForSelector
-+  # returns an array of locations of the CSS selector in the style sheet.
-+  experimental command getLocationForSelector
-+    parameters
-+      StyleSheetId styleSheetId
-+      string selectorText
-+    returns
-+      array of SourceRange ranges
-+
-   # Starts tracking the given computed styles for updates. The specified array of properties
-   # replaces the one previously specified. Pass empty array to disable tracking.
-   # Use takeComputedStyleUpdates to retrieve the list of nodes that had properties modified.
-@@ -10303,6 +10312,22 @@ experimental domain Storage
-       AttributionReportingEventLevelResult eventLevel
-       AttributionReportingAggregatableResult aggregatable
- 
-+  # A single Related Website Set object.
-+  experimental type RelatedWebsiteSet extends object
-+    properties
-+      # The primary site of this set, along with the ccTLDs if there is any.
-+      array of string primarySites
-+      # The associated sites of this set, along with the ccTLDs if there is any.
-+      array of string associatedSites
-+      # The service sites of this set, along with the ccTLDs if there is any.
-+      array of string serviceSites
-+
-+  # Returns the effective Related Website Sets in use by this profile for the browser
-+  # session. The effective Related Website Sets will not change during a browser session.
-+  experimental command getRelatedWebsiteSets
-+    returns
-+      array of RelatedWebsiteSet sets
-+
- # The SystemInfo domain defines methods and events for querying low-level system information.
- experimental domain SystemInfo
 ```

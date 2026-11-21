@@ -12740,7 +12740,7 @@ export namespace Protocol {
         /**
          * Resource type as it was perceived by the rendering engine.
          */
-        export type ResourceType = ('Document' | 'Stylesheet' | 'Image' | 'Media' | 'Font' | 'Script' | 'TextTrack' | 'XHR' | 'Fetch' | 'Prefetch' | 'EventSource' | 'WebSocket' | 'Manifest' | 'SignedExchange' | 'Ping' | 'CSPViolationReport' | 'Preflight' | 'FedCM' | 'Other');
+        export type ResourceType = ('Document' | 'Stylesheet' | 'Image' | 'Media' | 'Font' | 'Script' | 'TextTrack' | 'XHR' | 'Fetch' | 'Prefetch' | 'EventSource' | 'WebSocket' | 'Manifest' | 'SignedExchange' | 'Ping' | 'CSPViolationReport' | 'Preflight' | 'FedCM' | 'EmailVerification' | 'Other');
 
         /**
          * Unique loader identifier.
@@ -13404,6 +13404,7 @@ export namespace Protocol {
             SignedExchange = 'SignedExchange',
             Preflight = 'preflight',
             FedCM = 'FedCM',
+            EmailVerification = 'EmailVerification',
             Other = 'other',
         }
 
@@ -13414,7 +13415,7 @@ export namespace Protocol {
             /**
              * Type of this initiator.
              */
-            type: ('parser' | 'script' | 'preload' | 'SignedExchange' | 'preflight' | 'FedCM' | 'other');
+            type: ('parser' | 'script' | 'preload' | 'SignedExchange' | 'preflight' | 'FedCM' | 'EmailVerification' | 'other');
             /**
              * Initiator JavaScript stack trace, set for Script only.
              * Requires the Debugger domain to be enabled.
@@ -18233,6 +18234,14 @@ export namespace Protocol {
              * @experimental
              */
             loaderId?: Network.LoaderId;
+            /**
+             * If true and the page has POST data, the browser shows the form
+             * resubmission dialog before the reload. The command returns after the
+             * user responds to the dialog. If the user cancels the dialog, the
+             * command returns an error. The default value is false.
+             * @experimental
+             */
+            checkForRepost?: boolean;
         }
 
         export interface RemoveScriptToEvaluateOnLoadRequest {
