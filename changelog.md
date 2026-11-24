@@ -1,7 +1,30 @@
 
 
+## Roll protocol to r1752859 — _2026-11-24T04:34:30.000Z_
+######  Diff: [`62afb85...6d7d53d`](https://github.com/ChromeDevTools/devtools-protocol/compare/62afb85...6d7d53d)
+
+```diff
+@@ domains/Emulation.pdl:258 @@ domain Emulation
+     parameters
+       SafeAreaInsets insets
+ 
+-  # Overrides virtual keyboard geometry in CSS pixels, relative to the top-level viewport. The
+-  # provided rect is used for navigator.virtualKeyboard.boundingRect, geometrychange events, and
+-  # env(keyboard-inset-*) values on the inspected frame. The override applies independently of
+-  # navigator.virtualKeyboard.overlaysContent so clients can preview overlay geometry without
+-  # mutating page state. Values are rounded to the nearest CSS pixel. Omitting the rect clears the
+-  # override.
+-  experimental command setVirtualKeyboardGeometryOverride
+-    parameters
+-      optional DOM.Rect keyboardRect
+-
+   # Overrides the values of device screen dimensions (window.screen.width, window.screen.height,
+   # window.innerWidth, window.innerHeight, and "device-width"/"device-height"-related CSS media
+   # query results).
+```
+
 ## Roll protocol to r1751165 — _2026-11-21T04:32:13.000Z_
-######  Diff: [`cc9d57b...c977a25`](https://github.com/ChromeDevTools/devtools-protocol/compare/cc9d57b...c977a25)
+######  Diff: [`cc9d57b...62afb85`](https://github.com/ChromeDevTools/devtools-protocol/compare/cc9d57b...62afb85)
 
 ```diff
 @@ domains/Network.pdl:32 @@ domain Network
@@ -42990,56 +43013,4 @@ index 8dad9c98..ee14676c 100644
        experimental optional array of PostDataEntry postDataEntries
        # The mixed content type of the request.
        optional Security.MixedContentType mixedContentType
-```
-
-## Roll protocol to r1273222 — _2024-03-15T04:26:20.000Z_
-######  Diff: [`c804ef9...4537bcb`](https://github.com/ChromeDevTools/devtools-protocol/compare/c804ef9...4537bcb)
-
-```diff
-@@ browser_protocol.pdl:1944 @@ experimental domain CSS
-       CSSStyle style
- 
-   # CSS position-fallback rule representation.
--  type CSSPositionFallbackRule extends object
-+  deprecated type CSSPositionFallbackRule extends object
-     properties
-       Value name
-       # List of keyframes.
-       array of CSSTryRule tryRules
- 
-+  # CSS @position-try rule representation.
-+  type CSSPositionTryRule extends object
-+    properties
-+      # The prelude dashed-ident name
-+      Value name
-+      # The css style sheet identifier (absent for user agent stylesheet and user-specified
-+      # stylesheet rules) this rule came from.
-+      optional StyleSheetId styleSheetId
-+      # Parent stylesheet's origin.
-+      StyleSheetOrigin origin
-+      # Associated style declaration.
-+      CSSStyle style
-+
-   # CSS keyframes rule representation.
-   type CSSKeyframesRule extends object
-     properties
-@@ -2123,7 +2136,9 @@ experimental domain CSS
-       # A list of CSS keyframed animations matching this node.
-       optional array of CSSKeyframesRule cssKeyframesRules
-       # A list of CSS position fallbacks matching this node.
--      optional array of CSSPositionFallbackRule cssPositionFallbackRules
-+      deprecated optional array of CSSPositionFallbackRule cssPositionFallbackRules
-+      # A list of CSS @position-try rules matching this node, based on the position-try-options property.
-+      optional array of CSSPositionTryRule cssPositionTryRules
-       # A list of CSS at-property rules matching this node.
-       optional array of CSSPropertyRule cssPropertyRules
-       # A list of CSS property registrations matching this node.
-@@ -9674,6 +9689,7 @@ experimental domain Storage
-       documentAppend
-       documentDelete
-       documentClear
-+      documentGet
-       workletSet
-       workletAppend
-       workletDelete
 ```

@@ -11492,18 +11492,6 @@
                     ]
                 },
                 {
-                    "name": "setVirtualKeyboardGeometryOverride",
-                    "description": "Overrides virtual keyboard geometry in CSS pixels, relative to the top-level viewport. The\nprovided rect is used for navigator.virtualKeyboard.boundingRect, geometrychange events, and\nenv(keyboard-inset-*) values on the inspected frame. The override applies independently of\nnavigator.virtualKeyboard.overlaysContent so clients can preview overlay geometry without\nmutating page state. Values are rounded to the nearest CSS pixel. Omitting the rect clears the\noverride.",
-                    "experimental": true,
-                    "parameters": [
-                        {
-                            "name": "keyboardRect",
-                            "optional": true,
-                            "$ref": "DOM.Rect"
-                        }
-                    ]
-                },
-                {
                     "name": "setDeviceMetricsOverride",
                     "description": "Overrides the values of device screen dimensions (window.screen.width, window.screen.height,\nwindow.innerWidth, window.innerHeight, and \"device-width\"/\"device-height\"-related CSS media\nquery results).",
                     "parameters": [

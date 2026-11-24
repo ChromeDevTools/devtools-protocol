@@ -9804,10 +9804,6 @@ export namespace Protocol {
             insets: SafeAreaInsets;
         }
 
-        export interface SetVirtualKeyboardGeometryOverrideRequest {
-            keyboardRect?: DOM.Rect;
-        }
-
         export const enum SetDeviceMetricsOverrideRequestScrollbarType {
             Overlay = 'overlay',
             Default = 'default',
