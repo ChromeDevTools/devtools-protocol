@@ -4122,11 +4122,24 @@ export namespace Protocol {
         }
 
         /**
+         * Details for issues about a page that declares viewport-fit=cover, receives
+         * a non-zero top safe-area inset (e.g. a device cutout or system status bar),
+         * but does not consume env(safe-area-inset-top) anywhere in its CSS while
+         * having DOM content likely to be occluded by that inset.
+         */
+        export interface ViewportFitCoverMissingSafeAreaInsetTopIssueDetails {
+            /**
+             * The frame that triggered the issue.
+             */
+            frameId: Page.FrameId;
+        }
+
+        /**
          * A unique identifier for the type of issue. Each type may use one of the
          * optional fields in InspectorIssueDetails to convey more specific
          * information about the kind of issue.
          */
-        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'CorsIssue' | 'QuirksModeIssue' | 'PartitioningBlobURLIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'CookieDeprecationMetadataIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue' | 'PropertyRuleIssue' | 'SharedDictionaryIssue' | 'ElementAccessibilityIssue' | 'SRIMessageSignatureIssue' | 'UnencodedDigestIssue' | 'ConnectionAllowlistIssue' | 'UserReidentificationIssue' | 'PermissionElementIssue' | 'PerformanceIssue' | 'SelectivePermissionsInterventionIssue' | 'EmailVerificationRequestIssue' | 'LazyLoadImageIssue' | 'WebInstallIssue');
+        export type InspectorIssueCode = ('CookieIssue' | 'MixedContentIssue' | 'BlockedByResponseIssue' | 'HeavyAdIssue' | 'ContentSecurityPolicyIssue' | 'SharedArrayBufferIssue' | 'CorsIssue' | 'QuirksModeIssue' | 'PartitioningBlobURLIssue' | 'NavigatorUserAgentIssue' | 'GenericIssue' | 'DeprecationIssue' | 'ClientHintIssue' | 'FederatedAuthRequestIssue' | 'BounceTrackingIssue' | 'CookieDeprecationMetadataIssue' | 'StylesheetLoadingIssue' | 'FederatedAuthUserInfoRequestIssue' | 'PropertyRuleIssue' | 'SharedDictionaryIssue' | 'ElementAccessibilityIssue' | 'SRIMessageSignatureIssue' | 'UnencodedDigestIssue' | 'ConnectionAllowlistIssue' | 'UserReidentificationIssue' | 'PermissionElementIssue' | 'PerformanceIssue' | 'SelectivePermissionsInterventionIssue' | 'EmailVerificationRequestIssue' | 'LazyLoadImageIssue' | 'WebInstallIssue' | 'ViewportFitCoverMissingSafeAreaInsetTopIssue');
 
         /**
          * This struct holds a list of optional fields with additional information
@@ -4168,6 +4181,7 @@ export namespace Protocol {
             emailVerificationRequestIssueDetails?: EmailVerificationRequestIssueDetails;
             lazyLoadImageIssueDetails?: LazyLoadImageIssueDetails;
             webInstallIssueDetails?: WebInstallIssueDetails;
+            viewportFitCoverMissingSafeAreaInsetTopIssueDetails?: ViewportFitCoverMissingSafeAreaInsetTopIssueDetails;
         }
 
         /**

@@ -1,7 +1,45 @@
 
 
+## Roll protocol to r1754134 — _2026-11-25T04:30:01.000Z_
+######  Diff: [`4593138...4ad5651`](https://github.com/ChromeDevTools/devtools-protocol/compare/4593138...4ad5651)
+
+```diff
+@@ domains/Audits.pdl:780 @@ experimental domain Audits
+       # Frame containing the image.
+       Page.FrameId frameId
+ 
++  # Details for issues about a page that declares viewport-fit=cover, receives
++  # a non-zero top safe-area inset (e.g. a device cutout or system status bar),
++  # but does not consume env(safe-area-inset-top) anywhere in its CSS while
++  # having DOM content likely to be occluded by that inset.
++  type ViewportFitCoverMissingSafeAreaInsetTopIssueDetails extends object
++    properties
++      # The frame that triggered the issue.
++      Page.FrameId frameId
++
+   # A unique identifier for the type of issue. Each type may use one of the
+   # optional fields in InspectorIssueDetails to convey more specific
+   # information about the kind of issue.
+@@ -817,6 +826,7 @@ experimental domain Audits
+       EmailVerificationRequestIssue
+       LazyLoadImageIssue
+       WebInstallIssue
++      ViewportFitCoverMissingSafeAreaInsetTopIssue
+ 
+   # This struct holds a list of optional fields with additional information
+   # specific to the kind of issue. When adding a new issue code, please also
+@@ -854,6 +864,7 @@ experimental domain Audits
+       optional EmailVerificationRequestIssueDetails emailVerificationRequestIssueDetails
+       optional LazyLoadImageIssueDetails lazyLoadImageIssueDetails
+       optional WebInstallIssueDetails webInstallIssueDetails
++      optional ViewportFitCoverMissingSafeAreaInsetTopIssueDetails viewportFitCoverMissingSafeAreaInsetTopIssueDetails
+ 
+   # A unique id for a DevTools inspector issue. Allows other entities (e.g.
+   # exceptions, CDP message, console messages, etc.) to reference an issue.
+```
+
 ## Roll protocol to r1752859 — _2026-11-24T04:34:30.000Z_
-######  Diff: [`62afb85...6d7d53d`](https://github.com/ChromeDevTools/devtools-protocol/compare/62afb85...6d7d53d)
+######  Diff: [`62afb85...4593138`](https://github.com/ChromeDevTools/devtools-protocol/compare/62afb85...4593138)
 
 ```diff
 @@ domains/Emulation.pdl:258 @@ domain Emulation
@@ -42993,24 +43031,4 @@ index 8dad9c98..ee14676c 100644
    experimental type AttributionReportingSourceType extends string
      enum
        navigation
-```
-
-## Roll protocol to r1273771 — _2024-03-16T04:26:55.000Z_
-######  Diff: [`4537bcb...8241e6c`](https://github.com/ChromeDevTools/devtools-protocol/compare/4537bcb...8241e6c)
-
-```diff
-@@ browser_protocol.pdl:5539 @@ domain Network
-       # HTTP request headers.
-       Headers headers
-       # HTTP POST request data.
--      optional string postData
-+      # Use postDataEntries instead.
-+      deprecated optional string postData
-       # True when the request has POST data. Note that postData might still be omitted when this flag is true when the data is too long.
-       optional boolean hasPostData
--      # Request body elements. This will be converted from base64 to binary
-+      # Request body elements (post data broken into individual entries).
-       experimental optional array of PostDataEntry postDataEntries
-       # The mixed content type of the request.
-       optional Security.MixedContentType mixedContentType
 ```
