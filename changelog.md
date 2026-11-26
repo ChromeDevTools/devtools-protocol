@@ -1,7 +1,35 @@
 
 
+## Roll protocol to r1755318 — _2026-11-26T04:29:19.000Z_
+######  Diff: [`856c4ed...076903b`](https://github.com/ChromeDevTools/devtools-protocol/compare/856c4ed...076903b)
+
+```diff
+@@ domains/Network.pdl:220 @@ domain Network
+       experimental optional boolean isSameSite
+       # True when the resource request is ad-related.
+       experimental optional boolean isAdRelated
++      # The provenance of an ad resource request, if it is ad-related and
++      # provenance is available.
++      experimental optional AdProvenance adProvenance
+ 
+   # Details of a signed certificate timestamp (SCT).
+   type SignedCertificateTimestamp extends object
+diff --git a/pdl/domains/Preload.pdl b/pdl/domains/Preload.pdl
+index bcd5a4d5..efbac6fe 100644
+--- a/pdl/domains/Preload.pdl
++++ b/pdl/domains/Preload.pdl
+@@ -194,6 +194,7 @@ experimental domain Preload
+       CrossDocumentRestart
+       PrefetchFailedCrossOriginSubframe
+       UnexpectedMainFrameNavigation
++      AudioOutput
+ 
+   # Fired when a preload enabled state is updated.
+   event preloadEnabledStateUpdated
+```
+
 ## Roll protocol to r1754134 — _2026-11-25T04:30:01.000Z_
-######  Diff: [`4593138...4ad5651`](https://github.com/ChromeDevTools/devtools-protocol/compare/4593138...4ad5651)
+######  Diff: [`4593138...856c4ed`](https://github.com/ChromeDevTools/devtools-protocol/compare/4593138...856c4ed)
 
 ```diff
 @@ domains/Audits.pdl:780 @@ experimental domain Audits
@@ -43011,24 +43039,4 @@ index 8dad9c98..ee14676c 100644
  
    experimental event attributionReportingSourceRegistered
      parameters
-```
-
-## Roll protocol to r1275388 — _2024-03-20T04:26:38.000Z_
-######  Diff: [`8241e6c...6a229aa`](https://github.com/ChromeDevTools/devtools-protocol/compare/8241e6c...6a229aa)
-
-```diff
-@@ browser_protocol.pdl:10148 @@ experimental domain Storage
-     parameters
-       boolean enable
- 
-+  # Sends all pending Attribution Reports immediately, regardless of their
-+  # scheduled report time.
-+  experimental command sendPendingAttributionReports
-+    returns
-+      # The number of reports that were sent.
-+      integer numSent
-+
-   experimental type AttributionReportingSourceType extends string
-     enum
-       navigation
 ```
