@@ -1,7 +1,36 @@
 
 
+## Roll protocol to r1756183 — _2026-11-27T04:30:09.000Z_
+######  Diff: [`2711fe1...56496a4`](https://github.com/ChromeDevTools/devtools-protocol/compare/2711fe1...56496a4)
+
+```diff
+@@ domains/Browser.pdl:224 @@ domain Browser
+       # Commandline parameters
+       array of string arguments
+ 
+-  # Adds or updates a mock camera in the shared video capture device list for
++  # Adds a mock camera in the shared video capture device list for
+   # test automation. The mock camera is not scoped to a particular page or
+   # frame and is removed when the DevTools session that created it disconnects.
++  # Returns success after the video capture service confirms registration.
++  # Does not wait for device-list updates or devicechange events in pages.
++  # Registration failures are reported as errors.
+   experimental command addMockCamera
+     parameters
+       # Required non-empty identifier for the mock camera within the current
+       # DevTools session. Different sessions can use the same identifier
+       # without replacing each other's cameras. This is not the
+       # MediaDeviceInfo.deviceId exposed to the page.
++      # An identifier that is already registered or being registered in this
++      # session is rejected. The existing camera or registration attempt is
++      # left unchanged, including any active streams.
+       string deviceId
+ 
+   # Chrome histogram bucket.
+```
+
 ## Roll protocol to r1755318 — _2026-11-26T04:29:19.000Z_
-######  Diff: [`856c4ed...076903b`](https://github.com/ChromeDevTools/devtools-protocol/compare/856c4ed...076903b)
+######  Diff: [`856c4ed...2711fe1`](https://github.com/ChromeDevTools/devtools-protocol/compare/856c4ed...2711fe1)
 
 ```diff
 @@ domains/Network.pdl:220 @@ domain Network
@@ -43025,18 +43054,4 @@ index 8dad9c98..ee14676c 100644
        # Information about how Service Worker Static Router was used.
        experimental optional ServiceWorkerRouterInfo serviceWorkerRouterInfo
        # Total number of bytes received for this request so far.
-```
-
-## Roll protocol to r1279463 — _2024-03-28T04:25:51.000Z_
-######  Diff: [`6a229aa...409429c`](https://github.com/ChromeDevTools/devtools-protocol/compare/6a229aa...409429c)
-
-```diff
-@@ browser_protocol.pdl:10237 @@ experimental domain Storage
-       destinationBothLimitsReached
-       reportingOriginsPerSiteLimitReached
-       exceedsMaxChannelCapacity
-+      exceedsMaxTriggerStateCardinality
- 
-   experimental event attributionReportingSourceRegistered
-     parameters
 ```

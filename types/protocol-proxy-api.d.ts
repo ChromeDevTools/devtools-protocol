@@ -1127,9 +1127,12 @@ export namespace ProtocolProxyApi {
         getBrowserCommandLine(): Promise<Protocol.Browser.GetBrowserCommandLineResponse>;
 
         /**
-         * Adds or updates a mock camera in the shared video capture device list for
+         * Adds a mock camera in the shared video capture device list for
          * test automation. The mock camera is not scoped to a particular page or
          * frame and is removed when the DevTools session that created it disconnects.
+         * Returns success after the video capture service confirms registration.
+         * Does not wait for device-list updates or devicechange events in pages.
+         * Registration failures are reported as errors.
          * @experimental
          */
         addMockCamera(params: Protocol.Browser.AddMockCameraRequest): Promise<void>;
