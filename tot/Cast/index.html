@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: Cast...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/Cast' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/Cast">Cast</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/Cast.enable">Cast.enable</a></li>
+        <li><a href="../../#/Cast.disable">Cast.disable</a></li>
+        <li><a href="../../#/Cast.setSinkToUse">Cast.setSinkToUse</a></li>
+        <li><a href="../../#/Cast.startDesktopMirroring">Cast.startDesktopMirroring</a></li>
+        <li><a href="../../#/Cast.startTabMirroring">Cast.startTabMirroring</a></li>
+        <li><a href="../../#/Cast.stopCasting">Cast.stopCasting</a></li>
+        <li><a href="../../#/Cast.sinksUpdated">Cast.sinksUpdated</a></li>
+        <li><a href="../../#/Cast.issueUpdated">Cast.issueUpdated</a></li>
+        <li><a href="../../#/Cast.Sink">Cast.Sink</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: Fetch...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/Fetch' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/Fetch">Fetch</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/Fetch.disable">Fetch.disable</a></li>
+        <li><a href="../../#/Fetch.enable">Fetch.enable</a></li>
+        <li><a href="../../#/Fetch.failRequest">Fetch.failRequest</a></li>
+        <li><a href="../../#/Fetch.fulfillRequest">Fetch.fulfillRequest</a></li>
+        <li><a href="../../#/Fetch.continueRequest">Fetch.continueRequest</a></li>
+        <li><a href="../../#/Fetch.continueWithAuth">Fetch.continueWithAuth</a></li>
+        <li><a href="../../#/Fetch.continueResponse">Fetch.continueResponse</a></li>
+        <li><a href="../../#/Fetch.getResponseBody">Fetch.getResponseBody</a></li>
+        <li><a href="../../#/Fetch.takeResponseBodyAsStream">Fetch.takeResponseBodyAsStream</a></li>
+        <li><a href="../../#/Fetch.requestPaused">Fetch.requestPaused</a></li>
+        <li><a href="../../#/Fetch.authRequired">Fetch.authRequired</a></li>
+        <li><a href="../../#/Fetch.RequestId">Fetch.RequestId</a></li>
+        <li><a href="../../#/Fetch.RequestStage">Fetch.RequestStage</a></li>
+        <li><a href="../../#/Fetch.RequestPattern">Fetch.RequestPattern</a></li>
+        <li><a href="../../#/Fetch.HeaderEntry">Fetch.HeaderEntry</a></li>
+        <li><a href="../../#/Fetch.AuthChallenge">Fetch.AuthChallenge</a></li>
+        <li><a href="../../#/Fetch.AuthChallengeResponse">Fetch.AuthChallengeResponse</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

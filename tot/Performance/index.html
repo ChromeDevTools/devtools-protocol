@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: Performance...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/Performance' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/Performance">Performance</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/Performance.disable">Performance.disable</a></li>
+        <li><a href="../../#/Performance.enable">Performance.enable</a></li>
+        <li><a href="../../#/Performance.setTimeDomain">Performance.setTimeDomain</a></li>
+        <li><a href="../../#/Performance.getMetrics">Performance.getMetrics</a></li>
+        <li><a href="../../#/Performance.metrics">Performance.metrics</a></li>
+        <li><a href="../../#/Performance.Metric">Performance.Metric</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

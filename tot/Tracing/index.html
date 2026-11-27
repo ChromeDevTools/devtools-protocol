@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: Tracing...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/Tracing' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/Tracing">Tracing</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/Tracing.end">Tracing.end</a></li>
+        <li><a href="../../#/Tracing.getCategories">Tracing.getCategories</a></li>
+        <li><a href="../../#/Tracing.getTrackEventDescriptor">Tracing.getTrackEventDescriptor</a></li>
+        <li><a href="../../#/Tracing.recordClockSyncMarker">Tracing.recordClockSyncMarker</a></li>
+        <li><a href="../../#/Tracing.requestMemoryDump">Tracing.requestMemoryDump</a></li>
+        <li><a href="../../#/Tracing.start">Tracing.start</a></li>
+        <li><a href="../../#/Tracing.bufferUsage">Tracing.bufferUsage</a></li>
+        <li><a href="../../#/Tracing.dataCollected">Tracing.dataCollected</a></li>
+        <li><a href="../../#/Tracing.tracingComplete">Tracing.tracingComplete</a></li>
+        <li><a href="../../#/Tracing.MemoryDumpConfig">Tracing.MemoryDumpConfig</a></li>
+        <li><a href="../../#/Tracing.TraceConfig">Tracing.TraceConfig</a></li>
+        <li><a href="../../#/Tracing.StreamFormat">Tracing.StreamFormat</a></li>
+        <li><a href="../../#/Tracing.StreamCompression">Tracing.StreamCompression</a></li>
+        <li><a href="../../#/Tracing.MemoryDumpLevelOfDetail">Tracing.MemoryDumpLevelOfDetail</a></li>
+        <li><a href="../../#/Tracing.TracingBackend">Tracing.TracingBackend</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: Security...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/Security' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/Security">Security</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/Security.disable">Security.disable</a></li>
+        <li><a href="../../#/Security.enable">Security.enable</a></li>
+        <li><a href="../../#/Security.setIgnoreCertificateErrors">Security.setIgnoreCertificateErrors</a></li>
+        <li><a href="../../#/Security.handleCertificateError">Security.handleCertificateError</a></li>
+        <li><a href="../../#/Security.setOverrideCertificateErrors">Security.setOverrideCertificateErrors</a></li>
+        <li><a href="../../#/Security.certificateError">Security.certificateError</a></li>
+        <li><a href="../../#/Security.visibleSecurityStateChanged">Security.visibleSecurityStateChanged</a></li>
+        <li><a href="../../#/Security.securityStateChanged">Security.securityStateChanged</a></li>
+        <li><a href="../../#/Security.CertificateId">Security.CertificateId</a></li>
+        <li><a href="../../#/Security.MixedContentType">Security.MixedContentType</a></li>
+        <li><a href="../../#/Security.SecurityState">Security.SecurityState</a></li>
+        <li><a href="../../#/Security.CertificateSecurityState">Security.CertificateSecurityState</a></li>
+        <li><a href="../../#/Security.SafetyTipStatus">Security.SafetyTipStatus</a></li>
+        <li><a href="../../#/Security.SafetyTipInfo">Security.SafetyTipInfo</a></li>
+        <li><a href="../../#/Security.VisibleSecurityState">Security.VisibleSecurityState</a></li>
+        <li><a href="../../#/Security.SecurityStateExplanation">Security.SecurityStateExplanation</a></li>
+        <li><a href="../../#/Security.InsecureContentStatus">Security.InsecureContentStatus</a></li>
+        <li><a href="../../#/Security.CertificateErrorAction">Security.CertificateErrorAction</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

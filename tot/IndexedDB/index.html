@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: IndexedDB...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/IndexedDB' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/IndexedDB">IndexedDB</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/IndexedDB.clearObjectStore">IndexedDB.clearObjectStore</a></li>
+        <li><a href="../../#/IndexedDB.deleteDatabase">IndexedDB.deleteDatabase</a></li>
+        <li><a href="../../#/IndexedDB.deleteObjectStoreEntries">IndexedDB.deleteObjectStoreEntries</a></li>
+        <li><a href="../../#/IndexedDB.disable">IndexedDB.disable</a></li>
+        <li><a href="../../#/IndexedDB.enable">IndexedDB.enable</a></li>
+        <li><a href="../../#/IndexedDB.requestData">IndexedDB.requestData</a></li>
+        <li><a href="../../#/IndexedDB.getMetadata">IndexedDB.getMetadata</a></li>
+        <li><a href="../../#/IndexedDB.requestDatabase">IndexedDB.requestDatabase</a></li>
+        <li><a href="../../#/IndexedDB.requestDatabaseNames">IndexedDB.requestDatabaseNames</a></li>
+        <li><a href="../../#/IndexedDB.DatabaseWithObjectStores">IndexedDB.DatabaseWithObjectStores</a></li>
+        <li><a href="../../#/IndexedDB.ObjectStore">IndexedDB.ObjectStore</a></li>
+        <li><a href="../../#/IndexedDB.ObjectStoreIndex">IndexedDB.ObjectStoreIndex</a></li>
+        <li><a href="../../#/IndexedDB.Key">IndexedDB.Key</a></li>
+        <li><a href="../../#/IndexedDB.KeyRange">IndexedDB.KeyRange</a></li>
+        <li><a href="../../#/IndexedDB.DataEntry">IndexedDB.DataEntry</a></li>
+        <li><a href="../../#/IndexedDB.KeyPath">IndexedDB.KeyPath</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

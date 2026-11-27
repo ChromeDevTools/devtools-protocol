@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: DeviceAccess...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/DeviceAccess' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/DeviceAccess">DeviceAccess</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/DeviceAccess.enable">DeviceAccess.enable</a></li>
+        <li><a href="../../#/DeviceAccess.disable">DeviceAccess.disable</a></li>
+        <li><a href="../../#/DeviceAccess.selectPrompt">DeviceAccess.selectPrompt</a></li>
+        <li><a href="../../#/DeviceAccess.cancelPrompt">DeviceAccess.cancelPrompt</a></li>
+        <li><a href="../../#/DeviceAccess.deviceRequestPrompted">DeviceAccess.deviceRequestPrompted</a></li>
+        <li><a href="../../#/DeviceAccess.RequestId">DeviceAccess.RequestId</a></li>
+        <li><a href="../../#/DeviceAccess.DeviceId">DeviceAccess.DeviceId</a></li>
+        <li><a href="../../#/DeviceAccess.PromptDevice">DeviceAccess.PromptDevice</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>

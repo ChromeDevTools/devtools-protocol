@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to DevTools Protocol: Media...</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || '';
+      var member = '';
+      var match = hash.match(/^#(?:method|type|event)-([\w-]+)/);
+      if (match) member = '.' + match[1];
+      window.location.replace('../../#/Media' + member);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="../../#/Media">Media</a>...</p>
+  <noscript>
+    <ul>
+      <!-- Static links to every command, event, and type for SEO, crawling, and grep -->
+        <li><a href="../../#/Media.enable">Media.enable</a></li>
+        <li><a href="../../#/Media.disable">Media.disable</a></li>
+        <li><a href="../../#/Media.playerPropertiesChanged">Media.playerPropertiesChanged</a></li>
+        <li><a href="../../#/Media.playerEventsAdded">Media.playerEventsAdded</a></li>
+        <li><a href="../../#/Media.playerMessagesLogged">Media.playerMessagesLogged</a></li>
+        <li><a href="../../#/Media.playerErrorsRaised">Media.playerErrorsRaised</a></li>
+        <li><a href="../../#/Media.playerCreated">Media.playerCreated</a></li>
+        <li><a href="../../#/Media.PlayerId">Media.PlayerId</a></li>
+        <li><a href="../../#/Media.Timestamp">Media.Timestamp</a></li>
+        <li><a href="../../#/Media.PlayerMessage">Media.PlayerMessage</a></li>
+        <li><a href="../../#/Media.PlayerProperty">Media.PlayerProperty</a></li>
+        <li><a href="../../#/Media.PlayerEvent">Media.PlayerEvent</a></li>
+        <li><a href="../../#/Media.PlayerErrorSourceLocation">Media.PlayerErrorSourceLocation</a></li>
+        <li><a href="../../#/Media.PlayerError">Media.PlayerError</a></li>
+        <li><a href="../../#/Media.Player">Media.Player</a></li>
+      </ul>
+  </noscript>
+</body>
+</html>
